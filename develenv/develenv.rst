@@ -245,7 +245,7 @@ as ``${RTEMS_ROOT}`` in this discussion.
     This directory is the root of the portions of the RTEMS source
     tree which must be built tailored for a particular CPU model
     or BSP.  The contents of this directory will be discussed
-    in the :ref:`Directory Structure c/ Directory <Directory-Structure-c_002f-Directory>` section.
+    in the `c/ Directory`_ section.
 
 ``${RTEMS_ROOT}/contrib/``
     This directory contains contributed support software.  Currently
@@ -272,7 +272,7 @@ as ``${RTEMS_ROOT}`` in this discussion.
     neither CPU model nor BSP specific.  The source code
     for most RTEMS services reside under this directory.
     The contents of this directory will be discussed
-    in the :ref:`Directory Structure CPU Kit Directory <Directory-Structure-CPU-Kit-Directory>` section.
+    in the `CPU Kit Directory`_ section.
 
 ``${RTEMS_ROOT}/doc/``
     This directory is the root for all RTEMS documentation.
@@ -281,7 +281,7 @@ as ``${RTEMS_ROOT}`` in this discussion.
     The RTEMS documentation is configured, built,
     and installed separately from the RTEMS executive and tests.
     The contents of this directory will be discussed
-    in the :ref:`Directory Structure Documentation Directory <Directory-Structure-Documentation-Directory>` section.
+    in the `Documentation Directory`_ section.
 
 ``${RTEMS_ROOT}/make/``
     This directory contains files which support the
@@ -297,7 +297,7 @@ as ``${RTEMS_ROOT}`` in this discussion.
 ``${RTEMS_ROOT}/testsuites/``
     This directory contains the test suites for the
     various RTEMS APIs and support libraries.  The
-    contents of this directory are discussed in the:ref:`Directory Structure testsuites/ Test Suites <Directory-Structure-testsuites_002f-Test-Suites>` section.
+    contents of this directory are discussed in the `testsuites/ Test Suites`_ section.
 
 ``${RTEMS_ROOT}/tools/``
     This directory contains RTEMS specific support utilities which
@@ -306,13 +306,11 @@ as ``${RTEMS_ROOT}`` in this discussion.
     of building RTEMS and applications, are CPU specific, or are
     used to assist in updating the RTEMS source tree and applications.
     The support utilities used in the process of building RTEMS are
-    described in :ref:`RTEMS Specific Utilities <RTEMS-Specific-Utilities>`.  These are the
+    described in `RTEMS Specific Utilities`_.  These are the
     only components of this subtree that will be discussed in this
     document.
 
 .. COMMENT: c/ Directions
-
-.. _Directory-Structure-c_002f-Directory:
 
 c/ Directory
 ============
@@ -329,11 +327,9 @@ following subdirectories:
     which are CPU model or board dependent.  Thus this directory
     is the root for the BSPs and the Ada Test Suites as well
     as CPU model and BSP dependent libraries.  The contents of
-    this directory are discussed in the:ref:`Directory Structure c/src/ Directory <Directory-Structure-c_002fsrc_002f-Directory>` section.
+    this directory are discussed in the `c/src/ Directory`_ section.
 
 .. COMMENT: c/src/ Directory
-
-.. _Directory-Structure-c_002fsrc_002f-Directory:
 
 c/src/ Directory
 ----------------
@@ -372,7 +368,7 @@ directory and a description of each.
     specific source code for RTEMS.
     The ``libbsp/`` is organized based upon the CPU
     family and boards BSPs.  The contents of ``libbsp/``
-    are discussed briefly in:ref:`Directory Structure c/src/lib/libbsp BSP Directory <Directory-Structure-c_002fsrc_002flib_002flibbsp-BSP-Directory>`
+    are discussed briefly in `c/src/lib/libbsp BSP Directory`_
     and presented in detail in the*RTEMS BSP and Device Driver Development Guide*.
     The ``libcpu/`` directory is also organized by
     CPU family with further divisions based upon CPU
@@ -422,8 +418,6 @@ directory and a description of each.
 
 .. COMMENT: c/src/lib/libbsp BSP Directory
 
-.. _Directory-Structure-c_002fsrc_002flib_002flibbsp-BSP-Directory:
-
 c/src/lib/libbsp BSP Directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -465,8 +459,6 @@ figure:
 .. COMMENT: @end ifset
 
 .. COMMENT: CPU Kit Directory
-
-.. _Directory-Structure-CPU-Kit-Directory:
 
 CPU Kit Directory
 =================
@@ -641,8 +633,6 @@ under ``cpukit/``:
 
 .. COMMENT: testsuites/ Test Suites
 
-.. _Directory-Structure-testsuites_002f-Test-Suites:
-
 testsuites/ Test Suites
 =======================
 
@@ -674,7 +664,7 @@ they may be located:
     This directory provides sample application tests
     which aid in the testing a newly built RTEMS environment, a new
     BSP, or as starting points for the development of an application
-    using the RTEMS executive.  They are discussed in:ref:`Sample Applications <Sample-Applications>`.
+    using the RTEMS executive.  They are discussed in `Sample Applications`_.
 
 ``${RTEMS_ROOT}/testsuites/sptests/``
     This directory contains the test suite for the RTEMS
@@ -714,8 +704,6 @@ they may be located:
     execution times by manager.
 
 .. COMMENT: Documentation Directory
-
-.. _Directory-Structure-Documentation-Directory:
 
 Documentation Directory
 =======================
@@ -810,7 +798,6 @@ and PostScript.
 
 .. COMMENT: All rights reserved.
 
-.. _Sample-Applications:
 
 Sample Applications
 ###################
@@ -843,11 +830,11 @@ more detail in subsequent sections:
 
 *Base Single Processor*
     A simple single processor test similar to those in the
-    single processor test suite is provided in``${RTEMS_ROOT}/testsuites/samples/base_sp/``.
+    single processor test suite is provided in ``${RTEMS_ROOT}/testsuites/samples/base_sp/``.
 
 *Base Multiple Processor*
     A simple two node multiprocessor test capable of testing an newly
-    developed MPCI layer is provided in``${RTEMS_ROOT}/testsuites/samples/base_mp/``.
+    developed MPCI layer is provided in ``${RTEMS_ROOT}/testsuites/samples/base_mp/``.
 
 *Capture*
     The RTEMS Capture test is provided in
@@ -1223,8 +1210,6 @@ of the TCP/IP stack as well as simple socket usage.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 
 .. COMMENT: All rights reserved.
-
-.. _RTEMS-Specific-Utilities:
 
 RTEMS Specific Utilities
 ########################
