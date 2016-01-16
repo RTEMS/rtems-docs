@@ -1652,7 +1652,6 @@ characteristics resulted in a functional switching layer.
 
     Figure of the IMFS Memfile control blocks
 
-.. _File-and-Directory-Removal-Constraints:
 
 File and Directory Removal Constraints
 ======================================
@@ -1806,7 +1805,9 @@ components.
   allowed.
 
 # File control block - rtems_libio_t structure
+
   .. code:: c
+
       struct rtems_libio_tt {
       rtems_driver_name_t              \*driver;
       off_t                             size;
@@ -1819,18 +1820,24 @@ components.
       void                              file_info;
       rtems_filesystem_file_handlers_r  handlers;
       };
+
   A file control block can exist for regular files, devices and directories.
   The following fields are important for regular file and directory access:
+
   - Size - For a file this represents the number of bytes currently
     stored in a file. For a directory this field is not filled in.
+
   - Offset - For a file this is the byte file position index relative to
     the start of the file. For a directory this is the byte offset into a
     sequence of dirent structures.
+
   - Pathinfo - This is a structure that provides a pointer to node
     information, OPS table functions, Handler functions and the mount table
     entry associated with this node.
+
   - file_info - A pointer to node information that is used by Handler
     functions
+
   - handlers - A pointer to a table of handler functions that operate on
     a file, device or directory through a file descriptor index
 
@@ -1839,6 +1846,7 @@ File/Directory function access via rtems_filesystem_location_info_t structure
 
 The rtems_filesystem_location_info_tt structure below provides sufficient
 information to process nodes under a mounted filesystem.
+
 .. code:: c
 
     struct rtems_filesystem_location_info_tt {
@@ -1872,6 +1880,7 @@ One table exists for each filesystem that is supported in the RTEMS
 configuration. The structure definition appears below and is followed by
 general developmental information on each of the functions contained in this
 function management structure.
+
 .. code:: c
 
     typedef struct {
@@ -2766,27 +2775,37 @@ explanation of their role in the filesystem.
 *info*
     is this contains a structure that is unique to file type (See IMFS_typs_union
     in imfs.h).
+
     - IMFS_DIRECTORY
+
       An IMFS directory contains a dynamic chain structure that
       records all files and directories that are subordinate to the directory node.
+
     - IMFS_MEMORY_FILE
+
       Under the in memory filesystem regular files hold data. Data is dynamically
       allocated to the file in 128 byte chunks of memory.  The individual chunks of
       memory are tracked by arrays of pointers that record the address of the
       allocated chunk of memory. Single, double, and triple indirection pointers
       are used to record the locations of all segments of the file.  The
       memory organization of an IMFS file are discussed elsewhere in this manual.
+
     - IMFS_HARD_LINK
+
       The IMFS filesystem supports the concept of hard links to other nodes in the
       IMFS filesystem.  These hard links are actual pointers to other nodes in the
       same filesystem. This type of link cannot cross-filesystem boundaries.
+
     - IMFS_SYM_LINK
+
       The IMFS filesystem supports the concept of symbolic links to other nodes in
       any filesystem. A symbolic link consists of a pointer to a character string
       that represents the pathname to the target node. This type of link can
       cross-filesystem boundaries.  Just as with most versions of UNIX supporting
       symbolic links, a symbolic link can point to a non-existent file.
+
     - IMFS_DEVICE
+
       All RTEMS devices now appear as files under the in memory filesystem. On
       system initialization, all devices are registered as nodes under the file
       system.
@@ -2809,7 +2828,7 @@ Node removal constraints for the IMFS
 -------------------------------------
 
 The IMFS conforms to the general filesystem requirements for node
-removal.  See :ref:`File and Directory Removal Constraints <File-and-Directory-Removal-Constraints>`.
+removal.  See `File and Directory Removal Constraints`_.
 
 IMFS General Housekeeping Notes
 -------------------------------
