@@ -1512,7 +1512,9 @@ in software:
 - a "binary search using if’s"
 
 - the following algorithm based upon a 16 entry lookup table.  In this pseudo-code, bit_set_table[16] has values which indicate the first bit set:
+
   .. code:: c
+
       _number = 0 if _value > 0x00ff
       _value >>=8
       _number = 8;
