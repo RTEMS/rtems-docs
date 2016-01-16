@@ -438,8 +438,11 @@ up the user environment for the shell command execution.
 
 :file:`/etc/passwd`
     The format for each line is
+
     .. code:: c
+
         user_name:password:UID:GID:GECOS:directory:shell
+
     with colon separated
     fields.  For more information refer to the Linux PASSWD(5) man page.  Use a``password`` of ``*`` to disable the login of the user.  An empty
     password allows login without a password for this user.  In contrast to
@@ -447,19 +450,27 @@ up the user environment for the shell command execution.
     with an UID of zero by default.  The ``directory`` is used to perform a
     filesystem change root operation in ``rtems_shell_login_check()`` in
     contrast to a normal usage as the HOME directory of the user.  The*default* content is
+
     .. code:: c
+
         root::0:0::::
+
     so there is *no password required* for the ``root`` user.
 
 :file:`/etc/group`
     The format for each line is
+
     .. code:: c
+
         group_name:password:GID:user_list
+
     with colon separated fields.  The ``user_list`` is comma separated.  For
     more information refer to the Linux GROUP(5) man page.  In contrast to standard
     UNIX systems, this file is only readable and writeable for the user with an UID
     of zero by default.  The default content is
+
     .. code:: c
+
         root::0:
 
 Command Visibility and Execution Permission
@@ -2577,7 +2588,9 @@ The following operands are available:
 
 *conv=value[,value...]*
     Where value is one of the symbols from the following list.
+
     *ascii, oldascii*
+
         The same as the unblock value except that characters are translated
         from EBCDIC to ASCII before the records are converted.  (These values
         imply unblock if the operand cbs is also specified.)  There are two
@@ -2585,7 +2598,9 @@ The following operands are available:
         mended one which is compatible with AT&T System V UNIX.  The value
         oldascii specifies the one used in historic AT&T and pre 4.3BSD-Reno
         systems.
+
     *block*
+
         Treats the input as a sequence of newline or end-of-file terminated
         variable length records independent of input and output block
         boundaries.  Any trailing newline character is discarded.  Each
@@ -2595,7 +2610,9 @@ The following operands are available:
         longer than the conversion record size are truncated.  The number of
         truncated input records, if any, are reported to the standard error
         output at the completion of the copy.
+
     *ebcdic, ibm, oldebcdic, oldibm*
+
         The same as the block value except that characters are translated from
         ASCII to EBCDIC after the records are converted.  (These values imply
         block if the operand cbs is also specified.)  There are four
@@ -2604,9 +2621,13 @@ The following operands are available:
         value ibm is a slightly different mapping, which is compatible with
         the AT&T System V UNIX ibm value.  The values oldebcdic and oldibm are
         maps used in historic AT&T and pre 4.3BSD-Reno systems.
+
     *lcase*
+
         Transform uppercase characters into lowercase characters.
+
     *noerror*
+
         Do not stop processing on an input error.  When an input error occurs,
         a diagnostic message followed by the current input and output block
         counts will be written to the standard error output in the same format
@@ -2617,32 +2638,46 @@ The following operands are available:
         specified, the input block is omitted from the output.  On input files
         which are not tapes or pipes, the file offset will be positioned past
         the block in which the error occurred using lseek(2).
+
     *notrunc*
+
         Do not truncate the output file.  This will preserve any blocks in the
         output file not explicitly written by dd.  The notrunc value is not
         supported for tapes.
+
     *osync*
+
         Pad the final output block to the full output block size.  If the
         input file is not a multiple of the output block size after
         conversion, this conversion forces the final output block to be the
         same size as preceding blocks for use on devices that require
         regularly sized blocks to be written.  This option is incompatible
         with use of the bs=n block size specification.
+
     *sparse*
+
         If one or more non-final output blocks would consist solely of NUL
         bytes, try to seek the output file by the required space instead of
         filling them with NULs.  This results in a sparse file on some file
         systems.
+
     *swab*
+
         Swap every pair of input bytes.  If an input buffer has an odd number
         of bytes, the last byte will be ignored during swapping.
+
     *sync*
+
         Pad every input block to the input buffer size.  Spaces are used for
         pad bytes if a block oriented conversion value is specified, otherwise
         NUL bytes are used.
+
     *ucase*
+
         Transform lowercase characters into uppercase characters.
+
     *unblock*
+
         Treats the input as a sequence of fixed length records independent of
         input and output block boundaries.  The length of the input records is
         specified by the cbs operand.  Any trailing space characters are
@@ -2772,13 +2807,20 @@ The commands are:
     Display the group data from the start group to the end group.
 
 *inode \[-aef] \[start] \[end]*
+
     Display the inodes between start and end. If no start and end is
     provides all inodes are displayed.
+
     *-a*
+
         Display all inodes. That is allocated and unallocated inodes.
+
     *-e*
+
         Search and display on inodes that have an error.
+
     *-f*
+
         Force display of inodes, even when in error.
 
 **EXIT STATUS:**
@@ -3106,6 +3148,7 @@ marks.  It is interpreted as a fprintf-style format string (see*fprintf*), with 
 
 - The single character escape sequences described in the C standard
   are supported:
+
       NUL                  \\0
       <alert character>    \\a
       <backspace>          \\b
@@ -5632,7 +5675,7 @@ The following is an example of how to use ``config``:
 .. code:: c
 
     INITIAL (startup) Configuration Info
-    ------------------------------------------------------------------------------
+
     WORKSPACE      start: 0x23d22e0;  size: 0x2dd20
     TIME           usec/tick: 10000;  tick/timeslice: 50;  tick/sec: 100
     MAXIMUMS       tasks: 20;  timers: 0;  sems: 50;  que's: 20;  ext's: 1
