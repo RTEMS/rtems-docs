@@ -144,13 +144,8 @@ A schematic diagram of the tasks and message *mbuf* queues in a
 simple RTEMS networking application is shown in the following
 figure:
 
-.. image:: networkflow.eps
+.. image:: images/networkflow.jpg
 
-.. image:: networkflow.jpg
-
-.. image:: networkflow.pdf
-
-.. image:: networkflow.png
 
 The transmit task  for each network interface is normally blocked waiting
 for a packet to arrive in the transmit queue.  Once a packet arrives, the
@@ -1806,11 +1801,9 @@ on a PowerPC target.
 
 .. COMMENT: PCI Device's Configuration Header Space Format
 
-.. image:: PCIreg.eps
 
-.. image:: PCIreg.jpg
+.. image:: images/PCIreg.jpg
 
-.. image:: PCIreg.pdf
 
 .. COMMENT: XXX add crossreference to PCI Register Figure
 
@@ -1873,11 +1866,9 @@ please refer to the \[DEC21140 Hardware Manual].
 
 .. COMMENT: Buffer Descriptor
 
-.. image:: recvbd.eps
 
-.. image:: recvbd.jpg
+.. image:: images/recvbd.jpg
 
-.. image:: recvbd.pdf
 
 Receiver Thread
 ---------------
