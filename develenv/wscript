@@ -1,0 +1,19 @@
+from sys import path
+from os.path import abspath
+path.append(abspath('../common/'))
+
+from waf import cmd_configure, cmd_build
+
+def configure(ctx):
+	cmd_configure(ctx)
+
+def build(ctx):
+
+	sub = {
+		"VERSION":				"1.0",
+		"RELEASE":				"5.0.0",
+		"DOC":					"Development Environment",
+		"FILE_DOC":				"rtemsdevelenv",
+	}
+
+	cmd_build(ctx, sub)

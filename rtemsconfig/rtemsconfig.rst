@@ -1,0 +1,11 @@
+RTEMS Config
+------------
+.. autoclass:: config.RTEMSConfig
+   :members:
+
+.. autoclass:: config.Feature
+   :members:
+
+.. autoclass:: config.Value
+   :members:
+

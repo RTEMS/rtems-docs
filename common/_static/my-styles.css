@@ -1,0 +1,31 @@
+.rtemsdefine {
+    padding: 0 0 0 2em;
+}
+
+.rtemscommand {
+    padding: 0 0 0 2em;
+}
+
+.rtemsoption {
+    padding: 0 0 0 2em;
+}
+
+.rtemsdefine dt {
+	color: #408090;
+}
+
+.rtemsdefine dd {
+	margin: 3;
+	color: #408090;
+}
+
+.rtemscommand {
+	border: 1px solid #808b89;
+	border-radius: 5px;
+	background: #d2e3e0;
+	color: #5e6664
+}
+
+.rtemsoption dt {
+	color: #a87892;
+}
