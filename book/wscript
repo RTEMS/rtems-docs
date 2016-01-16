@@ -1,5 +1,5 @@
 from sys import path
-from os.path import abspath
+from os.path import abspath, exists
 path.append(abspath('../common/'))
 
 from waf import cmd_configure, cmd_build
@@ -13,7 +13,6 @@ def build(ctx):
 		"user",
 		"rtemsconfig",
 		"shell",
-		"commands",
 		"ada_user",
 		"bsp_howto",
 		"c_user",
@@ -27,6 +26,11 @@ def build(ctx):
 		"posix_users",
 		"relnotes"
 	]
+
+	p = ctx.path.parent.abspath()
+	for dir in dirs:
+		if not exists("%s/%s" % (p, dir)):
+			ctx.fatal("Directory does not exist: %s/%s" % (p, dir))
 
 	for dir in dirs:
 		files = ctx.path.parent.find_node(dir).ant_glob("**/*.rst")
