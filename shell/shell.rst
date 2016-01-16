@@ -573,9 +573,8 @@ The RTEMS shell has the following general commands:
 Commands
 ========
 
-This section details the General Commands available.  A
-subsection is dedicated to each of the commands and
-describes the behavior and configuration of that
+This section details the General Commands available.  A subsection is dedicated
+to each of the commands and describes the behavior and configuration of that
 command as well as providing an example usage.
 
 help - Print command help
@@ -590,8 +589,8 @@ help - Print command help
 
 **DESCRIPTION:**
 
-This command prints the command help. Help without arguments prints a
-list of topics and help with a topic prints the help for that topic.
+This command prints the command help. Help without arguments prints a list of
+topics and help with a topic prints the help for that topic.
 
 **EXIT STATUS:**
 
@@ -599,55 +598,56 @@ This command returns 0.
 
 **NOTES:**
 
-The help print will break the output up based on the environment
-variable SHELL_LINES. If this environment variable is not set the
-default is 16 lines. If set the number of lines is set to that the
-value. If the shell lines is set 0 there will be no break.
+The help print will break the output up based on the environment variable
+SHELL_LINES. If this environment variable is not set the default is 16
+lines. If set the number of lines is set to that the value. If the shell lines
+is set 0 there will be no break.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``alias``:
-.. code:: c
 
-    SHLL \[/] $ help
+.. code-block:: shell
+
+    SHLL [/] $ help
     help: ('r' repeat last cmd - 'e' edit last cmd)
     TOPIC? The topics are
     mem, misc, files, help, rtems, network, monitor
-    SHLL \[/] $ help misc
+    SHLL [/] $ help misc
     help: list for the topic 'misc'
     alias        - alias old new
-    time         - time command \[arguments...]
-    joel         - joel \[args] SCRIPT
-    date         - date \[YYYY-MM-DD HH:MM:SS]
-    echo         - echo \[args]
-    sleep        - sleep seconds \[nanoseconds]
+    time         - time command [arguments...]
+    joel         - joel [args] SCRIPT
+    date         - date [YYYY-MM-DD HH:MM:SS]
+    echo         - echo [args]
+    sleep        - sleep seconds [nanoseconds]
     id           - show uid, gid, euid, and egid
     tty          - show ttyname
     whoami       - show current user
     logoff       - logoff from the system
-    setenv       - setenv \[var] \[string]
-    getenv       - getenv \[var]
-    unsetenv     - unsetenv \[var]
-    umask        - umask \[new_umask]
+    setenv       - setenv [var] [string]
+    getenv       - getenv [var]
+    unsetenv     - unsetenv [var]
+    umask        - umask [new_umask]
     Press any key to continue...
     rtc          - real time clock read and set
-    SHLL \[/] $ setenv SHELL_ENV 0
-    SHLL \[/] $ help misc
+    SHLL [/] $ setenv SHELL_ENV 0
+    SHLL [/] $ help misc
     help: list for the topic 'misc'
     alias        - alias old new
-    time         - time command \[arguments...]
-    joel         - joel \[args] SCRIPT
-    date         - date \[YYYY-MM-DD HH:MM:SS]
-    echo         - echo \[args]
-    sleep        - sleep seconds \[nanoseconds]
+    time         - time command [arguments...]
+    joel         - joel [args] SCRIPT
+    date         - date [YYYY-MM-DD HH:MM:SS]
+    echo         - echo [args]
+    sleep        - sleep seconds [nanoseconds]
     id           - show uid, gid, euid, and egid
     tty          - show ttyname
     whoami       - show current user
     logoff       - logoff from the system
-    setenv       - setenv \[var] \[string]
-    getenv       - getenv \[var]
-    unsetenv     - unsetenv \[var]
-    umask        - umask \[new_umask]
+    setenv       - setenv [var] [string]
+    getenv       - getenv [var]
+    unsetenv     - unsetenv [var]
+    umask        - umask [new_umask]
     rtc          - real time clock read and set
 
 **CONFIGURATION:**
@@ -666,8 +666,7 @@ alias - add alias for an existing command
 
 **DESCRIPTION:**
 
-This command adds an alternate name for an existing command to
-the command set.
+This command adds an alternate name for an existing command to the command set.
 
 **EXIT STATUS:**
 
