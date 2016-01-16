@@ -1,5 +1,6 @@
+=======
 Preface
-#######
+=======
 
 This document describes the implementation of the RTEMS filesystem
 infrastructure.  This infrastructure supports the following
