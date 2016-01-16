@@ -1,122 +1,52 @@
 :orphan:
 
-
-.. COMMENT: %**end of header
-
-.. COMMENT: COPYRIGHT (c) 1989-2013.
-
+.. COMMENT: COPYRIGHT (c) 1988-2013.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
-
 .. COMMENT: All rights reserved.
-
+.. COMMENT:
 .. COMMENT: Master file for the Shell User's Guide
-
-.. COMMENT: Joel's Questions
-
-.. COMMENT: 1.  Why does paragraphindent only impact makeinfo?
-
-.. COMMENT: 2.  Why does paragraphindent show up in HTML?
-
+.. COMMENT:
 .. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
-.. COMMENT: The following determines which set of the tables and figures we will use.
-
-.. COMMENT: We default to ASCII but if available TeX or HTML versions will
-
-.. COMMENT: be used instead.
-
-.. COMMENT: @clear use-html
-
-.. COMMENT: @clear use-tex
-
-.. COMMENT: The following variable says to use texinfo or html for the two column
-
-.. COMMENT: texinfo tables.  For somethings the format does not look good in html.
-
-.. COMMENT: With our adjustment to the left column in TeX, it nearly always looks
-
-.. COMMENT: good printed.
-
-.. COMMENT: Custom whitespace adjustments.  We could fiddle a bit more.
-
-.. COMMENT: @syncodeindex fn cp
-
-.. COMMENT: Title Page Stuff
-
-.. COMMENT: I don't really like having a short title page.  -joel
-
-.. COMMENT: @shorttitlepage RTEMS Shell User's Guide
 
 ========================
 RTEMS Shell User’s Guide
 ========================
-
-.. COMMENT: COPYRIGHT (c) 1988-2015.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
-.. COMMENT: The following puts a space somewhere on an otherwise empty page so we
-
-.. COMMENT: can force the copyright description onto a left hand page.
 
 COPYRIGHT © 1988 - 2015.
 
 On-Line Applications Research Corporation (OAR).
 
-The authors have used their best efforts in preparing
-this material.  These efforts include the development, research,
-and testing of the theories and programs to determine their
-effectiveness.  No warranty of any kind, expressed or implied,
-with regard to the software or the material contained in this
-document is provided.  No liability arising out of the
-application or use of any product described in this document is
-assumed.  The authors reserve the right to revise this material
-and to make changes from time to time in the content hereof
-without obligation to notify anyone of such revision or changes.
+The authors have used their best efforts in preparing this material.  These
+efforts include the development, research, and testing of the theories and
+programs to determine their effectiveness.  No warranty of any kind, expressed
+or implied, with regard to the software or the material contained in this
+document is provided.  No liability arising out of the application or use of
+any product described in this document is assumed.  The authors reserve the
+right to revise this material and to make changes from time to time in the
+content hereof without obligation to notify anyone of such revision or changes.
 
-The RTEMS Project is hosted at http://www.rtems.org.  Any
-inquiries concerning RTEMS, its related support components, or its
-documentation should be directed to the Community Project hosted athttp://www.rtems.org.
-
-Any inquiries for commercial services including training, support, custom
-development, application development assistance should be directed tohttp://www.rtems.com.
-
-.. COMMENT: This prevents a black box from being printed on "overflow" lines.
-
-.. COMMENT: The alternative is to rework a sentence to avoid this problem.
+The RTEMS Project is hosted at http://www.rtems.org/.  Any inquiries concerning
+RTEMS, its related support components, or its documentation should be directed
+to the Community Project hosted at http://www.rtems.org/.
 
 RTEMS Shell User’s Guide
 ########################
 
-.. COMMENT: COPYRIGHT (c) 1989-2011.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
 Preface
 #######
 
-Real-time embedded systems vary widely based upon their
-operational and maintenance requirements. Some of these
-systems provide ways for the user or developer to interact
-with them.  This interaction could be used for operational,
-diagnostic, or configuration purposes.  The capabilities
-described in this manual are those provided with RTEMS to
-provide a command line interface for user access.  Some
-of these commands will be familiar as standard POSIX utilities
-while others are RTEMS specific or helpful in debugging
-and analyzing an embedded system. As a simple example of
-the powerful and very familiar capabilities that the RTEMS
-Shell provides to an application, consider the following
-example which hints at some of the capabilities available:
-.. code:: c
+Real-time embedded systems vary widely based upon their operational and
+maintenance requirements. Some of these systems provide ways for the user or
+developer to interact with them.  This interaction could be used for
+operational, diagnostic, or configuration purposes.  The capabilities described
+in this manual are those provided with RTEMS to provide a command line
+interface for user access.  Some of these commands will be familiar as standard
+POSIX utilities while others are RTEMS specific or helpful in debugging and
+analyzing an embedded system. As a simple example of the powerful and very
+familiar capabilities that the RTEMS Shell provides to an application, consider
+the following example which hints at some of the capabilities available:
+
+.. code-block:: shell
 
     Welcome to rtems-4.10.99.0(SPARC/w/FPU/sis)
     COPYRIGHT (c) 1989-2011.
@@ -125,122 +55,95 @@ example which hints at some of the capabilities available:
     login: rtems
     Password:
     RTEMS SHELL (Ver.1.0-FRC):/dev/console. Feb 28 2008. 'help' to list commands.
-    SHLL \[/] $ cat /etc/passwd
-    root:\*:0:0:root::/:/bin/sh
-    rtems:\*:1:1:RTEMS Application::/:/bin/sh
+    SHLL [/] $ cat /etc/passwd
+    root:*:0:0:root::/:/bin/sh
+    rtems:*:1:1:RTEMS Application::/:/bin/sh
     tty:!:2:2:tty owner::/:/bin/false
-    SHLL \[/] $ ls /dev
+    SHLL [/] $ ls /dev
     -rwxr-xr-x   1  rtems   root           0 Jan 01 00:00 console
     -rwxr-xr-x   1   root   root           0 Jan 01 00:00 console_b
     2 files 0 bytes occupied
-    SHLL \[/] $ stackuse
+    SHLL [/] $ stackuse
     Stack usage by thread
     ID      NAME    LOW          HIGH     CURRENT     AVAILABLE     USED
     0x09010001  IDLE 0x023d89a0 - 0x023d99af 0x023d9760      4096        608
     0x0a010001  UI1  0x023d9f30 - 0x023daf3f 0x023dad18      4096       1804
     0x0a010002  SHLL 0x023db4c0 - 0x023df4cf 0x023de9d0     16384       6204
     0xffffffff  INTR 0x023d2760 - 0x023d375f 0x00000000      4080        316
-    SHLL \[/] $ mount -L
+    SHLL [/] $ mount -L
     File systems: msdos
-    SHLL \[/] $
+    SHLL [/] $
 
-In the above example, the user *rtems* logs into a
-SPARC based RTEMS system.  The first command is ``cat /etc/passwd``.  This simple command lets us
-know that this application is running the In Memory
-File System (IMFS) and that the infrastructure has
-provided dummy entries for */etc/passwd* and a few
-other files.  The contents of */etc/passwd* let
-us know that the user could have logged in as ``root``.
-In fact, the ``root`` user has more permissions
-than ``rtems`` who is not allowed to write into the
-filesystem.
+In the above example, the user *rtems* logs into a SPARC based RTEMS system.
+The first command is ``cat /etc/passwd``.  This simple command lets us know
+that this application is running the In Memory File System (IMFS) and that the
+infrastructure has provided dummy entries for */etc/passwd* and a few other
+files.  The contents of */etc/passwd* let us know that the user could have
+logged in as ``root``.  In fact, the ``root`` user has more permissions than
+``rtems`` who is not allowed to write into the filesystem.
 
-The second command is ``ls /dev`` which lets us
-know that RTEMS has POSIX-style device nodes which
-can be accesses through standard I/O function calls.
+The second command is ``ls /dev`` which lets us know that RTEMS has POSIX-style
+device nodes which can be accesses through standard I/O function calls.
 
-The third command executed is the RTEMS specific ``stackuse`` which gives a report on the stack
-usage of each thread in the system.  Since stack
-overflows are a common error in deeply embedded systems,
-this is a surprising simple, yet powerful debugging aid.
+The third command executed is the RTEMS specific ``stackuse`` which gives a
+report on the stack usage of each thread in the system.  Since stack overflows
+are a common error in deeply embedded systems, this is a surprising simple, yet
+powerful debugging aid.
 
-Finally, the last command, ``mount -L`` hints that
-RTEMS supports a variety of mountable filesystems. With
-support for MS-DOS FAT on IDE/ATA and Flash devices as
-well as network-based filesystens such as NFS and TFTP,
-the standard free RTEMS provides a robuse infrastructure
-for embedded applications.
+Finally, the last command, ``mount -L`` hints that RTEMS supports a variety of
+mountable filesystems. With support for MS-DOS FAT on IDE/ATA and Flash devices
+as well as network-based filesystens such as NFS and TFTP, the standard free
+RTEMS provides a robuse infrastructure for embedded applications.
 
-This manual describes the RTEMS Shell and its command set.
-In our terminology, the Shell is just a loop reading user
-input and turning that input into commands with argument.
-The Shell provided with RTEMS is a simple command reading
-loop with limited scripting capabilities.  It can be connected
-to via a standard serial port or connected to the RTEMS``telnetd`` server for use across a network.
+This manual describes the RTEMS Shell and its command set.  In our terminology,
+the Shell is just a loop reading user input and turning that input into
+commands with argument.  The Shell provided with RTEMS is a simple command
+reading loop with limited scripting capabilities.  It can be connected to via a
+standard serial port or connected to the RTEMS ``telnetd`` server for use across
+a network.
 
-Each command in the command set is implemented as a single
-subroutine which has a *main-style* prototype.  The commands
-interpret their arguments and operate upon stdin, stdout, and
-stderr by default.  This allows each command to be invoked
-independent of the shell.
+Each command in the command set is implemented as a single subroutine which has
+a *main-style* prototype.  The commands interpret their arguments and operate
+upon stdin, stdout, and stderr by default.  This allows each command to be
+invoked independent of the shell.
 
-The described separation of shell from commands from communications
-mechanism was an important design goal.  At one level, the RTEMS
-Shell is a complete shell environment providing access to multiple
-POSIX compliant filesystems and TCP/IP stack.  The subset of
-capabilities available is easy to configure and the standard
-Shell can be logged into from either a serial port or via telnet.
-But at another level, the Shell is a large set of components which
-can be integrated into the user’s developed command interpreter.
-In either case, it is trivial to add custom commands to the command
-set available.
+The described separation of shell from commands from communications mechanism
+was an important design goal.  At one level, the RTEMS Shell is a complete
+shell environment providing access to multiple POSIX compliant filesystems and
+TCP/IP stack.  The subset of capabilities available is easy to configure and
+the standard Shell can be logged into from either a serial port or via telnet.
+But at another level, the Shell is a large set of components which can be
+integrated into the user’s developed command interpreter.  In either case, it
+is trivial to add custom commands to the command set available.
 
 Acknowledgements
 ================
 
-.. COMMENT: COPYRIGHT (c) 1988-2009.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
 .. COMMENT: The RTEMS Project has been granted permission from The Open Group
-
 .. COMMENT: IEEE to excerpt and use portions of the POSIX standards documents
-
 .. COMMENT: in the RTEMS POSIX API User's Guide and RTEMS Shell User's Guide.
-
 .. COMMENT: We have to include a specific acknowledgement paragraph in these
-
 .. COMMENT: documents (e.g. preface or copyright page) and another slightly
-
 .. COMMENT: different paragraph for each manual page that excerpts and uses
-
 .. COMMENT: text from the standards.
-
 .. COMMENT: This file should help ensure that the paragraphs are consistent
-
 .. COMMENT: and not duplicated
 
-    The Institute of Electrical and Electronics Engineers, Inc and The
-    Open Group, have given us permission to reprint portions of their
-    documentation.
-    Portions of this text are reprinted and reproduced in electronic
-    form from IEEE Std 1003.1, 2004 Edition, Standard for Information
-    Technology â Operating System Interface (POSIX), The Open
-    Group Base Specifications Issue 6, Copyright Â© 2001-2004 by the
-    Institute of Electrical and Electronics Engineers, Inc and The
-    Open Group. In the event of any discrepancy between this version
-    and the original IEEE and The Open Group Standard, the original
-    IEEE and The Open Group Standard is the referee document. The
-    original Standard can be obtained online athttp://www.opengroup.org/unix/online.html.
-    This notice shall appear on any product containing this material.
+The Institute of Electrical and Electronics Engineers, Inc and The Open Group,
+have given us permission to reprint portions of their documentation.
 
-.. COMMENT: COPYRIGHT (c) 1988-2008.
+.. pull-quote::
 
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
+    Portions of this text are reprinted and reproduced in electronic form from
+    IEEE Std 1003.1, 2004 Edition, Standard for Information Technology â
+    Operating System Interface (POSIX), The Open Group Base Specifications
+    Issue 6, Copyright Â© 2001-2004 by the Institute of Electrical and
+    Electronics Engineers, Inc and The Open Group. In the event of any
+    discrepancy between this version and the original IEEE and The Open Group
+    Standard, the original IEEE and The Open Group Standard is the referee
+    document. The original Standard can be obtained online at
+    http://www.opengroup.org/unix/online.html.  This notice shall appear on any
+    product containing this material.
 
 Configuration and Initialization
 ################################
@@ -248,30 +151,32 @@ Configuration and Initialization
 Introduction
 ============
 
-This chapter provides information on how the application
-configures and initializes the RTEMS shell.
+This chapter provides information on how the application configures and
+initializes the RTEMS shell.
 
 Configuration
 =============
 
-The command set available to the application is user configurable.
-It is configured using a mechanism similar to the ``confdefs.h``
-mechanism used to specify application configuration.
+The command set available to the application is user configurable.  It is
+configured using a mechanism similar to the ``confdefs.h`` mechanism used to
+specify application configuration.
 
-In the simplest case, if the user wishes to configure a command
-set with all commands available that are neither filesystem
-management (e.g. mounting, formating, etc.) or network related,
-then the following is all that is required:
-.. code:: c
+In the simplest case, if the user wishes to configure a command set with all
+commands available that are neither filesystem management (e.g. mounting,
+formating, etc.) or network related, then the following is all that is
+required:
+
+.. code-block:: c
 
     #define CONFIGURE_SHELL_COMMANDS_INIT
     #define CONFIGURE_SHELL_COMMANDS_ALL
     #include <rtems/shellconfig.h>
 
-In a slightly more complex example, if the user wishes to include
-all networking commands as well as support for mounting MS-DOS and
-NFS filesystems, then the following is all that is required:
-.. code:: c
+In a slightly more complex example, if the user wishes to include all
+networking commands as well as support for mounting MS-DOS and NFS filesystems,
+then the following is all that is required:
+
+.. code-block:: c
 
     #define CONFIGURE_SHELL_COMMANDS_INIT
     #define CONFIGURE_SHELL_COMMANDS_ALL
@@ -282,17 +187,16 @@ NFS filesystems, then the following is all that is required:
 Customizing the Command Set
 ---------------------------
 
-The user can configure specific command sets by either building
-up the set from individual commands or starting with a complete
-set and disabling individual commands.  Each command has two
-configuration macros associated with it.
+The user can configure specific command sets by either building up the set from
+individual commands or starting with a complete set and disabling individual
+commands.  Each command has two configuration macros associated with it.
 
-*``CONFIGURE_SHELL_COMMAND_XXX``*
+*CONFIGURE_SHELL_COMMAND_XXX*
     Each command has a constant of this form which is defined when
     building a command set by individually enabling specific
     commands.
 
-*``CONFIGURE_SHELL_NO_COMMAND_XXX``*
+*CONFIGURE_SHELL_NO_COMMAND_XXX*
     In contrast, each command has a similar command which is
     defined when the application is configuring a command set
     by disabling specific commands in the set.
@@ -300,51 +204,49 @@ configuration macros associated with it.
 Adding Custom Commands
 ----------------------
 
-One of the design goals of the RTEMS Shell was to make it
-easy for a user to add custom commands specific to their
-application.  We believe this design goal was accomplished.
-In order to add a custom command, the user is required to
-do the following:
+One of the design goals of the RTEMS Shell was to make it easy for a user to
+add custom commands specific to their application.  We believe this design goal
+was accomplished.  In order to add a custom command, the user is required to do
+the following:
 
-- Provide a *main-style* function which implements
-  the command.  If that command function uses a ``getopt``
-  related function to parse arguments, it *MUST* use the
-  reentrant form.
+- Provide a *main-style* function which implements the command.  If that
+  command function uses a ``getopt`` related function to parse arguments, it
+  *MUST* use the reentrant form.
 
-- Provide a command definition structure of type``rtems_shell_cmd_t``.
+- Provide a command definition structure of type ``rtems_shell_cmd_t``.
 
-- Configure that command using the``CONFIGURE_SHELL_USER_COMMANDS`` macro.
+- Configure that command using the ``CONFIGURE_SHELL_USER_COMMANDS`` macro.
 
-Custom aliases are configured similarly but the user
-only provides an alias definition structure of type``rtems_shell_alias_t`` and configures the alias
+Custom aliases are configured similarly but the user only provides an alias
+definition structure of type ``rtems_shell_alias_t`` and configures the alias
 via the ``CONFIGURE_SHELL_USER_ALIASES`` macro.
 
-In the following example, we have implemented a custom
-command named ``usercmd`` which simply prints the
-arguments it was passed. We have also provided an
-alias for ``usercmd`` named ``userecho``.
-.. code:: c
+In the following example, we have implemented a custom command named
+``usercmd`` which simply prints the arguments it was passed. We have also
+provided an alias for ``usercmd`` named ``userecho``.
+
+.. code-block:: c
 
     #include <rtems/shell.h>
-    int main_usercmd(int argc, char \**argv)
+    int main_usercmd(int argc, char **argv)
     {
-    int i;
-    printf( "UserCommand: argc=%d\\n", argc );
-    for (i=0 ; i<argc ; i++ )
-    printf( "argv[%d]= %s\\n", i, argv[i] );
-    return 0;
+        int i;
+        printf( "UserCommand: argc=%d\n", argc );
+        for (i=0 ; i<argc ; i++ )
+            printf( "argv[%d]= %s\n", i, argv[i] );
+        return 0;
     }
     rtems_shell_cmd_t Shell_USERCMD_Command = {
-    "usercmd",                  /* name \*/
-    "usercmd n1 \[n2 \[n3...]]",  /* usage \*/
-    "user",                     /* topic \*/
-    main_usercmd,               /* command \*/
-    NULL,                       /* alias \*/
-    NULL                        /* next \*/
+        "usercmd",                   /* name */
+        "usercmd n1 \[n2 \[n3...]]", /* usage */
+        "user",                      /* topic */
+        main_usercmd,                /* command */
+        NULL,                        /* alias */
+        NULL                         /* next */
     };
     rtems_shell_alias_t Shell_USERECHO_Alias = {
-    "usercmd",                  /* command \*/
-    "userecho"                  /* alias \*/
+        "usercmd",                   /* command */
+        "userecho"                   /* alias */
     };
     #define CONFIGURE_SHELL_USER_COMMANDS &Shell_USERCMD_Command
     #define CONFIGURE_SHELL_USER_ALIASES &Shell_USERECHO_Alias
@@ -353,68 +255,65 @@ alias for ``usercmd`` named ``userecho``.
     #define CONFIGURE_SHELL_MOUNT_MSDOS
     #include <rtems/shellconfig.h>
 
-Notice in the above example, that the user wrote the*main* for their command (e.g. ``main_usercmd``)
-which looks much like any other ``main()``.  They
-then defined a ``rtems_shell_cmd_t`` structure
-named ``Shell_USERCMD_Command`` which describes that
-command.  This command definition structure is registered
-into the static command set by defining``CONFIGURE_SHELL_USER_COMMANDS`` to``&Shell_USERCMD_Command``.
+Notice in the above example, that the user wrote the*main* for their command
+(e.g. ``main_usercmd``) which looks much like any other ``main()``.  They then
+defined a ``rtems_shell_cmd_t`` structure named ``Shell_USERCMD_Command`` which
+describes that command.  This command definition structure is registered into
+the static command set by defining ``CONFIGURE_SHELL_USER_COMMANDS``
+to ``&Shell_USERCMD_Command``.
 
-Similarly, to add the ``userecho`` alias, the user
-provides the alias definition structure named``Shell_USERECHO_Alias`` and defines``CONFIGURE_SHELL_USER_ALIASES`` to configure
-the alias.
+Similarly, to add the ``userecho`` alias, the user provides the alias
+definition structure named ``Shell_USERECHO_Alias`` and defines
+``CONFIGURE_SHELL_USER_ALIASES`` to configure the alias.
 
-The user can configure any number of commands
-and aliases in this manner.
+The user can configure any number of commands and aliases in this manner.
 
 Initialization
 ==============
 
-The shell may be easily attached to a serial port or
-to the ``telnetd`` server.  This section describes
-how that is accomplished.
+The shell may be easily attached to a serial port or to the ``telnetd`` server.
+This section describes how that is accomplished.
 
 Attached to a Serial Port
 -------------------------
 
-Starting the shell attached to the console or a serial
-port is very simple. The user invokes ``rtems_shell_init``
-with parameters to indicate the characteristics of the task
-that will be executing the shell including name, stack size,
-and priority.  The user also specifies the device that the
-shell is to be attached to.
+Starting the shell attached to the console or a serial port is very simple. The
+user invokes ``rtems_shell_init`` with parameters to indicate the
+characteristics of the task that will be executing the shell including name,
+stack size, and priority.  The user also specifies the device that the shell is
+to be attached to.
 
-This example is taken from the ``fileio`` sample test.
-This shell portion of this test can be run on any target which
-provides a console with input and output capabilities.  It does
-not include any commands which cannot be supported on all BSPs.
-The source code for this test is in ``testsuites/samples/fileio``
-with the shell configuration in the ``init.c`` file.
-.. code:: c
+This example is taken from the ``fileio`` sample test.  This shell portion of
+this test can be run on any target which provides a console with input and
+output capabilities.  It does not include any commands which cannot be
+supported on all BSPs.  The source code for this test is in
+``testsuites/samples/fileio`` with the shell configuration in the ``init.c``
+file.
+
+.. code-block:: c
 
     #include <rtems/shell.h>
     void start_shell(void)
     {
-    printf(" =========================\\n");
-    printf(" starting shell\\n");
-    printf(" =========================\\n");
-    rtems_shell_init(
-    "SHLL",                       /* task name \*/
-    RTEMS_MINIMUM_STACK_SIZE * 4, /* task stack size \*/
-    100,                          /* task priority \*/
-    "/dev/console",               /* device name \*/
-    false,                        /* run forever \*/
-    true,                         /* wait for shell to terminate \*/
-    rtems_shell_login_check       /* login check function,
-    use NULL to disable a login check \*/
-    );
+        printf(" =========================\n");
+        printf(" starting shell\n");
+        printf(" =========================\n");
+        rtems_shell_init(
+            "SHLL",                       /* task name */
+            RTEMS_MINIMUM_STACK_SIZE * 4, /* task stack size */
+            100,                          /* task priority */
+            "/dev/console",               /* device name */
+            false,                        /* run forever */
+            true,                         /* wait for shell to terminate */
+            rtems_shell_login_check       /* login check function,
+            use NULL to disable a login check */
+        );
     }
 
-In the above example, the call to ``rtems_shell_init``
-spawns a task to run the RTEMS Shell attached to ``/dev/console``
-and executing at priority 100.  The caller suspends itself and
-lets the shell take over the console device.  When the shell
-is exited by the user, then control returns to the caller.
+In the above example, the call to ``rtems_shell_init`` spawns a task to run the
+RTEMS Shell attached to ``/dev/console`` and executing at priority 100.  The
+caller suspends itself and lets the shell take over the console device.  When
+the shell is exited by the user, then control returns to the caller.
 
 Attached to a Socket
 --------------------
@@ -428,13 +327,15 @@ Login Checks
 ------------
 
 Login checks are optional for the RTEMS shell and can be configured via a login
-check handler passed to ``rtems_shell_init()``.  One login check handler is``rtems_shell_login_check()``.
+check handler passed to ``rtems_shell_init()``.  One login check handler
+is ``rtems_shell_login_check()``.
 
 Configuration Files
 -------------------
 
-The following files are used by the login check handler``rtems_shell_login_check()`` to validate a passphrase for a user and to set
-up the user environment for the shell command execution.
+The following files are used by the login check handler
+``rtems_shell_login_check()`` to validate a passphrase for a user and to set up
+the user environment for the shell command execution.
 
 :file:`/etc/passwd`
     The format for each line is
@@ -443,13 +344,14 @@ up the user environment for the shell command execution.
 
         user_name:password:UID:GID:GECOS:directory:shell
 
-    with colon separated
-    fields.  For more information refer to the Linux PASSWD(5) man page.  Use a``password`` of ``*`` to disable the login of the user.  An empty
-    password allows login without a password for this user.  In contrast to
-    standard UNIX systems, this file is only readable and writeable for the user
-    with an UID of zero by default.  The ``directory`` is used to perform a
-    filesystem change root operation in ``rtems_shell_login_check()`` in
-    contrast to a normal usage as the HOME directory of the user.  The*default* content is
+    with colon separated fields.  For more information refer to the Linux
+    PASSWD(5) man page.  Use a ``password`` of ``*`` to disable the login of the
+    user.  An empty password allows login without a password for this user.  In
+    contrast to standard UNIX systems, this file is only readable and writeable
+    for the user with an UID of zero by default.  The ``directory`` is used to
+    perform a filesystem change root operation in ``rtems_shell_login_check()``
+    in contrast to a normal usage as the HOME directory of the user.
+    The *default* content is:
 
     .. code:: c
 
@@ -458,16 +360,16 @@ up the user environment for the shell command execution.
     so there is *no password required* for the ``root`` user.
 
 :file:`/etc/group`
-    The format for each line is
+    The format for each line is:
 
     .. code:: c
 
         group_name:password:GID:user_list
 
     with colon separated fields.  The ``user_list`` is comma separated.  For
-    more information refer to the Linux GROUP(5) man page.  In contrast to standard
-    UNIX systems, this file is only readable and writeable for the user with an UID
-    of zero by default.  The default content is
+    more information refer to the Linux GROUP(5) man page.  In contrast to
+    standard UNIX systems, this file is only readable and writeable for the
+    user with an UID of zero by default.  The default content is
 
     .. code:: c
 
@@ -476,7 +378,7 @@ up the user environment for the shell command execution.
 Command Visibility and Execution Permission
 -------------------------------------------
 
-Each command has
+Each command has:
 
 - an owner,
 
@@ -491,7 +393,7 @@ The read and write permission flags are stored in the command mode.  The read
 permission flags determine the visibility of the command for the current user.
 The execution permission flags determine the ability to execute a command for
 the current user.  These command properties can be displayed and changed with
-the
+the:
 
 - ``cmdls``,
 
@@ -506,8 +408,9 @@ filesystem access procedure.
 Add CRYPT(3) Formats
 --------------------
 
-By default the ``crypt_r()`` function used by``rtems_shell_login_check()`` supports only plain text passphrases.  Use``crypt_add_format()`` to add more formats.  The following formats are
-available out of the box
+By default the ``crypt_r()`` function used by ``rtems_shell_login_check()``
+supports only plain text passphrases.  Use ``crypt_add_format()`` to add more
+formats.  The following formats are available out of the box:
 
 - ``crypt_md5_format``,
 
@@ -515,22 +418,24 @@ available out of the box
 
 - ``crypt_sha512_format``.
 
-An example follows... index:: crypt_add_format
+An example follows:
+
+.. index:: crypt_add_format
 
 .. code:: c
 
     #include <crypt.h>
     void add_formats( void )
     {
-    crypt_add_format( &crypt_md5_format );
-    crypt_add_format( &crypt_sha512_format );
+        crypt_add_format( &crypt_md5_format );
+        crypt_add_format( &crypt_sha512_format );
     }
 
 Functions
 =========
 
-This section describes the Shell related C functions which are
-publicly available related to initialization and configuration.
+This section describes the Shell related C functions which are publicly
+available related to initialization and configuration.
 
 rtems_shell_init - Initialize the shell
 ---------------------------------------
@@ -540,16 +445,16 @@ rtems_shell_init - Initialize the shell
 
 .. index:: rtems_shell_init
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_shell_init(
-    const char          \*task_name,
-    size_t               task_stacksize,
-    rtems_task_priority  task_priority,
-    const char          \*devname,
-    bool                 forever,
-    bool                 wait,
-    rtems_login_check    login_check
+        const char          *task_name,
+        size_t               task_stacksize,
+        rtems_task_priority  task_priority,
+        const char          *devname,
+        bool                 forever,
+        bool                 wait,
+        rtems_login_check    login_check
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -560,18 +465,18 @@ others - to indicate a failure condition
 
 **DESCRIPTION:**
 
-This service creates a task with the specified characteristics to
-run the RTEMS Shell attached to the specified ``devname``.
+This service creates a task with the specified characteristics to run the RTEMS
+Shell attached to the specified ``devname``.
 
-**NOTES:**
+.. note::
 
-This method invokes the ``rtems_task_create`` and ``rtems_task_start``
-directives and as such may return any status code that those directives
-may return.
+    This method invokes the ``rtems_task_create`` and ``rtems_task_start``
+    directives and as such may return any status code that those directives may
+    return.
 
-There is one POSIX key necessary for all shell instances together and one POSIX
-key value pair per instance. You should make sure that your RTEMS configuration
-accounts for these resources.
+    There is one POSIX key necessary for all shell instances together and one
+    POSIX key value pair per instance. You should make sure that your RTEMS
+    configuration accounts for these resources.
 
 rtems_shell_login_check - Default login check handler
 -----------------------------------------------------
@@ -584,8 +489,8 @@ rtems_shell_login_check - Default login check handler
 .. code:: c
 
     bool rtems_shell_login_check(
-    const char \*user,
-    const char \*passphrase
+      const char \*user,
+      const char \*passphrase
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -595,36 +500,31 @@ rtems_shell_login_check - Default login check handler
 
 **DESCRIPTION:**
 
-This function checks if the specified passphrase is valid for the specified user.
+This function checks if the specified passphrase is valid for the specified
+user.
 
-**NOTES:**
+.. note::
 
-As a side-effect if the specified passphrase is valid for the specified user,
-this function
+    As a side-effect if the specified passphrase is valid for the specified
+    user, this function:
 
-- performs a filesystem change root operation to the directory of the
-  specified user if the directory path is non-empty,
+    - performs a filesystem change root operation to the directory of the
+      specified user if the directory path is non-empty,
 
-- changes the owner of the current shell device to the UID of the specified
-  user,
+    - changes the owner of the current shell device to the UID of the specified
+      user,
 
-- sets the real and effective UID of the current user environment to the
-  UID of the specified user,
+    - sets the real and effective UID of the current user environment to the
+      UID of the specified user,
 
-- sets the real and effective GID of the current user environment to the
-  GID of the specified user, and
+    - sets the real and effective GID of the current user environment to the
+      GID of the specified user, and
 
-- sets the supplementary group IDs of the current user environment to the
-  supplementary group IDs of the specified user.
+    - sets the supplementary group IDs of the current user environment to the
+      supplementary group IDs of the specified user.
 
-In case the filesystem change root operation fails, then the environment setup
-is aborted and ``false`` is returned.
-
-.. COMMENT: COPYRIGHT (c) 1988-2010.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
+    In case the filesystem change root operation fails, then the environment
+    setup is aborted and ``false`` is returned.
 
 General Commands
 ################
