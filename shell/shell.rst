@@ -1696,8 +1696,6 @@ following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_TIME_Command;
 
-.. _General-Commands-logoff-_002d-logoff-from-the-system:
-
 logoff - logoff from the system
 -------------------------------
 .. index:: logoff
@@ -1806,7 +1804,7 @@ This command does not return.
 
 **NOTES:**
 
-In contrast to :ref:`logoff <General-Commands-logoff-_002d-logoff-from-the-system>`,
+In contrast to `logoff - logoff from the system`_,
 this command is built into the shell interpreter loop.
 
 **EXAMPLES:**
@@ -2040,8 +2038,7 @@ cd - alias for chdir
 **DESCRIPTION:**
 
 This command is an alias or alternate name for the ``chdir``.
-See :ref:`cd <File-and-Directory-Commands-chdir-_002d-change-the-current-directory>`
-for more information.
+See `ls - list files in the directory`_ for more information.
 
 **EXIT STATUS:**
 
@@ -2101,7 +2098,6 @@ following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_CD_Command;
 
-.. _File-and-Directory-Commands-chdir-_002d-change-the-current-directory:
 
 chdir - change the current directory
 ------------------------------------
@@ -2952,7 +2948,7 @@ dir - alias for ls
 **DESCRIPTION:**
 
 This command is an alias or alternate name for the ``ls``.
-See :ref:`ls <File-and-Directory-Commands-ls-_002d-list-files-in-the-directory>`
+See `ls - list files in the directory`_
 for more information.
 
 **EXIT STATUS:**
@@ -3404,8 +3400,6 @@ prototype:
 
 The implementation and portions of the documentation for this command
 are from NetBSD 4.0.
-
-.. _File-and-Directory-Commands-ls-_002d-list-files-in-the-directory:
 
 ls - list files in the directory
 --------------------------------
