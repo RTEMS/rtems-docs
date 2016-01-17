@@ -11578,7 +11578,9 @@ when porting existing code from UNIX to RTEMS.
   - getc/putc unlocked family is not implemented
   - Shared Memory is not implemented
   - Mapped Memory is not implemented
+
   - NOTES:
+
     - For Shared Memory and Mapped Memory services, it is unclear what
       level of support is appropriate and possible for RTEMS.
 
@@ -11589,9 +11591,11 @@ when porting existing code from UNIX to RTEMS.
   - There are no POSIX Performance Tests.
 
 - Documentation
+
   - Many of the service description pages are not complete in this
     manual.  These need to be completed and information added to the
     background and operations sections.
+
   - Example programs (not just tests) would be very nice.
 
 Command and Variable Index
