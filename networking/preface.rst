@@ -1,5 +1,6 @@
+=======
 Preface
-#######
+=======
 
 This document describes the RTEMS specific parts of the FreeBSD TCP/IP
 stack.  Much of this documentation was written by Eric Norum

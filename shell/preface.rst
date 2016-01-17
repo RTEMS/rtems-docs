@@ -1,5 +1,6 @@
+=======
 Preface
-#######
+=======
 
 Real-time embedded systems vary widely based upon their operational and
 maintenance requirements. Some of these systems provide ways for the user or
