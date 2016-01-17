@@ -290,17 +290,19 @@ of applications using that CPU family.  For example, the support routines
 may contain standard trap handlers for alignment or floating point exceptions
 or device drivers for peripheral controllers found on the CPU itself.
 This class of code may be found in the following directory:
+
 .. code:: c
 
     c/src/lib/libcpu/*CPU*
 
 CPU model dependent support code is found in the following directory:
+
 .. code:: c
 
     c/src/lib/libcpu/*CPU*/*CPU_MODEL*
 
 *CPU_MODEL* may be a specific CPU model name or a name indicating a CPU
-core or a set of related CPU models.  The file ``configure.ac`` in each``c/src/lib/libcpu/*CPU*`` directory contains the logic which enables
+core or a set of related CPU models.  The file ``configure.ac`` in each ``c/src/lib/libcpu/*CPU*`` directory contains the logic which enables
 the appropriate subdirectories for the specific CPU model your BSP has.
 
 Board Support Package Structure
@@ -360,7 +362,7 @@ There may be other directories in the BSP tree and the name should
 be indicative of the functionality of the code within that directory.
 
 The build order of the BSP is determined by the Makefile structure.
-This structure is discussed in more detail in the :ref:`Makefiles <Makefiles>`
+This structure is discussed in more detail in the `Makefiles`_
 chapter.
 
 *NOTE:* This manual refers to the gen68340 BSP for numerous concrete
@@ -380,7 +382,6 @@ to refer to this directory.
 
 .. COMMENT: All rights reserved.
 
-.. _Makefiles:
 
 Makefiles
 #########
@@ -392,15 +393,19 @@ Nonetheless, it is important to remember that the general process consists
 of four phases as shown here:
 
 - .. code:: c
+
       bootstrap
 
 - .. code:: c
+
       configure
 
 - .. code:: c
+
       build
 
 - .. code:: c
+
       install
 
 During the bootstrap phase, you are using the ``configure.ac`` and``Makefile.am`` files as input to GNU autoconf and automake to
@@ -662,13 +667,13 @@ some object formats, there are many more sections but the basic
 layout is conceptually similar.
 .. code:: c
 
-    +-----------------+
-    |     .text       |  RAM or ROM
-    +-----------------+
-    |     .data       |  RAM
-    +-----------------+
-    |     .bss        |  RAM
-    +-----------------+
+    +-----------------+-------------+
+    |     .text       |  RAM or ROM |
+    +-----------------+-------------+
+    |     .data       |  RAM        |
+    +-----------------+-------------+
+    |     .bss        |  RAM        |
+    +-----------------+-------------+
 
 Example Linker Command Script
 =============================
@@ -871,8 +876,6 @@ $BSP340_ROOT/startup/linkcmds.
     } >ram
     }
 
-.. _Linker-Script-Initialized-Data:
-
 Initialized Data
 ================
 
@@ -888,24 +891,25 @@ environment, it is cumbersome.
 
 The solution is to place a copy of the initialized data in a separate
 area of memory and copy it into the proper location each time the
-program is started.  It is common practice to place a copy of the initialized``.data`` section at the end of the code (``.text``) section
+program is started.  It is common practice to place a copy of the initialized ``.data`` section at the end of the code (``.text``) section
 in ROM when building a PROM image. The GNU tool ``objcopy``
 can be used for this purpose.
 
 The following figure illustrates the steps a linked program goes through
 to become a downloadable image.
-.. code:: c
 
-    +--------------+     +--------------------+
-    | .data    RAM |     | .data          RAM |
-    +--------------+     +--------------------+
-    | .bss     RAM |     | .bss           RAM |
-    +--------------+     +--------------------+         +----------------+
-    | .text    ROM |     | .text          ROM |         |     .text      |
-    +--------------+     +--------------------+         +----------------+
-    | copy of .data  ROM |         | copy of .data  |
-    +--------------------+         +----------------+
-    Step 1                Step 2                       Step 3
+
++--------------+-----+--------------------+--------------------------+
+| .data    RAM |     | .data          RAM |                          |
++--------------+     +--------------------+                          |
+| .bss     RAM |     | .bss           RAM |                          | 
++--------------+     +--------------------+-----+--------------------+
+| .text    ROM |     | .text          ROM |     |     .text          |
++--------------+-----+---------+----------+-----+--------------------+
+| copy of .data  ROM |         | copy of .data  |                    |
++--------------------+---------+----------------+--------------------+
+|  Step 1            |Step 2                       Step 3            |
++--------------------+--------------------------+--------------------+
 
 In Step 1, the program is linked together using the BSP linker script.
 
@@ -1135,29 +1139,35 @@ Configuration Macros
 Each BSP can define macros in bsp.h which alter some of the the default configuration parameters in ``rtems/confdefs.h``.  This section describes those macros:
 
 - .. index:: CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
+
   ``CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK`` must be defined if the
   BSP has proper support for ``sbrk``.  This is discussed in more detail
   in the previous section.
 
 - .. index:: BSP_IDLE_TASK_BODY
+
   ``BSP_IDLE_TASK_BODY`` may be defined to the entry point of a
   BSP specific IDLE thread implementation.  This may be overridden if the
   application provides its own IDLE task implementation.
 
 - .. index:: BSP_IDLE_TASK_STACK_SIZE
+
   ``BSP_IDLE_TASK_STACK_SIZE`` may be defined to the desired
   default stack size for the IDLE task as recommended when using this BSP.
 
 - .. index:: BSP_INTERRUPT_STACK_SIZE
+
   ``BSP_INTERRUPT_STACK_SIZE`` may be defined to the desired default interrupt stack size as recommended when using this BSP.  This is sometimes required when the BSP developer has knowledge of stack intensive interrupt handlers.
 
 - .. index:: BSP_ZERO_WORKSPACE_AUTOMATICALLY
+
   ``BSP_ZERO_WORKSPACE_AUTOMATICALLY`` is defined when the BSP
   requires that RTEMS zero out the RTEMS C Program Heap at initialization.
   If the memory is already zeroed out by a test sequence or boot ROM,
   then the boot time can be reduced by not zeroing memory twice.
 
 - .. index:: BSP_DEFAULT_UNIFIED_WORK_AREAS
+
   ``BSP_DEFAULT_UNIFIED_WORK_AREAS`` is defined when the BSP
   recommends that the unified work areas configuration should always
   be used.  This is desirable when the BSP is known to always have very
@@ -1178,6 +1188,7 @@ etc..
 The ``set_vector`` routine is a central place to perform interrupt
 controller manipulation and encapsulate that information.  It is usually
 implemented as follows:
+
 .. code:: c
 
     rtems_isr_entry set_vector(                     /* returns old vector \*/
@@ -1230,16 +1241,19 @@ required, that should be present in irq/irq.c . The bsp-specific functions requi
 to be writen by the BSP developer are :
 
 - .. index:: bsp_interrupt_facility_initialize()
+
   ``bsp_interrupt_facility_initialize()`` contains bsp specific interrupt
   initialization code(Clear Pending interrupts by modifying registers, etc.).
   This method is called from bsp_interrupt_initialize() internally while setting up
   the table.
 
 - .. index:: bsp_interrupt_handler_default()
+
   ``bsp_interrupt_handler_default()`` acts as a fallback handler when
   no ISR address has been provided corresponding to a vector in the table.
 
 - .. index:: bsp_interrupt_dispatch()
+
   ``bsp_interrupt_dispatch()`` service the ISR by handling
   any bsp specific code & calling the generic method bsp_interrupt_handler_dispatch()
   which in turn services the interrupt by running the ISR after looking it up in
@@ -1247,14 +1261,17 @@ to be writen by the BSP developer are :
   branches to this function at the time of occurrence of an interrupt.
 
 - .. index:: bsp_interrupt_vector_enable()
+
   ``bsp_interrupt_vector_enable()`` enables interrupts and is called in
   irq-generic.c while setting up the table.
 
 - .. index:: bsp_interrupt_vector_disable()
+
   ``bsp_interrupt_vector_disable()`` disables interrupts and is called in
   irq-generic.c while setting up the table & during other important parts.
 
 An interrupt handler is installed or removed with the help of the following functions :
+
 .. code:: c
 
     rtems_status_code rtems_interrupt_handler_install(   /* returns status code \*/
@@ -1657,6 +1674,7 @@ Chip Select Initialization
 When the microprocessor accesses a memory area, address decoding is
 handled by an address decoder, so that the microprocessor knows which
 memory chip(s) to access.   The following figure illustrates this:
+
 .. code:: c
 
     +-------------------+
@@ -1694,7 +1712,7 @@ Vector Table is copied into RAM, then the data section recopy is initiated
 This code performs the following actions:
 
 - copies the .data section from ROM to its location reserved in RAM
-  (see :ref:`Linker Script Initialized Data <Linker-Script-Initialized-Data>` for more details about this copy),
+  (see `Initialized Data`_ for more details about this copy),
 
 - clear ``.bss`` section (all the non-initialized
   data will take value 0).
@@ -1875,7 +1893,9 @@ three parts.
 
 # The basic console driver functions using the Termios support.  Add this
   the BSPs Makefile.am:
+
   .. code:: c
+
       [...]
       libbsp_a_SOURCES += ../../shared/console-termios.c
       \[...]
@@ -1896,8 +1916,8 @@ case one is available or minus one otherwise.
 
 If you want to use polled IO it should look like the following.  Termios must
 be told the addresses of the handler that are to be used for simple character
-IO, i.e. pointers to the ``my_driver_poll_read()`` and``my_driver_poll_write()`` functions described later in :ref:`Console Driver
-Termios and Polled IO <Console-Driver-Termios-and-Polled-IO>`.
+IO, i.e. pointers to the ``my_driver_poll_read()`` and``my_driver_poll_write()`` functions described later in `Termios and Polled IO`_.
+
 .. code:: c
 
     const rtems_termios_handler my_driver_handler_polled = {
@@ -1915,8 +1935,9 @@ For an interrupt driven implementation you need the following.  The driver
 functioning is quite different in this mode.  There is no device driver read
 handler to be passed to Termios.  Indeed a ``console_read()`` call returns the
 contents of Termios input buffer.  This buffer is filled in the driver
-interrupt subroutine, see also :ref:`Console Driver Termios and Interrupt Driven
-IO <Console-Driver-Termios-and-Interrupt-Driven-IO>`.  The driver is responsible for providing a pointer to the``my_driver_interrupt_write()`` function.
+interrupt subroutine, see also `Termios and Interrupt Driven IO`_.  The driver 
+is responsible for providing a pointer to the``my_driver_interrupt_write()`` function.
+
 .. code:: c
 
     const rtems_termios_handler my_driver_handler_interrupt = {
@@ -1955,7 +1976,6 @@ initialization example the device name is also present.  Her is an example heade
     extern const rtems_termios_handler my_driver_handler_interrupt;
     #endif /* MY_DRIVER_H \*/
 
-.. _Console-Driver-Termios-and-Polled-IO:
 
 Termios and Polled IO
 ---------------------
@@ -1998,8 +2018,6 @@ available, then the routine should return minus one.
     return -1;
     }
     }
-
-.. _Console-Driver-Termios-and-Interrupt-Driven-IO:
 
 Termios and Interrupt Driven IO
 -------------------------------
@@ -3233,11 +3251,15 @@ to configure each area of non-volatile memory.
     is a pointer to a memory type specific attribute block.  Some of
     the fields commonly contained in this memory type specific attribute
     structure area:
+
     *use_protection_algorithm*
+
         is set to TRUE to indicate that the protection (i.e. locking) algorithm
         should be used for this area of non-volatile memory.  A particular
         type of non-volatile memory may not have a protection algorithm.
+
     *access*
+
         is an enumerated type to indicate the organization of the memory
         devices in this memory area.  The following is a list of the
         access types supported by the current driver implementation:
@@ -3251,7 +3273,9 @@ to configure each area of non-volatile memory.
         - single unsigned8 at offset 1 in an unsigned32
         - single unsigned8 at offset 2 in an unsigned32
         - single unsigned8 at offset 3 in an unsigned32
+
     *depth*
+
         is the depth of the progamming FIFO on this particular chip.  Some
         chips, particularly EEPROMs, have the same programming algorithm but
         vary in the depth of the amount of data that can be programmed in a single
@@ -3264,9 +3288,13 @@ to configure each area of non-volatile memory.
     is the address of the table that contains an entry to describe each
     partition in this area.  Fields within each element of this
     table are defined as follows:
+
     *offset*
+
         is the offset of this partition from the base address of this area.
+
     *length*
+
         is the length of this partition.
 
 By dividing an area of memory into multiple partitions, it is possible
@@ -3482,12 +3510,14 @@ adding ``-D__INSIDE_RTEMS_BSD_TCPIP_STACK__`` to the ``command line``.
 If the driver is inside the RTEMS source tree or is built using the
 RTEMS application Makefiles, then adding the following line accomplishes
 this:
+
 .. code:: c
 
     DEFINES += -D__INSIDE_RTEMS_BSD_TCPIP_STACK__
 
 This is equivalent to the following list of definitions.  Early versions
 of the RTEMS BSD network stack required that all of these be defined.
+
 .. code:: c
 
     -D_COMPILING_BSD_KERNEL_ -DKERNEL -DINET -DNFS \\
@@ -3662,19 +3692,29 @@ commands which must be handled are:
 ``SIOCGIFADDR``
 
 ``SIOCSIFADDR``
+
     If the device is an Ethernet interface these
     commands should be passed on to ``ether_ioctl``.
 
 ``SIOCSIFFLAGS``
+
     This command should be used to start or stop the device,
     depending on the state of the interface ``IFF_UP`` and``IFF_RUNNING`` bits in ``if_flags``:
+
     ``IFF_RUNNING``
+
         Stop the device.
+
     ``IFF_UP``
+
         Start the device.
+
     ``IFF_UP|IFF_RUNNING``
+
         Stop then start the device.
+
     ``0``
+
         Do nothing.
 
 Write the Driver Statistic-Printing Function
@@ -3756,14 +3796,21 @@ where the fields are defined as follows:
 *cause_intr*
 
 *Intr*
+
     is the information required to cause an interrupt on a node.  This
     structure contains the following fields:
+
     *address*
+
         is the address to write at to cause an interrupt on that node.
         For a polled node, this should be NULL.
+
     *value*
+
         is the value to write to cause an interrupt.
+
     *length*
+
         is the length of the entity to write on the node to cause an interrupt.
         This can be 0 to indicate polled operation, 1 to write a byte, 2 to
         write a sixteen-bit entity, and 4 to write a thirty-two bit entity.
@@ -3965,9 +4012,10 @@ process and returns RTEMS_SUCCESSFUL when the device driver is successfully
 initialized. During the initialization, a name is assigned to the frame
 buffer device.  If the graphics hardware supports console text output,
 as is the case with the pc386 VGA hardware, initialization into graphics
-mode may be deferred until the device is ``open()``ed.
+mode may be deferred until the device is ``open()`` ed.
 
 The ``frame_buffer_initialize()`` function may look like this:
+
 .. code:: c
 
     rtems_device_driver frame_buffer_initialize(
