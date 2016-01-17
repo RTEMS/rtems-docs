@@ -777,8 +777,6 @@ Get System Name
 Time
 ====
 
-.. _Get-System-Time:
-
 Get System Time
 ---------------
 
@@ -799,8 +797,6 @@ tms_cstime fields of the ``struct tms`` returned.
 
 Environment Variables
 =====================
-
-.. _Environment-Access:
 
 Environment Access
 ------------------
@@ -938,8 +934,6 @@ Get Working Directory Pathname
 General File Creation
 =====================
 
-.. _Open-a-File:
-
 Open a File
 -----------
 
@@ -1018,8 +1012,6 @@ Remove a Directory
 .. code:: c
 
     rmdir(), Function, Implemented
-
-.. _Rename-a-File:
 
 Rename a File
 -------------
@@ -1235,7 +1227,7 @@ File Control
     O_ACCMODE, Constant, Implemented
 
 NOTE: A number of constants are used by both ``open`` and ``fcntl``.``O_CREAT``, ``O_EXCL``, ``O_NOCTTY``, ``O_TRUNC``,``O_APPEND``, ``O_DSYNC``, ``O_NONBLOCK``, ``O_RSYNC``,``O_SYNC``, ``O_RDONLY``, ``O_RDWR``, and ``O_WRONLY``
-are also included in another section.  See :ref:`Open a File <Open-a-File>`.
+are also included in another section.  See `Open a File`_.
 
 Reposition Read/Write File Offset
 ---------------------------------
@@ -1687,7 +1679,7 @@ ANSI C Section 4.9 — Input/Output
     tmpnam(), Function, Implemented
     ungetc(), Function, Implemented
 
-NOTE: ``rename`` is also included in another section.  :ref:`Rename a File <Rename-a-File>`.
+NOTE: ``rename`` is also included in another section.  `Rename a File`_.
 
 ANSI C Section 4.10 — General Utilities
 .. code:: c
@@ -1707,7 +1699,7 @@ ANSI C Section 4.10 — General Utilities
     bsearch(), Function, Implemented
     qsort(), Function, Implemented
 
-NOTE: ``getenv`` is also included in another section.:ref:`Environment Access <Environment-Access>`.
+NOTE: ``getenv`` is also included in another section. `Environment Access`_.
 
 ANSI C Section 4.11 — String Handling
 .. code:: c
@@ -1739,7 +1731,7 @@ ANSI C Section 4.12 — Date and Time Handling
 
 NOTE: RTEMS has no notion of time zones.
 
-NOTE: ``time`` is also included in another section.:ref:`Get System Time <Get-System-Time>`.
+NOTE: ``time`` is also included in another section. `Get System Time`_.
 
 From Surrounding Text
 .. code:: c
