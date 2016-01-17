@@ -1326,15 +1326,15 @@ Interrupt Stack Frame
 The structure of the Interrupt Stack Frame for the
 i386 which is placed on the interrupt stack by the processor in
 response to an interrupt is as follows:
-.. code:: c
 
-    +----------------------+
-    | Old EFLAGS Register  | ESP+8
-    +----------+-----------+
-    |   UNUSED |  Old CS   | ESP+4
-    +----------+-----------+
-    |       Old EIP        | ESP
-    +----------------------+
++----------------------+-------+
+| Old EFLAGS Register  | ESP+8 |
++----------+-----------+-------+
+|   UNUSED |  Old CS   | ESP+4 |
++----------+-----------+-------+
+|       Old EIP        | ESP   |
++----------------------+-------+
+
 
 Interrupt Levels
 ----------------
@@ -1933,17 +1933,17 @@ user application code MUST NOT modify this field.
 
 The following shows the Interrupt Stack Frame for
 MC68xxx CPU models with separate interrupt stacks:
-.. code:: c
 
-    +----------------------+
-    |    Status Register   | 0x0
-    +----------------------+
-    | Program Counter High | 0x2
-    +----------------------+
-    | Program Counter Low  | 0x4
-    +----------------------+
-    | Format/Vector Offset | 0x6
-    +----------------------+
++----------------------+-----+
+|    Status Register   | 0x0 |
++----------------------+-----+
+| Program Counter High | 0x2 |
++----------------------+-----+
+| Program Counter Low  | 0x4 |
++----------------------+-----+
+| Format/Vector Offset | 0x6 |
++----------------------+-----+
+
 
 CPU Models Without VBR and RAM at 0
 -----------------------------------
@@ -2421,7 +2421,7 @@ the following documents available from Motorola and IBM:
 Motorola maintains an on-line electronic library for the PowerPC
 at the following URL:
 
-- ```` *http://www.mot.com/powerpc/library/library.html*
+-  http://www.mot.com/powerpc/library/library.html
 
 This site has a a wealth of information and examples.  Many of the
 manuals are available from that site in electronic format.
@@ -2757,6 +2757,7 @@ the processor to generate alignment exceptions.
 
 The following table lists the alignment requirements for a variety
 of data accesses:
+
 .. code:: c
 
     +--------------+-----------------------+
@@ -3396,6 +3397,7 @@ the four sets listed above.  Finally, some registers have an
 architecturally defined role in the programming model which
 provides an alternate name.  The following table describes the
 mapping between the 32 registers and the register sets:
+
 .. code:: c
 
     +-----------------+----------------+------------------+
@@ -3413,6 +3415,7 @@ mapping between the 32 registers and the register sets:
 As mentioned above, some of the registers serve
 defined roles in the programming model.  The following table
 describes the role of each of these registers:
+
 .. code:: c
 
     +---------------+----------------+----------------------+
@@ -3683,6 +3686,7 @@ performed in big endian fashion by the SPARC.  Memory accesses
 which are not properly aligned generate a "memory address not
 aligned" trap (type number 7).  The following table lists the
 alignment requirements for a variety of data accesses:
+
 .. code:: c
 
     +--------------+-----------------------+
@@ -4220,6 +4224,7 @@ the four sets listed above.  Finally, some registers have an
 architecturally defined role in the programming model which
 provides an alternate name.  The following table describes the
 mapping between the 32 registers and the register sets:
+
 .. code:: c
 
     +-----------------+----------------+------------------+
@@ -4237,6 +4242,7 @@ mapping between the 32 registers and the register sets:
 As mentioned above, some of the registers serve
 defined roles in the programming model.  The following table
 describes the role of each of these registers:
+
 .. code:: c
 
     +---------------+----------------+----------------------+
@@ -4495,6 +4501,7 @@ in big endian fashion by the SPARC. Memory accesses which are not
 properly aligned generate a "memory address not aligned" trap
 (type number 0x34). The following table lists the alignment
 requirements for a variety of data accesses:
+
 .. code:: c
 
     +--------------+-----------------------+
@@ -4584,6 +4591,7 @@ performs the following actions:
 
 - For a register-window trap only, CWP is set to point to the register
   window that must be accessed by the trap-handler software, that is:
+
   - If TT[TL] = 0x24 (a clean window trap), then CWP <- CWP + 1.
   - If (0x80 <= TT[TL] <= 0xBF) (window spill trap), then CWP <- CWP +
     CANSAVE + 2.
@@ -4591,6 +4599,7 @@ performs the following actions:
   - For non-register-window traps, CWP is not changed.
 
 - Control is transferred into the trap table:
+
   - PC <- TBA<63:15> (TL>0) TT[TL] 0 0000
   - nPC <- TBA<63:15> (TL>0) TT[TL] 0 0100
   - where (TL>0) is 0 if TL = 0, and 1 if TL > 0.
