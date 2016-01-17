@@ -586,7 +586,7 @@ of the RTEMS executive is application dependent.
 
 RTEMS requires RAM to manage each instance of an RTEMS object
 that is created.  Thus the more RTEMS objects an application
-needs, the more memory that must be reserved.  See:ref:`Configuring a System <Configuring-a-System>` for more details.
+needs, the more memory that must be reserved.  See `Configuring a System`_ for more details.
 
 RTEMS utilizes memory for both code and data space.
 Although RTEMS’ data space must be in RAM, its code space can be
@@ -784,7 +784,7 @@ Chapter 29:
     when manipulating POSIX ``struct timespec`` instances.
 
 Chapter 30:
-    Constant Bandwidth Server Scheduler API::
+    Constant Bandwidth Server Scheduler API.
 
 Chapter 31:
     Directive Status Codes: provides a definition of each of the
@@ -1081,7 +1081,9 @@ task could request to delay until midnight on New Year’s Eve
 before lowering the ball at Times Square.
 The data type ``rtems.time_of_day`` is used to specify
 calendar time in RTEMS services.
-See :ref:`Time and Date Data Structures <Clock-Manager-Time-and-Date-Data-Structures>`... index:: rtems_time_of_day
+See `Time and Date Data Structures`_
+
+... index:: rtems_time_of_day
 
 Obviously, the directives which use intervals or wall
 time cannot operate without some external mechanism which
@@ -1144,85 +1146,103 @@ The following is a complete list of the RTEMS primitive
 data types in alphabetical order:
 
 - .. index:: rtems_address
+
   ``rtems.address`` is the data type used to manage
   addresses.  It is equivalent to
   the System.Address data type.
 
 - .. index:: rtems_asr
+
   ``rtems.asr`` is the return type for an
   RTEMS ASR.
 
 - .. index:: rtems_asr_entry
+
   ``rtems.asr_entry`` is the address of
   the entry point to an RTEMS ASR.
 
 - .. index:: rtems_attribute
+
   ``rtems.attribute`` is the data type used
   to manage the attributes for RTEMS objects.  It is primarily
   used as an argument to object create routines to specify
   characteristics of the new object.
 
 - .. index:: rtems_boolean
+
   ``rtems.boolean`` may only take on the
   values of ``TRUE`` and ``FALSE``.
   This type is deprecated. Use "bool" instead.
 
 - .. index:: rtems_context
+
   ``rtems.context`` is the CPU dependent
   data structure used to manage the integer and system
   register portion of each task’s context.
 
 - .. index:: rtems_context_fp
+
   ``rtems.context_fp`` is the CPU dependent
   data structure used to manage the floating point portion of
   each task’s context.
 
 - .. index:: rtems_device_driver
+
   ``rtems.device_driver`` is the
   return type for a RTEMS device driver routine.
 
 - .. index:: rtems_device_driver_entry
+
   ``rtems.device_driver_entry`` is the
   entry point to a RTEMS device driver routine.
 
 - .. index:: rtems_device_major_number
+
   ``rtems.device_major_number`` is the
   data type used to manage device major numbers.
 
 - .. index:: rtems_device_minor_number
+
   ``rtems.device_minor_number`` is the
   data type used to manage device minor numbers.
 
 - .. index:: rtems_double
+
   ``rtems.double`` is the RTEMS data
   type that corresponds to double precision floating point
   on the target hardware.
   This type is deprecated. Use "double" instead.
 
 - .. index:: rtems_event_set
+
   ``rtems.event_set`` is the data
   type used to manage and manipulate RTEMS event sets
   with the Event Manager.
 
 - .. index:: rtems_extension
+
   ``rtems.extension`` is the return type
   for RTEMS user extension routines.
 
 - .. index:: rtems_fatal_extension
+
   ``rtems.fatal_extension`` is the
   entry point for a fatal error user extension handler routine.
 
 - .. index:: rtems_id
+
   ``rtems.id`` is the data type used
   to manage and manipulate RTEMS object IDs.
 
 - .. index:: rtems_interrupt_frame
+
   ``rtems.interrupt_frame`` is the
   data structure that defines the format of the interrupt
   stack frame as it appears to a user ISR.  This data
   structure may not be defined on all ports.
 
 - .. index:: rtems_interrupt_level
+
   ``rtems.interrupt_level`` is the
   data structure used with the ``rtems.interrupt_disable``,``rtems.interrupt_enable``, and``rtems.interrupt_flash`` routines.  This
   data type is CPU dependent and usually corresponds to
@@ -1230,21 +1250,25 @@ data types in alphabetical order:
   the interrupt mask level.
 
 - .. index:: rtems_interval
+
   ``rtems.interval`` is the data
   type used to manage and manipulate time intervals.
   Intervals are non-negative integers used to measure
   the length of time in clock ticks.
 
 - .. index:: rtems_isr
+
   ``rtems.isr`` is the return type
   of a function implementing an RTEMS ISR.
 
 - .. index:: rtems_isr_entry
+
   ``rtems.isr_entry`` is the address of
   the entry point to an RTEMS ISR.  It is equivalent to the
   entry point of the function implementing the ISR.
 
 - .. index:: rtems_mp_packet_classes
+
   ``rtems.mp_packet_classes`` is the
   enumerated type which specifies the categories of
   multiprocessing messages.  For example, one of the
@@ -1252,39 +1276,48 @@ data types in alphabetical order:
   the Task Manager.
 
 - .. index:: rtems_mode
+
   ``rtems.mode`` is the data type
   used to manage and dynamically manipulate the execution
   mode of an RTEMS task.
 
 - .. index:: rtems_mpci_entry
+
   ``rtems.mpci_entry`` is the return type
   of an RTEMS MPCI routine.
 
 - .. index:: rtems_mpci_get_packet_entry
+
   ``rtems.mpci_get_packet_entry`` is the address of
   the entry point to the get packet routine for an MPCI implementation.
 
 - .. index:: rtems_mpci_initialization_entry
+
   ``rtems.mpci_initialization_entry`` is the address of
   the entry point to the initialization routine for an MPCI implementation.
 
 - .. index:: rtems_mpci_receive_packet_entry
+
   ``rtems.mpci_receive_packet_entry`` is the address of
   the entry point to the receive packet routine for an MPCI implementation.
 
 - .. index:: rtems_mpci_return_packet_entry
+
   ``rtems.mpci_return_packet_entry`` is the address of
   the entry point to the return packet routine for an MPCI implementation.
 
 - .. index:: rtems_mpci_send_packet_entry
+
   ``rtems.mpci_send_packet_entry`` is the address of
   the entry point to the send packet routine for an MPCI implementation.
 
 - .. index:: rtems_mpci_table
+
   ``rtems.mpci_table`` is the data structure
   containing the configuration information for an MPCI.
 
 - .. index:: rtems_name
+
   ``rtems.name`` is the data type used to
   contain the name of a Classic API object.  It is an unsigned
   thirty-two bit integer which can be treated as a numeric
@@ -1292,6 +1325,7 @@ data types in alphabetical order:
   contain four ASCII characters.
 
 - .. index:: rtems_option
+
   ``rtems.option`` is the data type
   used to specify which behavioral options the caller desires.
   It is commonly used with potentially blocking directives to specify
@@ -1299,53 +1333,63 @@ data types in alphabetical order:
   indicating that the resource was not available.
 
 - .. index:: rtems_packet_prefix
+
   ``rtems.packet_prefix`` is the data structure
   that defines the first bytes in every packet sent between nodes
   in an RTEMS multiprocessor system.  It contains routing information
   that is expected to be used by the MPCI layer.
 
 - .. index:: rtems_signal_set
+
   ``rtems.signal_set`` is the data
   type used to manage and manipulate RTEMS signal sets
   with the Signal Manager.
 
 - .. index:: int8_t
+
   ``int8_t`` is the C99 data type that corresponds to signed eight
   bit integers.  This data type is defined by RTEMS in a manner that
   ensures it is portable across different target processors.
 
 - .. index:: int16_t
+
   ``int16_t`` is the C99 data type that corresponds to signed
   sixteen bit integers.  This data type is defined by RTEMS in a manner
   that ensures it is portable across different target processors.
 
 - .. index:: int32_t
+
   ``int32_t`` is the C99 data type that corresponds to signed
   thirty-two bit integers.  This data type is defined by RTEMS in a manner
   that ensures it is portable across different target processors.
 
 - .. index:: int64_t
+
   ``int64_t`` is the C99 data type that corresponds to signed
   sixty-four bit integers.  This data type is defined by RTEMS in a manner
   that ensures it is portable across different target processors.
 
 - .. index:: rtems_single
+
   ``rtems.single`` is the RTEMS data
   type that corresponds to single precision floating point
   on the target hardware.
   This type is deprecated. Use "float" instead.
 
 - .. index:: rtems_status_codes
+
   ``rtems.status_codes`` is the return type for most
   RTEMS services.  This is an enumerated type of approximately twenty-five
   values.  In general, when a service returns a particular status code, it
   indicates that a very specific error condition has occurred.
 
 - .. index:: rtems_task
+
   ``rtems.task`` is the return type for an
   RTEMS Task.
 
 - .. index:: rtems_task_argument
+
   ``rtems.task_argument`` is the data
   type for the argument passed to each RTEMS task. In RTEMS 4.7
   and older, this is an unsigned thirty-two bit integer.  In
@@ -1354,84 +1398,103 @@ data types in alphabetical order:
   pointer on the target architecture.
 
 - .. index:: rtems_task_begin_extension
+
   ``rtems.task_begin_extension`` is the
   entry point for a task beginning execution user extension handler routine.
 
 - .. index:: rtems_task_create_extension
+
   ``rtems.task_create_extension`` is the
   entry point for a task creation execution user extension handler routine.
 
 - .. index:: rtems_task_delete_extension
+
   ``rtems.task_delete_extension`` is the
   entry point for a task deletion user extension handler routine.
 
 - .. index:: rtems_task_entry
+
   ``rtems.task_entry`` is the address of
   the entry point to an RTEMS ASR.  It is equivalent to the
   entry point of the function implementing the ASR.
 
 - .. index:: rtems_task_exitted_extension
+
   ``rtems.task_exitted_extension`` is the
   entry point for a task exitted user extension handler routine.
 
 - .. index:: rtems_task_priority
+
   ``rtems.task_priority`` is the data type
   used to manage and manipulate task priorities.
 
 - .. index:: rtems_task_restart_extension
+
   ``rtems.task_restart_extension`` is the
   entry point for a task restart user extension handler routine.
 
 - .. index:: rtems_task_start_extension
+
   ``rtems.task_start_extension`` is the
   entry point for a task start user extension handler routine.
 
 - .. index:: rtems_task_switch_extension
+
   ``rtems.task_switch_extension`` is the
   entry point for a task context switch user extension handler routine.
 
 - .. index:: rtems_tcb
+
   ``rtems.tcb`` is the data structure associated
   with each task in an RTEMS system.
 
 - .. index:: rtems_time_of_day
+
   ``rtems.time_of_day`` is the data structure
   used to manage and manipulate calendar time in RTEMS.
 
 - .. index:: rtems_timer_service_routine
+
   ``rtems.timer_service_routine`` is the
   return type for an RTEMS Timer Service Routine.
 
 - .. index:: rtems_timer_service_routine_entry
+
   ``rtems.timer_service_routine_entry`` is the address of
   the entry point to an RTEMS TSR.  It is equivalent to the
   entry point of the function implementing the TSR.
 
 - .. index:: rtems_vector_number
+
   ``rtems.vector_number`` is the data
   type used to manage and manipulate interrupt vector numbers.
 
 - .. index:: uint8_t
+
   ``uint8_t`` is the C99 data type that corresponds to unsigned
   eight bit integers.  This data type is defined by RTEMS in a manner that
   ensures it is portable across different target processors.
 
 - .. index:: uint16_t
+
   ``uint16_t`` is the C99 data type that corresponds to unsigned
   sixteen bit integers.  This data type is defined by RTEMS in a manner
   that ensures it is portable across different target processors.
 
 - .. index:: uint32_t
+
   ``uint32_t`` is the C99 data type that corresponds to unsigned
   thirty-two bit integers.  This data type is defined by RTEMS in a manner
   that ensures it is portable across different target processors.
 
 - .. index:: uint64_t
+
   ``uint64_t`` is the C99 data type that corresponds to unsigned
   sixty-four bit integers.  This data type is defined by RTEMS in a manner
   that ensures it is portable across different target processors.
 
 - .. index:: uintptr_t
+
   ``uintptr_t`` is the C99 data type that corresponds to the
   unsigned integer type that is of sufficient size to represent addresses
   as unsigned integers.  This data type is defined by RTEMS in a manner
@@ -1558,7 +1621,7 @@ for any of the following reasons:
   created or started successfully.
 
 A discussion of RTEMS actions when a fatal error occurs
-may be found :ref:`Fatal Error Manager Announcing a Fatal Error <Fatal-Error-Manager-Announcing-a-Fatal-Error>`.
+may be found `Announcing a Fatal Error`_
 
 Operations
 ==========
@@ -1583,8 +1646,8 @@ environment is set up.  This consists of
 
 The ``rtems.initialize_executive`` directive uses a system
 initialization linker set to initialize only those parts of the overall RTEMS
-feature set that is necessary for a particular application.  See :ref:`Linker
-Sets <Linker-Sets>`.  Each RTEMS feature used the application may optionally register an
+feature set that is necessary for a particular application.  See `Linker Sets`_.  
+Each RTEMS feature used the application may optionally register an
 initialization handler.  The system initialization API is available via``#included <rtems/sysinit.h>``.
 
 A list of all initialization steps follows.  Some steps are optional depending
@@ -1638,7 +1701,7 @@ and the initialization stack may be re-used for interrupt processing.
 Many of RTEMS actions during initialization are based upon
 the contents of the Configuration Table.  For more information
 regarding the format and contents of this table, please refer
-to the chapter :ref:`Configuring a System <Configuring-a-System>`.
+to the chapter `Configuring a System`_.
 
 The final action in the initialization sequence is the
 initiation of multitasking.  When the scheduler and dispatcher
@@ -3755,7 +3818,6 @@ has occurred.  Elapsed time is measured in ticks.  A tick is
 defined to be an integral number of microseconds which is
 specified by the user in the Configuration Table.
 
-.. _Clock-Manager-Time-and-Date-Data-Structures:
 
 Time and Date Data Structures
 -----------------------------
@@ -5060,7 +5122,6 @@ cannot complete its interaction with the resource and release
 that resource.  The high priority task is effectively prevented
 from executing by lower priority tasks.
 
-.. _Semaphore-Manager-Priority-Inheritance:
 
 Priority Inheritance
 --------------------
@@ -5137,8 +5198,6 @@ at the priority of the highest priority task blocked waiting for
 any of the semaphores the task holds.  Only when the task
 releases ALL of the binary semaphores it holds will its priority
 be restored to the normal value.
-
-.. _Semaphore-Manager-Multiprocessor-Resource-Sharing-Protocol:
 
 Multiprocessor Resource Sharing Protocol
 ----------------------------------------
@@ -6680,14 +6739,17 @@ direct an event set to a target task.  Based upon the state of
 the target task, one of the following situations applies:
 
 - Target Task is Blocked Waiting for Events
-  - - If the waiting task’s input event condition is
+
+  - If the waiting task’s input event condition is
     satisfied, then the task is made ready for execution.
-  - - If the waiting task’s input event condition is not
+
+  - If the waiting task’s input event condition is not
     satisfied, then the event set is posted but left pending and the
     task remains blocked.
 
 - Target Task is Not Waiting for Events
-  - - The event set is posted and left pending.
+
+  - The event set is posted and left pending.
 
 Receiving an Event Set
 ----------------------
@@ -9079,7 +9141,6 @@ a specific target processor.
 Operations
 ==========
 
-.. _Fatal-Error-Manager-Announcing-a-Fatal-Error:
 
 Announcing a Fatal Error
 ------------------------
@@ -9298,7 +9359,7 @@ equal priority tasks, tasks will execute in the order they become ready
 or FIFO order.  Even though there are ways to manipulate and adjust task
 priorities, the most important rule to remember is:
 
-- ```` *Priority based scheduling algorithms will always select the
+- *Priority based scheduling algorithms will always select the
   highest priority task that is ready to run when allocating the processor
   to a task.*
 
@@ -9906,7 +9967,7 @@ This analysis determines whether a task set is schedulable under
 worst-case conditions and emphasizes the predictability of the
 system’s behavior.  It has been proven that:
 
-- ```` *RMS is an optimal static priority algorithm for
+- *RMS is an optimal static priority algorithm for
   scheduling independent, preemptible, periodic tasks
   on a single processor.*
 
@@ -9926,21 +9987,20 @@ specifies that when given tasks of equal priority, the task
 which has been ready longest will execute first.  RMS’s priority
 assignment scheme does not provide one with exact numeric values
 for task priorities.  For example, consider the following task
-set and priority assignments:
-.. code:: c
+set and priority assignments.
 
-    +--------------------+---------------------+---------------------+
-    |        Task        |       Period        |      Priority       |
-    |                    |  (in milliseconds)  |                     |
-    +--------------------+---------------------+---------------------+
-    |         1          |         100         |         Low         |
-    +--------------------+---------------------+---------------------+
-    |         2          |          50         |       Medium        |
-    +--------------------+---------------------+---------------------+
-    |         3          |          50         |       Medium        |
-    +--------------------+---------------------+---------------------+
-    |         4          |          25         |        High         |
-    +--------------------+---------------------+---------------------+
++--------------------+---------------------+---------------------+
+| Task               | Period              | Priority            |
+|                    | (in milliseconds)   |                     |
++====================+=====================+=====================+
+|         1          |         100         |         Low         |
++--------------------+---------------------+---------------------+
+|         2          |          50         |       Medium        |
++--------------------+---------------------+---------------------+
+|         3          |          50         |       Medium        |
++--------------------+---------------------+---------------------+
+|         4          |          25         |        High         |
++--------------------+---------------------+---------------------+
 
 RMS only calls for task 1 to have the lowest
 priority, task 4 to have the highest priority, and tasks 2 and 3
@@ -10031,19 +10091,18 @@ Processor Utilization Rule Example
 This example illustrates the application of the
 Processor Utilization Rule to an application with three critical
 periodic tasks.  The following table details the RMS priority,
-period, execution time, and processor utilization for each task:
-.. code:: c
+period, execution time, and processor utilization for each task.
 
-    +------------+----------+--------+-----------+-------------+
-    |    Task    |   RMS    | Period | Execution |  Processor  |
-    |            | Priority |        |   Time    | Utilization |
-    +------------+----------+--------+-----------+-------------+
-    |     1      |   High   |  100   |    15     |    0.15     |
-    +------------+----------+--------+-----------+-------------+
-    |     2      |  Medium  |  200   |    50     |    0.25     |
-    +------------+----------+--------+-----------+-------------+
-    |     3      |   Low    |  300   |   100     |    0.33     |
-    +------------+----------+--------+-----------+-------------+
++------------+----------+--------+-----------+-------------+
+| Tas   k    | RMS      | Period | Execution | Processor   |
+|            | Priority |        | Time      | Utilization |
++============+==========+========+===========+=============+
+|     1      |   High   |  100   |    15     |    0.15     |
++------------+----------+--------+-----------+-------------+
+|     2      |  Medium  |  200   |    50     |    0.25     |
++------------+----------+--------+-----------+-------------+
+|     3      |   Low    |  300   |   100     |    0.33     |
++------------+----------+--------+-----------+-------------+
 
 The total processor utilization for this task set is
 0.73 which is below the upper bound of 3 * (2**(1/3) - 1), or
@@ -10084,18 +10143,18 @@ below is a modification of the Processor Utilization Rule
 example where task execution time has been increased from 15 to
 25 units.  The following table details the RMS priority, period,
 execution time, and processor utilization for each task:
-.. code:: c
 
-    +------------+----------+--------+-----------+-------------+
-    |    Task    |   RMS    | Period | Execution |  Processor  |
-    |            | Priority |        |   Time    | Utilization |
-    +------------+----------+--------+-----------+-------------+
-    |     1      |   High   |  100   |    25     |    0.25     |
-    +------------+----------+--------+-----------+-------------+
-    |     2      |  Medium  |  200   |    50     |    0.25     |
-    +------------+----------+--------+-----------+-------------+
-    |     3      |   Low    |  300   |   100     |    0.33     |
-    +------------+----------+--------+-----------+-------------+
+
++------------+----------+--------+-----------+-------------+
+| Task       | RMS      | Period | Execution | Processor   |
+|            | Priority |        | Time      | Utilization |
++============+==========+========+===========+=============+
+|     1      |   High   |  100   |    25     |    0.25     |
++------------+----------+--------+-----------+-------------+
+|     2      |  Medium  |  200   |    50     |    0.25     |
++------------+----------+--------+-----------+-------------+
+|     3      |   Low    |  300   |   100     |    0.33     |
++------------+----------+--------+-----------+-------------+
 
 The total processor utilization for the modified task
 set is 0.83 which is above the upper bound of 3 * (2**(1/3) - 1),
@@ -10109,16 +10168,15 @@ deadline.  The following table details the time of each deadline
 occurrence, the maximum number of times each task may have run,
 the total execution time, and whether all the deadlines have
 been met.
-.. code:: c
 
-    +----------+------+------+------+----------------------+---------------+
-    | Deadline | Task | Task | Task |        Total         | All Deadlines |
-    |   Time   |  1   |  2   |  3   |    Execution Time    |     Met?      |
-    +----------+------+------+------+----------------------+---------------+
-    |   100    |  1   |  1   |  1   |  25 + 50 + 100 = 175 |      NO       |
-    +----------+------+------+------+----------------------+---------------+
-    |   200    |  2   |  1   |  1   |  50 + 50 + 100 = 200 |     YES       |
-    +----------+------+------+------+----------------------+---------------+
++----------+------+------+------+----------------------+---------------+
+| Deadline | Task | Task | Task | Total                | All Deadlines |
+| Time     | 1    | 2    | 3    | Execution Time       | Met?          |
++==========+======+======+======+======================+===============+
+|   100    |  1   |  1   |  1   |  25 + 50 + 100 = 175 |      NO       |
++----------+------+------+------+----------------------+---------------+
+|   200    |  2   |  1   |  1   |  50 + 50 + 100 = 200 |     YES       |
++----------+------+------+------+----------------------+---------------+
 
 The key to this analysis is to recognize when each
 task will execute.  For example	at time 100, task 1 must have
@@ -10186,18 +10244,18 @@ For more information on Rate Monotonic Scheduling and
 its schedulability analysis, the reader is referred to the
 following:
 
-- ```` *C. L. Liu and J. W. Layland. "Scheduling Algorithms for
+- *C. L. Liu and J. W. Layland. "Scheduling Algorithms for
   Multiprogramming in a Hard Real Time Environment." *Journal of
   the Association of Computing Machinery*. January 1973. pp. 46-61.*
 
-- ```` *John Lehoczky, Lui Sha, and Ye Ding. "The Rate Monotonic
+- *John Lehoczky, Lui Sha, and Ye Ding. "The Rate Monotonic
   Scheduling Algorithm: Exact Characterization and Average Case
   Behavior."  *IEEE Real-Time Systems Symposium*. 1989. pp. 166-171.*
 
-- ```` *Lui Sha and John Goodenough. "Real-Time Scheduling
+- *Lui Sha and John Goodenough. "Real-Time Scheduling
   Theory and Ada."  *IEEE Computer*. April 1990. pp. 53-62.*
 
-- ```` *Alan Burns. "Scheduling hard real-time systems: a
+- *Alan Burns. "Scheduling hard real-time systems: a
   review."  *Software Engineering Journal*. May 1991. pp. 116-128.*
 
 Operations
@@ -10624,9 +10682,9 @@ given in ticks or seconds and nanoseconds.  The default is seconds and
 nanoseconds.  If the period’s state is ``RATE_MONOTONIC_INACTIVE``, both
 time values will be set to 0.  Otherwise, both time values will contain
 time information since the last invocation of the``rtems.rate_monotonic_period`` directive.  More
-specifically, the (ticks_)since_last_period value contains the elapsed time
+specifically, the ticks_since_last_period value contains the elapsed time
 which has occurred since the last invocation of the``rtems.rate_monotonic_period`` directive and the
-(ticks_)executed_since_last_period contains how much processor time the
+ticks_executed_since_last_period contains how much processor time the
 owning task has consumed since the invocation of the``rtems.rate_monotonic_period`` directive.
 
 **NOTES:**
@@ -11359,7 +11417,7 @@ responsible for priming the context area, and the task context
 switch extension would save and restore the context of the
 device.
 
-For more information on user extensions, refer to the:ref:`User Extensions Manager <User-Extensions-Manager>` chapter.
+For more information on user extensions, refer to the `User Extensions Manager`_ chapter.
 
 Multiprocessor Communications Interface (MPCI)
 ==============================================
@@ -11451,8 +11509,6 @@ Multiprocessing Manager chapter.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 
 .. COMMENT: All rights reserved.
-
-.. _User-Extensions-Manager:
 
 User Extensions Manager
 #######################
@@ -12042,7 +12098,6 @@ preempted.
 
 .. COMMENT: Device Driver Table, Init task table, etc.?
 
-.. _Configuring-a-System:
 
 Configuring a System
 ####################
@@ -12111,7 +12166,6 @@ task/thread tables is configured.
 
 .. COMMENT: === Sizing the RTEMS Workspace ===
 
-.. _Configuring-a-System-Sizing-the-RTEMS-Workspace:
 
 Sizing the RTEMS Workspace
 ==========================
@@ -12128,7 +12182,7 @@ Workspace automatically.  It assumes that all tasks are floating point and
 that all will be allocated the minimum stack space.  This calculation
 includes the amount of memory that will be allocated for internal use
 by RTEMS. The automatic calculation may underestimate the workspace
-size truly needed by the application, in which case one can use the``CONFIGURE_MEMORY_OVERHEAD`` macro to add a value to the estimate. See:ref:`Configuring a System Specify Memory Overhead <Configuring-a-System-Specify-Memory-Overhead>` for more details.
+size truly needed by the application, in which case one can use the``CONFIGURE_MEMORY_OVERHEAD`` macro to add a value to the estimate. See `Specify Memory Overhead`_ for more details.
 
 The memory area for the RTEMS Workspace is determined by the BSP.  In case the
 RTEMS Workspace is too large for the available memory, then a fatal run-time
@@ -12148,7 +12202,7 @@ way allocates memory for an initial number of objects and increases the
 current allocation by a fixed increment when required. Both ways allocate
 space from inside the RTEMS Workspace.
 
-See :ref:`Configuring a System Unlimited Objects <Configuring-a-System-Unlimited-Objects>` for more details about
+See `Unlimited Objects`_ for more details about
 the second way, which allows for dynamic allocation of objects and
 therefore does not provide determinism.  This mode is useful mostly for
 when the number of objects cannot be determined ahead of time or when
@@ -12219,26 +12273,34 @@ Format to be followed for making changes in this file
 
 - RANGE:
   The range depends on the Data Type of the macro.
+
   - − If the data type is of type task priority, then its value should
     be an integer in the range of 1 to 255.
+
   - − If the data type is an integer, then it can have numbers, characters
     (in case the value is defined using another macro) and arithmetic operations
     (+, -, \*, /).
+
   - − If the data type is a function pointer the first character
     should be an alphabet or an underscore. The rest of the string
     can be alphanumeric.
+
   - − If the data type is RTEMS Attributes or RTEMS Mode then
     the string should be alphanumeric.
+
   - − If the data type is RTEMS NAME then the value should be
     an integer>=0 or RTEMS_BUILD_NAME( ’U’, ’I’, ’1’, ’ ’ )
 
 - DEFAULT VALUE
   The default value should be in the following formats-
   Please note that the ’.’ (full stop) is necessary.
+
   - − In case the value is not defined then:
     This is not defined by default.
+
   - − If we know the default value then:
     The default value is XXX.
+
   - − If the default value is BSP Specific then:
     This option is BSP specific.
 
@@ -12333,14 +12395,13 @@ other things, the application implicitly used the following defaults:
 
 .. COMMENT: === Unlimited Objects ===
 
-.. _Configuring-a-System-Unlimited-Objects:
 
 Unlimited Objects
 -----------------
 
 In real-time embedded systems the RAM is normally a limited, critical
 resource and dynamic allocation is avoided as much as possible to
-ensure predictable, deterministic execution times. For such cases, see:ref:`Configuring a System Sizing the RTEMS Workspace <Configuring-a-System-Sizing-the-RTEMS-Workspace>` for an overview
+ensure predictable, deterministic execution times. For such cases, see `Sizing the RTEMS Workspace`_ for an overview
 of how to tune the size of the workspace.  Frequently when users are
 porting software to RTEMS the precise resource requirements of the
 software is unknown. In these situations users do not need to control
@@ -12409,7 +12470,7 @@ The following object classes can *not* be configured in unlimited mode:
 - POSIX Queued Signals
 
 Due to the memory requirements of unlimited objects it is strongly recommended
-to use them only in combination with the unified work areas. See:ref:`Configuring a System Separate or Unified Work Areas <Configuring-a-System-Separate-or-Unified-Work-Areas>` for more information
+to use them only in combination with the unified work areas. See `Separate or Unified Work Areas`_ for more information
 on unified work areas.
 
 The following example demonstrates how the two simple configuration defines for
@@ -12569,7 +12630,7 @@ This object class can be configured in unlimited allocation mode.
 The calculations for the required memory in the RTEMS Workspace
 for tasks assume that each task has a minimum stack size and
 has floating point support enabled.  The configuration parameter``CONFIGURE_EXTRA_TASK_STACKS`` is used to specify task stack
-requirements *ABOVE* the minimum size required.  See:ref:`Configuring a System Reserve Task/Thread Stack Memory Above Minimum <Configuring-a-System-Reserve-Task_002fThread-Stack-Memory-Above-Minimum>`
+requirements *ABOVE* the minimum size required.  See `Reserve Task/Thread Stack Memory Above Minimum`_
 for more information about ``CONFIGURE_EXTRA_TASK_STACKS``.
 
 The maximum number of POSIX threads is specified by``CONFIGURE_MAXIMUM_POSIX_THREADS``.
@@ -12982,7 +13043,7 @@ initialization task defined by the Classic API Initialization Tasks Table.
 
 If the stack size specified is greater than the configured minimum,
 it must be accounted for in ``CONFIGURE_EXTRA_TASK_STACKS``.
-See :ref:`Configuring a System Reserve Task/Thread Stack Memory Above Minimum <Configuring-a-System-Reserve-Task_002fThread-Stack-Memory-Above-Minimum>`
+See `Reserve Task/Thread Stack Memory Above Minimum`_
 for more information about ``CONFIGURE_EXTRA_TASK_STACKS``.
 
 .. COMMENT: === CONFIGURE_INIT_TASK_PRIORITY ===
@@ -13164,7 +13225,7 @@ This calculations for the required memory in the RTEMS Workspace
 for threads assume that each thread has a minimum stack size and
 has floating point support enabled.  The configuration parameter``CONFIGURE_EXTRA_TASK_STACKS`` is used to specify thread stack
 requirements *ABOVE* the minimum size required.
-See :ref:`Configuring a System Reserve Task/Thread Stack Memory Above Minimum <Configuring-a-System-Reserve-Task_002fThread-Stack-Memory-Above-Minimum>`
+See `Reserve Task/Thread Stack Memory Above Minimum`_
 for more information about ``CONFIGURE_EXTRA_TASK_STACKS``.
 
 The maximum number of Classic API Tasks is specified by``CONFIGURE_MAXIMUM_TASKS``.
@@ -13583,7 +13644,7 @@ Threads Table.
 
 If the stack size specified is greater than the configured minimum,
 it must be accounted for in ``CONFIGURE_EXTRA_TASK_STACKS``.
-See :ref:`Configuring a System Reserve Task/Thread Stack Memory Above Minimum <Configuring-a-System-Reserve-Task_002fThread-Stack-Memory-Above-Minimum>`
+See `Reserve Task/Thread Stack Memory Above Minimum`_
 for more information about ``CONFIGURE_EXTRA_TASK_STACKS``.
 
 .. COMMENT: === CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE ===
@@ -13624,7 +13685,6 @@ This section defines the general system configuration parameters supported by``<
 
 .. COMMENT: === CONFIGURE_UNIFIED_WORK_AREAS ===
 
-.. _Configuring-a-System-Separate-or-Unified-Work-Areas:
 
 Separate or Unified Work Areas
 ------------------------------
@@ -13868,7 +13928,6 @@ from the RTEMS Workspace would be welcomed by the RTEMS Project.
 
 .. COMMENT: === CONFIGURE_EXTRA_TASK_STACKS ===
 
-.. _Configuring-a-System-Reserve-Task_002fThread-Stack-Memory-Above-Minimum:
 
 Reserve Task/Thread Stack Memory Above Minimum
 ----------------------------------------------
@@ -14206,7 +14265,6 @@ and providing work-arounds when the memory estimated by``<rtems/confdefs.h>`` is
 
 .. COMMENT: === CONFIGURE_MEMORY_OVERHEAD ===
 
-.. _Configuring-a-System-Specify-Memory-Overhead:
 
 Specify Memory Overhead
 -----------------------
@@ -15921,8 +15979,6 @@ Deterministic Priority Scheduler.
 
 .. COMMENT: === Configuring Clustered Schedulers ===
 
-.. _Configuring-a-System-Configuring-Clustered-Schedulers:
-
 Configuring Clustered Schedulers
 --------------------------------
 
@@ -16092,7 +16148,6 @@ configuration parameters which apply.
 
 .. COMMENT: === CONFIGURE_SMP_APPLICATION ===
 
-.. _Configuring-a-System-Enable-SMP-Support-for-Applications:
 
 Enable SMP Support for Applications
 -----------------------------------
@@ -16923,38 +16978,42 @@ for RTEMS.
 The PCI Library startup behaviour can be configured in four different
 ways depending on how ``CONFIGURE_PCI_CONFIG_LIB`` is defined:
 
-- .. index:: PCI_LIB_AUTO
-  ``PCI_LIB_AUTO`` is used to enable the PCI auto configuration
-  software. PCI will be automatically probed, PCI buses enumerated, all
-  devices and bridges will be initialized using Plug & Play software
-  routines. The PCI device tree will be populated based on the PCI devices
-  found in the system, PCI devices will be configured by allocating address
-  region resources automatically in PCI space according to the BSP or host
-  bridge driver set up.
+.. index:: PCI_LIB_AUTO
 
-- .. index:: PCI_LIB_READ
-  ``PCI_LIB_READ`` is used to enable the PCI read configuration
-  software. The current PCI configuration is read to create the RAM
-  representation (the PCI device tree) of the PCI devices present. PCI devices
-  are assumed to already have been initialized and PCI buses enumerated, it is
-  therefore required that a BIOS or a boot loader has set up configuration space
-  prior to booting into RTEMS.
+``PCI_LIB_AUTO`` is used to enable the PCI auto configuration
+software. PCI will be automatically probed, PCI buses enumerated, all
+devices and bridges will be initialized using Plug & Play software
+routines. The PCI device tree will be populated based on the PCI devices
+found in the system, PCI devices will be configured by allocating address
+region resources automatically in PCI space according to the BSP or host
+bridge driver set up.
 
-- .. index:: PCI_LIB_STATIC
-  ``PCI_LIB_STATIC`` is used to enable the PCI static configuration
-  software. The user provides a PCI tree with information how all PCI devices
-  are to be configured at compile time by linking in a custom``struct pci_bus pci_hb`` tree. The static PCI library will not probe PCI
-  for devices, instead it will assume that all devices defined by the user are
-  present, it will enumerate the PCI buses and configure all PCI devices in
-  static configuration accordingly. Since probe and allocation software is not
-  needed the startup is faster, has smaller footprint and does not require
-  dynamic memory allocation.
+.. index:: PCI_LIB_READ
 
-- .. index:: PCI_LIB_PERIPHERAL
-  ``PCI_LIB_PERIPHERAL`` is used to enable the PCI peripheral
-  configuration. It is similar to ``PCI_LIB_STATIC``, but it will never write
-  the configuration to the PCI devices since PCI peripherals are not allowed to
-  access PCI configuration space.
+``PCI_LIB_READ`` is used to enable the PCI read configuration
+software. The current PCI configuration is read to create the RAM
+representation (the PCI device tree) of the PCI devices present. PCI devices
+are assumed to already have been initialized and PCI buses enumerated, it is
+therefore required that a BIOS or a boot loader has set up configuration space
+prior to booting into RTEMS.
+
+.. index:: PCI_LIB_STATIC
+
+``PCI_LIB_STATIC`` is used to enable the PCI static configuration
+software. The user provides a PCI tree with information how all PCI devices
+are to be configured at compile time by linking in a custom``struct pci_bus pci_hb`` tree. The static PCI library will not probe PCI
+for devices, instead it will assume that all devices defined by the user are
+present, it will enumerate the PCI buses and configure all PCI devices in
+static configuration accordingly. Since probe and allocation software is not
+needed the startup is faster, has smaller footprint and does not require
+dynamic memory allocation.
+
+.. index:: PCI_LIB_PERIPHERAL
+
+``PCI_LIB_PERIPHERAL`` is used to enable the PCI peripheral
+configuration. It is similar to ``PCI_LIB_STATIC``, but it will never write
+the configuration to the PCI devices since PCI peripherals are not allowed to
+access PCI configuration space.
 
 Note that selecting PCI_LIB_STATIC or PCI_LIB_PERIPHERAL but not defining``pci_hb`` will reuslt in link errors. Note also that in these modes
 Plug & Play is not performed.
@@ -17630,10 +17689,9 @@ available on
 - SPARC.
 
 It must be explicitly enabled via the ``--enable-smp`` configure command
-line option.  To enable SMP in the application configuration see:ref:`Configuring a System Enable SMP Support for Applications <Configuring-a-System-Enable-SMP-Support-for-Applications>`.  The default
+line option.  To enable SMP in the application configuration see `Enable SMP Support for Applications`_.  The default
 scheduler for SMP applications supports up to 32 processors and is a global
-fixed priority scheduler, see also :ref:`Configuring a System Configuring
-Clustered Schedulers <Configuring-a-System-Configuring-Clustered-Schedulers>`.  For example applications see:file:`testsuites/smptests`.
+fixed priority scheduler, see also `Configuring Clustered Schedulers`_.  For example applications see:file:`testsuites/smptests`.
 
 *WARNING: The SMP support in RTEMS is work in progress.  Before you
 start using this RTEMS version for SMP ask on the RTEMS mailing list.*
@@ -17805,23 +17863,20 @@ available
 
 - message queues,
 
-- semaphores using the :ref:`Semaphore Manager Priority Inheritance <Semaphore-Manager-Priority-Inheritance>`
+- semaphores using the `Priority Inheritance`_
   protocol (priority boosting), and
 
-- semaphores using the :ref:`Semaphore Manager Multiprocessor Resource
-  Sharing Protocol <Semaphore-Manager-Multiprocessor-Resource-Sharing-Protocol>` (MrsP).
+- semaphores using the `Multiprocessor Resource Sharing Protocol`_ (MrsP).
 
 The clustered scheduling approach enables separation of functions with
 real-time requirements and functions that profit from fairness and high
 throughput provided the scheduler instances are fully decoupled and adequate
 inter-cluster synchronization primitives are used.  This is work in progress.
 
-For the configuration of clustered schedulers see :ref:`Configuring a System
-Configuring Clustered Schedulers <Configuring-a-System-Configuring-Clustered-Schedulers>`.
+For the configuration of clustered schedulers see `Configuring Clustered Schedulers`_.
 
-To set the scheduler of a task see :ref:`Symmetric Multiprocessing Services
-SCHEDULER_IDENT - Get ID of a scheduler <Symmetric-Multiprocessing-Services-SCHEDULER_005fIDENT-_002d-Get-ID-of-a-scheduler>` and :ref:`Symmetric Multiprocessing
-Services TASK_SET_SCHEDULER - Set scheduler of a task <Symmetric-Multiprocessing-Services-TASK_005fSET_005fSCHEDULER-_002d-Set-scheduler-of-a-task>`.
+To set the scheduler of a task see `SCHEDULER_IDENT - Get ID of a scheduler`_
+ and `TASK_SET_SCHEDULER - Set scheduler of a task`_.
 
 Task Priority Queues
 --------------------
@@ -18306,7 +18361,6 @@ None.
 
 .. COMMENT: rtems_scheduler_ident
 
-.. _Symmetric-Multiprocessing-Services-SCHEDULER_005fIDENT-_002d-Get-ID-of-a-scheduler:
 
 SCHEDULER_IDENT - Get ID of a scheduler
 ---------------------------------------
@@ -18324,8 +18378,7 @@ the processor set of this scheduler is empty
 **DESCRIPTION:**
 
 Identifies a scheduler by its name.  The scheduler name is determined by the
-scheduler configuration.  See :ref:`Configuring a System Configuring Clustered
-Schedulers <Configuring-a-System-Configuring-Clustered-Schedulers>`.
+scheduler configuration.  See `Configuring Clustered Schedulers`_.
 
 **NOTES:**
 
@@ -18379,7 +18432,6 @@ None.
 
 .. COMMENT: rtems_task_set_scheduler
 
-.. _Symmetric-Multiprocessing-Services-TASK_005fSET_005fSCHEDULER-_002d-Set-scheduler-of-a-task:
 
 TASK_SET_SCHEDULER - Set scheduler of a task
 --------------------------------------------
@@ -18808,8 +18860,9 @@ CPU. The window size may vary and must be taken into consideration by the
 host driver. The below routines must be used to access I/O space. The address
 given to the functions is not the PCI I/O addresses, the caller must have
 translated PCI I/O addresses (available in the PCI BARs) into a BSP or host
-driver custom address, see :ref:`PCI Library Access functions <PCI-Library-Access-functions>` for how
+driver custom address, see `Access functions`_ for how
 addresses are translated.
+
 .. code:: c
 
     /* Read a register over PCI I/O Space \*/
@@ -18846,7 +18899,6 @@ architecture must provide necessary functions in order to implement this.
 In order to support non-standard big-endian PCI bus the above pci_* functions
 is required, pci_ld_le16 != ld_le16 on big endian PCI buses.
 
-.. _PCI-Library-Access-functions:
 
 Access functions
 ~~~~~~~~~~~~~~~~
@@ -18912,7 +18964,7 @@ The PCI Library relies on the BSP for implementing shared interrupt handling
 through the BSP_PCI_shared_interrupt_* functions/macros, they must be defined
 when including bsp.h.
 
-PCI device drivers may use the pci_interrupt_ routines in order to call the
+PCI device drivers may use the pci_interrupt_* routines in order to call the
 BSP specific functions in a platform independent way. The PCI interrupt
 interface has been made similar to the RTEMS IRQ extension so that a BSP can
 use the standard RTEMS interrupt functions directly.
@@ -18962,7 +19014,7 @@ routine.
 
 Recursive routines make calculating peak stack usage difficult, if not
 impossible.  Each call to the recursive routine consumes *n* bytes
-of stack space.  If the routine recursives 1000 times, then``1000 * *n*`` bytes of stack space are required.
+of stack space.  If the routine recursives 1000 times, then ``1000 * *n*`` bytes of stack space are required.
 
 Execution
 ---------
@@ -19183,22 +19235,25 @@ This routine prints a table with the following information per task:
 
 - percentage of time consumed by this task
 
-The following is an example of the report generated:
-.. code:: c
+The following is an example of the report generated.
 
-    -------------------------------------------------------------------------------
-    CPU USAGE BY THREAD
-    ------------+----------------------------------------+---------------+---------
-    ID         | NAME                                   | SECONDS       | PERCENT
-    ------------+----------------------------------------+---------------+---------
-    0x04010001 | IDLE                                   |             0 |   0.000
-    0x08010002 | TA1                                    |          1203 |   0.748
-    0x08010003 | TA2                                    |           203 |   0.126
-    0x08010004 | TA3                                    |           202 |   0.126
-    ------------+----------------------------------------+---------------+---------
-    TICKS SINCE LAST SYSTEM RESET:                                           1600
-    TOTAL UNITS:                                                             1608
-    -------------------------------------------------------------------------------
+
++------------------------------------------------------------------------------+
+|CPU USAGE BY THREAD                                                           |
++-----------+----------------------------------------+-------------------------+
+|ID         | NAME                                   | SECONDS       | PERCENT |
++-----------+----------------------------------------+---------------+---------+
+|0x04010001 | IDLE                                   |             0 |   0.000 |
++-----------+----------------------------------------+---------------+---------+
+|0x08010002 | TA1                                    |          1203 |   0.748 |
++-----------+----------------------------------------+---------------+---------+
+|0x08010003 | TA2                                    |           203 |   0.126 |
++-----------+----------------------------------------+---------------+---------+
+|0x08010004 | TA3                                    |           202 |   0.126 |
++-----------+----------------------------------------+---------------+---------+
+|TICKS SINCE LAST SYSTEM RESET:                                           1600 |
+|TOTAL UNITS:                                                             1608 |
++------------------------------------------------------------------------------+
 
 Notice that the "TOTAL UNITS" is greater than the ticks per reset.
 This is an artifact of the way in which RTEMS keeps track of CPU
@@ -19927,7 +19982,6 @@ This service returns information about the object class indicated by the
 specified ``api`` and ``the_class``. This structure is defined as
 follows:
 
-.. code:: c
 
 **NOTES:**
 
@@ -21587,7 +21641,6 @@ Returns the enumeration name for the specified status code.
 
 .. COMMENT: All rights reserved.
 
-.. _Linker-Sets:
 
 Linker Sets
 ###########
@@ -22696,8 +22749,7 @@ Glossary
     A :dfn:`scheduler instance` is a scheduling algorithm with a corresponding
     context to store its internal state.  Each processor in the system is owned by
     at most one scheduler instance.  The processor to scheduler instance assignment
-    is determined at application configuration time.  See :ref:`Configuring a System
-    Configuring Clustered Schedulers <Configuring-a-System-Configuring-Clustered-Schedulers>`.
+    is determined at application configuration time.  See `Configuring Clustered Schedulers`_.
 
 :dfn:`segments`
     Variable sized memory blocks allocated
