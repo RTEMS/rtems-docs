@@ -55,7 +55,7 @@ help - Print command help
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     help misc
 
@@ -79,7 +79,7 @@ is set 0 there will be no break.
 
 The following is an example of how to use ``alias``:
 
-.. code-block:: shell
+.. code:: shell
 
     SHLL [/] $ help
     help: ('r' repeat last cmd - 'e' edit last cmd)
@@ -132,7 +132,7 @@ alias - add alias for an existing command
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     alias oldCommand newCommand
 
@@ -146,19 +146,20 @@ This command returns 0 on success and non-zero if an error is encountered.
 
 **NOTES:**
 
-NONE
+None.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``alias``:
-.. code:: c
 
-    SHLL \[/] $ me
+.. code:: shell
+
+    SHLL [/] $ me
     shell:me command not found
-    SHLL \[/] $ alias whoami me
-    SHLL \[/] $ me
+    SHLL [/] $ alias whoami me
+    SHLL [/] $ me
     rtems
-    SHLL \[/] $ whoami
+    SHLL [/] $ whoami
     rtems
 
 **CONFIGURATION:**
@@ -166,29 +167,30 @@ The following is an example of how to use ``alias``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_ALIAS
 .. index:: CONFIGURE_SHELL_COMMAND_ALIAS
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_ALIAS`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_ALIAS`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_ALIAS`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_ALIAS`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_alias
 
-The ``alias`` is implemented by a C language function
-which has the following prototype:
+The ``alias`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_alias(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``alias`` has the
-following prototype:
+The configuration structure for the ``alias`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_ALIAS_Command;
@@ -199,7 +201,7 @@ cmdls - List commands
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     cmdls COMMAND...
 
@@ -218,9 +220,10 @@ The current user must have read permission to list a command.
 **EXAMPLES:**
 
 The following is an example of how to use ``cmdls``:
-.. code:: c
 
-    SHLL \[/] # cmdls help shutdown
+.. code:: shell
+
+    SHLL [/] # cmdls help shutdown
     r-xr-xr-x     0     0 help
     r-x------     0     0 shutdown
 
@@ -229,18 +232,18 @@ The following is an example of how to use ``cmdls``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_CMDLS
 .. index:: CONFIGURE_SHELL_COMMAND_CMDLS
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_CMDLS`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_CMDLS`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_CMDLS`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_CMDLS`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
-The configuration structure for the ``cmdls`` has the
-following prototype:
+The configuration structure for the ``cmdls`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDLS_Command;
@@ -251,9 +254,9 @@ cmdchown - Change user or owner of commands
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
-    cmdchown \[OWNER][:\[GROUP]] COMMAND...
+    cmdchown [OWNER][:[GROUP]] COMMAND...
 
 **DESCRIPTION:**
 
@@ -271,12 +274,13 @@ owner or group.
 **EXAMPLES:**
 
 The following is an example of how to use ``cmdchown``:
-.. code:: c
+
+.. code:: shell
 
     [/] # cmdls help
     r-xr-xr-x     0     0 help
-    \[/] # cmdchown 1:1 help
-    \[/] # cmdls help
+    [/] # cmdchown 1:1 help
+    [/] # cmdls help
     r--r--r--     1     1 help
 
 **CONFIGURATION:**
@@ -284,18 +288,18 @@ The following is an example of how to use ``cmdchown``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_CMDCHOWN
 .. index:: CONFIGURE_SHELL_COMMAND_CMDCHOWN
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_CMDCHOWN`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_CMDCHOWN`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_CMDCHOWN`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_CMDCHOWN`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
-The configuration structure for the ``cmdchown`` has the
-following prototype:
+The configuration structure for the ``cmdchown`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDCHOWN_Command;
@@ -306,7 +310,7 @@ cmdchmod - Change mode of commands
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     cmdchmod OCTAL-MODE COMMAND...
 
@@ -326,12 +330,13 @@ mode.
 **EXAMPLES:**
 
 The following is an example of how to use ``cmdchmod``:
-.. code:: c
+
+.. code:: shell
 
     [/] # cmdls help
     r-xr-xr-x     0     0 help
-    \[/] # cmdchmod 544 help
-    \[/] # cmdls help
+    [/] # cmdchmod 544 help
+    [/] # cmdls help
     r-xr--r--     0     0 help
 
 **CONFIGURATION:**
@@ -339,18 +344,18 @@ The following is an example of how to use ``cmdchmod``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_CMDCHMOD
 .. index:: CONFIGURE_SHELL_COMMAND_CMDCHMOD
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_CMDCHMOD`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_CMDCHMOD`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_CMDCHMOD`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_CMDCHMOD`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
-The configuration structure for the ``cmdchmod`` has the
-following prototype:
+The configuration structure for the ``cmdchmod`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDCHMOD_Command;
@@ -361,17 +366,16 @@ date - print or set current date and time
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     date
     date DATE TIME
 
 **DESCRIPTION:**
 
-This command operates one of two modes.  When invoked with no
-arguments, it prints the current date and time.  When invoked
-with both ``date`` and ``time`` arguments, it sets the
-current time.
+This command operates one of two modes.  When invoked with no arguments, it
+prints the current date and time.  When invoked with both ``date`` and ``time``
+arguments, it sets the current time.
 
 The ``date`` is specified in ``YYYY-MM-DD`` format.
 The ``time`` is specified in ``HH:MM:SS`` format.
@@ -382,17 +386,18 @@ This command returns 0 on success and non-zero if an error is encountered.
 
 **NOTES:**
 
-This comm
+None.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``date``:
-.. code:: c
 
-    SHLL \[/] $ date
+.. code:: shell
+
+    SHLL [/] $ date
     Fri Jan  1 00:00:09 1988
-    SHLL \[/] $ date 2008-02-29 06:45:32
-    SHLL \[/] $ date
+    SHLL [/] $ date 2008-02-29 06:45:32
+    SHLL [/] $ date
     Fri Feb 29 06:45:35 2008
 
 **CONFIGURATION:**
@@ -400,29 +405,30 @@ The following is an example of how to use ``date``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_DATE
 .. index:: CONFIGURE_SHELL_COMMAND_DATE
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_DATE`` to have this
-command included.
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_DATE`` to have this command
+included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_DATE`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_DATE`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_date
 
-The ``date`` is implemented by a C language function
-which has the following prototype:
+The ``date`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_date(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``date`` has the
-following prototype:
+The configuration structure for the ``date`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_DATE_Command;
@@ -433,30 +439,29 @@ echo - produce message in a shell script
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
-    echo \[-n | -e] args ...
+    echo [-n | -e] args ...
 
 **DESCRIPTION:**
 
-echo prints its arguments on the standard output, separated by spaces.
-Unless the *-n* option is present, a newline is output following the
-arguments.  The *-e* option causes echo to treat the escape sequences
-specially, as described in the following paragraph.  The *-e* option is the
-default, and is provided solely for compatibility with other systems.
-Only one of the options *-n* and *-e* may be given.
+Echo prints its arguments on the standard output, separated by spaces.  Unless
+the *-n* option is present, a newline is output following the arguments.  The
+*-e* option causes echo to treat the escape sequences specially, as described
+in the following paragraph.  The *-e* option is the default, and is provided
+solely for compatibility with other systems.  Only one of the options *-n* and
+*-e* may be given.
 
-If any of the following sequences of characters is encountered during
-output, the sequence is not output.  Instead, the specified action is
-performed:
+If any of the following sequences of characters is encountered during output,
+the sequence is not output.  Instead, the specified action is performed:
 
 *\\b*
     A backspace character is output.
 
 *\\c*
-    Subsequent output is suppressed.  This is normally used at the
-    end of the last argument to suppress the trailing newline that
-    echo would otherwise output.
+    Subsequent output is suppressed.  This is normally used at the end of the
+    last argument to suppress the trailing newline that echo would otherwise
+    output.
 
 *\\f*
     Output a form feed.
@@ -474,8 +479,8 @@ performed:
     Output a vertical tab.
 
 *\\0digits*
-    Output the character whose value is given by zero to three digits.
-    If there are zero digits, a nul character is output.
+    Output the character whose value is given by zero to three digits.  If
+    there are zero digits, a nul character is output.
 
 *\\\\*
     Output a backslash.
@@ -486,57 +491,59 @@ This command returns 0 on success and non-zero if an error is encountered.
 
 **NOTES:**
 
-The octal character escape mechanism (\\0digits) differs from the C lan-
-guage mechanism.
+The octal character escape mechanism (\\0digits) differs from the C language
+mechanism.
 
-There is no way to force ``echo`` to treat its arguments literally, rather
-than interpreting them as options and escape sequences.
+There is no way to force ``echo`` to treat its arguments literally, rather than
+interpreting them as options and escape sequences.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``echo``:
-.. code:: c
 
-    SHLL \[/] $ echo a b c
+.. code:: shell
+
+    SHLL [/] $ echo a b c
     a b c
-    SHLL \[/] $ echo
+    SHLL [/] $ echo
 
 **CONFIGURATION:**
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_ECHO
 .. index:: CONFIGURE_SHELL_COMMAND_ECHO
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_ECHO`` to have this
-command included.
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_ECHO`` to have this command
+included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_ECHO`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_ECHO`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_echo
 
-The ``echo`` is implemented by a C language function
-which has the following prototype:
+The ``echo`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_echo(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``echo`` has the
-following prototype:
+The configuration structure for the ``echo`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_ECHO_Command;
 
 **ORIGIN:**
 
-The implementation and portions of the documentation for this
-command are from NetBSD 4.0.
+The implementation and portions of the documentation for this command are from
+NetBSD 4.0.
 
 sleep - delay for a specified amount of time
 --------------------------------------------
@@ -544,15 +551,15 @@ sleep - delay for a specified amount of time
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     sleep seconds
     sleep seconds nanoseconds
 
 **DESCRIPTION:**
 
-This command causes the task executing the shell to block
-for the specified number of ``seconds`` and ``nanoseconds``.
+This command causes the task executing the shell to block for the specified
+number of ``seconds`` and ``nanoseconds``.
 
 **EXIT STATUS:**
 
@@ -562,53 +569,53 @@ This command returns 0 on success and non-zero if an error is encountered.
 
 This command is implemented using the ``nanosleep()`` method.
 
-The command line interface is similar to the ``sleep`` command
-found on POSIX systems but the addition of the ``nanoseconds``
-parameter allows fine grained delays in shell scripts without
-adding another command such as ``usleep``.
+The command line interface is similar to the ``sleep`` command found on POSIX
+systems but the addition of the ``nanoseconds`` parameter allows fine grained
+delays in shell scripts without adding another command such as ``usleep``.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``sleep``:
-.. code:: c
 
-    SHLL \[/] $ sleep 10
-    SHLL \[/] $ sleep 0 5000000
+.. code:: shell
 
-It is not clear from the above but there is a ten second
-pause after executing the first command before the prompt
-is printed.  The second command completes very quickly
-from a human perspective and there is no noticeable
-delay in the prompt being printed.
+    SHLL [/] $ sleep 10
+    SHLL [/] $ sleep 0 5000000
+
+It is not clear from the above but there is a ten second pause after executing
+the first command before the prompt is printed.  The second command completes
+very quickly from a human perspective and there is no noticeable delay in the
+prompt being printed.
 
 **CONFIGURATION:**
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_SLEEP
 .. index:: CONFIGURE_SHELL_COMMAND_SLEEP
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_SLEEP`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_SLEEP`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_SLEEP`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_SLEEP`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_sleep
 
-The ``sleep`` is implemented by a C language function
-which has the following prototype:
+The ``sleep`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_sleep(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``sleep`` has the
-following prototype:
+The configuration structure for the ``sleep`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_SLEEP_Command;
@@ -619,15 +626,14 @@ id - show uid gid euid and egid
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     id
 
 **DESCRIPTION:**
 
-This command prints the user identity.  This includes the user id
-(uid), group id (gid), effective user id (euid), and effective
-group id (egid).
+This command prints the user identity.  This includes the user id (uid), group
+id (gid), effective user id (euid), and effective group id (egid).
 
 **EXIT STATUS:**
 
@@ -636,23 +642,25 @@ This command returns 0 on success and non-zero if an error is encountered.
 **NOTES:**
 
 Remember there is only one POSIX process in a single processor RTEMS
-application. Each thread may have its own user identity and that
-identity is used by the filesystem to enforce permissions.
+application. Each thread may have its own user identity and that identity is
+used by the filesystem to enforce permissions.
 
 **EXAMPLES:**
 
 The first example of the ``id`` command is from a session logged
 in as the normal user ``rtems``:
-.. code:: c
 
-    SHLL \[/] # id
+.. code:: shell
+
+    SHLL [/] # id
     uid=1(rtems),gid=1(rtems),euid=1(rtems),egid=1(rtems)
 
-The second example of the ``id`` command is from a session logged
-in as the ``root`` user:
-.. code:: c
+The second example of the ``id`` command is from a session logged in as the
+``root`` user:
 
-    SHLL \[/] # id
+.. code:: shell
+
+    SHLL [/] # id
     uid=0(root),gid=0(root),euid=0(root),egid=0(root)
 
 **CONFIGURATION:**
@@ -660,29 +668,29 @@ in as the ``root`` user:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_ID
 .. index:: CONFIGURE_SHELL_COMMAND_ID
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_ID`` to have this
-command included.
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_ID`` to have this command
+included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_ID`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_ID`` when all shell commands have been configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_id
 
-The ``id`` is implemented by a C language function
-which has the following prototype:
+The ``id`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_id(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``id`` has the
-following prototype:
+The configuration structure for the ``id`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_ID_Command;
@@ -693,14 +701,13 @@ tty - show ttyname
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     tty
 
 **DESCRIPTION:**
 
-This command prints the file name of the device connected
-to standard input.
+This command prints the file name of the device connected to standard input.
 
 **EXIT STATUS:**
 
@@ -713,9 +720,10 @@ NONE
 **EXAMPLES:**
 
 The following is an example of how to use ``tty``:
-.. code:: c
 
-    SHLL \[/] $ tty
+.. code:: shell
+
+    SHLL [/] $ tty
     /dev/console
 
 **CONFIGURATION:**
@@ -723,29 +731,30 @@ The following is an example of how to use ``tty``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_TTY
 .. index:: CONFIGURE_SHELL_COMMAND_TTY
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_TTY`` to have this
-command included.
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_TTY`` to have this command
+included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_TTY`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_TTY`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_tty
 
-The ``tty`` is implemented by a C language function
-which has the following prototype:
+The ``tty`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_tty(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``tty`` has the
-following prototype:
+The configuration structure for the ``tty`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_TTY_Command;
@@ -756,14 +765,14 @@ whoami - print effective user id
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     whoami
 
 **DESCRIPTION:**
 
-This command displays the user name associated with the current
-effective user id.
+This command displays the user name associated with the current effective user
+id.
 
 **EXIT STATUS:**
 
@@ -771,14 +780,15 @@ This command always succeeds.
 
 **NOTES:**
 
-NONE
+None.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``whoami``:
-.. code:: c
 
-    SHLL \[/] $ whoami
+.. code:: shell
+
+    SHLL [/] $ whoami
     rtems
 
 **CONFIGURATION:**
@@ -786,29 +796,30 @@ The following is an example of how to use ``whoami``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_WHOAMI
 .. index:: CONFIGURE_SHELL_COMMAND_WHOAMI
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_WHOAMI`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_WHOAMI`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_WHOAMI`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_WHOAMI`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_whoami
 
-The ``whoami`` is implemented by a C language function
-which has the following prototype:
+The ``whoami`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_whoami(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``whoami`` has the
-following prototype:
+The configuration structure for the ``whoami`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_WHOAMI_Command;
@@ -819,19 +830,18 @@ getenv - print environment variable
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     getenv variable
 
 **DESCRIPTION:**
 
-This command is used to display the value of a ``variable`` in the set
-of environment variables.
+This command is used to display the value of a ``variable`` in the set of
+environment variables.
 
 **EXIT STATUS:**
 
-This command will return 1 and print a diagnostic message if
-a failure occurs.
+This command will return 1 and print a diagnostic message if a failure occurs.
 
 **NOTES:**
 
@@ -840,9 +850,10 @@ The entire RTEMS application shares a single set of environment variables.
 **EXAMPLES:**
 
 The following is an example of how to use ``getenv``:
-.. code:: c
 
-    SHLL \[/] $ getenv BASEPATH
+.. code:: shell
+
+    SHLL [/] $ getenv BASEPATH
     /mnt/hda1
 
 **CONFIGURATION:**
@@ -850,29 +861,30 @@ The following is an example of how to use ``getenv``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_GETENV
 .. index:: CONFIGURE_SHELL_COMMAND_GETENV
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_GETENV`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_GETENV`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_GETENV`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_GETENV`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_getenv
 
-The ``getenv`` is implemented by a C language function
-which has the following prototype:
+The ``getenv`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_getenv(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``getenv`` has the
-following prototype:
+The configuration structure for the ``getenv`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_GETENV_Command;
@@ -883,21 +895,20 @@ setenv - set environment variable
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
-    setenv variable \[value]
+    setenv variable [value]
 
 **DESCRIPTION:**
 
 This command is used to add a new ``variable`` to the set of environment
-variables or to modify the variable of an already existing ``variable``.
-If the ``value`` is not provided, the ``variable`` will be set to the
-empty string.
+variables or to modify the variable of an already existing ``variable``.  If
+the ``value`` is not provided, the ``variable`` will be set to the empty
+string.
 
 **EXIT STATUS:**
 
-This command will return 1 and print a diagnostic message if
-a failure occurs.
+This command will return 1 and print a diagnostic message if a failure occurs.
 
 **NOTES:**
 
@@ -906,38 +917,40 @@ The entire RTEMS application shares a single set of environment variables.
 **EXAMPLES:**
 
 The following is an example of how to use ``setenv``:
-.. code:: c
 
-    SHLL \[/] $ setenv BASEPATH /mnt/hda1
+.. code:: shell
+
+    SHLL [/] $ setenv BASEPATH /mnt/hda1
 
 **CONFIGURATION:**
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_SETENV
 .. index:: CONFIGURE_SHELL_COMMAND_SETENV
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_SETENV`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_SETENV`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_SETENV`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_SETENV`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_setenv
 
-The ``setenv`` is implemented by a C language function
-which has the following prototype:
+The ``setenv`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_setenv(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``setenv`` has the
-following prototype:
+The configuration structure for the ``setenv`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_SETENV_Command;
@@ -948,19 +961,17 @@ unsetenv - unset environment variable
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     unsetenv variable
 
 **DESCRIPTION:**
 
-This command is remove to a ``variable`` from the set of environment
-variables.
+This command is remove to a ``variable`` from the set of environment variables.
 
 **EXIT STATUS:**
 
-This command will return 1 and print a diagnostic message if
-a failure occurs.
+This command will return 1 and print a diagnostic message if a failure occurs.
 
 **NOTES:**
 
@@ -969,38 +980,40 @@ The entire RTEMS application shares a single set of environment variables.
 **EXAMPLES:**
 
 The following is an example of how to use ``unsetenv``:
-.. code:: c
 
-    SHLL \[/] $ unsetenv BASEPATH
+.. code:: shell
+
+    SHLL [/] $ unsetenv BASEPATH
 
 **CONFIGURATION:**
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_UNSETENV
 .. index:: CONFIGURE_SHELL_COMMAND_UNSETENV
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_UNSETENV`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_UNSETENV`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_UNSETENV`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_UNSETENV`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_unsetenv
 
-The ``unsetenv`` is implemented by a C language function
-which has the following prototype:
+The ``unsetenv`` is implemented by a C language function which has the
+following prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_unsetenv(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``unsetenv`` has the
-following prototype:
+The configuration structure for the ``unsetenv`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_UNSETENV_Command;
@@ -1013,13 +1026,12 @@ time - time command execution
 
 .. code:: c
 
-    time command \[argument ...]
+    time command [argument ...]
 
 **DESCRIPTION:**
 
-The time command executes and times a command.  After the command
-finishes, time writes the total time elapsed.  Times are reported in
-seconds.
+The time command executes and times a command.  After the command finishes,
+time writes the total time elapsed.  Times are reported in seconds.
 
 **EXIT STATUS:**
 
@@ -1032,37 +1044,40 @@ None.
 **EXAMPLES:**
 
 The following is an example of how to use ``time``:
-.. code:: c
 
-    SHLL \[/] $ time cp -r /nfs/directory /c
+.. code:: shell
+
+    SHLL [/] $ time cp -r /nfs/directory /c
 
 **CONFIGURATION:**
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_TIME
 .. index:: CONFIGURE_SHELL_COMMAND_TIME
 
-This command is included in the default shell command set.  When
-building a custom command set, define``CONFIGURE_SHELL_COMMAND_TIME`` to have this command included.
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_TIME`` to have this command
+included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_TIME`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_TIME`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_time
 
-The ``time`` is implemented by a C language function
-which has the following prototype:
+The ``time`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_time(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``time`` has the
-following prototype:
+The configuration structure for the ``time`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_TIME_Command;
@@ -1073,7 +1088,7 @@ logoff - logoff from the system
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     logoff
 
@@ -1087,17 +1102,18 @@ This command does not return.
 
 **NOTES:**
 
-The system behavior when the shell is exited depends upon how the
-shell was initiated.  The typical behavior is that a login prompt
-will be displayed for the next login attempt or that the connection
-will be dropped by the RTEMS system.
+The system behavior when the shell is exited depends upon how the shell was
+initiated.  The typical behavior is that a login prompt will be displayed for
+the next login attempt or that the connection will be dropped by the RTEMS
+system.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``logoff``:
-.. code:: c
 
-    SHLL \[/] $ logoff
+.. code:: shell
+
+    SHLL [/] $ logoff
     logoff from the system...
 
 **CONFIGURATION:**
@@ -1105,29 +1121,30 @@ The following is an example of how to use ``logoff``:
 .. index:: CONFIGURE_SHELL_NO_COMMAND_LOGOFF
 .. index:: CONFIGURE_SHELL_COMMAND_LOGOFF
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_LOGOFF`` to have this
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_LOGOFF`` to have this
 command included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_LOGOFF`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_LOGOFF`` when all shell commands have been
+configured.
 
 **PROGRAMMING INFORMATION:**
 
 .. index:: rtems_shell_rtems_main_logoff
 
-The ``logoff`` is implemented by a C language function
-which has the following prototype:
+The ``logoff`` is implemented by a C language function which has the following
+prototype:
+
 .. code:: c
 
     int rtems_shell_rtems_main_logoff(
-    int    argc,
-    char \**argv
+        int    argc,
+        char **argv
     );
 
-The configuration structure for the ``logoff`` has the
-following prototype:
+The configuration structure for the ``logoff`` has the following prototype:
+
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_LOGOFF_Command;
@@ -1138,7 +1155,7 @@ rtc - RTC driver configuration
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     rtc
 
@@ -1147,13 +1164,13 @@ rtc - RTC driver configuration
 .. index:: CONFIGURE_SHELL_NO_COMMAND_RTC
 .. index:: CONFIGURE_SHELL_COMMAND_RTC
 
-This command is included in the default shell command set.
-When building a custom command set, define``CONFIGURE_SHELL_COMMAND_RTC`` to have this
-command included.
+This command is included in the default shell command set.  When building a
+custom command set, define ``CONFIGURE_SHELL_COMMAND_RTC`` to have this command
+included.
 
-This command can be excluded from the shell command set by
-defining ``CONFIGURE_SHELL_NO_COMMAND_RTC`` when all
-shell commands have been configured.
+This command can be excluded from the shell command set by defining
+``CONFIGURE_SHELL_NO_COMMAND_RTC`` when all shell commands have been
+configured.
 
 exit - exit the shell
 ---------------------
@@ -1161,7 +1178,7 @@ exit - exit the shell
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code:: shell
 
     exit
 
@@ -1175,15 +1192,16 @@ This command does not return.
 
 **NOTES:**
 
-In contrast to `logoff - logoff from the system`_,
-this command is built into the shell interpreter loop.
+In contrast to `logoff - logoff from the system`, this command is built into
+the shell interpreter loop.
 
 **EXAMPLES:**
 
 The following is an example of how to use ``exit``:
-.. code:: c
 
-    SHLL \[/] $ exit
+.. code:: shell
+
+    SHLL [/] $ exit
     Shell exiting
 
 **CONFIGURATION:**
@@ -1192,12 +1210,5 @@ This command is always present and cannot be disabled.
 
 **PROGRAMMING INFORMATION:**
 
-The ``exit`` is implemented directly in the shell interpreter.
-There is no C routine associated with it.
-
-.. COMMENT: COPYRIGHT (c) 1988-2008.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
+The ``exit`` is implemented directly in the shell interpreter.  There is no C
+routine associated with it.
