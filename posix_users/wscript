@@ -2,7 +2,7 @@ from sys import path
 from os.path import abspath
 path.append(abspath('../common/'))
 
-from waf import cmd_configure, cmd_build
+from waf import cmd_configure, cmd_build, spell, cmd_spell
 
 def configure(ctx):
 	cmd_configure(ctx)

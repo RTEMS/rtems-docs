@@ -1,9 +1,40 @@
 import sys, os
+from waflib.Build import BuildContext
 
+def cmd_spell(ctx):
+	from waflib import Options
+	from sys import argv
+	from subprocess import call
+
+	Options.commands = None # stop warnings about knowing commands.
+
+	if not ctx.env.BIN_ASPELL:
+		ctx.fatal("'aspell' is required please add binary to your path and re-run configure.")
+
+	if len(argv) < 3:
+		ctx.fatal("Please supply at least one file name")
+
+	files = argv[2:]
+
+	path = ctx.path.parent.abspath()
+
+	# XXX: add error checking eg check if file exists.
+	for file in files:
+		cmd = ctx.env.BIN_ASPELL + ["-c", "--personal=%s/common/spell/dict/rtems" % path, "--extra-dicts=%s/common/spell/en_GB-ise-w_accents.multi" % path, file]
+
+		print "running:", cmd
+		call(cmd)
+
+
+class spell(BuildContext):
+	__doc__ = "Check spelling.  Supply a list of files or a glob (*.rst)"
+	cmd = 'spell'
+	fun = 'cmd_spell'
 
 
 def cmd_configure(ctx):
-	ctx.find_program("sphinx-build", var="SPHINX_BUILD")
+	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD")
+	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
 
 def cmd_build(ctx, conf_dir=".", source_dir="."):
 	srcnode = ctx.srcnode.abspath()
@@ -21,7 +52,7 @@ def cmd_build(ctx, conf_dir=".", source_dir="."):
 		)
 
 	ctx(
-		rule   = "${SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
+		rule   = "${BIN_SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
 		cwd	= ctx.path.abspath(),
 		source =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
 		target = ctx.path.find_or_declare('html/index.html')
@@ -66,3 +97,5 @@ def cmd_build_path(ctx):
     )
 
 	cmd_build(ctx, conf_dir="build", source_dir="build")
+
+
