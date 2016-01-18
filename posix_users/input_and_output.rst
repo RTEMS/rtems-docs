@@ -67,8 +67,8 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the input and output primitives manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the input and output primitives manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -359,7 +359,7 @@ fcntl - Manipulates an open file descriptor
 **STATUS CODES:**
 
 *EACCESS*
-    Search permission is denied for a direcotry in a file’s path
+    Search permission is denied for a direcotry in a file's path
     prefix.
 
 *EAGAIN*
@@ -409,10 +409,10 @@ fcntl - Manipulates an open file descriptor
     significant bit is used).
 
 *F_GETFL*
-    Read the descriptor’s flags (all flags (as set by open()) are returned).
+    Read the descriptor's flags (all flags (as set by open()) are returned).
 
 *F_SETFL*
-    Set the descriptor’s flags to the value specified by ``arg``. Only``O_APPEND`` and ``O_NONBLOCK`` may be set.
+    Set the descriptor's flags to the value specified by ``arg``. Only``O_APPEND`` and ``O_NONBLOCK`` may be set.
     The flags are shared between copies (made with ``dup()`` etc.) of the same
     file descriptor.
     The flags and their semantics are described in ``open()``.

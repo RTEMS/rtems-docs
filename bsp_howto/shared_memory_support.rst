@@ -11,7 +11,7 @@ This driver is only required in shared memory multiprocessing
 systems that use the RTEMS mulitprocessing support.  For more
 information on RTEMS multiprocessing capabilities and the
 MPCI, refer to the *Multiprocessing Manager* chapter
-of the *RTEMS Application C User’s Guide*.
+of the *RTEMS Application C User's Guide*.
 
 Shared Memory Configuration Table
 =================================
@@ -95,7 +95,7 @@ used from this node.  Most targets will simply return the address
 passed to this routine.  However, some target boards will have a special
 window onto the shared memory.  For example, some VMEbus boards have
 special address windows to access addresses that are normally reserved
-in the CPU’s address space.
+in the CPU's address space.
 .. code:: c
 
     void \*Shm_Convert_address( void \*address )

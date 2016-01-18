@@ -83,11 +83,11 @@ gen68340 UART FIFO Full Mode
 The gen68340 BSP is an example of the use of the timer to support the UART
 input FIFO full mode (FIFO means First In First Out and roughly means
 buffer). This mode consists in the UART raising an interrupt when n
-characters have been received (*n* is the UART’s FIFO length). It results
+characters have been received (*n* is the UART's FIFO length). It results
 in a lower interrupt processing time, but the problem is that a scanf
 primitive will block on a receipt of less than *n* characters. The solution
 is to set a timer that will check whether there are some characters
-waiting in the UART’s input FIFO. The delay time has to be set carefully
+waiting in the UART's input FIFO. The delay time has to be set carefully
 otherwise high rates will be broken:
 
 - if no character was received last time the interrupt subroutine was

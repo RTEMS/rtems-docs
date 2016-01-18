@@ -5,7 +5,7 @@ This chaper discusses the Lattice Mico32 architecture dependencies in
 this port of RTEMS. The Lattice Mico32 is a 32-bit Harvard, RISC
 architecture "soft" microprocessor, available for free with an open IP
 core licensing agreement. Although mainly targeted for Lattice FPGA
-devices the microprocessor can be implemented on other vendors’ FPGAs,
+devices the microprocessor can be implemented on other vendors' FPGAs,
 too.
 
 **Architecture Documents**
@@ -192,7 +192,7 @@ handlers are configured or all of them return without taking action to
 shutdown the processor or reset, a default fatal error handler is invoked.
 
 Most of the action performed as part of processing the fatal error are
-described in detail in the Fatal Error Manager chapter in the User’s
+described in detail in the Fatal Error Manager chapter in the User's
 Guide.  However, the if no user provided extension or BSP specific fatal
 error handler takes action, the final default action is to invoke a
 CPU architecture specific function.  Typically this function disables
@@ -221,7 +221,7 @@ In each of the architecture specific chapters, this section will present
 a discussion of architecture specific BSP issues.   For more information
 on developing a BSP, refer to BSP and Device Driver Development Guide
 and the chapter titled Board Support Packages in the RTEMS
-Applications User’s Guide.
+Applications User's Guide.
 
 System Reset
 ------------

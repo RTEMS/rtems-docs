@@ -152,7 +152,7 @@ Receiving a Message
 The ``rtems_message_queue_receive`` directive attempts to
 retrieve a message from the specified message queue.  If at
 least one message is in the queue, then the message is removed
-from the queue, copied to the caller’s message buffer, and
+from the queue, copied to the caller's message buffer, and
 returned immediately along with the length of the message.  When
 messages are unavailable, one of the following situations
 applies:
@@ -167,7 +167,7 @@ applies:
   wait before returning with an error status.
 
 If the task waits for a message, then it is placed in
-the message queue’s task wait queue in either FIFO or task
+the message queue's task wait queue in either FIFO or task
 priority order.  All tasks waiting on a message queue are
 returned an error code when the message queue is deleted.
 
@@ -177,13 +177,13 @@ Sending a Message
 Messages can be sent to a queue with the``rtems_message_queue_send`` and``rtems_message_queue_urgent`` directives.  These
 directives work identically when tasks are waiting to receive a
 message.  A task is removed from the task waiting queue,
-unblocked,  and the message is copied to a waiting task’s
+unblocked,  and the message is copied to a waiting task's
 message buffer.
 
 When no tasks are waiting at the queue,``rtems_message_queue_send`` places the
 message at the rear of the message queue, while``rtems_message_queue_urgent`` places the message at the
 front of the queue.  The message is copied to a message buffer
-from this message queue’s buffer pool and then placed in the
+from this message queue's buffer pool and then placed in the
 message queue.  Neither directive can successfully send a
 message to a message queue which has a full queue of pending
 messages.
@@ -194,7 +194,7 @@ Broadcasting a Message
 The ``rtems_message_queue_broadcast`` directive sends the same
 message to every task waiting on the specified message queue as
 an atomic operation.  The message is copied to each waiting
-task’s message buffer and each task is unblocked.  The number of
+task's message buffer and each task is unblocked.  The number of
 tasks which were unblocked is returned to the caller.
 
 Deleting a Message Queue
@@ -202,20 +202,20 @@ Deleting a Message Queue
 
 The ``rtems_message_queue_delete`` directive removes a message
 queue from the system and frees its control block as well as the
-memory associated with this message queue’s message buffer pool.
+memory associated with this message queue's message buffer pool.
 A message queue can be deleted by any local task that knows the
-message queue’s ID.  As a result of this directive, all tasks
+message queue's ID.  As a result of this directive, all tasks
 blocked waiting to receive a message from the message queue will
 be readied and returned a status code which indicates that the
 message queue was deleted.  Any subsequent references to the
-message queue’s name and ID are invalid.  Any messages waiting
+message queue's name and ID are invalid.  Any messages waiting
 at the message queue are also deleted and deallocated.
 
 Directives
 ==========
 
-This section details the message manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the message manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 
@@ -284,7 +284,7 @@ Message queues should not be made global unless
 remote tasks must interact with the created message queue.  This
 is to avoid the system overhead incurred by the creation of a
 global message queue.  When a global message queue is created,
-the message queue’s name and id must be transmitted to every
+the message queue's name and id must be transmitted to every
 node in the system for insertion in the local copy of the global
 object table.
 
@@ -422,16 +422,16 @@ MESSAGE_QUEUE_SEND - Put message at rear of a queue
 ``RTEMS_INVALID_SIZE`` - invalid message size
 ``RTEMS_INVALID_ADDRESS`` - ``buffer`` is NULL
 ``RTEMS_UNSATISFIED`` - out of message buffers
-``RTEMS_TOO_MANY`` - queue’s limit has been reached
+``RTEMS_TOO_MANY`` - queue's limit has been reached
 
 **DESCRIPTION:**
 
 This directive sends the message buffer of size bytes
 in length to the queue specified by id.  If a task is waiting at
-the queue, then the message is copied to the waiting task’s
+the queue, then the message is copied to the waiting task's
 buffer and the task is unblocked. If no tasks are waiting at the
 queue, then the message is copied to a message buffer which is
-obtained from this message queue’s message buffer pool.  The
+obtained from this message queue's message buffer pool.  The
 message buffer is then placed at the rear of the queue.
 
 **NOTES:**
@@ -472,16 +472,16 @@ MESSAGE_QUEUE_URGENT - Put message at front of a queue
 ``RTEMS_INVALID_SIZE`` - invalid message size
 ``RTEMS_INVALID_ADDRESS`` - ``buffer`` is NULL
 ``RTEMS_UNSATISFIED`` - out of message buffers
-``RTEMS_TOO_MANY`` - queue’s limit has been reached
+``RTEMS_TOO_MANY`` - queue's limit has been reached
 
 **DESCRIPTION:**
 
 This directive sends the message buffer of size bytes
 in length to the queue specified by id.  If a task is waiting on
-the queue, then the message is copied to the task’s buffer and
+the queue, then the message is copied to the task's buffer and
 the task is unblocked.  If no tasks are waiting on the queue,
 then the message is copied to a message buffer which is obtained
-from this message queue’s message buffer pool.  The message
+from this message queue's message buffer pool.  The message
 buffer is then placed at the front of the queue.
 
 **NOTES:**
@@ -530,7 +530,7 @@ MESSAGE_QUEUE_BROADCAST - Broadcast N messages to a queue
 This directive causes all tasks that are waiting at
 the queue specified by id to be unblocked and sent the message
 contained in buffer.  Before a task is unblocked, the message
-buffer of size byes in length is copied to that task’s message
+buffer of size byes in length is copied to that task's message
 buffer.  The number of tasks that were unblocked is returned in
 count.
 

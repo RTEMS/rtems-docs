@@ -23,7 +23,7 @@ The network task processes incoming packets and takes care of
 timed operations such as handling TCP timeouts and
 aging and removing routing table entries.
 
-The ‘Network code’ contains routines which may run in the context of
+The 'Network code' contains routines which may run in the context of
 the user application tasks, the interface receive task or the network task.
 A network semaphore ensures that
 the data structures manipulated by the network code remain consistent.

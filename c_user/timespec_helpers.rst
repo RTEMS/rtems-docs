@@ -9,9 +9,9 @@ instances of the POSIX ``struct timespec`` structure.
 
 The directives provided by the timespec helpers manager are:
 
-- ``rtems_timespec_set`` - Set timespec’s value
+- ``rtems_timespec_set`` - Set timespec's value
 
-- ``rtems_timespec_zero`` - Zero timespec’s value
+- ``rtems_timespec_zero`` - Zero timespec's value
 
 - ``rtems_timespec_is_valid`` - Check if timespec is valid
 
@@ -101,8 +101,8 @@ User can also check validity of timespec with``rtems_timespec_is_valid`` routine
 Directives
 ==========
 
-This section details the Timespec Helpers manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the Timespec Helpers manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

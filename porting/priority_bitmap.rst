@@ -85,8 +85,8 @@ major/minor) is the first bit found.
 This entire "find first bit" and mapping process depends heavily on the
 manner in which a priority is broken into a major and minor components
 with the major being the 4 MSB of a priority and minor the 4 LSB.  Thus (0
-<< 4) + 0 corresponds to priority 0 – the highest priority.  And (15 <<
-4) + 14 corresponds to priority 254 – the next to the lowest priority.
+<< 4) + 0 corresponds to priority 0 - the highest priority.  And (15 <<
+4) + 14 corresponds to priority 254 - the next to the lowest priority.
 
 If your CPU does not have a "find first bit" instruction, then there are
 ways to make do without it.  Here are a handful of ways to implement this
@@ -94,7 +94,7 @@ in software:
 
 - a series of 16 bit test instructions
 
-- a "binary search using if’s"
+- a "binary search using if's"
 
 - the following algorithm based upon a 16 entry lookup table.  In this pseudo-code, bit_set_table[16] has values which indicate the first bit set:
 

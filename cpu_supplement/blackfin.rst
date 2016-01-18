@@ -55,7 +55,7 @@ Register Usage
 --------------
 
 A called function may clobber all registers, except RETS, R4-R7, P3-P5,
-FP and SP.  It may also modify the first 12 bytes in the callerâs stack
+FP and SP.  It may also modify the first 12 bytes in the caller's stack
 frame which is used as an argument area for the first three arguments
 (which are passed in R0...R3 but may be placed on the stack by the
 called function).
@@ -84,7 +84,7 @@ protection mechanisms are not used.
 Interrupt Processing
 ====================
 
-Discussed in this chapter are the Blackfin’s interrupt response and
+Discussed in this chapter are the Blackfin's interrupt response and
 control mechanisms as they pertain to RTEMS. The Blackfin architecture
 support 16 kinds of interrupts broken down into Core and general-purpose
 interrupts.

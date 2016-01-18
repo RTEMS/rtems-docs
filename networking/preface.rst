@@ -11,7 +11,7 @@ who also ported the FreeBSD TCP/IP stack to RTEMS.
 The following is a list of resources which should be useful in trying
 to understand Ethernet:
 
-- *Charles Spurgeon’s Ethernet Web Site*
+- *Charles Spurgeon's Ethernet Web Site*
   "This site provides extensive information about Ethernet
   (IEEE 802.3) local area network (LAN) technology. Including
   the original 10 Megabit per second (Mbps) system, the 100 Mbps

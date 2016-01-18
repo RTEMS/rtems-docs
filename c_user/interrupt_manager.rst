@@ -50,7 +50,7 @@ interrupt occurs, the processor will automatically vector to
 RTEMS.  RTEMS saves and restores all registers which are not
 preserved by the normal C calling convention
 for the target
-processor and invokes the user’s ISR.  The user’s ISR is
+processor and invokes the user's ISR.  The user's ISR is
 responsible for processing the interrupt, clearing the interrupt
 if necessary, and device specific manipulation... index:: rtems_vector_number
 
@@ -80,7 +80,7 @@ servicing.
 To minimize the masking of lower or equal priority
 level interrupts, the ISR should perform the minimum actions
 required to service the interrupt.  Other non-essential actions
-should be handled by application tasks.  Once the user’s ISR has
+should be handled by application tasks.  Once the user's ISR has
 completed, it returns control to the RTEMS interrupt manager
 which will perform task dispatching and restore the registers
 saved before the ISR was invoked.
@@ -119,9 +119,9 @@ RTEMS Interrupt Levels
 Many processors support multiple interrupt levels or
 priorities.  The exact number of interrupt levels is processor
 dependent.  RTEMS internally supports 256 interrupt levels which
-are mapped to the processor’s interrupt levels.  For specific
+are mapped to the processor's interrupt levels.  For specific
 information on the mapping between RTEMS and the target
-processor’s interrupt levels, refer to the Interrupt Processing
+processor's interrupt levels, refer to the Interrupt Processing
 chapter of the Applications Supplement document for a specific
 target processor.
 
@@ -157,10 +157,10 @@ The ``rtems_interrupt_catch``
 directive establishes an ISR for
 the system.  The address of the ISR and its associated CPU
 vector number are specified to this directive.  This directive
-installs the RTEMS interrupt wrapper in the processor’s
-Interrupt Vector Table and the address of the user’s ISR in the
-RTEMS’ Vector Table.  This directive returns the previous
-contents of the specified vector in the RTEMS’ Vector Table.
+installs the RTEMS interrupt wrapper in the processor's
+Interrupt Vector Table and the address of the user's ISR in the
+RTEMS' Vector Table.  This directive returns the previous
+contents of the specified vector in the RTEMS' Vector Table.
 
 Directives Allowed from an ISR
 ------------------------------
@@ -253,8 +253,8 @@ made from an ISR:
 Directives
 ==========
 
-This section details the interrupt manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the interrupt manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 
@@ -288,7 +288,7 @@ routine (ISR) for the specified interrupt vector number.  The``new_isr_handler``
 The entry point of the previous ISR for the specified vector is
 returned in ``old_isr_handler``.
 
-To release an interrupt vector, pass the old handler’s address obtained
+To release an interrupt vector, pass the old handler's address obtained
 when the vector was first capture.
 
 **NOTES:**

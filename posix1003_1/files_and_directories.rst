@@ -243,7 +243,7 @@ Get Configurable Pathname Variables
 
 NOTE: The newlib unistd.h and sys/unistd.h are installed and the
 include search patch is used to get the right one.  There are
-conflicts between the newlib unistd.h and RTEMS’ version.
+conflicts between the newlib unistd.h and RTEMS' version.
 
 .. COMMENT: COPYRIGHT (c) 1988-2002.
 

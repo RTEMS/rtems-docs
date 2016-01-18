@@ -1,7 +1,7 @@
 ===================
 RTEMS Porting Guide
 ===================
-COPYRIGHT © 1988 - 2015.
+COPYRIGHT (c) 1988 - 2015.
 
 On-Line Applications Research Corporation (OAR).
 

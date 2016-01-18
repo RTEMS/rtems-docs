@@ -173,7 +173,7 @@ clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
 owned by exactly one scheduler instance.
 
 Clustered scheduling helps to control the worst-case latencies in
-multi-processor systems, see *Brandenburg, BjÃ¶rn B.: Scheduling and
+multi-processor systems, see *Brandenburg, Bjorn B.: Scheduling and
 Locking in Multiprocessor Real-Time Operating Systems. PhD thesis, 2011.http://www.cs.unc.edu/~bbb/diss/brandenburg-diss.pdf*.  The goal is to
 reduce the amount of shared state in the system and thus prevention of lock
 contention. Modern multi-processor systems tend to have several layers of data
@@ -220,9 +220,9 @@ appended to the FIFO.  To dequeue a task the highest priority task of the first
 priority queue in the FIFO is selected.  Then the first priority queue is
 removed from the FIFO.  In case the previously first priority queue is not
 empty, then it is appended to the FIFO.  So there is FIFO fairness with respect
-to the highest priority task of each scheduler instances. See also *Brandenburg, BjÃ¶rn B.: A fully preemptive multiprocessor semaphore protocol for
+to the highest priority task of each scheduler instances. See also *Brandenburg, Bjorn B.: A fully preemptive multiprocessor semaphore protocol for
 latency-sensitive real-time applications. In Proceedings of the 25th Euromicro
-Conference on Real-Time Systems (ECRTS 2013), pages 292â302, 2013.http://www.mpi-sws.org/~bbb/papers/pdf/ecrts13b.pdf*.
+Conference on Real-Time Systems (ECRTS 2013), pages 292-302, 2013.http://www.mpi-sws.org/~bbb/papers/pdf/ecrts13b.pdf*.
 
 Such a two level queue may need a considerable amount of memory if fast enqueue
 and dequeue operations are desired (depends on the scheduler instance count).

@@ -36,11 +36,11 @@ and are at http://opengroup.org/onlinepubs/007908775/xsh/termios.h.html.
 
 Having RTEMS support for Termios is beneficial because:
 
-- from the user’s side because it provides standard primitive operations
+- from the user's side because it provides standard primitive operations
   to access the terminal and change configuration settings.  These operations
   are the same under UNIX and RTEMS.
 
-- from the BSP developer’s side because it frees the
+- from the BSP developer's side because it frees the
   developer from dealing with buffer states and mutual exclusions on them.
   Early RTEMS console device drivers also did their own special
   character processing.

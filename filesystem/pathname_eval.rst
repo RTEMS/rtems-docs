@@ -66,8 +66,8 @@ parsed.
 *node_access*
     This element is filesystem specific.  A filesystem can define and store
     any information necessary to identify a node at this location.  This element
-    is normally filled in by the filesystem’s evaluate routine. For the
-    filesystem’s root node, the filesystem’s initilization routine should
+    is normally filled in by the filesystem's evaluate routine. For the
+    filesystem's root node, the filesystem's initilization routine should
     fill this in, and it should remain valid until the instance of the
     filesystem is unmounted.
 

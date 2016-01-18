@@ -94,8 +94,8 @@ its control block is returned to the DPCB free list.
 Directives
 ==========
 
-This section details the dual-ported memory manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the dual-ported memory manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 

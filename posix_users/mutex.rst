@@ -87,8 +87,8 @@ There is currently no text in this section.
 Services
 ========
 
-This section details the mutex manager’s services.
-A subsection is dedicated to each of this manager’s services
+This section details the mutex manager's services.
+A subsection is dedicated to each of this manager's services
 and describes the calling sequence, related constants, usage,
 and status codes.
 

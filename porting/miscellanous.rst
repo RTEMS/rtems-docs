@@ -5,7 +5,7 @@ Fatal Error Default Handler
 ===========================
 
 The ``_CPU_Fatal_halt`` routine is the default fatal error handler. This
-routine copies _error into a known place – typically a stack location or
+routine copies _error into a known place - typically a stack location or
 a register, optionally disables interrupts, and halts/stops the CPU.  It
 is prototyped as follows and is often implemented as a macro:
 .. code:: c
@@ -100,8 +100,8 @@ single instruction (e.g. i486).  It is probably best to avoid an "endian
 swapping control bit" in the CPU.  One good reason is that interrupts
 would probably have to be disabled to insure that an interrupt does not
 try to access the same "chunk" with the wrong endian.  Another good reason
-is that on some CPUs, the endian bit endianness for ALL fetches – both
-code and data – so the code will be fetched incorrectly.
+is that on some CPUs, the endian bit endianness for ALL fetches - both
+code and data - so the code will be fetched incorrectly.
 
 The following is an implementation of the ``CPU_swap_u32`` routine that will
 work on any CPU.  It operates by breaking the unsigned thirty-two bit
@@ -142,8 +142,8 @@ single instruction (e.g. i486).  It is probably best to avoid an "endian
 swapping control bit" in the CPU.  One good reason is that interrupts
 would probably have to be disabled to insure that an interrupt does not
 try to access the same "chunk" with the wrong endian.  Another good reason
-is that on some CPUs, the endian bit endianness for ALL fetches – both
-code and data – so the code will be fetched incorrectly.
+is that on some CPUs, the endian bit endianness for ALL fetches - both
+code and data - so the code will be fetched incorrectly.
 
 Similarly, here is a portable implementation of the ``CPU_swap_u16``
 routine.  Just as with the ``CPU_swap_u32`` routine, the porter

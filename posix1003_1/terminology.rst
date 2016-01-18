@@ -131,7 +131,7 @@ C Language Limits
     ULONG_MAX, Constant, Implemented
     USHRT_MAX, Constant, Implemented
 
-NOTE: These are implemented in GCC’s limits.h file.
+NOTE: These are implemented in GCC's limits.h file.
 
 Minimum Values
 --------------

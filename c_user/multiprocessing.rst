@@ -45,7 +45,7 @@ Background
 RTEMS makes no assumptions regarding the connection
 media or topology of a multiprocessor system.  The tasks which
 compose a particular application can be spread among as many
-processors as needed to satisfy the application’s timing
+processors as needed to satisfy the application's timing
 requirements.  The application tasks can interact using a subset
 of the RTEMS directives as if they were on the same processor.
 These directives allow application tasks to exchange data,
@@ -198,9 +198,9 @@ Proxies
 A proxy is an RTEMS data structure which resides on a
 remote node and is used to represent a task which must block as
 part of a remote operation. This action can occur as part of the``rtems_semaphore_obtain`` and``rtems_message_queue_receive`` directives.  If the
-object were local, the task’s control block would be available
+object were local, the task's control block would be available
 for modification to indicate it was blocking on a message queue
-or semaphore.  However, the task’s control block resides only on
+or semaphore.  However, the task's control block resides only on
 the same node as the task.  As a result, the remote node must
 allocate a proxy to represent the task until it can be readied.
 
@@ -241,7 +241,7 @@ packet within an envelope which contains the information needed
 by the MPCI layer.  The number of packets available is dependent
 on the MPCI layer implementation... index:: MPCI entry points
 
-The entry points to the routines in the user’s MPCI
+The entry points to the routines in the user's MPCI
 layer should be placed in the Multiprocessor Communications
 Interface Table.  The user must provide entry points for each of
 the following table entries in a multiprocessor system:
@@ -296,7 +296,7 @@ following prototype:.. index:: rtems_mpci_entry
     rtems_configuration_table \*configuration
     );
 
-where configuration is the address of the user’s
+where configuration is the address of the user's
 Configuration Table.  Operations on global objects cannot be
 performed until this component is invoked.  The INITIALIZATION
 component is invoked only once in the life of any system.  If
@@ -455,7 +455,7 @@ Other issues which commonly impact the design of
 shared data structures include the representation of floating
 point numbers, bit fields, decimal data, and character strings.
 In addition, the representation method for negative integers
-could be one’s or two’s complement.  These factors combine to
+could be one's or two's complement.  These factors combine to
 increase the complexity of designing and manipulating data
 structures shared between processors.
 
@@ -495,7 +495,7 @@ Directives
 
 This section details the additional directives
 required to support RTEMS in a multiprocessor configuration.  A
-subsection is dedicated to each of this manager’s directives and
+subsection is dedicated to each of this manager's directives and
 describes the calling sequence, related constants, usage, and
 status codes.
 

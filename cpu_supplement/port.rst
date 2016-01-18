@@ -42,7 +42,7 @@ unit or coprocessor.  When defining the list of features present on a
 particular CPU model, one simply notes that floating point hardware
 is or is not present and defines a single constant appropriately.
 Conditional compilation is utilized to include the appropriate source
-code for this CPU model’s feature set.  It is important to note that
+code for this CPU model's feature set.  It is important to note that
 this means that RTEMS is thus compiled using the appropriate feature set
 and compilation flags optimal for this CPU model used.  The alternative
 would be to generate a binary which would execute on all family members
@@ -118,7 +118,7 @@ Calling Conventions
 ===================
 
 Each high-level language compiler generates subroutine entry and exit
-code based upon a set of rules known as the compiler’s calling convention.
+code based upon a set of rules known as the compiler's calling convention.
 These rules address the following issues:
 
 - register preservation and usage
@@ -127,7 +127,7 @@ These rules address the following issues:
 
 - call and return mechanism
 
-A compiler’s calling convention is of importance when
+A compiler's calling convention is of importance when
 interfacing to subroutines written in another language either
 assembly or high-level.  Even when the high-level language and
 target processor are the same, different compilers may use
@@ -177,7 +177,7 @@ Memory Model
 A processor may support any combination of memory
 models ranging from pure physical addressing to complex demand
 paged virtual memory systems.  RTEMS supports a flat memory
-model which ranges contiguously over the processor’s allowable
+model which ranges contiguously over the processor's allowable
 address space.  RTEMS does not support segmentation or virtual
 memory of any kind.  The appropriate memory model for RTEMS
 provided by the targeted processor and related characteristics
@@ -219,7 +219,7 @@ processors require that an interrupt handler utilize some special control
 mechanisms to return to the normal processing stream.  Although RTEMS
 hides many of the processor dependent details of interrupt processing,
 it is important to understand how the RTEMS interrupt manager is mapped
-onto the processor’s unique architecture.
+onto the processor's unique architecture.
 
 RTEMS supports a dedicated interrupt stack for all architectures.
 On architectures with hardware support for a dedicated interrupt stack,
@@ -243,7 +243,7 @@ to switch to the interrupt stack.
 In some configurations, RTEMS allocates the interrupt stack from the
 Workspace Area.  The amount of memory allocated for the interrupt stack
 is user configured and based upon the ``confdefs.h`` parameter``CONFIGURE_INTERRUPT_STACK_SIZE``.  This parameter is described
-in detail in the Configuring a System chapter of the User’s Guide.
+in detail in the Configuring a System chapter of the User's Guide.
 On configurations in which RTEMS allocates the interrupt stack, during
 the initialization process, RTEMS will also install its interrupt stack.
 In other configurations, the interrupt stack is allocated and installed
@@ -318,7 +318,7 @@ handlers are configured or all of them return without taking action to
 shutdown the processor or reset, a default fatal error handler is invoked.
 
 Most of the action performed as part of processing the fatal error are
-described in detail in the Fatal Error Manager chapter in the User’s
+described in detail in the Fatal Error Manager chapter in the User's
 Guide.  However, the if no user provided extension or BSP specific fatal
 error handler takes action, the final default action is to invoke a
 CPU architecture specific function.  Typically this function disables
@@ -414,7 +414,7 @@ In each of the architecture specific chapters, this section will present
 a discussion of architecture specific BSP issues.   For more information
 on developing a BSP, refer to BSP and Device Driver Development Guide
 and the chapter titled Board Support Packages in the RTEMS
-Applications User’s Guide.
+Applications User's Guide.
 
 System Reset
 ------------

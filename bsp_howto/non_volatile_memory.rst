@@ -127,7 +127,7 @@ to easily divide the non-volatile memory for different purposes.
 Initialize the Non-Volatile Memory Driver
 =========================================
 
-At system initialization, the non-volatile memory driver’s
+At system initialization, the non-volatile memory driver's
 initialization entry point will be invoked.  As part of
 initialization, the driver will perform
 whatever initializatin is required on each non-volatile memory area.
@@ -140,7 +140,7 @@ the entire device driver.
 Disable Read and Write Handlers
 ===============================
 
-Depending on the target’s non-volatile memory configuration, it may be
+Depending on the target's non-volatile memory configuration, it may be
 possible to write to a status register and make the memory area completely
 inaccessible.  This is target dependent and beyond the standard capabilities
 of any memory type.  The user has the optional capability to provide

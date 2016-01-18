@@ -200,15 +200,15 @@ and ``_CPU_Context_switch`` will return to its caller.
 Care should be exercise when writing this routine.  All
 registers assumed to be preserved across subroutine calls
 must be preserved.  These registers may be saved in
-the task’s context area or on its stack.  However, the
+the task's context area or on its stack.  However, the
 stack pointer and address to resume executing the task
 at must be included in the context (normally the subroutine
 return address to the caller of ``_Thread_Dispatch``.
-The decision of where to store the task’s context is based
+The decision of where to store the task's context is based
 on numerous factors including the capabilities of
 the CPU architecture itself and simplicity as well
 as external considerations such as debuggers wishing
-to examine a task’s context.  In this case, it is
+to examine a task's context.  In this case, it is
 often simpler to save all data in the context area.
 
 Also there may be special considerations
@@ -292,7 +292,7 @@ is varying) macro is set based on the CPU family dependent macro.
 The macro name THIS_CPU_FAMILY_HAS_FPU should be made CPU specific.  It
 indicates whether or not this CPU model has FP support.  For example, the
 definition of the i386ex and i386sx CPU models would set I386_HAS_FPU to
-FALSE to indicate that these CPU models are i386’s without an i387 and
+FALSE to indicate that these CPU models are i386's without an i387 and
 wish to leave floating point support out of RTEMS when built for the
 i386_nofp processor model.  On a CPU with a built-in FPU like the i486,
 this would be defined as TRUE.
@@ -399,7 +399,7 @@ point context is dumped by a "FP save context" type instruction and the
 format is either not completely defined by the CPU documentation or the
 format is not critical for the implementation of the floating point
 context switch routines.  In this case, there is no need to figure out the
-exact format – only the size.  Of course, although this is enough
+exact format - only the size.  Of course, although this is enough
 information for RTEMS, it is probably not enough for a debugger such as
 gdb.  But that is another problem.
 .. code:: c
@@ -416,7 +416,7 @@ Size of Floating Point Context Macro
 
 The CPU_CONTEXT_FP_SIZE macro is set to the size of the floating point
 context area. On some CPUs this will not be a "sizeof" because the format
-of the floating point area is not defined – only the size is.  This is
+of the floating point area is not defined - only the size is.  This is
 usually on CPUs with a "floating point save context" instruction.  In
 general, though it is easier to define the structure as a "sizeof"
 operation and define the Context_Control_fp structure to be an area of

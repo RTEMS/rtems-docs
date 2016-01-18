@@ -103,7 +103,7 @@ porting software for which you do not know the object requirements.
 The space needed for stacks and for RTEMS objects will vary from
 one version of RTEMS and from one target processor to another.
 Therefore it is safest to use ``<rtems/confdefs.h>`` and specify
-your application’s requirements in terms of the numbers of objects and
+your application's requirements in terms of the numbers of objects and
 multiples of ``RTEMS_MINIMUM_STACK_SIZE``, as far as is possible. The
 automatic estimates of space required will in general change when:
 
@@ -158,7 +158,7 @@ Format to be followed for making changes in this file
 =====================================================
 
 - MACRO NAME
-  Should be alphanumeric. Can have ’_’ (underscore).
+  Should be alphanumeric. Can have '_' (underscore).
 
 - DATA TYPE
   Please refer to all existing formats.
@@ -167,29 +167,29 @@ Format to be followed for making changes in this file
 
   The range depends on the Data Type of the macro.
 
-  - − If the data type is of type task priority, then its value should
+  - - If the data type is of type task priority, then its value should
     be an integer in the range of 1 to 255.
-  - − If the data type is an integer, then it can have numbers, characters
+  - - If the data type is an integer, then it can have numbers, characters
     (in case the value is defined using another macro) and arithmetic operations
     (+, -, \*, /).
-  - − If the data type is a function pointer the first character
+  - - If the data type is a function pointer the first character
     should be an alphabet or an underscore. The rest of the string
     can be alphanumeric.
-  - − If the data type is RTEMS Attributes or RTEMS Mode then
+  - - If the data type is RTEMS Attributes or RTEMS Mode then
     the string should be alphanumeric.
-  - − If the data type is RTEMS NAME then the value should be
-    an integer>=0 or RTEMS_BUILD_NAME( ’U’, ’I’, ’1’, ’ ’ )
+  - - If the data type is RTEMS NAME then the value should be
+    an integer>=0 or RTEMS_BUILD_NAME( 'U', 'I', '1', ' ' )
 
 - DEFAULT VALUE
 
   The default value should be in the following formats-
-  Please note that the ’.’ (full stop) is necessary.
+  Please note that the '.' (full stop) is necessary.
 
-  - − In case the value is not defined then:
+  - - In case the value is not defined then:
     This is not defined by default.
-  - − If we know the default value then:
+  - - If we know the default value then:
     The default value is XXX.
-  - − If the default value is BSP Specific then:
+  - - If the default value is BSP Specific then:
     This option is BSP specific.
 
 - DESCRIPTION
@@ -2067,7 +2067,7 @@ the amount of memory reserved for Classic API Message Buffers.
 Calculate Memory for a Single Classic Message API Message Queue
 ---------------------------------------------------------------
 .. index:: CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
-.. index:: memory for a single message queue’s buffers
+.. index:: memory for a single message queue's buffers
 
 *CONSTANT:*
     ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(max_messages, size_per)``
@@ -4344,7 +4344,7 @@ Enable the Graphics Frame Buffer Device Driver
 **DESCRIPTION:**
 
 ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`` is defined
-if the application wishes to include the BSP’s Frame Buffer Device Driver.
+if the application wishes to include the BSP's Frame Buffer Device Driver.
 
 **NOTES:**
 

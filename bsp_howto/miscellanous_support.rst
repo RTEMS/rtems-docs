@@ -114,7 +114,7 @@ The ``tm27`` test from the RTEMS Timing Test Suite is designed to measure the le
 
 All members of the Timing Test Suite are designed to run *WITHOUT*
 the Clock Device Driver installed.  This increases the predictability
-of the tests’ execution as well as avoids occassionally including the
+of the tests' execution as well as avoids occassionally including the
 overhead of a clock tick interrupt in the time reported.  Because of
 this it is sometimes possible to use the clock tick interrupt source
 as the source of this test interrupt.  On other architectures, it is

@@ -36,18 +36,18 @@ Execution
 ---------
 
 The stack bounds checker operates as a set of task extensions.  At
-task creation time, the task’s stack is filled with a pattern to
+task creation time, the task's stack is filled with a pattern to
 indicate the stack is unused.  As the task executes, it will overwrite
-this pattern in memory.  At each task switch, the stack bounds checker’s
+this pattern in memory.  At each task switch, the stack bounds checker's
 task switch extension is executed.  This extension checks that:
 
-- the last ``n`` bytes of the task’s stack have
+- the last ``n`` bytes of the task's stack have
   not been overwritten.  If this pattern has been damaged, it
   indicates that at some point since this task was context
   switch to the CPU, it has used too much stack space.
 
 - the current stack pointer of the task is not within
-  the address range allocated for use as the task’s stack.
+  the address range allocated for use as the task's stack.
 
 If either of these conditions is detected, then a blown stack
 error is reported using the ``printk`` routine.
@@ -131,13 +131,13 @@ The following is an example of the output generated:
     Damaged pattern begins at 0x003e5758 and is 128 bytes long
 
 The above includes the task id and a pointer to the task control block as
-well as enough information so one can look at the task’s stack and
+well as enough information so one can look at the task's stack and
 see what was happening.
 
 Routines
 ========
 
-This section details the stack bounds checker’s routines.
+This section details the stack bounds checker's routines.
 A subsection is dedicated to each of routines
 and describes the calling sequence, related constants, usage,
 and status codes.

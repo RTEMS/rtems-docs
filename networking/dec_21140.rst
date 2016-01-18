@@ -46,7 +46,7 @@ DEC21140 PCI Board Generalities
 This chapter describes rapidely the PCI interface of this Ethernet controller.
 The board we have chosen for our PC386 implementation is a D-Link DFE-500TX.
 This is a dual-speed 10/100Mbps Ethernet PCI adapter with a DEC21140AF chip.
-Like other PCI devices, this board has a PCI device’s header containing some
+Like other PCI devices, this board has a PCI device's header containing some
 required configuration registers, as shown in the PCI Register Figure.
 By reading
 or writing these registers, a driver can obtain information about the type of
@@ -132,7 +132,7 @@ Receiver Thread
 ---------------
 
 This thread is event driven. Each time a DEC PCI board interrupt occurs, the
-handler checks if this is a receive interrupt and send an event “reception”
+handler checks if this is a receive interrupt and send an event "reception"
 to the receiver thread which looks into the entire buffer descriptors ring the
 ones that contain a valid incoming frame (bit OWN=0 means descriptor belongs
 to host processor). Each valid incoming ethernet frame is sent to the protocol

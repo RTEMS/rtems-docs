@@ -87,7 +87,7 @@ Data Alignment Requirements
 Data Element Alignment
 ----------------------
 
-The CPU_ALIGNMENT macro should be set to the CPU’s worst alignment
+The CPU_ALIGNMENT macro should be set to the CPU's worst alignment
 requirement for data types on a byte boundary.  This is typically the
 alignment requirement for a C double. This alignment does not take into
 account the requirements for the stack.

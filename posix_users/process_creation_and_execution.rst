@@ -57,8 +57,8 @@ is equivalent to invoking either ``exit`` or``rtems_shutdown_executive``.
 Directives
 ==========
 
-This section details the process creation and execution manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the process creation and execution manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

@@ -83,7 +83,7 @@ successive clock ticks, there would be no way to tell that it
 executed at all.
 
 Another thing to keep in mind when looking at idle time, is that
-many systems – especially during debug – have a task providing
+many systems - especially during debug - have a task providing
 some type of debug interface.  It is usually fine to think of the
 total idle time as being the sum of the IDLE task and a debug
 task that will not be included in a production build of an application.
@@ -97,8 +97,8 @@ the CPU usage statistics for all tasks in the system.
 Directives
 ==========
 
-This section details the CPU usage statistics manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the CPU usage statistics manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

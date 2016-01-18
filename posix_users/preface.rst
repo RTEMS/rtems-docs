@@ -1,7 +1,7 @@
 Preface
 #######
 
-This is the User’s Guide for the POSIX API support
+This is the User's Guide for the POSIX API support
 provided in RTEMS.
 
 The functionality described in this document is based
@@ -52,8 +52,8 @@ Acknowledgements
     documentation.
     Portions of this text are reprinted and reproduced in electronic
     form from IEEE Std 1003.1, 2004 Edition, Standard for Information
-    Technology â Operating System Interface (POSIX), The Open
-    Group Base Specifications Issue 6, Copyright Â© 2001-2004 by the
+    Technology Operating System Interface (POSIX), The Open
+    Group Base Specifications Issue 6, Copyright (c) 2001-2004 by the
     Institute of Electrical and Electronics Engineers, Inc and The
     Open Group. In the event of any discrepancy between this version
     and the original IEEE and The Open Group Standard, the original

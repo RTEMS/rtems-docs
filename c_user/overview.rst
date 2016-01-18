@@ -270,7 +270,7 @@ that is created.  Thus the more RTEMS objects an application
 needs, the more memory that must be reserved.  See `Configuring a System`_.
 
 RTEMS utilizes memory for both code and data space.
-Although RTEMS’ data space must be in RAM, its code space can be
+Although RTEMS' data space must be in RAM, its code space can be
 located in either ROM or RAM.
 
 Audience
@@ -288,9 +288,9 @@ understand the material presented.  However, because of the
 similarity of the Ada and C RTEMS implementations, users will
 find that the use and behavior of the two implementations is
 very similar.  A working knowledge of the target processor is
-helpful in understanding some of RTEMS’ features.  A thorough
+helpful in understanding some of RTEMS' features.  A thorough
 understanding of the executive cannot be obtained without
-studying the entire manual because many of RTEMS’ concepts and
+studying the entire manual because many of RTEMS' concepts and
 features are interrelated.  Experienced RTEMS users will find
 that the manual organization facilitates its use as a reference
 document.
@@ -450,7 +450,7 @@ Chapter 26:
 Chapter 27:
     Object Services: presents a collection of helper services useful
     when manipulating RTEMS objects. These include methods to assist
-    in obtaining an object’s name in printable form. Additional services
+    in obtaining an object's name in printable form. Additional services
     are provided to decompose an object Id and determine which API
     and object class it belongs to.
 

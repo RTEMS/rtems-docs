@@ -103,7 +103,7 @@ Notification of a Message on the Queue
 --------------------------------------
 
 Every message queue has the ability to notify one (and only one) process
-whenever the queue’s state changes from empty (0 messages) to nonempty.
+whenever the queue's state changes from empty (0 messages) to nonempty.
 This means that the process does not have to block or constantly poll
 while it waits for a message. By calling mq_notify, you can attach a
 notification request to a message queue. When a message is received by an
@@ -194,7 +194,7 @@ Receiving a Message from a Message Queue
 The mq_receive() function is used to receive the oldest of the highest
 priority message(s) from the message queue specified by mqdes. The
 messages are received in FIFO order within the priorities. The received
-message’s priority is stored in the location referenced by the msg_prio.
+message's priority is stored in the location referenced by the msg_prio.
 If the msg_prio is a NULL, the priority is discarded. The message is
 removed and stored in an area pointed to by msg_ptr whose length is of
 msg_len. The msg_len must be at least equal to the mq_msgsize attribute
@@ -212,7 +212,7 @@ Notification of Receipt of a Message on an Empty Queue
 
 The mq_notify() function registers the calling process to be notified of
 message arrival at an empty message queue. Every message queue has the
-ability to notify one (and only one) process whenever the queue’s state
+ability to notify one (and only one) process whenever the queue's state
 changes from empty (0 messages) to nonempty. This means that the process
 does not have to block or constantly poll while it waits for a message.
 By calling mq_notify, a notification request is attached to a message
@@ -265,8 +265,8 @@ was called.
 Directives
 ==========
 
-This section details the message passing manager’s directives. A
-subsection is dedicated to each of this manager’s directives and describes
+This section details the message passing manager's directives. A
+subsection is dedicated to each of this manager's directives and describes
 the calling sequence, related constants, usage, and status codes.
 
 mq_open - Open a Message Queue
@@ -317,7 +317,7 @@ message queue with a message queue descriptor. If the message queue
 already exists, mq_open opens it, if the message queue does not exist,
 mq_open creates it. Message queues can have multiple senders and
 receivers. If mq_open is successful, the function returns a message queue
-descriptor. Otherwise, the function returns a -1 and sets ’errno’ to
+descriptor. Otherwise, the function returns a -1 and sets 'errno' to
 indicate the error.
 
 The name of the message queue is used as an argument. For the best of
@@ -500,7 +500,7 @@ mq_receive - Receive a Message from a Message Queue
 The mq_receive function is used to receive the oldest of the highest
 priority message(s) from the message queue specified by mqdes. The
 messages are received in FIFO order within the priorities. The received
-message’s priority is stored in the location referenced by the msg_prio.
+message's priority is stored in the location referenced by the msg_prio.
 If the msg_prio is a NULL, the priority is discarded. The message is
 removed and stored in an area pointed to by msg_ptr whose length is of
 msg_len. The msg_len must be at least equal to the mq_msgsize attribute
@@ -548,7 +548,7 @@ calling process to be notified of message arrival at an empty message
 queue associated with the specified message queue descriptor, mqdes.
 
 Every message queue has the ability to notify one (and only one) process
-whenever the queue’s state changes from empty (0 messages) to nonempty.
+whenever the queue's state changes from empty (0 messages) to nonempty.
 This means that the process does not have to block or constantly poll
 while it waits for a message. By calling mq_notify, a notification
 request is attached to a message queue. When a message is received by an

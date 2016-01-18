@@ -32,7 +32,7 @@ divided into fixed-size buffers that can be dynamically
 allocated and deallocated... index:: buffers, definition
 
 Partitions are managed and maintained as a list of
-buffers.  Buffers are obtained from the front of the partition’s
+buffers.  Buffers are obtained from the front of the partition's
 free buffer chain and returned to the rear of the same chain.
 When a buffer is on the free buffer chain, RTEMS uses two
 pointers of memory from each buffer as the free buffer chain.
@@ -70,7 +70,7 @@ Creating a Partition
 --------------------
 
 The ``rtems_partition_create`` directive creates a partition
-with a user-specified name.  The partition’s name, starting
+with a user-specified name.  The partition's name, starting
 address, length and buffer size are all specified to the``rtems_partition_create`` directive.
 RTEMS allocates a Partition Control
 Block (PTCB) from the PTCB free list.  This data structure is
@@ -104,7 +104,7 @@ become available.
 Releasing a Buffer
 ------------------
 
-Buffers are returned to a partition’s free buffer
+Buffers are returned to a partition's free buffer
 chain with the ``rtems_partition_return_buffer`` directive.  This
 directive returns an error status code if the returned buffer
 was not previously allocated from this partition.
@@ -121,8 +121,8 @@ task attempting to do so will be returned an error status code.
 Directives
 ==========
 
-This section details the partition manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the partition manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 
@@ -199,7 +199,7 @@ local node.  The memory space used for the partition must reside
 in shared memory. Partitions should not be made global unless
 remote tasks must interact with the partition.  This is to avoid
 the overhead incurred by the creation of a global partition.
-When a global partition is created, the partition’s name and id
+When a global partition is created, the partition's name and id
 must be transmitted to every node in the system for insertion in
 the local copy of the global object table.
 

@@ -49,13 +49,13 @@ data types in alphabetical order:
 
   ``rtems_context`` is the CPU dependent
   data structure used to manage the integer and system
-  register portion of each task’s context.
+  register portion of each task's context.
 
 - .. index:: rtems_context_fp
 
   ``rtems_context_fp`` is the CPU dependent
   data structure used to manage the floating point portion of
-  each task’s context.
+  each task's context.
 
 - .. index:: rtems_device_driver
 

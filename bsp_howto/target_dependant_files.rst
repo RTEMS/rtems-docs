@@ -31,10 +31,10 @@ differences between these CPU models which RTEMS must take into account.
 
 The source code found in the ``cpukit/score/cpu`` is required to
 only depend upon the CPU model variations that GCC distinguishes
-for the purposes of multilib’ing.  Multilib is the term the GNU
+for the purposes of multilib'ing.  Multilib is the term the GNU
 community uses to refer to building a single library source multiple
 times with different compiler options so the binary code generated
-is compatible.  As an example, from GCC’s perspective, many PowerPC
+is compatible.  As an example, from GCC's perspective, many PowerPC
 CPU models are just a PPC603e.  Remember that GCC only cares about
 the CPU code itself and need not be aware of any peripherals.  In
 the embedded community, we are exposed to thousands of CPU models
@@ -86,16 +86,16 @@ a particular target board, the following questions should be asked:
 
 - Does a BSP for a similar board exists?
 
-- Is the board’s CPU supported?
+- Is the board's CPU supported?
 
 If there is already a BSP for the board, then things may already be ready
 to start developing application software.  All that remains is to verify
 that the existing BSP provides device drivers for all the peripherals
 on the board that the application will be using.  For example, the application
-in question may require that the board’s Ethernet controller be used and
+in question may require that the board's Ethernet controller be used and
 the existing BSP may not support this.
 
-If the BSP does not exist and the board’s CPU model is supported, then
+If the BSP does not exist and the board's CPU model is supported, then
 examine the reusable chip library and existing BSPs for a close match.
 Other BSPs and libchip provide starting points for the development
 of a new BSP.  It is often possible to copy existing components in
@@ -103,7 +103,7 @@ the reusable chip library or device drivers from BSPs from different
 CPU families as the starting point for a new device driver.
 This will help reduce the development effort required.
 
-If the board’s CPU family is supported but the particular CPU model on
+If the board's CPU family is supported but the particular CPU model on
 that board is not, then the RTEMS port to that CPU family will have to
 be augmented.  After this is done, development of the new BSP can proceed.
 
@@ -179,7 +179,7 @@ describes the commonly found subdirectories under each BSP.
   UARTs (i.e. serial devices).
 
 - *clock*:
-  support for the clock tick – a regular time basis to the kernel.
+  support for the clock tick - a regular time basis to the kernel.
 
 - *timer*:
   support of timer devices.

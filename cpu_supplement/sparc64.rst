@@ -16,7 +16,7 @@ through UltraSPARC IV processors.
 
 The following documents were used in developing the SPARC-64 sun4u port:
 
-- UltraSPARC  Userâs Manual
+- UltraSPARC  User's Manual
   (http://www.sun.com/microelectronics/manuals/ultrasparc/802-7220-02.pdf)
 
 - UltraSPARC IIIi Processor (datasheets.chipdb.org/Sun/UltraSparc-IIIi.pdf)
@@ -104,7 +104,7 @@ Calling Conventions
 
 Each high-level language compiler generates
 subroutine entry and exit code based upon a set of rules known
-as the compiler’s calling convention.   These rules address the
+as the compiler's calling convention.   These rules address the
 following issues:
 
 - register preservation and usage
@@ -113,7 +113,7 @@ following issues:
 
 - call and return mechanism
 
-A compiler’s calling convention is of importance when
+A compiler's calling convention is of importance when
 interfacing to subroutines written in another language either
 assembly or high-level.  Even when the high-level language and
 target processor are the same, different compilers may use
@@ -222,7 +222,7 @@ The SPARC architecture includes a number of special registers:
 
 *``Processor State Register (pstate)``*
     The privileged pstate register contains control fields for the proces-
-    sorâs current state. Its flag fields include the interrupt enable, privi-
+    sor's current state. Its flag fields include the interrupt enable, privi-
     leged mode, and enable FPU.
 
 *``Processor Interrupt Level (pil)``*
@@ -270,7 +270,7 @@ registers are shared between adjacent registers windows.
 
 Because the set of register windows is finite, it is
 possible to execute enough save instructions without
-corresponding restore’s to consume all of the register windows.
+corresponding restore's to consume all of the register windows.
 This is easily accomplished in a high level language because
 each subroutine typically performs a save instruction upon
 entry.  Thus having a subroutine call depth greater than the
@@ -281,7 +281,7 @@ is responsible for saving the contents of the oldest register
 window on the program stack.
 
 Similarly, the subroutines will eventually complete
-and begin to perform restore’s.  If the restore results in the
+and begin to perform restore's.  If the restore results in the
 need for a register window which has previously been written to
 memory as part of an overflow, then a window underflow condition
 results.  Just like the window overflow, the window underflow
@@ -338,7 +338,7 @@ Call and Return Mechanism
 The SPARC architecture supports a simple yet
 effective call and return mechanism.  A subroutine is invoked
 via the call (call) instruction.  This instruction places the
-return address in the caller’s output register 7 (o7).  After
+return address in the caller's output register 7 (o7).  After
 the callee executes a save instruction, this value is available
 in input register 7 (i7) until the corresponding restore
 instruction is executed.
@@ -346,7 +346,7 @@ instruction is executed.
 The callee returns to the caller via a jmp to the
 return address.  There is a delay slot following this
 instruction which is commonly used to execute a restore
-instruction – if a register window was allocated by this
+instruction - if a register window was allocated by this
 subroutine.
 
 It is important to note that the SPARC subroutine
@@ -354,7 +354,7 @@ call and return mechanism does not automatically save and
 restore any registers.  This is accomplished via the save and
 restore instructions which manage the set of registers windows.
 This allows for the compiler to generate leaf-optimized functions
-that utilize the callerâs output registers without using save and restore.
+that utilize the caller's output registers without using save and restore.
 
 Calling Mechanism
 -----------------
@@ -376,7 +376,7 @@ Parameter Passing
 -----------------
 
 RTEMS assumes that arguments are placed in the
-caller’s output registers with the first argument in output
+caller's output registers with the first argument in output
 register 0 (o0), the second argument in output register 1 (o1),
 and so forth.  Until the callee executes a save instruction, the
 parameters are still visible in the output registers.  After the
@@ -410,7 +410,7 @@ Memory Model
 A processor may support any combination of memory
 models ranging from pure physical addressing to complex demand
 paged virtual memory systems.  RTEMS supports a flat memory
-model which ranges contiguously over the processor’s allowable
+model which ranges contiguously over the processor's allowable
 address space.  RTEMS does not support segmentation or virtual
 memory of any kind.  The appropriate memory model for RTEMS
 provided by the targeted processor and related characteristics
@@ -542,7 +542,7 @@ interrupt handler, then upon receipt of the interrupt, the
 processor passes control to the RTEMS interrupt handler which
 performs the following actions:
 
-- saves the state of the interrupted task on it’s stack,
+- saves the state of the interrupted task on it's stack,
 
 - switches the processor to trap level 0,
 
@@ -597,7 +597,7 @@ execute on the stack of the RTEMS task which they interrupted.
 This artificially inflates the stack requirements for each task
 since EVERY task stack would have to include enough space to
 account for the worst case interrupt stack requirements in
-addition to it’s own worst case usage.  RTEMS addresses this
+addition to it's own worst case usage.  RTEMS addresses this
 problem on the SPARC by providing a dedicated interrupt stack
 managed by software.
 
@@ -661,7 +661,7 @@ to support a particular processor and target board combination.
 This chapter presents a discussion of SPARC specific BSP issues.
 For more information on developing a BSP, refer to the chapter
 titled Board Support Packages in the RTEMS
-Applications User’s Guide.
+Applications User's Guide.
 
 HelenOS and Open Firmware
 -------------------------

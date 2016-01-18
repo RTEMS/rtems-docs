@@ -24,12 +24,12 @@ Signal Manager Definitions
 
 The signal manager allows a task to optionally define
 an asynchronous signal routine (ASR).  An ASR is to a task what
-an ISR is to an application’s set of tasks.  When the processor
+an ISR is to an application's set of tasks.  When the processor
 is interrupted, the execution of an application is also
 interrupted and an ISR is given control.  Similarly, when a
-signal is sent to a task, that task’s execution path will be
+signal is sent to a task, that task's execution path will be
 "interrupted" by the ASR.  Sending a signal to a task has no
-effect on the receiving task’s current execution state... index:: rtems_signal_set
+effect on the receiving task's current execution state... index:: rtems_signal_set
 
 A signal flag is used by a task (or ISR) to inform
 another task of the occurrence of a significant situation.
@@ -40,7 +40,7 @@ is used to manipulate signal sets.
 
 A signal set is posted when it is directed (or sent) to a
 task. A pending signal is a signal that has been sent to a task
-with a valid ASR, but has not been processed by that task’s ASR.
+with a valid ASR, but has not been processed by that task's ASR.
 
 A Comparison of ASRs and ISRs
 -----------------------------
@@ -85,7 +85,7 @@ Building an ASR Mode
 --------------------
 .. index:: ASR mode, building
 
-In general, an ASR’s mode is built by a bitwise OR of
+In general, an ASR's mode is built by a bitwise OR of
 the desired mode components.  The set of valid mode components
 is the same as those allowed with the task_create and task_mode
 directives.  A complete list of mode options is provided in the
@@ -132,19 +132,19 @@ Establishing an ASR
 
 The ``rtems_signal_catch`` directive establishes an ASR for the
 calling task.  The address of the ASR and its execution mode are
-specified to this directive.  The ASR’s mode is distinct from
-the task’s mode.  For example, the task may allow preemption,
-while that task’s ASR may have preemption disabled.  Until a
+specified to this directive.  The ASR's mode is distinct from
+the task's mode.  For example, the task may allow preemption,
+while that task's ASR may have preemption disabled.  Until a
 task calls ``rtems_signal_catch`` the first time,
 its ASR is invalid, and no signal sets can be sent to the task.
 
 A task may invalidate its ASR and discard all pending
 signals by calling ``rtems_signal_catch``
-with a value of NULL for the ASR’s address.  When a task’s
+with a value of NULL for the ASR's address.  When a task's
 ASR is invalid, new signal sets sent to this task are discarded.
 
 A task may disable ASR processing (``RTEMS_NO_ASR``) via the
-task_mode directive.  When a task’s ASR is disabled, the signals
+task_mode directive.  When a task's ASR is disabled, the signals
 sent to it are left pending to be processed later when the ASR
 is enabled.
 
@@ -153,7 +153,7 @@ be called from an ASR.  A task is only allowed one active ASR.
 Thus, each call to ``rtems_signal_catch``
 replaces the previous one.
 
-Normally, signal processing is disabled for the ASR’s
+Normally, signal processing is disabled for the ASR's
 execution mode, but if signal processing is enabled for the ASR,
 the ASR must be reentrant.
 
@@ -165,7 +165,7 @@ tasks and ISRs to send signals to a target task.  The target task and
 a set of signals are specified to the``rtems_signal_send`` directive.  The sending
 of a signal to a task has no effect on the execution state of
 that task.  If the task is not the currently running task, then
-the signals are left pending and processed by the task’s ASR the
+the signals are left pending and processed by the task's ASR the
 next time the task is dispatched to run.  The ASR is executed
 immediately before the task is dispatched.  If the currently
 running task sends a signal to itself or is sent a signal from
@@ -209,8 +209,8 @@ prior to entering the ASR.
 Directives
 ==========
 
-This section details the signal manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the signal manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -242,7 +242,7 @@ specifies the entry point of the ASR.  If asr_handler is NULL,
 the ASR for the calling task is invalidated and all pending
 signals are cleared.  Any signals sent to a task with an invalid
 ASR are discarded.  The mode parameter specifies the execution
-mode for the ASR.  This execution mode supersedes the task’s
+mode for the ASR.  This execution mode supersedes the task's
 execution mode while the ASR is executing.
 
 **NOTES:**
@@ -308,7 +308,7 @@ time the task is dispatched to run.
 **NOTES:**
 
 Sending a signal set to a task has no effect on that
-task’s state.  If a signal set is sent to a blocked task, then
+task's state.  If a signal set is sent to a blocked task, then
 the task will remain blocked and the signals will be processed
 when the task becomes the running task.
 

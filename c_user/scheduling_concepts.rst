@@ -12,10 +12,10 @@ provide immediate response to specific external events, particularly
 the necessity of scheduling tasks to run within a specified time limit
 after the occurrence of an event.  For example, software embedded in
 life-support systems used to monitor hospital patients must take instant
-action if a change in the patient’s status is detected.
+action if a change in the patient's status is detected.
 
 The component of RTEMS responsible for providing this capability is
-appropriately called the scheduler.  The scheduler’s sole purpose is
+appropriately called the scheduler.  The scheduler's sole purpose is
 to allocate the all important resource of processor time to the various
 tasks competing for attention.
 
@@ -175,7 +175,7 @@ Constant Bandwidth Server Scheduling (CBS)
 
 This is an alternative scheduler in RTEMS for single core applications.
 The CBS is a budget aware extension of EDF scheduler. The main goal of this
-scheduler is to ensure temporal isolation of tasks meaning that a task’s
+scheduler is to ensure temporal isolation of tasks meaning that a task's
 execution in terms of meeting deadlines must not be influenced by other
 tasks as if they were run on multiple independent processors.
 
@@ -232,7 +232,7 @@ Task Priority and Scheduling
 
 The most significant task scheduling modification mechanism is the ability
 for the user to assign a priority level to each individual task when it
-is created and to alter a task’s priority at run-time.  RTEMS supports
+is created and to alter a task's priority at run-time.  RTEMS supports
 up to 255 priority levels.  Level 255 is the lowest priority and level
 1 is the highest.
 
@@ -260,7 +260,7 @@ mode flag (``RTEMS_TIMESLICE_MASK``).  If timeslicing is
 enabled for a task (``RTEMS_TIMESLICE``), then RTEMS will
 limit the amount of time the task can execute before the processor is
 allocated to another task.  Each tick of the real-time clock reduces
-the currently running task’s timeslice.  When the execution time equals
+the currently running task's timeslice.  When the execution time equals
 the timeslice, RTEMS will dispatch another task of the same priority
 to execute.  If there are no other tasks of the same priority ready to
 execute, then the current task is allocated an additional timeslice and
@@ -288,14 +288,14 @@ from the task currently using it.  This involves a concept
 called a context switch.  To perform a context switch, the
 dispatcher saves the context of the current task and restores
 the context of the task which has been allocated to the
-processor.  Saving and restoring a task’s context is the
+processor.  Saving and restoring a task's context is the
 storing/loading of all the essential information about a task to
 enable it to continue execution without any effects of the
-interruption.  For example, the contents of a task’s register
+interruption.  For example, the contents of a task's register
 set must be the same when it is given the processor as they were
 when it was taken away.  All of the information that must be
 saved or restored for a context switch is located either in the
-TCB or on the task’s stacks.
+TCB or on the task's stacks.
 
 Tasks that utilize a numeric coprocessor and are created with the``RTEMS_FLOATING_POINT`` attribute require additional
 operations during a context switch.  These additional operations
@@ -394,7 +394,7 @@ A task enters the blocked state due to any of the following conditions:
 
 - The running task issues a ``rtems_region_get_segment``
   directive with the wait option and there is not an available segment large
-  enough to satisfy the task’s request.
+  enough to satisfy the task's request.
 
 A blocked task may also be suspended.  Therefore, both the suspension
 and the blocking condition must be removed before the task becomes ready
@@ -432,7 +432,7 @@ to any of the following conditions:
 - A running task issues a ``rtems_region_return_segment``
   directive which releases a segment to the region on which the blocked task
   is waiting and a resulting segment is large enough to satisfy
-  the task’s request.
+  the task's request.
 
 - A rate monotonic period expires for a task which blocked
   by a call to the ``rtems_rate_monotonic_period`` directive.

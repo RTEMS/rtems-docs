@@ -8,7 +8,7 @@ The purpose of the clock driver is to provide two services for the operating
 system.
 
 - A steady time basis to the kernel, so that the RTEMS primitives that need
-  a clock tick work properly.  See the *Clock Manager* chapter of the*RTEMS Application C User’s Guide* for more details.
+  a clock tick work properly.  See the *Clock Manager* chapter of the*RTEMS Application C User's Guide* for more details.
 
 - An optional time counter to generate timestamps of the uptime and wall
   clock time.

@@ -21,21 +21,21 @@ heap memory. The Red-Black Tree API provided by RTEMS is:
 
 - ``rtems_rtems_rbtree_initialize_empty`` - initialize the red-black tree as empty
 
-- ``rtems_rtems_rbtree_set_off_tree`` - Clear a node’s links
+- ``rtems_rtems_rbtree_set_off_tree`` - Clear a node's links
 
-- ``rtems_rtems_rbtree_root`` - Return the red-black tree’s root node
+- ``rtems_rtems_rbtree_root`` - Return the red-black tree's root node
 
-- ``rtems_rtems_rbtree_min`` - Return the red-black tree’s minimum node
+- ``rtems_rtems_rbtree_min`` - Return the red-black tree's minimum node
 
-- ``rtems_rtems_rbtree_max`` - Return the red-black tree’s maximum node
+- ``rtems_rtems_rbtree_max`` - Return the red-black tree's maximum node
 
-- ``rtems_rtems_rbtree_left`` - Return a node’s left child node
+- ``rtems_rtems_rbtree_left`` - Return a node's left child node
 
-- ``rtems_rtems_rbtree_right`` - Return a node’s right child node
+- ``rtems_rtems_rbtree_right`` - Return a node's right child node
 
-- ``rtems_rtems_rbtree_parent`` - Return a node’s parent node
+- ``rtems_rtems_rbtree_parent`` - Return a node's parent node
 
-- ``rtems_rtems_rbtree_are_nodes_equal`` - Are the node’s equal ?
+- ``rtems_rtems_rbtree_are_nodes_equal`` - Are the node's equal ?
 
 - ``rtems_rtems_rbtree_is_empty`` - Is the red-black tree empty ?
 
@@ -85,8 +85,8 @@ A red-black tree is made up from nodes that orginate from a red-black tree contr
 object. A node is of type ``rtems_rtems_rbtree_node``. The node
 is designed to be part of a user data structure. To obtain the encapsulating
 structure users can use the ``RTEMS_CONTAINER_OF`` macro.
-The node can be placed anywhere within the user’s structure and the macro will
-calculate the structure’s address from the node’s address.
+The node can be placed anywhere within the user's structure and the macro will
+calculate the structure's address from the node's address.
 
 Controls
 --------

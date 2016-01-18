@@ -30,7 +30,7 @@ by the task manager are:
 
 - ``rtems_task_set_priority`` - Set task priority
 
-- ``rtems_task_mode`` - Change current task’s mode
+- ``rtems_task_mode`` - Change current task's mode
 
 - ``rtems_task_wake_after`` - Wake up after interval
 
@@ -69,7 +69,7 @@ task concept:
 - a sequence of closely related computations which can execute
   concurrently with other computational sequences.
 
-From RTEMS’ perspective, a task is the smallest thread of
+From RTEMS' perspective, a task is the smallest thread of
 execution which can compete on its own for system resources.  A
 task is manifested by the existence of a task control block
 (TCB).
@@ -84,20 +84,20 @@ reserves a TCB for each task configured.  A TCB is allocated
 upon creation of the task and is returned to the TCB free list
 upon deletion of the task.
 
-The TCB’s elements are modified as a result of system calls made
+The TCB's elements are modified as a result of system calls made
 by the application in response to external and internal stimuli.
 TCBs are the only RTEMS internal data structure that can be
 accessed by an application via user extension routines.  The TCB
-contains a task’s name, ID, current priority, current and
+contains a task's name, ID, current priority, current and
 starting states, execution mode, TCB user extension pointer,
 scheduling control structures, as well as data required by a
 blocked task.
 
-A task’s context is stored in the TCB when a task switch occurs.
+A task's context is stored in the TCB when a task switch occurs.
 When the task regains control of the processor, its context is
 restored from the TCB.  When a task is restarted, the initial
 state of the task is restored from the starting context area in
-the task’s TCB.
+the task's TCB.
 
 Task States
 -----------
@@ -131,7 +131,7 @@ Task Priority
 .. index:: priority, task
 .. index:: rtems_task_priority
 
-A task’s priority determines its importance in relation to the
+A task's priority determines its importance in relation to the
 other tasks executing on the same processor.  RTEMS supports 255
 levels of priority ranging from 1 to 255.  The data type``rtems_task_priority`` is used to store task
 priorities.
@@ -158,7 +158,7 @@ Task Mode
 .. index:: task mode
 .. index:: rtems_task_mode
 
-A task’s execution mode is a combination of the following
+A task's execution mode is a combination of the following
 four components:
 
 - preemption
@@ -169,14 +169,14 @@ four components:
 
 - interrupt level
 
-It is used to modify RTEMS’ scheduling process and to alter the
+It is used to modify RTEMS' scheduling process and to alter the
 execution environment of the task.  The data type``rtems_task_mode`` is used to manage the task
 execution mode... index:: preemption
 
 The preemption component allows a task to determine when control of the
 processor is relinquished.  If preemption is disabled
 (``RTEMS_NO_PREEMPT``), the task will retain control of the
-processor as long as it is in the executing state – even if a higher
+processor as long as it is in the executing state - even if a higher
 priority task is made ready.  If preemption is enabled
 (``RTEMS_PREEMPT``)  and a higher priority task is made ready,
 then the processor will be taken away from the current task immediately and
@@ -300,9 +300,9 @@ Per task variables are used to support global variables whose value
 may be unique to a task. After indicating that a variable should be
 treated as private (i.e. per-task) the task can access and modify the
 variable, but the modifications will not appear to other tasks, and
-other tasks’ modifications to that variable will not affect the value
+other tasks' modifications to that variable will not affect the value
 seen by the task.  This is accomplished by saving and restoring the
-variable’s value each time a task switch occurs to or from the calling task.
+variable's value each time a task switch occurs to or from the calling task.
 
 The value seen by other tasks, including those which have not added the
 variable to their set and are thus accessing the variable as a common
@@ -322,14 +322,14 @@ Task variables increase the context switch time to and from the
 tasks that own them so it is desirable to minimize the number of
 task variables.  One efficient method is to have a single task
 variable that is a pointer to a dynamically allocated structure
-containing the task’s private "global" data.
+containing the task's private "global" data.
 
 A critical point with per-task variables is that each task must separately
 request that the same global variable is per-task private.
 
 *WARNING*: Per-Task variables are inherently broken on SMP systems. They
 only work correctly when there is one task executing in the system and
-that task is the logical owner of the value in the per-task variable’s
+that task is the logical owner of the value in the per-task variable's
 location. There is no way for a single memory image to contain the
 correct value for each task executing on each core. Consequently,
 per-task variables are disabled in SMP configurations of RTEMS.
@@ -374,7 +374,7 @@ Building a Mode and Mask
 
 In general, a mode and its corresponding mask is built by a
 bitwise OR of the desired components.  The set of valid mode
-constants and each mode’s corresponding mask constant is
+constants and each mode's corresponding mask constant is
 listed below:
 
 - ``RTEMS_PREEMPT`` is masked by``RTEMS_PREEMPT_MASK`` and enables preemption
@@ -407,7 +407,7 @@ directive to place a task at interrupt level 3 and make it
 non-preemptible.  The mode should be set to``RTEMS_INTERRUPT_LEVEL(3)  |
 RTEMS_NO_PREEMPT`` to indicate the desired preemption mode and
 interrupt level, while the mask parameter should be set to``RTEMS_INTERRUPT_MASK |
-RTEMS_NO_PREEMPT_MASK`` to indicate that the calling task’s
+RTEMS_NO_PREEMPT_MASK`` to indicate that the calling task's
 interrupt level and preemption mode are being altered.
 
 Operations
@@ -450,20 +450,20 @@ on a task prior to starting it are nullified when the task is
 started.
 
 With the ``rtems_task_start``
-directive the user specifies the task’s
+directive the user specifies the task's
 starting address and argument.  The argument is used to
 communicate some startup information to the task.  As part of
-this directive, RTEMS initializes the task’s stack based upon
-the task’s initial execution mode and start address.  The
+this directive, RTEMS initializes the task's stack based upon
+the task's initial execution mode and start address.  The
 starting argument is passed to the task in accordance with the
-target processor’s calling convention.
+target processor's calling convention.
 
 The ``rtems_task_restart``
 directive restarts a task at its initial
 starting address with its original priority and execution mode,
 but with a possibly different argument.  The new argument may be
 used to distinguish between the original invocation of the task
-and subsequent invocations.  The task’s stack and control block
+and subsequent invocations.  The task's stack and control block
 are modified to reflect their original creation values.
 Although references to resources that have been requested are
 cleared, resources allocated by the task are NOT automatically
@@ -519,9 +519,9 @@ Changing Task Priority
 The ``rtems_task_set_priority``
 directive is used to obtain or change the
 current priority of either the calling task or another task.  If
-the new priority requested is``RTEMS_CURRENT_PRIORITY`` or the task’s
+the new priority requested is``RTEMS_CURRENT_PRIORITY`` or the task's
 actual priority, then the current priority will be returned and
-the task’s priority will remain unchanged.  If the task’s
+the task's priority will remain unchanged.  If the task's
 priority is altered, then the task will be scheduled according
 to its new priority.
 
@@ -534,9 +534,9 @@ Changing Task Mode
 
 The ``rtems_task_mode``
 directive is used to obtain or change the current
-execution mode of the calling task.  A task’s execution mode is
+execution mode of the calling task.  A task's execution mode is
 used to enable preemption, timeslicing, ASR processing, and to
-set the task’s interrupt level.
+set the task's interrupt level.
 
 The ``rtems_task_restart``
 directive resets the mode of a task to its
@@ -548,9 +548,9 @@ Task Deletion
 RTEMS provides the ``rtems_task_delete``
 directive to allow a task to
 delete itself or any other task.  This directive removes all
-RTEMS references to the task, frees the task’s control block,
+RTEMS references to the task, frees the task's control block,
 removes it from resource wait queues, and deallocates its stack
-as well as the optional floating point context.  The task’s name
+as well as the optional floating point context.  The task's name
 and ID become inactive at this time, and any subsequent
 references to either of them is invalid.  In fact, RTEMS may
 reuse the task ID for another task which is created later in the
@@ -589,8 +589,8 @@ an option for some use cases.
 Directives
 ==========
 
-This section details the task manager’s directives.  A
-subsection is dedicated to each of this manager’s directives and
+This section details the task manager's directives.  A
+subsection is dedicated to each of this manager's directives and
 describes the calling sequence, related constants, usage, and
 status codes.
 
@@ -629,7 +629,7 @@ TASK_CREATE - Create a task
 This directive creates a task which resides on the local node.
 It allocates and initializes a TCB, a stack, and an optional
 floating point context area.  The mode parameter contains values
-which sets the task’s initial execution mode.  The``RTEMS_FLOATING_POINT`` attribute should be
+which sets the task's initial execution mode.  The``RTEMS_FLOATING_POINT`` attribute should be
 specified if the created task
 is to use a numeric coprocessor.  For performance reasons, it is
 recommended that tasks not using the numeric coprocessor should
@@ -713,7 +713,7 @@ target processor in a processor dependent fashion.
 Tasks should not be made global unless remote tasks must
 interact with them.  This avoids the system overhead incurred by
 the creation of a global task.  When a global task is created,
-the task’s name and id must be transmitted to every node in the
+the task's name and id must be transmitted to every node in the
 system for insertion in the local copy of the global object
 table.
 
@@ -820,7 +820,7 @@ TASK_START - Start a task
 
 This directive readies the task, specified by ``id``, for execution
 based on the priority and execution mode specified when the task
-was created.  The starting address of the task is given in``entry_point``.  The task’s starting argument is contained in
+was created.  The starting address of the task is given in``entry_point``.  The task's starting argument is contained in
 argument.  This argument can be a single value or used as an index into an
 array of parameter blocks.  The type of this numeric argument is an unsigned
 integer type with the property that any valid pointer to void can be converted
@@ -861,13 +861,13 @@ TASK_RESTART - Restart a task
 **DESCRIPTION:**
 
 This directive resets the task specified by id to begin
-execution at its original starting address.  The task’s priority
+execution at its original starting address.  The task's priority
 and execution mode are set to the original creation values.  If
 the task is currently blocked, RTEMS automatically makes the
 task ready.  A task can be restarted from any state, except the
 dormant state.
 
-The task’s starting argument is contained in argument.  This argument can be a
+The task's starting argument is contained in argument.  This argument can be a
 single value or an index into an array of parameter blocks.  The type of this
 numeric argument is an unsigned integer type with the property that any valid
 pointer to void can be converted to this type and then converted back to a
@@ -1086,16 +1086,16 @@ TASK_SET_PRIORITY - Set task priority
 This directive manipulates the priority of the task specified by
 id.  An id of ``RTEMS_SELF`` is used to indicate
 the calling task.  When new_priority is not equal to``RTEMS_CURRENT_PRIORITY``, the specified
-task’s previous priority is returned in old_priority.  When
+task's previous priority is returned in old_priority.  When
 new_priority is ``RTEMS_CURRENT_PRIORITY``,
-the specified task’s current
+the specified task's current
 priority is returned in old_priority.  Valid priorities range
 from a high of 1 to a low of 255.
 
 **NOTES:**
 
 The calling task may be preempted if its preemption mode is
-enabled and it lowers its own priority or raises another task’s
+enabled and it lowers its own priority or raises another task's
 priority.
 
 In case the new priority equals the current priority of the task, then nothing
@@ -1107,12 +1107,12 @@ change the priority of the specified task.
 
 If the task specified by id is currently holding any binary
 semaphores which use the priority inheritance algorithm, then
-the task’s priority cannot be lowered immediately.  If the
-task’s priority were lowered immediately, then priority
-inversion results.  The requested lowering of the task’s
+the task's priority cannot be lowered immediately.  If the
+task's priority were lowered immediately, then priority
+inversion results.  The requested lowering of the task's
 priority will occur when the task has released all priority
-inheritance binary semaphores.  The task’s priority can be
-increased regardless of the task’s use of priority inheritance
+inheritance binary semaphores.  The task's priority can be
+increased regardless of the task's use of priority inheritance
 binary semaphores.
 
 TASK_MODE - Change the current task mode
@@ -1144,7 +1144,7 @@ TASK_MODE - Change the current task mode
 **DESCRIPTION:**
 
 This directive manipulates the execution mode of the calling
-task.  A task’s execution mode enables and disables preemption,
+task.  A task's execution mode enables and disables preemption,
 timeslicing, asynchronous signal processing, as well as
 specifying the current interrupt level.  To modify an execution
 mode, the mode class(es) to be changed must be specified in the
@@ -1167,7 +1167,7 @@ To temporarily disable the processing of a valid ASR, a task
 should call this directive with the ``RTEMS_NO_ASR``
 indicator specified in mode.
 
-The set of task mode constants and each mode’s corresponding
+The set of task mode constants and each mode's corresponding
 mask constant is provided in the following table:
 
 - ``RTEMS_PREEMPT`` is masked by``RTEMS_PREEMPT_MASK`` and enables preemption
@@ -1327,12 +1327,12 @@ This directive adds the memory location specified by the
 ptr argument to the context of the given task.  The variable will
 then be private to the task.  The task can access and modify the
 variable, but the modifications will not appear to other tasks, and
-other tasks’ modifications to that variable will not affect the value
+other tasks' modifications to that variable will not affect the value
 seen by the task.  This is accomplished by saving and restoring the
-variable’s value each time a task switch occurs to or from the calling task.
-If the dtor argument is non-NULL it specifies the address of a ‘destructor’
+variable's value each time a task switch occurs to or from the calling task.
+If the dtor argument is non-NULL it specifies the address of a 'destructor'
 function which will be called when the task is deleted.  The argument
-passed to the destructor function is the task’s value of the variable.
+passed to the destructor function is the task's value of the variable.
 
 **NOTES:**
 
@@ -1342,8 +1342,8 @@ Task variables increase the context switch time to and from the
 tasks that own them so it is desirable to minimize the number of
 task variables.  One efficient method
 is to have a single task variable that is a pointer to a dynamically
-allocated structure containing the task’s private ‘global’ data.
-In this case the destructor function could be ‘free’.
+allocated structure containing the task's private 'global' data.
+In this case the destructor function could be 'free'.
 
 Per-task variables are disabled in SMP configurations and this service
 is not available.
@@ -1420,7 +1420,7 @@ TASK_VARIABLE_DELETE - Remove per task variable
 
 **DESCRIPTION:**
 
-This directive removes the given location from a task’s context.
+This directive removes the given location from a task's context.
 
 **NOTES:**
 

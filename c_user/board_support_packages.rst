@@ -40,15 +40,15 @@ application.  Some of the hardware components may be initialized
 in this code as well as any application initialization that does
 not involve calls to RTEMS directives.
 
-The processor’s Interrupt Vector Table which will be used by the
+The processor's Interrupt Vector Table which will be used by the
 application may need to be set to the required value by the reset
 application initialization code.  Because interrupts are enabled
 automatically by RTEMS as part of the context switch to the first task,
 the Interrupt Vector Table MUST be set before this directive is invoked
-to ensure correct interrupt vectoring.  The processor’s Interrupt Vector
+to ensure correct interrupt vectoring.  The processor's Interrupt Vector
 Table must be accessible by RTEMS as it will be modified by the when
 installing user Interrupt Service Routines (ISRs) On some CPUs, RTEMS
-installs it’s own Interrupt Vector Table as part of initialization and
+installs it's own Interrupt Vector Table as part of initialization and
 thus these requirements are met automatically.  The reset code which is
 executed before the call to any RTEMS initialization routines has the
 following requirements:
@@ -66,7 +66,7 @@ following requirements:
 - Must initialize the stack pointer for the initialization process to
   that allocated.
 
-- Must initialize the processor’s Interrupt Vector Table.
+- Must initialize the processor's Interrupt Vector Table.
 
 - Must disable all maskable interrupts.
 
@@ -91,9 +91,9 @@ application.  If the processor supports interrupt nesting, the
 stack usage must include the deepest nest level.  The worst-case
 stack usage must account for the following requirements:
 
-- Processor’s interrupt stack frame
+- Processor's interrupt stack frame
 
-- Processor’s subroutine call stack frame
+- Processor's subroutine call stack frame
 
 - RTEMS system calls
 
@@ -115,7 +115,7 @@ interrupt service routines.
 
 The dedicated interrupt stack for the entire application on some
 architectures is supplied and initialized by the reset and initialization
-code of the user’s Board Support Package.  Whether allocated and
+code of the user's Board Support Package.  Whether allocated and
 initialized by the BSP or RTEMS, since all ISRs use this stack, the
 stack size must take into account the worst case stack usage by any
 combination of nested ISRs.
@@ -124,8 +124,8 @@ Processors Without a Separate Interrupt Stack
 ---------------------------------------------
 
 Some processors do not support a separate stack for interrupts.  In this
-case, without special assistance every task’s stack must include
-enough space to handle the task’s worst-case stack usage as well as
+case, without special assistance every task's stack must include
+enough space to handle the task's worst-case stack usage as well as
 the worst-case interrupt stack usage.  This is necessary because the
 worst-case interrupt nesting could occur while any task is executing.
 

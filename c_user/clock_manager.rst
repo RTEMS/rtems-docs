@@ -103,15 +103,15 @@ also sometimes referred to as the automatic round-robin
 scheduling algorithm.  The length of time allocated to each task
 is known as the quantum or timeslice.
 
-The system’s timeslice is defined as an integral
+The system's timeslice is defined as an integral
 number of ticks, and is specified in the Configuration Table.
 The timeslice is defined for the entire system of tasks, but
 timeslicing is enabled and disabled on a per task basis.
 
 The ``rtems_clock_tick``
 directive implements timeslicing by
-decrementing the running task’s time-remaining counter when both
-timeslicing and preemption are enabled.  If the task’s timeslice
+decrementing the running task's time-remaining counter when both
+timeslicing and preemption are enabled.  If the task's timeslice
 has expired, then that task will be preempted if there exists a
 ready task of equal priority.
 
@@ -143,7 +143,7 @@ Announcing a Tick
 -----------------
 
 RTEMS provides the ``rtems_clock_tick`` directive which is
-called from the user’s real-time clock ISR to inform RTEMS that
+called from the user's real-time clock ISR to inform RTEMS that
 a tick has elapsed.  The tick frequency value, defined in
 microseconds, is a configuration parameter found in the
 Configuration Table.  RTEMS divides one million microseconds
@@ -203,8 +203,8 @@ invoked before the date and time have been set.
 Directives
 ==========
 
-This section details the clock manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the clock manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

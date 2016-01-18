@@ -147,10 +147,10 @@ with the toolset, this same information must be used when building the
 application.  So a BSP must include a build configuration file.  The
 configuration file is ``make/custom/BSP.cfg``.
 
-The configuration file is taken into account when building one’s
+The configuration file is taken into account when building one's
 application using the RTEMS template Makefiles (``make/templates``).
 These application template Makefiles have been included with the
-RTEMS source distribution since the early 1990’s.  However there is
+RTEMS source distribution since the early 1990's.  However there is
 a desire in the RTEMS user community to move all provided examples to
 GNU autoconf. They are included in the 4.9 release series and used for
 all examples provided with RTEMS. There is no definite time table for

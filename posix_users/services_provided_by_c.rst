@@ -165,7 +165,7 @@ Input and Output (stdio.h)
 
 - ``puts`` - Write a character string on standard output
 
-- ``remove`` - Delete a file’s name
+- ``remove`` - Delete a file's name
 
 - ``rename`` - Rename a file
 

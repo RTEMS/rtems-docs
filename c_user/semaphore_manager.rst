@@ -125,7 +125,7 @@ discipline.   When a task of higher priority than the task
 holding the semaphore blocks, the priority of the task holding
 the semaphore is increased to that of the blocking task.  When
 the task holding the task completely releases the binary
-semaphore (i.e. not for a nested release), the holder’s priority
+semaphore (i.e. not for a nested release), the holder's priority
 is restored to the value it had before any higher priority was
 inherited.
 
@@ -159,7 +159,7 @@ discipline.   When a task of lower priority than the ceiling
 priority successfully obtains the semaphore, its priority is
 raised to the ceiling priority.  When the task holding the task
 completely releases the binary semaphore (i.e. not for a nested
-release), the holder’s priority is restored to the value it had
+release), the holder's priority is restored to the value it had
 before any higher priority was put into effect.
 
 The need to identify the highest priority task which
@@ -298,7 +298,7 @@ initial count.  If a binary semaphore is created with a count of
 zero (0) to indicate that it has been allocated, then the task
 creating the semaphore is considered the current holder of the
 semaphore.  At create time the method for ordering waiting tasks
-in the semaphore’s task wait queue (by FIFO or task priority) is
+in the semaphore's task wait queue (by FIFO or task priority) is
 specified.  Additionally, the priority inheritance or priority
 ceiling algorithm may be selected for local, binary semaphores
 that use the priority task wait queue blocking discipline.  If
@@ -346,9 +346,9 @@ one of the following situations applies:
   wait before returning with an error status code.
 
 If the task waits to acquire the semaphore, then it
-is placed in the semaphore’s task wait queue in either FIFO or
+is placed in the semaphore's task wait queue in either FIFO or
 task priority order.  If the task blocked waiting for a binary
-semaphore using priority inheritance and the task’s priority is
+semaphore using priority inheritance and the task's priority is
 greater than that of the task currently holding the semaphore,
 then the holding task will inherit the priority of the blocking
 task.  All tasks waiting on a semaphore are returned an error
@@ -356,7 +356,7 @@ code when the semaphore is deleted.
 
 When a task successfully obtains a semaphore using
 priority ceiling and the priority ceiling for this semaphore is
-greater than that of the holder, then the holder’s priority will
+greater than that of the holder, then the holder's priority will
 be elevated.
 
 Releasing a Semaphore
@@ -383,17 +383,17 @@ Deleting a Semaphore
 
 The ``rtems_semaphore_delete`` directive removes a semaphore
 from the system and frees its control block.  A semaphore can be
-deleted by any local task that knows the semaphore’s ID.  As a
+deleted by any local task that knows the semaphore's ID.  As a
 result of this directive, all tasks blocked waiting to acquire
 the semaphore will be readied and returned a status code which
 indicates that the semaphore was deleted.  Any subsequent
-references to the semaphore’s name and ID are invalid.
+references to the semaphore's name and ID are invalid.
 
 Directives
 ==========
 
-This section details the semaphore manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the semaphore manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 
@@ -489,7 +489,7 @@ defined by RTEMS:
 Semaphores should not be made global unless remote
 tasks must interact with the created semaphore.  This is to
 avoid the system overhead incurred by the creation of a global
-semaphore.  When a global semaphore is created, the semaphore’s
+semaphore.  When a global semaphore is created, the semaphore's
 name and id must be transmitted to every node in the system for
 insertion in the local copy of the global object table.
 
@@ -584,7 +584,7 @@ by RTEMS.
 **NOTES:**
 
 The calling task will be preempted if it is enabled
-by the task’s execution mode and a higher priority local task is
+by the task's execution mode and a higher priority local task is
 waiting on the deleted semaphore.  The calling task will NOT be
 preempted if all of the tasks that are waiting on the semaphore
 are remote tasks.
@@ -643,7 +643,7 @@ semaphore count is zero or negative, then a status code is returned
 indicating that the semaphore is not available. If the calling task
 chooses to wait for a semaphore and the current semaphore count is zero or
 negative, then it is decremented by one and the calling task is placed on
-the semaphore’s wait queue and blocked.  If the semaphore was created with
+the semaphore's wait queue and blocked.  If the semaphore was created with
 the ``RTEMS_PRIORITY`` attribute, then the calling task is
 inserted into the queue according to its priority.  However, if the
 semaphore was created with the ``RTEMS_FIFO`` attribute, then
@@ -713,9 +713,9 @@ SEMAPHORE_RELEASE - Release a semaphore
 
 This directive releases the semaphore specified by
 id.  The semaphore count is incremented by one.  If the count is
-zero or negative, then the first task on this semaphore’s wait
+zero or negative, then the first task on this semaphore's wait
 queue is removed and unblocked.  The unblocked task may preempt
-the running task if the running task’s preemption mode is
+the running task if the running task's preemption mode is
 enabled and the unblocked task has a higher priority than the
 running task.
 
@@ -769,7 +769,7 @@ the semaphore
 **DESCRIPTION:**
 
 This directive unblocks all tasks waiting on the semaphore specified by
-id.  Since there are tasks blocked on the semaphore, the semaphore’s
+id.  Since there are tasks blocked on the semaphore, the semaphore's
 count is not changed by this directive and thus is zero before and
 after this directive is executed.  Tasks which are unblocked as the
 result of this directive will return from the``rtems_semaphore_obtain`` directive with a
@@ -777,7 +777,7 @@ status code of ``RTEMS_UNSATISFIED`` to indicate
 that the semaphore was not obtained.
 
 This directive may unblock any number of tasks.  Any of the unblocked
-tasks may preempt the running task if the running task’s preemption mode is
+tasks may preempt the running task if the running task's preemption mode is
 enabled and an unblocked task has a higher priority than the
 running task.
 

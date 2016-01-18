@@ -72,7 +72,7 @@ Handling Periodic Tasks
 -----------------------
 .. index:: CBS periodic tasks
 
-Each task’s execution begins with a default background priority
+Each task's execution begins with a default background priority
 (see the chapter Scheduling Concepts to understand the concept of
 priorities in EDF). Once you decide the tasks should start periodic
 execution, you have two possibilities. Either you use only the Rate
@@ -146,10 +146,10 @@ Attaching Task to a Server
 --------------------------
 
 If a task is attached to a server using ``rtems_cbs_attach_thread``,
-the task’s computation time per period is limited by the server and
+the task's computation time per period is limited by the server and
 the deadline (period) of task is equal to deadline of the server which
 means if you conclude a period using ``rate_monotonic_period``,
-the length of next period is always determined by the server’s property.
+the length of next period is always determined by the server's property.
 
 The task has a guaranteed bandwidth given by the server but should not
 exceed it, otherwise the priority is pulled to background until the
@@ -220,8 +220,8 @@ to avoid overrun.
 Directives
 ==========
 
-This section details the Constant Bandwidth Server’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the Constant Bandwidth Server's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -308,7 +308,7 @@ This routine prepares an instance of a constant bandwidth server.
 The input parameter ``rtems_cbs_parameters`` specifies scheduling
 parameters of the server (period and budget). If these are not valid,``RTEMS_CBS_ERROR_INVALID_PARAMETER`` is returned.
 The ``budget_overrun_callback`` is an optional callback function, which is
-invoked in case the server’s budget within one period is exceeded.
+invoked in case the server's budget within one period is exceeded.
 Output parameter ``server_id`` becomes an id of the newly created server.
 If there is not enough memory, the ``RTEMS_CBS_ERROR_NO_MEMORY``
 is returned. If the maximum server count in the system is exceeded,``RTEMS_CBS_ERROR_FULL`` is returned.
@@ -583,7 +583,7 @@ CBS_GET_APPROVED_BUDGET - Get scheduler approved execution time
 
 **DESCRIPTION:**
 
-This directive returns server’s approved budget for subsequent periods.
+This directive returns server's approved budget for subsequent periods.
 
 .. COMMENT: COPYRIGHT (c) 1989-2011.
 

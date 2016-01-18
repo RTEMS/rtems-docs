@@ -24,7 +24,7 @@ Initialization Tasks
 .. index:: initialization tasks
 
 Initialization task(s) are the mechanism by which
-RTEMS transfers initial control to the user’s application.
+RTEMS transfers initial control to the user's application.
 Initialization tasks differ from other application tasks in that
 they are defined in the User Initialization Tasks Table and
 automatically created and started by RTEMS as part of its
@@ -211,8 +211,8 @@ application to end multitasking and terminate the system.
 Directives
 ==========
 
-This section details the Initialization Manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the Initialization Manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 

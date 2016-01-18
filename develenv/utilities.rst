@@ -116,7 +116,7 @@ smaller than download.sr.
 
 The source for packhex first appeared in the May 1993
 issue of Embedded Systems magazine.  The code was downloaded
-from their BBS.  Unfortunately, the author’s name was not
+from their BBS.  Unfortunately, the author's name was not
 provided in the listing.
 
 .. COMMENT: unhex
@@ -133,7 +133,7 @@ unhex - Convert Hexadecimal File into Binary Equivalent
 **DESCRIPTION**
 
 unhex accepts Intel Hexadecimal, Motorola Srecord, or
-TI ’B’ records and converts them to their binary equivalent.
+TI 'B' records and converts them to their binary equivalent.
 The output may sent to standout or may be placed in a specified
 file with the -o option.  The designated output file may not be
 an input file.  Multiple input files may be specified with their

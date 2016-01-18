@@ -56,10 +56,10 @@ explanation of their role in the filesystem.
     is a unique node identification number
 
 *st_uid*
-    is the user ID of the file’s owner
+    is the user ID of the file's owner
 
 *st_gid*
-    is the group ID of the file’s owner
+    is the group ID of the file's owner
 
 *st_atime*
     is the time of the last access to this file
@@ -499,7 +499,7 @@ filesystem for the system that contains the mount point. It will determine
 if the point that we are trying to mount onto is a node of IMFS_DIRECTORY
 type.
 
-If it is the node’s info element is altered so that the info.directory.mt_fs
+If it is the node's info element is altered so that the info.directory.mt_fs
 element points to the mount table chain entry that is associated with the
 mounted filesystem at this point. The info.directory.mt_fs element can be
 examined to determine if a filesystem is mounted at a directory. If it is
@@ -602,7 +602,7 @@ const char                                   \*dev
 
 The is intended to contain a string that identifies the device that contains
 the filesystem information. The filesystems that are currently implemented
-are memory based and don’t require a device specification.
+are memory based and don't require a device specification.
 
 If the mt_point_node.node_access is NULL then we are mounting the base file
 system.
@@ -613,7 +613,7 @@ system.
 The node will have read, write and execute permissions for owner, group and
 others.
 
-The node’s name will be a null string.
+The node's name will be a null string.
 
 A filesystem information structure(fs_info) will be allocated and
 initialized for the IMFS filesystem. The fs_info pointer in the mount table
@@ -658,7 +658,7 @@ This routine allows the IMFS to unmount a filesystem that has been
 mounted onto a IMFS directory.
 
 The mount entry mount point node access is verified to be a mounted
-directory.  It’s mt_fs is set to NULL.  This identifies to future
+directory.  It's mt_fs is set to NULL.  This identifies to future
 calles into the IMFS that this directory node is no longer a mount
 point.  Additionally, it will allow any directories that were hidden
 by the mounted system to again become visible.
@@ -741,7 +741,7 @@ Regular File Handler Table Functions
 
 Handler table functions are defined in a rtems_filesystem_file_handlers_r
 structure. It defines functions that are specific to a node type in a given
-filesystem. One table exists for each of the filesystem’s node types. The
+filesystem. One table exists for each of the filesystem's node types. The
 structure definition appears below. It is followed by general developmental
 information on each of the functions associated with regular files contained
 in this function management structure.
@@ -1114,7 +1114,7 @@ Directory Handler Table Functions
 
 Handler table functions are defined in a rtems_filesystem_file_handlers_r
 structure. It defines functions that are specific to a node type in a given
-filesystem. One table exists for each of the filesystem’s node types. The
+filesystem. One table exists for each of the filesystem's node types. The
 structure definition appears below. It is followed by general developmental
 information on each of the functions associated with directories contained in
 this function management structure.
@@ -1467,7 +1467,7 @@ Device Handler Table Functions
 
 Handler table functions are defined in a rtems_filesystem_file_handlers_r
 structure. It defines functions that are specific to a node type in a given
-filesystem. One table exists for each of the filesystem’s node types. The
+filesystem. One table exists for each of the filesystem's node types. The
 structure definition appears below. It is followed by general developmental
 information on each of the functions associated with devices contained in
 this function management structure.

@@ -103,7 +103,7 @@ POSIX allows for variables in the run-time environment.  These are
 name/value pairs that make be dynamically set and obtained by
 programs.  In a full POSIX environment with command line shell
 and multiple processes,  environment variables may be set in
-one process – such as the shell – and inherited by child
+one process - such as the shell - and inherited by child
 processes.  In RTEMS, there is only one process and thus
 only one set of environment variables across all processes.
 
@@ -127,8 +127,8 @@ the ``putenv()`` service.
 Directives
 ==========
 
-This section details the process environment manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the process environment manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

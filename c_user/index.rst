@@ -1,8 +1,8 @@
 ====================
-RTEMS C User’s Guide
+RTEMS C User's Guide
 ====================
 
-COPYRIGHT © 1988 - 2015.
+COPYRIGHT (c) 1988 - 2015.
 
 On-Line Applications Research Corporation (OAR).
 

@@ -86,7 +86,7 @@ self" which is implemented in a routine as follows.
     }
 
 If the CPU dependent IDLE thread body is implementation centers upon using
-a "halt", "idle", or "shutdown" instruction, then don’t forget to put it
+a "halt", "idle", or "shutdown" instruction, then don't forget to put it
 in an infinite loop as the CPU will have to reexecute this instruction
 each time the IDLE thread is dispatched.
 .. code:: c

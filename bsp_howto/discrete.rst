@@ -76,12 +76,12 @@ to configure an discrete I/O board:
 *relay_initial_values*
     is an array of the values that should be written to each output
     word on the board during initialization.  This allows the driver
-    to start with the board’s output  in a known state.
+    to start with the board's output  in a known state.
 
 Initialize a Discrete I/O Board
 ===============================
 
-At system initialization, the discrete I/O driver’s initialization entry point
+At system initialization, the discrete I/O driver's initialization entry point
 will be invoked.  As part of initialization, the driver will perform
 whatever board initializatin is required and then set all
 outputs to their configured initial state.

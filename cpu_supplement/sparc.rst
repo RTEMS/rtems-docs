@@ -33,7 +33,7 @@ the following documents available from SPARC International, Inc.
 
 **ERC32 Specific Information**
 
-The European Space Agency’s ERC32 is a three chip
+The European Space Agency's ERC32 is a three chip
 computing core implementing a SPARC V7 processor and associated
 support circuitry for embedded space applications. The integer
 and floating-point units (90C601E & 90C602E) are based on the
@@ -56,7 +56,7 @@ browser at ftp://ftp.estec.esa.nl/pub/ws/wsd/erc32.
 
 - MEC Device Specification
 
-Additionally, the SPARC RISC User’s Guide from Matra
+Additionally, the SPARC RISC User's Guide from Matra
 MHS documents the functionality of the integer and floating
 point units including the instruction set information.  To
 obtain this document as well as ERC32 components and VHDL models
@@ -112,7 +112,7 @@ features present on a particular CPU model, one simply notes
 that floating point hardware is or is not present and defines a
 single constant appropriately.  Conditional compilation is
 utilized to include the appropriate source code for this CPU
-model’s feature set.  It is important to note that this means
+model's feature set.  It is important to note that this means
 that RTEMS is thus compiled using the appropriate feature set
 and compilation flags optimal for this CPU model used.  The
 alternative would be to generate a binary which would execute on
@@ -130,7 +130,7 @@ CPU Model Name
 
 The macro CPU_MODEL_NAME is a string which designates
 the name of this CPU model.  For example, for the European Space
-Agency’s ERC32 SPARC model, this macro is set to the string
+Agency's ERC32 SPARC model, this macro is set to the string
 "erc32".
 
 Floating Point Unit
@@ -385,7 +385,7 @@ registers windows.
 
 Because the set of register windows is finite, it is
 possible to execute enough save instructions without
-corresponding restore’s to consume all of the register windows.
+corresponding restore's to consume all of the register windows.
 This is easily accomplished in a high level language because
 each subroutine typically performs a save instruction upon
 entry.  Thus having a subroutine call depth greater than the
@@ -396,7 +396,7 @@ is responsible for saving the contents of the oldest register
 window on the program stack.
 
 Similarly, the subroutines will eventually complete
-and begin to perform restore’s.  If the restore results in the
+and begin to perform restore's.  If the restore results in the
 need for a register window which has previously been written to
 memory as part of an overflow, then a window underflow condition
 results.  Just like the window overflow, the window underflow
@@ -458,7 +458,7 @@ Call and Return Mechanism
 The SPARC architecture supports a simple yet
 effective call and return mechanism.  A subroutine is invoked
 via the call (call) instruction.  This instruction places the
-return address in the caller’s output register 7 (o7).  After
+return address in the caller's output register 7 (o7).  After
 the callee executes a save instruction, this value is available
 in input register 7 (i7) until the corresponding restore
 instruction is executed.
@@ -466,7 +466,7 @@ instruction is executed.
 The callee returns to the caller via a jmp to the
 return address.  There is a delay slot following this
 instruction which is commonly used to execute a restore
-instruction – if a register window was allocated by this
+instruction - if a register window was allocated by this
 subroutine.
 
 It is important to note that the SPARC subroutine
@@ -500,7 +500,7 @@ Parameter Passing
 -----------------
 
 RTEMS assumes that arguments are placed in the
-caller’s output registers with the first argument in output
+caller's output registers with the first argument in output
 register 0 (o0), the second argument in output register 1 (o1),
 and so forth.  Until the callee executes a save instruction, the
 parameters are still visible in the output registers.  After the
@@ -534,7 +534,7 @@ Memory Model
 A processor may support any combination of memory
 models ranging from pure physical addressing to complex demand
 paged virtual memory systems.  RTEMS supports a flat memory
-model which ranges contiguously over the processor’s allowable
+model which ranges contiguously over the processor's allowable
 address space.  RTEMS does not support segmentation or virtual
 memory of any kind.  The appropriate memory model for RTEMS
 provided by the targeted processor and related characteristics
@@ -601,8 +601,8 @@ Most processors require that an interrupt handler utilize some
 special control mechanisms to return to the normal processing
 stream.  Although RTEMS hides many of the processor dependent
 details of interrupt processing, it is important to understand
-how the RTEMS interrupt manager is mapped onto the processor’s
-unique architecture. Discussed in this chapter are the SPARC’s
+how the RTEMS interrupt manager is mapped onto the processor's
+unique architecture. Discussed in this chapter are the SPARC's
 interrupt response and control mechanisms as they pertain to
 RTEMS.
 
@@ -676,7 +676,7 @@ interrupt handler, then upon receipt of the interrupt, the
 processor passes control to the RTEMS interrupt handler which
 performs the following actions:
 
-- saves the state of the interrupted task on it’s stack,
+- saves the state of the interrupted task on it's stack,
 
 - insures that a register window is available for
   subsequent traps,
@@ -713,7 +713,7 @@ trap cannot be correctly processed unless (1) traps are enabled
 and (2) a register window is reserved for traps.  Thus, the
 RTEMS interrupt handler insures that a register window is
 available for subsequent traps before enabling traps and
-invoking the user’s interrupt handler.
+invoking the user's interrupt handler.
 
 Interrupt Levels
 ----------------
@@ -792,7 +792,7 @@ execute on the stack of the RTEMS task which they interrupted.
 This artificially inflates the stack requirements for each task
 since EVERY task stack would have to include enough space to
 account for the worst case interrupt stack requirements in
-addition to it’s own worst case usage.  RTEMS addresses this
+addition to it's own worst case usage.  RTEMS addresses this
 problem on the SPARC by providing a dedicated interrupt stack
 managed by software.
 
@@ -864,7 +864,7 @@ to support a particular processor and target board combination.
 This chapter presents a discussion of SPARC specific BSP issues.
 For more information on developing a BSP, refer to the chapter
 titled Board Support Packages in the RTEMS
-Applications User’s Guide.
+Applications User's Guide.
 
 System Reset
 ------------
@@ -891,14 +891,14 @@ reflect the last trap which occurred before the reset.
 Processor Initialization
 ------------------------
 
-It is the responsibility of the application’s
+It is the responsibility of the application's
 initialization code to initialize the TBR and install trap
 handlers for at least the register window overflow and register
 window underflow conditions.  Traps should be enabled before
 invoking any subroutines to allow for register window
 management.  However, interrupts should be disabled by setting
 the Processor Interrupt Level (pil) field of the psr to 15.
-RTEMS installs it’s own Trap Table as part of initialization
+RTEMS installs it's own Trap Table as part of initialization
 which is initialized with the contents of the Trap Table in
 place when the ``rtems_initialize_executive`` directive was invoked.
 Upon completion of executive initialization, interrupts are
@@ -926,7 +926,7 @@ specific requirements:
 - Must enable traps so window overflow and underflow
   conditions can be properly handled.
 
-- Must initialize the SPARC’s initial trap table with at
+- Must initialize the SPARC's initial trap table with at
   least trap handlers for register window overflow and register
   window underflow.
 

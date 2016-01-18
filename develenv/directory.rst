@@ -103,7 +103,7 @@ as ``${RTEMS_ROOT}`` in this discussion.
     be discussed further in this document.
 
 ``${RTEMS_ROOT}/cpukit/``
-    This directory is the root for all of the "multilib’able"
+    This directory is the root for all of the "multilib'able"
     portions of RTEMS.  This is a GNU way of saying the
     contents of this directory can be compiled like the
     C Library (``libc.a``) and the functionality is
@@ -123,7 +123,7 @@ as ``${RTEMS_ROOT}`` in this discussion.
 
 ``${RTEMS_ROOT}/make/``
     This directory contains files which support the
-    RTEMS Makefile’s.  From a user’s perspective, the
+    RTEMS Makefile's.  From a user's perspective, the
     most important parts are found in the ``custom/``
     subdirectory.  Each ".cfg" file in this directory
     is associated with a specific BSP and describes
@@ -232,7 +232,7 @@ directory and a description of each.
 
 ``${RTEMS_ROOT}/c/src/nfsclient/``
     This directory contains a Network File System (NFS) client
-    for RTEMS.  With this file system, a user’s application can
+    for RTEMS.  With this file system, a user's application can
     access files on a remote computer.
 
 ``${RTEMS_ROOT}/c/src/optman/``
@@ -554,10 +554,10 @@ and PostScript.
 
 ``${RTEMS_ROOT}/doc/ada_user/``
     This directory contains the source code for the *RTEMS
-    Applications Ada User’s Guide* which documents the Ada95
+    Applications Ada User's Guide* which documents the Ada95
     binding to the Classic API.  This manual is produced from
     from the same source base as the *RTEMS Application
-    C User’s Guide*.
+    C User's Guide*.
 
 ``${RTEMS_ROOT}/doc/bsp_howto/``
     This directory contains the source code for the*RTEMS BSP and Device Driver Development Guide*.
@@ -605,8 +605,8 @@ and PostScript.
     This directory contains the source code for the*RTEMS POSIX 1003.1 Compliance Guide*.
 
 ``${RTEMS_ROOT}/doc/posix_users/``
-    This directory contains the source code for the*RTEMS POSIX API User’s Guide*.  It is important to
-    note that RTEMS’ support for POSIX is a combination of
+    This directory contains the source code for the*RTEMS POSIX API User's Guide*.  It is important to
+    note that RTEMS' support for POSIX is a combination of
     functionality provided by RTEMS and the Newlib C Library
     so some functionality is documented by Newlib.
 
@@ -628,7 +628,7 @@ and PostScript.
 
 ``${RTEMS_ROOT}/doc/user/``
     This directory contains the source code for the *RTEMS
-    Applications C User’s Guide* which documents the Classic API.
+    Applications C User's Guide* which documents the Classic API.
 
 .. COMMENT: COPYRIGHT (c) 1989-2007.
 

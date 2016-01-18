@@ -34,7 +34,7 @@ Two types of memories have to be distinguished:
 - ROM - non-volatile but read only
 
 Even though RAM and ROM can be found in every personal computer,
-one generally doesn’t care about them.  In a personal computer,
+one generally doesn't care about them.  In a personal computer,
 a program is nearly always stored on disk and executed in RAM.  Things
 are a bit different for embedded targets: the target will execute the
 program each time it is rebooted or switched on.   The application
@@ -49,7 +49,7 @@ object file format on the Motorola m68k family of microprocessors,
 the following sections will be present:
 
 - *code (``.text``) section*:
-  is the program’s code and it should not be modified.
+  is the program's code and it should not be modified.
   This section may be placed in ROM.
 
 - *non-initialized data (``.bss``) section*:
@@ -57,7 +57,7 @@ the following sections will be present:
 
 - *initialized data (``.data``) section*:
   holds the initialized program data which may be modified during the
-  program’s life.  This means they have to be in RAM.
+  program's life.  This means they have to be in RAM.
   On the other hand, these variables must be set to predefined values, and
   those predefined values have to be stored in ROM.
 
@@ -300,7 +300,7 @@ $BSP340_ROOT/startup/linkcmds.
 Initialized Data
 ================
 
-Now there’s a problem with the initialized data: the ``.data`` section
+Now there's a problem with the initialized data: the ``.data`` section
 has to be in RAM as this data may be modified during the program execution.
 But how will the values be initialized at boot time?
 
@@ -354,7 +354,7 @@ section with an ``awk`` script.  The details of how
 this is done are not relevant.
 
 Step 3 shows the final executable image as it logically appears in
-the target’s non-volatile program memory.  The board initialization
+the target's non-volatile program memory.  The board initialization
 code will copy the ""copy of ``.data`` section" (which are stored in
 ROM) to their reserved location in RAM.
 

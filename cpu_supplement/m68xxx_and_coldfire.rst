@@ -17,9 +17,9 @@ For information on the MC68xxx and Coldfire architecture, refer to the following
 
 - *M68000 Family Reference, Motorola, FR68K/D*.
 
-- *MC68020 User’s Manual, Motorola, MC68020UM/AD*.
+- *MC68020 User's Manual, Motorola, MC68020UM/AD*.
 
-- *MC68881/MC68882 Floating-Point Coprocessor User’s Manual,
+- *MC68881/MC68882 Floating-Point Coprocessor User's Manual,
   Motorola, MC68881UM/AD*.
 
 CPU Model Dependent Features
@@ -136,7 +136,7 @@ segmentation on any of the MC68xxx family members.
 Interrupt Processing
 ====================
 
-Discussed in this section are the MC68xxx’s interrupt response and
+Discussed in this section are the MC68xxx's interrupt response and
 control mechanisms as they pertain to RTEMS.
 
 Vectoring of an Interrupt Handler
@@ -182,7 +182,7 @@ interrupt stacks automatically perform the following actions:
   installed with the interrupt_catch directive, then the RTEMS
   interrupt handler will begin execution.  The RTEMS interrupt
   handler saves all registers which are not preserved according to
-  the calling conventions and invokes the application’s ISR.
+  the calling conventions and invokes the application's ISR.
 
 A nested interrupt is processed similarly by these
 CPU models with the exception that only a single ISF is placed
@@ -339,11 +339,11 @@ the following actions:
 Processor Initialization
 ------------------------
 
-The address of the application’s initialization code should be stored in
+The address of the application's initialization code should be stored in
 the first vector of the EVT which will allow the immediate vectoring to
 the application code.  If the application requires that the VBR be some
 value besides zero, then it should be set to the required value at this
-point.  All tasks share the same MC68020’s VBR value.  Because interrupts
+point.  All tasks share the same MC68020's VBR value.  Because interrupts
 are enabled automatically by RTEMS as part of the context switch to the
 first task, the VBR MUST be set by either RTEMS of the BSP before this
 occurs ensure correct interrupt vectoring.  If processor caching is
@@ -351,7 +351,7 @@ to be utilized, then it should be enabled during the reset application
 initialization code.
 
 In addition to the requirements described in the
-Board Support Packages chapter of the Applications User’s
+Board Support Packages chapter of the Applications User's
 Manual for the reset code which is executed before the call to
 initialize executive, the MC68020 version has the following
 specific requirements:
@@ -366,7 +366,7 @@ specific requirements:
   minimum stack size of MINIMUM_STACK_SIZE bytes is provided for
   the initialize executive directive.
 
-- Must initialize the MC68020’s vector table.
+- Must initialize the MC68020's vector table.
 
 .. COMMENT: Copyright (c) 2014 embedded brains GmbH.  All rights reserved.
 

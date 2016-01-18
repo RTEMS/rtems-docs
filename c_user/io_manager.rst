@@ -41,7 +41,7 @@ Device Driver Table
 
 Each application utilizing the RTEMS I/O manager must specify the
 address of a Device Driver Table in its Configuration Table. This table
-contains each device driver’s entry points that is to be initialised by
+contains each device driver's entry points that is to be initialised by
 RTEMS during initialization.  Each device driver may contain the
 following entry points:
 
@@ -59,8 +59,8 @@ following entry points:
 
 If the device driver does not support a particular
 entry point, then that entry in the Configuration Table should
-be NULL.  RTEMS will return``RTEMS_SUCCESSFUL`` as the executive’s and
-zero (0) as the device driver’s return code for these device
+be NULL.  RTEMS will return``RTEMS_SUCCESSFUL`` as the executive's and
+zero (0) as the device driver's return code for these device
 driver entry points.
 
 Applications can register and unregister drivers with the RTEMS I/O
@@ -75,9 +75,9 @@ Major and Minor Device Numbers
 .. index:: major device number
 .. index:: minor device number
 
-Each call to the I/O manager must provide a device’s
+Each call to the I/O manager must provide a device's
 major and minor numbers as arguments.  The major number is the
-index of the requested driver’s entry points in the Device
+index of the requested driver's entry points in the Device
 Driver Table, and is used to select a specific device driver.
 The exact usage of the minor number is driver specific, but is
 commonly used to distinguish between a number of devices
@@ -224,8 +224,8 @@ and the underlying device driver entry points.
 Directives
 ==========
 
-This section details the I/O manager’s directives.  A
-subsection is dedicated to each of this manager’s directives and
+This section details the I/O manager's directives.  A
+subsection is dedicated to each of this manager's directives and
 describes the calling sequence, related constants, usage, and
 status codes.
 
@@ -258,7 +258,7 @@ IO_REGISTER_DRIVER - Register a device driver
 
 This directive attempts to add a new device driver to the Device Driver
 Table. The user can specify a specific major device number via the
-directive’s ``major`` parameter, or let the registration routine find
+directive's ``major`` parameter, or let the registration routine find
 the next available major device number by specifing a major number of``0``. The selected major device number is returned via the``registered_major`` directive parameter. The directive automatically
 allocation major device numbers from the highest value down.
 

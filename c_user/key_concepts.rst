@@ -26,10 +26,10 @@ re-usable "building block" routines.
 All objects are created on the local node as required
 by the application and have an RTEMS assigned ID.  All objects
 have a user-assigned name.  Although a relationship exists
-between an object’s name and its RTEMS assigned ID, the name and
+between an object's name and its RTEMS assigned ID, the name and
 ID are not identical.  Object names are completely arbitrary and
 selected by the user as a meaningful "tag" which may commonly
-reflect the object’s use in the application.  Conversely, object
+reflect the object's use in the application.  Conversely, object
 IDs are designed to facilitate efficient object manipulation by
 the executive.
 
@@ -149,7 +149,7 @@ Object ID Description
 
 The components of an object ID make it possible
 to quickly locate any object in even the most complicated
-multiprocessor system.  Object ID’s are associated with an
+multiprocessor system.  Object ID's are associated with an
 object by RTEMS when the object is created and the corresponding
 ID is returned by the appropriate object create directive.  The
 object ID is required as input to all directives involving
@@ -157,7 +157,7 @@ objects, except those which create an object or obtain the ID of
 an object.
 
 The object identification directives can be used to
-dynamically obtain a particular object’s ID given its name.
+dynamically obtain a particular object's ID given its name.
 This mapping is accomplished by searching the name table
 associated with this object type.  If the name is non-unique,
 then the ID associated with the first occurrence of the name
@@ -190,10 +190,10 @@ as follows:.. index:: obtaining class from object ID
 An object control block is a data structure defined
 by RTEMS which contains the information necessary to manage a
 particular object type.  For efficiency reasons, the format of
-each object type’s control block is different.  However, many of
+each object type's control block is different.  However, many of
 the fields are similar in function.  The number of each type of
 control block is application dependent and determined by the
-values specified in the user’s Configuration Table.  An object
+values specified in the user's Configuration Table.  An object
 control block is allocated at object create time and freed when
 the object is deleted.  With the exception of user extension
 routines, object control blocks are not directly manipulated by
@@ -220,7 +220,7 @@ Most RTEMS managers can be used to provide some form
 of communication and/or synchronization.  However, managers
 dedicated specifically to communication and synchronization
 provide well established mechanisms which directly map to the
-application’s varying needs.  This level of flexibility allows
+application's varying needs.  This level of flexibility allows
 the application designer to match the features of a particular
 manager with the complexity of communication and synchronization
 required.  The following managers were specifically designed for
@@ -276,9 +276,9 @@ the clock granularity is large.
 The rate monotonic scheduling algorithm is a hard
 real-time scheduling methodology.  This methodology provides
 rules which allows one to guarantee that a set of independent
-periodic tasks will always meet their deadlines – even under
+periodic tasks will always meet their deadlines - even under
 transient overload conditions.  The rate monotonic manager
-provides directives built upon the Clock Manager’s interval
+provides directives built upon the Clock Manager's interval
 timer support routines.
 
 Interval timing is not sufficient for the many
@@ -286,7 +286,7 @@ applications which require that time be kept in wall time or
 true calendar form.  Consequently, RTEMS maintains the current
 date and time.  This allows selected time operations to be
 scheduled at an actual calendar date and time.  For example, a
-task could request to delay until midnight on New Year’s Eve
+task could request to delay until midnight on New Year's Eve
 before lowering the ball at Times Square.
 The data type ``rtems_time_of_day`` is used to specify
 calendar time in RTEMS services.
@@ -307,7 +307,7 @@ RTEMS memory management facilities can be grouped
 into two classes: dynamic memory allocation and address
 translation.  Dynamic memory allocation is required by
 applications whose memory requirements vary through the
-application’s course of execution.  Address translation is
+application's course of execution.  Address translation is
 needed by applications which share memory with another CPU or an
 intelligent Input/Output processor.  The following RTEMS
 managers provide facilities to manage memory:

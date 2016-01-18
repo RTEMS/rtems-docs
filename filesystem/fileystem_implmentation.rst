@@ -78,7 +78,7 @@ The following POSIX constraints must be honored by all filesystems.
   system cannot be removed.
 
 - On filesystems supporting hard links, a link count is maintained.
-  Prior to node removal, the node’s link count is decremented by one.  The
+  Prior to node removal, the node's link count is decremented by one.  The
   link count must be less than one to allow for removal of the node.
 
 API Layering
@@ -168,7 +168,7 @@ provided to the application:
 
 # write()
 
-The filesystem’s type as well as the node type within the filesystem
+The filesystem's type as well as the node type within the filesystem
 determine the nature of the processing that must be performed for each of
 the functions above. The RTEMS filesystem provides a framework that
 allows new filesystem to be developed and integrated without alteration
@@ -634,7 +634,7 @@ const char                                   \*dev
 
 The is intended to contain a string that identifies the device that contains
 the filesystem information. The filesystems that are currently implemented
-are memory based and don’t require a device specification.
+are memory based and don't require a device specification.
 
 If the mt_point_node.node_access is NULL then we are mounting the base file
 system.
@@ -645,7 +645,7 @@ system.
 The node will have read, write and execute permissions for owner, group and
 others.
 
-The node’s name will be a null string.
+The node's name will be a null string.
 
 A filesystem information structure(fs_info) will be allocated and
 initialized for the IMFS filesystem. The fs_info pointer in the mount table
@@ -759,7 +759,7 @@ File Handler Table Functions
 
 Handler table functions are defined in a ``rtems_filesystem_file_handlers_r``
 structure. It defines functions that are specific to a node type in a given
-filesystem. One table exists for each of the filesystem’s node types. The
+filesystem. One table exists for each of the filesystem's node types. The
 structure definition appears below. It is followed by general developmental
 information on each of the functions associated with regular files contained
 in this function management structure.

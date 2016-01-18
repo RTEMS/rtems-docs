@@ -126,7 +126,7 @@ below, you need to provide only the first two entries in this structure.
     You can also use ``rtems_bsdnet_do_bootp_rootfs`` to have a set of
     standard files created with the information return by the BOOTP/DHCP
     protocol. The IP address is added to :file:`/etc/hosts` with the host
-    name and domain returned. If no host name or domain is returned``me.mydomain`` is used. The BOOTP/DHCP server’s address is also
+    name and domain returned. If no host name or domain is returned``me.mydomain`` is used. The BOOTP/DHCP server's address is also
     added to :file:`/etc/hosts`. The domain name server listed in the
     BOOTP/DHCP information are added to :file:`/etc/resolv.conf`. A``search`` record is also added if a domain is returned. The files
     are created if they do not exist.
@@ -162,7 +162,7 @@ below, you need to provide only the first two entries in this structure.
 
 ``char \*gateway``
     The Internet host number of the network gateway machine,
-    specified in ’dotted decimal’ (``129.128.4.1``) form.
+    specified in 'dotted decimal' (``129.128.4.1``) form.
 
 ``char \*log_host``
     The Internet host number of the machine to which ``syslog`` messages
@@ -279,13 +279,13 @@ structure.
 
 ``char \*ip_address``
     The Internet address of the device,
-    specified in ‘dotted decimal’ (``129.128.4.2``) form, or ``NULL``
+    specified in 'dotted decimal' (``129.128.4.2``) form, or ``NULL``
     if the device configuration information is being obtained from a
     BOOTP/DHCP server.
 
 ``char \*ip_netmask``
     The Internet inetwork mask of the device,
-    specified in ‘dotted decimal’ (``255.255.255.0``) form, or ``NULL``
+    specified in 'dotted decimal' (``255.255.255.0``) form, or ``NULL``
     if the device configuration information is being obtained from a
     BOOTP/DHCP server.
 
@@ -496,8 +496,8 @@ you when more data has arrived.  (Condition 1.a.)
 
 For sending, when the socket is connected and the free space becomes at
 or above the "low water mark" for the send buffer (default 4096 bytes)
-you will receive a writable callback. You don’t get continuous callbacks
-if you don’t write anything. Using a non-blocking write socket, you can
+you will receive a writable callback. You don't get continuous callbacks
+if you don't write anything. Using a non-blocking write socket, you can
 then call write until it returns a value less than the amount of data
 requested to be sent or it produces error EWOULDBLOCK (indicating buffer
 full and no longer writable). When this happens you can
@@ -837,13 +837,13 @@ returns.  The priority argument is ignored.
 
 If the interval argument is greater than 0, the routine also starts an
 RTEMS task at the specified priority and polls the NTP server every
-‘interval’ seconds.  NOTE: This mode of operation has not yet been
+'interval' seconds.  NOTE: This mode of operation has not yet been
 implemented.
 
 On successful synchronization of the RTEMS time-of-day clock the routine
 returns 0.  If an error occurs a message is printed and the routine returns -1
 with an error code in errno.
-There is no timeout – if there is no response from an NTP server the
+There is no timeout - if there is no response from an NTP server the
 routine will wait forever.
 
 .. COMMENT: Written by Eric Norum

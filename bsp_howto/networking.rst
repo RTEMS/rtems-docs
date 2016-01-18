@@ -6,7 +6,7 @@ Introduction
 
 This chapter is intended to provide an introduction to the
 procedure for writing RTEMS network device drivers.
-The example code is taken from the ‘Generic 68360’ network device
+The example code is taken from the 'Generic 68360' network device
 driver.  The source code for this driver is located in the``c/src/lib/libbsp/m68k/gen68360/network`` directory in the RTEMS
 source code distribution.  Having a copy of this driver at
 hand when reading the following notes will help significantly.
@@ -15,7 +15,7 @@ Learn about the network device
 ==============================
 
 Before starting to write the network driver become completely
-familiar with the programmer’s view of the device.
+familiar with the programmer's view of the device.
 The following points list some of the details of the
 device that must be understood before a driver can be written.
 
@@ -70,7 +70,7 @@ data structures and resources.  To ensure the consistency
 of these structures the tasks
 execute only when they hold the network semaphore (``rtems_bsdnet_semaphore``).
 The transmit and receive tasks must abide by this protocol.  Be very
-careful to avoid ‘deadly embraces’ with the other network tasks.
+careful to avoid 'deadly embraces' with the other network tasks.
 A number of routines are provided to make it easier for the network
 driver code to conform to the network task scheduling conventions.
 
@@ -161,9 +161,9 @@ in the device-dependent data structure supplied and maintained by the driver:
 
 ``ifp->if_unit``
     The device number.  The network stack uses this number and the
-    device name for device name lookups.  For example, if``ifp->if_name`` is ‘``scc``’ and ``ifp->if_unit`` is ‘``1``’,
-    the full device name would be ‘``scc1``’.  The unit number should be
-    obtained from the ‘name’ entry in the configuration structure.
+    device name for device name lookups.  For example, if``ifp->if_name`` is '``scc``' and ``ifp->if_unit`` is '``1``',
+    the full device name would be '``scc1``'.  The unit number should be
+    obtained from the 'name' entry in the configuration structure.
 
 ``ifp->if_mtu``
     The maximum transmission unit for the device.  For Ethernet
@@ -212,7 +212,7 @@ Once the attach function  has set up the above entries it must link the
 driver data structure onto the list of devices by
 calling ``if_attach``.  Ethernet devices should then
 call ``ether_ifattach``.  Both functions take a pointer to the
-device’s ``ifnet`` structure as their only argument.
+device's ``ifnet`` structure as their only argument.
 
 The attach function should return a non-zero value to indicate that
 the driver has been successfully configured and attached.
@@ -222,8 +222,8 @@ Write the Driver Start Function.
 
 This function is called each time the network stack wants to start the
 transmitter.  This occures whenever the network stack adds a packet
-to a device’s send queue and the ``IFF_OACTIVE`` bit in the
-device’s ``if_flags`` is not set.
+to a device's send queue and the ``IFF_OACTIVE`` bit in the
+device's ``if_flags`` is not set.
 
 For many devices this function need only set the ``IFF_OACTIVE`` bit in the``if_flags`` and send an event to the transmit task
 indicating that a packet is in the driver transmit queue.

@@ -6,7 +6,7 @@ RTEMS FTP Daemon
 
 The RTEMS FTPD is a complete file transfer protocol (FTP) daemon
 which can store, retrieve, and manipulate files on the local
-filesystem.  In addition, the RTEMS FTPD provides “hooks”
+filesystem.  In addition, the RTEMS FTPD provides "hooks"
 which are actions performed on received data.  Hooks are useful
 in situations where a destination file is not necessarily
 appropriate or in cases when a formal device driver has not yet

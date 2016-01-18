@@ -47,12 +47,12 @@ Regions are organized as doubly linked chains of
 variable sized memory blocks.  Memory requests are allocated
 using a first-fit algorithm.  If available, the requester
 receives the number of bytes requested (rounded up to the next
-page size).  RTEMS requires some overhead from the region’s
+page size).  RTEMS requires some overhead from the region's
 memory for each segment that is allocated.  Therefore, an
 application should only modify the memory of a segment that has
 been obtained from the region.  The application should NOT
 modify the memory outside of any obtained segments and within
-the region’s boundaries while the region is currently active in
+the region's boundaries while the region is currently active in
 the system.
 
 Upon return to the region, the free block is
@@ -178,7 +178,7 @@ following situations applies:
   wait before returning with an error status code.
 
 If the task waits for the segment, then it is placed
-in the region’s task wait queue in either FIFO or task priority
+in the region's task wait queue in either FIFO or task priority
 order.  All tasks waiting on a region are returned an error when
 the message queue is deleted.
 
@@ -190,7 +190,7 @@ unallocated neighbors to form the largest possible segment.  The
 first task on the wait queue is examined to determine if its
 segment request can now be satisfied.  If so, it is given a
 segment and unblocked.  This process is repeated until the first
-task’s segment request cannot be satisfied.
+task's segment request cannot be satisfied.
 
 Obtaining the Size of a Segment
 -------------------------------
@@ -226,8 +226,8 @@ a status code which indicates that the region was deleted.
 Directives
 ==========
 
-This section details the region manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the region manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -448,7 +448,7 @@ If the calling task chooses to return immediately and
 a segment large enough is not available, then an error code
 indicating this fact is returned.  If the calling task chooses
 to wait for the segment and a segment large enough is not
-available, then the calling task is placed on the region’s
+available, then the calling task is placed on the region's
 segment wait queue and blocked.  If the region was created with
 the ``RTEMS_PRIORITY`` option, then the calling
 task is inserted into the
@@ -465,7 +465,7 @@ calling task will wait forever.
 
 The actual length of the allocated segment may be
 larger than the requested size because a segment size is always
-a multiple of the region’s page size.
+a multiple of the region's page size.
 
 The following segment acquisition option constants
 are defined by RTEMS:
@@ -507,7 +507,7 @@ merged with its neighbors to form the largest possible segment.
 The first task on the wait queue is examined to determine if its
 segment request can now be satisfied.  If so, it is given a
 segment and unblocked.  This process is repeated until the first
-task’s segment request cannot be satisfied.
+task's segment request cannot be satisfied.
 
 **NOTES:**
 
@@ -552,7 +552,7 @@ This directive obtains the size in bytes of the specified segment.
 
 The actual length of the allocated segment may be
 larger than the requested size because a segment size is always
-a multiple of the region’s page size.
+a multiple of the region's page size.
 
 REGION_RESIZE_SEGMENT - Change size of a segment
 ------------------------------------------------

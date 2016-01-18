@@ -103,8 +103,8 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the files and directories manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the files and directories manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -342,7 +342,7 @@ On error, this routine returns -1 and sets ``errno`` to one of
 the following:
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 *ENAMETOOLONG*
     Length of a filename string exceeds PATH_MAX and _POSIX_NO_TRUNC is
@@ -388,7 +388,7 @@ On error, this routine returns -1 and sets ``errno`` to one of
 the following:
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 *ENAMETOOLONG*
     Length of a filename string exceeds PATH_MAX and _POSIX_NO_TRUNC is
@@ -435,7 +435,7 @@ getcwd - Gets current working directory
     Result is too large
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 **DESCRIPTION:**
 
@@ -475,7 +475,7 @@ open - Opens a file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 *EEXIST*
     The named file already exists.
@@ -695,7 +695,7 @@ link - Creates a link to a file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *EEXIST*
     The named file already exists.
@@ -760,7 +760,7 @@ symlink - Creates a symbolic link to a file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *EEXIST*
     The named file already exists.
@@ -818,7 +818,7 @@ readlink - Obtain the name of a symbolic link destination
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *ENAMETOOLONG*
     Length of a filename string exceeds PATH_MAX and _POSIX_NO_TRUNC is in
@@ -870,7 +870,7 @@ mkdir - Makes a directory
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *EEXIST*
     The name file already exist.
@@ -928,7 +928,7 @@ mkfifo - Makes a FIFO special file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *EEXIST*
     The named file already exists.
@@ -973,7 +973,7 @@ unlink - Removes a directory entry
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *EBUSY*
     The directory is in use.
@@ -1032,11 +1032,11 @@ rmdir - Delete a directory
 
 *EACCES*
     Write access to the directory containing ``pathname`` was not
-    allowed for the process’s effective uid, or one of the directories in``pathname`` did not allow search (execute) permission.
+    allowed for the process's effective uid, or one of the directories in``pathname`` did not allow search (execute) permission.
 
 *EPERM*
     The directory containing ``pathname`` has the stickybit (S_ISVTX)
-    set and the process’s effective uid is neither the uid of the file to
+    set and the process's effective uid is neither the uid of the file to
     be delected nor that of the director containing it.
 
 *ENAMETOOLONG*
@@ -1096,7 +1096,7 @@ rename - Renames a file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 *EBUSY*
     The directory is in use.
@@ -1174,7 +1174,7 @@ stat - Gets information about a file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 *EBADF*
     Invalid file descriptor.
@@ -1343,7 +1343,7 @@ chmod - Changes file mode.
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *ENAMETOOLONG*
     Length of a filename string exceeds PATH_MAX and _POSIX_NO_TRUNC is in
@@ -1393,7 +1393,7 @@ fchmod - Changes permissions of a file
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix.
+    Search permission is denied for a directory in a file's path prefix.
 
 *EBADF*
     The descriptor is not valid.
@@ -1464,7 +1464,7 @@ and ``errno`` is set appropriately.
     Invalid file descriptor ``fd``.
 
 *EFAULT*
-    Argument points outside the calling process’s address space.
+    Argument points outside the calling process's address space.
 
 *EINVAL*
     Result buffer is too small.
@@ -1505,7 +1505,7 @@ chown - Changes the owner and/or group of a file.
 **STATUS CODES:**
 
 *EACCES*
-    Search permission is denied for a directory in a file’s path prefix
+    Search permission is denied for a directory in a file's path prefix
 
 *EINVAL*
     Invalid argument
@@ -1634,7 +1634,7 @@ ftruncate - truncate a file to a specified length
     An I/O error occurred updating the inode.
 
 *EFAULT*
-    ``Path`` points outside the process’s allocated address space.
+    ``Path`` points outside the process's allocated address space.
 
 *EBADF*
     The ``fd`` is not a valid descriptor.
@@ -1702,7 +1702,7 @@ truncate - truncate a file to a specified length
     An I/O error occurred updating the inode.
 
 *EFAULT*
-    ``Path`` points outside the process’s allocated address space.
+    ``Path`` points outside the process's allocated address space.
 
 *EBADF*
     The ``fd`` is not a valid descriptor.
@@ -1919,7 +1919,7 @@ named pipe) named ``pathname``, specified by ``mode`` and ``dev``.
 It should be a combination (using bitwise OR) of one of the file types listed
 below and the permissions for the new node.
 
-The permissions are modified by the process’s ``umask`` in the usual way: the
+The permissions are modified by the process's ``umask`` in the usual way: the
 permissions of the created node are ``(mode & ~umask)``.
 
 The file type should be one of ``S_IFREG``, ``S_IFCHR``, ``S_IFBLK`` and``S_IFIFO`` to specify a normal file (which will be created empty), character

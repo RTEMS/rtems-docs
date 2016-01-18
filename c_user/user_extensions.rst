@@ -72,7 +72,7 @@ following structure:.. index:: rtems_extensions_table
 
 RTEMS allows the user to have multiple extension sets
 active at the same time.  First, a single static extension set
-may be defined as the application’s User Extension Table which
+may be defined as the application's User Extension Table which
 is included as part of the Configuration Table.  This extension
 set is active for the entire life of the system and may not be
 deleted.  This extension set is especially important because it
@@ -112,9 +112,9 @@ TCB Extension Area
 .. index:: TCB extension area
 
 RTEMS provides for a pointer to a user-defined data
-area for each extension set to be linked to each task’s control
+area for each extension set to be linked to each task's control
 block.  This set of pointers is an extension of the TCB and can
-be used to store additional data required by the user’s
+be used to store additional data required by the user's
 extension functions.
 
 The TCB extension is an array of pointers in the TCB. The
@@ -129,7 +129,7 @@ The number of pointers in the area is the same as the number of
 user extension sets configured.  This allows an application to
 augment the TCB with user-defined information.  For example, an
 application could implement task profiling by storing timing
-statistics in the TCB’s extended memory area.  When a task
+statistics in the TCB's extended memory area.  When a task
 context switch is being executed, the TASK_SWITCH extension
 could read a real-time clock to calculate how long the task
 being swapped out has run as well as timestamp the starting time
@@ -144,9 +144,9 @@ be reinitialized by the TASK_RESTART extension and should be
 deallocated by the TASK_DELETE extension when the task is
 deleted.  Since the TCB extension buffers would most likely be
 of a fixed size, the RTEMS partition manager could be used to
-manage the application’s extended memory area.  The application
+manage the application's extended memory area.  The application
 could create a partition of fixed size TCB extension buffers and
-use the partition manager’s allocation and deallocation
+use the partition manager's allocation and deallocation
 directives to obtain and release the extension buffers.
 
 Extensions
@@ -286,7 +286,7 @@ following:.. index:: rtems_task_switch_extension
 where current_task can be used to access the TCB for
 the task that is being swapped out, and heir_task can be used to
 access the TCB for the task being swapped in.  This extension is
-invoked from RTEMS’ dispatcher routine after the current_task
+invoked from RTEMS' dispatcher routine after the current_task
 context has been saved, but before the heir_task context has
 been restored.  This extension should not call any RTEMS
 directives.
@@ -360,8 +360,8 @@ where the_error is the error code passed to the
 fatal_error_occurred directive. This extension is invoked from
 the fatal_error_occurred directive.
 
-If defined, the user’s FATAL error extension is
-invoked before RTEMS’ default fatal error routine is invoked and
+If defined, the user's FATAL error extension is
+invoked before RTEMS' default fatal error routine is invoked and
 the processor is stopped.  For example, this extension could be
 used to pass control to a debugger when a fatal error occurs.
 This extension should not call any RTEMS directives.
@@ -410,7 +410,7 @@ error extension will be the last fatal error extension executed.
 Another example is use of the task delete extension by the
 Standard C Library.  Extension sets which are installed after
 the Standard C Library will operate correctly even if they
-utilize the C Library because the C Library’s TASK_DELETE
+utilize the C Library because the C Library's TASK_DELETE
 extension is invoked after that of the other extensions.
 
 Operations
@@ -444,17 +444,17 @@ Deleting an Extension Set
 -------------------------
 
 The ``rtems_extension_delete`` directive is used to delete an
-extension set.  The extension set’s control block is returned to
+extension set.  The extension set's control block is returned to
 the ESCB free list when it is deleted.  An extension set can be
 deleted by a task other than the task which created the
-extension set.  Any subsequent references to the extension’s
+extension set.  Any subsequent references to the extension's
 name and ID are invalid.
 
 Directives
 ==========
 
-This section details the user extension manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the user extension manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 

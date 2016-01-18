@@ -85,12 +85,12 @@ the ``pthread_create`` routine.
     is the address of the optionally user specified stack area for this thread.
     If this value is NULL, then RTEMS allocates the memory for the thread stack
     from the RTEMS Workspace Area. Otherwise, this is the user specified
-    address for the memory to be used for the thread’s stack. Each thread must
+    address for the memory to be used for the thread's stack. Each thread must
     have a distinct stack area. Each processor family has different alignment
     rules which should be followed.
 
 *stack size*
-    is the minimum desired size for this thread’s stack area.
+    is the minimum desired size for this thread's stack area.
     If the size of this area as specified by the stack size attribute
     is smaller than the minimum for this processor family and the stack
     is not user specified, then RTEMS will automatically allocate a
@@ -120,8 +120,8 @@ There is currently no text in this section.
 Services
 ========
 
-This section details the thread manager’s services.
-A subsection is dedicated to each of this manager’s services
+This section details the thread manager's services.
+A subsection is dedicated to each of this manager's services
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -852,7 +852,7 @@ pthread_create - Create a Thread
 
 *EINVAL*
     The user specified a stack address and the size of the area was not
-    large enough to meet this processor’s minimum stack requirements.
+    large enough to meet this processor's minimum stack requirements.
 
 *EINVAL*
     The specified scheduler inheritance policy was invalid.

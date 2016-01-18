@@ -116,10 +116,10 @@ the target task, one of the following situations applies:
 
 - Target Task is Blocked Waiting for Events
 
-  - If the waiting task’s input event condition is
+  - If the waiting task's input event condition is
     satisfied, then the task is made ready for execution.
 
-  - If the waiting task’s input event condition is not
+  - If the waiting task's input event condition is not
     satisfied, then the event set is posted but left pending and the
     task remains blocked.
 
@@ -170,8 +170,8 @@ pending then the ``RTEMS_UNSATISFIED`` status code will be returned.
 Directives
 ==========
 
-This section details the event manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the event manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 
@@ -198,7 +198,7 @@ EVENT_SEND - Send event set to a task
 **DESCRIPTION:**
 
 This directive sends an event set, event_in, to the
-task specified by id.  If a blocked task’s input event condition
+task specified by id.  If a blocked task's input event condition
 is satisfied by this directive, then it will be made ready.  If
 its input event condition is not satisfied, then the events
 satisfied are updated and the events not satisfied are left

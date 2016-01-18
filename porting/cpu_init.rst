@@ -38,7 +38,7 @@ During the initialization of the context for tasks with floating point,
 the CPU dependent code is responsible for initializing the floating point
 context.  If there is not an easy way to initialize the FP context during
 Context_Initialize, then it is usually easier to save an "uninitialized"
-FP context here and copy it to the task’s during Context_Initialize.  If
+FP context here and copy it to the task's during Context_Initialize.  If
 this technique is used to initialize the FP contexts, then it is important
 to ensure that the state of the floating point unit is in a coherent,
 initialized state.

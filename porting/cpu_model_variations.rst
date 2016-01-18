@@ -105,8 +105,8 @@ processor families is not enough to address the needs of embedded systems
 developers.  Custom board development is the norm for embedded systems.
 Each of these boards is optimized for a particular project.  The processor
 and peripheral set have been chosen to meet a particular set of system
-requirements.  The tools in the embedded systems developers toolbox must
-support their projects unique board.  RTEMS addresses this issue via the
+requirements.  The tools in the embedded systems developers toolbox must
+support their project's unique board.  RTEMS addresses this issue via the
 Board Support Package.
 
 RTEMS segregates board specific code to make it possible for the embedded

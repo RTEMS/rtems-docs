@@ -71,7 +71,7 @@ to configure an analog board:
 Initialize an Analog Board
 ==========================
 
-At system initialization, the analog driver’s initialization entry point
+At system initialization, the analog driver's initialization entry point
 will be invoked.  As part of initialization, the driver will perform
 whatever board initialization is required and then set all
 outputs to their configured initial state.

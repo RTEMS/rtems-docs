@@ -115,7 +115,7 @@ Signal Set Management
 Each process and each thread within that process has a set of
 individual signals and handlers associated with it.   Services
 are provided to construct signal sets for the purposes of building
-signal sets – type ``sigset_t`` – that are used to
+signal sets - type ``sigset_t`` - that are used to
 provide arguments to the services that mask, unmask, and
 check on pending signals.
 
@@ -138,8 +138,8 @@ the service ``kill()`` or at a thread by the service``pthread_kill()``
 Directives
 ==========
 
-This section details the signal manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the signal manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

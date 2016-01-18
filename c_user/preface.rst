@@ -45,7 +45,7 @@ multiple real-time executive implementations.  This interface
 includes both the source code interfaces and run-time behavior
 as seen by a real-time application.  It does not include the
 details of how a kernel implements these functions.  The
-standard’s goal is to serve as a complete definition of external
+standard's goal is to serve as a complete definition of external
 interfaces so that application code that conforms to these
 interfaces will execute properly in all real-time executive
 environments.  With the use of a standards compliant executive,
@@ -68,8 +68,8 @@ of which processor the object and the accessing task reside.
 
 The acceptance of a standard for real-time executives
 will produce the same advantages enjoyed from the push for UNIX
-standardization by AT&T’s System V Interface Definition and
-IEEE’s POSIX efforts.  A compliant multiprocessing executive
+standardization by AT&T's System V Interface Definition and
+IEEE's POSIX efforts.  A compliant multiprocessing executive
 will allow close coupling between UNIX systems and real-time
 executives to provide the many benefits of the UNIX development
 environment to be applied to real-time software development.

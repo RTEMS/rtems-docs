@@ -4,12 +4,12 @@ Language-Specific Services for the C Programming Language
 Referenced C Language Routines
 ==============================
 
-ANSI C Section 4.2 — Diagnostics
+ANSI C Section 4.2 - Diagnostics
 .. code:: c
 
     assert(), Function, Implemented
 
-ANSI C Section 4.3 — Character Handling
+ANSI C Section 4.3 - Character Handling
 .. code:: c
 
     isalnum(), Function, Implemented
@@ -26,12 +26,12 @@ ANSI C Section 4.3 — Character Handling
     tolower(), Function, Implemented
     toupper(), Function, Implemented
 
-ANSI C Section 4.4 — Localization
+ANSI C Section 4.4 - Localization
 .. code:: c
 
     setlocale(), Function, Implemented
 
-ANSI C Section 4.5 — Mathematics
+ANSI C Section 4.5 - Mathematics
 .. code:: c
 
     acos(), Function, Implemented
@@ -57,13 +57,13 @@ ANSI C Section 4.5 — Mathematics
     floor(), Function, Implemented
     fmod(), Function, Implemented
 
-ANSI C Section 4.6 — Non-Local Jumps
+ANSI C Section 4.6 - Non-Local Jumps
 .. code:: c
 
     setjmp(), Function, Implemented
     longjmp(), Function, Implemented
 
-ANSI C Section 4.9 — Input/Output
+ANSI C Section 4.9 - Input/Output
 .. code:: c
 
     FILE, Type, Implemented
@@ -105,7 +105,7 @@ ANSI C Section 4.9 — Input/Output
 
 NOTE: ``rename`` is also included in another section.  `Rename a File`_.
 
-ANSI C Section 4.10 — General Utilities
+ANSI C Section 4.10 - General Utilities
 .. code:: c
 
     abs(), Function, Implemented
@@ -125,7 +125,7 @@ ANSI C Section 4.10 — General Utilities
 
 NOTE: ``getenv`` is also included in another section. `Environment Access`_.
 
-ANSI C Section 4.11 — String Handling
+ANSI C Section 4.11 - String Handling
 .. code:: c
 
     strcpy(), Function, Implemented
@@ -143,7 +143,7 @@ ANSI C Section 4.11 — String Handling
     strtok(), Function, Implemented
     strlen(), Function, Implemented
 
-ANSI C Section 4.12 — Date and Time Handling
+ANSI C Section 4.12 - Date and Time Handling
 .. code:: c
 
     asctime(), Function, Implemented

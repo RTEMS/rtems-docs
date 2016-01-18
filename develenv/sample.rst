@@ -129,7 +129,7 @@ The following messages are printed:
     Hello World
     \*** END OF HELLO WORLD TEST \***
 
-These messages are printed from the application’s
+These messages are printed from the application's
 single initialization task.  If the above messages are not
 printed correctly, then either the BSP start up code or the
 console output routine is not operating properly.
@@ -199,7 +199,7 @@ when using the Ada version to output the following messages:
     \*** END OF SAMPLE SINGLE PROCESSOR APPLICATION \***
 
 The first two messages are printed from the
-application’s single initialization task.  The final messages
+application's single initialization task.  The final messages
 are printed from the single application task.
 
 Base Multiple Processor Application
@@ -233,7 +233,7 @@ The second node will print the following messages:
     This task has the id of 0x20002
     \*** END OF SAMPLE MULTIPROCESSOR APPLICATION \***
 
-The herald is printed from the application’s single
+The herald is printed from the application's single
 initialization task on each node.  The final messages are
 printed from the single application task on each node.
 

@@ -20,27 +20,27 @@ the following documents available from Motorola and IBM:
 - *PowerPC Microprocessor Family: The Programming Environment*
   (Motorola Document MPRPPCFPE-01).
 
-- *IBM PPC403GB Embedded Controller User’s Manual*.
+- *IBM PPC403GB Embedded Controller User's Manual*.
 
 - *PoweRisControl MPC500 Family RCPU RISC Central Processing
   Unit Reference Manual* (Motorola Document RCPUURM/AD).
 
-- *PowerPC 601 RISC Microprocessor User’s Manual*
+- *PowerPC 601 RISC Microprocessor User's Manual*
   (Motorola Document MPR601UM/AD).
 
-- *PowerPC 603 RISC Microprocessor User’s Manual*
+- *PowerPC 603 RISC Microprocessor User's Manual*
   (Motorola Document MPR603UM/AD).
 
-- *PowerPC 603e RISC Microprocessor User’s Manual*
+- *PowerPC 603e RISC Microprocessor User's Manual*
   (Motorola Document MPR603EUM/AD).
 
-- *PowerPC 604 RISC Microprocessor User’s Manual*
+- *PowerPC 604 RISC Microprocessor User's Manual*
   (Motorola Document MPR604UM/AD).
 
-- *PowerPC MPC821 Portable Systems Microprocessor User’s Manual*
+- *PowerPC MPC821 Portable Systems Microprocessor User's Manual*
   (Motorola Document MPC821UM/AD).
 
-- *PowerQUICC MPC860 User’s Manual* (Motorola Document MPC860UM/AD).
+- *PowerQUICC MPC860 User's Manual* (Motorola Document MPC860UM/AD).
 
 Motorola maintains an on-line electronic library for the PowerPC
 at the following URL:
@@ -75,7 +75,7 @@ model specified on the compilation command line.
 Alignment
 ---------
 
-The macro PPC_ALIGNMENT is set to the PowerPC model’s worst case alignment
+The macro PPC_ALIGNMENT is set to the PowerPC model's worst case alignment
 requirement for data types on a byte boundary.  This value is used
 to derive the alignment restrictions for memory allocated from
 regions and partitions.
@@ -411,8 +411,8 @@ Interrupt Processing
 
 Although RTEMS hides many of the processor dependent
 details of interrupt processing, it is important to understand
-how the RTEMS interrupt manager is mapped onto the processor’s
-unique architecture. Discussed in this chapter are the PowerPC’s
+how the RTEMS interrupt manager is mapped onto the processor's
+unique architecture. Discussed in this chapter are the PowerPC's
 interrupt response and control mechanisms as they pertain to
 RTEMS.
 
@@ -468,10 +468,10 @@ interrupt handler, then upon receipt of the interrupt, the
 processor passes control to the RTEMS interrupt handler which
 performs the following actions:
 
-- saves the state of the interrupted task on it’s stack,
+- saves the state of the interrupted task on it's stack,
 
 - saves all registers which are not normally preserved
-  by the calling sequence so the user’s interrupt service
+  by the calling sequence so the user's interrupt service
   routine can be written in a high-level language.
 
 - if this is the outermost (i.e. non-nested) interrupt,
@@ -560,7 +560,7 @@ An RTEMS based application is initiated or
 re-initiated when the PowerPC processor is reset.  The PowerPC
 architecture defines a Reset Exception, but leaves the
 details of the CPU state as implementation specific.  Please
-refer to the User’s Manual for the CPU model in question.
+refer to the User's Manual for the CPU model in question.
 
 In general, at power-up the PowerPC begin execution at address
 0xFFF00100 in supervisor mode with all exceptions disabled.  For
@@ -579,7 +579,7 @@ observed to prevent some emulators from working properly, so it
 may be necessary to run with caching disabled to use these emulators.
 
 In addition to the requirements described in the*Board Support Packages* chapter of the RTEMS C
-Applications User’s Manual for the reset code
+Applications User's Manual for the reset code
 which is executed before the call to ``rtems_initialize_executive``,
 the PowrePC version has the following specific requirements:
 
@@ -596,7 +596,7 @@ the PowrePC version has the following specific requirements:
 - Must enable traps so window overflow and underflow
   conditions can be properly handled.
 
-- Must initialize the PowerPC’s initial Exception Table with default
+- Must initialize the PowerPC's initial Exception Table with default
   handlers.
 
 .. COMMENT: COPYRIGHT (c) 1988-2002.

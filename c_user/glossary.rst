@@ -142,11 +142,11 @@ Glossary
     peripheral devices used by the application.
 
 :dfn:`directives`
-    RTEMS’ provided routines that provide
+    RTEMS' provided routines that provide
     support mechanisms for real-time applications.
 
 :dfn:`dispatch`
-    The act of loading a task’s context onto
+    The act of loading a task's context onto
     the CPU and transferring control of the CPU to that task.
 
 :dfn:`dormant`
@@ -177,7 +177,7 @@ Glossary
 :dfn:`entry point`
     The address at which a function or task
     begins to execute.  In C, the entry point of a function is the
-    function’s name.
+    function's name.
 
 :dfn:`events`
     A method for task communication and
@@ -339,7 +339,7 @@ Glossary
     Device Driver Table.
 
 :dfn:`manager`
-    A group of related RTEMS’ directives which
+    A group of related RTEMS' directives which
     provide access and control over resources.
 
 :dfn:`memory pool`
@@ -368,7 +368,7 @@ Glossary
     driver, the exact usage of which is driver dependent.
 
 :dfn:`mode`
-    An entry in a task’s control block that is
+    An entry in a task's control block that is
     used to determine if the task allows preemption, timeslicing,
     processing of signals, and the interrupt disable level used by
     the task.
@@ -435,7 +435,7 @@ Glossary
 
 :dfn:`operating system`
     The software which controls all
-    the computer’s resources and provides the base upon which
+    the computer's resources and provides the base upon which
     application programs can be written.
 
 :dfn:`overhead`
@@ -595,7 +595,7 @@ Glossary
 
 :dfn:`resume`
     Removing a task from the suspend state.  If
-    the task’s state is ready following a call to the ``rtems_task_resume``
+    the task's state is ready following a call to the ``rtems_task_resume``
     directive, then the task is available for scheduling.
 
 :dfn:`return code`
@@ -671,7 +671,7 @@ Glossary
 
 :dfn:`signal set`
     A thirty-two bit entity which is used to
-    represent a task’s collection of pending signals and the signals
+    represent a task's collection of pending signals and the signals
     sent to a task.
 
 :dfn:`SMCB`

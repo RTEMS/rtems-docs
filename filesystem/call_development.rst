@@ -1,10 +1,10 @@
 System Call Development Notes
 #############################
 
-This set of routines represents the application’s interface to files and directories
+This set of routines represents the application's interface to files and directories
 under the RTEMS filesystem. All routines are compliant with POSIX standards if a
 specific interface has been established. The list below represents the routines that have
-been included as part of the application’s interface.
+been included as part of the application's interface.
 
 # access()
 
@@ -267,7 +267,7 @@ structure to make it an invalid file descriptor. Apparently the memory
 that is about to be freed may still be referenced before it is
 reallocated.
 
-The dd_buf structure’s memory is reallocated before the control structure
+The dd_buf structure's memory is reallocated before the control structure
 that contains the pointer to the dd_buf region.
 
 DIR control memory is reallocated.
@@ -629,9 +629,9 @@ rtems_filesystem_is_separator. If it does the search starts from the root
 of the RTEMS filesystem; otherwise the search will start from the current
 directory.
 
-The OPS table evalformake() function for the parent’s filesystem is used
+The OPS table evalformake() function for the parent's filesystem is used
 to locate the node that will be the parent of the new link. It will also
-locate the start of the new path’s name. This name will be used to define
+locate the start of the new path's name. This name will be used to define
 a child under the parent directory.
 
 If the parent is found, the routine will determine if the hard link that

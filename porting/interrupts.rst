@@ -305,7 +305,7 @@ The ``_ISR_Handler`` routine provides the RTEMS interrupt management.
 
 This discussion ignores a lot of the ugly details in a real implementation
 such as saving enough registers/state to be able to do something real.
-Keep in mind that the goal is to invoke a user’s ISR handler which is
+Keep in mind that the goal is to invoke a user's ISR handler which is
 written in C.  That ISR handler uses a known set of registers thus
 allowing the ISR to preserve only those that would normally be corrupted
 by a subroutine call.
@@ -368,7 +368,7 @@ specific wrapper for ``_Thread_Dispatch`` used in this case.
 ISR Invoked with Frame Pointer
 ------------------------------
 
-Does the RTEMS invoke the user’s ISR with the vector number and a pointer
+Does the RTEMS invoke the user's ISR with the vector number and a pointer
 to the saved interrupt frame (1) or just the vector number (0)?
 .. code:: c
 

@@ -27,8 +27,8 @@ Operations
 System Calls
 ============
 
-This section details the timer manager’s services.
-A subsection is dedicated to each of this manager’s services
+This section details the timer manager's services.
+A subsection is dedicated to each of this manager's services
 and describes the calling sequence, related constants, usage,
 and status codes.
 

@@ -536,7 +536,7 @@ The following options are available:
 *-i*
     Causes cp to write a prompt to the standard error output before copying a file
     that would overwrite an existing file. If the response from the standard input
-    begins with the character ’y’, the file copy is attempted.
+    begins with the character 'y', the file copy is attempted.
 
 *-L*
     If the -R option is specified, all symbolic links are followed.
@@ -553,19 +553,19 @@ The following options are available:
     If the user ID and group ID cannot be preserved, no error message is displayed
     and the exit value is not altered.
     If the source file has its set user ID bit on and the user ID cannot be
-    preserved, the set user ID bit is not preserved in the copy’s permissions. If
+    preserved, the set user ID bit is not preserved in the copy's permissions. If
     the source file has its set group ID bit on and the group ID cannot be
-    preserved, the set group ID bit is not preserved in the copy’s permissions. If
+    preserved, the set group ID bit is not preserved in the copy's permissions. If
     the source file has both its set user ID and set group ID bits on, and either
     the user ID or group ID cannot be preserved, neither the set user ID or set
-    group ID bits are preserved in the copy’s permissions.
+    group ID bits are preserved in the copy's permissions.
 
 *-R*
     If source_file designates a directory, cp copies the directory and the entire
     subtree connected at that point. This option also causes symbolic links to be
     copied, rather than indirected through, and for cp to create special files
     rather than copying them as normal files. Created directories have the same
-    mode as the corresponding source directory, unmodified by the process’s umask.
+    mode as the corresponding source directory, unmodified by the process's umask.
 
 *-v*
     Cause cp to be verbose, showing files as they are copied.
@@ -592,7 +592,7 @@ symbolic links are not followed, by default. The -H or -L flags (in conjunction
 with the -R flag), as well as the -P flag cause symbolic links to be followed
 as described above. The -H and -L options are ignored unless the -R option is
 specified. In addition, these options override eachsubhedading other and the
-command’s actions are determined by the last one specified.
+command's actions are determined by the last one specified.
 
 **EXIT STATUS:**
 
@@ -747,7 +747,7 @@ The following operands are available:
 
 *progress=n*
     Switch on display of progress if n is set to any non-zero value.  This
-    will cause a “.” to be printed (to the standard error output) for
+    will cause a "." to be printed (to the standard error output) for
     every n full or partial blocks written to the output file.
 
 *conv=value[,value...]*
@@ -848,7 +848,7 @@ The following operands are available:
         discarded and a newline character is appended.
 
 Where sizes are specified, a decimal number of bytes is expected.  Two
-or more numbers may be separated by an “x” to indicate a product.
+or more numbers may be separated by an "x" to indicate a product.
 Each number may have one of the following optional suffixes:
 
 *b*
@@ -1230,7 +1230,7 @@ The options are as follows:
 *-C*
     Canonical hex+ASCII display.  Display the input offset in hexadecimal,
     followed by sixteen space-separated, two column, hexadecimal bytes,
-    followed by the same sixteen bytes in %_p format enclosed in “|”
+    followed by the same sixteen bytes in %_p format enclosed in "|"
     characters.
 
 *-d*
@@ -1298,16 +1298,16 @@ must be placed after the iteration count and/or before the byte count
 to disambiguate them.  Any whitespace before or after the slash is
 ignored.
 
-The format is required and must be surrounded by double quote (“ “)
+The format is required and must be surrounded by double quote (" ")
 marks.  It is interpreted as a fprintf-style format string (see*fprintf*), with the following exceptions:
 
 - An asterisk (\*) may not be used as a field width or precision.
 
-- A byte count or field precision is required for each “s” con-
+- A byte count or field precision is required for each "s" con-
   version character (unlike the fprintf(3) default which prints the
   entire string if the precision is unspecified).
 
-- The conversion characters “h”, “l”, “n”, “p” and “q” are not
+- The conversion characters "h", "l", "n", "p" and "q" are not
   supported.
 
 - The single character escape sequences described in the C standard
@@ -1341,7 +1341,7 @@ Hexdump also supports the following additional conversion strings:
 
 *_p*
     Output characters in the default character set.  Nonprinting
-    characters are displayed as a single “.”.
+    characters are displayed as a single ".".
 
 *_u*
     Output US ASCII characters, with the exception that control characters
@@ -1369,9 +1369,9 @@ data required by each format unit, which is the iteration count times
 the byte count, or the iteration count times the number of bytes
 required by the format if the byte count is not specified.
 
-The input is manipulated in “blocks”, where a block is defined as
+The input is manipulated in "blocks", where a block is defined as
 the largest amount of data specified by any format string.  Format
-strings interpreting less than an input block’s worth of data, whose
+strings interpreting less than an input block's worth of data, whose
 last format unit both interprets some number of bytes and does not
 have a specified iteration count, have the iteration count incremented
 until the entire input block has been processed or there is not enough
@@ -1396,7 +1396,7 @@ Further output by such format strings is replaced by an equivalent
 number of spaces.  An equivalent number of spaces is defined as the
 number of spaces output by an s conversion character with the same
 field width and precision as the original conversion character or
-conversion string but with any “+”, “ ”, “#” conversion flag
+conversion string but with any "+", " ", "#" conversion flag
 characters removed, and ref- erencing a NULL string.
 
 If no format strings are specified, the default display is equivalent
@@ -1463,9 +1463,9 @@ ln - make links
 The ln utility creates a new directory entry (linked file) which has
 the same modes as the original file.  It is useful for maintaining
 multiple copies of a file in many places at once without using up
-storage for the “copies”; instead, a link “points” to the original
+storage for the "copies"; instead, a link "points" to the original
 copy.  There are two types of links; hard links and symbolic links.
-How a link “points” to a file is one of the differences between a
+How a link "points" to a file is one of the differences between a
 hard or symbolic link.
 
 The options are as follows:
@@ -1481,7 +1481,7 @@ The options are as follows:
 *-i*
     Cause ln to write a prompt to standard error if the target file
     exists.  If the response from the standard input begins with the
-    character ‘y’ or ‘Y’, then unlink the target file so that the link may
+    character 'y' or 'Y', then unlink the target file so that the link may
     occur.  Otherwise, do not attempt the link.  (The -i option overrides
     any previous -f options.)
 
@@ -1903,7 +1903,7 @@ To make nodes manually, the arguments are:
     with a # to stop it being treated as a name.
 
 *name*
-    Device name, for example “tty” for a termios serial device or “hd”
+    Device name, for example "tty" for a termios serial device or "hd"
     for a disk.
 
 *b | c | p*
@@ -1931,7 +1931,7 @@ To make nodes manually, the arguments are:
 
 *number*
     A single opaque device number.  Useful for netbooted computers which
-    require device numbers packed in a format that isn’t supported by
+    require device numbers packed in a format that isn't supported by
     -F.
 
 **EXIT STATUS:**
@@ -2104,10 +2104,10 @@ using the specified file system. The files systems are:
 
 - rfs   - RTEMS File System
 
-When the file system type is ’msdos’ or ’rfs’ the driver is a "block
+When the file system type is 'msdos' or 'rfs' the driver is a "block
 device driver" node present in the file system. The driver is ignored
-with the ’tftp’ and ’ftp’ file systems. For the ’nfs’ file system the
-driver is the ’host:/path’ string that described NFS host and the
+with the 'tftp' and 'ftp' file systems. For the 'nfs' file system the
+driver is the 'host:/path' string that described NFS host and the
 exported file system path.
 
 **EXIT STATUS:**
@@ -2120,27 +2120,27 @@ The mount point must exist.
 
 The services offered by each file-system vary. For example you cannot list the
 directory of a TFTP file-system as this server is not provided in the TFTP
-protocol. You need to check each file-system’s documentation for the services
+protocol. You need to check each file-system's documentation for the services
 provided.
 
 **EXAMPLES:**
 
-Mount the Flash Disk driver to the ’/fd’ mount point:
+Mount the Flash Disk driver to the '/fd' mount point:
 .. code:: c
 
     SHLL \[/] $ mount -t msdos /dev/flashdisk0 /fd
 
-Mount the NFS file system exported path ’bar’ by host ’foo’:
+Mount the NFS file system exported path 'bar' by host 'foo':
 .. code:: c
 
     $ mount -t nfs foo:/bar /nfs
 
-Mount the TFTP file system on ’/tftp’:
+Mount the TFTP file system on '/tftp':
 .. code:: c
 
     $ mount -t tftp /tftp
 
-To access the TFTP files on server ’10.10.10.10’:
+To access the TFTP files on server '10.10.10.10':
 .. code:: c
 
     $ cat /tftp/10.10.10.10/test.txt
@@ -2235,12 +2235,12 @@ The following options are available:
 *-i*
     Causes mv to write a prompt to standard error before moving a file
     that would overwrite an existing file.  If the response from the
-    standard input begins with the character ’y’, the move is attempted.
+    standard input begins with the character 'y', the move is attempted.
 
 *-v*
     Cause mv to be verbose, showing files as they are processed.
 
-The last of any -f or -i options is the one which affects mv’s
+The last of any -f or -i options is the one which affects mv's
 behavior.
 
 It is an error for any of the source operands to specify a nonexistent

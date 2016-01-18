@@ -115,11 +115,11 @@ and it averaged 11 milliseconds, then application requirements
 are not being met.
 
 The information reported can be used to determine the "hot spots"
-in the application.  Given a period’s id, the user can determine
+in the application.  Given a period's id, the user can determine
 the length of that period.  From that information and the CPU usage,
 the user can calculate the percentage of CPU time consumed by that
 periodic task.  For example, a task executing for 20 milliseconds
-every 200 milliseconds is consuming 10 percent of the processor’s
+every 200 milliseconds is consuming 10 percent of the processor's
 execution time.  This is usually enough to make it a good candidate
 for optimization.
 
@@ -142,9 +142,9 @@ characterized by the length of their period and execution time.
 The period and execution time of a task can be used to determine
 the processor utilization for that task.  Processor utilization
 is the percentage of processor time used and can be calculated
-on a per-task or system-wide basis.  Typically, the task’s
+on a per-task or system-wide basis.  Typically, the task's
 worst-case execution time will be less than its period.  For
-example, a periodic task’s requirements may state that it should
+example, a periodic task's requirements may state that it should
 execute for 10 milliseconds every 100 milliseconds.  Although
 the execution time may be the average, worst, or best case, the
 worst-case execution time is more appropriate for use when
@@ -178,7 +178,7 @@ deadlines.  RMS provides a set of rules which can be used to
 perform a guaranteed schedulability analysis for a task set.
 This analysis determines whether a task set is schedulable under
 worst-case conditions and emphasizes the predictability of the
-system’s behavior.  It has been proven that:
+system's behavior.  It has been proven that:
 
 - *RMS is an optimal static priority algorithm for
   scheduling independent, preemptible, periodic tasks
@@ -191,13 +191,13 @@ analysis on the processor utilization level below which all
 deadlines can be met.
 
 RMS calls for the static assignment of task
-priorities based upon their period.  The shorter a task’s
+priorities based upon their period.  The shorter a task's
 period, the higher its priority.  For example, a task with a 1
 millisecond period has higher priority than a task with a 100
 millisecond period.  If two tasks have the same period, then RMS
 does not distinguish between the tasks.  However, RTEMS
 specifies that when given tasks of equal priority, the task
-which has been ready longest will execute first.  RMS’s priority
+which has been ready longest will execute first.  RMS's priority
 assignment scheme does not provide one with exact numeric values
 for task priorities.  For example, consider the following task
 set and priority assignments:
@@ -345,7 +345,7 @@ quite easy to ensure.  By having a non-preemptible user
 initialization task, all application tasks, regardless of
 priority, can be created and started before the initialization
 deletes itself.  This technique ensures that all tasks begin to
-compete for execution time at the same instant – when the user
+compete for execution time at the same instant - when the user
 initialization task deletes itself.
 
 First Deadline Rule Example
@@ -426,7 +426,7 @@ Another assumption is that the tasks are independent.
 This means that the tasks do not wait for one another or
 contend for resources.  This assumption can be relaxed by
 accounting for the amount of time a task spends waiting to
-acquire resources.  Similarly, each task’s execution time must
+acquire resources.  Similarly, each task's execution time must
 account for any I/O performed and any RTEMS directive calls.
 
 In addition, the assumptions did not account for the
@@ -517,7 +517,7 @@ Obtaining the Status of a Period
 If the ``rtems_rate_monotonic_period`` directive is invoked
 with a period of ``RTEMS_PERIOD_STATUS`` ticks, the current
 state of the specified rate monotonic period will be returned.  The following
-table details the relationship between the period’s status and
+table details the relationship between the period's status and
 the directive status code returned by the``rtems_rate_monotonic_period``
 directive:
 
@@ -544,7 +544,7 @@ Deleting a Rate Monotonic Period
 The ``rtems_rate_monotonic_delete`` directive is used to delete
 a rate monotonic period.  If the period is running and has not
 expired, the period is automatically canceled.  The rate
-monotonic period’s control block is returned to the PCB free
+monotonic period's control block is returned to the PCB free
 list when it is deleted.  A rate monotonic period can be deleted
 by a task other than the task which created the period.
 
@@ -674,8 +674,8 @@ will delete the rate monotonic periods and itself.
 Directives
 ==========
 
-This section details the rate monotonic manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the rate monotonic manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 
@@ -899,7 +899,7 @@ the rate monotonic period id in the following data structure:.. index:: rtems_ra
 
 A configure time option can be used to select whether the time information is
 given in ticks or seconds and nanoseconds.  The default is seconds and
-nanoseconds.  If the period’s state is ``RATE_MONOTONIC_INACTIVE``, both
+nanoseconds.  If the period's state is ``RATE_MONOTONIC_INACTIVE``, both
 time values will be set to 0.  Otherwise, both time values will contain
 time information since the last invocation of the``rtems_rate_monotonic_period`` directive.  More
 specifically, the ticks_since_last_period value contains the elapsed time

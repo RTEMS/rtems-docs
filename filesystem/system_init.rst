@@ -1,16 +1,16 @@
 System Initialization
 #####################
 
-After the RTEMS initialization is performed, the application’s
+After the RTEMS initialization is performed, the application's
 initialization will be performed. Part of initialization is a call to
-rtems_filesystem_initialize(). This routine will mount the ‘In Memory File
-System’ as the base filesystem.  Mounting the base filesystem consists
+rtems_filesystem_initialize(). This routine will mount the 'In Memory File
+System' as the base filesystem.  Mounting the base filesystem consists
 of the following:
 
 - Initialization of mount table chain control structure
 
 - Allocation of a ``jnode`` structure that will server as the root node
-  of the ‘In Memory Filesystem’
+  of the 'In Memory Filesystem'
 
 - Initialization of the allocated ``jnode`` with the appropriate OPS,
   directory handlers and pathconf limits and options.
@@ -36,7 +36,7 @@ Base Filesystem
 
 RTEMS initially mounts a RAM based file system known as the base file system.
 The root directory of this file system tree serves as the logical root of the
-directory hierarchy (Figure 3). Under the root directory a ‘/dev’ directory
+directory hierarchy (Figure 3). Under the root directory a '/dev' directory
 is created under which all I/O device directories and files are registered as
 part of the file system hierarchy.
 .. code:: c
@@ -61,8 +61,8 @@ required to manage the future file systems.
 Base Filesystem Mounting
 ------------------------
 
-At present, the first file system to be mounted is the ‘In Memory File
-System’. It is mounted using a standard MOUNT() command in which the mount
+At present, the first file system to be mounted is the 'In Memory File
+System'. It is mounted using a standard MOUNT() command in which the mount
 point is NULL.  This flags the mount as the first file system to be
 registered under the operating system and appropriate initialization of file
 system management information is performed (See figures 4 and 5). If a
@@ -81,7 +81,7 @@ system (See ioman.c) a device registration process is performed. Device
 registration produces a unique dev_t handle that consists of a major and
 minor device number. In addition, the configuration information for each
 device contains a text string that represents the fully qualified pathname to
-that device’s place in the base file system’s hierarchy. A file system node
+that device's place in the base file system's hierarchy. A file system node
 is created for the device along the specified registration path.
 
 .. code:: c

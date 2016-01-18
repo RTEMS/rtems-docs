@@ -126,7 +126,7 @@ unblock all tasks waiting at the barrier and the caller will
 return immediately.
 
 When the task does wait to acquire the barrier, then it
-is placed in the barrier’s task wait queue in FIFO order.
+is placed in the barrier's task wait queue in FIFO order.
 All tasks waiting on a barrier are returned an error
 code when the barrier is deleted.
 
@@ -143,17 +143,17 @@ Deleting a Barrier
 
 The ``rtems_barrier_delete`` directive removes a barrier
 from the system and frees its control block.  A barrier can be
-deleted by any local task that knows the barrier’s ID.  As a
+deleted by any local task that knows the barrier's ID.  As a
 result of this directive, all tasks blocked waiting for the
 barrier to be released, will be readied and returned a status code which
 indicates that the barrier was deleted.  Any subsequent
-references to the barrier’s name and ID are invalid.
+references to the barrier's name and ID are invalid.
 
 Directives
 ==========
 
-This section details the barrier manager’s
-directives.  A subsection is dedicated to each of this manager’s
+This section details the barrier manager's
+directives.  A subsection is dedicated to each of this manager's
 directives and describes the calling sequence, related
 constants, usage, and status codes.
 
@@ -179,7 +179,7 @@ BARRIER_CREATE - Create a barrier
 ``RTEMS_SUCCESSFUL`` - barrier created successfully
 ``RTEMS_INVALID_NAME`` - invalid barrier name
 ``RTEMS_INVALID_ADDRESS`` - ``id`` is NULL
-``RTEMS_TOO_MANY`` - too many barriers created 
+``RTEMS_TOO_MANY`` - too many barriers created
 
 **DESCRIPTION:**
 
@@ -268,7 +268,7 @@ BARRIER_DELETE - Delete a barrier
 **DIRECTIVE STATUS CODES:**
 
 ``RTEMS_SUCCESSFUL`` - barrier deleted successfully
-``RTEMS_INVALID_ID`` - invalid barrier id 
+``RTEMS_INVALID_ID`` -c invalid barrier id
 
 **DESCRIPTION:**
 
@@ -281,7 +281,7 @@ by RTEMS.
 **NOTES:**
 
 The calling task will be preempted if it is enabled
-by the task’s execution mode and a higher priority local task is
+by the task's execution mode and a higher priority local task is
 waiting on the deleted barrier.  The calling task will NOT be
 preempted if all of the tasks that are waiting on the barrier
 are remote tasks.
@@ -378,7 +378,7 @@ BARRIER_RELEASE - Release a barrier
 
 This directive releases the barrier specified by id.
 All tasks waiting at the barrier will be unblocked.
-If the running task’s preemption mode is enabled and one of
+If the running task's preemption mode is enabled and one of
 the unblocked tasks has a higher priority than the running task.
 
 **NOTES:**

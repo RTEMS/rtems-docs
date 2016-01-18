@@ -9,14 +9,14 @@ than being designed for growth.
 For information on the i386 processor, refer to the
 following documents:
 
-- *386 Programmer’s Reference Manual, Intel, Order No.  230985-002*.
+- *386 Programmer's Reference Manual, Intel, Order No.  230985-002*.
 
 - *386 Microprocessor Hardware Reference Manual, Intel,
   Order No. 231732-003*.
 
-- *80386 System Software Writer’s Guide, Intel, Order No.  231499-001*.
+- *80386 System Software Writer's Guide, Intel, Order No.  231499-001*.
 
-- *80387 Programmer’s Reference Manual, Intel, Order No.  231917-001*.
+- *80387 Programmer's Reference Manual, Intel, Order No.  231917-001*.
 
 CPU Model Dependent Features
 ============================
@@ -33,7 +33,7 @@ The macro ``I386_HAS_BSWAP`` is set to 1 to indicate that
 this CPU model has the ``bswap`` instruction which
 endian swaps a thirty-two bit quantity.  This instruction
 appears to be present in all CPU models
-i486’s and above.
+i486's and above.
 
 Calling Conventions
 ===================
@@ -128,8 +128,8 @@ Interrupt Processing
 Although RTEMS hides many of the processor
 dependent details of interrupt processing, it is important to
 understand how the RTEMS interrupt manager is mapped onto the
-processor’s unique architecture. Discussed in this chapter are
-the the processor’s response and control mechanisms as they
+processor's unique architecture. Discussed in this chapter are
+the the processor's response and control mechanisms as they
 pertain to RTEMS.
 
 Vectoring of Interrupt Handler
@@ -175,7 +175,7 @@ Interrupt Levels
 ----------------
 
 Although RTEMS supports 256 interrupt levels, the
-i386 only supports two – enabled and disabled.  Interrupts are
+i386 only supports two - enabled and disabled.  Interrupts are
 enabled when the interrupt-enable flag (IF) in the extended
 flags (EFLAGS) is set.  Conversely, interrupt processing is
 inhibited when the IF is cleared.  During a non-maskable
@@ -225,7 +225,7 @@ System Reset
 An RTEMS based application is initiated when the i386 processor is reset.
 When the i386 is reset,
 
-- The EAX register is set to indicate the results of the processor’s
+- The EAX register is set to indicate the results of the processor's
   power-up self test.  If the self-test was not executed, the contents of
   this register are undefined.  Otherwise, a non-zero value indicates the
   processor is faulty and a zero value indicates a successful self-test.
@@ -253,7 +253,7 @@ When the i386 is reset,
   lines are lowered and the processor begins executing in the first megabyte
   of memory.
 
-Typically, an intersegment JMP to the application’s initialization code is
+Typically, an intersegment JMP to the application's initialization code is
 placed at address 0xFFFFFFF0.
 
 Processor Initialization
@@ -306,7 +306,7 @@ which is executed before the call to initialize_executive has the following
 requirements:
 
 For more information regarding the i386 data structures and their
-contents, refer to Intel’s 386 Programmer’s Reference Manual.
+contents, refer to Intel's 386 Programmer's Reference Manual.
 
 .. COMMENT: COPYRIGHT (c) 1988-2002.
 

@@ -183,16 +183,16 @@ Deleting a Timer
 
 The ``rtems_timer_delete`` directive is used to delete a timer.
 If the timer is running and has not expired, the timer is
-automatically canceled.  The timer’s control block is returned
+automatically canceled.  The timer's control block is returned
 to the TMCB free list when it is deleted.  A timer can be
 deleted by a task other than the task which created the timer.
-Any subsequent references to the timer’s name and ID are invalid.
+Any subsequent references to the timer's name and ID are invalid.
 
 Directives
 ==========
 
-This section details the timer manager’s directives.
-A subsection is dedicated to each of this manager’s directives
+This section details the timer manager's directives.
+A subsection is dedicated to each of this manager's directives
 and describes the calling sequence, related constants, usage,
 and status codes.
 

@@ -33,7 +33,7 @@ driver.  There were no DMV177 specific configuration routines.  A BSP
 could use configuration routines to dynamically determine what type
 of real-time clock is on a particular board.  This would be useful for
 a BSP supporting multiple board models.  The relevant ports of
-the DMV177’s ``RTC_Table`` configuration table is below:
+the DMV177's ``RTC_Table`` configuration table is below:
 .. code:: c
 
     #include <bsp.h>
@@ -104,10 +104,10 @@ The ``deviceProbe`` routine returns TRUE if the device
 configured by this entry in the ``RTC_Table`` is present.
 This configuration scheme allows one to support multiple versions
 of the same board with a single BSP.  For example, if the first
-generation of a board had Vendor A’s RTC chip and the second
-generation had Vendor B’s RTC chip, RTC_Table could contain
+generation of a board had Vendor A's RTC chip and the second
+generation had Vendor B's RTC chip, RTC_Table could contain
 information for both.  The ``deviceProbe`` configured
-for Vendor A’s RTC chip would need to return TRUE if the
+for Vendor A's RTC chip would need to return TRUE if the
 board was a first generation one.  The ``deviceProbe``
 routines are very board dependent and must be provided by
 the BSP.

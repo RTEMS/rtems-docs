@@ -80,7 +80,7 @@ shell environment providing access to multiple POSIX compliant filesystems and
 TCP/IP stack.  The subset of capabilities available is easy to configure and
 the standard Shell can be logged into from either a serial port or via telnet.
 But at another level, the Shell is a large set of components which can be
-integrated into the user’s developed command interpreter.  In either case, it
+integrated into the user's developed command interpreter.  In either case, it
 is trivial to add custom commands to the command set available.
 
 Acknowledgements
@@ -102,9 +102,9 @@ have given us permission to reprint portions of their documentation.
 .. pull-quote::
 
     Portions of this text are reprinted and reproduced in electronic form from
-    IEEE Std 1003.1, 2004 Edition, Standard for Information Technology â
+    IEEE Std 1003.1, 2004 Edition, Standard for Information Technology 
     Operating System Interface (POSIX), The Open Group Base Specifications
-    Issue 6, Copyright Â© 2001-2004 by the Institute of Electrical and
+    Issue 6, Copyright (c) 2001-2004 by the Institute of Electrical and
     Electronics Engineers, Inc and The Open Group. In the event of any
     discrepancy between this version and the original IEEE and The Open Group
     Standard, the original IEEE and The Open Group Standard is the referee

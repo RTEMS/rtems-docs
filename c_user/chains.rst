@@ -23,11 +23,11 @@ provided by RTEMS is:
 
 - ``rtems_chain_is_null_node`` - Is the node NULL ?
 
-- ``rtems_chain_head`` - Return the chain’s head
+- ``rtems_chain_head`` - Return the chain's head
 
-- ``rtems_chain_tail`` - Return the chain’s tail
+- ``rtems_chain_tail`` - Return the chain's tail
 
-- ``rtems_chain_are_nodes_equal`` - Are the node’s equal ?
+- ``rtems_chain_are_nodes_equal`` - Are the node's equal ?
 
 - ``rtems_chain_is_empty`` - Is the chain empty ?
 
@@ -106,8 +106,8 @@ foo structure from the list you perform the following:
     return (foo*) rtems_chain_get(control);
     }
 
-The node is placed at the start of the user’s structure to allow the
-node address on the chain to be easly cast to the user’s structure
+The node is placed at the start of the user's structure to allow the
+node address on the chain to be easly cast to the user's structure
 address.
 
 Controls

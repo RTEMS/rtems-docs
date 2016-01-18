@@ -391,11 +391,11 @@ ping - ping a host or IP address
 
 **DESCRIPTION:**
 
-The ping utility uses the ICMP protocol’s mandatory ECHO_REQUEST
+The ping utility uses the ICMP protocol's mandatory ECHO_REQUEST
 datagram to elicit an ICMP ECHO_RESPONSE from a host or gateway.
-ECHO_REQUEST datagrams (“pings”) have an IP and ICMP header,
-followed by a “struct timeval” and then an arbitrary number of
-“pad” bytes used to fill out the packet.  The options are as
+ECHO_REQUEST datagrams ("pings") have an IP and ICMP header,
+followed by a "struct timeval" and then an arbitrary number of
+"pad" bytes used to fill out the packet.  The options are as
 follows:
 
 *-A*
@@ -417,7 +417,7 @@ follows:
     will consist of count packets.
 
 *-D*
-    Set the Don’t Fragment bit.
+    Set the Don't Fragment bit.
 
 *-d*
     Set the SO_DEBUG option on the socket being used.
@@ -425,7 +425,7 @@ follows:
 *-f*
     Flood ping.  Outputs packets as fast as they come back or one
     hundred times per second, whichever is more.  For every ECHO_REQUEST
-    sent a period “.” is printed, while for every ECHO_REPLY received a
+    sent a period "." is printed, while for every ECHO_REPLY received a
     backspace is printed.  This provides a rapid display of how many
     packets are being dropped.  Only the super-user may use this option.
     This can be very hard on a network and should be used with caution.
@@ -479,13 +479,13 @@ follows:
     Exit successfully after receiving one reply packet.
 
 *-p pattern*
-    You may specify up to 16 “pad” bytes to fill out the packet you
+    You may specify up to 16 "pad" bytes to fill out the packet you
     send.  This is useful for diagnosing data-dependent problems in a
-    network.  For example, “-p ff” will cause the sent packet to be
+    network.  For example, "-p ff" will cause the sent packet to be
     filled with all ones.
 
 *-Q*
-    Somewhat quiet output.  Don’t display ICMP error messages that are in
+    Somewhat quiet output.  Don't display ICMP error messages that are in
     response to our query messages.  Originally, the -v flag was required
     to display such errors, but -v displays all ICMP error messages.  On a
     busy machine, this output can be overbear- ing.  Without the -Q flag,
@@ -518,7 +518,7 @@ follows:
     packets.  On hosts with more than one IP address, this option can be
     used to force the source address to be something other than the IP
     address of the interface the probe packet is sent on.  If the IP
-    address is not one of this machine’s interface addresses, an error is
+    address is not one of this machine's interface addresses, an error is
     returned and nothing is sent.
 
 *-s packetsize*
@@ -564,7 +564,7 @@ any other value an error occurred.  These values are defined in
 When using ping for fault isolation, it should first be run on the
 local host, to verify that the local network interface is up and
 running.  Then, hosts and gateways further and further away should be
-“pinged”.  Round-trip times and packet loss statistics are computed.
+"pinged".  Round-trip times and packet loss statistics are computed.
 If duplicate packets are received, they are not included in the packet
 loss calculation, although the round trip time of these packets is
 used in calculating the round-trip time statistics.  When the

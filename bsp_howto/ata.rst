@@ -101,7 +101,7 @@ following structure:
 
 ATA driver supports separate ATA requests queues for each IDE
 controller (one queue per controller). The following structure contains
-information about controller’s queue and devices attached to the controller:
+information about controller's queue and devices attached to the controller:
 .. code:: c
 
     /*
@@ -153,7 +153,7 @@ implementation supports only two ioctls: BLKIO_REQUEST and
 ATAIO_SET_MULTIPLE_MODE. Each ATA driver ioctl() call generates an
 ATA request which is appended to the appropriate controller queue depending
 on ATA device the request belongs to. If appended request is single request in
-the controller’s queue then ATA driver event is generated.
+the controller's queue then ATA driver event is generated.
 
 ATA driver task which manages queue of ATA driver events is core of ATA
 driver. In current driver version queue of ATA driver events implemented

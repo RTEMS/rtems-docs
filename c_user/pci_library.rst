@@ -240,7 +240,7 @@ Peripheral Configuration
 
 On systems where a peripheral PCI device needs to access other PCI devices than
 the host the peripheral configuration approach may be handy. Most PCI devices
-answers on the PCI host’s requests and start DMA accesses into the Hosts memory,
+answers on the PCI host's requests and start DMA accesses into the Hosts memory,
 however in some complex systems PCI devices may want to access other devices
 on the same bus or at another PCI bus.
 
@@ -420,7 +420,7 @@ use the standard RTEMS interrupt functions directly.
 PCI Shell command
 -----------------
 
-The RTEMS shell has a PCI command ’pci’ which makes it possible to read/write
+The RTEMS shell has a PCI command 'pci' which makes it possible to read/write
 configuration space, print the current PCI configuration and print out a
 configuration C-file for the static or peripheral library.
 
