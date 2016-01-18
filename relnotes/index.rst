@@ -1,1 +1,0 @@
-.. include:: relnotes.rst
