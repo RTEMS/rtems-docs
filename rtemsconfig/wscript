@@ -2,32 +2,15 @@ from sys import path
 from os.path import abspath
 path.append(abspath('../common/'))
 
+from waf import cmd_options_path, cmd_configure_path, cmd_build_path
 
-from waf import cmd_configure, cmd_build
 
 def options(ctx):
-	    ctx.add_option('--rtems-path-py', type='string', help="Path to py/ in RTEMS.")
+		cmd_options_path(ctx)
 
 def configure(ctx):
-
-	if not ctx.options.rtems_path_py:
-		ctx.fatal("--rtems-path-py is required")
-
-	ctx.env.RTEMS_PATH = ctx.options.rtems_path_py
-
-	cmd_configure(ctx)
-
-
+	cmd_configure_path(ctx)
 
 def build(ctx):
-#	path.append(ctx.env.RTEMS_PATH)
+	cmd_build_path(ctx)
 
-	sub = {
-		"VERSION":				"1.0",
-		"RELEASE":				"5.0.0",
-		"DOC":					"RTEMS Config",
-		"FILE_DOC":				"rtemsconfig",
-		"CONF_EXTRA":			"sys.path.append('%s')" % ctx.env.RTEMS_PATH
-	}
-
-	cmd_build(ctx, sub)

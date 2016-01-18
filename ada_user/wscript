@@ -8,12 +8,4 @@ def configure(ctx):
 	cmd_configure(ctx)
 
 def build(ctx):
-
-	sub = {
-		"VERSION":				"1.0",
-		"RELEASE":				"5.0.0",
-		"DOC":					"ADA User",
-		"FILE_DOC":				"rtemsada_user",
-	}
-
-	cmd_build(ctx, sub)
+	cmd_build(ctx)

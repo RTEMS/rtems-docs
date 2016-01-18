@@ -1,8 +1,7 @@
-import sys, os
-sys.path.append(os.path.abspath('.'))
-sys.path.append(os.path.abspath('../../common/'))
+#import sys, os
+#sys.path.append(os.path.abspath('.'))
+#sys.path.append(os.path.abspath('../../common/'))
 
-@CONF_EXTRA@
 
 extensions = [
 	"sphinx.ext.autodoc",
@@ -16,7 +15,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['build/_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -29,7 +28,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RTEMS Documentation Project'
-copyright = u'2014, RTEMS Project'
+copyright = u'2016, RTEMS Project'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -112,7 +111,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['build/_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -162,7 +161,7 @@ html_sidebars = {
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'rtemsuserdoc'
+htmlhelp_basename = 'rtemsdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------

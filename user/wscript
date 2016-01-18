@@ -8,12 +8,4 @@ def configure(ctx):
 	cmd_configure(ctx)
 
 def build(ctx):
-
-	sub = {
-		"VERSION":				"1.0",
-		"RELEASE":				"5.0.0",
-		"DOC":					"User Manual",
-		"FILE_DOC":				"rtemsmanual",
-	}
-
-	cmd_build(ctx, sub)
+	cmd_build(ctx)
