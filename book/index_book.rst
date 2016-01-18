@@ -22,8 +22,6 @@ Table of Contents
 	develenv/index.rst
 	filesystem/index.rst
 	networking/index.rst
-	new_chapters/index.rst
 	porting/index.rst
 	posix1003_1/index.rst
 	posix_users/index.rst
-	relnotes/index.rst
