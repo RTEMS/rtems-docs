@@ -1,6 +1,9 @@
 import sys, os
 from waflib.Build import BuildContext
 
+
+sphinx_min_version = (1,3)
+
 def cmd_spell(ctx):
 	from waflib import Options
 	from sys import argv
@@ -32,15 +35,35 @@ class spell(BuildContext):
 	fun = 'cmd_spell'
 
 
+
+def check_sphinx_version(ctx, minver):
+#	try:
+	version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD + ['--version']).split(" ")[-1:][0]
+	ver = tuple(map(int, version.split(".")))
+#	except Exception:
+#		ctx.fatal("Version check failed please report")
+
+	if ver < minver:
+		ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
+
+	return ver
+
 def cmd_configure(ctx):
 	ctx.load('tex')
+
 
 	if not ctx.env.PDFLATEX:
 		conf.fatal('The program LaTex is required')
 
 	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory=True)
-#	ctx.find_program("pdflatex", var="BIN_PDFLATEX", mandatory=True)
 	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
+
+
+	ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
+	ver = check_sphinx_version(ctx, sphinx_min_version)
+
+	ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
+
 
 
 def cmd_build(ctx, conf_dir=".", source_dir="."):
