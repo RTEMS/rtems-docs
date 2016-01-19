@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   viewBox="0 0 273.73929 140.89547"
+   height="140.89548"
+   width="273.73929"
+   version="1.1"
+   id="svg2">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient5701">
+      <stop
+         id="stop5703"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(22.271721,11.608298)"
+       gradientUnits="userSpaceOnUse"
+       y2="58.839436"
+       x2="228.92459"
+       y1="58.839436"
+       x1="0.27125561"
+       id="linearGradient5705"
+       xlink:href="#linearGradient5701" />
+    <filter
+       id="filter6763"
+       style="color-interpolation-filters:sRGB">
+      <feFlood
+         id="feFlood6765"
+         result="flood"
+         flood-color="rgb(0,48,0)"
+         flood-opacity="0.12" />
+      <feComposite
+         flood-opacity="0.070000000000000007"
+         id="feComposite6767"
+         result="composite1"
+         operator="in"
+         in2="SourceGraphic"
+         in="flood" />
+      <feGaussianBlur
+         id="feGaussianBlur6769"
+         result="blur"
+         stdDeviation="2"
+         in="composite1" />
+      <feOffset
+         flood-opacity="0.91000000000000003"
+         id="feOffset6771"
+         result="offset"
+         dy="2.0999999999999996"
+         dx="0.60000000000000009" />
+      <feComposite
+         id="feComposite6773"
+         result="fbSourceGraphic"
+         operator="over"
+         in2="offset"
+         in="SourceGraphic" />
+      <feColorMatrix
+         type="luminanceToAlpha"
+         id="feColorMatrix6775"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         in="fbSourceGraphic"
+         result="fbSourceGraphicAlpha" />
+      <feFlood
+         in="fbSourceGraphic"
+         result="flood"
+         flood-color="rgb(0,48,0)"
+         flood-opacity="0.76000000000000001"
+         id="feFlood6777" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="fbSourceGraphic"
+         id="feComposite6779" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.8"
+         in="composite1"
+         id="feGaussianBlur6781" />
+      <feOffset
+         result="offset"
+         dy="4.1"
+         dx="3.6"
+         id="feOffset6783" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="fbSourceGraphic"
+         in2="offset"
+         id="feComposite6785" />
+    </filter>
+  </defs>
+  <ellipse
+     ry="58.706448"
+     rx="114.05804"
+     cy="70.447731"
+     cx="136.86964"
+     id="path3338"
+     style="opacity:1;fill:#007d24;fill-opacity:1;stroke:url(#linearGradient5705);stroke-width:0.53726172;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;filter:url(#filter6763)" />
+  <ellipse
+     ry="51.094227"
+     rx="100.88236"
+     cy="70.362549"
+     cx="136.92354"
+     id="path3342"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.51814306;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+  <text
+     transform="matrix(0.9267005,0,-0.15511955,1.0790973,0,0)"
+     id="text3335"
+     y="82.408966"
+     x="99.762512"
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:31.49081612px;line-height:125%;font-family:'Helvetica Black';-inkscape-font-specification:'Helvetica Black, Heavy';letter-spacing:-0.86374795px;word-spacing:0px;fill:#bd0600;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="82.408966"
+       x="99.762512"
+       id="tspan3337">RTEMS</tspan></text>
+  <text
+     id="text4143"
+     y="27.440823"
+     x="83.347374"
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:40px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:'Helvetica Heavy';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="27.440823"
+       x="83.347374"
+       id="tspan4145" /></text>
+  <text
+     transform="matrix(0.9225785,0,-0.1513534,1.0839186,0,0)"
+     id="text4147"
+     y="49.845318"
+     x="76.531723"
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:18.4515686px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:'Helvetica Heavy';letter-spacing:0px;word-spacing:0px;fill:#000500;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="49.845318"
+       x="76.531723"
+       id="tspan4149">Embedded With</tspan></text>
+  <text
+     id="text4155"
+     y="111.86915"
+     x="152.31982"
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:13.75px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:'Helvetica Heavy';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="111.86915"
+       x="152.31982"
+       id="tspan4157" /></text>
+  <text
+     id="text4159"
+     y="112.51241"
+     x="152.70578"
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:13.75px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:'Helvetica Heavy';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="112.51241"
+       x="152.70578"
+       id="tspan4161" /></text>
+  <text
+     transform="scale(0.99722572,1.002782)"
+     id="text4163"
+     y="105.65429"
+     x="87.974411"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.46532154px;line-height:125%;font-family:'ITC Eras Std';-inkscape-font-specification:'ITC Eras Std Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="105.65429"
+       x="87.974411"
+       id="tspan4165">www.rtems.org</tspan></text>
+  <text
+     transform="matrix(0.95877194,0,-0.09165165,1.0430009,0,0)"
+     id="text4167"
+     y="65.417999"
+     x="205.90218"
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:6.18215895px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:'Helvetica Heavy';letter-spacing:0px;word-spacing:0px;fill:#bd0600;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="65.417999"
+       x="205.90218"
+       id="tspan4169">tm</tspan></text>
+</svg>
