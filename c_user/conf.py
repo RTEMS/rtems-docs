@@ -7,6 +7,6 @@ version = '1.0'
 release = '5.0'
 
 latex_documents = [
-	('index', 'filesystem.tex', u'RTEMS Filesystem Documentation', u'RTEMS Documentation Project', 'manual'),
+	('index', 'c_user.tex', u'RTEMS C User Documentation', u'RTEMS Documentation Project', 'manual'),
 ]
 

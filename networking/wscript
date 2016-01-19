@@ -2,10 +2,5 @@ from sys import path
 from os.path import abspath
 path.append(abspath('../common/'))
 
-from waf import cmd_configure, cmd_build, spell, cmd_spell
+from waf import cmd_configure as configure, cmd_build as build, spell, cmd_spell, cmd_options as options
 
-def configure(ctx):
-	cmd_configure(ctx)
-
-def build(ctx):
-	cmd_build(ctx)

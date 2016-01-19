@@ -33,33 +33,64 @@ class spell(BuildContext):
 
 
 def cmd_configure(ctx):
-	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD")
+	ctx.load('tex')
+
+	if not ctx.env.PDFLATEX:
+		conf.fatal('The program LaTex is required')
+
+	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory=True)
+#	ctx.find_program("pdflatex", var="BIN_PDFLATEX", mandatory=True)
 	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
+
 
 def cmd_build(ctx, conf_dir=".", source_dir="."):
 	srcnode = ctx.srcnode.abspath()
 
-	# Copy resources.
-	for dir in ["_static", "_templates"]:
-		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir)
-		ctx.path.get_bld().make_node(dir).mkdir() # dirs
+	if ctx.options.pdf:
 
 		ctx(
-			features    = "subst",
-			is_copy     = True,
-			source      = files,
-			target      = [ctx.bldnode.find_node(dir).get_bld().make_node(x.name) for x in files]
+			rule	= "${BIN_SPHINX_BUILD} -b latex -c %s -j %d -d build/doctrees %s build/latex" % (conf_dir, ctx.options.jobs, source_dir),
+			cwd		= ctx.path.abspath(),
+			source	= ctx.path.ant_glob('**/*.rst'),
+			target	= "latex/%s.tex" % ctx.path.name
 		)
 
-	ctx(
-		rule   = "${BIN_SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
-		cwd	= ctx.path.abspath(),
-		source =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
-		target = ctx.path.find_or_declare('html/index.html')
-	)
+		ctx.add_group()
+
+		ctx(
+			features	= 'tex',
+			cwd			= "%s/latex/" % ctx.path.get_bld().abspath(),
+			type		= 'pdflatex',
+			source		= ctx.bldnode.find_or_declare("latex/%s.tex" % ctx.path.name),
+			prompt		= 0
+		)
+
+	else:
+	# Copy HTML resources.
+		for dir in ["_static", "_templates"]:
+			files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir)
+			ctx.path.get_bld().make_node(dir).mkdir() # dirs
+
+			ctx(
+				features    = "subst",
+				is_copy     = True,
+				source      = files,
+				target      = [ctx.bldnode.find_node(dir).get_bld().make_node(x.name) for x in files]
+			)
+
+		ctx(
+			rule   = "${BIN_SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
+			cwd	= ctx.path.abspath(),
+			source =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
+			target = ctx.path.find_or_declare('html/index.html')
+		)
+
+def cmd_options(ctx):
+	ctx.add_option('--pdf', action='store_true', default=False, help="Build PDF.")
 
 def cmd_options_path(ctx):
-	ctx.add_option('--rtems-path-py', type='string', help="Path to py/ in RTEMS.")
+	cmd_options(ctx)
+	ctx.add_option('--rtems-path-py', type='string', help="Full path to py/ in RTEMS source repository.")
 
 
 def cmd_configure_path(ctx):

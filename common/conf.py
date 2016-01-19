@@ -188,7 +188,7 @@ latex_elements = {
 
 latex_use_parts = True
 
-latex_additional_files = ['rtems.sty', 'logo.pdf']
+latex_additional_files = ['../common/rtemsstyle.sty', '../common/logo.pdf']
 
 latex_use_modindex = False
 
