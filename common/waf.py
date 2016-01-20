@@ -52,8 +52,8 @@ def cmd_configure(ctx):
 	ctx.load('tex')
 
 
-	if not ctx.env.PDFLATEX:
-		conf.fatal('The program LaTex is required')
+	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
+		ctx.fatal('The programs pdflatex and makeindex are required')
 
 	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory=True)
 	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
