@@ -48,9 +48,6 @@ def check_sphinx_version(ctx, minver):
 def cmd_configure(ctx):
 	ctx.load('tex')
 
-	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
-		ctx.fatal('The programs pdflatex and makeindex are required')
-
 	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory=True)
 	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
 	ctx.find_program("inliner", var="BIN_INLINER", mandatory=False)
@@ -62,6 +59,9 @@ def cmd_configure(ctx):
 
 
 def doc_pdf(ctx, source_dir, conf_dir):
+	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
+		ctx.fatal('The programs pdflatex and makeindex are required')
+
 	ctx(
 		rule	= "${BIN_SPHINX_BUILD} -b latex -c %s -j %d -d build/doctrees %s build/latex" % (conf_dir, ctx.options.jobs, source_dir),
 		cwd		= ctx.path.abspath(),
