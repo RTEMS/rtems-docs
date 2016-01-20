@@ -116,10 +116,6 @@ def html_resources(ctx):
 def cmd_build(ctx, conf_dir=".", source_dir="."):
 	srcnode = ctx.srcnode.abspath()
 
-	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
-		ctx.fatal('The programs pdflatex and makeindex are required')
-
-
 	if ctx.options.pdf:
 		doc_pdf(ctx, source_dir, conf_dir)
 	elif ctx.options.singlehtml:
