@@ -29,10 +29,25 @@ def cmd_spell(ctx):
 		call(cmd)
 
 
+def cmd_linkcheck(ctx, conf_dir=".", source_dir="."):
+	ctx(
+		rule	= "${BIN_SPHINX_BUILD} -b linkcheck -c %s -j %d -d build/doctrees %s build/linkcheck" % (conf_dir, ctx.options.jobs, source_dir),
+		cwd		= ctx.path.abspath(),
+		source	= ctx.path.ant_glob('**/*.rst'),
+		target	= "linkcheck/output.txt"
+	)
+
+
 class spell(BuildContext):
 	__doc__ = "Check spelling.  Supply a list of files or a glob (*.rst)"
 	cmd = 'spell'
 	fun = 'cmd_spell'
+
+
+class linkcheck(BuildContext):
+	__doc__ = "Check all external URL references."
+	cmd = 'linkcheck'
+	fun = 'cmd_linkcheck'
 
 
 def check_sphinx_version(ctx, minver):
@@ -78,7 +93,6 @@ def doc_pdf(ctx, source_dir, conf_dir):
 		source		= ctx.bldnode.find_or_declare("latex/%s.tex" % ctx.path.name),
 		prompt		= 0
 	)
-
 
 def doc_singlehtml(ctx, source_dir, conf_dir):
 	if not ctx.env.BIN_INLINER:
