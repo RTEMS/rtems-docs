@@ -45,7 +45,8 @@
   \fancyfoot[LE,RO]{{\thepage}}
   \fancyfoot[LO]{{\nouppercase{\rightmark}}}
   \fancyfoot[RE]{{\nouppercase{\leftmark}}}
-  \fancyhead[LE,RO]{{ \@title, \py@release}}
+  \fancyhead[LE,RO]{{\@title, \py@release}}
+  \fancyhead[RE,LO]{{\chaptername\:\thechapter\:Section\:\thesection}}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0.4pt}
 }
@@ -72,7 +73,7 @@
 
 \renewcommand\thepart{\@Roman\c@part}
 \renewcommand\part{%
-   \pagestyle{plain}
+   \pagestyle{normal}
    \if@noskipsec \leavevmode \fi
    \cleardoublepage
    \vspace*{6cm}%

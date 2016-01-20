@@ -1,8 +1,8 @@
 import sys, os
 from waflib.Build import BuildContext
 
-
 sphinx_min_version = (1,3)
+
 
 def cmd_spell(ctx):
 	from waflib import Options
@@ -35,29 +35,25 @@ class spell(BuildContext):
 	fun = 'cmd_spell'
 
 
-
 def check_sphinx_version(ctx, minver):
-#	try:
 	version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD + ['--version']).split(" ")[-1:][0]
 	ver = tuple(map(int, version.split(".")))
-#	except Exception:
-#		ctx.fatal("Version check failed please report")
 
 	if ver < minver:
 		ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
 
 	return ver
 
+
 def cmd_configure(ctx):
 	ctx.load('tex')
-
 
 	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
 		ctx.fatal('The programs pdflatex and makeindex are required')
 
 	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory=True)
 	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
-
+	ctx.find_program("inliner", var="BIN_INLINER", mandatory=False)
 
 	ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
 	ver = check_sphinx_version(ctx, sphinx_min_version)
@@ -65,42 +61,72 @@ def cmd_configure(ctx):
 	ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
 
 
+def doc_pdf(ctx, source_dir, conf_dir):
+	ctx(
+		rule	= "${BIN_SPHINX_BUILD} -b latex -c %s -j %d -d build/doctrees %s build/latex" % (conf_dir, ctx.options.jobs, source_dir),
+		cwd		= ctx.path.abspath(),
+		source	= ctx.path.ant_glob('**/*.rst'),
+		target	= "latex/%s.tex" % ctx.path.name
+	)
+
+	ctx.add_group()
+
+	ctx(
+		features	= 'tex',
+		cwd			= "%s/latex/" % ctx.path.get_bld().abspath(),
+		type		= 'pdflatex',
+		source		= ctx.bldnode.find_or_declare("latex/%s.tex" % ctx.path.name),
+		prompt		= 0
+	)
+
+
+def doc_singlehtml(ctx, source_dir, conf_dir):
+	if not ctx.env.BIN_INLINER:
+		ctx.fatal("Node inliner is required install with 'npm install -g inliner' (https://github.com/remy/inliner)")
+
+	ctx(
+		rule	= "${BIN_SPHINX_BUILD} -b singlehtml -c %s -j %d -d build/doctrees %s build/singlehtml" % (conf_dir, ctx.options.jobs, source_dir),
+		cwd		= ctx.path.abspath(),
+		source	= ctx.path.ant_glob('**/*.rst'),
+		target	= "singlehtml/index.html"
+	)
+
+	ctx.add_group()
+
+	ctx(
+		rule	= "${BIN_INLINER} ${SRC} > ${TGT}",
+		source	= "singlehtml/index.html",
+		target	= "singlehtml/%s.html" % ctx.path.name
+	)
+
+
+def html_resources(ctx):
+	for dir in ["_static", "_templates"]:
+		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir)
+		ctx.path.get_bld().make_node(dir).mkdir() # dirs
+
+		ctx(
+			features    = "subst",
+			is_copy     = True,
+			source      = files,
+			target      = [ctx.bldnode.find_node(dir).get_bld().make_node(x.name) for x in files]
+		)
+
 
 def cmd_build(ctx, conf_dir=".", source_dir="."):
 	srcnode = ctx.srcnode.abspath()
 
+	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
+		ctx.fatal('The programs pdflatex and makeindex are required')
+
+
 	if ctx.options.pdf:
-
-		ctx(
-			rule	= "${BIN_SPHINX_BUILD} -b latex -c %s -j %d -d build/doctrees %s build/latex" % (conf_dir, ctx.options.jobs, source_dir),
-			cwd		= ctx.path.abspath(),
-			source	= ctx.path.ant_glob('**/*.rst'),
-			target	= "latex/%s.tex" % ctx.path.name
-		)
-
-		ctx.add_group()
-
-		ctx(
-			features	= 'tex',
-			cwd			= "%s/latex/" % ctx.path.get_bld().abspath(),
-			type		= 'pdflatex',
-			source		= ctx.bldnode.find_or_declare("latex/%s.tex" % ctx.path.name),
-			prompt		= 0
-		)
-
+		doc_pdf(ctx, source_dir, conf_dir)
+	elif ctx.options.singlehtml:
+		html_resources(ctx)
+		doc_singlehtml(ctx, source_dir, conf_dir)
 	else:
-	# Copy HTML resources.
-		for dir in ["_static", "_templates"]:
-			files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir)
-			ctx.path.get_bld().make_node(dir).mkdir() # dirs
-
-			ctx(
-				features    = "subst",
-				is_copy     = True,
-				source      = files,
-				target      = [ctx.bldnode.find_node(dir).get_bld().make_node(x.name) for x in files]
-			)
-
+		html_resources(ctx)
 		ctx(
 			rule   = "${BIN_SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
 			cwd	= ctx.path.abspath(),
@@ -110,6 +136,8 @@ def cmd_build(ctx, conf_dir=".", source_dir="."):
 
 def cmd_options(ctx):
 	ctx.add_option('--pdf', action='store_true', default=False, help="Build PDF.")
+	ctx.add_option('--singlehtml', action='store_true', default=False, help="Build Single HTML file, requires Node Inliner")
+
 
 def cmd_options_path(ctx):
 	cmd_options(ctx)
@@ -151,5 +179,3 @@ def cmd_build_path(ctx):
     )
 
 	cmd_build(ctx, conf_dir="build", source_dir="build")
-
-
