@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2008.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 General Commands
 ################
 
@@ -6,41 +10,41 @@ Introduction
 
 The RTEMS shell has the following general commands:
 
-- ``help`` - Print command help
+- help_ - Print command help
 
-- ``alias`` - Add alias for an existing command
+- alias_ - Add alias for an existing command
 
-- ``cmdls`` - List commands
+- cmdls_ - List commands
 
-- ``cmdchown`` - Change user or owner of commands
+- cmdchown_ - Change user or owner of commands
 
-- ``cmdchmod`` - Change mode of commands
+- cmdchmod_ - Change mode of commands
 
-- ``date`` - Print or set current date and time
+- date_ - Print or set current date and time
 
-- ``echo`` - Produce message in a shell script
+- echo_ - Produce message in a shell script
 
-- ``sleep`` - Delay for a specified amount of time
+- sleep_ - Delay for a specified amount of time
 
-- ``id`` - show uid gid euid and egid
+- id_ - show uid gid euid and egid
 
-- ``tty`` - show ttyname
+- tty_ - show ttyname
 
-- ``whoami`` - print effective user id
+- whoami_ - print effective user id
 
-- ``getenv`` - print environment variable
+- getenv_ - print environment variable
 
-- ``setenv`` - set environment variable
+- setenv_ - set environment variable
 
-- ``unsetenv`` - unset environment variable
+- unsetenv_ - unset environment variable
 
-- ``time`` - time command execution
+- time_ - time command execution
 
-- ``logoff`` - logoff from the system
+- logoff_ - logoff from the system
 
-- ``rtc`` - RTC driver configuration
+- rtc_ - RTC driver configuration
 
-- ``exit`` - alias for logoff command
+- exit_ - alias for logoff command
 
 Commands
 ========
@@ -48,6 +52,8 @@ Commands
 This section details the General Commands available.  A subsection is dedicated
 to each of the commands and describes the behavior and configuration of that
 command as well as providing an example usage.
+
+.. _help:
 
 help - Print command help
 -------------------------
@@ -126,6 +132,8 @@ The following is an example of how to use ``alias``:
 
 This command has no configuration.
 
+.. _alias:
+
 alias - add alias for an existing command
 -----------------------------------------
 .. index:: alias
@@ -195,6 +203,8 @@ The configuration structure for the ``alias`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_ALIAS_Command;
 
+.. _cmdls:
+
 cmdls - List commands
 ---------------------
 .. index:: cmdls
@@ -247,6 +257,8 @@ The configuration structure for the ``cmdls`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDLS_Command;
+
+.. _cmdchown:
 
 cmdchown - Change user or owner of commands
 -------------------------------------------
@@ -304,6 +316,8 @@ The configuration structure for the ``cmdchown`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_CMDCHOWN_Command;
 
+.. _cmdchmod:
+
 cmdchmod - Change mode of commands
 ----------------------------------
 .. index:: cmdchmod
@@ -359,6 +373,8 @@ The configuration structure for the ``cmdchmod`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDCHMOD_Command;
+
+.. _date:
 
 date - print or set current date and time
 -----------------------------------------
@@ -432,6 +448,8 @@ The configuration structure for the ``date`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_DATE_Command;
+
+.. _echo:
 
 echo - produce message in a shell script
 ----------------------------------------
@@ -545,6 +563,8 @@ The configuration structure for the ``echo`` has the following prototype:
 The implementation and portions of the documentation for this command are from
 NetBSD 4.0.
 
+.. _sleep:
+
 sleep - delay for a specified amount of time
 --------------------------------------------
 .. index:: sleep
@@ -619,6 +639,8 @@ The configuration structure for the ``sleep`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_SLEEP_Command;
+
+.. _id:
 
 id - show uid gid euid and egid
 -------------------------------
@@ -695,6 +717,8 @@ The configuration structure for the ``id`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_ID_Command;
 
+.. _tty:
+
 tty - show ttyname
 ------------------
 .. index:: tty
@@ -758,6 +782,8 @@ The configuration structure for the ``tty`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_TTY_Command;
+
+.. _whoami:
 
 whoami - print effective user id
 --------------------------------
@@ -824,6 +850,8 @@ The configuration structure for the ``whoami`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_WHOAMI_Command;
 
+.. _getenv:
+
 getenv - print environment variable
 -----------------------------------
 .. index:: getenv
@@ -888,6 +916,8 @@ The configuration structure for the ``getenv`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_GETENV_Command;
+
+.. _setenv:
 
 setenv - set environment variable
 ---------------------------------
@@ -955,6 +985,8 @@ The configuration structure for the ``setenv`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_SETENV_Command;
 
+.. _unsetenv:
+
 unsetenv - unset environment variable
 -------------------------------------
 .. index:: unsetenv
@@ -1017,6 +1049,8 @@ The configuration structure for the ``unsetenv`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_UNSETENV_Command;
+
+.. _time:
 
 time - time command execution
 -----------------------------
@@ -1081,6 +1115,8 @@ The configuration structure for the ``time`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_TIME_Command;
+
+.. _logoff:
 
 logoff - logoff from the system
 -------------------------------
@@ -1149,6 +1185,8 @@ The configuration structure for the ``logoff`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_LOGOFF_Command;
 
+.. _rtc:
+
 rtc - RTC driver configuration
 ------------------------------
 .. index:: rtc
@@ -1171,6 +1209,8 @@ included.
 This command can be excluded from the shell command set by defining
 ``CONFIGURE_SHELL_NO_COMMAND_RTC`` when all shell commands have been
 configured.
+
+.. _exit:
 
 exit - exit the shell
 ---------------------

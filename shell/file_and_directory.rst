@@ -6,59 +6,59 @@ Introduction
 
 The RTEMS shell has the following file and directory commands:
 
-- ``blksync`` - sync the block driver
+- blksync_ - sync the block driver
 
-- ``cat`` - display file contents
+- cat_ - display file contents
 
-- ``cd`` - alias for chdir
+- cd_ - alias for chdir
 
-- ``chdir`` - change the current directory
+- chdir_ - change the current directory
 
-- ``chmod`` - change permissions of a file
+- chmod_ - change permissions of a file
 
-- ``chroot`` - change the root directory
+- chroot_ - change the root directory
 
-- ``cp`` - copy files
+- cp_ - copy files
 
-- ``dd`` - format disks
+- dd_ - convert and copy a file
 
-- ``debugrfs`` - debug RFS file system
+- debugrfs_ - debug RFS file system
 
-- ``df`` - display file system disk space usage
+- df_ - display file system disk space usage
 
-- ``dir`` - alias for ls
+- dir_ - alias for ls_
 
-- ``fdisk`` - format disks
+- fdisk_ - format disks
 
-- ``hexdump`` - format disks
+- hexdump_ - format disks
 
-- ``ln`` - make links
+- ln_ - make links
 
-- ``ls`` - list files in the directory
+- ls_ - list files in the directory
 
-- ``md5`` - display file system disk space usage
+- md5_ - display file system disk space usage
 
-- ``mkdir`` - create a directory
+- mkdir_ - create a directory
 
-- ``mkdos`` - DOSFS disk format
+- mkdos_ - DOSFS disk format
 
-- ``mknod`` - make device special file
+- mknod_ - make device special file
 
-- ``mkrfs`` - format RFS file system
+- mkrfs_ - format RFS file system
 
-- ``mount`` - mount disk
+- mount_ - mount disk
 
-- ``mv`` - move files
+- mv_ - move files
 
-- ``pwd`` - print work directory
+- pwd_ - print work directory
 
-- ``rmdir`` - remove empty directories
+- rmdir_ - remove empty directories
 
-- ``rm`` - remove files
+- rm_ - remove files
 
-- ``umask`` - Set file mode creation mask
+- umask_ - Set file mode creation mask
 
-- ``unmount`` - unmount disk
+- unmount_ - unmount disk
 
 Commands
 ========
@@ -66,6 +66,8 @@ Commands
 This section details the File and Directory Commands available.  A subsection
 is dedicated to each of the commands and describes the behavior and
 configuration of that command as well as providing an example usage.
+
+.. _blksync:
 
 blksync - sync the block driver
 -------------------------------
@@ -132,6 +134,8 @@ The configuration structure for the ``blksync`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_BLKSYNC_Command;
 
+.. _cat:
+
 cat - display file contents
 ---------------------------
 .. index:: cat
@@ -197,6 +201,8 @@ The configuration structure for the ``cat`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CAT_Command;
+
+.. _cd:
 
 cd - alias for chdir
 --------------------
@@ -272,6 +278,7 @@ The configuration structure for the ``cd`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_CD_Command;
 
+.. _chdir:
 
 chdir - change the current directory
 ------------------------------------
@@ -341,6 +348,8 @@ The configuration structure for the ``chdir`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CHDIR_Command;
+
+.. _chmod:
 
 chmod - change permissions of a file
 ------------------------------------
@@ -435,6 +444,8 @@ The configuration structure for the ``chmod`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_CHMOD_Command;
 
+.. _chroot:
+
 chroot - change the root directory
 ----------------------------------
 .. index:: chroot
@@ -509,6 +520,8 @@ The configuration structure for the ``chroot`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_CHROOT_Command;
+
+.. _cp:
 
 cp - copy files
 ---------------
@@ -686,6 +699,8 @@ The configuration structure for the ``cp`` has the following prototype:
 
 The implementation and portions of the documentation for this command are from
 NetBSD 4.0.
+
+.. _dd:
 
 dd - convert and copy a file
 ----------------------------
@@ -938,6 +953,8 @@ The configuration structure for the ``dd`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_DD_Command;
 
+.. _debugrfs:
+
 debugrfs - debug RFS file system
 --------------------------------
 .. index:: debugrfs
@@ -1040,6 +1057,8 @@ The configuration structure for ``debugrfs`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_DEBUGRFS_Command;
 
+.. _df:
+
 df - display file system disk space usage
 -----------------------------------------
 .. index:: df
@@ -1108,6 +1127,8 @@ The configuration structure for the ``df`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_DF_Command;
+
+.. _dir:
 
 dir - alias for ls
 ------------------
@@ -1182,6 +1203,8 @@ The configuration structure for the ``dir`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_DIR_Command;
 
+.. _fdisk:
+
 fdisk - format disk
 -------------------
 .. index:: fdisk
@@ -1204,6 +1227,8 @@ command included.
 This command can be excluded from the shell command set by defining
 ``CONFIGURE_SHELL_NO_COMMAND_FDISK`` when all shell commands have been
 configured.
+
+.. _hexdump:
 
 hexdump - ascii/dec/hex/octal dump
 ----------------------------------
@@ -1460,6 +1485,8 @@ The configuration structure for the ``hexdump`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_HEXDUMP_Command;
 
+.. _ln:
+
 ln - make links
 ---------------
 .. index:: ln
@@ -1578,6 +1605,8 @@ The configuration structure for the ``ln`` has the following prototype:
 The implementation and portions of the documentation for this command are from
 NetBSD 4.0.
 
+.. _ls:
+
 ls - list files in the directory
 --------------------------------
 .. index:: ls
@@ -1654,6 +1683,8 @@ The configuration structure for the ``ls`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_LS_Command;
 
+.. _md5:
+
 md5 - compute the Md5 hash of a file or list of files
 -----------------------------------------------------
 .. index:: md5
@@ -1718,6 +1749,8 @@ The configuration structure for the ``md5`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_MD5_Command;
+
+.. _mkdir:
 
 mkdir - create a directory
 --------------------------
@@ -1799,9 +1832,11 @@ The configuration structure for the ``mkdir`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_MKDIR_Command;
 
-mldos - DOSFS file system format
+.. _mkdos:
+
+mkdos - DOSFS file system format
 --------------------------------
-.. index:: pwd
+.. index:: mkdos
 
 **SYNOPSYS:**
 
@@ -1867,6 +1902,8 @@ The configuration structure for the ``mkdos`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_MKDOS_Command;
+
+.. _mknod:
 
 mknod - make device special file
 --------------------------------
@@ -1996,6 +2033,8 @@ The configuration structure for the ``mknod`` has the following prototype:
 The implementation and portions of the documentation for this command are from
 NetBSD 4.0.
 
+.. _mkrfs:
+
 mkrfs - format RFS file system
 ------------------------------
 .. index:: mkrfs
@@ -2091,6 +2130,8 @@ The configuration structure for ``mkrfs`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_MKRFS_Command;
+
+.. _mount:
 
 mount - mount disk
 ------------------
@@ -2219,6 +2260,8 @@ The configuration structure for the ``mount`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_MOUNT_Command;
 
+.. _mv:
+
 mv - move files
 ---------------
 .. index:: mv
@@ -2327,6 +2370,8 @@ The configuration structure for the ``mv`` has the following prototype:
 The implementation and portions of the documentation for this command are from
 NetBSD 4.0.
 
+.. _pwd:
+
 pwd - print work directory
 --------------------------
 .. index:: pwd
@@ -2395,6 +2440,8 @@ The configuration structure for the ``pwd`` has the following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_PWD_Command;
 
+.. _rmdir:
+
 rmdir - remove empty directories
 --------------------------------
 .. index:: rmdir
@@ -2462,6 +2509,8 @@ The configuration structure for the ``rmdir`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_RMDIR_Command;
+
+.. _rm:
 
 rm - remove files
 -----------------
@@ -2539,6 +2588,8 @@ following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_RM_Command;
 
+.. _umask:
+
 umask - set file mode creation mask
 -----------------------------------
 .. index:: umask
@@ -2607,6 +2658,8 @@ The configuration structure for the ``umask`` has the following prototype:
 .. code:: c
 
     extern rtems_shell_cmd_t rtems_shell_UMASK_Command;
+
+.. _unmount:
 
 unmount - unmount disk
 ----------------------
