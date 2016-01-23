@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2008.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 =======
 Preface
 =======
@@ -102,7 +106,7 @@ have given us permission to reprint portions of their documentation.
 .. pull-quote::
 
     Portions of this text are reprinted and reproduced in electronic form from
-    IEEE Std 1003.1, 2004 Edition, Standard for Information Technology 
+    IEEE Std 1003.1, 2004 Edition, Standard for Information Technology
     Operating System Interface (POSIX), The Open Group Base Specifications
     Issue 6, Copyright (c) 2001-2004 by the Institute of Electrical and
     Electronics Engineers, Inc and The Open Group. In the event of any
