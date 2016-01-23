@@ -51,9 +51,11 @@ class linkcheck(BuildContext):
 
 
 def check_sphinx_version(ctx, minver):
-	version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD + ['--version']).split(" ")[-1:][0]
-	ver = tuple(map(int, version.split(".")))
-
+	version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD + ['--version']).split(" ")[-1:][0].strip()
+	try:
+		ver = tuple(map(int, version.split(".")))
+	except:
+		ctx.fatal("Sphinx version cannot be checked: %s" % version)
 	if ver < minver:
 		ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
 
