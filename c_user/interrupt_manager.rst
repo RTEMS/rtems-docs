@@ -1,41 +1,43 @@
+.. COMMENT: COPYRIGHT (c) 1988-2008.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Interrupt Manager
 #################
 
 Introduction
 ============
 
-Any real-time executive must provide a mechanism for
-quick response to externally generated interrupts to satisfy the
-critical time constraints of the application.  The interrupt
-manager provides this mechanism for RTEMS.  This manager permits
-quick interrupt response times by providing the critical ability
-to alter task execution which allows a task to be preempted upon
-exit from an ISR.  The interrupt manager includes the following
-directive:
+Any real-time executive must provide a mechanism for quick response to
+externally generated interrupts to satisfy the critical time constraints of the
+application.  The interrupt manager provides this mechanism for RTEMS.  This
+manager permits quick interrupt response times by providing the critical
+ability to alter task execution which allows a task to be preempted upon exit
+from an ISR.  The interrupt manager includes the following directive:
 
-- ``rtems_interrupt_catch`` - Establish an ISR
+- rtems_interrupt_catch_ - Establish an ISR
 
-- ``rtems_interrupt_disable`` - Disable Interrupts
+- rtems_interrupt_disable_ - Disable Interrupts
 
-- ``rtems_interrupt_enable`` - Enable Interrupts
+- rtems_interrupt_enable_ - Enable Interrupts
 
-- ``rtems_interrupt_flash`` - Flash Interrupt
+- rtems_interrupt_flash_ - Flash Interrupt
 
-- ``rtems_interrupt_local_disable`` - Disable Interrupts on Current Processor
+- rtems_interrupt_local_disable_ - Disable Interrupts on Current Processor
 
-- ``rtems_interrupt_local_enable`` - Enable Interrupts on Current Processor
+- rtems_interrupt_local_enable_ - Enable Interrupts on Current Processor
 
-- ``rtems_interrupt_lock_initialize`` - Initialize an ISR Lock
+- rtems_interrupt_lock_initialize_ - Initialize an ISR Lock
 
-- ``rtems_interrupt_lock_acquire`` - Acquire an ISR Lock
+- rtems_interrupt_lock_acquire_ - Acquire an ISR Lock
 
-- ``rtems_interrupt_lock_release`` - Release an ISR Lock
+- rtems_interrupt_lock_release_ - Release an ISR Lock
 
-- ``rtems_interrupt_lock_acquire_isr`` - Acquire an ISR Lock from ISR
+- rtems_interrupt_lock_acquire_isr_ - Acquire an ISR Lock from ISR
 
-- ``rtems_interrupt_lock_release_isr`` - Release an ISR Lock from ISR
+- rtems_interrupt_lock_release_isr_ - Release an ISR Lock from ISR
 
-- ``rtems_interrupt_is_in_progress`` - Is an ISR in Progress
+- rtems_interrupt_is_in_progress_ - Is an ISR in Progress
 
 Background
 ==========
@@ -44,108 +46,98 @@ Processing an Interrupt
 -----------------------
 .. index:: interrupt processing
 
-The interrupt manager allows the application to
-connect a function to a hardware interrupt vector.  When an
-interrupt occurs, the processor will automatically vector to
-RTEMS.  RTEMS saves and restores all registers which are not
-preserved by the normal C calling convention
-for the target
-processor and invokes the user's ISR.  The user's ISR is
-responsible for processing the interrupt, clearing the interrupt
-if necessary, and device specific manipulation... index:: rtems_vector_number
+The interrupt manager allows the application to connect a function to a
+hardware interrupt vector.  When an interrupt occurs, the processor will
+automatically vector to RTEMS.  RTEMS saves and restores all registers which
+are not preserved by the normal C calling convention for the target processor
+and invokes the user's ISR.  The user's ISR is responsible for processing the
+interrupt, clearing the interrupt if necessary, and device specific
+manipulation.
 
-The ``rtems_interrupt_catch``
-directive connects a procedure to
-an interrupt vector.  The vector number is managed using
-the ``rtems_vector_number`` data type.
+.. index:: rtems_vector_number
 
-The interrupt service routine is assumed
-to abide by these conventions and have a prototype similar to
-the following:.. index:: rtems_isr
+The ``rtems_interrupt_catch`` directive connects a procedure to an interrupt
+vector.  The vector number is managed using the ``rtems_vector_number`` data
+type.
+
+The interrupt service routine is assumed to abide by these conventions and have
+a prototype similar to the following:
+
+.. index:: rtems_isr
 
 .. code:: c
 
     rtems_isr user_isr(
-    rtems_vector_number vector
+        rtems_vector_number vector
     );
 
-The vector number argument is provided by RTEMS to
-allow the application to identify the interrupt source.  This
-could be used to allow a single routine to service interrupts
-from multiple instances of the same device.  For example, a
-single routine could service interrupts from multiple serial
-ports and use the vector number to identify which port requires
-servicing.
+The vector number argument is provided by RTEMS to allow the application to
+identify the interrupt source.  This could be used to allow a single routine to
+service interrupts from multiple instances of the same device.  For example, a
+single routine could service interrupts from multiple serial ports and use the
+vector number to identify which port requires servicing.
 
-To minimize the masking of lower or equal priority
-level interrupts, the ISR should perform the minimum actions
-required to service the interrupt.  Other non-essential actions
-should be handled by application tasks.  Once the user's ISR has
-completed, it returns control to the RTEMS interrupt manager
-which will perform task dispatching and restore the registers
-saved before the ISR was invoked.
+To minimize the masking of lower or equal priority level interrupts, the ISR
+should perform the minimum actions required to service the interrupt.  Other
+non-essential actions should be handled by application tasks.  Once the user's
+ISR has completed, it returns control to the RTEMS interrupt manager which will
+perform task dispatching and restore the registers saved before the ISR was
+invoked.
 
-The RTEMS interrupt manager guarantees that proper
-task scheduling and dispatching are performed at the conclusion
-of an ISR.  A system call made by the ISR may have readied a
-task of higher priority than the interrupted task.  Therefore,
-when the ISR completes, the postponed dispatch processing must
-be performed.  No dispatch processing is performed as part of
-directives which have been invoked by an ISR.
+The RTEMS interrupt manager guarantees that proper task scheduling and
+dispatching are performed at the conclusion of an ISR.  A system call made by
+the ISR may have readied a task of higher priority than the interrupted task.
+Therefore, when the ISR completes, the postponed dispatch processing must be
+performed.  No dispatch processing is performed as part of directives which
+have been invoked by an ISR.
 
-Applications must adhere to the following rule if
-proper task scheduling and dispatching is to be performed:
+Applications must adhere to the following rule if proper task scheduling and
+dispatching is to be performed:
 
-- ** *The interrupt manager must be used for all ISRs which
-  may be interrupted by the highest priority ISR which invokes an
-  RTEMS directive.*
+.. note::
 
-Consider a processor which allows a numerically low
-interrupt level to interrupt a numerically greater interrupt
-level.  In this example, if an RTEMS directive is used in a
-level 4 ISR, then all ISRs which execute at levels 0 through 4
-must use the interrupt manager.
+  The interrupt manager must be used for all ISRs which may be interrupted by
+  the highest priority ISR which invokes an RTEMS directive.
 
-Interrupts are nested whenever an interrupt occurs
-during the execution of another ISR.  RTEMS supports efficient
-interrupt nesting by allowing the nested ISRs to terminate
-without performing any dispatch processing.  Only when the
+Consider a processor which allows a numerically low interrupt level to
+interrupt a numerically greater interrupt level.  In this example, if an RTEMS
+directive is used in a level 4 ISR, then all ISRs which execute at levels 0
+through 4 must use the interrupt manager.
+
+Interrupts are nested whenever an interrupt occurs during the execution of
+another ISR.  RTEMS supports efficient interrupt nesting by allowing the nested
+ISRs to terminate without performing any dispatch processing.  Only when the
 outermost ISR terminates will the postponed dispatching occur.
 
 RTEMS Interrupt Levels
 ----------------------
 .. index:: interrupt levels
 
-Many processors support multiple interrupt levels or
-priorities.  The exact number of interrupt levels is processor
-dependent.  RTEMS internally supports 256 interrupt levels which
-are mapped to the processor's interrupt levels.  For specific
-information on the mapping between RTEMS and the target
-processor's interrupt levels, refer to the Interrupt Processing
-chapter of the Applications Supplement document for a specific
-target processor.
+Many processors support multiple interrupt levels or priorities.  The exact
+number of interrupt levels is processor dependent.  RTEMS internally supports
+256 interrupt levels which are mapped to the processor's interrupt levels.  For
+specific information on the mapping between RTEMS and the target processor's
+interrupt levels, refer to the Interrupt Processing chapter of the Applications
+Supplement document for a specific target processor.
 
 Disabling of Interrupts by RTEMS
 --------------------------------
 .. index:: disabling interrupts
 
-During the execution of directive calls, critical
-sections of code may be executed.  When these sections are
-encountered, RTEMS disables all maskable interrupts before the
-execution of the section and restores them to the previous level
-upon completion of the section.  RTEMS has been optimized to
-ensure that interrupts are disabled for a minimum length of
-time.  The maximum length of time interrupts are disabled by
-RTEMS is processor dependent and is detailed in the Timing
-Specification chapter of the Applications Supplement document
-for a specific target processor.
+During the execution of directive calls, critical sections of code may be
+executed.  When these sections are encountered, RTEMS disables all maskable
+interrupts before the execution of the section and restores them to the
+previous level upon completion of the section.  RTEMS has been optimized to
+ensure that interrupts are disabled for a minimum length of time.  The maximum
+length of time interrupts are disabled by RTEMS is processor dependent and is
+detailed in the Timing Specification chapter of the Applications Supplement
+document for a specific target processor.
 
-Non-maskable interrupts (NMI) cannot be disabled, and
-ISRs which execute at this level MUST NEVER issue RTEMS system
-calls.  If a directive is invoked, unpredictable results may
-occur due to the inability of RTEMS to protect its critical
-sections.  However, ISRs that make no system calls may safely
-execute as non-maskable interrupts.
+Non-maskable interrupts (NMI) cannot be disabled, and ISRs which execute at
+this level MUST NEVER issue RTEMS system calls.  If a directive is invoked,
+unpredictable results may occur due to the inability of RTEMS to protect its
+critical sections.  However, ISRs that make no system calls may safely execute
+as non-maskable interrupts.
 
 Operations
 ==========
@@ -153,32 +145,28 @@ Operations
 Establishing an ISR
 -------------------
 
-The ``rtems_interrupt_catch``
-directive establishes an ISR for
-the system.  The address of the ISR and its associated CPU
-vector number are specified to this directive.  This directive
-installs the RTEMS interrupt wrapper in the processor's
-Interrupt Vector Table and the address of the user's ISR in the
-RTEMS' Vector Table.  This directive returns the previous
-contents of the specified vector in the RTEMS' Vector Table.
+The ``rtems_interrupt_catch`` directive establishes an ISR for the system.  The
+address of the ISR and its associated CPU vector number are specified to this
+directive.  This directive installs the RTEMS interrupt wrapper in the
+processor's Interrupt Vector Table and the address of the user's ISR in the
+RTEMS' Vector Table.  This directive returns the previous contents of the
+specified vector in the RTEMS' Vector Table.
 
 Directives Allowed from an ISR
 ------------------------------
 
-Using the interrupt manager ensures that RTEMS knows
-when a directive is being called from an ISR.  The ISR may then
-use system calls to synchronize itself with an application task.
-The synchronization may involve messages, events or signals
-being passed by the ISR to the desired task.  Directives invoked
-by an ISR must operate only on objects which reside on the local
-node.  The following is a list of RTEMS system calls that may be
-made from an ISR:
+Using the interrupt manager ensures that RTEMS knows when a directive is being
+called from an ISR.  The ISR may then use system calls to synchronize itself
+with an application task.  The synchronization may involve messages, events or
+signals being passed by the ISR to the desired task.  Directives invoked by an
+ISR must operate only on objects which reside on the local node.  The following
+is a list of RTEMS system calls that may be made from an ISR:
 
 - Task Management
-  Although it is acceptable to operate on the RTEMS_SELF task (e.g.
-  the currently executing task), while in an ISR, this will refer
-  to the interrupted task.  Most of the time, it is an application
-  implementation error to use RTEMS_SELF from an ISR.
+  Although it is acceptable to operate on the RTEMS_SELF task (e.g.  the
+  currently executing task), while in an ISR, this will refer to the
+  interrupted task.  Most of the time, it is an application implementation
+  error to use RTEMS_SELF from an ISR.
   - rtems_task_suspend
   - rtems_task_resume
 
@@ -253,10 +241,11 @@ made from an ISR:
 Directives
 ==========
 
-This section details the interrupt manager's
-directives.  A subsection is dedicated to each of this manager's
-directives and describes the calling sequence, related
-constants, usage, and status codes.
+This section details the interrupt manager's directives.  A subsection is
+dedicated to each of this manager's directives and describes the calling
+sequence, related constants, usage, and status codes.
+
+.. _rtems_interrupt_catch:
 
 INTERRUPT_CATCH - Establish an ISR
 ----------------------------------
@@ -270,30 +259,37 @@ INTERRUPT_CATCH - Establish an ISR
 .. code:: c
 
     rtems_status_code rtems_interrupt_catch(
-    rtems_isr_entry      new_isr_handler,
-    rtems_vector_number  vector,
-    rtems_isr_entry     \*old_isr_handler
+        rtems_isr_entry      new_isr_handler,
+        rtems_vector_number  vector,
+        rtems_isr_entry     *old_isr_handler
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - ISR established successfully
-``RTEMS_INVALID_NUMBER`` - illegal vector number
-``RTEMS_INVALID_ADDRESS`` - illegal ISR entry point or invalid ``old_isr_handler``
+``RTEMS_SUCCESSFUL``
+  ISR established successfully
+
+``RTEMS_INVALID_NUMBER``
+  illegal vector number
+
+``RTEMS_INVALID_ADDRESS``
+  illegal ISR entry point or invalid ``old_isr_handler``
 
 **DESCRIPTION:**
 
-This directive establishes an interrupt service
-routine (ISR) for the specified interrupt vector number.  The``new_isr_handler`` parameter specifies the entry point of the ISR.
-The entry point of the previous ISR for the specified vector is
-returned in ``old_isr_handler``.
+This directive establishes an interrupt service routine (ISR) for the specified
+interrupt vector number.  The ``new_isr_handler`` parameter specifies the entry
+point of the ISR.  The entry point of the previous ISR for the specified vector
+is returned in ``old_isr_handler``.
 
-To release an interrupt vector, pass the old handler's address obtained
-when the vector was first capture.
+To release an interrupt vector, pass the old handler's address obtained when
+the vector was first capture.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
+
+.. _rtems_interrupt_disable:
 
 INTERRUPT_DISABLE - Disable Interrupts
 --------------------------------------
@@ -306,9 +302,8 @@ INTERRUPT_DISABLE - Disable Interrupts
 .. code:: c
 
     void rtems_interrupt_disable(
-    rtems_interrupt_level  level
+        rtems_interrupt_level  level
     );
-    /* this is implemented as a macro and sets level as a side-effect \*/
 
 **DIRECTIVE STATUS CODES:**
 
@@ -316,20 +311,23 @@ NONE
 
 **DESCRIPTION:**
 
-This directive disables all maskable interrupts and returns
-the previous ``level``.  A later invocation of the``rtems_interrupt_enable`` directive should be used to
-restore the interrupt level.
+.. sidebar:: *Macro*
+
+  This directive is implemented as a macro which modifies the ``level``
+  parameter.
+
+This directive disables all maskable interrupts and returns the previous
+``level``.  A later invocation of the ``rtems_interrupt_enable`` directive
+should be used to restore the interrupt level.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
 
-*This directive is implemented as a macro which modifies the ``level``
-parameter.*
-
 This directive is only available on uni-processor configurations.  The
-directive ``rtems_interrupt_local_disable`` is available on all
-configurations.
+directive ``rtems_interrupt_local_disable`` is available on all configurations.
+
+.. _rtems_interrupt_enable:
 
 INTERRUPT_ENABLE - Enable Interrupts
 ------------------------------------
@@ -342,7 +340,7 @@ INTERRUPT_ENABLE - Enable Interrupts
 .. code:: c
 
     void rtems_interrupt_enable(
-    rtems_interrupt_level  level
+       rtems_interrupt_level  level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -351,19 +349,20 @@ NONE
 
 **DESCRIPTION:**
 
-This directive enables maskable interrupts to the ``level``
-which was returned by a previous call to``rtems_interrupt_disable``.
-Immediately prior to invoking this directive, maskable interrupts should
-be disabled by a call to ``rtems_interrupt_disable``
-and will be enabled when this directive returns to the caller.
+This directive enables maskable interrupts to the ``level`` which was returned
+by a previous call to ``rtems_interrupt_disable``.  Immediately prior to
+invoking this directive, maskable interrupts should be disabled by a call to
+``rtems_interrupt_disable`` and will be enabled when this directive returns to
+the caller.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
 
 This directive is only available on uni-processor configurations.  The
-directive ``rtems_interrupt_local_enable`` is available on all
-configurations.
+directive ``rtems_interrupt_local_enable`` is available on all configurations.
+
+.. _rtems_interrupt_flash:
 
 INTERRUPT_FLASH - Flash Interrupts
 ----------------------------------
@@ -376,7 +375,7 @@ INTERRUPT_FLASH - Flash Interrupts
 .. code:: c
 
     void rtems_interrupt_flash(
-    rtems_interrupt_level level
+        rtems_interrupt_level level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -385,19 +384,21 @@ NONE
 
 **DESCRIPTION:**
 
-This directive temporarily enables maskable interrupts to the ``level``
-which was returned by a previous call to``rtems_interrupt_disable``.
-Immediately prior to invoking this directive, maskable interrupts should
-be disabled by a call to ``rtems_interrupt_disable``
-and will be redisabled when this directive returns to the caller.
+This directive temporarily enables maskable interrupts to the ``level`` which
+was returned by a previous call to ``rtems_interrupt_disable``.  Immediately
+prior to invoking this directive, maskable interrupts should be disabled by a
+call to ``rtems_interrupt_disable`` and will be redisabled when this directive
+returns to the caller.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
 
 This directive is only available on uni-processor configurations.  The
-directives ``rtems_interrupt_local_disable`` and``rtems_interrupt_local_enable`` is available on all
-configurations.
+directives ``rtems_interrupt_local_disable``
+and``rtems_interrupt_local_enable`` is available on all configurations.
+
+.. _rtems_interrupt_local_disable:
 
 INTERRUPT_LOCAL_DISABLE - Disable Interrupts on Current Processor
 -----------------------------------------------------------------
@@ -410,9 +411,8 @@ INTERRUPT_LOCAL_DISABLE - Disable Interrupts on Current Processor
 .. code:: c
 
     void rtems_interrupt_local_disable(
-    rtems_interrupt_level  level
+        rtems_interrupt_level  level
     );
-    /* this is implemented as a macro and sets level as a side-effect \*/
 
 **DIRECTIVE STATUS CODES:**
 
@@ -420,19 +420,23 @@ NONE
 
 **DESCRIPTION:**
 
-This directive disables all maskable interrupts and returns
-the previous ``level``.  A later invocation of the``rtems_interrupt_local_enable`` directive should be used to
-restore the interrupt level.
+.. sidebar:: *Macro*
+
+  This directive is implemented as a macro which modifies the ``level``
+  parameter.
+
+This directive disables all maskable interrupts and returns the previous
+``level``.  A later invocation of the ``rtems_interrupt_local_enable`` directive
+should be used to restore the interrupt level.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
 
-*This directive is implemented as a macro which modifies the ``level``
-parameter.*
-
 On SMP configurations this will not ensure system wide mutual exclusion.  Use
 interrupt locks instead.
+
+.. _rtems_interrupt_local_enable:
 
 INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
 ---------------------------------------------------------------
@@ -445,7 +449,7 @@ INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
 .. code:: c
 
     void rtems_interrupt_local_enable(
-    rtems_interrupt_level  level
+        rtems_interrupt_level  level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -454,15 +458,17 @@ NONE
 
 **DESCRIPTION:**
 
-This directive enables maskable interrupts to the ``level``
-which was returned by a previous call to``rtems_interrupt_local_disable``.
-Immediately prior to invoking this directive, maskable interrupts should
-be disabled by a call to ``rtems_interrupt_local_disable``
-and will be enabled when this directive returns to the caller.
+This directive enables maskable interrupts to the ``level`` which was returned
+by a previous call to ``rtems_interrupt_local_disable``.  Immediately prior to
+invoking this directive, maskable interrupts should be disabled by a call to
+``rtems_interrupt_local_disable`` and will be enabled when this directive
+returns to the caller.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
+
+.. _rtems_interrupt_lock_initialize:
 
 INTERRUPT_LOCK_INITIALIZE - Initialize an ISR Lock
 --------------------------------------------------
@@ -474,7 +480,7 @@ INTERRUPT_LOCK_INITIALIZE - Initialize an ISR Lock
 .. code:: c
 
     void rtems_interrupt_lock_initialize(
-    rtems_interrupt_lock \*lock
+        rtems_interrupt_lock *lock
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -489,6 +495,8 @@ Initializes an interrupt lock.
 
 Concurrent initialization leads to unpredictable results.
 
+.. _rtems_interrupt_lock_acquire:
+
 INTERRUPT_LOCK_ACQUIRE - Acquire an ISR Lock
 --------------------------------------------
 
@@ -499,8 +507,8 @@ INTERRUPT_LOCK_ACQUIRE - Acquire an ISR Lock
 .. code:: c
 
     void rtems_interrupt_lock_acquire(
-    rtems_interrupt_lock \*lock,
-    rtems_interrupt_level level
+        rtems_interrupt_lock *lock,
+        rtems_interrupt_level level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -517,6 +525,8 @@ SMP lock.
 This directive will not cause the calling thread to be preempted.  This
 directive can be used in thread and interrupt context.
 
+.. _rtems_interrupt_lock_release:
+
 INTERRUPT_LOCK_RELEASE - Release an ISR Lock
 --------------------------------------------
 
@@ -527,8 +537,8 @@ INTERRUPT_LOCK_RELEASE - Release an ISR Lock
 .. code:: c
 
     void rtems_interrupt_lock_release(
-    rtems_interrupt_lock \*lock,
-    rtems_interrupt_level level
+        rtems_interrupt_lock *lock,
+        rtems_interrupt_level level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -545,6 +555,8 @@ releases a SMP lock.
 This directive will not cause the calling thread to be preempted.  This
 directive can be used in thread and interrupt context.
 
+.. _rtems_interrupt_lock_acquire_isr:
+
 INTERRUPT_LOCK_ACQUIRE_ISR - Acquire an ISR Lock from ISR
 ---------------------------------------------------------
 
@@ -555,8 +567,8 @@ INTERRUPT_LOCK_ACQUIRE_ISR - Acquire an ISR Lock from ISR
 .. code:: c
 
     void rtems_interrupt_lock_acquire_isr(
-    rtems_interrupt_lock \*lock,
-    rtems_interrupt_level level
+        rtems_interrupt_lock *lock,
+        rtems_interrupt_level level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -577,6 +589,8 @@ protected by this lock, then the result is unpredictable.
 This directive should be called from the corresponding interrupt service
 routine.
 
+.. _rtems_interrupt_lock_release_isr:
+
 INTERRUPT_LOCK_RELEASE_ISR - Release an ISR Lock from ISR
 ---------------------------------------------------------
 
@@ -587,8 +601,8 @@ INTERRUPT_LOCK_RELEASE_ISR - Release an ISR Lock from ISR
 .. code:: c
 
     void rtems_interrupt_lock_release_isr(
-    rtems_interrupt_lock \*lock,
-    rtems_interrupt_level level
+        rtems_interrupt_lock *lock,
+        rtems_interrupt_level level
     );
 
 **DIRECTIVE STATUS CODES:**
@@ -605,6 +619,8 @@ directive releases a SMP lock.
 This directive should be called from the corresponding interrupt service
 routine.
 
+.. _rtems_interrupt_is_in_progress:
+
 INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 ------------------------------------------------
 .. index:: is interrupt in progress
@@ -615,7 +631,7 @@ INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 
 .. code:: c
 
-    bool rtems_interrupt_is_in_progress( void );
+    bool rtems_interrupt_is_in_progress(void);
 
 **DIRECTIVE STATUS CODES:**
 
@@ -623,19 +639,11 @@ NONE
 
 **DESCRIPTION:**
 
-This directive returns ``TRUE`` if the processor is currently
-servicing an interrupt and ``FALSE`` otherwise.  A return value
-of ``TRUE`` indicates that the caller is an interrupt service
-routine, *NOT* a task.  The directives available to an interrupt
-service routine are restricted.
+This directive returns ``TRUE`` if the processor is currently servicing an
+interrupt and ``FALSE`` otherwise.  A return value of ``TRUE`` indicates that
+the caller is an interrupt service routine, *NOT* a task.  The directives
+available to an interrupt service routine are restricted.
 
 **NOTES:**
 
 This directive will not cause the calling task to be preempted.
-
-.. COMMENT: COPYRIGHT (c) 1988-2008
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
