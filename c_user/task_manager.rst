@@ -199,29 +199,25 @@ The interrupt level component is used to determine which interrupts will be
 enabled when the task is executing. ``RTEMS_INTERRUPT_LEVEL(n)`` specifies that
 the task will execute at interrupt level n.
 
-``RTEMS_PREEMPT``
-  enable preemption (default)
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_NO_PREEMPT``
-  disable preemption
-
-``RTEMS_NO_TIMESLICE``
-  disable timeslicing (default)
-
-``RTEMS_TIMESLICE``
-  enable timeslicing
-
-``RTEMS_ASR``
-  enable ASR processing (default)
-
-``RTEMS_NO_ASR``
-  disable ASR processing
-
-``RTEMS_INTERRUPT_LEVEL(0)``
-  enable all interrupts (default)
-
-``RTEMS_INTERRUPT_LEVEL(n)``
-  execute at interrupt level n
+ * - ``RTEMS_PREEMPT``
+   - enable preemption (default)
+ * - ``RTEMS_NO_PREEMPT``
+   - disable preemption
+ * - ``RTEMS_NO_TIMESLICE``
+   - disable timeslicing (default)
+ * - ``RTEMS_TIMESLICE``
+   - enable timeslicing
+ * - ``RTEMS_ASR``
+   - enable ASR processing (default)
+ * - ``RTEMS_NO_ASR``
+   - disable ASR processing
+ * - ``RTEMS_INTERRUPT_LEVEL(0)``
+   - enable all interrupts (default)
+ * - ``RTEMS_INTERRUPT_LEVEL(n)``
+   - execute at interrupt level n
 
 The set of default modes may be selected by specifying the
 ``RTEMS_DEFAULT_MODES`` constant.
@@ -350,17 +346,17 @@ Building a Task Attribute Set
 In general, an attribute set is built by a bitwise OR of the desired
 components.  The set of valid task attribute components is listed below:
 
-``RTEMS_NO_FLOATING_POINT``
-  does not use coprocessor (default)
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_FLOATING_POINT``
-  uses numeric coprocessor
-
-``RTEMS_LOCAL``
-  local task (default)
-
-``RTEMS_GLOBAL``
-  global task
+ * - ``RTEMS_NO_FLOATING_POINT``
+   - does not use coprocessor (default)
+ * - ``RTEMS_FLOATING_POINT``
+   - uses numeric coprocessor
+ * - ``RTEMS_LOCAL``
+   - local task (default)
+ * - ``RTEMS_GLOBAL``
+   - global task
 
 Attribute values are specifically designed to be mutually exclusive, therefore
 bitwise OR and addition operations are equivalent as long as each attribute
@@ -385,21 +381,25 @@ In general, a mode and its corresponding mask is built by a bitwise OR of the
 desired components.  The set of valid mode constants and each mode's
 corresponding mask constant is listed below:
 
-- ``RTEMS_PREEMPT`` is masked by``RTEMS_PREEMPT_MASK`` and enables preemption
+.. list-table::
+ :widths: 1, 50
 
-- ``RTEMS_NO_PREEMPT`` is masked by``RTEMS_PREEMPT_MASK`` and disables preemption
-
-- ``RTEMS_NO_TIMESLICE`` is masked by``RTEMS_TIMESLICE_MASK`` and disables timeslicing
-
-- ``RTEMS_TIMESLICE`` is masked by``RTEMS_TIMESLICE_MASK`` and enables timeslicing
-
-- ``RTEMS_ASR`` is masked by``RTEMS_ASR_MASK`` and enables ASR processing
-
-- ``RTEMS_NO_ASR`` is masked by``RTEMS_ASR_MASK`` and disables ASR processing
-
-- ``RTEMS_INTERRUPT_LEVEL(0)`` is masked by``RTEMS_INTERRUPT_MASK`` and enables all interrupts
-
-- ``RTEMS_INTERRUPT_LEVEL(n)`` is masked by``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
+ * - ``RTEMS_PREEMPT``
+   - is masked by``RTEMS_PREEMPT_MASK`` and enables preemption
+ * - ``RTEMS_NO_PREEMPT``
+   - is masked by``RTEMS_PREEMPT_MASK`` and disables preemption
+ * - ``RTEMS_NO_TIMESLICE``
+   - is masked by``RTEMS_TIMESLICE_MASK`` and disables timeslicing
+ * - ``RTEMS_TIMESLICE``
+   - is masked by``RTEMS_TIMESLICE_MASK`` and enables timeslicing
+ * - ``RTEMS_ASR``
+   - is masked by``RTEMS_ASR_MASK`` and enables ASR processing
+ * - ``RTEMS_NO_ASR``
+   - is masked by``RTEMS_ASR_MASK`` and disables ASR processing
+ * - ``RTEMS_INTERRUPT_LEVEL(0)``
+   - is masked by``RTEMS_INTERRUPT_MASK`` and enables all interrupts
+ * - ``RTEMS_INTERRUPT_LEVEL(n)``
+   - is masked by``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
 
 Mode values are specifically designed to be mutually exclusive, therefore
 bitwise OR and addition operations are equivalent as long as each mode appears
@@ -594,30 +594,25 @@ TASK_CREATE - Create a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task created successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  ``id`` is NULL
-
-``RTEMS_INVALID_NAME``
-  invalid task name
-
-``RTEMS_INVALID_PRIORITY``
-  invalid task priority
-
-``RTEMS_MP_NOT_CONFIGURED``
-  multiprocessing not configured
-
-``RTEMS_TOO_MANY``
-  too many tasks created
-
-``RTEMS_UNSATISFIED``
-  not enough memory for stack/FP context
-
-``RTEMS_TOO_MANY``
-  too many global objects
-
+ * - ``RTEMS_SUCCESSFUL``
+   - task created successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``id`` is NULL
+ * - ``RTEMS_INVALID_NAME``
+   - invalid task name
+ * - ``RTEMS_INVALID_PRIORITY``
+   - invalid task priority
+ * - ``RTEMS_MP_NOT_CONFIGURED``
+   - multiprocessing not configured
+ * - ``RTEMS_TOO_MANY``
+   - too many tasks created
+ * - ``RTEMS_UNSATISFIED``
+   - not enough memory for stack/FP context
+ * - ``RTEMS_TOO_MANY``
+   - too many global objects
 
 **DESCRIPTION:**
 
@@ -667,43 +662,39 @@ when calculating the stack size required for tasks which utilize the driver.
 
 The following task attribute constants are defined by RTEMS:
 
-``RTEMS_NO_FLOATING_POINT``
-  does not use coprocessor (default)
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_FLOATING_POINT``
-  uses numeric coprocessor
-
-``RTEMS_LOCAL``
-  local task (default)
-
-``RTEMS_GLOBAL``
-  global task
+ * - ``RTEMS_NO_FLOATING_POINT``
+   - does not use coprocessor (default)
+ * - ``RTEMS_FLOATING_POINT``
+   - uses numeric coprocessor
+ * - ``RTEMS_LOCAL``
+   - local task (default)
+ * - ``RTEMS_GLOBAL``
+   - global task
 
 The following task mode constants are defined by RTEMS:
 
-``RTEMS_PREEMPT``
-  enable preemption (default)
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_NO_PREEMPT``
-  disable preemption
-
-``RTEMS_NO_TIMESLICE``
-  disable timeslicing (default)
-
-``RTEMS_TIMESLICE``
-  enable timeslicing
-
-``RTEMS_ASR``
-  enable ASR processing (default)
-
-``RTEMS_NO_ASR``
-  disable ASR processing
-
-``RTEMS_INTERRUPT_LEVEL(0)``
-  enable all interrupts (default)
-
-``RTEMS_INTERRUPT_LEVEL(n)``
-  execute at interrupt level n
+ * - ``RTEMS_PREEMPT``
+   - enable preemption (default)
+ * - ``RTEMS_NO_PREEMPT``
+   - disable preemption
+ * - ``RTEMS_NO_TIMESLICE``
+   - disable timeslicing (default)
+ * - ``RTEMS_TIMESLICE``
+   - enable timeslicing
+ * - ``RTEMS_ASR``
+   - enable ASR processing (default)
+ * - ``RTEMS_NO_ASR``
+   - disable ASR processing
+ * - ``RTEMS_INTERRUPT_LEVEL(0)``
+   - enable all interrupts (default)
+ * - ``RTEMS_INTERRUPT_LEVEL(n)``
+   - execute at interrupt level n
 
 The interrupt level portion of the task execution mode supports a maximum of
 256 interrupt levels.  These levels are mapped onto the interrupt levels
@@ -738,18 +729,17 @@ TASK_IDENT - Get ID of a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task identified successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  ``id`` is NULL
-
-``RTEMS_INVALID_NAME``
-  invalid task name
-
-``RTEMS_INVALID_NODE``
-  invalid node id
-
+ * - ``RTEMS_SUCCESSFUL``
+   - task identified successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``id`` is NULL
+ * - ``RTEMS_INVALID_NAME``
+   - invalid task name
+ * - ``RTEMS_INVALID_NODE``
+   - invalid node id
 
 **DESCRIPTION:**
 
@@ -821,20 +811,19 @@ TASK_START - Start a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  ask started successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  invalid task entry point
-
-``RTEMS_INVALID_ID``
-  invalid task id
-
-``RTEMS_INCORRECT_STATE``
-  task not in the dormant state
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  cannot start remote task
+ * - ``RTEMS_SUCCESSFUL``
+   - ask started successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - invalid task entry point
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_INCORRECT_STATE``
+   - task not in the dormant state
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - cannot start remote task
 
 **DESCRIPTION:**
 
@@ -875,17 +864,17 @@ TASK_RESTART - Restart a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task restarted successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ID``
-  task id invalid
-
-``RTEMS_INCORRECT_STATE``
-  task never started
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  cannot restart remote task
+ * - ``RTEMS_SUCCESSFUL``
+   - task restarted successfully
+ * - ``RTEMS_INVALID_ID``
+   - task id invalid
+ * - ``RTEMS_INCORRECT_STATE``
+   - task never started
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - cannot restart remote task
 
 **DESCRIPTION:**
 
@@ -936,14 +925,15 @@ TASK_DELETE - Delete a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task deleted successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ID``
-  task id invalid
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  cannot restart remote task
+ * - ``RTEMS_SUCCESSFUL``
+   - task deleted successfully
+ * - ``RTEMS_INVALID_ID``
+   - task id invalid
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - cannot restart remote task
 
 **DESCRIPTION:**
 
@@ -991,14 +981,15 @@ TASK_SUSPEND - Suspend a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task suspended successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ID``
-  task id invalid
-
-``RTEMS_ALREADY_SUSPENDED``
-  task already suspended
+ * - ``RTEMS_SUCCESSFUL``
+   - task suspended successfully
+ * - ``RTEMS_INVALID_ID``
+   - task id invalid
+ * - ``RTEMS_ALREADY_SUSPENDED``
+   - task already suspended
 
 **DESCRIPTION:**
 
@@ -1038,14 +1029,15 @@ TASK_RESUME - Resume a task
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task resumed successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ID``
-  task id invalid
-
-``RTEMS_INCORRECT_STATE``
-  task not suspended
+ * - ``RTEMS_SUCCESSFUL``
+   - task resumed successfully
+ * - ``RTEMS_INVALID_ID``
+   - task id invalid
+ * - ``RTEMS_INCORRECT_STATE``
+   - task not suspended
 
 **DESCRIPTION:**
 
@@ -1083,17 +1075,17 @@ TASK_IS_SUSPENDED - Determine if a task is Suspended
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task is NOT suspended
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_ALREADY_SUSPENDED``
-  task is currently suspended
-
-``RTEMS_INVALID_ID``
-  task id invalid
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  not supported on remote tasks
+ * - ``RTEMS_SUCCESSFUL``
+   - task is NOT suspended
+ * - ``RTEMS_ALREADY_SUSPENDED``
+   - task is currently suspended
+ * - ``RTEMS_INVALID_ID``
+   - task id invalid
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - not supported on remote tasks
 
 **DESCRIPTION:**
 
@@ -1126,17 +1118,17 @@ TASK_SET_PRIORITY - Set task priority
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task priority set successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ID``
-  invalid task id
-
-``RTEMS_INVALID_ADDRESS``
-  invalid return argument pointer
-
-``RTEMS_INVALID_PRIORITY``
-  invalid task priority
+ * - ``RTEMS_SUCCESSFUL``
+   - task priority set successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_INVALID_ADDRESS``
+   - invalid return argument pointer
+ * - ``RTEMS_INVALID_PRIORITY``
+   - invalid task priority
 
 **DESCRIPTION:**
 
@@ -1192,11 +1184,13 @@ TASK_MODE - Change the current task mode
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  task mode set successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  ``previous_mode_set`` is NULL
+ * - ``RTEMS_SUCCESSFUL``
+   - task mode set successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``previous_mode_set`` is NULL
 
 **DESCRIPTION:**
 
@@ -1224,29 +1218,25 @@ directive with the ``RTEMS_NO_ASR`` indicator specified in mode.
 The set of task mode constants and each mode's corresponding mask constant is
 provided in the following table:
 
-``RTEMS_PREEMPT``
-  is masked by ``RTEMS_PREEMPT_MASK`` and enables preemption
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_NO_PREEMPT``
-  is masked by ``RTEMS_PREEMPT_MASK`` and disables preemption
-
-``RTEMS_NO_TIMESLICE``
-  is masked by ``RTEMS_TIMESLICE_MASK`` and disables timeslicing
-
-``RTEMS_TIMESLICE``
-  is masked by ``RTEMS_TIMESLICE_MASK`` and enables timeslicing
-
-``RTEMS_ASR``
-  is masked by ``RTEMS_ASR_MASK`` and enables ASR processing
-
-``RTEMS_NO_ASR``
-  is masked by ``RTEMS_ASR_MASK`` and disables ASR processing
-
-``RTEMS_INTERRUPT_LEVEL(0)``
-  is masked by ``RTEMS_INTERRUPT_MASK`` and enables all interrupts
-
-``RTEMS_INTERRUPT_LEVEL(n)``
-  is masked by ``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
+ * - ``RTEMS_PREEMPT``
+   - is masked by ``RTEMS_PREEMPT_MASK`` and enables preemption
+ * - ``RTEMS_NO_PREEMPT``
+   - is masked by ``RTEMS_PREEMPT_MASK`` and disables preemption
+ * - ``RTEMS_NO_TIMESLICE``
+   - is masked by ``RTEMS_TIMESLICE_MASK`` and disables timeslicing
+ * - ``RTEMS_TIMESLICE``
+   - is masked by ``RTEMS_TIMESLICE_MASK`` and enables timeslicing
+ * - ``RTEMS_ASR``
+   - is masked by ``RTEMS_ASR_MASK`` and enables ASR processing
+ * - ``RTEMS_NO_ASR``
+   - is masked by ``RTEMS_ASR_MASK`` and disables ASR processing
+ * - ``RTEMS_INTERRUPT_LEVEL(0)``
+   - is masked by ``RTEMS_INTERRUPT_MASK`` and enables all interrupts
+ * - ``RTEMS_INTERRUPT_LEVEL(n)``
+   - is masked by ``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
 
 .. _rtems_task_wake_after:
 
@@ -1267,7 +1257,11 @@ TASK_WAKE_AFTER - Wake up after interval
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - always successful
+.. list-table::
+ :widths: 1, 50
+
+ * - ``RTEMS_SUCCESSFUL``
+   - always successful
 
 **DESCRIPTION:**
 
@@ -1307,17 +1301,17 @@ TASK_WAKE_WHEN - Wake up when specified
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  awakened at date/time successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  ``time_buffer`` is NULL
-
-``RTEMS_INVALID_TIME_OF_DAY``
-  invalid time buffer
-
-``RTEMS_NOT_DEFINED``
-  system date and time is not set
+ * - ``RTEMS_SUCCESSFUL``
+   - awakened at date/time successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``time_buffer`` is NULL
+ * - ``RTEMS_INVALID_TIME_OF_DAY``
+   - invalid time buffer
+ * - ``RTEMS_NOT_DEFINED``
+   - system date and time is not set
 
 **DESCRIPTION:**
 
@@ -1395,20 +1389,19 @@ TASK_VARIABLE_ADD - Associate per task variable
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  per task variable added successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  ``task_variable`` is NULL
-
-``RTEMS_INVALID_ID``
-  invalid task id
-
-``RTEMS_NO_MEMORY``
-  invalid task id
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  not supported on remote tasks
+ * - ``RTEMS_SUCCESSFUL``
+   - per task variable added successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``task_variable`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_NO_MEMORY``
+   - invalid task id
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - not supported on remote tasks
 
 **DESCRIPTION:**
 
@@ -1458,23 +1451,21 @@ TASK_VARIABLE_GET - Obtain value of a per task variable
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  per task variable obtained successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ADDRESS``
-  ``task_variable`` is NULL
-
-``RTEMS_INVALID_ADDRESS``
-  ``task_variable_value`` is NULL
-
-``RTEMS_INVALID_ADDRESS``
-  ``task_variable`` is not found
-
-``RTEMS_NO_MEMORY``
-  invalid task id
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  not supported on remote tasks
+ * - ``RTEMS_SUCCESSFUL``
+   - per task variable obtained successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``task_variable`` is NULL
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``task_variable_value`` is NULL
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``task_variable`` is not found
+ * - ``RTEMS_NO_MEMORY``
+   - invalid task id
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - not supported on remote tasks
 
 **DESCRIPTION:**
 
@@ -1518,20 +1509,19 @@ TASK_VARIABLE_DELETE - Remove per task variable
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  per task variable deleted successfully
+.. list-table::
+ :widths: 1, 50
 
-``RTEMS_INVALID_ID``
-  invalid task id
-
-``RTEMS_NO_MEMORY``
-  invalid task id
-
-``RTEMS_INVALID_ADDRESS``
-  ``task_variable`` is NULL
-
-``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-  not supported on remote tasks
+ * - ``RTEMS_SUCCESSFUL``
+   - per task variable deleted successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_NO_MEMORY``
+   - invalid task id
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``task_variable`` is NULL
+ * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+   - not supported on remote tasks
 
 **DESCRIPTION:**
 
