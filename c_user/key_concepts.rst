@@ -164,8 +164,9 @@ properly designed single processor application.
 
 In addition, services are provided to portably examine the subcomponents of an
 RTEMS ID.  These services are described in detail later in this manual but are
-prototyped as follows:.. index:: obtaining class from object ID
+prototyped as follows:
 
+.. index:: obtaining class from object ID
 .. index:: obtaining node from object ID
 .. index:: obtaining index from object ID
 .. index:: get class from object ID
