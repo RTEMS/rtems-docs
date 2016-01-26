@@ -100,7 +100,6 @@ alphabetical order:
 .. index:: rtems_fatal_extension
 
 ``rtems_fatal_extension``
-
   The entry point for a fatal error user extension handler routine.
 
 .. index:: rtems_id
@@ -117,7 +116,6 @@ alphabetical order:
 .. index:: rtems_interrupt_level
 
 ``rtems_interrupt_level``
-
   The data structure used with the ``rtems_interrupt_disable``,
   ``rtems_interrupt_enable``, and ``rtems_interrupt_flash`` routines.  This
   data type is CPU dependent and usually corresponds to the contents of the

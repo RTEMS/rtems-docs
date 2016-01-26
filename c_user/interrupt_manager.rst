@@ -266,14 +266,14 @@ INTERRUPT_CATCH - Establish an ISR
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  ISR established successfully
+.. list-table::
 
-``RTEMS_INVALID_NUMBER``
-  illegal vector number
-
-``RTEMS_INVALID_ADDRESS``
-  illegal ISR entry point or invalid ``old_isr_handler``
+ * - ``RTEMS_SUCCESSFUL``
+   -  ISR established successfully
+ * - ``RTEMS_INVALID_NUMBER``
+   -  illegal vector number
+ * - ``RTEMS_INVALID_ADDRESS``
+   -  illegal ISR entry point or invalid ``old_isr_handler``
 
 **DESCRIPTION:**
 

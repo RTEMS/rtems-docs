@@ -479,14 +479,14 @@ monotonic period will be returned.  The following table details the
 relationship between the period's status and the directive status code returned
 by the ``rtems_rate_monotonic_period`` directive:
 
-``RTEMS_SUCCESSFUL``
-  period is running
+.. list-table::
 
-``RTEMS_TIMEOUT``
-  period has expired
-
-``RTEMS_NOT_DEFINED``
-  period has never been initiated
+ * - ``RTEMS_SUCCESSFUL``
+   - period is running
+ * - ``RTEMS_TIMEOUT``
+   - period has expired
+ * - ``RTEMS_NOT_DEFINED``
+   - period has never been initiated
 
 Obtaining the status of a rate monotonic period does not alter the state or
 length of that period.
@@ -655,14 +655,14 @@ RATE_MONOTONIC_CREATE - Create a rate monotonic period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  rate monotonic period created successfully
+.. list-table::
 
-``RTEMS_INVALID_NAME``
-  invalid period name
-
-``RTEMS_TOO_MANY``
-  too many periods created
+ * - ``RTEMS_SUCCESSFUL``
+   - rate monotonic period created successfully
+ * - ``RTEMS_INVALID_NAME``
+   - invalid period name
+ * - ``RTEMS_TOO_MANY``
+   - too many periods created
 
 **DESCRIPTION:**
 
@@ -696,11 +696,12 @@ RATE_MONOTONIC_IDENT - Get ID of a period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period identified successfully
+.. list-table::
 
-``RTEMS_INVALID_NAME``
-  period name not found
+ * - ``RTEMS_SUCCESSFUL``
+   - period identified successfully
+ * - ``RTEMS_INVALID_NAME``
+   - period name not found
 
 **DESCRIPTION:**
 
@@ -732,14 +733,14 @@ RATE_MONOTONIC_CANCEL - Cancel a period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period canceled successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid rate monotonic period id
-
-``RTEMS_NOT_OWNER_OF_RESOURCE``
-  rate monotonic period not created by calling task
+ * - ``RTEMS_SUCCESSFUL``
+   - period canceled successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid rate monotonic period id
+ * - ``RTEMS_NOT_OWNER_OF_RESOURCE``
+   - rate monotonic period not created by calling task
 
 **DESCRIPTION:**
 
@@ -771,11 +772,12 @@ RATE_MONOTONIC_DELETE - Delete a rate monotonic period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period deleted successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid rate monotonic period id
+ * - ``RTEMS_SUCCESSFUL``
+   - period deleted successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid rate monotonic period id
 
 **DESCRIPTION:**
 
@@ -811,21 +813,18 @@ RATE_MONOTONIC_PERIOD - Conclude current/Start next period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid rate monotonic period id
-
-``RTEMS_NOT_OWNER_OF_RESOURCE``
-  period not created by calling task
-
-``RTEMS_NOT_DEFINED``
-  period has never been initiated (only possible when period is set to
-  PERIOD_STATUS)
-
-``RTEMS_TIMEOUT``
-  period has expired
+ * - ``RTEMS_SUCCESSFUL``
+   - period initiated successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid rate monotonic period id
+ * - ``RTEMS_NOT_OWNER_OF_RESOURCE``
+   - period not created by calling task
+ * - ``RTEMS_NOT_DEFINED``
+   - period has never been initiated (only possible when period is set to PERIOD_STATUS)
+ * - ``RTEMS_TIMEOUT``
+   - period has expired
 
 **DESCRIPTION:**
 
@@ -863,14 +862,14 @@ RATE_MONOTONIC_GET_STATUS - Obtain status from a period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid rate monotonic period id
-
-``RTEMS_INVALID_ADDRESS``
-  invalid address of status
+ * - ``RTEMS_SUCCESSFUL``
+   - period initiated successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid rate monotonic period id
+ * - ``RTEMS_INVALID_ADDRESS``
+   - invalid address of status
 
 **DESCRIPTION:**
 
@@ -926,14 +925,14 @@ RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid rate monotonic period id
-
-``RTEMS_INVALID_ADDRESS``
-  invalid address of statistics
+ * - ``RTEMS_SUCCESSFUL``
+   - period initiated successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid rate monotonic period id
+ * - ``RTEMS_INVALID_ADDRESS``
+   - invalid address of statistics
 
 **DESCRIPTION:**
 
@@ -993,11 +992,12 @@ RATE_MONOTONIC_RESET_STATISTICS - Reset statistics for a period
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  period initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid rate monotonic period id
+ * - ``RTEMS_SUCCESSFUL``
+   - period initiated successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid rate monotonic period id
 
 **DESCRIPTION:**
 

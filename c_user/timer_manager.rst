@@ -206,17 +206,16 @@ TIMER_CREATE - Create a timer
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer created successfully
+.. list-table::
 
-``RTEMS_INVALID_ADDRESS``
-  ``id`` is NULL
-
-``RTEMS_INVALID_NAME``
-  invalid timer name
-
-``RTEMS_TOO_MANY``
-  too many timers created
+ * - ``RTEMS_SUCCESSFUL``
+   - timer created successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``id`` is NULL
+ * - ``RTEMS_INVALID_NAME``
+   - invalid timer name
+ * - ``RTEMS_TOO_MANY``
+   - too many timers created
 
 **DESCRIPTION:**
 
@@ -248,14 +247,14 @@ TIMER_IDENT - Get ID of a timer
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer identified successfully
+.. list-table::
 
-``RTEMS_INVALID_ADDRESS``
-  ``id`` is NULL
-
-``RTEMS_INVALID_NAME``
-  timer name not found
+ * - ``RTEMS_SUCCESSFUL``
+   - timer identified successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``id`` is NULL
+ * - ``RTEMS_INVALID_NAME``
+   - timer name not found
 
 **DESCRIPTION:**
 
@@ -287,11 +286,12 @@ TIMER_CANCEL - Cancel a timer
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer canceled successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid timer id
+ * - ``RTEMS_SUCCESSFUL``
+   - timer canceled successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
 
 **DESCRIPTION:**
 
@@ -321,11 +321,12 @@ TIMER_DELETE - Delete a timer
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer deleted successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid timer id
+ * - ``RTEMS_SUCCESSFUL``
+   - timer deleted successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
 
 **DESCRIPTION:**
 
@@ -360,17 +361,16 @@ TIMER_FIRE_AFTER - Fire timer after interval
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ADDRESS``
-  ``routine`` is NULL
-
-``RTEMS_INVALID_ID``
-  invalid timer id
-
-``RTEMS_INVALID_NUMBER``
-  invalid interval
+ * - ``RTEMS_SUCCESSFUL``
+   - timer initiated successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``routine`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
+ * - ``RTEMS_INVALID_NUMBER``
+   - invalid interval
 
 **DESCRIPTION:**
 
@@ -404,23 +404,20 @@ TIMER_FIRE_WHEN - Fire timer when specified
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ADDRESS``
-  ``routine`` is NULL
-
-``RTEMS_INVALID_ADDRESS``
-  ``wall_time`` is NULL
-
-``RTEMS_INVALID_ID``
-  invalid timer id
-
-``RTEMS_NOT_DEFINED``
-  system date and time is not set
-
-``RTEMS_INVALID_CLOCK``
-  invalid time of day
+ * - ``RTEMS_SUCCESSFUL``
+   - timer initiated successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``routine`` is NULL
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``wall_time`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
+ * - ``RTEMS_NOT_DEFINED``
+   - system date and time is not set
+ * - ``RTEMS_INVALID_CLOCK``
+   - invalid time of day
 
 **DESCRIPTION:**
 
@@ -454,11 +451,12 @@ TIMER_INITIATE_SERVER - Initiate server for task-based timers
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  Timer Server initiated successfully
+.. list-table::
 
-``RTEMS_TOO_MANY``
-  too many tasks created
+ * - ``RTEMS_SUCCESSFUL``
+   - Timer Server initiated successfully
+ * - ``RTEMS_TOO_MANY``
+   - too many tasks created
 
 **DESCRIPTION:**
 
@@ -498,20 +496,18 @@ TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ADDRESS``
-  ``routine`` is NULL
-
-``RTEMS_INVALID_ID``
-  invalid timer id
-
-``RTEMS_INVALID_NUMBER``
-  invalid interval
-
-``RTEMS_INCORRECT_STATE``
-  Timer Server not initiated
+ * - ``RTEMS_SUCCESSFUL``
+   - timer initiated successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``routine`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
+ * - ``RTEMS_INVALID_NUMBER``
+   - invalid interval
+ * - ``RTEMS_INCORRECT_STATE``
+   - Timer Server not initiated
 
 **DESCRIPTION:**
 
@@ -548,26 +544,22 @@ TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer initiated successfully
+.. list-table::
 
-``RTEMS_INVALID_ADDRESS``
-  ``routine`` is NULL
-
-``RTEMS_INVALID_ADDRESS``
-  ``wall_time`` is NULL
-
-``RTEMS_INVALID_ID``
-  invalid timer id
-
-``RTEMS_NOT_DEFINED``
-  system date and time is not set
-
-``RTEMS_INVALID_CLOCK``
-  invalid time of day
-
-``RTEMS_INCORRECT_STATE``
-  Timer Server not initiated
+ * - ``RTEMS_SUCCESSFUL``
+   - timer initiated successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``routine`` is NULL
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``wall_time`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
+ * - ``RTEMS_NOT_DEFINED``
+   - system date and time is not set
+ * - ``RTEMS_INVALID_CLOCK``
+   - invalid time of day
+ * - ``RTEMS_INCORRECT_STATE``
+   - Timer Server not initiated
 
 **DESCRIPTION:**
 
@@ -601,14 +593,14 @@ TIMER_RESET - Reset an interval timer
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL``
-  timer reset successfully
+.. list-table::
 
-``RTEMS_INVALID_ID``
-  invalid timer id
-
-``RTEMS_NOT_DEFINED``
-  attempted to reset a when or newly created timer
+ * - ``RTEMS_SUCCESSFUL``
+   - timer reset successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid timer id
+ * - ``RTEMS_NOT_DEFINED``
+   - attempted to reset a when or newly created timer
 
 **DESCRIPTION:**
 

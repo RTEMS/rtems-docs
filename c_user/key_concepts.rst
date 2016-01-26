@@ -262,8 +262,8 @@ large.
 
 The rate monotonic scheduling algorithm is a hard real-time scheduling
 methodology.  This methodology provides rules which allows one to guarantee
-that a set of independent periodic tasks will always meet their deadlines -
-even under transient overload conditions.  The rate monotonic manager provides
+that a set of independent periodic tasks will always meet their deadlines even
+under transient overload conditions.  The rate monotonic manager provides
 directives built upon the Clock Manager's interval timer support routines.
 
 Interval timing is not sufficient for the many applications which require that
@@ -274,7 +274,7 @@ request to delay until midnight on New Year's Eve before lowering the ball at
 Times Square.  The data type ``rtems_time_of_day`` is used to specify calendar
 time in RTEMS services.  See `Time and Date Data Structures`_
 
-... index:: rtems_time_of_day
+.. index:: rtems_time_of_day
 
 Obviously, the directives which use intervals or wall time cannot operate
 without some external mechanism which provides a periodic clock tick.  This
