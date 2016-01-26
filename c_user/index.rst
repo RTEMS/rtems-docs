@@ -2,6 +2,9 @@
 RTEMS C User's Guide
 ====================
 
+RTEMS C User's Guide
+--------------------
+
  | COPYRIGHT (c) 1988 - 2015.
  | On-Line Applications Research Corporation (OAR).
 
@@ -18,8 +21,7 @@ The RTEMS Project is hosted at http://www.rtems.org/.  Any inquiries concerning
 RTEMS, its related support components, or its documentation should be directed
 to the Community Project hosted at http://www.rtems.org/.
 
-RTEMS Online Resources
-----------------------
+.. topic:: RTEMS Online Resources
 
   ================  =============================
   Home              https://www.rtems.org/
@@ -30,17 +32,11 @@ RTEMS Online Resources
   Git Repositories  https://git.rtems.org/
   ================  =============================
 
-Table of Contents
------------------
-
 .. toctree::
-
-	preface
-
-.. toctree::
-	:maxdepth: 3
+        :maxdepth: 3
 	:numbered:
 
+	preface
 	overview
 	key_concepts
 	rtems_data_types

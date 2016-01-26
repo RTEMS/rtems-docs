@@ -175,7 +175,7 @@ latex_documents = [] # must be overridden in local conf.py
 #    'fontpkg':      r'\usepackage{mathpazo}',
 latex_elements = {
     'papersize':    'a4paper',
-    'pointsize':    '12pt',
+    'pointsize':    '11pt',
     'preamble':     r'''
 \usepackage{rtemsstyle}
 '''
@@ -198,7 +198,7 @@ latex_use_parts = True
 latex_show_pagerefs = True
 
 # If true, show URL addresses after external links.
-latex_show_urls=True
+#latex_show_urls=True
 
 # Documents to append as an appendix to all manuals.
 #latex_appendices = []
