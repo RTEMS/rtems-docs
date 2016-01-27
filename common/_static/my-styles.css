@@ -30,32 +30,26 @@
 }
 
 /*
- * Special table for RTEMS. Wrap cell contents and vertically align to the top.
+ * Literals.
  */
-table.rtems-table.docutils td {
-    white-space: normal;
-    vertical-align: top;
+.rst-content code.literal {
+    background: transparent;
+    color: #77AD4A;
+    border: 0px;
 }
 
 /*
- * Special table. We do not use this because the format is only for HTML
- * not PDF. Left here as a record.
+ * Special table for RTEMS. Wrap cell contents and vertically align to the top.
+ *
+ * Note: this is not working as expected. The white-space: normal cause the
+ *       columns in the box to not space correctly. The split in half.
  */
-table.rtems-items-table.docutils:not(.field-list) tr:nth-child(2n-1) td,
-table.rtems-items-table.docutils:not(.field-list) tr:nth-child(2n) td {
-    background-color: #fcfcfc;
-    white-space: normal;
+table.rtems-table.docutils {
+    table-layout: fixed;
+}
+table.rtems-table.docutils td {
     vertical-align: top;
-    border-width: 0;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-table.rtems-items-table.docutils:not(.field-list) tr td:nth-child(2n-1) {
-    text-align: right;
-    margin-right: 0;
-}
-table.rtems-items-table.docutils:not(.field-list) tr td:nth-child(2n) {
-    text-align: left;
+    white-space: normal;
 }
 
 /*
