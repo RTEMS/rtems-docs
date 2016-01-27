@@ -634,9 +634,9 @@ This directive acquires the semaphore specified by id.  The ``RTEMS_WAIT`` and
 ``RTEMS_NO_WAIT`` components of the options parameter indicate whether the
 calling task wants to wait for the semaphore to become available or return
 immediately if the semaphore is not currently available.  With either
-``RTEMS_WAIT`` or``RTEMS_NO_WAIT``, if the current semaphore count is positive,
-then it is decremented by one and the semaphore is successfully acquired by
-returning immediately with a successful return code.
+``RTEMS_WAIT`` or ``RTEMS_NO_WAIT``, if the current semaphore count is
+positive, then it is decremented by one and the semaphore is successfully
+acquired by returning immediately with a successful return code.
 
 If the calling task chooses to return immediately and the current semaphore
 count is zero or negative, then a status code is returned indicating that the
@@ -656,8 +656,8 @@ for this semaphore, then the priority of the task obtaining the semaphore is
 elevated to that of the ceiling.
 
 The timeout parameter specifies the maximum interval the calling task is
-willing to be blocked waiting for the semaphore.  If it is set
-to``RTEMS_NO_TIMEOUT``, then the calling task will wait forever.  If the
+willing to be blocked waiting for the semaphore.  If it is set to
+``RTEMS_NO_TIMEOUT``, then the calling task will wait forever.  If the
 semaphore is available or the ``RTEMS_NO_WAIT`` option component is set, then
 timeout is ignored.
 
