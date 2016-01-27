@@ -30,6 +30,14 @@
 }
 
 /*
+ * Special table for RTEMS. Wrap cell contents and vertically align to the top.
+ */
+table.rtems-table.docutils td {
+    white-space: normal;
+    vertical-align: top;
+}
+
+/*
  * Special table. We do not use this because the format is only for HTML
  * not PDF. Left here as a record.
  */
@@ -48,6 +56,30 @@ table.rtems-items-table.docutils:not(.field-list) tr td:nth-child(2n-1) {
 }
 table.rtems-items-table.docutils:not(.field-list) tr td:nth-child(2n) {
     text-align: left;
+}
+
+/*
+ * Notes.
+ */
+.rst-content .note .admonition-title {
+    background-color: #38532F;
+    color: #fdfdfd;
+}
+.admonition.note {
+    background:#dbe5c6;
+    color: #333333;
+}
+
+/*
+ * Todo
+ */
+.rst-content .todo .admonition-title {
+    background-color: #38532F;
+    color: #fdfdfd;
+}
+.admonition.todo {
+    background:#dbe5c6;
+    color: #333333;
 }
 
 /*

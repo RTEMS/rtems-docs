@@ -167,10 +167,12 @@ is a list of RTEMS system calls that may be made from an ISR:
   currently executing task), while in an ISR, this will refer to the
   interrupted task.  Most of the time, it is an application implementation
   error to use RTEMS_SELF from an ISR.
+
   - rtems_task_suspend
   - rtems_task_resume
 
 - Interrupt Management
+
   - rtems_interrupt_enable
   - rtems_interrupt_disable
   - rtems_interrupt_flash
@@ -182,6 +184,7 @@ is a list of RTEMS system calls that may be made from an ISR:
   - rtems_interrupt_catch
 
 - Clock Management
+
   - rtems_clock_set
   - rtems_clock_get
   - rtems_clock_get_tod
@@ -194,6 +197,7 @@ is a list of RTEMS system calls that may be made from an ISR:
   - rtems_clock_tick
 
 - Timer Management
+
   - rtems_timer_cancel
   - rtems_timer_reset
   - rtems_timer_fire_after
@@ -202,21 +206,26 @@ is a list of RTEMS system calls that may be made from an ISR:
   - rtems_timer_server_fire_when
 
 - Event Management
+
   - rtems_event_send
   - rtems_event_system_send
   - rtems_event_transient_send
 
 - Semaphore Management
+
   - rtems_semaphore_release
 
 - Message Management
+
   - rtems_message_queue_send
   - rtems_message_queue_urgent
 
 - Signal Management
+
   - rtems_signal_send
 
 - Dual-Ported Memory Management
+
   - rtems_port_external_to_internal
   - rtems_port_internal_to_external
 
@@ -224,6 +233,7 @@ is a list of RTEMS system calls that may be made from an ISR:
   The following services are safe to call from an ISR if and only if
   the device driver service invoked is also safe.  The IO Manager itself
   is safe but the invoked driver entry point may or may not be.
+
   - rtems_io_initialize
   - rtems_io_open
   - rtems_io_close
@@ -232,10 +242,12 @@ is a list of RTEMS system calls that may be made from an ISR:
   - rtems_io_control
 
 - Fatal Error Management
+
   - rtems_fatal
   - rtems_fatal_error_occurred
 
 - Multiprocessing
+
   - rtems_multiprocessing_announce
 
 Directives
@@ -267,6 +279,7 @@ INTERRUPT_CATCH - Establish an ISR
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-wrap
 
  * - ``RTEMS_SUCCESSFUL``
    -  ISR established successfully

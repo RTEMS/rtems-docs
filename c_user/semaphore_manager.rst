@@ -189,6 +189,7 @@ In general, an attribute set is built by a bitwise OR of the desired attribute
 components.  The following table lists the set of valid semaphore attributes:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_FIFO``
    - tasks wait by FIFO (default)
@@ -252,6 +253,7 @@ components.  The set of valid options for the ``rtems_semaphore_obtain``
 directive are listed in the following table:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_WAIT``
    - task will wait for semaphore (default)
@@ -308,10 +310,9 @@ The ``rtems_semaphore_obtain`` directive is used to acquire the
 specified semaphore.  A simplified version of the ``rtems_semaphore_obtain``
 directive can be described as follows:
 
-.. sidebar:: Note
-
-    If semaphore's count is greater than zero then decrement semaphore's count
-    else wait for release of semaphore return SUCCESSFUL.
+    If the semaphore's count is greater than zero then decrement the
+    semaphore's count else wait for release of semaphore then return
+    SUCCESSFUL.
 
 When the semaphore cannot be immediately acquired, one of the following
 situations applies:
@@ -343,10 +344,9 @@ The ``rtems_semaphore_release`` directive is used to release the specified
 semaphore.  A simplified version of the``rtems_semaphore_release`` directive
 can be described as follows:
 
-.. sidebar:: Note
-
-    If no tasks are waiting on this semaphore then increment semaphore's count
-    else assign semaphore to a waiting task return SUCCESSFUL.
+    If there sre no tasks are waiting on this semaphore then increment the
+    semaphore's count else assign semaphore to a waiting task and return
+    SUCCESSFUL.
 
 If this is the outermost release of a binary semaphore that uses priority
 inheritance or priority ceiling and the task does not currently hold any other
@@ -393,6 +393,7 @@ SEMAPHORE_CREATE - Create a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - semaphore created successfully
@@ -436,8 +437,9 @@ The following semaphore attribute constants are
 defined by RTEMS:
 
 .. list-table::
+ :class: rtems-table
 
- * - - ``RTEMS_FIFO``
+ * - ``RTEMS_FIFO``
    - tasks wait by FIFO (default)
  * - ``RTEMS_PRIORITY``
    - tasks wait by priority
@@ -503,6 +505,7 @@ SEMAPHORE_IDENT - Get ID of a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - semaphore identified successfully
@@ -552,6 +555,7 @@ SEMAPHORE_DELETE - Delete a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - semaphore deleted successfully
@@ -611,6 +615,7 @@ SEMAPHORE_OBTAIN - Acquire a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - semaphore obtained successfully
@@ -665,8 +670,9 @@ this case.
 The following semaphore acquisition option constants are defined by RTEMS:
 
 .. list-table::
+ :class: rtems-table
 
- * - - ``RTEMS_WAIT``
+ * - ``RTEMS_WAIT``
    - task will wait for semaphore (default)
  * - - ``RTEMS_NO_WAIT``
    - task should not wait
@@ -704,6 +710,7 @@ SEMAPHORE_RELEASE - Release a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - semaphore released successfully
@@ -763,6 +770,7 @@ SEMAPHORE_FLUSH - Unblock all tasks waiting on a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - semaphore released successfully
@@ -820,6 +828,7 @@ SEMAPHORE_SET_PRIORITY - Set priority by scheduler for a semaphore
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - successful operation

@@ -200,6 +200,7 @@ enabled when the task is executing. ``RTEMS_INTERRUPT_LEVEL(n)`` specifies that
 the task will execute at interrupt level n.
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_PREEMPT``
    - enable preemption (default)
@@ -346,6 +347,7 @@ In general, an attribute set is built by a bitwise OR of the desired
 components.  The set of valid task attribute components is listed below:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_NO_FLOATING_POINT``
    - does not use coprocessor (default)
@@ -380,6 +382,7 @@ desired components.  The set of valid mode constants and each mode's
 corresponding mask constant is listed below:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_PREEMPT``
    - is masked by``RTEMS_PREEMPT_MASK`` and enables preemption
@@ -592,6 +595,7 @@ TASK_CREATE - Create a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task created successfully
@@ -659,6 +663,7 @@ when calculating the stack size required for tasks which utilize the driver.
 The following task attribute constants are defined by RTEMS:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_NO_FLOATING_POINT``
    - does not use coprocessor (default)
@@ -672,6 +677,7 @@ The following task attribute constants are defined by RTEMS:
 The following task mode constants are defined by RTEMS:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_PREEMPT``
    - enable preemption (default)
@@ -724,6 +730,7 @@ TASK_IDENT - Get ID of a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task identified successfully
@@ -805,6 +812,7 @@ TASK_START - Start a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - ask started successfully
@@ -857,6 +865,7 @@ TASK_RESTART - Restart a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task restarted successfully
@@ -917,6 +926,7 @@ TASK_DELETE - Delete a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task deleted successfully
@@ -972,6 +982,7 @@ TASK_SUSPEND - Suspend a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task suspended successfully
@@ -1019,6 +1030,7 @@ TASK_RESUME - Resume a task
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task resumed successfully
@@ -1064,6 +1076,7 @@ TASK_IS_SUSPENDED - Determine if a task is Suspended
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task is NOT suspended
@@ -1106,6 +1119,7 @@ TASK_SET_PRIORITY - Set task priority
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task priority set successfully
@@ -1171,6 +1185,7 @@ TASK_MODE - Change the current task mode
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - task mode set successfully
@@ -1204,6 +1219,7 @@ The set of task mode constants and each mode's corresponding mask constant is
 provided in the following table:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_PREEMPT``
    - is masked by ``RTEMS_PREEMPT_MASK`` and enables preemption
@@ -1242,6 +1258,7 @@ TASK_WAKE_AFTER - Wake up after interval
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - always successful
@@ -1285,6 +1302,7 @@ TASK_WAKE_WHEN - Wake up when specified
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - awakened at date/time successfully
@@ -1372,6 +1390,7 @@ TASK_VARIABLE_ADD - Associate per task variable
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - per task variable added successfully
@@ -1433,6 +1452,7 @@ TASK_VARIABLE_GET - Obtain value of a per task variable
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - per task variable obtained successfully
@@ -1490,6 +1510,7 @@ TASK_VARIABLE_DELETE - Remove per task variable
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - per task variable deleted successfully

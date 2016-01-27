@@ -480,6 +480,7 @@ relationship between the period's status and the directive status code returned
 by the ``rtems_rate_monotonic_period`` directive:
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period is running
@@ -656,6 +657,7 @@ RATE_MONOTONIC_CREATE - Create a rate monotonic period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - rate monotonic period created successfully
@@ -697,6 +699,7 @@ RATE_MONOTONIC_IDENT - Get ID of a period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period identified successfully
@@ -734,6 +737,7 @@ RATE_MONOTONIC_CANCEL - Cancel a period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period canceled successfully
@@ -773,6 +777,7 @@ RATE_MONOTONIC_DELETE - Delete a rate monotonic period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period deleted successfully
@@ -814,6 +819,7 @@ RATE_MONOTONIC_PERIOD - Conclude current/Start next period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period initiated successfully
@@ -863,6 +869,7 @@ RATE_MONOTONIC_GET_STATUS - Obtain status from a period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period initiated successfully
@@ -926,6 +933,7 @@ RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period initiated successfully
@@ -993,6 +1001,7 @@ RATE_MONOTONIC_RESET_STATISTICS - Reset statistics for a period
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - period initiated successfully

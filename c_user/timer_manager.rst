@@ -207,6 +207,7 @@ TIMER_CREATE - Create a timer
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer created successfully
@@ -248,6 +249,7 @@ TIMER_IDENT - Get ID of a timer
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer identified successfully
@@ -287,6 +289,7 @@ TIMER_CANCEL - Cancel a timer
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer canceled successfully
@@ -322,6 +325,7 @@ TIMER_DELETE - Delete a timer
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer deleted successfully
@@ -362,6 +366,7 @@ TIMER_FIRE_AFTER - Fire timer after interval
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer initiated successfully
@@ -405,6 +410,7 @@ TIMER_FIRE_WHEN - Fire timer when specified
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer initiated successfully
@@ -452,6 +458,7 @@ TIMER_INITIATE_SERVER - Initiate server for task-based timers
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - Timer Server initiated successfully
@@ -497,6 +504,7 @@ TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer initiated successfully
@@ -545,6 +553,7 @@ TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer initiated successfully
@@ -594,6 +603,7 @@ TIMER_RESET - Reset an interval timer
 **DIRECTIVE STATUS CODES:**
 
 .. list-table::
+ :class: rtems-table
 
  * - ``RTEMS_SUCCESSFUL``
    - timer reset successfully
