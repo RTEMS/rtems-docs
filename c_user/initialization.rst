@@ -15,9 +15,9 @@ user-supplied device driver.  In a multiprocessor configuration, this manager
 also initializes the interprocessor communications layer.  The directives
 provided by the Initialization Manager are:
 
-- ``rtems_initialize_executive`` - Initialize RTEMS
+- rtems_initialize_executive_ - Initialize RTEMS
 
-- ``rtems_shutdown_executive`` - Shutdown RTEMS
+- rtems_shutdown_executive_ - Shutdown RTEMS
 
 Background
 ==========
@@ -104,7 +104,7 @@ The ``rtems_fatal_error_occurred`` directive will be invoked from
   successfully.
 
 A discussion of RTEMS actions when a fatal error occurs may be found
-`Announcing a Fatal Error`_.
+:ref:`Announcing a Fatal Error`.
 
 Operations
 ==========
@@ -129,7 +129,7 @@ consists of
 
 The ``rtems_initialize_executive`` directive uses a system initialization
 linker set to initialize only those parts of the overall RTEMS feature set that
-is necessary for a particular application.  See `Linker Sets`_.  Each RTEMS
+is necessary for a particular application.  See :ref:`Linker Sets`.  Each RTEMS
 feature used the application may optionally register an initialization handler.
 The system initialization API is available via``#included <rtems/sysinit.h>``.
 
@@ -184,7 +184,7 @@ initialization stack may be re-used for interrupt processing.
 
 Many of RTEMS actions during initialization are based upon the contents of the
 Configuration Table.  For more information regarding the format and contents of
-this table, please refer to the chapter `Configuring a System`_.
+this table, please refer to the chapter :ref:`Configuring a System`.
 
 The final action in the initialization sequence is the initiation of
 multitasking.  When the scheduler and dispatcher are enabled, the highest
@@ -204,6 +204,8 @@ Directives
 This section details the Initialization Manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
+
+.. _rtems_initialize_executive:
 
 INITIALIZE_EXECUTIVE - Initialize RTEMS
 ---------------------------------------
@@ -233,6 +235,8 @@ This directive should be called by ``boot_card`` only.
 
 This directive *does not return* to the caller.  Errors in the initialization
 sequence are usually fatal and lead to a system termination.
+
+.. _rtems_shutdown_executive:
 
 SHUTDOWN_EXECUTIVE - Shutdown RTEMS
 -----------------------------------

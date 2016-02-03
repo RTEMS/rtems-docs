@@ -243,7 +243,9 @@ The development of responsive real-time applications requires an understanding
 of how RTEMS maintains and supports time-related operations.  The basic unit of
 time in RTEMS is known as a tick.  The frequency of clock ticks is completely
 application dependent and determines the granularity and accuracy of all
-interval and calendar time operations... index:: rtems_interval
+interval and calendar time operations.
+
+.. index:: rtems_interval
 
 By tracking time in units of ticks, RTEMS is capable of supporting interval
 timing functions such as task delays, timeouts, timeslicing, the delayed

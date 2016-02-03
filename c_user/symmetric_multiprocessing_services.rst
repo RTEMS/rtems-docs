@@ -1,11 +1,15 @@
+.. COMMENT: COPYRIGHT (c) 2011,2015
+.. COMMENT: Aeroflex Gaisler AB
+.. COMMENT: All rights reserved.
+
 Symmetric Multiprocessing Services
 ##################################
 
 Introduction
 ============
 
-The Symmetric Multiprocessing (SMP) support of the RTEMS 4.10.99.0 is
-available on
+The Symmetric Multiprocessing (SMP) support of the RTEMS 4.11.0 and later is available
+on
 
 - ARM,
 
@@ -13,34 +17,38 @@ available on
 
 - SPARC.
 
-It must be explicitly enabled via the ``--enable-smp`` configure command
-line option.  To enable SMP in the application configuration see `Enable SMP Support for Applications`_.  The default
-scheduler for SMP applications supports up to 32 processors and is a global
-fixed priority scheduler, see also `Configuring Clustered Schedulers`_.  For example applications see:file:`testsuites/smptests`.
+It must be explicitly enabled via the ``--enable-smp`` configure command line
+option.  To enable SMP in the application configuration see `Enable SMP Support
+for Applications`_.  The default scheduler for SMP applications supports up to
+32 processors and is a global fixed priority scheduler, see also
+:ref:`Configuring Clustered Schedulers`.  For example applications
+see:file:`testsuites/smptests`.
 
-*WARNING: The SMP support in RTEMS is work in progress.  Before you
-start using this RTEMS version for SMP ask on the RTEMS mailing list.*
+.. warning::
+
+   The SMP support in RTEMS is work in progress. Before you start using this
+   RTEMS version for SMP ask on the RTEMS mailing list.
 
 This chapter describes the services related to Symmetric Multiprocessing
 provided by RTEMS.
 
 The application level services currently provided are:
 
-- ``rtems_get_processor_count`` - Get processor count
+- rtems_get_processor_count_ - Get processor count
 
-- ``rtems_get_current_processor`` - Get current processor index
+- rtems_get_current_processor_ - Get current processor index
 
-- ``rtems_scheduler_ident`` - Get ID of a scheduler
+- rtems_scheduler_ident_ - Get ID of a scheduler
 
-- ``rtems_scheduler_get_processor_set`` - Get processor set of a scheduler
+- rtems_scheduler_get_processor_set_ - Get processor set of a scheduler
 
-- ``rtems_task_get_scheduler`` - Get scheduler of a task
+- rtems_task_get_scheduler_ - Get scheduler of a task
 
-- ``rtems_task_set_scheduler`` - Set scheduler of a task
+- rtems_task_set_scheduler_ - Set scheduler of a task
 
-- ``rtems_task_get_affinity`` - Get task processor affinity
+- rtems_task_get_affinity_ - Get task processor affinity
 
-- ``rtems_task_set_affinity`` - Set task processor affinity
+- rtems_task_set_affinity_ - Set task processor affinity
 
 Background
 ==========
@@ -56,65 +64,62 @@ taken for granted:
 
 - hardware events result in interrupts
 
-There is no true parallelism. Even when interrupts appear to occur
-at the same time, they are processed in largely a serial fashion.
-This is true even when the interupt service routines are allowed to
-nest.  From a tasking viewpoint,  it is the responsibility of the real-time
-operatimg system to simulate parallelism by switching between tasks.
-These task switches occur in response to hardware interrupt events and explicit
-application events such as blocking for a resource or delaying.
+There is no true parallelism. Even when interrupts appear to occur at the same
+time, they are processed in largely a serial fashion.  This is true even when
+the interupt service routines are allowed to nest.  From a tasking viewpoint,
+it is the responsibility of the real-time operatimg system to simulate
+parallelism by switching between tasks.  These task switches occur in response
+to hardware interrupt events and explicit application events such as blocking
+for a resource or delaying.
 
-With symmetric multiprocessing, the presence of multiple processors
-allows for true concurrency and provides for cost-effective performance
-improvements. Uniprocessors tend to increase performance by increasing
-clock speed and complexity. This tends to lead to hot, power hungry
-microprocessors which are poorly suited for many embedded applications.
+With symmetric multiprocessing, the presence of multiple processors allows for
+true concurrency and provides for cost-effective performance
+improvements. Uniprocessors tend to increase performance by increasing clock
+speed and complexity. This tends to lead to hot, power hungry microprocessors
+which are poorly suited for many embedded applications.
 
-The true concurrency is in sharp contrast to the single task and
-interrupt model of uniprocessor systems. This results in a fundamental
-change to uniprocessor system characteristics listed above. Developers
-are faced with a different set of characteristics which, in turn, break
-some existing assumptions and result in new challenges. In an SMP system
-with N processors, these are the new execution characteristics.
+The true concurrency is in sharp contrast to the single task and interrupt
+model of uniprocessor systems. This results in a fundamental change to
+uniprocessor system characteristics listed above. Developers are faced with a
+different set of characteristics which, in turn, break some existing
+assumptions and result in new challenges. In an SMP system with N processors,
+these are the new execution characteristics.
 
 - N tasks execute in parallel
 
 - hardware events result in interrupts
 
-There is true parallelism with a task executing on each processor and
-the possibility of interrupts occurring on each processor. Thus in contrast
-to their being one task and one interrupt to consider on a uniprocessor,
-there are N tasks and potentially N simultaneous interrupts to consider
-on an SMP system.
+There is true parallelism with a task executing on each processor and the
+possibility of interrupts occurring on each processor. Thus in contrast to
+their being one task and one interrupt to consider on a uniprocessor, there are
+N tasks and potentially N simultaneous interrupts to consider on an SMP system.
 
-This increase in hardware complexity and presence of true parallelism
-results in the application developer needing to be even more cautious
-about mutual exclusion and shared data access than in a uniprocessor
-embedded system. Race conditions that never or rarely happened when an
-application executed on a uniprocessor system, become much more likely
-due to multiple threads executing in parallel. On a uniprocessor system,
-these race conditions would only happen when a task switch occurred at
-just the wrong moment. Now there are N-1 tasks executing in parallel
-all the time and this results in many more opportunities for small
-windows in critical sections to be hit.
+This increase in hardware complexity and presence of true parallelism results
+in the application developer needing to be even more cautious about mutual
+exclusion and shared data access than in a uniprocessor embedded system. Race
+conditions that never or rarely happened when an application executed on a
+uniprocessor system, become much more likely due to multiple threads executing
+in parallel. On a uniprocessor system, these race conditions would only happen
+when a task switch occurred at just the wrong moment. Now there are N-1 tasks
+executing in parallel all the time and this results in many more opportunities
+for small windows in critical sections to be hit.
 
 Task Affinity
 -------------
 .. index:: task affinity
 .. index:: thread affinity
 
-RTEMS provides services to manipulate the affinity of a task. Affinity
-is used to specify the subset of processors in an SMP system on which
-a particular task can execute.
+RTEMS provides services to manipulate the affinity of a task. Affinity is used
+to specify the subset of processors in an SMP system on which a particular task
+can execute.
 
 By default, tasks have an affinity which allows them to execute on any
 available processor.
 
 Task affinity is a possible feature to be supported by SMP-aware
 schedulers. However, only a subset of the available schedulers support
-affinity. Although the behavior is scheduler specific, if the scheduler
-does not support affinity, it is likely to ignore all attempts to set
-affinity.
+affinity. Although the behavior is scheduler specific, if the scheduler does
+not support affinity, it is likely to ignore all attempts to set affinity.
 
 The scheduler with support for arbitary processor affinities uses a proof of
 concept implementation.  See https://devel.rtems.org/ticket/2510.
@@ -130,12 +135,13 @@ to another.  There are three reasons why tasks migrate in RTEMS.
 - The scheduler changes explicitly via ``rtems_task_set_scheduler()`` or
   similar directives.
 
-- The task resumes execution after a blocking operation.  On a priority
-  based scheduler it will evict the lowest priority task currently assigned to a
+- The task resumes execution after a blocking operation.  On a priority based
+  scheduler it will evict the lowest priority task currently assigned to a
   processor in the processor set managed by the scheduler instance.
 
 - The task moves temporarily to another scheduler instance due to locking
-  protocols like *Migratory Priority Inheritance* or the*Multiprocessor Resource Sharing Protocol*.
+  protocols like *Migratory Priority Inheritance* or the *Multiprocessor
+  Resource Sharing Protocol*.
 
 Task migration should be avoided so that the working set of a task can stay on
 the most local cache level.
@@ -173,8 +179,9 @@ clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
 owned by exactly one scheduler instance.
 
 Clustered scheduling helps to control the worst-case latencies in
-multi-processor systems, see *Brandenburg, Bjorn B.: Scheduling and
-Locking in Multiprocessor Real-Time Operating Systems. PhD thesis, 2011.http://www.cs.unc.edu/~bbb/diss/brandenburg-diss.pdf*.  The goal is to
+multi-processor systems, see *Brandenburg, Bjorn B.: Scheduling and Locking in
+Multiprocessor Real-Time Operating Systems. PhD thesis,
+2011.http://www.cs.unc.edu/~bbb/diss/brandenburg-diss.pdf*.  The goal is to
 reduce the amount of shared state in the system and thus prevention of lock
 contention. Modern multi-processor systems tend to have several layers of data
 and instruction caches.  With clustered scheduling it is possible to honour the
@@ -188,8 +195,8 @@ available
 
 - message queues,
 
-- semaphores using the `Priority Inheritance`_
-  protocol (priority boosting), and
+- semaphores using the `Priority Inheritance`_ protocol (priority boosting),
+  and
 
 - semaphores using the `Multiprocessor Resource Sharing Protocol`_ (MrsP).
 
@@ -198,9 +205,10 @@ real-time requirements and functions that profit from fairness and high
 throughput provided the scheduler instances are fully decoupled and adequate
 inter-cluster synchronization primitives are used.  This is work in progress.
 
-For the configuration of clustered schedulers see `Configuring Clustered Schedulers`_.
+For the configuration of clustered schedulers see `Configuring Clustered
+Schedulers`_.
 
-To set the scheduler of a task see `SCHEDULER_IDENT - Get ID of a scheduler`_ 
+To set the scheduler of a task see `SCHEDULER_IDENT - Get ID of a scheduler`_
 and `TASK_SET_SCHEDULER - Set scheduler of a task`_.
 
 Task Priority Queues
@@ -220,9 +228,11 @@ appended to the FIFO.  To dequeue a task the highest priority task of the first
 priority queue in the FIFO is selected.  Then the first priority queue is
 removed from the FIFO.  In case the previously first priority queue is not
 empty, then it is appended to the FIFO.  So there is FIFO fairness with respect
-to the highest priority task of each scheduler instances. See also *Brandenburg, Bjorn B.: A fully preemptive multiprocessor semaphore protocol for
-latency-sensitive real-time applications. In Proceedings of the 25th Euromicro
-Conference on Real-Time Systems (ECRTS 2013), pages 292-302, 2013.http://www.mpi-sws.org/~bbb/papers/pdf/ecrts13b.pdf*.
+to the highest priority task of each scheduler instances. See also
+*Brandenburg, Bjorn B.: A fully preemptive multiprocessor semaphore protocol
+for latency-sensitive real-time applications. In Proceedings of the 25th
+Euromicro Conference on Real-Time Systems (ECRTS 2013), pages 292-302,
+2013.http://www.mpi-sws.org/~bbb/papers/pdf/ecrts13b.pdf*.
 
 Such a two level queue may need a considerable amount of memory if fast enqueue
 and dequeue operations are desired (depends on the scheduler instance count).
@@ -242,11 +252,11 @@ for the task itself. In case a task needs to block, then there are two options
 
 In case the task is dequeued, then there are two options
 
-- the task is the last task on the queue, then it removes this queue from
-  the object and reclaims it for its own purpose, or
+- the task is the last task on the queue, then it removes this queue from the
+  object and reclaims it for its own purpose, or
 
-- otherwise, then the task removes one queue from the free list of the
-  object and reclaims it for its own purpose.
+- otherwise, then the task removes one queue from the free list of the object
+  and reclaims it for its own purpose.
 
 Since there are usually more objects than tasks, this actually reduces the
 memory demands. In addition the objects contain only a pointer to the task
@@ -257,39 +267,40 @@ and OpenMP run-time support).
 Scheduler Helping Protocol
 --------------------------
 
-The scheduler provides a helping protocol to support locking protocols like*Migratory Priority Inheritance* or the *Multiprocessor Resource
-Sharing Protocol*.  Each ready task can use at least one scheduler node at a
-time to gain access to a processor.  Each scheduler node has an owner, a user
-and an optional idle task.  The owner of a scheduler node is determined a task
+The scheduler provides a helping protocol to support locking protocols like
+*Migratory Priority Inheritance* or the *Multiprocessor Resource Sharing
+Protocol*.  Each ready task can use at least one scheduler node at a time to
+gain access to a processor.  Each scheduler node has an owner, a user and an
+optional idle task.  The owner of a scheduler node is determined a task
 creation and never changes during the life time of a scheduler node.  The user
 of a scheduler node may change due to the scheduler helping protocol.  A
 scheduler node is in one of the four scheduler help states:
 
 :dfn:`help yourself`
     This scheduler node is solely used by the owner task.  This task owns no
-    resources using a helping protocol and thus does not take part in the scheduler
-    helping protocol.  No help will be provided for other tasks.
+    resources using a helping protocol and thus does not take part in the
+    scheduler helping protocol.  No help will be provided for other tasks.
 
 :dfn:`help active owner`
-    This scheduler node is owned by a task actively owning a resource and can be
-    used to help out tasks.
-    In case this scheduler node changes its state from ready to scheduled and the
-    task executes using another node, then an idle task will be provided as a user
-    of this node to temporarily execute on behalf of the owner task.  Thus lower
-    priority tasks are denied access to the processors of this scheduler instance.
-    In case a task actively owning a resource performs a blocking operation, then
-    an idle task will be used also in case this node is in the scheduled state.
+    This scheduler node is owned by a task actively owning a resource and can
+    be used to help out tasks.  In case this scheduler node changes its state
+    from ready to scheduled and the task executes using another node, then an
+    idle task will be provided as a user of this node to temporarily execute on
+    behalf of the owner task.  Thus lower priority tasks are denied access to
+    the processors of this scheduler instance.  In case a task actively owning
+    a resource performs a blocking operation, then an idle task will be used
+    also in case this node is in the scheduled state.
 
 :dfn:`help active rival`
-    This scheduler node is owned by a task actively obtaining a resource currently
-    owned by another task and can be used to help out tasks.
-    The task owning this node is ready and will give away its processor in case the
+    This scheduler node is owned by a task actively obtaining a resource
+    currently owned by another task and can be used to help out tasks.  The
+    task owning this node is ready and will give away its processor in case the
     task owning the resource asks for help.
 
 :dfn:`help passive`
-    This scheduler node is owned by a task obtaining a resource currently owned by
-    another task and can be used to help out tasks.
-    The task owning this node is blocked.
+    This scheduler node is owned by a task obtaining a resource currently owned
+    by another task and can be used to help out tasks.  The task owning this
+    node is blocked.
 
 The following scheduler operations return a task in need for help
 
@@ -324,15 +335,15 @@ the system depends on the maximum resource tree size of the application.
 Critical Section Techniques and SMP
 -----------------------------------
 
-As discussed earlier, SMP systems have opportunities for true parallelism
-which was not possible on uniprocessor systems. Consequently, multiple
-techniques that provided adequate critical sections on uniprocessor
-systems are unsafe on SMP systems. In this section, some of these
-unsafe techniques will be discussed.
+As discussed earlier, SMP systems have opportunities for true parallelism which
+was not possible on uniprocessor systems. Consequently, multiple techniques
+that provided adequate critical sections on uniprocessor systems are unsafe on
+SMP systems. In this section, some of these unsafe techniques will be
+discussed.
 
 In general, applications must use proper operating system provided mutual
-exclusion mechanisms to ensure correct behavior. This primarily means
-the use of binary semaphores or mutexes to implement critical sections.
+exclusion mechanisms to ensure correct behavior. This primarily means the use
+of binary semaphores or mutexes to implement critical sections.
 
 Disable Interrupts and Interrupt Locks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -369,80 +380,85 @@ to simple interrupt disable/enable sequences.  It is disallowed to acquire a
 single interrupt lock in a nested way.  This will result in an infinite loop
 with interrupts disabled.  While converting legacy code to interrupt locks care
 must be taken to avoid this situation.
-.. code:: c
+
+.. code-block:: c
+    :linenos:
 
     void legacy_code_with_interrupt_disable_enable( void )
     {
-    rtems_interrupt_level level;
-    rtems_interrupt_disable( level );
-    /* Some critical stuff \*/
-    rtems_interrupt_enable( level );
+        rtems_interrupt_level level;
+        rtems_interrupt_disable( level );
+        /* Some critical stuff */
+        rtems_interrupt_enable( level );
     }
-    RTEMS_INTERRUPT_LOCK_DEFINE( static, lock, "Name" )
+
+    RTEMS_INTERRUPT_LOCK_DEFINE( static, lock, "Name" );
+
     void smp_ready_code_with_interrupt_lock( void )
     {
-    rtems_interrupt_lock_context lock_context;
-    rtems_interrupt_lock_acquire( &lock, &lock_context );
-    /* Some critical stuff \*/
-    rtems_interrupt_lock_release( &lock, &lock_context );
+        rtems_interrupt_lock_context lock_context;
+        rtems_interrupt_lock_acquire( &lock, &lock_context );
+        /* Some critical stuff */
+        rtems_interrupt_lock_release( &lock, &lock_context );
     }
 
 The ``rtems_interrupt_lock`` structure is empty on uni-processor
 configurations.  Empty structures have a different size in C
 (implementation-defined, zero in case of GCC) and C++ (implementation-defined
-non-zero value, one in case of GCC).  Thus the``RTEMS_INTERRUPT_LOCK_DECLARE()``, ``RTEMS_INTERRUPT_LOCK_DEFINE()``,``RTEMS_INTERRUPT_LOCK_MEMBER()``, and``RTEMS_INTERRUPT_LOCK_REFERENCE()`` macros are provided to ensure ABI
-compatibility.
+non-zero value, one in case of GCC).  Thus the
+``RTEMS_INTERRUPT_LOCK_DECLARE()``, ``RTEMS_INTERRUPT_LOCK_DEFINE()``,
+``RTEMS_INTERRUPT_LOCK_MEMBER()``, and ``RTEMS_INTERRUPT_LOCK_REFERENCE()``
+macros are provided to ensure ABI compatibility.
 
 Highest Priority Task Assumption
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On a uniprocessor system, it is safe to assume that when the highest
-priority task in an application executes, it will execute without being
-preempted until it voluntarily blocks. Interrupts may occur while it is
-executing, but there will be no context switch to another task unless
-the highest priority task voluntarily initiates it.
+On a uniprocessor system, it is safe to assume that when the highest priority
+task in an application executes, it will execute without being preempted until
+it voluntarily blocks. Interrupts may occur while it is executing, but there
+will be no context switch to another task unless the highest priority task
+voluntarily initiates it.
 
-Given the assumption that no other tasks will have their execution
-interleaved with the highest priority task, it is possible for this
-task to be constructed such that it does not need to acquire a binary
-semaphore or mutex for protected access to shared data.
+Given the assumption that no other tasks will have their execution interleaved
+with the highest priority task, it is possible for this task to be constructed
+such that it does not need to acquire a binary semaphore or mutex for protected
+access to shared data.
 
 In an SMP system, it cannot be assumed there will never be a single task
 executing. It should be assumed that every processor is executing another
-application task. Further, those tasks will be ones which would not have
-been executed in a uniprocessor configuration and should be assumed to
-have data synchronization conflicts with what was formerly the highest
-priority task which executed without conflict.
+application task. Further, those tasks will be ones which would not have been
+executed in a uniprocessor configuration and should be assumed to have data
+synchronization conflicts with what was formerly the highest priority task
+which executed without conflict.
 
 Disable Preemption
 ~~~~~~~~~~~~~~~~~~
 
-On a uniprocessor system, disabling preemption in a task is very similar
-to making the highest priority task assumption. While preemption is
-disabled, no task context switches will occur unless the task initiates
-them voluntarily. And, just as with the highest priority task assumption,
-there are N-1 processors also running tasks. Thus the assumption that no
-other tasks will run while the task has preemption disabled is violated.
+On a uniprocessor system, disabling preemption in a task is very similar to
+making the highest priority task assumption. While preemption is disabled, no
+task context switches will occur unless the task initiates them
+voluntarily. And, just as with the highest priority task assumption, there are
+N-1 processors also running tasks. Thus the assumption that no other tasks will
+run while the task has preemption disabled is violated.
 
 Task Unique Data and SMP
 ------------------------
 
 Per task variables are a service commonly provided by real-time operating
-systems for application use. They work by allowing the application
-to specify a location in memory (typically a ``void *``) which is
-logically added to the context of a task. On each task switch, the
-location in memory is stored and each task can have a unique value in
-the same memory location. This memory location is directly accessed as a
-variable in a program.
+systems for application use. They work by allowing the application to specify a
+location in memory (typically a ``void *``) which is logically added to the
+context of a task. On each task switch, the location in memory is stored and
+each task can have a unique value in the same memory location. This memory
+location is directly accessed as a variable in a program.
 
 This works well in a uniprocessor environment because there is one task
-executing and one memory location containing a task-specific value. But
-it is fundamentally broken on an SMP system because there are always N
-tasks executing. With only one location in memory, N-1 tasks will not
-have the correct value.
+executing and one memory location containing a task-specific value. But it is
+fundamentally broken on an SMP system because there are always N tasks
+executing. With only one location in memory, N-1 tasks will not have the
+correct value.
 
-This paradigm for providing task unique data values is fundamentally
-broken on SMP systems.
+This paradigm for providing task unique data values is fundamentally broken on
+SMP systems.
 
 Classic API Per Task Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -479,50 +495,54 @@ configuration of libgomp.  In addition application configurable thread pools
 for each scheduler instance are available in GCC 6.1 or later.
 
 The run-time configuration of libgomp is done via environment variables
-documented in the `libgomp
-manual <https://gcc.gnu.org/onlinedocs/libgomp/>`_.  The environment variables are evaluated in a constructor function
-which executes in the context of the first initialization task before the
-actual initialization task function is called (just like a global C++
-constructor).  To set application specific values, a higher priority
-constructor function must be used to set up the environment variables.
+documented in the `libgomp manual <https://gcc.gnu.org/onlinedocs/libgomp/>`_.
+The environment variables are evaluated in a constructor function which
+executes in the context of the first initialization task before the actual
+initialization task function is called (just like a global C++ constructor).
+To set application specific values, a higher priority constructor function must
+be used to set up the environment variables.
+
 .. code:: c
 
     #include <stdlib.h>
     void __attribute__((constructor(1000))) config_libgomp( void )
     {
-    setenv( "OMP_DISPLAY_ENV", "VERBOSE", 1 );
-    setenv( "GOMP_SPINCOUNT", "30000", 1 );
-    setenv( "GOMP_RTEMS_THREAD_POOLS", "1$2@SCHD", 1 );
+        setenv( "OMP_DISPLAY_ENV", "VERBOSE", 1 );
+        setenv( "GOMP_SPINCOUNT", "30000", 1 );
+        setenv( "GOMP_RTEMS_THREAD_POOLS", "1$2@SCHD", 1 );
     }
 
 The environment variable ``GOMP_RTEMS_THREAD_POOLS`` is RTEMS-specific.  It
-determines the thread pools for each scheduler instance.  The format for``GOMP_RTEMS_THREAD_POOLS`` is a list of optional``<thread-pool-count>[$<priority>]@<scheduler-name>`` configurations
-separated by ``:`` where:
+determines the thread pools for each scheduler instance.  The format for
+``GOMP_RTEMS_THREAD_POOLS`` is a list of optional
+``<thread-pool-count>[$<priority>]@<scheduler-name>`` configurations separated
+by ``:`` where:
 
-- ``<thread-pool-count>`` is the thread pool count for this scheduler
-  instance.
+- ``<thread-pool-count>`` is the thread pool count for this scheduler instance.
 
-- ``$<priority>`` is an optional priority for the worker threads of a
-  thread pool according to ``pthread_setschedparam``.  In case a priority
-  value is omitted, then a worker thread will inherit the priority of the OpenMP
-  master thread that created it.  The priority of the worker thread is not
-  changed by libgomp after creation, even if a new OpenMP master thread using the
-  worker has a different priority.
+- ``$<priority>`` is an optional priority for the worker threads of a thread
+  pool according to ``pthread_setschedparam``.  In case a priority value is
+  omitted, then a worker thread will inherit the priority of the OpenMP master
+  thread that created it.  The priority of the worker thread is not changed by
+  libgomp after creation, even if a new OpenMP master thread using the worker
+  has a different priority.
 
-- ``@<scheduler-name>`` is the scheduler instance name according to the
-  RTEMS application configuration.
+- ``@<scheduler-name>`` is the scheduler instance name according to the RTEMS
+  application configuration.
 
 In case no thread pool configuration is specified for a scheduler instance,
 then each OpenMP master thread of this scheduler instance will use its own
 dynamically allocated thread pool.  To limit the worker thread count of the
 thread pools, each OpenMP master thread must call ``omp_set_num_threads``.
 
-Lets suppose we have three scheduler instances ``IO``, ``WRK0``, and``WRK1`` with ``GOMP_RTEMS_THREAD_POOLS`` set to``"1@WRK0:3$4@WRK1"``.  Then there are no thread pool restrictions for
-scheduler instance ``IO``.  In the scheduler instance ``WRK0`` there is
-one thread pool available.  Since no priority is specified for this scheduler
-instance, the worker thread inherits the priority of the OpenMP master thread
-that created it.  In the scheduler instance ``WRK1`` there are three thread
-pools available and their worker threads run at priority four.
+Lets suppose we have three scheduler instances ``IO``, ``WRK0``, and ``WRK1``
+with ``GOMP_RTEMS_THREAD_POOLS`` set to ``"1@WRK0:3$4@WRK1"``.  Then there are
+no thread pool restrictions for scheduler instance ``IO``.  In the scheduler
+instance ``WRK0`` there is one thread pool available.  Since no priority is
+specified for this scheduler instance, the worker thread inherits the priority
+of the OpenMP master thread that created it.  In the scheduler instance
+``WRK1`` there are three thread pools available and their worker threads run at
+priority four.
 
 Thread Dispatch Details
 -----------------------
@@ -548,10 +568,10 @@ variables,
 
 Updates of the heir thread and the thread dispatch necessary indicator are
 synchronized via explicit memory barriers without the use of locks.  A thread
-can be an heir thread on at most one processor in the system.  The thread context
-is protected by a TTAS lock embedded in the context to ensure that it is used
-on at most one processor at a time.  The thread post-switch actions use a
-per-processor lock.  This implementation turned out to be quite efficient and
+can be an heir thread on at most one processor in the system.  The thread
+context is protected by a TTAS lock embedded in the context to ensure that it
+is used on at most one processor at a time.  The thread post-switch actions use
+a per-processor lock.  This implementation turned out to be quite efficient and
 no lock contention was observed in the test suite.
 
 The current implementation of thread dispatching has some implications with
@@ -607,31 +627,34 @@ lock individual tasks to specific processors.  In this way, one can designate a
 processor for I/O tasks, another for computation, etc..  The following
 illustrates the code sequence necessary to assign a task an affinity for
 processor with index ``processor_index``.
+
 .. code:: c
 
     #include <rtems.h>
     #include <assert.h>
+
     void pin_to_processor(rtems_id task_id, int processor_index)
     {
-    rtems_status_code sc;
-    cpu_set_t         cpuset;
-    CPU_ZERO(&cpuset);
-    CPU_SET(processor_index, &cpuset);
-    sc = rtems_task_set_affinity(task_id, sizeof(cpuset), &cpuset);
-    assert(sc == RTEMS_SUCCESSFUL);
+        rtems_status_code sc;
+        cpu_set_t         cpuset;
+        CPU_ZERO(&cpuset);
+        CPU_SET(processor_index, &cpuset);
+        sc = rtems_task_set_affinity(task_id, sizeof(cpuset), &cpuset);
+        assert(sc == RTEMS_SUCCESSFUL);
     }
 
-It is important to note that the ``cpuset`` is not validated until the``rtems_task_set_affinity`` call is made. At that point,
-it is validated against the current system configuration.
+It is important to note that the ``cpuset`` is not validated until the
+``rtems_task_set_affinity`` call is made. At that point, it is validated
+against the current system configuration.
 
 Directives
 ==========
 
-This section details the symmetric multiprocessing services.  A subsection
-is dedicated to each of these services and describes the calling sequence,
-related constants, usage, and status codes.
+This section details the symmetric multiprocessing services.  A subsection is
+dedicated to each of these services and describes the calling sequence, related
+constants, usage, and status codes.
 
-.. COMMENT: rtems_get_processor_count
+.. _rtems_get_processor_count:
 
 GET_PROCESSOR_COUNT - Get processor count
 -----------------------------------------
@@ -660,7 +683,7 @@ maximum count of application configured processors.
 
 None.
 
-.. COMMENT: rtems_get_current_processor
+.. _rtems_get_current_processor:
 
 GET_CURRENT_PROCESSOR - Get current processor index
 ---------------------------------------------------
@@ -692,8 +715,7 @@ thread dispatching disabled.
 
 None.
 
-.. COMMENT: rtems_scheduler_ident
-
+.. _rtems_scheduler_ident:
 
 SCHEDULER_IDENT - Get ID of a scheduler
 ---------------------------------------
@@ -703,17 +725,24 @@ SCHEDULER_IDENT - Get ID of a scheduler
 .. code:: c
 
     rtems_status_code rtems_scheduler_ident(
-    rtems_name  name,
-    rtems_id   \*id
+        rtems_name  name,
+        rtems_id   *id
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - successful operation
-``RTEMS_INVALID_ADDRESS`` - ``id`` is NULL
-``RTEMS_INVALID_NAME`` - invalid scheduler name
-``RTEMS_UNSATISFIED`` - - a scheduler with this name exists, but
-the processor set of this scheduler is empty
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - successful operation
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``id`` is NULL
+ * - ``RTEMS_INVALID_NAME``
+   - invalid scheduler name
+ * - ``RTEMS_UNSATISFIED``
+   - a scheduler with this name exists, but the processor set of this scheduler
+     is empty
 
 **DESCRIPTION:**
 
@@ -724,7 +753,7 @@ scheduler configuration.  See `Configuring a System`_.
 
 None.
 
-.. COMMENT: rtems_scheduler_get_processor_set
+.. _rtems_scheduler_get_processor_set:
 
 SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
 --------------------------------------------------------------
@@ -734,30 +763,37 @@ SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
 .. code:: c
 
     rtems_status_code rtems_scheduler_get_processor_set(
-    rtems_id   scheduler_id,
-    size_t     cpusetsize,
-    cpu_set_t \*cpuset
+        rtems_id   scheduler_id,
+        size_t     cpusetsize,
+        cpu_set_t *cpuset
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - successful operation
-``RTEMS_INVALID_ADDRESS`` - ``cpuset`` is NULL
-``RTEMS_INVALID_ID`` - invalid scheduler id
-``RTEMS_INVALID_NUMBER`` - the affinity set buffer is too small for
-set of processors owned by the scheduler
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - successful operation
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``cpuset`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid scheduler id
+ * - ``RTEMS_INVALID_NUMBER``
+   - the affinity set buffer is too small for set of processors owned by the
+     scheduler
 
 **DESCRIPTION:**
 
-Returns the processor set owned by the scheduler in ``cpuset``.  A set bit
-in the processor set means that this processor is owned by the scheduler and a
+Returns the processor set owned by the scheduler in ``cpuset``.  A set bit in
+the processor set means that this processor is owned by the scheduler and a
 cleared bit means the opposite.
 
 **NOTES:**
 
 None.
 
-.. COMMENT: rtems_task_get_scheduler
+.. _rtems_task_get_scheduler:
 
 TASK_GET_SCHEDULER - Get scheduler of a task
 --------------------------------------------
@@ -767,26 +803,32 @@ TASK_GET_SCHEDULER - Get scheduler of a task
 .. code:: c
 
     rtems_status_code rtems_task_get_scheduler(
-    rtems_id  task_id,
-    rtems_id \*scheduler_id
+        rtems_id  task_id,
+        rtems_id *scheduler_id
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - successful operation
-``RTEMS_INVALID_ADDRESS`` - ``scheduler_id`` is NULL
-``RTEMS_INVALID_ID`` - invalid task id
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - successful operation
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``scheduler_id`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
 
 **DESCRIPTION:**
 
-Returns the scheduler identifier of a task identified by ``task_id`` in``scheduler_id``.
+Returns the scheduler identifier of a task identified by ``task_id`` in
+``scheduler_id``.
 
 **NOTES:**
 
 None.
 
-.. COMMENT: rtems_task_set_scheduler
-
+.. _rtems_task_set_scheduler:
 
 TASK_SET_SCHEDULER - Set scheduler of a task
 --------------------------------------------
@@ -796,22 +838,27 @@ TASK_SET_SCHEDULER - Set scheduler of a task
 .. code:: c
 
     rtems_status_code rtems_task_set_scheduler(
-    rtems_id task_id,
-    rtems_id scheduler_id
+        rtems_id task_id,
+        rtems_id scheduler_id
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - successful operation
-``RTEMS_INVALID_ID`` - invalid task or scheduler id
-``RTEMS_INCORRECT_STATE`` - the task is in the wrong state to
-perform a scheduler change
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - successful operation
+ * - ``RTEMS_INVALID_ID``
+   - invalid task or scheduler id
+ * - ``RTEMS_INCORRECT_STATE``
+   - the task is in the wrong state to perform a scheduler change
 
 **DESCRIPTION:**
 
 Sets the scheduler of a task identified by ``task_id`` to the scheduler
-identified by ``scheduler_id``.  The scheduler of a task is initialized to
-the scheduler of the task that created it.
+identified by ``scheduler_id``.  The scheduler of a task is initialized to the
+scheduler of the task that created it.
 
 **NOTES:**
 
@@ -819,36 +866,44 @@ None.
 
 **EXAMPLE:**
 
-.. code:: c
+.. code-block:: c
+    :linenos:
 
     #include <rtems.h>
     #include <assert.h>
+
     void task(rtems_task_argument arg);
+
     void example(void)
     {
-    rtems_status_code sc;
-    rtems_id          task_id;
-    rtems_id          scheduler_id;
-    rtems_name        scheduler_name;
-    scheduler_name = rtems_build_name('W', 'O', 'R', 'K');
-    sc = rtems_scheduler_ident(scheduler_name, &scheduler_id);
-    assert(sc == RTEMS_SUCCESSFUL);
-    sc = rtems_task_create(
-    rtems_build_name('T', 'A', 'S', 'K'),
-    1,
-    RTEMS_MINIMUM_STACK_SIZE,
-    RTEMS_DEFAULT_MODES,
-    RTEMS_DEFAULT_ATTRIBUTES,
-    &task_id
-    );
-    assert(sc == RTEMS_SUCCESSFUL);
-    sc = rtems_task_set_scheduler(task_id, scheduler_id);
-    assert(sc == RTEMS_SUCCESSFUL);
-    sc = rtems_task_start(task_id, task, 0);
-    assert(sc == RTEMS_SUCCESSFUL);
+        rtems_status_code sc;
+        rtems_id          task_id;
+        rtems_id          scheduler_id;
+        rtems_name        scheduler_name;
+
+        scheduler_name = rtems_build_name('W', 'O', 'R', 'K');
+
+        sc = rtems_scheduler_ident(scheduler_name, &scheduler_id);
+        assert(sc == RTEMS_SUCCESSFUL);
+
+        sc = rtems_task_create(
+                rtems_build_name('T', 'A', 'S', 'K'),
+                1,
+                RTEMS_MINIMUM_STACK_SIZE,
+                RTEMS_DEFAULT_MODES,
+                RTEMS_DEFAULT_ATTRIBUTES,
+                &task_id
+             );
+        assert(sc == RTEMS_SUCCESSFUL);
+
+        sc = rtems_task_set_scheduler(task_id, scheduler_id);
+        assert(sc == RTEMS_SUCCESSFUL);
+
+        sc = rtems_task_start(task_id, task, 0);
+        assert(sc == RTEMS_SUCCESSFUL);
     }
 
-.. COMMENT: rtems_task_get_affinity
+.. _rtems_task_get_affinity:
 
 TASK_GET_AFFINITY - Get task processor affinity
 -----------------------------------------------
@@ -858,18 +913,25 @@ TASK_GET_AFFINITY - Get task processor affinity
 .. code:: c
 
     rtems_status_code rtems_task_get_affinity(
-    rtems_id   id,
-    size_t     cpusetsize,
-    cpu_set_t \*cpuset
+        rtems_id   id,
+        size_t     cpusetsize,
+        cpu_set_t *cpuset
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - successful operation
-``RTEMS_INVALID_ADDRESS`` - ``cpuset`` is NULL
-``RTEMS_INVALID_ID`` - invalid task id
-``RTEMS_INVALID_NUMBER`` - the affinity set buffer is too small for
-the current processor affinity set of the task
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - successful operation
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``cpuset`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_INVALID_NUMBER``
+   - the affinity set buffer is too small for the current processor affinity
+     set of the task
 
 **DESCRIPTION:**
 
@@ -881,7 +943,7 @@ cleared bit means the opposite.
 
 None.
 
-.. COMMENT: rtems_task_set_affinity
+.. _rtems_task_set_affinity:
 
 TASK_SET_AFFINITY - Set task processor affinity
 -----------------------------------------------
@@ -891,17 +953,24 @@ TASK_SET_AFFINITY - Set task processor affinity
 .. code:: c
 
     rtems_status_code rtems_task_set_affinity(
-    rtems_id         id,
-    size_t           cpusetsize,
-    const cpu_set_t \*cpuset
+        rtems_id         id,
+        size_t           cpusetsize,
+        const cpu_set_t *cpuset
     );
 
 **DIRECTIVE STATUS CODES:**
 
-``RTEMS_SUCCESSFUL`` - successful operation
-``RTEMS_INVALID_ADDRESS`` - ``cpuset`` is NULL
-``RTEMS_INVALID_ID`` - invalid task id
-``RTEMS_INVALID_NUMBER`` - invalid processor affinity set
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - successful operation
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``cpuset`` is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_INVALID_NUMBER``
+   - invalid processor affinity set
 
 **DESCRIPTION:**
 
@@ -920,10 +989,4 @@ circumstances on these processors since the scheduler ignores them.  Some
 locking protocols may temporarily use processors that are not included in the
 processor affinity set of the task.  It is also not an error if the processor
 affinity set contains processors that are not part of the system.
-
-.. COMMENT: COPYRIGHT (c) 2011,2015
-
-.. COMMENT: Aeroflex Gaisler AB
-
-.. COMMENT: All rights reserved.
 
