@@ -38,7 +38,7 @@ facilitate efficient object manipulation by the executive.
 Object Names
 ------------
 .. index:: object name
-.. index:: rtems_object_name
+.. index:: rtems_name
 
 An object name is an unsigned thirty-two bit entity associated with the object
 by the user.  The data type ``rtems_name`` is used to store object
@@ -52,7 +52,7 @@ example illustrates this: .. code:: c
 
 .. code:: c
 
-    rtems_object_name my_name;
+    rtems_name my_name;
     my_name = rtems_build_name( 'L', 'I', 'T', 'E' );
 
 However, it is not required that the application use ASCII characters to build
