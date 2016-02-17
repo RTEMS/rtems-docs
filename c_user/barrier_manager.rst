@@ -51,7 +51,7 @@ Automatic barriers are created with a limit to the number of tasks which may
 simultaneously block at the barrier.  Once this limit is reached, all of the
 tasks are released.  For example, if the automatic limit is ten tasks, then the
 first nine tasks calling the ``rtems_barrier_wait`` directive will block.  When
-the tenth task calls the``rtems_barrier_wait`` directive, the nine blocked
+the tenth task calls the ``rtems_barrier_wait`` directive, the nine blocked
 tasks will be released and the tenth task returns to the caller without
 blocking.
 
@@ -106,9 +106,9 @@ Obtaining Barrier IDs
 
 When a barrier is created, RTEMS generates a unique barrier ID and assigns it
 to the created barrier until it is deleted.  The barrier ID may be obtained by
-either of two methods.  First, as the result of an invocation of
-the``rtems_barrier_create`` directive, the barrier ID is stored in a user
-provided location.  Second, the barrier ID may be obtained later using the
+either of two methods.  First, as the result of an invocation of the
+``rtems_barrier_create`` directive, the barrier ID is stored in a user provided
+location.  Second, the barrier ID may be obtained later using the
 ``rtems_barrier_ident`` directive.  The barrier ID is used by other barrier
 manager directives to access this barrier.
 

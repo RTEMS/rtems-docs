@@ -281,8 +281,9 @@ If the supported processor type does not have hardware floating capabilities or
 a standard numeric coprocessor, RTEMS will not provide built-in support for
 hardware floating point on that processor.  In this case, all tasks are
 considered ``RTEMS_NO_FLOATING_POINT`` whether created as
-``RTEMS_FLOATING_POINT`` or``RTEMS_NO_FLOATING_POINT`` tasks.  A floating point
-emulation software library must be utilized for floating point operations.
+``RTEMS_FLOATING_POINT`` or ``RTEMS_NO_FLOATING_POINT`` tasks.  A floating
+point emulation software library must be utilized for floating point
+operations.
 
 On some processors, it is possible to disable the floating point unit
 dynamically.  If this capability is supported by the target processor, then
@@ -367,8 +368,8 @@ practice to specify default components.  If all defaults are desired, then
 
 This example demonstrates the attribute_set parameter needed to create a local
 task which utilizes the numeric coprocessor.  The attribute_set parameter could
-be ``RTEMS_FLOATING_POINT`` or``RTEMS_LOCAL | RTEMS_FLOATING_POINT``.  The
-attribute_set parameter can be set to``RTEMS_FLOATING_POINT`` because
+be ``RTEMS_FLOATING_POINT`` or ``RTEMS_LOCAL | RTEMS_FLOATING_POINT``.  The
+attribute_set parameter can be set to ``RTEMS_FLOATING_POINT`` because
 ``RTEMS_LOCAL`` is the default for all created tasks.  If the task were global
 and used the numeric coprocessor, then the attribute_set parameter would be
 ``RTEMS_GLOBAL | RTEMS_FLOATING_POINT``.
@@ -385,21 +386,21 @@ corresponding mask constant is listed below:
  :class: rtems-table
 
  * - ``RTEMS_PREEMPT``
-   - is masked by``RTEMS_PREEMPT_MASK`` and enables preemption
+   - is masked by ``RTEMS_PREEMPT_MASK`` and enables preemption
  * - ``RTEMS_NO_PREEMPT``
-   - is masked by``RTEMS_PREEMPT_MASK`` and disables preemption
+   - is masked by ``RTEMS_PREEMPT_MASK`` and disables preemption
  * - ``RTEMS_NO_TIMESLICE``
-   - is masked by``RTEMS_TIMESLICE_MASK`` and disables timeslicing
+   - is masked by ``RTEMS_TIMESLICE_MASK`` and disables timeslicing
  * - ``RTEMS_TIMESLICE``
-   - is masked by``RTEMS_TIMESLICE_MASK`` and enables timeslicing
+   - is masked by ``RTEMS_TIMESLICE_MASK`` and enables timeslicing
  * - ``RTEMS_ASR``
-   - is masked by``RTEMS_ASR_MASK`` and enables ASR processing
+   - is masked by ``RTEMS_ASR_MASK`` and enables ASR processing
  * - ``RTEMS_NO_ASR``
-   - is masked by``RTEMS_ASR_MASK`` and disables ASR processing
+   - is masked by ``RTEMS_ASR_MASK`` and disables ASR processing
  * - ``RTEMS_INTERRUPT_LEVEL(0)``
-   - is masked by``RTEMS_INTERRUPT_MASK`` and enables all interrupts
+   - is masked by ``RTEMS_INTERRUPT_MASK`` and enables all interrupts
  * - ``RTEMS_INTERRUPT_LEVEL(n)``
-   - is masked by``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
+   - is masked by ``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
 
 Mode values are specifically designed to be mutually exclusive, therefore
 bitwise OR and addition operations are equivalent as long as each mode appears
@@ -411,7 +412,7 @@ should be used.
 
 The following example demonstrates the mode and mask parameters used with the
 ``rtems_task_mode`` directive to place a task at interrupt level 3 and make it
-non-preemptible.  The mode should be set to``RTEMS_INTERRUPT_LEVEL(3) |
+non-preemptible.  The mode should be set to ``RTEMS_INTERRUPT_LEVEL(3) |
 RTEMS_NO_PREEMPT`` to indicate the desired preemption mode and interrupt level,
 while the mask parameter should be set to ``RTEMS_INTERRUPT_MASK |
 RTEMS_NO_PREEMPT_MASK`` to indicate that the calling task's interrupt level and
@@ -505,7 +506,7 @@ Changing Task Priority
 
 The ``rtems_task_set_priority`` directive is used to obtain or change the
 current priority of either the calling task or another task.  If the new
-priority requested is``RTEMS_CURRENT_PRIORITY`` or the task's actual priority,
+priority requested is ``RTEMS_CURRENT_PRIORITY`` or the task's actual priority,
 then the current priority will be returned and the task's priority will remain
 unchanged.  If the task's priority is altered, then the task will be scheduled
 according to its new priority.
@@ -534,8 +535,8 @@ task's name and ID become inactive at this time, and any subsequent references
 to either of them is invalid.  In fact, RTEMS may reuse the task ID for another
 task which is created later in the application.
 
-Unexpired delay timers (i.e. those used by``rtems_task_wake_after``
-and``rtems_task_wake_when``) and timeout timers associated with the task are
+Unexpired delay timers (i.e. those used by ``rtems_task_wake_after`` and
+``rtems_task_wake_when``) and timeout timers associated with the task are
 automatically deleted, however, other resources dynamically allocated by the
 task are NOT automatically returned to RTEMS.  Therefore, before a task is
 deleted, all of its dynamically allocated resources should be deallocated by

@@ -231,7 +231,7 @@ This example demonstrates the attribute_set parameter needed to create a local
 semaphore with the task priority waiting queue discipline.  The attribute_set
 parameter passed to the ``rtems_semaphore_create`` directive could be either
 ``RTEMS_PRIORITY`` or ``RTEMS_LOCAL | RTEMS_PRIORITY``.  The attribute_set
-parameter can be set to``RTEMS_PRIORITY`` because ``RTEMS_LOCAL`` is the
+parameter can be set to ``RTEMS_PRIORITY`` because ``RTEMS_LOCAL`` is the
 default for all created tasks.  If a similar semaphore were to be known
 globally, then the attribute_set parameter would be ``RTEMS_GLOBAL |
 RTEMS_PRIORITY``.
@@ -298,9 +298,9 @@ Obtaining Semaphore IDs
 When a semaphore is created, RTEMS generates a unique semaphore ID and assigns
 it to the created semaphore until it is deleted.  The semaphore ID may be
 obtained by either of two methods.  First, as the result of an invocation of
-the``rtems_semaphore_create`` directive, the semaphore ID is stored in a user
-provided location.  Second, the semaphore ID may be obtained later using
-the``rtems_semaphore_ident`` directive.  The semaphore ID is used by other
+the ``rtems_semaphore_create`` directive, the semaphore ID is stored in a user
+provided location.  Second, the semaphore ID may be obtained later using the
+``rtems_semaphore_ident`` directive.  The semaphore ID is used by other
 semaphore manager directives to access this semaphore.
 
 Acquiring a Semaphore
@@ -341,7 +341,7 @@ Releasing a Semaphore
 ---------------------
 
 The ``rtems_semaphore_release`` directive is used to release the specified
-semaphore.  A simplified version of the``rtems_semaphore_release`` directive
+semaphore.  A simplified version of the ``rtems_semaphore_release`` directive
 can be described as follows:
 
     If there sre no tasks are waiting on this semaphore then increment the

@@ -65,7 +65,7 @@ When a port is created, RTEMS generates a unique port ID and assigns it to the
 created port until it is deleted.  The port ID may be obtained by either of two
 methods.  First, as the result of an invocation of the``rtems_port_create``
 directive, the task ID is stored in a user provided location.  Second, the port
-ID may be obtained later using the``rtems_port_ident`` directive.  The port ID
+ID may be obtained later using the ``rtems_port_ident`` directive.  The port ID
 is used by other dual-ported memory manager directives to access this port.
 
 Converting an Address

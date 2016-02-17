@@ -146,8 +146,8 @@ RTEMS provides the ``rtems_clock_tick`` directive which is called from the
 user's real-time clock ISR to inform RTEMS that a tick has elapsed.  The tick
 frequency value, defined in microseconds, is a configuration parameter found in
 the Configuration Table.  RTEMS divides one million microseconds (one second)
-by the number of microseconds per tick to determine the number of calls to
-the``rtems_clock_tick`` directive per second.  The frequency of
+by the number of microseconds per tick to determine the number of calls to the
+``rtems_clock_tick`` directive per second.  The frequency of
 ``rtems_clock_tick`` calls determines the resolution (granularity) for all time
 dependent RTEMS actions.  For example, calling ``rtems_clock_tick`` ten times
 per second yields a higher resolution than calling ``rtems_clock_tick`` two
@@ -171,7 +171,7 @@ can be returned in either native or *UNIX-style* format.  Additionally, the
 application can obtain date and time related information such as the number of
 seconds since the RTEMS epoch, the number of ticks since the executive was
 initialized, and the number of ticks per second.  The information returned by
-the``rtems_clock_get`` directive is dependent on the option selected by the
+the ``rtems_clock_get`` directive is dependent on the option selected by the
 caller.  This is specified using one of the following constants associated with
 the enumerated type ``rtems_clock_get_options``:
 
@@ -295,7 +295,7 @@ code is returned.  The caller can always obtain the number of ticks per second
 the executive was initialized option is ``RTEMS_CLOCK_GET_TICKS_SINCE_BOOT``).
 
 The ``option`` argument may taken on any value of the enumerated type
-``rtems_clock_get_options``.  The data type expected for``time_buffer`` is
+``rtems_clock_get_options``.  The data type expected for ``time_buffer`` is
 based on the value of ``option`` as indicated below:
 
 .. index:: rtems_clock_get_options

@@ -88,8 +88,8 @@ The memory area for the RTEMS Workspace is determined by the BSP.  In case the
 RTEMS Workspace is too large for the available memory, then a fatal run-time
 error occurs and the system terminates.
 
-The file ``<rtems/confdefs.h>`` will calculate the value of
-the``work_space_size`` parameter of the Configuration Table. There are many
+The file ``<rtems/confdefs.h>`` will calculate the value of the
+``work_space_size`` parameter of the Configuration Table. There are many
 parameters the application developer can specify to help ``<rtems/confdefs.h>``
 in its calculations.  Correctly specifying the application requirements via
 parameters such as ``CONFIGURE_EXTRA_TASK_STACKS`` and
@@ -1915,7 +1915,7 @@ run-time stack bounds checking.
 
 **NOTES:**
 
-In 4.9 and older, this configuration parameter was named``STACK_CHECKER_ON``.
+In 4.9 and older, this configuration parameter was named ``STACK_CHECKER_ON``.
 
 This increases the time required to create tasks as well as adding overhead to
 each context switch.
@@ -3321,7 +3321,7 @@ The order of precedence for configuring the IDLE task stack size is:
 
 - If defined, then the BSP specific ``BSP_IDLE_TASK_SIZE``.
 
-- If defined, then the application specified``CONFIGURE_IDLE_TASK_SIZE``.
+- If defined, then the application specified ``CONFIGURE_IDLE_TASK_SIZE``.
 
 .. COMMENT: XXX - add cross references to other related values.
 

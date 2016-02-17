@@ -159,9 +159,9 @@ application:
    and returns it to the originating node.
 
 #. The MPCI layer on the originating node senses the arrival of a packet
-   (typically via an interrupt), and calls the
-   RTEMS``rtems_multiprocessing_announce`` directive.  This directive readies
-   the Multiprocessing Server.
+   (typically via an interrupt), and calls the RTEMS
+   ``rtems_multiprocessing_announce`` directive.  This directive readies the
+   Multiprocessing Server.
 
 #. The Multiprocessing Server calls the user-provided MPCI routine
    ``RECEIVE_PACKET``, readies the original requesting task, and blocks until

@@ -408,8 +408,8 @@ returns to the caller.
 This directive will not cause the calling task to be preempted.
 
 This directive is only available on uni-processor configurations.  The
-directives ``rtems_interrupt_local_disable``
-and``rtems_interrupt_local_enable`` is available on all configurations.
+directives ``rtems_interrupt_local_disable`` and
+``rtems_interrupt_local_enable`` is available on all configurations.
 
 .. _rtems_interrupt_local_disable:
 

@@ -48,7 +48,7 @@ Although not required by RTEMS, object names are often composed of four ASCII
 characters which help identify that object.  For example, a task which causes a
 light to blink might be called "LITE".  The ``rtems_build_name`` routine is
 provided to build an object name from four ASCII characters.  The following
-example illustrates this: .. code:: c
+example illustrates this:
 
 .. code:: c
 
@@ -59,7 +59,9 @@ However, it is not required that the application use ASCII characters to build
 object names.  For example, if an application requires one-hundred tasks, it
 would be difficult to assign meaningful ASCII names to each task.  A more
 convenient approach would be to name them the binary values one through
-one-hundred, respectively... index:: rtems_object_get_name
+one-hundred, respectively.
+
+.. index:: rtems_object_get_name
 
 RTEMS provides a helper routine, ``rtems_object_get_name``, which can be used
 to obtain the name of any RTEMS object using just its ID.  This routine
