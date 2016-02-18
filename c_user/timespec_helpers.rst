@@ -359,8 +359,8 @@ TIMESPEC_LESS_THAN - Less than operator
 
 **STATUS CODES:**
 
-This method returns ``struct true`` if ``lhs`` is less than``rhs`` and ``struct
-false`` otherwise.
+This method returns ``struct true`` if ``lhs`` is less than ``rhs`` and
+``struct false`` otherwise.
 
 **DESCRIPTION:**
 
@@ -390,7 +390,7 @@ TIMESPEC_GREATER_THAN - Greater than operator
 
 **STATUS CODES:**
 
-This method returns ``struct true`` if ``lhs`` is greater than``rhs`` and
+This method returns ``struct true`` if ``lhs`` is greater than ``rhs`` and
 ``struct false`` otherwise.
 
 **DESCRIPTION:**
@@ -419,7 +419,7 @@ TIMESPEC_EQUAL_TO - Check equality of timespecs
 
 **STATUS CODES:**
 
-This method returns ``struct true`` if ``lhs`` is equal to``rhs`` and ``struct
+This method returns ``struct true`` if ``lhs`` is equal to ``rhs`` and ``struct
 false`` otherwise.
 
 **DESCRIPTION:**
