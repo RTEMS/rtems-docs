@@ -241,9 +241,10 @@ ordered blocking discipline must be applied to a binary semaphore in order to
 use either the priority inheritance or priority ceiling functionality.  The
 following tree figure illustrates the valid combinations.
 
-.. code:: c
-
-    Not available in ASCII representation
+.. figure:: semaphore_attributes.png
+         :width: 90%
+         :align: center
+         :alt: Semaphore Attributes
 
 Building a SEMAPHORE_OBTAIN Option Set
 --------------------------------------
