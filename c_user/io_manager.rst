@@ -152,7 +152,7 @@ application to RTEMS is then passed to the correct device driver entry point.
 RTEMS will invoke each device driver entry point assuming it is compatible with
 the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     rtems_device_driver io_entry(
         rtems_device_major_number  major,
@@ -229,7 +229,7 @@ IO_REGISTER_DRIVER - Register a device driver
 
 .. index:: rtems_io_register_driver
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_register_driver(
         rtems_device_major_number   major,
@@ -287,7 +287,7 @@ IO_UNREGISTER_DRIVER - Unregister a device driver
 
 .. index:: rtems_io_unregister_driver
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_unregister_driver(
         rtems_device_major_number   major
@@ -321,7 +321,7 @@ IO_INITIALIZE - Initialize a device driver
 
 .. index:: rtems_io_initialize
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_initialize(
         rtems_device_major_number  major,
@@ -365,7 +365,7 @@ IO_REGISTER_NAME - Register a device
 
 .. index:: rtems_io_register_name
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_register_name(
         const char                *name,
@@ -401,7 +401,7 @@ IO_LOOKUP_NAME - Lookup a device
 
 .. index:: rtems_io_lookup_name
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_lookup_name(
         const char          *name,
@@ -437,7 +437,7 @@ IO_OPEN - Open a device
 
 .. index:: rtems_io_open
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_open(
         rtems_device_major_number  major,
@@ -476,7 +476,7 @@ IO_CLOSE - Close a device
 
 .. index:: rtems_io_close
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_close(
         rtems_device_major_number  major,
@@ -515,7 +515,7 @@ IO_READ - Read from a device
 
 .. index:: rtems_io_read
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_read(
         rtems_device_major_number  major,
@@ -555,7 +555,7 @@ IO_WRITE - Write to a device
 
 .. index:: rtems_io_write
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_write(
         rtems_device_major_number  major,
@@ -596,7 +596,7 @@ IO_CONTROL - Special device services
 
 .. index:: rtems_io_control
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_io_control(
         rtems_device_major_number  major,

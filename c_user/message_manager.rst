@@ -223,7 +223,7 @@ MESSAGE_QUEUE_CREATE - Create a queue
 
 .. index:: rtems_message_queue_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_create(
         rtems_name        name,
@@ -310,7 +310,7 @@ MESSAGE_QUEUE_IDENT - Get ID of a queue
 
 .. index:: rtems_message_queue_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_ident(
         rtems_name  name,
@@ -364,7 +364,7 @@ MESSAGE_QUEUE_DELETE - Delete a queue
 
 .. index:: rtems_message_queue_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_delete(
         rtems_id id
@@ -422,7 +422,7 @@ MESSAGE_QUEUE_SEND - Put message at rear of a queue
 
 .. index:: rtems_message_queue_send
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_send(
         rtems_id   id,
@@ -480,7 +480,7 @@ MESSAGE_QUEUE_URGENT - Put message at front of a queue
 
 .. index:: rtems_message_queue_urgent
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_urgent(
         rtems_id    id,
@@ -538,7 +538,7 @@ MESSAGE_QUEUE_BROADCAST - Broadcast N messages to a queue
 
 .. index:: rtems_message_queue_broadcast
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_broadcast(
         rtems_id    id,
@@ -597,7 +597,7 @@ MESSAGE_QUEUE_RECEIVE - Receive message from a queue
 
 .. index:: rtems_message_queue_receive
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_receive(
         rtems_id        id,
@@ -683,7 +683,7 @@ MESSAGE_QUEUE_GET_NUMBER_PENDING - Get number of messages pending on a queue
 
 .. index:: rtems_message_queue_get_number_pending
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_get_number_pending(
         rtems_id  id,
@@ -723,7 +723,7 @@ MESSAGE_QUEUE_FLUSH - Flush all messages on a queue
 
 .. index:: rtems_message_queue_flush
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_message_queue_flush(
         rtems_id  id,

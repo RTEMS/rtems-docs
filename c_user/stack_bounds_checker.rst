@@ -87,7 +87,7 @@ Table generation, then all that is necessary is to define the macro
 ``CONFIGURE_STACK_CHECKER_ENABLED`` before including ``<rtems/confdefs.h>`` as
 shown below:
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_STACK_CHECKER_ENABLED
     ...
@@ -109,7 +109,7 @@ system by calling the ``rtems_stack_checker_report_usage`` routine.  This
 routine prints a table with the peak usage and stack size of every task in the
 system.  The following is an example of the report generated:
 
-.. code:: c
+.. code-block:: c
 
     ID      NAME       LOW        HIGH     AVAILABLE      USED
     0x04010001  IDLE  0x003e8a60  0x003e9667       2952        200
@@ -131,7 +131,7 @@ possible that the message cannot be printed.
 
 The following is an example of the output generated:
 
-.. code:: c
+.. code-block:: c
 
     BLOWN STACK!!! Offending task(0x3eb360): id=0x08010002; name=0x54413120
     stack covers range 0x003e5750 - 0x003e7b57 (9224 bytes)
@@ -157,7 +157,7 @@ STACK_CHECKER_IS_BLOWN - Has Current Task Blown Its Stack
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     bool rtems_stack_checker_is_blown( void );
 
@@ -190,7 +190,7 @@ STACK_CHECKER_REPORT_USAGE - Report Task Stack Usage
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     void rtems_stack_checker_report_usage( void );
 

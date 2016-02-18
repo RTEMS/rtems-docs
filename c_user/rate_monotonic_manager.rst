@@ -264,7 +264,7 @@ calculated based upon the period and execution time of each task.  The fraction
 of processor time spent executing task index is ``Time(index) /
 Period(index)``.  The processor utilization can be calculated as follows:
 
-.. code:: c
+.. code-block:: c
 
     Utilization = 0
     for index = 1 to maximum_tasks
@@ -273,7 +273,7 @@ Period(index)``.  The processor utilization can be calculated as follows:
 To ensure schedulability even under transient overload, the processor
 utilization must adhere to the following rule:
 
-.. code:: c
+.. code-block:: c
 
     Utilization = maximum_tasks * (2**(1/maximum_tasks) - 1)
 
@@ -647,7 +647,7 @@ RATE_MONOTONIC_CREATE - Create a rate monotonic period
 
 .. index:: rtems_rate_monotonic_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_create(
         rtems_name  name,
@@ -689,7 +689,7 @@ RATE_MONOTONIC_IDENT - Get ID of a period
 
 .. index:: rtems_rate_monotonic_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_ident(
         rtems_name  name,
@@ -728,7 +728,7 @@ RATE_MONOTONIC_CANCEL - Cancel a period
 
 .. index:: rtems_rate_monotonic_cancel
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_cancel(
         rtems_id id
@@ -768,7 +768,7 @@ RATE_MONOTONIC_DELETE - Delete a rate monotonic period
 
 .. index:: rtems_rate_monotonic_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_delete(
         rtems_id id
@@ -809,7 +809,7 @@ RATE_MONOTONIC_PERIOD - Conclude current/Start next period
 
 .. index:: rtems_rate_monotonic_period
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_period(
         rtems_id       id,
@@ -859,7 +859,7 @@ RATE_MONOTONIC_GET_STATUS - Obtain status from a period
 
 .. index:: rtems_rate_monotonic_get_status
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_get_status(
         rtems_id                            id,
@@ -885,7 +885,7 @@ period id in the following data structure:
 
 .. index:: rtems_rate_monotonic_period_status
 
-.. code:: c
+.. code-block:: c
 
     typedef struct {
         rtems_id                              owner;
@@ -923,7 +923,7 @@ RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
 
 .. index:: rtems_rate_monotonic_get_statistics
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_get_statistics(
         rtems_id                                id,
@@ -949,7 +949,7 @@ monotonic period id in the following data structure:
 
 .. index:: rtems_rate_monotonic_period_statistics
 
-.. code:: c
+.. code-block:: c
 
     typedef struct {
         uint32_t     count;
@@ -992,7 +992,7 @@ RATE_MONOTONIC_RESET_STATISTICS - Reset statistics for a period
 
 .. index:: rtems_rate_monotonic_reset_statistics
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_rate_monotonic_reset_statistics(
         rtems_id  id
@@ -1027,7 +1027,7 @@ RATE_MONOTONIC_RESET_ALL_STATISTICS - Reset statistics for all periods
 
 .. index:: rtems_rate_monotonic_reset_all_statistics
 
-.. code:: c
+.. code-block:: c
 
     void rtems_rate_monotonic_reset_all_statistics(void);
 
@@ -1055,7 +1055,7 @@ RATE_MONOTONIC_REPORT_STATISTICS - Print period statistics report
 
 .. index:: rtems_rate_monotonic_report_statistics
 
-.. code:: c
+.. code-block:: c
 
     void rtems_rate_monotonic_report_statistics(void);
 
@@ -1071,7 +1071,7 @@ directive.
 
 .. index:: rtems_rate_monotonic_period_statistics
 
-.. code:: c
+.. code-block:: c
 
     ID      OWNER   PERIODS  MISSED    CPU TIME    WALL TIME
     MIN/MAX/AVG  MIN/MAX/AVG

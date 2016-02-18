@@ -50,7 +50,7 @@ light to blink might be called "LITE".  The ``rtems_build_name`` routine is
 provided to build an object name from four ASCII characters.  The following
 example illustrates this:
 
-.. code:: c
+.. code-block:: c
 
     rtems_name my_name;
     my_name = rtems_build_name( 'L', 'I', 'T', 'E' );
@@ -70,7 +70,7 @@ attempts to convert the name into a printable string.
 The following example illustrates the use of this method to print an object
 name:
 
-.. code:: c
+.. code-block:: c
 
     #include <rtems.h>
     #include <rtems/bspIo.h>
@@ -106,7 +106,7 @@ The thirty-two bit format for an object ID is composed of four parts: API,
 object class, node, and index.  The data type ``rtems_id`` is used to store
 object IDs.
 
-.. code:: c
+.. code-block:: c
 
     31      27 26   24 23          16 15                             0
     +---------+-------+--------------+-------------------------------+
@@ -129,7 +129,7 @@ Sixteen Bit Object ID Format
 The sixteen bit format for an object ID is composed of three parts: API, object
 class, and index.  The data type ``rtems_id`` is used to store object IDs.
 
-.. code:: c
+.. code-block:: c
 
     15      11 10    8 7            0
     +---------+-------+--------------+
@@ -179,7 +179,7 @@ prototyped as follows:
 .. index:: rtems_object_id_get_node
 .. index:: rtems_object_id_get_index
 
-.. code:: c
+.. code-block:: c
 
     uint32_t rtems_object_id_get_api( rtems_id );
     uint32_t rtems_object_id_get_class( rtems_id );

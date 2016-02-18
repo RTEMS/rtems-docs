@@ -109,7 +109,7 @@ components. The following services are used to do this:
 The following C language example illustrates the decomposition of an Id and
 printing the values.
 
-.. code:: c
+.. code-block:: c
 
     void printObjectId(rtems_id id)
     {
@@ -128,7 +128,7 @@ It is also possible to construct an arbitrary Id using the ``rtems_build_id``
 service.  The following C language example illustrates how to construct the
 "next Id."
 
-.. code:: c
+.. code-block:: c
 
     rtems_id nextObjectId(rtems_id id)
     {
@@ -153,7 +153,7 @@ information about an object in diagnostic messages.
 In the following C language example, an Id is decomposed into its constituent
 parts and "pretty-printed."
 
-.. code:: c
+.. code-block:: c
 
     void prettyPrintObjectId(rtems_id id)
     {
@@ -184,7 +184,7 @@ BUILD_NAME - Build object name from characters
 
 .. index:: rtems_build_name
 
-.. code:: c
+.. code-block:: c
 
     rtems_name rtems_build_name(
         uint8_t c1,
@@ -218,7 +218,7 @@ OBJECT_GET_CLASSIC_NAME - Lookup name from id
 
 .. index:: rtems_object_get_classic_name
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_object_get_classic_name(
         rtems_id      id,
@@ -257,7 +257,7 @@ OBJECT_GET_NAME - Obtain object name as string
 
 .. index:: rtems_object_get_name
 
-.. code:: c
+.. code-block:: c
 
     char* rtems_object_get_name(
         rtems_id       id,
@@ -290,7 +290,7 @@ OBJECT_SET_NAME - Set object name
 
 .. index:: rtems_object_set_name
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_object_set_name(
         rtems_id       id,
@@ -338,7 +338,7 @@ OBJECT_ID_GET_API - Obtain API from Id
 
 .. index:: rtems_object_id_get_api
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_id_get_api(
         rtems_id id
@@ -368,7 +368,7 @@ OBJECT_ID_GET_CLASS - Obtain Class from Id
 
 .. index:: rtems_object_id_get_class
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_id_get_class(
         rtems_id id
@@ -398,7 +398,7 @@ OBJECT_ID_GET_NODE - Obtain Node from Id
 
 .. index:: rtems_object_id_get_node
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_id_get_node(
         rtems_id id
@@ -428,7 +428,7 @@ OBJECT_ID_GET_INDEX - Obtain Index from Id
 
 .. index:: rtems_object_id_get_index
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_id_get_index(
         rtems_id id
@@ -458,7 +458,7 @@ BUILD_ID - Build Object Id From Components
 
 .. index:: rtems_build_id
 
-.. code:: c
+.. code-block:: c
 
     rtems_id rtems_build_id(
         int the_api,
@@ -493,7 +493,7 @@ OBJECT_ID_API_MINIMUM - Obtain Minimum API Value
 
 .. index:: rtems_object_id_api_minimum
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_id_api_minimum(void);
 
@@ -519,7 +519,7 @@ OBJECT_ID_API_MAXIMUM - Obtain Maximum API Value
 
 .. index:: rtems_object_id_api_maximum
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_id_api_maximum(void);
 
@@ -545,7 +545,7 @@ OBJECT_API_MINIMUM_CLASS - Obtain Minimum Class Value
 
 .. index:: rtems_object_api_minimum_class
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_api_minimum_class(
         int api
@@ -577,7 +577,7 @@ OBJECT_API_MAXIMUM_CLASS - Obtain Maximum Class Value
 
 .. index:: rtems_object_api_maximum_class
 
-.. code:: c
+.. code-block:: c
 
     int rtems_object_api_maximum_class(
         int api
@@ -609,7 +609,7 @@ OBJECT_GET_API_NAME - Obtain API Name
 
 .. index:: rtems_object_get_api_name
 
-.. code:: c
+.. code-block:: c
 
     const char* rtems_object_get_api_name(
         int api
@@ -642,7 +642,7 @@ OBJECT_GET_API_CLASS_NAME - Obtain Class Name
 
 .. index:: rtems_object_get_api_class_name
 
-.. code:: c
+.. code-block:: c
 
     const char *rtems_object_get_api_class_name(
         int the_api,
@@ -677,7 +677,7 @@ OBJECT_GET_CLASS_INFORMATION - Obtain Class Information
 
 .. index:: rtems_object_get_class_information
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_object_get_class_information(
         int                                 the_api,
@@ -705,7 +705,7 @@ information about the specified ``api`` / ``the_class`` pairing.
 This service returns information about the object class indicated by the
 specified ``api`` and ``the_class``. This structure is defined as follows:
 
-.. code:: c
+.. code-block:: c
 
     typedef struct {
         rtems_id  minimum_id;

@@ -118,7 +118,7 @@ FATAL_ERROR_OCCURRED - Invoke the fatal error handler
 
 .. index:: rtems_fatal_error_occurred
 
-.. code:: c
+.. code-block:: c
 
     void rtems_fatal_error_occurred(
         uint32_t  the_error
@@ -158,7 +158,7 @@ FATAL - Invoke the fatal error handler with error source
 
 .. index:: rtems_fatal
 
-.. code:: c
+.. code-block:: c
 
     void rtems_fatal(
        rtems_fatal_source source,
@@ -184,7 +184,7 @@ EXCEPTION_FRAME_PRINT - Prints the exception frame
 
 .. index:: rtems_exception_frame_print
 
-.. code:: c
+.. code-block:: c
 
     void rtems_exception_frame_print(
         const rtems_exception_frame *frame
@@ -208,7 +208,7 @@ FATAL_SOURCE_TEXT - Returns a text for a fatal source
 
 .. index:: rtems_fatal_source_text
 
-.. code:: c
+.. code-block:: c
 
     const char *rtems_fatal_source_text(
         rtems_fatal_source source
@@ -233,7 +233,7 @@ INTERNAL_ERROR_TEXT - Returns a text for an internal error code
 
 .. index:: rtems_internal_error_text
 
-.. code:: c
+.. code-block:: c
 
     const char *rtems_internal_error_text(
         rtems_fatal_code error

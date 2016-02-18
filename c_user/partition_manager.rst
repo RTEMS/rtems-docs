@@ -137,7 +137,7 @@ PARTITION_CREATE - Create a partition
 
 .. index:: rtems_partition_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_partition_create(
         rtems_name       name,
@@ -232,7 +232,7 @@ PARTITION_IDENT - Get ID of a partition
 
 .. index:: rtems_partition_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_partition_ident(
         rtems_name  name,
@@ -286,7 +286,7 @@ PARTITION_DELETE - Delete a partition
 
 .. index:: rtems_partition_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_partition_delete(
         rtems_id id
@@ -337,7 +337,7 @@ PARTITION_GET_BUFFER - Get buffer from a partition
 
 .. index:: rtems_partition_get_buffer
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_partition_get_buffer(
         rtems_id   id,
@@ -385,7 +385,7 @@ PARTITION_RETURN_BUFFER - Return buffer to a partition
 
 .. index:: rtems_partition_return_buffer
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_partition_return_buffer(
         rtems_id  id,

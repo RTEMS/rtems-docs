@@ -164,7 +164,7 @@ BARRIER_CREATE - Create a barrier
 
 .. index:: rtems_barrier_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_barrier_create(
         rtems_name           name,
@@ -241,7 +241,7 @@ BARRIER_IDENT - Get ID of a barrier
 
 .. index:: rtems_barrier_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_barrier_ident(
         rtems_name        name,
@@ -282,7 +282,7 @@ BARRIER_DELETE - Delete a barrier
 
 .. index:: rtems_barrier_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_barrier_delete(
         rtems_id id
@@ -326,7 +326,7 @@ BARRIER_OBTAIN - Acquire a barrier
 
 .. index:: rtems_barrier_wait
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_barrier_wait(
         rtems_id         id,
@@ -398,7 +398,7 @@ BARRIER_RELEASE - Release a barrier
 
 .. index:: rtems_barrier_release
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_barrier_release(
         rtems_id  id,

@@ -185,7 +185,7 @@ conventions:
 
 .. index:: rtems_asr
 
-.. code:: c
+.. code-block:: c
 
     rtems_asr user_routine(
         rtems_signal_set signals
@@ -212,7 +212,7 @@ SIGNAL_CATCH - Establish an ASR
 
 .. index:: rtems_signal_catch
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_signal_catch(
         rtems_asr_entry  asr_handler,
@@ -273,7 +273,7 @@ SIGNAL_SEND - Send signal set to a task
 
 .. index:: rtems_signal_send
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_signal_send(
         rtems_id         id,

@@ -502,7 +502,7 @@ initialization task function is called (just like a global C++ constructor).
 To set application specific values, a higher priority constructor function must
 be used to set up the environment variables.
 
-.. code:: c
+.. code-block:: c
 
     #include <stdlib.h>
     void __attribute__((constructor(1000))) config_libgomp( void )
@@ -628,7 +628,7 @@ processor for I/O tasks, another for computation, etc..  The following
 illustrates the code sequence necessary to assign a task an affinity for
 processor with index ``processor_index``.
 
-.. code:: c
+.. code-block:: c
 
     #include <rtems.h>
     #include <assert.h>
@@ -661,7 +661,7 @@ GET_PROCESSOR_COUNT - Get processor count
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     uint32_t rtems_get_processor_count(void);
 
@@ -690,7 +690,7 @@ GET_CURRENT_PROCESSOR - Get current processor index
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     uint32_t rtems_get_current_processor(void);
 
@@ -722,7 +722,7 @@ SCHEDULER_IDENT - Get ID of a scheduler
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_scheduler_ident(
         rtems_name  name,
@@ -760,7 +760,7 @@ SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_scheduler_get_processor_set(
         rtems_id   scheduler_id,
@@ -800,7 +800,7 @@ TASK_GET_SCHEDULER - Get scheduler of a task
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_get_scheduler(
         rtems_id  task_id,
@@ -835,7 +835,7 @@ TASK_SET_SCHEDULER - Set scheduler of a task
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_set_scheduler(
         rtems_id task_id,
@@ -910,7 +910,7 @@ TASK_GET_AFFINITY - Get task processor affinity
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_get_affinity(
         rtems_id   id,
@@ -950,7 +950,7 @@ TASK_SET_AFFINITY - Set task processor affinity
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_set_affinity(
         rtems_id         id,
@@ -989,4 +989,3 @@ circumstances on these processors since the scheduler ignores them.  Some
 locking protocols may temporarily use processors that are not included in the
 processor affinity set of the task.  It is also not an error if the processor
 affinity set contains processors that are not part of the system.
-

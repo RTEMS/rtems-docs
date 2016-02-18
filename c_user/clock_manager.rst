@@ -70,7 +70,7 @@ and date format:
 
 .. index:: rtems_time_of_day
 
-.. code:: c
+.. code-block:: c
 
     struct rtems_tod_control {
         uint32_t year;   /* greater than 1987 */
@@ -213,7 +213,7 @@ CLOCK_SET - Set date and time
 
 .. index:: rtems_clock_set
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_set(
         rtems_time_of_day *time_buffer
@@ -265,7 +265,7 @@ CLOCK_GET - Get date and time information
 
 .. index:: rtems_clock_get
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_get(
        rtems_clock_get_options  option,
@@ -333,7 +333,7 @@ CLOCK_GET_TOD - Get date and time in TOD format
 
 .. index:: rtems_clock_get_tod
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_get_tod(
         rtems_time_of_day *time_buffer
@@ -375,7 +375,7 @@ CLOCK_GET_TOD_TIMEVAL - Get date and time in timeval format
 
 .. index:: rtems_clock_get_tod_timeval
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_get_tod_interval(
         struct timeval  *time
@@ -417,7 +417,7 @@ CLOCK_GET_SECONDS_SINCE_EPOCH - Get seconds since epoch
 
 .. index:: rtems_clock_get_seconds_since_epoch
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_get_seconds_since_epoch(
         rtems_interval *the_interval
@@ -460,7 +460,7 @@ CLOCK_GET_TICKS_PER_SECOND - Get ticks per second
 
 .. index:: rtems_clock_get_ticks_per_second
 
-.. code:: c
+.. code-block:: c
 
     rtems_interval rtems_clock_get_ticks_per_second(void);
 
@@ -490,7 +490,7 @@ CLOCK_GET_TICKS_SINCE_BOOT - Get current ticks counter value
 
 .. index:: rtems_clock_get_ticks_since_boot
 
-.. code:: c
+.. code-block:: c
 
     rtems_interval rtems_clock_get_ticks_since_boot(void);
 
@@ -521,7 +521,7 @@ CLOCK_TICK_LATER - Get tick value in the future
 
 .. index:: rtems_clock_tick_later
 
-.. code:: c
+.. code-block:: c
 
     rtems_interval rtems_clock_tick_later(
         rtems_interval delta
@@ -546,7 +546,7 @@ CLOCK_TICK_LATER_USEC - Get tick value in the future in microseconds
 
 .. index:: rtems_clock_tick_later_usec
 
-.. code:: c
+.. code-block:: c
 
     rtems_interval rtems_clock_tick_later_usec(
         rtems_interval delta_in_usec
@@ -571,7 +571,7 @@ CLOCK_TICK_BEFORE - Is tick value is before a point in time
 
 .. index:: rtems_clock_tick_before
 
-.. code:: c
+.. code-block:: c
 
     rtems_interval rtems_clock_tick_before(
         rtems_interval tick
@@ -590,7 +590,7 @@ This directive will not cause the running task to be preempted.
 
 **EXAMPLE:**
 
-.. code:: c
+.. code-block:: c
 
     status busy( void )
     {
@@ -614,7 +614,7 @@ CLOCK_GET_UPTIME - Get the time since boot
 
 .. index:: rtems_clock_get_uptime
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_get_uptime(
         struct timespec *uptime
@@ -649,7 +649,7 @@ CLOCK_GET_UPTIME_TIMEVAL - Get the time since boot in timeval format
 
 .. index:: rtems_clock_get_uptime_timeval
 
-.. code:: c
+.. code-block:: c
 
     void rtems_clock_get_uptime_timeval(
         struct timeval *uptime
@@ -680,7 +680,7 @@ CLOCK_GET_UPTIME_SECONDS - Get the seconds since boot
 
 .. index:: rtems_clock_get_uptime_seconds
 
-.. code:: c
+.. code-block:: c
 
     time_t rtems_clock_get_uptime_seconds(void);
 
@@ -707,7 +707,7 @@ CLOCK_GET_UPTIME_NANOSECONDS - Get the nanoseconds since boot
 
 .. index:: rtems_clock_get_uptime_nanoseconds
 
-.. code:: c
+.. code-block:: c
 
     uint64_t rtems_clock_get_uptime_nanoseconds(void);
 
@@ -735,7 +735,7 @@ CLOCK_SET_NANOSECONDS_EXTENSION - Install the nanoseconds since last tick handle
 
 .. index:: rtems_clock_set_nanoseconds_extension
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_set_nanoseconds_extension(
         rtems_nanoseconds_extension_routine routine
@@ -778,7 +778,7 @@ CLOCK_TICK - Announce a clock tick
 
 .. index:: rtems_clock_tick
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_clock_tick( void );
 

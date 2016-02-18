@@ -217,7 +217,7 @@ In the following example, the configuration information for a system with a
 single message queue, four (4) tasks, and a timeslice of fifty (50)
 milliseconds is as follows:
 
-.. code:: c
+.. code-block:: c
 
     #include <bsp.h>
     #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
@@ -375,7 +375,7 @@ The following example demonstrates how the two simple configuration defines for
 unlimited objects and unified works areas can replace many seperate
 configuration defines for supported object classes:
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
     #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
@@ -409,7 +409,7 @@ RTEMS Workspace if at least half the allocation size of free objects remain
 allocated. RTEMS always keeps one allocation block of objects allocated. Here
 is an example of using ``rtems_resource_unlimited``:
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_MAXIMUM_TASKS rtems_resource_unlimited(5)
 
@@ -490,7 +490,7 @@ used. ``CONFIGURE_UNLIMITED_OBJECTS`` does not support varying the allocation
 sizes for different objects; users who want that much control can define the
 ``rtems_resource_unlimited`` macros themselves.
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_UNLIMITED_OBJECTS
     #define CONFIGURE_UNLIMITED_ALLOCATION_SIZE 5
@@ -2098,7 +2098,7 @@ configuration with maximum message size and maximum number of pending messages.
 
 The interface for this macro is as follows:
 
-.. code:: c
+.. code-block:: c
 
     CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(max_messages, size_per)
 
@@ -2143,7 +2143,7 @@ pending messages with the message structure defined by the type
 ``one_message_type``.  The other message queue has maximum of 500 pending
 messages with the message structure defined by the type ``other_message_type``.
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_MESSAGE_BUFFER_MEMORY \
                 (CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( \
@@ -4010,7 +4010,7 @@ same application can be used for the normal and high-performance product lines.
 The second processor has no scheduler assigned and runs Linux.  A hypervisor
 will ensure that the two systems cannot interfere in an undesirable way.
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_SMP_MAXIMUM_PROCESSORS 8
     #define CONFIGURE_MAXIMUM_PRIORITY 255

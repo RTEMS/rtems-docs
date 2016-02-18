@@ -65,7 +65,7 @@ a prototype similar to the following:
 
 .. index:: rtems_isr
 
-.. code:: c
+.. code-block:: c
 
     rtems_isr user_isr(
         rtems_vector_number vector
@@ -268,7 +268,7 @@ INTERRUPT_CATCH - Establish an ISR
 
 .. index:: rtems_interrupt_catch
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_interrupt_catch(
         rtems_isr_entry      new_isr_handler,
@@ -312,7 +312,7 @@ INTERRUPT_DISABLE - Disable Interrupts
 
 .. index:: rtems_interrupt_disable
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_disable(
         rtems_interrupt_level  level
@@ -350,7 +350,7 @@ INTERRUPT_ENABLE - Enable Interrupts
 
 .. index:: rtems_interrupt_enable
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_enable(
        rtems_interrupt_level  level
@@ -385,7 +385,7 @@ INTERRUPT_FLASH - Flash Interrupts
 
 .. index:: rtems_interrupt_flash
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_flash(
         rtems_interrupt_level level
@@ -421,7 +421,7 @@ INTERRUPT_LOCAL_DISABLE - Disable Interrupts on Current Processor
 
 .. index:: rtems_interrupt_local_disable
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_local_disable(
         rtems_interrupt_level  level
@@ -459,7 +459,7 @@ INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
 
 .. index:: rtems_interrupt_local_enable
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_local_enable(
         rtems_interrupt_level  level
@@ -490,7 +490,7 @@ INTERRUPT_LOCK_INITIALIZE - Initialize an ISR Lock
 
 .. index:: rtems_interrupt_lock_initialize
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_lock_initialize(
         rtems_interrupt_lock *lock
@@ -517,7 +517,7 @@ INTERRUPT_LOCK_ACQUIRE - Acquire an ISR Lock
 
 .. index:: rtems_interrupt_lock_acquire
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_lock_acquire(
         rtems_interrupt_lock *lock,
@@ -547,7 +547,7 @@ INTERRUPT_LOCK_RELEASE - Release an ISR Lock
 
 .. index:: rtems_interrupt_lock_release
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_lock_release(
         rtems_interrupt_lock *lock,
@@ -577,7 +577,7 @@ INTERRUPT_LOCK_ACQUIRE_ISR - Acquire an ISR Lock from ISR
 
 .. index:: rtems_interrupt_lock_acquire_isr
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_lock_acquire_isr(
         rtems_interrupt_lock *lock,
@@ -611,7 +611,7 @@ INTERRUPT_LOCK_RELEASE_ISR - Release an ISR Lock from ISR
 
 .. index:: rtems_interrupt_lock_release_isr
 
-.. code:: c
+.. code-block:: c
 
     void rtems_interrupt_lock_release_isr(
         rtems_interrupt_lock *lock,
@@ -642,7 +642,7 @@ INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 
 .. index:: rtems_interrupt_is_in_progress
 
-.. code:: c
+.. code-block:: c
 
     bool rtems_interrupt_is_in_progress(void);
 

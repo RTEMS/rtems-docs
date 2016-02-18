@@ -184,7 +184,7 @@ EVENT_SEND - Send event set to a task
 
 .. index:: rtems_event_send
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_event_send (
         rtems_id         id,
@@ -236,7 +236,7 @@ EVENT_RECEIVE - Receive event condition
 
 .. index:: rtems_event_receive
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_event_receive (
         rtems_event_set  event_in,

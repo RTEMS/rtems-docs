@@ -232,7 +232,7 @@ REGION_CREATE - Create a region
 
 .. index:: rtems_region_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_create(
         rtems_name       name,
@@ -310,7 +310,7 @@ REGION_IDENT - Get ID of a region
 
 .. index:: rtems_region_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_ident(
         rtems_name  name,
@@ -351,7 +351,7 @@ REGION_DELETE - Delete a region
 
 .. index:: rtems_region_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_delete(
         rtems_id id
@@ -393,7 +393,7 @@ REGION_EXTEND - Add memory to a region
 
 .. index:: rtems_region_extend
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_extend(
         rtems_id  id,
@@ -437,7 +437,7 @@ REGION_GET_SEGMENT - Get segment from a region
 
 .. index:: rtems_region_get_segment
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_get_segment(
         rtems_id         id,
@@ -519,7 +519,7 @@ REGION_RETURN_SEGMENT - Return segment to a region
 
 .. index:: rtems_region_return_segment
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_return_segment(
         rtems_id  id,
@@ -569,7 +569,7 @@ REGION_GET_SEGMENT_SIZE - Obtain size of a segment
 
 .. index:: rtems_region_get_segment_size
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_get_segment_size(
         rtems_id  id,
@@ -612,7 +612,7 @@ REGION_RESIZE_SEGMENT - Change size of a segment
 
 .. index:: rtems_region_resize_segment
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_region_resize_segment(
         rtems_id     id,

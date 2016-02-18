@@ -327,35 +327,6 @@ It will remain in the dormant state until it is started via the
 task is now permitted to be scheduled for the processor and to compete for
 other system resources.
 
-.. COMMENT: .. code:: c
-.. COMMENT:
-.. COMMENT:     +-------------------------------------------------------------+
-.. COMMENT:     |                         Non-existent                        |
-.. COMMENT:     |  +-------------------------------------------------------+  |
-.. COMMENT:     |  |                                                       |  |
-.. COMMENT:     |  |                                                       |  |
-.. COMMENT:     |  |      Creating        +---------+     Deleting         |  |
-.. COMMENT:     |  | -------------------> | Dormant | -------------------> |  |
-.. COMMENT:     |  |                      +---------+                      |  |
-.. COMMENT:     |  |                           |                           |  |
-.. COMMENT:     |  |                  Starting |                           |  |
-.. COMMENT:     |  |                           |                           |  |
-.. COMMENT:     |  |                           V          Deleting         |  |
-.. COMMENT:     |  |             +-------> +-------+ ------------------->  |  |
-.. COMMENT:     |  |  Yielding  /   +----- | Ready | ------+               |  |
-.. COMMENT:     |  |           /   /       +-------+ <--+   \\              |  |
-.. COMMENT:     |  |          /   /                      \\   \\ Blocking    |  |
-.. COMMENT:     |  |         /   / Dispatching   Readying \\   \\            |  |
-.. COMMENT:     |  |        /   V                          \\   V           |  |
-.. COMMENT:     |  |      +-----------+    Blocking     +---------+        |  |
-.. COMMENT:     |  |      | Executing | --------------> | Blocked |        |  |
-.. COMMENT:     |  |      +-----------+                 +---------+        |  |
-.. COMMENT:     |  |                                                       |  |
-.. COMMENT:     |  |                                                       |  |
-.. COMMENT:     |  +-------------------------------------------------------+  |
-.. COMMENT:     |                         Non-existent                        |
-.. COMMENT:     +-------------------------------------------------------------+
-
 .. figure:: states.png
          :width: 70%
          :align: center

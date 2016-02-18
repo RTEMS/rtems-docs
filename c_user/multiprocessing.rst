@@ -272,7 +272,7 @@ following prototype:
 
 .. index:: rtems_mpci_entry
 
-.. code:: c
+.. code-block:: c
 
     rtems_mpci_entry user_mpci_initialization(
         rtems_configuration_table *configuration
@@ -296,7 +296,7 @@ The GET_PACKET component of the user-provided MPCI layer is called when RTEMS
 must obtain a packet buffer to send or broadcast a message.  This component
 should be adhere to the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     rtems_mpci_entry user_mpci_get_packet(
         rtems_packet_prefix **packet
@@ -319,7 +319,7 @@ The RETURN_PACKET component of the user-provided MPCI layer is called when
 RTEMS needs to release a packet to the free packet buffer pool.  This component
 should be adhere to the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     rtems_mpci_entry user_mpci_return_packet(
         rtems_packet_prefix *packet
@@ -335,7 +335,7 @@ The RECEIVE_PACKET component of the user-provided MPCI layer is called when
 RTEMS needs to obtain a packet which has previously arrived.  This component
 should be adhere to the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     rtems_mpci_entry user_mpci_receive_packet(
         rtems_packet_prefix **packet
@@ -353,7 +353,7 @@ The SEND_PACKET component of the user-provided MPCI layer is called when RTEMS
 needs to send a packet containing a message to another node.  This component
 should be adhere to the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     rtems_mpci_entry user_mpci_send_packet(
         uint32_t               node,
@@ -391,7 +391,7 @@ is the order of the bytes which compose a data entity.  Processors which place
 the least significant byte at the smallest address are classified as little
 endian processors.  Little endian byte-ordering is shown below:
 
-.. code:: c
+.. code-block:: c
 
     +---------------+----------------+---------------+----------------+
     |               |                |               |                |
@@ -403,7 +403,7 @@ Conversely, processors which place the most significant byte at the smallest
 address are classified as big endian processors.  Big endian byte-ordering is
 shown below:
 
-.. code:: c
+.. code-block:: c
 
     +---------------+----------------+---------------+----------------+
     |               |                |               |                |
@@ -479,7 +479,7 @@ MULTIPROCESSING_ANNOUNCE - Announce the arrival of a packet
 
 .. index:: rtems_multiprocessing_announce
 
-.. code:: c
+.. code-block:: c
 
     void rtems_multiprocessing_announce( void );
 

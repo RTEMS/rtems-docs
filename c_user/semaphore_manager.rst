@@ -381,7 +381,7 @@ SEMAPHORE_CREATE - Create a semaphore
 
 .. index:: rtems_semaphore_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_create(
         rtems_name           name,
@@ -495,7 +495,7 @@ SEMAPHORE_IDENT - Get ID of a semaphore
 
 .. index:: rtems_semaphore_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_ident(
         rtems_name  name,
@@ -547,7 +547,7 @@ SEMAPHORE_DELETE - Delete a semaphore
 
 .. index:: rtems_semaphore_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_delete(
     rtems_id id
@@ -605,7 +605,7 @@ SEMAPHORE_OBTAIN - Acquire a semaphore
 
 .. index:: rtems_semaphore_obtain
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_obtain(
         rtems_id        id,
@@ -702,7 +702,7 @@ SEMAPHORE_RELEASE - Release a semaphore
 
 .. index:: rtems_semaphore_release
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_release(
         rtems_id id
@@ -762,7 +762,7 @@ SEMAPHORE_FLUSH - Unblock all tasks waiting on a semaphore
 
 .. index:: rtems_semaphore_flush
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_flush(
         rtems_id id
@@ -817,7 +817,7 @@ SEMAPHORE_SET_PRIORITY - Set priority by scheduler for a semaphore
 
 .. index:: rtems_semaphore_set_priority
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_semaphore_set_priority(
         rtems_id             semaphore_id,

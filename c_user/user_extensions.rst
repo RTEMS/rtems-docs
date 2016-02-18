@@ -58,7 +58,7 @@ such as performance monitoring or debugger support.  RTEMS is informed of the
 entry points which constitute an extension set via the following
 structure:.. index:: rtems_extensions_table
 
-.. code:: c
+.. code-block:: c
 
     typedef struct {
         rtems_task_create_extension      thread_create;
@@ -116,7 +116,7 @@ created:
 
 .. index:: rtems extensions table index
 
-.. code:: c
+.. code-block:: c
 
     index = rtems_object_id_get_index(extension_id);
 
@@ -161,7 +161,7 @@ following:
 .. index:: rtems_task_create_extension
 .. index:: rtems_extension
 
-.. code:: c
+.. code-block:: c
 
     bool user_task_create(
        rtems_tcb *current_task,
@@ -190,7 +190,7 @@ RTEMS.  The extension should have a prototype similar to the following:
 
 .. index:: rtems_task_start_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_task_start(
         rtems_tcb *current_task,
@@ -213,7 +213,7 @@ similar to the following:
 
 .. index:: rtems_task_restart_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_task_restart(
         rtems_tcb *current_task,
@@ -237,7 +237,7 @@ following:
 
 .. index:: rtems_task_delete_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_task_delete(
         rtems_tcb *current_task,
@@ -262,7 +262,7 @@ by RTEMS.  The extension should have a prototype similar to the following:
 
 .. index:: rtems_task_switch_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_task_switch(
         rtems_tcb *current_task,
@@ -285,7 +285,7 @@ following:
 
 .. index:: rtems_task_begin_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_task_begin(
         rtems_tcb *current_task
@@ -307,7 +307,7 @@ user extension have a prototype similar to the following:
 
 .. index:: rtems_task_exitted_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_task_exitted(
         rtems_tcb *current_task
@@ -335,7 +335,7 @@ following:
 
 .. index:: rtems_fatal_extension
 
-.. code:: c
+.. code-block:: c
 
     void user_fatal_error(
         Internal_errors_Source  the_source,
@@ -442,7 +442,7 @@ EXTENSION_CREATE - Create a extension set
 
 .. index:: rtems_extension_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_extension_create(
         rtems_name              name,
@@ -485,7 +485,7 @@ EXTENSION_IDENT - Get ID of a extension set
 
 .. index:: rtems_extension_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_extension_ident(
         rtems_name  name,
@@ -525,7 +525,7 @@ EXTENSION_DELETE - Delete a extension set
 
 .. index:: rtems_extension_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_extension_delete(
         rtems_id id

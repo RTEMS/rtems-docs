@@ -292,7 +292,7 @@ slot. Requests made to slots that are not supported by hardware should result
 in ``PCISTS_MSTABRT`` and/or data must be ignored (writes) or ``0xFFFFFFFF`` is
 always returned (reads).
 
-.. code:: c
+.. code-block:: c
 
     /* Configuration Space Access Read Routines */
     extern int pci_cfg_r8(pci_dev_t dev, int ofs, uint8_t *data);
@@ -316,7 +316,7 @@ to the functions is not the PCI I/O addresses, the caller must have translated
 PCI I/O addresses (available in the PCI BARs) into a BSP or host driver custom
 address, see `Access functions`_ for how addresses are translated.
 
-.. code:: c
+.. code-block:: c
 
     /* Read a register over PCI I/O Space */
     extern uint8_t pci_io_r8(uint32_t adr);
@@ -340,7 +340,7 @@ swapped back. The below routines makes it possible to access registers over PCI
 memory space in a portable way on different architectures, the BSP or
 architecture must provide necessary functions in order to implement this.
 
-.. code:: c
+.. code-block:: c
 
     static inline uint16_t pci_ld_le16(volatile uint16_t *addr);
     static inline void pci_st_le16(volatile uint16_t *addr, uint16_t val);
@@ -364,7 +364,7 @@ have the same arguments and return values as the above functions.
 The pci_access_func() function defined below can be used to get a function
 pointer of a specific access type.
 
-.. code:: c
+.. code-block:: c
 
     /* Get Read/Write function for accessing a register over PCI Memory Space
      * (non-inline functions).
@@ -397,7 +397,7 @@ are PCI addresses. The below functions can be used to translate PCI addresses
 into CPU accessible addresses or vice versa, translation may be different for
 different PCI spaces/regions.
 
-.. code:: c
+.. code-block:: c
 
     /* Translate PCI address into CPU accessible address */
     static inline int pci_pci2cpu(uint32_t *address, int type);

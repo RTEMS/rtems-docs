@@ -216,7 +216,7 @@ INITIALIZE_EXECUTIVE - Initialize RTEMS
 
 .. index:: rtems_initialize_executive
 
-.. code:: c
+.. code-block:: c
 
     void rtems_initialize_executive(void);
 
@@ -246,7 +246,7 @@ SHUTDOWN_EXECUTIVE - Shutdown RTEMS
 
 .. index:: rtems_shutdown_executive
 
-.. code:: c
+.. code-block:: c
 
     void rtems_shutdown_executive(
         uint32_t result

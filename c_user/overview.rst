@@ -120,20 +120,6 @@ serves as a buffer between the project dependent application code and the
 target hardware.  Most hardware dependencies for real-time applications can be
 localized to the low level device drivers.
 
-.. COMMENT: .. code:: c
-.. COMMENT:
-.. COMMENT:     +-----------------------------------------------------------+
-.. COMMENT:     |             Application Dependent Software                |
-.. COMMENT:     |        +----------------------------------------+         |
-.. COMMENT:     |        |    Standard Application Components     |         |
-.. COMMENT:     |        |                          +-------------+---+     |
-.. COMMENT:     |    +---+-----------+              |                 |     |
-.. COMMENT:     |    | Board Support |              |      RTEMS      |     |
-.. COMMENT:     |    |    Package    |              |                 |     |
-.. COMMENT:     +----+---------------+--------------+-----------------+-----|
-.. COMMENT:     |                      Target Hardware                      |
-.. COMMENT:     +-----------------------------------------------------------+
-
 .. figure:: rtemsarc.png
          :width: 488
          :height: 100px
@@ -159,16 +145,6 @@ executive core.  The executive core depends on a small set of CPU dependent
 routines.  Together these components provide a powerful run time environment
 that promotes the development of efficient real-time application systems.  The
 following figure illustrates this organization:
-
-.. COMMENT: .. code:: c
-.. COMMENT:
-.. COMMENT:     +-----------------------------------------------+
-.. COMMENT:     |          RTEMS Executive Interface            |
-.. COMMENT:     +-----------------------------------------------+
-.. COMMENT:     |                 RTEMS Core                    |
-.. COMMENT:     +-----------------------------------------------+
-.. COMMENT:     |              CPU Dependent Code               |
-.. COMMENT:     +-----------------------------------------------+
 
 .. figure:: rtemspie.png
          :width: 70%

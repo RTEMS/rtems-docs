@@ -102,7 +102,7 @@ PORT_CREATE - Create a port
 
 .. index:: rtems_port_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_port_create(
         rtems_name  name,
@@ -157,7 +157,7 @@ PORT_IDENT - Get ID of a port
 
 .. index:: rtems_port_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_port_ident(
         rtems_name  name,
@@ -198,7 +198,7 @@ PORT_DELETE - Delete a port
 
 .. index:: rtems_port_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_port_delete(
         rtems_id id
@@ -236,7 +236,7 @@ PORT_EXTERNAL_TO_INTERNAL - Convert external to internal address
 
 .. index:: rtems_port_external_to_internal
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_port_external_to_internal(
         rtems_id   id,
@@ -277,7 +277,7 @@ PORT_INTERNAL_TO_EXTERNAL - Convert internal to external address
 
 .. index:: rtems_port_internal_to_external
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_port_internal_to_external(
         rtems_id   id,

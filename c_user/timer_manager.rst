@@ -88,7 +88,7 @@ prototype similar to the following:
 
 .. index:: rtems_timer_service_routine
 
-.. code:: c
+.. code-block:: c
 
     rtems_timer_service_routine user_routine(
         rtems_id   timer_id,
@@ -197,7 +197,7 @@ TIMER_CREATE - Create a timer
 
 .. index:: rtems_timer_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_create(
         rtems_name  name,
@@ -239,7 +239,7 @@ TIMER_IDENT - Get ID of a timer
 
 .. index:: rtems_timer_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_ident(
         rtems_name  name,
@@ -280,7 +280,7 @@ TIMER_CANCEL - Cancel a timer
 
 .. index:: rtems_timer_cancel
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_cancel(
         rtems_id id
@@ -316,7 +316,7 @@ TIMER_DELETE - Delete a timer
 
 .. index:: rtems_timer_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_delete(
         rtems_id id
@@ -354,7 +354,7 @@ TIMER_FIRE_AFTER - Fire timer after interval
 
 .. index:: rtems_timer_fire_after
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_fire_after(
         rtems_id                           id,
@@ -398,7 +398,7 @@ TIMER_FIRE_WHEN - Fire timer when specified
 
 .. index:: rtems_timer_fire_when
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_fire_when(
         rtems_id                           id,
@@ -446,7 +446,7 @@ TIMER_INITIATE_SERVER - Initiate server for task-based timers
 
 .. index:: rtems_timer_initiate_server
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_initiate_server(
         uint32_t         priority,
@@ -492,7 +492,7 @@ TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
 
 .. index:: rtems_timer_server_fire_after
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_server_fire_after(
         rtems_id                           id,
@@ -541,7 +541,7 @@ TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
 
 .. index:: rtems_timer_server_fire_when
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_server_fire_when(
         rtems_id                           id,
@@ -594,7 +594,7 @@ TIMER_RESET - Reset an interval timer
 
 .. index:: rtems_timer_reset
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_timer_reset(
         rtems_id   id

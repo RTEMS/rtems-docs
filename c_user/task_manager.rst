@@ -234,7 +234,7 @@ accesses it argument is:
 
 .. index:: rtems_task
 
-.. code:: c
+.. code-block:: c
 
     rtems_task user_task(
         rtems_task_argument argument
@@ -582,7 +582,7 @@ TASK_CREATE - Create a task
 
 .. index:: rtems_task_create
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_create(
         rtems_name           name,
@@ -720,7 +720,7 @@ TASK_IDENT - Get ID of a task
 
 .. index:: rtems_task_ident
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_ident(
         rtems_name  name,
@@ -775,7 +775,7 @@ TASK_SELF - Obtain ID of caller
 
 .. index:: rtems_task_self
 
-.. code:: c
+.. code-block:: c
 
     rtems_id rtems_task_self(void);
 
@@ -802,7 +802,7 @@ TASK_START - Start a task
 
 .. index:: rtems_task_start
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_start(
         rtems_id            id,
@@ -856,7 +856,7 @@ TASK_RESTART - Restart a task
 
 .. index:: rtems_task_restart
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_restart(
        rtems_id            id,
@@ -918,7 +918,7 @@ TASK_DELETE - Delete a task
 
 .. index:: rtems_task_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_delete(
         rtems_id id
@@ -974,7 +974,7 @@ TASK_SUSPEND - Suspend a task
 
 .. index:: rtems_task_suspend
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_suspend(
         rtems_id id
@@ -1022,7 +1022,7 @@ TASK_RESUME - Resume a task
 
 .. index:: rtems_task_resume
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_resume(
         rtems_id id
@@ -1068,7 +1068,7 @@ TASK_IS_SUSPENDED - Determine if a task is Suspended
 
 .. index:: rtems_task_is_suspended
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_is_suspended(
         rtems_id id
@@ -1109,7 +1109,7 @@ TASK_SET_PRIORITY - Set task priority
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_set_priority(
         rtems_id             id,
@@ -1175,7 +1175,7 @@ TASK_MODE - Change the current task mode
 
 .. index:: rtems_task_mode
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_mode(
         rtems_mode  mode_set,
@@ -1250,7 +1250,7 @@ TASK_WAKE_AFTER - Wake up after interval
 
 .. index:: rtems_task_wake_after
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_wake_after(
         rtems_interval ticks
@@ -1294,7 +1294,7 @@ TASK_WAKE_WHEN - Wake up when specified
 
 .. index:: rtems_task_wake_when
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_wake_when(
         rtems_time_of_day *time_buffer
@@ -1337,7 +1337,7 @@ ITERATE_OVER_ALL_THREADS - Iterate Over Tasks
 
 .. index:: rtems_iterate_over_all_threads
 
-.. code:: c
+.. code-block:: c
 
     typedef void (*rtems_per_thread_routine)(Thread_Control *the_thread);
     void rtems_iterate_over_all_threads(
@@ -1380,7 +1380,7 @@ TASK_VARIABLE_ADD - Associate per task variable
 
 .. index:: rtems_task_variable_add
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_variable_add(
         rtems_id  tid,
@@ -1442,7 +1442,7 @@ TASK_VARIABLE_GET - Obtain value of a per task variable
 
 .. index:: rtems_task_variable_get
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_variable_get(
         rtems_id  tid,
@@ -1501,7 +1501,7 @@ TASK_VARIABLE_DELETE - Remove per task variable
 
 .. index:: rtems_task_variable_delete
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_task_variable_delete(
         rtems_id  id,

@@ -57,7 +57,7 @@ a table with the following information per task:
 
 The following is an example of the report generated:
 
-.. code:: c
+.. code-block:: c
 
  +------------------------------------------------------------------------------+
  |CPU USAGE BY THREAD                                                           |
@@ -109,7 +109,7 @@ cpu_usage_report - Report CPU Usage Statistics
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     void rtems_cpu_usage_report( void );
 
@@ -133,7 +133,7 @@ cpu_usage_reset - Reset CPU Usage Statistics
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     void rtems_cpu_usage_reset( void );
 
