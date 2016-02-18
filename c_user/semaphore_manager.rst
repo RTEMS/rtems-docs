@@ -675,7 +675,7 @@ The following semaphore acquisition option constants are defined by RTEMS:
 
  * - ``RTEMS_WAIT``
    - task will wait for semaphore (default)
- * - - ``RTEMS_NO_WAIT``
+ * - ``RTEMS_NO_WAIT``
    - task should not wait
 
 Attempting to obtain a global semaphore which does not reside on the local node

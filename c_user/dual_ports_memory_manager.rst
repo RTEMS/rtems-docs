@@ -161,7 +161,7 @@ PORT_IDENT - Get ID of a port
 
     rtems_status_code rtems_port_ident(
         rtems_name  name,
-        rtems_id   \*id
+        rtems_id   *id
     );
 
 **DIRECTIVE STATUS CODES:**

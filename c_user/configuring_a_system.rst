@@ -181,7 +181,7 @@ Format to be followed for making changes in this file
 
   - If the data type is an integer, then it can have numbers, characters (in
     case the value is defined using another macro) and arithmetic operations
-    (+, -, \*, /).
+    (+, -, *, /).
 
   - If the data type is a function pointer the first character should be an
     alphabet or an underscore. The rest of the string can be alphanumeric.
@@ -1500,7 +1500,7 @@ Specifying POSIX API Initialization Thread Entry Point
     ``CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT``
 
 *DATA TYPE:*
-    POSIX thread function pointer (``void \*(*entry_point)(void \*)``).
+    POSIX thread function pointer (``void *(*entry_point)(void *)``).
 
 *RANGE:*
     Undefined or a valid POSIX thread function pointer.
@@ -4017,10 +4017,10 @@ will ensure that the two systems cannot interfere in an undesirable way.
     /* Make the scheduler algorithm available */
     #define CONFIGURE_SCHEDULER_PRIORITY_SMP
     #include <rtems/scheduler.h>
-    /* Create contexts for the two scheduler instances \*/
+    /* Create contexts for the two scheduler instances */
     RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(io, CONFIGURE_MAXIMUM_PRIORITY + 1);
     RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
-    /* Define the scheduler table \*/
+    /* Define the scheduler table */
     #define CONFIGURE_SCHEDULER_CONTROLS \\
                 RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
                     io, \

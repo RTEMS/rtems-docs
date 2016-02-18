@@ -452,7 +452,6 @@ TIMER_INITIATE_SERVER - Initiate server for task-based timers
         uint32_t         priority,
         uint32_t         stack_size,
         rtems_attribute  attribute_set
-    )
     );
 
 **DIRECTIVE STATUS CODES:**

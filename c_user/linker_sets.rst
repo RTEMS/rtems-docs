@@ -78,11 +78,11 @@ section descriptions.
 
     /* To be placed in a read-only memory region */
     .rtemsroset : {
-        KEEP (\*(SORT(.rtemsroset.*)))
+        KEEP (*(SORT(.rtemsroset.*)))
     }
     /* To be placed in a read-write memory region */
     .rtemsrwset : {
-        KEEP (\*(SORT(.rtemsrwset.*)))
+        KEEP (*(SORT(.rtemsrwset.*)))
     }
 
 The ``KEEP()`` ensures that a garbage collection by the linker will not discard
@@ -509,7 +509,7 @@ enum in ``XYZ_ITEM()``).
     #define XYZ_ITEM( item, order ) \
                 enum { xyz_##item = order - order }; \
                 RTEMS_LINKER_RWSET_ITEM_ORDERED( \
-                    xyz, const xyz_item \*, item, order \
+                    xyz, const xyz_item *, item, order \
                 ) = { &item }
     /* Example item */
     static const xyz_item some_item = { 123 };
