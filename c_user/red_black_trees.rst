@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2012.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Red-Black Trees
 ###############
 
@@ -10,8 +14,6 @@ The Red-Black Tree API is an interface to the SuperCore (score) rbtree
 implementation. Within RTEMS, red-black trees are used when a binary search
 tree is needed, including dynamic priority thread queues and non-contiguous
 heap memory. The Red-Black Tree API provided by RTEMS is:
-
-- build_id
 
 - ``rtems_rtems_rbtree_node`` - Red-Black Tree node embedded in another struct
 
@@ -81,12 +83,12 @@ accesses a red-black tree instance at a time.
 Nodes
 -----
 
-A red-black tree is made up from nodes that orginate from a red-black tree control
-object. A node is of type ``rtems_rtems_rbtree_node``. The node
-is designed to be part of a user data structure. To obtain the encapsulating
-structure users can use the ``RTEMS_CONTAINER_OF`` macro.
-The node can be placed anywhere within the user's structure and the macro will
-calculate the structure's address from the node's address.
+A red-black tree is made up from nodes that orginate from a red-black tree
+control object. A node is of type ``rtems_rtems_rbtree_node``. The node is
+designed to be part of a user data structure. To obtain the encapsulating
+structure users can use the ``RTEMS_CONTAINER_OF`` macro.  The node can be
+placed anywhere within the user's structure and the macro will calculate the
+structure's address from the node's address.
 
 Controls
 --------
@@ -94,14 +96,15 @@ Controls
 A red-black tree is rooted with a control object. Red-Black Tree control
 provide the user with access to the nodes on the red-black tree.  The
 implementation does not require special checks for manipulating the root of the
-red-black tree. To accomplish this the``rtems_rtems_rbtree_control`` structure is treated as a``rtems_rtems_rbtree_node`` structure with a ``NULL`` parent
+red-black tree. To accomplish this the ``rtems_rtems_rbtree_control`` structure
+is treated as a ``rtems_rtems_rbtree_node`` structure with a ``NULL`` parent
 and left child pointing to the root.
 
 Operations
 ==========
 
-Examples for using the red-black trees
-can be found in the testsuites/sptests/sprbtree01/init.c file.
+Examples for using the red-black trees can be found in the
+``testsuites/sptests/sprbtree01/init.c`` file.
 
 Directives
 ==========
@@ -110,12 +113,5 @@ Documentation for the Red-Black Tree Directives
 -----------------------------------------------
 .. index:: rbtree doc
 
-Source documentation for the Red-Black Tree API can be found in the
-generated Doxygen output for cpukit/sapi.
-
-.. COMMENT: COPYRIGHT (c) 1988-2012.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
+Source documentation for the Red-Black Tree API can be found in the generated
+Doxygen output for ``cpukit/sapi``.
