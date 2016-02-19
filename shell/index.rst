@@ -6,9 +6,11 @@
 RTEMS Shell User's Guide
 ========================
 
-COPYRIGHT (c) 1988 - 2015.
+RTEMS Shell User's Guide
+------------------------
 
-On-Line Applications Research Corporation (OAR).
+ | COPYRIGHT (c) 1988 - 2015.
+ | On-Line Applications Research Corporation (OAR).
 
 The authors have used their best efforts in preparing this material.  These
 efforts include the development, research, and testing of the theories and
@@ -23,19 +25,22 @@ The RTEMS Project is hosted at http://www.rtems.org/.  Any inquiries concerning
 RTEMS, its related support components, or its documentation should be directed
 to the Community Project hosted at http://www.rtems.org/.
 
+.. topic:: RTEMS Online Resources
 
-Table of Contents
------------------
-
-.. toctree::
-
-	preface
-
+  ================  =============================
+  Home              https://www.rtems.org/
+  Developers        https://devel.rtems.org/
+  Documentation     https://docs.rtems.org/
+  Bug Reporting     https://devel.rtems.org/query
+  Mailing Lists     https://lists.rtems.org/
+  Git Repositories  https://git.rtems.org/
+  ================  =============================
 
 .. toctree::
 	:maxdepth: 3
 	:numbered:
 
+	preface
 	configuration_and_init
 	general_commands
 	file_and_directory
@@ -47,4 +52,3 @@ Table of Contents
 
 *	:ref:`genindex`
 *	:ref:`search`
-
