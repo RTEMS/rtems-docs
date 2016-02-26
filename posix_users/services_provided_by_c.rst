@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Services Provided by C Library (libc)
 #####################################
 
@@ -292,15 +296,18 @@ Reentrant Versions of Functions
   - ``errno_r`` - XXX
 
 - Locale functions:
+
   - ``localeconv_r`` - XXX
   - ``setlocale_r`` - XXX
 
 - Equivalents for stdio variables:
+
   - ``stdin_r`` - XXX
   - ``stdout_r`` - XXX
   - ``stderr_r`` - XXX
 
 - Stdio functions:
+
   - ``fdopen_r`` - XXX
   - ``perror_r`` - XXX
   - ``tempnam_r`` - XXX
@@ -323,6 +330,7 @@ Reentrant Versions of Functions
   - ``sprintf_r`` - XXX
 
 - Signal functions:
+
   - ``init_signal_r`` - XXX
   - ``signal_r`` - XXX
   - ``kill_r`` - XXX
@@ -330,6 +338,7 @@ Reentrant Versions of Functions
   - ``raise_r`` - XXX
 
 - Stdlib functions:
+
   - ``calloc_r`` - XXX
   - ``mblen_r`` - XXX
   - ``srand_r`` - XXX
@@ -355,9 +364,11 @@ Reentrant Versions of Functions
   - ``setenv_r`` - XXX
 
 - String functions:
+
   - ``strtok_r`` - XXX
 
 - System functions:
+
   - ``close_r`` - XXX
   - ``link_r`` - XXX
   - ``unlink_r`` - XXX
@@ -377,6 +388,7 @@ Reentrant Versions of Functions
   - ``times_r`` - XXX
 
 - Time function:
+
   - ``asctime_r`` - XXX
 
 Miscellaneous Macros and Functions
@@ -388,11 +400,13 @@ Variable Argument Lists
 =======================
 
 - Stdarg (stdarg.h):
+
   - ``va_start`` - XXX
   - ``va_arg`` - XXX
   - ``va_end`` - XXX
 
 - Vararg (varargs.h):
+
   - ``va_alist`` - XXX
   - ``va_start-trad`` - XXX
   - ``va_arg-trad`` - XXX
@@ -424,10 +438,3 @@ Reentrant System Calls
 - ``unlink_r`` - XXX
 
 - ``sbrk_r`` - XXX
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

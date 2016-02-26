@@ -1,55 +1,58 @@
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Language-Specific Services for the C Programming Language Manager
 #################################################################
 
 Introduction
 ============
 
-The
-language-specific services for the C programming language manager is ...
+The language-specific services for the C programming language manager is ...
 
 The directives provided by the language-specific services for the C programming language manager are:
 
-- ``setlocale`` - Set the Current Locale
+- setlocale_ - Set the Current Locale
 
-- ``fileno`` - Obtain File Descriptor Number for this File
+- fileno_ - Obtain File Descriptor Number for this File
 
-- ``fdopen`` - Associate Stream with File Descriptor
+- fdopen_ - Associate Stream with File Descriptor
 
-- ``flockfile`` - Acquire Ownership of File Stream
+- flockfile_ - Acquire Ownership of File Stream
 
-- ``ftrylockfile`` - Poll to Acquire Ownership of File Stream
+- ftrylockfile_ - Poll to Acquire Ownership of File Stream
 
-- ``funlockfile`` - Release Ownership of File Stream
+- funlockfile_ - Release Ownership of File Stream
 
-- ``getc_unlocked`` - Get Character without Locking
+- getc_unlocked_ - Get Character without Locking
 
-- ``getchar_unlocked`` - Get Character from stdin without Locking
+- getchar_unlocked_ - Get Character from stdin without Locking
 
-- ``putc_unlocked`` - Put Character without Locking
+- putc_unlocked_ - Put Character without Locking
 
-- ``putchar_unlocked`` - Put Character to stdin without Locking
+- putchar_unlocked_ - Put Character to stdin without Locking
 
-- ``setjmp`` - Save Context for Non-Local Goto
+- setjmp_ - Save Context for Non-Local Goto
 
-- ``longjmp`` - Non-Local Jump to a Saved Context
+- longjmp_ - Non-Local Jump to a Saved Context
 
-- ``sigsetjmp`` - Save Context with Signal Status for Non-Local Goto
+- sigsetjmp_ - Save Context with Signal Status for Non-Local Goto
 
-- ``siglongjmp`` - Non-Local Jump with Signal Status to a Saved Context
+- siglongjmp_ - Non-Local Jump with Signal Status to a Saved Context
 
-- ``tzset`` - Initialize Time Conversion Information
+- tzset_ - Initialize Time Conversion Information
 
-- ``strtok_r`` - Reentrant Extract Token from String
+- strtok_r_ - Reentrant Extract Token from String
 
-- ``asctime_r`` - Reentrant struct tm to ASCII Time Conversion
+- asctime_r_ - Reentrant struct tm to ASCII Time Conversion
 
-- ``ctime_r`` - Reentrant time_t to ASCII Time Conversion
+- ctime_r_ - Reentrant time_t to ASCII Time Conversion
 
-- ``gmtime_r`` - Reentrant UTC Time Conversion
+- gmtime_r_ - Reentrant UTC Time Conversion
 
-- ``localtime_r`` - Reentrant Local Time Conversion
+- localtime_r_ - Reentrant Local Time Conversion
 
-- ``rand_r`` - Reentrant Random Number Generation
+- rand_r_ - Reentrant Random Number Generation
 
 Background
 ==========
@@ -64,10 +67,12 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the language-specific services for the C programming language manager's directives.
-A subsection is dedicated to each of this manager's directives
-and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the language-specific services for the C programming
+language manager's directives.  A subsection is dedicated to each of this
+manager's directives and describes the calling sequence, related constants,
+usage, and status codes.
+
+.. _setlocale:
 
 setlocale - Set the Current Locale
 ----------------------------------
@@ -76,19 +81,24 @@ setlocale - Set the Current Locale
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int setlocale(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _fileno:
 
 fileno - Obtain File Descriptor Number for this File
 ----------------------------------------------------
@@ -97,19 +107,24 @@ fileno - Obtain File Descriptor Number for this File
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int fileno(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _fdopen:
 
 fdopen - Associate Stream with File Descriptor
 ----------------------------------------------
@@ -118,19 +133,24 @@ fdopen - Associate Stream with File Descriptor
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int fdopen(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _flockfile:
 
 flockfile - Acquire Ownership of File Stream
 --------------------------------------------
@@ -139,19 +159,24 @@ flockfile - Acquire Ownership of File Stream
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int flockfile(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _ftrylockfile:
 
 ftrylockfile - Poll to Acquire Ownership of File Stream
 -------------------------------------------------------
@@ -160,19 +185,24 @@ ftrylockfile - Poll to Acquire Ownership of File Stream
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int ftrylockfile(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _funlockfile:
 
 funlockfile - Release Ownership of File Stream
 ----------------------------------------------
@@ -181,19 +211,24 @@ funlockfile - Release Ownership of File Stream
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int funlockfile(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getc_unlocked:
 
 getc_unlocked - Get Character without Locking
 ---------------------------------------------
@@ -202,19 +237,24 @@ getc_unlocked - Get Character without Locking
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getc_unlocked(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getchar_unlocked:
 
 getchar_unlocked - Get Character from stdin without Locking
 -----------------------------------------------------------
@@ -223,19 +263,24 @@ getchar_unlocked - Get Character from stdin without Locking
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getchar_unlocked(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _putc_unlocked:
 
 putc_unlocked - Put Character without Locking
 ---------------------------------------------
@@ -244,19 +289,24 @@ putc_unlocked - Put Character without Locking
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int putc_unlocked(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _putchar_unlocked:
 
 putchar_unlocked - Put Character to stdin without Locking
 ---------------------------------------------------------
@@ -265,19 +315,24 @@ putchar_unlocked - Put Character to stdin without Locking
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int putchar_unlocked(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _setjmp:
 
 setjmp - Save Context for Non-Local Goto
 ----------------------------------------
@@ -286,19 +341,24 @@ setjmp - Save Context for Non-Local Goto
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int setjmp(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _longjmp:
 
 longjmp - Non-Local Jump to a Saved Context
 -------------------------------------------
@@ -307,19 +367,24 @@ longjmp - Non-Local Jump to a Saved Context
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int longjmp(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _sigsetjmp:
 
 sigsetjmp - Save Context with Signal Status for Non-Local Goto
 --------------------------------------------------------------
@@ -328,19 +393,24 @@ sigsetjmp - Save Context with Signal Status for Non-Local Goto
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int sigsetjmp(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _siglongjmp:
 
 siglongjmp - Non-Local Jump with Signal Status to a Saved Context
 -----------------------------------------------------------------
@@ -349,19 +419,24 @@ siglongjmp - Non-Local Jump with Signal Status to a Saved Context
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int siglongjmp(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _tzset:
 
 tzset - Initialize Time Conversion Information
 ----------------------------------------------
@@ -370,19 +445,24 @@ tzset - Initialize Time Conversion Information
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int tzset(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _strtok_r:
 
 strtok_r - Reentrant Extract Token from String
 ----------------------------------------------
@@ -391,19 +471,24 @@ strtok_r - Reentrant Extract Token from String
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int strtok_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _asctime_r:
 
 asctime_r - Reentrant struct tm to ASCII Time Conversion
 --------------------------------------------------------
@@ -412,19 +497,24 @@ asctime_r - Reentrant struct tm to ASCII Time Conversion
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int asctime_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _ctime_r:
 
 ctime_r - Reentrant time_t to ASCII Time Conversion
 ---------------------------------------------------
@@ -433,19 +523,24 @@ ctime_r - Reentrant time_t to ASCII Time Conversion
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int ctime_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _gmtime_r:
 
 gmtime_r - Reentrant UTC Time Conversion
 ----------------------------------------
@@ -454,19 +549,24 @@ gmtime_r - Reentrant UTC Time Conversion
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int gmtime_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _localtime_r:
 
 localtime_r - Reentrant Local Time Conversion
 ---------------------------------------------
@@ -475,19 +575,24 @@ localtime_r - Reentrant Local Time Conversion
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int localtime_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _rand_r:
 
 rand_r - Reentrant Random Number Generation
 -------------------------------------------
@@ -496,23 +601,19 @@ rand_r - Reentrant Random Number Generation
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int rand_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

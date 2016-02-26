@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Scheduler Manager
 #################
 
@@ -8,13 +12,13 @@ The scheduler manager ...
 
 The directives provided by the scheduler manager are:
 
-- ``sched_get_priority_min`` - Get Minimum Priority Value
+- sched_get_priority_min_ - Get Minimum Priority Value
 
-- ``sched_get_priority_max`` - Get Maximum Priority Value
+- sched_get_priority_max_ - Get Maximum Priority Value
 
-- ``sched_rr_get_interval`` - Get Timeslicing Quantum
+- sched_rr_get_interval_ - Get Timeslicing Quantum
 
-- ``sched_yield`` - Yield the Processor
+- sched_yield_ - Yield the Processor
 
 Background
 ==========
@@ -22,8 +26,9 @@ Background
 Priority
 --------
 
-In the RTEMS implementation of the POSIX API, the priorities range from
-the low priority of ``sched_get_priority_min()`` to the highest priority of``sched_get_priority_max()``. Numerically higher values represent higher
+In the RTEMS implementation of the POSIX API, the priorities range from the low
+priority of ``sched_get_priority_min()`` to the highest priority of
+``sched_get_priority_max()``. Numerically higher values represent higher
 priorities.
 
 Scheduling Policies
@@ -32,8 +37,8 @@ Scheduling Policies
 The following scheduling policies are available:
 
 *SCHED_FIFO*
-    Priority-based, preemptive scheduling with no timeslicing. This is equivalent
-    to what is called "manual round-robin" scheduling.
+    Priority-based, preemptive scheduling with no timeslicing. This is
+    equivalent to what is called "manual round-robin" scheduling.
 
 *SCHED_RR*
     Priority-based, preemptive scheduling with timeslicing. Time quantums are
@@ -46,11 +51,12 @@ The following scheduling policies are available:
     maintained on a per-thread basis and are reset at each context switch.
 
 *SCHED_SPORADIC*
-    Priority-based, preemptive scheduling utilizing three additional parameters:
-    budget, replenishment period, and low priority. Under this policy, the
-    thread is allowed to execute for "budget" amount of time before its priority
-    is lowered to "low priority". At the end of each replenishment period,
-    the thread resumes its initial priority and has its budget replenished.
+    Priority-based, preemptive scheduling utilizing three additional
+    parameters: budget, replenishment period, and low priority. Under this
+    policy, the thread is allowed to execute for "budget" amount of time before
+    its priority is lowered to "low priority". At the end of each replenishment
+    period, the thread resumes its initial priority and has its budget
+    replenished.
 
 Operations
 ==========
@@ -60,10 +66,11 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the scheduler manager's directives.
-A subsection is dedicated to each of this manager's directives
-and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the scheduler manager's directives.  A subsection is
+dedicated to each of this manager's directives and describes the calling
+sequence, related constants, usage, and status codes.
+
+.. _sched_get_priority_min:
 
 sched_get_priority_min - Get Minimum Priority Value
 ---------------------------------------------------
@@ -72,28 +79,33 @@ sched_get_priority_min - Get Minimum Priority Value
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <sched.h>
     int sched_get_priority_min(
-    int policy
+        int policy
     );
 
 **STATUS CODES:**
 
-On error, this routine returns -1 and sets errno to one of the following:
+On error, this routine returns -1 and sets ``errno`` to one of the following:
 
-*EINVAL*
-    The indicated policy is invalid.
+.. list-table::
+ :class: rtems-table
+
+ * - ``EINVAL``
+   - The indicated policy is invalid.
 
 **DESCRIPTION:**
 
-This routine return the minimum (numerically and logically lowest) priority
-for the specified ``policy``.
+This routine return the minimum (numerically and logically lowest) priority for
+the specified ``policy``.
 
 **NOTES:**
 
 NONE
+
+.. _sched_get_priority_max:
 
 sched_get_priority_max - Get Maximum Priority Value
 ---------------------------------------------------
@@ -102,19 +114,22 @@ sched_get_priority_max - Get Maximum Priority Value
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <sched.h>
     int sched_get_priority_max(
-    int policy
+        int policy
     );
 
 **STATUS CODES:**
 
-On error, this routine returns -1 and sets errno to one of the following:
+On error, this routine returns -1 and sets ``errno`` to one of the following:
 
-*EINVAL*
-    The indicated policy is invalid.
+.. list-table::
+ :class: rtems-table
+
+ * - ``EINVAL``
+   - The indicated policy is invalid.
 
 **DESCRIPTION:**
 
@@ -125,6 +140,8 @@ for the specified ``policy``.
 
 NONE
 
+.. _sched_rr_get_interval:
+
 sched_rr_get_interval - Get Timeslicing Quantum
 -----------------------------------------------
 .. index:: sched_rr_get_interval
@@ -132,31 +149,36 @@ sched_rr_get_interval - Get Timeslicing Quantum
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <sched.h>
     int sched_rr_get_interval(
-    pid_t            pid,
-    struct timespec \*interval
+        pid_t            pid,
+        struct timespec *interval
     );
 
 **STATUS CODES:**
 
-On error, this routine returns -1 and sets errno to one of the following:
+On error, this routine returns -1 and sets ``errno`` to one of the following:
 
-*ESRCH*
-    The indicated process id is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The specified interval pointer parameter is invalid.
+ * - ``ESRCH``
+   - The indicated process id is invalid.
+ * - ``EINVAL``
+   - The specified interval pointer parameter is invalid.
 
 **DESCRIPTION:**
 
-This routine returns the length of the timeslice quantum in the``interval`` parameter for the specified ``pid``.
+This routine returns the length of the timeslice quantum in the ``interval``
+parameter for the specified ``pid``.
 
 **NOTES:**
 
 The ``pid`` argument should be 0 to indicate the calling process.
+
+.. _sched_yield:
 
 sched_yield - Yield the Processor
 ---------------------------------
@@ -165,7 +187,7 @@ sched_yield - Yield the Processor
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <sched.h>
     int sched_yield( void );
@@ -177,16 +199,9 @@ This routine always returns zero to indicate success.
 **DESCRIPTION:**
 
 This call forces the calling thread to yield the processor to another
-thread. Normally this is used to implement voluntary round-robin
-task scheduling.
+thread. Normally this is used to implement voluntary round-robin task
+scheduling.
 
 **NOTES:**
 
 NONE
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

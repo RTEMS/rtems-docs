@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Thread Cancellation Manager
 ###########################
 
@@ -9,17 +13,17 @@ thread cancellation manager is ...
 
 The directives provided by the thread cancellation manager are:
 
-- ``pthread_cancel`` - Cancel Execution of a Thread
+- pthread_cancel_ - Cancel Execution of a Thread
 
-- ``pthread_setcancelstate`` - Set Cancelability State
+- pthread_setcancelstate_ - Set Cancelability State
 
-- ``pthread_setcanceltype`` - Set Cancelability Type
+- pthread_setcanceltype_ - Set Cancelability Type
 
-- ``pthread_testcancel`` - Create Cancellation Point
+- pthread_testcancel_ - Create Cancellation Point
 
-- ``pthread_cleanup_push`` - Establish Cancellation Handler
+- pthread_cleanup_push_ - Establish Cancellation Handler
 
-- ``pthread_cleanup_pop`` - Remove Cancellation Handler
+- pthread_cleanup_pop_ - Remove Cancellation Handler
 
 Background
 ==========
@@ -34,10 +38,11 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the thread cancellation manager's directives.
-A subsection is dedicated to each of this manager's directives
-and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the thread cancellation manager's directives.  A
+subsection is dedicated to each of this manager's directives and describes the
+calling sequence, related constants, usage, and status codes.
+
+.. _pthread_cancel:
 
 pthread_cancel - Cancel Execution of a Thread
 ---------------------------------------------
@@ -46,19 +51,24 @@ pthread_cancel - Cancel Execution of a Thread
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int pthread_cancel(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_setcancelstate:
 
 pthread_setcancelstate - Set Cancelability State
 ------------------------------------------------
@@ -67,19 +77,24 @@ pthread_setcancelstate - Set Cancelability State
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int pthread_setcancelstate(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_setcanceltype:
 
 pthread_setcanceltype - Set Cancelability Type
 ----------------------------------------------
@@ -88,19 +103,24 @@ pthread_setcanceltype - Set Cancelability Type
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int pthread_setcanceltype(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_testcancel:
 
 pthread_testcancel - Create Cancellation Point
 ----------------------------------------------
@@ -109,19 +129,24 @@ pthread_testcancel - Create Cancellation Point
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int pthread_testcancel(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_cleanup_push:
 
 pthread_cleanup_push - Establish Cancellation Handler
 -----------------------------------------------------
@@ -130,19 +155,24 @@ pthread_cleanup_push - Establish Cancellation Handler
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int pthread_cleanup_push(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_cleanup_pop:
 
 pthread_cleanup_pop - Remove Cancellation Handler
 -------------------------------------------------
@@ -151,23 +181,19 @@ pthread_cleanup_pop - Remove Cancellation Handler
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int pthread_cleanup_push(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

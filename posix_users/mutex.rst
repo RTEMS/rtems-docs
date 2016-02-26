@@ -1,48 +1,51 @@
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Mutex Manager
 #############
 
 Introduction
 ============
 
-The mutex manager implements the functionality required of the mutex
-manager as defined by POSIX 1003.1b-1996. This standard requires that
-a compliant operating system provide the facilties to ensure that
-threads can operate with mutual exclusion from one another and
-defines the API that must be provided.
+The mutex manager implements the functionality required of the mutex manager as
+defined by POSIX 1003.1b-1996. This standard requires that a compliant
+operating system provide the facilties to ensure that threads can operate with
+mutual exclusion from one another and defines the API that must be provided.
 
 The services provided by the mutex manager are:
 
-- ``pthread_mutexattr_init`` - Initialize a Mutex Attribute Set
+- pthread_mutexattr_init_ - Initialize a Mutex Attribute Set
 
-- ``pthread_mutexattr_destroy`` - Destroy a Mutex Attribute Set
+- pthread_mutexattr_destroy_ - Destroy a Mutex Attribute Set
 
-- ``pthread_mutexattr_setprotocol`` - Set the Blocking Protocol
+- pthread_mutexattr_setprotocol_ - Set the Blocking Protocol
 
-- ``pthread_mutexattr_getprotocol`` - Get the Blocking Protocol
+- pthread_mutexattr_getprotocol_ - Get the Blocking Protocol
 
-- ``pthread_mutexattr_setprioceiling`` - Set the Priority Ceiling
+- pthread_mutexattr_setprioceiling_ - Set the Priority Ceiling
 
-- ``pthread_mutexattr_getprioceiling`` - Get the Priority Ceiling
+- pthread_mutexattr_getprioceiling_ - Get the Priority Ceiling
 
-- ``pthread_mutexattr_setpshared`` - Set the Visibility
+- pthread_mutexattr_setpshared_ - Set the Visibility
 
-- ``pthread_mutexattr_getpshared`` - Get the Visibility
+- pthread_mutexattr_getpshared_ - Get the Visibility
 
-- ``pthread_mutex_init`` - Initialize a Mutex
+- pthread_mutex_init_ - Initialize a Mutex
 
-- ``pthread_mutex_destroy`` - Destroy a Mutex
+- pthread_mutex_destroy_ - Destroy a Mutex
 
-- ``pthread_mutex_lock`` - Lock a Mutex
+- pthread_mutex_lock_ - Lock a Mutex
 
-- ``pthread_mutex_trylock`` - Poll to Lock a Mutex
+- pthread_mutex_trylock_ - Poll to Lock a Mutex
 
-- ``pthread_mutex_timedlock`` - Lock a Mutex with Timeout
+- pthread_mutex_timedlock_ - Lock a Mutex with Timeout
 
-- ``pthread_mutex_unlock`` - Unlock a Mutex
+- pthread_mutex_unlock_ - Unlock a Mutex
 
-- ``pthread_mutex_setprioceiling`` - Dynamically Set the Priority Ceiling
+- pthread_mutex_setprioceiling_ - Dynamically Set the Priority Ceiling
 
-- ``pthread_mutex_getprioceiling`` - Dynamically Get the Priority Ceiling
+- pthread_mutex_getprioceiling_ - Dynamically Get the Priority Ceiling
 
 Background
 ==========
@@ -50,32 +53,32 @@ Background
 Mutex Attributes
 ----------------
 
-Mutex attributes are utilized only at mutex creation time. A mutex
-attribute structure may be initialized and passed as an argument to
-the ``mutex_init`` routine. Note that the priority ceiling of
-a mutex may be set at run-time.
+Mutex attributes are utilized only at mutex creation time. A mutex attribute
+structure may be initialized and passed as an argument to the ``mutex_init``
+routine. Note that the priority ceiling of a mutex may be set at run-time.
 
-*blocking protcol*
-    is the XXX
+.. list-table::
+ :class: rtems-table
 
-*priority ceiling*
-    is the XXX
-
-*pshared*
-    is the XXX
+ * - *blocking protcol*
+   - is the XXX
+ * - *priority ceiling*
+   - is the XXX
+ * - *pshared*
+   - is the XXX
 
 PTHREAD_MUTEX_INITIALIZER
 -------------------------
 
-This is a special value that a variable of type ``pthread_mutex_t``
-may be statically initialized to as shown below:
-.. code:: c
+This is a special value that a variable of type ``pthread_mutex_t`` may be
+statically initialized to as shown below:
+
+.. code-block:: c
 
     pthread_mutex_t my_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-This indicates that ``my_mutex`` will be automatically initialized
-by an implicit call to ``pthread_mutex_init`` the first time
-the mutex is used.
+This indicates that ``my_mutex`` will be automatically initialized by an
+implicit call to ``pthread_mutex_init`` the first time the mutex is used.
 
 Note that the mutex will be initialized with default attributes.
 
@@ -87,10 +90,11 @@ There is currently no text in this section.
 Services
 ========
 
-This section details the mutex manager's services.
-A subsection is dedicated to each of this manager's services
-and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the mutex manager's services.  A subsection is dedicated
+to each of this manager's services and describes the calling sequence, related
+constants, usage, and status codes.
+
+.. _pthread_mutexattr_init:
 
 pthread_mutexattr_init - Initialize a Mutex Attribute Set
 ---------------------------------------------------------
@@ -99,11 +103,11 @@ pthread_mutexattr_init - Initialize a Mutex Attribute Set
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_init(
-    pthread_mutexattr_t \*attr
+        pthread_mutexattr_t *attr
     );
 
 **STATUS CODES:**
@@ -113,13 +117,15 @@ pthread_mutexattr_init - Initialize a Mutex Attribute Set
 
 **DESCRIPTION:**
 
-The ``pthread_mutexattr_init`` routine initializes the mutex attributes
-object specified by ``attr`` with the default value for all of the
-individual attributes.
+The ``pthread_mutexattr_init`` routine initializes the mutex attributes object
+specified by ``attr`` with the default value for all of the individual
+attributes.
 
 **NOTES:**
 
 XXX insert list of default attributes here.
+
+.. _pthread_mutexattr_destroy:
 
 pthread_mutexattr_destroy - Destroy a Mutex Attribute Set
 ---------------------------------------------------------
@@ -128,30 +134,34 @@ pthread_mutexattr_destroy - Destroy a Mutex Attribute Set
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
-    int pthread_mutexattr_destroy(
-    pthread_mutexattr_t \*attr
+        int pthread_mutexattr_destroy(
+        pthread_mutexattr_t *attr
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
 
 **DESCRIPTION:**
 
 The ``pthread_mutex_attr_destroy`` routine is used to destroy a mutex
-attributes object. The behavior of using an attributes object after
-it is destroyed is implementation dependent.
+attributes object. The behavior of using an attributes object after it is
+destroyed is implementation dependent.
 
 **NOTES:**
 
 NONE
+
+.. _pthread_mutexattr_setprotocol:
 
 pthread_mutexattr_setprotocol - Set the Blocking Protocol
 ---------------------------------------------------------
@@ -160,47 +170,52 @@ pthread_mutexattr_setprotocol - Set the Blocking Protocol
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_setprotocol(
-    pthread_mutexattr_t \*attr,
-    int                  protocol
+        pthread_mutexattr_t *attr,
+        int                  protocol
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
-
-*EINVAL*
-    The protocol argument is invalid.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The protocol argument is invalid.
 
 **DESCRIPTION:**
 
-The ``pthread_mutexattr_setprotocol`` routine is used to set value of the``protocol`` attribute. This attribute controls the order in which
-threads waiting on this mutex will receive it.
+The ``pthread_mutexattr_setprotocol`` routine is used to set value of the
+``protocol`` attribute. This attribute controls the order in which threads
+waiting on this mutex will receive it.
 
 The ``protocol`` can be one of the following:
 
-*``PTHREAD_PRIO_NONE``*
-    in which case blocking order is FIFO.
+.. list-table::
+ :class: rtems-table
 
-*``PTHREAD_PRIO_INHERIT``*
-    in which case blocking order is priority with the priority inheritance
-    protocol in effect.
-
-*``PTHREAD_PRIO_PROTECT``*
-    in which case blocking order is priority with the priority ceiling
-    protocol in effect.
+ * - ``PTHREAD_PRIO_NONE``
+   - in which case blocking order is FIFO.
+ * - ``PTHREAD_PRIO_INHERIT``
+   - in which case blocking order is priority with the priority inheritance
+     protocol in effect.
+ * - ``PTHREAD_PRIO_PROTECT``
+   - in which case blocking order is priority with the priority ceiling
+     protocol in effect.
 
 **NOTES:**
 
-There is currently no way to get simple priority blocking ordering
-with POSIX mutexes even though this could easily by supported by RTEMS.
+There is currently no way to get simple priority blocking ordering with POSIX
+mutexes even though this could easily by supported by RTEMS.
+
+.. _pthread_mutexattr_getprotocol:
 
 pthread_mutexattr_getprotocol - Get the Blocking Protocol
 ---------------------------------------------------------
@@ -209,34 +224,37 @@ pthread_mutexattr_getprotocol - Get the Blocking Protocol
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_getprotocol(
-    pthread_mutexattr_t \*attr,
-    int                 \*protocol
+        pthread_mutexattr_t *attr,
+        int                 *protocol
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
-
-*EINVAL*
-    The protocol pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The protocol pointer argument is invalid.
 
 **DESCRIPTION:**
 
-The ``pthread_mutexattr_getprotocol`` routine is used to obtain
-the value of the ``protocol`` attribute. This attribute controls
-the order in which threads waiting on this mutex will receive it.
+The ``pthread_mutexattr_getprotocol`` routine is used to obtain the value of
+the ``protocol`` attribute. This attribute controls the order in which threads
+waiting on this mutex will receive it.
 
 **NOTES:**
 
 NONE
+
+.. _pthread_mutexattr_setprioceiling:
 
 pthread_mutexattr_setprioceiling - Set the Priority Ceiling
 -----------------------------------------------------------
@@ -245,35 +263,39 @@ pthread_mutexattr_setprioceiling - Set the Priority Ceiling
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_setprioceiling(
-    pthread_mutexattr_t \*attr,
-    int                  prioceiling
+        pthread_mutexattr_t *attr,
+        int                  prioceiling
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
-
-*EINVAL*
-    The prioceiling argument is invalid.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The prioceiling argument is invalid.
 
 **DESCRIPTION:**
 
-The ``pthread_mutexattr_setprioceiling`` routine is used to set value of the``prioceiling`` attribute. This attribute specifies the priority that
-is the ceiling for threads obtaining this mutex. Any task obtaining this
-mutex may not be of greater priority that the ceiling. If it is of lower
-priority, then its priority will be elevated to ``prioceiling``.
+The ``pthread_mutexattr_setprioceiling`` routine is used to set value of the
+``prioceiling`` attribute. This attribute specifies the priority that is the
+ceiling for threads obtaining this mutex. Any task obtaining this mutex may not
+be of greater priority that the ceiling. If it is of lower priority, then its
+priority will be elevated to ``prioceiling``.
 
 **NOTES:**
 
 NONE
+
+.. _pthread_mutexattr_getprioceiling:
 
 pthread_mutexattr_getprioceiling - Get the Priority Ceiling
 -----------------------------------------------------------
@@ -282,34 +304,37 @@ pthread_mutexattr_getprioceiling - Get the Priority Ceiling
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_getprioceiling(
-    const pthread_mutexattr_t \*attr,
-    int                       \*prioceiling
+        const pthread_mutexattr_t *attr,
+        int                       *prioceiling
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
-
-*EINVAL*
-    The prioceiling pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The prioceiling pointer argument is invalid.
 
 **DESCRIPTION:**
 
-The ``pthread_mutexattr_getprioceiling`` routine is used to obtain the
-value of the ``prioceiling`` attribute. This attribute specifies the
-priority ceiling for this mutex.
+The ``pthread_mutexattr_getprioceiling`` routine is used to obtain the value of
+the ``prioceiling`` attribute. This attribute specifies the priority ceiling
+for this mutex.
 
 **NOTES:**
 
 NONE
+
+.. _pthread_mutexattr_setpshared:
 
 pthread_mutexattr_setpshared - Set the Visibility
 -------------------------------------------------
@@ -318,28 +343,31 @@ pthread_mutexattr_setpshared - Set the Visibility
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_setpshared(
-    pthread_mutexattr_t \*attr,
-    int                  pshared
+        pthread_mutexattr_t *attr,
+        int                  pshared
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
-
-*EINVAL*
-    The pshared argument is invalid.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The pshared argument is invalid.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutexattr_getpshared:
 
 pthread_mutexattr_getpshared - Get the Visibility
 -------------------------------------------------
@@ -348,28 +376,31 @@ pthread_mutexattr_getpshared - Get the Visibility
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutexattr_getpshared(
-    const pthread_mutexattr_t \*attr,
-    int                       \*pshared
+        const pthread_mutexattr_t *attr,
+        int                       *pshared
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute pointer argument is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The attribute set is not initialized.
-
-*EINVAL*
-    The pshared pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute pointer argument is invalid.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The pshared pointer argument is invalid.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_init:
 
 pthread_mutex_init - Initialize a Mutex
 ---------------------------------------
@@ -378,35 +409,36 @@ pthread_mutex_init - Initialize a Mutex
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutex_init(
-    pthread_mutex_t           \*mutex,
-    const pthread_mutexattr_t \*attr
+        pthread_mutex_t           *mutex,
+        const pthread_mutexattr_t *attr
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The attribute set is not initialized.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The specified protocol is invalid.
-
-*EAGAIN*
-    The system lacked the necessary resources to initialize another mutex.
-
-*ENOMEM*
-    Insufficient memory exists to initialize the mutex.
-
-*EBUSY*
-    Attempted to reinialize the object reference by mutex, a previously
-    initialized, but not yet destroyed.
+ * - ``EINVAL``
+   - The attribute set is not initialized.
+ * - ``EINVAL``
+   - The specified protocol is invalid.
+ * - ``EAGAIN``
+   - The system lacked the necessary resources to initialize another mutex.
+ * - ``ENOMEM``
+   - Insufficient memory exists to initialize the mutex.
+ * - ``EBUSY``
+   - Attempted to reinialize the object reference by mutex, a previously
+     initialized, but not yet destroyed.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_destroy:
 
 pthread_mutex_destroy - Destroy a Mutex
 ---------------------------------------
@@ -415,25 +447,29 @@ pthread_mutex_destroy - Destroy a Mutex
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
-    int pthread_mutex_destroy(
-    pthread_mutex_t \*mutex
+        int pthread_mutex_destroy(
+        pthread_mutex_t *mutex
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The specified mutex is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EBUSY*
-    Attempted to destroy the object reference by mutex, while it is locked or
-    referenced by another thread.
+ * - ``EINVAL``
+   - The specified mutex is invalid.
+ * - ``EBUSY``
+   - Attempted to destroy the object reference by mutex, while it is locked or
+     referenced by another thread.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_lock:
 
 pthread_mutex_lock - Lock a Mutex
 ---------------------------------
@@ -442,29 +478,32 @@ pthread_mutex_lock - Lock a Mutex
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutex_lock(
-    pthread_mutex_t \*mutex
+        pthread_mutex_t *mutex
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The specified mutex is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The mutex has the protocol attribute of PTHREAD_PRIO_PROTECT and the
-    priority of the calling thread is higher than the current priority
-    ceiling.
-
-*EDEADLK*
-    The current thread already owns the mutex.
+ * - ``EINVAL``
+   - The specified mutex is invalid.
+ * - ``EINVAL``
+   - The mutex has the protocol attribute of ``PTHREAD_PRIO_PROTECT`` and the
+     priority of the calling thread is higher than the current priority
+     ceiling.
+ * - ``EDEADLK``
+   - The current thread already owns the mutex.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_trylock:
 
 pthread_mutex_trylock - Poll to Lock a Mutex
 --------------------------------------------
@@ -473,29 +512,31 @@ pthread_mutex_trylock - Poll to Lock a Mutex
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutex_trylock(
-    pthread_mutex_t \*mutex
+        pthread_mutex_t *mutex
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The specified mutex is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The mutex has the protocol attribute of PTHREAD_PRIO_PROTECT and the
-    priority of the calling thread is higher than the current priority
-    ceiling.
-
-*EBUSY*
-    The mutex is already locked.
+ * - ``EINVAL``
+   - The specified mutex is invalid.
+ * - ``EINVAL``
+   - The mutex has the protocol attribute of ``PTHREAD_PRIO_PROTECT`` and the
+     priority of the calling thread is higher than the current priority ceiling.
+ * - ``EBUSY``
+   - The mutex is already locked.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_timedlock:
 
 pthread_mutex_timedlock - Lock a Mutex with Timeout
 ---------------------------------------------------
@@ -504,38 +545,39 @@ pthread_mutex_timedlock - Lock a Mutex with Timeout
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     #include <time.h>
     int pthread_mutex_timedlock(
-    pthread_mutex_t       \*mutex,
-    const struct timespec \*timeout
+        pthread_mutex_t       *mutex,
+        const struct timespec *timeout
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The specified mutex is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The nanoseconds field of timeout is invalid.
-
-*EINVAL*
-    The mutex has the protocol attribute of PTHREAD_PRIO_PROTECT and the
-    priority of the calling thread is higher than the current priority
-    ceiling.
-
-*EDEADLK*
-    The current thread already owns the mutex.
-
-*ETIMEDOUT*
-    The calling thread was unable to obtain the mutex within the specified
-    timeout period.
+ * - ``EINVAL``
+   - The specified mutex is invalid.
+ * - ``EINVAL``
+   - The nanoseconds field of timeout is invalid.
+ * - ``EINVAL``
+   - The mutex has the protocol attribute of ``PTHREAD_PRIO_PROTECT`` and the
+     priority of the calling thread is higher than the current priority
+     ceiling.
+ * - ``EDEADLK``
+   - The current thread already owns the mutex.
+ * - ``ETIMEDOUT``
+   - The calling thread was unable to obtain the mutex within the specified
+     timeout period.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_unlock:
 
 pthread_mutex_unlock - Unlock a Mutex
 -------------------------------------
@@ -544,21 +586,26 @@ pthread_mutex_unlock - Unlock a Mutex
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutex_unlock(
-    pthread_mutex_t \*mutex
+        pthread_mutex_t *mutex
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The specified mutex is invalid.
+.. list-table::
+ :class: rtems-table
+
+ * - ``EINVAL``
+   - The specified mutex is invalid.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_setprioceiling:
 
 pthread_mutex_setprioceiling - Dynamically Set the Priority Ceiling
 -------------------------------------------------------------------
@@ -567,29 +614,32 @@ pthread_mutex_setprioceiling - Dynamically Set the Priority Ceiling
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutex_setprioceiling(
-    pthread_mutex_t \*mutex,
-    int              prioceiling,
-    int             \*oldceiling
+        pthread_mutex_t *mutex,
+        int              prioceiling,
+        int             *oldceiling
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The oldceiling pointer parameter is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The prioceiling parameter is an invalid priority.
-
-*EINVAL*
-    The specified mutex is invalid.
+ * - ``EINVAL``
+   - The oldceiling pointer parameter is invalid.
+ * - ``EINVAL``
+   - The prioceiling parameter is an invalid priority.
+ * - ``EINVAL``
+   - The specified mutex is invalid.
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _pthread_mutex_getprioceiling:
 
 pthread_mutex_getprioceiling - Get the Current Priority Ceiling
 ---------------------------------------------------------------
@@ -598,29 +648,24 @@ pthread_mutex_getprioceiling - Get the Current Priority Ceiling
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     #include <pthread.h>
     int pthread_mutex_getprioceiling(
-    pthread_mutex_t \*mutex,
-    int             \*prioceiling
+        pthread_mutex_t *mutex,
+        int             *prioceiling
     );
 
 **STATUS CODES:**
 
-*EINVAL*
-    The prioceiling pointer parameter is invalid.
+.. list-table::
+ :class: rtems-table
 
-*EINVAL*
-    The specified mutex is invalid.
+ * - ``EINVAL``
+   - The prioceiling pointer parameter is invalid.
+ * - ``EINVAL``
+   - The specified mutex is invalid.
 
 **DESCRIPTION:**
 
 **NOTES:**
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

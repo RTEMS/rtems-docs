@@ -1,29 +1,32 @@
+.. COMMENT: COPYRIGHT(c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation(OAR).
+.. COMMENT: All rights reserved.
+
 System Databases Manager
 ########################
 
 Introduction
 ============
 
-The
-system databases manager is ...
+The system databases manager is ...
 
 The directives provided by the system databases manager are:
 
-- ``getgrgid`` - Get Group File Entry for ID
+- getgrgid_ - Get Group File Entry for ID
 
-- ``getgrgid_r`` - Reentrant Get Group File Entry
+- getgrgid_r_ - Reentrant Get Group File Entry
 
-- ``getgrnam`` - Get Group File Entry for Name
+- getgrnam_ - Get Group File Entry for Name
 
-- ``getgrnam_r`` - Reentrant Get Group File Entry for Name
+- getgrnam_r_ - Reentrant Get Group File Entry for Name
 
-- ``getpwuid`` - Get Password File Entry for UID
+- getpwuid_ - Get Password File Entry for UID
 
-- ``getpwuid_r`` - Reentrant Get Password File Entry for UID
+- getpwuid_r_ - Reentrant Get Password File Entry for UID
 
-- ``getpwnam`` - Get Password File Entry for Name
+- getpwnam_ - Get Password File Entry for Name
 
-- ``getpwnam_r`` - Reentrant Get Password File Entry for Name
+- getpwnam_r_ - Reentrant Get Password File Entry for Name
 
 Background
 ==========
@@ -38,10 +41,11 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the system databases manager's directives.
-A subsection is dedicated to each of this manager's directives
-and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the system databases manager's directives.  A subsection
+is dedicated to each of this manager's directives and describes the calling
+sequence, related constants, usage, and status codes.
+
+.. _getgrgid:
 
 getgrgid - Get Group File Entry for ID
 --------------------------------------
@@ -50,19 +54,24 @@ getgrgid - Get Group File Entry for ID
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getgrgid(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getgrgid_r:
 
 getgrgid_r - Reentrant Get Group File Entry
 -------------------------------------------
@@ -71,19 +80,24 @@ getgrgid_r - Reentrant Get Group File Entry
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getgrgid_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getgrnam:
 
 getgrnam - Get Group File Entry for Name
 ----------------------------------------
@@ -92,19 +106,24 @@ getgrnam - Get Group File Entry for Name
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getgrnam(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getgrnam_r:
 
 getgrnam_r - Reentrant Get Group File Entry for Name
 ----------------------------------------------------
@@ -113,19 +132,24 @@ getgrnam_r - Reentrant Get Group File Entry for Name
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getgrnam_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getpwuid:
 
 getpwuid - Get Password File Entry for UID
 ------------------------------------------
@@ -134,19 +158,24 @@ getpwuid - Get Password File Entry for UID
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getpwuid(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getpwuid_r:
 
 getpwuid_r - Reentrant Get Password File Entry for UID
 ------------------------------------------------------
@@ -155,19 +184,24 @@ getpwuid_r - Reentrant Get Password File Entry for UID
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getpwuid_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getpwnam:
 
 getpwnam - Password File Entry for Name
 ---------------------------------------
@@ -176,19 +210,24 @@ getpwnam - Password File Entry for Name
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getpwnam(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _getpwnam_r:
 
 getpwnam_r - Reentrant Get Password File Entry for Name
 -------------------------------------------------------
@@ -197,23 +236,19 @@ getpwnam_r - Reentrant Get Password File Entry for Name
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int getpwnam_r(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
-
-.. COMMENT: COPYRIGHT(c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation(OAR).
-
-.. COMMENT: All rights reserved.
-

@@ -14,6 +14,7 @@ are provided and do work in a coherent manner.  This is significant
 when porting existing code from UNIX to RTEMS.
 
 - Implementation
+
   - The current implementation of ``dup()`` is insufficient.
   - FIFOs ``mkfifo()`` are not currently implemented.
   - Asynchronous IO is not implemented.
@@ -21,16 +22,17 @@ when porting existing code from UNIX to RTEMS.
   - getc/putc unlocked family is not implemented
   - Shared Memory is not implemented
   - Mapped Memory is not implemented
-
   - NOTES:
 
     - For Shared Memory and Mapped Memory services, it is unclear what
       level of support is appropriate and possible for RTEMS.
 
 - Functional Testing
+
   - Tests for unimplemented services
 
 - Performance Testing
+
   - There are no POSIX Performance Tests.
 
 - Documentation
@@ -40,4 +42,3 @@ when porting existing code from UNIX to RTEMS.
     background and operations sections.
 
   - Example programs (not just tests) would be very nice.
-

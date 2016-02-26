@@ -1,3 +1,7 @@
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Memory Management Manager
 #########################
 
@@ -9,25 +13,25 @@ memory management manager is ...
 
 The directives provided by the memory management manager are:
 
-- ``mlockall`` - Lock the Address Space of a Process
+- mlockall_ - Lock the Address Space of a Process
 
-- ``munlockall`` - Unlock the Address Space of a Process
+- munlockall_ - Unlock the Address Space of a Process
 
-- ``mlock`` - Lock a Range of the Process Address Space
+- mlock_ - Lock a Range of the Process Address Space
 
-- ``munlock`` - Unlock a Range of the Process Address Space
+- munlock_ - Unlock a Range of the Process Address Space
 
-- ``mmap`` - Map Process Addresses to a Memory Object
+- mmap_ - Map Process Addresses to a Memory Object
 
-- ``munmap`` - Unmap Previously Mapped Addresses
+- munmap_ - Unmap Previously Mapped Addresses
 
-- ``mprotect`` - Change Memory Protection
+- mprotect_ - Change Memory Protection
 
-- ``msync`` - Memory Object Synchronization
+- msync_ - Memory Object Synchronization
 
-- ``shm_open`` - Open a Shared Memory Object
+- shm_open_ - Open a Shared Memory Object
 
-- ``shm_unlink`` - Remove a Shared Memory Object
+- shm_unlink_ - Remove a Shared Memory Object
 
 Background
 ==========
@@ -42,10 +46,11 @@ There is currently no text in this section.
 Directives
 ==========
 
-This section details the memory management manager's directives.
-A subsection is dedicated to each of this manager's directives
-and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the memory management manager's directives.  A subsection
+is dedicated to each of this manager's directives and describes the calling
+sequence, related constants, usage, and status codes.
+
+.. _mlockall:
 
 mlockall - Lock the Address Space of a Process
 ----------------------------------------------
@@ -54,19 +59,24 @@ mlockall - Lock the Address Space of a Process
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int mlockall(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _munlockall:
 
 munlockall - Unlock the Address Space of a Process
 --------------------------------------------------
@@ -75,19 +85,24 @@ munlockall - Unlock the Address Space of a Process
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int munlockall(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _mlock:
 
 mlock - Lock a Range of the Process Address Space
 -------------------------------------------------
@@ -96,19 +111,24 @@ mlock - Lock a Range of the Process Address Space
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int mlock(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _munlock:
 
 munlock - Unlock a Range of the Process Address Space
 -----------------------------------------------------
@@ -117,19 +137,24 @@ munlock - Unlock a Range of the Process Address Space
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int munlock(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _mmap:
 
 mmap - Map Process Addresses to a Memory Object
 -----------------------------------------------
@@ -138,19 +163,24 @@ mmap - Map Process Addresses to a Memory Object
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int mmap(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _munmap:
 
 munmap - Unmap Previously Mapped Addresses
 ------------------------------------------
@@ -159,19 +189,24 @@ munmap - Unmap Previously Mapped Addresses
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int munmap(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _mprotect:
 
 mprotect - Change Memory Protection
 -----------------------------------
@@ -180,19 +215,24 @@ mprotect - Change Memory Protection
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int mprotect(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _msync:
 
 msync - Memory Object Synchronization
 -------------------------------------
@@ -201,19 +241,24 @@ msync - Memory Object Synchronization
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int msync(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _shm_open:
 
 shm_open - Open a Shared Memory Object
 --------------------------------------
@@ -222,19 +267,24 @@ shm_open - Open a Shared Memory Object
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int shm_open(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
+
+.. _shm_unlink:
 
 shm_unlink - Remove a Shared Memory Object
 ------------------------------------------
@@ -243,23 +293,19 @@ shm_unlink - Remove a Shared Memory Object
 
 **CALLING SEQUENCE:**
 
-.. code:: c
+.. code-block:: c
 
     int shm_unlink(
     );
 
 **STATUS CODES:**
 
-*E*
-    The
+.. list-table::
+ :class: rtems-table
+
+ * - ``E``
+   - The
 
 **DESCRIPTION:**
 
 **NOTES:**
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
