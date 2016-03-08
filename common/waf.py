@@ -25,7 +25,7 @@ def cmd_spell(ctx):
 	for file in files:
 		cmd = ctx.env.BIN_ASPELL + ["-c", "--personal=%s/common/spell/dict/rtems" % path, "--extra-dicts=%s/common/spell/en_GB-ise-w_accents.multi" % path, file]
 
-		print "running:", cmd
+		print("running:", cmd)
 		call(cmd)
 
 
