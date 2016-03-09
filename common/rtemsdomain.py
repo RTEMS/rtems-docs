@@ -40,6 +40,7 @@ role_url = {
 	"docs":				("Documentation Site",	"https://docs.rtems.org/"),
 	"lists":			("Mailing Lists",		"https://lists.rtems.org/"),
 	"git":				("Git Repositories",	"https://git.rtems.org/"),
+	"ftp":				("FTP File Server",	"https://ftp.rtems.org/"),
 	"review":			("Gerrit Code Review",	"https://review.rtems.org/"),
 	"bugs":				("Bugs Database",		"https://devel.rtems.org/wiki/Bugs/"),
 	"gsoc":				("Google Summer of Code", "https://devel.rtems.org/wiki/GSoC/"),
@@ -66,7 +67,7 @@ def rtems_resolve_role(name, rawtext, text, lineno, inliner, options={}, content
 		elif role == "url":
 			text, url = role_url[text]
 	except KeyError:
-		msg = inliner.reporter.error("rtems_resolve_role(): %s is not a valid %s" % (text, role))
+		msg = inliner.reporter.error("rtems_resolve_role: '%s' is not a valid %s" % (text, role))
 		err = inliner.problematic("ERROR: %s" % rawtext, None, msg)
 		return [err], [msg]
 
