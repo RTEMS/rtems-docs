@@ -1,5 +1,3 @@
-:orphan:
-
 Build Tools
 ===========
 .. index:: Tools, rtems-config, rtems-cc

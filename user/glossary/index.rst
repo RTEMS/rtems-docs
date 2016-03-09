@@ -7,9 +7,6 @@ Glossary
 	Waf
 		Waf build system.  For more information see http://www.waf.io/
 
-		See :ref:`waf`.
-
-
 	Test Suite
 	Testsuite
 		RTEMS test suite located in the ``testsuites/`` directory.

@@ -1,5 +1,3 @@
-:orphan:
-
 Simulation
 ==========
 .. index:: Simulation Tools, rtems-run
@@ -11,4 +9,3 @@ rtems-run
 ---------
 
 XXX: rtems-run
-

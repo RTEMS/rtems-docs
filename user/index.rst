@@ -1,31 +1,26 @@
 .. highlight:: c
 
 ============================
-RTEMS |version| user manual.
+RTEMS |version| User Manual.
 ============================
 
 Table of Contents
 -----------------
 
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 3
+	:numbered:
 
 	overview/index
-
-
-.. toctree::
-	:maxdepth: 2
-	:numbered:
 
 	start/index
 	config/index
 
 	tools/index
-	waf/index
 	test/index
 
-	bsp/index
 	architecture/index
+	bsp/index
 
 	support/index
 	additional/index

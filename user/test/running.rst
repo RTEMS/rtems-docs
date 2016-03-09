@@ -1,5 +1,3 @@
-:orphan:
-
 Running
 ========
 .. index:: Running a Test
@@ -24,4 +22,3 @@ XXX: Simulator
 Hardware
 --------
 XXX: Running on real hardware.
-

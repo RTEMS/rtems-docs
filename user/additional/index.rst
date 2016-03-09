@@ -13,8 +13,6 @@ Waf
 ---
 Waf build system.  For more information see http://www.waf.io/
 
-See :ref:`waf`.
-
 
 Test Suite
 ----------
@@ -32,4 +30,3 @@ Program List
 ============
 
 List of all available programs in RTEMS
-
