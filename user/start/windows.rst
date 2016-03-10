@@ -3,15 +3,15 @@
 
 .. _microsoft-windows-installation:
 
-Microsoft Windows Installation
-==============================
+Microsoft Windows
+-----------------
 .. index:: Microsoft Windows Installation
 
 This section details how you create an RTEMS development environment on
 Windows. The installation documented here is on `Windows 7 64bit Professional`.
 
-RTEMS Development on Windows
-----------------------------
+Developing on Windows
+~~~~~~~~~~~~~~~~~~~~~
 
 RTEMS supports Windows as a development host and the tools for most
 architectures are available. The RTEMS Project relies on the GNU tools for
@@ -53,7 +53,7 @@ application. The RTEMS built tools can handle much longer path lengths however
 some of the GNU tools such as those in the ``binutils`` package cannot.
 
 POSIX Support
--------------
+~~~~~~~~~~~~~
 
 Building the RTEMS compilers, debugger, the RTEMS kernel and a number of other
 3rd party packages requires a POSIX environment. On Windows you can use Cygwin
@@ -71,7 +71,7 @@ distribution and that is a welcome feature on Windows. You get a powerful tool
 to manage your development environment on Windows.
 
 Python
-------
+~~~~~~
 
 We need Python to build the tools as the RSB is written in Python and we need
 suitable Python libraries to link to GDB as RTEMS makes use of GDB's Python
@@ -95,7 +95,7 @@ and 3 of Python and it helps handle some of the long paths building GCC can
 generate.
 
 Installing MSYS2
-----------------
+~~~~~~~~~~~~~~~~
 
 MSYS2 is installed on a new machine using the MSYS2 installer found on
 https://msys2.github.io/. Please select the ``x86_64`` variant for 64bit
@@ -351,8 +351,8 @@ Install the packages using ``pacman``:
   (73/74) installing texinfo                         [#####################] 100%
   (74/74) installing unzip                           [#####################] 100%
 
-Building the RTEMS Tools
-------------------------
+Building the Tools
+~~~~~~~~~~~~~~~~~~
 
 Create a workspace for RTEMS using the following shell command:
 
@@ -527,8 +527,8 @@ To build a set of RTEMS tools for the Intel ``i386`` architecture:
    /c/opt/rtems/rsb/rtems
   $
 
-Building the RTEMS Kernel
--------------------------
+Building the Kernel
+~~~~~~~~~~~~~~~~~~~
 
 We can now build the RTEMS kernel using the RTEMS tools we have just
 built. First we need to set the path to the tools:
@@ -780,8 +780,8 @@ Install the kernel to our prefix:
    /c/opt/rtems/kernel/pc686
   $
 
-Building the RTEMS BSD Library
-------------------------------
+Building the LibBSD
+~~~~~~~~~~~~~~~~~~~
 
 The RTEMS BSD Library or libBSD as it is also know is a package of FreeBSD code
 ported to RTEMS. It provides a number of advantanced services including a

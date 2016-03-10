@@ -12,4 +12,3 @@ source.
 
 .. include:: depend.rst
 .. include:: installation.rst
-.. include:: windows.rst
