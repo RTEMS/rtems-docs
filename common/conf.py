@@ -182,7 +182,7 @@ latex_elements = {
 }
 
 
-latex_additional_files = ['../common/rtemsstyle.sty', '../common/logo.pdf']
+latex_additional_files = ['../common/rtemsstyle.sty', '../common/minted.sty', '../common/logo.pdf']
 latex_use_modindex = False
 
 

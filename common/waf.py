@@ -65,6 +65,8 @@ def check_sphinx_version(ctx, minver):
 def cmd_configure(ctx):
 	ctx.load('tex')
 
+	ctx.env.append_value('PDFLATEXFLAGS', '-shell-escape')
+
 	ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory=True)
 	ctx.find_program("aspell", var="BIN_ASPELL", mandatory=False)
 	ctx.find_program("inliner", var="BIN_INLINER", mandatory=False)

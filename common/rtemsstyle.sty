@@ -14,6 +14,14 @@
 
 \renewenvironment{printindex}{\underscoresplit\oldprintindex}
 
+\usepackage{minted}
+\fvset{
+breaklines=true,
+linenos,
+numbersep=5pt,
+gobble=2,
+}
+
 
 \renewcommand{\maketitle}{%
   \begin{titlepage}%
