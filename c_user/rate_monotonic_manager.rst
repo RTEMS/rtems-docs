@@ -268,7 +268,7 @@ Period(index)``.  The processor utilization can be calculated as follows:
 
     Utilization = 0
     for index = 1 to maximum_tasks
-    Utilization = Utilization + (Time(index)/Period(index))
+        Utilization = Utilization + (Time(index)/Period(index))
 
 To ensure schedulability even under transient overload, the processor
 utilization must adhere to the following rule:
