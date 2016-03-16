@@ -26,7 +26,7 @@ see:file:`testsuites/smptests`.
 
 .. warning::
 
-   The SMP support in RTEMS is work in progress. Before you start using this
+   The SMP support in RTEMS is a work in progress. Before you start using this
    RTEMS version for SMP ask on the RTEMS mailing list.
 
 This chapter describes the services related to Symmetric Multiprocessing
