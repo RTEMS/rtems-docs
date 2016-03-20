@@ -50,7 +50,14 @@ characters. This can effect some of the tools used by RTEMS. It is recommended
 you keep the top level directories as short as possible when building the RTEMS
 tools and you also keep an eye on the path length when developing your
 application. The RTEMS built tools can handle much longer path lengths however
-some of the GNU tools such as those in the ``binutils`` package cannot.
+some of the GNU tools such as those in the ``binutils`` package cannot. The
+release packages of the RSB are too big to build RTEMS so you need to change
+that path to build.
+
+The MSYS2 GNU ``make`` has problems when using the `jobs` option. The RSB
+defaults to automatically using as many cores as the host machine has. To get a
+successful build on Windows it is recommended you add the ``--jobs=none``
+option to all RSB build set commands.
 
 POSIX Support
 ~~~~~~~~~~~~~
@@ -419,7 +426,7 @@ To build a set of RTEMS tools for the Intel ``i386`` architecture:
 .. code-block:: shell
 
    /c/opt/rtems/rsb/rtems
-  $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/4.11 4.11/rtems-i386
+  $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/4.11 --jobs=none 4.11/rtems-i386
   RTEMS Source Builder - Set Builder, 4.11 (01ac76f2f90f)
   Build Set: 4.11/rtems-i386
   Build Set: 4.11/rtems-autotools.bset
@@ -458,10 +465,10 @@ To build a set of RTEMS tools for the Intel ``i386`` architecture:
   Build Set: Time 0:01:20.234375
   config: devel/expat-2.1.0-1.cfg
   package: expat-2.1.0-x86_64-w64-mingw32-1
-  download:   http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz -> sources/expat-2.1.0.tar.gz
-   redirect:  http://iweb.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
+  download: http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz -> sources/expat-2.1.0.tar.gz
+   redirect: http://iweb.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
   downloading: sources/expat-2.1.0.tar.gz - 549.4kB of 549.4kB (100%)
-   building: expat-2.1.0-x86_64-w64-mingw32-1
+  building: expat-2.1.0-x86_64-w64-mingw32-1
   reporting: devel/expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-w64-mingw32-1.txt
   reporting: devel/expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-w64-mingw32-1.xml
   config: tools/rtems-binutils-2.24-1.cfg
