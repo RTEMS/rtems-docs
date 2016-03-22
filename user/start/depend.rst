@@ -15,8 +15,8 @@ the opposite to what you normally experience with host operating systems, and
 it is, however this approach works well. RTEMS is not a host operating system
 and it is not a distrbution. Providing binary packages for every possible host
 operating system is to big a task for the RTEMS Project and it is not a good
-use of the core developers time. Their time is better spent making RTEMS better
-and faster.
+use of the core developer's time. Their time is better spent making RTEMS
+better and faster.
 
 Developer Computer
 ------------------
@@ -37,7 +37,9 @@ RTEMS makes no demands on graphics.
 If you are using a VM or your host computer that is not a fast current machine
 do not be concerned. The tools may take longer to build than faster hardware
 however building tools is something you do once. Once the tools and RTEMS is
-built all your time can be spent writing and developing your application.
+built all your time can be spent writing and developing your application. Over
+an hour does happen and for the ARM architecture with all BSPs it can be many
+hours.
 
 Host Software
 -------------
@@ -73,10 +75,10 @@ POSIX hosts are most Unix operating systems such as Linux, FreeBSD and
 NetBSD. RTEMS development works well on Unix and can scale from a single user
 and a desktop machine to a team with decentralised or centralised development
 infrastructure. The RTEMS project provides you with the development tools and
-aids to help you create an environment that matches the project's needs. You
-need to decide on the languages used in your project, which version control
-system, and the build system for your application. The RTEMS Project's aims to
-give complete freedom to decide what you use.
+aids to help you create an environment that matches your project's needs. The
+RTEMS Project's aims to give complete freedom to decide on the languages used
+in your project, which version control system, and the build system for your
+application.
 
 The following are a few ways you can set up a suitable environment. You are not
 limited to what is present here. A common factor that defines the final
@@ -98,18 +100,18 @@ to be built and we encourage you do not build the tools as ``root``. If you
 need to control write access then it is best to manage this with groups
 assigned to users.
 
-If you have ``root`` you can decide to install the tools under any suitable
-prefix. This may depend on the hardware in your host development machine. If
-the machine is a centralised build server the prefix may be used to separate
-production versions from the test versions and as just discussed the prefix
-paths may have restricted access to only those who manage the configuration
-control of the machine.
+If you have ``root`` access you can decide to install the tools under any
+suitable prefix. This may depend on the hardware in your host development
+machine. If the machine is a centralised build server the prefix may be used to
+separate production versions from the test versions and as just discussed the
+prefix paths may have restricted access to only those who manage and
+configuration control of the machine.
 
 Apple OS X
 ----------
 
-Apple's OS X is fully supported. You to download and install a recent version
-of the free Apple developers application Xcode. Xocde is available in the App
+Apple's OS X is fully supported. You need to download and install a recent
+version of the Apple developer application Xcode. Xocde is available in the App
 Store. Make sure you install the Command Line Tools add on available for
 download within Xcode and once installed open a Terminal shell and enter the
 command ``cc`` and accept the license agreement.
@@ -163,11 +165,17 @@ Windows path length is limited and can cause problems when building the
 tools. The standard Windows API has a ``MAX_PATH`` length of 260
 characters. This can effect some of the tools used by RTEMS. It is recommended
 you keep the top level directories as short as possible when building the RTEMS
-tools and you also keep an eye on the path length when developing your
+tools and you should also keep an eye on the path length when developing your
 application. The RTEMS built tools can handle much longer path lengths however
 some of the GNU tools such as those in the ``binutils`` package cannot. The
-release packages of the RSB are too big to build RTEMS so you need to change
-that path to build.
+release packages of the RSB when unpacked has a top level file names that is
+too big to build RTEMS so you need to change that path to something smaller to
+build. This is indicated in :ref:`released-version`.
+
+.. _msys2_parallel_builds:
+
+Parallel Builds with Make
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The MSYS2 GNU ``make`` has problems when using the `jobs` option. The RSB
 defaults to automatically using as many cores as the host machine has. To get a

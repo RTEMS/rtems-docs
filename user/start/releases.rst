@@ -39,7 +39,7 @@ the source on the RTEMS FTP server ensures the source is present for the like
 of the release on the RTEMS FTP server. If there is a problem accessing the
 RTEMS FTP the RSB will fall back to the packages home site.
 
-.. note:: **Control the RTEMS Kernel Build**
+.. note:: **Controlling the RTEMS Kernel Build**
 
    The RTEMS kernel is built by default for releases. To not build the RTEMS
    kernel add the ``--without-rtems`` option to the RSB command line.
@@ -108,7 +108,8 @@ Build a tool chain for the SPARC architecure. We are using the SPARC
 architecture in our example because GDB has a good simulator that lets us run
 and test the samples RTEMS builds by default
 
-If building on Windows add ``--jobs=none`` to avoid GNU make issues on Windows.
+If building on Windows add ``--jobs=none`` to avoid GNU make issues on Windows
+discussed in :ref:`msys2_parallel_builds`.
 
 .. code-block:: shell
 
