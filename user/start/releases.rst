@@ -4,7 +4,7 @@
 .. _released-version:
 
 Released Version
-----------------
+================
 .. index:: tarball
 .. index:: release
 
@@ -12,12 +12,7 @@ RTEMS releases provide a stable version of the kernel for the supported
 architectures. RTEMS maintaines the current and previous releases. Support for
 older releases is provided using the RTEMS support channels.
 
-.. sidebar:: *GDB and Python*
-
-   RTEMS uses Python in GDB to aid debugging which means GDB needs to be built
-   with Python development libraries. Please check the RSB documentation and
-   install the packages specified for your host. Make sure a python development
-   package is included.
+Please read :ref:`development-hosts` before continuing.
 
 The following procedure assumes you have installed and configured your host
 operating. It also assumes you have installed any dependent packages needed
@@ -49,7 +44,7 @@ RTEMS FTP the RSB will fall back to the packages home site.
    The RTEMS kernel is built by default for releases. To not build the RTEMS
    kernel add the ``--without-rtems`` option to the RSB command line.
 
-   By default all the BSPs for an architecture are build. If you only wish to
+   By default all the BSPs for an architecture are built. If you only wish to
    have a specific BSP build you can specify the BSP list by providing to the
    RSB the option ``--with-rtemsbsp``. For example to build two BSPs for the
    SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``.
@@ -57,7 +52,7 @@ RTEMS FTP the RSB will fall back to the packages home site.
 This procedure will build a SPARC tool chain.
 
 RTEMS Tools Chain
-~~~~~~~~~~~~~~~~~
+-----------------
 
 Set up a suitable workspace to build the release in. On Unix:
 
@@ -93,14 +88,15 @@ Download the RTEMS Source Builder (RSB) from the RTEMS FTP server:
 
  2016-03-21 10:50:11 (173 KB/s) - 'rtems-source-builder-4.11.0.tar.xz' saved [967056/967056]
 
-Unpack the RSB release tar file. On Unix:
+On Unix unpack the RSB release tar file using:
 
 .. code-block:: shell
 
  $ tar Jxf rtems-source-builder-4.11.0.tar.xz
  $ cd rtems-source-builder-4.11.0/rtems/
 
-When building on Windowss you need to shorten the path:
+On Windows you need to shorten the path (See :ref:`windows-path-length`) after
+you have unpacked the tar file:
 
 .. code-block:: shell
 
@@ -110,7 +106,9 @@ When building on Windowss you need to shorten the path:
 
 Build a tool chain for the SPARC architecure. We are using the SPARC
 architecture in our example because GDB has a good simulator that lets us run
-and test the samples RTEMS builds by default:
+and test the samples RTEMS builds by default
+
+If building on Windows add ``--jobs=none`` to avoid GNU make issues on Windows.
 
 .. code-block:: shell
 

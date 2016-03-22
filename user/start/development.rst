@@ -4,7 +4,7 @@
 .. _development-version:
 
 Development Version
--------------------
+===================
 .. index:: Git
 
 RTEMS provides open access to it's development processes. The project encouages
@@ -12,17 +12,12 @@ all users to inspect, review, comment and contribute to the code base. The
 processes described here are the same processes the core development team use
 when developing and maintaining RTEMS.
 
+Please read :ref:`development-hosts` before continuing.
+
 .. warning::
 
    The development version is not for use in production and it can break from
    time to time.
-
-.. sidebar:: *GDB and Python*
-
-   RTEMS uses Python in GDB to aid debugging which means GDB needs to be built
-   with Python development libraries. Please check the RSB documentation and
-   install the packages specified for your host. Make sure a python development
-   package is included.
 
 The following procedure assumes you have installed and configured your host
 operating. It also assumes you have installed any dependent packages needed
@@ -50,7 +45,7 @@ versions available to test with.
 This procedure will build a SPARC tool chain.
 
 RTEMS Tools Chain
-~~~~~~~~~~~~~~~~~
+-----------------
 
 Clone the RTEMS Source Builder (RSB) repository:
 
@@ -205,7 +200,7 @@ is `4.12` and is on master:
   Build Set: Time 0:31:09.754219
 
 RTEMS Kernel
-~~~~~~~~~~~~
+------------
 
 We need to set our path to include the RTEMS tools we built in the previous
 section. The RTEMS tools needs to be first in your path because RTEMS provides
@@ -516,7 +511,7 @@ RTEMS with the following command:
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32'
 
 Contributing Patches
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 RTEMS welcomes fixes to bugs and new features. The RTEMS Project likes to have
 bugs fixed against a ticket created on our :r:url:`devel`. Please raise a

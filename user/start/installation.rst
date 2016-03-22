@@ -23,8 +23,3 @@ The RTEMS core development team uses POSIX type operating systems, that is
 Unix.  The :ref:`released-version` and :ref:`development-version` sections
 assume Unix. Microsoft Windows is documented in a separate section
 :ref:`microsoft-windows-installation`.
-
-.. comments: Include the various installation parts.
-.. include:: releases.rst
-.. include:: development.rst
-.. include:: windows.rst

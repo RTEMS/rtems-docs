@@ -10,6 +10,7 @@ project = "RTEMS User Manual"
 
 exclude_patterns = ['config/build.rst',
                     'config/runtime.rst',
+                    'start/basics.rst',
                     'start/depend.rst',
                     'start/transition.rst',
                     'start/releases.rst',
