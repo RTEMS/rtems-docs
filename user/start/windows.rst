@@ -8,9 +8,16 @@ Microsoft Windows
 .. index:: Microsoft Windows Installation
 
 This section details how you create an RTEMS development environment on
-Windows. The installation documented here is on `Windows 7 64bit Professional`.
+Windows. The installation documented here is on `Windows 7 64bit
+Professional`. Building on `Windows 10` has been reported as working.
 
 Please see :ref:`microsoft-windows` before continuing.
+
+.. note::
+
+   If the RSB reports ``error: no hosts defaults found; please add`` you have
+   probably opened an MSYS2 32bit Shell. Close all 32bit Shell windows and open
+   the MSYS2 64bit Shell.
 
 RTEMS Tools
 ~~~~~~~~~~~
@@ -31,8 +38,8 @@ The ``/c`` path is an internal MSYS2 mount point of the ``C:`` drive. The
 command creates the RTEMS work space on the ``C:`` drive. If you wish to use
 another drive please subsitute ``/c`` with your drive letter.
 
-We build and install all RTEMS packages under the `prefix` we just created. Change to that
-directory and get a copy of the RSB:
+We build and install all RTEMS packages under the `prefix` we just
+created. Change to that directory and get a copy of the RSB:
 
 .. code-block:: shell
 
@@ -75,12 +82,17 @@ Check the RSB has a valid environment:
    /c/opt/rtems/rsb/rtems
   $
 
-To build a set of RTEMS tools for the Intel ``i386`` architecture:
+To build a set of RTEMS tools for the Intel ``i386`` architecture. The build
+runs a single job rather a job per CPU in your machine and will take a long
+time so please be patient. The RSB creates a log file containing all the build
+output and it will be changing size. The RSB command to build ``i386`` tools
+is:
 
 .. code-block:: shell
 
    /c/opt/rtems/rsb/rtems
-  $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/4.11 --jobs=none 4.11/rtems-i386
+  $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/4.11 \
+                                     --jobs=none 4.11/rtems-i386
   RTEMS Source Builder - Set Builder, 4.11 (01ac76f2f90f)
   Build Set: 4.11/rtems-i386
   Build Set: 4.11/rtems-autotools.bset
@@ -196,6 +208,8 @@ built. First we need to set the path to the tools:
 
 .. code-block:: shell
 
+   /c
+  $ cd /c/opt/rtems
    /c/opt/rtems
   $ export PATH=/c/opt/rtems/4.11/bin:$PATH
    /c/opt/rtems
@@ -233,7 +247,7 @@ The kernel code cloned from git needs to be `bootstrapped`. Bootstrapping
 creates ``autoconf`` and ``automake`` generated files. To bootstrap we first
 clean away any files, then generate the pre-install header file lists and
 finally we generate the ``autoconf`` and ``automake`` files using the RSB's
-bootstrap tool.
+bootstrap tool. First we clean any generated files that exist:
 
 .. code-block:: shell
 
@@ -242,6 +256,11 @@ bootstrap tool.
   removing automake generated Makefile.in files
   removing configure files
   removing aclocal.m4 files
+
+Then we generate the pre-install header file automake make files:
+
+.. code-block:: shell
+
    /c/opt/rtems/kernel/rtems
   $ ./bootstrap -p
   Generating ./c/src/ada/preinstall.am
@@ -268,6 +287,11 @@ bootstrap tool.
   Generating ./cpukit/wrapup/preinstall.am
   Generating ./cpukit/zlib/preinstall.am
    /c/opt/rtems/kernel/rtems
+
+Finally we run the RSB's parallel ``bootstrap`` command:
+
+.. code-block:: shell
+
   $ /c/opt/rtems/rsb/source-builder/sb-bootstrap
   RTEMS Source Builder - RTEMS Bootstrap, 4.11 (76188ee494dd)
     1/139: autoreconf: configure.ac
@@ -314,7 +338,7 @@ Support Package (BSP) outside the kernel source tree:
   $
 
 Configure the RTEMS kernel to build ``pc686`` BSP for the ``i386`` target with
-netwoeking disabled, We will build the externel libBSD stack later:
+networking disabled, We will build the external libBSD stack later:
 
 .. code-block:: shell
 

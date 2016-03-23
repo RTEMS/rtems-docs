@@ -156,6 +156,8 @@ tools and the RTEMS kernel and if you use a suitable build system that is
 native to Windows your application development should be similar to other
 operating systems.
 
+Building is known to work on `Windows 7 64bit Professional` and `Windows 10`.
+
 .. _windows-path-length:
 
 Path Length
@@ -234,6 +236,11 @@ support. Run the installer followin the 7 steps listed on the page.
 MSYS2 uses the ``pacman`` package manager. The Arch Linux project has detailed
 documentation on how to use ``pacman``. What is shown here is a just few
 examples of what you can do.
+
+.. sidebar:: **Pin MSYS2 Shell to Taskbar**
+
+   Pin the MSYS2 64bit Shell to the Taskbar so you always use it rather than
+   the 32bit Shell.
 
 Open a 64bit MSYS shell from the Start Menu:
 
