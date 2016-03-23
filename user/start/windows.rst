@@ -83,10 +83,10 @@ Check the RSB has a valid environment:
   $
 
 To build a set of RTEMS tools for the Intel ``i386`` architecture. The build
-runs a single job rather a job per CPU in your machine and will take a long
-time so please be patient. The RSB creates a log file containing all the build
-output and it will be changing size. The RSB command to build ``i386`` tools
-is:
+runs a single job rather than a job per CPU in your machine and will take a
+long time so please be patient. The RSB creates a log file containing all the
+build output and it will be changing size. The RSB command to build ``i386``
+tools is:
 
 .. code-block:: shell
 
@@ -323,7 +323,7 @@ Finally we run the RSB's parallel ``bootstrap`` command:
 
 We will build the RTEMS kernel for the ``i386`` target and the ``pc686``
 BSP. You can check the available BSPs by running the ``rtems-bsps`` command
-found in the to directory of the RTEMS kernel source. We build the Board
+found in the top directory of the RTEMS kernel source. We build the Board
 Support Package (BSP) outside the kernel source tree:
 
 .. code-block:: shell
@@ -468,6 +468,8 @@ Install the kernel to our prefix:
 Building the LibBSD
 ~~~~~~~~~~~~~~~~~~~
 
-The RTEMS BSD Library or libBSD as it is also know is a package of FreeBSD code
+The RTEMS BSD Library or libBSD as it is also known is a package of FreeBSD code
 ported to RTEMS. It provides a number of advantanced services including a
-networking stack
+networking stack.
+
+| This needs to move to a new section and be completed.

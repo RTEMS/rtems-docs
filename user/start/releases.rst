@@ -31,13 +31,20 @@ detail about path lengths on Windows.
 The location used to install the tools and kernel is called the
 `prefix`. :ref:`prefixes` explains prefixes and how to use them. It is best to
 have a `prefix` for each different version of RTEMS you are using. If you are
-using RTEMS 4.11 in production it is not a good to install a development
-version of 4.12 over the top. A separate `prefix` for each version avoids this.
+using RTEMS 4.11 in production it is **not** a good idea to install a
+development version of 4.12 over the top by using the same `prefix` as the 4.11
+build. A separate `prefix` for each version avoids this.
 
-Releases download all source packages from the RTEMS FTP server. Hosting all
-the source on the RTEMS FTP server ensures the source is present for the like
-of the release on the RTEMS FTP server. If there is a problem accessing the
-RTEMS FTP the RSB will fall back to the packages home site.
+Released versions of the RSB download all source code for all packages from the
+:r:url:`ftp` rather than from the package's home site. Hosting all the source
+on the :r:url:`ftp` ensures the source is present for the life of the
+release on the :r:url:`ftp`. If there is a problem accessing the RTEMS FTP
+the RSB will fall back to the packages home site.
+
+The :r:url:`ftp` is hosted at the Oregon State University's The Open Source Lab
+(http://osuosl.org/). This is a nonprofit organization working for the
+advancement of open source technologies and RTEMS is very fortunate to hosted
+here. It has excellent internet access and performance.
 
 .. note:: **Controlling the RTEMS Kernel Build**
 
@@ -50,12 +57,11 @@ RTEMS FTP the RSB will fall back to the packages home site.
    SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``. This can
    speed the build time up for some architectures that have a lot of BSPs.
 
-This procedure will build a SPARC tool chain.
-
 RTEMS Tools Chain
 -----------------
 
-Set up a suitable workspace to build the release in. On Unix:
+This procedure will build a SPARC tool chain. Set up a suitable workspace to
+build the release in. On Unix:
 
 .. code-block:: shell
 

@@ -1,4 +1,6 @@
-=========
+
+.. _overview:
+
 Overview
 =========
 
@@ -34,7 +36,7 @@ applications including the following features:
 
 - high level of user configurability
 
-RTEMS provides features found in moderen operating system:
+RTEMS provides features found in modern operating systems:
 
 - file systems
 
@@ -42,7 +44,7 @@ RTEMS provides features found in moderen operating system:
 
 - USB
 
-- perminante media such as flash disks, cards and USB devices
+- permanent media such as flash disks, cards and USB devices
 
 Real-time Application Systems
 =============================

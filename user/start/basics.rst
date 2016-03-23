@@ -1,12 +1,12 @@
 .. comment: Copyright (c) 2016 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
-.. _prefixs:
+.. _prefixes:
 
 Prefixes
 ========
 
-You will see the term **prefix** referred to though out this documentation and
+You will see the term **prefix** referred to thoughout this documentation and
 in a wide number of software packages you can download from the internet. A
 **prefix** is a path on your computer a software package is built and installed
 under. Packages that have a **prefix** will place all parts under the *prefix
@@ -45,10 +45,10 @@ Project Sandboxing
 ==================
 
 Project specific sandboxes let you have a number of projects running in
-parallel with each project in its own sandbox. You simlpy have a prefix per
+parallel with each project in its own sandbox. You simply have a prefix per
 project and under that prefix you create a simple yet repeatable structure.
 
-As an exapmle lets say I have a large disk mounted under :file:`/bd` for *Big
+As an example lets say I have a large disk mounted under :file:`/bd` for *Big
 Disk*. As ``root`` create a directory called ``projects`` and give the
 directory suitable permissions to be writable by you as a user.
 

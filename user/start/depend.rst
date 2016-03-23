@@ -26,7 +26,7 @@ understand there are limits. Projects set up different configurations and what
 is described here is not an approved set up, rather it is a guide. Some
 projects have a suitable development machine per developer while others set up
 a tightly controlled central build server. RTEMS is flexible and lets you
-engineering a development environment that suites you. The basic specs are:
+engineer a development environment that suites you. The basic specs are:
 
 - Multicore processor
 - 8G bytes RAM
@@ -34,8 +34,8 @@ engineering a development environment that suites you. The basic specs are:
 
 RTEMS makes no demands on graphics.
 
-If you are using a VM or your host computer that is not a fast current machine
-do not be concerned. The tools may take longer to build than faster hardware
+If you are using a VM or your host computer and is not a fast modern machine do
+not be concerned. The tools may take longer to build than faster hardware
 however building tools is something you do once. Once the tools and RTEMS is
 built all your time can be spent writing and developing your application. Over
 an hour does happen and for the ARM architecture with all BSPs it can be many
@@ -54,12 +54,11 @@ operating systems supported are:
 - Windows
 - Solaris
 
-The functionality on POSIX operating such as Linux and FreeBSD is similar and
-most features on Windows are supported but you are best to ask on
+The functionality on a POSIX operating such as Linux and FreeBSD is similar and
+most features on Windows are supported but you are best to ask on the
 :r:list:`users` if you have a specific question.
 
-Install and set up your host operating system. We recommend you maintain your
-operating system by installing any updates.
+We recommend you maintain your operating system by installing any updates.
 
 POSIX Hosts
 -----------
@@ -76,17 +75,17 @@ NetBSD. RTEMS development works well on Unix and can scale from a single user
 and a desktop machine to a team with decentralised or centralised development
 infrastructure. The RTEMS project provides you with the development tools and
 aids to help you create an environment that matches your project's needs. The
-RTEMS Project's aims to give complete freedom to decide on the languages used
-in your project, which version control system, and the build system for your
-application.
+RTEMS Project's aim is to give you complete freedom to decide on the languages
+used in your project, which version control system, and the build system for
+your application.
 
 The following are a few ways you can set up a suitable environment. You are not
 limited to what is present here. A common factor that defines the final
 location of tools and projects is the place you have suitable storage. The
 following set ups assume suitable disk space and disk performance.
 
-Adminisrator Access
-~~~~~~~~~~~~~~~~~~~
+Administrator Access
+~~~~~~~~~~~~~~~~~~~~
 
 You either have ``root`` access to your host development machine or you do
 not. Some users are given hardware that is centrally managed. If you do not
@@ -96,7 +95,7 @@ directory. You could use a prefix of :file:`$HOME/development/rtems` or
 substituted with ``~``.
 
 RTEMS Tools and packages do not require ``root`` access
-to be built and we encourage you do not build the tools as ``root``. If you
+to be built and we encourage you to not build the tools as ``root``. If you
 need to control write access then it is best to manage this with groups
 assigned to users.
 
@@ -104,8 +103,8 @@ If you have ``root`` access you can decide to install the tools under any
 suitable prefix. This may depend on the hardware in your host development
 machine. If the machine is a centralised build server the prefix may be used to
 separate production versions from the test versions and as just discussed the
-prefix paths may have restricted access to only those who manage and
-configuration control of the machine.
+prefix paths may have restricted access rights to only those who manage and
+have configuration control of the machine.
 
 Apple OS X
 ----------
@@ -143,7 +142,7 @@ complexity as well as a performance over-head. The RTEMS Project uses these
 POSIX emulation shells to run configure scripts that come with various open
 source packages such as `gcc` so they form an important and valued part of the
 environment we describe here. The output of this procedure forms the tools you
-use during your application development and they do not depend the emulation
+use during your application development and they do not depend on the emulation
 DLLs.
 
 The performance of the compiler is as good as you can have on Windows and the
@@ -169,10 +168,11 @@ characters. This can effect some of the tools used by RTEMS. It is recommended
 you keep the top level directories as short as possible when building the RTEMS
 tools and you should also keep an eye on the path length when developing your
 application. The RTEMS built tools can handle much longer path lengths however
-some of the GNU tools such as those in the ``binutils`` package cannot. The
-release packages of the RSB when unpacked has a top level file names that is
-too big to build RTEMS so you need to change that path to something smaller to
-build. This is indicated in :ref:`released-version`.
+some of the GNU tools such as those in the ``binutils`` package cannot.
+
+The release packages of the RSB when unpacked have top level file names that
+are too big to build RTEMS. You need to change or rname that path to something
+smaller to build. This is indicated in :ref:`released-version`.
 
 .. _msys2_parallel_builds:
 
@@ -198,7 +198,7 @@ executables. The shell is a standard Bourne shell and the MSYS2 environment is
 a stripped Cygwin shell with enough support to run the various ``configure``
 scripts needed to build the RTEMS tools and the RTEMS kernel.
 
-MSYS2 is built around the ``pacman`` packing tool. This makes MSYS2 a
+MSYS2 is built around the ``pacman`` packaging tool. This makes MSYS2 a
 distribution and that is a welcome feature on Windows. You get a powerful tool
 to manage your development environment on Windows.
 

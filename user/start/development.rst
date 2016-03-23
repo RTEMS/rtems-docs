@@ -20,8 +20,8 @@ Please read :ref:`development-hosts` before continuing.
    time to time.
 
 The following procedure assumes you have installed and configured your host
-operating. It also assumes you have installed any dependent packages needed
-when building the tools and the kernel.
+operating system. It also assumes you have installed any dependent packages
+needed when building the tools and the kernel.
 
 You need to select a location to build and install the RTEMS Tool chain and
 RTEMS. Make sure there is plenty of disk space and a fast disk is
@@ -32,7 +32,7 @@ you can do this without needing to be root. You can also use
 
 The location used to install the tools and kernel is called the `prefix`. It is
 best to have a `prefix` for each different version of RTEMS you are using. If
-you are using RTEMS 4.11 in production it is not a good to install a
+you are using RTEMS 4.11 in production it is not a good idea to install a
 development version of 4.12 over the top. A separate `prefix` for each version
 avoids this.
 
@@ -590,7 +590,7 @@ When you save and exit the editor git will report the commit's status:
    1 file changed, 1 insertion(+), 1 deletion(-)
 
 You can either email the patch to :r:list:`devel` with the following git
-command:
+command, and it is `minus one` on the command line:
 
 .. code-block:: shell
 

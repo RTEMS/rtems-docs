@@ -5,10 +5,9 @@
 Getting Started
 ===============
 
-RTEMS is an open source operating and an open source project. As a user you
-have access to all the source code and this `Getting Started`_ section will show
-you how you build the RTEMS compiler tools, kernel and 3rd party libraries from
-source.
+RTEMS is an open source real-time operating system. As a user you have access
+to all the source code and this `Getting Started`_ section will show you how
+you build the RTEMS compiler tools, kernel and 3rd party libraries from source.
 
 .. include:: basics.rst
 .. include:: depend.rst
