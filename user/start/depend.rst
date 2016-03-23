@@ -14,9 +14,9 @@ RTEMS Project does not maintain binary builds of the tools. This may appear be
 the opposite to what you normally experience with host operating systems, and
 it is, however this approach works well. RTEMS is not a host operating system
 and it is not a distrbution. Providing binary packages for every possible host
-operating system is to big a task for the RTEMS Project and it is not a good
-use of the core developer's time. Their time is better spent making RTEMS
-better and faster.
+operating system is too big a task for the RTEMS Project and it is not a good
+use of core developer time. Their time is better spent making RTEMS better and
+faster.
 
 Developer Computer
 ------------------
@@ -207,76 +207,76 @@ Python
 
 We need Python to build the tools as the RSB is written in Python and we need
 suitable Python libraries to link to GDB as RTEMS makes use of GDB's Python
-support. This place specific demands on the Python we need installed and
+support. This places specific demands on the Python we need installed and
 available and MSYS2 provides suitable Python versions we can use. You need to
 make sure you have the correct type and version of Python installed.
 
 We cannot use the Python executables created by the Python project (python.org)
 as they are built by Microsoft's C (MSC) compiler. Linking the MSC Python
 libraries with the MinGW64 executables is not easy and MSYS provided us with a
-simple solution so we do not support this.
+| simple solution so we do not support linking MSC libraries.
 
-MSYS2 provides two types and versions of Python executables, MinGW and MSYS and
-Python version 2 and 3. For Windows we need the MinGW executable so we have
-suitables libraries and we have to have Python version 2 because on Windows GDB
-only builds with Python2.
+| MSYS2 provides two types and versions of Python executables, MinGW and MSYS and
+| Python version 2 and 3. For Windows we need the MinGW executable so we have
+| suitables libraries and we have to have Python version 2 because on Windows GDB
+| only builds with Python2.
 
-You also need to install the MSYS version of Python along with the MinGW64
-Python2 package. The MSYS Python is version 3 and the RSB can support version 2
-and 3 of Python and it helps handle some of the long paths building GCC can
-generate.
+| You also need to install the MSYS version of Python along with the MinGW64
+| Python2 package. The MSYS Python is version 3 and the RSB can support version 2
+| and 3 of Python and it helps handle some of the long paths building GCC can
+| generate.
 
-Installing MSYS2
-~~~~~~~~~~~~~~~~
+| Installing MSYS2
+| ~~~~~~~~~~~~~~~~
 
-MSYS2 is installed on a new machine using the MSYS2 installer found on
-https://msys2.github.io/. Please select the ``x86_64`` variant for 64bit
-support. Run the installer followin the 7 steps listed on the page.
+| MSYS2 is installed on a new machine using the MSYS2 installer found on
+| https://msys2.github.io/. Please select the ``x86_64`` variant for 64bit
+| support. Run the installer following the 7 steps listed on the page.
 
-MSYS2 uses the ``pacman`` package manager. The Arch Linux project has detailed
-documentation on how to use ``pacman``. What is shown here is a just few
-examples of what you can do.
+| MSYS2 uses the ``pacman`` package manager. The Arch Linux project has detailed
+| documentation on how to use ``pacman``. What is shown here is a just few
+| examples of what you can do.
 
-.. sidebar:: **Pin MSYS2 Shell to Taskbar**
+| .. sidebar:: **Pin MSYS2 Shell to Taskbar**
 
-   Pin the MSYS2 64bit Shell to the Taskbar so you always use it rather than
-   the 32bit Shell.
+| Pin the MSYS2 64bit Shell to the Taskbar so you always use it rather than
+| the 32bit Shell.
 
-Open a 64bit MSYS shell from the Start Menu:
+| Open a 64bit MSYS shell from the Start Menu:
 
-.. figure:: msys2-minw64-start-menu.png
-   :width: 50%
-   :align: center
-   :alt: MSYS2 64bit Shell Start Menu
+| .. figure:: msys2-minw64-start-menu.png
+| :width: 50%
+| :align: center
+| :alt: MSYS2 64bit Shell Start Menu
 
-The packages we require are:
+| The packages we require are:
 
- * python
- * mingw-w64-x86_64-python2
- * mingw-w64-x86_64-gcc
- * git
- * bison
- * cvs
- * diffutils
- * make
- * patch
- * tar
- * texinfo
- * unzip
+| * python
+| * mingw-w64-x86_64-python2
+| * mingw-w64-x86_64-gcc
+| * git
+| * bison
+| * cvs
+| * diffutils
+| * make
+| * patch
+| * tar
+| * texinfo
+| * unzip
 
-.. note::
+| .. note::
 
-   The actual output provided may vary due to changes in the dependent packages
-   or newer package versions.
+| The actual output provided may vary due to changes in the dependent packages
+| or newer package versions.
 
-Install the packages using ``pacman``:
+| Install the packages using ``pacman``:
 
-.. code-block:: shell
+| .. code-block:: shell
 
-   ~
-  $ pacman -S python mingw-w64-x86_64-python2 mingw-w64-x86_64-gcc \
-  >           bison cvs diffutils git make patch tar texinfo unzip
-  resolving dependencies...
+| ~
+| $ pacman -S python mingw-w64-x86_64-python2 mingw-w64-x86_64-gcc \
+| bison cvs diffutils git make patch tar texinfo unzip
+| resolving dependencies...
   looking for conflicting packages...
 
   Packages (74) db-5.3.28-2  expat-2.1.0-2  gdbm-1.11-3  heimdal-1.5.3-8

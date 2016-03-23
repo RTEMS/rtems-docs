@@ -25,14 +25,14 @@ home directory called :file:`/opt/rtems`. This path will require root
 access. If you are working on a machine you do not have root access to you can
 use a home directory, :ref:`development-version` has more details about
 this. If building on Windows use :file:`/c/opt/rtems` to keep the top level
-paths as sohrt as possible. :ref:`microsoft-windows-installation` provides more
+paths as short as possible. :ref:`microsoft-windows-installation` provides more
 detail about path lengths on Windows.
 
-The location used to install the tools and kernel is called the `prefix`. It is
-best to have a `prefix` for each different version of RTEMS you are using. If
-you are using RTEMS 4.11 in production it is not a good to install a
-development version of 4.12 over the top. A separate `prefix` for each version
-avoids this.
+The location used to install the tools and kernel is called the
+`prefix`. :ref:`prefixes` explains prefixes and how to use them. It is best to
+have a `prefix` for each different version of RTEMS you are using. If you are
+using RTEMS 4.11 in production it is not a good to install a development
+version of 4.12 over the top. A separate `prefix` for each version avoids this.
 
 Releases download all source packages from the RTEMS FTP server. Hosting all
 the source on the RTEMS FTP server ensures the source is present for the like
@@ -41,13 +41,14 @@ RTEMS FTP the RSB will fall back to the packages home site.
 
 .. note:: **Controlling the RTEMS Kernel Build**
 
-   The RTEMS kernel is built by default for releases. To not build the RTEMS
+   Building releases by default builds the RTEMS kernel. To not build the RTEMS
    kernel add the ``--without-rtems`` option to the RSB command line.
 
    By default all the BSPs for an architecture are built. If you only wish to
-   have a specific BSP build you can specify the BSP list by providing to the
+   have a specific BSP built you can specify the BSP list by providing to the
    RSB the option ``--with-rtemsbsp``. For example to build two BSPs for the
-   SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``.
+   SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``. This can
+   speed the build time up for some architectures that have a lot of BSPs.
 
 This procedure will build a SPARC tool chain.
 

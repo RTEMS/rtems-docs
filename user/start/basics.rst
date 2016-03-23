@@ -30,14 +30,14 @@ For POSIX or Unix hosts the RTEMS Project uses :file:`/opt/rtems` as a standard
 *prefix*. We view this *prefix* as a production level path and we place
 development versions under a different *prefix* away from the production
 versions. Under this top level *prefix* we place the various versions we need
-for development, for example the version 4.11.0 the *prefix* would be
+for development, for example the version 4.11.0 *prefix* would be
 :file:`/opt/rtems/4.11.0`. If an update called 4.11.1 is released the *prefix*
 would be :file:`/opt/rtems/4.11.1`. These are recommendations and the choice of
 what you use is entirly yours. You may decide to have a single path for all
 RTEMS 4.11 releases of :file:`/opt/rtems/4.11`.
 
-For Windows a typical prefix is :file:`C:\\opt` and as an MSYS2 path this is
-:file:`/c/opt`.
+For Windows a typical prefix is :file:`C:\\opt\\rtems` and as an MSYS2 path
+this is :file:`/c/opt/rtems`.
 
 .. _project_sandboxing:
 
@@ -57,18 +57,8 @@ project directory called :file:`/bd/projects/box-sorter`. Under this create
 :file:`rtems` and under that create :file:`rtems-4.11.0`. Under this path you
 can follow the :ref:`released-version` procedure to build a tool set using the
 prefix of :file:`/bd/projects/box-sorter/rtems/4.11.0`. You are free to create
-your project specific directories under :file:`/bd/projects/box-sorter`.
-
-A variation of this is to have a single set of *production* tools and RTEMS
-BSPs on the disk under :file:`/bd/rtems` you can share between your
-projects. The top level directories would be:
-
-:file:`/bd/rtems`
-  The top path to production tools and kernels.
-
-:file:`/bd/rtems/4.11.0`
-  Production prefix for RTEMS 4.11.0 compiler, debuggers, tools and Board
-  Support Packages (BSPs).
+your project specific directories under :file:`/bd/projects/box-sorter`. The
+top level directories would be:
 
 :file:`/bd/projects`
   Project specific development trees.
@@ -76,17 +66,18 @@ projects. The top level directories would be:
 :file:`/bd/projects/box-sorter`
   Box Sorter project sandbox.
 
-A further variation is to use the ``--without-rtems`` option with the RSB to
-not build the BSPs when building the tools and to buld RTEMS specifically for
-each project. This lets you have a production tools installed at a top level on
-your disk and each project can have a specific and possibly customised version
-of RTEMS. The top level directories would be:
+:file:`/bd/projects/box-sorter/rtems/4.11.0`
+  Project prefix for RTEMS 4.11.0 compiler, debuggers, tools and installed
+  Board Support Package (BSP).
+
+A variation is to use the ``--without-rtems`` option with the RSB to not build
+the BSPs when building the tools and to build RTEMS specifically for each
+project. This lets you have a production tools installed at a top level on your
+disk and each project can have a specific and possibly customised version of
+RTEMS. The top level directories would be:
 
 :file:`/bd/rtems`
-  The top path to production tools and kernels.
-
-:file:`/bd/rtems/4.11.0`
-  Production prefix for RTEMS 4.11.0.
+  The top path to production tools.
 
 :file:`/bd/rtems/4.11.0`
   Production prefix for RTEMS 4.11.0 compiler, debuggers and tools.
@@ -100,8 +91,9 @@ of RTEMS. The top level directories would be:
 :file:`/bd/projects/box-sorter/rtems`
   Box Sorter project's custom RTEMS kernel source and installed BSP.
 
-If there is an RTEMS kernel you to share between projects you can move this to
-a top level and share. In this case you will end up with:
+A further varation if there is an RTEMS kernel you want to share between
+projects is it to move this to a top level and share. In this case you will end
+up with:
 
 :file:`/bd/rtems`
   The top path to production tools and kernels.
@@ -121,9 +113,26 @@ a top level and share. In this case you will end up with:
 :file:`/bd/projects/box-sorter`
   Box Sorter project sandbox.
 
+Finally you can have a single set of *production* tools and RTEMS BSPs on the
+disk under :file:`/bd/rtems` you can share between your projects. The top level
+directories would be:
+
+:file:`/bd/rtems`
+  The top path to production tools and kernels.
+
+:file:`/bd/rtems/4.11.0`
+  Production prefix for RTEMS 4.11.0 compiler, debuggers, tools and Board
+  Support Packages (BSPs).
+
+:file:`/bd/projects`
+  Project specific development trees.
+
+:file:`/bd/projects/box-sorter`
+  Box Sorter project sandbox.
+
 The project sandoxing approach allows you move a specific production part into
 the project's sandbox to allow you to customise it. This is useful if you are
-testing new relesaes. The typical dependency is the order listed above. You can
+testing new releases. The typical dependency is the order listed above. You can
 test new RTEMS kernels with production tools but new tools will require you
 build the kernel with them. Release notes with each release will let know
 what you need to update.
