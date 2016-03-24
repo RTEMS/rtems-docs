@@ -8,7 +8,7 @@ RTEMS offers a variety of support options.
 
 This chapter covers all options available to both users and developers.  If you
 believe this is a bug report please submit it to the bug tracker otherwise the
-developers mailing list the default location.
+developers mailing list is the default location to send the report.
 
 
 Bug Tracker

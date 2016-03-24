@@ -34,12 +34,11 @@ engineer a development environment that suites you. The basic specs are:
 
 RTEMS makes no demands on graphics.
 
-If you are using a VM or your host computer and is not a fast modern machine do
-not be concerned. The tools may take longer to build than faster hardware
-however building tools is something you do once. Once the tools and RTEMS is
-built all your time can be spent writing and developing your application. Over
-an hour does happen and for the ARM architecture with all BSPs it can be many
-hours.
+If you are using a VM or your host computer is not a fast modern machine do not
+be concerned. The tools may take longer to build than faster hardware however
+building tools is something you do once. Once the tools and RTEMS is built all
+your time can be spent writing and developing your application. Over an hour
+does happen and for the ARM architecture with all BSPs it can be many hours.
 
 Host Software
 -------------
@@ -171,7 +170,7 @@ application. The RTEMS built tools can handle much longer path lengths however
 some of the GNU tools such as those in the ``binutils`` package cannot.
 
 The release packages of the RSB when unpacked have top level file names that
-are too big to build RTEMS. You need to change or rname that path to something
+are too big to build RTEMS. You need to change or rename that path to something
 smaller to build. This is indicated in :ref:`released-version`.
 
 .. _msys2_parallel_builds:
