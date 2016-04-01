@@ -6,8 +6,8 @@ Overview
 
 Welcome to the :ref:term:`RTEMS` User Manual.
 
-This document covers all the topic required as a user of RTEMS to use the RTEMS
-operating system.
+This document covers all the topics required as a user of RTEMS to use the
+RTEMS operating system.
 
 RTEMS, Real-Time Executive for Multiprocessor Systems, is a real-time executive
 (kernel) which provides a high performance environment for embedded
@@ -15,7 +15,7 @@ applications including the following features:
 
 .. sidebar:: Developers
 
-  Developers should look at the :r:url:`devel` for technical information the
+  Developers should look at the :r:url:`devel` for technical information. The
   design and development of RTEMS is located there.
 
 - multitasking capabilities
@@ -61,9 +61,9 @@ interdependent, asynchronous or cyclical event streams.
 
 Deadlines can be further characterized as either hard or soft based upon the
 value of the results when produced after the deadline has passed.  A deadline
-is hard if the results have no value or if their use will result in a
-catastrophic event.  In contrast, results which are produced after a soft
-deadline may have some value.
+is hard if the results have no value after the deadline has passed, or a
+catastophic event results from their intended use if not completed on time.  In
+contrast, results produced after a soft deadline may still have some value.
 
 Another distinguishing requirement of real-time application systems is the
 ability to coordinate or manage a large number of concurrent activities. Since
@@ -84,7 +84,7 @@ complicate each and every characteristic of a real-time system.
 Real-time Executive
 ===================
 
-Fortunately, real-time operating systems or real-time executives serve as a
+Fortunately, real-time operating systems, or real-time executives, serve as a
 cornerstone on which to build the application system.  A real-time multitasking
 executive allows an application to be cast into a set of logical, autonomous
 processes or tasks which become quite manageable.  Each task is internally
@@ -99,19 +99,19 @@ CPU instruction set to support efficient multitasking.  By causing tasks to
 travel through well-defined state transitions, system calls permit an
 application to demand-switch between tasks in response to real-time events.
 
-By proper grouping of responses to stimuli into separate tasks, a system can
-now asynchronously switch between independent streams of execution, directly
-responding to external stimuli as they occur.  This allows the system design to
-meet critical performance specifications which are typically measured by
-guaranteed response time and transaction throughput.  The multiprocessor
-extensions of RTEMS provide the features necessary to manage the extra
-requirements introduced by a system distributed across several processors.  It
-removes the physical barriers of processor boundaries from the world of the
-system designer, enabling more critical aspects of the system to receive the
-required attention. Such a system, based on an efficient real-time,
-multiprocessor executive, is a more realistic model of the outside world or
-environment for which it is designed.  As a result, the system will always be
-more logical, efficient, and reliable.
+By properly grouping stimuli responses into separate tasks a system can now
+asynchronously switch between independent streams of execution. This allows the
+system to directly respond to external stimuli as they occur, as well as meet
+critical performance specifications that are typically measured by guaranteed
+response time and transaction throughput.  The multiprocessor extensions of
+RTEMS provide the features necessary to manage the extra requirements
+introduced by a system distributed across several processors.  It removes the
+physical barriers of processor boundaries from the world of the system
+designer, enabling more critical aspects of the system to receive the required
+attention. Such a system, based on an efficient real-time, multiprocessor
+executive, is a more realistic model of the outside world or environment for
+which it is designed.  As a result, the system will always be more logical,
+efficient, and reliable.
 
 By using the directives provided by RTEMS, the real-time applications developer
 is freed from the problem of controlling and synchronizing multiple tasks and
@@ -124,14 +124,14 @@ sophisticated real-time applications is significantly reduced.
 Open Source
 ===========
 
-RTEMS is an open source operating and an open source project. As a user you
-have access to all the source code and we encourage you to work with the source
-code and to integrate the processes used to build tools, the kernel and any 3rd
-party libraries into your project's configuration management processes. The
-RTEMS project is always improving the way it develivers the kernel to you and
-so your feedback is important.
+RTEMS is an open source operating system and an open source project. As a user,
+you have access to all the source code. We encourage you to work with the
+source code and integrate the provided processes used to build tools, the
+kernel and any 3rd party libraries into your project's configuration management
+processes. The RTEMS project is always improving the way it develivers the
+kernel to you and so your feedback is important.
 
 What we used in the RTEMS project to develop and maintain RTEMS does not
-dictate what you use to develop and maintain your project. You can and should
+dictate what you use to develop and maintain your project. You can, and should,
 select the work-flow that best suites the demands of your project and what you
 are delivering.
