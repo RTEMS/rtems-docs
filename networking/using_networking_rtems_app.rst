@@ -359,8 +359,7 @@ following exceptions:
 
   ``gethostbyaddr``
   ``gethostbyname``
-  ``inet_ntoa``
-      (``inet_ntop`` is thread-safe, though).
+  ``inet_ntoa`` (``inet_ntop`` is thread-safe, though).
 
 - The RTEMS network package gathers statistics.
 
