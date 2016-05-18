@@ -119,16 +119,28 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
 
 
 def html_resources(ctx):
-	for dir in ["_static", "_templates"]:
-		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir)
-		ctx.path.get_bld().make_node(dir).mkdir() # dirs
+	for dir_name in ["_static", "_templates"]:
+		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
+		ctx.path.get_bld().make_node(dir_name).mkdir() # dirs
 
 		ctx(
 			features    = "subst",
 			is_copy     = True,
 			source      = files,
-			target      = [ctx.bldnode.find_node(dir).get_bld().make_node(x.name) for x in files]
+			target      = [ctx.bldnode.find_node(dir_name).get_bld().make_node(x.name) for x in files]
 		)
+
+	# copy images
+#	ctx.path.get_bld().make_node("images").mkdir()
+#	files = ctx.path.parent.ant_glob("images/**")
+#	ctx(
+#		features    = "subst",
+#		is_copy     = True,
+#		source      = files,
+#		target      = [x.srcpath().replace("../", "") for x in files]
+#	)
+
+
 
 
 def cmd_build(ctx, conf_dir=".", source_dir="."):

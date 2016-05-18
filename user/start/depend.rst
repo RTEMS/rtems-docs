@@ -243,7 +243,7 @@ examples of what you can do.
 
 Open a 64bit MSYS shell from the Start Menu:
 
-.. figure:: msys2-minw64-start-menu.png
+.. figure:: ../../images/msys2-minw64-start-menu.png
   :width: 50%
   :align: center
   :alt: MSYS2 64bit Shell Start Menu

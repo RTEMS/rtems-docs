@@ -327,7 +327,7 @@ It will remain in the dormant state until it is started via the
 task is now permitted to be scheduled for the processor and to compete for
 other system resources.
 
-.. figure:: states.png
+.. figure:: ../images/c_user/states.png
          :width: 70%
          :align: center
          :alt: Task State Transitions

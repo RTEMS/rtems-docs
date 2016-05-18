@@ -9,7 +9,7 @@ Network Task Structure and Data Flow
 A schematic diagram of the tasks and message *mbuf* queues in a simple RTEMS
 networking application is shown in the following figure:
 
-.. image:: images/networkflow.jpg
+.. image:: ../images/networking/networkflow.jpg
 
 
 The transmit task for each network interface is normally blocked waiting for a

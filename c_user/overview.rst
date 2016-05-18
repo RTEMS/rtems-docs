@@ -120,7 +120,7 @@ serves as a buffer between the project dependent application code and the
 target hardware.  Most hardware dependencies for real-time applications can be
 localized to the low level device drivers.
 
-.. figure:: rtemsarc.png
+.. figure:: ../images/c_user/rtemsarc.png
          :width: 488
          :height: 100px
          :align: center
@@ -146,7 +146,7 @@ routines.  Together these components provide a powerful run time environment
 that promotes the development of efficient real-time application systems.  The
 following figure illustrates this organization:
 
-.. figure:: rtemspie.png
+.. figure:: ../images/c_user/rtemspie.png
          :width: 70%
          :align: center
          :alt: RTEMS Internal Architecture

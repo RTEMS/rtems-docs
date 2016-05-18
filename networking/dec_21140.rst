@@ -59,7 +59,7 @@ PowerPC target.
 .. COMMENT: PCI Device's Configuration Header Space Format
 
 
-.. image:: images/PCIreg.jpg
+.. image:: ../images/networking/PCIreg.jpg
 
 
 .. COMMENT: XXX add crossreference to PCI Register Figure
@@ -123,7 +123,7 @@ to the DEC21140 Hardware Manual.
 .. COMMENT: Buffer Descriptor
 
 
-.. image:: images/recvbd.jpg
+.. image:: images/networking/recvbd.jpg
 
 
 Receiver Thread
