@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 OpenRISC 1000 Specific Information
 ##################################
 

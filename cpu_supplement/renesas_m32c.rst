@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 Renesas M32C Specific Information
 #################################
 

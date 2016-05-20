@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 Language-Specific Services for the C Programming Language
 #########################################################
 

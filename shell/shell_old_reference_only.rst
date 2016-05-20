@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 :orphan:
 
 .. COMMENT: COPYRIGHT (c) 1988-2013.

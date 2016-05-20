@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 .. COMMENT: RTEMS Remote Debugger Server Specifications
 .. COMMENT: Written by: Emmanuel Raguet <raguet@crf.canon.fr>
 

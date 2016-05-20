@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 .. COMMENT: Copyright 2014 Gedare Bloom.
 .. COMMENT: All rights reserved.
 

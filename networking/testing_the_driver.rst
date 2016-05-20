@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 .. COMMENT: Text Written by Jake Janovetz
 .. COMMENT: COPYRIGHT (c) 1988-2002.
 .. COMMENT: On-Line Applications Research Corporation (OAR).

@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 Simulation
 ==========
 .. index:: Simulation Tools, rtems-run

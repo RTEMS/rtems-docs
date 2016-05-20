@@ -1,3 +1,5 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
 .. COMMENT: COPYRIGHT (c) 2011,2015
 .. COMMENT: Aeroflex Gaisler AB
 .. COMMENT: All rights reserved.
