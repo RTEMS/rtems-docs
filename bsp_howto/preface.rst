@@ -1,13 +1,17 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Introduction
 ############
 
-Before reading this documentation, it is strongly advised to read the
-RTEMS Development Environment Guide to get acquainted with the RTEMS
-directory structure.  This document describes how to do a RTEMS Board
-Support Package, i.e. how to port RTEMS on a new target board. Discussions
-are provided for the following topics:
+Before reading this documentation, it is strongly advised to read the RTEMS
+Development Environment Guide to get acquainted with the RTEMS directory
+structure.  This document describes how to do a RTEMS Board Support Package,
+i.e. how to port RTEMS on a new target board. Discussions are provided for the
+following topics:
 
 - RTEMS Board Support Package Organization
 
@@ -15,7 +19,8 @@ are provided for the following topics:
 
 - Board Initialization Sequence
 
-- Device Drivers Including:
+- Device Drivers:
+
   - Console Driver
   - Clock Driver
   - Timer Driver
@@ -51,10 +56,3 @@ So in this guide we will try to point out good examples from other BSPs.
 
 Our goal is for you to be able to reuse as much code as possible and
 write as little board specific code as possible.
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
