@@ -77,6 +77,18 @@ table.rtems-table.docutils td {
 }
 
 /*
+ * Warning
+ */
+.rst-content .warning .admonition-title {
+    background-color: #38532F;
+    color: #ef6d6d;
+}
+.admonition.warning {
+    background:#dbe5c6;
+    color: #333333;
+}
+
+/*
  * Nav side-bar in RTEMS colours.
  */
 .wy-nav-top, .wy-nav-top a {
