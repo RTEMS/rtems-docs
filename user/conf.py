@@ -27,6 +27,7 @@ exclude_patterns = ['config/build.rst',
                     'installation/prefixes-sandboxing.rst',
                     'installation/releases.rst',
                     'installation/developer.rst',
+                    'installation/kernel.rst',
 
                     'tools/build.rst',
                     'tools/simulation.rst',

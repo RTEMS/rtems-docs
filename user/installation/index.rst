@@ -45,3 +45,4 @@ repositories for the tools and kernel.
 .. include:: prefixes-sandboxing.rst
 .. include:: releases.rst
 .. include:: developer.rst
+.. include:: kernel.rst
