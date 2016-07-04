@@ -3,10 +3,212 @@
 .. comment: Copyright (c) 2016 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
-.. _microsoft-windows-installation:
+.. _developer:
+.. _development-version:
+.. _unstable:
 
-Microsoft Windows
------------------
+Developer (Unstable)
+--------------------
+.. index:: Git
+
+RTEMS provides open access to it's development processes. We call this the
+developer set up.  The project encouages all users to inspect, review, comment
+and contribute to the code base. The processes described here are the same
+processes the core development team use when developing and maintaining RTEMS.
+
+.. warning::
+
+   The development version is not for use in production and it can break from
+   time to time.
+
+Please read :ref:`development-host` before continuing. The following procedure
+assumes you have installed and configured your host operating system. It also
+assumes you have installed any dependent packages needed when building the
+tools and the kernel.
+
+You need to select a location to build and install the RTEMS Tool chain and
+RTEMS. Make sure there is plenty of disk space and a fast disk is
+recommended. Our procedure will document building and installing the tools in a
+home directory called :file:`development/rtems`. Using a home directory means
+you can do this without needing to be root. You can also use
+:file:`/opt/rtems/build` if you have access to that path.
+
+The location used to install the tools and kernel is called the `prefix`. It is
+best to have a `prefix` for each different version of RTEMS you are using. If
+you are using RTEMS 4.11 in production it is not a good idea to install a
+development version of 4.12 over the top. A separate `prefix` for each version
+avoids this.
+
+The RTEMS tool chain changes less often than the RTEMS kernel. One method of
+working with development releases is to have a separate `prefix` for the RTEMS
+tools and a different one for the RTEMS kernel. You can then update each
+without interacting with the other. You can also have a number of RTEMS
+versions available to test with.
+
+.. sidebar:: *Downloading the source*
+
+  You need an internet connection to download the source. The downloaded source
+  is cached locally and the RSB checksums it. If you run a build again the
+  download output will be missing. Using the RSB from git will download the
+  source from the upstream project's home site and this could be `http`, `ftp`,
+  or `git`.
+
+.. _posix-host-tools-chain:
+.. _macos-host-tools-chain:
+
+POSIX and OS X Host Tools Chain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This procedure will build a SPARC tool chain.
+
+Clone the RTEMS Source Builder (RSB) repository:
+
+.. code-block:: shell
+
+  $ cd
+  $ mkdir -p development/rtems
+  $ cd development/rtems
+  $ git clone git://git.rtems.org/rtems-source-builder.git rsb
+  Cloning into 'rsb'...
+  remote: Counting objects: 5837, done.
+  remote: Compressing objects: 100% (2304/2304), done.
+  remote: Total 5837 (delta 4014), reused 5056 (delta 3494)
+  Receiving objects: 100% (5837/5837), 2.48 MiB | 292.00 KiB/s, done.
+  Resolving deltas: 100% (4014/4014), done.
+  Checking connectivity... done.
+
+Check all the host packages you need are present. Current libraries are not
+checked and this includes checking for the python development libraries GDB
+requires:
+
+.. code-block:: shell
+
+  $ cd rsb
+  $ ./source-builder/sb-check
+  RTEMS Source Builder - Check, 4.12 (e645642255cc)
+  Environment is ok
+
+Build a tool chain for the SPARC architecure. We are using the SPARC
+architecture because GDB has a good simulator that lets us run and test the
+samples RTEMS builds by default. The current development version
+is `4.12` and is on master:
+
+.. code-block:: shell
+
+  $ cd rtems
+  $ ../source-builder/sb-set-builder \
+      --prefix=/usr/home/chris/development/rtems/4.12 4.12/rtems-sparc
+  RTEMS Source Builder - Set Builder, 4.12 (e645642255cc)
+  Build Set: 4.12/rtems-sparc
+  Build Set: 4.12/rtems-autotools.bset
+  Build Set: 4.12/rtems-autotools-internal.bset
+  config: tools/rtems-autoconf-2.69-1.cfg
+  package: autoconf-2.69-x86_64-linux-gnu-1
+  Creating source directory: sources
+  download: ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz -> sources/autoconf-2.69.tar.gz
+  downloading: sources/autoconf-2.69.tar.gz - 1.8MB of 1.8MB (100%)
+  building: autoconf-2.69-x86_64-linux-gnu-1
+  config: tools/rtems-automake-1.12.6-1.cfg
+  package: automake-1.12.6-x86_64-linux-gnu-1
+  download: ftp://ftp.gnu.org/gnu/automake/automake-1.12.6.tar.gz -> sources/automake-1.12.6.tar.gz
+  downloading: sources/automake-1.12.6.tar.gz - 2.0MB of 2.0MB (100%)
+  Creating source directory: patches
+  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/automake/automake-1.12.6-bugzilla.redhat.com-1239379.diff -> patches/automake-1.12.6-bugzilla.redhat.com-1239379.diff
+  downloading: patches/automake-1.12.6-bugzilla.redhat.com-1239379.diff - 408.0 bytes of 408.0 bytes (100%)
+  building: automake-1.12.6-x86_64-linux-gnu-1
+  cleaning: autoconf-2.69-x86_64-linux-gnu-1
+  cleaning: automake-1.12.6-x86_64-linux-gnu-1
+  Build Set: Time 0:00:17.465024
+  Build Set: 4.12/rtems-autotools-base.bset
+  config: tools/rtems-autoconf-2.69-1.cfg
+  package: autoconf-2.69-x86_64-linux-gnu-1
+  building: autoconf-2.69-x86_64-linux-gnu-1
+  reporting: tools/rtems-autoconf-2.69-1.cfg -> autoconf-2.69-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-autoconf-2.69-1.cfg -> autoconf-2.69-x86_64-linux-gnu-1.xml
+  config: tools/rtems-automake-1.12.6-1.cfg
+  package: automake-1.12.6-x86_64-linux-gnu-1
+  building: automake-1.12.6-x86_64-linux-gnu-1
+  reporting: tools/rtems-automake-1.12.6-1.cfg -> automake-1.12.6-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-automake-1.12.6-1.cfg -> automake-1.12.6-x86_64-linux-gnu-1.xml
+  installing: autoconf-2.69-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  installing: automake-1.12.6-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  cleaning: autoconf-2.69-x86_64-linux-gnu-1
+  cleaning: automake-1.12.6-x86_64-linux-gnu-1
+  Build Set: Time 0:00:05.358624
+  Build Set: Time 0:00:22.824422
+  config: devel/expat-2.1.0-1.cfg
+  package: expat-2.1.0-x86_64-linux-gnu-1
+  download: http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz -> sources/expat-2.1.0.tar.gz
+    redirect: http://internode.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
+  downloading: sources/expat-2.1.0.tar.gz - 549.4kB of 549.4kB (100%)
+  building: expat-2.1.0-x86_64-linux-gnu-1
+  reporting: devel/expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-linux-gnu-1.txt
+  reporting: devel/expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-linux-gnu-1.xml
+  config: tools/rtems-binutils-2.26-1.cfg
+  package: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1
+  download: ftp://ftp.gnu.org/gnu/binutils/binutils-2.26.tar.bz2 -> sources/binutils-2.26.tar.bz2
+  downloading: sources/binutils-2.26.tar.bz2 - 24.4MB of 24.4MB (100%)
+  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/binutils/binutils-2.26-rtems-aarch64-x86_64.patch -> patches/binutils-2.26-rtems-aarch64-x86_64.patch
+  downloading: patches/binutils-2.26-rtems-aarch64-x86_64.patch - 3.2kB	of 3.2kB (100%)
+  building: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1
+  reporting: tools/rtems-binutils-2.26-1.cfg -> sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-binutils-2.26-1.cfg -> sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1.xml
+  config: tools/rtems-gcc-6-20160228-newlib-2.3.0.20160226-1.cfg
+  package: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1
+  download: ftp://gcc.gnu.org/pub/gcc/snapshots/6-20160228/gcc-6-20160228.tar.bz2 -> sources/gcc-6-20160228.tar.bz2
+  downloading: sources/gcc-6-20160228.tar.bz2 - 90.8MB of 90.8MB (100%)
+  download: ftp://sourceware.org/pub/newlib/newlib-2.3.0.20160226.tar.gz -> sources/newlib-2.3.0.20160226.tar.gz
+  downloading: sources/newlib-2.3.0.20160226.tar.gz - 16.9MB of 16.9MB (100%)
+  download: http://www.mpfr.org/mpfr-2.4.2/mpfr-2.4.2.tar.bz2 ->
+  sources/mpfr-2.4.2.tar.bz2
+  downloading: sources/mpfr-2.4.2.tar.bz2 - 1.0MB of 1.0MB (100%)
+  download: http://www.multiprecision.org/mpc/download/mpc-0.8.1.tar.gz -> sources/mpc-0.8.1.tar.gz
+  downloading: sources/mpc-0.8.1.tar.gz - 532.2kB of 532.2kB (100%)
+  download: ftp://ftp.gnu.org/gnu/gmp/gmp-4.3.2.tar.bz2 -> sources/gmp-4.3.2.tar.bz2
+  downloading: sources/gmp-4.3.2.tar.bz2 - 1.8MB of 1.8MB (100%)
+  building: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1
+  reporting: tools/rtems-gcc-6-20160228-newlib-2.3.0.20160226-1.cfg -> sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-gcc-6-20160228-newlib-2.3.0.20160226-1.cfg -> sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1.xml
+  config: tools/rtems-gdb-7.9-1.cfg
+  package: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1
+  download: http://ftp.gnu.org/gnu/gdb/gdb-7.9.tar.xz -> sources/gdb-7.9.tar.xz
+  downloading: sources/gdb-7.9.tar.xz - 17.0MB of 17.0MB (100%)
+  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/gdb/gdb-sim-arange-inline.diff -> patches/gdb-sim-arange-inline.diff
+  downloading: patches/gdb-sim-arange-inline.diff - 761.0 bytes of 761.0 bytes (100%)
+  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/gdb/gdb-sim-cgen-inline.diff -> patches/gdb-sim-cgen-inline.diff
+  downloading: patches/gdb-sim-cgen-inline.diff - 706.0 bytes of 706.0 bytes (100%)
+  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/gdb/gdb-7.9-aarch64-x86_64.patch -> patches/gdb-7.9-aarch64-x86_64.patch
+  downloading: patches/gdb-7.9-aarch64-x86_64.patch - 1.7kB of 1.7kB (100%)
+  building: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1
+  reporting: tools/rtems-gdb-7.9-1.cfg -> sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-gdb-7.9-1.cfg -> sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1.xml
+  config: tools/rtems-tools-4.12-1.cfg
+  package: rtems-tools-HEAD-1
+  Creating source directory: sources/git
+  git: clone: git://git.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
+  git: reset: git://git.rtems.org/rtems-tools.git
+  git: fetch: git://git.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
+  git: checkout: git://git.rtems.org/rtems-tools.git => HEAD
+  git: pull: git://git.rtems.org/rtems-tools.git
+  building: rtems-tools-HEAD-1
+  reporting: tools/rtems-tools-4.12-1.cfg -> rtems-tools-HEAD-1.txt
+  reporting: tools/rtems-tools-4.12-1.cfg -> rtems-tools-HEAD-1.xml
+  installing: expat-2.1.0-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  installing: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  installing: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  installing: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  installing: rtems-tools-HEAD-1 -> /usr/home/chris/development/rtems/4.12
+  cleaning: expat-2.1.0-x86_64-linux-gnu-1
+  cleaning: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1
+  cleaning: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1
+  cleaning: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1
+  cleaning: rtems-tools-HEAD-1
+  Build Set: Time 0:31:09.754219
+
+.. _windows-tool-chain:
+
+Windows Host Tool Chain
+~~~~~~~~~~~~~~~~~~~~~~~
 .. index:: Microsoft Windows Installation
 
 This section details how you create an RTEMS development environment on
@@ -21,8 +223,8 @@ Please see :ref:`microsoft-windows` before continuing.
    probably opened an MSYS2 32bit Shell. Close all 32bit Shell windows and open
    the MSYS2 64bit Shell.
 
-RTEMS Tools
-~~~~~~~~~~~
+RTEMS Windows Tools
+^^^^^^^^^^^^^^^^^^^
 
 Create a workspace for RTEMS using the following shell command:
 
@@ -202,8 +404,10 @@ tools is:
    /c/opt/rtems/rsb/rtems
   $
 
+.. _rtems-kernel-install:
+
 Building the Kernel
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 We can now build the RTEMS kernel using the RTEMS tools we have just
 built. First we need to set the path to the tools:
@@ -466,12 +670,3 @@ Install the kernel to our prefix:
   make[1]: Leaving directory '/c/opt/rtems/kernel/pc686'
    /c/opt/rtems/kernel/pc686
   $
-
-Building the LibBSD
-~~~~~~~~~~~~~~~~~~~
-
-The RTEMS BSD Library or libBSD as it is also known is a package of FreeBSD code
-ported to RTEMS. It provides a number of advantanced services including a
-networking stack.
-
-| This needs to move to a new section and be completed.

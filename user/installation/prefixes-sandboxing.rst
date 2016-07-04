@@ -6,7 +6,9 @@
 .. _prefixes:
 
 Prefixes
-========
+--------
+
+.. index:: Prefixes
 
 You will see the term :ref:term:`prefix` referred to thoughout this
 documentation and in a wide number of software packages you can download from
@@ -46,10 +48,10 @@ path for all RTEMS 4.11 releases of :file:`/opt/rtems/4.11`.
 For Windows a typical **prefix** is :file:`C:\\opt\\rtems` and as an MSYS2 path
 this is :file:`/c/opt/rtems`.
 
-.. _project_sandboxing:
+.. _project-sandboxing:
 
 Project Sandboxing
-==================
+------------------
 
 Project specific sandboxes let you have a number of projects running in
 parallel with each project in its own sandbox. You simply have a

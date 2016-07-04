@@ -10,17 +10,30 @@ project = "RTEMS User Manual"
 
 exclude_patterns = ['config/build.rst',
                     'config/runtime.rst',
+
+                    'start/installation.rst',
                     'start/basics.rst',
                     'start/depend.rst',
+                    'start/quick.rst',
+
                     'start/transition.rst',
-                    'start/releases.rst',
-                    'start/development.rst',
-                    'start/installation.rst',
-                    'start/windows.rst',
-                    'test/create.rst',
-                    'test/running.rst',
+
+                    'hosts/os.rst',
+                    'hosts/prefixes.rst',
+                    'hosts/macos.rst',
+                    'hosts/posix.rst',
+                    'hosts/windows.rst',
+
+                    'installation/prefixes-sandboxing.rst',
+                    'installation/releases.rst',
+                    'installation/developer.rst',
+
                     'tools/build.rst',
                     'tools/simulation.rst',
+
+                    'test/create.rst',
+                    'test/running.rst',
+
                     'waf/index.rst']
 
 latex_documents = [

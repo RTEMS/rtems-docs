@@ -1,5 +1,11 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. comment Headingd
+.. comment  1  ======
+.. comment  2  ------
+.. comment  3  ~~~~~~
+.. comment  4  ^^^^^^
+
 .. highlight:: c
 
 ============================
@@ -14,12 +20,11 @@ Table of Contents
 	:numbered:
 
 	overview/index
+	ecosys/index
 
 	start/index
-	config/index
-
-	tools/index
-	test/index
+	hosts/index
+	installation/index
 
 	architecture/index
 	bsp/index

@@ -5,8 +5,8 @@
 
 .. _released-version:
 
-Released Version
-================
+Releases
+--------
 .. index:: tarball
 .. index:: release
 
@@ -14,21 +14,19 @@ RTEMS releases provide a stable version of the kernel for the supported
 architectures. RTEMS maintaines the current and previous releases. Support for
 older releases is provided using the RTEMS support channels.
 
-Please read :ref:`development-hosts` before continuing.
-
-The following procedure assumes you have installed and configured your host
-operating. It also assumes you have installed any dependent packages needed
-when building the tools and the kernel.
+Please read :ref:`development-host` before continuing. The following procedure
+assumes you have installed and configured your host operating. It also assumes
+you have installed any dependent packages needed when building the tools and
+the kernel.
 
 You need to select a location to build and install the RTEMS Tool chain and
 RTEMS. Make sure there is plenty of disk space and a fast disk is
 recommended. Our procedure will document building and installing the tools in a
-home directory called :file:`/opt/rtems`. This path will require root
+base directory called :file:`/opt/rtems`. This path will require root
 access. If you are working on a machine you do not have root access to you can
-use a home directory, :ref:`development-version` has more details about
-this. If building on Windows use :file:`/c/opt/rtems` to keep the top level
-paths as short as possible. :ref:`microsoft-windows-installation` provides more
-detail about path lengths on Windows.
+use a home directory, If building on Windows use :file:`/c/opt/rtems` to keep
+the top level paths as short as possible. :ref:`windows-path-length` provides
+more detail about path lengths on Windows.
 
 The location used to install the tools and kernel is called the
 `prefix`. :ref:`prefixes` explains prefixes and how to use them. It is best to
@@ -37,16 +35,16 @@ using RTEMS 4.11 in production it is **not** a good idea to install a
 development version of 4.12 over the top by using the same `prefix` as the 4.11
 build. A separate `prefix` for each version avoids this.
 
-Released versions of the RSB download all source code for all packages from the
-:r:url:`ftp` rather than from the package's home site. Hosting all the source
-on the :r:url:`ftp` ensures the source is present for the life of the
-release on the :r:url:`ftp`. If there is a problem accessing the RTEMS FTP
-the RSB will fall back to the packages home site.
+Released versions of the RTEMS Source Builder (RSB) downloads all source code
+for all packages from the :r:url:`ftp` rather than from the package's home
+site. Hosting all the source on the :r:url:`ftp` ensures the source is present
+for the life of the release on the :r:url:`ftp`. If there is a problem
+accessing the RTEMS FTP the RSB will fall back to the packages home site.
 
 The :r:url:`ftp` is hosted at the Oregon State University's The Open Source Lab
 (http://osuosl.org/). This is a nonprofit organization working for the
-advancement of open source technologies and RTEMS is very fortunate to hosted
-here. It has excellent internet access and performance.
+advancement of open source technologies and RTEMS is very fortunate to be
+shosted here. It has excellent internet access and performance.
 
 .. note:: **Controlling the RTEMS Kernel Build**
 
@@ -59,8 +57,8 @@ here. It has excellent internet access and performance.
    SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``. This can
    speed the build time up for some architectures that have a lot of BSPs.
 
-RTEMS Tools Chain
------------------
+RTEMS Tools and Kernel
+~~~~~~~~~~~~~~~~~~~~~~
 
 This procedure will build a SPARC tool chain. Set up a suitable workspace to
 build the release in. On Unix:
@@ -282,3 +280,5 @@ discussed in :ref:`msys2_parallel_builds`.
  cleaning: rtems-tools-4.11.0-1
  cleaning: sparc-rtems4.11-kernel-4.11.0-1
  Build Set: Time 0:19:15.713662
+
+You can now build a 3rd party library or an application as defailted in TBD.

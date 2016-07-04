@@ -1,24 +1,23 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-
-.. _overview:
-
 Overview
 =========
 
 Welcome to the :ref:term:`RTEMS` User Manual.
 
-This document covers all the topics required as a user of RTEMS to use the
-RTEMS operating system.
+This document covers the topics a user of RTEMS needs to be able to install,
+configure, build and create applications for the RTEMS operating system.
 
 RTEMS, Real-Time Executive for Multiprocessor Systems, is a real-time executive
 (kernel) which provides a high performance environment for embedded
-applications including the following features:
+applications with the following features:
 
 .. sidebar:: Developers
 
   Developers should look at the :r:url:`devel` for technical information. The
   design and development of RTEMS is located there.
+
+- standards based user interfaces
 
 - multitasking capabilities
 
@@ -38,6 +37,8 @@ applications including the following features:
 
 - high level of user configurability
 
+- open source with a friendly user license
+
 RTEMS provides features found in modern operating systems:
 
 - file systems
@@ -48,8 +49,12 @@ RTEMS provides features found in modern operating systems:
 
 - permanent media such as flash disks, cards and USB devices
 
+- support for various languages
+
+- parallel programming language support
+
 Real-time Application Systems
-=============================
+-----------------------------
 
 Real-time application systems are a special class of computer applications.
 They have a complex set of characteristics that distinguish them from other
@@ -84,7 +89,7 @@ competing processors are introduced.  The ramifications of multiple processors
 complicate each and every characteristic of a real-time system.
 
 Real-time Executive
-===================
+-------------------
 
 Fortunately, real-time operating systems, or real-time executives, serve as a
 cornerstone on which to build the application system.  A real-time multitasking
@@ -122,18 +127,3 @@ routines to manage memory, pass messages, or provide mutual exclusion.  The
 developer is then able to concentrate solely on the application.  By using
 standard software components, the time and cost required to develop
 sophisticated real-time applications is significantly reduced.
-
-Open Source
-===========
-
-RTEMS is an open source operating system and an open source project. As a user,
-you have access to all the source code. We encourage you to work with the
-source code and integrate the provided processes used to build tools, the
-kernel and any 3rd party libraries into your project's configuration management
-processes. The RTEMS project is always improving the way it develivers the
-kernel to you and so your feedback is important.
-
-What we used in the RTEMS project to develop and maintain RTEMS does not
-dictate what you use to develop and maintain your project. You can, and should,
-select the work-flow that best suites the demands of your project and what you
-are delivering.

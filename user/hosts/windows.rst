@@ -3,127 +3,10 @@
 .. comment: Copyright (c) 2016 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
-.. _development-hosts:
-
-Development Hosts
-=================
-.. index:: Hosts
-
-RTEMS applications are developed using cross-development tools running on a
-host computer, typically your desktop or a special build server. All RTEMS
-tools and runtime libraries are built from source on your host machine. The
-RTEMS Project does not maintain binary builds of the tools. This may appear be
-the opposite to what you normally experience with host operating systems, and
-it is, however this approach works well. RTEMS is not a host operating system
-and it is not a distrbution. Providing binary packages for every possible host
-operating system is too big a task for the RTEMS Project and it is not a good
-use of core developer time. Their time is better spent making RTEMS better and
-faster.
-
-Developer Computer
-------------------
-
-The rule for selecting a computer for a developer is `more is better` but we do
-understand there are limits. Projects set up different configurations and what
-is described here is not an approved set up, rather it is a guide. Some
-projects have a suitable development machine per developer while others set up
-a tightly controlled central build server. RTEMS is flexible and lets you
-engineer a development environment that suites you. The basic specs are:
-
-- Multicore processor
-- 8G bytes RAM
-- 256G harddisk
-
-RTEMS makes no demands on graphics.
-
-If you are using a VM or your host computer is not a fast modern machine do not
-be concerned. The tools may take longer to build than faster hardware however
-building tools is something you do once. Once the tools and RTEMS is built all
-your time can be spent writing and developing your application. Over an hour
-does happen and for the ARM architecture with all BSPs it can be many hours.
-
-Host Software
--------------
-
-A wide range of host operating systems and hardware can be used. The host
-operating systems supported are:
-
-- Linux
-- FreeBSD
-- NetBSD
-- Apple OS X
-- Windows
-- Solaris
-
-The functionality on a POSIX operating such as Linux and FreeBSD is similar and
-most features on Windows are supported but you are best to ask on the
-:r:list:`users` if you have a specific question.
-
-We recommend you maintain your operating system by installing any updates.
-
-POSIX Hosts
------------
-
-.. sidebar:: *GDB and Python*
-
-   RTEMS uses Python in GDB to aid debugging which means GDB needs to be built
-   with Python development libraries. Please check the RSB documentation and
-   install the packages specified for your host. Make sure a python development
-   package is included.
-
-POSIX hosts are most Unix operating systems such as Linux, FreeBSD and
-NetBSD. RTEMS development works well on Unix and can scale from a single user
-and a desktop machine to a team with decentralised or centralised development
-infrastructure. The RTEMS project provides you with the development tools and
-aids to help you create an environment that matches your project's needs. The
-RTEMS Project's aim is to give you complete freedom to decide on the languages
-used in your project, which version control system, and the build system for
-your application.
-
-The following are a few ways you can set up a suitable environment. You are not
-limited to what is present here. A common factor that defines the final
-location of tools and projects is the place you have suitable storage. The
-following set ups assume suitable disk space and disk performance.
-
-Administrator Access
-~~~~~~~~~~~~~~~~~~~~
-
-You either have ``root`` access to your host development machine or you do
-not. Some users are given hardware that is centrally managed. If you do not
-have ``root`` access you can create your work environment in your home
-directory. You could use a prefix of :file:`$HOME/development/rtems` or
-:file:`$HOME/rtems`. Note, the ``$HOME`` environment variable can be
-substituted with ``~``.
-
-RTEMS Tools and packages do not require ``root`` access
-to be built and we encourage you to not build the tools as ``root``. If you
-need to control write access then it is best to manage this with groups
-assigned to users.
-
-If you have ``root`` access you can decide to install the tools under any
-suitable prefix. This may depend on the hardware in your host development
-machine. If the machine is a centralised build server the prefix may be used to
-separate production versions from the test versions and as just discussed the
-prefix paths may have restricted access rights to only those who manage and
-have configuration control of the machine.
-
-Apple OS X
-----------
-
-Apple's OS X is fully supported. You need to download and install a recent
-version of the Apple developer application Xcode. Xocde is available in the App
-Store. Make sure you install the Command Line Tools add on available for
-download within Xcode and once installed open a Terminal shell and enter the
-command ``cc`` and accept the license agreement.
-
-The normal prefix when working on OS X as a user is under your home directory.
-Prefixes of :file:`$HOME/development/rtems` or :file:`$HOME/rtems` are
-suitable.
-
 .. _microsoft-windows:
 
 Microsoft Windows
------------------
+~~~~~~~~~~~~~~~~~
 
 RTEMS supports Windows as a development host and the tools for most
 architectures are available. The RTEMS Project relies on the GNU tools for
@@ -160,8 +43,8 @@ Building is known to work on `Windows 7 64bit Professional` and `Windows 10`.
 
 .. _windows-path-length:
 
-Path Length
-~~~~~~~~~~~
+Windows Path Length
+^^^^^^^^^^^^^^^^^^^
 
 Windows path length is limited and can cause problems when building the
 tools. The standard Windows API has a ``MAX_PATH`` length of 260
@@ -178,7 +61,7 @@ smaller to build. This is indicated in :ref:`released-version`.
 .. _msys2_parallel_builds:
 
 Parallel Builds with Make
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The MSYS2 GNU ``make`` has problems when using the `jobs` option. The RSB
 defaults to automatically using as many cores as the host machine has. To get a
@@ -186,7 +69,7 @@ successful build on Windows it is recommended you add the ``--jobs=none``
 option to all RSB build set commands.
 
 POSIX Support
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Building the RTEMS compilers, debugger, the RTEMS kernel and a number of other
 3rd party packages requires a POSIX environment. On Windows you can use Cygwin
@@ -204,7 +87,7 @@ distribution and that is a welcome feature on Windows. You get a powerful tool
 to manage your development environment on Windows.
 
 Python
-~~~~~~
+^^^^^^
 
 We need Python to build the tools as the RSB is written in Python and we need
 suitable Python libraries to link to GDB as RTEMS makes use of GDB's Python
@@ -214,11 +97,11 @@ make sure you have the correct type and version of Python installed.
 
 We cannot use the Python executables created by the Python project (python.org)
 as they are built by Microsoft's C (MSC) compiler. Linking the MSC Python
-libraries with the MinGW64 executables is not easy and MSYS provided us with a
+libraries with the MinGW64 executables is not easy and MSYS provides us with a
 simple solution so we do not support linking MSC libraries.
 
-MSYS2 provides two types and versions of Python executables, MinGW and MSYS and
-Python version 2 and 3. For Windows we need the MinGW executable so we have
+MSYS2 provides two types and two versions of Python executables, MinGW and MSYS
+and Python version 2 and 3. For Windows we need the MinGW executable so we have
 suitables libraries and we have to have Python version 2 because on Windows GDB
 only builds with Python2.
 
@@ -227,8 +110,10 @@ Python2 package. The MSYS Python is version 3 and the RSB can support version 2
 and 3 of Python and it helps handle some of the long paths building GCC can
 generate.
 
+.. _microsoft-windows-installation:
+
 Installing MSYS2
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 MSYS2 is installed on a new machine using the MSYS2 installer found on
 https://msys2.github.io/. Please select the ``x86_64`` variant for 64bit
@@ -267,8 +152,8 @@ The packages we require are:
 
 .. note::
 
-The actual output provided may vary due to changes in the dependent packages or
-newer package versions.
+  The actual output provided may vary due to changes in the dependent packages
+  or newer package versions.
 
 Install the packages using ``pacman``:
 
