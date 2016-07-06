@@ -26,8 +26,7 @@ Table of Contents
 	hosts/index
 	installation/index
 
-	architecture/index
-	bsp/index
+	hardware/index
 
 	support/index
 	additional/index

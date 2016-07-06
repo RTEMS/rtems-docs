@@ -11,12 +11,7 @@ project = "RTEMS User Manual"
 exclude_patterns = ['config/build.rst',
                     'config/runtime.rst',
 
-                    'start/installation.rst',
-                    'start/basics.rst',
-                    'start/depend.rst',
                     'start/quick.rst',
-
-                    'start/transition.rst',
 
                     'hosts/os.rst',
                     'hosts/prefixes.rst',
@@ -29,11 +24,18 @@ exclude_patterns = ['config/build.rst',
                     'installation/developer.rst',
                     'installation/kernel.rst',
 
+                    'hardware/targets.rst',
+                    'hardware/architectures.rst',
+                    'hardware/bsps.rst',
+                    'hardware/tiers.rst',
+
                     'tools/build.rst',
                     'tools/simulation.rst',
 
                     'test/create.rst',
                     'test/running.rst',
+                    'start/installation.rst',
+                    'start/transition.rst',
 
                     'waf/index.rst']
 
