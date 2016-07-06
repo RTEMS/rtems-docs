@@ -23,22 +23,22 @@ The rules for Tiers are:
 
 #. A BSP can only be in one of the following tiers:
 
-+------+-----------------------------------------------------------------------+
-| Tier | Description                                                           |
-+------+-----------------------------------------------------------------------+
-| 1    | * The RTEMS Kernel must build without error.                          |
-|      | * Tests are run on target hardware.                                   |
-+------+-----------------------------------------------------------------------+
-| 2    | * The RTEMS Kernel must build without error.                          |
-|      | * Tests can be run on simulation.                                     |
-+------+-----------------------------------------------------------------------+
-| 3    | * The RTEMS Kernel must build without error.                          |
-|      | * There are no test results.                                          |
-+------+-----------------------------------------------------------------------+
-| 4    | * The RTEMS Kernel does not build.                                    |
-+------+-----------------------------------------------------------------------+
-| 5    | * The BSP is to be removed after the next release.                    |
-+------+-----------------------------------------------------------------------+
+   +------+-----------------------------------------------------------------+
+   | Tier | Description                                                     |
+   +------+-----------------------------------------------------------------+
+   | 1    | * The RTEMS Kernel must build without error.                    |
+   |      | * Tests are run on target hardware.                             |
+   +------+-----------------------------------------------------------------+
+   | 2    | * The RTEMS Kernel must build without error.                    |
+   |      | * Tests can be run on simulation.                               |
+   +------+-----------------------------------------------------------------+
+   | 3    | * The RTEMS Kernel must build without error.                    |
+   |      | * There are no test results.                                    |
+   +------+-----------------------------------------------------------------+
+   | 4    | * The RTEMS Kernel does not build.                              |
+   +------+-----------------------------------------------------------------+
+   | 5    | * The BSP is to be removed after the next release.              |
+   +------+-----------------------------------------------------------------+
 
 #. An architecuture's tier is set by the highest BSP tier reached.
 
