@@ -6,9 +6,27 @@ Glossary
 
 .. glossary::
 
+  Architecture
+    Family or class of processor based around a common instruction set. RTEMS
+    architectures follow the GCC architecture model as RTEMS needs an GCC
+    architecture compiler for each support RTEMS architecture.
+
   Binutils
     GNU Binary Utilities such as the assembler ``as``, linker ``ld`` and a
     range of other tools used in the development of software.
+
+  BSP
+    Board Support Package is a specific configuration RTEMS can be built
+    for. An RTEMS install process installs specific library and headers files
+    for a single BSP. A BSP optimises RTEMS to a specific target hardware.
+
+  Buildbot
+    A continuous inteagration build server.
+
+  Crosscompiler
+
+    A compiler built to run on a Host that generate code for another
+    architecture.
 
   DLL
     Dynamically Linker Library used on Windows.
@@ -18,6 +36,10 @@ Glossary
 
   GDB
     GNU Debugger
+
+  Host
+    The computer and operating system that hosts the RTEMS development tools
+    such as the compiler, linker and debugger.
 
   MinGW
     Minimal GNU system for Windows that lets GCC built programs use the
@@ -52,6 +74,9 @@ Glossary
     source fully featured Real Time Operating System or RTOS that supports a
     variety of open standard application programming interfaces (API) and
     interface standards such as POSIX and BSD sockets.
+
+  Target
+    A target is the hardware or simulator a BSP built executable runs on.
 
   Test Suite
    See Testsuite
