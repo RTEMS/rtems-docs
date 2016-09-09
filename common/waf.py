@@ -155,7 +155,7 @@ def cmd_build(ctx, conf_dir=".", source_dir="."):
 		html_resources(ctx)
 		ctx(
 			rule   = "${BIN_SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
-			cwd	= ctx.path.abspath(),
+			cwd	= ctx.path,
 			source =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
 			target = ctx.path.find_or_declare('html/index.html')
 		)
