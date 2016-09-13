@@ -293,7 +293,7 @@ the RMS priority, period, execution time, and processor utilization for each
 task:
 
 +------------+----------+--------+-----------+-------------+
-| Tas   k    | RMS      | Period | Execution | Processor   |
+| Task       | RMS      | Period | Execution | Processor   |
 |            | Priority |        | Time      | Utilization |
 +============+==========+========+===========+=============+
 |     1      |   High   |  100   |    15     |    0.15     |
