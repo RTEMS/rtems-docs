@@ -1,21 +1,27 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1989-2007.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 OpenRISC 1000 Specific Information
 ##################################
 
-This chapter discusses the`OpenRISC 1000 architecture <http://opencores.org/or1k/Main_Page>`_
-dependencies in this port of RTEMS. There are many implementations
-for OpenRISC like or1200 and mor1kx. Currently RTEMS supports basic
-features that all implementations should have.
+This chapter discusses the`OpenRISC 1000 architecture
+http://opencores.org/or1k/Main_Page dependencies in this port of RTEMS. There
+are many implementations for OpenRISC like or1200 and mor1kx. Currently RTEMS
+supports basic features that all implementations should have.
 
 **Architecture Documents**
 
-For information on the OpenRISC 1000 architecture refer to the`OpenRISC 1000 architecture manual <http://openrisc.github.io/or1k.html>`_.
+For information on the OpenRISC 1000 architecture refer to the`OpenRISC 1000
+architecture manual http://openrisc.github.io/or1k.html.
 
 Calling Conventions
 ===================
 
-Please refer to the`Function Calling Sequence <http://openrisc.github.io/or1k.html#__RefHeading__504887_595890882>`_.
+Please refer to the`Function Calling Sequence
+http://openrisc.github.io/or1k.html#__RefHeading__504887_595890882.
 
 Floating Point Unit
 -------------------
@@ -68,16 +74,16 @@ There are only two levels: interrupts enabled and interrupts disabled.
 Interrupt Stack
 ---------------
 
-The OpenRISC RTEMS port uses a dedicated software interrupt stack.
-The stack for interrupts is allocated during interrupt driver initialization.
-When an  interrupt is entered, the _ISR_Handler routine is responsible for
-switching from the interrupted task stack to RTEMS software interrupt stack.
+The OpenRISC RTEMS port uses a dedicated software interrupt stack.  The stack
+for interrupts is allocated during interrupt driver initialization.  When an
+interrupt is entered, the _ISR_Handler routine is responsible for switching
+from the interrupted task stack to RTEMS software interrupt stack.
 
 Default Fatal Error Processing
 ==============================
 
-The default fatal error handler for this architecture performs the
-following actions:
+The default fatal error handler for this architecture performs the following
+actions:
 
 - disables operating system supported interrupts (IRQ),
 
@@ -89,10 +95,3 @@ Symmetric Multiprocessing
 =========================
 
 SMP is not supported.
-
-.. COMMENT: COPYRIGHT (c) 1989-2007.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
