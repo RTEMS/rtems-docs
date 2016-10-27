@@ -77,7 +77,6 @@ subsequent sections:
     current RTEMS configuration.
 
 *Nanoseconds*
-
     The RTEMS Nanoseconds test is provided in the subdirectory
     ``${RTEMS_ROOT}/testsuites/samples/nsecs/``.  This test demonstrates that
     the BSP has support for nanosecond timestamp granularity.  It prints the
