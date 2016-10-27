@@ -109,7 +109,7 @@ Hello World
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/hello/
 
@@ -119,7 +119,7 @@ from the RTEMS Standard C Library to output messages.  The Ada version of this
 sample uses the TEXT_IO package to output the hello messages.  The following
 messages are printed:
 
-.. code-block:: c
+.. code-block:: shell
 
     *** HELLO WORLD TEST ***
     Hello World
@@ -134,7 +134,7 @@ Clock Tick
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/ticker/
 
@@ -142,7 +142,7 @@ This application is designed as a simple test of the clock tick device driver.
 In addition, this application also tests the printf function from the RTEMS
 Standard C Library by using it to output the following messages:
 
-.. code-block:: c
+.. code-block:: shell
 
     *** CLOCK TICK TEST ***
     TA1 - tm_get - 09:00:00   12/31/1988
@@ -176,7 +176,7 @@ Base Single Processor Application
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/base_sp/
 
@@ -185,7 +185,7 @@ developed. The use of the task argument is illustrated.  This sample
 application uses the printf function from the RTEMS Standard C Library or
 TEXT_IO functions when using the Ada version to output the following messages:
 
-.. code-block:: c
+.. code-block:: shell
 
     *** SAMPLE SINGLE PROCESSOR APPLICATION ***
     Creating and starting an application task
@@ -200,7 +200,7 @@ Base Multiple Processor Application
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/base_mp/
 
@@ -210,7 +210,7 @@ multiprocessor system.  The task argument is used to distinguish the node on
 which the application task is executed.  The first node will print the
 following messages:
 
-.. code-block:: c
+.. code-block:: shell
 
     *** SAMPLE MULTIPROCESSOR APPLICATION ***
     Creating and starting an application task
@@ -220,7 +220,7 @@ following messages:
 
 The second node will print the following messages:
 
-.. code-block:: c
+.. code-block:: shell
 
     *** SAMPLE MULTIPROCESSOR APPLICATION ***
     Creating and starting an application task
@@ -244,7 +244,7 @@ Constructor/Destructor C++ Application
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/cdtest/
 
@@ -256,7 +256,7 @@ this application must support a C++ environment.
 This sample application uses the printf function from the RTEMS Standard C
 Library to output the following messages:
 
-.. code-block:: c
+.. code-block:: shell
 
     Hey I'M in base class constructor number 1 for 0x400010cc.
     Hey I'M in base class constructor number 2 for 0x400010d4.
@@ -288,7 +288,7 @@ Minimum Size Test
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/minimum/
 
@@ -303,7 +303,7 @@ Nanosecond Granularity Application
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/nsecs/
 
@@ -319,7 +319,7 @@ does this by exercising the time subsystem in three ways:
 
 The following is an example of what the output of this test may appear like:
 
-.. code-block:: c
+.. code-block:: shell
 
     *** NANOSECOND CLOCK TEST ***
     10 iterations of getting TOD
@@ -372,7 +372,7 @@ Paranoia Floating Point Application
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/paranoia/
 
@@ -389,7 +389,7 @@ Network Loopback Test
 
 This sample application is in the following directory:
 
-.. code-block:: c
+.. code-block:: shell
 
     ${RTEMS_ROOT}/testsuites/samples/loopback/
 

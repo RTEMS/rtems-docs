@@ -4,7 +4,7 @@
 RTEMS Development Environment Guide
 ===================================
 
- | COPYRIGHT (c) 1988 - 2015.
+ | COPYRIGHT (c) 1988 - 2016.
  | On-Line Applications Research Corporation (OAR).
 
 The authors have used their best efforts in preparing this material.  These

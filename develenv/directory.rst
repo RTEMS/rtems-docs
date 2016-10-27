@@ -126,8 +126,9 @@ the RTEMS source tree.  The top of the tree will be referenced as
     based upon whether they are used in the process of building RTEMS and
     applications, are CPU specific, or are used to assist in updating the RTEMS
     source tree and applications.  The support utilities used in the process of
-    building RTEMS are described in `RTEMS Specific Utilities`_.  These are the
-    only components of this subtree that will be discussed in this document.
+    building RTEMS are described in :ref:`RTEMS Specific Utilities`.
+    These are the only components of this subtree that will be discussed
+    in this document.
 
 c/ Directory
 ============
