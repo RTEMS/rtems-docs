@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, re
 from waflib.Build import BuildContext
 
 sphinx_min_version = (1,3)
@@ -53,7 +53,7 @@ class linkcheck(BuildContext):
 def check_sphinx_version(ctx, minver):
 	version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD + ['--version']).split(" ")[-1:][0].strip()
 	try:
-		ver = tuple(map(int, version.split(".")))
+		ver = tuple(map(int, re.split('[\D]', version)))
 	except:
 		ctx.fatal("Sphinx version cannot be checked: %s" % version)
 	if ver < minver:
