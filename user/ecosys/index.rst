@@ -30,7 +30,7 @@ Rational
 --------
 
 RTEMS is complex and the focus of the RTEMS Ecosystem is to simplify the
-complixity for users by providing a stable documented way to build, configure
+complexity for users by providing a stable documented way to build, configure
 and run RTEMS. RTEMS is more than a kernel running real-time applications on
 target hardware, it is part of a project's and therefore team's workflow and
 every project and team is different.
