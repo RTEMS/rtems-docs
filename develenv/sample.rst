@@ -6,151 +6,145 @@ Sample Applications
 Introduction
 ============
 
-The RTEMS source distribution includes a set of sample applications
-that are located in the ``${RTEMS_ROOT}/testsuites/samples/``
-directory.  These applications are intended to illustrate the
-basic format of RTEMS single and multiple processor
-applications and the use of some features.  In addition, these
-relatively simple applications can be used to test locally
-developed board support packages and device drivers as they
-exercise a critical subset of RTEMS functionality that is often
-broken in new BSPs.
+The RTEMS source distribution includes a set of sample applications that are
+located in the ``${RTEMS_ROOT}/testsuites/samples/`` directory.  These
+applications are intended to illustrate the basic format of RTEMS single and
+multiple processor applications and the use of some features.  In addition,
+these relatively simple applications can be used to test locally developed
+board support packages and device drivers as they exercise a critical subset of
+RTEMS functionality that is often broken in new BSPs.
 
-Some of the following sample applications will be covered in
-more detail in subsequent sections:
+Some of the following sample applications will be covered in more detail in
+subsequent sections:
 
 *Hello World*
-    The RTEMS Hello World test is provided in
-    the subdirectory ``${RTEMS_ROOT}/testsuites/samples/hello/``.
-    This test is helpful when testing new RTEMS development environment.
+    The RTEMS Hello World test is provided in the subdirectory
+    ``${RTEMS_ROOT}/testsuites/samples/hello/``.  This test is helpful when
+    testing new RTEMS development environment.
 
 *Clock Tick*
-    The ``${RTEMS_ROOT}/testsuites/samples/ticker/``
-    subdirectory provides a test for verification of clock chip
-    device drivers of BSPs.
+    The ``${RTEMS_ROOT}/testsuites/samples/ticker/`` subdirectory provides a
+    test for verification of clock chip device drivers of BSPs.
 
 *Base Single Processor*
-    A simple single processor test similar to those in the
-    single processor test suite is provided in ``${RTEMS_ROOT}/testsuites/samples/base_sp/``.
+    A simple single processor test similar to those in the single processor
+    test suite is provided in ``${RTEMS_ROOT}/testsuites/samples/base_sp/``.
 
 *Base Multiple Processor*
-    A simple two node multiprocessor test capable of testing an newly
-    developed MPCI layer is provided in ``${RTEMS_ROOT}/testsuites/samples/base_mp/``.
+    A simple two node multiprocessor test capable of testing an newly developed
+    MPCI layer is provided in ``${RTEMS_ROOT}/testsuites/samples/base_mp/``.
 
 *Capture*
-    The RTEMS Capture test is provided in
-    the subdirectory ``${RTEMS_ROOT}/testsuites/samples/capture/``.
-    This is an interactive test which demonstrates the capabilities
-    of the RTEMS Capture Engine.  It includes a few test threads
-    which generate interesting execution patterns.  Look at the
-    file ``${RTEMS_ROOT}/testsuites/samples/capture/capture.scn``
+    The RTEMS Capture test is provided in the subdirectory
+    ``${RTEMS_ROOT}/testsuites/samples/capture/``.  This is an interactive test
+    which demonstrates the capabilities of the RTEMS Capture Engine.  It
+    includes a few test threads which generate interesting execution patterns.
+    Look at the file ``${RTEMS_ROOT}/testsuites/samples/capture/capture.scn``
     for a sample session.
 
 *Constructor/Destructor C++ Test*
-    The ``${RTEMS_ROOT}/testsuites/samples/cdtest/``
-    subdirectory provides a simple C++ application using
-    constructors and destructors.  It is only built when
-    C++ is enabled and its primary purpose is to demonstrate
-    that global constructors and destructors work.  Since this
-    requires that the linker script for your BSP be correct, this is
-    an important test.
+    The ``${RTEMS_ROOT}/testsuites/samples/cdtest/`` subdirectory provides a
+    simple C++ application using constructors and destructors.  It is only
+    built when C++ is enabled and its primary purpose is to demonstrate that
+    global constructors and destructors work.  Since this requires that the
+    linker script for your BSP be correct, this is an important test.
 
 *File IO*
-    The RTEMS File IO test is provided in
-    the subdirectory ``${RTEMS_ROOT}/testsuites/samples/fileio/``.
-    This is an interactive test which allows the user to interact with
-    an ATA/IDE device.  It will read the partition table and allow the
-    user to dynamically mount one of the FAT32 partitions it finds.
-    Commands are also provided to write and read files on the disk.
+    The RTEMS File IO test is provided in the subdirectory
+    ``${RTEMS_ROOT}/testsuites/samples/fileio/``.  This is an interactive test
+    which allows the user to interact with an ATA/IDE device.  It will read the
+    partition table and allow the user to dynamically mount one of the FAT32
+    partitions it finds.  Commands are also provided to write and read files on
+    the disk.
 
 *IO Stream*
-    The RTEMS IO Stream test is provided in
-    the subdirectory ``${RTEMS_ROOT}/testsuites/samples/iostream/``.
-    This test is a simple C++ application which demonstrates that
-    C++ iostreams are functional. This requires that the RTEMS C++
-    run-time support is functioning properly.  This test is only
-    build when C++ is enabled.
+    The RTEMS IO Stream test is provided in the subdirectory
+    ``${RTEMS_ROOT}/testsuites/samples/iostream/``.  This test is a simple C++
+    application which demonstrates that C++ iostreams are functional. This
+    requires that the RTEMS C++ run-time support is functioning properly.  This
+    test is only build when C++ is enabled.
 
 *Network Loopback Test*
-    The ``${RTEMS_ROOT}/testsuites/samples/loopback/``
-    directory contains a sample test that demonstrates the use of
-    sockets and the loopback network device.  It does not require
-    the presence of network hardware in order to run.
-    It is only built if RTEMS was configured with networking enabled.
+    The ``${RTEMS_ROOT}/testsuites/samples/loopback/`` directory contains a
+    sample test that demonstrates the use of sockets and the loopback network
+    device.  It does not require the presence of network hardware in order to
+    run.  It is only built if RTEMS was configured with networking enabled.
 
 *Minimum Size Test*
-    The directory``${RTEMS_ROOT}/testsuites/samples/minimum/``
-    contains a simple RTEMS program that results in a non-functional
-    executable.  It is intended to show the size of a minimum footprint
-    application based upon the current RTEMS configuration.
+    The directory ``${RTEMS_ROOT}/testsuites/samples/minimum/`` contains a
+    simple RTEMS program that results in a non-functional executable.  It is
+    intended to show the size of a minimum footprint application based upon the
+    current RTEMS configuration.
 
 *Nanoseconds*
-    The RTEMS Nanoseconds test is provided in
-    the subdirectory ``${RTEMS_ROOT}/testsuites/samples/nsecs/``.
-    This test demonstrates that the BSP has support for nanosecond
-    timestamp granularity.  It prints the time of day and uptime multiple
-    times as quickly as possible.  It should be possible from the output
-    to determine if your BSP has nanosecond accurate clock support
-    and it is functional.
+
+    The RTEMS Nanoseconds test is provided in the subdirectory
+    ``${RTEMS_ROOT}/testsuites/samples/nsecs/``.  This test demonstrates that
+    the BSP has support for nanosecond timestamp granularity.  It prints the
+    time of day and uptime multiple times as quickly as possible.  It should be
+    possible from the output to determine if your BSP has nanosecond accurate
+    clock support and it is functional.
 
 *Paranoia Floating Point Test*
-    The directory ``${RTEMS_ROOT}/testsuites/samples/paranoia/``
-    contains the public domain floating point and math library test.
+    The directory ``${RTEMS_ROOT}/testsuites/samples/paranoia/`` contains the
+    public domain floating point and math library test.
 
 *Point-to-Point Protocol Daemon*
-    The RTEMS Point-to-Point Protocol Daemon test is provided in
-    the subdirectory ``${RTEMS_ROOT}/testsuites/samples/pppd/``.
-    This test primarily serves as the baseline for a user application
-    using the PPP protocol.
+    The RTEMS Point-to-Point Protocol Daemon test is provided in the
+    subdirectory ``${RTEMS_ROOT}/testsuites/samples/pppd/``.  This test
+    primarily serves as the baseline for a user application using the PPP
+    protocol.
 
 *Unlimited Object Allocation*
-    The ``${RTEMS_ROOT}/testsuites/samples/unlimited/``
-    directory contains a sample test that demonstrates the use of the*unlimited* object allocation configuration option to RTEMS.
+    The ``${RTEMS_ROOT}/testsuites/samples/unlimited/`` directory contains a
+    sample test that demonstrates the use of the*unlimited* object allocation
+    configuration option to RTEMS.
 
-The sample tests are written using the Classic API so the reader
-should be familiar with the terms used and
-material presented in the *RTEMS Applications Users Guide*.
+The sample tests are written using the Classic API so the reader should be
+familiar with the terms used and material presented in the *RTEMS Applications
+Users Guide*.
 
 Hello World
 ===========
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/hello/
 
-It provides a rudimentary test of the BSP start up
-code and the console output routine.  The C version of this
-sample application uses the printf function from the RTEMS
-Standard C Library to output messages.   The Ada version of this
-sample uses the TEXT_IO package to output the hello messages.
-The following messages are printed:
-.. code:: c
+It provides a rudimentary test of the BSP start up code and the console output
+routine.  The C version of this sample application uses the printf function
+from the RTEMS Standard C Library to output messages.  The Ada version of this
+sample uses the TEXT_IO package to output the hello messages.  The following
+messages are printed:
 
-    *** HELLO WORLD TEST \***
+.. code-block:: c
+
+    *** HELLO WORLD TEST ***
     Hello World
-    \*** END OF HELLO WORLD TEST \***
+    *** END OF HELLO WORLD TEST ***
 
-These messages are printed from the application's
-single initialization task.  If the above messages are not
-printed correctly, then either the BSP start up code or the
-console output routine is not operating properly.
+These messages are printed from the application's single initialization task.
+If the above messages are not printed correctly, then either the BSP start up
+code or the console output routine is not operating properly.
 
 Clock Tick
 ==========
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/ticker/
 
-This application is designed as a simple test of the
-clock tick device driver.  In addition, this application also
-tests the printf function from the RTEMS Standard C Library by
-using it to output the following messages:
-.. code:: c
+This application is designed as a simple test of the clock tick device driver.
+In addition, this application also tests the printf function from the RTEMS
+Standard C Library by using it to output the following messages:
 
-    *** CLOCK TICK TEST \***
+.. code-block:: c
+
+    *** CLOCK TICK TEST ***
     TA1 - tm_get - 09:00:00   12/31/1988
     TA2 - tm_get - 09:00:00   12/31/1988
     TA3 - tm_get - 09:00:00   12/31/1988
@@ -165,110 +159,109 @@ using it to output the following messages:
     TA1 - tm_get - 09:00:30   12/31/1988
     TA2 - tm_get - 09:00:30   12/31/1988
     TA3 - tm_get - 09:00:30   12/31/1988
-    \*** END OF CLOCK TICK TEST \***
+    *** END OF CLOCK TICK TEST ***
 
-The clock tick sample application utilizes a single
-initialization task and three copies of the single application
-task.  The initialization task prints the test herald, sets the
-time and date, and creates and starts the three application
-tasks before deleting itself.  The three application tasks
-generate the rest of the output.  Every five seconds, one or
-more of the tasks will print the current time obtained via the
-tm_get directive.  The first task, TA1, executes every five
-seconds, the second task, TA2, every ten seconds, and the third
-task, TA3, every fifteen seconds. If the time printed does not
-match the above output, then the clock device driver is not
-operating properly.
+The clock tick sample application utilizes a single initialization task and
+three copies of the single application task.  The initialization task prints
+the test herald, sets the time and date, and creates and starts the three
+application tasks before deleting itself.  The three application tasks generate
+the rest of the output.  Every five seconds, one or more of the tasks will
+print the current time obtained via the tm_get directive.  The first task, TA1,
+executes every five seconds, the second task, TA2, every ten seconds, and the
+third task, TA3, every fifteen seconds. If the time printed does not match the
+above output, then the clock device driver is not operating properly.
 
 Base Single Processor Application
 =================================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/base_sp/
 
-It provides a framework from which a single processor
-RTEMS application can be developed. The use of the task argument
-is illustrated.  This sample application uses the printf
-function from the RTEMS Standard C Library or TEXT_IO functions
-when using the Ada version to output the following messages:
-.. code:: c
+It provides a framework from which a single processor RTEMS application can be
+developed. The use of the task argument is illustrated.  This sample
+application uses the printf function from the RTEMS Standard C Library or
+TEXT_IO functions when using the Ada version to output the following messages:
 
-    *** SAMPLE SINGLE PROCESSOR APPLICATION \***
+.. code-block:: c
+
+    *** SAMPLE SINGLE PROCESSOR APPLICATION ***
     Creating and starting an application task
     Application task was invoked with argument (0) and has id of 0x10002
-    \*** END OF SAMPLE SINGLE PROCESSOR APPLICATION \***
+    *** END OF SAMPLE SINGLE PROCESSOR APPLICATION ***
 
-The first two messages are printed from the
-application's single initialization task.  The final messages
-are printed from the single application task.
+The first two messages are printed from the application's single initialization
+task.  The final messages are printed from the single application task.
 
 Base Multiple Processor Application
 ===================================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/base_mp/
 
-It provides a framework from which a multiprocessor
-RTEMS application can be developed. This directory has a
-subdirectory for each node in the multiprocessor system.  The
-task argument is used to distinguish the node on which the
-application task is executed.  The first node will print the
+It provides a framework from which a multiprocessor RTEMS application can be
+developed. This directory has a subdirectory for each node in the
+multiprocessor system.  The task argument is used to distinguish the node on
+which the application task is executed.  The first node will print the
 following messages:
-.. code:: c
 
-    *** SAMPLE MULTIPROCESSOR APPLICATION \***
+.. code-block:: c
+
+    *** SAMPLE MULTIPROCESSOR APPLICATION ***
     Creating and starting an application task
     This task was invoked with the node argument (1)
     This task has the id of 0x10002
-    \*** END OF SAMPLE MULTIPROCESSOR APPLICATION \***
+    *** END OF SAMPLE MULTIPROCESSOR APPLICATION ***
 
 The second node will print the following messages:
-.. code:: c
 
-    *** SAMPLE MULTIPROCESSOR APPLICATION \***
+.. code-block:: c
+
+    *** SAMPLE MULTIPROCESSOR APPLICATION ***
     Creating and starting an application task
     This task was invoked with the node argument (2)
     This task has the id of 0x20002
-    \*** END OF SAMPLE MULTIPROCESSOR APPLICATION \***
+    *** END OF SAMPLE MULTIPROCESSOR APPLICATION ***
 
-The herald is printed from the application's single
-initialization task on each node.  The final messages are
-printed from the single application task on each node.
+The herald is printed from the application's single initialization task on each
+node.  The final messages are printed from the single application task on each
+node.
 
-In this sample application, all source code is shared
-between the nodes except for the node dependent configuration
-files.  These files contains the definition of the node number
-used in the initialization of the  RTEMS Multiprocessor
-Configuration Table. This file is not shared because the node
-number field in the RTEMS Multiprocessor Configuration Table
-must be unique on each node.
+In this sample application, all source code is shared between the nodes except
+for the node dependent configuration files.  These files contains the
+definition of the node number used in the initialization of the RTEMS
+Multiprocessor Configuration Table. This file is not shared because the node
+number field in the RTEMS Multiprocessor Configuration Table must be unique on
+each node.
 
 Constructor/Destructor C++ Application
 ======================================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/cdtest/
 
-This sample application demonstrates that RTEMS is
-compatible with C++ applications.  It uses constructors,
-destructor, and I/O stream output in testing these various
-capabilities.  The board support package responsible for this
-application must support a C++ environment.
+This sample application demonstrates that RTEMS is compatible with C++
+applications.  It uses constructors, destructor, and I/O stream output in
+testing these various capabilities.  The board support package responsible for
+this application must support a C++ environment.
 
-This sample application uses the printf function from
-the RTEMS Standard C Library to output the following messages:
-.. code:: c
+This sample application uses the printf function from the RTEMS Standard C
+Library to output the following messages:
+
+.. code-block:: c
 
     Hey I'M in base class constructor number 1 for 0x400010cc.
     Hey I'M in base class constructor number 2 for 0x400010d4.
     Hey I'M in derived class constructor number 3 for 0x400010d4.
-    \*** CONSTRUCTOR/DESTRUCTOR TEST \***
+    *** CONSTRUCTOR/DESTRUCTOR TEST ***
     Hey I'M in base class constructor number 4 for 0x4009ee08.
     Hey I'M in base class constructor number 5 for 0x4009ee10.
     Hey I'M in base class constructor number 6 for 0x4009ee18.
@@ -285,7 +278,7 @@ the RTEMS Standard C Library to output the following messages:
     Instantiation order 5
     Hey I'M in base class constructor number 4 for 0x4009ee08.
     Instantiation order 5
-    \*** END OF CONSTRUCTOR/DESTRUCTOR TEST \***
+    *** END OF CONSTRUCTOR/DESTRUCTOR TEST ***
     Hey I'M in base class constructor number 3 for 0x400010d4.
     Hey I'M in base class constructor number 2 for 0x400010d4.
     Hey I'M in base class constructor number 1 for 0x400010cc.
@@ -294,30 +287,29 @@ Minimum Size Test
 =================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/minimum/
 
-This sample application is designed to produce the
-minimum code space required for any RTEMS application
-based upon the current RTEMS configuration and
-BSP.  In many situations, the bulk of this executable
-consists of hardware and RTEMS initialization, basic
-infrastructure such as malloc(), and RTEMS and
-hardware shutdown support.
+This sample application is designed to produce the minimum code space required
+for any RTEMS application based upon the current RTEMS configuration and BSP.
+In many situations, the bulk of this executable consists of hardware and RTEMS
+initialization, basic infrastructure such as malloc(), and RTEMS and hardware
+shutdown support.
 
 Nanosecond Granularity Application
 ==================================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/nsecs/
 
-This sample application exercises the Clock Driver
-for this BSP and demonstrates its ability to generate
-accurate timestamps.  This application does this by
-exercising the time subsystem in three ways:
+This sample application exercises the Clock Driver for this BSP and
+demonstrates its ability to generate accurate timestamps.  This application
+does this by exercising the time subsystem in three ways:
 
 - Obtain Time of Day Twice Back to Back
 
@@ -325,11 +317,11 @@ exercising the time subsystem in three ways:
 
 - Use System Up Time to Measure Loops
 
-The following is an example of what the output of this
-test may appear like:
-.. code:: c
+The following is an example of what the output of this test may appear like:
 
-    *** NANOSECOND CLOCK TEST \***
+.. code-block:: c
+
+    *** NANOSECOND CLOCK TEST ***
     10 iterations of getting TOD
     Start: Sat Mar 24 11:15:00 2007:540000
     Stop : Sat Mar 24 11:15:00 2007:549000 --> 0:9000
@@ -373,42 +365,35 @@ test may appear like:
     loop of 80000 0:151519000 0:153260000 --> 0:1741000
     loop of 90000 0:156145000 0:158099000 --> 0:1954000
     loop of 100000 0:160770000 0:162942000 --> 0:2172000
-    \*** END OF NANOSECOND CLOCK TEST \***
+    *** END OF NANOSECOND CLOCK TEST ***
 
 Paranoia Floating Point Application
 ===================================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/paranoia/
 
-This sample application uses a public domain floating
-point and math library test to verify these capabilities of the
-RTEMS executive.  Deviations between actual and expected results
-are reported to the screen.  This is a very extensive test which
-tests all mathematical and number conversion functions.
-Paranoia is also very large and requires a long period of time
-to run.   Problems which commonly prevent this test from
-executing to completion include stack overflow and FPU exception
-handlers not installed.
+This sample application uses a public domain floating point and math library
+test to verify these capabilities of the RTEMS executive.  Deviations between
+actual and expected results are reported to the screen.  This is a very
+extensive test which tests all mathematical and number conversion functions.
+Paranoia is also very large and requires a long period of time to run.
+Problems which commonly prevent this test from executing to completion include
+stack overflow and FPU exception handlers not installed.
 
 Network Loopback Test
 =====================
 
 This sample application is in the following directory:
-.. code:: c
+
+.. code-block:: c
 
     ${RTEMS_ROOT}/testsuites/samples/loopback/
 
-This sample application uses the network loopback device to
-demonstrate the use of the RTEMS TCP/IP stack.  This sample
-test illustrates the basic configuration and initialization
-of the TCP/IP stack as well as simple socket usage.
-
-.. COMMENT: COPYRIGHT (c) 1989-2007.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
+This sample application uses the network loopback device to demonstrate the use
+of the RTEMS TCP/IP stack.  This sample test illustrates the basic
+configuration and initialization of the TCP/IP stack as well as simple socket
+usage.
