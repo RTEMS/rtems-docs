@@ -1334,16 +1334,14 @@ issue of Embedded Systems magazine.  The code was downloaded
 from their BBS.  Unfortunately, the author’s name was not
 provided in the listing.
 
-.. COMMENT: unhex
-
 unhex - Convert Hexadecimal File into Binary Equivalent
 =======================================================
 
 **SYNOPSIS**
 
-.. code:: c
+.. code:: shell
 
-    unhex \[-valF] \[-o file] \[file \[file ...] ]
+    unhex [-valF] [-o file] [file [file ...] ]
 
 **DESCRIPTION**
 
@@ -1388,11 +1386,8 @@ Command and Variable Index
 
 There are currently no Command and Variable Index entries.
 
-.. COMMENT: @printindex fn
-
 Concept Index
 #############
 
 There are currently no Concept Index entries.
 
-.. COMMENT: @printindex cp 

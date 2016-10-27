@@ -126,7 +126,7 @@ the RTEMS source tree.  The top of the tree will be referenced as
     based upon whether they are used in the process of building RTEMS and
     applications, are CPU specific, or are used to assist in updating the RTEMS
     source tree and applications.  The support utilities used in the process of
-    building RTEMS are described in :ref:`RTEMS Specific Utilities`.
+    building RTEMS are described in :ref:`rtems-specific-utilities`.
     These are the only components of this subtree that will be discussed
     in this document.
 
@@ -411,7 +411,7 @@ included with the RTEMS and the directory in which they may be located:
     This directory provides sample application tests which aid in the testing a
     newly built RTEMS environment, a new BSP, or as starting points for the
     development of an application using the RTEMS executive.  They are
-    discussed in `Sample Applications`_.
+    discussed in ::ref::`Sample Applications`.
 
 ``${RTEMS_ROOT}/testsuites/sptests/``
     This directory contains the test suite for the RTEMS Classic API when
