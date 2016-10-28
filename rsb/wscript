@@ -1,0 +1,6 @@
+from sys import path
+from os.path import abspath
+path.append(abspath('../common/'))
+
+from waf import cmd_configure as configure, cmd_build as build, spell, cmd_spell, cmd_options as options, linkcheck, cmd_linkcheck
+

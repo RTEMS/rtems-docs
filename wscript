@@ -16,6 +16,7 @@ build_all = ['c_user',
              'bsp_howto',
              'cpu_supplement',
              'filesystem',
+             'rsb',
              'develenv']
 
 building = build_all
