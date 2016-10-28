@@ -172,45 +172,45 @@ Multilibs
 
 The following multilibs are available:
 
-# ``.``: 32-bit PowerPC with FPU
+#. ``.``: 32-bit PowerPC with FPU
 
-# ``nof``: 32-bit PowerPC with software floating point support
+#. ``nof``: 32-bit PowerPC with software floating point support
 
-# ``m403``: Instruction set for PPC403 with FPU
+#. ``m403``: Instruction set for PPC403 with FPU
 
-# ``m505``: Instruction set for MPC505 with FPU
+#. ``m505``: Instruction set for MPC505 with FPU
 
-# ``m603e``: Instruction set for MPC603e with FPU
+#. ``m603e``: Instruction set for MPC603e with FPU
 
-# ``m603e/nof``: Instruction set for MPC603e with software floating
-  point support
+#. ``m603e/nof``: Instruction set for MPC603e with software floating
+   point support
 
-# ``m604``: Instruction set for MPC604 with FPU
+#. ``m604``: Instruction set for MPC604 with FPU
 
-# ``m604/nof``: Instruction set for MPC604 with software floating point
-  support
+#. ``m604/nof``: Instruction set for MPC604 with software floating point
+   support
 
-# ``m860``: Instruction set for MPC860 with FPU
+#. ``m860``: Instruction set for MPC860 with FPU
 
-# ``m7400``: Instruction set for MPC7500 with FPU
+#. ``m7400``: Instruction set for MPC7500 with FPU
 
-# ``m7400/nof``: Instruction set for MPC7500 with software floating
-  point support
+#. ``m7400/nof``: Instruction set for MPC7500 with software floating
+   point support
 
-# ``m8540``: Instruction set for e200, e500 and e500v2 cores with
-  single-precision FPU and SPE
+#. ``m8540``: Instruction set for e200, e500 and e500v2 cores with
+   single-precision FPU and SPE
 
-# ``m8540/gprsdouble``: Instruction set for e200, e500 and e500v2 cores
-  with double-precision FPU and SPE
+#. ``m8540/gprsdouble``: Instruction set for e200, e500 and e500v2 cores
+   with double-precision FPU and SPE
 
-# ``m8540/nof/nospe``: Instruction set for e200, e500 and e500v2 cores
-  with software floating point support and no SPE
+#. ``m8540/nof/nospe``: Instruction set for e200, e500 and e500v2 cores
+   with software floating point support and no SPE
 
-# ``me6500/m32``: 32-bit instruction set for e6500 core with FPU and
-  AltiVec
+#. ``me6500/m32``: 32-bit instruction set for e6500 core with FPU and
+   AltiVec
 
-# ``me6500/m32/nof/noaltivec``: 32-bit instruction set for e6500 core
-  with software floating point support and no AltiVec
+#. ``me6500/m32/nof/noaltivec``: 32-bit instruction set for e6500 core
+   with software floating point support and no AltiVec
 
 Calling Conventions
 ===================
