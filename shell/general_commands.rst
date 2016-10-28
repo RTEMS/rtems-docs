@@ -63,7 +63,7 @@ help - Print command help
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     help misc
 
@@ -87,7 +87,7 @@ is set 0 there will be no break.
 
 The following is an example of how to use ``alias``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ help
     help: ('r' repeat last cmd - 'e' edit last cmd)
@@ -142,7 +142,7 @@ alias - add alias for an existing command
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     alias oldCommand newCommand
 
@@ -162,7 +162,7 @@ None.
 
 The following is an example of how to use ``alias``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ me
     shell:me command not found
@@ -192,7 +192,7 @@ configured.
 The ``alias`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_alias(
         int    argc,
@@ -201,7 +201,7 @@ prototype:
 
 The configuration structure for the ``alias`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_ALIAS_Command;
 
@@ -213,7 +213,7 @@ cmdls - List commands
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cmdls COMMAND...
 
@@ -233,7 +233,7 @@ The current user must have read permission to list a command.
 
 The following is an example of how to use ``cmdls``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # cmdls help shutdown
     r-xr-xr-x     0     0 help
@@ -256,7 +256,7 @@ configured.
 
 The configuration structure for the ``cmdls`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDLS_Command;
 
@@ -268,7 +268,7 @@ cmdchown - Change user or owner of commands
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cmdchown [OWNER][:[GROUP]] COMMAND...
 
@@ -289,7 +289,7 @@ owner or group.
 
 The following is an example of how to use ``cmdchown``:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] # cmdls help
     r-xr-xr-x     0     0 help
@@ -314,7 +314,7 @@ configured.
 
 The configuration structure for the ``cmdchown`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDCHOWN_Command;
 
@@ -326,7 +326,7 @@ cmdchmod - Change mode of commands
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cmdchmod OCTAL-MODE COMMAND...
 
@@ -347,7 +347,7 @@ mode.
 
 The following is an example of how to use ``cmdchmod``:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] # cmdls help
     r-xr-xr-x     0     0 help
@@ -372,7 +372,7 @@ configured.
 
 The configuration structure for the ``cmdchmod`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CMDCHMOD_Command;
 
@@ -384,7 +384,7 @@ date - print or set current date and time
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     date
     date DATE TIME
@@ -410,7 +410,7 @@ None.
 
 The following is an example of how to use ``date``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ date
     Fri Jan  1 00:00:09 1988
@@ -438,7 +438,7 @@ configured.
 The ``date`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_date(
         int    argc,
@@ -447,7 +447,7 @@ prototype:
 
 The configuration structure for the ``date`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DATE_Command;
 
@@ -459,7 +459,7 @@ echo - produce message in a shell script
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     echo [-n | -e] args ...
 
@@ -521,7 +521,7 @@ interpreting them as options and escape sequences.
 
 The following is an example of how to use ``echo``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ echo a b c
     a b c
@@ -547,7 +547,7 @@ configured.
 The ``echo`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_echo(
         int    argc,
@@ -556,7 +556,7 @@ prototype:
 
 The configuration structure for the ``echo`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_ECHO_Command;
 
@@ -573,7 +573,7 @@ sleep - delay for a specified amount of time
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     sleep seconds
     sleep seconds nanoseconds
@@ -599,7 +599,7 @@ delays in shell scripts without adding another command such as ``usleep``.
 
 The following is an example of how to use ``sleep``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ sleep 10
     SHLL [/] $ sleep 0 5000000
@@ -629,7 +629,7 @@ configured.
 The ``sleep`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_sleep(
         int    argc,
@@ -638,7 +638,7 @@ prototype:
 
 The configuration structure for the ``sleep`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_SLEEP_Command;
 
@@ -650,7 +650,7 @@ id - show uid gid euid and egid
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     id
 
@@ -674,7 +674,7 @@ used by the filesystem to enforce permissions.
 The first example of the ``id`` command is from a session logged
 in as the normal user ``rtems``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # id
     uid=1(rtems),gid=1(rtems),euid=1(rtems),egid=1(rtems)
@@ -682,7 +682,7 @@ in as the normal user ``rtems``:
 The second example of the ``id`` command is from a session logged in as the
 ``root`` user:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # id
     uid=0(root),gid=0(root),euid=0(root),egid=0(root)
@@ -706,7 +706,7 @@ This command can be excluded from the shell command set by defining
 The ``id`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_id(
         int    argc,
@@ -715,7 +715,7 @@ prototype:
 
 The configuration structure for the ``id`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_ID_Command;
 
@@ -727,7 +727,7 @@ tty - show ttyname
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     tty
 
@@ -747,7 +747,7 @@ NONE
 
 The following is an example of how to use ``tty``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ tty
     /dev/console
@@ -772,7 +772,7 @@ configured.
 The ``tty`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_tty(
         int    argc,
@@ -781,7 +781,7 @@ prototype:
 
 The configuration structure for the ``tty`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_TTY_Command;
 
@@ -793,7 +793,7 @@ whoami - print effective user id
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     whoami
 
@@ -814,7 +814,7 @@ None.
 
 The following is an example of how to use ``whoami``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ whoami
     rtems
@@ -839,7 +839,7 @@ configured.
 The ``whoami`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_whoami(
         int    argc,
@@ -848,7 +848,7 @@ prototype:
 
 The configuration structure for the ``whoami`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_WHOAMI_Command;
 
@@ -860,7 +860,7 @@ getenv - print environment variable
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     getenv variable
 
@@ -881,7 +881,7 @@ The entire RTEMS application shares a single set of environment variables.
 
 The following is an example of how to use ``getenv``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ getenv BASEPATH
     /mnt/hda1
@@ -906,7 +906,7 @@ configured.
 The ``getenv`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_getenv(
         int    argc,
@@ -915,7 +915,7 @@ prototype:
 
 The configuration structure for the ``getenv`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_GETENV_Command;
 
@@ -927,7 +927,7 @@ setenv - set environment variable
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     setenv variable [value]
 
@@ -950,7 +950,7 @@ The entire RTEMS application shares a single set of environment variables.
 
 The following is an example of how to use ``setenv``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ setenv BASEPATH /mnt/hda1
 
@@ -974,7 +974,7 @@ configured.
 The ``setenv`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_setenv(
         int    argc,
@@ -983,7 +983,7 @@ prototype:
 
 The configuration structure for the ``setenv`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_SETENV_Command;
 
@@ -995,7 +995,7 @@ unsetenv - unset environment variable
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     unsetenv variable
 
@@ -1015,7 +1015,7 @@ The entire RTEMS application shares a single set of environment variables.
 
 The following is an example of how to use ``unsetenv``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ unsetenv BASEPATH
 
@@ -1039,7 +1039,7 @@ configured.
 The ``unsetenv`` is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_unsetenv(
         int    argc,
@@ -1048,7 +1048,7 @@ following prototype:
 
 The configuration structure for the ``unsetenv`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_UNSETENV_Command;
 
@@ -1060,7 +1060,7 @@ time - time command execution
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code-block:: c
 
     time command [argument ...]
 
@@ -1081,7 +1081,7 @@ None.
 
 The following is an example of how to use ``time``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ time cp -r /nfs/directory /c
 
@@ -1105,7 +1105,7 @@ configured.
 The ``time`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_time(
         int    argc,
@@ -1114,7 +1114,7 @@ prototype:
 
 The configuration structure for the ``time`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_TIME_Command;
 
@@ -1126,7 +1126,7 @@ logoff - logoff from the system
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     logoff
 
@@ -1149,7 +1149,7 @@ system.
 
 The following is an example of how to use ``logoff``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ logoff
     logoff from the system...
@@ -1174,7 +1174,7 @@ configured.
 The ``logoff`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_logoff(
         int    argc,
@@ -1183,7 +1183,7 @@ prototype:
 
 The configuration structure for the ``logoff`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_LOGOFF_Command;
 
@@ -1195,7 +1195,7 @@ rtc - RTC driver configuration
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     rtc
 
@@ -1220,7 +1220,7 @@ exit - exit the shell
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     exit
 
@@ -1241,7 +1241,7 @@ the shell interpreter loop.
 
 The following is an example of how to use ``exit``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ exit
     Shell exiting

@@ -35,7 +35,7 @@ netstats - obtain network statistics
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     netstats [-Aimfpcut]
 
@@ -82,7 +82,7 @@ NONE
 The following is an example of using the ``netstats`` command to print the IP
 routing table:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -i
     Destination     Gateway/Mask/Hw    Flags     Refs     Use Expire Interface
@@ -95,7 +95,7 @@ routing table:
 The following is an example of using the ``netstats`` command to print the MBUF
 statistics:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -m
     ************ MBUF STATISTICS ************
@@ -109,7 +109,7 @@ statistics:
 The following is an example of using the ``netstats`` command to print the
 print the interface statistics:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -f
     ************ INTERFACE STATISTICS ************
@@ -127,7 +127,7 @@ print the interface statistics:
 The following is an example of using the ``netstats`` command to print the
 print IP statistics:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -p
     ************ IP Statistics ************
@@ -139,7 +139,7 @@ print IP statistics:
 The following is an example of using the ``netstats`` command to print the ICMP
 statistics:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -c
     ************ ICMP Statistics ************
@@ -150,7 +150,7 @@ statistics:
 The following is an example of using the ``netstats`` command to print the UDP
 statistics:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -u
     ************ UDP Statistics ************
@@ -158,7 +158,7 @@ statistics:
 The following is an example of using the ``netstats`` command to print the TCP
 statistics:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] $ netstats -t
     ************ TCP Statistics ************
@@ -199,7 +199,7 @@ configured.
 The ``netstats`` is implemented by a C language function
 which has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_netstats(
         int    argc,
@@ -208,7 +208,7 @@ which has the following prototype:
 
 The configuration structure for the ``netstats`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_NETSTATS_Command;
 
@@ -220,7 +220,7 @@ ifconfig - configure a network interface
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     ifconfig
     ifconfig interface
@@ -245,7 +245,7 @@ complicated.  More example usages would be a welcome submission.
 
 The following is an example of how to use ``ifconfig``:
 
-.. code:: shell
+.. code-block:: shell
 
     ************ INTERFACE STATISTICS ************
     ***** eth1 *****
@@ -279,7 +279,7 @@ configured.
 The ``ifconfig`` is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_ifconfig(
         int    argc,
@@ -288,7 +288,7 @@ following prototype:
 
 The configuration structure for the ``ifconfig`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_IFCONFIG_Command;
 
@@ -300,7 +300,7 @@ route - show or manipulate the ip routing table
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     route [subcommand] [args]
 
@@ -313,7 +313,7 @@ provided to describe the route.
 
 Command templates include the following:
 
-.. code:: shell
+.. code-block:: shell
 
     route [add|del] -net IP_ADDRESS gw GATEWAY_ADDRESS [netmask MASK]
     route [add|del] -host IP_ADDRESS gw GATEWAY_ADDRES [netmask MASK]
@@ -334,7 +334,7 @@ complicated.  More example usages would be a welcome submission.
 The following is an example of how to use ``route`` to display, add, and delete
 a new route:
 
-.. code:: c
+.. code-block:: shell
 
     [/] $ route
     Destination     Gateway/Mask/Hw    Flags     Refs     Use Expire Interface
@@ -381,7 +381,7 @@ configured.
 The ``route`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_route(
         int    argc,
@@ -390,7 +390,7 @@ prototype:
 
 The configuration structure for the ``route`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_ROUTE_Command;
 
@@ -402,7 +402,7 @@ ping - ping a host or IP address
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     ping [-AaDdfnoQqRrv] [-c count] [-G sweepmaxsize] [-g sweepminsize]
     [-h sweepincrsize] [-i wait] [-l preload] [-M mask | time] [-m ttl]
@@ -601,7 +601,7 @@ are open.
 
 The following is an example of how to use ``oing`` to ping:
 
-.. code:: shell
+.. code-block:: shell
 
     [/] # ping 10.10.10.1
     PING 10.10.10.1 (10.10.10.1): 56 data bytes
@@ -640,7 +640,7 @@ configured.
 The ``ping`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_ping(
         int    argc,
@@ -649,7 +649,6 @@ prototype:
 
 The configuration structure for the ``ping`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_PING_Command;
-

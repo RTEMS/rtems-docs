@@ -42,7 +42,7 @@ mdump - display contents of memory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mdump [address [length [size]]]
 
@@ -73,7 +73,7 @@ program fault.
 
 The following is an example of how to use ``mdump``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mdump 0x10000 32
     0x0001000000 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 ................
@@ -105,7 +105,7 @@ configured.
 The ``mdump`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mdump(
         int    argc,
@@ -114,7 +114,7 @@ prototype:
 
 The configuration structure for the ``mdump`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MDUMP_Command;
 
@@ -126,7 +126,7 @@ wdump - display contents of memory (word)
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     wdump [address [length]]
 
@@ -155,7 +155,7 @@ program fault.
 
 The following is an example of how to use ``wdump``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ wdump 0x02010000 32
     0x02010000 0201 08D8 0201 08C0-0201 08AC 0201 0874 ...............t
@@ -181,7 +181,7 @@ configured.
 The ``wdump`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_wdump(
         int    argc,
@@ -190,7 +190,7 @@ prototype:
 
 The configuration structure for the ``wdump`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_WDUMP_Command;
 
@@ -202,7 +202,7 @@ ldump - display contents of memory (longword)
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     ldump [address [length]]
 
@@ -231,7 +231,7 @@ program fault.
 
 The following is an example of how to use ``ldump``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ ldump 0x02010000 32
     0x02010000 020108D8 020108C0-020108AC 02010874 ...............t
@@ -257,7 +257,7 @@ configured.
 The ``ldump`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_ldump(
         int    argc,
@@ -266,7 +266,7 @@ prototype:
 
 The configuration structure for the ``ldump`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_LDUMP_Command;
 
@@ -278,7 +278,7 @@ medit - modify contents of memory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     medit address value1 [value2 ... valueN]
 
@@ -301,7 +301,7 @@ program fault.
 
 The following is an example of how to use ``medit``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mdump 0x02000000 32
     0x02000000 A1 48 00 00 29 00 80 33-81 C5 22 BC A6 10 21 00 .H..)..3.."...!.
@@ -331,7 +331,7 @@ configured.
 The ``medit`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_medit(
         int    argc,
@@ -340,7 +340,7 @@ prototype:
 
 The configuration structure for the ``medit`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MEDIT_Command;
 
@@ -352,7 +352,7 @@ mfill - file memory with pattern
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mfill address length value
 
@@ -382,7 +382,7 @@ pattern used as a guard by the Stack Checker.  On the first context switch
 after the pattern is overwritten by the ``mfill`` command, the Stack Checker
 detect the pattern has been corrupted and generates a fatal error.
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mdump 0x23d89a0 16
     0x023D89A0 A5 A5 A5 A5 A5 A5 A5 A5-FE ED F0 0D 0B AD 0D 06 ................
@@ -411,7 +411,7 @@ configured.
 The ``mfill`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mfill(
         int    argc,
@@ -421,7 +421,7 @@ prototype:
 The configuration structure for the ``mfill`` has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MFILL_Command;
 
@@ -433,7 +433,7 @@ mmove - move contents of memory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mmove dst src length
 
@@ -454,7 +454,7 @@ NONE
 
 The following is an example of how to use ``mmove``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mdump 0x023d99a0 16
     0x023D99A0 A5 A5 A5 A5 A5 A5 A5 A5-A5 A5 A5 A5 A5 A5 A5 A5 ................
@@ -484,7 +484,7 @@ configured.
 The ``mmove`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mmove(
         int    argc,
@@ -493,7 +493,7 @@ prototype:
 
 The configuration structure for the ``mmove`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MMOVE_Command;
 
@@ -505,7 +505,7 @@ malloc - obtain information on C program heap
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     malloc [walk]
 
@@ -564,7 +564,7 @@ NONE
 
 The following is an example of how to use the ``malloc`` command.
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ malloc
     C Program Heap and RTEMS Workspace are the same.
@@ -625,7 +625,7 @@ configured.
 The ``malloc`` is implemented by a C language function
 which has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_malloc(
         int    argc,
@@ -634,6 +634,6 @@ which has the following prototype:
 
 The configuration structure for the ``malloc`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MALLOC_Command;

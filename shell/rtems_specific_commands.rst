@@ -64,7 +64,7 @@ shutdown - Shutdown the system
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     shutdown
 
@@ -82,7 +82,7 @@ This command does not return.
 
 The following is an example of how to use ``shutdown``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ shutdown
     System shutting down at user request
@@ -106,7 +106,7 @@ configured.
 
 The configuration structure for the ``shutdown`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_SHUTDOWN_Command;
 
@@ -118,7 +118,7 @@ cpuuse - print or reset per thread cpu usage
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cpuuse [-r]
 
@@ -144,7 +144,7 @@ reported is limited by the clock tick quantum.
 
 The following is an example of how to use ``cpuuse``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ cpuuse
     CPU Usage by thread
@@ -190,7 +190,7 @@ configured.
 The ``cpuuse`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_cpuuse(
        int    argc,
@@ -199,7 +199,7 @@ prototype:
 
 The configuration structure for the ``cpuuse`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CPUUSE_Command;
 
@@ -211,7 +211,7 @@ stackuse - print per thread stack usage
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     stackuse
 
@@ -235,7 +235,7 @@ report.
 
 The following is an example of how to use ``stackuse``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ stackuse
     Stack usage by thread
@@ -265,7 +265,7 @@ configured.
 The ``stackuse`` is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_stackuse(
         int    argc,
@@ -274,7 +274,7 @@ following prototype:
 
 The configuration structure for the ``stackuse`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_STACKUSE_Command;
 
@@ -286,7 +286,7 @@ perioduse - print or reset per period usage
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     perioduse [-r]
 
@@ -313,7 +313,7 @@ reported is limited by the clock tick quantum.
 
 The following is an example of how to use ``perioduse``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ perioduse
     Period information by period
@@ -360,7 +360,7 @@ configured.
 The ``perioduse`` is implemented by a C language function
 which has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_perioduse(
         int    argc,
@@ -369,7 +369,7 @@ which has the following prototype:
 
 The configuration structure for the ``perioduse`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_PERIODUSE_Command;
 
@@ -381,7 +381,7 @@ profreport - print a profiling report
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     profreport
 
@@ -403,7 +403,7 @@ information.
 
 The following is an example of how to use ``profreport``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ profreport
     <ProfilingReport name="Shell">
@@ -473,7 +473,7 @@ configured.
 
 The configuration structure for the ``profreport`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_PROFREPORT_Command;
 
@@ -485,7 +485,7 @@ wkspace - display information on executive workspace
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     wkspace
 
@@ -518,7 +518,7 @@ NONE
 
 The following is an example of how to use ``wkspace``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ wkspace
     Number of free blocks: 1
@@ -548,7 +548,7 @@ configured.
 The ``wkspace`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_wkspace(
         int    argc,
@@ -557,7 +557,7 @@ prototype:
 
 The configuration structure for the ``wkspace`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_WKSPACE_Command;
 
@@ -569,7 +569,7 @@ config - show the system configuration.
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     config
 
@@ -591,7 +591,7 @@ appreciated.
 
 The following is an example of how to use ``config``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ config
     INITIAL (startup) Configuration Info
@@ -621,7 +621,7 @@ configured.
 The ``config`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_config(
         int    argc,
@@ -630,7 +630,7 @@ prototype:
 
 The configuration structure for the ``config`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CONFIG_Command;
 
@@ -642,7 +642,7 @@ itask - list init tasks for the system
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     itask
 
@@ -665,7 +665,7 @@ appreciated.
 
 The following is an example of how to use ``itask``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ itask
     #    NAME   ENTRY        ARGUMENT    PRIO   MODES  ATTRIBUTES   STACK SIZE
@@ -692,7 +692,7 @@ configured.
 The ``itask`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_itask(
         int    argc,
@@ -701,7 +701,7 @@ prototype:
 
 The configuration structure for the ``itask`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_ITASK_Command;
 
@@ -713,7 +713,7 @@ extension - display information about extensions
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     extension [id [id ...]]
 
@@ -738,7 +738,7 @@ NONE
 The following is an example of using the ``extension`` command
 on a system with no user extensions.
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ extension
     ID       NAME
@@ -764,7 +764,7 @@ configured.
 The ``extension`` is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_extension(
         int    argc,
@@ -773,7 +773,7 @@ following prototype:
 
 The configuration structure for the ``extension`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_EXTENSION_Command;
 
@@ -785,7 +785,7 @@ task - display information about tasks
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     task [id [id ...]]
 
@@ -810,7 +810,7 @@ NONE
 The following is an example of how to use the ``task`` on an application with
 just two Classic API tasks:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ task
     ID       NAME   PRIO   STAT   MODES  EVENTS   WAITID  WAITARG  NOTES
@@ -838,7 +838,7 @@ configured.
 The ``task`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: shell
+.. code-block:: shell
 
     int rtems_shell_rtems_main_task(
         int    argc,
@@ -847,7 +847,7 @@ prototype:
 
 The configuration structure for the ``task`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_TASK_Command;
 
@@ -859,7 +859,7 @@ queue - display information about message queues
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     queue [id [id ... ]]
 
@@ -884,7 +884,7 @@ NONE
 The following is an example of using the ``queue`` command on a system with no
 Classic API Message Queues.
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ queue
     ID       NAME   ATTRIBUTES   PEND   MAXPEND  MAXSIZE
@@ -910,7 +910,7 @@ configured.
 The ``queue`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_queue(
         int    argc,
@@ -919,7 +919,7 @@ prototype:
 
 The configuration structure for the ``queue`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_QUEUE_Command;
 
@@ -931,7 +931,7 @@ sema - display information about semaphores
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     sema [id [id ... ]]
 
@@ -955,7 +955,7 @@ NONE
 
 The following is an example of how to use ``sema``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ sema
     ID       NAME   ATTR        PRICEIL CURR_CNT HOLDID
@@ -989,7 +989,7 @@ configured.
 The ``sema`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_sema(
         int    argc,
@@ -998,7 +998,7 @@ prototype:
 
 The configuration structure for the ``sema`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_SEMA_Command;
 
@@ -1010,7 +1010,7 @@ region - display information about regions
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     region [id [id ... ]]
 
@@ -1035,7 +1035,7 @@ NONE
 The following is an example of using the ``region`` command on a system with no
 user extensions.
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ region
     ID       NAME   ATTR        STARTADDR LENGTH    PAGE_SIZE USED_BLOCKS
@@ -1061,7 +1061,7 @@ configured.
 The ``region`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_region(
         int    argc,
@@ -1070,7 +1070,7 @@ prototype:
 
 The configuration structure for the ``region`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_REGION_Command;
 
@@ -1082,7 +1082,7 @@ part - display information about partitions
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     part [id [id ... ]]
 
@@ -1107,7 +1107,7 @@ NONE
 The following is an example of using the ``part`` command on a system with no
 user extensions.
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ part
     ID       NAME   ATTR        STARTADDR LENGTH    BUF_SIZE  USED_BLOCKS
@@ -1133,7 +1133,7 @@ configured.
 The ``part`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_part(
         int    argc,
@@ -1142,7 +1142,7 @@ prototype:
 
 The configuration structure for the ``part`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_PART_Command;
 
@@ -1154,7 +1154,7 @@ object - display information about RTEMS objects
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     object [id [id ...]]
 
@@ -1175,7 +1175,7 @@ NONE
 
 The following is an example of how to use ``object``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ object 0a010001 1a010002
     ID       NAME   PRIO   STAT   MODES  EVENTS   WAITID  WAITARG  NOTES
@@ -1205,7 +1205,7 @@ configured.
 The ``object`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_object(
         int    argc,
@@ -1215,7 +1215,7 @@ prototype:
 The configuration structure for the ``object`` has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_OBJECT_Command;
 
@@ -1227,7 +1227,7 @@ driver - display the RTEMS device driver table
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     driver [major [major ...]]
 
@@ -1251,7 +1251,7 @@ NONE
 
 The following is an example of how to use ``driver``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ driver
     Major      Entry points
@@ -1284,7 +1284,7 @@ configured.
 The ``driver`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_driver(
         int    argc,
@@ -1293,7 +1293,7 @@ prototype:
 
 The configuration structure for the ``driver`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DRIVER_Command;
 
@@ -1305,7 +1305,7 @@ dname - displays information about named drivers
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     dname
 
@@ -1325,7 +1325,7 @@ NONE
 
 The following is an example of how to use ``dname``:
 
-.. code:: shell
+.. code-block:: shell
 
     EXAMPLE_TBD
 
@@ -1349,7 +1349,7 @@ configured.
 The ``dname`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_dname(
         int    argc,
@@ -1358,7 +1358,7 @@ prototype:
 
 The configuration structure for the ``dname`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DNAME_Command;
 
@@ -1370,7 +1370,7 @@ pthread - display information about POSIX threads
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     pthread [id [id ...]]
 
@@ -1395,7 +1395,7 @@ This command is only available when the POSIX API is configured.
 The following is an example of how to use the ``task`` on an application with
 four POSIX threads:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ pthread
     ID       NAME           PRI  STATE MODES   EVENTS    WAITID  WAITARG  NOTES

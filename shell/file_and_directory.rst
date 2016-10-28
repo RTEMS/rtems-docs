@@ -81,7 +81,7 @@ blksync - sync the block driver
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     blksync driver
 
@@ -103,7 +103,7 @@ None.
 
 The following is an example of how to use ``blksync``:
 
-.. code:: c
+.. code-block:: c
 
     blksync /dev/hda1
 
@@ -127,7 +127,7 @@ configured.
 The ``blksync`` is implemented by a C language function
 which has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_blksync(
         int    argc,
@@ -136,7 +136,7 @@ which has the following prototype:
 
 The configuration structure for the ``blksync`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_BLKSYNC_Command;
 
@@ -148,7 +148,7 @@ cat - display file contents
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cat file1 [file2 .. fileN]
 
@@ -168,7 +168,7 @@ It is possible to read the input from a device file using ``cat``.
 
 The following is an example of how to use ``cat``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # cat /etc/passwd
     root:*:0:0:root::/:/bin/sh
@@ -195,7 +195,7 @@ configured.
 The ``cat`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_cat(
         int    argc,
@@ -204,7 +204,7 @@ prototype:
 
 The configuration structure for the ``cat`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CAT_Command;
 
@@ -216,7 +216,7 @@ cd - alias for chdir
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cd directory
 
@@ -237,7 +237,7 @@ None.
 
 The following is an example of how to use ``cd``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ cd etc
     SHLL [/etc] $ cd /
@@ -271,7 +271,7 @@ This command can be excluded from the shell command set by defining
 The ``cd`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_cd(
         int    argc,
@@ -280,7 +280,7 @@ prototype:
 
 The configuration structure for the ``cd`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CD_Command;
 
@@ -292,7 +292,7 @@ chdir - change the current directory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     chdir [dir]
 
@@ -314,7 +314,7 @@ None.
 
 The following is an example of how to use ``chdir``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ pwd
     /
@@ -342,7 +342,7 @@ configured.
 The ``chdir`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_chdir(
         int    argc,
@@ -351,7 +351,7 @@ prototype:
 
 The configuration structure for the ``chdir`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CHDIR_Command;
 
@@ -363,7 +363,7 @@ chmod - change permissions of a file
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     chmod permissions file1 [file2...]
 
@@ -386,7 +386,7 @@ the permissions.
 
 The following is an example of how to use ``chmod``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # cd etc
     SHLL [/etc] # ls
@@ -437,7 +437,7 @@ configured.
 The ``chmod`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_chmod(
         int    argc,
@@ -446,7 +446,7 @@ prototype:
 
 The configuration structure for the ``chmod`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CHMOD_Command;
 
@@ -458,7 +458,7 @@ chroot - change the root directory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     chroot [dir]
 
@@ -481,7 +481,7 @@ None.
 The following is an example of how to use ``chroot`` and the impact it has on
 the environment for subsequent command invocations:
 
-.. code:: c
+.. code-block:: shell
 
     SHLL [/] $ cat passwd
     cat: passwd: No such file or directory
@@ -514,7 +514,7 @@ configured.
 The ``chroot`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_chroot(
         int    argc,
@@ -523,7 +523,7 @@ prototype:
 
 The configuration structure for the ``chroot`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CHROOT_Command;
 
@@ -535,7 +535,7 @@ cp - copy files
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     cp [-R [-H | -L | -P]] [-f | -i] [-pv] src target
     cp [-R [-H | -L] ] [-f | -i] [-NpPv] source_file ... target_directory
@@ -634,7 +634,7 @@ NONE
 The following is an example of how to use ``cp`` to copy a file to a new name
 in the current directory:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # cat joel
     cat: joel: No such file or directory
@@ -653,7 +653,7 @@ The following is an example of how to use ``cp`` to
 copy one or more files to a destination directory and
 use the same ``basename`` in the destination directory:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # mkdir tmp
     SHLL [/] # ls tmp
@@ -688,7 +688,7 @@ This command can be excluded from the shell command set by defining
 The ``cp`` command is implemented by a C language function which
 has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_main_cp(
         int    argc,
@@ -697,7 +697,7 @@ has the following prototype:
 
 The configuration structure for the ``cp`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_CP_Command;
 
@@ -714,7 +714,7 @@ dd - convert and copy a file
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     dd [operands ...]
 
@@ -922,7 +922,7 @@ NONE
 
 The following is an example of how to use ``dd``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ dd if=/nfs/boot-image of=/dev/hda1
 
@@ -946,7 +946,7 @@ configured.
 The ``dd`` command is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_dd(
         int    argc,
@@ -955,7 +955,7 @@ following prototype:
 
 The configuration structure for the ``dd`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DD_Command;
 
@@ -967,7 +967,7 @@ debugrfs - debug RFS file system
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     debugrfs [-hl] path command [options]
 
@@ -1026,7 +1026,7 @@ NONE
 
 The following is an example of how to use ``debugrfs``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ debugrfs /c data
 
@@ -1050,7 +1050,7 @@ configured.
 The ``debugrfs`` command is implemented by a C language function which
 has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_debugrfs(
         int    argc,
@@ -1059,7 +1059,7 @@ has the following prototype:
 
 The configuration structure for ``debugrfs`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DEBUGRFS_Command;
 
@@ -1071,7 +1071,7 @@ df - display file system disk space usage
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     df [-h] [-B block_size]
 
@@ -1091,7 +1091,7 @@ NONE
 
 The following is an example of how to use ``df``:
 
-.. code:: c
+.. code-block:: shell
 
     SHLL [/] $ df -B 4K
     Filesystem     4K-blocks        Used   Available       Use%     Mounted on
@@ -1122,7 +1122,7 @@ This command can be excluded from the shell command set by defining
 The ``df`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_main_df(
         int    argc,
@@ -1131,7 +1131,7 @@ prototype:
 
 The configuration structure for the ``df`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DF_Command;
 
@@ -1143,7 +1143,7 @@ dir - alias for ls
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     dir [dir]
 
@@ -1164,7 +1164,7 @@ NONE
 
 The following is an example of how to use ``dir``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ dir
     drwxr-xr-x   1   root   root         536 Jan 01 00:00 dev/
@@ -1197,7 +1197,7 @@ configured.
 The ``dir`` is implemented by a C language function
 which has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_dir(
         int    argc,
@@ -1206,7 +1206,7 @@ which has the following prototype:
 
 The configuration structure for the ``dir`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_DIR_Command;
 
@@ -1218,7 +1218,7 @@ fdisk - format disk
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     fdisk
 
@@ -1243,7 +1243,7 @@ hexdump - ascii/dec/hex/octal dump
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     hexdump [-bcCdovx] [-e format_string] [-f format_file] [-n length] [-s skip] file ...
 
@@ -1455,7 +1455,7 @@ NONE
 
 The following is an example of how to use ``hexdump``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ hexdump -C -n 512 /dev/hda1
 
@@ -1479,7 +1479,7 @@ been configured.
 The ``hexdump`` command is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_hexdump(
         int    argc,
@@ -1488,7 +1488,7 @@ following prototype:
 
 The configuration structure for the ``hexdump`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_HEXDUMP_Command;
 
@@ -1500,7 +1500,7 @@ ln - make links
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code-block:: c
 
     ln [-fhinsv] source_file [target_file]
     ln [-fhinsv] source_file ... target_dir
@@ -1571,7 +1571,7 @@ None.
 
 **EXAMPLES:**
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] ln -s /dev/console /dev/con1
 
@@ -1594,7 +1594,7 @@ This command can be excluded from the shell command set by defining
 The ``ln`` command is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_ln(
         int    argc,
@@ -1603,7 +1603,7 @@ following prototype:
 
 The configuration structure for the ``ln`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_LN_Command;
 
@@ -1620,7 +1620,7 @@ ls - list files in the directory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     ls [dir]
 
@@ -1642,7 +1642,7 @@ POSIX ls(1).  It only displays the contents of entire directories.
 
 The following is an example of how to use ``ls``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ ls
     drwxr-xr-x   1   root   root         536 Jan 01 00:00 dev/
@@ -1677,7 +1677,7 @@ This command can be excluded from the shell command set by defining
 The ``ls`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_ls(
         int    argc,
@@ -1686,7 +1686,7 @@ prototype:
 
 The configuration structure for the ``ls`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_LS_Command;
 
@@ -1698,7 +1698,7 @@ md5 - compute the Md5 hash of a file or list of files
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     md5 <files>
 
@@ -1719,7 +1719,7 @@ None.
 
 The following is an example of how to use ``md5``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ md5 shell-init
     MD5 (shell-init) = 43b4d2e71b47db79eae679a2efeacf31
@@ -1744,7 +1744,7 @@ configured.
 The ``md5`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_main_md5(
         int    argc,
@@ -1753,7 +1753,7 @@ prototype:
 
 The configuration structure for the ``md5`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MD5_Command;
 
@@ -1765,7 +1765,7 @@ mkdir - create a directory
 
 **SYNOPSYS:**
 
-.. code:: c
+.. code-block:: c
 
     mkdir  dir [dir1 .. dirN]
 
@@ -1792,7 +1792,7 @@ not ``rtems``.
 
 The following is an example of how to use ``mkdir``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # ls
     drwxr-xr-x   1   root   root         536 Jan 01 00:00 dev/
@@ -1826,7 +1826,7 @@ configured.
 The ``mkdir`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mkdir(
         int    argc,
@@ -1835,7 +1835,7 @@ prototype:
 
 The configuration structure for the ``mkdir`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MKDIR_Command;
 
@@ -1847,7 +1847,7 @@ mkdos - DOSFS file system format
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mkdos [-V label] [-s sectors/cluster] [-r size] [-v] path
 
@@ -1879,7 +1879,7 @@ None.
 
 The following is an example of how to use ``mkdos``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mkdos /dev/rda1
 
@@ -1903,7 +1903,7 @@ configured.
 The ``mkdos`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mkdos(
         int    argc,
@@ -1912,7 +1912,7 @@ prototype:
 
 The configuration structure for the ``mkdos`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MKDOS_Command;
 
@@ -1924,7 +1924,7 @@ mknod - make device special file
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mknod [-rR] [-F fmt] [-g gid] [-m mode] [-u uid] name [c | b] [driver | major] minor
     mknod [-rR] [-F fmt] [-g gid] [-m mode] [-u uid] name [c | b] major unit subunit
@@ -2004,7 +2004,7 @@ None.
 
 **EXAMPLES:**
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] mknod c 3 0 /dev/ttyS10
 
@@ -2028,7 +2028,7 @@ configured.
 The ``mknod`` command is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mknod(
         int    argc,
@@ -2037,7 +2037,7 @@ following prototype:
 
 The configuration structure for the ``mknod`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MKNOD_Command;
 
@@ -2054,7 +2054,7 @@ mkrfs - format RFS file system
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mkrfs [-vsbiIo] device
 
@@ -2107,7 +2107,7 @@ None.
 
 The following is an example of how to use ``mkrfs``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mkrfs /dev/fdda
 
@@ -2131,7 +2131,7 @@ configured.
 The ``mkrfs`` command is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mkrfs(
         int    argc,
@@ -2140,7 +2140,7 @@ following prototype:
 
 The configuration structure for ``mkrfs`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MKRFS_Command;
 
@@ -2152,7 +2152,7 @@ mount - mount disk
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mount [-t fstype] [-r] [-L] device path
 
@@ -2193,24 +2193,24 @@ provided.
 
 Mount the Flash Disk driver to the '/fd' mount point:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ mount -t msdos /dev/flashdisk0 /fd
 
 Mount the NFS file system exported path 'bar' by host 'foo':
 
-.. code:: shell
+.. code-block:: shell
 
     $ mount -t nfs foo:/bar /nfs
 
 Mount the TFTP file system on '/tftp':
 
-.. code:: shell
+.. code-block:: shell
 
     $ mount -t tftp /tftp
 
 To access the TFTP files on server '10.10.10.10':
-.. code:: shell
+.. code-block:: shell
 
     $ cat /tftp/10.10.10.10/test.txt
 
@@ -2243,7 +2243,7 @@ support for that file-system. The file-system mount command defines are:
 
 An example configuration is:
 
-.. code:: c
+.. code-block:: c
 
     #define CONFIGURE_SHELL_MOUNT_MSDOS
     #ifdef RTEMS_NETWORKING
@@ -2260,7 +2260,7 @@ An example configuration is:
 The ``mount`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_mount(
         int    argc,
@@ -2269,7 +2269,7 @@ prototype:
 
 The configuration structure for the ``mount`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MOUNT_Command;
 
@@ -2281,7 +2281,7 @@ mv - move files
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     mv [-fiv] source_file target_file
     mv [-fiv] source_file... target_file
@@ -2326,7 +2326,7 @@ Should the *rename* call fail because source and target are on different file
 systems, ``mv`` will remove the destination file, copy the source file to the
 destination, and then remove the source.  The effect is roughly equivalent to:
 
-.. code:: shell
+.. code-block:: shell
 
     rm -f destination_path && \
     cp -PRp source_file destination_path && \
@@ -2342,7 +2342,7 @@ None.
 
 **EXAMPLES:**
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] mv /dev/console /dev/con1
 
@@ -2365,7 +2365,7 @@ This command can be excluded from the shell command set by defining
 The ``mv`` command is implemented by a C language function which has the
 following prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_main_mv(
         int    argc,
@@ -2374,7 +2374,7 @@ following prototype:
 
 The configuration structure for the ``mv`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_MV_Command;
 
@@ -2391,7 +2391,7 @@ pwd - print work directory
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     pwd
 
@@ -2412,7 +2412,7 @@ None.
 
 The following is an example of how to use ``pwd``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ pwd
     /
@@ -2440,7 +2440,7 @@ configured.
 The ``pwd`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_pwd(
         int    argc,
@@ -2449,7 +2449,7 @@ prototype:
 
 The configuration structure for the ``pwd`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_PWD_Command;
 
@@ -2461,7 +2461,7 @@ rmdir - remove empty directories
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     rmdir  [dir1 .. dirN]
 
@@ -2483,7 +2483,7 @@ reasons that call may fail apply to this command.
 
 The following is an example of how to use ``rmdir``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] # mkdir joeldir
     SHLL [/] # rmdir joeldir
@@ -2510,7 +2510,7 @@ configured.
 The ``rmdir`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_rmdir(
         int    argc,
@@ -2519,7 +2519,7 @@ prototype:
 
 The configuration structure for the ``rmdir`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_RMDIR_Command;
 
@@ -2531,7 +2531,7 @@ rm - remove files
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     rm file1 [file2 ... fileN]
 
@@ -2558,7 +2558,7 @@ None.
 
 The following is an example of how to use ``rm``:
 
-.. code:: c
+.. code-block:: shell
 
     SHLL [/] # cp /etc/passwd tmpfile
     SHLL [/] # cat tmpfile
@@ -2588,7 +2588,7 @@ This command can be excluded from the shell command set by defining
 The ``rm`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_main_rm(
         int    argc,
@@ -2597,7 +2597,7 @@ prototype:
 
 The configuration structure for the ``rm`` has the
 following prototype:
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_RM_Command;
 
@@ -2609,7 +2609,7 @@ umask - set file mode creation mask
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     umask [new_umask]
 
@@ -2630,7 +2630,7 @@ This command does not currently support symbolic mode masks.
 
 The following is an example of how to use ``umask``:
 
-.. code:: shell
+.. code-block:: shell
 
     SHLL [/] $ umask
     022
@@ -2659,7 +2659,7 @@ configured.
 The ``umask`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_umask(
         int    argc,
@@ -2668,7 +2668,7 @@ prototype:
 
 The configuration structure for the ``umask`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_UMASK_Command;
 
@@ -2680,7 +2680,7 @@ unmount - unmount disk
 
 **SYNOPSYS:**
 
-.. code:: shell
+.. code-block:: shell
 
     unmount path
 
@@ -2700,7 +2700,7 @@ TBD - Surely there must be some warnings to go here.
 
 The following is an example of how to use ``unmount``:
 
-.. code:: shell
+.. code-block:: shell
 
     EXAMPLE_TBD
 
@@ -2724,7 +2724,7 @@ configured.
 The ``unmount`` is implemented by a C language function which has the following
 prototype:
 
-.. code:: c
+.. code-block:: c
 
     int rtems_shell_rtems_main_unmount(
         int    argc,
@@ -2733,6 +2733,6 @@ prototype:
 
 The configuration structure for the ``unmount`` has the following prototype:
 
-.. code:: c
+.. code-block:: c
 
     extern rtems_shell_cmd_t rtems_shell_UNMOUNT_Command;
