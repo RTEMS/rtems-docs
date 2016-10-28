@@ -83,7 +83,7 @@ def doc_pdf(ctx, source_dir, conf_dir):
 
 	ctx(
 		rule	= "${BIN_SPHINX_BUILD} -b latex -c %s -j %d -d build/doctrees %s build/latex" % (conf_dir, ctx.options.jobs, source_dir),
-		cwd		= ctx.path.abspath(),
+		cwd		= ctx.path,
 		source	= ctx.path.ant_glob('**/*.rst'),
 		target	= "latex/%s.tex" % ctx.path.name
 	)
@@ -92,7 +92,7 @@ def doc_pdf(ctx, source_dir, conf_dir):
 
 	ctx(
 		features	= 'tex',
-		cwd			= "%s/latex/" % ctx.path.get_bld().abspath(),
+		cwd		= "%s/latex/" % ctx.path.get_bld().abspath(),
 		type		= 'pdflatex',
 		source		= ctx.bldnode.find_or_declare("latex/%s.tex" % ctx.path.name),
 		prompt		= 0
