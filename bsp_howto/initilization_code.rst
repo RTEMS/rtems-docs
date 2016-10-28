@@ -350,7 +350,7 @@ copied into RAM, then the data section recopy is initiated
 This code performs the following actions:
 
 - copies the .data section from ROM to its location reserved in RAM (see
-  `Initialized Data`_ for more details about this copy),
+  :ref:`Initialized Data` for more details about this copy),
 
 - clear ``.bss`` section (all the non-initialized data will take value 0).
 

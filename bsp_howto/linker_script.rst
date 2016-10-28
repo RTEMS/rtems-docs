@@ -299,6 +299,8 @@ BSP This file can be found at $BSP340_ROOT/startup/linkcmds.
       __WorkspaceBase = .;
     } >ram
 
+.. _Initialized Data:
+   
 Initialized Data
 ================
 
