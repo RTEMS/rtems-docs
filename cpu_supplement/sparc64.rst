@@ -143,34 +143,27 @@ architecturally defined role in the programming model which provides an
 alternate name.  The following table describes the mapping between the 32
 registers and the register sets:
 
-    +-----------------+----------------+------------------+
-    | Register Number | Register Names |   Description    |
-    +-----------------+----------------+------------------+
-    |     0 - 7       |    g0 - g7     | Global Registers |
-    +-----------------+----------------+------------------+
-    |     8 - 15      |    o0 - o7     | Output Registers |
-    +-----------------+----------------+------------------+
-    |    16 - 23      |    l0 - l7     | Local Registers  |
-    +-----------------+----------------+------------------+
-    |    24 - 31      |    i0 - i7     | Input Registers  |
-    +-----------------+----------------+------------------+
+================ ================ ===================
+Register Number  Register Names   Description
+================ ================ ===================
+0 - 7            g0 - g7          Global Registers
+8 - 15           o0 - o7          Output Registers
+16 - 23          l0 - l7          Local Registers
+24 - 31          i0 - i7          Input Registers
+================ ================ ===================
 
 As mentioned above, some of the registers serve defined roles in the
 programming model.  The following table describes the role of each of these
 registers:
 
-    +---------------+----------------+----------------------+
-    | Register Name | Alternate Name |      Description     |
-    +---------------+----------------+----------------------+
-    |     g0        |      na        |    reads return 0    |
-    |               |                |  writes are ignored  |
-    +---------------+----------------+----------------------+
-    |     o6        |      sp        |     stack pointer    |
-    +---------------+----------------+----------------------+
-    |     i6        |      fp        |     frame pointer    |
-    +---------------+----------------+----------------------+
-    |     i7        |      na        |    return address    |
-    +---------------+----------------+----------------------+
+============== ================ ==================================
+Register Name  Alternate Name   Description
+============== ================ ==================================
+g0             na               reads return 0, writes are ignored
+o6             sp               stack pointer
+i6             fp               frame pointer
+i7             na               return address
+============== ================ ==================================
 
 Floating Point Registers
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -384,17 +377,15 @@ fashion by the SPARC. Memory accesses which are not properly aligned generate a
 "memory address not aligned" trap (type number 0x34). The following table lists
 the alignment requirements for a variety of data accesses:
 
-.. table::
-
-    +--------------+-----------------------+
-    |   Data Type  | Alignment Requirement |
-    +--------------+-----------------------+
-    |     byte     |          1            |
-    |   half-word  |          2            |
-    |     word     |          4            |
-    |  doubleword  |          8            |
-    |   quadword   |          16           |
-    +--------------+-----------------------+
+==============  ======================
+Data Type       Alignment Requirement
+==============  ======================
+byte            1
+half-word       2
+word            4
+doubleword      8
+quadword        16
+==============  ======================
 
 RTEMS currently does not support any SPARC Memory Management Units, therefore,
 virtual memory or segmentation systems involving the SPARC are not supported.

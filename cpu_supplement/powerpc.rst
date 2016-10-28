@@ -373,14 +373,14 @@ architecture does not require the processor to generate alignment exceptions.
 The following table lists the alignment requirements for a variety of data
 accesses:
 
-+--------------+-----------------------+
-|   Data Type  | Alignment Requirement |
-+--------------+-----------------------+
-|     byte     |          1            |
-|   half-word  |          2            |
-|     word     |          4            |
-|  doubleword  |          8            |
-+--------------+-----------------------+
+==============  ======================
+Data Type       Alignment Requirement
+==============  ======================
+byte            1
+half-word       2
+word            4
+doubleword      8
+==============  ======================
 
 Doubleword load and store operations are only available in PowerPC CPU models
 which are sixty-four bit implementations.
