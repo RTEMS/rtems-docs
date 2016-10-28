@@ -13,57 +13,57 @@ standards if a specific interface has been established. The list below
 represents the routines that have been included as part of the application's
 interface.
 
-# access()
+#. access()
 
-# chdir()
+# .chdir()
 
-# chmod()
+#. chmod()
 
-# chown()
+#. chown()
 
-# close()
+#. close()
 
-# closedir()
+#. closedir()
 
-# dup()
+#. dup()
 
-# dup2()
+#. dup2()
 
-# fchmod()
+#. fchmod()
 
-# fcntl()
+#. fcntl()
 
-# fdatasync()
+#. fdatasync()
 
-# fpathconf()
+#. fpathconf()
 
-# fstat()
+#. fstat()
 
-# ioctl()
+#. ioctl()
 
-# link()
+#. link()
 
-# lseek()
+#. lseek()
 
-# mkdir()
+#. mkdir()
 
-# mkfifo()
+#. mkfifo()
 
-# mknod()
+#. mknod()
 
-# mount()
+#. mount()
 
-# open()
+#. open()
 
-# opendir()
+#. opendir()
 
-# pathconf()
+#. pathconf()
 
-# read()
+#. read()
 
-# readdir()
+#. readdir()
 
-# unmount()
+#. unmount()
 
 The sections that follow provide developmental information concerning each of
 these functions.
@@ -218,25 +218,25 @@ descriptor refers to an element of the RTEMS filesystem.
 
 The following sequence will be performed for any filesystem file descriptor:
 
-# Use the ``rtems_libio_iop()`` function to obtain the ``rtems_libio_t``
-  structure for the file descriptor
+#. Use the ``rtems_libio_iop()`` function to obtain the ``rtems_libio_t``
+   structure for the file descriptor
 
-# Range check the file descriptor using ``rtems_libio_check_fd()``
+#. Range check the file descriptor using ``rtems_libio_check_fd()``
 
-# Determine if there is actually a function in the selected handler table that
-  processes the ``close()`` operation for the filesystem and node type
-  selected.  This is generally done to avoid execution attempts on functions
-  that have not been implemented.
+#. Determine if there is actually a function in the selected handler table that
+   processes the ``close()`` operation for the filesystem and node type
+   selected.  This is generally done to avoid execution attempts on functions
+   that have not been implemented.
 
 # If the function has been defined it is invoked with the file control
-  block pointer as its argument.
+   block pointer as its argument.
 
-# The file control block that was associated with the open file descriptor is
-  marked as free using ``rtems_libio_free()``.
+#. The file control block that was associated with the open file descriptor is
+   marked as free using ``rtems_libio_free()``.
 
-# The return code from the close handler is then passed back to the calling
-  program.
-
+#. The return code from the close handler is then passed back to the calling
+   program.
+ 
 closedir
 ========
 
