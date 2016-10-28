@@ -217,7 +217,7 @@ structure is discussed in more detail in the `Makefiles`_ chapter.
 
 .. sidebar:
 
- This manual refers to the gen68340 BSP for numerous concrete examples.  You
+This manual refers to the gen68340 BSP for numerous concrete examples.  You
 should have a copy of the gen68340 BSP available while reading this piece of
 documentation.  This BSP is located in the following directory:
 
