@@ -57,6 +57,9 @@ shosted here. It has excellent internet access and performance.
    SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``. This can
    speed the build time up for some architectures that have a lot of BSPs.
 
+Once you have built the tools and kernel you can move to the Packages section
+of the manual.
+
 RTEMS Tools and Kernel
 ~~~~~~~~~~~~~~~~~~~~~~
 
