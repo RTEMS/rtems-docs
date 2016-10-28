@@ -108,7 +108,7 @@ learned by careful examination of a well-documented example.  The following is
 a heavily commented version of the linker script used with the the ``gen68340``
 BSP This file can be found at $BSP340_ROOT/startup/linkcmds.
 
-.. code:: c
+.. code-block:: c
 
     /*
      *  Specify that the output is to be coff-m68k regardless of what the

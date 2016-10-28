@@ -23,7 +23,7 @@ m68k/gen68340 BSP initialization code.  Like most BSPs, the initialization for
 these BSP is divided into two subdirectories under the BSP source directory.
 The BSP source code for these BSPs is in the following directories:
 
-.. code:: c
+.. code-block:: shell
 
     c/src/lib/libbsp/m68k/gen68340
     c/src/lib/libbsp/sparc/erc32
@@ -41,7 +41,7 @@ However, this BSP shares this code with other SPARC BSPs.  Thus the
 ``Makefile.am`` explicitly references the following files for this
 functionality.
 
-.. code:: c
+.. code-block:: shell
 
     ../../sparc/shared/start.S
 
@@ -122,7 +122,7 @@ sequencing of initialization steps for the BSP, RTEMS and device drivers. All
 BSPs use the same shared version of ``boot_card()`` which is located in the
 following file:
 
-.. code:: c
+.. code-block:: shell
 
     c/src/lib/libbsp/shared/bootcard.c
 
@@ -266,7 +266,7 @@ for opening the device ``/dev/console`` for standard input, output and error if
 the application has configured the Console Device Driver.  This file is located
 at:
 
-.. code:: c
+.. code-block:: shell
 
     c/src/lib/libbsp/shared/bsppost.c
 
@@ -313,16 +313,16 @@ When the microprocessor accesses a memory area, address decoding is handled by
 an address decoder, so that the microprocessor knows which memory chip(s) to
 access.  The following figure illustrates this:
 
-.. code::
+.. code-block::
 
-    +-------------------+
+                        +-------------------+
             ------------|                   |
             ------------|                   |------------
             ------------|      Address      |------------
             ------------|      Decoder      |------------
             ------------|                   |------------
             ------------|                   |
-    +-------------------+
+                        +-------------------+
     CPU Bus                                   Chip Select
 
 The Chip Select registers must be programmed such that they match the

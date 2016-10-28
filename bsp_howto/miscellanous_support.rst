@@ -143,7 +143,7 @@ overhead constants to 0.  On faster processors, this is usually the best
 alternative for the BSP as the calling overhead is extremely small.  This file
 is located at:
 
-.. code:: c
+.. code-block:: c
 
     c/src/lib/libbsp/shared/include/coverhd.h
 
@@ -157,7 +157,7 @@ the heap used by the C Library memory allocation routines (i.e. ``malloc``
 family), then the``sbrk`` routine must be functional.  The following is the
 prototype for this routine:
 
-.. code:: c
+.. code-block:: c
 
     void * sbrk(size_t increment)
 
@@ -181,7 +181,7 @@ invoked once a fatal system state is reached.  Most of the BSPs use the same
 shared version of ``bsp_fatal_extension()`` that does nothing or performs a
 system reset.  This implementation is located in the following file:
 
-.. code:: c
+.. code-block:: c
 
     c/src/lib/libbsp/shared/bspclean.c
 
@@ -258,7 +258,7 @@ The ``set_vector`` routine is a central place to perform interrupt controller
 manipulation and encapsulate that information.  It is usually implemented as
 follows:
 
-.. code:: c
+.. code-block:: c
 
     rtems_isr_entry set_vector(                 /* returns old vector */
       rtems_isr_entry handler,                  /* isr routine        */
@@ -346,7 +346,7 @@ required to be writen by the BSP developer are :
 
 An interrupt handler is installed or removed with the help of the following functions :
 
-.. code:: c
+.. code-block:: c
 
     rtems_status_code rtems_interrupt_handler_install(   /* returns status code */
       rtems_vector_number     vector,                    /* interrupt vector */

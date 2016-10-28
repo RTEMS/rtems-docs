@@ -42,7 +42,7 @@ on a particular board.  This would be useful for a BSP supporting multiple
 board models.  The relevant ports of the DMV177's ``RTC_Table`` configuration
 table is below:
 
-.. code:: c
+.. code-block:: c
 
     #include <bsp.h>
     #include <libchip/rtc.h>
@@ -195,7 +195,7 @@ checkRealTime
 The ``checkRealTime`` routine returns the number of seconds difference between
 the RTC TOD and the current RTEMS TOD.
 
-.. code:: c
+.. code-block:: c
 
     int checkRealTime( void )
     {

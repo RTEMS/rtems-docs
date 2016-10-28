@@ -73,7 +73,7 @@ the overhead required to initialize and read the benchmark timer.  This is used
 by the ``tmoverhd`` test to determine the overhead required to initialize and
 read the timer.
 
-.. code:: c
+.. code-block:: c
 
     void benchmark_timer_disable_subtracting_average_overhead(bool find_flag)
     {

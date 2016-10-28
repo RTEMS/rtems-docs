@@ -124,7 +124,7 @@ CPU Dependent Executive Files
 The CPU dependent files in the RTEMS executive source code are found in the
 following directory:
 
-.. code:: c
+.. code-block:: c
 
     cpukit/score/cpu/<CPU>
 
@@ -143,13 +143,13 @@ may contain standard trap handlers for alignment or floating point exceptions
 or device drivers for peripheral controllers found on the CPU itself.
 This class of code may be found in the following directory:
 
-.. code:: c
+.. code-block:: c
 
     c/src/lib/libcpu/<CPU>
 
 CPU model dependent support code is found in the following directory:
 
-.. code:: c
+.. code-block:: c
 
     c/src/lib/libcpu/<CPU>/<CPU_MODEL>
 
@@ -168,7 +168,7 @@ sparc, etc.).  In addition, there is source code available which may be shared
 across all BSPs regardless of the CPU family or just across BSPs within a
 single CPU family.  This results in a BSP using the following directories:
 
-.. code:: c
+.. code-block:: c
 
     c/src/lib/libbsp/shared
     c/src/lib/libbsp/<CPU>/shared
@@ -221,7 +221,7 @@ structure is discussed in more detail in the `Makefiles`_ chapter.
 should have a copy of the gen68340 BSP available while reading this piece of
 documentation.  This BSP is located in the following directory:
 
-.. code:: c
+.. code-block:: c
 
     c/src/lib/libbsp/m68k/gen68340
 
