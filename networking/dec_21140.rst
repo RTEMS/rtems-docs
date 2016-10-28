@@ -125,7 +125,7 @@ to the DEC21140 Hardware Manual.
 .. COMMENT: Buffer Descriptor
 
 
-.. image:: images/networking/recvbd.jpg
+.. image:: ../images/networking/recvbd.jpg
 
 
 Receiver Thread
