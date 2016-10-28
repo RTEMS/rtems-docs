@@ -5006,7 +5006,7 @@ RTEMS Specific Commands
 Introduction
 ============
 
-The RTEMS shell has the following rtems commands:
+The RTEMS shell has the following RTEMS specific commands:
 
 - ``shutdown`` - Shutdown the system
 
@@ -6092,7 +6092,7 @@ following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_PART_Command;
 
-object - display information about rtems objects
+object - display information about RTEMS objects
 ------------------------------------------------
 .. index:: object
 
@@ -6160,7 +6160,7 @@ following prototype:
 
     extern rtems_shell_cmd_t rtems_shell_OBJECT_Command;
 
-driver - display the rtems device driver table
+driver - display the RTEMS device driver table
 ----------------------------------------------
 .. index:: driver
 

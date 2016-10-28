@@ -10,7 +10,7 @@ RTEMS Specific Commands
 Introduction
 ============
 
-The RTEMS shell has the following rtems commands:
+The RTEMS shell has the following RTEMS specific commands:
 
 - shutdown_ - Shutdown the system
 
@@ -1148,7 +1148,7 @@ The configuration structure for the ``part`` has the following prototype:
 
 .. _object:
 
-object - display information about rtems objects
+object - display information about RTEMS objects
 ------------------------------------------------
 .. index:: object
 
@@ -1221,7 +1221,7 @@ following prototype:
 
 .. _driver:
 
-driver - display the rtems device driver table
+driver - display the RTEMS device driver table
 ----------------------------------------------
 .. index:: driver
 

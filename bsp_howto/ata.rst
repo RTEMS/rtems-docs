@@ -134,11 +134,11 @@ minor number device is attached to, device number on the controller):
 .. code-block:: c
 
     /*
-     * Mapping of rtems ATA devices to the following pairs:
+     * Mapping of RTEMS ATA devices to the following pairs:
      * (IDE controller number served the device, device number on the controller)
     */
     typedef struct ata_ide_dev_s {
-      int ctrl_minor;/* minor number of IDE controller serves rtems ATA device */
+      int ctrl_minor;/* minor number of IDE controller serves RTEMS ATA device */
       int device;    /* device number on IDE controller (0 or 1) */
     } ata_ide_dev_t;
 
