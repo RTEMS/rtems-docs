@@ -21,7 +21,7 @@ unless you are in an interrupt handler and that interrupt handler invokes
 the executive.] When not inlined something calls _Thread_Enable_dispatch
 which in turns calls _Thread_Dispatch.  If the enable dispatch is inlined,
 then one subroutine call is avoided entirely.]
-.. code:: c
+.. code-block:: c
 
     #define CPU_INLINE_ENABLE_DISPATCH       FALSE
 
@@ -44,7 +44,7 @@ the loop body.  In this case, it might be desirable to unroll the loop.
 It is important to note that on some CPUs, this code is the longest
 interrupt disable period in RTEMS.  So it is necessary to strike a balance
 when setting this parameter.
-.. code:: c
+.. code-block:: c
 
     #define CPU_UNROLL_ENQUEUE_PRIORITY      TRUE
 
@@ -79,7 +79,7 @@ currently uses this feature.
 The following illustrates how the CPU_STRUCTURE_ALIGNMENT is defined on
 ports which require no special alignment for optimized access to data
 structures:
-.. code:: c
+.. code-block:: c
 
     #define CPU_STRUCTURE_ALIGNMENT
 
@@ -97,7 +97,7 @@ account the requirements for the stack.
 The following sets the CPU_ALIGNMENT macro to 8 which indicates that there
 is a basic C data type for this port which much be aligned to an 8 byte
 boundary.
-.. code:: c
+.. code-block:: c
 
     #define CPU_ALIGNMENT              8
 
@@ -116,7 +116,7 @@ use by high level language routines.
 The following example illustrates how the CPU_HEAP_ALIGNMENT macro is set
 when the required alignment for elements from the heap is the same as the
 basic CPU alignment requirements.
-.. code:: c
+.. code-block:: c
 
     #define CPU_HEAP_ALIGNMENT         CPU_ALIGNMENT
 
@@ -140,7 +140,7 @@ The following example illustrates how the CPU_PARTITION_ALIGNMENT macro is
 set when the required alignment for elements from the RTEMS Partition
 Manager is the same as the basic CPU alignment requirements.
 
-.. code:: c
+.. code-block:: c
 
     #define CPU_PARTITION_ALIGNMENT    CPU_ALIGNMENT
 

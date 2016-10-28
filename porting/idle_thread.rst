@@ -22,7 +22,7 @@ required to preempt the IDLE task from an interrupt because the floating
 point context must be saved as part of the preemption.
 
 The following illustrates how to set this macro:
-.. code:: c
+.. code-block:: c
 
     #define CPU_IDLE_TASK_IS_FP      FALSE
 
@@ -56,7 +56,7 @@ The order of precedence for selecting the IDLE thread body is:
 # generic (if no BSP and no CPU dependent)
 
 The following illustrates setting the CPU_PROVIDES_IDLE_THREAD_BODY macro:
-.. code:: c
+.. code-block:: c
 
     #define CPU_PROVIDES_IDLE_THREAD_BODY    TRUE
 
@@ -71,7 +71,7 @@ wishes to include a CPU dependent IDLE thread body.  If the port includes
 a CPU dependent implementation of the IDLE thread body, then the
 CPU_PROVIDES_IDLE_THREAD_BODY macro should be defined to TRUE.  This
 routine is prototyped as follows:
-.. code:: c
+.. code-block:: c
 
     void *_CPU_Thread_Idle_body( uintptr_t );
 
@@ -80,7 +80,7 @@ thread body be provided as part of the port.  If
 CPU_PROVIDES_IDLE_THREAD_BODY is defined to FALSE, then the CPU
 independent algorithm is used.  This algorithm consists of a "branch to
 self" which is implemented in a routine as follows.
-.. code:: c
+.. code-block:: c
 
     void *_Thread_Idle_body( uintptr_t ignored )
     {
@@ -91,7 +91,7 @@ If the CPU dependent IDLE thread body is implementation centers upon using
 a "halt", "idle", or "shutdown" instruction, then don't forget to put it
 in an infinite loop as the CPU will have to reexecute this instruction
 each time the IDLE thread is dispatched.
-.. code:: c
+.. code-block:: c
 
     void *_CPU_Thread_Idle_body( uintptr_t ignored )
     {

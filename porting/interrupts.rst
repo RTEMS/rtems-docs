@@ -28,7 +28,7 @@ The CPU_MODES_INTERRUPT_MASK macro defines the number of bits actually used in t
 The following illustrates how the CPU_MODES_INTERRUPT_MASK is set on a CPU
 family like the Intel i386 where the CPU itself only recognizes two
 interrupt levels - enabled and disabled.
-.. code:: c
+.. code-block:: c
 
     #define CPU_MODES_INTERRUPT_MASK   0x00000001
 
@@ -36,7 +36,7 @@ Obtaining the Current Interrupt Level
 -------------------------------------
 
 The _CPU_ISR_Get_level function returns the current interrupt level.
-.. code:: c
+.. code-block:: c
 
     uint32_t _CPU_ISR_Get_level( void )
 
@@ -54,14 +54,14 @@ manage a programmable interrupt controller via the rtems_task_mode
 directive.
 
 The following is a dummy implementation of the _CPU_ISR_Set_level routine:
-.. code:: c
+.. code-block:: c
 
     #define _CPU_ISR_Set_level( new_level ) \\
     { \\
     }
 
 The following is the implementation from the Motorola M68K:
-.. code:: c
+.. code-block:: c
 
     XXX insert m68k implementation here
 
@@ -84,7 +84,7 @@ manipulate.  It is typically the contents of the processor status
 register.  It is NOT the same format as manipulated by the
 _CPU_ISR_Get_level and _CPU_ISR_Set_level routines. The following is a
 dummy implementation that simply sets the previous level to 0.
-.. code:: c
+.. code-block:: c
 
     #define _CPU_ISR_Disable( _isr_cookie ) \\
     { \
@@ -92,7 +92,7 @@ dummy implementation that simply sets the previous level to 0.
     }
 
 The following is the implementation from the Motorola M68K port:
-.. code:: c
+.. code-block:: c
 
     XXX insert m68k port here
 
@@ -105,14 +105,14 @@ RTEMS critical section to reenable interrupts.  The parameter _level is
 not modified but indicates that level that interrupts should be enabled
 to.  The following illustrates a dummy implementation of the
 _CPU_ISR_Enable routine:
-.. code:: c
+.. code-block:: c
 
     #define _CPU_ISR_Enable( _isr_cookie )  \\
     { \\
     }
 
 The following is the implementation from the Motorola M68K port:
-.. code:: c
+.. code-block:: c
 
     XXX insert m68k version here
 
@@ -126,14 +126,14 @@ preceded by a call to _CPU_ISR_Disable and followed by a call to
 _CPU_ISR_Enable.  The parameter _level is not modified.
 
 The following is a dummy implementation of the _CPU_ISR_Flash routine:
-.. code:: c
+.. code-block:: c
 
     #define _CPU_ISR_Flash( _isr_cookie ) \\
     { \\
     }
 
 The following is the implementation from the Motorola M68K port:
-.. code:: c
+.. code-block:: c
 
     XXX insert m68k version here
 
@@ -179,12 +179,12 @@ in the Interrupt Manager, then the macro CPU_ALLOCATE_INTERRUPT_STACK
 should be set to TRUE.
 
 NOTE: This should be TRUE is CPU_HAS_SOFTWARE_INTERRUPT_STACK is TRUE.
-.. code:: c
+.. code-block:: c
 
     #define CPU_ALLOCATE_INTERRUPT_STACK TRUE
 
 If the CPU_HAS_SOFTWARE_INTERRUPT_STACK macro is set to TRUE, then RTEMS automatically allocates the stack memory in the initialization of the Interrupt Manager and the switch to that stack is performed in ``_ISR_Handler`` on the outermost interrupt.  The _CPU_Interrupt_stack_low and _CPU_Interrupt_stack_high variables contain the addresses of the the lowest and highest addresses of the memory allocated for the interrupt stack.  Although technically only one of these addresses is required to switch to the interrupt stack, by always providing both addresses, the port has more options avaialble to it without requiring modifications to the portable parts of the executive.  Whether the stack  grows up or down, this give the CPU dependent code the option of picking the version it wants to use.
-.. code:: c
+.. code-block:: c
 
     SCORE_EXTERN void               *_CPU_Interrupt_stack_low;
     SCORE_EXTERN void               *_CPU_Interrupt_stack_high;
@@ -200,7 +200,7 @@ The _CPU_Install_interrupt_stack routine XXX
 This routine installs the hardware interrupt stack pointer.
 
 NOTE:  It need only be provided if CPU_HAS_HARDWARE_INTERRUPT_STAC is TRUE.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Install_interrupt_stack( void )
 
@@ -211,7 +211,7 @@ Install a Raw Interrupt Handler
 -------------------------------
 
 The _CPU_ISR_install_raw_handler XXX
-.. code:: c
+.. code-block:: c
 
     void _CPU_ISR_install_raw_handler(
       unsigned32  vector,
@@ -235,7 +235,7 @@ by this CPU model.  The second macro is the
 CPU_INTERRUPT_MAXIMUM_VECTOR_NUMBER.  Since the table is zero-based, this
 indicates the highest vector number which can be looked up in the table
 and mapped into a user provided handler.
-.. code:: c
+.. code-block:: c
 
     #define CPU_INTERRUPT_NUMBER_OF_VECTORS      32
     #define CPU_INTERRUPT_MAXIMUM_VECTOR_NUMBER \\
@@ -251,7 +251,7 @@ XXX Input parameters:
 vector      - interrupt vector number
 old_handler - former ISR for this vector number
 new_handler - replacement ISR for this vector number
-.. code:: c
+.. code-block:: c
 
     void _CPU_ISR_install_vector(
       unsigned32  vector,
@@ -259,20 +259,20 @@ new_handler - replacement ISR for this vector number
       proc_ptr   *old_handler
     )
 
-.. code:: c
+.. code-block:: c
 
     *old_handler = _ISR_Vector_table[ vector ];
 
 If the interrupt vector table is a table of pointer to isr entry points,
 then we need to install the appropriate RTEMS interrupt handler for this
 vector number.
-.. code:: c
+.. code-block:: c
 
     _CPU_ISR_install_raw_handler( vector, new_handler, old_handler );
 
 We put the actual user ISR address in _ISR_vector_table.  This will be
 used by the ``_ISR_Handler`` so the user gets control.
-.. code:: c
+.. code-block:: c
 
     _ISR_Vector_table[ vector ] = new_handler;
 
@@ -290,7 +290,7 @@ results in the saving of registers which are NOT preserved across
 subroutine calls as well as any special interrupt state.  A port should
 define the ``CPU_Interrupt_frame`` structure so that application code can
 examine the saved state.
-.. code:: c
+.. code-block:: c
 
     typedef struct {
       unsigned32 not_preserved_register_1;
@@ -301,7 +301,7 @@ Interrupt Dispatching
 ---------------------
 
 The ``_ISR_Handler`` routine provides the RTEMS interrupt management.
-.. code:: c
+.. code-block:: c
 
     void _ISR_Handler()
 
@@ -333,7 +333,7 @@ hardware does not provide this information, then the assembly portion of
 RTEMS for this port will contain a set of distinct interrupt entry points
 which somehow place the vector number in a known place (which is safe if
 another interrupt nests this one) and branches to ``_ISR_Handler``.
-.. code:: c
+.. code-block:: c
 
     save some or all context on stack
     may need to save some special interrupt information for exit
@@ -372,7 +372,7 @@ ISR Invoked with Frame Pointer
 
 Does the RTEMS invoke the user's ISR with the vector number and a pointer
 to the saved interrupt frame (1) or just the vector number (0)?
-.. code:: c
+.. code-block:: c
 
     #define CPU_ISR_PASSES_FRAME_POINTER 0
 
@@ -390,7 +390,7 @@ variable can be optionally defined by the CPU porter and contains the
 address of the routine _Thread_Dispatch.  This can make it easier to
 invoke that routine at the end of the interrupt sequence (if a dispatch is
 necessary).
-.. code:: c
+.. code-block:: c
 
     void (*_CPU_Thread_dispatch_pointer)();
 

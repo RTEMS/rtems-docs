@@ -16,7 +16,7 @@ Initializing the CPU
 ====================
 
 The _CPU_Initialize routine performs processor dependent initialization.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Initialize(
     void            (*thread_dispatch)  /* may be ignored */
@@ -32,7 +32,7 @@ limitation on these systems.
 
 If you encounter this problem save the entry point in a CPU dependent
 variable as shown below:
-.. code:: c
+.. code-block:: c
 
     _CPU_Thread_dispatch_pointer = thread_dispatch;
 

@@ -10,7 +10,7 @@ The ``_CPU_Fatal_halt`` routine is the default fatal error handler. This
 routine copies _error into a known place - typically a stack location or
 a register, optionally disables interrupts, and halts/stops the CPU.  It
 is prototyped as follows and is often implemented as a macro:
-.. code:: c
+.. code-block:: c
 
     void _CPU_Fatal_halt(
     unsigned32 _error
@@ -23,7 +23,7 @@ The test case ``sptests/spcontext01`` ensures that the context switching and
 interrupt processing works.  This test uses two support functions provided by
 the CPU port.  These two functions are only used for this test and have no
 other purpose.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Context_volatile_clobber( uintptr_t pattern );
     void _CPU_Context_validate( uintptr_t pattern );
@@ -72,7 +72,7 @@ set to specify the endian
 format used by this microprocessor.  These macros should not be set to the
 same value.  The following example illustrates how these macros should be
 set on a processor family that is big endian.
-.. code:: c
+.. code-block:: c
 
     #define CPU_BIG_ENDIAN                           TRUE
     #define CPU_LITTLE_ENDIAN                        FALSE
@@ -82,7 +82,7 @@ stack space above the minimum thread stack space required by the MPCI
 Receive Server Thread.  This macro is needed because in a multiprocessor
 system the MPCI Receive Server Thread must be able to process all
 directives.
-.. code:: c
+.. code-block:: c
 
     #define CPU_MPCI_RECEIVE_SERVER_EXTRA_STACK 0
 
@@ -108,7 +108,7 @@ code and data - so the code will be fetched incorrectly.
 The following is an implementation of the ``CPU_swap_u32`` routine that will
 work on any CPU.  It operates by breaking the unsigned thirty-two bit
 integer into four byte-wide quantities and reassemblying them.
-.. code:: c
+.. code-block:: c
 
     static inline unsigned int CPU_swap_u32(
     unsigned int value
@@ -133,7 +133,7 @@ family of routines.
 Most microprocessor families have rotate instructions which can be used to
 greatly improve the ``CPU_swap_u32`` routine.  The most common
 way to do this is to:
-.. code:: c
+.. code-block:: c
 
     swap least significant two bytes with 16-bit rotate
     swap upper and lower 16-bits
@@ -150,7 +150,7 @@ code and data - so the code will be fetched incorrectly.
 Similarly, here is a portable implementation of the ``CPU_swap_u16``
 routine.  Just as with the ``CPU_swap_u32`` routine, the porter
 should provide a better implementation if possible.
-.. code:: c
+.. code-block:: c
 
     #define CPU_swap_u16( value ) \\
     (((value&0xff) << 8) | ((value >> 8)&0xff))

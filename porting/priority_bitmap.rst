@@ -54,7 +54,7 @@ Find First Bit Routine
 
 The _CPU_Bitfield_Find_first_bit routine sets _output to the bit number of
 the first bit set in ``_value``.  ``_value`` is of CPU dependent type``Priority_bit_map_Control``.  A stub version of this routine is as follows:
-.. code:: c
+.. code-block:: c
 
     #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
     { \
@@ -100,7 +100,7 @@ in software:
 
 - the following algorithm based upon a 16 entry lookup table.  In this pseudo-code, bit_set_table[16] has values which indicate the first bit set:
 
-  .. code:: c
+  .. code-block:: c
 
       _number = 0 if _value > 0x00ff
       _value >>=8
@@ -116,7 +116,7 @@ This can be used temporarily during the porting process to avoid writing
 these routines until the end.  This results in a functional although lower
 performance port.  This is perfectly acceptable during development and
 testing phases.
-.. code:: c
+.. code-block:: c
 
     #define CPU_USE_GENERIC_BITFIELD_CODE TRUE
     #define CPU_USE_GENERIC_BITFIELD_DATA TRUE
@@ -126,7 +126,7 @@ written since they dramatically impact the performance of blocking
 operations.  However they may take advantage of instructions which are not
 available on all models in the CPU family.  In this case, one might find
 something like this stub example did:
-.. code:: c
+.. code-block:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
     #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
@@ -144,7 +144,7 @@ that routine for more details.
 
 The following is a typical implementation when the
 _CPU_Bitfield_Find_first_bit searches for the most significant bit set:
-.. code:: c
+.. code-block:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
     #define _CPU_Priority_Mask( _bit_number ) \\
@@ -169,7 +169,7 @@ would be bit 16 or 17.
 This routine allows that unwieldy form to be converted
 into a normalized form that is easier to process and use
 as an index.
-.. code:: c
+.. code-block:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
     #define _CPU_Priority_bits_index( _priority ) \\

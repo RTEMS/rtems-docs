@@ -23,7 +23,7 @@ should be set to TRUE.  Otherwise, it should be set to FALSE to indicate
 that the stack grows downward toward smaller addresses.
 
 The following illustrates how the CPU_STACK_GROWS_UP macro is set:
-.. code:: c
+.. code-block:: c
 
     #define CPU_STACK_GROWS_UP               TRUE
 
@@ -45,7 +45,7 @@ tend to require larger stacks as do Ada tasks.
 
 The following illustrates setting the minimum stack size to 4 kilobytes
 per task.
-.. code:: c
+.. code-block:: c
 
     #define CPU_STACK_MINIMUM_SIZE          (1024*4)
 
@@ -60,7 +60,7 @@ CPU_ALIGNMENT is strict enough for the stack, then this should be set to
 
 The following illustrates how the CPU_STACK_ALIGNMENT macro should be set
 when there are no special requirements:
-.. code:: c
+.. code-block:: c
 
     #define CPU_STACK_ALIGNMENT        0
 
@@ -88,7 +88,7 @@ interrupt level context structure is discussed in the XXX.
 
 Additionally, if the GNU debugger gdb is to be made aware of RTEMS tasks
 for this CPU, then care should be used in designing the context area.
-.. code:: c
+.. code-block:: c
 
     typedef struct {
     unsigned32 special_interrupt_register;
@@ -118,7 +118,7 @@ entry as for tasks in this case.
 The Context_Control data structure should be defined such that the order
 of elements results in the simplest, most efficient implementation of XXX.
 A typical implementation starts with a definition such as the following:
-.. code:: c
+.. code-block:: c
 
     typedef struct {
     unsigned32 some_integer_register;
@@ -146,7 +146,7 @@ Generally, this involves:
 This routine generally does not set any unnecessary register in the
 context.  The state of the "general data" registers is undefined at task
 start time. The _CPU_Context_initialize routine is prototyped as follows:
-.. code:: c
+.. code-block:: c
 
     void _CPU_Context_Initialize(
       Context_Control *_the_context,
@@ -183,7 +183,7 @@ Performing a Context Switch
 
 The _CPU_Context_switch performs a normal non-FP context switch from the
 context of the current executing thread to the context of the heir thread.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Context_switch(
     Context_Control  *run,
@@ -222,7 +222,7 @@ to make room for this context information before the
 information is written.  Otherwise, an interrupt could
 occur writing over the context data.  The following is
 an example of an *INCORRECT* sequence:
-.. code:: c
+.. code-block:: c
 
     save part of context beyond current top of stack
     interrupt pushes context -- overwriting written context
@@ -236,7 +236,7 @@ The _CPU_Context_restore routine is generally used only to restart the
 currently executing thread (i.e. self) in an efficient manner.  In many
 ports, it can simply be a label in _CPU_Context_switch. It may be
 unnecessary to reload some registers.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Context_restore(
       Context_Control *new_context
@@ -255,7 +255,7 @@ self conflicts with the stack frame assumptions of restoring a context.
 
 The following is an implementation of _CPU_Context_Restart_self that can
 be used when no special handling is required for this case.
-.. code:: c
+.. code-block:: c
 
     #define _CPU_Context_Restart_self( _the_context ) \
       _CPU_Context_restore( (_the_context) )
@@ -282,7 +282,7 @@ determines whether every POSIX thread has a floating point context.
 
 The following example illustrates how the CPU_HARDWARE_FP (XXX macro name
 is varying) macro is set based on the CPU family dependent macro.
-.. code:: c
+.. code-block:: c
 
     #if ( THIS_CPU_FAMILY_HAS_FPU == 1 ) /* where THIS_CPU_FAMILY */
                                          /* might be M68K */
@@ -333,7 +333,7 @@ port would not have to have this option set to TRUE.
 The following example illustrates how the CPU_ALL_TASKS_ARE_FP is set on
 the PowerPC.  On this CPU family, this macro is set to TRUE if the CPU
 model has hardware floating point.
-.. code:: c
+.. code-block:: c
 
     #if (CPU_HARDWARE_FP == TRUE)
     #define CPU_ALL_TASKS_ARE_FP     TRUE
@@ -382,7 +382,7 @@ task, the FP context will never be saved or restored.
 The following illustrates setting the CPU_USE_DEFERRED_FP_SWITCH macro on
 a processor family such as the M68K or i386 which can use deferred
 floating point context switches.
-.. code:: c
+.. code-block:: c
 
     #define CPU_USE_DEFERRED_FP_SWITCH       TRUE
 
@@ -404,7 +404,7 @@ context switch routines.  In this case, there is no need to figure out the
 exact format - only the size.  Of course, although this is enough
 information for RTEMS, it is probably not enough for a debugger such as
 gdb.  But that is another problem.
-.. code:: c
+.. code-block:: c
 
     typedef struct {
     double      some_float_register;
@@ -423,7 +423,7 @@ usually on CPUs with a "floating point save context" instruction.  In
 general, though it is easier to define the structure as a "sizeof"
 operation and define the Context_Control_fp structure to be an area of
 bytes of the required size in this case.
-.. code:: c
+.. code-block:: c
 
     #define CPU_CONTEXT_FP_SIZE sizeof( Context_Control_fp )
 
@@ -436,7 +436,7 @@ This is a common implementation of the _CPU_Context_Fp_start routine which
 is suitable for many processors.  In particular, RISC processors tend to
 use this implementation since the floating point context is saved as a
 sequence of store operations.
-.. code:: c
+.. code-block:: c
 
     #define _CPU_Context_Fp_start( _base, _offset ) \
       ( (void *) _Addresses_Add_offset( (_base), (_offset) ) )
@@ -445,7 +445,7 @@ In contrast, the m68k treats the floating point context area as a stack
 which grows downward in memory.  Thus the following implementation of
 _CPU_Context_Fp_start is used in that port:
 
-.. code:: c
+.. code-block:: c
 
     XXX insert m68k version here
 
@@ -466,7 +466,7 @@ _CPU_Null_fp_context.  Then all that is required to initialize a floating
 point context is to copy _CPU_Null_fp_context to the destination floating
 point context passed to it.  The following example implementation shows
 how to accomplish this:
-.. code:: c
+.. code-block:: c
 
     #define _CPU_Context_Initialize_fp( _destination ) \
     { \
@@ -475,7 +475,7 @@ how to accomplish this:
     }
 
 The _CPU_Null_fp_context is optional.  A port need only include this variable when it uses the above mechanism to initialize a floating point context.  This is typically done on CPUs where it is difficult to generate an "uninitialized" FP context.  If the port requires this variable, then it is declared as follows:
-.. code:: c
+.. code-block:: c
 
     Context_Control_fp  _CPU_Null_fp_context;
 
@@ -490,7 +490,7 @@ Sometimes a macro implementation of this is in cpu.h which dereferences
 the ** and a similarly named routine in this file is passed something like
 a (Context_Control_fp *).  The general rule on making this decision is to
 avoid writing assembly language.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Context_save_fp(
       void **fp_context_ptr
@@ -507,7 +507,7 @@ Sometimes a macro implementation of this is in cpu.h which dereferences
 the ** and a similarly named routine in this file is passed something like
 a (Context_Control_fp *).  The general rule on making this decision is to
 avoid writing assembly language.
-.. code:: c
+.. code-block:: c
 
     void _CPU_Context_restore_fp(
     void **fp_context_ptr
