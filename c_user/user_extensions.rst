@@ -4,6 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. _User Extensions Manager:
+
 User Extensions Manager
 #######################
 

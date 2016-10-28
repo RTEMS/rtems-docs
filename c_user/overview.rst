@@ -231,7 +231,7 @@ dependent.
 
 RTEMS requires RAM to manage each instance of an RTEMS object that is created.
 Thus the more RTEMS objects an application needs, the more memory that must be
-reserved.  See Configuring a System_.
+reserved.  See :ref:`Configuring a System`.
 
 RTEMS utilizes memory for both code and data space.  Although RTEMS' data space
 must be in RAM, its code space can be located in either ROM or RAM.

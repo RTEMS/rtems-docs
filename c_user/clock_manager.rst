@@ -62,6 +62,7 @@ tick has occurred.  Elapsed time is measured in ticks.  A tick is defined to be
 an integral number of microseconds which is specified by the user in the
 Configuration Table.
 
+.. _Time and Date Data Structures:
 
 Time and Date Data Structures
 -----------------------------

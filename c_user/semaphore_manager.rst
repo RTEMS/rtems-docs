@@ -68,6 +68,8 @@ count of zero.  One task waits for the arrival of another task by issuing a
 The other task performs a corresponding ``rtems_semaphore_release`` operation
 when it reaches its synchronization point, thus unblocking the pending task.
 
+.. _Nested Resource Access:
+
 Nested Resource Access
 ----------------------
 
@@ -87,6 +89,8 @@ matched with a ``rtems_semaphore_release``.
 Simple binary semaphores do not allow nested access and so can be used for task
 synchronization.
 
+.. _Priority Inversion:
+
 Priority Inversion
 ------------------
 
@@ -100,6 +104,7 @@ priority tasks.  Because the low priority task is not executing, it cannot
 complete its interaction with the resource and release that resource.  The high
 priority task is effectively prevented from executing by lower priority tasks.
 
+.. _Priority Inheritance:
 
 Priority Inheritance
 --------------------
@@ -129,6 +134,8 @@ holding task will execute at the priority of the higher of the highest ceiling
 priority or at the priority of the highest priority task blocked waiting for
 any of the semaphores the task holds.  Only when the task releases ALL of the
 binary semaphores it holds will its priority be restored to the normal value.
+
+.. _Priority Ceiling:
 
 Priority Ceiling
 ----------------
@@ -166,6 +173,7 @@ or at the priority of the highest priority task blocked waiting for any of the
 semaphores the task holds.  Only when the task releases ALL of the binary
 semaphores it holds will its priority be restored to the normal value.
 
+.. _Multiprocessor Resource Sharing Protocol:
 
 Multiprocessor Resource Sharing Protocol
 ----------------------------------------
@@ -183,6 +191,8 @@ MrsP semaphore will not relinquish the processor voluntarily.  In case the
 owner of a MrsP semaphore gets preempted it can ask all tasks waiting for this
 semaphore to help out and temporarily borrow the right to execute on one of
 their assigned processors.
+
+.. _Building a Semaphore Attribute Set:
 
 Building a Semaphore Attribute Set
 ----------------------------------
@@ -248,6 +258,8 @@ following tree figure illustrates the valid combinations.
          :align: center
          :alt: Semaphore Attributes
 
+.. _Building a SEMAPHORE_OBTAIN Option Set:
+
 Building a SEMAPHORE_OBTAIN Option Set
 --------------------------------------
 
@@ -277,6 +289,8 @@ be ``RTEMS_NO_WAIT``.
 Operations
 ==========
 
+.. _Creating a Semaphore:
+
 Creating a Semaphore
 --------------------
 
@@ -295,6 +309,8 @@ free list.  This data structure is used by RTEMS to manage the newly created
 semaphore.  Also, a unique semaphore ID is generated and returned to the
 calling task.
 
+.. _Obtaining Semaphore IDs:
+
 Obtaining Semaphore IDs
 -----------------------
 
@@ -305,6 +321,8 @@ the ``rtems_semaphore_create`` directive, the semaphore ID is stored in a user
 provided location.  Second, the semaphore ID may be obtained later using the
 ``rtems_semaphore_ident`` directive.  The semaphore ID is used by other
 semaphore manager directives to access this semaphore.
+
+.. _Acquiring a Semaphore:
 
 Acquiring a Semaphore
 ---------------------
@@ -340,6 +358,8 @@ When a task successfully obtains a semaphore using priority ceiling and the
 priority ceiling for this semaphore is greater than that of the holder, then
 the holder's priority will be elevated.
 
+.. _Releasing a Semaphore:
+
 Releasing a Semaphore
 ---------------------
 
@@ -355,6 +375,8 @@ If this is the outermost release of a binary semaphore that uses priority
 inheritance or priority ceiling and the task does not currently hold any other
 binary semaphores, then the task performing the ``rtems_semaphore_release``
 will have its priority restored to its normal value.
+
+.. _Deleting a Semaphore:
 
 Deleting a Semaphore
 --------------------

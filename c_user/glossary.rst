@@ -575,7 +575,7 @@ Glossary
     context to store its internal state.  Each processor in the system is owned
     by at most one scheduler instance.  The processor to scheduler instance
     assignment is determined at application configuration time.  See
-    `Configuring a System`_.
+    :ref:`Configuring a System`.
 
 :dfn:`segments`
     Variable sized memory blocks allocated from a region.

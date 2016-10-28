@@ -20,16 +20,16 @@ on
 - SPARC.
 
 It must be explicitly enabled via the ``--enable-smp`` configure command line
-option.  To enable SMP in the application configuration see `Enable SMP Support
-for Applications`_.  The default scheduler for SMP applications supports up to
-32 processors and is a global fixed priority scheduler, see also
+option.  To enable SMP in the application configuration see :ref:`Enable SMP
+Support for Applications`.  The default scheduler for SMP applications supports
+up to 32 processors and is a global fixed priority scheduler, see also
 :ref:`Configuring Clustered Schedulers`.  For example applications
 see:file:`testsuites/smptests`.
 
 .. warning::
 
-   The SMP support in RTEMS is a work in progress. Before you start using this
-   RTEMS version for SMP ask on the RTEMS mailing list.
+   The SMP support in the release of RTEMS is a work in progress. Before you
+   start using this RTEMS version for SMP ask on the RTEMS mailing list.
 
 This chapter describes the services related to Symmetric Multiprocessing
 provided by RTEMS.
@@ -197,21 +197,21 @@ available
 
 - message queues,
 
-- semaphores using the `Priority Inheritance`_ protocol (priority boosting),
-  and
+- semaphores using the :ref:`Priority Inheritance` protocol (priority
+  boosting), and
 
-- semaphores using the `Multiprocessor Resource Sharing Protocol`_ (MrsP).
+- semaphores using the :ref:`Multiprocessor Resource Sharing Protocol` (MrsP).
 
 The clustered scheduling approach enables separation of functions with
 real-time requirements and functions that profit from fairness and high
 throughput provided the scheduler instances are fully decoupled and adequate
 inter-cluster synchronization primitives are used.  This is work in progress.
 
-For the configuration of clustered schedulers see `Configuring Clustered
-Schedulers`_.
+For the configuration of clustered schedulers see :ref:`Configuring Clustered
+Schedulers`.
 
-To set the scheduler of a task see `SCHEDULER_IDENT - Get ID of a scheduler`_
-and `TASK_SET_SCHEDULER - Set scheduler of a task`_.
+To set the scheduler of a task see :ref:`SCHEDULER_IDENT - Get ID of a
+scheduler` and :ref:`TASK_SET_SCHEDULER - Set scheduler of a task`.
 
 Task Priority Queues
 --------------------
@@ -718,6 +718,7 @@ thread dispatching disabled.
 None.
 
 .. _rtems_scheduler_ident:
+.. _SCHEDULER_IDENT - Get ID of a scheduler:
 
 SCHEDULER_IDENT - Get ID of a scheduler
 ---------------------------------------
@@ -749,7 +750,7 @@ SCHEDULER_IDENT - Get ID of a scheduler
 **DESCRIPTION:**
 
 Identifies a scheduler by its name.  The scheduler name is determined by the
-scheduler configuration.  See `Configuring a System`_.
+scheduler configuration.  See :ref:`Configuring a System`.
 
 **NOTES:**
 
@@ -831,6 +832,7 @@ Returns the scheduler identifier of a task identified by ``task_id`` in
 None.
 
 .. _rtems_task_set_scheduler:
+.. _TASK_SET_SCHEDULER - Set scheduler of a task:
 
 TASK_SET_SCHEDULER - Set scheduler of a task
 --------------------------------------------

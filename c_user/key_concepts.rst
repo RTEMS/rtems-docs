@@ -278,7 +278,7 @@ the current date and time.  This allows selected time operations to be
 scheduled at an actual calendar date and time.  For example, a task could
 request to delay until midnight on New Year's Eve before lowering the ball at
 Times Square.  The data type ``rtems_time_of_day`` is used to specify calendar
-time in RTEMS services.  See `Time and Date Data Structures`_
+time in RTEMS services.  See :ref:`Time and Date Data Structures`.
 
 .. index:: rtems_time_of_day
 

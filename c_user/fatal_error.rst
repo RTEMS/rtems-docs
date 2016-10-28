@@ -65,6 +65,8 @@ Applications Supplement document for a specific target processor.
 Operations
 ==========
 
+.. _Announcing a Fatal Error:
+
 Announcing a Fatal Error
 ------------------------
 .. index:: _Internal_errors_What_happened
