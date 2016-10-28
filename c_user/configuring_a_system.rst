@@ -4127,9 +4127,9 @@ clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
 owned by exactly one scheduler instance.  In order to use clustered scheduling
 the application designer has to answer two questions.
 
-# How is the set of processors partitioned into clusters?
+#. How is the set of processors partitioned into clusters?
 
-# Which scheduler is used for which cluster?
+#. Which scheduler is used for which cluster?
 
 **CONFIGURATION:**
 

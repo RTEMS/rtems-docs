@@ -113,11 +113,11 @@ peripherals to access one another using Memory or I/O accesses and that
 interrupts are properly handled. Three different spaces are defined and mapped
 separately:
 
-# I/O space (IO)
+#. I/O space (IO)
 
-# non-prefetchable Memory space (MEMIO)
+#. non-prefetchable Memory space (MEMIO)
 
-# prefetchable Memory space (MEM)
+#. prefetchable Memory space (MEM)
 
 Regions of the same type (I/O or Memory) may not overlap which is guaranteed by
 the software. MEM regions may be mapped into MEMIO regions, but MEMIO regions
