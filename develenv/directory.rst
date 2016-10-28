@@ -77,20 +77,6 @@ the RTEMS source tree.  The top of the tree will be referenced as
     must be built tailored for a particular CPU model or BSP.  The contents of
     this directory will be discussed in the `c/ Directory`_ section.
 
-``${RTEMS_ROOT}/contrib/``
-    This directory contains contributed support software.  Currently this
-    directory contains the RPM specifications for cross-compilers hosted on
-    GNU/Linux that target various operating systems including MinGW, Cygwin,
-    FreeBSD, and Solaris.  The cross-compilers produced using these
-    specifications are then used in a Canadian cross build procedure to produce
-    the various RTEMS toolsets on a GNU/Linux host.  This directory also
-    contains RPM specifications for the prebuilt cross-compilation toolsets
-    provided by the RTEMS project.  There are separate subdirectories for each
-    of the components in the RTEMS Cross Compilation Environment unde the
-    ``contrib/crossrpms/`` directory.  This directory is configured, built, and
-    installed separately from the RTEMS executive and tests.  This directory
-    will not be discussed further in this document.
-
 ``${RTEMS_ROOT}/cpukit/``
     This directory is the root for all of the "multilib'able" portions of
     RTEMS.  This is a GNU way of saying the contents of this directory can be
@@ -98,13 +84,6 @@ the RTEMS source tree.  The top of the tree will be referenced as
     CPU model nor BSP specific.  The source code for most RTEMS services reside
     under this directory.  The contents of this directory will be discussed in
     the `CPU Kit Directory`_ section.
-
-``${RTEMS_ROOT}/doc/``
-    This directory is the root for all RTEMS documentation.  The source for
-    RTEMS is written in GNU TeXinfo and used to produce HTML, PDF, and "info"
-    files.  The RTEMS documentation is configured, built, and installed
-    separately from the RTEMS executive and tests.  The contents of this
-    directory will be discussed in the `Documentation Directory`_ section.
 
 ``${RTEMS_ROOT}/make/``
     This directory contains files which support the RTEMS Makefile's.  From a
@@ -205,12 +184,6 @@ the subdirectories in this directory and a description of each.
     this file system, a user's application can access files on a remote
     computer.
 
-``${RTEMS_ROOT}/c/src/optman/``
-    This directory contains stubs for the RTEMS Classic API Managers which are
-    considered optional and whose use may be explicitly forbidden by an
-    application.  All of the directive implementations in this Optional
-    Managers return ``E_NOTCONFIGURED``.
-
 ``${RTEMS_ROOT}/c/src/support/``
     This directory exists solely to generate the RTEMS version string which
     includes the RTEMS version, CPU architecture, CPU model, and BSP name.
@@ -289,8 +262,8 @@ The following is a description of each of the subdirectories under ``cpukit/``:
 ``${RTEMS_ROOT}/cpukit/ftpd/``
     This directory contains the RTEMS ftpd server.
 
-``${RTEMS_ROOT}/cpukit/httpd/``
-    This directory contains the port of the GoAhead web server to RTEMS.
+``${RTEMS_ROOT}/cpukit/mhttpd/``
+    This directory contains the port of the Mongoose web server to RTEMS.
 
 ``${RTEMS_ROOT}/cpukit/include/``
     This directory contains header files which are private to RTEMS and not
@@ -320,7 +293,7 @@ The following is a description of each of the subdirectories under ``cpukit/``:
 ``${RTEMS_ROOT}/cpukit/libmd/``
     This directory contains a port of the standard MD5 checksum code.
 
-``${RTEMS_ROOT}/c/src/libmisc/``
+``${RTEMS_ROOT}/cpukit/libmisc/``
     This directory contains support facilities which are RTEMS specific but
     otherwise unclassified.  In general, they do not adhere to a standard API.
     Among the support facilities in this directory are a ``/dev/null`` device
@@ -367,9 +340,6 @@ The following is a description of each of the subdirectories under ``cpukit/``:
     point for developing a new port to an unsupported processor.  The files
     contained within the ``no_cpu`` directory may also be used as a reference
     for the other ports to specific processors.
-
-``${RTEMS_ROOT}/cpukit/shttpd/``
-    This directory contains the port of the Simple HTTPD web server to RTEMS.
 
 ``${RTEMS_ROOT}/cpukit/telnetd/``
     This directory contains the RTEMS telnetd server.
@@ -442,86 +412,3 @@ included with the RTEMS and the directory in which they may be located:
     output.  If you place the output of all the ``tmtests/`` in a single file,
     then the utility ``sorttimes`` will be able to produce a report organizing
     the execution times by manager.
-
-Documentation Directory
-=======================
-
-This directory contains the source code for all RTEMS documentation in
-``TexInfo`` format as well as utilities used in the generation of the RTEMS
-documentation set.  This source code is used to produce the RTEMS documentation
-in various formats including PDF, HTML, and PostScript.
-
-``${RTEMS_ROOT}/doc/ada_user/``
-    This directory contains the source code for the *RTEMS Applications Ada
-    User's Guide* which documents the Ada95 binding to the Classic API.  This
-    manual is produced from from the same source base as the *RTEMS Application
-    C User's Guide*.
-
-``${RTEMS_ROOT}/doc/bsp_howto/``
-    This directory contains the source code for the*RTEMS BSP and Device Driver
-    Development Guide*.
-
-``${RTEMS_ROOT}/doc/common/``
-    This directory contains the source code for the files which are shared
-    across multiple manuals in the RTEMS Documentation Set.  This includes the
-    copyright page as well as the timing tables which can be filled in on a per
-    BSP basis in the CPU supplements.
-
-``${RTEMS_ROOT}/doc/cpu_supplement/``
-    This directory contains the source code for the RTEMS CPU Supplement.
-
-``${RTEMS_ROOT}/doc/develenv/``
-    This directory contains the source code for the*RTEMS Development
-    Environment Guide*.  This is the document you are currently reading.
-
-``${RTEMS_ROOT}/doc/filesystem/``
-    This directory contains the source code for the*RTEMS Filesystem Design
-    Guide*.  This manual is a continuous work in process as it attempts to
-    capture the design of the interface between system calls and filesystem
-    implementations as well as the information required by those implementing
-    filesystems.
-
-``${RTEMS_ROOT}/doc/images/``
-    This directory contains the source code for the graphics used in the HTML
-    version of the RTEMS Documentation.
-
-``${RTEMS_ROOT}/doc/networking/``
-    This directory contains the source code for the*RTEMS Network Supplement*.
-
-``${RTEMS_ROOT}/doc/new_chapters/``
-    This directory contains the source code for the new documentation
-    components which have not yet been collected into a new manual or merged
-    into an existing document.  Currently, this primarily contains draft
-    documentation for some portions of the facilities implemented in
-    ``${RTEMS_ROOT}/c/src/libmisc/``.
-
-``${RTEMS_ROOT}/doc/porting/``
-    This directory contains the source code for the*RTEMS Porting Guide*.
-
-``${RTEMS_ROOT}/doc/posix1003.1/``
-    This directory contains the source code for the*RTEMS POSIX 1003.1
-    Compliance Guide*.
-
-``${RTEMS_ROOT}/doc/posix_users/``
-    This directory contains the source code for the*RTEMS POSIX API User's
-    Guide*.  It is important to note that RTEMS' support for POSIX is a
-    combination of functionality provided by RTEMS and the Newlib C Library so
-    some functionality is documented by Newlib.
-
-``${RTEMS_ROOT}/doc/relnotes/``
-    This directory contains the source code for a formally release notes
-    document.  This has not been used for recent RTEMS releases.
-
-``${RTEMS_ROOT}/doc/started/``
-    This directory contains the source code for the*Getting Started with RTEMS
-    for C/C++ Users* manual.
-
-``${RTEMS_ROOT}/doc/tools/``
-    This directory contains the source code for the tools used on the
-    development host to assist in producing the RTEMS Documentation.  The most
-    important of these tools is ``bmenu`` which generates the hierarchical node
-    linking commands based upon chapter, section, and subsection organization.
-
-``${RTEMS_ROOT}/doc/user/``
-    This directory contains the source code for the *RTEMS Applications C
-    User's Guide* which documents the Classic API.
