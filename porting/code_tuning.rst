@@ -1,5 +1,9 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Code Tuning Parameters
 ######################
 
@@ -8,9 +12,9 @@ Inline Thread_Enable_dispatch
 
 Should the calls to _Thread_Enable_dispatch be inlined?
 
-If TRUE, then they are inlined.
+- If ``TRUE``, then they are inlined.
 
-If FALSE, then a subroutine call is made.
+- If ``FALSE``, then a subroutine call is made.
 
 Basically this is an example of the classic trade-off of size versus
 speed.  Inlining the call (TRUE) typically increases the size of RTEMS
@@ -21,6 +25,7 @@ unless you are in an interrupt handler and that interrupt handler invokes
 the executive.] When not inlined something calls _Thread_Enable_dispatch
 which in turns calls _Thread_Dispatch.  If the enable dispatch is inlined,
 then one subroutine call is avoided entirely.]
+
 .. code-block:: c
 
     #define CPU_INLINE_ENABLE_DISPATCH       FALSE
@@ -33,9 +38,9 @@ unrolled one time?  In unrolled each iteration of the loop examines two
 "nodes" on the chain being searched.  Otherwise, only one node is examined
 per iteration.
 
-If TRUE, then the loops are unrolled.
-
-If FALSE, then the loops are not unrolled.
+- If ``TRUE``, then the loops are unrolled.
+ 
+- If ``FALSE``, then the loops are not unrolled.
 
 The primary factor in making this decision is the cost of disabling and
 enabling interrupts (_ISR_Flash) versus the cost of rest of the body of
@@ -44,6 +49,7 @@ the loop body.  In this case, it might be desirable to unroll the loop.
 It is important to note that on some CPUs, this code is the longest
 interrupt disable period in RTEMS.  So it is necessary to strike a balance
 when setting this parameter.
+
 .. code-block:: c
 
     #define CPU_UNROLL_ENQUEUE_PRIORITY      TRUE
@@ -69,7 +75,9 @@ For another toolset, the placement of this macro could be incorrect.  For
 example with GNU C, use the following definition of
 CPU_STRUCTURE_ALIGNMENT to force a structures to a 32 byte boundary.
 
-#define CPU_STRUCTURE_ALIGNMENT __attribute__ ((aligned (32)))
+.. code-block:: c
+
+    #define CPU_STRUCTURE_ALIGNMENT __attribute__ ((aligned (32)))
 
 To benefit from using this, the data must be heavily used so it will stay
 in the cache and used frequently enough in the executive to justify
@@ -79,6 +87,7 @@ currently uses this feature.
 The following illustrates how the CPU_STRUCTURE_ALIGNMENT is defined on
 ports which require no special alignment for optimized access to data
 structures:
+
 .. code-block:: c
 
     #define CPU_STRUCTURE_ALIGNMENT
@@ -97,6 +106,7 @@ account the requirements for the stack.
 The following sets the CPU_ALIGNMENT macro to 8 which indicates that there
 is a basic C data type for this port which much be aligned to an 8 byte
 boundary.
+
 .. code-block:: c
 
     #define CPU_ALIGNMENT              8
@@ -116,6 +126,7 @@ use by high level language routines.
 The following example illustrates how the CPU_HEAP_ALIGNMENT macro is set
 when the required alignment for elements from the heap is the same as the
 basic CPU alignment requirements.
+
 .. code-block:: c
 
     #define CPU_HEAP_ALIGNMENT         CPU_ALIGNMENT
@@ -146,10 +157,3 @@ Manager is the same as the basic CPU alignment requirements.
 
 NOTE:  This does not have to be a power of 2.  It does have to be greater
 or equal to than CPU_ALIGNMENT.
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

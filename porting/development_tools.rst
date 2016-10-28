@@ -1,5 +1,9 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Development Tools
 #################
 
@@ -18,10 +22,3 @@ of the target object format.
 Porting and retargetting the GNU tools is beyond the scope of this manual.
 The best advice that can be offered is to look at the existing RTEMS
 targets in the tool source and use that as a guideline.
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

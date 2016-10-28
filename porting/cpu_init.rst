@@ -1,5 +1,9 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 CPU Initialization
 ##################
 
@@ -16,10 +20,11 @@ Initializing the CPU
 ====================
 
 The _CPU_Initialize routine performs processor dependent initialization.
+
 .. code-block:: c
 
     void _CPU_Initialize(
-    void            (*thread_dispatch)  /* may be ignored */
+      void            (*thread_dispatch)  /* may be ignored */
     )
 
 The thread_dispatch argument is the address of the entry point for the
@@ -32,6 +37,7 @@ limitation on these systems.
 
 If you encounter this problem save the entry point in a CPU dependent
 variable as shown below:
+
 .. code-block:: c
 
     _CPU_Thread_dispatch_pointer = thread_dispatch;
@@ -44,10 +50,3 @@ FP context here and copy it to the task's during Context_Initialize.  If
 this technique is used to initialize the FP contexts, then it is important
 to ensure that the state of the floating point unit is in a coherent,
 initialized state.
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

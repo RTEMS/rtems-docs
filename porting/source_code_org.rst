@@ -1,5 +1,9 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Source Code Organization
 ########################
 
@@ -16,10 +20,3 @@ dependent code which may be reused across multiple Board Support Packages
 is found in c/src/lib/libcpu.
 
 XXX list the files and directories here
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

@@ -1,10 +1,11 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 CPU Model Variations
 ####################
-
-XXX enhance using portability presentation from CS595 class.  See
-general/portability.ppt.
 
 Since the text in the next section was written, RTEMS view of
 portability has grown to distinguish totally portable, CPU
@@ -140,10 +141,3 @@ Coding Issues
 
 XXX deal with this as it applies to score/cpu.  Section name may
 be bad.
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

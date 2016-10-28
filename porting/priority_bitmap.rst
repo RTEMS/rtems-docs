@@ -1,5 +1,9 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 Priority Bitmap Manipulation
 ############################
 
@@ -23,14 +27,15 @@ ready task at that priority.  The bit array can be efficiently searched to
 determine the highest priority ready task.  This family of data type and
 routines is used to maintain and search the bit map array.
 
-When manipulating the bitmap array, RTEMS internally divides the
-8 bits of the task priority into "major" and "minor" components.
-The most significant 4 bits are the major component, while the least
-significant are the minor component.  The major component of a priority
-value is used to determine which 16-bit wide entry in the``_Priority_Bit_map`` array is associated with this priority.
-Each element in the ``_Priority_Bit_map`` array has a bit
-in the ``_Priority_Major_bit_map`` associated with it.
-That bit is cleared when all of the bits in a particular``_Priority_Bit_map`` array entry are zero.
+When manipulating the bitmap array, RTEMS internally divides the 8 bits
+of the task priority into "major" and "minor" components.  The most
+significant 4 bits are the major component, while the least significant
+are the minor component.  The major component of a priority value is
+used to determine which 16-bit wide entry in the``_Priority_Bit_map``
+array is associated with this priority.  Each element in the
+``_Priority_Bit_map`` array has a bit in the ``_Priority_Major_bit_map``
+associated with it.  That bit is cleared when all of the bits in a
+particular``_Priority_Bit_map`` array entry are zero.
 
 The minor component of a priority is used to determine
 specifically which bit in ``_Priority_Bit_map[major]``
@@ -54,6 +59,7 @@ Find First Bit Routine
 
 The _CPU_Bitfield_Find_first_bit routine sets _output to the bit number of
 the first bit set in ``_value``.  ``_value`` is of CPU dependent type``Priority_bit_map_Control``.  A stub version of this routine is as follows:
+
 .. code-block:: c
 
     #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
@@ -64,13 +70,13 @@ the first bit set in ``_value``.  ``_value`` is of CPU dependent type``Priority_
 There are a number of variables in using a "find first bit" type
 instruction.
 
-# What happens when run on a value of zero?
+#. What happens when run on a value of zero?
 
-# Bits may be numbered from MSB to LSB or vice-versa.
+#. Bits may be numbered from MSB to LSB or vice-versa.
 
-# The numbering may be zero or one based.
+#. The numbering may be zero or one based.
 
-# The "find first bit" instruction may search from MSB or LSB.
+#. The "find first bit" instruction may search from MSB or LSB.
 
 RTEMS guarantees that (1) will never happen so it is not a concern.
 Cases (2),(3), (4) are handled by the macros _CPU_Priority_mask() and
@@ -98,7 +104,9 @@ in software:
 
 - a "binary search using if's"
 
-- the following algorithm based upon a 16 entry lookup table.  In this pseudo-code, bit_set_table[16] has values which indicate the first bit set:
+- the following algorithm based upon a 16 entry lookup table.  In this
+  pseudo-code, bit_set_table[16] has values which indicate the first
+  bit set:
 
   .. code-block:: c
 
@@ -106,9 +114,9 @@ in software:
       _value >>=8
       _number = 8;
       if _value > 0x0000f
-      _value >=8
-      _number += 4
-      _number += bit_set_table[ _value ]
+        _value >=8
+        _number += 4
+        _number += bit_set_table[ _value ]
 
 The following illustrates how the CPU_USE_GENERIC_BITFIELD_CODE macro may
 be so the port can use the generic implementation of this bitfield code.
@@ -116,6 +124,7 @@ This can be used temporarily during the porting process to avoid writing
 these routines until the end.  This results in a functional although lower
 performance port.  This is perfectly acceptable during development and
 testing phases.
+
 .. code-block:: c
 
     #define CPU_USE_GENERIC_BITFIELD_CODE TRUE
@@ -126,13 +135,14 @@ written since they dramatically impact the performance of blocking
 operations.  However they may take advantage of instructions which are not
 available on all models in the CPU family.  In this case, one might find
 something like this stub example did:
+
 .. code-block:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
-    #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
-    { \
-      (_output) = 0;   /* do something to prevent warnings */ \
-    }
+      #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
+      { \
+        (_output) = 0;   /* do something to prevent warnings */ \
+      }
     #endif
 
 Build Bit Field Mask
@@ -144,11 +154,12 @@ that routine for more details.
 
 The following is a typical implementation when the
 _CPU_Bitfield_Find_first_bit searches for the most significant bit set:
+
 .. code-block:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
-    #define _CPU_Priority_Mask( _bit_number ) \\
-    ( 1 << (_bit_number) )
+      #define _CPU_Priority_Mask( _bit_number ) \
+        ( 1 << (_bit_number) )
     #endif
 
 Bit Scan Support
@@ -169,16 +180,10 @@ would be bit 16 or 17.
 This routine allows that unwieldy form to be converted
 into a normalized form that is easier to process and use
 as an index.
+
 .. code-block:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
-    #define _CPU_Priority_bits_index( _priority ) \\
-    (_priority)
+      #define _CPU_Priority_bits_index( _priority ) \
+        (_priority)
     #endif
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

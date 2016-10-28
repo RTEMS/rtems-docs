@@ -1,5 +1,9 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. COMMENT: COPYRIGHT (c) 1988-2002.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: All rights reserved.
+
 =======
 Preface
 =======
@@ -28,10 +32,3 @@ using RTEMS, the C programming language, and the target CPU architecture.
 It is desirable to be familiar with the assembly language for the target
 CPU family but since only a limited amount of assembly is required to port
 RTEMS.
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-
