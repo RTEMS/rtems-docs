@@ -313,17 +313,17 @@ When the microprocessor accesses a memory area, address decoding is handled by
 an address decoder, so that the microprocessor knows which memory chip(s) to
 access.  The following figure illustrates this:
 
-.. code-block::
+.. code-block:: c
 
-                        +-------------------+
-            ------------|                   |
-            ------------|                   |------------
-            ------------|      Address      |------------
-            ------------|      Decoder      |------------
-            ------------|                   |------------
-            ------------|                   |
-                        +-------------------+
-    CPU Bus                                   Chip Select
+                +-------------------+
+    ------------|                   |
+    ------------|                   |------------
+    ------------|      Address      |------------
+    ------------|      Decoder      |------------
+    ------------|                   |------------
+    ------------|                   |
+                +-------------------+
+    CPU Bus                            Chip Select
 
 The Chip Select registers must be programmed such that they match the
 ``linkcmds`` settings. In the gen68340 BSP, ROM and RAM addresses can be found
