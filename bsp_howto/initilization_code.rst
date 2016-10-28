@@ -316,14 +316,14 @@ access.  The following figure illustrates this:
 .. code::
 
     +-------------------+
-    ------------|                   |
-    ------------|                   |------------
-    ------------|      Address      |------------
-    ------------|      Decoder      |------------
-    ------------|                   |------------
-    ------------|                   |
+            ------------|                   |
+            ------------|                   |------------
+            ------------|      Address      |------------
+            ------------|      Decoder      |------------
+            ------------|                   |------------
+            ------------|                   |
     +-------------------+
-    CPU Bus                           Chip Select
+    CPU Bus                                   Chip Select
 
 The Chip Select registers must be programmed such that they match the
 ``linkcmds`` settings. In the gen68340 BSP, ROM and RAM addresses can be found
