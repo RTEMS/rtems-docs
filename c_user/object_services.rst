@@ -601,6 +601,70 @@ for the specified ``api``.
 
 This directive is strictly local and does not impact task scheduling.
 
+.. _rtems_object_id_api_minimum_class:
+
+OBJECT_ID_API_MINIMUM_CLASS - Obtain Minimum Class Value for an API
+-------------------------------------------------------------------
+.. index:: obtain minimum class value for an API
+
+**CALLING SEQUENCE:**
+
+.. index:: rtems_object_id_api_minimum_class
+
+.. code-block:: c
+
+    int rtems_object_get_id_api_minimum_class(
+        int api
+    );
+
+**DIRECTIVE STATUS CODES**
+
+If ``api`` is not valid, -1 is returned.
+
+If successful, this service returns the index corresponding to the first
+object class of the specified ``api``.
+
+**DESCRIPTION:**
+
+This service returns the index for the first object class associated with
+the specified ``api``.
+
+**NOTES:**
+
+This directive is strictly local and does not impact task scheduling.
+
+.. _rtems_object_id_api_maximum_class:
+
+OBJECT_ID_API_MAXIMUM_CLASS - Obtain Maximum Class Value for an API
+-------------------------------------------------------------------
+.. index:: obtain maximum class value for an API
+
+**CALLING SEQUENCE:**
+
+.. index:: rtems_object_id_api_maximum_class
+
+.. code-block:: c
+
+    int rtems_object_get_api_maximum_class(
+        int api
+    );
+
+**DIRECTIVE STATUS CODES**
+
+If ``api`` is not valid, -1 is returned.
+
+If successful, this service returns the index corresponding to the last
+object class of the specified ``api``.
+
+**DESCRIPTION:**
+
+This service returns the index for the last object class associated with
+the specified ``api``.
+
+**NOTES:**
+
+This directive is strictly local and does not impact task scheduling.
+
 .. _rtems_object_get_api_name:
 
 OBJECT_GET_API_NAME - Obtain API Name
@@ -670,6 +734,8 @@ This service returns the name of the object class indicated by the specified
 This directive is strictly local and does not impact task scheduling.
 
 The string returned is from constant space.  Do not modify or free it.
+
+.. _rtems_object_get_class_information:
 
 OBJECT_GET_CLASS_INFORMATION - Obtain Class Information
 -------------------------------------------------------

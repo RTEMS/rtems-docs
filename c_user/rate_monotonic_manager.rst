@@ -865,7 +865,7 @@ RATE_MONOTONIC_GET_STATUS - Obtain status from a period
 
     rtems_status_code rtems_rate_monotonic_get_status(
         rtems_id                            id,
-        rtems_rate_monotonic_period_status \status
+        rtems_rate_monotonic_period_status *status
     );
 
 **DIRECTIVE STATUS CODES:**
