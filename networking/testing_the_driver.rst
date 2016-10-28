@@ -124,7 +124,7 @@ tracing the behavior of the network stack.  The following is a list of them:
 
   .. code-block:: shell
 
-      ************ MBUF STATISTICS \************
+      ************ MBUF STATISTICS ************
       mbufs:4096    clusters: 256    free: 241
       drops:   0       waits:   0  drains:   0
       free:4080          data:16          header:0           socket:0
@@ -139,8 +139,8 @@ tracing the behavior of the network stack.  The following is a list of them:
 
   .. code-block:: shell
 
-      ************ INTERFACE STATISTICS \************
-      \***** smc1 \*****
+      ************ INTERFACE STATISTICS ************
+      ***** smc1 *****
       Ethernet Address: 00:12:76:43:34:25
       Address:10.8.1.1        Broadcast Address:10.255.255.255  Net mask:255.0.0.0
       Flags: Up Broadcast Running Simplex
@@ -153,7 +153,7 @@ tracing the behavior of the network stack.  The following is a list of them:
       No Carrier:0          Retransmit Limit:0         Late Collision:0
       Underrun:0             Raw output wait:0              Coalesced:0
       Coalesce failed:0                Retries:0
-      \***** lo0 \*****
+      ***** lo0 *****
       Address:127.0.0.1       Net mask:255.0.0.0
       Flags: Up Loopback Running Multicast
       Send queue limit:50   length:0    Dropped:0

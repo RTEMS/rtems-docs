@@ -64,7 +64,7 @@ when there are no special requirements:
 
     #define CPU_STACK_ALIGNMENT        0
 
-NOTE:  This must be a power of 2 either 0 or greater than CPU_ALIGNMENT. \[XXX is this true?]
+NOTE:  This must be a power of 2 either 0 or greater than CPU_ALIGNMENT. [XXX is this true?]
 
 Task Context
 ============
@@ -149,12 +149,12 @@ start time. The _CPU_Context_initialize routine is prototyped as follows:
 .. code:: c
 
     void _CPU_Context_Initialize(
-    Context_Control \*_the_context,
-    void            \*_stack_base,
-    unsigned32       _size,
-    unsigned32       _isr,
-    void            \*_entry_point,
-    unsigned32       _is_fp
+      Context_Control *_the_context,
+      void            *_stack_base,
+      unsigned32       _size,
+      unsigned32       _isr,
+      void            *_entry_point,
+      unsigned32       _is_fp
     );
 
 The ``is_fp`` parameter is TRUE if the thread is to be a floating point
@@ -186,8 +186,8 @@ context of the current executing thread to the context of the heir thread.
 .. code:: c
 
     void _CPU_Context_switch(
-    Context_Control  \*run,
-    Context_Control  \*heir
+    Context_Control  *run,
+    Context_Control  *heir
     );
 
 This routine begins by saving the current state of the
@@ -239,7 +239,7 @@ unnecessary to reload some registers.
 .. code:: c
 
     void _CPU_Context_restore(
-    Context_Control \*new_context
+      Context_Control *new_context
     );
 
 Restarting the Currently Executing Task
@@ -257,8 +257,8 @@ The following is an implementation of _CPU_Context_Restart_self that can
 be used when no special handling is required for this case.
 .. code:: c
 
-    #define _CPU_Context_Restart_self( _the_context ) \\
-    _CPU_Context_restore( (_the_context) )
+    #define _CPU_Context_Restart_self( _the_context ) \
+      _CPU_Context_restore( (_the_context) )
 
 XXX find a port which does not do it this way and include it here
 
@@ -284,11 +284,11 @@ The following example illustrates how the CPU_HARDWARE_FP (XXX macro name
 is varying) macro is set based on the CPU family dependent macro.
 .. code:: c
 
-    #if ( THIS_CPU_FAMILY_HAS_FPU == 1 ) /* where THIS_CPU_FAMILY \*/
-    /* might be M68K \*/
-    #define CPU_HARDWARE_FP     TRUE
+    #if ( THIS_CPU_FAMILY_HAS_FPU == 1 ) /* where THIS_CPU_FAMILY */
+                                         /* might be M68K */
+      #define CPU_HARDWARE_FP     TRUE
     #else
-    #define CPU_HARDWARE_FP     FALSE
+      #define CPU_HARDWARE_FP     FALSE
     #endif
 
 The macro name THIS_CPU_FAMILY_HAS_FPU should be made CPU specific.  It
@@ -438,8 +438,8 @@ use this implementation since the floating point context is saved as a
 sequence of store operations.
 .. code:: c
 
-    #define _CPU_Context_Fp_start( _base, _offset ) \\
-    ( (void \*) _Addresses_Add_offset( (_base), (_offset) ) )
+    #define _CPU_Context_Fp_start( _base, _offset ) \
+      ( (void *) _Addresses_Add_offset( (_base), (_offset) ) )
 
 In contrast, the m68k treats the floating point context area as a stack
 which grows downward in memory.  Thus the following implementation of
@@ -468,10 +468,10 @@ point context passed to it.  The following example implementation shows
 how to accomplish this:
 .. code:: c
 
-    #define _CPU_Context_Initialize_fp( _destination ) \\
-    { \\
-    \*((Context_Control_fp \*) \*((void \**) _destination)) = \\
-    _CPU_Null_fp_context; \\
+    #define _CPU_Context_Initialize_fp( _destination ) \
+    { \
+      *((Context_Control_fp *) *((void **) _destination)) = \\
+        _CPU_Null_fp_context; \\
     }
 
 The _CPU_Null_fp_context is optional.  A port need only include this variable when it uses the above mechanism to initialize a floating point context.  This is typically done on CPUs where it is difficult to generate an "uninitialized" FP context.  If the port requires this variable, then it is declared as follows:
@@ -483,34 +483,34 @@ Saving a Floating Point Context
 -------------------------------
 
 The _CPU_Context_save_fp_context routine is responsible for saving the FP
-context at \*fp_context_ptr.  If the point to load the FP context from is
+context at *fp_context_ptr.  If the point to load the FP context from is
 changed then the pointer is modified by this routine.
 
 Sometimes a macro implementation of this is in cpu.h which dereferences
-the \** and a similarly named routine in this file is passed something like
-a (Context_Control_fp \*).  The general rule on making this decision is to
+the ** and a similarly named routine in this file is passed something like
+a (Context_Control_fp *).  The general rule on making this decision is to
 avoid writing assembly language.
 .. code:: c
 
     void _CPU_Context_save_fp(
-    void \**fp_context_ptr
+      void **fp_context_ptr
     )
 
 Restoring a Floating Point Context
 ----------------------------------
 
 The _CPU_Context_restore_fp_context is responsible for restoring the FP
-context at \*fp_context_ptr.  If the point to load the FP context from is
+context at *fp_context_ptr.  If the point to load the FP context from is
 changed then the pointer is modified by this routine.
 
 Sometimes a macro implementation of this is in cpu.h which dereferences
-the \** and a similarly named routine in this file is passed something like
-a (Context_Control_fp \*).  The general rule on making this decision is to
+the ** and a similarly named routine in this file is passed something like
+a (Context_Control_fp *).  The general rule on making this decision is to
 avoid writing assembly language.
 .. code:: c
 
     void _CPU_Context_restore_fp(
-    void \**fp_context_ptr
+    void **fp_context_ptr
     );
 
 .. COMMENT: COPYRIGHT (c) 1988-2002.

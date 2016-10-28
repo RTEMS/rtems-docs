@@ -523,7 +523,7 @@ uname - Get System Name
 .. code-block:: c
 
     int uname(
-        struct utsname \*name
+        struct utsname *name
     );
 
 **STATUS CODES:**
@@ -592,7 +592,7 @@ getenv - Get Environment Variables
 .. code-block:: c
 
     char *getenv(
-        const char \*name
+        const char *name
     );
 
 **STATUS CODES:**

@@ -220,18 +220,18 @@ header file.
     #include <rtems/termiostypes.h>
     #include <some-chip-header.h>
 
-    /* Low-level driver specific data structure \*/
+    /* Low-level driver specific data structure */
     typedef struct {
       rtems_termios_device_context base;
-      const char \*device_name;
-      volatile module_register_block \*regs;
-      /* More stuff \*/
+      const char *device_name;
+      volatile module_register_block *regs;
+      /* More stuff */
     } my_driver_context;
 
     extern const rtems_termios_handler my_driver_handler_polled;
     extern const rtems_termios_handler my_driver_handler_interrupt;
 
-    #endif /* MY_DRIVER_H \*/
+    #endif /* MY_DRIVER_H */
 
 Termios and Polled IO
 ---------------------

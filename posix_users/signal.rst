@@ -527,8 +527,8 @@ pthread_sigmask - Examine and Change Thread Blocked Signals
     #include <signal.h>
     int pthread_sigmask(
     int             how,
-    const sigset_t \*set,
-    sigset_t       \*oset
+    const sigset_t *set,
+    sigset_t       *oset
     );
 
 **STATUS CODES:**

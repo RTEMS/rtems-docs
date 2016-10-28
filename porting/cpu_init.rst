@@ -19,7 +19,7 @@ The _CPU_Initialize routine performs processor dependent initialization.
 .. code:: c
 
     void _CPU_Initialize(
-    void            (\*thread_dispatch)  /* may be ignored \*/
+    void            (*thread_dispatch)  /* may be ignored */
     )
 
 The thread_dispatch argument is the address of the entry point for the

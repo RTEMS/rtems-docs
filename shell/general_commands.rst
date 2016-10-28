@@ -475,34 +475,34 @@ solely for compatibility with other systems.  Only one of the options *-n* and
 If any of the following sequences of characters is encountered during output,
 the sequence is not output.  Instead, the specified action is performed:
 
-*\\b*
+*\b*
     A backspace character is output.
 
-*\\c*
+*\c*
     Subsequent output is suppressed.  This is normally used at the end of the
     last argument to suppress the trailing newline that echo would otherwise
     output.
 
-*\\f*
+*\f*
     Output a form feed.
 
-*\\n*
+*\n*
     Output a newline character.
 
-*\\r*
+*\r*
     Output a carriage return.
 
-*\\t*
+*\t*
     Output a (horizontal) tab character.
 
-*\\v*
+*\v*
     Output a vertical tab.
 
-*\\0digits*
+*\0digits*
     Output the character whose value is given by zero to three digits.  If
     there are zero digits, a nul character is output.
 
-*\\\\*
+*\\*
     Output a backslash.
 
 **EXIT STATUS:**
@@ -511,7 +511,7 @@ This command returns 0 on success and non-zero if an error is encountered.
 
 **NOTES:**
 
-The octal character escape mechanism (\\0digits) differs from the C language
+The octal character escape mechanism (\0digits) differs from the C language
 mechanism.
 
 There is no way to force ``echo`` to treat its arguments literally, rather than

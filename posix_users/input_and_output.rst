@@ -688,7 +688,7 @@ unmount - Unmount file systems
 
     #include <libio.h>
     int unmount(
-        const char \*mount_path
+        const char *mount_path
     );
 
 **STATUS CODES:**
@@ -767,7 +767,7 @@ writev - Vectored write to a file
     #include <sys/uio.h>
     ssize_t writev(
         int                 fd,
-        const struct iovec \*iov,
+        const struct iovec *iov,
         int                 iovcnt
     );
 

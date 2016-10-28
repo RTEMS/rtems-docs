@@ -917,7 +917,7 @@ semaphore object.
         assert(sc == RTEMS_SUCCESSFUL);
         assert(prio == 1);
 
-        /* Check the ceiling priority values \*/
+        /* Check the ceiling priority values */
         prio = RTEMS_CURRENT_PRIORITY;
         sc = rtems_semaphore_set_priority(semaphore_id, scheduler_a_id, prio, &prio);
         assert(sc == RTEMS_SUCCESSFUL);

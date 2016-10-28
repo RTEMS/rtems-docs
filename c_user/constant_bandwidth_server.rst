@@ -214,7 +214,7 @@ overrun.
         while ( 1 ) {
             if (rtems_rate_monotonic_period(rmid, params.deadline) == RTEMS_TIMEOUT)
                 break;
-            /* Perform some periodic action \*/
+            /* Perform some periodic action */
         }
 
         rtems_rate_monotonic_delete( rmid );

@@ -56,9 +56,9 @@ The _CPU_Bitfield_Find_first_bit routine sets _output to the bit number of
 the first bit set in ``_value``.  ``_value`` is of CPU dependent type``Priority_bit_map_Control``.  A stub version of this routine is as follows:
 .. code:: c
 
-    #define _CPU_Bitfield_Find_first_bit( _value, _output ) \\
-    { \\
-    (_output) = 0;   /* do something to prevent warnings \*/ \\
+    #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
+    { \
+      (_output) = 0;   /* do something to prevent warnings */ \
     }
 
 There are a number of variables in using a "find first bit" type
@@ -129,9 +129,9 @@ something like this stub example did:
 .. code:: c
 
     #if (CPU_USE_GENERIC_BITFIELD_CODE == FALSE)
-    #define _CPU_Bitfield_Find_first_bit( _value, _output ) \\
-    { \\
-    (_output) = 0;   /* do something to prevent warnings \*/ \\
+    #define _CPU_Bitfield_Find_first_bit( _value, _output ) \
+    { \
+      (_output) = 0;   /* do something to prevent warnings */ \
     }
     #endif
 

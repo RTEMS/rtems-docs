@@ -1334,7 +1334,7 @@ The format is required and must be surrounded by double quote (" ") marks.  It
 is interpreted as a fprintf-style format string (see*fprintf*), with the
 following exceptions:
 
-- An asterisk (\*) may not be used as a field width or precision.
+- An asterisk (*) may not be used as a field width or precision.
 
 - A byte count or field precision is required for each "s" con- version
   character (unlike the fprintf(3) default which prints the entire string if

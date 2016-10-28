@@ -73,7 +73,7 @@ CPU_PROVIDES_IDLE_THREAD_BODY macro should be defined to TRUE.  This
 routine is prototyped as follows:
 .. code:: c
 
-    void \*_CPU_Thread_Idle_body( uintptr_t );
+    void *_CPU_Thread_Idle_body( uintptr_t );
 
 As mentioned above, RTEMS does not require that a CPU dependent IDLE
 thread body be provided as part of the port.  If
@@ -82,9 +82,9 @@ independent algorithm is used.  This algorithm consists of a "branch to
 self" which is implemented in a routine as follows.
 .. code:: c
 
-    void \*_Thread_Idle_body( uintptr_t ignored )
+    void *_Thread_Idle_body( uintptr_t ignored )
     {
-    while( 1 ) ;
+      while( 1 ) ;
     }
 
 If the CPU dependent IDLE thread body is implementation centers upon using
@@ -93,10 +93,10 @@ in an infinite loop as the CPU will have to reexecute this instruction
 each time the IDLE thread is dispatched.
 .. code:: c
 
-    void \*_CPU_Thread_Idle_body( uintptr_t ignored )
+    void *_CPU_Thread_Idle_body( uintptr_t ignored )
     {
-    for( ; ; )
-    /* insert your "halt" instruction here \*/ ;
+      for( ; ; )
+        /* insert your "halt" instruction here */ ;
     }
 
 Be warned. Some processors with onboard DMA have been known to stop the

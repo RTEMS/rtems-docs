@@ -87,8 +87,8 @@ dummy implementation that simply sets the previous level to 0.
 .. code:: c
 
     #define _CPU_ISR_Disable( _isr_cookie ) \\
-    { \\
-    (_isr_cookie) = 0;   /* do something to prevent warnings \*/ \\
+    { \
+      (_isr_cookie) = 0;   /* do something to prevent warnings */ \
     }
 
 The following is the implementation from the Motorola M68K port:
@@ -186,8 +186,8 @@ NOTE: This should be TRUE is CPU_HAS_SOFTWARE_INTERRUPT_STACK is TRUE.
 If the CPU_HAS_SOFTWARE_INTERRUPT_STACK macro is set to TRUE, then RTEMS automatically allocates the stack memory in the initialization of the Interrupt Manager and the switch to that stack is performed in ``_ISR_Handler`` on the outermost interrupt.  The _CPU_Interrupt_stack_low and _CPU_Interrupt_stack_high variables contain the addresses of the the lowest and highest addresses of the memory allocated for the interrupt stack.  Although technically only one of these addresses is required to switch to the interrupt stack, by always providing both addresses, the port has more options avaialble to it without requiring modifications to the portable parts of the executive.  Whether the stack  grows up or down, this give the CPU dependent code the option of picking the version it wants to use.
 .. code:: c
 
-    SCORE_EXTERN void               \*_CPU_Interrupt_stack_low;
-    SCORE_EXTERN void               \*_CPU_Interrupt_stack_high;
+    SCORE_EXTERN void               *_CPU_Interrupt_stack_low;
+    SCORE_EXTERN void               *_CPU_Interrupt_stack_high;
 
 NOTE: These two variables are required if the macro
 CPU_HAS_SOFTWARE_INTERRUPT_STACK is defined as TRUE.
@@ -214,9 +214,9 @@ The _CPU_ISR_install_raw_handler XXX
 .. code:: c
 
     void _CPU_ISR_install_raw_handler(
-    unsigned32  vector,
-    proc_ptr    new_handler,
-    proc_ptr   \*old_handler
+      unsigned32  vector,
+      proc_ptr    new_handler,
+      proc_ptr   *old_handler
     )
 
 This is where we install the interrupt handler into the "raw" interrupt
@@ -239,7 +239,7 @@ and mapped into a user provided handler.
 
     #define CPU_INTERRUPT_NUMBER_OF_VECTORS      32
     #define CPU_INTERRUPT_MAXIMUM_VECTOR_NUMBER \\
-    (CPU_INTERRUPT_NUMBER_OF_VECTORS - 1)
+      (CPU_INTERRUPT_NUMBER_OF_VECTORS - 1)
 
 Install RTEMS Interrupt Handler
 -------------------------------
@@ -254,9 +254,9 @@ new_handler - replacement ISR for this vector number
 .. code:: c
 
     void _CPU_ISR_install_vector(
-    unsigned32  vector,
-    proc_ptr    new_handler,
-    proc_ptr   \*old_handler
+      unsigned32  vector,
+      proc_ptr    new_handler,
+      proc_ptr   *old_handler
     )
 
 .. code:: c
@@ -293,8 +293,8 @@ examine the saved state.
 .. code:: c
 
     typedef struct {
-    unsigned32 not_preserved_register_1;
-    unsigned32 special_interrupt_register;
+      unsigned32 not_preserved_register_1;
+      unsigned32 special_interrupt_register;
     } CPU_Interrupt_frame;
 
 Interrupt Dispatching
@@ -338,22 +338,22 @@ another interrupt nests this one) and branches to ``_ISR_Handler``.
     save some or all context on stack
     may need to save some special interrupt information for exit
     #if ( CPU_HAS_SOFTWARE_INTERRUPT_STACK == TRUE )
-    if ( _ISR_Nest_level == 0 )
-    switch to software interrupt stack
+      if ( _ISR_Nest_level == 0 )
+        switch to software interrupt stack
     #endif
     _ISR_Nest_level++;
     _Thread_Dispatch_disable_level++;
-    (\*_ISR_Vector_table[ vector ])( vector );
+    (*_ISR_Vector_table[ vector ])( vector );
     --_ISR_Nest_level;
     if ( _ISR_Nest_level )
-    goto the label "exit interrupt (simple case)"
+      goto the label "exit interrupt (simple case)"
     #if ( CPU_HAS_SOFTWARE_INTERRUPT_STACK == TRUE )
-    restore stack
+      restore stack
     #endif
     if ( _Thread_Dispatch_disable_level )
-    goto the label "exit interrupt (simple case)"
+      goto the label "exit interrupt (simple case)"
     if ( _Thread_Dispatch_necessary )
-    call _Thread_Dispatch() or prepare to return to _ISR_Dispatch
+      call _Thread_Dispatch() or prepare to return to _ISR_Dispatch
     prepare to get out of interrupt
     return from interrupt  (maybe to _ISR_Dispatch)
     LABEL "exit interrupt (simple case):
@@ -392,7 +392,7 @@ invoke that routine at the end of the interrupt sequence (if a dispatch is
 necessary).
 .. code:: c
 
-    void (\*_CPU_Thread_dispatch_pointer)();
+    void (*_CPU_Thread_dispatch_pointer)();
 
 .. COMMENT: COPYRIGHT (c) 1988-2002.
 
