@@ -1144,7 +1144,7 @@ imfs_dir_close()
 
 .. code-block:: c
 
-    rtems_libio_t     \*iop
+    rtems_libio_t     *iop
 
 **File:**
 

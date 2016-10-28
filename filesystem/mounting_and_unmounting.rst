@@ -52,7 +52,7 @@ Each entry in the mount table chain is of the following type:
          *  The best option long term for this is probably an
          *  open file descriptor.
          */
-         char                                  \*dev;
+         char                                  *dev;
     };
 
 *Node*
