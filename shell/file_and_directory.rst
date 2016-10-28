@@ -1090,6 +1090,7 @@ NONE
 **EXAMPLES:**
 
 The following is an example of how to use ``df``:
+
 .. code:: c
 
     SHLL [/] $ df -B 4K
@@ -1848,17 +1849,23 @@ mkdos - DOSFS file system format
 
 .. code:: shell
 
-    mkdir [-V label] [-s sectors/cluster] [-r size] [-v] path
+    mkdos [-V label] [-s sectors/cluster] [-r size] [-v] path
 
 **DESCRIPTION:**
 
 This command formats a block device entry with the DOSFS file system.
 
 *-V label*
+    Specify the volume label.
 
 *-s sectors/cluster*
+    Specify the number of sectors per cluster.
 
 *-r size*
+    Specify the number  of entries in the root directory.
+
+*-v*
+    Enable verbose output mode.
 
 **EXIT STATUS:**
 
