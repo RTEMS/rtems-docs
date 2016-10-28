@@ -213,7 +213,7 @@ There may be other directories in the BSP tree and the name should be
 indicative of the functionality of the code within that directory.
 
 The build order of the BSP is determined by the Makefile structure.  This
-structure is discussed in more detail in the `Makefiles`_ chapter.
+structure is discussed in more detail in the :ref:`Makefiles` chapter.
 
 .. sidebar:
 
