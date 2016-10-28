@@ -46,3 +46,5 @@ repositories for the tools and kernel.
 .. include:: releases.rst
 .. include:: developer.rst
 .. include:: kernel.rst
+
+.. comment: code block warning is in kernel.rst

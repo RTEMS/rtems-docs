@@ -293,6 +293,9 @@ the API headers and architecture specific libraries to a locaiton under the
 RTEMS. Do not mix versions of RTEMS under the same `prefix`. Make installs
 RTEMS with the following command:
 
+.. comment: CCJ - this code block for not parse and gives a warning in
+            index.rst.
+
 .. code-block:: shell
 
   $ make install
