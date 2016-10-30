@@ -2,6 +2,7 @@
 #sys.path.append(os.path.abspath('.'))
 #sys.path.append(os.path.abspath('../../common/'))
 
+import datetime
 
 extensions = [
 	"sphinx.ext.autodoc",
@@ -28,7 +29,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RTEMS Documentation Project'
-copyright = u'2016, RTEMS Project'
+copyright = u'2016, RTEMS Projecti (built %s)' % (datetime.date.today().strftime('%d %b %Y'))
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
