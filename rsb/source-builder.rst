@@ -125,7 +125,7 @@ the ``--prefix`` option so the path you need to configure to build
 applications can be set with the following
 in a BASH shell:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ export PATH=$HOME/development/rtems/4.11/bin:$PATH
 
@@ -149,7 +149,7 @@ Setup
 
 Setup a development work space:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ cd
     $ mkdir -p development/rtems/src
@@ -159,7 +159,7 @@ The RTEMS Source Builder is distributed as source. It is Python code so all you
 need to do is head over to the RTEMS GIT repository and clone the code directly
 from git:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ git clone git://git.rtems.org/rtems-source-builder.git
     $ cd rtems-source-builder
@@ -170,23 +170,23 @@ Checking
 The next step is to check if your host is set up correctly. The RTEMS Source
 Builder provides a tool to help:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ source-builder/sb-check
-    warning: exe: absolute exe found in path: (__objcopy) /usr/local/bin/objcopy **<1>**
+    warning: exe: absolute exe found in path: (__objcopy) /usr/local/bin/objcopy <1>
     warning: exe: absolute exe found in path: (__objdump) /usr/local/bin/objdump
-    error: exe: not found: (_xz) /usr/local/bin/xz **<2>**
+    error: exe: not found: (_xz) /usr/local/bin/xz <2>
     RTEMS Source Builder environment is not correctly set up
     $ source-builder/sb-check
-    RTEMS Source Builder environment is ok **<3>**
+    RTEMS Source Builder environment is ok <3>
 
 
-- **<1>** A tool is in the environment path but does not match the
+- *<1>* A tool is in the environment path but does not match the
   expected path.
 
-- **<2>** The executable 'xz' is not found.
+- *<2>* The executable 'xz' is not found.
 
-- **<3>** The host's environment is set up correct.
+- *<3>* The host's environment is set up correct.
 
 The checking tool will output a list of executable files not found if problems
 are detected. Locate those executable files and install them. You may also be
@@ -207,14 +207,14 @@ The RTEMS tools can be built within the RTEMS Source Builder's source tree. We
 recommend you do this so lets change into the RTEMS directory in the RTEMS
 Source Builder package:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ cd rtems
 
 If you are unsure how to specify the build set for the architecture you wish to
 build ask the tool:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --list-bsets <1>
     RTEMS Source Builder - Set Builder, v0.2.0
@@ -310,7 +310,7 @@ Building
 
 In this quick start I will build a SPARC tool set.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt <1> \
           --prefix=$HOME/development/rtems/4.11 <2> 4.11/rtems-sparc <3>
@@ -381,7 +381,7 @@ command to get the tools and RTEMS with one command.
 
 The installed tools:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ls $HOME/development/rtems/4.11
     bin         include     lib         libexec     share       sparc-rtems4.11
@@ -473,7 +473,7 @@ prefix is and is recommended. For example if
 directory to the root (``/``) and install because the ``/home`` is root access
 only. To install you would:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ cd
     $ tar --strip-components=3 -xjf rtems-4.11-sparc-rtems4.11-1.tar.bz2
@@ -482,7 +482,7 @@ only. To install you would:
 A build set tar file is created by adding ``--bset-tar-file`` option to the
 ``sb-set-builder`` command.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
              --prefix=$HOME/development/rtems/4.11 \
@@ -523,7 +523,7 @@ You can also suppress installing the files using the ``--no-install`` option to
 the ``sb-set-builder`` command. This is usefu if your prefix is not accessiable
 when building Canadian cross compiled tool sets.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
                 --prefix=$HOME/development/rtems/4.11 \
@@ -559,7 +559,7 @@ A package tar file can be created by adding the ``--pkg-tar-files`` to the
 ``sb-set-builder`` command. This creates a tar file per package built in the
 build set.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
             --prefix=$HOME/development/rtems/4.11 \
@@ -680,7 +680,7 @@ https://www.rtems.org/bugzilla/.
 Please include the generated RSB report. If you see the following a report has
 been generated:
 
-.. code-block: shell
+.. code-block:: shell
 
      ...
      ...
@@ -771,7 +771,7 @@ option and this is in the standard 2 or 3 tuple form. For example for an ARM
 compiler you would use 'arm-eabi' or 'arm-eabihf', and for SPARC you would
 use 'sparc-elf'.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ cd rtems-source-builder/bare
     $../source-builder/sb-set-builder --log=log_arm_eabihf \
@@ -836,7 +836,7 @@ packages only after they have been built so if you host does not have a
 recent enough version of ``autoconf`` and ``automake`` you first need to build them
 and install them then build your tool set. The commands are:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-4.11-at.txt \
        --prefix=$HOME/development/rtems/4.11 4.11/rtems-autotools
@@ -856,7 +856,7 @@ passing them on the command line using the ``--macros`` option. For RTEMS these
 are held in ``config/snapshots`` directory. The following builds *newlib* from
 CVS:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-4.11-sparc.txt \
        --prefix=$HOME/development/rtems/4.11 \
@@ -866,7 +866,7 @@ CVS:
 and the following uses the version control heads for *binutils*, *gcc*,
 *newlib*, *gdb* and *RTEMS*:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-heads-sparc.txt \
        --prefix=$HOME/development/rtems/4.11-head \
@@ -916,7 +916,7 @@ Patches can be declared in build set up files.
 
 This examples shows how to declare a patch for gdb in the ``lm32`` architecture:
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch add <1> gdb <2> %{rtems_gdb_patches}/lm32/gdb-sim-lm32uart.diff <3>
 
@@ -929,7 +929,7 @@ This examples shows how to declare a patch for gdb in the ``lm32`` architecture:
 Patches require a checksum to avoid a warning. The ``%hash`` directive can be
 used to add a checksum for a patch that is used to verify the patch:
 
-.. code-block: shell
+.. code-block:: shell
 
     %hash md5 <1> gdb-sim-lm32uart.diff <2> 77d070878112783292461bd6e7db17fb <3>
 
@@ -943,7 +943,7 @@ The patches are applied when a patch ``setup`` command is issued in the
 ``%prep:`` section. All patches in the group are applied. To apply the
 GDB patch above use:
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch setup <1> gdb <2> -p1 <3>
 
@@ -966,7 +966,7 @@ it and add it to the RTEMS Tools git repository.
 For example, to test a local patch for newlib, add the following two lines to
 the .cfg file in ``rtems/config/tools/`` that is included by the bset you use:
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch add newlib file://0001-this-is-a-newlib-patch.patch <1>
     %hash md5 0001-this-is-a-newlib-patch.diff 77d070878112783292461bd6e7db17fb <2>
@@ -996,7 +996,7 @@ development machine.
 
 To build the NTP package for RTEMS you enter the RSB command:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder \
        --log=log_ntp_arm.txt \
@@ -1056,7 +1056,7 @@ To perform a cross build add ``--host=`` to the command line. For example
 to build a MinGW tool set on FreeBSD for Windows add ``--host=mingw32``
 if the cross compiler is ``mingw32-gcc``:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --host=mingw32 \
        --log=l-mingw32-4.11-sparc.txt \
@@ -1066,7 +1066,7 @@ if the cross compiler is ``mingw32-gcc``:
 If you are on a Linux Fedora build host with the MinGW packages installed the
 command line is:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --host=i686-w64-mingw32 \
        --log=l-mingw32-4.11-sparc.txt \
@@ -1101,7 +1101,7 @@ needs to be the same as the prefix used to build RTEMS.
 
 To build Net-SNMP the command is:
 
-.. code-block: shell
+.. code-block:: shell
 
     cd rtems-source-builder/rtems
     $ ../source-builder/sb-set-builder --log=log_sis_net_snmp \
@@ -1160,7 +1160,7 @@ A package requires 3 files to be created:
   files reside in the ``rtems/config`` tree again under the FreeBSD
   port's path name. For example the NTP package is found in the ``net``
   directory of the FreeBSD ports tree so the NTP configuration path is
-  ``$$rtems/config/net/ntp-4.2.6p5-1.cfg$$`` for that specific version. The
+  ``rtems/config/net/ntp-4.2.6p5-1.cfg`` for that specific version. The
   configuration file name typically provides version specific references
   and the RTEMS build set file references a specific version. This
   configuration file references the build configuration file held in the
@@ -1175,7 +1175,7 @@ A package requires 3 files to be created:
   something changes that is not backwards compatible. It is important to keep
   existing versions building. The build configuration should be able to build a
   package for the build host as well as RTEMS as the RSB abstracts the RTEMS
-  specific parts. See <<H1,``_Configuration_``>> for more details.
+  specific parts. See :ref:`Configuration` for more details.
 
 BSP Support
 ~~~~~~~~~~~
@@ -1201,11 +1201,9 @@ RTEMS.
 The RSB provides the configuration file ``rtems/config/rtems-bsp.cfg``
 to support building 3rd party packages and you need to include this
 file in your RTEMS version specific configuration file. For example the
-Net-SNMP configuration file:
+Net-SNMP configuration file (``rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg``):
 
-.rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg
-
-.. code-block: shell
+.. code-block:: shell
 
     #
     # NetSNMP 5.7.2.1
@@ -1257,7 +1255,7 @@ line option is not given the ``${\_prefix}`` is used.
 
 .rtems/config/rtems-bsp.cfg
 
-.. code-block: shell
+.. code-block:: shell
 
     %if %{_host} == %{nil} <1>
      %error No RTEMS target specified: --host=host
@@ -1291,7 +1289,7 @@ build machine. Using this support we can obtain a BSP's configuration and set
 some standard macros variables:
 
 .rtems/config/rtems-bsp.cfg
-.. code-block: shell
+.. code-block:: shell
 
     %{pkgconfig prefix %{_prefix}/lib/pkgconfig} <1>
     %{pkgconfig crosscompile yes} <2>
@@ -1321,7 +1319,7 @@ party library your host computer is the _build_ machine and RTEMS is the _host_
 machine therefore we set the ``host`` variables:
 
 .rtems/config/rtems-bsp.cfg
-.. code-block: shell
+.. code-block:: shell
 
     %define host_cflags  %{rtems_bsp_cflags}
     %define host_ldflags %{rtems_bsp_ldflags}
@@ -1336,7 +1334,7 @@ BSP and so needs to install into the specific BSP path under the
 the same ``_prefix`` at the same time:
 
 .rtems/config/rtems-bsp.cfg
-.. code-block: shell
+.. code-block:: shell
 
     %define rtems_bsp_prefix  %{_prefix}/%{_host}/%{rtems_bsp} <1>
     %define _exec_prefix      %{rtems_bsp_prefix}
@@ -1364,7 +1362,7 @@ When you configure a package you can reference these paths and the RSB will
 provide sensible default or in this case map them to the BSP:
 
 .source-builder/config/ntp-4-1.cfg
-.. code-block: shell
+.. code-block:: shell
 
       ../${source_dir_ntp}/configure \ <1>
         --host=%{_host} \
@@ -1392,6 +1390,8 @@ being used needs to be built with the same flags.
 
 .. comment [[H1]]
 
+.. _Configuration:
+
 Configuration
 #############
 
@@ -1414,7 +1414,7 @@ configurations will be used.
 [[X1]] The configuration search path is a macro variable and is reference as
 ``%\{_configdir\}``. It's default is defined as:
 
-.. code-block: shell
+.. code-block:: shell
 
     _configdir   : dir  optional<2>  %{_topdir}/config:%{_sbdir}/config <1>
 
@@ -1445,13 +1445,19 @@ details the source and patch directives
 The URL can reference remote and local source and patch resources. The
 following schemes are provided:
 
-'http':: Remote access using the HTTP protocol.
-'https':: Remote access using the Secure HTTP protocol.
-'ftp':: Remote access using the FTP protocol.
-'git':: Remote access to a GIT repository.
-'cvs':: Remote access to a CVS repository.
-'pm':: Remote access to a patch management repository.
-'file':: Local access to an existing source directory.
+- ``http``: Remote access using the HTTP protocol.
+
+- ``https``: Remote access using the Secure HTTP protocol.
+
+- ``ftp``: Remote access using the FTP protocol.
+
+- ``git``: Remote access to a GIT repository.
+
+- ``cvs``: Remote access to a CVS repository.
+
+- ``pm``: Remote access to a patch management repository.
+
+- ``file``: Local access to an existing source directory.
 
 HTTP, HTTPS, and FTP
 ^^^^^^^^^^^^^^^^^^^^
@@ -1467,7 +1473,7 @@ and start the build process again.
 The URL can contain macros. These are expanded before issuing the request to
 download the file. The standard GNU GCC compiler source URL is:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source set<1> gcc<2> ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
 
@@ -1479,10 +1485,13 @@ download the file. The standard GNU GCC compiler source URL is:
 The type of compression is automatically detected from the file extension. The
 supported compression formats are:
 
-'gz':: GNU ZIP
-'bzip2':: BZIP2
-'zip':: ZIP
-'xy':: XY
+- ``gz``: GNU ZIP
+
+- ``bzip2``: BZIP2
+
+- ``zip``: ZIP
+
+- ``xy``: XY
 
 The output of the decompression tool is feed to the standard ``tar`` utility if
 not a ZIP file and unpacked into the build directory. ZIP files are unpacked by
@@ -1502,7 +1511,7 @@ If the source URL references the GitHub API server 'https://api.github.com/' a
 tarball of the specified version is download. For example the URL for the
 STLINK project on GitHub and version is:
 
-.. code-block: shell
+.. code-block:: shell
 
     %define stlink_version 3494c11
     %source set stlink https://api.github.com/repos/texane/stlink/texane-stlink-%{stlink_version}.tar.gz
@@ -1520,19 +1529,19 @@ the repository via the URL by appending options and arguments to the GIT
 path. The options are delimited by ``?`` and option arguments are delimited from
 the options with ``=``. The options are:
 
-- ``protocol``:: Use a specific protocol. The supported values are *ssh*,
+- ``protocol``: Use a specific protocol. The supported values are *ssh*,
   *git*, *http*, *https*, *ftp*, *ftps*, *rsync*, and *none*.
 
-- ``branch``:: Checkout the specified branch.
+- ``branch``: Checkout the specified branch.
 
-- ``pull``:: Perform a pull to update the repository.
+- ``pull``: Perform a pull to update the repository.
 
-- ``fetch``:: Perform a fetch to get any remote updates.
+- ``fetch``: Perform a fetch to get any remote updates.
 
-- ``reset``:: Reset the repository. Useful to remove any local
+- ``reset``: Reset the repository. Useful to remove any local
   changes. You can pass the ``hard`` argument to force a hard reset.
 
-.. code-block: shell
+.. code-block:: shell
 
     %source set gcc git://gcc.gnu.org/git/gcc.git?branch=gcc-4_7-branch?reset=hard
 
@@ -1555,12 +1564,17 @@ via the URL by appending options and arguments to the CVS path. The options are
 delimited by ``?`` and option arguments are delimited from the options with
 ``=``. The options are:
 
-``module``:: The module to checkout.
-``src-prefix``:: The path into the source where the module starts.
-``tag``:: The CVS tag to checkout.
-``date``:: The CVS date to checkout.
+- ``module``: The module to checkout.
 
-.. code-block: shell
+- ``src-prefix``: The path into the source where the module starts.
+
+- ``tag``: The CVS tag to checkout.
+
+- ``date``: The CVS date to checkout.
+
+The following is an example of checking out from a CVS repository:
+
+.. code-block:: shell
 
     %source set newlib cvs://pserver:anoncvs@sourceware.org/cvs/src?module=newlib?src-prefix=src
 
@@ -1577,21 +1591,21 @@ Build set and configuration files can define new values updating and extending
 the global macro table. For example builds are given a release number. This is
 typically a single number at the end of the package name. For example:
 
-.. code-block: shell
+.. code-block:: shell
 
     %define release 1
 
 Once defined if can be accessed in a build set or package configuration file
 with:
 
-.. code-block: shell
+.. code-block:: shell
 
     %{release}
 
 The ``sb-defaults`` command lists the defaults for your host. I will not include
 the output of this command because of its size.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-defaults
 
@@ -1611,32 +1625,35 @@ by using the ``--macros`` command line option.
 
 The format for a macro in macro files is:
 
-.. comment [options="header,compact",width="50%",cols="15%,15%,15%,55%"]
-|=================================
-| Name | Type | Attribute | String
-|=================================
+==== ==== ========= ======
+Name Type Attribute String
+==== ==== ========= ======
 
 where 'Name' is a case insensitive macro name, the 'Type' field is:
 
-[horizontal]
-``none``:: Nothing, ignore.
-``dir``:: A directory path.
-``exe``:: An executable path.
-``triplet``:: A GNU style architecture, platform, operating system string.
+- ``none``: Nothing, ignore.
+
+- ``dir``: A directory path.
+
+- ``exe``: An executable path.
+
+- ``triplet``: A GNU style architecture, platform, operating system string.
 
 the 'Attribute' field is:
 
-[horizontal]
-``none``:: Nothing, ignore
-``required``:: The host check must find the executable or path.
-``optional``:: The host check generates a warning if not found.
-``override``:: Only valid outside of the ``global`` map to indicate this macro
-             overrides the same one in the ``global`` map when the map containing
-             it is selected.
-``undefine``:: Only valid outside of the ``global`` map to undefine the macro if it
-             exists in the ``global`` map when the map containing it is
-             selected. The ``global`` map's macro is not visible but still
-             exists.
+- ``none``:: Nothing, ignore
+
+- ``required``:: The host check must find the executable or path.
+
+- ``optional``:: The host check generates a warning if not found.
+
+- ``override``:: Only valid outside of the ``global`` map to indicate
+  this macro overrides the same one in the ``global`` map when the map
+  containing it is selected.
+
+- ``undefine``:: Only valid outside of the ``global`` map to undefine
+  the macro if it exists in the ``global`` map when the map containing it
+  is selected. The ``global`` map's macro is not visible but still exists.
 
 and the 'String' field is a single or tripled multiline quoted string. The
 'String' can contain references to other macros. Macro that loop are not
@@ -1644,7 +1661,7 @@ currently detected and will cause the tool to lock up.
 
 Maps are declared anywhere in the map using the map directive:
 
-.. code-block: shell
+.. code-block:: shell
 
     # Comments
     [my-special-map] <1>
@@ -1655,11 +1672,11 @@ Maps are declared anywhere in the map using the map directive:
 
 - *<1>* The map is set to ``my-special-map``.
 
-Any macro defintions following a map declaration are placed in that map and the
-default map is ``global`` when loading a file. Maps are selected in configuration
-files by using the ``%select`` directive.
+Any macro defintions following a map declaration are placed in that map
+and the default map is ``global`` when loading a file. Maps are selected
+in configuration files by using the ``%select`` directive.
 
-.. code-block: shell
+.. code-block:: shell
 
     %select my-special-map
 
@@ -1676,7 +1693,7 @@ Macro map files can include other macro map files using the ``%include``
 directive. The macro map to build *binutils*, *gcc*, *newlib*, *gdb* and
 *RTEMS* from version control heads is:
 
-.. code-block: shell
+.. code-block:: shell
 
     # <1>
     # Build all tool parts from version control head.
@@ -1714,13 +1731,13 @@ monitoring. Mailing requires a number of parameters to function. These are:
 
 - SMTP host
 
-.To Mail Address
+.. _To Mail Address:
 
 The ``to`` mail address is taken from the macro ``%{_mail_tools_to}`` and the
 default is *rtems-tooltestresults at rtems.org*. You can override the default
 with a personal or user macro file or via the command line option *--mail-to*.
 
-.From Mail Address
+.. _From Mail Address:
 
 The ``from`` mail address is taken from:
 
@@ -1756,7 +1773,7 @@ configuration files.
 
 Defining macros is performed with the ``%define`` macro:
 
-.. code-block: shell
+.. code-block:: shell
 
     %define _target m32r-rtems4.11
 
@@ -1764,7 +1781,7 @@ Inline including another file with the ``%include`` macro continues processing
 with the specified file returning to carry on from just after the include
 point.
 
-.. code-block: shell
+.. code-block:: shell
 
     %include rtems-4.11-base.bset
 
@@ -1774,7 +1791,7 @@ paths as defined by ``_configdir`` are scanned. The file extension is optional.
 You reference build set or package configuration files by placing the file name
 on a single line.
 
-.. code-block: shell
+.. code-block:: shell
 
     tools/rtems-binutils-2.22-1
 
@@ -1804,7 +1821,7 @@ Newlib version is 2.0.0, plus any RTEMS specific patches that related to this
 version. The configuration defines the version numbers of the various parts
 that make up this package:
 
-.. code-block: shell
+.. code-block:: shell
 
     %define gcc_version    4.7.2
     %define newlib_version 2.0.0
@@ -1814,7 +1831,7 @@ that make up this package:
 
 The package build options, if there are any are also defined:
 
-.. code-block: shell
+.. code-block:: shell
 
     %define with_threads 1
     %define with_plugin  0
@@ -1824,13 +1841,13 @@ The generic configuration may provide defaults in case options are not
 specified. The patches this specific version of the package requires can be
 included:
 
-.. code-block: shell
+.. code-block:: shell
 
     Patch0: gcc-4.7.2-rtems4.11-20121026.diff
 
 Finally including the GCC 4.7 configuration script:
 
-.. code-block: shell
+.. code-block:: shell
 
     %include %{_configdir}/gcc-4.7-1.cfg
 
@@ -1854,7 +1871,7 @@ configurations away from the RSB source tree yet use all that the RSB provides.
 
 To create a private configuration change to a suitable directory:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ cd ~/work
     $ mkdir test
@@ -1930,7 +1947,7 @@ anything unusual about the configuration it is a good idea to add something in
 the comments here. The comments are followed by a check for the release. In
 this case if a release is not provided a default of 1 is used.
 
-.. code-block: shell
+.. code-block:: shell
 
     #
     # DTC 1.x.x Version 1.
@@ -1946,7 +1963,7 @@ The next section defines some information about the package. It does not effect
 the build and is used to annotate the reports. It is recommended this
 information is kept updated and accurate.
 
-.. code-block: shell
+.. code-block:: shell
 
     Name:      dtc-%{dtc_version}-%{_host}-%{release}
     Summary:   Device Tree Compiler v%{dtc_version} for target %{_target} on host %{_host}
@@ -1962,7 +1979,7 @@ them increasing the index. The +gcc-4.8-1.cfg+ configuration contains examples
 of more than one source package as well as conditionally including source
 packages based on the outer configuration options.
 
-.. code-block: shell
+.. code-block:: shell
 
     #
     # Source
@@ -1997,7 +2014,7 @@ layers can set the source package and add patches as needed while being able to
 use a common recipe for the build. Users can override the standard build and
 supply a custom patch for testing using the user macro command line interface.
 
-.. code-block: shell
+.. code-block:: shell
 
     #
     # Prepare the source code.
@@ -2025,7 +2042,7 @@ systems we need to use the GNU make and not the GNU make.
 If your package requires a configuration stage you need to run this before the
 make stage. Again the GCC common configuration file provides a detailed example.
 
-.. code-block: shell
+.. code-block:: shell
 
     %build
       build_top=$(pwd)
@@ -2066,7 +2083,7 @@ many many macros to help you. You can find these listed in the +defaults.mc+
 file and in the trace output. If you are new to creating and editing
 configurations learning these can take a little time.
 
-.. code-block: shell
+.. code-block:: shell
 
     %install
       build_top=$(pwd)
@@ -2086,7 +2103,7 @@ Once we have the configuration files we can execute the build using the
 ``sb-builder`` command. The command will perform the build and create a tar file
 in the +tar+ directory.
 
-.. code-block: shell
+.. code-block:: shell
 
     $  ../source-builder/sb-builder --prefix=/usr/local \
          --log=log_dtc devel/dtc-1.2.0
@@ -2107,7 +2124,7 @@ prefix path.
 
 The DTC build set file is called +dtc.bset+ and contains:
 
-.. code-block: shell
+.. code-block:: shell
 
     #
     # Build the DTC.
@@ -2119,7 +2136,7 @@ The DTC build set file is called +dtc.bset+ and contains:
 
 To build this you can use something similar to:
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --prefix=/usr/local --log=log_dtc \
        --trace --bset-tar-file --no-install dtc
@@ -2180,7 +2197,7 @@ set. We want to use a recent snapshot with no patches. In the
 ``rtems/config/snapshots`` directoy create a file called ``gcc-4.7-snapshot.mc``
 containing:
 
-.. code-block: shell
+.. code-block:: shell
 
     [gcc-4.7-snapshot]
     GCC_Version: none, override, '4.7-20130413'
@@ -2191,7 +2208,7 @@ containing:
 In the standard configuration file ``source-builder/config/gcc-4.7-1.cfg`` the
 map is selected with:
 
-.. code-block: shell
+.. code-block:: shell
 
     #
     # Select the GCC 4.7 Snapshot Macro Map
@@ -2322,7 +2339,7 @@ mix of RTEMS Source Builder macros and shell scripting. The sequence is
 typically +%source+ macros for source, +%patch+ macros to patch the source
 mixed with some shell commands to correct any source issues.
 
-.. code-block: shell
+.. code-block:: shell
 
                   <1>                <2>      <3>
 %source setup gcc -q -c -T -n %{name}-%{version}
@@ -2336,7 +2353,7 @@ mixed with some shell commands to correct any source issues.
 The source set up are declared with the source +set+ and +add+ commands. For
 example:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source set gdb http://ftp.gnu.org/gnu/gdb/gdb-%{gdb_version}.tar.bz2
 
@@ -2354,7 +2371,7 @@ example GNU's GCC was a few tar files for a while and it is now a single tar
 file. Support for multiple source files can be conditionally implemented with
 the following scripting:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source set gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-code-%{gcc_version}.tar.bz2
     %source add gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-g++-%{gcc_version}.tar.bz2
@@ -2363,7 +2380,7 @@ the following scripting:
 Separate modules use separate source groups. The GNU GCC compiler for RTEMS
 uses Newlib, MPFR, MPC, and GMP source packages. You define the source with:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source set gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
     %source set newlib ftp://sourceware.org/pub/newlib/newlib-%{newlib_version}.tar.gz
@@ -2373,7 +2390,7 @@ uses Newlib, MPFR, MPC, and GMP source packages. You define the source with:
 
 and set up with:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source setup gcc -q -n gcc-%{gcc_version}
     %source setup newlib -q -D -n newlib-%{newlib_version}
@@ -2387,7 +2404,7 @@ applied using the +setup+ command. The +setup+ command takes the default patch
 option. You can provide options with each patch by adding them as arguments
 before the patch URL. Patches with no options uses the +setup+ default.
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch add gdb %{rtems_gdb_patches}/gdb-sim-arange-inline.diff
     %patch add gdb -p0 <1> %{rtems_gdb_patches}/gdb-sim-cgen-inline.diff
@@ -2396,7 +2413,7 @@ before the patch URL. Patches with no options uses the +setup+ default.
 
 To apply these patches:
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch setup gdb -p1 <1>
 
@@ -2414,7 +2431,7 @@ The following is an example take from the GutHub STLink project:
 
 NOTE: STLink is a JTAG debugging device for the ST ARM family of processors.
 
-.. code-block: shell
+.. code-block:: shell
 
     %build
       export PATH="%{_bindir}:${PATH}" <1>
@@ -2482,7 +2499,7 @@ packages support adding +DESTDIR=+ to the *make install* command.
 
 Looking at the same example as in <<_build, %build>>:
 
-.. code-block: shell
+.. code-block:: shell
 
     %install
       export PATH="%{_bindir}:${PATH}" <1>
@@ -2530,7 +2547,7 @@ configuration files provide specific information such as package version
 numbers and patches and then include a generic configuration script which
 builds the package.
 
-.. code-block: shell
+.. code-block:: shell
 
     %include %{_configdir}/gcc-4.7-1.cfg
 
@@ -2541,7 +2558,7 @@ The name of the package being built. The name typically contains the components
 of the package and their version number plus a revision number. For the GCC
 with Newlib configuration the name is typically:
 
-.. code-block: shell
+.. code-block:: shell
 
     Name: %{_target}-gcc-%{gcc_version}-newlib-%{newlib_version}-%{release}
 
@@ -2552,7 +2569,7 @@ The +%summary+ is a brief description of the package. It is useful when
 reporting. This information is not capture in the package anywhere. For the GCC
 with Newlib configuration the summary is typically:
 
-.. code-block: shell
+.. code-block:: shell
 
     Summary: GCC v%{gcc_version} and Newlib v%{newlib_version} for target %{_target} on host %{_host}
 
@@ -2563,7 +2580,7 @@ The +%release+ is packaging number that allows revisions of a package to happen
 where none package versions change. This value typically increases when the
 configuration building the package changes.
 
-.. code-block: shell
+.. code-block:: shell
 
     %define release 1
 
@@ -2576,7 +2593,7 @@ component it tracks that component's version number. For example in the
 in a GCC with Newlib configuration there is no single version number. In this
 case the GCC version is used.
 
-.. code-block: shell
+.. code-block:: shell
 
     Version: %{gcc_version}
 
@@ -2609,7 +2626,7 @@ source files to be set up. Subsequence +set+ commands for the same source group
 are ignored. this lets you define the standard source files and override them
 for specific releases or snapshots.. To set a source file group:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source set gcc <1> ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
 
@@ -2618,14 +2635,14 @@ for specific releases or snapshots.. To set a source file group:
 To add another source package to be installed into the same source tree you use
 the +add+ command:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source add gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/g++-%{gcc_version}.tar.bz2
 
 The source +setup+ command can only be issued in the +%prep:+ section. The
 setup is:
 
-.. code-block: shell
+.. code-block:: shell
 
     %source gcc setup -q -T -D -n %{name}-%{version}
 
@@ -2666,7 +2683,7 @@ The +__patchdir+ path is search.
 
 To add a patch:
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch add gcc <1>  gcc-4.7.2-rtems4.11-20121026.diff
     %patch add gcc -p0 <2>  gcc-4.7.2-rtems4.11-20121101.diff
@@ -2677,7 +2694,7 @@ To add a patch:
 
 Placing +%patch setup+ in the +%prep+ section will apply the groups patches.
 
-.. code-block: shell
+.. code-block:: shell
 
     %patch setup gcc <1>  -p1 <2>
 
@@ -2701,7 +2718,7 @@ The hash algorthim can be 'md5', 'sha1', 'sha224', 'sha256', 'sha384', and
 
 To add a hash:
 
-.. code-block: shell
+.. code-block:: shell
 
     %hash md5 <1> net-snmp-%{net_snmp_version}.tar.gz <2> 7db683faba037249837b226f64d566d4 <3>
 
@@ -2749,7 +2766,7 @@ package.
 
 The default map is ``global``.
 
-.. code-block: shell
+.. code-block:: shell
 
     %select gcc-4.8-snapshot <1>
     %define one_plus_one 2 <2>
@@ -2766,7 +2783,7 @@ The default map is ``global``.
 The +%define+ macro defines a new macro or updates an existing one. If no value
 is given it is assumed to be 1.
 
-.. code-block: shell
+.. code-block:: shell
 
     %define foo bar
     %define one_plus_one 2
@@ -2848,7 +2865,7 @@ The +%ifn+ macro inverts the normal +%if+ logic. It avoids needing to provide
 empty *if* blocks followed by *else* blocks. It is useful when checking if a
 macro is defined:
 
-.. code-block: shell
+.. code-block:: shell
 
     %ifn %{defined foo}
      %define foo bar
@@ -2904,7 +2921,7 @@ Checker (sb-check)
 
 This commands checks your system is set up correctly. Most options are ignored.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-check --help
     sb-check: [options] [args]
@@ -2947,7 +2964,7 @@ Defaults (sb-defaults)
 This commands outputs and the default macros for your when given no
 arguments. Most options are ignored.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-defaults --help
     sb-defaults: [options] [args]
@@ -2986,7 +3003,7 @@ Set Builder (sb-set-builder)
 
 This command builds a set.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --help
     RTEMS Source Builder, an RTEMS Tools Project (c) 2012-2013 Chris Johns
@@ -3149,7 +3166,7 @@ Set Builder (sb-builder)
 This command builds a configuration as described in a configuration
 file. Configuration files have the extension of +.cfg+.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ ./source-builder/sb-builder --help
     sb-builder: [options] [args]
@@ -3206,7 +3223,7 @@ ArchLinux
 
 The following packages are required on a fresh Archlinux 64bit installation:
 
-.. code-block: shell
+.. code-block:: shell
 
     # pacman -S base-devel gdb xz unzip ncurses git zlib
 
@@ -3214,7 +3231,7 @@ Archlinux, by default installs ``texinfo-5`` which is incompatible for building
 GCC 4.7 tree. You will have to obtain ``texinfo-legacy`` from ``AUR`` and provide
 a manual override.
 
-.. code-block: shell
+.. code-block:: shell
 
     # pacman -R texinfo
     $ yaourt -S texinfo-legacy
@@ -3227,7 +3244,7 @@ CentOS
 
 The following packages are required on a minimal CentOS 6.3 64bit installation:
 
-.. code-block: shell
+.. code-block:: shell
 
     # yum install autoconf automake binutils gcc gcc-c++ gdb make patch \
     bison flex xz unzip ncurses-devel texinfo zlib-devel python-devel git
@@ -3243,7 +3260,7 @@ Fedora
 
 The RTEMS Source Builder has been tested on Fedora 19 64bit with the following packages.
 
-.. code-block: shell
+.. code-block:: shell
 
     # yum install ncurses-devel python-devel git bison gcc cvs gcc-c++ \
          flex texinfo patch perl-Text-ParseWords zlib-devel
@@ -3256,7 +3273,7 @@ Raspbian
 The is the Debian distribution for the Raspberry Pi. The following packages are
 required.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ sudo apt-get install autoconf automake bison flex binutils gcc g++ gdb \
     texinfo unzip ncurses-dev python-dev git
@@ -3275,7 +3292,7 @@ The latest testing was with Ubuntu 16.04.1 LTS 64bit. This section also
 includes Xubuntu. A minimal installation was used and the following
 packages installed.
 
-.. code-block: shell
+.. code-block:: shell
 
     $ sudo apt-get build-dep binutils gcc g++ gdb unzip git
     $ sudo apt-get install python2.7-dev
@@ -3288,7 +3305,7 @@ Linux Mint
 zlib package is required on Linux Mint. It has a different name (other
 than the usual zlib-dev):
 
-.. code-block: shell
+.. code-block:: shell
 
     # sudo apt-get install zlib1g-dev
 
@@ -3308,7 +3325,7 @@ FreeBSD
 The RTEMS Source Builder has been tested on FreeBSD 9.1 and 10.0 64bit. You
 need to install some ports. They are:
 
-.. code-block: shell
+.. code-block:: shell
 
     # cd /usr/ports
     # portinstall --batch lang/python27
@@ -3316,7 +3333,7 @@ need to install some ports. They are:
 If you wish to build Windows (mingw32) tools please install the following
 ports:
 
-.. code-block: shell
+.. code-block:: shell
 
     # cd /usr/ports
     # portinstall --batch devel/mingw32-binutils devel/mingw32-gcc
@@ -3336,7 +3353,7 @@ NetBSD
 The RTEMS Source Builder has been tested on NetBSD 6.1 i386. Packages to add
 are:
 
-.. code-block: shell
+.. code-block:: shell
 
     # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/gmake-3.82nb7.tgz
     # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/bison-2.7.1.tgz
@@ -3415,7 +3432,7 @@ packages that may uses a Cygwin DLL, for example some ports of Git.
 
 To build the tools you need install the following packages using pacman:
 
-.. code-block: shell
+.. code-block:: shell
 
  $ pacman -S git cvs bison make texinfo patch unzip diffutils tar \
           mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-binutils
@@ -3485,7 +3502,7 @@ RTEMS cross-compiler. The Cygwin cross-compiler is required to build the C
 runtime for the RTEMS target because we are building under Cygiwn. The build
 output for an RTEMS 4.10 ARM tool set is:
 
-.. code-block: shell
+.. code-block:: shell
 
     chris@cygthing ~/development/rtems/src/rtems-source-builder/rtems
     $ ../source-builder/sb-set-builder --log=l-arm.txt --prefix=$HOME/development/rtems/4.10 4.10/rtems-arm
