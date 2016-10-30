@@ -9,5 +9,5 @@ release = '4.11.0'
 project = "RTEMS Source Builder Manual"
 
 latex_documents = [
-	('index', 'c_user.tex', u'RTEMS C Source Builder', u'RTEMS Documentation Project', 'manual'),
+	('index', 'rsb.tex', u'RTEMS Source Builder', u'RTEMS Documentation Project', 'manual'),
 ]
