@@ -27,9 +27,12 @@ def options(opt):
 def configure(conf):
     for b in building:
         conf.recurse(b)
-
     conf.env['BUILD_FROM_TOP'] = 'yes'
 
 def build(ctx):
+    for b in building:
+        ctx.recurse(b)
+
+def install(ctx):
     for b in building:
         ctx.recurse(b)

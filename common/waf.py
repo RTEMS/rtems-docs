@@ -79,39 +79,70 @@ def cmd_configure(ctx):
 	ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
 
 
+def html_resources(ctx):
+	for dir_name in ["_static", "_templates"]:
+		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
+                fnode = ctx.path.get_bld().make_node(os.path.join('html', dir_name))
+		fnode.mkdir() # dirs
+		ctx(
+			features = "subst",
+			is_copy  = True,
+			source   = files,
+			target   = [fnode.make_node(x.name) for x in files]
+		)
+
+	# copy images
+#	ctx.path.get_bld().make_node("images").mkdir()
+#	files = ctx.path.parent.ant_glob("images/**")
+#	ctx(
+#		features    = "subst",
+#		is_copy     = True,
+#		source      = files,
+#		target      = [x.srcpath().replace("../", "") for x in files]
+#	)
+
 def doc_pdf(ctx, source_dir, conf_dir):
 	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
 		ctx.fatal('The programs pdflatex and makeindex are required')
 
         build_dir = ctx.path.get_bld().relpath()
-        output_dir = os.path.join(ctx.path.get_bld().abspath(), 'latex')
+        output_node = ctx.path.get_bld().make_node('latex')
+        output_dir = output_node.abspath()
 
 	ctx(
-		rule   = "${BIN_SPHINX_BUILD} %s -b latex -c %s -d build/%s/doctrees %s %s" % (sphinx_verbose(ctx), conf_dir, build_dir, source_dir, output_dir),
-		cwd    = ctx.path,
-		source = ctx.path.ant_glob('**/*.rst'),
-		target = ctx.path.find_or_declare("latex/%s.tex" % (ctx.path.name))
+		rule         = "${BIN_SPHINX_BUILD} %s -b latex -c %s -d build/%s/doctrees %s %s" % (sphinx_verbose(ctx), conf_dir, build_dir, source_dir, output_dir),
+		cwd          = ctx.path,
+		source       = ctx.path.ant_glob('**/*.rst'),
+		target       = ctx.path.find_or_declare("latex/%s.tex" % (ctx.path.name))
 	)
 
 	ctx.add_group()
 
 	ctx(
-		features	= 'tex',
-		cwd             = output_dir,
-		type		= 'pdflatex',
-		source		= "latex/%s.tex" % ctx.path.name,
-		prompt		= 0
+		features     = 'tex',
+		cwd          = output_dir,
+		type         = 'pdflatex',
+		source       = "latex/%s.tex" % ctx.path.name,
+		prompt       = 0
 	)
+
+        ctx.install_files('${PREFIX}/%s' % (ctx.path.name),
+                          'latex/%s.pdf' % (ctx.path.name),
+                          cwd = output_node,
+                          quiet = True)
 
 def doc_singlehtml(ctx, source_dir, conf_dir):
 	if not ctx.env.BIN_INLINER:
 		ctx.fatal("Node inliner is required install with 'npm install -g inliner' (https://github.com/remy/inliner)")
 
+	html_resources(ctx)
+
 	ctx(
 		rule	= "${BIN_SPHINX_BUILD} -b singlehtml -c %s -j %d -d build/doctrees %s build/singlehtml" % (conf_dir, ctx.options.jobs, source_dir),
 		cwd		= ctx.path.abspath(),
 		source	= ctx.path.ant_glob('**/*.rst'),
-		target	= "singlehtml/index.html"
+		target	= "singlehtml/index.html",
+                install_path = None
 	)
 
 	ctx.add_group()
@@ -119,8 +150,31 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
 	ctx(
 		rule	= "${BIN_INLINER} ${SRC} > ${TGT}",
 		source	= "singlehtml/index.html",
-		target	= "singlehtml/%s.html" % ctx.path.name
+		target	= "singlehtml/%s.html" % ctx.path.name,
+                install_path = None
 	)
+
+def doc_html(ctx, conf_dir, source_dir):
+
+	html_resources(ctx)
+
+        build_dir = ctx.path.get_bld().relpath()
+        output_node = ctx.path.get_bld().make_node('html')
+        output_dir = output_node.abspath()
+
+	ctx(
+		rule         = "${BIN_SPHINX_BUILD} %s -b html -c %s -d build/%s/doctrees %s %s" % (sphinx_verbose(ctx), conf_dir, build_dir, source_dir, output_dir),
+		cwd          = ctx.path,
+		source       =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
+		target       = ctx.path.find_or_declare('html/index.html'),
+		install_path = None
+	)
+
+        ctx.install_files('${PREFIX}/%s' % (ctx.path.name),
+                          output_node.ant_glob('**/*'),
+                          cwd = output_node,
+                          relative_trick = True,
+                          quiet = True)
 
 def is_top_build(ctx):
         from_top = False
@@ -144,28 +198,6 @@ def build_dir_setup(ctx):
                 ctx.bldnode.make_node(where).mkdir()
         return where
 
-def html_resources(ctx):
-	for dir_name in ["_static", "_templates"]:
-		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
-                fnode = ctx.path.get_bld().make_node(os.path.join('html', dir_name))
-		fnode.mkdir() # dirs
-		ctx(
-			features = "subst",
-			is_copy  = True,
-			source   = files,
-			target   = [fnode.make_node(x.name) for x in files]
-		)
-
-	# copy images
-#	ctx.path.get_bld().make_node("images").mkdir()
-#	files = ctx.path.parent.ant_glob("images/**")
-#	ctx(
-#		features    = "subst",
-#		is_copy     = True,
-#		source      = files,
-#		target      = [x.srcpath().replace("../", "") for x in files]
-#	)
-
 def cmd_build(ctx, conf_dir = ".", source_dir = "."):
         build_dir_setup(ctx)
 
@@ -177,15 +209,7 @@ def cmd_build(ctx, conf_dir = ".", source_dir = "."):
 		html_resources(ctx)
 		doc_singlehtml(ctx, source_dir, conf_dir)
 	else:
-		html_resources(ctx)
-                build_dir = ctx.path.get_bld().relpath()
-                output_dir = os.path.join(ctx.path.get_bld().abspath(), 'html')
-		ctx(
-			rule   = "${BIN_SPHINX_BUILD} %s -b html -c %s -d build/%s/doctrees %s %s" % (sphinx_verbose(ctx), conf_dir, build_dir, source_dir, output_dir),
-			cwd	= ctx.path,
-			source =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
-			target = ctx.path.find_or_declare('html/index.html')
-		)
+		doc_html(ctx, source_dir, conf_dir)
 
 def cmd_options(ctx):
 	ctx.add_option('--sphinx-verbose', action='store', default="-Q", help="Sphinx verbose.")
