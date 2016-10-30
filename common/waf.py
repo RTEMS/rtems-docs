@@ -61,6 +61,8 @@ def check_sphinx_version(ctx, minver):
 
 	return ver
 
+def sphinx_verbose(ctx):
+        return ctx.options.sphinx_verbose
 
 def cmd_configure(ctx):
 	ctx.load('tex')
@@ -81,20 +83,23 @@ def doc_pdf(ctx, source_dir, conf_dir):
 	if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
 		ctx.fatal('The programs pdflatex and makeindex are required')
 
+        build_dir = ctx.path.get_bld().relpath()
+        output_dir = os.path.join(ctx.path.get_bld().abspath(), 'latex')
+
 	ctx(
-		rule	= "${BIN_SPHINX_BUILD} -b latex -c %s -j %d -d build/doctrees %s build/latex" % (conf_dir, ctx.options.jobs, source_dir),
-		cwd		= ctx.path,
-		source	= ctx.path.ant_glob('**/*.rst'),
-		target	= "latex/%s.tex" % ctx.path.name
+		rule   = "${BIN_SPHINX_BUILD} %s -b latex -c %s -d build/%s/doctrees %s %s" % (sphinx_verbose(ctx), conf_dir, build_dir, source_dir, output_dir),
+		cwd    = ctx.path,
+		source = ctx.path.ant_glob('**/*.rst'),
+		target = ctx.path.find_or_declare("latex/%s.tex" % (ctx.path.name))
 	)
 
 	ctx.add_group()
 
 	ctx(
 		features	= 'tex',
-		cwd		= "%s/latex/" % ctx.path.get_bld().abspath(),
+		cwd             = output_dir,
 		type		= 'pdflatex',
-		source		= ctx.bldnode.find_or_declare("latex/%s.tex" % ctx.path.name),
+		source		= "latex/%s.tex" % ctx.path.name,
 		prompt		= 0
 	)
 
@@ -117,17 +122,38 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
 		target	= "singlehtml/%s.html" % ctx.path.name
 	)
 
+def is_top_build(ctx):
+        from_top = False
+        if ctx.env['BUILD_FROM_TOP'] and ctx.env['BUILD_FROM_TOP'] == 'yes':
+                from_top = True
+        return from_top
+
+def build_type(ctx):
+        build_type = 'html'
+        if ctx.options.pdf:
+                build_type = 'pdf'
+        return build_type
+
+def build_dir_setup(ctx):
+        btype = build_type(ctx)
+        where = btype
+        if is_top_build(ctx):
+                where = os.path.join(ctx.path.name, where)
+        bnode = ctx.bldnode.find_node(where)
+        if bnode is None:
+                ctx.bldnode.make_node(where).mkdir()
+        return where
 
 def html_resources(ctx):
 	for dir_name in ["_static", "_templates"]:
 		files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
-		ctx.path.get_bld().make_node(dir_name).mkdir() # dirs
-
+                fnode = ctx.path.get_bld().make_node(os.path.join('html', dir_name))
+		fnode.mkdir() # dirs
 		ctx(
-			features    = "subst",
-			is_copy     = True,
-			source      = files,
-			target      = [ctx.bldnode.find_node(dir_name).get_bld().make_node(x.name) for x in files]
+			features = "subst",
+			is_copy  = True,
+			source   = files,
+			target   = [fnode.make_node(x.name) for x in files]
 		)
 
 	# copy images
@@ -140,10 +166,9 @@ def html_resources(ctx):
 #		target      = [x.srcpath().replace("../", "") for x in files]
 #	)
 
+def cmd_build(ctx, conf_dir = ".", source_dir = "."):
+        build_dir_setup(ctx)
 
-
-
-def cmd_build(ctx, conf_dir=".", source_dir="."):
 	srcnode = ctx.srcnode.abspath()
 
 	if ctx.options.pdf:
@@ -153,14 +178,17 @@ def cmd_build(ctx, conf_dir=".", source_dir="."):
 		doc_singlehtml(ctx, source_dir, conf_dir)
 	else:
 		html_resources(ctx)
+                build_dir = ctx.path.get_bld().relpath()
+                output_dir = os.path.join(ctx.path.get_bld().abspath(), 'html')
 		ctx(
-			rule   = "${BIN_SPHINX_BUILD} -b html -c %s -j %d -d build/doctrees %s build/html" % (conf_dir, ctx.options.jobs, source_dir),
+			rule   = "${BIN_SPHINX_BUILD} %s -b html -c %s -d build/%s/doctrees %s %s" % (sphinx_verbose(ctx), conf_dir, build_dir, source_dir, output_dir),
 			cwd	= ctx.path,
 			source =  ctx.path.ant_glob('**/*.rst'),# + ctx.path.ant_glob('conf.py'),
 			target = ctx.path.find_or_declare('html/index.html')
 		)
 
 def cmd_options(ctx):
+	ctx.add_option('--sphinx-verbose', action='store', default="-Q", help="Sphinx verbose.")
 	ctx.add_option('--pdf', action='store_true', default=False, help="Build PDF.")
 	ctx.add_option('--singlehtml', action='store_true', default=False, help="Build Single HTML file, requires Node Inliner")
 
