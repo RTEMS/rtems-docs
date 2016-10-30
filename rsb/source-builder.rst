@@ -67,6 +67,8 @@ by developers who do. Support is provided for package config or pkgconfg type
 files so you can check and use standard libraries if present. If you have a
 problem please ask on the RTEMS Users mailing list.
 
+.. comment: TBD: The section "Installing and Tar Files" does not exist.
+
 This documentation caters for a range of users from new to experienced RTEMS
 developers. New users can follow the Quick Start section up to the "Installing
 and Tar Files" to get a working tools and RTEMS. Users building a binary tool
@@ -107,7 +109,7 @@ difficult to manage in production systems.
 
 .. note:: Host Setup
     IMPORTANT: Before proceeding to the next section please refer to the
-    <<_host_setups,host specific setup>> for your host and install any extra
+    :ref:`Host Setups` for your host and install any extra
     packages. The RSB assumes the needed packages are installed and work.
 
 .. comment .Path to use when building applications
@@ -194,9 +196,9 @@ will need to check each tool to determine if this is an issue. An executable
 not in the standard location may indicate it is not the host operating system's
 standard tool. It maybe ok or it could be buggy, only you can determine this.
 
-The <<_host_setups,Host Setups>> section lists packages you should install for
-common host operating systems. It maybe worth checking if you have those
-installed.
+The :ref:`Host Setups` section lists packages you should install for
+common host operating systems. It maybe worth checking if you have
+those installed.
 
 Build Sets
 ~~~~~~~~~~
@@ -549,9 +551,9 @@ when building Canadian cross compiled tool sets.
     $ ls tar
     rtems-4.11-sparc-rtems4.11-1.tar.bz2
 
-* *<1>* The option to supressing installing the packages.
+- *<1>* The option to supressing installing the packages.
 
-* *<2>* Create the build set tar.
+- *<2>* Create the build set tar.
 
 A package tar file can be created by adding the ``--pkg-tar-files`` to the
 ``sb-set-builder`` command. This creates a tar file per package built in the
@@ -694,13 +696,13 @@ The generated report contains the command line, version of the RSB, your host's
 
 If for some reason there is no report please send please report the following:
 
-* Command line,
+- Command line,
 
-* The git hash,
+- The git hash,
 
-* Host details with the output of the ``uname -a`` command,
+- Host details with the output of the ``uname -a`` command,
 
-* If you have made any modifications.
+- If you have made any modifications.
 
 If there is a Python crash please cut and paste the Python backtrace
 into the bug report. If the tools fail to build please locate the first
@@ -1025,8 +1027,9 @@ the build triplet to the host you are building, the host triplet to the host
 the tools will run on and the target to the RTEMS architecture you require. The
 tools needed by the RSB are:
 
-* Build host C and C++ compiler
-* Host C and C++ cross compiler
+- Build host C and C++ compiler
+
+- Host C and C++ cross compiler
 
 The RTEMS Source Builder requires you provide the build host C and C++
 compiler and the final host C and C++ cross-compiler. The RSB will build the
@@ -1143,7 +1146,7 @@ header would give RTEMS user's access to the package's main functionality.
 
 A package requires 3 files to be created:
 
-* The first file is the RTEMS build set file and it resides in the
+- The first file is the RTEMS build set file and it resides in the
   ``$$rtems/config/%{rtems_version}$$`` path in a directory tree based on the
   FreeBSD ports collection. For the NTP package and RTEMS 4.11 this is
   ``rtems/config/4.11/net/ntp.bset``. If you do not know the FreeBSD port path
@@ -1152,7 +1155,7 @@ A package requires 3 files to be created:
   version of the package you are adding. Updating the package to a new version
   requires changing the build set to the new configuration file.
 
-* The second file is an RTEMS version specific configuration file
+- The second file is an RTEMS version specific configuration file
   and it includes the RSB RTEMS BSP support. These configuration
   files reside in the ``rtems/config`` tree again under the FreeBSD
   port's path name. For example the NTP package is found in the ``net``
@@ -1163,7 +1166,7 @@ A package requires 3 files to be created:
   configuration file references the build configuration file held in the
   common configuration file tree.
 
-* The build configuration. This is a common script that builds the package. It
+- The build configuration. This is a common script that builds the package. It
   resides in the ``source-builder/config`` directory and typically has the
   packages's name with the major version number. If the build script does not
   change for each major version number a *common* base script can be created
@@ -1394,9 +1397,9 @@ Configuration
 
 The RTEMS Source Builder has two types of configuration data:
 
-* Build Sets
+- Build Sets
 
-* Package Build Configurations
+- Package Build Configurations
 
 By default these files can be located in two separate directories and
 searched. The first directory is ``config`` in your current working
@@ -1517,13 +1520,17 @@ the repository via the URL by appending options and arguments to the GIT
 path. The options are delimited by ``?`` and option arguments are delimited from
 the options with ``=``. The options are:
 
-``protocol``:: Use a specific protocol. The supported values are *ssh*, *git*,
-*http*, *https*, *ftp*, *ftps*, *rsync*, and *none*.
-``branch``:: Checkout the specified branch.
-``pull``:: Perform a pull to update the repository.
-``fetch``:: Perform a fetch to get any remote updates.
-``reset``:: Reset the repository. Useful to remove any local changes. You can
-pass the ``hard`` argument to force a hard reset.
+- ``protocol``:: Use a specific protocol. The supported values are *ssh*,
+  *git*, *http*, *https*, *ftp*, *ftps*, *rsync*, and *none*.
+
+- ``branch``:: Checkout the specified branch.
+
+- ``pull``:: Perform a pull to update the repository.
+
+- ``fetch``:: Perform a fetch to get any remote updates.
+
+- ``reset``:: Reset the repository. Useful to remove any local
+  changes. You can pass the ``hard`` argument to force a hard reset.
 
 .. code-block: shell
 
@@ -1701,11 +1708,11 @@ Report Mailing
 The build reports can be mailed to a specific email address to logging and
 monitoring. Mailing requires a number of parameters to function. These are:
 
-* To mail address
+- To mail address
 
-* From mail address
+- From mail address
 
-* SMTP host
+- SMTP host
 
 .To Mail Address
 
@@ -1717,11 +1724,11 @@ with a personal or user macro file or via the command line option *--mail-to*.
 
 The ``from`` mail address is taken from:
 
-* GIT configuration
+- GIT configuration
 
-* User ``.mailrc`` file
+- User ``.mailrc`` file
 
-* Command line
+- Command line
 
 If you have configured an email and name in git it will be used used. If you do
 not a check is made for a ``.mailrc`` file. The environment variable *MAILRC* is
@@ -2164,8 +2171,8 @@ flexible way to use existing build sets and configuration without needing to
 change them or creating new temporary build sets and configurations.
 
 The process uses snapshot macro files loaded via the command line option
-``--macros``. These files provide macros that override the standard build set and
-configuration file macros.
+``--macros``. These files provide macros that override the standard
+build set and configuration file macros.
 
 Lets consider testing a GCC 4.7 snapshot for RTEMS 4.11. Lets assume the
 current RTEMS 4.11 tools reference GCC 4.7.3 with a patch as the stable tool
@@ -3174,6 +3181,8 @@ file. Configuration files have the extension of +.cfg+.
     --with-<label>         : Add the --with-<label> to the build
     --without-<label>      : Add the --without-<label> to the build
     --list-configs         : List available configurations
+
+.. _Host Setups:
 
 Host Setups
 ###########
