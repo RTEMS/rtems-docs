@@ -37,6 +37,10 @@ and administer tasks.  The directives provided by the task manager are:
 
 - rtems_task_mode_ - Change current task's mode
 
+- rtems_task_get_note_ - Get task notepad entry 
+
+- rtems_task_set_note_ - Set task notepad entry 
+
 - rtems_task_wake_after_ - Wake up after interval
 
 - rtems_task_wake_when_ - Wake up when specified
@@ -525,6 +529,18 @@ preemption, timeslicing, ASR processing, and to set the task's interrupt level.
 
 The ``rtems_task_restart`` directive resets the mode of a task to its original
 value.
+
+Notepad Locations
+-----------------
+
+RTEMS provides sixteen notepad locations for each task.  Each notepad
+location may contain a note consisting of four bytes of information.
+RTEMS provides two directives, ``rtems_task_set_note`` and
+``rtems_task_get_note``, that enable a user to access and change
+the notepad locations.  The ``rtems_task_set_note`` directive
+enables the user to set a task's notepad entry to a specified note.
+The ``rtems_task_get_note`` directive allows the user to obtain the note
+contained in any one of the sixteen notepads of a specified task.
 
 Task Deletion
 -------------
@@ -1240,6 +1256,104 @@ provided in the following table:
    - is masked by ``RTEMS_INTERRUPT_MASK`` and enables all interrupts
  * - ``RTEMS_INTERRUPT_LEVEL(n)``
    - is masked by ``RTEMS_INTERRUPT_MASK`` and sets interrupts level n
+
+.. _rtems_task_get_note:
+
+TASK_GET_NOTE - Get task notepad entry
+--------------------------------------
+.. index:: get task notepad entry
+
+**CALLING SEQUENCE:**
+
+.. index:: rtems_task_get_note
+
+.. code-block:: c
+
+    rtems_status_code rtems_task_get_note(
+      rtems_id  id,
+      uint32_t  notepad,
+      uint32_t *note
+    );
+
+**DIRECTIVE STATUS CODES:**
+
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - note value obtained successfully
+ * - ``RTEMS_INVALID_ADDRESS``
+   - ``note`` parameter is NULL
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_INVALID_NUMBER``
+   - invalid notepad location
+
+**DESCRIPTION:**
+
+This directive returns the note contained in the notepad location of
+the task specified by id.
+
+**NOTES:**
+
+This directive will not cause the running task to be preempted.
+
+If id is set to ``RTEMS_SELF``, the calling task accesses its own notepad.
+
+The sixteen notepad locations can be accessed using the constants
+``RTEMS_NOTEPAD_0`` through ``RTEMS_NOTEPAD_15``.
+
+Getting a note of a global task which does not reside on the
+local node will generate a request to the remote node to obtain
+the notepad entry of the specified task.
+
+.. _rtems_task_set_note:
+
+TASK_SET_NOTE - Set task notepad entry
+--------------------------------------
+.. index:: set task notepad entry
+
+**CALLING SEQUENCE:**
+
+.. index:: rtems_task_set_note
+
+.. code-block:: c
+
+    rtems_status_code rtems_task_set_note(
+      rtems_id  id,
+      uint32_t  notepad,
+      uint32_t  note
+    );
+
+**DIRECTIVE STATUS CODES:**
+
+.. list-table::
+ :class: rtems-table
+
+ * - ``RTEMS_SUCCESSFUL``
+   - note set successfully
+ * - ``RTEMS_INVALID_ID``
+   - invalid task id
+ * - ``RTEMS_INVALID_NUMBER``
+   - invalid notepad location
+
+**DESCRIPTION:**
+
+This directive sets the notepad entry for the task specified by
+id to the value note.
+
+**NOTES:**
+
+If ``id`` is set to ``RTEMS_SELF``, the calling task accesses its own notepad.
+
+This directive will not cause the running task to be preempted.
+
+The sixteen notepad locations can be accessed using the constants
+``RTEMS_NOTEPAD_0`` through ``RTEMS_NOTEPAD_15``.
+
+Setting a note of a global task which does not reside on the
+local node will generate a request to the remote node to set
+the notepad entry of the specified task.
 
 .. _rtems_task_wake_after:
 
