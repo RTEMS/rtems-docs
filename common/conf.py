@@ -29,7 +29,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RTEMS Documentation Project'
-copyright = u'2016, RTEMS Projecti (built %s)' % (datetime.date.today().strftime('%d %b %Y'))
+copyright = u'2016, RTEMS Project (built %s)' % (datetime.date.today().strftime('%d %b %Y'))
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -178,8 +178,9 @@ latex_elements = {
     'papersize':    'a4paper',
     'pointsize':    '11pt',
     'preamble':     r'''
+\newcommand{\rtemscopyright}{%s}
 \usepackage{rtemsstyle}
-'''
+''' % (copyright)
 }
 
 
