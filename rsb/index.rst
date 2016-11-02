@@ -36,6 +36,14 @@ to the Community Project hosted at http://www.rtems.org/.
 	:numbered:
 
         source-builder
+	quick-start
+	hosts
+	project-sets
+	cross-canadian-cross
+	third-party-packages
+	configuration
+	commands
+	bug-reporting
 
 *	:ref:`genindex`
 *	:ref:`search`
