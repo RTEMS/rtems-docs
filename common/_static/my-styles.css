@@ -34,7 +34,7 @@
  */
 .rst-content code.literal {
     background: transparent;
-    color: #77AD4A;
+    color: #2a8e1d;
     border: 0px;
 }
 
@@ -56,11 +56,15 @@ table.rtems-table.docutils td {
  * Notes.
  */
 .rst-content .note .admonition-title {
-    background-color: #38532F;
+    background-color: rgba(66, 97, 55, 0.98);
     color: #fdfdfd;
 }
 .admonition.note {
-    background:#dbe5c6;
+    background: #dbe5c6;
+    color: #333333;
+}
+.admonition.note .highlight {
+    background: rgba(219, 229, 198, 0.54);
     color: #333333;
 }
 
@@ -68,23 +72,41 @@ table.rtems-table.docutils td {
  * Todo
  */
 .rst-content .todo .admonition-title {
-    background-color: #38532F;
+    background-color: rgba(66, 97, 55, 0.98);
     color: #fdfdfd;
 }
 .admonition.todo {
-    background:#dbe5c6;
+    background: #dbe5c6;
     color: #333333;
+}
+
+/*
+ * Topic
+ */
+.topic .topic-title {
+    background: rgba(231, 242, 209, 0.33);
+    /*background-color: #dbe5c6;*/
+    color: #38532F;
+}
+.topic {
+    background: rgba(231, 242, 209, 0.2);
+    color: #4040408;
+    border: 1px solid rgba(231, 242, 209, 0.33);
+}
+.topic .highlight pre {
+    background: rgba(231, 242, 209, 0.2);
+    color: #4040408;
 }
 
 /*
  * Warning
  */
 .rst-content .warning .admonition-title {
-    background-color: #38532F;
+    background-color: rgba(66, 97, 55, 0.98);
     color: #ef6d6d;
 }
 .admonition.warning {
-    background:#dbe5c6;
+    background: #dbe5c6;
     color: #333333;
 }
 
@@ -169,7 +191,7 @@ table.rtems-table.docutils td {
 }
 
 .wy-nav-content a {
-    color: #77AD4A;
+    color: #2a8e1d;
 }
 
 .wy-nav-content a:hover {
