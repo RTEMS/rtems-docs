@@ -149,7 +149,7 @@ Clock Tick Device Driver
 ------------------------
 
 Most RTEMS applications will include a clock tick device driver which invokes
-the ``rtems_clock_tick`` directive at regular intervals.  The clock tick is
+a clock tick directive at regular intervals.  The clock tick is
 necessary if the application is to utilize timeslicing, the clock manager, the
 timer manager, the rate monotonic manager, or the timeout option on blocking
 directives.
@@ -163,7 +163,7 @@ overhead required to manipulate the counter/timer in the clock tick ISR and
 increases the accuracy of tick occurrences.  The initial count can be based on
 the microseconds_per_tick field in the RTEMS Configuration Table.  An alternate
 approach is to set the initial count for a fixed time period (such as one
-millisecond) and have the ISR invoke ``rtems_clock_tick`` on the configured
+millisecond) and have the ISR invoke a clock tick directive on the configured
 ``microseconds_per_tick`` boundaries.  Obviously, this can induce some error if
 the configured ``microseconds_per_tick`` is not evenly divisible by the chosen
 clock interrupt quantum.

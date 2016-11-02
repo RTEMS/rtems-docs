@@ -48,10 +48,10 @@ Timers
 
 A timer is an RTEMS object which allows the application to schedule operations
 to occur at specific times in the future.  User supplied timer service routines
-are invoked by either the ``rtems_clock_tick`` directive or a special Timer
+are invoked by either a clock tick directive or a special Timer
 Server task when the timer fires.  Timer service routines may perform any
 operations or directives which normally would be performed by the application
-code which invoked the ``rtems_clock_tick`` directive.
+code which invoked a clock tick directive.
 
 The timer can be used to implement watchdog routines which only fire to denote
 that an application error has occurred.  The timer is reset at specific points
@@ -129,7 +129,7 @@ Initiating an Interval Timer
 The ``rtems_timer_fire_after`` and ``rtems_timer_server_fire_after`` directives
 initiate a timer to fire a user provided timer service routine after the
 specified number of clock ticks have elapsed.  When the interval has elapsed,
-the timer service routine will be invoked from the ``rtems_clock_tick``
+the timer service routine will be invoked from a clock tick
 directive if it was initiated by the ``rtems_timer_fire_after`` directive and
 from the Timer Server task if initiated by the
 ``rtems_timer_server_fire_after`` directive.
@@ -140,7 +140,7 @@ Initiating a Time of Day Timer
 The ``rtems_timer_fire_when`` and ``rtems_timer_server_fire_when`` directive
 initiate a timer to fire a user provided timer service routine when the
 specified time of day has been reached.  When the interval has elapsed, the
-timer service routine will be invoked from the ``rtems_clock_tick`` directive
+timer service routine will be invoked from a clock tick directive
 by the ``rtems_timer_fire_when`` directive and from the Timer Server task if
 initiated by the ``rtems_timer_server_fire_when`` directive.
 

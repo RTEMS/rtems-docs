@@ -195,8 +195,9 @@ is a list of RTEMS system calls that may be made from an ISR:
   - rtems_clock_get_ticks_per_second
   - rtems_clock_get_ticks_since_boot
   - rtems_clock_get_uptime
-  - rtems_clock_set_nanoseconds_extension
-  - rtems_clock_tick
+  - rtems_timecounter_tick
+  - rtems_timecounter_simple_downcounter_tick
+  - rtems_timecounter_simple_upcounter_tick
 
 - Timer Management
 

@@ -673,8 +673,8 @@ Glossary
 
 :dfn:`tick`
     The basic unit of time used by RTEMS.  It is a user-configurable number of
-    microseconds.  The current tick expires when the ``rtems_clock_tick``
-    directive is invoked.
+    microseconds.  The current tick expires when a clock tick directive is
+    invoked.
 
 :dfn:`tightly-coupled`
     A multiprocessor configuration system which communicates via shared memory.

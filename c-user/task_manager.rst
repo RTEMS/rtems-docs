@@ -1384,7 +1384,7 @@ TASK_WAKE_AFTER - Wake up after interval
 
 This directive blocks the calling task for the specified number of system clock
 ticks.  When the requested interval has elapsed, the task is made ready.  The
-``rtems_clock_tick`` directive automatically updates the delay period.
+clock tick directives automatically updates the delay period.
 
 **NOTES:**
 

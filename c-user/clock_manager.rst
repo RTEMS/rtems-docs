@@ -44,10 +44,6 @@ the clock manager are:
 
 - rtems_clock_get_uptime_nanoseconds_ - Get nanoseconds since boot
 
-- rtems_clock_set_nanoseconds_extension_ - Install the nanoseconds since last tick handler
-
-- rtems_clock_tick_ - Announce a clock tick
-
 Background
 ==========
 
@@ -56,7 +52,7 @@ Required Support
 
 For the features provided by the clock manager to be utilized, periodic timer
 interrupts are required.  Therefore, a real-time clock or hardware timer is
-necessary to create the timer interrupts.  The ``rtems_clock_tick`` directive
+necessary to create the timer interrupts.  The clock tick directive
 is normally called by the timer ISR to announce to RTEMS that a system clock
 tick has occurred.  Elapsed time is measured in ticks.  A tick is defined to be
 an integral number of microseconds which is specified by the user in the
@@ -113,7 +109,7 @@ The system's timeslice is defined as an integral number of ticks, and is
 specified in the Configuration Table.  The timeslice is defined for the entire
 system of tasks, but timeslicing is enabled and disabled on a per task basis.
 
-The ``rtems_clock_tick`` directive implements timeslicing by decrementing the
+The clock tick directives implement timeslicing by decrementing the
 running task's time-remaining counter when both timeslicing and preemption are
 enabled.  If the task's timeslice has expired, then that task will be preempted
 if there exists a ready task of equal priority.
@@ -145,17 +141,19 @@ Operations
 Announcing a Tick
 -----------------
 
-RTEMS provides the ``rtems_clock_tick`` directive which is called from the
-user's real-time clock ISR to inform RTEMS that a tick has elapsed.  The tick
-frequency value, defined in microseconds, is a configuration parameter found in
-the Configuration Table.  RTEMS divides one million microseconds (one second)
-by the number of microseconds per tick to determine the number of calls to the
-``rtems_clock_tick`` directive per second.  The frequency of
-``rtems_clock_tick`` calls determines the resolution (granularity) for all time
-dependent RTEMS actions.  For example, calling ``rtems_clock_tick`` ten times
-per second yields a higher resolution than calling ``rtems_clock_tick`` two
-times per second.  The ``rtems_clock_tick`` directive is responsible for
-maintaining both calendar time and the dynamic set of timers.
+RTEMS provides the several clock tick directives which are called from the
+user's real-time clock ISR to inform RTEMS that a tick has elapsed.  Depending
+on the timer hardware capabilities the clock driver must choose the most
+appropriate clock tick directive.  The tick frequency value, defined in
+microseconds, is a configuration parameter found in the Configuration Table.
+RTEMS divides one million microseconds (one second) by the number of
+microseconds per tick to determine the number of calls to the clock tick
+directive per second.  The frequency of clock tick calls determines the
+resolution (granularity) for all time dependent RTEMS actions.  For example,
+calling the clock tick directive ten times per second yields a higher
+resolution than calling the clock tick two times per second.  The clock tick
+directives are responsible for maintaining both calendar time and the dynamic
+set of timers.
 
 Setting the Time
 ----------------
@@ -725,83 +723,3 @@ This directive returns the nanoseconds since the system was booted.
 **NOTES:**
 
 This directive may be called from an ISR.
-
-.. _rtems_clock_set_nanoseconds_extension:
-
-CLOCK_SET_NANOSECONDS_EXTENSION - Install the nanoseconds since last tick handler
----------------------------------------------------------------------------------
-.. index:: clock set nanoseconds extension
-.. index:: nanoseconds extension
-.. index:: nanoseconds time accuracy
-
-**CALLING SEQUENCE:**
-
-.. index:: rtems_clock_set_nanoseconds_extension
-
-.. code-block:: c
-
-    rtems_status_code rtems_clock_set_nanoseconds_extension(
-        rtems_nanoseconds_extension_routine routine
-    );
-
-**DIRECTIVE STATUS CODES:**
-
-``RTEMS_SUCCESSFUL``
-  clock tick processed successfully
-
-``RTEMS_INVALID_ADDRESS``
-  ``time_buffer`` is NULL
-
-**DESCRIPTION:**
-
-This directive is used by the Clock device driver to install the ``routine``
-which will be invoked by the internal RTEMS method used to obtain a highly
-accurate time of day.  It is usually called during the initialization of the
-driver.
-
-When the ``routine`` is invoked, it will determine the number of nanoseconds
-which have elapsed since the last invocation of the ``rtems_clock_tick``
-directive.  It should do this as quickly as possible with as little impact as
-possible on the device used as a clock source.
-
-**NOTES:**
-
-This directive may be called from an ISR.
-
-This directive is called as part of every service to obtain the current date
-and time as well as timestamps.
-
-.. _rtems_clock_tick:
-
-CLOCK_TICK - Announce a clock tick
-----------------------------------
-.. index:: clock tick
-
-**CALLING SEQUENCE:**
-
-.. index:: rtems_clock_tick
-
-.. code-block:: c
-
-    rtems_status_code rtems_clock_tick( void );
-
-**DIRECTIVE STATUS CODES:**
-
-``RTEMS_SUCCESSFUL``
-  clock tick processed successfully
-
-**DESCRIPTION:**
-
-This directive announces to RTEMS that a system clock tick has occurred.  The
-directive is usually called from the timer interrupt ISR of the local
-processor.  This directive maintains the system date and time, decrements
-timers for delayed tasks, timeouts, rate monotonic periods, and implements
-timeslicing.
-
-**NOTES:**
-
-This directive is typically called from an ISR.
-
-The ``microseconds_per_tick`` and ``ticks_per_timeslice`` parameters in the
-Configuration Table contain the number of microseconds per tick and number of
-ticks per timeslice, respectively.

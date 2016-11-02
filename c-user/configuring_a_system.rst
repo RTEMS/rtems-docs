@@ -4481,7 +4481,7 @@ wishes to include the Clock Device Driver.
 **NOTES:**
 
 This device driver is responsible for providing a regular interrupt which
-invokes the ``rtems_clock_tick`` directive.
+invokes a clock tick directive.
 
 If neither the Clock Driver not Benchmark Timer is enabled and the
 configuration parameter ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is
