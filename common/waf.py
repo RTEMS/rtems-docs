@@ -62,7 +62,7 @@ def check_sphinx_version(ctx, minver):
 	return ver
 
 def sphinx_verbose(ctx):
-        return ctx.options.sphinx_verbose
+        return ' '.join(ctx.env.SPHINX_VERBOSE)
 
 def cmd_configure(ctx):
 	ctx.load('tex')
@@ -75,9 +75,15 @@ def cmd_configure(ctx):
 
 	ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
 	ver = check_sphinx_version(ctx, sphinx_min_version)
-
 	ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
 
+        ctx.start_msg("Sphinx Verbose: ")
+        if 'SPHINX_VERBOSE' not in ctx.env:
+                ctx.env.append_value('SPHINX_VERBOSE', ctx.options.sphinx_verbose)
+        level = sphinx_verbose(ctx)
+        if level == '-Q':
+                level = 'quiet'
+        ctx.end_msg(level)
 
 def html_resources(ctx):
 	for dir_name in ["_static", "_templates"]:
