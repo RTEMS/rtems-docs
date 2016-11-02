@@ -6,7 +6,7 @@
 .. _Configuration:
 
 Configuration
-#############
+=============
 
 The RTEMS Source Builder has two types of configuration data:
 
@@ -46,7 +46,7 @@ character. Anything after this character on the line is ignored. There is no
 block comment.
 
 Source and Patches
-~~~~~~~~~~~~~~~~~~
+------------------
 
 The RTEMS Source Builder provides a flexible way to manage source. Source and
 patches are declare in configurations file using the ``source`` and ``patch``
@@ -76,7 +76,7 @@ following schemes are provided:
  Local access to an existing source directory.
 
 HTTP, HTTPS, and FTP
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Remote access to TAR or ZIP files is provided using HTTP, HTTPS and FTP
 protocols. The full URL provided is used to access the remote file including
@@ -139,7 +139,7 @@ STLINK project on GitHub and version is:
     %source set stlink https://api.github.com/repos/texane/stlink/texane-stlink-%{stlink_version}.tar.gz
 
 GIT
-^^^
+~~~
 
 A GIT repository can be cloned and used as source. The GIT repository resides
 in the 'source' directory under the ``git`` directory. You can edit, update and
@@ -183,7 +183,7 @@ used by the RSB to select a git repository can be removed using *none* or
 replaced with one of the standard git protcols.
 
 CVS
-^^^
+~~~
 
 A CVS repository can be checked out. CVS is more complex than GIT to handle
 because of the modules support. This can effect the paths the source ends up
@@ -211,7 +211,7 @@ The following is an example of checking out from a CVS repository:
     %source set newlib cvs://pserver:anoncvs@sourceware.org/cvs/src?module=newlib?src-prefix=src
 
 Macros and Defaults
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 The RTEMS Source Builder uses tables of *macros* read in when the tool
 runs. The initial global set of macros is called the *defaults*. These values
@@ -242,7 +242,7 @@ as part of the same build set and configuration and changes are global to that
 build set and configuration.
 
 Macro Maps and Files
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Macros are read in from files when the tool starts. The default settings are
 read from the defaults macro file called ``defaults.mc`` located in the top
@@ -339,7 +339,7 @@ The macro map defaults to ``global`` at the start of each included file and the
 map setting of the macro file including the other macro files does not change.
 
 Personal Macros
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 When the tools start to run they will load personal macros. Personal macros are
 in the standard format for macros in a file. There are two places personal
@@ -350,7 +350,7 @@ directory. You need to have the environment variable ``HOME`` defined for this
 work.
 
 Report Mailing
-~~~~~~~~~~~~~~
+--------------
 
 The build reports can be mailed to a specific email address to logging and
 monitoring. Mailing requires a number of parameters to function. These are:
@@ -393,7 +393,7 @@ default is ``localhost``. You can override the default with a personal
 or user macro file or via the command line option ``--smtp-host``.
 
 Build Set Files
-~~~~~~~~~~~~~~~
+---------------
 
 Build set files lets you list the packages in the build set you are defining
 and have a file extension of ``.bset``. Build sets can define macro variables,
@@ -426,7 +426,7 @@ package configuration the package is built with the package builder. This all
 happens once the build set file has finished being scanned.
 
 Configuration Control
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 The RTEMS Souce Builder is designed to fit within most verification and
 validation processes. All of the RTEMS Source Builder is source code. The
@@ -477,7 +477,7 @@ the earlier revision number will not be effected by the change. This locks down
 a specific configuration over time.
 
 Personal Configurations
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 The RSB supports personal configurations. You can view the RTEMS support in the
 ``rtems`` directory as a private configuration tree that resides within the RSB
@@ -497,7 +497,7 @@ build set file. The section 'Adding New Configurations' details how to add a
 new confguration.
 
 New Configurations
-~~~~~~~~~~~~~~~~~~
+------------------
 
 This section describes how to add a new configuration to the RSB. We will add a
 configuration to build the Device Tree Compiler. The Device Tree Compiler or
@@ -510,7 +510,7 @@ DTC is supported in the RSB and you can find the configuration files under the
 ``bare/config`` tree. I suggest you have a brief look over these files.
 
 Layering by Including
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Configurations can be layered using the ``%include`` directive. The user
 invokes the outer layers which include inner layers until all the required
@@ -521,7 +521,7 @@ release to another. Macro variables are used to provide the specific
 configuration details.
 
 Configuration File Numbering
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Configuration files have a number at the end. This is a release number for that
 configuration and it gives us the ability to track a specific configuration for
@@ -536,7 +536,7 @@ configuration file between version 1.1.0 and version 1.2.0. An update to any
 previous release lets us still build the package.
 
 Common Configuration Scripts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Common configuration scripts that are independent of version, platform and
 architecture are useful to everyone. These live in the Source Builder's
@@ -547,7 +547,7 @@ built. They expect to be wrapped by a configuration file that ties the package
 to a specific version and optionally specific patches.
 
 DTC Example
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 We will be building the DTC for your host rather than a package for RTEMS. We
 will create a file called ``source-builder/config/dtc-1-1.cfg``. This is a
@@ -755,7 +755,7 @@ The command also supplies the ``--trace`` option. The output in the log file
 will contian all the macros.
 
 Debugging
-^^^^^^^^^
+~~~~~~~~~
 
 New configuration files require debugging. There are two types of
 debugging. The first is debugging RSB script bugs. The ``--dry-run`` option is
@@ -773,7 +773,7 @@ and change directory into them and manually run commands until to figure what
 the package requires.
 
 Scripting
-~~~~~~~~~
+---------
 
 Configuration files specify how to build a package. Configuration files are
 scripts and have a ``.cfg`` file extension. The script format is based loosely
@@ -876,7 +876,7 @@ The script language is implemented in terms of macros. The built-in list is:
   command line option.
 
 Expanding
-^^^^^^^^^
+~~~~~~~~~
 
 A macro can be ``%{string}`` or the equivalent of ``%string``. The following macro
 expansions supported are:
@@ -918,7 +918,7 @@ expansions supported are:
 .. _prep:
 
 %prep
-^^^^^
+~~~~~
 
 The +%prep+ macro starts a block that continues until the next block macro. The
 *prep* or preparation block defines the setup of the package's source and is a
@@ -1011,7 +1011,7 @@ To apply these patches::
 .. _build:
 
 %build
-^^^^^^
+~~~~~~
 
 The ``%build`` macro starts a block that continues until the next block
 macro. The build block is a series of shell commands that execute to build the
@@ -1074,7 +1074,7 @@ a JTAG debugging device for the ST ARM family of processors::
      has.
 
 %install
-^^^^^^^^
+~~~~~~~~
 
 The ``%install`` macro starts a block that continues until the next block
 macro. The install block is a series of shell commands that execute to install
@@ -1113,7 +1113,7 @@ Looking at the same example as in :ref:`build`::
      make variable.
 
 %clean
-^^^^^^
+~~~~~~
 
 The ``%clean`` macro starts a block that continues until the next block
 macro. The clean block is a series of shell commands that execute to clean up
@@ -1121,7 +1121,7 @@ after a package has been built and install. This macro is currenly not been
 used because the RTEMS Source Builder automatically cleans up.
 
 %include
-^^^^^^^^
+~~~~~~~~
 
 The ``%include`` macro inline includes the specific file. The ``__confdir``
 path is searched. Any relative path component of the include file is appended
@@ -1140,7 +1140,7 @@ builds the package::
     %include %{_configdir}/gcc-4.7-1.cfg
 
 %name
-^^^^^
+~~~~~
 
 The name of the package being built. The name typically contains the components
 of the package and their version number plus a revision number. For the GCC
@@ -1149,7 +1149,7 @@ with Newlib configuration the name is typically::
     Name: %{_target}-gcc-%{gcc_version}-newlib-%{newlib_version}-%{release}
 
 %summary
-^^^^^^^^
+~~~~~~~~
 
 The ``%summary`` is a brief description of the package. It is useful when
 reporting. This information is not capture in the package anywhere. For the GCC
@@ -1158,7 +1158,7 @@ with Newlib configuration the summary is typically::
     Summary: GCC v%{gcc_version} and Newlib v%{newlib_version} for target %{_target} on host %{_host}
 
 %release
-^^^^^^^^
+~~~~~~~~
 
 The ``%release`` is packaging number that allows revisions of a package to
 happen where none package versions change. This value typically increases when
@@ -1167,7 +1167,7 @@ the configuration building the package changes::
     %define release 1
 
 %version
-^^^^^^^^
+~~~~~~~~
 
 The ``%version`` macro sets the version the package. If the package is a single
 component it tracks that component's version number. For example in the
@@ -1178,7 +1178,7 @@ number. In this case the GCC version is used::
     Version: %{gcc_version}
 
 %buildarch
-^^^^^^^^^^
+~~~~~~~~~~
 
 The ``%buildarch`` macro is set to the architecture the package contains. This
 is currently not used in the RTEMS Source Builder and may go away. This macro
@@ -1186,7 +1186,7 @@ is more important in a real packaging system where the package could end up on
 the wrong architecture.
 
 %source
-^^^^^^^
+~~~~~~~
 
 The ``%source`` macro has 3 commands that controls what it does. You can
 ``set`` the source files, ``add`` source files to a source group, and ``setup``
@@ -1255,7 +1255,7 @@ Accepted options are:
   the build directory.
 
 %patch
-^^^^^^
+~~~~~~
 
 The ``%patch`` macro has the same 3 command as the ``%source`` command however
 the ``set`` commands is not really that useful with the with command. You add
@@ -1291,7 +1291,7 @@ patches::
   2. The default option used to apply the patch.
 
 %hash
-^^^^^
+~~~~~
 
 The ``%hash`` macro requires 3 arguments and defines a checksum for a specific
 file. The checksum is not applied until the file is checked before downloading
@@ -1324,25 +1324,25 @@ Downloading of repositories such as git and cvs cannot be checksumed. It is
 assumed those protocols and tools manage the state of the files.
 
 %echo
-^^^^^
+~~~~~
 
 The ``%echo`` macro outputs the following string to stdout. This can also be used
 as ``%{echo: message}``.
 
 %warning
-^^^^^^^^
+~~~~~~~~
 
 The ``%warning`` macro outputs the following string as a warning. This can also
 be used as ``%{warning: message}``.
 
 %error
-^^^^^^
+~~~~~~
 
 The ``%error`` macro outputs the follow string as an error and exits the RTEMS
 Source Builder. This can also be used as ``%{error: message}``.
 
 %select
-^^^^^^^
+~~~~~~~
 
 The ``%select`` macro selects the map specified. If there is no map no error or
 warning is generated. Macro maps provide a simple way for a user to override
@@ -1365,7 +1365,7 @@ The default map is ``global``::
   2. Defining macros only updates the ``global`` map and not the selected map.
 
 %define
-^^^^^^^
+~~~~~~~
 
 The ``%define`` macro defines a new macro or updates an existing one. If no
 value is given it is assumed to be ``1``::
@@ -1379,13 +1379,13 @@ value is given it is assumed to be ``1``::
   1. The macro _one_ is set to 1.
 
 %undefine
-^^^^^^^^^
+~~~~~~~~~
 
 The ``%undefine`` macro removes a macro if it exists. Any further references to
 it will result in an undefine macro error.
 
 %if
-^^^
+~~~
 
 The ``%if`` macro starts a conditional logic block that can optionally have a
 *else* section. A test follows this macro and can have the following operators:
@@ -1462,7 +1462,7 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
       right hand side.
 
 %ifn
-^^^^
+~~~~
 
 The ``%ifn`` macro inverts the normal ``%if`` logic. It avoids needing to provide
 empty *if* blocks followed by *else* blocks. It is useful when checking if a
@@ -1473,42 +1473,42 @@ macro is defined::
     %endif
 
 %ifarch
-^^^^^^^
+~~~~~~~
 
 The ``%ifarch`` is a short cut for ``%if %{_arch} == i386``. Currently not used.
 
 %ifnarch
-^^^^^^^^
+~~~~~~~~
 
 The ``%ifnarch`` is a short cut for ``%if %{_arch} != i386``. Currently not
 used.
 
 %ifos
-^^^^^
+~~~~~
 
 The ``%ifos`` is a short cut for ``%if %{_os} != mingw32``. It allows
 conditional support for various operating system differences when building
 packages.
 
 %else
-^^^^^
+~~~~~
 
 The ``%else`` macro starts the conditional *else* block.
 
 %endfi
-^^^^^^
+~~~~~~
 
 The ``%endif`` macro ends a conditional logic block.
 
 %bconf_with
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 The ``%bconf_with`` macro provides a way to test if the user has passed a
 specific option on the command line with the ``--with-<label>`` option. This
 option is only available with the ``sb-builder`` command.
 
 %bconf_without
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 The ``%bconf_without`` macro provides a way to test if the user has passed a
 specific option on the command line with the ``--without-<label>`` option. This

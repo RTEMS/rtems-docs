@@ -1,8 +1,16 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-====================
-RTEMS Source Builder
-====================
+.. comment Heading
+.. comment  1  ======
+.. comment  2  ------
+.. comment  3  ~~~~~~
+.. comment  4  ^^^^^^
+
+.. highlight:: shell
+
+==============================
+RTEMS |version| Source Builder
+==============================
 
  | COPYRIGHT (c) 2012 - 2016.
  | Chris Johns <chrisj@rtems.org>
@@ -30,6 +38,9 @@ to the Community Project hosted at http://www.rtems.org/.
   Mailing Lists     https://lists.rtems.org/
   Git Repositories  https://git.rtems.org/
   ================  =============================
+
+Table of Contents
+-----------------
 
 .. toctree::
 	:maxdepth: 5

@@ -6,7 +6,7 @@
 .. _Bugs, Crashes, and Build Failures:
 
 Bugs, Crashes, and Build Failures
-#################################
+=================================
 
 The RTEMS Source Builder is a Python program and every care is taken to test
 the code however bugs, crashes, and build failures can and do happen. If you
@@ -50,7 +50,7 @@ error should be just above it.
 .. _Contributing:
 
 Contributing
-############
+============
 
 We welcome all users adding, fixing, updating and upgrading packages and their
 configurations. The RSB is open source and open to contributions. These can be

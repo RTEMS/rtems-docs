@@ -4,7 +4,7 @@
 .. comment Chris Johns <chrisj@rtems.org>
 
 Project Sets
-############
+============
 
 The RTEMS Source Builder supports project configurations. Project
 configurations can be public or private and can be contained in the RTEMS
@@ -31,7 +31,7 @@ use of them. If you add new generic configurations please contribute them back
 to the project
 
 Bare Metal
-~~~~~~~~~~
+----------
 
 The RSB contains a 'bare' configuration tree and you can use this to add
 packages you use on the hosts. For example 'qemu' is supported on a range of
@@ -72,7 +72,7 @@ you would use `sparc-elf`::
     cleaning: arm-eabihf-gdb-7.7-1
 
 RTEMS
-~~~~~
+-----
 
 The RTEMS Configurations found in the ``rtems`` directory. The configurations
 are grouped by RTEMS version. In RTEMS the tools are specific to a specific
@@ -136,7 +136,7 @@ and the following uses the version control heads for ``binutils``, ``gcc``,
        4.11/rtems-sparc
 
 Patches
-~~~~~~~
+-------
 
 Packages being built by the RSB need patches from time to time and the RSB
 supports patching upstream packages. The patches are held in a seperate

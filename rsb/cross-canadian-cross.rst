@@ -4,7 +4,7 @@
 .. comment Chris Johns <chrisj@rtems.org>
 
 Cross and Canadian Cross Building
-#################################
+=================================
 
 Cross building and Canadian Cross building is the process of building on one
 machine an executable that runs on another machine. An example is building a
@@ -14,7 +14,7 @@ and Canadian cross building.
 This sections details how to the RSB to cross and Canadian cross build.
 
 Cross Building
-~~~~~~~~~~~~~~
+--------------
 
 Cross building is where the _build_ machine and _host_ are different. The
 _build_ machine runs the RSB and the _host_ machine is where the output from
@@ -46,7 +46,7 @@ To build the NTP package for RTEMS you enter the RSB command::
   'bin' directory at the end of the path.
 
 Canadian Cross Building
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 A Canadian cross builds are where the **build**, **host** and **target**
 machines all differ. For example building an RTEMS compiler for an ARM

@@ -4,7 +4,7 @@
 .. comment Chris Johns <chrisj@rtems.org>
 
 RTEMS 3rd Party Packages
-########################
+========================
 
 This section describes how to build and add an RTEMS 3rd party package to the
 RSB.
@@ -22,7 +22,7 @@ in the RTEMS build system. If you have any issues with this support please ask
 on the RTEMS developers mailing list.
 
 Vertical Integration
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 The RSB supports horizontal integration with support for multiple
 architectures. Adding packages to the RSB as libraries is vertical
@@ -31,7 +31,7 @@ you build a compiler. The same can be done for 3rd party libraries, you can
 crate build sets that stack library dependences vertically to create a *stack*.
 
 Building
-~~~~~~~~
+--------
 
 To build a package you need to have a suitable RTEMS tool chain and RTEMS BSP
 installed. The set builder command line requires you provide the tools path,
@@ -57,7 +57,7 @@ To build Net-SNMP the command is:
     Build Set: Time 0:01:10.651926
 
 Adding
-~~~~~~
+------
 
 Adding a package requires you first build it manually by downloading the source
 for the package and building it for RTEMS using the command line of a standard
@@ -115,7 +115,7 @@ A package requires 3 files to be created:
   specific parts. See :ref:`Configuration` for more details.
 
 BSP Support
-~~~~~~~~~~~
+-----------
 
 The RSB provides support to help build packages for RTEMS. RTEMS applications
 can be viewed as statically linked executables operating in a single address
@@ -307,7 +307,7 @@ provide sensible default or in this case map them to the BSP
   1. The configure command for NTP.
 
 RTEMS BSP Configuration
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 To build a package for RTEMS you need to build it with the matching BSP
 configuration. A BSP can be built with specific flags that require all code

@@ -6,13 +6,13 @@
 .. _Hosts:
 
 Hosts
-#####
+=====
 
 The known supported hosts are listed in the following sections. If a host or a
 new version of a host is known to work and it not listed please lets us know.
 
 Linux
-~~~~~
+-----
 
 A number of different Linux distrubutions are known to work. The following have
 been tested and report as working.
@@ -20,7 +20,7 @@ been tested and report as working.
 .. _ArchLinux:
 
 ArchLinux
-^^^^^^^^^
+~~~~~~~~~
 
 The following packages are required on a fresh Archlinux 64bit installation::
 
@@ -37,7 +37,7 @@ provide a manual override::
 .. _CentOS:
 
 CentOS
-^^^^^^
+~~~~~~
 
 The following packages are required on a minimal CentOS 6.3 64bit installation::
 
@@ -51,7 +51,7 @@ installed.
 .. _Fedora:
 
 Fedora
-^^^^^^
+~~~~~~
 
 The RTEMS Source Builder has been tested on Fedora 19 64bit with the following
 packages::
@@ -62,7 +62,7 @@ packages::
 .. _Raspbian:
 
 Raspbian
-^^^^^^^^
+~~~~~~~~
 
 The is the Debian distribution for the Raspberry Pi. The following packages are
 required::
@@ -78,7 +78,7 @@ prefix under your home directory as recommended and end up on the SD card.
 .. _Xubuntu:
 
 Ubuntu
-^^^^^^
+~~~~~~
 
 The latest version is Ubuntu 16.04.1 LTS 64bit. This section also includes
 Xubuntu. A minimal installation was used and the following packages installed::
@@ -89,7 +89,7 @@ Xubuntu. A minimal installation was used and the following packages installed::
 .. _Linux Mint:
 
 Linux Mint
-^^^^^^^^^^
+~~~~~~~~~~
 
 zlib package is required on Linux Mint. It has a different name (other
 than the usual zlib-dev)::
@@ -99,7 +99,7 @@ than the usual zlib-dev)::
 .. _openSUSE:
 
 openSUSE
-^^^^^^^^
+~~~~~~~~
 
 This has been reported to work but no instructions were provided. This is an
 opportunity to contribute. Please submit any guidance you can provide.
@@ -107,7 +107,7 @@ opportunity to contribute. Please submit any guidance you can provide.
 .. _FreeBSD:
 
 FreeBSD
-~~~~~~~
+-------
 
 The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3 and 11 64bit
 version. You need to install some ports. They are::
@@ -131,7 +131,7 @@ install' rather than 'portinstall'.
 .. _NetBSD:
 
 NetBSD
-~~~~~~
+------
 
 The RTEMS Source Builder has been tested on NetBSD 6.1 i386. Packages to add
 are::
@@ -143,7 +143,7 @@ are::
 .. _MacOS:
 
 MacOS
-~~~~~
+-----
 
 The RTEMS Source Builder has been tested on Mountain Lion. You will need to
 install the Xcode app using the *App Store* tool, run Xcode and install the
@@ -152,7 +152,7 @@ Developers Tools package within Xcode.
 .. _Mavericks:
 
 Mavericks
-^^^^^^^^^
+~~~~~~~~~
 
 The RSB works on Mavericks and the GNU tools can be built for RTEMS using the
 Mavericks clang LLVM tool chain. You will need to build and install a couple of
@@ -169,14 +169,14 @@ tools. The following are required:
   5.0.5. XZ builds and installs cleanly.
 
 Serria
-^^^^^^
+~~~~~~
 
 The RSB works on Serria with the latest Xcode.
 
 .. _Windows:
 
 Windows
-~~~~~~~
+-------
 
 Windows tool sets are supported. The tools are native Windows executable which
 means they do not need an emulation layer to run once built. The tools
@@ -194,7 +194,7 @@ shell. There are a few options, Cygwin and MSYS2. I recommend MSYS2.
 .. _MSYS2:
 
 MSYS2
-^^^^^
+~~~~~
 
 This is a new version of the MinGW project's original MSYS. MSYS2 is based
 around the Arch Linux pacman packager. MSYS and MSYS2 are a specific fork of
@@ -223,6 +223,7 @@ the start of your path. The MSYS2 python does not work with waf.
 .. _Cygwin:
 
 Cygwin
+~~~~~~
 
 Building on Windows is a little more complicated because the Cygwin shell is
 used rather than the MSYS2 shell. The MSYS2 shell is simpler because the

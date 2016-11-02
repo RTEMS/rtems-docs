@@ -4,7 +4,7 @@
 .. comment Chris Johns <chrisj@rtems.org>
 
 Quick Start
-###########
+===========
 
 The quick start will show you how to build a set of RTEMS tools for a supported
 architecture. The tools are installed into a build *prefix*. The *prefix* is the
@@ -69,7 +69,7 @@ difficult to manage in production systems.
     Branches are available for the 4.9, 4.10, and 4.11 versions of RTEMS.
 
 Setup
-~~~~~
+-----
 
 Setup a development work space::
 
@@ -91,7 +91,7 @@ from the RTEMS GIT repository::
    about *Sandboxing* and the *prefix*.
 
 Checking
-~~~~~~~~
+--------
 
 The next step is to check if your host is set up correctly. The RTEMS Source
 Builder provides a tool to help::
@@ -124,7 +124,7 @@ The :ref:`Hosts` section lists packages you should install for common host
 operating systems. It maybe worth checking if you have those installed.
 
 Build Sets
-~~~~~~~~~~
+----------
 
 The RTEMS tools can be built within the RTEMS Source Builder's source tree. We
 recommend you do this so lets change into the RTEMS directory in the RTEMS
@@ -203,7 +203,7 @@ build ask the tool::
      set files.
 
 Building
-~~~~~~~~
+--------
 
 The quick start builds a SPARC tool set::
 
@@ -354,12 +354,12 @@ The installed tools::
    level. The RTEMS Source Builder can build bare metal tool chains as
    well. Look in the top level ``bare`` directory.
 
-Distributing and Archiving A Build
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deployment
+----------
 
 If you wish to create and distribute your build or you want to archive a build
-you can create a tar file. This is a more advanced method for binary packaging
-and installing of tools.
+you can create a tar file. We term this deploying a build. This is a more
+advanced method for binary packaging and installing of tools.
 
 By default the RTEMS Source Builder installs the built packages directly and
 optionally it can also create a *build set tar file* or a *package tar file*
@@ -508,7 +508,7 @@ build set::
   3. The build set tar file. All the others in a single tar file.
 
 Controlling the Build
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Build sets can be controlled via the command line to enable and disable various
 features. There is no definitive list of build options that can be listed

@@ -4,7 +4,7 @@
 .. comment Chris Johns <chrisj@rtems.org>
 
 RTEMS Source Builder
-####################
+====================
 
 The RTEMS Source Builder or RSB is a tool to build packages from source. It is
 used by the RTEMS project to build it's compilers and OS. The RSB helps
@@ -78,7 +78,7 @@ configuration can read the remaining sections.
    Build Failures`.
 
 Why Build from Source?
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 The RTEMS Source Builder is not a replacement for the binary install systems
 you have with commercial operating systems or open source operating system
@@ -134,7 +134,7 @@ any extra packages as a super user is always helpful in maintaining a secure
 computing environment.
 
 History
-~~~~~~~
+-------
 
 The RTEMS Source Builder is a stand alone tool based on another tool called the
 *SpecBuilder* written by Chris Johns. The *SpecBuilder* was written around 2010

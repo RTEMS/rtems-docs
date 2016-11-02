@@ -4,10 +4,10 @@
 .. comment Chris Johns <chrisj@rtems.org>
 
 Commands
-########
+========
 
 Checker (sb-check)
-~~~~~~~~~~~~~~~~~~
+------------------
 
 This commands checks your system is set up correctly. Most options are ignored::
 
@@ -47,7 +47,7 @@ This commands checks your system is set up correctly. Most options are ignored::
     Environment is ok
 
 Defaults (sb-defaults)
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 This commands outputs and the default macros for your when given no
 arguments. Most options are ignored::
@@ -85,7 +85,7 @@ arguments. Most options are ignored::
     --regression           : Set --no-install, --keep-going and --always-clean
 
 Set Builder (sb-set-builder)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 This command builds a set::
 
@@ -286,7 +286,7 @@ The ``arguments`` are a list of build sets to build.
   ``dep[?]` prefix where ``?`` is a number. The files are listed alphabetically.
 
 Set Builder (sb-builder)
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 This command builds a configuration as described in a configuration
 file. Configuration files have the extension of ``.cfg``::
