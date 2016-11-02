@@ -44,7 +44,16 @@ existing documentation for an example and if unsure ask.
    preferred even this text is wrapped at 80 columns. Long lines in code block
    text causes issues with the PDF output.
 
-3. For pasted output, shell commands and code use '.. code-block::' with
+3. The headings use the following:
+
+      Heading
+      1  ======
+      2  ------
+      3  ~~~~~~
+      4  ^^^^^^
+
+3. For literal output, such as shell commands and code use '::' at the trailing
+   edge of the previous paragraph. If the '.. code-block::' with
    'c' for C code and 'shell' for shell code and terminal output. If you need
    line number use:
 
@@ -70,16 +79,17 @@ existing documentation for an example and if unsure ask.
        :align: center
        :alt: This is the alt text for some output types.
 
-6. Callouts can be implement manually using a code block and a topic block. For
+6. Callouts can be implement manually using a liternal block which can using
+   '::' or a code block and topic block is used for the items. For
    example:
 
      .. code-block: c
 
-        #include <stdio.h>                             <1>
-        int main(int argc, char** argv)                <2>
+        #include <stdio.h>  <1>
+        int main(int argc, char** argv)  <2>
         {
-           printf("Hello world\n");                    <3>
-           return 0;                                   <4>
+           printf("Hello world\n");  <3>
+           return 0;   <4>
         }
 
      .. topic:: Items:
@@ -94,9 +104,9 @@ existing documentation for an example and if unsure ask.
           caller of this program.
 
    Note, the topic items are manually number. This makes is easier to see which
-   item matches the text. Use <> for the number and try to align to column
-   76. If there is more than 9 items align to column 75. Use haning indents if
-   an items extends over a single line.
+   item matches the text. Use <> for the number and align at a position that
+   works and makes the number as visible as possible. Use hanging indents if an
+   items extends over a single line.
 
 7. Use the RTEMS domain references for URLs and mailing lists. For example to
    insert the RTEMS developers list use:
