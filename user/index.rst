@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. comment Headingd
+.. comment Heading
 .. comment  1  ======
 .. comment  2  ------
 .. comment  3  ~~~~~~
