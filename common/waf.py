@@ -83,7 +83,8 @@ def build_dir_setup(ctx, buildtype):
     build_dir = ctx.path.get_bld().relpath()
     output_node = ctx.path.get_bld().make_node(buildtype)
     output_dir = output_node.abspath()
-    return build_dir, output_node, output_dir
+    doctrees = os.path.join(os.path.dirname(output_dir), 'doctrees', buildtype)
+    return build_dir, output_node, output_dir, doctrees
 
 def html_resources(ctx, buildtype):
     for dir_name in ["_static", "_templates"]:
@@ -146,10 +147,10 @@ def cmd_configure(ctx):
 
 def doc_pdf(ctx, source_dir, conf_dir):
     buildtype = 'latex'
-    build_dir, output_node, output_dir = build_dir_setup(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d build/%s/doctrees %s %s" % \
+    build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
            (sphinx_verbose(ctx), buildtype, conf_dir,
-            build_dir, source_dir, output_dir)
+            doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
@@ -198,11 +199,11 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
         return r
 
     buildtype = 'singlehtml'
-    build_dir, output_node, output_dir = build_dir_setup(ctx, buildtype)
+    build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d build/%s/doctrees %s %s" % \
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
            (sphinx_verbose(ctx), buildtype, conf_dir,
-            build_dir, source_dir, output_dir)
+            doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
@@ -220,11 +221,11 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
 
 def doc_html(ctx, conf_dir, source_dir):
     buildtype = 'html'
-    build_dir, output_node, output_dir = build_dir_setup(ctx, buildtype)
+    build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d build/%s/doctrees %s %s" % \
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
            (sphinx_verbose(ctx), buildtype, conf_dir,
-            build_dir, source_dir, output_dir)
+            doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
