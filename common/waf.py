@@ -77,7 +77,7 @@ def build_dir_setup(ctx, buildtype):
     where = buildtype
     if is_top_build(ctx):
         where = os.path.join(ctx.path.name, where)
-        bnode = ctx.bldnode.find_node(where)
+    bnode = ctx.bldnode.find_node(where)
     if bnode is None:
         ctx.bldnode.make_node(where).mkdir()
     build_dir = ctx.path.get_bld().relpath()
