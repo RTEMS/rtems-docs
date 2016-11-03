@@ -6,19 +6,49 @@ check the version and ensure you have a suitable version. If your host does not
 provide a packaged version use PIP to fetch a recent version. The Sphinx
 website provides details on doing this.
 
-Building PDF requires a full Latex install.
+ReST is the Re-Structed-Text format. It is a simple markup language that allows
+us to create quality documentaion. It is flexible and powerful however do not
+attempt to train it to create a specific format. You need to test any new way
+of present something on all output formats. What may look great in one format
+may not translate with the same clarity to another output format.
+
+The RTEMS Documentation output formats are:
+
+ HTML        - Multi-page HTML with files in a single directory per manual.
+ PDF         - Single PDF per manual.
+ SIngle HTML - Single HTML, one file per manual.
+
+Host Setup
+----------
+
+HTML builds directly with Sphinx, PDF requires a full Latex install, and
+building a Single HTML page requires the 'inliner' tool.
+
+Please add your host as you set it up.
+
+FreeBSD
+~~~~~~~
+
+Sphinx:
+  # pkg install py27-sphinx
+
+PDF:
+  # pkg install texlive-full
+
+Single HTML:
+  # pkg install npm
+  # npm install -g inliner
 
 Building
 --------
 
 To build enter in the top directory:
 
-  $ ./waf configure
+  $ ./waf configure [--pdf] [--singlehtml] [--prefix]
   $ ./waf
 
-PDF output can be built without needing to configure again:
-
-  $ ./waf --pdf
+The '--pdf' and '--singlehtml' options can be added to build those output
+formats.
 
 To build and install to a specific location:
 
@@ -30,6 +60,9 @@ version level:
 
   $ ./waf configure --sphinx-verbose=-v
   $ ./waf clean build
+
+You can enter a manual's directory and run the same configure command and build
+just that manual.
 
 Documentation Standard
 ----------------------
