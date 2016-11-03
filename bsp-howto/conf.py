@@ -9,5 +9,5 @@ release = '4.11.0'
 project = "RTEMS BSP and Device Driver Development Guide"
 
 latex_documents = [
-	('index', 'bsp_howto.tex', u'RTEMS BSP and Device Driver Development Guide', u'RTEMS Documentation Project', 'manual'),
+	('index', 'bsp-howto.tex', u'RTEMS BSP and Device Driver Development Guide', u'RTEMS Documentation Project', 'manual'),
 ]

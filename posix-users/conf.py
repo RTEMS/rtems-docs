@@ -6,8 +6,8 @@ from conf import *
 version = '4.11.0'
 release = '4.11.0'
 
-project = "RTEMS C User Manual"
+project = "RTEMS POSIX User Manual"
 
 latex_documents = [
-	('index', 'c_user.tex', u'RTEMS C User Documentation', u'RTEMS Documentation Project', 'manual'),
+	('index', 'posix-users.tex', u'RTEMS POSIX API User\'s Guide', u'RTEMS Documentation Project', 'manual'),
 ]

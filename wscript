@@ -8,13 +8,13 @@ path.append(abspath('common'))
 
 import waf as docs_waf
 
-build_all = ['c_user',
-             'posix_users',
+build_all = ['c-user',
+             'posix-users',
              'shell',
              'user',
              'eclipse',
-             'bsp_howto',
-             'cpu_supplement',
+             'bsp-howto',
+             'cpu-supplement',
              'filesystem',
              'rsb',
              'develenv']
