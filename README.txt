@@ -49,6 +49,11 @@ PDF:
 
   # yum install -y texlive-*
 
+Single HTML:
+
+  # yum install npm
+  # npm install -g inliner
+
 This does not provide all the require packages. Missing are:
 
   capt-of
