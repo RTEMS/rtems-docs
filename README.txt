@@ -30,25 +30,114 @@ FreeBSD
 ~~~~~~~
 
 Sphinx:
+
   # pkg install py27-sphinx
 
 PDF:
+
   # pkg install texlive-full
 
 Single HTML:
+
   # pkg install npm
   # npm install -g inliner
+
+CentOS 7
+~~~~~~~~
+
+PDF:
+
+  # yum install -y texlive-*
+
+This does not provide all the require packages. Missing are:
+
+  capt-of
+  eqparbox
+  ifplatform
+  inconsolata
+  lato
+  upquote
+
+Latex Setup
+~~~~~~~~~~~
+
+Latex is used to create the PDF document.  The setup of Latex varies from host
+to host operating system due to the way each host packages the texlive
+packages. There is no common naming and no real way to figure what texlive
+package is present in a host's packaging. It seems not all of texlive is
+available.
+
+The RTEMS Documentation waf configure phase check for each texlive package used
+in the generated output and the styles. If you complete configure with the
+--pdf option you should be able to build PDF documentation.
+
+The texlive package requirments come from the Latex styles we are using and
+Sphinx.
+
+An example of a failure is a default CentOS 7:
+
+  Checking for Tex package 'Bjarne'        : ok
+  Checking for Tex package 'alltt'         : ok
+  Checking for Tex package 'amsmath'       : ok
+  Checking for Tex package 'amssymb'       : ok
+  Checking for Tex package 'amstext'       : ok
+  Checking for Tex package 'array'         : ok
+  Checking for Tex package 'atbegshi'      : ok
+  Checking for Tex package 'babel'         : ok
+  Checking for Tex package 'calc'          : ok
+  Checking for Tex package 'capt-of'       : not found (please install)
+  Checking for Tex package 'charter'       : ok
+  Checking for Tex package 'cmap'          : ok
+  Checking for Tex package 'color'         : ok
+  Checking for Tex package 'eqparbox'      : not found (please install)
+  Checking for Tex package 'etoolbox'      : ok
+  Checking for Tex package 'fancybox'      : ok
+  Checking for Tex package 'fancyhdr'      : ok
+  Checking for Tex package 'fancyvrb'      : ok
+  Checking for Tex package 'float'         : ok
+  Checking for Tex package 'fncychap'      : ok
+  Checking for Tex package 'fontenc'       : ok
+  Checking for Tex package 'footnote'      : ok
+  Checking for Tex package 'framed'        : ok
+  Checking for Tex package 'graphicx'      : ok
+  Checking for Tex package 'hypcap'        : ok
+  Checking for Tex package 'hyperref'      : ok
+  Checking for Tex package 'ifplatform'    : not found (please install)
+  Checking for Tex package 'ifthen'        : ok
+  Checking for Tex package 'inconsolata'   : not found (please install)
+  Checking for Tex package 'inputenc'      : ok
+  Checking for Tex package 'keyval'        : ok
+  Checking for Tex package 'kvoptions'     : ok
+  Checking for Tex package 'lato'          : not found (please install)
+  Checking for Tex package 'lineno'        : ok
+  Checking for Tex package 'longtable'     : ok
+  Checking for Tex package 'makeidx'       : ok
+  Checking for Tex package 'multirow'      : ok
+  Checking for Tex package 'parskip'       : ok
+  Checking for Tex package 'pdftexcmds'    : ok
+  Checking for Tex package 'textcomp'      : ok
+  Checking for Tex package 'threeparttable' : ok
+  Checking for Tex package 'times'          : ok
+  Checking for Tex package 'titlesec'       : ok
+  Checking for Tex package 'upquote'        : not found (please install)
+  Checking for Tex package 'utf8'           : ok
+  Checking for Tex package 'wrapfig'        : ok
+  Checking for Tex package 'xcolor'         : ok
+  Checking for Tex package 'xstring'        : ok
+  There are 6 Tex package failures. Please fix.
+
+If you find there is an issue please post the developers list.
 
 Building
 --------
 
 To build enter in the top directory:
 
-  $ ./waf configure [--pdf] [--singlehtml] [--prefix]
+  $ ./waf configure [--pdf] [--singlehtml] [--prefix] [--sphinx-verbose]
   $ ./waf
 
-The '--pdf' and '--singlehtml' options can be added to build those output
-formats.
+The '--pdf' and '--singlehtml' options can be added to configure to build those
+output formats.
 
 To build and install to a specific location:
 
