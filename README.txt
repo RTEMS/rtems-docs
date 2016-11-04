@@ -136,6 +136,9 @@ If you find there is an issue please post the developers list.
 Building
 --------
 
+Note: waf-1.9.5 is a little noisy when running tex builds and tests. I hope
+      to have this resolved soon.
+
 To build enter in the top directory:
 
   $ ./waf configure [--pdf] [--singlehtml] [--prefix] [--sphinx-verbose]
