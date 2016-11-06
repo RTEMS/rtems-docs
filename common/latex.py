@@ -126,10 +126,12 @@ def configure_tests(conf):
         bld(features = 'tex', type = 'pdflatex', source = 'main.tex', prompt = 0)
 
     tests = sorted(package_tests.keys())
-    excludes = [p[:p.rfind('.')] for p in local_packages()]
-    for e in excludes:
-        if e in tests:
-            tests.remove(e)
+    local_packs = local_packages()
+    if local_packs is not None:
+        excludes = [p[:p.rfind('.')] for p in local_packs]
+        for e in excludes:
+            if e in tests:
+                tests.remove(e)
 
     fails = 0
     for t in tests:
