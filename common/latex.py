@@ -134,6 +134,9 @@ def configure_tests(conf):
                 tests.remove(e)
 
     fails = 0
+    r = conf.find_program("pygmentize", mandatory = False)
+    if r is None:
+        fails += 1
     for t in tests:
         r = conf.test(build_fun = build_latex_test,
                       msg = "Checking for Tex package '%s'" % (t),
