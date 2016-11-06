@@ -85,6 +85,18 @@ Single HTML:
   # yum install npm
   # npm install -g inliner
 
+Arch Linux
+~~~~~~~~~~
+
+Sphinx:
+
+  # pacman -S python-sphinx
+
+PDF:
+
+  # pacman -S texlive-bin texlive-core texlive-latexextra texlive-fontsextra \
+              pygmentize
+
 Latex Setup
 ~~~~~~~~~~~
 
