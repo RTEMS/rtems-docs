@@ -1,6 +1,8 @@
 import sys, os, re
 from waflib.Build import BuildContext
 
+import latex
+
 sphinx_min_version = (1, 3)
 
 def cmd_spell(ctx):
@@ -86,6 +88,23 @@ def build_dir_setup(ctx, buildtype):
     doctrees = os.path.join(os.path.dirname(output_dir), 'doctrees', buildtype)
     return build_dir, output_node, output_dir, doctrees
 
+def pdf_resources(ctx, buildtype):
+    local_packages = latex.local_packages()
+    if local_packages is not None:
+        packages_base = ctx.path.parent.find_dir('common/latex')
+        if packages_base is None:
+            ctx.fatal('Latex package directory not found')
+        base = packages_base.path_from(ctx.path)
+        srcs = [os.path.join(base, p) for p in local_packages]
+        fnode = ctx.path.get_bld().make_node(buildtype)
+        fnode.mkdir()
+        ctx(
+            features = "subst",
+            is_copy  = True,
+            source   = srcs,
+            target   = [fnode.make_node(p) for p in local_packages]
+        )
+
 def html_resources(ctx, buildtype):
     for dir_name in ["_static", "_templates"]:
         files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
@@ -108,100 +127,6 @@ def html_resources(ctx, buildtype):
 #        target      = [x.srcpath().replace("../", "") for x in files]
 #    )
 
-def latex_configure_tests(conf):
-
-    #
-    # Using a hint from ita (thank you) :
-    #  https://github.com/waf-project/waf/blob/master/demos/tex/wscript
-    #
-    latex_test_preamble = ['\\newif\\ifsphinxKeepOldNames \\sphinxKeepOldNamestrue',
-                           '\documentclass[a4paper,11pt,english]{report}']
-    latex_test_postamble = ['\\begin{document} test \\end{document}']
-    latex_tests = {
-        'Bjarne'         : ['\\usepackage[Bjarne]{fncychap}'],
-        'alltt'          : ['\\usepackage{alltt}'],
-        'amsmath'        : ['\\usepackage{amsmath}'],
-        'amssymb'        : ['\\usepackage{amssymb}'],
-        'amstext'        : ['\\usepackage{amstext}'],
-        'array'          : ['\\usepackage{array}'],
-        'atbegshi'       : ['\\usepackage{atbegshi}'],
-        'babel'          : ['\\usepackage{babel}'],
-        'babel'          : ['\\usepackage{babel}'],
-        'calc'           : ['\\usepackage{calc}'],
-        'capt-of'        : ['\\usepackage{capt-of}'],
-        'charter'        : ['\\usepackage{charter}'],
-        'cmap'           : ['\\usepackage{cmap}'],
-        'color'          : ['\\usepackage{color}'],
-        'eqparbox'       : ['\\usepackage{eqparbox}'],
-        'etoolbox'       : ['\\usepackage{etoolbox}'],
-        'fancybox'       : ['\\usepackage{fancybox}'],
-        'fancyhdr'       : ['\\usepackage{fancyhdr}'],
-        'fancyvrb'       : ['\\usepackage{fancyvrb}'],
-        'float'          : ['\\usepackage{float}'],
-        'fncychap'       : ['\\usepackage{fncychap}'],
-        'fontenc'        : ['\\usepackage[T1]{fontenc}'],
-        'footnote'       : ['\\usepackage{footnote}'],
-        'framed'         : ['\\usepackage{framed}'],
-        'graphicx'       : ['\\usepackage{graphicx}'],
-        'hypcap'         : ['\\usepackage{hyperref}',
-                            '\\usepackage{hypcap}'],
-        'hyperref'       : ['\\usepackage{hyperref}'],
-        'ifplatform'     : ['\\usepackage{ifplatform}'],
-        'ifthen'         : ['\\usepackage{ifthen}'],
-        'inconsolata'    : ['\\usepackage{inconsolata}'],
-        'inputenc'       : ['\\usepackage{inputenc}'],
-        'keyval'         : ['\\usepackage{keyval}'],
-        'kvoptions'      : ['\\usepackage{kvoptions}'],
-        'lato'           : ['\\usepackage{lato}'],
-        'lineno'         : ['\\usepackage{lineno}'],
-        'longtable'      : ['\\usepackage{longtable}'],
-        'makeidx'        : ['\\usepackage{makeidx}'],
-        'multirow'       : ['\\usepackage{multirow}'],
-        'parskip'        : ['\\usepackage{parskip}'],
-        'pdftexcmds'     : ['\\usepackage{pdftexcmds}'],
-        'textcomp'       : ['\\usepackage{textcomp}'],
-        'threeparttable' : ['\\usepackage{threeparttable}'],
-        'times'          : ['\\usepackage{times}'],
-        'titlesec'       : ['\\usepackage{titlesec}'],
-        'upquote'        : ['\\usepackage{upquote}'],
-        'utf8'           : ['\\usepackage[utf8]{inputenc}'],
-        'wrapfig'        : ['\\usepackage{wrapfig}'],
-        'xcolor'         : ['\\usepackage{xcolor}'],
-        'xstring'        : ['\\usepackage{xstring}'],
-    }
-
-    def build_latex_test(bld):
-        def create_tex(test_data):
-            return os.linesep.join(latex_test_preamble +
-                                   test_data +
-                                   latex_test_postamble)
-        def write_tex_test(tsk):
-            tex = create_tex(tsk.env.TEST_DATA)
-            tsk.outputs[0].write(tex)
-
-        test = bld.kw['tex_test']
-        bld.env.TEST = test
-        bld.env.TEST_DATA = latex_tests[test]
-
-        bld.to_log('%s.tex %s' % (test, '=' * (40 - len(test) + 5)))
-        bld.to_log(create_tex(latex_tests[test]))
-        bld.to_log('=' * 40)
-
-        bld(rule = write_tex_test, target = 'main.tex')
-        bld(features = 'tex', type = 'pdflatex', source = 'main.tex', prompt = 0)
-
-    fails = 0
-    for t in sorted(latex_tests.keys()):
-        r = conf.test(build_fun = build_latex_test,
-                      msg = "Checking for Tex package '%s'" % (t),
-                      tex_test = t,
-                      okmsg = 'ok',
-                      errmsg = 'not found (please install)',
-                      mandatory = False)
-        if r is None:
-            fails += 1
-    if fails > 0:
-        conf.fatal('There are %d Tex package failures. Please fix.' % (fails))
 
 def cmd_configure(ctx):
     ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
@@ -232,7 +157,7 @@ def cmd_configure(ctx):
             if 'PDFLATEXFLAGS' not in ctx.env or \
                '-shell-escape' not in ctx.env['PDFLATEXFLAGS']:
                 ctx.env.append_value('PDFLATEXFLAGS', '-shell-escape')
-            latex_configure_tests(ctx)
+            latex.configure_tests(ctx)
         else:
             ctx.msg('Check for Tex packages', 'skipping, already checked')
         ctx.env.BUILD_PDF = 'yes'
@@ -248,6 +173,7 @@ def cmd_configure(ctx):
 def doc_pdf(ctx, source_dir, conf_dir):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
+    pdf_resources(ctx, buildtype)
     rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
            (sphinx_verbose(ctx), buildtype, conf_dir,
             doctrees, source_dir, output_dir)
