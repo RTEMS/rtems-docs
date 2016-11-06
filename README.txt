@@ -1,16 +1,16 @@
 RTEMS Project Documentation
 ===========================
 
-The documents is written in ReST and built using Sphinx. The build system will
-check the version and ensure you have a suitable version. If your host does not
-provide a packaged version use PIP to fetch a recent version. The Sphinx
-website provides details on doing this.
+The documents are written in ReST and built using Sphinx. The build system will
+check the version of Sphinx and ensure you have a suitable version
+available. If your host does not provide a packaged version use PIP to fetch a
+recent version. The Sphinx website provides details on doing this.
 
 ReST is the Re-Structed-Text format. It is a simple markup language that allows
 us to create quality documentaion. It is flexible and powerful however do not
 attempt to train it to create a specific format. You need to test any new way
-of present something on all output formats. What may look great in one format
-may not translate with the same clarity to another output format.
+of presenting something on all output formats. What may look great in one
+format may not translate with the same clarity to another output format.
 
 The RTEMS Documentation output formats are:
 
@@ -18,16 +18,41 @@ The RTEMS Documentation output formats are:
  PDF         - Single PDF per manual.
  SIngle HTML - Single HTML, one file per manual.
 
+The PDF format is cerated using Latex and that uses texlive packages. This
+exposes us to the complex world of Latex however the quality of the documents
+created is worth it.
+
+Production Quality Hosts
+------------------------
+
+We allow the building of PDF documentation on hosts that do not have a fully
+suitable texlive environment and this results in quality that is not at the
+production level.
+
+The hosts which produce production quality is:
+
+ FreeBSD
+
 Host Setup
 ----------
 
-HTML builds directly with Sphinx, PDF requires a full Latex install, and
-building a Single HTML page requires the 'inliner' tool.
+HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
+and building a Single HTML page requires the 'inliner' tool.
 
 Please add your host as you set it up.
 
+Sphinx Per User Install
+~~~~~~~~~~~~~~~~~~~~~~~
+
+You can use this method to install a personal version of Sphinx if your host
+does not provide a suitable package:
+
+ $ pip install -U Sphinx
+
 FreeBSD
 ~~~~~~~
+
+PDF Quality: production
 
 Sphinx:
 
@@ -45,6 +70,12 @@ Single HTML:
 CentOS 7
 ~~~~~~~~
 
+PDF Quality: poor
+
+Sphinx:
+
+  $ pip install -U sphinx
+
 PDF:
 
   # yum install -y texlive-*
@@ -53,15 +84,6 @@ Single HTML:
 
   # yum install npm
   # npm install -g inliner
-
-This does not provide all the require packages. Missing are:
-
-  capt-of
-  eqparbox
-  ifplatform
-  inconsolata
-  lato
-  upquote
 
 Latex Setup
 ~~~~~~~~~~~
@@ -79,7 +101,7 @@ in the generated output and the styles. If you complete configure with the
 The texlive package requirments come from the Latex styles we are using and
 Sphinx.
 
-An example of a failure is a default CentOS 7:
+An example of failures are:
 
   Checking for Tex package 'Bjarne'        : ok
   Checking for Tex package 'alltt'         : ok
