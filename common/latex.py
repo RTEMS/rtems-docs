@@ -100,9 +100,9 @@ def local_packages():
     host, version = host_name()
     packages = None
     if host in hosts:
-        for version in list(hosts[host].keys()):
-            if re.compile(version).match(version) is not None:
-                packages = hosts[host][version]
+        for hv in list(hosts[host].keys()):
+            if re.compile(hv).match(version) is not None:
+                packages = hosts[host][hv]
     return packages
 
 def configure_tests(conf):
