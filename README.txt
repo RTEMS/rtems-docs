@@ -95,7 +95,20 @@ Sphinx:
 PDF:
 
   # pacman -S texlive-bin texlive-core texlive-latexextra texlive-fontsextra \
-              pygmentize
+
+openSUSE
+~~~~~~~~
+
+Packages:
+
+  # zypper in python-pip 'texlive*'
+
+Sphinx:
+
+  # pip install -U Sphinx
+
+Using pip to install Sphinx destroys the python-Sphinx package if installed via
+RPM.
 
 Latex Setup
 ~~~~~~~~~~~
