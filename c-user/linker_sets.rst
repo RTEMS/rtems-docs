@@ -113,408 +113,425 @@ For an example see test program :file:`sptests/splinkersets01`.
 Directives
 ==========
 
+.. raw:: latex
+
+   \clearpage
+
 .. _RTEMS_LINKER_SET_BEGIN:
 
 RTEMS_LINKER_SET_BEGIN - Designator of the linker set begin marker
 ------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_SET_BEGIN
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    volatile type *begin = RTEMS_LINKER_SET_BEGIN( set );
+        volatile type *begin = RTEMS_LINKER_SET_BEGIN( set );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates the designator of the begin marker of the linker set
+    identified by ``set``.  The item at the begin marker address is the first
+    member of the linker set if it exists, e.g. the linker set is not empty.  A
+    linker set is empty, if and only if the begin and end markers have the same
+    address.
 
-This macro generates the designator of the begin marker of the linker set
-identified by ``set``.  The item at the begin marker address is the first
-member of the linker set if it exists, e.g. the linker set is not empty.  A
-linker set is empty, if and only if the begin and end markers have the same
-address.
+    The ``set`` parameter itself must be a valid C designator on which no macro
+    expansion is performed.  It uniquely identifies the linker set.
 
-The ``set`` parameter itself must be a valid C designator on which no macro
-expansion is performed.  It uniquely identifies the linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_SET_END:
 
 RTEMS_LINKER_SET_END - Designator of the linker set end marker
 --------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_SET_END
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    volatile type *end = RTEMS_LINKER_SET_END( set );
+        volatile type *end = RTEMS_LINKER_SET_END( set );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates the designator of the end marker of the linker set
+    identified by ``set``.  The item at the end marker address is not a member
+    of the linker set.  The ``set`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set.
 
-This macro generates the designator of the end marker of the linker set
-identified by ``set``.  The item at the end marker address is not a member of
-the linker set.  The ``set`` parameter itself must be a valid C designator on
-which no macro expansion is performed.  It uniquely identifies the linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_SET_SIZE:
 
 RTEMS_LINKER_SET_SIZE - The linker set size in characters
 ---------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_SET_SIZE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    size_t size = RTEMS_LINKER_SET_SIZE( set );
+        size_t size = RTEMS_LINKER_SET_SIZE( set );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro returns the size of the linker set identified by ``set`` in
+    characters.  The ``set`` parameter itself must be a valid C designator on
+    which no macro expansion is performed.  It uniquely identifies the linker
+    set.
 
-This macro returns the size of the linker set identified by ``set`` in
-characters.  The ``set`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies the linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_ROSET_DECLARE:
 
 RTEMS_LINKER_ROSET_DECLARE - Declares a read-only linker set
 ------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_ROSET_DECLARE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_ROSET_DECLARE( set, type );
+        RTEMS_LINKER_ROSET_DECLARE( set, type );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates declarations for the begin and end markers of a
+    read-only linker set identified by ``set``.  The ``set`` parameter itself
+    must be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set. The ``type`` parameter defines the type
+    of the linker set items.  The type must be the same for all macro
+    invocations of a particular linker set.
 
-This macro generates declarations for the begin and end markers of a read-only
-linker set identified by ``set``.  The ``set`` parameter itself must be a valid
-C designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_ROSET:
 
 RTEMS_LINKER_ROSET - Defines a read-only linker set
 ---------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_ROSET
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_ROSET( set, type );
+        RTEMS_LINKER_ROSET( set, type );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates definitions for the begin and end markers of a
+    read-only linker set identified by ``set``.  The ``set`` parameter itself
+    must be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set. The ``type`` parameter defines the type
+    of the linker set items.  The type must be the same for all macro
+    invocations of a particular linker set.
 
-This macro generates definitions for the begin and end markers of a read-only
-linker set identified by ``set``.  The ``set`` parameter itself must be a valid
-C designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM_DECLARE:
 
 RTEMS_LINKER_ROSET_ITEM_DECLARE - Declares a read-only linker set item
 ----------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_ROSET_ITEM_DECLARE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_ROSET_ITEM_DECLARE( set, type, item );
+        RTEMS_LINKER_ROSET_ITEM_DECLARE( set, type, item );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a declaration of an item contained in the read-only
+    linker set identified by ``set``.  The ``set`` parameter itself must be a
+    valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``type`` parameter defines the type of the
+    linker set items.  The type must be the same for all macro invocations of a
+    particular linker set. The ``item`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies an item in the linker set.
 
-This macro generates a declaration of an item contained in the read-only linker
-set identified by ``set``.  The ``set`` parameter itself must be a valid C
-designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set. The ``item`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies an item in the linker
-set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM_REFERENCE:
 
 RTEMS_LINKER_ROSET_ITEM_REFERENCE - References a read-only linker set item
 --------------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_ROSET_ITEM_REFERENCE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_ROSET_ITEM_REFERENCE( set, type, item );
+        RTEMS_LINKER_ROSET_ITEM_REFERENCE( set, type, item );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a reference to an item contained in the read-only
+    linker set identified by ``set``.  The ``set`` parameter itself must be a
+    valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``type`` parameter defines the type of the
+    linker set items.  The type must be the same for all macro invocations of a
+    particular linker set. The ``item`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies an item in the linker set.
 
-This macro generates a reference to an item contained in the read-only linker
-set identified by ``set``.  The ``set`` parameter itself must be a valid C
-designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set. The ``item`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies an item in the linker
-set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM:
 
 RTEMS_LINKER_ROSET_ITEM - Defines a read-only linker set item
 -------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_ROSET_ITEM
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_ROSET_ITEM( set, type, item );
+        RTEMS_LINKER_ROSET_ITEM( set, type, item );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a definition of an item contained in the read-only
+    linker set identified by ``set``.  The ``set`` parameter itself must be a
+    valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``type`` parameter defines the type of the
+    linker set items.  The type must be the same for all macro invocations of a
+    particular linker set. The ``item`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies an item in the linker set.
 
-This macro generates a definition of an item contained in the read-only linker
-set identified by ``set``.  The ``set`` parameter itself must be a valid C
-designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set. The ``item`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies an item in the linker
-set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM_ORDERED:
 
 RTEMS_LINKER_ROSET_ITEM_ORDERED - Defines an ordered read-only linker set item
 ------------------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_ROSET_ITEM_ORDERED
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_ROSET_ITEM_ORDERED( set, type, item, order );
+        RTEMS_LINKER_ROSET_ITEM_ORDERED( set, type, item, order );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a definition of an ordered item contained in the
+    read-only linker set identified by ``set``.  The ``set`` parameter itself
+    must be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set. The ``type`` parameter defines the type
+    of the linker set items.  The type must be the same for all macro
+    invocations of a particular linker set.  The ``item`` parameter itself must
+    be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies an item in the linker set. The ``order`` parameter must
+    be a valid linker input section name part on which macro expansion is
+    performed.  The items are lexicographically ordered according to the
+    ``order`` parameter within a linker set.  Ordered items are placed before
+    unordered items in the linker set.
 
-This macro generates a definition of an ordered item contained in the read-only
-linker set identified by ``set``.  The ``set`` parameter itself must be a valid
-C designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set.  The ``item`` parameter itself must be a valid C designator on
-which no macro expansion is performed.  It uniquely identifies an item in the
-linker set. The ``order`` parameter must be a valid linker input section name
-part on which macro expansion is performed.  The items are lexicographically
-ordered according to the ``order`` parameter within a linker set.  Ordered
-items are placed before unordered items in the linker set.
+NOTES:
+    To be resilient to typos in the order parameter, it is recommended to use
+    the following construct in macros defining items for a particular linker
+    set (see enum in ``XYZ_ITEM()``).
 
-**NOTES:**
+    .. code-block:: c
 
-To be resilient to typos in the order parameter, it is recommended to use the
-following construct in macros defining items for a particular linker set (see
-enum in ``XYZ_ITEM()``).
+        #include <rtems/linkersets.h>
 
-.. code-block:: c
+        typedef struct {
+            int foo;
+        } xyz_item;
 
-    #include <rtems/linkersets.h>
+        /* The XYZ-order defines */
+        #define XYZ_ORDER_FIRST 0x00001000
+        #define XYZ_ORDER_AND_SO_ON 0x00002000
 
-    typedef struct {
-        int foo;
-    } xyz_item;
+        /* Defines an ordered XYZ-item */
+        #define XYZ_ITEM( item, order ) \
+                    enum { xyz_##item = order - order }; \
+                    RTEMS_LINKER_ROSET_ITEM_ORDERED( \
+                        xyz, const xyz_item *, item, order \
+                    ) = { &item }
 
-    /* The XYZ-order defines */
-    #define XYZ_ORDER_FIRST 0x00001000
-    #define XYZ_ORDER_AND_SO_ON 0x00002000
+        /* Example item */
+        static const xyz_item some_item = { 123 };
+        XYZ_ITEM( some_item, XYZ_ORDER_FIRST );
 
-    /* Defines an ordered XYZ-item */
-    #define XYZ_ITEM( item, order ) \
-                enum { xyz_##item = order - order }; \
-                RTEMS_LINKER_ROSET_ITEM_ORDERED( \
-                    xyz, const xyz_item *, item, order \
-                ) = { &item }
+.. raw:: latex
 
-    /* Example item */
-    static const xyz_item some_item = { 123 };
-    XYZ_ITEM( some_item, XYZ_ORDER_FIRST );
+   \clearpage
 
 .. _RTEMS_LINKER_RWSET_DECLARE:
 
 RTEMS_LINKER_RWSET_DECLARE - Declares a read-write linker set
 -------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_RWSET_DECLARE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_RWSET_DECLARE( set, type );
+        RTEMS_LINKER_RWSET_DECLARE( set, type );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates declarations for the begin and end markers of a
+    read-write linker set identified by ``set``.  The ``set`` parameter itself
+    must be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set. The ``type`` parameter defines the type
+    of the linker set items.  The type must be the same for all macro
+    invocations of a particular linker set.
 
-This macro generates declarations for the begin and end markers of a read-write
-linker set identified by ``set``.  The ``set`` parameter itself must be a valid
-C designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_RWSET:
 
 RTEMS_LINKER_RWSET - Defines a read-write linker set
 ----------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_RWSET
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_RWSET( set, type );
+        RTEMS_LINKER_RWSET( set, type );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates definitions for the begin and end markers of a
+    read-write linker set identified by ``set``.  The ``set`` parameter itself
+    must be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set. The ``type`` parameter defines the type
+    of the linker set items.  The type must be the same for all macro
+    invocations of a particular linker set.
 
-This macro generates definitions for the begin and end markers of a read-write
-linker set identified by ``set``.  The ``set`` parameter itself must be a valid
-C designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM_DECLARE:
 
 RTEMS_LINKER_RWSET_ITEM_DECLARE - Declares a read-write linker set item
 -----------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_RWSET_ITEM_DECLARE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_RWSET_ITEM_DECLARE( set, type, item );
+        RTEMS_LINKER_RWSET_ITEM_DECLARE( set, type, item );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a declaration of an item contained in the read-write
+    linker set identified by ``set``.  The ``set`` parameter itself must be a
+    valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``type`` parameter defines the type of the
+    linker set items.  The type must be the same for all macro invocations of a
+    particular linker set. The ``item`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies an item in the linker set.
 
-This macro generates a declaration of an item contained in the read-write
-linker set identified by ``set``.  The ``set`` parameter itself must be a valid
-C designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set. The ``item`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies an item in the linker
-set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM_REFERENCE:
 
 RTEMS_LINKER_RWSET_ITEM_REFERENCE - References a read-write linker set item
 ---------------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_RWSET_ITEM_REFERENCE
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_RWSET_ITEM_REFERENCE( set, type, item );
+        RTEMS_LINKER_RWSET_ITEM_REFERENCE( set, type, item );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a reference to an item contained in the read-write
+    linker set identified by ``set``.  The ``set`` parameter itself must be a
+    valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``type`` parameter defines the type of the
+    linker set items.  The type must be the same for all macro invocations of a
+    particular linker set. The ``item`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies an item in the linker set.
 
-This macro generates a reference to an item contained in the read-write linker
-set identified by ``set``.  The ``set`` parameter itself must be a valid C
-designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set. The ``item`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies an item in the linker
-set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM:
 
 RTEMS_LINKER_RWSET_ITEM - Defines a read-write linker set item
 --------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_RWSET_ITEM
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_RWSET_ITEM( set, type, item );
+        RTEMS_LINKER_RWSET_ITEM( set, type, item );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a definition of an item contained in the read-write
+    linker set identified by ``set``.  The ``set`` parameter itself must be a
+    valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``type`` parameter defines the type of the
+    linker set items.  The type must be the same for all macro invocations of a
+    particular linker set. The ``item`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies an item in the linker set.
 
-This macro generates a definition of an item contained in the read-write linker
-set identified by ``set``.  The ``set`` parameter itself must be a valid C
-designator on which no macro expansion is performed.  It uniquely identifies
-the linker set. The ``type`` parameter defines the type of the linker set
-items.  The type must be the same for all macro invocations of a particular
-linker set. The ``item`` parameter itself must be a valid C designator on which
-no macro expansion is performed.  It uniquely identifies an item in the linker
-set.
+.. raw:: latex
+
+   \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM_ORDERED:
 
 RTEMS_LINKER_RWSET_ITEM_ORDERED - Defines an ordered read-write linker set item
 -------------------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: RTEMS_LINKER_RWSET_ITEM_ORDERED
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    RTEMS_LINKER_RWSET_ITEM_ORDERED( set, type, item, order );
+        RTEMS_LINKER_RWSET_ITEM_ORDERED( set, type, item, order );
 
-**DESCRIPTION:**
+DESCRIPTION:
+    This macro generates a definition of an ordered item contained in the
+    read-write linker set identified by ``set``.  The ``set`` parameter itself
+    must be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set. The ``type`` parameter defines the type
+    of the linker set items.  The type must be the same for all macro
+    invocations of a particular linker set.  The ``item`` parameter itself must
+    be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies an item in the linker set. The ``order`` parameter must
+    be a valid linker input section name part on which macro expansion is
+    performed.  The items are lexicographically ordered according to the
+    ``order`` parameter within a linker set.  Ordered items are placed before
+    unordered items in the linker set.
 
-This macro generates a definition of an ordered item contained in the
-read-write linker set identified by ``set``.  The ``set`` parameter itself must
-be a valid C designator on which no macro expansion is performed.  It uniquely
-identifies the linker set. The ``type`` parameter defines the type of the
-linker set items.  The type must be the same for all macro invocations of a
-particular linker set.  The ``item`` parameter itself must be a valid C
-designator on which no macro expansion is performed.  It uniquely identifies an
-item in the linker set. The ``order`` parameter must be a valid linker input
-section name part on which macro expansion is performed.  The items are
-lexicographically ordered according to the ``order`` parameter within a linker
-set.  Ordered items are placed before unordered items in the linker set.
+NOTES:
+    To be resilient to typos in the order parameter, it is recommended to use
+    the following construct in macros defining items for a particular linker
+    set (see enum in ``XYZ_ITEM()``).
 
-**NOTES:**
+    .. code-block:: c
 
-To be resilient to typos in the order parameter, it is recommended to use the
-following construct in macros defining items for a particular linker set (see
-enum in ``XYZ_ITEM()``).
+        #include <rtems/linkersets.h>
 
-.. code-block:: c
+        typedef struct {
+            int foo;
+        } xyz_item;
 
-    #include <rtems/linkersets.h>
+        /* The XYZ-order defines */
+        #define XYZ_ORDER_FIRST 0x00001000
+        #define XYZ_ORDER_AND_SO_ON 0x00002000
 
-    typedef struct {
-        int foo;
-    } xyz_item;
-
-    /* The XYZ-order defines */
-    #define XYZ_ORDER_FIRST 0x00001000
-    #define XYZ_ORDER_AND_SO_ON 0x00002000
-
-    /* Defines an ordered XYZ-item */
-    #define XYZ_ITEM( item, order ) \
-                enum { xyz_##item = order - order }; \
-                RTEMS_LINKER_RWSET_ITEM_ORDERED( \
-                    xyz, const xyz_item *, item, order \
-                ) = { &item }
-    /* Example item */
-    static const xyz_item some_item = { 123 };
-    XYZ_ITEM( some_item, XYZ_ORDER_FIRST );
+        /* Defines an ordered XYZ-item */
+        #define XYZ_ITEM( item, order ) \
+                    enum { xyz_##item = order - order }; \
+                    RTEMS_LINKER_RWSET_ITEM_ORDERED( \
+                        xyz, const xyz_item *, item, order \
+                    ) = { &item }
+        /* Example item */
+        static const xyz_item some_item = { 123 };
+        XYZ_ITEM( some_item, XYZ_ORDER_FIRST );

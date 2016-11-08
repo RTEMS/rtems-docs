@@ -104,52 +104,52 @@ This section details the CPU usage statistics manager's directives.  A
 subsection is dedicated to each of this manager's directives and describes the
 calling sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_cpu_usage_report:
 
 cpu_usage_report - Report CPU Usage Statistics
 ----------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        void rtems_cpu_usage_report( void );
 
-    void rtems_cpu_usage_report( void );
+STATUS CODES:
+    NONE
 
-**STATUS CODES:**
+DESCRIPTION:
+    This routine prints out a table detailing the CPU usage statistics for all
+    tasks in the system.
 
-NONE
+NOTES:
+    The table is printed using the ``printk`` routine.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This routine prints out a table detailing the CPU usage statistics for all
-tasks in the system.
-
-**NOTES:**
-
-The table is printed using the ``printk`` routine.
+   \clearpage
 
 .. _rtems_cpu_usage_reset:
 
 cpu_usage_reset - Reset CPU Usage Statistics
 --------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        void rtems_cpu_usage_reset( void );
 
-    void rtems_cpu_usage_reset( void );
+STATUS CODES:
+    NONE
 
-**STATUS CODES:**
+DESCRIPTION:
+    This routine re-initializes the CPU usage statistics for all tasks in the
+    system to their initial state.  The initial state is that a task has not
+    executed and thus has consumed no CPU time.  default state which is when
+    zero period executions have occurred.
 
-NONE
-
-**DESCRIPTION:**
-
-This routine re-initializes the CPU usage statistics for all tasks in the
-system to their initial state.  The initial state is that a task has not
-executed and thus has consumed no CPU time.  default state which is when zero
-period executions have occurred.
-
-**NOTES:**
-
-NONE
+NOTES:
+    NONE

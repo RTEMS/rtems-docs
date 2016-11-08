@@ -119,430 +119,420 @@ This section details the Timespec Helpers manager's directives.  A subsection
 is dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_timespec_set:
 
 TIMESPEC_SET - Set struct timespec Instance
 -------------------------------------------
 .. index:: set struct timespec instance
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_set
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_timespec_set(
-        struct timespec *time,
-        time_t           seconds,
-        uint32_t         nanoseconds
-    );
+        void rtems_timespec_set(
+            struct timespec *time,
+            time_t           seconds,
+            uint32_t         nanoseconds
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive sets the ``struct timespec`` *time* to the desired
+    ``seconds`` and ``nanoseconds`` values.
 
-**DESCRIPTION:**
+NOTES:
+    This method does NOT check if ``nanoseconds`` is less than the maximum
+    number of nanoseconds in a second.
 
-This directive sets the ``struct timespec`` *time* to the desired ``seconds``
-and ``nanoseconds`` values.
+.. raw:: latex
 
-**NOTES:**
-
-This method does NOT check if ``nanoseconds`` is less than the maximum number
-of nanoseconds in a second.
+   \clearpage
 
 .. _rtems_timespec_zero:
 
 TIMESPEC_ZERO - Zero struct timespec Instance
 ---------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_zero
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_timespec_zero(
-        struct timespec *time
-    );
+        void rtems_timespec_zero(
+            struct timespec *time
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This routine sets the contents of the ``struct timespec`` instance ``time`` to
+    zero.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This routine sets the contents of the ``struct timespec`` instance ``time`` to
-zero.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_is_valid:
 
 TIMESPEC_IS_VALID - Check validity of a struct timespec instance
 ----------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_is_valid
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_timespec_is_valid(
-        const struct timespec *time
-    );
+        bool rtems_timespec_is_valid(
+            const struct timespec *time
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This method returns ``true`` if the instance is valid, and ``false``
+    otherwise.
 
-This method returns ``true`` if the instance is valid, and ``false`` otherwise.
+DESCRIPTION:
+    This routine check validity of a ``struct timespec`` instance. It checks if
+    the nanoseconds portion of the ``struct timespec`` instanceis in allowed
+    range (less than the maximum number of nanoseconds per second).
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This routine check validity of a ``struct timespec`` instance. It checks if the
-nanoseconds portion of the ``struct timespec`` instanceis in allowed range
-(less than the maximum number of nanoseconds per second).
+.. raw:: latex
 
-**NOTES:**
+   \clearpage
 
 .. _rtems_timespec_add_to:
 
 TIMESPEC_ADD_TO - Add Two struct timespec Instances
 ---------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_add_to
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    uint32_t rtems_timespec_add_to(
-        struct timespec       *time,
-        const struct timespec *add
-    );
+        uint32_t rtems_timespec_add_to(
+            struct timespec       *time,
+            const struct timespec *add
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    The method returns the number of seconds ``time`` increased by.
 
-The method returns the number of seconds ``time`` increased by.
+DESCRIPTION:
+    This routine adds two ``struct timespec`` instances. The second argument is
+    added to the first. The parameter ``time`` is the base time to which the
+    ``add`` parameter is added.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This routine adds two ``struct timespec`` instances. The second argument is
-added to the first. The parameter ``time`` is the base time to which the
-``add`` parameter is added.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_subtract:
 
 TIMESPEC_SUBTRACT - Subtract Two struct timespec Instances
 ----------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_subtract
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_timespec_subtract(
-        const struct timespec *start,
-        const struct timespec *end,
-        struct timespec       *result
-    );
+        void rtems_timespec_subtract(
+            const struct timespec *start,
+            const struct timespec *end,
+            struct timespec       *result
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This routine subtracts ``start`` from ``end`` saves the difference in
+    ``result``. The primary use of this directive is to calculate elapsed time.
 
-**DESCRIPTION:**
+NOTES:
+    It is possible to subtract when ``end`` is less than ``start`` and it
+    produce negative ``result``. When doing this you should be careful and
+    remember that only the seconds portion of a ``struct timespec`` instance is
+    signed, which means that nanoseconds portion is always increasing. Due to
+    that when your timespec has seconds = -1 and nanoseconds = 500,000,000 it
+    means that result is -0.5 second, NOT the expected -1.5!
 
-This routine subtracts ``start`` from ``end`` saves the difference in
-``result``. The primary use of this directive is to calculate elapsed time.
+.. raw:: latex
 
-**NOTES:**
-
-It is possible to subtract when ``end`` is less than ``start`` and it produce
-negative ``result``. When doing this you should be careful and remember that
-only the seconds portion of a ``struct timespec`` instance is signed, which
-means that nanoseconds portion is always increasing. Due to that when your
-timespec has seconds = -1 and nanoseconds = 500,000,000 it means that result is
--0.5 second, NOT the expected -1.5!
+   \clearpage
 
 .. _rtems_timespec_divide:
 
 TIMESPEC_DIVIDE - Divide Two struct timespec Instances
 ------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_divide
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_timespec_divide(
-        const struct timespec *lhs,
-        const struct timespec *rhs,
-        uint32_t              *ival_percentage,
-        uint32_t              *fval_percentage
-    );
+        void rtems_timespec_divide(
+            const struct timespec *lhs,
+            const struct timespec *rhs,
+            uint32_t              *ival_percentage,
+            uint32_t              *fval_percentage
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This routine divides the ``struct timespec`` instance ``lhs`` by the
+    ``struct timespec`` instance ``rhs``. The result is returned in the
+    ``ival_percentage`` and ``fval_percentage``, representing the integer and
+    fractional results of the division respectively.
 
-**DESCRIPTION:**
+    The ``ival_percentage`` is integer value of calculated percentage and
+    ``fval_percentage`` is fractional part of calculated percentage.
 
-This routine divides the ``struct timespec`` instance ``lhs`` by the ``struct
-timespec`` instance ``rhs``. The result is returned in the ``ival_percentage``
-and ``fval_percentage``, representing the integer and fractional results of the
-division respectively.
+NOTES:
+    The intended use is calculating percentges to three decimal points.
 
-The ``ival_percentage`` is integer value of calculated percentage and
-``fval_percentage`` is fractional part of calculated percentage.
+    When dividing by zero, this routine return both ``ival_percentage`` and
+    ``fval_percentage`` equal zero.
 
-**NOTES:**
+    The division is performed using exclusively integer operations.
 
-The intended use is calculating percentges to three decimal points.
+.. raw:: latex
 
-When dividing by zero, this routine return both ``ival_percentage`` and
-``fval_percentage`` equal zero.
-
-The division is performed using exclusively integer operations.
+   \clearpage
 
 .. _rtems_timespec_divide_by_integer:
 
 TIMESPEC_DIVIDE_BY_INTEGER - Divide a struct timespec Instance by an Integer
 ----------------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_divide_by_integer
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_timespec_divide_by_integer(
-        const struct timespec *time,
-        uint32_t               iterations,
-        struct timespec       *result
-    );
+        int rtems_timespec_divide_by_integer(
+            const struct timespec *time,
+            uint32_t               iterations,
+            struct timespec       *result
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This routine divides the ``struct timespec`` instance ``time`` by the
+    integer value ``iterations``.  The result is saved in ``result``.
 
-**DESCRIPTION:**
+NOTES:
+    The expected use is to assist in benchmark calculations where you typically
+    divide a duration (``time``) by a number of iterations what gives average
+    time.
 
-This routine divides the ``struct timespec`` instance ``time`` by the integer
-value ``iterations``.  The result is saved in ``result``.
+.. raw:: latex
 
-**NOTES:**
-
-The expected use is to assist in benchmark calculations where you typically
-divide a duration (``time``) by a number of iterations what gives average time.
+   \clearpage
 
 .. _rtems_timespec_less_than:
 
 TIMESPEC_LESS_THAN - Less than operator
 ---------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_less_than
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_timespec_less_than(
-        const struct timespec *lhs,
-        const struct timespec *rhs
-    );
+        bool rtems_timespec_less_than(
+            const struct timespec *lhs,
+            const struct timespec *rhs
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This method returns ``struct true`` if ``lhs`` is less than ``rhs`` and
+    ``struct false`` otherwise.
 
-This method returns ``struct true`` if ``lhs`` is less than ``rhs`` and
-``struct false`` otherwise.
+DESCRIPTION:
+    This method is the less than operator for ``struct timespec``
+    instances. The first parameter is the left hand side and the second is the
+    right hand side of the comparison.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This method is the less than operator for ``struct timespec`` instances. The
-first parameter is the left hand side and the second is the right hand side of
-the comparison.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_greater_than:
 
 TIMESPEC_GREATER_THAN - Greater than operator
 ---------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_greater_than
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_timespec_greater_than(
-        const struct timespec *_lhs,
-        const struct timespec *_rhs
-    );
+        bool rtems_timespec_greater_than(
+            const struct timespec *_lhs,
+            const struct timespec *_rhs
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This method returns ``struct true`` if ``lhs`` is greater than ``rhs`` and
+    ``struct false`` otherwise.
 
-This method returns ``struct true`` if ``lhs`` is greater than ``rhs`` and
-``struct false`` otherwise.
+DESCRIPTION:
+    This method is greater than operator for ``struct timespec`` instances.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This method is greater than operator for ``struct timespec`` instances.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_equal_to:
 
 TIMESPEC_EQUAL_TO - Check equality of timespecs
 -----------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_equal_to
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_timespec_equal_to(
-        const struct timespec *lhs,
-        const struct timespec *rhs
-    );
+        bool rtems_timespec_equal_to(
+            const struct timespec *lhs,
+            const struct timespec *rhs
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This method returns ``struct true`` if ``lhs`` is equal to ``rhs`` and
+    ``struct false`` otherwise.
 
-This method returns ``struct true`` if ``lhs`` is equal to ``rhs`` and ``struct
-false`` otherwise.
+DESCRIPTION:
+    This method is equality operator for ``struct timespec`` instances.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This method is equality operator for ``struct timespec`` instances.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_get_seconds:
 
 TIMESPEC_GET_SECONDS - Get Seconds Portion of struct timespec Instance
 ----------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_get_seconds
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    time_t rtems_timespec_get_seconds(
-        struct timespec *time
-    );
+        time_t rtems_timespec_get_seconds(
+            struct timespec *time
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This method returns the seconds portion of the specified ``struct
+    timespec`` instance.
 
-This method returns the seconds portion of the specified ``struct timespec``
-instance.
+DESCRIPTION:
+    This method returns the seconds portion of the specified ``struct
+    timespec`` instance ``time``.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This method returns the seconds portion of the specified ``struct timespec``
-instance ``time``.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_get_nanoseconds:
 
 TIMESPEC_GET_NANOSECONDS - Get Nanoseconds Portion of the struct timespec Instance
 ----------------------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_get_nanoseconds
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    uint32_t rtems_timespec_get_nanoseconds(
-        struct timespec *_time
-    );
+        uint32_t rtems_timespec_get_nanoseconds(
+            struct timespec *_time
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This method returns the nanoseconds portion of the specified ``struct
+    timespec`` instance.
 
-This method returns the nanoseconds portion of the specified ``struct
-timespec`` instance.
+DESCRIPTION:
+    This method returns the nanoseconds portion of the specified timespec which
+    is pointed by ``_time``.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This method returns the nanoseconds portion of the specified timespec which is
-pointed by ``_time``.
+.. raw:: latex
 
-**NOTES:**
+   \clearpage
 
 .. _rtems_timespec_to_ticks:
 
 TIMESPEC_TO_TICKS - Convert struct timespec Instance to Ticks
 -------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_to_ticks
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    uint32_t rtems_timespec_to_ticks(
-        const struct timespec *time
-    );
+        uint32_t rtems_timespec_to_ticks(
+            const struct timespec *time
+        );
 
-**STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    This directive returns the number of ticks computed.
 
-This directive returns the number of ticks computed.
+DESCRIPTION:
+    This directive converts the ``time`` timespec to the corresponding number
+    of clock ticks.
 
-**DESCRIPTION:**
+NOTES:
+    NONE
 
-This directive converts the ``time`` timespec to the corresponding number of
-clock ticks.
+.. raw:: latex
 
-**NOTES:**
-
-NONE
+   \clearpage
 
 .. _rtems_timespec_from_ticks:
 
 TIMESPEC_FROM_TICKS - Convert Ticks to struct timespec Representation
 ---------------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timespec_from_ticks
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_timespec_from_ticks(
-        uint32_t         ticks,
-        struct timespec *time
-    );
+        void rtems_timespec_from_ticks(
+            uint32_t         ticks,
+            struct timespec *time
+        );
 
-.. index:: rtems_timespec_from_ticks
+DIRECTIVE STATUS CODES:
+    NONE
 
-**STATUS CODES:**
+DESCRIPTION:
+    This routine converts the ``ticks`` to the corresponding ``struct
+    timespec`` representation and stores it in ``time``.
 
-NONE
-
-**DESCRIPTION:**
-
-This routine converts the ``ticks`` to the corresponding ``struct timespec``
-representation and stores it in ``time``.
-
-**NOTES:**
-
-NONE
+NOTES:
+    NONE

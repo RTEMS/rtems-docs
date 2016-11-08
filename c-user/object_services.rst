@@ -176,38 +176,41 @@ parts and "pretty-printed."
 Directives
 ==========
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_build_name:
 
 BUILD_NAME - Build object name from characters
 ----------------------------------------------
 .. index:: build object name
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_build_name
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_name rtems_build_name(
-        uint8_t c1,
-        uint8_t c2,
-        uint8_t c3,
-        uint8_t c4
-    );
+        rtems_name rtems_build_name(
+            uint8_t c1,
+            uint8_t c2,
+            uint8_t c3,
+            uint8_t c4
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns a name constructed from the four characters.
 
-Returns a name constructed from the four characters.
+DESCRIPTION:
+    This service takes the four characters provided as arguments and constructs
+    a thirty-two bit object name with ``c1`` in the most significant byte and
+    ``c4`` in the least significant byte.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service takes the four characters provided as arguments and constructs a
-thirty-two bit object name with ``c1`` in the most significant byte and ``c4``
-in the least significant byte.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_get_classic_name:
 
@@ -215,38 +218,37 @@ OBJECT_GET_CLASSIC_NAME - Lookup name from id
 ---------------------------------------------
 .. index:: get name from id
 .. index:: obtain name from id
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_get_classic_name
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_object_get_classic_name(
-        rtems_id      id,
-        rtems_name   *name
-    );
+        rtems_status_code rtems_object_get_classic_name(
+            rtems_id      id,
+            rtems_name   *name
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - name looked up successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - invalid name pointer
+     * - ``RTEMS_INVALID_ID``
+       - invalid object id
 
- * - ``RTEMS_SUCCESSFUL``
-   - name looked up successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - invalid name pointer
- * - ``RTEMS_INVALID_ID``
-   - invalid object id
+DESCRIPTION:
+    This service looks up the name for the object ``id`` specified and, if
+    found, places the result in ``*name``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service looks up the name for the object ``id`` specified and, if found,
-places the result in ``*name``.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_get_name:
 
@@ -254,535 +256,515 @@ OBJECT_GET_NAME - Obtain object name as string
 ----------------------------------------------
 .. index:: get object name as string
 .. index:: obtain object name as string
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_get_name
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    char* rtems_object_get_name(
-        rtems_id       id,
-        size_t         length,
-        char          *name
-    );
+        char* rtems_object_get_name(
+            rtems_id       id,
+            size_t         length,
+            char          *name
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns a pointer to the name if successful or ``NULL`` otherwise.
 
-Returns a pointer to the name if successful or ``NULL`` otherwise.
+DESCRIPTION:
+    This service looks up the name of the object specified by ``id`` and places
+    it in the memory pointed to by ``name``.  Every attempt is made to return
+    name as a printable string even if the object has the Classic API
+    thirty-two bit style name.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service looks up the name of the object specified by ``id`` and places it
-in the memory pointed to by ``name``.  Every attempt is made to return name as
-a printable string even if the object has the Classic API thirty-two bit style
-name.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_set_name:
 
 OBJECT_SET_NAME - Set object name
 ---------------------------------
 .. index:: set object name
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_set_name
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_object_set_name(
-        rtems_id       id,
-        const char    *name
-    );
+        rtems_status_code rtems_object_set_name(
+            rtems_id       id,
+            const char    *name
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - name looked up successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - invalid name pointer
+     * - ``RTEMS_INVALID_ID``
+       - invalid object id
 
- * - ``RTEMS_SUCCESSFUL``
-   - name looked up successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - invalid name pointer
- * - ``RTEMS_INVALID_ID``
-   - invalid object id
+DESCRIPTION:
+    This service sets the name of ``id`` to that specified by the string
+    located at ``name``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service sets the name of ``id`` to that specified by the string located at
-``name``.
+    If the object specified by ``id`` is of a class that has a string name,
+    this method will free the existing name to the RTEMS Workspace and allocate
+    enough memory from the RTEMS Workspace to make a copy of the string located
+    at ``name``.
 
-**NOTES:**
+    If the object specified by ``id`` is of a class that has a thirty-two bit
+    integer style name, then the first four characters in ``*name`` will be
+    used to construct the name.  name to the RTEMS Workspace and allocate
+    enough memory from the RTEMS Workspace to make a copy of the string
 
-This directive is strictly local and does not impact task scheduling.
+.. raw:: latex
 
-If the object specified by ``id`` is of a class that has a string name, this
-method will free the existing name to the RTEMS Workspace and allocate enough
-memory from the RTEMS Workspace to make a copy of the string located at
-``name``.
-
-If the object specified by ``id`` is of a class that has a thirty-two bit
-integer style name, then the first four characters in ``*name`` will be used to
-construct the name.  name to the RTEMS Workspace and allocate enough memory
-from the RTEMS Workspace to make a copy of the string
+   \clearpage
 
 .. _rtems_object_id_get_api:
 
 OBJECT_ID_GET_API - Obtain API from Id
 --------------------------------------
 .. index:: obtain API from id
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_get_api
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_id_get_api(
-        rtems_id id
-    );
+        int rtems_object_id_get_api(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns the API portion of the object Id.
 
-Returns the API portion of the object Id.
+DESCRIPTION:
+    This directive returns the API portion of the provided object ``id``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This directive returns the API portion of the provided object ``id``.
+    This directive does NOT validate the ``id`` provided.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-This directive does NOT validate the ``id`` provided.
+   \clearpage
 
 .. _rtems_object_id_get_class:
 
 OBJECT_ID_GET_CLASS - Obtain Class from Id
 ------------------------------------------
 .. index:: obtain class from object id
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_get_class
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_id_get_class(
-        rtems_id id
-    );
+        int rtems_object_id_get_class(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns the class portion of the object Id.
 
-Returns the class portion of the object Id.
+DESCRIPTION:
+    This directive returns the class portion of the provided object ``id``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This directive returns the class portion of the provided object ``id``.
+    This directive does NOT validate the ``id`` provided.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-This directive does NOT validate the ``id`` provided.
+   \clearpage
 
 .. _rtems_object_id_get_node:
 
 OBJECT_ID_GET_NODE - Obtain Node from Id
 ----------------------------------------
 .. index:: obtain node from object id
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_get_node
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_id_get_node(
-        rtems_id id
-    );
+        int rtems_object_id_get_node(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns the node portion of the object Id.
 
-Returns the node portion of the object Id.
+DESCRIPTION:
+    This directive returns the node portion of the provided object ``id``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This directive returns the node portion of the provided object ``id``.
+    This directive does NOT validate the ``id`` provided.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-This directive does NOT validate the ``id`` provided.
+   \clearpage
 
 .. _rtems_object_id_get_index:
 
 OBJECT_ID_GET_INDEX - Obtain Index from Id
 ------------------------------------------
 .. index:: obtain index from object id
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_get_index
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_id_get_index(
-        rtems_id id
-    );
+        int rtems_object_id_get_index(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns the index portion of the object Id.
 
-Returns the index portion of the object Id.
+DESCRIPTION:
+    This directive returns the index portion of the provided object ``id``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This directive returns the index portion of the provided object ``id``.
+    This directive does NOT validate the ``id`` provided.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-This directive does NOT validate the ``id`` provided.
+   \clearpage
 
 .. _rtems_build_id:
 
 BUILD_ID - Build Object Id From Components
 ------------------------------------------
 .. index:: build object id from components
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_build_id
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_id rtems_build_id(
-        int the_api,
-        int the_class,
-        int the_node,
-        int the_index
-    );
+        rtems_id rtems_build_id(
+            int the_api,
+            int the_class,
+            int the_node,
+            int the_index
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns an object Id constructed from the provided arguments.
 
-Returns an object Id constructed from the provided arguments.
+DESCRIPTION:
+    This service constructs an object Id from the provided ``the_api``,
+    ``the_class``, ``the_node``, and ``the_index``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service constructs an object Id from the provided ``the_api``,
-``the_class``, ``the_node``, and ``the_index``.
+    This directive does NOT validate the arguments provided or the Object id
+    returned.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-This directive does NOT validate the arguments provided or the Object id
-returned.
+   \clearpage
 
 .. _rtems_object_id_api_minimum:
 
 OBJECT_ID_API_MINIMUM - Obtain Minimum API Value
 ------------------------------------------------
 .. index:: obtain minimum API value
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_api_minimum
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_id_api_minimum(void);
+        int rtems_object_id_api_minimum(void);
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns the minimum valid for the API portion of an object Id.
 
-Returns the minimum valid for the API portion of an object Id.
+DESCRIPTION:
+    This service returns the minimum valid for the API portion of an object Id.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the minimum valid for the API portion of an object Id.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_id_api_maximum:
 
 OBJECT_ID_API_MAXIMUM - Obtain Maximum API Value
 ------------------------------------------------
 .. index:: obtain maximum API value
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_api_maximum
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_id_api_maximum(void);
+        int rtems_object_id_api_maximum(void);
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    Returns the maximum valid for the API portion of an object Id.
 
-Returns the maximum valid for the API portion of an object Id.
+DESCRIPTION:
+    This service returns the maximum valid for the API portion of an object Id.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the maximum valid for the API portion of an object Id.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_api_minimum_class:
 
 OBJECT_API_MINIMUM_CLASS - Obtain Minimum Class Value
 -----------------------------------------------------
 .. index:: obtain minimum class value
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_api_minimum_class
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_api_minimum_class(
-        int api
-    );
+        int rtems_object_api_minimum_class(
+            int api
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    If ``api`` is not valid, -1 is returned.
 
-If ``api`` is not valid, -1 is returned.
+    If successful, this service returns the minimum valid for the class portion
+    of an object Id for the specified ``api``.
 
-If successful, this service returns the minimum valid for the class portion of
-an object Id for the specified ``api``.
+DESCRIPTION:
+    This service returns the minimum valid for the class portion of an object
+    Id for the specified ``api``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the minimum valid for the class portion of an object Id
-for the specified ``api``.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_api_maximum_class:
 
 OBJECT_API_MAXIMUM_CLASS - Obtain Maximum Class Value
 -----------------------------------------------------
 .. index:: obtain maximum class value
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_api_maximum_class
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_api_maximum_class(
-        int api
-    );
+        int rtems_object_api_maximum_class(
+            int api
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    If ``api`` is not valid, -1 is returned.
 
-If ``api`` is not valid, -1 is returned.
+    If successful, this service returns the maximum valid for the class portion
+    of an object Id for the specified ``api``.
 
-If successful, this service returns the maximum valid for the class portion of
-an object Id for the specified ``api``.
+DESCRIPTION:
+    This service returns the maximum valid for the class portion of an object
+    Id for the specified ``api``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the maximum valid for the class portion of an object Id
-for the specified ``api``.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_id_api_minimum_class:
 
 OBJECT_ID_API_MINIMUM_CLASS - Obtain Minimum Class Value for an API
 -------------------------------------------------------------------
 .. index:: obtain minimum class value for an API
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_api_minimum_class
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_get_id_api_minimum_class(
-        int api
-    );
+        int rtems_object_get_id_api_minimum_class(
+            int api
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    If ``api`` is not valid, -1 is returned.
 
-If ``api`` is not valid, -1 is returned.
+    If successful, this service returns the index corresponding to the first
+    object class of the specified ``api``.
 
-If successful, this service returns the index corresponding to the first
-object class of the specified ``api``.
+DESCRIPTION:
+    This service returns the index for the first object class associated with
+    the specified ``api``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the index for the first object class associated with
-the specified ``api``.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_id_api_maximum_class:
 
 OBJECT_ID_API_MAXIMUM_CLASS - Obtain Maximum Class Value for an API
 -------------------------------------------------------------------
 .. index:: obtain maximum class value for an API
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_id_api_maximum_class
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_object_get_api_maximum_class(
-        int api
-    );
+        int rtems_object_get_api_maximum_class(
+            int api
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    If ``api`` is not valid, -1 is returned.
 
-If ``api`` is not valid, -1 is returned.
+    If successful, this service returns the index corresponding to the last
+    object class of the specified ``api``.
 
-If successful, this service returns the index corresponding to the last
-object class of the specified ``api``.
+DESCRIPTION:
+    This service returns the index for the last object class associated with
+    the specified ``api``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the index for the last object class associated with
-the specified ``api``.
+.. raw:: latex
 
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+   \clearpage
 
 .. _rtems_object_get_api_name:
 
 OBJECT_GET_API_NAME - Obtain API Name
 -------------------------------------
 .. index:: obtain API name
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_get_api_name
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    const char* rtems_object_get_api_name(
-        int api
-    );
+        const char* rtems_object_get_api_name(
+            int api
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    If ``api`` is not valid, the string ``"BAD API"`` is returned.
 
-If ``api`` is not valid, the string ``"BAD API"`` is returned.
+    If successful, this service returns a pointer to a string containing the
+    name of the specified ``api``.
 
-If successful, this service returns a pointer to a string containing the name
-of the specified ``api``.
+DESCRIPTION:
+    This service returns the name of the specified ``api``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the name of the specified ``api``.
+    The string returned is from constant space.  Do not modify or free it.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-The string returned is from constant space.  Do not modify or free it.
+   \clearpage
 
 .. _rtems_object_get_api_class_name:
 
 OBJECT_GET_API_CLASS_NAME - Obtain Class Name
 ---------------------------------------------
 .. index:: obtain class name
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_get_api_class_name
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    const char *rtems_object_get_api_class_name(
-        int the_api,
-        int the_class
-    );
+        const char *rtems_object_get_api_class_name(
+            int the_api,
+            int the_class
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    If ``the_api`` is not valid, the string ``"BAD API"`` is returned.
 
-If ``the_api`` is not valid, the string ``"BAD API"`` is returned.
+    If ``the_class`` is not valid, the string ``"BAD CLASS"`` is returned.
 
-If ``the_class`` is not valid, the string ``"BAD CLASS"`` is returned.
+    If successful, this service returns a pointer to a string containing the
+    name of the specified ``the_api`` / ``the_class`` pair.
 
-If successful, this service returns a pointer to a string containing the name
-of the specified ``the_api`` / ``the_class`` pair.
+DESCRIPTION:
+    This service returns the name of the object class indicated by the
+    specified ``the_api`` and ``the_class``.
 
-**DESCRIPTION:**
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
 
-This service returns the name of the object class indicated by the specified
-``the_api`` and ``the_class``.
+    The string returned is from constant space.  Do not modify or free it.
 
-**NOTES:**
+.. raw:: latex
 
-This directive is strictly local and does not impact task scheduling.
-
-The string returned is from constant space.  Do not modify or free it.
+   \clearpage
 
 .. _rtems_object_get_class_information:
 
 OBJECT_GET_CLASS_INFORMATION - Obtain Class Information
 -------------------------------------------------------
 .. index:: obtain class information
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_object_get_class_information
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_object_get_class_information(
-        int                                 the_api,
-        int                                 the_class,
-        rtems_object_api_class_information *info
-    );
+        rtems_status_code rtems_object_get_class_information(
+            int                                 the_api,
+            int                                 the_class,
+            rtems_object_api_class_information *info
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - information obtained successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``info`` is NULL
+     * - ``RTEMS_INVALID_NUMBER``
+       - invalid ``api`` or ``the_class``
 
- * - ``RTEMS_SUCCESSFUL``
-   - information obtained successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``info`` is NULL
- * - ``RTEMS_INVALID_NUMBER``
-   - invalid ``api`` or ``the_class``
+    If successful, the structure located at ``info`` will be filled in with
+    information about the specified ``api`` / ``the_class`` pairing.
 
-If successful, the structure located at ``info`` will be filled in with
-information about the specified ``api`` / ``the_class`` pairing.
+DESCRIPTION:
+    This service returns information about the object class indicated by the
+    specified ``api`` and ``the_class``. This structure is defined as follows:
 
-**DESCRIPTION:**
+    .. code-block:: c
 
-This service returns information about the object class indicated by the
-specified ``api`` and ``the_class``. This structure is defined as follows:
+        typedef struct {
+            rtems_id  minimum_id;
+            rtems_id  maximum_id;
+            int       maximum;
+            bool      auto_extend;
+            int       unallocated;
+        } rtems_object_api_class_information;
 
-.. code-block:: c
-
-    typedef struct {
-        rtems_id  minimum_id;
-        rtems_id  maximum_id;
-        int       maximum;
-        bool      auto_extend;
-        int       unallocated;
-    } rtems_object_api_class_information;
-
-**NOTES:**
-
-This directive is strictly local and does not impact task scheduling.
+NOTES:
+    This directive is strictly local and does not impact task scheduling.

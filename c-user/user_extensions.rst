@@ -436,47 +436,51 @@ This section details the user extension manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_extension_create:
 
 EXTENSION_CREATE - Create a extension set
 -----------------------------------------
 .. index:: create an extension set
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_extension_create
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_extension_create(
-        rtems_name              name,
-        rtems_extensions_table *table,
-        rtems_id               *id
-    );
+        rtems_status_code rtems_extension_create(
+            rtems_name              name,
+            rtems_extensions_table *table,
+            rtems_id               *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - extension set created successfully
+     * - ``RTEMS_INVALID_NAME``
+       - invalid extension set name
+     * - ``RTEMS_TOO_MANY``
+       - too many extension sets created
 
- * - ``RTEMS_SUCCESSFUL``
-   - extension set created successfully
- * - ``RTEMS_INVALID_NAME``
-   - invalid extension set name
- * - ``RTEMS_TOO_MANY``
-   - too many extension sets created
+DESCRIPTION:
+    This directive creates a extension set.  The assigned extension set id is
+    returned in id.  This id is used to access the extension set with other
+    user extension manager directives.  For control and maintenance of the
+    extension set, RTEMS allocates an ESCB from the local ESCB free pool and
+    initializes it.
 
-**DESCRIPTION:**
+NOTES:
 
-This directive creates a extension set.  The assigned extension set id is
-returned in id.  This id is used to access the extension set with other user
-extension manager directives.  For control and maintenance of the extension
-set, RTEMS allocates an ESCB from the local ESCB free pool and initializes it.
+    This directive will not cause the calling task to be preempted.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the calling task to be
-preempted.
+   \clearpage
 
 .. _rtems_extension_ident:
 
@@ -484,80 +488,73 @@ EXTENSION_IDENT - Get ID of a extension set
 -------------------------------------------
 .. index:: get ID of an extension set
 .. index:: obtain ID of an extension set
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_extension_ident
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_extension_ident(
-        rtems_name  name,
-        rtems_id   *id
-    );
+        rtems_status_code rtems_extension_ident(
+            rtems_name  name,
+            rtems_id   *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - extension set identified successfully
+     * - ``RTEMS_INVALID_NAME``
+       - extension set name not found
 
- * - ``RTEMS_SUCCESSFUL``
-   - extension set identified successfully
- * - ``RTEMS_INVALID_NAME``
-   - extension set name not found
+DESCRIPTION:
+    This directive obtains the extension set id associated with the extension
+    set name to be acquired.  If the extension set name is not unique, then the
+    extension set id will match one of the extension sets with that name.
+    However, this extension set id is not guaranteed to correspond to the
+    desired extension set.  The extension set id is used to access this
+    extension set in other extension set related directives.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive obtains the extension set id associated with the extension set
-name to be acquired.  If the extension set name is not unique, then the
-extension set id will match one of the extension sets with that name.  However,
-this extension set id is not guaranteed to correspond to the desired extension
-set.  The extension set id is used to access this extension set in other
-extension set related directives.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_extension_delete:
 
 EXTENSION_DELETE - Delete a extension set
 -----------------------------------------
 .. index:: delete an extension set
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_extension_delete
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_extension_delete(
-        rtems_id id
-    );
+        rtems_status_code rtems_extension_delete(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - extension set deleted successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid extension set id
 
- * - ``RTEMS_SUCCESSFUL``
-   - extension set deleted successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid extension set id
+DESCRIPTION:
+    This directive deletes the extension set specified by ``id``.  If the
+    extension set is running, it is automatically canceled.  The ESCB for the
+    deleted extension set is reclaimed by RTEMS.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive deletes the extension set specified by ``id``.  If the extension
-set is running, it is automatically canceled.  The ESCB for the deleted
-extension set is reclaimed by RTEMS.
+    A extension set can be deleted by a task other than the task which created
+    the extension set.
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
-
-A extension set can be deleted by a task other than the task which created the
-extension set.
-
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+NOTES:
+    This directive will not cause the running task to be preempted.

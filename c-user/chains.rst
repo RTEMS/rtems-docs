@@ -15,10 +15,6 @@ The Chains API is an interface to the Super Core (score) chain
 implementation. The Super Core uses chains for all list type functions. This
 includes wait queues and task queues. The Chains API provided by RTEMS is:
 
-- ``rtems_chain_node`` - Chain node used in user objects
-
-- ``rtems_chain_control`` - Chain control node
-
 - rtems_chain_initialize_ - initialize the chain with nodes
 
 - rtems_chain_initialize_empty_ - initialize the chain as empty
@@ -217,657 +213,645 @@ The section details the Chains directives.
 
 .. COMMENT: Initialize this Chain With Nodes
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_chain_initialize:
 
 Initialize Chain With Nodes
 ---------------------------
 .. index:: chain initialize
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_initialize
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_initialize(
-        rtems_chain_control *the_chain,
-        void                *starting_address,
-        size_t               number_nodes,
-        size_t               node_size
-    )
+        void rtems_chain_initialize(
+            rtems_chain_control *the_chain,
+            void                *starting_address,
+            size_t               number_nodes,
+            size_t               node_size
+        )
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This function take in a pointer to a chain control and initializes it to
+    contain a set of chain nodes.  The chain will contain ``number_nodes``
+    chain nodes from the memory pointed to by ``start_address``.  Each node is
+    assumed to be ``node_size`` bytes.
 
-**DESCRIPTION:**
+NOTES:
+    This call will discard any nodes on the chain.
 
-This function take in a pointer to a chain control and initializes it to
-contain a set of chain nodes.  The chain will contain ``number_nodes`` chain
-nodes from the memory pointed to by ``start_address``.  Each node is assumed to
-be ``node_size`` bytes.
-
-**NOTES:**
-
-This call will discard any nodes on the chain.
-
-This call does NOT inititialize any user data on each node.
+    This call does NOT inititialize any user data on each node.
 
 .. COMMENT: Initialize this Chain as Empty
+
+.. raw:: latex
+
+   \clearpage
 
 .. _rtems_chain_initialize_empty:
 
 Initialize Empty
 ----------------
 .. index:: chain initialize empty
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_initialize_empty
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_initialize_empty(
-        rtems_chain_control *the_chain
-    );
+        void rtems_chain_initialize_empty(
+            rtems_chain_control *the_chain
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This function take in a pointer to a chain control and initializes it to
+    empty.
 
-**DESCRIPTION:**
+NOTES:
+    This call will discard any nodes on the chain.
 
-This function take in a pointer to a chain control and initializes it to empty.
+.. raw:: latex
 
-**NOTES:**
-
-This call will discard any nodes on the chain.
+   \clearpage
 
 .. _rtems_chain_is_null_node:
 
 Is Null Node ?
 --------------
 .. index:: chain is node null
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_is_null_node
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_is_null_node(
-        const rtems_chain_node *the_node
-    );
+        bool rtems_chain_is_null_node(
+            const rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns ``true`` is the node point is NULL and ``false`` if the node is not
+    NULL.
 
-Returns ``true`` is the node point is NULL and ``false`` if the node is not
-NULL.
+DESCRIPTION:
+    Tests the node to see if it is a NULL returning ``true`` if a null.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-Tests the node to see if it is a NULL returning ``true`` if a null.
+   \clearpage
 
 .. _rtems_chain_head:
 
 Head
 ----
 .. index:: chain get head
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_head
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_chain_node *rtems_chain_head(
-        rtems_chain_control *the_chain
-    )
+        rtems_chain_node *rtems_chain_head(
+            rtems_chain_control *the_chain
+        )
 
-**RETURNS**
+RETURNS:
+    Returns the permanent head node of the chain.
 
-Returns the permanent head node of the chain.
+DESCRIPTION:
+    This function returns a pointer to the first node on the chain.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns a pointer to the first node on the chain.
+   \clearpage
 
 .. _rtems_chain_tail:
 
 Tail
 ----
 .. index:: chain get tail
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_tail
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_chain_node *rtems_chain_tail(
-        rtems_chain_control *the_chain
-    );
+        rtems_chain_node *rtems_chain_tail(
+            rtems_chain_control *the_chain
+        );
 
-**RETURNS**
+RETURNS:
+    Returns the permanent tail node of the chain.
 
-Returns the permanent tail node of the chain.
+DESCRIPTION:
+    This function returns a pointer to the last node on the chain.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns a pointer to the last node on the chain.
+   \clearpage
 
 .. _rtems_chain_are_nodes_equal:
 
 Are Two Nodes Equal ?
 ---------------------
 .. index:: chare are nodes equal
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_are_nodes_equal
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_are_nodes_equal(
-        const rtems_chain_node *left,
-        const rtems_chain_node *right
-    );
+        bool rtems_chain_are_nodes_equal(
+            const rtems_chain_node *left,
+            const rtems_chain_node *right
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if the left node and the right node are
+    equal, and ``false`` otherwise.
 
-This function returns ``true`` if the left node and the right node are equal,
-and ``false`` otherwise.
+DESCRIPTION:
+    This function returns ``true`` if the left node and the right node are
+    equal, and ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if the left node and the right node are equal,
-and ``false`` otherwise.
+   \clearpage
 
 .. _rtems_chain_is_empty:
 
 Is the Chain Empty
 ------------------
 .. index:: chain is chain empty
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_is_empty
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_is_empty(
-        rtems_chain_control *the_chain
-    );
+        bool rtems_chain_is_empty(
+            rtems_chain_control *the_chain
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if there a no nodes on the chain and
+    ``false`` otherwise.
 
-This function returns ``true`` if there a no nodes on the chain and ``false``
-otherwise.
+DESCRIPTION:
+    This function returns ``true`` if there a no nodes on the chain and
+    ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if there a no nodes on the chain and ``false``
-otherwise.
+   \clearpage
 
 .. _rtems_chain_is_first:
 
 Is this the First Node on the Chain ?
 -------------------------------------
 .. index:: chain is node the first
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_is_first
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_is_first(
-        const rtems_chain_node *the_node
-    );
+        bool rtems_chain_is_first(
+            const rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if the node is the first node on a chain and
+    ``false`` otherwise.
 
-This function returns ``true`` if the node is the first node on a chain and
-``false`` otherwise.
+DESCRIPTION:
+    This function returns ``true`` if the node is the first node on a chain and
+    ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if the node is the first node on a chain and
-``false`` otherwise.
+   \clearpage
 
 .. _rtems_chain_is_last:
 
 Is this the Last Node on the Chain ?
 ------------------------------------
 .. index:: chain is node the last
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_is_last
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_is_last(
-        const rtems_chain_node *the_node
-    );
+        bool rtems_chain_is_last(
+            const rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if the node is the last node on a chain and
+    ``false`` otherwise.
 
-This function returns ``true`` if the node is the last node on a chain and
-``false`` otherwise.
+DESCRIPTION:
+    This function returns ``true`` if the node is the last node on a chain and
+    ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if the node is the last node on a chain and
-``false`` otherwise.
+   \clearpage
 
 .. _rtems_chain_has_only_one_node:
 
 Does this Chain have only One Node ?
 ------------------------------------
 .. index:: chain only one node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_has_only_one_node
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_has_only_one_node(
-        const rtems_chain_control *the_chain
-    );
+        bool rtems_chain_has_only_one_node(
+            const rtems_chain_control *the_chain
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if there is only one node on the chain and
+    ``false`` otherwise.
 
-This function returns ``true`` if there is only one node on the chain and
-``false`` otherwise.
+DESCRIPTION:
+    This function returns ``true`` if there is only one node on the chain and
+    ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if there is only one node on the chain and
-``false`` otherwise.
+   \clearpage
 
 .. _rtems_chain_node_count_unprotected:
 
 Returns the node count of the chain (unprotected)
 -------------------------------------------------
 .. index:: chain only one node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_node_count_unprotected
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    size_t rtems_chain_node_count_unprotected(
-        const rtems_chain_control *the_chain
-    );
+        size_t rtems_chain_node_count_unprotected(
+            const rtems_chain_control *the_chain
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns the node count of the chain.
 
-This function returns the node count of the chain.
+DESCRIPTION:
+    This function returns the node count of the chain.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns the node count of the chain.
+   \clearpage
 
 .. _rtems_chain_is_head:
 
 Is this Node the Chain Head ?
 -----------------------------
 .. index:: chain is node the head
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_is_head
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_is_head(
-        rtems_chain_control    *the_chain,
-        rtems_const chain_node *the_node
-    );
+        bool rtems_chain_is_head(
+            rtems_chain_control    *the_chain,
+            rtems_const chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if the node is the head of the chain and
+    ``false`` otherwise.
 
-This function returns ``true`` if the node is the head of the chain and
-``false`` otherwise.
+DESCRIPTION:
+    This function returns ``true`` if the node is the head of the chain and
+    ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if the node is the head of the chain and
-``false`` otherwise.
+   \clearpage
 
 .. _rtems_chain_is_tail:
 
 Is this Node the Chain Tail ?
 -----------------------------
 .. index:: chain is node the tail
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_is_tail
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_chain_is_tail(
-        rtems_chain_control    *the_chain,
-        const rtems_chain_node *the_node
-    )
+        bool rtems_chain_is_tail(
+            rtems_chain_control    *the_chain,
+            const rtems_chain_node *the_node
+        )
 
-**RETURNS**
+RETURNS:
+    This function returns ``true`` if the node is the tail of the chain and
+    ``false`` otherwise.
 
-This function returns ``true`` if the node is the tail of the chain and
-``false`` otherwise.
+DESCRIPTION:
+    This function returns ``true`` if the node is the tail of the chain and
+    ``false`` otherwise.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This function returns ``true`` if the node is the tail of the chain and
-``false`` otherwise.
+   \clearpage
 
 .. _rtems_chain_extract:
 
 Extract a Node
 --------------
 .. index:: chain extract a node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_extract
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_extract(
-        rtems_chain_node *the_node
-    );
+        void rtems_chain_extract(
+            rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine extracts the node from the chain on which it resides.
 
-**DESCRIPTION:**
+NOTES:
+    Interrupts are disabled while extracting the node to ensure the atomicity
+    of the operation.
 
-This routine extracts the node from the chain on which it resides.
+    Use ``rtems_chain_extract_unprotected`` to avoid disabling of interrupts.
 
-**NOTES:**
+.. raw:: latex
 
-Interrupts are disabled while extracting the node to ensure the atomicity of
-the operation.
-
-Use rtems_chain_extract_unprotected_ to avoid disabling of interrupts.
+   \clearpage
 
 .. _rtems_chain_extract_unprotected:
 
 Extract a Node (unprotected)
 ----------------------------
 .. index:: chain extract a node unprotected
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_extract_unprotected
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_extract_unprotected(
-        rtems_chain_node *the_node
-    );
+        void rtems_chain_extract_unprotected(
+            rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine extracts the node from the chain on which it resides.
 
-**DESCRIPTION:**
+NOTES:
+    The function does nothing to ensure the atomicity of the operation.
 
-This routine extracts the node from the chain on which it resides.
+.. raw:: latex
 
-**NOTES:**
-
-The function does nothing to ensure the atomicity of the operation.
+   \clearpage
 
 .. _rtems_chain_get:
 
 Get the First Node
 ------------------
 .. index:: chain get first node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_get
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_chain_node *rtems_chain_get(
-        rtems_chain_control *the_chain
-    );
+        rtems_chain_node *rtems_chain_get(
+            rtems_chain_control *the_chain
+        );
 
-**RETURNS**
+RETURNS:
+    Returns a pointer a node. If a node was removed, then a pointer to that
+    node is returned. If the chain was empty, then ``NULL`` is returned.
 
-Returns a pointer a node. If a node was removed, then a pointer to that node is
-returned. If the chain was empty, then ``NULL`` is returned.
+DESCRIPTION:
+    This function removes the first node from the chain and returns a pointer
+    to that node.  If the chain is empty, then ``NULL`` is returned.
 
-**DESCRIPTION:**
+NOTES:
+    Interrupts are disabled while obtaining the node to ensure the atomicity of
+    the operation.
 
-This function removes the first node from the chain and returns a pointer to
-that node.  If the chain is empty, then ``NULL`` is returned.
+    Use ``rtems_chain_get_unprotected()`` to avoid disabling of interrupts.
 
-**NOTES:**
+.. raw:: latex
 
-Interrupts are disabled while obtaining the node to ensure the atomicity of the
-operation.
-
-Use ``rtems_chain_get_unprotected()`` to avoid disabling of interrupts.
+   \clearpage
 
 .. _rtems_chain_get_unprotected:
 
 Get the First Node (unprotected)
 --------------------------------
 .. index:: chain get first node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_get_unprotected
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_chain_node *rtems_chain_get_unprotected(
-        rtems_chain_control *the_chain
-    );
+        rtems_chain_node *rtems_chain_get_unprotected(
+            rtems_chain_control *the_chain
+        );
 
-**RETURNS:**
+RETURNS:
+    A pointer to the former first node is returned.
 
-A pointer to the former first node is returned.
+DESCRIPTION:
+    Removes the first node from the chain and returns a pointer to it.  In case
+    the chain was empty, then the results are unpredictable.
 
-**DESCRIPTION:**
+NOTES:
+    The function does nothing to ensure the atomicity of the operation.
 
-Removes the first node from the chain and returns a pointer to it.  In case the
-chain was empty, then the results are unpredictable.
+.. raw:: latex
 
-**NOTES:**
-
-The function does nothing to ensure the atomicity of the operation.
+   \clearpage
 
 .. _rtems_chain_insert:
 
 Insert a Node
 -------------
 .. index:: chain insert a node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_insert
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_insert(
-        rtems_chain_node *after_node,
-        rtems_chain_node *the_node
-    );
+        void rtems_chain_insert(
+            rtems_chain_node *after_node,
+            rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine inserts a node on a chain immediately following the specified
+    node.
 
-**DESCRIPTION:**
+NOTES:
+    Interrupts are disabled during the insert to ensure the atomicity of the
+    operation.
 
-This routine inserts a node on a chain immediately following the specified
-node.
+    Use ``rtems_chain_insert_unprotected()`` to avoid disabling of interrupts.
 
-**NOTES:**
+.. raw:: latex
 
-Interrupts are disabled during the insert to ensure the atomicity of the
-operation.
-
-Use rtems_chain_insert_unprotected_ to avoid disabling of interrupts.
+   \clearpage
 
 .. _rtems_chain_insert_unprotected:
 
 Insert a Node (unprotected)
 ---------------------------
 .. index:: chain insert a node unprotected
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_insert_unprotected
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_insert_unprotected(
-        rtems_chain_node *after_node,
-        rtems_chain_node *the_node
-    );
+        void rtems_chain_insert_unprotected(
+            rtems_chain_node *after_node,
+            rtems_chain_node *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine inserts a node on a chain immediately following the specified
+    node.
 
-**DESCRIPTION:**
+NOTES:
+    The function does nothing to ensure the atomicity of the operation.
 
-This routine inserts a node on a chain immediately following the specified
-node.
+.. raw:: latex
 
-**NOTES:**
-
-The function does nothing to ensure the atomicity of the operation.
+   \clearpage
 
 .. _rtems_chain_append:
 
 Append a Node
 -------------
 .. index:: chain append a node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_append
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_append(
-        rtems_chain_control *the_chain,
-        rtems_chain_node    *the_node
-    );
+        void rtems_chain_append(
+            rtems_chain_control *the_chain,
+            rtems_chain_node    *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine appends a node to the end of a chain.
 
-**DESCRIPTION:**
+NOTES:
+    Interrupts are disabled during the append to ensure the atomicity of the
+    operation.
 
-This routine appends a node to the end of a chain.
+    Use ``rtems_chain_append_unprotected`` to avoid disabling of interrupts.
 
-**NOTES:**
+.. raw:: latex
 
-Interrupts are disabled during the append to ensure the atomicity of the
-operation.
-
-Use rtems_chain_append_unprotected_ to avoid disabling of interrupts.
+   \clearpage
 
 .. _rtems_chain_append_unprotected:
 
 Append a Node (unprotected)
 ---------------------------
 .. index:: chain append a node unprotected
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_append_unprotected
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_append_unprotected(
-        rtems_chain_control *the_chain,
-        rtems_chain_node    *the_node
-    );
+        void rtems_chain_append_unprotected(
+            rtems_chain_control *the_chain,
+            rtems_chain_node    *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine appends a node to the end of a chain.
 
-**DESCRIPTION:**
+NOTES:
+    The function does nothing to ensure the atomicity of the operation.
 
-This routine appends a node to the end of a chain.
+.. raw:: latex
 
-**NOTES:**
-
-The function does nothing to ensure the atomicity of the operation.
+   \clearpage
 
 .. _rtems_chain_prepend:
 
 Prepend a Node
 --------------
 .. index:: prepend node
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_prepend
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_prepend(
-        rtems_chain_control *the_chain,
-        rtems_chain_node    *the_node
-    );
+        void rtems_chain_prepend(
+            rtems_chain_control *the_chain,
+            rtems_chain_node    *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine prepends a node to the front of the chain.
 
-**DESCRIPTION:**
+NOTES:
+    Interrupts are disabled during the prepend to ensure the atomicity of the
+    operation.
 
-This routine prepends a node to the front of the chain.
+    Use ``rtems_chain_prepend_unprotected`` to avoid disabling of interrupts.
 
-**NOTES:**
+.. raw:: latex
 
-Interrupts are disabled during the prepend to ensure the atomicity of the
-operation.
-
-Use rtems_chain_prepend_unprotected_ to avoid disabling of
-interrupts.
+   \clearpage
 
 .. _rtems_chain_prepend_unprotected:
 
 Prepend a Node (unprotected)
 ----------------------------
 .. index:: prepend node unprotected
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_chain_prepend_unprotected
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_chain_prepend_unprotected(
-        rtems_chain_control *the_chain,
-        rtems_chain_node    *the_node
-    );
+        void rtems_chain_prepend_unprotected(
+            rtems_chain_control *the_chain,
+            rtems_chain_node    *the_node
+        );
 
-**RETURNS**
+RETURNS:
+    Returns nothing.
 
-Returns nothing.
+DESCRIPTION:
+    This routine prepends a node to the front of the chain.
 
-**DESCRIPTION:**
-
-This routine prepends a node to the front of the chain.
-
-**NOTES:**
-
-The function does nothing to ensure the atomicity of the operation.
+NOTES:
+    The function does nothing to ensure the atomicity of the operation.

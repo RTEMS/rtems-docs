@@ -656,180 +656,184 @@ This section details the symmetric multiprocessing services.  A subsection is
 dedicated to each of these services and describes the calling sequence, related
 constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_get_processor_count:
 
 GET_PROCESSOR_COUNT - Get processor count
 -----------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        uint32_t rtems_get_processor_count(void);
 
-    uint32_t rtems_get_processor_count(void);
+DIRECTIVE STATUS CODES:
+    The count of processors in the system.
 
-**DIRECTIVE STATUS CODES:**
+DESCRIPTION:
+    On uni-processor configurations a value of one will be returned.
 
-The count of processors in the system.
+    On SMP configurations this returns the value of a global variable set
+    during system initialization to indicate the count of utilized processors.
+    The processor count depends on the physically or virtually available
+    processors and application configuration.  The value will always be less
+    than or equal to the maximum count of application configured processors.
 
-**DESCRIPTION:**
+NOTES:
+    None.
 
-On uni-processor configurations a value of one will be returned.
+.. raw:: latex
 
-On SMP configurations this returns the value of a global variable set during
-system initialization to indicate the count of utilized processors.  The
-processor count depends on the physically or virtually available processors and
-application configuration.  The value will always be less than or equal to the
-maximum count of application configured processors.
-
-**NOTES:**
-
-None.
+   \clearpage
 
 .. _rtems_get_current_processor:
 
 GET_CURRENT_PROCESSOR - Get current processor index
 ---------------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        uint32_t rtems_get_current_processor(void);
 
-    uint32_t rtems_get_current_processor(void);
+DIRECTIVE STATUS CODES:
+    The index of the current processor.
 
-**DIRECTIVE STATUS CODES:**
+DESCRIPTION:
+    On uni-processor configurations a value of zero will be returned.
 
-The index of the current processor.
+    On SMP configurations an architecture specific method is used to obtain the
+    index of the current processor in the system.  The set of processor indices
+    is the range of integers starting with zero up to the processor count minus
+    one.
 
-**DESCRIPTION:**
+    Outside of sections with disabled thread dispatching the current processor
+    index may change after every instruction since the thread may migrate from
+    one processor to another.  Sections with disabled interrupts are sections
+    with thread dispatching disabled.
 
-On uni-processor configurations a value of zero will be returned.
+NOTES:
+    None.
 
-On SMP configurations an architecture specific method is used to obtain the
-index of the current processor in the system.  The set of processor indices is
-the range of integers starting with zero up to the processor count minus one.
+.. raw:: latex
 
-Outside of sections with disabled thread dispatching the current processor
-index may change after every instruction since the thread may migrate from one
-processor to another.  Sections with disabled interrupts are sections with
-thread dispatching disabled.
-
-**NOTES:**
-
-None.
+   \clearpage
 
 .. _rtems_scheduler_ident:
-.. _SCHEDULER_IDENT - Get ID of a scheduler:
 
 SCHEDULER_IDENT - Get ID of a scheduler
 ---------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_status_code rtems_scheduler_ident(
+            rtems_name  name,
+            rtems_id   *id
+        );
 
-    rtems_status_code rtems_scheduler_ident(
-        rtems_name  name,
-        rtems_id   *id
-    );
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**DIRECTIVE STATUS CODES:**
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``id`` is NULL
+     * - ``RTEMS_INVALID_NAME``
+       - invalid scheduler name
+     * - ``RTEMS_UNSATISFIED``
+       - a scheduler with this name exists, but the processor set of this scheduler
+         is empty
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
+    Identifies a scheduler by its name.  The scheduler name is determined by
+    the scheduler configuration.  See :ref:`Configuring a System`.
 
- * - ``RTEMS_SUCCESSFUL``
-   - successful operation
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``id`` is NULL
- * - ``RTEMS_INVALID_NAME``
-   - invalid scheduler name
- * - ``RTEMS_UNSATISFIED``
-   - a scheduler with this name exists, but the processor set of this scheduler
-     is empty
+NOTES:
+    None.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-Identifies a scheduler by its name.  The scheduler name is determined by the
-scheduler configuration.  See :ref:`Configuring a System`.
-
-**NOTES:**
-
-None.
+   \clearpage
 
 .. _rtems_scheduler_get_processor_set:
 
 SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
 --------------------------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_status_code rtems_scheduler_get_processor_set(
+            rtems_id   scheduler_id,
+            size_t     cpusetsize,
+            cpu_set_t *cpuset
+        );
 
-    rtems_status_code rtems_scheduler_get_processor_set(
-        rtems_id   scheduler_id,
-        size_t     cpusetsize,
-        cpu_set_t *cpuset
-    );
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**DIRECTIVE STATUS CODES:**
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``cpuset`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid scheduler id
+     * - ``RTEMS_INVALID_NUMBER``
+       - the affinity set buffer is too small for set of processors owned by
+         the scheduler
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
+    Returns the processor set owned by the scheduler in ``cpuset``.  A set bit
+    in the processor set means that this processor is owned by the scheduler
+    and a cleared bit means the opposite.
 
- * - ``RTEMS_SUCCESSFUL``
-   - successful operation
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``cpuset`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid scheduler id
- * - ``RTEMS_INVALID_NUMBER``
-   - the affinity set buffer is too small for set of processors owned by the
-     scheduler
+NOTES:
+    None.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-Returns the processor set owned by the scheduler in ``cpuset``.  A set bit in
-the processor set means that this processor is owned by the scheduler and a
-cleared bit means the opposite.
-
-**NOTES:**
-
-None.
+   \clearpage
 
 .. _rtems_task_get_scheduler:
 
 TASK_GET_SCHEDULER - Get scheduler of a task
 --------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_status_code rtems_task_get_scheduler(
+            rtems_id  task_id,
+            rtems_id *scheduler_id
+        );
 
-    rtems_status_code rtems_task_get_scheduler(
-        rtems_id  task_id,
-        rtems_id *scheduler_id
-    );
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**DIRECTIVE STATUS CODES:**
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``scheduler_id`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid task id
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
+    Returns the scheduler identifier of a task identified by ``task_id`` in
+    ``scheduler_id``.
 
- * - ``RTEMS_SUCCESSFUL``
-   - successful operation
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``scheduler_id`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid task id
+NOTES:
+    None.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-Returns the scheduler identifier of a task identified by ``task_id`` in
-``scheduler_id``.
-
-**NOTES:**
-
-None.
+   \clearpage
 
 .. _rtems_task_set_scheduler:
 .. _TASK_SET_SCHEDULER - Set scheduler of a task:
@@ -837,159 +841,156 @@ None.
 TASK_SET_SCHEDULER - Set scheduler of a task
 --------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_status_code rtems_task_set_scheduler(
+            rtems_id task_id,
+            rtems_id scheduler_id
+        );
 
-    rtems_status_code rtems_task_set_scheduler(
-        rtems_id task_id,
-        rtems_id scheduler_id
-    );
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**DIRECTIVE STATUS CODES:**
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ID``
+       - invalid task or scheduler id
+     * - ``RTEMS_INCORRECT_STATE``
+       - the task is in the wrong state to perform a scheduler change
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
+    Sets the scheduler of a task identified by ``task_id`` to the scheduler
+    identified by ``scheduler_id``.  The scheduler of a task is initialized to
+    the scheduler of the task that created it.
 
- * - ``RTEMS_SUCCESSFUL``
-   - successful operation
- * - ``RTEMS_INVALID_ID``
-   - invalid task or scheduler id
- * - ``RTEMS_INCORRECT_STATE``
-   - the task is in the wrong state to perform a scheduler change
+NOTES:
+    None.
 
-**DESCRIPTION:**
+EXAMPLE:
+    .. code-block:: c
+        :linenos:
 
-Sets the scheduler of a task identified by ``task_id`` to the scheduler
-identified by ``scheduler_id``.  The scheduler of a task is initialized to the
-scheduler of the task that created it.
+        #include <rtems.h>
+        #include <assert.h>
 
-**NOTES:**
+        void task(rtems_task_argument arg);
 
-None.
+        void example(void)
+        {
+            rtems_status_code sc;
+            rtems_id          task_id;
+            rtems_id          scheduler_id;
+            rtems_name        scheduler_name;
 
-**EXAMPLE:**
+            scheduler_name = rtems_build_name('W', 'O', 'R', 'K');
 
-.. code-block:: c
-    :linenos:
+            sc = rtems_scheduler_ident(scheduler_name, &scheduler_id);
+            assert(sc == RTEMS_SUCCESSFUL);
 
-    #include <rtems.h>
-    #include <assert.h>
+            sc = rtems_task_create(
+                    rtems_build_name('T', 'A', 'S', 'K'),
+                    1,
+                    RTEMS_MINIMUM_STACK_SIZE,
+                    RTEMS_DEFAULT_MODES,
+                    RTEMS_DEFAULT_ATTRIBUTES,
+                    &task_id
+                 );
+            assert(sc == RTEMS_SUCCESSFUL);
 
-    void task(rtems_task_argument arg);
+            sc = rtems_task_set_scheduler(task_id, scheduler_id);
+            assert(sc == RTEMS_SUCCESSFUL);
 
-    void example(void)
-    {
-        rtems_status_code sc;
-        rtems_id          task_id;
-        rtems_id          scheduler_id;
-        rtems_name        scheduler_name;
+            sc = rtems_task_start(task_id, task, 0);
+            assert(sc == RTEMS_SUCCESSFUL);
+        }
 
-        scheduler_name = rtems_build_name('W', 'O', 'R', 'K');
+.. raw:: latex
 
-        sc = rtems_scheduler_ident(scheduler_name, &scheduler_id);
-        assert(sc == RTEMS_SUCCESSFUL);
-
-        sc = rtems_task_create(
-                rtems_build_name('T', 'A', 'S', 'K'),
-                1,
-                RTEMS_MINIMUM_STACK_SIZE,
-                RTEMS_DEFAULT_MODES,
-                RTEMS_DEFAULT_ATTRIBUTES,
-                &task_id
-             );
-        assert(sc == RTEMS_SUCCESSFUL);
-
-        sc = rtems_task_set_scheduler(task_id, scheduler_id);
-        assert(sc == RTEMS_SUCCESSFUL);
-
-        sc = rtems_task_start(task_id, task, 0);
-        assert(sc == RTEMS_SUCCESSFUL);
-    }
+   \clearpage
 
 .. _rtems_task_get_affinity:
 
 TASK_GET_AFFINITY - Get task processor affinity
 -----------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_status_code rtems_task_get_affinity(
+            rtems_id   id,
+            size_t     cpusetsize,
+            cpu_set_t *cpuset
+        );
 
-    rtems_status_code rtems_task_get_affinity(
-        rtems_id   id,
-        size_t     cpusetsize,
-        cpu_set_t *cpuset
-    );
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**DIRECTIVE STATUS CODES:**
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``cpuset`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid task id
+     * - ``RTEMS_INVALID_NUMBER``
+       - the affinity set buffer is too small for the current processor affinity
+         set of the task
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
 
- * - ``RTEMS_SUCCESSFUL``
-   - successful operation
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``cpuset`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid task id
- * - ``RTEMS_INVALID_NUMBER``
-   - the affinity set buffer is too small for the current processor affinity
-     set of the task
+    Returns the current processor affinity set of the task in ``cpuset``.  A
+    set bit in the affinity set means that the task can execute on this
+    processor and a cleared bit means the opposite.
 
-**DESCRIPTION:**
+NOTES:
+    None.
 
-Returns the current processor affinity set of the task in ``cpuset``.  A set
-bit in the affinity set means that the task can execute on this processor and a
-cleared bit means the opposite.
+.. raw:: latex
 
-**NOTES:**
-
-None.
+   \clearpage
 
 .. _rtems_task_set_affinity:
 
 TASK_SET_AFFINITY - Set task processor affinity
 -----------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_status_code rtems_task_set_affinity(
+            rtems_id         id,
+            size_t           cpusetsize,
+            const cpu_set_t *cpuset
+        );
 
-    rtems_status_code rtems_task_set_affinity(
-        rtems_id         id,
-        size_t           cpusetsize,
-        const cpu_set_t *cpuset
-    );
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**DIRECTIVE STATUS CODES:**
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``cpuset`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid task id
+     * - ``RTEMS_INVALID_NUMBER``
+       - invalid processor affinity set
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
+    Sets the processor affinity set for the task specified by ``cpuset``.  A
+    set bit in the affinity set means that the task can execute on this
+    processor and a cleared bit means the opposite.
 
- * - ``RTEMS_SUCCESSFUL``
-   - successful operation
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``cpuset`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid task id
- * - ``RTEMS_INVALID_NUMBER``
-   - invalid processor affinity set
-
-**DESCRIPTION:**
-
-Sets the processor affinity set for the task specified by ``cpuset``.  A set
-bit in the affinity set means that the task can execute on this processor and a
-cleared bit means the opposite.
-
-**NOTES:**
-
-This function will not change the scheduler of the task.  The intersection of
-the processor affinity set and the set of processors owned by the scheduler of
-the task must be non-empty.  It is not an error if the processor affinity set
-contains processors that are not part of the set of processors owned by the
-scheduler instance of the task.  A task will simply not run under normal
-circumstances on these processors since the scheduler ignores them.  Some
-locking protocols may temporarily use processors that are not included in the
-processor affinity set of the task.  It is also not an error if the processor
-affinity set contains processors that are not part of the system.
+NOTES:
+    This function will not change the scheduler of the task.  The intersection
+    of the processor affinity set and the set of processors owned by the
+    scheduler of the task must be non-empty.  It is not an error if the
+    processor affinity set contains processors that are not part of the set of
+    processors owned by the scheduler instance of the task.  A task will simply
+    not run under normal circumstances on these processors since the scheduler
+    ignores them.  Some locking protocols may temporarily use processors that
+    are not included in the processor affinity set of the task.  It is also not
+    an error if the processor affinity set contains processors that are not
+    part of the system.

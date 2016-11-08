@@ -139,15 +139,15 @@ A list of all initialization steps follows.  Some steps are optional depending
 on the requested feature set of the application.  The initialization steps are
 execute in the order presented here.
 
-`RTEMS_SYSINIT_BSP_WORK_AREAS`
+``RTEMS_SYSINIT_BSP_WORK_AREAS``
     The work areas consisting of C Program Heap and the RTEMS Workspace are
     initialized by the Board Support Package.  This step is mandatory.
 
-`RTEMS_SYSINIT_BSP_START`
+``RTEMS_SYSINIT_BSP_START``
     Basic initialization step provided by the Board Support Package.  This step
     is mandatory.
 
-`RTEMS_SYSINIT_DATA_STRUCTURES`
+``RTEMS_SYSINIT_DATA_STRUCTURES``
     This directive is called when the Board Support Package has completed its
     basic initialization and allows RTEMS to initialize the application
     environment based upon the information in the Configuration Table, User
@@ -155,28 +155,28 @@ execute in the order presented here.
     Multiprocessor Configuration Table, and the Multiprocessor Communications
     Interface (MPCI) Table.
 
-`RTEMS_SYSINIT_BSP_LIBC`
+``RTEMS_SYSINIT_BSP_LIBC``
     Depending on the application configuration the IO library and root
     filesystem is initialized.  This step is mandatory.
 
-`RTEMS_SYSINIT_BEFORE_DRIVERS`
+``RTEMS_SYSINIT_BEFORE_DRIVERS``
     This directive performs initialization that must occur between basis RTEMS
     data structure initialization and device driver initialization.  In
     particular, in a multiprocessor configuration, this directive will create
     the MPCI Server Task.
 
-`RTEMS_SYSINIT_BSP_PRE_DRIVERS`
+``RTEMS_SYSINIT_BSP_PRE_DRIVERS``
     Initialization step performed right before device drivers are initialized
     provided by the Board Support Package.  This step is mandatory.
 
-`RTEMS_SYSINIT_DEVICE_DRIVERS`
+``RTEMS_SYSINIT_DEVICE_DRIVERS``
     This step initializes all statically configured device drivers and performs
     all RTEMS initialization which requires device drivers to be initialized.
     This step is mandatory.  In a multiprocessor configuration, this service
     will initialize the Multiprocessor Communications Interface (MPCI) and
     synchronize with the other nodes in the system.
 
-`RTEMS_SYSINIT_BSP_POST_DRIVERS`
+``RTEMS_SYSINIT_BSP_POST_DRIVERS``
     Initialization step performed right after device drivers are initialized
     provided by the Board Support Package.  This step is mandatory.
 
@@ -207,6 +207,10 @@ This section details the Initialization Manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_initialize_executive:
 
 INITIALIZE_EXECUTIVE - Initialize RTEMS
@@ -214,29 +218,28 @@ INITIALIZE_EXECUTIVE - Initialize RTEMS
 .. index:: initialize RTEMS
 .. index:: start multitasking
 
-**CALLING SEQUENCE:**
-
 .. index:: rtems_initialize_executive
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        void rtems_initialize_executive(void);
 
-    void rtems_initialize_executive(void);
+DIRECTIVE STATUS CODES:
+    NONE
 
-**DIRECTIVE STATUS CODES:**
+DESCRIPTION:
+    Iterates through the system initialization linker set and invokes the
+    registered handlers.  The final step is to start multitasking.
 
-NONE
+NOTES:
+    This directive should be called by ``boot_card`` only.
 
-**DESCRIPTION:**
+    This directive *does not return* to the caller.  Errors in the
+    initialization sequence are usually fatal and lead to a system termination.
 
-Iterates through the system initialization linker set and invokes the
-registered handlers.  The final step is to start multitasking.
+.. raw:: latex
 
-**NOTES:**
-
-This directive should be called by ``boot_card`` only.
-
-This directive *does not return* to the caller.  Errors in the initialization
-sequence are usually fatal and lead to a system termination.
+   \clearpage
 
 .. _rtems_shutdown_executive:
 
@@ -244,29 +247,24 @@ SHUTDOWN_EXECUTIVE - Shutdown RTEMS
 -----------------------------------
 .. index:: shutdown RTEMS
 
-**CALLING SEQUENCE:**
-
 .. index:: rtems_shutdown_executive
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        void rtems_shutdown_executive(
+            uint32_t result
+        );
 
-    void rtems_shutdown_executive(
-        uint32_t result
-    );
+DIRECTIVE STATUS CODES:
+    NONE
 
-**DIRECTIVE STATUS CODES:**
+DESCRIPTION:
+    This directive is called when the application wishes to shutdown RTEMS.
+    The system is terminated with a fatal source of ``RTEMS_FATAL_SOURCE_EXIT``
+    and the specified ``result`` code.
 
-NONE
+NOTES:
+    This directive *must* be the last RTEMS directive invoked by an application
+    and it *does not return* to the caller.
 
-**DESCRIPTION:**
-
-This directive is called when the application wishes to shutdown RTEMS.  The
-system is terminated with a fatal source of ``RTEMS_FATAL_SOURCE_EXIT`` and the
-specified ``result`` code.
-
-**NOTES:**
-
-This directive *must* be the last RTEMS directive invoked by an application and
-it *does not return* to the caller.
-
-This directive may be called any time.
+    This directive may be called any time.

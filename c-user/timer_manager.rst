@@ -189,446 +189,439 @@ This section details the timer manager's directives.  A subsection is dedicated
 to each of this manager's directives and describes the calling sequence,
 related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
 .. _rtems_timer_create:
 
 TIMER_CREATE - Create a timer
 -----------------------------
 .. index:: create a timer
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_create
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_create(
-        rtems_name  name,
-        rtems_id   *id
-    );
+        rtems_status_code rtems_timer_create(
+            rtems_name  name,
+            rtems_id   *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer created successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``id`` is NULL
+     * - ``RTEMS_INVALID_NAME``
+       - invalid timer name
+     * - ``RTEMS_TOO_MANY``
+       - too many timers created
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer created successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``id`` is NULL
- * - ``RTEMS_INVALID_NAME``
-   - invalid timer name
- * - ``RTEMS_TOO_MANY``
-   - too many timers created
+DESCRIPTION:
+    This directive creates a timer.  The assigned timer id is returned in id.
+    This id is used to access the timer with other timer manager directives.
+    For control and maintenance of the timer, RTEMS allocates a TMCB from the
+    local TMCB free pool and initializes it.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive creates a timer.  The assigned timer id is returned in id.  This
-id is used to access the timer with other timer manager directives.  For
-control and maintenance of the timer, RTEMS allocates a TMCB from the local
-TMCB free pool and initializes it.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the calling task to be preempted.
+   \clearpage
 
 .. _rtems_timer_ident:
 
 TIMER_IDENT - Get ID of a timer
 -------------------------------
 .. index:: obtain the ID of a timer
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_ident
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_ident(
-        rtems_name  name,
-        rtems_id   *id
-    );
+        rtems_status_code rtems_timer_ident(
+            rtems_name  name,
+            rtems_id   *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer identified successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``id`` is NULL
+     * - ``RTEMS_INVALID_NAME``
+       - timer name not found
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer identified successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``id`` is NULL
- * - ``RTEMS_INVALID_NAME``
-   - timer name not found
+DESCRIPTION:
+    This directive obtains the timer id associated with the timer name to be
+    acquired.  If the timer name is not unique, then the timer id will match
+    one of the timers with that name.  However, this timer id is not guaranteed
+    to correspond to the desired timer.  The timer id is used to access this
+    timer in other timer related directives.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive obtains the timer id associated with the timer name to be
-acquired.  If the timer name is not unique, then the timer id will match one of
-the timers with that name.  However, this timer id is not guaranteed to
-correspond to the desired timer.  The timer id is used to access this timer in
-other timer related directives.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_timer_cancel:
 
 TIMER_CANCEL - Cancel a timer
 -----------------------------
 .. index:: cancel a timer
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_cancel
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_cancel(
-        rtems_id id
-    );
+        rtems_status_code rtems_timer_cancel(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer canceled successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer canceled successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
+DESCRIPTION:
+    This directive cancels the timer id.  This timer will be reinitiated by the
+    next invocation of ``rtems_timer_reset``, ``rtems_timer_fire_after``, or
+    ``rtems_timer_fire_when`` with this id.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive cancels the timer id.  This timer will be reinitiated by the
-next invocation of ``rtems_timer_reset``, ``rtems_timer_fire_after``, or
-``rtems_timer_fire_when`` with this id.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_timer_delete:
 
 TIMER_DELETE - Delete a timer
 -----------------------------
 .. index:: delete a timer
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_delete
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_delete(
-        rtems_id id
-    );
+        rtems_status_code rtems_timer_delete(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer deleted successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer deleted successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
+DESCRIPTION:
+    This directive deletes the timer specified by id.  If the timer is running,
+    it is automatically canceled.  The TMCB for the deleted timer is reclaimed
+    by RTEMS.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive deletes the timer specified by id.  If the timer is running, it
-is automatically canceled.  The TMCB for the deleted timer is reclaimed by
-RTEMS.
+    A timer can be deleted by a task other than the task which created the
+    timer.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the running task to be preempted.
-
-A timer can be deleted by a task other than the task which created the timer.
+   \clearpage
 
 .. _rtems_timer_fire_after:
 
 TIMER_FIRE_AFTER - Fire timer after interval
 --------------------------------------------
 .. index:: fire a timer after an interval
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_fire_after
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_fire_after(
-        rtems_id                           id,
-        rtems_interval                     ticks,
-        rtems_timer_service_routine_entry  routine,
-        void                              *user_data
-    );
+        rtems_status_code rtems_timer_fire_after(
+            rtems_id                           id,
+            rtems_interval                     ticks,
+            rtems_timer_service_routine_entry  routine,
+            void                              *user_data
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer initiated successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``routine`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
+     * - ``RTEMS_INVALID_NUMBER``
+       - invalid interval
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer initiated successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``routine`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
- * - ``RTEMS_INVALID_NUMBER``
-   - invalid interval
+DESCRIPTION:
+    This directive initiates the timer specified by id.  If the timer is
+    running, it is automatically canceled before being initiated.  The timer is
+    scheduled to fire after an interval ticks clock ticks has passed.  When the
+    timer fires, the timer service routine routine will be invoked with the
+    argument user_data.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive initiates the timer specified by id.  If the timer is running,
-it is automatically canceled before being initiated.  The timer is scheduled to
-fire after an interval ticks clock ticks has passed.  When the timer fires, the
-timer service routine routine will be invoked with the argument user_data.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_timer_fire_when:
 
 TIMER_FIRE_WHEN - Fire timer when specified
 -------------------------------------------
 .. index:: fire a timer at wall time
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_fire_when
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_fire_when(
-        rtems_id                           id,
-        rtems_time_of_day                 *wall_time,
-        rtems_timer_service_routine_entry  routine,
-        void                              *user_data
-    );
+        rtems_status_code rtems_timer_fire_when(
+            rtems_id                           id,
+            rtems_time_of_day                 *wall_time,
+            rtems_timer_service_routine_entry  routine,
+            void                              *user_data
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer initiated successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``routine`` is NULL
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``wall_time`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
+     * - ``RTEMS_NOT_DEFINED``
+       - system date and time is not set
+     * - ``RTEMS_INVALID_CLOCK``
+       - invalid time of day
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer initiated successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``routine`` is NULL
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``wall_time`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
- * - ``RTEMS_NOT_DEFINED``
-   - system date and time is not set
- * - ``RTEMS_INVALID_CLOCK``
-   - invalid time of day
+DESCRIPTION:
+    This directive initiates the timer specified by id.  If the timer is
+    running, it is automatically canceled before being initiated.  The timer is
+    scheduled to fire at the time of day specified by wall_time.  When the
+    timer fires, the timer service routine routine will be invoked with the
+    argument user_data.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive initiates the timer specified by id.  If the timer is running,
-it is automatically canceled before being initiated.  The timer is scheduled to
-fire at the time of day specified by wall_time.  When the timer fires, the
-timer service routine routine will be invoked with the argument user_data.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_timer_initiate_server:
 
 TIMER_INITIATE_SERVER - Initiate server for task-based timers
 -------------------------------------------------------------
 .. index:: initiate the Timer Server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_initiate_server
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_initiate_server(
-        uint32_t         priority,
-        uint32_t         stack_size,
-        rtems_attribute  attribute_set
-    );
+        rtems_status_code rtems_timer_initiate_server(
+            uint32_t         priority,
+            uint32_t         stack_size,
+            rtems_attribute  attribute_set
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - Timer Server initiated successfully
+     * - ``RTEMS_TOO_MANY``
+       - too many tasks created
 
- * - ``RTEMS_SUCCESSFUL``
-   - Timer Server initiated successfully
- * - ``RTEMS_TOO_MANY``
-   - too many tasks created
+DESCRIPTION:
+    This directive initiates the Timer Server task.  This task is responsible
+    for executing all timers initiated via the
+    ``rtems_timer_server_fire_after`` or ``rtems_timer_server_fire_when``
+    directives.
 
-**DESCRIPTION:**
+NOTES:
+    This directive could cause the calling task to be preempted.
 
-This directive initiates the Timer Server task.  This task is responsible for
-executing all timers initiated via the ``rtems_timer_server_fire_after`` or
-``rtems_timer_server_fire_when`` directives.
+    The Timer Server task is created using the ``rtems_task_create`` service
+    and must be accounted for when configuring the system.
 
-**NOTES:**
+    Even through this directive invokes the ``rtems_task_create`` and
+    ``rtems_task_start`` directives, it should only fail due to resource
+    allocation problems.
 
-This directive could cause the calling task to be preempted.
+.. raw:: latex
 
-The Timer Server task is created using the ``rtems_task_create`` service and
-must be accounted for when configuring the system.
-
-Even through this directive invokes the ``rtems_task_create`` and
-``rtems_task_start`` directives, it should only fail due to resource allocation
-problems.
+   \clearpage
 
 .. _rtems_timer_server_fire_after:
 
 TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
 --------------------------------------------------------------
 .. index:: fire task-based a timer after an interval
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_server_fire_after
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_server_fire_after(
-        rtems_id                           id,
-        rtems_interval                     ticks,
-        rtems_timer_service_routine_entry  routine,
-        void                              *user_data
-    );
+        rtems_status_code rtems_timer_server_fire_after(
+            rtems_id                           id,
+            rtems_interval                     ticks,
+            rtems_timer_service_routine_entry  routine,
+            void                              *user_data
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer initiated successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``routine`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
+     * - ``RTEMS_INVALID_NUMBER``
+       - invalid interval
+     * - ``RTEMS_INCORRECT_STATE``
+       - Timer Server not initiated
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer initiated successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``routine`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
- * - ``RTEMS_INVALID_NUMBER``
-   - invalid interval
- * - ``RTEMS_INCORRECT_STATE``
-   - Timer Server not initiated
+DESCRIPTION:
+    This directive initiates the timer specified by id and specifies that when
+    it fires it will be executed by the Timer Server.
 
-**DESCRIPTION:**
+    If the timer is running, it is automatically canceled before being
+    initiated.  The timer is scheduled to fire after an interval ticks clock
+    ticks has passed.  When the timer fires, the timer service routine routine
+    will be invoked with the argument user_data.
 
-This directive initiates the timer specified by id and specifies that when it
-fires it will be executed by the Timer Server.
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-If the timer is running, it is automatically canceled before being initiated.
-The timer is scheduled to fire after an interval ticks clock ticks has passed.
-When the timer fires, the timer service routine routine will be invoked with
-the argument user_data.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_timer_server_fire_when:
 
 TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
 -------------------------------------------------------------
 .. index:: fire a task-based timer at wall time
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_server_fire_when
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_server_fire_when(
-        rtems_id                           id,
-        rtems_time_of_day                 *wall_time,
-        rtems_timer_service_routine_entry  routine,
-        void                              *user_data
-    );
+        rtems_status_code rtems_timer_server_fire_when(
+            rtems_id                           id,
+            rtems_time_of_day                 *wall_time,
+            rtems_timer_service_routine_entry  routine,
+            void                              *user_data
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer initiated successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``routine`` is NULL
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``wall_time`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
+     * - ``RTEMS_NOT_DEFINED``
+       - system date and time is not set
+     * - ``RTEMS_INVALID_CLOCK``
+       - invalid time of day
+     * - ``RTEMS_INCORRECT_STATE``
+       - Timer Server not initiated
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer initiated successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``routine`` is NULL
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``wall_time`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
- * - ``RTEMS_NOT_DEFINED``
-   - system date and time is not set
- * - ``RTEMS_INVALID_CLOCK``
-   - invalid time of day
- * - ``RTEMS_INCORRECT_STATE``
-   - Timer Server not initiated
+DESCRIPTION:
+    This directive initiates the timer specified by id and specifies that when
+    it fires it will be executed by the Timer Server.
 
-**DESCRIPTION:**
+    If the timer is running, it is automatically canceled before being
+    initiated.  The timer is scheduled to fire at the time of day specified by
+    wall_time.  When the timer fires, the timer service routine routine will be
+    invoked with the argument user_data.
 
-This directive initiates the timer specified by id and specifies that when it
-fires it will be executed by the Timer Server.
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-If the timer is running, it is automatically canceled before being initiated.
-The timer is scheduled to fire at the time of day specified by wall_time.  When
-the timer fires, the timer service routine routine will be invoked with the
-argument user_data.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_timer_reset:
 
 TIMER_RESET - Reset an interval timer
 -------------------------------------
 .. index:: reset a timer
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_timer_reset
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_timer_reset(
-        rtems_id   id
-    );
+        rtems_status_code rtems_timer_reset(
+            rtems_id   id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - timer reset successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid timer id
+     * - ``RTEMS_NOT_DEFINED``
+       - attempted to reset a when or newly created timer
 
- * - ``RTEMS_SUCCESSFUL``
-   - timer reset successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid timer id
- * - ``RTEMS_NOT_DEFINED``
-   - attempted to reset a when or newly created timer
+DESCRIPTION:
+    This directive resets the timer associated with id.  This timer must have
+    been previously initiated with either the ``rtems_timer_fire_after`` or
+    ``rtems_timer_server_fire_after`` directive.  If active the timer is
+    canceled, after which the timer is reinitiated using the same interval and
+    timer service routine which the original ``rtems_timer_fire_after`` or
+    ``rtems_timer_server_fire_after`` directive used.
 
-**DESCRIPTION:**
+NOTES:
+    If the timer has not been used or the last usage of this timer was by a
+    ``rtems_timer_fire_when`` or ``rtems_timer_server_fire_when`` directive,
+    then the ``RTEMS_NOT_DEFINED`` error is returned.
 
-This directive resets the timer associated with id.  This timer must have been
-previously initiated with either the ``rtems_timer_fire_after`` or
-``rtems_timer_server_fire_after`` directive.  If active the timer is canceled,
-after which the timer is reinitiated using the same interval and timer service
-routine which the original ``rtems_timer_fire_after`` or
-``rtems_timer_server_fire_after`` directive used.
+    Restarting a cancelled after timer results in the timer being reinitiated
+    with its previous timer service routine and interval.
 
-**NOTES:**
-
-If the timer has not been used or the last usage of this timer was by a
-``rtems_timer_fire_when`` or ``rtems_timer_server_fire_when`` directive, then
-the ``RTEMS_NOT_DEFINED`` error is returned.
-
-Restarting a cancelled after timer results in the timer being reinitiated with
-its previous timer service routine and interval.
-
-This directive will not cause the running task to be preempted.
+    This directive will not cause the running task to be preempted.

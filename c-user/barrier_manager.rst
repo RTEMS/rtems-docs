@@ -156,81 +156,84 @@ This section details the barrier manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_barrier_create:
 
 BARRIER_CREATE - Create a barrier
 ---------------------------------
 .. index:: create a barrier
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_barrier_create
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_barrier_create(
-        rtems_name           name,
-        rtems_attribute      attribute_set,
-        uint32_t             maximum_waiters,
-        rtems_id            *id
-    );
+        rtems_status_code rtems_barrier_create(
+            rtems_name           name,
+            rtems_attribute      attribute_set,
+            uint32_t             maximum_waiters,
+            rtems_id            *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - barrier created successfully
+     * - ``RTEMS_INVALID_NAME``
+       - invalid barrier name
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``id`` is NULL
+     * - ``RTEMS_TOO_MANY``
+       - too many barriers created
 
- * - ``RTEMS_SUCCESSFUL``
-   - barrier created successfully
- * - ``RTEMS_INVALID_NAME``
-   - invalid barrier name
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``id`` is NULL
- * - ``RTEMS_TOO_MANY``
-   - too many barriers created
+DESCRIPTION:
+    This directive creates a barrier which resides on the local node. The
+    created barrier has the user-defined name specified in ``name`` and the
+    initial count specified in ``count``.  For control and maintenance of the
+    barrier, RTEMS allocates and initializes a BCB.  The RTEMS-assigned barrier
+    id is returned in ``id``.  This barrier id is used with other barrier
+    related directives to access the barrier.
 
-**DESCRIPTION:**
+    .. list-table::
+     :class: rtems-table
 
-This directive creates a barrier which resides on the local node. The created
-barrier has the user-defined name specified in ``name`` and the initial count
-specified in ``count``.  For control and maintenance of the barrier, RTEMS
-allocates and initializes a BCB.  The RTEMS-assigned barrier id is returned in
-``id``.  This barrier id is used with other barrier related directives to
-access the barrier.
+     * - ``RTEMS_BARRIER_MANUAL_RELEASE``
+       - only release
 
-.. list-table::
- :class: rtems-table
+    Specifying ``RTEMS_BARRIER_AUTOMATIC_RELEASE`` in ``attribute_set`` causes
+    tasks calling the ``rtems_barrier_wait`` directive to block until there are
+    ``maximum_waiters - 1`` tasks waiting at the barrier.  When the
+    ``maximum_waiters`` task invokes the ``rtems_barrier_wait`` directive, the
+    previous ``maximum_waiters - 1`` tasks are automatically released and the
+    caller returns.
 
- * - ``RTEMS_BARRIER_MANUAL_RELEASE``
-   - only release
+    In contrast, when the ``RTEMS_BARRIER_MANUAL_RELEASE`` attribute is
+    specified, there is no limit on the number of tasks that will block at the
+    barrier. Only when the ``rtems_barrier_release`` directive is invoked, are
+    the tasks waiting at the barrier unblocked.
 
-Specifying ``RTEMS_BARRIER_AUTOMATIC_RELEASE`` in ``attribute_set`` causes
-tasks calling the ``rtems_barrier_wait`` directive to block until there are
-``maximum_waiters - 1`` tasks waiting at the barrier.  When the
-``maximum_waiters`` task invokes the ``rtems_barrier_wait`` directive, the
-previous ``maximum_waiters - 1`` tasks are automatically released and the
-caller returns.
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-In contrast, when the ``RTEMS_BARRIER_MANUAL_RELEASE`` attribute is specified,
-there is no limit on the number of tasks that will block at the barrier. Only
-when the ``rtems_barrier_release`` directive is invoked, are the tasks waiting
-at the barrier unblocked.
+    The following barrier attribute constants are defined by RTEMS:
 
-**NOTES:**
+    .. list-table::
+     :class: rtems-table
 
-This directive will not cause the calling task to be preempted.
+     * - ``RTEMS_BARRIER_AUTOMATIC_RELEASE``
+       - automatically release the barrier when the configured number of tasks are
+         blocked
+     * - ``RTEMS_BARRIER_MANUAL_RELEASE``
+       - only release the barrier when the application invokes
+         the ``rtems_barrier_release`` directive.  (default)
 
-The following barrier attribute constants are defined by RTEMS:
+.. raw:: latex
 
-.. list-table::
- :class: rtems-table
-
- * - ``RTEMS_BARRIER_AUTOMATIC_RELEASE``
-   - automatically release the barrier when the configured number of tasks are
-     blocked
- * - ``RTEMS_BARRIER_MANUAL_RELEASE``
-   - only release the barrier when the application invokes
-     the ``rtems_barrier_release`` directive.  (default)
+   \clearpage
 
 .. _rtems_barrier_ident:
 
@@ -238,84 +241,82 @@ BARRIER_IDENT - Get ID of a barrier
 -----------------------------------
 .. index:: get ID of a barrier
 .. index:: obtain ID of a barrier
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_barrier_ident
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_barrier_ident(
-        rtems_name        name,
-        rtems_id         *id
-    );
+        rtems_status_code rtems_barrier_ident(
+            rtems_name        name,
+            rtems_id         *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - barrier identified successfully
+     * - ``RTEMS_INVALID_NAME``
+       - barrier name not found
+     * - ``RTEMS_INVALID_NODE``
+       - invalid node id
 
- * - ``RTEMS_SUCCESSFUL``
-   - barrier identified successfully
- * - ``RTEMS_INVALID_NAME``
-   - barrier name not found
- * - ``RTEMS_INVALID_NODE``
-   - invalid node id
+DESCRIPTION:
+    This directive obtains the barrier id associated with the barrier name.  If
+    the barrier name is not unique, then the barrier id will match one of the
+    barriers with that name.  However, this barrier id is not guaranteed to
+    correspond to the desired barrier.  The barrier id is used by other barrier
+    related directives to access the barrier.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-This directive obtains the barrier id associated with the barrier name.  If the
-barrier name is not unique, then the barrier id will match one of the barriers
-with that name.  However, this barrier id is not guaranteed to correspond to
-the desired barrier.  The barrier id is used by other barrier related
-directives to access the barrier.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_barrier_delete:
 
 BARRIER_DELETE - Delete a barrier
 ---------------------------------
 .. index:: delete a barrier
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_barrier_delete
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_barrier_delete(
-        rtems_id id
-    );
+        rtems_status_code rtems_barrier_delete(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - barrier deleted successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid barrier id
 
- * - ``RTEMS_SUCCESSFUL``
-   - barrier deleted successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid barrier id
+DESCRIPTION:
+    This directive deletes the barrier specified by ``id``.  All tasks blocked
+    waiting for the barrier to be released will be readied and returned a
+    status code which indicates that the barrier was deleted.  The BCB for this
+    barrier is reclaimed by RTEMS.
 
-**DESCRIPTION:**
+NOTES:
+    The calling task will be preempted if it is enabled by the task's execution
+    mode and a higher priority local task is waiting on the deleted barrier.
+    The calling task will NOT be preempted if all of the tasks that are waiting
+    on the barrier are remote tasks.
 
-This directive deletes the barrier specified by ``id``.  All tasks blocked
-waiting for the barrier to be released will be readied and returned a status
-code which indicates that the barrier was deleted.  The BCB for this barrier is
-reclaimed by RTEMS.
+    The calling task does not have to be the task that created the barrier.
+    Any local task that knows the barrier id can delete the barrier.
 
-**NOTES:**
+.. raw:: latex
 
-The calling task will be preempted if it is enabled by the task's execution
-mode and a higher priority local task is waiting on the deleted barrier.  The
-calling task will NOT be preempted if all of the tasks that are waiting on the
-barrier are remote tasks.
-
-The calling task does not have to be the task that created the barrier.  Any
-local task that knows the barrier id can delete the barrier.
+   \clearpage
 
 .. _rtems_barrier_wait:
 
@@ -323,71 +324,73 @@ BARRIER_OBTAIN - Acquire a barrier
 ----------------------------------
 .. index:: obtain a barrier
 .. index:: lock a barrier
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_barrier_wait
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_barrier_wait(
-        rtems_id         id,
-        rtems_interval   timeout
-    );
+        rtems_status_code rtems_barrier_wait(
+            rtems_id         id,
+            rtems_interval   timeout
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - barrier released and task unblocked
+     * - ``RTEMS_UNSATISFIED``
+       - barrier not available
+     * - ``RTEMS_TIMEOUT``
+       - timed out waiting for barrier
+     * - ``RTEMS_OBJECT_WAS_DELETED``
+       - barrier deleted while waiting
+     * - ``RTEMS_INVALID_ID``
+       - invalid barrier id
 
- * - ``RTEMS_SUCCESSFUL``
-   - barrier released and task unblocked
- * - ``RTEMS_UNSATISFIED``
-   - barrier not available
- * - ``RTEMS_TIMEOUT``
-   - timed out waiting for barrier
- * - ``RTEMS_OBJECT_WAS_DELETED``
-   - barrier deleted while waiting
- * - ``RTEMS_INVALID_ID``
-   - invalid barrier id
+DESCRIPTION:
 
-**DESCRIPTION:**
+    This directive acquires the barrier specified by ``id``.  The
+    ``RTEMS_WAIT`` and ``RTEMS_NO_WAIT`` components of the options parameter
+    indicate whether the calling task wants to wait for the barrier to become
+    available or return immediately if the barrier is not currently available.
+    With either ``RTEMS_WAIT`` or ``RTEMS_NO_WAIT``, if the current barrier
+    count is positive, then it is decremented by one and the barrier is
+    successfully acquired by returning immediately with a successful return
+    code.
 
-This directive acquires the barrier specified by ``id``.  The ``RTEMS_WAIT``
-and ``RTEMS_NO_WAIT`` components of the options parameter indicate whether the
-calling task wants to wait for the barrier to become available or return
-immediately if the barrier is not currently available.  With either
-``RTEMS_WAIT`` or ``RTEMS_NO_WAIT``, if the current barrier count is positive,
-then it is decremented by one and the barrier is successfully acquired by
-returning immediately with a successful return code.
+    Conceptually, the calling task should always be thought of as blocking when
+    it makes this call and being unblocked when the barrier is released.  If
+    the barrier is configured for manual release, this rule of thumb will
+    always be valid.  If the barrier is configured for automatic release, all
+    callers will block except for the one which is the Nth task which trips the
+    automatic release condition.
 
-Conceptually, the calling task should always be thought of as blocking when it
-makes this call and being unblocked when the barrier is released.  If the
-barrier is configured for manual release, this rule of thumb will always be
-valid.  If the barrier is configured for automatic release, all callers will
-block except for the one which is the Nth task which trips the automatic
-release condition.
+    The timeout parameter specifies the maximum interval the calling task is
+    willing to be blocked waiting for the barrier.  If it is set to
+    ``RTEMS_NO_TIMEOUT``, then the calling task will wait forever.  If the
+    barrier is available or the ``RTEMS_NO_WAIT`` option component is set, then
+    timeout is ignored.
 
-The timeout parameter specifies the maximum interval the calling task is
-willing to be blocked waiting for the barrier.  If it is set to
-``RTEMS_NO_TIMEOUT``, then the calling task will wait forever.  If the barrier
-is available or the ``RTEMS_NO_WAIT`` option component is set, then timeout is
-ignored.
+NOTES:
 
-**NOTES:**
+    The following barrier acquisition option constants are defined by RTEMS:
 
-The following barrier acquisition option constants are defined by RTEMS:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_WAIT``
+       - task will wait for barrier (default)
+     * - ``RTEMS_NO_WAIT``
+       - task should not wait
 
- * - ``RTEMS_WAIT``
-   - task will wait for barrier (default)
- * - ``RTEMS_NO_WAIT``
-   - task should not wait
+    A clock tick is required to support the timeout functionality of this
+    directive.
 
-A clock tick is required to support the timeout functionality of this
-directive.
+.. raw:: latex
+
+   \clearpage
 
 .. _rtems_barrier_release:
 
@@ -395,35 +398,31 @@ BARRIER_RELEASE - Release a barrier
 -----------------------------------
 .. index:: wait at a barrier
 .. index:: release a barrier
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_barrier_release
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_barrier_release(
-        rtems_id  id,
-        uint32_t *released
-    );
+        rtems_status_code rtems_barrier_release(
+            rtems_id  id,
+            uint32_t *released
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - barrier released successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid barrier id
 
- * - ``RTEMS_SUCCESSFUL``
-   - barrier released successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid barrier id
+DESCRIPTION:
+    This directive releases the barrier specified by id.  All tasks waiting at
+    the barrier will be unblocked.  If the running task's preemption mode is
+    enabled and one of the unblocked tasks has a higher priority than the
+    running task.
 
-**DESCRIPTION:**
-
-This directive releases the barrier specified by id.  All tasks waiting at the
-barrier will be unblocked.  If the running task's preemption mode is enabled
-and one of the unblocked tasks has a higher priority than the running task.
-
-**NOTES:**
-
-The calling task may be preempted if it causes a higher priority task to be
-made ready for execution.
+NOTES:
+    The calling task may be preempted if it causes a higher priority task to be
+    made ready for execution.

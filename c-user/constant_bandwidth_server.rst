@@ -229,458 +229,450 @@ This section details the Constant Bandwidth Server's directives.  A subsection
 is dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_cbs_initialize:
 
 CBS_INITIALIZE - Initialize the CBS library
 -------------------------------------------
 .. index:: initialize the CBS library
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_initialize
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_initialize( void );
+        int rtems_cbs_initialize( void );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful initialization
+     * - ``RTEMS_CBS_ERROR_NO_MEMORY``
+       - not enough memory for data
 
- * - ``RTEMS_CBS_OK``
-   - successful initialization
- * - ``RTEMS_CBS_ERROR_NO_MEMORY``
-   - not enough memory for data
+DESCRIPTION:
+    This routine initializes the library in terms of allocating necessary
+    memory for the servers. In case not enough memory is available in the
+    system, ``RTEMS_CBS_ERROR_NO_MEMORY`` is returned, otherwise
+    ``RTEMS_CBS_OK``.
 
-**DESCRIPTION:**
+NOTES:
+    Additional memory per each server is allocated upon invocation of
+    ``rtems_cbs_create_server``.
 
-This routine initializes the library in terms of allocating necessary memory
-for the servers. In case not enough memory is available in the system,
-``RTEMS_CBS_ERROR_NO_MEMORY`` is returned, otherwise ``RTEMS_CBS_OK``.
+    Tasks in the system are not influenced, they still keep executing with
+    their initial parameters.
 
-**NOTES:**
+.. raw:: latex
 
-Additional memory per each server is allocated upon invocation of
-``rtems_cbs_create_server``.
-
-Tasks in the system are not influenced, they still keep executing with their
-initial parameters.
+   \clearpage
 
 .. _rtems_cbs_cleanup:
 
 CBS_CLEANUP - Cleanup the CBS library
 -------------------------------------
 .. index:: cleanup the CBS library
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_cleanup
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_cleanup( void );
+        int rtems_cbs_cleanup( void );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - always successful
 
- * - ``RTEMS_CBS_OK``
-   - always successful
+DESCRIPTION:
+    This routine detaches all tasks from their servers, destroys all servers
+    and returns memory back to the system.
 
-**DESCRIPTION:**
+NOTES:
+    All tasks continue executing with their initial priorities.
 
-This routine detaches all tasks from their servers, destroys all servers and
-returns memory back to the system.
+.. raw:: latex
 
-**NOTES:**
-
-All tasks continue executing with their initial priorities.
+   \clearpage
 
 .. _rtems_cbs_create_server:
 
 CBS_CREATE_SERVER - Create a new bandwidth server
 -------------------------------------------------
 .. index:: create a new bandwidth server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_create_server
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_create_server (
-        rtems_cbs_parameters     *params,
-        rtems_cbs_budget_overrun  budget_overrun_callback,
-        rtems_cbs_server_id      *server_id
-    );
+        int rtems_cbs_create_server (
+            rtems_cbs_parameters     *params,
+            rtems_cbs_budget_overrun  budget_overrun_callback,
+            rtems_cbs_server_id      *server_id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successfully created
+     * - ``RTEMS_CBS_ERROR_NO_MEMORY``
+       - not enough memory for data
+     * - ``RTEMS_CBS_ERROR_FULL``
+       - maximum servers exceeded
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
 
- * - ``RTEMS_CBS_OK``
-   - successfully created
- * - ``RTEMS_CBS_ERROR_NO_MEMORY``
-   - not enough memory for data
- * - ``RTEMS_CBS_ERROR_FULL``
-   - maximum servers exceeded
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
+DESCRIPTION:
+    This routine prepares an instance of a constant bandwidth server.  The
+    input parameter ``rtems_cbs_parameters`` specifies scheduling parameters of
+    the server (period and budget). If these are not valid,
+    ``RTEMS_CBS_ERROR_INVALID_PARAMETER`` is returned.  The
+    ``budget_overrun_callback`` is an optional callback function, which is
+    invoked in case the server's budget within one period is exceeded.  Output
+    parameter ``server_id`` becomes an id of the newly created server.  If
+    there is not enough memory, the ``RTEMS_CBS_ERROR_NO_MEMORY`` is
+    returned. If the maximum server count in the system is exceeded,
+    ``RTEMS_CBS_ERROR_FULL`` is returned.
 
-**DESCRIPTION:**
+NOTES:
+    No task execution is being influenced so far.
 
-This routine prepares an instance of a constant bandwidth server.  The input
-parameter ``rtems_cbs_parameters`` specifies scheduling parameters of the
-server (period and budget). If these are not valid,
-``RTEMS_CBS_ERROR_INVALID_PARAMETER`` is returned.  The
-``budget_overrun_callback`` is an optional callback function, which is invoked
-in case the server's budget within one period is exceeded.  Output parameter
-``server_id`` becomes an id of the newly created server.  If there is not
-enough memory, the ``RTEMS_CBS_ERROR_NO_MEMORY`` is returned. If the maximum
-server count in the system is exceeded, ``RTEMS_CBS_ERROR_FULL`` is returned.
+.. raw:: latex
 
-**NOTES:**
-
-No task execution is being influenced so far.
+   \clearpage
 
 .. _rtems_cbs_attach_thread:
 
 CBS_ATTACH_THREAD - Attach a thread to server
 ---------------------------------------------
 .. index:: attach a thread to server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_attach_thread
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_attach_thread (
-        rtems_cbs_server_id server_id,
-        rtems_id            task_id
-    );
+        int rtems_cbs_attach_thread (
+            rtems_cbs_server_id server_id,
+            rtems_id            task_id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successfully attached
+     * - ``RTEMS_CBS_ERROR_FULL``
+       - server maximum tasks exceeded
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successfully attached
- * - ``RTEMS_CBS_ERROR_FULL``
-   - server maximum tasks exceeded
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    Attaches a task (``task_id``) to a server (``server_id``).  The server has
+    to be previously created. Now, the task starts to be scheduled according to
+    the server parameters and not using initial priority. This implementation
+    allows only one task per server, if the user tries to bind another task to
+    the same server, ``RTEMS_CBS_ERROR_FULL`` is returned.
 
-**DESCRIPTION:**
+NOTES:
+    Tasks attached to servers become preemptible.
 
-Attaches a task (``task_id``) to a server (``server_id``).  The server has to
-be previously created. Now, the task starts to be scheduled according to the
-server parameters and not using initial priority. This implementation allows
-only one task per server, if the user tries to bind another task to the same
-server, ``RTEMS_CBS_ERROR_FULL`` is returned.
+.. raw:: latex
 
-**NOTES:**
-
-Tasks attached to servers become preemptible.
+   \clearpage
 
 .. _rtems_cbs_detach_thread:
 
 CBS_DETACH_THREAD - Detach a thread from server
 -----------------------------------------------
 .. index:: detach a thread from server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_detach_thread
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_detach_thread (
-        rtems_cbs_server_id server_id,
-        rtems_id            task_id
-    );
+        int rtems_cbs_detach_thread (
+            rtems_cbs_server_id server_id,
+            rtems_id            task_id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successfully detached
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successfully detached
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This directive detaches a thread from server. The task continues its
+    execution with initial priority.
 
-**DESCRIPTION:**
+NOTES:
+    The server can be reused for any other task.
 
-This directive detaches a thread from server. The task continues its execution
-with initial priority.
+.. raw:: latex
 
-**NOTES:**
-
-The server can be reused for any other task.
+   \clearpage
 
 .. _rtems_cbs_destroy_server:
 
 CBS_DESTROY_SERVER - Destroy a bandwidth server
 -----------------------------------------------
 .. index:: destroy a bandwidth server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_destroy_server
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_destroy_server (
-        rtems_cbs_server_id server_id
-    );
+        int rtems_cbs_destroy_server (
+            rtems_cbs_server_id server_id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successfully destroyed
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successfully destroyed
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This directive destroys a server. If any task was attached to the server,
+    the task is detached and continues its execution according to EDF rules
+    with initial properties.
 
-**DESCRIPTION:**
+NOTES:
+    This again enables one more task to be created.
 
-This directive destroys a server. If any task was attached to the server, the
-task is detached and continues its execution according to EDF rules with
-initial properties.
+.. raw:: latex
 
-**NOTES:**
-
-This again enables one more task to be created.
+   \clearpage
 
 .. _rtems_cbs_get_server_id:
 
 CBS_GET_SERVER_ID - Get an ID of a server
 -----------------------------------------
 .. index:: get an ID of a server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_get_server_id
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_get_server_id (
-        rtems_id             task_id,
-        rtems_cbs_server_id *server_id
-    );
+        int rtems_cbs_get_server_id (
+            rtems_id             task_id,
+            rtems_cbs_server_id *server_id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successful
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This directive returns an id of server belonging to a given task.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This directive returns an id of server belonging to a given task.
+   \clearpage
 
 .. _rtems_cbs_get_parameters:
 
 CBS_GET_PARAMETERS - Get scheduling parameters of a server
 ----------------------------------------------------------
 .. index:: get scheduling parameters of a server
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_get_parameters
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_cbs_get_parameters (
-        rtems_cbs_server_id   server_id,
-        rtems_cbs_parameters *params
-    );
+        rtems_cbs_get_parameters (
+            rtems_cbs_server_id   server_id,
+            rtems_cbs_parameters *params
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successful
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This directive returns a structure with current scheduling parameters of a
+    given server (period and execution time).
 
-**DESCRIPTION:**
+NOTES:
+    It makes no difference if any task is assigned or not.
 
-This directive returns a structure with current scheduling parameters
-of a given server (period and execution time).
+.. raw:: latex
 
-**NOTES:**
-
-It makes no difference if any task is assigned or not.
+   \clearpage
 
 .. _rtems_cbs_set_parameters:
 
 CBS_SET_PARAMETERS - Set scheduling parameters
 ----------------------------------------------
 .. index:: set scheduling parameters
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_set_parameters
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_set_parameters (
-        rtems_cbs_server_id   server_id,
-        rtems_cbs_parameters *params
-    );
+        int rtems_cbs_set_parameters (
+            rtems_cbs_server_id   server_id,
+            rtems_cbs_parameters *params
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successful
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This directive sets new scheduling parameters to the server. This operation
+    can be performed regardless of whether a task is assigned or not.  If a
+    task is assigned, the parameters become effective imediately, therefore it
+    is recommended to apply the change between two subsequent periods.
 
-**DESCRIPTION:**
+NOTES:
+    There is an upper limit on both period and budget equal to (2^31)-1 ticks.
 
-This directive sets new scheduling parameters to the server. This operation can
-be performed regardless of whether a task is assigned or not.  If a task is
-assigned, the parameters become effective imediately, therefore it is
-recommended to apply the change between two subsequent periods.
+.. raw:: latex
 
-**NOTES:**
-
-There is an upper limit on both period and budget equal to (2^31)-1 ticks.
+   \clearpage
 
 .. _rtems_cbs_get_execution_time:
 
 CBS_GET_EXECUTION_TIME - Get elapsed execution time
 ---------------------------------------------------
 .. index:: get elapsed execution time
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_get_execution_time
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_get_execution_time (
-        rtems_cbs_server_id    server_id,
-        time_t                *exec_time,
-        time_t                *abs_time
-    );
+        int rtems_cbs_get_execution_time (
+            rtems_cbs_server_id    server_id,
+            time_t                *exec_time,
+            time_t                *abs_time
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successful
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This routine returns consumed execution time (``exec_time``) of a server
+    during the current period.
 
-**DESCRIPTION:**
+NOTES:
+    Absolute time (``abs_time``) not supported now.
 
-This routine returns consumed execution time (``exec_time``) of a server during
-the current period.
+.. raw:: latex
 
-**NOTES:**
-
-Absolute time (``abs_time``) not supported now.
+   \clearpage
 
 .. _rtems_cbs_get_remaining_budget:
 
 CBS_GET_REMAINING_BUDGET - Get remaining execution time
 -------------------------------------------------------
 .. index:: get remaining execution time
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_get_remaining_budget
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_get_remaining_budget (
-        rtems_cbs_server_id  server_id,
-        time_t              *remaining_budget
-    );
+        int rtems_cbs_get_remaining_budget (
+            rtems_cbs_server_id  server_id,
+            time_t              *remaining_budget
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successful
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
+DESCRIPTION:
+    This directive returns remaining execution time of a given server for
+    current period.
 
-**DESCRIPTION:**
+NOTES:
+    If the execution time approaches zero, the assigned task should finish
+    computations of the current period.
 
-This directive returns remaining execution time of a given server for current
-period.
+.. raw:: latex
 
-**NOTES:**
-
-If the execution time approaches zero, the assigned task should finish
-computations of the current period.
+   \clearpage
 
 .. _rtems_cbs_get_approved_budget:
 
 CBS_GET_APPROVED_BUDGET - Get scheduler approved execution time
 ---------------------------------------------------------------
 .. index:: get scheduler approved execution time
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_cbs_get_approved_budget
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    int rtems_cbs_get_approved_budget (
-        rtems_cbs_server_id  server_id,
-        time_t              *appr_budget
-    );
+        int rtems_cbs_get_approved_budget (
+            rtems_cbs_server_id  server_id,
+            time_t              *appr_budget
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_CBS_OK``
+       - successful
+     * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
+       - invalid input argument
+     * - ``RTEMS_CBS_ERROR_NOSERVER``
+       - server is not valid
 
- * - ``RTEMS_CBS_OK``
-   - successful
- * - ``RTEMS_CBS_ERROR_INVALID_PARAMETER``
-   - invalid input argument
- * - ``RTEMS_CBS_ERROR_NOSERVER``
-   - server is not valid
-
-**DESCRIPTION:**
-
-This directive returns server's approved budget for subsequent periods.
+DESCRIPTION:
+    This directive returns server's approved budget for subsequent periods.

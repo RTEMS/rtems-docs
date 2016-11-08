@@ -37,7 +37,7 @@ alphabetical order:
 ``rtems_asr_entry``
   The address of the entry point to an RTEMS ASR.
 
- .. index:: rtems_attribute
+.. index:: rtems_attribute
 
 ``rtems_attribute``
   The data type used to manage the attributes for RTEMS objects.  It is

@@ -260,406 +260,397 @@ This section details the interrupt manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_interrupt_catch:
 
 INTERRUPT_CATCH - Establish an ISR
 ----------------------------------
 .. index:: establish an ISR
 .. index:: install an ISR
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_catch
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_interrupt_catch(
-        rtems_isr_entry      new_isr_handler,
-        rtems_vector_number  vector,
-        rtems_isr_entry     *old_isr_handler
-    );
+        rtems_status_code rtems_interrupt_catch(
+            rtems_isr_entry      new_isr_handler,
+            rtems_vector_number  vector,
+            rtems_isr_entry     *old_isr_handler
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-wrap
 
-.. list-table::
- :class: rtems-wrap
+     * - ``RTEMS_SUCCESSFUL``
+       -  ISR established successfully
+     * - ``RTEMS_INVALID_NUMBER``
+       -  illegal vector number
+     * - ``RTEMS_INVALID_ADDRESS``
+       -  illegal ISR entry point or invalid ``old_isr_handler``
 
- * - ``RTEMS_SUCCESSFUL``
-   -  ISR established successfully
- * - ``RTEMS_INVALID_NUMBER``
-   -  illegal vector number
- * - ``RTEMS_INVALID_ADDRESS``
-   -  illegal ISR entry point or invalid ``old_isr_handler``
+DESCRIPTION:
+    This directive establishes an interrupt service routine (ISR) for the
+    specified interrupt vector number.  The ``new_isr_handler`` parameter
+    specifies the entry point of the ISR.  The entry point of the previous ISR
+    for the specified vector is returned in ``old_isr_handler``.
 
-**DESCRIPTION:**
+    To release an interrupt vector, pass the old handler's address obtained
+    when the vector was first capture.
 
-This directive establishes an interrupt service routine (ISR) for the specified
-interrupt vector number.  The ``new_isr_handler`` parameter specifies the entry
-point of the ISR.  The entry point of the previous ISR for the specified vector
-is returned in ``old_isr_handler``.
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-To release an interrupt vector, pass the old handler's address obtained when
-the vector was first capture.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the calling task to be preempted.
+   \clearpage
 
 .. _rtems_interrupt_disable:
 
 INTERRUPT_DISABLE - Disable Interrupts
 --------------------------------------
 .. index:: disable interrupts
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_disable
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_disable(
-        rtems_interrupt_level  level
-    );
+        void rtems_interrupt_disable(
+            rtems_interrupt_level  level
+        );
 
-**DIRECTIVE STATUS CODES:**
-
-NONE
-
-**DESCRIPTION:**
+DIRECTIVE STATUS CODES:
+    NONE
 
 .. sidebar:: *Macro*
 
   This directive is implemented as a macro which modifies the ``level``
   parameter.
 
-This directive disables all maskable interrupts and returns the previous
-``level``.  A later invocation of the ``rtems_interrupt_enable`` directive
-should be used to restore the interrupt level.
+DESCRIPTION:
+    This directive disables all maskable interrupts and returns the previous
+    ``level``.  A later invocation of the ``rtems_interrupt_enable`` directive
+    should be used to restore the interrupt level.
 
-**NOTES:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive will not cause the calling task to be preempted.
+    This directive is only available on uni-processor configurations.  The
+    directive ``rtems_interrupt_local_disable`` is available on all
+    configurations.
 
-This directive is only available on uni-processor configurations.  The
-directive ``rtems_interrupt_local_disable`` is available on all configurations.
+.. raw:: latex
+
+   \clearpage
 
 .. _rtems_interrupt_enable:
 
 INTERRUPT_ENABLE - Enable Interrupts
 ------------------------------------
 .. index:: enable interrupts
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_enable
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_enable(
-       rtems_interrupt_level  level
-    );
+        void rtems_interrupt_enable(
+           rtems_interrupt_level  level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive enables maskable interrupts to the ``level`` which was
+    returned by a previous call to ``rtems_interrupt_disable``.  Immediately
+    prior to invoking this directive, maskable interrupts should be disabled by
+    a call to ``rtems_interrupt_disable`` and will be enabled when this
+    directive returns to the caller.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive enables maskable interrupts to the ``level`` which was returned
-by a previous call to ``rtems_interrupt_disable``.  Immediately prior to
-invoking this directive, maskable interrupts should be disabled by a call to
-``rtems_interrupt_disable`` and will be enabled when this directive returns to
-the caller.
+    This directive is only available on uni-processor configurations.  The
+    directive ``rtems_interrupt_local_enable`` is available on all
+    configurations.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the calling task to be preempted.
-
-This directive is only available on uni-processor configurations.  The
-directive ``rtems_interrupt_local_enable`` is available on all configurations.
+   \clearpage
 
 .. _rtems_interrupt_flash:
 
 INTERRUPT_FLASH - Flash Interrupts
 ----------------------------------
 .. index:: flash interrupts
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_flash
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_flash(
-        rtems_interrupt_level level
-    );
+        void rtems_interrupt_flash(
+            rtems_interrupt_level level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive temporarily enables maskable interrupts to the ``level``
+    which was returned by a previous call to ``rtems_interrupt_disable``.
+    Immediately prior to invoking this directive, maskable interrupts should be
+    disabled by a call to ``rtems_interrupt_disable`` and will be redisabled
+    when this directive returns to the caller.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive temporarily enables maskable interrupts to the ``level`` which
-was returned by a previous call to ``rtems_interrupt_disable``.  Immediately
-prior to invoking this directive, maskable interrupts should be disabled by a
-call to ``rtems_interrupt_disable`` and will be redisabled when this directive
-returns to the caller.
+    This directive is only available on uni-processor configurations.  The
+    directives ``rtems_interrupt_local_disable`` and
+    ``rtems_interrupt_local_enable`` is available on all configurations.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the calling task to be preempted.
-
-This directive is only available on uni-processor configurations.  The
-directives ``rtems_interrupt_local_disable`` and
-``rtems_interrupt_local_enable`` is available on all configurations.
+   \clearpage
 
 .. _rtems_interrupt_local_disable:
 
 INTERRUPT_LOCAL_DISABLE - Disable Interrupts on Current Processor
 -----------------------------------------------------------------
 .. index:: disable interrupts
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_local_disable
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_local_disable(
-        rtems_interrupt_level  level
-    );
+        void rtems_interrupt_local_disable(
+            rtems_interrupt_level  level
+        );
 
-**DIRECTIVE STATUS CODES:**
-
-NONE
-
-**DESCRIPTION:**
+DIRECTIVE STATUS CODES:
+    NONE
 
 .. sidebar:: *Macro*
 
   This directive is implemented as a macro which modifies the ``level``
   parameter.
 
-This directive disables all maskable interrupts and returns the previous
-``level``.  A later invocation of the ``rtems_interrupt_local_enable`` directive
-should be used to restore the interrupt level.
+DESCRIPTION:
+    This directive disables all maskable interrupts and returns the previous
+    ``level``.  A later invocation of the ``rtems_interrupt_local_enable``
+    directive should be used to restore the interrupt level.
 
-**NOTES:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive will not cause the calling task to be preempted.
+    On SMP configurations this will not ensure system wide mutual exclusion.
+    Use interrupt locks instead.
 
-On SMP configurations this will not ensure system wide mutual exclusion.  Use
-interrupt locks instead.
+.. raw:: latex
+
+   \clearpage
 
 .. _rtems_interrupt_local_enable:
 
 INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
 ---------------------------------------------------------------
 .. index:: enable interrupts
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_local_enable
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_local_enable(
-        rtems_interrupt_level  level
-    );
+        void rtems_interrupt_local_enable(
+            rtems_interrupt_level  level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive enables maskable interrupts to the ``level`` which was
+    returned by a previous call to ``rtems_interrupt_local_disable``.
+    Immediately prior to invoking this directive, maskable interrupts should be
+    disabled by a call to ``rtems_interrupt_local_disable`` and will be enabled
+    when this directive returns to the caller.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive enables maskable interrupts to the ``level`` which was returned
-by a previous call to ``rtems_interrupt_local_disable``.  Immediately prior to
-invoking this directive, maskable interrupts should be disabled by a call to
-``rtems_interrupt_local_disable`` and will be enabled when this directive
-returns to the caller.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the calling task to be preempted.
+   \clearpage
 
 .. _rtems_interrupt_lock_initialize:
 
 INTERRUPT_LOCK_INITIALIZE - Initialize an ISR Lock
 --------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_lock_initialize
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_lock_initialize(
-        rtems_interrupt_lock *lock
-    );
+        void rtems_interrupt_lock_initialize(
+            rtems_interrupt_lock *lock
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    Initializes an interrupt lock.
 
-**DESCRIPTION:**
+NOTES:
+    Concurrent initialization leads to unpredictable results.
 
-Initializes an interrupt lock.
+.. raw:: latex
 
-**NOTES:**
-
-Concurrent initialization leads to unpredictable results.
+   \clearpage
 
 .. _rtems_interrupt_lock_acquire:
 
 INTERRUPT_LOCK_ACQUIRE - Acquire an ISR Lock
 --------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_lock_acquire
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_lock_acquire(
-        rtems_interrupt_lock *lock,
-        rtems_interrupt_level level
-    );
+        void rtems_interrupt_lock_acquire(
+            rtems_interrupt_lock *lock,
+            rtems_interrupt_level level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    Interrupts will be disabled.  On SMP configurations this directive acquires
+    a SMP lock.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling thread to be preempted.  This
+    directive can be used in thread and interrupt context.
 
-Interrupts will be disabled.  On SMP configurations this directive acquires a
-SMP lock.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the calling thread to be preempted.  This
-directive can be used in thread and interrupt context.
+   \clearpage
 
 .. _rtems_interrupt_lock_release:
 
 INTERRUPT_LOCK_RELEASE - Release an ISR Lock
 --------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_lock_release
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_lock_release(
-        rtems_interrupt_lock *lock,
-        rtems_interrupt_level level
-    );
+        void rtems_interrupt_lock_release(
+            rtems_interrupt_lock *lock,
+            rtems_interrupt_level level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    The interrupt status will be restored.  On SMP configurations this
+    directive releases a SMP lock.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling thread to be preempted.  This
+    directive can be used in thread and interrupt context.
 
-The interrupt status will be restored.  On SMP configurations this directive
-releases a SMP lock.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the calling thread to be preempted.  This
-directive can be used in thread and interrupt context.
+   \clearpage
 
 .. _rtems_interrupt_lock_acquire_isr:
 
 INTERRUPT_LOCK_ACQUIRE_ISR - Acquire an ISR Lock from ISR
 ---------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_lock_acquire_isr
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_lock_acquire_isr(
-        rtems_interrupt_lock *lock,
-        rtems_interrupt_level level
-    );
+        void rtems_interrupt_lock_acquire_isr(
+            rtems_interrupt_lock *lock,
+            rtems_interrupt_level level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    The interrupt status will remain unchanged.  On SMP configurations this
+    directive acquires a SMP lock.
 
-**DESCRIPTION:**
+    In case the corresponding interrupt service routine can be interrupted by
+    higher priority interrupts and these interrupts enter the critical section
+    protected by this lock, then the result is unpredictable.
 
-The interrupt status will remain unchanged.  On SMP configurations this
-directive acquires a SMP lock.
+NOTES:
+    This directive should be called from the corresponding interrupt service
+    routine.
 
-In case the corresponding interrupt service routine can be interrupted by
-higher priority interrupts and these interrupts enter the critical section
-protected by this lock, then the result is unpredictable.
+.. raw:: latex
 
-**NOTES:**
-
-This directive should be called from the corresponding interrupt service
-routine.
+   \clearpage
 
 .. _rtems_interrupt_lock_release_isr:
 
 INTERRUPT_LOCK_RELEASE_ISR - Release an ISR Lock from ISR
 ---------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_lock_release_isr
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_interrupt_lock_release_isr(
-        rtems_interrupt_lock *lock,
-        rtems_interrupt_level level
-    );
+        void rtems_interrupt_lock_release_isr(
+            rtems_interrupt_lock *lock,
+            rtems_interrupt_level level
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
 
-**DESCRIPTION:**
+    The interrupt status will remain unchanged.  On SMP configurations this
+    directive releases a SMP lock.
 
-The interrupt status will remain unchanged.  On SMP configurations this
-directive releases a SMP lock.
+NOTES:
+    This directive should be called from the corresponding interrupt service
+    routine.
 
-**NOTES:**
+.. raw:: latex
 
-This directive should be called from the corresponding interrupt service
-routine.
+   \clearpage
 
 .. _rtems_interrupt_is_in_progress:
 
 INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 ------------------------------------------------
 .. index:: is interrupt in progress
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_interrupt_is_in_progress
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    bool rtems_interrupt_is_in_progress(void);
+        bool rtems_interrupt_is_in_progress(void);
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive returns ``TRUE`` if the processor is currently servicing an
+    interrupt and ``FALSE`` otherwise.  A return value of ``TRUE`` indicates
+    that the caller is an interrupt service routine, *NOT* a task.  The
+    directives available to an interrupt service routine are restricted.
 
-**DESCRIPTION:**
-
-This directive returns ``TRUE`` if the processor is currently servicing an
-interrupt and ``FALSE`` otherwise.  A return value of ``TRUE`` indicates that
-the caller is an interrupt service routine, *NOT* a task.  The directives
-available to an interrupt service routine are restricted.
-
-**NOTES:**
-
-This directive will not cause the calling task to be preempted.
+NOTES:
+    This directive will not cause the calling task to be preempted.

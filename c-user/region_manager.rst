@@ -224,82 +224,83 @@ This section details the region manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_region_create:
 
 REGION_CREATE - Create a region
 -------------------------------
 .. index:: create a region
+CALLING SEQUENCE:
+    .. code-block:: c
 
-**CALLING SEQUENCE:**
+        rtems_status_code rtems_region_create(
+            rtems_name       name,
+            void            *starting_address,
+            intptr_t         length,
+            uint32_t         page_size,
+            rtems_attribute  attribute_set,
+            rtems_id        *id
+        );
 
-.. index:: rtems_region_create
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. code-block:: c
+     * - ``RTEMS_SUCCESSFUL``
+       - region created successfully
+     * - ``RTEMS_INVALID_NAME``
+       - invalid region name
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``id`` is NULL
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``starting_address`` is NULL
+     * - ``RTEMS_INVALID_ADDRESS``
+       - address not on four byte boundary
+     * - ``RTEMS_TOO_MANY``
+       - too many regions created
+     * - ``RTEMS_INVALID_SIZE``
+       - invalid page size
 
-    rtems_status_code rtems_region_create(
-        rtems_name       name,
-        void            *starting_address,
-        intptr_t         length,
-        uint32_t         page_size,
-        rtems_attribute  attribute_set,
-        rtems_id        *id
-    );
+DESCRIPTION:
+    This directive creates a region from a physically contiguous memory space
+    which starts at starting_address and is length bytes long.  Segments
+    allocated from the region will be a multiple of page_size bytes in length.
+    The assigned region id is returned in id.  This region id is used as an
+    argument to other region related directives to access the region.
 
-**DIRECTIVE STATUS CODES:**
+    For control and maintenance of the region, RTEMS allocates and initializes
+    an RNCB from the RNCB free pool.  Thus memory from the region is not used
+    to store the RNCB.  However, some overhead within the region is required by
+    RTEMS each time a segment is constructed in the region.
 
-.. list-table::
- :class: rtems-table
+    Specifying ``RTEMS_PRIORITY`` in attribute_set causes tasks waiting for a
+    segment to be serviced according to task priority.  Specifying
+    ``RTEMS_FIFO`` in attribute_set or selecting ``RTEMS_DEFAULT_ATTRIBUTES``
+    will cause waiting tasks to be serviced in First In-First Out order.
 
- * - ``RTEMS_SUCCESSFUL``
-   - region created successfully
- * - ``RTEMS_INVALID_NAME``
-   - invalid region name
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``id`` is NULL
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``starting_address`` is NULL
- * - ``RTEMS_INVALID_ADDRESS``
-   - address not on four byte boundary
- * - ``RTEMS_TOO_MANY``
-   - too many regions created
- * - ``RTEMS_INVALID_SIZE``
-   - invalid page size
+    The ``starting_address`` parameter must be aligned on a four byte boundary.
+    The ``page_size`` parameter must be a multiple of four greater than or
+    equal to eight.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive creates a region from a physically contiguous memory space which
-starts at starting_address and is length bytes long.  Segments allocated from
-the region will be a multiple of page_size bytes in length.  The assigned
-region id is returned in id.  This region id is used as an argument to other
-region related directives to access the region.
+    The following region attribute constants are defined by RTEMS:
 
-For control and maintenance of the region, RTEMS allocates and initializes an
-RNCB from the RNCB free pool.  Thus memory from the region is not used to store
-the RNCB.  However, some overhead within the region is required by RTEMS each
-time a segment is constructed in the region.
+    .. list-table::
+     :class: rtems-table
 
-Specifying ``RTEMS_PRIORITY`` in attribute_set causes tasks waiting for a
-segment to be serviced according to task priority.  Specifying ``RTEMS_FIFO``
-in attribute_set or selecting ``RTEMS_DEFAULT_ATTRIBUTES`` will cause waiting
-tasks to be serviced in First In-First Out order.
+     * - ``RTEMS_FIFO``
+       - tasks wait by FIFO (default)
+     * - ``RTEMS_PRIORITY``
+       - tasks wait by priority
 
-The ``starting_address`` parameter must be aligned on a four byte boundary.
-The ``page_size`` parameter must be a multiple of four greater than or equal to
-eight.
+.. raw:: latex
 
-**NOTES:**
-
-This directive will not cause the calling task to be preempted.
-
-The following region attribute constants are defined by RTEMS:
-
-.. list-table::
- :class: rtems-table
-
- * - ``RTEMS_FIFO``
-   - tasks wait by FIFO (default)
- * - ``RTEMS_PRIORITY``
-   - tasks wait by priority
+   \clearpage
 
 .. _rtems_region_ident:
 
@@ -307,82 +308,81 @@ REGION_IDENT - Get ID of a region
 ---------------------------------
 .. index:: get ID of a region
 .. index:: obtain ID of a region
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_ident
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_ident(
-        rtems_name  name,
-        rtems_id   *id
-    );
+        rtems_status_code rtems_region_ident(
+            rtems_name  name,
+            rtems_id   *id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - region identified successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``id`` is NULL
+     * - ``RTEMS_INVALID_NAME``
+       - region name not found
 
- * - ``RTEMS_SUCCESSFUL``
-   - region identified successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``id`` is NULL
- * - ``RTEMS_INVALID_NAME``
-   - region name not found
+DESCRIPTION:
 
-**DESCRIPTION:**
+    This directive obtains the region id associated with the region name to be
+    acquired.  If the region name is not unique, then the region id will match
+    one of the regions with that name.  However, this region id is not
+    guaranteed to correspond to the desired region.  The region id is used to
+    access this region in other region manager directives.
 
-This directive obtains the region id associated with the region name to be
-acquired.  If the region name is not unique, then the region id will match one
-of the regions with that name.  However, this region id is not guaranteed to
-correspond to the desired region.  The region id is used to access this region
-in other region manager directives.
+NOTES:
+    This directive will not cause the running task to be preempted.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the running task to be preempted.
+   \clearpage
 
 .. _rtems_region_delete:
 
 REGION_DELETE - Delete a region
 -------------------------------
 .. index:: delete a region
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_delete
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_delete(
-        rtems_id id
-    );
+        rtems_status_code rtems_region_delete(
+            rtems_id id
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - region deleted successfully
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+     * - ``RTEMS_RESOURCE_IN_USE``
+       - segments still in use
 
- * - ``RTEMS_SUCCESSFUL``
-   - region deleted successfully
- * - ``RTEMS_INVALID_ID``
-   - invalid region id
- * - ``RTEMS_RESOURCE_IN_USE``
-   - segments still in use
+DESCRIPTION:
+    This directive deletes the region specified by id.  The region cannot be
+    deleted if any of its segments are still allocated.  The RNCB for the
+    deleted region is reclaimed by RTEMS.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive deletes the region specified by id.  The region cannot be
-deleted if any of its segments are still allocated.  The RNCB for the deleted
-region is reclaimed by RTEMS.
+    The calling task does not have to be the task that created the region.  Any
+    local task that knows the region id can delete the region.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the calling task to be preempted.
-
-The calling task does not have to be the task that created the region.  Any
-local task that knows the region id can delete the region.
+   \clearpage
 
 .. _rtems_region_extend:
 
@@ -390,266 +390,260 @@ REGION_EXTEND - Add memory to a region
 --------------------------------------
 .. index:: add memory to a region
 .. index:: region, add memory
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_extend
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_extend(
-        rtems_id  id,
-        void     *starting_address,
-        intptr_t  length
-    );
+        rtems_status_code rtems_region_extend(
+            rtems_id  id,
+            void     *starting_address,
+            intptr_t  length
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - region extended successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``starting_address`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+     * - ``RTEMS_INVALID_ADDRESS``
+       - invalid address of area to add
 
- * - ``RTEMS_SUCCESSFUL``
-   - region extended successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``starting_address`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid region id
- * - ``RTEMS_INVALID_ADDRESS``
-   - invalid address of area to add
+DESCRIPTION:
+    This directive adds the memory which starts at starting_address for length
+    bytes to the region specified by id.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will not cause the calling task to be preempted.
 
-This directive adds the memory which starts at starting_address for length
-bytes to the region specified by id.
+    The calling task does not have to be the task that created the region.  Any
+    local task that knows the region id can extend the region.
 
-**NOTES:**
+.. raw:: latex
 
-This directive will not cause the calling task to be preempted.
-
-The calling task does not have to be the task that created the region.  Any
-local task that knows the region id can extend the region.
+   \clearpage
 
 .. _rtems_region_get_segment:
 
 REGION_GET_SEGMENT - Get segment from a region
 ----------------------------------------------
 .. index:: get segment from region
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_get_segment
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_get_segment(
-        rtems_id         id,
-        intptr_t         size,
-        rtems_option     option_set,
-        rtems_interval   timeout,
-        void           **segment
-    );
+        rtems_status_code rtems_region_get_segment(
+            rtems_id         id,
+            intptr_t         size,
+            rtems_option     option_set,
+            rtems_interval   timeout,
+            void           **segment
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - segment obtained successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``segment`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+     * - ``RTEMS_INVALID_SIZE``
+       - request is for zero bytes or exceeds the size of maximum segment which is
+         possible for this region
+     * - ``RTEMS_UNSATISFIED``
+       - segment of requested size not available
+     * - ``RTEMS_TIMEOUT``
+       - timed out waiting for segment
+     * - ``RTEMS_OBJECT_WAS_DELETED``
+       - region deleted while waiting
 
- * - ``RTEMS_SUCCESSFUL``
-   - segment obtained successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``segment`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid region id
- * - ``RTEMS_INVALID_SIZE``
-   - request is for zero bytes or exceeds the size of maximum segment which is
-     possible for this region
- * - ``RTEMS_UNSATISFIED``
-   - segment of requested size not available
- * - ``RTEMS_TIMEOUT``
-   - timed out waiting for segment
- * - ``RTEMS_OBJECT_WAS_DELETED``
-   - region deleted while waiting
+DESCRIPTION:
+    This directive obtains a variable size segment from the region specified by
+    ``id``.  The address of the allocated segment is returned in segment.  The
+    ``RTEMS_WAIT`` and ``RTEMS_NO_WAIT`` components of the options parameter
+    are used to specify whether the calling tasks wish to wait for a segment to
+    become available or return immediately if no segment is available.  For
+    either option, if a sufficiently sized segment is available, then the
+    segment is successfully acquired by returning immediately with the
+    ``RTEMS_SUCCESSFUL`` status code.
 
-**DESCRIPTION:**
+    If the calling task chooses to return immediately and a segment large
+    enough is not available, then an error code indicating this fact is
+    returned.  If the calling task chooses to wait for the segment and a
+    segment large enough is not available, then the calling task is placed on
+    the region's segment wait queue and blocked.  If the region was created
+    with the ``RTEMS_PRIORITY`` option, then the calling task is inserted into
+    the wait queue according to its priority.  However, if the region was
+    created with the ``RTEMS_FIFO`` option, then the calling task is placed at
+    the rear of the wait queue.
 
-This directive obtains a variable size segment from the region specified by
-``id``.  The address of the allocated segment is returned in segment.  The
-``RTEMS_WAIT`` and ``RTEMS_NO_WAIT`` components of the options parameter are
-used to specify whether the calling tasks wish to wait for a segment to become
-available or return immediately if no segment is available.  For either option,
-if a sufficiently sized segment is available, then the segment is successfully
-acquired by returning immediately with the ``RTEMS_SUCCESSFUL`` status code.
+    The timeout parameter specifies the maximum interval that a task is willing
+    to wait to obtain a segment.  If timeout is set to ``RTEMS_NO_TIMEOUT``,
+    then the calling task will wait forever.
 
-If the calling task chooses to return immediately and a segment large enough is
-not available, then an error code indicating this fact is returned.  If the
-calling task chooses to wait for the segment and a segment large enough is not
-available, then the calling task is placed on the region's segment wait queue
-and blocked.  If the region was created with the ``RTEMS_PRIORITY`` option,
-then the calling task is inserted into the wait queue according to its
-priority.  However, if the region was created with the ``RTEMS_FIFO`` option,
-then the calling task is placed at the rear of the wait queue.
+NOTES:
+    The actual length of the allocated segment may be larger than the requested
+    size because a segment size is always a multiple of the region's page size.
 
-The timeout parameter specifies the maximum interval that a task is willing to
-wait to obtain a segment.  If timeout is set to ``RTEMS_NO_TIMEOUT``, then the
-calling task will wait forever.
+    The following segment acquisition option constants are defined by RTEMS:
 
-**NOTES:**
+    .. list-table::
+     :class: rtems-table
 
-The actual length of the allocated segment may be larger than the requested
-size because a segment size is always a multiple of the region's page size.
+     * - ``RTEMS_WAIT``
+       - task will wait for segment (default)
+     * - ``RTEMS_NO_WAIT``
+       - task should not wait
 
-The following segment acquisition option constants are defined by RTEMS:
+    A clock tick is required to support the timeout functionality of this
+    directive.
 
-.. list-table::
- :class: rtems-table
+.. raw:: latex
 
- * - ``RTEMS_WAIT``
-   - task will wait for segment (default)
- * - ``RTEMS_NO_WAIT``
-   - task should not wait
-
-A clock tick is required to support the timeout functionality of this
-directive.
+   \clearpage
 
 .. _rtems_region_return_segment:
 
 REGION_RETURN_SEGMENT - Return segment to a region
 --------------------------------------------------
 .. index:: return segment to region
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_return_segment
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_return_segment(
-        rtems_id  id,
-        void     *segment
-    );
+        rtems_status_code rtems_region_return_segment(
+            rtems_id  id,
+            void     *segment
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - segment returned successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``segment`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+     * - ``RTEMS_INVALID_ADDRESS``
+       - segment address not in region
 
- * - ``RTEMS_SUCCESSFUL``
-   - segment returned successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``segment`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid region id
- * - ``RTEMS_INVALID_ADDRESS``
-   - segment address not in region
+DESCRIPTION:
+    This directive returns the segment specified by segment to the region
+    specified by id.  The returned segment is merged with its neighbors to form
+    the largest possible segment.  The first task on the wait queue is examined
+    to determine if its segment request can now be satisfied.  If so, it is
+    given a segment and unblocked.  This process is repeated until the first
+    task's segment request cannot be satisfied.
 
-**DESCRIPTION:**
+NOTES:
+    This directive will cause the calling task to be preempted if one or more
+    local tasks are waiting for a segment and the following conditions exist:
 
-This directive returns the segment specified by segment to the region specified
-by id.  The returned segment is merged with its neighbors to form the largest
-possible segment.  The first task on the wait queue is examined to determine if
-its segment request can now be satisfied.  If so, it is given a segment and
-unblocked.  This process is repeated until the first task's segment request
-cannot be satisfied.
+    - a waiting task has a higher priority than the calling task
 
-**NOTES:**
+    - the size of the segment required by the waiting task is less than or
+      equal to the size of the segment returned.
 
-This directive will cause the calling task to be preempted if one or more local
-tasks are waiting for a segment and the following conditions exist:
+.. raw:: latex
 
-- a waiting task has a higher priority than the calling task
-
-- the size of the segment required by the waiting task is less than or equal to
-  the size of the segment returned.
+   \clearpage
 
 .. _rtems_region_get_segment_size:
 
 REGION_GET_SEGMENT_SIZE - Obtain size of a segment
 --------------------------------------------------
 .. index:: get size of segment
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_get_segment_size
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_get_segment_size(
-        rtems_id  id,
-        void     *segment,
-        ssize_t  *size
-    );
+        rtems_status_code rtems_region_get_segment_size(
+            rtems_id  id,
+            void     *segment,
+            ssize_t  *size
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - segment obtained successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``segment`` is NULL
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``size`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+     * - ``RTEMS_INVALID_ADDRESS``
+       - segment address not in region
 
- * - ``RTEMS_SUCCESSFUL``
-   - segment obtained successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``segment`` is NULL
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``size`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid region id
- * - ``RTEMS_INVALID_ADDRESS``
-   - segment address not in region
+DESCRIPTION:
+    This directive obtains the size in bytes of the specified segment.
 
-**DESCRIPTION:**
+NOTES:
+    The actual length of the allocated segment may be larger than the requested
+    size because a segment size is always a multiple of the region's page size.
 
-This directive obtains the size in bytes of the specified segment.
+.. raw:: latex
 
-**NOTES:**
-
-The actual length of the allocated segment may be larger than the requested
-size because a segment size is always a multiple of the region's page size.
+   \clearpage
 
 .. _rtems_region_resize_segment:
 
 REGION_RESIZE_SEGMENT - Change size of a segment
 ------------------------------------------------
 .. index:: resize segment
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_region_resize_segment
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_region_resize_segment(
-        rtems_id     id,
-        void        *segment,
-        ssize_t      size,
-        ssize_t     *old_size
-    );
+        rtems_status_code rtems_region_resize_segment(
+            rtems_id     id,
+            void        *segment,
+            ssize_t      size,
+            ssize_t     *old_size
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-.. list-table::
- :class: rtems-table
+     * - ``RTEMS_SUCCESSFUL``
+       - segment obtained successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``segment`` is NULL
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``old_size`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+     * - ``RTEMS_INVALID_ADDRESS``
+       - segment address not in region
+     * - ``RTEMS_UNSATISFIED``
+       - unable to make segment larger
 
- * - ``RTEMS_SUCCESSFUL``
-   - segment obtained successfully
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``segment`` is NULL
- * - ``RTEMS_INVALID_ADDRESS``
-   - ``old_size`` is NULL
- * - ``RTEMS_INVALID_ID``
-   - invalid region id
- * - ``RTEMS_INVALID_ADDRESS``
-   - segment address not in region
- * - ``RTEMS_UNSATISFIED``
-   - unable to make segment larger
+DESCRIPTION:
+    This directive is used to increase or decrease the size of a segment.  When
+    increasing the size of a segment, it is possible that there is not memory
+    available contiguous to the segment.  In this case, the request is
+    unsatisfied.
 
-**DESCRIPTION:**
-
-This directive is used to increase or decrease the size of a segment.  When
-increasing the size of a segment, it is possible that there is not memory
-available contiguous to the segment.  In this case, the request is unsatisfied.
-
-**NOTES:**
-
-If an attempt to increase the size of a segment fails, then the application may
-want to allocate a new segment of the desired size, copy the contents of the
-original segment to the new, larger segment and then return the original
-segment.
+NOTES:
+    If an attempt to increase the size of a segment fails, then the application
+    may want to allocate a new segment of the desired size, copy the contents
+    of the original segment to the new, larger segment and then return the
+    original segment.

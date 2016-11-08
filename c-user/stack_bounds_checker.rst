@@ -157,54 +157,46 @@ constants, usage, and status codes.
 STACK_CHECKER_IS_BLOWN - Has Current Task Blown Its Stack
 ---------------------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        bool rtems_stack_checker_is_blown( void );
 
-    bool rtems_stack_checker_is_blown( void );
+STATUS CODES:
+    .. list-table::
+     :class: rtems-table
 
-**STATUS CODES:**
+     * - ``TRUE``
+       - Stack is operating within its stack limits
+     * - ``FALSE``
+       - Current stack pointer is outside allocated area
 
-.. list-table::
- :class: rtems-table
+DESCRIPTION:
+    This method is used to determine if the current stack pointer of the
+    currently executing task is within bounds.
 
- * - ``TRUE``
-   - Stack is operating within its stack limits
- * - ``FALSE``
-   - Current stack pointer is outside allocated area
-
-**DESCRIPTION:**
-
-This method is used to determine if the current stack pointer of the currently
-executing task is within bounds.
-
-**NOTES:**
-
-This method checks the current stack pointer against the high and low addresses
-of the stack memory allocated when the task was created and it looks for damage
-to the high water mark pattern for the worst case usage of the task being
-called.
+NOTES:
+    This method checks the current stack pointer against the high and low
+    addresses of the stack memory allocated when the task was created and it
+    looks for damage to the high water mark pattern for the worst case usage of
+    the task being called.
 
 .. _rtems_stack_checker_report_usage:
 
 STACK_CHECKER_REPORT_USAGE - Report Task Stack Usage
 ----------------------------------------------------
 
-**CALLING SEQUENCE:**
+CALLING SEQUENCE:
+    .. code-block:: c
 
-.. code-block:: c
+        void rtems_stack_checker_report_usage( void );
 
-    void rtems_stack_checker_report_usage( void );
+STATUS CODES:
+    NONE
 
-**STATUS CODES:**
+DESCRIPTION:
+    This routine prints a table with the peak stack usage and stack space
+    allocation of every task in the system.
 
-NONE
-
-**DESCRIPTION:**
-
-This routine prints a table with the peak stack usage and stack space
-allocation of every task in the system.
-
-**NOTES:**
-
-NONE
+NOTES:
+    NONE

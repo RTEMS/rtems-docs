@@ -76,25 +76,25 @@ The directives are:
  * - ``RTEMS_NO_MEMORY``
    - could not get enough memory
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_status_text:
 
 STATUS_TEXT - Returns the enumeration name for a status code
 ------------------------------------------------------------
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_status_text
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    const char *rtems_status_text(
-        rtems_status_code code
-    );
+        const char *rtems_status_text(
+            rtems_status_code code
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES
+    The status code enumeration name or "?" in case the status code is invalid.
 
-The status code enumeration name or "?" in case the status code is invalid.
-
-**DESCRIPTION:**
-
-Returns the enumeration name for the specified status code.
+DESCRIPTION:
+    Returns the enumeration name for the specified status code.

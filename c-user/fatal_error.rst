@@ -111,45 +111,48 @@ This section details the fatal error manager's directives.  A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_fatal_error_occurred:
 
 FATAL_ERROR_OCCURRED - Invoke the fatal error handler
 -----------------------------------------------------
 .. index:: announce fatal error
 .. index:: fatal error, announce
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_fatal_error_occurred
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_fatal_error_occurred(
-        uint32_t  the_error
-    );
+        void rtems_fatal_error_occurred(
+            uint32_t  the_error
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive processes fatal errors.  If the FATAL error extension is
+    defined in the configuration table, then the user-defined error extension
+    is called.  If configured and the provided FATAL error extension returns,
+    then the RTEMS default error handler is invoked.  This directive can be
+    invoked by RTEMS or by the user's application code including initialization
+    tasks, other tasks, and ISRs.
 
-**DESCRIPTION:**
+NOTES:
+    This directive supports local operations only.
 
-This directive processes fatal errors.  If the FATAL error extension is defined
-in the configuration table, then the user-defined error extension is called.
-If configured and the provided FATAL error extension returns, then the RTEMS
-default error handler is invoked.  This directive can be invoked by RTEMS or by
-the user's application code including initialization tasks, other tasks, and
-ISRs.
+    Unless the user-defined error extension takes special actions such as
+    restarting the calling task, this directive WILL NOT RETURN to the caller.
 
-**NOTES:**
+    The user-defined extension for this directive may wish to initiate a global
+    shutdown.
 
-This directive supports local operations only.
+.. raw:: latex
 
-Unless the user-defined error extension takes special actions such as
-restarting the calling task, this directive WILL NOT RETURN to the caller.
-
-The user-defined extension for this directive may wish to initiate a global
-shutdown.
+   \clearpage
 
 .. _rtems_fatal:
 
@@ -157,97 +160,93 @@ FATAL - Invoke the fatal error handler with error source
 --------------------------------------------------------
 .. index:: announce fatal error
 .. index:: fatal error, announce
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_fatal
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_fatal(
-       rtems_fatal_source source,
-       rtems_fatal_code   error
-    );
+        void rtems_fatal(
+           rtems_fatal_source source,
+           rtems_fatal_code   error
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    This directive invokes the internal error handler with is internal set to
+    false.  See also ``rtems_fatal_error_occurred``.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-This directive invokes the internal error handler with is internal set to
-false.  See also ``rtems_fatal_error_occurred``.
+   \clearpage
 
 .. _rtems_exception_frame_print:
 
 EXCEPTION_FRAME_PRINT - Prints the exception frame
 --------------------------------------------------
 .. index:: exception frame
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_exception_frame_print
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    void rtems_exception_frame_print(
-        const rtems_exception_frame *frame
-    );
+        void rtems_exception_frame_print(
+            const rtems_exception_frame *frame
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    NONE
 
-NONE
+DESCRIPTION:
+    Prints the exception frame via ``printk()``.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-Prints the exception frame via ``printk()``.
+   \clearpage
 
 .. _rtems_fatal_source_text:
 
 FATAL_SOURCE_TEXT - Returns a text for a fatal source
 -----------------------------------------------------
 .. index:: fatal error
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_fatal_source_text
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    const char *rtems_fatal_source_text(
-        rtems_fatal_source source
-    );
+        const char *rtems_fatal_source_text(
+            rtems_fatal_source source
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    The fatal source text or "?" in case the passed fatal source is invalid.
 
-The fatal source text or "?" in case the passed fatal source is invalid.
+DESCRIPTION:
+    Returns a text for a fatal source.  The text for fatal source is the
+    enumerator constant.
 
-**DESCRIPTION:**
+.. raw:: latex
 
-Returns a text for a fatal source.  The text for fatal source is the enumerator
-constant.
+   \clearpage
 
 .. _rtems_internal_error_text:
 
 INTERNAL_ERROR_TEXT - Returns a text for an internal error code
 ---------------------------------------------------------------
 .. index:: fatal error
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_internal_error_text
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    const char *rtems_internal_error_text(
-        rtems_fatal_code error
-    );
+        const char *rtems_internal_error_text(
+            rtems_fatal_code error
+        );
 
-**DIRECTIVE STATUS CODES**
+DIRECTIVE STATUS CODES:
+    The error code text or "?" in case the passed error code is invalid.
 
-The error code text or "?" in case the passed error code is invalid.
-
-**DESCRIPTION:**
-
-Returns a text for an internal error code.  The text for each internal error
-code is the enumerator constant.
+DESCRIPTION:
+    Returns a text for an internal error code.  The text for each internal
+    error code is the enumerator constant.
