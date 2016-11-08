@@ -39,11 +39,13 @@ package_tests = {
     'hypcap'         : ['\\usepackage{hyperref}',
                         '\\usepackage{hypcap}'],
     'hyperref'       : ['\\usepackage{hyperref}'],
+    'inconsolata'    : ['\\usepackage{inconsolata}'],
     'ifplatform'     : ['\\usepackage{ifplatform}'],
     'ifthen'         : ['\\usepackage{ifthen}'],
     'inputenc'       : ['\\usepackage{inputenc}'],
     'keyval'         : ['\\usepackage{keyval}'],
     'kvoptions'      : ['\\usepackage{kvoptions}'],
+    'lato'           : ['\\usepackage{lato}'],
     'lineno'         : ['\\usepackage{lineno}'],
     'longtable'      : ['\\usepackage{longtable}'],
     'makeidx'        : ['\\usepackage{makeidx}'],
@@ -60,6 +62,8 @@ package_tests = {
     'xcolor'         : ['\\usepackage{xcolor}'],
     'xstring'        : ['\\usepackage{xstring}'],
 }
+package_optional = ['inconsolata',
+                    'lato']
 
 #
 # Add per host support. If there is a version clash for the same texlive
@@ -124,11 +128,12 @@ def configure_tests(conf):
 
     tests = sorted(package_tests.keys())
     local_packs = local_packages()
+    excludes = package_optional
     if local_packs is not None:
-        excludes = [p[:p.rfind('.')] for p in local_packs]
-        for e in excludes:
-            if e in tests:
-                tests.remove(e)
+        excludes += [p[:p.rfind('.')] for p in local_packs]
+    for e in excludes:
+        if e in tests:
+            tests.remove(e)
 
     fails = 0
     r = conf.find_program("pygmentize", mandatory = False)
@@ -145,3 +150,18 @@ def configure_tests(conf):
             fails += 1
     if fails > 0:
         conf.fatal('There are %d Tex package failures. Please fix.' % (fails))
+
+    fails = 0
+    for t in package_optional:
+        r = conf.test(build_fun = build_latex_test,
+                      msg = "Checking for Tex package '%s'" % (t),
+                      tex_test = t,
+                      okmsg = 'ok',
+                      errmsg = 'degraded fonts',
+                      mandatory = False)
+        if r is None:
+            fails += 1
+    if fails == 0:
+        conf.env.RTEMSEXTRAFONTS = 'rtemsextrafonts.sty'
+    else:
+        conf.env.RTEMSEXTRAFONTS = 'rtemsextrafonts-null.sty'

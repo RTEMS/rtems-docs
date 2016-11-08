@@ -89,21 +89,27 @@ def build_dir_setup(ctx, buildtype):
     return build_dir, output_node, output_dir, doctrees
 
 def pdf_resources(ctx, buildtype):
+    packages_base = ctx.path.parent.find_dir('common/latex')
+    if packages_base is None:
+        ctx.fatal('Latex package directory not found')
+    base = packages_base.path_from(ctx.path)
+    fnode = ctx.path.get_bld().make_node(buildtype)
+    fnode.mkdir()
     local_packages = latex.local_packages()
     if local_packages is not None:
-        packages_base = ctx.path.parent.find_dir('common/latex')
-        if packages_base is None:
-            ctx.fatal('Latex package directory not found')
-        base = packages_base.path_from(ctx.path)
         srcs = [os.path.join(base, p) for p in local_packages]
-        fnode = ctx.path.get_bld().make_node(buildtype)
-        fnode.mkdir()
         ctx(
             features = "subst",
             is_copy  = True,
             source   = srcs,
             target   = [fnode.make_node(p) for p in local_packages]
         )
+    ctx(
+        features = "subst",
+        is_copy  = True,
+        source   = os.path.join(base, ctx.env.RTEMSEXTRAFONTS),
+        target   = fnode.make_node('rtemsextrafonts.sty')
+    )
 
 def html_resources(ctx, buildtype):
     for dir_name in ["_static", "_templates"]:
