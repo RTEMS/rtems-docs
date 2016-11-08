@@ -128,7 +128,7 @@ def configure_tests(conf):
 
     tests = sorted(package_tests.keys())
     local_packs = local_packages()
-    excludes = package_optional
+    excludes = [p for p in package_optional]
     if local_packs is not None:
         excludes += [p[:p.rfind('.')] for p in local_packs]
     for e in excludes:
@@ -157,7 +157,7 @@ def configure_tests(conf):
                       msg = "Checking for Tex package '%s'" % (t),
                       tex_test = t,
                       okmsg = 'ok',
-                      errmsg = 'degraded fonts',
+                      errmsg = 'not found (degraded fonts)',
                       mandatory = False)
         if r is None:
             fails += 1
