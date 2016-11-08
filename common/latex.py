@@ -25,6 +25,7 @@ package_tests = {
     'cmap'           : ['\\usepackage{cmap}'],
     'color'          : ['\\usepackage{color}'],
     'eqparbox'       : ['\\usepackage{eqparbox}'],
+    'enumitem'       : ['\\usepackage{enumitem}'],
     'etoolbox'       : ['\\usepackage{etoolbox}'],
     'fancybox'       : ['\\usepackage{fancybox}'],
     'fancyhdr'       : ['\\usepackage{fancyhdr}'],

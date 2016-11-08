@@ -23,7 +23,6 @@ numbersep=5pt,
 gobble=0,
 }
 
-
 \renewcommand{\maketitle}{%
   \begin{titlepage}%
     \let\footnotesize\small
@@ -92,6 +91,12 @@ gobble=0,
 \ChNameVar{\raggedleft\normalsize}
 \ChNumVar{\raggedleft \bfseries\Large}
 \ChTitleVar{\raggedleft \rm\Huge}
+
+\usepackage{enumitem}
+\setlist[description]{style=nextline,leftmargin=10pt}
+
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
 
 \renewcommand\thepart{\@Roman\c@part}
 \renewcommand\part{%
