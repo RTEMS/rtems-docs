@@ -296,91 +296,88 @@ Functions
 This section describes the Shell related C functions which are publicly
 available related to initialization and configuration.
 
+.. raw:: latex
+
+   \clearpage
+
 rtems_shell_init - Initialize the shell
 ---------------------------------------
 .. index:: initialization
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_shell_init
 
-.. code-block:: c
+CALLING SEQUENCE:
+    .. code-block:: c
 
-    rtems_status_code rtems_shell_init(
-        const char          *task_name,
-        size_t               task_stacksize,
-        rtems_task_priority  task_priority,
-        const char          *devname,
-        bool                 forever,
-        bool                 wait,
-        rtems_login_check    login_check
-    );
+        rtems_status_code rtems_shell_init(
+            const char          *task_name,
+            size_t               task_stacksize,
+            rtems_task_priority  task_priority,
+            const char          *devname,
+            bool                 forever,
+            bool                 wait,
+            rtems_login_check    login_check
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    ``RTEMS_SUCCESSFUL`` - Shell task spawned successfully
+    *others* - to indicate a failure condition
 
-``RTEMS_SUCCESSFUL`` - Shell task spawned successfully
+DESCRIPTION:
+    This service creates a task with the specified characteristics to run the RTEMS
+    Shell attached to the specified ``devname``.
 
-others - to indicate a failure condition
+NOTES:
+    This method invokes the ``rtems_task_create`` and ``rtems_task_start``
+    directives and as such may return any status code that those directives may
+    return.
 
-**DESCRIPTION:**
+    There is one POSIX key necessary for all shell instances together and one
+    POSIX key value pair per instance. You should make sure that your RTEMS
+    configuration accounts for these resources.
 
-This service creates a task with the specified characteristics to run the RTEMS
-Shell attached to the specified ``devname``.
+.. raw:: latex
 
-**NOTES:**
-
-This method invokes the ``rtems_task_create`` and ``rtems_task_start``
-directives and as such may return any status code that those directives may
-return.
-
-There is one POSIX key necessary for all shell instances together and one POSIX
-key value pair per instance. You should make sure that your RTEMS configuration
-accounts for these resources.
+   \clearpage
 
 rtems_shell_login_check - Default login check handler
 -----------------------------------------------------
 .. index:: initialization
-
-**CALLING SEQUENCE:**
-
 .. index:: rtems_shell_login_check
 
-.. code:: c
+CALLING SEQUENCE:
+    .. code:: c
 
-    bool rtems_shell_login_check(
-      const char *user,
-      const char *passphrase
-    );
+        bool rtems_shell_login_check(
+          const char *user,
+          const char *passphrase
+        );
 
-**DIRECTIVE STATUS CODES:**
+DIRECTIVE STATUS CODES:
+    ``true`` - login is allowed, and
+    ``false`` - otherwise.
 
-``true`` - login is allowed, and
-``false`` - otherwise.
+DESCRIPTION:
+    This function checks if the specified passphrase is valid for the specified
+    user.
 
-**DESCRIPTION:**
+NOTES:
+    As a side-effect if the specified passphrase is valid for the specified
+    user, this function:
 
-This function checks if the specified passphrase is valid for the specified
-user.
+    - performs a filesystem change root operation to the directory of the
+      specified user if the directory path is non-empty,
 
-**NOTES:**
+    - changes the owner of the current shell device to the UID of the specified
+      user,
 
-As a side-effect if the specified passphrase is valid for the specified user,
-this function:
+    - sets the real and effective UID of the current user environment to the
+      UID of the specified user,
 
-- performs a filesystem change root operation to the directory of the specified
-  user if the directory path is non-empty,
+    - sets the real and effective GID of the current user environment to the
+      GID of the specified user, and
 
-- changes the owner of the current shell device to the UID of the specified
-  user,
+    - sets the supplementary group IDs of the current user environment to the
+      supplementary group IDs of the specified user.
 
-- sets the real and effective UID of the current user environment to the UID of
-  the specified user,
-
-- sets the real and effective GID of the current user environment to the GID of
-  the specified user, and
-
-- sets the supplementary group IDs of the current user environment to the
-  supplementary group IDs of the specified user.
-
-In case the filesystem change root operation fails, then the environment setup
-is aborted and ``false`` is returned.
+    In case the filesystem change root operation fails, then the environment
+    setup is aborted and ``false`` is returned.

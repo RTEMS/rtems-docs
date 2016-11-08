@@ -39,7 +39,7 @@ to the Community Project hosted at http://www.rtems.org/.
   ================  =============================
 
 .. toctree::
-	:maxdepth: 3
+	:maxdepth: 4
 	:numbered:
 
 	preface
