@@ -258,11 +258,13 @@ existing documentation for an example and if unsure ask.
 1. All text is to be formatted to wrap at 80 columns. Do not manually line feed
    before 80.
 
-2. Pasted text such as console output can exceed 80 columns however it is
+2. Do not insert tab characters, use spaces, no trailing white space.
+
+3. Pasted text such as console output can exceed 80 columns however it is
    preferred even this text is wrapped at 80 columns. Long lines in code block
    text causes issues with the PDF output.
 
-3. The headings use the following:
+4. The headings use the following:
 
       Heading   Description
       1  ###### Part
@@ -272,7 +274,7 @@ existing documentation for an example and if unsure ask.
       5  ^^^^^^ Sub-sub-sub-section
       6  ~~~~~~ Sub-sub-sub-sub-section
 
-3. For literal output, such as shell commands and code use '::' at the trailing
+5. For literal output, such as shell commands and code use '::' at the trailing
    edge of the previous paragraph. If the '.. code-block::' with
    'c' for C code and 'shell' for shell code and terminal output. If you need
    line number use:
@@ -280,7 +282,7 @@ existing documentation for an example and if unsure ask.
     .. code-block:: shell
        :linenos:
 
-4. Use the directives for 'note', 'warning', and 'topic'. Do not add 'TIP',
+6. Use the directives for 'note', 'warning', and 'topic'. Do not add 'TIP',
    'Important' or 'Warning' to the text. Let the mark-up language handle
    this. The supported directives are:
 
@@ -290,7 +292,7 @@ existing documentation for an example and if unsure ask.
 
    These directives reference specific CSS sytle support.
 
-5. Images are placed in the 'images' directory. Do not place images in the
+7. Images are placed in the 'images' directory. Do not place images in the
    source directories. Using a common 'images' tree of images promotes sharing
    of images. To add an image use:
 
@@ -299,7 +301,7 @@ existing documentation for an example and if unsure ask.
        :align: center
        :alt: This is the alt text for some output types.
 
-6. Callouts can be implement manually using a liternal block which can using
+8. Callouts can be implement manually using a liternal block which can using
    '::' or a code block and topic block is used for the items. For
    example:
 
@@ -328,7 +330,7 @@ existing documentation for an example and if unsure ask.
    works and makes the number as visible as possible. Use hanging indents if an
    items extends over a single line.
 
-7. Use the RTEMS domain references for URLs and mailing lists. For example to
+9. Use the RTEMS domain references for URLs and mailing lists. For example to
    insert the RTEMS developers list use:
 
      :r:list:`devel`
