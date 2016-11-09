@@ -93,7 +93,7 @@ Sphinx:
 PDF:
 
   WARNING: Do NOT use the RPMs for texlive. They are incomplete and, in
-           the best case, result in ugly PDFs. 
+           the best case, result in ugly PDFs.
 
   As root, install texlive per the instructions at
   http://tug.org/texlive/acquire-netinstall.html
@@ -264,11 +264,13 @@ existing documentation for an example and if unsure ask.
 
 3. The headings use the following:
 
-      Heading
-      1  ======
-      2  ------
-      3  ~~~~~~
-      4  ^^^^^^
+      Heading   Description
+      1  ###### Part
+      2  ****** Section
+      3  ====== Sub-ection
+      4  ------ Sub-sub-section
+      5  ^^^^^^ Sub-sub-sub-section
+      6  ~~~~~~ Sub-sub-sub-sub-section
 
 3. For literal output, such as shell commands and code use '::' at the trailing
    edge of the previous paragraph. If the '.. code-block::' with
