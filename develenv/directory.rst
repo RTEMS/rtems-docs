@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Directory Structure
-###################
+*******************
 
 The RTEMS directory structure is designed to meet the following requirements:
 

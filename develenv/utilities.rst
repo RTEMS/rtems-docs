@@ -3,7 +3,7 @@
 .. _rtems-specific-utilities:
 
 RTEMS Specific Utilities
-########################
+************************
 
 This section describes the additional commands available within the *RTEMS
 Development Environment*.  Although some of these commands are of general use,

@@ -4,9 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-============
 Introduction
-============
+************
 
 This document describes the RTEMS development environment.  Discussions are
 provided for the following topics:

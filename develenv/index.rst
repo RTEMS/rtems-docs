@@ -4,6 +4,9 @@
 RTEMS Development Environment Guide
 ===================================
 
+RTEMS Development Environment Guide
+-----------------------------------
+
  | COPYRIGHT (c) 1988 - 2016.
  | On-Line Applications Research Corporation (OAR).
 
@@ -32,7 +35,7 @@ to the Community Project hosted at http://www.rtems.org/.
   ================  =============================
 
 .. toctree::
-	:maxdepth: 3
+	:maxdepth: 5
 	:numbered:
 
 	introduction
