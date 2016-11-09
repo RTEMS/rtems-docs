@@ -7,7 +7,7 @@
 .. _User Extensions Manager:
 
 User Extensions Manager
-#######################
+***********************
 
 .. index:: user extensions
 

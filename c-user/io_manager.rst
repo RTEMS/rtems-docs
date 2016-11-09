@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 I/O Manager
-###########
+***********
 
 .. index:: device drivers
 .. index:: IO Manager

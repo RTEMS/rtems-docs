@@ -1,7 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Glossary
-########
+********
 
 :dfn:`active`
     A term used to describe an object which has been created by an application.

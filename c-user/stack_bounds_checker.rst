@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Stack Bounds Checker
-####################
+********************
 
 .. index:: stack
 

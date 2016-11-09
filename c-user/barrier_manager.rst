@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Barrier Manager
-###############
+***************
 
 .. index:: barrier
 

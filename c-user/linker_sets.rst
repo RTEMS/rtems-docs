@@ -7,7 +7,7 @@
 .. _Linker Sets:
 
 Linker Sets
-###########
+***********
 
 .. index:: linkersets
 

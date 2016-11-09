@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Signal Manager
-##############
+**************
 
 .. index:: signals
 

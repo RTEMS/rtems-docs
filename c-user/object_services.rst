@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Object Services
-###############
+***************
 
 .. index:: object manipulation
 

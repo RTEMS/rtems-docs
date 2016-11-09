@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Dual-Ported Memory Manager
-##########################
+**************************
 
 .. index:: ports
 .. index:: dual ported memory

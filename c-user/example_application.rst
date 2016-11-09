@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Example Application
-###################
+*******************
 
 .. code-block:: c
     :linenos:

@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Timer Manager
-#############
+*************
 
 .. index:: timers
 

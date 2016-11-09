@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Message Manager
-###############
+***************
 
 .. index:: messages
 .. index:: message queues

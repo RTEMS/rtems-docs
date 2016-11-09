@@ -4,7 +4,7 @@
 .. COMMENT: All rights reserved.
 
 Directive Status Codes
-######################
+**********************
 
 Introduction
 ============

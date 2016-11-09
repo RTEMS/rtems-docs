@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Red-Black Trees
-###############
+***************
 
 .. index:: rbtrees
 

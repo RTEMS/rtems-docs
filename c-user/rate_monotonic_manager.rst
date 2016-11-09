@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Rate Monotonic Manager
-######################
+**********************
 
 .. index:: rate mononitonic tasks
 .. index:: periodic tasks
@@ -235,7 +235,7 @@ even under transient overload, without knowing exactly when any given task will
 execute by applying proven schedulability analysis rules.
 
 Assumptions
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 The schedulability analysis rules for RMS were developed based on the following
 assumptions:
@@ -258,7 +258,7 @@ Once the basic schedulability analysis is understood, some of the above
 assumptions can be relaxed and the side-effects accounted for.
 
 Processor Utilization Rule
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. index:: RMS Processor Utilization Rule
 
 The Processor Utilization Rule requires that processor utilization be
@@ -285,7 +285,7 @@ scheduled with a greater utilization factor.  In fact, the average processor
 utilization threshold for a randomly generated task set is approximately 0.88.
 
 Processor Utilization Rule Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example illustrates the application of the Processor Utilization Rule to
 an application with three critical periodic tasks.  The following table details
@@ -309,7 +309,7 @@ Utilization Rule.  Therefore, this task set is guaranteed to be schedulable
 using RMS.
 
 First Deadline Rule
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 .. index:: RMS First Deadline Rule
 
 If a given set of tasks do exceed the processor utilization upper limit imposed
@@ -330,7 +330,7 @@ ensures that all tasks begin to compete for execution time at the same instant
 - when the user initialization task deletes itself.
 
 First Deadline Rule Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The First Deadline Rule can ensure schedulability even when the Processor
 Utilization Rule fails.  The example below is a modification of the Processor
@@ -385,7 +385,7 @@ Thus, all of the tasks have met their first deadlines at time 200, and the task
 set is schedulable using the First Deadline Rule.
 
 Relaxation of Assumptions
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The assumptions used to develop the RMS schedulability rules are uncommon in
 most real-time systems.  For example, it was assumed that tasks have constant
@@ -418,7 +418,7 @@ using RMS.  Every hardware and software factor which impacts the execution time
 of each task must be accounted for in the schedulability analysis.
 
 Further Reading
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 For more information on Rate Monotonic Scheduling and its schedulability
 analysis, the reader is referred to the following:

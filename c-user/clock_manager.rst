@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Clock Manager
-#############
+*************
 
 .. index:: clock
 
@@ -694,7 +694,6 @@ DIRECTIVE STATUS CODES:
     The system uptime in seconds.
 
 DESCRIPTION:
-
     This directive returns the seconds since the system was booted.
 
 NOTES:

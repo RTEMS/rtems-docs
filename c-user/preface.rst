@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Preface
-#######
+*******
 
 In recent years, the cost required to develop a software product has increased
 significantly while the target hardware costs have decreased.  Now a larger

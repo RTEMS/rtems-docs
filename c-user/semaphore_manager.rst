@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Semaphore Manager
-#################
+*****************
 
 .. index:: semaphores
 .. index:: binary semaphores

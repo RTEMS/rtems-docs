@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 RTEMS Data Types
-################
+****************
 
 Introduction
 ============

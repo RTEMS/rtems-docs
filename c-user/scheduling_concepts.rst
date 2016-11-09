@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Scheduling Concepts
-###################
+*******************
 
 .. index:: scheduling
 .. index:: task scheduling

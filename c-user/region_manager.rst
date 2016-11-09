@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Region Manager
-##############
+**************
 
 .. index:: regions
 

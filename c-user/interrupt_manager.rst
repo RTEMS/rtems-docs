@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Interrupt Manager
-#################
+*****************
 
 Introduction
 ============
@@ -325,15 +325,15 @@ CALLING SEQUENCE:
 DIRECTIVE STATUS CODES:
     NONE
 
-.. sidebar:: *Macro*
-
-  This directive is implemented as a macro which modifies the ``level``
-  parameter.
-
 DESCRIPTION:
     This directive disables all maskable interrupts and returns the previous
     ``level``.  A later invocation of the ``rtems_interrupt_enable`` directive
     should be used to restore the interrupt level.
+
+.. sidebar:: *Macro*
+
+  This directive is implemented as a macro which modifies the ``level``
+  parameter.
 
 NOTES:
     This directive will not cause the calling task to be preempted.
@@ -433,15 +433,15 @@ CALLING SEQUENCE:
 DIRECTIVE STATUS CODES:
     NONE
 
-.. sidebar:: *Macro*
-
-  This directive is implemented as a macro which modifies the ``level``
-  parameter.
-
 DESCRIPTION:
     This directive disables all maskable interrupts and returns the previous
     ``level``.  A later invocation of the ``rtems_interrupt_local_enable``
     directive should be used to restore the interrupt level.
+
+.. sidebar:: *Macro*
+
+  This directive is implemented as a macro which modifies the ``level``
+  parameter.
 
 NOTES:
     This directive will not cause the calling task to be preempted.

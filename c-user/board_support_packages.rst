@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Board Support Packages
-######################
+**********************
 
 .. index:: Board Support Packages
 .. index:: BSPs

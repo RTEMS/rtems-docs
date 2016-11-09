@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Event Manager
-#############
+*************
 
 .. index:: events
 

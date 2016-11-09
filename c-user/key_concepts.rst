@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Key Concepts
-############
+************
 
 Introduction
 ============

@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Constant Bandwidth Server Scheduler API
-#######################################
+***************************************
 
 .. index:: cbs
 

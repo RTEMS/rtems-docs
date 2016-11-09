@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Fatal Error Manager
-###################
+*******************
 
 .. index:: fatal errors
 

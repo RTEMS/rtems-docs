@@ -6,7 +6,7 @@
 
 
 PCI Library
-###########
+***********
 
 .. index:: libpci
 

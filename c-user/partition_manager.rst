@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Partition Manager
-#################
+*****************
 
 .. index:: partitions
 

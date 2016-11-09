@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Symmetric Multiprocessing Services
-##################################
+**********************************
 
 Introduction
 ============
@@ -939,7 +939,6 @@ DIRECTIVE STATUS CODES:
          set of the task
 
 DESCRIPTION:
-
     Returns the current processor affinity set of the task in ``cpuset``.  A
     set bit in the affinity set means that the task can execute on this
     processor and a cleared bit means the opposite.

@@ -7,7 +7,7 @@
 .. _Configuring a System:
 
 Configuring a System
-####################
+********************
 
 .. index:: configuring a system
 

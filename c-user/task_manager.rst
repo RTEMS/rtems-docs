@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Task Manager
-############
+************
 
 .. index:: tasks
 
