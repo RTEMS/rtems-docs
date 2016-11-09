@@ -6,7 +6,7 @@
 .. _bsps:
 
 Board Support Packages (BSP)
-----------------------------
+============================
 .. index:: Board Support Package
 .. index:: BSP
 

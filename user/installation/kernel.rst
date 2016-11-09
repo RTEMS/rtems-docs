@@ -6,14 +6,14 @@
 .. _rtems-kernel:
 
 RTEMS Kernel
-------------
+============
 
 RTEMS is an open source real-time operating system. As a user you have access
 to all the source code. The ``RTEMS Kernel`` section will show you how you
 build the RTEMS kernel on your host.
 
 Development Sources
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 Create a new location to build the RTEMS kernel:
 
@@ -38,7 +38,7 @@ Clone the RTEMS respository:
   Checking connectivity... done.
 
 Tools Path Set Up
-~~~~~~~~~~~~~~~~~
+-----------------
 
 We need to set our path to include the RTEMS tools we built in the previous
 section. The RTEMS tools needs to be first in your path because RTEMS provides
@@ -52,7 +52,7 @@ the RTEMS version and not your host's versions:
 .. _bootstrapping:
 
 Bootstrapping
-~~~~~~~~~~~~~
+-------------
 
 The developers version of the code from git requires we ``bootstrap`` the
 source code. This is an ``autoconf`` and ``automake`` bootstrap to create the
@@ -140,7 +140,7 @@ directory then run the bootsrap commands:
   Bootstrap time: 0:02:47.398824
 
 Building a BSP
-~~~~~~~~~~~~~~
+--------------
 
 We build RTEMS in a directory outside of the source tree we have just cloned
 and ``bootstrapped``. You cannot build RTEMS while in the source tree. Lets
@@ -284,7 +284,7 @@ Build RTEMS using two cores:
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32'
 
 Installing A BSP
-~~~~~~~~~~~~~~~~
+----------------
 
 All that remains to be done is to install the kernel. Installing RTEMS copies
 the API headers and architecture specific libraries to a locaiton under the
@@ -340,7 +340,7 @@ RTEMS with the following command:
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32'
 
 Contributing Patches
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 RTEMS welcomes fixes to bugs and new features. The RTEMS Project likes to have
 bugs fixed against a ticket created on our :r:url:`devel`. Please raise a

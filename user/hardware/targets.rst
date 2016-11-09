@@ -6,7 +6,7 @@
 .. _targets:
 
 Targets
--------
+=======
 .. index:: Targets
 
 Hardware that can run RTEMS is often referred to as a *target* because RTEMS is

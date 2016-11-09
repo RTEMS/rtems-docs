@@ -4,7 +4,7 @@
 .. comment: All rights reserved.
 
 Quick Start
-============
+***********
 
 The following is a quick start guide that provides a basic set of commands to
 build the RTEMS Tools and Kernel. The quick start guide provides links to the

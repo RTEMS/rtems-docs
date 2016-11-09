@@ -6,7 +6,7 @@
 .. _macos:
 
 Apple OS X
-~~~~~~~~~~
+==========
 
 Apple's OS X is fully supported. You need to download and install a recent
 version of the Apple developer application Xcode. Xocde is available in the App

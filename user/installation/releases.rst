@@ -6,7 +6,7 @@
 .. _released-version:
 
 Releases
---------
+========
 .. index:: tarball
 .. index:: release
 
@@ -61,7 +61,7 @@ Once you have built the tools and kernel you can move to the Packages section
 of the manual.
 
 RTEMS Tools and Kernel
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 This procedure will build a SPARC tool chain. Set up a suitable workspace to
 build the release in. On Unix:

@@ -5,7 +5,6 @@ Build Tools
 .. index:: Tools, rtems-config, rtems-cc
 
 
-
 rtems-config
 ------------
 

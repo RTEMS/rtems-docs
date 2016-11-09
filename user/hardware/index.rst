@@ -6,7 +6,7 @@
 .. _Hardware:
 
 Hardware
-========
+********
 .. index:: Hardware
 
 This section discusses supported Hardware, Architectures, Board Support

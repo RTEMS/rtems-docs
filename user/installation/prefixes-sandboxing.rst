@@ -6,7 +6,7 @@
 .. _prefixes:
 
 Prefixes
---------
+========
 
 .. index:: Prefixes
 

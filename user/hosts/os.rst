@@ -6,7 +6,7 @@
 .. _host-os:
 
 Host Operating Systems
-~~~~~~~~~~~~~~~~~~~~~~
+======================
 
 .. sidebar:: *GDB and Python*
 

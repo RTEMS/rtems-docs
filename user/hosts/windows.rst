@@ -6,7 +6,7 @@
 .. _microsoft-windows:
 
 Microsoft Windows
-~~~~~~~~~~~~~~~~~
+=================
 
 RTEMS supports Windows as a development host and the tools for most
 architectures are available. The RTEMS Project relies on the GNU tools for
@@ -44,7 +44,7 @@ Building is known to work on `Windows 7 64bit Professional` and `Windows 10`.
 .. _windows-path-length:
 
 Windows Path Length
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 Windows path length is limited and can cause problems when building the
 tools. The standard Windows API has a ``MAX_PATH`` length of 260
@@ -61,7 +61,7 @@ smaller to build. This is indicated in :ref:`released-version`.
 .. _msys2_parallel_builds:
 
 Parallel Builds with Make
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 The MSYS2 GNU ``make`` has problems when using the `jobs` option. The RSB
 defaults to automatically using as many cores as the host machine has. To get a
@@ -69,7 +69,7 @@ successful build on Windows it is recommended you add the ``--jobs=none``
 option to all RSB build set commands.
 
 POSIX Support
-^^^^^^^^^^^^^
+-------------
 
 Building the RTEMS compilers, debugger, the RTEMS kernel and a number of other
 3rd party packages requires a POSIX environment. On Windows you can use Cygwin
@@ -87,7 +87,7 @@ distribution and that is a welcome feature on Windows. You get a powerful tool
 to manage your development environment on Windows.
 
 Python
-^^^^^^
+------
 
 We need Python to build the tools as the RSB is written in Python and we need
 suitable Python libraries to link to GDB as RTEMS makes use of GDB's Python
@@ -113,7 +113,7 @@ generate.
 .. _microsoft-windows-installation:
 
 Installing MSYS2
-^^^^^^^^^^^^^^^^
+----------------
 
 MSYS2 is installed on a new machine using the MSYS2 installer found on
 https://msys2.github.io/. Please select the ``x86_64`` variant for 64bit

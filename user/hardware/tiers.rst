@@ -6,7 +6,7 @@
 .. _tiers:
 
 Tiers
------
+=====
 .. index Tiers
 
 RTEMS has a tiered structure for architecture and BSPs. It provides:

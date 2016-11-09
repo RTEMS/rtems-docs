@@ -6,7 +6,7 @@
 .. _ecosystem:
 
 RTEMS Ecosystem
-===============
+***************
 .. index:: Ecosystem
 
 The RTEMS Ecosystem is the collection of tools, packages, code, documentation
@@ -27,7 +27,7 @@ work-flow that best suites the demands of your project and what you are
 delivering.
 
 Rational
---------
+========
 
 RTEMS is complex and the focus of the RTEMS Ecosystem is to simplify the
 complexity for users by providing a stable documented way to build, configure
@@ -63,7 +63,7 @@ an archive of the complete build process including all the source code for long
 term storage. This is important for projects with a long life cycle.
 
 Open Source
------------
+===========
 
 RTEMS is an open source operating system and an open source project and this
 extends to the ecosystem. We encourage users to integrate the processes to
@@ -78,7 +78,7 @@ the freedom this gives a user is as important as the freedom of having access
 to the source code for a package.
 
 Deployment
-----------
+==========
 
 The RTEMS Project provides the ecosystem as source code that users can download
 to create personalised development environments. The RTEMS Project does not

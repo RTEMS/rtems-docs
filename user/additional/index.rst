@@ -1,8 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-======================
+
 Additional Information
-======================
+**********************
 
 Information and details that do not belong in other sections go here.
 

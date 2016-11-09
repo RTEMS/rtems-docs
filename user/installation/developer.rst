@@ -8,7 +8,7 @@
 .. _unstable:
 
 Developer (Unstable)
---------------------
+====================
 .. index:: Git
 
 RTEMS provides open access to it's development processes. We call this the
@@ -57,7 +57,7 @@ versions available to test with.
 .. _macos-host-tools-chain:
 
 POSIX and OS X Host Tools Chain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 This procedure will build a SPARC tool chain.
 
@@ -208,7 +208,7 @@ is `4.12` and is on master:
 .. _windows-tool-chain:
 
 Windows Host Tool Chain
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 .. index:: Microsoft Windows Installation
 
 This section details how you create an RTEMS development environment on

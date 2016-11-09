@@ -6,7 +6,7 @@
 .. _installation:
 
 Installation
-============
+************
 .. index:: Installation
 
 This section details how to set up and install the RTEMS Ecosystem. You will

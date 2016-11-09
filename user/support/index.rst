@@ -1,13 +1,19 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Support
-=======
+*******
 
 RTEMS offers a variety of support options.
 
 This chapter covers all options available to both users and developers.  If you
 believe this is a bug report please submit it to the bug tracker otherwise the
 developers mailing list is the default location to send the report.
+
+RTEMS Project Support
+=====================
+
+The following support channels are provided by the RTEMS Project and provide
+direct access to the RTEMS community.
 
 Bug Tracker
 -----------
@@ -27,7 +33,6 @@ Documentation
 -------------
 
 The latest user documentation can always be found at the :r:url:`docs`.
-
 
 .. _support-mailing-lists:
 
@@ -88,16 +93,17 @@ Developers can find help and support on the mailing lists, see
 Technical documents including design, :r:url:`gsoc`, :r:url:`socis` can be
 found on the :r:url:`devel`.
 
-Support Services
-----------------
+Commercial Support Services
+===========================
 
 The wider RTEMS community has developers and orgainizations who can provide
 commercial support services. These services range from training, implementing
-new features in RTEMS, helping establish a new project environment for a team,
-to application and system design. The RTEMS Project does not endorse or promote
-any provider of these services and we recommend you use a search engine to
-locate a suitable provider. If you are unsrue please contact a provider and see
-what is available.
+new features in RTEMS, deployment of RTEMS< helping establish a new project
+environment for a team, to application and system design.
+
+The RTEMS Project does not endorse or promote any provider of these services
+and we recommend you use a search engine to locate a suitable provider. If you
+are unsrue please contact a provider and see what is available.
 
 If you develop a new feature or you have someone do this for you we recommend
 you have the work submitted to the project and merged. Once accepted into the

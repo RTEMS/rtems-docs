@@ -1,7 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Overview
-=========
+********
 
 Welcome to the :ref:term:`RTEMS` User Manual.
 
@@ -54,7 +54,7 @@ RTEMS provides features found in modern operating systems:
 - parallel programming language support
 
 Real-time Application Systems
------------------------------
+=============================
 
 Real-time application systems are a special class of computer applications.
 They have a complex set of characteristics that distinguish them from other
@@ -89,7 +89,7 @@ competing processors are introduced.  The ramifications of multiple processors
 complicate each and every characteristic of a real-time system.
 
 Real-time Executive
--------------------
+===================
 
 Fortunately, real-time operating systems, or real-time executives, serve as a
 cornerstone on which to build the application system.  A real-time multitasking

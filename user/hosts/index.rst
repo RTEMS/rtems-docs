@@ -8,7 +8,7 @@
 .. _development-host:
 
 Host Computer
--------------
+*************
 .. index:: Host Computer
 
 RTEMS applications are developed using cross-development tools running on a

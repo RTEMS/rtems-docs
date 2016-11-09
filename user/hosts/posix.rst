@@ -6,7 +6,7 @@
 .. _posix-hosts:
 
 POSIX Hosts
-~~~~~~~~~~~
+===========
 
 POSIX hosts are most Unix operating systems such as Linux, FreeBSD and
 NetBSD. RTEMS development works well on Unix and can scale from a single user
@@ -14,7 +14,7 @@ and a desktop machine to a team with decentralised or centralised development
 infrastructure.
 
 Root Access
-^^^^^^^^^^^
+-----------
 
 You either have ``root`` access to your host development machine or you do
 not. Some users are given hardware that is centrally managed. If you do not

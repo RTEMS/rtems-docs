@@ -4,7 +4,7 @@
 .. comment: All rights reserved.
 
 Architectures
--------------
+=============
 .. index:: Architectures
 
 An RTEMS architecture is a class or family of a processor that RTEMS

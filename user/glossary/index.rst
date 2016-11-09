@@ -2,7 +2,7 @@
 
 
 Glossary
-========
+********
 
 .. glossary::
 
