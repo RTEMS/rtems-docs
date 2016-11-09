@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Frame Buffer Driver
-###################
+*******************
 
 In this chapter, we present the basic functionality implemented by a frame
 buffer driver:

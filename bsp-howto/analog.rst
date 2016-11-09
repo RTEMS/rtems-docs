@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Analog Driver
-#############
+*************
 
 The Analog driver is responsible for providing an interface to Digital to
 Analog Converters (DACs) and Analog to Digital Converters (ADCs).  The

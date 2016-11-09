@@ -1,7 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Discrete Driver
-###############
+***************
 
 The Discrete driver is responsible for providing an interface to Discrete
 Input/Outputs.  The capabilities provided by this class of device driver are:

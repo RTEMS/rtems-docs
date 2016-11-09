@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Ada95 Interrupt Support
-#######################
+***********************
 
 Introduction
 ============

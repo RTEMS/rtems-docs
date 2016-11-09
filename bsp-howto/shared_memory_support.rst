@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Shared Memory Support Driver
-############################
+****************************
 
 The Shared Memory Support Driver is responsible for providing glue routines and
 configuration information required by the Shared Memory Multiprocessor

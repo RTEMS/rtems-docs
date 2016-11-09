@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Timer Driver
-############
+************
 
 The timer driver is primarily used by the RTEMS Timing Tests.  This driver
 provides as accurate a benchmark timer as possible.  It typically reports its

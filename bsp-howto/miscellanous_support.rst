@@ -6,7 +6,7 @@
 .. COMMENT: All rights reserved.
 
 Miscellaneous Support Files
-###########################
+***************************
 
 GCC Compiler Specifications File
 ================================
@@ -62,7 +62,7 @@ documentation available for a particular peripheral controller and how to
 obtain that documentation.  It may also explain some particularly cryptic part
 of the software in that directory or provide rationale on the implementation.
 
-times
+Times
 =====
 
 This file contains the results of the RTEMS Timing Test Suite.  It is in a

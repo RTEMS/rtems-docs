@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Introduction
-############
+************
 
 Before reading this documentation, it is strongly advised to read the RTEMS
 Development Environment Guide to get acquainted with the RTEMS directory

@@ -6,7 +6,7 @@
 .. COMMENT: All rights reserved.
 
 Linker Script
-#############
+*************
 
 What is a "linkcmds" file?
 ==========================
@@ -300,7 +300,7 @@ BSP This file can be found at $BSP340_ROOT/startup/linkcmds.
     } >ram
 
 .. _Initialized Data:
-   
+
 Initialized Data
 ================
 

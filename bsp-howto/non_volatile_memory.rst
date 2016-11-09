@@ -6,7 +6,7 @@
 .. COMMENT: All rights reserved.
 
 Non-Volatile Memory Driver
-##########################
+**************************
 
 The Non-Volatile driver is responsible for providing an interface to various
 types of non-volatile memory.  These types of memory include, but are not

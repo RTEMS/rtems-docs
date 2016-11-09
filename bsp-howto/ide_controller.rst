@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 IDE Controller Driver
-#####################
+*********************
 
 Introduction
 ============

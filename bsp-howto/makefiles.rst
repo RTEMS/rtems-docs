@@ -7,7 +7,7 @@
 .. _Makefiles:
 
 Makefiles
-#########
+*********
 
 This chapter discusses the Makefiles associated with a BSP.  It does not
 describe the process of configuring, building, and installing RTEMS.  This

@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Real-Time Clock Driver
-######################
+**********************
 
 Introduction
 ============
