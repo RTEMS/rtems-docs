@@ -98,6 +98,9 @@ gobble=0,
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
 
+\usepackage{titlesec}
+\setcounter{secnumdepth}{8}
+
 \renewcommand\thepart{\@Roman\c@part}
 \renewcommand\part{%
    \pagestyle{normal}
@@ -106,6 +109,10 @@ gobble=0,
    \vspace*{6cm}%
    \@afterindentfalse
    \secdef\@part\@spart}
+
+% fonts
+\usepackage{charter}
+\usepackage{rtemsextrafonts}
 
 \def\@part[#1]#2{%
     \ifnum \c@secnumdepth >\m@ne
@@ -134,7 +141,3 @@ gobble=0,
      \nobreak
      \vskip 3ex
      \@afterheading}
-
-% fonts
-\usepackage{charter}
-\usepackage{rtemsextrafonts}
