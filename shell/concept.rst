@@ -5,5 +5,4 @@
 .. COMMENT: All rights reserved.
 
 Concept Index
-#############
-
+*************

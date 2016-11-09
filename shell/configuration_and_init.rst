@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Configuration and Initialization
-################################
+********************************
 
 Introduction
 ============

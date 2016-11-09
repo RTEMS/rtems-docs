@@ -4,9 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-=======
 Preface
-=======
+*******
 
 Real-time embedded systems vary widely based upon their operational and
 maintenance requirements. Some of these systems provide ways for the user or
@@ -117,4 +116,3 @@ have given us permission to reprint portions of their documentation.
     document. The original Standard can be obtained online at
     http://www.opengroup.org/unix/online.html.  This notice shall appear on any
     product containing this material.
-

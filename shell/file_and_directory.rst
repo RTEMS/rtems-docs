@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 File and Directory Commands
-###########################
+***************************
 
 Introduction
 ============
@@ -2621,7 +2621,7 @@ unmount - unmount disk
 SYNOPSYS:
     .. code-block:: shell
 
-    unmount path
+        unmount path
 
 DESCRIPTION:
     This command unmounts the device at the specified ``path``.
@@ -2637,7 +2637,7 @@ EXAMPLES:
 
     .. code-block:: shell
 
-        EXAMPLE_TBD
+        # unmount /mnt
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_UNMOUNT
 .. index:: CONFIGURE_SHELL_COMMAND_UNMOUNT
