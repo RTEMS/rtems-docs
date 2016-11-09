@@ -107,7 +107,6 @@ def local_packages():
     return packages
 
 def configure_tests(conf):
-
     #
     # Using a hint from ita (thank you) :
     #  https://github.com/waf-project/waf/blob/master/demos/tex/wscript
@@ -164,4 +163,6 @@ def configure_tests(conf):
     if fails == 0:
         conf.env.RTEMSEXTRAFONTS = 'rtemsextrafonts.sty'
     else:
+        if not conf.options.disable_extra_fonts:
+            conf.fatal('Extra fonts not found, install or use --disable-extra-fonts')
         conf.env.RTEMSEXTRAFONTS = 'rtemsextrafonts-null.sty'

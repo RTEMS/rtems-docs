@@ -203,7 +203,6 @@ def doc_pdf(ctx, source_dir, conf_dir):
                       quiet = True)
 
 def doc_singlehtml(ctx, source_dir, conf_dir):
-
     #
     # Use a run command to handle stdout and stderr output from inliner. Using
     # a standard rule in the build context locks up.
@@ -283,6 +282,10 @@ def cmd_build(ctx, conf_dir = ".", source_dir = "."):
     doc_html(ctx, source_dir, conf_dir)
 
 def cmd_options(ctx):
+    ctx.add_option('--disable-extra-fonts',
+                   action = 'store_true',
+                   default = False,
+                   help = "Disable building with extra fonts for better quality (lower quality).")
     ctx.add_option('--sphinx-verbose',
                    action = 'store',
                    default = "-Q",

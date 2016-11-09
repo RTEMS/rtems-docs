@@ -18,7 +18,7 @@ The RTEMS Documentation output formats are:
  PDF         - Single PDF per manual.
  SIngle HTML - Single HTML, one file per manual.
 
-The PDF format is cerated using Latex and that uses texlive packages. This
+The PDF format is created using Latex and that uses texlive packages. This
 exposes us to the complex world of Latex however the quality of the documents
 created is worth it.
 
@@ -229,11 +229,16 @@ Note: waf-1.9.5 is a little noisy when running tex builds and tests. I hope
 
 To build enter in the top directory:
 
-  $ ./waf configure [--pdf] [--singlehtml] [--prefix] [--sphinx-verbose]
+  $ ./waf configure [--pdf] [--singlehtml] [--prefix] \
+                    [--sphinx-verbose] [--disable-extra-fonts]
   $ ./waf
 
 The '--pdf' and '--singlehtml' options can be added to configure to build those
 output formats.
+
+The '--disable-extra-fonts' allows you to build PDF documents with out the
+fonts we use for a better quality document. Use this option to build without
+needing the extra fonts accepting you will get poor quality documents.
 
 To build and install to a specific location:
 
