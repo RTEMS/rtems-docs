@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Atmel AVR Specific Information
-##############################
+******************************
 
 This chapter discusses the AVR architecture dependencies in this port of RTEMS.
 

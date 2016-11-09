@@ -7,7 +7,7 @@
 .. COMMENT: Micro-Research Finland Oy
 
 Intel/AMD x86 Specific Information
-##################################
+**********************************
 
 This chapter discusses the Intel x86 architecture dependencies in this port of
 RTEMS.  This family has multiple implementations from multiple vendors and

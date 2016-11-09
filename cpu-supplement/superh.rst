@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 SuperH Specific Information
-###########################
+***************************
 
 This chapter discusses the SuperH architecture dependencies in this port of
 RTEMS.  The SuperH family has a wide variety of implementations by a wide range

@@ -4,7 +4,7 @@
 .. COMMENT: Hesham ALMatary <hmka501@york.ac.uk>
 
 Blackfin Specific Information
-#############################
+*****************************
 
 This chapter discusses the Blackfin architecture dependencies in this port of
 RTEMS.

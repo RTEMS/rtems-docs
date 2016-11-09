@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Port Specific Information
-#########################
+*************************
 
 This chaper provides a general description of the type of architecture specific
 information which is in each of the architecture specific chapters that follow.

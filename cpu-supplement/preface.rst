@@ -4,9 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-=======
 Preface
-=======
+*******
 
 The Real Time Executive for Multiprocessor Systems (RTEMS) is designed to be
 portable across multiple processor architectures.  However, the nature of

@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 PowerPC Specific Information
-############################
+****************************
 
 This chapter discusses the PowerPC architecture dependencies in this port of
 RTEMS.  The PowerPC family has a wide variety of implementations by a range of

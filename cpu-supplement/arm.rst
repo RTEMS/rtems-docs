@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 ARM Specific Information
-########################
+************************
 
 This chapter discusses the *ARM architecture*
 (http://en.wikipedia.org/wiki/ARM_architecture) dependencies in this port of

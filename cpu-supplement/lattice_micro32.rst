@@ -3,7 +3,7 @@
 .. COMMENT: Copyright (c) 2014 embedded brains GmbH.  All rights reserved.
 
 Lattice Mico32 Specific Information
-###################################
+***********************************
 
 This chaper discusses the Lattice Mico32 architecture dependencies in this port
 of RTEMS. The Lattice Mico32 is a 32-bit Harvard, RISC architecture "soft"

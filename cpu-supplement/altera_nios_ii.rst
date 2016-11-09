@@ -4,7 +4,7 @@
 .. COMMENT: All rights reserved.
 
 Altera Nios II Specific Information
-###################################
+***********************************
 
 Symmetric Multiprocessing
 =========================

@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Renesas M32C Specific Information
-#################################
+*********************************
 
 Symmetric Multiprocessing
 =========================

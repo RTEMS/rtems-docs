@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Epiphany Specific Information
-#############################
+*****************************
 
 This chapter discusses the`Epiphany Architecture
 http://adapteva.com/docs/epiphany_sdk_ref.pdf dependencies in this port of

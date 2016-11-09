@@ -3,7 +3,7 @@
 .. COMMENT: Copyright (c) 2014 embedded brains GmbH.  All rights reserved.
 
 MIPS Specific Information
-#########################
+*************************
 
 This chapter discusses the MIPS architecture dependencies in this port of
 RTEMS.  The MIPS family has a wide variety of implementations by a wide range

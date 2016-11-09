@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Xilinx MicroBlaze Specific Information
-######################################
+**************************************
 
 Symmetric Multiprocessing
 =========================

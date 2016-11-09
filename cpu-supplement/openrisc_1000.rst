@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 OpenRISC 1000 Specific Information
-##################################
+**********************************
 
 This chapter discusses the`OpenRISC 1000 architecture
 http://opencores.org/or1k/Main_Page dependencies in this port of RTEMS. There

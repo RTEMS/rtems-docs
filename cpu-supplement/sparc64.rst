@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 SPARC-64 Specific Information
-#############################
+*****************************
 
 This document discusses the SPARC Version 9 (aka SPARC-64, SPARC64 or SPARC V9)
 architecture dependencies in this port of RTEMS.

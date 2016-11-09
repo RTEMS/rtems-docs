@@ -3,7 +3,7 @@
 .. COMMENT: Copyright (c) 2014 embedded brains GmbH.  All rights reserved.
 
 M68xxx and Coldfire Specific Information
-########################################
+****************************************
 
 This chapter discusses the Freescale (formerly Motorola) MC68xxx and Coldfire
 architectural dependencies.  The MC68xxx family has a wide variety of CPU
