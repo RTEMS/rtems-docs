@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 In-Memory Filesystem
-####################
+********************
 
 This chapter describes the In-Memory FileSystem (IMFS).  The IMFS is a full
 featured POSIX filesystem that keeps all information in memory.
@@ -130,6 +130,8 @@ explanation of their role in the filesystem.
 Miscellaneous IMFS Information
 ==============================
 
+TBD
+
 Memory associated with the IMFS
 ===============================
 
@@ -197,532 +199,474 @@ function management structure.
 .. COMMENT: @page
 
 IMFS_evalpath()
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_evalformake()
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_link()
-~~~~~~~~~~~
+^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``link``
 
-link
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t    *to_loc,      /* IN */
+        rtems_filesystem_location_info_t    *parent_loc,  /* IN */
+        const char                          *token        /* IN */
 
-.. code-block:: c
+File:
+    ``imfs_link.c``
 
-    rtems_filesystem_location_info_t    *to_loc,      /* IN */
-    rtems_filesystem_location_info_t    *parent_loc,  /* IN */
-    const char                          *token        /* IN */
+Description:
 
-**File:**
+    This routine is used in the IMFS filesystem to create a hard-link.
 
-imfs_link.c
+    It will first examine the st_nlink count of the node that we are trying to.
+    If the link count exceeds LINK_MAX an error will be returned.
 
-**Description:**
+    The name of the link will be normalized to remove extraneous separators
+    from the end of the name.
 
-This routine is used in the IMFS filesystem to create a hard-link.
+    IMFS_create_node will be used to create a filesystem node that will have
+    the following characteristics:
 
-It will first examine the st_nlink count of the node that we are trying to.  If
-the link count exceeds LINK_MAX an error will be returned.
+    - parent that was determined in the link() function in file link.c
 
-The name of the link will be normalized to remove extraneous separators from
-the end of the name.
+    - Type will be set to IMFS_HARD_LINK
 
-IMFS_create_node will be used to create a filesystem node that will have the
-following characteristics:
+    - name will be set to the normalized name
 
-- parent that was determined in the link() function in file link.c
+    - mode of the hard-link will be set to the mode of the target node
 
-- Type will be set to IMFS_HARD_LINK
+    If there was trouble allocating memory for the new node an error will be
+    returned.
 
-- name will be set to the normalized name
+    The st_nlink count of the target node will be incremented to reflect the
+    new link.
 
-- mode of the hard-link will be set to the mode of the target node
-
-If there was trouble allocating memory for the new node an error will be
-returned.
-
-The st_nlink count of the target node will be incremented to reflect the new
-link.
-
-The time fields of the link will be set to reflect the creation time of the
-hard-link.
+    The time fields of the link will be set to reflect the creation time of the
+    hard-link.
 
 IMFS_unlink()
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_node_type()
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_node_type()``
 
-IMFS_node_type()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t    *pathloc        /* IN */
 
-.. code-block:: c
+File:
+    ``imfs_ntype.c``
 
-    rtems_filesystem_location_info_t    *pathloc        /* IN */
+Description:
+    This routine will locate the IMFS_jnode_t structure that holds ownership
+    information for the selected node in the filesystem.
 
-**File:**
+    This structure is pointed to by pathloc->node_access.
 
-imfs_ntype.c
+    The IMFS_jnode_t type element indicates one of the node types listed below:
 
-**Description:**
+    - RTEMS_FILESYSTEM_DIRECTORY
 
-This routine will locate the IMFS_jnode_t structure that holds ownership
-information for the selected node in the filesystem.
+    - RTEMS_FILESYSTEM_DEVICE
 
-This structure is pointed to by pathloc->node_access.
+    - RTEMS_FILESYSTEM_HARD_LINK
 
-The IMFS_jnode_t type element indicates one of the node types listed below:
-
-- RTEMS_FILESYSTEM_DIRECTORY
-
-- RTEMS_FILESYSTEM_DEVICE
-
-- RTEMS_FILESYSTEM_HARD_LINK
-
-- RTEMS_FILESYSTEM_MEMORY_FILE
+    - RTEMS_FILESYSTEM_MEMORY_FILE
 
 .. COMMENT: @page
 
 IMFS_mknod()
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_mknod()``
 
-IMFS_mknod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        const char                          *token,        /* IN */
+        mode_t                               mode,         /* IN */
+        dev_t                                dev,          /* IN */
+        rtems_filesystem_location_info_t    *pathloc       /* IN/OUT */
 
-.. code-block:: c
+File:
+    ``imfs_mknod.c``
 
-    const char                          *token,        /* IN */
-    mode_t                               mode,         /* IN */
-    dev_t                                dev,          /* IN */
-    rtems_filesystem_location_info_t    *pathloc       /* IN/OUT */
+Description:
+    This routine will examine the mode argument to determine is we are trying
+    to create a directory, regular file and a device node. The creation of
+    other node types is not permitted and will cause an assert.
 
-**File:**
+    Memory space will be allocated for a ``jnode`` and the node will be set up
+    according to the nodal type that was specified. The IMFS_create_node()
+    function performs the allocation and setup of the node.
 
-imfs_mknod.c
-
-**Description:**
-
-This routine will examine the mode argument to determine is we are trying to
-create a directory, regular file and a device node. The creation of other node
-types is not permitted and will cause an assert.
-
-Memory space will be allocated for a ``jnode`` and the node will be set up
-according to the nodal type that was specified. The IMFS_create_node() function
-performs the allocation and setup of the node.
-
-The only problem that is currently reported is the lack of memory when we
-attempt to allocate space for the ``jnode`` (ENOMEN).
+    The only problem that is currently reported is the lack of memory when we
+    attempt to allocate space for the ``jnode`` (ENOMEN).
 
 IMFS_rmnod()
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_chown()
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_chown()``
 
-IMFS_chown()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t    *pathloc        /* IN */
+        uid_t                                owner          /* IN */
+        gid_t                                group          /* IN */
 
-.. code-block:: c
+File:
+    ``imfs_chown.c``
 
-    rtems_filesystem_location_info_t    *pathloc        /* IN */
-    uid_t                                owner          /* IN */
-    gid_t                                group          /* IN */
+Description:
+    This routine will locate the IMFS_jnode_t structure that holds ownership
+    information for the selected node in the filesystem.
 
-**File:**
+    This structure is pointed to by pathloc->node_access.
 
-imfs_chown.c
-
-**Description:**
-
-This routine will locate the IMFS_jnode_t structure that holds ownership
-information for the selected node in the filesystem.
-
-This structure is pointed to by pathloc->node_access.
-
-The st_uid and st_gid fields of the node are then modified. Since this is a
-memory based filesystem, no further action is required to alter the ownership
-of the IMFS_jnode_t structure.
+    The st_uid and st_gid fields of the node are then modified. Since this is a
+    memory based filesystem, no further action is required to alter the
+    ownership of the IMFS_jnode_t structure.
 
 IMFS_freenod()
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_freenod()``
 
-IMFS_freenod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t      *pathloc       /* IN */
 
-.. code-block:: c
+File:
+    ``imfs_free.c``
 
-    rtems_filesystem_location_info_t      *pathloc       /* IN */
+Description:
+    This method is a private function to the IMFS.  It is called by IMFS
+    routines to free nodes that have been allocated.  Examples of where this
+    routine may be called from are unlink and rmnod.
 
-**File:**
-
-imfs_free.c
-
-**Description:**
-
-This method is a private function to the IMFS.  It is called by IMFS routines
-to free nodes that have been allocated.  Examples of where this routine may be
-called from are unlink and rmnod.
-
-Note: This routine should not be confused with the filesystem callback freenod.
-The IMFS allocates memory until the node no longer exists.
+    Note: This routine should not be confused with the filesystem callback
+    freenod.  The IMFS allocates memory until the node no longer exists.
 
 IMFS_freenodinfo()
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_freenodinfo()``
 
-IMFS_freenodinfo()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t      *pathloc       /* IN */
 
-.. code-block:: c
+File:
+    ``imfs_free.c``
 
-    rtems_filesystem_location_info_t      *pathloc       /* IN */
-
-**File:**
-
-imfs_free.c
-
-**Description:**
-
-The In-Memory File System does not need to allocate memory during the evaluate
-routines. Therefore, this routine simply routines PASS.
+Description:
+    The In-Memory File System does not need to allocate memory during the
+    evaluate routines. Therefore, this routine simply routines PASS.
 
 IMFS_mount()
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_mount()``
 
-IMFS_mount()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
+File:
+    ``imfs_mount.c``
 
-    rtems_filesystem_mount_table_entry_t   *mt_entry
+Description:
+    This routine provides the filesystem specific processing required to mount
+    a filesystem for the system that contains the mount point. It will
+    determine if the point that we are trying to mount onto is a node of
+    IMFS_DIRECTORY type.
 
-**File:**
-
-imfs_mount.c
-
-**Description:**
-
-This routine provides the filesystem specific processing required to mount a
-filesystem for the system that contains the mount point. It will determine if
-the point that we are trying to mount onto is a node of IMFS_DIRECTORY type.
-
-If it is the node's info element is altered so that the info.directory.mt_fs
-element points to the mount table chain entry that is associated with the
-mounted filesystem at this point. The info.directory.mt_fs element can be
-examined to determine if a filesystem is mounted at a directory. If it is NULL,
-the directory does not serve as a mount point. A non-NULL entry indicates that
-the directory does serve as a mount point and the value of info.directory.mt_fs
-can be used to locate the mount table chain entry that describes the filesystem
-mounted at this point.
+    If it is the node's info element is altered so that the
+    info.directory.mt_fs element points to the mount table chain entry that is
+    associated with the mounted filesystem at this point. The
+    info.directory.mt_fs element can be examined to determine if a filesystem
+    is mounted at a directory. If it is NULL, the directory does not serve as a
+    mount point. A non-NULL entry indicates that the directory does serve as a
+    mount point and the value of info.directory.mt_fs can be used to locate the
+    mount table chain entry that describes the filesystem mounted at this
+    point.
 
 IMFS_fsmount_me()
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_initialize()``
 
-IMFS_initialize()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
+File:
+    ``imfs_init.c``
 
-    rtems_filesystem_mount_table_entry_t   *mt_entry
+Description:
+    This function is provided with a filesystem to take care of the internal
+    filesystem management details associated with mounting that filesystem
+    under the RTEMS environment.
 
-**File:**
+    It is not responsible for the mounting details associated the filesystem
+    containing the mount point.
 
-imfs_init.c
+    The rtems_filesystem_mount_table_entry_t structure contains the key
+    elements below:
 
-**Description:**
+    .. code-block:: c
 
-This function is provided with a filesystem to take care of the internal
-filesystem management details associated with mounting that filesystem under
-the RTEMS environment.
+        rtems_filesystem_location_info_t         *mt_point_node,
 
-It is not responsible for the mounting details associated the filesystem
-containing the mount point.
+    This structure contains information about the mount point. This allows us
+    to find the ops-table and the handling functions associated with the
+    filesystem containing the mount point.
 
-The rtems_filesystem_mount_table_entry_t structure contains the key elements
-below:
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_filesystem_location_info_t         *fs_root_node,
 
-    rtems_filesystem_location_info_t         *mt_point_node,
+    This structure contains information about the root node in the file system
+    to be mounted. It allows us to find the ops-table and the handling
+    functions associated with the filesystem to be mounted.
 
-This structure contains information about the mount point. This
-allows us to find the ops-table and the handling functions
-associated with the filesystem containing the mount point.
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_filesystem_options_t                 options,
 
-    rtems_filesystem_location_info_t         *fs_root_node,
+    Read only or read/write access
 
-This structure contains information about the root node in the file
-system to be mounted. It allows us to find the ops-table and the
-handling functions associated with the filesystem to be mounted.
+    .. code-block:: c
 
-.. code-block:: c
+        void                                         *fs_info,
 
-    rtems_filesystem_options_t                 options,
+    This points to an allocated block of memory the will be used to hold any
+    filesystem specific information of a global nature. This allocated region
+    if important because it allows us to mount the same filesystem type more
+    than once under the RTEMS system.  Each instance of the mounted filesystem
+    has its own set of global management information that is separate from the
+    global management information associated with the other instances of the
+    mounted filesystem type.
 
-Read only or read/write access
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_filesystem_limits_and_options_t    pathconf_info,
 
-    void                                         *fs_info,
+    The table contains the following set of values associated with the mounted
+    filesystem:
 
-This points to an allocated block of memory the will be used to hold any
-filesystem specific information of a global nature. This allocated region if
-important because it allows us to mount the same filesystem type more than once
-under the RTEMS system.  Each instance of the mounted filesystem has its own
-set of global management information that is separate from the global
-management information associated with the other instances of the mounted
-filesystem type.
+    - link_max
 
-.. code-block:: c
+    - max_canon
 
-    rtems_filesystem_limits_and_options_t    pathconf_info,
+    - max_input
 
-The table contains the following set of values associated with the mounted
-filesystem:
+    - name_max
 
-- link_max
+    - path_max
 
-- max_canon
+    - pipe_buf
 
-- max_input
+    - posix_async_io
 
-- name_max
+    - posix_chown_restrictions
 
-- path_max
+    - posix_no_trunc
 
-- pipe_buf
+    - posix_prio_io
 
-- posix_async_io
+    - posix_sync_io
 
-- posix_chown_restrictions
+    - posix_vdisable
 
-- posix_no_trunc
+    These values are accessed with the pathconf() and the fpathconf ()
+    functions.
 
-- posix_prio_io
+    .. code-block:: c
 
-- posix_sync_io
+        const char                                   *dev
 
-- posix_vdisable
+    The is intended to contain a string that identifies the device that
+    contains the filesystem information. The filesystems that are currently
+    implemented are memory based and don't require a device specification.
 
-These values are accessed with the pathconf() and the fpathconf () functions.
+    If the mt_point_node.node_access is NULL then we are mounting the base file
+    system.
 
-.. code-block:: c
+    The routine will create a directory node for the root of the IMFS file
+    system.
 
-    const char                                   *dev
+    The node will have read, write and execute permissions for owner, group and
+    others.
 
-The is intended to contain a string that identifies the device that contains
-the filesystem information. The filesystems that are currently implemented are
-memory based and don't require a device specification.
+    The node's name will be a null string.
 
-If the mt_point_node.node_access is NULL then we are mounting the base file
-system.
+    A filesystem information structure(fs_info) will be allocated and
+    initialized for the IMFS filesystem. The fs_info pointer in the mount table
+    entry will be set to point the filesystem information structure.
 
-The routine will create a directory node for the root of the IMFS file system.
+    The pathconf_info element of the mount table will be set to the appropriate
+    table of path configuration constants ( IMFS_LIMITS_AND_OPTIONS ).
 
-The node will have read, write and execute permissions for owner, group and
-others.
+    The fs_root_node structure will be filled in with the following:
 
-The node's name will be a null string.
+    - pointer to the allocated root node of the filesystem
 
-A filesystem information structure(fs_info) will be allocated and initialized
-for the IMFS filesystem. The fs_info pointer in the mount table entry will be
-set to point the filesystem information structure.
+    - directory handlers for a directory node under the IMFS filesystem
 
-The pathconf_info element of the mount table will be set to the appropriate
-table of path configuration constants ( IMFS_LIMITS_AND_OPTIONS ).
+    - OPS table functions for the IMFS
 
-The fs_root_node structure will be filled in with the following:
-
-- pointer to the allocated root node of the filesystem
-
-- directory handlers for a directory node under the IMFS filesystem
-
-- OPS table functions for the IMFS
-
-A 0 will be returned to the calling routine if the process succeeded, otherwise
-a 1 will be returned.
+    A 0 will be returned to the calling routine if the process succeeded,
+    otherwise a 1 will be returned.
 
 IMFS_unmount()
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_unmount()``
 
-IMFS_unmount()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
+File:
+    ``imfs_unmount.c``
 
-    rtems_filesystem_mount_table_entry_t   *mt_entry
+Description:
+    This routine allows the IMFS to unmount a filesystem that has been mounted
+    onto a IMFS directory.
 
-**File:**
-
-imfs_unmount.c
-
-**Description:**
-
-This routine allows the IMFS to unmount a filesystem that has been mounted onto
-a IMFS directory.
-
-The mount entry mount point node access is verified to be a mounted directory.
-It's mt_fs is set to NULL.  This identifies to future calles into the IMFS that
-this directory node is no longer a mount point.  Additionally, it will allow
-any directories that were hidden by the mounted system to again become visible.
+    The mount entry mount point node access is verified to be a mounted
+    directory.  It's mt_fs is set to NULL.  This identifies to future calles
+    into the IMFS that this directory node is no longer a mount point.
+    Additionally, it will allow any directories that were hidden by the mounted
+    system to again become visible.
 
 IMFS_fsunmount()
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_fsunmount()``
 
-imfs_fsunmount()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
+File:
+    ``imfs_init.c``
 
-    rtems_filesystem_mount_table_entry_t   *mt_entry
+Description:
+    This method unmounts this instance of the IMFS file system.  It is the
+    counterpart to the IMFS_initialize routine.  It is called by the generic
+    code under the fsunmount_me callback.
 
-**File:**
-
-imfs_init.c
-
-**Description:**
-
-This method unmounts this instance of the IMFS file system.  It is the
-counterpart to the IMFS_initialize routine.  It is called by the generic code
-under the fsunmount_me callback.
-
-All method loops finding the first encountered node with no children and
-removing the node from the tree, thus returning allocated resources.  This is
-done until all allocated nodes are returned.
+    All method loops finding the first encountered node with no children and
+    removing the node from the tree, thus returning allocated resources.  This
+    is done until all allocated nodes are returned.
 
 IMFS_utime()
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_eval_link()
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 Regular File Handler Table Functions
 ------------------------------------
@@ -753,326 +697,281 @@ this function management structure.
     };
 
 memfile_open() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``memfile_open()``
 
-memfile_open()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t   *iop,
+        const char      *pathname,
+        unsigned32       flag,
+        unsigned32       mode
 
-.. code-block:: c
+File:
+    ``memfile.c``
 
-    rtems_libio_t   *iop,
-    const char      *pathname,
-    unsigned32       flag,
-    unsigned32       mode
-
-**File:**
-
-memfile.c
-
-**Description:**
-
-Currently this function is a shell. No meaningful processing is performed and a
-success code is always returned.
+Description:
+    Currently this function is a shell. No meaningful processing is performed
+    and a success code is always returned.
 
 memfile_close() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``memfile_close()``
 
-memfile_close()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
 
-.. code-block:: c
+File:
+    ``memfile.c``
 
-    rtems_libio_t     *iop
-
-**File:**
-
-memfile.c
-
-**Description:**
-
-This routine is a dummy for regular files under the base filesystem. It
-performs a capture of the IMFS_jnode_t pointer from the file control block and
-then immediately returns a success status.
+Description:
+    This routine is a dummy for regular files under the base filesystem. It
+    performs a capture of the IMFS_jnode_t pointer from the file control block
+    and then immediately returns a success status.
 
 memfile_read() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``memfile_read()``
 
-memfile_read()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        void              *buffer,
+        unsigned32         count
 
-.. code-block:: c
+File:
+    ``memfile.c``
 
-    rtems_libio_t     *iop,
-    void              *buffer,
-    unsigned32         count
+Description:
+    This routine will determine the ``jnode`` that is associated with this
+    file.
 
-**File:**
+    It will then call IMFS_memfile_read() with the ``jnode``, file position
+    index, buffer and transfer count as arguments.
 
-memfile.c
+    IMFS_memfile_read() will do the following:
 
-**Description:**
+    - Verify that the ``jnode`` is associated with a memory file
 
-This routine will determine the ``jnode`` that is associated with this file.
+    - Verify that the destination of the read is valid
 
-It will then call IMFS_memfile_read() with the ``jnode``, file position index,
-buffer and transfer count as arguments.
+    - Adjust the length of the read if it is too long
 
-IMFS_memfile_read() will do the following:
+    - Acquire data from the memory blocks associated with the file
 
-- Verify that the ``jnode`` is associated with a memory file
-
-- Verify that the destination of the read is valid
-
-- Adjust the length of the read if it is too long
-
-- Acquire data from the memory blocks associated with the file
-
-- Update the access time for the data in the file
+    - Update the access time for the data in the file
 
 memfile_write() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 memfile_ioctl() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t   *iop,
+        unsigned32       command,
+        void            *buffer
 
-.. code-block:: c
+File:
+    ``memfile.c``
 
-    rtems_libio_t   *iop,
-    unsigned32       command,
-    void            *buffer
-
-**File:**
-
-memfile.c
-
-**Description:**
-
-The current code is a placeholder for future development. The routine returns
-a successful completion status.
+Description:
+    The current code is a placeholder for future development. The routine
+    returns a successful completion status.
 
 memfile_lseek() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``Memfile_lseek()``
 
-Memfile_lseek()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        off_t              offset,
+        int                whence
 
-.. code-block:: c
+File:
+    ``memfile.c``
 
-    rtems_libio_t     *iop,
-    off_t              offset,
-    int                whence
+Description:
+    This routine make sure that the memory based file is sufficiently large to
+    allow for the new file position index.
 
-**File:**
-
-memfile.c
-
-**Description:**
-
-This routine make sure that the memory based file is sufficiently large to
-allow for the new file position index.
-
-The IMFS_memfile_extend() function is used to evaluate the current size of the
-memory file and allocate additional memory blocks if required by the new file
-position index. A success code is always returned from this routine.
+    The IMFS_memfile_extend() function is used to evaluate the current size of
+    the memory file and allocate additional memory blocks if required by the
+    new file position index. A success code is always returned from this
+    routine.
 
 IMFS_stat() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_stat()``
 
-IMFS_stat()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t   *loc,
+        struct stat                        *buf
 
-.. code-block:: c
+File:
+    ``imfs_stat.c``
 
-    rtems_filesystem_location_info_t   *loc,
-    struct stat                        *buf
+Description:
+    This routine actually performs status processing for both devices and
+    regular files.
 
-**File:**
+    The IMFS_jnode_t structure is referenced to determine the type of node
+    under the filesystem.
 
-imfs_stat.c
+    If the node is associated with a device, node information is extracted and
+    transformed to set the st_dev element of the stat structure.
 
-**Description:**
+    If the node is a regular file, the size of the regular file is extracted
+    from the node.
 
-This routine actually performs status processing for both devices and regular
-files.
+    This routine rejects other node types.
 
-The IMFS_jnode_t structure is referenced to determine the type of node under
-the filesystem.
+    The following information is extracted from the node and placed in the stat
+    structure:
 
-If the node is associated with a device, node information is extracted and
-transformed to set the st_dev element of the stat structure.
+    - st_mode
 
-If the node is a regular file, the size of the regular file is extracted from
-the node.
+    - st_nlink
 
-This routine rejects other node types.
+    - st_ino
 
-The following information is extracted from the node and placed in the stat
-structure:
+    - st_uid
 
-- st_mode
+    - st_gid
 
-- st_nlink
+    - st_atime
 
-- st_ino
+    - st_mtime
 
-- st_uid
-
-- st_gid
-
-- st_atime
-
-- st_mtime
-
-- st_ctime
+    - st_ctime
 
 IMFS_fchmod() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_fchmod()``
 
-IMFS_fchmod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
+        mode_t             mode
 
-.. code-block:: c
+File:
+    ``imfs_fchmod.c``
 
-    rtems_libio_t     *iop
-    mode_t             mode
+Description:
+    This routine will obtain the pointer to the IMFS_jnode_t structure from the
+    information currently in the file control block.
 
-**File:**
+    Based on configuration the routine will acquire the user ID from a call to
+    getuid() or from the IMFS_jnode_t structure.
 
-imfs_fchmod.c
+    It then checks to see if we have the ownership rights to alter the mode of
+    the file.  If the caller does not, an error code is returned.
 
-**Description:**
+    An additional test is performed to verify that the caller is not trying to
+    alter the nature of the node. If the caller is attempting to alter more
+    than the permissions associated with user group and other, an error is
+    returned.
 
-This routine will obtain the pointer to the IMFS_jnode_t structure from the
-information currently in the file control block.
-
-Based on configuration the routine will acquire the user ID from a call to
-getuid() or from the IMFS_jnode_t structure.
-
-It then checks to see if we have the ownership rights to alter the mode of the
-file.  If the caller does not, an error code is returned.
-
-An additional test is performed to verify that the caller is not trying to
-alter the nature of the node. If the caller is attempting to alter more than
-the permissions associated with user group and other, an error is returned.
-
-If all the preconditions are met, the user, group and other fields are set
-based on the mode calling parameter.
+    If all the preconditions are met, the user, group and other fields are set
+    based on the mode calling parameter.
 
 memfile_ftruncate() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 No pathconf() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``NULL``
 
-NULL
+Arguments:
+    Not Implemented
 
-**Arguments:**
+File:
+    Not Implemented
 
-Not Implemented
-
-**File:**
-
-Not Implemented
-
-**Description:**
-
-Not Implemented
+Description:
+    Not Implemented
 
 No fsync() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_fdatasync() for Regular Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 Directory Handler Table Functions
 ---------------------------------
@@ -1103,304 +1002,259 @@ this function management structure.
     };
 
 IMFS_dir_open() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_dir_open()``
 
-imfs_dir_open()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t  *iop,
+        const char     *pathname,
+        unsigned32      flag,
+        unsigned32      mode
 
-.. code-block:: c
+File:
+    ``imfs_directory.c``
 
-    rtems_libio_t  *iop,
-    const char     *pathname,
-    unsigned32      flag,
-    unsigned32      mode
+Description:
+    This routine will look into the file control block to find the ``jnode``
+    that is associated with the directory.
 
-**File:**
+    The routine will verify that the node is a directory. If its not a
+    directory an error code will be returned.
 
-imfs_directory.c
-
-**Description:**
-
-This routine will look into the file control block to find the ``jnode`` that
-is associated with the directory.
-
-The routine will verify that the node is a directory. If its not a directory an
-error code will be returned.
-
-If it is a directory, the offset in the file control block will be set to 0.
-This allows us to start reading at the beginning of the directory.
+    If it is a directory, the offset in the file control block will be set
+    to 0.  This allows us to start reading at the beginning of the directory.
 
 IMFS_dir_close() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_dir_close()``
 
-imfs_dir_close()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
 
-.. code-block:: c
+File:
+    ``imfs_directory.c``
 
-    rtems_libio_t     *iop
-
-**File:**
-
-imfs_directory.c
-
-**Description:**
-
-This routine is a dummy for directories under the base filesystem. It
-immediately returns a success status.
+Description:
+    This routine is a dummy for directories under the base filesystem. It
+    immediately returns a success status.
 
 IMFS_dir_read() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_dir_read``
 
-imfs_dir_read
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t  *iop,
+        void           *buffer,
+        unsigned32      count
 
-.. code-block:: c
+File:
+    ``imfs_directory.c``
 
-    rtems_libio_t  *iop,
-    void           *buffer,
-    unsigned32      count
-
-**File:**
-
-imfs_directory.c
-
-**Description:**
-
-This routine will read a fixed number of directory entries from the current
-directory offset. The number of directory bytes read will be returned from this
-routine.
+Description:
+    This routine will read a fixed number of directory entries from the current
+    directory offset. The number of directory bytes read will be returned from
+    this routine.
 
 No write() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 No ioctl() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``ioctl``
 
-ioctl
+Arguments:
+    Not supported
 
-**Arguments:**
+File:
+    Not supported
 
-**File:**
-
-Not supported
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_dir_lseek() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_dir_lseek()``
 
-imfs_dir_lseek()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t      *iop,
+        off_t               offset,
+        int                 whence
 
-.. code-block:: c
+File:
+    ``imfs_directory.c``
 
-    rtems_libio_t      *iop,
-    off_t               offset,
-    int                 whence
+Description:
+    This routine alters the offset in the file control block.
 
-**File:**
-
-imfs_directory.c
-
-**Description:**
-
-This routine alters the offset in the file control block.
-
-No test is performed on the number of children under the current open
-directory.  The imfs_dir_read() function protects against reads beyond the
-current size to the directory by returning a 0 bytes transfered to the calling
-programs whenever the file position index exceeds the last entry in the open
-directory.
+    No test is performed on the number of children under the current open
+    directory.  The imfs_dir_read() function protects against reads beyond the
+    current size to the directory by returning a 0 bytes transfered to the
+    calling programs whenever the file position index exceeds the last entry in
+    the open directory.
 
 IMFS_dir_fstat() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_dir_fstat()``
 
-imfs_dir_fstat()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t   *loc,
+        struct stat                        *buf
 
-.. code-block:: c
+File:
+    ``imfs_directory.c``
 
-    rtems_filesystem_location_info_t   *loc,
-    struct stat                        *buf
+Description:
+    The node access information in the rtems_filesystem_location_info_t
+    structure is used to locate the appropriate IMFS_jnode_t structure. The
+    following information is taken from the IMFS_jnode_t structure and placed
+    in the stat structure:
 
-**File:**
+    - st_ino
 
-imfs_directory.c
+    - st_mode
 
-**Description:**
+    - st_nlink
 
-The node access information in the rtems_filesystem_location_info_t structure
-is used to locate the appropriate IMFS_jnode_t structure. The following
-information is taken from the IMFS_jnode_t structure and placed in the stat
-structure:
+    - st_uid
 
-- st_ino
+    - st_gid
 
-- st_mode
+    - st_atime
 
-- st_nlink
+    - st_mtime
 
-- st_uid
+    - st_ctime
 
-- st_gid
-
-- st_atime
-
-- st_mtime
-
-- st_ctime
-
-The st_size field is obtained by running through the chain of directory entries
-and summing the sizes of the dirent structures associated with each of the
-children of the directory.
+    The st_size field is obtained by running through the chain of directory
+    entries and summing the sizes of the dirent structures associated with each
+    of the children of the directory.
 
 IMFS_fchmod() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_fchmod()``
 
-IMFS_fchmod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
+        mode_t             mode
 
-.. code-block:: c
+File:
+    ``imfs_fchmod.c``
 
-    rtems_libio_t     *iop
-    mode_t             mode
+Description:
+    This routine will obtain the pointer to the IMFS_jnode_t structure from the
+    information currently in the file control block.
 
-**File:**
+    Based on configuration the routine will acquire the user ID from a call to
+    getuid() or from the IMFS_jnode_t structure.
 
-imfs_fchmod.c
+    It then checks to see if we have the ownership rights to alter the mode of
+    the file.  If the caller does not, an error code is returned.
 
-**Description:**
+    An additional test is performed to verify that the caller is not trying to
+    alter the nature of the node. If the caller is attempting to alter more
+    than the permissions associated with user group and other, an error is
+    returned.
 
-This routine will obtain the pointer to the IMFS_jnode_t structure from the
-information currently in the file control block.
-
-Based on configuration the routine will acquire the user ID from a call to
-getuid() or from the IMFS_jnode_t structure.
-
-It then checks to see if we have the ownership rights to alter the mode of the
-file.  If the caller does not, an error code is returned.
-
-An additional test is performed to verify that the caller is not trying to
-alter the nature of the node. If the caller is attempting to alter more than
-the permissions associated with user group and other, an error is returned.
-
-If all the preconditions are met, the user, group and other fields are set
-based on the mode calling parameter.
+    If all the preconditions are met, the user, group and other fields are set
+    based on the mode calling parameter.
 
 No ftruncate() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 No fpathconf() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``fpathconf``
 
-fpathconf
+Arguments:
+    Not Implemented
 
-**Arguments:**
+File:
+    Not Implemented
 
-Not Implemented
-
-**File:**
-
-Not Implemented
-
-**Description:**
-
-Not Implemented
+Description:
+    Not Implemented
 
 No fsync() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 IMFS_fdatasync() for Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 Device Handler Table Functions
 ------------------------------
@@ -1430,351 +1284,305 @@ function management structure.
     } rtems_filesystem_file_handlers_r;
 
 device_open() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``device_open()``
 
-device_open()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        const char        *pathname,
+        unsigned32         flag,
+        unsigned32         mode
 
-.. code-block:: c
+File:
+    ``deviceio.c``
 
-    rtems_libio_t     *iop,
-    const char        *pathname,
-    unsigned32         flag,
-    unsigned32         mode
+Description:
+    This routine will use the file control block to locate the node structure
+    for the device.
 
-**File:**
+    It will extract the major and minor device numbers from the ``jnode``.
 
-deviceio.c
-
-**Description:**
-
-This routine will use the file control block to locate the node structure for
-the device.
-
-It will extract the major and minor device numbers from the ``jnode``.
-
-The major and minor device numbers will be used to make a rtems_io_open()
-function call to open the device driver. An argument list is sent to the driver
-that contains the file control block, flags and mode information.
+    The major and minor device numbers will be used to make a rtems_io_open()
+    function call to open the device driver. An argument list is sent to the
+    driver that contains the file control block, flags and mode information.
 
 device_close() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``device_close()``
 
-device_close()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
 
-.. code-block:: c
+File:
+    ``deviceio.c``
 
-    rtems_libio_t     *iop
+Description:
+    This routine extracts the major and minor device driver numbers from the
+    IMFS_jnode_t that is referenced in the file control block.
 
-**File:**
+    It also forms an argument list that contains the file control block.
 
-deviceio.c
-
-**Description:**
-
-This routine extracts the major and minor device driver numbers from the
-IMFS_jnode_t that is referenced in the file control block.
-
-It also forms an argument list that contains the file control block.
-
-A rtems_io_close() function call is made to close the device specified by the
-major and minor device numbers.
+    A rtems_io_close() function call is made to close the device specified by
+    the major and minor device numbers.
 
 device_read() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``device_read()``
 
-device_read()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        void              *buffer,
+        unsigned32         count
 
-.. code-block:: c
+File:
+    ``deviceio.c``
 
-    rtems_libio_t     *iop,
-    void              *buffer,
-    unsigned32         count
+Description:
+    This routine will extract the major and minor numbers for the device from
+    the - jnode- associated with the file descriptor.
 
-**File:**
+    A rtems_io_read() call will be made to the device driver associated with
+    the file descriptor. The major and minor device number will be sent as
+    arguments as well as an argument list consisting of:
 
-deviceio.c
+    - file control block
 
-**Description:**
+    - file position index
 
-This routine will extract the major and minor numbers for the device from the -
-jnode- associated with the file descriptor.
+    - buffer pointer where the data read is to be placed
 
-A rtems_io_read() call will be made to the device driver associated with the
-file descriptor. The major and minor device number will be sent as arguments as
-well as an argument list consisting of:
+    - count indicating the number of bytes that the program wishes to read from
+      the device
 
-- file control block
+    - flags from the file control block
 
-- file position index
-
-- buffer pointer where the data read is to be placed
-
-- count indicating the number of bytes that the program wishes to read
-  from the device
-
-- flags from the file control block
-
-On return from the rtems_io_read() the number of bytes that were actually read
-will be returned to the calling program.
+    On return from the rtems_io_read() the number of bytes that were actually
+    read will be returned to the calling program.
 
 device_write() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 device_ioctl() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``ioctl``
 
-ioctl
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        unsigned32         command,
+        void              *buffer
 
-.. code-block:: c
+File:
+    ``deviceio.c``
 
-    rtems_libio_t     *iop,
-    unsigned32         command,
-    void              *buffer
+Description:
+    This handler will obtain status information about a device.
 
-**File:**
+    The form of status is device dependent.
 
-deviceio.c
+    The rtems_io_control() function uses the major and minor number of the
+    device to obtain the status information.
 
-**Description:**
+    rtems_io_control() requires an rtems_libio_ioctl_args_t argument list which
+    contains the file control block, device specific command and a buffer
+    pointer to return the device status information.
 
-This handler will obtain status information about a device.
+    The device specific command should indicate the nature of the information
+    that is desired from the device.
 
-The form of status is device dependent.
+    After the rtems_io_control() is processed, the buffer should contain the
+    requested device information.
 
-The rtems_io_control() function uses the major and minor number of the device
-to obtain the status information.
-
-rtems_io_control() requires an rtems_libio_ioctl_args_t argument list which
-contains the file control block, device specific command and a buffer pointer
-to return the device status information.
-
-The device specific command should indicate the nature of the information that
-is desired from the device.
-
-After the rtems_io_control() is processed, the buffer should contain the
-requested device information.
-
-If the device information is not obtained properly a -1 will be returned to the
-calling program, otherwise the ioctl_return value is returned.
+    If the device information is not obtained properly a -1 will be returned to
+    the calling program, otherwise the ioctl_return value is returned.
 
 device_lseek() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``device_lseek()``
 
-device_lseek()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        off_t              offset,
+        int                whence
 
-.. code-block:: c
+File:
+    ``deviceio.c``
 
-    rtems_libio_t     *iop,
-    off_t              offset,
-    int                whence
-
-**File:**
-
-deviceio.c
-
-**Description:**
-
-At the present time this is a placeholder function. It always returns a
-successful status.
+Description:
+    At the present time this is a placeholder function. It always returns a
+    successful status.
 
 IMFS_stat() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_stat()``
 
-IMFS_stat()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t   *loc,
+        struct stat                        *buf
 
-.. code-block:: c
+File:
+    ``imfs_stat.c``
 
-    rtems_filesystem_location_info_t   *loc,
-    struct stat                        *buf
+Description:
+    This routine actually performs status processing for both devices and
+    regular files.
 
-**File:**
+    The IMFS_jnode_t structure is referenced to determine the type of node
+    under the filesystem.
 
-imfs_stat.c
+    If the node is associated with a device, node information is extracted and
+    transformed to set the st_dev element of the stat structure.
 
-**Description:**
+    If the node is a regular file, the size of the regular file is extracted
+    from the node.
 
-This routine actually performs status processing for both devices and regular files.
+    This routine rejects other node types.
 
-The IMFS_jnode_t structure is referenced to determine the type of node under
-the filesystem.
+    The following information is extracted from the node and placed in the stat
+    structure:
 
-If the node is associated with a device, node information is extracted and
-transformed to set the st_dev element of the stat structure.
+    - st_mode
 
-If the node is a regular file, the size of the regular file is extracted from
-the node.
+    - st_nlink
 
-This routine rejects other node types.
+    - st_ino
 
-The following information is extracted from the node and placed in the stat
-structure:
+    - st_uid
 
-- st_mode
+    - st_gid
 
-- st_nlink
+    - st_atime
 
-- st_ino
+    - st_mtime
 
-- st_uid
-
-- st_gid
-
-- st_atime
-
-- st_mtime
-
-- st_ctime
+    - st_ctime
 
 IMFS_fchmod() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``IMFS_fchmod()``
 
-IMFS_fchmod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
+        mode_t             mode
 
-.. code-block:: c
+File:
+    ``imfs_fchmod.c``
 
-    rtems_libio_t     *iop
-    mode_t             mode
+Description:
+    This routine will obtain the pointer to the IMFS_jnode_t structure from the
+    information currently in the file control block.
 
-**File:**
+    Based on configuration the routine will acquire the user ID from a call to
+    getuid() or from the IMFS_jnode_t structure.
 
-imfs_fchmod.c
+    It then checks to see if we have the ownership rights to alter the mode of
+    the file.  If the caller does not, an error code is returned.
 
-**Description:**
+    An additional test is performed to verify that the caller is not trying to
+    alter the nature of the node. If the caller is attempting to alter more
+    than the permissions associated with user group and other, an error is
+    returned.
 
-This routine will obtain the pointer to the IMFS_jnode_t structure from the
-information currently in the file control block.
-
-Based on configuration the routine will acquire the user ID from a call to
-getuid()  or from the IMFS_jnode_t structure.
-
-It then checks to see if we have the ownership rights to alter the mode of the
-file.  If the caller does not, an error code is returned.
-
-An additional test is performed to verify that the caller is not trying to
-alter the nature of the node. If the caller is attempting to alter more than
-the permissions associated with user group and other, an error is returned.
-
-If all the preconditions are met, the user, group and other fields are set
-based on the mode calling parameter.
+    If all the preconditions are met, the user, group and other fields are set
+    based on the mode calling parameter.
 
 No ftruncate() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 No fpathconf() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``fpathconf``
 
-fpathconf
+Arguments:
+    Not Implemented
 
-**Arguments:**
+File:
+    Not Implemented
 
-Not Implemented
-
-**File:**
-
-Not Implemented
-
-**Description:**
-
-Not Implemented
+Description:
+    Not Implemented
 
 No fsync() for Devices
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 No fdatasync() for Devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Not Implemented
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+File:
+    XXX
 
-XXX
-
-**File:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX

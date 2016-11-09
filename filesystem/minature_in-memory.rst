@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Miniature In-Memory Filesystem
-##############################
+******************************
 
 This chapter describes the Miniature In-Memory FileSystem (miniIMFS).  The
 miniIMFS is a reduced feature version of the IMFS designed to provide minimal

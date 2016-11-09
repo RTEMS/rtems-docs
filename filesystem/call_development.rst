@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 System Call Development Notes
-#############################
+*****************************
 
 This set of routines represents the application's interface to files and
 directories under the RTEMS filesystem. All routines are compliant with POSIX
@@ -15,7 +15,7 @@ interface.
 
 #. access()
 
-# .chdir()
+#. chdir()
 
 #. chmod()
 
@@ -71,996 +71,939 @@ these functions.
 access
 ======
 
-**File:**
+File:
+    ``access.c``
 
-access.c
+Processing:
+    This routine is layered on the stat() function. It acquires the current
+    status information for the specified file and then determines if the caller
+    has the ability to access the file for read, write or execute according to
+    the mode argument to this function.
 
-**Processing:**
-
-This routine is layered on the stat() function. It acquires the current status
-information for the specified file and then determines if the caller has the
-ability to access the file for read, write or execute according to the mode
-argument to this function.
-
-**Development Comments:**
-
-This routine is layered on top of the stat() function. As long as the st_mode
-element in the returned structure follow the standard UNIX conventions, this
-function should support other filesystems without alteration.
+Development Comments:
+    This routine is layered on top of the stat() function. As long as the
+    st_mode element in the returned structure follow the standard UNIX
+    conventions, this function should support other filesystems without
+    alteration.
 
 chdir
 =====
 
-**File:**
+File:
+    ``chdir.c``
 
-chdir.c
+Processing:
+    This routine will determine if the pathname that we are attempting to make
+    that current directory exists and is in fact a directory. If these
+    conditions are met the global indication of the current directory
+    (rtems_filesystem_current) is set to the rtems_filesystem_location_info_t
+    structure that is returned by the rtems_filesystem_evaluate_path() routine.
 
-**Processing:**
+Development Comments:
+    This routine is layered on the rtems_filesystem_evaluate_path() routine and
+    the filesystem specific OP table function node_type().
 
-This routine will determine if the pathname that we are attempting to make that
-current directory exists and is in fact a directory. If these conditions are
-met the global indication of the current directory (rtems_filesystem_current)
-is set to the rtems_filesystem_location_info_t structure that is returned by
-the rtems_filesystem_evaluate_path() routine.
+    The routine ``node_type()`` must be a routine provided for each filesystem
+    since it must access the filesystems node information to determine which of
+    the following types the node is:
 
-**Development Comments:**
+    - RTEMS_FILESYSTEM_DIRECTORY
 
-This routine is layered on the rtems_filesystem_evaluate_path() routine and the
-filesystem specific OP table function node_type().
+    - RTEMS_FILESYSTEM_DEVICE
 
-The routine ``node_type()`` must be a routine provided for each filesystem
-since it must access the filesystems node information to determine which of the
-following types the node is:
+    - RTEMS_FILESYSTEM_HARD_LINK
 
-- RTEMS_FILESYSTEM_DIRECTORY
+    - RTEMS_FILESYSTEM_MEMORY_FILE
 
-- RTEMS_FILESYSTEM_DEVICE
+    This acknowledges that the form of the node management information can vary
+    from one filesystem implementation to another.
 
-- RTEMS_FILESYSTEM_HARD_LINK
-
-- RTEMS_FILESYSTEM_MEMORY_FILE
-
-This acknowledges that the form of the node management information can vary
-from one filesystem implementation to another.
-
-RTEMS has a special global structure that maintains the current directory
-location. This global variable is of type rtems_filesystem_location_info_t and
-is called rtems_filesystem_current. This structure is not always valid. In
-order to determine if the structure is valid, you must first test the
-node_access element of this structure. If the pointer is NULL, then the
-structure does not contain a valid indication of what the current directory is.
+    RTEMS has a special global structure that maintains the current directory
+    location. This global variable is of type rtems_filesystem_location_info_t
+    and is called rtems_filesystem_current. This structure is not always
+    valid. In order to determine if the structure is valid, you must first test
+    the node_access element of this structure. If the pointer is NULL, then the
+    structure does not contain a valid indication of what the current directory
+    is.
 
 chmod
 =====
 
-**File:**
+File:
+    ``chmod.c``
 
-chmod.c
+Processing:
+    This routine is layered on the ``open()``, ``fchmod()`` and ``close()``
+    functions. As long as the standard interpretation of the mode_t value is
+    maintained, this routine should not need modification to support other
+    filesystems.
 
-**Processing:**
+Development Comments:
+    The routine first determines if the selected file can be open with
+    read/write access.  This is required to allow modification of the mode
+    associated with the selected path.
 
-This routine is layered on the ``open()``, ``fchmod()`` and ``close()``
-functions. As long as the standard interpretation of the mode_t value is
-maintained, this routine should not need modification to support other
-filesystems.
+    The ``fchmod()`` function is used to actually change the mode of the path
+    using the integer file descriptor returned by the ``open()`` function.
 
-**Development Comments:**
-
-The routine first determines if the selected file can be open with read/write
-access.  This is required to allow modification of the mode associated with the
-selected path.
-
-The ``fchmod()`` function is used to actually change the mode of the path using
-the integer file descriptor returned by the ``open()`` function.
-
-After mode modification, the open file descriptor is closed.
+    After mode modification, the open file descriptor is closed.
 
 chown
 =====
 
-**File:**
+File:
+    ``chown.c``
 
-chown.c
+Processing:
+    This routine is layered on the ``rtems_filesystem_evaluate_path()`` and the
+    file system specific ``chown()`` routine that is specified in the OPS table
+    for the file system.
 
-**Processing:**
+Development Comments:
+    ``rtems_filesystem_evaluate_path()`` is used to determine if the path
+    specified actually exists. If it does a
+    ``rtems_filesystem_location_info_t`` structure will be obtained that allows
+    the shell function to locate the OPS table that is to be used for this
+    filesystem.
 
-This routine is layered on the ``rtems_filesystem_evaluate_path()`` and the
-file system specific ``chown()`` routine that is specified in the OPS table for
-the file system.
+    It is possible that the ``chown()`` function that should be in the OPS
+    table is not defined. A test for a non-NULL OPS table ``chown()`` entry is
+    performed before the function is called.
 
-**Development Comments:**
-
-``rtems_filesystem_evaluate_path()`` is used to determine if the path specified
-actually exists. If it does a ``rtems_filesystem_location_info_t`` structure
-will be obtained that allows the shell function to locate the OPS table that is
-to be used for this filesystem.
-
-It is possible that the ``chown()`` function that should be in the OPS table is
-not defined. A test for a non-NULL OPS table ``chown()`` entry is performed
-before the function is called.
-
-If the ``chown()`` function is defined in the indicated OPS table, the function
-is called with the ``rtems_filesystem_location_info_t`` structure returned from
-the path evaluation routine, the desired owner, and group information.
+    If the ``chown()`` function is defined in the indicated OPS table, the
+    function is called with the ``rtems_filesystem_location_info_t`` structure
+    returned from the path evaluation routine, the desired owner, and group
+    information.
 
 close
 =====
 
-**File:**
+File:
+    ``close.c``
 
-close.c
+Processing:
+    This routine will allow for the closing of both network connections and
+    file system devices. If the file descriptor is associated with a network
+    device, the appropriate network function handler will be selected from a
+    table of previously registered network functions (``rtems_libio_handlers``)
+    and that function will be invoked.
 
-**Processing:**
+    If the file descriptor refers to an entry in the filesystem, the
+    appropriate handler will be selected using information that has been placed
+    in the file control block for the device (``rtems_libio_t`` structure).
 
-This routine will allow for the closing of both network connections and file
-system devices. If the file descriptor is associated with a network device, the
-appropriate network function handler will be selected from a table of
-previously registered network functions (``rtems_libio_handlers``) and that
-function will be invoked.
+Development Comments:
+    ``rtems_file_descriptor_type`` examines some of the upper bits of the file
+    descriptor index. If it finds that the upper bits are set in the file
+    descriptor index, the device referenced is a network device.
 
-If the file descriptor refers to an entry in the filesystem, the appropriate
-handler will be selected using information that has been placed in the file
-control block for the device (``rtems_libio_t`` structure).
+    Network device handlers are obtained from a special registration table
+    (``rtems_libio_handlers``) that is set up during network
+    initialization. The network handler invoked and the status of the network
+    handler will be returned to the calling process.
 
-**Development Comments:**
+    If none of the upper bits are set in the file descriptor index, the file
+    descriptor refers to an element of the RTEMS filesystem.
 
-``rtems_file_descriptor_type`` examines some of the upper bits of the file
-descriptor index. If it finds that the upper bits are set in the file
-descriptor index, the device referenced is a network device.
+    The following sequence will be performed for any filesystem file descriptor:
 
-Network device handlers are obtained from a special registration table
-(``rtems_libio_handlers``) that is set up during network initialization. The
-network handler invoked and the status of the network handler will be returned
-to the calling process.
+    #. Use the ``rtems_libio_iop()`` function to obtain the ``rtems_libio_t``
+       structure for the file descriptor
 
-If none of the upper bits are set in the file descriptor index, the file
-descriptor refers to an element of the RTEMS filesystem.
+    #. Range check the file descriptor using ``rtems_libio_check_fd()``
 
-The following sequence will be performed for any filesystem file descriptor:
+    #. Determine if there is actually a function in the selected handler table
+       that processes the ``close()`` operation for the filesystem and node
+       type selected.  This is generally done to avoid execution attempts on
+       functions that have not been implemented.
 
-#. Use the ``rtems_libio_iop()`` function to obtain the ``rtems_libio_t``
-   structure for the file descriptor
+    #. If the function has been defined it is invoked with the file control
+       block pointer as its argument.
 
-#. Range check the file descriptor using ``rtems_libio_check_fd()``
+    #. The file control block that was associated with the open file descriptor
+       is marked as free using ``rtems_libio_free()``.
 
-#. Determine if there is actually a function in the selected handler table that
-   processes the ``close()`` operation for the filesystem and node type
-   selected.  This is generally done to avoid execution attempts on functions
-   that have not been implemented.
+    #. The return code from the close handler is then passed back to the
+       calling program.
 
-# If the function has been defined it is invoked with the file control
-   block pointer as its argument.
-
-#. The file control block that was associated with the open file descriptor is
-   marked as free using ``rtems_libio_free()``.
-
-#. The return code from the close handler is then passed back to the calling
-   program.
- 
 closedir
 ========
 
-**File:**
+File:
+    ``closedir.c``
 
-closedir.c
+Processing:
+    The code was obtained from the BSD group. This routine must clean up the
+    memory resources that are required to track an open directory. The code is
+    layered on the ``close()`` function and standard memory ``free()``
+    functions. It should not require alterations to support other filesystems.
 
-**Processing:**
+Development Comments:
+    The routine alters the file descriptor and the index into the DIR structure
+    to make it an invalid file descriptor. Apparently the memory that is about
+    to be freed may still be referenced before it is reallocated.
 
-The code was obtained from the BSD group. This routine must clean up the memory
-resources that are required to track an open directory. The code is layered on
-the ``close()`` function and standard memory ``free()`` functions. It should
-not require alterations to support other filesystems.
+    The dd_buf structure's memory is reallocated before the control structure
+    that contains the pointer to the dd_buf region.
 
-**Development Comments:**
+    DIR control memory is reallocated.
 
-The routine alters the file descriptor and the index into the DIR structure to
-make it an invalid file descriptor. Apparently the memory that is about to be
-freed may still be referenced before it is reallocated.
-
-The dd_buf structure's memory is reallocated before the control structure that
-contains the pointer to the dd_buf region.
-
-DIR control memory is reallocated.
-
-The ``close()`` function is used to free the file descriptor index.
+    The ``close()`` function is used to free the file descriptor index.
 
 dup()      Unimplemented
 ========================
 
-**File:**
+File:
+    ``dup.c``
 
-dup.c
+Processing:
 
-**Processing:**
-
-**Development Comments:**
+Development Comments:
 
 dup2()      Unimplemented
 =========================
 
-**File:**
+File:
+    ``dup2.c``
 
-dup2.c
+Processing:
 
-**Processing:**
-
-**Development Comments:**
+Development Comments:
 
 fchmod
 ======
 
-**File:**
+File:
+    ``fchmod.c``
 
-fchmod.c
+Processing:
+    This routine will alter the permissions of a node in a filesystem. It is
+    layered on the following functions and macros:
 
-**Processing:**
+    - rtems_file_descriptor_type()
 
-This routine will alter the permissions of a node in a filesystem. It is
-layered on the following functions and macros:
+    - rtems_libio_iop()
 
-- rtems_file_descriptor_type()
+    - rtems_libio_check_fd()
 
-- rtems_libio_iop()
+    - rtems_libio_check_permissions()
 
-- rtems_libio_check_fd()
+    - fchmod() function that is referenced by the handler table in the file
+      control block associated with this file descriptor
 
-- rtems_libio_check_permissions()
+Development Comments:
+    The routine will test to see if the file descriptor index is associated
+    with a network connection. If it is, an error is returned from this
+    routine.
 
-- fchmod() function that is referenced by the handler table in the file control
-  block associated with this file descriptor
+    The file descriptor index is used to obtain the associated file control
+    block.
 
-**Development Comments:**
+    The file descriptor value is range checked.
 
-The routine will test to see if the file descriptor index is associated with a
-network connection. If it is, an error is returned from this routine.
+    The file control block is examined to determine if it has write permissions
+    to allow us to alter the mode of the file.
 
-The file descriptor index is used to obtain the associated file control block.
+    A test is made to determine if the handler table that is referenced in the
+    file control block contains an entry for the ``fchmod()`` handler
+    function. If it does not, an error is returned to the calling routine.
 
-The file descriptor value is range checked.
-
-The file control block is examined to determine if it has write permissions to
-allow us to alter the mode of the file.
-
-A test is made to determine if the handler table that is referenced in the file
-control block contains an entry for the ``fchmod()`` handler function. If it does
-not, an error is returned to the calling routine.
-
-If the ``fchmod()`` handler function exists, it is called with the file control
-block and the desired mode as parameters.
+    If the ``fchmod()`` handler function exists, it is called with the file
+    control block and the desired mode as parameters.
 
 fcntl()
 =======
 
-**File:**
+File:
+    ``fcntl.c``
 
-fcntl.c
+Processing:
+    This routine currently only interacts with the file control block. If the
+    structure of the file control block and the associated meanings do not
+    change, the partial implementation of ``fcntl()`` should remain unaltered
+    for other filesystem implementations.
 
-**Processing:**
+Development Comments:
+    The only commands that have been implemented are the F_GETFD and F_SETFD.
+    The commands manipulate the LIBIO_FLAGS_CLOSE_ON_EXEC bit in the``flags``
+    element of the file control block associated with the file descriptor
+    index.
 
-This routine currently only interacts with the file control block. If the
-structure of the file control block and the associated meanings do not change,
-the partial implementation of ``fcntl()`` should remain unaltered for other
-filesystem implementations.
+    The current implementation of the function performs the sequence of
+    operations below:
 
-**Development Comments:**
+    #. Test to see if we are trying to operate on a file descriptor associated
+       with a network connection
 
-The only commands that have been implemented are the F_GETFD and F_SETFD.  The
-commands manipulate the LIBIO_FLAGS_CLOSE_ON_EXEC bit in the``flags`` element
-of the file control block associated with the file descriptor index.
+    #. Obtain the file control block that is associated with the file
+       descriptor index
 
-The current implementation of the function performs the sequence of
-operations below:
-
-# Test to see if we are trying to operate on a file descriptor
-  associated with a network connection
-
-# Obtain the file control block that is associated with the file
-  descriptor index
-
-# Perform a range check on the file descriptor index.
+    #. Perform a range check on the file descriptor index.
 
 fdatasync
 =========
 
-**File:**
+File:
+    ``fdatasync.c``
 
-fdatasync.c
+Processing:
+    This routine is a template in the in memory filesystem that will route us
+    to the appropriate handler function to carry out the fdatasync()
+    processing. In the in memory filesystem this function is not necessary. Its
+    function in a disk based file system that employs a memory cache is to
+    flush all memory based data buffers to disk. It is layered on the following
+    functions and macros:
 
-**Processing:**
+    - rtems_file_descriptor_type()
 
-This routine is a template in the in memory filesystem that will route us to
-the appropriate handler function to carry out the fdatasync() processing. In
-the in memory filesystem this function is not necessary. Its function in a disk
-based file system that employs a memory cache is to flush all memory based data
-buffers to disk. It is layered on the following functions and macros:
+    - rtems_libio_iop()
 
-- rtems_file_descriptor_type()
+    - rtems_libio_check_fd()
 
-- rtems_libio_iop()
+    - rtems_libio_check_permissions()
 
-- rtems_libio_check_fd()
+    - fdatasync() function that is referenced by the handler table in the file
+      control block associated with this file descriptor
 
-- rtems_libio_check_permissions()
+Development Comments:
+    The routine will test to see if the file descriptor index is associated
+    with a network connection. If it is, an error is returned from this
+    routine.
 
-- fdatasync() function that is referenced by the handler table in the file
-  control block associated with this file descriptor
+    The file descriptor index is used to obtain the associated file control
+    block.
 
-**Development Comments:**
+    The file descriptor value is range checked.
 
-The routine will test to see if the file descriptor index is associated with a
-network connection. If it is, an error is returned from this routine.
+    The file control block is examined to determine if it has write permissions
+    to the file.
 
-The file descriptor index is used to obtain the associated file control block.
+    A test is made to determine if the handler table that is referenced in the
+    file control block contains an entry for the fdatasync() handler function.
+    If it does not an error is returned to the calling routine.
 
-The file descriptor value is range checked.
-
-The file control block is examined to determine if it has write permissions to
-the file.
-
-A test is made to determine if the handler table that is referenced in the file
-control block contains an entry for the fdatasync() handler function.  If it
-does not an error is returned to the calling routine.
-
-If the fdatasync() handler function exists, it is called with the file control
-block as its parameter.
+    If the fdatasync() handler function exists, it is called with the file
+    control block as its parameter.
 
 fpathconf
 =========
 
-**File:**
+File:
+    ``fpathconf.c``
 
-fpathconf.c
+Processing:
+    This routine is layered on the following functions and macros:
 
-**Processing:**
+    - rtems_file_descriptor_type()
 
-This routine is layered on the following functions and macros:
+    - rtems_libio_iop()
 
-- rtems_file_descriptor_type()
+    - rtems_libio_check_fd()
 
-- rtems_libio_iop()
+    - rtems_libio_check_permissions()
 
-- rtems_libio_check_fd()
+    When a filesystem is mounted, a set of constants is specified for the
+    filesystem.  These constants are stored with the mount table entry for the
+    filesystem. These constants appear in the POSIX standard and are listed
+    below.
 
-- rtems_libio_check_permissions()
+    - PCLINKMAX
 
-When a filesystem is mounted, a set of constants is specified for the
-filesystem.  These constants are stored with the mount table entry for the
-filesystem. These constants appear in the POSIX standard and are listed below.
+    - PCMAXCANON
 
-- PCLINKMAX
+    - PCMAXINPUT
 
-- PCMAXCANON
+    - PCNAMEMAX
 
-- PCMAXINPUT
+    - PCPATHMAX
 
-- PCNAMEMAX
+    - PCPIPEBUF
 
-- PCPATHMAX
+    - PCCHOWNRESTRICTED
 
-- PCPIPEBUF
+    - PCNOTRUNC
 
-- PCCHOWNRESTRICTED
+    - PCVDISABLE
 
-- PCNOTRUNC
+    - PCASYNCIO
 
-- PCVDISABLE
+    - PCPRIOIO
 
-- PCASYNCIO
+    - PCSYNCIO
 
-- PCPRIOIO
+    This routine will find the mount table information associated the file
+    control block for the specified file descriptor parameter. The mount table
+    entry structure contains a set of filesystem specific constants that can be
+    accessed by individual identifiers.
 
-- PCSYNCIO
+Development Comments:
+    The routine will test to see if the file descriptor index is associated
+    with a network connection. If it is, an error is returned from this
+    routine.
 
-This routine will find the mount table information associated the file control
-block for the specified file descriptor parameter. The mount table entry
-structure contains a set of filesystem specific constants that can be accessed
-by individual identifiers.
+    The file descriptor index is used to obtain the associated file control
+    block.
 
-**Development Comments:**
+    The file descriptor value is range checked.
 
-The routine will test to see if the file descriptor index is associated with a
-network connection. If it is, an error is returned from this routine.
+    The file control block is examined to determine if it has read permissions
+    to the file.
 
-The file descriptor index is used to obtain the associated file control block.
+    Pathinfo in the file control block is used to locate the mount table entry
+    for the filesystem associated with the file descriptor.
 
-The file descriptor value is range checked.
+    The mount table entry contains the pathconf_limits_and_options element.
+    This element is a table of constants that is associated with the
+    filesystem.
 
-The file control block is examined to determine if it has read permissions to
-the file.
-
-Pathinfo in the file control block is used to locate the mount table entry for
-the filesystem associated with the file descriptor.
-
-The mount table entry contains the pathconf_limits_and_options element.  This
-element is a table of constants that is associated with the filesystem.
-
-The name argument is used to reference the desired constant from the
-pathconf_limits_and_options table.
+    The name argument is used to reference the desired constant from the
+    pathconf_limits_and_options table.
 
 fstat
 =====
 
-**File:**
+File:
+    ``fstat.c``
 
-fstat.c
+Processing:
+    This routine will return information concerning a file or network
+    connection. If the file descriptor is associated with a network connection,
+    the current implementation of ``fstat()`` will return a mode set to
+    ``S_IFSOCK``. In a later version, this routine will map the status of a
+    network connection to an external handler routine.
 
-**Processing:**
+    If the file descriptor is associated with a node under a filesystem, the
+    fstat() routine will map to the fstat() function taken from the node
+    handler table.
 
-This routine will return information concerning a file or network
-connection. If the file descriptor is associated with a network connection, the
-current implementation of ``fstat()`` will return a mode set to
-``S_IFSOCK``. In a later version, this routine will map the status of a network
-connection to an external handler routine.
+Development Comments:
+    This routine validates that the struct stat pointer is not NULL so that the
+    return location is valid.
 
-If the file descriptor is associated with a node under a filesystem, the
-fstat() routine will map to the fstat() function taken from the node handler
-table.
+    The struct stat is then initialized to all zeros.
 
-**Development Comments:**
+    rtems_file_descriptor_type() is then used to determine if the file
+    descriptor is associated with a network connection. If it is, network
+    status processing is performed. In the current implementation, the file
+    descriptor type processing needs to be improved. It currently just drops
+    into the normal processing for file system nodes.
 
-This routine validates that the struct stat pointer is not NULL so that the
-return location is valid.
+    If the file descriptor is associated with a node under a filesystem, the
+    following steps are performed:
 
-The struct stat is then initialized to all zeros.
+    #. Obtain the file control block that is associated with the file descriptor
+       index.
 
-rtems_file_descriptor_type() is then used to determine if the file descriptor
-is associated with a network connection. If it is, network status processing is
-performed. In the current implementation, the file descriptor type processing
-needs to be improved. It currently just drops into the normal processing for
-file system nodes.
+    #. Range check the file descriptor index.
 
-If the file descriptor is associated with a node under a filesystem, the
-following steps are performed:
-
-# Obtain the file control block that is associated with the file descriptor
-  index.
-
-# Range check the file descriptor index.
-
-# Test to see if there is a non-NULL function pointer in the handler table for
-  the fstat() function. If there is, invoke the function with the file control
-  block and the pointer to the stat structure.
+    #. Test to see if there is a non-NULL function pointer in the handler table
+       for the fstat() function. If there is, invoke the function with the file
+       control block and the pointer to the stat structure.
 
 ioctl
 =====
 
-**File:**
+File:
+    ``ioctl.c``
 
-ioctl.c
+Processing:
+    Not defined in the POSIX 1003.1b standard but commonly supported in most
+    UNIX and POSIX system. Ioctl() is a catchall for I/O operations. Routine is
+    layered on external network handlers and filesystem specific handlers.  The
+    development of new filesystems should not alter the basic processing
+    performed by this routine.
 
-**Processing:**
+Development Comments:
+    The file descriptor is examined to determine if it is associated with a
+    network device. If it is processing is mapped to an external network
+    handler. The value returned by this handler is then returned to the calling
+    program.
 
-Not defined in the POSIX 1003.1b standard but commonly supported in most UNIX
-and POSIX system. Ioctl() is a catchall for I/O operations. Routine is layered
-on external network handlers and filesystem specific handlers.  The development
-of new filesystems should not alter the basic processing performed by this
-routine.
+    File descriptors that are associated with a filesystem undergo the
+    following processing:
 
-**Development Comments:**
+    #. The file descriptor index is used to obtain the associated file control
+       block.
 
-The file descriptor is examined to determine if it is associated with a network
-device. If it is processing is mapped to an external network handler. The value
-returned by this handler is then returned to the calling program.
+    #. The file descriptor value is range checked.
 
-File descriptors that are associated with a filesystem undergo the following
-processing:
+    #. A test is made to determine if the handler table that is referenced in
+       the file control block contains an entry for the ioctl() handler
+       function. If it does not, an error is returned to the calling routine.
 
-# The file descriptor index is used to obtain the associated file control
-  block.
+    #. If the ioctl() handler function exists, it is called with the file
+       control block, the command and buffer as its parameters.
 
-# The file descriptor value is range checked.
-
-# A test is made to determine if the handler table that is referenced
-  in the file control block contains an entry for the ioctl() handler
-  function. If it does not, an error is returned to the calling routine.
-
-# If the ioctl() handler function exists, it is called with the file control
-  block, the command and buffer as its parameters.
-
-# The return code from this function is then sent to the calling routine.
+    #. The return code from this function is then sent to the calling routine.
 
 link
 ====
 
-**File:**
+File:
+    ``link.c``
 
-link.c
+Processing:
+    This routine will establish a hard link to a file, directory or a device.
+    The target of the hard link must be in the same filesystem as the new link
+    being created. A link to an existing link is also permitted but the
+    existing link is evaluated before the new link is made. This implies that
+    links to links are reduced to links to files, directories or devices before
+    they are made.
 
-**Processing:**
+Development Comments:
+    Calling parameters:
 
-This routine will establish a hard link to a file, directory or a device.  The
-target of the hard link must be in the same filesystem as the new link being
-created. A link to an existing link is also permitted but the existing link is
-evaluated before the new link is made. This implies that links to links are
-reduced to links to files, directories or devices before they are made.
+    .. code-block:: c
 
-**Development Comments:**
+        const char   *existing
+        const char   *new
 
-Calling parameters:
+    link() will determine if the target of the link actually exists using
+    rtems_filesystem_evaluate_path()
 
-.. code-block:: c
+    rtems_filesystem_get_start_loc() is used to determine where to start the
+    path evaluation of the new name. This macro examines the first characters
+    of the name to see if the name of the new link starts with a
+    rtems_filesystem_is_separator. If it does the search starts from the root
+    of the RTEMS filesystem; otherwise the search will start from the current
+    directory.
 
-    const char   *existing
-    const char   *new
+    The OPS table evalformake() function for the parent's filesystem is used to
+    locate the node that will be the parent of the new link. It will also
+    locate the start of the new path's name. This name will be used to define a
+    child under the parent directory.
 
-link() will determine if the target of the link actually exists using
-rtems_filesystem_evaluate_path()
+    If the parent is found, the routine will determine if the hard link that we
+    are trying to create will cross a filesystem boundary. This is not
+    permitted for hard-links.
 
-rtems_filesystem_get_start_loc() is used to determine where to start the path
-evaluation of the new name. This macro examines the first characters of the
-name to see if the name of the new link starts with a
-rtems_filesystem_is_separator. If it does the search starts from the root of
-the RTEMS filesystem; otherwise the search will start from the current
-directory.
+    If the hard-link does not cross a filesystem boundary, a check is performed
+    to determine if the OPS table contains an entry for the link() function.
 
-The OPS table evalformake() function for the parent's filesystem is used to
-locate the node that will be the parent of the new link. It will also locate
-the start of the new path's name. This name will be used to define a child
-under the parent directory.
+    If a link() function is defined, the OPS table link() function will be
+    called to establish the actual link within the filesystem.
 
-If the parent is found, the routine will determine if the hard link that we are
-trying to create will cross a filesystem boundary. This is not permitted for
-hard-links.
-
-If the hard-link does not cross a filesystem boundary, a check is performed to
-determine if the OPS table contains an entry for the link() function.
-
-If a link() function is defined, the OPS table link() function will be called
-to establish the actual link within the filesystem.
-
-The return code from the OPS table link() function is returned to the calling
-program.
+    The return code from the OPS table link() function is returned to the
+    calling program.
 
 lseek
 =====
 
-**File:**
+File:
+    ``lseek.c``
 
-lseek.c
+Processing:
+    This routine is layered on both external handlers and filesystem / node
+    type specific handlers. This routine should allow for the support of new
+    filesystems without modification.
 
-**Processing:**
+Development Comments:
+    This routine will determine if the file descriptor is associated with a
+    network device. If it is lseek will map to an external network handler.
+    The handler will be called with the file descriptor, offset and whence as
+    its calling parameters. The return code from the external handler will be
+    returned to the calling routine.
 
-This routine is layered on both external handlers and filesystem / node type
-specific handlers. This routine should allow for the support of new filesystems
-without modification.
+    If the file descriptor is not associated with a network connection, it is
+    associated with a node in a filesystem. The following steps will be
+    performed for filesystem nodes:
 
-**Development Comments:**
+    #. The file descriptor is used to obtain the file control block for the
+       node.
 
-This routine will determine if the file descriptor is associated with a network
-device. If it is lseek will map to an external network handler.  The handler
-will be called with the file descriptor, offset and whence as its calling
-parameters. The return code from the external handler will be returned to the
-calling routine.
+    #. The file descriptor is range checked.
 
-If the file descriptor is not associated with a network connection, it is
-associated with a node in a filesystem. The following steps will be performed
-for filesystem nodes:
+    #. The offset element of the file control block is altered as indicated by
+       the offset and whence calling parameters
 
-# The file descriptor is used to obtain the file control block for the node.
+    #. The handler table in the file control block is examined to determine if
+       it contains an entry for the lseek() function. If it does not an error
+       is returned to the calling program.
 
-# The file descriptor is range checked.
+    #. The lseek() function from the designated handler table is called with
+       the file control block, offset and whence as calling arguments
 
-# The offset element of the file control block is altered as indicated by the
-  offset and whence calling parameters
-
-# The handler table in the file control block is examined to determine if it
-  contains an entry for the lseek() function. If it does not an error is
-  returned to the calling program.
-
-# The lseek() function from the designated handler table is called with the
-  file control block, offset and whence as calling arguments
-
-# The return code from the lseek() handler function is returned to the calling
-  program
+    #. The return code from the lseek() handler function is returned to the
+       calling program
 
 mkdir
 =====
 
-**File:**
+File:
+    ``mkdir.c``
 
-mkdir.c
+Processing:
+    This routine attempts to create a directory node under the filesystem. The
+    routine is layered the mknod() function.
 
-**Processing:**
-
-This routine attempts to create a directory node under the filesystem. The
-routine is layered the mknod() function.
-
-**Development Comments:**
-
-See mknod() for developmental comments.
+Development Comments:
+    See mknod() for developmental comments.
 
 mkfifo
 ======
 
-**File:**
+File:
+    ``mkfifo.c``
 
-mkfifo.c
+Processing:
+    This routine attempts to create a FIFO node under the filesystem. The
+    routine is layered the mknod() function.
 
-**Processing:**
-
-This routine attempts to create a FIFO node under the filesystem. The routine
-is layered the mknod() function.
-
-**Development Comments:**
-
-See mknod() for developmental comments
+Development Comments:
+    See mknod() for developmental comments
 
 .. COMMENT: @page
 
 mknod
 =====
 
-**File:**
+File:
+    ``mknod.c``
 
-mknod.c
+Processing:
+    This function will allow for the creation of the following types of nodes
+    under the filesystem:
 
-**Processing:**
+    - directories
 
-This function will allow for the creation of the following types of nodes under
-the filesystem:
+    - regular files
 
-- directories
+    - character devices
 
-- regular files
+    - block devices
 
-- character devices
+    - fifos
 
-- block devices
+    At the present time, an attempt to create a FIFO will result in an ENOTSUP
+    error to the calling function. This routine is layered the filesystem
+    specific routines evalformake and mknod. The introduction of a new
+    filesystem must include its own evalformake and mknod function to support
+    the generic mknod() function.  Under this condition the generic mknod()
+    function should accommodate other filesystem types without alteration.
 
-- fifos
+Development Comments:
+    Test for nodal types - I thought that this test should look like the
+    following code:
 
-At the present time, an attempt to create a FIFO will result in an ENOTSUP
-error to the calling function. This routine is layered the filesystem specific
-routines evalformake and mknod. The introduction of a new filesystem must
-include its own evalformake and mknod function to support the generic mknod()
-function.  Under this condition the generic mknod() function should accommodate
-other filesystem types without alteration.
+    .. code-block:: c
 
-**Development Comments:**
+        if ( (mode & S_IFDIR) = = S_IFDIR) ||
+             (mode & S_IFREG) = = S_IFREG) ||
+             (mode & S_IFCHR) = = S_IFCHR) ||
+             (mode & S_IFBLK) = = S_IFBLK) ||
+             (mode & S_IFIFO) = = S_IFIFO))
+                Set_errno_and_return_minus_one (EINVAL);
 
-Test for nodal types - I thought that this test should look like the following
-code:
+    Where:
 
-.. code-block:: c
+    - S_IFREG (0100000) - Creation of a regular file
 
-    if ( (mode & S_IFDIR) = = S_IFDIR) ||
-         (mode & S_IFREG) = = S_IFREG) ||
-         (mode & S_IFCHR) = = S_IFCHR) ||
-         (mode & S_IFBLK) = = S_IFBLK) ||
-         (mode & S_IFIFO) = = S_IFIFO))
-            Set_errno_and_return_minus_one (EINVAL);
+    - S_IFCHR (0020000) - Creation of a character device
 
-Where:
+    - S_IFBLK (0060000) - Creation of a block device
 
-- S_IFREG (0100000) - Creation of a regular file
+    - S_IFIFO (0010000) - Creation of a FIFO
 
-- S_IFCHR (0020000) - Creation of a character device
+    Determine if the pathname that we are trying to create starts at the root
+    directory or is relative to the current directory using the
+    ``rtems_filesystem_get_start_loc()`` function.
 
-- S_IFBLK (0060000) - Creation of a block device
+    Determine if the pathname leads to a valid directory that can be accessed
+    for the creation of a node.
 
-- S_IFIFO (0010000) - Creation of a FIFO
+    If the pathname is a valid location to create a node, verify that a
+    filesystem specific mknod() function exists.
 
-Determine if the pathname that we are trying to create starts at the root
-directory or is relative to the current directory using the
-``rtems_filesystem_get_start_loc()`` function.
-
-Determine if the pathname leads to a valid directory that can be accessed for
-the creation of a node.
-
-If the pathname is a valid location to create a node, verify that a filesystem
-specific mknod() function exists.
-
-If the mknod() function exists, call the filesystem specific mknod() function.
-Pass the name, mode, device type and the location information associated with
-the directory under which the node will be created.
+    If the mknod() function exists, call the filesystem specific mknod()
+    function.  Pass the name, mode, device type and the location information
+    associated with the directory under which the node will be created.
 
 mount
 =====
 
-**File:**
+File:
+    ``mount.c``
 
-mount.c
+    Arguments (Not a standard POSIX call):
 
-Arguments (Not a standard POSIX call):
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_filesystem_mount_table_entry_t   **mt_entry,
 
-    rtems_filesystem_mount_table_entry_t   **mt_entry,
+    If the mount operation is successful, this pointer to a pointer will be set
+    to reference the mount table chain entry that has been allocated for this
+    file system mount.
 
-If the mount operation is successful, this pointer to a pointer will be set to
-reference the mount table chain entry that has been allocated for this file
-system mount.
+    .. code-block:: c
 
-.. code-block:: c
+        rtems_filesystem_operations_table   *fs_ops,
 
-    rtems_filesystem_operations_table   *fs_ops,
+    This is a pointer to a table of functions that are associated with the file
+    system that we are about to mount. This is the mechanism to selected file
+    system type without keeping a dynamic database of all possible file system
+    types that are valid for the mount operation. Using this method, it is only
+    necessary to configure the filesystems that we wish to use into the RTEMS
+    build. Unused filesystems types will not be drawn into the build.
 
-This is a pointer to a table of functions that are associated with the file
-system that we are about to mount. This is the mechanism to selected file
-system type without keeping a dynamic database of all possible file system
-types that are valid for the mount operation. Using this method, it is only
-necessary to configure the filesystems that we wish to use into the RTEMS
-build. Unused filesystems types will not be drawn into the build.
+    .. code-block:: c
 
-.. code-block:: c
+        char                      *fsoptions,
 
-    char                      *fsoptions,
+    This argument points to a string that selects mounting for read only access
+    or read/write access. Valid states are "RO" and "RW"
 
-This argument points to a string that selects mounting for read only
-access or read/write access. Valid states are "RO" and "RW"
+    .. code-block:: c
 
-.. code-block:: c
+        char                      *device,
 
-    char                      *device,
+    This argument is reserved for the name of a device that will be used to
+    access the filesystem information. Current filesystem implementations are
+    memory based and do not require a device to access filesystem information.
 
-This argument is reserved for the name of a device that will be used to access
-the filesystem information. Current filesystem implementations are memory based
-and do not require a device to access filesystem information.
+    .. code-block:: c
 
-.. code-block:: c
+        char                      *mount_point
 
-    char                      *mount_point
+    This is a pathname to a directory in a currently mounted filesystem that
+    allows read, write and execute permissions.  If successful, the node found
+    by evaluating this name, is stored in the mt_entry.
 
-This is a pathname to a directory in a currently mounted filesystem that allows
-read, write and execute permissions.  If successful, the node found by
-evaluating this name, is stored in the mt_entry.
+Processing:
+    This routine will handle the mounting of a filesystem on a mount point. If
+    the operation is successful, a pointer to the mount table chain entry
+    associated with the mounted filesystem will be returned to the calling
+    function. The specifics about the processing required at the mount point
+    and within the filesystem being mounted is isolated in the filesystem
+    specific mount() and fsmount_me() functions. This allows the generic
+    mount() function to remain unaltered even if new filesystem types are
+    introduced.
 
-**Processing:**
+Development Comments:
+    This routine will use get_file_system_options() to determine if the mount
+    options are valid ("RO" or "RW").
 
-This routine will handle the mounting of a filesystem on a mount point. If the
-operation is successful, a pointer to the mount table chain entry associated
-with the mounted filesystem will be returned to the calling function. The
-specifics about the processing required at the mount point and within the
-filesystem being mounted is isolated in the filesystem specific mount() and
-fsmount_me() functions. This allows the generic mount() function to remain
-unaltered even if new filesystem types are introduced.
+    It confirms that a filesystem ops-table has been selected.
 
-**Development Comments:**
+    Space is allocated for a mount table entry and selective elements of the
+    temporary mount table entry are initialized.
 
-This routine will use get_file_system_options() to determine if the mount
-options are valid ("RO" or "RW").
+    If a mount point is specified: The mount point is examined to determine
+    that it is a directory and also has the appropriate permissions to allow a
+    filesystem to be mounted.
 
-It confirms that a filesystem ops-table has been selected.
+    The current mount table chain is searched to determine that there is not
+    another filesystem mounted at the mount point we are trying to mount onto.
 
-Space is allocated for a mount table entry and selective elements of the
-temporary mount table entry are initialized.
+    If a mount function is defined in the ops table for the filesystem
+    containing the mount point, it is called at this time.
 
-If a mount point is specified: The mount point is examined to determine that it
-is a directory and also has the appropriate permissions to allow a filesystem
-to be mounted.
+    If no mount point is specified: Processing if performed to set up the mount
+    table chain entry as the base filesystem.
 
-The current mount table chain is searched to determine that there is not
-another filesystem mounted at the mount point we are trying to mount onto.
+    If the fsmount_me() function is specified for ops-table of the filesystem
+    being mounted, that function is called to initialize for the new
+    filesystem.
 
-If a mount function is defined in the ops table for the filesystem containing
-the mount point, it is called at this time.
-
-If no mount point is specified: Processing if performed to set up the mount
-table chain entry as the base filesystem.
-
-If the fsmount_me() function is specified for ops-table of the filesystem being
-mounted, that function is called to initialize for the new filesystem.
-
-On successful completion, the temporary mount table entry will be placed on the
-mount table chain to record the presence of the mounted filesystem.
+    On successful completion, the temporary mount table entry will be placed on
+    the mount table chain to record the presence of the mounted filesystem.
 
 open
 ====
 
-**File:**
+File:
+    ``open.c``
 
-open.c
+Processing:
+    This routine is layered on both RTEMS calls and filesystem specific
+    implementations of the open() function. These functional interfaces should
+    not change for new filesystems and therefore this code should be stable as
+    new file systems are introduced.
 
-**Processing:**
+Development Comments:
+    This routine will allocate a file control block for the file or device that
+    we are about to open.
 
-This routine is layered on both RTEMS calls and filesystem specific
-implementations of the open() function. These functional interfaces should not
-change for new filesystems and therefore this code should be stable as new file
-systems are introduced.
+    It will then test to see if the pathname exists. If it does a
+    rtems_filesystem_location_info_t data structure will be filled out. This
+    structure contains information that associates node information, filesystem
+    specific functions and mount table chain information with the pathname.
 
-**Development Comments:**
+    If the create option has been it will attempt to create a node for a
+    regular file along the specified path. If a file already exists along this
+    path, an error will be generated; otherwise, a node will be allocated for
+    the file under the filesystem that contains the pathname. When a new node
+    is created, it is also evaluated so that an appropriate
+    rtems_filesystem_location_info_t data structure can be filled out for the
+    newly created node.
 
-This routine will allocate a file control block for the file or device that we
-are about to open.
+    If the file exists or the new file was created successfully, the file
+    control block structure will be initialized with handler table information,
+    node information and the rtems_filesystem_location_info_t data structure
+    that describes the node and filesystem data in detail.
 
-It will then test to see if the pathname exists. If it does a
-rtems_filesystem_location_info_t data structure will be filled out. This
-structure contains information that associates node information, filesystem
-specific functions and mount table chain information with the pathname.
+    If an open() function exists in the filesystem specific handlers table for
+    the node that we are trying to open, it will be called at this time.
 
-If the create option has been it will attempt to create a node for a regular
-file along the specified path. If a file already exists along this path, an
-error will be generated; otherwise, a node will be allocated for the file under
-the filesystem that contains the pathname. When a new node is created, it is
-also evaluated so that an appropriate rtems_filesystem_location_info_t data
-structure can be filled out for the newly created node.
+    If any error is detected in the process, cleanup is performed. It consists
+    of freeing the file control block structure that was allocated at the
+    beginning of the generic open() routine.
 
-If the file exists or the new file was created successfully, the file control
-block structure will be initialized with handler table information, node
-information and the rtems_filesystem_location_info_t data structure that
-describes the node and filesystem data in detail.
-
-If an open() function exists in the filesystem specific handlers table for the
-node that we are trying to open, it will be called at this time.
-
-If any error is detected in the process, cleanup is performed. It consists of
-freeing the file control block structure that was allocated at the beginning of
-the generic open() routine.
-
-On a successful open(), the index into the file descriptor table will be
-calculated and returned to the calling routine.
+    On a successful open(), the index into the file descriptor table will be
+    calculated and returned to the calling routine.
 
 opendir
 =======
 
-**File:**
+File:
+    ``opendir.c``
 
-opendir.c
+Processing:
+    This routine will attempt to open a directory for read access. It will
+    setup a DIR control structure that will be used to access directory
+    information. This routine is layered on the generic open() routine and
+    filesystem specific directory processing routines.
 
-**Processing:**
-
-This routine will attempt to open a directory for read access. It will setup a
-DIR control structure that will be used to access directory information. This
-routine is layered on the generic open() routine and filesystem specific
-directory processing routines.
-
-**Development Comments:**
-
-The BSD group provided this routine.
+Development Comments:
+    The BSD group provided this routine.
 
 pathconf
 ========
 
-**File:**
+File:
+    ``pathconf.c``
 
-pathconf.c
+Processing:
+    This routine will obtain the value of one of the path configuration
+    parameters and return it to the calling routine. It is layered on the
+    generic open() and fpathconf() functions. These interfaces should not
+    change with the addition of new filesystem types.
 
-**Processing:**
+Development Comments:
+    This routine will try to open the file indicated by path.
 
-This routine will obtain the value of one of the path configuration parameters
-and return it to the calling routine. It is layered on the generic open() and
-fpathconf() functions. These interfaces should not change with the addition of
-new filesystem types.
+    If successful, the file descriptor will be used to access the pathconf
+    value specified by ``name`` using the fpathconf() function.
 
-**Development Comments:**
-
-This routine will try to open the file indicated by path.
-
-If successful, the file descriptor will be used to access the pathconf value
-specified by ``name`` using the fpathconf() function.
-
-The file that was accessed is then closed.
+    The file that was accessed is then closed.
 
 read
 ====
 
-**File:**
+File:
+    ``deviceio.c``
 
-deviceio.c
+Processing:
+    This routine is layered on a set of RTEMS calls and filesystem specific
+    read operations. The functions are layered in such a way as to isolate them
+    from change as new filesystems are introduced.
 
-**Processing:**
+Development Comments:
+    This routine will examine the type of file descriptor it is sent.
 
-This routine is layered on a set of RTEMS calls and filesystem specific read
-operations. The functions are layered in such a way as to isolate them from
-change as new filesystems are introduced.
+    If the file descriptor is associated with a network device, the read
+    function will be mapped to a special network handler. The return code from
+    the network handler will then be sent as the return code from generic
+    read() function.
 
-**Development Comments:**
+    For file descriptors that are associated with the filesystem the following
+    sequence will be performed:
 
-This routine will examine the type of file descriptor it is sent.
+    #. Obtain the file control block associated with the file descriptor
 
-If the file descriptor is associated with a network device, the read function
-will be mapped to a special network handler. The return code from the network
-handler will then be sent as the return code from generic read() function.
+    #. Range check the file descriptor
 
-For file descriptors that are associated with the filesystem the following
-sequence will be performed:
+    #. Determine that the buffer pointer is not invalid
 
-# Obtain the file control block associated with the file descriptor
+    #. Check that the count is not zero
 
-# Range check the file descriptor
+    #. Check the file control block to see if we have permissions to read
 
-# Determine that the buffer pointer is not invalid
+    #. If there is a read function in the handler table, invoke the handler
+       table read() function
 
-# Check that the count is not zero
+    #. Use the return code from the handler table read function(number of bytes
+       read) to increment the offset element of the file control block
 
-# Check the file control block to see if we have permissions to read
-
-# If there is a read function in the handler table, invoke the handler table
-  read() function
-
-# Use the return code from the handler table read function(number of bytes
-  read) to increment the offset element of the file control block
-
-# Return the number of bytes read to the calling program
+    #. Return the number of bytes read to the calling program
 
 readdir
 =======
 
-**File:**
+File:
+    ``readdir.c``
 
-readdir.c
+Processing:
+    This routine was acquired from the BSD group. It has not been altered from
+    its original form.
 
-**Processing:**
+Development Comments:
+    The routine calls a customized getdents() function that is provided by the
+    user.  This routine provides the filesystem specific aspects of reading a
+    directory.
 
-This routine was acquired from the BSD group. It has not been altered from its
-original form.
-
-**Development Comments:**
-
-The routine calls a customized getdents() function that is provided by the
-user.  This routine provides the filesystem specific aspects of reading a
-directory.
-
-It is layered on the read() function in the directory handler table. This
-function has been mapped to the Imfs_dir_read() function.
+    It is layered on the read() function in the directory handler table. This
+    function has been mapped to the Imfs_dir_read() function.
 
 unmount
 =======
 
-**File:**
+File:
+    ``unmount.c``
 
-unmount.c
+Processing:
+    This routine will attempt to dismount a mounted filesystem and then free
+    all resources that were allocated for the management of that filesystem.
 
-**Processing:**
+Development Comments:
+    - This routine will determine if there are any filesystems currently
+      mounted under the filesystem that we are trying to dismount. This would
+      prevent the dismount of the filesystem.
 
-This routine will attempt to dismount a mounted filesystem and then free all
-resources that were allocated for the management of that filesystem.
+    - It will test to see if the current directory is in the filesystem that we
+      are attempting to dismount. This would prevent the dismount of the
+      filesystem.
 
-**Development Comments:**
+    - It will scan all the currently open file descriptors to determine is
+      there is an open file descriptor to a file in the filesystem that we are
+      attempting to unmount().
 
-- This routine will determine if there are any filesystems currently mounted
-  under the filesystem that we are trying to dismount. This would prevent the
-  dismount of the filesystem.
+    If the above preconditions are met then the following sequence is
+    performed:
 
-- It will test to see if the current directory is in the filesystem that we are
-  attempting to dismount. This would prevent the dismount of the filesystem.
+    #. Call the filesystem specific unmount() function for the filesystem that
+       contains the mount point. This routine should indicate that the mount
+       point no longer has a filesystem mounted below it.
 
-- It will scan all the currently open file descriptors to determine is there is
-  an open file descriptor to a file in the filesystem that we are attempting to
-  unmount().
+    #. Call the filesystem specific fsunmount_me() function for the mounted
+       filesystem that we are trying to unmount(). This routine should clean up
+       any resources that are no longer needed for the management of the file
+       system being un-mounted.
 
-If the above preconditions are met then the following sequence is performed:
+    #. Extract the mount table entry for the filesystem that was just dismounted
+       from the mount table chain.
 
-# Call the filesystem specific unmount() function for the filesystem that
-  contains the mount point. This routine should indicate that the mount point
-  no longer has a filesystem mounted below it.
-
-# Call the filesystem specific fsunmount_me() function for the mounted
-  filesystem that we are trying to unmount(). This routine should clean up any
-  resources that are no longer needed for the management of the file system
-  being un-mounted.
-
-# Extract the mount table entry for the filesystem that was just dismounted
-  from the mount table chain.
-
-# Free the memory associated with the extracted mount table entry.
+    #. Free the memory associated with the extracted mount table entry.
 
 eval
 ====
 
-**File:**
+File:
+    ``XXX``
 
-XXX
+Processing:
+    XXX
 
-**Processing:**
-
-XXX
-
-**Development Comments:**
-
-XXX
+Development Comments:
+    XXX
 
 getdentsc
 =========
 
-**File:**
+File:
+    ``XXX``
 
-XXX
+Processing:
+    XXX
 
-**Processing:**
-
-XXX
-
-**Development Comments:**
-
-XXX
+Development Comments:
+    XXX

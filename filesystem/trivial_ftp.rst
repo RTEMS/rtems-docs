@@ -1,7 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Trivial FTP Client Filesystem
-#############################
+*****************************
 
 This chapter describes the Trivial FTP (TFTP) Client Filesystem.
 

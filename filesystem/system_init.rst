@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 System Initialization
-#####################
+*********************
 
 After the RTEMS initialization is performed, the application's initialization
 will be performed. Part of initialization is a call to

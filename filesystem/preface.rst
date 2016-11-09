@@ -4,9 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-=======
 Preface
-=======
+*******
 
 This document describes the implementation of the RTEMS filesystem
 infrastructure.  This infrastructure supports the following capabilities:
@@ -19,12 +18,12 @@ infrastructure.  This infrastructure supports the following capabilities:
 
 - Individual file and directory support for the following:
 
-  # Permissions for read, write and execute
-  # User ID
-  # Group ID
-  # Access time
-  # Modification time
-  # Creation time
+  #. Permissions for read, write and execute
+  #. User ID
+  #. Group ID
+  #. Access time
+  #. Modification time
+  #. Creation time
 
 - Hard links to files and directories
 

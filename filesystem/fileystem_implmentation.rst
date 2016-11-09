@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Filesystem Implementation Requirements
-######################################
+**************************************
 
 This chapter details the behavioral requirements that all filesystem
 implementations must adhere to.
@@ -105,75 +105,75 @@ explicit knowledge of the filesystem type or the filesystem mount
 configuration. The following are functions that are provided to the
 application:
 
-# access()
+#. access()
 
-# chdir()
+#. chdir()
 
-# chmod()
+#. chmod()
 
-# chown()
+#. chown()
 
-# close()
+#. close()
 
-# closedir()
+#. closedir()
 
-# fchmod()
+#. fchmod()
 
-# fcntl()
+#. fcntl()
 
-# fdatasync()
+#. fdatasync()
 
-# fpathconf()
+#. fpathconf()
 
-# fstat()
+#. fstat()
 
-# fsync()
+#. fsync()
 
-# ftruncate()
+#. ftruncate()
 
-# link()
+#. link()
 
-# lseek()
+#. lseek()
 
-# mkdir()
+#. mkdir()
 
-# mknod()
+#. mknod()
 
-# mount()
+#. mount()
 
-# open()
+#. open()
 
-# opendir()
+#. opendir()
 
-# pathconf()
+#. pathconf()
 
-# read()
+#. read()
 
-# readdir()
+#. readdir()
 
-# rewinddir()
+#. rewinddir()
 
-# rmdir()
+#. rmdir()
 
-# rmnod()
+#. rmnod()
 
-# scandir()
+#. scandir()
 
-# seekdir()
+#. seekdir()
 
-# stat()
+#. stat()
 
-# telldir()
+#. telldir()
 
-# umask()
+#. umask()
 
-# unlink()
+#. unlink()
 
-# unmount()
+#. unmount()
 
-# utime()
+#. utime()
 
-# write()
+#. write()
 
 The filesystem's type as well as the node type within the filesystem determine
 the nature of the processing that must be performed for each of the functions
@@ -196,14 +196,14 @@ control block contains information that is used to locate node, file system,
 mount table and functional handler information. The diagram in Figure 8 depicts
 the relationship between and among the following components.
 
-# File Descriptor Table
+File Descriptor Table:
   This is an internal RTEMS structure that tracks all currently defined file
   descriptors in the system. The index that is returned by the file open()
   operation references a slot in this table. The slot contains a pointer to the
   file descriptor table entry for this file. The rtems_libio_t structure
   represents the file control block.
 
-# Allocation of entry in the File Descriptor Table
+Allocation of entry in the File Descriptor Table:
   Access to the file descriptor table is controlled through a semaphore that is
   implemented using the rtems_libio_allocate() function. This routine will grab
   a semaphore and then scan the file control blocks to determine which slot is
@@ -212,15 +212,14 @@ the relationship between and among the following components.
   alterations have been made to the file control block table, the semaphore is
   released to allow further operations on the table.
 
-# Maximum number of entries in the file descriptor table is configurable
+  Maximum number of entries in the file descriptor table is configurable
   through the src/exec/sapi/headers/confdefs.h file. If the
-  CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS constant is defined its value will
-  represent the maximum number of file descriptors that are allowed.  If
-  CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS is not specified a default value of
-  20 will be used as the maximum number of file descriptors allowed.
+  ``CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS`` constant is defined its value
+  will represent the maximum number of file descriptors that are allowed.  If
+  ``CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS`` is not specified a default value
+  of 20 will be used as the maximum number of file descriptors allowed.
 
-# File control block - rtems_libio_t structure
-
+File control block - rtems_libio_t structure:
   .. code-block:: c
 
       struct rtems_libio_tt {
@@ -258,7 +257,7 @@ the relationship between and among the following components.
 File/Directory function access via rtems_filesystem_location_info_t structure
 -----------------------------------------------------------------------------
 
-The rtems_filesystem_location_info_tt structure below provides sufficient
+The ``rtems_filesystem_location_info_tt`` structure below provides sufficient
 information to process nodes under a mounted filesystem.
 
 .. code-block:: c
@@ -316,422 +315,373 @@ function management structure.
     } rtems_filesystem_operations_table;
 
 evalpath Handler
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``evalpath``
 
-evalpath
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        const char                        *pathname,      /* IN     */
+        int                                flags,         /* IN     */
+        rtems_filesystem_location_info_t  *pathloc        /* IN/OUT */
 
-.. code-block:: c
+Description:
+    This routine is responsible for evaluating the pathname passed in based
+    upon the flags and the valid ``rthems_filesystem_location_info_t``.
+    Additionally, it must make any changes to pathloc necessary to identify the
+    pathname node.  This should include calling the evalpath for a mounted
+    filesystem, if the given filesystem supports the mount command.
 
-    const char                        *pathname,      /* IN     */
-    int                                flags,         /* IN     */
-    rtems_filesystem_location_info_t  *pathloc        /* IN/OUT */
+    This routine returns a 0 if the evaluation was successful.  Otherwise, it
+    returns a -1 and sets errno to the correct error.
 
-**Description:**
-
-This routine is responsible for evaluating the pathname passed in based upon
-the flags and the valid ``rthems_filesystem_location_info_t``.  Additionally,
-it must make any changes to pathloc necessary to identify the pathname node.
-This should include calling the evalpath for a mounted filesystem, if the given
-filesystem supports the mount command.
-
-This routine returns a 0 if the evaluation was successful.  Otherwise, it
-returns a -1 and sets errno to the correct error.
-
-This routine is required and should NOT be set to NULL.
+    This routine is required and should NOT be set to NULL.
 
 evalformake Handler
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``evalformake``
 
-evalformake
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        const char                       *path,       /* IN */
+        rtems_filesystem_location_info_t *pathloc,    /* IN/OUT */
+        const char                      **name        /* OUT */
 
-.. code-block:: c
+Description:
+    This method is given a path to evaluate and a valid start location.  It is
+    responsible for finding the parent node for a requested make command,
+    setting pathloc information to identify the parent node, and setting the
+    name pointer to the first character of the name of the new node.
+    Additionally, if the filesystem supports the mount command, this method
+    should call the evalformake routine for the mounted filesystem.
 
-    const char                       *path,       /* IN */
-    rtems_filesystem_location_info_t *pathloc,    /* IN/OUT */
-    const char                      **name        /* OUT */
+    This routine returns a 0 if the evaluation was successful.  Otherwise, it
+    returns a -1 and sets errno to the correct error.
 
-**Description:**
-
-This method is given a path to evaluate and a valid start location.  It is
-responsible for finding the parent node for a requested make command, setting
-pathloc information to identify the parent node, and setting the name pointer
-to the first character of the name of the new node.  Additionally, if the
-filesystem supports the mount command, this method should call the evalformake
-routine for the mounted filesystem.
-
-This routine returns a 0 if the evaluation was successful.  Otherwise, it
-returns a -1 and sets errno to the correct error.
-
-This routine is required and should NOT be set to NULL.  However, if the
-filesystem does not support user creation of a new node, it may set errno to
-ENOSYS and return -1.
+    This routine is required and should NOT be set to NULL.  However, if the
+    filesystem does not support user creation of a new node, it may set errno
+    to ENOSYS and return -1.
 
 link Handler
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``link``
 
-link
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t    *to_loc,      /* IN */
+        rtems_filesystem_location_info_t    *parent_loc,  /* IN */
+        const char                          *token        /* IN */
 
-.. code-block:: c
+Description:
+    This routine is used to create a hard-link.
 
-    rtems_filesystem_location_info_t    *to_loc,      /* IN */
-    rtems_filesystem_location_info_t    *parent_loc,  /* IN */
-    const char                          *token        /* IN */
+    It will first examine the st_nlink count of the node that we are trying to.
+    If the link count exceeds LINK_MAX an error will be returned.
 
-**Description:**
+    The name of the link will be normalized to remove extraneous separators
+    from the end of the name.
 
-This routine is used to create a hard-link.
-
-It will first examine the st_nlink count of the node that we are trying to.  If
-the link count exceeds LINK_MAX an error will be returned.
-
-The name of the link will be normalized to remove extraneous separators from
-the end of the name.
-
-This routine is not required and may be set to NULL.
+    This routine is not required and may be set to NULL.
 
 unlink Handler
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``unlink``
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 node_type Handler
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``node_type()``
 
-node_type()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t    *pathloc        /* IN */
 
-.. code-block:: c
-
-    rtems_filesystem_location_info_t    *pathloc        /* IN */
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 mknod Handler
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``mknod()``
 
-mknod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        const char                          *token,        /* IN */
+        mode_t                               mode,         /* IN */
+        dev_t                                dev,          /* IN */
+        rtems_filesystem_location_info_t    *pathloc       /* IN/OUT */
 
-.. code-block:: c
-
-    const char                          *token,        /* IN */
-    mode_t                               mode,         /* IN */
-    dev_t                                dev,          /* IN */
-    rtems_filesystem_location_info_t    *pathloc       /* IN/OUT */
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 rmnod Handler
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``rmnod()``
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 chown Handler
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``chown()``
 
-chown()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t    *pathloc        /* IN */
+        uid_t                                owner          /* IN */
+        gid_t                                group          /* IN */
 
-.. code-block:: c
-
-    rtems_filesystem_location_info_t    *pathloc        /* IN */
-    uid_t                                owner          /* IN */
-    gid_t                                group          /* IN */
-
-**Description:**
-
-XXX
-
-.. COMMENT: @page
+Description:
+    XXX
 
 freenod Handler
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``freenod()``
 
-freenod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t      *pathloc       /* IN */
 
-.. code-block:: c
+Description:
+    This routine is used by the generic code to allow memory to be allocated
+    during the evaluate routines, and set free when the generic code is
+    finished accessing a node.  If the evaluate routines allocate memory to
+    identify a node this routine should be utilized to free that memory.
 
-    rtems_filesystem_location_info_t      *pathloc       /* IN */
-
-**Description:**
-
-This routine is used by the generic code to allow memory to be allocated during
-the evaluate routines, and set free when the generic code is finished accessing
-a node.  If the evaluate routines allocate memory to identify a node this
-routine should be utilized to free that memory.
-
-This routine is not required and may be set to NULL.
+    This routine is not required and may be set to NULL.
 
 mount Handler
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``mount()``
 
-mount()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
-
-    rtems_filesystem_mount_table_entry_t   *mt_entry
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 fsmount_me Handler
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_fsmount_me``
 
-XXX
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
+Description:
+    This function is provided with a filesystem to take care of the internal
+    filesystem management details associated with mounting that filesystem
+    under the RTEMS environment.
 
-    rtems_filesystem_mount_table_entry_t   *mt_entry
+    It is not responsible for the mounting details associated the filesystem
+    containing the mount point.
 
-**Description:**
+    The rtems_filesystem_mount_table_entry_t structure contains the key
+    elements below:
 
-This function is provided with a filesystem to take care of the internal
-filesystem management details associated with mounting that filesystem under
-the RTEMS environment.
+    .. code-block:: c
 
-It is not responsible for the mounting details associated the filesystem
-containing the mount point.
+        rtems_filesystem_location_info_t         *mt_point_node,
 
-The rtems_filesystem_mount_table_entry_t structure contains the key elements
-below:
+    This structure contains information about the mount point. This allows us
+    to find the ops-table and the handling functions associated with the
+    filesystem containing the mount point.
 
-.. code-block:: c
+    .. code-block:: c
 
-    rtems_filesystem_location_info_t         *mt_point_node,
+        rtems_filesystem_location_info_t         *fs_root_node,
 
-This structure contains information about the mount point. This
-allows us to find the ops-table and the handling functions
-associated with the filesystem containing the mount point.
+    This structure contains information about the root node in the file system
+    to be mounted. It allows us to find the ops-table and the handling
+    functions associated with the filesystem to be mounted.
 
-.. code-block:: c
-
-    rtems_filesystem_location_info_t         *fs_root_node,
-
-This structure contains information about the root node in the file
-system to be mounted. It allows us to find the ops-table and the
-handling functions associated with the filesystem to be mounted.
-
-.. code-block:: c
+    .. code-block:: c
 
     rtems_filesystem_options_t                 options,
 
-Read only or read/write access
+    Read only or read/write access
 
-.. code-block:: c
+    .. code-block:: c
 
-    void                                         *fs_info,
+        void                                         *fs_info,
 
-This points to an allocated block of memory the will be used to hold any
-filesystem specific information of a global nature. This allocated region if
-important because it allows us to mount the same filesystem type more than once
-under the RTEMS system.  Each instance of the mounted filesystem has its own
-set of global management information that is separate from the global
-management information associated with the other instances of the mounted
-filesystem type.
+    This points to an allocated block of memory the will be used to hold any
+    filesystem specific information of a global nature. This allocated region
+    if important because it allows us to mount the same filesystem type more
+    than once under the RTEMS system.  Each instance of the mounted filesystem
+    has its own set of global management information that is separate from the
+    global management information associated with the other instances of the
+    mounted filesystem type.
 
-.. code-block:: c
+    .. code-block:: c
 
-    rtems_filesystem_limits_and_options_t    pathconf_info,
+        rtems_filesystem_limits_and_options_t    pathconf_info,
 
-The table contains the following set of values associated with the mounted
-filesystem:
+    The table contains the following set of values associated with the mounted
+    filesystem:
 
-- link_max
+    - link_max
 
-- max_canon
+    - max_canon
 
-- max_input
+    - max_input
 
-- name_max
+    - name_max
 
-- path_max
+    - path_max
 
-- pipe_buf
+    - pipe_buf
 
-- posix_async_io
+    - posix_async_io
 
-- posix_chown_restrictions
+    - posix_chown_restrictions
 
-- posix_no_trunc
+    - posix_no_trunc
 
-- posix_prio_io
+    - posix_prio_io
 
-- posix_sync_io
+    - posix_sync_io
 
-- posix_vdisable
+    - posix_vdisable
 
-These values are accessed with the pathconf() and the fpathconf () functions.
+    These values are accessed with the pathconf() and the fpathconf () functions.
 
-.. code-block:: c
+    .. code-block:: c
 
-    const char                                   *dev
+        const char                                   *dev
 
-The is intended to contain a string that identifies the device that contains
-the filesystem information. The filesystems that are currently implemented are
-memory based and don't require a device specification.
+    The is intended to contain a string that identifies the device that
+    contains the filesystem information. The filesystems that are currently
+    implemented are memory based and don't require a device specification.
 
-If the mt_point_node.node_access is NULL then we are mounting the base file
-system.
+    If the mt_point_node.node_access is NULL then we are mounting the base file
+    system.
 
-The routine will create a directory node for the root of the IMFS file system.
+    The routine will create a directory node for the root of the IMFS file
+    system.
 
-The node will have read, write and execute permissions for owner, group and
-others.
+    The node will have read, write and execute permissions for owner, group and
+    others.
 
-The node's name will be a null string.
+    The node's name will be a null string.
 
-A filesystem information structure(fs_info) will be allocated and initialized
-for the IMFS filesystem. The fs_info pointer in the mount table entry will be
-set to point the filesystem information structure.
+    A filesystem information structure(fs_info) will be allocated and
+    initialized for the IMFS filesystem. The fs_info pointer in the mount table
+    entry will be set to point the filesystem information structure.
 
-The pathconf_info element of the mount table will be set to the appropriate
-table of path configuration constants (LIMITS_AND_OPTIONS).
+    The pathconf_info element of the mount table will be set to the appropriate
+    table of path configuration constants (LIMITS_AND_OPTIONS).
 
-The fs_root_node structure will be filled in with the following:
+    The fs_root_node structure will be filled in with the following:
 
-- pointer to the allocated root node of the filesystem
+    - pointer to the allocated root node of the filesystem
 
-- directory handlers for a directory node under the IMFS filesystem
+    - directory handlers for a directory node under the IMFS filesystem
 
-- OPS table functions for the IMFS
+    - OPS table functions for the IMFS
 
-A 0 will be returned to the calling routine if the process succeeded, otherwise
-a 1 will be returned.
+    A 0 will be returned to the calling routine if the process succeeded,
+    otherwise a 1 will be returned.
 
 unmount Handler
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 fsunmount_me Handler
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``imfs_fsunmount_me()``
 
-imfs_fsunmount_me()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_mount_table_entry_t   *mt_entry
 
-.. code-block:: c
-
-    rtems_filesystem_mount_table_entry_t   *mt_entry
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 utime Handler
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 eval_link Handler
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 symlink Handler
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
-
-XXX
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 File Handler Table Functions
 ----------------------------
@@ -762,291 +712,241 @@ this function management structure.
     } rtems_filesystem_file_handlers_r;
 
 open Handler
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``open()``
 
-open()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t   *iop,
+        const char      *pathname,
+        unsigned32       flag,
+        unsigned32       mode
 
-.. code-block:: c
-
-    rtems_libio_t   *iop,
-    const char      *pathname,
-    unsigned32       flag,
-    unsigned32       mode
-
-**Description:**
-
-XXX
+Description:
+    XXX
 
 close Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``close()``
 
-close()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
 
-.. code-block:: c
+Description:
+    XXX
 
-    rtems_libio_t     *iop
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 read Handler
 ~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``read()``
 
-read()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        void              *buffer,
+        unsigned32         count
 
-.. code-block:: c
+Description:
+    XXX
 
-    rtems_libio_t     *iop,
-    void              *buffer,
-    unsigned32         count
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 write Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+Description:
+    XXX
 
-XXX
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 ioctl Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        unsigned32       command,
+        void              *buffer
 
-.. code-block:: c
+Description:
+    XXX
 
-    rtems_libio_t     *iop,
-    unsigned32       command,
-    void              *buffer
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 lseek Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``lseek()``
 
-lseek()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop,
+        off_t              offset,
+        int                whence
 
-.. code-block:: c
+Description:
+    XXX
 
-    rtems_libio_t     *iop,
-    off_t              offset,
-    int                whence
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 fstat Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``fstat()``
 
-fstat()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_filesystem_location_info_t   *loc,
+        struct stat                        *buf
 
-.. code-block:: c
+Description:
+    The following information is extracted from the filesystem specific node
+    and placed in the ``stat`` structure:
 
-    rtems_filesystem_location_info_t   *loc,
-    struct stat                        *buf
+    - st_mode
 
-**Description:**
+    - st_nlink
 
-The following information is extracted from the filesystem specific node and
-placed in the ``stat`` structure:
+    - st_ino
 
-- st_mode
+    - st_uid
 
-- st_nlink
+    - st_gid
 
-- st_ino
+    - st_atime
 
-- st_uid
+    - st_mtime
 
-- st_gid
+    - st_ctime
 
-- st_atime
+NOTES:
+    Both the ``stat()`` and ``lstat()`` services are implemented directly using
+    the ``fstat()`` handler.  The difference in behavior is determined by how
+    the path is evaluated prior to this handler being called on a particular
+    file entity.
 
-- st_mtime
-
-- st_ctime
-
-**NOTES:**
-
-Both the ``stat()`` and ``lstat()`` services are implemented directly using the
-``fstat()`` handler.  The difference in behavior is determined by how the path
-is evaluated prior to this handler being called on a particular file entity.
-
-The ``fstat()`` system call is implemented directly on top of this filesystem
-handler.
+    The ``fstat()`` system call is implemented directly on top of this
+    filesystem handler.
 
 fchmod Handler
 ~~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    ``fchmod()``
 
-fchmod()
+Arguments:
+    .. code-block:: c
 
-**Arguments:**
+        rtems_libio_t     *iop
+        mode_t             mode
 
-.. code-block:: c
+Description:
+    XXX
 
-    rtems_libio_t     *iop
-    mode_t             mode
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 ftruncate Handler
 ~~~~~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+Description:
+    XXX
 
-XXX
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 fpathconf Handler
 ~~~~~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+Description:
+    XXX
 
-XXX
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 fsync Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+Description:
+    XXX
 
-XXX
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 fdatasync Handler
 ~~~~~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+Description:
+    XXX
 
-XXX
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX
 
 fcntl Handler
 ~~~~~~~~~~~~~
 
-**Corresponding Structure Element:**
+Corresponding Structure Element:
+    XXX
 
-XXX
+Arguments:
+    XXX
 
-**Arguments:**
+Description:
+    XXX
 
-XXX
-
-**Description:**
-
-XXX
-
-**NOTES:**
-
-XXX
+NOTES:
+    XXX

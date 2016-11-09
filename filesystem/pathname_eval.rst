@@ -5,7 +5,7 @@
 .. COMMENT: All rights reserved.
 
 Pathname Evaluation
-###################
+*******************
 
 This chapter describes the pathname evaluation process for the RTEMS Filesystem
 Infrastructure.
