@@ -6,7 +6,7 @@
 .. _overview:
 
 Overview
-========
+********
 
 Welcome to the :ref:term:`RTEMS` Eclipse Manual.
 

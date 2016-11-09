@@ -4,7 +4,7 @@
 .. _glossary:
 
 Glossary
-========
+********
 
 .. glossary::
 

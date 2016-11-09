@@ -6,7 +6,7 @@
 .. _rtems-development:
 
 RTEMS Development
-=================
+*****************
 
 RTEMS can be developed using Eclipse. The RTEMS kernel is an `autotools` or
 `autoconf` and `automake` based package. You can create a project in Eclipse
