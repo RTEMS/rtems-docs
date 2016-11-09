@@ -32,6 +32,7 @@ production level.
 The hosts which produce production quality is:
 
  FreeBSD
+ CentOS 6 and 7 (if using texlive, not RPMs of texlive)
 
 Host Setup
 ----------
@@ -47,7 +48,20 @@ Sphinx Per User Install
 You can use this method to install a personal version of Sphinx if your host
 does not provide a suitable package:
 
- $ pip install -U Sphinx
+ $ pip install -U sphinx
+
+On some hosts, this may complain that a newer version of pip is available.
+If so, then upgrade pip into your personal area.
+
+ $ pip install --upgrade --user pip
+
+The personal area for these tools is ${HOME}/.local/bin. It should
+be PREPENDED to your path. On a 32-bit install of CentOS 6, these
+were the PATH modifications to use the local install of Texlive
+and sphinx:
+
+  export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
+  export PATH=${HOME}/.local/bin:${PATH}
 
 FreeBSD
 ~~~~~~~
@@ -67,10 +81,10 @@ Single HTML:
   # pkg install npm
   # npm install -g inliner
 
-CentOS 7
-~~~~~~~~
+CentOS 6 and 7
+~~~~~~~~~~~~~~
 
-PDF Quality: poor
+PDF Quality: production
 
 Sphinx:
 
@@ -78,12 +92,39 @@ Sphinx:
 
 PDF:
 
-  # yum install -y texlive-*
+  WARNING: Do NOT use the RPMs for texlive. They are incomplete and, in
+           the best case, result in ugly PDFs. 
+
+  As root, install texlive per the instructions at
+  http://tug.org/texlive/acquire-netinstall.html
+
+  # wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  # tar xf install-tl-unx.tar.gz
+  # cd install-tl-20161106
+    NOTE: The date in the name of the directory will change.
+  # ./install-tl
+    - Use the command line system. Select "O" for options if you want to
+      change from A4 to US letter paper size by default.
+    - Select "I" to install
+    - The tools will be installed into a directory like the following:
+      /usr/local/texlive/2016/bin/i386-linux/
+
+     NOTE: The year (2016) and host OS (i386-linux) will change to
+           reflect 32 or 64 bit and OS name.
 
 Single HTML:
 
   # yum install npm
   # npm install -g inliner
+
+PATH:
+
+  Ensure the appropriate directories are PREPENDED to your PATH before
+  building the documentation. Examples are shown below:
+
+  export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
+  export PATH=${HOME}/.local/bin:${PATH}
+
 
 Arch Linux
 ~~~~~~~~~~
