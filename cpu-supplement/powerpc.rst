@@ -270,6 +270,17 @@ Special Registers
 The PowerPC architecture includes a number of special registers which are
 critical to the programming model:
 
+*Special-Purpose Register General 0 (SPRG0)*
+    On SMP configurations, this register contains the address of the per-CPU
+    control of the processor.
+
+*Special-Purpose Register General 1 (SPRG1)*
+    This register contains the interrupt stack pointer for the outer-most
+    interrupt service routine.
+
+*Special-Purpose Register General 2 (SPRG2)*
+    This register contains the address of interrupt stack area begin.
+
 *Machine State Register*
     The MSR contains the processor mode, power management mode, endian mode,
     exception information, privilege level, floating point available and
