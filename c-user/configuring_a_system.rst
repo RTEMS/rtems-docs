@@ -4040,6 +4040,10 @@ CONFIGURATION:
 
     - ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL``.
 
+    It is possible to add/remove processors to/from scheduler instances at
+    run-time, see :ref:`rtems_scheduler_add_processor` and
+    :ref:`rtems_scheduler_remove_processor`.
+
 ERRORS:
     In case one of the scheduler indices
     in``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` is invalid a link-time error will
@@ -4091,32 +4095,36 @@ EXAMPLE:
 
         #define CONFIGURE_SMP_MAXIMUM_PROCESSORS 8
         #define CONFIGURE_MAXIMUM_PRIORITY 255
+
         /* Make the scheduler algorithm available */
         #define CONFIGURE_SCHEDULER_PRIORITY_SMP
         #include <rtems/scheduler.h>
+
         /* Create contexts for the two scheduler instances */
         RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(io, CONFIGURE_MAXIMUM_PRIORITY + 1);
         RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
+
         /* Define the scheduler table */
         #define CONFIGURE_SCHEDULER_CONTROLS \\
-                    RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
-                        io, \
-                        rtems_build_name('I', 'O', ' ', ' ') \
-                    ), \
-                    RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
-                        work, \
-                        rtems_build_name('W', 'O', 'R', 'K') \
-                    )
-         /* Define the processor to scheduler assignments */
+            RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
+                io, \
+                rtems_build_name('I', 'O', ' ', ' ') \
+            ), \
+            RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
+                work, \
+                rtems_build_name('W', 'O', 'R', 'K') \
+            )
+
+        /* Define the initial processor to scheduler assignments */
         #define CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS \
-                    RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-                    RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER, \
-                    RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-                    RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-                    RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
-                    RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
-                    RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
-                    RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL)
+            RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+            RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER, \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL)
 
 .. COMMENT: === SMP Specific Configuration Parameters ===
 
