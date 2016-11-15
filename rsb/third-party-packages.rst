@@ -46,7 +46,7 @@ To build Net-SNMP the command is:
     $ ../source-builder/sb-set-builder --log=log_sis_net_snmp \
         --prefix=$HOME/development/rtems/bsps/4.11 \
         --with-tools=$HOME/development/rtems/4.11 \
-        --host=sparc-rtems4.11 --with-rtems-bsp=sis 4.11/net-mgmt/net-snmp
+        --host=sparc-rtems4.11 --with-rtems-bsp=erc32 4.11/net-mgmt/net-snmp
     RTEMS Source Builder - Set Builder, v0.3.0
     Build Set: 4.11/net-mgmt/net-snmp
     config: net-mgmt/net-snmp-5.7.2.1-1.cfg

@@ -35,7 +35,7 @@ available from SPARC International, Inc.  (http://www.sparc.com):
 
 **ERC32 Specific Information**
 
-The European Space Agency's ERC32 is a three chip computing core implementing a
+The European Space Agency's ERC32 is a microprocessor implementing a
 SPARC V7 processor and associated support circuitry for embedded space
 applications. The integer and floating-point units (90C601E & 90C602E) are
 based on the Cypress 7C601 and 7C602, with additional error-detection and
@@ -46,28 +46,11 @@ error-detection.  The core is designed to work at 25MHz, but using space
 qualified memories limits the system frequency to around 15 MHz, resulting in a
 performance of 10 MIPS and 2 MFLOPS.
 
-Information on the ERC32 and a number of development support tools, such as the
-SPARC Instruction Simulator (SIS), are freely available on the Internet.  The
-following documents and SIS are available via anonymous ftp or pointing your
-web browser at ftp://ftp.estec.esa.nl/pub/ws/wsd/erc32.
+The ERC32 is available from Atmel as the TSC695F.
 
-- ERC32 System Design Document
-
-- MEC Device Specification
-
-Additionally, the SPARC RISC User's Guide from Matra MHS documents the
-functionality of the integer and floating point units including the instruction
-set information.  To obtain this document as well as ERC32 components and VHDL
-models contact:
-
-    Matra MHS SA
-    3 Avenue du Centre, BP 309,
-    78054 St-Quentin-en-Yvelines,
-    Cedex, France
-    VOICE: +31-1-30607087
-    FAX: +31-1-30640693
-
-Amar Guennon (amar.guennon@matramhs.fr) is familiar with the ERC32.
+The RTEMS configuration of GDB enables the SPARC Instruction Simulator (SIS) 
+which can simulate the ERC32 as well as the follow up LEON2 and LEON3
+microprocessors.
 
 CPU Model Dependent Features
 ============================

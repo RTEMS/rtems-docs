@@ -54,7 +54,7 @@ shosted here. It has excellent internet access and performance.
    By default all the BSPs for an architecture are built. If you only wish to
    have a specific BSP built you can specify the BSP list by providing to the
    RSB the option ``--with-rtemsbsp``. For example to build two BSPs for the
-   SPARC architecture you can supply ``--with-rtemsbsp="erc32 sis"``. This can
+   SPARC architecture you can supply ``--with-rtemsbsp="erc32 leon3"``. This can
    speed the build time up for some architectures that have a lot of BSPs.
 
 Once you have built the tools and kernel you can move to the Packages section
