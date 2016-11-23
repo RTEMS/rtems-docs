@@ -73,48 +73,49 @@ Fatal Sources
 -------------
 
 The following fatal sources are defined for RTEMS via the
-:c:type:`rtems_fatal_source` enumeration.
+:c:type:`rtems_fatal_source` enumeration.  Each symbolic name has the
+corresponding numeric fatal source in parenthesis.
 
-INTERNAL_ERROR_CORE
+INTERNAL_ERROR_CORE (0)
     Errors of the core operating system.  See :ref:`internal_errors`.
 
-INTERNAL_ERROR_RTEMS_API
+INTERNAL_ERROR_RTEMS_API (1)
     Errors of the Classic API.
 
-INTERNAL_ERROR_POSIX_API
+INTERNAL_ERROR_POSIX_API (2)
     Errors of the POSIX API.
 
-RTEMS_FATAL_SOURCE_BDBUF
+RTEMS_FATAL_SOURCE_BDBUF (3)
     Fatal source for the block device cache.  See
     :c:type:`rtems_bdbuf_fatal_code`.
 
-RTEMS_FATAL_SOURCE_APPLICATION
+RTEMS_FATAL_SOURCE_APPLICATION (4)
     Fatal source for application-specific errors.  The fatal code is
     application-specific.
 
-RTEMS_FATAL_SOURCE_EXIT
+RTEMS_FATAL_SOURCE_EXIT (5)
     Fatal source of :c:func:`exit()`.  The fatal code is the :c:func:`exit()`
     status code.
 
-RTEMS_FATAL_SOURCE_BSP
+RTEMS_FATAL_SOURCE_BSP (6)
     Fatal source for BSP errors.  The fatal codes are defined in
     :file:`<bsp/fatal.h>`.  Examples are interrupt and exception
     initialization.  See :c:type:`bsp_fatal_code` and :c:func:`bsp_fatal()`.
 
-RTEMS_FATAL_SOURCE_ASSERT
+RTEMS_FATAL_SOURCE_ASSERT (7)
     Fatal source of :c:macro:`assert()`.  The fatal code is the pointer value
     of the assert context.  See :c:type:`rtems_assert_context`.
 
-RTEMS_FATAL_SOURCE_STACK_CHECKER
+RTEMS_FATAL_SOURCE_STACK_CHECKER (8)
     Fatal source of the stack checker.  The fatal code is the object name of
     the executing task.
 
-RTEMS_FATAL_SOURCE_EXCEPTION
+RTEMS_FATAL_SOURCE_EXCEPTION (9)
     Fatal source of the exceptions.  The fatal code is the pointer value of the
     exception frame pointer.  See :c:type:`rtems_exception_frame` and
     :ref:`rtems_exception_frame_print`.
 
-RTEMS_FATAL_SOURCE_SMP
+RTEMS_FATAL_SOURCE_SMP (10)
     Fatal source of SMP domain.  See :c:type:`SMP_Fatal_code`.
 
 .. _internal_errors:
@@ -123,96 +124,159 @@ Internal Error Codes
 --------------------
 
 The following error codes are defined for the :c:data:`INTERNAL_ERROR_CORE`
-fatal source.
+fatal source.  Each symbolic name has the corresponding numeric error code in
+parenthesis.
 
-INTERNAL_ERROR_NO_CONFIGURATION_TABLE
-  Document me.
-
-INTERNAL_ERROR_NO_CPU_TABLE
-  Document me.
-
-INTERNAL_ERROR_TOO_LITTLE_WORKSPACE
+INTERNAL_ERROR_TOO_LITTLE_WORKSPACE (2)
     Document me.
 
-INTERNAL_ERROR_WORKSPACE_ALLOCATION
+INTERNAL_ERROR_WORKSPACE_ALLOCATION (3)
     Document me.
 
-INTERNAL_ERROR_INTERRUPT_STACK_TOO_SMALL
+INTERNAL_ERROR_INTERRUPT_STACK_TOO_SMALL (4)
     Document me.
 
-INTERNAL_ERROR_THREAD_EXITTED
+INTERNAL_ERROR_THREAD_EXITTED (5)
     Document me.
 
-INTERNAL_ERROR_INCONSISTENT_MP_INFORMATION
+INTERNAL_ERROR_INCONSISTENT_MP_INFORMATION (6)
     Document me.
 
-INTERNAL_ERROR_INVALID_NODE
+INTERNAL_ERROR_INVALID_NODE (7)
     Document me.
 
-INTERNAL_ERROR_NO_MPCI
+INTERNAL_ERROR_NO_MPCI (8)
     Document me.
 
-INTERNAL_ERROR_BAD_PACKET
+INTERNAL_ERROR_BAD_PACKET (9)
     Document me.
 
-INTERNAL_ERROR_OUT_OF_PACKETS
+INTERNAL_ERROR_OUT_OF_PACKETS (10)
     Document me.
 
-INTERNAL_ERROR_OUT_OF_GLOBAL_OBJECTS
+INTERNAL_ERROR_OUT_OF_GLOBAL_OBJECTS (11)
     Document me.
 
-INTERNAL_ERROR_OUT_OF_PROXIES
+INTERNAL_ERROR_OUT_OF_PROXIES (12)
     Document me.
 
-INTERNAL_ERROR_INVALID_GLOBAL_ID
+INTERNAL_ERROR_INVALID_GLOBAL_ID (13)
     Document me.
 
-INTERNAL_ERROR_BAD_STACK_HOOK
+INTERNAL_ERROR_BAD_STACK_HOOK (14)
     Document me.
 
-INTERNAL_ERROR_BAD_ATTRIBUTES
+INTERNAL_ERROR_UNLIMITED_AND_MAXIMUM_IS_0 (19)
     Document me.
 
-INTERNAL_ERROR_IMPLEMENTATION_KEY_CREATE_INCONSISTENCY
+INTERNAL_ERROR_GXX_KEY_ADD_FAILED (21)
     Document me.
 
-INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_FROM_BAD_STATE
+INTERNAL_ERROR_GXX_MUTEX_INIT_FAILED (22)
     Document me.
 
-INTERNAL_ERROR_UNLIMITED_AND_MAXIMUM_IS_0
+INTERNAL_ERROR_NO_MEMORY_FOR_HEAP (23)
     Document me.
 
-INTERNAL_ERROR_GXX_KEY_ADD_FAILED
+INTERNAL_ERROR_CPU_ISR_INSTALL_VECTOR (24)
     Document me.
 
-INTERNAL_ERROR_GXX_MUTEX_INIT_FAILED
+INTERNAL_ERROR_RESOURCE_IN_USE (25)
     Document me.
 
-INTERNAL_ERROR_NO_MEMORY_FOR_HEAP
+INTERNAL_ERROR_RTEMS_INIT_TASK_ENTRY_IS_NULL (26)
     Document me.
 
-INTERNAL_ERROR_CPU_ISR_INSTALL_VECTOR
+INTERNAL_ERROR_POSIX_INIT_THREAD_ENTRY_IS_NULL (27)
     Document me.
 
-INTERNAL_ERROR_RESOURCE_IN_USE
+INTERNAL_ERROR_THREAD_QUEUE_DEADLOCK (28)
     Document me.
 
-INTERNAL_ERROR_RTEMS_INIT_TASK_ENTRY_IS_NULL
-    Document me.
+INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_STICKY_FROM_BAD_STATE (29)
+    This fatal error can only happen on SMP configurations.  It is not allowed
+    to obtain MrsP semaphores in a context with thread dispatching disabled,
+    for example interrupt context.
 
-INTERNAL_ERROR_POSIX_INIT_THREAD_ENTRY_IS_NULL
-    Document me.
+    An example code to provoke this fatal error is:
 
-INTERNAL_ERROR_THREAD_QUEUE_DEADLOCK
-    Document me.
+    .. code-block:: c
 
-INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_STICKY_FROM_BAD_STATE
-    Document me.
+        void bad( rtems_id timer_id, void *arg )
+        {
+          rtems_id *sem_id;
 
-INTERNAL_ERROR_BAD_THREAD_DISPATCH_DISABLE_LEVEL
-    Document me.
+          sem_id = arg;
 
-INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT
+          rtems_semaphore_obtain( *sem_id, RTEMS_WAIT, RTEMS_NO_TIMEOUT );
+          assert( 0 );
+        }
+
+        void fire_bad_timer( rtems_task_argument arg )
+        {
+          rtems_status_code sc;
+          rtems_id          sem_id;
+          rtems_id          timer_id;
+
+          sc = rtems_semaphore_create(
+            rtems_build_name('M', 'R', 'S', 'P'),
+            1,
+            RTEMS_MULTIPROCESSOR_RESOURCE_SHARING
+              | RTEMS_BINARY_SEMAPHORE,
+            1,
+            &sem_id
+          );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          sc = rtems_timer_create(
+            rtems_build_name( 'E', 'V', 'I', 'L' ),
+            &timer_id
+          );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          sc = rtems_semaphore_obtain( sem_id, RTEMS_WAIT, RTEMS_NO_TIMEOUT );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          sc = rtems_timer_fire_after( timer_id, 1, bad, &sem_id );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          rtems_task_wake_after( 2 );
+          assert( 0 );
+        }
+
+INTERNAL_ERROR_BAD_THREAD_DISPATCH_DISABLE_LEVEL (30)
+    It is illegal to call blocking operating system services with thread
+    dispatching disabled, for example in interrupt context.
+
+    An example code to provoke this fatal error is:
+
+    .. code-block:: c
+
+        void bad( rtems_id id, void *arg )
+        {
+          rtems_task_wake_after( RTEMS_YIELD_PROCESSOR );
+          assert( 0 );
+        }
+
+        void fire_bad_timer()
+        {
+          rtems_status_code sc;
+          rtems_id id;
+
+          sc = rtems_timer_create(
+            rtems_build_name( 'E', 'V', 'I', 'L' ),
+            &id
+          );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          sc = rtems_timer_fire_after( id, 1, bad, NULL );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          rtems_task_wake_after( 2 );
+          assert( 0 );
+        }
+
+INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT (31)
     On SMP configurations, it is a fatal error to call blocking operating
     system with interrupts disabled, since this prevents delivery of
     inter-processor interrupts.  This could lead to executing threads which are
@@ -228,13 +292,13 @@ INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT
 
     .. code-block:: c
 
-        void bad(void)
+        void bad( void )
         {
           rtems_interrupt_level level;
 
-          rtems_interrupt_local_disable(level);
-          rtems_task_suspend(RTEMS_SELF);
-          rtems_interrupt_local_enable(level);
+          rtems_interrupt_local_disable( level );
+          rtems_task_suspend( RTEMS_SELF );
+          rtems_interrupt_local_enable( level  );
         }
 
 Operations
