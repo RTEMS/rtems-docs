@@ -31,6 +31,12 @@ The following macros are provided to create, populate and use linker sets.
 
 - RTEMS_LINKER_SET_SIZE_ - The linker set size in characters
 
+- RTEMS_LINKER_SET_ITEM_COUNT_ - The linker set item count
+
+- RTEMS_LINKER_SET_IS_EMPTY_ - Is the linker set empty?
+
+- RTEMS_LINKER_SET_FOREACH_ - Iterate through the linker set items
+
 - RTEMS_LINKER_ROSET_DECLARE_ - Declares a read-only linker set
 
 - RTEMS_LINKER_ROSET_ - Defines a read-only linker set
@@ -126,7 +132,7 @@ RTEMS_LINKER_SET_BEGIN - Designator of the linker set begin marker
 CALLING SEQUENCE:
     .. code-block:: c
 
-        volatile type *begin = RTEMS_LINKER_SET_BEGIN( set );
+        type *begin = RTEMS_LINKER_SET_BEGIN( set );
 
 DESCRIPTION:
     This macro generates the designator of the begin marker of the linker set
@@ -137,6 +143,14 @@ DESCRIPTION:
 
     The ``set`` parameter itself must be a valid C designator on which no macro
     expansion is performed.  It uniquely identifies the linker set.
+
+NOTE:
+    The compiler may try to be smart.  In general it will not work to assign linker
+    set begin and end addresses to pointer variables and treat them like
+    ordinary pointers.  The compiler may exploit the fact that actually two
+    distinct objects are involved and use this to optimize.  To avoid trouble
+    use :ref:`RTEMS_LINKER_SET_SIZE`, :ref:`RTEMS_LINKER_SET_ITEM_COUNT`,
+    :ref:`RTEMS_LINKER_SET_IS_EMPTY` and :ref:`RTEMS_LINKER_SET_FOREACH`.
 
 .. raw:: latex
 
@@ -151,7 +165,7 @@ RTEMS_LINKER_SET_END - Designator of the linker set end marker
 CALLING SEQUENCE:
     .. code-block:: c
 
-        volatile type *end = RTEMS_LINKER_SET_END( set );
+        type *end = RTEMS_LINKER_SET_END( set );
 
 DESCRIPTION:
     This macro generates the designator of the end marker of the linker set
@@ -180,6 +194,83 @@ DESCRIPTION:
     characters.  The ``set`` parameter itself must be a valid C designator on
     which no macro expansion is performed.  It uniquely identifies the linker
     set.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _RTEMS_LINKER_SET_ITEM_COUNT:
+
+RTEMS_LINKER_SET_ITEM_COUNT - The linker set item count
+---------------------------------------------------------
+.. index:: RTEMS_LINKER_SET_ITEM_COUNT
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        size_t item_count = RTEMS_LINKER_SET_ITEM_COUNT( set );
+
+DESCRIPTION:
+    This macro returns the item count of the linker set identified by ``set``.
+    The ``set`` parameter itself must be a valid C designator on which no macro
+    expansion is performed.  It uniquely identifies the linker set.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _RTEMS_LINKER_SET_IS_EMPTY:
+
+RTEMS_LINKER_SET_IS_EMPTY - Is the linker set empty?
+---------------------------------------------------------
+.. index:: RTEMS_LINKER_SET_IS_EMPTY
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        bool is_empty = RTEMS_LINKER_SET_IS_EMPTY( set );
+
+DESCRIPTION:
+    This macro returns true if the linker set identified by ``set`` is empty,
+    otherwise returns false.  The ``set`` parameter itself must be a valid C
+    designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _RTEMS_LINKER_SET_FOREACH:
+
+RTEMS_LINKER_SET_FOREACH - Iterate through the linker set items
+---------------------------------------------------------
+.. index:: RTEMS_LINKER_SET_FOREACH
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        RTEMS_LINKER_RWSET( myset, int );
+
+        int count( void )
+        {
+          int *item;
+          int n;
+
+          n = 0;
+          RTEMS_LINKER_SET_FOREACH( myset, item ) {
+            n += *item;
+          }
+
+          return n;
+        }
+
+DESCRIPTION:
+    This macro generates a for loop statement which iterates through each item
+    of a linker set identified by ``set``.  The ``set`` parameter itself must
+    be a valid C designator on which no macro expansion is performed.  It
+    uniquely identifies the linker set.  The ``item`` parameter must be a
+    pointer to an item of the linker set.  It iterates through all items of the
+    linker set from begin to end.
 
 .. raw:: latex
 
