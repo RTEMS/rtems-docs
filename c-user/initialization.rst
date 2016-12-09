@@ -10,16 +10,14 @@ Initialization Manager
 Introduction
 ============
 
-The Initialization Manager is responsible for initiating and shutting down
-RTEMS.  Initiating RTEMS involves creating and starting all configured
-initialization tasks, and for invoking the initialization routine for each
-user-supplied device driver.  In a multiprocessor configuration, this manager
-also initializes the interprocessor communications layer.  The directives
-provided by the Initialization Manager are:
+The Initialization Manager is responsible for initializing the Board Support
+Package, RTEMS, device drivers, the root filesystem and the application.  The
+:ref:`Fatal Error Manager <fatal_error_manager>` is responsible for the system
+shutdown.
+
+The Initialization Manager provides only one directive:
 
 - rtems_initialize_executive_ - Initialize RTEMS
-
-- rtems_shutdown_executive_ - Shutdown RTEMS
 
 Background
 ==========
@@ -47,25 +45,11 @@ Initialization tasks may transform themselves into a "normal" application task.
 This transformation typically involves changing priority and execution mode.
 RTEMS does not automatically delete the initialization tasks.
 
-System Initialization
----------------------
-
-System Initialization begins with board reset and continues through RTEMS
-initialization, initialization of all device drivers, and eventually a context
-switch to the first user task.  Remember, that interrupts are disabled during
-initialization and the *initialization context* is not a task in any sense and
-the user should be very careful during initialization.
-
-The BSP must ensure that the there is enough stack space reserved for the
-initialization context to successfully execute the initialization routines for
-all device drivers and, in multiprocessor configurations, the Multiprocessor
-Communications Interface Layer initialization routine.
-
 The Idle Task
 -------------
 
 The Idle Task is the lowest priority task in a system and executes only when no
-other task is ready to execute.  This default implementation of this task
+other task is ready to execute.  The default implementation of this task
 consists of an infinite loop. RTEMS allows the Idle Task body to be replaced by
 a CPU specific implementation, a BSP specific implementation or an application
 specific implementation.
@@ -85,10 +69,10 @@ Operations
 Initializing RTEMS
 ------------------
 
-The Initialization Manager ``rtems_initialize_executive`` directives is called
-by the ``boot_card`` routine.  The ``boot_card`` routine is invoked by the
-Board Support Package once a basic C run-time environment is set up.  This
-consists of
+The Initialization Manager :c:func:`rtems_initialize_executive()` directives is
+called by the :c:ref:`boot_card()` routine which is invoked by the Board
+Support Package once a basic C run-time environment is set up.  This consists
+of
 
 - a valid and accessible text section, read-only data, read-write data and
   zero-initialized data,
@@ -100,25 +84,33 @@ consists of
 
 - disabled interrupts.
 
-The ``rtems_initialize_executive`` directive uses a system initialization
-linker set to initialize only those parts of the overall RTEMS feature set that
-is necessary for a particular application.  See :ref:`Linker Sets`.  Each RTEMS
-feature used the application may optionally register an initialization handler.
-The system initialization API is available via``#included <rtems/sysinit.h>``.
+The :c:func:`rtems_initialize_executive()` directive uses a system
+initialization :ref:`linker set <linker_sets>` to initialize only those parts
+of the overall RTEMS feature set that is necessary for a particular
+application.  Each RTEMS feature used the application may optionally register
+an initialization handler.  The system initialization API is available via
+:samp:`#included <rtems/sysinit.h>`.
 
 A list of all initialization steps follows.  Some steps are optional depending
 on the requested feature set of the application.  The initialization steps are
 execute in the order presented here.
 
-``RTEMS_SYSINIT_BSP_WORK_AREAS``
+RTEMS_SYSINIT_BSP_WORK_AREAS
     The work areas consisting of C Program Heap and the RTEMS Workspace are
     initialized by the Board Support Package.  This step is mandatory.
 
-``RTEMS_SYSINIT_BSP_START``
+RTEMS_SYSINIT_BSP_START
     Basic initialization step provided by the Board Support Package.  This step
     is mandatory.
 
-``RTEMS_SYSINIT_DATA_STRUCTURES``
+RTEMS_SYSINIT_INITIAL_EXTENSIONS
+    Registers the initial extensions.  This step is optional and depends on the
+    application configuration.
+
+RTEMS_SYSINIT_MP_EARLY
+    Early MPCI initialization.  This step is mandatory on MPCI configurations.
+
+RTEMS_SYSINIT_DATA_STRUCTURES
     This directive is called when the Board Support Package has completed its
     basic initialization and allows RTEMS to initialize the application
     environment based upon the information in the Configuration Table, User
@@ -126,50 +118,180 @@ execute in the order presented here.
     Multiprocessor Configuration Table, and the Multiprocessor Communications
     Interface (MPCI) Table.
 
-``RTEMS_SYSINIT_BSP_LIBC``
-    Depending on the application configuration the IO library and root
-    filesystem is initialized.  This step is mandatory.
+RTEMS_SYSINIT_CPU_SET
+    Initialization of system CPU set.  This step is optional and depends on the
+    application configuration.
 
-``RTEMS_SYSINIT_BEFORE_DRIVERS``
-    This directive performs initialization that must occur between basis RTEMS
-    data structure initialization and device driver initialization.  In
-    particular, in a multiprocessor configuration, this directive will create
-    the MPCI Server Task.
+RTEMS_SYSINIT_MP
+    MPCI initialization.  This step is mandatory on MPCI configurations.
 
-``RTEMS_SYSINIT_BSP_PRE_DRIVERS``
-    Initialization step performed right before device drivers are initialized
-    provided by the Board Support Package.  This step is mandatory.
+RTEMS_SYSINIT_USER_EXTENSIONS
+    Initialization of the User Extensions object class.  This step is optional
+    and depends on the application configuration.
 
-``RTEMS_SYSINIT_DEVICE_DRIVERS``
+RTEMS_SYSINIT_CLASSIC_TASKS
+    Initialization of the Classic Tasks object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_TIMER
+    Initialization of the Classic Timer object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_SIGNAL
+    Initialization of the Classic Signal support.  This step is optional and
+    depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_EVENT
+    Initialization of the Classic Event support.  This step is optional and
+    depends on the application configuration.  This step is only used on MPCI
+    configurations.
+
+RTEMS_SYSINIT_CLASSIC_MESSAGE_QUEUE
+    Initialization of the Classic Message Queue object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_SEMAPHORE
+    Initialization of the Classic Semaphore object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_PARTITION
+    Initialization of the Classic Partition object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_REGION
+    Initialization of the Classic Region object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_DUAL_PORTED_MEMORY
+    Initialization of the Classic Dual-Ported Memory object class.  This step
+    is optional and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_RATE_MONOTONIC
+    Initialization of the Classic Rate-Monotonic object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_BARRIER
+    Initialization of the Classic Barrier object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_SIGNALS
+    Initialization of the POSIX Signals support.  This step is optional and
+    depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_THREADS
+    Initialization of the POSIX Threads object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_CONDITION_VARIABLE
+    Initialization of the POSIX Condition Variable object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_MUTEX
+    Initialization of the POSIX Mutex object class.  This step is optional and
+    depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_MESSAGE_QUEUE
+    Initialization of the POSIX Message Queue object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_SEMAPHORE
+    Initialization of the POSIX Semaphore object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_TIMER
+    Initialization of the POSIX Timer object class.  This step is optional and
+    depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_BARRIER
+    Initialization of the POSIX Barrier object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_RWLOCK
+    Initialization of the POSIX Read-Write Locks object class.  This step is
+    optional and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_CLEANUP
+    Initialization of the POSIX Cleanup support.  This step is optional and
+    depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_KEYS
+    Initialization of the POSIX Keys object class.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_IDLE_THREADS
+    Initialization of idle threads.  This step is mandatory.
+
+RTEMS_SYSINIT_LIBIO
+    Initialization of IO library.  This step is optional and depends on the
+    application configuration.
+
+RTEMS_SYSINIT_ROOT_FILESYSTEM
+    Initialization of the root filesystem.  This step is optional and depends
+    on the application configuration.
+
+RTEMS_SYSINIT_DRVMGR
+    Driver manager initialization.  This step is optional and depends on the
+    application configuration.  Only available if the driver manager is
+    enabled.
+
+RTEMS_SYSINIT_MP_SERVER
+    MPCI server initialization.  This step is mandatory on MPCI configurations.
+
+RTEMS_SYSINIT_BSP_PRE_DRIVERS
+    Initialization step performed right before device drivers are initialized.
+    This step is mandatory.
+
+RTEMS_SYSINIT_DRVMGR_LEVEL_1
+    Driver manager level 1 initialization.  This step is optional and depends
+    on the application configuration.  Only available if the driver manager is
+    enabled.
+
+RTEMS_SYSINIT_DEVICE_DRIVERS
     This step initializes all statically configured device drivers and performs
     all RTEMS initialization which requires device drivers to be initialized.
     This step is mandatory.  In a multiprocessor configuration, this service
     will initialize the Multiprocessor Communications Interface (MPCI) and
     synchronize with the other nodes in the system.
 
-``RTEMS_SYSINIT_BSP_POST_DRIVERS``
-    Initialization step performed right after device drivers are initialized
-    provided by the Board Support Package.  This step is mandatory.
+RTEMS_SYSINIT_DRVMGR_LEVEL_2
+    Driver manager level 2 initialization.  This step is optional and depends
+    on the application configuration.  Only available if the driver manager is
+    enabled.
 
-The final action of the ``rtems_initialize_executive`` directive is to start
-multitasking.  RTEMS does not return to the initialization context and the
-initialization stack may be re-used for interrupt processing.
+RTEMS_SYSINIT_DRVMGR_LEVEL_3
+    Driver manager level 3 initialization.  This step is optional and depends
+    on the application configuration.  Only available if the driver manager is
+    enabled.
+
+RTEMS_SYSINIT_DRVMGR_LEVEL_4
+    Driver manager level 4 initialization.  This step is optional and depends
+    on the application configuration.  Only available if the driver manager is
+    enabled.
+
+RTEMS_SYSINIT_MP_FINALIZE
+    Finalize MPCI initialization.  This step is mandatory on MPCI
+    configurations.
+
+RTEMS_SYSINIT_CLASSIC_USER_TASKS
+    Creates and starts the Classic initialization tasks.  This step is optional
+    and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_USER_THREADS
+    Creates POSIX initialization threads.  This step is optional and depends on
+    the application configuration.
+
+RTEMS_SYSINIT_STD_FILE_DESCRIPTORS
+    Open the standard input, output and error file descriptors.  This step is
+    optional and depends on the application configuration.
+
+The final action of the :c:func:`rtems_initialize_executive()` directive is to
+start multitasking and switch to the highest priority ready thread.  RTEMS does
+not return to the initialization context and the initialization stack may be
+re-used for interrupt processing.
 
 Many of RTEMS actions during initialization are based upon the contents of the
 Configuration Table.  For more information regarding the format and contents of
 this table, please refer to the chapter :ref:`Configuring a System`.
-
-The final action in the initialization sequence is the initiation of
-multitasking.  When the scheduler and dispatcher are enabled, the highest
-priority, ready task will be dispatched to run.  Control will not be returned
-to the Board Support Package after multitasking is enabled.  The initialization
-stack may be re-used for interrupt processing.
-
-Shutting Down RTEMS
--------------------
-
-The ``rtems_shutdown_executive`` directive is invoked by the application to end
-multitasking and terminate the system.
 
 Directives
 ==========
@@ -196,46 +318,14 @@ CALLING SEQUENCE:
         void rtems_initialize_executive(void);
 
 DIRECTIVE STATUS CODES:
-    NONE
+    NONE - This function will not return to the caller.
 
 DESCRIPTION:
     Iterates through the system initialization linker set and invokes the
     registered handlers.  The final step is to start multitasking.
 
 NOTES:
-    This directive should be called by ``boot_card`` only.
+    This directive should be called by :c:func:`boot_card()` only.
 
     This directive *does not return* to the caller.  Errors in the
     initialization sequence are usually fatal and lead to a system termination.
-
-.. raw:: latex
-
-   \clearpage
-
-.. _rtems_shutdown_executive:
-
-SHUTDOWN_EXECUTIVE - Shutdown RTEMS
------------------------------------
-.. index:: shutdown RTEMS
-
-.. index:: rtems_shutdown_executive
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        void rtems_shutdown_executive(
-            uint32_t result
-        );
-
-DIRECTIVE STATUS CODES:
-    NONE
-
-DESCRIPTION:
-    This directive is called when the application wishes to shutdown RTEMS.
-    The system is terminated with a fatal source of ``RTEMS_FATAL_SOURCE_EXIT``
-    and the specified ``result`` code.
-
-NOTES:
-    This directive *must* be the last RTEMS directive invoked by an application
-    and it *does not return* to the caller.
-
-    This directive may be called any time.

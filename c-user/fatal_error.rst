@@ -4,6 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. _fatal_error_manager:
+
 Fatal Error Manager
 *******************
 
@@ -18,6 +20,8 @@ errors are identified by the (fatal source, error code) pair.  The directives
 provided by the fatal error manager are:
 
 - rtems_fatal_ - Invoke the fatal error handler
+
+- rtems_shutdown_executive_ - Shutdown RTEMS
 
 - rtems_exception_frame_print_ - Print the CPU exception frame
 
@@ -463,6 +467,38 @@ DESCRIPTION:
 NOTE:
     Registered :c:func:`atexit()` or :c:func:`on_exit()` handlers are not
     called.  Use :c:func:`exit()` in case these handlers should be invoked.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_shutdown_executive:
+
+SHUTDOWN_EXECUTIVE - Shutdown RTEMS
+-----------------------------------
+.. index:: shutdown RTEMS
+
+.. index:: rtems_shutdown_executive
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        void rtems_shutdown_executive(
+            uint32_t result
+        );
+
+DIRECTIVE STATUS CODES:
+    NONE - This function will not return to the caller.
+
+DESCRIPTION:
+    This directive is called when the application wishes to shutdown RTEMS.
+    The system is terminated with a fatal source of ``RTEMS_FATAL_SOURCE_EXIT``
+    and the specified ``result`` code.
+
+NOTES:
+    This directive *must* be the last RTEMS directive invoked by an application
+    and it *does not return* to the caller.
+
+    This directive may be called any time.
 
 .. raw:: latex
 

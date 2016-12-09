@@ -4,7 +4,7 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-.. _Linker Sets:
+.. _linker_sets:
 
 Linker Sets
 ***********
