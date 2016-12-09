@@ -77,36 +77,7 @@ of any application.
 Initialization Manager Failure
 ------------------------------
 
-The ``rtems_fatal_error_occurred`` directive will be invoked from
-``rtems_initialize_executive`` for any of the following reasons:
-
-- If either the Configuration Table or the CPU Dependent Information Table is
-  not provided.
-
-- If the starting address of the RTEMS RAM Workspace, supplied by the
-  application in the Configuration Table, is NULL or is not aligned on a
-  four-byte boundary.
-
-- If the size of the RTEMS RAM Workspace is not large enough to initialize and
-  configure the system.
-
-- If the interrupt stack size specified is too small.
-
-- If multiprocessing is configured and the node entry in the Multiprocessor
-  Configuration Table is not between one and the maximum_nodes entry.
-
-- If a multiprocessor system is being configured and no Multiprocessor
-  Communications Interface is specified.
-
-- If no user initialization tasks are configured.  At least one initialization
-  task must be configured to allow RTEMS to pass control to the application at
-  the end of the executive initialization sequence.
-
-- If any of the user initialization tasks cannot be created or started
-  successfully.
-
-A discussion of RTEMS actions when a fatal error occurs may be found
-:ref:`Announcing a Fatal Error`.
+System initialization errors are fatal.  See :ref:`internal_errors`.
 
 Operations
 ==========

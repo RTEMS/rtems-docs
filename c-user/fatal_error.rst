@@ -128,70 +128,120 @@ fatal source.  Each symbolic name has the corresponding numeric error code in
 parenthesis.
 
 INTERNAL_ERROR_TOO_LITTLE_WORKSPACE (2)
-    Document me.
+    There is not enough memory for the workspace.  This fatal error may occur
+    during system initialization.  It is an application configuration error.
 
 INTERNAL_ERROR_WORKSPACE_ALLOCATION (3)
-    Document me.
+    An allocation from the workspace failed.  This fatal error may occur during
+    system initialization.  It is an application configuration error.
 
 INTERNAL_ERROR_INTERRUPT_STACK_TOO_SMALL (4)
-    Document me.
+    The configured interrupt stack size is too small.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
 
 INTERNAL_ERROR_THREAD_EXITTED (5)
-    Document me.
+    A non-POSIX thread entry function returned.  This is an API usage error.
+
+    An example code to provoke this fatal error is:
+
+    .. code-block:: c
+
+        void task( rtems_arg arg )
+        {
+          /* Classic API tasks must not return */
+        }
+
+        void create_bad_task( void )
+        {
+          rtems_status_code sc;
+          rtems_id          task_id;
+
+          sc = rtems_task_create(
+            rtems_build_name('T', 'A', 'S', 'K'),
+            1,
+            RTEMS_DEFAULT_MODES,
+            RTEMS_DEFAULT_ATTRIBUTES,
+            &task_id
+          );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          sc = rtems_task_start( task_id, task, 0 );
+          assert( sc == RTEMS_SUCCESSFUL );
+        }
 
 INTERNAL_ERROR_INCONSISTENT_MP_INFORMATION (6)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The MPCI nodes or
+    global objects configuration is inconsistent.  This fatal error may occur
+    during system initialization.  It is an application configuration error.
 
 INTERNAL_ERROR_INVALID_NODE (7)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The own MPCI node
+    number is invalid.  This fatal error may occur during system
+    initialization.  It is an application configuration error.
 
 INTERNAL_ERROR_NO_MPCI (8)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  There is no MPCI
+    configuration table.  This fatal error may occur during system
+    initialization.  It is an application configuration error.
 
 INTERNAL_ERROR_BAD_PACKET (9)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The MPCI server
+    thread received a bad packet.
 
 INTERNAL_ERROR_OUT_OF_PACKETS (10)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The MPCI packet
+    pool is empty.  It is an application configuration error.
 
 INTERNAL_ERROR_OUT_OF_GLOBAL_OBJECTS (11)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The MPCI global
+    objects pool is empty.  It is an application configuration error.
 
 INTERNAL_ERROR_OUT_OF_PROXIES (12)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The MPCI thread
+    proxy pool is empty.  It is an application configuration error.
 
 INTERNAL_ERROR_INVALID_GLOBAL_ID (13)
-    Document me.
+    This fatal error can only occur on MPCI configurations.  The system cannot
+    find the global object for a specific object identifier.  In case this
+    happens, then this is probably an operating system bug.
 
 INTERNAL_ERROR_BAD_STACK_HOOK (14)
-    Document me.
+    The stack allocator hook or stack free hook is NULL.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
 
 INTERNAL_ERROR_UNLIMITED_AND_MAXIMUM_IS_0 (19)
-    Document me.
-
-INTERNAL_ERROR_GXX_KEY_ADD_FAILED (21)
-    Document me.
-
-INTERNAL_ERROR_GXX_MUTEX_INIT_FAILED (22)
-    Document me.
+    An object class is configured to use the unlimited objects option, however,
+    the count of objects for each extension is zero.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
 
 INTERNAL_ERROR_NO_MEMORY_FOR_HEAP (23)
-    Document me.
+    There is not enough memory for the C program heap.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
 
 INTERNAL_ERROR_CPU_ISR_INSTALL_VECTOR (24)
-    Document me.
+    The use of :c:func:`_CPU_ISR_install_vector()` is illegal on this system.
 
 INTERNAL_ERROR_RESOURCE_IN_USE (25)
-    Document me.
+    This fatal error can only occur on debug configurations.  It happens in
+    case a thread which owns mutexes is deleted.  Mutexes owned by a deleted
+    thread are in an inconsistent state.
 
 INTERNAL_ERROR_RTEMS_INIT_TASK_ENTRY_IS_NULL (26)
-    Document me.
+    An RTEMS initialization task entry function is NULL.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
 
 INTERNAL_ERROR_POSIX_INIT_THREAD_ENTRY_IS_NULL (27)
-    Document me.
+    A POSIX initialization thread entry function is NULL.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
 
 INTERNAL_ERROR_THREAD_QUEUE_DEADLOCK (28)
-    Document me.
+    A deadlock was detected during a thread queue enqueue operation.
 
 INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_STICKY_FROM_BAD_STATE (29)
     This fatal error can only happen on SMP configurations.  It is not allowed
@@ -258,10 +308,10 @@ INTERNAL_ERROR_BAD_THREAD_DISPATCH_DISABLE_LEVEL (30)
           assert( 0 );
         }
 
-        void fire_bad_timer()
+        void fire_bad_timer( void )
         {
           rtems_status_code sc;
-          rtems_id id;
+          rtems_id          id;
 
           sc = rtems_timer_create(
             rtems_build_name( 'E', 'V', 'I', 'L' ),
@@ -301,6 +351,35 @@ INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT (31)
           rtems_interrupt_local_enable( level  );
         }
 
+INTERNAL_ERROR_RTEMS_INIT_TASK_CREATE_FAILED (32)
+    Creation of an RTEMS initialization task failed.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
+
+INTERNAL_ERROR_POSIX_INIT_THREAD_CREATE_FAILED (33)
+    Creation of a POSIX initialization thread failed.  This fatal error may
+    occur during system initialization.  It is an application configuration
+    error.
+
+INTERNAL_ERROR_LIBIO_USER_ENV_KEY_CREATE_FAILED (34)
+    Creation of the IO library user environment POSIX key failed.  This fatal
+    error may occur during system initialization.  It is an application
+    configuration error.
+
+INTERNAL_ERROR_LIBIO_SEM_CREATE_FAILED (35)
+    Creation of the IO library semaphore failed.  This fatal error may occur
+    during system initialization.  It is an application configuration error.
+
+INTERNAL_ERROR_LIBIO_STDOUT_FD_OPEN_FAILED (36)
+    Open of the standard output file descriptor failed or resulted in an
+    unexpected file descriptor number.  This fatal error may occur during
+    system initialization.  It is an application configuration error.
+
+INTERNAL_ERROR_LIBIO_STDERR_FD_OPEN_FAILED (37)
+    Open of the standard error file descriptor failed or resulted in an
+    unexpected file descriptor number.  This fatal error may occur during
+    system initialization.  It is an application configuration error.
+
 Operations
 ==========
 
@@ -338,7 +417,7 @@ The fatal handler are called with three parameters:
 
 - the fatal source,
 
-- a legacy parameter, the internal error indicator, and
+- a legacy parameter which is always false, and
 
 - an error code with a fatal source dependent content.
 
@@ -371,16 +450,19 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_fatal(
-           rtems_fatal_source source,
-           rtems_fatal_code   error
+           rtems_fatal_source fatal_source,
+           rtems_fatal_code   error_code
         ) RTEMS_NO_RETURN;
 
 DIRECTIVE STATUS CODES:
     NONE - This function will not return to the caller.
 
 DESCRIPTION:
-    This directive invokes the internal error handler with is internal set to
-    false.
+    This directive terminates the system.
+
+NOTE:
+    Registered :c:func:`atexit()` or :c:func:`on_exit()` handlers are not
+    called.  Use :c:func:`exit()` in case these handlers should be invoked.
 
 .. raw:: latex
 

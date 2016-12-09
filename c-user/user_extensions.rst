@@ -343,7 +343,7 @@ following:
 
     void user_fatal_error(
         Internal_errors_Source  the_source,
-        bool                    is_internal,
+        bool                    always_set_to_false,
         uint32_t                the_error
     );
 
