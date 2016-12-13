@@ -37,21 +37,11 @@ and administer tasks.  The directives provided by the task manager are:
 
 - rtems_task_mode_ - Change current task's mode
 
-- rtems_task_get_note_ - Get task notepad entry
-
-- rtems_task_set_note_ - Set task notepad entry
-
 - rtems_task_wake_after_ - Wake up after interval
 
 - rtems_task_wake_when_ - Wake up when specified
 
-- rtems_iterate_over_all_threads_ - Iterate Over Tasks
-
-- rtems_task_variable_add_ - Associate per task variable
-
-- rtems_task_variable_get_ - Obtain value of a a per task variable
-
-- rtems_task_variable_delete_ - Remove per task variable
+- rtems_task_iterate_ - Iterate Over Tasks
 
 Background
 ==========
@@ -299,53 +289,6 @@ consequence of a ``RTEMS_NO_FLOATING_POINT`` task attempting to access the
 floating point unit is CPU dependent but will generally result in an exception
 condition.
 
-Per Task Variables
-------------------
-.. index:: per task variables
-
-Per task variables are deprecated, see the warning below.
-
-Per task variables are used to support global variables whose value may be
-unique to a task. After indicating that a variable should be treated as private
-(i.e. per-task) the task can access and modify the variable, but the
-modifications will not appear to other tasks, and other tasks' modifications to
-that variable will not affect the value seen by the task.  This is accomplished
-by saving and restoring the variable's value each time a task switch occurs to
-or from the calling task.
-
-The value seen by other tasks, including those which have not added the
-variable to their set and are thus accessing the variable as a common location
-shared among tasks, cannot be affected by a task once it has added a variable
-to its local set.  Changes made to the variable by other tasks will not affect
-the value seen by a task which has added the variable to its private set.
-
-This feature can be used when a routine is to be spawned repeatedly as several
-independent tasks.  Although each task will have its own stack, and thus
-separate stack variables, they will all share the same static and global
-variables.  To make a variable not shareable (i.e. a "global" variable that is
-specific to a single task), the tasks can call ``rtems_task_variable_add`` to
-make a separate copy of the variable for each task, but all at the same
-physical address.
-
-Task variables increase the context switch time to and from the tasks that own
-them so it is desirable to minimize the number of task variables.  One
-efficient method is to have a single task variable that is a pointer to a
-dynamically allocated structure containing the task's private "global" data.
-
-A critical point with per-task variables is that each task must separately
-request that the same global variable is per-task private.
-
-.. warning:
-
-  Per-Task variables are inherently broken on SMP systems. They only work
-  correctly when there is one task executing in the system and that task is the
-  logical owner of the value in the per-task variable's location. There is no
-  way for a single memory image to contain the correct value for each task
-  executing on each core. Consequently, per-task variables are disabled in SMP
-  configurations of RTEMS.  Instead the application developer should consider
-  the use of POSIX Keys or Thread Local Storage (TLS). POSIX Keys are not
-  enabled in all RTEMS configurations.
-
 Building a Task Attribute Set
 -----------------------------
 .. index:: task attributes, building
@@ -530,18 +473,6 @@ preemption, timeslicing, ASR processing, and to set the task's interrupt level.
 The ``rtems_task_restart`` directive resets the mode of a task to its original
 value.
 
-Notepad Locations
------------------
-
-RTEMS provides sixteen notepad locations for each task.  Each notepad
-location may contain a note consisting of four bytes of information.
-RTEMS provides two directives, ``rtems_task_set_note`` and
-``rtems_task_get_note``, that enable a user to access and change
-the notepad locations.  The ``rtems_task_set_note`` directive
-enables the user to set a task's notepad entry to a specified note.
-The ``rtems_task_get_note`` directive allows the user to obtain the note
-contained in any one of the sixteen notepads of a specified task.
-
 Task Deletion
 -------------
 
@@ -564,24 +495,36 @@ delete itself by sending a "delete self" message, event, or signal, or by
 restarting the task with special arguments which instruct the task to delete
 itself.
 
-Transition Advice for Obsolete Directives
------------------------------------------
+Transition Advice for Obsolete Notepads
+---------------------------------------
 
-Notepads
-~~~~~~~~
 .. index:: rtems_task_get_note
 .. index:: rtems_task_set_note
 
-Task notepads and the associated directives ``rtems_task_get_note`` and
-``rtems_task_set_note`` were removed after the 4.11 Release Series. These were
-never thread-safe to access and subject to conflicting use of the notepad index
-by libraries which were designed independently.
+Task notepads and the associated directives :ref:`rtems_task_get_note` and
+:ref:`rtems_task_set_note` were removed in RTEMS 4.12. These were never
+thread-safe to access and subject to conflicting use of the notepad index by
+libraries which were designed independently.
 
 It is recommended that applications be modified to use services which are
 thread safe and not subject to issues with multiple applications conflicting
 over the key (e.g. notepad index) selection. For most applications, POSIX Keys
 should be used. These are available in all RTEMS build configurations. It is
-also possible that Thread Local Storage is an option for some use cases.
+also possible that thread-local storage (TLS) is an option for some use cases.
+
+Transition Advice for Obsolete Task Variables
+---------------------------------------------
+
+.. index:: rtems_task_variable_add
+.. index:: rtems_task_variable_get
+.. index:: rtems_task_variable_delete
+
+Task notepads and the associated directives :ref:`rtems_task_variable_add`,
+:ref:`rtems_task_variable_get` and :ref:`rtems_task_variable_delete` were
+removed in RTEMS 4.12.  Task variables must be replaced by POSIX Keys or
+thread-local storage (TLS).  POSIX Keys are available in all configurations and
+support value destructors.  For the TLS support consult the :title:`RTEMS CPU
+Architecture Supplement`.
 
 Directives
 ==========
@@ -1260,103 +1203,6 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_get_note:
-
-TASK_GET_NOTE - Get task notepad entry
---------------------------------------
-.. index:: get task notepad entry
-.. index:: rtems_task_get_note
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        rtems_status_code rtems_task_get_note(
-          rtems_id  id,
-          uint32_t  notepad,
-          uint32_t *note
-        );
-
-DIRECTIVE STATUS CODES:
-    .. list-table::
-      :class: rtems-table
-
-      * - ``RTEMS_SUCCESSFUL``
-        - note value obtained successfully
-      * - ``RTEMS_INVALID_ADDRESS``
-        - ``note`` parameter is NULL
-      * - ``RTEMS_INVALID_ID``
-        - invalid task id
-      * - ``RTEMS_INVALID_NUMBER``
-        - invalid notepad location
-
-DESCRIPTION:
-    This directive returns the note contained in the notepad location of the
-    task specified by id.
-
-NOTES:
-    This directive will not cause the running task to be preempted.
-
-    If id is set to ``RTEMS_SELF``, the calling task accesses its own notepad.
-
-    The sixteen notepad locations can be accessed using the constants
-    ``RTEMS_NOTEPAD_0`` through ``RTEMS_NOTEPAD_15``.
-
-    Getting a note of a global task which does not reside on the local node
-    will generate a request to the remote node to obtain the notepad entry of
-    the specified task.
-
-.. raw:: latex
-
-   \clearpage
-
-.. _rtems_task_set_note:
-
-TASK_SET_NOTE - Set task notepad entry
---------------------------------------
-.. index:: set task notepad entry
-.. index:: rtems_task_set_note
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        rtems_status_code rtems_task_set_note(
-          rtems_id  id,
-          uint32_t  notepad,
-          uint32_t  note
-        );
-
-DIRECTIVE STATUS CODES:
-    .. list-table::
-      :class: rtems-table
-
-      * - ``RTEMS_SUCCESSFUL``
-        - note set successfully
-      * - ``RTEMS_INVALID_ID``
-        - invalid task id
-      * - ``RTEMS_INVALID_NUMBER``
-        - invalid notepad location
-
-DESCRIPTION:
-    This directive sets the notepad entry for the task specified by id to the
-    value note.
-
-NOTES:
-    If ``id`` is set to ``RTEMS_SELF``, the calling task accesses its own
-    notepad.
-
-    This directive will not cause the running task to be preempted.
-
-    The sixteen notepad locations can be accessed using the constants
-    ``RTEMS_NOTEPAD_0`` through ``RTEMS_NOTEPAD_15``.
-
-    Setting a note of a global task which does not reside on the local node
-    will generate a request to the remote node to set the notepad entry of the
-    specified task.
-
-.. raw:: latex
-
-   \clearpage
-
 .. _rtems_task_wake_after:
 
 TASK_WAKE_AFTER - Wake up after interval
@@ -1443,12 +1289,58 @@ NOTES:
 
    \clearpage
 
+.. _rtems_task_iterate:
+
+TASK_ITERATE - Iterate Over Tasks
+---------------------------------
+.. index:: iterate over all threads
+.. index:: rtems_task_iterate
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        typedef bool ( *rtems_task_visitor )( rtems_tcb *tcb, void *arg );
+
+        void rtems_task_iterate(
+            rtems_task_visitor  visitor,
+            void               *arg
+        );
+
+DIRECTIVE STATUS CODES:
+    NONE
+
+DESCRIPTION:
+    Iterates over all tasks in the system.  This operation covers all tasks of
+    all APIs.  The user should be careful in accessing the contents of the
+    thread control block :c:data:`tcb`.  The visitor argument :c:data:`arg` is
+    passed to all invocations of :c:data:`visitor` in addition to the thread
+    control block.  The iteration stops immediately in case the visitor
+    function returns true.
+
+NOTES:
+    Must be called from task context.  This operation obtains and releases the
+    objects allocator lock.  The task visitor is called while owning the objects
+    allocator lock.  It is possible to perform blocking operations in the task
+    visitor, however, take care that no deadlocks via the object allocator lock
+    can occur.
+
+Deprecated and Removed Directives
+=================================
+
+.. raw:: latex
+
+   \clearpage
+
 .. _rtems_iterate_over_all_threads:
 
 ITERATE_OVER_ALL_THREADS - Iterate Over Tasks
 ---------------------------------------------
-.. index:: iterate over all threads
 .. index:: rtems_iterate_over_all_threads
+
+.. warning::
+
+    This directive is deprecated.  Its use is unsafe.  Use
+    :ref:`rtems_task_iterate` instead.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1470,10 +1362,114 @@ DESCRIPTION:
     intented for routine use in an operational system.
 
 NOTES:
-    There is NO protection while this routine is called.  Thus it is possible
-    that ``the_thread`` could be deleted while this is operating.  By not
-    having protection, the user is free to invoke support routines from the C
-    Library which require semaphores for data structures.
+    There is **no protection** while this routine is called.  The thread
+    control block may be in an inconsistent state or may change due to
+    interrupts or activity on other processors.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_get_note:
+
+TASK_GET_NOTE - Get task notepad entry
+--------------------------------------
+.. index:: get task notepad entry
+.. index:: rtems_task_get_note
+
+.. warning::
+
+    This directive was removed in RTEMS 4.12.
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_get_note(
+          rtems_id  id,
+          uint32_t  notepad,
+          uint32_t *note
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+      :class: rtems-table
+
+      * - ``RTEMS_SUCCESSFUL``
+        - note value obtained successfully
+      * - ``RTEMS_INVALID_ADDRESS``
+        - ``note`` parameter is NULL
+      * - ``RTEMS_INVALID_ID``
+        - invalid task id
+      * - ``RTEMS_INVALID_NUMBER``
+        - invalid notepad location
+
+DESCRIPTION:
+    This directive returns the note contained in the notepad location of the
+    task specified by id.
+
+NOTES:
+    This directive will not cause the running task to be preempted.
+
+    If id is set to ``RTEMS_SELF``, the calling task accesses its own notepad.
+
+    The sixteen notepad locations can be accessed using the constants
+    ``RTEMS_NOTEPAD_0`` through ``RTEMS_NOTEPAD_15``.
+
+    Getting a note of a global task which does not reside on the local node
+    will generate a request to the remote node to obtain the notepad entry of
+    the specified task.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_set_note:
+
+TASK_SET_NOTE - Set task notepad entry
+--------------------------------------
+.. index:: set task notepad entry
+.. index:: rtems_task_set_note
+
+.. warning::
+
+    This directive was removed in RTEMS 4.12.
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_set_note(
+          rtems_id  id,
+          uint32_t  notepad,
+          uint32_t  note
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+      :class: rtems-table
+
+      * - ``RTEMS_SUCCESSFUL``
+        - note set successfully
+      * - ``RTEMS_INVALID_ID``
+        - invalid task id
+      * - ``RTEMS_INVALID_NUMBER``
+        - invalid notepad location
+
+DESCRIPTION:
+    This directive sets the notepad entry for the task specified by id to the
+    value note.
+
+NOTES:
+    If ``id`` is set to ``RTEMS_SELF``, the calling task accesses its own
+    notepad.
+
+    This directive will not cause the running task to be preempted.
+
+    The sixteen notepad locations can be accessed using the constants
+    ``RTEMS_NOTEPAD_0`` through ``RTEMS_NOTEPAD_15``.
+
+    Setting a note of a global task which does not reside on the local node
+    will generate a request to the remote node to set the notepad entry of the
+    specified task.
 
 .. raw:: latex
 
@@ -1490,7 +1486,7 @@ TASK_VARIABLE_ADD - Associate per task variable
 
 .. warning::
 
-  This directive is deprecated and task variables will be removed.
+    This directive was removed in RTEMS 4.12.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1552,7 +1548,7 @@ TASK_VARIABLE_GET - Obtain value of a per task variable
 
 .. warning::
 
-  This directive is deprecated and task variables will be removed.
+    This directive was removed in RTEMS 4.12.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1610,7 +1606,7 @@ TASK_VARIABLE_DELETE - Remove per task variable
 
 .. warning::
 
-  This directive is deprecated and task variables will be removed.
+    This directive was removed in RTEMS 4.12.
 
 CALLING SEQUENCE:
     .. code-block:: c
