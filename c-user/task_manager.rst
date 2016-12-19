@@ -35,6 +35,8 @@ and administer tasks.  The directives provided by the task manager are:
 
 - rtems_task_set_priority_ - Set task priority
 
+- rtems_task_get_priority_ - Get task priority
+
 - rtems_task_mode_ - Change current task's mode
 
 - rtems_task_wake_after_ - Wake up after interval
@@ -1119,6 +1121,55 @@ NOTES:
     the task's priority will occur when the task has released all priority
     inheritance binary semaphores.  The task's priority can be increased
     regardless of the task's use of priority inheritance binary semaphores.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_get_priority:
+
+TASK_SET_PRIORITY - Get task priority
+-------------------------------------
+.. index:: rtems_task_get_priority
+.. index:: current task priority
+.. index:: get task priority
+.. index:: obtain task priority
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_get_priority(
+            rtems_id             task_id,
+            rtems_id             scheduler_id,
+            rtems_task_priority *priority
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+      :class: rtems-table
+
+      * - ``RTEMS_SUCCESSFUL``
+        - Successful operation.
+      * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+        - Directive is illegal on remote tasks.
+      * - ``RTEMS_INVALID_ADDRESS``
+        - The priority parameter is NULL.
+      * - ``RTEMS_INVALID_ID``
+        - Invalid task or scheduler identifier.
+      * - ``RTEMS_NOT_DEFINED``
+        - The task has no priority within the specified scheduler instance.
+          This error is only possible in SMP configurations.
+
+DESCRIPTION:
+    This directive returns the current priority of the task specified by
+    :c:data:`task_id` with respect to the scheduler instance specified by
+    :c:data:`scheduler_id`.  A task id of :c:macro:`RTEMS_SELF` is used to
+    indicate the calling task.
+
+NOTES:
+    The current priority reflects temporary priority adjustments due to locking
+    protocols, the rate-monotonic period objects on some schedulers and other
+    mechanisms.
 
 .. raw:: latex
 
