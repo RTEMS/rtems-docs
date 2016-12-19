@@ -113,7 +113,8 @@ alphabetical order:
 
 ``rtems_interrupt_frame``
   The data structure that defines the format of the interrupt stack frame as it
-  appears to a user ISR.  This data structure may not be defined on all ports.
+  appears to a user ISR.  This data structure is only defined on architectures
+  that pass the frame pointer to the ISR handler.
 
 .. index:: rtems_interrupt_level
 
