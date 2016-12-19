@@ -14,6 +14,8 @@ The RTEMS shell has the following RTEMS specific commands:
 
 - shutdown_ - Shutdown the system
 
+- cpuinfo_ - print per-processor information
+
 - cpuuse_ - print or reset per thread cpu usage
 
 - stackuse_ - print per thread stack usage
@@ -108,6 +110,74 @@ PROGRAMMING INFORMATION:
     .. code-block:: c
 
         extern rtems_shell_cmd_t rtems_shell_SHUTDOWN_Command;
+
+.. raw:: latex
+
+   \clearpage
+
+.. _cpuinfo:
+
+cpuinfo - print per-processor information
+--------------------------------------------
+.. index:: cpuinfo
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        cpuinfo
+
+DESCRIPTION:
+    This command may be used to print per-processor information.
+
+EXIT STATUS:
+    This command returns 0 on success and non-zero if an error is encountered.
+
+EXAMPLES:
+    The following is an example of how to use ``cpuinfo``:
+
+    .. code-block:: shell
+
+        SHLL [/] $ cpuinfo
+        -------------------------------------------------------------------------------
+                                    PER PROCESSOR INFORMATION
+        -------+--------+--------------+-----------------------------------------------
+         INDEX | ONLINE | SCHEDULER ID | SCHEDULER NAME
+        -------+--------+--------------+-----------------------------------------------
+             0 |      1 |   0x0f010001 | UPD
+
+    In the above example, the system has only one processor.  This processor
+    has the index zero and is online.  It is owned by the scheduler with the
+    identifier ``0x0f010001`` and name ``UPD``.
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_CPUINFO
+.. index:: CONFIGURE_SHELL_COMMAND_CPUINFO
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_CPUINFO`` to have this
+    command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_CPUINFO`` when all shell commands have been
+    configured.
+
+.. index:: rtems_shell_rtems_main_cpuinfo
+
+PROGRAMMING INFORMATION:
+    The ``cpuinfo`` is implemented by a C language function which has the following
+    prototype:
+
+    .. code-block:: c
+
+        int rtems_cpu_info_report(
+            const rtems_printer *printer
+        );
+
+    The configuration structure for the ``cpuinfo`` has the following prototype:
+
+    .. code-block:: c
+
+        extern rtems_shell_cmd_t rtems_shell_CPUINFO_Command;
 
 .. raw:: latex
 
