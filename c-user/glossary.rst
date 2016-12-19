@@ -201,11 +201,6 @@ Glossary
 :dfn:`freed`
     A resource that has been released by the application to RTEMS.
 
-:dfn:`Giant lock`
-    The :dfn:`Giant lock` is a recursive SMP lock protecting most parts of the
-    operating system state.  Virtually every operating system service must
-    acquire and release the Giant lock during its operation.
-
 :dfn:`global`
     An object that has been created with the GLOBAL attribute and exported to
     all nodes in a multiprocessor system.
