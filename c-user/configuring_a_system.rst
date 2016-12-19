@@ -1352,38 +1352,6 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode.
 
-.. COMMENT: XXX - memory for buffers note
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS ===
-
-.. _Specify Maximum POSIX API Message Queue Descriptors:
-
-Specify Maximum POSIX API Message Queue Descriptors
----------------------------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    greater than or equal to ``CONFIGURE_MAXIMUM_POSIX_MESSAGES_QUEUES``
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS`` is the maximum number
-    of POSIX API Message Queue Descriptors that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS`` should be greater
-    than or equal to ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES``.
-
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_SEMAPHORES ===
 
 .. _Specify Maximum POSIX API Semaphores:
