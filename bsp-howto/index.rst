@@ -53,7 +53,6 @@ to the Community Project hosted at http://www.rtems.org.
 	real_time_clock
 	ata
 	ide_controller
-	non_volatile_memory
 	networking
 	shared_memory_support
 	frame_buffer
