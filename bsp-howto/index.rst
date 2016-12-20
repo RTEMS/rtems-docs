@@ -57,7 +57,6 @@ to the Community Project hosted at http://www.rtems.org.
 	networking
 	shared_memory_support
 	frame_buffer
-	analog
 	discrete
 	command
 
