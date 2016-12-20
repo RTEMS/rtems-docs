@@ -49,11 +49,11 @@ to the Community Project hosted at http://www.rtems.org.
 	clock
 	i2c
 	spi
-	timer
 	real_time_clock
 	networking
 	shared_memory_support
 	frame_buffer
+	timer
 	ata
 	ide_controller
 	command

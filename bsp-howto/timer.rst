@@ -7,6 +7,11 @@
 Timer Driver
 ************
 
+.. warning::
+
+   The Timer Driver is superfluous and should be replaced by the RTEMS counter
+   support.  Ask on the mailing list if you plan to write a Timer Driver.
+
 The timer driver is primarily used by the RTEMS Timing Tests.  This driver
 provides as accurate a benchmark timer as possible.  It typically reports its
 time in microseconds, CPU cycles, or bus cycles.  This information can be very
