@@ -43,7 +43,6 @@ to the Community Project hosted at http://www.rtems.org.
 	makefiles
 	linker_script
 	miscellanous_support
-	ada95_interrupt
 	initilization_code
 	console
 	clock
@@ -53,6 +52,7 @@ to the Community Project hosted at http://www.rtems.org.
 	networking
 	shared_memory_support
 	frame_buffer
+	ada95_interrupt
 	timer
 	ata
 	ide_controller
