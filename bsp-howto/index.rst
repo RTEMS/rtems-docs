@@ -51,11 +51,11 @@ to the Community Project hosted at http://www.rtems.org.
 	spi
 	timer
 	real_time_clock
-	ata
-	ide_controller
 	networking
 	shared_memory_support
 	frame_buffer
+	ata
+	ide_controller
 	command
 
 *	:ref:`genindex`

@@ -7,6 +7,13 @@
 ATA Driver
 **********
 
+.. warning::
+
+   The ATA/IDE Drivers are out of date and should not be used for new BSPs.
+   The preferred alternative is to port the ATA/SATA/SCSI/NVMe support from
+   FreeBSD to RTEMS using the `libbsd <https://git.rtems.org/rtems-libbsd>`_.
+   Ask on the mailing list if you plan to write a driver for an ATA/IDE device.
+
 Terms
 =====
 
