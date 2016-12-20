@@ -7,6 +7,10 @@
 Initialization Code
 *******************
 
+.. warning::
+
+   This chapter contains outdated and confusing information.
+
 Introduction
 ============
 

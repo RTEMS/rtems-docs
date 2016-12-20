@@ -9,6 +9,10 @@
 Makefiles
 *********
 
+.. warning::
+
+   This chapter contains outdated and confusing information.
+
 This chapter discusses the Makefiles associated with a BSP.  It does not
 describe the process of configuring, building, and installing RTEMS.  This
 chapter will not provide detailed information about this process.  Nonetheless,

@@ -8,6 +8,10 @@
 Linker Script
 *************
 
+.. warning::
+
+   This chapter contains outdated and confusing information.
+
 What is a "linkcmds" file?
 ==========================
 

@@ -8,6 +8,10 @@
 Miscellaneous Support Files
 ***************************
 
+.. warning::
+
+   This chapter contains outdated and confusing information.
+
 GCC Compiler Specifications File
 ================================
 

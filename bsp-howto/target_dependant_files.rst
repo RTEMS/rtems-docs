@@ -8,6 +8,10 @@
 Target Dependent Files
 **********************
 
+.. warning::
+
+   This chapter contains outdated and confusing information.
+
 RTEMS has a multi-layered approach to portability. This is done to maximize the
 amount of software that can be reused. Much of the RTEMS source code can be
 reused on all RTEMS platforms. Other parts of the executive are specific to
