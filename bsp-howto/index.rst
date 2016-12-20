@@ -50,9 +50,9 @@ to the Community Project hosted at http://www.rtems.org.
 	spi
 	real_time_clock
 	networking
-	shared_memory_support
 	frame_buffer
 	ada95_interrupt
+	shared_memory_support
 	timer
 	ata
 	ide_controller
