@@ -47,6 +47,7 @@ to the Community Project hosted at http://www.rtems.org.
 	initilization_code
 	console
 	clock
+	i2c
 	spi
 	timer
 	real_time_clock
