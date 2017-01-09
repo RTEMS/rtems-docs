@@ -86,15 +86,6 @@ def build_dir_setup(ctx, buildtype):
     output_node = ctx.path.get_bld().make_node(buildtype)
     output_dir = output_node.abspath()
     doctrees = os.path.join(os.path.dirname(output_dir), 'doctrees', buildtype)
-    #
-    # Gather the data for the catalogue
-    #
-    if build_dir not in ctx.catalogue:
-        ctx.catalogue[build_dir] = {
-            'builddir': build_dir,
-            'buildtype': []
-        }
-    ctx.catalogue[build_dir]['buildtype'].append(buildtype)
     return build_dir, output_node, output_dir, doctrees
 
 def pdf_resources(ctx, buildtype):
@@ -322,31 +313,38 @@ def cmd_configure_path(ctx):
 
     cmd_configure(ctx)
 
-def xml_catalogue(ctx):
+def xml_catalogue(ctx, building):
+    #
+    # The following is a hack to find the top_dir because the task does
+    # provided a reference to top_dir like a build context.
+    #
+    top_dir = ctx.get_cwd().find_node('..')
     #
     # Read the conf.py files in each directory to gather the doc details.
     #
+    catalogue = {}
     sp = sys.path[:]
-    for t in ctx.cur_tasks:
-        if t.get_cwd().is_src():
-            doc = os.path.basename(t.get_cwd().get_src().abspath())
-            sys.path.insert(0, str(t.get_cwd()))
-            #
-            # Import using the imp API so the module is reloaded for us.
-            #
-            import imp
-            mf = imp.find_module('conf')
-            try:
-                bconf = imp.load_module('bconf', mf[0], mf[1], mf[2])
-            finally:
-                mf[0].close()
-            sys.path = sp[:]
-            if doc in ctx.catalogue:
-                ctx.catalogue[doc]['title'] = bconf.project
-                ctx.catalogue[doc]['version'] = bconf.version
-                ctx.catalogue[doc]['release'] = bconf.release
-                ctx.catalogue[doc]['latex'] = bconf.latex_documents[0][1]
-            bconf = None
+    for doc in building:
+        sys.path.insert(0, top_dir.find_node(doc).abspath())
+        #
+        # Import using the imp API so the module is reloaded for us.
+        #
+        import imp
+        mf = imp.find_module('conf')
+        try:
+            bconf = imp.load_module('bconf', mf[0], mf[1], mf[2])
+        finally:
+            mf[0].close()
+        sys.path = sp[:]
+        catalogue[doc] = {
+            'title': bconf.project,
+            'version':  bconf.version,
+            'release': bconf.release,
+            'pdf': bconf.latex_documents[0][1].replace('.tex', '.pdf'),
+            'html': '%s/index.html' % (doc),
+            'singlehtml': '%s.html' % (doc)
+        }
+        bconf = None
 
     import xml.dom.minidom as xml
     cat = xml.Document()
@@ -355,39 +353,38 @@ def xml_catalogue(ctx):
     root.setAttribute('date', 'today')
     cat.appendChild(root)
 
-    for d in ctx.catalogue:
+    builds = ['html']
+    if ctx.env.BUILD_PDF == 'yes':
+        builds += ['pdf']
+    if ctx.env.BUILD_SINGLEHTML == 'yes':
+        builds += ['singlehtml']
+
+    for d in building:
         doc = cat.createElement('doc')
         name = cat.createElement('name')
         text = cat.createTextNode(d)
         name.appendChild(text)
         title = cat.createElement('title')
-        text = cat.createTextNode(ctx.catalogue[d]['title'])
+        text = cat.createTextNode(catalogue[d]['title'])
         title.appendChild(text)
         release = cat.createElement('release')
-        text = cat.createTextNode(ctx.catalogue[d]['release'])
+        text = cat.createTextNode(catalogue[d]['release'])
         release.appendChild(text)
         version = cat.createElement('version')
-        text = cat.createTextNode(ctx.catalogue[d]['version'])
+        text = cat.createTextNode(catalogue[d]['version'])
         version.appendChild(text)
         doc.appendChild(name)
         doc.appendChild(title)
         doc.appendChild(release)
         doc.appendChild(version)
-        for b in ctx.catalogue[d]['buildtype']:
-            if b == 'latex':
-                b = 'pdf'
-                ref = ctx.catalogue[d]['latex'].replace('.tex', '.pdf')
-            elif b == 'html':
-                ref = '%s/index.html' % (d)
-            else:
-                ref = 'undefined'
+        for b in builds:
             output = cat.createElement(b)
-            text = cat.createTextNode(ref)
+            text = cat.createTextNode(catalogue[d][b])
             output.appendChild(text)
             doc.appendChild(output)
         root.appendChild(doc)
 
-    catnode = ctx.path.get_bld().make_node('catalogue.xml')
+    catnode = ctx.get_cwd().make_node('catalogue.xml')
     catnode.write(cat.toprettyxml(indent = ' ' * 2, newl = os.linesep))
 
     cat.unlink()

@@ -6,6 +6,7 @@ from sys import path
 from os.path import abspath
 path.append(abspath('common'))
 
+import waflib
 import waf as docs_waf
 
 build_all = ['bsp-howto',
@@ -30,15 +31,15 @@ def configure(conf):
         conf.recurse(b)
     conf.env['BUILD_FROM_TOP'] = 'yes'
 
-def xml_catalogue(ctx):
-    docs_waf.xml_catalogue(ctx)
+def catalogue(ctx):
+    docs_waf.xml_catalogue(ctx, building)
 
 def build(ctx):
-    ctx.catalogue = {}
-    ctx.add_post_fun(xml_catalogue)
     for b in building:
         ctx.recurse(b)
-    ctx.install_files('${PREFIX}', 'catalogue.xml')
+    ctx(rule = catalogue,
+        target = 'catalogue.xml',
+        source = ['wscript', 'common/waf.py'])
 
 def install(ctx):
     for b in building:
