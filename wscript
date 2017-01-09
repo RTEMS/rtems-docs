@@ -30,9 +30,15 @@ def configure(conf):
         conf.recurse(b)
     conf.env['BUILD_FROM_TOP'] = 'yes'
 
+def xml_catalogue(ctx):
+    docs_waf.xml_catalogue(ctx)
+
 def build(ctx):
+    ctx.catalogue = {}
+    ctx.add_post_fun(xml_catalogue)
     for b in building:
         ctx.recurse(b)
+    ctx.install_files('${PREFIX}', 'catalogue.xml')
 
 def install(ctx):
     for b in building:
