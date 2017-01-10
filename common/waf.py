@@ -313,7 +313,7 @@ def cmd_configure_path(ctx):
 
     cmd_configure(ctx)
 
-def xml_catalogue(ctx, building):
+def xml_catalogue(ctx, building, title):
     #
     # The following is a hack to find the top_dir because the task does
     # provided a reference to top_dir like a build context.
@@ -352,6 +352,11 @@ def xml_catalogue(ctx, building):
     root = cat.createElement('rtems-docs')
     root.setAttribute('date', 'today')
     cat.appendChild(root)
+
+    heading = cat.createElement('catalogue')
+    text = cat.createTextNode(title)
+    heading.appendChild(text)
+    root.appendChild(heading)
 
     builds = ['html']
     if ctx.env.BUILD_PDF == 'yes':
