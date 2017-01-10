@@ -9,17 +9,19 @@ path.append(abspath('common'))
 import waflib
 import waf as docs_waf
 
-build_all = ['bsp-howto',
+version = 'Master (4.11.99)'
+
+build_all = ['user',
+             'rsb',
              'c-user',
-             'cpu-supplement',
-             'develenv',
-             'eclipse',
+             'bsp-howto',
+             'posix-users',
              'filesystem',
              'networking',
-             'posix-users',
-             'rsb',
              'shell',
-             'user']
+             'cpu-supplement',
+             'develenv',
+             'eclipse']
 
 building = build_all
 
@@ -32,7 +34,7 @@ def configure(conf):
     conf.env['BUILD_FROM_TOP'] = 'yes'
 
 def catalogue(ctx):
-    docs_waf.xml_catalogue(ctx, building)
+    docs_waf.xml_catalogue(ctx, building, version)
 
 def build(ctx):
     for b in building:
@@ -40,6 +42,7 @@ def build(ctx):
     ctx(rule = catalogue,
         target = 'catalogue.xml',
         source = ['wscript', 'common/waf.py'])
+    ctx.install_files('${PREFIX}', 'catalogue.xml')
 
 def install(ctx):
     for b in building:
