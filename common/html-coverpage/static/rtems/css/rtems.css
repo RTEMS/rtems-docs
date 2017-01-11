@@ -1,0 +1,72 @@
+header {
+    background: #38532f;
+}
+
+.h1, h1 {
+    font-size: 28px;
+}
+
+.h3, h3 {
+    font-size: 25px;
+    line-height: 0.5;
+}
+
+.navbar-default {
+    background-color: #dbe5c6;
+    border-color: #b2baa1;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #333;
+}
+
+.navbar-inverse .navbar-text {
+  color: #333;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #333;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: 333;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: #b2baa1;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #fcfcfc;
+  background-color: #38532f;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: #b2baa1;
+}
+
+.navbar-inverse .navbar-link {
+  color: #333;
+}
+
+col-md-3 {
+    background: #38532f;
+    color: #333;
+}
+
+col-md-9, h1 {
+    color: #fcfcfc;
+}
+
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+    padding: 2px;
+    border-collapse: separate !important;
+    border-spacing: 0;
+}
