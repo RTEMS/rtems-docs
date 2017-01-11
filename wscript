@@ -9,7 +9,7 @@ path.append(abspath('common'))
 import waflib
 import waf as docs_waf
 
-version = 'Master (4.11.99)'
+version = '4.11 (4.11.2)'
 
 build_all = ['user',
              'rsb',
@@ -39,10 +39,20 @@ def catalogue(ctx):
 def build(ctx):
     for b in building:
         ctx.recurse(b)
+
+    #
+    # Build the catalogue and install with the coverpage and static content.
+    #
     ctx(rule = catalogue,
         target = 'catalogue.xml',
         source = ['wscript', 'common/waf.py'])
     ctx.install_files('${PREFIX}', 'catalogue.xml')
+    ctx.install_files('${PREFIX}', 'common/html-coverpage/index.html')
+    static_dir = ctx.path.find_dir('common/html-coverpage/static')
+    ctx.install_files('${PREFIX}/static',
+                      static_dir.ant_glob('**'),
+                      cwd = static_dir,
+                      relative_trick = True)
 
 def install(ctx):
     for b in building:
