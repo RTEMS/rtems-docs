@@ -9,7 +9,7 @@ path.append(abspath('common'))
 import waflib
 import waf as docs_waf
 
-version = '4.11 (4.11.2)'
+version = 'Master (4.11.99)'
 
 build_all = ['user',
              'rsb',
@@ -36,18 +36,39 @@ def configure(conf):
 def catalogue(ctx):
     docs_waf.xml_catalogue(ctx, building, version)
 
+def coverpage_js(ctx):
+    js = None
+    xml = None
+    for f in ctx.inputs:
+        if f.abspath().endswith('.js'):
+            with open(f.abspath()) as i:
+                js = i.read()
+        elif f.abspath().endswith('.xml'):
+            with open(f.abspath()) as i:
+                xml = i.read()
+    xml = xml.replace('\n', ' \\\n');
+    with open(ctx.outputs[0].abspath(), 'w') as o:
+        o.write(js.replace('@CATALOGUE', xml))
+
 def build(ctx):
     for b in building:
         ctx.recurse(b)
 
     #
-    # Build the catalogue and install with the coverpage and static content.
+    # Build the catalogue, coverpage.js and install.
     #
     ctx(rule = catalogue,
         target = 'catalogue.xml',
         source = ['wscript', 'common/waf.py'])
     ctx.install_files('${PREFIX}', 'catalogue.xml')
-    ctx.install_files('${PREFIX}', 'common/html-coverpage/index.html')
+    ctx(rule = coverpage_js,
+        target = 'coverpage.js',
+        source = ['wscript', 'catalogue.xml', 'common/html-coverpage/coverpage.js'])
+    ctx.install_as('${PREFIX}/coverpage.js', 'coverpage.js')
+    #
+    # Install the static content.
+    #
+    ctx.install_as('${PREFIX}/index.html', 'common/html-coverpage/coverpage.html')
     static_dir = ctx.path.find_dir('common/html-coverpage/static')
     ctx.install_files('${PREFIX}/static',
                       static_dir.ant_glob('**'),
