@@ -59,17 +59,17 @@ def build(ctx):
     #
     ctx(rule = catalogue,
         target = 'catalogue.xml',
-        source = ['wscript', 'common/waf.py'])
+        source = ['wscript', 'common/waf.py'] + ['%s/conf.py' % x for x in building])
     ctx.install_files('${PREFIX}', 'catalogue.xml')
     ctx(rule = coverpage_js,
         target = 'coverpage.js',
-        source = ['wscript', 'catalogue.xml', 'common/html-coverpage/coverpage.js'])
+        source = ['wscript', 'catalogue.xml', 'common/coverpage/coverpage.js'])
     ctx.install_as('${PREFIX}/coverpage.js', 'coverpage.js')
     #
     # Install the static content.
     #
-    ctx.install_as('${PREFIX}/index.html', 'common/html-coverpage/coverpage.html')
-    static_dir = ctx.path.find_dir('common/html-coverpage/static')
+    ctx.install_as('${PREFIX}/index.html', 'common/coverpage/coverpage.html')
+    static_dir = ctx.path.find_dir('common/coverpage/static')
     ctx.install_files('${PREFIX}/static',
                       static_dir.ant_glob('**'),
                       cwd = static_dir,
