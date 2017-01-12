@@ -9,5 +9,5 @@
  */
 function coverPageCatalogue() {
     xml = '@CATALOGUE';
-    paintCatalogue($.parseXML(xml));
+    paintCatalogue($.parseXML(xml), true);
 }

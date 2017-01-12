@@ -50,7 +50,7 @@ function catalogueFooter() {
 	' </dev/>';
 }
 
-function paintCatalogue(xml) {
+function paintCatalogue(xml, show) {
     var el_cat_title = $('#rtems-catalogue-title');
     var el_cat = $('#rtems-catalogue');
     /*
@@ -62,7 +62,6 @@ function paintCatalogue(xml) {
     var date = $(docs).attr('date');
     var title = $(docs).find('catalogue');
     var id = title.text().replace(/\.| |\(|\)|\[|\]/g, '_');
-    console.log(id);
     var table = catalogueHeader(id, title.text(), date);
     $(docs).find('doc').each(function() {
 	var name = $(this).find('name').text();
@@ -99,10 +98,11 @@ function paintCatalogue(xml) {
     $('#' + id + '1').on('hidden.bs.collapse', function () {
 	$("#" + id + " i.indicator").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
     });
-    $('#' + id + '1').collapse('show');
+    if (show == true)
+	$('#' + id + '1').collapse('show');
 }
 
-function loadCatalogue(path) {
+function loadCatalogue(path, show) {
     var f = $.get(path, function(xml) {
 	paintCatalogue(xml);
     }, 'xml');
