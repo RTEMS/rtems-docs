@@ -56,8 +56,8 @@ function paintCatalogue(xml) {
     /*
      * Use jquery as XMLDocument is consider not stable on Firefox's web site.
      */
-    var pdfIcon = 'static/images/Adobe_PDF_file_icon_32x32.png';
-    var htmlIcon = 'static/images/html-xxl.png';
+    var pdfIcon = 'static/img/Adobe_PDF_file_icon_32x32.png';
+    var htmlIcon = 'static/img/html-xxl.png';
     var docs = $(xml).find('rtems-docs');
     var date = $(docs).attr('date');
     var title = $(docs).find('catalogue');
