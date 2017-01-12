@@ -4,12 +4,12 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-========================
-RTEMS Shell User's Guide
-========================
+==============================
+RTEMS Shell Guide (|version|).
+==============================
 
-RTEMS Shell User's Guide
-------------------------
+RTEMS Shell Guide
+-----------------
 
  | COPYRIGHT (c) 1988 - 2015.
  | On-Line Applications Research Corporation (OAR).

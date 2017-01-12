@@ -6,8 +6,8 @@ from conf import *
 version = '1.0'
 release = '4.11.99'
 
-project = "RTEMS CPU Supplement Documentation"
+project = "RTEMS CPU Architecture Supplement"
 
 latex_documents = [
-	('index', 'cpu-supplement.tex', u'RTEMS CPU Supplement Documentation', u'RTEMS Documentation Project', 'manual'),
+	('index', 'cpu-supplement.tex', u'RTEMS CPU Architecture Supplement', u'RTEMS Documentation Project', 'manual'),
 ]

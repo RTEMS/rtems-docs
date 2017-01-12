@@ -1,8 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-===================================
-RTEMS POSIX 1003.1 Compliance Guide
-===================================
+================================================
+RTEMS POSIX 1003.1 Compliance Guide (|version}).
+================================================
 
 COPYRIGHT (c) 1988 - 2015.
 

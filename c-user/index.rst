@@ -1,11 +1,11 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-====================
-RTEMS C User's Guide
-====================
+====================================
+RTEMS Classic API Guide (|version|).
+====================================
 
-RTEMS C User's Guide
---------------------
+RTEMS Classic API Guide
+-----------------------
 
  | COPYRIGHT (c) 1988 - 2015.
  | On-Line Applications Research Corporation (OAR).

@@ -1,11 +1,11 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-=======================================
-BSP and Device Driver Development Guide
-=======================================
+==========================================================
+RTEMS BSP and Device Driver Development Guide (|version|).
+==========================================================
 
-BSP and Device Driver Development Guide
----------------------------------------
+RTEMS BSP and Device Driver Development Guide
+---------------------------------------------
 
  | COPYRIGHT (c) 1988 - 2015.
  | On-Line Applications Research Corporation (OAR).

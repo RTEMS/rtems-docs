@@ -6,8 +6,8 @@ from conf import *
 version = '4.11.99'
 release = '4.11.99'
 
-project = "RTEMS Shell Manual"
+project = "RTEMS Shell Guide"
 
 latex_documents = [
-	('index', 'shell.tex', u'RTEMS Shell Documentation', u'RTEMS Documentation Project', 'manual'),
+	('index', 'shell.tex', u'RTEMS Shell Guide', u'RTEMS Documentation Project', 'manual'),
 ]

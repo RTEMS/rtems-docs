@@ -5,9 +5,9 @@
 
 .. highlight:: c
 
-====================
-RTEMS Eclipse Manual
-====================
+=================================
+RTEMS Eclipse Manual (|version|).
+=================================
 
 RTEMS Eclipse Manual
 --------------------

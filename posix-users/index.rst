@@ -1,11 +1,11 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-============================
-RTEMS POSIX API User's Guide
-============================
+==================================
+RTEMS POSIX API Guide (|version|).
+==================================
 
-RTEMS POSIX API User's Guide
-----------------------------
+RTEMS POSIX API Guide
+---------------------
 
  | COPYRIGHT (c) 1988 - 2015.
  | On-Line Applications Research Corporation (OAR).

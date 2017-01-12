@@ -2,9 +2,9 @@
 
 .. highlight:: c
 
-===================================
-RTEMS |version| Network User Manual
-===================================
+======================================
+RTEMS Network User Manual (|version|).
+======================================
 
  | COPYRIGHT (c) 1988 - 2015.
  | On-Line Applications Research Corporation (OAR).

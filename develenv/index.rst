@@ -1,8 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-===================================
-RTEMS Development Environment Guide
-===================================
+================================================
+RTEMS Development Environment Guide (|version|).
+================================================
 
 RTEMS Development Environment Guide
 -----------------------------------

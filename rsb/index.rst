@@ -8,9 +8,9 @@
 
 .. highlight:: shell
 
-==============================
-RTEMS |version| Source Builder
-==============================
+=================================
+RTEMS Source Builder (|version|).
+=================================
 
  | COPYRIGHT (c) 2012 - 2016.
  | Chris Johns <chrisj@rtems.org>

@@ -1,8 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-=================================
-RTEMS CPU Architecture Supplement
-=================================
+==============================================
+RTEMS CPU Architecture Supplement (|version|).
+==============================================
 
 RTEMS CPU Architecture Supplement
 ---------------------------------

@@ -1,8 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-=============================
-RTEMS Filesystem Design Guide
-=============================
+==========================================
+RTEMS Filesystem Design Guide (|version|).
+==========================================
 
 RTEMS Filesystem Design Guide
 -----------------------------
