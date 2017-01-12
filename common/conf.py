@@ -8,10 +8,16 @@ def build_date():
     now = datetime.date.today()
     m = now.strftime('%b')
     y = now.strftime('%Y')
-    if now.day % 10 == 1:
+    if now.day == 11:
+        s = 'th'
+    elif now.day % 10 == 1:
         s = 'st'
+    elif now.day == 12:
+        s = 'th'
     elif now.day % 10 == 2:
         s = 'nd'
+    elif now.day == 13:
+        s = 'th'
     elif now.day == 3:
         s = 'rd'
     else:
