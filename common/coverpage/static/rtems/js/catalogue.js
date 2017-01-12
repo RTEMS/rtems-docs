@@ -61,7 +61,8 @@ function paintCatalogue(xml) {
     var docs = $(xml).find('rtems-docs');
     var date = $(docs).attr('date');
     var title = $(docs).find('catalogue');
-    var id = 'xxx';
+    var id = title.text().replace(/\.| |\(|\)|\[|\]/g, '_');
+    console.log(id);
     var table = catalogueHeader(id, title.text(), date);
     $(docs).find('doc').each(function() {
 	var name = $(this).find('name').text();
