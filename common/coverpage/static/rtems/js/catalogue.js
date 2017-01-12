@@ -4,21 +4,6 @@
  * Licensed under the MIT license
  */
 
-function parseCatalogue(xml) {
-    if (window.DOMParser)
-    {
-        parser = new DOMParser();
-        xmlDoc = parser.parseFromString(xml, "text/xml");
-    }
-    else // Internet Explorer
-    {
-        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-        xmlDoc.async = false;
-        xmlDoc.loadXML(xml);
-    }
-    return xmlDoc;
-}
-
 function catalogueHeader(id, title, date) {
     return '' +
 	' <div class="table-responsive">' +
