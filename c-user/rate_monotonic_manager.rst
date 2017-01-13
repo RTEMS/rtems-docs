@@ -132,7 +132,7 @@ milliseconds every 100 (10 percent of the CPU).  As a general rule of thumb,
 the higher frequency at which a task executes, the more important it is to
 optimize that task.
 
-Rate Monotonic Manager Definitions
+Periodicity Definitions
 ----------------------------------
 .. index:: periodic task, definition
 
@@ -170,7 +170,7 @@ Rate Monotonic Scheduling Algorithm
 .. index:: RMS Algorithm, definition
 
 The Rate Monotonic Scheduling Algorithm (RMS) is important to real-time systems
-designers because it allows one to guarantee that a set of tasks is
+designers because it allows one to sufficiently guarantee that a set of tasks is
 schedulable.  A set of tasks is said to be schedulable if all of the tasks can
 meet their deadlines.  RMS provides a set of rules which can be used to perform
 a guaranteed schedulability analysis for a task set.  This analysis determines
@@ -179,11 +179,11 @@ the predictability of the system's behavior.  It has been proven that:
 
 .. sidebar:: *RMS*
 
-  RMS is an optimal static priority algorithm for scheduling independent,
+  RMS is an optimal fixed-priority algorithm for scheduling independent,
   preemptible, periodic tasks on a single processor.
 
 RMS is optimal in the sense that if a set of tasks can be scheduled by any
-static priority algorithm, then RMS will be able to schedule that task set.
+fixed-priority algorithm, then RMS will be able to schedule that task set.
 RMS bases it schedulability analysis on the processor utilization level below
 which all deadlines can be met.
 
@@ -230,7 +230,7 @@ Schedulability Analysis
 
 .. index:: RMS schedulability analysis
 
-RMS allows application designers to ensure that tasks can meet all deadlines,
+RMS allows application designers to ensure that tasks can meet all deadlines under fixed-priority assignment,
 even under transient overload, without knowing exactly when any given task will
 execute by applying proven schedulability analysis rules.
 
@@ -468,9 +468,10 @@ monotonic period results in one of the following scenarios:
   immediately.
 
 - If the rate monotonic period has expired before the task invokes the
-  ``rtems_rate_monotonic_period`` directive, the period will be initiated with
-  a length of period ticks and the calling task returns immediately with a
-  timeout error status.
+  ``rtems_rate_monotonic_period`` directive, the postponed job will be released
+  until there is no more postponed jobs. The calling task returns immediately
+  with a timeout error status. In the watchdog routine, the period will still
+  be updated periodically and track the number of the postponed periods.
 
 Obtaining the Status of a Period
 --------------------------------
@@ -560,8 +561,8 @@ Subsequent invocations of the ``rtems_rate_monotonic_period`` directive will
 result in the task blocking for the remainder of the 100 tick period.  If, for
 any reason, the body of the loop takes more than 100 ticks to execute, the
 ``rtems_rate_monotonic_period`` directive will return the ``RTEMS_TIMEOUT``
-status.  If the above task misses its deadline, it will delete the rate
-monotonic period and itself.
+status and the postponed job will be released.  If the above task misses
+its deadline, it will delete the rate monotonic period and itself.
 
 Task with Multiple Periods
 --------------------------
@@ -629,8 +630,8 @@ will not block.
 
 If, for any reason, the task misses any deadline, the
 ``rtems_rate_monotonic_period`` directive will return the ``RTEMS_TIMEOUT``
-directive status.  If the above task misses its deadline, it will delete the
-rate monotonic periods and itself.
+directive status and the postponed job will be released. If the above task misses
+its deadline, it will delete the rate monotonic periods and itself.
 
 Directives
 ==========
@@ -840,6 +841,9 @@ DESCRIPTION:
     remainder of the period before reinitiating the period with the specified
     period.  If id was not running (either expired or never initiated), the
     period is immediately initiated and the directive returns immediately.
+       If id has expired its period, the postponed job will be released immediately
+       and the following calls of this directive will release postponed
+       jobs until there is no more deadline miss.
 
     If invoked with a period of ``RTEMS_PERIOD_STATUS`` ticks, the current
     state of id will be returned.  The directive status indicates the current
