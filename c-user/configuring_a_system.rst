@@ -1771,6 +1771,37 @@ NOTES:
    priority level. Reducing the number of priorities from 256 levels to
    sixteen (16) can reduce memory usage by about three (3) kilobytes.
 
+.. COMMENT: === CONFIGURE_MAXIMUM_THREAD_NAME_SIZE ===
+
+.. _Specifying the Maximum Thread Name Size
+
+Specifying the Maximum Thread Name Size
+---------------------------------------
+.. index:: CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
+.. index:: maximum thread name size
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_THREAD_NAME_SIZE``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    No restrictions.
+
+DEFAULT VALUE:
+    The default value is 16.  This value was chosen for Linux compatibility,
+    see
+    `PTHREAD_SETNAME_NP(3) <http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_.
+
+DESCRIPTION:
+   This configuration parameter specifies the maximum thread name size
+   including the terminating `NUL` character.
+
+NOTE:
+   The size of the thread control block is increased by the maximum thread name
+   size.  This configuration option is available since RTEMS 4.12.
+
 .. COMMENT: === CONFIGURE_MINIMUM_TASK_STACK_SIZE ===
 
 .. _Specifying the Minimum Task Size:
