@@ -214,28 +214,72 @@ EXAMPLES:
 
     .. code-block:: shell
 
-        SHLL [/] $ cpuuse
-        CPU Usage by thread
-        ID            NAME         SECONDS   PERCENT
-        0x09010001   IDLE            49.745393   98.953
-        0x0a010001   UI1              0.000000    0.000
-        0x0a010002   SHLL             0.525928    1.046
-        Time since last CPU Usage reset 50.271321 seconds
-        SHLL [/] $ cpuuse -r
+        [/] cpuuse
+        -------------------------------------------------------------------------------
+                                      CPU USAGE BY THREAD
+        ------------+----------------------------------------+---------------+---------
+         ID         | NAME                                   | SECONDS       | PERCENT
+        ------------+----------------------------------------+---------------+---------
+         0x09010001 | IDLE                                   |     11.444381 |  73.938
+         0x0a010001 | UI1                                    |      0.206754 |   1.335
+         0x0a010002 | BSWP                                   |      0.008277 |   0.053
+         0x0a010003 | BRDA                                   |      0.000952 |   0.006
+         0x0a010004 | MDIA                                   |      0.000334 |   0.002
+         0x0a010005 | TIME                                   |      0.912809 |   5.895
+         0x0a010006 | IRQS                                   |      0.004810 |   0.031
+         0x0a010007 | swi1: netisr 0                         |      0.002593 |   0.016
+         0x0a010008 | kqueue_ctx task                        |      0.000663 |   0.004
+         0x0a010009 | swi5: fast task                        |      0.000059 |   0.000
+         0x0a01000a | thread taskq                           |      0.000057 |   0.000
+         0x0a01000b | swi6: task queu                        |      0.003063 |   0.019
+         0x0a01000c | DHCP                                   |      1.391745 |   8.986
+         0x0a01000d | FTPa                                   |      0.002203 |   0.014
+         0x0a01000e | FTPb                                   |      0.000233 |   0.001
+         0x0a01000f | FTPc                                   |      0.000226 |   0.001
+         0x0a010010 | FTPd                                   |      0.000228 |   0.001
+         0x0a010011 | FTPD                                   |      0.002959 |   0.019
+         0x0a010012 | TNTD                                   |      0.001111 |   0.007
+         0x0a010013 | SHLL                                   |      1.508445 |   9.736
+        ------------+----------------------------------------+---------------+---------
+         TIME SINCE LAST CPU USAGE RESET IN SECONDS:                         15.492171
+        -------------------------------------------------------------------------------
+        [/] # cpuuse -r
         Resetting CPU Usage information
-        SHLL [/] $ cpuuse
-        CPU Usage by thread
-        ID            NAME         SECONDS   PERCENT
-        0x09010001   IDLE             0.000000    0.000
-        0x0a010001   UI1              0.000000    0.000
-        0x0a010002   SHLL             0.003092  100.000
-        Time since last CPU Usage reset 0.003092 seconds
+        [/] # cpuuse
+        -------------------------------------------------------------------------------
+                                      CPU USAGE BY THREAD
+        ------------+----------------------------------------+---------------+---------
+         ID         | NAME                                   | SECONDS       | PERCENT
+        ------------+----------------------------------------+---------------+---------
+         0x09010001 | IDLE                                   |      0.000000 |   0.000
+         0x0a010001 | UI1                                    |      0.000000 |   0.000
+         0x0a010002 | BSWP                                   |      0.000000 |   0.000
+         0x0a010003 | BRDA                                   |      0.000000 |   0.000
+         0x0a010004 | MDIA                                   |      0.000000 |   0.000
+         0x0a010005 | TIME                                   |      0.000000 |   0.000
+         0x0a010006 | IRQS                                   |      0.000000 |   0.000
+         0x0a010007 | swi1: netisr 0                         |      0.000000 |   0.000
+         0x0a010008 | kqueue_ctx task                        |      0.000000 |   0.000
+         0x0a010009 | swi5: fast task                        |      0.000000 |   0.000
+         0x0a01000a | thread taskq                           |      0.000000 |   0.000
+         0x0a01000b | swi6: task queu                        |      0.000000 |   0.000
+         0x0a01000c | DHCP                                   |      0.000000 |   0.000
+         0x0a01000d | FTPa                                   |      0.000000 |   0.000
+         0x0a01000e | FTPb                                   |      0.000000 |   0.000
+         0x0a01000f | FTPc                                   |      0.000000 |   0.000
+         0x0a010010 | FTPd                                   |      0.000000 |   0.000
+         0x0a010011 | FTPD                                   |      0.000000 |   0.000
+         0x0a010012 | TNTD                                   |      0.000000 |   0.000
+         0x0a010013 | SHLL                                   |      0.016503 |  99.962
+        ------------+----------------------------------------+---------------+---------
+         TIME SINCE LAST CPU USAGE RESET IN SECONDS:                          0.016509
+        -------------------------------------------------------------------------------
 
-    In the above example, the system had set idle for nearly a minute when the
-    first report was generated.  The``cpuuse -r`` and ``cpuuse`` commands were
+    In the above example, the system did something for roughly 15 seconds when the
+    first report was generated.  The ``cpuuse -r`` and ``cpuuse`` commands were
     pasted from another window so were executed with no gap between.  In the
-    second report, only the ``shell`` thread has run since the CPU Usage was
-    reset.  It has consumed approximately 3.092 milliseconds of CPU time
+    second report, only the ``SHLL`` thread has run since the CPU Usage was
+    reset.  It has consumed approximately 16.509 milliseconds of CPU time
     processing the two commands and generating the output.
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_CPUUSE
@@ -302,13 +346,29 @@ EXAMPLES:
 
     .. code-block:: shell
 
-        SHLL [/] $ stackuse
-        Stack usage by thread
-        ID      NAME    LOW          HIGH     CURRENT     AVAILABLE     USED
-        0x09010001  IDLE 0x023d89a0 - 0x023d99af 0x023d9760      4096        608
-        0x0a010001  UI1  0x023d9f30 - 0x023daf3f 0x023dad18      4096       1804
-        0x0a010002  SHLL 0x023db4c0 - 0x023df4cf 0x023de9d0     16384       5116
-        0xffffffff  INTR 0x023d2760 - 0x023d375f 0x00000000      4080        316
+        [/] # stackuse
+                                     STACK USAGE BY THREAD
+        ID         NAME                  LOW        HIGH       CURRENT    AVAIL  USED
+        0x09010001 IDLE                  0x03559960 0x03564055 0x03563728   4080    584
+        0x0a010001 UI1                   0x03564664 0x03597431 0x03596976  32752   4168
+        0x0a010002 BSWP                  0x03714576 0x03718671 0x03718408   4080    564
+        0x0a010003 BRDA                  0x03718680 0x03722775 0x03722480   4080    596
+        0x0a010004 MDIA                  0x03722808 0x03755575 0x03755288  32752    588
+        0x0a010005 TIME                  0x03755664 0x03788431 0x03788168  32752   1448
+        0x0a010006 IRQS                  0x03788440 0x03821207 0x03820952  32752    608
+        0x0a010007 swi1: netisr 0        0x03896880 0x03929647 0x03929376  32752    820
+        0x0a010008 kqueue_ctx task       0x03929872 0x03962639 0x03962392  32752    580
+        0x0a010009 swi5: fast task       0x03963088 0x03995855 0x03995584  32752    572
+        0x0a01000a thread taskq          0x03996080 0x04028847 0x04028600  32752    548
+        0x0a01000b swi6: task queu       0x04029296 0x04062063 0x04061792  32752   1364
+        0x0a01000c DHCP                  0x04250192 0x04258383 0x04257288   8176   2764
+        0x0a01000d FTPa                  0x04258792 0x04266983 0x04265792   8176   1548
+        0x0a01000e FTPb                  0x04267120 0x04275311 0x04274120   8176   1496
+        0x0a01000f FTPc                  0x04275448 0x04283639 0x04282448   8176   1496
+        0x0a010010 FTPd                  0x04283776 0x04291967 0x04290776   8176   1496
+        0x0a010011 FTPD                  0x04292104 0x04296199 0x04295784   4080    772
+        0x0a010012 TNTD                  0x04297088 0x04329855 0x04329368  32752    804
+        0x0a010013 SHLL                  0x04329976 0x04346359 0x04344576  16368   3616
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_STACKUSE
 .. index:: CONFIGURE_SHELL_COMMAND_STACKUSE
