@@ -9,7 +9,7 @@ path.append(abspath('common'))
 import waflib
 import waf as docs_waf
 
-version = 'Master (4.11.99)'
+version = 'Master (4.11.99.1)'
 
 build_all = ['user',
              'rsb',
