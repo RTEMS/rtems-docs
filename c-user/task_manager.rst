@@ -1128,7 +1128,7 @@ NOTES:
 
 .. _rtems_task_get_priority:
 
-TASK_SET_PRIORITY - Get task priority
+TASK_GET_PRIORITY - Get task priority
 -------------------------------------
 .. index:: rtems_task_get_priority
 .. index:: current task priority
