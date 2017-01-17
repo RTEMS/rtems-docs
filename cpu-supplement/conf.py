@@ -3,6 +3,8 @@ sys.path.append(os.path.abspath('../common/'))
 
 from conf import *
 
+extensions = ['sphinxcontrib.bibtex']
+
 version = '1.0'
 release = '4.11.99'
 

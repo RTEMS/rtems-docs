@@ -77,6 +77,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	linker_sets
 	example_application
 	glossary
+	zreferences
 
 *	:ref:`genindex`
 *	:ref:`search`

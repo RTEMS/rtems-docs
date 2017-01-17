@@ -329,7 +329,7 @@ facilities mandated by the application binary interface (ABI) of the CPU
 architecture.  The CPU port must initialize the TLS area in the
 ``_CPU_Context_Initialize()`` function.  There are support functions available
 via ``#include <rtems/score/tls.h>`` which implement Variants I and II
-according to Ulrich Drepper, *ELF Handling For Thread-Local Storage*.
+according to :cite:`Drepper:2013:TLS`.
 
 ``_TLS_TCB_at_area_begin_initialize()``
     Uses Variant I, TLS offsets emitted by linker takes the TCB into account.
