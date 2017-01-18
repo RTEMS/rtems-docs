@@ -72,6 +72,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	red_black_trees
 	timespec_helpers
 	constant_bandwidth_server
+	ada_support
 	directive_status_codes
 	linker_sets
 	example_application
