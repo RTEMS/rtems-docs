@@ -38,7 +38,8 @@ Host Setup
 ----------
 
 HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
-and building a Single HTML page requires the 'inliner' tool.
+and building a Single HTML page requires the 'inliner' tool. The
+sphinxcontrib-bibtex extension is mandatory.
 
 Please add your host as you set it up.
 
@@ -49,6 +50,7 @@ You can use this method to install a personal version of Sphinx if your host
 does not provide a suitable package:
 
  $ pip install -U sphinx
+ $ pip install sphinxcontrib-bibtex
 
 On some hosts, this may complain that a newer version of pip is available.
 If so, then upgrade pip into your personal area.
