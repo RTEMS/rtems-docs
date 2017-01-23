@@ -43,15 +43,17 @@ only with the ``rtems_semaphore_create``, ``rtems_semaphore_obtain``, and
 counting semaphores. A binary semaphore is restricted to values of zero or one,
 while a counting semaphore can assume any non-negative integer value.
 
-A binary semaphore can be used to control access to a single resource.  In
-particular, it can be used to enforce mutual exclusion for a critical section
-in user code.  In this instance, the semaphore would be created with an initial
-count of one to indicate that no task is executing the critical section of
-code.  Upon entry to the critical section, a task must issue the
-``rtems_semaphore_obtain`` directive to prevent other tasks from entering the
-critical section.  Upon exit from the critical section, the task must issue the
+A binary semaphore (not a simple binary semaphore) can be used to control
+access to a single resource.  In particular, it can be used to enforce mutual
+exclusion for a critical section in user code (mutex).  In this instance, the
+semaphore would be created with an initial count of one to indicate that no
+task is executing the critical section of code.  Upon entry to the critical
+section, a task must issue the ``rtems_semaphore_obtain`` directive to prevent
+other tasks from entering the critical section.  Upon exit from the critical
+section, the task that obtained the binary semaphore must issue the
 ``rtems_semaphore_release`` directive to allow another task to execute the
-critical section.
+critical section.  A binary semaphore must be released by the task that
+obtained it.
 
 A counting semaphore can be used to control access to a pool of two or more
 resources.  For example, access to three printers could be administered by a
@@ -367,7 +369,7 @@ The ``rtems_semaphore_release`` directive is used to release the specified
 semaphore.  A simplified version of the ``rtems_semaphore_release`` directive
 can be described as follows:
 
-    If there sre no tasks are waiting on this semaphore then increment the
+    If there are no tasks are waiting on this semaphore then increment the
     semaphore's count else assign semaphore to a waiting task and return
     SUCCESSFUL.
 
