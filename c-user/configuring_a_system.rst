@@ -1973,7 +1973,7 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INITIAL_EXTENSIONS ===
 
-.. _Specify Application Specific User Extensions:
+.. _CONFIGURE_INITIAL_EXTENSIONS:
 
 Specify Application Specific User Extensions
 --------------------------------------------

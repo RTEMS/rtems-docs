@@ -14,10 +14,10 @@ User Extensions Manager
 Introduction
 ============
 
-The RTEMS User Extensions Manager allows the application developer to augment
-the executive by allowing them to supply extension routines which are invoked
-at critical system events.  The directives provided by the user extensions
-manager are:
+The user extensions manager allows the application developer to augment the
+executive by allowing them to supply extension routines which are invoked at
+critical system events.  The directives provided by the user extensions manager
+are:
 
 - rtems_extension_create_ - Create an extension set
 
@@ -28,406 +28,383 @@ manager are:
 Background
 ==========
 
-User extension routines are invoked when the following system events occur:
+User extensions are invoked when the following system events occur
 
-- Task creation
+- thread creation,
 
-- Task initiation
+- thread start,
 
-- Task reinitiation
+- thread restart,
 
-- Task deletion
+- thread switch,
 
-- Task context switch
+- thread begin,
 
-- Post task context switch
+- thread exitted (return from thread entry function),
 
-- Task begin
+- thread termination,
 
-- Task exits
+- thread deletion, and
 
-- Fatal error detection
+- fatal error detection (system termination).
 
-These extensions are invoked as a function with arguments that are appropriate
-to the system event.
+The extensions have event-specific arguments, invocation orders and execution
+contexts.  Extension sets can be installed at run-time via
+:ref:`rtems_extension_create() <rtems_extension_create>` (dynamic extension
+sets) or at link-time via the application configuration option
+:ref:`CONFIGURE_INITIAL_EXTENSIONS <CONFIGURE_INITIAL_EXTENSIONS>` (initial
+extension sets).
+
+The execution context of extensions varies.  Some extensions are invoked with
+ownership of the allocator mutex.  The allocator mutex protects dynamic memory
+allocations and object creation/deletion.  Some extensions are invoked with
+thread dispatching disabled.  The fatal error extension is invoked in an
+arbitrary context.
 
 Extension Sets
 --------------
-.. index:: extension set
+.. index:: user extension set
+.. index:: rtems_extensions_table
 
-An extension set is defined as a set of routines which are invoked at each of
-the critical system events at which user extension routines are invoked.
-Together a set of these routines typically perform a specific functionality
-such as performance monitoring or debugger support.  RTEMS is informed of the
-entry points which constitute an extension set via the following
-structure:.. index:: rtems_extensions_table
+User extensions are maintained as a set.  All extensions are optional and may
+be `NULL`.  Together a set of these extensions typically performs a specific
+functionality such as performance monitoring or debugger support.  The user
+extension set is defined via the following structure.
 
 .. code-block:: c
 
     typedef struct {
-        rtems_task_create_extension      thread_create;
-        rtems_task_start_extension       thread_start;
-        rtems_task_restart_extension     thread_restart;
-        rtems_task_delete_extension      thread_delete;
-        rtems_task_switch_extension      thread_switch;
-        rtems_task_begin_extension       thread_begin;
-        rtems_task_exitted_extension     thread_exitted;
-        rtems_fatal_extension            fatal;
+      rtems_task_create_extension    thread_create;
+      rtems_task_start_extension     thread_start;
+      rtems_task_restart_extension   thread_restart;
+      rtems_task_delete_extension    thread_delete;
+      rtems_task_switch_extension    thread_switch;
+      rtems_task_begin_extension     thread_begin;
+      rtems_task_exitted_extension   thread_exitted;
+      rtems_fatal_extension          fatal;
+      rtems_task_terminate_extension thread_terminate;
     } rtems_extensions_table;
-
-RTEMS allows the user to have multiple extension sets active at the same time.
-First, a single static extension set may be defined as the application's User
-Extension Table which is included as part of the Configuration Table.  This
-extension set is active for the entire life of the system and may not be
-deleted.  This extension set is especially important because it is the only way
-the application can provided a FATAL error extension which is invoked if RTEMS
-fails during the initialize_executive directive.  The static extension set is
-optional and may be configured as NULL if no static extension set is required.
-
-Second, the user can install dynamic extensions using the
-``rtems_extension_create`` directive.  These extensions are RTEMS objects in
-that they have a name, an ID, and can be dynamically created and deleted.  In
-contrast to the static extension set, these extensions can only be created and
-installed after the initialize_executive directive successfully completes
-execution.  Dynamic extensions are useful for encapsulating the functionality
-of an extension set.  For example, the application could use extensions to
-manage a special coprocessor, do performance monitoring, and to do stack bounds
-checking.  Each of these extension sets could be written and installed
-independently of the others.
-
-All user extensions are optional and RTEMS places no naming restrictions on the
-user. The user extension entry points are copied into an internal RTEMS
-structure. This means the user does not need to keep the table after creating
-it, and changing the handler entry points dynamically in a table once created
-has no effect. Creating a table local to a function can save space in space
-limited applications.
-
-Extension switches do not effect the context switch overhead if no switch
-handler is installed.
 
 TCB Extension Area
 ------------------
 .. index:: TCB extension area
 
-RTEMS provides for a pointer to a user-defined data area for each extension set
-to be linked to each task's control block.  This set of pointers is an
-extension of the TCB and can be used to store additional data required by the
-user's extension functions.
+There is no system-provided storage for the initial extension sets.
+
+The task control block (TCB) contains a pointer for each dynamic extension set.
+The pointer is initialized to `NULL` during thread initialization before the
+thread create extension is invoked.  The pointer may be used by the dynamic
+extension set to maintain thread-specific data.
 
 The TCB extension is an array of pointers in the TCB. The index into the table
-can be obtained from the extension id returned when the extension is
-created:
+can be obtained from the extension identifier returned when the extension
+object is created:
 
 .. index:: rtems extensions table index
 
 .. code-block:: c
 
-    index = rtems_object_id_get_index(extension_id);
+    index = rtems_object_id_get_index( extension_id );
 
-The number of pointers in the area is the same as the number of user extension
-sets configured.  This allows an application to augment the TCB with
+The number of pointers in the area is the same as the number of dynamic user
+extension sets configured.  This allows an application to augment the TCB with
 user-defined information.  For example, an application could implement task
 profiling by storing timing statistics in the TCB's extended memory area.  When
-a task context switch is being executed, the ``TASK_SWITCH`` extension could
-read a real-time clock to calculate how long the task being swapped out has run
-as well as timestamp the starting time for the task being swapped in.
+a task context switch is being executed, the thread switch extension could read
+a real-time clock to calculate how long the task being swapped out has run as
+well as timestamp the starting time for the task being swapped in.
 
 If used, the extended memory area for the TCB should be allocated and the TCB
 extension pointer should be set at the time the task is created or started by
-either the ``TASK_CREATE`` or ``TASK_START`` extension.  The application is
+either the thread create or thread start extension.  The application is
 responsible for managing this extended memory area for the TCBs.  The memory
-may be reinitialized by the ``TASK_RESTART`` extension and should be
-deallocated by the ``TASK_DELETE`` extension when the task is deleted.  Since
-the TCB extension buffers would most likely be of a fixed size, the RTEMS
-partition manager could be used to manage the application's extended memory
-area.  The application could create a partition of fixed size TCB extension
-buffers and use the partition manager's allocation and deallocation directives
-to obtain and release the extension buffers.
+may be reinitialized by the thread restart extension and should be deallocated
+by the thread delete extension  when the task is deleted.  Since the TCB
+extension buffers would most likely be of a fixed size, the RTEMS partition
+manager could be used to manage the application's extended memory area.  The
+application could create a partition of fixed size TCB extension buffers and
+use the partition manager's allocation and deallocation directives to obtain
+and release the extension buffers.
 
-Extensions
-----------
+Order of Invocation
+-------------------
 
-The sections that follow will contain a description of each extension.  Each
-section will contain a prototype of a function with the appropriate calling
-sequence for the corresponding extension.  The names given for the C function
-and its arguments are all defined by the user.  The names used in the examples
-were arbitrarily chosen and impose no naming conventions on the user.
+The extensions are invoked in either `forward` or `reverse` order.  In forward
+order the initial extensions are invoked before the dynamic extensions.  The
+forward order of initial extensions is defined by the initial extensions table
+index.  The forward order of dynamic extensions is defined by the order in
+which the dynamic extensions were created.  The reverse order is defined
+accordingly.  By invoking the dynamic extensions in this order, extensions can
+be built upon one another.  At the following system events, the extensions are
+invoked in `forward` order
 
-TASK_CREATE Extension
-~~~~~~~~~~~~~~~~~~~~~
+- thread creation,
 
-The TASK_CREATE extension directly corresponds to the ``rtems_task_create``
-directive.  If this extension is defined in any static or dynamic extension set
-and a task is being created, then the extension routine will automatically be
-invoked by RTEMS.  The extension should have a prototype similar to the
-following:
+- thread start,
+
+- thread restart,
+
+- thread switch,
+
+- thread begin,
+
+- thread exitted (return from thread entry function), and
+
+- fatal error detection.
+
+At the following system events, the extensions are invoked in `reverse` order:
+
+- thread termination, and
+
+- thread deletion.
+
+At these system events, the extensions are invoked in reverse order to insure
+that if an extension set is built upon another, the more complicated extension
+is invoked before the extension set it is built upon.  An example is use of the
+thread delete extension by the Standard C Library.  Extension sets which are
+installed after the Standard C Library will operate correctly even if they
+utilize the C Library because the C Library's thread delete extension is
+invoked after that of the other extensions.
+
+Thread Create Extension
+-----------------------
+
+The thread create extension is invoked during thread creation, for example
+via :ref:`rtems_task_create() <rtems_task_create>` or :c:func:`pthread_create`.
+The thread create extension is defined as follows.
 
 .. index:: rtems_task_create_extension
-.. index:: rtems_extension
 
 .. code-block:: c
 
-    bool user_task_create(
-       rtems_tcb *current_task,
-       rtems_tcb *new_task
+    typedef bool ( *rtems_task_create_extension )(
+      rtems_tcb *executing,
+      rtems_tcb *created
     );
 
-where ``current_task`` can be used to access the TCB for the currently
-executing task, and new_task can be used to access the TCB for the new task
-being created.  This extension is invoked from the ``rtems_task_create``
-directive after ``new_task`` has been completely initialized, but before it is
-placed on a ready TCB chain.
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.  The :c:data:`created` is a pointer to the TCB of the created thread.
+The created thread is completely initialized with respect to the operating
+system.
 
-The user extension is expected to return the boolean value ``true`` if it
-successfully executed and ``false`` otherwise.  A task create user extension
-will frequently attempt to allocate resources.  If this allocation fails, then
-the extension should return ``false`` and the entire task create operation will
-fail.
+The executing thread is the owner of the allocator mutex except during creation
+of the idle threads.  Since the allocator mutex allows nesting the normal
+memory allocation routines can be used.
 
-TASK_START Extension
-~~~~~~~~~~~~~~~~~~~~
+A thread create user extension will frequently attempt to allocate resources.
+If this allocation fails, then the extension must return :c:data:`false` and
+the entire thread create operation will fail, otherwise it must return
+:c:data:`true`.
 
-The ``TASK_START`` extension directly corresponds to the task_start directive.
-If this extension is defined in any static or dynamic extension set and a task
-is being started, then the extension routine will automatically be invoked by
-RTEMS.  The extension should have a prototype similar to the following:
+This extension is invoked in forward order with thread dispatching enabled
+(except during system initialization).
+
+Thread Start Extension
+----------------------
+
+The thread start extension is invoked during a thread start, for example
+via :ref:`rtems_task_start() <rtems_task_start>` or :c:func:`pthread_create`.
+The thread start extension is defined as follows.
 
 .. index:: rtems_task_start_extension
 
 .. code-block:: c
 
-    void user_task_start(
-        rtems_tcb *current_task,
-        rtems_tcb *started_task
+    typedef void ( *rtems_task_start_extension )(
+      rtems_tcb *executing,
+      rtems_tcb *started
     );
 
-where current_task can be used to access the TCB for the currently executing
-task, and started_task can be used to access the TCB for the dormant task being
-started. This extension is invoked from the task_start directive after
-started_task has been made ready to start execution, but before it is placed on
-a ready TCB chain.
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.  The :c:data:`started` is a pointer to the TCB of the started thread.
+It is invoked after the environment of the started thread has been loaded and the
+started thread has been made ready.  So, in SMP configurations, the thread may
+already run on another processor before the thread start extension is actually
+invoked.
 
-TASK_RESTART Extension
-~~~~~~~~~~~~~~~~~~~~~~
+This extension is invoked in forward order with thread dispatching disabled.
 
-The ``TASK_RESTART`` extension directly corresponds to the task_restart
-directive.  If this extension is defined in any static or dynamic extension set
-and a task is being restarted, then the extension should have a prototype
-similar to the following:
+Thread Restart Extension
+------------------------
+
+The thread restart extension is invoked during a thread restart, for example
+via :ref:`rtems_task_restart() <rtems_task_start>`.
+The thread restart extension is defined as follows.
 
 .. index:: rtems_task_restart_extension
 
 .. code-block:: c
 
-    void user_task_restart(
-        rtems_tcb *current_task,
-        rtems_tcb *restarted_task
+    typedef void ( *rtems_task_restart_extension )(
+      rtems_tcb *executing,
+      rtems_tcb *restarted
     );
 
-where current_task can be used to access the TCB for the currently executing
-task, and restarted_task can be used to access the TCB for the task being
-restarted. This extension is invoked from the task_restart directive after
-restarted_task has been made ready to start execution, but before it is placed
-on a ready TCB chain.
+Both :c:data:`executing` and :c:data:`restarted` are pointers the TCB of the
+currently executing thread.  It is invoked in the context of the executing
+thread right before the execution context is reloaded.  The thread stack
+reflects the previous execution context.
 
-TASK_DELETE Extension
-~~~~~~~~~~~~~~~~~~~~~
+This extension is invoked in forward order with thread dispatching enabled
+(except during system initialization).  The thread life is protected.  Thread
+restart and delete requests issued by restart extensions lead to recursion.
 
-The ``TASK_DELETE`` extension is associated with the task_delete directive.  If
-this extension is defined in any static or dynamic extension set and a task is
-being deleted, then the extension routine will automatically be invoked by
-RTEMS.  The extension should have a prototype similar to the
-following:
+Thread Switch Extension
+-----------------------
 
-.. index:: rtems_task_delete_extension
-
-.. code-block:: c
-
-    void user_task_delete(
-        rtems_tcb *current_task,
-        rtems_tcb *deleted_task
-    );
-
-where current_task can be used to access the TCB for the currently executing
-task, and deleted_task can be used to access the TCB for the task being
-deleted. This extension is invoked from the task_delete directive after the TCB
-has been removed from a ready TCB chain, but before all its resources including
-the TCB have been returned to their respective free pools.  This extension
-should not call any RTEMS directives if a task is deleting itself (current_task
-is equal to deleted_task).
-
-TASK_SWITCH Extension
-~~~~~~~~~~~~~~~~~~~~~
-
-The ``TASK_SWITCH`` extension corresponds to a task context switch.  If this
-extension is defined in any static or dynamic extension set and a task context
-switch is in progress, then the extension routine will automatically be invoked
-by RTEMS.  The extension should have a prototype similar to the following:
+The thread switch extension is invoked before the context switch from the
+currently executing thread to the heir thread.  The thread switch extension is
+defined as follows.
 
 .. index:: rtems_task_switch_extension
 
 .. code-block:: c
 
-    void user_task_switch(
-        rtems_tcb *current_task,
-        rtems_tcb *heir_task
+    typedef void ( *rtems_task_switch_extension )(
+      rtems_tcb *executing,
+      rtems_tcb *heir
     );
 
-where current_task can be used to access the TCB for the task that is being
-swapped out, and heir_task can be used to access the TCB for the task being
-swapped in.  This extension is invoked from RTEMS' dispatcher routine after the
-current_task context has been saved, but before the heir_task context has been
-restored.  This extension should not call any RTEMS directives.
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.  The :c:data:`heir` is a pointer to the TCB of the heir thread.
 
-TASK_BEGIN Extension
-~~~~~~~~~~~~~~~~~~~~
+This extension is invoked in forward order with thread dispatching disabled.
+In SMP configurations, interrupts are disabled and the per-processor SMP lock
+is owned.
 
-The ``TASK_BEGIN`` extension is invoked when a task begins execution.  It is
-invoked immediately before the body of the starting procedure and executes in
-the context in the task.  This user extension have a prototype similar to the
-following:
+The context switches initiated through the multitasking start are not covered
+by this extension.
+
+Thread Begin Extension
+----------------------
+
+The thread begin extension is invoked during a thread begin before the thread
+entry function is called.  The thread begin extension is defined as follows.
 
 .. index:: rtems_task_begin_extension
 
 .. code-block:: c
 
-    void user_task_begin(
-        rtems_tcb *current_task
+    typedef void ( *rtems_task_begin_extension )(
+      rtems_tcb *executing
     );
 
-where current_task can be used to access the TCB for the currently executing
-task which has begun.  The distinction between the ``TASK_BEGIN`` and
-TASK_START extension is that the ``TASK_BEGIN`` extension is executed in the
-context of the actual task while the TASK_START extension is executed in the
-context of the task performing the task_start directive.  For most extensions,
-this is not a critical distinction.
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.  The thread begin extension executes in a normal thread context and may
+allocate resources for the thread.  In particular it has access to thread-local
+storage of the thread.
 
-TASK_EXITTED Extension
-~~~~~~~~~~~~~~~~~~~~~~
+This extension is invoked in forward order with thread dispatching enabled.
+The thread switch extension may be called multiple times for this thread before
+the thread begin extension is invoked.
 
-The ``TASK_EXITTED`` extension is invoked when a task exits the body of the
-starting procedure by either an implicit or explicit return statement.  This
-user extension have a prototype similar to the following:
+Thread Exitted Extension
+------------------------
+
+The thread exitted extension is invoked once the thread entry function returns.
+The thread exitted extension is defined as follows.
 
 .. index:: rtems_task_exitted_extension
 
 .. code-block:: c
 
-    void user_task_exitted(
-        rtems_tcb *current_task
+    typedef void ( *rtems_task_exitted_extension )(
+      rtems_tcb *executing
     );
 
-where current_task can be used to access the TCB for the currently executing
-task which has just exitted.
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.
 
-Although exiting of task is often considered to be a fatal error, this
-extension allows recovery by either restarting or deleting the exiting task.
-If the user does not wish to recover, then a fatal error may be reported.  If
-the user does not provide a ``TASK_EXITTED`` extension or the provided handler
-returns control to RTEMS, then the RTEMS default handler will be used.  This
-default handler invokes the directive fatal_error_occurred with the
-``RTEMS_TASK_EXITTED`` directive status.
+This extension is invoked in forward order with thread dispatching enabled.
 
-FATAL Error Extension
-~~~~~~~~~~~~~~~~~~~~~
+Thread Termination Extension
+----------------------------
 
-The ``FATAL`` error extension is associated with the fatal_error_occurred
-directive.  If this extension is defined in any static or dynamic extension set
-and the fatal_error_occurred directive has been invoked, then this extension
-will be called.  This extension should have a prototype similar to the
-following:
+The thread termination extension is invoked in case a termination request is
+recognized by the currently executing thread.  Termination requests may result
+due to calls of :ref:`rtems_task_delete() <rtems_task_delete>`,
+:c:func:`pthread_exit`, or :c:func:`pthread_cancel`.  The thread termination
+extension is defined as follows.
+
+.. index:: rtems_task_terminate_extension
+
+.. code-block:: c
+
+    typedef void ( *rtems_task_terminate_extension )(
+      rtems_tcb *executing
+    );
+
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.
+
+It is invoked in the context of the terminated thread right before the
+thread dispatch to the heir thread.  The POSIX cleanup and key destructors
+execute in this context.  The thread termination extension has access to
+thread-local storage and thread-specific data of POSIX keys.
+
+This extension is invoked in reverse order with thread dispatching enabled.
+The thread life is protected.  Thread restart and delete requests issued by
+terminate extensions lead to recursion.
+
+Thread Delete Extension
+-----------------------
+
+The thread delete extension is invoked in case a zombie thread is killed.  A
+thread becomes a zombie thread after it terminated.  The thread delete
+extension is defined as follows.
+
+.. index:: rtems_task_delete_extension
+
+.. code-block:: c
+
+    typedef void ( *rtems_task_delete_extension )(
+      rtems_tcb *executing,
+      rtems_tcb *deleted
+    );
+
+The :c:data:`executing` is a pointer to the TCB of the currently executing
+thread.  The :c:data:`deleted` is a pointer to the TCB of the deleted thread.
+The :c:data:`executing` and :c:data:`deleted` pointers are never equal.
+
+The executing thread is the owner of the allocator mutex.  Since the allocator
+mutex allows nesting the normal memory allocation routines can be used.
+
+This extension is invoked in reverse order with thread dispatching enabled.
+
+Please note that a thread delete extension is not immediately invoked with a
+call to :ref:`rtems_task_delete() <rtems_task_delete>` or similar.  The thread
+must first terminate and this may take some time.  The thread delete extension
+is invoked by :ref:`rtems_task_create() <rtems_task_create>` or similar as a
+result of a lazy garbage collection of zombie threads.
+
+Fatal Error Extension
+---------------------
+
+The fatal error extension is invoked during :ref:`system termination
+<Terminate>`.  The fatal error extension is defined as follows.
 
 .. index:: rtems_fatal_extension
 
 .. code-block:: c
 
-    void user_fatal_error(
-        Internal_errors_Source  the_source,
-        bool                    always_set_to_false,
-        uint32_t                the_error
+    typedef void( *rtems_fatal_extension )(
+      rtems_fatal_source source,
+      bool               always_set_to_false,
+      rtems_fatal_code   code
     );
 
-where the_error is the error code passed to the fatal_error_occurred
-directive. This extension is invoked from the fatal_error_occurred directive.
+The :c:data:`source` parameter is the fatal source indicating the subsystem the
+fatal condition originated in.  The :c:data:`always_set_to_false` parameter is
+always set to :c:data:`false` and provided only for backward compatibility
+reasons.  The :c:data:`code` parameter is the fatal error code.  This value
+must be interpreted with respect to the source.
 
-If defined, the user's ``FATAL`` error extension is invoked before RTEMS'
-default fatal error routine is invoked and the processor is stopped.  For
-example, this extension could be used to pass control to a debugger when a
-fatal error occurs.  This extension should not call any RTEMS directives.
+This extension is invoked in forward order.
 
-Order of Invocation
--------------------
-
-When one of the critical system events occur, the user extensions are invoked
-in either "forward" or "reverse" order.  Forward order indicates that the
-static extension set is invoked followed by the dynamic extension sets in the
-order in which they were created.  Reverse order means that the dynamic
-extension sets are invoked in the opposite of the order in which they were
-created followed by the static extension set.  By invoking the extension sets
-in this order, extensions can be built upon one another.  At the following
-system events, the extensions are invoked in forward order:
-
-#. Task creation
-
-#. Task initiation
-
-#. Task reinitiation
-
-#. Task deletion
-
-#. Task context switch
-
-#. Post task context switch
-
-#. Task begins to execute
-
-At the following system events, the extensions are invoked in reverse order:
-
-#. Task deletion
-
-#. Fatal error detection
-
-At these system events, the extensions are invoked in reverse order to insure
-that if an extension set is built upon another, the more complicated extension
-is invoked before the extension set it is built upon.  For example, by invoking
-the static extension set last it is known that the "system" fatal error
-extension will be the last fatal error extension executed.  Another example is
-use of the task delete extension by the Standard C Library.  Extension sets
-which are installed after the Standard C Library will operate correctly even if
-they utilize the C Library because the C Library's ``TASK_DELETE`` extension is
-invoked after that of the other extensions.
-
-Operations
-==========
-
-Creating an Extension Set
--------------------------
-
-The ``rtems_extension_create`` directive creates and installs an extension set
-by allocating a Extension Set Control Block (ESCB), assigning the extension set
-a user-specified name, and assigning it an extension set ID.  Newly created
-extension sets are immediately installed and are invoked upon the next system
-even supporting an extension.
-
-Obtaining Extension Set IDs
----------------------------
-
-When an extension set is created, RTEMS generates a unique extension set ID and
-assigns it to the created extension set until it is deleted.  The extension ID
-may be obtained by either of two methods.  First, as the result of an
-invocation of the ``rtems_extension_create`` directive, the extension set ID is
-stored in a user provided location.  Second, the extension set ID may be
-obtained later using the ``rtems_extension_ident`` directive.  The extension
-set ID is used by other directives to manipulate this extension set.
-
-Deleting an Extension Set
--------------------------
-
-The ``rtems_extension_delete`` directive is used to delete an extension set.
-The extension set's control block is returned to the ESCB free list when it is
-deleted.  An extension set can be deleted by a task other than the task which
-created the extension set.  Any subsequent references to the extension's name
-and ID are invalid.
+It is strongly advised to use initial extensions to install a fatal error
+extension.  Usually, the initial extensions of board support package provides a
+fatal error extension which resets the board.  In this case, the dynamic fatal
+error extensions are not invoked.
 
 Directives
 ==========
@@ -451,9 +428,9 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_extension_create(
-            rtems_name              name,
-            rtems_extensions_table *table,
-            rtems_id               *id
+          rtems_name                    name,
+          const rtems_extensions_table *table,
+          rtems_id                     *id
         );
 
 DIRECTIVE STATUS CODES:
@@ -468,11 +445,16 @@ DIRECTIVE STATUS CODES:
        - too many extension sets created
 
 DESCRIPTION:
-    This directive creates a extension set.  The assigned extension set id is
-    returned in id.  This id is used to access the extension set with other
-    user extension manager directives.  For control and maintenance of the
-    extension set, RTEMS allocates an ESCB from the local ESCB free pool and
-    initializes it.
+
+    This directive creates an extension set.  The assigned extension set
+    identifier is returned in :c:data:`id`.  This identifier is used to access
+    the extension set with other user extension manager directives.  For
+    control and maintenance of the extension set, RTEMS allocates an Extension
+    Set Control Block (ESCB) from the local ESCB free pool and initializes it.
+    The user-specified :c:data:`name` is assigned to the ESCB and may be used
+    to identify the extension set via :ref:`rtems_extension_ident()
+    <rtems_extension_ident>`.  The extension set specified by :c:data:`table`
+    is copied to the ESCB.
 
 NOTES:
 
@@ -494,8 +476,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_extension_ident(
-            rtems_name  name,
-            rtems_id   *id
+          rtems_name  name,
+          rtems_id   *id
         );
 
 DIRECTIVE STATUS CODES:
@@ -508,11 +490,12 @@ DIRECTIVE STATUS CODES:
        - extension set name not found
 
 DESCRIPTION:
-    This directive obtains the extension set id associated with the extension
-    set name to be acquired.  If the extension set name is not unique, then the
-    extension set id will match one of the extension sets with that name.
-    However, this extension set id is not guaranteed to correspond to the
-    desired extension set.  The extension set id is used to access this
+    This directive obtains the extension set identifier associated with the
+    extension set :c:data:`name` to be acquired and returns it in :c:data:`id`.
+    If the extension set name is not unique, then the extension set identifier
+    will match one of the extension sets with that name.  However, this
+    extension set identifier is not guaranteed to correspond to the desired
+    extension set.  The extension set identifier is used to access this
     extension set in other extension set related directives.
 
 NOTES:
@@ -546,7 +529,7 @@ DIRECTIVE STATUS CODES:
        - invalid extension set id
 
 DESCRIPTION:
-    This directive deletes the extension set specified by ``id``.  If the
+    This directive deletes the extension set specified by :c:data:`id`.  If the
     extension set is running, it is automatically canceled.  The ESCB for the
     deleted extension set is reclaimed by RTEMS.
 
@@ -555,6 +538,3 @@ NOTES:
 
     A extension set can be deleted by a task other than the task which created
     the extension set.
-
-NOTES:
-    This directive will not cause the running task to be preempted.

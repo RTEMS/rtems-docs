@@ -387,7 +387,7 @@ INTERNAL_ERROR_LIBIO_STDERR_FD_OPEN_FAILED (37)
 Operations
 ==========
 
-.. _Announcing a Fatal Error:
+.. _Terminate:
 
 Announcing a Fatal Error
 ------------------------
@@ -398,7 +398,7 @@ application or the executive itself determines that a fatal error has occurred
 or a final system state is reached (for example after :c:func:`rtems_fatal()`
 or :c:func:`exit()`).
 
-The first action of the internal error handler is to call the fatal handler of
+The first action of the internal error handler is to call the fatal extension of
 the user extensions.  For the initial extensions the following conditions are
 required
 
@@ -417,7 +417,7 @@ Non-initial extensions require in addition valid read-write data.  The board
 support package (BSP) may install an initial extension that performs a system
 reset.  In this case the non-initial extensions will be not called.
 
-The fatal handler are called with three parameters:
+The fatal extensions are called with three parameters:
 
 - the fatal source,
 
@@ -425,7 +425,7 @@ The fatal handler are called with three parameters:
 
 - an error code with a fatal source dependent content.
 
-Once all fatal handler executed, the error information will be stored to
+Once all fatal extensions executed, the error information will be stored to
 :c:data:`_Internal_errors_What_happened` and the system state is set to
 :c:macro:`SYSTEM_STATE_TERMINATED`.
 
