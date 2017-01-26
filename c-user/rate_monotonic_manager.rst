@@ -2,6 +2,7 @@
 
 .. COMMENT: COPYRIGHT (c) 1988-2008.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: COPYRIGHT (c) 2017 Kuan-Hsun Chen.
 .. COMMENT: All rights reserved.
 
 Rate Monotonic Manager
@@ -170,9 +171,12 @@ Rate Monotonic Scheduling Algorithm
 .. index:: RMS Algorithm, definition
 
 The Rate Monotonic Scheduling Algorithm (RMS) is important to real-time systems
-designers because it allows one to sufficiently guarantee that a set of tasks is
-schedulable.  A set of tasks is said to be schedulable if all of the tasks can
-meet their deadlines.  RMS provides a set of rules which can be used to perform
+designers because it allows one to sufficiently guarantee that a set of tasks
+is schedulable (see :cite:`Liu:1973:Scheduling`, :cite:`Lehoczky:1989:RM`,
+:cite:`Lui:1990:Ada`, :cite:`Burns:1991:Review`).
+
+A set of tasks is said to be schedulable if all of the tasks can meet their
+deadlines.  RMS provides a set of rules which can be used to perform
 a guaranteed schedulability analysis for a task set.  This analysis determines
 whether a task set is schedulable under worst-case conditions and emphasizes
 the predictability of the system's behavior.  It has been proven that:
@@ -283,6 +287,7 @@ As the number of tasks increases, the above formula approaches ln(2) for a
 worst-case utilization factor of approximately 0.693.  Many tasks sets can be
 scheduled with a greater utilization factor.  In fact, the average processor
 utilization threshold for a randomly generated task set is approximately 0.88.
+See more detail in :cite:`Liu:1973:Scheduling`.
 
 Processor Utilization Rule Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -328,6 +333,7 @@ initialization task, all application tasks, regardless of priority, can be
 created and started before the initialization deletes itself.  This technique
 ensures that all tasks begin to compete for execution time at the same instant
 - when the user initialization task deletes itself.
+See more detail in :cite:`Lehoczky:1989:RM`.
 
 First Deadline Rule Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -417,26 +423,6 @@ and its run-time behavior when performing schedulability analysis for a system
 using RMS.  Every hardware and software factor which impacts the execution time
 of each task must be accounted for in the schedulability analysis.
 
-Further Reading
-^^^^^^^^^^^^^^^
-
-For more information on Rate Monotonic Scheduling and its schedulability
-analysis, the reader is referred to the following:
-
-- C. L. Liu and J. W. Layland. "Scheduling Algorithms for Multiprogramming in a
-  Hard Real Time Environment." *Journal of the Association of Computing
-  Machinery*. January 1973. pp. 46-61.
-
-- John Lehoczky, Lui Sha, and Ye Ding. "The Rate Monotonic Scheduling
-  Algorithm: Exact Characterization and Average Case Behavior."  *IEEE
-  Real-Time Systems Symposium*. 1989. pp. 166-171.
-
-- Lui Sha and John Goodenough. "Real-Time Scheduling theory and Ada."  *IEEE
-  Computer*. April 1990. pp. 53-62.
-
-- Alan Burns. "Scheduling hard real-time systems: a review."  *Software
-  Engineering Journal*. May 1991. pp. 116-128.
-
 Operations
 ==========
 
@@ -471,7 +457,8 @@ monotonic period results in one of the following scenarios:
   ``rtems_rate_monotonic_period`` directive, the postponed job will be released
   until there is no more postponed jobs. The calling task returns immediately
   with a timeout error status. In the watchdog routine, the period will still
-  be updated periodically and track the number of the postponed periods.
+  be updated periodically and track the count of the postponed jobs :cite:`Chen:2016:Overrun`.
+  Please note, the count of the postponed jobs is only saturated until 0xffffffff.
 
 Obtaining the Status of a Period
 --------------------------------
@@ -561,8 +548,8 @@ Subsequent invocations of the ``rtems_rate_monotonic_period`` directive will
 result in the task blocking for the remainder of the 100 tick period.  If, for
 any reason, the body of the loop takes more than 100 ticks to execute, the
 ``rtems_rate_monotonic_period`` directive will return the ``RTEMS_TIMEOUT``
-status and the postponed job will be released.  If the above task misses
-its deadline, it will delete the rate monotonic period and itself.
+status. If the above task misses its deadline, it will delete the rate
+monotonic period and itself.
 
 Task with Multiple Periods
 --------------------------
@@ -630,8 +617,8 @@ will not block.
 
 If, for any reason, the task misses any deadline, the
 ``rtems_rate_monotonic_period`` directive will return the ``RTEMS_TIMEOUT``
-directive status and the postponed job will be released. If the above task misses
-its deadline, it will delete the rate monotonic periods and itself.
+directive status. If the above task misses its deadline, it will delete the
+rate monotonic periods and itself.
 
 Directives
 ==========
@@ -841,9 +828,9 @@ DESCRIPTION:
     remainder of the period before reinitiating the period with the specified
     period.  If id was not running (either expired or never initiated), the
     period is immediately initiated and the directive returns immediately.
-       If id has expired its period, the postponed job will be released immediately
-       and the following calls of this directive will release postponed
-       jobs until there is no more deadline miss.
+    If id has expired its period, the postponed job will be released immediately
+    and the following calls of this directive will release postponed
+    jobs until there is no more deadline miss.
 
     If invoked with a period of ``RTEMS_PERIOD_STATUS`` ticks, the current
     state of id will be returned.  The directive status indicates the current
@@ -897,6 +884,7 @@ DIRECTIVE STATUS CODES:
             rtems_rate_monotonic_period_states    state;
             rtems_rate_monotonic_period_time_t    since_last_period;
             rtems_thread_cpu_usage_t              executed_since_last_period;
+            uint32_t                              postponed_jobs_count;
         }  rtems_rate_monotonic_period_status;
 
     .. COMMENT: RATE_MONOTONIC_INACTIVE does not have RTEMS in front of it.
@@ -907,11 +895,12 @@ DIRECTIVE STATUS CODES:
     time values will be set to 0.  Otherwise, both time values will contain
     time information since the last invocation of the
     ``rtems_rate_monotonic_period`` directive.  More specifically, the
-    ticks_since_last_period value contains the elapsed time which has occurred
+    since_last_period value contains the elapsed time which has occurred
     since the last invocation of the ``rtems_rate_monotonic_period`` directive
-    and the ``ticks_executed_since_last_period`` contains how much processor
+    and the ``executed_since_last_period`` contains how much processor
     time the owning task has consumed since the invocation of the
-    ``rtems_rate_monotonic_period`` directive.
+    ``rtems_rate_monotonic_period`` directive. In addition, the
+    postponed_jobs_count value contains the count of jobs which are not released yet.
 
 NOTES:
     This directive will not cause the running task to be preempted.
