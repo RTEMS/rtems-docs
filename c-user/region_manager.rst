@@ -237,12 +237,12 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_create(
-            rtems_name       name,
-            void            *starting_address,
-            intptr_t         length,
-            uint32_t         page_size,
-            rtems_attribute  attribute_set,
-            rtems_id        *id
+          rtems_name       name,
+          void            *starting_address,
+          uintptr_t        length,
+          uintptr_t        page_size,
+          rtems_attribute  attribute_set,
+          rtems_id        *id
         );
 
 DIRECTIVE STATUS CODES:
@@ -314,8 +314,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_ident(
-            rtems_name  name,
-            rtems_id   *id
+          rtems_name  name,
+          rtems_id   *id
         );
 
 DIRECTIVE STATUS CODES:
@@ -355,7 +355,7 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_delete(
-            rtems_id id
+          rtems_id id
         );
 
 DIRECTIVE STATUS CODES:
@@ -396,9 +396,9 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_extend(
-            rtems_id  id,
-            void     *starting_address,
-            intptr_t  length
+          rtems_id   id,
+          void      *starting_address,
+          uintptr_t  length
         );
 
 DIRECTIVE STATUS CODES:
@@ -439,11 +439,11 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_get_segment(
-            rtems_id         id,
-            intptr_t         size,
-            rtems_option     option_set,
-            rtems_interval   timeout,
-            void           **segment
+          rtems_id         id,
+          uintptr_t        size,
+          rtems_option     option_set,
+          rtems_interval   timeout,
+          void           **segment
         );
 
 DIRECTIVE STATUS CODES:
@@ -522,8 +522,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_return_segment(
-            rtems_id  id,
-            void     *segment
+          rtems_id  id,
+          void     *segment
         );
 
 DIRECTIVE STATUS CODES:
@@ -571,9 +571,9 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_get_segment_size(
-            rtems_id  id,
-            void     *segment,
-            ssize_t  *size
+          rtems_id   id,
+          void      *segment,
+          uintptr_t *size
         );
 
 DIRECTIVE STATUS CODES:
@@ -613,10 +613,10 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_region_resize_segment(
-            rtems_id     id,
-            void        *segment,
-            ssize_t      size,
-            ssize_t     *old_size
+          rtems_id   id,
+          void      *segment,
+          uintptr_t  new_size,
+          uintptr_t *old_size
         );
 
 DIRECTIVE STATUS CODES:
