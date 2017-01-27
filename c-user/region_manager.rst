@@ -154,12 +154,6 @@ The ``rtems_region_extend`` directive may be used to add memory to an existing
 region.  The caller specifies the size in bytes and starting address of the
 memory being added.
 
-.. note::
-
-  Please see the release notes or RTEMS source code for information regarding
-  restrictions on the location of the memory being added in relation to memory
-  already in the region.
-
 Acquiring a Segment
 -------------------
 
@@ -417,15 +411,23 @@ DIRECTIVE STATUS CODES:
        - invalid address of area to add
 
 DESCRIPTION:
-    This directive adds the memory which starts at starting_address for length
-    bytes to the region specified by id.
+    This directive adds the memory area which starts at
+    :c:data:`starting_address` for :c:data:`length` bytes to the region
+    specified by :c:data:`id`.
+
+    There are no alignment requirements for the memory area.  The memory area
+    must be big enough to contain some maintenance blocks.  It must not overlap
+    parts of the current heap memory areas.  Disconnected memory areas added to
+    the heap will lead to used blocks which cover the gaps.  Extending with an
+    inappropriate memory area will corrupt the heap resulting in undefined
+    behaviour.
 
 NOTES:
     This directive will obtain the allocator mutex and may cause the calling
     task to be preempted.
 
     The calling task does not have to be the task that created the region.  Any
-    local task that knows the region id can extend the region.
+    local task that knows the region identifier can extend the region.
 
 .. raw:: latex
 
