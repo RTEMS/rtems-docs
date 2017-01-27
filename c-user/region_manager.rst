@@ -286,7 +286,8 @@ DESCRIPTION:
     equal to eight.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
 
     The following region attribute constants are defined by RTEMS:
 
@@ -375,7 +376,8 @@ DESCRIPTION:
     deleted region is reclaimed by RTEMS.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
 
     The calling task does not have to be the task that created the region.  Any
     local task that knows the region id can delete the region.
@@ -419,7 +421,8 @@ DESCRIPTION:
     bytes to the region specified by id.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
 
     The calling task does not have to be the task that created the region.  Any
     local task that knows the region id can extend the region.
@@ -491,6 +494,9 @@ DESCRIPTION:
     then the calling task will wait forever.
 
 NOTES:
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
+
     The actual length of the allocated segment may be larger than the requested
     size because a segment size is always a multiple of the region's page size.
 
@@ -643,6 +649,9 @@ DESCRIPTION:
     unsatisfied.
 
 NOTES:
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
+
     If an attempt to increase the size of a segment fails, then the application
     may want to allocate a new segment of the desired size, copy the contents
     of the original segment to the new, larger segment and then return the
