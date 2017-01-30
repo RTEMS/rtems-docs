@@ -210,13 +210,13 @@ RTEMS_SYSINIT_POSIX_RWLOCK
     Initialization of the POSIX Read-Write Locks object class.  This step is
     optional and depends on the application configuration.
 
-RTEMS_SYSINIT_POSIX_CLEANUP
-    Initialization of the POSIX Cleanup support.  This step is optional and
-    depends on the application configuration.
-
 RTEMS_SYSINIT_POSIX_KEYS
     Initialization of the POSIX Keys object class.  This step is optional
     and depends on the application configuration.
+
+RTEMS_SYSINIT_POSIX_CLEANUP
+    Initialization of the POSIX Cleanup support.  This step is optional and
+    depends on the application configuration.
 
 RTEMS_SYSINIT_IDLE_THREADS
     Initialization of idle threads.  This step is mandatory.
