@@ -289,6 +289,46 @@ time in RTEMS services.  See :ref:`Time and Date Data Structures`.
 
 .. index:: rtems_time_of_day
 
+Timer and Timeouts
+==================
+
+Timer and timeout services are a standard component of an operating system.
+The use cases fall roughly into two categories:
+
+* Timeouts -- used to detect if some operations need more time than expected.
+  Since the unexpected happens hopefully rarely, timeout timers are usually
+  removed before they expire. The critical operations are insert and removal.
+  For example, they are important for the performance of a network stack.
+
+* Timers -- used to carry out some work in the future. They usually expire
+  and need a high resolution. An example use case is a time driven scheduler,
+  e.g.  rate-monotonic or EDF.
+
+In RTEMS versions prior to 4.12 the timer and timeout support was implemented
+by means of delta chains.  This implementation was unfit for SMP systems due to
+several reasons.  The new implementation present since RTEMS 4.12 uses a
+red-black tree with the expiration time as the key.  This leads to
+:math:`O(log(n))` worst-case insert and removal operations for :math:`n` active
+timer or timeouts.  Each processor provides its own timer and timeout service
+point so that it scales well with the processor count of the system.  For each
+operation it is sufficient to acquire and release a dedicated SMP lock only
+once. The drawback is that a 64-bit integer type is required internally for the
+intervals to avoid a potential overflow of the key values.
+
+An alternative to the red-black tree based implementation would be the use of a
+timer wheel based algorithm :cite:`Varghese:1987:TimerWheel` which is used in
+Linux and FreeBSD :cite:`Varghese:1995:BSDCallout` for example.  A timer wheel
+based algorithm offers :math:`O(1)` worst-case time complexity for insert and
+removal operations.  The drawback is that the run-time of the clock tick
+procedure is unpredictable due to the use of a hash table or cascading.
+
+The red-black tree approach was selected for RTEMS, since it offers a more
+predictable run-time behaviour.  However, this sacrifices the constant insert
+and removal operations offered by the timer wheel algorithms.  See also
+:cite:`Gleixner:2006:Hrtimers`.  The implementation can re-use the red-black
+tree support already used in other areas, e.g. for the thread priority queues.
+Less code is a good thing for size, testing and verification.
+
 Memory Management
 =================
 .. index:: memory management

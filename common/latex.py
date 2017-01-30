@@ -15,6 +15,7 @@ package_tests = {
     'amsmath'        : ['\\usepackage{amsmath}'],
     'amssymb'        : ['\\usepackage{amssymb}'],
     'amstext'        : ['\\usepackage{amstext}'],
+    'anyfontsize'    : ['\\usepackage{anyfontsize}'],
     'array'          : ['\\usepackage{array}'],
     'atbegshi'       : ['\\usepackage{atbegshi}'],
     'babel'          : ['\\usepackage{babel}'],
