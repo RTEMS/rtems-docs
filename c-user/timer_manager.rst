@@ -65,9 +65,10 @@ Timer Server
 ------------
 
 The Timer Server task is responsible for executing the timer service routines
-associated with all task-based timers.  This task executes at a priority higher
-than any RTEMS application task, and is created non-preemptible, and thus can
-be viewed logically as the lowest priority interrupt.
+associated with all task-based timers.  This task executes at a priority
+specified by :ref:`rtems_timer_initiate_server() <rtems_timer_initiate_server>`
+and it may have a priority of zero (the highest priority).  In uni-processor
+configurations, it is created non-preemptible.
 
 By providing a mechanism where timer service routines execute in task rather
 than interrupt space, the application is allowed a bit more flexibility in what
@@ -75,9 +76,10 @@ operations a timer service routine can perform.  For example, the Timer Server
 can be configured to have a floating point context in which case it would be
 safe to perform floating point operations from a task-based timer.  Most of the
 time, executing floating point instructions from an interrupt service routine
-is not considered safe. However, since the Timer Server task is
-non-preemptible, only directives allowed from an ISR can be called in the timer
-service routine.
+is not considered safe. The timer service routines invoked by the Timer Server
+may block, however, since this blocks the Timer Server itself, other timer
+service routines that are already pending do not run until the blocked timer
+service routine finished its work.
 
 The Timer Server is designed to remain blocked until a task-based timer fires.
 This reduces the execution overhead of the Timer Server.
@@ -227,7 +229,12 @@ DESCRIPTION:
     local TMCB free pool and initializes it.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
+
+    In SMP configurations, the processor of the currently executing thread
+    determines the processor used for the created timer.  During the life-time
+    of the timer this processor is used to manage the timer internally.
 
 .. raw:: latex
 
@@ -337,7 +344,8 @@ DESCRIPTION:
     by RTEMS.
 
 NOTES:
-    This directive will not cause the running task to be preempted.
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
 
     A timer can be deleted by a task other than the task which created the
     timer.
