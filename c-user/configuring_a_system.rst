@@ -1650,7 +1650,7 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MICROSECONDS_PER_TICK ===
 
-.. _Length of Each Clock Tick:
+.. _CONFIGURE_MICROSECONDS_PER_TICK:
 
 Length of Each Clock Tick
 -------------------------

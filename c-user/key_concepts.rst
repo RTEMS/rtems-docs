@@ -245,9 +245,16 @@ Time
 
 The development of responsive real-time applications requires an understanding
 of how RTEMS maintains and supports time-related operations.  The basic unit of
-time in RTEMS is known as a tick.  The frequency of clock ticks is completely
-application dependent and determines the granularity and accuracy of all
-interval and calendar time operations.
+time in RTEMS is known as a `clock tick` or simply `tick`.  The tick interval
+is defined by the application configuration option
+:ref:`CONFIGURE_MICROSECONDS_PER_TICK <CONFIGURE_MICROSECONDS_PER_TICK>`.  The
+tick interval defines the basic resolution of all interval and calendar time
+operations.  Obviously, the directives which use intervals or wall time cannot
+operate without some external mechanism which provides a periodic clock tick.
+This clock tick is provided by the clock driver.  The tick precision and
+stability depends on the clock driver and interrupt latency.  Most clock
+drivers provide a timecounter to measure the time with a higher resolution than
+the tick.
 
 .. index:: rtems_interval
 
@@ -257,13 +264,13 @@ execution of timer service routines, and the rate monotonic scheduling of
 tasks.  An interval is defined as a number of ticks relative to the current
 time.  For example, when a task delays for an interval of ten ticks, it is
 implied that the task will not execute until ten clock ticks have occurred.
-All intervals are specified using data type ``rtems_interval``.
+All intervals are specified using data type :c:type:`rtems_interval`.
 
 A characteristic of interval timing is that the actual interval period may be a
 fraction of a tick less than the interval requested.  This occurs because the
 time at which the delay timer is set up occurs at some time between two clock
 ticks.  Therefore, the first countdown tick occurs in less than the complete
-time interval for a tick.  This can be a problem if the clock granularity is
+time interval for a tick.  This can be a problem if the tick resolution is
 large.
 
 The rate monotonic scheduling algorithm is a hard real-time scheduling
@@ -277,14 +284,10 @@ time be kept in wall time or true calendar form.  Consequently, RTEMS maintains
 the current date and time.  This allows selected time operations to be
 scheduled at an actual calendar date and time.  For example, a task could
 request to delay until midnight on New Year's Eve before lowering the ball at
-Times Square.  The data type ``rtems_time_of_day`` is used to specify calendar
+Times Square.  The data type :c:type:`rtems_time_of_day` is used to specify calendar
 time in RTEMS services.  See :ref:`Time and Date Data Structures`.
 
 .. index:: rtems_time_of_day
-
-Obviously, the directives which use intervals or wall time cannot operate
-without some external mechanism which provides a periodic clock tick.  This
-clock tick is typically provided by a real time clock or counter/timer device.
 
 Memory Management
 =================
