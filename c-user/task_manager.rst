@@ -94,6 +94,20 @@ regains control of the processor, its context is restored from the TCB.  When a
 task is restarted, the initial state of the task is restored from the starting
 context area in the task's TCB.
 
+Task Name
+---------
+.. index:: task name
+
+By default, the task name is defined by the task object name given to
+:ref:`rtems_task_create() <rtems_task_create>`.  The task name can be obtained
+with the `pthread_getname_np()
+<http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_ function.
+Optionally, a new task name may be set with the `pthread_setname_np()
+<http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_ function.
+The maximum size of a task name is defined by the application configuration
+option :ref:`CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
+<CONFIGURE_MAXIMUM_THREAD_NAME_SIZE>`.
+
 Task States
 -----------
 .. index:: task states

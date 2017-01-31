@@ -1773,7 +1773,7 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_THREAD_NAME_SIZE ===
 
-.. _Specifying the Maximum Thread Name Size
+.. _CONFIGURE_MAXIMUM_THREAD_NAME_SIZE:
 
 Specifying the Maximum Thread Name Size
 ---------------------------------------
