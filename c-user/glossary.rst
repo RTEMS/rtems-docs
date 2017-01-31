@@ -639,10 +639,15 @@ Glossary
 :dfn:`target`
     The system on which the application will ultimately execute.
 
+.. _task:
+
 :dfn:`task`
     A logically complete thread of execution.  It consists normally of a set of
-    registers and a stack.  The terms :dfn:`task` and :dfn:`thread` are synonym
-    in RTEMS.  The scheduler assigns processors to a subset of the ready tasks.
+    registers and a stack.  The scheduler assigns processors to a subset of the
+    ready tasks.  The terms :dfn:`task` and :dfn:`thread` are synonym in RTEMS.
+    The term :dfn:`task` is used throughout the Classic API, however,
+    internally in the operating system implementation and the POSIX API the
+    term :dfn:`thread` is used.
 
 :dfn:`Task Control Block`
     A data structure associated with each task used by RTEMS to manage that
@@ -661,6 +666,9 @@ Glossary
 
 :dfn:`TCB`
     An acronym for Task Control Block.
+
+:dfn:`thread`
+    See :ref:`task <task>`.
 
 :dfn:`thread dispatch`
     The :dfn:`thread dispatch` transfers control of the processor from the

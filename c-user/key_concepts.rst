@@ -239,6 +239,66 @@ synchronization, while the event manager primarily provides a high performance
 synchronization mechanism.  The signal manager supports only asynchronous
 communication and is typically used for exception handling.
 
+Thread Queues
+=============
+.. index:: thread queues
+
+In case more than one :ref:`thread <task>` may wait on a synchronization
+object, e.g. a semaphore or a message queue, then the waiting threads are added
+to a data structure called the thread queue.  Thread queues are named task wait
+queues in the Classic API.  There are two thread queuing disciplines available
+which define the order of the threads on a particular thread queue.  Threads
+can wait in FIFO or priority order.
+
+In uni-processor configurations, the priority queuing discipline just orders
+the threads according to their current priority and in FIFO order in case of
+equal priorities.  However, in SMP configurations, the situation is a bit more
+difficult due to the support for clustered scheduling.  It makes no sense to
+compare the priority values of two different scheduler instances.  Thus, it is
+impossible to simply use one plain priority queue for threads of different
+clusters.  Two levels of queues can be used as one way to solve the problem.
+The top-level queue provides FIFO ordering and contains priority queues.  Each
+priority queue is associated with a scheduler instance and contains only
+threads of this scheduler instance.  Threads are enqueued in the priority
+queues corresponding to their scheduler instances.  To dequeue a thread, the
+highest priority thread of the first priority queue is selected.  Once this is
+done, the first priority queue is appended to the top-level FIFO queue.  This
+guarantees fairness with respect to the scheduler instances.
+
+Such a two-level queue needs a considerable amount of memory if fast enqueue
+and dequeue operations are desired.  Providing this storage per thread queue
+would waste a lot of memory in typical applications.  Instead, each thread has
+a queue attached which resides in a dedicated memory space independent of other
+memory used for the thread (this approach was borrowed from FreeBSD).  In case
+a thread needs to block, there are two options
+
+* the object already has a queue, then the thread enqueues itself to this
+  already present queue and the queue of the thread is added to a list of free
+  queues for this object, or
+
+* otherwise, the queue of the thread is given to the object and the thread
+  enqueues itself to this queue.
+
+In case the thread is dequeued, there are two options
+
+* the thread is the last thread in the queue, then it removes this queue
+  from the object and reclaims it for its own purpose, or
+
+* otherwise, the thread removes one queue from the free list of the object
+  and reclaims it for its own purpose.
+
+Since there are usually more objects than threads, this actually reduces the
+memory demands.  In addition the objects only contain a pointer to the queue
+structure.  This helps to hide implementation details.  Inter-cluster priority
+queues are available since RTEMS 4.12.
+
+A doubly-linked list (chain) is used to implement the FIFO queues yielding a
+:math:`O(1)` worst-case time complexity for enqueue and dequeue operations.
+
+A red-black tree is used to implement the priority queues yielding a
+:math:`O(log(n))` worst-case time complexity for enqueue and dequeue operations
+with :math:`n` being the count of threads already on the queue.
+
 Time
 ====
 .. index:: time
