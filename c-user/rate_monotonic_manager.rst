@@ -173,7 +173,7 @@ Rate Monotonic Scheduling Algorithm
 The Rate Monotonic Scheduling Algorithm (RMS) is important to real-time systems
 designers because it allows one to sufficiently guarantee that a set of tasks
 is schedulable (see :cite:`Liu:1973:Scheduling`, :cite:`Lehoczky:1989:RM`,
-:cite:`Lui:1990:Ada`, :cite:`Burns:1991:Review`).
+:cite:`Sha:1990:Ada`, :cite:`Burns:1991:Review`).
 
 A set of tasks is said to be schedulable if all of the tasks can meet their
 deadlines.  RMS provides a set of rules which can be used to perform
