@@ -239,6 +239,122 @@ synchronization, while the event manager primarily provides a high performance
 synchronization mechanism.  The signal manager supports only asynchronous
 communication and is typically used for exception handling.
 
+Locking Protocols
+=================
+.. index:: locking protocols
+
+RTEMS supports the four locking protocols
+
+* :ref:`PriorityCeiling`,
+
+* :ref:`PriorityInheritance`,
+
+* :ref:`MrsP`, and
+
+* :ref:`OMIP`
+
+for synchronization objects providing mutual-exclusion (mutex).  The OMIP is
+only available in SMP configurations and replaces the priority inheritance
+protocol in this case.  One aim of the locking protocols is to avoid priority
+inversion.
+
+Since RTEMS 4.12, priority updates due to the locking protocols take place
+immediately and are propagated recursively.  The mutex owner and wait for mutex
+relationships define a directed acyclic graph (DAG).  The run-time of the mutex
+obtain, release and timeout operations depend on the complexity of this
+resource dependency graph.
+
+.. _PriorityInversion:
+
+Priority Inversion
+------------------
+.. index:: priority inversion
+
+Priority inversion is a form of indefinite postponement which is common in
+multitasking, pre-emptive executives with shared resources.  Priority inversion
+occurs when a high priority tasks requests access to shared resource which is
+currently allocated to a low priority task.  The high priority task must block
+until the low priority task releases the resource.  This problem is exacerbated
+when the low priority task is prevented from executing by one or more medium
+priority tasks.  Because the low priority task is not executing, it cannot
+complete its interaction with the resource and release that resource.  The high
+priority task is effectively prevented from executing by lower priority tasks.
+
+.. _PriorityCeiling:
+
+Immediate Ceiling Priority Protocol (ICPP)
+------------------------------------------
+.. index:: priority ceiling protocol
+.. index:: immediate ceiling priority protocol
+
+Each mutex using the Immediate Ceiling Priority Protocol (ICPP) has a ceiling
+priority.  The priority of the mutex owner is immediately raised to the ceiling
+priority of the mutex.  In case the thread owning the mutex releases the mutex,
+then the normal priority of the thread is restored.  This locking protocol is
+beneficial for schedulability analysis, see also
+:cite:`Burns:2001:RealTimeSystems`.
+
+This protocol avoids the possibility of changing the priority of the mutex
+owner multiple times since the ceiling priority must be set to the one of
+highest priority thread which will ever attempt to acquire that mutex.  This
+requires an overall knowledge of the application as a whole.  The need to
+identify the highest priority thread which will attempt to obtain a particular
+mutex can be a difficult task in a large, complicated system.  Although the
+priority ceiling protocol is more efficient than the priority inheritance
+protocol with respect to the maximum number of thread priority changes which
+may occur while a thread owns a particular mutex, the priority inheritance
+protocol is more forgiving in that it does not require this apriori
+information.
+
+.. _PriorityInheritance:
+
+Priority Inheritance Protocol
+-----------------------------
+.. index:: priority inheritance protocol
+
+The priority of the mutex owner is raised to the highest priority of all
+threads that currently wait for ownership of this mutex :cite:`Sha:1990:PI`.
+Since RTEMS 4.12, priority updates due to the priority inheritance protocol
+take place immediately and are propagated recursively.
+
+.. _MrsP:
+
+Multiprocessor Resource Sharing Protocol (MrsP)
+-----------------------------------------------
+.. index:: Multiprocessor Resource Sharing Protocol (MrsP)
+
+The Multiprocessor Resource Sharing Protocol (MrsP) is a generalization of the
+priority ceiling protocol to clustered scheduling :cite:`Burns:2013:MrsP`.  One
+of the design goals of MrsP is to enable an effective schedulability analysis
+using the sporadic task model.  Each mutex using the MrsP has a ceiling
+priority for each scheduler instance.  The priority of the mutex owner is
+immediately raised to the ceiling priority of the mutex defined for its home
+scheduler instance.  In case the thread owning the mutex releases the mutex,
+then the normal priority of the thread is restored.  Threads that wait for
+mutex ownership are not blocked with respect to the scheduler and instead
+perform a busy wait.  The MrsP uses temporary thread migrations to foreign
+scheduler instances in case of a pre-emption of the mutex owner.  This locking
+protocol is available since RTEMS 4.11. It was re-implemented in RTEMS 4.12 to
+overcome some shortcomings of the original implementation
+:cite:`Catellani:2015:MrsP`.
+
+.. _OMIP:
+
+O(m) Independence-Preserving Protocol (OMIP)
+----------------------------------------------------
+.. index:: O(m) Independence-Preserving Protocol (OMIP)
+
+The :math:`O(m)` Independence-Preserving Protocol (OMIP) is a generalization of
+the priority inheritance protocol to clustered scheduling which avoids the
+non-preemptive sections present with priority boosting
+:cite:`Brandenburg:2013:OMIP`.  The :math:`m` denotes the number of processors
+in the system.  Similar to the uni-processor priority inheritance protocol, the
+OMIP mutexes do not need any external configuration data, e.g. a ceiling
+priority.  This makes them a good choice for general purpose libraries that
+need internal locking.  The complex part of the implementation is contained in
+the thread queues and shared with the MrsP support.  This locking protocol is
+available since RTEMS 4.12.
+
 Thread Queues
 =============
 .. index:: thread queues

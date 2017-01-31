@@ -91,108 +91,31 @@ matched with a ``rtems_semaphore_release``.
 Simple binary semaphores do not allow nested access and so can be used for task
 synchronization.
 
-.. _Priority Inversion:
-
-Priority Inversion
-------------------
-
-Priority inversion is a form of indefinite postponement which is common in
-multitasking, preemptive executives with shared resources.  Priority inversion
-occurs when a high priority tasks requests access to shared resource which is
-currently allocated to low priority task.  The high priority task must block
-until the low priority task releases the resource.  This problem is exacerbated
-when the low priority task is prevented from executing by one or more medium
-priority tasks.  Because the low priority task is not executing, it cannot
-complete its interaction with the resource and release that resource.  The high
-priority task is effectively prevented from executing by lower priority tasks.
-
 .. _Priority Inheritance:
 
 Priority Inheritance
 --------------------
 
-Priority inheritance is an algorithm that calls for the lower priority task
-holding a resource to have its priority increased to that of the highest
-priority task blocked waiting for that resource.  Each time a task blocks
-attempting to obtain the resource, the task holding the resource may have its
-priority increased.
-
-On SMP configurations, in case the task holding the resource and the task that
-blocks attempting to obtain the resource are in different scheduler instances,
-the priority of the holder is raised to the pseudo-interrupt priority (priority
-boosting).  The pseudo-interrupt priority is the highest priority.
-
-RTEMS supports priority inheritance for local, binary semaphores that use the
-priority task wait queue blocking discipline.  When a task of higher priority
-than the task holding the semaphore blocks, the priority of the task holding
-the semaphore is increased to that of the blocking task.  When the task holding
-the task completely releases the binary semaphore (i.e. not for a nested
-release), the holder's priority is restored to the value it had before any
-higher priority was inherited.
-
-The RTEMS implementation of the priority inheritance algorithm takes into
-account the scenario in which a task holds more than one binary semaphore.  The
-holding task will execute at the priority of the higher of the highest ceiling
-priority or at the priority of the highest priority task blocked waiting for
-any of the semaphores the task holds.  Only when the task releases ALL of the
-binary semaphores it holds will its priority be restored to the normal value.
+RTEMS supports :ref:`priority inheritance <PriorityInheritance>` for local,
+binary semaphores that use the priority task wait queue blocking discipline.
+In SMP configurations, the :ref:`OMIP` is used instead.
 
 .. _Priority Ceiling:
 
 Priority Ceiling
 ----------------
 
-Priority ceiling is an algorithm that calls for the lower priority task holding
-a resource to have its priority increased to that of the highest priority task
-which will EVER block waiting for that resource.  This algorithm addresses the
-problem of priority inversion although it avoids the possibility of changing
-the priority of the task holding the resource multiple times.  The priority
-ceiling algorithm will only change the priority of the task holding the
-resource a maximum of one time.  The ceiling priority is set at creation time
-and must be the priority of the highest priority task which will ever attempt
-to acquire that semaphore.
-
-RTEMS supports priority ceiling for local, binary semaphores that use the
-priority task wait queue blocking discipline.  When a task of lower priority
-than the ceiling priority successfully obtains the semaphore, its priority is
-raised to the ceiling priority.  When the task holding the task completely
-releases the binary semaphore (i.e. not for a nested release), the holder's
-priority is restored to the value it had before any higher priority was put
-into effect.
-
-The need to identify the highest priority task which will attempt to obtain a
-particular semaphore can be a difficult task in a large, complicated system.
-Although the priority ceiling algorithm is more efficient than the priority
-inheritance algorithm with respect to the maximum number of task priority
-changes which may occur while a task holds a particular semaphore, the priority
-inheritance algorithm is more forgiving in that it does not require this
-apriori information.
-
-The RTEMS implementation of the priority ceiling algorithm takes into account
-the scenario in which a task holds more than one binary semaphore.  The holding
-task will execute at the priority of the higher of the highest ceiling priority
-or at the priority of the highest priority task blocked waiting for any of the
-semaphores the task holds.  Only when the task releases ALL of the binary
-semaphores it holds will its priority be restored to the normal value.
+RTEMS supports :ref:`priority ceiling <PriorityCeiling>` for local, binary
+semaphores that use the priority task wait queue blocking discipline.
 
 .. _Multiprocessor Resource Sharing Protocol:
 
 Multiprocessor Resource Sharing Protocol
 ----------------------------------------
 
-The Multiprocessor Resource Sharing Protocol (MrsP) is defined in *A.  Burns
-and A.J.  Wellings, A Schedulability Compatible Multiprocessor Resource Sharing
-Protocol - MrsP, Proceedings of the 25th Euromicro Conference on Real-Time
-Systems (ECRTS 2013), July 2013*.  It is a generalization of the Priority
-Ceiling Protocol to SMP systems.  Each MrsP semaphore uses a ceiling priority
-per scheduler instance.  These ceiling priorities can be specified with
-``rtems_semaphore_set_priority()``.  A task obtaining or owning a MrsP
-semaphore will execute with the ceiling priority for its scheduler instance as
-specified by the MrsP semaphore object.  Tasks waiting to get ownership of a
-MrsP semaphore will not relinquish the processor voluntarily.  In case the
-owner of a MrsP semaphore gets preempted it can ask all tasks waiting for this
-semaphore to help out and temporarily borrow the right to execute on one of
-their assigned processors.
+RTEMS supports the :ref:`MrsP` for local, binary semaphores that use the
+priority task wait queue blocking discipline.  In uni-processor configurations,
+the :ref:`PriorityCeiling` is used instead.
 
 .. _Building a Semaphore Attribute Set:
 
