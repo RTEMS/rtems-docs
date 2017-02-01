@@ -25,6 +25,16 @@ appropriately called the scheduler.  The scheduler's sole purpose is to
 allocate the all important resource of processor time to the various tasks
 competing for attention.
 
+The directives provided by the scheduler manager are:
+
+- rtems_scheduler_ident_ - Get ID of a scheduler
+
+- rtems_scheduler_get_processor_set_ - Get processor set of a scheduler
+
+- rtems_scheduler_add_processor_ - Add processor to a scheduler
+
+- rtems_scheduler_remove_processor_ - Remove processor from a scheduler
+
 Scheduling Algorithms
 =====================
 
@@ -435,3 +445,168 @@ conditions:
 
 - The running task raises the priority of a task above its own and the running
   task is in preemption mode.
+
+Directives
+==========
+
+This section details the scheduler manager.  A subsection is dedicated to each
+of these services and describes the calling sequence, related constants, usage,
+and status codes.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_ident:
+
+SCHEDULER_IDENT - Get ID of a scheduler
+---------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_ident(
+            rtems_name  name,
+            rtems_id   *id
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ADDRESS``
+       - The ``id`` parameter is ``NULL``.
+     * - ``RTEMS_INVALID_NAME``
+       - Invalid scheduler name.
+
+DESCRIPTION:
+    Identifies a scheduler by its name.  The scheduler name is determined by
+    the scheduler configuration.  See :ref:`Configuring Clustered Schedulers`
+    and :ref:`Configuring a Scheduler Name`.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_get_processor_set:
+
+SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
+--------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_get_processor_set(
+            rtems_id   scheduler_id,
+            size_t     cpusetsize,
+            cpu_set_t *cpuset
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ID``
+       - Invalid scheduler instance identifier.
+     * - ``RTEMS_INVALID_ADDRESS``
+       - The ``cpuset`` parameter is ``NULL``.
+     * - ``RTEMS_INVALID_NUMBER``
+       - The processor set buffer is too small for the set of processors owned
+         by the scheduler instance.
+
+DESCRIPTION:
+    Returns the processor set owned by the scheduler instance in ``cpuset``.  A
+    set bit in the processor set means that this processor is owned by the
+    scheduler instance and a cleared bit means the opposite.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_add_processor:
+
+SCHEDULER_ADD_PROCESSOR - Add processor to a scheduler
+------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_add_processor(
+            rtems_id scheduler_id,
+            uint32_t cpu_index
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ID``
+       - Invalid scheduler instance identifier.
+     * - ``RTEMS_NOT_CONFIGURED``
+       - The processor is not configured to be used by the application.
+     * - ``RTEMS_INCORRECT_STATE``
+       - The processor is configured to be used by the application, however, it
+         is not online.
+     * - ``RTEMS_RESOURCE_IN_USE``
+       - The processor is already assigned to a scheduler instance.
+
+DESCRIPTION:
+    Adds a processor to the set of processors owned by the specified scheduler
+    instance.
+
+NOTES:
+    Must be called from task context.  This operation obtains and releases the
+    objects allocator lock.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_remove_processor:
+
+SCHEDULER_REMOVE_PROCESSOR - Remove processor from a scheduler
+--------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_remove_processor(
+            rtems_id scheduler_id,
+            uint32_t cpu_index
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ID``
+       - Invalid scheduler instance identifier.
+     * - ``RTEMS_INVALID_NUMBER``
+       - The processor is not owned by the specified scheduler instance.
+     * - ``RTEMS_RESOURCE_IN_USE``
+       - The set of processors owned by the specified scheduler instance would
+         be empty after the processor removal and there exists a non-idle task
+         that uses this scheduler instance as its home scheduler instance.
+
+DESCRIPTION:
+    Removes a processor from set of processors owned by the specified scheduler
+    instance.
+
+NOTES:
+    Must be called from task context.  This operation obtains and releases the
+    objects allocator lock.  Removing a processor from a scheduler is a complex
+    operation that involves all tasks of the system.
