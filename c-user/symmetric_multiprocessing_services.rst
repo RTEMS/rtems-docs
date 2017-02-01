@@ -128,45 +128,25 @@ Task Migration
 .. index:: thread migration
 
 With more than one processor in the system tasks can migrate from one processor
-to another.  There are three reasons why tasks migrate in RTEMS.
+to another.  There are four reasons why tasks migrate in RTEMS.
 
-- The scheduler changes explicitly via ``rtems_task_set_scheduler()`` or
-  similar directives.
+- The scheduler changes explicitly via
+  :ref:`rtems_task_set_scheduler() <rtems_task_set_scheduler>` or similar
+  directives.
+
+- The task processor affinity changes explicitly via
+  :ref:`rtems_task_set_affinity() <rtems_task_set_affinity>` or similar
+  directives.
 
 - The task resumes execution after a blocking operation.  On a priority based
   scheduler it will evict the lowest priority task currently assigned to a
   processor in the processor set managed by the scheduler instance.
 
 - The task moves temporarily to another scheduler instance due to locking
-  protocols like *Migratory Priority Inheritance* or the *Multiprocessor
-  Resource Sharing Protocol*.
+  protocols like the :ref:`MrsP` or the :ref:`OMIP`.
 
 Task migration should be avoided so that the working set of a task can stay on
 the most local cache level.
-
-The current implementation of task migration in RTEMS has some implications
-with respect to the interrupt latency.  It is crucial to preserve the system
-invariant that a task can execute on at most one processor in the system at a
-time.  This is accomplished with a boolean indicator in the task context.  The
-processor architecture specific low-level task context switch code will mark
-that a task context is no longer executing and waits that the heir context
-stopped execution before it restores the heir context and resumes execution of
-the heir task.  So there is one point in time in which a processor is without a
-task.  This is essential to avoid cyclic dependencies in case multiple tasks
-migrate at once.  Otherwise some supervising entity is necessary to prevent
-life-locks.  Such a global supervisor would lead to scalability problems so
-this approach is not used.  Currently the thread dispatch is performed with
-interrupts disabled.  So in case the heir task is currently executing on
-another processor then this prolongs the time of disabled interrupts since one
-processor has to wait for another processor to make progress.
-
-It is difficult to avoid this issue with the interrupt latency since interrupts
-normally store the context of the interrupted task on its stack.  In case a
-task is marked as not executing we must not use its task stack to store such an
-interrupt context.  We cannot use the heir stack before it stopped execution on
-another processor.  So if we enable interrupts during this transition we have
-to provide an alternative task independent stack for this time frame.  This
-issue needs further investigation.
 
 Clustered Scheduling
 --------------------
