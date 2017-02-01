@@ -65,6 +65,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	board_support_packages
 	user_extensions
 	configuring_a_system
+	self_contained_objects
 	multiprocessing
 	symmetric_multiprocessing_services
 	pci_library
