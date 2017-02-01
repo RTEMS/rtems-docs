@@ -248,7 +248,7 @@ INTERNAL_ERROR_THREAD_QUEUE_DEADLOCK (28)
     A deadlock was detected during a thread queue enqueue operation.
 
 INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_STICKY_FROM_BAD_STATE (29)
-    This fatal error can only happen on SMP configurations.  It is not allowed
+    This fatal error can only happen in SMP configurations.  It is not allowed
     to obtain MrsP semaphores in a context with thread dispatching disabled,
     for example interrupt context.
 
@@ -331,7 +331,7 @@ INTERNAL_ERROR_BAD_THREAD_DISPATCH_DISABLE_LEVEL (30)
         }
 
 INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT (31)
-    On SMP configurations, it is a fatal error to call blocking operating
+    In SMP configurations, it is a fatal error to call blocking operating
     system with interrupts disabled, since this prevents delivery of
     inter-processor interrupts.  This could lead to executing threads which are
     not allowed to execute resulting in undefined system behaviour.
@@ -409,7 +409,7 @@ required
 - valid read-only data.
 
 For the initial extensions the read-write data (including .bss segment) is not
-required on single processor configurations.  On SMP configurations, however,
+required on single processor configurations.  In SMP configurations, however,
 the read-write data must be initialized since this function must determine the
 state of the other processors and request them to shut-down if necessary.
 

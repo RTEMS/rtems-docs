@@ -446,7 +446,7 @@ DESCRIPTION:
 NOTES:
     This directive will not cause the calling task to be preempted.
 
-    On SMP configurations this will not ensure system wide mutual exclusion.
+    In SMP configurations, this will not ensure system wide mutual exclusion.
     Use interrupt locks instead.
 
 .. raw:: latex
@@ -528,8 +528,8 @@ DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    Interrupts will be disabled.  On SMP configurations this directive acquires
-    a SMP lock.
+    Interrupts will be disabled.  In SMP configurations, this directive
+    acquires an SMP lock.
 
 NOTES:
     This directive will not cause the calling thread to be preempted.  This
@@ -557,8 +557,8 @@ DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    The interrupt status will be restored.  On SMP configurations this
-    directive releases a SMP lock.
+    The interrupt status will be restored.  In SMP configurations, this
+    directive releases an SMP lock.
 
 NOTES:
     This directive will not cause the calling thread to be preempted.  This
@@ -586,8 +586,8 @@ DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    The interrupt status will remain unchanged.  On SMP configurations this
-    directive acquires a SMP lock.
+    The interrupt status will remain unchanged.  In SMP configurations, this
+    directive acquires an SMP lock.
 
     In case the corresponding interrupt service routine can be interrupted by
     higher priority interrupts and these interrupts enter the critical section
@@ -620,8 +620,8 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
 
-    The interrupt status will remain unchanged.  On SMP configurations this
-    directive releases a SMP lock.
+    The interrupt status will remain unchanged.  In SMP configurations, this
+    directive releases an SMP lock.
 
 NOTES:
     This directive should be called from the corresponding interrupt service

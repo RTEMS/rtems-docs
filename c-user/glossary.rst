@@ -171,7 +171,7 @@ Glossary
 
 :dfn:`executing task`
     The task state entered by a task after it has been given control of the
-    processor.  On SMP configurations a task may be registered as executing on
+    processor.  In SMP configurations, a task may be registered as executing on
     more than one processor for short time frames during task migration.
     Blocked tasks can be executing until they issue a thread dispatch.
 

@@ -265,7 +265,7 @@ Disable Interrupts and Interrupt Locks
 
 A low overhead means to ensure mutual exclusion in uni-processor configurations
 is to disable interrupts around a critical section.  This is commonly used in
-device driver code and throughout the operating system core.  On SMP
+device driver code and throughout the operating system core.  In SMP
 configurations, however, disabling the interrupts on one processor has no
 effect on other processors.  So, this is insufficient to ensure system wide
 mutual exclusion.  The macros
@@ -276,7 +276,7 @@ mutual exclusion.  The macros
 
 - ``rtems_interrupt_flush()``
 
-are disabled on SMP configurations and its use will lead to compiler warnings
+are disabled in SMP configurations and its use will lead to compiler warnings
 and linker errors.  In the unlikely case that interrupts must be disabled on
 the current processor, then the
 
@@ -522,9 +522,9 @@ DIRECTIVE STATUS CODES:
     The count of processors in the system.
 
 DESCRIPTION:
-    On uni-processor configurations a value of one will be returned.
+    In uni-processor configurations, a value of one will be returned.
 
-    On SMP configurations this returns the value of a global variable set
+    In SMP configurations, this returns the value of a global variable set
     during system initialization to indicate the count of utilized processors.
     The processor count depends on the physically or virtually available
     processors and application configuration.  The value will always be less
@@ -551,9 +551,9 @@ DIRECTIVE STATUS CODES:
     The index of the current processor.
 
 DESCRIPTION:
-    On uni-processor configurations a value of zero will be returned.
+    In uni-processor configurations, a value of zero will be returned.
 
-    On SMP configurations an architecture specific method is used to obtain the
+    In SMP configurations, an architecture specific method is used to obtain the
     index of the current processor in the system.  The set of processor indices
     is the range of integers starting with zero up to the processor count minus
     one.

@@ -428,7 +428,7 @@ NOTES:
     maximum_global_objects field in the Configuration Table.
 
     It is not allowed to create an initially locked MrsP semaphore and the
-    ``RTEMS_INVALID_NUMBER`` status code will be returned on SMP configurations
+    ``RTEMS_INVALID_NUMBER`` status code will be returned in SMP configurations
     in this case.  This prevents lock order reversal problems with the
     allocator mutex.
 
@@ -612,7 +612,7 @@ DESCRIPTION:
     then timeout is ignored.
 
     Deadlock situations are detected for MrsP semaphores and the
-    ``RTEMS_UNSATISFIED`` status code will be returned on SMP configurations in
+    ``RTEMS_UNSATISFIED`` status code will be returned in SMP configurations in
     this case.
 
 NOTES:
@@ -638,7 +638,7 @@ NOTES:
 
     It is not allowed to obtain a MrsP semaphore more than once by one task at
     a time (nested access) and the ``RTEMS_UNSATISFIED`` status code will be
-    returned on SMP configurations in this case.
+    returned in SMP configurations in this case.
 
 .. raw:: latex
 
@@ -698,7 +698,7 @@ NOTES:
     semaphores and it has inherited a higher priority.
 
     The MrsP semaphores must be released in the reversed obtain order,
-    otherwise the ``RTEMS_INCORRECT_STATE`` status code will be returned on SMP
+    otherwise the ``RTEMS_INCORRECT_STATE`` status code will be returned in SMP
     configurations in this case.
 
 .. raw:: latex
@@ -755,7 +755,7 @@ NOTES:
     task is reclaimed.
 
     It is not allowed to flush a MrsP semaphore and the ``RTEMS_NOT_DEFINED``
-    status code will be returned on SMP configurations in this case.
+    status code will be returned in SMP configurations in this case.
 
 .. raw:: latex
 

@@ -670,12 +670,11 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     ``CONFIGURE_MAXIMUM_MRSP_SEMAPHORES`` is the maximum number of Classic API
-    Semaphores using the Multiprocessor Resource Sharing Protocol (MrsP) that
-    can be concurrently active.
+    Semaphores using the :ref:`MrsP` that can be concurrently active.
 
 NOTES:
-    This configuration option is only used on SMP configurations.  On
-    uni-processor configurations the Priority Ceiling Protocol is used for MrsP
+    This configuration option is only used in SMP configurations.  In
+    uni-processor configurations, the :ref:`PriorityCeiling` is used for MrsP
     semaphores and thus no extra memory is necessary.
 
 .. COMMENT: === CONFIGURE_MAXIMUM_MESSAGE_QUEUES ===
