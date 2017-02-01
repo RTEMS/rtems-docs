@@ -187,56 +187,6 @@ Schedulers`.
 To set the scheduler of a task see :ref:`SCHEDULER_IDENT - Get ID of a
 scheduler` and :ref:`TASK_SET_SCHEDULER - Set scheduler of a task`.
 
-Task Priority Queues
---------------------
-
-Due to the support for clustered scheduling the task priority queues need
-special attention.  It makes no sense to compare the priority values of two
-different scheduler instances.  Thus, it is not possible to simply use one
-plain priority queue for tasks of different scheduler instances.
-
-One solution to this problem is to use two levels of queues.  The top level
-queue provides FIFO ordering and contains priority queues.  Each priority queue
-is associated with a scheduler instance and contains only tasks of this
-scheduler instance.  Tasks are enqueued in the priority queue corresponding to
-their scheduler instance.  In case this priority queue was empty, then it is
-appended to the FIFO.  To dequeue a task the highest priority task of the first
-priority queue in the FIFO is selected.  Then the first priority queue is
-removed from the FIFO.  In case the previously first priority queue is not
-empty, then it is appended to the FIFO.  So there is FIFO fairness with respect
-to the highest priority task of each scheduler instances. See also
-:cite:`Brandenburg:2013:OMIP`.
-
-Such a two level queue may need a considerable amount of memory if fast enqueue
-and dequeue operations are desired (depends on the scheduler instance count).
-To mitigate this problem an approch of the FreeBSD kernel was implemented in
-RTEMS.  We have the invariant that a task can be enqueued on at most one task
-queue.  Thus, we need only as many queues as we have tasks.  Each task is
-equipped with spare task queue which it can give to an object on demand.  The
-task queue uses a dedicated memory space independent of the other memory used
-for the task itself. In case a task needs to block, then there are two options
-
-- the object already has task queue, then the task enqueues itself to this
-  already present queue and the spare task queue of the task is added to a list
-  of free queues for this object, or
-
-- otherwise, then the queue of the task is given to the object and the task
-  enqueues itself to this queue.
-
-In case the task is dequeued, then there are two options
-
-- the task is the last task on the queue, then it removes this queue from the
-  object and reclaims it for its own purpose, or
-
-- otherwise, then the task removes one queue from the free list of the object
-  and reclaims it for its own purpose.
-
-Since there are usually more objects than tasks, this actually reduces the
-memory demands. In addition the objects contain only a pointer to the task
-queue structure. This helps to hide implementation details and makes it
-possible to use self-contained synchronization objects in Newlib and GCC (C++
-and OpenMP run-time support).
-
 Scheduler Helping Protocol
 --------------------------
 
