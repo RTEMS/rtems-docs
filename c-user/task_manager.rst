@@ -43,6 +43,14 @@ and administer tasks.  The directives provided by the task manager are:
 
 - rtems_task_wake_when_ - Wake up when specified
 
+- rtems_task_get_scheduler_ - Get scheduler of a task
+
+- rtems_task_set_scheduler_ - Set scheduler of a task
+
+- rtems_task_get_affinity_ - Get task processor affinity
+
+- rtems_task_set_affinity_ - Set task processor affinity
+
 - rtems_task_iterate_ - Iterate Over Tasks
 
 Background
@@ -510,6 +518,34 @@ rather than directly deleting the task.  Other tasks may instruct a task to
 delete itself by sending a "delete self" message, event, or signal, or by
 restarting the task with special arguments which instruct the task to delete
 itself.
+
+Setting Affinity to a Single Processor
+--------------------------------------
+
+On some embedded applications targeting SMP systems, it may be beneficial to
+lock individual tasks to specific processors.  In this way, one can designate a
+processor for I/O tasks, another for computation, etc..  The following
+illustrates the code sequence necessary to assign a task an affinity for
+processor with index ``processor_index``.
+
+.. code-block:: c
+
+    #include <rtems.h>
+    #include <assert.h>
+
+    void pin_to_processor(rtems_id task_id, int processor_index)
+    {
+        rtems_status_code sc;
+        cpu_set_t         cpuset;
+        CPU_ZERO(&cpuset);
+        CPU_SET(processor_index, &cpuset);
+        sc = rtems_task_set_affinity(task_id, sizeof(cpuset), &cpuset);
+        assert(sc == RTEMS_SUCCESSFUL);
+    }
+
+It is important to note that the ``cpuset`` is not validated until the
+``rtems_task_set_affinity`` call is made. At that point, it is validated
+against the current system configuration.
 
 Transition Advice for Obsolete Notepads
 ---------------------------------------
@@ -1349,6 +1385,204 @@ NOTES:
     granularity of this directive is a second.
 
     A clock tick is required to support the functionality of this directive.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_get_scheduler:
+
+TASK_GET_SCHEDULER - Get scheduler of a task
+--------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_get_scheduler(
+            rtems_id  task_id,
+            rtems_id *scheduler_id
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``scheduler_id`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid task id
+
+DESCRIPTION:
+    Returns the scheduler identifier of a task identified by ``task_id`` in
+    ``scheduler_id``.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_set_scheduler:
+.. _TASK_SET_SCHEDULER - Set scheduler of a task:
+
+TASK_SET_SCHEDULER - Set scheduler of a task
+--------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_set_scheduler(
+            rtems_id task_id,
+            rtems_id scheduler_id
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ID``
+       - invalid task or scheduler id
+     * - ``RTEMS_INCORRECT_STATE``
+       - the task is in the wrong state to perform a scheduler change
+
+DESCRIPTION:
+    Sets the scheduler of a task identified by ``task_id`` to the scheduler
+    identified by ``scheduler_id``.  The scheduler of a task is initialized to
+    the scheduler of the task that created it.
+
+NOTES:
+    None.
+
+EXAMPLE:
+    .. code-block:: c
+        :linenos:
+
+        #include <rtems.h>
+        #include <assert.h>
+
+        void task(rtems_task_argument arg);
+
+        void example(void)
+        {
+            rtems_status_code sc;
+            rtems_id          task_id;
+            rtems_id          scheduler_id;
+            rtems_name        scheduler_name;
+
+            scheduler_name = rtems_build_name('W', 'O', 'R', 'K');
+
+            sc = rtems_scheduler_ident(scheduler_name, &scheduler_id);
+            assert(sc == RTEMS_SUCCESSFUL);
+
+            sc = rtems_task_create(
+                    rtems_build_name('T', 'A', 'S', 'K'),
+                    1,
+                    RTEMS_MINIMUM_STACK_SIZE,
+                    RTEMS_DEFAULT_MODES,
+                    RTEMS_DEFAULT_ATTRIBUTES,
+                    &task_id
+                 );
+            assert(sc == RTEMS_SUCCESSFUL);
+
+            sc = rtems_task_set_scheduler(task_id, scheduler_id);
+            assert(sc == RTEMS_SUCCESSFUL);
+
+            sc = rtems_task_start(task_id, task, 0);
+            assert(sc == RTEMS_SUCCESSFUL);
+        }
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_get_affinity:
+
+TASK_GET_AFFINITY - Get task processor affinity
+-----------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_get_affinity(
+            rtems_id   id,
+            size_t     cpusetsize,
+            cpu_set_t *cpuset
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``cpuset`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid task id
+     * - ``RTEMS_INVALID_NUMBER``
+       - the affinity set buffer is too small for the current processor affinity
+         set of the task
+
+DESCRIPTION:
+    Returns the current processor affinity set of the task in ``cpuset``.  A
+    set bit in the affinity set means that the task can execute on this
+    processor and a cleared bit means the opposite.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_task_set_affinity:
+
+TASK_SET_AFFINITY - Set task processor affinity
+-----------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_task_set_affinity(
+            rtems_id         id,
+            size_t           cpusetsize,
+            const cpu_set_t *cpuset
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - successful operation
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``cpuset`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid task id
+     * - ``RTEMS_INVALID_NUMBER``
+       - invalid processor affinity set
+
+DESCRIPTION:
+    Sets the processor affinity set for the task specified by ``cpuset``.  A
+    set bit in the affinity set means that the task can execute on this
+    processor and a cleared bit means the opposite.
+
+NOTES:
+    This function will not change the scheduler of the task.  The intersection
+    of the processor affinity set and the set of processors owned by the
+    scheduler of the task must be non-empty.  It is not an error if the
+    processor affinity set contains processors that are not part of the set of
+    processors owned by the scheduler instance of the task.  A task will simply
+    not run under normal circumstances on these processors since the scheduler
+    ignores them.  Some locking protocols may temporarily use processors that
+    are not included in the processor affinity set of the task.  It is also not
+    an error if the processor affinity set contains processors that are not
+    part of the system.
 
 .. raw:: latex
 
