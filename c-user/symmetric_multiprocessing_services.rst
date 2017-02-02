@@ -143,41 +143,65 @@ the most local cache level.
 Clustered Scheduling
 --------------------
 
-We have clustered scheduling in case the set of processors of a system is
-partitioned into non-empty pairwise-disjoint subsets. These subsets are called
-clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
-owned by exactly one scheduler instance.
+The scheduler is responsible to assign processors to some of the threads which
+are ready to execute.  Trouble starts if more ready threads than processors
+exist at the same time.  There are various rules how the processor assignment
+can be performed attempting to fulfill additional constraints or yield some
+overall system properties.  As a matter of fact it is impossible to meet all
+requirements at the same time.  The way a scheduler works distinguishes
+real-time operating systems from general purpose operating systems.
 
-Clustered scheduling helps to control the worst-case latencies in
-multi-processor systems, see :cite:`Brandenburg:2011:SL`. The goal is to reduce
-the amount of shared state in the system and thus prevention of lock
-contention. Modern multi-processor systems tend to have several layers of data
-and instruction caches.  With clustered scheduling it is possible to honour the
-cache topology of a system and thus avoid expensive cache synchronization
-traffic.  It is easy to implement.  The problem is to provide synchronization
+We have clustered scheduling in case the set of processors of a system is
+partitioned into non-empty pairwise-disjoint subsets of processors.  These
+subsets are called clusters.  Clusters with a cardinality of one are
+partitions.  Each cluster is owned by exactly one scheduler instance.  In case
+the cluster size equals the processor count, it is called global scheduling.
+
+Modern SMP systems have multi-layer caches.  An operating system which neglects
+cache constraints in the scheduler will not yield good performance.  Real-time
+operating systems usually provide priority (fixed or job-level) based
+schedulers so that each of the highest priority threads is assigned to a
+processor.  Priority based schedulers have difficulties in providing cache
+locality for threads and may suffer from excessive thread migrations
+:cite:`Brandenburg:2011:SL` :cite:`Compagnin:2014:RUN`.  Schedulers that use local run
+queues and some sort of load-balancing to improve the cache utilization may not
+fulfill global constraints :cite:`Gujarati:2013:LPP` and are more difficult to
+implement than one would normally expect :cite:`Lozi:2016:LSDWC`.
+
+Clustered scheduling was implemented for RTEMS SMP to best use the cache
+topology of a system and to keep the worst-case latencies under control.  The
+low-level SMP locks use FIFO ordering.  So, the worst-case run-time of
+operations increases with each processor involved.  The scheduler configuration
+is quite flexible and done at link-time, see :ref:`Configuring Clustered
+Schedulers`.  It is possible to re-assign processors to schedulers during
+run-time via :ref:`rtems_scheduler_add_processor()
+<rtems_scheduler_add_processor>` and :ref:`rtems_scheduler_remove_processor()
+<rtems_scheduler_remove_processor>`.  The schedulers are implemented in an
+object-oriented fashion.
+
+The problem is to provide synchronization
 primitives for inter-cluster synchronization (more than one cluster is involved
-in the synchronization process). In RTEMS there are currently four means
+in the synchronization process). In RTEMS there are currently some means
 available
 
 - events,
 
 - message queues,
 
-- semaphores using the :ref:`Priority Inheritance` protocol (priority
-  boosting), and
+- mutexes using the :ref:`OMIP`,
 
-- semaphores using the Multiprocessor Resource Sharing Protocol :cite:`Burns:2013:MrsP`.
+- mutexes using the :ref:`MrsP`, and
+
+- binary and counting semaphores.
 
 The clustered scheduling approach enables separation of functions with
 real-time requirements and functions that profit from fairness and high
 throughput provided the scheduler instances are fully decoupled and adequate
-inter-cluster synchronization primitives are used.  This is work in progress.
+inter-cluster synchronization primitives are used.
 
-For the configuration of clustered schedulers see :ref:`Configuring Clustered
-Schedulers`.
-
-To set the scheduler of a task see :ref:`SCHEDULER_IDENT - Get ID of a
-scheduler` and :ref:`TASK_SET_SCHEDULER - Set scheduler of a task`.
+To set the scheduler of a task see :ref:`rtems_scheduler_ident()
+<rtems_scheduler_ident>` and :ref:`rtems_task_set_scheduler()
+<rtems_task_set_scheduler>`.
 
 Scheduler Helping Protocol
 --------------------------
