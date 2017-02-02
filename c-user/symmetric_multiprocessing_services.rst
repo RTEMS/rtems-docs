@@ -333,44 +333,6 @@ of the OpenMP master thread that created it.  In the scheduler instance
 ``WRK1`` there are three thread pools available and their worker threads run at
 priority four.
 
-Thread Dispatch Details
------------------------
-
-This section gives background information to developers interested in the
-interrupt latencies introduced by thread dispatching.  A thread dispatch
-consists of all work which must be done to stop the currently executing thread
-on a processor and hand over this processor to an heir thread.
-
-In SMP systems, scheduling decisions on one processor must be propagated
-to other processors through inter-processor interrupts.  A thread dispatch
-which must be carried out on another processor does not happen instantaneously.
-Thus, several thread dispatch requests might be in the air and it is possible
-that some of them may be out of date before the corresponding processor has
-time to deal with them.  The thread dispatch mechanism uses three per-processor
-variables,
-
-- the executing thread,
-
-- the heir thread, and
-
-- a boolean flag indicating if a thread dispatch is necessary or not.
-
-Updates of the heir thread are done via a normal store operation.  The thread
-dispatch necessary indicator of another processor is set as a side-effect of an
-inter-processor interrupt.  So, this change notification works without the use
-of locks.  The thread context is protected by a TTAS lock embedded in the
-context to ensure that it is used on at most one processor at a time.
-Normally, only thread-specific or per-processor locks are used during a thread
-dispatch.  This implementation turned out to be quite efficient and no lock
-contention was observed in the testsuite.  The heavy-weight thread dispatch
-sequence is only entered in case the thread dispatch indicator is set.
-
-The context-switch is performed with interrupts enabled.  During the transition
-from the executing to the heir thread neither the stack of the executing nor
-the heir thread must be used during interrupt processing.  For this purpose a
-temporary per-processor stack is set up which may be used by the interrupt
-prologue before the stack is switched to the interrupt stack.
-
 Application Issues
 ==================
 
@@ -561,6 +523,47 @@ of cache lines can be observed with the `TMFINE 1
 on a suitable platform, e.g. QorIQ T4240.  High-performance SMP applications
 need full control of the object storage :cite:`Drepper:2007:Memory`.
 Therefore, self-contained synchronization objects are now available for RTEMS.
+
+Implementation Details
+======================
+
+Thread Dispatch Details
+-----------------------
+
+This section gives background information to developers interested in the
+interrupt latencies introduced by thread dispatching.  A thread dispatch
+consists of all work which must be done to stop the currently executing thread
+on a processor and hand over this processor to an heir thread.
+
+In SMP systems, scheduling decisions on one processor must be propagated
+to other processors through inter-processor interrupts.  A thread dispatch
+which must be carried out on another processor does not happen instantaneously.
+Thus, several thread dispatch requests might be in the air and it is possible
+that some of them may be out of date before the corresponding processor has
+time to deal with them.  The thread dispatch mechanism uses three per-processor
+variables,
+
+- the executing thread,
+
+- the heir thread, and
+
+- a boolean flag indicating if a thread dispatch is necessary or not.
+
+Updates of the heir thread are done via a normal store operation.  The thread
+dispatch necessary indicator of another processor is set as a side-effect of an
+inter-processor interrupt.  So, this change notification works without the use
+of locks.  The thread context is protected by a TTAS lock embedded in the
+context to ensure that it is used on at most one processor at a time.
+Normally, only thread-specific or per-processor locks are used during a thread
+dispatch.  This implementation turned out to be quite efficient and no lock
+contention was observed in the testsuite.  The heavy-weight thread dispatch
+sequence is only entered in case the thread dispatch indicator is set.
+
+The context-switch is performed with interrupts enabled.  During the transition
+from the executing to the heir thread neither the stack of the executing nor
+the heir thread must be used during interrupt processing.  For this purpose a
+temporary per-processor stack is set up which may be used by the interrupt
+prologue before the stack is switched to the interrupt stack.
 
 Directives
 ==========
