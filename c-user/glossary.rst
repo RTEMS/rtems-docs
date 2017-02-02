@@ -14,6 +14,9 @@ Glossary
       A task which must execute only at irregular intervals and has only a soft
       deadline.
 
+   API
+      An acronym for Application Programming Interface.
+
    application
       In this document, software which makes use of RTEMS.
 
@@ -314,6 +317,9 @@ Glossary
       A group of related RTEMS' directives which provide access and control
       over resources.
 
+   MCS
+      An acronym for Mellor-Crummey Scott.
+
    memory pool
       Used interchangeably with heap.
 
@@ -378,6 +384,9 @@ Glossary
 
    non-existent
       The state occupied by an uncreated or deleted task.
+
+   NUMA
+      An acronym for Non-Uniform Memory Access.
 
    numeric coprocessor
       A component used in computer systems to enhance performance in
@@ -613,6 +622,9 @@ Glossary
 
    SMCB
       An acronym for Semaphore Control Block.
+
+   SMP
+      An acronym for Symmetric Multiprocessing.
 
    SMP locks
       The SMP locks ensure mutual exclusion on the lowest level and are a

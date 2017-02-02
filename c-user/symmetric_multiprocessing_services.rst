@@ -524,47 +524,6 @@ on a suitable platform, e.g. QorIQ T4240.  High-performance SMP applications
 need full control of the object storage :cite:`Drepper:2007:Memory`.
 Therefore, self-contained synchronization objects are now available for RTEMS.
 
-Implementation Details
-======================
-
-Thread Dispatch Details
------------------------
-
-This section gives background information to developers interested in the
-interrupt latencies introduced by thread dispatching.  A thread dispatch
-consists of all work which must be done to stop the currently executing thread
-on a processor and hand over this processor to an heir thread.
-
-In SMP systems, scheduling decisions on one processor must be propagated
-to other processors through inter-processor interrupts.  A thread dispatch
-which must be carried out on another processor does not happen instantaneously.
-Thus, several thread dispatch requests might be in the air and it is possible
-that some of them may be out of date before the corresponding processor has
-time to deal with them.  The thread dispatch mechanism uses three per-processor
-variables,
-
-- the executing thread,
-
-- the heir thread, and
-
-- a boolean flag indicating if a thread dispatch is necessary or not.
-
-Updates of the heir thread are done via a normal store operation.  The thread
-dispatch necessary indicator of another processor is set as a side-effect of an
-inter-processor interrupt.  So, this change notification works without the use
-of locks.  The thread context is protected by a TTAS lock embedded in the
-context to ensure that it is used on at most one processor at a time.
-Normally, only thread-specific or per-processor locks are used during a thread
-dispatch.  This implementation turned out to be quite efficient and no lock
-contention was observed in the testsuite.  The heavy-weight thread dispatch
-sequence is only entered in case the thread dispatch indicator is set.
-
-The context-switch is performed with interrupts enabled.  During the transition
-from the executing to the heir thread neither the stack of the executing nor
-the heir thread must be used during interrupt processing.  For this purpose a
-temporary per-processor stack is set up which may be used by the interrupt
-prologue before the stack is switched to the interrupt stack.
-
 Directives
 ==========
 
@@ -633,3 +592,84 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+Implementation Details
+======================
+
+This section covers some implementation details of the RTEMS SMP support.
+
+Low-Level Synchronization
+-------------------------
+
+All low-level synchronization primitives are implemented using :term:`C11`
+atomic operations, so no target-specific hand-written assembler code is
+necessary.  Four synchronization primitives are currently available
+
+* ticket locks (mutual exclusion),
+
+* :term:`MCS` locks (mutual exclusion),
+
+* barriers, implemented as a sense barrier, and
+
+* sequence locks :cite:`Boehm:2012:Seqlock`.
+
+A vital requirement for low-level mutual exclusion is :term:`FIFO` fairness
+since we are interested in a predictable system and not maximum throughput.
+With this requirement, there are only few options to resolve this problem.  For
+reasons of simplicity, the ticket lock algorithm was chosen to implement the
+SMP locks.  However, the API is capable to support MCS locks, which may be
+interesting in the future for systems with a processor count in the range of 32
+or more, e.g.  :term:`NUMA`, many-core systems.
+
+The test program `SMPLOCK 1
+<https://git.rtems.org/rtems/tree/testsuites/smptests/smplock01>`_ can be used
+to gather performance and fairness data for several scenarios.  The SMP lock
+performance and fairness measured on the QorIQ T4240 follows as an example.
+This chip contains three L2 caches.  Each L2 cache is shared by eight
+processors.
+
+.. image:: ../images/c_user/smplock01perf-t4240.*
+   :width: 400
+   :align: center
+
+.. image:: ../images/c_user/smplock01fair-t4240.*
+   :width: 400
+   :align: center
+
+Thread Dispatch Details
+-----------------------
+
+This section gives background information to developers interested in the
+interrupt latencies introduced by thread dispatching.  A thread dispatch
+consists of all work which must be done to stop the currently executing thread
+on a processor and hand over this processor to an heir thread.
+
+In SMP systems, scheduling decisions on one processor must be propagated
+to other processors through inter-processor interrupts.  A thread dispatch
+which must be carried out on another processor does not happen instantaneously.
+Thus, several thread dispatch requests might be in the air and it is possible
+that some of them may be out of date before the corresponding processor has
+time to deal with them.  The thread dispatch mechanism uses three per-processor
+variables,
+
+- the executing thread,
+
+- the heir thread, and
+
+- a boolean flag indicating if a thread dispatch is necessary or not.
+
+Updates of the heir thread are done via a normal store operation.  The thread
+dispatch necessary indicator of another processor is set as a side-effect of an
+inter-processor interrupt.  So, this change notification works without the use
+of locks.  The thread context is protected by a TTAS lock embedded in the
+context to ensure that it is used on at most one processor at a time.
+Normally, only thread-specific or per-processor locks are used during a thread
+dispatch.  This implementation turned out to be quite efficient and no lock
+contention was observed in the testsuite.  The heavy-weight thread dispatch
+sequence is only entered in case the thread dispatch indicator is set.
+
+The context-switch is performed with interrupts enabled.  During the transition
+from the executing to the heir thread neither the stack of the executing nor
+the heir thread must be used during interrupt processing.  For this purpose a
+temporary per-processor stack is set up which may be used by the interrupt
+prologue before the stack is switched to the interrupt stack.
