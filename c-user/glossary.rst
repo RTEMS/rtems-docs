@@ -25,7 +25,7 @@ Glossary
     manager are used to service signals.
 
 :dfn:`atomic operations`
-    Atomic operations are defined in terms of *ISO/IEC 9899:2011*.
+    Atomic operations are defined in terms of :ref:`C11 <C11>`.
 
 :dfn:`awakened`
     A term used to describe a task that has been unblocked and may be scheduled
@@ -60,6 +60,16 @@ Glossary
 
 :dfn:`buffer`
     A fixed length block of memory allocated from a partition.
+
+.. _C11:
+
+:dfn:`C11`
+    The standard ISO/IEC 9899:2011.
+
+.. _C++11:
+
+:dfn:`C++11`
+    The standard ISO/IEC 14882:2011.
 
 :dfn:`calling convention`
     The processor and compiler dependent rules which define the mechanism used
@@ -700,6 +710,13 @@ Glossary
 
 :dfn:`timeslice`
     The application defined unit of time in which the processor is allocated.
+
+.. _TLS:
+
+:dfn:`TLS`
+    An acronym for Thread-Local Storage :cite:`Drepper:2013:TLS`.  TLS is
+    available in :ref:`C11 <C11>` and :ref:`C++11 <C++11>`.  The support for
+    TLS depends on the CPU port :cite:`RTEMS:CPU`.
 
 :dfn:`TMCB`
     An acronym for Timer Control Block.

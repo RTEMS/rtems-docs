@@ -271,156 +271,6 @@ tree of the task needing help and other resource trees in case tasks in need
 for help are produced during this operation.  Thus the worst-case latency in
 the system depends on the maximum resource tree size of the application.
 
-Critical Section Techniques and SMP
------------------------------------
-
-As discussed earlier, SMP systems have opportunities for true parallelism which
-was not possible on uniprocessor systems. Consequently, multiple techniques
-that provided adequate critical sections on uniprocessor systems are unsafe on
-SMP systems. In this section, some of these unsafe techniques will be
-discussed.
-
-In general, applications must use proper operating system provided mutual
-exclusion mechanisms to ensure correct behavior. This primarily means the use
-of binary semaphores or mutexes to implement critical sections.
-
-Disable Interrupts and Interrupt Locks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A low overhead means to ensure mutual exclusion in uni-processor configurations
-is to disable interrupts around a critical section.  This is commonly used in
-device driver code and throughout the operating system core.  In SMP
-configurations, however, disabling the interrupts on one processor has no
-effect on other processors.  So, this is insufficient to ensure system wide
-mutual exclusion.  The macros
-
-- ``rtems_interrupt_disable()``,
-
-- ``rtems_interrupt_enable()``, and
-
-- ``rtems_interrupt_flush()``
-
-are disabled in SMP configurations and its use will lead to compiler warnings
-and linker errors.  In the unlikely case that interrupts must be disabled on
-the current processor, then the
-
-- ``rtems_interrupt_local_disable()``, and
-
-- ``rtems_interrupt_local_enable()``
-
-macros are now available in all configurations.
-
-Since disabling of interrupts is not enough to ensure system wide mutual
-exclusion on SMP, a new low-level synchronization primitive was added - the
-interrupt locks.  They are a simple API layer on top of the SMP locks used for
-low-level synchronization in the operating system core.  Currently they are
-implemented as a ticket lock.  On uni-processor configurations they degenerate
-to simple interrupt disable/enable sequences.  It is disallowed to acquire a
-single interrupt lock in a nested way.  This will result in an infinite loop
-with interrupts disabled.  While converting legacy code to interrupt locks care
-must be taken to avoid this situation.
-
-.. code-block:: c
-    :linenos:
-
-    void legacy_code_with_interrupt_disable_enable( void )
-    {
-        rtems_interrupt_level level;
-        rtems_interrupt_disable( level );
-        /* Some critical stuff */
-        rtems_interrupt_enable( level );
-    }
-
-    RTEMS_INTERRUPT_LOCK_DEFINE( static, lock, "Name" );
-
-    void smp_ready_code_with_interrupt_lock( void )
-    {
-        rtems_interrupt_lock_context lock_context;
-        rtems_interrupt_lock_acquire( &lock, &lock_context );
-        /* Some critical stuff */
-        rtems_interrupt_lock_release( &lock, &lock_context );
-    }
-
-The ``rtems_interrupt_lock`` structure is empty on uni-processor
-configurations.  Empty structures have a different size in C
-(implementation-defined, zero in case of GCC) and C++ (implementation-defined
-non-zero value, one in case of GCC).  Thus the
-``RTEMS_INTERRUPT_LOCK_DECLARE()``, ``RTEMS_INTERRUPT_LOCK_DEFINE()``,
-``RTEMS_INTERRUPT_LOCK_MEMBER()``, and ``RTEMS_INTERRUPT_LOCK_REFERENCE()``
-macros are provided to ensure ABI compatibility.
-
-Highest Priority Task Assumption
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-On a uniprocessor system, it is safe to assume that when the highest priority
-task in an application executes, it will execute without being preempted until
-it voluntarily blocks. Interrupts may occur while it is executing, but there
-will be no context switch to another task unless the highest priority task
-voluntarily initiates it.
-
-Given the assumption that no other tasks will have their execution interleaved
-with the highest priority task, it is possible for this task to be constructed
-such that it does not need to acquire a binary semaphore or mutex for protected
-access to shared data.
-
-In an SMP system, it cannot be assumed there will never be a single task
-executing. It should be assumed that every processor is executing another
-application task. Further, those tasks will be ones which would not have been
-executed in a uniprocessor configuration and should be assumed to have data
-synchronization conflicts with what was formerly the highest priority task
-which executed without conflict.
-
-Disable Preemption
-~~~~~~~~~~~~~~~~~~
-
-On a uniprocessor system, disabling preemption in a task is very similar to
-making the highest priority task assumption. While preemption is disabled, no
-task context switches will occur unless the task initiates them
-voluntarily. And, just as with the highest priority task assumption, there are
-N-1 processors also running tasks. Thus the assumption that no other tasks will
-run while the task has preemption disabled is violated.
-
-Task Unique Data and SMP
-------------------------
-
-Per task variables are a service commonly provided by real-time operating
-systems for application use. They work by allowing the application to specify a
-location in memory (typically a ``void *``) which is logically added to the
-context of a task. On each task switch, the location in memory is stored and
-each task can have a unique value in the same memory location. This memory
-location is directly accessed as a variable in a program.
-
-This works well in a uniprocessor environment because there is one task
-executing and one memory location containing a task-specific value. But it is
-fundamentally broken on an SMP system because there are always N tasks
-executing. With only one location in memory, N-1 tasks will not have the
-correct value.
-
-This paradigm for providing task unique data values is fundamentally broken on
-SMP systems.
-
-Classic API Per Task Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Classic API provides three directives to support per task variables. These are:
-
-- ``rtems_task_variable_add`` - Associate per task variable
-
-- ``rtems_task_variable_get`` - Obtain value of a a per task variable
-
-- ``rtems_task_variable_delete`` - Remove per task variable
-
-As task variables are unsafe for use on SMP systems, the use of these services
-must be eliminated in all software that is to be used in an SMP environment.
-The task variables API is disabled on SMP. Its use will lead to compile-time
-and link-time errors. It is recommended that the application developer consider
-the use of POSIX Keys or Thread Local Storage (TLS). POSIX Keys are available
-in all RTEMS configurations.  For the availablity of TLS on a particular
-architecture please consult the *RTEMS CPU Architecture Supplement*.
-
-The only remaining user of task variables in the RTEMS code base is the Ada
-support.  So basically Ada is not available on RTEMS SMP.
-
 OpenMP
 ------
 
@@ -520,6 +370,197 @@ from the executing to the heir thread neither the stack of the executing nor
 the heir thread must be used during interrupt processing.  For this purpose a
 temporary per-processor stack is set up which may be used by the interrupt
 prologue before the stack is switched to the interrupt stack.
+
+Application Issues
+==================
+
+Most operating system services provided by the uni-processor RTEMS are
+available in SMP configurations as well.  However, applications designed for an
+uni-processor environment may need some changes to correctly run in an SMP
+configuration.
+
+As discussed earlier, SMP systems have opportunities for true parallelism which
+was not possible on uni-processor systems. Consequently, multiple techniques
+that provided adequate critical sections on uni-processor systems are unsafe on
+SMP systems. In this section, some of these unsafe techniques will be
+discussed.
+
+In general, applications must use proper operating system provided mutual
+exclusion mechanisms to ensure correct behavior.
+
+Task variables
+--------------
+
+Task variables are ordinary global variables with a dedicated value for each
+thread.  During a context switch from the executing thread to the heir thread,
+the value of each task variable is saved to the thread control block of the
+executing thread and restored from the thread control block of the heir thread.
+This is inherently broken if more than one executing thread exists.
+Alternatives to task variables are POSIX keys and :ref:`TLS <TLS>`.  All use
+cases of task variables in the RTEMS code base were replaced with alternatives.
+The task variable API has been removed in RTEMS 4.12.
+
+Highest Priority Thread Never Walks Alone
+-----------------------------------------
+
+On a uni-processor system, it is safe to assume that when the highest priority
+task in an application executes, it will execute without being preempted until
+it voluntarily blocks. Interrupts may occur while it is executing, but there
+will be no context switch to another task unless the highest priority task
+voluntarily initiates it.
+
+Given the assumption that no other tasks will have their execution interleaved
+with the highest priority task, it is possible for this task to be constructed
+such that it does not need to acquire a mutex for protected access to shared
+data.
+
+In an SMP system, it cannot be assumed there will never be a single task
+executing. It should be assumed that every processor is executing another
+application task. Further, those tasks will be ones which would not have been
+executed in a uni-processor configuration and should be assumed to have data
+synchronization conflicts with what was formerly the highest priority task
+which executed without conflict.
+
+Disabling of Thread Pre-Emption
+-------------------------------
+
+A thread which disables pre-emption prevents that a higher priority thread gets
+hold of its processor involuntarily.  In uni-processor configurations, this can
+be used to ensure mutual exclusion at thread level.  In SMP configurations,
+however, more than one executing thread may exist.  Thus, it is impossible to
+ensure mutual exclusion using this mechanism.  In order to prevent that
+applications using pre-emption for this purpose, would show inappropriate
+behaviour, this feature is disabled in SMP configurations and its use would
+case run-time errors.
+
+Disabling of Interrupts
+-----------------------
+
+A low overhead means that ensures mutual exclusion in uni-processor
+configurations is the disabling of interrupts around a critical section.  This
+is commonly used in device driver code.  In SMP configurations, however,
+disabling the interrupts on one processor has no effect on other processors.
+So, this is insufficient to ensure system-wide mutual exclusion.  The macros
+
+* :ref:`rtems_interrupt_disable() <rtems_interrupt_disable>`,
+
+* :ref:`rtems_interrupt_enable() <rtems_interrupt_enable>`, and
+
+* :ref:`rtems_interrupt_flash() <rtems_interrupt_flash>`.
+
+are disabled in SMP configurations and its use will cause compile-time warnings
+and link-time errors.  In the unlikely case that interrupts must be disabled on
+the current processor, the
+
+* :ref:`rtems_interrupt_local_disable() <rtems_interrupt_local_disable>`, and
+
+* :ref:`rtems_interrupt_local_enable() <rtems_interrupt_local_enable>`.
+
+macros are now available in all configurations.
+
+Since disabling of interrupts is insufficient to ensure system-wide mutual
+exclusion on SMP a new low-level synchronization primitive was added --
+interrupt locks.  The interrupt locks are a simple API layer on top of the SMP
+locks used for low-level synchronization in the operating system core.
+Currently, they are implemented as a ticket lock.  In uni-processor
+configurations, they degenerate to simple interrupt disable/enable sequences by
+means of the C pre-processor.  It is disallowed to acquire a single interrupt
+lock in a nested way.  This will result in an infinite loop with interrupts
+disabled.  While converting legacy code to interrupt locks, care must be taken
+to avoid this situation to happen.
+
+.. code-block:: c
+    :linenos:
+
+    #include <rtems.h>
+
+    void legacy_code_with_interrupt_disable_enable( void )
+    {
+      rtems_interrupt_level level;
+
+      rtems_interrupt_disable( level );
+      /* Critical section */
+      rtems_interrupt_enable( level );
+    }
+
+    RTEMS_INTERRUPT_LOCK_DEFINE( static, lock, "Name" )
+
+    void smp_ready_code_with_interrupt_lock( void )
+    {
+      rtems_interrupt_lock_context lock_context;
+
+      rtems_interrupt_lock_acquire( &lock, &lock_context );
+      /* Critical section */
+      rtems_interrupt_lock_release( &lock, &lock_context );
+    }
+
+An alternative to the RTEMS-specific interrupt locks are POSIX spinlocks.  The
+:c:type:`pthread_spinlock_t` is defined as a self-contained object, e.g. the
+user must provide the storage for this synchronization object.
+
+.. code-block:: c
+    :linenos:
+
+    #include <assert.h>
+    #include <pthread.h>
+
+    pthread_spinlock_t lock;
+
+    void smp_ready_code_with_posix_spinlock( void )
+    {
+      int error;
+
+      error = pthread_spin_lock( &lock );
+      assert( error == 0 );
+      /* Critical section */
+      error = pthread_spin_unlock( &lock );
+      assert( error == 0 );
+    }
+
+In contrast to POSIX spinlock implementation on Linux or FreeBSD, it is not
+allowed to call blocking operating system services inside the critical section.
+A recursive lock attempt is a severe usage error resulting in an infinite loop
+with interrupts disabled.  Nesting of different locks is allowed.  The user
+must ensure that no deadlock can occur.  As a non-portable feature the locks
+are zero-initialized, e.g. statically initialized global locks reside in the
+``.bss`` section and there is no need to call :c:func:`pthread_spin_init`.
+
+Interrupt Service Routines Execute in Parallel With Threads
+-----------------------------------------------------------
+
+On a machine with more than one processor, interrupt service routines (this
+includes timer service routines installed via :ref:`rtems_timer_fire_after()
+<rtems_timer_fire_after>`) and threads can execute in parallel.  Interrupt
+service routines must take this into account and use proper locking mechanisms
+to protect critical sections from interference by threads (interrupt locks or
+POSIX spinlocks).  This likely requires code modifications in legacy device
+drivers.
+
+Timers Do Not Stop Immediately
+------------------------------
+
+Timer service routines run in the context of the clock interrupt.  On
+uni-processor configurations, it is sufficient to disable interrupts and remove
+a timer from the set of active timers to stop it.  In SMP configurations,
+however, the timer service routine may already run and wait on an SMP lock
+owned by the thread which is about to stop the timer.  This opens the door to
+subtle synchronization issues.  During destruction of objects, special care
+must be taken to ensure that timer service routines cannot access (partly or
+fully) destroyed objects.
+
+False Sharing of Cache Lines Due to Objects Table
+-------------------------------------------------
+
+The Classic API and most POSIX API objects are indirectly accessed via an
+object identifier.  The user-level functions validate the object identifier and
+map it to the actual object structure which resides in a global objects table
+for each object class.  So, unrelated objects are packed together in a table.
+This may result in false sharing of cache lines.  The effect of false sharing
+of cache lines can be observed with the `TMFINE 1
+<https://git.rtems.org/rtems/tree/testsuites/tmtests/tmfine01>`_ test program
+on a suitable platform, e.g. QorIQ T4240.  High-performance SMP applications
+need full control of the object storage :cite:`Drepper:2007:Memory`.
+Therefore, self-contained synchronization objects are now available for RTEMS.
 
 Directives
 ==========
