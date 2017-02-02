@@ -359,12 +359,12 @@ Thread Queues
 =============
 .. index:: thread queues
 
-In case more than one :ref:`thread <task>` may wait on a synchronization
-object, e.g. a semaphore or a message queue, then the waiting threads are added
-to a data structure called the thread queue.  Thread queues are named task wait
-queues in the Classic API.  There are two thread queuing disciplines available
-which define the order of the threads on a particular thread queue.  Threads
-can wait in FIFO or priority order.
+In case more than one :term:`thread` may wait on a synchronization object, e.g.
+a semaphore or a message queue, then the waiting threads are added to a data
+structure called the thread queue.  Thread queues are named task wait queues in
+the Classic API.  There are two thread queuing disciplines available which
+define the order of the threads on a particular thread queue.  Threads can wait
+in FIFO or priority order.
 
 In uni-processor configurations, the priority queuing discipline just orders
 the threads according to their current priority and in FIFO order in case of
