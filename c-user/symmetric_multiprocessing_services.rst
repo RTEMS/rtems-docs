@@ -4,8 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-Symmetric Multiprocessing Services
-**********************************
+Symmetric Multiprocessing (SMP)
+*******************************
 
 Introduction
 ============
