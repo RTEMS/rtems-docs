@@ -2,6 +2,7 @@
 
 .. COMMENT: COPYRIGHT (c) 2014.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
+.. COMMENT: Copyright (c) 2017 embedded brains GmbH.
 .. COMMENT: All rights reserved.
 
 Symmetric Multiprocessing (SMP)
@@ -598,6 +599,63 @@ processors.
 .. image:: ../images/c_user/smplock01fair-t4240.*
    :width: 400
    :align: center
+
+Profiling
+---------
+
+To identify the bottlenecks in the system, support for profiling of low-level
+synchronization is optionally available.  The profiling support is a BSP build
+time configuration option (``--enable-profiling``) and is implemented with an
+acceptable overhead, even for production systems.  A low-overhead counter for
+short time intervals must be provided by the hardware.
+
+Profiling reports are generated in XML for most test programs of the RTEMS
+testsuite (more than 500 test programs).  This gives a good sample set for
+statistics.  For example the maximum thread dispatch disable time, the maximum
+interrupt latency or lock contention can be determined.
+
+.. code-block:: xml
+
+   <ProfilingReport name="SMPMIGRATION 1">
+     <PerCPUProfilingReport processorIndex="0">
+       <MaxThreadDispatchDisabledTime unit="ns">36636</MaxThreadDispatchDisabledTime>
+       <MeanThreadDispatchDisabledTime unit="ns">5065</MeanThreadDispatchDisabledTime>
+       <TotalThreadDispatchDisabledTime unit="ns">3846635988
+         </TotalThreadDispatchDisabledTime>
+       <ThreadDispatchDisabledCount>759395</ThreadDispatchDisabledCount>
+       <MaxInterruptDelay unit="ns">8772</MaxInterruptDelay>
+       <MaxInterruptTime unit="ns">13668</MaxInterruptTime>
+       <MeanInterruptTime unit="ns">6221</MeanInterruptTime>
+       <TotalInterruptTime unit="ns">6757072</TotalInterruptTime>
+       <InterruptCount>1086</InterruptCount>
+     </PerCPUProfilingReport>
+     <PerCPUProfilingReport processorIndex="1">
+       <MaxThreadDispatchDisabledTime unit="ns">39408</MaxThreadDispatchDisabledTime>
+       <MeanThreadDispatchDisabledTime unit="ns">5060</MeanThreadDispatchDisabledTime>
+       <TotalThreadDispatchDisabledTime unit="ns">3842749508
+         </TotalThreadDispatchDisabledTime>
+       <ThreadDispatchDisabledCount>759391</ThreadDispatchDisabledCount>
+       <MaxInterruptDelay unit="ns">8412</MaxInterruptDelay>
+       <MaxInterruptTime unit="ns">15868</MaxInterruptTime>
+       <MeanInterruptTime unit="ns">3525</MeanInterruptTime>
+       <TotalInterruptTime unit="ns">3814476</TotalInterruptTime>
+       <InterruptCount>1082</InterruptCount>
+     </PerCPUProfilingReport>
+     <!-- more reports omitted --->
+     <SMPLockProfilingReport name="Scheduler">
+       <MaxAcquireTime unit="ns">7092</MaxAcquireTime>
+       <MaxSectionTime unit="ns">10984</MaxSectionTime>
+       <MeanAcquireTime unit="ns">2320</MeanAcquireTime>
+       <MeanSectionTime unit="ns">199</MeanSectionTime>
+       <TotalAcquireTime unit="ns">3523939244</TotalAcquireTime>
+       <TotalSectionTime unit="ns">302545596</TotalSectionTime>
+       <UsageCount>1518758</UsageCount>
+       <ContentionCount initialQueueLength="0">759399</ContentionCount>
+       <ContentionCount initialQueueLength="1">759359</ContentionCount>
+       <ContentionCount initialQueueLength="2">0</ContentionCount>
+       <ContentionCount initialQueueLength="3">0</ContentionCount>
+     </SMPLockProfilingReport>
+   </ProfilingReport>
 
 Scheduler Helping Protocol
 --------------------------
