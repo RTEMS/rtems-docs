@@ -10,31 +10,27 @@ Symmetric Multiprocessing (SMP)
 Introduction
 ============
 
-The Symmetric Multiprocessing (SMP) support of the RTEMS 4.11.0 and later is available
-on
+The Symmetric Multiprocessing (SMP) support of the RTEMS 4.12 is available on
 
-- ARM,
+- ARMv7-A,
 
 - PowerPC, and
 
 - SPARC.
 
-It must be explicitly enabled via the ``--enable-smp`` configure command line
-option.  To enable SMP in the application configuration see :ref:`Enable SMP
-Support for Applications`.  The default scheduler for SMP applications supports
-up to 32 processors and is a global fixed priority scheduler, see also
-:ref:`Configuring Clustered Schedulers`.  For example applications
-see:file:`testsuites/smptests`.
-
 .. warning::
 
-   The SMP support in the release of RTEMS is a work in progress. Before you
-   start using this RTEMS version for SMP ask on the RTEMS mailing list.
+   The SMP support must be explicitly enabled via the ``--enable-smp``
+   configure command line option for the :term:`BSP` build.
 
-This chapter describes the services related to Symmetric Multiprocessing
-provided by RTEMS.
+RTEMS is supposed to be a real-time operating system.  What does this mean in
+the context of SMP?  The RTEMS interpretation of real-time on SMP is the
+support for :ref:`ClusteredScheduling` with priority based schedulers and
+adequate locking protocols.  One aim is to enable a schedulability analysis
+under the sporadic task model :cite:`Brandenburg:2011:SL`
+:cite:`Burns:2013:MrsP`.
 
-The application level services currently provided are:
+The directives provided by the SMP support are:
 
 - rtems_get_processor_count_ - Get processor count
 
@@ -42,6 +38,39 @@ The application level services currently provided are:
 
 Background
 ==========
+
+Application Configuration
+-------------------------
+
+By default, the maximum processor count is set to one in the application
+configuration.  To enable SMP, the application configuration option
+:ref:`CONFIGURE_SMP_MAXIMUM_PROCESSORS <CONFIGURE_SMP_MAXIMUM_PROCESSORS>` must
+be defined to a value greater than one.  It is recommended to use the smallest
+value suitable for the application in order to safe memory.  Each processor
+needs an idle thread and interrupt stack for example.
+
+The default scheduler for SMP applications supports up to 32 processors and is
+a global fixed priority scheduler, see also :ref:`Configuring Clustered
+Schedulers`.
+
+The following compile-time test can be used to check if the SMP support is
+available or not.
+
+.. code-block:: c
+
+    #include <rtems.h>
+
+    #ifdef RTEMS_SMP
+    #warning "SMP support is enabled"
+    #else
+    #warning "SMP support is disabled"
+    #endif
+
+Examples
+--------
+
+For example applications see `testsuites/smptests
+<https://git.rtems.org/rtems/tree/testsuites/smptests>`_.
 
 Uniprocessor versus SMP Parallelism
 -----------------------------------
@@ -139,6 +168,8 @@ to another.  There are four reasons why tasks migrate in RTEMS.
 
 Task migration should be avoided so that the working set of a task can stay on
 the most local cache level.
+
+.. _ClusteredScheduling:
 
 Clustered Scheduling
 --------------------

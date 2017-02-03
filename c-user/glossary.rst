@@ -60,10 +60,8 @@ Glossary
    broadcast
       To simultaneously send a message to a logical set of destinations.
 
-   BSP
-      see Board Support Package.
-
    Board Support Package
+   BSP
       A collection of device initialization and control routines specific to a
       particular type of board or collection of boards.
 

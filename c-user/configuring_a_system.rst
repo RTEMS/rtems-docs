@@ -4132,40 +4132,9 @@ SMP Specific Configuration Parameters
 When RTEMS is configured to support SMP target systems, there are other
 configuration parameters which apply.
 
-.. COMMENT: XXX - add -enable-smp
-
-.. COMMENT: === CONFIGURE_SMP_APPLICATION ===
-
-.. _Enable SMP Support for Applications:
-
-Enable SMP Support for Applications
------------------------------------
-.. index:: CONFIGURE_SMP_APPLICATION
-
-CONSTANT:
-    ``CONFIGURE_SMP_APPLICATION``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_SMP_APPLICATION`` must be defined to enable SMP support for the
-    application.
-
-NOTES:
-    This define may go away in the future in case all RTEMS components are SMP
-    ready.  This configuration define is ignored on uni-processor
-    configurations.
-
 .. COMMENT: === CONFIGURE_SMP_MAXIMUM_PROCESSORS ===
 
-.. _Specify Maximum Processors in SMP System:
+.. _CONFIGURE_SMP_MAXIMUM_PROCESSORS:
 
 Specify Maximum Processors in SMP System
 ----------------------------------------
