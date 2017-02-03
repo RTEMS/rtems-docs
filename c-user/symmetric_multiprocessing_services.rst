@@ -600,6 +600,44 @@ processors.
    :width: 400
    :align: center
 
+Internal Locking
+----------------
+
+In SMP configurations, the operating system uses non-recursive SMP locks for
+low-level mutual exclusion.  The locking domains are roughly
+
+* a particular data structure,
+* the thread queue operations,
+* the thread state changes, and
+* the scheduler operations.
+
+For a good average-case performance it is vital that every high-level
+synchronization object, e.g. mutex, has its own SMP lock.  In the average-case,
+only this SMP lock should be involved to carry out a specific operation, e.g.
+obtain/release a mutex.  In general, the high-level synchronization objects
+have a thread queue embedded and use its SMP lock.
+
+In case a thread must block on a thread queue, then things get complicated.
+The executing thread first acquires the SMP lock of the thread queue and then
+figures out that it needs to block.  The procedure to block the thread on this
+particular thread queue involves state changes of the thread itself and for
+this thread-specific SMP locks must be used.
+
+In order to determine if a thread is blocked on a thread queue or not
+thread-specific SMP locks must be used.  A thread priority change must
+propagate this to the thread queue (possibly recursively).  Care must be taken
+to not have a lock order reversal between thread queue and thread-specific SMP
+locks.
+
+Each scheduler instance has its own SMP lock.  For the scheduler helping
+protocol multiple scheduler instances may be in charge of a thread.  It is not
+possible to acquire two scheduler instance SMP locks at the same time,
+otherwise deadlocks would happen.  A thread-specific SMP lock is used to
+synchronize the thread data shared by different scheduler instances.
+
+The thread state SMP lock protects various things, e.g. the thread state, join
+operations, signals, post-switch actions, the home scheduler instance, etc.
+
 Profiling
 ---------
 
