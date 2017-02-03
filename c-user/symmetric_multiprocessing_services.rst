@@ -643,8 +643,8 @@ variables,
 Updates of the heir thread are done via a normal store operation.  The thread
 dispatch necessary indicator of another processor is set as a side-effect of an
 inter-processor interrupt.  So, this change notification works without the use
-of locks.  The thread context is protected by a TTAS lock embedded in the
-context to ensure that it is used on at most one processor at a time.
+of locks.  The thread context is protected by a :term:`TTAS` lock embedded in
+the context to ensure that it is used on at most one processor at a time.
 Normally, only thread-specific or per-processor locks are used during a thread
 dispatch.  This implementation turned out to be quite efficient and no lock
 contention was observed in the testsuite.  The heavy-weight thread dispatch

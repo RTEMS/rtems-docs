@@ -668,6 +668,9 @@ Glossary
    target
       The system on which the application will ultimately execute.
 
+   TAS
+      An acronym for Test-And-Set.
+
    task
    thread
       A logically complete thread of execution.  It consists normally of a set
@@ -740,6 +743,9 @@ Glossary
       A temporary rise in system activity which may cause deadlines to be
       missed.  Rate Monotonic Scheduling can be used to determine if all
       deadlines will be met under transient overload.
+
+   TTAS
+      An acronym for Test and Test-And-Set.
 
    user extensions
       Software routines provided by the application to enhance the
