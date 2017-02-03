@@ -203,74 +203,6 @@ To set the scheduler of a task see :ref:`rtems_scheduler_ident()
 <rtems_scheduler_ident>` and :ref:`rtems_task_set_scheduler()
 <rtems_task_set_scheduler>`.
 
-Scheduler Helping Protocol
---------------------------
-
-The scheduler provides a helping protocol to support locking protocols like
-*Migratory Priority Inheritance* or the *Multiprocessor Resource Sharing
-Protocol*.  Each ready task can use at least one scheduler node at a time to
-gain access to a processor.  Each scheduler node has an owner, a user and an
-optional idle task.  The owner of a scheduler node is determined a task
-creation and never changes during the life time of a scheduler node.  The user
-of a scheduler node may change due to the scheduler helping protocol.  A
-scheduler node is in one of the four scheduler help states:
-
-:dfn:`help yourself`
-    This scheduler node is solely used by the owner task.  This task owns no
-    resources using a helping protocol and thus does not take part in the
-    scheduler helping protocol.  No help will be provided for other tasks.
-
-:dfn:`help active owner`
-    This scheduler node is owned by a task actively owning a resource and can
-    be used to help out tasks.  In case this scheduler node changes its state
-    from ready to scheduled and the task executes using another node, then an
-    idle task will be provided as a user of this node to temporarily execute on
-    behalf of the owner task.  Thus lower priority tasks are denied access to
-    the processors of this scheduler instance.  In case a task actively owning
-    a resource performs a blocking operation, then an idle task will be used
-    also in case this node is in the scheduled state.
-
-:dfn:`help active rival`
-    This scheduler node is owned by a task actively obtaining a resource
-    currently owned by another task and can be used to help out tasks.  The
-    task owning this node is ready and will give away its processor in case the
-    task owning the resource asks for help.
-
-:dfn:`help passive`
-    This scheduler node is owned by a task obtaining a resource currently owned
-    by another task and can be used to help out tasks.  The task owning this
-    node is blocked.
-
-The following scheduler operations return a task in need for help
-
-- unblock,
-
-- change priority,
-
-- yield, and
-
-- ask for help.
-
-A task in need for help is a task that encounters a scheduler state change from
-scheduled to ready (this is a pre-emption by a higher priority task) or a task
-that cannot be scheduled in an unblock operation.  Such a task can ask tasks
-which depend on resources owned by this task for help.
-
-In case it is not possible to schedule a task in need for help, then the
-scheduler nodes available for the task will be placed into the set of ready
-scheduler nodes of the corresponding scheduler instances.  Once a state change
-from ready to scheduled happens for one of scheduler nodes it will be used to
-schedule the task in need for help.
-
-The ask for help scheduler operation is used to help tasks in need for help
-returned by the operations mentioned above.  This operation is also used in
-case the root of a resource sub-tree owned by a task changes.
-
-The run-time of the ask for help procedures depend on the size of the resource
-tree of the task needing help and other resource trees in case tasks in need
-for help are produced during this operation.  Thus the worst-case latency in
-the system depends on the maximum resource tree size of the application.
-
 OpenMP
 ------
 
@@ -635,6 +567,56 @@ processors.
 .. image:: ../images/c_user/smplock01fair-t4240.*
    :width: 400
    :align: center
+
+Scheduler Helping Protocol
+--------------------------
+
+The scheduler provides a helping protocol to support locking protocols like the
+:ref:`OMIP` or the :ref:`MrsP`.  Each thread has a scheduler node for each
+scheduler instance in the system which are located in its :term:`TCB`.  A
+thread has exactly one home scheduler instance which is set during thread
+creation.  The home scheduler instance can be changed with
+:ref:`rtems_task_set_scheduler() <rtems_task_set_scheduler>`.  Due to the
+locking protocols a thread may gain access to scheduler nodes of other
+scheduler instances.  This allows the thread to temporarily migrate to another
+scheduler instance in case of pre-emption.
+
+The scheduler infrastructure is based on an object-oriented design.  The
+scheduler operations for a thread are defined as virtual functions.  For the
+scheduler helping protocol the following operations must be implemented by an
+SMP-aware scheduler
+
+* ask a scheduler node for help,
+* reconsider the help request of a scheduler node,
+* withdraw a schedule node.
+
+All currently available SMP-aware schedulers use a framework which is
+customized via inline functions.  This eases the implementation of scheduler
+variants.  Up to now, only priority-based schedulers are implemented.
+
+In case a thread is allowed to use more than one scheduler node it will ask
+these nodes for help
+
+* in case of pre-emption, or
+* an unblock did not schedule the thread, or
+* a yield  was successful.
+
+The actual ask for help scheduler operations are carried out as a side-effect
+of the thread dispatch procedure.  Once a need for help is recognized, a help
+request is registered in one of the processors related to the thread and a
+thread dispatch is issued.  This indirection leads to a better decoupling of
+scheduler instances.  Unrelated processors are not burdened with extra work for
+threads which participate in resource sharing.  Each ask for help operation
+indicates if it could help or not.  The procedure stops after the first
+successful ask for help.  Unsuccessful ask for help operations will register
+this need in the scheduler context.
+
+After a thread dispatch the reconsider help request operation is used to clean
+up stale help registrations in the scheduler contexts.
+
+The withdraw operation takes away scheduler nodes once the thread is no longer
+allowed to use them, e.g. it released a mutex.  The availability of scheduler
+nodes for a thread is controlled by the thread queues.
 
 Thread Dispatch Details
 -----------------------
