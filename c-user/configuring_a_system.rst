@@ -3830,7 +3830,7 @@ NOTES:
     enabled.
 
     This scheduler is currently the default in SMP configurations and is only
-    selected when ``CONFIGURE_SMP_APPLICATION`` is defined.
+    selected when ``CONFIGURE_SMP_MAXIMUM_PROCESSORS`` is greater than one.
 
 .. COMMENT: === CONFIGURE_SCHEDULER_SIMPLE_SMP ===
 
@@ -4150,7 +4150,7 @@ RANGE:
     Defined or undefined.
 
 DEFAULT VALUE:
-    The default value is 1, (if CONFIGURE_SMP_APPLICATION is defined).
+    The default value is 1.
 
 DESCRIPTION:
     ``CONFIGURE_SMP_MAXIMUM_PROCESSORS`` must be set to the number of
