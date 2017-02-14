@@ -45,9 +45,9 @@ Application Configuration
 
 By default, the maximum processor count is set to one in the application
 configuration.  To enable SMP, the application configuration option
-:ref:`CONFIGURE_SMP_MAXIMUM_PROCESSORS <CONFIGURE_SMP_MAXIMUM_PROCESSORS>` must
-be defined to a value greater than one.  It is recommended to use the smallest
-value suitable for the application in order to safe memory.  Each processor
+:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>` must be
+defined to a value greater than one.  It is recommended to use the smallest
+value suitable for the application in order to save memory.  Each processor
 needs an idle thread and interrupt stack for example.
 
 The default scheduler for SMP applications supports up to 32 processors and is

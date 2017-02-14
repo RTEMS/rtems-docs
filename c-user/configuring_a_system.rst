@@ -1647,6 +1647,39 @@ NOTES:
     you run out of all available memory rather then just until you run out of
     RTEMS Workspace.
 
+.. COMMENT: === CONFIGURE_MAXIMUM_PROCESSORS ===
+
+.. _CONFIGURE_MAXIMUM_PROCESSORS:
+
+Specify Maximum Processors
+----------------------------------------
+.. index:: CONFIGURE_MAXIMUM_PROCESSORS
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_PROCESSORS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is 1.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_PROCESSORS`` must be set to the maximum number of
+    processors an applicaiton intends to use.  The number of acually available
+    processors depends on the hardware and may be less.  It is recommended to
+    use the smallest value suitable for the application in order to save
+    memory.  Each processor needs an idle thread and interrupt stack for
+    example.
+
+NOTES:
+    If there are more processors available than configured, the rest will be
+    ignored.  This configuration define is ignored in uni-processor
+    configurations.
+
 .. COMMENT: === CONFIGURE_MICROSECONDS_PER_TICK ===
 
 .. _CONFIGURE_MICROSECONDS_PER_TICK:
@@ -3830,7 +3863,7 @@ NOTES:
     enabled.
 
     This scheduler is currently the default in SMP configurations and is only
-    selected when ``CONFIGURE_SMP_MAXIMUM_PROCESSORS`` is greater than one.
+    selected when ``CONFIGURE_MAXIMUM_PROCESSORS`` is greater than one.
 
 .. COMMENT: === CONFIGURE_SCHEDULER_SIMPLE_SMP ===
 
@@ -4020,7 +4053,7 @@ CONFIGURATION:
     The last step is to define which processor uses which scheduler.  For this
     purpose a scheduler assignment table must be defined.  The entry count of
     this table must be equal to the configured maximum processors
-    (``CONFIGURE_SMP_MAXIMUM_PROCESSORS``).  A processor assignment to a
+    (``CONFIGURE_MAXIMUM_PROCESSORS``).  A processor assignment to a
     scheduler can be optional or mandatory.  The boot processor must have a
     scheduler assigned.  In case the system needs more mandatory processors
     than available then a fatal run-time error will occur.  To specify the
@@ -4091,7 +4124,7 @@ EXAMPLE:
 
     .. code-block:: c
 
-        #define CONFIGURE_SMP_MAXIMUM_PROCESSORS 8
+        #define CONFIGURE_MAXIMUM_PROCESSORS 8
         #define CONFIGURE_MAXIMUM_PRIORITY 255
 
         /* Make the scheduler algorithm available */
@@ -4123,43 +4156,6 @@ EXAMPLE:
             RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
             RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
             RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL)
-
-.. COMMENT: === SMP Specific Configuration Parameters ===
-
-SMP Specific Configuration Parameters
-=====================================
-
-When RTEMS is configured to support SMP target systems, there are other
-configuration parameters which apply.
-
-.. COMMENT: === CONFIGURE_SMP_MAXIMUM_PROCESSORS ===
-
-.. _CONFIGURE_SMP_MAXIMUM_PROCESSORS:
-
-Specify Maximum Processors in SMP System
-----------------------------------------
-.. index:: CONFIGURE_SMP_MAXIMUM_PROCESSORS
-
-CONSTANT:
-    ``CONFIGURE_SMP_MAXIMUM_PROCESSORS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    The default value is 1.
-
-DESCRIPTION:
-    ``CONFIGURE_SMP_MAXIMUM_PROCESSORS`` must be set to the number of
-    processors in the SMP configuration.
-
-NOTES:
-    If there are more processors available than configured, the rest will be
-    ignored.  This configuration define is ignored on uni-processor
-    configurations.
 
 .. COMMENT: === Device Driver Table ===
 

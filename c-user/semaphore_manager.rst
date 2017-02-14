@@ -883,7 +883,7 @@ EXAMPLE:
         #define CONFIGURE_MAXIMUM_TASKS 1
         #define CONFIGURE_MAXIMUM_SEMAPHORES 1
         #define CONFIGURE_MAXIMUM_MRSP_SEMAPHORES 1
-        #define CONFIGURE_SMP_MAXIMUM_PROCESSORS 2
+        #define CONFIGURE_MAXIMUM_PROCESSORS 2
         #define CONFIGURE_SCHEDULER_SIMPLE_SMP
 
         #include <rtems/scheduler.h>
