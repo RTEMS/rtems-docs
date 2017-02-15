@@ -49,6 +49,8 @@ The following macros are provided to create, populate and use linker sets.
 
 - RTEMS_LINKER_ROSET_ITEM_ORDERED_ - Defines an ordered read-only linker set item
 
+- RTEMS_LINKER_ROSET_CONTENT_ - Marks a declaration as a read-only linker set content
+
 - RTEMS_LINKER_RWSET_DECLARE_ - Declares a read-write linker set
 
 - RTEMS_LINKER_RWSET_ - Defines a read-write linker set
@@ -60,6 +62,8 @@ The following macros are provided to create, populate and use linker sets.
 - RTEMS_LINKER_RWSET_ITEM_ - Defines a read-write linker set item
 
 - RTEMS_LINKER_RWSET_ITEM_ORDERED_ - Defines an ordered read-write linker set item
+
+- RTEMS_LINKER_RWSET_CONTENT_ - Marks a declaration as a read-write linker set content
 
 Background
 ==========
@@ -454,6 +458,28 @@ NOTES:
 
    \clearpage
 
+.. _RTEMS_LINKER_ROSET_CONTENT:
+
+RTEMS_LINKER_ROSET_CONTENT - Marks a declaration as a read-only linker set content
+----------------------------------------------------------------------------------
+.. index:: RTEMS_LINKER_ROSET_CONTENT
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        RTEMS_LINKER_ROSET_CONTENT( set, decl );
+
+DESCRIPTION:
+    This macro marks a declaration as a read-only linker set content.  The
+    linker set is identified by ``set``.  The ``set`` parameter itself must be
+    a valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``decl`` parameter must be an arbitrary
+    variable declaration.
+
+.. raw:: latex
+
+   \clearpage
+
 .. _RTEMS_LINKER_RWSET_DECLARE:
 
 RTEMS_LINKER_RWSET_DECLARE - Declares a read-write linker set
@@ -626,3 +652,25 @@ NOTES:
         /* Example item */
         static const xyz_item some_item = { 123 };
         XYZ_ITEM( some_item, XYZ_ORDER_FIRST );
+
+.. raw:: latex
+
+   \clearpage
+
+.. _RTEMS_LINKER_RWSET_CONTENT:
+
+RTEMS_LINKER_RWSET_CONTENT - Marks a declaration as a read-write linker set content
+-----------------------------------------------------------------------------------
+.. index:: RTEMS_LINKER_RWSET_CONTENT
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        RTEMS_LINKER_RWSET_CONTENT( set, decl );
+
+DESCRIPTION:
+    This macro marks a declaration as a read-write linker set content.  The
+    linker set is identified by ``set``.  The ``set`` parameter itself must be
+    a valid C designator on which no macro expansion is performed.  It uniquely
+    identifies the linker set. The ``decl`` parameter must be an arbitrary
+    variable declaration.
