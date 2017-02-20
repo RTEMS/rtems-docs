@@ -37,9 +37,8 @@ The hosts which produce production quality is:
 Host Setup
 ----------
 
-For HTML output a Sphinx and a full Latex (texlive) installation is necessary.
-Sphinx uses Latex to produce images of mathematical formulas for the HTML
-output.  Building a Single HTML page requires the 'inliner' tool. The
+HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
+and building a Single HTML page requires the 'inliner' tool. The
 sphinxcontrib-bibtex extension is mandatory.
 
 Please add your host as you set it up.

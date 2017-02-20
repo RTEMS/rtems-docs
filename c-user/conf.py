@@ -3,7 +3,7 @@ sys.path.append(os.path.abspath('../common/'))
 
 from conf import *
 
-extensions = ['sphinx.ext.imgmath', 'sphinxcontrib.bibtex']
+extensions = ['sphinx.ext.mathjax', 'sphinxcontrib.bibtex']
 
 version = '4.11.99'
 release = '4.11.99'
