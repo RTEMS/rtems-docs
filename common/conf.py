@@ -31,7 +31,8 @@ extensions = [
 	"sphinx.ext.doctest",
 	"sphinx.ext.graphviz",
 	"sphinx.ext.intersphinx",
-	"sphinx.ext.pngmath",
+	"sphinx.ext.mathjax",
+	"sphinxcontrib.bibtex",
 	"rtemsext",
 	"rtemsdomain",
 ]
