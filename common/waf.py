@@ -134,21 +134,52 @@ def html_resources(ctx, buildtype):
 #    )
 
 
+def check_sphinx_extension(ctx, extension):
+    def run_sphinx(bld):
+        rst_node = bld.srcnode.make_node('testbuild/contents.rst')
+        rst_node.parent.mkdir()
+        rst_node.write('.. COMMENT test sphinx\n')
+        bld(rule = bld.kw['rule'], source = rst_node)
+
+    ctx.start_msg("Checking for '%s'" % (extension))
+    try:
+        ctx.run_build(fragment = 'xx',
+                      rule = "${BIN_SPHINX_BUILD} -b html -D extensions=%s -C . out" % (extension),
+                      build_fun = run_sphinx,
+                      env = ctx.env)
+    except ctx.errors.ConfigurationError:
+        ctx.end_msg('not found (see README.txt)', 'RED')
+        ctx.fatal('The configuration failed')
+    ctx.end_msg('found')
+
+
 def cmd_configure(ctx):
-    ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
-    ctx.find_program("aspell", var = "BIN_ASPELL", mandatory = False)
+    check_sphinx = not ctx.env.BIN_SPHINX_BUILD
+    if check_sphinx:
+        ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
+        ctx.find_program("aspell", var = "BIN_ASPELL", mandatory = False)
 
-    ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
-    ver = check_sphinx_version(ctx, sphinx_min_version)
-    ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
+        ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
+        ver = check_sphinx_version(ctx, sphinx_min_version)
+        ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
 
-    ctx.start_msg("Sphinx Verbose: ")
-    if 'SPHINX_VERBOSE' not in ctx.env:
-        ctx.env.append_value('SPHINX_VERBOSE', ctx.options.sphinx_verbose)
-    level = sphinx_verbose(ctx)
-    if level == '-Q':
-        level = 'quiet'
-    ctx.end_msg(level)
+        ctx.start_msg("Checking Sphinx Verbose ")
+        if 'SPHINX_VERBOSE' not in ctx.env:
+            ctx.env.append_value('SPHINX_VERBOSE', ctx.options.sphinx_verbose)
+            level = sphinx_verbose(ctx)
+            if level == '-Q':
+                level = 'quiet'
+            ctx.end_msg(level)
+        #
+        # Check extensions.
+        #
+        check_sphinx_extension(ctx, 'sphinx.ext.autodoc')
+        check_sphinx_extension(ctx, 'sphinx.ext.coverage')
+        check_sphinx_extension(ctx, 'sphinx.ext.doctest')
+        check_sphinx_extension(ctx, 'sphinx.ext.graphviz')
+        check_sphinx_extension(ctx, 'sphinx.ext.intersphinx')
+        check_sphinx_extension(ctx, 'sphinx.ext.mathjax')
+        check_sphinx_extension(ctx, 'sphinxcontrib.bibtex')
 
     #
     # Optional builds.
@@ -164,8 +195,6 @@ def cmd_configure(ctx):
                '-shell-escape' not in ctx.env['PDFLATEXFLAGS']:
                 ctx.env.append_value('PDFLATEXFLAGS', '-shell-escape')
             latex.configure_tests(ctx)
-        else:
-            ctx.msg('Check for Tex packages', 'skipping, already checked')
         ctx.env.BUILD_PDF = 'yes'
 
     ctx.envBUILD_SINGLEHTML = 'no'
