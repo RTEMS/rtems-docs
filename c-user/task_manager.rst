@@ -1435,8 +1435,9 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_task_set_scheduler(
-            rtems_id task_id,
-            rtems_id scheduler_id
+          rtems_id            task_id,
+          rtems_id            scheduler_id,
+          rtems_task_priority priority
         );
 
 DIRECTIVE STATUS CODES:
@@ -1447,13 +1448,20 @@ DIRECTIVE STATUS CODES:
        - successful operation
      * - ``RTEMS_INVALID_ID``
        - invalid task or scheduler id
-     * - ``RTEMS_INCORRECT_STATE``
+     * - ``RTEMS_INVALID_PRIORITY``
+       - invalid task priority
+     * - ``RTEMS_RESOURCE_IN_USE``
        - the task is in the wrong state to perform a scheduler change
+     * - ``RTEMS_UNSATISFIED``
+       - the processor set of the scheduler is empty
+     * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
+       - not supported on remote tasks
 
 DESCRIPTION:
     Sets the scheduler of a task identified by ``task_id`` to the scheduler
     identified by ``scheduler_id``.  The scheduler of a task is initialized to
-    the scheduler of the task that created it.
+    the scheduler of the task that created it.  The priority of the task is set
+    to ``priority``.
 
 NOTES:
     None.
@@ -1465,35 +1473,35 @@ EXAMPLE:
         #include <rtems.h>
         #include <assert.h>
 
-        void task(rtems_task_argument arg);
+        void task( rtems_task_argument arg );
 
-        void example(void)
+        void example( void )
         {
-            rtems_status_code sc;
-            rtems_id          task_id;
-            rtems_id          scheduler_id;
-            rtems_name        scheduler_name;
+          rtems_status_code sc;
+          rtems_id          task_id;
+          rtems_id          scheduler_id;
+          rtems_name        scheduler_name;
 
-            scheduler_name = rtems_build_name('W', 'O', 'R', 'K');
+          scheduler_name = rtems_build_name( 'W', 'O', 'R', 'K' );
 
-            sc = rtems_scheduler_ident(scheduler_name, &scheduler_id);
-            assert(sc == RTEMS_SUCCESSFUL);
+          sc = rtems_scheduler_ident( scheduler_name, &scheduler_id );
+          assert( sc == RTEMS_SUCCESSFUL );
 
-            sc = rtems_task_create(
-                    rtems_build_name('T', 'A', 'S', 'K'),
-                    1,
-                    RTEMS_MINIMUM_STACK_SIZE,
-                    RTEMS_DEFAULT_MODES,
-                    RTEMS_DEFAULT_ATTRIBUTES,
-                    &task_id
-                 );
-            assert(sc == RTEMS_SUCCESSFUL);
+          sc = rtems_task_create(
+            rtems_build_name( 'T', 'A', 'S', 'K' ),
+            1,
+            RTEMS_MINIMUM_STACK_SIZE,
+            RTEMS_DEFAULT_MODES,
+            RTEMS_DEFAULT_ATTRIBUTES,
+            &task_id
+          );
+          assert( sc == RTEMS_SUCCESSFUL );
 
-            sc = rtems_task_set_scheduler(task_id, scheduler_id);
-            assert(sc == RTEMS_SUCCESSFUL);
+          sc = rtems_task_set_scheduler( task_id, scheduler_id, 2 );
+          assert( sc == RTEMS_SUCCESSFUL );
 
-            sc = rtems_task_start(task_id, task, 0);
-            assert(sc == RTEMS_SUCCESSFUL);
+          sc = rtems_task_start( task_id, task, 0 );
+          assert( sc == RTEMS_SUCCESSFUL );
         }
 
 .. raw:: latex
