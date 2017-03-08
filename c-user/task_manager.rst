@@ -1464,7 +1464,9 @@ DESCRIPTION:
     to ``priority``.
 
 NOTES:
-    None.
+    It is recommended to set the scheduler of a task before it is started or in
+    case it is guaranteed that the task owns no resources.  Otherwise, sporadic
+    ``RTEMS_RESOURCE_IN_USE`` errors may occur.
 
 EXAMPLE:
     .. code-block:: c
