@@ -60,6 +60,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	thread_cancellation
 	services_provided_by_c
 	services_provided_by_math
+	devctl
 	status_of_implementation
 	command
 
