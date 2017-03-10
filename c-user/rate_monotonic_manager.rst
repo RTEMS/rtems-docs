@@ -266,22 +266,21 @@ Processor Utilization Rule
 .. index:: RMS Processor Utilization Rule
 
 The Processor Utilization Rule requires that processor utilization be
-calculated based upon the period and execution time of each task.  The fraction
-of processor time spent executing task index is ``Time(index) /
-Period(index)``.  The processor utilization can be calculated as follows:
+calculated based upon the period and execution time of each task.
+The fraction of processor time spent executing task index is ``Time(i)
+/ Period(i)``.  The processor utilization can be calculated as follows
+where n is the number of tasks in the set being analyzed:
 
-.. code-block:: c
+.. math::
 
-    Utilization = 0
-    for index = 1 to maximum_tasks
-        Utilization = Utilization + (Time(index)/Period(index))
+    Utilization = \sum_{i=1}^{n} Time_i/Period_i
 
 To ensure schedulability even under transient overload, the processor
 utilization must adhere to the following rule:
 
-.. code-block:: c
+.. math::
 
-    Utilization = maximum_tasks * (2**(1/maximum_tasks) - 1)
+    maximumUtilization = n * (2^{\frac{1}{n}} - 1)
 
 As the number of tasks increases, the above formula approaches ln(2) for a
 worst-case utilization factor of approximately 0.693.  Many tasks sets can be
