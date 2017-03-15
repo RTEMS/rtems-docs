@@ -199,11 +199,13 @@ def cmd_configure(ctx):
 
     ctx.envBUILD_SINGLEHTML = 'no'
     if ctx.options.singlehtml:
-        ctx.env.BUILD_SINGLEHTML = 'yes'
-        ctx.find_program("inliner", var = "BIN_INLINER", mandatory = False)
-        if not ctx.env.BIN_INLINER:
-            ctx.fatal("Node inliner is required install with 'npm install -g inliner' " +
-                      "(https://github.com/remy/inliner)")
+        check_inliner = not ctx.env.BIN_INLINER
+        if check_inliner:
+            ctx.env.BUILD_SINGLEHTML = 'yes'
+            ctx.find_program("inliner", var = "BIN_INLINER", mandatory = False)
+            if not ctx.env.BIN_INLINER:
+                ctx.fatal("Node inliner is required install with 'npm install -g inliner' " +
+                          "(https://github.com/remy/inliner)")
 
 def doc_pdf(ctx, source_dir, conf_dir):
     buildtype = 'latex'
