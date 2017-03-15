@@ -28,6 +28,8 @@ Table of Contents
 
 	hardware/index
 
+	tools/index
+
 	support/index
 	additional/index
 	glossary/index

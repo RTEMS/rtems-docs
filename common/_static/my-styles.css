@@ -111,6 +111,15 @@ table.rtems-table.docutils td {
 }
 
 /*
+ * Option description name.
+ */
+.rst-content dl:not(.docutils) dt {
+    background: transparent;
+    color: #11111111;
+    border-top: 0px;
+}
+
+/*
  * Nav side-bar in RTEMS colours.
  */
 .wy-nav-top, .wy-nav-top a {
