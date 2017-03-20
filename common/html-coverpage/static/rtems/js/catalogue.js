@@ -56,12 +56,12 @@ function paintCatalogue(xml) {
 	else
 	    table += empty;
 	if (pdf)
-	    table += '<td><a href="' + '/' + pdf + '">' +
+	    table += '<td><a href="' + pdf + '">' +
  	    '<img src="' + pdfIcon + '" width="20" height="20"></a></td>\n';
 	else
 	    table += empty;
 	if (singlehtml)
-	    table += '<td><a href="' + '/' + singlehtml + '">' +
+	    table += '<td><a href="' + singlehtml + '">' +
 	    '<img src="' + htmlIcon + '" width="20" height="20"></a></td>\n';
 	else
 	    table += empty;

@@ -3,9 +3,6 @@ sys.path.append(os.path.abspath('../common/'))
 
 from conf import *
 
-version = '4.11.0'
-release = '4.11.0'
-
 project = "RTEMS User Manual"
 
 exclude_patterns = ['config/build.rst',
@@ -39,6 +36,8 @@ exclude_patterns = ['config/build.rst',
 
                     'waf/index.rst']
 
-latex_documents = [
-	('index', 'user.tex', u'RTEMS User Manual', u'RTEMS Documentation Project', 'manual'),
-]
+latex_documents = [('index',
+                    'user.tex',
+                    u'RTEMS User Manual',
+                    u'RTEMS Documentation Project',
+                    'manual')]

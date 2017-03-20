@@ -3,9 +3,8 @@ sys.path.append(os.path.abspath('../common/'))
 
 from conf import *
 
-version = '4.11.0'
-release = '4.11.0'
-
-latex_documents = [
-	('index', 'develenv.tex', u'RTEMS Development Environment Documentation', u'RTEMS Documentation Project', 'manual'),
-]
+latex_documents = [('index',
+                    'develenv.tex',
+                    u'RTEMS Development Environment Documentation',
+                    u'RTEMS Documentation Project',
+                    'manual')]
