@@ -228,13 +228,17 @@ def cmd_configure(ctx):
                 ctx.fatal("Node inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
 
+def sphinx_cmdline(ctx, build_type, conf_dir, doctrees, source_dir, output_dir):
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
+           (sphinx_verbose(ctx), build_type, conf_dir, version_cmdline(ctx),
+            doctrees, source_dir, output_dir)
+    return rule
+
 def doc_pdf(ctx, source_dir, conf_dir):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     pdf_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), buildtype, conf_dir, version_cmdline(ctx),
-            doctrees, source_dir, output_dir)
+    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
@@ -284,9 +288,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), buildtype, conf_dir, version_cmdline(ctx),
-            doctrees, source_dir, output_dir)
+    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
@@ -306,9 +308,7 @@ def doc_html(ctx, conf_dir, source_dir):
     buildtype = 'html'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), buildtype, conf_dir, version_cmdline(ctx),
-            doctrees, source_dir, output_dir)
+    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
@@ -343,11 +343,11 @@ def cmd_options(ctx):
                    default = "-Q",
                    help = "Sphinx verbose.")
     ctx.add_option('--pdf',
-                   action='store_true',
+                   action = 'store_true',
                    default = False,
                    help = "Build PDF.")
     ctx.add_option('--singlehtml',
-                   action='store_true',
+                   action = 'store_true',
                    default = False,
                    help = "Build Single HTML file, requires Node Inliner")
 
