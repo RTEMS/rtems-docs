@@ -51,7 +51,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RTEMS Documentation Project'
-copyright = u'2016, RTEMS Project (built %s)' % (build_date())
+copyright = u'2017, RTEMS Project (built %s)' % (build_date())
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -109,7 +109,12 @@ html_theme_path = [sphinx_rtd_theme_rtems.get_html_theme_path()]
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    'collapse_navigation': False,
+    'display_version': True,
+    'sticky_navigation': True,
+    'genindex': True,
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
