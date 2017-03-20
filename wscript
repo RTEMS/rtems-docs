@@ -9,7 +9,7 @@ path.append(abspath('common'))
 import waflib
 import waf as docs_waf
 
-version = 'Master (4.11.99.1)'
+version = '4.11.99 (master)'
 
 build_all = ['user',
              'rsb',
@@ -29,12 +29,13 @@ def options(opt):
     docs_waf.cmd_options(opt)
 
 def configure(conf):
+    conf.env.VERSION = version
     for b in building:
         conf.recurse(b)
     conf.env['BUILD_FROM_TOP'] = 'yes'
 
 def catalogue(ctx):
-    docs_waf.xml_catalogue(ctx, building, version)
+    docs_waf.xml_catalogue(ctx, building)
 
 def coverpage_js(ctx):
     js = None

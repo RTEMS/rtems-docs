@@ -3,10 +3,10 @@ sys.path.append(os.path.abspath('../common/'))
 
 from conf import *
 
-version = '1.0'
-release = '5.0'
-
 latex_documents = [
-	('index', 'porting.tex', u'RTEMS Porting Guide', u'RTEMS Documentation Project', 'manual'),
+    ('index',
+     'porting.tex',
+     u'RTEMS Porting Guide',
+     u'RTEMS Documentation Project',
+     'manual'),
 ]
-

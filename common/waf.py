@@ -5,6 +5,22 @@ import latex
 
 sphinx_min_version = (1, 3)
 
+def build_date():
+    import datetime
+    now = datetime.date.today()
+    m = now.strftime('%B')
+    y = now.strftime('%Y')
+    if now.day % 10 == 1:
+        s = 'st'
+    elif now.day % 10 == 2:
+        s = 'nd'
+    elif now.day == 3:
+        s = 'rd'
+    else:
+        s = 'th'
+    d = '%2d%s' % (now.day, s)
+    return '%s %s %s' % (d, m, y)
+
 def cmd_spell(ctx):
     from waflib import Options
     from sys import argv
@@ -88,6 +104,9 @@ def build_dir_setup(ctx, buildtype):
     doctrees = os.path.join(os.path.dirname(output_dir), 'doctrees', buildtype)
     return build_dir, output_node, output_dir, doctrees
 
+def version_cmdline(ctx):
+    return "-Drelease='%s' -Dversion='%s'" % (ctx.env.VERSION, ctx.env.VERSION)
+
 def pdf_resources(ctx, buildtype):
     packages_base = ctx.path.parent.find_dir('common/latex')
     if packages_base is None:
@@ -156,6 +175,8 @@ def check_sphinx_extension(ctx, extension):
 def cmd_configure(ctx):
     check_sphinx = not ctx.env.BIN_SPHINX_BUILD
     if check_sphinx:
+        ctx.msg('Checking version', ctx.env.VERSION)
+
         ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
         ctx.find_program("aspell", var = "BIN_ASPELL", mandatory = False)
 
@@ -211,8 +232,8 @@ def doc_pdf(ctx, source_dir, conf_dir):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     pdf_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), buildtype, conf_dir,
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
+           (sphinx_verbose(ctx), buildtype, conf_dir, version_cmdline(ctx),
             doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
@@ -263,8 +284,8 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), buildtype, conf_dir,
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
+           (sphinx_verbose(ctx), buildtype, conf_dir, version_cmdline(ctx),
             doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
@@ -285,8 +306,8 @@ def doc_html(ctx, conf_dir, source_dir):
     buildtype = 'html'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), buildtype, conf_dir,
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
+           (sphinx_verbose(ctx), buildtype, conf_dir, version_cmdline(ctx),
             doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
@@ -344,7 +365,7 @@ def cmd_configure_path(ctx):
 
     cmd_configure(ctx)
 
-def xml_catalogue(ctx, building, title):
+def xml_catalogue(ctx, building):
     #
     # The following is a hack to find the top_dir because the task does
     # provided a reference to top_dir like a build context.
@@ -369,8 +390,8 @@ def xml_catalogue(ctx, building, title):
         sys.path = sp[:]
         catalogue[doc] = {
             'title': bconf.project,
-            'version':  bconf.version,
-            'release': bconf.release,
+            'version': str(ctx.env.VERSION),
+            'release': str(ctx.env.VERSION),
             'pdf': bconf.latex_documents[0][1].replace('.tex', '.pdf'),
             'html': '%s/index.html' % (doc),
             'singlehtml': '%s.html' % (doc)
@@ -381,11 +402,11 @@ def xml_catalogue(ctx, building, title):
     cat = xml.Document()
 
     root = cat.createElement('rtems-docs')
-    root.setAttribute('date', 'today')
+    root.setAttribute('date', build_date())
     cat.appendChild(root)
 
     heading = cat.createElement('catalogue')
-    text = cat.createTextNode(title)
+    text = cat.createTextNode(str(ctx.env.VERSION))
     heading.appendChild(text)
     root.appendChild(heading)
 
