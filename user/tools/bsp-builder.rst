@@ -160,7 +160,7 @@ Command
    The path the RTEMS source tree to build.
 
 .. option:: --build-path
-
+0
    The path to build the BSP and place the build output. This can be any path
    and away from your current directory or the RTEMS source code. The storage
    does not need to be fast like an SSD.
@@ -177,7 +177,7 @@ Command
 .. option:: --no-clean
 
    Do not remove the build once finished. This option lets you inspect the
-   built output. The output of output can be large and disks can fill with this
+   built output. The amount of output can be large and disks can fill with this
    option.
 
 .. option:: --profiles
@@ -204,7 +204,7 @@ Examples
 ^^^^^^^^
 
 The following is a *tier-1* profile build of *all* on a machine where all the
-source and tools are located on fast SSD disks and the build happens an a
+source and tools are located on fast SSD disks and the build happens on a
 spinning disk mounted under `build`. The build uses a development source tree
 that is configured and ready to build. The source can have local patches that
 need to be regression tested:
