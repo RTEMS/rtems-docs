@@ -160,7 +160,7 @@ Command
    The path the RTEMS source tree to build.
 
 .. option:: --build-path
-0
+
    The path to build the BSP and place the build output. This can be any path
    and away from your current directory or the RTEMS source code. The storage
    does not need to be fast like an SSD.
