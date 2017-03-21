@@ -378,14 +378,15 @@ the tar file somewhere and copy the file tree from the level you have write
 access from. Embedding the full prefix path in the tar files lets you know what
 the prefix is and is recommended. For example if
 ``/home/chris/development/rtems/4.11`` is the prefix used you cannot change
-directory to the root (``/``) and install because the ``/home`` is root access
-only. To install you would:
+directory to the root (``/``) and untar the file because the ``/home`` is root
+access only. To install a tar file you have downloaded into your new machine's
+``Downloads`` directory in your home directoty you would enter:
 
 .. code-block:: shell
 
-    $ cd
-    $ tar --strip-components=3 -xjf rtems-4.11-sparc-rtems4.11-1.tar.bz2
-
+    $ cd /somewhere
+    $ tar --strip-components=3 -xjf \
+          $HOME/Downloads/rtems-4.11-sparc-rtems4.11-1.tar.bz2
 
 A build set tar file is created by adding ``--bset-tar-file`` option to the
 ``sb-set-builder`` command::
