@@ -2,9 +2,10 @@ from sys import path
 from os.path import abspath
 path.append(abspath('../common/'))
 
-from waf import cmd_configure as configure, \
-                cmd_build as build, \
-                spell, \
-		cmd_spell, \
-		cmd_options as options, \
-		linkcheck, cmd_linkcheck
+from waf import cmd_configure as configure
+from waf import cmd_build as build
+from waf import cmd_options as options
+from waf import spell
+from waf import cmd_spell
+from waf import linkcheck
+from waf import cmd_linkcheck
