@@ -22,7 +22,7 @@ def build_date():
     return '%s %s %s' % (d, m, y)
 
 def version_cmdline(ctx):
-    return "-Drelease='%s' -Dversion='%s'" % (ctx.env.VERSION, ctx.env.VERSION)
+    return '-Drelease="%s" -Dversion="%s"' % (ctx.env.VERSION, ctx.env.VERSION)
 
 def sphinx_cmdline(ctx, build_type, conf_dir, doctrees, source_dir, output_dir):
     rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \

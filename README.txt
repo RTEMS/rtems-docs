@@ -65,6 +65,29 @@ and sphinx:
   export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
   export PATH=${HOME}/.local/bin:${PATH}
 
+Windows
+~~~~~~~
+
+To build the documentation on Windows you need to install an offical Python
+build from https://www.python.org/. We suggest you install a recent 2.7 series
+64bit build. The versions 2.7.9 and after include pip.
+
+Note: you cannot use the MSYS2 versions of Python because the pip libraries
+that contain C or C++ code are built with MSVC libraries and cannot integrate
+with the MSYS2 built python.
+
+The following assumes Python is installed to its default path of C:\Python27.
+
+Open an MSYS2 terminal window and add the needed paths to Python and its
+scripts:
+
+ $ export PATH=/c/Python27/Scripts:/c/Python27:$PATH
+
+Install Sphinx and any needed extensions:
+
+ $ pip install sphinx
+ $ pip install sphinxcontrib-bibtex
+
 FreeBSD
 ~~~~~~~
 
