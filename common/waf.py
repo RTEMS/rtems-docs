@@ -21,6 +21,15 @@ def build_date():
     d = '%2d%s' % (now.day, s)
     return '%s %s %s' % (d, m, y)
 
+def version_cmdline(ctx):
+    return "-Drelease='%s' -Dversion='%s'" % (ctx.env.VERSION, ctx.env.VERSION)
+
+def sphinx_cmdline(ctx, build_type, conf_dir, doctrees, source_dir, output_dir):
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
+           (sphinx_verbose(ctx), build_type, conf_dir, version_cmdline(ctx),
+            doctrees, source_dir, output_dir)
+    return rule
+
 def cmd_spell(ctx):
     from waflib import Options
     from sys import argv
@@ -48,14 +57,14 @@ def cmd_spell(ctx):
         print("running:", cmd)
         call(cmd)
 
-
-def cmd_linkcheck(ctx, conf_dir=".", source_dir="."):
-    ctx_rule = "${BIN_SPHINX_BUILD} -b linkcheck -c %s -j %d " + \
-               "-d build/doctrees %s build/linkcheck" % (conf_dir,
-                                                         ctx.options.jobs,
-                                                             source_dir)
+def cmd_linkcheck(ctx):
+    conf_dir = ctx.path.get_src()
+    source_dir = ctx.path.get_src()
+    buildtype = 'linkcheck'
+    build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
+    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
-        rule   = ctx_rule,
+        rule   = rule,
         cwd    = ctx.path.abspath(),
         source = ctx.path.ant_glob('**/*.rst'),
         target = "linkcheck/output.txt"
@@ -103,9 +112,6 @@ def build_dir_setup(ctx, buildtype):
     output_dir = output_node.abspath()
     doctrees = os.path.join(os.path.dirname(output_dir), 'doctrees', buildtype)
     return build_dir, output_node, output_dir, doctrees
-
-def version_cmdline(ctx):
-    return "-Drelease='%s' -Dversion='%s'" % (ctx.env.VERSION, ctx.env.VERSION)
 
 def pdf_resources(ctx, buildtype):
     packages_base = ctx.path.parent.find_dir('common/latex')
@@ -228,12 +234,6 @@ def cmd_configure(ctx):
                 ctx.fatal("Node inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
 
-def sphinx_cmdline(ctx, build_type, conf_dir, doctrees, source_dir, output_dir):
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
-           (sphinx_verbose(ctx), build_type, conf_dir, version_cmdline(ctx),
-            doctrees, source_dir, output_dir)
-    return rule
-
 def doc_pdf(ctx, source_dir, conf_dir):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
@@ -322,8 +322,9 @@ def doc_html(ctx, conf_dir, source_dir):
                       relative_trick = True,
                       quiet = True)
 
-def cmd_build(ctx, conf_dir = ".", source_dir = "."):
-    srcnode = ctx.srcnode.abspath()
+def cmd_build(ctx):
+    conf_dir = ctx.path.get_src()
+    source_dir = ctx.path.get_src()
 
     if ctx.env.BUILD_PDF == 'yes':
         doc_pdf(ctx, source_dir, conf_dir)
@@ -445,30 +446,3 @@ def xml_catalogue(ctx, building):
     catnode.write(cat.toprettyxml(indent = ' ' * 2, newl = os.linesep))
 
     cat.unlink()
-
-CONF_FRAG = """
-sys.path.append(os.path.abspath('../../common/'))
-sys.path.append('%s')
-templates_path = ['_templates']
-html_static_path = ['_static']
-"""
-
-# XXX: fix this ugly hack.  No time to waste on it.
-def cmd_build_path(ctx):
-    def run(task):
-
-        with open("conf.py") as fp:
-            conf = "import sys, os\nsys.path.append(os.path.abspath('../../common/'))\n"
-            conf += fp.read()
-
-        task.inputs[0].abspath()
-        task.outputs[0].write(conf + (CONF_FRAG % ctx.env.RTEMS_PATH))
-
-    ctx(
-        rule   = run,
-        source = [ctx.path.parent.find_node("common/conf.py"),
-                  ctx.path.find_node("./conf.py")],
-        target = ctx.path.get_bld().make_node('conf.py')
-    )
-
-    cmd_build(ctx, conf_dir = "build", source_dir = "build")

@@ -79,3 +79,11 @@ def build(ctx):
 def install(ctx):
     for b in building:
         ctx.recurse(b)
+
+def cmd_spell(ctx):
+    for b in building:
+        ctx.recurse(b)
+
+def cmd_linkcheck(ctx):
+    for b in building:
+        ctx.recurse(b)
