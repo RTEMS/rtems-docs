@@ -34,6 +34,8 @@ The hosts which produce production quality is:
  FreeBSD
  CentOS 6 and 7 (if using texlive, not RPMs of texlive)
 
+NOTE: RedHat Enterprise Linux (RHEL) and Fedora should be the same as CentOS.
+
 Host Setup
 ----------
 
@@ -49,8 +51,8 @@ Sphinx Per User Install
 You can use this method to install a personal version of Sphinx if your host
 does not provide a suitable package:
 
- $ pip install -U sphinx
- $ pip install sphinxcontrib-bibtex
+  $ pip install -U --user sphinx
+  $ pip install --user sphinxcontrib-bibtex
 
 On some hosts, this may complain that a newer version of pip is available.
 If so, then upgrade pip into your personal area.
@@ -58,11 +60,18 @@ If so, then upgrade pip into your personal area.
  $ pip install --upgrade --user pip
 
 The personal area for these tools is ${HOME}/.local/bin. It should
-be PREPENDED to your path. On a 32-bit install of CentOS 6, these
-were the PATH modifications to use the local install of Texlive
-and sphinx:
+be PREPENDED to your path. On a 32-bit install of CentOS, RHEL, or
+Fedora, these were the PATH modifications to use the local install of
+Texlive and sphinx:
 
   export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
+  export PATH=${HOME}/.local/bin:${PATH}
+
+If on a 64-bit install of CentOS, RHEL, or Fedora, these will
+be the PATH modifications to use the local install of Texlive
+and sphinx:
+
+  export PATH=/usr/local/texlive/2016/bin/x86_64-linux/:${PATH}
   export PATH=${HOME}/.local/bin:${PATH}
 
 Windows
@@ -139,8 +148,16 @@ PDF:
 
 Single HTML:
 
+NOTE: npm appears to be part of the EPEL repository for RHEL and CentOS.
+You may have to add that repository to your configuration.
+
+
   # yum install npm
   # npm install -g inliner
+
+Spell check:
+
+  # yum install aspell
 
 PATH:
 
