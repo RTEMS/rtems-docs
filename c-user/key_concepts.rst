@@ -271,7 +271,7 @@ Priority Inversion
 .. index:: priority inversion
 
 Priority inversion is a form of indefinite postponement which is common in
-multitasking, pre-emptive executives with shared resources.  Priority inversion
+multitasking, preemptive executives with shared resources.  Priority inversion
 occurs when a high priority tasks requests access to shared resource which is
 currently allocated to a low priority task.  The high priority task must block
 until the low priority task releases the resource.  This problem is exacerbated
@@ -333,7 +333,7 @@ scheduler instance.  In case the thread owning the mutex releases the mutex,
 then the normal priority of the thread is restored.  Threads that wait for
 mutex ownership are not blocked with respect to the scheduler and instead
 perform a busy wait.  The MrsP uses temporary thread migrations to foreign
-scheduler instances in case of a pre-emption of the mutex owner.  This locking
+scheduler instances in case of a preemption of the mutex owner.  This locking
 protocol is available since RTEMS 4.11. It was re-implemented in RTEMS 4.12 to
 overcome some shortcomings of the original implementation
 :cite:`Catellani:2015:MrsP`.

@@ -347,15 +347,15 @@ executed in a uni-processor configuration and should be assumed to have data
 synchronization conflicts with what was formerly the highest priority task
 which executed without conflict.
 
-Disabling of Thread Pre-Emption
--------------------------------
+Disabling of Thread Preemption
+------------------------------
 
-A thread which disables pre-emption prevents that a higher priority thread gets
+A thread which disables preemption prevents that a higher priority thread gets
 hold of its processor involuntarily.  In uni-processor configurations, this can
 be used to ensure mutual exclusion at thread level.  In SMP configurations,
 however, more than one executing thread may exist.  Thus, it is impossible to
 ensure mutual exclusion using this mechanism.  In order to prevent that
-applications using pre-emption for this purpose, would show inappropriate
+applications using preemption for this purpose, would show inappropriate
 behaviour, this feature is disabled in SMP configurations and its use would
 case run-time errors.
 
@@ -706,7 +706,7 @@ creation.  The home scheduler instance can be changed with
 :ref:`rtems_task_set_scheduler() <rtems_task_set_scheduler>`.  Due to the
 locking protocols a thread may gain access to scheduler nodes of other
 scheduler instances.  This allows the thread to temporarily migrate to another
-scheduler instance in case of pre-emption.
+scheduler instance in case of preemption.
 
 The scheduler infrastructure is based on an object-oriented design.  The
 scheduler operations for a thread are defined as virtual functions.  For the
@@ -724,7 +724,7 @@ variants.  Up to now, only priority-based schedulers are implemented.
 In case a thread is allowed to use more than one scheduler node it will ask
 these nodes for help
 
-* in case of pre-emption, or
+* in case of preemption, or
 * an unblock did not schedule the thread, or
 * a yield  was successful.
 
