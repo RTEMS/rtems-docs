@@ -30,22 +30,21 @@ initialisation functions in specially named sections. The system initialisation
 function's address is placed in a variable and the section attribute of the
 variable is set to a special section name. The linker is instructed via a
 special linker command file to collect these variables together to create a
-table. The start-up code in RTEMS loops over the table of addresses and calls
-each address or system initialisation function. Th especial section names given
-to the variables sort the table placing the initialisation calls in a specific
-and controlled order.
+table. The start-up code in RTRMS loops over the table of addresses and calling
+each address or system initialisation function. Special section names given to
+the variables sorts the table placing the functions in a specific order.
 
 A user places a call to an API function in their application and the linker
 pulls the API code from the RTEMS kernel library adding it to the
-executable. The API code the linker loads references the variable containing
-the address of that API's system initialisation function. The linker loads the
+executing. The API code the linker loads references the variable containing the
+address of the that API's system initialisation function. The linker loads the
 API system initialisation code into the executable to resolve the external
-reference created by the variable. If the user does not reference the API the
-variable is not referenced and so not loaded into the executable resling in no
-API initialisation.
+refernece created by the variable. If the user does not reference the API the
+variables is loaded into the executable and no reference to the API system
+initialisation code is made so it is not linked into the executable.
 
 The design automatically creates a unique system intialisation table for each
-executable and the code in RTEMS does not change. There are no special build
+executable and the code in RTEMS does not change, there is no special build
 system tricks, or stub libraries.
 
 The RTEMS Execuable Information reports the tables created and you can use this

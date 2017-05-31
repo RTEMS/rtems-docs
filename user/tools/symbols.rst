@@ -8,35 +8,33 @@ RTEMS Symbols
 
 .. index:: Tools, rtems-syms
 
-The RTEMS Symbols (:program:`rtems-syms`) command is an RTEMS Tool to generate
-symbol tables used by the RTEMS Runtime Loader (RTL). The symbol table is
-loaded at run time with the exported base kernel image's symbols so dynamically
-loaded code can link to them.
+The RTEMS Symbols (:program:`rtems-syms`) command is an RTEMS tool to generate
+symbol tables used by the RTEMS Runtime Loader (RTL). The symbol table contains
+the exported base kernel symbols user code dynamically loaded can reference.
 
-The RTEMS Runtime Loader supports embedding of a symbol table in the base
-kernel image or loading the symbol table at runtime. Embedding the table
-requires linking the symbol table with the base image and runtime loading loads
-the table using the dynamic loader when RTEMS is running.
+The RTEMS Runtime Loader supports two methods of loading a symbol table,
+embedded and runtime loading. Embedding the table requires linking the symbol
+table with the base image and runtime loading loads the table using the dynamic
+loader when RTEMS is running.
 
 .. sidebar:: *Filtering Symbols*
 
-   Currently there is no filtering of symbols loaded into the symbol
-   table. This means all base kernel image symbols are present in the symbol
-   table when only a sub-set of the symbols may be referenced.
+   Currently there is no filtering of symbols in the symbol table. This means
+   all base kernel image symbols are present in the symbol table when only a
+   sub-set of the symbols are referenced.
 
 Embedding the symbol table creates self contained images. A target may not have
 any external media, for example RTEMS tests, or there is a requirement to avoid
-the overhead of maintaining matching the symbol table files and kernel base
-images. Embedding the symbol table requires a 2-pass link process making the
-application's build system more complicated as well as lengthing the build
-time.
+the management need to match the symbol table with the kernel base
+image. Embedding the symbol table requires a 2-pass link process making the
+application's build system more complicated.
 
 A dynamically loadable symbol table is simpler to create however the symbol
-table and the kernel base image must match or the behaviour is undefined. The
-:program:`rtems-syms` command is run against the base kernel image and the
-generated symbol table is installed on to the target hardware and loaded before
-any other modules. The symbol table object file contains a constructor that is
-called after being loaded and that code registers the symbol table.
+table and the kernel base image must match or the behaviour is undefined. There
+is currently no mechnanisum to ensure the symbol table and the kernel image
+match The :program:`rtems-syms` command is run against the base kernel image
+and the generated symbol table is installed on to the target hardware and
+loaded before any other modules.
 
 Symbol Table
 ------------
@@ -44,17 +42,18 @@ Symbol Table
 The symbol table is an ELF object file in the target's ELF format and is built
 using the target's RTEMS C compiler. The :program:`rtems-syms` command searches
 for the C compller under the prefix this command is installed under or the
-system path. If this fails the option ``-c`` or ``--cc`` to override the path
-to the compiler can be used.
+system path. If the target's C compiler is not located in either of these paths
+use the option ``-c`` or ``--cc`` to specify the path to the compiler.
 
-The :program:`rtems-syms` command loads the base kernel image's ELF file
-reading the symbols then creates a temporary C file it compiles using the RTEMS
-C compiler. The command automatically detects the architecture from the base
-kernel image's ELF file. The option ``-E`` or ``--exec-prefix`` can be used to
-override the executable prefix used.
+The :program:`rtems-syms` command loads the base kernel image's ELF file and
+reads the global or public symbols, creates a temporary C file and then
+compiles it using the target's RTEMS C compiler. The command automatically
+detects the architecture from the base kernel image's ELF file and uses it to
+create the C compiler's name. The option ``-E`` or ``--exec-prefix`` can be
+used to override the executable prefix used.
 
-It is important to supply suitable C compiler flags (cflags) so the symbol
-table can be linked or loaded.
+It is important to supply suitable C compiler flags (``cflags``) that match the
+kernel image's so the symbol table can be linked or loaded.
 
 2-Pass Linking
 --------------
@@ -133,7 +132,11 @@ Examples
 --------
 
 Create a dynamlically loaded symbol table for the ``minimum.exe`` sample
+<<<<<<< Updated upstream
 program for the ``i386/pc686`` BSP:
+=======
+program for the ``i386/pc686``:
+>>>>>>> Stashed changes
 
 .. code-block:: shell
 
