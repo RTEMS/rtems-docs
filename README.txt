@@ -316,7 +316,7 @@ existing documentation for an example and if unsure ask.
       Heading   Description
       1  ###### Part
       2  ****** Section
-      3  ====== Sub-ection
+      3  ====== Sub-section
       4  ------ Sub-sub-section
       5  ^^^^^^ Sub-sub-sub-section
       6  ~~~~~~ Sub-sub-sub-sub-section
@@ -392,7 +392,7 @@ existing documentation for an example and if unsure ask.
      users        : Users Mailing List
      vc           : Version Control Mailing List
 
-  The valif URLs are:
+  The valid URLs are:
 
      trac         : https://devel.rtems.org/
      devel        : https://devel.rtems.org/
