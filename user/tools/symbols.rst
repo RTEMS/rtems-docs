@@ -132,11 +132,7 @@ Examples
 --------
 
 Create a dynamlically loaded symbol table for the ``minimum.exe`` sample
-<<<<<<< Updated upstream
 program for the ``i386/pc686`` BSP:
-=======
-program for the ``i386/pc686``:
->>>>>>> Stashed changes
 
 .. code-block:: shell
 
