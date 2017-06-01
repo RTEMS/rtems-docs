@@ -3,7 +3,6 @@
 .. comment: Copyright (c) 2017 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
-<<<<<<< Updated upstream
 Host Tools
 **********
 
