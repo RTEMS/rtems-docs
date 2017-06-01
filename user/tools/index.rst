@@ -19,3 +19,4 @@ developers.
 .. include:: exeinfo.rst
 .. include:: trace-linker.rst
 .. include:: bsp-builder.rst
+.. include:: tester.rst
