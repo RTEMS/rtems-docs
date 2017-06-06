@@ -517,7 +517,7 @@ because they are implemented with the configuration scripts. The best way to
 find what is available is to grep the configuration files. for ``with`` and
 ``without``.
 
-Following are currentlt available:
+Following are currently available:
 
 ``--without-rtems``
   Do not build RTEMS when building an RTEMS build set.
@@ -525,8 +525,11 @@ Following are currentlt available:
 ``--without-cxx``
   Do not build a C++ compiler.
 
-``--with-objc``
-  Attempt to build a C++ compiler.
+``--with-ada``
+  Attempt to build an Ada compiler.  You need a native GNAT installed.
 
 ``--with-fortran``
   Attempt to build a Fortran compiler.
+
+``--with-objc``
+  Attempt to build a C++ compiler.
