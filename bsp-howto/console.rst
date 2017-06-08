@@ -152,6 +152,8 @@ Interrupt Server Driven Mode (`TERMIOS_IRQ_SERVER_DRIVEN`)
 Task Driven Mode (`TERMIOS_TASK_DRIVEN`)
     The task driven mode is similar to interrupt driven mode, but the actual
     data processing is done in dedicated tasks instead of interrupt routines.
+    This mode is not available in SMP configurations.  It has some
+    implementation flaws and it is not well tested.
 
 Polled Mode
 ===========
