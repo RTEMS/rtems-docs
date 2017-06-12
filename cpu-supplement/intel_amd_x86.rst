@@ -201,7 +201,7 @@ SMP is not supported.
 Thread-Local Storage
 ====================
 
-Thread-local storage is not implemented.
+Thread-local storage is supported.
 
 Board Support Packages
 ======================
