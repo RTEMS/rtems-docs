@@ -115,18 +115,18 @@ supported compression formats are:
 ``xy``:
   XY
 
-The output of the decompression tool is feed to the standard ``tar`` utility if
+The output of the decompression tool is fed to the standard ``tar`` utility if
 not a ZIP file and unpacked into the build directory. ZIP files are unpacked by
 the decompression tool and all other files must be in the tar file format.
 
 The ``%source`` directive typically supports a single source file tar or zip
 file. The ``set`` command is used to set the URL for a specific source
-group. The first set command encoutner is registered and any further set
+group. The first set command encountered is registered and any further set
 commands are ignored. This allows you to define a base standard source location
 and override it in build and architecture specific files. You can also add
 extra source files to a group. This is typically done when a collection of
 source is broken down in a number of smaller files and you require the full
-package. The source's ``setup`` command must reide in the ``%prep:`` section
+package. The source's ``setup`` command must reside in the ``%prep:`` section
 and it unpacks the source code ready to be built.
 
 If the source URL references the GitHub API server https://api.github.com/ a
@@ -584,7 +584,7 @@ information is kept updated and accurate::
 
 The next section defines the source and any patches. In this case there is a
 single source package and it can be downloaded using the HTTP protocol. The RSB
-knows this is GZip'ped tar file. If more than one package package is needed add
+knows this is GZip'ped tar file. If more than one package is needed, add
 them increasing the index. The ``gcc-4.8-1.cfg`` configuration contains
 examples of more than one source package as well as conditionally including
 source packages based on the outer configuration options::
@@ -642,7 +642,7 @@ control. Newlib is taken directly from its CVS repository.
 Next is the building phase and for the DTC example this is simply a matter of
 running ``make``. Note the use of the RSB macros for commands. In the case of
 ``%{__make}`` it maps to the correct make for your host. In the case of BSD
-systems we need to use the GNU make and not the GNU make.
+systems we need to use the BSD make and not the GNU make.
 
 If your package requires a configuration stage you need to run this before the
 make stage. Again the GCC common configuration file provides a detailed example::
@@ -749,10 +749,10 @@ To build this you can use something similar to::
 The build is for a FreeBSD host and the prefix is for user installed
 packages. In this example I cannot let the source builder perform the install
 because I never run the RSB with root priviledges so a build set or bset tar
-file is created. This can then be installed using root privildges.
+file is created. This can then be installed using root priviledges.
 
 The command also supplies the ``--trace`` option. The output in the log file
-will contian all the macros.
+will contain all the macros.
 
 Debugging
 ~~~~~~~~~
@@ -768,7 +768,7 @@ phases. These are usually a mix of shell script bugs or package set up or
 configuration bugs. Here you can use any normal shell script type debug
 technique such as ``set +x`` to output the commands or ``echo``
 statements. Debugging package related issues may require you start a build with
-teh RSB and supply ``--no-clean`` option and then locate the build directories
+the RSB and supply ``--no-clean`` option and then locate the build directories
 and change directory into them and manually run commands until to figure what
 the package requires.
 
@@ -823,7 +823,7 @@ The script language is implemented in terms of macros. The built-in list is:
   Define a source code package. This macro has a number appended.
 
 ``%patch``:
-  Define a patch. This macro has a is number appended.
+  Define a patch. This macro has a number appended.
 
 ``%hash``:
   Define a checksum for a source or patch file.
@@ -1018,7 +1018,7 @@ macro. The build block is a series of shell commands that execute to build the
 package. It assumes all source code has been unpacked, patch and adjusted so
 the build will succeed.
 
-The following is an example take from the GutHub STLink project. The STLink is
+The following is an example take from the GitHub STLink project. The STLink is
 a JTAG debugging device for the ST ARM family of processors::
 
     %build
@@ -1078,7 +1078,7 @@ a JTAG debugging device for the ST ARM family of processors::
 
 The ``%install`` macro starts a block that continues until the next block
 macro. The install block is a series of shell commands that execute to install
-the package. You can assume the package has build correctly when this block
+the package. You can assume the package has built correctly when this block
 starts executing.
 
 Never install the package to the actual *prefix* the package was built
@@ -1102,7 +1102,7 @@ Looking at the same example as in :ref:`build`::
 
   1. Setup the PATH environment variable. This is not always needed.
 
-  2. Clean any installed files. This make sure the install is just what the
+  2. Clean any installed files. This makes sure the install is just what the
      package installs and not any left over files from a broken build or
      install.
 
@@ -1160,8 +1160,8 @@ with Newlib configuration the summary is typically::
 %release
 ~~~~~~~~
 
-The ``%release`` is packaging number that allows revisions of a package to
-happen where none package versions change. This value typically increases when
+The ``%release`` is a packaging number that allows revisions of a package to
+happen where no package versions change. This value typically increases when
 the configuration building the package changes::
 
     %define release 1
@@ -1196,14 +1196,14 @@ Source files are source code files in tar or zip files that are unpacked,
 copied or symbolically linked into the package's build tree. Building a package
 requires one or more dependent packages. These are typically the packages
 source code plus dependent libraries or modules. You can create any number of
-these source groups and set each of them up with a separe source group for each
-needed library or module. Each source group normally has a single tar, zip or
-repository and the ``set`` defines this. Some projects split the source code
+these source groups and set each of them up with a separate source group for
+each needed library or module. Each source group normally has a single tar, zip
+or repository and the ``set`` defines this. Some projects split the source code
 into separate tar or zip files and you install them by using the ``add``
 command.
 
 The first instance of a ``set`` command creates the source group and sets the
-source files to be set up. Subsequence ``set`` commands for the same source
+source files to be set up. Subsequent ``set`` commands for the same source
 group are ignored. this lets you define the standard source files and override
 them for specific releases or snapshots. To set a source file group:
 
@@ -1258,8 +1258,8 @@ Accepted options are:
 ~~~~~~
 
 The ``%patch`` macro has the same 3 command as the ``%source`` command however
-the ``set`` commands is not really that useful with the with command. You add
-patches with the ``add`` command and ``setup`` applies the patches. Patch
+the ``set`` commands is not really that useful with the ``%patch`` command. You
+add patches with the ``add`` command and ``setup`` applies the patches. Patch
 options can be added to each patch by placing them before the patch URL. If no
 patch option is provided the default options passed to the ``setup`` command
 are used. An option starts with a ``-``. The ``setup`` command must reside
@@ -1268,7 +1268,7 @@ inside the ``%prep`` section.
 Patches are grouped in a similar way to the ``%source`` macro so you can
 control applying a group of patches to a specific source tree.
 
-The ``__patchdir`` path is search.
+The ``__patchdir`` path is searched.
 
 To add a patch::
 
@@ -1295,11 +1295,11 @@ patches::
 
 The ``%hash`` macro requires 3 arguments and defines a checksum for a specific
 file. The checksum is not applied until the file is checked before downloading
-and once downloaded. A patch or source file that does not has a hash defined
+and once downloaded. A patch or source file that does not have a hash defined
 generates a warning.
 
-A file to be checksum must be unqiue in the any of the source and patch
-directories. The basename of the file is used as the key for the hash.
+A file to be checksummed must be unique in the source and patch directories.
+The basename of the file is used as the key for the hash.
 
 The hash algorthim can be ``md5``, ``sha1``, ``sha224``, ``sha256``,
 ``sha384``, and ``sha512`` and we typically use ``md5``.
@@ -1320,7 +1320,7 @@ Do not include a path with the file name. Only the basename is required. Files
 can be searched for from a number of places and having a path conponent would
 create confusion. This does mean files with hashes must be unique.
 
-Downloading of repositories such as git and cvs cannot be checksumed. It is
+Downloading off repositories such as git and cvs cannot be checksummed. It is
 assumed those protocols and tools manage the state of the files.
 
 %echo
@@ -1346,10 +1346,10 @@ Source Builder. This can also be used as ``%{error: message}``.
 
 The ``%select`` macro selects the map specified. If there is no map no error or
 warning is generated. Macro maps provide a simple way for a user to override
-the settings is a configuration file without having to edit it. The changes are
-recorded in the build report so can be traced.
+the settings in a configuration file without having to edit it. The changes are
+recorded in the build report so they can be traced.
 
-Configuration use different maps so macro overrides can target a specific
+Configurations use different maps so macro overrides can target a specific
 package.
 
 The default map is ``global``::
