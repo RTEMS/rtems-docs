@@ -918,10 +918,10 @@ EXAMPLES:
     .. code-block:: shell
 
         SHLL [/] # task
-        ID       NAME                 CPU PRI STATE  MODES    EVENTS WAITINFO
+        ID       NAME                 SHED PRI STATE  MODES    EVENTS WAITINFO
         ------------------------------------------------------------------------------
-        0a010001 UI1                    0 254 EV     P:T:nA   NONE
-        0a010002 SHLL                   0 100 READY  P:T:nA   NONE
+        0a010001 UI1                  UPD  254 EV     P:T:nA   NONE
+        0a010002 SHLL                 UPD  100 READY  P:T:nA   NONE
 
 .. index:: CONFIGURE_SHELL_NO_COMMAND_TASK
 .. index:: CONFIGURE_SHELL_COMMAND_TASK
