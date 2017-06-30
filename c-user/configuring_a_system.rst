@@ -3795,6 +3795,33 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. COMMENT: === CONFIGURE_SCHEDULER_EDF_SMP ===
+
+.. _Use Earliest Deadline First SMP Scheduler:
+
+Use Earliest Deadline First Scheduler
+-------------------------------------
+.. index:: CONFIGURE_SCHEDULER_EDF_SMP
+
+CONSTANT:
+    ``CONFIGURE_SCHEDULER_EDF_SMP``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    If defined, then the Earliest Deadline First (EDF) SMP Scheduler is
+    selected as the default scheduler.
+
+NOTES:
+    None.
+
 .. COMMENT: === CONFIGURE_SCHEDULER_CBS ===
 
 .. _Use Constant Bandwidth Server Scheduler:

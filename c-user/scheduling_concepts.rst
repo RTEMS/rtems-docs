@@ -183,6 +183,13 @@ period, it has to be finished until the end of this period. The call of
 deadline. Moreover, the ``rtems_rate_monotonic_cancel`` and
 ``rtems_rate_monotonic_delete`` calls clear the deadlines assigned to the task.
 
+Earliest Deadline First SMP Scheduler
+-------------------------------------
+
+An EDF scheduler with SMP support.  The processors managed by this scheduler
+are allocated to the highest priority (earliest deadline) tasks which are ready
+to execute.
+
 Constant Bandwidth Server Scheduling (CBS)
 ------------------------------------------
 .. index:: constant bandwidth server scheduling
