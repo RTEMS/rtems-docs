@@ -1544,7 +1544,7 @@ DESCRIPTION:
     processor and a cleared bit means the opposite.
 
 NOTES:
-    None.
+    The task processor affinity is initialized to the set of online processors.
 
 .. raw:: latex
 
@@ -1593,6 +1593,11 @@ NOTES:
     are not included in the processor affinity set of the task.  It is also not
     an error if the processor affinity set contains processors that are not
     part of the system.
+
+    In case a scheduler without support for task affinites is used for the
+    task, then the task processor affinity set must contain all online
+    processors of the system.  This prevents odd corner cases if processors are
+    added/removed at run-time to/from scheduler instances.
 
 .. raw:: latex
 

@@ -36,25 +36,25 @@ The directives provided by the scheduler manager are:
 - rtems_scheduler_remove_processor_ - Remove processor from a scheduler
 
 Scheduling Algorithms
-=====================
+---------------------
 
 .. index:: scheduling algorithms
 
 RTEMS provides a plugin framework which allows it to support multiple
-scheduling algorithms. RTEMS now includes multiple scheduling algorithms in the
-SuperCore and the user can select which of these they wish to use in their
-application.  In addition, the user can implement their own scheduling
-algorithm and configure RTEMS to use it.
+scheduling algorithms. RTEMS includes multiple scheduling algorithms and the
+user can select which of these they wish to use in their application at
+link-time.  In addition, the user can implement their own scheduling algorithm
+and configure RTEMS to use it.
 
 Supporting multiple scheduling algorithms gives the end user the option to
 select the algorithm which is most appropriate to their use case. Most
 real-time operating systems schedule tasks using a priority based algorithm,
 possibly with preemption control.  The classic RTEMS scheduling algorithm which
-was the only algorithm available in RTEMS 4.10 and earlier, is a priority based
-scheduling algorithm.  This scheduling algoritm is suitable for single core
-(e.g. non-SMP) systems and is now known as the *Deterministic Priority
+was the only algorithm available in RTEMS 4.10 and earlier, is a fixed-priority
+scheduling algorithm.  This scheduling algoritm is suitable for uniprocessor
+(e.g. non-SMP) systems and is known as the *Deterministic Priority
 Scheduler*.  Unless the user configures another scheduling algorithm, RTEMS
-will use this on single core systems.
+will use this on uniprocessor systems.
 
 Priority Scheduling
 -------------------
@@ -99,11 +99,23 @@ algorithm.  These ways involve a list or chain of tasks in the ready state.
 - Another mechanism is to maintain a list of FIFOs per priority.  When a task
   is readied, it is placed on the rear of the FIFO for its priority.  This
   method is often used with a bitmap to assist in locating which FIFOs have
-  ready tasks on them.
+  ready tasks on them.  This data structure has :math:`O(1)` insert, extract
+  and find highest ready run-time complexities.
+
+- A red-black tree may be used for the ready queue with the priority as the
+  key.  This data structure has :math:`O(log(n))` insert, extract and find
+  highest ready run-time complexities while :math:`n` is the count of tasks in
+  the ready queue.
 
 RTEMS currently includes multiple priority based scheduling algorithms as well
 as other algorithms which incorporate deadline.  Each algorithm is discussed in
 the following sections.
+
+Uniprocessor Schedulers
+=======================
+
+All uniprocessor schedulers included in RTEMS are priority based.  The
+processor is allocated to the highest priority task allowed to run.
 
 Deterministic Priority Scheduler
 --------------------------------
@@ -137,20 +149,6 @@ supporting a large number of tasks.
 
 This scheduler is only aware of a single core.
 
-Simple SMP Priority Scheduler
------------------------------
-
-This scheduler is based upon the Simple Priority Scheduler and is designed to
-have the same behaviour on a single core system.  But this scheduler is capable
-of scheduling threads across multiple cores in an SMP system.  When given a
-choice of replacing one of two threads at equal priority on different cores,
-this algorithm favors replacing threads which are preemptible and have executed
-the longest.
-
-This algorithm is non-deterministic. When scheduling, it must consider which
-tasks are to be executed on each core while avoiding superfluous task
-migrations.
-
 Earliest Deadline First Scheduler
 ---------------------------------
 .. index:: earliest deadline first scheduling
@@ -183,13 +181,6 @@ period, it has to be finished until the end of this period. The call of
 deadline. Moreover, the ``rtems_rate_monotonic_cancel`` and
 ``rtems_rate_monotonic_delete`` calls clear the deadlines assigned to the task.
 
-Earliest Deadline First SMP Scheduler
--------------------------------------
-
-An EDF scheduler with SMP support.  The processors managed by this scheduler
-are allocated to the highest priority (earliest deadline) tasks which are ready
-to execute.
-
 Constant Bandwidth Server Scheduling (CBS)
 ------------------------------------------
 .. index:: constant bandwidth server scheduling
@@ -218,6 +209,56 @@ end of its period and then restored again. The rules are:
 The CBS provides an extensive API. Unlike EDF, the
 ``rtems_rate_monotonic_period`` does not declare a deadline because it is
 carried out using CBS API. This call only announces next period.
+
+SMP Schedulers
+==============
+
+All SMP schedulers included in RTEMS are priority based.  The processors
+managed by a scheduler instance are allocated to the highest priority tasks
+allowed to run.
+
+Earliest Deadline First SMP Scheduler
+-------------------------------------
+
+A job-level fixed-priority scheduler using the Earliest Deadline First (EDF)
+method.  By convention, the maximum priority level is
+:math:`min(INT\_MAX, 2^{63} - 1)` for background tasks.  The tasks with an
+active deadline have a higher priority than the background tasks.  This
+scheduler supports task processor affinities of one-to-one and one-to-all, e.g.
+a task can execute on exactly one processor or all processors managed by the
+scheduler instance.  This is the default scheduler in SMP configurations if
+more than one processor is configured.  The processor affinity set of a task
+must contain all online processors to select the one-to-all affinity.  This is
+to avoid pathological cases if processors are added/removed to/from the
+scheduler instance at run-time.  In case the processor affinity set contains
+not all online processors, then a one-to-one affinity will be used selecting
+the processor with the largest index within the set of processores currently
+owned by the scheduler instance.
+
+Deterministic Priority SMP Scheduler
+------------------------------------
+
+A fixed-priority scheduler which uses a table of chains with one chain per
+priority level for the ready tasks.  The maximum priority level is
+configurable.  By default, the maximum priority level is 255 (256 priority
+levels).
+
+Simple Priority SMP Scheduler
+-----------------------------
+
+A fixed-priority scheduler which uses a sorted chain for the ready tasks.  By
+convention, the maximum priority level is 255.  The implementation limit is
+actually :math:`2^{64} - 1`.
+
+Aribitary Processor Affinity Priority SMP Scheduler
+---------------------------------------------------
+
+A fixed-priority scheduler which uses a table of chains with one chain per
+priority level for the ready tasks.  The maximum priority level is
+configurable.  By default, the maximum priority level is 255 (256 priority
+levels).  This scheduler supports arbitrary task processor affinities.  The
+worst-case run-time complexity of some scheduler operations exceeds
+:math:`O(n)` while :math:`n` is the count of ready tasks.
 
 Scheduling Modification Mechanisms
 ==================================
@@ -251,8 +292,10 @@ Task Priority and Scheduling
 
 The most significant task scheduling modification mechanism is the ability for
 the user to assign a priority level to each individual task when it is created
-and to alter a task's priority at run-time.  RTEMS supports up to 255 priority
-levels.  Level 255 is the lowest priority and level 1 is the highest.
+and to alter a task's priority at run-time.  The maximum priority level depends
+on the configured scheduler.  A lower priority level means higher priority
+(higher importance).  The maximum priority level of the default uniprocessor
+scheduler is 255.
 
 Preemption
 ----------
@@ -608,6 +651,11 @@ DIRECTIVE STATUS CODES:
        - The set of processors owned by the specified scheduler instance would
          be empty after the processor removal and there exists a non-idle task
          that uses this scheduler instance as its home scheduler instance.
+     * - ``RTEMS_RESOURCE_IN_USE``
+       - A task with a restricted processor affinity exists that uses this
+         scheduler instance as its home scheduler instance and it would be no
+         longer possible to allocate a processor for this task after the
+         removal of this processor.
 
 DESCRIPTION:
     Removes a processor from set of processors owned by the specified scheduler
