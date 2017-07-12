@@ -29,6 +29,10 @@ The directives provided by the scheduler manager are:
 
 - rtems_scheduler_ident_ - Get ID of a scheduler
 
+- rtems_scheduler_ident_by_processor_ - Get ID of a scheduler by processor
+
+- rtems_scheduler_ident_by_processor_set_ - Get ID of a scheduler by processor set
+
 - rtems_scheduler_get_processor_set_ - Get processor set of a scheduler
 
 - rtems_scheduler_add_processor_ - Add processor to a scheduler
@@ -535,6 +539,85 @@ DESCRIPTION:
     Identifies a scheduler by its name.  The scheduler name is determined by
     the scheduler configuration.  See :ref:`Configuring Clustered Schedulers`
     and :ref:`Configuring a Scheduler Name`.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_ident_by_processor:
+
+SCHEDULER_IDENT_BY_PROCESSOR - Get ID of a scheduler by processor
+-----------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_ident_by_processor(
+            uint32_t  cpu_index,
+            rtems_id *id
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ADDRESS``
+       - The ``id`` parameter is ``NULL``.
+     * - ``RTEMS_INVALID_NAME``
+       - Invalid processor index.
+     * - ``RTEMS_INCORRECT_STATE``
+       - The processor index is valid, however, this processor is not owned by
+         a scheduler.
+
+DESCRIPTION:
+    Identifies a scheduler by a processor.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_ident_by_processor_set:
+
+SCHEDULER_IDENT_BY_PROCESSOR_SET - Get ID of a scheduler by processor set
+-------------------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_ident_by_processor_set(
+            size_t           cpusetsize,
+            const cpu_set_t *cpuset,
+            rtems_id        *id
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ADDRESS``
+       - The ``id`` parameter is ``NULL``.
+     * - ``RTEMS_INVALID_SIZE``
+       - Invalid processor set size.
+     * - ``RTEMS_INVALID_NAME``
+       - The processor set contains no online processor.
+     * - ``RTEMS_INCORRECT_STATE``
+       - The processor set is valid, however, the highest numbered online
+         processor in the specified processor set is not owned by a scheduler.
+
+DESCRIPTION:
+    Identifies a scheduler by a processor set.  The scheduler is selected
+    according to the highest numbered online processor in the specified
+    processor set.
 
 NOTES:
     None.
