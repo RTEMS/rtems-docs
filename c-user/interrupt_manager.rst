@@ -494,14 +494,16 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_initialize(
-            rtems_interrupt_lock *lock
+            rtems_interrupt_lock *lock,
+            const char           *name
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    Initializes an interrupt lock.
+    Initializes an interrupt lock.  The name must be persistent throughout the
+    lifetime of the lock.
 
 NOTES:
     Concurrent initialization leads to unpredictable results.
@@ -520,8 +522,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_acquire(
-            rtems_interrupt_lock *lock,
-            rtems_interrupt_level level
+            rtems_interrupt_lock         *lock,
+            rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
@@ -532,6 +534,12 @@ DESCRIPTION:
     acquires an SMP lock.
 
 NOTES:
+    A separate lock context must be provided for each acquire/release pair, for
+    example an automatic variable.
+
+    An attempt to recursively acquire the lock may result in an infinite loop
+    with interrupts disabled.
+
     This directive will not cause the calling thread to be preempted.  This
     directive can be used in thread and interrupt context.
 
@@ -549,8 +557,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_release(
-            rtems_interrupt_lock *lock,
-            rtems_interrupt_level level
+            rtems_interrupt_lock         *lock,
+            rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
@@ -561,6 +569,9 @@ DESCRIPTION:
     directive releases an SMP lock.
 
 NOTES:
+    The lock context must be the one used to acquire the lock, otherwise the
+    result is unpredictable.
+
     This directive will not cause the calling thread to be preempted.  This
     directive can be used in thread and interrupt context.
 
@@ -578,8 +589,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_acquire_isr(
-            rtems_interrupt_lock *lock,
-            rtems_interrupt_level level
+            rtems_interrupt_lock         *lock,
+            rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
@@ -589,13 +600,18 @@ DESCRIPTION:
     The interrupt status will remain unchanged.  In SMP configurations, this
     directive acquires an SMP lock.
 
+NOTES:
+    A separate lock context must be provided for each acquire/release pair, for
+    example an automatic variable.
+
+    An attempt to recursively acquire the lock may result in an infinite loop.
+
+    This directive is intended for device drivers and should be called from the
+    corresponding interrupt service routine.
+
     In case the corresponding interrupt service routine can be interrupted by
     higher priority interrupts and these interrupts enter the critical section
     protected by this lock, then the result is unpredictable.
-
-NOTES:
-    This directive should be called from the corresponding interrupt service
-    routine.
 
 .. raw:: latex
 
@@ -611,21 +627,23 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_release_isr(
-            rtems_interrupt_lock *lock,
-            rtems_interrupt_level level
+            rtems_interrupt_lock         *lock,
+            rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-
     The interrupt status will remain unchanged.  In SMP configurations, this
     directive releases an SMP lock.
 
 NOTES:
-    This directive should be called from the corresponding interrupt service
-    routine.
+    The lock context must be the one used to acquire the lock, otherwise the
+    result is unpredictable.
+
+    This directive is intended for device drivers and should be called from the
+    corresponding interrupt service routine.
 
 .. raw:: latex
 
