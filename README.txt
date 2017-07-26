@@ -322,7 +322,7 @@ existing documentation for an example and if unsure ask.
       6  ~~~~~~ Sub-sub-sub-sub-section
 
 5. For literal output, such as shell commands and code use '::' at the trailing
-   edge of the previous paragraph. If the '.. code-block::' with
+   edge of the previous paragraph. Use the '.. code-block::' with
    'c' for C code and 'shell' for shell code and terminal output. If you need
    line number use:
 
@@ -337,7 +337,7 @@ existing documentation for an example and if unsure ask.
      .. note::
      .. topic::
 
-   These directives reference specific CSS sytle support.
+   These directives reference specific CSS style support.
 
 7. Images are placed in the 'images' directory. Do not place images in the
    source directories. Using a common 'images' tree of images promotes sharing
@@ -348,7 +348,7 @@ existing documentation for an example and if unsure ask.
        :align: center
        :alt: This is the alt text for some output types.
 
-8. Callouts can be implement manually using a liternal block which can using
+8. Callouts can be implemented manually using a literal block which can use
    '::' or a code block and topic block is used for the items. For
    example:
 
@@ -369,13 +369,13 @@ existing documentation for an example and if unsure ask.
 
        3. Print something to the standard output device.
 
-       4. Exit with an exit code of 0. This is value can be checked by the
+       4. Exit with an exit code of 0. This value can be checked by the
           caller of this program.
 
-   Note, the topic items are manually number. This makes is easier to see which
-   item matches the text. Use <> for the number and align at a position that
-   works and makes the number as visible as possible. Use hanging indents if an
-   items extends over a single line.
+   Note, the topic items are manually numbered, which makes it easier to see
+   which item matches the text. Use <> for the number and align at a position
+   that works and makes the number as visible as possible. Use hanging indents
+   if an items extends past a single line.
 
 9. Use the RTEMS domain references for URLs and mailing lists. For example to
    insert the RTEMS developers list use:
