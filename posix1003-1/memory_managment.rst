@@ -32,21 +32,21 @@ Map Process Addresses to a Memory Object
 
 .. code:: c
 
-    mmap(), Function, Unimplemented
-    PROT_READ, Constant,  Unimplemented
-    PROT_WRITE, Constant,  Unimplemented
-    PROT_EXEC, Constant,  Unimplemented
-    PROT_NONE, Constant,  Unimplemented
-    MAP_SHARED, Constant,  Unimplemented
-    MAP_PRIVATE, Constant,  Unimplemented
-    MAP_FIXED, Constant,  Unimplemented
+    mmap(), Function, Implemented
+    PROT_READ, Constant,  Implemented
+    PROT_WRITE, Constant,  Implemented
+    PROT_EXEC, Constant,  Implemented
+    PROT_NONE, Constant,  Implemented
+    MAP_SHARED, Constant,  Implemented
+    MAP_PRIVATE, Constant,  Implemented
+    MAP_FIXED, Constant,  Implemented
 
 Unmap Previously Mapped Addresses
 ---------------------------------
 
 .. code:: c
 
-    munmap(), Function, Unimplemented
+    munmap(), Function, Implemented
 
 Change Memory Protection
 ------------------------
@@ -73,14 +73,14 @@ Open a Shared Memory Object
 
 .. code:: c
 
-    shm_open(), Function, Unimplemented
+    shm_open(), Function, Implemented
 
 Remove a Shared Memory Object
 -----------------------------
 
 .. code:: c
 
-    shm_unlink(), Function, Unimplemented
+    shm_unlink(), Function, Implemented
 
 .. COMMENT: COPYRIGHT (c) 1988-2002.
 

@@ -22,8 +22,7 @@ when porting existing code from UNIX to RTEMS.
   - Asynchronous IO is not implemented.
   - The ``flockfile()`` family is not implemented
   - getc/putc unlocked family is not implemented
-  - Shared Memory is not implemented
-  - Mapped Memory is not implemented
+  - Mapped Memory is partially implemented
   - NOTES:
 
     - For Shared Memory and Mapped Memory services, it is unclear what
