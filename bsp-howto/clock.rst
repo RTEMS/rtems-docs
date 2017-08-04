@@ -269,12 +269,16 @@ The hardware-specific support at tick is specified by
 System Shutdown Support
 =======================
 
-The :dfn:`Clock Driver Shell` provides the routine ``Clock_exit()`` that is
-scheduled to be run during system shutdown via the ``atexit()`` routine.  The
-hardware-specific shutdown support is specified by
+Optionally, the :dfn:`Clock Driver Shell` provides the routine ``Clock_exit()``
+that is scheduled to be run during system shutdown via the ``atexit()``
+routine.  The hardware-specific shutdown support is specified by
 ``Clock_driver_support_shutdown_hardware()`` which is used by ``Clock_exit()``.
 It should disable the clock tick source if it was enabled.  This can be used to
-prevent clock ticks after the system is shutdown.
+prevent clock ticks after the system is shutdown.  The
+``Clock_driver_support_shutdown_hardware()`` must be provided as a macro.  In
+case this macro is undefined, then the shutdown support is disabled.  This is
+useful for example on memory constrained systems to avoid the ``atexit()``
+overhead.
 
 .. code-block:: c
 
