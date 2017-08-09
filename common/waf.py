@@ -206,6 +206,7 @@ def cmd_configure(ctx):
         check_sphinx_extension(ctx, 'sphinx.ext.graphviz')
         check_sphinx_extension(ctx, 'sphinx.ext.intersphinx')
         check_sphinx_extension(ctx, 'sphinx.ext.mathjax')
+        check_sphinx_extension(ctx, 'sphinxcontrib.bibtex')
 
     #
     # Optional builds.
