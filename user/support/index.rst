@@ -1,7 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Support
-*******
+=======
 
 RTEMS offers a variety of support options.
 

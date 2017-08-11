@@ -1,7 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Overview
-********
+========
 
 Welcome to the :ref:term:`RTEMS` User Manual.
 
