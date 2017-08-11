@@ -24,41 +24,38 @@ gobble=0,
 }
 
 \renewcommand{\maketitle}{%
+  \let\spx@tempa\relax
+  \ifHy@pageanchor\def\spx@tempa{\Hy@pageanchortrue}\fi
+  \hypersetup{pageanchor=false}% avoid duplicate destination warnings
   \begin{titlepage}%
     \let\footnotesize\small
     \let\footnoterule\relax
-    \ifsphinxpdfoutput
-      \begingroup
-      % This \def is required to deal with multi-line authors; it
-      % changes \\ to ', ' (comma-space), making it pass muster for
-      % generating document info in the PDF file.
-      \def\\{, }
-      \pdfinfo{
-        /Author (\@author)
-        /Title (\@title)
-      }
+    \par
+      \begingroup % for PDF information dictionary
+       \def\endgraf{ }\def\and{\& }%
+       \pdfstringdefDisableCommands{\def\\{, }}% overwrite hyperref setup
+       \hypersetup{pdfauthor={\@author}, pdftitle={\@title}}%
       \endgroup
-    \fi
-    \begin{flushright}%
-      %\sphinxlogo%
-      {\center
-        \vspace*{3cm}
-      	\includegraphics{logo.pdf}
-        \vspace{3cm}
-	\par
-        {\rm\Huge \@title \par}%
-        {\em\LARGE \py@release\releaseinfo \par}
-        {\large
-          \copyright Copyright \rtemscopyright \par
-         \py@authoraddress \par
-        }}%
-    \end{flushright}%\par
+    \begin{center}{%
+      \vspace*{3cm}
+      \includegraphics{logo.pdf}
+      \vspace{3cm}
+      \par
+      {\rm\Huge \@title \par}%
+      {\em\LARGE \py@release\releaseinfo \par}
+      {\large
+       \copyright Copyright \rtemscopyright \par
+       \py@authoraddress \par
+      }%
+    }%
+    \end{center}%\par
     \@thanks
   \end{titlepage}%
-  \cleardoublepage%
   \setcounter{footnote}{0}%
   \let\thanks\relax\let\maketitle\relax
   %\gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \spx@tempa
 }
 
 \fancypagestyle{normal}{
@@ -113,31 +110,3 @@ gobble=0,
 % fonts
 \usepackage{charter}
 \usepackage{rtemsextrafonts}
-
-\def\@part[#1]#2{%
-    \ifnum \c@secnumdepth >\m@ne
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
-    \else
-      \addcontentsline{toc}{part}{#1}%
-    \fi
-    {\parindent \z@ %\center
-     \interlinepenalty \@M
-     \normalfont
-     \ifnum \c@secnumdepth >\m@ne
-       \rm\Large \partname~\thepart
-       \par\nobreak
-     \fi
-     \MakeUppercase{\rm\Huge #2}%
-     \markboth{}{}\par}%
-    \nobreak
-    \vskip 8ex
-    \@afterheading}
-\def\@spart#1{%
-    {\parindent \z@ %\center
-     \interlinepenalty \@M
-     \normalfont
-     \huge \bfseries #1\par}%
-     \nobreak
-     \vskip 3ex
-     \@afterheading}
