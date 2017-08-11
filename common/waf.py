@@ -378,17 +378,17 @@ def xml_catalogue(ctx, building):
     catalogue = {}
     sp = sys.path[:]
     for doc in building:
-        sys.path.insert(0, top_dir.find_node(doc).abspath())
         #
         # Import using the imp API so the module is reloaded for us.
         #
         import imp
+	sys.path = [top_dir.find_node(doc).abspath()]
         mf = imp.find_module('conf')
+        sys.path = sp[:]
         try:
             bconf = imp.load_module('bconf', mf[0], mf[1], mf[2])
         finally:
             mf[0].close()
-        sys.path = sp[:]
         catalogue[doc] = {
             'title': bconf.project,
             'version': str(ctx.env.VERSION),
