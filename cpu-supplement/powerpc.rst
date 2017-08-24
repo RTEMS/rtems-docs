@@ -131,8 +131,9 @@ Thread-local storage is supported.
   setup.  A valid stack pointer is not enough to call C functions.  They may
   use the TOC to get addresses and constants.
 
-* The TOC must be within the first 4GiB of the address space.  This simplifies
-  the interrupt prologue.
+* The TOC must be within the first 2GiB of the address space.  This simplifies
+  the interrupt prologue, since the `r2` can be set to `.TOC.` via the usual
+  `lis` followed by `ori` combination.  The `lis` is subject to sign-extension.
 
 * The `PPC_REG_LOAD`, `PPC_REG_STORE`, `PPC_REG_STORE_UPDATE`, and
   `PPC_REG_CMP` macros are available for assembly code to provide register size
