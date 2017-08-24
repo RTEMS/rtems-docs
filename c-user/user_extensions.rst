@@ -28,7 +28,8 @@ are:
 Background
 ==========
 
-User extensions are invoked when the following system events occur
+User extensions (call-back functions) are invoked by the system when the
+following events occur
 
 - thread creation,
 
@@ -48,27 +49,27 @@ User extensions are invoked when the following system events occur
 
 - fatal error detection (system termination).
 
-The extensions have event-specific arguments, invocation orders and execution
-contexts.  Extension sets can be installed at run-time via
+The user extensions have event-specific arguments, invocation orders and
+execution contexts.  Extension sets can be installed at run-time via
 :ref:`rtems_extension_create() <rtems_extension_create>` (dynamic extension
 sets) or at link-time via the application configuration option
 :ref:`CONFIGURE_INITIAL_EXTENSIONS <CONFIGURE_INITIAL_EXTENSIONS>` (initial
 extension sets).
 
-The execution context of extensions varies.  Some extensions are invoked with
-ownership of the allocator mutex.  The allocator mutex protects dynamic memory
-allocations and object creation/deletion.  Some extensions are invoked with
-thread dispatching disabled.  The fatal error extension is invoked in an
-arbitrary context.
+The execution context of user extensions varies.  Some user extensions are
+invoked with ownership of the allocator mutex.  The allocator mutex protects
+dynamic memory allocations and object creation/deletion.  Some user extensions
+are invoked with thread dispatching disabled.  The fatal error extension is
+invoked in an arbitrary context.
 
 Extension Sets
 --------------
 .. index:: user extension set
 .. index:: rtems_extensions_table
 
-User extensions are maintained as a set.  All extensions are optional and may
-be `NULL`.  Together a set of these extensions typically performs a specific
-functionality such as performance monitoring or debugger support.  The user
+User extensions are maintained as a set.  All user extensions are optional and
+may be `NULL`.  Together a set of these user extensions typically performs a
+specific functionality such as performance monitoring or debugger support.  The
 extension set is defined via the following structure.
 
 .. code-block:: c
@@ -129,14 +130,15 @@ and release the extension buffers.
 Order of Invocation
 -------------------
 
-The extensions are invoked in either `forward` or `reverse` order.  In forward
-order the initial extensions are invoked before the dynamic extensions.  The
-forward order of initial extensions is defined by the initial extensions table
-index.  The forward order of dynamic extensions is defined by the order in
-which the dynamic extensions were created.  The reverse order is defined
-accordingly.  By invoking the dynamic extensions in this order, extensions can
-be built upon one another.  At the following system events, the extensions are
-invoked in `forward` order
+The user extensions are invoked in either `forward` or `reverse` order.  In
+forward order, the user extensions of initial extension sets are invoked before
+the user extensions of the dynamic extension sets.  The forward order of
+initial extension sets is defined by the initial extension sets table index.
+The forward order of dynamic extension sets is defined by the order in which
+the dynamic extension sets were created.  The reverse order is defined
+accordingly.  By invoking the user extensions in this order, extensions can be
+built upon one another.  At the following system events, the user extensions
+are invoked in `forward` order
 
 - thread creation,
 
@@ -152,19 +154,20 @@ invoked in `forward` order
 
 - fatal error detection.
 
-At the following system events, the extensions are invoked in `reverse` order:
+At the following system events, the user extensions are invoked in `reverse`
+order:
 
 - thread termination, and
 
 - thread deletion.
 
-At these system events, the extensions are invoked in reverse order to insure
-that if an extension set is built upon another, the more complicated extension
-is invoked before the extension set it is built upon.  An example is use of the
+At these system events, the user extensions are invoked in reverse order to insure
+that if an extension set is built upon another, the more complicated user extension
+is invoked before the user extension it is built upon.  An example is use of the
 thread delete extension by the Standard C Library.  Extension sets which are
 installed after the Standard C Library will operate correctly even if they
 utilize the C Library because the C Library's thread delete extension is
-invoked after that of the other extensions.
+invoked after that of the other thread delete extensions.
 
 Thread Create Extension
 -----------------------
@@ -191,13 +194,13 @@ The executing thread is the owner of the allocator mutex except during creation
 of the idle threads.  Since the allocator mutex allows nesting the normal
 memory allocation routines can be used.
 
-A thread create user extension will frequently attempt to allocate resources.
-If this allocation fails, then the extension must return :c:data:`false` and
-the entire thread create operation will fail, otherwise it must return
-:c:data:`true`.
+A thread create extension will frequently attempt to allocate resources.  If
+this allocation fails, then the thread create extension must return
+:c:data:`false` and the entire thread create operation will fail, otherwise it
+must return :c:data:`true`.
 
-This extension is invoked in forward order with thread dispatching enabled
-(except during system initialization).
+The thread create extension is invoked in forward order with thread dispatching
+enabled (except during system initialization).
 
 Thread Start Extension
 ----------------------
@@ -222,7 +225,8 @@ started thread has been made ready.  So, in SMP configurations, the thread may
 already run on another processor before the thread start extension is actually
 invoked.
 
-This extension is invoked in forward order with thread dispatching disabled.
+The thread start extension is invoked in forward order with thread dispatching
+disabled.
 
 Thread Restart Extension
 ------------------------
@@ -245,9 +249,10 @@ currently executing thread.  It is invoked in the context of the executing
 thread right before the execution context is reloaded.  The thread stack
 reflects the previous execution context.
 
-This extension is invoked in forward order with thread dispatching enabled
-(except during system initialization).  The thread life is protected.  Thread
-restart and delete requests issued by restart extensions lead to recursion.
+The thread restart extension is invoked in forward order with thread
+dispatching enabled (except during system initialization).  The thread life is
+protected.  Thread restart and delete requests issued by thread restart
+extensions lead to recursion.
 
 Thread Switch Extension
 -----------------------
@@ -268,12 +273,12 @@ defined as follows.
 The :c:data:`executing` is a pointer to the TCB of the currently executing
 thread.  The :c:data:`heir` is a pointer to the TCB of the heir thread.
 
-This extension is invoked in forward order with thread dispatching disabled.
-In SMP configurations, interrupts are disabled and the per-processor SMP lock
-is owned.
+The thread switch extension is invoked in forward order with thread dispatching
+disabled.  In SMP configurations, interrupts are disabled and the per-processor
+SMP lock is owned.
 
 The context switches initiated through the multitasking start are not covered
-by this extension.
+by the thread switch extension.
 
 Thread Begin Extension
 ----------------------
@@ -294,9 +299,9 @@ thread.  The thread begin extension executes in a normal thread context and may
 allocate resources for the thread.  In particular it has access to thread-local
 storage of the thread.
 
-This extension is invoked in forward order with thread dispatching enabled.
-The thread switch extension may be called multiple times for this thread before
-the thread begin extension is invoked.
+The thread begin extension is invoked in forward order with thread dispatching
+enabled.  The thread switch extension may be called multiple times for this
+thread before the thread begin extension is invoked.
 
 Thread Exitted Extension
 ------------------------
@@ -342,9 +347,9 @@ thread dispatch to the heir thread.  The POSIX cleanup and key destructors
 execute in this context.  The thread termination extension has access to
 thread-local storage and thread-specific data of POSIX keys.
 
-This extension is invoked in reverse order with thread dispatching enabled.
-The thread life is protected.  Thread restart and delete requests issued by
-terminate extensions lead to recursion.
+The thread terminate extension is invoked in reverse order with thread
+dispatching enabled.  The thread life is protected.  Thread restart and delete
+requests issued by thread terminate extensions lead to recursion.
 
 Thread Delete Extension
 -----------------------
@@ -369,7 +374,8 @@ The :c:data:`executing` and :c:data:`deleted` pointers are never equal.
 The executing thread is the owner of the allocator mutex.  Since the allocator
 mutex allows nesting the normal memory allocation routines can be used.
 
-This extension is invoked in reverse order with thread dispatching enabled.
+The thread delete extension is invoked in reverse order with thread dispatching
+enabled.
 
 Please note that a thread delete extension is not immediately invoked with a
 call to :ref:`rtems_task_delete() <rtems_task_delete>` or similar.  The thread
@@ -399,12 +405,12 @@ always set to :c:data:`false` and provided only for backward compatibility
 reasons.  The :c:data:`code` parameter is the fatal error code.  This value
 must be interpreted with respect to the source.
 
-This extension is invoked in forward order.
+The fatal error extension is invoked in forward order.
 
-It is strongly advised to use initial extensions to install a fatal error
-extension.  Usually, the initial extensions of board support package provides a
-fatal error extension which resets the board.  In this case, the dynamic fatal
-error extensions are not invoked.
+It is strongly advised to use initial extension sets to install a fatal error
+extension.  Usually, the initial extension set of board support package
+provides a fatal error extension which resets the board.  In this case, the
+dynamic fatal error extensions are not invoked.
 
 Directives
 ==========
@@ -446,15 +452,16 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
 
-    This directive creates an extension set.  The assigned extension set
-    identifier is returned in :c:data:`id`.  This identifier is used to access
-    the extension set with other user extension manager directives.  For
-    control and maintenance of the extension set, RTEMS allocates an Extension
-    Set Control Block (ESCB) from the local ESCB free pool and initializes it.
-    The user-specified :c:data:`name` is assigned to the ESCB and may be used
-    to identify the extension set via :ref:`rtems_extension_ident()
-    <rtems_extension_ident>`.  The extension set specified by :c:data:`table`
-    is copied to the ESCB.
+    This directive creates an extension set object and initializes it using the
+    specified extension set table.  The assigned extension set identifier is
+    returned in :c:data:`id`.  This identifier is used to access the extension
+    set with other user extension manager directives.  For control and
+    maintenance of the extension set, RTEMS allocates an Extension Set Control
+    Block (ESCB) from the local ESCB free pool and initializes it.  The
+    user-specified :c:data:`name` is assigned to the ESCB and may be used to
+    identify the extension set via
+    :ref:`rtems_extension_ident() <rtems_extension_ident>`.  The extension set
+    specified by :c:data:`table` is copied to the ESCB.
 
 NOTES:
 
