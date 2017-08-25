@@ -125,20 +125,21 @@ Thread-local storage is supported.
 64-bit Caveats
 ==============
 
-* The thread pointer is `r13` in contrast to `r2` used in the 32-bit ABI.
+* The thread pointer is ``r13`` in contrast to ``r2`` used in the 32-bit ABI.
 
-* The TOC pointer is `r2`.  It must be initialized as part of the C run-time
+* The TOC pointer is ``r2``.  It must be initialized as part of the C run-time
   setup.  A valid stack pointer is not enough to call C functions.  They may
   use the TOC to get addresses and constants.
 
 * The TOC must be within the first 2GiB of the address space.  This simplifies
-  the interrupt prologue, since the `r2` can be set to `.TOC.` via the usual
-  `lis` followed by `ori` combination.  The `lis` is subject to sign-extension.
+  the interrupt prologue, since the ``r2`` can be set to ``.TOC.`` via the
+  usual ``lis`` followed by ``ori`` combination.  The ``lis`` is subject to
+  sign-extension.
 
-* The `PPC_REG_LOAD`, `PPC_REG_STORE`, `PPC_REG_STORE_UPDATE`, and
-  `PPC_REG_CMP` macros are available for assembly code to provide register size
-  operations selected by the GCC `m32` and `m64` options.
+* The ``PPC_REG_LOAD``, ``PPC_REG_STORE``, ``PPC_REG_STORE_UPDATE``, and
+  ``PPC_REG_CMP`` macros are available for assembly code to provide register
+  size operations selected by the GCC ``-m32`` and ``-m64`` options.
 
-* The `MSR[CM]` bit must be set all the time, otherwise the MMU translation my
-  yield unexpected results.  The `EPCR[ICM]` or `EPCR[GICM]` bits may be used
-  to enable the 64-bit compute mode for exceptions.
+* The ``MSR[CM]`` bit must be set all the time, otherwise the MMU translation
+  my yield unexpected results.  The ``EPCR[ICM]`` or ``EPCR[GICM]`` bits may be
+  used to enable the 64-bit compute mode for exceptions.
