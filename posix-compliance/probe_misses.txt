@@ -1,0 +1,15 @@
+assert()
+_tolower()
+_toupper()
+optarg
+opterr
+optind
+optopt
+_longjmp
+_setjmp
+va_arg()
+va_copy()
+va_end()
+va_start()
+timezone
+uname()
