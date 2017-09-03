@@ -40,9 +40,6 @@ to the Community Project hosted at http://www.rtems.org/.
   Git Repositories  https://git.rtems.org/
   ================  =============================
 
-Table of Contents
------------------
-
 .. toctree::
 	:maxdepth: 5
 	:numbered:
