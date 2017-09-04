@@ -83,7 +83,7 @@ Ubuntu
 The latest version is Ubuntu 16.04.1 LTS 64bit. This section also includes
 Xubuntu. A minimal installation was used and the following packages installed::
 
-    $ sudo apt-get build-dep binutils gcc g++ gdb unzip
+    $ sudo apt-get build-dep binutils gcc g++ gdb unzip pax
     $ sudo apt-get install python2.7-dev git
 
 .. _Linux Mint:
