@@ -510,7 +510,10 @@ CALLING SEQUENCE:
         uint32_t rtems_get_processor_count(void);
 
 DIRECTIVE STATUS CODES:
-    The count of processors in the system.
+
+    The count of processors in the system that can be run. The value returned
+    is the highest numbered processor index of all processors available to the
+    application (if a scheduler is assigned) plus one.
 
 DESCRIPTION:
     In uni-processor configurations, a value of one will be returned.
