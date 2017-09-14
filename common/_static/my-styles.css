@@ -11,22 +11,22 @@
 }
 
 .rtemsdefine dt {
-	color: #408090;
+    color: #408090;
 }
 
 .rtemsdefine dd {
-	color: #408090;
+    color: #408090;
 }
 
 .rtemscommand {
-	border: 1px solid #808b89;
-	border-radius: 5px;
-	background: #d2e3e0;
-	color: #5e6664
+    border: 1px solid #808b89;
+    border-radius: 5px;
+    background: #d2e3e0;
+    color: #5e6664
 }
 
 .rtemsoption dt {
-	color: #a87892;
+    color: #a87892;
 }
 
 /*
@@ -36,6 +36,19 @@
     background: transparent;
     color: #2a8e1d;
     border: 0px;
+    font-size: 100%;
+}
+
+.rst-content code {
+    padding: 0px 0px 0px 0px;
+}
+
+.rst-content dd {
+    line-height: 22px;
+}
+
+.rst-content dd p {
+    line-height: 22px;
 }
 
 /*
