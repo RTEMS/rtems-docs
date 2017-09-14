@@ -644,9 +644,13 @@ DESCRIPTION:
     ``rtems_task_start``.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted.
 
-    Valid task priorities range from a high of 1 to a low of 255.
+    The scheduler of the new task is the scheduler of the executing task at
+    some point during the task creation.  The specified task priority must be
+    valid for the selected scheduler.
+
+    The task processor affinity is initialized to the set of online processors.
 
     If the requested stack size is less than the configured minimum stack size,
     then RTEMS will use the configured minimum as the stack size for this task.
