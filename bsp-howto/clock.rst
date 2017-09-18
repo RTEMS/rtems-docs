@@ -220,8 +220,10 @@ For an example see the `Motrola 68360 clock driver
 Install Clock Tick Interrupt Service Routine
 ============================================
 
-The clock driver must provide a function to install the clock tick interrupt
-service routine via ``Clock_driver_support_install_isr()``.
+The clock driver may provide a function to install the clock tick interrupt
+service routine via ``Clock_driver_support_install_isr()``.  The clock tick
+interrupt service routine is passed as the one and only parameter to this
+macro.  The default implementation will do nothing.
 
 .. code-block:: c
 
@@ -243,7 +245,7 @@ service routine via ``Clock_driver_support_install_isr()``.
       }
     }
 
-    #define Clock_driver_support_install_isr( isr, old ) \
+    #define Clock_driver_support_install_isr( isr ) \
       some_support_install_isr( isr )
 
     #include "../../../shared/clockdrv_shell.h"
