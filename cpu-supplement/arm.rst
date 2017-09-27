@@ -189,8 +189,13 @@ actions:
 Symmetric Multiprocessing
 =========================
 
-SMP is supported on ARMv7-A.  Available platforms are the Altera Cyclone V and
-the Xilinx Zynq.
+SMP is supported on ARMv7-A.  Available platforms are
+
+- Altera Cyclone V,
+
+- NXP i.MX 7, and
+
+- Xilinx Zynq.
 
 Thread-Local Storage
 ====================
