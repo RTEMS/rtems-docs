@@ -1182,62 +1182,6 @@ NOTES:
 
     All POSIX threads have floating point enabled.
 
-.. COMMENT: XXX - Add xref to CONFIGURE_MAXIMUM_TASKS.
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_MUTEXES ===
-
-.. _Specify Maximum POSIX API Mutexes:
-
-Specify Maximum POSIX API Mutexes
----------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_MUTEXES
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_MUTEXES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_MUTEXES`` is the maximum number of POSIX API
-    Mutexes that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES ===
-
-.. _Specify Maximum POSIX API Condition Variables:
-
-Specify Maximum POSIX API Condition Variables
----------------------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES`` is the maximum number of
-    POSIX API Condition Variables that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_KEYS ===
 
 .. _Specify Maximum POSIX API Keys:
@@ -1344,114 +1288,6 @@ DEFAULT VALUE:
 DESCRIPTION:
     ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES`` is the maximum number of POSIX
     API Message Queues that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_SEMAPHORES ===
-
-.. _Specify Maximum POSIX API Semaphores:
-
-Specify Maximum POSIX API Semaphores
-------------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES`` is the maximum number of POSIX API
-    Semaphores that can be concurrently active.
-
-NOTES:
-    None.
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_BARRIERS ===
-
-.. _Specify Maximum POSIX API Barriers:
-
-Specify Maximum POSIX API Barriers
-----------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_BARRIERS
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_BARRIERS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_BARRIERS`` is the maximum number of POSIX API
-    Barriers that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_SPINLOCKS ===
-
-.. _Specify Maximum POSIX API Spinlocks:
-
-Specify Maximum POSIX API Spinlocks
------------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_SPINLOCKS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_SPINLOCKS`` is the maximum number of POSIX API
-    Spinlocks that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_RWLOCKS ===
-
-.. _Specify Maximum POSIX API Read/Write Locks:
-
-Specify Maximum POSIX API Read/Write Locks
-------------------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_RWLOCKS
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_RWLOCKS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_RWLOCKS`` is the maximum number of POSIX API
-    Read/Write Locks that can be concurrently active.
 
 NOTES:
     This object class can be configured in unlimited allocation mode.
@@ -5087,3 +4923,91 @@ DESCRIPTION:
 
 NOTES:
     The Go language support is experimental
+
+Obsolete Configuration Options
+==============================
+
+CONFIGURE_BDBUF_BUFFER_COUNT
+----------------------------
+.. index:: CONFIGURE_BDBUF_BUFFER_COUNT
+
+This configuration option was introduced in RTEMS 4.7 and is obsolete since
+RTEMS 4.10.
+
+CONFIGURE_BDBUF_BUFFER_SIZE
+---------------------------
+.. index:: CONFIGURE_BDBUF_BUFFER_SIZE
+
+This configuration option was introduced in RTEMS 4.7 and is obsolete since
+RTEMS 4.10.
+
+CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
+--------------------------------------
+.. index:: CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
+
+This configuration option was introduced in RTEMS 4.9 and is obsolete since
+RTEMS 4.12.
+
+CONFIGURE_HAS_OWN_BDBUF_TABLE
+-----------------------------
+.. index:: CONFIGURE_HAS_OWN_BDBUF_TABLE
+
+This configuration option was introduced in RTEMS 4.7 and is obsolete since
+RTEMS 4.10.
+
+CONFIGURE_MAXIMUM_POSIX_BARRIERS
+--------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_BARRIERS
+
+This configuration option is obsolete since RTEMS 4.12.
+
+CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
+-------------------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
+
+This configuration option is obsolete since RTEMS 4.12.
+
+CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
+-------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
+
+This configuration option was introduced in RTEMS 4.10 and is obsolete since
+RTEMS 4.12.
+
+CONFIGURE_MAXIMUM_POSIX_MUTEXES
+-------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_MUTEXES
+
+This configuration option is obsolete since RTEMS 4.12.
+
+CONFIGURE_MAXIMUM_POSIX_RWLOCKS
+-------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_RWLOCKS
+
+This configuration option is obsolete since RTEMS 4.12.
+
+CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+----------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+
+This configuration option is obsolete since RTEMS 4.12.
+
+CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
+---------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
+
+This configuration option is obsolete since RTEMS 4.12.
+
+CONFIGURE_SMP_APPLICATION
+-------------------------
+.. index:: CONFIGURE_SMP_APPLICATION
+
+This configuration option was introduced in RTEMS 4.11 and is obsolete since
+RTEMS 4.12.
+
+CONFIGURE_SMP_MAXIMUM_PROCESSORS
+--------------------------------
+.. index:: CONFIGURE_SMP_MAXIMUM_PROCESSORS
+
+This configuration option was introduced in RTEMS 4.11 and is obsolete since
+RTEMS 4.12.  See also :ref:`CONFIGURE_MAXIMUM_PROCESSORS`.
