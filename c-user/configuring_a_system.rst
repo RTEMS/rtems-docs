@@ -1292,6 +1292,36 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode.
 
+.. COMMENT: === CONFIGURE_MAXIMUM_POSIX_SEMAPHORES ===
+
+.. _Specify Maximum POSIX API Semaphores:
+
+Specify Maximum POSIX API Named Semaphores
+------------------------------------------
+.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES`` is the maximum number of POSIX API
+    Named Semaphores that can be concurrently active.  Named semaphores are
+    created with ``sem_open()``.  Semaphores initialized with ``sem_init()``
+    are not affected by this configuration option since the storage space for
+    these semaphores is user-provided.
+
+NOTES:
+    None.
+
 .. COMMENT: === POSIX Initialization Threads Table Configuration ===
 
 POSIX Initialization Threads Table Configuration
@@ -4983,12 +5013,6 @@ This configuration option is obsolete since RTEMS 4.12.
 CONFIGURE_MAXIMUM_POSIX_RWLOCKS
 -------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_RWLOCKS
-
-This configuration option is obsolete since RTEMS 4.12.
-
-CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
-----------------------------------
-.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
 
 This configuration option is obsolete since RTEMS 4.12.
 
