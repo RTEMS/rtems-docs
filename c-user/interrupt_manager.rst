@@ -188,7 +188,6 @@ is a list of RTEMS system calls that may be made from an ISR:
 - Clock Management
 
   - rtems_clock_set
-  - rtems_clock_get
   - rtems_clock_get_tod
   - rtems_clock_get_tod_timeval
   - rtems_clock_get_seconds_since_epoch
