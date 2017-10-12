@@ -186,13 +186,7 @@ Thread-local storage is not implemented.
 Board Support Packages
 ======================
 
-An RTEMS Board Support Package (BSP) must be designed to support a particular
-processor model and target board combination.
-
-In each of the architecture specific chapters, this section will present a
-discussion of architecture specific BSP issues.  For more information on
-developing a BSP, refer to BSP and Device Driver Development Guide and the
-chapter titled Board Support Packages in the RTEMS Applications User's Guide.
+There are no Lattice Micro32 specific notes on BSPs.
 
 System Reset
 ------------

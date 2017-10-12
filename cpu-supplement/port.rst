@@ -408,8 +408,8 @@ processor model and target board combination.
 
 In each of the architecture specific chapters, this section will present a
 discussion of architecture specific BSP issues.  For more information on
-developing a BSP, refer to BSP and Device Driver Development Guide and the
-chapter titled Board Support Packages in the RTEMS Applications User's Guide.
+developing a BSP, refer to *RTEMS BSP and Driver Guide* chapter titled
+``Board Support Packages`` in the *RTEMS Classic API Guide*.
 
 System Reset
 ------------
@@ -418,5 +418,5 @@ An RTEMS based application is initiated or re-initiated when the processor is
 reset or transfer is passed to it from a boot monitor or ROM monitor.
 
 In each of the architecture specific chapters, this subsection describes the
-actions that the BSP must tak assuming the application gets control when the
-microprocessor is reset.
+actions that the BSP must take assuming the application gets control
+when the microprocessor is reset.

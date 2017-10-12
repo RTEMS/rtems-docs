@@ -91,7 +91,7 @@ the RTEMS source tree.  The top of the tree will be referenced as
     subdirectory.  Each ".cfg" file in this directory is associated with a
     specific BSP and describes the CPU model, compiler flags, and procedure to
     produce an executable for the target board.  These files are described in
-    detail in the*RTEMS BSP and Device Driver Development Guide* and will not
+    detail in the *RTEMS BSP and Driver Guide* and will not
     be discussed further in this document.
 
 ``${RTEMS_ROOT}/testsuites/``
@@ -159,7 +159,7 @@ the subdirectories in this directory and a description of each.
     specific source code for RTEMS.  The ``libbsp/`` is organized based upon
     the CPU family and boards BSPs.  The contents of ``libbsp/`` are discussed
     briefly in `c/src/lib/libbsp BSP Directory`_ and presented in detail in
-    the*RTEMS BSP and Device Driver Development Guide*.  The ``libcpu/``
+    the *RTEMS BSP and Driver Guide*.  The ``libcpu/``
     directory is also organized by CPU family with further divisions based upon
     CPU model and features that are shared across CPU models such as caching
     and DMA.
