@@ -59,6 +59,10 @@ The services provided by the thread manager are:
 
 - pthread_detach_ - Detach a Thread
 
+- pthread_getconcurrency_ - Get Thread Level of Concurrency
+
+- pthread_setconcurrency_ - Set Thread Level of Concurrency
+
 - pthread_getattr_np_ - Get Thread Attributes
 
 - pthread_join_ - Wait for Thread Termination
@@ -1060,6 +1064,71 @@ joinging with it.
 If any threads have previously joined with the specified thread, then they will
 remain joined with that thread. Any subsequent calls to ``pthread_join`` on the
 specified thread will fail.
+
+.. COMMENT: pthread_getconcurrency
+
+.. _pthread_getconcurrency:
+
+pthread_getconcurrency - Obtain Thread Concurrency
+--------------------------------------------------
+.. index:: pthread_getconcurrency
+.. index:: obtain thread concurrency
+
+**CALLING SEQUENCE:**
+
+.. code-block:: c
+
+    #include <pthread.h>
+    int pthread_getconcurrency(void);
+
+**STATUS CODES:**
+
+This method returns the current concurrency mapping value.
+
+**DESCRIPTION:**
+
+The ``pthread_getconcurrency`` method returns the number of user threads
+mapped onto kernel threads. For RTEMS, user and kernel threads are mapped
+1:1 and per the POSIX standard this method returns 1 initially and 
+the value last set by ``pthread_setconcurrency`` otherwise.
+
+**NOTES:**
+
+NONE
+
+.. COMMENT: pthread_setconcurrency
+
+.. _pthread_setconcurrency:
+
+pthread_setconcurrency - Set Thread Concurrency
+-----------------------------------------------
+.. index:: pthread_setconcurrency
+.. index:: obtain thread concurrency
+
+**CALLING SEQUENCE:**
+
+.. code-block:: c
+
+    #include <pthread.h>
+    int pthread_setconcurrency(void);
+
+**STATUS CODES:**
+
+This method returns 0 on success.
+
+**DESCRIPTION:**
+
+The ``pthread_setconcurrency`` method requests the number of user threads
+mapped onto kernel threads. Per the POSIX standard, this is considered
+a request and may have no impact.
+
+For RTEMS, user and kernel threads are always mapped 1:1 and thus this
+method has no change on the mapping. However, ``pthread_getconcurrency``
+will return the value set.
+
+**NOTES:**
+
+NONE
 
 .. COMMENT: pthread_getattr_np
 
