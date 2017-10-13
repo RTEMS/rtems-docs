@@ -3,9 +3,31 @@ from os.path import abspath
 path.append(abspath('../common/'))
 
 from waf import cmd_configure as configure
-from waf import cmd_build as build
+from waf import cmd_build as doc_build
 from waf import cmd_options as options
 from waf import spell
 from waf import cmd_spell
 from waf import linkcheck
 from waf import cmd_linkcheck
+
+import posix_rst
+
+def gen_posix_rst(task):
+    c = posix_rst.compliance()
+    c.load(task.inputs[1].abspath())
+    s = ['']
+    for standard in posix_rst.standards:
+        s += ['',
+              posix_rst.standard_names[standard],
+              '*' * len(posix_rst.standard_names[standard]),
+               ''] + c.output(standard)
+    with open(task.outputs[0].abspath(), 'w') as w:
+        from os import linesep
+        w.write(linesep.join(s))
+
+def build(ctx):
+    ctx(rule = gen_posix_rst,
+        source = ['posix_rst.py', 'RTEMS-Standards-Compliance-v1.csv'],
+        target = 'generated-posix-compliance.rst')
+    ctx.add_group()
+    doc_build(ctx, extra_source = ['generated-posix-compliance.rst'])
