@@ -25,7 +25,7 @@ def version_cmdline(ctx):
     return '-Drelease="%s" -Dversion="%s"' % (ctx.env.VERSION, ctx.env.VERSION)
 
 def sphinx_cmdline(ctx, build_type, conf_dir, doctrees, source_dir, output_dir):
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s" % \
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s ${SRC}" % \
            (sphinx_verbose(ctx), build_type, conf_dir, version_cmdline(ctx),
             doctrees, source_dir, output_dir)
     return rule
@@ -234,7 +234,7 @@ def cmd_configure(ctx):
                 ctx.fatal("Node inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
 
-def doc_pdf(ctx, source_dir, conf_dir):
+def doc_pdf(ctx, source_dir, conf_dir, extra_source):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     pdf_resources(ctx, buildtype)
@@ -242,7 +242,7 @@ def doc_pdf(ctx, source_dir, conf_dir):
     ctx(
         rule         = rule,
         cwd          = ctx.path,
-        source       = ctx.path.ant_glob('**/*.rst'),
+        source       = ctx.path.ant_glob('**/*.rst') + extra_source,
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
@@ -258,7 +258,7 @@ def doc_pdf(ctx, source_dir, conf_dir):
                       cwd = output_node,
                       quiet = True)
 
-def doc_singlehtml(ctx, source_dir, conf_dir):
+def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
     #
     # Use a run command to handle stdout and stderr output from inliner. Using
     # a standard rule in the build context locks up.
@@ -292,7 +292,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
     ctx(
         rule         = rule,
         cwd          = ctx.path,
-        source       = ctx.path.ant_glob('**/*.rst'),
+        source       = ctx.path.ant_glob('**/*.rst') + extra_source,
         target       = ctx.path.find_or_declare("%s/index.html" % (buildtype)),
         install_path = None
     )
@@ -304,7 +304,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir):
         install_path = '${PREFIX}'
     )
 
-def doc_html(ctx, conf_dir, source_dir):
+def doc_html(ctx, source_dir, conf_dir, extra_source):
     buildtype = 'html'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     html_resources(ctx, buildtype)
@@ -312,7 +312,7 @@ def doc_html(ctx, conf_dir, source_dir):
     ctx(
         rule         = rule,
         cwd          = ctx.path,
-        source       = ctx.path.ant_glob('**/*.rst'),
+        source       = ctx.path.ant_glob('**/*.rst') + extra_source,
         target       = ctx.path.find_or_declare('%s/index.html' % buildtype),
         install_path = None
     )
@@ -322,17 +322,17 @@ def doc_html(ctx, conf_dir, source_dir):
                       relative_trick = True,
                       quiet = True)
 
-def cmd_build(ctx):
+def cmd_build(ctx, extra_source = []):
     conf_dir = ctx.path.get_src()
     source_dir = ctx.path.get_src()
 
     if ctx.env.BUILD_PDF == 'yes':
-        doc_pdf(ctx, source_dir, conf_dir)
+        doc_pdf(ctx, source_dir, conf_dir, extra_source)
 
     if ctx.env.BUILD_SINGLEHTML == 'yes':
-        doc_singlehtml(ctx, source_dir, conf_dir)
+        doc_singlehtml(ctx, source_dir, conf_dir, extra_source)
 
-    doc_html(ctx, source_dir, conf_dir)
+    doc_html(ctx, source_dir, conf_dir, extra_source)
 
 def cmd_options(ctx):
     ctx.add_option('--disable-extra-fonts',
