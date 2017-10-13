@@ -39,9 +39,13 @@ to the Community Project hosted at http://www.rtems.org/.
   ================  =============================
 
 .. toctree::
-	:maxdepth: 5
-	:numbered:
+        :maxdepth: 5
+        :numbered:
 
-	preface
-        generated-posix-compliance
+        preface
+        posix-compliance
+        glossary
+        zreferences
 
+*       :ref:`genindex`
+*       :ref:`search`

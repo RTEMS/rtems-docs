@@ -98,8 +98,7 @@ cat_columns = {
 }
 
 rst_defaults = {
-    'header': ['.. comment SPDX-License-Identifier: CC-BY-SA-4.0',
-               '',
+    'header': ['',
                'This chapter has a subsection per header file to detail the methods',
                'provided by RTEMS that are in that header file.',
                '']

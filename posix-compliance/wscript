@@ -17,7 +17,8 @@ def gen_posix_rst(task):
     c.load(task.inputs[1].abspath())
     s = ['']
     for standard in posix_rst.standards:
-        s += ['',
+        s += ['.. comment SPDX-License-Identifier: CC-BY-SA-4.0',
+              '',
               posix_rst.standard_names[standard],
               '*' * len(posix_rst.standard_names[standard]),
                ''] + c.output(standard)
