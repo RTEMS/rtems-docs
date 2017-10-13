@@ -3,7 +3,7 @@ sys.path.append(os.path.abspath('../common/'))
 
 from conf import *
 
-project = "RTEMS BSP and Device Driver Development Guide"
+project = "RTEMS BSP and Driver Guide"
 
 latex_documents = [
     ('index',
