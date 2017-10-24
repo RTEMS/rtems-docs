@@ -434,11 +434,13 @@ sem_timedwait - Wait on a Semaphore for a Specified Time
 .. list-table::
  :class: rtems-table
 
- * - ``EAGAIN``
-   - The semaphore is not available (i.e., the semaphore value is zero), so the
-     semaphore could not be locked.
  * - ``EINVAL``
    - The ``sem`` argument does not refewr to a valid semaphore
+ * - ``EINVAL``
+   - The nanoseconds field of timeout is invalid.
+ * - ``ETIMEDOUT``
+   - The calling thread was unable to get the semaphore within the specified
+     timeout period.
 
 **DESCRIPTION:**
 

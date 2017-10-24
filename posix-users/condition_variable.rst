@@ -348,6 +348,8 @@ pthread_cond_timedwait - Wait with Timeout a Condition Variable
  :class: rtems-table
 
  * - ``EINVAL``
+   - The nanoseconds field of timeout is invalid.
+ * - ``EINVAL``
    - The specified condition variable or mutex is not initialized OR different
      mutexes were specified for concurrent ``pthread_cond_wait()`` and
      ``pthread_cond_timedwait()`` operations on the same condition variable OR
