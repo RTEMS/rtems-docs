@@ -49,6 +49,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	installation/index
 
 	hardware/index
+	bsps/index
 
 	tools/index
 
