@@ -559,38 +559,6 @@ NOTES:
 
 .. COMMENT: XXX - Add xref to CONFIGURE_MAXIMUM_POSIX_THREADS.
 
-.. COMMENT: === CONFIGURE_ENABLE_CLASSIC_API_NOTEPADS ===
-
-.. _Specify Maximum Classic API Timers:
-
-Specify Maximum Classic API Timers
-----------------------------------
-.. index:: CONFIGURE_ENABLE_CLASSIC_API_NOTEPADS
-
-CONSTANT:
-    ``CONFIGURE_ENABLE_CLASSIC_API_NOTEPADS``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default, and Classic API Notepads are not supported.
-
-DESCRIPTION:
-    ``CONFIGURE_ENABLE_CLASSIC_API_NOTEPADS`` should be defined if the
-    user wants to have support for Classic API Notepads in their application.
-
-NOTES:
-    Disabling Classic API Notepads saves the allocation of sixteen (16)
-    thirty-two bit integers. This saves sixty-four bytes per task/thread
-    plus the allocation overhead. Notepads are rarely used in applications
-    and this can save significant memory in a low RAM system. Classic API
-    Notepads are deprecated, and this option has been removed from
-    post 4.11 versions of RTEMS.
-
 .. COMMENT: === CONFIGURE_MAXIMUM_TIMERS ===
 
 .. _Specify Maximum Classic API Timers:
