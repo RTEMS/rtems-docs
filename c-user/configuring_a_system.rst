@@ -3860,6 +3860,45 @@ NOTES:
     BSPs should be constructed in a manner that allows ``printk()`` to work
     properly without the need for the console driver to be configured.
 
+    The ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` configuration option is
+    mutually exclusive with the
+    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`` configuration option.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
+-------------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`` is defined if the
+    application wishes to include the Simple Console Device Driver.
+
+NOTES:
+    This device driver is responsible for providing standard input and output
+    using */dev/console*.
+
+    This device driver writes via ``rtems_putc()`` and reads via
+    ``getchark()``.  The Termios framework is not used.  There is no support to
+    change device settings, e.g. baud, stop bits, parity, etc.
+
+    The ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`` configuration
+    option is mutually exclusive with the
+    ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` configuration option.
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER:
