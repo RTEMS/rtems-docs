@@ -1663,7 +1663,7 @@ DESCRIPTION:
 
 NOTE:
    The size of the thread control block is increased by the maximum thread name
-   size.  This configuration option is available since RTEMS 4.12.
+   size.  This configuration option is available since RTEMS 5.1.
 
 .. COMMENT: === CONFIGURE_MINIMUM_TASK_STACK_SIZE ===
 
@@ -4929,77 +4929,77 @@ CONFIGURE_BDBUF_BUFFER_COUNT
 ----------------------------
 .. index:: CONFIGURE_BDBUF_BUFFER_COUNT
 
-This configuration option was introduced in RTEMS 4.7 and is obsolete since
-RTEMS 4.10.
+This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
+RTEMS 4.10.0.
 
 CONFIGURE_BDBUF_BUFFER_SIZE
 ---------------------------
 .. index:: CONFIGURE_BDBUF_BUFFER_SIZE
 
-This configuration option was introduced in RTEMS 4.7 and is obsolete since
-RTEMS 4.10.
+This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
+RTEMS 4.10.0.
 
 CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
 --------------------------------------
 .. index:: CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
 
-This configuration option was introduced in RTEMS 4.9 and is obsolete since
-RTEMS 4.12.
+This configuration option was introduced in RTEMS 4.9.0 and is obsolete since
+RTEMS 5.1.
 
 CONFIGURE_HAS_OWN_BDBUF_TABLE
 -----------------------------
 .. index:: CONFIGURE_HAS_OWN_BDBUF_TABLE
 
-This configuration option was introduced in RTEMS 4.7 and is obsolete since
-RTEMS 4.10.
+This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
+RTEMS 4.10.0.
 
 CONFIGURE_MAXIMUM_POSIX_BARRIERS
 --------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_BARRIERS
 
-This configuration option is obsolete since RTEMS 4.12.
+This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
 -------------------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
 
-This configuration option is obsolete since RTEMS 4.12.
+This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
 -------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
 
-This configuration option was introduced in RTEMS 4.10 and is obsolete since
-RTEMS 4.12.
+This configuration option was introduced in RTEMS 4.10.0 and is obsolete since
+RTEMS 5.1.
 
 CONFIGURE_MAXIMUM_POSIX_MUTEXES
 -------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_MUTEXES
 
-This configuration option is obsolete since RTEMS 4.12.
+This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_MAXIMUM_POSIX_RWLOCKS
 -------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_RWLOCKS
 
-This configuration option is obsolete since RTEMS 4.12.
+This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
 ---------------------------------
 .. index:: CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
 
-This configuration option is obsolete since RTEMS 4.12.
+This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_SMP_APPLICATION
 -------------------------
 .. index:: CONFIGURE_SMP_APPLICATION
 
-This configuration option was introduced in RTEMS 4.11 and is obsolete since
-RTEMS 4.12.
+This configuration option was introduced in RTEMS 4.11.0 and is obsolete since
+RTEMS 5.1.
 
 CONFIGURE_SMP_MAXIMUM_PROCESSORS
 --------------------------------
 .. index:: CONFIGURE_SMP_MAXIMUM_PROCESSORS
 
-This configuration option was introduced in RTEMS 4.11 and is obsolete since
-RTEMS 4.12.  See also :ref:`CONFIGURE_MAXIMUM_PROCESSORS`.
+This configuration option was introduced in RTEMS 4.11.0 and is obsolete since
+RTEMS 5.1.  See also :ref:`CONFIGURE_MAXIMUM_PROCESSORS`.

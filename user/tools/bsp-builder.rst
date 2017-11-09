@@ -347,12 +347,12 @@ need to be regression tested:
 
 .. code-block:: shell
 
-  $ /opt/rtems/4.12/bin/rtems-bsp-builder --build-path=/build/rtems \
-            --rtems-tools=/opt/work/rtems/4.12 \
-	    --rtems=/opt/work/chris/rtems/kernel/rtems.git \
-	    --profiles=tier-1 \
+  $ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
+            --rtems-tools=/opt/work/rtems/5 \
+            --rtems=/opt/work/chris/rtems/kernel/rtems.git \
+            --profiles=tier-1 \
             --jobs=5/10
-  RTEMS Tools Project - RTEMS Kernel BSP Builder, 4.12 (61ddcfc8f057)
+  RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
   Profile(s): tier-1
   Cleaning: bsp-builds
   [  1/655] arm/altcycv_devkit (debug)                         Start
@@ -396,14 +396,14 @@ To build a couple of BSPs you are interested in with tests:
 
 .. code-block:: shell
 
-  $ /opt/rtems/4.12/bin/rtems-bsp-builder --build-path=/build/rtems \
-            --rtems-tools=/opt/work/rtems/4.12 \
-	    --rtems=/opt/work/chris/rtems/kernel/rtems.git \
-	    ----log=lpc-log \
+  $ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
+            --rtems-tools=/opt/work/rtems/5 \
+            --rtems=/opt/work/chris/rtems/kernel/rtems.git \
+            ----log=lpc-log \
             --bsp=arm/lpc2362,arm/lpc23xx_tli800 \
             --build=tests \
             --jobs=5/12
-  RTEMS Tools Project - RTEMS Kernel BSP Builder, 4.12 (61ddcfc8f057 modified)
+  RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
   BSPS(s): arm/lpc2362, arm/lpc23xx_tli800
   Cleaning: bsp-builds
   [1/2] arm/lpc2362 (tests)        Start
@@ -428,15 +428,15 @@ To build a couple of BSPs you are interested in with tests:
   Failures:
      1 tests arm/lpc2362 build:
         configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
-        =arm-rtems4.12 --enable-rtemsbsp=lpc2362 --prefix=/opt/rtems/4.12\
+        =arm-rtems5 --enable-rtemsbsp=lpc2362 --prefix=/opt/rtems/5\
         --enable-tests
        error: ld/collect2:0 error: math.exe section '.rodata' will not fit
               in region 'ROM_INT'; region 'ROM_INT' overflowed by 7284 bytes
 
      2 tests arm/lpc23xx_tli800 build:
         configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
-        =arm-rtems4.12 --enable-rtemsbsp=lpc23xx_tli800\
-        --prefix=/opt/rtems/4.12 --enable-tests
+        =arm-rtems5 --enable-rtemsbsp=lpc23xx_tli800\
+        --prefix=/opt/rtems/5 --enable-tests
        error: ld/collect2:0 error: math.exe section '.text' will not fit in
               region 'ROM_INT'; region 'ROM_INT' overflowed by 13972 bytes
 

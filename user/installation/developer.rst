@@ -12,7 +12,7 @@ Developer (Unstable)
 .. index:: Git
 
 RTEMS provides open access to it's development processes. We call this the
-developer set up.  The project encouages all users to inspect, review, comment
+developer set up.  The project encourages all users to inspect, review, comment
 and contribute to the code base. The processes described here are the same
 processes the core development team use when developing and maintaining RTEMS.
 
@@ -36,7 +36,7 @@ you can do this without needing to be root. You can also use
 The location used to install the tools and kernel is called the `prefix`. It is
 best to have a `prefix` for each different version of RTEMS you are using. If
 you are using RTEMS 4.11 in production it is not a good idea to install a
-development version of 4.12 over the top. A separate `prefix` for each version
+development version of 5 over the top. A separate `prefix` for each version
 avoids this.
 
 The RTEMS tool chain changes less often than the RTEMS kernel. One method of
@@ -85,23 +85,22 @@ requires:
 
   $ cd rsb
   $ ./source-builder/sb-check
-  RTEMS Source Builder - Check, 4.12 (e645642255cc)
+  RTEMS Source Builder - Check, 5 (089327b5dcf9)
   Environment is ok
 
-Build a tool chain for the SPARC architecure. We are using the SPARC
+Build a tool chain for the SPARC architecture. We are using the SPARC
 architecture because GDB has a good simulator that lets us run and test the
 samples RTEMS builds by default. The current development version
-is `4.12` and is on master:
+is `5` and is on master:
 
 .. code-block:: shell
 
   $ cd rtems
-  $ ../source-builder/sb-set-builder \
-      --prefix=/usr/home/chris/development/rtems/4.12 4.12/rtems-sparc
-  RTEMS Source Builder - Set Builder, 4.12 (e645642255cc)
-  Build Set: 4.12/rtems-sparc
-  Build Set: 4.12/rtems-autotools.bset
-  Build Set: 4.12/rtems-autotools-internal.bset
+  $ ../source-builder/sb-set-builder --prefix=/usr/home/chris/development/rtems/5 5/rtems-sparc
+  RTEMS Source Builder - Set Builder, 5 (089327b5dcf9)
+  Build Set: 5/rtems-sparc
+  Build Set: 5/rtems-autotools.bset
+  Build Set: 5/rtems-autotools-internal.bset
   config: tools/rtems-autoconf-2.69-1.cfg
   package: autoconf-2.69-x86_64-linux-gnu-1
   Creating source directory: sources
@@ -113,13 +112,13 @@ is `4.12` and is on master:
   download: ftp://ftp.gnu.org/gnu/automake/automake-1.12.6.tar.gz -> sources/automake-1.12.6.tar.gz
   downloading: sources/automake-1.12.6.tar.gz - 2.0MB of 2.0MB (100%)
   Creating source directory: patches
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/automake/automake-1.12.6-bugzilla.redhat.com-1239379.diff -> patches/automake-1.12.6-bugzilla.redhat.com-1239379.diff
+  download: https://git.rtems.org/rtems-tools/plain/tools/5/automake/automake-1.12.6-bugzilla.redhat.com-1239379.diff -> patches/automake-1.12.6-bugzilla.redhat.com-1239379.diff
   downloading: patches/automake-1.12.6-bugzilla.redhat.com-1239379.diff - 408.0 bytes of 408.0 bytes (100%)
   building: automake-1.12.6-x86_64-linux-gnu-1
   cleaning: autoconf-2.69-x86_64-linux-gnu-1
   cleaning: automake-1.12.6-x86_64-linux-gnu-1
-  Build Set: Time 0:00:17.465024
-  Build Set: 4.12/rtems-autotools-base.bset
+  Build Set: Time 0:00:12.713221
+  Build Set: 5/rtems-autotools-base.bset
   config: tools/rtems-autoconf-2.69-1.cfg
   package: autoconf-2.69-x86_64-linux-gnu-1
   building: autoconf-2.69-x86_64-linux-gnu-1
@@ -130,59 +129,66 @@ is `4.12` and is on master:
   building: automake-1.12.6-x86_64-linux-gnu-1
   reporting: tools/rtems-automake-1.12.6-1.cfg -> automake-1.12.6-x86_64-linux-gnu-1.txt
   reporting: tools/rtems-automake-1.12.6-1.cfg -> automake-1.12.6-x86_64-linux-gnu-1.xml
-  installing: autoconf-2.69-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
-  installing: automake-1.12.6-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
+  installing: autoconf-2.69-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/5
+  installing: automake-1.12.6-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/5
   cleaning: autoconf-2.69-x86_64-linux-gnu-1
   cleaning: automake-1.12.6-x86_64-linux-gnu-1
-  Build Set: Time 0:00:05.358624
-  Build Set: Time 0:00:22.824422
+  Build Set: Time 0:00:09.105363
+  Build Set: Time 0:00:21.822083
   config: devel/expat-2.1.0-1.cfg
   package: expat-2.1.0-x86_64-linux-gnu-1
   download: http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz -> sources/expat-2.1.0.tar.gz
-    redirect: http://internode.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
+   redirect: https://vorboss.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz
   downloading: sources/expat-2.1.0.tar.gz - 549.4kB of 549.4kB (100%)
   building: expat-2.1.0-x86_64-linux-gnu-1
   reporting: devel/expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-linux-gnu-1.txt
   reporting: devel/expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-linux-gnu-1.xml
-  config: tools/rtems-binutils-2.26-1.cfg
-  package: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1
-  download: ftp://ftp.gnu.org/gnu/binutils/binutils-2.26.tar.bz2 -> sources/binutils-2.26.tar.bz2
-  downloading: sources/binutils-2.26.tar.bz2 - 24.4MB of 24.4MB (100%)
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/binutils/binutils-2.26-rtems-aarch64-x86_64.patch -> patches/binutils-2.26-rtems-aarch64-x86_64.patch
-  downloading: patches/binutils-2.26-rtems-aarch64-x86_64.patch - 3.2kB	of 3.2kB (100%)
-  building: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1
-  reporting: tools/rtems-binutils-2.26-1.cfg -> sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1.txt
-  reporting: tools/rtems-binutils-2.26-1.cfg -> sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1.xml
-  config: tools/rtems-gcc-6-20160228-newlib-2.3.0.20160226-1.cfg
-  package: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1
-  download: ftp://gcc.gnu.org/pub/gcc/snapshots/6-20160228/gcc-6-20160228.tar.bz2 -> sources/gcc-6-20160228.tar.bz2
-  downloading: sources/gcc-6-20160228.tar.bz2 - 90.8MB of 90.8MB (100%)
-  download: ftp://sourceware.org/pub/newlib/newlib-2.3.0.20160226.tar.gz -> sources/newlib-2.3.0.20160226.tar.gz
-  downloading: sources/newlib-2.3.0.20160226.tar.gz - 16.9MB of 16.9MB (100%)
-  download: http://www.mpfr.org/mpfr-2.4.2/mpfr-2.4.2.tar.bz2 ->
-  sources/mpfr-2.4.2.tar.bz2
-  downloading: sources/mpfr-2.4.2.tar.bz2 - 1.0MB of 1.0MB (100%)
-  download: http://www.multiprecision.org/mpc/download/mpc-0.8.1.tar.gz -> sources/mpc-0.8.1.tar.gz
-  downloading: sources/mpc-0.8.1.tar.gz - 532.2kB of 532.2kB (100%)
-  download: ftp://ftp.gnu.org/gnu/gmp/gmp-4.3.2.tar.bz2 -> sources/gmp-4.3.2.tar.bz2
-  downloading: sources/gmp-4.3.2.tar.bz2 - 1.8MB of 1.8MB (100%)
-  building: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1
-  reporting: tools/rtems-gcc-6-20160228-newlib-2.3.0.20160226-1.cfg -> sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1.txt
-  reporting: tools/rtems-gcc-6-20160228-newlib-2.3.0.20160226-1.cfg -> sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1.xml
-  config: tools/rtems-gdb-7.9-1.cfg
-  package: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1
-  download: http://ftp.gnu.org/gnu/gdb/gdb-7.9.tar.xz -> sources/gdb-7.9.tar.xz
-  downloading: sources/gdb-7.9.tar.xz - 17.0MB of 17.0MB (100%)
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/gdb/gdb-sim-arange-inline.diff -> patches/gdb-sim-arange-inline.diff
-  downloading: patches/gdb-sim-arange-inline.diff - 761.0 bytes of 761.0 bytes (100%)
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/gdb/gdb-sim-cgen-inline.diff -> patches/gdb-sim-cgen-inline.diff
-  downloading: patches/gdb-sim-cgen-inline.diff - 706.0 bytes of 706.0 bytes (100%)
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.12/gdb/gdb-7.9-aarch64-x86_64.patch -> patches/gdb-7.9-aarch64-x86_64.patch
-  downloading: patches/gdb-7.9-aarch64-x86_64.patch - 1.7kB of 1.7kB (100%)
-  building: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1
-  reporting: tools/rtems-gdb-7.9-1.cfg -> sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1.txt
-  reporting: tools/rtems-gdb-7.9-1.cfg -> sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1.xml
-  config: tools/rtems-tools-4.12-1.cfg
+  config: tools/rtems-binutils-2.29-1.cfg
+  package: sparc-rtems5-binutils-2.29-x86_64-linux-gnu-1
+  download: ftp://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.bz2 -> sources/binutils-2.29.tar.bz2
+  downloading: sources/binutils-2.29.tar.bz2 - 27.7MB of 27.7MB (100%)
+  download: https://devel.rtems.org/raw-attachment/ticket/3091/0001-Fix-Binutils-2.29-PR21884.patch -> patches/0001-Fix-Binutils-2.29-PR21884.patch
+  downloading: patches/0001-Fix-Binutils-2.29-PR21884.patch - 8.8kB of 8.8kB (100%)
+  building: sparc-rtems5-binutils-2.29-x86_64-linux-gnu-1
+  reporting: tools/rtems-binutils-2.29-1.cfg -> sparc-rtems5-binutils-2.29-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-binutils-2.29-1.cfg -> sparc-rtems5-binutils-2.29-x86_64-linux-gnu-1.xml
+  config: tools/rtems-gcc-7.2.0-newlib-2.5.0.20170922-1.cfg
+  package: sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-linux-gnu-1
+  download: https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz -> sources/gcc-7.2.0.tar.xz
+  downloading: sources/gcc-7.2.0.tar.xz - 59.4MB of 59.4MB (100%)
+  download: https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff_plain;h=62ffbcb7502f0ff88ff7566cd6d7c59c0483ecc0 -> patches/gcc-62ffbcb7502f0ff88ff7566cd6d7c59c0483ecc0.patch
+  downloading: patches/gcc-62ffbcb7502f0ff88ff7566cd6d7c59c0483ecc0.patch - 1.8kB
+  download: https://gcc.gnu.org/git/?p=gcc.git;a=blobdiff_plain;f=gcc/config.gcc;h=593631849bb5e0df5cc4ff42c1a1cc34b7eec2f8;hp=a9196cd26d9ec24c2e3f6026f63348cae3734861;hb=e840389000b8339a63bee56d8b3...<see log> -> patches/gcc-593631849bb5e0df5cc4ff42c1a1cc34b7eec2f8.patch
+  downloading: patches/gcc-593631849bb5e0df5cc4ff42c1a1cc34b7eec2f8.patch - 806.0 bytes
+  download: https://gcc.gnu.org/git/?p=gcc.git;a=blobdiff_plain;f=gcc/config/rs6000/rtems.h;h=7ea9ebdb77b6a9b7060ad2362318e0e12b9058ae;hp=8a62fdcbaf321d616021c4c396619b7f56cf5ed2;hb=e840389000b8339a...<see log> -> patches/gcc-7ea9ebdb77b6a9b7060ad2362318e0e12b9058ae.patch
+  downloading: patches/gcc-7ea9ebdb77b6a9b7060ad2362318e0e12b9058ae.patch - 3.2kB
+  download: ftp://sourceware.org/pub/newlib/newlib-2.5.0.20170922.tar.gz -> sources/newlib-2.5.0.20170922.tar.gz
+  downloading: sources/newlib-2.5.0.20170922.tar.gz - 17.3MB of 17.3MB (100%)
+  download: https://devel.rtems.org/raw-attachment/ticket/2514/0001-RTEMS-Self-contained-POSIX-objects.patch -> patches/0001-RTEMS-Self-contained-POSIX-objects.patch
+  downloading: patches/0001-RTEMS-Self-contained-POSIX-objects.patch - 5.7kB of 5.7kB (100%)
+  download: https://sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git;a=patch;h=c165a27c0147471977377acd8918ab3b446f947a -> patches/newlib-cygwin-git-c165a27c0147471977377acd8918ab3b446f947a.patch
+  downloading: patches/newlib-cygwin-git-c165a27c0147471977377acd8918ab3b446f947a.patch - 986.0 bytes
+  download: https://sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git;a=patch;h=ce189d8afef720b0977b5cae7f9eabf5d49b530c -> patches/newlib-cygwin-git-ce189d8afef720b0977b5cae7f9eabf5d49b530c.patch
+  downloading: patches/newlib-cygwin-git-ce189d8afef720b0977b5cae7f9eabf5d49b530c.patch - 3.4kB
+  download: https://ftp.gnu.org/gnu/mpfr/mpfr-3.1.4.tar.bz2 -> sources/mpfr-3.1.4.tar.bz2
+  downloading: sources/mpfr-3.1.4.tar.bz2 - 1.2MB of 1.2MB (100%)
+  download: https://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz -> sources/mpc-1.0.3.tar.gz
+  downloading: sources/mpc-1.0.3.tar.gz - 654.2kB of 654.2kB (100%)
+  download: https://ftp.gnu.org/gnu/gmp/gmp-6.1.0.tar.bz2 -> sources/gmp-6.1.0.tar.bz2
+  downloading: sources/gmp-6.1.0.tar.bz2 - 2.3MB of 2.3MB (100%)
+  building: sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-linux-gnu-1
+  reporting: tools/rtems-gcc-7.2.0-newlib-2.5.0.20170922-1.cfg -> sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-gcc-7.2.0-newlib-2.5.0.20170922-1.cfg -> sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-linux-gnu-1.xml
+  config: tools/rtems-gdb-8.0.1-1.cfg
+  package: sparc-rtems5-gdb-8.0.1-x86_64-linux-gnu-1
+  download: http://ftp.gnu.org/gnu/gdb/gdb-8.0.1.tar.xz -> sources/gdb-8.0.1.tar.xz
+  downloading: sources/gdb-8.0.1.tar.xz - 18.7MB of 18.7MB (100%)
+  download: https://gaisler.org/gdb/gdb-8.0.1-sis-leon2-leon3.diff -> patches/gdb-8.0.1-sis-leon2-leon3.diff
+  downloading: patches/gdb-8.0.1-sis-leon2-leon3.diff - 224.5kB of 224.5kB (100%)
+  building: sparc-rtems5-gdb-8.0.1-x86_64-linux-gnu-1
+  reporting: tools/rtems-gdb-8.0.1-1.cfg -> sparc-rtems5-gdb-8.0.1-x86_64-linux-gnu-1.txt
+  reporting: tools/rtems-gdb-8.0.1-1.cfg -> sparc-rtems5-gdb-8.0.1-x86_64-linux-gnu-1.xml
+  config: tools/rtems-tools-5-1.cfg
   package: rtems-tools-HEAD-1
   Creating source directory: sources/git
   git: clone: git://git.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
@@ -191,20 +197,26 @@ is `4.12` and is on master:
   git: checkout: git://git.rtems.org/rtems-tools.git => HEAD
   git: pull: git://git.rtems.org/rtems-tools.git
   building: rtems-tools-HEAD-1
-  reporting: tools/rtems-tools-4.12-1.cfg -> rtems-tools-HEAD-1.txt
-  reporting: tools/rtems-tools-4.12-1.cfg -> rtems-tools-HEAD-1.xml
-  installing: expat-2.1.0-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
-  installing: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
-  installing: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
-  installing: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/4.12
-  installing: rtems-tools-HEAD-1 -> /usr/home/chris/development/rtems/4.12
+  reporting: tools/rtems-tools-5-1.cfg -> rtems-tools-HEAD-1.txt
+  reporting: tools/rtems-tools-5-1.cfg -> rtems-tools-HEAD-1.xml
+  config: tools/rtems-kernel-5.cfg
+  package: sparc-rtems5-kernel-5-1
+  building: sparc-rtems5-kernel-5-1
+  reporting: tools/rtems-kernel-5.cfg -> sparc-rtems5-kernel-5-1.txt
+  reporting: tools/rtems-kernel-5.cfg -> sparc-rtems5-kernel-5-1.xml
+  installing: expat-2.1.0-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/5
+  installing: sparc-rtems5-binutils-2.29-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/5
+  installing: sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/5
+  installing: sparc-rtems5-gdb-8.0.1-x86_64-linux-gnu-1 -> /usr/home/chris/development/rtems/5
+  installing: rtems-tools-HEAD-1 -> /usr/home/chris/development/rtems/5
+  installing: sparc-rtems5-kernel-5-1 -> /usr/home/chris/development/rtems/5
   cleaning: expat-2.1.0-x86_64-linux-gnu-1
-  cleaning: sparc-rtems4.12-binutils-2.26-x86_64-linux-gnu-1
-  cleaning: sparc-rtems4.12-gcc-6-20160228-newlib-2.3.0.20160226-x86_64-linux-gnu-1
-  cleaning: sparc-rtems4.12-gdb-7.9-x86_64-linux-gnu-1
+  cleaning: sparc-rtems5-binutils-2.29-x86_64-linux-gnu-1
+  cleaning: sparc-rtems5-gcc-7.2.0-newlib-2.5.0.20170922-x86_64-linux-gnu-1
+  cleaning: sparc-rtems5-gdb-8.0.1-x86_64-linux-gnu-1
   cleaning: rtems-tools-HEAD-1
-  Build Set: Time 0:31:09.754219
-
+  cleaning: sparc-rtems5-kernel-5-1
+  Build Set: Time 0:39:33.988995
 .. _windows-tool-chain:
 
 Windows Host Tool Chain

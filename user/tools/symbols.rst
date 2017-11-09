@@ -115,8 +115,8 @@ Command
 
 .. option:: -E, --exec-prefix
 
-   Specify the RTEMS tool prefix. For example for RTEMS 4.12 and the SPARC
-   architecture the prefix is ``sparc-rtems4.12``.
+   Specify the RTEMS tool prefix. For example for RTEMS 5 and the SPARC
+   architecture the prefix is ``sparc-rtems5``.
 
 .. option:: -c, --cflags
 
@@ -136,7 +136,7 @@ program for the ``i386/pc686`` BSP:
 
 .. code-block:: shell
 
-  $ rtems-syms -o ms.o i386-rtems4.12/c/pc686/testsuites/samples/minimum/minimum.exe
+  $ rtems-syms -o ms.o i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
   $ file ms.o
   ms.o: ELF 32-bit LSB relocatable, Intel 80386, version 1 (SYSV), not stripped
 
@@ -144,10 +144,10 @@ Run the same command, this time create a map file:
 
 .. code-block:: shell
 
-  $ rtems-syms -o ms.o -m ms.map i386-rtems4.12/c/pc686/testsuites/samples/minimum/minimum.exe
+  $ rtems-syms -o ms.o -m ms.map i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
   $ head -10 ms.map
   RTEMS Kernel Symbols Map
-   kernel: i386-rtems4.12/c/pc686/testsuites/samples/minimum/minimum.exe
+   kernel: i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
 
   Globals:
    No.  Index Scope      Type        SHNDX  Address    Size    Name
@@ -162,12 +162,12 @@ command performs:
 
 .. code-block:: shell
 
-  $ rtems-syms -vvv -o ms.o i386-rtems4.12/c/pc686/testsuites/samples/minimum/minimum.exe
-  RTEMS Kernel Symbols 4.12.a72a462adc18
-  kernel: i386-rtems4.12/c/pc686/testsuites/samples/minimum/minimum.exe
+  $ rtems-syms -vvv -o ms.o i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
+  RTEMS Kernel Symbols 5.a72a462adc18
+  kernel: i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
   cache:load-sym: object files: 1
   cache:load-sym: symbols: 1043
   symbol C file: /tmp/rld--X7paaa.c
   symbol O file: ms.o
-  execute: i386-rtems4.12-gcc -O2 -c -o ms.o /tmp/rld--X7paaa.c
+  execute: i386-rtems5-gcc -O2 -c -o ms.o /tmp/rld--X7paaa.c
   execute: status: 0

@@ -32,7 +32,7 @@ The location used to install the tools and kernel is called the
 `prefix`. :ref:`prefixes` explains prefixes and how to use them. It is best to
 have a `prefix` for each different version of RTEMS you are using. If you are
 using RTEMS 4.11 in production it is **not** a good idea to install a
-development version of 4.12 over the top by using the same `prefix` as the 4.11
+development version of 5 over the top by using the same `prefix` as the 4.11
 build. A separate `prefix` for each version avoids this.
 
 Released versions of the RTEMS Source Builder (RSB) downloads all source code

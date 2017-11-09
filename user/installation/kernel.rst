@@ -47,7 +47,7 @@ the RTEMS version and not your host's versions:
 
 .. code-block:: shell
 
-  $ export PATH=$HOME/development/rtems/4.12/bin:$PATH
+  $ export PATH=$HOME/development/rtems/5/bin:$PATH
 
 .. _bootstrapping:
 
@@ -111,7 +111,7 @@ directory then run the bootsrap commands:
   Generating ./c/src/libchip/preinstall.am
   Generating ./c/src/wrapup/preinstall.am
   Generating ./c/src/ada/preinstall.am
-  RTEMS Source Builder - RTEMS Bootstrap, 4.12 (e645642255cc modified)
+  RTEMS Source Builder - RTEMS Bootstrap, 5 (089327b5dcf9)
     1/139: autoreconf: configure.ac
     2/139: autoreconf: cpukit/configure.ac
     3/139: autoreconf: tools/cpu/configure.ac
@@ -160,15 +160,15 @@ enabled and the networking stack disabled:
 
 .. code-block:: shell
 
-  $ $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.12 \
-                     --target=sparc-rtems4.12 --enable-rtemsbsp=erc32 --enable-posix \
+  $ $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/5 \
+                     --target=sparc-rtems5 --enable-rtemsbsp=erc32 --enable-posix \
 		     --disable-networking
   checking for gmake... no
   checking for make... make
   checking for RTEMS Version... 4.11.99.0
   checking build system type... x86_64-pc-linux-gnu
   checking host system type... x86_64-pc-linux-gnu
-  checking target system type... sparc-unknown-rtems4.12
+  checking target system type... sparc-unknown-rtems5
   checking for a BSD-compatible install... /usr/bin/install -c
   checking whether build environment is sane... yes
   checking for a thread-safe mkdir -p... /bin/mkdir -p
@@ -178,11 +178,11 @@ enabled and the networking stack disabled:
   checking whether to enable maintainer-specific portions of Makefiles... no
   checking that generated files are newer than configure... done
    ......
-  checking target system type... sparc-unknown-rtems4.12
+  checking target system type... sparc-unknown-rtems5
   checking rtems target cpu... sparc
   checking for a BSD-compatible install... /usr/bin/install -c
   checking whether build environment is sane... yes
-  checking for sparc-rtems4.12-strip... sparc-rtems4.12-strip
+  checking for sparc-rtems5-strip... sparc-rtems5-strip
   checking for a thread-safe mkdir -p... /bin/mkdir -p
   checking for gawk... no
   checking for mawk... mawk
@@ -250,35 +250,35 @@ Build RTEMS using two cores:
   make[2]: Nothing to be done for 'all-am'.
   make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32/testsuites/tools'
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/testsuites/tools'
-  Making all in sparc-rtems4.12/c
-  make[1]: Entering directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/c'
+  Making all in sparc-rtems5/c
+  make[1]: Entering directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/c'
   Making all in .
-  make[2]: Entering directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/c'
+  make[2]: Entering directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/c'
   Configuring RTEMS_BSP=erc32
   checking for gmake... no
   checking for make... make
   checking build system type... x86_64-pc-linux-gnu
-  checking host system type... sparc-unknown-rtems4.12
+  checking host system type... sparc-unknown-rtems5
    ......
-  sparc-rtems4.12-gcc -B../../../../../erc32/lib/ -specs bsp_specs -qrtems -DHAVE_CONFIG_H -I. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs -I.. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/../support/include   -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -MT init.o -MD -MP -MF .deps/init.Tpo -c -o init.o /home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs/init.c
-  sparc-rtems4.12-gcc -B../../../../../erc32/lib/ -specs bsp_specs -qrtems -DHAVE_CONFIG_H -I. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs -I.. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/../support/include   -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -MT empty.o -MD -MP -MF .deps/empty.Tpo -c -o empty.o /home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs/empty.c
+  sparc-rtems5-gcc -B../../../../../erc32/lib/ -specs bsp_specs -qrtems -DHAVE_CONFIG_H -I. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs -I.. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/../support/include   -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -MT init.o -MD -MP -MF .deps/init.Tpo -c -o init.o /home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs/init.c
+  sparc-rtems5-gcc -B../../../../../erc32/lib/ -specs bsp_specs -qrtems -DHAVE_CONFIG_H -I. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs -I.. -I/home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/../support/include   -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -MT empty.o -MD -MP -MF .deps/empty.Tpo -c -o empty.o /home/chris/development/rtems/kernel/rtems/c/src/../../testsuites/samples/nsecs/empty.c
   mv -f .deps/empty.Tpo .deps/empty.Po
   mv -f .deps/init.Tpo .deps/init.Po
-  sparc-rtems4.12-gcc -B../../../../../erc32/lib/ -specs bsp_specs -qrtems -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -Wl,--gc-sections  -mcpu=cypress   -o nsecs.exe init.o empty.o
-  sparc-rtems4.12-nm -g -n nsecs.exe > nsecs.num
-  sparc-rtems4.12-size nsecs.exe
+  sparc-rtems5-gcc -B../../../../../erc32/lib/ -specs bsp_specs -qrtems -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -Wl,--gc-sections  -mcpu=cypress   -o nsecs.exe init.o empty.o
+  sparc-rtems5-nm -g -n nsecs.exe > nsecs.num
+  sparc-rtems5-size nsecs.exe
      text    data     bss     dec     hex filename
    121392    1888    6624  129904   1fb70 nsecs.exe
   cp nsecs.exe nsecs.ralf
-  make[6]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32/testsuites/samples/nsecs'
-  make[5]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32/testsuites/samples'
-  make[4]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32/testsuites/samples'
-  make[4]: Entering directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32/testsuites'
+  make[6]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32/testsuites/samples/nsecs'
+  make[5]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32/testsuites/samples'
+  make[4]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32/testsuites/samples'
+  make[4]: Entering directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32/testsuites'
   make[4]: Nothing to be done for 'all-am'.
-  make[4]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32/testsuites'
-  make[3]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32/testsuites'
-  make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/ c/erc32'
-  make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/c'
+  make[4]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32/testsuites'
+  make[3]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32/testsuites'
+  make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/ c/erc32'
+  make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/c'
   make[1]: Entering directory '/home/chris/development/rtems/kernel/erc32'
   make[1]: Nothing to be done for 'all-am'.
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32'
@@ -302,10 +302,10 @@ RTEMS with the following command:
   Making install in tools/build
   make[1]: Entering directory '/home/chris/development/rtems/kernel/erc32/tools/build'
   make[2]: Entering directory '/home/chris/development/rtems/kernel/erc32/tools/build'
-  /bin/mkdir -p '/home/chris/development/rtems/4.12/bin'
-  /usr/bin/install -c cklength eolstrip packhex unhex rtems-bin2c '/home/chris/development/rtems/4.12/bin'
-  /bin/mkdir -p '/home/chris/development/rtems/4.12/bin'
-  /usr/bin/install -c install-if-change '/home/chris/development/rtems/4.12/bin'
+  /bin/mkdir -p '/home/chris/development/rtems/5/bin'
+  /usr/bin/install -c cklength eolstrip packhex unhex rtems-bin2c '/home/chris/development/rtems/5/bin'
+  /bin/mkdir -p '/home/chris/development/rtems/5/bin'
+  /usr/bin/install -c install-if-change '/home/chris/development/rtems/5/bin'
   make[2]: Nothing to be done for 'install-data-am'.
   make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/build'
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/build'
@@ -326,16 +326,16 @@ RTEMS with the following command:
   make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/cpu'
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/cpu
    ......
-  make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems4.12/c'
+  make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/c'
   make[1]: Entering directory '/home/chris/development/rtems/kernel/erc32'
   make[2]: Entering directory '/home/chris/development/rtems/kernel/erc32'
   make[2]: Nothing to be done for 'install-exec-am'.
-  /bin/mkdir -p '/home/chris/development/rtems/4.12/make'
-  /usr/bin/install -c -m 644 /home/chris/development/rtems/kernel/rtems/make/main.cfg /home/chris/development/rtems/kernel/rtems/make/leaf.cfg '/home/chris/development/rtems/4.12/make'
-  /bin/mkdir -p '/home/chris/development/rtems/4.12/share/rtems4.12/make/Templates'
-  /usr/bin/install -c -m 644 /home/chris/development/rtems/kernel/rtems/make/Templates/Makefile.dir /home/chris/development/rtems/kernel/rtems/make/Templates/Makefile.leaf /home/chris/development/rtems/kernel/rtems/make/Templates/Makefile.lib '/home/chris/development/rtems/4.12/share/rtems4.12/make/Templates'
-  /bin/mkdir -p '/home/chris/development/rtems/4.12/make/custom'
-  /usr/bin/install -c -m 644 /home/chris/development/rtems/kernel/rtems/make/custom/default.cfg '/home/chris/development/rtems/4.12/make/custom'
+  /bin/mkdir -p '/home/chris/development/rtems/5/make'
+  /usr/bin/install -c -m 644 /home/chris/development/rtems/kernel/rtems/make/main.cfg /home/chris/development/rtems/kernel/rtems/make/leaf.cfg '/home/chris/development/rtems/5/make'
+  /bin/mkdir -p '/home/chris/development/rtems/5/share/rtems5/make/Templates'
+  /usr/bin/install -c -m 644 /home/chris/development/rtems/kernel/rtems/make/Templates/Makefile.dir /home/chris/development/rtems/kernel/rtems/make/Templates/Makefile.leaf /home/chris/development/rtems/kernel/rtems/make/Templates/Makefile.lib '/home/chris/development/rtems/5/share/rtems5/make/Templates'
+  /bin/mkdir -p '/home/chris/development/rtems/5/make/custom'
+  /usr/bin/install -c -m 644 /home/chris/development/rtems/kernel/rtems/make/custom/default.cfg '/home/chris/development/rtems/5/make/custom'
   make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32'
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32'
 

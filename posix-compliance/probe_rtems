@@ -3,7 +3,7 @@
 lfile=unprobed_methods.txt
 cpu=arm
 bsp=xilinx_zynq_a9_qemu
-bsp_path=/home/joel/rtems-work/tools/4.12/bsps/arm-rtems4.12
+bsp_path=/home/joel/rtems-work/tools/5/bsps/arm-rtems5
 bsp_flags="-march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard -mtune=cortex-a9"
 
 cat_template()
@@ -35,7 +35,7 @@ do
   fi
 
   gen_prober ${method} >tmp_probe.c
-  ${cpu}-rtems4.12-gcc \
+  ${cpu}-rtems5-gcc \
     -B${bsp_path}/${bsp}/lib/ -specs bsp_specs -qrtems \
     ${bsp_flags} \
     tmp_probe.c >/dev/null 2>&1

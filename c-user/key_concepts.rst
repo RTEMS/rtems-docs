@@ -258,7 +258,7 @@ only available in SMP configurations and replaces the priority inheritance
 protocol in this case.  One aim of the locking protocols is to avoid priority
 inversion.
 
-Since RTEMS 4.12, priority updates due to the locking protocols take place
+Since RTEMS 5.1, priority updates due to the locking protocols take place
 immediately and are propagated recursively.  The mutex owner and wait for mutex
 relationships define a directed acyclic graph (DAG).  The run-time of the mutex
 obtain, release and timeout operations depend on the complexity of this
@@ -314,7 +314,7 @@ Priority Inheritance Protocol
 
 The priority of the mutex owner is raised to the highest priority of all
 threads that currently wait for ownership of this mutex :cite:`Sha:1990:PI`.
-Since RTEMS 4.12, priority updates due to the priority inheritance protocol
+Since RTEMS 5.1, priority updates due to the priority inheritance protocol
 take place immediately and are propagated recursively.
 
 .. _MrsP:
@@ -334,7 +334,7 @@ then the normal priority of the thread is restored.  Threads that wait for
 mutex ownership are not blocked with respect to the scheduler and instead
 perform a busy wait.  The MrsP uses temporary thread migrations to foreign
 scheduler instances in case of a preemption of the mutex owner.  This locking
-protocol is available since RTEMS 4.11. It was re-implemented in RTEMS 4.12 to
+protocol is available since RTEMS 4.11. It was re-implemented in RTEMS 5.1 to
 overcome some shortcomings of the original implementation
 :cite:`Catellani:2015:MrsP`.
 
@@ -353,7 +353,7 @@ OMIP mutexes do not need any external configuration data, e.g. a ceiling
 priority.  This makes them a good choice for general purpose libraries that
 need internal locking.  The complex part of the implementation is contained in
 the thread queues and shared with the MrsP support.  This locking protocol is
-available since RTEMS 4.12.
+available since RTEMS 5.1.
 
 Thread Queues
 =============
@@ -406,7 +406,7 @@ In case the thread is dequeued, there are two options
 Since there are usually more objects than threads, this actually reduces the
 memory demands.  In addition the objects only contain a pointer to the queue
 structure.  This helps to hide implementation details.  Inter-cluster priority
-queues are available since RTEMS 4.12.
+queues are available since RTEMS 5.1.
 
 A doubly-linked list (chain) is used to implement the FIFO queues yielding a
 :math:`O(1)` worst-case time complexity for enqueue and dequeue operations.
@@ -480,9 +480,9 @@ The use cases fall roughly into two categories:
   and need a high resolution. An example use case is a time driven scheduler,
   e.g.  rate-monotonic or EDF.
 
-In RTEMS versions prior to 4.12 the timer and timeout support was implemented
+In RTEMS versions prior to 5.1 the timer and timeout support was implemented
 by means of delta chains.  This implementation was unfit for SMP systems due to
-several reasons.  The new implementation present since RTEMS 4.12 uses a
+several reasons.  The new implementation present since RTEMS 5.1 uses a
 red-black tree with the expiration time as the key.  This leads to
 :math:`O(log(n))` worst-case insert and removal operations for :math:`n` active
 timer or timeouts.  Each processor provides its own timer and timeout service

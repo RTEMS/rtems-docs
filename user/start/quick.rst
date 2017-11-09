@@ -34,7 +34,7 @@ chain (See :ref:`rtems-tools-chain`):
     ...
   $ cd rtems
   $ ../source-builder/sb-set-builder \
-      --prefix=/usr/home/chris/development/rtems/4.12 4.12/rtems-sparc
+      --prefix=/usr/home/chris/development/rtems/5 5/rtems-sparc
     ...
 
 Build the RTEMS Kernel (See :ref:`rtems-kernel`) by cloning the repository,
@@ -43,7 +43,7 @@ kernel:
 
 .. code-block:: shell
 
-  $ export PATH=$HOME/development/rtems/4.12/bin:$PATH
+  $ export PATH=$HOME/development/rtems/5/bin:$PATH
   $ cd
   $ cd development/rtems
   $ mkdir kernel
@@ -57,8 +57,8 @@ kernel:
   $ cd ..
   $ mkdir erc32
   $ cd erc32
-  $ $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/4.12 \
-                     --target=sparc-rtems4.12 --enable-rtemsbsp=erc32 --enable-posix \
+  $ $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/5 \
+                     --target=sparc-rtems5 --enable-rtemsbsp=erc32 --enable-posix \
 		     --disable-networking
     ...
   $ make -j 8

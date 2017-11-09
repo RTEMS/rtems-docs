@@ -95,60 +95,66 @@ Prints all reports for the ``hello.exe`` for the ``i386/pc686`` BSP:
 
 .. code-block:: shell
 
-  $ rtems-exeinfo -a i386-rtems4.12/c/pc686/testsuites/samples/hello/hello.exe
-  RTEMS Executable Info 4.12.a72a462adc18
-   rtems-exeinfo -a i386-rtems4.12/c/pc686/testsuites/samples/hello/hello.exe
-  exe: i386-rtems4.12/c/pc686/testsuites/samples/hello/hello.exe
-  Sections: 23
-                    -------------- address: 0x00000000 0x00000000 size:       0 align:   0 relocs:    0
-    .bss            WA------------ address: 0x0013f340 0x00144d9c size:   23132 align:  32 relocs:    0
-    .comment        ---MS--------- address: 0x00000000 0x0000008f size:     143 align:   1 relocs:    0
-    .ctors          WA------------ address: 0x0013cc9c 0x0013cca4 size:       8 align:   4 relocs:    0
-    .data           WA------------ address: 0x0013ccc0 0x0013f32c size:    9836 align:  32 relocs:    0
-    .debug_abbrev   -------------- address: 0x00000000 0x0003ef4c size:  257868 align:   1 relocs:    0
-    .debug_aranges  -------------- address: 0x00000000 0x00003da8 size:   15784 align:   8 relocs:    0
-    .debug_info     -------------- address: 0x00000000 0x0036dd9e size: 3595678 align:   1 relocs:    0
-    .debug_line     -------------- address: 0x00000000 0x00072dca size:  470474 align:   1 relocs:    0
-    .debug_loc      -------------- address: 0x00000000 0x0003fd2c size:  261420 align:   1 relocs:    0
-    .debug_ranges   -------------- address: 0x00000000 0x00009738 size:   38712 align:   1 relocs:    0
-    .debug_str      ---MS--------- address: 0x00000000 0x0001bf78 size:  114552 align:   1 relocs:    0
-    .dtors          WA------------ address: 0x0013cca4 0x0013ccac size:       8 align:   4 relocs:    0
-    .eh_frame       -A------------ address: 0x00134340 0x0013bc9c size:   31068 align:   4 relocs:    0
-    .fini           -AE----------- address: 0x0012d8a9 0x0012d8b1 size:       8 align:   1 relocs:    0
-    .init           -AE----------- address: 0x0012d89c 0x0012d8a9 size:      13 align:   1 relocs:    0
-    .jcr            WA------------ address: 0x0013ccac 0x0013ccb0 size:       4 align:   4 relocs:    0
-    .rodata         -A------------ address: 0x0012d8c0 0x0013433d size:   27261 align:  32 relocs:    0
-    .rtemsroset     WA------------ address: 0x0012d860 0x0012d89c size:      60 align:   4 relocs:    0
-    .shstrtab       -------------- address: 0x00000000 0x000000cb size:     203 align:   1 relocs:    0
-    .strtab         -------------- address: 0x00000000 0x0000772a size:   30506 align:   1 relocs:    0
-    .symtab         -------------- address: 0x00000000 0x00007120 size:   28960 align:   4 relocs:    0
-    .text           WAE----------- address: 0x00100000 0x0012d860 size:  186464 align:  16 relocs:    0
+  $ rtems-exeinfo -a i386-rtems5/c/pc686/testsuites/samples/hello/hello.exe
+  RTEMS Executable Info 5.6f5cfada964c
+   rtems-exeinfo -a i386-rtems5/c/pc686/testsuites/samples/hello/hello.exe
+  exe: i386-rtems5/c/pc686/testsuites/samples/hello/hello.exe
+  Sections: 22
+                   -------------- addr: 0x00000000 0x00000000 size:          0 align:   0 relocs:      0
+    .bss           WA------------ addr: 0x00135760 0x0013b300 size:      23456 align:  32 relocs:      0
+    .comment       ---MS--------- addr: 0x00000000 0x00000083 size:        131 align:   1 relocs:      0
+    .ctors         WA------------ addr: 0x0013322c 0x00133234 size:          8 align:   4 relocs:      0
+    .data          WA------------ addr: 0x00133240 0x0013574c size:       9484 align:  32 relocs:      0
+    .debug_abbrev  -------------- addr: 0x00000000 0x0003c5ce size:     247246 align:   1 relocs:      0
+    .debug_aranges -------------- addr: 0x00000000 0x00003a18 size:      14872 align:   8 relocs:      0
+    .debug_info    -------------- addr: 0x00000000 0x0032496d size:    3295597 align:   1 relocs:      0
+    .debug_line    -------------- addr: 0x00000000 0x0006606b size:     417899 align:   1 relocs:      0
+    .debug_loc     -------------- addr: 0x00000000 0x0003b704 size:     243460 align:   1 relocs:      0
+    .debug_ranges  -------------- addr: 0x00000000 0x00008128 size:      33064 align:   1 relocs:      0
+    .debug_str     ---MS--------- addr: 0x00000000 0x0001a9d7 size:     109015 align:   1 relocs:      0
+    .dtors         WA------------ addr: 0x00133234 0x0013323c size:          8 align:   4 relocs:      0
+    .eh_frame      -A------------ addr: 0x0012b884 0x0013222c size:      27048 align:   4 relocs:      0
+    .fini          -AE----------- addr: 0x00127fdd 0x00127fe5 size:          8 align:   1 relocs:      0
+    .init          -AE----------- addr: 0x00127fd0 0x00127fdd size:         13 align:   1 relocs:      0
+    .rodata        -A------------ addr: 0x00128000 0x0012b884 size:      14468 align:  32 relocs:      0
+    .rtemsroset    WA------------ addr: 0x00127f94 0x00127fd0 size:         60 align:   4 relocs:      0
+    .shstrtab      -------------- addr: 0x00000000 0x000000c6 size:        198 align:   1 relocs:      0
+    .strtab        -------------- addr: 0x00000000 0x000068ca size:      26826 align:   1 relocs:      0
+    .symtab        -------------- addr: 0x00000000 0x00006290 size:      25232 align:   4 relocs:      0
+    .text          WAE----------- addr: 0x00100000 0x00127f91 size:     163729 align:  16 relocs:      0
 
-  Init sections: 2
+  Init sections: 3
    .ctors
     0xffffffff RamSize
-    0x00000000 _TLS_Data_size
+    0x00000000 REG_EFLAGS
+   .init
+    0xfd81ebe8 no symbol
+    0xff86e8ff no symbol
+    0x00c2ffff no symbol
    .rtemsroset
-    0x00100280 bsp_work_area_initialize
-    0x001003b0 bsp_start_default
-    0x0011ace0 _User_extensions_Handler_initialization
-    0x00113040 rtems_initialize_data_structures
-    0x00112ec0 _RTEMS_tasks_Manager_initialization
-    0x0011df30 _Message_queue_Manager_initialization
-    0x0011cfa0 _Semaphore_Manager_initialization
-    0x0011ce70 _POSIX_Keys_Manager_initialization
-    0x00117360 _Thread_Create_idle
-    0x0010c8d0 rtems_libio_init
-    0x0010c7c0 rtems_filesystem_initialize
-    0x00100390 bsp_predriver_hook
-    0x001130f0 _IO_Initialize_all_drivers
-    0x00112d90 _RTEMS_tasks_Initialize_user_tasks_body
-    0x0010d520 rtems_libio_post_driver
+    0x00100310 bsp_work_area_initialize
+    0x00100440 bsp_start_default
+    0x001160e0 _User_extensions_Handler_initialization
+    0x0010fe60 rtems_initialize_data_structures
+    0x0010fcf0 _RTEMS_tasks_Manager_initialization
+    0x0010f310 _Semaphore_Manager_initialization
+    0x0010ed90 _POSIX_Keys_Manager_initialization
+    0x00113af0 _Thread_Create_idle
+    0x0010c100 rtems_libio_init
+    0x0010bec0 rtems_filesystem_initialize
+    0x00100420 bsp_predriver_hook
+    0x0010bfb0 _Console_simple_Initialize
+    0x0010ff30 _IO_Initialize_all_drivers
+    0x0010fc10 _RTEMS_tasks_Initialize_user_tasks_body
+    0x0010ccb0 rtems_libio_post_driver
 
-  Fini sections: 1
+  Fini sections: 2
    .dtors
     0xffffffff RamSize
-    0x00000000 _TLS_Data_size
+    0x00000000 REG_EFLAGS
+   .fini
+    0xfd815ee8 no symbol
+    0x0000c2ff no symbol
 
 The Init section ``.rtemsroset`` shows the initialisation call order for the
 ``hello.exe`` sample application. The order is initialise the BSP work area,
@@ -163,41 +169,39 @@ Print the ``Init`` section data for the ``cdtest.exe`` for the ``i386/pc686`` BS
 
 .. code-block:: shell
 
-  $ rtems-exeinfo -I i386-rtems4.12/c/pc686/testsuites/samples/cdtest/cdtest.exe
-  RTEMS Executable Info 4.12.a72a462adc18
-   rtems-exeinfo -I i386-rtems4.12/c/pc686/testsuites/samples/cdtest/cdtest.exe
-  exe: i386-rtems4.12/c/pc686/testsuites/samples/cdtest/cdtest.exe
-  Init sections: 2
+  $ rtems-exeinfo -I i386-rtems5/c/pc686/testsuites/samples/cdtest/cdtest.exe
+  RTEMS Executable Info 5.6f5cfada964c
+   rtems-exeinfo -I i386-rtems5/c/pc686/testsuites/samples/cdtest/cdtest.exe
+  exe: i386-rtems5/c/pc686/testsuites/samples/cdtest/cdtest.exe
+  Init sections: 3
    .ctors
     0xffffffff RamSize
-    0x00100e90 rtems_test_name
-    0x001014b0 __gnu_cxx::__freeres()
-    0x001017c0 __cxa_get_globals_fast
-    0x001024e0 __cxxabiv1::__terminate(void (*)())
-    0x001030a0 std::_V2::error_category::~error_category()
-    0x0010cfa0 std::ctype_byname<char>::ctype_byname(std::string const&, unsigned long)
-    0x0010d070 std::ctype_byname<wchar_t>::ctype_byname(std::string const&, unsigned long)
-    0x0010d210 std::nothrow
-    0x0010d230 std::ctype_byname<char>::ctype_byname(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long)
-    0x0010d2c0 std::ctype_byname<wchar_t>::ctype_byname(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long)
-    0x00000000 _TLS_Data_size
+    0x00100ea0 _GLOBAL__sub_I_rtems_test_name
+    0x001015d0 __gnu_cxx::__freeres()
+    0x00101df0 __cxxabiv1::__terminate(void (*)())
+    0x00102ac0 _GLOBAL__sub_I___cxa_get_globals_fast
+    0x00103260 std::nothrow
+    0x00000000 REG_EFLAGS
+   .init
+    0xfcb3dbe8 no symbol
+    0xff86e8ff no symbol
+    0x00c2ffff no symbol
    .rtemsroset
-    0x00111210 bsp_work_area_initialize
-    0x00111340 bsp_start_default
-    0x0012c560 _User_extensions_Handler_initialization
-    0x001244d0 rtems_initialize_data_structures
-    0x00124350 _RTEMS_tasks_Manager_initialization
-    0x0012f790 _Message_queue_Manager_initialization
-    0x0012e7c0 _Semaphore_Manager_initialization
-    0x0013ccc0 _POSIX_signals_Manager_Initialization
-    0x0012e650 _POSIX_Keys_Manager_initialization
-    0x00128be0 _Thread_Create_idle
-    0x0011d9d0 rtems_libio_init
-    0x0011d8c0 rtems_filesystem_initialize
-    0x00111320 bsp_predriver_hook
-    0x00124580 _IO_Initialize_all_drivers
-    0x00124220 _RTEMS_tasks_Initialize_user_tasks_body
-    0x0011e620 rtems_libio_post_driver
+    0x001112c0 bsp_work_area_initialize
+    0x001113f0 bsp_start_default
+    0x001276c0 _User_extensions_Handler_initialization
+    0x00121260 rtems_initialize_data_structures
+    0x001210f0 _RTEMS_tasks_Manager_initialization
+    0x00120710 _Semaphore_Manager_initialization
+    0x0011ff70 _POSIX_Keys_Manager_initialization
+    0x001250d0 _Thread_Create_idle
+    0x0011d220 rtems_libio_init
+    0x0011cfe0 rtems_filesystem_initialize
+    0x001113d0 bsp_predriver_hook
+    0x0011d0d0 _Console_simple_Initialize
+    0x00121310 _IO_Initialize_all_drivers
+    0x00121010 _RTEMS_tasks_Initialize_user_tasks_body
+    0x0011ddd0 rtems_libio_post_driver
 
 The C++ constructor section ``.ctors`` shows you the C++ static objects the
 RTEMS kernel will construct before calling ``main``.

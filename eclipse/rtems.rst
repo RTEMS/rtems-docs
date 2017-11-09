@@ -35,7 +35,7 @@ to the path to our tools:
 
 .. code-block:: shell
 
-  $ export PATH=/opt/rtems/4.12/bin:$PATH
+  $ export PATH=/opt/rtems/5/bin:$PATH
 
 Now run the `bootstrap` command:
 
@@ -133,7 +133,7 @@ The paths used in this project are:
 :file:`/opt/work/chris/rtems/kernel/rtems.master`
    The RTEMS Kernel source code.
 
-:file:`/opt/work/chris/rtems/kernel/4.12`
+:file:`/opt/work/chris/rtems/kernel/5`
    The RTEMS Kernel prefix.
 
 :file:`/opt/work/chris/rtems/kernel/bsp/pc`
@@ -197,7 +197,7 @@ We now configure the project's properties by right clicking on the
   :alt:
 
 Click on the **Autotools** item then **Configure Settings** and **Platform
-specifiers** and set the **Target platform** field with ``i386-rtems4.12``:
+specifiers** and set the **Target platform** field with ``i386-rtems5``:
 
 .. figure:: ../images/eclipse/eclipse-rtems-git-prop-at-target.png
   :width: 100%
@@ -206,7 +206,7 @@ specifiers** and set the **Target platform** field with ``i386-rtems4.12``:
 
 Select **Platform directories** and enter the **Arch-independent install
 directory (--prefix)** to the RTEMS Kernel prefix of
-:file:`/opt/work/chris/rtems/kernel/4.12`:
+:file:`/opt/work/chris/rtems/kernel/5`:
 
 .. figure:: ../images/eclipse/eclipse-rtems-git-prop-at-prefix.png
   :width: 100%
@@ -246,7 +246,7 @@ project can have a specific set of tools. Press the **Add...** button:
   :alt: C/C++ Build Environment
 
 Enter the path to the tools, in our case it is
-:file:`/opt/work/rtems/4.12/bin`, then press **Variables** :
+:file:`/opt/work/rtems/5/bin`, then press **Variables** :
 
 .. figure:: ../images/eclipse/eclipse-rtems-git-prop-cdt-env-var.png
   :width: 85%

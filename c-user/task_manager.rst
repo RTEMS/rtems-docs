@@ -554,7 +554,7 @@ Transition Advice for Obsolete Notepads
 .. index:: rtems_task_set_note
 
 Task notepads and the associated directives :ref:`rtems_task_get_note` and
-:ref:`rtems_task_set_note` were removed in RTEMS 4.12. These were never
+:ref:`rtems_task_set_note` were removed in RTEMS 5.1. These were never
 thread-safe to access and subject to conflicting use of the notepad index by
 libraries which were designed independently.
 
@@ -573,7 +573,7 @@ Transition Advice for Obsolete Task Variables
 
 Task notepads and the associated directives :ref:`rtems_task_variable_add`,
 :ref:`rtems_task_variable_get` and :ref:`rtems_task_variable_delete` were
-removed in RTEMS 4.12.  Task variables must be replaced by POSIX Keys or
+removed in RTEMS 5.1.  Task variables must be replaced by POSIX Keys or
 thread-local storage (TLS).  POSIX Keys are available in all configurations and
 support value destructors.  For the TLS support consult the :title:`RTEMS CPU
 Architecture Supplement`.
@@ -1697,7 +1697,7 @@ TASK_GET_NOTE - Get task notepad entry
 
 .. warning::
 
-    This directive was removed in RTEMS 4.12.
+    This directive was removed in RTEMS 5.1.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1750,7 +1750,7 @@ TASK_SET_NOTE - Set task notepad entry
 
 .. warning::
 
-    This directive was removed in RTEMS 4.12.
+    This directive was removed in RTEMS 5.1.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1804,7 +1804,7 @@ TASK_VARIABLE_ADD - Associate per task variable
 
 .. warning::
 
-    This directive was removed in RTEMS 4.12.
+    This directive was removed in RTEMS 5.1.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1866,7 +1866,7 @@ TASK_VARIABLE_GET - Obtain value of a per task variable
 
 .. warning::
 
-    This directive was removed in RTEMS 4.12.
+    This directive was removed in RTEMS 5.1.
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1924,7 +1924,7 @@ TASK_VARIABLE_DELETE - Remove per task variable
 
 .. warning::
 
-    This directive was removed in RTEMS 4.12.
+    This directive was removed in RTEMS 5.1.
 
 CALLING SEQUENCE:
     .. code-block:: c

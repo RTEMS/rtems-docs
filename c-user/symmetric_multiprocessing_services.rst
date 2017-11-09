@@ -11,7 +11,7 @@ Symmetric Multiprocessing (SMP)
 Introduction
 ============
 
-The Symmetric Multiprocessing (SMP) support of the RTEMS 4.12 is available on
+The Symmetric Multiprocessing (SMP) support of the RTEMS is available on
 
 - ARMv7-A,
 
@@ -324,7 +324,7 @@ executing thread and restored from the thread control block of the heir thread.
 This is inherently broken if more than one executing thread exists.
 Alternatives to task variables are POSIX keys and :ref:`TLS <TLS>`.  All use
 cases of task variables in the RTEMS code base were replaced with alternatives.
-The task variable API has been removed in RTEMS 4.12.
+The task variable API has been removed in RTEMS 5.1.
 
 Highest Priority Thread Never Walks Alone
 -----------------------------------------

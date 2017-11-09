@@ -76,7 +76,7 @@ configure after running ``bootstrap``.
 
 .. code-block:: shell
 
-    $ ../../rtems.git/configure --target=sparc-rtems4.12 \
+    $ ../../rtems.git/configure --target=sparc-rtems5 \
                         --enable-tests --enable-rtemsbsp=erc32
     $ make
 
@@ -92,7 +92,7 @@ run command:
 
 .. code-block:: shell
 
-    $ sparc-rtems4.12-run sparc-rtems4.12/c/erc32/testsuites/samples/hello/hello.exe
+    $ sparc-rtems5-run sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
 
     *** BEGIN OF TEST HELLO WORLD ***
     Hello World
@@ -104,14 +104,14 @@ Running the example using GDB:
 
 .. code-block:: shell
 
-    $ sparc-rtems4.12-gdb sparc-rtems4.12/c/erc32/testsuites/samples/hello/hello.exe
+    $ sparc-rtems5-gdb sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
     GNU gdb (GDB) 7.12
     Copyright (C) 2016 Free Software Foundation, Inc.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
     This is free software: you are free to change and redistribute it.
     There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
     and "show warranty" for details.
-    This GDB was configured as "--host=x86_64-linux-gnu --target=sparc-rtems4.12".
+    This GDB was configured as "--host=x86_64-linux-gnu --target=sparc-rtems5".
     Type "show configuration" for configuration details.
     For bug reporting instructions, please see:
     <http://www.gnu.org/software/gdb/bugs/>.
@@ -120,12 +120,12 @@ Running the example using GDB:
     For help, type "help".
     Type "apropos word" to search for commands related to "word"...
     Reading symbols from
-    sparc-rtems4.12/c/erc32/testsuites/samples/hello/hello.exe...done.
+    sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe...done.
     (gdb) target sim
     Connected to the simulator.
     (gdb) load
     (gdb) r
-    Starting program: sparc-rtems4.12/c/erc32/testsuites/samples/hello/hello.exe
+    Starting program: sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
 
 
     *** BEGIN OF TEST HELLO WORLD ***
@@ -158,9 +158,9 @@ BSP build tree:
     $ ~/development/rtems/test/rtems-tools.git/tester/rtems-test \
              --log=log_erc32_run \
              --rtems-bsp=erc32-run \
-             --rtems-tools=$HOME/development/rtems/4.12 \
-                 sparc-rtems4.12/c/erc32/testsuites/samples
-    RTEMS Testing - Tester, 4.12.not_released
+             --rtems-tools=$HOME/development/rtems/5 \
+                 sparc-rtems5/c/erc32/testsuites/samples
+    RTEMS Testing - Tester, 5.not_released
     [ 1/13] p:0  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: base_sp.exe
     [ 2/13] p:0  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: capture.exe
     [ 3/13] p:0  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: cdtest.exe
@@ -206,8 +206,8 @@ BSP build tree:
 * The output shows the average time per test and the total time taken to run
   all the tests.
 * If the path to the testsuites was put to
-  ``sparc-rtems4.12/c/erc32/testsuites`` instead of
-  ``sparc-rtems4.12/c/erc32/testsuites/samples`` then all the executables
+  ``sparc-rtems5/c/erc32/testsuites`` instead of
+  ``sparc-rtems5/c/erc32/testsuites/samples`` then all the executables
   would have been tested and not just those in samples.
 
 This BSP requires the ``--rtems-tools`` option because the SPARC GDB is the
