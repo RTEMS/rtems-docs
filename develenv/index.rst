@@ -47,5 +47,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	utilities
 	command
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex

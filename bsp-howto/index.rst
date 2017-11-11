@@ -61,5 +61,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	ide_controller
 	command
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex

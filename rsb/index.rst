@@ -62,5 +62,4 @@ Table of Contents
 	commands
 	bug-reporting
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex

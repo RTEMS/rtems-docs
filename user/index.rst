@@ -56,5 +56,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	additional/index
 	glossary/index
 
-*   :ref:`genindex`
-*   :ref:`search`
+        genindex

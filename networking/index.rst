@@ -52,5 +52,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	dec_21140
 	command
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex

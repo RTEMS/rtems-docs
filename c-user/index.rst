@@ -82,5 +82,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	glossary
 	zreferences
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex

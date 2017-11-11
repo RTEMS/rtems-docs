@@ -62,5 +62,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	command
 	zreferences
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex

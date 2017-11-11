@@ -54,5 +54,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	miscellanous
 	command
 
-*	:ref:`genindex`
-*	:ref:`search`
+        genindex
