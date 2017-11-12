@@ -5,11 +5,10 @@
 .. COMMENT: All rights reserved.
 
 .. _User Extensions Manager:
+.. index:: user extensions
 
 User Extensions Manager
 ***********************
-
-.. index:: user extensions
 
 Introduction
 ============
@@ -62,10 +61,11 @@ dynamic memory allocations and object creation/deletion.  Some user extensions
 are invoked with thread dispatching disabled.  The fatal error extension is
 invoked in an arbitrary context.
 
-Extension Sets
---------------
 .. index:: user extension set
 .. index:: rtems_extensions_table
+
+Extension Sets
+--------------
 
 User extensions are maintained as a set.  All user extensions are optional and
 may be `NULL`.  Together a set of these user extensions typically performs a
@@ -86,9 +86,10 @@ extension set is defined via the following structure.
       rtems_task_terminate_extension thread_terminate;
     } rtems_extensions_table;
 
+.. index:: TCB extension area
+
 TCB Extension Area
 ------------------
-.. index:: TCB extension area
 
 There is no system-provided storage for the initial extension sets.
 
@@ -169,14 +170,14 @@ installed after the Standard C Library will operate correctly even if they
 utilize the C Library because the C Library's thread delete extension is
 invoked after that of the other thread delete extensions.
 
+.. index:: rtems_task_create_extension
+
 Thread Create Extension
 -----------------------
 
 The thread create extension is invoked during thread creation, for example
 via :ref:`rtems_task_create() <rtems_task_create>` or :c:func:`pthread_create`.
 The thread create extension is defined as follows.
-
-.. index:: rtems_task_create_extension
 
 .. code-block:: c
 
@@ -202,14 +203,14 @@ must return :c:data:`true`.
 The thread create extension is invoked in forward order with thread dispatching
 enabled (except during system initialization).
 
+.. index:: rtems_task_start_extension
+
 Thread Start Extension
 ----------------------
 
 The thread start extension is invoked during a thread start, for example
 via :ref:`rtems_task_start() <rtems_task_start>` or :c:func:`pthread_create`.
 The thread start extension is defined as follows.
-
-.. index:: rtems_task_start_extension
 
 .. code-block:: c
 
@@ -228,14 +229,14 @@ invoked.
 The thread start extension is invoked in forward order with thread dispatching
 disabled.
 
+.. index:: rtems_task_restart_extension
+
 Thread Restart Extension
 ------------------------
 
 The thread restart extension is invoked during a thread restart, for example
 via :ref:`rtems_task_restart() <rtems_task_start>`.
 The thread restart extension is defined as follows.
-
-.. index:: rtems_task_restart_extension
 
 .. code-block:: c
 
@@ -254,14 +255,14 @@ dispatching enabled (except during system initialization).  The thread life is
 protected.  Thread restart and delete requests issued by thread restart
 extensions lead to recursion.
 
+.. index:: rtems_task_switch_extension
+
 Thread Switch Extension
 -----------------------
 
 The thread switch extension is invoked before the context switch from the
 currently executing thread to the heir thread.  The thread switch extension is
 defined as follows.
-
-.. index:: rtems_task_switch_extension
 
 .. code-block:: c
 
@@ -280,13 +281,13 @@ SMP lock is owned.
 The context switches initiated through the multitasking start are not covered
 by the thread switch extension.
 
+.. index:: rtems_task_begin_extension
+
 Thread Begin Extension
 ----------------------
 
 The thread begin extension is invoked during a thread begin before the thread
 entry function is called.  The thread begin extension is defined as follows.
-
-.. index:: rtems_task_begin_extension
 
 .. code-block:: c
 
@@ -303,13 +304,13 @@ The thread begin extension is invoked in forward order with thread dispatching
 enabled.  The thread switch extension may be called multiple times for this
 thread before the thread begin extension is invoked.
 
+.. index:: rtems_task_exitted_extension
+
 Thread Exitted Extension
 ------------------------
 
 The thread exitted extension is invoked once the thread entry function returns.
 The thread exitted extension is defined as follows.
-
-.. index:: rtems_task_exitted_extension
 
 .. code-block:: c
 
@@ -322,6 +323,8 @@ thread.
 
 This extension is invoked in forward order with thread dispatching enabled.
 
+.. index:: rtems_task_terminate_extension
+
 Thread Termination Extension
 ----------------------------
 
@@ -330,8 +333,6 @@ recognized by the currently executing thread.  Termination requests may result
 due to calls of :ref:`rtems_task_delete() <rtems_task_delete>`,
 :c:func:`pthread_exit`, or :c:func:`pthread_cancel`.  The thread termination
 extension is defined as follows.
-
-.. index:: rtems_task_terminate_extension
 
 .. code-block:: c
 
@@ -351,14 +352,14 @@ The thread terminate extension is invoked in reverse order with thread
 dispatching enabled.  The thread life is protected.  Thread restart and delete
 requests issued by thread terminate extensions lead to recursion.
 
+.. index:: rtems_task_delete_extension
+
 Thread Delete Extension
 -----------------------
 
 The thread delete extension is invoked in case a zombie thread is killed.  A
 thread becomes a zombie thread after it terminated.  The thread delete
 extension is defined as follows.
-
-.. index:: rtems_task_delete_extension
 
 .. code-block:: c
 
@@ -383,13 +384,13 @@ must first terminate and this may take some time.  The thread delete extension
 is invoked by :ref:`rtems_task_create() <rtems_task_create>` or similar as a
 result of a lazy garbage collection of zombie threads.
 
+.. index:: rtems_fatal_extension
+
 Fatal Error Extension
 ---------------------
 
 The fatal error extension is invoked during :ref:`system termination
 <Terminate>`.  The fatal error extension is defined as follows.
-
-.. index:: rtems_fatal_extension
 
 .. code-block:: c
 
@@ -424,11 +425,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_extension_create:
+.. index:: create an extension set
+.. index:: rtems_extension_create
 
 EXTENSION_CREATE - Create a extension set
 -----------------------------------------
-.. index:: create an extension set
-.. index:: rtems_extension_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -472,12 +473,12 @@ NOTES:
    \clearpage
 
 .. _rtems_extension_ident:
-
-EXTENSION_IDENT - Get ID of a extension set
--------------------------------------------
 .. index:: get ID of an extension set
 .. index:: obtain ID of an extension set
 .. index:: rtems_extension_ident
+
+EXTENSION_IDENT - Get ID of a extension set
+-------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -513,11 +514,11 @@ NOTES:
    \clearpage
 
 .. _rtems_extension_delete:
+.. index:: delete an extension set
+.. index:: rtems_extension_delete
 
 EXTENSION_DELETE - Delete a extension set
 -----------------------------------------
-.. index:: delete an extension set
-.. index:: rtems_extension_delete
 
 CALLING SEQUENCE:
     .. code-block:: c

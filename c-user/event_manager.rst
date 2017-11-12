@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: events
+
 Event Manager
 *************
-
-.. index:: events
 
 Introduction
 ============
@@ -21,11 +21,12 @@ and synchronization.  The directives provided by the event manager are:
 Background
 ==========
 
-Event Sets
-----------
 .. index:: event flag, definition
 .. index:: event set, definition
 .. index:: rtems_event_set
+
+Event Sets
+----------
 
 An event flag is used by a task (or ISR) to inform another task of the
 occurrence of a significant situation.  Thirty-two event flags are associated
@@ -59,10 +60,11 @@ condition is satisfied when at least a single requested event is posted.  The
 ``RTEMS_EVENT_ALL`` algorithm states that an event condition is satisfied when
 every requested event is posted.
 
-Building an Event Set or Condition
-----------------------------------
 .. index:: event condition, building
 .. index:: event set, building
+
+Building an Event Set or Condition
+----------------------------------
 
 An event set or condition is built by a bitwise OR of the desired events.  The
 set of valid events is ``RTEMS_EVENT_0`` through ``RTEMS_EVENT_31``.  If an
@@ -181,11 +183,11 @@ related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_event_send:
+.. index:: send event set to a task
+.. index:: rtems_event_send
 
 EVENT_SEND - Send event set to a task
 -------------------------------------
-.. index:: send event set to a task
-.. index:: rtems_event_send
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -232,11 +234,11 @@ NOTES:
    \clearpage
 
 .. _rtems_event_receive:
+.. index:: receive event condition
+.. index:: rtems_event_receive
 
 EVENT_RECEIVE - Receive event condition
 ---------------------------------------
-.. index:: receive event condition
-.. index:: rtems_event_receive
 
 CALLING SEQUENCE:
     .. code-block:: c

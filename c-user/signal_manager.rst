@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: signals
+
 Signal Manager
 **************
-
-.. index:: signals
 
 Introduction
 ============
@@ -22,10 +22,11 @@ communication.  The directives provided by the signal manager are:
 Background
 ==========
 
-Signal Manager Definitions
---------------------------
 .. index:: asynchronous signal routine
 .. index:: ASR
+
+Signal Manager Definitions
+--------------------------
 
 The signal manager allows a task to optionally define an asynchronous signal
 routine (ASR).  An ASR is to a task what an ISR is to an application's set of
@@ -46,10 +47,11 @@ A signal set is posted when it is directed (or sent) to a task. A pending
 signal is a signal that has been sent to a task with a valid ASR, but has not
 been processed by that task's ASR.
 
-A Comparison of ASRs and ISRs
------------------------------
 .. index:: ASR vs. ISR
 .. index:: ISR vs. ASR
+
+A Comparison of ASRs and ISRs
+-----------------------------
 
 The format of an ASR is similar to that of an ISR with the following
 exceptions:
@@ -66,9 +68,10 @@ exceptions:
 - An ASR has a task mode which can be different from that of the task.  An ISR
   does not execute as a task and, as a result, does not have a task mode.
 
+.. index:: signal set, building
+
 Building a Signal Set
 ---------------------
-.. index:: signal set, building
 
 A signal set is built by a bitwise OR of the desired signals.  The set of valid
 signals is ``RTEMS_SIGNAL_0`` through ``RTEMS_SIGNAL_31``.  If a signal is not
@@ -82,9 +85,10 @@ consisting of ``RTEMS_SIGNAL_6``, ``RTEMS_SIGNAL_15``, and ``RTEMS_SIGNAL_31``.
 The signal parameter provided to the ``rtems_signal_send`` directive should be
 ``RTEMS_SIGNAL_6 | RTEMS_SIGNAL_15 | RTEMS_SIGNAL_31``.
 
+.. index:: ASR mode, building
+
 Building an ASR Mode
 --------------------
-.. index:: ASR mode, building
 
 In general, an ASR's mode is built by a bitwise OR of the desired mode
 components.  The set of valid mode components is the same as those allowed with
@@ -175,6 +179,8 @@ sending the same signal multiple times to a task (without any intermediate
 signal processing occurring for the task), has the same result as sending that
 signal to that task once.
 
+.. index:: rtems_asr
+
 Processing an ASR
 -----------------
 
@@ -184,8 +190,6 @@ hardware interrupts.  As a result, the differences between the formats of ASRs
 and ISRs is limited to the meaning of the single argument passed to an ASR.
 The ASR should have the following calling sequence and adhere to C calling
 conventions:
-
-.. index:: rtems_asr
 
 .. code-block:: c
 
@@ -208,12 +212,12 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_signal_catch:
-
-SIGNAL_CATCH - Establish an ASR
--------------------------------
 .. index:: establish an ASR
 .. index:: install an ASR
 .. index:: rtems_signal_catch
+
+SIGNAL_CATCH - Establish an ASR
+-------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -269,11 +273,11 @@ NOTES:
    \clearpage
 
 .. _rtems_signal_send:
+.. index:: send signal set
+.. index:: rtems_signal_send
 
 SIGNAL_SEND - Send signal set to a task
 ---------------------------------------
-.. index:: send signal set
-.. index:: rtems_signal_send
 
 CALLING SEQUENCE:
     .. code-block:: c

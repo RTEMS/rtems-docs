@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: tasks
+
 Task Manager
 ************
-
-.. index:: tasks
 
 Introduction
 ============
@@ -56,9 +56,10 @@ and administer tasks.  The directives provided by the task manager are:
 Background
 ==========
 
+.. index:: task, definition
+
 Task Definition
 ---------------
-.. index:: task, definition
 
 Many definitions of a task have been proposed in computer literature.
 Unfortunately, none of these definitions encompasses all facets of the concept
@@ -102,9 +103,10 @@ regains control of the processor, its context is restored from the TCB.  When a
 task is restarted, the initial state of the task is restored from the starting
 context area in the task's TCB.
 
+.. index:: task name
+
 Task Name
 ---------
-.. index:: task name
 
 By default, the task name is defined by the task object name given to
 :ref:`rtems_task_create() <rtems_task_create>`.  The task name can be obtained
@@ -116,9 +118,10 @@ The maximum size of a task name is defined by the application configuration
 option :ref:`CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 <CONFIGURE_MAXIMUM_THREAD_NAME_SIZE>`.
 
+.. index:: task states
+
 Task States
 -----------
-.. index:: task states
 
 A task may exist in one of the following five states:
 
@@ -140,11 +143,12 @@ tasks appear to execute in parallel, but actually each is dispatched to the CPU
 for periods of time determined by the RTEMS scheduling algorithm.  The
 scheduling of a task is based on its current state and priority.
 
-Task Priority
--------------
 .. index:: task priority
 .. index:: priority, task
 .. index:: rtems_task_priority
+
+Task Priority
+-------------
 
 A task's priority determines its importance in relation to the other tasks
 executing on the same processor.  RTEMS supports 255 levels of priority ranging
@@ -164,10 +168,11 @@ Priorities are used by the scheduler to determine which ready task will be
 allowed to execute.  In general, the higher the logical priority of a task, the
 more likely it is to receive processor execution time.
 
-Task Mode
----------
 .. index:: task mode
 .. index:: rtems_task_mode
+
+Task Mode
+---------
 
 A task's execution mode is a combination of the following four components:
 
@@ -242,10 +247,11 @@ the task will execute at interrupt level n.
 The set of default modes may be selected by specifying the
 ``RTEMS_DEFAULT_MODES`` constant.
 
-Accessing Task Arguments
-------------------------
 .. index:: task arguments
 .. index:: task prototype
+
+Accessing Task Arguments
+------------------------
 
 All RTEMS tasks are invoked with a single argument which is specified when they
 are started or restarted.  The argument is commonly used to communicate startup
@@ -263,9 +269,10 @@ accesses it argument is:
 Application tasks requiring more information may view this single argument as
 an index into an array of parameter blocks.
 
+.. index:: floating point
+
 Floating Point Considerations
 -----------------------------
-.. index:: floating point
 
 Creating a task with the ``RTEMS_FLOATING_POINT`` attribute flag results in
 additional memory being allocated for the TCB to store the state of the numeric
@@ -313,9 +320,10 @@ consequence of a ``RTEMS_NO_FLOATING_POINT`` task attempting to access the
 floating point unit is CPU dependent but will generally result in an exception
 condition.
 
+.. index:: task attributes, building
+
 Building a Task Attribute Set
 -----------------------------
-.. index:: task attributes, building
 
 In general, an attribute set is built by a bitwise OR of the desired
 components.  The set of valid task attribute components is listed below:
@@ -347,9 +355,10 @@ attribute_set parameter can be set to ``RTEMS_FLOATING_POINT`` because
 and used the numeric coprocessor, then the attribute_set parameter would be
 ``RTEMS_GLOBAL | RTEMS_FLOATING_POINT``.
 
+.. index:: task mode, building
+
 Building a Mode and Mask
 ------------------------
-.. index:: task mode, building
 
 In general, a mode and its corresponding mask is built by a bitwise OR of the
 desired components.  The set of valid mode constants and each mode's
@@ -547,11 +556,11 @@ It is important to note that the ``cpuset`` is not validated until the
 ``rtems_task_set_affinity`` call is made. At that point, it is validated
 against the current system configuration.
 
-Transition Advice for Obsolete Notepads
----------------------------------------
-
 .. index:: rtems_task_get_note
 .. index:: rtems_task_set_note
+
+Transition Advice for Obsolete Notepads
+---------------------------------------
 
 Task notepads and the associated directives :ref:`rtems_task_get_note` and
 :ref:`rtems_task_set_note` were removed in RTEMS 5.1. These were never
@@ -564,12 +573,12 @@ over the key (e.g. notepad index) selection. For most applications, POSIX Keys
 should be used. These are available in all RTEMS build configurations. It is
 also possible that thread-local storage (TLS) is an option for some use cases.
 
-Transition Advice for Obsolete Task Variables
----------------------------------------------
-
 .. index:: rtems_task_variable_add
 .. index:: rtems_task_variable_get
 .. index:: rtems_task_variable_delete
+
+Transition Advice for Obsolete Task Variables
+---------------------------------------------
 
 Task notepads and the associated directives :ref:`rtems_task_variable_add`,
 :ref:`rtems_task_variable_get` and :ref:`rtems_task_variable_delete` were
@@ -590,11 +599,11 @@ related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_task_create:
+.. index:: create a task
+.. index:: rtems_task_create
 
 TASK_CREATE - Create a task
 ---------------------------
-.. index:: create a task
-.. index:: rtems_task_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -735,11 +744,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_ident:
+.. index:: get ID of a task
+.. index:: rtems_task_ident
 
 TASK_IDENT - Get ID of a task
 -----------------------------
-.. index:: get ID of a task
-.. index:: rtems_task_ident
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -789,11 +798,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_self:
+.. index:: obtain ID of caller
+.. index:: rtems_task_self
 
 TASK_SELF - Obtain ID of caller
 -------------------------------
-.. index:: obtain ID of caller
-.. index:: rtems_task_self
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -815,11 +824,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_start:
+.. index:: starting a task
+.. index:: rtems_task_start
 
 TASK_START - Start a task
 -------------------------
-.. index:: starting a task
-.. index:: rtems_task_start
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -869,11 +878,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_restart:
+.. index:: restarting a task
+.. index:: rtems_task_restart
 
 TASK_RESTART - Restart a task
 -----------------------------
-.. index:: restarting a task
-.. index:: rtems_task_restart
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -931,11 +940,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_delete:
+.. index:: deleting a task
+.. index:: rtems_task_delete
 
 TASK_DELETE - Delete a task
 ---------------------------
-.. index:: deleting a task
-.. index:: rtems_task_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -987,11 +996,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_suspend:
+.. index:: suspending a task
+.. index:: rtems_task_suspend
 
 TASK_SUSPEND - Suspend a task
 -----------------------------
-.. index:: suspending a task
-.. index:: rtems_task_suspend
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1034,11 +1043,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_resume:
+.. index:: resuming a task
+.. index:: rtems_task_resume
 
 TASK_RESUME - Resume a task
 ---------------------------
-.. index:: resuming a task
-.. index:: rtems_task_resume
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1079,11 +1088,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_is_suspended:
+.. index:: is task suspended
+.. index:: rtems_task_is_suspended
 
 TASK_IS_SUSPENDED - Determine if a task is Suspended
 ----------------------------------------------------
-.. index:: is task suspended
-.. index:: rtems_task_is_suspended
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1117,14 +1126,14 @@ NOTES:
    \clearpage
 
 .. _rtems_task_set_priority:
-
-TASK_SET_PRIORITY - Set task priority
--------------------------------------
 .. index:: rtems_task_set_priority
 .. index:: current task priority
 .. index:: set task priority
 .. index:: get task priority
 .. index:: obtain task priority
+
+TASK_SET_PRIORITY - Set task priority
+-------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1181,13 +1190,13 @@ NOTES:
    \clearpage
 
 .. _rtems_task_get_priority:
-
-TASK_GET_PRIORITY - Get task priority
--------------------------------------
 .. index:: rtems_task_get_priority
 .. index:: current task priority
 .. index:: get task priority
 .. index:: obtain task priority
+
+TASK_GET_PRIORITY - Get task priority
+-------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1230,9 +1239,6 @@ NOTES:
    \clearpage
 
 .. _rtems_task_mode:
-
-TASK_MODE - Change the current task mode
-----------------------------------------
 .. index:: current task mode
 .. index:: set task mode
 .. index:: get task mode
@@ -1240,6 +1246,9 @@ TASK_MODE - Change the current task mode
 .. index:: get task preemption mode
 .. index:: obtain task mode
 .. index:: rtems_task_mode
+
+TASK_MODE - Change the current task mode
+----------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1309,12 +1318,12 @@ NOTES:
    \clearpage
 
 .. _rtems_task_wake_after:
-
-TASK_WAKE_AFTER - Wake up after interval
-----------------------------------------
 .. index:: delay a task for an interval
 .. index:: wake up after an interval
 .. index:: rtems_task_wake_after
+
+TASK_WAKE_AFTER - Wake up after interval
+----------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1352,12 +1361,12 @@ NOTES:
    \clearpage
 
 .. _rtems_task_wake_when:
-
-TASK_WAKE_WHEN - Wake up when specified
----------------------------------------
 .. index:: delay a task until a wall time
 .. index:: wake up at a wall time
 .. index:: rtems_task_wake_when
+
+TASK_WAKE_WHEN - Wake up when specified
+---------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1608,11 +1617,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_iterate:
+.. index:: iterate over all threads
+.. index:: rtems_task_iterate
 
 TASK_ITERATE - Iterate Over Tasks
 ---------------------------------
-.. index:: iterate over all threads
-.. index:: rtems_task_iterate
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1650,10 +1659,10 @@ Deprecated and Removed Directives
    \clearpage
 
 .. _rtems_iterate_over_all_threads:
+.. index:: rtems_iterate_over_all_threads
 
 ITERATE_OVER_ALL_THREADS - Iterate Over Tasks
 ---------------------------------------------
-.. index:: rtems_iterate_over_all_threads
 
 .. warning::
 
@@ -1689,11 +1698,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_get_note:
+.. index:: get task notepad entry
+.. index:: rtems_task_get_note
 
 TASK_GET_NOTE - Get task notepad entry
 --------------------------------------
-.. index:: get task notepad entry
-.. index:: rtems_task_get_note
 
 .. warning::
 
@@ -1742,11 +1751,11 @@ NOTES:
    \clearpage
 
 .. _rtems_task_set_note:
+.. index:: set task notepad entry
+.. index:: rtems_task_set_note
 
 TASK_SET_NOTE - Set task notepad entry
 --------------------------------------
-.. index:: set task notepad entry
-.. index:: rtems_task_set_note
 
 .. warning::
 
@@ -1794,13 +1803,13 @@ NOTES:
    \clearpage
 
 .. _rtems_task_variable_add:
-
-TASK_VARIABLE_ADD - Associate per task variable
------------------------------------------------
 .. index:: per-task variable
 .. index:: task private variable
 .. index:: task private data
 .. index:: rtems_task_variable_add
+
+TASK_VARIABLE_ADD - Associate per task variable
+-----------------------------------------------
 
 .. warning::
 
@@ -1857,12 +1866,12 @@ NOTES:
    \clearpage
 
 .. _rtems_task_variable_get:
-
-TASK_VARIABLE_GET - Obtain value of a per task variable
--------------------------------------------------------
 .. index:: get per-task variable
 .. index:: obtain per-task variable
 .. index:: rtems_task_variable_get
+
+TASK_VARIABLE_GET - Obtain value of a per task variable
+-------------------------------------------------------
 
 .. warning::
 
@@ -1914,13 +1923,13 @@ NOTES:
    \clearpage
 
 .. _rtems_task_variable_delete:
-
-TASK_VARIABLE_DELETE - Remove per task variable
------------------------------------------------
 .. index:: per-task variable
 .. index:: task private variable
 .. index:: task private data
 .. index:: rtems_task_variable_delete
+
+TASK_VARIABLE_DELETE - Remove per task variable
+-----------------------------------------------
 
 .. warning::
 

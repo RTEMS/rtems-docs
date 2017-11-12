@@ -5,6 +5,9 @@
 .. COMMENT: Copyright (c) 2017 embedded brains GmbH.
 .. COMMENT: All rights reserved.
 
+.. index:: Symmetric Multiprocessing
+.. index:: SMP
+
 Symmetric Multiprocessing (SMP)
 *******************************
 
@@ -124,10 +127,11 @@ when a task switch occurred at just the wrong moment. Now there are N-1 tasks
 executing in parallel all the time and this results in many more opportunities
 for small windows in critical sections to be hit.
 
-Task Affinity
--------------
 .. index:: task affinity
 .. index:: thread affinity
+
+Task Affinity
+-------------
 
 RTEMS provides services to manipulate the affinity of a task. Affinity is used
 to specify the subset of processors in an SMP system on which a particular task
@@ -144,10 +148,11 @@ not support affinity, it is likely to ignore all attempts to set affinity.
 The scheduler with support for arbitary processor affinities uses a proof of
 concept implementation.  See https://devel.rtems.org/ticket/2510.
 
-Task Migration
---------------
 .. index:: task migration
 .. index:: thread migration
+
+Task Migration
+--------------
 
 With more than one processor in the system tasks can migrate from one processor
 to another.  There are four reasons why tasks migrate in RTEMS.

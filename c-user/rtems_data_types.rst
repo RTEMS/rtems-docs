@@ -4,6 +4,9 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: RTEMS Data Types
+.. index:: data types
+
 RTEMS Data Types
 ****************
 

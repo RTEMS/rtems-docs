@@ -4,13 +4,13 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-Semaphore Manager
-*****************
-
 .. index:: semaphores
 .. index:: binary semaphores
 .. index:: counting semaphores
 .. index:: mutual exclusion
+
+Semaphore Manager
+*****************
 
 Introduction
 ============
@@ -325,11 +325,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_semaphore_create:
+.. index:: create a semaphore
+.. index:: rtems_semaphore_create
 
 SEMAPHORE_CREATE - Create a semaphore
 -------------------------------------
-.. index:: create a semaphore
-.. index:: rtems_semaphore_create
 
 
 CALLING SEQUENCE:
@@ -437,13 +437,12 @@ NOTES:
    \clearpage
 
 .. _rtems_semaphore_ident:
+.. index:: get ID of a semaphore
+.. index:: obtain ID of a semaphore
+.. index:: rtems_semaphore_ident
 
 SEMAPHORE_IDENT - Get ID of a semaphore
 ---------------------------------------
-.. index:: get ID of a semaphore
-.. index:: obtain ID of a semaphore
-
-.. index:: rtems_semaphore_ident
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -490,11 +489,11 @@ NOTES:
    \clearpage
 
 .. _rtems_semaphore_delete:
+.. index:: delete a semaphore
+.. index:: rtems_semaphore_delete
 
 SEMAPHORE_DELETE - Delete a semaphore
 -------------------------------------
-.. index:: delete a semaphore
-.. index:: rtems_semaphore_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -546,12 +545,12 @@ NOTES:
    \clearpage
 
 .. _rtems_semaphore_obtain:
-
-SEMAPHORE_OBTAIN - Acquire a semaphore
---------------------------------------
 .. index:: obtain a semaphore
 .. index:: lock a semaphore
 .. index:: rtems_semaphore_obtain
+
+SEMAPHORE_OBTAIN - Acquire a semaphore
+--------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -645,12 +644,12 @@ NOTES:
    \clearpage
 
 .. _rtems_semaphore_release:
-
-SEMAPHORE_RELEASE - Release a semaphore
----------------------------------------
 .. index:: release a semaphore
 .. index:: unlock a semaphore
 .. index:: rtems_semaphore_release
+
+SEMAPHORE_RELEASE - Release a semaphore
+---------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -706,12 +705,12 @@ NOTES:
    \clearpage
 
 .. _rtems_semaphore_flush:
-
-SEMAPHORE_FLUSH - Unblock all tasks waiting on a semaphore
-----------------------------------------------------------
 .. index:: flush a semaphore
 .. index:: unblock all tasks waiting on a semaphore
 .. index:: rtems_semaphore_flush
+
+SEMAPHORE_FLUSH - Unblock all tasks waiting on a semaphore
+----------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -762,11 +761,11 @@ NOTES:
    \clearpage
 
 .. _rtems_semaphore_set_priority:
+.. index:: set priority by scheduler for a semaphore
+.. index:: rtems_semaphore_set_priority
 
 SEMAPHORE_SET_PRIORITY - Set priority by scheduler for a semaphore
 ------------------------------------------------------------------
-.. index:: set priority by scheduler for a semaphore
-.. index:: rtems_semaphore_set_priority
 
 CALLING SEQUENCE:
     .. code-block:: c

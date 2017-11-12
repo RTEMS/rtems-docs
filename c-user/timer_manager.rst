@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: timers
+
 Timer Manager
 *************
-
-.. index:: timers
 
 Introduction
 ============
@@ -84,13 +84,13 @@ service routine finished its work.
 The Timer Server is designed to remain blocked until a task-based timer fires.
 This reduces the execution overhead of the Timer Server.
 
+.. index:: rtems_timer_service_routine
+
 Timer Service Routines
 ----------------------
 
 The timer service routine should adhere to C calling conventions and have a
 prototype similar to the following:
-
-.. index:: rtems_timer_service_routine
 
 .. code-block:: c
 
@@ -195,11 +195,11 @@ related constants, usage, and status codes.
 
    \clearpage
 .. _rtems_timer_create:
+.. index:: create a timer
+.. index:: rtems_timer_create
 
 TIMER_CREATE - Create a timer
 -----------------------------
-.. index:: create a timer
-.. index:: rtems_timer_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -241,11 +241,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_ident:
+.. index:: obtain the ID of a timer
+.. index:: rtems_timer_ident
 
 TIMER_IDENT - Get ID of a timer
 -------------------------------
-.. index:: obtain the ID of a timer
-.. index:: rtems_timer_ident
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -281,11 +281,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_cancel:
+.. index:: cancel a timer
+.. index:: rtems_timer_cancel
 
 TIMER_CANCEL - Cancel a timer
 -----------------------------
-.. index:: cancel a timer
-.. index:: rtems_timer_cancel
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -316,11 +316,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_delete:
+.. index:: delete a timer
+.. index:: rtems_timer_delete
 
 TIMER_DELETE - Delete a timer
 -----------------------------
-.. index:: delete a timer
-.. index:: rtems_timer_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -355,11 +355,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_fire_after:
+.. index:: fire a timer after an interval
+.. index:: rtems_timer_fire_after
 
 TIMER_FIRE_AFTER - Fire timer after interval
 --------------------------------------------
-.. index:: fire a timer after an interval
-.. index:: rtems_timer_fire_after
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -399,11 +399,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_fire_when:
+.. index:: fire a timer at wall time
+.. index:: rtems_timer_fire_when
 
 TIMER_FIRE_WHEN - Fire timer when specified
 -------------------------------------------
-.. index:: fire a timer at wall time
-.. index:: rtems_timer_fire_when
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -447,11 +447,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_initiate_server:
+.. index:: initiate the Timer Server
+.. index:: rtems_timer_initiate_server
 
 TIMER_INITIATE_SERVER - Initiate server for task-based timers
 -------------------------------------------------------------
-.. index:: initiate the Timer Server
-.. index:: rtems_timer_initiate_server
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -492,11 +492,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_server_fire_after:
+.. index:: fire task-based a timer after an interval
+.. index:: rtems_timer_server_fire_after
 
 TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
 --------------------------------------------------------------
-.. index:: fire task-based a timer after an interval
-.. index:: rtems_timer_server_fire_after
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -540,11 +540,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_server_fire_when:
+.. index:: fire a task-based timer at wall time
+.. index:: rtems_timer_server_fire_when
 
 TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
 -------------------------------------------------------------
-.. index:: fire a task-based timer at wall time
-.. index:: rtems_timer_server_fire_when
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -592,11 +592,11 @@ NOTES:
    \clearpage
 
 .. _rtems_timer_reset:
+.. index:: reset a timer
+.. index:: rtems_timer_reset
 
 TIMER_RESET - Reset an interval timer
 -------------------------------------
-.. index:: reset a timer
-.. index:: rtems_timer_reset
 
 CALLING SEQUENCE:
     .. code-block:: c

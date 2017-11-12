@@ -92,9 +92,10 @@ field in this data structure is the number of seconds since the POSIX epoch of
 *January 1, 1970* but will never be prior to the RTEMS epoch of *January 1,
 1988*.
 
+.. index:: timeslicing
+
 Clock Tick and Timeslicing
 --------------------------
-.. index:: timeslicing
 
 Timeslicing is a task scheduling discipline in which tasks of equal priority
 are executed for a specific period of time before control of the CPU is passed
@@ -111,9 +112,10 @@ running task's time-remaining counter when both timeslicing and preemption are
 enabled.  If the task's timeslice has expired, then that task will be preempted
 if there exists a ready task of equal priority.
 
+.. index:: delays
+
 Delays
 ------
-.. index:: delays
 
 A sleep timer allows a task to delay for a given interval or up until a given
 time, and then wake and continue execution.  This type of timer is created
@@ -122,9 +124,10 @@ directives and, as a result, does not have an RTEMS ID.  Once activated, a
 sleep timer cannot be explicitly deleted.  Each task may activate one and only
 one sleep timer at a time.
 
+.. index:: timeouts
+
 Timeouts
 --------
-.. index:: timeouts
 
 Timeouts are a special type of timer automatically created when the timeout
 option is used on the ``rtems_message_queue_receive``, ``rtems_event_receive``,
@@ -183,10 +186,10 @@ RTEMS provides multiple directives which can be used by an application to obtain
 Calendar time operations will return an error code if invoked before the date
 and time have been set.
 
+.. index:: rtems_clock_get
+
 Transition Advice for the Obsolete rtems_clock_get
 --------------------------------------------------
-
-.. index:: rtems_clock_get
 
 The method ``rtems_clock_get`` took an untyped pointer with an
 options argument to indicate the time information desired. This has
@@ -211,10 +214,11 @@ related constants, usage, and status codes.
 
 .. _rtems_clock_set:
 
-CLOCK_SET - Set date and time
------------------------------
 .. index:: set the time of day
 .. index:: rtems_clock_set
+
+CLOCK_SET - Set date and time
+-----------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -260,10 +264,11 @@ NOTES:
 
 .. _rtems_clock_get_tod:
 
-CLOCK_GET_TOD - Get date and time in TOD format
------------------------------------------------
 .. index:: obtain the time of day
 .. index:: rtems_clock_get_tod
+
+CLOCK_GET_TOD - Get date and time in TOD format
+-----------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -303,10 +308,11 @@ NOTES:
 
 .. _rtems_clock_get_tod_timeval:
 
-CLOCK_GET_TOD_TIMEVAL - Get date and time in timeval format
------------------------------------------------------------
 .. index:: obtain the time of day
 .. index:: rtems_clock_get_tod_timeval
+
+CLOCK_GET_TOD_TIMEVAL - Get date and time in timeval format
+-----------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -346,10 +352,11 @@ NOTES:
 
 .. _rtems_clock_get_seconds_since_epoch:
 
-CLOCK_GET_SECONDS_SINCE_EPOCH - Get seconds since epoch
--------------------------------------------------------
 .. index:: obtain seconds since epoch
 .. index:: rtems_clock_get_seconds_since_epoch
+
+CLOCK_GET_SECONDS_SINCE_EPOCH - Get seconds since epoch
+-------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -389,10 +396,11 @@ NOTES:
 
 .. _rtems_clock_get_ticks_per_second:
 
-CLOCK_GET_TICKS_PER_SECOND - Get ticks per second
--------------------------------------------------
 .. index:: obtain seconds since epoch
 .. index:: rtems_clock_get_ticks_per_second
+
+CLOCK_GET_TICKS_PER_SECOND - Get ticks per second
+-------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -418,11 +426,12 @@ NOTES:
 
 .. _rtems_clock_get_ticks_since_boot:
 
-CLOCK_GET_TICKS_SINCE_BOOT - Get current ticks counter value
-------------------------------------------------------------
 .. index:: obtain ticks since boot
 .. index:: get current ticks counter value
 .. index:: rtems_clock_get_ticks_since_boot
+
+CLOCK_GET_TICKS_SINCE_BOOT - Get current ticks counter value
+------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -452,9 +461,10 @@ NOTES:
 
 .. _rtems_clock_tick_later:
 
+.. index:: rtems_clock_tick_later
+
 CLOCK_TICK_LATER - Get tick value in the future
 -----------------------------------------------
-.. index:: rtems_clock_tick_later
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -477,9 +487,10 @@ NOTES:
 
 .. _rtems_clock_tick_later_usec:
 
+.. index:: rtems_clock_tick_later_usec
+
 CLOCK_TICK_LATER_USEC - Get tick value in the future in microseconds
 --------------------------------------------------------------------
-.. index:: rtems_clock_tick_later_usec
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -502,9 +513,10 @@ NOTES:
 
 .. _rtems_clock_tick_before:
 
+.. index:: rtems_clock_tick_before
+
 CLOCK_TICK_BEFORE - Is tick value is before a point in time
 -----------------------------------------------------------
-.. index:: rtems_clock_tick_before
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -542,11 +554,12 @@ EXAMPLE:
 
 .. _rtems_clock_get_uptime:
 
-CLOCK_GET_UPTIME - Get the time since boot
-------------------------------------------
 .. index:: clock get uptime
 .. index:: uptime
 .. index:: rtems_clock_get_uptime
+
+CLOCK_GET_UPTIME - Get the time since boot
+------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -577,11 +590,12 @@ NOTES:
 
 .. _rtems_clock_get_uptime_timeval:
 
-CLOCK_GET_UPTIME_TIMEVAL - Get the time since boot in timeval format
---------------------------------------------------------------------
 .. index:: clock get uptime interval
 .. index:: uptime
 .. index:: rtems_clock_get_uptime_timeval
+
+CLOCK_GET_UPTIME_TIMEVAL - Get the time since boot in timeval format
+--------------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -607,11 +621,12 @@ NOTES:
 
 .. _rtems_clock_get_uptime_seconds:
 
-CLOCK_GET_UPTIME_SECONDS - Get the seconds since boot
------------------------------------------------------
 .. index:: clock get uptime seconds
 .. index:: uptime
 .. index:: rtems_clock_get_uptime_seconds
+
+CLOCK_GET_UPTIME_SECONDS - Get the seconds since boot
+-----------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -633,11 +648,12 @@ NOTES:
 
 .. _rtems_clock_get_uptime_nanoseconds:
 
-CLOCK_GET_UPTIME_NANOSECONDS - Get the nanoseconds since boot
--------------------------------------------------------------
 .. index:: clock get nanoseconds uptime
 .. index:: uptime
 .. index:: rtems_clock_get_uptime_nanoseconds
+
+CLOCK_GET_UPTIME_NANOSECONDS - Get the nanoseconds since boot
+-------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

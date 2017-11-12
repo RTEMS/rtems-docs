@@ -4,11 +4,11 @@
 .. COMMENT: Aeroflex Gaisler AB
 .. COMMENT: All rights reserved.
 
+.. index:: PCI
+.. index:: libpci
 
 PCI Library
 ***********
-
-.. index:: libpci
 
 Introduction
 ============
@@ -390,6 +390,8 @@ this is mosly for debugging or for development systems. When the product is
 finally deployed macros switch to using the inline functions instead which have
 been configured for the correct endianness.
 
+.. index:: PCI address translation
+
 PCI address translation
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -407,6 +409,8 @@ different PCI spaces/regions.
 
     /* Translate CPU accessible address into PCI address (for DMA) */
     static inline int pci_cpu2pci(uint32_t *address, int type);
+
+.. index:: PCI Interrupt
 
 PCI Interrupt
 -------------

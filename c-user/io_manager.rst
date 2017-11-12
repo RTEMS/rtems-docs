@@ -4,11 +4,11 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-I/O Manager
-***********
-
 .. index:: device drivers
 .. index:: IO Manager
+
+I/O Manager
+***********
 
 Introduction
 ============
@@ -40,9 +40,10 @@ drivers.  The directives provided by the I/O manager are:
 Background
 ==========
 
+.. index:: Device Driver Table
+
 Device Driver Table
 -------------------
-.. index:: Device Driver Table
 
 Each application utilizing the RTEMS I/O manager must specify the address of a
 Device Driver Table in its Configuration Table. This table contains each device
@@ -73,10 +74,11 @@ table.
 The :file:`confdefs.h` entry ``CONFIGURE_MAXIMUM_DRIVERS`` configures the
 number of driver slots available to the application.
 
-Major and Minor Device Numbers
-------------------------------
 .. index:: major device number
 .. index:: minor device number
+
+Major and Minor Device Numbers
+------------------------------
 
 Each call to the I/O manager must provide a device's major and minor numbers as
 arguments.  The major number is the index of the requested driver's entry
@@ -91,9 +93,10 @@ driver.
 The data types ``rtems_device_major_number`` and ``rtems_device_minor_number``
 are used to manipulate device major and minor numbers, respectively.
 
+.. index:: device names
+
 Device Names
 ------------
-.. index:: device names
 
 The I/O Manager provides facilities to associate a name with a particular
 device.  Directives are provided to register the name of a device and to look
@@ -122,9 +125,10 @@ Although the RTEMS I/O manager provides a framework for device drivers, it
 makes no assumptions regarding the construction or operation of a device
 driver.
 
+.. index:: runtime driver registration
+
 Runtime Driver Registration
 ---------------------------
-.. index:: runtime driver registration
 
 Board support package and application developers can select wether a device
 driver is statically entered into the default device table or registered at
@@ -144,9 +148,10 @@ Dynamic registration helps applications where:
 
 - Support for runtime loadable driver modules.
 
+.. index:: device driver interface
+
 Device Driver Interface
 -----------------------
-.. index:: device driver interface
 
 When an application invokes an I/O manager directive, RTEMS determines which
 device driver entry point must be invoked.  The information passed by the
@@ -226,11 +231,11 @@ related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_io_register_driver:
+.. index:: register a device driver
+.. index:: rtems_io_register_driver
 
 IO_REGISTER_DRIVER - Register a device driver
 ---------------------------------------------
-.. index:: register a device driver
-.. index:: rtems_io_register_driver
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -284,11 +289,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_unregister_driver:
+.. index:: unregister a device driver
+.. index:: rtems_io_unregister_driver
 
 IO_UNREGISTER_DRIVER - Unregister a device driver
 -------------------------------------------------
-.. index:: unregister a device driver
-.. index:: rtems_io_unregister_driver
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -317,11 +322,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_initialize:
+.. index:: initialize a device driver
+.. index:: rtems_io_initialize
 
 IO_INITIALIZE - Initialize a device driver
 ------------------------------------------
-.. index:: initialize a device driver
-.. index:: rtems_io_initialize
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -360,11 +365,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_register_name:
+.. index:: register device
+.. index:: rtems_io_register_name
 
 IO_REGISTER_NAME - Register a device
 ------------------------------------
-.. index:: register device
-.. index:: rtems_io_register_name
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -395,11 +400,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_lookup_name:
+.. index:: lookup device major and minor number
+.. index:: rtems_io_lookup_name
 
 IO_LOOKUP_NAME - Lookup a device
 --------------------------------
-.. index:: lookup device major and minor number
-.. index:: rtems_io_lookup_name
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -430,11 +435,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_open:
+.. index:: open a devive
+.. index:: rtems_io_open
 
 IO_OPEN - Open a device
 -----------------------
-.. index:: open a devive
-.. index:: rtems_io_open
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -468,11 +473,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_close:
+.. index:: close a device
+.. index:: rtems_io_close
 
 IO_CLOSE - Close a device
 -------------------------
-.. index:: close a device
-.. index:: rtems_io_close
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -506,11 +511,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_read:
+.. index:: read from a device
+.. index:: rtems_io_read
 
 IO_READ - Read from a device
 ----------------------------
-.. index:: read from a device
-.. index:: rtems_io_read
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -545,11 +550,11 @@ NOTES:
    \clearpage
 
 .. _rtems_io_write:
+.. index:: write to a device
+.. index:: rtems_io_write
 
 IO_WRITE - Write to a device
 ----------------------------
-.. index:: write to a device
-.. index:: rtems_io_write
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -584,12 +589,12 @@ NOTES:
    \clearpage
 
 .. _rtems_io_control:
-
-IO_CONTROL - Special device services
-------------------------------------
 .. index:: special device services
 .. index:: IO Control
 .. index:: rtems_io_control
+
+IO_CONTROL - Special device services
+------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

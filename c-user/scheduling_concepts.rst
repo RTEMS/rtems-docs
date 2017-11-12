@@ -4,11 +4,11 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-Scheduling Concepts
-*******************
-
 .. index:: scheduling
 .. index:: task scheduling
+
+Scheduling Concepts
+*******************
 
 Introduction
 ============
@@ -39,10 +39,10 @@ The directives provided by the scheduler manager are:
 
 - rtems_scheduler_remove_processor_ - Remove processor from a scheduler
 
+.. index:: scheduling algorithms
+
 Scheduling Algorithms
 ---------------------
-
-.. index:: scheduling algorithms
 
 RTEMS provides a plugin framework which allows it to support multiple
 scheduling algorithms. RTEMS includes multiple scheduling algorithms and the
@@ -60,9 +60,10 @@ scheduling algorithm.  This scheduling algoritm is suitable for uniprocessor
 Scheduler*.  Unless the user configures another scheduling algorithm, RTEMS
 will use this on uniprocessor systems.
 
+.. index:: priority scheduling
+
 Priority Scheduling
 -------------------
-.. index:: priority scheduling
 
 When using priority based scheduling, RTEMS allocates the processor using a
 priority-based, preemptive algorithm augmented to provide round-robin
@@ -153,9 +154,10 @@ supporting a large number of tasks.
 
 This scheduler is only aware of a single core.
 
+.. index:: earliest deadline first scheduling
+
 Earliest Deadline First Scheduler
 ---------------------------------
-.. index:: earliest deadline first scheduling
 
 This is an alternative scheduler in RTEMS for single core applications.  The
 primary EDF advantage is high total CPU utilization (theoretically up to
@@ -185,9 +187,10 @@ period, it has to be finished until the end of this period. The call of
 deadline. Moreover, the ``rtems_rate_monotonic_cancel`` and
 ``rtems_rate_monotonic_delete`` calls clear the deadlines assigned to the task.
 
+.. index:: constant bandwidth server scheduling
+
 Constant Bandwidth Server Scheduling (CBS)
 ------------------------------------------
-.. index:: constant bandwidth server scheduling
 
 This is an alternative scheduler in RTEMS for single core applications.  The
 CBS is a budget aware extension of EDF scheduler. The main goal of this
@@ -264,10 +267,10 @@ levels).  This scheduler supports arbitrary task processor affinities.  The
 worst-case run-time complexity of some scheduler operations exceeds
 :math:`O(n)` while :math:`n` is the count of ready tasks.
 
+.. index:: scheduling mechanisms
+
 Scheduling Modification Mechanisms
 ==================================
-
-.. index:: scheduling mechanisms
 
 RTEMS provides four mechanisms which allow the user to alter the task
 scheduling decisions:
@@ -290,9 +293,10 @@ timeslicing and manual round-robin it is important to keep in mind that
 preemption (if enabled) of a task by higher priority tasks will occur as
 required, overriding the other factors presented in the description.
 
+.. index:: task priority
+
 Task Priority and Scheduling
 ----------------------------
-.. index:: task priority
 
 The most significant task scheduling modification mechanism is the ability for
 the user to assign a priority level to each individual task when it is created
@@ -301,9 +305,10 @@ on the configured scheduler.  A lower priority level means higher priority
 (higher importance).  The maximum priority level of the default uniprocessor
 scheduler is 255.
 
+.. index:: preemption
+
 Preemption
 ----------
-.. index:: preemption
 
 Another way the user can alter the basic scheduling algorithm is by
 manipulating the preemption mode flag (``RTEMS_PREEMPT_MASK``) of individual
@@ -314,10 +319,11 @@ higher priority levels will not be allowed to execute.  Note that the
 preemption setting has no effect on the manner in which a task is scheduled.
 It only applies once a task has control of the processor.
 
-Timeslicing
------------
 .. index:: timeslicing
 .. index:: round robin scheduling
+
+Timeslicing
+-----------
 
 Timeslicing or round-robin scheduling is an additional method which can be used
 to alter the basic scheduling algorithm.  Like preemption, timeslicing is
@@ -333,9 +339,10 @@ and continues to run.  Remember that a higher priority task will preempt the
 task (unless preemption is disabled) as soon as it is ready to run, even if the
 task has not used up its entire timeslice.
 
+.. index:: manual round robin
+
 Manual Round-Robin
 ------------------
-.. index:: manual round robin
 
 The final mechanism for altering the RTEMS scheduling algorithm is called
 manual round-robin.  Manual round-robin is invoked by using
@@ -345,9 +352,10 @@ immediately returned to the ready chain at the end of its priority group.  If
 no other tasks of the same priority are ready to run, then the task does not
 lose control of the processor.
 
+.. index:: dispatching
+
 Dispatching Tasks
 =================
-.. index:: dispatching
 
 The dispatcher is the RTEMS component responsible for allocating the processor
 to a ready task.  In order to allocate the processor to one task, it must be
@@ -370,9 +378,10 @@ unnecessary save and restore operations, the state of the numeric coprocessor
 is only saved when a ``RTEMS_FLOATING_POINT`` task is dispatched and that task
 was not the last task to utilize the coprocessor.
 
+.. index:: task state transitions
+
 Task State Transitions
 ======================
-.. index:: task state transitions
 
 Tasks in an RTEMS system must always be in one of the five allowable task
 states.  These states are: executing, ready, blocked, dormant, and

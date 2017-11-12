@@ -4,6 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: interrupts
+
 Interrupt Manager
 *****************
 
@@ -44,9 +46,10 @@ from an ISR.  The interrupt manager includes the following directive:
 Background
 ==========
 
+.. index:: interrupt processing
+
 Processing an Interrupt
 -----------------------
-.. index:: interrupt processing
 
 The interrupt manager allows the application to connect a function to a
 hardware interrupt vector.  When an interrupt occurs, the processor will
@@ -111,9 +114,10 @@ another ISR.  RTEMS supports efficient interrupt nesting by allowing the nested
 ISRs to terminate without performing any dispatch processing.  Only when the
 outermost ISR terminates will the postponed dispatching occur.
 
+.. index:: interrupt levels
+
 RTEMS Interrupt Levels
 ----------------------
-.. index:: interrupt levels
 
 Many processors support multiple interrupt levels or priorities.  The exact
 number of interrupt levels is processor dependent.  RTEMS internally supports
@@ -122,9 +126,10 @@ specific information on the mapping between RTEMS and the target processor's
 interrupt levels, refer to the Interrupt Processing chapter of the Applications
 Supplement document for a specific target processor.
 
+.. index:: disabling interrupts
+
 Disabling of Interrupts by RTEMS
 --------------------------------
-.. index:: disabling interrupts
 
 During the execution of directive calls, critical sections of code may be
 executed.  When these sections are encountered, RTEMS disables all maskable
@@ -264,12 +269,12 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_interrupt_catch:
-
-INTERRUPT_CATCH - Establish an ISR
-----------------------------------
 .. index:: establish an ISR
 .. index:: install an ISR
 .. index:: rtems_interrupt_catch
+
+INTERRUPT_CATCH - Establish an ISR
+----------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -308,11 +313,11 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_disable:
+.. index:: disable interrupts
+.. index:: rtems_interrupt_disable
 
 INTERRUPT_DISABLE - Disable Interrupts
 --------------------------------------
-.. index:: disable interrupts
-.. index:: rtems_interrupt_disable
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -346,11 +351,11 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_enable:
+.. index:: enable interrupts
+.. index:: rtems_interrupt_enable
 
 INTERRUPT_ENABLE - Enable Interrupts
 ------------------------------------
-.. index:: enable interrupts
-.. index:: rtems_interrupt_enable
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -381,11 +386,11 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_flash:
+.. index:: flash interrupts
+.. index:: rtems_interrupt_flash
 
 INTERRUPT_FLASH - Flash Interrupts
 ----------------------------------
-.. index:: flash interrupts
-.. index:: rtems_interrupt_flash
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -416,11 +421,11 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_local_disable:
+.. index:: disable interrupts
+.. index:: rtems_interrupt_local_disable
 
 INTERRUPT_LOCAL_DISABLE - Disable Interrupts on Current Processor
 -----------------------------------------------------------------
-.. index:: disable interrupts
-.. index:: rtems_interrupt_local_disable
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -453,11 +458,11 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_local_enable:
+.. index:: enable interrupts
+.. index:: rtems_interrupt_local_enable
 
 INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
 ---------------------------------------------------------------
-.. index:: enable interrupts
-.. index:: rtems_interrupt_local_enable
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -484,10 +489,10 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_lock_initialize:
+.. index:: rtems_interrupt_lock_initialize
 
 INTERRUPT_LOCK_INITIALIZE - Initialize an ISR Lock
 --------------------------------------------------
-.. index:: rtems_interrupt_lock_initialize
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -512,10 +517,10 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_lock_acquire:
+.. index:: rtems_interrupt_lock_acquire
 
 INTERRUPT_LOCK_ACQUIRE - Acquire an ISR Lock
 --------------------------------------------
-.. index:: rtems_interrupt_lock_acquire
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -547,10 +552,10 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_lock_release:
+.. index:: rtems_interrupt_lock_release
 
 INTERRUPT_LOCK_RELEASE - Release an ISR Lock
 --------------------------------------------
-.. index:: rtems_interrupt_lock_release
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -579,10 +584,10 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_lock_acquire_isr:
+.. index:: rtems_interrupt_lock_acquire_isr
 
 INTERRUPT_LOCK_ACQUIRE_ISR - Acquire an ISR Lock from ISR
 ---------------------------------------------------------
-.. index:: rtems_interrupt_lock_acquire_isr
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -617,10 +622,10 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_lock_release_isr:
+.. index:: rtems_interrupt_lock_release_isr
 
 INTERRUPT_LOCK_RELEASE_ISR - Release an ISR Lock from ISR
 ---------------------------------------------------------
-.. index:: rtems_interrupt_lock_release_isr
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -649,11 +654,11 @@ NOTES:
    \clearpage
 
 .. _rtems_interrupt_is_in_progress:
+.. index:: is interrupt in progress
+.. index:: rtems_interrupt_is_in_progress
 
 INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 ------------------------------------------------
-.. index:: is interrupt in progress
-.. index:: rtems_interrupt_is_in_progress
 
 CALLING SEQUENCE:
     .. code-block:: c

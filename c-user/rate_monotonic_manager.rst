@@ -5,11 +5,11 @@
 .. COMMENT: COPYRIGHT (c) 2017 Kuan-Hsun Chen.
 .. COMMENT: All rights reserved.
 
-Rate Monotonic Manager
-**********************
-
 .. index:: rate mononitonic tasks
 .. index:: periodic tasks
+
+Rate Monotonic Manager
+**********************
 
 Introduction
 ============
@@ -133,9 +133,10 @@ milliseconds every 100 (10 percent of the CPU).  As a general rule of thumb,
 the higher frequency at which a task executes, the more important it is to
 optimize that task.
 
+.. index:: periodic task, definition
+
 Periodicity Definitions
 ----------------------------------
-.. index:: periodic task, definition
 
 A periodic task is one which must be executed at a regular interval.  The
 interval between successive iterations of the task is referred to as its
@@ -165,10 +166,11 @@ joystick.  The mechanical action of the fire button ensures a minimum time
 period between successive activations, but the missile must be launched by a
 hard deadline.
 
-Rate Monotonic Scheduling Algorithm
------------------------------------
 .. index:: Rate Monotonic Scheduling Algorithm, definition
 .. index:: RMS Algorithm, definition
+
+Rate Monotonic Scheduling Algorithm
+-----------------------------------
 
 The Rate Monotonic Scheduling Algorithm (RMS) is important to real-time systems
 designers because it allows one to sufficiently guarantee that a set of tasks
@@ -229,10 +231,10 @@ highest priority non-critical task.  Although RMS may be used to assign
 priorities to the non-critical tasks, it is not necessary.  In this instance,
 schedulability is only guaranteed for the critical task set.
 
+.. index:: RMS schedulability analysis
+
 Schedulability Analysis
 -----------------------
-
-.. index:: RMS schedulability analysis
 
 RMS allows application designers to ensure that tasks can meet all deadlines under fixed-priority assignment,
 even under transient overload, without knowing exactly when any given task will
@@ -261,9 +263,10 @@ assumptions:
 Once the basic schedulability analysis is understood, some of the above
 assumptions can be relaxed and the side-effects accounted for.
 
+.. index:: RMS Processor Utilization Rule
+
 Processor Utilization Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. index:: RMS Processor Utilization Rule
 
 The Processor Utilization Rule requires that processor utilization be
 calculated based upon the period and execution time of each task.
@@ -312,9 +315,10 @@ upper bound of 3 * (2**(1/3) - 1), or 0.779, imposed by the Processor
 Utilization Rule.  Therefore, this task set is guaranteed to be schedulable
 using RMS.
 
+.. index:: RMS First Deadline Rule
+
 First Deadline Rule
 ^^^^^^^^^^^^^^^^^^^
-.. index:: RMS First Deadline Rule
 
 If a given set of tasks do exceed the processor utilization upper limit imposed
 by the Processor Utilization Rule, they can still be guaranteed to meet all
@@ -631,11 +635,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_rate_monotonic_create:
+.. index:: create a period
+.. index:: rtems_rate_monotonic_create
 
 RATE_MONOTONIC_CREATE - Create a rate monotonic period
 ------------------------------------------------------
-.. index:: create a period
-.. index:: rtems_rate_monotonic_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -671,12 +675,12 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_ident:
-
-RATE_MONOTONIC_IDENT - Get ID of a period
------------------------------------------
 .. index:: get ID of a period
 .. index:: obtain ID of a period
 .. index:: rtems_rate_monotonic_ident
+
+RATE_MONOTONIC_IDENT - Get ID of a period
+-----------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -710,11 +714,11 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_cancel:
+.. index:: cancel a period
+.. index:: rtems_rate_monotonic_cancel
 
 RATE_MONOTONIC_CANCEL - Cancel a period
 ---------------------------------------
-.. index:: cancel a period
-.. index:: rtems_rate_monotonic_cancel
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -752,10 +756,10 @@ NOTES:
 
 .. _rtems_rate_monotonic_delete:
 .. index:: rtems_rate_monotonic_delete
+.. index:: delete a period
 
 RATE_MONOTONIC_DELETE - Delete a rate monotonic period
 ------------------------------------------------------
-.. index:: delete a period
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -790,13 +794,13 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_period:
-
-RATE_MONOTONIC_PERIOD - Conclude current/Start next period
-----------------------------------------------------------
 .. index:: conclude current period
 .. index:: start current period
 .. index:: period initiation
 .. index:: rtems_rate_monotonic_period
+
+RATE_MONOTONIC_PERIOD - Conclude current/Start next period
+----------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -844,12 +848,12 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_get_status:
-
-RATE_MONOTONIC_GET_STATUS - Obtain status from a period
--------------------------------------------------------
 .. index:: get status of period
 .. index:: obtain status of period
 .. index:: rtems_rate_monotonic_get_status
+
+RATE_MONOTONIC_GET_STATUS - Obtain status from a period
+-------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -909,12 +913,12 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_get_statistics:
-
-RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
----------------------------------------------------------------
 .. index:: get statistics of period
 .. index:: obtain statistics of period
 .. index:: rtems_rate_monotonic_get_statistics
+
+RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
+---------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -978,11 +982,11 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_reset_statistics:
+.. index:: reset statistics of period
+.. index:: rtems_rate_monotonic_reset_statistics
 
 RATE_MONOTONIC_RESET_STATISTICS - Reset statistics for a period
 ---------------------------------------------------------------
-.. index:: reset statistics of period
-.. index:: rtems_rate_monotonic_reset_statistics
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1012,11 +1016,11 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_reset_all_statistics:
+.. index:: reset statistics of all periods
+.. index:: rtems_rate_monotonic_reset_all_statistics
 
 RATE_MONOTONIC_RESET_ALL_STATISTICS - Reset statistics for all periods
 ----------------------------------------------------------------------
-.. index:: reset statistics of all periods
-.. index:: rtems_rate_monotonic_reset_all_statistics
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -1038,12 +1042,12 @@ NOTES:
    \clearpage
 
 .. _rtems_rate_monotonic_report_statistics:
-
-RATE_MONOTONIC_REPORT_STATISTICS - Print period statistics report
------------------------------------------------------------------
 .. index:: print period statistics report
 .. index:: period statistics report
 .. index:: rtems_rate_monotonic_report_statistics
+
+RATE_MONOTONIC_REPORT_STATISTICS - Print period statistics report
+-----------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

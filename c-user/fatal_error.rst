@@ -5,11 +5,10 @@
 .. COMMENT: All rights reserved.
 
 .. _fatal_error_manager:
+.. index:: fatal errors
 
 Fatal Error Manager
 *******************
-
-.. index:: fatal errors
 
 Introduction
 ============
@@ -34,12 +33,12 @@ provided by the fatal error manager are:
 Background
 ==========
 
-Overview
---------
-
 .. index:: fatal error detection
 .. index:: fatal error processing
 .. index:: fatal error user extension
+
+Overview
+--------
 
 The fatal error manager is called upon detection of an irrecoverable error
 condition by either RTEMS or the application software.  Fatal errors are also
@@ -388,10 +387,10 @@ Operations
 ==========
 
 .. _Terminate:
+.. index:: _Terminate
 
 Announcing a Fatal Error
 ------------------------
-.. index:: _Terminate
 
 The :c:func:`_Terminate()` internal error handler is invoked when the
 application or the executive itself determines that a fatal error has occurred
@@ -443,12 +442,12 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_fatal:
-
-FATAL - Invoke the fatal error
-------------------------------
 .. index:: announce fatal error
 .. index:: fatal error, announce
 .. index:: rtems_fatal
+
+FATAL - Invoke the fatal error
+------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -473,12 +472,12 @@ NOTE:
    \clearpage
 
 .. _rtems_shutdown_executive:
+.. index:: shutdown RTEMS
+.. index:: rtems_shutdown_executive
 
 SHUTDOWN_EXECUTIVE - Shutdown RTEMS
 -----------------------------------
-.. index:: shutdown RTEMS
 
-.. index:: rtems_shutdown_executive
 CALLING SEQUENCE:
     .. code-block:: c
 
@@ -505,11 +504,11 @@ NOTES:
    \clearpage
 
 .. _rtems_exception_frame_print:
+.. index:: exception frame
+.. index:: rtems_exception_frame_print
 
 EXCEPTION_FRAME_PRINT - Prints the exception frame
 --------------------------------------------------
-.. index:: exception frame
-.. index:: rtems_exception_frame_print
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -529,11 +528,11 @@ DESCRIPTION:
    \clearpage
 
 .. _rtems_fatal_source_text:
+.. index:: fatal error
+.. index:: rtems_fatal_source_text
 
 FATAL_SOURCE_TEXT - Returns a text for a fatal source
 -----------------------------------------------------
-.. index:: fatal error
-.. index:: rtems_fatal_source_text
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -554,11 +553,11 @@ DESCRIPTION:
    \clearpage
 
 .. _rtems_internal_error_text:
+.. index:: fatal error
+.. index:: rtems_internal_error_text
 
 INTERNAL_ERROR_TEXT - Returns a text for an internal error code
 ---------------------------------------------------------------
-.. index:: fatal error
-.. index:: rtems_internal_error_text
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -579,12 +578,12 @@ DESCRIPTION:
    \clearpage
 
 .. _rtems_fatal_error_occurred:
-
-FATAL_ERROR_OCCURRED - Invoke the fatal error handler (deprecated)
-------------------------------------------------------------------
 .. index:: announce fatal error
 .. index:: fatal error, announce
 .. index:: rtems_fatal_error_occurred
+
+FATAL_ERROR_OCCURRED - Invoke the fatal error handler (deprecated)
+------------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

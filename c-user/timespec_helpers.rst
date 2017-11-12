@@ -4,6 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: TImespec Helpers
+
 Timespec Helpers
 ****************
 
@@ -124,11 +126,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_timespec_set:
+.. index:: set struct timespec instance
+.. index:: rtems_timespec_set
 
 TIMESPEC_SET - Set struct timespec Instance
 -------------------------------------------
-.. index:: set struct timespec instance
-.. index:: rtems_timespec_set
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -155,10 +157,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_zero:
+.. index:: rtems_timespec_zero
 
 TIMESPEC_ZERO - Zero struct timespec Instance
 ---------------------------------------------
-.. index:: rtems_timespec_zero
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -182,10 +184,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_is_valid:
+.. index:: rtems_timespec_is_valid
 
 TIMESPEC_IS_VALID - Check validity of a struct timespec instance
 ----------------------------------------------------------------
-.. index:: rtems_timespec_is_valid
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -211,10 +213,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_add_to:
+.. index:: rtems_timespec_add_to
 
 TIMESPEC_ADD_TO - Add Two struct timespec Instances
 ---------------------------------------------------
-.. index:: rtems_timespec_add_to
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -240,10 +242,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_subtract:
+.. index:: rtems_timespec_subtract
 
 TIMESPEC_SUBTRACT - Subtract Two struct timespec Instances
 ----------------------------------------------------------
-.. index:: rtems_timespec_subtract
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -274,10 +276,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_divide:
+.. index:: rtems_timespec_divide
 
 TIMESPEC_DIVIDE - Divide Two struct timespec Instances
 ------------------------------------------------------
-.. index:: rtems_timespec_divide
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -314,10 +316,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_divide_by_integer:
+.. index:: rtems_timespec_divide_by_integer
 
 TIMESPEC_DIVIDE_BY_INTEGER - Divide a struct timespec Instance by an Integer
 ----------------------------------------------------------------------------
-.. index:: rtems_timespec_divide_by_integer
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -345,10 +347,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_less_than:
+.. index:: rtems_timespec_less_than
 
 TIMESPEC_LESS_THAN - Less than operator
 ---------------------------------------
-.. index:: rtems_timespec_less_than
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -375,10 +377,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_greater_than:
+.. index:: rtems_timespec_greater_than
 
 TIMESPEC_GREATER_THAN - Greater than operator
 ---------------------------------------------
-.. index:: rtems_timespec_greater_than
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -403,10 +405,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_equal_to:
+.. index:: rtems_timespec_equal_to
 
 TIMESPEC_EQUAL_TO - Check equality of timespecs
 -----------------------------------------------
-.. index:: rtems_timespec_equal_to
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -431,10 +433,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_get_seconds:
+.. index:: rtems_timespec_get_seconds
 
 TIMESPEC_GET_SECONDS - Get Seconds Portion of struct timespec Instance
 ----------------------------------------------------------------------
-.. index:: rtems_timespec_get_seconds
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -459,10 +461,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_get_nanoseconds:
+.. index:: rtems_timespec_get_nanoseconds
 
 TIMESPEC_GET_NANOSECONDS - Get Nanoseconds Portion of the struct timespec Instance
 ----------------------------------------------------------------------------------
-.. index:: rtems_timespec_get_nanoseconds
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -487,10 +489,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_to_ticks:
+.. index:: rtems_timespec_to_ticks
 
 TIMESPEC_TO_TICKS - Convert struct timespec Instance to Ticks
 -------------------------------------------------------------
-.. index:: rtems_timespec_to_ticks
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -514,10 +516,10 @@ NOTES:
    \clearpage
 
 .. _rtems_timespec_from_ticks:
+.. index:: rtems_timespec_from_ticks
 
 TIMESPEC_FROM_TICKS - Convert Ticks to struct timespec Representation
 ---------------------------------------------------------------------
-.. index:: rtems_timespec_from_ticks
 
 CALLING SEQUENCE:
     .. code-block:: c

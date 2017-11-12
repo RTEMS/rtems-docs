@@ -38,6 +38,8 @@ dependent are provided in the Applications Supplement documents.  A supplement
 document which addresses specific architectural issues that affect RTEMS is
 provided for each processor type that is supported.
 
+.. index:: Real-time applications
+
 Real-time Application Systems
 =============================
 
@@ -72,6 +74,8 @@ multiple processors are involved.  New requirements such as interprocessor
 communication channels and global resources that must be shared between
 competing processors are introduced.  The ramifications of multiple processors
 complicate each and every characteristic of a real-time system.
+
+.. index:: Real-time executive
 
 Real-time Executive
 ===================
@@ -113,6 +117,8 @@ developer is then able to concentrate solely on the application.  By using
 standard software components, the time and cost required to develop
 sophisticated real-time applications is significantly reduced.
 
+.. index:: Application architecture
+
 RTEMS Application Architecture
 ==============================
 
@@ -134,6 +140,8 @@ general mechanism to the application code that accesses them.  A well designed
 real-time system can benefit from this architecture by building a rich library
 of standard application components which can be used repeatedly in other
 real-time projects.
+
+.. index:: Internal Architecture
 
 RTEMS Internal Architecture
 ===========================

@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: barrier
+
 Barrier Manager
 ***************
-
-.. index:: barrier
 
 Introduction
 ============
@@ -162,10 +162,11 @@ sequence, related constants, usage, and status codes.
 
 .. _rtems_barrier_create:
 
-BARRIER_CREATE - Create a barrier
----------------------------------
 .. index:: create a barrier
 .. index:: rtems_barrier_create
+
+BARRIER_CREATE - Create a barrier
+---------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -237,11 +238,12 @@ NOTES:
 
 .. _rtems_barrier_ident:
 
-BARRIER_IDENT - Get ID of a barrier
------------------------------------
 .. index:: get ID of a barrier
 .. index:: obtain ID of a barrier
 .. index:: rtems_barrier_ident
+
+BARRIER_IDENT - Get ID of a barrier
+-----------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -278,10 +280,11 @@ NOTES:
 
 .. _rtems_barrier_delete:
 
-BARRIER_DELETE - Delete a barrier
----------------------------------
 .. index:: delete a barrier
 .. index:: rtems_barrier_delete
+
+BARRIER_DELETE - Delete a barrier
+---------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -320,11 +323,12 @@ NOTES:
 
 .. _rtems_barrier_wait:
 
-BARRIER_OBTAIN - Acquire a barrier
-----------------------------------
 .. index:: obtain a barrier
 .. index:: lock a barrier
 .. index:: rtems_barrier_wait
+
+BARRIER_OBTAIN - Acquire a barrier
+----------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -394,11 +398,12 @@ NOTES:
 
 .. _rtems_barrier_release:
 
-BARRIER_RELEASE - Release a barrier
------------------------------------
 .. index:: wait at a barrier
 .. index:: release a barrier
 .. index:: rtems_barrier_release
+
+BARRIER_RELEASE - Release a barrier
+-----------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

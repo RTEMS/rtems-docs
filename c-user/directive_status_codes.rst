@@ -3,6 +3,8 @@
 .. COMMENT: Copyright 2015 embedded brains GmbH
 .. COMMENT: All rights reserved.
 
+.. index:: Status Codes
+
 Directive Status Codes
 **********************
 
@@ -17,6 +19,8 @@ Directives
 ==========
 
 The directives are:
+
+.. index:: rtems_status_code
 
 .. list-table::
  :class: rtems-table
@@ -81,10 +85,10 @@ The directives are:
    \clearpage
 
 .. _rtems_status_text:
+.. index:: rtems_status_text
 
 STATUS_TEXT - Returns the enumeration name for a status code
 ------------------------------------------------------------
-.. index:: rtems_status_text
 
 CALLING SEQUENCE:
     .. code-block:: c

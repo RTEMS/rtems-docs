@@ -17,10 +17,10 @@ one with these concepts.
 
 .. _objects:
 
+.. index:: objects
+
 Objects
 =======
-
-.. index:: objects
 
 RTEMS provides directives which can be used to dynamically create, delete, and
 manipulate a set of predefined object types.  These types include tasks,
@@ -37,14 +37,17 @@ selected by the user as a meaningful "tag" which may commonly reflect the
 object's use in the application.  Conversely, object IDs are designed to
 facilitate efficient object manipulation by the executive.
 
-Object Names
-------------
 .. index:: object name
 .. index:: rtems_name
 
+Object Names
+------------
+
 An object name is an unsigned thirty-two bit entity associated with the object
 by the user.  The data type ``rtems_name`` is used to store object
-names... index:: rtems_build_name
+names.
+
+.. index:: rtems_build_name
 
 Although not required by RTEMS, object names are often composed of four ASCII
 characters which help identify that object.  For example, a task which causes a
@@ -84,11 +87,12 @@ name:
         printk( "ID=0x%08x name=%s\n", id, ((result) ? result : "no name") );
     }
 
-Object IDs
-----------
 .. index:: object ID
 .. index:: object ID composition
 .. index:: rtems_id
+
+Object IDs
+----------
 
 An object ID is a unique unsigned integer value which uniquely identifies an
 object instance.  Object IDs are passed as arguments to many directives in
@@ -198,9 +202,10 @@ create time and freed when the object is deleted.  With the exception of user
 extension routines, object control blocks are not directly manipulated by user
 applications.
 
+.. index:: communication and synchronization
+
 Communication and Synchronization
 =================================
-.. index:: communication and synchronization
 
 In real-time multitasking applications, the ability for cooperating execution
 threads to communicate and synchronize with each other is imperative.  A
@@ -239,9 +244,10 @@ synchronization, while the event manager primarily provides a high performance
 synchronization mechanism.  The signal manager supports only asynchronous
 communication and is typically used for exception handling.
 
+.. index:: locking protocols
+
 Locking Protocols
 =================
-.. index:: locking protocols
 
 RTEMS supports the four locking protocols
 
@@ -265,10 +271,10 @@ obtain, release and timeout operations depend on the complexity of this
 resource dependency graph.
 
 .. _PriorityInversion:
+.. index:: priority inversion
 
 Priority Inversion
 ------------------
-.. index:: priority inversion
 
 Priority inversion is a form of indefinite postponement which is common in
 multitasking, preemptive executives with shared resources.  Priority inversion
@@ -281,11 +287,11 @@ complete its interaction with the resource and release that resource.  The high
 priority task is effectively prevented from executing by lower priority tasks.
 
 .. _PriorityCeiling:
+.. index:: priority ceiling protocol
+.. index:: immediate ceiling priority protocol
 
 Immediate Ceiling Priority Protocol (ICPP)
 ------------------------------------------
-.. index:: priority ceiling protocol
-.. index:: immediate ceiling priority protocol
 
 Each mutex using the Immediate Ceiling Priority Protocol (ICPP) has a ceiling
 priority.  The priority of the mutex owner is immediately raised to the ceiling
@@ -307,10 +313,10 @@ protocol is more forgiving in that it does not require this apriori
 information.
 
 .. _PriorityInheritance:
+.. index:: priority inheritance protocol
 
 Priority Inheritance Protocol
 -----------------------------
-.. index:: priority inheritance protocol
 
 The priority of the mutex owner is raised to the highest priority of all
 threads that currently wait for ownership of this mutex :cite:`Sha:1990:PI`.
@@ -318,10 +324,10 @@ Since RTEMS 5.1, priority updates due to the priority inheritance protocol
 take place immediately and are propagated recursively.
 
 .. _MrsP:
+.. index:: Multiprocessor Resource Sharing Protocol (MrsP)
 
 Multiprocessor Resource Sharing Protocol (MrsP)
 -----------------------------------------------
-.. index:: Multiprocessor Resource Sharing Protocol (MrsP)
 
 The Multiprocessor Resource Sharing Protocol (MrsP) is a generalization of the
 priority ceiling protocol to clustered scheduling :cite:`Burns:2013:MrsP`.  One
@@ -339,10 +345,10 @@ overcome some shortcomings of the original implementation
 :cite:`Catellani:2015:MrsP`.
 
 .. _OMIP:
+.. index:: O(m) Independence-Preserving Protocol (OMIP)
 
 O(m) Independence-Preserving Protocol (OMIP)
 ----------------------------------------------------
-.. index:: O(m) Independence-Preserving Protocol (OMIP)
 
 The :math:`O(m)` Independence-Preserving Protocol (OMIP) is a generalization of
 the priority inheritance protocol to clustered scheduling which avoids the
@@ -355,9 +361,10 @@ need internal locking.  The complex part of the implementation is contained in
 the thread queues and shared with the MrsP support.  This locking protocol is
 available since RTEMS 5.1.
 
+.. index:: thread queues
+
 Thread Queues
 =============
-.. index:: thread queues
 
 In case more than one :term:`thread` may wait on a synchronization object, e.g.
 a semaphore or a message queue, then the waiting threads are added to a data
@@ -415,9 +422,10 @@ A red-black tree is used to implement the priority queues yielding a
 :math:`O(log(n))` worst-case time complexity for enqueue and dequeue operations
 with :math:`n` being the count of threads already on the queue.
 
+.. index:: time
+
 Time
 ====
-.. index:: time
 
 The development of responsive real-time applications requires an understanding
 of how RTEMS maintains and supports time-related operations.  The basic unit of
@@ -505,9 +513,10 @@ and removal operations offered by the timer wheel algorithms.  See also
 tree support already used in other areas, e.g. for the thread priority queues.
 Less code is a good thing for size, testing and verification.
 
+.. index:: memory management
+
 Memory Management
 =================
-.. index:: memory management
 
 RTEMS memory management facilities can be grouped into two classes: dynamic
 memory allocation and address translation.  Dynamic memory allocation is

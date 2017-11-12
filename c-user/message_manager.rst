@@ -4,11 +4,11 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-Message Manager
-***************
-
 .. index:: messages
 .. index:: message queues
+
+Message Manager
+***************
 
 Introduction
 ============
@@ -64,9 +64,10 @@ buffer of the message queue or directly to a peer in certain cases.  This copy
 operation is performed with interrupts disabled.  So it is advisable to keep
 the messages as short as possible.
 
+.. index:: message queue attributes
+
 Building a Message Queue Attribute Set
 --------------------------------------
-.. index:: message queue attributes
 
 In general, an attribute set is built by a bitwise OR of the desired attribute
 components.  The set of valid message queue attributes is provided in the
@@ -220,11 +221,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_message_queue_create:
+.. index:: create a message queue
+.. index:: rtems_message_queue_create
 
 MESSAGE_QUEUE_CREATE - Create a queue
 -------------------------------------
-.. index:: create a message queue
-.. index:: rtems_message_queue_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -307,11 +308,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_ident:
+.. index:: get ID of a message queue
+.. index:: rtems_message_queue_ident
 
 MESSAGE_QUEUE_IDENT - Get ID of a queue
 ---------------------------------------
-.. index:: get ID of a message queue
-.. index:: rtems_message_queue_ident
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -360,11 +361,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_delete:
+.. index:: delete a message queue
+.. index:: rtems_message_queue_delete
 
 MESSAGE_QUEUE_DELETE - Delete a queue
 -------------------------------------
-.. index:: delete a message queue
-.. index:: rtems_message_queue_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -418,11 +419,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_send:
+.. index:: send message to a queue
+.. index:: rtems_message_queue_send
 
 MESSAGE_QUEUE_SEND - Put message at rear of a queue
 ---------------------------------------------------
-.. index:: send message to a queue
-.. index:: rtems_message_queue_send
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -475,11 +476,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_urgent:
+.. index:: put message at front of queue
+.. index:: rtems_message_queue_urgent
 
 MESSAGE_QUEUE_URGENT - Put message at front of a queue
 ------------------------------------------------------
-.. index:: put message at front of queue
-.. index:: rtems_message_queue_urgent
 
 **CALLING SEQUENCE:**
     .. code-block:: c
@@ -532,11 +533,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_broadcast:
+.. index:: broadcast message to a queue
+.. index:: rtems_message_queue_broadcast
 
 MESSAGE_QUEUE_BROADCAST - Broadcast N messages to a queue
 ---------------------------------------------------------
-.. index:: broadcast message to a queue
-.. index:: rtems_message_queue_broadcast
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -592,11 +593,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_receive:
+.. index:: receive message from a queue
+.. index:: rtems_message_queue_receive
 
 MESSAGE_QUEUE_RECEIVE - Receive message from a queue
 ----------------------------------------------------
-.. index:: receive message from a queue
-.. index:: rtems_message_queue_receive
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -679,11 +680,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_get_number_pending:
+.. index:: get number of pending messages
+.. index:: rtems_message_queue_get_number_pending
 
 MESSAGE_QUEUE_GET_NUMBER_PENDING - Get number of messages pending on a queue
 ----------------------------------------------------------------------------
-.. index:: get number of pending messages
-.. index:: rtems_message_queue_get_number_pending
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -718,11 +719,11 @@ NOTES:
    \clearpage
 
 .. _rtems_message_queue_flush:
+.. index:: flush messages on a queue
+.. index:: rtems_message_queue_flush
 
 MESSAGE_QUEUE_FLUSH - Flush all messages on a queue
 ---------------------------------------------------
-.. index:: flush messages on a queue
-.. index:: rtems_message_queue_flush
 
 CALLING SEQUENCE:
     .. code-block:: c

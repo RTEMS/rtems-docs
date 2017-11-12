@@ -5,11 +5,10 @@
 .. COMMENT: All rights reserved.
 
 .. _linker_sets:
+.. index:: linkersets
 
 Linker Sets
 ***********
-
-.. index:: linkersets
 
 Introduction
 ============
@@ -128,10 +127,10 @@ Directives
    \clearpage
 
 .. _RTEMS_LINKER_SET_BEGIN:
+.. index:: RTEMS_LINKER_SET_BEGIN
 
 RTEMS_LINKER_SET_BEGIN - Designator of the linker set begin marker
 ------------------------------------------------------------------
-.. index:: RTEMS_LINKER_SET_BEGIN
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -161,10 +160,10 @@ NOTE:
    \clearpage
 
 .. _RTEMS_LINKER_SET_END:
+.. index:: RTEMS_LINKER_SET_END
 
 RTEMS_LINKER_SET_END - Designator of the linker set end marker
 --------------------------------------------------------------
-.. index:: RTEMS_LINKER_SET_END
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -183,10 +182,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_SET_SIZE:
+.. index:: RTEMS_LINKER_SET_SIZE
 
 RTEMS_LINKER_SET_SIZE - The linker set size in characters
 ---------------------------------------------------------
-.. index:: RTEMS_LINKER_SET_SIZE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -204,10 +203,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_SET_ITEM_COUNT:
+.. index:: RTEMS_LINKER_SET_ITEM_COUNT
 
 RTEMS_LINKER_SET_ITEM_COUNT - The linker set item count
 ---------------------------------------------------------
-.. index:: RTEMS_LINKER_SET_ITEM_COUNT
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -224,10 +223,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_SET_IS_EMPTY:
+.. index:: RTEMS_LINKER_SET_IS_EMPTY
 
 RTEMS_LINKER_SET_IS_EMPTY - Is the linker set empty?
 ---------------------------------------------------------
-.. index:: RTEMS_LINKER_SET_IS_EMPTY
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -245,10 +244,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_SET_FOREACH:
+.. index:: RTEMS_LINKER_SET_FOREACH
 
 RTEMS_LINKER_SET_FOREACH - Iterate through the linker set items
 ---------------------------------------------------------
-.. index:: RTEMS_LINKER_SET_FOREACH
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -281,10 +280,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET_DECLARE:
+.. index:: RTEMS_LINKER_ROSET_DECLARE
 
 RTEMS_LINKER_ROSET_DECLARE - Declares a read-only linker set
 ------------------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET_DECLARE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -304,10 +303,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET:
+.. index:: RTEMS_LINKER_ROSET
 
 RTEMS_LINKER_ROSET - Defines a read-only linker set
 ---------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -327,10 +326,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM_DECLARE:
+.. index:: RTEMS_LINKER_ROSET_ITEM_DECLARE
 
 RTEMS_LINKER_ROSET_ITEM_DECLARE - Declares a read-only linker set item
 ----------------------------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET_ITEM_DECLARE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -352,10 +351,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM_REFERENCE:
+.. index:: RTEMS_LINKER_ROSET_ITEM_REFERENCE
 
 RTEMS_LINKER_ROSET_ITEM_REFERENCE - References a read-only linker set item
 --------------------------------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET_ITEM_REFERENCE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -377,10 +376,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM:
+.. index:: RTEMS_LINKER_ROSET_ITEM
 
 RTEMS_LINKER_ROSET_ITEM - Defines a read-only linker set item
 -------------------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET_ITEM
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -402,10 +401,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET_ITEM_ORDERED:
+.. index:: RTEMS_LINKER_ROSET_ITEM_ORDERED
 
 RTEMS_LINKER_ROSET_ITEM_ORDERED - Defines an ordered read-only linker set item
 ------------------------------------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET_ITEM_ORDERED
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -459,10 +458,10 @@ NOTES:
    \clearpage
 
 .. _RTEMS_LINKER_ROSET_CONTENT:
+.. index:: RTEMS_LINKER_ROSET_CONTENT
 
 RTEMS_LINKER_ROSET_CONTENT - Marks a declaration as a read-only linker set content
 ----------------------------------------------------------------------------------
-.. index:: RTEMS_LINKER_ROSET_CONTENT
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -481,10 +480,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET_DECLARE:
+.. index:: RTEMS_LINKER_RWSET_DECLARE
 
 RTEMS_LINKER_RWSET_DECLARE - Declares a read-write linker set
 -------------------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET_DECLARE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -504,10 +503,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET:
+.. index:: RTEMS_LINKER_RWSET
 
 RTEMS_LINKER_RWSET - Defines a read-write linker set
 ----------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -527,10 +526,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM_DECLARE:
+.. index:: RTEMS_LINKER_RWSET_ITEM_DECLARE
 
 RTEMS_LINKER_RWSET_ITEM_DECLARE - Declares a read-write linker set item
 -----------------------------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET_ITEM_DECLARE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -552,10 +551,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM_REFERENCE:
+.. index:: RTEMS_LINKER_RWSET_ITEM_REFERENCE
 
 RTEMS_LINKER_RWSET_ITEM_REFERENCE - References a read-write linker set item
 ---------------------------------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET_ITEM_REFERENCE
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -577,10 +576,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM:
+.. index:: RTEMS_LINKER_RWSET_ITEM
 
 RTEMS_LINKER_RWSET_ITEM - Defines a read-write linker set item
 --------------------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET_ITEM
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -602,10 +601,10 @@ DESCRIPTION:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET_ITEM_ORDERED:
+.. index:: RTEMS_LINKER_RWSET_ITEM_ORDERED
 
 RTEMS_LINKER_RWSET_ITEM_ORDERED - Defines an ordered read-write linker set item
 -------------------------------------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET_ITEM_ORDERED
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -659,10 +658,10 @@ NOTES:
    \clearpage
 
 .. _RTEMS_LINKER_RWSET_CONTENT:
+.. index:: RTEMS_LINKER_RWSET_CONTENT
 
 RTEMS_LINKER_RWSET_CONTENT - Marks a declaration as a read-write linker set content
 -----------------------------------------------------------------------------------
-.. index:: RTEMS_LINKER_RWSET_CONTENT
 
 CALLING SEQUENCE:
     .. code-block:: c

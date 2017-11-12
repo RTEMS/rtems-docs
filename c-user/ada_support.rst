@@ -6,10 +6,10 @@
 
 .. _ada_support
 
+.. index:: Ada
+
 Ada Support
 ************
-
-.. index:: Ada
 
 Introduction
 ============
@@ -24,7 +24,7 @@ components to this support:
 Ada Programming Language Support
 ================================
 
-The Ada programming natively supports multi-threaded programming 
+The Ada programming natively supports multi-threaded programming
 with its own tasking and concurrency model. Native Ada multi-threaded
 applications should work using GNAT/RTEMS with no changes.
 
@@ -90,10 +90,9 @@ to violating assumptions in the GNAT run-time. Specifically a priority
 ceiling mutex should never be used from an ISR and it is difficult to
 predict when the Ada compiler or run-time will use a mutex.
 
-RTEMS has two capabilities which can assist in avoiding this problem. The 
+RTEMS has two capabilities which can assist in avoiding this problem. The
 Classic API Timer Manager allows the creation of Timer Service Routines
 which execute in the context of a task rather than the clock tick
 Interrupt Service Routine. Similarly, there is support for Interrupt Tasks
 which is a mechanism to defer the processing of the event from the
 hardware interrupt level to a thread.
-

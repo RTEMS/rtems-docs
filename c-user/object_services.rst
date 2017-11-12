@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: object manipulation
+
 Object Services
 ***************
-
-.. index:: object manipulation
 
 Introduction
 ============
@@ -181,11 +181,11 @@ Directives
    \clearpage
 
 .. _rtems_build_name:
+.. index:: build object name
+.. index:: rtems_build_name
 
 BUILD_NAME - Build object name from characters
 ----------------------------------------------
-.. index:: build object name
-.. index:: rtems_build_name
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -213,12 +213,12 @@ NOTES:
    \clearpage
 
 .. _rtems_object_get_classic_name:
-
-OBJECT_GET_CLASSIC_NAME - Lookup name from id
----------------------------------------------
 .. index:: get name from id
 .. index:: obtain name from id
 .. index:: rtems_object_get_classic_name
+
+OBJECT_GET_CLASSIC_NAME - Lookup name from id
+---------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -251,12 +251,12 @@ NOTES:
    \clearpage
 
 .. _rtems_object_get_name:
-
-OBJECT_GET_NAME - Obtain object name as string
-----------------------------------------------
 .. index:: get object name as string
 .. index:: obtain object name as string
 .. index:: rtems_object_get_name
+
+OBJECT_GET_NAME - Obtain object name as string
+----------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -284,11 +284,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_set_name:
+.. index:: set object name
+.. index:: rtems_object_set_name
 
 OBJECT_SET_NAME - Set object name
 ---------------------------------
-.. index:: set object name
-.. index:: rtems_object_set_name
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -331,11 +331,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_get_api:
+.. index:: obtain API from id
+.. index:: rtems_object_id_get_api
 
 OBJECT_ID_GET_API - Obtain API from Id
 --------------------------------------
-.. index:: obtain API from id
-.. index:: rtems_object_id_get_api
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -360,11 +360,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_get_class:
+.. index:: obtain class from object id
+.. index:: rtems_object_id_get_class
 
 OBJECT_ID_GET_CLASS - Obtain Class from Id
 ------------------------------------------
-.. index:: obtain class from object id
-.. index:: rtems_object_id_get_class
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -389,11 +389,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_get_node:
+.. index:: obtain node from object id
+.. index:: rtems_object_id_get_node
 
 OBJECT_ID_GET_NODE - Obtain Node from Id
 ----------------------------------------
-.. index:: obtain node from object id
-.. index:: rtems_object_id_get_node
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -418,11 +418,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_get_index:
+.. index:: obtain index from object id
+.. index:: rtems_object_id_get_index
 
 OBJECT_ID_GET_INDEX - Obtain Index from Id
 ------------------------------------------
-.. index:: obtain index from object id
-.. index:: rtems_object_id_get_index
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -447,11 +447,11 @@ NOTES:
    \clearpage
 
 .. _rtems_build_id:
+.. index:: build object id from components
+.. index:: rtems_build_id
 
 BUILD_ID - Build Object Id From Components
 ------------------------------------------
-.. index:: build object id from components
-.. index:: rtems_build_id
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -481,11 +481,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_api_minimum:
+.. index:: obtain minimum API value
+.. index:: rtems_object_id_api_minimum
 
 OBJECT_ID_API_MINIMUM - Obtain Minimum API Value
 ------------------------------------------------
-.. index:: obtain minimum API value
-.. index:: rtems_object_id_api_minimum
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -506,11 +506,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_api_maximum:
+.. index:: obtain maximum API value
+.. index:: rtems_object_id_api_maximum
 
 OBJECT_ID_API_MAXIMUM - Obtain Maximum API Value
 ------------------------------------------------
-.. index:: obtain maximum API value
-.. index:: rtems_object_id_api_maximum
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -531,11 +531,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_api_minimum_class:
+.. index:: obtain minimum class value
+.. index:: rtems_object_api_minimum_class
 
 OBJECT_API_MINIMUM_CLASS - Obtain Minimum Class Value
 -----------------------------------------------------
-.. index:: obtain minimum class value
-.. index:: rtems_object_api_minimum_class
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -562,11 +562,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_api_maximum_class:
+.. index:: obtain maximum class value
+.. index:: rtems_object_api_maximum_class
 
 OBJECT_API_MAXIMUM_CLASS - Obtain Maximum Class Value
 -----------------------------------------------------
-.. index:: obtain maximum class value
-.. index:: rtems_object_api_maximum_class
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -593,11 +593,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_api_minimum_class:
+.. index:: obtain minimum class value for an API
+.. index:: rtems_object_id_api_minimum_class
 
 OBJECT_ID_API_MINIMUM_CLASS - Obtain Minimum Class Value for an API
 -------------------------------------------------------------------
-.. index:: obtain minimum class value for an API
-.. index:: rtems_object_id_api_minimum_class
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -624,11 +624,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_id_api_maximum_class:
+.. index:: obtain maximum class value for an API
+.. index:: rtems_object_id_api_maximum_class
 
 OBJECT_ID_API_MAXIMUM_CLASS - Obtain Maximum Class Value for an API
 -------------------------------------------------------------------
-.. index:: obtain maximum class value for an API
-.. index:: rtems_object_id_api_maximum_class
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -655,11 +655,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_get_api_name:
+.. index:: obtain API name
+.. index:: rtems_object_get_api_name
 
 OBJECT_GET_API_NAME - Obtain API Name
 -------------------------------------
-.. index:: obtain API name
-.. index:: rtems_object_get_api_name
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -687,11 +687,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_get_api_class_name:
+.. index:: obtain class name
+.. index:: rtems_object_get_api_class_name
 
 OBJECT_GET_API_CLASS_NAME - Obtain Class Name
 ---------------------------------------------
-.. index:: obtain class name
-.. index:: rtems_object_get_api_class_name
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -723,11 +723,11 @@ NOTES:
    \clearpage
 
 .. _rtems_object_get_class_information:
+.. index:: obtain class information
+.. index:: rtems_object_get_class_information
 
 OBJECT_GET_CLASS_INFORMATION - Obtain Class Information
 -------------------------------------------------------
-.. index:: obtain class information
-.. index:: rtems_object_get_class_information
 
 CALLING SEQUENCE:
     .. code-block:: c

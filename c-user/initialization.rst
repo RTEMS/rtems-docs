@@ -22,9 +22,10 @@ The Initialization Manager provides only one directive:
 Background
 ==========
 
+.. index:: initialization tasks
+
 Initialization Tasks
 --------------------
-.. index:: initialization tasks
 
 Initialization task(s) are the mechanism by which RTEMS transfers initial
 control to the user's application.  Initialization tasks differ from other
@@ -305,13 +306,13 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_initialize_executive:
+.. index:: initialize RTEMS
+.. index:: start multitasking
+.. index:: rtems_initialize_executive
 
 INITIALIZE_EXECUTIVE - Initialize RTEMS
 ---------------------------------------
-.. index:: initialize RTEMS
-.. index:: start multitasking
 
-.. index:: rtems_initialize_executive
 CALLING SEQUENCE:
     .. code-block:: c
 

@@ -4,10 +4,11 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: Red-Black Trees
+.. index:: rbtrees
+
 Red-Black Trees
 ***************
-
-.. index:: rbtrees
 
 Introduction
 ============
@@ -111,9 +112,10 @@ Examples for using the red-black trees can be found in the
 Directives
 ==========
 
+.. index:: rbtree doc
+
 Documentation for the Red-Black Tree Directives
 -----------------------------------------------
-.. index:: rbtree doc
 
 Source documentation for the Red-Black Tree API can be found in the generated
 Doxygen output for ``cpukit/sapi``.

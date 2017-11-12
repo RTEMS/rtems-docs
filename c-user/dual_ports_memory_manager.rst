@@ -4,11 +4,11 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-Dual-Ported Memory Manager
-**************************
-
 .. index:: ports
 .. index:: dual ported memory
+
+Dual-Ported Memory Manager
+**************************
 
 Introduction
 ============
@@ -27,11 +27,12 @@ areas (DPMA).  The directives provided by the dual-ported memory manager are:
 
 - rtems_port_internal_to_external_ - Convert internal to external address
 
-Background
-==========
 .. index:: dual ported memory, definition
 .. index:: external addresses, definition
 .. index:: internal addresses, definition
+
+Background
+==========
 
 A dual-ported memory area (DPMA) is an contiguous block of RAM owned by a
 particular processor but which can be accessed by other processors in the
@@ -99,11 +100,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_port_create:
+.. index:: create a port
+.. index:: rtems_port_create
 
 PORT_CREATE - Create a port
 ---------------------------
-.. index:: create a port
-.. index:: rtems_port_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -152,12 +153,12 @@ NOTES:
    \clearpage
 
 .. _rtems_port_ident:
-
-PORT_IDENT - Get ID of a port
------------------------------
 .. index:: get ID of a port
 .. index:: obtain ID of a port
 .. index:: rtems_port_ident
+
+PORT_IDENT - Get ID of a port
+-----------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -193,11 +194,11 @@ NOTES:
    \clearpage
 
 .. _rtems_port_delete:
+.. index:: delete a port
+.. index:: rtems_port_delete
 
 PORT_DELETE - Delete a port
 ---------------------------
-.. index:: delete a port
-.. index:: rtems_port_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -230,11 +231,11 @@ NOTES:
    \clearpage
 
 .. _rtems_port_external_to_internal:
+.. index:: convert external to internal address
+.. index:: rtems_port_external_to_internal
 
 PORT_EXTERNAL_TO_INTERNAL - Convert external to internal address
 ----------------------------------------------------------------
-.. index:: convert external to internal address
-.. index:: rtems_port_external_to_internal
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -270,11 +271,11 @@ NOTES:
    \clearpage
 
 .. _rtems_port_internal_to_external:
+.. index:: convert internal to external address
+.. index:: rtems_port_internal_to_external
 
 PORT_INTERNAL_TO_EXTERNAL - Convert internal to external address
 ----------------------------------------------------------------
-.. index:: convert internal to external address
-.. index:: rtems_port_internal_to_external
 
 CALLING SEQUENCE:
     .. code-block:: c

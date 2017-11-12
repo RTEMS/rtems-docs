@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: multiprocessing
+
 Multiprocessing Manager
 ***********************
-
-.. index:: multiprocessing
 
 Introduction
 ============
@@ -42,10 +42,10 @@ The directives provided by the  Manager are:
 - rtems_multiprocessing_announce_ - A multiprocessing communications packet has
   arrived
 
+.. index:: multiprocessing topologies
+
 Background
 ==========
-
-.. index:: multiprocessing topologies
 
 RTEMS makes no assumptions regarding the connection media or topology of a
 multiprocessor system.  The tasks which compose a particular application can be
@@ -68,9 +68,10 @@ a homogeneous one.  In keeping with RTEMS philosophy of providing transparent
 physical node boundaries, the minimal heterogeneous processing required is
 isolated in the MPCI layer.
 
+.. index:: nodes, definition
+
 Nodes
 -----
-.. index:: nodes, definition
 
 A processor in a RTEMS system is referred to as a node.  Each node is assigned
 a unique non-zero node number by the application designer.  RTEMS assumes that
@@ -85,9 +86,10 @@ The node number is used by RTEMS to identify each node when performing remote
 operations.  Thus, the Multiprocessor Communications Interface Layer (MPCI)
 must be able to route messages based on the node number.
 
+.. index:: global objects, definition
+
 Global Objects
 --------------
-.. index:: global objects, definition
 
 All RTEMS objects which are created with the GLOBAL attribute will be known on
 all other nodes.  Global objects can be referenced from any node in the system,
@@ -99,9 +101,10 @@ field in the Multiprocessor Configuration Table.  The distribution of tasks to
 processors is performed during the application design phase.  Dynamic task
 relocation is not supported by RTEMS.
 
+.. index:: global objects table
+
 Global Object Table
 -------------------
-.. index:: global objects table
 
 RTEMS maintains two tables containing object information on every node in a
 multiprocessor system: a local object table and a global object table.  The
@@ -118,9 +121,10 @@ This parameter, as well as the maximum_nodes parameter, is required to be the
 same on all nodes.  To maintain consistency among the table copies, every node
 in the system must be informed of the creation or deletion of a global object.
 
+.. index:: MPCI and remote operations
+
 Remote Operations
 -----------------
-.. index:: MPCI and remote operations
 
 When an application performs an operation on a remote global object, RTEMS must
 generate a Remote Request (RQ) message and send it to the appropriate node.
@@ -175,9 +179,10 @@ error handler should be invoked.  RTEMS assumes the reliable transmission and
 reception of messages by the MPCI and makes no attempt to detect or correct
 errors.
 
+.. index:: proxy, definition
+
 Proxies
 -------
-.. index:: proxy, definition
 
 A proxy is an RTEMS data structure which resides on a remote node and is used
 to represent a task which must block as part of a remote operation. This action
@@ -381,9 +386,10 @@ The ``to_convert`` field of the ``rtems_packet_prefix`` portion of the packet
 indicates how much of the packet in 32-bit units may require conversion in a
 heterogeneous system.
 
+.. index:: heterogeneous multiprocessing
+
 Supporting Heterogeneous Environments
 -------------------------------------
-.. index:: heterogeneous multiprocessing
 
 Developing an MPCI layer for a heterogeneous system requires a thorough
 understanding of the differences between the processors which comprise the
@@ -476,11 +482,11 @@ usage, and status codes.
    \clearpage
 
 .. _rtems_multiprocessing_announce:
+.. index:: announce arrival of package
+.. index:: rtems_multiprocessing_announce
 
 MULTIPROCESSING_ANNOUNCE - Announce the arrival of a packet
 -----------------------------------------------------------
-.. index:: announce arrival of package
-.. index:: rtems_multiprocessing_announce
 
 CALLING SEQUENCE:
     .. code-block:: c

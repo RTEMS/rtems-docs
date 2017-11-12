@@ -4,10 +4,11 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: Stack Bounds Checker
+.. index:: stack
+
 Stack Bounds Checker
 ********************
-
-.. index:: stack
 
 Introduction
 ============

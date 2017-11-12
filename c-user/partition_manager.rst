@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: partitions
+
 Partition Manager
 *****************
-
-.. index:: partitions
 
 Introduction
 ============
@@ -28,9 +28,10 @@ fixed-size units.  The directives provided by the partition manager are:
 Background
 ==========
 
+.. index:: partition, definition
+
 Partition Manager Definitions
 -----------------------------
-.. index:: partition, definition
 
 A partition is a physically contiguous memory area divided into fixed-size
 buffers that can be dynamically allocated and deallocated.
@@ -45,9 +46,10 @@ buffer is allocated, the entire buffer is available for application use.
 Therefore, modifying memory that is outside of an allocated buffer could
 destroy the free buffer chain or the contents of an adjacent allocated buffer.
 
+.. index:: partition attribute set, building
+
 Building a Partition Attribute Set
 ----------------------------------
-.. index:: partition attribute set, building
 
 In general, an attribute set is built by a bitwise OR of the desired attribute
 components.  The set of valid partition attributes is provided in the following
@@ -134,11 +136,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_partition_create:
+.. index:: create a partition
+.. index:: rtems_partition_create
 
 PARTITION_CREATE - Create a partition
 -------------------------------------
-.. index:: create a partition
-.. index:: rtems_partition_create
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -228,12 +230,12 @@ NOTES:
    \clearpage
 
 .. _rtems_partition_ident:
-
-PARTITION_IDENT - Get ID of a partition
----------------------------------------
 .. index:: get ID of a partition
 .. index:: obtain ID of a partition
 .. index:: rtems_partition_ident
+
+PARTITION_IDENT - Get ID of a partition
+---------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -282,11 +284,11 @@ NOTES:
    \clearpage
 
 .. _rtems_partition_delete:
+.. index:: delete a partition
+.. index:: rtems_partition_delete
 
 PARTITION_DELETE - Delete a partition
 -------------------------------------
-.. index:: delete a partition
-.. index:: rtems_partition_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -331,12 +333,12 @@ NOTES:
    \clearpage
 
 .. _rtems_partition_get_buffer:
-
-PARTITION_GET_BUFFER - Get buffer from a partition
---------------------------------------------------
 .. index:: get buffer from partition
 .. index:: obtain buffer from partition
 .. index:: rtems_partition_get_buffer
+
+PARTITION_GET_BUFFER - Get buffer from a partition
+--------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -379,11 +381,11 @@ NOTES:
    \clearpage
 
 .. _rtems_partition_return_buffer:
+.. index:: return buffer to partitition
+.. index:: rtems_partition_return_buffer
 
 PARTITION_RETURN_BUFFER - Return buffer to a partition
 ------------------------------------------------------
-.. index:: return buffer to partitition
-.. index:: rtems_partition_return_buffer
 
 CALLING SEQUENCE:
     .. code-block:: c

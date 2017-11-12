@@ -172,9 +172,10 @@ Add nodes with the following code:
 The chain is initialized and the nodes allocated and appended to the
 chain. This is an example of a pool of buffers.
 
+.. index:: chain iterate
+
 Iterating a Chain
 -----------------
-.. index:: chain iterate
 
 Iterating a chain is a common function. The example shows how to iterate the
 buffer pool chain created in the last section to find buffers starting with a
@@ -219,10 +220,11 @@ The section details the Chains directives.
 
 .. _rtems_chain_initialize:
 
-Initialize Chain With Nodes
----------------------------
 .. index:: chain initialize
 .. index:: rtems_chain_initialize
+
+Initialize Chain With Nodes
+---------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -256,10 +258,11 @@ NOTES:
 
 .. _rtems_chain_initialize_empty:
 
-Initialize Empty
-----------------
 .. index:: chain initialize empty
 .. index:: rtems_chain_initialize_empty
+
+Initialize Empty
+----------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -284,10 +287,11 @@ NOTES:
 
 .. _rtems_chain_is_null_node:
 
-Is Null Node ?
---------------
 .. index:: chain is node null
 .. index:: rtems_chain_is_null_node
+
+Is Null Node ?
+--------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -309,10 +313,11 @@ DESCRIPTION:
 
 .. _rtems_chain_head:
 
-Head
-----
 .. index:: chain get head
 .. index:: rtems_chain_head
+
+Head
+----
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -333,10 +338,11 @@ DESCRIPTION:
 
 .. _rtems_chain_tail:
 
-Tail
-----
 .. index:: chain get tail
 .. index:: rtems_chain_tail
+
+Tail
+----
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -357,10 +363,11 @@ DESCRIPTION:
 
 .. _rtems_chain_are_nodes_equal:
 
-Are Two Nodes Equal ?
----------------------
 .. index:: chare are nodes equal
 .. index:: rtems_chain_are_nodes_equal
+
+Are Two Nodes Equal ?
+---------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -384,10 +391,11 @@ DESCRIPTION:
 
 .. _rtems_chain_is_empty:
 
-Is the Chain Empty
-------------------
 .. index:: chain is chain empty
 .. index:: rtems_chain_is_empty
+
+Is the Chain Empty
+------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -410,10 +418,11 @@ DESCRIPTION:
 
 .. _rtems_chain_is_first:
 
-Is this the First Node on the Chain ?
--------------------------------------
 .. index:: chain is node the first
 .. index:: rtems_chain_is_first
+
+Is this the First Node on the Chain ?
+-------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -436,10 +445,11 @@ DESCRIPTION:
 
 .. _rtems_chain_is_last:
 
-Is this the Last Node on the Chain ?
-------------------------------------
 .. index:: chain is node the last
 .. index:: rtems_chain_is_last
+
+Is this the Last Node on the Chain ?
+------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -462,10 +472,11 @@ DESCRIPTION:
 
 .. _rtems_chain_has_only_one_node:
 
-Does this Chain have only One Node ?
-------------------------------------
 .. index:: chain only one node
 .. index:: rtems_chain_has_only_one_node
+
+Does this Chain have only One Node ?
+------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -488,10 +499,11 @@ DESCRIPTION:
 
 .. _rtems_chain_node_count_unprotected:
 
-Returns the node count of the chain (unprotected)
--------------------------------------------------
 .. index:: chain only one node
 .. index:: rtems_chain_node_count_unprotected
+
+Returns the node count of the chain (unprotected)
+-------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -512,10 +524,11 @@ DESCRIPTION:
 
 .. _rtems_chain_is_head:
 
-Is this Node the Chain Head ?
------------------------------
 .. index:: chain is node the head
 .. index:: rtems_chain_is_head
+
+Is this Node the Chain Head ?
+-----------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -539,10 +552,11 @@ DESCRIPTION:
 
 .. _rtems_chain_is_tail:
 
-Is this Node the Chain Tail ?
------------------------------
 .. index:: chain is node the tail
 .. index:: rtems_chain_is_tail
+
+Is this Node the Chain Tail ?
+-----------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -566,10 +580,11 @@ DESCRIPTION:
 
 .. _rtems_chain_extract:
 
-Extract a Node
---------------
 .. index:: chain extract a node
 .. index:: rtems_chain_extract
+
+Extract a Node
+--------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -596,10 +611,11 @@ NOTES:
 
 .. _rtems_chain_extract_unprotected:
 
-Extract a Node (unprotected)
-----------------------------
 .. index:: chain extract a node unprotected
 .. index:: rtems_chain_extract_unprotected
+
+Extract a Node (unprotected)
+----------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -623,10 +639,11 @@ NOTES:
 
 .. _rtems_chain_get:
 
-Get the First Node
-------------------
 .. index:: chain get first node
 .. index:: rtems_chain_get
+
+Get the First Node
+------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -655,10 +672,11 @@ NOTES:
 
 .. _rtems_chain_get_unprotected:
 
-Get the First Node (unprotected)
---------------------------------
 .. index:: chain get first node
 .. index:: rtems_chain_get_unprotected
+
+Get the First Node (unprotected)
+--------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -683,10 +701,11 @@ NOTES:
 
 .. _rtems_chain_insert:
 
-Insert a Node
--------------
 .. index:: chain insert a node
 .. index:: rtems_chain_insert
+
+Insert a Node
+-------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -715,10 +734,11 @@ NOTES:
 
 .. _rtems_chain_insert_unprotected:
 
-Insert a Node (unprotected)
----------------------------
 .. index:: chain insert a node unprotected
 .. index:: rtems_chain_insert_unprotected
+
+Insert a Node (unprotected)
+---------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -744,10 +764,11 @@ NOTES:
 
 .. _rtems_chain_append:
 
-Append a Node
--------------
 .. index:: chain append a node
 .. index:: rtems_chain_append
+
+Append a Node
+-------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -775,10 +796,11 @@ NOTES:
 
 .. _rtems_chain_append_unprotected:
 
-Append a Node (unprotected)
----------------------------
 .. index:: chain append a node unprotected
 .. index:: rtems_chain_append_unprotected
+
+Append a Node (unprotected)
+---------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -803,10 +825,11 @@ NOTES:
 
 .. _rtems_chain_prepend:
 
-Prepend a Node
---------------
 .. index:: prepend node
 .. index:: rtems_chain_prepend
+
+Prepend a Node
+--------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -834,10 +857,11 @@ NOTES:
 
 .. _rtems_chain_prepend_unprotected:
 
-Prepend a Node (unprotected)
-----------------------------
 .. index:: prepend node unprotected
 .. index:: rtems_chain_prepend_unprotected
+
+Prepend a Node (unprotected)
+----------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

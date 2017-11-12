@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: regions
+
 Region Manager
 **************
-
-.. index:: regions
 
 Introduction
 ============
@@ -34,10 +34,11 @@ variable sized units.  The directives provided by the region manager are:
 Background
 ==========
 
-Region Manager Definitions
---------------------------
 .. index:: region, definition
 .. index:: segment, definition
+
+Region Manager Definitions
+--------------------------
 
 A region makes up a physically contiguous memory space with user-defined
 boundaries from which variable-sized segments are dynamically allocated and
@@ -59,9 +60,10 @@ boundaries while the region is currently active in the system.
 Upon return to the region, the free block is coalesced with its neighbors (if
 free) on both sides to produce the largest possible unused block.
 
+.. index:: region attribute set, building
+
 Building an Attribute Set
 -------------------------
-.. index:: region attribute set, building
 
 In general, an attribute set is built by a bitwise OR of the desired attribute
 components.  The set of valid region attributes is provided in the following
@@ -223,10 +225,11 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. _rtems_region_create:
+.. index:: create a region
 
 REGION_CREATE - Create a region
 -------------------------------
-.. index:: create a region
+
 CALLING SEQUENCE:
     .. code-block:: c
 
@@ -298,12 +301,12 @@ NOTES:
    \clearpage
 
 .. _rtems_region_ident:
-
-REGION_IDENT - Get ID of a region
----------------------------------
 .. index:: get ID of a region
 .. index:: obtain ID of a region
 .. index:: rtems_region_ident
+
+REGION_IDENT - Get ID of a region
+---------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -340,11 +343,11 @@ NOTES:
    \clearpage
 
 .. _rtems_region_delete:
+.. index:: delete a region
+.. index:: rtems_region_delete
 
 REGION_DELETE - Delete a region
 -------------------------------
-.. index:: delete a region
-.. index:: rtems_region_delete
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -381,12 +384,12 @@ NOTES:
    \clearpage
 
 .. _rtems_region_extend:
-
-REGION_EXTEND - Add memory to a region
---------------------------------------
 .. index:: add memory to a region
 .. index:: region, add memory
 .. index:: rtems_region_extend
+
+REGION_EXTEND - Add memory to a region
+--------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -434,11 +437,11 @@ NOTES:
    \clearpage
 
 .. _rtems_region_get_segment:
+.. index:: get segment from region
+.. index:: rtems_region_get_segment
 
 REGION_GET_SEGMENT - Get segment from a region
 ----------------------------------------------
-.. index:: get segment from region
-.. index:: rtems_region_get_segment
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -520,11 +523,11 @@ NOTES:
    \clearpage
 
 .. _rtems_region_return_segment:
+.. index:: return segment to region
+.. index:: rtems_region_return_segment
 
 REGION_RETURN_SEGMENT - Return segment to a region
 --------------------------------------------------
-.. index:: return segment to region
-.. index:: rtems_region_return_segment
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -569,11 +572,11 @@ NOTES:
    \clearpage
 
 .. _rtems_region_get_segment_size:
+.. index:: get size of segment
+.. index:: rtems_region_get_segment_size
 
 REGION_GET_SEGMENT_SIZE - Obtain size of a segment
 --------------------------------------------------
-.. index:: get size of segment
-.. index:: rtems_region_get_segment_size
 
 CALLING SEQUENCE:
     .. code-block:: c
@@ -611,11 +614,11 @@ NOTES:
    \clearpage
 
 .. _rtems_region_resize_segment:
+.. index:: resize segment
+.. index:: rtems_region_resize_segment
 
 REGION_RESIZE_SEGMENT - Change size of a segment
 ------------------------------------------------
-.. index:: resize segment
-.. index:: rtems_region_resize_segment
 
 CALLING SEQUENCE:
     .. code-block:: c
