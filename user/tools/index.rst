@@ -14,9 +14,11 @@ of avaliable host computers users wish to develop on. This section details the
 tools available on the host computers to help support RTEMS users and
 developers.
 
-.. include:: linker.rst
-.. include:: symbols.rst
-.. include:: exeinfo.rst
-.. include:: trace-linker.rst
-.. include:: bsp-builder.rst
-.. include:: tester.rst
+.. toctree::
+
+   linker
+   symbols
+   exeinfo
+   trace-linker
+   bsp-builder
+   tester

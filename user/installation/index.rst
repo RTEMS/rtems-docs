@@ -3,11 +3,11 @@
 .. comment: Copyright (c) 2016 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
+.. index:: Installation
 .. _installation:
 
 Installation
 ************
-.. index:: Installation
 
 This section details how to set up and install the RTEMS Ecosystem. You will
 create a set of tools and an RTEMS kernel for your selected Board Support
@@ -42,9 +42,11 @@ pass ready for you to use. The tools and kernel are stable and only bug fixes
 are added creating new dot point releases. The developer set up tracks the Git
 repositories for the tools and kernel.
 
-.. include:: prefixes-sandboxing.rst
-.. include:: releases.rst
-.. include:: developer.rst
-.. include:: kernel.rst
-
 .. comment: code block warning is in kernel.rst
+
+.. toctree::
+
+   prefixes-sandboxing
+   releases
+   developer
+   kernel

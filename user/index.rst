@@ -53,7 +53,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	tools/index
 
 	support/index
-	additional/index
+
 	glossary/index
 
         genindex

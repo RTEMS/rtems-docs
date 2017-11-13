@@ -4,11 +4,10 @@
 .. comment: All rights reserved.
 
 .. _prefixes:
+.. index:: Prefixes
 
 Prefixes
 ========
-
-.. index:: Prefixes
 
 You will see the term :ref:term:`prefix` referred to thoughout this
 documentation and in a wide number of software packages you can download from

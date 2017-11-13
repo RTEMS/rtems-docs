@@ -12,7 +12,9 @@ Hardware
 This section discusses supported Hardware, Architectures, Board Support
 Packages, and running RTEMS on real hardware and simulators.
 
-.. include:: targets.rst
-.. include:: architectures.rst
-.. include:: bsps.rst
-.. include:: tiers.rst
+.. toctree::
+
+   targets
+   architectures
+   bsps
+   tiers

@@ -44,7 +44,9 @@ building tools is something you do once. Once the tools and RTEMS is built all
 your time can be spent writing and developing your application. Over an hour
 can happen and for the ARM architecture and with all BSPs it can be many hours.
 
-.. include:: os.rst
-.. include:: posix.rst
-.. include:: macos.rst
-.. include:: windows.rst
+.. toctree::
+
+   os
+   posix
+   macos
+   windows
