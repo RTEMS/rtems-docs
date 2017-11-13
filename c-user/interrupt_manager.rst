@@ -268,10 +268,11 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_interrupt_catch:
 .. index:: establish an ISR
 .. index:: install an ISR
 .. index:: rtems_interrupt_catch
+
+.. _rtems_interrupt_catch:
 
 INTERRUPT_CATCH - Establish an ISR
 ----------------------------------
@@ -312,9 +313,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_disable:
 .. index:: disable interrupts
 .. index:: rtems_interrupt_disable
+
+.. _rtems_interrupt_disable:
 
 INTERRUPT_DISABLE - Disable Interrupts
 --------------------------------------
@@ -350,9 +352,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_enable:
 .. index:: enable interrupts
 .. index:: rtems_interrupt_enable
+
+.. _rtems_interrupt_enable:
 
 INTERRUPT_ENABLE - Enable Interrupts
 ------------------------------------
@@ -385,9 +388,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_flash:
 .. index:: flash interrupts
 .. index:: rtems_interrupt_flash
+
+.. _rtems_interrupt_flash:
 
 INTERRUPT_FLASH - Flash Interrupts
 ----------------------------------
@@ -420,9 +424,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_local_disable:
 .. index:: disable interrupts
 .. index:: rtems_interrupt_local_disable
+
+.. _rtems_interrupt_local_disable:
 
 INTERRUPT_LOCAL_DISABLE - Disable Interrupts on Current Processor
 -----------------------------------------------------------------
@@ -457,9 +462,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_local_enable:
 .. index:: enable interrupts
 .. index:: rtems_interrupt_local_enable
+
+.. _rtems_interrupt_local_enable:
 
 INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
 ---------------------------------------------------------------
@@ -488,8 +494,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_lock_initialize:
 .. index:: rtems_interrupt_lock_initialize
+
+.. _rtems_interrupt_lock_initialize:
 
 INTERRUPT_LOCK_INITIALIZE - Initialize an ISR Lock
 --------------------------------------------------
@@ -516,8 +523,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_lock_acquire:
 .. index:: rtems_interrupt_lock_acquire
+
+.. _rtems_interrupt_lock_acquire:
 
 INTERRUPT_LOCK_ACQUIRE - Acquire an ISR Lock
 --------------------------------------------
@@ -551,8 +559,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_lock_release:
 .. index:: rtems_interrupt_lock_release
+
+.. _rtems_interrupt_lock_release:
 
 INTERRUPT_LOCK_RELEASE - Release an ISR Lock
 --------------------------------------------
@@ -583,8 +592,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_lock_acquire_isr:
 .. index:: rtems_interrupt_lock_acquire_isr
+
+.. _rtems_interrupt_lock_acquire_isr:
 
 INTERRUPT_LOCK_ACQUIRE_ISR - Acquire an ISR Lock from ISR
 ---------------------------------------------------------
@@ -621,8 +631,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_lock_release_isr:
 .. index:: rtems_interrupt_lock_release_isr
+
+.. _rtems_interrupt_lock_release_isr:
 
 INTERRUPT_LOCK_RELEASE_ISR - Release an ISR Lock from ISR
 ---------------------------------------------------------
@@ -653,9 +664,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_interrupt_is_in_progress:
 .. index:: is interrupt in progress
 .. index:: rtems_interrupt_is_in_progress
+
+.. _rtems_interrupt_is_in_progress:
 
 INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 ------------------------------------------------

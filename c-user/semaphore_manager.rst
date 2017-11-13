@@ -324,9 +324,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_semaphore_create:
 .. index:: create a semaphore
 .. index:: rtems_semaphore_create
+
+.. _rtems_semaphore_create:
 
 SEMAPHORE_CREATE - Create a semaphore
 -------------------------------------
@@ -436,10 +437,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_semaphore_ident:
 .. index:: get ID of a semaphore
 .. index:: obtain ID of a semaphore
 .. index:: rtems_semaphore_ident
+
+.. _rtems_semaphore_ident:
 
 SEMAPHORE_IDENT - Get ID of a semaphore
 ---------------------------------------
@@ -488,9 +490,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_semaphore_delete:
 .. index:: delete a semaphore
 .. index:: rtems_semaphore_delete
+
+.. _rtems_semaphore_delete:
 
 SEMAPHORE_DELETE - Delete a semaphore
 -------------------------------------
@@ -544,10 +547,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_semaphore_obtain:
 .. index:: obtain a semaphore
 .. index:: lock a semaphore
 .. index:: rtems_semaphore_obtain
+
+.. _rtems_semaphore_obtain:
 
 SEMAPHORE_OBTAIN - Acquire a semaphore
 --------------------------------------
@@ -643,10 +647,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_semaphore_release:
 .. index:: release a semaphore
 .. index:: unlock a semaphore
 .. index:: rtems_semaphore_release
+
+.. _rtems_semaphore_release:
 
 SEMAPHORE_RELEASE - Release a semaphore
 ---------------------------------------
@@ -704,10 +709,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_semaphore_flush:
 .. index:: flush a semaphore
 .. index:: unblock all tasks waiting on a semaphore
 .. index:: rtems_semaphore_flush
+
+.. _rtems_semaphore_flush:
 
 SEMAPHORE_FLUSH - Unblock all tasks waiting on a semaphore
 ----------------------------------------------------------
@@ -760,9 +766,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_semaphore_set_priority:
 .. index:: set priority by scheduler for a semaphore
 .. index:: rtems_semaphore_set_priority
+
+.. _rtems_semaphore_set_priority:
 
 SEMAPHORE_SET_PRIORITY - Set priority by scheduler for a semaphore
 ------------------------------------------------------------------

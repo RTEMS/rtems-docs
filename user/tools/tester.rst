@@ -3,34 +3,34 @@
 .. comment: Copyright (c) 2017 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
-RTEMS Tester
-============
+.. _rtems-tester-command:
 
-.. index:: Tools, rtems-tester
+RTEMS Tester and Run Commands
+=============================
 
-The RTEMS Tester is a test framework. It includes a command line interface to
-run tests on supported targets. The framework provides back-end support for
-common simulators and debuggers. The board support package (BSP) configurations
-for RTEMS are provided and can be used to run all the tests provided with
-RTEMS. The framework is not specific to RTEMS and can be configured to run any
-suitable application.
+.. index:: Tools, rtems-test, rtems-run
+
+The RTEMS Tester is a test tool that provides a command line interface to run
+test executable on supported targets. The tool provides back-end support for
+common simulators, debuggers and boot loaders. Board support package (BSP)
+configurations for RTEMS are provided and can be used to run all the tests in
+the RTEMS test suite. The tool and it's framework is not specific to RTEMS and
+can be configured to run any suitable application.
 
 RTEMS is an embedded operating system and is cross-compiled on a range of host
 machines. The executables run on the target hardware and this can vary widely
 from open source simulators, commercial simulators, debuggers with simulators,
-to debuggers with hardware specific pods and devices. Testing RTEMS requires
-the cross-compiled test executable is transferred to the target hardware,
-executed and the output returned to the host where it is analyzed to determine
-the test result. The RTEMS Tester provides a framework to do this.
+debuggers with hardware specific pods and devices to targe boot
+loaders. Testing RTEMS requires the cross-compiled test executable is
+transferred to the target hardware, executed and the output captured and
+returned to the test host where it is analyzed to determine the test
+result.
 
-Running all the RTEMS tests on your target is very important. It provides you
-with a traceable record showing that your RTEMS version and its tools are
-working at the level the RTEMS development team expect when releasing
-RTEMS. Being able to easily run the tests and verify the results is critical in
-maintaining a high standard.
-
-This document is for users of the RTEMS Tester as well as those wanting to
-develop, extend and investigate the RTEMS Tester.
+Running the RTEMS tests on your target is very important. It provides you with
+a traceable record showing that your RTEMS version and its tools are working at
+the level the RTEMS development team expect when releasing RTEMS. Being able to
+easily run the tests and verify the results is critical in maintaining a high
+standard.
 
 Available BSP testers
 ---------------------
@@ -42,9 +42,11 @@ You can list the available BSP testers with:
     $ rtems-test --list-bsps
     arm920
     beagleboardxm
+    beagleboneblack
     jmr3904-run
     jmr3904
     mcf5235
+    pc
     psim-run
     psim
     realview_pbx_a9_qemu
@@ -54,6 +56,7 @@ You can list the available BSP testers with:
     xilinx_zynq_a9_qemu_smp
     xilinx_zynq_zc706
     xilinx_zynq_zc706_qemu
+    xilinx_zynq_zedboard
 
 .. note:: The list is growing all the time and if your BSP is not supported we
           encourage you to add it and submit the configuration back to the
@@ -70,7 +73,7 @@ Building RTEMS Tests
 --------------------
 
 Build the RTEMS Kernel (See :ref:`rtems-kernel`) by cloning the repository,
-running the ``bootstrap`` procecure, building and finally installing the
+running the ``bootstrap`` procedure, building and finally installing the
 kernel. Be sure to enable tests by using ``--enable-tests`` option with
 configure after running ``bootstrap``.
 
@@ -80,15 +83,20 @@ configure after running ``bootstrap``.
                         --enable-tests --enable-rtemsbsp=erc32
     $ make
 
-Add the -j option to the make command with the number of cores to run the
-build parallel where it can.
+Add the `-j` option to the make command with the number of cores to run a
+parallel build.
 
 Building all the tests takes time and it uses more disk so be patient. When
-finished all the tests will be built and ready to run. Before running all the
-tests it is a good idea to run the ``hello`` test. The ``hello`` test is an
-RTEMS version of the classic "Hello World" example and running it shows you
-have a working tool chain and build of RTEMS ready to run the tests. Using the
-run command:
+finished all the tests will have been built. Some BSPs may require a post-build
+process to be run on the RTEMS ELF executable to create an image suitable for
+execution. This can be built into the configuration script and the tester will
+perform a pre-test command to covert the executable to a suitable format for
+your target.
+
+Before running all the tests it is a good idea to run the ``hello`` test. The
+``hello`` test is an RTEMS version of the classic "Hello World" example and
+running it shows you have a working tool chain and build of RTEMS ready to run
+the tests. Using the run with the ERC32 BSP the command is:
 
 .. code-block:: shell
 
@@ -185,8 +193,6 @@ BSP build tree:
     Total:         13
     Average test time: 0:00:27.963000
     Testing time     : 0:06:03.519012
-
-
 
 * The RTEMS Tester's test command. In this example we are using an absolute
   path.

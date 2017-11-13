@@ -598,9 +598,10 @@ related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_task_create:
 .. index:: create a task
 .. index:: rtems_task_create
+
+.. _rtems_task_create:
 
 TASK_CREATE - Create a task
 ---------------------------
@@ -743,9 +744,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_ident:
 .. index:: get ID of a task
 .. index:: rtems_task_ident
+
+.. _rtems_task_ident:
 
 TASK_IDENT - Get ID of a task
 -----------------------------
@@ -797,9 +799,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_self:
 .. index:: obtain ID of caller
 .. index:: rtems_task_self
+
+.. _rtems_task_self:
 
 TASK_SELF - Obtain ID of caller
 -------------------------------
@@ -823,9 +826,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_start:
 .. index:: starting a task
 .. index:: rtems_task_start
+
+.. _rtems_task_start:
 
 TASK_START - Start a task
 -------------------------
@@ -877,9 +881,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_restart:
 .. index:: restarting a task
 .. index:: rtems_task_restart
+
+.. _rtems_task_restart:
 
 TASK_RESTART - Restart a task
 -----------------------------
@@ -939,9 +944,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_delete:
 .. index:: deleting a task
 .. index:: rtems_task_delete
+
+.. _rtems_task_delete:
 
 TASK_DELETE - Delete a task
 ---------------------------
@@ -995,9 +1001,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_suspend:
 .. index:: suspending a task
 .. index:: rtems_task_suspend
+
+.. _rtems_task_suspend:
 
 TASK_SUSPEND - Suspend a task
 -----------------------------
@@ -1042,9 +1049,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_resume:
 .. index:: resuming a task
 .. index:: rtems_task_resume
+
+.. _rtems_task_resume:
 
 TASK_RESUME - Resume a task
 ---------------------------
@@ -1087,9 +1095,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_is_suspended:
 .. index:: is task suspended
 .. index:: rtems_task_is_suspended
+
+.. _rtems_task_is_suspended:
 
 TASK_IS_SUSPENDED - Determine if a task is Suspended
 ----------------------------------------------------
@@ -1125,12 +1134,13 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_set_priority:
 .. index:: rtems_task_set_priority
 .. index:: current task priority
 .. index:: set task priority
 .. index:: get task priority
 .. index:: obtain task priority
+
+.. _rtems_task_set_priority:
 
 TASK_SET_PRIORITY - Set task priority
 -------------------------------------
@@ -1189,11 +1199,12 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_get_priority:
 .. index:: rtems_task_get_priority
 .. index:: current task priority
 .. index:: get task priority
 .. index:: obtain task priority
+
+.. _rtems_task_get_priority:
 
 TASK_GET_PRIORITY - Get task priority
 -------------------------------------
@@ -1238,7 +1249,6 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_mode:
 .. index:: current task mode
 .. index:: set task mode
 .. index:: get task mode
@@ -1246,6 +1256,8 @@ NOTES:
 .. index:: get task preemption mode
 .. index:: obtain task mode
 .. index:: rtems_task_mode
+
+.. _rtems_task_mode:
 
 TASK_MODE - Change the current task mode
 ----------------------------------------
@@ -1317,10 +1329,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_wake_after:
 .. index:: delay a task for an interval
 .. index:: wake up after an interval
 .. index:: rtems_task_wake_after
+
+.. _rtems_task_wake_after:
 
 TASK_WAKE_AFTER - Wake up after interval
 ----------------------------------------
@@ -1360,10 +1373,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_wake_when:
 .. index:: delay a task until a wall time
 .. index:: wake up at a wall time
 .. index:: rtems_task_wake_when
+
+.. _rtems_task_wake_when:
 
 TASK_WAKE_WHEN - Wake up when specified
 ---------------------------------------
@@ -1616,9 +1630,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_iterate:
 .. index:: iterate over all threads
 .. index:: rtems_task_iterate
+
+.. _rtems_task_iterate:
 
 TASK_ITERATE - Iterate Over Tasks
 ---------------------------------
@@ -1658,8 +1673,9 @@ Deprecated and Removed Directives
 
    \clearpage
 
-.. _rtems_iterate_over_all_threads:
 .. index:: rtems_iterate_over_all_threads
+
+.. _rtems_iterate_over_all_threads:
 
 ITERATE_OVER_ALL_THREADS - Iterate Over Tasks
 ---------------------------------------------
@@ -1697,9 +1713,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_get_note:
 .. index:: get task notepad entry
 .. index:: rtems_task_get_note
+
+.. _rtems_task_get_note:
 
 TASK_GET_NOTE - Get task notepad entry
 --------------------------------------
@@ -1750,9 +1767,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_set_note:
 .. index:: set task notepad entry
 .. index:: rtems_task_set_note
+
+.. _rtems_task_set_note:
 
 TASK_SET_NOTE - Set task notepad entry
 --------------------------------------
@@ -1802,11 +1820,12 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_variable_add:
 .. index:: per-task variable
 .. index:: task private variable
 .. index:: task private data
 .. index:: rtems_task_variable_add
+
+.. _rtems_task_variable_add:
 
 TASK_VARIABLE_ADD - Associate per task variable
 -----------------------------------------------
@@ -1865,10 +1884,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_variable_get:
 .. index:: get per-task variable
 .. index:: obtain per-task variable
 .. index:: rtems_task_variable_get
+
+.. _rtems_task_variable_get:
 
 TASK_VARIABLE_GET - Obtain value of a per task variable
 -------------------------------------------------------
@@ -1922,11 +1942,12 @@ NOTES:
 
    \clearpage
 
-.. _rtems_task_variable_delete:
 .. index:: per-task variable
 .. index:: task private variable
 .. index:: task private data
 .. index:: rtems_task_variable_delete
+
+.. _rtems_task_variable_delete:
 
 TASK_VARIABLE_DELETE - Remove per task variable
 -----------------------------------------------

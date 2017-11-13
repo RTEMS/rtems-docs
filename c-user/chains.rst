@@ -3,10 +3,10 @@
 .. COMMENT: Copyright 2014 Gedare Bloom.
 .. COMMENT: All rights reserved.
 
+.. index:: chains
+
 Chains
 ******
-
-.. index:: chains
 
 Introduction
 ============

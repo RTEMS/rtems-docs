@@ -19,6 +19,5 @@ developers.
    linker
    symbols
    exeinfo
-   trace-linker
    bsp-builder
    tester

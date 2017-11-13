@@ -4,8 +4,9 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-.. _fatal_error_manager:
 .. index:: fatal errors
+
+.. _fatal_error_manager:
 
 Fatal Error Manager
 *******************
@@ -386,8 +387,9 @@ INTERNAL_ERROR_LIBIO_STDERR_FD_OPEN_FAILED (37)
 Operations
 ==========
 
-.. _Terminate:
 .. index:: _Terminate
+
+.. _Terminate:
 
 Announcing a Fatal Error
 ------------------------
@@ -441,10 +443,11 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_fatal:
 .. index:: announce fatal error
 .. index:: fatal error, announce
 .. index:: rtems_fatal
+
+.. _rtems_fatal:
 
 FATAL - Invoke the fatal error
 ------------------------------
@@ -471,9 +474,10 @@ NOTE:
 
    \clearpage
 
-.. _rtems_shutdown_executive:
 .. index:: shutdown RTEMS
 .. index:: rtems_shutdown_executive
+
+.. _rtems_shutdown_executive:
 
 SHUTDOWN_EXECUTIVE - Shutdown RTEMS
 -----------------------------------
@@ -503,9 +507,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_exception_frame_print:
 .. index:: exception frame
 .. index:: rtems_exception_frame_print
+
+.. _rtems_exception_frame_print:
 
 EXCEPTION_FRAME_PRINT - Prints the exception frame
 --------------------------------------------------
@@ -527,9 +532,10 @@ DESCRIPTION:
 
    \clearpage
 
-.. _rtems_fatal_source_text:
 .. index:: fatal error
 .. index:: rtems_fatal_source_text
+
+.. _rtems_fatal_source_text:
 
 FATAL_SOURCE_TEXT - Returns a text for a fatal source
 -----------------------------------------------------
@@ -552,9 +558,10 @@ DESCRIPTION:
 
    \clearpage
 
-.. _rtems_internal_error_text:
 .. index:: fatal error
 .. index:: rtems_internal_error_text
+
+.. _rtems_internal_error_text:
 
 INTERNAL_ERROR_TEXT - Returns a text for an internal error code
 ---------------------------------------------------------------
@@ -577,10 +584,11 @@ DESCRIPTION:
 
    \clearpage
 
-.. _rtems_fatal_error_occurred:
 .. index:: announce fatal error
 .. index:: fatal error, announce
 .. index:: rtems_fatal_error_occurred
+
+.. _rtems_fatal_error_occurred:
 
 FATAL_ERROR_OCCURRED - Invoke the fatal error handler (deprecated)
 ------------------------------------------------------------------

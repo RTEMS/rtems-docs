@@ -125,9 +125,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_timespec_set:
 .. index:: set struct timespec instance
 .. index:: rtems_timespec_set
+
+.. _rtems_timespec_set:
 
 TIMESPEC_SET - Set struct timespec Instance
 -------------------------------------------
@@ -156,8 +157,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_zero:
 .. index:: rtems_timespec_zero
+
+.. _rtems_timespec_zero:
 
 TIMESPEC_ZERO - Zero struct timespec Instance
 ---------------------------------------------
@@ -183,8 +185,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_is_valid:
 .. index:: rtems_timespec_is_valid
+
+.. _rtems_timespec_is_valid:
 
 TIMESPEC_IS_VALID - Check validity of a struct timespec instance
 ----------------------------------------------------------------
@@ -212,8 +215,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_add_to:
 .. index:: rtems_timespec_add_to
+
+.. _rtems_timespec_add_to:
 
 TIMESPEC_ADD_TO - Add Two struct timespec Instances
 ---------------------------------------------------
@@ -241,8 +245,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_subtract:
 .. index:: rtems_timespec_subtract
+
+.. _rtems_timespec_subtract:
 
 TIMESPEC_SUBTRACT - Subtract Two struct timespec Instances
 ----------------------------------------------------------
@@ -275,8 +280,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_divide:
 .. index:: rtems_timespec_divide
+
+.. _rtems_timespec_divide:
 
 TIMESPEC_DIVIDE - Divide Two struct timespec Instances
 ------------------------------------------------------
@@ -315,8 +321,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_divide_by_integer:
 .. index:: rtems_timespec_divide_by_integer
+
+.. _rtems_timespec_divide_by_integer:
 
 TIMESPEC_DIVIDE_BY_INTEGER - Divide a struct timespec Instance by an Integer
 ----------------------------------------------------------------------------
@@ -346,8 +353,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_less_than:
 .. index:: rtems_timespec_less_than
+
+.. _rtems_timespec_less_than:
 
 TIMESPEC_LESS_THAN - Less than operator
 ---------------------------------------
@@ -376,8 +384,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_greater_than:
 .. index:: rtems_timespec_greater_than
+
+.. _rtems_timespec_greater_than:
 
 TIMESPEC_GREATER_THAN - Greater than operator
 ---------------------------------------------
@@ -404,8 +413,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_equal_to:
 .. index:: rtems_timespec_equal_to
+
+.. _rtems_timespec_equal_to:
 
 TIMESPEC_EQUAL_TO - Check equality of timespecs
 -----------------------------------------------
@@ -432,8 +442,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_get_seconds:
 .. index:: rtems_timespec_get_seconds
+
+.. _rtems_timespec_get_seconds:
 
 TIMESPEC_GET_SECONDS - Get Seconds Portion of struct timespec Instance
 ----------------------------------------------------------------------
@@ -460,8 +471,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_get_nanoseconds:
 .. index:: rtems_timespec_get_nanoseconds
+
+.. _rtems_timespec_get_nanoseconds:
 
 TIMESPEC_GET_NANOSECONDS - Get Nanoseconds Portion of the struct timespec Instance
 ----------------------------------------------------------------------------------
@@ -488,8 +500,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_to_ticks:
 .. index:: rtems_timespec_to_ticks
+
+.. _rtems_timespec_to_ticks:
 
 TIMESPEC_TO_TICKS - Convert struct timespec Instance to Ticks
 -------------------------------------------------------------
@@ -515,8 +528,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timespec_from_ticks:
 .. index:: rtems_timespec_from_ticks
+
+.. _rtems_timespec_from_ticks:
 
 TIMESPEC_FROM_TICKS - Convert Ticks to struct timespec Representation
 ---------------------------------------------------------------------

@@ -135,9 +135,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_partition_create:
 .. index:: create a partition
 .. index:: rtems_partition_create
+
+.. _rtems_partition_create:
 
 PARTITION_CREATE - Create a partition
 -------------------------------------
@@ -229,10 +230,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_partition_ident:
 .. index:: get ID of a partition
 .. index:: obtain ID of a partition
 .. index:: rtems_partition_ident
+
+.. _rtems_partition_ident:
 
 PARTITION_IDENT - Get ID of a partition
 ---------------------------------------
@@ -283,9 +285,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_partition_delete:
 .. index:: delete a partition
 .. index:: rtems_partition_delete
+
+.. _rtems_partition_delete:
 
 PARTITION_DELETE - Delete a partition
 -------------------------------------
@@ -332,10 +335,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_partition_get_buffer:
 .. index:: get buffer from partition
 .. index:: obtain buffer from partition
 .. index:: rtems_partition_get_buffer
+
+.. _rtems_partition_get_buffer:
 
 PARTITION_GET_BUFFER - Get buffer from a partition
 --------------------------------------------------
@@ -380,9 +384,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_partition_return_buffer:
 .. index:: return buffer to partitition
 .. index:: rtems_partition_return_buffer
+
+.. _rtems_partition_return_buffer:
 
 PARTITION_RETURN_BUFFER - Return buffer to a partition
 ------------------------------------------------------

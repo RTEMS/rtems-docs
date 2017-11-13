@@ -3,6 +3,8 @@
 .. comment: Copyright (c) 2016 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
+.. index:: Quick Start
+
 Quick Start
 ***********
 
@@ -18,9 +20,9 @@ to complete successfully. :ref:`host-computer` details what is needed for the
 supported host operating systems. If Windows is being used it is recommended
 following the procedure in :ref:`microsoft-windows` first.
 
-Their are many ways and locations a suitable environment can be set up. A
+There are many ways and locations a suitable environment can be set up. A
 common factor that defines the final location of tools and projects is the
-place you have suitable storage. :ref:`prefixes` and :ref:`project-sandboxing`
+place you have suitable storage. :ref:`Prefixes` and :ref:`project-sandboxing`
 provide detailed examples of possible locations and set ups .
 
 This procedure installs a developer set up using the RTEMS Git repositories on

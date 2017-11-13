@@ -182,9 +182,10 @@ related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_event_send:
 .. index:: send event set to a task
 .. index:: rtems_event_send
+
+.. _rtems_event_send:
 
 EVENT_SEND - Send event set to a task
 -------------------------------------
@@ -233,9 +234,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_event_receive:
 .. index:: receive event condition
 .. index:: rtems_event_receive
+
+.. _rtems_event_receive:
 
 EVENT_RECEIVE - Receive event condition
 ---------------------------------------

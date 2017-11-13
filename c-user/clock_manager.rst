@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: clock
+
 Clock Manager
 *************
-
-.. index:: clock
 
 Introduction
 ============

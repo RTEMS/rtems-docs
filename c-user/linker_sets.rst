@@ -4,8 +4,9 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-.. _linker_sets:
 .. index:: linkersets
+
+.. _linker_sets:
 
 Linker Sets
 ***********
@@ -126,8 +127,9 @@ Directives
 
    \clearpage
 
-.. _RTEMS_LINKER_SET_BEGIN:
 .. index:: RTEMS_LINKER_SET_BEGIN
+
+.. _RTEMS_LINKER_SET_BEGIN:
 
 RTEMS_LINKER_SET_BEGIN - Designator of the linker set begin marker
 ------------------------------------------------------------------
@@ -159,8 +161,9 @@ NOTE:
 
    \clearpage
 
-.. _RTEMS_LINKER_SET_END:
 .. index:: RTEMS_LINKER_SET_END
+
+.. _RTEMS_LINKER_SET_END:
 
 RTEMS_LINKER_SET_END - Designator of the linker set end marker
 --------------------------------------------------------------
@@ -181,8 +184,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_SET_SIZE:
 .. index:: RTEMS_LINKER_SET_SIZE
+
+.. _RTEMS_LINKER_SET_SIZE:
 
 RTEMS_LINKER_SET_SIZE - The linker set size in characters
 ---------------------------------------------------------
@@ -202,8 +206,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_SET_ITEM_COUNT:
 .. index:: RTEMS_LINKER_SET_ITEM_COUNT
+
+.. _RTEMS_LINKER_SET_ITEM_COUNT:
 
 RTEMS_LINKER_SET_ITEM_COUNT - The linker set item count
 ---------------------------------------------------------
@@ -222,8 +227,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_SET_IS_EMPTY:
 .. index:: RTEMS_LINKER_SET_IS_EMPTY
+
+.. _RTEMS_LINKER_SET_IS_EMPTY:
 
 RTEMS_LINKER_SET_IS_EMPTY - Is the linker set empty?
 ---------------------------------------------------------
@@ -243,8 +249,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_SET_FOREACH:
 .. index:: RTEMS_LINKER_SET_FOREACH
+
+.. _RTEMS_LINKER_SET_FOREACH:
 
 RTEMS_LINKER_SET_FOREACH - Iterate through the linker set items
 ---------------------------------------------------------
@@ -279,8 +286,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET_DECLARE:
 .. index:: RTEMS_LINKER_ROSET_DECLARE
+
+.. _RTEMS_LINKER_ROSET_DECLARE:
 
 RTEMS_LINKER_ROSET_DECLARE - Declares a read-only linker set
 ------------------------------------------------------------
@@ -302,8 +310,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET:
 .. index:: RTEMS_LINKER_ROSET
+
+.. _RTEMS_LINKER_ROSET:
 
 RTEMS_LINKER_ROSET - Defines a read-only linker set
 ---------------------------------------------------
@@ -325,8 +334,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET_ITEM_DECLARE:
 .. index:: RTEMS_LINKER_ROSET_ITEM_DECLARE
+
+.. _RTEMS_LINKER_ROSET_ITEM_DECLARE:
 
 RTEMS_LINKER_ROSET_ITEM_DECLARE - Declares a read-only linker set item
 ----------------------------------------------------------------------
@@ -350,8 +360,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET_ITEM_REFERENCE:
 .. index:: RTEMS_LINKER_ROSET_ITEM_REFERENCE
+
+.. _RTEMS_LINKER_ROSET_ITEM_REFERENCE:
 
 RTEMS_LINKER_ROSET_ITEM_REFERENCE - References a read-only linker set item
 --------------------------------------------------------------------------
@@ -375,8 +386,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET_ITEM:
 .. index:: RTEMS_LINKER_ROSET_ITEM
+
+.. _RTEMS_LINKER_ROSET_ITEM:
 
 RTEMS_LINKER_ROSET_ITEM - Defines a read-only linker set item
 -------------------------------------------------------------
@@ -400,8 +412,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET_ITEM_ORDERED:
 .. index:: RTEMS_LINKER_ROSET_ITEM_ORDERED
+
+.. _RTEMS_LINKER_ROSET_ITEM_ORDERED:
 
 RTEMS_LINKER_ROSET_ITEM_ORDERED - Defines an ordered read-only linker set item
 ------------------------------------------------------------------------------
@@ -457,8 +470,9 @@ NOTES:
 
    \clearpage
 
-.. _RTEMS_LINKER_ROSET_CONTENT:
 .. index:: RTEMS_LINKER_ROSET_CONTENT
+
+.. _RTEMS_LINKER_ROSET_CONTENT:
 
 RTEMS_LINKER_ROSET_CONTENT - Marks a declaration as a read-only linker set content
 ----------------------------------------------------------------------------------
@@ -479,8 +493,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET_DECLARE:
 .. index:: RTEMS_LINKER_RWSET_DECLARE
+
+.. _RTEMS_LINKER_RWSET_DECLARE:
 
 RTEMS_LINKER_RWSET_DECLARE - Declares a read-write linker set
 -------------------------------------------------------------
@@ -502,8 +517,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET:
 .. index:: RTEMS_LINKER_RWSET
+
+.. _RTEMS_LINKER_RWSET:
 
 RTEMS_LINKER_RWSET - Defines a read-write linker set
 ----------------------------------------------------
@@ -525,8 +541,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET_ITEM_DECLARE:
 .. index:: RTEMS_LINKER_RWSET_ITEM_DECLARE
+
+.. _RTEMS_LINKER_RWSET_ITEM_DECLARE:
 
 RTEMS_LINKER_RWSET_ITEM_DECLARE - Declares a read-write linker set item
 -----------------------------------------------------------------------
@@ -550,8 +567,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET_ITEM_REFERENCE:
 .. index:: RTEMS_LINKER_RWSET_ITEM_REFERENCE
+
+.. _RTEMS_LINKER_RWSET_ITEM_REFERENCE:
 
 RTEMS_LINKER_RWSET_ITEM_REFERENCE - References a read-write linker set item
 ---------------------------------------------------------------------------
@@ -575,8 +593,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET_ITEM:
 .. index:: RTEMS_LINKER_RWSET_ITEM
+
+.. _RTEMS_LINKER_RWSET_ITEM:
 
 RTEMS_LINKER_RWSET_ITEM - Defines a read-write linker set item
 --------------------------------------------------------------
@@ -600,8 +619,9 @@ DESCRIPTION:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET_ITEM_ORDERED:
 .. index:: RTEMS_LINKER_RWSET_ITEM_ORDERED
+
+.. _RTEMS_LINKER_RWSET_ITEM_ORDERED:
 
 RTEMS_LINKER_RWSET_ITEM_ORDERED - Defines an ordered read-write linker set item
 -------------------------------------------------------------------------------
@@ -657,8 +677,9 @@ NOTES:
 
    \clearpage
 
-.. _RTEMS_LINKER_RWSET_CONTENT:
 .. index:: RTEMS_LINKER_RWSET_CONTENT
+
+.. _RTEMS_LINKER_RWSET_CONTENT:
 
 RTEMS_LINKER_RWSET_CONTENT - Marks a declaration as a read-write linker set content
 -----------------------------------------------------------------------------------

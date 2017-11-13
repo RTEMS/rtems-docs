@@ -194,9 +194,10 @@ related constants, usage, and status codes.
 .. raw:: latex
 
    \clearpage
-.. _rtems_timer_create:
 .. index:: create a timer
 .. index:: rtems_timer_create
+
+.. _rtems_timer_create:
 
 TIMER_CREATE - Create a timer
 -----------------------------
@@ -240,9 +241,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_ident:
 .. index:: obtain the ID of a timer
 .. index:: rtems_timer_ident
+
+.. _rtems_timer_ident:
 
 TIMER_IDENT - Get ID of a timer
 -------------------------------
@@ -280,9 +282,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_cancel:
 .. index:: cancel a timer
 .. index:: rtems_timer_cancel
+
+.. _rtems_timer_cancel:
 
 TIMER_CANCEL - Cancel a timer
 -----------------------------
@@ -315,9 +318,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_delete:
 .. index:: delete a timer
 .. index:: rtems_timer_delete
+
+.. _rtems_timer_delete:
 
 TIMER_DELETE - Delete a timer
 -----------------------------
@@ -354,9 +358,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_fire_after:
 .. index:: fire a timer after an interval
 .. index:: rtems_timer_fire_after
+
+.. _rtems_timer_fire_after:
 
 TIMER_FIRE_AFTER - Fire timer after interval
 --------------------------------------------
@@ -398,9 +403,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_fire_when:
 .. index:: fire a timer at wall time
 .. index:: rtems_timer_fire_when
+
+.. _rtems_timer_fire_when:
 
 TIMER_FIRE_WHEN - Fire timer when specified
 -------------------------------------------
@@ -446,9 +452,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_initiate_server:
 .. index:: initiate the Timer Server
 .. index:: rtems_timer_initiate_server
+
+.. _rtems_timer_initiate_server:
 
 TIMER_INITIATE_SERVER - Initiate server for task-based timers
 -------------------------------------------------------------
@@ -491,9 +498,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_server_fire_after:
 .. index:: fire task-based a timer after an interval
 .. index:: rtems_timer_server_fire_after
+
+.. _rtems_timer_server_fire_after:
 
 TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
 --------------------------------------------------------------
@@ -539,9 +547,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_server_fire_when:
 .. index:: fire a task-based timer at wall time
 .. index:: rtems_timer_server_fire_when
+
+.. _rtems_timer_server_fire_when:
 
 TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
 -------------------------------------------------------------
@@ -591,9 +600,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_timer_reset:
 .. index:: reset a timer
 .. index:: rtems_timer_reset
+
+.. _rtems_timer_reset:
 
 TIMER_RESET - Reset an interval timer
 -------------------------------------

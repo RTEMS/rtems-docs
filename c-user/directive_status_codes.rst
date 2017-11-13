@@ -84,8 +84,9 @@ The directives are:
 
    \clearpage
 
-.. _rtems_status_text:
 .. index:: rtems_status_text
+
+.. _rtems_status_text:
 
 STATUS_TEXT - Returns the enumeration name for a status code
 ------------------------------------------------------------

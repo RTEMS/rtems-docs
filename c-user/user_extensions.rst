@@ -4,8 +4,9 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-.. _User Extensions Manager:
 .. index:: user extensions
+
+.. _User Extensions Manager:
 
 User Extensions Manager
 ***********************
@@ -424,9 +425,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_extension_create:
 .. index:: create an extension set
 .. index:: rtems_extension_create
+
+.. _rtems_extension_create:
 
 EXTENSION_CREATE - Create a extension set
 -----------------------------------------
@@ -472,10 +474,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_extension_ident:
 .. index:: get ID of an extension set
 .. index:: obtain ID of an extension set
 .. index:: rtems_extension_ident
+
+.. _rtems_extension_ident:
 
 EXTENSION_IDENT - Get ID of a extension set
 -------------------------------------------
@@ -513,9 +516,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_extension_delete:
 .. index:: delete an extension set
 .. index:: rtems_extension_delete
+
+.. _rtems_extension_delete:
 
 EXTENSION_DELETE - Delete a extension set
 -----------------------------------------

@@ -110,8 +110,9 @@ calling sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_cpu_usage_report:
 .. index:: rtems_cpu_usage_report
+
+.. _rtems_cpu_usage_report:
 
 cpu_usage_report - Report CPU Usage Statistics
 ----------------------------------------------
@@ -135,8 +136,9 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cpu_usage_reset:
 .. index:: rtems_cpu_usage_reset
+
+.. _rtems_cpu_usage_reset:
 
 cpu_usage_reset - Reset CPU Usage Statistics
 --------------------------------------------

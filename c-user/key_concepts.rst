@@ -270,8 +270,9 @@ relationships define a directed acyclic graph (DAG).  The run-time of the mutex
 obtain, release and timeout operations depend on the complexity of this
 resource dependency graph.
 
-.. _PriorityInversion:
 .. index:: priority inversion
+
+.. _PriorityInversion:
 
 Priority Inversion
 ------------------
@@ -286,9 +287,10 @@ priority tasks.  Because the low priority task is not executing, it cannot
 complete its interaction with the resource and release that resource.  The high
 priority task is effectively prevented from executing by lower priority tasks.
 
-.. _PriorityCeiling:
 .. index:: priority ceiling protocol
 .. index:: immediate ceiling priority protocol
+
+.. _PriorityCeiling:
 
 Immediate Ceiling Priority Protocol (ICPP)
 ------------------------------------------
@@ -312,8 +314,9 @@ may occur while a thread owns a particular mutex, the priority inheritance
 protocol is more forgiving in that it does not require this apriori
 information.
 
-.. _PriorityInheritance:
 .. index:: priority inheritance protocol
+
+.. _PriorityInheritance:
 
 Priority Inheritance Protocol
 -----------------------------
@@ -323,8 +326,9 @@ threads that currently wait for ownership of this mutex :cite:`Sha:1990:PI`.
 Since RTEMS 5.1, priority updates due to the priority inheritance protocol
 take place immediately and are propagated recursively.
 
-.. _MrsP:
 .. index:: Multiprocessor Resource Sharing Protocol (MrsP)
+
+.. _MrsP:
 
 Multiprocessor Resource Sharing Protocol (MrsP)
 -----------------------------------------------
@@ -344,8 +348,9 @@ protocol is available since RTEMS 4.11. It was re-implemented in RTEMS 5.1 to
 overcome some shortcomings of the original implementation
 :cite:`Catellani:2015:MrsP`.
 
-.. _OMIP:
 .. index:: O(m) Independence-Preserving Protocol (OMIP)
+
+.. _OMIP:
 
 O(m) Independence-Preserving Protocol (OMIP)
 ----------------------------------------------------

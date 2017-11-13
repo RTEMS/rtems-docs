@@ -481,9 +481,10 @@ usage, and status codes.
 
    \clearpage
 
-.. _rtems_multiprocessing_announce:
 .. index:: announce arrival of package
 .. index:: rtems_multiprocessing_announce
+
+.. _rtems_multiprocessing_announce:
 
 MULTIPROCESSING_ANNOUNCE - Announce the arrival of a packet
 -----------------------------------------------------------

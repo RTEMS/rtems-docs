@@ -4,9 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-.. _ada_support
-
 .. index:: Ada
+.. _ada_support:
 
 Ada Support
 ************

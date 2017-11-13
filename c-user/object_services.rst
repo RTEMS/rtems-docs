@@ -180,9 +180,10 @@ Directives
 
    \clearpage
 
-.. _rtems_build_name:
 .. index:: build object name
 .. index:: rtems_build_name
+
+.. _rtems_build_name:
 
 BUILD_NAME - Build object name from characters
 ----------------------------------------------
@@ -212,10 +213,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_get_classic_name:
 .. index:: get name from id
 .. index:: obtain name from id
 .. index:: rtems_object_get_classic_name
+
+.. _rtems_object_get_classic_name:
 
 OBJECT_GET_CLASSIC_NAME - Lookup name from id
 ---------------------------------------------
@@ -250,10 +252,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_get_name:
 .. index:: get object name as string
 .. index:: obtain object name as string
 .. index:: rtems_object_get_name
+
+.. _rtems_object_get_name:
 
 OBJECT_GET_NAME - Obtain object name as string
 ----------------------------------------------
@@ -283,9 +286,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_set_name:
 .. index:: set object name
 .. index:: rtems_object_set_name
+
+.. _rtems_object_set_name:
 
 OBJECT_SET_NAME - Set object name
 ---------------------------------
@@ -330,9 +334,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_get_api:
 .. index:: obtain API from id
 .. index:: rtems_object_id_get_api
+
+.. _rtems_object_id_get_api:
 
 OBJECT_ID_GET_API - Obtain API from Id
 --------------------------------------
@@ -359,9 +364,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_get_class:
 .. index:: obtain class from object id
 .. index:: rtems_object_id_get_class
+
+.. _rtems_object_id_get_class:
 
 OBJECT_ID_GET_CLASS - Obtain Class from Id
 ------------------------------------------
@@ -388,9 +394,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_get_node:
 .. index:: obtain node from object id
 .. index:: rtems_object_id_get_node
+
+.. _rtems_object_id_get_node:
 
 OBJECT_ID_GET_NODE - Obtain Node from Id
 ----------------------------------------
@@ -417,9 +424,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_get_index:
 .. index:: obtain index from object id
 .. index:: rtems_object_id_get_index
+
+.. _rtems_object_id_get_index:
 
 OBJECT_ID_GET_INDEX - Obtain Index from Id
 ------------------------------------------
@@ -446,9 +454,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_build_id:
 .. index:: build object id from components
 .. index:: rtems_build_id
+
+.. _rtems_build_id:
 
 BUILD_ID - Build Object Id From Components
 ------------------------------------------
@@ -480,9 +489,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_api_minimum:
 .. index:: obtain minimum API value
 .. index:: rtems_object_id_api_minimum
+
+.. _rtems_object_id_api_minimum:
 
 OBJECT_ID_API_MINIMUM - Obtain Minimum API Value
 ------------------------------------------------
@@ -505,9 +515,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_api_maximum:
 .. index:: obtain maximum API value
 .. index:: rtems_object_id_api_maximum
+
+.. _rtems_object_id_api_maximum:
 
 OBJECT_ID_API_MAXIMUM - Obtain Maximum API Value
 ------------------------------------------------
@@ -530,9 +541,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_api_minimum_class:
 .. index:: obtain minimum class value
 .. index:: rtems_object_api_minimum_class
+
+.. _rtems_object_api_minimum_class:
 
 OBJECT_API_MINIMUM_CLASS - Obtain Minimum Class Value
 -----------------------------------------------------
@@ -561,9 +573,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_api_maximum_class:
 .. index:: obtain maximum class value
 .. index:: rtems_object_api_maximum_class
+
+.. _rtems_object_api_maximum_class:
 
 OBJECT_API_MAXIMUM_CLASS - Obtain Maximum Class Value
 -----------------------------------------------------
@@ -592,9 +605,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_api_minimum_class:
 .. index:: obtain minimum class value for an API
 .. index:: rtems_object_id_api_minimum_class
+
+.. _rtems_object_id_api_minimum_class:
 
 OBJECT_ID_API_MINIMUM_CLASS - Obtain Minimum Class Value for an API
 -------------------------------------------------------------------
@@ -623,9 +637,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_id_api_maximum_class:
 .. index:: obtain maximum class value for an API
 .. index:: rtems_object_id_api_maximum_class
+
+.. _rtems_object_id_api_maximum_class:
 
 OBJECT_ID_API_MAXIMUM_CLASS - Obtain Maximum Class Value for an API
 -------------------------------------------------------------------
@@ -654,9 +669,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_get_api_name:
 .. index:: obtain API name
 .. index:: rtems_object_get_api_name
+
+.. _rtems_object_get_api_name:
 
 OBJECT_GET_API_NAME - Obtain API Name
 -------------------------------------
@@ -686,9 +702,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_get_api_class_name:
 .. index:: obtain class name
 .. index:: rtems_object_get_api_class_name
+
+.. _rtems_object_get_api_class_name:
 
 OBJECT_GET_API_CLASS_NAME - Obtain Class Name
 ---------------------------------------------
@@ -722,9 +739,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_object_get_class_information:
 .. index:: obtain class information
 .. index:: rtems_object_get_class_information
+
+.. _rtems_object_get_class_information:
 
 OBJECT_GET_CLASS_INFORMATION - Obtain Class Information
 -------------------------------------------------------

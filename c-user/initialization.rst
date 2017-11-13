@@ -71,7 +71,7 @@ Initializing RTEMS
 ------------------
 
 The Initialization Manager :c:func:`rtems_initialize_executive()` directives is
-called by the :c:ref:`boot_card()` routine which is invoked by the Board
+called by the :c:func:`boot_card()` routine which is invoked by the Board
 Support Package once a basic C run-time environment is set up.  This consists
 of
 
@@ -305,10 +305,11 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_initialize_executive:
 .. index:: initialize RTEMS
 .. index:: start multitasking
 .. index:: rtems_initialize_executive
+
+.. _rtems_initialize_executive:
 
 INITIALIZE_EXECUTIVE - Initialize RTEMS
 ---------------------------------------

@@ -224,8 +224,9 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_region_create:
 .. index:: create a region
+
+.. _rtems_region_create:
 
 REGION_CREATE - Create a region
 -------------------------------
@@ -300,10 +301,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_ident:
 .. index:: get ID of a region
 .. index:: obtain ID of a region
 .. index:: rtems_region_ident
+
+.. _rtems_region_ident:
 
 REGION_IDENT - Get ID of a region
 ---------------------------------
@@ -342,9 +344,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_delete:
 .. index:: delete a region
 .. index:: rtems_region_delete
+
+.. _rtems_region_delete:
 
 REGION_DELETE - Delete a region
 -------------------------------
@@ -383,10 +386,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_extend:
 .. index:: add memory to a region
 .. index:: region, add memory
 .. index:: rtems_region_extend
+
+.. _rtems_region_extend:
 
 REGION_EXTEND - Add memory to a region
 --------------------------------------
@@ -436,9 +440,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_get_segment:
 .. index:: get segment from region
 .. index:: rtems_region_get_segment
+
+.. _rtems_region_get_segment:
 
 REGION_GET_SEGMENT - Get segment from a region
 ----------------------------------------------
@@ -522,9 +527,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_return_segment:
 .. index:: return segment to region
 .. index:: rtems_region_return_segment
+
+.. _rtems_region_return_segment:
 
 REGION_RETURN_SEGMENT - Return segment to a region
 --------------------------------------------------
@@ -571,9 +577,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_get_segment_size:
 .. index:: get size of segment
 .. index:: rtems_region_get_segment_size
+
+.. _rtems_region_get_segment_size:
 
 REGION_GET_SEGMENT_SIZE - Obtain size of a segment
 --------------------------------------------------
@@ -613,9 +620,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_region_resize_segment:
 .. index:: resize segment
 .. index:: rtems_region_resize_segment
+
+.. _rtems_region_resize_segment:
 
 REGION_RESIZE_SEGMENT - Change size of a segment
 ------------------------------------------------

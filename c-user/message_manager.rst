@@ -220,9 +220,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_message_queue_create:
 .. index:: create a message queue
 .. index:: rtems_message_queue_create
+
+.. _rtems_message_queue_create:
 
 MESSAGE_QUEUE_CREATE - Create a queue
 -------------------------------------
@@ -307,9 +308,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_ident:
 .. index:: get ID of a message queue
 .. index:: rtems_message_queue_ident
+
+.. _rtems_message_queue_ident:
 
 MESSAGE_QUEUE_IDENT - Get ID of a queue
 ---------------------------------------
@@ -360,9 +362,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_delete:
 .. index:: delete a message queue
 .. index:: rtems_message_queue_delete
+
+.. _rtems_message_queue_delete:
 
 MESSAGE_QUEUE_DELETE - Delete a queue
 -------------------------------------
@@ -418,9 +421,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_send:
 .. index:: send message to a queue
 .. index:: rtems_message_queue_send
+
+.. _rtems_message_queue_send:
 
 MESSAGE_QUEUE_SEND - Put message at rear of a queue
 ---------------------------------------------------
@@ -475,9 +479,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_urgent:
 .. index:: put message at front of queue
 .. index:: rtems_message_queue_urgent
+
+.. _rtems_message_queue_urgent:
 
 MESSAGE_QUEUE_URGENT - Put message at front of a queue
 ------------------------------------------------------
@@ -532,9 +537,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_broadcast:
 .. index:: broadcast message to a queue
 .. index:: rtems_message_queue_broadcast
+
+.. _rtems_message_queue_broadcast:
 
 MESSAGE_QUEUE_BROADCAST - Broadcast N messages to a queue
 ---------------------------------------------------------
@@ -592,9 +598,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_receive:
 .. index:: receive message from a queue
 .. index:: rtems_message_queue_receive
+
+.. _rtems_message_queue_receive:
 
 MESSAGE_QUEUE_RECEIVE - Receive message from a queue
 ----------------------------------------------------
@@ -679,9 +686,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_get_number_pending:
 .. index:: get number of pending messages
 .. index:: rtems_message_queue_get_number_pending
+
+.. _rtems_message_queue_get_number_pending:
 
 MESSAGE_QUEUE_GET_NUMBER_PENDING - Get number of messages pending on a queue
 ----------------------------------------------------------------------------
@@ -718,9 +726,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_message_queue_flush:
 .. index:: flush messages on a queue
 .. index:: rtems_message_queue_flush
+
+.. _rtems_message_queue_flush:
 
 MESSAGE_QUEUE_FLUSH - Flush all messages on a queue
 ---------------------------------------------------

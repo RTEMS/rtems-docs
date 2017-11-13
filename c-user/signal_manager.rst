@@ -211,10 +211,11 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_signal_catch:
 .. index:: establish an ASR
 .. index:: install an ASR
 .. index:: rtems_signal_catch
+
+.. _rtems_signal_catch:
 
 SIGNAL_CATCH - Establish an ASR
 -------------------------------
@@ -272,9 +273,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_signal_send:
 .. index:: send signal set
 .. index:: rtems_signal_send
+
+.. _rtems_signal_send:
 
 SIGNAL_SEND - Send signal set to a task
 ---------------------------------------

@@ -634,9 +634,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_rate_monotonic_create:
 .. index:: create a period
 .. index:: rtems_rate_monotonic_create
+
+.. _rtems_rate_monotonic_create:
 
 RATE_MONOTONIC_CREATE - Create a rate monotonic period
 ------------------------------------------------------
@@ -674,10 +675,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_ident:
 .. index:: get ID of a period
 .. index:: obtain ID of a period
 .. index:: rtems_rate_monotonic_ident
+
+.. _rtems_rate_monotonic_ident:
 
 RATE_MONOTONIC_IDENT - Get ID of a period
 -----------------------------------------
@@ -713,9 +715,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_cancel:
 .. index:: cancel a period
 .. index:: rtems_rate_monotonic_cancel
+
+.. _rtems_rate_monotonic_cancel:
 
 RATE_MONOTONIC_CANCEL - Cancel a period
 ---------------------------------------
@@ -754,9 +757,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_delete:
 .. index:: rtems_rate_monotonic_delete
 .. index:: delete a period
+
+.. _rtems_rate_monotonic_delete:
 
 RATE_MONOTONIC_DELETE - Delete a rate monotonic period
 ------------------------------------------------------
@@ -793,11 +797,12 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_period:
 .. index:: conclude current period
 .. index:: start current period
 .. index:: period initiation
 .. index:: rtems_rate_monotonic_period
+
+.. _rtems_rate_monotonic_period:
 
 RATE_MONOTONIC_PERIOD - Conclude current/Start next period
 ----------------------------------------------------------
@@ -847,10 +852,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_get_status:
 .. index:: get status of period
 .. index:: obtain status of period
 .. index:: rtems_rate_monotonic_get_status
+
+.. _rtems_rate_monotonic_get_status:
 
 RATE_MONOTONIC_GET_STATUS - Obtain status from a period
 -------------------------------------------------------
@@ -898,12 +904,13 @@ DIRECTIVE STATUS CODES:
     time values will be set to 0.  Otherwise, both time values will contain
     time information since the last invocation of the
     ``rtems_rate_monotonic_period`` directive.  More specifically, the
-    since_last_period value contains the elapsed time which has occurred
-    since the last invocation of the ``rtems_rate_monotonic_period`` directive
-    and the ``executed_since_last_period`` contains how much processor
-    time the owning task has consumed since the invocation of the
+    since_last_period value contains the elapsed time which has occurred since
+    the last invocation of the ``rtems_rate_monotonic_period`` directive and
+    the ``executed_since_last_period`` contains how much processor time the
+    owning task has consumed since the invocation of the
     ``rtems_rate_monotonic_period`` directive. In addition, the
-    postponed_jobs_count value contains the count of jobs which are not released yet.
+    ``postponed_jobs_count value`` contains the count of jobs which are not
+    released yet.
 
 NOTES:
     This directive will not cause the running task to be preempted.
@@ -912,10 +919,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_get_statistics:
 .. index:: get statistics of period
 .. index:: obtain statistics of period
 .. index:: rtems_rate_monotonic_get_statistics
+
+.. _rtems_rate_monotonic_get_statistics:
 
 RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
 ---------------------------------------------------------------
@@ -981,9 +989,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_reset_statistics:
 .. index:: reset statistics of period
 .. index:: rtems_rate_monotonic_reset_statistics
+
+.. _rtems_rate_monotonic_reset_statistics:
 
 RATE_MONOTONIC_RESET_STATISTICS - Reset statistics for a period
 ---------------------------------------------------------------
@@ -1015,9 +1024,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_reset_all_statistics:
 .. index:: reset statistics of all periods
 .. index:: rtems_rate_monotonic_reset_all_statistics
+
+.. _rtems_rate_monotonic_reset_all_statistics:
 
 RATE_MONOTONIC_RESET_ALL_STATISTICS - Reset statistics for all periods
 ----------------------------------------------------------------------
@@ -1041,10 +1051,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_rate_monotonic_report_statistics:
 .. index:: print period statistics report
 .. index:: period statistics report
 .. index:: rtems_rate_monotonic_report_statistics
+
+.. _rtems_rate_monotonic_report_statistics:
 
 RATE_MONOTONIC_REPORT_STATISTICS - Print period statistics report
 -----------------------------------------------------------------

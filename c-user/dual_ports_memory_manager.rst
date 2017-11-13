@@ -99,9 +99,10 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_port_create:
 .. index:: create a port
 .. index:: rtems_port_create
+
+.. _rtems_port_create:
 
 PORT_CREATE - Create a port
 ---------------------------
@@ -152,10 +153,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_port_ident:
 .. index:: get ID of a port
 .. index:: obtain ID of a port
 .. index:: rtems_port_ident
+
+.. _rtems_port_ident:
 
 PORT_IDENT - Get ID of a port
 -----------------------------
@@ -193,9 +195,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_port_delete:
 .. index:: delete a port
 .. index:: rtems_port_delete
+
+.. _rtems_port_delete:
 
 PORT_DELETE - Delete a port
 ---------------------------
@@ -230,9 +233,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_port_external_to_internal:
 .. index:: convert external to internal address
 .. index:: rtems_port_external_to_internal
+
+.. _rtems_port_external_to_internal:
 
 PORT_EXTERNAL_TO_INTERNAL - Convert external to internal address
 ----------------------------------------------------------------
@@ -270,9 +274,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_port_internal_to_external:
 .. index:: convert internal to external address
 .. index:: rtems_port_internal_to_external
+
+.. _rtems_port_internal_to_external:
 
 PORT_INTERNAL_TO_EXTERNAL - Convert internal to external address
 ----------------------------------------------------------------

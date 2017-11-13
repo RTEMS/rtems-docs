@@ -4,9 +4,8 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-.. _Configuring a System:
-
 .. index:: configuring a system
+.. _Configuring a System:
 
 Configuring a System
 ********************
@@ -442,8 +441,9 @@ responsible for enabling unlimited objects and specifying the allocation size.
 
 .. COMMENT: === CONFIGURE_UNLIMITED_OBJECTS ===
 
-.. _Enable Unlimited Object Instances:
 .. index:: CONFIGURE_UNLIMITED_OBJECTS
+
+.. _Enable Unlimited Object Instances:
 
 Enable Unlimited Object Instances
 ---------------------------------
@@ -517,8 +517,9 @@ supported by ``<rtems/confdefs.h>``.
 
 .. COMMENT: === CONFIGURE_MAXIMUM_TASKS ===
 
-.. _Specify Maximum Classic API Tasks:
 .. index:: CONFIGURE_MAXIMUM_TASKS
+
+.. _Specify Maximum Classic API Tasks:
 
 Specify Maximum Classic API Tasks
 ---------------------------------
@@ -562,8 +563,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_TIMERS ===
 
-.. _Specify Maximum Classic API Timers:
 .. index:: CONFIGURE_MAXIMUM_TIMERS
+
+.. _Specify Maximum Classic API Timers:
 
 Specify Maximum Classic API Timers
 ----------------------------------
@@ -589,8 +591,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_SEMAPHORES ===
 
-.. _Specify Maximum Classic API Semaphores:
 .. index:: CONFIGURE_MAXIMUM_SEMAPHORES
+
+.. _Specify Maximum Classic API Semaphores:
 
 Specify Maximum Classic API Semaphores
 --------------------------------------
@@ -616,8 +619,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_MRSP_SEMAPHORES ===
 
-.. _Specify Maximum Classic API Semaphores usable with MrsP:
 .. index:: CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
+
+.. _Specify Maximum Classic API Semaphores usable with MrsP:
 
 Specify Maximum Classic API Semaphores usable with MrsP
 -------------------------------------------------------
@@ -645,8 +649,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_MESSAGE_QUEUES ===
 
-.. _Specify Maximum Classic API Message Queues:
 .. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
+
+.. _Specify Maximum Classic API Message Queues:
 
 Specify Maximum Classic API Message Queues
 ------------------------------------------
@@ -672,8 +677,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_BARRIERS ===
 
-.. _Specify Maximum Classic API Barriers:
 .. index:: CONFIGURE_MAXIMUM_BARRIERS
+
+.. _Specify Maximum Classic API Barriers:
 
 Specify Maximum Classic API Barriers
 ------------------------------------
@@ -699,8 +705,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_PERIODS ===
 
-.. _Specify Maximum Classic API Periods:
 .. index:: CONFIGURE_MAXIMUM_PERIODS
+
+.. _Specify Maximum Classic API Periods:
 
 Specify Maximum Classic API Periods
 -----------------------------------
@@ -726,8 +733,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_PARTITIONS ===
 
-.. _Specify Maximum Classic API Partitions:
 .. index:: CONFIGURE_MAXIMUM_PARTITIONS
+
+.. _Specify Maximum Classic API Partitions:
 
 Specify Maximum Classic API Partitions
 --------------------------------------
@@ -753,8 +761,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_REGIONS ===
 
-.. _Specify Maximum Classic API Regions:
 .. index:: CONFIGURE_MAXIMUM_REGIONS
+
+.. _Specify Maximum Classic API Regions:
 
 Specify Maximum Classic API Regions
 -----------------------------------
@@ -780,8 +789,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_PORTS ===
 
-.. _Specify Maximum Classic API Ports:
 .. index:: CONFIGURE_MAXIMUM_PORTS
+
+.. _Specify Maximum Classic API Ports:
 
 Specify Maximum Classic API Ports
 ---------------------------------
@@ -807,8 +817,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_USER_EXTENSIONS ===
 
-.. _Specify Maximum Classic API User Extensions:
 .. index:: CONFIGURE_MAXIMUM_USER_EXTENSIONS
+
+.. _Specify Maximum Classic API User Extensions:
 
 Specify Maximum Classic API User Extensions
 -------------------------------------------
@@ -843,8 +854,9 @@ The following parameters control the generation of that table.
 
 .. COMMENT: === CONFIGURE_RTEMS_INIT_TASKS_TABLE ===
 
-.. _Instantiate Classic API Initialization Task Table:
 .. index:: CONFIGURE_RTEMS_INIT_TASKS_TABLE
+
+.. _Instantiate Classic API Initialization Task Table:
 
 Instantiate Classic API Initialization Task Table
 -------------------------------------------------
@@ -880,8 +892,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_ENTRY_POINT ===
 
-.. _Specifying Classic API Initialization Task Entry Point:
 .. index:: CONFIGURE_INIT_TASK_ENTRY_POINT
+
+.. _Specifying Classic API Initialization Task Entry Point:
 
 Specifying Classic API Initialization Task Entry Point
 ------------------------------------------------------
@@ -909,8 +922,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_NAME ===
 
-.. _Specifying Classic API Initialization Task Name:
 .. index:: CONFIGURE_INIT_TASK_NAME
+
+.. _Specifying Classic API Initialization Task Name:
 
 Specifying Classic API Initialization Task Name
 -----------------------------------------------
@@ -936,8 +950,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_STACK_SIZE ===
 
-.. _Specifying Classic API Initialization Task Stack Size:
 .. index:: CONFIGURE_INIT_TASK_STACK_SIZE
+
+.. _Specifying Classic API Initialization Task Stack Size:
 
 Specifying Classic API Initialization Task Stack Size
 -----------------------------------------------------
@@ -966,8 +981,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_PRIORITY ===
 
-.. _Specifying Classic API Initialization Task Priority:
 .. index:: CONFIGURE_INIT_TASK_PRIORITY
+
+.. _Specifying Classic API Initialization Task Priority:
 
 Specifying Classic API Initialization Task Priority
 ---------------------------------------------------
@@ -993,8 +1009,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_ATTRIBUTES ===
 
-.. _Specifying Classic API Initialization Task Attributes:
 .. index:: CONFIGURE_INIT_TASK_ATTRIBUTES
+
+.. _Specifying Classic API Initialization Task Attributes:
 
 Specifying Classic API Initialization Task Attributes
 -----------------------------------------------------
@@ -1020,8 +1037,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_INITIAL_MODES ===
 
-.. _Specifying Classic API Initialization Task Modes:
 .. index:: CONFIGURE_INIT_TASK_INITIAL_MODES
+
+.. _Specifying Classic API Initialization Task Modes:
 
 Specifying Classic API Initialization Task Modes
 ------------------------------------------------
@@ -1048,8 +1066,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INIT_TASK_ARGUMENTS ===
 
-.. _Specifying Classic API Initialization Task Arguments:
 .. index:: CONFIGURE_INIT_TASK_ARGUMENTS
+
+.. _Specifying Classic API Initialization Task Arguments:
 
 Specifying Classic API Initialization Task Arguments
 ----------------------------------------------------
@@ -1075,8 +1094,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_HAS_OWN_INIT_TASK_TABLE ===
 
-.. _Not Using Generated Initialization Tasks Table:
 .. index:: CONFIGURE_HAS_OWN_INIT_TASK_TABLE
+
+.. _Not Using Generated Initialization Tasks Table:
 
 Not Using Generated Initialization Tasks Table
 ----------------------------------------------
@@ -1113,8 +1133,9 @@ time using the ``--enable-posix`` option.
 
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_THREADS ===
 
-.. _Specify Maximum POSIX API Threads:
 .. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
+
+.. _Specify Maximum POSIX API Threads:
 
 Specify Maximum POSIX API Threads
 ---------------------------------
@@ -1153,8 +1174,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_KEYS ===
 
-.. _Specify Maximum POSIX API Keys:
 .. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
+
+.. _Specify Maximum POSIX API Keys:
 
 Specify Maximum POSIX API Keys
 ------------------------------
@@ -1182,8 +1204,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_TIMERS ===
 
-.. _Specify Maximum POSIX API Timers:
 .. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
+
+.. _Specify Maximum POSIX API Timers:
 
 Specify Maximum POSIX API Timers
 --------------------------------
@@ -1209,8 +1232,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS ===
 
-.. _Specify Maximum POSIX API Queued Signals:
 .. index:: CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
+
+.. _Specify Maximum POSIX API Queued Signals:
 
 Specify Maximum POSIX API Queued Signals
 ----------------------------------------
@@ -1236,8 +1260,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES ===
 
-.. _Specify Maximum POSIX API Message Queues:
 .. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
+
+.. _Specify Maximum POSIX API Message Queues:
 
 Specify Maximum POSIX API Message Queues
 ----------------------------------------
@@ -1263,8 +1288,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_POSIX_SEMAPHORES ===
 
-.. _Specify Maximum POSIX API Semaphores:
 .. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+
+.. _Specify Maximum POSIX API Semaphores:
 
 Specify Maximum POSIX API Named Semaphores
 ------------------------------------------
@@ -1302,8 +1328,9 @@ a single entry.  The following parameters control the generation of that table.
 
 .. COMMENT: === CONFIGURE_POSIX_INIT_THREAD_TABLE ===
 
-.. _Instantiate POSIX API Initialization Thread Table:
 .. index:: CONFIGURE_POSIX_INIT_THREAD_TABLE
+
+.. _Instantiate POSIX API Initialization Thread Table:
 
 Instantiate POSIX API Initialization Thread Table
 -------------------------------------------------
@@ -1341,8 +1368,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT ===
 
-.. _Specifying POSIX API Initialization Thread Entry Point:
 .. index:: CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
+
+.. _Specifying POSIX API Initialization Thread Entry Point:
 
 Specifying POSIX API Initialization Thread Entry Point
 ------------------------------------------------------
@@ -1370,8 +1398,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE ===
 
-.. _Specifying POSIX API Initialization Thread Stack Size:
 .. index:: CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
+
+.. _Specifying POSIX API Initialization Thread Stack Size:
 
 Specifying POSIX API Initialization Thread Stack Size
 -----------------------------------------------------
@@ -1401,8 +1430,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE ===
 
-.. _Not Using Generated POSIX Initialization Threads Table:
 .. index:: CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
+
+.. _Not Using Generated POSIX Initialization Threads Table:
 
 Not Using Generated POSIX Initialization Threads Table
 ------------------------------------------------------
@@ -1438,12 +1468,13 @@ This section defines the general system configuration parameters supported by
 
 .. COMMENT: === CONFIGURE_UNIFIED_WORK_AREAS ===
 
-.. _Separate or Unified Work Areas:
 .. index:: CONFIGURE_UNIFIED_WORK_AREAS
 .. index:: unified work areas
 .. index:: separate work areas
 .. index:: RTEMS Workspace
 .. index:: C Program Heap
+
+.. _Separate or Unified Work Areas:
 
 Separate or Unified Work Areas
 ------------------------------
@@ -1481,8 +1512,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_PROCESSORS ===
 
-.. _CONFIGURE_MAXIMUM_PROCESSORS:
 .. index:: CONFIGURE_MAXIMUM_PROCESSORS
+
+.. _CONFIGURE_MAXIMUM_PROCESSORS:
 
 Specify Maximum Processors
 ----------------------------------------
@@ -1514,9 +1546,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MICROSECONDS_PER_TICK ===
 
-.. _CONFIGURE_MICROSECONDS_PER_TICK:
 .. index:: CONFIGURE_MICROSECONDS_PER_TICK
 .. index:: tick quantum
+
+.. _CONFIGURE_MICROSECONDS_PER_TICK:
 
 Length of Each Clock Tick
 -------------------------
@@ -1561,9 +1594,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_TICKS_PER_TIMESLICE ===
 
-.. _Specifying Timeslicing Quantum:
 .. index:: CONFIGURE_TICKS_PER_TIMESLICE
 .. index:: ticks per timeslice
+
+.. _Specifying Timeslicing Quantum:
 
 Specifying Timeslicing Quantum
 ------------------------------
@@ -1590,10 +1624,11 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_PRIORITY ===
 
-.. _Specifying the Number of Thread Priority Levels:
 .. index:: CONFIGURE_MAXIMUM_PRIORITY
 .. index:: maximum priority
 .. index:: number of priority levels
+
+.. _Specifying the Number of Thread Priority Levels:
 
 Specifying the Number of Thread Priority Levels
 -----------------------------------------------
@@ -1637,9 +1672,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_THREAD_NAME_SIZE ===
 
-.. _CONFIGURE_MAXIMUM_THREAD_NAME_SIZE:
 .. index:: CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 .. index:: maximum thread name size
+
+.. _CONFIGURE_MAXIMUM_THREAD_NAME_SIZE:
 
 Specifying the Maximum Thread Name Size
 ---------------------------------------
@@ -1668,9 +1704,10 @@ NOTE:
 
 .. COMMENT: === CONFIGURE_MINIMUM_TASK_STACK_SIZE ===
 
-.. _Specifying the Minimum Task Size:
 .. index:: CONFIGURE_MINIMUM_TASK_STACK_SIZE
 .. index:: minimum task stack size
+
+.. _Specifying the Minimum Task Size:
 
 Specifying the Minimum Task Size
 --------------------------------
@@ -1707,9 +1744,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INTERRUPT_STACK_SIZE ===
 
-.. _Configuring the Size of the Interrupt Stack:
 .. index:: CONFIGURE_INTERRUPT_STACK_SIZE
 .. index:: interrupt stack size
+
+.. _Configuring the Size of the Interrupt Stack:
 
 Configuring the Size of the Interrupt Stack
 -------------------------------------------
@@ -1742,9 +1780,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_EXTRA_TASK_STACKS ===
 
-.. _Reserve Task/Thread Stack Memory Above Minimum:
 .. index:: CONFIGURE_EXTRA_TASK_STACKS
 .. index:: memory for task tasks
+
+.. _Reserve Task/Thread Stack Memory Above Minimum:
 
 Reserve Task/Thread Stack Memory Above Minimum
 ----------------------------------------------
@@ -1773,12 +1812,13 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY ===
 
-.. _Automatically Zeroing the RTEMS Workspace and C Program Heap:
 .. index:: CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 .. index:: clear C Program Heap
 .. index:: clear RTEMS Workspace
 .. index:: zero C Program Heap
 .. index:: zero RTEMS Workspace
+
+.. _Automatically Zeroing the RTEMS Workspace and C Program Heap:
 
 Automatically Zeroing the RTEMS Workspace and C Program Heap
 ------------------------------------------------------------
@@ -1807,8 +1847,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_STACK_CHECKER_ENABLED ===
 
-.. _Enable The Task Stack Usage Checker:
 .. index:: CONFIGURE_STACK_CHECKER_ENABLED
+
+.. _Enable The Task Stack Usage Checker:
 
 Enable The Task Stack Usage Checker
 -----------------------------------
@@ -1837,8 +1878,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_INITIAL_EXTENSIONS ===
 
-.. _CONFIGURE_INITIAL_EXTENSIONS:
 .. index:: CONFIGURE_INITIAL_EXTENSIONS
+
+.. _CONFIGURE_INITIAL_EXTENSIONS:
 
 Specify Application Specific User Extensions
 --------------------------------------------
@@ -1875,8 +1917,9 @@ overflows are detected in hardware.
 
 .. COMMENT: === CONFIGURE_TASK_STACK_ALLOCATOR_INIT ===
 
-.. _Custom Task Stack Allocator Initialization:
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR_INIT
+
+.. _Custom Task Stack Allocator Initialization:
 
 Custom Task Stack Allocator Initialization
 ------------------------------------------
@@ -1910,9 +1953,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_TASK_STACK_ALLOCATOR ===
 
-.. _Custom Task Stack Allocator:
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR
 .. index:: task stack allocator
+
+.. _Custom Task Stack Allocator:
 
 Custom Task Stack Allocator
 ---------------------------
@@ -1945,9 +1989,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_TASK_STACK_DEALLOCATOR ===
 
-.. _Custom Task Stack Deallocator:
 .. index:: CONFIGURE_TASK_STACK_DEALLOCATOR
 .. index:: task stack deallocator
+
+.. _Custom Task Stack Deallocator:
 
 Custom Task Stack Deallocator
 -----------------------------
@@ -1988,9 +2033,10 @@ amount of memory reserved for Classic API Message Buffers.
 
 .. COMMENT: === CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE ===
 
-.. _Calculate Memory for a Single Classic Message API Message Queue:
 .. index:: CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
 .. index:: memory for a single message queue's buffers
+
+.. _Calculate Memory for a Single Classic Message API Message Queue:
 
 Calculate Memory for a Single Classic Message API Message Queue
 ---------------------------------------------------------------
@@ -2028,9 +2074,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MESSAGE_BUFFER_MEMORY ===
 
-.. _Reserve Memory for All Classic Message API Message Queues:
 .. index:: CONFIGURE_MESSAGE_BUFFER_MEMORY
 .. index:: configure message queue buffer memory
+
+.. _Reserve Memory for All Classic Message API Message Queues:
 
 Reserve Memory for All Classic Message API Message Queues
 ---------------------------------------------------------
@@ -2083,8 +2130,9 @@ work-arounds when the memory estimated by ``<rtems/confdefs.h>`` is incorrect.
 
 .. COMMENT: === CONFIGURE_MEMORY_OVERHEAD ===
 
-.. _Specify Memory Overhead:
 .. index:: CONFIGURE_MEMORY_OVERHEAD
+
+.. _Specify Memory Overhead:
 
 Specify Memory Overhead
 -----------------------
@@ -2113,8 +2161,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_HAS_OWN_CONFIGURATION_TABLE ===
 
-.. _Do Not Generate Configuration Information:
 .. index:: CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
+
+.. _Do Not Generate Configuration Information:
 
 Do Not Generate Configuration Information
 -----------------------------------------
@@ -2148,9 +2197,10 @@ parameters supported by ``<rtems/confdefs.h>``.
 
 .. COMMENT: === CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS ===
 
-.. _Specify Maximum Number of File Descriptors:
 .. index:: CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
 .. index:: maximum file descriptors
+
+.. _Specify Maximum Number of File Descriptors:
 
 Specify Maximum Number of File Descriptors
 ------------------------------------------
@@ -2179,8 +2229,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_TERMIOS_DISABLED ===
 
-.. _Disable POSIX Termios Support:
 .. index:: CONFIGURE_TERMIOS_DISABLED
+
+.. _Disable POSIX Termios Support:
 
 Disable POSIX Termios Support
 -----------------------------
@@ -2209,8 +2260,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_NUMBER_OF_TERMIOS_PORTS ===
 
-.. _Specify Maximum Termios Ports:
 .. index:: CONFIGURE_NUMBER_OF_TERMIOS_PORTS
+
+.. _Specify Maximum Termios Ports:
 
 Specify Maximum Termios Ports
 -----------------------------
@@ -2247,8 +2299,9 @@ This section defines File System related configuration parameters.
 
 .. COMMENT: === CONFIGURE_HAS_OWN_MOUNT_TABLE ===
 
-.. _Providing Application Specific Mount Table:
 .. index:: CONFIGURE_HAS_OWN_MOUNT_TABLE
+
+.. _Providing Application Specific Mount Table:
 
 Providing Application Specific Mount Table
 ------------------------------------------
@@ -2281,8 +2334,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM ===
 
-.. _Configure devFS as Root File System:
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
+
+.. _Configure devFS as Root File System:
 
 Configure devFS as Root File System
 -----------------------------------
@@ -2313,8 +2367,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_DEVICES ===
 
-.. _Specifying Maximum Devices for devFS:
 .. index:: CONFIGURE_MAXIMUM_DEVICES
+
+.. _Specifying Maximum Devices for devFS:
 
 Specifying Maximum Devices for devFS
 ------------------------------------
@@ -2344,8 +2399,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_DISABLE_FILESYSTEM ===
 
-.. _Disable File System Support:
 .. index:: CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
+
+.. _Disable File System Support:
 
 Disable File System Support
 ---------------------------
@@ -2373,8 +2429,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM ===
 
-.. _Use a Root IMFS with a Minimalistic Feature Set:
 .. index:: CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
+
+.. _Use a Root IMFS with a Minimalistic Feature Set:
 
 Use a Root IMFS with a Minimalistic Feature Set
 -----------------------------------------------
@@ -2413,8 +2470,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK ===
 
-.. _Specify Block Size for IMFS:
 .. index:: CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
+
+.. _Specify Block Size for IMFS:
 
 Specify Block Size for IMFS
 ---------------------------
@@ -2463,8 +2521,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_CHOWN ===
 
-.. _Disable Change Owner Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_CHOWN
+
+.. _Disable Change Owner Support of Root IMFS:
 
 Disable Change Owner Support of Root IMFS
 -----------------------------------------
@@ -2487,8 +2546,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_CHMOD ===
 
-.. _Disable Change Mode Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_CHMOD
+
+.. _Disable Change Mode Support of Root IMFS:
 
 Disable Change Mode Support of Root IMFS
 ----------------------------------------
@@ -2511,8 +2571,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_UTIME ===
 
-.. _Disable Change Times Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_UTIME
+
+.. _Disable Change Times Support of Root IMFS:
 
 Disable Change Times Support of Root IMFS
 -----------------------------------------
@@ -2535,8 +2596,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_LINK ===
 
-.. _Disable Create Hard Link Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_LINK
+
+.. _Disable Create Hard Link Support of Root IMFS:
 
 Disable Create Hard Link Support of Root IMFS
 ---------------------------------------------
@@ -2559,8 +2621,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_SYMLINK ===
 
-.. _Disable Create Symbolic Link Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_SYMLINK
+
+.. _Disable Create Symbolic Link Support of Root IMFS:
 
 Disable Create Symbolic Link Support of Root IMFS
 -------------------------------------------------
@@ -2583,8 +2646,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_READLINK ===
 
-.. _Disable Read Symbolic Link Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_READLINK
+
+.. _Disable Read Symbolic Link Support of Root IMFS:
 
 Disable Read Symbolic Link Support of Root IMFS
 -----------------------------------------------
@@ -2607,8 +2671,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_RENAME ===
 
-.. _Disable Rename Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_RENAME
+
+.. _Disable Rename Support of Root IMFS:
 
 Disable Rename Support of Root IMFS
 -----------------------------------
@@ -2631,8 +2696,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_READDIR ===
 
-.. _Disable Directory Read Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_READDIR
+
+.. _Disable Directory Read Support of Root IMFS:
 
 Disable Directory Read Support of Root IMFS
 -------------------------------------------
@@ -2656,8 +2722,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_MOUNT ===
 
-.. _Disable Mount Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_MOUNT
+
+.. _Disable Mount Support of Root IMFS:
 
 Disable Mount Support of Root IMFS
 ----------------------------------
@@ -2680,8 +2747,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_UNMOUNT ===
 
-.. _Disable Unmount Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_UNMOUNT
+
+.. _Disable Unmount Support of Root IMFS:
 
 Disable Unmount Support of Root IMFS
 ------------------------------------
@@ -2704,8 +2772,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_MKNOD ===
 
-.. _Disable Make Nodes Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD
+
+.. _Disable Make Nodes Support of Root IMFS:
 
 Disable Make Nodes Support of Root IMFS
 ---------------------------------------
@@ -2728,8 +2797,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_MKNOD_FILE ===
 
-.. _Disable Make Files Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD_FILE
+
+.. _Disable Make Files Support of Root IMFS:
 
 Disable Make Files Support of Root IMFS
 ---------------------------------------
@@ -2752,8 +2822,9 @@ DESCRIPTION:
 
 .. COMMENT: === CONFIGURE_IMFS_DISABLE_RMNOD ===
 
-.. _Disable Remove Nodes Support of Root IMFS:
 .. index:: CONFIGURE_IMFS_DISABLE_RMNOD
+
+.. _Disable Remove Nodes Support of Root IMFS:
 
 Disable Remove Nodes Support of Root IMFS
 -----------------------------------------
@@ -2784,8 +2855,9 @@ parameters.
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_LIBBLOCK ===
 
-.. _Enable Block Device Cache:
 .. index:: CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
+
+.. _Enable Block Device Cache:
 
 Enable Block Device Cache
 -------------------------
@@ -2812,8 +2884,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_CACHE_MEMORY_SIZE ===
 
-.. _Size of the Cache Memory:
 .. index:: CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
+
+.. _Size of the Cache Memory:
 
 Size of the Cache Memory
 ------------------------
@@ -2838,8 +2911,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_BUFFER_MIN_SIZE ===
 
-.. _Minimum Size of a Buffer:
 .. index:: CONFIGURE_BDBUF_BUFFER_MIN_SIZE
+
+.. _Minimum Size of a Buffer:
 
 Minimum Size of a Buffer
 ------------------------
@@ -2864,8 +2938,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_BUFFER_MAX_SIZE ===
 
-.. _Maximum Size of a Buffer:
 .. index:: CONFIGURE_BDBUF_BUFFER_MAX_SIZE
+
+.. _Maximum Size of a Buffer:
 
 Maximum Size of a Buffer
 ------------------------
@@ -2890,8 +2965,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SWAPOUT_SWAP_PERIOD ===
 
-.. _Swapout Task Swap Period:
 .. index:: CONFIGURE_SWAPOUT_SWAP_PERIOD
+
+.. _Swapout Task Swap Period:
 
 Swapout Task Swap Period
 ------------------------
@@ -2916,8 +2992,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SWAPOUT_BLOCK_HOLD ===
 
-.. _Swapout Task Maximum Block Hold Time:
 .. index:: CONFIGURE_SWAPOUT_BLOCK_HOLD
+
+.. _Swapout Task Maximum Block Hold Time:
 
 Swapout Task Maximum Block Hold Time
 ------------------------------------
@@ -2942,8 +3019,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SWAPOUT_TASK_PRIORITY ===
 
-.. _Swapout Task Priority:
 .. index:: CONFIGURE_SWAPOUT_TASK_PRIORITY
+
+.. _Swapout Task Priority:
 
 Swapout Task Priority
 ---------------------
@@ -2968,8 +3046,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS ===
 
-.. _Maximum Blocks per Read-Ahead Request:
 .. index:: CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS
+
+.. _Maximum Blocks per Read-Ahead Request:
 
 Maximum Blocks per Read-Ahead Request
 -------------------------------------
@@ -2996,8 +3075,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_MAX_WRITE_BLOCKS ===
 
-.. _Maximum Blocks per Write Request:
 .. index:: CONFIGURE_BDBUF_MAX_WRITE_BLOCKS
+
+.. _Maximum Blocks per Write Request:
 
 Maximum Blocks per Write Request
 --------------------------------
@@ -3022,8 +3102,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_TASK_STACK_SIZE ===
 
-.. _Task Stack Size of the Block Device Cache Tasks:
 .. index:: CONFIGURE_BDBUF_TASK_STACK_SIZE
+
+.. _Task Stack Size of the Block Device Cache Tasks:
 
 Task Stack Size of the Block Device Cache Tasks
 -----------------------------------------------
@@ -3048,8 +3129,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY ===
 
-.. _Read-Ahead Task Priority:
 .. index:: CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY
+
+.. _Read-Ahead Task Priority:
 
 Read-Ahead Task Priority
 ------------------------
@@ -3074,8 +3156,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SWAPOUT_WORKER_TASKS ===
 
-.. _Swapout Worker Task Count:
 .. index:: CONFIGURE_SWAPOUT_WORKER_TASKS
+
+.. _Swapout Worker Task Count:
 
 Swapout Worker Task Count
 -------------------------
@@ -3100,8 +3183,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY ===
 
-.. _Swapout Worker Task Priority:
 .. index:: CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY
+
+.. _Swapout Worker Task Priority:
 
 Swapout Worker Task Priority
 ----------------------------
@@ -3135,8 +3219,9 @@ This section describes BSP specific configuration settings used by
 
 .. COMMENT: === Disable BSP Settings ===
 
-.. _Disable BSP Configuration Settings:
 .. index:: CONFIGURE_DISABLE_BSP_SETTINGS
+
+.. _Disable BSP Configuration Settings:
 
 Disable BSP Configuration Settings
 ----------------------------------
@@ -3162,8 +3247,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK ===
 
-.. _Specify BSP Supports sbrk():
 .. index:: CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
+
+.. _Specify BSP Supports sbrk():
 
 Specify BSP Supports sbrk()
 ---------------------------
@@ -3194,8 +3280,9 @@ NOTES:
 
 .. COMMENT: === BSP_IDLE_TASK_BODY ===
 
-.. _Specify BSP Specific Idle Task:
 .. index:: BSP_IDLE_TASK_BODY
+
+.. _Specify BSP Specific Idle Task:
 
 Specify BSP Specific Idle Task
 ------------------------------
@@ -3224,8 +3311,9 @@ NOTES:
 
 .. COMMENT: === BSP_IDLE_TASK_STACK_SIZE ===
 
-.. _Specify BSP Suggested Value for IDLE Task Stack Size:
 .. index:: BSP_IDLE_TASK_STACK_SIZE
+
+.. _Specify BSP Suggested Value for IDLE Task Stack Size:
 
 Specify BSP Suggested Value for IDLE Task Stack Size
 ----------------------------------------------------
@@ -3262,8 +3350,9 @@ NOTES:
 
 .. COMMENT: === BSP_INITIAL_EXTENSION ===
 
-.. _Specify BSP Specific User Extensions:
 .. index:: BSP_INITIAL_EXTENSION
+
+.. _Specify BSP Specific User Extensions:
 
 Specify BSP Specific User Extensions
 ------------------------------------
@@ -3290,8 +3379,9 @@ NOTES:
 
 .. COMMENT: === BSP_INTERRUPT_STACK_SIZE ===
 
-.. _Specifying BSP Specific Interrupt Stack Size:
 .. index:: BSP_INTERRUPT_STACK_SIZE
+
+.. _Specifying BSP Specific Interrupt Stack Size:
 
 Specifying BSP Specific Interrupt Stack Size
 --------------------------------------------
@@ -3318,8 +3408,9 @@ NOTES:
 
 .. COMMENT: === BSP_MAXIMUM_DEVICES ===
 
-.. _Specifying BSP Specific Maximum Devices:
 .. index:: BSP_MAXIMUM_DEVICES
+
+.. _Specifying BSP Specific Maximum Devices:
 
 Specifying BSP Specific Maximum Devices
 ---------------------------------------
@@ -3349,8 +3440,9 @@ NOTES:
 
 .. COMMENT: === BSP_ZERO_WORKSPACE_AUTOMATICALLY ===
 
-.. _BSP Recommends RTEMS Workspace be Cleared:
 .. index:: BSP_ZERO_WORKSPACE_AUTOMATICALLY
+
+.. _BSP Recommends RTEMS Workspace be Cleared:
 
 BSP Recommends RTEMS Workspace be Cleared
 -----------------------------------------
@@ -3378,8 +3470,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_BSP_PREREQUISITE_DRIVERS ===
 
-.. _Specify BSP Prerequisite Drivers:
 .. index:: CONFIGURE_BSP_PREREQUISITE_DRIVERS
+
+.. _Specify BSP Prerequisite Drivers:
 
 Specify BSP Prerequisite Drivers
 --------------------------------
@@ -3418,8 +3511,9 @@ by ``<rtems/confdefs.h>``.
 
 .. COMMENT: === CONFIGURE_IDLE_TASK_BODY ===
 
-.. _Specify Application Specific Idle Task Body:
 .. index:: CONFIGURE_IDLE_TASK_BODY
+
+.. _Specify Application Specific Idle Task Body:
 
 Specify Application Specific Idle Task Body
 -------------------------------------------
@@ -3446,8 +3540,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_IDLE_TASK_STACK_SIZE ===
 
-.. _Specify Idle Task Stack Size:
 .. index:: CONFIGURE_IDLE_TASK_STACK_SIZE
+
+.. _Specify Idle Task Stack Size:
 
 Specify Idle Task Stack Size
 ----------------------------
@@ -3473,8 +3568,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION ===
 
-.. _Specify Idle Task Performs Application Initialization:
 .. index:: CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
+
+.. _Specify Idle Task Performs Application Initialization:
 
 Specify Idle Task Performs Application Initialization
 -----------------------------------------------------
@@ -3523,8 +3619,9 @@ configuration macros.
 
 .. COMMENT: === CONFIGURE_SCHEDULER_PRIORITY ===
 
-.. _Use Deterministic Priority Scheduler:
 .. index:: CONFIGURE_SCHEDULER_PRIORITY
+
+.. _Use Deterministic Priority Scheduler:
 
 Use Deterministic Priority Scheduler
 ------------------------------------
@@ -3556,8 +3653,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SCHEDULER_SIMPLE ===
 
-.. _Use Simple Priority Scheduler:
 .. index:: CONFIGURE_SCHEDULER_SIMPLE
+
+.. _Use Simple Priority Scheduler:
 
 Use Simple Priority Scheduler
 -----------------------------
@@ -3591,8 +3689,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SCHEDULER_EDF ===
 
-.. _Use Earliest Deadline First Scheduler:
 .. index:: CONFIGURE_SCHEDULER_EDF
+
+.. _Use Earliest Deadline First Scheduler:
 
 Use Earliest Deadline First Scheduler
 -------------------------------------
@@ -3628,8 +3727,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SCHEDULER_EDF_SMP ===
 
-.. _Use Earliest Deadline First SMP Scheduler:
 .. index:: CONFIGURE_SCHEDULER_EDF_SMP
+
+.. _Use Earliest Deadline First SMP Scheduler:
 
 Use Earliest Deadline First Scheduler
 -------------------------------------
@@ -3655,8 +3755,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SCHEDULER_CBS ===
 
-.. _Use Constant Bandwidth Server Scheduler:
 .. index:: CONFIGURE_SCHEDULER_CBS
+
+.. _Use Constant Bandwidth Server Scheduler:
 
 Use Constant Bandwidth Server Scheduler
 ---------------------------------------
@@ -3690,8 +3791,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SCHEDULER_PRIORITY_SMP ===
 
-.. _Use Deterministic Priority SMP Scheduler:
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_SMP
+
+.. _Use Deterministic Priority SMP Scheduler:
 
 Use Deterministic Priority SMP Scheduler
 ----------------------------------------
@@ -3725,8 +3827,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_SCHEDULER_SIMPLE_SMP ===
 
-.. _Use Simple SMP Priority Scheduler:
 .. index:: CONFIGURE_SCHEDULER_SIMPLE_SMP
+
+.. _Use Simple SMP Priority Scheduler:
 
 Use Simple SMP Priority Scheduler
 ---------------------------------
@@ -3766,8 +3869,9 @@ NOTES:
 
 .. COMMENT: === Configuring a Scheduler Name ===
 
-.. _Configuring a Scheduler Name:
 .. index:: CONFIGURE_SCHEDULER_NAME
+
+.. _Configuring a Scheduler Name:
 
 Configuring a Scheduler Name
 ----------------------------
@@ -3800,8 +3904,9 @@ NOTES:
 
 .. COMMENT: === Configuring a User Scheduler ===
 
-.. _Configuring a User Provided Scheduler:
 .. index:: CONFIGURE_SCHEDULER_USER
+
+.. _Configuring a User Provided Scheduler:
 
 Configuring a User Provided Scheduler
 -------------------------------------
@@ -4029,8 +4134,9 @@ Note that network device drivers are not configured in the Device Driver Table.
 
 .. COMMENT: === CONFIGURE_MAXIMUM_DRIVERS ===
 
-.. _Specifying the Maximum Number of Device Drivers:
 .. index:: CONFIGURE_MAXIMUM_DRIVERS
+
+.. _Specifying the Maximum Number of Device Drivers:
 
 Specifying the Maximum Number of Device Drivers
 -----------------------------------------------
@@ -4063,8 +4169,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER ===
 
-.. _Enable Console Device Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
+
+.. _Enable Console Device Driver:
 
 Enable Console Device Driver
 ----------------------------
@@ -4094,8 +4201,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER ===
 
-.. _Enable Clock Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+
+.. _Enable Clock Driver:
 
 Enable Clock Driver
 -------------------
@@ -4127,8 +4235,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER ===
 
-.. _Enable the Benchmark Timer Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
+
+.. _Enable the Benchmark Timer Driver:
 
 Enable the Benchmark Timer Driver
 ---------------------------------
@@ -4158,8 +4267,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER ===
 
-.. _Specify Clock and Benchmark Timer Drivers Are Not Needed:
 .. index:: CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
+
+.. _Specify Clock and Benchmark Timer Drivers Are Not Needed:
 
 Specify Clock and Benchmark Timer Drivers Are Not Needed
 --------------------------------------------------------
@@ -4189,8 +4299,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER ===
 
-.. _Enable Real-Time Clock Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
+
+.. _Enable Real-Time Clock Driver:
 
 Enable Real-Time Clock Driver
 -----------------------------
@@ -4220,8 +4331,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER ===
 
-.. _Enable the Watchdog Device Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
+
+.. _Enable the Watchdog Device Driver:
 
 Enable the Watchdog Device Driver
 ---------------------------------
@@ -4251,8 +4363,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER ===
 
-.. _Enable the Graphics Frame Buffer Device Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
+
+.. _Enable the Graphics Frame Buffer Device Driver:
 
 Enable the Graphics Frame Buffer Device Driver
 ----------------------------------------------
@@ -4282,8 +4395,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER ===
 
-.. _Enable Stub Device Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
+
+.. _Enable Stub Device Driver:
 
 Enable Stub Device Driver
 -------------------------
@@ -4310,8 +4424,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS ===
 
-.. _Specify Application Prerequisite Device Drivers:
 .. index:: CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
+
+.. _Specify Application Prerequisite Device Drivers:
 
 Specify Application Prerequisite Device Drivers
 -----------------------------------------------
@@ -4346,8 +4461,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_EXTRA_DRIVERS ===
 
-.. _Specify Extra Application Device Drivers:
 .. index:: CONFIGURE_APPLICATION_EXTRA_DRIVERS
+
+.. _Specify Extra Application Device Drivers:
 
 Specify Extra Application Device Drivers
 ----------------------------------------
@@ -4375,9 +4491,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER ===
 
-.. _Enable /dev/null Device Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
 .. index:: /dev/null
+
+.. _Enable /dev/null Device Driver:
 
 Enable /dev/null Device Driver
 ------------------------------
@@ -4402,9 +4519,10 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER ===
 
-.. _Enable /dev/zero Device Driver:
 .. index:: CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
 .. index:: /dev/zero
+
+.. _Enable /dev/zero Device Driver:
 
 Enable /dev/zero Device Driver
 ------------------------------
@@ -4429,8 +4547,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE ===
 
-.. _Specifying Application Defined Device Driver Table:
 .. index:: CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE
+
+.. _Specifying Application Defined Device Driver Table:
 
 Specifying Application Defined Device Driver Table
 --------------------------------------------------
@@ -4475,8 +4594,9 @@ Additionally, this class of Configuration Constants are only applicable if
 
 .. COMMENT: === CONFIGURE_MP_APPLICATION ===
 
-.. _Specify Application Will Use Multiprocessing:
 .. index:: CONFIGURE_MP_APPLICATION
+
+.. _Specify Application Will Use Multiprocessing:
 
 Specify Application Will Use Multiprocessing
 --------------------------------------------
@@ -4505,8 +4625,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MP_NODE_NUMBER ===
 
-.. _Configure Node Number in Multiprocessor Configuration:
 .. index:: CONFIGURE_MP_NODE_NUMBER
+
+.. _Configure Node Number in Multiprocessor Configuration:
 
 Configure Node Number in Multiprocessor Configuration
 -----------------------------------------------------
@@ -4536,8 +4657,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MP_MAXIMUM_NODES ===
 
-.. _Configure Maximum Node in Multiprocessor Configuration:
 .. index:: CONFIGURE_MP_MAXIMUM_NODES
+
+.. _Configure Maximum Node in Multiprocessor Configuration:
 
 Configure Maximum Node in Multiprocessor Configuration
 ------------------------------------------------------
@@ -4563,8 +4685,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS ===
 
-.. _Configure Maximum Global Objects in Multiprocessor Configuration:
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
+
+.. _Configure Maximum Global Objects in Multiprocessor Configuration:
 
 Configure Maximum Global Objects in Multiprocessor Configuration
 ----------------------------------------------------------------
@@ -4591,8 +4714,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MP_MAXIMUM_PROXIES ===
 
-.. _Configure Maximum Proxies in Multiprocessor Configuration:
 .. index:: CONFIGURE_MP_MAXIMUM_PROXIES
+
+.. _Configure Maximum Proxies in Multiprocessor Configuration:
 
 Configure Maximum Proxies in Multiprocessor Configuration
 ---------------------------------------------------------
@@ -4622,8 +4746,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MP_MPCI_TABLE_POINTER ===
 
-.. _Configure MPCI in Multiprocessor Configuration:
 .. index:: CONFIGURE_MP_MPCI_TABLE_POINTER
+
+.. _Configure MPCI in Multiprocessor Configuration:
 
 Configure MPCI in Multiprocessor Configuration
 ----------------------------------------------
@@ -4651,8 +4776,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE ===
 
-.. _Do Not Generate Multiprocessor Configuration Table:
 .. index:: CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE
+
+.. _Do Not Generate Multiprocessor Configuration Table:
 
 Do Not Generate Multiprocessor Configuration Table
 --------------------------------------------------
@@ -4698,8 +4824,9 @@ has a test suite. This test suite is enabled only when``--enable-tests`` and
 
 .. COMMENT: === CONFIGURE_GNAT_RTEMS ===
 
-.. _Specify Application Includes Ada Code:
 .. index:: CONFIGURE_GNAT_RTEMS
+
+.. _Specify Application Includes Ada Code:
 
 Specify Application Includes Ada Code
 -------------------------------------
@@ -4727,8 +4854,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_ADA_TASKS ===
 
-.. _Specify the Maximum Number of Ada Tasks.:
 .. index:: CONFIGURE_MAXIMUM_ADA_TASKS
+
+.. _Specify the Maximum Number of Ada Tasks.:
 
 Specify the Maximum Number of Ada Tasks.
 ----------------------------------------
@@ -4755,8 +4883,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_FAKE_ADA_TASKS ===
 
-.. _Specify the Maximum Fake Ada Tasks:
 .. index:: CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
+
+.. _Specify the Maximum Fake Ada Tasks:
 
 Specify the Maximum Fake Ada Tasks
 ----------------------------------
@@ -4843,8 +4972,9 @@ Go Tasks
 
 .. COMMENT: === CONFIGURE_ENABLE_GO ===
 
-.. _Specify Application Includes Go Code:
 .. index:: CONFIGURE_ENABLE_GO
+
+.. _Specify Application Includes Go Code:
 
 Specify Application Includes Go Code
 ------------------------------------
@@ -4870,8 +5000,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_GOROUTINES ===
 
-.. _Specify the maximum number of Go routines:
 .. index:: CONFIGURE_MAXIMUM_GOROUTINES
+
+.. _Specify the maximum number of Go routines:
 
 Specify the maximum number of Go routines
 -----------------------------------------
@@ -4897,8 +5028,9 @@ NOTES:
 
 .. COMMENT: === CONFIGURE_MAXIMUM_GO_CHANNELS ===
 
-.. _Specify the maximum number of Go Channels:
 .. index:: CONFIGURE_MAXIMUM_GO_CHANNELS
+
+.. _Specify the maximum number of Go Channels:
 
 Specify the maximum number of Go Channels
 -----------------------------------------

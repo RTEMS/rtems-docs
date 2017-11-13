@@ -4,10 +4,10 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
+.. index:: cbs
+
 Constant Bandwidth Server Scheduler API
 ***************************************
-
-.. index:: cbs
 
 Introduction
 ============
@@ -40,10 +40,11 @@ provided by the CBS API are:
 
 - rtems_cbs_get_approved_budget_ - Get scheduler approved execution time
 
-Background
-==========
 .. index:: CBS parameters
 .. index:: rtems_cbs_parameters
+
+Background
+==========
 
 Constant Bandwidth Server Definitions
 -------------------------------------
@@ -232,9 +233,9 @@ sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_cbs_initialize:
 .. index:: initialize the CBS library
 .. index:: rtems_cbs_initialize
+.. _rtems_cbs_initialize:
 
 CBS_INITIALIZE - Initialize the CBS library
 -------------------------------------------
@@ -270,9 +271,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_cleanup:
 .. index:: cleanup the CBS library
 .. index:: rtems_cbs_cleanup
+
+.. _rtems_cbs_cleanup:
 
 CBS_CLEANUP - Cleanup the CBS library
 -------------------------------------
@@ -300,9 +302,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_create_server:
 .. index:: create a new bandwidth server
 .. index:: rtems_cbs_create_server
+
+.. _rtems_cbs_create_server:
 
 CBS_CREATE_SERVER - Create a new bandwidth server
 -------------------------------------------------
@@ -348,9 +351,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_attach_thread:
 .. index:: attach a thread to server
 .. index:: rtems_cbs_attach_thread
+
+.. _rtems_cbs_attach_thread:
 
 CBS_ATTACH_THREAD - Attach a thread to server
 ---------------------------------------------
@@ -390,9 +394,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_detach_thread:
 .. index:: detach a thread from server
 .. index:: rtems_cbs_detach_thread
+
+.. _rtems_cbs_detach_thread:
 
 CBS_DETACH_THREAD - Detach a thread from server
 -----------------------------------------------
@@ -427,9 +432,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_destroy_server:
 .. index:: destroy a bandwidth server
 .. index:: rtems_cbs_destroy_server
+
+.. _rtems_cbs_destroy_server:
 
 CBS_DESTROY_SERVER - Destroy a bandwidth server
 -----------------------------------------------
@@ -464,9 +470,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_get_server_id:
 .. index:: get an ID of a server
 .. index:: rtems_cbs_get_server_id
+
+.. _rtems_cbs_get_server_id:
 
 CBS_GET_SERVER_ID - Get an ID of a server
 -----------------------------------------
@@ -495,9 +502,10 @@ DESCRIPTION:
 
    \clearpage
 
-.. _rtems_cbs_get_parameters:
 .. index:: get scheduling parameters of a server
 .. index:: rtems_cbs_get_parameters
+
+.. _rtems_cbs_get_parameters:
 
 CBS_GET_PARAMETERS - Get scheduling parameters of a server
 ----------------------------------------------------------
@@ -532,9 +540,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_set_parameters:
 .. index:: set scheduling parameters
 .. index:: rtems_cbs_set_parameters
+
+.. _rtems_cbs_set_parameters:
 
 CBS_SET_PARAMETERS - Set scheduling parameters
 ----------------------------------------------
@@ -571,9 +580,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_get_execution_time:
 .. index:: get elapsed execution time
 .. index:: rtems_cbs_get_execution_time
+
+.. _rtems_cbs_get_execution_time:
 
 CBS_GET_EXECUTION_TIME - Get elapsed execution time
 ---------------------------------------------------
@@ -609,9 +619,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_get_remaining_budget:
 .. index:: get remaining execution time
 .. index:: rtems_cbs_get_remaining_budget
+
+.. _rtems_cbs_get_remaining_budget:
 
 CBS_GET_REMAINING_BUDGET - Get remaining execution time
 -------------------------------------------------------
@@ -647,9 +658,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_cbs_get_approved_budget:
 .. index:: get scheduler approved execution time
 .. index:: rtems_cbs_get_approved_budget
+
+.. _rtems_cbs_get_approved_budget:
 
 CBS_GET_APPROVED_BUDGET - Get scheduler approved execution time
 ---------------------------------------------------------------

@@ -230,9 +230,10 @@ related constants, usage, and status codes.
 
    \clearpage
 
-.. _rtems_io_register_driver:
 .. index:: register a device driver
 .. index:: rtems_io_register_driver
+
+.. _rtems_io_register_driver:
 
 IO_REGISTER_DRIVER - Register a device driver
 ---------------------------------------------
@@ -288,9 +289,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_unregister_driver:
 .. index:: unregister a device driver
 .. index:: rtems_io_unregister_driver
+
+.. _rtems_io_unregister_driver:
 
 IO_UNREGISTER_DRIVER - Unregister a device driver
 -------------------------------------------------
@@ -321,9 +323,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_initialize:
 .. index:: initialize a device driver
 .. index:: rtems_io_initialize
+
+.. _rtems_io_initialize:
 
 IO_INITIALIZE - Initialize a device driver
 ------------------------------------------
@@ -364,9 +367,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_register_name:
 .. index:: register device
 .. index:: rtems_io_register_name
+
+.. _rtems_io_register_name:
 
 IO_REGISTER_NAME - Register a device
 ------------------------------------
@@ -399,9 +403,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_lookup_name:
 .. index:: lookup device major and minor number
 .. index:: rtems_io_lookup_name
+
+.. _rtems_io_lookup_name:
 
 IO_LOOKUP_NAME - Lookup a device
 --------------------------------
@@ -434,9 +439,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_open:
 .. index:: open a devive
 .. index:: rtems_io_open
+
+.. _rtems_io_open:
 
 IO_OPEN - Open a device
 -----------------------
@@ -472,9 +478,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_close:
 .. index:: close a device
 .. index:: rtems_io_close
+
+.. _rtems_io_close:
 
 IO_CLOSE - Close a device
 -------------------------
@@ -510,9 +517,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_read:
 .. index:: read from a device
 .. index:: rtems_io_read
+
+.. _rtems_io_read:
 
 IO_READ - Read from a device
 ----------------------------
@@ -549,9 +557,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_write:
 .. index:: write to a device
 .. index:: rtems_io_write
+
+.. _rtems_io_write:
 
 IO_WRITE - Write to a device
 ----------------------------
@@ -588,10 +597,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_io_control:
 .. index:: special device services
 .. index:: IO Control
 .. index:: rtems_io_control
+
+.. _rtems_io_control:
 
 IO_CONTROL - Special device services
 ------------------------------------

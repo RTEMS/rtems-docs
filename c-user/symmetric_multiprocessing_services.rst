@@ -327,9 +327,9 @@ thread.  During a context switch from the executing thread to the heir thread,
 the value of each task variable is saved to the thread control block of the
 executing thread and restored from the thread control block of the heir thread.
 This is inherently broken if more than one executing thread exists.
-Alternatives to task variables are POSIX keys and :ref:`TLS <TLS>`.  All use
-cases of task variables in the RTEMS code base were replaced with alternatives.
-The task variable API has been removed in RTEMS 5.1.
+Alternatives to task variables are POSIX keys and :term:`TLS`.  All use cases
+of task variables in the RTEMS code base were replaced with alternatives.  The
+task variable API has been removed in RTEMS 5.1.
 
 Highest Priority Thread Never Walks Alone
 -----------------------------------------

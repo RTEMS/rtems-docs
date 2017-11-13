@@ -4,12 +4,12 @@
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
-Board Support Packages
-**********************
-
 .. index:: Board Support Packages
 .. index:: BSPs
 .. index:: BSP, definition
+
+Board Support Packages
+**********************
 
 Introduction
 ============
