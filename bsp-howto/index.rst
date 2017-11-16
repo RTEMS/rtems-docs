@@ -49,6 +49,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	initilization_code
 	console
 	clock
+	getentropy
 	i2c
 	spi
 	real_time_clock
