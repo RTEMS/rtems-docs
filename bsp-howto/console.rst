@@ -184,6 +184,7 @@ characters from ``buf`` to the serial device specified by ``base``.
     )
     {
       my_driver_context *ctx;
+      size_t             i;
 
       ctx = (my_driver_context *) base;
 
@@ -201,7 +202,6 @@ available, then the routine should immediately return minus one.
     static int my_driver_poll_read( rtems_termios_device_context *base )
     {
       my_driver_context *ctx;
-      size_t             i;
 
       ctx = (my_driver_context *) base;
 
