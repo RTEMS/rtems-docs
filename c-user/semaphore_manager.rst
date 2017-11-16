@@ -614,6 +614,11 @@ DESCRIPTION:
     semaphore is available or the ``RTEMS_NO_WAIT`` option component is set,
     then timeout is ignored.
 
+    In case a semaphore is not available, then ``RTEMS_UNSATISFIED`` will be
+    returned.  This happens immediately in case ``RTEMS_NO_WAIT`` is specified,
+    or as a result of another task invoking the ``rtems_semaphore_flush``
+    directive in case ``RTEMS_WAIT`` is specified.
+
     Deadlock situations are detected for MrsP semaphores and the
     ``RTEMS_UNSATISFIED`` status code will be returned in SMP configurations in
     this case.
@@ -734,7 +739,7 @@ DIRECTIVE STATUS CODES:
      * - ``RTEMS_INVALID_ID``
        - invalid semaphore id
      * - ``RTEMS_NOT_DEFINED``
-       - operation not defined for the protocol ofthe semaphore
+       - operation not defined for the protocol of the semaphore
      * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
        - not supported for remote semaphores
 
@@ -761,6 +766,43 @@ NOTES:
 
     It is not allowed to flush a MrsP semaphore and the ``RTEMS_NOT_DEFINED``
     status code will be returned in SMP configurations in this case.
+
+    Using the ``rtems_semaphore_flush`` directive for condition synchronization
+    in concert with another semaphore may be subject to the lost wake-up
+    problem.  The following attempt to implement a condition variable is
+    broken.
+
+    .. code-block:: c
+
+        #include <rtems.h>
+        #include <assert.h>
+
+        void cnd_wait( rtems_id cnd, rtems_id mtx )
+        {
+          rtems_status_code sc;
+
+          sc = rtems_semaphore_release( mtx );
+          assert( sc == RTEMS_SUCCESSFUL );
+
+          /*
+           * Here, a higher priority task may run and satisfy the condition. We
+           * may never wake up from the next semaphore obtain.
+           */
+
+          sc = rtems_semaphore_obtain( cnd, RTEMS_WAIT, RTEMS_NO_TIMEOUT );
+          assert( sc == RTEMS_UNSATISFIED );
+
+          sc = rtems_semaphore_obtain( mtx, RTEMS_WAIT, RTEMS_NO_TIMEOUT );
+          assert( sc == RTEMS_SUCCESSFUL );
+        }
+
+        void cnd_broadcast( rtems_id cnd )
+        {
+          rtems_status_code sc;
+
+          sc = rtems_semaphore_flush( cnd );
+          assert( sc == RTEMS_SUCCESSFUL );
+        }
 
 .. raw:: latex
 
