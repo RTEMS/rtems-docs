@@ -384,6 +384,10 @@ INTERNAL_ERROR_LIBIO_STDERR_FD_OPEN_FAILED (37)
     unexpected file descriptor number.  This fatal error may occur during
     system initialization.  It is an application configuration error.
 
+INTERNAL_ERROR_ILLEGAL_USE_OF_FLOATING_POINT_UNIT (38)
+    The floating point unit was used illegally, for example in interrupt
+    context on some architectures.
+
 Operations
 ==========
 
