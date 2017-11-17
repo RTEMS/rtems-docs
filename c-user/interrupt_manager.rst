@@ -404,18 +404,22 @@ DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    This directive temporarily enables maskable interrupts to the ``level``
-    which was returned by a previous call to ``rtems_interrupt_disable``.
-    Immediately prior to invoking this directive, maskable interrupts should be
-    disabled by a call to ``rtems_interrupt_disable`` and will be redisabled
-    when this directive returns to the caller.
+    This directive is functionally equivalent to a
+    ``rtems_interrupt_enable( level )`` immediately followed by a
+    ``rtems_interrupt_disable( level )``.  On some
+    architectures it is possible to provide an optimized implementation for
+    this sequence.
 
 NOTES:
     This directive will not cause the calling task to be preempted.
 
-    This directive is only available on uni-processor configurations.  The
+    This directive is only available in uni-processor configurations.  The
     directives ``rtems_interrupt_local_disable`` and
-    ``rtems_interrupt_local_enable`` is available on all configurations.
+    ``rtems_interrupt_local_enable`` are available in all configurations.
+
+    Historically, the interrupt flash directive was heavily used in the
+    operating system implementation.  However, this is no longer the case.  The
+    interrupt flash directive is provided for backward compatibility reasons.
 
 .. raw:: latex
 
