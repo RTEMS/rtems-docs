@@ -21,7 +21,10 @@ turn are used by various cryptographic functions.
     suitable for such applications.
 
 The :c:func:`getentropy` implementation must fill the specified memory region
-of the given size with random numbers and return 0 on success.
+of the given size with random numbers and return 0 on success.  A non-zero
+return may cause the :c:macro:`INTERNAL_ERROR_ARC4RANDOM_GETENTROPY_FAIL`
+internal error by one of the
+`ARC4RANDOM(3) <https://man.openbsd.org/arc4random.3>`_ functions.
 
 In general, for embedded systems it is not easy to get some real entropy. Normally,
 that can only be reached with some extra hardware support. Some microcontrollers

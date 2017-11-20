@@ -390,7 +390,8 @@ INTERNAL_ERROR_ILLEGAL_USE_OF_FLOATING_POINT_UNIT (38)
 
 INTERNAL_ERROR_ARC4RANDOM_GETENTROPY_FAIL (39)
     A :c:func:`getentropy` system call failed in one of the `ARC4RANDOM(3)
-    <https://man.openbsd.org/arc4random.3>`_ functions.
+    <https://man.openbsd.org/arc4random.3>`_ functions.  This fatal error can
+    only be fixed with a different implementation of :c:func:`getentropy`.
 
 Operations
 ==========
