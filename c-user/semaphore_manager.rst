@@ -804,6 +804,10 @@ NOTES:
           assert( sc == RTEMS_SUCCESSFUL );
         }
 
+    For barrier synchronization, the :ref:`barrier_manager` offers a cleaner
+    alternative to using the `rtems_semaphore_flush` directive.  Unlike POSIX
+    barriers, they have a manual release option.
+
 .. raw:: latex
 
    \clearpage

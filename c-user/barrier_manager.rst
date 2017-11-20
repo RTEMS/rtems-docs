@@ -6,6 +6,8 @@
 
 .. index:: barrier
 
+.. _barrier_manager:
+
 Barrier Manager
 ***************
 
