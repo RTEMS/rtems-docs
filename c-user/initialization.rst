@@ -195,10 +195,6 @@ RTEMS_SYSINIT_POSIX_TIMER
     Initialization of the POSIX Timer object class.  This step is optional and
     depends on the application configuration.
 
-RTEMS_SYSINIT_POSIX_RWLOCK
-    Initialization of the POSIX Read-Write Locks object class.  This step is
-    optional and depends on the application configuration.
-
 RTEMS_SYSINIT_POSIX_KEYS
     Initialization of the POSIX Keys object class.  This step is optional
     and depends on the application configuration.
