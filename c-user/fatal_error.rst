@@ -21,6 +21,8 @@ provided by the fatal error manager are:
 
 - rtems_fatal_ - Invoke the fatal error handler
 
+- rtems_panic_ - Print a message and invoke the fatal error handler
+
 - rtems_shutdown_executive_ - Shutdown RTEMS
 
 - rtems_exception_frame_print_ - Print the CPU exception frame
@@ -121,6 +123,9 @@ RTEMS_FATAL_SOURCE_EXCEPTION (9)
 
 RTEMS_FATAL_SOURCE_SMP (10)
     Fatal source of SMP domain.  See :c:type:`SMP_Fatal_code`.
+
+RTEMS_FATAL_SOURCE_PANIC (11)
+    Fatal source of :c:func:`rtems_panic`, see :ref:`rtems_panic`.
 
 .. _internal_errors:
 
@@ -458,15 +463,15 @@ sequence, related constants, usage, and status codes.
 
 .. _rtems_fatal:
 
-FATAL - Invoke the fatal error
-------------------------------
+FATAL - Invoke the fatal error handler
+--------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_fatal(
-           rtems_fatal_source fatal_source,
-           rtems_fatal_code   error_code
+          rtems_fatal_source fatal_source,
+          rtems_fatal_code   error_code
         ) RTEMS_NO_RETURN;
 
 DIRECTIVE STATUS CODES:
@@ -474,6 +479,39 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
     This directive terminates the system.
+
+NOTE:
+    Registered :c:func:`atexit()` or :c:func:`on_exit()` handlers are not
+    called.  Use :c:func:`exit()` in case these handlers should be invoked.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: panic
+.. index:: rtems_panic
+
+.. _rtems_panic:
+
+PANIC - Print a message and invoke the fatal error handler
+----------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        void rtems_panic(
+          const char *fmt,
+          ...
+        ) RTEMS_NO_RETURN RTEMS_PRINTFLIKE( 1, 2 );
+
+DIRECTIVE STATUS CODES:
+    NONE - This function will not return to the caller.
+
+DESCRIPTION:
+    This directive prints a message via :c:func:`printk` specified by the
+    format and optional parameters and then terminates the system with the
+    :c:macro:`RTEMS_FATAL_SOURCE_PANIC` fatal source.  The fatal code is set to
+    the format string address.
 
 NOTE:
     Registered :c:func:`atexit()` or :c:func:`on_exit()` handlers are not
