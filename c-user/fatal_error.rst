@@ -244,11 +244,6 @@ INTERNAL_ERROR_RTEMS_INIT_TASK_ENTRY_IS_NULL (26)
     occur during system initialization.  It is an application configuration
     error.
 
-INTERNAL_ERROR_POSIX_INIT_THREAD_ENTRY_IS_NULL (27)
-    A POSIX initialization thread entry function is NULL.  This fatal error may
-    occur during system initialization.  It is an application configuration
-    error.
-
 INTERNAL_ERROR_THREAD_QUEUE_DEADLOCK (28)
     A deadlock was detected during a thread queue enqueue operation.
 

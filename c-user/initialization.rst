@@ -278,6 +278,80 @@ Many of RTEMS actions during initialization are based upon the contents of the
 Configuration Table.  For more information regarding the format and contents of
 this table, please refer to the chapter :ref:`Configuring a System`.
 
+Global Construction
+-------------------
+
+The global construction is carried out by the first Classic API initialization
+task (first is defined by index zero in the Classic API initialization task
+configuration table).  If no Classic API initialization task exists, then it is
+carried out by the first POSIX API initialization thread.  If no initialization
+task or thread exists, then no global construction is performed, see for
+example :ref:`Specify Idle Task Performs Application Initialization`.  The
+Classic API task or POSIX API thread which carries out global construction is
+called the main thread.
+
+Global construction runs before the entry function of the main thread.  The
+configuration of the main thread must take the global construction into
+account.  In particular, the main thread stack size, priority, attributes and
+initial modes must be set accordingly.  Thread-local objects and POSIX key
+values created during global construction are accessible by the main thread.
+If other initialization tasks are configured, and one of them has a higher
+priority than the main thread and the main thread is preemptible, this task
+executes before the global construction.  In case the main thread blocks during
+global construction, then other tasks may run.  In SMP configurations, other
+initialization tasks may run in parallel with global construction.  Tasks
+created during global construction may preempt the main thread or run in
+parallel in SMP configurations.  All RTEMS services allowed in task context are
+allowed during global construction.
+
+Global constructors are C++ global object constructors or functions with the
+constructor attribute.  For example, the following test program
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <assert.h>
+
+    class A {
+      public:
+        A()
+        {
+          puts( "A:A()" );
+        }
+    };
+
+    static A a;
+
+    static thread_local int i;
+
+    static thread_local int j;
+
+    static __attribute__(( __constructor__ )) void b( void )
+    {
+      i = 1;
+      puts( "b()" );
+    }
+
+    static __attribute__(( __constructor__( 1000 ) )) void c( void )
+    {
+      puts( "c()" );
+    }
+
+    int main( void )
+    {
+      assert( i == 1 );
+      assert( j == 0 );
+      return 0;
+    }
+
+should output:
+
+.. code-block:: shell
+
+    c()
+    b()
+    A:A()
+
 Directives
 ==========
 
