@@ -183,10 +183,6 @@ RTEMS_SYSINIT_POSIX_THREADS
     Initialization of the POSIX Threads object class.  This step is optional
     and depends on the application configuration.
 
-RTEMS_SYSINIT_POSIX_MUTEX
-    Initialization of the POSIX Mutex object class.  This step is optional and
-    depends on the application configuration.
-
 RTEMS_SYSINIT_POSIX_MESSAGE_QUEUE
     Initialization of the POSIX Message Queue object class.  This step is
     optional and depends on the application configuration.
