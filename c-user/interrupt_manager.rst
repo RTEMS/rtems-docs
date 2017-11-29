@@ -23,13 +23,13 @@ from an ISR.  The interrupt manager includes the following directive:
 
 - rtems_interrupt_disable_ - Disable Interrupts
 
-- rtems_interrupt_enable_ - Enable Interrupts
+- rtems_interrupt_enable_ - Restore Interrupt Level
 
 - rtems_interrupt_flash_ - Flash Interrupt
 
 - rtems_interrupt_local_disable_ - Disable Interrupts on Current Processor
 
-- rtems_interrupt_local_enable_ - Enable Interrupts on Current Processor
+- rtems_interrupt_local_enable_ - Restore Interrupt Level on Current Processor
 
 - rtems_interrupt_lock_initialize_ - Initialize an ISR Lock
 
@@ -73,7 +73,7 @@ a prototype similar to the following:
 .. code-block:: c
 
     rtems_isr user_isr(
-        rtems_vector_number vector
+      rtems_vector_number vector
     );
 
 The vector number argument is provided by RTEMS to allow the application to
@@ -278,9 +278,9 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_interrupt_catch(
-            rtems_isr_entry      new_isr_handler,
-            rtems_vector_number  vector,
-            rtems_isr_entry     *old_isr_handler
+          rtems_isr_entry      new_isr_handler,
+          rtems_vector_number  vector,
+          rtems_isr_entry     *old_isr_handler
         );
 
 DIRECTIVE STATUS CODES:
@@ -322,7 +322,7 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_disable(
-            rtems_interrupt_level  level
+          rtems_interrupt_level level
         );
 
 DIRECTIVE STATUS CODES:
@@ -330,55 +330,92 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
     This directive disables all maskable interrupts and returns the previous
-    ``level``.  A later invocation of the ``rtems_interrupt_enable`` directive
-    should be used to restore the interrupt level.
-
-.. sidebar:: *Macro*
-
-  This directive is implemented as a macro which modifies the ``level``
-  parameter.
+    interrupt level in ``level``.
 
 NOTES:
+    A later invocation of the ``rtems_interrupt_enable`` directive should be
+    used to restore the interrupt level.
+
+    This directive is implemented as a macro which sets the ``level``
+    parameter.
+
     This directive will not cause the calling task to be preempted.
 
-    This directive is only available on uni-processor configurations.  The
-    directive ``rtems_interrupt_local_disable`` is available on all
+    This directive is only available in uni-processor configurations.  The
+    directive ``rtems_interrupt_local_disable`` is available in all
     configurations.
+
+    .. code-block:: c
+
+        void critical_section( void )
+        {
+          rtems_interrupt level;
+
+          /*
+           * Please note that the rtems_interrupt_disable() is a macro.  The
+           * previous interrupt level (before the maskable interrupts are
+           * disabled) is returned here in the level macro parameter.  This
+           * would be wrong:
+           *
+           * rtems_interrupt_disable( &level );
+           */
+          rtems_interrupt_disable( level );
+
+          /* Critical section, maskable interrupts are disabled */
+
+          {
+            rtems_interrupt level2;
+
+            rtems_interrupt_disable( level2 );
+
+            /* Nested critical section */
+
+            rtems_interrupt_enable( level2 );
+          }
+
+          /* Maskable interrupts are still disabled */
+
+          rtems_interrupt_enable( level );
+        }
 
 .. raw:: latex
 
    \clearpage
 
 .. index:: enable interrupts
+.. index:: restore interrupt level
 .. index:: rtems_interrupt_enable
 
 .. _rtems_interrupt_enable:
 
-INTERRUPT_ENABLE - Enable Interrupts
-------------------------------------
+INTERRUPT_ENABLE - Restore Interrupt Level
+------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_enable(
-           rtems_interrupt_level  level
+          rtems_interrupt_level level
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    This directive enables maskable interrupts to the ``level`` which was
-    returned by a previous call to ``rtems_interrupt_disable``.  Immediately
-    prior to invoking this directive, maskable interrupts should be disabled by
-    a call to ``rtems_interrupt_disable`` and will be enabled when this
-    directive returns to the caller.
+    This directive restores the interrupt level specified by ``level``.
 
 NOTES:
+    The ``level`` parameter value must be obtained by a previous call to
+    ``rtems_interrupt_disable`` or ``rtems_interrupt_flash``.  Using an
+    otherwise obtained value is undefined behaviour.
+
+    This directive is unsuitable to enable particular interrupt sources, for
+    example in an interrupt controller.
+
     This directive will not cause the calling task to be preempted.
 
-    This directive is only available on uni-processor configurations.  The
-    directive ``rtems_interrupt_local_enable`` is available on all
+    This directive is only available in uni-processor configurations.  The
+    directive ``rtems_interrupt_local_enable`` is available in all
     configurations.
 
 .. raw:: latex
@@ -397,7 +434,7 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_flash(
-            rtems_interrupt_level level
+          rtems_interrupt_level level
         );
 
 DIRECTIVE STATUS CODES:
@@ -411,6 +448,10 @@ DESCRIPTION:
     this sequence.
 
 NOTES:
+    The ``level`` parameter value must be obtained by a previous call to
+    ``rtems_interrupt_disable`` or ``rtems_interrupt_flash``.  Using an
+    otherwise obtained value is undefined behaviour.
+
     This directive will not cause the calling task to be preempted.
 
     This directive is only available in uni-processor configurations.  The
@@ -437,7 +478,7 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_local_disable(
-            rtems_interrupt_level  level
+          rtems_interrupt_level level
         );
 
 DIRECTIVE STATUS CODES:
@@ -445,50 +486,88 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
     This directive disables all maskable interrupts and returns the previous
-    ``level``.  A later invocation of the ``rtems_interrupt_local_enable``
-    directive should be used to restore the interrupt level.
-
-.. sidebar:: *Macro*
-
-  This directive is implemented as a macro which modifies the ``level``
-  parameter.
+    interrupt level in ``level``.
 
 NOTES:
+    A later invocation of the ``rtems_interrupt_local_enable`` directive should
+    be used to restore the interrupt level.
+
+    This directive is implemented as a macro which sets the ``level``
+    parameter.
+
     This directive will not cause the calling task to be preempted.
 
     In SMP configurations, this will not ensure system wide mutual exclusion.
     Use interrupt locks instead.
+
+    .. code-block:: c
+
+        void local_critical_section( void )
+        {
+          rtems_interrupt level;
+
+          /*
+           * Please note that the rtems_interrupt_local_disable() is a macro.
+           * The previous interrupt level (before the maskable interrupts are
+           * disabled) is returned here in the level macro parameter.  This
+           * would be wrong:
+           *
+           * rtems_interrupt_local_disable( &level );
+           */
+          rtems_interrupt_local_disable( level );
+
+          /* Local critical section, maskable interrupts are disabled */
+
+          {
+            rtems_interrupt level2;
+
+            rtems_interrupt_local_disable( level2 );
+
+            /* Nested local critical section */
+
+            rtems_interrupt_local_enable( level2 );
+          }
+
+          /* Maskable interrupts are still disabled */
+
+          rtems_interrupt_local_enable( level );
+        }
 
 .. raw:: latex
 
    \clearpage
 
 .. index:: enable interrupts
+.. index:: restore interrupt level
 .. index:: rtems_interrupt_local_enable
 
 .. _rtems_interrupt_local_enable:
 
-INTERRUPT_LOCAL_ENABLE - Enable Interrupts on Current Processor
----------------------------------------------------------------
+INTERRUPT_LOCAL_ENABLE - Restore Interrupt Level on Current Processor
+---------------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_local_enable(
-            rtems_interrupt_level  level
+          rtems_interrupt_level level
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    This directive enables maskable interrupts to the ``level`` which was
-    returned by a previous call to ``rtems_interrupt_local_disable``.
-    Immediately prior to invoking this directive, maskable interrupts should be
-    disabled by a call to ``rtems_interrupt_local_disable`` and will be enabled
-    when this directive returns to the caller.
+    This directive restores the interrupt level specified by ``level`` on the
+    current processor.
 
 NOTES:
+    The ``level`` parameter value must be obtained by a previous call to
+    ``rtems_interrupt_local_disable``.  Using an otherwise obtained value is
+    undefined behaviour.
+
+    This directive is unsuitable to enable particular interrupt sources, for
+    example in an interrupt controller.
+
     This directive will not cause the calling task to be preempted.
 
 .. raw:: latex
@@ -506,8 +585,8 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_initialize(
-            rtems_interrupt_lock *lock,
-            const char           *name
+          rtems_interrupt_lock *lock,
+          const char           *name
         );
 
 DIRECTIVE STATUS CODES:
@@ -535,23 +614,23 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_acquire(
-            rtems_interrupt_lock         *lock,
-            rtems_interrupt_lock_context *lock_context
+          rtems_interrupt_lock         *lock,
+          rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    Interrupts will be disabled.  In SMP configurations, this directive
-    acquires an SMP lock.
+    Maskable interrupts will be disabled.  In SMP configurations, this
+    directive acquires an SMP lock.
 
 NOTES:
     A separate lock context must be provided for each acquire/release pair, for
     example an automatic variable.
 
     An attempt to recursively acquire the lock may result in an infinite loop
-    with interrupts disabled.
+    with maskable interrupts disabled.
 
     This directive will not cause the calling thread to be preempted.  This
     directive can be used in thread and interrupt context.
@@ -571,15 +650,15 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_release(
-            rtems_interrupt_lock         *lock,
-            rtems_interrupt_lock_context *lock_context
+          rtems_interrupt_lock         *lock,
+          rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    The interrupt status will be restored.  In SMP configurations, this
+    The interrupt level will be restored.  In SMP configurations, this
     directive releases an SMP lock.
 
 NOTES:
@@ -604,15 +683,15 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_acquire_isr(
-            rtems_interrupt_lock         *lock,
-            rtems_interrupt_lock_context *lock_context
+          rtems_interrupt_lock         *lock,
+          rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    The interrupt status will remain unchanged.  In SMP configurations, this
+    The interrupt level will remain unchanged.  In SMP configurations, this
     directive acquires an SMP lock.
 
 NOTES:
@@ -643,15 +722,15 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         void rtems_interrupt_lock_release_isr(
-            rtems_interrupt_lock         *lock,
-            rtems_interrupt_lock_context *lock_context
+          rtems_interrupt_lock         *lock,
+          rtems_interrupt_lock_context *lock_context
         );
 
 DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    The interrupt status will remain unchanged.  In SMP configurations, this
+    The interrupt level will remain unchanged.  In SMP configurations, this
     directive releases an SMP lock.
 
 NOTES:
@@ -676,7 +755,7 @@ INTERRUPT_IS_IN_PROGRESS - Is an ISR in Progress
 CALLING SEQUENCE:
     .. code-block:: c
 
-        bool rtems_interrupt_is_in_progress(void);
+        bool rtems_interrupt_is_in_progress( void );
 
 DIRECTIVE STATUS CODES:
     NONE
