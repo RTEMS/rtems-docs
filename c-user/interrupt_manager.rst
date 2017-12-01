@@ -485,8 +485,8 @@ DIRECTIVE STATUS CODES:
     NONE
 
 DESCRIPTION:
-    This directive disables all maskable interrupts and returns the previous
-    interrupt level in ``level``.
+    This directive disables all maskable interrupts on the current processor
+    and returns the previous interrupt level in ``level``.
 
 NOTES:
     A later invocation of the ``rtems_interrupt_local_enable`` directive should
@@ -516,7 +516,10 @@ NOTES:
            */
           rtems_interrupt_local_disable( level );
 
-          /* Local critical section, maskable interrupts are disabled */
+          /*
+           * Local critical section, maskable interrupts on the current
+           * processor are disabled.
+           */
 
           {
             rtems_interrupt level2;
