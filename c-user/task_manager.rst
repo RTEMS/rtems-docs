@@ -636,6 +636,10 @@ DIRECTIVE STATUS CODES:
         - too many tasks created
       * - ``RTEMS_UNSATISFIED``
         - not enough memory for stack/FP context
+      * - ``RTEMS_UNSATISFIED``
+        - non-preemption mode not supported on SMP system
+      * - ``RTEMS_UNSATISFIED``
+        - interrupt level mode not supported on SMP system
       * - ``RTEMS_TOO_MANY``
         - too many global objects
 
@@ -1279,6 +1283,10 @@ DIRECTIVE STATUS CODES:
         - task mode set successfully
       * - ``RTEMS_INVALID_ADDRESS``
         - ``previous_mode_set`` is NULL
+        - not enough memory for stack/FP context
+      * - ``RTEMS_NOT_IMPLEMENTED``
+        - non-preemption mode not supported on SMP system
+      * - ``RTEMS_NOT_IMPLEMENTED``
 
 DESCRIPTION:
     This directive manipulates the execution mode of the calling task.  A

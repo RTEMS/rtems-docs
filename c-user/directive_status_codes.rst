@@ -74,7 +74,7 @@ The directives are:
  * - ``RTEMS_NOT_OWNER_OF_RESOURCE``
    - not owner of resource
  * - ``RTEMS_NOT_IMPLEMENTED``
-   - directive not implemented
+   - directive not implemented or feature not available in configuration
  * - ``RTEMS_INTERNAL_ERROR``
    - RTEMS inconsistency detected
  * - ``RTEMS_NO_MEMORY``
