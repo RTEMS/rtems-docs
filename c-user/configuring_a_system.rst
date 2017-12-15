@@ -310,66 +310,55 @@ requirements of the software is unknown. In these situations users do not need
 to control the size of the workspace very tightly because they just want to get
 the new software to run; later they can tune the workspace size as needed.
 
-The following API-independent object classes can be configured in unlimited
-mode:
-
-- POSIX Keys
-
-- POSIX Key Value Pairs
-
 The following object classes in the Classic API can be configured in unlimited
 mode:
+
+- Barriers
+
+- Message Queues
+
+- Partitions
+
+- Periods
+
+- Ports
+
+- Regions
+
+- Semaphores
 
 - Tasks
 
 - Timers
 
-- Semaphores
-
-- Message Queues
-
-- Periods
-
-- Barriers
-
-- Partitions
-
-- Regions
-
-- Ports
-
 Additionally, the following object classes from the POSIX API can be configured
 in unlimited mode:
 
-- Threads
+- Keys -- :c:func:`pthread_key_create`
 
-- Mutexes
+- Key Value Pairs -- :c:func:`pthread_setspecific`
 
-- Condition Variables
+- Message Queues -- :c:func:`mq_open`
 
-- Timers
+- Named Semaphores -- :c:func:`sem_open`
 
-- Message Queues
+- Shared Memory -- :c:func:`shm_open`
 
-- Message Queue Descriptors
+- Threads -- :c:func:`pthread_create`
 
-- Semaphores
+- Timers -- :c:func:`timer_create`
 
-- Barriers
+.. warning::
 
-- Read/Write Locks
+    The following object classes can *not* be configured in unlimited mode:
 
-- Spinlocks
+    - Drivers
 
-The following object classes can *not* be configured in unlimited mode:
+    - File Descriptors
 
-- Drivers
+    - POSIX Queued Signals
 
-- File Descriptors
-
-- User Extensions
-
-- POSIX Queued Signals
+    - User Extensions
 
 Due to the memory requirements of unlimited objects it is strongly recommended
 to use them only in combination with the unified work areas. See :ref:`Separate
