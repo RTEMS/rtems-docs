@@ -225,7 +225,8 @@ thread.  The :c:data:`started` is a pointer to the TCB of the started thread.
 It is invoked after the environment of the started thread has been loaded and the
 started thread has been made ready.  So, in SMP configurations, the thread may
 already run on another processor before the thread start extension is actually
-invoked.
+invoked.  Thread switch and thread begin extensions may run before or in
+parallel with the thread start extension in SMP configurations.
 
 The thread start extension is invoked in forward order with thread dispatching
 disabled.
@@ -254,7 +255,8 @@ reflects the previous execution context.
 The thread restart extension is invoked in forward order with thread
 dispatching enabled (except during system initialization).  The thread life is
 protected.  Thread restart and delete requests issued by thread restart
-extensions lead to recursion.
+extensions lead to recursion.  The POSIX cleanup handlers, POSIX key
+destructors and thread-local object destructors run in this context.
 
 .. index:: rtems_task_switch_extension
 
@@ -277,7 +279,10 @@ thread.  The :c:data:`heir` is a pointer to the TCB of the heir thread.
 
 The thread switch extension is invoked in forward order with thread dispatching
 disabled.  In SMP configurations, interrupts are disabled and the per-processor
-SMP lock is owned.
+SMP lock is owned.  Thread switch extensions may run in parallel on multiple
+processors.  It is recommended to use thread-local or per-processor data
+structures in SMP configurations for thread switch extensions.  A global SMP
+lock should be avoided for performance reasons.
 
 The context switches initiated through the multitasking start are not covered
 by the thread switch extension.
@@ -298,12 +303,12 @@ entry function is called.  The thread begin extension is defined as follows.
 
 The :c:data:`executing` is a pointer to the TCB of the currently executing
 thread.  The thread begin extension executes in a normal thread context and may
-allocate resources for the thread.  In particular it has access to thread-local
-storage of the thread.
+allocate resources for the executing thread.  In particular, it has access to
+thread-local storage of the executing thread.
 
 The thread begin extension is invoked in forward order with thread dispatching
 enabled.  The thread switch extension may be called multiple times for this
-thread before the thread begin extension is invoked.
+thread before or during the thread begin extension is invoked.
 
 .. index:: rtems_task_exitted_extension
 
@@ -344,10 +349,11 @@ extension is defined as follows.
 The :c:data:`executing` is a pointer to the TCB of the currently executing
 thread.
 
-It is invoked in the context of the terminated thread right before the
-thread dispatch to the heir thread.  The POSIX cleanup and key destructors
-execute in this context.  The thread termination extension has access to
-thread-local storage and thread-specific data of POSIX keys.
+It is invoked in the context of the terminated thread right before the thread
+dispatch to the heir thread.  The POSIX cleanup handlers, POSIX key destructors
+and thread-local object destructors run in this context.  Depending on the
+order, the thread termination extension has access to thread-local storage and
+thread-specific data of POSIX keys.
 
 The thread terminate extension is invoked in reverse order with thread
 dispatching enabled.  The thread life is protected.  Thread restart and delete
