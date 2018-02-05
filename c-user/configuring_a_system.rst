@@ -2216,69 +2216,6 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. COMMENT: === CONFIGURE_TERMIOS_DISABLED ===
-
-.. index:: CONFIGURE_TERMIOS_DISABLED
-
-.. _Disable POSIX Termios Support:
-
-Disable POSIX Termios Support
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_TERMIOS_DISABLED``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default, and resources are reserved for the termios
-    functionality.
-
-DESCRIPTION:
-    This configuration parameter is defined if the software implementing POSIX
-    termios functionality is not going to be used by this application.
-
-NOTES:
-    The termios support library should not be included in an application
-    executable unless it is directly referenced by the application or a device
-    driver.
-
-.. COMMENT: === CONFIGURE_NUMBER_OF_TERMIOS_PORTS ===
-
-.. index:: CONFIGURE_NUMBER_OF_TERMIOS_PORTS
-
-.. _Specify Maximum Termios Ports:
-
-Specify Maximum Termios Ports
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_NUMBER_OF_TERMIOS_PORTS``
-
-DATA TYPE:
-    Unsigned integer.
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 1, so a console port can be used.
-
-DESCRIPTION:
-    This configuration parameter is set to the number of ports using the
-    termios functionality.  Each concurrently active termios port requires
-    resources.
-
-NOTES:
-    If the application will be using serial ports including, but not limited
-    to, the Console Device
-    (e.g. ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``), then it is highly
-    likely that this configuration parameter should NOT be is defined.
-
 .. COMMENT: === File System Configuration Parameters ===
 
 File System Configuration Parameters
@@ -5073,6 +5010,14 @@ CONFIGURE_HAS_OWN_BDBUF_TABLE
 
 This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
 RTEMS 4.10.0.
+
+.. index:: CONFIGURE_NUMBER_OF_TERMIOS_PORTS
+
+CONFIGURE_NUMBER_OF_TERMIOS_PORTS
+---------------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_BARRIERS
 
 CONFIGURE_MAXIMUM_POSIX_BARRIERS
@@ -5110,6 +5055,14 @@ CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
 ---------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_TERMIOS_DISABLED
+
+CONFIGURE_TERMIOS_DISABLED
+--------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_SMP_APPLICATION
 
 CONFIGURE_SMP_APPLICATION
