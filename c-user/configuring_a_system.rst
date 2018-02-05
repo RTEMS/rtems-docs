@@ -4659,6 +4659,7 @@ NOTES:
 
 Obsolete Configuration Options
 ==============================
+
 .. index:: CONFIGURE_BDBUF_BUFFER_COUNT
 
 CONFIGURE_BDBUF_BUFFER_COUNT
@@ -4666,6 +4667,7 @@ CONFIGURE_BDBUF_BUFFER_COUNT
 
 This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
 RTEMS 4.10.0.
+
 .. index:: CONFIGURE_BDBUF_BUFFER_SIZE
 
 CONFIGURE_BDBUF_BUFFER_SIZE
@@ -4673,6 +4675,7 @@ CONFIGURE_BDBUF_BUFFER_SIZE
 
 This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
 RTEMS 4.10.0.
+
 .. index:: CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
 
 CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
@@ -4680,6 +4683,7 @@ CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
 
 This configuration option was introduced in RTEMS 4.9.0 and is obsolete since
 RTEMS 5.1.
+
 .. index:: CONFIGURE_HAS_OWN_BDBUF_TABLE
 
 CONFIGURE_HAS_OWN_BDBUF_TABLE
@@ -4701,12 +4705,14 @@ CONFIGURE_MAXIMUM_POSIX_BARRIERS
 --------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
 
 CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES
 -------------------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
 
 CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
@@ -4714,18 +4720,21 @@ CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUE_DESCRIPTORS
 
 This configuration option was introduced in RTEMS 4.10.0 and is obsolete since
 RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_MUTEXES
 
 CONFIGURE_MAXIMUM_POSIX_MUTEXES
 -------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_RWLOCKS
 
 CONFIGURE_MAXIMUM_POSIX_RWLOCKS
 -------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
 
 CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
@@ -4747,6 +4756,7 @@ CONFIGURE_SMP_APPLICATION
 
 This configuration option was introduced in RTEMS 4.11.0 and is obsolete since
 RTEMS 5.1.
+
 .. index:: CONFIGURE_SMP_MAXIMUM_PROCESSORS
 
 CONFIGURE_SMP_MAXIMUM_PROCESSORS
