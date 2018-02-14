@@ -26,8 +26,18 @@ a sensible fashion for an embedded environment while not returning
 ``ENOSYS`` (for not implemented) makes it significantly easier to port
 code from a UNIX environment without modifying it.
 
-Each chapter in this document presents the alignment of RTEMS with
-a specific standard version or defined profile.  Each section with a
-chapter details the alignment of a specific header file relative to the
-chapter's standard or profile.  The implementation status of the items
-required by the standard are listed.
+In general, adding missing methods is always an open project for a
+volunteer. If considering addressing missing methods, please discuss
+this on mailing list. Some are properly implemented in the Newlib
+C Standard Library used by RTEMS. Others may require target architecture
+specific implementations. Still others may be impossible to implement
+without multiple processes or can only be implemented in a restricted
+fashion.
+
+The next chapter in this document describes each of the standards
+with which the RTEMS alignment is tracked.  Each subsequent chapter in
+this document presents the alignment of RTEMS with a specific standard
+version or defined profile.  Each section with a chapter details the
+alignment of a specific header file relative to the chapter's standard
+or profile.  The implementation status of the items required by the
+standard are listed.

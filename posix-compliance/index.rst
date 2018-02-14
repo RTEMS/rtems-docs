@@ -43,6 +43,7 @@ to the Community Project hosted at http://www.rtems.org/.
         :numbered:
 
         preface
+        standards
         posix-compliance
         glossary
         zreferences

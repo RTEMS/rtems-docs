@@ -1,0 +1,68 @@
+.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+
+.. COMMENT: COPYRIGHT (c) 2018.
+.. COMMENT: On-Line Applications Research Corporation (OAR).
+ | **COPYRIGHT (c) 20188.**
+.. **RTEMS Foundation, The RTEMS Documentation Project**
+
+Standards 
+=========
+
+This chapter describes each of the standards which RTEMS tracks
+API alignment with. As a general rules, these standards are related
+to the POSIX or C programming language standards. Many are the result
+of domain specific efforts to define subsets or profiles or the full
+POSIX standard which are suitable for a specific domain. Each 
+API set is considered a "profile" against which the full capability
+set of RTEMS is evaluated.
+
+The RTEMS Complete Profile is the complete set of POSIX, BSD, and
+C programming language methods supported by RTEMS. This profile is
+independent of any standard and represents a union of multiple
+standards. For example, RTEMS supports BSD derived methods that
+are not in POSIX.
+
+The IEEE Std 1003.1-2008 API is the 2008 edition of the POSIX standard.
+It is an update from the 2003 edition. Each edition of the POSIX standard
+tends to add some methods, deprecate some methods, and obsolete
+(e.g. remove) other methods.
+
+PSE51 through PSE54 are Open Group defined profiles of the 2003 edition
+of the POSIX standard. These profiles are:
+
+* Profile 54 - Multipurpose
+
+  * 1003.1-2003 Base Multi-process, Threads and File System
+
+* Profile 53 - Dedicated
+
+  * Multi-process, Threads and File System
+
+* Profile 52 - Controller
+
+  * Single Process, Threads, and File System
+
+* Profile 51 - Minimal
+
+  * Single Process, Threads, with No File System
+
+The C99 Programming Language standard defines the Standard C Library. This
+library is largely included by reference in the POSIX standard. 
+
+The Open Group FACE Consortium has defined four POSIX profiles targetting
+the avionics application domain. The FACE Technical Standard has been
+through multiple revisions and the POSIX API profiles are identical in
+Editions 1.0, 2.0, and 2.1. They are as follows:
+
+* Security - 163 APIs, single process, no FILE *
+
+* Safety Basic - 246 APIs, single process, some FILE *
+
+* Safety Extended - 335 APIs, multi-process, more FILE *
+
+* General Purpose - 812 APIs, multi-process, much more
+
+RTEMS provides all of the methods required by the FACE Safety BASE profile
+and all of the methods in the Safety Extended profile which do not require
+multiple processes. Similarly, RTEMS provides most of the methods in the
+General Purpose profile which do not require multiple processes.
