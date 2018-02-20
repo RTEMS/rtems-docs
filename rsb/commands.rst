@@ -31,6 +31,7 @@ This commands checks your system is set up correctly. Most options are ignored::
     --configdir path       : Path to the configuration directory, default: ./config
     --builddir path        : Path to the build directory, default: ./build
     --sourcedir path       : Path to the source directory, default: ./source
+    --patchdir path        : Path to the patches directory, default: ./patches
     --tmppath path         : Path to the temp directory, default: ./tmp
     --macros file[,[file]  : Macro format files to load after the defaults
     --log file             : Log file where all build out is written too
@@ -72,6 +73,7 @@ arguments. Most options are ignored::
     --configdir path       : Path to the configuration directory, default: ./config
     --builddir path        : Path to the build directory, default: ./build
     --sourcedir path       : Path to the source directory, default: ./source
+    --patchdir path        : Path to the patches directory, default: ./patches
     --tmppath path         : Path to the temp directory, default: ./tmp
     --macros file[,[file]  : Macro format files to load after the defaults
     --log file             : Log file where all build out is written too
@@ -109,6 +111,7 @@ This command builds a set::
     --configdir path       : Path to the configuration directory, default: ./config
     --builddir path        : Path to the build directory, default: ./build
     --sourcedir path       : Path to the source directory, default: ./source
+    --patchdir path        : Path to the patches directory, default: ./patches
     --tmppath path         : Path to the temp directory, default: ./tmp
     --macros file[,[file]  : Macro format files to load after the defaults
     --log file             : Log file where all build out is written too
@@ -195,6 +198,9 @@ The ``arguments`` are a list of build sets to build.
 
 ``--sourcedir path``:
   Path to the source directory. This overrides the default of +source+.
+
+``--patchdir path``:
+  Path to the patches directory. This overrides the default of +patches+.
 
 ``--tmppath path``:
   Path to the temporary directory. This overrides the default of +tmp+.
@@ -311,6 +317,7 @@ file. Configuration files have the extension of ``.cfg``::
     --configdir path       : Path to the configuration directory, default: ./config
     --builddir path        : Path to the build directory, default: ./build
     --sourcedir path       : Path to the source directory, default: ./source
+    --patchdir path        : Path to the patches directory, default: ./patches
     --tmppath path         : Path to the temp directory, default: ./tmp
     --macros file[,[file]  : Macro format files to load after the defaults
     --log file             : Log file where all build out is written too
