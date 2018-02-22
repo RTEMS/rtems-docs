@@ -81,12 +81,31 @@ class linkcheck(BuildContext):
     fun = 'cmd_linkcheck'
 
 def check_sphinx_version(ctx, minver):
-    version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD +
-                              ['--version']).split(" ")[-1:][0].strip()
     try:
-        ver = tuple(map(int, re.split('[\D]', version)))
+        import sphinx
+        # sphinx.version_info was introduced in sphinx ver 1.2
+        version = sphinx.version_info
+        # version looks like (1, 7, 0, 'final', 0))
+        ver = version[0:2]
     except:
-        ctx.fatal("Sphinx version cannot be checked: %s" % version)
+        try:
+            # sphinx-build returns its version info in stderr
+            (out, err) = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD +
+                              ['--version'], output=Context.BOTH)
+            # err looks like 'sphinx-build 1.7.0\n'
+            version = err.split(" ")[-1:][0].strip()
+            ver = tuple(map(int, re.split('[\D]', version)))
+        except:
+            try:
+                # sphinx-build returns its version info in stdout
+                version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD +
+                              ['--version']).split(" ")[-1:][0].strip()
+                try:
+                    ver = tuple(map(int, re.split('[\D]', version)))
+                except:
+                    ctx.fatal("Sphinx version cannot be checked")
+            except:
+                ctx.fatal("Sphinx version cannot be checked: %s" % version)
     if ver < minver:
         ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
     return ver
