@@ -3854,15 +3854,22 @@ DESCRIPTION:
     application wishes to include the Console Device Driver.
 
 NOTES:
-    This device driver is responsible for providing standard input and output
-    using */dev/console*.
+    This device driver is responsible for providing the :file:`/dev/console`
+    device file.  This device is used to initialize the standard input, output,
+    and error file descriptors.
 
     BSPs should be constructed in a manner that allows ``printk()`` to work
     properly without the need for the console driver to be configured.
 
-    The ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` configuration option is
-    mutually exclusive with the
-    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`` configuration option.
+    The
+
+    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
+
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
+
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+
+    configuration options are mutually exclusive.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 
@@ -3888,16 +3895,80 @@ DESCRIPTION:
     application wishes to include the Simple Console Device Driver.
 
 NOTES:
-    This device driver is responsible for providing standard input and output
-    using */dev/console*.
+    This device driver is responsible for providing the :file:`/dev/console`
+    device file.  This device is used to initialize the standard input, output,
+    and error file descriptors.
 
-    This device driver writes via ``rtems_putc()`` and reads via
-    ``getchark()``.  The Termios framework is not used.  There is no support to
-    change device settings, e.g. baud, stop bits, parity, etc.
+    This device driver reads via ``getchark()``.
 
-    The ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`` configuration
-    option is mutually exclusive with the
-    ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` configuration option.
+    This device driver writes via ``rtems_putc()``.
+
+    The Termios framework is not used.  There is no support to change device
+    settings, e.g. baud, stop bits, parity, etc.
+
+    The
+
+    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
+
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
+
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+
+    configuration options are mutually exclusive.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
+------------------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`` is defined if
+    the application wishes to include the Simple Task Console Device Driver.
+
+NOTES:
+    This device driver is responsible for providing the :file:`/dev/console`
+    device file.  This device is used to initialize the standard input, output,
+    and error file descriptors.
+
+    This device driver reads via ``getchark()``.
+
+    This device driver writes into a write buffer.  The count of characters
+    written into the write buffer is returned.  It might be less than the
+    requested count, in case the write buffer is full.  The write is
+    non-blocking and may be called from interrupt context.  A dedicated task
+    reads from the write buffer and outputs the characters via
+    ``rtems_putc()``.  This task runs with the least important priority.  The
+    write buffer size is 2047 characters and it is not configurable.
+
+    Use ``fsync(STDOUT_FILENO)`` or ``fdatasync(STDOUT_FILENO)`` to drain the
+    write buffer.
+
+    The Termios framework is not used.  There is no support to change device
+    settings, e.g.  baud, stop bits, parity, etc.
+
+    The
+
+    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
+
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
+
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+
+    configuration options are mutually exclusive.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
