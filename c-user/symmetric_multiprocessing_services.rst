@@ -54,8 +54,7 @@ value suitable for the application in order to save memory.  Each processor
 needs an idle thread and interrupt stack for example.
 
 The default scheduler for SMP applications supports up to 32 processors and is
-a global fixed priority scheduler, see also :ref:`Configuring Clustered
-Schedulers`.
+a global fixed priority scheduler, see also :ref:`ConfigurationSchedulersClustered`.
 
 The following compile-time test can be used to check if the SMP support is
 available or not.

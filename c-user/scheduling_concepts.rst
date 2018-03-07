@@ -564,7 +564,7 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
     Identifies a scheduler by its name.  The scheduler name is determined by
-    the scheduler configuration.  See :ref:`Configuring Clustered Schedulers`
+    the scheduler configuration.  See :ref:`ConfigurationSchedulersClustered`
     and :ref:`Configuring a Scheduler Name`.
 
 NOTES:

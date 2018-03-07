@@ -3293,8 +3293,8 @@ NOTES:
 
     The IDLE task must run at the lowest priority of all tasks in the system.
 
-Scheduler Algorithm Configuration
-=================================
+General Scheduler Configuration
+===============================
 
 This section defines the configuration parameters related to selecting a
 scheduling algorithm for an application.  For the :ref:`schedulers built into
@@ -3618,10 +3618,10 @@ NOTES:
     the configuration macros, please examine ``cpukit/sapi/include/confdefs.h``
     for how these are defined for the Deterministic Priority Scheduler.
 
-.. _Configuring Clustered Schedulers:
+.. _ConfigurationSchedulersClustered:
 
-Configuring Clustered Schedulers
---------------------------------
+Clustered Scheduler Configuration
+=================================
 
 Clustered scheduling helps to control the worst-case latencies in a
 multi-processor system.  The goal is to reduce the amount of shared state in
