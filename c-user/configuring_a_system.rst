@@ -3306,47 +3306,15 @@ The pluggable scheduler interface also enables the user to provide their own
 scheduling algorithm.  If you choose to do this, you must define multiple
 configuration macros.
 
-.. index:: CONFIGURE_SCHEDULER_PRIORITY
+.. index:: CONFIGURE_SCHEDULER_CBS
 
-.. _CONFIGURE_SCHEDULER_PRIORITY:
+.. _CONFIGURE_SCHEDULER_CBS:
 
-CONFIGURE_SCHEDULER_PRIORITY
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_SCHEDULER_PRIORITY``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is defined by default.  This is the default scheduler and specifying
-    this configuration parameter is redundant.
-
-DESCRIPTION:
-    The Deterministic Priority Scheduler is the default scheduler in RTEMS for
-    uni-processor applications and is designed for predictable performance
-    under the highest loads.  It can block or unblock a thread in a constant
-    amount of time.  This scheduler requires a variable amount of memory based
-    upon the number of priorities configured in the system.
-
-NOTES:
-    This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_PRIORITY`` although this is equivalent to the default
-    behavior.
-
-.. index:: CONFIGURE_SCHEDULER_SIMPLE
-
-.. _CONFIGURE_SCHEDULER_SIMPLE:
-
-CONFIGURE_SCHEDULER_SIMPLE
---------------------------
+CONFIGURE_SCHEDULER_CBS
+-----------------------
 
 CONSTANT:
-    ``CONFIGURE_SCHEDULER_SIMPLE``
+    ``CONFIGURE_SCHEDULER_CBS``
 
 DATA TYPE:
     Boolean feature macro.
@@ -3358,19 +3326,17 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    When defined, the Simple Priority Scheduler is used at the thread
-    scheduling algorithm. This is an alternative scheduler in RTEMS.  It is
-    designed to provide the same task scheduling behaviour as the Deterministic
-    Priority Scheduler while being simpler in implementation and uses less
-    memory for data management.  It maintains a single sorted list of all ready
-    threads.  Thus blocking or unblocking a thread is not a constant time
-    operation with this scheduler.
+    The Constant Bandwidth Server Scheduler (CBS) is an alternative scheduler
+    in RTEMS for uni-processor applications. The CBS is a budget aware
+    extension of EDF scheduler. The goal of this scheduler is to ensure
+    temporal isolation of tasks. The CBS is equipped with a set of additional
+    rules and provides with an extensive API.
 
     This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_SIMPLE``.
+    ``CONFIGURE_SCHEDULER_CBS``.
 
 NOTES:
-    This scheduler is appropriate for use in small systems where RAM is limited.
+    None.
 
 .. index:: CONFIGURE_SCHEDULER_EDF
 
@@ -3434,15 +3400,50 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_SCHEDULER_CBS
+.. index:: CONFIGURE_SCHEDULER_NAME
 
-.. _CONFIGURE_SCHEDULER_CBS:
+.. _CONFIGURE_SCHEDULER_NAME:
 
-CONFIGURE_SCHEDULER_CBS
------------------------
+CONFIGURE_SCHEDULER_NAME
+------------------------
 
 CONSTANT:
-    ``CONFIGURE_SCHEDULER_CBS``
+    ``CONFIGURE_SCHEDULER_NAME``
+
+DATA TYPE:
+    RTEMS Name (``rtems_name``).
+
+RANGE:
+    Any value.
+
+DEFAULT VALUE:
+    The default name is
+
+      - ``"MEDF"`` for the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`,
+      - ``"MPA "`` for the :ref:`Aribitary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
+      - ``"MPD "`` for the :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`,
+      - ``"MPS "`` for the :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`,
+      - ``"UCBS"`` for the :ref:`Uniprocessor CBS Scheduler <SchedulerCBS>`,
+      - ``"UEDF"`` for the :ref:`Uniprocessor EDF Scheduler <SchedulerEDF>`,
+      - ``"UPD "`` for the :ref:`Uniprocessor Deterministic Priority Scheduler <SchedulerPriority>`, and
+      - ``"UPS "`` for the :ref:`Uniprocessor Simple Priority Scheduler <SchedulerPrioritySimple>`.
+
+DESCRIPTION:
+    Schedulers can be identified via ``rtems_scheduler_ident``.  The name of
+    the scheduler is determined by the configuration.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_SCHEDULER_PRIORITY
+
+.. _CONFIGURE_SCHEDULER_PRIORITY:
+
+CONFIGURE_SCHEDULER_PRIORITY
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_SCHEDULER_PRIORITY``
 
 DATA TYPE:
     Boolean feature macro.
@@ -3451,20 +3452,20 @@ RANGE:
     Defined or undefined.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    This is defined by default.  This is the default scheduler and specifying
+    this configuration parameter is redundant.
 
 DESCRIPTION:
-    The Constant Bandwidth Server Scheduler (CBS) is an alternative scheduler
-    in RTEMS for uni-processor applications. The CBS is a budget aware
-    extension of EDF scheduler. The goal of this scheduler is to ensure
-    temporal isolation of tasks. The CBS is equipped with a set of additional
-    rules and provides with an extensive API.
-
-    This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_CBS``.
+    The Deterministic Priority Scheduler is the default scheduler in RTEMS for
+    uni-processor applications and is designed for predictable performance
+    under the highest loads.  It can block or unblock a thread in a constant
+    amount of time.  This scheduler requires a variable amount of memory based
+    upon the number of priorities configured in the system.
 
 NOTES:
-    None.
+    This scheduler may be explicitly selected by defining
+    ``CONFIGURE_SCHEDULER_PRIORITY`` although this is equivalent to the default
+    behavior.
 
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_SMP
 
@@ -3499,6 +3500,40 @@ NOTES:
 
     This scheduler is currently the default in SMP configurations and is only
     selected when ``CONFIGURE_MAXIMUM_PROCESSORS`` is greater than one.
+
+.. index:: CONFIGURE_SCHEDULER_SIMPLE
+
+.. _CONFIGURE_SCHEDULER_SIMPLE:
+
+CONFIGURE_SCHEDULER_SIMPLE
+--------------------------
+
+CONSTANT:
+    ``CONFIGURE_SCHEDULER_SIMPLE``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    When defined, the Simple Priority Scheduler is used at the thread
+    scheduling algorithm. This is an alternative scheduler in RTEMS.  It is
+    designed to provide the same task scheduling behaviour as the Deterministic
+    Priority Scheduler while being simpler in implementation and uses less
+    memory for data management.  It maintains a single sorted list of all ready
+    threads.  Thus blocking or unblocking a thread is not a constant time
+    operation with this scheduler.
+
+    This scheduler may be explicitly selected by defining
+    ``CONFIGURE_SCHEDULER_SIMPLE``.
+
+NOTES:
+    This scheduler is appropriate for use in small systems where RAM is limited.
 
 .. index:: CONFIGURE_SCHEDULER_SIMPLE_SMP
 
@@ -3539,41 +3574,6 @@ DESCRIPTION:
 NOTES:
     This scheduler is only available when RTEMS is configured with SMP support
     enabled.
-
-.. index:: CONFIGURE_SCHEDULER_NAME
-
-.. _CONFIGURE_SCHEDULER_NAME:
-
-CONFIGURE_SCHEDULER_NAME
-------------------------
-
-CONSTANT:
-    ``CONFIGURE_SCHEDULER_NAME``
-
-DATA TYPE:
-    RTEMS Name (``rtems_name``).
-
-RANGE:
-    Any value.
-
-DEFAULT VALUE:
-    The default name is
-
-      - ``"MEDF"`` for the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`,
-      - ``"MPA "`` for the :ref:`Aribitary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
-      - ``"MPD "`` for the :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`,
-      - ``"MPS "`` for the :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`,
-      - ``"UCBS"`` for the :ref:`Uniprocessor CBS Scheduler <SchedulerCBS>`,
-      - ``"UEDF"`` for the :ref:`Uniprocessor EDF Scheduler <SchedulerEDF>`,
-      - ``"UPD "`` for the :ref:`Uniprocessor Deterministic Priority Scheduler <SchedulerPriority>`, and
-      - ``"UPS "`` for the :ref:`Uniprocessor Simple Priority Scheduler <SchedulerPrioritySimple>`.
-
-DESCRIPTION:
-    Schedulers can be identified via ``rtems_scheduler_ident``.  The name of
-    the scheduler is determined by the configuration.
-
-NOTES:
-    None.
 
 .. index:: CONFIGURE_SCHEDULER_USER
 
