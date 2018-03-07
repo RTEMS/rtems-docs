@@ -359,7 +359,7 @@ The :math:`O(m)` Independence-Preserving Protocol (OMIP) is a generalization of
 the priority inheritance protocol to clustered scheduling which avoids the
 non-preemptive sections present with priority boosting
 :cite:`Brandenburg:2013:OMIP`.  The :math:`m` denotes the number of processors
-in the system.  Similar to the uni-processor priority inheritance protocol, the
+in the system.  Similar to the uniprocessor priority inheritance protocol, the
 OMIP mutexes do not need any external configuration data, e.g. a ceiling
 priority.  This makes them a good choice for general purpose libraries that
 need internal locking.  The complex part of the implementation is contained in
@@ -378,7 +378,7 @@ the Classic API.  There are two thread queuing disciplines available which
 define the order of the threads on a particular thread queue.  Threads can wait
 in FIFO or priority order.
 
-In uni-processor configurations, the priority queuing discipline just orders
+In uniprocessor configurations, the priority queuing discipline just orders
 the threads according to their current priority and in FIFO order in case of
 equal priorities.  However, in SMP configurations, the situation is a bit more
 difficult due to the support for clustered scheduling.  It makes no sense to

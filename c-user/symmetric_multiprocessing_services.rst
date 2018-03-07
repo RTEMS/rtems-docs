@@ -304,14 +304,14 @@ priority four.
 Application Issues
 ==================
 
-Most operating system services provided by the uni-processor RTEMS are
+Most operating system services provided by the uniprocessor RTEMS are
 available in SMP configurations as well.  However, applications designed for an
-uni-processor environment may need some changes to correctly run in an SMP
+uniprocessor environment may need some changes to correctly run in an SMP
 configuration.
 
 As discussed earlier, SMP systems have opportunities for true parallelism which
-was not possible on uni-processor systems. Consequently, multiple techniques
-that provided adequate critical sections on uni-processor systems are unsafe on
+was not possible on uniprocessor systems. Consequently, multiple techniques
+that provided adequate critical sections on uniprocessor systems are unsafe on
 SMP systems. In this section, some of these unsafe techniques will be
 discussed.
 
@@ -333,7 +333,7 @@ task variable API has been removed in RTEMS 5.1.
 Highest Priority Thread Never Walks Alone
 -----------------------------------------
 
-On a uni-processor system, it is safe to assume that when the highest priority
+On a uniprocessor system, it is safe to assume that when the highest priority
 task in an application executes, it will execute without being preempted until
 it voluntarily blocks. Interrupts may occur while it is executing, but there
 will be no context switch to another task unless the highest priority task
@@ -347,7 +347,7 @@ data.
 In an SMP system, it cannot be assumed there will never be a single task
 executing. It should be assumed that every processor is executing another
 application task. Further, those tasks will be ones which would not have been
-executed in a uni-processor configuration and should be assumed to have data
+executed in a uniprocessor configuration and should be assumed to have data
 synchronization conflicts with what was formerly the highest priority task
 which executed without conflict.
 
@@ -355,7 +355,7 @@ Disabling of Thread Preemption
 ------------------------------
 
 A thread which disables preemption prevents that a higher priority thread gets
-hold of its processor involuntarily.  In uni-processor configurations, this can
+hold of its processor involuntarily.  In uniprocessor configurations, this can
 be used to ensure mutual exclusion at thread level.  In SMP configurations,
 however, more than one executing thread may exist.  Thus, it is impossible to
 ensure mutual exclusion using this mechanism.  In order to prevent that
@@ -366,7 +366,7 @@ case run-time errors.
 Disabling of Interrupts
 -----------------------
 
-A low overhead means that ensures mutual exclusion in uni-processor
+A low overhead means that ensures mutual exclusion in uniprocessor
 configurations is the disabling of interrupts around a critical section.  This
 is commonly used in device driver code.  In SMP configurations, however,
 disabling the interrupts on one processor has no effect on other processors.
@@ -392,7 +392,7 @@ Since disabling of interrupts is insufficient to ensure system-wide mutual
 exclusion on SMP a new low-level synchronization primitive was added --
 interrupt locks.  The interrupt locks are a simple API layer on top of the SMP
 locks used for low-level synchronization in the operating system core.
-Currently, they are implemented as a ticket lock.  In uni-processor
+Currently, they are implemented as a ticket lock.  In uniprocessor
 configurations, they degenerate to simple interrupt disable/enable sequences by
 means of the C pre-processor.  It is disallowed to acquire a single interrupt
 lock in a nested way.  This will result in an infinite loop with interrupts
@@ -470,7 +470,7 @@ Timers Do Not Stop Immediately
 ------------------------------
 
 Timer service routines run in the context of the clock interrupt.  On
-uni-processor configurations, it is sufficient to disable interrupts and remove
+uniprocessor configurations, it is sufficient to disable interrupts and remove
 a timer from the set of active timers to stop it.  In SMP configurations,
 however, the timer service routine may already run and wait on an SMP lock
 owned by the thread which is about to stop the timer.  This opens the door to
@@ -520,7 +520,7 @@ DIRECTIVE STATUS CODES:
     application (if a scheduler is assigned) plus one.
 
 DESCRIPTION:
-    In uni-processor configurations, a value of one will be returned.
+    In uniprocessor configurations, a value of one will be returned.
 
     In SMP configurations, this returns the value of a global variable set
     during system initialization to indicate the count of utilized processors.
@@ -549,7 +549,7 @@ DIRECTIVE STATUS CODES:
     The index of the current processor.
 
 DESCRIPTION:
-    In uni-processor configurations, a value of zero will be returned.
+    In uniprocessor configurations, a value of zero will be returned.
 
     In SMP configurations, an architecture specific method is used to obtain the
     index of the current processor in the system.  The set of processor indices

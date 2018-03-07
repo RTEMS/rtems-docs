@@ -341,7 +341,7 @@ NOTES:
 
     This directive will not cause the calling task to be preempted.
 
-    This directive is only available in uni-processor configurations.  The
+    This directive is only available in uniprocessor configurations.  The
     directive ``rtems_interrupt_local_disable`` is available in all
     configurations.
 
@@ -414,7 +414,7 @@ NOTES:
 
     This directive will not cause the calling task to be preempted.
 
-    This directive is only available in uni-processor configurations.  The
+    This directive is only available in uniprocessor configurations.  The
     directive ``rtems_interrupt_local_enable`` is available in all
     configurations.
 
@@ -454,7 +454,7 @@ NOTES:
 
     This directive will not cause the calling task to be preempted.
 
-    This directive is only available in uni-processor configurations.  The
+    This directive is only available in uniprocessor configurations.  The
     directives ``rtems_interrupt_local_disable`` and
     ``rtems_interrupt_local_enable`` are available in all configurations.
 

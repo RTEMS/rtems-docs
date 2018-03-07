@@ -67,7 +67,7 @@ Timer Server
 The Timer Server task is responsible for executing the timer service routines
 associated with all task-based timers.  This task executes at a priority
 specified by :ref:`rtems_timer_initiate_server() <rtems_timer_initiate_server>`
-and it may have a priority of zero (the highest priority).  In uni-processor
+and it may have a priority of zero (the highest priority).  In uniprocessor
 configurations, it is created non-preemptible.
 
 By providing a mechanism where timer service routines execute in task rather

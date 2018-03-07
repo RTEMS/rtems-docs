@@ -603,7 +603,7 @@ DESCRIPTION:
 
 NOTES:
     This configuration option is only used in SMP configurations.  In
-    uni-processor configurations, the :ref:`PriorityCeiling` is used for MrsP
+    uniprocessor configurations, the :ref:`PriorityCeiling` is used for MrsP
     semaphores and thus no extra memory is necessary.
 
 .. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
@@ -1435,7 +1435,7 @@ DESCRIPTION:
 
 NOTES:
     If there are more processors available than configured, the rest will be
-    ignored.  This configuration define is ignored in uni-processor
+    ignored.  This configuration define is ignored in uniprocessor
     configurations.
 
 .. index:: CONFIGURE_MICROSECONDS_PER_TICK
@@ -3327,7 +3327,7 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     The Constant Bandwidth Server Scheduler (CBS) is an alternative scheduler
-    in RTEMS for uni-processor applications. The CBS is a budget aware
+    in RTEMS for uniprocessor applications. The CBS is a budget aware
     extension of EDF scheduler. The goal of this scheduler is to ensure
     temporal isolation of tasks. The CBS is equipped with a set of additional
     rules and provides with an extensive API.
@@ -3359,7 +3359,7 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     The Earliest Deadline First Scheduler (EDF) is an alternative scheduler in
-    RTEMS for uni-processor applications. The EDF schedules tasks with dynamic
+    RTEMS for uniprocessor applications. The EDF schedules tasks with dynamic
     priorities equal to deadlines. The deadlines are declared using only Rate
     Monotonic manager which handles periodic behavior.  Period is always equal
     to deadline. If a task does not have any deadline declared or the deadline
@@ -3457,7 +3457,7 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     The Deterministic Priority Scheduler is the default scheduler in RTEMS for
-    uni-processor applications and is designed for predictable performance
+    uniprocessor applications and is designed for predictable performance
     under the highest loads.  It can block or unblock a thread in a constant
     amount of time.  This scheduler requires a variable amount of memory based
     upon the number of priorities configured in the system.

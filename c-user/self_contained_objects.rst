@@ -122,7 +122,7 @@ Mutual Exclusion
 
 The :c:type:`rtems_mutex` and :c:type:`rtems_recursive_mutex` objects provide
 mutual-exclusion synchronization using the :ref:`PriorityInheritance` in
-uni-processor configurations or the :ref:`OMIP` in SMP configurations.
+uniprocessor configurations or the :ref:`OMIP` in SMP configurations.
 Recursive locking should be used with care :cite:`Williams:2012:CA`.  The
 storage space for these object must be provided by the user.  There are no
 defined comparison or assignment operators for these type.  Only the object

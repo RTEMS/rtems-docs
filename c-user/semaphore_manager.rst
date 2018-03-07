@@ -114,7 +114,7 @@ Multiprocessor Resource Sharing Protocol
 ----------------------------------------
 
 RTEMS supports the :ref:`MrsP` for local, binary semaphores that use the
-priority task wait queue blocking discipline.  In uni-processor configurations,
+priority task wait queue blocking discipline.  In uniprocessor configurations,
 the :ref:`PriorityCeiling` is used instead.
 
 .. _Building a Semaphore Attribute Set:
