@@ -7,6 +7,8 @@
 .. index:: scheduling
 .. index:: task scheduling
 
+.. _SchedulingConcepts:
+
 Scheduling Concepts
 *******************
 

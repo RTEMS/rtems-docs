@@ -3297,10 +3297,10 @@ Scheduler Algorithm Configuration
 =================================
 
 This section defines the configuration parameters related to selecting a
-scheduling algorithm for an application.  For the schedulers built into RTEMS,
-the configuration is straightforward.  All that is required is to define the
-configuration macro which specifies which scheduler you want for in your
-application.  The currently available schedulers are:
+scheduling algorithm for an application.  For the :ref:`schedulers built into
+RTEMS <SchedulingConcepts>`, the configuration is straightforward.  All that is
+required is to define the configuration macro which specifies which scheduler
+you want for in your application.
 
 The pluggable scheduler interface also enables the user to provide their own
 scheduling algorithm.  If you choose to do this, you must define multiple
