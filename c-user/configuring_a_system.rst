@@ -3624,8 +3624,8 @@ Clustered Scheduler Configuration
 =================================
 
 Clustered scheduling helps to control the worst-case latencies in a
-multi-processor system.  The goal is to reduce the amount of shared state in
-the system and thus prevention of lock contention.  Modern multi-processor
+multi-processor system (SMP).  The goal is to reduce the amount of shared state
+in the system and thus prevention of lock contention.  Modern multi-processor
 systems tend to have several layers of data and instruction caches.  With
 clustered scheduling it is possible to honour the cache topology of a system
 and thus avoid expensive cache synchronization traffic.
@@ -3633,161 +3633,195 @@ and thus avoid expensive cache synchronization traffic.
 We have clustered scheduling in case the set of processors of a system is
 partitioned into non-empty pairwise-disjoint subsets.  These subsets are called
 clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
-owned by exactly one scheduler instance.  In order to use clustered scheduling
-the application designer has to answer two questions.
+owned by exactly one scheduler instance.
+
+A clustered scheduler configuration is optional.  By default, all processors are
+managed by the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`.  In order to use
+clustered scheduling the application designer has to answer two questions.
 
 #. How is the set of processors partitioned into clusters?
 
-#. Which scheduler is used for which cluster?
+#. Which scheduler algorithm is used for which cluster?
 
-CONFIGURATION:
-    The schedulers in an SMP system are statically configured on RTEMS.
-    Firstly the application must select which scheduling algorithms are
-    available with the following defines
+The schedulers are statically configured.
 
-    - ``CONFIGURE_SCHEDULER_PRIORITY_SMP``,
+Configuration Step 1 - Scheduler Algorithms
+-------------------------------------------
 
-    - ``CONFIGURE_SCHEDULER_SIMPLE_SMP``, and
+Firstly, the application must select which scheduling algorithms are available
+with the following defines
 
-    - ``CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP``.
+- ``CONFIGURE_SCHEDULER_EDF_SMP``,
 
-    This is necessary to calculate the per-thread overhead introduced by the
-    schedulers.  After these definitions the configuration file must ``#include
-    <rtems/scheduler.h>`` to have access to scheduler specific configuration
-    macros.  Each scheduler needs a context to store state information at
-    run-time.  To provide a context for each scheduler is the next step.  Use
-    the following macros to create scheduler contexts
+- ``CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP``,
 
-    - ``RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(name, prio_count)``,
+- ``CONFIGURE_SCHEDULER_PRIORITY_SMP``, and
 
-    - ``RTEMS_SCHEDULER_CONTEXT_SIMPLE_SMP(name)``, and
+- ``CONFIGURE_SCHEDULER_SIMPLE_SMP``.
 
-    - ``RTEMS_SCHEDULER_CONTEXT_PRIORITY_AFFINITY_SMP(name, prio_count)``.
+This is necessary to calculate the per-thread overhead introduced by the
+schedulers.  After these definitions the configuration file must ``#include
+<rtems/scheduler.h>`` to have access to scheduler-specific configuration
+macros.
 
-    The ``name`` parameter is used as part of a designator for a global
-    variable, so the usual C/C++ designator rules apply.  Additional parameters
-    are scheduler specific.  The schedulers are registered in the system via
-    the scheduler table.  To create the scheduler table define
-    ``CONFIGURE_SCHEDULER_CONTROLS`` to a list of the following scheduler
-    control initializers
+Configuration Step 2 - Schedulers
+---------------------------------
 
-    - ``RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP(name, obj_name)``,
+Each scheduler needs a context to store state information at run-time.  Use the
+following macros to create scheduler contexts
 
-    - ``RTEMS_SCHEDULER_CONTROL_SIMPLE_SMP(name, obj_name)``, and
+- ``RTEMS_SCHEDULER_CONTEXT_EDF_SMP(name, max_cpu_count)``,
 
-    - ``RTEMS_SCHEDULER_CONTROL_PRIORITY_AFFINITY_SMP(name, obj_name)``.
+- ``RTEMS_SCHEDULER_CONTEXT_PRIORITY_AFFINITY_SMP(name, prio_count)``,
 
-    The ``name`` parameter must correspond to the parameter defining the
-    scheduler context.  The ``obj_name`` determines the scheduler object name
-    and can be used in ``rtems_scheduler_ident()`` to get the scheduler object
-    identifier.
+- ``RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(name, prio_count)``, and
 
-    The last step is to define which processor uses which scheduler.  For this
-    purpose a scheduler assignment table must be defined.  The entry count of
-    this table must be equal to the configured maximum processors
-    (``CONFIGURE_MAXIMUM_PROCESSORS``).  A processor assignment to a
-    scheduler can be optional or mandatory.  The boot processor must have a
-    scheduler assigned.  In case the system needs more mandatory processors
-    than available then a fatal run-time error will occur.  To specify the
-    scheduler assignments define ``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` to a
-    list of ``RTEMS_SCHEDULER_ASSIGN(index, attr)`` and
-    ``RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER`` macros.  The ``index`` parameter
-    must be a valid index into the scheduler table.  The ``attr`` parameter
-    defines the scheduler assignment attributes.  By default a scheduler
-    assignment to a processor is optional.  For the scheduler assignment
-    attribute use one of the mutually exclusive variants
+- ``RTEMS_SCHEDULER_CONTEXT_SIMPLE_SMP(name)``.
 
-    - ``RTEMS_SCHEDULER_ASSIGN_DEFAULT``,
+The ``name`` parameter is used as part of a designator for a global variable,
+so the usual C/C++ designator rules apply.  This ``name`` is not the scheduler
+object name.  Additional parameters are scheduler-specific.
 
-    - ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY``, and
+.. _ConfigurationSchedulerTable:
 
-    - ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL``.
+Configuration Step 3 - Scheduler Table
+--------------------------------------
 
-    It is possible to add/remove processors to/from scheduler instances at
-    run-time, see :ref:`rtems_scheduler_add_processor` and
-    :ref:`rtems_scheduler_remove_processor`.
+The schedulers are registered in the system via the scheduler table.
+To create the scheduler table define ``CONFIGURE_SCHEDULER_CONTROLS`` to a list
+of the following scheduler control initializers
 
-ERRORS:
-    In case one of the scheduler indices
-    in``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` is invalid a link-time error will
-    occur with an undefined reference to ``RTEMS_SCHEDULER_INVALID_INDEX``.
+- ``RTEMS_SCHEDULER_CONTROL_EDF_SMP(name, obj_name)``,
 
-    Some fatal errors may occur in case of scheduler configuration
-    inconsistencies or a lack of processors on the system.  The fatal source is
-    ``RTEMS_FATAL_SOURCE_SMP``.  None of the errors is internal.
+- ``RTEMS_SCHEDULER_CONTROL_PRIORITY_AFFINITY_SMP(name, obj_name)``,
 
-    - ``SMP_FATAL_BOOT_PROCESSOR_NOT_ASSIGNED_TO_SCHEDULER`` - the boot
-      processor must have a scheduler assigned.
+- ``RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP(name, obj_name)``, and
 
-    - ``SMP_FATAL_MANDATORY_PROCESSOR_NOT_PRESENT`` - there exists a mandatory
-      processor beyond the range of physically or virtually available
-      processors.  The processor demand must be reduced for this system.
+- ``RTEMS_SCHEDULER_CONTROL_SIMPLE_SMP(name, obj_name)``.
 
-    - ``SMP_FATAL_START_OF_MANDATORY_PROCESSOR_FAILED`` - the start of a
-      mandatory processor failed during system initialization.  The system may
-      not have this processor at all or it could be a problem with a boot
-      loader for example.  Check the ``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS``
-      definition.
+The ``name`` parameter must correspond to the parameter defining the scheduler
+context.  The ``obj_name`` determines the scheduler object name and can be used
+in :ref:`rtems_scheduler_ident() <rtems_scheduler_ident>` to get the scheduler
+object identifier.  The scheduler index is defined by the index of the
+scheduler table.  It is a configuration error to add a scheduler multiple times
+to the scheduler table.
 
-    - ``SMP_FATAL_MULTITASKING_START_ON_UNASSIGNED_PROCESSOR`` - it is not
-      allowed to start multitasking on a processor with no scheduler assigned.
+Configuration Step 4 - Processor to Scheduler Assignment
+--------------------------------------------------------
 
-EXAMPLE:
-    The following example shows a scheduler configuration for a hypothetical
-    product using two chip variants.  One variant has four processors which is
-    used for the normal product line and another provides eight processors for
-    the high-performance product line.  The first processor performs hard-real
-    time control of actuators and sensors.  The second processor is not used by
-    RTEMS at all and runs a Linux instance to provide a graphical user
-    interface.  The additional processors are used for a worker thread pool to
-    perform data processing operations.
+The last step is to define which processor uses which scheduler.  For this
+purpose a scheduler assignment table must be defined.  The entry count of this
+table must be equal to the configured maximum processors
+(:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).  A
+processor assignment to a scheduler can be optional or mandatory.  The boot
+processor must have a scheduler assigned.  In case the system needs more
+mandatory processors than available then a fatal run-time error will occur.  To
+specify the scheduler assignments define
+``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` to a list of
 
-    The processors managed by RTEMS use two Deterministic Priority scheduler
-    instances capable of dealing with 256 priority levels.  The scheduler with
-    index zero has the name ``"IO "``.  The scheduler with index one has the
-    name ``"WORK"``.  The scheduler assignments of the first, third and fourth
-    processor are mandatory, so the system must have at least four processors,
-    otherwise a fatal run-time error will occur during system startup.  The
-    processor assignments for the fifth up to the eighth processor are optional
-    so that the same application can be used for the normal and
-    high-performance product lines.  The second processor has no scheduler
-    assigned and runs Linux.  A hypervisor will ensure that the two systems
-    cannot interfere in an undesirable way.
+- ``RTEMS_SCHEDULER_ASSIGN(scheduler_index, attr)`` and
 
-    .. code-block:: c
+- ``RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER``
 
-        #define CONFIGURE_MAXIMUM_PROCESSORS 8
-        #define CONFIGURE_MAXIMUM_PRIORITY 255
+macros.  The ``scheduler_index`` parameter must
+be a valid index into the scheduler table.  The ``attr`` parameter defines the
+scheduler assignment attributes.  By default, a scheduler assignment to a
+processor is optional.  For the scheduler assignment attribute use one of the
+mutually exclusive variants
 
-        /* Make the scheduler algorithm available */
-        #define CONFIGURE_SCHEDULER_PRIORITY_SMP
-        #include <rtems/scheduler.h>
+- ``RTEMS_SCHEDULER_ASSIGN_DEFAULT``,
 
-        /* Create contexts for the two scheduler instances */
-        RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(io, CONFIGURE_MAXIMUM_PRIORITY + 1);
-        RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
+- ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY``, and
 
-        /* Define the scheduler table */
-        #define CONFIGURE_SCHEDULER_CONTROLS \\
-            RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
-                io, \
-                rtems_build_name('I', 'O', ' ', ' ') \
-            ), \
-            RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
-                work, \
-                rtems_build_name('W', 'O', 'R', 'K') \
-            )
+- ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL``.
 
-        /* Define the initial processor to scheduler assignments */
-        #define CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS \
-            RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-            RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER, \
-            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
-            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
-            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
-            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL)
+It is possible to add/remove processors to/from schedulers at run-time, see
+:ref:`rtems_scheduler_add_processor() <rtems_scheduler_add_processor>` and
+:ref:`rtems_scheduler_remove_processor() <rtems_scheduler_remove_processor>`.
+
+Configuration Example
+---------------------
+
+The following example shows a scheduler configuration for a hypothetical
+product using two chip variants.  One variant has four processors which is used
+for the normal product line and another provides eight processors for the
+high-performance product line.  The first processor performs hard-real time
+control of actuators and sensors.  The second processor is not used by RTEMS at
+all and runs a Linux instance to provide a graphical user interface.  The
+additional processors are used for a worker thread pool to perform data
+processing operations.
+
+The processors managed by RTEMS use two Deterministic Priority SMP schedulers
+capable of dealing with 256 priority levels.  The scheduler with index zero has
+the name ``"IO "``.  The scheduler with index one has the name ``"WORK"``.  The
+scheduler assignments of the first, third and fourth processor are mandatory,
+so the system must have at least four processors, otherwise a fatal run-time
+error will occur during system startup.  The processor assignments for the
+fifth up to the eighth processor are optional so that the same application can
+be used for the normal and high-performance product lines.  The second
+processor has no scheduler assigned and runs Linux.  A hypervisor will ensure
+that the two systems cannot interfere in an undesirable way.
+
+.. code-block:: c
+
+    #define CONFIGURE_MAXIMUM_PROCESSORS 8
+    #define CONFIGURE_MAXIMUM_PRIORITY 255
+
+    /* Configuration Step 1 - Scheduler Algorithms */
+    #define CONFIGURE_SCHEDULER_PRIORITY_SMP
+    #include <rtems/scheduler.h>
+
+    /* Configuration Step 2 - Schedulers */
+    RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(io, CONFIGURE_MAXIMUM_PRIORITY + 1);
+    RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
+
+    /* Configuration Step 3 - Scheduler Table */
+    #define CONFIGURE_SCHEDULER_CONTROLS \\
+      RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
+        io, \
+         rtems_build_name('I', 'O', ' ', ' ') \
+      ), \
+      RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
+        work, \
+        rtems_build_name('W', 'O', 'R', 'K') \
+      )
+
+    /* Configuration Step 4 - Processor to Scheduler Assignment */
+    #define CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS \
+      RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+      RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER, \
+      RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+      RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+      RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
+      RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
+      RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL), \
+      RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL)
+
+Configuration Errors
+--------------------
+
+In case one of the scheduler indices in ``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS``
+is invalid a link-time error will occur with an undefined reference to
+``RTEMS_SCHEDULER_INVALID_INDEX``.
+
+Some fatal errors may occur in case of scheduler configuration inconsistencies
+or a lack of processors on the system.  The fatal source is
+``RTEMS_FATAL_SOURCE_SMP``.
+
+- ``SMP_FATAL_BOOT_PROCESSOR_NOT_ASSIGNED_TO_SCHEDULER`` - the boot processor
+  must have a scheduler assigned.
+
+- ``SMP_FATAL_MANDATORY_PROCESSOR_NOT_PRESENT`` - there exists a mandatory
+  processor beyond the range of physically or virtually available processors.
+  The processor demand must be reduced for this system.
+
+- ``SMP_FATAL_START_OF_MANDATORY_PROCESSOR_FAILED`` - the start of a mandatory
+  processor failed during system initialization.  The system may not have this
+  processor at all or it could be a problem with a boot loader for example.
+  Check the ``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` definition.
+
+- ``SMP_FATAL_MULTITASKING_START_ON_UNASSIGNED_PROCESSOR`` - it is not allowed
+  to start multitasking on a processor with no scheduler assigned.
 
 Device Driver Table
 ===================
