@@ -122,6 +122,8 @@ Uniprocessor Schedulers
 All uniprocessor schedulers included in RTEMS are priority based.  The
 processor is allocated to the highest priority task allowed to run.
 
+.. _SchedulerPriority:
+
 Deterministic Priority Scheduler
 --------------------------------
 
@@ -137,6 +139,8 @@ This comes at the cost of using slightly over three (3) kilobytes of RAM on a
 system configured to support 256 priority levels.
 
 This scheduler is only aware of a single core.
+
+.. _SchedulerPrioritySimple:
 
 Simple Priority Scheduler
 -------------------------
@@ -155,6 +159,8 @@ supporting a large number of tasks.
 This scheduler is only aware of a single core.
 
 .. index:: earliest deadline first scheduling
+
+.. _SchedulerEDF:
 
 Earliest Deadline First Scheduler
 ---------------------------------
@@ -188,6 +194,8 @@ deadline. Moreover, the ``rtems_rate_monotonic_cancel`` and
 ``rtems_rate_monotonic_delete`` calls clear the deadlines assigned to the task.
 
 .. index:: constant bandwidth server scheduling
+
+.. _SchedulerCBS:
 
 Constant Bandwidth Server Scheduling (CBS)
 ------------------------------------------
@@ -224,12 +232,14 @@ All SMP schedulers included in RTEMS are priority based.  The processors
 managed by a scheduler instance are allocated to the highest priority tasks
 allowed to run.
 
+.. _SchedulerSMPEDF:
+
 Earliest Deadline First SMP Scheduler
 -------------------------------------
 
 A job-level fixed-priority scheduler using the Earliest Deadline First (EDF)
 method.  By convention, the maximum priority level is
-:math:`min(INT\_MAX, 2^{63} - 1)` for background tasks.  The tasks with an
+:math:`min(INT\_MAX, 2^{62} - 1)` for background tasks.  The tasks with an
 active deadline have a higher priority than the background tasks.  This
 scheduler supports task processor affinities of one-to-one and one-to-all, e.g.
 a task can execute on exactly one processor or all processors managed by the
@@ -239,8 +249,10 @@ must contain all online processors to select the one-to-all affinity.  This is
 to avoid pathological cases if processors are added/removed to/from the
 scheduler instance at run-time.  In case the processor affinity set contains
 not all online processors, then a one-to-one affinity will be used selecting
-the processor with the largest index within the set of processores currently
+the processor with the largest index within the set of processors currently
 owned by the scheduler instance.
+
+.. _SchedulerSMPPriority:
 
 Deterministic Priority SMP Scheduler
 ------------------------------------
@@ -250,12 +262,16 @@ priority level for the ready tasks.  The maximum priority level is
 configurable.  By default, the maximum priority level is 255 (256 priority
 levels).
 
+.. _SchedulerSMPPrioritySimple:
+
 Simple Priority SMP Scheduler
 -----------------------------
 
 A fixed-priority scheduler which uses a sorted chain for the ready tasks.  By
 convention, the maximum priority level is 255.  The implementation limit is
 actually :math:`2^{64} - 1`.
+
+.. _SchedulerSMPPriorityAffinity:
 
 Aribitary Processor Affinity Priority SMP Scheduler
 ---------------------------------------------------

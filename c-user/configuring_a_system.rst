@@ -3558,13 +3558,15 @@ RANGE:
 
 DEFAULT VALUE:
     The default name is
-      - ``"UCBS"`` for the Uni-Processor CBS scheduler,
-      - ``"UEDF"`` for the Uni-Processor EDF scheduler,
-      - ``"UPD "`` for the Uni-Processor Deterministic Priority scheduler,
-      - ``"UPS "`` for the Uni-Processor Simple Priority scheduler,
-      - ``"MPA "`` for the Multi-Processor Priority Affinity scheduler, and
-      - ``"MPD "`` for the Multi-Processor Deterministic Priority scheduler, and
-      - ``"MPS "`` for the Multi-Processor Simple Priority scheduler.
+
+      - ``"MEDF"`` for the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`,
+      - ``"MPA "`` for the :ref:`Aribitary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
+      - ``"MPD "`` for the :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`,
+      - ``"MPS "`` for the :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`,
+      - ``"UCBS"`` for the :ref:`Uniprocessor CBS Scheduler <SchedulerCBS>`,
+      - ``"UEDF"`` for the :ref:`Uniprocessor EDF Scheduler <SchedulerEDF>`,
+      - ``"UPD "`` for the :ref:`Uniprocessor Deterministic Priority Scheduler <SchedulerPriority>`, and
+      - ``"UPS "`` for the :ref:`Uniprocessor Simple Priority Scheduler <SchedulerPrioritySimple>`.
 
 DESCRIPTION:
     Schedulers can be identified via ``rtems_scheduler_ident``.  The name of
