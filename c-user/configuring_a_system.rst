@@ -3326,17 +3326,13 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    The Constant Bandwidth Server Scheduler (CBS) is an alternative scheduler
-    in RTEMS for uniprocessor applications. The CBS is a budget aware
-    extension of EDF scheduler. The goal of this scheduler is to ensure
-    temporal isolation of tasks. The CBS is equipped with a set of additional
-    rules and provides with an extensive API.
-
-    This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_CBS``.
+    If defined, then the :ref:`Constant Bandwidth Server (CBS) Scheduler
+    <SchedulerCBS>` algorithm is made available to the application.
 
 NOTES:
-    None.
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for exactly one processor.
 
 .. index:: CONFIGURE_SCHEDULER_EDF
 
@@ -3358,21 +3354,13 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    The Earliest Deadline First Scheduler (EDF) is an alternative scheduler in
-    RTEMS for uniprocessor applications. The EDF schedules tasks with dynamic
-    priorities equal to deadlines. The deadlines are declared using only Rate
-    Monotonic manager which handles periodic behavior.  Period is always equal
-    to deadline. If a task does not have any deadline declared or the deadline
-    is cancelled, the task is considered a background task which is scheduled
-    in case no deadline-driven tasks are ready to run.  Moreover, multiple
-    background tasks are scheduled according their priority assigned upon
-    initialization. All ready tasks reside in a single ready queue.
-
-    This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_EDF``.
+    If defined, then the :ref:`Earliest Deadline First (EDF) Scheduler
+    <SchedulerEDF>` algorithm is made available to the application.
 
 NOTES:
-    None.
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for exactly one processor.
 
 .. index:: CONFIGURE_SCHEDULER_EDF_SMP
 
@@ -3394,11 +3382,20 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    If defined, then the Earliest Deadline First (EDF) SMP Scheduler is
-    selected as the default scheduler.
+    If defined, then the :ref:`Earliest Deadline First (EDF) SMP Scheduler
+    <SchedulerSMPEDF>` algorithm is made available to the application.
 
 NOTES:
-    None.
+    This scheduler algorithm is only available when RTEMS is built with SMP
+    support enabled.
+
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for up to 32 processors.
+
+    This scheduler algorithm is the default in SMP configurations and is only
+    selected when :ref:`CONFIGURE_MAXIMUM_PROCESSORS
+    <CONFIGURE_MAXIMUM_PROCESSORS>` is greater than one.
 
 .. index:: CONFIGURE_SCHEDULER_NAME
 
@@ -3456,16 +3453,49 @@ DEFAULT VALUE:
     this configuration parameter is redundant.
 
 DESCRIPTION:
-    The Deterministic Priority Scheduler is the default scheduler in RTEMS for
-    uniprocessor applications and is designed for predictable performance
-    under the highest loads.  It can block or unblock a thread in a constant
-    amount of time.  This scheduler requires a variable amount of memory based
-    upon the number of priorities configured in the system.
+    If defined, then the :ref:`Deterministic Priority Scheduler
+    <SchedulerPriority>` algorithm is made available to the application.
 
 NOTES:
-    This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_PRIORITY`` although this is equivalent to the default
-    behavior.
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for exactly one processor.
+
+    This scheduler algorithm is the default when
+    :ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>` is
+    exactly one.
+
+.. index:: CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
+
+.. _CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP:
+
+CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
+-----------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    If defined, then the :ref:`Arbitrary Processor Affinity SMP Scheduler
+    <SchedulerSMPPriorityAffinity>` algorithm is made available to the
+    application.
+
+NOTES:
+    This scheduler algorithm is only available when RTEMS is built with SMP
+    support enabled.
+
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for up to 32 processors.
 
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_SMP
 
@@ -3487,19 +3517,16 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    The Deterministic Priority SMP Scheduler is derived from the Deterministic
-    Priority Scheduler but is capable of scheduling threads across multiple
-    processors.
-
-    In a configuration with SMP enabled at configure time, it may be explicitly
-    selected by defining ``CONFIGURE_SCHEDULER_PRIORITY_SMP``.
+    If defined, then the :ref:`Deterministic Priority SMP Scheduler
+    <SchedulerSMPPriority>` algorithm is made available to the application.
 
 NOTES:
-    This scheduler is only available when RTEMS is configured with SMP support
-    enabled.
+    This scheduler algorithm is only available when RTEMS is built with SMP
+    support enabled.
 
-    This scheduler is currently the default in SMP configurations and is only
-    selected when ``CONFIGURE_MAXIMUM_PROCESSORS`` is greater than one.
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for up to 32 processors.
 
 .. index:: CONFIGURE_SCHEDULER_SIMPLE
 
@@ -3521,19 +3548,13 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    When defined, the Simple Priority Scheduler is used at the thread
-    scheduling algorithm. This is an alternative scheduler in RTEMS.  It is
-    designed to provide the same task scheduling behaviour as the Deterministic
-    Priority Scheduler while being simpler in implementation and uses less
-    memory for data management.  It maintains a single sorted list of all ready
-    threads.  Thus blocking or unblocking a thread is not a constant time
-    operation with this scheduler.
-
-    This scheduler may be explicitly selected by defining
-    ``CONFIGURE_SCHEDULER_SIMPLE``.
+    If defined, then the :ref:`Simple Priority Scheduler
+    <SchedulerPrioritySimple>` algorithm is made available to the application.
 
 NOTES:
-    This scheduler is appropriate for use in small systems where RAM is limited.
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for exactly one processor.
 
 .. index:: CONFIGURE_SCHEDULER_SIMPLE_SMP
 
@@ -3555,25 +3576,17 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    The Simple SMP Priority Scheduler is derived from the Simple Priority
-    Scheduler but is capable of scheduling threads across multiple processors.
-    It is designed to provide the same task scheduling behaviour as the
-    Deterministic Priority Scheduler while distributing threads across multiple
-    processors.  Being based upon the Simple Priority Scheduler, it also
-    maintains a single sorted list of all ready threads.  Thus blocking or
-    unblocking a thread is not a constant time operation with this scheduler.
-
-    In addition, when allocating threads to processors, the algorithm is not
-    constant time. This algorithm was not designed with efficiency as a primary
-    design goal.  Its primary design goal was to provide an SMP-aware
-    scheduling algorithm that is simple to understand.
-
-    In a configuration with SMP enabled at configure time, it may be explicitly
-    selected by defining ``CONFIGURE_SCHEDULER_SIMPLE_SMP``.
+    If defined, then the :ref:`Simple Priority SMP Scheduler
+    <SchedulerSMPPrioritySimple>` algorithm is made available to the
+    application.
 
 NOTES:
-    This scheduler is only available when RTEMS is configured with SMP support
-    enabled.
+    This scheduler algorithm is only available when RTEMS is built with SMP
+    support enabled.
+
+    In case no explicit :ref:`clustered scheduler configuration
+    <ConfigurationSchedulersClustered>` is present, then it is used as the
+    scheduler for up to 32 processors.
 
 .. index:: CONFIGURE_SCHEDULER_USER
 
@@ -3635,9 +3648,10 @@ partitioned into non-empty pairwise-disjoint subsets.  These subsets are called
 clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
 owned by exactly one scheduler instance.
 
-A clustered scheduler configuration is optional.  By default, all processors are
-managed by the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`.  In order to use
-clustered scheduling the application designer has to answer two questions.
+A clustered scheduler configuration is optional.  By default, up to 32
+processors are managed by the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`.  In
+order to use clustered scheduling the application designer has to answer two
+questions.
 
 #. How is the set of processors partitioned into clusters?
 
@@ -3651,13 +3665,13 @@ Configuration Step 1 - Scheduler Algorithms
 Firstly, the application must select which scheduling algorithms are available
 with the following defines
 
-- ``CONFIGURE_SCHEDULER_EDF_SMP``,
+- :ref:`CONFIGURE_SCHEDULER_EDF_SMP <CONFIGURE_SCHEDULER_EDF_SMP>`,
 
-- ``CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP``,
+- :ref:`CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP <CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP>`,
 
-- ``CONFIGURE_SCHEDULER_PRIORITY_SMP``, and
+- :ref:`CONFIGURE_SCHEDULER_PRIORITY_SMP <CONFIGURE_SCHEDULER_PRIORITY_SMP>`, and
 
-- ``CONFIGURE_SCHEDULER_SIMPLE_SMP``.
+- :ref:`CONFIGURE_SCHEDULER_SIMPLE_SMP <CONFIGURE_SCHEDULER_SIMPLE_SMP>`.
 
 This is necessary to calculate the per-thread overhead introduced by the
 schedulers.  After these definitions the configuration file must ``#include
