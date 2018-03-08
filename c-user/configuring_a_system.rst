@@ -3614,11 +3614,11 @@ DESCRIPTION:
     scheduling algorithm. If ``CONFIGURE_SCHEDULER_USER`` is defined then the
     following additional macros must be defined:
 
-    - ``CONFIGURE_SCHEDULER_CONTEXT`` must be defined to a static definition of
-      the scheduler context of the user scheduler.
+    - ``CONFIGURE_SCHEDULER`` must be defined to a static definition of
+      the scheduler data structures of the user scheduler.
 
-    - ``CONFIGURE_SCHEDULER_CONTROLS`` must be defined to a scheduler control
-      initializer for the user scheduler.
+    - ``CONFIGURE_SCHEDULER_TABLE_ENTRIES`` must be defined to a scheduler
+      table entry initializer for the user scheduler.
 
     - ``CONFIGURE_SCHEDULER_USER_PER_THREAD`` must be defined to the type of
       the per-thread information of the user scheduler.
@@ -3637,8 +3637,8 @@ Clustered Scheduler Configuration
 =================================
 
 Clustered scheduling helps to control the worst-case latencies in a
-multi-processor system (SMP).  The goal is to reduce the amount of shared state
-in the system and thus prevention of lock contention.  Modern multi-processor
+multiprocessor system (SMP).  The goal is to reduce the amount of shared state
+in the system and thus prevention of lock contention.  Modern multiprocessor
 systems tend to have several layers of data and instruction caches.  With
 clustered scheduling it is possible to honour the cache topology of a system
 and thus avoid expensive cache synchronization traffic.
@@ -3646,7 +3646,7 @@ and thus avoid expensive cache synchronization traffic.
 We have clustered scheduling in case the set of processors of a system is
 partitioned into non-empty pairwise-disjoint subsets.  These subsets are called
 clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
-owned by exactly one scheduler instance.
+owned by exactly one scheduler.
 
 A clustered scheduler configuration is optional.  By default, up to 32
 processors are managed by the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`.  In
@@ -3674,51 +3674,60 @@ with the following defines
 - :ref:`CONFIGURE_SCHEDULER_SIMPLE_SMP <CONFIGURE_SCHEDULER_SIMPLE_SMP>`.
 
 This is necessary to calculate the per-thread overhead introduced by the
-schedulers.  After these definitions the configuration file must ``#include
-<rtems/scheduler.h>`` to have access to scheduler-specific configuration
-macros.
+scheduler algorithms.  After these definitions the configuration file must
+``#include <rtems/scheduler.h>`` to have access to scheduler-specific
+configuration macros.
+
+It is possible to make more than one scheduler algorithm available to the
+application.  For example a :ref:`Simple Priority SMP Scheduler
+<SchedulerSMPPrioritySimple>` could be used in a partition for low latency
+tasks in addition to the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>` for a
+general-purpose cluster.  Since the per-thread overhead depends on the
+scheduler algorithm only the scheduler algorithms used by the application
+should be configured.
 
 Configuration Step 2 - Schedulers
 ---------------------------------
 
-Each scheduler needs a context to store state information at run-time.  Use the
-following macros to create scheduler contexts
+Each scheduler needs some data structures.  Use the following macros to create
+the scheduler data structures for a particular scheduler identified in the
+configuration by ``name``.
 
-- ``RTEMS_SCHEDULER_CONTEXT_EDF_SMP(name, max_cpu_count)``,
+- ``RTEMS_SCHEDULER_EDF_SMP(name, max_cpu_count)``,
 
-- ``RTEMS_SCHEDULER_CONTEXT_PRIORITY_AFFINITY_SMP(name, prio_count)``,
+- ``RTEMS_SCHEDULER_PRIORITY_AFFINITY_SMP(name, prio_count)``,
 
-- ``RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(name, prio_count)``, and
+- ``RTEMS_SCHEDULER_PRIORITY_SMP(name, prio_count)``, and
 
-- ``RTEMS_SCHEDULER_CONTEXT_SIMPLE_SMP(name)``.
+- ``RTEMS_SCHEDULER_SIMPLE_SMP(name)``.
 
-The ``name`` parameter is used as part of a designator for a global variable,
-so the usual C/C++ designator rules apply.  This ``name`` is not the scheduler
-object name.  Additional parameters are scheduler-specific.
+The ``name`` parameter is used as part of a designator for scheduler-specific
+data structures, so the usual C/C++ designator rules apply.  This ``name`` is
+not the scheduler object name.  Additional parameters are scheduler-specific.
 
 .. _ConfigurationSchedulerTable:
 
 Configuration Step 3 - Scheduler Table
 --------------------------------------
 
-The schedulers are registered in the system via the scheduler table.
-To create the scheduler table define ``CONFIGURE_SCHEDULER_CONTROLS`` to a list
-of the following scheduler control initializers
+The schedulers are registered in the system via the scheduler table.  To
+populate the scheduler table define ``CONFIGURE_SCHEDULER_TABLE_ENTRIES`` to a
+list of the following scheduler table entry initializers
 
-- ``RTEMS_SCHEDULER_CONTROL_EDF_SMP(name, obj_name)``,
+- ``RTEMS_SCHEDULER_TABLE_EDF_SMP(name, obj_name)``,
 
-- ``RTEMS_SCHEDULER_CONTROL_PRIORITY_AFFINITY_SMP(name, obj_name)``,
+- ``RTEMS_SCHEDULER_TABLE_PRIORITY_AFFINITY_SMP(name, obj_name)``,
 
-- ``RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP(name, obj_name)``, and
+- ``RTEMS_SCHEDULER_TABLE_PRIORITY_SMP(name, obj_name)``, and
 
-- ``RTEMS_SCHEDULER_CONTROL_SIMPLE_SMP(name, obj_name)``.
+- ``RTEMS_SCHEDULER_TABLE_SIMPLE_SMP(name, obj_name)``.
 
 The ``name`` parameter must correspond to the parameter defining the scheduler
-context.  The ``obj_name`` determines the scheduler object name and can be used
-in :ref:`rtems_scheduler_ident() <rtems_scheduler_ident>` to get the scheduler
-object identifier.  The scheduler index is defined by the index of the
-scheduler table.  It is a configuration error to add a scheduler multiple times
-to the scheduler table.
+data structures of configuration step 2.  The ``obj_name`` determines the
+scheduler object name and can be used in :ref:`rtems_scheduler_ident()
+<rtems_scheduler_ident>` to get the scheduler object identifier.  The scheduler
+index is defined by the index of the scheduler table.  It is a configuration
+error to add a scheduler multiple times to the scheduler table.
 
 Configuration Step 4 - Processor to Scheduler Assignment
 --------------------------------------------------------
@@ -3731,17 +3740,17 @@ processor assignment to a scheduler can be optional or mandatory.  The boot
 processor must have a scheduler assigned.  In case the system needs more
 mandatory processors than available then a fatal run-time error will occur.  To
 specify the scheduler assignments define
-``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` to a list of
+``CONFIGURE_SCHEDULER_ASSIGNMENTS`` to a list of
 
 - ``RTEMS_SCHEDULER_ASSIGN(scheduler_index, attr)`` and
 
 - ``RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER``
 
-macros.  The ``scheduler_index`` parameter must
-be a valid index into the scheduler table.  The ``attr`` parameter defines the
-scheduler assignment attributes.  By default, a scheduler assignment to a
-processor is optional.  For the scheduler assignment attribute use one of the
-mutually exclusive variants
+macros.  The ``scheduler_index`` parameter must be a valid index into the
+scheduler table defined by configuration step 3.  The ``attr`` parameter
+defines the scheduler assignment attributes.  By default, a scheduler
+assignment to a processor is optional.  For the scheduler assignment attribute
+use one of the mutually exclusive variants
 
 - ``RTEMS_SCHEDULER_ASSIGN_DEFAULT``,
 
@@ -3786,22 +3795,22 @@ that the two systems cannot interfere in an undesirable way.
     #include <rtems/scheduler.h>
 
     /* Configuration Step 2 - Schedulers */
-    RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(io, CONFIGURE_MAXIMUM_PRIORITY + 1);
-    RTEMS_SCHEDULER_CONTEXT_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
+    RTEMS_SCHEDULER_PRIORITY_SMP(io, CONFIGURE_MAXIMUM_PRIORITY + 1);
+    RTEMS_SCHEDULER_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
 
     /* Configuration Step 3 - Scheduler Table */
-    #define CONFIGURE_SCHEDULER_CONTROLS \\
-      RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
+    #define CONFIGURE_SCHEDULER_TABLE_ENTRIES \\
+      RTEMS_SCHEDULER_TABLE_PRIORITY_SMP( \
         io, \
          rtems_build_name('I', 'O', ' ', ' ') \
       ), \
-      RTEMS_SCHEDULER_CONTROL_PRIORITY_SMP( \
+      RTEMS_SCHEDULER_TABLE_PRIORITY_SMP( \
         work, \
         rtems_build_name('W', 'O', 'R', 'K') \
       )
 
     /* Configuration Step 4 - Processor to Scheduler Assignment */
-    #define CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS \
+    #define CONFIGURE_SCHEDULER_ASSIGNMENTS \
       RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
       RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER, \
       RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
@@ -3814,7 +3823,7 @@ that the two systems cannot interfere in an undesirable way.
 Configuration Errors
 --------------------
 
-In case one of the scheduler indices in ``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS``
+In case one of the scheduler indices in ``CONFIGURE_SCHEDULER_ASSIGNMENTS``
 is invalid a link-time error will occur with an undefined reference to
 ``RTEMS_SCHEDULER_INVALID_INDEX``.
 
@@ -3832,7 +3841,7 @@ or a lack of processors on the system.  The fatal source is
 - ``SMP_FATAL_START_OF_MANDATORY_PROCESSOR_FAILED`` - the start of a mandatory
   processor failed during system initialization.  The system may not have this
   processor at all or it could be a problem with a boot loader for example.
-  Check the ``CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS`` definition.
+  Check the ``CONFIGURE_SCHEDULER_ASSIGNMENTS`` definition.
 
 - ``SMP_FATAL_MULTITASKING_START_ON_UNASSIGNED_PROCESSOR`` - it is not allowed
   to start multitasking on a processor with no scheduler assigned.
