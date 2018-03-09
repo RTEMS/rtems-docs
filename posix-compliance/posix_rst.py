@@ -13,29 +13,49 @@ import sys
 standards = [
     'RTEMS',
     'POSIX-2008',
+    'POSIX-2003',
     'PSE51',
     'PSE52',
     'PSE53',
     'PSE54',
     'C99',
+    'C11',
     'FACE 2.1 Security',
     'FACE 2.1 Safety Base',
     'FACE 2.1 Safety Extended',
-    'FACE 2.1 General Purpose'
+    'FACE 2.1 General Purpose',
+    'FACE 3.0 Security',
+    'FACE 3.0 Safety Base',
+    'FACE 3.0 Safety Extended',
+    'FACE 3.0 General Purpose',
+    'SCA 2.2.2 AEP',
+    'SCA 4.1 Ultra Lightweight AEP',
+    'SCA 4.1 Lightweight AEP',
+    'SCA 4.1 [Full] AEP'
 ]
 
 standard_names = {
     'RTEMS'                   : 'RTEMS Complete Profile',
     'POSIX-2008'              : 'POSIX-2008',
+    'POSIX-2003'              : 'POSIX-2003',
     'PSE51'                   : 'POSIX PSE51 - Minimal',
     'PSE52'                   : 'POSIX PSE52 - Real-Time Controller',
     'PSE53'                   : 'POSIX PSE53 - Dedicated',
     'PSE54'                   : 'POSIX PSE54 - Multipurpose',
     'C99'                     : 'C99 Standard Library',
+    'C11'                     : 'C11 Standard Library',
     'FACE 2.1 Security'       : 'FACE 2.1 Security',
     'FACE 2.1 Safety Base'    : 'FACE 2.1 Safety Base',
     'FACE 2.1 Safety Extended': 'FACE 2.1 Safety Extended',
-    'FACE 2.1 General Purpose': 'FACE 2.1 General Purpose'
+    'FACE 2.1 General Purpose': 'FACE 2.1 General Purpose',
+    'FACE 3.0 Security'       : 'FACE 3.0 Security',
+    'FACE 3.0 Safety Base'    : 'FACE 3.0 Safety Base',
+    'FACE 3.0 Safety Extended': 'FACE 3.0 Safety Extended',
+    'FACE 3.0 General Purpose': 'FACE 3.0 General Purpose',
+    'SCA 2.2.2 AEP'           : 'SCA 2.2.2 AEP',
+    'SCA 4.1 Ultra Lightweight AEP' : 'SCA 4.1 Ultra Lightweight AEP',
+    'SCA 4.1 Lightweight AEP' : 'SCA 4.1 Lightweight AEP',
+    'SCA 4.1 [Full] AEP'      : 'SCA 4.1 [Full] AEP'
 }
 
 col_names = {
@@ -44,15 +64,25 @@ col_names = {
     'rtems-net'                : 'RTEMS w/ Networking',
     'rtems-impl'               : 'RTEMS Impl Note',
     'POSIX-2008'               : 'IEEE Std 1003.1-2008',
+    'POSIX-2003'               : 'IEEE Std 1003.1-2003',
     'PSE51'                    : 'PSE51',
     'PSE52'                    : 'PSE52',
     'PSE53'                    : 'PSE53',
     'PSE54'                    : 'PSE54',
     'C99'                      : 'C99',
+    'C11'                      : 'C11',
     'FACE 2.1 Security'        : 'FACE 2.1 Security',
     'FACE 2.1 Safety Base'     : 'FACE 2.1 Safety Base',
     'FACE 2.1 Safety Extended' : 'FACE 2.1 Safety Extended',
-    'FACE 2.1 General Purpose' : 'FACE 2.1 General Purpose'
+    'FACE 2.1 General Purpose' : 'FACE 2.1 General Purpose',
+    'FACE 3.0 Security'        : 'FACE 3.0 Security',
+    'FACE 3.0 Safety Base'     : 'FACE 3.0 Safety Base',
+    'FACE 3.0 Safety Extended' : 'FACE 3.0 Safety Extended',
+    'FACE 3.0 General Purpose' : 'FACE 3.0 General Purpose',
+    'SCA 2.2.2 AEP'            : 'SCA 2.2.2 AEP',
+    'SCA 4.1 Ultra Lightweight AEP' : 'SCA 4.1 Ultra Lightweight AEP',
+    'SCA 4.1 Lightweight AEP' : 'SCA 4.1 Lightweight AEP',
+    'SCA 4.1 [Full] AEP'      : 'SCA 4.1 [Full] AEP'
 }
 
 #

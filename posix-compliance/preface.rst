@@ -34,6 +34,13 @@ specific implementations. Still others may be impossible to implement
 without multiple processes or can only be implemented in a restricted
 fashion.
 
+Missing methods required by the C99 standard or FACE Technical
+Standard Edition 3.0 General Purpose Profile are good candidates to add.
+Proposals to add missing methods from the C11 standard should be reviewed
+by RTEMS core developers to ensure the effort is well spent. There are
+rumors that some optional methods that are not being widely implemented
+will be removed in a future versino of the C Programming Language standard.
+
 The next chapter in this document describes each of the standards
 with which the RTEMS alignment is tracked.  Each subsequent chapter in
 this document presents the alignment of RTEMS with a specific standard
