@@ -271,7 +271,7 @@ Simple Priority SMP Scheduler
 
 A fixed-priority scheduler which uses a sorted chain for the ready tasks.  By
 convention, the maximum priority level is 255.  The implementation limit is
-actually :math:`2^{64} - 1`.
+actually :math:`2^{63} - 1`.
 
 .. _SchedulerSMPPriorityAffinity:
 
