@@ -3681,7 +3681,7 @@ configuration macros.
 It is possible to make more than one scheduler algorithm available to the
 application.  For example a :ref:`Simple Priority SMP Scheduler
 <SchedulerSMPPrioritySimple>` could be used in a partition for low latency
-tasks in addition to a :ref:`EDF SMP Scheduler <SchedulerSMPEDF>` for a
+tasks in addition to an :ref:`EDF SMP Scheduler <SchedulerSMPEDF>` for a
 general-purpose cluster.  Since the per-thread overhead depends on the
 scheduler algorithm only the scheduler algorithms used by the application
 should be configured.
