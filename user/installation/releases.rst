@@ -46,18 +46,18 @@ The :r:url:`ftp` is hosted at the Oregon State University's The Open Source Lab
 advancement of open source technologies and RTEMS is very fortunate to be
 shosted here. It has excellent internet access and performance.
 
-.. note:: **Controlling the RTEMS Kernel Build**
+.. note:: **Optionally Build RTEMS Kernel with the RSB**
 
-   Building releases by default builds the RTEMS kernel. To not build the RTEMS
-   kernel add the ``--without-rtems`` option to the RSB command line.
+   Release build by default do not build the RTEMS kernel. To build the RTEMS
+   kernel add the ``--with-rtems`` option to the RSB command line.
 
-   By default all the BSPs for an architecture are built. If you only wish to
-   have a specific BSP built you can specify the BSP list by providing to the
-   RSB the option ``--enable-rtemsbsp``. For example to build two BSPs for the
-   SPARC architecture you can supply ``--enable-rtemsbsp="erc32 sis"``. This can
-   speed the build time up for some architectures that have a lot of BSPs.
+   If you do build the RTEMS with the tools the default is to build all the
+   BSPs for an architecture. There can be a large number of BSP and take a
+   while so you can specify the BSP list by providing to the RSB the option
+   ``--enable-rtemsbsp``. For example to build two BSPs for the SPARC
+   architecture you can supply ``--enable-rtemsbsp="erc32 sis"``.
 
-Once you have built the tools and kernel you can move to the Packages section
+Once you have built the tools and a kernel you can move to the Packages section
 of the manual.
 
 RTEMS Tools and Kernel
