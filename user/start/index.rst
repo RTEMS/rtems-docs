@@ -61,8 +61,7 @@ kernel:
   $ git clone git://git.rtems.org/rtems.git rtems
     ...
   $ cd rtems
-  $ ./bootstrap -c && ./bootstrap -p && \
-              $HOME/development/rtems/rsb/source-builder/sb-bootstrap
+  $ ./bootstrap -c && $HOME/development/rtems/rsb/source-builder/sb-bootstrap
     ...
   $ cd ..
   $ mkdir erc32
