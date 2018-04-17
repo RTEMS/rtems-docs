@@ -119,7 +119,7 @@ Otherwise both CPU dependent code and the BSP will have to be written.
 This type of development often requires specialized skills and there are people
 in the community who provide those services.  If you need help in making these
 modifications to RTEMS try a search in a search engine with something like
-"rtems support". The RTEMS Project encourages users to use support services
+"RTEMS support". The RTEMS Project encourages users to use support services
 however we do not endorse any providers.
 
 CPU Dependent Executive Files
@@ -138,96 +138,46 @@ Within each CPU dependent directory inside the executive proper is a file named
 ``<CPU>.h`` which contains information about each of the supported CPU models
 within that family.
 
-CPU Dependent Support Files
-===========================
-
-The CPU dependent support files contain routines which aid in the development
-of applications using that CPU family.  For example, the support routines
-may contain standard trap handlers for alignment or floating point exceptions
-or device drivers for peripheral controllers found on the CPU itself.
-This class of code may be found in the following directory:
-
-.. code-block:: c
-
-    c/src/lib/libcpu/<CPU>
-
-CPU model dependent support code is found in the following directory:
-
-.. code-block:: c
-
-    c/src/lib/libcpu/<CPU>/<CPU_MODEL>
-
-<CPU_MODEL> may be a specific CPU model name or a name indicating a CPU core or
-a set of related CPU models.  The file ``configure.ac`` in each
-``c/src/lib/libcpu/<CPU>`` directory contains the logic which enables the
-appropriate subdirectories for the specific CPU model your BSP has.
-
 Board Support Package Structure
 ===============================
 
-The BSPs are all under the ``c/src/lib/libbsp`` directory.  Below this
-directory, there is a subdirectory for each CPU family.  Each BSP is found
-under the subdirectory for the appropriate processor family (arm, powerpc,
-sparc, etc.).  In addition, there is source code available which may be shared
-across all BSPs regardless of the CPU family or just across BSPs within a
-single CPU family.  This results in a BSP using the following directories:
+The BSPs are all under the `bsps <https://git.rtems.org/rtems/tree/bsps>`_
+directory.  The structure in this source subtree is:
 
-.. code-block:: c
+* :file:`bsps/shared`
+* :file:`bsps/${{RTEMS_CPU}}/shared`
+* :file:`bsps/${{RTEMS_CPU}}/${{RTEMS_BSP_FAMILY}}`
 
-    c/src/lib/libbsp/shared
-    c/src/lib/libbsp/<CPU>/shared
-    c/src/lib/libbsp/<CPU>/<BSP>
+The ``${RTEMS_CPU}`` is a particular architecture, e.g. arm, powerpc, riscv,
+sparc, etc.  The ``shared`` directories contain code shared by all BSPs or BSPs
+of a particular architecture.  The ``${RTEMS_BSP_FAMILY}`` directories contain
+BSPs for a particular system on chip (SoC) or processor family.
 
-Under each BSP specific directory, there is a collection of subdirectories.
-For commonly provided functionality, the BSPs follow a convention on
-subdirectory naming.  The following list describes the commonly found
-subdirectories under each BSP.
+Use the following structure under the
+:file:`bsps/${{RTEMS_CPU}}/${{RTEMS_BSP_FAMILY}}`:
 
-- ``console``:
-  is technically the serial driver for the BSP rather than just a console
-  driver, it deals with the board UARTs (i.e. serial devices).
+* :file:`ata` - the legacy ATA/IDE driver
+* :file:`btimer` - the legacy benchmark timer driver
+* :file:`cache` - cache controller support
+* :file:`clock` - the clock driver
+* :file:`config` - build system configuration files
+* :file:`console` - the console driver
+* :file:`contrib` - imports of external sources
 
-- ``clock``:
-  support for the clock tick - a regular time basis to the kernel.
+  * the layout of external sources should be used as is if possible
 
-- ``timer``:
-  support of timer devices.
+* :file:`i2c` - the I2C driver
+* :file:`include` - public header files
+* :file:`irq` - the interrupt controller support
+* :file:`mpci` - support for heterogeneous multiprocessing
+  (``RTEMS_MULTIPROCESSING``)
+* :file:`net` - legacy network stack drivers
+* :file:`rtc` - the RTC driver
+* :file:`spi` - the SPI driver
+* :file:`start` - everything required to run a minimal application without
+  devices
 
-- ``rtc`` or ``tod``:
-  support for the hardware real-time clock.
-
-- ``nvmem``:
-  support for non-volatile memory such as EEPROM or Flash.
-
-- ``network``:
-  the Ethernet driver.
-
-- ``shmsupp``:
-  support of shared memory driver MPCI layer in a multiprocessor system,
-
-- ``include``:
-  include files for this BSP.
-
-- ``gnatsupp``:
-  BSP specific support for the GNU Ada run-time.  Each BSP that wishes to have
-  the possibility to map faults or exceptions into Ada language exceptions or
-  hardware interrupts into Ada interrupt tasks must provide this support.
-
-There may be other directories in the BSP tree and the name should be
-indicative of the functionality of the code within that directory.
-
-The build order of the BSP is determined by the Makefile structure.  This
-structure is discussed in more detail in the :ref:`Makefiles` chapter.
-
-.. sidebar:
-
-This manual refers to the gen68340 BSP for numerous concrete examples.  You
-should have a copy of the gen68340 BSP available while reading this piece of
-documentation.  This BSP is located in the following directory:
-
-.. code-block:: c
-
-    c/src/lib/libbsp/m68k/gen68340
-
-Later in this document, the $BSP340_ROOT label will be used to refer to this
-directory.
+  * :file:`start.S` - lowest level startup code
+  * :file:`bspstart.c` - low level startup code
+  * :file:`bspsmp.c` - SMP support
+  * :file:`linkcmds` - a linker command file
