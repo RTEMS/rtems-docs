@@ -144,9 +144,9 @@ Board Support Package Structure
 The BSPs are all under the `bsps <https://git.rtems.org/rtems/tree/bsps>`_
 directory.  The structure in this source subtree is:
 
-* :file:`bsps/shared`
-* :file:`bsps/${{RTEMS_CPU}}/shared`
-* :file:`bsps/${{RTEMS_CPU}}/${{RTEMS_BSP_FAMILY}}`
+* ``bsps/shared``
+* ``bsps/${RTEMS_CPU}/shared``
+* ``bsps/${RTEMS_CPU}/${RTEMS_BSP_FAMILY}``
 
 The ``${RTEMS_CPU}`` is a particular architecture, e.g. arm, powerpc, riscv,
 sparc, etc.  The ``shared`` directories contain code shared by all BSPs or BSPs
@@ -154,7 +154,7 @@ of a particular architecture.  The ``${RTEMS_BSP_FAMILY}`` directories contain
 BSPs for a particular system on chip (SoC) or processor family.
 
 Use the following structure under the
-:file:`bsps/${{RTEMS_CPU}}/${{RTEMS_BSP_FAMILY}}`:
+``bsps/${RTEMS_CPU}/${RTEMS_BSP_FAMILY}``:
 
 * :file:`ata` - the legacy ATA/IDE driver
 * :file:`btimer` - the legacy benchmark timer driver
