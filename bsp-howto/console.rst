@@ -61,7 +61,7 @@ A new serial device driver should consist of three parts.
 .. code-block:: makefile
 
       [...]
-      libbsp_a_SOURCES += ../../shared/console-termios.c
+      libbsp_a_SOURCES += ../../shared/dev/serial/console-termios.c
       libbsp_a_SOURCES += console/console.c
       [...]
 

@@ -23,7 +23,7 @@ system.
 
 The clock driver is usually located in the :file:`clock` directory of the BSP.
 Clock drivers must use the :dfn:`Clock Driver Shell` available via the
-`clockdrv_shell.h <https://git.rtems.org/rtems/tree/c/src/lib/libbsp/shared/clockdrv_shell.h>`_
+`clockimpl.h <https://git.rtems.org/rtems/tree/bsps/shared/dev/clock/clockimpl.h>`_
 include file.  This include file is not a normal header file and instead
 defines the clock driver functions declared in ``#include <rtems/clockdrv.h>``
 which are used by RTEMS configuration file ``#include <rtems/confdefs.h>``.  In
@@ -45,7 +45,7 @@ A clock driver file looks in general like this.
      * functions for the Clock Driver Shell.
      */
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 Depending on the hardware capabilities one out of three clock driver variants
 must be selected.
@@ -85,7 +85,7 @@ fields of the ``struct timecounter`` must be zero initialized.  Install the
 initialized timecounter via ``rtems_timecounter_install()``.
 
 For an example see the `QorIQ clock driver
-<https://git.rtems.org/rtems/tree/c/src/lib/libbsp/powerpc/qoriq/clock/clock-config.c>`_.
+<https://git.rtems.org/rtems/tree/bsps/powerpc/qoriq/clock/clock-config.c>`_.
 
 .. code-block:: c
 
@@ -129,13 +129,13 @@ For an example see the `QorIQ clock driver
     #define Clock_driver_support_initialize_hardware() \
       some_support_initialize_hardware()
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 Simple Timecounter Variant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For an example see the `ERC32 clock driver
-<https://git.rtems.org/rtems/tree/c/src/lib/libbsp/sparc/erc32/clock/ckinit.c>`_.
+<https://git.rtems.org/rtems/tree/bsps/sparc/erc32/clock/ckinit.c>`_.
 
 .. code-block:: c
 
@@ -193,13 +193,13 @@ For an example see the `ERC32 clock driver
     #define Clock_driver_timecounter_tick() \
       some_tc_tick()
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 Clock Tick Only Variant
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 For an example see the `Motrola 68360 clock driver
-<https://git.rtems.org/rtems/tree/c/src/lib/libbsp/m68k/gen68360/clock/clock.c>`_.
+<https://git.rtems.org/rtems/tree/bsps/m68k/gen68360/clock/clock.c>`_.
 
 .. code-block:: c
 
@@ -215,7 +215,7 @@ For an example see the `Motrola 68360 clock driver
 
     #define CLOCK_DRIVER_USE_DUMMY_TIMECOUNTER
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 Install Clock Tick Interrupt Service Routine
 ============================================
@@ -248,7 +248,7 @@ macro.  The default implementation will do nothing.
     #define Clock_driver_support_install_isr( isr ) \
       some_support_install_isr( isr )
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 Support At Tick
 ===============
@@ -266,7 +266,7 @@ The hardware-specific support at tick is specified by
     #define Clock_driver_support_at_tick() \
       some_support_at_tick()
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 System Shutdown Support
 =======================
@@ -292,7 +292,7 @@ overhead.
     #define Clock_driver_support_shutdown_hardware() \
       some_support_shutdown_hardware()
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 SMP Support
 ===========
@@ -325,7 +325,7 @@ x86 and it hopefully remains that way.
     /* Specifiy the clock driver ticks per clock tick value */
     #define CLOCK_DRIVER_ISRS_PER_TICK_VALUE 123
 
-    #include "../../../shared/clockdrv_shell.h"
+    #include "../../../shared/dev/clock/clockimpl.h"
 
 Clock Driver Ticks Counter
 ==========================

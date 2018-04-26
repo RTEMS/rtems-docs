@@ -24,13 +24,13 @@ initialization.
 
 Most of the examples in this chapter will be based on the SPARC/ERC32 and
 m68k/gen68340 BSP initialization code.  Like most BSPs, the initialization for
-these BSP is divided into two subdirectories under the BSP source directory.
-The BSP source code for these BSPs is in the following directories:
+these BSP is contained under the :file:`start` directory in the BSP source
+directory.  The BSP source code for these BSPs is in the following directories:
 
 .. code-block:: shell
 
-    c/src/lib/libbsp/m68k/gen68340
-    c/src/lib/libbsp/sparc/erc32
+    bsps/m68k/gen68340
+    bsps/sparc/erc32
 
 Both BSPs contain startup code written in assembly language and C.  The
 gen68340 BSP has its early initialization start code in the ``start340``
@@ -124,11 +124,8 @@ The ``boot_card()`` is the first C code invoked.  This file is the core
 component in the RTEMS BSP Initialization Framework and provides the proper
 sequencing of initialization steps for the BSP, RTEMS and device drivers. All
 BSPs use the same shared version of ``boot_card()`` which is located in the
-following file:
-
-.. code-block:: shell
-
-    c/src/lib/libbsp/shared/bootcard.c
+`bsps/shared/start/bootcard.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bootcard.c>`_
+file.
 
 The ``boot_card()`` routine performs the following functions:
 
@@ -137,61 +134,26 @@ The ``boot_card()`` routine performs the following functions:
 - It sets the command line argument variables
   for later use by the application.
 
-- It invokes the BSP specific routine ``bsp_work_area_initialize()`` which is
-  supposed to initialize the RTEMS Workspace and the C Program Heap.  Usually
-  the default implementation in ``c/src/lib/libbsp/shared/bspgetworkarea.c``
+- It invokes the routine ``rtems_initialize_executive()`` which never returns.
+  This routine will perform the system initialization through a linker set.
+  The important BSP-specific steps are outlined below.
+
+- Initialization of the RTEMS Workspace and the C Program Heap.  Usually the
+  default implementation in
+  `bsps/shared/start/bspgetworkarea-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspgetworkarea-default.c>`_
   should be sufficient.  Custom implementations can use
   ``bsp_work_area_initialize_default()`` or
-  ``bsp_work_area_initialize_with_table()`` available as inline functions
-  from``#include <bsp/bootcard.h>``.
+  ``bsp_work_area_initialize_with_table()`` available as inline functions from
+  ``#include <bsp/bootcard.h>``.
 
-- It invokes the BSP specific routine ``bsp_start()`` which is written in C and
+- Invocation of the BSP-specific routine ``bsp_start()`` which is written in C and
   thus able to perform more advanced initialization.  Often MMU, bus and
   interrupt controller initialization occurs here.  Since the RTEMS Workspace
   and the C Program Heap was already initialized by
   ``bsp_work_area_initialize()``, this routine may use ``malloc()``, etc.
 
-- It invokes the RTEMS directive ``rtems_initialize_data_structures()`` to
-  initialize the RTEMS executive to a state where objects can be created but
-  tasking is not enabled.
-
-- It invokes the BSP specific routine ``bsp_libc_init()`` to initialize the C
-  Library.  Usually the default implementation in
-  ``c/src/lib/libbsp/shared/bsplibc.c`` should be sufficient.
-
-- It invokes the RTEMS directive ``rtems_initialize_before_drivers()`` to
-  initialize the MPCI Server thread in a multiprocessor configuration and
-  execute API specific extensions.
-
-- It invokes the BSP specific routine ``bsp_predriver_hook``. For most BSPs,
-  the implementation of this routine does nothing.
-
-- It invokes the RTEMS directive ``rtems_initialize_device_drivers()`` to
-  initialize the statically configured set of device drivers in the order they
-  were specified in the Configuration Table.
-
-- It invokes the BSP specific routine ``bsp_postdriver_hook``. For
-  most BSPs, the implementation of this routine does nothing.  However, some
-  BSPs use this hook and perform some initialization which must be done at
-  this point in the initialization sequence.  This is the last opportunity
-  for the BSP to insert BSP specific code into the initialization sequence.
-
-- It invokes the RTEMS directive ``rtems_initialize_start_multitasking()``
-  which initiates multitasking and performs a context switch to the first user
-  application task and may enable interrupts as a side-effect of that context
-  switch.  The context switch saves the executing context.  The application
-  runs now.  The directive ``rtems_shutdown_executive()`` will return to the
-  saved context.  The ``exit()`` function will use this directive.  After a
-  return to the saved context a fatal system state is reached.  The fatal
-  source is ``RTEMS_FATAL_SOURCE_EXIT`` with a fatal code set to the value
-  passed to rtems_shutdown_executive().  The enabling of interrupts during the
-  first context switch is often the source for fatal errors during BSP
-  development because the BSP did not clear and/or disable all interrupt
-  sources and a spurious interrupt will occur.  When in the context of the
-  first task but before its body has been entered, any C++ Global Constructors
-  will be invoked.
-
-That's it.  We just went through the entire sequence.
+- Specific initialization steps can be registered via the
+  ``RTEMS_SYSINIT_ITEM()`` provided by ``#include <rtems/sysinit.h>``.
 
 bsp_work_area_initialize() - BSP Specific Work Area Initialization
 ------------------------------------------------------------------
@@ -200,10 +162,11 @@ This is the first BSP specific C routine to execute during system
 initialization.  It must initialize the support for allocating memory from the
 C Program Heap and RTEMS Workspace commonly referred to as the work areas.
 Many BSPs place the work areas at the end of RAM although this is certainly not
-a requirement.  Usually the default implementation
-in:file:`c/src/lib/libbsp/shared/bspgetworkarea.c` should be sufficient.
-Custom implementations can use ``bsp_work_area_initialize_default()``
-or``bsp_work_area_initialize_with_table()`` available as inline functions from
+a requirement.  Usually the default implementation in
+`bsps/shared/start/bspgetworkarea-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspgetworkarea-default.c>`_
+should be sufficient.  Custom implementations can use
+``bsp_work_area_initialize_default()`` or
+``bsp_work_area_initialize_with_table()`` available as inline functions from
 ``#include <bsp/bootcard.h>``.
 
 bsp_start() - BSP Specific Initialization
@@ -215,23 +178,13 @@ initialization.  It is called right after ``bsp_work_area_initialize()``.  The
 initialization such as setting bus controller registers that do not have a
 direct impact on whether or not C code can execute.  The interrupt controllers
 are usually initialized here.  The source code for this routine is usually
-found in the file :file:`c/src/lib/libbsp/${CPU}/${BSP}/startup/bspstart.c`.
+found in the file ``bsps/${RTEMS_CPU}/${RTEMS_BSP}/start.c``.
 It is not allowed to create any operating system objects, e.g. RTEMS
 semaphores.
 
 After completing execution, this routine returns to the ``boot_card()``
 routine.  In case of errors, the initialization should be terminated via
 ``bsp_fatal()``.
-
-bsp_predriver_hook() - BSP Specific Predriver Hook
---------------------------------------------------
-
-The ``bsp_predriver_hook()`` method is the BSP specific routine that is invoked
-immediately before the the device drivers are initialized. RTEMS initialization
-is complete but interrupts and tasking are disabled.
-
-The BSP may use the shared version of this routine which is empty.  Most BSPs
-do not provide a specific implementation of this callback.
 
 Device Driver Initialization
 ----------------------------
@@ -257,22 +210,6 @@ All these primitives have a major and a minor number as arguments:
 - the minor number is used to control two peripherals with the same driver (for
   instance, we define only one major number for the serial driver, but two
   minor numbers for channel A and B if there are two channels in the UART).
-
-RTEMS Postdriver Callback
--------------------------
-
-The ``bsp_postdriver_hook()`` BSP specific routine is invoked immediately after
-the the device drivers and MPCI are initialized.  Interrupts and tasking are
-disabled.
-
-Most BSPs use the shared implementation of this routine which is responsible
-for opening the device ``/dev/console`` for standard input, output and error if
-the application has configured the Console Device Driver.  This file is located
-at:
-
-.. code-block:: shell
-
-    c/src/lib/libbsp/shared/bsppost.c
 
 The Interrupt Vector Table
 ==========================

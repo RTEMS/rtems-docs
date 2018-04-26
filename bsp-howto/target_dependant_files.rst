@@ -60,8 +60,9 @@ Board Dependent
 This class of code provides the most specific glue between RTEMS and a
 particular board.  This code is represented by the Board Support Packages and
 associated Device Drivers.  Sources for the BSPs included in the RTEMS
-distribution are located in the directory ``c/src/lib/libbsp``.  The BSP source
-directory is further subdivided based on the CPU family and BSP.
+distribution are located in the directory
+`bsps <https://git.rtems.org/rtems/tree/bsps>`_.  The BSP source directory is
+further subdivided based on the CPU family and BSP.
 
 Some BSPs may support multiple board models within a single board family.  This
 is necessary when the board supports multiple variants on a single base board.
@@ -80,9 +81,12 @@ designing a board, the goal of this library is to let the software engineer do
 the same thing.
 
 The source code for the reusable peripheral driver library may be found in the
-directory ``c/src/lib/libchip``.  The source code is further divided based upon
-the class of hardware.  Example classes include serial communications
-controllers, real-time clocks, non-volatile memory, and network controllers.
+directory
+`cpukit/dev <https://git.rtems.org/rtems/tree/cpukit/dev>`_ or
+`bsps/shared/dev <https://git.rtems.org/rtems/tree/bsps/shared/dev>`_.  The
+source code is further divided based upon the class of hardware.  Example
+classes include serial communications controllers, real-time clocks,
+non-volatile memory, and network controllers.
 
 Questions to Ask
 ================
@@ -126,16 +130,11 @@ CPU Dependent Executive Files
 =============================
 
 The CPU dependent files in the RTEMS executive source code are found in the
-following directory:
-
-.. code-block:: c
-
-    cpukit/score/cpu/<CPU>
-
-where <CPU> is replaced with the CPU family name.
+``cpukit/score/cpu/${RTEMS_CPU}`` directories.  The ``${RTEMS_CPU}`` is a
+particular architecture, e.g. arm, powerpc, riscv, sparc, etc.
 
 Within each CPU dependent directory inside the executive proper is a file named
-``<CPU>.h`` which contains information about each of the supported CPU models
+:file:`cpu.h` which contains information about each of the supported CPU models
 within that family.
 
 Board Support Package Structure

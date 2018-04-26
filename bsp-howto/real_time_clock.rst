@@ -28,12 +28,14 @@ an *RTC* device.  The capabilities provided by this driver are:
   In this chapter, the abbreviation `TOD` is used for *Time of Day*.
 
 The reference implementation for a real-time clock driver can be found in
-``c/src/lib/libbsp/shared/tod.c``.  This driver is based on the libchip concept
-and can be easily configured to work with any of the RTC chips supported by the
-RTC chip drivers in the directory ``c/src/lib/lib/libchip/rtc``.  There is a
-README file in this directory for each supported RTC chip.  Each of these
-README explains how to configure the shared libchip implementation of the RTC
-driver for that particular RTC chip.
+`bsps/shared/dev/rtc/rtc-support.c <https://git.rtems.org/rtems/tree/bsps/shared/dev/rtc/rtc-support.c>`_.
+This driver is based on the libchip concept and can be easily configured to
+work with any of the RTC chips supported by the RTC chip drivers in the
+directory
+`bsps/shared/dev/rtc <https://git.rtems.org/rtems/tree/bsps/shared/dev/rtc>`_.
+There is a README file in this directory for each supported RTC chip.  Each of
+these README explains how to configure the shared libchip implementation of the
+RTC driver for that particular RTC chip.
 
 The DY-4 DMV177 BSP used the shared libchip implementation of the RTC driver.
 There were no DMV177 specific configuration routines.  A BSP could use

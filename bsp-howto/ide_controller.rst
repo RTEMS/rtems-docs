@@ -29,15 +29,14 @@ Controller.  The capabilities provided by this driver are:
 - Write data block through IDE Controller Data Register
 
 The reference implementation for an IDE Controller driver can be found in
-``$RTEMS_SRC_ROOT/c/src/libchip/ide``. This driver is based on the libchip
+``bsps/shared/dev/ide``. This driver is based on the libchip
 concept and allows to work with any of the IDE Controller chips simply by
 appropriate configuration of BSP. Drivers for a particular IDE Controller chips
 locate in the following directories: drivers for well-known IDE Controller
-chips locate into ``$RTEMS_SRC_ROOT/c/src/libchip/ide``, drivers for IDE
-Controller chips integrated with CPU locate into
-``$RTEMS_SRC_ROOT/c/src/lib/libcpu/myCPU`` and drivers for custom IDE
+chips locate into ``bsps/shared/dev/ide``
+and drivers for custom IDE
 Controller chips (for example, implemented on FPGA) locate into
-``$RTEMS_SRC_ROOT/c/src/lib/libbsp/myBSP``.  There is a README file in these
+``bsps/${RTEMS_CPU}/${RTEMS_BSP/ata``.  There is a README file in these
 directories for each supported IDE Controller chip. Each of these README
 explains how to configure a BSP for that particular IDE Controller chip.
 

@@ -128,29 +128,6 @@ tick interrupt in the time reported.  Because of this it is sometimes possible
 to use the clock tick interrupt source as the source of this test interrupt.
 On other architectures, it is possible to directly force an interrupt to occur.
 
-Calling Overhead File
-=====================
-
-The file ``include/coverhd.h`` contains the overhead associated with invoking
-each directive.  This overhead consists of the execution time required to
-package the parameters as well as to execute the "jump to subroutine" and
-"return from subroutine" sequence.  The intent of this file is to help separate
-the calling overhead from the actual execution time of a directive.  This file
-is only used by the tests in the RTEMS Timing Test Suite.
-
-The numbers in this file are obtained by running the "Timer
-Overhead"``tmoverhd`` test.  The numbers in this file may be 0 and no overhead
-is subtracted from the directive execution times reported by the Timing Suite.
-
-There is a shared implementation of ``coverhd.h`` which sets all of the
-overhead constants to 0.  On faster processors, this is usually the best
-alternative for the BSP as the calling overhead is extremely small.  This file
-is located at:
-
-.. code-block:: c
-
-    c/src/lib/libbsp/shared/include/coverhd.h
-
 sbrk() Implementation
 =====================
 
@@ -183,11 +160,9 @@ bsp_fatal_extension() - Cleanup the Hardware
 The ``bsp_fatal_extension()`` is an optional BSP specific initial extension
 invoked once a fatal system state is reached.  Most of the BSPs use the same
 shared version of ``bsp_fatal_extension()`` that does nothing or performs a
-system reset.  This implementation is located in the following file:
-
-.. code-block:: c
-
-    c/src/lib/libbsp/shared/bspclean.c
+system reset.  This implementation is located in the
+`bsps/shared/start/bspfatal-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspfatal-default.c>`_
+file.
 
 The ``bsp_fatal_extension()`` routine can be used to return to a ROM monitor,
 insure that interrupt sources are disabled, etc..  This routine is the last
@@ -294,14 +269,16 @@ case profiling is enabled via the RTEMS build configuration option
 times.  The BSP can feed interrupt delay times with the
 ``_Profiling_Update_max_interrupt_delay()`` function (``#include
 <rtems/score/profiling.h>``).  For an example please have a look at
-``c/src/lib/libbsp/sparc/leon3/clock/ckinit.c``.
+`bsps/sparc/leon3/clock/ckinit.c <https://git.rtems.org/rtems/tree/bsps/sparc/leon3/clock/ckinit.c>`_.
 
 Programmable Interrupt Controller API
 =====================================
 
 A BSP can use the PIC API to install Interrupt Service Routines through a set
 of generic methods. In order to do so, the header files
-libbsp/shared/include/irq-generic.h and ``libbsp/shared/include/irq-info.h``
+`<bsp/irq-generic.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/irq-generic.h>`_
+and
+`<bsp/irq-info.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/irq-info.h>`_
 must be included by the bsp specific irq.h file present in the include/
 directory. The irq.h acts as a BSP interrupt support configuration file which
 is used to define some important MACROS. It contains the declarations for any

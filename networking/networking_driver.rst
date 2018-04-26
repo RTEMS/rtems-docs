@@ -14,7 +14,7 @@ Introduction
 This chapter is intended to provide an introduction to the procedure for
 writing RTEMS network device drivers.  The example code is taken from the
 'Generic 68360' network device driver.  The source code for this driver is
-located in the :file:`c/src/lib/libbsp/m68k/gen68360/network` directory in the
+located in the :file:`bsps/m68k/gen68360/net` directory in the
 RTEMS source code distribution.  Having a copy of this driver at hand when
 reading the following notes will help significantly.
 

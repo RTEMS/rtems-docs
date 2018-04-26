@@ -43,7 +43,6 @@ to the Community Project hosted at http://www.rtems.org/.
 
 	preface
 	target_dependant_files
-	makefiles
 	linker_script
 	miscellanous_support
 	initilization_code
