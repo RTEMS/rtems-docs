@@ -91,8 +91,8 @@ Glossary
    cluster
       We have clustered scheduling in case the set of processors of a system is
       partitioned into non-empty pairwise disjoint subsets.  These subsets are
-      calledclusters.  Clusters with a cardinality of one are partitions.  Each
-      cluster is owned by exactly one scheduler instance.
+      called clusters.  Clusters with a cardinality of one are partitions.
+      Each cluster is owned by exactly one scheduler instance.
 
    coalesce
       The process of merging adjacent holes into a single larger hole.
