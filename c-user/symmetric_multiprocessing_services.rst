@@ -208,12 +208,12 @@ Clustered scheduling was implemented for RTEMS SMP to best use the cache
 topology of a system and to keep the worst-case latencies under control.  The
 low-level SMP locks use FIFO ordering.  So, the worst-case run-time of
 operations increases with each processor involved.  The scheduler configuration
-is quite flexible and done at link-time, see :ref:`Configuring Clustered
-Schedulers`.  It is possible to re-assign processors to schedulers during
-run-time via :ref:`rtems_scheduler_add_processor()
-<rtems_scheduler_add_processor>` and :ref:`rtems_scheduler_remove_processor()
-<rtems_scheduler_remove_processor>`.  The schedulers are implemented in an
-object-oriented fashion.
+is quite flexible and done at link-time, see
+:ref:`ConfigurationSchedulersClustered`.  It is possible to re-assign
+processors to schedulers during run-time via
+:ref:`rtems_scheduler_add_processor() <rtems_scheduler_add_processor>` and
+:ref:`rtems_scheduler_remove_processor() <rtems_scheduler_remove_processor>`.
+The schedulers are implemented in an object-oriented fashion.
 
 The problem is to provide synchronization
 primitives for inter-cluster synchronization (more than one cluster is involved
