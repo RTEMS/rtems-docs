@@ -45,7 +45,7 @@ appropriate. For example, by default there will be 256 task priority levels but
 this can be lowered by the application. This number of priority levels is
 required to be compliant with the RTEID/ORKID standards upon which the Classic
 API is based. There are similar cases where the default is selected to be
-compliant with with the POSIX standard.
+compliant with the POSIX standard.
 
 For each configuration parameter in the configuration tables, the macro
 corresponding to that field is discussed. The RTEMS Maintainers expect that all
