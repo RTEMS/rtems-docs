@@ -63,7 +63,7 @@ The fatal error handler in the static extension set can be used to provide
 access to debuggers and monitors which may be present on the target hardware.
 If any user-supplied fatal error handlers are installed, the fatal error
 manager will invoke them.  Usually, the board support package provides a fatal
-error extesion which resets the board.  If no user handlers are configured or
+error extension which resets the board.  If no user handlers are configured or
 if all the user handler return control to the fatal error manager, then the
 RTEMS default fatal error handler is invoked.  If the default fatal error
 handler is invoked, then the system state is marked as failed.
