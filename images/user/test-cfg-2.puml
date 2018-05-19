@@ -1,0 +1,35 @@
+'
+' Tester Configuration 2.
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ participant Run
+ database    Defaults
+ database    BSP
+ database    User
+ database    Config
+
+ Run -> Defaults: load
+ activate Defaults
+ Defaults -> Run: loaded
+ deactivate Defaults
+
+ Run -> BSP: load
+ activate BSP
+ BSP -> Run: BSP macro map loaded
+ deactivate BSP
+
+ Run -> User: load
+ activate User
+ User -> Run: User config loaded
+ deactivate User
+
+ Run -> Config: execute %{tester} script
+ activate Config
+ Config -> Run: finished
+ deactivate Config
+
+@enduml

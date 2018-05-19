@@ -1,0 +1,39 @@
+'
+' Tester TFTP Sequence 2:
+'
+'  Start Filter Trigger
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ participant Start
+ participant Reset
+ participant UBoot
+ participant TFTP
+ participant Test
+ participant Finish
+
+ note left of Finish: ""target_start_regex"" triggers on target async restart match
+
+ Start --> UBoot : target already running
+ activate UBoot
+ UBoot -->> Reset : ""target_start_regex""
+ activate Reset
+ Reset --> UBoot : target running
+ UBoot --> TFTP : download
+ activate TFTP
+ TFTP -->> Reset : ""target_start_regex""
+ deactivate UBoot
+ TFTP --> Test : execute
+ deactivate TFTP
+ activate Test
+ Test --> Finish: test pass or fail?
+ Test -->> Reset : ""target_start_regex""
+ deactivate TFTP
+ deactivate Test
+ Reset --> Finish : Invalid
+ deactivate Reset
+
+@enduml

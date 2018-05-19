@@ -1,0 +1,20 @@
+'
+' Executable debugging.
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startditaa
+
++----------+   	   /---------------\            +----------+
+|          |  TCP  |  Debug Agent  |   agent    |          |
+|   GDB    |<----->|  (GDB server) |<---------->|  Target  |
+|          |       \---------------/ connection |          |
++----------+	                                +----------+
+     ^
+     |
+  /-----\
+  | ELF |
+  \-----/
+
+@endditaa

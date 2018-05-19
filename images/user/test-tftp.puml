@@ -1,0 +1,29 @@
+'
+' Tester Hardware using TFTP network downloading.
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ !define TESTER [rtems-test]
+
+ artifact source
+ card EXE
+ agent TESTER
+ storage results
+
+ agent ser2net
+
+ card console
+ node target
+
+ source --> EXE: build
+ EXE --> [rtems-test]: command line
+ TESTER =down=> target: TFTP\nprotocol
+ TESTER <=down=> ser2net: telnet
+ console <=down=> target: UART
+ ser2net <==> console: USB
+ TESTER -> results
+
+@enduml

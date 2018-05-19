@@ -51,9 +51,11 @@ to the Community Project hosted at http://www.rtems.org/.
 	hardware/index
 	bsps/index
 
-	tools/index
-
+	exe/index
+        testing/index
         tracing/index
+
+	tools/index
 
 	support/index
 

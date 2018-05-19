@@ -1,0 +1,23 @@
+'
+' Executable debugging : QEMU
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startditaa
+
+                   +-----------------------------------+
+                   |               QEMU                |
+                   |                                   |
++----------+       |                      +----------+ |
+|          |  TCP  |  /---------------\   |          | |
+|   GDB    |<-------->|   GDB server  |<->|  Target  | |
+|          |       |  \---------------/   |          | |
++----------+       |                      +----------+ |
+     ^             |                                   |
+     |             +-----------------------------------+
+  /-----\
+  | ELF |
+  \-----/
+
+@endditaa

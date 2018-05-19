@@ -1,0 +1,33 @@
+'
+' Tester TFTP Sequence 3:
+'
+'  Reset Filter Trigger
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ participant Start
+ participant Reset
+ participant UBoot
+ participant TFTP
+
+ note right of Start
+  ""target_reset_regex"" triggers on an async
+  target console match
+ end note
+
+ Start --> UBoot : target already running
+ activate UBoot
+ Reset --> UBoot : target running
+ activate Reset
+ UBoot -->> Reset : ""target_reset_command""
+ UBoot --> TFTP : download
+ deactivate UBoot
+ activate TFTP
+ TFTP -->> Reset : ""target_reset_command""
+ deactivate TFTP
+ deactivate Reset
+
+@enduml

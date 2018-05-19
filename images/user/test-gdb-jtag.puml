@@ -1,0 +1,35 @@
+'
+' Tester GDB
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ !define TESTER [rtems-test]
+
+ artifact source
+ card EXE
+ agent TESTER
+ agent gdb
+ storage results
+
+ agent openocd
+ agent ser2net
+
+ card console
+ card pod
+ node target
+
+ source --> EXE: build
+ EXE --> [rtems-test]: command line
+ TESTER --> gdb: GDB MI
+ gdb --> openocd: remote\nprotocol
+ TESTER <--> ser2net: telnet
+ openocd --> pod: USB
+ pod =down=> target: JTAG
+ console <=down=> target: UART
+ ser2net <--> console: USB
+ TESTER -> results
+
+@enduml

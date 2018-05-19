@@ -1,0 +1,35 @@
+'
+' Tester TFTP Sequence 1:
+'
+'  Pass and Fail
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ participant Start
+ participant Reset
+ participant UBoot
+ participant TFTP
+ participant Test
+ participant Finish
+
+ note right of Start: target_on_command run before the first test
+
+ Start --> UBoot: tester running, target has reset
+ activate UBoot
+ Start -->> Reset: target_on_command
+ activate Reset
+ Reset --> UBoot: target power on
+ deactivate Reset
+ UBoot --> TFTP: download
+ deactivate UBoot
+ activate TFTP
+ TFTP --> Test: execute
+ deactivate TFTP
+ activate Test
+ Test --> Finish: test pass or fail?
+ deactivate TFTP
+
+@enduml

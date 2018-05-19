@@ -22,6 +22,8 @@ The PDF format is created using Latex and that uses texlive packages. This
 exposes us to the complex world of Latex however the quality of the documents
 created is worth it.
 
+Images can be created from source using PlantUML and Ditaa.
+
 Production Quality Hosts
 ------------------------
 
@@ -36,12 +38,50 @@ The hosts which produce production quality is:
 
 NOTE: RedHat Enterprise Linux (RHEL) and Fedora should be the same as CentOS.
 
+Images
+------
+
+All images should be placed int he 'images' directory and referenced from the
+ReST with a relative path. This lets us shared and control images.
+
+We prefer being able to build images from source. This is not always possible
+so SVG format is preferred with generated PNG images so make sure the quality
+is consistent when building PDF output.
+
+We support the PlantUML image language. The PlantUML home page is:
+
+ http://plantuml.com/
+
+The page as a link to an 'online demo server' you can use to create images
+rathre than installing PlantUML. Save you source then View and save the PNG
+format image. The PlantUML language reference guide is:
+
+ http://plantuml.com/PlantUML_Language_Reference_Guide.pdf
+
+And the web site has online documentation. The image source extension is
+'.puml'.
+
+We also support Ditaa image language. The Ditaa home page is:
+
+ http://ditaa.sourceforge.net/
+
+The home page contain the language options. The PlantUML online demo server
+supports Ditaa so use that resource as an online tool. The Ditaa image source
+extension is '.ditaa'.
+
+You do not need PlantUML or Ditaa install to build our documentation. The
+online resources can be used. Save the source and the generated PNG file in the
+same directory under 'images'.
+
 Host Setup
 ----------
 
 HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
 and building a Single HTML page requires the 'inliner' tool. The
-sphinxcontrib-bibtex extension is mandatory.
+sphinxcontrib-bibtex extension is mandatory. PlantUML requres the Node.js
+package called 'nde-plantuml' which installs the 'puml' command and Ditaa needs
+the 'ditaa' command and package. Ditaa images are built using the 'puml'
+command.
 
 Please add your host as you set it up.
 
@@ -181,7 +221,6 @@ PATH:
 
   export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
   export PATH=${HOME}/.local/bin:${PATH}
-
 
 Arch Linux
 ~~~~~~~~~~

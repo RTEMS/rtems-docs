@@ -1,0 +1,56 @@
+'
+' Executable Application Vertical Stack
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ node Application [
+  <b>Application
+  ----
+  Management
+  ....
+  Control
+  ....
+  Workers
+  ....
+  Protocol
+ ]
+
+ note right of Application
+  High Level
+ end note
+
+ node 3rdParty [
+  <b>3rd Party Packages
+  ----
+  Protobufs
+  ....
+  Networking (libbsd)
+ ]
+
+ node RTEMS [
+  <b>RTEMS
+  ----
+  API
+  ....
+  Kernel
+  ....
+  Drivers
+  ....
+  BSP
+ ]
+ node Hardware [
+  <b>Hardware
+ ]
+
+ Application .down. 3rdParty
+ 3rdParty    .down. RTEMS
+ RTEMS       .down. Hardware
+
+ note right of Hardware
+  Low Level
+ end note
+
+@enduml

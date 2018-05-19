@@ -1,0 +1,72 @@
+'
+' Executable Application
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ folder Application {
+  file app1.c
+  file app2.c
+ }
+
+ rectangle "3rd Party\nHeaders" as 3rd_party_headers {
+  folder headers as pkg_headers
+ }
+
+ folder rtems_headers {
+  file rtems.h
+ }
+
+ folder std_headers {
+  file stddef.h
+  file stdio.h
+ }
+
+ agent cc
+ file  objects
+
+ Application   --> cc : app1.c\napp2.c
+ pkg_headers   --> cc : -Ipkg
+ rtems_headers --> cc : -Irtems
+ std_headers   --> cc
+ cc            --> objects: **compile**
+
+ rectangle "3rd Party\nLibraries" as 3rd_party {
+  package libpkg as pkg
+ }
+
+ folder librtems {
+  folder rtems
+  folder posix
+  folder sapi
+  folder score
+ }
+
+ folder stdlibs {
+  file libc
+  file libm
+  file "libstdc++"
+ }
+
+ agent ld
+
+ objects  --> ld : app1.o\napp2.o
+ pkg      --> ld : -lpkg
+ librtems --> ld : -lrtems
+ stdlibs  --> ld : "-lm\n-lstdc++"
+
+ file executable
+
+ ld --> executable: **link**
+
+ rectangle Target {
+   agent bootloader
+   agent memory
+ }
+
+ executable --> bootloader: **load**
+ bootloader -right-> memory: **execute**
+
+@enduml

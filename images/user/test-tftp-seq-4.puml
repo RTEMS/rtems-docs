@@ -1,0 +1,26 @@
+'
+' Tester TFTP Sequence 4:
+'
+'  Reset Filter Trigger
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ participant UBoot
+ participant TFTP
+ participant Test
+ participant Reset
+ participant Finish
+
+ note right of UBoot : A timeout can occur at any time
+
+ UBoot -->> Reset : ""target_reset_command""
+ activate Reset
+ TFTP -->> Reset : ""target_reset_command""
+ Test -->> Reset : ""target_reset_command""
+ Reset --> Finish : timeout
+ deactivate Reset
+
+@enduml

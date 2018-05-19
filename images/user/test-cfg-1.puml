@@ -1,0 +1,20 @@
+'
+' Tester Configuration 1.
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ artifact Defaults
+ artifact BSP
+ artifact User
+ artifact Config
+ rectangle "RTEMS Test\n(rtems-tester)" as tester
+
+ Defaults -down-> tester: .mc
+ BSP      -down-> tester: .ini
+ User     -down-> tester: .ini
+ Config   -down-> tester: .cfg
+
+@enduml

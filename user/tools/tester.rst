@@ -5,8 +5,8 @@
 
 .. _rtems-tester-command:
 
-RTEMS Tester and Run Commands
-=============================
+RTEMS Tester and Run
+====================
 
 .. index:: Tools, rtems-test, rtems-run
 

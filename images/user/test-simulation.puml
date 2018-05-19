@@ -1,0 +1,23 @@
+'
+' Tester Simulation.
+'
+' Copyright (c) 2018 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ !define TESTER [rtems-test]
+
+ artifact source
+ card EXE
+ agent TESTER
+ storage results
+ agent simulator
+
+ source --> EXE: build
+ EXE --> [rtems-test]: command line
+ TESTER --> simulator
+ simulator --> TESTER: stdout
+ TESTER -> results
+
+@enduml
