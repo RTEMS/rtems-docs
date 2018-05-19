@@ -35,13 +35,13 @@ Example Application
             name, 1, RTEMS_MINIMUM_STACK_SIZE,
             RTEMS_NO_PREEMPT, RTEMS_FLOATING_POINT, &tid
         );
-        if ( status != RTEMS_STATUS_SUCCESSFUL ) {
+        if ( status != RTEMS_SUCCESSFUL ) {
             printf( "rtems_task_create failed with status of %d.\n", status );
             exit( 1 );
         }
 
         status = rtems_task_start( tid, user_application, 0 );
-        if ( status != RTEMS_STATUS_SUCCESSFUL ) {
+        if ( status != RTEMS_SUCCESSFUL ) {
             printf( "rtems_task_start failed with status of %d.\n", status );
             exit( 1 );
         }
