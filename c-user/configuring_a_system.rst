@@ -3417,7 +3417,7 @@ DEFAULT VALUE:
     The default name is
 
       - ``"MEDF"`` for the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`,
-      - ``"MPA "`` for the :ref:`Aribitary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
+      - ``"MPA "`` for the :ref:`Arbitrary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
       - ``"MPD "`` for the :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`,
       - ``"MPS "`` for the :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`,
       - ``"UCBS"`` for the :ref:`Uniprocessor CBS Scheduler <SchedulerCBS>`,

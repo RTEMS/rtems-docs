@@ -275,7 +275,7 @@ actually :math:`2^{63} - 1`.
 
 .. _SchedulerSMPPriorityAffinity:
 
-Aribitary Processor Affinity Priority SMP Scheduler
+Arbitrary Processor Affinity Priority SMP Scheduler
 ---------------------------------------------------
 
 A fixed-priority scheduler which uses a table of chains with one chain per
