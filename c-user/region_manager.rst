@@ -255,17 +255,22 @@ DIRECTIVE STATUS CODES:
        - ``id`` is NULL
      * - ``RTEMS_INVALID_ADDRESS``
        - ``starting_address`` is NULL
-     * - ``RTEMS_INVALID_ADDRESS``
-       - address not on four byte boundary
      * - ``RTEMS_TOO_MANY``
        - too many regions created
      * - ``RTEMS_INVALID_SIZE``
        - invalid page size
+     * - ``RTEMS_INVALID_SIZE``
+       - the memory area defined by the starting address and the length
+         parameters is too small
 
 DESCRIPTION:
-    This directive creates a region from a physically contiguous memory space
-    which starts at starting_address and is length bytes long.  Segments
-    allocated from the region will be a multiple of page_size bytes in length.
+    This directive creates a region from a contiguous memory area
+    which starts at starting_address and is length bytes long.  The memory area
+    must be large enough to contain some internal region administration data.
+    Segments allocated from the region will be a multiple of page_size bytes in
+    length.  The specified page size will be aligned to an
+    architecture-specific minimum alignment if necessary.
+
     The assigned region id is returned in id.  This region id is used as an
     argument to other region related directives to access the region.
 
@@ -278,10 +283,6 @@ DESCRIPTION:
     segment to be serviced according to task priority.  Specifying
     ``RTEMS_FIFO`` in attribute_set or selecting ``RTEMS_DEFAULT_ATTRIBUTES``
     will cause waiting tasks to be serviced in First In-First Out order.
-
-    The ``starting_address`` parameter must be aligned on a four byte boundary.
-    The ``page_size`` parameter must be a multiple of four greater than or
-    equal to eight.
 
 NOTES:
     This directive will obtain the allocator mutex and may cause the calling
