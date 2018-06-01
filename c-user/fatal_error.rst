@@ -127,6 +127,10 @@ RTEMS_FATAL_SOURCE_SMP (10)
 RTEMS_FATAL_SOURCE_PANIC (11)
     Fatal source of :c:func:`rtems_panic`, see :ref:`rtems_panic`.
 
+RTEMS_FATAL_SOURCE_INVALID_HEAP_FREE (12)
+    Fatal source for invalid C program heap frees via :c:func:`free`.  The
+    fatal code is the bad pointer.
+
 .. _internal_errors:
 
 Internal Error Codes
