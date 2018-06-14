@@ -52,6 +52,8 @@ to the Community Project hosted at http://www.rtems.org/.
 
 	tools/index
 
+        tracing/index
+
 	support/index
 
 	glossary/index
