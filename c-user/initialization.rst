@@ -119,10 +119,6 @@ RTEMS_SYSINIT_DATA_STRUCTURES
     Multiprocessor Configuration Table, and the Multiprocessor Communications
     Interface (MPCI) Table.
 
-RTEMS_SYSINIT_CPU_SET
-    Initialization of system CPU set.  This step is optional and depends on the
-    application configuration.
-
 RTEMS_SYSINIT_MP
     MPCI initialization.  This step is mandatory on MPCI configurations.
 
