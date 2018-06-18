@@ -104,6 +104,12 @@ RTEMS_SYSINIT_BSP_START
     Basic initialization step provided by the Board Support Package.  This step
     is mandatory.
 
+RTEMS_SYSINIT_CPU_COUNTER
+    Initialization of the CPU counter hardware and support functions.  The CPU
+    counter is initialized early to allow its use in the tracing and profiling
+    of the system initialization sequence.  This step is optional and depends
+    on the application configuration.
+
 RTEMS_SYSINIT_INITIAL_EXTENSIONS
     Registers the initial extensions.  This step is optional and depends on the
     application configuration.
