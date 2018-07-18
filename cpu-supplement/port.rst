@@ -222,9 +222,9 @@ switches to this dedicated stack.  On architectures without hardware support
 for a dedicated interrupt stack which is separate from those of the tasks,
 RTEMS will support switching to a dedicated stack for interrupt processing.
 
-Without a dedicated interrupt stack, every task in the system MUST have enough
+Without a dedicated interrupt stack, every task in the system must have enough
 stack space to accommodate the worst case stack usage of that particular task
-and the interrupt service routines COMBINED.  By supporting a dedicated
+and the interrupt service routines combined.  By supporting a dedicated
 interrupt stack, RTEMS significantly lowers the stack requirements for each
 task.
 
@@ -232,16 +232,20 @@ A nested interrupt is processed similarly with the exception that since the CPU
 is already executing on the interrupt stack, there is no need to switch to the
 interrupt stack.
 
-In some configurations, RTEMS allocates the interrupt stack from the Workspace
-Area.  The amount of memory allocated for the interrupt stack is user
-configured and based upon the ``confdefs.h`` parameter
+The interrupt stacks (one for each configured processor) are statically
+allocated by the application configuration via ``<rtems/confdefs.h>`` in the
+special section ``.rtemsstack``.  This enables an optimal placement of the
+interrupt stacks by the Board Support Package (BSP), e.g. a fast on-chip
+memory.  The amount of memory allocated for each interrupt stack is user
+configured and based upon the ``<rtems/confdefs.h>`` parameter
 ``CONFIGURE_INTERRUPT_STACK_SIZE``.  This parameter is described in detail in
-the Configuring a System chapter of the User's Guide.  On configurations in
-which RTEMS allocates the interrupt stack, during the initialization process,
-RTEMS will also install its interrupt stack.  In other configurations, the
-interrupt stack is allocated and installed by the Board Support Package (BSP).
+the Configuring a System chapter of the User's Guide.  Since interrupts are
+disabled during the sequential system initialization and the
+``_Thread_Start_multitasking()`` function does not return to the caller each
+interrupt stack may be used for the initialization stack on the corresponding
+processor.
 
-In each of the architecture specific chapters, this section discesses the
+In each of the architecture specific chapters, this section discusses the
 interrupt response and control mechanisms of the architecture as they pertain
 to RTEMS.
 
