@@ -56,6 +56,7 @@ to the Community Project hosted at http://www.rtems.org/.
 	altera_nios_ii
 	openrisc_1000
 	powerpc
+	riscv
 	superh
 	sparc
 	sparc64
