@@ -162,21 +162,23 @@ DIRECTIVE STATUS CODES:
      * - ``RTEMS_SUCCESSFUL``
        - partition created successfully
      * - ``RTEMS_INVALID_NAME``
-       - invalid partition name
+       - invalid partition ``name``
      * - ``RTEMS_TOO_MANY``
        - too many partitions created
      * - ``RTEMS_INVALID_ADDRESS``
-       - address not on four byte boundary
+       - ``starting_address`` is not on a pointer size boundary
      * - ``RTEMS_INVALID_ADDRESS``
        - ``starting_address`` is NULL
      * - ``RTEMS_INVALID_ADDRESS``
        - ``id`` is NULL
      * - ``RTEMS_INVALID_SIZE``
-       - length or buffer size is 0
+       - ``length`` or ``buffer_size`` is 0
      * - ``RTEMS_INVALID_SIZE``
-       - length is less than the buffer size
+       - ``length`` is less than the ``buffer_size``
      * - ``RTEMS_INVALID_SIZE``
-       - buffer size not a multiple of 4
+       - ``buffer_size`` is not an integral multiple of the pointer size
+     * - ``RTEMS_INVALID_SIZE``
+       - ``buffer_size`` is less than two times the pointer size
      * - ``RTEMS_MP_NOT_CONFIGURED``
        - multiprocessing not configured
      * - ``RTEMS_TOO_MANY``
@@ -194,13 +196,18 @@ DESCRIPTION:
 NOTES:
     This directive will not cause the calling task to be preempted.
 
-    The ``starting_address`` must be properly aligned for the target
-    architecture.
+    The partition buffer area specified by the ``starting_address`` must be
+    properly aligned.  It must be possible to directly store target
+    architecture pointers and the also the user data.  For example, if the user
+    data contains some long double or vector data types, the partition buffer
+    area and the buffer size must take the alignment of these types into
+    account which is usually larger than the pointer alignment.  A cache line
+    alignment may be also a factor.
 
-    The ``buffer_size`` parameter must be a multiple of the CPU alignment
-    factor.  Additionally, ``buffer_size`` must be large enough to hold two
-    pointers on the target architecture.  This is required for RTEMS to manage
-    the buffers when they are free.
+    The ``buffer_size`` parameter must be an integral multiple of the pointer
+    size on the target architecture.  Additionally, ``buffer_size`` must be
+    large enough to hold two pointers on the target architecture.  This is
+    required for RTEMS to manage the buffers when they are free.
 
     Memory from the partition is not used by RTEMS to store the Partition
     Control Block.
@@ -225,6 +232,42 @@ NOTES:
 
     The total number of global objects, including partitions, is limited by the
     maximum_global_objects field in the Configuration Table.
+
+EXAMPLE:
+    .. code-block:: c
+
+        #include <rtems.h>
+        #include <rtems/chain.h>
+
+        #include <assert.h>
+
+        typedef struct {
+          char  less;
+          short more;
+        } item;
+
+        union {
+          item             data;
+          rtems_chain_node node;
+        } items[ 13 ];
+
+        rtems_id create_partition(void)
+        {
+          rtems_id          id;
+          rtems_status_code sc;
+
+          sc = rtems_partition_create(
+            rtems_build_name( 'P', 'A', 'R', 'T' ),
+            items,
+            sizeof( items ),
+            sizeof( items[ 0 ] ),
+            RTEMS_DEFAULT_ATTRIBUTES,
+            &id
+          );
+          assert(sc == RTEMS_SUCCESSFUL);
+
+          return id;
+        }
 
 .. raw:: latex
 
