@@ -1227,6 +1227,31 @@ NOTES:
 
     All POSIX threads have floating point enabled.
 
+.. index:: CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
+.. index:: minimum POSIX thread stack size
+
+.. _CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE:
+
+CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
+-----------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is two times the value of
+    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE <CONFIGURE_MINIMUM_TASK_STACK_SIZE>`.
+
+DESCRIPTION:
+    This configuration parameter defines the minimum stack size in bytes for
+    every POSIX thread in the system.
+
 POSIX Initialization Threads Table Configuration
 ================================================
 
@@ -1606,17 +1631,17 @@ RANGE:
     Positive.
 
 DEFAULT VALUE:
-    This is not defined by default, which sets the executive to the recommended
-    minimum stack size for this processor.
+    The default value is architecture-specific.
 
 DESCRIPTION:
-    The configuration parameter is set to the number of bytes the application
-    wants the minimum stack size to be for every task or thread in the system.
-
-    Adjusting this parameter should be done with caution. Examining the actual
-    usage using the Stack Checker Usage Reporting facility is recommended.
+    This configuration parameter defines the minimum stack size in bytes for
+    every user task or thread in the system.
 
 NOTES:
+    Adjusting this parameter should be done with caution.  Examining the actual
+    stack usage using the stack checker usage reporting facility is recommended
+    (see also :ref:`CONFIGURE_STACK_CHECKER_ENABLED <CONFIGURE_STACK_CHECKER_ENABLED>`).
+
     This parameter can be used to lower the minimum from that recommended. This
     can be used in low memory systems to reduce memory consumption for
     stacks. However, this must be done with caution as it could increase the
@@ -1625,6 +1650,11 @@ NOTES:
     This parameter can be used to increase the minimum from that
     recommended. This can be used in higher memory systems to reduce the risk
     of stack overflow without performing analysis on actual consumption.
+
+    By default, this configuration parameter defines also the minimum stack
+    size of POSIX threads.  This can be changed with the
+    :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE <CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE>`
+    configuration option.
 
 .. index:: CONFIGURE_INTERRUPT_STACK_SIZE
 .. index:: interrupt stack size
