@@ -1055,6 +1055,139 @@ The parameters in this section are used to configure resources for the RTEMS
 POSIX API.  They are only relevant if the POSIX API is enabled at configure
 time using the ``--enable-posix`` option.
 
+.. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
+
+.. _CONFIGURE_MAXIMUM_POSIX_KEYS:
+
+CONFIGURE_MAXIMUM_POSIX_KEYS
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_KEYS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_KEYS`` is the maximum number of POSIX API Keys
+    that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
+
+.. _CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES:
+
+CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
+--------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES`` is the maximum number of POSIX
+    API Message Queues that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
+
+.. _CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS:
+
+CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
+--------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS`` is the maximum number of POSIX
+    API Queued Signals that can be concurrently active.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+
+.. _CONFIGURE_MAXIMUM_POSIX_SEMAPHORES:
+
+CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES`` is the maximum number of POSIX API
+    Named Semaphores that can be concurrently active.  Named semaphores are
+    created with ``sem_open()``.  Semaphores initialized with ``sem_init()``
+    are not affected by this configuration option since the storage space for
+    these semaphores is user-provided.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
+
+.. _CONFIGURE_MAXIMUM_POSIX_TIMERS:
+
+CONFIGURE_MAXIMUM_POSIX_TIMERS
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_TIMERS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_TIMERS`` is the maximum number of POSIX API
+    Timers that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
 
 .. _CONFIGURE_MAXIMUM_POSIX_THREADS:
@@ -1093,139 +1226,6 @@ NOTES:
     ``CONFIGURE_MAXIMUM_TASKS``.
 
     All POSIX threads have floating point enabled.
-
-.. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
-
-.. _CONFIGURE_MAXIMUM_POSIX_KEYS:
-
-CONFIGURE_MAXIMUM_POSIX_KEYS
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_KEYS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_KEYS`` is the maximum number of POSIX API Keys
-    that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
-
-.. _CONFIGURE_MAXIMUM_POSIX_TIMERS:
-
-CONFIGURE_MAXIMUM_POSIX_TIMERS
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_TIMERS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_TIMERS`` is the maximum number of POSIX API
-    Timers that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
-
-.. _CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS:
-
-CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
---------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS`` is the maximum number of POSIX
-    API Queued Signals that can be concurrently active.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
-
-.. _CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES:
-
-CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
---------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES`` is the maximum number of POSIX
-    API Message Queues that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
-
-.. _CONFIGURE_MAXIMUM_POSIX_SEMAPHORES:
-
-CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
-----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES`` is the maximum number of POSIX API
-    Named Semaphores that can be concurrently active.  Named semaphores are
-    created with ``sem_open()``.  Semaphores initialized with ``sem_init()``
-    are not affected by this configuration option since the storage space for
-    these semaphores is user-provided.
-
-NOTES:
-    None.
 
 POSIX Initialization Threads Table Configuration
 ================================================
