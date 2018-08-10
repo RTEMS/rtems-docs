@@ -60,7 +60,6 @@ to the Community Project hosted at http://www.rtems.org/.
 	superh
 	sparc
 	sparc64
-	command
 	zreferences
 
         genindex
