@@ -18,7 +18,9 @@ The Symmetric Multiprocessing (SMP) support of the RTEMS is available on
 
 - ARMv7-A,
 
-- PowerPC, and
+- PowerPC,
+
+- RISC-V, and
 
 - SPARC.
 
