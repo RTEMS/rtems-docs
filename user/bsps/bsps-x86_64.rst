@@ -136,10 +136,60 @@ After rebooting, the RTEMS kernel should run after the UEFI firmware and
 FreeBSD's bootloader. The ``-serial stdio`` QEMU flag will let the RTEMS console
 send its output to the host's ``stdio`` stream.
 
+Paging
+------
+
+During the BSP's initialization, the paging tables are setup to identity-map the
+first 512GiB, i.e. virtual addresses are the same as physical addresses for the
+first 512GiB.
+
+The page structures are set up statically with 1GiB super-pages.
+
+.. note::
+  Page-faults are not handled.
+
+.. warning::
+  RAM size is not detected dynamically and defaults to 1GiB, if the
+  configuration-time ``RamSize`` parameter is not used.
+
+Interrupt Setup
+---------------
+
+Interrupt vectors ``0`` through ``32`` (i.e. 33 interrupt vectors in total) are
+setup as "RTEMS interrupts", which can be hooked through
+``rtems_interrupt_handler_install``.
+
+The Interrupt Descriptor Table supports a total of 256 possible vectors (0
+through 255), which leaves a lot of room for "raw interrupts", which can be
+hooked through ``_CPU_ISR_install_raw_handler``.
+
+Since the APIC needs to be used for the clock driver, the PIC is remapped (IRQ0
+of the PIC is redirected to vector 32, and so on), and then all interrupts are
+masked to disable the PIC. In this state, the PIC may _still_ produce spurious
+interrupts (IRQ7 and IRQ15, redirected to vector 39 and vector 47 respectively).
+
+The clock driver triggers the initialization of the APIC and then the APIC
+timer.
+
+The I/O APIC is not supported at the moment.
+
+.. note::
+  IRQ32 is reserved by default for the APIC timer (see following section).
+
+  IRQ255 is reserved by default for the APIC's spurious vector.
+
+.. warning::
+  Besides the first 33 vectors (0 through 32), and vector 255 (the APIC spurious
+  vector), no other handlers are attached by default.
+
 Clock Driver
 ------------
 
-The clock driver currently uses the idle thread clock driver.
+The clock driver currently uses the APIC timer. Since the APIC timer runs at the
+CPU bus frequency, which can't be detected easily, the PIT is used to calibrate
+the APIC timer, and then the APIC timer is enabled in periodic mode, with the
+initial counter setup such that interrupts fire at the same frequency as the
+clock tick frequency, as requested by ``CONFIGURE_MICROSECONDS_PER_TICK``.
 
 Console Driver
 --------------
