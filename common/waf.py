@@ -314,7 +314,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
 
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    resource = html_resources(ctx, buildtype)
+    resources = html_resources(ctx, buildtype)
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
