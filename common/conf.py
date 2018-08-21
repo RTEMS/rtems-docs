@@ -203,7 +203,6 @@ latex_elements = {
 \newcommand{\rtemscopyright}{%s}
 \usepackage{rtemsstyle}
 ''' % (copyright),
-    'printindex': r'\footnotesize\raggedright\printindex',
     'parsedliteralwraps': True,
 }
 
