@@ -34,7 +34,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['build/_templates']
+#templates_path = ['build/_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -202,7 +202,9 @@ latex_elements = {
     'preamble':     r'''
 \newcommand{\rtemscopyright}{%s}
 \usepackage{rtemsstyle}
-''' % (copyright)
+''' % (copyright),
+    'printindex': r'\footnotesize\raggedright\printindex',
+    'parsedliteralwraps': True,
 }
 
 

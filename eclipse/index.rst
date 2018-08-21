@@ -50,4 +50,4 @@ to the Community Project hosted at http://www.rtems.org/.
 
 	glossary
 
-        genindex
+* :ref:`genindex`

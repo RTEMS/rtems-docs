@@ -83,4 +83,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	glossary
 	zreferences
 
-        genindex
+* :ref:`genindex`

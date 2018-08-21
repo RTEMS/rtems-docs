@@ -1,4 +1,16 @@
-import sys, os, re
+#
+# RTEMS Documentation Project
+#
+# Waf build support.
+#
+
+
+from __future__ import print_function
+
+import os
+import re
+import sys
+
 from waflib.Build import BuildContext
 
 import latex
@@ -24,10 +36,14 @@ def build_date():
 def version_cmdline(ctx):
     return '-Drelease="%s" -Dversion="%s"' % (ctx.env.VERSION, ctx.env.VERSION)
 
-def sphinx_cmdline(ctx, build_type, conf_dir, doctrees, source_dir, output_dir):
-    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s ${SRC}" % \
+def sphinx_cmdline(ctx, build_type, conf_dir, doctrees,
+                   source_dir, output_dir, configs = []):
+    cfgs = ''
+    for c in configs:
+        cfgs += ' -D %s=%s' % (c, configs[c])
+    rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s %s ${SRC}" % \
            (sphinx_verbose(ctx), build_type, conf_dir, version_cmdline(ctx),
-            doctrees, source_dir, output_dir)
+            doctrees, cfgs, source_dir, output_dir)
     return rule
 
 def cmd_spell(ctx):
@@ -140,43 +156,35 @@ def pdf_resources(ctx, buildtype):
     fnode = ctx.path.get_bld().make_node(buildtype)
     fnode.mkdir()
     local_packages = latex.local_packages()
+    targets = []
     if local_packages is not None:
         srcs = [os.path.join(base, p) for p in local_packages]
-        ctx(
-            features = "subst",
+        targets += [fnode.make_node(p) for p in local_packages]
+        ctx(features = "subst",
             is_copy  = True,
             source   = srcs,
-            target   = [fnode.make_node(p) for p in local_packages]
-        )
-    ctx(
-        features = "subst",
+            target   = targets)
+    targets += [fnode.make_node('rtemsextrafonts.sty')]
+    ctx(features = "subst",
         is_copy  = True,
         source   = os.path.join(base, ctx.env.RTEMSEXTRAFONTS),
-        target   = fnode.make_node('rtemsextrafonts.sty')
-    )
+        target   = fnode.make_node('rtemsextrafonts.sty'))
+    return targets
 
 def html_resources(ctx, buildtype):
+    extra_source = []
     for dir_name in ["_static", "_templates"]:
         files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
         fnode = ctx.path.get_bld().make_node(os.path.join(buildtype, dir_name))
+        targets = [fnode.make_node(x.name) for x in files]
+        extra_source += targets
         fnode.mkdir() # dirs
-        ctx(
-            features = "subst",
+        ctx(features = "subst",
             is_copy  = True,
             source   = files,
-            target   = [fnode.make_node(x.name) for x in files]
-        )
-
-    # copy images
-#    ctx.path.get_bld().make_node("images").mkdir()
-#    files = ctx.path.parent.ant_glob("images/**")
-#    ctx(
-#        features    = "subst",
-#        is_copy     = True,
-#        source      = files,
-#        target      = [x.srcpath().replace("../", "") for x in files]
-#    )
-
+            target   = targets)
+        ctx.add_group()
+    return extra_source
 
 def check_sphinx_extension(ctx, extension):
     def run_sphinx(bld):
@@ -195,7 +203,6 @@ def check_sphinx_extension(ctx, extension):
         ctx.end_msg('not found (see README.txt)', 'RED')
         ctx.fatal('The configuration failed')
     ctx.end_msg('found')
-
 
 def cmd_configure(ctx):
     check_sphinx = not ctx.env.BIN_SPHINX_BUILD
@@ -256,12 +263,13 @@ def cmd_configure(ctx):
 def doc_pdf(ctx, source_dir, conf_dir, extra_source):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    pdf_resources(ctx, buildtype)
+    resources = pdf_resources(ctx, buildtype)
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
         source       = ctx.path.ant_glob('**/*.rst') + extra_source,
+        depends_on   = extra_source,
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
@@ -306,12 +314,13 @@ def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
 
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    html_resources(ctx, buildtype)
+    resource = html_resources(ctx, buildtype)
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
         source       = ctx.path.ant_glob('**/*.rst') + extra_source,
+        depends_on   = resources,
         target       = ctx.path.find_or_declare("%s/index.html" % (buildtype)),
         install_path = None
     )
@@ -326,12 +335,15 @@ def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
 def doc_html(ctx, source_dir, conf_dir, extra_source):
     buildtype = 'html'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    html_resources(ctx, buildtype)
-    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
+    resources = html_resources(ctx, buildtype)
+    templates = os.path.join(str(ctx.path.get_bld()), buildtype, '_templates')
+    configs = { 'templates_path': templates }
+    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir, configs)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
         source       = ctx.path.ant_glob('**/*.rst') + extra_source,
+        depends_on   = resources,
         target       = ctx.path.find_or_declare('%s/index.html' % buildtype),
         install_path = None
     )

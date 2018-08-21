@@ -61,3 +61,5 @@ to the Community Project hosted at http://www.rtems.org/.
 	sparc
 	sparc64
 	zreferences
+
+* :ref:`genindex`

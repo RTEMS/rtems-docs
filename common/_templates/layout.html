@@ -1,5 +1,12 @@
 {# Import the theme's layout. #}
 {% extends "!layout.html" %}
-
+{% block sidebartitle %}
+    <a href="https://docs.rtems.org/">RTEMS Documentation Project</a>
+    {{ super() }}
+{% endblock %}
+{% block menu %}
+  {{ super() }}
+  <a class="reference internal" href="genindex.html">Index</a>
+{% endblock %}
 {# Custom CSS overrides #}
-{% set bootswatch_css_custom = ['_static/my-styles.css'] %}
+{% set css_files = ['_static/my-styles.css'] %}

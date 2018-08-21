@@ -67,4 +67,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	status_of_implementation
 	command
 
-        genindex
+* :ref:`genindex`

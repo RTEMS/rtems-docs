@@ -59,4 +59,4 @@ to the Community Project hosted at http://www.rtems.org/.
 
 	glossary/index
 
-        genindex
+* :ref:`genindex`

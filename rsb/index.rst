@@ -62,4 +62,4 @@ Table of Contents
 	commands
 	bug-reporting
 
-        genindex
+* :ref:`genindex`

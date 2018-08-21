@@ -55,4 +55,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	function_and_variable
 	concept
 
-        genindex
+* :ref:`genindex`

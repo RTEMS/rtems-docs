@@ -52,4 +52,4 @@ to the Community Project hosted at http://www.rtems.org/.
 	trivial_ftp
 	command_and_variable
 
-        genindex
+* :ref:`genindex`
