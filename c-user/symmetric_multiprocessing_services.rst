@@ -809,3 +809,25 @@ RTEMS provides two means for per-processor data:
    `<rtems/score/percpudata.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/percpudata.h>`_.
    This API is not intended for general application use.  Please ask on the
    development mailing list in case you want to use it.
+
+Thread Pinning
+--------------
+
+Thread pinning ensures that a thread is only dispatched to the processor on
+which it is pinned.  It may be used to access per-processor data structures in
+critical sections with enabled thread dispatching, e.g. a pinned thread is
+allowed to block.  The `_Thread_Pin()` operation will pin the executing thread
+to its current processor.  A thread may be pinned recursively, the last unpin
+request via `_Thread_Unpin()` revokes the pinning.
+
+Thread pinning should be used only for short critical sections and not all
+the time.  Thread pinning is a very low overhead operation in case the
+thread is not preempted during the pinning.  A preemption will result in
+scheduler operations to ensure that the thread executes only on its pinned
+processor.  Thread pinning must be used with care, since it prevents help
+through the locking protocols.  This makes the :ref:`OMIP <OMIP>` and
+:ref:`MrsP <MrsP>` locking protocols ineffective if pinned threads are
+involved.
+
+The thread pinning is not intended for general application use.  Please ask on
+the development mailing list in case you want to use it.
