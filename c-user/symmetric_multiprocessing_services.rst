@@ -791,3 +791,21 @@ from the executing to the heir thread neither the stack of the executing nor
 the heir thread must be used during interrupt processing.  For this purpose a
 temporary per-processor stack is set up which may be used by the interrupt
 prologue before the stack is switched to the interrupt stack.
+
+Per-Processor Data
+------------------
+
+RTEMS provides two means for per-processor data:
+
+1. Per-processor data which is used by RTEMS itself is contained in the
+   `Per_CPU_Control` structure.  The application configuration via
+   `<rtems/confdefs.h>` creates a table of these structures
+   (`_Per_CPU_Information[]`).  The table is dimensioned according to the count
+   of configured processors
+   (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).
+
+2. For low level support libraries an API for statically allocated
+   per-processor data is available via
+   `<rtems/score/percpudata.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/percpudata.h>`_.
+   This API is not intended for general application use.  Please ask on the
+   development mailing list in case you want to use it.
