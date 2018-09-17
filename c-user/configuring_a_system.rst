@@ -2112,39 +2112,6 @@ File System Configuration Parameters
 
 This section defines File System related configuration parameters.
 
-.. index:: CONFIGURE_HAS_OWN_MOUNT_TABLE
-
-.. _CONFIGURE_HAS_OWN_MOUNT_TABLE:
-
-CONFIGURE_HAS_OWN_MOUNT_TABLE
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_HAS_OWN_MOUNT_TABLE``
-
-DATA TYPE:
-    Undefined or an array of type ``rtems_filesystem_mount_table_t``.
-
-RANGE:
-    Undefined or an array of type ``rtems_filesystem_mount_table_t``.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    This configuration parameter is defined when the application provides their
-    own filesystem mount table.  The mount table is an array of
-    ``rtems_filesystem_mount_table_t`` entries pointed to by the global
-    variable ``rtems_filesystem_mount_table``.  The number of entries in this
-    table is in an integer variable named ``rtems_filesystem_mount_table_t``.
-
-.. COMMENT: XXX - is the variable name for the count right?
-
-NOTES:
-    None.
-
-.. COMMENT: XXX - Please provide an example
-
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 
 .. _CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM:
@@ -4890,6 +4857,13 @@ CONFIGURE_HAS_OWN_BDBUF_TABLE
 
 This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
 RTEMS 4.10.0.
+
+.. index:: CONFIGURE_HAS_OWN_MOUNT_TABLE
+
+CONFIGURE_HAS_OWN_MOUNT_TABLE
+-----------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
 
 .. index:: CONFIGURE_NUMBER_OF_TERMIOS_PORTS
 
