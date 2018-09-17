@@ -2045,32 +2045,6 @@ NOTES:
     Typically the memory allocation will be too low when an application does
     not account for all message queue buffers or task stacks.
 
-.. index:: CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
-
-.. _CONFIGURE_HAS_OWN_CONFIGURATION_TABLE:
-
-CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
--------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_HAS_OWN_CONFIGURATION_TABLE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    This configuration parameter should only be defined if the application is
-    providing their own complete set of configuration tables.
-
-NOTES:
-    None.
-
 C Library Support Configuration
 ===============================
 
@@ -4849,6 +4823,13 @@ CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
 
 This configuration option was introduced in RTEMS 4.9.0 and is obsolete since
 RTEMS 5.1.
+
+.. index:: CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
+
+CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
+-------------------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
 
 .. index:: CONFIGURE_HAS_OWN_BDBUF_TABLE
 
