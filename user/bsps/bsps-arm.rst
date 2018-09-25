@@ -130,6 +130,14 @@ system controls:
 A value of zero for the time or count disables the interrupt coalescing in the
 corresponding direction.
 
+MMC/SDCard Driver
+-----------------
+
+The MMC/SDCard driver (uSDHC module) is provided by the `libbsd`.  It is
+initialized according to the device tree.  Pin re-configuration according to
+the serial clock frequency is not supported.  Data transfers are extremely
+slow.  This is probably due to the missing DMA support.
+
 Caveats
 -------
 
