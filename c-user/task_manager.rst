@@ -27,6 +27,8 @@ and administer tasks.  The directives provided by the task manager are:
 
 - rtems_task_delete_ - Delete a task
 
+- rtems_task_exit_ - Delete the calling task
+
 - rtems_task_suspend_ - Suspend a task
 
 - rtems_task_resume_ - Resume a task
@@ -515,7 +517,8 @@ task, frees the task's control block, removes it from resource wait queues, and
 deallocates its stack as well as the optional floating point context.  The
 task's name and ID become inactive at this time, and any subsequent references
 to either of them is invalid.  In fact, RTEMS may reuse the task ID for another
-task which is created later in the application.
+task which is created later in the application.  A specialization of
+``rtems_task_delete`` is ``rtems_task_exit`` which deletes the calling task.
 
 Unexpired delay timers (i.e. those used by ``rtems_task_wake_after`` and
 ``rtems_task_wake_when``) and timeout timers associated with the task are
@@ -1000,6 +1003,48 @@ NOTES:
 
     The task must reside on the local node, even if the task was created with
     the ``RTEMS_GLOBAL`` option.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: deleting a task
+.. index:: rtems_task_exit
+
+.. _rtems_task_exit:
+
+TASK_EXIT - Delete the calling task
+-----------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        void rtems_task_exit( void ) RTEMS_NO_RETURN;
+
+DIRECTIVE STATUS CODES:
+    NONE - This function will not return to the caller.
+
+DESCRIPTION:
+    This directive deletes the calling task.
+
+NOTES:
+    This directive must be called from a regular task context with enabled
+    interrupts, otherwise one of the fatal errors
+
+    * :ref:`INTERNAL_ERROR_BAD_THREAD_DISPATCH_DISABLE_LEVEL <internal_errors>`, or
+    * :ref:`INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT <internal_errors>`
+
+    will occur.
+
+    The ``rtems_task_exit()`` call is equivalent to the following code
+    sequence:
+
+    .. code-block:: c
+
+        pthread_detach(pthread_self());
+        pthread_exit(NULL);
+
+    See also :ref:`rtems_task_delete() <rtems_task_delete>`.
 
 .. raw:: latex
 
