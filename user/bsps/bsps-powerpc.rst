@@ -29,6 +29,9 @@ The BSP is known to run on these boards:
 
 * MEN G52A (CompactPCI Serial)
 
+The `qoriq_core_0` and `qoriq_core_1` variants should be used with care.  They
+are inteded for a `RTEMS_MULTIPROCESSING` configuration on the P1020.
+
 Boot via U-Boot
 ---------------
 
