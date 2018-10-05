@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 1988-2008.
+.. COMMENT: COPYRIGHT (c) 1988-2008, 2018.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
 .. COMMENT: All rights reserved.
 
@@ -320,7 +320,7 @@ NOTES:
 
 .. _rtems_barrier_wait:
 
-BARRIER_OBTAIN - Acquire a barrier
+BARRIER_OBTAIN - Wait at a barrier
 ----------------------------------
 .. index:: obtain a barrier
 .. index:: lock a barrier
