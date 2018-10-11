@@ -77,8 +77,8 @@ to the Community Project hosted at http://www.rtems.org/.
 	timespec_helpers
 	constant_bandwidth_server
 	ada_support
-	directive_status_codes
 	linker_sets
+	directive_status_codes
 	example_application
 	glossary
 	zreferences
