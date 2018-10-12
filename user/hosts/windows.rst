@@ -16,28 +16,28 @@ committed to helping the open source community improve the Windows
 experience. If something is not working or supported please email the
 :r:list:`users`.
 
-The RTEMS Project's Windows tools are native Windows executables giving the
-user the best possible experience on Windows. Native Windows programs use the
-standard Windows DLLs and paths. Integration with standard Windows integrated
-development tools such as editors is straight forward. POSIX emulation
-environments such as Cygwin and the MSYS2 shell have special executables that
-require a POSIX emulation DLL and these emulation DLLs add an extra layer of
-complexity as well as a performance over-head. The RTEMS Project uses these
-POSIX emulation shells to run configure scripts that come with various open
-source packages such as `gcc` so they form an important and valued part of the
-environment we describe here. The output of this procedure forms the tools you
-use during your application development and they do not depend on the emulation
-DLLs.
+The RTEMS Project's Windows tools can be native Windows executables
+which give the user the best possible experience on Windows. Native
+Windows programs use the standard Windows DLLs and paths. Integration
+with standard Windows integrated development tools such as editors is
+straight forward. POSIX emulation environments such as Cygwin and the
+MSYS2 shell have special executables that require a POSIX emulation DLL
+and these emulation DLLs add an extra layer of complexity as well as a
+performance over-head. The RTEMS Project uses these POSIX emulation shells
+to run configure scripts that come with various open source packages such
+as `gcc` so they form an important and valued part of the environment we
+describe here. The output of this procedure forms the tools you use during
+your application development and they do not depend on the emulation DLLs.
 
-The performance of the compiler is as good as you can have on Windows and the
-performance compiling a single file will be similar to that on a host like
-Linux or FreeBSD given the same hardware. Building the tools from source is
-much slower on Windows because POSIX shells and related tools are used and the
-POSIX emulation overhead it much much slower than a native POSIX operating
-system like Linux and FreeBSD. This overhead is only during the building of the
-tools and the RTEMS kernel and if you use a suitable build system that is
-native to Windows your application development should be similar to other
-operating systems.
+The performance of a native Windows compiler is as good as you can have
+on Windows and the performance compiling a single file will be similar to
+that on a host like Linux or FreeBSD given the same hardware. Building
+the tools from source is much slower on Windows because POSIX shells
+and related tools are used and the POSIX emulation overhead it much much
+slower than a native POSIX operating system like Linux and FreeBSD. This
+overhead is only during the building of the tools and the RTEMS kernel
+and if you use a suitable build system that is native to Windows your
+application development should be similar to other operating systems.
 
 Building is known to work on `Windows 7 64bit Professional` and `Windows 10`.
 
@@ -112,8 +112,8 @@ generate.
 
 .. _microsoft-windows-installation:
 
-Installing MSYS2
-----------------
+MSYS2
+-----
 
 MSYS2 is installed on a new machine using the MSYS2 installer found on
 https://msys2.github.io/. Please select the ``x86_64`` variant for 64bit
@@ -159,217 +159,135 @@ Install the packages using ``pacman``:
 
 .. code-block:: shell
 
-  ~
   $ pacman -S python mingw-w64-x86_64-python2 mingw-w64-x86_64-gcc \
   bison cvs diffutils git make patch tar texinfo unzip
   resolving dependencies...
   looking for conflicting packages...
+      .... output shortened for brevity ....
 
-  Packages (74) db-5.3.28-2  expat-2.1.0-2  gdbm-1.11-3  heimdal-1.5.3-8
-                libgdbm-1.11-3  mingw-w64-x86_64-binutils-2.26-21
-                mingw-w64-x86_64-bzip2-1.0.6-5
-                mingw-w64-x86_64-ca-certificates-20150426-2
-                mingw-w64-x86_64-crt-git-5.0.0.4627.03684c4-1
-                mingw-w64-x86_64-expat-2.1.0-6  mingw-w64-x86_64-gcc-libs-5.3.0-2
-                mingw-w64-x86_64-gdbm-1.11-3  mingw-w64-x86_64-gettext-0.19.6-2
-                mingw-w64-x86_64-gmp-6.1.0-1
-                mingw-w64-x86_64-headers-git-5.0.0.4627.53be55d-1
-                mingw-w64-x86_64-isl-0.15-1  mingw-w64-x86_64-libffi-3.2.1-3
-                mingw-w64-x86_64-libiconv-1.14-5
-                mingw-w64-x86_64-libsystre-1.0.1-2
-                mingw-w64-x86_64-libtasn1-4.7-1
-                mingw-w64-x86_64-libtre-git-r122.c2f5d13-4
-                mingw-w64-x86_64-libwinpthread-git-5.0.0.4573.628fdbf-1
-                mingw-w64-x86_64-mpc-1.0.3-2  mingw-w64-x86_64-mpfr-3.1.3.p0-2
-                mingw-w64-x86_64-ncurses-6.0.20160220-2
-                mingw-w64-x86_64-openssl-1.0.2.g-1
-                mingw-w64-x86_64-p11-kit-0.23.1-3
-                mingw-w64-x86_64-readline-6.3.008-1  mingw-w64-x86_64-tcl-8.6.5-1
-                mingw-w64-x86_64-termcap-1.3.1-2  mingw-w64-x86_64-tk-8.6.5-1
-                mingw-w64-x86_64-windows-default-manifest-6.4-2
-                mingw-w64-x86_64-winpthreads-git-5.0.0.4573.628fdbf-1
-                mingw-w64-x86_64-zlib-1.2.8-9  openssh-7.1p2-1  perl-5.22.0-2
-                perl-Authen-SASL-2.16-2  perl-Convert-BinHex-1.123-2
-                perl-Encode-Locale-1.04-1  perl-Error-0.17024-1
-                perl-File-Listing-6.04-2  perl-HTML-Parser-3.71-3
-                perl-HTML-Tagset-3.20-2  perl-HTTP-Cookies-6.01-2
-                perl-HTTP-Daemon-6.01-2  perl-HTTP-Date-6.02-2
-                perl-HTTP-Message-6.06-2  perl-HTTP-Negotiate-6.01-2
-                perl-IO-Socket-SSL-2.016-1  perl-IO-stringy-2.111-1
-                perl-LWP-MediaTypes-6.02-2  perl-MIME-tools-5.506-1
-                perl-MailTools-2.14-1  perl-Net-HTTP-6.09-1
-                perl-Net-SMTP-SSL-1.02-1  perl-Net-SSLeay-1.70-1
-                perl-TermReadKey-2.33-1  perl-TimeDate-2.30-2  perl-URI-1.68-1
-                perl-WWW-RobotRules-6.02-2  perl-libwww-6.13-1  vim-7.4.1468-1
-                bison-3.0.4-1  cvs-1.11.23-2  diffutils-3.3-3  git-2.7.2-1
-                make-4.1-4  mingw-w64-x86_64-gcc-5.3.0-2
-                mingw-w64-x86_64-python2-2.7.11-4  patch-2.7.5-1  python-3.4.3-3
-                tar-1.28-3  texinfo-6.0-1  unzip-6.0-2
+.. _Cygwin:
 
-  Total Download Size:   114.10 MiB
-  Total Installed Size:  689.61 MiB
+Cygwin
+------
 
-  :: Proceed with installation? [Y/n] y
-  :: Retrieving packages...
-   mingw-w64-x86_64-gm...   477.1 KiB   681K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-li...    24.2 KiB   755K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-gc...   541.9 KiB   705K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-ex...   106.7 KiB   702K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-bz...    77.9 KiB   666K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-li...   600.2 KiB   703K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-ge...     3.0 MiB   700K/s 00:04 [#####################] 100%
-   mingw-w64-x86_64-gd...   151.8 KiB   483K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-li...    34.5 KiB   705K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-li...    69.2 KiB   713K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-li...     9.3 KiB   778K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-nc...  1800.5 KiB   701K/s 00:03 [#####################] 100%
-   mingw-w64-x86_64-li...   171.4 KiB   708K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-p1...   193.5 KiB   709K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-ca...   382.1 KiB   705K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-zl...   148.6 KiB   704K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-op...     3.3 MiB   624K/s 00:05 [#####################] 100%
-   mingw-w64-x86_64-te...    12.6 KiB  76.7K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-re...   327.4 KiB   277K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-tc...     2.9 MiB   699K/s 00:04 [#####################] 100%
-   mingw-w64-x86_64-tk...  1869.2 KiB   703K/s 00:03 [#####################] 100%
-   mingw-w64-x86_64-py...    10.9 MiB   699K/s 00:16 [#####################] 100%
-   mingw-w64-x86_64-bi...    12.7 MiB   688K/s 00:19 [#####################] 100%
-   mingw-w64-x86_64-he...     5.0 MiB   645K/s 00:08 [#####################] 100%
-   mingw-w64-x86_64-cr...     2.6 MiB   701K/s 00:04 [#####################] 100%
-   mingw-w64-x86_64-is...   524.3 KiB   684K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-mp...   265.2 KiB   705K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-mp...    62.3 KiB  82.9K/s 00:01 [#####################] 100%
-   mingw-w64-x86_64-wi...  1484.0   B  0.00B/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-wi...    33.2 KiB   346K/s 00:00 [#####################] 100%
-   mingw-w64-x86_64-gc...    25.1 MiB   701K/s 00:37 [#####################] 100%
-   python-3.4.3-3-x86_64     12.1 MiB   700K/s 00:18 [#####################] 100%
-   bison-3.0.4-1-x86_64    1045.1 KiB   703K/s 00:01 [#####################] 100%
-   heimdal-1.5.3-8-x86_64   543.7 KiB   703K/s 00:01 [#####################] 100%
-   cvs-1.11.23-2-x86_64     508.2 KiB   388K/s 00:01 [#####################] 100%
-   diffutils-3.3-3-x86_64   265.7 KiB   478K/s 00:01 [#####################] 100%
-   expat-2.1.0-2-x86_64      13.1 KiB   817K/s 00:00 [#####################] 100%
-   vim-7.4.1468-1-x86_64      6.1 MiB   700K/s 00:09 [#####################] 100%
-   openssh-7.1p2-1-x86_64   653.4 KiB   703K/s 00:01 [#####################] 100%
-   db-5.3.28-2-x86_64        41.7 KiB   719K/s 00:00 [#####################] 100%
-   libgdbm-1.11-3-x86_64     20.4 KiB   754K/s 00:00 [#####################] 100%
-   gdbm-1.11-3-x86_64       108.5 KiB   704K/s 00:00 [#####################] 100%
-   perl-5.22.0-2-x86_64      12.4 MiB   702K/s 00:18 [#####################] 100%
-   perl-Error-0.17024-...    17.1 KiB   742K/s 00:00 [#####################] 100%
-   perl-Authen-SASL-2....    42.4 KiB   731K/s 00:00 [#####################] 100%
-   perl-Encode-Locale-...     9.7 KiB   745K/s 00:00 [#####################] 100%
-   perl-HTTP-Date-6.02...     8.6 KiB   784K/s 00:00 [#####################] 100%
-   perl-File-Listing-6...     7.7 KiB   769K/s 00:00 [#####################] 100%
-   perl-HTML-Tagset-3....    10.3 KiB   732K/s 00:00 [#####################] 100%
-   perl-HTML-Parser-3....    76.9 KiB   516K/s 00:00 [#####################] 100%
-   perl-LWP-MediaTypes...    18.0 KiB   752K/s 00:00 [#####################] 100%
-   perl-URI-1.68-1-any       75.6 KiB   609K/s 00:00 [#####################] 100%
-   perl-HTTP-Message-6...    71.3 KiB   625K/s 00:00 [#####################] 100%
-   perl-HTTP-Cookies-6...    20.4 KiB   499K/s 00:00 [#####################] 100%
-   perl-HTTP-Daemon-6....    14.2 KiB   749K/s 00:00 [#####################] 100%
-   perl-HTTP-Negotiate...    11.4 KiB   817K/s 00:00 [#####################] 100%
-   perl-Net-HTTP-6.09-...    19.8 KiB   732K/s 00:00 [#####################] 100%
-   perl-WWW-RobotRules...    12.2 KiB   766K/s 00:00 [#####################] 100%
-   perl-libwww-6.13-1-any   122.2 KiB   661K/s 00:00 [#####################] 100%
-   perl-TimeDate-2.30-...    35.9 KiB   718K/s 00:00 [#####################] 100%
-   perl-MailTools-2.14...    58.4 KiB   712K/s 00:00 [#####################] 100%
-   perl-IO-stringy-2.1...    52.6 KiB   721K/s 00:00 [#####################] 100%
-   perl-Convert-BinHex...    30.1 KiB   733K/s 00:00 [#####################] 100%
-   perl-MIME-tools-5.5...   180.4 KiB   705K/s 00:00 [#####################] 100%
-   perl-Net-SSLeay-1.7...   191.2 KiB   708K/s 00:00 [#####################] 100%
-   perl-IO-Socket-SSL-...   112.5 KiB   703K/s 00:00 [#####################] 100%
-   perl-Net-SMTP-SSL-1...     3.5 KiB   881K/s 00:00 [#####################] 100%
-   perl-TermReadKey-2....    20.9 KiB   745K/s 00:00 [#####################] 100%
-   git-2.7.2-1-x86_64         3.6 MiB   702K/s 00:05 [#####################] 100%
-   make-4.1-4-x86_64        387.0 KiB   671K/s 00:01 [#####################] 100%
-   patch-2.7.5-1-x86_64      75.9 KiB   684K/s 00:00 [#####################] 100%
-   tar-1.28-3-x86_64        671.9 KiB   379K/s 00:02 [#####################] 100%
-   texinfo-6.0-1-x86_64     992.7 KiB   625K/s 00:02 [#####################] 100%
-   unzip-6.0-2-x86_64        93.1 KiB   705K/s 00:00 [#####################] 100%
-  (74/74) checking keys in keyring                   [#####################] 100%
-  (74/74) checking package integrity                 [#####################] 100%
-  (74/74) loading package files                      [#####################] 100%
-  (74/74) checking for file conflicts                [#####################] 100%
-  (74/74) checking available disk space              [#####################] 100%
-  :: Processing package changes...
-  ( 1/74) installing python                          [#####################] 100%
-  ( 2/74) installing mingw-w64-x86_64-gmp            [#####################] 100%
-  ( 3/74) installing mingw-w64-x86_64-libwinpthr...  [#####################] 100%
-  ( 4/74) installing mingw-w64-x86_64-gcc-libs       [#####################] 100%
-  ( 5/74) installing mingw-w64-x86_64-expat          [#####################] 100%
-  ( 6/74) installing mingw-w64-x86_64-bzip2          [#####################] 100%
-  ( 7/74) installing mingw-w64-x86_64-libiconv       [#####################] 100%
-  ( 8/74) installing mingw-w64-x86_64-gettext        [#####################] 100%
-  ( 9/74) installing mingw-w64-x86_64-gdbm           [#####################] 100%
-  (10/74) installing mingw-w64-x86_64-libffi         [#####################] 100%
-  (11/74) installing mingw-w64-x86_64-libtre-git     [#####################] 100%
-  (12/74) installing mingw-w64-x86_64-libsystre      [#####################] 100%
-  (13/74) installing mingw-w64-x86_64-ncurses        [#####################] 100%
-  (14/74) installing mingw-w64-x86_64-libtasn1       [#####################] 100%
-  (15/74) installing mingw-w64-x86_64-p11-kit        [#####################] 100%
-  (16/74) installing mingw-w64-x86_64-ca-certifi...  [#####################] 100%
-  (17/74) installing mingw-w64-x86_64-zlib           [#####################] 100%
-  (18/74) installing mingw-w64-x86_64-openssl        [#####################] 100%
-  (19/74) installing mingw-w64-x86_64-termcap        [#####################] 100%
-  (20/74) installing mingw-w64-x86_64-readline       [#####################] 100%
-  (21/74) installing mingw-w64-x86_64-tcl            [#####################] 100%
-  (22/74) installing mingw-w64-x86_64-tk             [#####################] 100%
-  (23/74) installing mingw-w64-x86_64-python2        [#####################] 100%
-  (24/74) installing mingw-w64-x86_64-binutils       [#####################] 100%
-  (25/74) installing mingw-w64-x86_64-headers-git    [#####################] 100%
-  (26/74) installing mingw-w64-x86_64-crt-git        [#####################] 100%
-  (27/74) installing mingw-w64-x86_64-isl            [#####################] 100%
-  (28/74) installing mingw-w64-x86_64-mpfr           [#####################] 100%
-  (29/74) installing mingw-w64-x86_64-mpc            [#####################] 100%
-  (30/74) installing mingw-w64-x86_64-windows-de...  [#####################] 100%
-  (31/74) installing mingw-w64-x86_64-winpthread...  [#####################] 100%
-  (32/74) installing mingw-w64-x86_64-gcc            [#####################] 100%
-  (33/74) installing bison                           [#####################] 100%
-  (34/74) installing heimdal                         [#####################] 100%
-  (35/74) installing cvs                             [#####################] 100%
-  (36/74) installing diffutils                       [#####################] 100%
-  (37/74) installing expat                           [#####################] 100%
-  (38/74) installing vim                             [#####################] 100%
-  (39/74) installing openssh                         [#####################] 100%
-  (40/74) installing db                              [#####################] 100%
-  (41/74) installing libgdbm                         [#####################] 100%
-  (42/74) installing gdbm                            [#####################] 100%
-  (43/74) installing perl                            [#####################] 100%
-  (44/74) installing perl-Error                      [#####################] 100%
-  (45/74) installing perl-Authen-SASL                [#####################] 100%
-  (46/74) installing perl-Encode-Locale              [#####################] 100%
-  (47/74) installing perl-HTTP-Date                  [#####################] 100%
-  (48/74) installing perl-File-Listing               [#####################] 100%
-  (49/74) installing perl-HTML-Tagset                [#####################] 100%
-  (50/74) installing perl-HTML-Parser                [#####################] 100%
-  (51/74) installing perl-LWP-MediaTypes             [#####################] 100%
-  (52/74) installing perl-URI                        [#####################] 100%
-  (53/74) installing perl-HTTP-Message               [#####################] 100%
-  (54/74) installing perl-HTTP-Cookies               [#####################] 100%
-  (55/74) installing perl-HTTP-Daemon                [#####################] 100%
-  (56/74) installing perl-HTTP-Negotiate             [#####################] 100%
-  (57/74) installing perl-Net-HTTP                   [#####################] 100%
-  (58/74) installing perl-WWW-RobotRules             [#####################] 100%
-  (59/74) installing perl-libwww                     [#####################] 100%
-  Optional dependencies for perl-libwww
-      perl-LWP-Protocol-HTTPS: for https:// url schemes
-  (60/74) installing perl-TimeDate                   [#####################] 100%
-  (61/74) installing perl-MailTools                  [#####################] 100%
-  (62/74) installing perl-IO-stringy                 [#####################] 100%
-  (63/74) installing perl-Convert-BinHex             [#####################] 100%
-  module test... pass.
-  (64/74) installing perl-MIME-tools                 [#####################] 100%
-  (65/74) installing perl-Net-SSLeay                 [#####################] 100%
-  (66/74) installing perl-IO-Socket-SSL              [#####################] 100%
-  (67/74) installing perl-Net-SMTP-SSL               [#####################] 100%
-  (68/74) installing perl-TermReadKey                [#####################] 100%
-  (69/74) installing git                             [#####################] 100%
-  Optional dependencies for git
-      python2: various helper scripts
-      subversion: git svn
-  (70/74) installing make                            [#####################] 100%
-  (71/74) installing patch                           [#####################] 100%
-  Optional dependencies for patch
-      ed: for patch -e functionality
-  (72/74) installing tar                             [#####################] 100%
-  (73/74) installing texinfo                         [#####################] 100%
-  (74/74) installing unzip                           [#####################] 100%
+Building on Windows is a little more complicated because the Cygwin shell is
+used rather than the MSYS2 shell. The MSYS2 shell is simpler because the
+detected host triple is MinGW so the build is a standard cross-compiler build.
+A Canadian cross-build using Cygwin is supported if you would like native
+tools or you can use a Cygwin built set of tools.
+
+Install a recent Cygwin version using the Cygwin setup tool. Select and install
+the groups and packages listed:
+
+.. table:: Cygwin Packages
+
+  ======= =========================
+  Group   Package
+  Archive bsdtar
+  Archive unzip
+  Archive xz
+  Devel   autoconf
+  Devel   autoconf2.1
+  Devel   autoconf2.5
+  Devel   automake
+  Devel   binutils
+  Devel   bison
+  Devel   flex
+  Devel   gcc4-core
+  Devel   gcc4-g++
+  Devel   git
+  Devel   make
+  Devel   mingw64-x86_64-binutils
+  Devel   mingw64-x86_64-gcc-core
+  Devel   mingw64-x86_64-g++
+  Devel   mingw64-x86_64-runtime
+  Devel   mingw64-x86_64-zlib
+  Devel   patch
+  Devel   zlib-devel
+  MinGW   mingw-zlib-devel
+  Python  python
+  ======= =========================
+
+The setup tool will add a number of dependent package and it is ok to accept
+them.
+
+Disabling Windows Defender improves performance if you have another up to date
+virus detection tool installed and enabled. The excellent ``Process Hacker 2``
+tool can monitor the performance and the Windows Defender service contributed a
+high load. In this case a 3rd party virus tool was installed so the Windows
+Defender service was not needed.
+
+To build a MinGW tool chain a Canadian cross-compile (Cxc) is required on
+Cygwin because the host is Cygwin therefore a traditional cross-compile will
+result in Cygiwn binaries. With a Canadian cross-compile a Cygwin
+cross-compiler is built as well as the MinGW RTEMS cross-compiler. The Cygwin
+cross-compiler is required to build the C runtime for the RTEMS target because
+we are building under Cygiwn. The build output for an RTEMS 4.10 ARM tool set
+is::
+
+    chris@cygthing ~/development/rtems/src/rtems-source-builder/rtems
+    $ ../source-builder/sb-set-builder --log=l-arm.txt --prefix=$HOME/development/rtems/4.10 4.10/rtems-arm
+    RTEMS Source Builder - Set Builder, v0.2
+    Build Set: 4.10/rtems-arm
+    config: expat-2.1.0-1.cfg
+    package: expat-2.1.0-x86_64-w64-mingw32-1
+    building: expat-2.1.0-x86_64-w64-mingw32-1
+    reporting: expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-w64-mingw32-1.html
+    config: tools/rtems-binutils-2.20.1-1.cfg
+    package: arm-rtems4.10-binutils-2.20.1-1   <1>
+    building: arm-rtems4.10-binutils-2.20.1-1
+    package: (Cxc) arm-rtems4.10-binutils-2.20.1-1   <2>
+    building: (Cxc) arm-rtems4.10-binutils-2.20.1-1
+    reporting: tools/rtems-binutils-2.20.1-1.cfg ->
+    arm-rtems4.10-binutils-2.20.1-1.html
+    config: tools/rtems-gcc-4.4.7-newlib-1.18.0-1.cfg
+    package: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+    building: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+    package: (Cxc) arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+    building: (Cxc) arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+    reporting: tools/rtems-gcc-4.4.7-newlib-1.18.0-1.cfg ->
+    arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1.html
+    config: tools/rtems-gdb-7.3.1-1.cfg
+    package: arm-rtems4.10-gdb-7.3.1-1
+    building: arm-rtems4.10-gdb-7.3.1-1
+    reporting: tools/rtems-gdb-7.3.1-1.cfg -> arm-rtems4.10-gdb-7.3.1-1.html
+    config: tools/rtems-kernel-4.10.2.cfg
+    package: arm-rtems4.10-kernel-4.10.2-1
+    building: arm-rtems4.10-kernel-4.10.2-1
+    reporting: tools/rtems-kernel-4.10.2.cfg -> arm-rtems4.10-kernel-4.10.2-1.html
+    installing: expat-2.1.0-x86_64-w64-mingw32-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+    installing: arm-rtems4.10-binutils-2.20.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10 <3>
+    installing: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+    installing: arm-rtems4.10-gdb-7.3.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+    installing: arm-rtems4.10-kernel-4.10.2-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+    cleaning: expat-2.1.0-x86_64-w64-mingw32-1
+    cleaning: arm-rtems4.10-binutils-2.20.1-1
+    cleaning: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+    cleaning: arm-rtems4.10-gdb-7.3.1-1
+    cleaning: arm-rtems4.10-kernel-4.10.2-1
+    Build Set: Time 10:09:42.810547   <4>
+
+.. topic:: Items:
+
+  1. The Cygwin version of the ARM cross-binutils.
+
+  2. The +(Cxc)+ indicates this is the MinGW build of the package.
+
+  3. Only the MinGW version is installed.
+
+  4. Cygwin is slow so please be patient. This time was on an AMD Athlon 64bit
+     Dual Core 6000+ running at 3GHz with 4G RAM running Windows 7 64bit.
+
+.. warning::
+
+  Cygwin documents the 'Big List Of Dodgy Apps' or 'BLODA'. The link is
+  http://cygwin.com/faq/faq.html#faq.using.bloda and it is worth a look. You
+  will see a large number of common pieces of software found on Windows systems
+  that can cause problems. My testing has been performed with NOD32 running and
+  I have seen some failures. The list is for all of Cygwin so I am not sure
+  which of the listed programs effect the RTEMS Source Biulder. The following
+  FAQ item talks about *fork* failures and presents some technical reasons they
+  cannot be avoided in all cases. Cygwin and it's fork MSYS are fantastic
+  pieces of software in a difficult environment. I have found building a single
+  tool tends to work, building all at once is harder.
+

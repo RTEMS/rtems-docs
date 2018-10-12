@@ -54,7 +54,6 @@ Table of Contents
 
         source-builder
         building-tools-and-rtems.rst
-	hosts
 	project-sets
 	cross-canadian-cross
 	third-party-packages

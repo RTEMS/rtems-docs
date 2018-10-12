@@ -88,6 +88,76 @@ requires:
   RTEMS Source Builder - Check, 5 (089327b5dcf9)
   Environment is ok
 
+If you are unsure how to specify the build set for the architecture you wish to
+build, just ask the tool:
+
+    $ ../source-builder/sb-set-builder --list-bsets   <1>
+    RTEMS Source Builder - Set Builder, v4.11.0
+    Examining: config
+    Examining: ../source-builder/config    <2>
+        4.10/rtems-all.bset      <3>
+        4.10/rtems-arm.bset      <4>
+        4.10/rtems-autotools.bset
+        4.10/rtems-avr.bset
+        4.10/rtems-bfin.bset
+        4.10/rtems-h8300.bset
+        4.10/rtems-i386.bset
+        4.10/rtems-lm32.bset
+        4.10/rtems-m32c.bset
+        4.10/rtems-m32r.bset
+        4.10/rtems-m68k.bset
+        4.10/rtems-mips.bset
+        4.10/rtems-nios2.bset
+        4.10/rtems-powerpc.bset
+        4.10/rtems-sh.bset
+        4.10/rtems-sparc.bset
+        4.11/rtems-all.bset
+        4.11/rtems-arm.bset
+        4.11/rtems-autotools.bset
+        4.11/rtems-avr.bset
+        4.11/rtems-bfin.bset
+        4.11/rtems-h8300.bset
+        4.11/rtems-i386.bset
+        4.11/rtems-lm32.bset
+        4.11/rtems-m32c.bset
+        4.11/rtems-m32r.bset
+        4.11/rtems-m68k.bset
+        4.11/rtems-microblaze.bset
+        4.11/rtems-mips.bset
+        4.11/rtems-moxie.bset
+        4.11/rtems-nios2.bset
+        4.11/rtems-powerpc.bset
+        4.11/rtems-sh.bset
+        4.11/rtems-sparc.bset
+        4.11/rtems-sparc64.bset
+        4.11/rtems-v850.bset
+        4.9/rtems-all.bset
+        4.9/rtems-arm.bset
+        4.9/rtems-autotools.bset
+        4.9/rtems-i386.bset
+        4.9/rtems-m68k.bset
+        4.9/rtems-mips.bset
+        4.9/rtems-powerpc.bset
+        4.9/rtems-sparc.bset
+        gnu-tools-4.6.bset
+        rtems-4.10-base.bset    <5>
+        rtems-4.11-base.bset
+        rtems-4.9-base.bset
+        rtems-base.bset         <5>
+
+.. topic:: Items:
+
+  1. Only option required is ``--list-bsets``
+
+  2. The paths inspected. See :ref:`Configuration`.
+
+  3. A build set to build all RTEMS 4.10 supported architectures.
+
+  4. The build set for the ARM architecture on RTEMS 4.10.
+
+  5. Support build set file with common functionality included by other build
+     set files.
+
 Build a tool chain for the SPARC architecture. We are using the SPARC
 architecture because GDB has a good simulator that lets us run and test the
 samples RTEMS builds by default. The current development version
@@ -637,7 +707,6 @@ Install the kernel to our prefix:
 
 .. code-block:: shell
 
-   /c/opt/rtems/kernel/pc686
   $ make install
   Making install in tools/build
   make[1]: Entering directory '/c/opt/rtems/kernel/pc686/tools/build'
@@ -682,3 +751,4 @@ Install the kernel to our prefix:
   make[1]: Leaving directory '/c/opt/rtems/kernel/pc686'
    /c/opt/rtems/kernel/pc686
   $
+
