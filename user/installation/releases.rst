@@ -48,8 +48,9 @@ shosted here. It has excellent internet access and performance.
 
 .. note:: **Controlling the RTEMS Kernel Build**
 
-   Building releases by default builds the RTEMS kernel. To not build the RTEMS
-   kernel add the ``--without-rtems`` option to the RSB command line.
+   Building releases by default does not build the RTEMS kernel. To
+   build the RTEMS kernel add the ``--with-rtems`` option to the RSB
+   command line.
 
    By default all the BSPs for an architecture are built. If you only wish to
    have a specific BSP built you can specify the BSP list by providing to the
@@ -284,4 +285,4 @@ discussed in :ref:`msys2_parallel_builds`.
  cleaning: sparc-rtems4.11-kernel-4.11.0-1
  Build Set: Time 0:19:15.713662
 
-You can now build a 3rd party library or an application as defailted in TBD.
+You can now build a 3rd party library or an application as defaulted in TBD.

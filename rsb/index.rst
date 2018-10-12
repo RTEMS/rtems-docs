@@ -53,7 +53,7 @@ Table of Contents
 	:numbered:
 
         source-builder
-	quick-start
+        building-tools-and-rtems.rst
 	hosts
 	project-sets
 	cross-canadian-cross

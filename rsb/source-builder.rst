@@ -66,10 +66,11 @@ a problem please ask on our :r:list:`devel`.
 .. comment: TBD: The section "Installing and Tar Files" does not exist.
 
 This documentation caters for a range of users from new to experienced RTEMS
-developers. New users can follow the Quick Start section up to the "Installing
-and Tar Files" to get a working tools and RTEMS. Users building a binary tool
-set for release can read the "Installing and Tar Files". Users wanting to run
-and test bleeding edge tools or packages, or wanting update or extend the RSB's
+developers who want to understand the RTEMS Source Builder. New users
+who just want to build tools should follow the Quick Start section in
+the User's Guide.  Users building a binary tool set for release can
+read the "Installing and Tar Files". Users wanting to run and test
+bleeding edge tools or packages, or wanting update or extend the RSB's
 configuration can read the remaining sections.
 
 .. topic:: Bug Reporting
@@ -154,3 +155,31 @@ The *SpecBuilder* tool did not build tools or packages unrelated to the RTEMS
 Project where no suitable *spec* file was available so another tool was
 needed. Rather than start again Chris decided to take the parsing code for the
 *spec* file format and build a new tool called the RTEMS Source Builder.
+
+Controlling the Tools Build
+---------------------------
+
+Build sets can be controlled via the command line to enable and disable various
+features. There is no definitive list of build options that can be listed
+because they are implemented with the configuration scripts. The best way to
+find what is available is to grep the configuration files. for ``with`` and
+``without``.
+
+Following are currently available:
+
+``--without-rtems``
+  Do not build RTEMS when building an RTEMS build set.
+
+``--without-cxx``
+  Do not build a C++ compiler.
+
+``--with-ada``
+  Attempt to build an Ada compiler.  You need a native GNAT installed.
+
+``--with-fortran``
+  Attempt to build a Fortran compiler.
+
+``--with-objc``
+  Attempt to build a C++ compiler.
+
+
