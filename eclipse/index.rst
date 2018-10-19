@@ -9,7 +9,7 @@
 RTEMS Eclipse Manual (|version|).
 =================================
 
- | **COPYRIGHT (c) 2016-2017.**
+ | **COPYRIGHT (c) 2016-2018.**
  | **RTEMS Foundation, The RTEMS Documentation Project**
 
  | **License:**

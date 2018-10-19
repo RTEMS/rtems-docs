@@ -6,7 +6,7 @@ RTEMS CPU Architecture Supplement (|version|).
 
  | **COPYRIGHT (c) 1988 - 2015.**
  | **On-Line Applications Research Corporation (OAR).**
- | **COPYRIGHT (c) 2016-2017.**
+ | **COPYRIGHT (c) 2016-2018.**
  | **RTEMS Foundation, The RTEMS Documentation Project**
 
  | **Licenses:**

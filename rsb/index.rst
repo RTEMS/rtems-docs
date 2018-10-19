@@ -14,7 +14,7 @@ RTEMS Source Builder (|version|).
 
  | **COPYRIGHT (c) 2012 - 2015.**
  | **Chris Johns <chrisj@rtems.org>**
- | **COPYRIGHT (c) 2016-2017.**
+ | **COPYRIGHT (c) 2016-2018.**
  | **RTEMS Foundation, The RTEMS Documentation Project**
 
  | **License:**
