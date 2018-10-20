@@ -810,6 +810,8 @@ RTEMS provides two means for per-processor data:
    This API is not intended for general application use.  Please ask on the
    development mailing list in case you want to use it.
 
+.. _ThreadPinning:
+
 Thread Pinning
 --------------
 

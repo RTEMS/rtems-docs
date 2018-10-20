@@ -1452,7 +1452,7 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     ``CONFIGURE_MAXIMUM_PROCESSORS`` must be set to the maximum number of
-    processors an applicaiton intends to use.  The number of acually available
+    processors an application intends to use.  The number of actually available
     processors depends on the hardware and may be less.  It is recommended to
     use the smallest value suitable for the application in order to save
     memory.  Each processor needs an idle thread and interrupt stack for
@@ -3285,7 +3285,17 @@ General Scheduler Configuration
 ===============================
 
 This section defines the configuration parameters related to selecting a
-scheduling algorithm for an application.  For the :ref:`schedulers built into
+scheduling algorithm for an application.  A scheduler configuration is optional
+and only necessary in very specific circumstances.  A normal application
+configuration does not need any of the configuration options described in this
+section.  By default, the :ref:`Deterministic Priority Scheduler
+<SchedulerPriority>` algorithm is used in uniprocessor configurations.  In case
+SMP is enabled and the configured maximum processors
+(:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`) is greater
+than one, then the :ref:`Earliest Deadline First (EDF) SMP Scheduler
+<SchedulerSMPEDF>` is selected as the default scheduler algorithm.
+
+For the :ref:`schedulers built into
 RTEMS <SchedulingConcepts>`, the configuration is straightforward.  All that is
 required is to define the configuration macro which specifies which scheduler
 you want for in your application.
@@ -3318,6 +3328,9 @@ DESCRIPTION:
     <SchedulerCBS>` algorithm is made available to the application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     In case no explicit :ref:`clustered scheduler configuration
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for exactly one processor.
@@ -3346,6 +3359,9 @@ DESCRIPTION:
     <SchedulerEDF>` algorithm is made available to the application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     In case no explicit :ref:`clustered scheduler configuration
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for exactly one processor.
@@ -3374,6 +3390,9 @@ DESCRIPTION:
     <SchedulerSMPEDF>` algorithm is made available to the application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     This scheduler algorithm is only available when RTEMS is built with SMP
     support enabled.
 
@@ -3381,9 +3400,9 @@ NOTES:
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for up to 32 processors.
 
-    This scheduler algorithm is the default in SMP configurations and is only
-    selected when :ref:`CONFIGURE_MAXIMUM_PROCESSORS
-    <CONFIGURE_MAXIMUM_PROCESSORS>` is greater than one.
+    This scheduler algorithm is the default in SMP configurations if
+    :ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>` is
+    greater than one.
 
 .. index:: CONFIGURE_SCHEDULER_NAME
 
@@ -3418,7 +3437,8 @@ DESCRIPTION:
     the scheduler is determined by the configuration.
 
 NOTES:
-    None.
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
 
 .. index:: CONFIGURE_SCHEDULER_PRIORITY
 
@@ -3445,6 +3465,9 @@ DESCRIPTION:
     <SchedulerPriority>` algorithm is made available to the application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     In case no explicit :ref:`clustered scheduler configuration
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for exactly one processor.
@@ -3478,6 +3501,9 @@ DESCRIPTION:
     application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     This scheduler algorithm is only available when RTEMS is built with SMP
     support enabled.
 
@@ -3509,6 +3535,9 @@ DESCRIPTION:
     <SchedulerSMPPriority>` algorithm is made available to the application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     This scheduler algorithm is only available when RTEMS is built with SMP
     support enabled.
 
@@ -3540,6 +3569,9 @@ DESCRIPTION:
     <SchedulerPrioritySimple>` algorithm is made available to the application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     In case no explicit :ref:`clustered scheduler configuration
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for exactly one processor.
@@ -3569,6 +3601,9 @@ DESCRIPTION:
     application.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     This scheduler algorithm is only available when RTEMS is built with SMP
     support enabled.
 
@@ -3612,6 +3647,9 @@ DESCRIPTION:
       the per-thread information of the user scheduler.
 
 NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     At this time, the mechanics and requirements for writing a new scheduler
     are evolving and not fully documented.  It is recommended that you look at
     the existing Deterministic Priority Scheduler in
@@ -3623,6 +3661,9 @@ NOTES:
 
 Clustered Scheduler Configuration
 =================================
+
+A clustered scheduler configuration is optional.  It is an advanced
+configuration area and only necessary in specific circumstances.
 
 Clustered scheduling helps to control the worst-case latencies in a
 multiprocessor system (SMP).  The goal is to reduce the amount of shared state
@@ -3636,9 +3677,7 @@ partitioned into non-empty pairwise-disjoint subsets.  These subsets are called
 clusters.  Clusters with a cardinality of one are partitions.  Each cluster is
 owned by exactly one scheduler.
 
-A clustered scheduler configuration is optional.  By default, up to 32
-processors are managed by the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`.  In
-order to use clustered scheduling the application designer has to answer two
+In order to use clustered scheduling the application designer has to answer two
 questions.
 
 #. How is the set of processors partitioned into clusters?

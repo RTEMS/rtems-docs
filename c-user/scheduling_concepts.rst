@@ -239,20 +239,27 @@ allowed to run.
 Earliest Deadline First SMP Scheduler
 -------------------------------------
 
-A job-level fixed-priority scheduler using the Earliest Deadline First (EDF)
-method.  By convention, the maximum priority level is
-:math:`min(INT\_MAX, 2^{62} - 1)` for background tasks.  The tasks with an
-active deadline have a higher priority than the background tasks.  This
-scheduler supports task processor affinities of one-to-one and one-to-all, e.g.
-a task can execute on exactly one processor or all processors managed by the
-scheduler instance.  This is the default scheduler in SMP configurations if
-more than one processor is configured.  The processor affinity set of a task
-must contain all online processors to select the one-to-all affinity.  This is
-to avoid pathological cases if processors are added/removed to/from the
-scheduler instance at run-time.  In case the processor affinity set contains
-not all online processors, then a one-to-one affinity will be used selecting
-the processor with the largest index within the set of processors currently
-owned by the scheduler instance.
+This is a job-level fixed-priority scheduler using the Earliest Deadline First
+(EDF) method.  By convention, the maximum priority level is
+:math:`min(INT\_MAX, 2^{62} - 1)` for background tasks.  Tasks without an
+active deadline are background tasks.  In case deadlines are not used, then the
+EDF scheduler behaves exactly like a fixed-priority scheduler.  The tasks with
+an active deadline have a higher priority than the background tasks.  This
+scheduler supports :ref:`task processor affinities <rtems_task_set_affinity>`
+of one-to-one and one-to-all, e.g.  a task can execute on exactly one processor
+or all processors managed by the scheduler instance.  The processor affinity
+set of a task must contain all online processors to select the one-to-all
+affinity.  This is to avoid pathological cases if processors are added/removed
+to/from the scheduler instance at run-time.  In case the processor affinity set
+contains not all online processors, then a one-to-one affinity will be used
+selecting the processor with the largest index within the set of processors
+currently owned by the scheduler instance.  This scheduler algorithm supports
+:ref:`thread pinning <ThreadPinning>`.  The ready queues use a red-black tree
+with the task priority as the key.
+
+This scheduler algorithm is the default scheduler in SMP configurations if more
+than one processor is configured (:ref:`CONFIGURE_MAXIMUM_PROCESSORS
+<CONFIGURE_MAXIMUM_PROCESSORS>`).
 
 .. _SchedulerSMPPriority:
 
