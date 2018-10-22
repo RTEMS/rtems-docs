@@ -1656,6 +1656,10 @@ NOTES:
     :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE <CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE>`
     configuration option.
 
+    In releases before RTEMS 5.1 the ``CONFIGURE_MINIMUM_TASK_STACK_SIZE`` was
+    used to define the default value of :ref:`CONFIGURE_INTERRUPT_STACK_SIZE
+    <CONFIGURE_INTERRUPT_STACK_SIZE>`.
+
 .. index:: CONFIGURE_INTERRUPT_STACK_SIZE
 .. index:: interrupt stack size
 
@@ -1668,27 +1672,40 @@ CONSTANT:
     ``CONFIGURE_INTERRUPT_STACK_SIZE``
 
 DATA TYPE:
-    Unsigned integer (``uint32_t``).
+    Unsigned integer.
 
 RANGE:
     Positive.
 
 DEFAULT VALUE:
-    The default value is CONFIGURE_MINIMUM_TASK_STACK_SIZE, which is the
-    minimum interrupt stack size.
+    The default value is ``BSP_INTERRUPT_STACK_SIZE`` in case it is defined,
+    otherwise the default value is ``CPU_STACK_MINIMUM_SIZE``.
 
 DESCRIPTION:
-    ``CONFIGURE_INTERRUPT_STACK_SIZE`` is set to the size of the interrupt
-    stack.  The interrupt stack size is often set by the BSP but since this
-    memory may be allocated from the RTEMS Workspace, it must be accounted for.
+    The ``CONFIGURE_INTERRUPT_STACK_SIZE`` configuration option defines the
+    size of an interrupt stack in bytes.
 
 NOTES:
-    In some BSPs, changing this constant does NOT change the size of the
-    interrupt stack, only the amount of memory reserved for it.
+    The interrupt stack size must be aligned according to
+    ``CPU_INTERRUPT_STACK_ALIGNMENT``.
 
-    Patches which result in this constant only being used in memory
-    calculations when the interrupt stack is intended to be allocated from the
-    RTEMS Workspace would be welcomed by the RTEMS Project.
+    There is one interrupt stack available for each configured processor
+    (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).  The
+    interrupt stack areas are statically allocated in a special linker section
+    (``.rtemsstack.interrupt``).  The placement of this linker section is
+    BSP-specific.
+
+    Some BSPs use the interrupt stack as the initialization stack which is used
+    to perform the sequential system initialization before the multithreading
+    is started.
+
+    The interrupt stacks are covered by the :ref:`stack checker
+    <CONFIGURE_STACK_CHECKER_ENABLED>`.  However, using a too small interrupt
+    stack size may still result in undefined behaviour.
+
+    In releases before RTEMS 5.1 the default value was
+    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE
+    <CONFIGURE_MINIMUM_TASK_STACK_SIZE>` instead of ``CPU_STACK_MINIMUM_SIZE``.
 
 .. index:: CONFIGURE_EXTRA_TASK_STACKS
 .. index:: memory for task tasks
