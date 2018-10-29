@@ -434,7 +434,7 @@ CALLING SEQUENCE:
 
         rtems_status_code rtems_message_queue_send(
             rtems_id   id,
-            cons void *buffer,
+            const void *buffer,
             size_t     size
         );
 
