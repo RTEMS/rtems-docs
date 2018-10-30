@@ -517,7 +517,7 @@ NOTES:
     ``CONFIGURE_EXTRA_TASK_STACKS``.
 
     The maximum number of POSIX threads is specified by
-    ``CONFIGURE_MAXIMUM_POSIX_THREADS``.
+    :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS <CONFIGURE_MAXIMUM_POSIX_THREADS>`.
 
     A future enhancement to ``<rtems/confdefs.h>`` could be to eliminate the
     assumption that all tasks have floating point enabled. This would require
@@ -1051,9 +1051,10 @@ NOTES:
 POSIX API Configuration
 =======================
 
-The parameters in this section are used to configure resources for the RTEMS
-POSIX API.  They are only relevant if the POSIX API is enabled at configure
-time using the ``--enable-posix`` option.
+The parameters in this section are used to configure resources for the POSIX
+API supported by RTEMS.  Most POSIX API objects are available by default since
+RTEMS 5.1.  The queued signals and timers are only available if RTEMS was built
+with the ``--enable-posix`` build configuration option.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
 
@@ -1163,7 +1164,10 @@ DESCRIPTION:
     API Queued Signals that can be concurrently active.
 
 NOTES:
-    None.
+    Unlimited objects are not available for queued signals.
+
+    Queued signals are only available if RTEMS was built with the
+    ``--enable-posix`` build configuration option.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
 
@@ -1186,13 +1190,14 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     ``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES`` is the maximum number of POSIX API
-    Named Semaphores that can be concurrently active.  Named semaphores are
-    created with ``sem_open()``.  Semaphores initialized with ``sem_init()``
-    are not affected by this configuration option since the storage space for
-    these semaphores is user-provided.
+    Named Semaphores that can be concurrently active.
 
 NOTES:
-    None.
+    This object class can be configured in unlimited allocation mode.
+
+    Named semaphores are created with ``sem_open()``.  Semaphores initialized
+    with ``sem_init()`` are not affected by this configuration option since the
+    storage space for these semaphores is user-provided.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
 
@@ -1219,6 +1224,9 @@ DESCRIPTION:
 
 NOTES:
     This object class can be configured in unlimited allocation mode.
+
+    Timers are only available if RTEMS was built with the
+    ``--enable-posix`` build configuration option.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
 
@@ -1255,7 +1263,7 @@ NOTES:
     ``CONFIGURE_EXTRA_TASK_STACKS``.
 
     The maximum number of Classic API Tasks is specified by
-    ``CONFIGURE_MAXIMUM_TASKS``.
+    :ref:`CONFIGURE_MAXIMUM_TASKS <CONFIGURE_MAXIMUM_TASKS>`.
 
     All POSIX threads have floating point enabled.
 
@@ -1283,6 +1291,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     This configuration parameter defines the minimum stack size in bytes for
     every POSIX thread in the system.
+
+NOTES:
+    None.
 
 POSIX Initialization Threads Table Configuration
 ================================================
