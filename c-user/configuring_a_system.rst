@@ -1081,6 +1081,38 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode.
 
+.. index:: CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
+
+.. _CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
+
+CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
+---------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is
+    :ref:`CONFIGURE_MAXIMUM_POSIX_KEYS <CONFIGURE_MAXIMUM_POSIX_KEYS>` *
+    :ref:`CONFIGURE_MAXIMUM_TASKS <CONFIGURE_MAXIMUM_TASKS>` +
+    :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS <CONFIGURE_MAXIMUM_POSIX_THREADS>`.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS`` is the maximum number of key
+    value pairs used by POSIX API Keys that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+    A key value pair is created by :c:func:`pthread_setspecific` if the value
+    is not :c:macro:`NULL`, otherwise it is deleted.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
 
 .. _CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES:
