@@ -26,8 +26,8 @@ The Symmetric Multiprocessing (SMP) support of the RTEMS is available on
 
 .. warning::
 
-   The SMP support must be explicitly enabled via the ``--enable-smp``
-   configure command line option for the :term:`BSP` build.
+    The SMP support is only available if RTEMS was built with the
+    ``--enable-smp`` build configuration option.
 
 RTEMS is supposed to be a real-time operating system.  What does this mean in
 the context of SMP?  The RTEMS interpretation of real-time on SMP is the
