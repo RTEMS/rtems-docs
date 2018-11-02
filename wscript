@@ -53,6 +53,12 @@ def coverpage_js(ctx):
         o.write(js.replace('@CATALOGUE', xml))
 
 def build(ctx):
+    #
+    # Generate any PlantUML images if enabled.
+    #
+    ctx.recurse('images')
+    ctx.add_group('images')
+
     for b in building:
         ctx.recurse(b)
 

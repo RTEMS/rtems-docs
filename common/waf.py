@@ -257,8 +257,36 @@ def cmd_configure(ctx):
             ctx.env.BUILD_SINGLEHTML = 'yes'
             ctx.find_program("inliner", var = "BIN_INLINER", mandatory = False)
             if not ctx.env.BIN_INLINER:
-                ctx.fatal("Node inliner is required install with 'npm install -g inliner' " +
+                ctx.fatal("Node.js inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
+
+    ctx.envBUILD_PLANTUML = 'no'
+    if ctx.options.plantuml:
+        check_plantuml = not ctx.env.BIN_PUML
+        if check_plantuml:
+            ctx.env.BUILD_PLANTUML = 'yes'
+            ctx.find_program("puml", var = "BIN_PUML", mandatory = False)
+            if not ctx.env.BIN_PUML:
+                ctx.fatal("Node.js puml is required install with 'npm install -g node-plantuml' " +
+                          "(https://www.npmjs.com/package/node-plantuml)")
+
+    ctx.envBUILD_DITAA = 'no'
+    if ctx.options.ditaa:
+        #
+        # We use DITAA via PlantUML
+        #
+        if not ctx.env.BIN_PUML:
+            ctx.find_program("puml", var = "BIN_PUML", mandatory = False)
+            if not ctx.env.BIN_PUML:
+                ctx.fatal("DITAA uses PlantUML; " +
+                          "Node.js puml is required install with 'npm install -g node-plantuml' " +
+                          "(https://www.npmjs.com/package/node-plantuml)")
+        check_ditaa = not ctx.env.BIN_DITAA
+        if check_ditaa:
+            ctx.env.BUILD_DITAA = 'yes'
+            ctx.find_program("ditaa", var = "BIN_DITAA", mandatory = False)
+            if not ctx.env.BIN_DITAA:
+                ctx.fatal("DITAA not found, plase install")
 
 def doc_pdf(ctx, source_dir, conf_dir, extra_source):
     buildtype = 'latex'
@@ -353,6 +381,30 @@ def doc_html(ctx, source_dir, conf_dir, extra_source):
                       relative_trick = True,
                       quiet = True)
 
+def images_plantuml(ctx, source_dir, conf_dir, ext):
+    #
+    # Use a run command to handle stdout and stderr output from puml.
+    #
+    def run(task):
+        src = task.inputs[0].abspath()
+        tgt = task.outputs[0].abspath()
+        cmd = '%s generate %s -o %s' % (task.env.BIN_PUML[0], src, tgt)
+        so = open(tgt + '.out', 'w')
+        r = task.exec_command(cmd, stdout = so, stderr = so)
+        so.close()
+        return r
+
+    for src in ctx.path.ant_glob('**/*' + ext):
+        tgt = src.abspath()[: - len(ext)] + '.png'
+        ctx(
+            rule         = run,
+            inliner      = ctx.env.BIN_PUML,
+            source       = src,
+            target       = tgt,
+            install_path = None
+    )
+
+
 def cmd_build(ctx, extra_source = []):
     conf_dir = ctx.path.get_src()
     source_dir = ctx.path.get_src()
@@ -364,6 +416,14 @@ def cmd_build(ctx, extra_source = []):
         doc_singlehtml(ctx, source_dir, conf_dir, extra_source)
 
     doc_html(ctx, source_dir, conf_dir, extra_source)
+
+def cmd_build_images(ctx):
+    conf_dir = ctx.path.get_src()
+    source_dir = ctx.path.get_src()
+    if ctx.env.BUILD_PLANTUML == 'yes':
+        images_plantuml(ctx, source_dir, conf_dir, '.puml')
+    if ctx.env.BUILD_DITAA == 'yes':
+        images_plantuml(ctx, source_dir, conf_dir, '.ditaa')
 
 def cmd_options(ctx):
     ctx.add_option('--disable-extra-fonts',
@@ -382,6 +442,14 @@ def cmd_options(ctx):
                    action = 'store_true',
                    default = False,
                    help = "Build Single HTML file, requires Node Inliner")
+    ctx.add_option('--plantuml',
+                   action = 'store_true',
+                   default = False,
+                   help = "Build PlantUML images from source, need puml from npm")
+    ctx.add_option('--ditaa',
+                   action = 'store_true',
+                   default = False,
+                   help = "Build DITAA images using PlantUML from source, need ditaa and puml")
 
 def cmd_options_path(ctx):
     cmd_options(ctx)

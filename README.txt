@@ -115,6 +115,16 @@ Single HTML:
   # pkg install npm
   # npm install -g inliner
 
+Plant UML:
+
+Install NPM as shown in Single HTML then:
+
+  # npm install -g node-plantuml
+
+Ditaa:
+
+  # pkg install ditaa
+
 CentOS 6 and 7
 ~~~~~~~~~~~~~~
 
@@ -151,9 +161,14 @@ Single HTML:
 NOTE: npm appears to be part of the EPEL repository for RHEL and CentOS.
 You may have to add that repository to your configuration.
 
-
   # yum install npm
   # npm install -g inliner
+
+Plant UML:
+
+Install NPM as shown in Single HTML then:
+
+  # npm install -g node-plantuml
 
 Spell check:
 
