@@ -5,9 +5,17 @@
 
 .. _BoardSupportPackages:
 
-Board Support Packages (BSPs)
-*****************************
-.. index:: Board Support Packages (BSPs)
+Board Support Packages
+**********************
+.. index:: Board Support Packages
+.. index:: BSP
+
+A Board Support Package or BSP is the software that glues a specific target or
+board or piece of hardware to RTEMS so it's services are available to
+applications.
+
+RTEMS contains a large number of BSPs for commonly available simulators and
+target hardware.
 
 .. toctree::
 

@@ -1,7 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 Support
-=======
+*******
+.. index:: Support
 
 RTEMS offers a variety of support options.
 
@@ -11,12 +12,15 @@ developers mailing list is the default location to send the report.
 
 RTEMS Project Support
 =====================
+.. index:: RTEMS Project Support
 
 The following support channels are provided by the RTEMS Project and provide
 direct access to the RTEMS community.
 
 Bug Tracker
 -----------
+.. index:: Bugs
+.. index:: Reporting bugs
 
 The bug tracker can be found at the :r:url:`bugs`.
 
@@ -38,6 +42,8 @@ The latest user documentation can always be found at the :r:url:`docs`.
 
 Mailing Lists
 -------------
+.. index:: Community
+.. index:: Mailing lists
 
 We have several mailing lists for RTEMS users and developers.
 
@@ -63,6 +69,8 @@ We have several mailing lists for RTEMS users and developers.
 
 IRC
 ---
+.. index:: Community
+.. index:: IRC
 
 RTEMS IRC is available on the Freenode network. See the `Freenode
 <http://www.freenode.net/>`_ web site for details on connecting, selecting a
@@ -86,6 +94,8 @@ to your search terms.
 
 Developers
 ----------
+.. index:: Community
+.. index:: Developers
 
 Developers can find help and support on the mailing lists, see
 :ref:`support-mailing-lists`.

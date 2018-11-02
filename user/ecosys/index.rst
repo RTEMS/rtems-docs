@@ -5,8 +5,8 @@
 
 .. _ecosystem:
 
-RTEMS Ecosystem
-***************
+Ecosystem
+*********
 .. index:: Ecosystem
 
 The RTEMS Ecosystem is the collection of tools, packages, code, documentation
@@ -239,5 +239,3 @@ build set::
   2. The GDB package tar file.
 
   3. The build set tar file. All the others in a single tar file.
-
-

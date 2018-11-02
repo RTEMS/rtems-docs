@@ -5,8 +5,8 @@
 
 .. _tracing-framework:
 
-RTEMS Tracing Framework
-***********************
+Tracing
+*******
 .. index:: Tracing Framework
 
 RTEMS Tracing Framework is an on-target software based system which helps track
