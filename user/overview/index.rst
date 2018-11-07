@@ -69,7 +69,7 @@ interdependent, asynchronous or cyclical event streams.
 Deadlines can be further characterized as either hard or soft based upon the
 value of the results when produced after the deadline has passed.  A deadline
 is hard if the results have no value after the deadline has passed, or a
-catastophic event results from their intended use if not completed on time.  In
+catastrophic event results from their intended use if not completed on time.  In
 contrast, results produced after a soft deadline may still have some value.
 
 Another distinguishing requirement of real-time application systems is the
@@ -126,4 +126,4 @@ processors.  In addition, one need not develop, test, debug, and document
 routines to manage memory, pass messages, or provide mutual exclusion.  The
 developer is then able to concentrate solely on the application.  By using
 standard software components, the time and cost required to develop
-sophisticated real-time applications is significantly reduced.
+sophisticated real-time applications are significantly reduced.

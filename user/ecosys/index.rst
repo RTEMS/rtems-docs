@@ -12,10 +12,10 @@ Ecosystem
 The RTEMS Ecosystem is the collection of tools, packages, code, documentation
 and online content provided by the RTEMS Project. The ecosystem provides a way
 to develop, maintain, and use RTEMS. It's parts interact with the user, the
-host environment, and each other to make RTEMS accessable, useable and
+host environment, and each other to make RTEMS accessible, useable and
 predicable.
 
-The ecosystem is for users, developers and maintainers and it is an on going
+The ecosystem is for users, developers and maintainers and it is an ongoing
 effort that needs your help and support. The RTEMS project is always improving
 the way it delivers the kernel to you and your feedback is important so please
 join the mailing lists and contribute back comments, success stories, bugs and
@@ -58,7 +58,7 @@ that can be used to audit the build process so their configuration can be
 documented.
 
 The ecosystem is based around the source code used in the various parts,
-compontents and items of the RTEMS development environment. A user can create
+components and items of the RTEMS development environment. A user can create
 an archive of the complete build process including all the source code for long
 term storage. This is important for projects with a long life cycle.
 
