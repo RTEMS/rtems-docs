@@ -34,7 +34,7 @@ a single target.
    that is equivalent to statically linked executable of the same code. Dynamic
    loading is a system level tool for system architects.
 
-RTEMS supports 17 architectures:
+RTEMS supports 19 architectures:
 
 - arm
 - bfin
@@ -48,8 +48,10 @@ RTEMS supports 17 architectures:
 - nios2
 - no_cpu
 - or1k
+- riscv
 - powerpc
 - sh
 - sparc
 - sparc64
 - v850
+- x86_64
