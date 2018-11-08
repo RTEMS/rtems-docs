@@ -7,12 +7,4 @@
 Renesas M32C Specific Information
 *********************************
 
-Symmetric Multiprocessing
-=========================
-
-SMP is not supported.
-
-Thread-Local Storage
-====================
-
-Thread-local storage is not implemented.
+The port for this architecture was removed in RTEMS 5.1.
