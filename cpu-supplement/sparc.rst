@@ -769,3 +769,7 @@ specific requirements:
 
 - Must initialize the SPARC's initial trap table with at least trap handlers
   for register window overflow and register window underflow.
+
+.. COMMENT: Include SPARC v8 Register Windows Explanation
+.. COMMENT: Keep separate until completely formatted, maybe forever
+.. include:: sparc_v8_stacks_regwin.rst
