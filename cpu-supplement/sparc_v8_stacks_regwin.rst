@@ -1,39 +1,119 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Permission granted by the original author (Peter Magnusson) to
-.. COMMENT: convert this page to Rest and include in the RTEMS Documentation.
-.. COMMENT: This content is no longer online and only accessible at
-.. COMMENT: https://web.archive.org/web/20120205014832/https://www.sics.se/~psm/sparcstack.html
+.. comment Permission granted by the original author (Peter Magnusson) to
+.. comment convert this page to Rest and include in the RTEMS Documentation.
+.. comment This content is no longer online and only accessible at
+.. comment https://web.archive.org/web/20120205014832/https://www.sics.se/~psm/sparcstack.html
 
-Understanding stacks and registers in the Sparc architecture(s)
+.. comment XXX Format Tables
+.. comment XXX Format Figures (could be code, ascii art, etc.)
+.. comment XXX double check against web page
+.. comment XXX Fix Figure references in text
+.. comment XXX instruction names probably should be marked as code font
+
+Understanding stacks and registers in the SPARC architecture(s)
 ===============================================================
-The Sparc architecture from Sun Microsystems has some "interesting" characteristics. After having to deal with both compiler, interpreter, OS emulator, and OS porting issues for the Sparc, I decided to gather notes and documentation in one place. If there are any issues you don't find addressed by this page, or if you know of any similar Net resources, let me know. This document is limited to the V8 version of the architecture.
+The SPARC architecture from Sun Microsystems has some "interesting"
+characteristics. After having to deal with both compiler, interpreter, OS
+emulator, and OS porting issues for the SPARC, I decided to gather notes
+and documentation in one place. If there are any issues you don't find
+addressed by this page, or if you know of any similar Net resources, let
+me know. This document is limited to the V8 version of the architecture.
 
 General Structure
-Sparc has 32 general purpose integer registers visible to the program at any given time. Of these, 8 registers are global registers and 24 registers are in a register window. A window consists of three groups of 8 registers, the out, local, and in registers. See table 1. A Sparc implementation can have from 2 to 32 windows, thus varying the number of registers from 40 to 520. Most implentations have 7 or 8 windows. The variable number of registers is the principal reason for the Sparc being "scalable".
+-----------------
+SPARC has 32 general purpose integer registers visible to the program
+at any given time. Of these, 8 registers are global registers and 24
+registers are in a register window. A window consists of three groups
+of 8 registers, the out, local, and in registers. See table 1. A SPARC
+implementation can have from 2 to 32 windows, thus varying the number
+of registers from 40 to 520. Most implentations have 7 or 8 windows. The
+variable number of registers is the principal reason for the SPARC being
+"scalable".
 
-At any given time, only one window is visible, as determined by the current window pointer (CWP) which is part of the processor status register (PSR). This is a five bit value that can be decremented or incremented by the SAVE and RESTORE instructions, respectively. These instructions are generally executed on procedure call and return (respectively). The idea is that the in registers contain incoming parameters, the local register constitute scratch registers, the out registers contain outgoing parameters, and the global registers contain values that vary little between executions. The register windows overlap partially, thus the out registers become renamed by SAVE to become the in registers of the called procedure. Thus, the memory traffic is reduced when going up and down the procedure call. Since this is a frequent operation, performance is improved.
+At any given time, only one window is visible, as determined by the
+current window pointer (CWP) which is part of the processor status
+register (PSR). This is a five bit value that can be decremented or
+incremented by the SAVE and RESTORE instructions, respectively. These
+instructions are generally executed on procedure call and return
+(respectively). The idea is that the in registers contain incoming
+parameters, the local register constitute scratch registers, the out
+registers contain outgoing parameters, and the global registers contain
+values that vary little between executions. The register windows overlap
+partially, thus the out registers become renamed by SAVE to become the in
+registers of the called procedure. Thus, the memory traffic is reduced
+when going up and down the procedure call. Since this is a frequent
+operation, performance is improved.
 
-(That was the idea, anyway. The drawback is that upon interactions with the system the registers need to be flushed to the stack, necessitating a long sequence of writes to memory of data that is often mostly garbage. Register windows was a bad idea that was caused by simulation studies that considered only programs in isolation, as opposed to multitasking workloads, and by considering compilers with poor optimization. It also caused considerable problems in implementing high-end Sparc processors such as the SuperSparc, although more recent implementations have dealt effectively with the obstacles. Register windows is now part of the compatibility legacy and not easily removed from the architecture.)
+(That was the idea, anyway. The drawback is that upon interactions
+with the system the registers need to be flushed to the stack,
+necessitating a long sequence of writes to memory of data that is
+often mostly garbage. Register windows was a bad idea that was caused
+by simulation studies that considered only programs in isolation, as
+opposed to multitasking workloads, and by considering compilers with
+poor optimization. It also caused considerable problems in implementing
+high-end SPARC processors such as the SuperSPARC, although more recent
+implementations have dealt effectively with the obstacles. Register
+windows is now part of the compatibility legacy and not easily removed
+from the architecture.)
 
-Register Group  Mnemonic        Register Address
-global  %g0-%g7         r[0]-r[7]
-out     %o0-%o7         r[8]-r[15]
-local   %l0-%l7         r[16]-r[23]
-in      %i0-%i7         r[24]-r[31]
+.. comment XXX FIX FORMATTING
+
++------------+------------+---------------+
+|  Register  |  Mnemonic  |    Register   |
+|  Group     |            |    Address    |
++============+============+===============+
++   global   +  %g0-%g7   + r[0] - r[7]   +
++------------+------------+---------------+
++    out     +  %o0-%o7   + r[8] - r[15]  +
++------------+------------+---------------+
++   local    +  %l0-%l7   + r[16] - r[23] +
++------------+------------+---------------+
++    in      +  %i0-%i7   + r[24] - r[31] +
++------------+------------+---------------+
 
 Table 1 - Visible Registers
 
-The overlap of the registers is illustrated in figure 1. The figure shows an implementation with 8 windows, numbered 0 to 7 (labeled w0 to w7 in the figure).. Each window corresponds to 24 registers, 16 of which are shared with "neighboring" windows. The windows are arranged in a wrap-around manner, thus window number 0 borders window number 7. The common cause of changing the current window, as pointed to by CWP, is the RESTORE and SAVE instuctions, shown in the middle. Less common is the supervisor RETT instruction (return from trap) and the trap event (interrupt, exception, or TRAP instruction).
+The overlap of the registers is illustrated in figure 1. The figure
+shows an implementation with 8 windows, numbered 0 to 7 (labeled w0 to
+w7 in the figure).. Each window corresponds to 24 registers, 16 of which
+are shared with "neighboring" windows. The windows are arranged in a
+wrap-around manner, thus window number 0 borders window number 7. The
+common cause of changing the current window, as pointed to by CWP, is
+the RESTORE and SAVE instuctions, shown in the middle. Less common is
+the supervisor RETT instruction (return from trap) and the trap event
+(interrupt, exception, or TRAP instruction).
+
+.. comment XXX insert graphic from website (redraw if needed)
 
 Figure 1 - Windowed Registers
 
-The "WIM" register is also indicated in the top left of figure 1. The window invalid mask is a bit map of valid windows. It is generally used as a pointer, i.e. exactly one bit is set in the WIM register indicating which window is invalid (in the figure it's window 7). Register windows are generally used to support procedure calls, so they can be viewed as a cache of the stack contents. The WIM "pointer" indicates how many procedure calls in a row can be taken without writing out data to memory. In the figure, the capacity of the register windows is fully utilized. An additional call will thus exceed capacity, triggering a window overflow trap. At the other end, a window underflow trap occurs when the register window "cache" if empty and more data needs to be fetched from memory.
+The "WIM" register is also indicated in the top left of Figure 1. The
+window invalid mask is a bit map of valid windows. It is generally used
+as a pointer, i.e. exactly one bit is set in the WIM register indicating
+which window is invalid (in the figure it's window 7). Register windows
+are generally used to support procedure calls, so they can be viewed
+as a cache of the stack contents. The WIM "pointer" indicates how
+many procedure calls in a row can be taken without writing out data to
+memory. In the figure, the capacity of the register windows is fully
+utilized. An additional call will thus exceed capacity, triggering a
+window overflow trap. At the other end, a window underflow trap occurs
+when the register window "cache" if empty and more data needs to be
+fetched from memory.
 
 Register Semantics
-The Sparc Architecture includes recommended software semantics. These are described in the architecture manual, the Sparc ABI (application binary interface) standard, and, unfortunately, in various other locations as well (including header files and compiler documentation).
+------------------
+
+The SPARC Architecture includes recommended software semantics. These are
+described in the architecture manual, the SPARC ABI (application binary
+interface) standard, and, unfortunately, in various other locations as
+well (including header files and compiler documentation).
 
 Figure 2 shows a summary of register contents at any given time.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
                  %g0  (r00)       always zero
                  %g1  (r01)  [1]  temporary value
@@ -77,18 +157,35 @@ Notes:
 [2] should not be used by SPARC ABI library code
 [3] assumed by caller to be preserved across a procedure call
 
-Figure 2 - Sparc register semantics
+Figure 2 - SPARC register semantics
 
 Particular compilers are likely to vary slightly.
 
-Note that globals %g2-%g4 are reserved for the "application", which includes libraries and compiler. Thus, for example, libraries may overwrite these registers unless they've been compiled with suitable flags. Also, the "reserved" registers are presumed to be allocated (in the future) bottom-up, i.e. %g7 is currently the "safest" to use.
+Note that globals %g2-%g4 are reserved for the "application", which
+includes libraries and compiler. Thus, for example, libraries may
+overwrite these registers unless they've been compiled with suitable
+flags. Also, the "reserved" registers are presumed to be allocated
+(in the future) bottom-up, i.e. %g7 is currently the "safest" to use.
 
 Optimizing linkers and interpreters are exmples that use global registers.
 
 Register Windows and the Stack
-The sparc register windows are, naturally, intimately related to the stack. In particular, the stack pointer (%sp or %o6) must always point to a free block of 64 bytes. This area is used by the operating system (Solaris, SunOS, and Linux at least) to save the current local and in registers upon a system interupt, exception, or trap instruction. (Note that this can occur at any time.)
+------------------------------
 
-Other aspects of register relations with memory are programming convention. The typical, and recommended, layout of the stack is shown in figure 3. The figure shows a stack frame.
+The SPARC register windows are, naturally, intimately related to the
+stack. In particular, the stack pointer (%sp or %o6) must always point
+to a free block of 64 bytes. This area is used by the operating system
+(Solaris, SunOS, and Linux at least) to save the current local and in
+registers upon a system interupt, exception, or trap instruction. (Note
+that this can occur at any time.)
+
+Other aspects of register relations with memory are programming
+convention. The typical, and recommended, layout of the stack is shown
+in figure 3. The figure shows a stack frame.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
                     low addresses
 
@@ -128,11 +225,26 @@ Other aspects of register relations with memory are programming convention. The 
 
 Figure 3 - Stack frame contents
 
-Note that the top boxes of figure 3 are addressed via the stack pointer (%sp), as positive offsets (including zero), and the bottom boxes are accessed over the frame pointer using negative offsets (excluding zero), and that the frame pointer is the old stack pointer. This scheme allows the separation of information known at compile time (number and size of local parameters, etc) from run-time information (size of blocks allocated by alloca()).
+Note that the top boxes of figure 3 are addressed via the stack pointer
+(%sp), as positive offsets (including zero), and the bottom boxes are
+accessed over the frame pointer using negative offsets (excluding zero),
+and that the frame pointer is the old stack pointer. This scheme allows
+the separation of information known at compile time (number and size
+of local parameters, etc) from run-time information (size of blocks
+allocated by alloca()).
 
 "addressable scalar automatics" is a fancy name for local variables.
 
-The clever nature of the stack and frame pointers are that they are always 16 registers apart in the register windows. Thus, a SAVE instruction will make the current stack pointer into the frame pointer and, since the SAVE instruction also doubles as an ADD, create a new stack pointer. Figure 4 illustrates what the top of a stack might look like during execution. (The listing is from the "pwin" command in the SimICS simulator.)
+The clever nature of the stack and frame pointers are that they are always
+16 registers apart in the register windows. Thus, a SAVE instruction will
+make the current stack pointer into the frame pointer and, since the SAVE
+instruction also doubles as an ADD, create a new stack pointer. Figure 4
+illustrates what the top of a stack might look like during execution. (The
+listing is from the "pwin" command in the SimICS simulator.)
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
                   REGISTER WINDOWS
 
@@ -214,12 +326,24 @@ The clever nature of the stack and frame pointers are that they are always 16 re
 
 Figure 4 - Sample stack contents
 
-Note how the stack contents are not necessarily synchronized with the registers. Various events can cause the register windows to be "flushed" to memory, including most system calls. A programmer can force this update by using ST_FLUSH_WINDOWS trap, which also reduces the number of valid windows to the minimum of 1.
+Note how the stack contents are not necessarily synchronized with the
+registers. Various events can cause the register windows to be "flushed"
+to memory, including most system calls. A programmer can force this
+update by using ST_FLUSH_WINDOWS trap, which also reduces the number of
+valid windows to the minimum of 1.
 
-Writing a library for multithreaded execution is an example that requires explicit flushing, as is longjmp().
+Writing a library for multithreaded execution is an example that requires
+explicit flushing, as is longjmp().
 
 Procedure epilogue and prologue
-The stack frame described in the previous section leads to the standard entry/exit mechanisms listed in figure 5.
+-------------------------------
+
+The stack frame described in the previous section leads to the standard
+entry/exit mechanisms listed in figure 5.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
   function:
     save  %sp, -C, %sp
@@ -232,24 +356,55 @@ The stack frame described in the previous section leads to the standard entry/ex
 
 Figure 5 - Epilogue/prologue in procedures
 
-The SAVE instruction decrements the CWP, as discussed earlier, and also performs an addition. The constant "C" that is used in the figure to indicate the amount of space to make on the stack, and thus corresponds to the frame contents in Figure 3. The minimum is therefore the 16 words for the LOCAL and IN registers, i.e. (hex) 0x40 bytes.
+The SAVE instruction decrements the CWP, as discussed earlier, and also
+performs an addition. The constant "C" that is used in the figure to
+indicate the amount of space to make on the stack, and thus corresponds
+to the frame contents in Figure 3. The minimum is therefore the 16 words
+for the LOCAL and IN registers, i.e. (hex) 0x40 bytes.
 
-A confusing element of the SAVE instruction is that the source operands (the first two parameters) are read from the old register window, and the destination operand (the rightmost parameter) is written to the new window. Thus, allthough "%sp" is indicated as both source and destination, the result is actually written into the stack pointer of the new window (the source stack pointer becomes renamed and is now the frame pointer).
+A confusing element of the SAVE instruction is that the source operands
+(the first two parameters) are read from the old register window, and
+the destination operand (the rightmost parameter) is written to the new
+window. Thus, allthough "%sp" is indicated as both source and destination,
+the result is actually written into the stack pointer of the new window
+(the source stack pointer becomes renamed and is now the frame pointer).
 
-The return instructions are also a bit particular. ret is a synthetic instruction, corresponding to jmpl (jump linked). This instruction jumps to the address resulting from adding 8 to the %i7 register. The source instruction address (the address of the ret instruction itself) is written to the %g0 register, i.e. it is discarded.
+The return instructions are also a bit particular. ret is a synthetic
+instruction, corresponding to jmpl (jump linked). This instruction
+jumps to the address resulting from adding 8 to the %i7 register. The
+source instruction address (the address of the ret instruction itself)
+is written to the %g0 register, i.e. it is discarded.
 
-The restore instruction is similarly a synthetic instruction, and is just a short form for a restore that choses not to perform an addition.
+The restore instruction is similarly a synthetic instruction, and is
+just a short form for a restore that choses not to perform an addition.
 
 The calling instruction, in turn, typically looks as follows:
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
     call <function>    ; jmpl <address>, %o7
     mov 0, %o0
 
-Again, the call instruction is synthetic, and is actually the same instruction that performs the return. This time, however, it is interested in saving the return address, into register %o7. Note that the delay slot is often filled with an instruction related to the parameters, in this example it sets the first parameter to zero.
+Again, the call instruction is synthetic, and is actually the same
+instruction that performs the return. This time, however, it is interested
+in saving the return address, into register %o7. Note that the delay
+slot is often filled with an instruction related to the parameters,
+in this example it sets the first parameter to zero.
 
 Note also that the return value is also generally passed in %o0.
 
-Leaf procedures are different. A leaf procedure is an optimization that reduces unnecessary work by taking advantage of the knowledge that no call instructions exist in many procedures. Thus, the save/restore couple can be eliminated. The downside is that such a procedure may only use the out registers (since the in and local registers actually belong to the caller). See Figure 6.
+Leaf procedures are different. A leaf procedure is an optimization that
+reduces unnecessary work by taking advantage of the knowledge that no
+call instructions exist in many procedures. Thus, the save/restore couple
+can be eliminated. The downside is that such a procedure may only use
+the out registers (since the in and local registers actually belong to
+the caller). See Figure 6.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
   function:
                ; no save instruction needed upon entry
@@ -262,9 +417,19 @@ Leaf procedures are different. A leaf procedure is an optimization that reduces 
 
 Figure 6 - Epilogue/prologue in leaf procedures
 
-Note in the figure that there is only one instruction overhead, namely the retl instruction. retl is also synthetic (return from leaf subroutine), is again a variant of the jmpl instruction, this time with %o7+8 as target.
+Note in the figure that there is only one instruction overhead, namely the
+retl instruction. retl is also synthetic (return from leaf subroutine), is
+again a variant of the jmpl instruction, this time with %o7+8 as target.
 
-Yet another variation of epilogue is caused by tail call elimination, an optimization supported by some compilers (including Sun's C compiler but not GCC). If the compiler detects that a called function will return to the calling function, it can replace its place on the stack with the called function. Figure 7 contains an example.
+Yet another variation of epilogue is caused by tail call elimination,
+an optimization supported by some compilers (including Sun's C compiler
+but not GCC). If the compiler detects that a called function will return
+to the calling function, it can replace its place on the stack with the
+called function. Figure 7 contains an example.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
       int
         foo(int n)
@@ -285,11 +450,24 @@ Yet another variation of epilogue is caused by tail call elimination, an optimiz
 
 Figure 7 - Example of tail call elimination
 
-Note that the call instruction overwrites register %o7 with the program counter. Therefore the above code saves the old value of %o7, and restores it in the delay slot of the call instruction. If the function call is register indirect, this twiddling with %o7 can be avoided, but of course that form of call is slower on modern processors.
+Note that the call instruction overwrites register %o7 with the program
+counter. Therefore the above code saves the old value of %o7, and restores
+it in the delay slot of the call instruction. If the function call is
+register indirect, this twiddling with %o7 can be avoided, but of course
+that form of call is slower on modern processors.
 
-The benefit of tail call elimination is to remove an indirection upon return. It is also needed to reduce register window usage, since otherwise the foo() function in Figure 7 would need to allocate a stack frame to save the program counter.
+The benefit of tail call elimination is to remove an indirection upon
+return. It is also needed to reduce register window usage, since otherwise
+the foo() function in Figure 7 would need to allocate a stack frame to
+save the program counter.
 
-A special form of tail call elimination is tail recursion elimination, which detects functions calling themselves, and replaces it with a simple branch. Figure 8 contains an example.
+A special form of tail call elimination is tail recursion elimination,
+which detects functions calling themselves, and replaces it with a simple
+branch. Figure 8 contains an example.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
         int
           foo(int n)
@@ -311,24 +489,62 @@ A special form of tail call elimination is tail recursion elimination, which det
 
 Figure 8 - Example of tail recursion elimination
 
-Needless to say, these optimizations produce code that is difficult to debug.
+Needless to say, these optimizations produce code that is difficult
+to debug.
 
 Procedures, stacks, and debuggers
-When debugging an application, your debugger will be parsing the binary and consulting the symbol table to determine procedure entry points. It will also travel the stack frames "upward" to determine the current call chain.
+---------------------------------
 
-When compiling for debugging, compilers will generate additional code as well as avoid some optimizations in order to allow reconstructing situations during execution. For example, GCC/GDB makes sure original parameter values are kept intact somewhere for future parsing of the procedure call stack. The live in registers other than %i0 are not touched. %i0 itself is copied into a free local register, and its location is noted in the symbol file. (You can find out where variables reside by using the "info address" command in GDB.)
+When debugging an application, your debugger will be parsing the binary
+and consulting the symbol table to determine procedure entry points. It
+will also travel the stack frames "upward" to determine the current
+call chain.
 
-Given that much of the semantics relating to stack handling and procedure call entry/exit code is only recommended, debuggers will sometimes be fooled. For example, the decision as to wether or not the current procedure is a leaf one or not can be incorrect. In this case a spurious procedure will be inserted between the current procedure and it's "real" parent. Another example is when the application maintains its own implicit call hierarchy, such as jumping to function pointers. In this case the debugger can easily become totally confused.
+When compiling for debugging, compilers will generate additional code
+as well as avoid some optimizations in order to allow reconstructing
+situations during execution. For example, GCC/GDB makes sure original
+parameter values are kept intact somewhere for future parsing of
+the procedure call stack. The live in registers other than %i0 are
+not touched. %i0 itself is copied into a free local register, and its
+location is noted in the symbol file. (You can find out where variables
+reside by using the "info address" command in GDB.)
+
+Given that much of the semantics relating to stack handling and procedure
+call entry/exit code is only recommended, debuggers will sometimes
+be fooled. For example, the decision as to wether or not the current
+procedure is a leaf one or not can be incorrect. In this case a spurious
+procedure will be inserted between the current procedure and it's "real"
+parent. Another example is when the application maintains its own implicit
+call hierarchy, such as jumping to function pointers. In this case the
+debugger can easily become totally confused.
 
 The window overflow and underflow traps
-When the SAVE instruction decrements the current window pointer (CWP) so that it coincides with the invalid window in the window invalid mask (WIM), a window overflow trap occurs. Conversely, when the RESTORE or RETT instructions increment the CWP to coincide with the invalid window, a window underflow trap occurs.
+---------------------------------------
 
-Either trap is handled by the operating system. Generally, data is written out to memory and/or read from memory, and the WIM register suitably altered.
+When the SAVE instruction decrements the current window pointer (CWP)
+so that it coincides with the invalid window in the window invalid mask
+(WIM), a window overflow trap occurs. Conversely, when the RESTORE or
+RETT instructions increment the CWP to coincide with the invalid window,
+a window underflow trap occurs.
 
-The code in Figure 9 and Figure 10 below are bare-bones handlers for the two traps. The text is directly from the source code, and sort of works. (As far as I know, these are minimalistic handlers for Sparc V8). Note that there is no way to directly access window registers other than the current one, hence the code does additional save/restore instructions. It's pretty tricky to understand the code, but figure 1 should be of help.
+Either trap is handled by the operating system. Generally, data is
+written out to memory and/or read from memory, and the WIM register
+suitably altered.
+
+The code in Figure 9 and Figure 10 below are bare-bones handlers for
+the two traps. The text is directly from the source code, and sort of
+works. (As far as I know, these are minimalistic handlers for SPARC
+V8). Note that there is no way to directly access window registers
+other than the current one, hence the code does additional save/restore
+instructions. It's pretty tricky to understand the code, but figure 1
+should be of help.
+
+.. comment XXX FIX FORMATTING
+
+.. code-block:: c
 
         /* a SAVE instruction caused a trap */
-window_overflow:
+  window_overflow:
         /* rotate WIM on bit right, we have 8 windows */
         mov %wim,%l3
         sll %l3,7,%l4
@@ -366,8 +582,12 @@ window_overflow:
 
 Figure 9 - window_underflow trap handler
 
+
+.. code-block:: c
+
+
         /* a RESTORE instruction caused a trap */
-window_underflow:
+  window_underflow:
 
         /* rotate WIM on bit LEFT, we have 8 windows */
         mov %wim,%l3
