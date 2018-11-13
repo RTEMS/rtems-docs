@@ -6,8 +6,8 @@ check the version of Sphinx and ensure you have a suitable version
 available. If your host does not provide a packaged version use PIP to fetch a
 recent version. The Sphinx website provides details on doing this.
 
-ReST is the Re-Structed-Text format. It is a simple markup language that allows
-us to create quality documentaion. It is flexible and powerful however do not
+ReST is the Re-Structured-Text format. It is a simple markup language that allows
+us to create quality documentation. It is flexible and powerful however do not
 attempt to train it to create a specific format. You need to test any new way
 of presenting something on all output formats. What may look great in one
 format may not translate with the same clarity to another output format.
@@ -19,7 +19,7 @@ The RTEMS Documentation output formats are:
  SIngle HTML - Single HTML, one file per manual.
 
 The PDF format is created using Latex and that uses texlive packages. This
-exposes us to the complex world of Latex however the quality of the documents
+exposes us to the complex world of Latex, however, the quality of the documents
 created is worth it.
 
 Images can be created from source using PlantUML and Ditaa.
@@ -53,7 +53,7 @@ We support the PlantUML image language. The PlantUML home page is:
  http://plantuml.com/
 
 The page as a link to an 'online demo server' you can use to create images
-rathre than installing PlantUML. Save you source then View and save the PNG
+rather than installing PlantUML. Save your source then View and save the PNG
 format image. The PlantUML language reference guide is:
 
  http://plantuml.com/PlantUML_Language_Reference_Guide.pdf
@@ -65,7 +65,7 @@ We also support Ditaa image language. The Ditaa home page is:
 
  http://ditaa.sourceforge.net/
 
-The home page contain the language options. The PlantUML online demo server
+The home page contains the language options. The PlantUML online demo server
 supports Ditaa so use that resource as an online tool. The Ditaa image source
 extension is '.ditaa'.
 
@@ -78,7 +78,7 @@ Host Setup
 
 HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
 and building a Single HTML page requires the 'inliner' tool. The
-sphinxcontrib-bibtex extension is mandatory. PlantUML requres the Node.js
+sphinxcontrib-bibtex extension is mandatory. PlantUML requires the Node.js
 package called 'nde-plantuml' which installs the 'puml' command and Ditaa needs
 the 'ditaa' command and package. Ditaa images are built using the 'puml'
 command.
