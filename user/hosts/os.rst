@@ -63,6 +63,13 @@ proven over the years to be difficult to manage in production systems.
     means it is searched first and the RTEMS needed versions of the tools are
     used.
 
+.. warning::
+
+    Do not put spaces or special characters in the directories you use to build
+    RTEMS. Many of the packages built by the RSB use GNU *make*, which cannot
+    handle spaces in pathnames. If there is a space in the pathname the build
+    will fail. Special characters are also likely to confuse build systems.
+
 .. note::
 
     RSB and RTEMS have a matching *git branch* for each version of RTEMS. For
