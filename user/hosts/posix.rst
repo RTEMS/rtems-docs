@@ -107,11 +107,21 @@ prefix under your home directory as recommended and end up on the SD card.
 Ubuntu
 ~~~~~~
 
-The latest version is Ubuntu 16.04.1 LTS 64bit. This section also includes
+The latest version is Ubuntu 18.04.1 LTS 64-bit. This section also includes
 Xubuntu. A minimal installation was used and the following packages installed::
 
-    $ sudo apt-get build-dep binutils gcc g++ gdb unzip pax bison flex
-    $ sudo apt-get install python2.7-dev git libncurses5-dev zlib1g-dev
+    $ sudu apt-get build-dep gcc-defaults g++ gdb git unzip pax bison \
+           flex libpython-dev git libncurses5-dev zlib1g-dev
+    
+Note that in previous versions of Ubuntu, the package libpython-dev was
+python2.7-dev. The name of packages changes over time. You need the
+package with Python development libraries for C/C++ programs.
+
+It is likely necessary that you will have to enable the Ubuntu Source Repositories.
+Users have suggested the following web pages which have instructions:
+
+* https://askubuntu.com/questions/158871/how-do-i-enable-the-source-code-repositories/158872 
+* https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list
 
 .. _Linux Mint:
 
