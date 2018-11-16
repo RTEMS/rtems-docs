@@ -33,7 +33,7 @@ Glossary
     MSYS tool is a fork of Cygwin project. The Cygwin project provides a POSIX
     emulation layer for Windows so POSIX software can run on Windows. MSYS is a
     minimal version that is just enough to let ``configure`` scripts run. MSYS
-    has a simplied path structure to make it easier to building native Windows
+    has a simplified path structure to make it easier to building native Windows
     programs.
 
   POSIX
@@ -49,7 +49,7 @@ Glossary
     such as the tools for the RTEMS operating system.
 
   RTEMS
-    The Real-Time Executive for Multiprocessor Systems or RTEMS is a open
+    The Real-Time Executive for Multiprocessor Systems or RTEMS is an open
     source fully featured Real Time Operating System or RTOS that supports a
     variety of open standard application programming interfaces (API) and
     interface standards such as POSIX and BSD sockets.
