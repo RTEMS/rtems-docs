@@ -11,6 +11,8 @@ RTEMS Software Engineering (|version|)
 
 .. topic:: Copyrights and License
 
+    | |copy| 2018, 2019 embedded brains GmbH
+    | |copy| 2018, 2019 Sebastian Huber
     | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
@@ -26,6 +28,7 @@ RTEMS Software Engineering (|version|)
     stakeholders
     management
     test-plan
+    test-framework
     release-mgmt
     users-manuals
     license-requirements
