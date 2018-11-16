@@ -94,19 +94,14 @@ name:
 Object IDs
 ----------
 
-An object ID is a unique unsigned integer value which uniquely identifies an
-object instance.  Object IDs are passed as arguments to many directives in
-RTEMS and RTEMS translates the ID to an internal object pointer. The efficient
-manipulation of object IDs is critical to the performance of RTEMS services.
-Because of this, there are two object Id formats defined.  Each target
-architecture specifies which format it will use.  There is a thirty-two bit
-format which is used for most of the supported architectures and supports
-multiprocessor configurations.  There is also a simpler sixteen bit format
-which is appropriate for smaller target architectures and does not support
-multiprocessor configurations.
+An object ID is a unique 32-bit unsigned integer value which uniquely
+identifies an object instance.  Object IDs are passed as arguments to many
+directives in RTEMS and RTEMS translates the ID to an internal object pointer.
+The efficient manipulation of object IDs is critical to the performance of some
+RTEMS services.
 
-Thirty-Two Object ID Format
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Object ID Format
+~~~~~~~~~~~~~~~~
 
 The thirty-two bit format for an object ID is composed of four parts: API,
 object class, node, and index.  The data type ``rtems_id`` is used to store
@@ -128,29 +123,6 @@ number is always one (1) in a single processor system.  The least significant
 sixteen bits form an identifier within a particular object type.  This
 identifier, called the object index, ranges in value from 1 to the maximum
 number of objects configured for this object type.
-
-Sixteen Bit Object ID Format
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The sixteen bit format for an object ID is composed of three parts: API, object
-class, and index.  The data type ``rtems_id`` is used to store object IDs.
-
-.. code-block:: c
-
-    15      11 10    8 7            0
-    +---------+-------+--------------+
-    |         |       |              |
-    |  Class  |  API  |    Index     |
-    |         |       |              |
-    +---------+-------+--------------+
-
-The sixteen-bit format is designed to be as similar as possible to the
-thrity-two bit format.  The differences are limited to the eliminatation of the
-node field and reduction of the index field from sixteen-bits to 8-bits.  Thus
-the sixteen bit format only supports up to 255 object instances per API/Class
-combination and single processor systems.  As this format is typically utilized
-by sixteen-bit processors with limited address space, this is more than enough
-object instances.
 
 Object ID Description
 ---------------------
