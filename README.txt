@@ -6,8 +6,8 @@ check the version of Sphinx and ensure you have a suitable version
 available. If your host does not provide a packaged version use PIP to fetch a
 recent version. The Sphinx website provides details on doing this.
 
-ReST is the Re-Structed-Text format. It is a simple markup language that allows
-us to create quality documentaion. It is flexible and powerful however do not
+ReST is the Re-Structured-Text format. It is a simple markup language that allows
+us to create quality documentaion. It is flexible and powerful however does not
 attempt to train it to create a specific format. You need to test any new way
 of presenting something on all output formats. What may look great in one
 format may not translate with the same clarity to another output format.
@@ -16,7 +16,7 @@ The RTEMS Documentation output formats are:
 
  HTML        - Multi-page HTML with files in a single directory per manual.
  PDF         - Single PDF per manual.
- SIngle HTML - Single HTML, one file per manual.
+ Single HTML - Single HTML, one file per manual.
 
 The PDF format is created using Latex and that uses texlive packages. This
 exposes us to the complex world of Latex however the quality of the documents
