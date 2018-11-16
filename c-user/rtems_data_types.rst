@@ -50,20 +50,17 @@ alphabetical order:
 .. index:: rtems_boolean
 
 ``rtems_boolean``
-  May only take on the values of ``TRUE`` and ``FALSE``.  This type is
-  deprecated. Use ``bool`` instead.
+  This type is deprecated will be removed in RTEMS 6.1.  Use ``bool`` instead.
 
 .. index:: rtems_context
 
 ``rtems_context``
-  The CPU dependent data structure used to manage the integer and system
-  register portion of each task's context.
+  This type is deprecated will be removed in RTEMS 6.1.
 
 .. index:: rtems_context_fp
 
 ``rtems_context_fp``
-  The CPU dependent data structure used to manage the floating point portion of
-  each task's context.
+  This type is deprecated will be removed in RTEMS 6.1.
 
 .. index:: rtems_device_driver
 
@@ -88,8 +85,7 @@ alphabetical order:
 .. index:: rtems_double
 
 ``rtems_double``
-  The RTEMS data type that corresponds to double precision floating point on
-  the target hardware.  This type is deprecated. Use ``double`` instead.
+  This type is deprecated will be removed in RTEMS 6.1.  Use ``double`` instead.
 
 .. index:: rtems_event_set
 
@@ -256,8 +252,7 @@ alphabetical order:
 .. index:: rtems_single
 
 ``rtems_single``
-  The RTEMS data type that corresponds to single precision floating point on
-  the target hardware.  This type is deprecated. Use ``float`` instead.
+  This type is deprecated will be removed in RTEMS 6.1.  Use ``float`` instead.
 
 .. index:: rtems_status_codes
 
