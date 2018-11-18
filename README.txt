@@ -7,7 +7,7 @@ available. If your host does not provide a packaged version use PIP to fetch a
 recent version. The Sphinx website provides details on doing this.
 
 ReST is the Re-Structured-Text format. It is a simple markup language that allows
-us to create quality documentaion. It is flexible and powerful however does not
+us to create quality documentation. It is flexible and powerful however does not
 attempt to train it to create a specific format. You need to test any new way
 of presenting something on all output formats. What may look great in one
 format may not translate with the same clarity to another output format.
@@ -41,8 +41,8 @@ NOTE: RedHat Enterprise Linux (RHEL) and Fedora should be the same as CentOS.
 Images
 ------
 
-All images should be placed int he 'images' directory and referenced from the
-ReST with a relative path. This lets us shared and control images.
+All images should be placed in the 'images' directory and referenced from the
+ReST with a relative path. This lets us share and control images.
 
 We prefer being able to build images from source. This is not always possible
 so SVG format is preferred with generated PNG images so make sure the quality
@@ -117,7 +117,7 @@ and sphinx:
 Windows
 ~~~~~~~
 
-To build the documentation on Windows you need to install an offical Python
+To build the documentation on Windows you need to install an official Python
 build from https://www.python.org/. We suggest you install a recent 2.7 series
 64bit build. The versions 2.7.9 and after include pip.
 
@@ -130,7 +130,7 @@ The following assumes Python is installed to its default path of C:\Python27.
 Open an MSYS2 terminal window and add the needed paths to Python and its
 scripts:
 
- $ export PATH=/c/Python27/Scripts:/c/Python27:$PATH
+$ export PATH=/c/Python27/Scripts:/c/Python27:$PATH
 
 Install Sphinx and any needed extensions:
 
@@ -332,7 +332,7 @@ To build enter in the top directory:
 The '--pdf' and '--singlehtml' options can be added to configure to build those
 output formats.
 
-The '--disable-extra-fonts' allows you to build PDF documents with out the
+The '--disable-extra-fonts' allows you to build PDF documents without the
 fonts we use for a better quality document. Use this option to build without
 needing the extra fonts accepting you will get poor quality documents.
 
