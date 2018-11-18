@@ -1,0 +1,77 @@
+                                REGISTER WINDOWS
+
+                           +----+-----+------------+
+                           | g0 | r00 | 0x00000000 | global
+                           | g1 | r01 | 0x00000006 | registers
+                           | g2 | r02 | 0x00091278 |
+                  g0:- g7  | g3 | r03 | 0x0008ebd0 |
+                           | g4 | r04 | 0x00000000 |                     (NOTE: 'save' and 'trap' decrements CWP,
+                           | g5 | r05 | 0x00000000 |                      i.e. moves it up on this diagram. 'restore'
+                           | g6 | r06 | 0x00000000 |                      and 'rett' increments CWP, i.e. down)
+                           | g7 | r07 | 0x00000000 |
+                           +----+-----+------------+
+   CWP (2)                 | o0 | r08 | 0x00000002 |
+                           | o1 | r09 | 0x00000000 |                               MEMORY
+                           | o2 | r10 | 0x00000001 |
+                  o0:- o7  | o3 | r11 | 0x00000001 |                 stack growth
+                           | o4 | r12 | 0x000943d0 |
+                           | o5 | r13 | 0x0008b400 |                      ^
+                           | sp | r14 | 0xdffff9a0 | ----\                |
+                           | o7 | r15 | 0x00062abc |     |                |                     addresses
+                           +----+-----+----------- +     |     +----+------------+         virtual     physical
+                           | l0 | r16 | 0x00087c00 |     \---> | l0 | 0x00000000 |        0xdffff9a0  0x000039a0  top of frame 0
+                           | l1 | r17 | 0x00027fd4 |           | l1 | 0x00000000 |        0xdffff9a4  0x000039a4
+                           | l2 | r18 | 0x00000000 |           | l2 | 0x0009df80 |        0xdffff9a8  0x000039a8
+                  l0:- l7  | l3 | r19 | 0x00000000 |           | l3 | 0x00097660 |        0xdffff9ac  0x000039ac
+                           | l4 | r20 | 0x00000000 |           | l4 | 0x00000014 |        0xdffff9b0  0x000039b0
+                           | l5 | r21 | 0x00097678 |           | l5 | 0x00000001 |        0xdffff9b4  0x000039b4
+                           | l6 | r22 | 0x0008b400 |           | l6 | 0x00000004 |        0xdffff9b8  0x000039b8
+                           | l7 | r23 | 0x0008b800 |           | l7 | 0x0008dd60 |        0xdffff9bc  0x000039bc
+                      +----+----+-----+------------+           +----+------------+
+   CWP+1 (3)          | o0 | i0 | r24 | 0x00000002 |           | i0 | 0x00091048 |        0xdffff9c0  0x000039c0
+                      | o1 | i1 | r25 | 0x00000000 |           | i1 | 0x00000011 |        0xdffff9c4  0x000039c4
+                      | o2 | i2 | r26 | 0x0008b7c0 |           | i2 | 0x00091158 |        0xdffff9c8  0x000039c8
+             i0:- i7  | o3 | i3 | r27 | 0x00000019 |           | i3 | 0x0008d370 |        0xdffff9cc  0x000039cc
+                      | o4 | i4 | r28 | 0x0000006c |           | i4 | 0x0008eac4 |        0xdffff9d0  0x000039d0
+                      | o5 | i5 | r29 | 0x00000000 |           | i5 | 0x00000000 |        0xdffff9d4  0x000039d4
+                      | o6 | fp | r30 | 0xdffffa00 | ----\     | fp | 0x00097660 |        0xdffff9d8  0x000039d8
+                      | o7 | i7 | r31 | 0x00040468 |     |     | i7 | 0x00000000 |        0xdffff9dc  0x000039dc
+                      +----+----+-----+------------+     |     +----+------------+
+                                                         |          | 0x00000001 |        0xdffff9e0  0x000039e0  parameters
+                                                         |          | 0x00000002 |        0xdffff9e4  0x000039e4
+                                                         |          | 0x00000040 |        0xdffff9e8  0x000039e8
+                                                         |          | 0x00097671 |        0xdffff9ec  0x000039ec
+                                                         |          | 0xdffffa68 |        0xdffff9f0  0x000039f0
+                                                         |          | 0x00024078 |        0xdffff9f4  0x000039f4
+                                                         |          | 0x00000004 |        0xdffff9f8  0x000039f8
+                                                         |          | 0x0008dd60 |        0xdffff9fc  0x000039fc
+                      +----+----------+------------+     |     +----+------------+
+                      | l0 |          | 0x00087c00 |     \---> | l0 | 0x00091048 |        0xdffffa00  0x00003a00  top of frame 1
+                      | l1 |          | 0x000c8d48 |           | l1 | 0x0000000b |        0xdffffa04  0x00003a04
+                      | l2 |          | 0x000007ff |           | l2 | 0x00091158 |        0xdffffa08  0x00003a08
+                      | l3 |          | 0x00000400 |           | l3 | 0x000c6f10 |        0xdffffa0c  0x00003a0c
+                      | l4 |          | 0x00000000 |           | l4 | 0x0008eac4 |        0xdffffa10  0x00003a10
+                      | l5 |          | 0x00088000 |           | l5 | 0x00000000 |        0xdffffa14  0x00003a14
+                      | l6 |          | 0x0008d5e0 |           | l6 | 0x000c6f10 |        0xdffffa18  0x00003a18
+                      | l7 |          | 0x00088000 |           | l7 | 0x0008cd00 |        0xdffffa1c  0x00003a1c
+                      +----+----+-----+------------+           +----+------------+
+   CWP+2 (4)          | i0 | o0 |     | 0x00000002 |           | i0 | 0x0008cb00 |        0xdffffa20  0x00003a20
+                      | i1 | o1 |     | 0x00000011 |           | i1 | 0x00000003 |        0xdffffa24  0x00003a24
+                      | i2 | o2 |     | 0xffffffff |           | i2 | 0x00000040 |        0xdffffa28  0x00003a28
+                      | i3 | o3 |     | 0x00000000 |           | i3 | 0x0009766b |        0xdffffa2c  0x00003a2c
+                      | i4 | o4 |     | 0x00000000 |           | i4 | 0xdffffa68 |        0xdffffa30  0x00003a30
+                      | i5 | o5 |     | 0x00064c00 |           | i5 | 0x000253d8 |        0xdffffa34  0x00003a34
+                      | i6 | o6 |     | 0xdffffa70 | ----\     | i6 | 0xffffffff |        0xdffffa38  0x00003a38
+                      | i7 | o7 |     | 0x000340e8 |     |     | i7 | 0x00000000 |        0xdffffa3c  0x00003a3c
+                      +----+----+-----+------------+     |     +----+------------+
+                                                         |          | 0x00000001 |        0xdffffa40  0x00003a40  parameters
+                                                         |          | 0x00000000 |        0xdffffa44  0x00003a44
+                                                         |          | 0x00000000 |        0xdffffa48  0x00003a48
+                                                         |          | 0x00000000 |        0xdffffa4c  0x00003a4c
+                                                         |          | 0x00000000 |        0xdffffa50  0x00003a50
+                                                         |          | 0x00000000 |        0xdffffa54  0x00003a54
+                                                         |          | 0x00000002 |        0xdffffa58  0x00003a58
+                                                         |          | 0x00000002 |        0xdffffa5c  0x00003a5c
+                                                         |          |     .      |
+                                                         |          |     .      |        .. etc (another 16 bytes)
+                                                         |          |     .      |

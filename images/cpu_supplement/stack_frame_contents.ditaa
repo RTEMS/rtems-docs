@@ -1,0 +1,35 @@
+                    low addresses
+
+               +-------------------------+
+     %sp  -->  | 16 words for storing    |
+               | LOCAL and IN registers  |
+               +-------------------------+
+               |  one:-word pointer to   |
+               | aggregate return value  |
+               +-------------------------+
+               |   6 words for callee    |
+               |   to store register     |
+               |     arguments           |
+               +-------------------------+
+               |  outgoing parameters    |
+               |  past the 6th, if any   |
+               +-------------------------+
+               |  space, if needed, for  |
+               |  compiler temporaries   |
+               |   and saved floating-   |
+               |    point registers      |
+               +-------------------------+
+
+               +-------------------------+
+               |    space dynamically    |
+               |    allocated via the    |
+               |  alloca() library call  |
+               +-------------------------+
+               |  space, if needed, for  |
+               |    automatic arrays,    |
+               |    aggregates, and      |
+               |   addressable scalar    |
+               |       automatics        |
+               +-------------------------+
+    %fp  -->
+                     high addresses
