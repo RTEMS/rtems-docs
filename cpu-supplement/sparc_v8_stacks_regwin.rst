@@ -5,8 +5,8 @@
 .. comment This content is no longer online and only accessible at
 .. comment https://web.archive.org/web/20120205014832/https://www.sics.se/~psm/sparcstack.html
 
-Understanding stacks and registers in the SPARC architecture(s)
-===============================================================
+Stacks and Register Windows
+===========================
 The SPARC architecture from Sun Microsystems has some "interesting"
 characteristics. After having to deal with both compiler, interpreter, OS
 emulator, and OS porting issues for the SPARC, I decided to gather notes
