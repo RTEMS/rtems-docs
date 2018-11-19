@@ -28,13 +28,13 @@ variable number of registers is the principal reason for the SPARC being
 At any given time, only one window is visible, as determined by the
 current window pointer (CWP) which is part of the processor status
 register (PSR). This is a five bit value that can be decremented or
-incremented by the SAVE and RESTORE instructions, respectively. These
+incremented by the ``save`` and ``restore`` instructions, respectively. These
 instructions are generally executed on procedure call and return
 (respectively). The idea is that the ``in`` registers contain incoming
 parameters, the ``local`` register constitutes scratch registers, the ``out``
 registers contain outgoing parameters, and the ``global`` registers contain
 values that vary little between executions. The register windows overlap
-partially, thus the ``out`` registers become renamed by SAVE to become the
+partially, thus the ``out`` registers become renamed by ``save`` to become the
 ``in`` registers of the called procedure. Thus, the memory traffic is reduced
 when going up and down the procedure call. Since this is a frequent
 operation, performance is improved.
@@ -53,18 +53,18 @@ from the architecture.)
 
 .. table:: Table 1 - Visible Registers
 
-    +----------------+------------+---------------+
-    |   Register     |  Mnemonic  |   Register    |
-    |   Group        |            |   Address     |
-    +================+============+===============+
-    +   ``global``   +  %g0-%g7   + r[0] - r[7]   +
-    +----------------+------------+---------------+
-    +    ``out``     +  %o0-%o7   + r[8] - r[15]  +
-    +----------------+------------+---------------+
-    +   ``local``    +  %l0-%l7   + r[16] - r[23] +
-    +----------------+------------+---------------+
-    +    ``in``      +  %i0-%i7   + r[24] - r[31] +
-    +----------------+------------+---------------+
+    +----------------+-------------------+------------------------+
+    |   Register     |      Mnemonic     |        Register        |
+    |   Group        |                   |        Address         |
+    +================+===================+========================+
+    +   ``global``   +  ``%g0``-``%g7``  +  ``r[0]`` - ``r[7]``   +
+    +----------------+-------------------+------------------------+
+    +    ``out``     +  ``%o0``-``%o7``  +  ``r[8]`` - ``r[15]``  +
+    +----------------+-------------------+------------------------+
+    +   ``local``    +  ``%l0``-``%l7``  +  ``r[16]`` - ``r[23]`` +
+    +----------------+-------------------+------------------------+
+    +    ``in``      +  ``%i0``-``%i7``  +  ``r[24]`` - ``r[31]`` +
+    +----------------+-------------------+------------------------+
 
 
 The overlap of the registers is illustrated in figure 1. The figure
@@ -73,9 +73,9 @@ w7 in the figure). Each window corresponds to 24 registers, 16 of which
 are shared with "neighboring" windows. The windows are arranged in a
 wrap-around manner, thus window number 0 borders window number 7. The
 common cause of changing the current window, as pointed to by CWP, is
-the RESTORE and SAVE instructions, shown in the middle. Less common is
-the supervisor RETT instruction (return from trap) and the trap event
-(interrupt, exception, or TRAP instruction).
+the ``restore`` and ``save`` instructions, shown in the middle. Less common is
+the supervisor ``rett`` instruction (return from trap) and the trap event
+(interrupt, exception, or ``trap`` instruction).
 
 .. figure:: ../images/cpu_supplement/sparcwin.png
 
@@ -154,11 +154,11 @@ Figure 2 shows a summary of register contents at any given time.
 
 Particular compilers are likely to vary slightly.
 
-Note that globals %g2-%g4 are reserved for the "application", which
+Note that globals ``%g2``-``%g4`` are reserved for the "application", which
 includes libraries and compiler. Thus, for example, libraries may
 overwrite these registers unless they've been compiled with suitable
 flags. Also, the "reserved" registers are presumed to be allocated
-(in the future) bottom-up, i.e. %g7 is currently the "safest" to use.
+(in the future) bottom-up, i.e. ``%g7`` is currently the "safest" to use.
 
 Optimizing linkers and interpreters are examples that use global registers.
 
@@ -166,10 +166,10 @@ Register Windows and the Stack
 ------------------------------
 
 The SPARC register windows are, naturally, intimately related to the
-stack. In particular, the stack pointer (%sp or %o6) must always point
+stack. In particular, the stack pointer (``%sp`` or ``%o6``) must always point
 to a free block of 64 bytes. This area is used by the operating system
 (Solaris, SunOS, and Linux at least) to save the current ``local`` and
-``in`` registers upon a system interrupt, exception, or trap instruction.
+``in`` registers upon a system interrupt, exception, or ``trap`` instruction.
 (Note that this can occur at any time.)
 
 Other aspects of register relations with memory are programming
@@ -181,7 +181,7 @@ in figure 3. The figure shows a stack frame.
     Figure 3 - Stack frame contents
 
 Note that the top boxes of figure 3 are addressed via the stack pointer
-(%sp), as positive offsets (including zero), and the bottom boxes are
+(``%sp``), as positive offsets (including zero), and the bottom boxes are
 accessed over the frame pointer using negative offsets (excluding zero),
 and that the frame pointer is the old stack pointer. This scheme allows
 the separation of information known at compile time (number and size
@@ -191,11 +191,11 @@ allocated by ``alloca()``).
 "addressable scalar automatics" is a fancy name for local variables.
 
 The clever nature of the stack and frame pointers is that they are always
-16 registers apart in the register windows. Thus, a SAVE instruction will
-make the current stack pointer into the frame pointer and, since the SAVE
-instruction also doubles as an ADD, create a new stack pointer. Figure 4
+16 registers apart in the register windows. Thus, a ``save`` instruction will
+make the current stack pointer into the frame pointer and, since the ``save``
+instruction also doubles as an ``add``, create a new stack pointer. Figure 4
 illustrates what the top of a stack might look like during execution. (The
-listing is from the "pwin" command in the SimICS simulator.)
+listing is from the ``pwin`` command in the SimICS simulator.)
 
 .. figure:: ../images/cpu_supplement/sample_stack_contents.png
 
@@ -204,7 +204,7 @@ listing is from the "pwin" command in the SimICS simulator.)
 Note how the stack contents are not necessarily synchronized with the
 registers. Various events can cause the register windows to be "flushed"
 to memory, including most system calls. A programmer can force this
-update by using ST_FLUSH_WINDOWS trap, which also reduces the number of
+update by using ``ST_FLUSH_WINDOWS`` trap, which also reduces the number of
 valid windows to the minimum of 1.
 
 Writing a library for multithreaded execution is an example that requires
@@ -229,24 +229,24 @@ entry/exit mechanisms listed in figure 5.
 
 *Figure 5 - Epilogue/prologue in procedures*
 
-The SAVE instruction decrements the CWP, as discussed earlier, and also
-performs an addition. The constant "C" that is used in the figure to
+The ``save`` instruction decrements the CWP, as discussed earlier, and also
+performs an addition. The constant ``C`` that is used in the figure to
 indicate the amount of space to make on the stack, and thus corresponds
 to the frame contents in Figure 3. The minimum is therefore the 16 words
-for the LOCAL and IN registers, i.e. (hex) 0x40 bytes.
+for the ``local`` and ``in`` registers, i.e. (hex) 0x40 bytes.
 
-A confusing element of the SAVE instruction is that the source operands
+A confusing element of the ``save`` instruction is that the source operands
 (the first two parameters) are read from the old register window, and
 the destination operand (the rightmost parameter) is written to the new
-window. Thus, although "%sp" is indicated as both source and destination,
+window. Thus, although ``%sp`` is indicated as both source and destination,
 the result is actually written into the stack pointer of the new window
 (the source stack pointer becomes renamed and is now the frame pointer).
 
 The return instructions are also a bit particular. ``ret`` is a synthetic
 instruction, corresponding to ``jmpl`` (jump linked). This instruction
-jumps to the address resulting from adding 8 to the %i7 register. The
+jumps to the address resulting from adding 8 to the ``%i7`` register. The
 source instruction address (the address of the ``ret`` instruction itself)
-is written to the %g0 register, i.e. it is discarded.
+is written to the ``%g0`` register, i.e. it is discarded.
 
 The ``restore`` instruction is similarly a synthetic instruction and is
 just a short form for a restore that chooses not to perform an addition.
@@ -260,11 +260,11 @@ The calling instruction, in turn, typically looks as follows:
 
 Again, the ``call`` instruction is synthetic, and is actually the same
 instruction that performs the return. This time, however, it is interested
-in saving the return address, into register %o7. Note that the delay
+in saving the return address, into register ``%o7``. Note that the delay
 slot is often filled with an instruction related to the parameters,
 in this example it sets the first parameter to zero.
 
-Note also that the return value is also generally passed in %o0.
+Note also that the return value is also generally passed in ``%o0``.
 
 Leaf procedures are different. A leaf procedure is an optimization that
 reduces unnecessary work by taking advantage of the knowledge that no
@@ -272,8 +272,6 @@ reduces unnecessary work by taking advantage of the knowledge that no
 ``save``/``restore`` couple can be eliminated. The downside is that such a
 procedure may only use the ``out`` registers (since the ``in`` and ``local``
 registers actually belong to the caller). See Figure 6.
-
-.. comment XXX FIX FORMATTING
 
 .. code-block:: c
 
@@ -290,7 +288,8 @@ registers actually belong to the caller). See Figure 6.
 
 Note in the figure that there is only one instruction overhead, namely the
 ``retl`` instruction. ``retl`` is also synthetic (return from leaf subroutine),
-is again a variant of the ``jmpl`` instruction, this time with %o7+8 as target.
+is again a variant of the ``jmpl`` instruction, this time with ``%o7+8``
+as target.
 
 Yet another variation of epilogue is caused by tail call elimination,
 an optimization supported by some compilers (including Sun's C compiler
@@ -319,11 +318,11 @@ called function. Figure 7 contains an example.
 
 *Figure 7 - Example of tail call elimination*
 
-Note that the call instruction overwrites register ``%o7`` with the program
+Note that the ``call`` instruction overwrites register ``%o7`` with the program
 counter. Therefore the above code saves the old value of ``%o7``, and restores
-it in the delay slot of the call instruction. If the function ``call`` is
+it in the delay slot of the ``call`` instruction. If the function ``call`` is
 register indirect, this twiddling with ``%o7`` can be avoided, but of course
-that form of call is slower on modern processors.
+that form of ``call`` is slower on modern processors.
 
 The benefit of tail call elimination is to remove an indirection upon
 return. It is also needed to reduce register window usage, since otherwise
@@ -371,10 +370,10 @@ When compiling for debugging, compilers will generate additional code
 as well as avoid some optimizations in order to allow reconstructing
 situations during execution. For example, GCC/GDB makes sure original
 parameter values are kept intact somewhere for future parsing of
-the procedure call stack. The live ``in`` registers other than %i0 are
-not touched. %i0 itself is copied into a free ``local`` register, and its
+the procedure call stack. The live ``in`` registers other than ``%i0`` are
+not touched. ``%i0`` itself is copied into a free ``local`` register, and its
 location is noted in the symbol file. (You can find out where variables
-reside by using the "info address" command in GDB.)
+reside by using the ``info address`` command in GDB.)
 
 Given that much of the semantics relating to stack handling and procedure
 call entry/exit code is only recommended, debuggers will sometimes
@@ -388,10 +387,10 @@ debugger can easily become totally confused.
 The window overflow and underflow traps
 ---------------------------------------
 
-When the SAVE instruction decrements the current window pointer (CWP)
+When the ``save`` instruction decrements the current window pointer (CWP)
 so that it coincides with the invalid window in the window invalid mask
-(WIM), a window overflow trap occurs. Conversely, when the RESTORE or
-RETT instructions increment the CWP to coincide with the invalid window,
+(WIM), a window overflow trap occurs. Conversely, when the ``restore`` or
+``rett`` instructions increment the CWP to coincide with the invalid window,
 a window underflow trap occurs.
 
 Either trap is handled by the operating system. Generally, data is
@@ -402,7 +401,7 @@ The code in Figure 9 and Figure 10 below are bare-bones handlers for
 the two traps. The text is directly from the source code, and sort of
 works. (As far as I know, these are minimalistic handlers for SPARC
 V8). Note that there is no way to directly access window registers
-other than the current one, hence the code does additional save/restore
+other than the current one, hence the code does additional ``save``/``restore``
 instructions. It's pretty tricky to understand the code, but figure 1
 should be of help.
 
