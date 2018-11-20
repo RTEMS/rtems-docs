@@ -7,6 +7,14 @@
 
 Stacks and Register Windows
 ===========================
+
+.. sidebar:: *Credit*
+
+   The contents of this section were originally written by Peter Magnusson
+   and available through a website which is no longer online. Peter graciously
+   granted permission for this information to be included in the RTEMS
+   Documentation.
+
 The SPARC architecture from Sun Microsystems has some "interesting"
 characteristics. After having to deal with both compiler, interpreter, OS
 emulator, and OS porting issues for the SPARC, I decided to gather notes
