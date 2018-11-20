@@ -436,6 +436,51 @@ User-Provided Routines
 All user-provided routines invoked by RTEMS, such as user extensions, device
 drivers, and MPCI routines, must also adhere to these calling conventions.
 
+----------------
+
+.. sidebar:: *Origin*
+
+  This SPARC Annul Slot section was originally an email from Jiri Gaisler
+  to Joel Sherrill that explained why sometimes, a single instruction
+  will not be executed, due to the Annul Slot feature.
+
+In SPARC, the default behaviour is to execute instructions after a branch.
+As with the behaviour of most RISC (Reduced Instruction Set Computer)
+machines, SPARC uses a branch delay slot. This is because completing
+an instruction every clock cycle introduces the problem that a branch
+may not be resolved until the instruction has passed through the
+pipeline. By inserting stalls, this is prevented. In each cycle, if a
+stall is inserted, it is considered one branch delay slot.
+
+For example, a regular branch instruction might look like so:
+
+.. code-block:: assembly
+
+	cmp %o4, %g4	/* if %o4 is equals to %g4 */
+	be 200fd06	/* then branch */
+	mov [%g4], %o4	/* instructions after the branch, this is a */
+                        /* branch delay slot it is executed regardless */
+                        /* of whether %o4 is equals to %g4 */
+
+However, if marked with "``,a``", the instructions after the branch will
+only be executed if the branch is taken.  In other words, only if the
+condition before is true, then it would be executed. Otherwise if would be
+"annulled".
+
+.. code-block:: assembly
+
+	cmp %o4, %g4	/* if %o4 is equals to %g4 */
+	be,a 200fd06	/* then branch */
+	mov [%g4], %o4	/* instruction after the branch */
+
+
+The ``mov`` instruction is in a branch delay slot and is only executed
+if the branch is taken (e.g. if %o4 is equals to %g4). 
+
+This shows up in analysis of coverage reports when a single instruction
+is marked unexecuted when the instruction above and below it are executed.
+
+
 Memory Model
 ============
 
