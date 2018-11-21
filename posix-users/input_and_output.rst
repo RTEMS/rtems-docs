@@ -88,7 +88,9 @@ pipe - Create an Inter-Process Channel
 
 .. code-block:: c
 
+    #include <unistd.h>
     int pipe(
+        int fildes[2]
     );
 
 **STATUS CODES:**
@@ -237,10 +239,10 @@ read - Reads from a file
 .. code-block:: c
 
     #include <unistd.h>
-    int read(
-        int           fildes,
-        void         *buf,
-        unsigned int  nbyte
+    ssize_t read(
+        int fildes,
+        void *buf,
+        size_t nbyte
     );
 
 **STATUS CODES:**
@@ -313,10 +315,10 @@ write - Writes to a file
 .. code-block:: c
 
     #include <unistd.h>
-    int write(
-    int           fildes,
-        const void   *buf,
-        unsigned int  nbytes
+    ssize_t write(
+        int fildes,
+        const void *buf,
+        size_t nbyte
     );
 
 **STATUS CODES:**
@@ -370,12 +372,11 @@ fcntl - Manipulates an open file descriptor
 
 .. code-block:: c
 
-    #include <sys/types.h>
     #include <fcntl.h>
-    #include <unistd.h>
     int fcntl(
         int fildes,
-        int cmd
+        int cmd,
+        ...
     );
 
 **STATUS CODES:**
@@ -469,12 +470,11 @@ lseek - Reposition read/write file offset
 
 .. code-block:: c
 
-    #include <sys/types.h>
     #include <unistd.h>
-    int lseek(
-        int    fildes,
-        off_t  offset,
-        int    whence
+    off_t lseek(
+        int fildes,
+        off_t offset,
+        int whence
     );
 
 **STATUS CODES:**
@@ -527,8 +527,9 @@ fsync - Synchronize file complete in-core state with that on disk
 
 .. code-block:: c
 
+    #include <unistd.h>
     int fsync(
-        int fd
+        int fildes
     );
 
 **STATUS CODES:**
@@ -569,8 +570,9 @@ fdatasync - Synchronize file in-core data with that on disk
 
 .. code-block:: c
 
+    #include <unistd.h>
     int fdatasync(
-        int fd
+        int fildes
     );
 
 **STATUS CODES:**
@@ -620,7 +622,10 @@ sync - Schedule file system updates
 
 .. code-block:: c
 
-    void sync(void);
+    #include <unistd.h>
+    void sync(
+        void
+    );
 
 **STATUS CODES:**
 
@@ -650,10 +655,10 @@ mount - Mount a file system
     #include <libio.h>
     int mount(
         rtems_filesystem_mount_table_entry_t **mt_entry,
-        rtems_filesystem_operations_table    *fs_ops,
-        rtems_filesystem_options_t            fsoptions,
-        char                                 *device,
-        char                                 *mount_point
+        rtems_filesystem_operations_table *fs_ops,
+        rtems_filesystem_options_t fsoptions,
+        char *device,
+        char *mount_point
     );
 
 **STATUS CODES:**
@@ -717,9 +722,9 @@ readv - Vectored read from a file
 
     #include <sys/uio.h>
     ssize_t readv(
-        int                 fd,
+        int fildes,
         const struct iovec *iov,
-        int                 iovcnt
+        int iovcnt
     );
 
 **STATUS CODES:**
@@ -766,9 +771,9 @@ writev - Vectored write to a file
 
     #include <sys/uio.h>
     ssize_t writev(
-        int                 fd,
+        int fildes,
         const struct iovec *iov,
-        int                 iovcnt
+        int iovcnt
     );
 
 **STATUS CODES:**
@@ -818,7 +823,9 @@ aio_read - Asynchronous Read
 
 .. code-block:: c
 
+    #include <aio.h>
     int aio_read(
+        struct aiocb *aiocbp
     );
 
 **STATUS CODES:**
@@ -847,7 +854,9 @@ aio_write - Asynchronous Write
 
 .. code-block:: c
 
+    #include <aio.h>
     int aio_write(
+        struct aiocb *aiocbp
     );
 
 **STATUS CODES:**
@@ -876,7 +885,12 @@ lio_listio - List Directed I/O
 
 .. code-block:: c
 
+    #include <aio.h>
     int lio_listio(
+        int mode,
+        struct aiocb *restrict const list[restrict],
+        int nent,
+        struct sigevent *restrict sig
     );
 
 **STATUS CODES:**
@@ -905,7 +919,9 @@ aio_error - Retrieve Error Status of Asynchronous I/O Operation
 
 .. code-block:: c
 
+    #include <aio.h>
     int aio_error(
+        const struct aiocb *aiocbp
     );
 
 **STATUS CODES:**
@@ -934,7 +950,9 @@ aio_return - Retrieve Return Status Asynchronous I/O Operation
 
 .. code-block:: c
 
-    int aio_return(
+    #include <aio.h>
+    ssize_t aio_return(
+        struct aiocb *aiocbp
     );
 
 **STATUS CODES:**
@@ -963,7 +981,10 @@ aio_cancel - Cancel Asynchronous I/O Request
 
 .. code-block:: c
 
+    #include <aio.h>
     int aio_cancel(
+        int fildes,
+        struct aiocb *aiocbp
     );
 
 **STATUS CODES:**
@@ -992,7 +1013,11 @@ aio_suspend - Wait for Asynchronous I/O Request
 
 .. code-block:: c
 
+    #include <aio.h>
     int aio_suspend(
+        const struct aiocb *const list[],
+        int nent,
+        const struct timespec *timeout
     );
 
 **STATUS CODES:**
@@ -1021,7 +1046,10 @@ aio_fsync - Asynchronous File Synchronization
 
 .. code-block:: c
 
+    #include <aio.h>
     int aio_fsync(
+        int op,
+        struct aiocb *aiocbp
     );
 
 **STATUS CODES:**
