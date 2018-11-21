@@ -69,8 +69,8 @@ cfgetispeed - Reads terminal input baud rate
 .. code-block:: c
 
     #include <termios.h>
-    int cfgetispeed(
-        const struct termios *p
+    speed_t cfgetispeed(
+        const struct termios *termios_p
     );
 
 **STATUS CODES:**
@@ -105,8 +105,8 @@ cfgetospeed - Reads terminal output baud rate
 .. code-block:: c
 
     #include <termios.h>
-        int cfgetospeed(
-        const struct termios *p
+    speed_t cfgetospeed(
+        const struct termios *termios_p
     );
 
 **STATUS CODES:**
@@ -142,8 +142,8 @@ cfsetispeed - Sets terminal input baud rate
 
     #include <termios.h>
     int cfsetispeed(
-        struct termios *p,
-        speed_t         speed
+        struct termios *termios_p,
+        speed_t speed
     );
 
 **STATUS CODES:**
@@ -178,8 +178,8 @@ cfsetospeed - Sets terminal output baud rate
 
     #include <termios.h>
     int cfsetospeed(
-        struct termios *p,
-        speed_t         speed
+        struct termios *termios_p,
+        speed_t speed
     );
 
 **STATUS CODES:**
@@ -216,10 +216,9 @@ tcgetattr - Gets terminal attributes
 .. code-block:: c
 
     #include <termios.h>
-    #include <unistd.h>
     int tcgetattr(
-        int             fildes,
-        struct termios *p
+        int fildes,
+        struct termios *termios_p
     );
 
 **STATUS CODES:**
@@ -254,11 +253,10 @@ tcsetattr - Set terminal attributes
 .. code-block:: c
 
     #include <termios.h>
-    #include <unistd.h>
     int tcsetattr(
-        int                   fildes,
-        int                   options,
-        const struct termios *tp
+        int fildes,
+        int optional_actions,
+        const struct termios *termios_p
     );
 
 **STATUS CODES:**
@@ -284,8 +282,10 @@ tcsendbreak - Sends a break to a terminal
 
 .. code-block:: c
 
+    #include <termios.h>
     int tcsendbreak(
-        int fd
+        int fildes,
+        int duration
     );
 
 **STATUS CODES:**
@@ -315,7 +315,6 @@ tcdrain - Waits for all output to be transmitted to the terminal.
 .. code-block:: c
 
     #include <termios.h>
-    #include <unistd.h>
     int tcdrain(
         int fildes
     );
@@ -352,8 +351,10 @@ tcflush - Discards terminal data
 
 .. code-block:: c
 
+    #include <termios.h>
     int tcflush(
-        int fd
+        int fildes,
+        int queue_selector
     );
 
 **STATUS CODES:**
@@ -382,8 +383,10 @@ tcflow - Suspends/restarts terminal output.
 
 .. code-block:: c
 
+    #include <termios.h>
     int tcflow(
-        int fd
+        int fildes,
+        int action
     );
 
 **STATUS CODES:**
@@ -412,7 +415,9 @@ tcgetpgrp - Gets foreground process group ID
 
 .. code-block:: c
 
-    int tcgetpgrp(
+    #include <unistd.h>
+    pid_t tcgetpgrp(
+        int fildes
     );
 
 **STATUS CODES:**
@@ -441,7 +446,10 @@ tcsetpgrp - Sets foreground process group ID
 
 .. code-block:: c
 
+    #include <unistd.h>
     int tcsetpgrp(
+        int fildes,
+        pid_t pgid_id
     );
 
 **STATUS CODES:**
