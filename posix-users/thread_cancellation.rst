@@ -55,7 +55,9 @@ pthread_cancel - Cancel Execution of a Thread
 
 .. code-block:: c
 
+    #include <pthread.h>
     int pthread_cancel(
+        pthread_t thread
     );
 
 **STATUS CODES:**
@@ -81,7 +83,10 @@ pthread_setcancelstate - Set Cancelability State
 
 .. code-block:: c
 
+    #include <pthread.h>
     int pthread_setcancelstate(
+        int state,
+        int *oldstate
     );
 
 **STATUS CODES:**
@@ -107,7 +112,10 @@ pthread_setcanceltype - Set Cancelability Type
 
 .. code-block:: c
 
+    #include <pthread.h>
     int pthread_setcanceltype(
+        int type,
+        int *oldtype
     );
 
 **STATUS CODES:**
@@ -133,7 +141,9 @@ pthread_testcancel - Create Cancellation Point
 
 .. code-block:: c
 
-    int pthread_testcancel(
+    #include <pthread.h>
+    void pthread_testcancel(
+        void
     );
 
 **STATUS CODES:**
@@ -159,7 +169,10 @@ pthread_cleanup_push - Establish Cancellation Handler
 
 .. code-block:: c
 
-    int pthread_cleanup_push(
+    #include <pthread.h>
+    void pthread_cleanup_push(
+        void (*routine)(void*),
+        void *arg
     );
 
 **STATUS CODES:**
@@ -185,7 +198,9 @@ pthread_cleanup_pop - Remove Cancellation Handler
 
 .. code-block:: c
 
-    int pthread_cleanup_push(
+    #include <pthread.h>
+    void pthread_cleanup_pop(
+        int execute
     );
 
 **STATUS CODES:**
