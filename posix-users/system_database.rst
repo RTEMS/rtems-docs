@@ -58,7 +58,9 @@ getgrgid - Get Group File Entry for ID
 
 .. code-block:: c
 
-    int getgrgid(
+    #include <grp.h>
+    struct group *getgrgid(
+        gid_t gid
     );
 
 **STATUS CODES:**
@@ -84,7 +86,13 @@ getgrgid_r - Reentrant Get Group File Entry
 
 .. code-block:: c
 
+    #include <grp.h>
     int getgrgid_r(
+        gid_t gid,
+        struct group *grp,
+        char *buffer,
+        size_t bufsize,
+        struct group **result
     );
 
 **STATUS CODES:**
@@ -110,7 +118,9 @@ getgrnam - Get Group File Entry for Name
 
 .. code-block:: c
 
-    int getgrnam(
+    #include <grp.h>
+    struct group *getgrnam(
+        const char *name
     );
 
 **STATUS CODES:**
@@ -136,7 +146,13 @@ getgrnam_r - Reentrant Get Group File Entry for Name
 
 .. code-block:: c
 
+    #include <grp.h>
     int getgrnam_r(
+        const char *name,
+        struct group *grp,
+        char *buffer,
+        size_t bufsize,
+        struct group **result
     );
 
 **STATUS CODES:**
@@ -162,7 +178,9 @@ getpwuid - Get Password File Entry for UID
 
 .. code-block:: c
 
-    int getpwuid(
+    #include <pwd.h>
+    struct passwd *getpwuid(
+        uid_t uid
     );
 
 **STATUS CODES:**
@@ -188,7 +206,13 @@ getpwuid_r - Reentrant Get Password File Entry for UID
 
 .. code-block:: c
 
+    #include <pwd.h>
     int getpwuid_r(
+        uid_t uid,
+        struct passwd *pwd,
+        char *buffer,
+        size_t bufsize,
+        struct passwd **result
     );
 
 **STATUS CODES:**
@@ -214,7 +238,9 @@ getpwnam - Password File Entry for Name
 
 .. code-block:: c
 
-    int getpwnam(
+    #include <pwd.h>
+    struct passwd *getpwnam(
+        const char *name
     );
 
 **STATUS CODES:**
@@ -240,7 +266,13 @@ getpwnam_r - Reentrant Get Password File Entry for Name
 
 .. code-block:: c
 
+    #include <pwd.h>
     int getpwnam_r(
+        const char *name,
+        struct passwd *pwd,
+        char *buffer,
+        size_t bufsize,
+        struct passwd **result
     );
 
 **STATUS CODES:**
