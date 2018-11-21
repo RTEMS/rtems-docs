@@ -663,7 +663,14 @@ mount - Mount a file system
 
 **STATUS CODES:**
 
-*EXXX*
+ * - ``ENOMEM``
+   - Unable to allocate memory needed.
+
+ * - ``EINVAL``
+   - The filesystem does not support being mounted.
+
+ * - ``EINVAL``
+   - Attempt to mount a read-only filesystem as writeable.
 
 **DESCRIPTION:**
 
@@ -678,7 +685,7 @@ returned in ``mt_entry``.
 
 **NOTES:**
 
-NONE
+This method is not defined in the POSIX standard.
 
 .. _unmount:
 
@@ -698,7 +705,11 @@ unmount - Unmount file systems
 
 **STATUS CODES:**
 
-*EXXX*
+ * - ``EBUSY``
+   - Filesystem is in use or the root filesystem.
+
+ * - ``EACCESS``
+   - Unable to allocate memory needed.
 
 **DESCRIPTION:**
 
@@ -707,7 +718,7 @@ The ``unmount`` routine removes the attachment of the filesystem specified by
 
 **NOTES:**
 
-NONE
+This method is not defined in the POSIX standard.
 
 .. _readv:
 
