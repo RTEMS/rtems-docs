@@ -85,8 +85,8 @@ setlocale - Set the Current Locale
 
 .. code-block:: c
 
-    int setlocale(
-    );
+    #include <locale.h>
+    char *setlocale(int category, const char *locale);
 
 **STATUS CODES:**
 
@@ -111,8 +111,8 @@ fileno - Obtain File Descriptor Number for this File
 
 .. code-block:: c
 
-    int fileno(
-    );
+    #include <stdio.h>
+    int fileno(FILE *stream);
 
 **STATUS CODES:**
 
@@ -137,8 +137,8 @@ fdopen - Associate Stream with File Descriptor
 
 .. code-block:: c
 
-    int fdopen(
-    );
+    #include <stdio.h>
+    FILE *fdopen(int fildes, const char *mode);
 
 **STATUS CODES:**
 
@@ -163,8 +163,8 @@ flockfile - Acquire Ownership of File Stream
 
 .. code-block:: c
 
-    int flockfile(
-    );
+    #include <stdio.h>
+    void flockfile(FILE *file);
 
 **STATUS CODES:**
 
@@ -189,8 +189,8 @@ ftrylockfile - Poll to Acquire Ownership of File Stream
 
 .. code-block:: c
 
-    int ftrylockfile(
-    );
+    #include <stdio.h>
+    int ftrylockfile(FILE *file);
 
 **STATUS CODES:**
 
@@ -215,8 +215,8 @@ funlockfile - Release Ownership of File Stream
 
 .. code-block:: c
 
-    int funlockfile(
-    );
+    #include <stdio.h>
+    void funlockfile(FILE *file);
 
 **STATUS CODES:**
 
@@ -241,8 +241,8 @@ getc_unlocked - Get Character without Locking
 
 .. code-block:: c
 
-    int getc_unlocked(
-    );
+    #include <stdio.h>
+    int getc_unlocked(FILE *stream);
 
 **STATUS CODES:**
 
@@ -267,8 +267,8 @@ getchar_unlocked - Get Character from stdin without Locking
 
 .. code-block:: c
 
-    int getchar_unlocked(
-    );
+    #include <stdio.h>
+    int getchar_unlocked(void);
 
 **STATUS CODES:**
 
@@ -293,8 +293,8 @@ putc_unlocked - Put Character without Locking
 
 .. code-block:: c
 
-    int putc_unlocked(
-    );
+    #include <stdio.h>
+    int putc_unlocked(int c, FILE *stream);
 
 **STATUS CODES:**
 
@@ -319,8 +319,8 @@ putchar_unlocked - Put Character to stdin without Locking
 
 .. code-block:: c
 
-    int putchar_unlocked(
-    );
+    #include <stdio.h>
+    int putchar_unlocked(int c);
 
 **STATUS CODES:**
 
@@ -345,8 +345,8 @@ setjmp - Save Context for Non-Local Goto
 
 .. code-block:: c
 
-    int setjmp(
-    );
+    #include <setjmp.h>
+    int setjmp(jmp_buf env);
 
 **STATUS CODES:**
 
@@ -371,8 +371,8 @@ longjmp - Non-Local Jump to a Saved Context
 
 .. code-block:: c
 
-    int longjmp(
-    );
+    #include <setjmp.h>
+    void longjmp(jmp_buf env, int val);
 
 **STATUS CODES:**
 
@@ -397,8 +397,8 @@ sigsetjmp - Save Context with Signal Status for Non-Local Goto
 
 .. code-block:: c
 
-    int sigsetjmp(
-    );
+    #include <setjmp.h>
+    int sigsetjmp(sigjmp_buf env, int savemask);
 
 **STATUS CODES:**
 
@@ -423,8 +423,8 @@ siglongjmp - Non-Local Jump with Signal Status to a Saved Context
 
 .. code-block:: c
 
-    int siglongjmp(
-    );
+    #include <setjmp.h>
+    void siglongjmp(sigjmp_buf env, int val);
 
 **STATUS CODES:**
 
@@ -449,8 +449,11 @@ tzset - Initialize Time Conversion Information
 
 .. code-block:: c
 
-    int tzset(
-    );
+    #include <time.h>
+    extern int daylight;
+    extern long timezone;
+    extern char *tzname[2];
+    void tzset(void);
 
 **STATUS CODES:**
 
@@ -475,8 +478,9 @@ strtok_r - Reentrant Extract Token from String
 
 .. code-block:: c
 
-    int strtok_r(
-    );
+    #include <string.h>
+    char *strtok_r(char *restrict s, const char *restrict sep,
+    char **restrict state);
 
 **STATUS CODES:**
 
@@ -501,8 +505,8 @@ asctime_r - Reentrant struct tm to ASCII Time Conversion
 
 .. code-block:: c
 
-    int asctime_r(
-    );
+    #include <time.h>
+    char *asctime_r(const struct tm *restrict tm, char *restrict buf);
 
 **STATUS CODES:**
 
@@ -527,8 +531,8 @@ ctime_r - Reentrant time_t to ASCII Time Conversion
 
 .. code-block:: c
 
-    int ctime_r(
-    );
+    #include <time.h>
+    char *ctime_r(const time_t *clock, char *buf);
 
 **STATUS CODES:**
 
@@ -553,8 +557,9 @@ gmtime_r - Reentrant UTC Time Conversion
 
 .. code-block:: c
 
-    int gmtime_r(
-    );
+    #include <time.h>
+    struct tm *gmtime_r(const time_t *restrict timer,
+    struct tm *restrict result);
 
 **STATUS CODES:**
 
@@ -579,8 +584,9 @@ localtime_r - Reentrant Local Time Conversion
 
 .. code-block:: c
 
-    int localtime_r(
-    );
+    #include <time.h>
+    struct tm *localtime_r(const time_t *restrict timer,
+    struct tm *restrict result);
 
 **STATUS CODES:**
 
@@ -605,8 +611,8 @@ rand_r - Reentrant Random Number Generation
 
 .. code-block:: c
 
-    int rand_r(
-    );
+    #include <stdlib.h>
+    int rand_r(unsigned *seed);
 
 **STATUS CODES:**
 
