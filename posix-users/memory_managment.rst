@@ -63,7 +63,9 @@ mlockall - Lock the Address Space of a Process
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int mlockall(
+        int flags
     );
 
 **STATUS CODES:**
@@ -89,7 +91,9 @@ munlockall - Unlock the Address Space of a Process
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int munlockall(
+        void
     );
 
 **STATUS CODES:**
@@ -115,7 +119,10 @@ mlock - Lock a Range of the Process Address Space
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int mlock(
+        const void *addr,
+        size_t len
     );
 
 **STATUS CODES:**
@@ -141,7 +148,10 @@ munlock - Unlock a Range of the Process Address Space
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int munlock(
+        const void *addr,
+        size_t len
     );
 
 **STATUS CODES:**
@@ -167,6 +177,7 @@ mmap - Map Process Addresses to a Memory Object
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     void *mmap(
         void *addr,
         size_t len,
@@ -251,6 +262,7 @@ munmap - Unmap Previously Mapped Addresses
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int munmap(
         void *addr,
         size_t len
@@ -290,7 +302,11 @@ mprotect - Change Memory Protection
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int mprotect(
+        void *addr,
+        size_t len,
+        int prot
     );
 
 **STATUS CODES:**
@@ -316,7 +332,11 @@ msync - Memory Object Synchronization
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int msync(
+        void *addr,
+        size_t len,
+        int flags
     );
 
 **STATUS CODES:**
@@ -342,6 +362,7 @@ shm_open - Open a Shared Memory Object
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int shm_open(
         const char *name,
         int oflag,
@@ -407,6 +428,7 @@ shm_unlink - Remove a Shared Memory Object
 
 .. code-block:: c
 
+    #include <sys/mman.h>
     int shm_unlink(
         const char *name
     );
