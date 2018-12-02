@@ -7,7 +7,7 @@ project = "RTEMS Software Engineering Handbook"
 
 latex_documents = [
     ('index',
-     'software-engineering-handbook.tex',
+     'eng.tex',
      u'RTEMS Software Engineering Handbook',
      u'RTEMS Documentation Project',
      'manual'),
