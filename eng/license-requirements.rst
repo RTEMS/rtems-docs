@@ -21,3 +21,4 @@ https://devel.rtems.org/ticket/3053 for details.
 TBD - Convert the following to Rest and insert into this file
 TBD - https://devel.rtems.org/wiki/Developer/Coding/Conventions#Licenses
 
+TBD - Review and make sure this includes info on BSD variants
