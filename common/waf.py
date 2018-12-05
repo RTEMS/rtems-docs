@@ -119,9 +119,9 @@ def check_sphinx_version(ctx, minver):
                 try:
                     ver = tuple(map(int, re.split('[\D]', version)))
                 except:
-                    ctx.fatal("Sphinx version cannot be checked")
+                    ctx.fatal("Sphinx version cannot be checked or Sphinx is not installed")
             except:
-                ctx.fatal("Sphinx version cannot be checked: %s" % version)
+                ctx.fatal("Sphinx version cannot be checked or Sphinx is not installed")
     if ver < minver:
         ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
     return ver
