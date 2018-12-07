@@ -35,6 +35,8 @@ The directives provided by the scheduler manager are:
 
 - rtems_scheduler_ident_by_processor_set_ - Get ID of a scheduler by processor set
 
+- rtems_scheduler_get_maximum_priority_ - Get maximum task priority of a scheduler
+
 - rtems_scheduler_get_processor_set_ - Get processor set of a scheduler
 
 - rtems_scheduler_add_processor_ - Add processor to a scheduler
@@ -652,6 +654,41 @@ DESCRIPTION:
     Identifies a scheduler by a processor set.  The scheduler is selected
     according to the highest numbered online processor in the specified
     processor set.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_get_maximum_priority:
+
+SCHEDULER_GET_MAXIMUM_PRIORITY - Get maximum task priority of a scheduler
+-------------------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_get_maximum_priority(
+            rtems_id             scheduler_id,
+            rtems_task_priority *priority
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ID``
+       - Invalid scheduler instance identifier.
+     * - ``RTEMS_INVALID_ADDRESS``
+       - The ``priority`` parameter is ``NULL``.
+
+DESCRIPTION:
+    Returns the maximum task priority of the specified scheduler instance in
+    ``priority``.
 
 NOTES:
     None.
