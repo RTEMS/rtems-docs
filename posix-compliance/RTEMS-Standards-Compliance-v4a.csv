@@ -1129,7 +1129,7 @@ uselocale(),locale.h,INCL,,,,,,,,,,,,,,,,,,,,,RT-YES,,,,,
 usleep(),unistd.h,,INCL,,,,,,,,,,,,,,,,,,,RT-YES,RT-YES,,,,,
 utime(),utime.h,INCL,INCL,,INCL,INCL,INCL,,,,,,,,,,,INCL,,,,,RT-YES,,,,,POSIX_FILE_SYSTEM
 utimensat(),sys/stat.h,INCL,,,,,,,,,,,,,,,,,,,,,RT-NO,,,,,
-utimes(),sys/times.h,INCL,INCL,,,INCL,INCL,,,,,,,,,,,,,,,RT-YES,RT-YES,,,,,POSIX_MULTI_PROCESS
+utimes(),sys/time.h,INCL,INCL,,,INCL,INCL,,,,,,,,,,,,,,,RT-YES,RT-YES,,,,,POSIX_MULTI_PROCESS
 va_arg(),stdarg.h,INCL,INCL,INCL,INCL,INCL,INCL,INCL,INCL,,,INCL,INCL,,,INCL,INCL,,,,INCL,,HAND-YES,,,,,POSIX_C_LANG_SUPPORT
 va_copy(),stdarg.h,INCL,INCL,INCL,INCL,INCL,INCL,INCL,INCL,,,,INCL,,,,INCL,,,,INCL,,HAND-YES,,,,,POSIX_C_LANG_SUPPORT
 va_end(),stdarg.h,INCL,INCL,INCL,INCL,INCL,INCL,INCL,INCL,,,INCL,INCL,,,INCL,INCL,,,,INCL,,HAND-YES,,,,,POSIX_C_LANG_SUPPORT
