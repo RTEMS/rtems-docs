@@ -481,7 +481,7 @@ def xml_catalogue(ctx, building):
         # Import using the imp API so the module is reloaded for us.
         #
         import imp
-	sys.path = [top_dir.find_node(doc).abspath()]
+        sys.path = [top_dir.find_node(doc).abspath()]
         mf = imp.find_module('conf')
         sys.path = sp[:]
         try:
