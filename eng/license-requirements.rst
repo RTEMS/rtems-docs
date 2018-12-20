@@ -9,7 +9,7 @@ Licensing Requirements
 
 All artifacts shall adhere to RTEMS Project licensing
 requirements. Currently, the preferred licenses are CC-BY-SA-4.0 license
-for documentation and “Two Paragraph BSD” for source code.
+for documentation and "Two Paragraph BSD" for source code.
 
 Historically, RTEMS has been licensed under the GPL v2 with linking
 exception (https://www.rtems.org/license). It is preferred that new

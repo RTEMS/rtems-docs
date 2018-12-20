@@ -21,7 +21,7 @@ capabilities are part of the RTEMS Tester toolset.
 
 Assuming that a requirements focused test suite is added to the open
 RTEMS, tools will be needed to assist in verifying that requirements are
-“fully tested.” A fully tested requirement is one which is implemented
+"fully tested." A fully tested requirement is one which is implemented
 and tested with associated logical tracing. Tools automating this analysis
 and generating reporting and alerts will be a critical part of ensuring
 the master technical data does not bit rot.

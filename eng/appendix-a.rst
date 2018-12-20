@@ -9,7 +9,7 @@ Appendix: Core Qualification Artifacts/Documents
 
 An effort at NASA has been performed to suggest a core set of artifacts
 (as defined by **BOTH** NASA NPR 7150.2B and DO-178B) that can be utilized
-by a mission as a baselined starting point for “pre-qualification”
+by a mission as a baselined starting point for "pre-qualification"
 for (open-source) software that is intended to be utilized for flight
 purposes.  This effort analyzed the overlap between NPR 7150.2B
 and DO-178B and highlighted a core set of artifacts to serve as a
@@ -126,14 +126,14 @@ effort.
    |                | Results               | the results of software         |
    |                |                       | verification activities.        |
    +----------------+-----------------------+---------------------------------+
-   | Usability      | Software User’s       | The Software User Manual        |
+   | Usability      | Software User's       | The Software User Manual        |
    |                | Manual                | defines user instructions for   |
    |                |                       | the software.                   |
    +----------------+-----------------------+---------------------------------+
 
 In an effort to remain lightweight and sustainable for open-source
 projects, Table 1 above was condensed into a single artifact outline
-that encompasses the artifacts’ intents.  The idea is that this living
+that encompasses the artifacts' intents.  The idea is that this living
 qualification document will reside under RTEMS source control and be
 updated with additional detail accordingly.  The artifact outline is
 as follows:

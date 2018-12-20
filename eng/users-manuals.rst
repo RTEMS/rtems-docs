@@ -9,7 +9,7 @@ User's Manuals
 
 TBD - write and link to useful documentation, potential URLs:
 
-Reference the RTEMS C User’s Manual
+Reference the RTEMS Classic API Guide
 
 * https://docs.rtems.org/doc-current/share/rtems/pdf/c_user.pdf
 

@@ -40,11 +40,11 @@ trace linker using a command to link the application executable. The trace
 linker uses the application files in compiled format (ELF) and the libraries
 used to build the application for performing this link.
 
-Step 2: The RTEMS Trace Linker reads the user’s configuration file and that
+Step 2: The RTEMS Trace Linker reads the user's configuration file and that
 results in it reading the standard Trace Buffering Configuration files
 installed with the RTEMS Trace Linker. The trace linker uses the target
 compiler and linker to create the trace enabled application executable. It
-wraps the functions defined in the user’s configuration with code that captures
+wraps the functions defined in the user's configuration with code that captures
 trace records into the statically allocated buffer. The trace wrapper code is
 compiled with the target compiler and the resulting ELF object file is added to
 the standard link command line used to link the application and the application
@@ -53,7 +53,7 @@ is re-linked using the wrapping option of the GNU linker.
 Step 3: The trace linker creates an executable which is capable of running on
 the target hardware or simulator.
 
-Step 4: RTEMS shell provides the “rtrace” command to display and save trace
+Step 4: RTEMS shell provides the "rtrace" command to display and save trace
 buffers.
 
 .. comment: taken from https://devel.rtems.org/wiki/Developer/Tracing

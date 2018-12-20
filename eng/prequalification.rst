@@ -14,13 +14,13 @@ applications. In some of these application domains, there are standards
 processes used to develop software and the associated artifacts. These
 standards typically do not specify software functionality but address
 topics like requirements definition, traceability, having a documented
-change process, coding style, testing requirements, and a user’s
-manual. During system test, these standards call for a review – usually
-by an independent entity – that the standard has been adhered too. These
+change process, coding style, testing requirements, and a user's
+manual. During system test, these standards call for a review - usually
+by an independent entity - that the standard has been adhered too. These
 reviews cover a broad variety of topics and activities, but the process
 is generally referred to as qualification, verification, or auditing
 against the specific standard in use. The RTEMS Project will use the
-term “qualification” independent of the standard.
+term "qualification" independent of the standard.
 
 The goal of the RTEMS Qualification Project is to make RTEMS easier
 to review regardless of the standard chosen. Quite specifically,
@@ -36,8 +36,8 @@ the associated traceability to source code, tests, and documentation
 are needed.
 
 The RTEMS Qualification Project is technically
-“pre-qualification”. True qualification must be performed on the
-project’s target hardware in a system context. The FAA has provided
+"pre-qualification." True qualification must be performed on the
+project's target hardware in a system context. The FAA has provided
 guidance for Reusable Software Components (FAA-AC20-148) and this
 effort should follow that guidance. The open RTEMS Project, with the
 assistance of domain experts, will possess and maintain the master
@@ -53,7 +53,7 @@ provided by the RTEMS Project. For example, the RTEMS Qualification could
 suggest specific improvements to code coverage reports. The teams focused
 on qualification should be able to provide resources for improving the
 automated project infrastructure and master technical data for RTEMS. The
-term “resources” is often used by open source projects to refer to
+term "resources" is often used by open source projects to refer to
 volunteer code contributions or funding. Although code contributions in
 this area are important and always welcome, funding is also important. At
 a minimum, ongoing funding is needed for maintenance and upgrades of
@@ -74,7 +74,7 @@ to the RTEMS Project.
 
 It is expected that the RTEMS Qualification Project will create and
 maintain maps from the RTEMS master technical data to the various
-qualification standards. It will maintain “scorecards” which
+qualification standards. It will maintain "scorecards" which
 identify how the RTEMS Project is currently doing when reviewed per each
 standard. These will be maintained in the open as community resources
 which will guide the community in improving its infrastructure.

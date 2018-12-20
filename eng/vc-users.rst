@@ -384,7 +384,7 @@ Rebasing
 
 An alternative to the merge command is rebase, which replays the changes
 (commits) on one branch onto another. ``git rebase`` finds the common ancestor
-of the two branches, stores each commit of the branch you’re on to temporary
+of the two branches, stores each commit of the branch you are on to temporary
 files and applies each commit in order.
 
 For example

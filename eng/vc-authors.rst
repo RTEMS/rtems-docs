@@ -25,9 +25,9 @@ SSH Access
 
 Currently all committer's should have an ssh account on the main git server,
 dispatch.rtems.org. If you have been granted commit access and do have an
-account on dispatch.rtems.org one should be requested on the devel@… list.
+account on dispatch.rtems.org one should be requested on the devel@ list.
 SSH access for git uses key logins instead of passwords. The key should be at
-least 1024bits in length.
+least 1024 bits in length.
 
 The public repositories can by cloned with
 
@@ -42,7 +42,7 @@ Personal Repository
 Personal repositories keep the clutter away from the master repository. A
 user with a personal repository can make commits, create and delete branches,
 plus more without interfering with the master repository. Commits to the
-master repository generate email to the vc@… list and development type commits
+master repository generate email to the vc@ list and development type commits
 by a developer would only add noise and lessen the effectiveness of the commit
 list
 

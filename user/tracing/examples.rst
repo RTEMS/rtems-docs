@@ -56,7 +56,7 @@ The next two commands are used to link the fileio executable.The `-B` option
 signifies the use of the complete path to the required directory or file. Write
 the full path instead of the path file: `sparc-rtems5/erc32/lib/` in the
 following commands according to your installation. Also confirm the path of the
-fileio’s executable and object files in the last line of the command according
+fileio's executable and object files in the last line of the command according
 to your installation.
 
 .. code:: shell
