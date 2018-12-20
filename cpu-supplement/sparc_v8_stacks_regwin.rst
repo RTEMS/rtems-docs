@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. comment Permission granted by the original author (Peter Magnusson) to
+.. comment Permission granted by the original author (Peter S. Magnusson) to
 .. comment convert this page to Rest and include in the RTEMS Documentation.
 .. comment This content is no longer online and only accessible at
 .. comment https://web.archive.org/web/20120205014832/https://www.sics.se/~psm/sparcstack.html
@@ -10,7 +10,7 @@ Stacks and Register Windows
 
 .. sidebar:: *Credit*
 
-   The contents of this section were originally written by Peter Magnusson
+   The contents of this section were originally written by Peter S. Magnusson
    and available through a website which is no longer online. Peter graciously
    granted permission for this information to be included in the RTEMS
    Documentation.
