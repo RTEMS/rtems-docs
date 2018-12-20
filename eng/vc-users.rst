@@ -53,7 +53,7 @@ the command:
 
 This will create a local branch named "rtems410", containing the rtems-4.10
 release, that will track the remote branch "rtems-4-10-branch" in origin
-(​git://git.rtems.org/rtems.git). The ``git branch`` command prints a list of
+(git://git.rtems.org/rtems.git). The ``git branch`` command prints a list of
 the current local branches, indicating the one currently checked out.
 
 If you want to switch between local branches:
@@ -284,7 +284,7 @@ git reset
 
 ``git reset`` is a powerful and tricky command that should only be used on
 local (un-pushed) branches): A good description of what it enables to do can be
-found ​here. The following are a few useful examples. Note that adding a ~
+found here. The following are a few useful examples. Note that adding a ~
 after HEAD refers to the most recent commit, and you can add a number after
 the ~ to refer to commits even further back; HEAD by itself refers to the
 current working directory (changes since the last commit).
@@ -545,7 +545,7 @@ Troubleshooting
 ---------------
 
 Some restrictive corporate firewalls block access through the Git protocol
-(​git://). If you are unable to reach the server ​git://git.rtems.org/ you can
+(git://). If you are unable to reach the server git://git.rtems.org/ you can
 try accessing through http. To clone the rtems repository using the http
 protocol use the following command:
 
