@@ -433,9 +433,9 @@ CALLING SEQUENCE:
     .. code-block:: c
 
         rtems_status_code rtems_message_queue_send(
-            rtems_id   id,
+            rtems_id    id,
             const void *buffer,
-            size_t     size
+            size_t      size
         );
 
 DIRECTIVE STATUS CODES:

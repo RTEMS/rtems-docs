@@ -254,9 +254,9 @@ alphabetical order:
 ``rtems_single``
   This type is deprecated will be removed in RTEMS 6.1.  Use ``float`` instead.
 
-.. index:: rtems_status_codes
+.. index:: rtems_status_code
 
-``rtems_status_codes``
+``rtems_status_code``
   The return type for most RTEMS services.  This is an enumerated type of
   approximately twenty-five values.  In general, when a service returns a
   particular status code, it indicates that a very specific error condition has
