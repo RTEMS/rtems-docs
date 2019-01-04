@@ -1,26 +1,3 @@
-import datetime
-
-def build_date():
-    now = datetime.date.today()
-    m = now.strftime('%B')
-    y = now.strftime('%Y')
-    if now.day == 11:
-        s = 'th'
-    elif now.day % 10 == 1:
-        s = 'st'
-    elif now.day == 12:
-        s = 'th'
-    elif now.day % 10 == 2:
-        s = 'nd'
-    elif now.day == 13:
-        s = 'th'
-    elif now.day == 3:
-        s = 'rd'
-    else:
-        s = 'th'
-    d = '%2d%s' % (now.day, s)
-    return '%s %s %s' % (d, m, y)
-
 extensions = [
 	"sphinx.ext.autodoc",
 	"sphinx.ext.coverage",
@@ -47,7 +24,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RTEMS Documentation Project'
-copyright = u'2018, RTEMS Project (built %s)' % (build_date())
+copyright = u'2018, RTEMS Project'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

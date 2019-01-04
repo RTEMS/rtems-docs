@@ -17,24 +17,8 @@ import latex
 
 sphinx_min_version = (1, 3)
 
-def build_date():
-    import datetime
-    now = datetime.date.today()
-    m = now.strftime('%B')
-    y = now.strftime('%Y')
-    if now.day % 10 == 1:
-        s = 'st'
-    elif now.day % 10 == 2:
-        s = 'nd'
-    elif now.day == 3:
-        s = 'rd'
-    else:
-        s = 'th'
-    d = '%2d%s' % (now.day, s)
-    return '%s %s %s' % (d, m, y)
-
 def version_cmdline(ctx):
-    return '-Drelease="%s" -Dversion="%s"' % (ctx.env.VERSION, ctx.env.VERSION)
+    return '-Drelease="%s" -Dversion="%s"' % (ctx.env.RELEASE, ctx.env.VERSION)
 
 def sphinx_cmdline(ctx, build_type, conf_dir, doctrees,
                    source_dir, output_dir, configs = []):
@@ -207,8 +191,6 @@ def check_sphinx_extension(ctx, extension):
 def cmd_configure(ctx):
     check_sphinx = not ctx.env.BIN_SPHINX_BUILD
     if check_sphinx:
-        ctx.msg('Checking version', ctx.env.VERSION)
-
         ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
         ctx.find_program("aspell", var = "BIN_ASPELL", mandatory = False)
 
@@ -502,7 +484,7 @@ def xml_catalogue(ctx, building):
     cat = xml.Document()
 
     root = cat.createElement('rtems-docs')
-    root.setAttribute('date', build_date())
+    root.setAttribute('date', ctx.env.DATE)
     cat.appendChild(root)
 
     heading = cat.createElement('catalogue')
