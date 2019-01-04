@@ -24,7 +24,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RTEMS Documentation Project'
-copyright = u'2018, RTEMS Project'
+copyright = u'2018, 2019 RTEMS Project and contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
