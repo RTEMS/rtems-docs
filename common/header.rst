@@ -7,17 +7,17 @@ any product described in this document is assumed.  The authors reserve the
 right to revise this material and to make changes from time to time in the
 content hereof without obligation to notify anyone of such revision or changes.
 
-The RTEMS Project is hosted at http://www.rtems.org/.  Any inquiries concerning
+The RTEMS Project is hosted at https://www.rtems.org.  Any inquiries concerning
 RTEMS, its related support components, or its documentation should be directed
-to the Community Project hosted at http://www.rtems.org/.
+to the RTEMS Project community.
 
 .. topic:: RTEMS Online Resources
 
-  ================  =============================
-  Home              https://www.rtems.org/
-  Developers        https://devel.rtems.org/
-  Documentation     https://docs.rtems.org/
-  Bug Reporting     https://devel.rtems.org/query
-  Mailing Lists     https://lists.rtems.org/
-  Git Repositories  https://git.rtems.org/
-  ================  =============================
+    ================  ====================================================
+    Home              https://www.rtems.org
+    Documentation     https://docs.rtems.org
+    Mailing Lists     https://lists.rtems.org
+    Bug Reporting     https://devel.rtems.org/wiki/Developer/Bug_Reporting
+    Git Repositories  https://git.rtems.org
+    Developers        https://devel.rtems.org
+    ================  ====================================================
