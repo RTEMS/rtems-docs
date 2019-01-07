@@ -1,60 +1,189 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+Introduction
+============
+
 Overview
-========
+--------
 
-Welcome to the :ref:term:`RTEMS` User Manual.
+You are someone looking for a real-time operating system.  This document
 
-This document covers the topics a user of RTEMS needs to be able to install,
-configure, build and create applications for the RTEMS operating system.
+- presents the basic features of RTEMS, so that you can decide if it is worth to
+  look at,
 
-RTEMS, Real-Time Executive for Multiprocessor Systems, is a real-time executive
-(kernel) which provides a high performance environment for embedded
-applications with the following features:
+- gives you a :ref:`quick start <QuickStart>` to install all the tools
+  necessary to work with RTEMS, and
 
-.. sidebar:: Developers
+- helps you to build an example application on top of RTEMS.
 
-  Developers should look at the :r:url:`devel` for technical information. The
-  design and development of RTEMS is located there.
+Features
+--------
 
-- standards based user interfaces
+The Real-Time Executive for Multiprocessor Systems (:ref:term:`RTEMS`) is a
+multi-threaded, single address-space, real-time operating system with no
+kernel-space/user-space separation.  It is capable to operate in an
+:ref:term:`SMP` configuration providing a state of the art feature set.
 
-- multitasking capabilities
+RTEMS is licensed under a
+`modified GPL 2.0 or later license with an exception for static linking <https://git.rtems.org/rtems/tree/LICENSE>`_
+[#]_.  It exposes no license requirements on application code.  The third-party
+software used and distributed by RTEMS which may be linked to the application
+is licensed under permissive open source licenses.  Everything necessary to
+build RTEMS applications is available as open source software.  This makes you
+completely vendor independent.
 
-- homogeneous and heterogeneous multiprocessor systems
+RTEMS provides the following basic feature set:
 
-- event-driven, priority-based, preemptive scheduling
+- :ref:term:`APIs <API>`
 
-- optional rate monotonic scheduling
+    - :ref:term:`POSIX` with
+      `pthreads <http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html>`_
+      (enables a broad range of standard software to run on RTEMS)
 
-- intertask communication and synchronization
+    - `Classic <https://docs.rtems.org/branches/master/c-user.pdf>`_
 
-- priority inheritance
+    - :ref:term:`C11` (including
+      `thread <https://en.cppreference.com/w/c/thread>`_ support)
 
-- responsive interrupt management
+    - :ref:term:`C++11` (including
+      `thread <https://en.cppreference.com/w/cpp/thread>`_ support)
 
-- dynamic memory allocation
+    - Newlib and :ref:term:`GCC` internal
 
-- high level of user configurability
+- Programming languages
 
-- open source with a friendly user license
+    - C/C++/OpenMP (RTEMS Source Builder, RSB)
 
-RTEMS provides features found in modern operating systems:
+    - Ada (RSB, ``--with-ada``)
 
-- file systems
+    - Erlang
 
-- networking
+    - Fortran (RSB, ``--with-fortran``)
 
-- USB
+    - Python and MicroPython
 
-- permanent media such as flash disks, cards and USB devices
+- Parallel languages
 
-- support for various languages
+    - :ref:term:`EMB²`
 
-- parallel programming language support
+    - Google Go [#]_
+
+    - :ref:term:`OpenMP` 4.5
+
+- Thread synchronization and communication
+
+    - Mutexes with and without locking protocols
+
+    - Counting semaphores
+
+    - Binary semaphores
+
+    - Condition variables
+
+    - Events
+
+    - Message queues
+
+    - Barriers
+
+    - :ref:term:`Futex` (used by :ref:term:`OpenMP` barriers)
+
+    - Epoch Based Reclamation (libbsd)
+
+- Locking protocols
+
+    - Transitive Priority Inheritance
+
+    - :ref:term:`OMIP` (SMP feature)
+
+    - Priority Ceiling
+
+    - :ref:term:`MrsP` (SMP feature)
+
+- Scalable timer and timeout support
+
+- Lock-free timestamps (FreeBSD timecounters)
+
+- Responsive interrupt management
+
+- C11/C++11 :ref:term:`TLS` [#]_
+
+- Link-time configurable schedulers
+
+    - Fixed-priority
+
+    - Job-level fixed-priority (:ref:term:`EDF`)
+
+    - Constant Bandwidth Server (experimental)
+
+- Clustered scheduling (SMP feature)
+
+    - Flexible link-time configuration
+
+    - Job-level fixed-priority scheduler (:ref:term:`EDF`) with support for
+      one-to-one and one-to-all thread to processor affinities (default SMP
+      scheduler)
+
+    - Fixed-priority scheduler
+
+    - Proof-of-concept strong :ref:term:`APA` scheduler
+
+- Focus on link-time application-specific configuration
+
+- Linker-set based initialization (similar to global C++ constructors)
+
+- Operating system uses fine-grained locking (SMP feature)
+
+- Dynamic memory allocators
+
+    - First-fit (default)
+
+    - Universal Memory Allocator
+      (`UMA <https://www.freebsd.org/cgi/man.cgi?query=uma&sektion=9>`_ ,
+      libbsd)
+
+- File systems
+
+    - :ref:term:`IMFS`
+
+    - :ref:term:`FAT`
+
+    - :ref:term:`RFS`
+
+    - :ref:term:`NFSv2`
+
+    - :ref:term:`JFFS2` (NOR flashes)
+
+    - :ref:term:`YAFFS2` (NAND flashes, GPL or commercial license required)
+
+- Device drivers
+
+    - Termios (serial interfaces)
+
+    - I2C (Linux user-space API compatible)
+
+    - SPI (Linux user-space API compatible)
+
+    - Network stacks (legacy, libbsd, lwIP)
+
+    - USB stack (libbsd)
+
+    - SD/MMC card stack (libbsd)
+
+    - Framebuffer (Linux user-space API compatible, Qt)
+
+    - Application runs in kernel-space and can access hardware directly
+
+- libbsd
+
+    - Port of FreeBSD user-space and kernel-space components to RTEMS
+
+    - Easy access to FreeBSD software for RTEMS
+
+    - Support to stay in synchronization with FreeBSD
 
 Real-time Application Systems
-=============================
+-----------------------------
 
 Real-time application systems are a special class of computer applications.
 They have a complex set of characteristics that distinguish them from other
@@ -89,7 +218,7 @@ competing processors are introduced.  The ramifications of multiple processors
 complicate each and every characteristic of a real-time system.
 
 Real-time Executive
-===================
+-------------------
 
 Fortunately, real-time operating systems, or real-time executives, serve as a
 cornerstone on which to build the application system.  A real-time multitasking
@@ -127,3 +256,17 @@ routines to manage memory, pass messages, or provide mutual exclusion.  The
 developer is then able to concentrate solely on the application.  By using
 standard software components, the time and cost required to develop
 sophisticated real-time applications are significantly reduced.
+
+.. [#] The goal is to use the
+       `BSD 2-Clause license
+       <https://git.rtems.org/rtems/tree/LICENSE.BSD-2-Clause>`_ for new code
+       or code those copyright holder agreed to a license change, see `#3053
+       <https://devel.rtems.org/ticket/3053>`_ for the details.
+
+.. [#] See `#2832 <https://devel.rtems.org/ticket/2832>`_.
+
+.. [#] Thread-local storage requires some support by the tool chain and the
+       RTEMS architecture support, e.g. context-switch code.  It is supported
+       at least on ARM, PowerPC, RISC-V, SPARC and m68k.  Check the
+       `RTEMS CPU Architecture Supplement <https://docs.rtems.org/branches/master/cpu-supplement.pdf>`_
+       if it is supported.

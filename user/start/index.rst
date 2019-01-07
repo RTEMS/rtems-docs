@@ -5,6 +5,8 @@
 
 .. index:: Quick Start
 
+.. _QuickStart:
+
 Quick Start
 ***********
 
