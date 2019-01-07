@@ -44,7 +44,9 @@ thread blocking.  This is currently not used.
 Floating Point Unit
 -------------------
 
-The following floating point units are supported.
+The following floating point units are supported:
+
+- VFPv2 (for example available on ARM926EJ-S processors)
 
 - VFPv3-D32/NEON (for example available on Cortex-A processors)
 
@@ -52,12 +54,16 @@ The following floating point units are supported.
 
 - FPv4-SP-D16 (for example available on Cortex-M processors)
 
+- FPv5-D16 (for example available on Cortex-M7 processors)
+
 Multilibs
 =========
 
 The following multilibs are available:
 
 #. ``.``: ARMv4T, ARM instruction set
+
+#. ``vfp/hard``: ARMv4T, ARM instruction set with hard-float ABI and VFPv2 support
 
 #. ``thumb``: ARMv4T, Thumb-1 instruction set
 
@@ -79,24 +85,29 @@ The following multilibs are available:
 #. ``thumb/armv7-m/fpv4-sp-d16``: ARMv7-M, Thumb-2 instruction set with
    hardware integer division (SDIV/UDIV) and hard-float ABI FPv4-SP support
 
+#. ``thumb/cortex-m7/fpv5-d16``: Cortex-M7, Thumb-2 instruction set with
+   hard-float ABI and FPv5-D16 support
+
 #. ``eb/thumb/armv7-r``: ARMv7-R, Big-endian Thumb-2 instruction set
 
 #. ``eb/thumb/armv7-r/vfpv3-d16/hard``: ARMv7-R, Big-endian Thumb-2 instruction
    set with hard-float ABI VFP-D16 support
 
-Multilib 1. and 2. support the standard ARM7TDMI and ARM926EJ-S targets.
+Multilib 1., 2. and 3. support the standard ARM7TDMI and ARM926EJ-S processors.
 
-Multilib 3. supports the Cortex-M0 and Cortex-M1 cores.
+Multilib 4. supports the Cortex-M0 and Cortex-M1 cores.
 
-Multilib 8. supports the Cortex-M3 and Cortex-M4 cores, which have a special
+Multilib 9. supports the Cortex-M3 and Cortex-M4 cores, which have a special
 hardware integer division instruction (this is not present in the A and R
 profiles).
 
-Multilib 9. supports the Cortex-M4 cores with a floating point unit.
+Multilib 10. supports the Cortex-M4 cores with a floating point unit.
 
-Multilib 4. and 5. support the Cortex-A processors.
+Multilib 11. supports the Cortex-M7 cores with a floating point unit.
 
-Multilib 6., 7., 10. and 11. support the Cortex-R processors.  Here also
+Multilib 5. and 6. support the Cortex-A processors.
+
+Multilib 7., 8., 12. and 13. support the Cortex-R processors.  Here also
 big-endian variants are available.
 
 Use for example the following GCC options:
