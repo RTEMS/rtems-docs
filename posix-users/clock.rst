@@ -1,4 +1,4 @@
-.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+.. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. COMMENT: This is the chapter from the RTEMS POSIX 1003.1b API User's Guide that
 .. COMMENT: documents the services provided by the timer @c  manager.

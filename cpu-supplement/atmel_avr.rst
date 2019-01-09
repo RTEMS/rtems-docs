@@ -1,4 +1,4 @@
-.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+.. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 1988, 2006 On-Line Applications Research Corporation (OAR)
 

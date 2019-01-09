@@ -1,4 +1,4 @@
-.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+.. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2011,2015 Aeroflex Gaisler AB
 

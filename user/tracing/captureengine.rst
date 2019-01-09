@@ -1,4 +1,4 @@
-.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+.. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2018 Vidushi Vashishth <vidushivashishth96@gmail.com>
 

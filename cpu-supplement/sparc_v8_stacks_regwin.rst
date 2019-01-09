@@ -1,4 +1,4 @@
-.. comment SPDX-License-Identifier: CC-BY-SA-4.0
+.. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. comment Permission granted by the original author (Peter S. Magnusson) to
 .. comment convert this page to Rest and include in the RTEMS Documentation.
