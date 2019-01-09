@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2016 embedded brains GmbH <rtems@embedded-brains.de>
-.. COMMENT: All rights reserved.
 
 SPI Driver
 **********

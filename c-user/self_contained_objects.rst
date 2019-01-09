@@ -2,7 +2,6 @@
 
 .. Copyright (C) 2014, 2017.
 .. COMMENT: embedded brains GmbH.
-.. COMMENT: All rights reserved.
 
 Self-Contained Objects
 **********************

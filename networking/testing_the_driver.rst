@@ -2,7 +2,6 @@
 
 .. COMMENT: Text Written by Jake Janovetz
 .. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 Testing the Driver
 ##################

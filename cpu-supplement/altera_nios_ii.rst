@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2014 Hesham ALMatary <heshamelmatary@gmail.com>
-.. COMMENT: All rights reserved.
 
 Altera Nios II Specific Information
 ***********************************

@@ -2,7 +2,6 @@
 
 
 .. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 Miscellaneous Support Files
 ***************************

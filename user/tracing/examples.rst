@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2018 Vidushi Vashishth <vidushivashishth96@gmail.com>
-.. comment: All rights reserved.
 
 .. _examples:
 

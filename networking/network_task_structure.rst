@@ -2,7 +2,6 @@
 
 .. COMMENT: Written by Eric Norum
 .. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 Network Task Structure and Data Flow
 ####################################

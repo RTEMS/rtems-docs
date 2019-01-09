@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 1988, 2012 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 .. index:: Red-Black Trees
 .. index:: rbtrees

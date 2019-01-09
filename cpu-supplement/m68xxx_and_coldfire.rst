@@ -1,6 +1,5 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2014 embedded brains GmbH.  All rights reserved.
 
 M68xxx and Coldfire Specific Information
 ****************************************

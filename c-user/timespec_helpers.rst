@@ -2,7 +2,6 @@
 
 .. Copyright (C) 2011.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
-.. COMMENT: All rights reserved.
 
 .. index:: TImespec Helpers
 

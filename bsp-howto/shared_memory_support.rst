@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 1988, 2009 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 Shared Memory Support Driver
 ****************************

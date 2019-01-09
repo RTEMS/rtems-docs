@@ -2,7 +2,6 @@
 
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 .. Copyright (C) 2017 Kuan-Hsun Chen.
-.. COMMENT: All rights reserved.
 
 .. index:: rate mononitonic tasks
 .. index:: periodic tasks

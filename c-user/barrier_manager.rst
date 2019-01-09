@@ -2,7 +2,6 @@
 
 .. Copyright (C) 1988, 2008, 2018.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
-.. COMMENT: All rights reserved.
 
 .. index:: barrier
 

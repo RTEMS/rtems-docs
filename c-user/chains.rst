@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2014 Gedare Bloom
-.. COMMENT: All rights reserved.
 
 .. index:: chains
 

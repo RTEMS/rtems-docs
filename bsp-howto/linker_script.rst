@@ -2,7 +2,6 @@
 
 
 .. Copyright (C) 1988, 2011 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 Linker Script
 *************

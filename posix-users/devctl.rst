@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2017 On-Line Applications Research Corporation (OAR)
-.. COMMENT: All rights reserved.
 
 Device Control
 ##############
