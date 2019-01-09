@@ -23,9 +23,6 @@ RTEMS Source Builder (|version|).
 
 .. include:: ../common/header.rst
 
-Table of Contents
------------------
-
 .. toctree::
 	:maxdepth: 5
 	:numbered:
