@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Copyright (c) 2014 embedded brains GmbH.  All rights reserved.
+.. Copyright (C) 2014 embedded brains GmbH.  All rights reserved.
 
 Lattice Mico32 Specific Information
 ***********************************

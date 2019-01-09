@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Copyright (c) 2018
-.. COMMENT: embedded brains GmbH
+.. Copyright (C) 2018 embedded brains GmbH
 .. COMMENT: All rights reserved.
 
 RISC-V Specific Information

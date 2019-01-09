@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Copyright (c) 2015 University of York.
+.. Copyright (C) 2015 University of York.
 .. COMMENT: Hesham ALMatary <hmka501@york.ac.uk>
 
 Blackfin Specific Information

@@ -1,8 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
 
-.. COMMENT: COPYRIGHT (c) 1988-2011.
-.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. Copyright (C) 1988, 2011 On-Line Applications Research Corporation (OAR)
 .. COMMENT: All rights reserved.
 
 Linker Script

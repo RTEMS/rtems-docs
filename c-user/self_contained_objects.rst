@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Copyright (c) 2014, 2017.
+.. Copyright (C) 2014, 2017.
 .. COMMENT: embedded brains GmbH.
 .. COMMENT: All rights reserved.
 

@@ -1,5 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+.. COMMENT: All rights reserved.
+
 Services Provided by the Math Library (libm)
 ############################################
 
@@ -89,10 +92,3 @@ Standard Math Functions (math.h)
 - ``tan`` - Tangent
 
 - ``tanh`` - Hyperbolic tangent
-
-.. COMMENT: COPYRIGHT (c) 1988-2002.
-
-.. COMMENT: On-Line Applications Research Corporation (OAR).
-
-.. COMMENT: All rights reserved.
-

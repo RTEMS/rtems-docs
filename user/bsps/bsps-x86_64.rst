@@ -1,6 +1,7 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
-.. comment Copyright (c) 2018 Amaan Cheval <amaan.cheval@gmail.com>
-.. comment Copyright (c) 2018 embedded brains GmbH
+
+.. Copyright (C) 2018 Amaan Cheval <amaan.cheval@gmail.com>
+.. Copyright (C) 2018 embedded brains GmbH
 
 x86_64
 ******

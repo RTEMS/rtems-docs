@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 2017 embedded brains GmbH <rtems@embedded-brains.de>
+.. Copyright (C) 2017 embedded brains GmbH <rtems@embedded-brains.de>
 .. COMMENT: All rights reserved.
 
 Entropy Source

@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Copyright (c) 2016 embedded brains GmbH <rtems@embedded-brains.de>
+.. Copyright (C) 2016 embedded brains GmbH <rtems@embedded-brains.de>
 .. COMMENT: All rights reserved.
 
 I2C Driver

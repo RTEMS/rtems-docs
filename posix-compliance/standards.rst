@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 2018.
+.. Copyright (C) 2018.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
  | **COPYRIGHT (c) 20188.**
 .. **RTEMS Foundation, The RTEMS Documentation Project**

@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. comment: Copyright (c) 2016 Chris Johns <chrisj@rtems.org>
+.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 .. comment: All rights reserved.
 
 .. _rtems-kernel:

@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 2018.
+.. Copyright (C) 2018.
 .. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
 RTEMS Tester

@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 1988-2014.
-.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. Copyright (C) 1988, 2014 On-Line Applications Research Corporation (OAR)
 .. COMMENT: All rights reserved.
 
 Message Passing Manager

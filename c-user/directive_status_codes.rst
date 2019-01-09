@@ -1,6 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: Copyright 2015 embedded brains GmbH
+.. Copyright (C) 2015 embedded brains GmbH
 .. COMMENT: All rights reserved.
 
 .. index:: Status Codes

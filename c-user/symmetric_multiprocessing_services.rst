@@ -1,8 +1,8 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 2014.
+.. Copyright (C) 2014.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
-.. COMMENT: Copyright (c) 2017 embedded brains GmbH.
+.. Copyright (C) 2017 embedded brains GmbH.
 .. COMMENT: All rights reserved.
 
 .. index:: Symmetric Multiprocessing

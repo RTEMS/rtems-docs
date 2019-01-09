@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. COMMENT: COPYRIGHT (c) 1988-2012.
-.. COMMENT: On-Line Applications Research Corporation (OAR).
+.. Copyright (C) 1988, 2012 On-Line Applications Research Corporation (OAR)
 .. COMMENT: All rights reserved.
 
 .. index:: Red-Black Trees

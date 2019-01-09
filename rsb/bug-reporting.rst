@@ -1,7 +1,6 @@
 .. comment SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. comment COPYRIGHT (c) 2012 - 2016.
-.. comment Chris Johns <chrisj@rtems.org>
+.. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
 .. _Bugs, Crashes, and Build Failures:
 
