@@ -4,4 +4,7 @@
 or1k (OpenRISC 1000)
 ********************
 
+generic_or1k
+============
+
 TODO.

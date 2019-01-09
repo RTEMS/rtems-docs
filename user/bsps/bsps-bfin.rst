@@ -4,4 +4,17 @@
 bfin (Blackfin)
 ***************
 
+bf537Stamp
+==========
+
+TODO.
+
+eZKit533
+========
+
+TODO.
+
+TLL6527M
+========
+
 TODO.

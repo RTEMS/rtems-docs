@@ -4,4 +4,22 @@
 sh (SuperH)
 ***********
 
+gensh1
+======
+
+TODO.
+
+gensh2
+======
+
+TODO.
+
+gensh4
+======
+
+TODO.
+
+shsim
+=====
+
 TODO.

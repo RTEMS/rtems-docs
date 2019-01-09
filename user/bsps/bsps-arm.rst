@@ -4,8 +4,48 @@
 arm (ARM)
 *********
 
-NXP i.MX
-========
+altera-cyclone-v
+================
+
+TODO.
+
+atsam
+=====
+
+TODO.
+
+beagle
+======
+
+TODO.
+
+csb336
+======
+
+TODO.
+
+csb337
+======
+
+TODO.
+
+edb7312
+=======
+
+TODO.
+
+gdbarmsim
+=========
+
+TODO.
+
+gumstix
+=======
+
+TODO.
+
+imx (NXP i.MX)
+==============
 
 This BSP offers only one variant, the `imx7`.  This variant supports the i.MX
 7Dual processor.  The basic hardware initialization is not performed by the
@@ -144,3 +184,58 @@ Caveats
 The clock and pin configuration support is quite rudimentary and mostly relies
 on the boot loader.  For a pin group configuration see
 ``imx_iomux_configure_pins()``.  There is no power management support.
+
+lm3s69xx
+========
+
+TODO.
+
+lpc176x
+=======
+
+TODO.
+
+lpc24xx
+=======
+
+TODO.
+
+lpc32xx
+=======
+
+TODO.
+
+raspberrypi
+===========
+
+TODO.
+
+realview-pbx-a9
+===============
+
+TODO.
+
+rtl22xx
+=======
+
+TODO.
+
+smdk2410
+========
+
+TODO.
+
+stm32f4
+=======
+
+TODO.
+
+tms570
+======
+
+TODO.
+
+xilinx-zynq
+===========
+
+TODO.

@@ -4,8 +4,63 @@
 powerpc (PowerPC)
 *****************
 
-QorIQ
-=====
+beatnik
+=======
+
+TODO.
+
+gen5200
+=======
+
+TODO.
+
+gen83xx
+=======
+
+TODO.
+
+haleakala
+=========
+
+TODO.
+
+motorola_powerpc
+================
+
+TODO.
+
+mpc55xxevb
+==========
+
+TODO.
+
+mpc8260ads
+==========
+
+TODO.
+
+mvme3100
+========
+
+TODO.
+
+mvme5500
+========
+
+TODO.
+
+psim
+====
+
+TODO.
+
+qemuppc
+=======
+
+TODO.
+
+qoriq (QorIQ)
+=============
 
 The BSP for the `QorIQ <https://en.wikipedia.org/wiki/QorIQ>`_ chip family
 offers three variants.  The `qoriq_e500` variant supports the P-series chips
@@ -85,3 +140,33 @@ For a Topaz hypervisor guest configuration use:
 
 You may have to adjust the linker command file according to your partition
 configuration.
+
+ss555
+=====
+
+TODO.
+
+t32mppc
+=======
+
+TODO.
+
+tqm8xx
+======
+
+TODO.
+
+virtex
+======
+
+TODO.
+
+virtex4
+=======
+
+TODO.
+
+virtex5
+=======
+
+TODO.

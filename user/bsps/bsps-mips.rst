@@ -4,4 +4,32 @@
 mips (MIPS)
 ***********
 
+csb350
+======
+
+TODO.
+
+hurricane
+=========
+
+TODO.
+
+jmr3904
+=======
+
+TODO.
+
+malta
+=====
+
+TODO.
+
+rbtx4925
+========
+
+TODO.
+
+rbtx4938
+========
+
 TODO.

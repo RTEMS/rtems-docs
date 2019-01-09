@@ -4,8 +4,8 @@
 riscv (RISC-V)
 **************
 
-RISC-V
-======
+riscv
+=====
 
 This BSP offers 13 variants:
 
