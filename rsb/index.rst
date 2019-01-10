@@ -24,16 +24,17 @@ RTEMS Source Builder (|version|).
 .. include:: ../common/header.rst
 
 .. toctree::
-	:maxdepth: 5
-	:numbered:
+    :maxdepth: 5
+    :numbered:
 
-        source-builder
-        building-tools-and-rtems.rst
-	project-sets
-	cross-canadian-cross
-	third-party-packages
-	configuration
-	commands
-	bug-reporting
+    source-builder
+    building-tools-and-rtems.rst
+    project-sets
+    cross-canadian-cross
+    third-party-packages
+    configuration
+    commands
+    bug-reporting
+    history
 
 * :ref:`genindex`
