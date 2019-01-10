@@ -28,6 +28,7 @@ RTEMS Source Builder (|version|).
     :numbered:
 
     source-builder
+    why-build-from-source.rst
     building-tools-and-rtems.rst
     project-sets
     cross-canadian-cross
