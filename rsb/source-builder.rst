@@ -76,31 +76,3 @@ configuration can read the remaining sections.
 
    If you think you have found a problem please see :ref:`Bugs, Crashes, and
    Build Failures`.
-
-Controlling the Tools Build
----------------------------
-
-Build sets can be controlled via the command line to enable and disable various
-features. There is no definitive list of build options that can be listed
-because they are implemented with the configuration scripts. The best way to
-find what is available is to grep the configuration files. for ``with`` and
-``without``.
-
-Following are currently available:
-
-``--without-rtems``
-  Do not build RTEMS when building an RTEMS build set.
-
-``--without-cxx``
-  Do not build a C++ compiler.
-
-``--with-ada``
-  Attempt to build an Ada compiler.  You need a native GNAT installed.
-
-``--with-fortran``
-  Attempt to build a Fortran compiler.
-
-``--with-objc``
-  Attempt to build a C++ compiler.
-
-

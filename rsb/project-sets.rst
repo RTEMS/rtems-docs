@@ -29,6 +29,12 @@ various tools. You can specialise these in your private configurations to make
 use of them. If you add new generic configurations please contribute them back
 to the project
 
+Build sets can be controlled via the command line to enable
+(``--with-<feature>``) and disable (``--without-<feature>``) various features.
+There is no definitive list of build options that can be listed because they
+are implemented with the configuration scripts.  The best way to find what is
+available is to grep the configuration files for ``with`` and ``without``.
+
 Bare Metal
 ----------
 
@@ -133,6 +139,24 @@ and the following uses the version control heads for ``binutils``, ``gcc``,
        --prefix=$HOME/development/rtems/4.11-head \
        --macros=snapshots/binutils-gcc-newlib-gdb-head.mc \
        4.11/rtems-sparc
+
+Following features can be enabled/disabled via the command line for the RTEMS
+build sets:
+
+``--without-rtems``
+  Do not build RTEMS when building an RTEMS build set.
+
+``--without-cxx``
+  Do not build a C++ compiler.
+
+``--with-ada``
+  Attempt to build an Ada compiler.  You need a native GNAT installed.
+
+``--with-fortran``
+  Attempt to build a Fortran compiler.
+
+``--with-objc``
+  Attempt to build a C++ compiler.
 
 Patches
 -------

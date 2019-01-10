@@ -29,7 +29,6 @@ RTEMS Source Builder (|version|).
 
     source-builder
     why-build-from-source.rst
-    building-tools-and-rtems.rst
     project-sets
     cross-canadian-cross
     third-party-packages
