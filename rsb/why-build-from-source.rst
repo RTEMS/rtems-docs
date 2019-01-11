@@ -15,7 +15,7 @@ specifically for your host operating system. Building manually or installing a
 binary package from a remote repository are valid and real alternatives. The
 RSB provides the specific service of repeatably being able to build tool sets
 from source code. The process leaves you with the source code used to build
-the tools and the ability to rebuilt it.
+the tools and the ability to rebuild it.
 
 If you are developing a system or product that has a long shelf life or is used
 in a critical piece of infrastructure that has a long life cycle being able to
@@ -24,11 +24,11 @@ changing world of the host development machines. If your tool set is binary and
 you have lost the ability to build it you have lost a degree of control and
 flexibility open source gives you. Fast moving host environments are
 fantastic. We have powerful multi-core computers with huge amounts of memory
-and state of the art operating systems to run on them however the product or
-project you are part of may need to be maintained well past the life time of
-these host. Being able to build from source an important and critical part of
-this process because you can move to a newer host and create an equivalent tool
-set.
+and state of the art operating systems your development uses however the
+product or project you are part of may need to be maintained well past the life
+time of these host. Being able to build from source is an important and
+critical part of this process because you can move to a newer host and create
+an equivalent tool set.
 
 Building from source provides you with control over the configuration of the
 package you are building. If all or the most important dependent parts are
