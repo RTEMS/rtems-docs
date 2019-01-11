@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
+.. highlight:: shell
+
 RTEMS Source Builder
 ====================
 
@@ -76,3 +78,16 @@ configuration can read the remaining sections.
 
    If you think you have found a problem please see :ref:`Bugs, Crashes, and
    Build Failures`.
+
+.. toctree::
+    :maxdepth: 5
+    :numbered:
+
+    why-build-from-source.rst
+    project-sets
+    cross-canadian-cross
+    third-party-packages
+    configuration
+    commands
+    bug-reporting
+    history

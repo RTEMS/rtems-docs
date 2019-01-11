@@ -6,6 +6,8 @@
 RTEMS User Manual (|version|).
 ==============================
 
+ | **COPYRIGHT (c) 2012 - 2015.**
+ | **Chris Johns <chrisj@rtems.org>**
  | **COPYRIGHT (c) 2016-2018.**
  | **RTEMS Foundation, The RTEMS Documentation Project**
 
@@ -16,27 +18,28 @@ RTEMS User Manual (|version|).
 .. include:: ../common/header.rst
 
 .. toctree::
-	:maxdepth: 5
-	:numbered:
+    :maxdepth: 5
+    :numbered:
 
-	overview/index
-	ecosys/index
+    overview/index
+    ecosys/index
 
-	start/index
-	hosts/index
-	installation/index
+    start/index
+    hosts/index
+    installation/index
 
-	hardware/index
-	bsps/index
+    hardware/index
+    bsps/index
 
-	exe/index
-        testing/index
-        tracing/index
+    exe/index
+    testing/index
+    tracing/index
 
-	tools/index
+    tools/index
+    rsb/index
 
-	support/index
+    support/index
 
-	glossary/index
+    glossary/index
 
 * :ref:`genindex`

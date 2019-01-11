@@ -10,7 +10,6 @@ import waflib
 import waf as docs_waf
 
 build_all = ['user',
-             'rsb',
              'c-user',
              'bsp-howto',
              'posix-users',
