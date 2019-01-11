@@ -16,6 +16,7 @@ applications on top of RTEMS.
     :maxdepth: 5
     :numbered:
 
+    host
     prefixes
 
 The following is a quick start guide that provides a basic set of commands to
