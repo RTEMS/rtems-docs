@@ -57,7 +57,7 @@ place you have suitable storage. Another is permissions.  There is no
 need to become root or the administrator and we recommend you avoid
 doing this. You can build and install the tools anywhere on the host's
 file system you, as a standard user, have read and write access too.
-:ref:`Prefixes` and :ref:`project-sandboxing` provide detailed examples
+:ref:`Prefixes` and :ref:`ProjectSandboxing` provide detailed examples
 of possible locations and set ups.
 
 Simple Example

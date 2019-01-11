@@ -35,7 +35,7 @@ machine. If the machine is a centralised build server the prefix may be used to
 separate production versions from the test versions and the prefix paths may
 have restricted access rights to only those who manage and have configuration
 control of the machine. We call this project sandboxing and
-:ref:`project-sandboxing` explains this in more detail.
+:ref:`ProjectSandboxing` explains this in more detail.
 
 Linux
 -----
