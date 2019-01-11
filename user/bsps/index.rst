@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2018 embedded brains GmbH
 
-.. _BoardSupportPackages:
+.. _BSPs:
 
 Board Support Packages
 **********************
@@ -16,24 +16,30 @@ applications.
 RTEMS contains a large number of BSPs for commonly available simulators and
 target hardware.
 
+You can see the current BSP list in the RTEMS sources by asking RTEMS with:
+
+.. code-block:: shell
+
+    $ ./rtems-bsps
+
 .. toctree::
 
-   bsps-aarch64
-   bsps-arm
-   bsps-bfin
-   bsps-epiphany
-   bsps-i386
-   bsps-lm32
-   bsps-m68k
-   bsps-microblaze
-   bsps-mips
-   bsps-moxie
-   bsps-nios2
-   bsps-or1k
-   bsps-powerpc
-   bsps-riscv
-   bsps-sh
-   bsps-sparc64
-   bsps-sparc
-   bsps-v850
-   bsps-x86_64
+    bsps-aarch64
+    bsps-arm
+    bsps-bfin
+    bsps-epiphany
+    bsps-i386
+    bsps-lm32
+    bsps-m68k
+    bsps-microblaze
+    bsps-mips
+    bsps-moxie
+    bsps-nios2
+    bsps-or1k
+    bsps-powerpc
+    bsps-riscv
+    bsps-sh
+    bsps-sparc64
+    bsps-sparc
+    bsps-v850
+    bsps-x86_64

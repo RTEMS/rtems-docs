@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
 
+.. _Executables:
+
 Executables
 ***********
 .. index:: Executable

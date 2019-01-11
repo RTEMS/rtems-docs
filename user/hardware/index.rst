@@ -4,16 +4,13 @@
 
 .. _Hardware:
 
-Hardware
-********
+Target Hardware
+***************
 .. index:: Hardware
-
-This section discusses supported Hardware, Architectures, Board Support
-Packages, and running RTEMS on real hardware and simulators.
+.. index:: Target Hardware
 
 .. toctree::
 
    targets
    architectures
-   bsps
    tiers

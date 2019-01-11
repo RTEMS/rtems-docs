@@ -12,8 +12,8 @@ RTEMS User Manual (|version|).
     | © 2018 Marçal Comajoan Cara
     | © 2018 Vidushi Vashishth
     | © 2017 Tanu Hari Dixit
-    | © 2016, 2017 embedded brains GmbH
-    | © 2016, 2017 Sebastian Huber
+    | © 2016, 2019 embedded brains GmbH
+    | © 2016, 2019 Sebastian Huber
     | © 2012, 2015 Chris Johns
     | © 1988, 2018 On-Line Applications Research Corporation (OAR)
 

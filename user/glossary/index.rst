@@ -6,6 +6,9 @@ Glossary
 
 .. glossary::
 
+  ABI
+    Application Binary Interface
+
   Architecture
     Family or class of processor based around a common instruction set. RTEMS
     architectures follow the GCC architecture model as RTEMS needs an GCC
