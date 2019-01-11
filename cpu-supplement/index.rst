@@ -4,14 +4,13 @@
 RTEMS CPU Architecture Supplement (|version|).
 ==============================================
 
- | **COPYRIGHT (c) 1988 - 2015.**
- | **On-Line Applications Research Corporation (OAR).**
- | **COPYRIGHT (c) 2016-2018.**
- | **RTEMS Foundation, The RTEMS Documentation Project**
+.. topic:: Copyrights and License
 
- | **Licenses:**
- |  Creative Commons Attribution-ShareAlike 4.0 International Public License
- |  https://creativecommons.org/licenses/by-sa/4.0/legalcode
+    | © 2016, 2018 embedded brains GmbH
+    | © 2016, 2018 Sebastian Huber
+    | © 1988, 2018 On-Line Applications Research Corporation (OAR)
+
+    .. include:: ../common/license.rst
 
 .. include:: ../common/header.rst
 

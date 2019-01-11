@@ -6,14 +6,18 @@
 RTEMS User Manual (|version|).
 ==============================
 
- | **COPYRIGHT (c) 2012 - 2015.**
- | **Chris Johns <chrisj@rtems.org>**
- | **COPYRIGHT (c) 2016-2018.**
- | **RTEMS Foundation, The RTEMS Documentation Project**
+.. topic:: Copyrights and License
 
- | **License:**
- |  Creative Commons Attribution-ShareAlike 4.0 International Public License
- |  https://creativecommons.org/licenses/by-sa/4.0/legalcode
+    | © 2018 Amaan Cheval
+    | © 2018 Marçal Comajoan Cara
+    | © 2018 Vidushi Vashishth
+    | © 2017 Tanu Hari Dixit
+    | © 2016, 2017 embedded brains GmbH
+    | © 2016, 2017 Sebastian Huber
+    | © 2012, 2015 Chris Johns
+    | © 1988, 2018 On-Line Applications Research Corporation (OAR)
+
+    .. include:: ../common/license.rst
 
 .. include:: ../common/header.rst
 
