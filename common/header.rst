@@ -1,3 +1,7 @@
+.. SPDX-License-Identifier: CC-BY-SA-4.0
+
+.. Copyright (C) 1988, 2015 On-Line Applications Research Corporation (OAR)
+
 The authors have used their best efforts in preparing this material.  These
 efforts include the development, research, and testing of the theories and
 programs to determine their effectiveness.  No warranty of any kind, expressed
