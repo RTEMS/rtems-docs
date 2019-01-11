@@ -26,8 +26,6 @@ RTEMS User Manual (|version|).
     :numbered:
 
     overview/index
-    ecosys/index
-
     start/index
     hosts/index
     installation/index
