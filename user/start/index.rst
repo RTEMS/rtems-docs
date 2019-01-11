@@ -9,6 +9,15 @@
 Quick Start
 ***********
 
+Follow the sections of this chapter step by step to get started developing
+applications on top of RTEMS.
+
+.. toctree::
+    :maxdepth: 5
+    :numbered:
+
+    prefixes
+
 The following is a quick start guide that provides a basic set of commands to
 build the RTEMS Tools and Kernel. The quick start guide provides links to the
 detailed sections if any problems are encountered.

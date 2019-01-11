@@ -45,7 +45,7 @@ repositories for the tools and kernel.
 
 .. toctree::
 
-   prefixes-sandboxing
    releases
    developer
    kernel
+   project-sandboxing
