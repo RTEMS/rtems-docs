@@ -4,6 +4,8 @@
 
 .. highlight:: shell
 
+.. _RSB:
+
 RTEMS Source Builder
 ====================
 
@@ -89,5 +91,6 @@ configuration can read the remaining sections.
     third-party-packages
     configuration
     commands
+    deployment
     bug-reporting
     history
