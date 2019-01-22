@@ -114,3 +114,9 @@ The console driver supports devices compatible to
 They are initialized according to the device tree.  The console driver does not
 configure the pins or peripheral clocks.  The console device is selected
 according to the device tree "/chosen/stdout-path" property value.
+
+griscv
+======
+
+This RISC-V BSP supports chips using the
+`GRLIB <https://www.gaisler.com/products/grlib/grlib.pdf>`_.
