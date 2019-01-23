@@ -20,6 +20,7 @@ applications on top of RTEMS.
     prefixes
     sources
     tools
+    bootstrap
 
 The following is a quick start guide that provides a basic set of commands to
 build the RTEMS Tools and Kernel. The quick start guide provides links to the
