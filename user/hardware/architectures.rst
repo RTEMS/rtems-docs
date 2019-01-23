@@ -4,8 +4,11 @@
 .. Copyright (C) 2019 Sebastian Huber
 .. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
+.. _TargetArchitectures:
+
 Architectures
 =============
+
 .. index:: Architectures
 
 An RTEMS architecture is a class or family of a processor architecture that
