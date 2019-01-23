@@ -284,4 +284,4 @@ discussed in :ref:`msys2_parallel_builds`.
  cleaning: sparc-rtems4.11-kernel-4.11.0-1
  Build Set: Time 0:19:15.713662
 
-You can now build a 3rd party library or an application as defaulted in TBD.
+You can now build a third-party library or an application as defaulted in TBD.

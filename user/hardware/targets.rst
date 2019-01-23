@@ -12,7 +12,7 @@ Targets
 *target* because RTEMS is specifically aimed at that target hardware. An RTEMS
 executable is statically linked and executes in a single address space on the
 target hardware. A statically linked executable means the RTEMS Kernel,
-drivers, third party packages and application code is linked into a single
+drivers, third-party packages and application code is linked into a single
 executable image. A single address space means no virtual memory and no memory
 protected process address space is running within the RTEMS arena and the RTEMS
 executive, drivers and application have unprotected access to the whole address

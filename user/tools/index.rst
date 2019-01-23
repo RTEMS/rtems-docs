@@ -6,7 +6,7 @@ Host Tools
 **********
 
 The RTEMS kernel is developed on host computers cross-compiled and linking the
-kernel, language runtime libraries, 3rd party packages and application source
+kernel, language runtime libraries, third-party packages and application source
 code so it can run on target hardware. RTEMS and some of the hardware it
 support cannot self-host so we need a range of tools to support the wide range
 of avaliable host computers users wish to develop on. This section details the

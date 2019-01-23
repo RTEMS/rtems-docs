@@ -71,7 +71,7 @@ POSIX Support
 -------------
 
 Building the RTEMS compilers, debugger, the RTEMS kernel and a number of other
-3rd party packages requires a POSIX environment. On Windows you can use Cygwin
+third-party packages requires a POSIX environment. On Windows you can use Cygwin
 or MSYS2. This document focuses on MSYS2. It is smaller than Cygwin and comes
 with the Arch Linux package manager ``pacman``.
 
@@ -213,7 +213,7 @@ them.
 Disabling Windows Defender improves performance if you have another up to date
 virus detection tool installed and enabled. The excellent ``Process Hacker 2``
 tool can monitor the performance and the Windows Defender service contributed a
-high load. In this case a 3rd party virus tool was installed so the Windows
+high load. In this case a third-party virus tool was installed so the Windows
 Defender service was not needed.
 
 To build a MinGW tool chain a Canadian cross-compile (Cxc) is required on

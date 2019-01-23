@@ -9,7 +9,7 @@ Tracing
 .. index:: Tracing Framework
 
 RTEMS Tracing Framework is an on-target software based system which helps track
-the ongoings inside the operation of applications, 3rd party packages, and the
+the ongoings inside the operation of applications, third-party packages, and the
 kernel in real time.
 
 Software based tracing is a complex process which requires components on both

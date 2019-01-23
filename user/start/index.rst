@@ -104,4 +104,4 @@ kernel:
     ...
   $ make install
 
-You can now build a 3rd party library or an application.
+You can now build a third-party library or an application.

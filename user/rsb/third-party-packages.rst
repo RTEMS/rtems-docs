@@ -2,19 +2,19 @@
 
 .. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
-RTEMS 3rd Party Packages
+RTEMS Third-Party Packages
 ========================
 
-This section describes how to build and add an RTEMS 3rd party package to the
+This section describes how to build and add an RTEMS third-party package to the
 RSB.
 
-A 3rd party package is a library or software package built to run on RTEMS,
+A third-party package is a library or software package built to run on RTEMS,
 examples are NTP, Net-Snmp, libjpeg or Python. These pieces of software can be
 used to help build RTEMS applications. The package is built for a specific
 BSP and so requires a working RTEMS tool chain and an installed RTEMS Board
 Support Package (BSP).
 
-The RSB support for building 3rd party packages is based around the *pkconfig*
+The RSB support for building third-party packages is based around the *pkconfig*
 files (PC) installed with the BSP. The pkgconfig support in RTEMS is considered
 experimental and can have some issues for some BSPs. This issue is rooted deep
 in the RTEMS build system. If you have any issues with this support please ask
@@ -26,7 +26,7 @@ Vertical Integration
 The RSB supports horizontal integration with support for multiple
 architectures. Adding packages to the RSB as libraries is vertical
 integration. Building the GCC tool chain requires you build an assembler before
-you build a compiler. The same can be done for 3rd party libraries, you can
+you build a compiler. The same can be done for third-party libraries, you can
 crate build sets that stack library dependences vertically to create a *stack*.
 
 Building
@@ -133,7 +133,7 @@ RTEMS.
     dynamic libraries are created and installed.
 
 The RSB provides the configuration file ``rtems/config/rtems-bsp.cfg`` to
-support building 3rd party packages and you need to include this file in your
+support building third-party packages and you need to include this file in your
 RTEMS version specific configuration file. For example the Net-SNMP
 configuration file ``rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg``::
 

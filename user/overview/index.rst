@@ -248,7 +248,7 @@ Open Source
 
 RTEMS is an open source operating system and an open source project and this
 extends to the ecosystem. We encourage users to integrate the processes to
-build tools, the kernel and any 3rd party libraries into their project's
+build tools, the kernel and any third-party libraries into their project's
 configuration management processes.
 
 All the parts that make up the ecosystem are open source. The ecosystem uses a

@@ -30,8 +30,8 @@ Mavericks clang LLVM tool chain. You will need to build and install a couple of
 packages to make the RSB pass the ``sb-check``. These are CVS and XZ. You can get
 these tools from a packaging tool for MacOS such as *MacPorts* or *HomeBrew*.
 
-I do not use 3rd party packaging on MacOS and prefer to build the packages from
-source using a prefix of ``/usr/local``. There are good 3rd party packages around
+I do not use third-party packaging on MacOS and prefer to build the packages from
+source using a prefix of ``/usr/local``. There are good third-party packages around
 however they sometimes bring in extra dependence and that complicates my build
 environment and I want to know the minimal requirements when building
 tools. The following are required:

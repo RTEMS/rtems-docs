@@ -19,7 +19,7 @@ has to provide similar functionality to execute an embedded executable.
 An RTEMS Source Builder (RSB) built RTEMS tool chain is used to create RTEMS
 executables. The tool chain executable creates a fixed position statically
 linked Extendable Loader Format (ELF) file that contains the RTEMS kernel,
-standard libraries, 3rd party libraries and application code. RTEMS executes in
+standard libraries, third-party libraries and application code. RTEMS executes in
 a single address space which means it does not support the ``fork`` or ``exec``
 system calls so statically linking all the code is the easiest and best way to
 create an executable.
@@ -50,9 +50,9 @@ application. RTEMS conforms to a number of international standards such as
 POSIX and can build and run portable code written in languages such as C, C++
 and Ada.
 
-Applications are built from source into ELF object files, 3rd party packages
+Applications are built from source into ELF object files, third-party packages
 can be built as libraries or they can be imported as source into an application
-code base. The application, 3rd party packages, RTEMS and standard libraries
+code base. The application, third-party packages, RTEMS and standard libraries
 are linked to create the RTEMS executable. The executable is transferred to the
 target and a bootloader loads it from the non-volatile storage into RAM or the
 code is executed in place in the non-volatile storage. The target hardware
@@ -67,7 +67,7 @@ defines what happens.
 
    Building an Application
 
-The standard and 3rd party libraries are a collection of object files built
+The standard and third-party libraries are a collection of object files built
 using the same set of tools the application source is compiled with. The
 package collects it's object files into an archive or library.
 
