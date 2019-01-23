@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
+.. _WhyBuildFromSource:
+
 Why Build from Source?
 ======================
 
