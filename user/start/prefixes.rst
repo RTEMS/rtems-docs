@@ -2,11 +2,12 @@
 
 .. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. index:: prefix
-.. _prefixes:
+.. _QuickStartPrefixes:
 
 Prefixes
 ========
+
+.. index:: prefix
 
 You will see the term :ref:term:`prefix` referred to thoughout this
 documentation and in a wide number of software packages you can download from

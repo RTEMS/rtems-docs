@@ -22,7 +22,7 @@ directory. You could use a prefix of :file:`$HOME/development/rtems` or
 :file:`$HOME/rtems`. Note, the ``$HOME`` environment variable can be
 substituted with ``~``.
 
-:ref:`prefixes` details using Prefixes to manage the installation.
+:ref:`QuickStartPrefixes` details using Prefixes to manage the installation.
 
 RTEMS Tools and packages do not require ``root`` access
 to be built and we encourage you to not build the tools as ``root``. If you

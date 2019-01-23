@@ -17,7 +17,7 @@ The normal prefix when working on OS X as a user is under your home directory.
 Prefixes of :file:`$HOME/development/rtems` or :file:`$HOME/rtems` are
 suitable.
 
-:ref:`prefixes` details using Prefixes to manage the installation.
+:ref:`QuickStartPrefixes` details using Prefixes to manage the installation.
 
 MacOS
 .. _Mavericks:

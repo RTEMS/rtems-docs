@@ -2,9 +2,6 @@
 
 .. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. index:: Prefixes
-.. _prefixes:
-
 .. _project-sandboxing:
 
 Project Sandboxing

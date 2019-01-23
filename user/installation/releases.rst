@@ -27,8 +27,8 @@ use a home directory, If building on Windows use :file:`/c/opt/rtems` to keep
 the top level paths as short as possible. :ref:`windows-path-length` provides
 more detail about path lengths on Windows.
 
-The location used to install the tools and kernel is called the
-`prefix`. :ref:`prefixes` explains prefixes and how to use them. It is best to
+The location used to install the tools and kernel is called the `prefix`.
+:ref:`QuickStartPrefixes` explains prefixes and how to use them. It is best to
 have a `prefix` for each different version of RTEMS you are using. If you are
 using RTEMS 4.11 in production it is **not** a good idea to install a
 development version of 5 over the top by using the same `prefix` as the 4.11
