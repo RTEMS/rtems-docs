@@ -23,6 +23,7 @@ applications on top of RTEMS.
     bootstrap
     bsp-build
     bsp-test
+    app
 
 The following is a quick start guide that provides a basic set of commands to
 build the RTEMS Tools and Kernel. The quick start guide provides links to the
