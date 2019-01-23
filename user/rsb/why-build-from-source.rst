@@ -33,8 +33,9 @@ an equivalent tool set.
 Building from source provides you with control over the configuration of the
 package you are building. If all or the most important dependent parts are
 built from source you limit the exposure to host variations. For example the
-GNU C compiler (gcc) currently uses a number of third-party libraries internally
-(gmp, mpfr, etc). If your validated compiler generating code for your target
+GNU Compiler Collection (GCC) currently uses a number of third-party libraries
+internally (GMP, ISL, MPC, MPFR, etc.). If your validated compiler generating
+code for your target
 processor is dynamically linked against the host's version of these libraries
 any change in the host's configuration may effect you. The changes the host's
 package management system makes may be perfectly reasonable in relation to the

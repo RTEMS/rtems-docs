@@ -23,7 +23,7 @@ used outside of the RTEMS project and we welcome this.
 
 The RTEMS Source Builder is typically used to build a set of tools or a **build
 set**. A **build set** is a collection of packages and a package is a specific
-tool, for example gcc or gdb, or library. The RTEMS Source Builder attempts to
+tool, for example GCC or GDB, or library. The RTEMS Source Builder attempts to
 support any host environment that runs Python and you can build the package
 on. The RSB is not some sort of magic that can take any piece of source code
 and make it build. Someone at some point in time has figured out how to build
@@ -50,7 +50,7 @@ The RTEMS Source Builder has been tested on:
 The RTEMS Source Builder has two types of configuration data. The first is the
 *build set*. A *build set* describes a collection of packages that define a set
 of tools you would use when developing software for RTEMS. For example the
-basic GNU tool set is binutils, gcc, and gdb and is the typical base suite of
+basic GNU tool set is Binutils, GCC, and GDB and is the typical base suite of
 tools you need for an embedded cross-development type project. The second type
 of configuration data is the configuration files and they define how a package
 is built. Configuration files are scripts loosely based on the RPM spec file
