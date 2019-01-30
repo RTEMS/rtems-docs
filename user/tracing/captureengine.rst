@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2018 Vidushi Vashishth <vidushivashishth96@gmail.com>
 
-.. _capturengine:
+.. _CaptureEngine:
 
 Capture Engine
 **************

@@ -26,3 +26,4 @@ the code from the source and without annotating the source with trace code.
    examples
    captureengine
    tracelinker
+   eventrecording

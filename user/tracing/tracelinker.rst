@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _tracelinker:
+.. _TraceLinker:
 
 Trace Linker
 ************

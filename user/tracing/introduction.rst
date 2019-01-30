@@ -17,8 +17,9 @@ RTEMS tracing framework is under development and welcomes contribution by users.
 
 RTEMS has the following trace components:
 
-- RTEMS :ref:`tracelinker`
-- RTEMS :ref:`capturengine`
+- :ref:`RTEMS Trace Linker <TraceLinker>`
+- :ref:`RTEMS Capture Engine <CaptureEngine>`
+- :ref:`RTEMS Event Recording <EventRecording>`
 - Common Trace Format Integration
 
 RTEMS trace framework can currently function using the following methods. Both
