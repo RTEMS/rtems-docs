@@ -6,7 +6,7 @@ I2C Driver
 **********
 
 The Inter-Integrated Circuit (I2C, I²C, IIC) bus drivers should use the
-`I2C bus framework <https://git.rtems.org/rtems/tree/cpukit/dev/include/dev/i2c/i2c.h>`_.
+`I2C bus framework <https://git.rtems.org/rtems/tree/cpukit/include/dev/i2c/i2c.h>`_.
 For example drivers see the
 `Cadence I2C driver <https://git.rtems.org/rtems/tree/bsps/arm/xilinx-zynq/i2c/cadence-i2c.c>`_,
 the
