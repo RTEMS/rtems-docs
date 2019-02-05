@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2010 Gedare Bloom
 .. Copyright (C) 1988, 2012 On-Line Applications Research Corporation (OAR)
 
 .. index:: Red-Black Trees

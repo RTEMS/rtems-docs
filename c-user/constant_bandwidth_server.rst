@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2011 Petr Benes
 .. Copyright (C) 1989, 2011 On-Line Applications Research Corporation (OAR)
 
 .. index:: cbs

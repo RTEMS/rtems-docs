@@ -8,6 +8,8 @@ RTEMS CPU Architecture Supplement (|version|).
 
     | © 2016, 2018 embedded brains GmbH
     | © 2016, 2018 Sebastian Huber
+    | © 2014, 2015 Hesham Almatary
+    | © 2010 Gedare Bloom
     | © 1988, 2018 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst

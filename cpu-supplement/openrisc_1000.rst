@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2014 Hesham Almatary
 .. Copyright (C) 1989, 2007 On-Line Applications Research Corporation (OAR)
 
 OpenRISC 1000 Specific Information
