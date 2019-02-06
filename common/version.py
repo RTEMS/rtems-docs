@@ -90,6 +90,9 @@ def get(ctx, rtems_major_version):
     global _version
     global _date
     global _released
+    version = _version
+    date = _date
+    released = _released
     if _version == 'invalid':
         version = rtems_major_version
         date = _date
@@ -135,7 +138,7 @@ def get(ctx, rtems_major_version):
         _version = version
         _date = date
         _release = released
-    return version, date
+    return version, date, released
 
 def string():
     return '%s (%s)' % (_version, _date)
