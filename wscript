@@ -64,7 +64,7 @@ def build(ctx):
     #
     # Get the version.
     #
-    ver_version, ver_date = version.get(ctx, rtems_major_version)
+    ver_version, ver_date, ver_released = version.get(ctx, rtems_major_version)
     ctx.env.DATE = ver_date
     ctx.env.RELEASE = ver_version + ' (' + ver_date + ')'
     ctx.env.VERSION = ver_version
