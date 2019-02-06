@@ -14,6 +14,7 @@ import sys
 from waflib.Build import BuildContext
 
 import latex
+import conf
 
 sphinx_min_version = (1, 3)
 
@@ -221,15 +222,31 @@ def cmd_configure(ctx):
     #
     ctx.env.BUILD_PDF = 'no'
     if ctx.options.pdf:
-        check_tex = not ctx.env.PDFLATEX
-        if check_tex:
-            ctx.load('tex')
-            if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
-                ctx.fatal('The programs pdflatex and makeindex are required for PDF output')
-            if 'PDFLATEXFLAGS' not in ctx.env or \
-               '-shell-escape' not in ctx.env['PDFLATEXFLAGS']:
-                ctx.env.append_value('PDFLATEXFLAGS', '-shell-escape')
-            latex.configure_tests(ctx)
+        if conf.latex_engine == 'xelatex':
+            if not ctx.env.LATEX_CMD:
+                ctx.load('tex')
+                if not ctx.env.XELATEX or not ctx.env.MAKEINDEX:
+                    ctx.fatal('The programs xelatex and makeindex are required for PDF output')
+                ctx.env.LATEX_CMD = 'xelatex'
+                latex.configure_tests(ctx)
+                # Minted needs 'shell-escape'
+                if 'XELATEXFLAGS' not in ctx.env or \
+                   '-shell-escape' not in ctx.env['XELATEXFLAGS']:
+                    ctx.env.append_value('XELATEXFLAGS', '-shell-escape')
+                ctx.env.append_value('MAKEINDEXFLAGS', ['-s', 'python.ist'])
+        elif conf.latex_engine == 'pdflatex':
+            if not ctx.env.LATEX_CMD:
+                ctx.load('tex')
+                if not ctx.env.PDFLATEX or not ctx.env.MAKEINDEX:
+                    ctx.fatal('The programs pdflatex and makeindex are required for PDF output')
+                if 'PDFLATEXFLAGS' not in ctx.env or \
+                   '-shell-escape' not in ctx.env['PDFLATEXFLAGS']:
+                    ctx.env.append_value('PDFLATEXFLAGS', '-shell-escape')
+                ctx.env.append_value('MAKEINDEXFLAGS', ['-s', 'python.ist'])
+                ctx.env.LATEX_CMD = 'pdflatex'
+                latex.configure_tests(ctx)
+        else:
+            ctx.fatal('Unsupported latex engine: %s' % (conf.latex_engine))
         ctx.env.BUILD_PDF = 'yes'
 
     ctx.envBUILD_SINGLEHTML = 'no'
@@ -286,7 +303,7 @@ def doc_pdf(ctx, source_dir, conf_dir, extra_source):
     ctx(
         features     = 'tex',
         cwd          = output_dir,
-        type         = 'pdflatex',
+        type         = ctx.env.LATEX_CMD,
         source       = "%s/%s.tex" % (buildtype, ctx.path.name),
         prompt       = 0
     )
@@ -384,7 +401,7 @@ def images_plantuml(ctx, source_dir, conf_dir, ext):
             source       = src,
             target       = tgt,
             install_path = None
-    )
+        )
 
 
 def cmd_build(ctx, extra_source = []):

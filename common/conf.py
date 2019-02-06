@@ -165,6 +165,10 @@ htmlhelp_basename = 'rtemsdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
+latex_engine = 'pdflatex'
+
+latex_use_xindy = False
+
 latex_paper_size = 'a4'
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -176,6 +180,7 @@ latex_documents = [] # must be overridden in local conf.py
 latex_elements = {
     'papersize':    'a4paper',
     'pointsize':    '11pt',
+    'releasename':  '',
     'preamble':     r'''
 \newcommand{\rtemscopyright}{%s}
 \usepackage{rtemsstyle}
@@ -183,10 +188,8 @@ latex_elements = {
     'parsedliteralwraps': True,
 }
 
-
 latex_additional_files = ['../common/rtemsstyle.sty', '../common/minted.sty', '../common/logo.pdf']
 latex_use_modindex = False
-
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -203,7 +206,6 @@ latex_show_pagerefs = False
 
 # If false, no module index is generated.
 #latex_domain_indices = True
-
 
 # Example configuration for intersphinx: refer to the Python standard library.
 #intersphinx_mapping = {'http://docs.python.org/': None}
