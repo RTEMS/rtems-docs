@@ -188,7 +188,7 @@ latex_elements = {
     'parsedliteralwraps': True,
 }
 
-latex_additional_files = ['../common/rtemsstyle.sty', '../common/minted.sty', '../common/logo.pdf']
+latex_additional_files = ['../common/rtemsstyle.sty', '../common/logo.pdf']
 latex_use_modindex = False
 
 # The name of an image file (relative to this directory) to place at the top of
