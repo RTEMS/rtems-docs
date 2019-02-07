@@ -23,7 +23,7 @@ RTEMS CPU Architecture Supplement (|version|).
 	arm
 	atmel_avr
 	blackfin
-	ephiphany
+	epiphany
 	intel_amd_x86
 	lattice_micro32
 	renesas_m32c
