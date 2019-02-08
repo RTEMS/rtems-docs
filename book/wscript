@@ -1,6 +1,6 @@
 from sys import path
 from os.path import abspath, exists
-path.append(abspath('../common/'))
+path.insert(0, abspath('../common/'))
 
 from waf import cmd_configure_path, cmd_build_path, cmd_options_path, spell, cmd_spell
 

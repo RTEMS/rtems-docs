@@ -5,7 +5,7 @@
 import sys
 import os.path
 
-sys.path.append(os.path.abspath('common'))
+sys.path.insert(0, os.path.abspath('common'))
 
 import waflib
 import waf as docs_waf

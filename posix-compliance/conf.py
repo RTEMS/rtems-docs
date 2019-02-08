@@ -1,5 +1,5 @@
 import sys, os
-sys.path.append(os.path.abspath('../common/'))
+sys.path.insert(0, os.path.abspath('../common/'))
 
 from conf import *
 
