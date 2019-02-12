@@ -66,6 +66,17 @@ def coverpage_js(ctx):
     with open(ctx.outputs[0].abspath(), 'w') as o:
         o.write(js.replace('@CATALOGUE', xml))
 
+def index_html(ctx):
+    html = ''
+    year = ctx.env.DATE.split()[2]
+    for f in ctx.inputs:
+        if f.abspath().endswith('.html'):
+            with open(f.abspath()) as i:
+                html += i.read()
+    with open(ctx.outputs[0].abspath(), 'w') as o:
+        html = html.replace('@COPYRIGHT_YEAR@', year)
+        html = html.replace('@VER_DATE@', ctx.env.DATE)
+        o.write(html)
 
 def build(ctx):
     #
@@ -88,7 +99,7 @@ def build(ctx):
         ctx.recurse(b)
 
     #
-    # Build the catalogue, coverpage.js and install.
+    # Build the catalogue, coverpage.js, index.html and install.
     #
     ctx(rule = catalogue,
         target = 'catalogue.xml',
@@ -98,10 +109,13 @@ def build(ctx):
         target = 'coverpage.js',
         source = ['wscript', 'catalogue.xml', 'common/coverpage/coverpage.js'])
     ctx.install_as('${PREFIX}/coverpage.js', 'coverpage.js')
+    ctx(rule = index_html,
+        target = 'coverpage.html',
+        source = ['wscript', 'common/coverpage/coverpage.html'])
+    ctx.install_as('${PREFIX}/index.html', 'coverpage.html')
     #
     # Install the static content.
     #
-    ctx.install_as('${PREFIX}/index.html', 'common/coverpage/coverpage.html')
     static_dir = ctx.path.find_dir('common/coverpage/static')
     ctx.install_files('${PREFIX}/static',
                       static_dir.ant_glob('**'),
