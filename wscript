@@ -5,16 +5,22 @@
 import sys
 import os.path
 
-sys.path.insert(0, os.path.abspath('common'))
-
 import waflib
-import waf as docs_waf
-import version
+
+from common import waf as docs_waf
+from common import version
 
 #
 # Branch version
 #
 rtems_major_version = '5'
+
+#
+# Set Python's system path to `common` from the top level so the
+# conf.py modules in subdirectories can be found. See xml_catalogue in
+# common/waf.py.
+#
+sys.path.append(os.path.abspath('common'))
 
 #
 # The documents to build.
