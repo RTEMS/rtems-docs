@@ -69,14 +69,31 @@ _version = 'invalid'
 _date = 'unknown date'
 _released = False
 
-def _pretty_day(day):
+def _pretty_day(ctx, date):
+    ''' Format is YYYY-MM-DD'''
+    import datetime
+    ds = date.split('-')
+    if len(ds) != 3:
+        ctx.fatal('invalid date format from git: %s' % (date))
+    try:
+        year = int(ds[0])
+    except:
+        ctx.fatal('invalid date format from git, converting year: %s' % (date))
+    try:
+        month = int(ds[1])
+    except:
+        ctx.fatal('invalid date format from git, converting month: %s' % (date))
+    try:
+        day = int(ds[2])
+    except:
+        ctx.fatal('invalid date format from git, converting day: %s' % (date))
+    try:
+        when = datetime.date(year, month, day)
+    except:
+        ctx.fatal('invalid date format from git: %s' % (date))
     if day == 3:
         s = 'rd'
-    elif day == 11:
-        s = 'th'
-    elif day == 12:
-        s = 'th'
-    elif day == 13:
+    elif day == 11 or day == 12:
         s = 'th'
     elif day % 10 == 1:
         s = 'st'
@@ -84,7 +101,10 @@ def _pretty_day(day):
         s = 'nd'
     else:
         s = 'th'
-    return str(day) + s
+    s = when.strftime('%%d%s %%B %%Y' % (s))
+    if day < 10:
+        s = s[1:]
+    return s
 
 def get(ctx, rtems_major_version):
     global _version
@@ -122,19 +142,16 @@ def get(ctx, rtems_major_version):
             #
             # Get date and version from Git
             #
-            if ctx.exec_command(['git', 'diff-index', '--quiet', 'HEAD']) == 0:
+            if ctx.exec_command([ctx.env.GIT[0], 'diff-index', '--quiet', 'HEAD']) == 0:
                 modified = ''
             else:
                 modified = '-modified'
-            try:
-                out = ctx.cmd_and_log(['git', 'log', '-1',
-                                       '--format=%h,%cd', '--date=format:%e,%B,%Y'],
-                                      quiet = True)
-                f = out.strip('\n').split(',')
-                version = version + '.' + f[0] + modified
-                date = _pretty_day(int(f[1])) + ' ' + f[2] + ' ' + f[3]
-            except waflib.Build.Errors.WafError:
-                date = 'unknown date'
+            out = ctx.cmd_and_log([ctx.env.GIT[0], 'log', '-1',
+                                   '--format=%h,%cd', '--date=short'],
+                                  quiet = True)
+            f = out.strip('\n').split(',')
+            version = version + '.' + f[0] + modified
+            date = _pretty_day(ctx, f[1])
         _version = version
         _date = date
         _release = released

@@ -44,6 +44,7 @@ def options(opt):
     docs_waf.cmd_options(opt)
 
 def configure(conf):
+    conf.find_program('git')
     for b in building:
         conf.recurse(b)
     conf.env['BUILD_FROM_TOP'] = 'yes'
