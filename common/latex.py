@@ -72,14 +72,6 @@ package_optional = ['inconsolata',
 # name here.
 #
 hosts = {
-    # All versions of CentOS until told otherwise
-    'Linux/centos' : { '.*' : ['capt-of.sty',
-                               'eqparbox.sty',
-                               'environ.sty',
-                               'ifplatform.sty',
-                               'trimspaces.sty',
-                               'slantsc.sty',
-                               'upquote.sty'] }
 }
 
 def tex_test(test):
