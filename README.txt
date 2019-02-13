@@ -31,7 +31,7 @@ We allow the building of PDF documentation on hosts that do not have a fully
 suitable texlive environment and this results in quality that is not at the
 production level.
 
-The hosts which produce production quality is:
+The hosts which produce production quality are:
 
  FreeBSD
  CentOS 6 and 7 (if using texlive, not RPMs of texlive)
@@ -79,7 +79,7 @@ Host Setup
 HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
 and building a Single HTML page requires the 'inliner' tool. The
 sphinxcontrib-bibtex extension is mandatory. PlantUML requres the Node.js
-package called 'nde-plantuml' which installs the 'puml' command and Ditaa needs
+package called 'node-plantuml' which installs the 'puml' command and Ditaa needs
 the 'ditaa' command and package. Ditaa images are built using the 'puml'
 command.
 
