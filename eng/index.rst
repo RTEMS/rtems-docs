@@ -30,5 +30,3 @@ RTEMS Software Engineering Handbook (|version|)
         appendix-a
 	function_and_variable
 	concept
-
-* :ref:`genindex`

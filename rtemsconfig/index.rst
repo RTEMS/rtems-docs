@@ -13,8 +13,3 @@ Table of Contents
 
 	rtemsconfig
 	option
-
-
-*   :ref:`genindex`
-*   :ref:`search`
-

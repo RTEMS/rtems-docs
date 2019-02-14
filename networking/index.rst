@@ -27,5 +27,3 @@ RTEMS Network User Manual (|version|).
 	network_servers
 	dec_21140
 	command
-
-* :ref:`genindex`

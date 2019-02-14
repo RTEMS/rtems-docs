@@ -30,5 +30,3 @@ RTEMS Shell Guide (|version|).
 	network_commands
 	function_and_variable
 	concept
-
-* :ref:`genindex`

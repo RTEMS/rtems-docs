@@ -38,5 +38,3 @@ RTEMS BSP and Driver Guide (|version|).
 	ata
 	ide_controller
 	command
-
-* :ref:`genindex`

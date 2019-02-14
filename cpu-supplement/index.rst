@@ -40,5 +40,3 @@ RTEMS CPU Architecture Supplement (|version|).
 	sparc
 	sparc64
 	zreferences
-
-* :ref:`genindex`

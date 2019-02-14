@@ -43,5 +43,3 @@ RTEMS POSIX API Guide (|version|).
 	devctl
 	status_of_implementation
 	command
-
-* :ref:`genindex`

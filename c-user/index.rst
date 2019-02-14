@@ -63,5 +63,3 @@ RTEMS Classic API Guide (|version|).
 	example_application
 	glossary
 	zreferences
-
-* :ref:`genindex`

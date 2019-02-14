@@ -25,5 +25,3 @@ RTEMS Eclipse Manual (|version|).
 	rtems
 
 	glossary
-
-* :ref:`genindex`

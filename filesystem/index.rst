@@ -26,5 +26,3 @@ RTEMS Filesystem Design Guide (|version|).
 	minature_in-memory
 	trivial_ftp
 	command_and_variable
-
-* :ref:`genindex`

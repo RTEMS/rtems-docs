@@ -21,5 +21,3 @@ RTEMS Development Environment Guide (|version|).
 	sample
 	utilities
 	command
-
-* :ref:`genindex`

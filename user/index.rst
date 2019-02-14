@@ -41,5 +41,3 @@ RTEMS User Manual (|version|).
     rsb/index
 
     glossary/index
-
-* :ref:`genindex`

@@ -22,5 +22,3 @@ RTEMS POSIX 1003.1 Compliance Guide (|version|).
         posix-compliance
         glossary
         zreferences
-
-* :ref:`genindex`

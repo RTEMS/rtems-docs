@@ -28,5 +28,3 @@ RTEMS Porting Guide (|version|).
 	code_tuning
 	miscellanous
 	command
-
-* :ref:`genindex`

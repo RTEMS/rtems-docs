@@ -6,7 +6,7 @@
 {% endblock %}
 {% block menu %}
   {{ super() }}
-  <a class="reference internal" href="genindex.html">Index</a>
+  <a class="reference internal" href="{{ pathto("genindex") }}"><b>Index</b></a>
 {% endblock %}
 {# Custom CSS overrides #}
 {% set css_files = ['_static/my-styles.css'] %}
