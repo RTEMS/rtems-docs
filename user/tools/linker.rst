@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2017 Chris Johns <chrisj@rtems.org>
 
+.. _RTEMSLinker:
+
 RTEMS Linker
 ============
 

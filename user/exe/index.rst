@@ -11,10 +11,11 @@ Executables
 
 This section discusses what an RTEMS executable is and what happens when you
 execute it in a target. The section discusses how an application executable is
-created, what happens when an executable is loaded and run as well as
-debugging an execiutable.
+created, what happens when an executable is loaded and run, debugging an
+execiutable, and creating and dynamically loading code.
 
 .. include:: executables.rst
 .. include:: execution.rst
 .. include:: initialization.rst
 .. include:: debugging.rst
+.. include:: loader.rst

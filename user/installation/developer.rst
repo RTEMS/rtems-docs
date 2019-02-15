@@ -90,6 +90,8 @@ requires:
 If you are unsure how to specify the build set for the architecture you wish to
 build, just ask the tool:
 
+.. code-block:: shell
+
     $ ../source-builder/sb-set-builder --list-bsets   <1>
     RTEMS Source Builder - Set Builder, v4.11.0
     Examining: config
@@ -750,4 +752,3 @@ Install the kernel to our prefix:
   make[1]: Leaving directory '/c/opt/rtems/kernel/pc686'
    /c/opt/rtems/kernel/pc686
   $
-

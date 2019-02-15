@@ -77,6 +77,8 @@ built with ``make``, ``autotools``, ``cmake``, ``waf`` and more. User should
 select a build system that meets their project, system, corporate or personal
 needs.
 
+.. _MachineFlagsandABI:
+
 Machine Flags and ABI
 ---------------------
 .. index:: Machine flags

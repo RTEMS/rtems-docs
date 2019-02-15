@@ -1,0 +1,39 @@
+'
+' Libdl Load Executable Object file
+'
+' Copyright (c) 2019 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+ start
+  :dlopen;
+
+  if (check libraries ?) then (changed)
+   :load libraries;
+  else (no change)
+  endif
+  :load object;
+  floating note left
+    Searching of unreolved symbols
+    continues until the remain symbols
+    cannot be found in the global symbol
+    table or libraries.
+  end note
+  while (unresolved symbols?) is (unresolved)
+   if (search globals) then (found)
+    :fix relocations;
+   else (not found)
+   endif
+   if (search libraries ?) then (found)
+    :load library object;
+    floating note left
+      If a symbol is found the library object file
+      is load adding the symbol to the global
+      symbol table and potentially adding more
+      unresolved symbols.
+    end note
+   else (not found)
+   endif
+  endwhile (all searched)
+ stop
+@enduml
