@@ -6,8 +6,8 @@
 arm (ARM)
 *********
 
-altera-cyclone-v
-================
+altera-cyclone-v (Intel Cyclone V)
+==================================
 
 This BSP offers only one variant, the `altcycv_devkit`.  This variant supports
 the Intel Cyclone V system on chip.  The basic hardware initialization is not
