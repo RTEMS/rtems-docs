@@ -28,7 +28,7 @@ Boot via U-Boot
 The application executable file (ELF file) must be converted to an U-Boot
 image.  Use the following commands:
 
-::
+.. code-block:: none
 
     arm-rtems5-objcopy -O binary app.exe app.bin
     gzip -9 -f -c app.bin > app.bin.gz
@@ -36,9 +36,13 @@ image.  Use the following commands:
 
 Use the following U-Boot commands to boot an application via TFTP download:
 
-::
+.. code-block:: none
 
     tftpboot ${loadaddr} app.img && run loadfdt && bootm ${loadaddr} - ${fdt_addr} ; reset
+
+The ``loadfdt`` command may be not defined in your U-Boot environment.  Just
+replace it with the appropriate commands to load the device tree at
+``${fdt_addr}``.
 
 Clock Driver
 ------------
@@ -162,7 +166,7 @@ Boot via U-Boot
 The application executable file (ELF file) must be converted to an U-Boot
 image.  Use the following commands:
 
-::
+.. code-block:: none
 
     arm-rtems5-objcopy -O binary app.exe app.bin
     gzip -9 -f -c app.bin > app.bin.gz
@@ -170,9 +174,13 @@ image.  Use the following commands:
 
 Use the following U-Boot commands to boot an application via TFTP download:
 
-::
+.. code-block:: none
 
     tftpboot ${loadaddr} app.img && run loadfdt && bootm ${loadaddr} - ${fdt_addr} ; reset
+
+The ``loadfdt`` command may be not defined in your U-Boot environment.  Just
+replace it with the appropriate commands to load the device tree at
+``${fdt_addr}``.
 
 Clock Driver
 ------------
