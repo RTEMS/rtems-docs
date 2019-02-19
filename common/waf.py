@@ -394,7 +394,7 @@ def images_plantuml(ctx, source_dir, conf_dir, ext):
         return r
 
     for src in ctx.path.ant_glob('**/*' + ext):
-        tgt = src.abspath()[: - len(ext)] + '.png'
+        tgt = src.change_ext('.png')
         ctx(
             rule         = run,
             inliner      = ctx.env.BIN_PUML,
@@ -402,7 +402,6 @@ def images_plantuml(ctx, source_dir, conf_dir, ext):
             target       = tgt,
             install_path = None
         )
-
 
 def cmd_build(ctx, extra_source = []):
     conf_dir = ctx.path.get_src()
