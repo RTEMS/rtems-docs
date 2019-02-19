@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
+.. include:: ../common/unicode.rst
+
 .. highlight:: c
 
 =================================
@@ -10,7 +12,7 @@ RTEMS Eclipse Manual (|version|).
 
 .. topic:: Copyrights and License
 
-    | © 1988, 2015 On-Line Applications Research Corporation (OAR)
+    | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

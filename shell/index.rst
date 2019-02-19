@@ -2,16 +2,18 @@
 
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
+.. include:: ../common/unicode.rst
+
 ==============================
 RTEMS Shell Guide (|version|).
 ==============================
 
 .. topic:: Copyrights and License
 
-    | © 2016, 2018 Chris Johns
-    | © 2016, 2017 embedded brains GmbH
-    | © 2016, 2017 Sebastian Huber
-    | © 1988, 2017 On-Line Applications Research Corporation (OAR)
+    | |copy| 2016, 2018 Chris Johns
+    | |copy| 2016, 2017 embedded brains GmbH
+    | |copy| 2016, 2017 Sebastian Huber
+    | |copy| 1988, 2017 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

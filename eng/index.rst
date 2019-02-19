@@ -3,13 +3,15 @@
 .. Copyright (C) 2016, 2018 RTEMS Foundation, The RTEMS Documentation Project
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
+.. include:: ../common/unicode.rst
+
 ================================================
 RTEMS Software Engineering Handbook (|version|)
 ================================================
 
 .. topic:: Copyrights and License
 
-    | © 1988, 2015 On-Line Applications Research Corporation (OAR)
+    | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

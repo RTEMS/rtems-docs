@@ -1,14 +1,16 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. include:: ../common/unicode.rst
+
 ==================================
 RTEMS POSIX API Guide (|version|).
 ==================================
 
 .. topic:: Copyrights and License
 
-    | © 2018 Marçal Comajoan Cara
-    | © 2017 Gedare Bloom
-    | © 1988, 2018 On-Line Applications Research Corporation (OAR)
+    | |copy| 2018 Marçal Comajoan Cara
+    | |copy| 2017 Gedare Bloom
+    | |copy| 1988, 2018 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

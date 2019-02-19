@@ -1,15 +1,17 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. include:: ../common/unicode.rst
+
 =======================================
 RTEMS BSP and Driver Guide (|version|).
 =======================================
 
 .. topic:: Copyrights and License
 
-    | © 2017 Christian Mauderer
-    | © 2016, 2018 embedded brains GmbH
-    | © 2016, 2018 Sebastian Huber
-    | © 1988, 2017 On-Line Applications Research Corporation (OAR)
+    | |copy| 2017 Christian Mauderer
+    | |copy| 2016, 2018 embedded brains GmbH
+    | |copy| 2016, 2018 Sebastian Huber
+    | |copy| 1988, 2017 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

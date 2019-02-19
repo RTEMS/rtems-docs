@@ -1,18 +1,20 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. include:: ../common/unicode.rst
+
 ====================================
 RTEMS Classic API Guide (|version|).
 ====================================
 
 .. topic:: Copyrights and License
 
-    | © 2017 Chris Johns
-    | © 2017 Kuan-Hsun Chen
-    | © 2016, 2018 embedded brains GmbH
-    | © 2016, 2018 Sebastian Huber
-    | © 2011 Petr Benes
-    | © 2010 Gedare Bloom
-    | © 1988, 2018 On-Line Applications Research Corporation (OAR)
+    | |copy| 2017 Chris Johns
+    | |copy| 2017 Kuan-Hsun Chen
+    | |copy| 2016, 2018 embedded brains GmbH
+    | |copy| 2016, 2018 Sebastian Huber
+    | |copy| 2011 Petr Benes
+    | |copy| 2010 Gedare Bloom
+    | |copy| 1988, 2018 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

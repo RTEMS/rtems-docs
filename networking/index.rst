@@ -1,5 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. include:: ../common/unicode.rst
+
 .. highlight:: c
 
 ======================================
@@ -8,8 +10,8 @@ RTEMS Network User Manual (|version|).
 
 .. topic:: Copyrights and License
 
-    | © 2018 Marçal Comajoan Cara
-    | © 1988, 2015 On-Line Applications Research Corporation (OAR)
+    | |copy| 2018 Marçal Comajoan Cara
+    | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 

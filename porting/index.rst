@@ -1,12 +1,14 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. include:: ../common/unicode.rst
+
 ================================
 RTEMS Porting Guide (|version|).
 ================================
 
 .. topic:: Copyrights and License
 
-    | © 1988, 2016 On-Line Applications Research Corporation (OAR)
+    | |copy| 1988, 2016 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 
