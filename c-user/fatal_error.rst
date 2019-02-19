@@ -395,6 +395,11 @@ INTERNAL_ERROR_ARC4RANDOM_GETENTROPY_FAIL (39)
     <https://man.openbsd.org/arc4random.3>`_ functions.  This fatal error can
     only be fixed with a different implementation of :c:func:`getentropy`.
 
+INTERNAL_ERROR_NO_MEMORY_FOR_PER_CPU_DATA (40)
+    This fatal error may happen during workspace initialization.  There is not
+    enough memory available to populate the per-CPU data areas, see
+    `<rtems/score/percpudata.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/percpudata.h>`_.
+
 Operations
 ==========
 
