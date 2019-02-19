@@ -8,8 +8,8 @@
 Install the Tool Suite
 ======================
 
-You chose an installation prefix and cloned two RTEMS repositories in the
-previous sections.  We chose :file:`$HOME/quick-start/rtems/5` as the
+You have chosen an installation prefix and cloned two RTEMS repositories in the
+previous sections.  We have chosen :file:`$HOME/quick-start/rtems/5` as the
 installation prefix and cloned the repositories in
 :file:`$HOME/quick-start/src`.
 

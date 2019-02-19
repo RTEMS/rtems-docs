@@ -8,8 +8,9 @@
 Obtain the Sources
 ==================
 
-You chose an installation prefix previous section.  We chose
-:file:`$HOME/quick-start/rtems/5` as the installation prefix.
+You have considered and chosen a suitable installation prefix in the previous
+section.  We have chosen :file:`$HOME/quick-start/rtems/5` as the installation
+prefix.
 
 You need at least two source archives or Git repositories to work with RTEMS.
 You can download the source archives for a released RTEMS version or you can
