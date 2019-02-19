@@ -45,8 +45,20 @@ All images should be placed int he 'images' directory and referenced from the
 ReST with a relative path. This lets us shared and control images.
 
 We prefer being able to build images from source. This is not always possible
-so SVG format is preferred with generated PNG images so make sure the quality
+so SVG format is preferred with generated PNG images to make sure the quality
 is consistent when building PDF output.
+
+Building images requires the source with an apporoiate file extension
+is placed in the images directory. The built output image is written
+back to the images directory. All images may be built or rebuilt when
+building images is enabled via the waf configure command line. Please
+only add and commit those images that have changed.
+
+We support building images in:
+
+1. PlantUML (.puml), enable with `--plantuml`
+
+2. Ditaa (.ditaa), enable with `--ditaa`
 
 We support the PlantUML image language. The PlantUML home page is:
 
@@ -326,11 +338,25 @@ Note: waf-1.9.5 is a little noisy when running tex builds and tests. I hope
 To build enter in the top directory:
 
   $ ./waf configure [--pdf] [--singlehtml] [--prefix] \
-                    [--sphinx-verbose] [--disable-extra-fonts]
+                    [--sphinx-options] \
+                    [--sphinx-nit-pick] \
+                    [--plantuml] \
+                    [--ditaa] \
+                    [--disable-extra-fonts]
+
   $ ./waf
 
 The '--pdf' and '--singlehtml' options can be added to configure to build those
 output formats.
+
+Sphinx options can be added using the `--sphinx-options` option. If you have
+more than option use a quoted argument. This is an advanced feature that can
+be useful when experimenting with the `sphinx-build` command.
+
+Sphinx nit-picky mode adds `-n` to the `sphinx-build` command line to generate
+warnings and extra information about the source to help make sure our
+documentation source is as clean as possible. Please use this when writing
+documentation or making updates.
 
 The '--disable-extra-fonts' allows you to build PDF documents with out the
 fonts we use for a better quality document. Use this option to build without
@@ -341,10 +367,20 @@ To build and install to a specific location:
   $ ./waf configure --prefix=/foo/my/location
   $ ./waf build install
 
-If you need to debug what is happening use configure with a suitable Sphinx
-version level:
+To build the PlantUML and Ditaa images:
 
-  $ ./waf configure --sphinx-verbose=-v
+  $ ./waf configure --plantuml --ditaa
+  $ ./waf clean build
+
+To nit-pick the source use:
+
+  $ ./waf configure --sphinx-nit-pick
+  $ ./waf clean build
+
+If you need to debug what is happening use configure with a suitable Sphinx
+verbose level:
+
+  $ ./waf configure --sphinx-options "-V -V"
   $ ./waf clean build
 
 You can enter a manual's directory and run the same configure command and build

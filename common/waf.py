@@ -27,7 +27,7 @@ def sphinx_cmdline(ctx, build_type, conf_dir, doctrees,
     for c in configs:
         cfgs += ' -D %s=%s' % (c, configs[c])
     rule = "${BIN_SPHINX_BUILD} %s -b %s -c %s %s -d %s %s %s %s ${SRC}" % \
-           (sphinx_verbose(ctx), build_type, conf_dir, version_cmdline(ctx),
+           (sphinx_options(ctx), build_type, conf_dir, version_cmdline(ctx),
             doctrees, cfgs, source_dir, output_dir)
     return rule
 
@@ -111,8 +111,8 @@ def check_sphinx_version(ctx, minver):
         ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
     return ver
 
-def sphinx_verbose(ctx):
-    return ' '.join(ctx.env.SPHINX_VERBOSE)
+def sphinx_options(ctx):
+    return ' '.join(ctx.env.SPHINX_OPTIONS)
 
 def is_top_build(ctx):
     from_top = False
@@ -199,13 +199,24 @@ def cmd_configure(ctx):
         ver = check_sphinx_version(ctx, sphinx_min_version)
         ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
 
-        ctx.start_msg("Checking Sphinx Verbose ")
-        if 'SPHINX_VERBOSE' not in ctx.env:
-            ctx.env.append_value('SPHINX_VERBOSE', ctx.options.sphinx_verbose)
-            level = sphinx_verbose(ctx)
-            if level == '-Q':
-                level = 'quiet'
-            ctx.end_msg(level)
+        ctx.start_msg("Checking Sphinx Options ")
+        if 'SPHINX_OPTIONS' not in ctx.env:
+            ctx.env.append_value('SPHINX_OPTIONS', ctx.options.sphinx_options)
+            opts = sphinx_options(ctx)
+            if len(opts) == 0:
+                opts = 'none'
+            ctx.end_msg(opts)
+
+        ctx.start_msg("Checking Sphinx Nit-Pick mode ")
+        if ctx.options.sphinx_nit_pick:
+            opt = '-n'
+            msg = 'yes'
+        else:
+            opt = '-Q'
+            msg = 'no'
+        ctx.env.append_value('SPHINX_OPTIONS', opt)
+        ctx.end_msg(msg)
+
         #
         # Check extensions.
         #
@@ -428,10 +439,14 @@ def cmd_options(ctx):
                    action = 'store_true',
                    default = False,
                    help = "Disable building with extra fonts for better quality (lower quality).")
-    ctx.add_option('--sphinx-verbose',
+    ctx.add_option('--sphinx-options',
                    action = 'store',
-                   default = "-Q",
-                   help = "Sphinx verbose.")
+                   default = "",
+                   help = "Additional Sphinx options.")
+    ctx.add_option('--sphinx-nit-pick',
+                   action = 'store_true',
+                   default = False,
+                   help = "Enable Sphinx nit-picky mode else be quiet")
     ctx.add_option('--pdf',
                    action = 'store_true',
                    default = False,
