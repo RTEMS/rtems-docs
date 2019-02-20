@@ -157,19 +157,19 @@ def pdf_resources(ctx, buildtype):
     return targets
 
 def html_resources(ctx, buildtype):
-    extra_source = []
+    resources = []
     for dir_name in ["_static", "_templates"]:
         files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
         fnode = ctx.path.get_bld().make_node(os.path.join(buildtype, dir_name))
         targets = [fnode.make_node(x.name) for x in files]
-        extra_source += targets
+        resources += targets
         fnode.mkdir() # dirs
         ctx(features = "subst",
             is_copy  = True,
             source   = files,
             target   = targets)
         ctx.add_group()
-    return extra_source
+    return resources
 
 def check_sphinx_extension(ctx, extension):
     def run_sphinx(bld):
@@ -298,7 +298,25 @@ def cmd_configure(ctx):
             if not ctx.env.BIN_DITAA:
                 ctx.fatal("DITAA not found, plase install")
 
-def doc_pdf(ctx, source_dir, conf_dir, extra_source):
+def sources_exclude(ctx, sources):
+    exclude = sources.get('exclude', [])
+    if len(exclude) == 0:
+        return exclude
+    return [ctx.path.find_node(e) for e in exclude]
+
+def sources_extra(ctx, sources):
+    extra = sources.get('extra', [])
+    if len(extra) == 0:
+        extra = [ctx.path.find_node(e) for e in extra]
+    return [e for e in extra if e not in sources_exclude(ctx, sources)]
+
+def sources_source(ctx, sources):
+    extra = sources_extra(ctx, sources)
+    exclude = sources_exclude(ctx, sources)
+    source = ctx.path.ant_glob('**/*.rst')
+    return [s for s in source if s not in exclude] + extra
+
+def doc_pdf(ctx, source_dir, conf_dir, sources):
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     resources = pdf_resources(ctx, buildtype)
@@ -306,8 +324,8 @@ def doc_pdf(ctx, source_dir, conf_dir, extra_source):
     ctx(
         rule         = rule,
         cwd          = ctx.path,
-        source       = ctx.path.ant_glob('**/*.rst') + extra_source,
-        depends_on   = extra_source,
+        source       = sources_source(ctx, sources),
+        depends_on   = sources_extra(sources),
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
@@ -323,7 +341,7 @@ def doc_pdf(ctx, source_dir, conf_dir, extra_source):
                       cwd = output_node,
                       quiet = True)
 
-def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
+def doc_singlehtml(ctx, source_dir, conf_dir, sources):
     #
     # Use a run command to handle stdout and stderr output from inliner. Using
     # a standard rule in the build context locks up.
@@ -357,7 +375,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
     ctx(
         rule         = rule,
         cwd          = ctx.path,
-        source       = ctx.path.ant_glob('**/*.rst') + extra_source,
+        source       = sources_source(ctx, sources),
         depends_on   = resources,
         target       = ctx.path.find_or_declare("%s/index.html" % (buildtype)),
         install_path = None
@@ -370,7 +388,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir, extra_source):
         install_path = '${PREFIX}'
     )
 
-def doc_html(ctx, source_dir, conf_dir, extra_source):
+def doc_html(ctx, source_dir, conf_dir, sources):
     buildtype = 'html'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     resources = html_resources(ctx, buildtype)
@@ -380,7 +398,7 @@ def doc_html(ctx, source_dir, conf_dir, extra_source):
     ctx(
         rule         = rule,
         cwd          = ctx.path,
-        source       = ctx.path.ant_glob('**/*.rst') + extra_source,
+        source       = sources_source(ctx, sources),
         depends_on   = resources,
         target       = ctx.path.find_or_declare('%s/index.html' % buildtype),
         install_path = None
@@ -414,17 +432,17 @@ def images_plantuml(ctx, source_dir, conf_dir, ext):
             install_path = None
         )
 
-def cmd_build(ctx, extra_source = []):
+def cmd_build(ctx, sources = {}):
     conf_dir = ctx.path.get_src()
     source_dir = ctx.path.get_src()
 
     if ctx.env.BUILD_PDF == 'yes':
-        doc_pdf(ctx, source_dir, conf_dir, extra_source)
+        doc_pdf(ctx, source_dir, conf_dir, sources)
 
     if ctx.env.BUILD_SINGLEHTML == 'yes':
-        doc_singlehtml(ctx, source_dir, conf_dir, extra_source)
+        doc_singlehtml(ctx, source_dir, conf_dir, sources)
 
-    doc_html(ctx, source_dir, conf_dir, extra_source)
+    doc_html(ctx, source_dir, conf_dir, sources)
 
 def cmd_build_images(ctx):
     conf_dir = ctx.path.get_src()

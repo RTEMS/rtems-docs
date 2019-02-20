@@ -26,4 +26,5 @@ def build(ctx):
     ctx(rule = gen_posix_rst,
         source = ['posix_rst.py', 'RTEMS-Standards-Compliance-v4a.csv'],
         target = 'generated-posix-compliance.rst')
-    doc_build(ctx, extra_source = ['generated-posix-compliance.rst'])
+    sources = { 'extra' : ['generated-posix-compliance.rst'] }
+    doc_build(ctx, sources = sources)
