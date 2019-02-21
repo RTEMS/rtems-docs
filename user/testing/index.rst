@@ -39,9 +39,11 @@ extend the RTEMS kernel's build time and use more disk space but it worth
 building and running them. The RTEMS test executables have the ``.exe`` file
 extension.
 
-.. include:: tests.rst
-.. include:: configuration.rst
-.. include:: consoles.rst
-.. include:: simulation.rst
-.. include:: gdb-jtag.rst
-.. include:: tftp.rst
+.. toctree::
+
+   tests
+   configuration
+   consoles
+   simulation
+   gdb-jtag
+   tftp

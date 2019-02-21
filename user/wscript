@@ -1,7 +1,13 @@
 from common.waf import cmd_configure as configure
-from common.waf import cmd_build as build
+from common.waf import cmd_build as doc_build
 from common.waf import cmd_options as options
 from common.waf import spell
 from common.waf import cmd_spell
 from common.waf import linkcheck
 from common.waf import cmd_linkcheck
+
+def build(ctx):
+    sources = {
+        'exclude' : ['apps/index.rst']
+    }
+    doc_build(ctx, sources = sources)

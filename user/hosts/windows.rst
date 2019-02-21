@@ -38,7 +38,8 @@ overhead is only during the building of the tools and the RTEMS kernel
 and if you use a suitable build system that is native to Windows your
 application development should be similar to other operating systems.
 
-Building is known to work on `Windows 7 64bit Professional` and `Windows 10`.
+Building is known to work on `Windows 7 64bit Professional` and
+`Windows 10 64bit`.
 
 .. _windows-path-length:
 
@@ -222,49 +223,52 @@ result in Cygiwn binaries. With a Canadian cross-compile a Cygwin
 cross-compiler is built as well as the MinGW RTEMS cross-compiler. The Cygwin
 cross-compiler is required to build the C runtime for the RTEMS target because
 we are building under Cygiwn. The build output for an RTEMS 4.10 ARM tool set
-is::
+is:
 
-    chris@cygthing ~/development/rtems/src/rtems-source-builder/rtems
-    $ ../source-builder/sb-set-builder --log=l-arm.txt --prefix=$HOME/development/rtems/4.10 4.10/rtems-arm
-    RTEMS Source Builder - Set Builder, v0.2
-    Build Set: 4.10/rtems-arm
-    config: expat-2.1.0-1.cfg
-    package: expat-2.1.0-x86_64-w64-mingw32-1
-    building: expat-2.1.0-x86_64-w64-mingw32-1
-    reporting: expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-w64-mingw32-1.html
-    config: tools/rtems-binutils-2.20.1-1.cfg
-    package: arm-rtems4.10-binutils-2.20.1-1   <1>
-    building: arm-rtems4.10-binutils-2.20.1-1
-    package: (Cxc) arm-rtems4.10-binutils-2.20.1-1   <2>
-    building: (Cxc) arm-rtems4.10-binutils-2.20.1-1
-    reporting: tools/rtems-binutils-2.20.1-1.cfg ->
-    arm-rtems4.10-binutils-2.20.1-1.html
-    config: tools/rtems-gcc-4.4.7-newlib-1.18.0-1.cfg
-    package: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
-    building: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
-    package: (Cxc) arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
-    building: (Cxc) arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
-    reporting: tools/rtems-gcc-4.4.7-newlib-1.18.0-1.cfg ->
-    arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1.html
-    config: tools/rtems-gdb-7.3.1-1.cfg
-    package: arm-rtems4.10-gdb-7.3.1-1
-    building: arm-rtems4.10-gdb-7.3.1-1
-    reporting: tools/rtems-gdb-7.3.1-1.cfg -> arm-rtems4.10-gdb-7.3.1-1.html
-    config: tools/rtems-kernel-4.10.2.cfg
-    package: arm-rtems4.10-kernel-4.10.2-1
-    building: arm-rtems4.10-kernel-4.10.2-1
-    reporting: tools/rtems-kernel-4.10.2.cfg -> arm-rtems4.10-kernel-4.10.2-1.html
-    installing: expat-2.1.0-x86_64-w64-mingw32-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-    installing: arm-rtems4.10-binutils-2.20.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10 <3>
-    installing: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-    installing: arm-rtems4.10-gdb-7.3.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-    installing: arm-rtems4.10-kernel-4.10.2-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-    cleaning: expat-2.1.0-x86_64-w64-mingw32-1
-    cleaning: arm-rtems4.10-binutils-2.20.1-1
-    cleaning: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
-    cleaning: arm-rtems4.10-gdb-7.3.1-1
-    cleaning: arm-rtems4.10-kernel-4.10.2-1
-    Build Set: Time 10:09:42.810547   <4>
+.. code-block:: shell
+
+  chris@cygwin ~/development/rtems/src/rtems-source-builder/rtems
+  $ ../source-builder/sb-set-builder --log=l-arm.txt \
+                --prefix=$HOME/development/rtems/4.10 4.10/rtems-arm
+  RTEMS Source Builder - Set Builder, v0.2
+  Build Set: 4.10/rtems-arm
+  config: expat-2.1.0-1.cfg
+  package: expat-2.1.0-x86_64-w64-mingw32-1
+  building: expat-2.1.0-x86_64-w64-mingw32-1
+  reporting: expat-2.1.0-1.cfg -> expat-2.1.0-x86_64-w64-mingw32-1.html
+  config: tools/rtems-binutils-2.20.1-1.cfg
+  package: arm-rtems4.10-binutils-2.20.1-1   <1>
+  building: arm-rtems4.10-binutils-2.20.1-1
+  package: (Cxc) arm-rtems4.10-binutils-2.20.1-1   <2>
+  building: (Cxc) arm-rtems4.10-binutils-2.20.1-1
+  reporting: tools/rtems-binutils-2.20.1-1.cfg ->
+  arm-rtems4.10-binutils-2.20.1-1.html
+  config: tools/rtems-gcc-4.4.7-newlib-1.18.0-1.cfg
+  package: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+  building: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+  package: (Cxc) arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+  building: (Cxc) arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+  reporting: tools/rtems-gcc-4.4.7-newlib-1.18.0-1.cfg ->
+  arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1.html
+  config: tools/rtems-gdb-7.3.1-1.cfg
+  package: arm-rtems4.10-gdb-7.3.1-1
+  building: arm-rtems4.10-gdb-7.3.1-1
+  reporting: tools/rtems-gdb-7.3.1-1.cfg -> arm-rtems4.10-gdb-7.3.1-1.html
+  config: tools/rtems-kernel-4.10.2.cfg
+  package: arm-rtems4.10-kernel-4.10.2-1
+  building: arm-rtems4.10-kernel-4.10.2-1
+  reporting: tools/rtems-kernel-4.10.2.cfg -> arm-rtems4.10-kernel-4.10.2-1.html
+  installing: expat-2.1.0-x86_64-w64-mingw32-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+  installing: arm-rtems4.10-binutils-2.20.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10 <3>
+  installing: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+  installing: arm-rtems4.10-gdb-7.3.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+  installing: arm-rtems4.10-kernel-4.10.2-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+  cleaning: expat-2.1.0-x86_64-w64-mingw32-1
+  cleaning: arm-rtems4.10-binutils-2.20.1-1
+  cleaning: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1
+  cleaning: arm-rtems4.10-gdb-7.3.1-1
+  cleaning: arm-rtems4.10-kernel-4.10.2-1
+  Build Set: Time 10:09:42.810547   <4>
 
 .. topic:: Items:
 
@@ -289,4 +293,3 @@ is::
   cannot be avoided in all cases. Cygwin and it's fork MSYS are fantastic
   pieces of software in a difficult environment. I have found building a single
   tool tends to work, building all at once is harder.
-

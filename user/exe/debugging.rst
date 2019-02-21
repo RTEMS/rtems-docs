@@ -91,7 +91,7 @@ the architecture and processor. Typical functions include:
 
 #. Break and watch points
 
-.. _fig-exe-debug-qemu:
+.. _fig-exe-debug-jtag:
 
 .. figure:: ../../images/user/exe-debug-jtag.png
    :width: 70%

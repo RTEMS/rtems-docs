@@ -3,7 +3,7 @@
 .. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
 Cross and Canadian Cross Building
-=================================
+---------------------------------
 
 Cross building and Canadian Cross building is the process of building on one
 machine an executable that runs on another machine. An example is building a
@@ -13,21 +13,23 @@ and Canadian cross building.
 This sections details how to the RSB to cross and Canadian cross build.
 
 Cross Building
---------------
+^^^^^^^^^^^^^^
 
 Cross building is where the _build_ machine and _host_ are different. The
 _build_ machine runs the RSB and the _host_ machine is where the output from
 the build runs. An example is building a package such as NTP for RTEMS on your
 development machine.
 
-To build the NTP package for RTEMS you enter the RSB command::
+To build the NTP package for RTEMS you enter the RSB command:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder \
        --log=log_ntp_arm.txt \
-       --prefix=$HOME/development/rtems/4.11 \  <1>
-       --host=arm-rtems4.11 \  <2>
+       --prefix=$HOME/development/rtems/5 \  <1>
+       --host=arm-rtems5 \  <2>
        --with-rtems-bsp=xilinx_zynq_zc706 \  <3>
-       4.11/net/ntp
+       5/net/ntp
 
 .. topic:: Items:
 
@@ -45,7 +47,7 @@ To build the NTP package for RTEMS you enter the RSB command::
   'bin' directory at the end of the path.
 
 Canadian Cross Building
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 A Canadian cross builds are where the **build**, **host** and **target**
 machines all differ. For example building an RTEMS compiler for an ARM
@@ -81,17 +83,21 @@ does not exist or you cannot access.
 
 To perform a cross build add ``--host=`` to the command line. For example
 to build a MinGW tool set on FreeBSD for Windows add ``--host=mingw32``
-if the cross compiler is ``mingw32-gcc``::
+if the cross compiler is ``mingw32-gcc``:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --host=mingw32 \
        --log=l-mingw32-4.11-sparc.txt \
-       --prefix=$HOME/development/rtems/4.11 \
-       4.11/rtems-sparc
+       --prefix=$HOME/development/rtems/5 \
+       5/rtems-sparc
 
 If you are on a Linux Fedora build host with the MinGW packages installed the
-command line is::
+command line is:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --host=i686-w64-mingw32 \
        --log=l-mingw32-4.11-sparc.txt \
-       --prefix=$HOME/development/rtems/4.11 \
-       4.11/rtems-sparc
+       --prefix=$HOME/development/rtems/5 \
+       5/rtems-sparc

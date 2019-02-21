@@ -20,7 +20,7 @@ JTAG port of a target.
 
    RTEMS Tester using GDB and JTAG
 
-The :ref:`fig-tester-gdb-jtag` figure shows the structure of RTEMS Testing
+The Figure :ref:`fig-tester-gdb-jtag` shows the structure of RTEMS Testing
 using GDB and JTAG. The executables are built and the ``rtems-test`` command is
 run from the top of the build directory. The RTEMS Tester executes the BSP
 architecture's GDB and expects the user to provide a ``gdb-script`` to connect

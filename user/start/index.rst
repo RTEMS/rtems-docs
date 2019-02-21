@@ -13,8 +13,6 @@ Follow the sections of this chapter step by step to get started developing
 applications on top of RTEMS.
 
 .. toctree::
-    :maxdepth: 5
-    :numbered:
 
     host
     prefixes

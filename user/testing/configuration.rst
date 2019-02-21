@@ -57,6 +57,7 @@ The RTEMS Tester and RTEMS Run are primed using defaults from the file
 User configuration file.
 
 .. index:: BSP configuration, User configuration
+
 BSP and User Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -65,18 +66,21 @@ configuration file has to have an INI section that is the name of the BSP
 passed on the command line. The section has the following mandatory values:
 
 .. index:: bsp
+
 ``bsp``
   The name of the BSP. The BSP name is used to create a macro map to hold the
   BSP's configuration data. Typically this is the same as the BSP name used on
   the command line.
 
 .. index:: arch
+
 ``arch``
   The name of the BSP architecture. This is need for the GDB configuration
   scripts where the architecture specific GDB needs to run. It is mandatory so
   the *arch/bsp* standard RTEMS BSP string can be used.
 
 .. index:: tester
+
 ``tester``
   The tester or run configuration script. This is the name of the configuration
   script the RTEMS Tester or RTEMS Run executes as a back end. The ``tester``
@@ -87,18 +91,22 @@ Target commands support expansion of specific tags to provide a convenient way
 for users to customize a local test environment. The parameters expanded are:
 
 .. index:: @ARCH@
+
 ``@ARCH@``
   The BSP architecture.
 
 .. index:: @BSP@
+
 ``@BSP@``
   The BSP's name set by the ``bsp`` value.
 
 .. index:: @EXE@
+
 ``@EXE@``
   The executable name as an absolute path
 
 .. index:: @FEXE@
+
 ``@FEXE@``
   The filtered executable if a ``target_exe_filter`` is provided else the
   executable's file name.
@@ -107,6 +115,7 @@ The following are optional and depend on the back end being used and the local
 target hardware set up:
 
 .. index:: jobs
+
 ``jobs``
   The jobs value sets the number of jobs that can be run at once. This setting
   only effects the RTEMS Tester. The tester can run up to the ``jobs`` value of
@@ -116,12 +125,14 @@ target hardware set up:
   test timeouts may be recorded.
 
 .. index:: bsp_tty_dev
+
 ``bsp_tty_dev``
   The BSP's tty device. This can be a real device on the host machine the
   executable is being run from or it can be a telnet server and port defined
-  using the stand host format. See :ref:`tester-consoles` for details.
+  using the stand host format. See :ref:`TesterConsoles` for details.
 
 .. index:: target_pretest_command
+
 ``target_pretest_command``
   The pre-test command is a host shell command that is called before each test
   runs. It can be used to construct a suitable environment or image needed by a
@@ -129,12 +140,14 @@ target hardware set up:
   and the bootloader specific format is the output.
 
  .. index:: target_posttest_command
+
 ``target_posttest_command``
   The post-test command is a host shell command that is called after each test
   has finished. It can be used to destroy any environment or image created by
   the pre-test command.
 
 .. index:: target_exe_filter
+
 ``target_exe_filter``
   The target executable filter transforms the executable name into a filtered
   executable name. This filter lets the tester or run command track the name of
@@ -147,11 +160,13 @@ target hardware set up:
   is no need to escape the text in the second part, it is just plain test.
 
 .. index:: test_restarts
+
 ``test_restarts``
   The number of restarts before the test is considered ``invalid``. Currently
   not used.
 
 .. index:: target_reset_regex
+
 ``target_reset_regex``
   The target reset regular expression. This is a `Python regular expression
   <https://docs.python.org/2/library/re.html#regular-expression-syntax>`_ used
@@ -161,6 +176,7 @@ target hardware set up:
   messages that indicate the boot process as failed.
 
 .. index:: target_start_regex
+
 ``target_start_regex``
 
   The target start regular expression. This is a Python regular expression to
@@ -169,6 +185,7 @@ target hardware set up:
   restart and ends the test with a suitable result.
 
 .. index:: target_on_command
+
 ``target_on_command``
   The target on command is a host shell command that is called before the first
   test. This command powers on a target. Targets should be left powered off
@@ -178,11 +195,13 @@ target hardware set up:
   command.
 
 .. index:: target_off_command
+
 ``target_off_command``
   The target off command is a host shell command that is called after the last
   test powering off the target.
 
 .. index:: target_reset_command
+
 ``target_reset_command``
   The target reset command is a host shell command that is called when the
   target needs to be reset. This command can power cycle the target or toggle a

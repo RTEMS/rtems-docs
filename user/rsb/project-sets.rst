@@ -3,7 +3,7 @@
 .. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
 Project Sets
-============
+------------
 
 The RTEMS Source Builder supports project configurations. Project
 configurations can be public or private and can be contained in the RTEMS
@@ -36,7 +36,7 @@ are implemented with the configuration scripts.  The best way to find what is
 available is to grep the configuration files for ``with`` and ``without``.
 
 Bare Metal
-----------
+^^^^^^^^^^
 
 The RSB contains a 'bare' configuration tree and you can use this to add
 packages you use on the hosts. For example 'qemu' is supported on a range of
@@ -47,8 +47,10 @@ and run on RTEMS.
 The **bare metal** support for GNU Tool chains. An example is the
 ``lang/gcc491`` build set. You need to provide a target via the command line
 ``--target`` option and this is in the standard 2 or 3 tuple form. For example
-for an ARM compiler you would use ``arm-eabi`` or ``arm-eabihf`, and for SPARC
-you would use `sparc-elf`::
+for an ARM compiler you would use ``arm-eabi`` or ``arm-eabihf``, and for SPARC
+you would use ``sparc-elf``:
+
+.. code-block:: shell
 
     $ cd rtems-source-builder/bare
     $ ../source-builder/sb-set-builder --log=log_arm_eabihf \
@@ -77,7 +79,7 @@ you would use `sparc-elf`::
     cleaning: arm-eabihf-gdb-7.7-1
 
 RTEMS
------
+^^^^^
 
 The RTEMS Configurations found in the ``rtems`` directory. The configurations
 are grouped by RTEMS version. In RTEMS the tools are specific to a specific
@@ -105,7 +107,9 @@ When building RTEMS within the RTEMS Source Builder it needs a suitable working
 prefix in order for them to work. The RTEMS Source Builder installs all
 packages only after they have been built so if you host does not have a
 recent enough version of ``autoconf`` and ``automake`` you first need to build them
-and install them then build your tool set. The commands are::
+and install them then build your tool set. The commands are:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-4.11-at.txt \
        --prefix=$HOME/development/rtems/4.11 4.11/rtems-autotools
@@ -125,7 +129,9 @@ build fails a check.
 To build snapshots for testing purposes you use the available macro maps
 passing them on the command line using the ``--macros`` option. For RTEMS these
 are held in ``config/snapshots`` directory. The following builds *newlib* from
-CVS::
+CVS:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-4.11-sparc.txt \
        --prefix=$HOME/development/rtems/4.11 \
@@ -133,7 +139,9 @@ CVS::
        4.11/rtems-sparc
 
 and the following uses the version control heads for ``binutils``, ``gcc``,
-``newlib``, ``gdb`` and *RTEMS*::
+``newlib``, ``gdb`` and *RTEMS*:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-heads-sparc.txt \
        --prefix=$HOME/development/rtems/4.11-head \
@@ -159,7 +167,7 @@ build sets:
   Attempt to build a C++ compiler.
 
 Patches
--------
+^^^^^^^
 
 Packages being built by the RSB need patches from time to time and the RSB
 supports patching upstream packages. The patches are held in a seperate
@@ -199,7 +207,9 @@ are provided the patch's setup default options are used.
 
 Patches can be declared in build set up files.
 
-This examples shows how to declare a patch for gdb in the ``lm32`` architecture::
+This examples shows how to declare a patch for gdb in the ``lm32`` architecture:
+
+.. code-block:: spec
 
     %patch add <1> gdb <2> %{rtems_gdb_patches}/lm32/gdb-sim-lm32uart.diff <3>
 
@@ -212,7 +222,9 @@ This examples shows how to declare a patch for gdb in the ``lm32`` architecture:
   3. The patch's URL. It is downloaded from here.
 
 Patches require a checksum to avoid a warning. The ``%hash`` directive can be
-used to add a checksum for a patch that is used to verify the patch::
+used to add a checksum for a patch that is used to verify the patch:
+
+.. code-block:: spec
 
     %hash md5 <1> gdb-sim-lm32uart.diff <2> 77d070878112783292461bd6e7db17fb <3>
 
@@ -226,7 +238,9 @@ used to add a checksum for a patch that is used to verify the patch::
 
 The patches are applied when a patch ``setup`` command is issued in the
 ``%prep:`` section. All patches in the group are applied. To apply the GDB
-patch above use::
+patch above use:
+
+.. code-block:: spec
 
     %patch setup <1> gdb <2> -p1 <3>
 
@@ -251,7 +265,7 @@ it and add it to the RTEMS Tools git repository.  For example, to test a local
 patch for newlib, add the following two lines to the .cfg file in
 ``rtems/config/tools/`` that is included by the bset you use:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %patch add newlib file://0001-this-is-a-newlib-patch.patch   <1>
     %hash md5 0001-this-is-a-newlib-patch.diff 77d070878112783292461bd6e7db17fb <2>

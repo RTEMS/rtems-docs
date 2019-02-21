@@ -3,7 +3,7 @@
 .. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
 RTEMS Third-Party Packages
-========================
+--------------------------
 
 This section describes how to build and add an RTEMS third-party package to the
 RSB.
@@ -21,7 +21,7 @@ in the RTEMS build system. If you have any issues with this support please ask
 on the RTEMS developers mailing list.
 
 Vertical Integration
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 The RSB supports horizontal integration with support for multiple
 architectures. Adding packages to the RSB as libraries is vertical
@@ -30,7 +30,7 @@ you build a compiler. The same can be done for third-party libraries, you can
 crate build sets that stack library dependences vertically to create a *stack*.
 
 Building
---------
+^^^^^^^^
 
 To build a package you need to have a suitable RTEMS tool chain and RTEMS BSP
 installed. The set builder command line requires you provide the tools path,
@@ -56,7 +56,7 @@ To build Net-SNMP the command is:
     Build Set: Time 0:01:10.651926
 
 Adding
-------
+^^^^^^
 
 Adding a package requires you first build it manually by downloading the source
 for the package and building it for RTEMS using the command line of a standard
@@ -114,7 +114,7 @@ A package requires 3 files to be created:
   specific parts. See :ref:`Configuration` for more details.
 
 BSP Support
------------
+^^^^^^^^^^^
 
 The RSB provides support to help build packages for RTEMS. RTEMS applications
 can be viewed as statically linked executables operating in a single address
@@ -135,7 +135,9 @@ RTEMS.
 The RSB provides the configuration file ``rtems/config/rtems-bsp.cfg`` to
 support building third-party packages and you need to include this file in your
 RTEMS version specific configuration file. For example the Net-SNMP
-configuration file ``rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg``::
+configuration file ``rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg``:
+
+.. code-block:: spec
 
     #
     # NetSNMP 5.7.2.1
@@ -174,8 +176,8 @@ configuration file ``rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg``::
 
   3. The Net-SNMP package's version.
 
-  4. Add specific CFLAGS to the build process. See the
-    ``net-snmp-5.7.2.1-1.cfg`` for details.
+  4. Add specific ``CFLAGS`` to the build process. See the
+     ``net-snmp-5.7.2.1-1.cfg`` for details.
 
   5. The RTEMS Net-SNMP patch downloaded from the RTEMS Tools git repo.
 
@@ -184,7 +186,9 @@ configuration file ``rtems/config/net-mgmt/net-snmp-5.7.2.1-1.cfg``::
 The RSB RTEMS BSP support file ``rtems/config/rtems-bsp.cfg`` checks to make
 sure standard command line options are provided. These include ``--host`` and
 ``--with-rtems-bsp``. If the ``--with-tools`` command line option is not given
-the ``${_prefix}`` is used::
+the ``${_prefix}`` is used:
+
+.. code-block:: spec
 
     %if %{_host} == %{nil} <1>
      %error No RTEMS target specified: --host=host
@@ -217,7 +221,9 @@ the ``${_prefix}`` is used::
 RTEMS exports the build flags used in *pkgconfig* (.pc) files and the RSB can
 read and manage them even when there is no pkgconfig support installed on your
 build machine. Using this support we can obtain a BSP's configuration and set
-some standard macros variables (``rtems/config/rtems-bsp.cfg``)::
+some standard macros variables (``rtems/config/rtems-bsp.cfg``):
+
+.. code-block:: spec
 
     %{pkgconfig prefix %{_prefix}/lib/pkgconfig} <1>
     %{pkgconfig crosscompile yes} <2>
@@ -246,7 +252,9 @@ The flags obtain by pkgconfig and given a ``rtems_bsp_`` prefix and we uses thes
 to set the RSB host support CFLAGS, LDFLAGS and LIBS flags. When we build a 3rd
 party library your host computer is the _build_ machine and RTEMS is the _host_
 machine therefore we set the ``host`` variables
-(``rtems/config/rtems-bsp.cfg``)::
+(``rtems/config/rtems-bsp.cfg``):
+
+.. code-block:: spec
 
     %define host_cflags  %{rtems_bsp_cflags}
     %define host_ldflags %{rtems_bsp_ldflags}
@@ -257,7 +265,9 @@ package. Packages by default consider the ``_prefix`` the base and install
 various files under this tree. The package you are building is specific to a
 BSP and so needs to install into the specific BSP path under the
 ``_prefix``. This allows more than BSP build of this package to be install
-under the same ``_prefix`` at the same time (``rtems/config/rtems-bsp.cfg``)::
+under the same ``_prefix`` at the same time (``rtems/config/rtems-bsp.cfg``):
+
+.. code-block:: spec
 
     %define rtems_bsp_prefix  %{_prefix}/%{_host}/%{rtems_bsp} <1>
     %define _exec_prefix      %{rtems_bsp_prefix}
@@ -285,7 +295,9 @@ under the same ``_prefix`` at the same time (``rtems/config/rtems-bsp.cfg``)::
 
 When you configure a package you can reference these paths and the RSB will
 provide sensible default or in this case map them to the BSP
-(``source-builder/config/ntp-4-1.cfg``)::
+(``source-builder/config/ntp-4-1.cfg``):
+
+.. code-block:: spec
 
       ../${source_dir_ntp}/configure \ <1>
         --host=%{_host} \
@@ -306,7 +318,7 @@ provide sensible default or in this case map them to the BSP
   1. The configure command for NTP.
 
 RTEMS BSP Configuration
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 To build a package for RTEMS you need to build it with the matching BSP
 configuration. A BSP can be built with specific flags that require all code

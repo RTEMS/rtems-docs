@@ -85,9 +85,11 @@ The RTEMS Tool ``rtems-exeinfo`` can provide some detail about the registered
 handlers. The following shows the initialization handlers for the *hello world*
 sample application in the RTEMS kernel's testsuite::
 
+.. code-block:: shell
+
  $ rtems-exeinfo --init arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
  RTEMS Executable Info 5.5416cfa39dd6
-  rtems-exeinfo --init arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
+ $ rtems-exeinfo --init arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
  exe: arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
 
  Compilation:

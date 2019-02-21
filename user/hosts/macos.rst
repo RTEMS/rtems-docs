@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _macos:
+.. _MacOS:
 
 Apple MacOS
 ===========
@@ -19,7 +19,6 @@ suitable.
 
 :ref:`QuickStartPrefixes` details using Prefixes to manage the installation.
 
-MacOS
 .. _Mavericks:
 
 Mavericks
@@ -43,5 +42,3 @@ Sierra
 ~~~~~~
 
 The RSB works on Sierra with the latest Xcode.
-
-

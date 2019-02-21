@@ -5,7 +5,7 @@
 .. _Bugs, Crashes, and Build Failures:
 
 Bugs, Crashes, and Build Failures
-=================================
+---------------------------------
 
 The RTEMS Source Builder is a Python program and every care is taken to test
 the code however bugs, crashes, and build failures can and do happen. If you

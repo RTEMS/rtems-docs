@@ -49,7 +49,7 @@ Quick instructions (which may fall out of date) are:
 
 Then edit ``Conf/target.txt`` to set:
 
-::
+.. code-block:: ini
 
     ACTIVE_PLATFORM       = OvmfPkg/OvmfPkgX64.dsc
     TARGET                = DEBUG
@@ -67,7 +67,7 @@ You can find the ``OVMF.fd`` file like this as well in the edk2 directory:
 
     $ find . -name "*.fd"
     ./Build/OvmfX64/DEBUG_GCC5/FV/MEMFD.fd
-    ./Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd <-- the file we're looking for
+    ./Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd # the file we're looking for
     ./Build/OvmfX64/DEBUG_GCC5/FV/OVMF_CODE.fd
     ./Build/OvmfX64/DEBUG_GCC5/FV/OVMF_VARS.fd
 
@@ -84,12 +84,12 @@ replacing paths as appropriate.
 
 .. code-block:: shell
 
-   $ qemu-img create freebsd.img 8G
-   $ OVMF_LOCATION=/path/to/ovmf/OVMF.fd
-   $ FREEBSD_MEMSTICK=/path/to/FreeBSD-11.2-amd64-memstick.img
-   $ qemu-system-x86_64 -m 1024 -serial stdio --bios $OVMF_LOCATION \
-       -drive format=raw,file=freebsd.img \
-       -drive format=raw,file=$FREEBSD_MEMSTICK
+  $ qemu-img create freebsd.img 8G
+  $ OVMF_LOCATION=/path/to/ovmf/OVMF.fd
+  $ FREEBSD_MEMSTICK=/path/to/FreeBSD-11.2-amd64-memstick.img
+  $ qemu-system-x86_64 -m 1024 -serial stdio --bios $OVMF_LOCATION \
+      -drive format=raw,file=freebsd.img \
+      -drive format=raw,file=$FREEBSD_MEMSTICK
 
 The first time you do this, continue through and install FreeBSD. `FreeBSD's
 installation guide may prove useful

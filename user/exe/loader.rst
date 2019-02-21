@@ -146,6 +146,7 @@ follow.
 
 .. _dlopen:
 .. index:: dlopen
+
 ``void* dlopen(const char* path, int mode);``
   The ``dlopen()`` function makes the symbols (function identifiers and data
   object identifiers) in the executable object file specified by `file`
@@ -250,6 +251,7 @@ follow.
 
 .. _dlclose:
 .. index:: dlclose
+
 ``int dlclose(void* handle);``
   Releases a reference to the executable object file referenced by `handle`. If
   the reference count drops to ``0``, the executable object file's global symbol
@@ -262,6 +264,7 @@ follow.
 
 .. _dlsym:
 .. index:: dlsym
+
 ``void* dlsym(void* handle, const char* symbol);``
  The ``dlsym()`` function obtains the address of a symbol (a function identifier
  or a data object identifier) defined in the symbol table identified by the
@@ -288,6 +291,7 @@ follow.
 
 .. _dlinfo:
 .. index:: dlinfo
+
 ``int dlinfo(void* handle, int request, void* args);``
 
  The ``dlinfo()`` function provides information about dynamically loaded object.
@@ -303,6 +307,7 @@ follow.
 
 .. _dlerror:
 .. index:: dlerror
+
 ``const char *dlerror(void);``
  The ``dlerror()`` function returns a null-terminated character string (with no
  trailing ``<newline>``) that describes the last error that occurred during
@@ -690,29 +695,35 @@ used to allocate memory at an address must be used when making allocator
 calls. The ``rtems_rtl_alloc_tags`` are:
 
  .. index:: RTEMS_RTL_ALLOC_OBJECT
+
  ``RTEMS_RTL_ALLOC_OBJECT``
   Allocate a generic object. The link editor uses this memory for data
   structures it uses to manage the linking process and resident executable
   object files.
 
  .. index:: RTEMS_RTL_ALLOC_SYMBOL
+
  ``RTEMS_RTL_ALLOC_SYMBOL``
   Allocate memory to hold symbol data.
 
  .. index:: RTEMS_RTL_ALLOC_EXTERNAL
+
  ``RTEMS_RTL_ALLOC_EXTERNAL``
   Allocate memory for unresolved external symbols.
 
  .. index:: RTEMS_RTL_ALLOC_READ
+
  ``RTEMS_RTL_ALLOC_READ``
   Allocate memory for read-only data such as constants and exception tables.
 
  .. index:: RTEMS_RTL_ALLOC_READ_WRITE
+
  ``RTEMS_RTL_ALLOC_READ_WRITE``
   Allocate memory for read-write data such as a initialised, uninitialized and
   common variables.
 
  .. index:: RTEMS_RTL_ALLOC_READ_EXEC
+
  ``RTEMS_RTL_ALLOC_READ_EXEC``
   Allocate memory for code to be executed in. The address space is configure for
   read and execute.
@@ -724,21 +735,25 @@ The commands are used to control the action the allocator performs. The
 ``rtems_rtl_alloc_cmd`` are:
 
  .. index:: RTEMS_RTL_ALLOC_NEW
+
  ``RTEMS_RTL_ALLOC_NEW``
   Allocate memory of the ``tag`` type. Returns ``NULL`` if the allocation fails.
 
  .. index:: RTEMS_RTL_ALLOC_DEL
+
  ``RTEMS_RTL_ALLOC_DEL``
   Delete a previous allocation freeing the memory. The ``tag`` has to match
   address of the memory being deleted.
 
  .. index:: RTEMS_RTL_ALLOC_WR_ENABLE
+
  ``RTEMS_RTL_ALLOC_WR_ENABLE``
   Enable writes to a region of memory previously allocated. The ``tag`` has to
   match the address of the memory being write enabled. The link editor may call
   issue this command for memory that is already write enabled.
 
  .. index:: RTEMS_RTL_ALLOC_WR_DISABLE
+
  ``RTEMS_RTL_ALLOC_WR_DISABLE``
   Disable writes to a region of memory previously allocated. The ``tag`` has to
   match address of the memory being write disabled. The link editor may call
@@ -763,11 +778,13 @@ the function you need is:
 The arguments are:
 
 ``cmd``
- The command to action. See :ref:`_rtems_rtl_alloc_cmd`.
+ The command to action. See `rtems_rtl_alloc_cmd <rtems_rtl_alloc_cmd_>`_.
 
 ``tag``
- The type of memory the command is for. The ``tag`` must match the address for
- commands other than ``RTEMS_RTL_ALLOC_OBJECT``.
+
+ The type of memory the command is for. The ``tag`` must match the
+ address for commands other than ``RTEMS_RTL_ALLOC_OBJECT``.  See
+ `rtems_rtl_alloc_tags <rtems_rtl_alloc_tags_>`_.
 
 ``address``
  Pointer to the address. This is set of the ``RTEMS_RTL_ALLOC_OBJECT`` command

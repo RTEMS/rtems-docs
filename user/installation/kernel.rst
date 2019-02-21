@@ -250,9 +250,6 @@ the API headers and architecture specific libraries to a locaiton under the
 RTEMS. Do not mix versions of RTEMS under the same `prefix`. Make installs
 RTEMS with the following command:
 
-.. comment: CCJ - this code block for not parse and gives a warning in
-            index.rst.
-
 .. code-block:: shell
 
   $ make install
@@ -281,8 +278,8 @@ RTEMS with the following command:
   make[3]: Nothing to be done for 'install-data-am'.
   make[3]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/cpu'
   make[2]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/cpu'
-  make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/cpu
-   ......
+  make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/tools/cpu'
+    ....
   make[1]: Leaving directory '/home/chris/development/rtems/kernel/erc32/sparc-rtems5/c'
   make[1]: Entering directory '/home/chris/development/rtems/kernel/erc32'
   make[2]: Entering directory '/home/chris/development/rtems/kernel/erc32'

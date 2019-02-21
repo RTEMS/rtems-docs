@@ -71,15 +71,18 @@ Test States
 The tests states are:
 
 .. index:: test state passed
+
 ``passed``
   The test start and end banners have been sent to the console.
 
 .. index:: test state failure
+
 ``failure``
   The test start banner has been sent to the console and no end banner has been
   seen when a target restart is detected.
 
 .. index:: test state expected-fail
+
 ``excepted-fail``
   The test is tagged as ``expected-fail`` in the RTEMS sources for this BSP and
   outputs the banner ``*** TEST STATE: EXPECTED_FAIL``. The test is known not
@@ -88,6 +91,7 @@ The tests states are:
   otherwise it is recorded as *expected-fail*.
 
 .. index:: test state indeterminate
+
 ``indeterminate``
   The test is tagged as ``indeterminate`` in the RTEMS sources for this BSP and
   outputs the banner ``*** TEST STATE: INDETERMINATE``. The test may or may not
@@ -95,12 +99,14 @@ The tests states are:
   the test run as far as it can and record the result as indeterminate.
 
 .. index:: test state user-input
+
 ``user-input``
   The test is tagged as ``user-input`` in the RTEMS sources and outputs the
   banner ``*** TEST STATE: USER_INPUT``. The RTEMS Tester will reset the target
   if the target's configuration provides a target reset command.
 
 .. index:: test state benchmark
+
 ``benchmark``
   The test is tagged as ``benchmark`` in the RTEMS sources and outputs the
   banner ``*** TEST STATE: BENCHMARK``. Benchmarks can take a while to run and
@@ -108,6 +114,7 @@ The tests states are:
   the target if the target's configuration provides a target reset command.
 
 .. index:: test state timeout
+
 ``timeout``
   The test start banner has been sent to the console and no end banner is seen
   within the *timeout* period and the target has not restart. A default
@@ -115,6 +122,7 @@ The tests states are:
   provide on the RTEMS Tester's command line using the ``--timeout`` option.
 
 .. index:: test state invalid
+
 ``invalid``
   The test did not output a start banner and the RTEMS Tester has detected the
   target has restarted. This means the executable did not load correctly, the
@@ -171,38 +179,45 @@ Test Builds
 The test reports the build of RTEMS being tested. The build are:
 
 .. index:: build default
+
 ``default``
   The build is the default. No RTEMS configure options have been used.
 
 .. index:: build posix
+
 ``posix``
   The build includes the POSIX API. The RTEMS configure option
   ``--enable-posix`` has been used. The ``cpuopts.h`` define ``RTEMS_POSIX``
   has defined and it true.
 
 .. index:: build smp
+
 ``smp``
   The build is an SMP kernel. The RTEMS configure option ``--enable-smp`` has
   been used.  The ``cpuopts.h`` define ``RTEMS_SMP`` has defined and it true.
 
 .. index:: build mp
+
 ``mp``
   The build is an MP kernel. The RTEMS configure option
   ``--enable-multiprocessing`` has been used.  The ``cpuopts.h`` define
   ``RTEMS_MULTIPROCESSING`` has defined and it true.
 
 .. index:: build paravirt
+
 ``paravirt``
   The build is a paravirtualization kernel. The ``cpuopts.h`` define
   ``RTEMS_PARAVIRT`` has defined and it true.
 
 .. index:: build debug
+
 ``debug``
   The build includes kernel debugging support. The RTEMS configure option
   ``--enable-debug`` has been used. The ``cpuopts.h`` define ``RTEMS_DEBUG``
   has defined and it true.
 
 .. index:: build profiling
+
 ``profiling``
   The build include profiling support. The RTEMS configure option
   ``--enable-profiling`` has been used. The ``cpuopts.h`` define

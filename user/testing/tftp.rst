@@ -22,9 +22,10 @@ U-Boot script.
 
    RTEMS Tester using TFTP and U-Boot.
 
-The :ref:`fig-tester-tftp-u-boot` figure shows the structure and control flow
-of the RTEMS Tester using TFTP and U-boot. The executables are built and the
-``rtems-test`` command is run from the top of the build directory.
+The Figure :ref:`fig-tester-tftp-u-boot` figure shows the structure and
+control flow of the RTEMS Tester using TFTP and U-boot. The executables are
+built and the ``rtems-test`` command is run from the top of the build
+directory.
 
 This test mode can only support a single test job running at once. You cannot
 add more test target hardware and run the tests in parallel.
@@ -45,7 +46,7 @@ The RTEMS Tester TFTP and U-Boot method of testing requires:
 
 #. Console interface cable that matches your target's console UART interface.
 
-#. Telnet terminal server. See :ref:`tester-consoles`.
+#. Telnet terminal server. See :ref:`TesterConsoles`.
 
 The network power or IO switch is a device that can control power or an IO pin
 over a network connection using a script-able protocol such as Telnet or
@@ -58,7 +59,9 @@ Obtain a working image of the U-Boot boot loader for your target. We suggest
 you follow the instructions for you target.
 
 Configure U-Boot to network boot using the TFTP protocol. This is U-Boot script
-for a Zedboard::
+for a Zedboard:
+
+.. code-block:: shell
 
   loadaddr=0x02000000
   uenvcmd=echo Booting RTEMS Zed from net; set autoload no; dhcp; set serverip 10.10.5.2; tftpboot zed/rtems.img; bootm; reset;
@@ -86,7 +89,9 @@ The BSP's configuration file must contain the standard fields:
 - ``jobs`` - Must be set to ``1``.
 - ``tester`` - Set to ``%{_rtscripts}/tftp.cfg``
 
-For example the Zedboard's configuration is::
+For example the Zedboard's configuration is:
+
+.. code-block:: ini
 
   [xilinx_zynq_zedboard]
   bsp    = xilinx_zynq_zedboard
@@ -159,14 +164,18 @@ substituted. The parameters are:
 substituted
 
 Some of these field are normally provided by a user's configuration. To do this
-use::
+use:
+
+.. code-block:: shell
 
   requires = bsp_tty_dev, target_on_command, target_off_command, target_reset_command
 
 The ``requires`` value requires the user provide these settings in their
 configuration file.
 
-The Zedboard's configuration file is::
+The Zedboard's configuration file is:
+
+.. code-block:: ini
 
   [xilinx_zynq_zedboard]
   bsp                = xilinx_zynq_zedboard
@@ -186,7 +195,9 @@ happen if U-Boot cannot detect the PHY device. It also checks if too many DHCP
 requests happen and finally a check is made for any timeouts reported by
 U-Boot.
 
-An example of a user configuration for the Zedboard is::
+An example of a user configuration for the Zedboard is:
+
+.. code-block:: ini
 
   [xilinx_zynq_zedboard]
   bsp_tty_dev            = selserver:12345

@@ -4,7 +4,7 @@
 
 
 History
-=======
+-------
 
 The RTEMS Source Builder is a stand alone tool based on another tool called the
 *SpecBuilder* written by Chris Johns. The *SpecBuilder* was written around 2010

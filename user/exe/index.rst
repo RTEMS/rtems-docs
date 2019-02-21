@@ -14,8 +14,10 @@ execute it in a target. The section discusses how an application executable is
 created, what happens when an executable is loaded and run, debugging an
 execiutable, and creating and dynamically loading code.
 
-.. include:: executables.rst
-.. include:: execution.rst
-.. include:: initialization.rst
-.. include:: debugging.rst
-.. include:: loader.rst
+.. toctree::
+
+   executables
+   execution
+   initialization
+   debugging
+   loader

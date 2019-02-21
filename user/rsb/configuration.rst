@@ -5,7 +5,7 @@
 .. _Configuration:
 
 Configuration
-=============
+-------------
 
 The RTEMS Source Builder has two types of configuration data:
 
@@ -23,9 +23,11 @@ private build configurations and if you run the RTEMS Source Builder command
 from that directory your configurations will be used.
 
 The configuration search path is a macro variable and is reference as
-``%{_configdir}``. It's default is defined as::
+``%{_configdir}``. It's default is defined as:
 
-    _configdir   : dir  optional<2>  %{_topdir}/config:%{_sbdir}/config <1>
+.. code-block:: spec
+
+    _configdir   : dir  optional  %{_topdir}/config:%{_sbdir}/config
 
 .. topic:: Items:
 
@@ -45,7 +47,7 @@ character. Anything after this character on the line is ignored. There is no
 block comment.
 
 Source and Patches
-------------------
+^^^^^^^^^^^^^^^^^^
 
 The RTEMS Source Builder provides a flexible way to manage source. Source and
 patches are declare in configurations file using the ``source`` and ``patch``
@@ -88,16 +90,16 @@ and start the build process again.
 The URL can contain macros. These are expanded before issuing the request to
 download the file. The standard GNU GCC compiler source URL is:
 
-.. code-block:: auto
+.. code-block:: spec
 
-    %source set<1> gcc<2> ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
+    %source set gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
 
 .. topic:: Items:
 
-  1. The ``%source`` command's set command sets the source. The first is set
-     and following sets are ignored.
+  1. The ``%source`` command's ``set`` command sets the source. The
+     first is set and following sets are ignored.
 
-  2. The source is part of the ``gcc`` group.
+  2. The source package is part of the ``gcc`` group.
 
 The type of compression is automatically detected from the file extension. The
 supported compression formats are:
@@ -132,7 +134,7 @@ If the source URL references the GitHub API server https://api.github.com/ a
 tarball of the specified version is download. For example the URL for the
 STLINK project on GitHub and version is:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %define stlink_version 3494c11
     %source set stlink https://api.github.com/repos/texane/stlink/texane-stlink-%{stlink_version}.tar.gz
@@ -168,7 +170,7 @@ from the options with ``=``. The options are:
 
 An example is:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source set gcc git://gcc.gnu.org/git/gcc.git?branch=gcc-4_7-branch?reset=hard
 
@@ -205,12 +207,12 @@ delimited by ``?`` and option arguments are delimited from the options with
 
 The following is an example of checking out from a CVS repository:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source set newlib cvs://pserver:anoncvs@sourceware.org/cvs/src?module=newlib?src-prefix=src
 
 Macros and Defaults
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 The RTEMS Source Builder uses tables of *macros* read in when the tool
 runs. The initial global set of macros is called the *defaults*. These values
@@ -220,17 +222,23 @@ the build hosts.
 
 Build set and configuration files can define new values updating and extending
 the global macro table. For example builds are given a release number. This is
-typically a single number at the end of the package name. For example::
+typically a single number at the end of the package name. For example:
+
+.. code-block:: spec
 
     %define release 1
 
 Once defined if can be accessed in a build set or package configuration file
-with::
+with:
+
+.. code-block:: spec
 
     %{release}
 
 The ``sb-defaults`` command lists the defaults for your host. I will not include
-the output of this command because of its size::
+the output of this command because of its size:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-defaults
 
@@ -248,7 +256,9 @@ read from the defaults macro file called ``defaults.mc`` located in the top
 level RTEMS Source Builder command directory. User macros can be read in at
 start up by using the ``--macros`` command line option.
 
-The format for a macro in macro files is::
+The format for a macro in macro files is:
+
+.. code-block:: ini
 
   Name Type Attribute String
 
@@ -290,7 +300,9 @@ and the ``String`` field is a single or tripled multiline quoted string. The
 'String' can contain references to other macros. Macro that loop are not
 currently detected and will cause the tool to lock up.
 
-Maps are declared anywhere in the map using the map directive::
+Maps are declared anywhere in the map using the map directive:
+
+.. code-block:: ini
 
     # Comments
     [my-special-map] <1>
@@ -305,7 +317,9 @@ Maps are declared anywhere in the map using the map directive::
 
 Any macro defintions following a map declaration are placed in that map and the
 default map is ``global`` when loading a file. Maps are selected in
-configuration files by using the ``%select`` directive::
+configuration files by using the ``%select`` directive:
+
+.. code-block:: spec
 
     %select my-special-map
 
@@ -320,9 +334,11 @@ files need to add the ``%{_configdir}`` macro to the start of the file.
 
 Macro map files can include other macro map files using the ``%include``
 directive. The macro map to build *binutils*, *gcc*, *newlib*, *gdb* and
-RTEMS from version control heads is::
+RTEMS from version control heads is:
 
-    # <1>
+.. code-block:: spec
+
+    #
     # Build all tool parts from version control head.
     #
     %include %{_configdir}/snapshots/binutils-head.mc
@@ -349,7 +365,7 @@ directory. You need to have the environment variable ``HOME`` defined for this
 work.
 
 Report Mailing
---------------
+^^^^^^^^^^^^^^
 
 The build reports can be mailed to a specific email address to logging and
 monitoring. Mailing requires a number of parameters to function. These are:
@@ -380,7 +396,9 @@ The ``from`` mail address is taken from:
 If you have configured an email and name in git it will be used used. If you do
 not a check is made for a ``.mailrc`` file. The environment variable ``MAILRC``
 is used if present else your home directory is check. If found the file is
-scanned for the ``from`` setting::
+scanned for the ``from`` setting:
+
+.. code-block:: shell
 
   set from="Foo Bar <foo@bar>"
 
@@ -392,20 +410,24 @@ default is ``localhost``. You can override the default with a personal
 or user macro file or via the command line option ``--smtp-host``.
 
 Build Set Files
----------------
+^^^^^^^^^^^^^^^
 
 Build set files lets you list the packages in the build set you are defining
 and have a file extension of ``.bset``. Build sets can define macro variables,
 inline include other files and reference other build set or package
 configuration files.
 
-Defining macros is performed with the ``%define`` macro::
+Defining macros is performed with the ``%define`` macro:
+
+.. code-block:: spec
 
     %define _target m32r-rtems4.11
 
 Inline including another file with the ``%include`` macro continues processing
 with the specified file returning to carry on from just after the include
-point::
+point:
+
+.. code-block:: spec
 
     %include rtems-4.11-base.bset
 
@@ -413,7 +435,9 @@ This includes the RTEMS 4.11 base set of defines and checks. The configuration
 paths as defined by ``_configdir`` are scanned. The file extension is optional.
 
 You reference build set or package configuration files by placing the file name
-on a single line::
+on a single line:
+
+.. code-block:: spec
 
     tools/rtems-binutils-2.22-1
 
@@ -425,7 +449,7 @@ package configuration the package is built with the package builder. This all
 happens once the build set file has finished being scanned.
 
 Configuration Control
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 The RTEMS Souce Builder is designed to fit within most verification and
 validation processes. All of the RTEMS Source Builder is source code. The
@@ -441,7 +465,9 @@ example the RTEMS configuration file ``rtems-gcc-4.7.2-newlib-2.0.0-1.cfg``
 creates an RTEMS GCC and Newlib package where the GCC version is 4.7.2, the
 Newlib version is 2.0.0, plus any RTEMS specific patches that related to this
 version. The configuration defines the version numbers of the various parts
-that make up this package::
+that make up this package:
+
+.. code-block:: spec
 
     %define gcc_version    4.7.2
     %define newlib_version 2.0.0
@@ -449,7 +475,9 @@ that make up this package::
     %define mpc_version    0.8.2
     %define gmp_version    5.0.5
 
-The package build options, if there are any are also defined::
+The package build options, if there are any are also defined:
+
+.. code-block:: spec
 
     %define with_threads 1
     %define with_plugin  0
@@ -457,11 +485,15 @@ The package build options, if there are any are also defined::
 
 The generic configuration may provide defaults in case options are not
 specified. The patches this specific version of the package requires can be
-included::
+included:
+
+.. code-block:: spec
 
     Patch0: gcc-4.7.2-rtems4.11-20121026.diff
 
-Finally including the GCC 4.7 configuration script::
+Finally including the GCC 4.7 configuration script:
+
+.. code-block:: spec
 
     %include %{_configdir}/gcc-4.7-1.cfg
 
@@ -476,7 +508,7 @@ the earlier revision number will not be effected by the change. This locks down
 a specific configuration over time.
 
 Personal Configurations
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The RSB supports personal configurations. You can view the RTEMS support in the
 ``rtems`` directory as a private configuration tree that resides within the RSB
@@ -484,7 +516,9 @@ source. There is also the ``bare`` set of configurations. You can create your
 own configurations away from the RSB source tree yet use all that the RSB
 provides.
 
-To create a private configuration change to a suitable directory::
+To create a private configuration change to a suitable directory:
+
+.. code-block:: shell
 
     $ cd ~/work
     $ mkdir test
@@ -496,7 +530,7 @@ build set file. The section 'Adding New Configurations' details how to add a
 new confguration.
 
 New Configurations
-------------------
+^^^^^^^^^^^^^^^^^^
 
 This section describes how to add a new configuration to the RSB. We will add a
 configuration to build the Device Tree Compiler. The Device Tree Compiler or
@@ -558,7 +592,9 @@ release 1 of the package and the last ``1`` is the build configuration version.
 The file starts with some comments that detail the configuration. If there is
 anything unusual about the configuration it is a good idea to add something in
 the comments here. The comments are followed by a check for the release. In
-this case if a release is not provided a default of 1 is used::
+this case if a release is not provided a default of 1 is used:
+
+.. code-block:: spec
 
     #
     # DTC 1.x.x Version 1.
@@ -572,7 +608,9 @@ this case if a release is not provided a default of 1 is used::
 
 The next section defines some information about the package. It does not effect
 the build and is used to annotate the reports. It is recommended this
-information is kept updated and accurate::
+information is kept updated and accurate:
+
+.. code-block:: spec
 
     Name:      dtc-%{dtc_version}-%{_host}-%{release}
     Summary:   Device Tree Compiler v%{dtc_version} for target %{_target} on host %{_host}
@@ -586,7 +624,9 @@ single source package and it can be downloaded using the HTTP protocol. The RSB
 knows this is GZip'ped tar file. If more than one package is needed, add
 them increasing the index. The ``gcc-4.8-1.cfg`` configuration contains
 examples of more than one source package as well as conditionally including
-source packages based on the outer configuration options::
+source packages based on the outer configuration options:
+
+.. code-block:: spec
 
     #
     # Source
@@ -618,7 +658,9 @@ unsure why something is being done a particular way.
 The preparation phase will often include source and patch setup commands. Outer
 layers can set the source package and add patches as needed while being able to
 use a common recipe for the build. Users can override the standard build and
-supply a custom patch for testing using the user macro command line interface::
+supply a custom patch for testing using the user macro command line interface:
+
+.. code-block:: spec
 
     #
     # Prepare the source code.
@@ -644,7 +686,9 @@ running ``make``. Note the use of the RSB macros for commands. In the case of
 systems we need to use the BSD make and not the GNU make.
 
 If your package requires a configuration stage you need to run this before the
-make stage. Again the GCC common configuration file provides a detailed example::
+make stage. Again the GCC common configuration file provides a detailed example:
+
+.. code-block:: spec
 
     %build
       build_top=$(pwd)
@@ -683,7 +727,9 @@ the RSB to vary specific commands based on the host. This can help on hosts
 like Windows where bugs can effect the standard commands such as ``rm``. There
 are many many macros to help you. You can find these listed in the
 ``defaults.mc`` file and in the trace output. If you are new to creating and
-editing configurations learning these can take a little time::
+editing configurations learning these can take a little time:
+
+.. code-block:: spec
 
     %install
       build_top=$(pwd)
@@ -701,7 +747,9 @@ for you.
 
 Once we have the configuration files we can execute the build using the
 ``sb-builder`` command. The command will perform the build and create a tar file
-in the ``tar`` directory::
+in the ``tar`` directory:
+
+.. code-block:: shell
 
     $  ../source-builder/sb-builder --prefix=/usr/local \
          --log=log_dtc devel/dtc-1.2.0
@@ -720,7 +768,9 @@ as binutils, GCC and GDB and a build set will build each of these packages and
 create a single build set tar file or install the tools on the host into the
 prefix path.
 
-The DTC build set file is called ``dtc.bset`` and contains::
+The DTC build set file is called ``dtc.bset`` and contains:
+
+.. code-block:: spec
 
     #
     # Build the DTC.
@@ -730,7 +780,9 @@ The DTC build set file is called ``dtc.bset`` and contains::
 
     devel/dtc-1.2.0.cfg
 
-To build this you can use something similar to::
+To build this you can use something similar to:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --prefix=/usr/local --log=log_dtc \
        --trace --bset-tar-file --no-install dtc
@@ -772,7 +824,7 @@ and change directory into them and manually run commands until to figure what
 the package requires.
 
 Scripting
----------
+^^^^^^^^^
 
 Configuration files specify how to build a package. Configuration files are
 scripts and have a ``.cfg`` file extension. The script format is based loosely
@@ -923,23 +975,24 @@ The +%prep+ macro starts a block that continues until the next block macro. The
 *prep* or preparation block defines the setup of the package's source and is a
 mix of RTEMS Source Builder macros and shell scripting. The sequence is
 typically +%source+ macros for source, +%patch+ macros to patch the source
-mixed with some shell commands to correct any source issues::
+mixed with some shell commands to correct any source issues:
 
-                  <1>                <2>      <3>
+.. code-block:: spec
+
     %source setup gcc -q -c -T -n %{name}-%{version}
 
 .. topic:: Items:
 
-  1. The source group to set up.
+  1. The source group to set up is ``gcc``.
 
-  2. The source's name.
+  2. The source's name is the macro ``%{name}``.
 
-  3. The version of the source.
+  3. The version of the source is the macro ``%{version}``.
 
 The source set up are declared with the source ``set`` and ``add`` commands. For
 example:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source set gdb http://ftp.gnu.org/gnu/gdb/gdb-%{gdb_version}.tar.bz2
 
@@ -957,7 +1010,7 @@ example GNU's GCC was a few tar files for a while and it is now a single tar
 file. Support for multiple source files can be conditionally implemented with
 the following scripting:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source set gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-code-%{gcc_version}.tar.bz2
     %source add gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-g++-%{gcc_version}.tar.bz2
@@ -966,7 +1019,7 @@ the following scripting:
 Separate modules use separate source groups. The GNU GCC compiler for RTEMS
 uses Newlib, MPFR, MPC, and GMP source packages. You define the source with:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source set gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
     %source set newlib ftp://sourceware.org/pub/newlib/newlib-%{newlib_version}.tar.gz
@@ -976,7 +1029,7 @@ uses Newlib, MPFR, MPC, and GMP source packages. You define the source with:
 
 and set up with:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source setup gcc -q -n gcc-%{gcc_version}
     %source setup newlib -q -D -n newlib-%{newlib_version}
@@ -990,22 +1043,24 @@ applied using the +setup+ command. The +setup+ command takes the default patch
 option. You can provide options with each patch by adding them as arguments
 before the patch URL. Patches with no options uses the +setup+ default.
 
-.. code-block:: auto
+.. code-block:: spec
 
     %patch add gdb %{rtems_gdb_patches}/gdb-sim-arange-inline.diff
-    %patch add gdb -p0 <1> %{rtems_gdb_patches}/gdb-sim-cgen-inline.diff
+    %patch add gdb -p0 %{rtems_gdb_patches}/gdb-sim-cgen-inline.diff
 
 .. topic:: Items:
 
-  1. This patch has a custom option.
+  1. This patch has the custom option of ``-p0``.
 
-To apply these patches::
+To apply these patches:
 
-    %patch setup gdb -p1 <1>
+.. code-block:: spec
+
+    %patch setup gdb -p1
 
 .. topic:: Items:
 
-  1. The default options.
+  1. The default options for ``gdb`` set up.
 
 .. _build:
 
@@ -1018,22 +1073,24 @@ package. It assumes all source code has been unpacked, patch and adjusted so
 the build will succeed.
 
 The following is an example take from the GitHub STLink project. The STLink is
-a JTAG debugging device for the ST ARM family of processors::
+a JTAG debugging device for the ST ARM family of processors:
+
+.. code-block:: spec
 
     %build
-      export PATH="%{_bindir}:${PATH}" <1>
+      export PATH="%{_bindir}:${PATH}"
 
-      cd texane-stlink-%{stlink_version} <2>
+      cd texane-stlink-%{stlink_version}
 
-      ./autogen.sh <3>
+      ./autogen.sh
 
     %if "%{_build}" != "%{_host}"
-      CFLAGS_FOR_BUILD="-g -O2 -Wall" \ <4>
+      CFLAGS_FOR_BUILD="-g -O2 -Wall" \
     %endif
-      CPPFLAGS="-I $SB_TMPPREFIX/include/libusb-1.0" \ <5>
+      CPPFLAGS="-I $SB_TMPPREFIX/include/libusb-1.0" \
       CFLAGS="$SB_OPT_FLAGS" \
       LDFLAGS="-L $SB_TMPPREFIX/lib" \
-      ./configure \ <6>
+      ./configure \
         --build=%{_build} --host=%{_host} \
         --verbose \
         --prefix=%{_prefix} --bindir=%{_bindir} \
@@ -1041,36 +1098,41 @@ a JTAG debugging device for the ST ARM family of processors::
         --includedir=%{_includedir} --libdir=%{_libdir} \
         --mandir=%{_mandir} --infodir=%{_infodir}
 
-      %{__make} %{?_smp_mflags} all <7>
+      %{__make} %{?_smp_mflags} all
 
       cd ..
 
 .. topic:: Items:
 
-  1. Setup the PATH environment variable. This is not always needed.
+  1. Set up the PATH environment variable by setting the ``PATH`` environment
+     variable. This is not always needed.
 
-  2. This package builds in the source tree so enter it.
+  2. This package builds in the source tree
+     ``texane-stlink-%{stlink_version}`` so enter it before building.
 
   3. The package is actually checked directly out from the github project and
-     so it needs its autoconf and automake files generated.
+     so it needs its ``autoconf`` and ``automake`` files generated. Invoke the
+     provided script ``autogen.sh``
 
-  4. Flags for a cross-compiled build.
+  4. If the build machine and host are not the same the build is a
+     cross-compile. Update the flags for a cross-compiled build.
 
-  5. Various settings passed to configure to customise the build. In this
-     example an include path is being set to the install point of
-     ``libusb``. This package requires ``libusb`` is built before it.
+  5. The flags set in the environment before ``configure`` are various
+     settings that need to be passed to customise the build. In this example
+     an include path is being set to the install point of ``libusb``. This
+     package requires ``libusb`` is built before it.
 
   6. The ``configure`` command. The RTEMS Source Builder provides all the
      needed paths as macro variables. You just need to provide them to
      ``configure``.
 
-  7. Running make. Do not use ``make`` directly, use the RTEMS Source Builder's
-     defined value. This value is specific to the host. A large number of
-     packages need GNU make and on BSD systems this is ``gmake``. You can
-     optionally add the SMP flags if the packages build system can handle
-     parallel building with multiple jobs. The ``_smp_mflags`` value is
-     automatically setup for SMP hosts to match the number of cores the host
-     has.
+  7. Run ``make``. Do not use ``make`` directly, use the RTEMS Source
+     Builder's defined value. This value is specific to the host. A large
+     number of packages need GNU make and on BSD systems this is
+     ``gmake``. You can optionally add the SMP flags if the packages build
+     system can handle parallel building with multiple jobs. The
+     ``_smp_mflags`` value is automatically setup for SMP hosts to match the
+     number of cores the host has.
 
 %install
 ~~~~~~~~
@@ -1086,7 +1148,9 @@ the macro variable ``__tmpdir``. The RTEMS Source Builder sets up a shell
 environment variable called ``SB_BUILD_ROOT`` as the standard install point. Most
 packages support adding ``DESTDIR=`` to the ``make install`` command.
 
-Looking at the same example as in :ref:`build`::
+Looking at the same example as in :ref:`build`:
+
+.. code-block:: spec
 
     %install
       export PATH="%{_bindir}:${PATH}" <1>
@@ -1134,7 +1198,9 @@ configuration file that contains the ``%include`` macro.
 Including files allow a kind of configuration file reuse. The outer
 configuration files provide specific information such as package version
 numbers and patches and then include a generic configuration script which
-builds the package::
+builds the package:
+
+.. code-block:: spec
 
     %include %{_configdir}/gcc-4.7-1.cfg
 
@@ -1152,7 +1218,9 @@ with Newlib configuration the name is typically::
 
 The ``%summary`` is a brief description of the package. It is useful when
 reporting. This information is not capture in the package anywhere. For the GCC
-with Newlib configuration the summary is typically::
+with Newlib configuration the summary is typically:
+
+.. code-block:: spec
 
     Summary: GCC v%{gcc_version} and Newlib v%{newlib_version} for target %{_target} on host %{_host}
 
@@ -1161,7 +1229,9 @@ with Newlib configuration the summary is typically::
 
 The ``%release`` is a packaging number that allows revisions of a package to
 happen where no package versions change. This value typically increases when
-the configuration building the package changes::
+the configuration building the package changes:
+
+.. code-block:: spec
 
     %define release 1
 
@@ -1172,7 +1242,9 @@ The ``%version`` macro sets the version the package. If the package is a single
 component it tracks that component's version number. For example in the
 ``libusb`` configuration the ``%version`` is the same as ``%libusb_version``,
 however in a GCC with Newlib configuration there is no single version
-number. In this case the GCC version is used::
+number. In this case the GCC version is used:
+
+.. code-block:: spec
 
     Version: %{gcc_version}
 
@@ -1206,9 +1278,9 @@ source files to be set up. Subsequent ``set`` commands for the same source
 group are ignored. this lets you define the standard source files and override
 them for specific releases or snapshots. To set a source file group:
 
-.. code-block:: auto
+.. code-block:: spec
 
-    %source set gcc <1> ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
+    %source set gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/gcc-%{gcc_version}.tar.bz2
 
 .. topic:: Items:
 
@@ -1217,12 +1289,14 @@ them for specific releases or snapshots. To set a source file group:
 To add another source package to be installed into the same source tree you use
 the ``add`` command:
 
-.. code-block:: auto
+.. code-block:: spec
 
     %source add gcc ftp://ftp.gnu.org/gnu/gcc/gcc-%{gcc_version}/g++-%{gcc_version}.tar.bz2
 
 The source ``setup`` command can only be issued in the ``%prep:`` section. The
-setup is::
+setup is:
+
+.. code-block:: spec
 
     %source gcc setup -q -T -D -n %{name}-%{version}
 
@@ -1269,25 +1343,29 @@ control applying a group of patches to a specific source tree.
 
 The ``__patchdir`` path is searched.
 
-To add a patch::
+To add a patch:
 
-    %patch add gcc <1>  gcc-4.7.2-rtems4.11-20121026.diff
-    %patch add gcc -p0 <2>  gcc-4.7.2-rtems4.11-20121101.diff
+.. code-block:: spec
+
+    %patch add gcc  gcc-4.7.2-rtems4.11-20121026.diff
+    %patch add gcc -p0  gcc-4.7.2-rtems4.11-20121101.diff
 
 .. topic:: Items:
 
   1. The patch group is ``gcc``.
 
-  2. Option for this specific patch.
+  2. Option ``-p0`` is this specific to this patch.
 
 Placing ``%patch setup`` in the ``%prep`` section will apply the groups
 patches::
 
-    %patch setup gcc <1>  -p1 <2>
+.. code-block:: spec
 
-  1. The patch group.
+    %patch setup gcc  -p1
 
-  2. The default option used to apply the patch.
+  1. The patch group is ``gcc``.
+
+  2. The default option used to apply the patch is ``-p1``.
 
 %hash
 ~~~~~
@@ -1303,7 +1381,9 @@ The basename of the file is used as the key for the hash.
 The hash algorthim can be ``md5``, ``sha1``, ``sha224``, ``sha256``,
 ``sha384``, and ``sha512`` and we typically use ``md5``.
 
-To add a hash::
+To add a hash:
+
+.. code-block:: spec
 
     %hash md5 <1> net-snmp-%{net_snmp_version}.tar.gz <2> 7db683faba037249837b226f64d566d4 <3>
 
@@ -1351,7 +1431,9 @@ recorded in the build report so they can be traced.
 Configurations use different maps so macro overrides can target a specific
 package.
 
-The default map is ``global``::
+The default map is ``global``:
+
+.. code-block:: spec
 
     %select gcc-4.8-snapshot <1>
     %define one_plus_one 2 <2>
@@ -1367,7 +1449,9 @@ The default map is ``global``::
 ~~~~~~~
 
 The ``%define`` macro defines a new macro or updates an existing one. If no
-value is given it is assumed to be ``1``::
+value is given it is assumed to be ``1``:
+
+.. code-block:: spec
 
     %define foo bar
     %define one_plus_one 2
@@ -1392,7 +1476,9 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
 .. list-table::
 
   * - **%{}**
-    - Check the macro is set or *true*, ie non-zero::
+    - Check the macro is set or *true*, ie non-zero:
+
+      .. code-block:: spec
 
          %if ${foo}
           %warning The test passes, must not be empty or is non-zero
@@ -1401,7 +1487,9 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
          %endif
 
   * - **\!**
-    - The *not* operator inverts the test of the macro::
+    - The *not* operator inverts the test of the macro:
+
+      .. code-block:: spec
 
          %if ! ${foo}
           %warning The test passes, must be empty or zero
@@ -1410,7 +1498,9 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
          %endif
 
   * - **==**
-    - The left hand size must equal the right hand side. For example::
+    - The left hand size must equal the right hand side. For example:
+
+      .. code-block:: spec
 
          %define one 1
          %if ${one} == 1
@@ -1418,7 +1508,10 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
          %else
           %error The test fails
          %endif
-      You can also check to see if a macro is empty::
+
+      You can also check to see if a macro is empty:
+
+      .. code-block:: spec
 
          %if ${nothing} == %{nil}
           %warning The test passes
@@ -1426,7 +1519,9 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
           %error The test fails
 
   * - **!=**
-    - The left hand size does not equal the right hand side. For example::
+    - The left hand size does not equal the right hand side. For example:
+
+      .. code-block:: spec
 
          #
          # Check a value not being equal.
@@ -1465,7 +1560,9 @@ The ``%if`` macro starts a conditional logic block that can optionally have a
 
 The ``%ifn`` macro inverts the normal ``%if`` logic. It avoids needing to provide
 empty *if* blocks followed by *else* blocks. It is useful when checking if a
-macro is defined::
+macro is defined:
+
+.. code-block:: spec
 
     %ifn %{defined foo}
      %define foo bar

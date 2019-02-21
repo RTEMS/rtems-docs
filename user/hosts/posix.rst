@@ -53,27 +53,33 @@ been tested and report as working.
 ArchLinux
 ~~~~~~~~~
 
-The following packages are required on a fresh Archlinux 64bit installation::
+The following packages are required on a fresh Archlinux 64bit installation:
 
-    # pacman -S base-devel gdb xz unzip ncurses git zlib
+.. code-block:: shell
+
+  # pacman -S base-devel gdb xz unzip ncurses git zlib
 
 Archlinux, by default installs ``texinfo-5`` which is incompatible for building
 GCC 4.7 tree. You will have to obtain ``texinfo-legacy`` from ``AUR`` and
-provide a manual override::
+provide a manual override:
 
-    # pacman -R texinfo
-    $ yaourt -S texinfo-legacy
-    # ln -s /usr/bin/makeinfo-4.13a /usr/bin/makeinfo
+.. code-block:: shell
+
+  # pacman -R texinfo
+  $ yaourt -S texinfo-legacy
+  # ln -s /usr/bin/makeinfo-4.13a /usr/bin/makeinfo
 
 .. _CentOS:
 
 CentOS
 ~~~~~~
 
-The following packages are required on a minimal CentOS 6.3 64bit installation::
+The following packages are required on a minimal CentOS 6.3 64bit installation:
 
-    # yum install autoconf automake binutils gcc gcc-c++ gdb make patch \
-    bison flex xz unzip ncurses-devel texinfo zlib-devel python-devel git
+.. code-block:: shell
+
+  # yum install autoconf automake binutils gcc gcc-c++ gdb make patch \
+  bison flex xz unzip ncurses-devel texinfo zlib-devel python-devel git
 
 The minimal CentOS distribution is a specific DVD that installs a minimal
 system. If you use a full system some of these packages may have been
@@ -85,10 +91,12 @@ Fedora
 ~~~~~~
 
 The RTEMS Source Builder has been tested on Fedora 19 64bit with the following
-packages::
+packages:
 
-    # yum install ncurses-devel python-devel git bison gcc cvs gcc-c++ \
-         flex texinfo patch perl-Text-ParseWords zlib-devel
+.. code-block:: shell
+
+  # yum install ncurses-devel python-devel git bison gcc cvs gcc-c++ \
+       flex texinfo patch perl-Text-ParseWords zlib-devel
 
 .. _Raspbian:
 
@@ -96,10 +104,12 @@ Raspbian
 ~~~~~~~~
 
 The is the Debian distribution for the Raspberry Pi. The following packages are
-required::
+required:
 
-    $ sudo apt-get install autoconf automake bison flex binutils gcc g++ gdb \
-    texinfo unzip ncurses-dev python-dev git
+.. code-block:: shell
+
+  $ sudo apt-get install autoconf automake bison flex binutils gcc g++ gdb \
+  texinfo unzip ncurses-dev python-dev git
 
 It is recommended you get Model B of the Pi with 512M of memory and to mount a
 remote disk over the network. The tools can be built on the network disk with a
@@ -112,11 +122,13 @@ Ubuntu
 ~~~~~~
 
 The latest version is Ubuntu 18.04.1 LTS 64-bit. This section also includes
-Xubuntu. A minimal installation was used and the following packages installed::
+Xubuntu. A minimal installation was used and the following packages installed:
 
-    $ sudu apt-get build-dep gcc-defaults g++ gdb git unzip pax bison \
-           flex libpython-dev git libncurses5-dev zlib1g-dev
-    
+.. code-block:: shell
+
+  $ sudu apt-get build-dep gcc-defaults g++ gdb git unzip pax bison \
+         flex libpython-dev git libncurses5-dev zlib1g-dev
+
 Note that in previous versions of Ubuntu, the package libpython-dev was
 python2.7-dev. The name of packages changes over time. You need the
 package with Python development libraries for C/C++ programs.
@@ -124,7 +136,7 @@ package with Python development libraries for C/C++ programs.
 It is likely necessary that you will have to enable the Ubuntu Source Repositories.
 Users have suggested the following web pages which have instructions:
 
-* https://askubuntu.com/questions/158871/how-do-i-enable-the-source-code-repositories/158872 
+* https://askubuntu.com/questions/158871/how-do-i-enable-the-source-code-repositories/158872
 * https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list
 
 .. _Linux Mint:
@@ -133,9 +145,11 @@ Linux Mint
 ~~~~~~~~~~
 
 zlib package is required on Linux Mint. It has a different name (other
-than the usual zlib-dev)::
+than the usual zlib-dev):
 
-    # sudo apt-get install zlib1g-dev
+.. code-block:: shell
+
+  # sudo apt-get install zlib1g-dev
 
 .. _openSUSE:
 
@@ -151,17 +165,21 @@ FreeBSD
 -------
 
 The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3 and 11 64bit
-version. You need to install some ports. They are::
+version. You need to install some ports. They are:
 
-    # cd /usr/ports
-    # portinstall --batch lang/python27
+.. code-block:: shell
+
+  # cd /usr/ports
+  # portinstall --batch lang/python27
 
 If you wish to build Windows (mingw32) tools please install the following
-ports::
+ports:
 
-    # cd /usr/ports
-    # portinstall --batch devel/mingw32-binutils devel/mingw32-gcc
-    # portinstall --batch devel/mingw32-zlib devel/mingw32-pthreads
+.. code-block:: shell
+
+  # cd /usr/ports
+  # portinstall --batch devel/mingw32-binutils devel/mingw32-gcc
+  # portinstall --batch devel/mingw32-zlib devel/mingw32-pthreads
 
 The +zlip+ and +pthreads+ ports for MinGW32 are used for builiding a Windows
 QEMU.
@@ -175,11 +193,10 @@ NetBSD
 ------
 
 The RTEMS Source Builder has been tested on NetBSD 6.1 i386. Packages to add
-are::
+are:
 
-    # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/gmake-3.82nb7.tgz
-    # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/bison-2.7.1.tgz
-    # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/archivers/xz-5.0.4.tgz
+.. code-block:: shell
 
-.. _MacOS:
-
+  # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/gmake-3.82nb7.tgz
+  # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/bison-2.7.1.tgz
+  # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/archivers/xz-5.0.4.tgz

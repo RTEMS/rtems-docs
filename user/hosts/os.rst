@@ -38,7 +38,7 @@ proven over the years to be difficult to manage in production systems.
 
     The RSB assumes your host is set up and the needed packages are installed
     and configured to work. If your host has not been set up please refer to
-    :ref:`Hosts` and your host's section for packages you need to install.
+    section that covers your host's packages you need to install.
 
 .. topic:: Path to use when building applications:
 
@@ -80,4 +80,3 @@ proven over the years to be difficult to manage in production systems.
       $ git checkout -t origin/4.11
 
     Branches are available for the 4.9, 4.10, and 4.11 versions of RTEMS.
-

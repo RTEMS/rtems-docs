@@ -92,7 +92,7 @@ used to include other INI files using the include key name. This is shown in the
 following example where the values indicate rtems and rtld-base configuration
 files:
 
-.. code-block:: shell
+.. code-block:: ini
 
   include = rtems.ini, rtld-base.ini
 
@@ -100,7 +100,7 @@ The trace linker also uses values in keys to specify other sections. In this
 example the functions name lists `test-trace-funcs` and that section contains a
 headers key that further references a section called `test-headers`:
 
-.. code-block:: shell
+.. code-block:: ini
 
   functions = test-trace-funcs, rtems-api
 
@@ -143,7 +143,7 @@ following keys:
 The tracer section of the file:`test-trace.ini` is shown below with explanatory
 comments.
 
-.. code-block:: shell
+.. code-block:: ini
 
   ;
   ; RTEMS Trace Linker Test Configuration.
@@ -212,7 +212,7 @@ general options section can contain following sets of keys:
 The options section of the file: `test-trace.ini` uses two of the aforementioned
 keys as shown below:
 
-.. code-block:: shell
+.. code-block:: ini
 
   ;
   ; Options can be defined here or on the command line.
@@ -250,7 +250,7 @@ The trace section of the file: `test-trace.ini` is shown below. A trace section
 can reference other trace sections of a specific type. This allows a trace
 sections to build on other trace sections.
 
-.. code:: shell
+.. code-block:: ini
 
   ; User application trace example.
   ;
@@ -421,7 +421,7 @@ The file: `test-trace.ini` specifies ``printf-generator`` as its generator. This
 section can be found in the file: `rtld-print.ini` in the rtems-tools directory
 and is shown below:
 
-.. code:: shell
+.. code:: ini
 
   ;
   ; A printf generator prints to stdout the trace functions.

@@ -5,7 +5,7 @@
 .. _RSBDeployment:
 
 Building and Deploying Tool Binaries
-====================================
+------------------------------------
 
 If you wish to create and distribute your build or you want to archive a build
 you can create a tar file. We term this deploying a build. This is a more
@@ -39,7 +39,9 @@ access only. To install a tar file you have downloaded into your new machine's
           $HOME/Downloads/rtems-4.11-sparc-rtems4.11-1.tar.bz2
 
 A build set tar file is created by adding ``--bset-tar-file`` option to the
-``sb-set-builder`` command::
+``sb-set-builder`` command:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
              --prefix=$HOME/development/rtems/4.11 \
@@ -80,7 +82,9 @@ A build set tar file is created by adding ``--bset-tar-file`` option to the
 
 You can also suppress installing the files using the ``--no-install``
 option. This is useful if your prefix is not accessiable, for example when
-building Canadian cross compiled tool sets::
+building Canadian cross compiled tool sets:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
                 --prefix=$HOME/development/rtems/4.11 \
@@ -118,7 +122,9 @@ building Canadian cross compiled tool sets::
 
 A package tar file can be created by adding the ``--pkg-tar-files`` to the
 ``sb-set-builder`` command. This creates a tar file per package built in the
-build set::
+build set:
+
+.. code-block:: shell
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
             --prefix=$HOME/development/rtems/4.11 \

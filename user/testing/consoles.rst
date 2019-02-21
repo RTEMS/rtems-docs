@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
 
-.. _tester-consoles:
+.. _TesterConsoles:
 
 Consoles
 --------

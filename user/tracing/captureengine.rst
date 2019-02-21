@@ -98,7 +98,7 @@ traces the context switches between these tasks. ``cwceil`` and ``cwfloor`` are
 set to a narrow range of task priorities to avoid creating noise from a large
 number of context switches between tasks we are not interested in.
 
-.. code:: shell
+.. code-block:: shell
 
   *** BEGIN OF TEST CAPTURE ENGINE ***
   *** TEST VERSION: 5.0.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8

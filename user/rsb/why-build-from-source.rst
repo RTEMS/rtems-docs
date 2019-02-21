@@ -5,7 +5,7 @@
 .. _WhyBuildFromSource:
 
 Why Build from Source?
-======================
+----------------------
 
 The RTEMS Source Builder is not a replacement for the binary install systems
 you have with commercial operating systems or open source operating system
