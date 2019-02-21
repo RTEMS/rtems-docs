@@ -24,6 +24,10 @@ created is worth it.
 
 Images can be created from source using PlantUML and Ditaa.
 
+A Sphinx checksheet is:
+
+ http://docs.sphinxdocs.com/en/latest/cheatsheet.html#rst-cheat-sheet
+
 Production Quality Hosts
 ------------------------
 
