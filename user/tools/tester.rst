@@ -68,6 +68,8 @@ There is the ``erc32`` tester which uses the GDB back-end and the
 how to use :program:`rtems-test` command with the erc32 BSP because it is easy
 to build an use.
 
+.. _BuildingRTEMSTests:
+
 Building RTEMS Tests
 --------------------
 

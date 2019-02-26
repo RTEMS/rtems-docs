@@ -40,6 +40,11 @@ control of the machine. We call this project sandboxing and
 Linux
 -----
 
+BSP Build will require ``pax`` package if RTEMS is configured with the
+``--enable-tests`` option, see :ref:`BuildingRTEMSTests`. This package is not
+installed , by default, on many Linux distributions, you can check for it
+using your package manager. Install it, if it is not present on your system.
+
 A number of different Linux distrubutions are known to work. The following have
 been tested and report as working.
 
