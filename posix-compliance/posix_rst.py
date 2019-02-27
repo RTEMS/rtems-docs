@@ -142,7 +142,7 @@ class compliance:
         self.data = None
 
     def load(self, name):
-        with open(name, 'rb') as f:
+        with open(name, 'r') as f:
             data = csv.reader(f, delimiter = ',', quotechar = '"')
             hdr = None
             rows = []
