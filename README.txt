@@ -415,13 +415,33 @@ existing documentation for an example and if unsure ask.
       5  ^^^^^^ Sub-sub-sub-section
       6  ~~~~~~ Sub-sub-sub-sub-section
 
-5. For literal output, such as shell commands and code use '::' at the trailing
-   edge of the previous paragraph. Use the '.. code-block::' with
-   'c' for C code and 'shell' for shell code and terminal output. If you need
-   line number use:
+5. For literal output, such as shell commands and code do not use '::'
+   at the trailing edge of the previous paragraph as it generates
+   warnings as the autodetect fails to find a suitable format. Use the
+   '.. code-block::' with a suitable lexical label. The lexers are:
+
+     http://pygments.org/docs/lexers/
+
+   Use the short names. For C code use 'c' code and 'shell' for shell
+   scripts and for terminal output use 'none'. If you need line
+   numbers use:
 
     .. code-block:: shell
        :linenos:
+
+   We support two forms of commands and outputs.
+
+   The first is to have a shell command block with just the commands
+   and if required an output block with the output or some of the
+   output. Use 'none' for the output block. Make sure the text clearly
+   states the block is the output, if it has been edited to shorten
+   the amount of output and if there are any special operating modes,
+   for example needing to be 'root'.
+
+   The second is to use a single block of type 'none' with the command
+   and output together as seen in a terminal session. The commands are
+   identifed by the standard shell prompt characters where '$' is a
+   user prompt and '#' is a 'root' prompt.
 
 6. Use the directives for 'note', 'warning', and 'topic'. Do not add 'TIP',
    'Important' or 'Warning' to the text. Let the mark-up language handle
