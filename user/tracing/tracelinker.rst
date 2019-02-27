@@ -25,7 +25,7 @@ options it needs and the second part is a standard linker command line you would
 use to link an RTEMS application. The current command line for trace linker
 consists of:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ rtems-tld -h
   rtems-trace-ld [options] objects
@@ -482,12 +482,12 @@ commands in the topmost build directory to build the tools project:
 
 First we configure using:
 
-.. code-block:: shell
+.. code-block:: none
 
   $./waf configure --prefix=$HOME/development/rtems/5
 
 Then we build and install using:
 
-.. code-block:: shell
+.. code-block:: none
 
   $./waf build install

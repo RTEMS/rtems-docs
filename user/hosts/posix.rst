@@ -55,7 +55,7 @@ ArchLinux
 
 The following packages are required on a fresh Archlinux 64bit installation:
 
-.. code-block:: shell
+.. code-block:: none
 
   # pacman -S base-devel gdb xz unzip ncurses git zlib
 
@@ -63,7 +63,7 @@ Archlinux, by default installs ``texinfo-5`` which is incompatible for building
 GCC 4.7 tree. You will have to obtain ``texinfo-legacy`` from ``AUR`` and
 provide a manual override:
 
-.. code-block:: shell
+.. code-block:: none
 
   # pacman -R texinfo
   $ yaourt -S texinfo-legacy
@@ -76,7 +76,7 @@ CentOS
 
 The following packages are required on a minimal CentOS 6.3 64bit installation:
 
-.. code-block:: shell
+.. code-block:: none
 
   # yum install autoconf automake binutils gcc gcc-c++ gdb make patch \
   bison flex xz unzip ncurses-devel texinfo zlib-devel python-devel git
@@ -93,7 +93,7 @@ Fedora
 The RTEMS Source Builder has been tested on Fedora 19 64bit with the following
 packages:
 
-.. code-block:: shell
+.. code-block:: none
 
   # yum install ncurses-devel python-devel git bison gcc cvs gcc-c++ \
        flex texinfo patch perl-Text-ParseWords zlib-devel
@@ -106,7 +106,7 @@ Raspbian
 The is the Debian distribution for the Raspberry Pi. The following packages are
 required:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ sudo apt-get install autoconf automake bison flex binutils gcc g++ gdb \
   texinfo unzip ncurses-dev python-dev git
@@ -124,7 +124,7 @@ Ubuntu
 The latest version is Ubuntu 18.04.1 LTS 64-bit. This section also includes
 Xubuntu. A minimal installation was used and the following packages installed:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ sudu apt-get build-dep gcc-defaults g++ gdb git unzip pax bison \
          flex libpython-dev git libncurses5-dev zlib1g-dev
@@ -147,7 +147,7 @@ Linux Mint
 zlib package is required on Linux Mint. It has a different name (other
 than the usual zlib-dev):
 
-.. code-block:: shell
+.. code-block:: none
 
   # sudo apt-get install zlib1g-dev
 
@@ -167,7 +167,7 @@ FreeBSD
 The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3 and 11 64bit
 version. You need to install some ports. They are:
 
-.. code-block:: shell
+.. code-block:: none
 
   # cd /usr/ports
   # portinstall --batch lang/python27
@@ -175,7 +175,7 @@ version. You need to install some ports. They are:
 If you wish to build Windows (mingw32) tools please install the following
 ports:
 
-.. code-block:: shell
+.. code-block:: none
 
   # cd /usr/ports
   # portinstall --batch devel/mingw32-binutils devel/mingw32-gcc
@@ -195,7 +195,7 @@ NetBSD
 The RTEMS Source Builder has been tested on NetBSD 6.1 i386. Packages to add
 are:
 
-.. code-block:: shell
+.. code-block:: none
 
   # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/gmake-3.82nb7.tgz
   # pkg_add ftp://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1/devel/bison-2.7.1.tgz

@@ -94,7 +94,7 @@ Examples
 
 Prints all reports for the ``hello.exe`` for the ``i386/pc686`` BSP:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ rtems-exeinfo -a i386-rtems5/c/pc686/testsuites/samples/hello/hello.exe
   RTEMS Executable Info 5.6f5cfada964c
@@ -168,7 +168,7 @@ drivers.
 
 Print the ``Init`` section data for the ``cdtest.exe`` for the ``i386/pc686`` BSP:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ rtems-exeinfo -I i386-rtems5/c/pc686/testsuites/samples/cdtest/cdtest.exe
   RTEMS Executable Info 5.6f5cfada964c

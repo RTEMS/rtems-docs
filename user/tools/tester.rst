@@ -36,7 +36,7 @@ Available BSP testers
 
 You can list the available BSP testers with:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ rtems-test --list-bsps
     arm920
@@ -78,7 +78,7 @@ running the ``bootstrap`` procedure, building and finally installing the
 kernel. Be sure to enable tests by using ``--enable-tests`` option with
 configure after running ``bootstrap``.
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../../rtems.git/configure --target=sparc-rtems5 \
                         --enable-tests --enable-rtemsbsp=erc32
@@ -99,7 +99,7 @@ Before running all the tests it is a good idea to run the ``hello`` test. The
 running it shows you have a working tool chain and build of RTEMS ready to run
 the tests. Using the run with the ERC32 BSP the command is:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ sparc-rtems5-run sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
 
@@ -111,7 +111,7 @@ The run command is the GDB simulator without the GDB part.
 
 Running the example using GDB:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ sparc-rtems5-gdb sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
     GNU gdb (GDB) 7.12
@@ -162,7 +162,7 @@ extension for RTEMS executables built within RTEMS.
 To run the erc32 tests enter the following command from the top of the erc32
 BSP build tree:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ~/development/rtems/test/rtems-tools.git/tester/rtems-test \
              --log=log_erc32_run \
@@ -234,7 +234,7 @@ invalid count changing means a test running before this test started failed,
 not the starting test. The status here has 7 tests passed, no failures, 5
 timeouts and 1 invalid test.
 
-.. code-block:: shell
+.. code-block:: none
 
     [ 5/13] p:2  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: hello.exe
 
@@ -345,7 +345,7 @@ The output is tagged so you can determine where it comes from. The following is
 the complete output for the In Memory File System test ``imfs_fslink.exe``
 running on a Coldfire MCF5235 using GDB and a BDM pod:
 
-.. code-block:: shell
+.. code-block:: none
 
     [ 11/472] p:9   f:0   t:0   i:1   | m68k/mcf5235: imfs_fslink.exe
     > gdb: ..../bin/m68k-rtems4.11-gdb -i=mi --nx --quiet ..../imfs_fslink.exe
@@ -429,7 +429,7 @@ Command Line Help
 The :program:`rtems-test` command line accepts a range of options. You can
 review the available option by the ``--help`` option:
 
-.. code-block:: shell
+.. code-block:: none
 
     RTEMS Tools Project (c) 2012-2014 Chris Johns
     Options and arguments:

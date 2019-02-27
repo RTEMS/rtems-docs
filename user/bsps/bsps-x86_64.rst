@@ -40,7 +40,7 @@ Complete detailed instructions are available at `TianoCore's Github's wiki
 
 Quick instructions (which may fall out of date) are:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ git clone git://github.com/tianocore/edk2.git
     $ cd edk2
@@ -63,7 +63,7 @@ shell.
 
 You can find the ``OVMF.fd`` file like this as well in the edk2 directory:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ find . -name "*.fd"
     ./Build/OvmfX64/DEBUG_GCC5/FV/MEMFD.fd
@@ -82,7 +82,7 @@ it. `Download FreeBSD's installer "memstick" image for amd64
 <https://www.freebsd.org/where.html>`_ and then run the following commands,
 replacing paths as appropriate.
 
-.. code-block:: shell
+.. code-block:: none
 
   $ qemu-img create freebsd.img 8G
   $ OVMF_LOCATION=/path/to/ovmf/OVMF.fd
@@ -114,14 +114,14 @@ do something to the effect of the following.
 
 On the host
 
-.. code-block:: shell
+.. code-block:: none
 
    # Upload hello.exe anywhere accessible within the host
    $ curl --upload-file hello.exe https://transfer.sh/rtems
 
 Then on the guest (FreeBSD), login with ``root`` and
 
-.. code-block:: shell
+.. code-block:: none
 
    # Back the FreeBSD kernel up
    $ cp -r /boot/kernel/ /boot/kernel.old

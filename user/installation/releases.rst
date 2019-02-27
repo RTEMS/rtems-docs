@@ -66,7 +66,7 @@ RTEMS Tools and Kernel
 This procedure will build a SPARC tool chain. Set up a suitable workspace to
 build the release in. On Unix:
 
-.. code-block:: shell
+.. code-block:: none
 
  $ cd
  $ mkdir -p development/rtems/releases
@@ -74,7 +74,7 @@ build the release in. On Unix:
 
 If building on Windows:
 
-.. code-block:: shell
+.. code-block:: none
 
  $ cd /c
  $ mkdir -p opt/rtems
@@ -84,7 +84,7 @@ If building on Windows:
 
 Download the RTEMS Source Builder (RSB) from the RTEMS FTP server:
 
-.. code-block:: shell
+.. code-block:: none
 
  $ wget https://ftp.rtems.org/pub/rtems/releases/4.11/4.11.0/rtems-source-builder-4.11.0.tar.xz
  --2016-03-21 10:50:04-- https://ftp.rtems.org/pub/rtems/releases/4.11/4.11.0/rtems-source-builder-4.11.0.tar.xz
@@ -100,7 +100,7 @@ Download the RTEMS Source Builder (RSB) from the RTEMS FTP server:
 
 On Unix unpack the RSB release tar file using:
 
-.. code-block:: shell
+.. code-block:: none
 
  $ tar Jxf rtems-source-builder-4.11.0.tar.xz
  $ cd rtems-source-builder-4.11.0/rtems/
@@ -108,7 +108,7 @@ On Unix unpack the RSB release tar file using:
 On Windows you need to shorten the path (See :ref:`windows-path-length`) after
 you have unpacked the tar file:
 
-.. code-block:: shell
+.. code-block:: none
 
  $ tar Jxf rtems-source-builder-4.11.0.tar.xz
  $ mv rtems-source-builder-4.11.0 4.110
@@ -121,7 +121,7 @@ and test the samples RTEMS builds by default
 If building on Windows add ``--jobs=none`` to avoid GNU make issues on Windows
 discussed in :ref:`msys2_parallel_builds`.
 
-.. code-block:: shell
+.. code-block:: none
 
  $ ../source-builder/sb-set-builder \
      --prefix=/opt/rtems/4.11 4.11/rtems-sparc

@@ -50,7 +50,7 @@ The **bare metal** support for GNU Tool chains. An example is the
 for an ARM compiler you would use ``arm-eabi`` or ``arm-eabihf``, and for SPARC
 you would use ``sparc-elf``:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ cd rtems-source-builder/bare
     $ ../source-builder/sb-set-builder --log=log_arm_eabihf \
@@ -109,7 +109,7 @@ packages only after they have been built so if you host does not have a
 recent enough version of ``autoconf`` and ``automake`` you first need to build them
 and install them then build your tool set. The commands are:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-4.11-at.txt \
        --prefix=$HOME/development/rtems/4.11 4.11/rtems-autotools
@@ -131,7 +131,7 @@ passing them on the command line using the ``--macros`` option. For RTEMS these
 are held in ``config/snapshots`` directory. The following builds *newlib* from
 CVS:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-4.11-sparc.txt \
        --prefix=$HOME/development/rtems/4.11 \
@@ -141,7 +141,7 @@ CVS:
 and the following uses the version control heads for ``binutils``, ``gcc``,
 ``newlib``, ``gdb`` and *RTEMS*:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-heads-sparc.txt \
        --prefix=$HOME/development/rtems/4.11-head \

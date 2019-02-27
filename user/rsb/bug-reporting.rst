@@ -13,10 +13,12 @@ find a bug please report it via the :r:url:`devel` or email on the RTEMS Users
 list.
 
 Please include the generated RSB report. If you see the following a report has
-been generated::
+been generated:
 
-     ...
-     ...
+.. code-block:: none
+
+    ...
+    ...
     Build FAILED   <1>
       See error report: rsb-report-4.11-rtems-lm32.txt   <2>
 

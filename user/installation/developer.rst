@@ -62,7 +62,7 @@ This procedure will build a SPARC tool chain.
 
 Clone the RTEMS Source Builder (RSB) repository:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd
   $ mkdir -p development/rtems
@@ -80,7 +80,7 @@ Check all the host packages you need are present. Current libraries are not
 checked and this includes checking for the python development libraries GDB
 requires:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd rsb
   $ ./source-builder/sb-check
@@ -90,7 +90,7 @@ requires:
 If you are unsure how to specify the build set for the architecture you wish to
 build, just ask the tool:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --list-bsets   <1>
     RTEMS Source Builder - Set Builder, v4.11.0
@@ -164,7 +164,7 @@ architecture because GDB has a good simulator that lets us run and test the
 samples RTEMS builds by default. The current development version
 is `5` and is on master:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd rtems
   $ ../source-builder/sb-set-builder --prefix=/usr/home/chris/development/rtems/5 5/rtems-sparc
@@ -316,7 +316,7 @@ Create a workspace for RTEMS using the following shell command:
   Add ``--bset-tar-file`` to the ``sb-set-builder`` command line to create
   tar files of the built package set.
 
-.. code-block:: shell
+.. code-block:: none
 
    ~
   $ mkdir -p /c/opt/rtems
@@ -328,7 +328,7 @@ another drive please subsitute ``/c`` with your drive letter.
 We build and install all RTEMS packages under the `prefix` we just
 created. Change to that directory and get a copy of the RSB:
 
-.. code-block:: shell
+.. code-block:: none
 
    ~
   $ cd /c/opt/rtems
@@ -347,7 +347,7 @@ created. Change to that directory and get a copy of the RSB:
 
 We are building RTEMS 4.11 tools so select the *4.11* branch:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/rsb
   $ git checkout 4.11
@@ -358,7 +358,7 @@ We are building RTEMS 4.11 tools so select the *4.11* branch:
 
 Check the RSB has a valid environment:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/rsb
   $ cd rtems
@@ -375,7 +375,7 @@ long time so please be patient. The RSB creates a log file containing all the
 build output and it will be changing size. The RSB command to build ``i386``
 tools is:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/rsb/rtems
   $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/4.11 \
@@ -495,7 +495,7 @@ Building the Kernel
 We can now build the RTEMS kernel using the RTEMS tools we have just
 built. First we need to set the path to the tools:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c
   $ cd /c/opt/rtems
@@ -506,7 +506,7 @@ built. First we need to set the path to the tools:
 
 We currently build RTEMS from the git release branch for 4.11:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems
   $ mkdir kernel
@@ -538,7 +538,7 @@ clean away any files, then generate the pre-install header file lists and
 finally we generate the ``autoconf`` and ``automake`` files using the RSB's
 bootstrap tool. First we clean any generated files that exist:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/kernel/rtems
   $ ./bootstrap -c
@@ -548,7 +548,7 @@ bootstrap tool. First we clean any generated files that exist:
 
 Then we generate the pre-install header file automake make files:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/kernel/rtems
   $ ./bootstrap -p
@@ -579,7 +579,7 @@ Then we generate the pre-install header file automake make files:
 
 Finally we run the RSB's parallel ``bootstrap`` command:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ /c/opt/rtems/rsb/source-builder/sb-bootstrap
   RTEMS Source Builder - RTEMS Bootstrap, 4.11 (76188ee494dd)
@@ -615,7 +615,7 @@ BSP. You can check the available BSPs by running the ``rtems-bsps`` command
 found in the top directory of the RTEMS kernel source. We build the Board
 Support Package (BSP) outside the kernel source tree:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/kernel/rtems
   $ cd ..
@@ -629,7 +629,7 @@ Support Package (BSP) outside the kernel source tree:
 Configure the RTEMS kernel to build ``pc686`` BSP for the ``i386`` target with
 networking disabled, We will build the external libBSD stack later:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/kernel/pc686
   $ /c/opt/rtems/kernel/rtems/configure --prefix=/c/opt/rtems/4.11 \
@@ -667,7 +667,7 @@ networking disabled, We will build the external libBSD stack later:
 
 Build the kernel:
 
-.. code-block:: shell
+.. code-block:: none
 
    /c/opt/rtems/kernel/pc686
   $ make
@@ -706,7 +706,7 @@ Build the kernel:
 
 Install the kernel to our prefix:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ make install
   Making install in tools/build

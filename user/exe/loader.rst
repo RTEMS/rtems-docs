@@ -456,7 +456,7 @@ is made more complex as it needs to have extra steps to link a second time.
 This example shows creating an embedded symbol table object file and linking it
 into the base image.
 
-.. code-block:: shell
+.. code-block:: none
 
  $ sparc-rtems5-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.pre
  $ rtems-syms -e -C sparc-rtems5-gcc -c "-mcpu=cypress" -o foo-sym.o foo.pre
@@ -484,7 +484,7 @@ unpredictable. No checks are made.
 The example shows creating and loading a symbol table executable object
 file. First create the symbol table's executable object file:
 
-.. code-block:: shell
+.. code-block:: none
 
  $ sparc-rtems5-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.exe
  $ rtems-syms -C sparc-rtems5-gcc -c "-mcpu=cypress" -o foo-sym.o foo.exe
@@ -630,7 +630,7 @@ debug information and this should be stripped before loading on to the
 target. The tool suite's command :program:`strip` can strip all the object files
 in a library with a single command.
 
-.. code-block:: shell
+.. code-block:: none
 
   $ sparc-rtems5-strip libc.a
 

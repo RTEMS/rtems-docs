@@ -344,7 +344,7 @@ spinning disk mounted under `build`. The build uses a development source tree
 that is bootstrapped and ready to build. The source can have local patches that
 need to be regression tested:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
             --rtems-tools=/opt/work/rtems/5 \
@@ -393,7 +393,7 @@ need to be regression tested:
 
 To build a couple of BSPs you are interested in with tests:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
             --rtems-tools=/opt/work/rtems/5 \

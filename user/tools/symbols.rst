@@ -135,7 +135,7 @@ Examples
 Create a dynamlically loaded symbol table for the ``minimum.exe`` sample
 program for the ``i386/pc686`` BSP:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ rtems-syms -o ms.o i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
   $ file ms.o
@@ -143,7 +143,7 @@ program for the ``i386/pc686`` BSP:
 
 Run the same command, this time create a map file:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ rtems-syms -o ms.o -m ms.map i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
   $ head -10 ms.map
@@ -161,7 +161,7 @@ Run the same command, this time create a map file:
 Run the same command with a raise verbose level to observe the stages the
 command performs:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ rtems-syms -vvv -o ms.o i386-rtems5/c/pc686/testsuites/samples/minimum/minimum.exe
   RTEMS Kernel Symbols 5.a72a462adc18

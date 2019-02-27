@@ -18,7 +18,7 @@ target hardware.
 
 You can see the current BSP list in the RTEMS sources by asking RTEMS with:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ./rtems-bsps
 

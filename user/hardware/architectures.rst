@@ -25,7 +25,7 @@ automatically by GCC via selecting a specific set of machine options.
 You can query the multilibs of a specific RTEMS GCC compiler via the
 ``-print-multi-lib`` option:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ sparc-rtems5-gcc -print-multi-lib
     .;
@@ -56,7 +56,7 @@ of machine options for this multilib follows separated by ``@`` characters.
 You can figure out the multilib selected by GCC for a set of machine options
 with the ``-print-multi-directory`` option:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ sparc-rtems5-gcc -print-multi-directory -mcpu=leon3
     leon3

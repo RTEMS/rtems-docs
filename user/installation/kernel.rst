@@ -16,7 +16,7 @@ Development Sources
 
 Create a new location to build the RTEMS kernel:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd
   $ cd development/rtems
@@ -25,7 +25,7 @@ Create a new location to build the RTEMS kernel:
 
 Clone the RTEMS respository:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ git clone git://git.rtems.org/rtems.git rtems
   Cloning into 'rtems'...
@@ -44,7 +44,7 @@ section. The RTEMS tools needs to be first in your path because RTEMS provides
 specific versions of the ``autoconf`` and ``automake`` tools. We want to use
 the RTEMS version and not your host's versions:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ export PATH=$HOME/development/rtems/5/bin:$PATH
 
@@ -61,7 +61,7 @@ to speed it up the RSB provides a command that can perform the bootstrap in
 parallel using your available cores. We need to enter the cloned source
 directory then run the bootstrap commands:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd rtems
   $ ./bootstrap -c && $HOME/development/rtems/rsb/source-builder/sb-bootstrap
@@ -103,7 +103,7 @@ We build RTEMS in a directory outside of the source tree we have just cloned
 and ``bootstrapped``. You cannot build RTEMS while in the source tree. Lets
 create a suitable directory using the name of the BSP we are going to build:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd ..
   $ mkdir erc32
@@ -115,7 +115,7 @@ files. If you are source level debugging you will be able to access the source
 code to RTEMS from the debugger. We will build for the ``erc32`` BSP with POSIX
 enabled and the networking stack disabled:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ $HOME/development/rtems/kernel/rtems/configure --prefix=$HOME/development/rtems/5 \
                      --target=sparc-rtems5 --enable-rtemsbsp=erc32 --enable-posix \
@@ -158,7 +158,7 @@ enabled and the networking stack disabled:
 
 Build RTEMS using two cores:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ make -j 2
   Making all in tools/build
@@ -250,7 +250,7 @@ the API headers and architecture specific libraries to a locaiton under the
 RTEMS. Do not mix versions of RTEMS under the same `prefix`. Make installs
 RTEMS with the following command:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ make install
   Making install in tools/build
@@ -311,7 +311,7 @@ Changes to the source tree are tracked using git. If you have not made changes
 and enter the source tree and enter a git status command you will see nothing
 has changed:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ cd ../rtems
   $ git status
@@ -323,7 +323,7 @@ We will make a change to the source code. In this example I change the help
 message to the RTEMS shell's ``halt`` command. Running the same git status
 command reports:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ git status
   On branch master
@@ -339,14 +339,14 @@ command reports:
 As an example I have a ticket open and the ticket number is 9876. I commit the
 change with the follow git command:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ git commit cpukit/libmisc/shell/main_halt.c
 
 An editor is opened and I enter my commit message. The first line is a title
 and the following lines form a body. My message is:
 
-.. code-block:: shell
+.. code-block:: none
 
   shell: Add more help detail to the halt command.
 
@@ -366,7 +366,7 @@ and the following lines form a body. My message is:
 
 When you save and exit the editor git will report the commit's status:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ git commit cpukit/libmisc/shell/main_halt.c
   [master 9f44dc9] shell: Add more help detail to the halt command.
@@ -375,14 +375,14 @@ When you save and exit the editor git will report the commit's status:
 You can either email the patch to :r:list:`devel` with the following git
 command, and it is `minus one` on the command line:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ git send-email --to=devel@rtems.org -1
    <add output here>
 
 Or you can ask git to create a patch file using:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ git format-patch -1
   0001-shell-Add-more-help-detail-to-the-halt-command.patch

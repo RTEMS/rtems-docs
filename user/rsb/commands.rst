@@ -10,7 +10,7 @@ Checker (sb-check)
 
 This commands checks your system is set up correctly. Most options are ignored:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-check --help
     sb-check: [options] [args]
@@ -54,7 +54,7 @@ Defaults (sb-defaults)
 This commands outputs and the default macros for your when given no
 arguments. Most options are ignored:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-defaults --help
     sb-defaults: [options] [args]
@@ -94,7 +94,7 @@ Set Builder (sb-set-builder)
 
 This command builds a set:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --help
     RTEMS Source Builder, an RTEMS Tools Project (c) 2012-2013 Chris Johns
@@ -302,7 +302,7 @@ Set Builder (sb-builder)
 This command builds a configuration as described in a configuration
 file. Configuration files have the extension of ``.cfg``:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ./source-builder/sb-builder --help
     sb-builder: [options] [args]

@@ -238,7 +238,7 @@ with:
 The ``sb-defaults`` command lists the defaults for your host. I will not include
 the output of this command because of its size:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-defaults
 
@@ -518,7 +518,7 @@ provides.
 
 To create a private configuration change to a suitable directory:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ cd ~/work
     $ mkdir test
@@ -749,7 +749,7 @@ Once we have the configuration files we can execute the build using the
 ``sb-builder`` command. The command will perform the build and create a tar file
 in the ``tar`` directory:
 
-.. code-block:: shell
+.. code-block:: none
 
     $  ../source-builder/sb-builder --prefix=/usr/local \
          --log=log_dtc devel/dtc-1.2.0
@@ -782,7 +782,7 @@ The DTC build set file is called ``dtc.bset`` and contains:
 
 To build this you can use something similar to:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --prefix=/usr/local --log=log_dtc \
        --trace --bset-tar-file --no-install dtc

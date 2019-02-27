@@ -52,7 +52,7 @@ proven over the years to be difficult to manage in production systems.
     using the ``--prefix`` option so the path you need to configure to build
     applications can be set with the following in a BASH shell:
 
-    .. code-block:: shell
+    .. code-block:: none
 
       $ export PATH=$HOME/development/rtems/4.11/bin:$PATH
 
@@ -75,7 +75,7 @@ proven over the years to be difficult to manage in production systems.
     example, if you want to build a toolchain for 4.11, then you should
     checkout the 4.11 branch of the RSB:
 
-    .. code-block:: shell
+    .. code-block:: none
 
       $ git checkout -t origin/4.11
 

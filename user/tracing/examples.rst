@@ -46,7 +46,7 @@ has been stored) run the following commands to generate traces:
 
 BSP is configured with the following command -
 
-.. code-block:: shell
+.. code-block:: none
 
   ../rtems/configure --target=sparc-rtems5 --prefix=/development/rtems/5 \
   --enable-networking --enable-tests --enable-rtemsbsp=erc32 --enable-cxx
@@ -58,7 +58,7 @@ following commands according to your installation. Also confirm the path of the
 fileio's executable and object files in the last line of the command according
 to your installation.
 
-.. code-block:: shell
+.. code-block:: none
 
   sparc-rtems5-gcc -Bsparc-rtems5/erc32/lib/ \
   -specs bsp_specs -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
@@ -72,7 +72,7 @@ the application. The link command follows the escape sequence "--". "-C" option
 denotes the name of the user configuration file and "-W" specifies the name of
 the wrapper c file.
 
-.. code-block:: shell
+.. code-block:: none
 
   rtems-tld -C fileio-trace.ini -W fileio-wrapper -- -Bsparc-rtems5/erc32/lib/ \
   -specs bsp_specs -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
@@ -88,13 +88,13 @@ display the contents of the trace buffer and save the buffer to disk in the form
 of binary files. Use `rtrace -l` to list the availalble options for commands
 with `rtrace`.
 
-.. code-block:: shell
+.. code-block:: none
 
   sparc-rtems5-run sparc-rtems5/c/erc32/testsuites/samples/fileio.exe
 
 The output from the above commands will be as follows:
 
-.. code-block:: shell
+.. code-block:: none
 
   *** BEGIN OF TEST FILE I/O ***
   *** TEST VERSION: 5.0.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8

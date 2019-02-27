@@ -157,7 +157,7 @@ The packages we require are:
 
 Install the packages using ``pacman``:
 
-.. code-block:: shell
+.. code-block:: none
 
   $ pacman -S python mingw-w64-x86_64-python2 mingw-w64-x86_64-gcc \
   bison cvs diffutils git make patch tar texinfo unzip
@@ -225,7 +225,7 @@ cross-compiler is required to build the C runtime for the RTEMS target because
 we are building under Cygiwn. The build output for an RTEMS 4.10 ARM tool set
 is:
 
-.. code-block:: shell
+.. code-block:: none
 
   chris@cygwin ~/development/rtems/src/rtems-source-builder/rtems
   $ ../source-builder/sb-set-builder --log=l-arm.txt \

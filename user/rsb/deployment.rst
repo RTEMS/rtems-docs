@@ -32,7 +32,7 @@ directory to the root (``/``) and untar the file because the ``/home`` is root
 access only. To install a tar file you have downloaded into your new machine's
 ``Downloads`` directory in your home directoty you would enter:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ cd /somewhere
     $ tar --strip-components=3 -xjf \
@@ -41,7 +41,7 @@ access only. To install a tar file you have downloaded into your new machine's
 A build set tar file is created by adding ``--bset-tar-file`` option to the
 ``sb-set-builder`` command:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
              --prefix=$HOME/development/rtems/4.11 \
@@ -84,7 +84,7 @@ You can also suppress installing the files using the ``--no-install``
 option. This is useful if your prefix is not accessiable, for example when
 building Canadian cross compiled tool sets:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
                 --prefix=$HOME/development/rtems/4.11 \
@@ -124,7 +124,7 @@ A package tar file can be created by adding the ``--pkg-tar-files`` to the
 ``sb-set-builder`` command. This creates a tar file per package built in the
 build set:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
             --prefix=$HOME/development/rtems/4.11 \

@@ -22,7 +22,7 @@ development machine.
 
 To build the NTP package for RTEMS you enter the RSB command:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder \
        --log=log_ntp_arm.txt \
@@ -85,7 +85,7 @@ To perform a cross build add ``--host=`` to the command line. For example
 to build a MinGW tool set on FreeBSD for Windows add ``--host=mingw32``
 if the cross compiler is ``mingw32-gcc``:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --host=mingw32 \
        --log=l-mingw32-4.11-sparc.txt \
@@ -95,7 +95,7 @@ if the cross compiler is ``mingw32-gcc``:
 If you are on a Linux Fedora build host with the MinGW packages installed the
 command line is:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ ../source-builder/sb-set-builder --host=i686-w64-mingw32 \
        --log=l-mingw32-4.11-sparc.txt \

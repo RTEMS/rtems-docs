@@ -61,7 +61,7 @@ you follow the instructions for you target.
 Configure U-Boot to network boot using the TFTP protocol. This is U-Boot script
 for a Zedboard:
 
-.. code-block:: shell
+.. code-block:: none
 
   loadaddr=0x02000000
   uenvcmd=echo Booting RTEMS Zed from net; set autoload no; dhcp; set serverip 10.10.5.2; tftpboot zed/rtems.img; bootm; reset;
@@ -166,7 +166,7 @@ substituted
 Some of these field are normally provided by a user's configuration. To do this
 use:
 
-.. code-block:: shell
+.. code-block:: ini
 
   requires = bsp_tty_dev, target_on_command, target_off_command, target_reset_command
 

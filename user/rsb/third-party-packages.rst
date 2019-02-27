@@ -39,7 +39,7 @@ needs to be the same as the prefix used to build RTEMS.
 
 To build Net-SNMP the command is:
 
-.. code-block:: shell
+.. code-block:: none
 
     $ cd rtems-source-builder/rtems
     $ ../source-builder/sb-set-builder --log=log_sis_net_snmp \
