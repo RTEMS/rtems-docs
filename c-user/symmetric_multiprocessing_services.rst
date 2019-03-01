@@ -302,6 +302,14 @@ of the OpenMP master thread that created it.  In the scheduler instance
 ``WRK1`` there are three thread pools available and their worker threads run at
 priority four.
 
+Atomic Operations
+-----------------
+
+There is no public RTEMS API for atomic operations.  It is recommended to use
+the standard C `<stdatomic.h> <https://en.cppreference.com/w/c/atomic>`_ or C++
+`<atomic> <https://en.cppreference.com/w/cpp/atomic/atomic>`_ APIs in
+applications.
+
 Application Issues
 ==================
 
