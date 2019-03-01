@@ -325,7 +325,7 @@ def doc_pdf(ctx, source_dir, conf_dir, sources):
         rule         = rule,
         cwd          = ctx.path,
         source       = sources_source(ctx, sources),
-        depends_on   = sources_extra(sources),
+        depends_on   = sources_extra(ctx, sources),
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
