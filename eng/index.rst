@@ -18,17 +18,17 @@ RTEMS Software Engineering Handbook (|version|)
 .. include:: ../common/header.rst
 
 .. toctree::
-	:maxdepth: 4
-	:numbered:
+    :maxdepth: 4
+    :numbered:
 
-	preface
-        prequalification
-        stakeholders
-        management
-        test-plan
-        release-mgmt
-        users-manuals
-        license-requirements
-        appendix-a
-	function_and_variable
-	concept
+    preface
+    prequalification
+    stakeholders
+    management
+    test-plan
+    release-mgmt
+    users-manuals
+    license-requirements
+    appendix-a
+    function_and_variable
+    concept
