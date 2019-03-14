@@ -5,9 +5,9 @@
 
 .. include:: ../common/unicode.rst
 
-================================================
-RTEMS Software Engineering Handbook (|version|)
-================================================
+======================================
+RTEMS Software Engineering (|version|)
+======================================
 
 .. topic:: Copyrights and License
 
