@@ -10,7 +10,7 @@ RTEMS Shell Guide (|version|).
 
 .. topic:: Copyrights and License
 
-    | |copy| 2016, 2018 Chris Johns
+    | |copy| 2016, 2019 Chris Johns
     | |copy| 2016, 2017 embedded brains GmbH
     | |copy| 2016, 2017 Sebastian Huber
     | |copy| 1988, 2017 On-Line Applications Research Corporation (OAR)
@@ -29,6 +29,7 @@ RTEMS Shell Guide (|version|).
 	file_and_directory
 	memory_commands
 	rtems_specific_commands
+	dl_commands
 	network_commands
 	function_and_variable
 	concept
