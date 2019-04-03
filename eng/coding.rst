@@ -14,7 +14,6 @@ TBD  - Write introduction, re-order, identify missing content
     coding-conventions
     coding-80cols
     coding-deprecating
-    coding-doxygen-bsp
     coding-doxygen
     coding-file-hdr
     coding-gen-patch
