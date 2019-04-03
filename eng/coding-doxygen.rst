@@ -1,481 +1,275 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018.
-.. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
+.. Copyright (C) 2019 embedded brains GmbH
 
-General Doxygen Recommentations
-===============================
+Doxygen Guidelines
+==================
 
-.. COMMENT: TBD - Convert the following to Rest and insert into this file
-.. COMMENT: TBD - https://devel.rtems.org/wiki/Developer/Coding/Doxygen
+Group Names
+-----------
 
-.. sidebar:: *History*
+Doxygen group names shall use
+`CamelCase <https://en.wikipedia.org/wiki/Camel_case>`_.
+In the RTEMS source code, CamelCase is rarely used, so this makes it easier to
+search and replace Doxygen groups.  It avoids ambiguous references to
+functions, types, defines, macros, and groups.  All groups shall have an
+``RTEMS`` prefix.  This makes it possible to include the RTEMS files with
+Doxygen comments in a larger project without name conflicts.
 
-  RTEMS is much older than Doxygen (http://www.doxygen.org/) and
-  the documentation in the .h files was obviously not written with
-  Doxygen markup in mind. In 2007, Joel Sherrill undertook to convert the
-  documentation in the .h and .inl files in the RTEMS SuperCore? to Doxygen
-  format. As a result of this effort, the Doxygen for the development
-  version of the RTEMS is now built automatically periodically and made
-  available on the RTEMS Website. In April 2008, Joel Sherrill began to
-  update the Classic API (e.g. cpukit/rtems) .h files to include Doxygen
-  markup. Now, RTEMS has nice Doxygen markup including state and sequence
-  diagrams.
+.. code:: c
 
-Doxygen Best Practices
-----------------------
-
-* Do not use ``@a``. Instead use ``@param`` to document function parameters.
-* Do not use ``@return``. Instead use ``@retval`` to document return status
-  codes.
-* Do not write documentation for trivial functions.
-* Do not repeat documentation, use ``@see`` for example.
-* Do not use ``@note``.
-* Use groups and arrange them in a hierarchy. Put every file into at least
-  one group.
-* Use dot comments for state diagrams.
-* Use one whitespace character after an asterisk.
-
-Special Notes for Google Code-in Students
------------------------------------------
-
-Follow the directions given by the `Google Code-in
-<https://devel.rtems.org/wiki/GCI>`_ task and this should take
-care of itself if in doubt ask a mentor and/or tell a mentor the decision you
-made.
-
-Header File Example
--------------------
-
-`thread.h
-<https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/thread.h>`_ and
-`threadimpl.h
-<https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/threadimpl.h>`_
-should be a good example of how a header file shouldbe written. The following
-gives details in bits and pieces.
-
-Header blocks
--------------
-
-Header files should contain the similar comment blocks as other source files,
-described at :ref:`coding-file-hdr`.
-
-.. code-block:: c
-
-  /**
-   * @file
-   *
-   * @ingroup FlipFlop
-   *
-   * @brief Flip-Flop API
-   */
-
-  /*
-   * Copyright (c) YYYY Author.
-   *
-   * The license and distribution terms for this file may be
-   * found in the file LICENSE in this distribution or at
-   * http://www.rtems.com/license/LICENSE.
-   */
-
-Header guard
-------------
-
-After the comment blocks, use a header guard that assembles at least the
-include path of the file. For example, if ``flipflop.h`` is in
-``<rtems/lib/flipflop.h>`` then
-
-.. code-block:: c
-
-  #ifndef RTEMS_LIB_FLIP_FLOP_H
-  #define RTEMS_LIB_FLIP_FLOP_H
-
-Includes
---------
-
-Then add your include files before protecting C declarations from C++.
-
-.. code-block:: c
-
-  #include <rtems.h>
-
-  #ifdef __cplusplus
-  extern "C" {
-  #endif /* __cplusplus */
-
-Using @defgroup for group definitions
--------------------------------------
-
-Add any group definitions surrounding the function declarations that belong
-in that group. Rarely, a header may define more than one group. Here we use
-a dot diagram.
-
-.. code-block:: c
-
-  /**
-   * @defgroup FlipFlop Flip-Flop
-   *
-   * @brief Simple Flip-Flop state machine.
-   *
-   * @dot
-   *   digraph {
-   *     start [label="START"];
-   *     flip [label="FLIP"];
-   *     flop [label="FLOP"];
-   *     flip -> flop [label="flop()", URL="\ref flop"];
-   *     flop -> flip [label="flip()", URL="\ref flip"];
-   *     start -> flip
-   *       [label="flip_flop_initialize(FLIP)", URL="\ref flip_flop_initialize"];
-   *     start -> flop
-   *       [label="flip_flop_initialize(FLOP)", URL="\ref flip_flop_initialize"];
-   *     flip -> start
-   *       [label="flip_flop_restart()", URL="\ref flip_flop_restart"];
-   *   }
-   * @enddot
-   *
-   * @{
-   */
-
-enum and struct
----------------
-
-Provide documentation for declarations of enumerated types and structs.
-Use typedefs for structs, and do not use ``_t`` as a typename suffix.
-
-.. code-block:: c
-
-  /**
-   * @brief The set of possible flip-flop states.
-   *
-   * Enumerated type to define the set of states for a flip-flop.
-   */
-  typedef enum {
-    START = 0,
-    FLIP,
-    FLOP
-  } flip_flop_state;
-
-  /**
-   * @brief Object containing multiple flip-flops.
-   *
-   * Encapsulates multiple flip-flops.
-   */
-  typedef struct {
     /**
-     * @brief Primary flip-flop.
+     * @defgroup RTEMSScoreThread
+     *
+     * @ingrop RTEMSScore
+     *
+     * ...
      */
-    flip_flop_state primary;
+
+Use Groups
+----------
+
+Every file, function declaration, type definition, typedef, define, macro and
+global variable declaration shall belong to at least one Doxygen group.  Use
+``@defgroup`` and ``@addtogroup`` with ``@{`` and ``@}`` brackets to add
+members to a group.  A group shall be defined at most once.  Each group shall
+be documented with an ``@brief`` description and an optional detailed
+description.  The ``@brief`` description shall use
+`Title Case <https://en.wikipedia.org/wiki/Letter_case#Title_Case>`_.
+Use grammatically correct sentences for the detailed descriptions.
+
+.. code:: c
+
     /**
-     * @brief Secondary flip-flop.
+     * @defgroup RTEMSScoreThread
+     *
+     * @ingrop RTEMSScore
+     *
+     * @brief Thread Handler
+     *
+     * ...
+     *
+     * @{
      */
-    flip_flop_state secondary;
-  } flip_flop_multiple;
 
-Using @name for organization
-----------------------------
+     ... declarations, defines ...
 
-Complicated groups can be given additional organization by using ``@name``, or
-by declaring additional groups within the hierarchy of the header file's
-top-level group.
+     /** @} */
 
-.. code-block:: c
+.. code:: c
 
-  /**
-   * @name Flip-Flop Maintenance
-   *
-   * @{
-   */
+    /**
+     * @addtogroup RTEMSScoreThread
+     *
+     * @{
+     */
 
-Declaring functions
--------------------
+     ... declarations, defines ...
 
-Function declarations should have an @brief that states what the function does
-in a single topic sentence starting with a descriptive verb in the present
-tense.
-
-.. code-block:: c
-
-  /**
-   * @brief Initializes the flip-flop state.
-   *
-   * @param[in] state The initial state to set the flip-flop.
-   *
-   * @retval RTEMS_SUCCESSFUL Successfully initialized.
-   * @retval RTEMS_INCORRECT_STATE Flip-flop state is not valid.
-   */
-  rtems_status_code flip_flop_initialize(flip_flop_state state);
-
-  /**
-   * @brief Restarts the flip-flop.
-   *
-   * @retval RTEMS_SUCCESSFUL Successfully restarted.
-   * @retval RTEMS_INCORRECT_STATE Flip-flop not in flip state.
-   */
-  rtems_status_code flip_flop_restart(void);
-
-Do not document trivial functions, such as getter/setter methods.
-
-.. code-block:: c
-
-  flip_flop_state flip_flop_current_state(void);
-
-Close the documentation name definition and open a new name definition.
-
-.. code-block:: c
-
-  /** @} */
-
-  /**
-   * @name Flip-Flop Usage
-   *
-   * @{
-   */
-
-  /**
-   * @brief Flip operation.
-   *
-   * @retval RTEMS_SUCCESSFUL Flipped successfully.
-   * @retval RTEMS_INCORRECT_STATE Incorrect state for flip operation.
-   */
-  rtems_status_code flip( void );
-
-  /**
-   * @brief Flop operation.
-   *
-   * @retval RTEMS_SUCCESSFUL Flopped successfully.
-   * @retval RTEMS_INCORRECT_STATE Incorrect state for flop operation.
-   */
-  rtems_status_code flop( void );
-
-  /** @} */
-
-Ending the file
----------------
-
-Close the documentation group definition, then the extern C declarations,
-then the header guard.
-
-.. code-block:: c
-
-  /** @} */
-
-  #ifdef __cplusplus
-  }
-  #endif /* __cplusplus */
-
-  #endif /* RTEMS_LIB_FLIP_FLOP_H */
-
- No newline at the end of the file.
-
-Source File Example
--------------------
-
-.. code-block:: c
-
-  /**
-   * @file
-   *
-   * @ingroup FlipFlop
-   *
-   * @brief Flip-Flop implementation.
-   */
-
-  /*
-   * Copyright (c) YYYY Author.
-   *
-   * The license and distribution terms for this file may be
-   * found in the file LICENSE in this distribution or at
-   * http://www.rtems.com/license/LICENSE.
-   */
-
-  #include <rtems/lib/flipflop.h>
-
-  static flip_flop_state current_state;
-
-  rtems_status_code flip_flop_initialize(flip_flop_state state)
-  {
-    if (current_state == START) {
-      current_state = state;
-
-      return RTEMS_SUCCESSFUL;
-    } else {
-      return RTEMS_INCORRECT_STATE;
-    }
-  }
-
-  rtems_status_code flip_flop_restart(void)
-  {
-    if (current_state == FLIP) {
-      current_state = START;
-
-      return RTEMS_SUCCESSFUL;
-    } else {
-      return RTEMS_INCORRECT_STATE;
-    }
-  }
-
-  flip_flop_state flip_flop_current_state(void)
-  {
-    return current_state;
-  }
-
-  rtems_status_code flip(void)
-  {
-    if (current_state == FLOP) {
-      current_state = FLIP;
-
-      return RTEMS_SUCCESSFUL;
-    } else {
-      return RTEMS_INCORRECT_STATE;
-    }
-  }
-
-  rtems_status_code flop(void)
-  {
-    if (current_state == FLIP) {
-      current_state = FLOP;
-
-      return RTEMS_SUCCESSFUL;
-    } else {
-      return RTEMS_INCORRECT_STATE;
-    }
-  }
+     /** @} */
 
 Files
 -----
-Document files with the ``@file`` directive omitting the optional filename
-argument. Doxygen will infer the filename from the actual name of the file.
-Within one Doxygen run all files are unique and specified by the current
-Doxyfile. We can define how the generated output of path and filenames looks
-like in the Doxyfile via the ``FULL_PATH_NAMES``, ``STRIP_FROM_PATH`` and
-``STRIP_FROM_INC_PATH`` options.
 
-Functions
----------
+Each source or header file shall have an ``@file`` block at the top of the
+file.  The ``@file`` block should precede the license header separated by one
+blank line.  This placement reduces the chance of merge conflicts in imported
+third-party code.  The ``@file`` block shall be put into a group with
+``@ingroup GroupName``.  The ``@file`` block should have an ``@brief``
+description and a detailed description if it is considered helpful.  Use
+``@brief @copybrief GroupName`` as a default to copy the ``@brief`` description
+from the corresponding group and omit the detailed description.
 
-For documentation of function arguments there are basically to ways:
+.. code:: c
 
-The first one uses ``@param``:
+    /**
+     * @file
+     *
+     * @ingroup RTEMSScoreThread
+     *
+     * @brief @copybrief RTEMSScoreThread
+     */
 
-.. code-block:: c
+.. code:: c
 
-  /**
-   * @brief Copies from a source to a destination memory area.
-   *
-   * The source and destination areas may not overlap.
-   *
-   * @param[out] dest The destination memory area to copy to.
-   * @param[in] src The source memory area to copy from.
-   * @param[in] n The number of bytes to copy.
-   */
+    /**
+     * @file
+     *
+     * @ingroup RTEMSScoreThread
+     *
+     * @brief Some helpful brief description.
+     *
+     * Some helpful detailed description.
+     */
 
-The second is to use ``@a`` param in descriptive text, for example:
+Type Definitions
+----------------
 
-.. code-block:: c
+Each type defined in a header file shall be documented with an ``@brief``
+description and an optional detailed description.  Each type member shall be
+documented with an ``@brief`` description and an optional detailed description.
+Use grammatically correct sentences for the detailed descriptions.
 
-  /**
-  * Copies @a n bytes from a source memory area @a src to a destination memory
-  * area @a dest, where both areas may not overlap.
-  */
+.. code:: c
 
-The ``@a`` indicates that the next word is a function argument and deserves
-some kind of highlighting. However, we feel that ``@a`` buries the usage of
-function arguments within description text. In RTEMS sources, we prefer to
-use ``@param`` instead of ``@a``.
+    /**
+     * @brief The information structure used to manage each API class of objects.
+     *
+     * If objects for the API class are configured, an instance of this structure
+     * is statically allocated and pre-initialized by OBJECTS_INFORMATION_DEFINE()
+     * through <rtems/confdefs.h>.  The RTEMS library contains a statically
+     * allocated and pre-initialized instance for each API class providing zero
+     * objects, see OBJECTS_INFORMATION_DEFINE_ZERO().
+     */
+    typedef struct {
+      /**
+       * @brief This is the maximum valid ID of this object API class.
+       *
+       * This member is statically initialized and provides also the object API,
+       * class and multiprocessing node information.
+       *
+       * It is used by _Objects_Get() to validate an object ID.
+       */
+      Objects_Id maximum_id;
 
-Doxyfile Hints
---------------
+      ... more members ...
+    } Objects_Information;
 
-Header Files
-~~~~~~~~~~~
+Function Declarations
+---------------------
 
-It is an RTEMS build feature that header files need to be installed in order to
-be useful. One workaround to generate documentation which allows automatic
-link generation is to use the installed header files as documentation input.
-Assume that we have the RTEMS sources in the rtems directory and the build of
-our BSP in build/powerpc-rtems5/mybsp relative to a common top-level directory.
-Then you can configure Doxygen like:
+Each function declaration or function-like macros in a header file shall be
+documented with an ``@brief`` description and an optional detailed description.
+Use grammatically correct sentences for the brief and detailed descriptions.
+Each parameter shall be documented with an ``@param`` entry.  List the
+``@param`` entries in the order of the function parameters.  For *non-const
+pointer* parameters
 
-.. code-block::
+* use ``@param[out]``, if the referenced object is modified by the function, or
 
-  INPUT           = rtems/bsps/powerpc/mybsp \
-                    rtems/c/src/lib/libcpu/powerpc/mycpu \
-                    rtems/make/custom/mybsp.cfg \
-                    build/powerpc-rtems5/mybsp/lib/include/myincludes
+* use ``@param[in, out]``, if the referenced object is read and modified by the
+  function.
 
-  RECURSIVE       = YES
+For other parameters (e.g. *const pointer* and *scalar* parameters) do not use
+the ``[in]``, ``[out]`` or ``[in, out]`` parameter specifiers.  Each return
+value or return value range shall be documented with an ``@retval`` entry.
+Document the most common return value first.  Use a placeholder name for value
+ranges, e.g. ``pointer`` in the ``_Workspace_Allocate()`` example below.  In
+case the function returns only one value, then use ``@return``, e.g. use
+``@retval`` only if there are at least two return values or return value
+ranges.  Use grammatically correct sentences for the parameter and return value
+descriptions.
 
-  EXCLUDE         = rtems/bsps/powerpc/mybsp/include \
-                    rtems/c/src/lib/libcpu/powerpc/mycpu/include
+.. code:: c
 
-  FULL_PATH_NAMES = YES
+    /**
+     * @brief Sends a message to the message queue.
+     *
+     * This directive sends the message buffer to the message queue indicated by
+     * ID.  If one or more tasks is blocked waiting to receive a message from this
+     * message queue, then one will receive the message.  The task selected to
+     * receive the message is based on the task queue discipline algorithm in use
+     * by this particular message queue.  If no tasks are waiting, then the message
+     * buffer will be placed at the rear of the chain of pending messages for this
+     * message queue.
+     *
+     * @param id The message queue ID.
+     * @param buffer The message content buffer.
+     * @param size The size of the message.
+     *
+     * @retval RTEMS_SUCCESSFUL Successful operation.
+     * @retval RTEMS_INVALID_ID Invalid message queue ID.
+     * @retval RTEMS_INVALID_ADDRESS The message buffer pointer is @c NULL.
+     * @retval RTEMS_INVALID_SIZE The message size is larger than the maximum
+     *   message size of the message queue.
+     * @retval RTEMS_TOO_MANY The new message would exceed the message queue limit
+     *   for pending messages.
+     */
+    rtems_status_code rtems_message_queue_send(
+      rtems_id    id,
+      const void *buffer,
+      size_t      size
+    );
 
-  STRIP_FROM_PATH = build/powerpc-rtems5/mybsp/lib/include \
-                    rtems
+.. code:: c
 
-Script and Assembly Files
-~~~~~~~~~~~~~~~~~~~~~~~~~
+    /**
+     * @brief Receives a message from the message queue
+     *
+     * This directive is invoked when the calling task wishes to receive a message
+     * from the message queue indicated by ID. The received message is to be placed
+     * in the buffer. If no messages are outstanding and the option set indicates
+     * that the task is willing to block, then the task will be blocked until a
+     * message arrives or until, optionally, timeout clock ticks have passed.
+     *
+     * @param id The message queue ID.
+     * @param[out] buffer The buffer for the message content.  The buffer must be
+     *   large enough to store maximum size messages of this message queue.
+     * @param[out] size The size of the message.
+     * @param option_set The option set, e.g. RTEMS_NO_WAIT or RTEMS_WAIT.
+     * @param timeout The number of ticks to wait if the RTEMS_WAIT is set.  Use
+     *   RTEMS_NO_TIMEOUT to wait indefinitely.
+     *
+     * @retval RTEMS_SUCCESSFUL Successful operation.
+     * @retval RTEMS_INVALID_ID Invalid message queue ID.
+     * @retval RTEMS_INVALID_ADDRESS The message buffer pointer or the message size
+     *   pointer is @c NULL.
+     * @retval RTEMS_TIMEOUT A timeout occurred and no message was received.
+     */
+    rtems_status_code rtems_message_queue_receive(
+      rtems_id        id,
+      void           *buffer,
+      size_t         *size,
+      rtems_option    option_set,
+      rtems_interval  timeout
+    );
 
-Doxygen cannot cope with script (= files with #-like comments) or assembly
-files. But you can add filter programs for them
+.. code:: c
 
-.. COMMENT: TBD - Add source code for filter programs somewhere
+    /**
+     * @brief Allocates a memory block of the specified size from the workspace.
+     *
+     * @param size The size of the memory block.
+     *
+     * @retval pointer The pointer to the memory block.  The pointer is at least
+     *   aligned by CPU_HEAP_ALIGNMENT.
+     * @retval NULL No memory block with the requested size is available in the
+     *   workspace.
+     */
+    void *_Workspace_Allocate( size_t size );
 
-.. code-block::
+.. code:: c
 
-  FILTER_PATTERNS = *.S=c-comments-only \
-                    *.s=c-comments-only \
-                    *.cfg=script-comments-only \
-                    *.am=script-comments-only \
-                    *.ac=script-comments-only
+    /**
+     * @brief Rebalances the red-black tree after insertion of the node.
+     *
+     * @param[in, out] the_rbtree The red-black tree control.
+     * @param[in, out] the_node The most recently inserted node.
+     */
+    void _RBTree_Insert_color(
+      RBTree_Control *the_rbtree,
+      RBTree_Node    *the_node
+    );
 
-Assembly Example
-~~~~~~~~~~~~~~~~
+.. code:: c
 
-.. code-block:: c
+    /**
+     * @brief Builds an object ID from its components.
+     *
+     * @param the_api The object API.
+     * @param the_class The object API class.
+     * @param node The object node.
+     * @param index The object index.
+     *
+     * @return Returns the object ID constructed from the arguments.
+     */
+    #define _Objects_Build_id( the_api, the_class, node, index )
 
-  /**
-   * @fn void mpc55xx_fmpll_reset_config()
-   *
-   * @brief Configure FMPLL after reset.
-   *
-   * Sets the system clock from 12 MHz in two steps up to 128 MHz.
-   */
-  GLOBAL_FUNCTION mpc55xx_fmpll_reset_config
-      /* Save link register */
-      mflr r3
+Header File Examples
+--------------------
 
-      LA r4, FMPLL_SYNCR
-
-You have to put a declaration of this function somewhere in a header file.
-
-Script Example
-~~~~~~~~~~~~~~
-
-.. code-block:: shell
-
-  ##
-  #
-  # @file
-  #
-  # @ingroup mpc55xx_config
-  #
-  # @brief Configure script of LibBSP for the MPC55xx evaluation boards.
-  #
-
-  AC_PREREQ([2.69])
-  AC_INIT([rtems-c-src-lib-libbsp-powerpc-mpc55xxevb],[_RTEMS_VERSION],[https://devel.rtems.org/newticket])
-
-
-GCC Attributes
---------------
-
-The Doxygen C/C++ parser cannot cope with the GCC ``attribute((something))``
-stuff. But you can discard such features with pre-defined preprocessor macros
-
-.. code-block:: shell
-
-  ENABLE_PREPROCESSING = YES
-  MACRO_EXPANSION      = YES
-  EXPAND_ONLY_PREDEF   = YES
-  PREDEFINED           = __attribute__(x)=
+The
+`<rtems/score/thread.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/thread.h>`_
+and
+`<rtems/score/threadimpl.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/threadimpl.h>`_
+header files are a good example of how header files should be documented.
