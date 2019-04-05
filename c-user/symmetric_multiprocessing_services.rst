@@ -39,8 +39,6 @@ The directives provided by the SMP support are:
 
 - rtems_get_processor_count_ - Get processor count
 
-- rtems_get_current_processor_ - Get current processor index
-
 Background
 ==========
 
@@ -536,39 +534,6 @@ DESCRIPTION:
     The processor count depends on the physically or virtually available
     processors and application configuration.  The value will always be less
     than or equal to the maximum count of application configured processors.
-
-NOTES:
-    None.
-
-.. raw:: latex
-
-   \clearpage
-
-.. _rtems_get_current_processor:
-
-GET_CURRENT_PROCESSOR - Get current processor index
----------------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        uint32_t rtems_get_current_processor(void);
-
-DIRECTIVE STATUS CODES:
-    The index of the current processor.
-
-DESCRIPTION:
-    In uniprocessor configurations, a value of zero will be returned.
-
-    In SMP configurations, an architecture specific method is used to obtain the
-    index of the current processor in the system.  The set of processor indices
-    is the range of integers starting with zero up to the processor count minus
-    one.
-
-    Outside of sections with disabled thread dispatching the current processor
-    index may change after every instruction since the thread may migrate from
-    one processor to another.  Sections with disabled interrupts are sections
-    with thread dispatching disabled.
 
 NOTES:
     None.

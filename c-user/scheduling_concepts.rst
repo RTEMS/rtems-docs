@@ -37,6 +37,8 @@ The directives provided by the scheduler manager are:
 
 - rtems_scheduler_get_maximum_priority_ - Get maximum task priority of a scheduler
 
+- rtems_scheduler_get_processor_ - Get current processor index
+
 - rtems_scheduler_get_processor_set_ - Get processor set of a scheduler
 
 - rtems_scheduler_add_processor_ - Add processor to a scheduler
@@ -696,6 +698,35 @@ NOTES:
 .. raw:: latex
 
    \clearpage
+
+.. _rtems_scheduler_get_processor:
+
+SCHEDULER_GET_PROCESSOR - Get current processor index
+-----------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        uint32_t rtems_scheduler_get_processor( void );
+
+DIRECTIVE STATUS CODES:
+    This directive returns the index of the current processor.
+
+DESCRIPTION:
+    In uniprocessor configurations, a value of zero will be returned.
+
+    In SMP configurations, an architecture specific method is used to obtain the
+    index of the current processor in the system.  The set of processor indices
+    is the range of integers starting with zero up to the processor count minus
+    one.
+
+    Outside of sections with disabled thread dispatching the current processor
+    index may change after every instruction since the thread may migrate from
+    one processor to another.  Sections with disabled interrupts are sections
+    with thread dispatching disabled.
+
+NOTES:
+    None.
 
 .. _rtems_scheduler_get_processor_set:
 
