@@ -39,6 +39,8 @@ The directives provided by the scheduler manager are:
 
 - rtems_scheduler_get_processor_ - Get current processor index
 
+- rtems_scheduler_get_processor_maximum_ - Get processor maximum
+
 - rtems_scheduler_get_processor_set_ - Get processor set of a scheduler
 
 - rtems_scheduler_add_processor_ - Add processor to a scheduler
@@ -727,6 +729,40 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_get_processor_maximum:
+
+SCHEDULER_GET_PROCESSOR_MAXIMUM - Get processor maximum
+-------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        uint32_t rtems_scheduler_get_processor_maximum( void );
+
+DIRECTIVE STATUS CODES:
+    This directive returns the processor maximum supported by the system.
+
+DESCRIPTION:
+    In uniprocessor configurations, a value of one will be returned.
+
+    In SMP configurations, this directive returns the minimum of the processors
+    (physically or virtually) available by the platform and the configured
+    processor maximum.  Not all processors in the range from processor index
+    zero to the last processor index (which is the processor maximum minus one)
+    may be configured to be used by a scheduler or online (online processors
+    have a scheduler assigned).
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
 
 .. _rtems_scheduler_get_processor_set:
 

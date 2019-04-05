@@ -35,10 +35,6 @@ adequate locking protocols.  One aim is to enable a schedulability analysis
 under the sporadic task model :cite:`Brandenburg:2011:SL`
 :cite:`Burns:2013:MrsP`.
 
-The directives provided by the SMP support are:
-
-- rtems_get_processor_count_ - Get processor count
-
 Background
 ==========
 
@@ -498,45 +494,6 @@ of cache lines can be observed with the `TMFINE 1
 on a suitable platform, e.g. QorIQ T4240.  High-performance SMP applications
 need full control of the object storage :cite:`Drepper:2007:Memory`.
 Therefore, self-contained synchronization objects are now available for RTEMS.
-
-Directives
-==========
-
-This section details the symmetric multiprocessing services.  A subsection is
-dedicated to each of these services and describes the calling sequence, related
-constants, usage, and status codes.
-
-.. raw:: latex
-
-   \clearpage
-
-.. _rtems_get_processor_count:
-
-GET_PROCESSOR_COUNT - Get processor count
------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        uint32_t rtems_get_processor_count(void);
-
-DIRECTIVE STATUS CODES:
-
-    The count of processors in the system that can be run. The value returned
-    is the highest numbered processor index of all processors available to the
-    application (if a scheduler is assigned) plus one.
-
-DESCRIPTION:
-    In uniprocessor configurations, a value of one will be returned.
-
-    In SMP configurations, this returns the value of a global variable set
-    during system initialization to indicate the count of utilized processors.
-    The processor count depends on the physically or virtually available
-    processors and application configuration.  The value will always be less
-    than or equal to the maximum count of application configured processors.
-
-NOTES:
-    None.
 
 Implementation Details
 ======================
