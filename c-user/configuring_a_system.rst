@@ -4873,87 +4873,6 @@ NOTES:
     The record extensions capture thread create, start, restart, delete,
     switch, begin, exitted and terminate events.
 
-Go Tasks
-========
-
-.. index:: CONFIGURE_ENABLE_GO
-
-.. _CONFIGURE_ENABLE_GO:
-
-CONFIGURE_ENABLE_GO
--------------------
-
-CONSTANT:
-    ``CONFIGURE_ENABLE_GO``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_ENABLE_GO`` is defined to inform RTEMS that the Go run-time is
-    to be used by the application.
-
-NOTES:
-    The Go language support is experimental
-
-.. index:: CONFIGURE_MAXIMUM_GOROUTINES
-
-.. _CONFIGURE_MAXIMUM_GOROUTINES:
-
-CONFIGURE_MAXIMUM_GOROUTINES
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_GOROUTINES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 400
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_GOROUTINES`` is defined to specify the maximum number
-    of Go routines.
-
-NOTES:
-    The Go language support is experimental
-
-.. index:: CONFIGURE_MAXIMUM_GO_CHANNELS
-
-.. _CONFIGURE_MAXIMUM_GO_CHANNELS:
-
-CONFIGURE_MAXIMUM_GO_CHANNELS
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_GO_CHANNELS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 500
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_GO_CHANNELS`` is defined to specify the maximum number
-    of Go channels.
-
-NOTES:
-    The Go language support is experimental
-
 Obsolete Configuration Options
 ==============================
 
@@ -4981,6 +4900,13 @@ CONFIGURE_DISABLE_CLASSIC_API_NOTEPADS
 This configuration option was introduced in RTEMS 4.9.0 and is obsolete since
 RTEMS 5.1.
 
+.. index:: CONFIGURE_ENABLE_GO
+
+CONFIGURE_ENABLE_GO
+-------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
 
 CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
@@ -5007,6 +4933,20 @@ This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_NUMBER_OF_TERMIOS_PORTS
 ---------------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_MAXIMUM_GO_CHANNELS
+
+CONFIGURE_MAXIMUM_GO_CHANNELS
+-----------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_MAXIMUM_GOROUTINES
+
+CONFIGURE_MAXIMUM_GOROUTINES
+----------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
 
