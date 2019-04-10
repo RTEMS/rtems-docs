@@ -294,7 +294,10 @@ Priority Inheritance Protocol
 The priority of the mutex owner is raised to the highest priority of all
 threads that currently wait for ownership of this mutex :cite:`Sha:1990:PI`.
 Since RTEMS 5.1, priority updates due to the priority inheritance protocol
-take place immediately and are propagated recursively.
+take place immediately and are propagated recursively.  This means the priority
+inheritance is transitive since RTEMS 5.1.  If a task A owning a priority
+inheritance mutex blocks on another priority inheritance mutex, then the owner
+of this mutex inherits the priority of the task A.
 
 .. index:: Multiprocessor Resource Sharing Protocol (MrsP)
 
