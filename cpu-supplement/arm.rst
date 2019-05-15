@@ -77,11 +77,15 @@ The following multilibs are available:
 #. ``thumb/armv7-r/vfpv3-d16/hard``: ARMv7-R, Thumb-2 instruction set with
    hard-float ABI VFP-D16 support
 
-#. ``thumb/armv7-m``: ARMv7-M, Thumb-2 instruction set with hardware
-   integer division (SDIV/UDIV)
+#. ``thumb/cortex-m3``: Cortex-M3, Thumb-2 instruction set with hardware
+   integer division (SDIV/UDIV) and a fix for Cortex-M3 Errata 602117.
 
-#. ``thumb/armv7-m/fpv4-sp-d16``: ARMv7-M, Thumb-2 instruction set with
-   hardware integer division (SDIV/UDIV) and hard-float ABI FPv4-SP support
+#. ``thumb/cortex-m4``: Cortex-M4, Thumb-2 instruction set with hardware
+   integer division (SDIV/UDIV) and DSP instructions
+
+#. ``thumb/cortex-m4/fpv4-sp-d16``: Cortex-M4, Thumb-2 instruction set with
+   hardware integer division (SDIV/UDIV), DSP instructions and hard-float ABI
+   FPv4-SP support
 
 #. ``thumb/cortex-m7/fpv5-d16``: Cortex-M7, Thumb-2 instruction set with
    hard-float ABI and FPv5-D16 support
@@ -91,21 +95,13 @@ The following multilibs are available:
 #. ``eb/thumb/armv7-r/vfpv3-d16/hard``: ARMv7-R, Big-endian Thumb-2 instruction
    set with hard-float ABI VFP-D16 support
 
-Multilib 1., 2. and 3. support the standard ARM7TDMI and ARM926EJ-S processors.
+Multilib 1., 2. and 3. support the legacy ARM7TDMI and ARM926EJ-S processors.
 
 Multilib 4. supports the Cortex-M0 and Cortex-M1 cores.
 
-Multilib 9. supports the Cortex-M3 and Cortex-M4 cores, which have a special
-hardware integer division instruction (this is not present in the A and R
-profiles).
-
-Multilib 10. supports the Cortex-M4 cores with a floating point unit.
-
-Multilib 11. supports the Cortex-M7 cores with a floating point unit.
-
 Multilib 5. and 6. support the Cortex-A processors.
 
-Multilib 7., 8., 12. and 13. support the Cortex-R processors.  Here also
+Multilib 7., 8., 13. and 14. support the Cortex-R processors.  Here also
 big-endian variants are available.
 
 Use for example the following GCC options:
