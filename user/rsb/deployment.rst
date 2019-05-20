@@ -81,7 +81,7 @@ A build set tar file is created by adding ``--bset-tar-file`` option to the
   3. Creating the build set tar file.
 
 You can also suppress installing the files using the ``--no-install``
-option. This is useful if your prefix is not accessiable, for example when
+option. This is useful if your prefix is not accessible, for example when
 building Canadian cross compiled tool sets:
 
 .. code-block:: none
