@@ -28,7 +28,18 @@ TODO.
 motorola_powerpc
 ================
 
-TODO.
+Boot Image Generation
+---------------------
+
+The application executable file (ELF file) must be converted to a boot
+image.  Use the following commands:
+
+.. code-block:: none
+
+    powerpc-rtems5-objcopy -O binary -R .comment -S ticker.exe rtems
+    gzip -9 -f rtems
+    powerpc-rtems5-ld -o ticker.boot bootloader.o --just-symbols=ticker.exe -b binary rtems.gz -T ppcboot.lds -no-warn-mismatch
+    powerpc-rtems5-objcopy -O binary ticker.boot ticker.bin
 
 mpc55xxevb
 ==========
