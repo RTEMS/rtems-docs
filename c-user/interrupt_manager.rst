@@ -219,6 +219,7 @@ is a list of RTEMS system calls that may be made from an ISR:
 
 - Message Management
 
+  - rtems_message_queue_broadcast
   - rtems_message_queue_send
   - rtems_message_queue_urgent
 
