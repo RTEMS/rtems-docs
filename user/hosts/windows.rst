@@ -58,6 +58,22 @@ The release packages of the RSB when unpacked have top level file names that
 are too big to build RTEMS. You need to change or rename that path to something
 smaller to build. This is indicated in :ref:`released-version`.
 
+.. _windows-spaces-in-paths:
+
+Windows Spaces In Paths
+-----------------------
+
+Occasionally, a program will fail on Windows with errors that
+appear as if a directory or file name was partially parsed by
+some utility or program. This can be caused by having directories
+of file names with spaces. Programs written in scripting languages
+sometimes fail to properly quote file names and the space is
+incorrectly interpreted. 
+
+Parts of the PATH inherited from the native Windows environment often
+include directory names with spaces. Sometimes it is necessary to set
+the PATH explicitly to avoid these.
+
 .. _msys2_parallel_builds:
 
 Parallel Builds with Make
