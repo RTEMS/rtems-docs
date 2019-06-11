@@ -41,6 +41,15 @@ then the following is all that is required:
     #define CONFIGURE_SHELL_MOUNT_NFS
     #include <rtems/shellconfig.h>
 
+The shell uses a POSIX key to reference the shell's per thread environment. A
+user's application needs to account for this key. If the application has a
+configuration for POSIX keys add one extra for the shell. If there is no
+entry add to the configuration:
+
+.. code-block:: c
+
+    #define CONFIGURE_MAXIMUM_POSIX_KEYS (5)
+
 Customizing the Command Set
 ---------------------------
 
