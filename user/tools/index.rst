@@ -22,3 +22,4 @@ developers.
    exeinfo
    bsp-builder
    tester
+   boot-image
