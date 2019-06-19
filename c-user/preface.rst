@@ -27,14 +27,15 @@ been expended to provide standards addressing the needs of the real-time
 community.  Several organizations have addressed this need during recent years.
 
 The Real Time Executive Interface Definition (RTEID) was developed by Motorola
-with technical input from Software Components Group.  RTEID was adopted by the
-VMEbus International Trade Association (VITA) as a baseline draft for their
-proposed standard multiprocessor, real-time executive interface, Open Real-Time
-Kernel Interface Definition (ORKID).  These two groups are currently working
-together with the IEEE P1003.4 committee to insure that the functionality of
-their proposed standards is adopted as the real-time extensions to POSIX.
+with technical input from Software Components Group
+:cite:`Motorola:1988:RTEID`.  RTEID was adopted by the VMEbus International
+Trade Association (VITA) as a baseline draft for their proposed standard
+multiprocessor, real-time executive interface, Open Real-Time Kernel Interface
+Definition (ORKID) :cite:`VITA:1990:ORKID`.  These two groups worked together
+with the IEEE P1003.4 committee to ensure that the functionality of their
+proposed standards is adopted as the real-time extensions to POSIX.
 
-This emerging standard defines an interface for the development of real-time
+This proposed standard defines an interface for the development of real-time
 software to ease the writing of real-time application programs that are
 directly portable across multiple real-time executive implementations.  This
 interface includes both the source code interfaces and run-time behavior as
