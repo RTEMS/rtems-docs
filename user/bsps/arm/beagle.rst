@@ -5,10 +5,10 @@
 beagle
 ======
 
-This BSP supports four variants, `beagleboardorig`, `beagleboardxm`, `beaglebonewhite`
-and `beagleboneblack`. The basic hardware initialization is not performed by
-the BSP.  A boot loader with device tree support must be used to start the BSP,
-e.g. U-Boot.
+This BSP supports four variants, `beagleboardorig`, `beagleboardxm`,
+`beaglebonewhite` and `beagleboneblack`. The basic hardware initialization is
+not performed by the BSP.  A boot loader with device tree support must be used
+to start the BSP, e.g., U-Boot.
 
 TODO(These drivers are present but not documented yet):
 
@@ -33,33 +33,39 @@ To boot via uboot, the ELF must be converted to a U-Boot image like below:
 Getting the Device Tree Blob
 ----------------------------
 
-The Device Tree Blob(dtb) is needed to load the device tree while starting up
+The Device Tree Blob (DTB) is needed to load the device tree while starting up
 the kernel. We build the dtb from the FreeBSD source matching the commit hash
 from the libbsd HEAD of freebsd-org. For example if the HEAD is at
 "19a6ceb89dbacf74697d493e48c388767126d418"
-Then the right dts file is:
+Then the right Device Tree Source (DTS) file is:
 https://github.com/freebsd/freebsd/blob/19a6ceb89dbacf74697d493e48c388767126d418/sys/gnu/dts/arm/am335x-boneblack.dts
 
-.. code-block:: none
+.. code-block:: shell
+   :linenos:
 
      #building the dtb
      #We will use the script from https://github.com/freebsd/freebsd/blob/19a6ceb89dbacf74697d493e48c388767126d418/sys/tools/fdt/make_dtb.sh
 
-     export MACHINE='arm' #The make_dtb.sh script uses environment variable MACHINE
+     #The make_dtb.sh script uses environment variable MACHINE
+     export MACHINE='arm'
+
      SCRIPT_DIR=$HOME/freebsd/sys/tools/fdt
+
      #The arguments to the script are
      # $1 -> Build Tree
      # $2 -> DTS source file
      # $3 -> output path of the DTB file
+
      ${SCRIPT_DIR}/make_dtb.sh ${SCRIPT_DIR}/../../ \
      ${SCRIPT_DIR}/../../gnu/dts/arm/am335x-boneblack.dts \
      $(pwd)
+
 Writing the uEnv.txt file
 -------------------------
 
 The uEnv.txt file is needed to set any environment variable before the kernel is
-loaded. Each line is a u-boot command that the uboot will execute during
-starting up.
+loaded. Each line is a u-boot command that the uboot will execute during start
+up.
 
 Add the following to a file named uEnv.txt:
 
@@ -72,8 +78,14 @@ Add the following to a file named uEnv.txt:
 I2C Driver
 ----------
 
-This BSP uses the I2C framework and is registered using
-``am335x_i2c_bus_register()`` the function prototype is given below:
+For registering the `/dev/i2c-0` device, a wrapper function is provided,
+``bbb_register_i2c_0()`` similarly ``bbb_register_i2c_1()`` and
+``bbb_register_i2c_2()`` are respectively used to register `i2c-1` and `i2c-2`.
+
+For registering an I2C device with a custom path (say `/dev/i2c-3`) the
+function ``am335x_i2c_bus_register()`` has to be used.
+
+The function prototype is given below:
 
 .. code-block:: C
 
@@ -84,12 +96,19 @@ This BSP uses the I2C framework and is registered using
    rtems_vector_number irq
    );
 
-This function is needed only while registering with custom path with custom
-values. For registering the `/dev/i2c-0` device, a wrapper function is provided,
-``bbb_register_i2c_0()`` similarly ``bbb_register_i2c_1()`` and
-``bbb_register_i2c_2()`` are respectively used to register `i2c-1` and `i2c-2`.
-
 SPI Driver
 ----------
 
-The SPI device `/dev/spi-0` can be registered with ``bbb_register_spi_0()```
+The SPI device `/dev/spi-0` can be registered with ``bbb_register_spi_0()``
+
+For registering with a custom path, the ``bsp_register_spi()`` can be used.
+
+The function prototype is given below:
+
+.. code-block:: C
+
+    rtems_status_code bsp_register_spi(
+       const char         *bus_path,
+       uintptr_t           register_base,
+       rtems_vector_number irq
+    );
