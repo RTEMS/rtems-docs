@@ -27,6 +27,7 @@ RTEMS Software Engineering (|version|)
     mission
     stakeholders
     prequalification
+    req-eng
     management
     test-plan
     test-framework

@@ -1,0 +1,60 @@
+' SPDX-License-Identifier: CC-BY-SA-4.0
+
+' Copyright (C) 2019 embedded brains GmbH
+
+@startuml
+
+class SpecificationItem {
+  active
+  derived
+  enabled-by
+  header
+  level
+  links
+  normative
+  rationale
+  ref
+  reviewed
+  text
+  type
+}
+
+class Interface {
+  interface-category
+  interface-type
+}
+
+class TestProcedure {
+  platform
+  steps
+}
+
+class TestCase {
+  inputs
+  outputs
+}
+
+class TestCase
+
+note right: test cases not validating\na requirement are unit tests
+
+SpecificationItem <|-- Requirement
+Requirement <|-- Functional
+Requirement <|-- NonFunctional
+NonFunctional <|-- Interface
+SpecificationItem <|-- TestProcedure
+SpecificationItem <|-- TestSuite
+SpecificationItem <|-- TestCase
+SpecificationItem <|-- Validation\nByAnalysis
+SpecificationItem <|-- Validation\nByInspection
+SpecificationItem <|-- Validation\nByReviewOfDesign
+SpecificationItem <|-- ValidationPlatform
+TestProcedure "1..n" -- TestSuite : "run by"
+TestSuite "1..n" -- TestCase : "contained in"
+ValidationPlatform "1..n" -- TestProcedure : "requires"
+Requirement "0..1" -- TestCase : "validates"
+Requirement "1" -- Validation\nByAnalysis : "validates"
+Requirement "1" -- Validation\nByInspection : "validates"
+Requirement "1" -- Validation\nByReviewOfDesign : "validates"
+
+@enduml
