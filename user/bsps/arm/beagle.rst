@@ -40,25 +40,8 @@ from the libbsd HEAD of freebsd-org. For example if the HEAD is at
 Then the right Device Tree Source (DTS) file is:
 https://github.com/freebsd/freebsd/blob/19a6ceb89dbacf74697d493e48c388767126d418/sys/gnu/dts/arm/am335x-boneblack.dts
 
-.. code-block:: shell
-   :linenos:
-
-     #building the dtb
-     #We will use the script from https://github.com/freebsd/freebsd/blob/19a6ceb89dbacf74697d493e48c388767126d418/sys/tools/fdt/make_dtb.sh
-
-     #The make_dtb.sh script uses environment variable MACHINE
-     export MACHINE='arm'
-
-     SCRIPT_DIR=$HOME/freebsd/sys/tools/fdt
-
-     #The arguments to the script are
-     # $1 -> Build Tree
-     # $2 -> DTS source file
-     # $3 -> output path of the DTB file
-
-     ${SCRIPT_DIR}/make_dtb.sh ${SCRIPT_DIR}/../../ \
-     ${SCRIPT_DIR}/../../gnu/dts/arm/am335x-boneblack.dts \
-     $(pwd)
+Please refer to the :ref:`device-tree` to know more about building and applying
+the Device Trees.
 
 Writing the uEnv.txt file
 -------------------------
