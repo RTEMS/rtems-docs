@@ -51,7 +51,7 @@ role_list = {
 	"announce":	("Announce Mailing List",			"https://lists.rtems.org/mailman/listinfo/announce/"),
 	"bugs":		("Bugs Mailing List",				"https://lists.rtems.org/mailman/listinfo/bugs/"),
 	"devel":	("Developers Mailing List",			"https://lists.rtems.org/mailman/listinfo/devel/"),
-	"build":	("Build logs",						"https://lists.rtems.org/mailman/listinfo/build"),
+	"build":	("Build Logs",					"https://lists.rtems.org/mailman/listinfo/build"),
 	"users":	("Users Mailing List",				"https://lists.rtems.org/mailman/listinfo/users/"),
 	"vc":		("Version Control Mailing List",	"https://lists.rtems.org/mailman/listinfo/vc/"),
 }
