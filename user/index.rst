@@ -29,6 +29,7 @@ RTEMS User Manual (|version|).
 
     overview/index
     start/index
+    support/index
     hosts/index
     installation/index
 
