@@ -4,6 +4,8 @@
 
 .. index:: support; commercial
 
+.. _SupportCommercial:
+
 Commercial Support Services
 ***************************
 

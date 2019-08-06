@@ -6,6 +6,8 @@
 
 .. index:: community; developers
 
+.. _Contributing:
+
 Contributing
 ************
 
