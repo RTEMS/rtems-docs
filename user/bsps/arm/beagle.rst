@@ -26,8 +26,8 @@ To boot via uboot, the ELF must be converted to a U-Boot image like below:
 
 .. code-block:: none
 
-    arm-rtems5-objcopy hello.exe -O app.bin
-    gzip 9 app.bin
+    arm-rtems5-objcopy hello.exe -O binary app.bin
+    gzip -9 app.bin
     mkimage -A arm -O linux -T kernel -a 0x80000000 -e 0x80000000 -n RTEMS -d app.bin.gz rtems-app.img
 
 Getting the Device Tree Blob
