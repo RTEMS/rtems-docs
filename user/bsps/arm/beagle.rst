@@ -40,7 +40,7 @@ from the libbsd HEAD of freebsd-org. For example if the HEAD is at
 Then the right Device Tree Source (DTS) file is:
 https://github.com/freebsd/freebsd/blob/19a6ceb89dbacf74697d493e48c388767126d418/sys/gnu/dts/arm/am335x-boneblack.dts
 
-Please refer to the :ref:`device-tree` to know more about building and applying
+Please refer to the :ref:`DeviceTree` to know more about building and applying
 the Device Trees.
 
 Writing the uEnv.txt file

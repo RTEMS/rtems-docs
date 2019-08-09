@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2019 Vijay Kumar Banerjee <vijaykumar9597@gmail.com>
 
+.. _DeviceTree:
+
 Device Tree
 ===========
 .. index:: Device Tree
