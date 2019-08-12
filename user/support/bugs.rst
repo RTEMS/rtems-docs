@@ -82,7 +82,7 @@ Please open the page to `submit a bug <https://devel.rtems.org/newticket>`_ to
 the RTEMS Project ticket system and follow the guidelines below to write a good
 bug report.
 
-* Provide a useful single line summary.
+* Provide a useful single line **Summary**.
 
 * Use `WikiFormatting <https://devel.rtems.org/wiki/WikiFormatting>`_ to
   structure the information you provide.  It does help the readability of the
@@ -133,10 +133,16 @@ bug report.
 
 * Write separate bug reports for different bugs.
 
-* Select a *Type* for the ticket.  Use ``defect`` for a bug.  Note ``infra`` is
-  used to report issues with the RTEMS servers at OSUOSL.
+* Select a **Type** for the ticket.
 
-* Select a *Version* for the ticket.  This should be the first RTEMS version
+  * Use ``defect`` for a bug.
+
+  * Use ``enhancement`` for a feature request in the software or an addition to
+    the documentation.
+
+  * Note ``infra`` is used to report issues with the RTEMS servers at OSUOSL.
+
+* Select a **Version** for the ticket.  This should be the first RTEMS version
   which is affected by this bug.  If this is the current Git master branch use
   the version of the next release.  Please provide the exact version of RTEMS
   in the description.  If you use an RTEMS release, then the release number.
@@ -144,15 +150,23 @@ bug report.
   present in an RTEMS Project repository.  Commit hashes of private branches
   are not interesting.
 
-* Select a *Component* for the ticket.  Use ``unspecified`` if you are unsure.
+* Select a **Component** for the ticket.  Use ``unspecified`` if you are unsure.
 
-* Select a *Severity* for the ticket.
+* Select a **Severity** for the ticket.
 
-* The fields *Milestone* and *Priority* will be most likely set by an RTEMS
+* The fields **Milestone** and **Priority** will be most likely set by an RTEMS
   maintainer.
 
-* You can relate your new bug to existing bugs through the *Blocked by* and
-  *Blocking* fields.
+* You can relate your new bug to existing bugs through the **Blocked by** and
+  **Blocking** fields.
+
+* If you have any external files, such as screenshots or examples, please
+  *attach* these as files to the ticket.  *Do not use external hosting* because
+  if you do use external hosting, then our historical record is broken when
+  those files are no longer available.
+
+* Some fields should only be set by the maintainers, as it is not always clear
+  what they should be set to.  Feel free to make your own choices.
 
 When you have checked that your report meets the criteria for a good bug
 report, please click on the ``Create ticket`` button to submit it to the RTEMS
@@ -177,7 +191,7 @@ attention and the bug is not magically fixed.  This may have several reasons
 
 * the bug is not reproducible at all,
 
-* the RTEMS version is quite old and no longer used by RTEMS maintainers,
+* the RTEMS version is quite old and no longer used by RTEMS maintainers, or
 
 * fixing the bug has a low priority for others.
 
