@@ -261,17 +261,46 @@ in the ``source-builder/config`` template configuration files.
 To test a patch simply copy it to your local ``patches`` directory. The RSB
 will see the patch is present and will not attempt to download it. Once you are
 happy with the patch submit it to the project and a core developer will review
-it and add it to the RTEMS Tools git repository.  For example, to test a local
-patch for newlib, add the following two lines to the .cfg file in
-``rtems/config/tools/`` that is included by the bset you use:
+it and add it to the RTEMS Tools git repository.
+
+Testing a Newlib Patch
+~~~~~~~~~~~~~~~~~~~~~~
+
+To test a local patch for newlib, you need to add the following
+two lines to the ``.cfg`` file in ``rsb/rtems/config/tools/`` that is included
+by the bset you use:
+
+.. topic:: Steps:
+
+  1. Create patches for the changes you want to test. (Note: For RSB, before
+     creating Newlib patch, you must run ``autoreconf -fvi`` in the required
+     directory after you make changes to the code. This is not required when
+     you create patch to send to ``newlib-devel``. But if you want RSB to
+     address your changes, your patch should also include regenerated files.)
+
+  2. Calculate ``sha512`` of your patch.
+
+  3. Place the patches in ``rsb/rtems/patches`` directory.
+
+  4. Open the ``.bset`` file used by your BSP in ``rsb/rtems/config``.
+     For example, for ``rtems5``, ``SPARC``, the file will be
+     ``rsb/rtems/config/5/rtems-sparc.bset``.
+
+  5. Inside it you will find the name of ``.cfg`` file for Newlib, used by
+     your BSP.
+     For example, I found ``tools/rtems-gcc-7.4.0-newlib-1d35a003f``.
+
+  6. Edit your ``.cfg`` file. In my case it will be,
+     ``rsb/rtems/config/tools/rtems-gcc-7.4.0-newlib-1d35a003f.cfg``. And
+     add the information about your patch as mentioned below.
 
 .. code-block:: spec
 
-    %patch add newlib file://0001-this-is-a-newlib-patch.patch   <1>
-    %hash md5 0001-this-is-a-newlib-patch.diff 77d070878112783292461bd6e7db17fb <2>
+    %patch add newlib -p1 file://0001-Port-ndbm.patch <1>
+    %hash sha512 0001-Port-ndbm.patch 7d999ceeea4f3dc82e8e0aadc09d983a7a68b44470da8a3d61ab6fc558fdba6f2c2de3acc2f32c0b0b97fcc9ab799c27e87afe046544a69519881f947e7881d1 <2>
 
 .. topic:: Items:
 
   1. The diff file prepended with ``file://`` to tell RSB this is a local file.
 
-  2. The output from md5sum on the diff file.
+  2. The output from sha512sum on the patch file.
