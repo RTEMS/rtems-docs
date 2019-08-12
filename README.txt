@@ -247,7 +247,7 @@ Sphinx:
 
 PDF:
 
-  # pacman -S texlive-bin texlive-core texlive-latexextra texlive-fontsextra \
+  # pacman -S texlive-bin texlive-core texlive-latexextra texlive-fontsextra
 
 openSUSE
 ~~~~~~~~
