@@ -6,7 +6,6 @@ extensions = [
 	"sphinx.ext.intersphinx",
 	"sphinx.ext.mathjax",
 	"sphinxcontrib.bibtex",
-	"rtemsext",
 	"rtemsdomain",
 ]
 
@@ -196,7 +195,7 @@ latex_use_modindex = False
 #latex_logo = None
 
 # If true, show page references after internal links.
-latex_show_pagerefs = False
+latex_show_pagerefs = True
 
 # If true, show URL addresses after external links.
 #latex_show_urls=True
