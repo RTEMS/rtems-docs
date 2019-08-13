@@ -10,6 +10,7 @@ RTEMS User Manual (|version|).
 
 .. topic:: Copyrights and License
 
+    | |copy| 2019 Vijay Kumar Banerjee
     | |copy| 2018 Amaan Cheval
     | |copy| 2018 Marçal Comajoan Cara
     | |copy| 2018 Vidushi Vashishth
