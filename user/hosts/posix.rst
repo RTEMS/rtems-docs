@@ -131,10 +131,16 @@ Xubuntu. A minimal installation was used and the following packages installed:
 
 Note that in previous versions of Ubuntu, the package libpython-dev was
 python2.7-dev. The name of packages changes over time. You need the
-package with Python development libraries for C/C++ programs.
+package with Python development libraries for C/C++ programs. The following
+is needed for recent versions:
 
-It is likely necessary that you will have to enable the Ubuntu Source Repositories.
-Users have suggested the following web pages which have instructions:
+.. code-block:: none
+
+  $ sudo apt-get install python-dev
+
+It is likely necessary that you will have to enable the Ubuntu Source
+Repositories.  Users have suggested the following web pages which have
+instructions:
 
 * https://askubuntu.com/questions/158871/how-do-i-enable-the-source-code-repositories/158872
 * https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list
