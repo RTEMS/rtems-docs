@@ -251,7 +251,7 @@ timeouts and 1 invalid test.
 * ``sparc/erc32`` is the architecture and BSP names.
 * ``hello.exe`` is the executable name.
 
-The test log records all the tests and results. The reporting mode by default
+The test log records all the tests and results. The logging mode by default
 only provides the output history if a test fails, times out, or is invalid. The
 time taken by each test is also recorded.
 
@@ -317,16 +317,16 @@ If no start marker is seen the test is marked as invalid. If you are testing on
 real target hardware things can sometimes go wrong and the target may not
 initialize or respond to the debugger in an expected way.
 
-Reporting
----------
+Logging
+-------
 
-The report written to the log has the following modes:
+The following modes of logging are available:
 
 * All (``all``)
 * Failures (``failures``)
 * None (``none``)
 
-The mode is controlled using the command line option ``--report-mode`` using
+The mode is controlled using the command line option ``--log-mode`` using
 the values listed above.
 
 All
@@ -410,6 +410,17 @@ running on a Coldfire MCF5235 using GDB and a BDM pod:
 * Line starting with ``]`` are from the target's console.
 * The result with the test time.
 
+Reporting
+---------
+
+The RTEMS Tester supports output in a machine parsable format. This can be
+enabled using the options "--report-path" and "--report-format". Currently,
+JSON output is supported using these options like so:
+'--report-path="report" --report-format=json'
+
+This will produce a file "report.json" that contains output equivalent to the
+"failure" logging mode.
+
 Running Tests in Parallel
 -------------------------
 
@@ -419,8 +430,8 @@ resource contention. Simulators are an example of back-ends that can run in
 parallel. A hardware debug tool like a BDM or JTAG pod can manage only a
 single test at once so the tests need to be run one at a time.
 
-The test framework manages the test jobs and orders the output in the report
-log in test order. Output is held for completed tests until the next test to be
+The test framework manages the test jobs and orders the output in the log
+in test order. Output is held for completed tests until the next test to be
 reported has finished.
 
 Command Line Help
@@ -444,7 +455,9 @@ review the available option by the ``--help`` option:
     --macros file[,file]         : Macro format files to load after the defaults
     --no-clean                   : Do not clean up the build tree
     --quiet                      : Quiet output (not used)
-    --report-mode                : Reporting modes, failures (default),all,none
+    --report-path                : Report output base path (file extension will be added)
+    --report-format              : Formats in which to report test results: json
+    --log-mode                   : Log modes, failures (default),all,none
     --rtems-bsp                  : The RTEMS BSP to run the test on
     --rtems-tools                : The path to the RTEMS tools
     --target                     : Set the target triplet
