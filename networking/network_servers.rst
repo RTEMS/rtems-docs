@@ -60,7 +60,13 @@ Example hooks structure and configuration structure folllow.
         40,                     /* FTPD task priority */
         512*1024,               /* Maximum hook 'file' size */
         0,                      /* Use default port */
-        ftp_hooks               /* Local ftp hooks */
+        ftp_hooks,              /* Local ftp hooks */
+        0,                      /* Use / as root */
+        1,                      /* Max. connections */
+        0,                      /* Infinite idle timeout */
+        0,                      /* Read-write access */
+        0,                      /* Ignore login check */
+        true                    /* Say hello */
     };
 
 Specifying 0 for the well-known port causes FTPD to use the UNIX standard FTPD
@@ -75,7 +81,7 @@ The prototype for the ``untar`` hook (and hooks, in general) is:
 
 .. code-block:: c
 
-    int Untar_FromMemory(unsigned char *tar_buf, unsigned long size);
+    int Untar_FromMemory(void *tar_buf, size_t size);
 
 An example FTP transcript which exercises this hook is:
 

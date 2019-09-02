@@ -138,7 +138,7 @@ prototype for this routine:
 
 .. code-block:: c
 
-    void * sbrk(size_t increment)
+    void * sbrk(ptrdiff_t increment)
 
 The ``increment`` amount is based upon the ``sbrk_amount`` parameter passed to
 the ``bsp_libc_init`` during system initialization.

@@ -158,7 +158,7 @@ INTERNAL_ERROR_THREAD_EXITTED (5)
 
     .. code-block:: c
 
-        void task( rtems_arg arg )
+        rtems_task task( rtems_task_argument arg )
         {
           /* Classic API tasks must not return */
         }
@@ -171,6 +171,7 @@ INTERNAL_ERROR_THREAD_EXITTED (5)
           sc = rtems_task_create(
             rtems_build_name('T', 'A', 'S', 'K'),
             1,
+            RTEMS_MINIMUM_STACK_SIZE,
             RTEMS_DEFAULT_MODES,
             RTEMS_DEFAULT_ATTRIBUTES,
             &task_id
@@ -258,7 +259,7 @@ INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_STICKY_FROM_BAD_STATE (29)
 
     .. code-block:: c
 
-        void bad( rtems_id timer_id, void *arg )
+        rtems_timer_service_routine bad( rtems_id timer_id, void *arg )
         {
           rtems_id *sem_id;
 
@@ -268,7 +269,7 @@ INTERNAL_ERROR_THREAD_QUEUE_ENQUEUE_STICKY_FROM_BAD_STATE (29)
           assert( 0 );
         }
 
-        void fire_bad_timer( rtems_task_argument arg )
+        rtems_task fire_bad_timer( rtems_task_argument arg )
         {
           rtems_status_code sc;
           rtems_id          sem_id;

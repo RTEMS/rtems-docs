@@ -77,7 +77,7 @@ queue.
 
 .. code-block:: c
 
-    typedef struct mq_attr{
+    struct mq_attr{
         long mq_flags;
         long mq_maxmsg;
         long mq_msgsize;

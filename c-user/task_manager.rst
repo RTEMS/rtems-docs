@@ -1553,7 +1553,7 @@ EXAMPLE:
         #include <rtems.h>
         #include <assert.h>
 
-        void task( rtems_task_argument arg );
+        rtems_task task( rtems_task_argument arg );
 
         void example( void )
         {

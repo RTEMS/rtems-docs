@@ -157,10 +157,10 @@ prototyped as follows:
 
 .. code-block:: c
 
-    uint32_t rtems_object_id_get_api( rtems_id );
+    Objects_APIs rtems_object_id_get_api( rtems_id );
     uint32_t rtems_object_id_get_class( rtems_id );
     uint32_t rtems_object_id_get_node( rtems_id );
-    uint32_t rtems_object_id_get_index( rtems_id );
+    uint16_t rtems_object_id_get_index( rtems_id );
 
 An object control block is a data structure defined by RTEMS which contains the
 information necessary to manage a particular object type.  For efficiency

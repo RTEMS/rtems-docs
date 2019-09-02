@@ -3869,7 +3869,7 @@ that the two systems cannot interfere in an undesirable way.
     RTEMS_SCHEDULER_PRIORITY_SMP(work, CONFIGURE_MAXIMUM_PRIORITY + 1);
 
     /* Configuration Step 3 - Scheduler Table */
-    #define CONFIGURE_SCHEDULER_TABLE_ENTRIES \\
+    #define CONFIGURE_SCHEDULER_TABLE_ENTRIES \
       RTEMS_SCHEDULER_TABLE_PRIORITY_SMP( \
         io, \
          rtems_build_name('I', 'O', ' ', ' ') \

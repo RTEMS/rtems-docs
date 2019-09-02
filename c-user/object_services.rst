@@ -114,7 +114,7 @@ printing the values.
     void printObjectId(rtems_id id)
     {
         printf(
-            "API=%d Class=%d Node=%d Index=%d\n",
+            "API=%d Class=%" PRIu32 " Node=%" PRIu32 " Index=%" PRIu16 "\n",
             rtems_object_id_get_api(id),
             rtems_object_id_get_class(id),
             rtems_object_id_get_node(id),
@@ -157,13 +157,14 @@ parts and "pretty-printed."
 
     void prettyPrintObjectId(rtems_id id)
     {
-        int tmpAPI, tmpClass;
+        int tmpAPI;
+        uint32_t tmpClass;
 
         tmpAPI   = rtems_object_id_get_api(id),
         tmpClass = rtems_object_id_get_class(id),
 
         printf(
-            "API=%s Class=%s Node=%d Index=%d\n",
+            "API=%s Class=%s Node=%" PRIu32 " Index=%" PRIu16 "\n",
             rtems_object_get_api_name(tmpAPI),
             rtems_object_get_api_class_name(tmpAPI, tmpClass),
             rtems_object_id_get_node(id),
@@ -373,8 +374,8 @@ OBJECT_ID_GET_CLASS - Obtain Class from Id
 CALLING SEQUENCE:
     .. code-block:: c
 
-        int rtems_object_id_get_class(
-            rtems_id id
+        uint32_t rtems_object_id_get_class(
+                 rtems_id id
         );
 
 DIRECTIVE STATUS CODES:
@@ -403,8 +404,8 @@ OBJECT_ID_GET_NODE - Obtain Node from Id
 CALLING SEQUENCE:
     .. code-block:: c
 
-        int rtems_object_id_get_node(
-            rtems_id id
+        uint32_t rtems_object_id_get_node(
+                 rtems_id id
         );
 
 DIRECTIVE STATUS CODES:
@@ -433,8 +434,8 @@ OBJECT_ID_GET_INDEX - Obtain Index from Id
 CALLING SEQUENCE:
     .. code-block:: c
 
-        int rtems_object_id_get_index(
-            rtems_id id
+        uint16_t rtems_object_id_get_index(
+                 rtems_id id
         );
 
 DIRECTIVE STATUS CODES:

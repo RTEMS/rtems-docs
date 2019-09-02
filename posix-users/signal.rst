@@ -400,16 +400,12 @@ The prototype of the ``siginfo_t`` structure is the following:
     {
         int si_signo;        /* Signal number */
         int si_code;         /* Cause of the signal */
-        pid_t si_pid;        /* Sending process ID */
-        uid_t si_uid;        /* Real user ID of sending process */
-        void* si_addr;       /* Address of faulting instruction */
-        int si_status;       /* Exit value or signal */
         union sigval
         {
             int sival_int;   /* Integer signal value */
             void* sival_ptr; /* Pointer signal value */
         } si_value;          /* Signal value */
-    }
+    } siginfo_t;
 
 **NOTES:**
 
@@ -778,16 +774,12 @@ The prototype of the ``siginfo_t`` structure is the following:
     {
         int si_signo;        /* Signal number */
         int si_code;         /* Cause of the signal */
-        pid_t si_pid;        /* Sending process ID */
-        uid_t si_uid;        /* Real user ID of sending process */
-        void* si_addr;       /* Address of faulting instruction */
-        int si_status;       /* Exit value or signal */
         union sigval
         {
             int sival_int;   /* Integer signal value */
             void* sival_ptr; /* Pointer signal value */
         } si_value;          /* Signal value */
-    }
+    } siginfo_t;
 
 .. _sigtimedwait:
 
@@ -837,7 +829,7 @@ The ``timespec`` structure is defined as follows:
     {
         time_t tv_sec; /* Seconds */
         long tv_nsec;  /* Nanoseconds */
-    }
+    };
 
 **NOTES:**
 
@@ -895,7 +887,7 @@ The ``sigval`` union is specified as:
     {
         int sival_int; /* Integer signal value */
         void* sival_ptr; /* Pointer signal value */
-    }
+    };
 
 **NOTES:**
 

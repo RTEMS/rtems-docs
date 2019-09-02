@@ -67,8 +67,8 @@ table is below:
 
     bool dmv177_icm7170_probe(int minor)
     {
-      volatile unsigned16 *card_resource_reg;
-      card_resource_reg = (volatile unsigned16 *) DMV170_CARD_RESORCE_REG;
+      volatile uint16_t *card_resource_reg;
+      card_resource_reg = (volatile uint16_t *) DMV170_CARD_RESORCE_REG;
       if ( (*card_resource_reg & DMV170_RTC_INST_MASK) == DMV170_RTC_INSTALLED )
         return TRUE;
       return FALSE;

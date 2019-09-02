@@ -348,7 +348,7 @@ NOTES:
 
         void critical_section( void )
         {
-          rtems_interrupt level;
+          rtems_interrupt_level level;
 
           /*
            * Please note that the rtems_interrupt_disable() is a macro.  The
@@ -363,7 +363,7 @@ NOTES:
           /* Critical section, maskable interrupts are disabled */
 
           {
-            rtems_interrupt level2;
+            rtems_interrupt_level level2;
 
             rtems_interrupt_disable( level2 );
 
@@ -503,7 +503,7 @@ NOTES:
 
         void local_critical_section( void )
         {
-          rtems_interrupt level;
+          rtems_interrupt_level level;
 
           /*
            * Please note that the rtems_interrupt_local_disable() is a macro.
@@ -521,7 +521,7 @@ NOTES:
            */
 
           {
-            rtems_interrupt level2;
+            rtems_interrupt_level level2;
 
             rtems_interrupt_local_disable( level2 );
 

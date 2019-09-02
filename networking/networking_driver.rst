@@ -99,14 +99,14 @@ to be compiled with the appropriate flags.  This can be accomplished by adding
 is inside the RTEMS source tree or is built using the RTEMS application
 Makefiles, then adding the following line accomplishes this:
 
-.. code-block:: c
+.. code-block:: makefile
 
     DEFINES += -D__INSIDE_RTEMS_BSD_TCPIP_STACK__
 
 This is equivalent to the following list of definitions.  Early versions of the
 RTEMS BSD network stack required that all of these be defined.
 
-.. code-block:: c
+.. code-block:: makefile
 
     -D_COMPILING_BSD_KERNEL_ -DKERNEL -DINET -DNFS \
       -DDIAGNOSTIC -DBOOTP_COMPAT

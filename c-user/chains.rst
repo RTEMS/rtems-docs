@@ -149,7 +149,7 @@ to the control. Consider a user structure and chain control:
     typedef struct foo
     {
         rtems_chain_node node;
-        uint8_t char*    data;
+        char*            data;
     } foo;
     rtems_chain_control chain;
 
@@ -192,7 +192,7 @@ placed on another chain:
 
         rtems_chain_initialize_empty (out);
 
-        node = chain->first;
+        node = rtems_chain_head (chain);
         while (!rtems_chain_is_tail (chain, node))
         {
             bar = (foo*) node;

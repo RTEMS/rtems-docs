@@ -522,8 +522,8 @@ executes every 100 clock ticks.
         rtems_status_code status;
         name = rtems_build_name( 'P', 'E', 'R', 'D' );
         status = rtems_rate_monotonic_create( name, &period );
-        if ( status != RTEMS_STATUS_SUCCESSFUL ) {
-            printf( "rtems_monotonic_create failed with status of %d.\n", rc );
+        if ( status != RTEMS_SUCCESSFUL ) {
+            printf( "rtems_monotonic_create failed with status of %d.\n", status );
             exit( 1 );
         }
         while ( 1 ) {
@@ -533,11 +533,11 @@ executes every 100 clock ticks.
         }
         /* missed period so delete period and SELF */
         status = rtems_rate_monotonic_delete( period );
-        if ( status != RTEMS_STATUS_SUCCESSFUL ) {
+        if ( status != RTEMS_SUCCESSFUL ) {
             printf( "rtems_rate_monotonic_delete failed with status of %d.\n", status );
             exit( 1 );
         }
-        status = rtems_task_delete( SELF );    /* should not return */
+        status = rtems_task_delete( RTEMS_SELF );    /* should not return */
         printf( "rtems_task_delete returned with status of %d.\n", status );
         exit( 1 );
     }
@@ -568,21 +568,20 @@ ticks.  The last thirty clock ticks are not used by this task.
     {
         rtems_name        name_1, name_2;
         rtems_id          period_1, period_2;
-        rtems_status_code status;
         name_1 = rtems_build_name( 'P', 'E', 'R', '1' );
         name_2 = rtems_build_name( 'P', 'E', 'R', '2' );
         (void ) rtems_rate_monotonic_create( name_1, &period_1 );
         (void ) rtems_rate_monotonic_create( name_2, &period_2 );
         while ( 1 ) {
-            if ( rtems_rate_monotonic_period( period_1, 100 ) == TIMEOUT )
+            if ( rtems_rate_monotonic_period( period_1, 100 ) == RTEMS_TIMEOUT )
                 break;
-            if ( rtems_rate_monotonic_period( period_2, 40 ) == TIMEOUT )
+            if ( rtems_rate_monotonic_period( period_2, 40 ) == RTEMS_TIMEOUT )
             break;
             /*
              *  Perform first set of actions between clock
              *  ticks 0 and 39 of every 100 ticks.
              */
-            if ( rtems_rate_monotonic_period( period_2, 30 ) == TIMEOUT )
+            if ( rtems_rate_monotonic_period( period_2, 30 ) == RTEMS_TIMEOUT )
                 break;
             /*
              *  Perform second set of actions between clock 40 and 69
@@ -590,14 +589,14 @@ ticks.  The last thirty clock ticks are not used by this task.
              *
              *  Check to make sure we didn't miss the period_2 period.
              */
-            if ( rtems_rate_monotonic_period( period_2, STATUS ) == TIMEOUT )
+            if ( rtems_rate_monotonic_period( period_2, RTEMS_PERIOD_STATUS ) == RTEMS_TIMEOUT )
                 break;
             (void) rtems_rate_monotonic_cancel( period_2 );
         }
         /* missed period so delete period and SELF */
         (void ) rtems_rate_monotonic_delete( period_1 );
         (void ) rtems_rate_monotonic_delete( period_2 );
-        (void ) task_delete( SELF );
+        (void ) rtems_task_delete( RTEMS_SELF );
     }
 
 The above task creates two rate monotonic periods as part of its

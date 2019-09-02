@@ -100,7 +100,7 @@ NOTES:
 EXAMPLES:
     The following is an example of how to use ``blksync``:
 
-    .. code-block:: c
+    .. code-block:: shell
 
         blksync /dev/hda1
 
@@ -1469,7 +1469,7 @@ ln - make links
 .. index:: ln
 
 SYNOPSYS:
-    .. code-block:: c
+    .. code-block:: shell
 
         ln [-fhinsv] source_file [target_file]
         ln [-fhinsv] source_file ... target_dir
@@ -1729,7 +1729,7 @@ mkdir - create a directory
 .. index:: mkdir
 
 SYNOPSYS:
-    .. code-block:: c
+    .. code-block:: shell
 
         mkdir  dir [dir1 .. dirN]
 

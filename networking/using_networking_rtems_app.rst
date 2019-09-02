@@ -14,7 +14,7 @@ Including the required managers
 
 The FreeBSD networking code requires several RTEMS managers in the application:
 
-.. code-block:: c
+.. code-block:: makefile
 
     MANAGERS = io event semaphore
 
@@ -25,7 +25,7 @@ The networking tasks allocate a lot of memory.  For most applications the heap
 should be at least 256 kbytes.  The amount of memory set aside for the heap can
 be adjusted by setting the ``CFLAGS_LD`` definition as shown below:
 
-.. code-block:: c
+.. code-block:: makefile
 
     CFLAGS_LD += -Wl,--defsym -Wl,HeapSize=0x80000
 
@@ -210,7 +210,7 @@ the first two entries in this structure.
 
     .. code-block:: c
 
-        40 * (1024 + sizeof(struct sockaddr_in)
+        40 * (1024 + sizeof(struct sockaddr_in))
 
 ``unsigned long tcp_tx_buf_size``
     This configuration parameter specifies the maximum amount of buffer memory

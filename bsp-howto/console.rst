@@ -168,7 +168,7 @@ The handler table for the polled mode should look like the following.
       .set_attributes = my_driver_set_attributes,
       .ioctl = my_driver_ioctl, /* optional, may be NULL */
       .mode = TERMIOS_POLLED
-    }
+    };
 
 The :c:func:`my_driver_poll_write()` routine is responsible for writing ``n``
 characters from ``buf`` to the serial device specified by ``base``.

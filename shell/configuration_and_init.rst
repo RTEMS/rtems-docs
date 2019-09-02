@@ -103,12 +103,15 @@ provided an alias for ``usercmd`` named ``userecho``.
         return 0;
     }
     rtems_shell_cmd_t Shell_USERCMD_Command = {
-        "usercmd",                   /* name */
-        "usercmd n1 \[n2 \[n3...]]", /* usage */
-        "user",                      /* topic */
-        main_usercmd,                /* command */
-        NULL,                        /* alias */
-        NULL                         /* next */
+        "usercmd",                                                   /* name */
+        "usercmd n1 [n2 [n3...]]",                                   /* usage */
+        "user",                                                      /* topic */
+        main_usercmd,                                                /* command */
+        NULL,                                                        /* alias */
+        NULL,                                                        /* next */
+        S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH,   /* mode */
+        0,                                                           /* uid */
+        0                                                            /* gid */
     };
     rtems_shell_alias_t Shell_USERECHO_Alias = {
         "usercmd",                   /* command */

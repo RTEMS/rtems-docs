@@ -1030,7 +1030,7 @@ time - time command execution
 .. index:: time
 
 SYNOPSYS:
-    .. code-block:: c
+    .. code-block:: shell
 
         time command [argument ...]
 

@@ -190,7 +190,7 @@ overrun.
         rtems_cbs_server_id server_id
     )
     {
-        printk( "Budget overrun, fixing the task\\n" );
+        printk( "Budget overrun, fixing the task\n" );
         return;
     }
 
@@ -206,8 +206,8 @@ overrun.
         params.budget = 4;
 
         rtems_cbs_initialize();
-        rtems_cbs_create_server( &params, &overrun_handler, &server_id )
-        rtems_cbs_attach_thread( server_id, SELF );
+        rtems_cbs_create_server( &params, &overrun_handler, &server_id );
+        rtems_cbs_attach_thread( server_id, RTEMS_SELF );
         rtems_rate_monotonic_create( argument, &rmid );
 
         while ( 1 ) {
