@@ -324,8 +324,7 @@ NOTES:
 
 .. _rtems_barrier_wait:
 
-.. index:: obtain a barrier
-.. index:: lock a barrier
+.. index:: wait at a barrier
 .. index:: rtems_barrier_wait
 
 BARRIER_WAIT - Wait at a barrier
@@ -356,14 +355,11 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
 
-    This directive acquires the barrier specified by ``id``.  The
-    ``RTEMS_WAIT`` and ``RTEMS_NO_WAIT`` components of the options parameter
-    indicate whether the calling task wants to wait for the barrier to become
-    available or return immediately if the barrier is not currently available.
-    With either ``RTEMS_WAIT`` or ``RTEMS_NO_WAIT``, if the current barrier
-    count is positive, then it is decremented by one and the barrier is
-    successfully acquired by returning immediately with a successful return
-    code.
+    This directive waits at the barrier specified by ``id``.  The timeout
+    parameter specifies the maximum interval the calling task is willing to be
+    blocked waiting for the barrier.  If it is set to ``RTEMS_NO_TIMEOUT``,
+    then the calling task will wait forever.  If the barrier is available or
+    the ``RTEMS_NO_WAIT`` option component is set, then timeout is ignored.
 
     Conceptually, the calling task should always be thought of as blocking when
     it makes this call and being unblocked when the barrier is released.  If
@@ -372,24 +368,7 @@ DESCRIPTION:
     callers will block except for the one which is the Nth task which trips the
     automatic release condition.
 
-    The timeout parameter specifies the maximum interval the calling task is
-    willing to be blocked waiting for the barrier.  If it is set to
-    ``RTEMS_NO_TIMEOUT``, then the calling task will wait forever.  If the
-    barrier is available or the ``RTEMS_NO_WAIT`` option component is set, then
-    timeout is ignored.
-
 NOTES:
-
-    The following barrier acquisition option constants are defined by RTEMS:
-
-    .. list-table::
-     :class: rtems-table
-
-     * - ``RTEMS_WAIT``
-       - task will wait for barrier (default)
-     * - ``RTEMS_NO_WAIT``
-       - task should not wait
-
     A clock tick is required to support the timeout functionality of this
     directive.
 
@@ -399,7 +378,6 @@ NOTES:
 
 .. _rtems_barrier_release:
 
-.. index:: wait at a barrier
 .. index:: release a barrier
 .. index:: rtems_barrier_release
 
@@ -425,9 +403,7 @@ DIRECTIVE STATUS CODES:
 
 DESCRIPTION:
     This directive releases the barrier specified by id.  All tasks waiting at
-    the barrier will be unblocked.  If the running task's preemption mode is
-    enabled and one of the unblocked tasks has a higher priority than the
-    running task.
+    the barrier will be unblocked.
 
 NOTES:
     The calling task may be preempted if it causes a higher priority task to be
