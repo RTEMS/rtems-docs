@@ -119,10 +119,9 @@ Waiting at a Barrier
 --------------------
 
 The ``rtems_barrier_wait`` directive is used to wait at
-the specified barrier.  Since a barrier is, by definition, never immediately,
-the task may wait forever for the barrier to be released or it may
-specify a timeout.  Specifying a timeout limits the interval the task will
-wait before returning with an error status code.
+the specified barrier.  The task may wait forever for the barrier to be
+released or it may specify a timeout.  Specifying a timeout limits the interval
+the task will wait before returning with an error status code.
 
 If the barrier is configured as automatic and there are already one less then
 the maximum number of waiters, then the call will unblock all tasks waiting at
