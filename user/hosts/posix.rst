@@ -170,8 +170,8 @@ opportunity to contribute. Please submit any guidance you can provide.
 FreeBSD
 -------
 
-The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3 and 11 64bit
-version. You need to install some ports. They are:
+The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3, 11 and
+12 64bit version. You need to install some ports. They are:
 
 .. code-block:: none
 
@@ -192,6 +192,15 @@ QEMU.
 
 If you are on FreeBSD 10.0 and you have pkgng installed you can use 'pkg
 install' rather than 'portinstall'.
+
+We recommend you run as root the following command to speed up Python
+3's subprocess support:
+
+.. code-block:: none
+
+  # mount -t fdescfs none /dev/fd
+
+This speeds up closing file descriptors when creating subprocesses.
 
 .. _NetBSD:
 
