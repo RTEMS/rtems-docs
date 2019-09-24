@@ -61,9 +61,9 @@ Add the following to a file named uEnv.txt:
 I2C Driver
 ----------
 
-For registering the `/dev/i2c-0` device, a wrapper function is provided,
-``bbb_register_i2c_0()`` similarly ``bbb_register_i2c_1()`` and
-``bbb_register_i2c_2()`` are respectively used to register `i2c-1` and `i2c-2`.
+The Beagle has the `i2c-0` device registered at initialization. For registering
+`i2c-1` and `i2c-2` ``bbb_register_i2c_1()`` and
+``bbb_register_i2c_2()`` wrapper functions are respectively used.
 
 For registering an I2C device with a custom path (say `/dev/i2c-3`) the
 function ``am335x_i2c_bus_register()`` has to be used.
