@@ -21,8 +21,8 @@ Why Contribute?
 ===============
 
 If you are writing a major extension to RTEMS, such as a port
-to a new CPU family or model, a new target board, a major rewrite
-of some existing component, or adding some missing functionality,
+to a new CPU family (processor architecture) or model, a new target board, a
+major rewrite of some existing component, or adding some missing functionality,
 please keep in mind the importance of keeping other developers informed.
 Part of being a good cooperating member of the RTEMS development team is the
 responsibility to consider what the other developers need in order
@@ -30,7 +30,7 @@ to work effectively.
 
 Nobody likes to do a lot of work and find it was duplicated effort.
 So when you work on a major new feature, you should tell
-rtems-users@www.rtems.com what you are working on, and give
+:r:list:`users` what you are working on, and give
 occasional reports of how far you have come and how confident
 you are that you will finish the job. This way, other developers
 (if they are paying attention) will be aware which projects would
@@ -38,11 +38,12 @@ duplicate your effort, and can either join up with you, or at
 least avoid spending time on something that will be unnecessary
 because of your work. If, for whatever reason, you are not in a
 position to publicly discuss your work, please at least privately
-let a Steering Committee member know about it so they can look
-out for duplicated effort or possible collaborators.
+let an
+`RTEMS maintainer <https://git.rtems.org/rtems/tree/MAINTAINERS>`_
+know about it so they can look out for duplicated effort or possible
+collaborators.
 
-You should also monitor the
-`RTEMS Mailing Lists <https://devel.rtems.org/wiki/TBR/Website/RTEMSMailingLists>`_.
+You should also monitor the :r:list:`users` and :r:list:`devel`
 to see if someone else mentions working on a similar
 project to yours. If that happens, speak up!
 
@@ -58,7 +59,7 @@ Someone else may be able to finish the job.
 Many people have done RTEMS ports or BSPs on their own, to a wide
 variety of processors, without much communication with the RTEMS
 development team. However, much of this work has been lost over
-time, or have proven very hard to integrate. So, what we're asking
+time, or have proven very hard to integrate. So, what we are asking
 is that, to the maximum extent possible, you communicate with us
 as early on and as much as possible.
 
@@ -70,9 +71,9 @@ them. While the focus here is on new ports and BSPs, we believe that
 the issues are similar for other RTEMS development efforts including
 student efforts to implement new algorithmic optimizations.
 
-''Our engineers understand our target environment better than anyone
-else, and we have a tight schedule. Why should we work with the RTEMS
-developers, when we can get the code out faster by whacking it out on our own?''
+    Our engineers understand our target environment better than anyone else, and
+    we have a tight schedule. Why should we work with the RTEMS developers, when
+    we can get the code out faster by whacking it out on our own?
 
 You understand your target environment better than anyone else.
 However, the RTEMS developers understand RTEMS better than anyone
@@ -99,10 +100,10 @@ to begin interacting with the RTEMS team, you might find that you did
 some things wrong and you may have to rewrite parts of your RTEMS port,
 which is a waste of your valuable time.
 
-''Why should we care if our port is integrated into the official
-RTEMS sources? We can distribute it ourselves to whoever is interested.''
+    Why should we care if our port is integrated into the official RTEMS
+    sources? We can distribute it ourselves to whoever is interested.
 
-Yes, the GNU GPL allows you to do that. But by doing so, you end up
+Yes, the RTEMS licenses allows you to do that. But by doing so, you end up
 having to maintain that code yourself; this can be a significant
 effort over time as the RTEMS sources change rapidly.
 
@@ -117,14 +118,14 @@ intervention.
 It has been our experience that integrated ports tend to ultimately
 be of better quality and stay up to date from release to release.
 
-''Why should we communicate up front? We're happy to let the
-RTEMS developers integrate our stuff later.''
+    Why should we communicate up front? We are happy to let the RTEMS developers
+    integrate our stuff later.
 
 See above. It will save work for you over both the short and the
 long term, and it is the right thing to do.
 
-''Aspects of my target environment that my application exploits
-are still under NDA.''
+    Aspects of my target environment that my application exploits are still
+    under NDA.
 
 Nevertheless, if the target hardware is built of any commercial parts
 that are generally available including, but not limited to, the CPU
@@ -157,7 +158,3 @@ possible helps you by decreasing your development cycle, decreasing
 your long term maintenance costs and may help raise interest in your
 processor by having a free compiler implementation available to
 anyone who wants to take a look.
-
-Finally, please note that GPL-covered code may not be distributed
-under an NDA, as explained by Richard Stallman in
-http://gcc.gnu.org/ml/gcc/2001-07/msg01342.html.
