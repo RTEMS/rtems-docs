@@ -18,4 +18,3 @@ Software Development Management
     coding
     change-management
     issue-tracking
-    why-contribute
