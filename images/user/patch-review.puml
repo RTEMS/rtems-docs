@@ -1,0 +1,48 @@
+' SPDX-License-Identifier: CC-BY-SA-4.0
+
+' Copyright (C) 2019 embedded brains GmbH
+
+@startuml
+
+start
+
+:Arrange your changes in\nan easy to review and\ncoherent patch series;
+
+:Apply the checklist for patches;
+
+:Invoke: ""git format-patch"";
+
+:Send the patch series to devel@rtems.org for review;
+
+:Set N to 1;
+
+while (Reviewers demand changes in the patch series?) is (Yes)
+  :Do the required changes and create a new patch series;
+
+  :Update the commit messages accordingly;
+
+  :Apply the checklist for patches;
+
+  :Set N to N + 1;
+
+  :Invoke: ""git format-patch -v $N"";
+
+  :Document the changes from version N - 1 to N\nin the patch file after the "---" line;
+
+  :Send the patch series to devel@rtems.org for review;
+endwhile (No)
+
+if (Patch series was accepted by reviewers?) then (Yes)
+  :Push the patch series\nto the project repository;
+
+  note right
+    Push performed by an approved
+    RTEMS committer.
+  end note
+else (No)
+  :Discard the patch series;
+endif
+
+stop
+
+@enduml

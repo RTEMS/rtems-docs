@@ -12,10 +12,115 @@
 Contributing
 ************
 
-Developers can find help and support on the :r:list:`devel`.
+How to Contribute?
+==================
 
-Technical documents including design, :r:url:`gsoc`, :r:url:`socis` can be
-found on the :r:url:`devel`.
+You can contribute to the RTEMS Project in various ways, for example:
+
+* participation in mailing list discussions, helping other users
+
+* documentation updates, clarifications, consolidation, fixes
+
+* bug fixes, bug report consolidation
+
+* new BSPs
+
+* new device drivers
+
+* new CPU (processor architecture) ports
+
+* improvements in the existing code base (code size, code clarity, test
+  coverage, performance optimizations)
+
+* new features
+
+* RTEMS Tools improvements
+
+Most contributions will end up in patches of the RTEMS source code or
+documentation sources.  The patch integration into the RTEMS repositories is
+done through a
+:ref:`patch review process <PatchReviewProcess>`
+on the :r:list:`devel`.
+
+Preparing and Sending Patches
+=============================
+
+The RTEMS Project uses Git for version control.  Git has a special command to
+prepare patches intended for mailing lists:
+`git format-patch <https://git-scm.com/docs/git-format-patch>`_.
+Create logically connected patches as a patch series ideally accompanied by a
+cover letter (``--cover-letter`` option).  You can send patches via email
+through a Git command:
+`git send-email <https://git-scm.com/docs/git-send-email>`_.
+
+.. _ChecklistForPatches:
+
+Checklist for Patches
+=====================
+
+Check the following items before you send a patch to the :r:list:`devel`:
+
+* The author name of the patch is your full name.
+
+* The author email of the patch is your valid email address.
+
+* The licence conditions of the contributed content allow an integration into
+  the RTEMS code base.
+
+* If you are the copyright holder of the entire patch content, then please
+  contribute it under the
+  `BSD-2-Clause <https://git.rtems.org/rtems/tree/LICENSE.BSD-2-Clause>`_
+  license.  For documentation use
+  `CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`_.
+
+* Make sure you have a pregnant subject which does not exceed 50 characters in
+  one line.  Use a "topic: The pregnant subject" style.  A topic could be the
+  main component of patch.  Just have a look at existing commit messages.
+
+* The patch has a good commit message.  It should describe the reason for the
+  change.  It should list alternative approaches and why they were not chosen.
+
+* The code changes honour the coding style.  At least do your changes in the
+  style of the surrounding code.
+
+* The patch contains no spelling mistakes and grammar errors.
+
+* The patch is easy to review.  It changes one thing only and contains no
+  unrelated changes.  Format changes should be separated from functional
+  changes.
+
+* If the patch corresponds to a ticket, it should have "Close #X." or
+  "Update #X." as the last line in the commit message to update status once it
+  is committed to the repository.
+
+* The patch builds.  All RTEMS tests link with this patch.
+
+* The patch does not introduce new compiler warnings.
+
+* The patch does not introduce new test failures in existing tests.
+
+Patch Review Process
+====================
+
+Patches sent to the :r:list:`devel` undergo a
+:ref:`patch review process <PatchReviewProcess>`.
+Once a patch series is accepted for integration into the RTEMS code base it is
+committed by an
+`RTEMS maintainer <https://git.rtems.org/rtems/tree/MAINTAINERS>`_.  The
+maintainers are usually quite busy with all sorts of stuff.  If you do not get a
+response to a patch series submission to the mailing list after five work days,
+please send a reminder.  It helps if you follow the :ref:`ChecklistForPatches`.
+An easy to review patch series which meets the quality standards of the RTEMS
+Project will be more likely get integrated quickly.
+
+.. _PatchReviewProcess:
+
+.. figure:: ../../images/user/patch-review.*
+   :width: 70%
+   :alt: RTEMS Patch Review Process
+   :figclass: align-center
+
+   RTEMS Patch Review Process.
 
 Why Contribute?
 ===============
