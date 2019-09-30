@@ -1,21 +1,16 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018.
-.. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
+.. Copyright (C) 2019 embedded brains GmbH
+.. Copyright (C) 2019 Sebastian Huber
+.. Copyright (C) 2018 Joel Sherill
 
 Issue Tracking
 **************
 
-TBD Review process, workflows, etc
-
-TBD - This covers Issue Tracking and Trac usage
-Need instructions which weave useful URLs including ones like these
-https://devel.rtems.org/query
-https://devel.rtems.org/wiki/NewTicket
-
-Filing a Change Request or Problem Report
-=========================================
-
 The RTEMS Project uses Trac to manage all change requests and problem reports
-and refers to either as a ticket.  Ticket may be filed or viewed at
-https://devel.rtems.org/wiki/Release
+and refers to either as a ticket.
+
+The bug reporting procedure is documented in the
+`RTEMS User Manual <https://docs.rtems.org/branches/master/user/support/bugs.html>`_.
+
+TBD Review process, workflows, etc.
