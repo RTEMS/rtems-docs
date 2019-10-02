@@ -357,7 +357,7 @@ DESCRIPTION:
     This directive waits at the barrier specified by ``id``.  The timeout
     parameter specifies the maximum interval the calling task is willing to be
     blocked waiting for the barrier.  If it is set to ``RTEMS_NO_TIMEOUT``,
-    then the calling task will wait forever.
+    then the calling task will wait until the barrier is released.
 
     Conceptually, the calling task should always be thought of as blocking when
     it makes this call and being unblocked when the barrier is released.  If
