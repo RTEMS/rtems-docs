@@ -879,13 +879,13 @@ The script language is implemented in terms of macros. The built-in list is:
 ``%hash``:
   Define a checksum for a source or patch file.
 
-``%echo``:
+``%{echo message}``:
   Print the following string as a message.
 
-``%warning``:
+``%{warning message}``:
   Print the following string as a warning and continue.
 
-``%error``:
+``%{error message}``:
   Print the following string as an error and exit.
 
 ``%select``:

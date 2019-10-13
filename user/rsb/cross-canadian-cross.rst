@@ -15,21 +15,21 @@ This sections details how to the RSB to cross and Canadian cross build.
 Cross Building
 ^^^^^^^^^^^^^^
 
-Cross building is where the _build_ machine and _host_ are different. The
-_build_ machine runs the RSB and the _host_ machine is where the output from
-the build runs. An example is building a package such as NTP for RTEMS on your
+Cross building is where the *build* machine and *host* are different. The
+*build* machine runs the RSB and the *host* machine is where the output from
+the build runs. An example is building a package such as Curl for RTEMS on your
 development machine.
 
-To build the NTP package for RTEMS you enter the RSB command:
+To build the Curl package for RTEMS you enter the RSB command:
 
 .. code-block:: none
 
     $ ../source-builder/sb-set-builder \
-       --log=log_ntp_arm.txt \
+       --log=log_curl_arm.txt \
        --prefix=$HOME/development/rtems/5 \  <1>
        --host=arm-rtems5 \  <2>
        --with-rtems-bsp=xilinx_zynq_zc706 \  <3>
-       5/net/ntp
+       5/ftp/curl
 
 .. topic:: Items:
 
@@ -42,9 +42,18 @@ To build the NTP package for RTEMS you enter the RSB command:
 
 .. note: Installing Into Different Directories
 
-  If you install BSPs into a different path to the prefix use the
-  ``--with-tools`` option to specify the path to the tools. Do not add the
-  'bin' directory at the end of the path.
+  If you use a prefix that is different to the path the build RTEMS BSP is
+  installed under use the ``--with-rtems`` option to specify the top level path
+  to the RTEMS BSP. Do not add an extra directories to the path,the RSB knows
+  how to search the path.
+
+  If the tools have been installed in a different location to the RTEMS BSP and
+  the prefix use the ``--with-tools`` option to specift the top level path to
+  the installed tools Again do not add an extar directory such as ``bin`` as
+  the RSB knows how to search the supplied tools path.
+
+  We recommend you install all thrid party packages using the same prefix.
+  the RTEM BSP you can use the
 
 Canadian Cross Building
 ^^^^^^^^^^^^^^^^^^^^^^^

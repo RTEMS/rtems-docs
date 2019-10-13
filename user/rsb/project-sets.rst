@@ -7,22 +7,21 @@ Project Sets
 
 The RTEMS Source Builder supports project configurations. Project
 configurations can be public or private and can be contained in the RTEMS
-Source Builder project if suitable, other projects they use the RTEMS Source
-Builder or privately on your local file system.
+Source Builder project if suitable.
 
 The configuration file loader searches the macro ``_configdir`` and by default
-this is set to ``%{_topdir}/config:%{_sbdir}/config`` where ``_topdir`` is the
-your current working direct, in other words the directory you invoke the RTEMS
-Source Builder command in, and ``_sbdir`` is the directory where the RTEMS
-Source Builder command resides. Therefore the ``config`` directory under each
-of these is searched so all you need to do is create a ``config`` in your
-project and add your configuration files. They do not need to be under the
-RTEMS Source Builder source tree. Public projects are included in the main
-RTEMS Source Builder such as RTEMS.
+this is set to ``%{_topdir}/config:%{_sbdir}/config`` where ``_topdir`` is your
+current working directory, or the directory you invoke the RTEMS Source Builder
+command in. The macro ``_sbdir`` is the directory where the RTEMS Source
+Builder command resides. Therefore the ``config`` directory under each of these
+is searched so all you need to do is create a ``config`` in your project and
+add your configuration files. They do not need to be under the RTEMS Source
+Builder source tree. Public projects are included in the main RTEMS Source
+Builder such as RTEMS.
 
-You can also add your own ``patches`` directory next to your ``config``
-directory as the ``%patch`` command searches the ``_patchdir`` macro variable
-and it is by default set to ``%{_topdir}/patches:%{_sbdir}/patches``.
+You can add your own ``patches`` directory next to your ``config`` directory as
+the ``%patch`` command searches the ``_patchdir`` macro variable and it is by
+default set to ``%{_topdir}/patches:%{_sbdir}/patches``.
 
 The ``source-builder/config`` directory provides generic scripts for building
 various tools. You can specialise these in your private configurations to make
@@ -38,7 +37,7 @@ available is to grep the configuration files for ``with`` and ``without``.
 Bare Metal
 ^^^^^^^^^^
 
-The RSB contains a 'bare' configuration tree and you can use this to add
+The RSB contains a ``bare`` configuration tree and you can use this to add
 packages you use on the hosts. For example 'qemu' is supported on a range of
 hosts. RTEMS tools live in the ``rtems/config`` directory tree. RTEMS packages
 include tools for use on your host computer as well as packages you can build
@@ -81,78 +80,29 @@ you would use ``sparc-elf``:
 RTEMS
 ^^^^^
 
-The RTEMS Configurations found in the ``rtems`` directory. The configurations
-are grouped by RTEMS version. In RTEMS the tools are specific to a specific
-version because of variations between Newlib and RTEMS. Restructuring in RTEMS
-and Newlib sometimes moves *libc* functionality between these two parts and
-this makes existing tools incompatible with RTEMS.
+The RTEMS Configurations are found in the ``rtems`` directory. The
+configurations are grouped by RTEMS version and a release normally only
+contains the configurations for that release.. In RTEMS the tools are specific
+to a specific version because of variations between Newlib and
+RTEMS. Restructuring in RTEMS and Newlib sometimes moves *libc* functionality
+between these two parts and this makes existing tools incompatible with RTEMS.
 
 RTEMS allows architectures to have different tool versions and patches. The
 large number of architectures RTEMS supports can make it difficult to get a
 common stable version of all the packages. An architecture may require a recent
 GCC because an existing bug has been fixed, however the more recent version may
-have a bug in other architecture. Architecture specific patches should be
-limited to the architecture it relates to. The patch may fix a problem on the
-effect architecture however it could introduce a problem in another
-architecture. Limit exposure limits any possible crosstalk between
+have a bug in other architecture. Architecture specific patches should only be
+appliaed when build the related architecture. A patch may fix a problem on one
+architecture however it could introduce a problem in another
+architecture. Limiting exposure limits any possible crosstalk between
 architectures.
 
-If you are building a released version of RTEMS the release RTEMS tar file will
-be downloaded and built as part of the build process. If you are building a
-tool set for use with the development branch of RTEMS, the development branch
-will be cloned directly from the RTEMS GIT repository and built.
-
-When building RTEMS within the RTEMS Source Builder it needs a suitable working
-``autoconf`` and ``automake``. These packages need to built and installed in their
-prefix in order for them to work. The RTEMS Source Builder installs all
-packages only after they have been built so if you host does not have a
-recent enough version of ``autoconf`` and ``automake`` you first need to build them
-and install them then build your tool set. The commands are:
-
-.. code-block:: none
-
-    $ ../source-builder/sb-set-builder --log=l-4.11-at.txt \
-       --prefix=$HOME/development/rtems/4.11 4.11/rtems-autotools
-    $ export PATH=~/development/rtems/4.11/bin:$PATH    <1>
-    $ ../source-builder/sb-set-builder --log=l-4.11-sparc.txt \
-       --prefix=$HOME/development/rtems/4.11 4.11/rtems-sparc
-
-.. topic:: Items:
-
-  1. Setting the path.
-
-If this is your first time building the tools and RTEMS it pays to add the
-``--dry-run`` option. This will run through all the configuration files and if
-any checks fail you will see this quickly rather than waiting for until the
-build fails a check.
-
-To build snapshots for testing purposes you use the available macro maps
-passing them on the command line using the ``--macros`` option. For RTEMS these
-are held in ``config/snapshots`` directory. The following builds *newlib* from
-CVS:
-
-.. code-block:: none
-
-    $ ../source-builder/sb-set-builder --log=l-4.11-sparc.txt \
-       --prefix=$HOME/development/rtems/4.11 \
-       --macros=snapshots/newlib-head.mc \
-       4.11/rtems-sparc
-
-and the following uses the version control heads for ``binutils``, ``gcc``,
-``newlib``, ``gdb`` and *RTEMS*:
-
-.. code-block:: none
-
-    $ ../source-builder/sb-set-builder --log=l-heads-sparc.txt \
-       --prefix=$HOME/development/rtems/4.11-head \
-       --macros=snapshots/binutils-gcc-newlib-gdb-head.mc \
-       4.11/rtems-sparc
+If you have a configuation issue try adding the ``--dry-run`` option. This will
+run through all the configuration files and if any checks fail you will see
+this quickly rather than waiting for until the build fails a check.
 
 Following features can be enabled/disabled via the command line for the RTEMS
 build sets:
-
-``--without-rtems``
-  Do not build RTEMS when building an RTEMS build set.
 
 ``--without-cxx``
   Do not build a C++ compiler.
@@ -165,6 +115,16 @@ build sets:
 
 ``--with-objc``
   Attempt to build a C++ compiler.
+
+The RSB provides build sets for some BSPs. These build sets will build:
+
+- Compiler, linker, debugger and RTEMS Tools.
+
+- RTEMS Kernel for the BSP
+
+- Optionally LibBSD if supported by the BSP.
+
+- Third party packages if supported by the BSP.
 
 Patches
 ^^^^^^^
@@ -183,24 +143,18 @@ package's patch management tools directly. If the RSB does not support the
 specific patch manage tool please contact the mailing list to see if support
 can be added.
 
-Patches for packages developed by the RTEMS project can be placed in the RTEMS
-Tools Git repository. The ``tools`` directory in the repository has various
-places a patch can live. The tree is broken down in RTEMS releases and then
-tools within that release. If the package is not specific to any release the
-patch can be added closer to the top under the package's name. Patches to fix
-specific tool related issues for a specific architecture should be grouped
-under the specific architecture and only applied when building that
-architecture avoiding a patch breaking an uneffected architecture.
+Referenced patches should be placed in a location that is easy to access and
+download with a stable URL. We recommend attaching a patch to an RTEMS ticket
+in it's bug reporting system or posting to a mailing list with online archives.
 
-Patches in the RTEMS Tools repository need to be submitted to the upstream
-project. It should not be a clearing house for patches that will not be
-accepted upstream.
+RTEMS's former practice of placing patches in the RTEMS Tools Git repository
+has been stopped.
 
 Patches are added to a component's name and in the ``%prep:`` section the
-patches can be set up, meaning they are applied to source. The patches
-are applied in the order they are added. If there is a dependency make
-sure you order the patches correctly when you add them. You can add any
-number of patches and the RSB will handle them efficently.
+patches can be set up, meaning they are applied to source. The patches are
+applied in the order they are added. If there is a dependency make sure you
+order the patches correctly when you add them. You can add any number of
+patches and the RSB will handle them efficently.
 
 Patches can have options. These are added before the patch URL. If no options
 are provided the patch's setup default options are used.
@@ -226,15 +180,15 @@ used to add a checksum for a patch that is used to verify the patch:
 
 .. code-block:: spec
 
-    %hash md5 <1> gdb-sim-lm32uart.diff <2> 77d070878112783292461bd6e7db17fb <3>
+    %hash sha512 <1> gdb-sim-lm32uart.diff <2> 77d07087 ... e7db17fb <3>
 
 .. topic:: Items:
 
-  1. The type of checksum, in the case an MD5 hash.
+  1. The type of checksum, in the case an SHA512 hash.
 
   2. The patch file the checksum is for.
 
-  3. The MD5 hash.
+  3. The SHA512 hash.
 
 The patches are applied when a patch ``setup`` command is issued in the
 ``%prep:`` section. All patches in the group are applied. To apply the GDB

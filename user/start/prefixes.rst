@@ -20,14 +20,21 @@ under.  Packages that have a prefix will place all parts under the prefix
 path.  Packages for your host computer typically use a default prefix of
 :file:`/usr/local` on FreeBSD and Linux.
 
-You have to select a prefix for your RTEMS tool suite installation.  The RTEMS
-tool suite consists of a cross tool chain (Binutils, GCC, GDB, Newlib, etc.)
-for your target architecture and :ref:`other tools <HostTools>` provided by the
-RTEMS Project.  You build and install the tool suite with the
-:ref:`RTEMS Source Builder (RSB) <RSB>`.  By default, the RSB will start the
-prefix path with a host operating system specific path plus :file:`rtems` plus
-the RTEMS version, e.g.  :file:`/opt/rtems/5` on Linux and
-:file:`/usr/local/rtems/5` on FreeBSD and macOS.
+You have to select a prefix for your installation. You will build and install
+the RTEMS tool suite, an RTEMS kernel for a BSP and you may build and install
+third party libraries. You can build them all as a stack with a single prefix
+or you can
+
+The RTEMS tool suite consists of a cross tool chain (Binutils, GCC, GDB,
+Newlib, etc.)  for your target architecture and :ref:`other tools <HostTools>`
+provided by the RTEMS Project. The RTEMS
+
+
+You build and install the tool suite with the :ref:`RTEMS Source Builder (RSB)
+<RSB>`.  By default, the RSB will start the prefix path with a host operating
+system specific path plus :file:`rtems` plus the RTEMS version, e.g.
+:file:`/opt/rtems/5` on Linux and :file:`/usr/local/rtems/5` on FreeBSD and
+macOS.
 
 It is strongly recommended to run the RSB as a *normal user* and not with
 *root* privileges (also known as *super user* or *Administrator*).  You have to
