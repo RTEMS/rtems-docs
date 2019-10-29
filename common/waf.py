@@ -359,12 +359,20 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
         # The inliner does not handle internal href's correctly and places the
         # input's file name in the href. Strip these.
         #
-        with open(tgt, 'r') as i:
-            before = i.read()
-            after = before.replace('index.html', '')
+        if sys.version_info[0] < 3:
+            with open(tgt, 'r') as i:
+                before = i.read()
+        else:
+            with open(tgt, 'r', encoding = 'ascii', errors = 'surrogateescape') as i:
+                before = i.read()
         i.close()
-        with open(tgt, 'w') as o:
-            o.write(after)
+        after = before.replace('index.html', '')
+        if sys.version_info[0] < 3:
+            with open(tgt, 'w') as o:
+                o.write(after)
+        else:
+            with open(tgt, 'w', encoding = 'ascii', errors = 'surrogateescape') as o:
+                o.write(after)
         o.close()
         return r
 
