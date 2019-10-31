@@ -129,6 +129,10 @@ RTEMS_FATAL_SOURCE_INVALID_HEAP_FREE (12)
     Fatal source for invalid C program heap frees via :c:func:`free`.  The
     fatal code is the bad pointer.
 
+RTEMS_FATAL_SOURCE_HEAP (13)
+    Fatal source for heap errors.  The fatal code is the address to a heap error
+    context.  See :c:type:`Heap_Error_context`.
+
 .. _internal_errors:
 
 Internal Error Codes
