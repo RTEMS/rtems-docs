@@ -78,6 +78,10 @@ The directives are:
    - RTEMS inconsistency detected
  * - ``RTEMS_NO_MEMORY``
    - could not get enough memory
+ * - ``RTEMS_IO_ERROR``
+   - driver I/O error
+ * - ``RTEMS_INTERRUPTED``
+   - returned by driver to indicate interrupted operation
 
 .. raw:: latex
 
