@@ -181,10 +181,30 @@ Ditaa:
 
   # pkg install ditaa
 
-CentOS 6 and 7
-~~~~~~~~~~~~~~
+CentOS 7
+~~~~~~~~
 
 PDF Quality: production
+
+Python 3:
+
+By default, CentOS 7 has Python 2.x. Luckily they now have Software
+Collections which lets you install and use a "collection" of newer
+software. As root, 
+
+  # yum install centos-release-scl
+  # yum install rh-python36
+
+Then you can create your own virtual Python environment
+for use with the Sphinx toolchain.
+
+  $ cd ~
+  $ python -m venv rtemsdocs
+
+When you want to use the Sphinx toolchain.
+
+  $ scl enable rh-python36 bash
+  $ source ~/rtemsdocs/bin/activate
 
 Sphinx:
 
@@ -211,6 +231,8 @@ PDF:
 
      NOTE: The year (2016) and host OS (i386-linux) will change to
            reflect 32 or 64 bit and OS name.
+
+  You will also likely need to install the aspell RPM.
 
 Single HTML:
 
