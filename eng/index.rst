@@ -31,6 +31,7 @@ RTEMS Software Engineering (|version|)
     management
     test-plan
     test-framework
+    build-system
     release-mgmt
     users-manuals
     license-requirements

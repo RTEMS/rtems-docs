@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+# Copyright (C) 2019 embedded brains GmbH
+
+digraph {
+  size="4";
+  margin="0";
+  node [shape=box, style="filled, rounded", fontname="Sans serif", margin=0.05,width=0.05,height=0.05];
+  bsp1 [label="/build/bsps/arch/family/bsprst", fillcolor=red];
+  bsp2 [label="/build/bsps/arch/family/bspuvw", fillcolor=red];
+  bsp3 [label="/build/bsps/arch/family/bspxyz", fillcolor=red];
+  oabc [label="optabc", fillcolor=orange];
+  odef [label="optdef", fillcolor=orange];
+  grp [label="grp", fillcolor=magenta];
+  obj [label="obj", fillcolor=brown];
+  smp [label="objsmp", fillcolor=brown];
+  abi [label="abi", fillcolor=yellow];
+  bspopts [label="../../bspopts", fillcolor=green];
+  linkcmds [label="../../linkcmds", fillcolor=green];
+  start [label="../start", fillcolor=green];
+  o2 [label="../../opto2", fillcolor=green];
+  rankdir=LR
+  bsp1 -> grp
+  bsp2 -> grp
+  bsp3 -> grp
+  grp -> o2
+  grp -> abi
+  grp -> oabc
+  grp -> odef
+  grp -> bspopts
+  grp -> obj
+  grp -> smp
+  grp -> start
+  grp -> linkcmds
+  { rank=same; abi -> oabc [style=invis] }
+  { rank=same; oabc -> odef [style=invis] }
+  { rank=same; odef -> o2 [style=invis] }
+  { rank=same; o2 -> bspopts [style=invis] }
+  { rank=same; bspopts -> obj [style=invis] }
+  { rank=same; obj -> smp [style=invis] }
+  { rank=same; smp -> start [style=invis] }
+  { rank=same; start -> linkcmds [style=invis] }
+}

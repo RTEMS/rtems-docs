@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+# Copyright (C) 2019 embedded brains GmbH
+
+digraph {
+  size="4";
+  margin="0";
+  node [shape=box, style="filled, rounded", fontname="Sans serif", margin=0.05,width=0.05,height=0.05];
+  bsp [label="/build/bsps/arch/family/bspxyz", fillcolor=red];
+  oabc [label="optabc", fillcolor=orange];
+  odef [label="optdef", fillcolor=orange];
+  smp [label="objsmp", fillcolor=brown];
+  abi [label="abi", fillcolor=yellow];
+  o2 [label="../../opto2", fillcolor=green];
+  bspopts [label="../../bspopts", fillcolor=green];
+  linkcmds [label="../../linkcmds", fillcolor=green];
+  start [label="../start", fillcolor=green];
+  rankdir=LR
+  bsp -> o2
+  bsp -> abi
+  bsp -> oabc
+  bsp -> odef
+  bsp -> bspopts
+  bsp -> smp
+  bsp -> start
+  bsp -> linkcmds
+  { rank=same; abi -> oabc [style=invis] }
+  { rank=same; oabc -> odef [style=invis] }
+  { rank=same; odef -> o2 [style=invis] }
+  { rank=same; o2 -> bspopts [style=invis] }
+  { rank=same; bspopts -> smp [style=invis] }
+  { rank=same; smp -> start [style=invis] }
+  { rank=same; start -> linkcmds [style=invis] }
+}

@@ -1,0 +1,65 @@
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+# Copyright (C) 2019 embedded brains GmbH
+
+digraph {
+  size="4";
+  margin="0";
+  node [shape=box, style="filled, rounded", fontname="Sans serif", margin=0.05,width=0.05,height=0.05];
+  tg [label="Test Group", fillcolor=green];
+  t0 [label="Test Program 0", fillcolor=red];
+  t1 [label="Test Program 1", fillcolor=red];
+  tn [label="Test Program n", fillcolor=red];
+  lb [label="librtemsbsp.a", fillcolor=magenta];
+  lc [label="librtemscpu.a", fillcolor=magenta];
+  b0 [label="BSP 0", fillcolor=orange];
+  b1 [label="BSP 1", fillcolor=orange];
+  bn [label="BSP n", fillcolor=orange];
+  bo0 [label="BSP 0 bspopts.h", fillcolor=brown];
+  o0 [label="BSP 0 Option 0", fillcolor=yellow];
+  o1 [label="BSP 0 Option 1", fillcolor=yellow];
+  on [label="BSP 0 Option n", fillcolor=yellow];
+  abi [label="BSP 0 ABI Flags", fillcolor=blue];
+  s0 [label="BSP 0 Source 0", fillcolor=cyan];
+  s1 [label="BSP 0 Source 1", fillcolor=cyan];
+  sn [label="BSP 0 Source n", fillcolor=cyan];
+  c0 [label="CPU Source 0", fillcolor=cyan];
+  c1 [label="CPU Source 1", fillcolor=cyan];
+  cn [label="CPU Source n", fillcolor=cyan];
+  rankdir=LR
+  tg -> t0
+  tg -> t1
+  tg -> tn
+  t0 -> lb
+  t0 -> lc
+  t1 -> lb
+  t1 -> lc
+  tn -> lb
+  tn -> lc
+  lb -> b0
+  lb -> b1
+  lb -> bn
+  b0 -> s0
+  b0 -> s1
+  b0 -> sn
+  s0 -> abi
+  s1 -> abi
+  sn -> abi
+  c0 -> abi
+  c1 -> abi
+  cn -> abi
+  bo0 -> o0
+  bo0 -> o1
+  bo0 -> on
+  s0 -> bo0
+  s1 -> bo0
+  sn -> bo0
+  lc -> c0
+  lc -> c1
+  lc -> cn
+  {
+    rank=same
+    c0 -> c1 [style=invis]
+    c1 -> cn [style=invis]
+  }
+}
