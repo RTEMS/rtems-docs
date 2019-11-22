@@ -307,7 +307,7 @@ required to be writen by the BSP developer are :
 
 .. index:: bsp_interrupt_dispatch()
 
-- ``bsp_interrupt_dispatch()`` service the ISR by handling any bsp specific
+- ``bsp_interrupt_dispatch()`` services the ISR by handling any bsp specific
   code & calling the generic method ``bsp_interrupt_handler_dispatch()`` which
   in turn services the interrupt by running the ISR after looking it up in the
   table. It acts as an entry to the interrupt switchboard, since the bsp
