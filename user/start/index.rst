@@ -18,7 +18,6 @@ applications on top of RTEMS.
     prefixes
     sources
     tools
-    bootstrap
     bsp-build
     bsp-test
     app

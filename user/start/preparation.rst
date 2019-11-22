@@ -45,9 +45,11 @@ your tools, editors, documentation viewers, etc.  You need a native C, C++, and
 Python development environment.  Please make sure you can build native C/C++
 applications on your host computer.  You must be able to build native Python C
 modules as some RTEMS tools contain these modules.  Usually, you have to
-install a Python development package for this.  Please have a look at the
-:ref:`Host Computer <host-computer>` chapter for the gory details.  In
-particular :ref:`Microsoft Windows <microsoft-windows>` users should do this.
+install a Python development package for this.  The Python scripts of the RTEMS
+Project expect on POSIX systems that a ``python`` command is available [1]_.
+Please have a look at the :ref:`Host Computer <host-computer>` chapter for the
+gory details.  In particular :ref:`Microsoft Windows <microsoft-windows>` users
+should do this.
 
 Selecting a BSP
 ---------------
@@ -111,3 +113,5 @@ within a release branch, for example the tools packaged with 5.1.1 still use
 the ``sparc-rtems5`` moniker, but are likely not the same as the tools used
 in version 5.1.0. This tool mismatch can be a source of confusion. Be sure to
 use the toolchain that matches your release.
+
+.. [1] The Python scripts use a shebang of ``#!/usr/bin/env python``.

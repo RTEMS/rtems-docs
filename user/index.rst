@@ -39,6 +39,7 @@ RTEMS User Manual (|version|).
     installation/index
 
     hardware/index
+    bld/index
     bsps/index
 
     exe/index

@@ -132,87 +132,83 @@ has not been correctly set. Check the contents of the path
 is present the path is wrong. If the file cannot be found return to
 :ref:`QuickStartTools` and install the tools again.
 
-The third step is to configure the BSP.  There are various configuration
-options available.  Some configuration options are BSP-specific.
+The first step is to configure the BSP.  There are various BSP build
+configuration options available.  Some options are BSP-specific.  Each section
+in the INI-style configuration file ``config.ini`` instructs the build system to
+build a particular BSP variant (`sparc/erc32` in our case).  We enable the build
+of the tests with the ``BUILD_TESTS = True`` option and use default values for
+everything else.  For detailed information about the BSP build system, see
+:ref:`BSPBuildSystem`.
 
 .. code-block:: none
 
-    cd $HOME/quick-start/build/b-erc32
-    $HOME/quick-start/src/rtems/configure \
-        --prefix=$HOME/quick-start/rtems/5 \
-        --enable-maintainer-mode \
-        --target=sparc-rtems5 \
-        --enable-rtemsbsp=erc32 \
-        --enable-tests
+    cd $HOME/quick-start/src/rtems
+    echo "[sparc/erc32]" > config.ini
+    echo "BUILD_TESTS = True" >> config.ini
+    ./waf configure --prefix=$HOME/quick-start/rtems/5
 
-This command should output something like this (omitted lines are denoted by
-``...``):
-
-.. code-block:: none
-
-    checking for gmake... gmake
-    checking for RTEMS Version... 5.0.0
-    checking build system type... x86_64-unknown-freebsd12.0
-    checking host system type... x86_64-unknown-freebsd12.0
-    checking target system type... sparc-unknown-rtems5
-    ...
-    config.status: creating Makefile
-
-    target architecture: sparc.
-    available BSPs: erc32.
-    'gmake all' will build the following BSPs: erc32.
-    other BSPs can be built with 'gmake RTEMS_BSP="bsp1 bsp2 ..."'
-
-    config.status: creating Makefile
-
-Building the BSP is the forth step.
+The first invocation of ``./waf`` needs a bit of time (e.g. 10 seconds) since an
+internal cache file is populated.  This command should output something like
+this.  In this output the base directory :file:`$HOME/quick-start` was replaced
+by ``$BASE``.
 
 .. code-block:: none
 
-    cd $HOME/quick-start/build/b-erc32
-    make
+    Setting top to                           : $BASE/src/rtems
+    Setting out to                           : $BASE/src/rtems/build
+    Regenerate build specification cache (needs a couple of seconds)...
+    Configure board support package (BSP)    : sparc/erc32
+    Checking for program 'sparc-rtems5-gcc'  : $BASE/rtems/5/bin/sparc-rtems5-gcc
+    Checking for program 'sparc-rtems5-g++'  : $BASE/rtems/5/bin/sparc-rtems5-g++
+    Checking for program 'sparc-rtems5-ar'   : $BASE/rtems/5/bin/sparc-rtems5-ar
+    Checking for program 'sparc-rtems5-ld'   : $BASE/rtems/5/bin/sparc-rtems5-ld
+    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
+    Checking for program 'g++, c++'          : $BASE/rtems/5/bin/sparc-rtems5-g++
+    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
+    Checking for program 'gas, gcc'          : $BASE/rtems/5/bin/sparc-rtems5-gcc
+    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
+    Checking for program 'gcc, cc'           : $BASE/rtems/5/bin/sparc-rtems5-gcc
+    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
+    Checking for c flags '-MMD'              : yes
+    Checking for cxx flags '-MMD'            : yes
+    Checking for program 'rtems-bin2c'       : $BASE/rtems/5/bin/rtems-bin2c
+    Checking for program 'gzip'              : /usr/bin/gzip
+    Checking for program 'pax'               : /usr/bin/pax
+    Checking for program 'rtems-ld'          : $BASE/rtems/5/bin/rtems-ld
+    Checking for program 'rtems-syms'        : $BASE/rtems/5/bin/rtems-syms
+    Checking for program 'xz'                : /usr/bin/xz
+    'configure' finished successfully (11.069s)
+
+Building the BSP is the second step.
+
+.. code-block:: none
+
+    cd $HOME/quick-start/src/rtems
+    ./waf
 
 This command should output something like this (omitted lines are denoted by
 ...).
 
 .. code-block:: none
 
-    Configuring RTEMS_BSP=erc32
-    checking for gmake... gmake
-    checking build system type... x86_64-unknown-freebsd12.0
-    checking host system type... sparc-unknown-rtems5
-    checking rtems target cpu... sparc
-    checking for a BSD-compatible install... /usr/bin/install -c
-    checking whether build environment is sane... yes
-    checking for sparc-rtems5-strip... sparc-rtems5-strip
-    checking for a thread-safe mkdir -p... $BASE/src/rtems/c/src/../../install-sh -c -d
-    checking for gawk... no
-    checking for mawk... no
-    checking for nawk... nawk
-    checking whether gmake sets $(MAKE)... yes
-    checking whether to enable maintainer-specific portions of Makefiles... yes
-    checking for RTEMS_BSP... erc32
-    checking whether CPU supports libposix... yes
-    configure: setting up make/custom
-    configure: creating make/erc32.cache
-    gmake[3]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'
+    Waf: Entering directory `$BASE/src/rtems/build'
+    Waf: Leaving directory `$BASE/src/rtems/build'
+    'build' finished successfully (0.546s)
+    Waf: Entering directory `$BASE/src/rtems/build/sparc/erc32'
+    [   1/3922] Compiling bsps/sparc/shared/start/start.S
+    [   2/3922] Compiling bsps/shared/dev/serial/mc68681_reg4.c
+    [   3/3922] Compiling bsps/shared/dev/rtc/icm7170.c
     ...
-    sparc-rtems5-gcc  -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -B./../../lib/libbsp/sparc/erc32 -B$BASE/src/rtems/bsps/sparc/erc32/start -specs bsp_specs -qrtems -L./../../cpukit -L$BASE/src/rtems/bsps/sparc/shared/start -Wl,--wrap=printf -Wl,--wrap=puts -Wl,--wrap=putchar -Wl,--gc-sections -o spwkspace.exe spwkspace/spwkspace-init.o ./../../lib/libbsp/sparc/erc32/librtemsbsp.a ./../../cpukit/librtemscpu.a
-    gmake[5]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32/testsuites/sptests'
-    gmake[4]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32/testsuites'
-    gmake[3]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'
-    gmake[2]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'
-    gmake[1]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c'
-    gmake[1]: Entering directory '$BASE/build/b-erc32'
-    gmake[1]: Nothing to be done for 'all-am'.
-    gmake[1]: Leaving directory '$BASE/build/b-erc32'
+    [4038/4038] Linking build/sparc/erc32/testsuites/tmtests/tmoverhd.exe
+    Waf: Leaving directory `$BASE/src/rtems/build/sparc/erc32'
+    'build_sparc/erc32' finished successfully (58.678s)
 
 The last step is to install the BSP.
 
 .. code-block:: none
 
-    cd $HOME/quick-start/build/b-erc32
-    make install
+    cd $HOME/quick-start/src/rtems
+    ./waf install
 
 This command should output something like this (omitted lines are denoted by
 ...).  In this output the base directory :file:`$HOME/quick-start` was replaced
@@ -220,27 +216,16 @@ by ``$BASE``.
 
 .. code-block:: none
 
-    Making install in sparc-rtems5/c
-    gmake[1]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c'
-    Making install in .
-    gmake[2]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c'
-    gmake[3]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c'
-    gmake[3]: Nothing to be done for 'install-exec-am'.
-    gmake[3]: Nothing to be done for 'install-data-am'.
-    gmake[3]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c'
-    gmake[2]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c'
-    Making install in erc32
-    gmake[2]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'
-    gmake[3]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'
-    Making install-am in .
-    Making install-am in cpukit
-    gmake[4]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32/cpukit'
-    gmake[5]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32/cpukit'
-    gmake[5]: Nothing to be done for 'install-exec-am'.
-     $BASE/src/rtems/c/src/../../cpukit/../install-sh -c -d '$BASE/rtems/5/sparc-rtems5/erc32/lib/include'
+    Waf: Entering directory `$BASE/src/rtems/build'
+    Waf: Leaving directory `$BASE/src/rtems/build'
+    'install' finished successfully (0.544s)
+    Waf: Entering directory `$BASE/src/rtems/build/sparc/erc32'
+    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/start.o (from build/sparc/erc32/start.o)
+    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/bspopts.h (from build/sparc/erc32/bsps/include/bspopts.h)
+    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/zilog/z8036.h (from bsps/include/rtems/zilog/z8036.h)
     ...
-    $BASE/src/rtems/make/Templates/Makefile.lib '$BASE/rtems/5/share/rtems5/make/Templates'
-     $BASE/src/rtems/./install-sh -c -d '$BASE/rtems/5/make/custom'
-     /usr/bin/install -c -m 644 $BASE/src/rtems/make/custom/default.cfg '$BASE/rtems/5/make/custom'
-    gmake[2]: Leaving directory '$BASE/build/b-erc32'
-    gmake[1]: Leaving directory '$BASE/build/b-erc32'
+    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/score/watchdogimpl.h (from cpukit/include/rtems/score/watchdogimpl.h)
+    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/score/watchdogticks.h (from cpukit/include/rtems/score/watchdogticks.h)
+    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/score/wkspace.h (from cpukit/include/rtems/score/wkspace.h)
+    Waf: Leaving directory `$BASE/src/rtems/build/sparc/erc32'
+    'install_sparc/erc32' finished successfully (2.985s)

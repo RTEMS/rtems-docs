@@ -8,20 +8,20 @@
 Test a Board Support Package (BSP)
 ==================================
 
-You built a BSP with tests in the previous section.  We built the ``erc32`` BSP
-in :file:`$HOME/quick-start/build/b-erc32`.
+You built a BSP with tests in the previous section.  We built the
+``sparc/erc32`` BSP in :file:`$HOME/quick-start/src/rtems`.
 
 You should run the RTEMS test suite on your target hardware.  The RTEMS Project
 provides some support to do this, see the :ref:`Testing <Testing>` chapter for
 the details.
 
-On the ``erc32`` BSP we selected for this quick start chapter this is easy.
-Just run this command:
+On the ``sparc/erc32`` BSP we selected for this quick start chapter this is
+easy.  Just run this command:
 
 .. code-block:: none
 
-    cd $HOME/quick-start/build/b-erc32
-    rtems-test --rtems-bsp=erc32-sis --rtems-tools=$HOME/quick-start/rtems/5 .
+    cd $HOME/quick-start/src/rtems
+    rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
 
 This command should output something like this (omitted lines are denoted by
 ...).  In this output the base directory :file:`$HOME/quick-start` was replaced
@@ -30,7 +30,7 @@ by ``$BASE``.
 .. code-block:: none
 
     RTEMS Testing - Tester, 5.1.0
-     Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32-sis --rtems-tools=$BASE/rtems/5 .
+     Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
      Python: 2.7.15 (default, Jan 10 2019, 01:14:47) [GCC 4.2.1 Compatible FreeBSD Clang 6.0.1 (tags/RELEASE_601/final 335540)]
     Host: FreeBSD-12.0-RELEASE-p2-amd64-64bit-ELF (FreeBSD Build_FreeBSD12 12.0-RELEASE-p2 FreeBSD 12.0-RELEASE-p2 GENERIC amd64 amd64)
     [  1/589] p:0   f:0   u:0   e:0   I:0   B:0   t:0   i:0   W:0   | sparc/erc32: dhrystone.exe
