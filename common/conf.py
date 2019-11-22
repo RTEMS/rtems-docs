@@ -75,6 +75,9 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
+# http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-numfig
+numfig = True
+
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
