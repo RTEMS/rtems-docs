@@ -36,6 +36,8 @@ This BSP offers 13 variants:
 
 * rv64imafdc_medany
 
+* frdme310arty
+
 Each variant corresponds to a GCC multilib.  A particular variant reflects an
 ISA with ABI and code model choice.
 
@@ -87,6 +89,10 @@ The following options are available at the configure command line.
 ``RISCV_RAM_REGION_SIZE``
      The size of the RAM region for linker command file (default 64MiB).
 
+``RISCV_ENABLE_FRDME310ARTY_SUPPORT``
+     Enables support sifive Freedom E310 Arty board if defined to a non-zero
+     value,otherwise it is disabled (disabled by default)
+
 Interrupt Controller
 --------------------
 
@@ -110,6 +116,8 @@ The console driver supports devices compatible to
 * "ns16550a" (see ``RISCV_CONSOLE_MAX_NS16550_DEVICES`` BSP option), and
 
 * "ns16750" (see ``RISCV_CONSOLE_MAX_NS16550_DEVICES`` BSP option).
+
+* "sifive,uart0" (see ``RISCV_ENABLE_FRDME310ARTY_SUPPORT`` BSP option).
 
 They are initialized according to the device tree.  The console driver does not
 configure the pins or peripheral clocks.  The console device is selected
