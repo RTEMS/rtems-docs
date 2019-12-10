@@ -410,71 +410,9 @@ Unlimited Object Instances
 To ease the burden of developers who are porting new software RTEMS also
 provides the capability to make all object classes listed above operate in
 unlimited mode in a simple manner. The application developer is only
-responsible for enabling unlimited objects and specifying the allocation size.
-
-.. index:: CONFIGURE_UNLIMITED_OBJECTS
-
-.. _CONFIGURE_UNLIMITED_OBJECTS:
-
-CONFIGURE_UNLIMITED_OBJECTS
----------------------------
-
-CONSTANT:
-    ``CONFIGURE_UNLIMITED_OBJECTS``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_UNLIMITED_OBJECTS`` enables ``rtems_resource_unlimited`` mode
-    for Classic API and POSIX API objects that do not already have a specific
-    maximum limit defined.
-
-NOTES:
-    When using unlimited objects, it is common practice to also specify
-    ``CONFIGURE_UNIFIED_WORK_AREAS`` so the system operates with a single pool
-    of memory for both RTEMS and application memory allocations.
-
-.. _CONFIGURE_UNLIMITED_ALLOCATION_SIZE:
-
-CONFIGURE_UNLIMITED_ALLOCATION_SIZE
------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_UNLIMITED_ALLOCATION_SIZE``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    If not defined and ``CONFIGURE_UNLIMITED_OBJECTS`` is defined, the default
-    value is eight (8).
-
-DESCRIPTION:
-    ``CONFIGURE_UNLIMITED_ALLOCATION_SIZE`` provides an allocation size to use
-    for ``rtems_resource_unlimited`` when using
-    ``CONFIGURE_UNLIMITED_OBJECTS``.
-
-NOTES:
-    By allowing users to declare all resources as being unlimited the user can
-    avoid identifying and limiting the resources
-    used. ``CONFIGURE_UNLIMITED_OBJECTS`` does not support varying the
-    allocation sizes for different objects; users who want that much control
-    can define the ``rtems_resource_unlimited`` macros themselves.
-
-.. code-block:: c
-
-    #define CONFIGURE_UNLIMITED_OBJECTS
-    #define CONFIGURE_UNLIMITED_ALLOCATION_SIZE 5
+responsible for enabling unlimited objects
+(:ref:`CONFIGURE_UNLIMITED_OBJECTS`) and specifying the allocation size
+(:ref:`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`).
 
 General System Configuration
 ============================
