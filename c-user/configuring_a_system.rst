@@ -529,6 +529,36 @@ NOTES:
     :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE
     <CONFIGURE_MINIMUM_TASK_STACK_SIZE>` instead of ``CPU_STACK_MINIMUM_SIZE``.
 
+.. index:: CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
+.. index:: maximum file descriptors
+
+.. _CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS:
+
+CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
+----------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    If ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` is defined, then the
+    default value is 3, otherwise the default value is 0.  Three file
+    descriptors allows RTEMS to support standard input, output, and error I/O
+    streams on ``/dev/console``.
+
+DESCRIPTION:
+    This configuration parameter is set to the maximum number of file like
+    objects that can be concurrently open.
+
+NOTES:
+    None.
+
 .. index:: CONFIGURE_MAXIMUM_PRIORITY
 .. index:: maximum priority
 .. index:: number of priority levels
@@ -2098,42 +2128,6 @@ NOTES:
                      CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( \
                          500, sizeof(other_message_type) \
                      )
-
-C Library Support Configuration
-===============================
-
-This section defines the file system and IO library related configuration
-parameters supported by ``<rtems/confdefs.h>``.
-
-.. index:: CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
-.. index:: maximum file descriptors
-
-.. _CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS:
-
-CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
-----------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    If ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` is defined, then the
-    default value is 3, otherwise the default value is 0.  Three file
-    descriptors allows RTEMS to support standard input, output, and error I/O
-    streams on ``/dev/console``.
-
-DESCRIPTION:
-    This configuration parameter is set to the maximum number of file like
-    objects that can be concurrently open.
-
-NOTES:
-    None.
 
 File System Configuration Parameters
 ====================================
