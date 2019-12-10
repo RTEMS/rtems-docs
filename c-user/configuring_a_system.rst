@@ -101,7 +101,7 @@ initial number of objects and increases the current allocation by a fixed
 increment when required. Both ways allocate space from inside the RTEMS
 Workspace.
 
-See :ref:`Unlimited Objects` for more details about the second way, which
+See :ref:`ConfigUnlimitedObjects` for more details about the second way, which
 allows for dynamic allocation of objects and therefore does not provide
 determinism.  This mode is useful mostly for when the number of objects cannot
 be determined ahead of time or when porting software for which you do not know
@@ -284,7 +284,7 @@ things, the application implicitly used the following defaults:
 - The minimum task stack size will be that recommended by RTEMS for the target
   architecture.
 
-.. _Unlimited Objects:
+.. _ConfigUnlimitedObjects:
 
 Unlimited Objects
 =================
@@ -372,12 +372,12 @@ generally considered a safer embedded systems programming practice to know the
 system limits rather than experience an out of memory error at an arbitrary and
 largely unpredictable time in the field.
 
-.. _Per Object Class Unlimited Object Instances:
-
 .. index:: rtems_resource_unlimited
 
-Per Object Class Unlimited Object Instances
--------------------------------------------
+.. _ConfigUnlimitedObjectsClass:
+
+Unlimited Objects by Class
+--------------------------
 
 When the number of objects is not known ahead of time, RTEMS provides an
 auto-extending mode that can be enabled individually for each object type by
@@ -402,10 +402,10 @@ Object maximum specifications can be evaluated with the
 ``rtems_resource_is_unlimited`` and``rtems_resource_maximum_per_allocation``
 macros.
 
-.. _Unlimited Object Instances:
+.. _ConfigUnlimitedObjectsDefault:
 
-Unlimited Object Instances
---------------------------
+Unlimited Objects by Default
+----------------------------
 
 To ease the burden of developers who are porting new software RTEMS also
 provides the capability to make all object classes listed above operate in
@@ -413,6 +413,11 @@ unlimited mode in a simple manner. The application developer is only
 responsible for enabling unlimited objects
 (:ref:`CONFIGURE_UNLIMITED_OBJECTS`) and specifying the allocation size
 (:ref:`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`).
+
+.. code-block:: c
+
+    #define CONFIGURE_UNLIMITED_OBJECTS
+    #define CONFIGURE_UNLIMITED_ALLOCATION_SIZE 5
 
 General System Configuration
 ============================
@@ -823,6 +828,65 @@ NOTES:
     RTEMS "unlimited" objects option.  You will be able to create objects until
     you run out of all available memory rather then just until you run out of
     RTEMS Workspace.
+
+.. _CONFIGURE_UNLIMITED_ALLOCATION_SIZE:
+
+CONFIGURE_UNLIMITED_ALLOCATION_SIZE
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_UNLIMITED_ALLOCATION_SIZE``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    If not defined and ``CONFIGURE_UNLIMITED_OBJECTS`` is defined, the default
+    value is eight (8).
+
+DESCRIPTION:
+    ``CONFIGURE_UNLIMITED_ALLOCATION_SIZE`` provides an allocation size to use
+    for ``rtems_resource_unlimited`` when using
+    ``CONFIGURE_UNLIMITED_OBJECTS``.
+
+NOTES:
+    By allowing users to declare all resources as being unlimited the user can
+    avoid identifying and limiting the resources
+    used. ``CONFIGURE_UNLIMITED_OBJECTS`` does not support varying the
+    allocation sizes for different objects; users who want that much control
+    can define the ``rtems_resource_unlimited`` macros themselves.
+
+.. index:: CONFIGURE_UNLIMITED_OBJECTS
+
+.. _CONFIGURE_UNLIMITED_OBJECTS:
+
+CONFIGURE_UNLIMITED_OBJECTS
+---------------------------
+
+CONSTANT:
+    ``CONFIGURE_UNLIMITED_OBJECTS``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_UNLIMITED_OBJECTS`` enables ``rtems_resource_unlimited`` mode
+    for Classic API and POSIX API objects that do not already have a specific
+    maximum limit defined.
+
+NOTES:
+    When using unlimited objects, it is common practice to also specify
+    ``CONFIGURE_UNIFIED_WORK_AREAS`` so the system operates with a single pool
+    of memory for both RTEMS and application memory allocations.
 
 .. index:: CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 .. index:: clear C Program Heap
