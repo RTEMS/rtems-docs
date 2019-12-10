@@ -637,6 +637,35 @@ NOTE:
    The size of the thread control block is increased by the maximum thread name
    size.  This configuration option is available since RTEMS 5.1.
 
+.. index:: CONFIGURE_MEMORY_OVERHEAD
+
+.. _CONFIGURE_MEMORY_OVERHEAD:
+
+CONFIGURE_MEMORY_OVERHEAD
+-------------------------
+
+CONSTANT:
+    ``CONFIGURE_MEMORY_OVERHEAD``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    This parameter is set to the number of kilobytes the application wishes to
+    add to the requirements calculated by ``<rtems/confdefs.h>``.
+
+NOTES:
+    This configuration parameter should only be used when it is suspected that
+    a bug in ``<rtems/confdefs.h>`` has resulted in an underestimation.
+    Typically the memory allocation will be too low when an application does
+    not account for all message queue buffers or task stacks.
+
 .. index:: CONFIGURE_MICROSECONDS_PER_TICK
 .. index:: tick quantum
 
@@ -2069,43 +2098,6 @@ NOTES:
                      CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( \
                          500, sizeof(other_message_type) \
                      )
-
-Seldom Used Configuration Parameters
-====================================
-
-This section describes configuration parameters supported by
-``<rtems/confdefs.h>`` which are seldom used by applications. These parameters
-tend to be oriented to debugging system configurations and providing
-work-arounds when the memory estimated by ``<rtems/confdefs.h>`` is incorrect.
-
-.. index:: CONFIGURE_MEMORY_OVERHEAD
-
-.. _CONFIGURE_MEMORY_OVERHEAD:
-
-CONFIGURE_MEMORY_OVERHEAD
--------------------------
-
-CONSTANT:
-    ``CONFIGURE_MEMORY_OVERHEAD``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    This parameter is set to the number of kilobytes the application wishes to
-    add to the requirements calculated by ``<rtems/confdefs.h>``.
-
-NOTES:
-    This configuration parameter should only be used when it is suspected that
-    a bug in ``<rtems/confdefs.h>`` has resulted in an underestimation.
-    Typically the memory allocation will be too low when an application does
-    not account for all message queue buffers or task stacks.
 
 C Library Support Configuration
 ===============================
