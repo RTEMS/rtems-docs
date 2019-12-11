@@ -1082,34 +1082,6 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode.
 
-.. index:: CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
-
-.. _CONFIGURE_MAXIMUM_MRSP_SEMAPHORES:
-
-CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_MRSP_SEMAPHORES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_MRSP_SEMAPHORES`` is the maximum number of Classic API
-    Semaphores using the :ref:`MrsP` that can be concurrently active.
-
-NOTES:
-    This configuration option is only used in SMP configurations.  In
-    uniprocessor configurations, the :ref:`PriorityCeiling` is used for MrsP
-    semaphores and thus no extra memory is necessary.
-
 .. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 
 .. _CONFIGURE_MAXIMUM_MESSAGE_QUEUES:
@@ -4935,6 +4907,13 @@ This configuration option is obsolete since RTEMS 5.1.
 
 CONFIGURE_MAXIMUM_GOROUTINES
 ----------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
+
+CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
+---------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
 
