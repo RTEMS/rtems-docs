@@ -4596,35 +4596,6 @@ NOTES:
     Multiprocessor System assuming the BSP provides the proper set of
     supporting methods.
 
-.. index:: CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE
-
-.. _CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE:
-
-CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE
----------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE`` is defined if the application
-    wishes to provide their own Multiprocessing Configuration Table.  The
-    generated table is named ``Multiprocessing_configuration``.
-
-NOTES:
-    This is a configuration parameter which is very unlikely to be used by an
-    application. If you find yourself wanting to use it in an application,
-    please reconsider and discuss this on the RTEMS Users mailing list.
-
 Ada Tasks
 =========
 
@@ -4886,6 +4857,13 @@ RTEMS 4.10.0.
 
 CONFIGURE_HAS_OWN_MOUNT_TABLE
 -----------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE
+
+CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE
+---------------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
 
