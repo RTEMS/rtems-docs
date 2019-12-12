@@ -52,28 +52,15 @@ the RTEMS source tree.  The top of the tree will be referenced as
 
     rtems-VERSION
     |
-    +--------+----+----+----+--+-----+---+-------+--------+
-    |        |    |    |       |     |   |       |        |
-    aclocal automake c contrib  cpukit doc make testsuites tools
-
-``${RTEMS_ROOT}/aclocal/``
-    This directory contains the custom M4 macros which are available to the
-    various GNU autoconf ``configure.ac`` scripts throughout the RTEMS source
-    tree.  GNU autoconf interprets ``configure.ac`` files to produce the
-    ``configure`` files used to tailor RTEMS build for a particular host and
-    target environment.  The contents of this directory will not be discussed
-    further in this document.
-
-``${RTEMS_ROOT}/automake/``
-    This directory contains the custom GNU automake fragments which are used to
-    support the various ``Makefile.am`` files throughout the RTEMS source tree.
-    The contents of this directory will not be discussed further in this
-    document.
+    +----+----+----+--+-----+---+-------+--------+
+    |    |    |       |     |   |       |        |
+    c contrib  cpukit doc make testsuites tools
 
 ``${RTEMS_ROOT}/c/``
-    This directory is the root of the portions of the RTEMS source tree which
-    must be built tailored for a particular CPU model or BSP.  The contents of
-    this directory will be discussed in the `c/ Directory`_ section.
+    Historically, this directory was the root of the portions of the
+    RTEMS source tree which must be built tailored for a particular CPU
+    model or BSP. In the current source, only the build support files for
+    the autoconf/automake based build system remain in this subdirectory.
 
 ``${RTEMS_ROOT}/cpukit/``
     This directory is the root for all of the "multilib'able" portions of
@@ -83,137 +70,49 @@ the RTEMS source tree.  The top of the tree will be referenced as
     under this directory.  The contents of this directory will be discussed in
     the `CPU Kit Directory`_ section.
 
+``${RTEMS_ROOT}/bsps``
+    This directory is the root for all of the BSP specific source in
+    RTEMS.  The contents of this directory are discussed in the `BSPs
+    Directory`_ section.
+
 ``${RTEMS_ROOT}/make/``
-    This directory contains files which support the RTEMS Makefile's.  From a
-    user's perspective, the most important parts are found in the ``custom/``
-    subdirectory.  Each ".cfg" file in this directory is associated with a
-    specific BSP and describes the CPU model, compiler flags, and procedure to
-    produce an executable for the target board.  These files are described in
-    detail in the *RTEMS BSP and Driver Guide* and will not
-    be discussed further in this document.
+    This directory contains files which support RTEMS Makefile's.  From a
+    user's perspective, the most important part is the BSP specific
+    information found in the ``config`` subdirectory of each BSP.
+    Each ".cfg" file is associated with a specific BSP
+    and describes the CPU model, and compiler flags used to produce
+    an executable for the target board.  These files are described in
+    detail in the *RTEMS BSP and Driver Guide* and will not be discussed
+    further in this document.
 
 ``${RTEMS_ROOT}/testsuites/``
     This directory contains the test suites for the various RTEMS APIs and
     support libraries.  The contents of this directory are discussed in the
     `testsuites/ Test Suites`_ section.
 
-``${RTEMS_ROOT}/tools/``
-    This directory contains RTEMS specific support utilities which execute on
-    the development host.  These utilities are divided into subdirectories
-    based upon whether they are used in the process of building RTEMS and
-    applications, are CPU specific, or are used to assist in updating the RTEMS
-    source tree and applications.  The support utilities used in the process of
-    building RTEMS are described in :ref:`rtems-specific-utilities`.
-    These are the only components of this subtree that will be discussed
-    in this document.
+BSPs Directory
+~~~~~~~~~~~~~~
 
-c/ Directory
-============
-
-The ``${RTEMS_ROOT}/c/`` directory was formerly the root directory of all RTEMS
-source code.  At this time, it contains the root directory for only those RTEMS
-components which must be compiled or linked in a way that is specific to a
-particular CPU model or board.  This directory contains the following
-subdirectories:
-
-``${RTEMS_ROOT}/c/src/``
-    This directory is logically the root for the RTEMS components which are CPU
-    model or board dependent.  Thus this directory is the root for the BSPs and
-    the Ada Test Suites as well as CPU model and BSP dependent libraries.  The
-    contents of this directory are discussed in the `c/src/ Directory`_
-    section.
-
-c/src/ Directory
-----------------
-
-As mentioned previously, this directory is logically the root for the RTEMS
-components which are CPU model or board dependent.  The following is a list of
-the subdirectories in this directory and a description of each.
-
-``${RTEMS_ROOT}/c/src/aclocal/``
-    This directory contains the custom M4 macros which are available to the
-    various GNU autoconf ``configure.ac`` scripts throughout this portion of
-    the RTEMS source tree.  GNU autoconf interprets``configure.ac`` files to
-    produce the ``configure`` files used to tailor RTEMS build for a particular
-    host and target environment.  The contents of this directory will not be
-    discussed further in this document.
-
-``${RTEMS_ROOT}/c/src/ada/``
-    This directory contains the Ada95 language bindings to the RTEMS Classic
-    API.
-
-``${RTEMS_ROOT}/c/src/ada-tests/``
-    This directory contains the test suite for the Ada language bindings to the
-    Classic API.
-
-``${RTEMS_ROOT}/c/src/automake/``
-    This directory contains files which are "Makefile fragments."  They are
-    included as required by the various ``Makefile.am`` files throughout this
-    portion of the RTEMS source tree.
-
-``${RTEMS_ROOT}/c/src/lib/``
-    This directory contains the directories ``libbsp/`` and ``libcpu/`` which
-    contain the source code for the Board Support Packages (BSPs) and CPU Model
-    specific source code for RTEMS.  The ``libbsp/`` is organized based upon
-    the CPU family and boards BSPs.  The contents of ``libbsp/`` are discussed
-    briefly in `c/src/lib/libbsp BSP Directory`_ and presented in detail in
-    the *RTEMS BSP and Driver Guide*.  The ``libcpu/``
-    directory is also organized by CPU family with further divisions based upon
-    CPU model and features that are shared across CPU models such as caching
-    and DMA.
-
-``${RTEMS_ROOT}/c/src/libchip/``
-    This directory contains device drivers for various peripheral chips which
-    are designed to be CPU and board dependent.  This directory contains a
-    variety of drivers for serial devices, network interface controllers,
-    shared memory and real-time clocks.
-
-``${RTEMS_ROOT}/c/src/librtems++/``
-    This directory contains C++ classes which map to the RTEMS Classic API.
-
-``${RTEMS_ROOT}/c/src/make/``
-    This directory is used to generate the bulk of the supporting rules files
-    which are installed as part of the Application Makefiles.  This file
-    contains settings for various Makefile variables to tailor them to the
-    particular CPU model and BSP configured.
-
-``${RTEMS_ROOT}/c/src/nfsclient/``
-    This directory contains a Network File System (NFS) client for RTEMS.  With
-    this file system, a user's application can access files on a remote
-    computer.
-
-``${RTEMS_ROOT}/c/src/support/``
-    This directory exists solely to generate the RTEMS version string which
-    includes the RTEMS version, CPU architecture, CPU model, and BSP name.
-
-``${RTEMS_ROOT}/c/src/wrapup/``
-    This directory is responsible for taking the individual libraries and
-    objects built in each of the components in the RTEMS source tree and
-    bundling them together to form the single RTEMS library ``librtemsbsp.a``.
-    This library contains all BSP and CPU model specific software.
-
-c/src/lib/libbsp BSP Directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The "libbsp" directory contains a directory for each CPU family supported by
+The "bsps" directory contains a directory for each CPU family supported by
 RTEMS.  Beneath each CPU directory is a directory for each BSP for that
 processor family.
 
-The "libbsp" directory provides all the BSPs provided with this release of the
-RTEMS executive.  The subdirectories are divided, as discussed previously,
+The "bsps" directory provides all the BSPs provided with this release
+of RTEMS.  The subdirectories are divided, as discussed previously,
 based on specific processor family, then further broken down into specific
-target board environments.  The "no_cpu" subdirectory provides a starting point
-template BSP which can be used to develop a specific BSP for an unsupported
-target board.  The files in this subdirectory may aid in preliminary testing of
-the RTEMS development environment that has been built for no particular target
-in mind.
+target board environments.  The "no_cpu" subdirectory provides a starting
+point template BSP which can be used to develop a specific BSP for an
+unsupported target board.  The files in this subdirectory may aid in
+preliminary testing of the RTEMS development environment that has been
+built for no particular target in mind.
 
 Below each CPU dependent directory is a directory for each target BSP supported
 in this release.
 
 Each BSP provides the modules which comprise an RTEMS BSP.  The modules are
-separated into the subdirectories "clock", "console", "include", "shmsupp",
-"startup", and "timer" as shown in the following figure:
+separated into various subdirectories such as "clock", "console",
+"include", "shmsupp", "startup", and "timer" as shown in the following
+figure:
 
 .. code-block:: c
 
@@ -226,15 +125,16 @@ separated into the subdirectories "clock", "console", "include", "shmsupp",
 CPU Kit Directory
 =================
 
-The @code{cpukit/} directory structure is as follows:
+The @code{cpukit/} directory contains many subdirectories with the
+most important ones being shown in the structure below:
 
 .. code-block:: c
 
     cpukit
     |
-    +-----------+----------+-----------+----------+
-    |           |          |           |          |
-    posix       rtems       sapi       score     wrapup
+    +-----------+----------+-----------+
+    |           |          |           |
+    posix       rtems       sapi       score
 
 The ``cpukit/`` directory contains a set of subdirectories which contains the
 source files comprising the executive portion of the RTEMS development
@@ -243,19 +143,6 @@ Library and filesystems.  The API specific and "SuperCore" (e.g. ``score/``
 directory) source code files are separated into distinct directory trees.
 
 The following is a description of each of the subdirectories under ``cpukit/``:
-
-``${RTEMS_ROOT}/cpukit/aclocal/``
-    This directory contains the custom M4 macros which are available to the
-    various GNU autoconf ``configure.ac`` scripts throughout the CPU Kit
-    portion of the RTEMS source tree.  GNU autoconf interprets ``configure.ac``
-    files to produce the ``configure`` files used to tailor RTEMS build for a
-    particular host and target environment.  The contents of this directory
-    will not be discussed further in this document.
-
-``${RTEMS_ROOT}/cpukit/automake/``
-    This directory contains files which are "Makefile fragments."  They are
-    included as required by the various ``Makefile.am`` files throughout the
-    CPU Kit portion of the RTEMS source tree.
 
 ``${RTEMS_ROOT}/cpukit/ftpd/``
     This directory contains the RTEMS ftpd server.
