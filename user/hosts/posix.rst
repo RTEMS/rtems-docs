@@ -126,8 +126,9 @@ Xubuntu. A minimal installation was used and the following packages installed:
 
 .. code-block:: none
 
-  $ sudo apt-get build-dep gcc-defaults g++ gdb git unzip pax bison \
-         flex libpython-dev git libncurses5-dev zlib1g-dev
+  $ sudo apt-get build-dep build-essential gcc-defaults g++ gdb git \
+  unzip pax bison flex texinfo unzip python3-dev libpython-dev \
+  libncurses5-dev zlib1g-dev
 
 Note that in previous versions of Ubuntu, the package libpython-dev was
 python2.7-dev. The name of packages changes over time. You need the
