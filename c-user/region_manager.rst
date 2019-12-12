@@ -29,6 +29,10 @@ variable sized units.  The directives provided by the region manager are:
 
 - rtems_region_resize_segment_ - Change size of a segment
 
+- rtems_region_get_information_ - Get region information
+
+- rtems_region_get_free_information_ - Get region free information
+
 Background
 ==========
 
@@ -668,3 +672,103 @@ NOTES:
     may want to allocate a new segment of the desired size, copy the contents
     of the original segment to the new, larger segment and then return the
     original segment.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: obtain region information
+.. index:: rtems_region_get_information
+
+.. _rtems_region_get_information:
+
+REGION_GET_INFORMATION - Get region information
+-----------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_region_get_information(
+          rtems_id                id,
+          Heap_Information_block *the_info
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - information obtained successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``the_info`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+
+DESCRIPTION:
+    This directive is used to obtain information about the used and free memory
+    in the region specified by ``id``. This is a snapshot at the time
+    of the call. The information will be returned in the structure pointed to
+    by ``the_info``.
+
+NOTES:
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
+
+    This is primarily intended as a mechanism to obtain a diagnostic information. 
+    This method forms am O(n) scan of the free and an O(n) scan of the
+    used blocks in the region to calculate the information provided. Given that
+    the execution time is driven by the number of used and free blocks, it can
+    take a non-deterministic time to execute.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: obtain region information on free blocks
+.. index:: rtems_region_get_free_information
+
+.. _rtems_region_get_free_information:
+
+REGION_GET_FREE_INFORMATION - Get region free information
+---------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_region_get_free_information(
+          rtems_id                id,
+          Heap_Information_block *the_info
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - information obtained successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``the_info`` is NULL
+     * - ``RTEMS_INVALID_ID``
+       - invalid region id
+
+DESCRIPTION:
+    This directive is used to obtain information about the free memory
+    in the region specified by ``id``. This is a snapshot at the time
+    of the call. The information will be returned in the structure pointed to
+    by ``the_info``.
+
+NOTES:
+    This directive will obtain the allocator mutex and may cause the calling
+    task to be preempted.
+
+    This uses the same structure to return information as the 
+    ``rtems_region_get_information`` directive but does not fill in the
+    used information.
+
+    This is primarily intended as a mechanism to obtain a diagnostic information. 
+    This method forms am O(n) scan of the free in the region to calculate
+    the information provided. Given that the execution time is driven by
+    the number of used and free blocks, it can take a non-deterministic
+    time to execute. Typically, there are many used blocks and a much smaller
+    number of used blocks making a call to this directive less expensive than
+    a call to ``rtems_region_get_information``.
