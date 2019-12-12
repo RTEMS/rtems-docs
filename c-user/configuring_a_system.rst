@@ -2583,6 +2583,29 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to remove
     nodes is disabled in the root IMFS.
 
+.. index:: CONFIGURE_IMFS_ENABLE_MKFIFO
+
+.. _CONFIGURE_IMFS_ENABLE_MKFIFO:
+
+CONFIGURE_IMFS_ENABLE_MKFIFO
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_ENABLE_MKFIFO``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to make FIFOs
+    is enabled in the root IMFS.
+
 Block Device Cache Configuration
 ================================
 
