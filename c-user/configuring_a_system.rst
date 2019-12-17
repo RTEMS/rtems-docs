@@ -4406,38 +4406,6 @@ DESCRIPTION:
 NOTES:
     This device driver is supported by all BSPs.
 
-.. index:: CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE
-
-.. _CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE:
-
-CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE
--------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default, indicating the ``<rtems/confdefs.h>`` is
-    providing the device driver table.
-
-DESCRIPTION:
-    ``CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE`` is defined if the application
-    wishes to provide their own Device Driver Table.
-
-    The table must be an array of ``rtems_driver_address_table`` entries
-    named`` _IO_Driver_address_table``.  The application must also provide a
-    const variable ``_IO_Number_of_drivers`` of type ``size_t`` indicating the
-    number of entries in the ``_IO_Driver_address_table``.
-
-NOTES:
-    It is expected that there the application would only rarely need to do this.
-
 Multiprocessing Configuration
 =============================
 
@@ -4875,6 +4843,14 @@ CONFIGURE_HAS_OWN_BDBUF_TABLE
 
 This configuration option was introduced in RTEMS 4.7.0 and is obsolete since
 RTEMS 4.10.0.
+
+.. index:: CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE
+
+CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE
+-------------------------------------
+
+This configuration option was present in all RTEMS versions since at least 1995
+and is obsolete since RTEMS 5.1.
 
 .. index:: CONFIGURE_HAS_OWN_MOUNT_TABLE
 
