@@ -529,16 +529,16 @@ NOTES:
     :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE
     <CONFIGURE_MINIMUM_TASK_STACK_SIZE>` instead of ``CPU_STACK_MINIMUM_SIZE``.
 
-.. index:: CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
+.. index:: CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
 .. index:: maximum file descriptors
 
-.. _CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS:
+.. _CONFIGURE_MAXIMUM_FILE_DESCRIPTORS:
 
-CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
-----------------------------------------
+CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
+----------------------------------
 
 CONSTANT:
-    ``CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS``
+    ``CONFIGURE_MAXIMUM_FILE_DESCRIPTORS``
 
 DATA TYPE:
     Unsigned integer (``uint32_t``).
@@ -4866,12 +4866,13 @@ CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE
 
 This configuration option is obsolete since RTEMS 5.1.
 
-.. index:: CONFIGURE_NUMBER_OF_TERMIOS_PORTS
+.. index:: CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
 
-CONFIGURE_NUMBER_OF_TERMIOS_PORTS
----------------------------------
+CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
+--------------------------------
 
-This configuration option is obsolete since RTEMS 5.1.
+This configuration option was present in all RTEMS versions since at 1998 and is
+obsolete since RTEMS 5.1.  See also :ref:`CONFIGURE_MAXIMUM_FILE_DESCRIPTORS`.
 
 .. index:: CONFIGURE_MAXIMUM_GO_CHANNELS
 
@@ -4890,6 +4891,13 @@ This configuration option is obsolete since RTEMS 5.1.
 .. index:: CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
 
 CONFIGURE_MAXIMUM_MRSP_SEMAPHORES
+---------------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_NUMBER_OF_TERMIOS_PORTS
+
+CONFIGURE_NUMBER_OF_TERMIOS_PORTS
 ---------------------------------
 
 This configuration option is obsolete since RTEMS 5.1.
