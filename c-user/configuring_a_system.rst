@@ -4587,104 +4587,6 @@ NOTES:
     Multiprocessor System assuming the BSP provides the proper set of
     supporting methods.
 
-Ada Tasks
-=========
-
-This section defines the system configuration parameters supported by
-``<rtems/confdefs.h>`` related to configuring RTEMS to support a task using Ada
-tasking with GNAT/RTEMS.
-
-These configuration parameters are only available when RTEMS is built with the
-``--enable-ada`` configure option and the application specifies
-``CONFIGURE_GNAT_RTEMS``.
-
-Additionally RTEMS includes an Ada language binding to the Classic API which
-has a test suite. This test suite is enabled only when``--enable-tests`` and
-``--enable-expada`` are specified on the configure command.
-
-.. index:: CONFIGURE_GNAT_RTEMS
-
-.. _CONFIGURE_GNAT_RTEMS:
-
-CONFIGURE_GNAT_RTEMS
---------------------
-
-CONSTANT:
-    ``CONFIGURE_GNAT_RTEMS``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_GNAT_RTEMS`` is defined to inform RTEMS that the GNAT Ada
-    run-time is to be used by the application.
-
-NOTES:
-    This configuration parameter is critical as it makes``<rtems/confdefs.h>``
-    configure the resources (POSIX API Threads, Mutexes, Condition Variables,
-    and Keys) used implicitly by the GNAT run-time.
-
-.. index:: CONFIGURE_MAXIMUM_ADA_TASKS
-
-.. _CONFIGURE_MAXIMUM_ADA_TASKS:
-
-CONFIGURE_MAXIMUM_ADA_TASKS
----------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_ADA_TASKS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Undefined or positive.
-
-DEFAULT VALUE:
-    If ``CONFIGURE_GNAT_RTEMS`` is defined, then the default value is 20,
-    otherwise the default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_ADA_TASKS`` is the number of Ada tasks that can be
-    concurrently active in the system.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
-
-.. _CONFIGURE_MAXIMUM_FAKE_ADA_TASKS:
-
-CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
---------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_FAKE_ADA_TASKS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_FAKE_ADA_TASKS`` is the number of *fake* Ada tasks that
-    can be concurrently active in the system.  A *fake* Ada task is a non-Ada
-    task that makes calls back into Ada code and thus implicitly uses the Ada
-    run-time.
-
-NOTES:
-    None.
-
 PCI Library
 ===========
 
@@ -4795,6 +4697,18 @@ NOTES:
     The record extensions capture thread create, start, restart, delete,
     switch, begin, exitted and terminate events.
 
+.. _ConfigAda:
+
+Ada Configuration
+=================
+
+The GNU Ada runtime library (libgnarl) uses threads, mutexes, condition
+variables, and signals from the pthreads API.  It uses also thread-local storage
+for the Ada Task Control Block (ATCB).  From these resources only the threads
+need to be accounted for in the configuration.  You should include the Ada tasks
+in your setting of the :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS` configuration
+option.
+
 Obsolete Configuration Options
 ==============================
 
@@ -4828,6 +4742,14 @@ CONFIGURE_ENABLE_GO
 -------------------
 
 This configuration option is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_GNAT_RTEMS
+
+CONFIGURE_GNAT_RTEMS
+--------------------
+
+This configuration option was present in all RTEMS versions since at 1997 and is
+obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 
 .. index:: CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
 
@@ -4873,6 +4795,22 @@ CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
 
 This configuration option was present in all RTEMS versions since at 1998 and is
 obsolete since RTEMS 5.1.  See also :ref:`CONFIGURE_MAXIMUM_FILE_DESCRIPTORS`.
+
+.. index:: CONFIGURE_MAXIMUM_ADA_TASKS
+
+CONFIGURE_MAXIMUM_ADA_TASKS
+---------------------------
+
+This configuration option was present in all RTEMS versions since at 1997 and is
+obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
+
+.. index:: CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
+
+CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
+--------------------------------
+
+This configuration option was present in all RTEMS versions since at 1997 and is
+obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 
 .. index:: CONFIGURE_MAXIMUM_GO_CHANNELS
 
