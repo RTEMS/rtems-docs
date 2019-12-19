@@ -923,8 +923,10 @@ EXAMPLE:
             sc = rtems_semaphore_set_priority(semaphore_id, scheduler_b_id, prio, &prio);
             assert(sc == RTEMS_SUCCESSFUL);
             assert(prio == 2);
+
             sc = rtems_semaphore_delete(semaphore_id);
             assert(sc == RTEMS_SUCCESSFUL);
+
             exit(0);
         }
 
@@ -932,8 +934,8 @@ EXAMPLE:
         #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
         #define CONFIGURE_MAXIMUM_TASKS 1
         #define CONFIGURE_MAXIMUM_SEMAPHORES 1
-        #define CONFIGURE_MAXIMUM_MRSP_SEMAPHORES 1
         #define CONFIGURE_MAXIMUM_PROCESSORS 2
+
         #define CONFIGURE_SCHEDULER_SIMPLE_SMP
 
         #include <rtems/scheduler.h>
@@ -941,12 +943,15 @@ EXAMPLE:
         RTEMS_SCHEDULER_CONTEXT_SIMPLE_SMP(a);
         RTEMS_SCHEDULER_CONTEXT_SIMPLE_SMP(b);
 
-        #define CONFIGURE_SCHEDULER_CONTROLS \
-                  RTEMS_SCHEDULER_CONTROL_SIMPLE_SMP(a, SCHED_A), \
-                  RTEMS_SCHEDULER_CONTROL_SIMPLE_SMP(b, SCHED_B)
-        #define CONFIGURE_SMP_SCHEDULER_ASSIGNMENTS \
-                  RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
-                  RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY)
+        #define CONFIGURE_SCHEDULER_TABLE_ENTRIES \
+            RTEMS_SCHEDULER_TABLE_SIMPLE_SMP(a, SCHED_A), \
+            RTEMS_SCHEDULER_TABLE_SIMPLE_SMP(b, SCHED_B)
+
+        #define CONFIGURE_SCHEDULER_ASSIGNMENTS \
+            RTEMS_SCHEDULER_ASSIGN(0, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY), \
+            RTEMS_SCHEDULER_ASSIGN(1, RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY)
+
         #define CONFIGURE_RTEMS_INIT_TASKS_TABLE
         #define CONFIGURE_INIT
+
         #include <rtems/confdefs.h>
