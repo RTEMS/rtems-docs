@@ -49,6 +49,8 @@ them.  The object related services provided by RTEMS are:
 
 - rtems_object_get_class_information_ - obtain class information
 
+- rtems_object_get_local_node_ - obtain local node
+
 Background
 ==========
 
@@ -782,6 +784,32 @@ DESCRIPTION:
             bool      auto_extend;
             int       unallocated;
         } rtems_object_api_class_information;
+
+NOTES:
+    This directive is strictly local and does not impact task scheduling.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: obtain local node
+.. index:: rtems_object_get_local_node
+
+.. _rtems_object_get_local_node:
+
+OBJECT_GET_LOCAL_NODE - Obtain Local Node
+-----------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        uint16_t rtems_object_get_local_node( void );
+
+DIRECTIVE STATUS CODES:
+    NONE
+
+DESCRIPTION:
+    This service returns the local MPCI node.
 
 NOTES:
     This directive is strictly local and does not impact task scheduling.
