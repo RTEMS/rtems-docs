@@ -26,3 +26,4 @@ arm (ARM)
 .. include:: arm/stm32f4.rst
 .. include:: arm/tms570.rst
 .. include:: arm/xilinx-zynq.rst
+.. include:: arm/xilinx-zynqmp.rst
