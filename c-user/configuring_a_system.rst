@@ -1082,6 +1082,10 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode.
 
+    In SMP configurations, the size of a Semaphore Control Block depends on the
+    scheduler count (see :ref:`ConfigurationSchedulerTable`).  The semaphores
+    using the :ref:`MrsP` need a ceiling priority per scheduler.
+
 .. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 
 .. _CONFIGURE_MAXIMUM_MESSAGE_QUEUES:
