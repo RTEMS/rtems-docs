@@ -109,39 +109,155 @@ the tests. Using the run with the ERC32 BSP the command is:
 
 The run command is the GDB simulator without the GDB part.
 
-Running the example using GDB:
+Running the example using SIS:
+
+.. code-block:: none
+
+    $ sparc-rtems5-sis sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
+    SIS - SPARC/RISCV instruction simulator 2.20,  copyright Jiri Gaisler 2019
+    Bug-reports to jiri@gaisler.se
+    ERC32 emulation enabled
+
+    Loaded sparc-rtems5/c/erc32/testsuites/samples/hello.exe, entry 0x02000000
+
+    sis> run
+
+
+    *** BEGIN OF TEST HELLO WORLD ***
+    *** TEST VERSION: 5.0.0.c6d8589bb00a9d2a5a094c68c90290df1dc44807
+    *** TEST STATE: EXPECTED-PASS
+    *** TEST BUILD: RTEMS_POSIX_API
+    *** TEST TOOLS: 7.5.0 20191114 (RTEMS 5, RSB 83fa79314dd87c0a8c78fd642b2cea3138be8dd6, Newlib 3e24fbf6f)
+    Hello World
+
+    *** END OF TEST HELLO WORLD ***
+
+
+    *** FATAL ***
+    fatal source: 0 (INTERNAL_ERROR_CORE)
+    fatal code: 5 (INTERNAL_ERROR_THREAD_EXITTED)
+    RTEMS version: 5.0.0.c6d8589bb00a9d2a5a094c68c90290df1dc44807
+    RTEMS tools: 7.5.0 20191114 (RTEMS 5, RSB 83fa79314dd87c0a8c78fd642b2cea3138be8dd6, Newlib 3e24fbf6f)
+    executing thread ID: 0x08a010001
+    executing thread name: UI1
+    cpu 0 in error mode (tt = 0x101)
+        116401  02009ae0:  91d02000   ta  0x0
+
+    sis> q
+
+The examples can also be run using GDB with SIS as the backend. SIS can be connected to
+gdb through a network socket using the gdb remote interface.
+
+Either start SIS with ``-gdb``, or issue the ``gdb`` command inside SIS, and connect
+gdb with ``target remote:1234``. The default port is ``1234``, the port can be changed
+using the ``-port`` option.
+
+Open a terminal and issue the command:
+
+.. code-block:: none
+
+    $ sparc-rtems5-sis -gdb
+    SIS - SPARC/RISCV instruction simulator 2.20,  copyright Jiri Gaisler 2019
+    Bug-reports to jiri@gaisler.se
+    ERC32 emulation enabled
+
+    gdb: listening on port 1234
+
+Now open another terminal and issue the command:
 
 .. code-block:: none
 
     $ sparc-rtems5-gdb sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
-    GNU gdb (GDB) 7.12
-    Copyright (C) 2016 Free Software Foundation, Inc.
+    GNU gdb (GDB) 8.3
+    Copyright (C) 2019 Free Software Foundation, Inc.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
     This is free software: you are free to change and redistribute it.
-    There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-    and "show warranty" for details.
+    There is NO WARRANTY, to the extent permitted by law.
+    Type "show copying" and "show warranty" for details.
     This GDB was configured as "--host=x86_64-linux-gnu --target=sparc-rtems5".
     Type "show configuration" for configuration details.
     For bug reporting instructions, please see:
     <http://www.gnu.org/software/gdb/bugs/>.
     Find the GDB manual and other documentation resources online at:
-    <http://www.gnu.org/software/gdb/documentation/>.
+        <http://www.gnu.org/software/gdb/documentation/>.
+
     For help, type "help".
     Type "apropos word" to search for commands related to "word"...
-    Reading symbols from
-    sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe...done.
-    (gdb) target sim
-    Connected to the simulator.
+    Reading symbols from sparc-rtems5/c/erc32/testsuites/samples/hello.exe...
+    (gdb) target remote:1234
+
+The ``target remote:1234`` will tell gdb to connect to the sis simulator. After this
+command the output of the first terminal will change to
+
+.. code-block:: none
+
+    $ sparc-rtems5-sis -gdb
+    SIS - SPARC/RISCV instruction simulator 2.20,  copyright Jiri Gaisler 2019
+    Bug-reports to jiri@gaisler.se
+    ERC32 emulation enabled
+
+    gdb: listening on port 1234 connected
+
+Before running the executable, it must be loaded, this is done using the
+``load`` command in gdb, and to run, issue ``continue`` command.
+
+.. code-block:: none
+
+    $ sparc-rtems5-gdb sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
+    GNU gdb (GDB) 8.3
+    Copyright (C) 2019 Free Software Foundation, Inc.
+    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+    This is free software: you are free to change and redistribute it.
+    There is NO WARRANTY, to the extent permitted by law.
+    Type "show copying" and "show warranty" for details.
+    This GDB was configured as "--host=x86_64-linux-gnu --target=sparc-rtems5".
+    Type "show configuration" for configuration details.
+    For bug reporting instructions, please see:
+    <http://www.gnu.org/software/gdb/bugs/>.
+    Find the GDB manual and other documentation resources online at:
+        <http://www.gnu.org/software/gdb/documentation/>.
+
+    For help, type "help".
+    Type "apropos word" to search for commands related to "word"...
+    Reading symbols from sparc-rtems5/c/erc32/testsuites/samples/hello.exe...
+    (gdb) target remote:1234
+    Remote debugging using :1234
+    0x00000000 in ?? ()
     (gdb) load
-    (gdb) r
-    Starting program: sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
+    Loading section .text, size 0x17170 lma 0x2000000
+    Loading section .rtemsroset, size 0x40 lma 0x2017170
+    Loading section .data, size 0x600 lma 0x20181c0
+    Start address 0x2000000, load size 96176
+    Transfer rate: 4696 KB/sec, 270 bytes/write.
+    (gdb) continue
+    Continuing.
+
+You can see your executable running in the first terminal.
+
+.. code-block:: none
+
+    SIS - SPARC/RISCV instruction simulator 2.20,  copyright Jiri Gaisler 2019
+    Bug-reports to jiri@gaisler.se
+
+    ERC32 emulation enabled
+
+    gdb: listening on port 1235 connected
+    X2000000,0:#40
 
 
     *** BEGIN OF TEST HELLO WORLD ***
+    *** TEST VERSION: 5.0.0.c6d8589bb00a9d2a5a094c68c90290df1dc44807
+    *** TEST STATE: EXPECTED-PASS
+    *** TEST BUILD: RTEMS_POSIX_API
+    *** TEST TOOLS: 7.5.0 20191114 (RTEMS 5, RSB 83fa79314dd87c0a8c78fd642b2cea3138be8dd6, Newlib 3e24fbf6f)
     Hello World
+
     *** END OF TEST HELLO WORLD ***
-    [Inferior 1 (process 42000) exited normally]
-    (gdb) q
+
+    ^Csis> q
+
+
+For more information on the sis simulator refer to this doc: https://gaisler.se/sis/sis.pdf
 
 The command ``r`` is used to debug set break points before issuing the GDB
 ``run`` command.

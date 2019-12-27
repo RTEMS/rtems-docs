@@ -21,7 +21,7 @@ Just run this command:
 .. code-block:: none
 
     cd $HOME/quick-start/build/b-erc32
-    rtems-test --rtems-bsp=erc32 --rtems-tools=$HOME/quick-start/rtems/5 .
+    rtems-test --rtems-bsp=erc32-sis --rtems-tools=$HOME/quick-start/rtems/5 .
 
 This command should output something like this (omitted lines are denoted by
 ...).  In this output the base directory :file:`$HOME/quick-start` was replaced
@@ -30,7 +30,7 @@ by ``$BASE``.
 .. code-block:: none
 
     RTEMS Testing - Tester, 5.0.not_released
-     Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32 --rtems-tools=$BASE/rtems/5 .
+     Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32-sis --rtems-tools=$BASE/rtems/5 .
      Python: 2.7.15 (default, Jan 10 2019, 01:14:47) [GCC 4.2.1 Compatible FreeBSD Clang 6.0.1 (tags/RELEASE_601/final 335540)]
     Host: FreeBSD-12.0-RELEASE-p2-amd64-64bit-ELF (FreeBSD Build_FreeBSD12 12.0-RELEASE-p2 FreeBSD 12.0-RELEASE-p2 GENERIC amd64 amd64)
     [  1/589] p:0   f:0   u:0   e:0   I:0   B:0   t:0   i:0   W:0   | sparc/erc32: dhrystone.exe
