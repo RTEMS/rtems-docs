@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH
 .. Copyright (C) 2016, 2018 RTEMS Foundation, The RTEMS Documentation Project
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
@@ -76,3 +77,14 @@ qualification standards. It will maintain "scorecards" which
 identify how the RTEMS Project is currently doing when reviewed per each
 standard. These will be maintained in the open as community resources
 which will guide the community in improving its infrastructure.
+
+Stakeholder Involvement
+=======================
+
+Qualification of RTEMS is a specialized activity and only specific users
+of RTEMS will complete a formal qualification activity. The RTEMS Project
+cannot self-fund this entire activity and requires stakeholder to invest
+in an ongoing basis to ensure that any investment they make is maintained
+and viable in an ongoing basis. The RTEMS core developers view steady
+support of the qualification effort as necessary to continue to lower
+the overall costs of qualifying RTEMS.

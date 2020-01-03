@@ -25,8 +25,8 @@ RTEMS Software Engineering (|version|)
 
     preface
     mission
-    prequalification
     stakeholders
+    prequalification
     management
     test-plan
     test-framework
