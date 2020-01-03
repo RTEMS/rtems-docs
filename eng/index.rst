@@ -24,6 +24,7 @@ RTEMS Software Engineering (|version|)
     :numbered:
 
     preface
+    mission
     prequalification
     stakeholders
     management

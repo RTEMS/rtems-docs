@@ -3,6 +3,7 @@
 .. Copyright (C) 2018.
 .. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
+.. _LicensingRequirements:
 
 Licensing Requirements
 **********************
