@@ -43,7 +43,19 @@ role_url = {
 	"review":			("Gerrit Code Review",	"https://review.rtems.org/"),
 	"bugs":				("Bugs Database",		"https://devel.rtems.org/wiki/Bugs/"),
 	"gsoc":				("Google Summer of Code", "https://devel.rtems.org/wiki/GSoC/"),
-	"socis":			("ESA SOCIS",			"https://devel.rtems.org/wiki/SOCIS/")
+	"socis":			("ESA SOCIS",			"https://devel.rtems.org/wiki/SOCIS/"),
+	"bsp-howto":			("RTEMS BSP and Driver Guide",		"https://docs.rtems.org/branches/master/bsp-howto/index.html"),
+	"cpu-supplement":		("RTEMS CPU Architecture Supplement",	"https://docs.rtems.org/branches/master/cpu-supplement/index.html"),
+	"c-user":			("RTEMS Classic API Guide",		"https://docs.rtems.org/branches/master/c-user/index.html"),
+	"develenv":			("RTEMS Development Environment Guide", "https://docs.rtems.org/branches/master/develenv/index.html"),
+	"eclipse":			("RTEMS Eclipse Manual", 		"https://docs.rtems.org/branches/master/eclipse/index.html"),
+	"eng":				("RTEMS Software Engineering",		"https://docs.rtems.org/branches/master/eng/index.html"),
+	"filesystem":			("RTEMS Filesystem Design Guide",	"https://docs.rtems.org/branches/master/filesystem/index.html"),
+	"networking":			("RTEMS Networking User Manual", 	"https://docs.rtems.org/branches/master/networking/index.html"),
+	"posix-compliance":		("RTEMS POSIX 1003.1 Compliance Guide", "https://docs.rtems.org/branches/master/posix-compliance/index.html"),
+	"posix-users":			("RTEMS POSIX API Guide",		"https://docs.rtems.org/branches/master/posix-users/index.html"),
+	"shell":			("RTEMS Shell Guide",			"https://docs.rtems.org/branches/master/shell/index.html"),
+	"user":				("RTEMS User Manual",			"https://docs.rtems.org/branches/master/user/index.html"),
 }
 
 
