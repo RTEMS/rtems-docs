@@ -61,12 +61,14 @@ Glossary
       To simultaneously send a message to a logical set of destinations.
 
    Board Support Package
-   BSP
       A collection of device initialization and control routines specific to a
       particular type of board or collection of boards.
 
    buffer
       A fixed length block of memory allocated from a partition.
+
+   BSP
+      An acronym for :term:`Board Support Package`.
 
    C11
       The standard ISO/IEC 9899:2011.
@@ -119,7 +121,7 @@ Glossary
       of the executive should not be used directly by applications.
 
    CPU
-      An acronym for Central Processing Unit.
+      An acronym for :term:`Central Processing Unit`.
 
    critical section
       A section of code which must be executed indivisibly.
@@ -277,7 +279,7 @@ Glossary
       An acronym for Input/Output.
 
    ISR
-      An acronym for Interrupt Service Routine.
+      An acronym for :term:`Interrupt Service Routine`.
 
    kernel
       In this document, this term is used as a synonym for executive.
@@ -346,7 +348,7 @@ Glossary
       disable level used by the task.
 
    MPCI
-      An acronym for Multiprocessor Communications Interface Layer.
+      An acronym for :term:`Multiprocessor Communications Interface Layer`.
 
    multiprocessing
       The simultaneous execution of two or more processes by a multiple
@@ -489,10 +491,10 @@ Glossary
       proxy.
 
    PTCB
-      An acronym for Partition Control Block.
+      An acronym for :term:`Partition Control Block`.
 
    PXCB
-      An acronym for Proxy Control Block.
+      An acronym for :term:`Proxy Control Block`.
 
    quantum
       The application defined unit of time in which the processor is allocated.
@@ -501,7 +503,7 @@ Glossary
       Alternate term for message queue.
 
    QCB
-      An acronym for Message Queue Control Block.
+      An acronym for :term:`Message Queue Control Block`.
 
    ready task
       A task occupies this state when it is available to be given control of a
@@ -554,7 +556,7 @@ Glossary
       the directive.
 
    RNCB
-      An acronym for Region Control Block.
+      An acronym for :term:`Region Control Block`.
 
    round-robin
       A task scheduling discipline in which tasks of equal priority are
@@ -619,7 +621,7 @@ Glossary
       pending signals and the signals sent to a task.
 
    SMCB
-      An acronym for Semaphore Control Block.
+      An acronym for :term:`Semaphore Control Block`.
 
    SMP
       An acronym for Symmetric Multiprocessing.
@@ -670,7 +672,6 @@ Glossary
       An acronym for Test-And-Set.
 
    task
-   thread
       A logically complete thread of execution.  It consists normally of a set
       of registers and a stack.  The scheduler assigns processors to a subset
       of the ready tasks.  The terms task and thread are synonym in RTEMS.  The
@@ -694,7 +695,10 @@ Glossary
       processor from one task and given to another.
 
    TCB
-      An acronym for Task Control Block.
+      An acronym for :term:`Task Control Block`.
+
+   thread
+      This term has the same meaning as :term:`task`.
 
    thread dispatch
       The thread dispatch transfers control of the processor from the currently
@@ -735,7 +739,7 @@ Glossary
       on the CPU port :cite:`RTEMS:CPU`.
 
    TMCB
-      An acronym for Timer Control Block.
+      An acronym for :term:`Timer Control Block`.
 
    transient overload
       A temporary rise in system activity which may cause deadlines to be
@@ -757,9 +761,11 @@ Glossary
       the user initialization tasks.
 
    user-provided
-   user-supplied
       These terms are used to designate any software routines which must be
       written by the application designer.
+
+   user-supplied
+      This term has the same meaning as :term:`user-provided`.
 
    vector
       Memory pointers used by the processor to fetch the address of routines
