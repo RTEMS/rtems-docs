@@ -550,6 +550,8 @@ mq_receive - Receive a Message from a Message Queue
    - The msg_len is less than the ``mq_msgsize`` attribute of the message queue
  * - ``EAGAIN``
    - The message queue is non-blocking, and the queue is empty
+ * - ``EAGAIN``
+   - The operation would block but has been called from an ISR
  * - ``EINTR``
    - The message queue is blocking. While the process was waiting for a message
      to arrive on the queue, a signal arrived that interrupted the wait.
