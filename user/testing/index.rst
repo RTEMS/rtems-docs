@@ -43,6 +43,7 @@ extension.
 
    tests
    configuration
+   coverage
    consoles
    simulation
    gdb-jtag
