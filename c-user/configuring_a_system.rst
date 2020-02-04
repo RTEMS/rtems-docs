@@ -947,6 +947,34 @@ NOTES:
     ``CONFIGURE_UNIFIED_WORK_AREAS`` so the system operates with a single pool
     of memory for both RTEMS and application memory allocations.
 
+.. index:: CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
+
+.. _CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION:
+
+CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
+---------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default, and thus the system initialization is
+    quiet.
+
+DESCRIPTION:
+    This configuration option enables to print some information during system
+    initialization.
+
+NOTES:
+    You may use this feature to debug system initialization issues.  The
+    printk() function is used to print the information.
+
 .. index:: CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 .. index:: clear C Program Heap
 .. index:: clear RTEMS Workspace
