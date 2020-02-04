@@ -94,13 +94,48 @@ A list of all initialization steps follows.  Some steps are optional depending
 on the requested feature set of the application.  The initialization steps are
 execute in the order presented here.
 
-RTEMS_SYSINIT_BSP_WORK_AREAS
-    The work areas consisting of C Program Heap and the RTEMS Workspace are
-    initialized by the Board Support Package.  This step is mandatory.
+RTEMS_SYSINIT_RECORD
+    Initialization of the event recording is the first initialization step.
+    This allows to record the further system initialization.  This step is
+    optional and depends on the :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS`
+    configuration option.
+
+RTEMS_SYSINIT_BSP_EARLY
+    The Board Support Package may perform an early platform initialization in
+    this step.  This step is optional.
+
+RTEMS_SYSINIT_MEMORY
+    The Board Support Package should initialize everything so that calls to
+    :c:func:`_Memory_Get()` can be made after this step.  This step is optional.
+
+RTEMS_SYSINIT_DIRTY_MEMORY
+    The free memory is dirtied in this step.  This step is optional and depends
+    on the :c:macro:`BSP_DIRTY_MEMORY` BSP option.
+
+RTEMS_SYSINIT_ISR_STACK
+    The stack checker initializes the ISR stacks in this step.  This step is
+    optional and depends on the :ref:`CONFIGURE_STACK_CHECKER_ENABLED`
+    configuration option.
+
+RTEMS_SYSINIT_PER_CPU_DATA
+    The per-CPU data is initialized in this step.  This step is mandatory.
+
+RTEMS_SYSINIT_SBRK
+    The Board Support Package may initialize the :c:func:`sbrk()` support in
+    this step.  This step is optional.
+
+RTEMS_SYSINIT_WORKSPACE
+    The workspace is initialized in this step.  This step is optional and
+    depends on the application configuration.
+
+RTEMS_SYSINIT_MALLOC
+    The C program heap is initialized in this step.  This step is optional and
+    depends on the application configuration.
 
 RTEMS_SYSINIT_BSP_START
-    Basic initialization step provided by the Board Support Package.  This step
-    is mandatory.
+    The Board Support Package should perform a general platform initialization
+    in this step (e.g. interrupt controller initialization).  This step is
+    mandatory.
 
 RTEMS_SYSINIT_CPU_COUNTER
     Initialization of the CPU counter hardware and support functions.  The CPU
@@ -113,7 +148,8 @@ RTEMS_SYSINIT_INITIAL_EXTENSIONS
     application configuration.
 
 RTEMS_SYSINIT_MP_EARLY
-    Early MPCI initialization.  This step is mandatory on MPCI configurations.
+    In MPCI configurations, an early MPCI initialization is performed in this
+    step.  This step is mandatory in MPCI configurations.
 
 RTEMS_SYSINIT_DATA_STRUCTURES
     This directive is called when the Board Support Package has completed its
@@ -124,7 +160,8 @@ RTEMS_SYSINIT_DATA_STRUCTURES
     Interface (MPCI) Table.
 
 RTEMS_SYSINIT_MP
-    MPCI initialization.  This step is mandatory on MPCI configurations.
+    In MPCI configurations, a general MPCI initialization is performed in this
+    step.  This step is mandatory in MPCI configurations.
 
 RTEMS_SYSINIT_USER_EXTENSIONS
     Initialization of the User Extensions object class.  This step is optional
@@ -134,6 +171,11 @@ RTEMS_SYSINIT_CLASSIC_TASKS
     Initialization of the Classic Tasks object class.  This step is optional
     and depends on the application configuration.
 
+RTEMS_SYSINIT_CLASSIC_TASKS_MP
+    In MPCI configurations, the Classic Tasks MPCI support is initialized in
+    this step.  This step is optional and depends on the application
+    configuration.
+
 RTEMS_SYSINIT_CLASSIC_TIMER
     Initialization of the Classic Timer object class.  This step is optional
     and depends on the application configuration.
@@ -142,10 +184,20 @@ RTEMS_SYSINIT_CLASSIC_SIGNAL
     Initialization of the Classic Signal support.  This step is optional and
     depends on the application configuration.
 
+RTEMS_SYSINIT_CLASSIC_SIGNAL_MP
+    In MPCI configurations, the Classic Signal MPCI support is initialized in
+    this step.  This step is optional and depends on the application
+    configuration.
+
 RTEMS_SYSINIT_CLASSIC_EVENT
     Initialization of the Classic Event support.  This step is optional and
     depends on the application configuration.  This step is only used on MPCI
     configurations.
+
+RTEMS_SYSINIT_CLASSIC_EVENT_MP
+    In MPCI configurations, the Classic Event MPCI support is initialized in
+    this step.  This step is optional and depends on the application
+    configuration.
 
 RTEMS_SYSINIT_CLASSIC_MESSAGE_QUEUE
     Initialization of the Classic Message Queue object class.  This step is
@@ -155,9 +207,19 @@ RTEMS_SYSINIT_CLASSIC_SEMAPHORE
     Initialization of the Classic Semaphore object class.  This step is
     optional and depends on the application configuration.
 
+RTEMS_SYSINIT_CLASSIC_SEMAPHORE_MP
+    In MPCI configurations, the Classic Semaphore MPCI support is initialized
+    in this step.  This step is optional and depends on the application
+    configuration.
+
 RTEMS_SYSINIT_CLASSIC_PARTITION
     Initialization of the Classic Partition object class.  This step is
     optional and depends on the application configuration.
+
+RTEMS_SYSINIT_CLASSIC_PARTITION_MP
+    In MPCI configurations, the Classic Partition MPCI support is initialized
+    in this step.  This step is optional and depends on the application
+    configuration.
 
 RTEMS_SYSINIT_CLASSIC_REGION
     Initialization of the Classic Region object class.  This step is optional
@@ -195,6 +257,10 @@ RTEMS_SYSINIT_POSIX_TIMER
     Initialization of the POSIX Timer object class.  This step is optional and
     depends on the application configuration.
 
+RTEMS_SYSINIT_POSIX_SHM
+    Initialization of the POSIX Shared Memory object class.  This step is
+    optional and depends on the application configuration.
+
 RTEMS_SYSINIT_POSIX_KEYS
     Initialization of the POSIX Keys object class.  This step is optional
     and depends on the application configuration.
@@ -220,7 +286,8 @@ RTEMS_SYSINIT_DRVMGR
     enabled.
 
 RTEMS_SYSINIT_MP_SERVER
-    MPCI server initialization.  This step is mandatory on MPCI configurations.
+    In MPCI configurations, the MPCI server is initialized in this step.  This
+    step is mandatory in MPCI configurations.
 
 RTEMS_SYSINIT_BSP_PRE_DRIVERS
     Initialization step performed right before device drivers are initialized.
