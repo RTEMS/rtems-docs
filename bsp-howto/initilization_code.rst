@@ -1,169 +1,126 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH
+.. Copyright (C) 2020 Sebastian Huber
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
-Initialization Code
-*******************
-
-.. warning::
-
-   This chapter contains outdated and confusing information.
+System Initialization
+*********************
 
 Introduction
 ============
 
-The initialization code is the first piece of code executed when there's a
-reset/reboot. Its purpose is to initialize the board for the application.  This
-chapter contains a narrative description of the initialization process followed
-by a description of each of the files and routines commonly found in the BSP
-related to initialization.  The remainder of this chapter covers special issues
-which require attention such as interrupt vector table and chip select
-initialization.
+The system initialization consists of a low-level initialization performed by
+the start code in the start file (:file:`start.o`) and a high-level
+initialization carried out by :c:func:`boot_card()`.  The final step of a
+successful high-level initialization is to switch to the initialization task
+and change into normal system mode with multi-threading enabled.  Errors during
+system initialization are fatal and end up in a call to :c:func:`_Terminate()`.
 
-Most of the examples in this chapter will be based on the SPARC/ERC32 and
-m68k/gen68340 BSP initialization code.  Like most BSPs, the initialization for
-these BSP is contained under the :file:`start` directory in the BSP source
-directory.  The BSP source code for these BSPs is in the following directories:
+Low-Level Initialization via Start Code in the Start File (start.o)
+===================================================================
 
-.. code-block:: shell
+The start code in the start file (:file:`start.o`) must be provided by the BSP.
+It is the first file presented to the linker and starts the process to link an
+executable (application image).  It should contain the entry symbol of the
+executable.  It is the responsibility of the linker script in conjunction with
+the compiler specifications file or compiler options to put the start code in
+the correct location in the executable.  The start code is typically written in
+assembly language since it will tinker with the stack pointer.  The general
+rule of thumb is that the start code in assembly language should do the minimum
+necessary to allow C code to execute to complete the initialization sequence.
 
-    bsps/m68k/gen68340
-    bsps/sparc/erc32
+The low-level system initialization may depend on a platform initialization
+carried out by a boot loader.  The low-level system initialization may perform
+the following steps:
 
-Both BSPs contain startup code written in assembly language and C.  The
-gen68340 BSP has its early initialization start code in the ``start340``
-subdirectory and its C startup code in the ``startup`` directory.  In the
-``start340`` directory are two source files.  The file ``startfor340only.s`` is
-the simpler of these files as it only has initialization code for a MC68340
-board.  The file ``start340.s`` contains initialization for a 68349 based board
-as well.
+* Initialize the initialization stack.  The initialization stack should use the
+  ISR stack area.  The symbols :c:macro:`_ISR_Stack_area_begin`,
+  :c:macro:`_ISR_Stack_area_end`, and :c:macro:`_ISR_Stack_size` should be used
+  to do this.
 
-Similarly, the ERC32 BSP has startup code written in assembly language and C.
-However, this BSP shares this code with other SPARC BSPs.  Thus the
-``Makefile.am`` explicitly references the following files for this
-functionality.
+* Initialize processor registers and modes.
 
-.. code-block:: shell
+* Initialize pins.
 
-    ../../sparc/shared/start.S
+* Initialize clocks (PLLs).
 
-.. note::
+* Initialize memory controllers.
 
-   In most BSPs, the directory named ``start340`` in the gen68340 BSP would be
-   simply named ``start`` or start followed by a BSP designation.
+* Initialize instruction, data, and unified caches.
 
-Board Initialization
-====================
+* Initialize memory management or protection units (MMU).
 
-This section describes the steps an application goes through from the time the
-first BSP code is executed until the first application task executes.
+* Initialize processor exceptions.
 
-The initialization flows from assembly language start code to the shared
-``bootcard.c`` framework then through the C Library, RTEMS, device driver
-initialization phases, and the context switch to the first application task.
-After this, the application executes until it calls ``exit``,
-``rtems_shutdown_executive``, or some other normal termination initiating
-routine and a fatal system state is reached.  The optional
-``bsp_fatal_extension`` initial extension can perform BSP specific system
-termination.
+* Copy the data sections from a read-only section to the runtime location.
 
-The routines invoked during this will be discussed and their location in the
-RTEMS source tree pointed out as we discuss each.
+* Set the BSS (``.bss``) section to zero.
 
-Start Code - Assembly Language Initialization
----------------------------------------------
+* Initialize the C runtime environment.
 
-The assembly language code in the directory ``start`` is the first part of the
-application to execute.  It is responsible for initializing the processor and
-board enough to execute the rest of the BSP.  This includes:
+* Call :c:func:`boot_card()` to hand over to the high-level initialization.
 
-- initializing the stack
+For examples of start file codes see:
 
-- zeroing out the uninitialized data section ``.bss``
+* `bsps/arm/shared/start/start.S <https://git.rtems.org/rtems/tree/bsps/arm/shared/start/start.S>`_
 
-- disabling external interrupts
+* `bsps/riscv/shared/start/start.S <https://git.rtems.org/rtems/tree/bsps/riscv/shared/start/start.S>`_
 
-- copy the initialized data from ROM to RAM
+High-Level Initialization via boot_card()
+=========================================
 
-The general rule of thumb is that the start code in assembly should do the
-minimum necessary to allow C code to execute to complete the initialization
-sequence.
+The high-level initialization is carried out by :c:func:`boot_card()`.  For the
+high-level initialization steps see the `Initialization Manager` chapter in the
+RTEMS Classic API Guide.  There are several system initialization steps which
+must be implemented by the BSP.
 
-The initial assembly language start code completes its execution by invoking
-the shared routine ``boot_card()``.
+Early BSP Initialization
+------------------------
 
-The label (symbolic name) associated with the starting address of the program
-is typically called ``start``.  The start object file is the first object file
-linked into the program image so it is ensured that the start code is at offset
-0 in the ``.text`` section.  It is the responsibility of the linker script in
-conjunction with the compiler specifications file to put the start code in the
-correct location in the application image.
+The BSP may provide a system initialization handler (order
+:c:macro:`RTEMS_SYSINIT_BSP_EARLY`) to perform an early BSP initialization.
+This handler is invoked before the memory information and high-level dynamic
+memory services (workspace and C program heap) are initialized.
 
-boot_card() - Boot the Card
----------------------------
+Memory Information
+------------------
 
-The ``boot_card()`` is the first C code invoked.  This file is the core
-component in the RTEMS BSP Initialization Framework and provides the proper
-sequencing of initialization steps for the BSP, RTEMS and device drivers. All
-BSPs use the same shared version of ``boot_card()`` which is located in the
-`bsps/shared/start/bootcard.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bootcard.c>`_
-file.
+The BSP must provide the memory information to the system with an
+implementation of the :c:func:`_Memory_Get()` function.  The BSP should use the
+default implementation in
+`bsps/shared/shared/start/bspgetworkarea-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspgetworkarea-default.c>`_.
+The memory information is used by low-level memory consumers such as the
+per-CPU data, the workspace, and the C program heap.  The BSP may use a system
+initialization handler (order :c:macro:`RTEMS_SYSINIT_MEMORY`) to set up the
+infrastructure used by :c:func:`_Memory_Get()`.
 
-The ``boot_card()`` routine performs the following functions:
+BSP Initialization
+------------------
 
-- It disables processor interrupts.
+The BSP must provide an implementation of the :c:func:`bsp_start()` function.
+This function is registered as a system initialization handler (order
+:c:macro:`RTEMS_SYSINIT_BSP_START`) in the module implementing
+:c:func:`boot_card()`.  The :c:func:`bsp_start()` function should perform a
+general platform initialization.  The interrupt controllers are usually
+initialized here.  The C program heap may be used in this handler.  It is not
+allowed to create any operating system objects, e.g. RTEMS semaphores or tasks.
+The BSP may register additional system initialization handlers in the module
+implementing :c:func:`bsp_start()`.
 
-- It sets the command line argument variables
-  for later use by the application.
+Error Handling
+==============
 
-- It invokes the routine ``rtems_initialize_executive()`` which never returns.
-  This routine will perform the system initialization through a linker set.
-  The important BSP-specific steps are outlined below.
+Errors during system initialization are fatal and end up in a call to
+:c:func:`_Terminate()`.  See also the `Fatal Error Manager` chapter in the
+RTEMS Classic API Guide.
 
-- Initialization of the RTEMS Workspace and the C Program Heap.  Usually the
-  default implementation in
-  `bsps/shared/start/bspgetworkarea-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspgetworkarea-default.c>`_
-  should be sufficient.  Custom implementations can use
-  ``bsp_work_area_initialize_default()`` or
-  ``bsp_work_area_initialize_with_table()`` available as inline functions from
-  ``#include <bsp/bootcard.h>``.
+The BSP may use BSP-specific fatal error codes, see
+`<bsp/fatal.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/fatal.h>`_.
 
-- Invocation of the BSP-specific routine ``bsp_start()`` which is written in C and
-  thus able to perform more advanced initialization.  Often MMU, bus and
-  interrupt controller initialization occurs here.  Since the RTEMS Workspace
-  and the C Program Heap was already initialized by
-  ``bsp_work_area_initialize()``, this routine may use ``malloc()``, etc.
-
-- Specific initialization steps can be registered via the
-  ``RTEMS_SYSINIT_ITEM()`` provided by ``#include <rtems/sysinit.h>``.
-
-bsp_work_area_initialize() - BSP Specific Work Area Initialization
-------------------------------------------------------------------
-
-This is the first BSP specific C routine to execute during system
-initialization.  It must initialize the support for allocating memory from the
-C Program Heap and RTEMS Workspace commonly referred to as the work areas.
-Many BSPs place the work areas at the end of RAM although this is certainly not
-a requirement.  Usually the default implementation in
-`bsps/shared/start/bspgetworkarea-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspgetworkarea-default.c>`_
-should be sufficient.  Custom implementations can use
-``bsp_work_area_initialize_default()`` or
-``bsp_work_area_initialize_with_table()`` available as inline functions from
-``#include <bsp/bootcard.h>``.
-
-bsp_start() - BSP Specific Initialization
------------------------------------------
-
-This is the second BSP specific C routine to execute during system
-initialization.  It is called right after ``bsp_work_area_initialize()``.  The
-``bsp_start()`` routine often performs required fundamental hardware
-initialization such as setting bus controller registers that do not have a
-direct impact on whether or not C code can execute.  The interrupt controllers
-are usually initialized here.  The source code for this routine is usually
-found in the file ``bsps/${RTEMS_CPU}/${RTEMS_BSP}/start.c``.
-It is not allowed to create any operating system objects, e.g. RTEMS
-semaphores.
-
-After completing execution, this routine returns to the ``boot_card()``
-routine.  In case of errors, the initialization should be terminated via
-``bsp_fatal()``.
+The BSP should provide an initial extension which implements a fatal error
+handler.  It should use the default implementation provided by
+`<bsp/default-initial-extension.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/default-initial-extension.h>`_ and
+`bspfatal-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspfatal-default.c>`_.
+If the default implementation is used, the BSP must implement a
+:c:func:`bsp_reset()` function which should reset the platform.
