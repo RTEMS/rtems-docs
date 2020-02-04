@@ -206,13 +206,6 @@ macros:
   stack size as recommended when using this BSP.  This is sometimes required
   when the BSP developer has knowledge of stack intensive interrupt handlers.
 
-.. index:: BSP_ZERO_WORKSPACE_AUTOMATICALLY
-
-- ``BSP_ZERO_WORKSPACE_AUTOMATICALLY`` is defined when the BSP requires that
-  RTEMS zero out the RTEMS C Program Heap at initialization.  If the memory is
-  already zeroed out by a test sequence or boot ROM, then the boot time can be
-  reduced by not zeroing memory twice.
-
 .. index:: BSP_DEFAULT_UNIFIED_WORK_AREAS
 
 - ``BSP_DEFAULT_UNIFIED_WORK_AREAS`` is defined when the BSP recommends that

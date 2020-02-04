@@ -996,8 +996,8 @@ RANGE:
     Defined or undefined.
 
 DEFAULT VALUE:
-    This is not defined by default, unless overridden by the BSP.  The default
-    is *NOT* to zero out the RTEMS Workspace or C Program Heap.
+    This is not defined by default.  The default is *NOT* to zero out the RTEMS
+    Workspace or C Program Heap.
 
 DESCRIPTION:
     This macro indicates whether RTEMS should zero the RTEMS Workspace and C
@@ -3186,34 +3186,6 @@ NOTES:
     confused with the ``CONFIGURE_MAXIMUM_DRIVERS`` option.  This parameter
     only impacts the devFS and thus is only used by ``<rtems/confdefs.h>`` when
     ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM`` is specified.
-
-.. index:: BSP_ZERO_WORKSPACE_AUTOMATICALLY
-
-.. _BSP_ZERO_WORKSPACE_AUTOMATICALLY:
-
-BSP_ZERO_WORKSPACE_AUTOMATICALLY
---------------------------------
-
-CONSTANT:
-    ``BSP_ZERO_WORKSPACE_AUTOMATICALLY``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This option is BSP specific.
-
-DESCRIPTION:
-    If ``BSP_ZERO_WORKSPACE_AUTOMATICALLY`` is defined by the BSP and
-    ``CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY`` is not defined by the
-    application, then the workspace will be zeroed automatically.
-
-NOTES:
-    Zeroing memory can add significantly to system boot time. It is not
-    necessary for RTEMS but is often assumed by support libraries.
 
 .. index:: CONFIGURE_BSP_PREREQUISITE_DRIVERS
 
