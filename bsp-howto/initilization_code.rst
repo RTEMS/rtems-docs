@@ -14,8 +14,9 @@ The system initialization consists of a low-level initialization performed by
 the start code in the start file (:file:`start.o`) and a high-level
 initialization carried out by :c:func:`boot_card()`.  The final step of a
 successful high-level initialization is to switch to the initialization task
-and change into normal system mode with multi-threading enabled.  Errors during
-system initialization are fatal and end up in a call to :c:func:`_Terminate()`.
+and change into the normal system mode with multi-threading enabled.  Errors
+during system initialization are fatal and end up in a call to
+:c:func:`_Terminate()`.
 
 Low-Level Initialization via Start Code in the Start File (start.o)
 ===================================================================
