@@ -10,8 +10,8 @@ RTEMS Classic API Guide (|version|).
 
     | |copy| 2017 Chris Johns
     | |copy| 2017 Kuan-Hsun Chen
-    | |copy| 2016, 2018 embedded brains GmbH
-    | |copy| 2016, 2018 Sebastian Huber
+    | |copy| 2015, 2020 embedded brains GmbH
+    | |copy| 2015, 2020 Sebastian Huber
     | |copy| 2011 Petr Benes
     | |copy| 2010 Gedare Bloom
     | |copy| 1988, 2018 On-Line Applications Research Corporation (OAR)

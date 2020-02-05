@@ -1,6 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1989, 2014 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 2015, 2020 embedded brains GmbH
+.. Copyright (C) 2015, 2020 Sebastian Huber
 
 .. index:: linkersets
 
@@ -41,6 +42,8 @@ The following macros are provided to create, populate and use linker sets.
 
 - RTEMS_LINKER_ROSET_ITEM_DECLARE_ - Declares a read-only linker set item
 
+- RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE_ - Declares an ordered read-only linker set item
+
 - RTEMS_LINKER_ROSET_ITEM_REFERENCE_ - References a read-only linker set item
 
 - RTEMS_LINKER_ROSET_ITEM_ - Defines a read-only linker set item
@@ -54,6 +57,8 @@ The following macros are provided to create, populate and use linker sets.
 - RTEMS_LINKER_RWSET_ - Defines a read-write linker set
 
 - RTEMS_LINKER_RWSET_ITEM_DECLARE_ - Declares a read-write linker set item
+
+- RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE_ - Declares an ordered read-write linker set item
 
 - RTEMS_LINKER_RWSET_ITEM_REFERENCE_ - References a read-write linker set item
 
@@ -346,13 +351,30 @@ CALLING SEQUENCE:
 
 DESCRIPTION:
     This macro generates a declaration of an item contained in the read-only
-    linker set identified by ``set``.  The ``set`` parameter itself must be a
-    valid C designator on which no macro expansion is performed.  It uniquely
-    identifies the linker set. The ``type`` parameter defines the type of the
-    linker set items.  The type must be the same for all macro invocations of a
-    particular linker set. The ``item`` parameter itself must be a valid C
-    designator on which no macro expansion is performed.  It uniquely
-    identifies an item in the linker set.
+    linker set identified by ``set``.  For a description of the ``set``,
+    ``type``, and ``item`` parameters see :ref:`RTEMS_LINKER_ROSET_ITEM`.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE
+
+.. _RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE:
+
+RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE - Declares an ordered read-only linker set item
+---------------------------------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE( set, type, item, order );
+
+DESCRIPTION:
+    This macro generates a declaration of an ordered item contained in the
+    read-only linker set identified by ``set``.  For a description of the
+    ``set``, ``type``, ``item``, and ``order`` parameters see
+    :ref:`RTEMS_LINKER_ROSET_ITEM_ORDERED`.
 
 .. raw:: latex
 
@@ -553,13 +575,30 @@ CALLING SEQUENCE:
 
 DESCRIPTION:
     This macro generates a declaration of an item contained in the read-write
-    linker set identified by ``set``.  The ``set`` parameter itself must be a
-    valid C designator on which no macro expansion is performed.  It uniquely
-    identifies the linker set. The ``type`` parameter defines the type of the
-    linker set items.  The type must be the same for all macro invocations of a
-    particular linker set. The ``item`` parameter itself must be a valid C
-    designator on which no macro expansion is performed.  It uniquely
-    identifies an item in the linker set.
+    linker set identified by ``set``.  For a description of the ``set``,
+    ``type``, and ``item`` parameters see :ref:`RTEMS_LINKER_RWSET_ITEM`.
+
+.. raw:: latex
+
+   \clearpage
+
+.. index:: RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE
+
+.. _RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE:
+
+RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE - Declares an ordered read-write linker set item
+----------------------------------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE( set, type, item, order );
+
+DESCRIPTION:
+    This macro generates a declaration of an ordered item contained in the
+    read-write linker set identified by ``set``.  For a description of the
+    ``set``, ``type``, ``item``, and ``order`` parameters see
+    :ref:`RTEMS_LINKER_RWSET_ITEM_ORDERED`.
 
 .. raw:: latex
 
