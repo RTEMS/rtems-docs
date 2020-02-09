@@ -1431,6 +1431,8 @@ must be persistent throughout the test run.
 
     typedef struct {
         const char *name;
+        char *buf;
+        size_t buf_size;
         T_putchar putchar;
         void *putchar_arg;
         T_verbosity verbosity;
@@ -1441,8 +1443,11 @@ must be persistent throughout the test run.
 
 With the test suite configuration you can specifiy the test suite name, the put
 character handler used the output the test report, the initial verbosity, the
-monotonic time provider and an optional set of test suite actions.  The test
-suite actions are called with the test suite name for test suite run events
+monotonic time provider and an optional set of test suite actions.  Only the
+test runner calls the put character handler, other tasks or interrupt handlers
+write to a buffer which is emptied by the test runner on demand.  You have to
+specifiy this buffer in the test configuration.  The test suite actions are
+called with the test suite name for test suite run events
 (`T_EVENT_RUN_INITIALIZE` and `T_EVENT_RUN_FINALIZE`) and the test case name
 for the test case events (`T_EVENT_CASE_EARLY`, `T_EVENT_CASE_BEGIN`,
 `T_EVENT_CASE_END` and `T_EVENT_CASE_LATE`).
