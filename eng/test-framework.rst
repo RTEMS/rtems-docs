@@ -982,10 +982,10 @@ fails.
     P:0:0:UI1:test-psx.c:13
     E:stat:N:1:F:0
 
-Custom Log Messages
--------------------
+Log Messages and Formatted Output
+---------------------------------
 
-You can print custom log messages with the `T_log()` function:
+You can print log messages with the `T_log()` function:
 
 .. code-block:: c
 
@@ -994,23 +994,39 @@ You can print custom log messages with the `T_log()` function:
 A newline is automatically added to terminate the log message line.
 
 .. code-block:: c
-    :caption: Custom Log Message Example
+    :caption: Log Message Example
 
     #include <t.h>
 
     T_TEST_CASE(log)
     {
-        T_log(T_NORMAL, "a custom message %i, %i, %i", 1, 2, 3);
+        T_log(T_NORMAL, "a log message %i, %i, %i", 1, 2, 3);
         T_set_verbosity(T_QUIET);
         T_log(T_NORMAL, "not verbose enough");
     }
 
 .. code-block:: none
-    :caption: Custom Log Message Report
+    :caption: Log Message Report
 
     B:log
-    L:a custom message 1, 2, 3
+    L:a log message 1, 2, 3
     E:log:N:0:F:0
+
+You can use the following functions to print formatted output:
+
+.. code-block:: c
+
+    int T_printf(char const *, ...);
+
+    int T_vprintf(char const *, va_list);
+
+    int T_snprintf(char *, size_t, const char *, ...);
+
+In contrast to the corresponding standard C library functions, floating-point
+and exotic formats may be not supported.  On some architectures supported by
+RTEMS, floating-point operations are only supported in special tasks and may be
+forbidden in interrupt context.  The formatted output functions provided by the
+test framework work in every context.
 
 Time Services
 -------------
