@@ -425,6 +425,38 @@ General System Configuration
 This section defines the general system configuration options supported by
 ``<rtems/confdefs.h>``.
 
+.. index:: CONFIGURE_DIRTY_MEMORY
+
+.. _CONFIGURE_DIRTY_MEMORY:
+
+CONFIGURE_DIRTY_MEMORY
+----------------------
+
+CONSTANT:
+    ``CONFIGURE_DIRTY_MEMORY``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    By default, the memory used by the RTEMS Workspace and the C Program Heap
+    is uninitialized memory.
+
+DESCRIPTION:
+    This macro indicates whether RTEMS should dirty the memory used by the
+    RTEMS Workspace and the C Program Heap as part of its initialization.  If
+    defined, the memory areas are dirtied with a ``0xCF`` byte pattern.
+    Otherwise, they are not.
+
+NOTES:
+    Dirtying memory can add significantly to system boot time.  It may assist
+    in finding code that assumes memory starts set to zero.  In case
+    :ref:`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY` is also defined, then the
+    memory is first dirtied and then zeroed.
+
 .. index:: CONFIGURE_EXTRA_TASK_STACKS
 .. index:: memory for task tasks
 
@@ -1006,7 +1038,9 @@ DESCRIPTION:
 
 NOTES:
     Zeroing memory can add significantly to system boot time. It is not
-    necessary for RTEMS but is often assumed by support libraries.
+    necessary for RTEMS but is often assumed by support libraries.  In case
+    :ref:`CONFIGURE_DIRTY_MEMORY` is also defined, then the memory is first
+    dirtied and then zeroed.
 
 Classic API Configuration
 =========================
