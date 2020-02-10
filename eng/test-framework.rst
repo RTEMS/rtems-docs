@@ -1023,7 +1023,7 @@ You can use the following functions to print formatted output:
     int T_snprintf(char *, size_t, const char *, ...);
 
 In contrast to the corresponding standard C library functions, floating-point
-and exotic formats may be not supported.  On some architectures supported by
+and exotic formats may not be supported.  On some architectures supported by
 RTEMS, floating-point operations are only supported in special tasks and may be
 forbidden in interrupt context.  The formatted output functions provided by the
 test framework work in every context.
