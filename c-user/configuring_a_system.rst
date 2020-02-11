@@ -453,7 +453,7 @@ DESCRIPTION:
 
 NOTES:
     Dirtying memory can add significantly to system boot time.  It may assist in
-    finding code that incorrectly assumes the content of free memory areas is
+    finding code that incorrectly assumes the contents of free memory areas is
     cleared to zero during system initialization.  In case
     :ref:`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY` is also defined, then the
     memory is first dirtied and then zeroed.
