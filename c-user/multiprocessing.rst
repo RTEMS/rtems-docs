@@ -279,11 +279,8 @@ following prototype:
 
 .. code-block:: c
 
-    rtems_mpci_entry user_mpci_initialization(
-        rtems_configuration_table *configuration
-    );
+    rtems_mpci_entry user_mpci_initialization( void );
 
-where configuration is the address of the user's Configuration Table.
 Operations on global objects cannot be performed until this component is
 invoked.  The INITIALIZATION component is invoked only once in the life of any
 system.  If the MPCI layer cannot be successfully initialized, the fatal error
