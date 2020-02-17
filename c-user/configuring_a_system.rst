@@ -1575,34 +1575,6 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_HAS_OWN_INIT_TASK_TABLE
-
-.. _CONFIGURE_HAS_OWN_INIT_TASK_TABLE:
-
-CONFIGURE_HAS_OWN_INIT_TASK_TABLE
----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_HAS_OWN_INIT_TASK_TABLE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_HAS_OWN_INIT_TASK_TABLE`` is defined if the user wishes to
-    define their own Classic API Initialization Tasks Table.  This table should
-    be named ``Initialization_tasks``.
-
-NOTES:
-    This is a seldom used configuration parameter. The most likely use case is
-    when an application desires to have more than one initialization task.
-
 POSIX API Configuration
 =======================
 
@@ -4872,6 +4844,18 @@ CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE
 
 This configuration option was present in all RTEMS versions since at least 1995
 and is obsolete since RTEMS 5.1.
+
+.. index:: CONFIGURE_HAS_OWN_INIT_TASK_TABLE
+
+.. _CONFIGURE_HAS_OWN_INIT_TASK_TABLE:
+
+CONFIGURE_HAS_OWN_INIT_TASK_TABLE
+---------------------------------
+
+This configuration option was present in all RTEMS versions since at least 1995
+and is obsolete since RTEMS 5.1.  If you used this configuration option or you
+think that there should be a way to configure more than one Classic API
+initialization task, then please ask on the :r:list:`users`.
 
 .. index:: CONFIGURE_HAS_OWN_MOUNT_TABLE
 
