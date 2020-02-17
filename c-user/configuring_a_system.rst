@@ -1925,34 +1925,6 @@ NOTES:
     Task/Thread Stack Memory Above Minimum` for more information about
     ``CONFIGURE_EXTRA_TASK_STACKS``.
 
-.. index:: CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
-
-.. _CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE:
-
-CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
------------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE`` is defined if the user wishes
-    to define their own POSIX API Initialization Threads Table.  This table
-    should be named ``POSIX_Initialization_threads``.
-
-NOTES:
-    This is a seldom used configuration parameter. The most likely use case is
-    when an application desires to have more than one initialization task.
-
 Configuring Custom Task Stack Allocation
 ========================================
 
@@ -4966,12 +4938,17 @@ CONFIGURE_MAXIMUM_POSIX_SPINLOCKS
 
 This configuration option is obsolete since RTEMS 5.1.
 
-.. index:: CONFIGURE_TERMIOS_DISABLED
+.. index:: CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
 
-CONFIGURE_TERMIOS_DISABLED
---------------------------
+.. _CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE:
 
-This configuration option is obsolete since RTEMS 5.1.
+CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
+-----------------------------------------
+
+This configuration option was present in all RTEMS versions since at least 1995
+and is obsolete since RTEMS 5.1.  If you used this configuration option or you
+think that there should be a way to configure more than one POSIX initialization
+thread, then please ask on the  :r:list:`users`.
 
 .. index:: CONFIGURE_SMP_APPLICATION
 
@@ -4988,3 +4965,10 @@ CONFIGURE_SMP_MAXIMUM_PROCESSORS
 
 This configuration option was introduced in RTEMS 4.11.0 and is obsolete since
 RTEMS 5.1.  See also :ref:`CONFIGURE_MAXIMUM_PROCESSORS`.
+
+.. index:: CONFIGURE_TERMIOS_DISABLED
+
+CONFIGURE_TERMIOS_DISABLED
+--------------------------
+
+This configuration option is obsolete since RTEMS 5.1.
