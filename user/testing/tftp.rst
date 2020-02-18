@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
 
+.. _tftp-and-uboot:
+
 TFTP and U-Boot
 ---------------
 

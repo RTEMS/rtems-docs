@@ -1,0 +1,34 @@
+'
+' TFTP Proxy 1:
+'
+' Copyright (c) 2020 Chris Johns <chrisj@rtems.org>
+' All rights reserved.
+'
+@startuml
+
+ agent Beaglebone as bbb
+ agent MicroZed as uzed
+ agent RPi2 as rpi2
+
+ rectangle Proxy {
+  agent "TFTP Proxy" as proxy
+ }
+
+ rectangle "CI Tester" as tester {
+  agent "Beaglebone Black" as bbb_proxy
+  agent "MicroZed (ARM Zynq)" as uzed_proxy
+ }
+
+ rectangle "Developer" as devel {
+  agent "RasberryPi 2" as rpi2_proxy
+ }
+
+ bbb -- proxy : "(10.0.0.10:69)"
+ uzed -- proxy : "(10.0.0.10:69)"
+ rpi2 -- proxy : "(10.0.0.10:69)"
+
+ proxy .. bbb_proxy : (10.0.0.100:9001)
+ proxy .. uzed_proxy : (10.0.0.100:9002)
+ proxy .. rpi2_proxy : (10.0.0.110:9001)
+
+@enduml

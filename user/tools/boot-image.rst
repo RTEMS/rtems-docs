@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2019 Chris Johns <chrisj@rtems.org>
 
-.. _RTEMSExecutableInfomation:
+.. _rtems-boot-image:
 
 RTEMS Boot Image
 ================

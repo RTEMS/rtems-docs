@@ -23,3 +23,4 @@ developers.
    bsp-builder
    tester
    boot-image
+   tftp-proxy
