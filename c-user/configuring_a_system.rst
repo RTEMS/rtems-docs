@@ -618,12 +618,22 @@ DEFAULT VALUE:
     to 255.
 
 DESCRIPTION:
-   This configuration parameter specified the maximum numeric priority of any
-   task in the system and one less that the number of priority levels in the
-   system.
+   For the schedulers
 
-   Reducing the number of priorities in the system reduces the amount of memory
-   allocated from the RTEMS Workspace.
+   * :ref:`SchedulerPriority`, which is the default in uniprocessor
+     configurations and can be configured through the
+     :ref:`CONFIGURE_SCHEDULER_PRIORITY` configuration option,
+
+   * :ref:`SchedulerSMPPriority` which can be configured through the
+     :ref:`CONFIGURE_SCHEDULER_PRIORITY_SMP` configuration option, and
+
+   * :ref:`SchedulerSMPPriorityAffinity` which can be configured through the
+     :ref:`CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP` configuration option
+
+   this configuration option specifies the maximum numeric priority of any task
+   for these schedulers and one less that the number of priority levels for
+   these schedulers.  For all other schedulers provided by RTEMS, this
+   configuration option has no effect.
 
 NOTES:
    The numerically greatest priority is the logically lowest priority in the
@@ -632,11 +642,13 @@ NOTES:
    Priority zero (0) is reserved for internal use by RTEMS and is not available
    to applications.
 
-   With some schedulers, reducing the number of priorities can reduce the
-   amount of memory used by the scheduler. For example, the Deterministic
-   Priority Scheduler (DPS) used by default uses three pointers of storage per
-   priority level. Reducing the number of priorities from 256 levels to
-   sixteen (16) can reduce memory usage by about three (3) kilobytes.
+   Reducing the number of priorities through this configuration option reduces
+   the amount of memory allocated by the schedulers listed above.  These
+   schedulers use a chain control structure per priority and this structure
+   consists of three pointers.  On a 32-bit architecture, the allocated memory
+   is 12 bytes * (``CONFIGURE_MAXIMUM_PRIORITY`` + 1), e.g. 3072 bytes for 256
+   priority levels (default), 48 bytes for 4 priority levels
+   (``CONFIGURE_MAXIMUM_PRIORITY == 3``).
 
 .. index:: CONFIGURE_MAXIMUM_PROCESSORS
 
@@ -1471,7 +1483,7 @@ DATA TYPE:
     RTEMS Task Priority (``rtems_task_priority``).
 
 RANGE:
-    One (1) to CONFIGURE_MAXIMUM_PRIORITY.
+    One (1) to the maximum user priority value of the scheduler.
 
 DEFAULT VALUE:
     The default value is 1, which is the highest priority in the Classic API.
@@ -3541,6 +3553,9 @@ NOTES:
     :ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>` is
     exactly one.
 
+    The memory allocated for this scheduler depends on the
+    :ref:`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
+
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
 
 .. _CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP:
@@ -3576,6 +3591,9 @@ NOTES:
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for up to 32 processors.
 
+    The memory allocated for this scheduler depends on the
+    :ref:`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
+
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_SMP
 
 .. _CONFIGURE_SCHEDULER_PRIORITY_SMP:
@@ -3609,6 +3627,9 @@ NOTES:
     In case no explicit :ref:`clustered scheduler configuration
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for up to 32 processors.
+
+    The memory allocated for this scheduler depends on the
+    :ref:`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
 
 .. index:: CONFIGURE_SCHEDULER_SIMPLE
 
