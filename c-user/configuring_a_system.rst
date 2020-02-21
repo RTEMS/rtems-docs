@@ -2180,10 +2180,49 @@ NOTES:
                          500, sizeof(other_message_type) \
                      )
 
-File System Configuration Parameters
-====================================
+Filesystem Configuration
+========================
 
-This section defines File System related configuration parameters.
+By default, the In-Memory Filesystem (IMFS) is used as the base filesystem (also
+known as root filesystem).  In order to save some memory for your application,
+you can disable the filesystem support with the
+:ref:`CONFIGURE_APPLICATION_DISABLE_FILESYSTEM` configuration option.
+Alternatively, you can strip down the features of the base filesystem with the
+:ref:`CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM` and
+:ref:`CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM` configuration options.  These
+three configuration options are mutually exclusive.  They are intended for an
+advanced application configuration.
+
+Features of the IMFS can be disabled and enabled with the following
+configuration options:
+
+* :ref:`CONFIGURE_IMFS_DISABLE_CHMOD`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_CHOWN`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_LINK`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_MKNOD`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_MKNOD_FILE`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_MOUNT`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_READDIR`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_READLINK`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_RENAME`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_RMNOD`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_SYMLINK`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_UNMOUNT`
+
+* :ref:`CONFIGURE_IMFS_DISABLE_UTIME`
+
+* :ref:`CONFIGURE_IMFS_ENABLE_MKFIFO`
 
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 
