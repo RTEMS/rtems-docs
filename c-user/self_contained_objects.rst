@@ -29,7 +29,7 @@ has some weaknesses:
 * The object identifier is only known at run-time.  This hinders compiler
   optimizations and static analysis.
 
-* The objects reside in a table, e.g. they are suspect to false sharing of
+* The objects reside in a table, e.g. they are subject to false sharing of
   cache lines :cite:`Drepper:2007:Memory`.
 
 * The object operations use a rich set of options and attributes.  For each
