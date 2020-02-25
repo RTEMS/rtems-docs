@@ -37,6 +37,9 @@ The directives provided by the scheduler manager are:
 
 - rtems_scheduler_get_maximum_priority_ - Get maximum task priority of a scheduler
 
+- rtems_scheduler_map_priority_to_posix_ - Map task priority to POSIX thread
+  prority
+
 - rtems_scheduler_get_processor_ - Get current processor index
 
 - rtems_scheduler_get_processor_maximum_ - Get processor maximum
@@ -693,6 +696,43 @@ DIRECTIVE STATUS CODES:
 DESCRIPTION:
     Returns the maximum task priority of the specified scheduler instance in
     ``priority``.
+
+NOTES:
+    None.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_scheduler_map_priority_to_posix:
+
+SCHEDULER_MAP_PRIORITY_TO_POSIX - Map task priority to POSIX thread prority
+---------------------------------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_scheduler_map_priority_to_posix(
+            rtems_id             scheduler_id,
+            rtems_task_priority  priority,
+            int                 *posix_priority
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+     :class: rtems-table
+
+     * - ``RTEMS_SUCCESSFUL``
+       - Successful operation.
+     * - ``RTEMS_INVALID_ADDRESS``
+       - The ``posix_priority`` parameter is ``NULL``.
+     * - ``RTEMS_INVALID_ID``
+       - Invalid scheduler instance identifier.
+     * - ``RTEMS_INVALID_PRIORITY``
+       - Invalid task priority.
+
+DESCRIPTION:
+    Maps a task priority to the corresponding POSIX thread priority.
 
 NOTES:
     None.
