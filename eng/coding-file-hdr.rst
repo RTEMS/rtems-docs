@@ -7,7 +7,7 @@ File Templates
 ==============
 
 Every source code file shall have a copyright and license block.  Corresponding
-to the licence, every file shall have an
+to the license, every file shall have an
 `SPDX License Identifier <https://spdx.org/ids-how>`_ in the first possible line
 of the file.  C/C++ files should have a Doxygen file comment block.
 
