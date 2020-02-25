@@ -21,7 +21,7 @@ Glossary
       In this document, software which makes use of RTEMS.
 
    ASR
-      see Asynchronous Signal Routine.
+      An acronym for :term:`Asynchronous Signal Routine`.
 
    asynchronous
       Not related in order or timing to other occurrences in the system.
@@ -203,7 +203,7 @@ Glossary
       system which do not own the memory.
 
    FIFO
-      An acronym for First In First Out.
+      An acronym for :term:`First In First Out`.
 
    First In First Out
       A discipline for manipulating entries in a data structure.
