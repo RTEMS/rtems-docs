@@ -177,6 +177,9 @@ Glossary
         The address at which a function or task begins to execute.  In C, the
         entry point of a function is the function's name.
 
+    error code
+        This term has the same meaning as :term:`status code`.
+
     events
         A method for task communication and synchronization. The directives
         provided by the event manager are used to service events.
@@ -540,9 +543,6 @@ Glossary
         The manipulation of an object which does not reside on the same node as
         the calling task.
 
-    return code
-        Also known as error code or return value.
-
     resource
         A hardware or software entity to which access must be controlled.
 
@@ -552,8 +552,11 @@ Glossary
         available for scheduling.
 
     return code
-        A value returned by RTEMS directives to indicate the completion status of
-        the directive.
+        This term has the same meaning as :term:`status code`.
+
+    return value
+        The value returned by a function.  A return value may be a
+        :term:`status code`.
 
     RNCB
         An acronym for :term:`Region Control Block`.
@@ -653,7 +656,10 @@ Glossary
         store return information and local variables.
 
     status code
-        Also known as error code or return value.
+        A status code indicates the completion status of an operation.  For
+        example most RTEMS directives return a status code through the
+        :term:`return value` to indicate a successful operation or error
+        conditions.
 
     suspend
         A term used to describe a task that is not competing for the CPU because it
