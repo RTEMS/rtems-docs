@@ -57,24 +57,24 @@ Glossary
         satisfied.  Blocked tasks are not an element of the set of ready tasks of
         a scheduler instance.
 
-    broadcast
-        To simultaneously send a message to a logical set of destinations.
-
     Board Support Package
         A collection of device initialization and control routines specific to a
         particular type of board or collection of boards.
 
-    buffer
-        A fixed length block of memory allocated from a partition.
+    broadcast
+        To simultaneously send a message to a logical set of destinations.
 
     BSP
         An acronym for :term:`Board Support Package`.
 
-    C11
-        The standard ISO/IEC 9899:2011.
+    buffer
+        A fixed length block of memory allocated from a partition.
 
     C++11
         The standard ISO/IEC 14882:2011.
+
+    C11
+        The standard ISO/IEC 9899:2011.
 
     calling convention
         The processor and compiler dependent rules which define the mechanism
@@ -142,6 +142,10 @@ Glossary
     device driver
         Control software for special peripheral devices used by the application.
 
+    Device Driver Table
+        A table which contains the entry points for each of the configured device
+        drivers.
+
     directives
         RTEMS' provided routines that provide support mechanisms for real-time
         applications.
@@ -154,10 +158,6 @@ Glossary
         The state entered by a task after it is created and before it has been
         started.
 
-    Device Driver Table
-        A table which contains the entry points for each of the configured device
-        drivers.
-
     dual-ported
         A term used to describe memory which can be accessed at two different
         addresses.
@@ -167,15 +167,15 @@ Glossary
         For example, the software in a fuel-injection control system is an
         embedded application found in many late-model automobiles.
 
+    entry point
+        The address at which a function or task begins to execute.  In C, the
+        entry point of a function is the function's name.
+
     envelope
         A buffer provided by the MPCI layer to RTEMS which is used to pass
         messages between nodes in a multiprocessor system.  It typically contains
         routing information needed by the MPCI.  The contents of an envelope are
         referred to as a packet.
-
-    entry point
-        The address at which a function or task begins to execute.  In C, the
-        entry point of a function is the function's name.
 
     error code
         This term has the same meaning as :term:`status code`.
@@ -251,6 +251,9 @@ Glossary
     homogeneous
         A multiprocessor computer system composed of a single type of processor.
 
+    I/O
+        An acronym for Input/Output.
+
     ID
         An RTEMS assigned identification tag used to access an active object.
 
@@ -277,9 +280,6 @@ Glossary
 
     Interrupt Service Routine
         An ISR is invoked by the CPU to process a pending interrupt.
-
-    I/O
-        An acronym for Input/Output.
 
     ISR
         An acronym for :term:`Interrupt Service Routine`.
@@ -499,14 +499,14 @@ Glossary
     PXCB
         An acronym for :term:`Proxy Control Block`.
 
+    QCB
+        An acronym for :term:`Message Queue Control Block`.
+
     quantum
         The application defined unit of time in which the processor is allocated.
 
     queue
         Alternate term for message queue.
-
-    QCB
-        An acronym for :term:`Message Queue Control Block`.
 
     ready task
         A task occupies this state when it is available to be given control of a
@@ -629,17 +629,17 @@ Glossary
     SMP
         An acronym for Symmetric Multiprocessing.
 
-    SMP locks
-        The SMP locks ensure mutual exclusion on the lowest level and are a
-        replacement for the sections of disabled interrupts.  Interrupts are
-        usually disabled while holding an SMP lock.  They are implemented using
-        atomic operations.  Currently a ticket lock is used in RTEMS.
-
     SMP barriers
         The SMP barriers ensure that a defined set of independent threads of
         execution on a set of processors reaches a common synchronization point
         in time.  They are implemented using atomic operations.  Currently a
         sense barrier is used in RTEMS.
+
+    SMP locks
+        The SMP locks ensure mutual exclusion on the lowest level and are a
+        replacement for the sections of disabled interrupts.  Interrupts are
+        usually disabled while holding an SMP lock.  They are implemented using
+        atomic operations.  Currently a ticket lock is used in RTEMS.
 
     soft real-time system
         A real-time system in which a missed deadline does not compromise the
@@ -731,13 +731,13 @@ Glossary
         A data structure associated with each timer used by RTEMS to manage that
         timer.
 
+    timeslice
+        The application defined unit of time in which the processor is allocated.
+
     timeslicing
         A task scheduling discipline in which tasks of equal priority are
         executed for a specific period of time before being preempted by another
         task.
-
-    timeslice
-        The application defined unit of time in which the processor is allocated.
 
     TLS
         An acronym for Thread-Local Storage :cite:`Drepper:2013:TLS`.  TLS is
@@ -755,12 +755,12 @@ Glossary
     TTAS
         An acronym for Test and Test-And-Set.
 
+    User Extension Table
+        A table which contains the entry points for each user extensions.
+
     user extensions
         Software routines provided by the application to enhance the
         functionality of RTEMS.
-
-    User Extension Table
-        A table which contains the entry points for each user extensions.
 
     User Initialization Tasks Table
         A table which contains the information needed to create and start each of
