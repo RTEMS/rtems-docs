@@ -1,5 +1,8 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2017 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
+
 Glossary
 ********
 
