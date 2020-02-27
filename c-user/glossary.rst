@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2017 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2017, 2019 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
 
 Glossary
@@ -8,6 +8,9 @@ Glossary
 
 .. glossary::
     :sorted:
+
+    ABI
+        An acronym for Application Binary Interface.
 
     active
         A term used to describe an object which has been created by an
@@ -85,6 +88,9 @@ Glossary
         the passing of arguments, the call and return mechanism, and the register
         set which must be preserved.
 
+    CCB
+        An acronym for Change Control Board.
+
     Central Processing Unit
         This term is equivalent to the terms processor and microprocessor.
 
@@ -157,6 +163,10 @@ Glossary
         The act of loading a task's context onto the CPU and transferring control
         of the CPU to that task.
 
+    Doorstop
+        `Doorstop <https://github.com/doorstop-dev/doorstop>`_ is a
+        requirements management tool.
+
     dormant
         The state entered by a task after it is created and before it has been
         started.
@@ -164,6 +174,9 @@ Glossary
     dual-ported
         A term used to describe memory which can be accessed at two different
         addresses.
+
+    EARS
+        An acronym for Easy Approach to Requirements Syntax.
 
     embedded
         An application that is delivered as a hidden part of a larger system.
@@ -222,9 +235,19 @@ Glossary
     freed
         A resource that has been released by the application to RTEMS.
 
+    GCC
+        An acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
+
     global
         An object that has been created with the GLOBAL attribute and exported to
         all nodes in a multiprocessor system.
+
+    GNAT
+        *GNAT* is the :term:`GNU` compiler for Ada, integrated into the
+        :term:`GCC`.
+
+    GNU
+        An acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
 
     handler
         The equivalent of a manager, except that it is internal to RTEMS and
@@ -286,6 +309,9 @@ Glossary
 
     ISR
         An acronym for :term:`Interrupt Service Routine`.
+
+    ISVV
+        An acronym for Independent Software Verification and Validation.
 
     kernel
         In this document, this term is used as a synonym for executive.
@@ -548,6 +574,10 @@ Glossary
         The manipulation of an object which does not reside on the same node as
         the calling task.
 
+    ReqIF
+        An acronym for
+        `Requirements Interchange Format <https://www.omg.org/spec/ReqIF/About-ReqIF/>`_.
+
     resource
         A hardware or software entity to which access must be controlled.
 
@@ -572,6 +602,9 @@ Glossary
 
     RS-232
         A standard for serial communications.
+
+    RTEMS
+        An acronym for Real-Time Executive for Multiprocessor Systems.
 
     running
         The state of a rate monotonic timer while it is being used to delineate a
@@ -649,6 +682,19 @@ Glossary
     soft real-time system
         A real-time system in which a missed deadline does not compromise the
         integrity of the system.
+
+    software item
+        This term has the same meaning as :term:`software product`.
+
+    software product
+        The *software product* is the :term:`RTEMS` real-time operating system.
+
+    source code
+        This project uses the *source code* definition of the
+        `Linux Information Project <http://www.linfo.org/source_code.html>`_:
+        "Source code (also referred to as source or code) is the version of
+        software as it is originally written (i.e., typed into a computer) by a
+        human in plain text (i.e., human readable alphanumeric characters)."
 
     sporadic task
         A task which executes at irregular intervals and must comply with a hard
@@ -786,6 +832,9 @@ Glossary
         The list of tasks blocked pending the release of a particular resource.
         Message queues, regions, and semaphores have a wait queue associated with
         them.
+
+    YAML
+        An acronym for `YAML Ain't Markup Language <https://yaml.org/>`_.
 
     yield
         When a task voluntarily releases control of the processor.

@@ -37,4 +37,5 @@ RTEMS Software Engineering (|version|)
     appendix-a
     function_and_variable
     concept
+    glossary
     zreferences
