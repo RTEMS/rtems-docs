@@ -419,11 +419,13 @@ Glossary
         multiprocessor system.  A packet is the contents of an envelope.
 
     partition
-        An RTEMS object which is used to allocate and deallocate fixed size
-        blocks of memory from an dynamically specified area of memory.
+        This term has two definitions:
 
-    partition
-        Clusters with a cardinality of one are partitions.
+        1. A partition is an RTEMS object which is used to allocate and
+           deallocate fixed size blocks of memory from an dynamically specified
+           area of memory.
+
+        2. A :term:`cluster` with a cardinality of one is a partition.
 
     Partition Control Block
         A data structure associated with each partition used by RTEMS to manage
