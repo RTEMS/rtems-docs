@@ -871,11 +871,14 @@ DIRECTIVE STATUS CODES:
      :class: rtems-table
 
      * - ``RTEMS_SUCCESSFUL``
-       - period initiated successfully
+       - period status retrieved successfully
      * - ``RTEMS_INVALID_ID``
        - invalid rate monotonic period id
      * - ``RTEMS_INVALID_ADDRESS``
        - invalid address of status
+     * - ``RTEMS_NOT_DEFINED``
+       - no status is available due to the cpu usage of the task having been
+         reset since the period initiated
 
 *DESCRIPTION:
     This directive returns status information associated with the rate
@@ -938,7 +941,7 @@ DIRECTIVE STATUS CODES:
      :class: rtems-table
 
      * - ``RTEMS_SUCCESSFUL``
-       - period initiated successfully
+       - period statistics retrieved successfully
      * - ``RTEMS_INVALID_ID``
        - invalid rate monotonic period id
      * - ``RTEMS_INVALID_ADDRESS``
