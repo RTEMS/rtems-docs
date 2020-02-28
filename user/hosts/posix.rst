@@ -74,12 +74,28 @@ provide a manual override:
 CentOS
 ~~~~~~
 
-The following packages are required on a minimal CentOS 6.3 64bit installation:
+The following packages are required on a minimal CentOS 6.3 or Cent)S 7
+64-bit installation:
 
 .. code-block:: none
 
-  # yum install autoconf automake binutils gcc gcc-c++ gdb make patch \
+  # yum install autoconf automake binutils gcc gcc-c++ gdb make patch pax \
   bison flex xz unzip ncurses-devel texinfo zlib-devel python-devel git
+
+On CentOS 8, the ``pax`` command is now provided by the ``spax`` package,
+you need to enable the PowerTools repository. and use Python3.  On a
+fresh install, the following commands should install everything you
+need for RTEMS development:
+
+.. code-block:: none
+
+  # dnf install yum-utils
+  # dnf config-manager --set-enabled PowerTools
+  # dnf update
+  # dnf groupinstall "Development Tools"
+  # dnf install python3 python3-pip python3-setuptools python3-devel
+  # dnf install texinfo spax
+  # alternatives --set python /usr/bin/python3
 
 The minimal CentOS distribution is a specific DVD that installs a minimal
 system. If you use a full system some of these packages may have been
