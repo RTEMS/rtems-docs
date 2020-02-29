@@ -159,8 +159,7 @@ They must be destroyed via
 
 * :c:func:`rtems_mutex_destroy`.
 
-is undefined.  Objects of the type :c:type:`rtems_recursive_mutex` must be
-initialized via
+Objects of the type :c:type:`rtems_recursive_mutex` must be initialized via
 
 * :c:func:`RTEMS_RECURSIVE_MUTEX_INITIALIZER`, or
 
