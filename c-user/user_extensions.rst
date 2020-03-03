@@ -261,9 +261,7 @@ destructors and thread-local object destructors run in this context.
 Thread Switch Extension
 -----------------------
 
-The thread switch extension is invoked before the context switch from the
-currently executing thread to the heir thread.  The thread switch extension is
-defined as follows.
+The thread switch extension is defined as follows.
 
 .. code-block:: c
 
@@ -272,18 +270,34 @@ defined as follows.
       rtems_tcb *heir
     );
 
-The :c:data:`executing` is a pointer to the TCB of the currently executing
-thread.  The :c:data:`heir` is a pointer to the TCB of the heir thread.
+The invocation conditions of the thread switch extension depend on whether RTEMS
+was configured for uniprocessor or SMP systems.  A user must pay attention to
+the differences to correctly implement a thread switch extension.
+
+In uniprocessor configurations, the thread switch extension is invoked before
+the context switch from the currently executing thread to the heir thread.  The
+:c:data:`executing` is a pointer to the TCB of the currently executing thread.
+The :c:data:`heir` is a pointer to the TCB of the heir thread.  The context
+switch initiated through the multitasking start is not covered by the thread
+switch extension.
+
+In SMP configurations, the thread switch extension is invoked after the context
+switch to the new executing thread (previous heir thread).  The
+:c:data:`executing` is a pointer to the TCB of the previously executing thread.
+Despite the name, this is not the currently executing thread.  The
+:c:data:`heir` is a pointer to the TCB of the newly executing thread.  This is
+the currently executing thread.  The context switches initiated through the
+multitasking start are covered by the thread switch extension.  The reason for
+the differences to uniprocessor configurations is that the context switch may
+update the heir thread of the processor, see :ref:`SMPThreadDispatchDetails`.
+The thread switch extensions are invoked with disabled interrupts and with
+ownership of a per-processor SMP lock.  Thread switch extensions may run in
+parallel on multiple processors.  It is recommended to use thread-local or
+per-processor data structures for thread switch extensions.  A global SMP lock
+should be avoided for performance reasons.
 
 The thread switch extension is invoked in forward order with thread dispatching
-disabled.  In SMP configurations, interrupts are disabled and the per-processor
-SMP lock is owned.  Thread switch extensions may run in parallel on multiple
-processors.  It is recommended to use thread-local or per-processor data
-structures in SMP configurations for thread switch extensions.  A global SMP
-lock should be avoided for performance reasons.
-
-The context switches initiated through the multitasking start are not covered
-by the thread switch extension.
+disabled.
 
 .. index:: rtems_task_begin_extension
 

@@ -683,6 +683,8 @@ The withdraw operation takes away scheduler nodes once the thread is no longer
 allowed to use them, e.g. it released a mutex.  The availability of scheduler
 nodes for a thread is controlled by the thread queues.
 
+.. _SMPThreadDispatchDetails:
+
 Thread Dispatch Details
 -----------------------
 
