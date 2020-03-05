@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. index:: tasks
@@ -82,6 +83,8 @@ From RTEMS' perspective, a task is the smallest thread of execution which can
 compete on its own for system resources.  A task is manifested by the existence
 of a task control block (TCB).
 
+.. _TaskControlBlock:
+
 Task Control Block
 ------------------
 
@@ -102,6 +105,34 @@ A task's context is stored in the TCB when a task switch occurs.  When the task
 regains control of the processor, its context is restored from the TCB.  When a
 task is restarted, the initial state of the task is restored from the starting
 context area in the task's TCB.
+
+.. index:: task memory
+
+Task Memory
+-----------
+
+The system uses two separate memory areas to manage a task.  One memory area is
+the :ref:`TaskControlBlock`.  The other memory area is allocated from the stack
+space or provided by the user and contains
+
+* the task stack,
+
+* the thread-local storage (:term:`TLS`), and
+
+* an optional architecture-specific floating-point context.
+
+The size of the thread-local storage is determined at link time.  A
+user-provided task stack must take the size of the thread-local storage into
+account.
+
+On architectures with a dedicated floating-point context, the application
+configuration assumes that every task is a floating-point task, but whether or
+not a task is actually floating-point is determined at runtime during task
+creation (see :ref:`TaskFloatingPointConsiderations`).  In highly memory
+constrained systems this potential overestimate of the task stack space can be
+mitigated through the :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` configuration
+option and aligned task stack sizes for the tasks.  A user-provided task stack
+must take the potential floating-point context into account.
 
 .. index:: task name
 
@@ -271,25 +302,31 @@ an index into an array of parameter blocks.
 
 .. index:: floating point
 
+.. _TaskFloatingPointConsiderations:
+
 Floating Point Considerations
 -----------------------------
 
+Please consult the *RTEMS CPU Architecture Supplement* if this section is
+relevant on your architecture.  On some architectures the floating-point context
+is contained in the normal task context and this section does not apply.
+
 Creating a task with the ``RTEMS_FLOATING_POINT`` attribute flag results in
-additional memory being allocated for the TCB to store the state of the numeric
-coprocessor during task switches.  This additional memory is *NOT* allocated for
-``RTEMS_NO_FLOATING_POINT`` tasks. Saving and restoring the context of a
+additional memory being allocated for the task to store the state of the numeric
+coprocessor during task switches.  This additional memory is **not** allocated
+for ``RTEMS_NO_FLOATING_POINT`` tasks. Saving and restoring the context of a
 ``RTEMS_FLOATING_POINT`` task takes longer than that of a
 ``RTEMS_NO_FLOATING_POINT`` task because of the relatively large amount of time
-required for the numeric coprocessor to save or restore its computational
-state.
+required for the numeric coprocessor to save or restore its computational state.
 
 Since RTEMS was designed specifically for embedded military applications which
 are floating point intensive, the executive is optimized to avoid unnecessarily
-saving and restoring the state of the numeric coprocessor.  The state of the
-numeric coprocessor is only saved when a ``RTEMS_FLOATING_POINT`` task is
-dispatched and that task was not the last task to utilize the coprocessor.  In
-a system with only one ``RTEMS_FLOATING_POINT`` task, the state of the numeric
-coprocessor will never be saved or restored.
+saving and restoring the state of the numeric coprocessor.  In uniprocessor
+configurations, the state of the numeric coprocessor is only saved when a
+``RTEMS_FLOATING_POINT`` task is dispatched and that task was not the last task
+to utilize the coprocessor.  In a uniprocessor system with only one
+``RTEMS_FLOATING_POINT`` task, the state of the numeric coprocessor will never
+be saved or restored.
 
 Although the overhead imposed by ``RTEMS_FLOATING_POINT`` tasks is minimal,
 some applications may wish to completely avoid the overhead associated with
@@ -299,10 +336,13 @@ point operations, a ``RTEMS_NO_FLOATING_POINT`` task can utilize the numeric
 coprocessor without incurring the overhead of a ``RTEMS_FLOATING_POINT``
 context switch.  This approach also avoids the allocation of a floating point
 context area.  However, if this approach is taken by the application designer,
-NO tasks should be created as ``RTEMS_FLOATING_POINT`` tasks.  Otherwise, the
+**no** tasks should be created as ``RTEMS_FLOATING_POINT`` tasks.  Otherwise, the
 floating point context will not be correctly maintained because RTEMS assumes
 that the state of the numeric coprocessor will not be altered by
-``RTEMS_NO_FLOATING_POINT`` tasks.
+``RTEMS_NO_FLOATING_POINT`` tasks.  Some architectures with a dedicated
+floating-point context raise a processor exception if a task with
+``RTEMS_NO_FLOATING_POINT`` issues a floating-point instruction, so this
+approach may not work at all.
 
 If the supported processor type does not have hardware floating capabilities or
 a standard numeric coprocessor, RTEMS will not provide built-in support for
