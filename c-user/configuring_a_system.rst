@@ -1344,8 +1344,8 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode.
 
-Classic API Initialization Tasks Table Configuration
-====================================================
+Classic API Initialization Task Configuration
+=============================================
 
 The ``<rtems/confdefs.h>`` configuration system can automatically generate an
 Initialization Tasks Table named ``Initialization_tasks`` with a single entry.
@@ -1825,8 +1825,8 @@ DESCRIPTION:
 NOTES:
     None.
 
-POSIX Initialization Threads Table Configuration
-================================================
+POSIX Initialization Thread Configuration
+=========================================
 
 The ``<rtems/confdefs.h>`` configuration system can automatically generate a
 POSIX Initialization Threads Table named ``POSIX_Initialization_threads`` with
@@ -1928,8 +1928,8 @@ NOTES:
     Task/Thread Stack Memory Above Minimum` for more information about
     ``CONFIGURE_EXTRA_TASK_STACKS``.
 
-Configuring Custom Task Stack Allocation
-========================================
+Task Stack Allocator Configuration
+==================================
 
 RTEMS allows the application or BSP to define its own allocation and
 deallocation methods for task stacks. This can be used to place task stacks in
@@ -2038,8 +2038,8 @@ NOTES:
 
 - ``CONFIGURE_TASK_STACK_DEALLOCATOR``
 
-Configuring Memory for Classic API Message Buffers
-==================================================
+Message Queue Buffer Configuration
+==================================
 
 This section describes the configuration parameters related to specifying the
 amount of memory reserved for message queue message buffers.  See
@@ -3945,8 +3945,8 @@ or a lack of processors on the system.  The fatal source is
 - ``SMP_FATAL_MULTITASKING_START_ON_UNASSIGNED_PROCESSOR`` - it is not allowed
   to start multitasking on a processor with no scheduler assigned.
 
-Device Driver Table
-===================
+Device Driver Configuration
+===========================
 
 This section defines the configuration parameters related to the automatic
 generation of a Device Driver Table.  As ``<rtems/confdefs.h>`` only is aware
@@ -4633,8 +4633,8 @@ NOTES:
     Multiprocessor System assuming the BSP provides the proper set of
     supporting methods.
 
-PCI Library
-===========
+PCI Library Configuration
+=========================
 
 This section defines the system configuration parameters supported by
 ``rtems/confdefs.h`` related to configuring the PCI Library for RTEMS.
@@ -4685,8 +4685,8 @@ Note that selecting ``PCI_LIB_STATIC`` or ``PCI_LIB_PERIPHERAL`` but not
 defining ``pci_hb`` will reuslt in link errors. Note also that in these modes
 Plug & Play is not performed.
 
-Event Recording
-===============
+Event Recording Configuration
+=============================
 
 .. index:: CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 
