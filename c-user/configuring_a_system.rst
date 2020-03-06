@@ -1060,6 +1060,194 @@ Classic API Configuration
 This section defines the Classic API related system configuration parameters
 supported by ``<rtems/confdefs.h>``.
 
+.. index:: CONFIGURE_MAXIMUM_BARRIERS
+
+.. _CONFIGURE_MAXIMUM_BARRIERS:
+
+CONFIGURE_MAXIMUM_BARRIERS
+--------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_BARRIERS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_BARRIERS`` is the maximum number of Classic API
+    Barriers that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
+
+.. _CONFIGURE_MAXIMUM_MESSAGE_QUEUES:
+
+CONFIGURE_MAXIMUM_MESSAGE_QUEUES
+--------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES`` is the maximum number of Classic API
+    Message Queues that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.  You have
+    to account for the memory used to store the messages of each message queue,
+    see :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
+
+.. index:: CONFIGURE_MAXIMUM_PARTITIONS
+
+.. _CONFIGURE_MAXIMUM_PARTITIONS:
+
+CONFIGURE_MAXIMUM_PARTITIONS
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_PARTITIONS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_PARTITIONS`` is the maximum number of Classic API
+    Partitions that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MAXIMUM_PERIODS
+
+.. _CONFIGURE_MAXIMUM_PERIODS:
+
+CONFIGURE_MAXIMUM_PERIODS
+-------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_PERIODS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_PERIODS`` is the maximum number of Classic API Periods
+    that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MAXIMUM_PORTS
+
+.. _CONFIGURE_MAXIMUM_PORTS:
+
+CONFIGURE_MAXIMUM_PORTS
+-----------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_PORTS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_PORTS`` is the maximum number of Classic API Ports that
+    can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MAXIMUM_REGIONS
+
+.. _CONFIGURE_MAXIMUM_REGIONS:
+
+CONFIGURE_MAXIMUM_REGIONS
+-------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_REGIONS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_REGIONS`` is the maximum number of Classic API Regions
+    that can be concurrently active.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_MAXIMUM_SEMAPHORES
+
+.. _CONFIGURE_MAXIMUM_SEMAPHORES:
+
+CONFIGURE_MAXIMUM_SEMAPHORES
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_SEMAPHORES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_SEMAPHORES`` is the maximum number of Classic API
+    Semaphores that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+    In SMP configurations, the size of a Semaphore Control Block depends on the
+    scheduler count (see :ref:`ConfigurationSchedulerTable`).  The semaphores
+    using the :ref:`MrsP` need a ceiling priority per scheduler.
+
 .. index:: CONFIGURE_MAXIMUM_TASKS
 
 .. _CONFIGURE_MAXIMUM_TASKS:
@@ -1102,8 +1290,6 @@ NOTES:
     the addition of a new configuration parameter to specify the number of
     tasks which enable floating point support.
 
-.. COMMENT: XXX - Add xref to CONFIGURE_MAXIMUM_POSIX_THREADS.
-
 .. index:: CONFIGURE_MAXIMUM_TIMERS
 
 .. _CONFIGURE_MAXIMUM_TIMERS:
@@ -1126,194 +1312,6 @@ DEFAULT VALUE:
 DESCRIPTION:
     ``CONFIGURE_MAXIMUM_TIMERS`` is the maximum number of Classic API Timers
     that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_SEMAPHORES
-
-.. _CONFIGURE_MAXIMUM_SEMAPHORES:
-
-CONFIGURE_MAXIMUM_SEMAPHORES
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_SEMAPHORES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_SEMAPHORES`` is the maximum number of Classic API
-    Semaphores that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-    In SMP configurations, the size of a Semaphore Control Block depends on the
-    scheduler count (see :ref:`ConfigurationSchedulerTable`).  The semaphores
-    using the :ref:`MrsP` need a ceiling priority per scheduler.
-
-.. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
-
-.. _CONFIGURE_MAXIMUM_MESSAGE_QUEUES:
-
-CONFIGURE_MAXIMUM_MESSAGE_QUEUES
---------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES`` is the maximum number of Classic API
-    Message Queues that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.  You have
-    to account for the memory used to store the messages of each message queue,
-    see :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
-
-.. index:: CONFIGURE_MAXIMUM_BARRIERS
-
-.. _CONFIGURE_MAXIMUM_BARRIERS:
-
-CONFIGURE_MAXIMUM_BARRIERS
---------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_BARRIERS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_BARRIERS`` is the maximum number of Classic API
-    Barriers that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_PERIODS
-
-.. _CONFIGURE_MAXIMUM_PERIODS:
-
-CONFIGURE_MAXIMUM_PERIODS
--------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_PERIODS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PERIODS`` is the maximum number of Classic API Periods
-    that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_PARTITIONS
-
-.. _CONFIGURE_MAXIMUM_PARTITIONS:
-
-CONFIGURE_MAXIMUM_PARTITIONS
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_PARTITIONS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PARTITIONS`` is the maximum number of Classic API
-    Partitions that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-.. index:: CONFIGURE_MAXIMUM_REGIONS
-
-.. _CONFIGURE_MAXIMUM_REGIONS:
-
-CONFIGURE_MAXIMUM_REGIONS
--------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_REGIONS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_REGIONS`` is the maximum number of Classic API Regions
-    that can be concurrently active.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_MAXIMUM_PORTS
-
-.. _CONFIGURE_MAXIMUM_PORTS:
-
-CONFIGURE_MAXIMUM_PORTS
------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_PORTS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PORTS`` is the maximum number of Classic API Ports that
-    can be concurrently active.
 
 NOTES:
     This object class can be configured in unlimited allocation mode.
@@ -1351,6 +1349,194 @@ The ``<rtems/confdefs.h>`` configuration system can automatically generate an
 Initialization Tasks Table named ``Initialization_tasks`` with a single entry.
 The following parameters control the generation of that table.
 
+.. index:: CONFIGURE_INIT_TASK_ARGUMENTS
+
+.. _CONFIGURE_INIT_TASK_ARGUMENTS:
+
+CONFIGURE_INIT_TASK_ARGUMENTS
+-----------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_ARGUMENTS``
+
+DATA TYPE:
+    RTEMS Task Argument (``rtems_task_argument``).
+
+RANGE:
+    Complete range of the type.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_ARGUMENTS`` is the task argument of the single
+    initialization task defined by the Classic API Initialization Tasks Table.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_INIT_TASK_ATTRIBUTES
+
+.. _CONFIGURE_INIT_TASK_ATTRIBUTES:
+
+CONFIGURE_INIT_TASK_ATTRIBUTES
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_ATTRIBUTES``
+
+DATA TYPE:
+    RTEMS Attributes (``rtems_attribute``).
+
+RANGE:
+    Valid task attribute sets.
+
+DEFAULT VALUE:
+    The default value is ``RTEMS_DEFAULT_ATTRIBUTES``.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_ATTRIBUTES`` is the task attributes of the single
+    initialization task defined by the Classic API Initialization Tasks Table.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_INIT_TASK_ENTRY_POINT
+
+.. _CONFIGURE_INIT_TASK_ENTRY_POINT:
+
+CONFIGURE_INIT_TASK_ENTRY_POINT
+-------------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_ENTRY_POINT``
+
+DATA TYPE:
+    Task entry function pointer (``rtems_task_entry``).
+
+RANGE:
+    Valid task entry function pointer.
+
+DEFAULT VALUE:
+    The default value is ``Init``.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_ENTRY_POINT`` is the entry point (a.k.a. function
+    name) of the single initialization task defined by the Classic API
+    Initialization Tasks Table.
+
+NOTES:
+    The user must implement the function ``Init`` or the function name provided
+    in this configuration parameter.
+
+.. index:: CONFIGURE_INIT_TASK_INITIAL_MODES
+
+.. _CONFIGURE_INIT_TASK_INITIAL_MODES:
+
+CONFIGURE_INIT_TASK_INITIAL_MODES
+---------------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_INITIAL_MODES``
+
+DATA TYPE:
+    RTEMS Mode (``rtems_mode``).
+
+RANGE:
+    Valid task mode sets.
+
+DEFAULT VALUE:
+    The default value is ``RTEMS_NO_PREEMPT``.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_INITIAL_MODES`` is the initial execution mode of the
+    single initialization task defined by the Classic API Initialization Tasks
+    Table.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_INIT_TASK_NAME
+
+.. _CONFIGURE_INIT_TASK_NAME:
+
+CONFIGURE_INIT_TASK_NAME
+------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_NAME``
+
+DATA TYPE:
+    RTEMS Name (``rtems_name``).
+
+RANGE:
+    Any value.
+
+DEFAULT VALUE:
+    The default value is ``rtems_build_name( 'U', 'I', '1', ' ' )``.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_NAME`` is the name of the single initialization task
+    defined by the Classic API Initialization Tasks Table.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_INIT_TASK_PRIORITY
+
+.. _CONFIGURE_INIT_TASK_PRIORITY:
+
+CONFIGURE_INIT_TASK_PRIORITY
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_PRIORITY``
+
+DATA TYPE:
+    RTEMS Task Priority (``rtems_task_priority``).
+
+RANGE:
+    One (1) to the maximum user priority value of the scheduler.
+
+DEFAULT VALUE:
+    The default value is 1, which is the highest priority in the Classic API.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_PRIORITY`` is the initial priority of the single
+    initialization task defined by the Classic API Initialization Tasks Table.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_INIT_TASK_STACK_SIZE
+
+.. _CONFIGURE_INIT_TASK_STACK_SIZE:
+
+CONFIGURE_INIT_TASK_STACK_SIZE
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_STACK_SIZE``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is RTEMS_MINIMUM_STACK_SIZE.
+
+DESCRIPTION:
+    ``CONFIGURE_INIT_TASK_STACK_SIZE`` is the stack size of the single
+    initialization task defined by the Classic API Initialization Tasks Table.
+
+NOTES:
+    If the stack size specified is greater than the configured minimum, it must
+    be accounted for in ``CONFIGURE_EXTRA_TASK_STACKS``.  See :ref:`Reserve
+    Task/Thread Stack Memory Above Minimum` for more information about
+    ``CONFIGURE_EXTRA_TASK_STACKS``.
+
 .. index:: CONFIGURE_RTEMS_INIT_TASKS_TABLE
 
 .. _CONFIGURE_RTEMS_INIT_TASKS_TABLE:
@@ -1386,195 +1572,6 @@ NOTES:
 
     A compile time error will be generated if the user does not configure any
     initialization tasks or threads.
-
-.. index:: CONFIGURE_INIT_TASK_ENTRY_POINT
-
-.. _CONFIGURE_INIT_TASK_ENTRY_POINT:
-
-CONFIGURE_INIT_TASK_ENTRY_POINT
--------------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_ENTRY_POINT``
-
-DATA TYPE:
-    Task entry function pointer (``rtems_task_entry``).
-
-RANGE:
-    Valid task entry function pointer.
-
-DEFAULT VALUE:
-    The default value is ``Init``.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_ENTRY_POINT`` is the entry point (a.k.a. function
-    name) of the single initialization task defined by the Classic API
-    Initialization Tasks Table.
-
-NOTES:
-    The user must implement the function ``Init`` or the function name provided
-    in this configuration parameter.
-
-.. index:: CONFIGURE_INIT_TASK_NAME
-
-.. _CONFIGURE_INIT_TASK_NAME:
-
-CONFIGURE_INIT_TASK_NAME
-------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_NAME``
-
-DATA TYPE:
-    RTEMS Name (``rtems_name``).
-
-RANGE:
-    Any value.
-
-DEFAULT VALUE:
-    The default value is ``rtems_build_name( 'U', 'I', '1', ' ' )``.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_NAME`` is the name of the single initialization task
-    defined by the Classic API Initialization Tasks Table.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_INIT_TASK_STACK_SIZE
-
-.. _CONFIGURE_INIT_TASK_STACK_SIZE:
-
-CONFIGURE_INIT_TASK_STACK_SIZE
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_STACK_SIZE``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is RTEMS_MINIMUM_STACK_SIZE.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_STACK_SIZE`` is the stack size of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
-
-NOTES:
-    If the stack size specified is greater than the configured minimum, it must
-    be accounted for in ``CONFIGURE_EXTRA_TASK_STACKS``.  See :ref:`Reserve
-    Task/Thread Stack Memory Above Minimum` for more information about
-    ``CONFIGURE_EXTRA_TASK_STACKS``.
-
-.. index:: CONFIGURE_INIT_TASK_PRIORITY
-
-.. _CONFIGURE_INIT_TASK_PRIORITY:
-
-CONFIGURE_INIT_TASK_PRIORITY
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_PRIORITY``
-
-DATA TYPE:
-    RTEMS Task Priority (``rtems_task_priority``).
-
-RANGE:
-    One (1) to the maximum user priority value of the scheduler.
-
-DEFAULT VALUE:
-    The default value is 1, which is the highest priority in the Classic API.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_PRIORITY`` is the initial priority of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
-
-NOTES:
-    None.
-
-
-.. index:: CONFIGURE_INIT_TASK_ATTRIBUTES
-
-.. _CONFIGURE_INIT_TASK_ATTRIBUTES:
-
-CONFIGURE_INIT_TASK_ATTRIBUTES
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_ATTRIBUTES``
-
-DATA TYPE:
-    RTEMS Attributes (``rtems_attribute``).
-
-RANGE:
-    Valid task attribute sets.
-
-DEFAULT VALUE:
-    The default value is ``RTEMS_DEFAULT_ATTRIBUTES``.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_ATTRIBUTES`` is the task attributes of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_INIT_TASK_INITIAL_MODES
-
-.. _CONFIGURE_INIT_TASK_INITIAL_MODES:
-
-CONFIGURE_INIT_TASK_INITIAL_MODES
----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_INITIAL_MODES``
-
-DATA TYPE:
-    RTEMS Mode (``rtems_mode``).
-
-RANGE:
-    Valid task mode sets.
-
-DEFAULT VALUE:
-    The default value is ``RTEMS_NO_PREEMPT``.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_INITIAL_MODES`` is the initial execution mode of the
-    single initialization task defined by the Classic API Initialization Tasks
-    Table.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_INIT_TASK_ARGUMENTS
-
-.. _CONFIGURE_INIT_TASK_ARGUMENTS:
-
-CONFIGURE_INIT_TASK_ARGUMENTS
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_ARGUMENTS``
-
-DATA TYPE:
-    RTEMS Task Argument (``rtems_task_argument``).
-
-RANGE:
-    Complete range of the type.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_ARGUMENTS`` is the task argument of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
-
-NOTES:
-    None.
 
 POSIX API Configuration
 =======================
@@ -1832,44 +1829,6 @@ The ``<rtems/confdefs.h>`` configuration system can automatically generate a
 POSIX Initialization Threads Table named ``POSIX_Initialization_threads`` with
 a single entry.  The following parameters control the generation of that table.
 
-.. index:: CONFIGURE_POSIX_INIT_THREAD_TABLE
-
-.. _CONFIGURE_POSIX_INIT_THREAD_TABLE:
-
-CONFIGURE_POSIX_INIT_THREAD_TABLE
----------------------------------
-
-CONSTANT:
-
-    ``CONFIGURE_POSIX_INIT_THREAD_TABLE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This field is not defined by default, as the user MUST select their own API
-    for initialization tasks.
-
-DESCRIPTION:
-    ``CONFIGURE_POSIX_INIT_THREAD_TABLE`` is defined if the user wishes to use
-    a POSIX API Initialization Threads Table.  The table built by
-    ``<rtems/confdefs.h>`` specifies the parameters for a single thread. This
-    is sufficient for applications which initialization the system from a
-    single task.
-
-    By default, this field is not defined as the user MUST select their own API
-    for initialization tasks.
-
-NOTES:
-    The application may choose to use the initialization tasks or threads table
-    from another API.
-
-    A compile time error will be generated if the user does not configure any
-    initialization tasks or threads.
-
 .. index:: CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 
 .. _CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT:
@@ -1928,6 +1887,44 @@ NOTES:
     Task/Thread Stack Memory Above Minimum` for more information about
     ``CONFIGURE_EXTRA_TASK_STACKS``.
 
+.. index:: CONFIGURE_POSIX_INIT_THREAD_TABLE
+
+.. _CONFIGURE_POSIX_INIT_THREAD_TABLE:
+
+CONFIGURE_POSIX_INIT_THREAD_TABLE
+---------------------------------
+
+CONSTANT:
+
+    ``CONFIGURE_POSIX_INIT_THREAD_TABLE``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This field is not defined by default, as the user MUST select their own API
+    for initialization tasks.
+
+DESCRIPTION:
+    ``CONFIGURE_POSIX_INIT_THREAD_TABLE`` is defined if the user wishes to use
+    a POSIX API Initialization Threads Table.  The table built by
+    ``<rtems/confdefs.h>`` specifies the parameters for a single thread. This
+    is sufficient for applications which initialization the system from a
+    single task.
+
+    By default, this field is not defined as the user MUST select their own API
+    for initialization tasks.
+
+NOTES:
+    The application may choose to use the initialization tasks or threads table
+    from another API.
+
+    A compile time error will be generated if the user does not configure any
+    initialization tasks or threads.
+
 Task Stack Allocator Configuration
 ==================================
 
@@ -1935,40 +1932,6 @@ RTEMS allows the application or BSP to define its own allocation and
 deallocation methods for task stacks. This can be used to place task stacks in
 special areas of memory or to utilize a Memory Management Unit so that stack
 overflows are detected in hardware.
-
-.. index:: CONFIGURE_TASK_STACK_ALLOCATOR_INIT
-
-.. _CONFIGURE_TASK_STACK_ALLOCATOR_INIT:
-
-CONFIGURE_TASK_STACK_ALLOCATOR_INIT
------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT``
-
-DATA TYPE:
-    Function pointer.
-
-RANGE:
-    Undefined, NULL or valid function pointer.
-
-DEFAULT VALUE:
-    The default value is NULL, which indicates that task stacks will be
-    allocated from the RTEMS Workspace.
-
-DESCRIPTION:
-    ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT`` configures the initialization
-    method for an application or BSP specific task stack allocation
-    implementation.
-
-NOTES:
-    A correctly configured system must configure the following to be consistent:
-
-- ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT``
-
-- ``CONFIGURE_TASK_STACK_ALLOCATOR``
-
-- ``CONFIGURE_TASK_STACK_DEALLOCATOR``
 
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR
 .. index:: task stack allocator
@@ -1994,6 +1957,40 @@ DEFAULT VALUE:
 DESCRIPTION:
     ``CONFIGURE_TASK_STACK_ALLOCATOR`` may point to a user provided routine to
     allocate task stacks.
+
+NOTES:
+    A correctly configured system must configure the following to be consistent:
+
+- ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT``
+
+- ``CONFIGURE_TASK_STACK_ALLOCATOR``
+
+- ``CONFIGURE_TASK_STACK_DEALLOCATOR``
+
+.. index:: CONFIGURE_TASK_STACK_ALLOCATOR_INIT
+
+.. _CONFIGURE_TASK_STACK_ALLOCATOR_INIT:
+
+CONFIGURE_TASK_STACK_ALLOCATOR_INIT
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT``
+
+DATA TYPE:
+    Function pointer.
+
+RANGE:
+    Undefined, NULL or valid function pointer.
+
+DEFAULT VALUE:
+    The default value is NULL, which indicates that task stacks will be
+    allocated from the RTEMS Workspace.
+
+DESCRIPTION:
+    ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT`` configures the initialization
+    method for an application or BSP specific task stack allocation
+    implementation.
 
 NOTES:
     A correctly configured system must configure the following to be consistent:
@@ -2046,44 +2043,6 @@ amount of memory reserved for message queue message buffers.  See
 :ref:`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` and
 :ref:`CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES`.
 
-.. index:: CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
-.. index:: memory for a single message queue's buffers
-
-.. _CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE:
-
-CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(max_messages, size_per)``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is None.
-
-DESCRIPTION:
-    This is a helper macro which is used to assist in computing the total
-    amount of memory required for message buffers.  Each message queue will
-    have its own configuration with maximum message size and maximum number of
-    pending messages.
-
-    The interface for this macro is as follows:
-
-    .. code-block:: c
-
-        CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(max_messages, size_per)
-
-    Where ``max_messages`` is the maximum number of pending messages and
-    ``size_per`` is the size in bytes of the user message.
-
-NOTES:
-    This macro is only used in support of :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
-
 .. index:: CONFIGURE_MESSAGE_BUFFER_MEMORY
 .. index:: configure message queue buffer memory
 
@@ -2127,6 +2086,44 @@ NOTES:
                      CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( \
                          500, sizeof(other_message_type) \
                      )
+
+.. index:: CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
+.. index:: memory for a single message queue's buffers
+
+.. _CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE:
+
+CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(max_messages, size_per)``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is None.
+
+DESCRIPTION:
+    This is a helper macro which is used to assist in computing the total
+    amount of memory required for message buffers.  Each message queue will
+    have its own configuration with maximum message size and maximum number of
+    pending messages.
+
+    The interface for this macro is as follows:
+
+    .. code-block:: c
+
+        CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE(max_messages, size_per)
+
+    Where ``max_messages`` is the maximum number of pending messages and
+    ``size_per`` is the size in bytes of the user message.
+
+NOTES:
+    This macro is only used in support of :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 Filesystem Configuration
 ========================
@@ -2172,67 +2169,6 @@ configuration options:
 
 * :ref:`CONFIGURE_IMFS_ENABLE_MKFIFO`
 
-.. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
-
-.. _CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM:
-
-CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
---------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default. If no other root file system configuration
-    parameters are specified, the IMFS will be used as the root file system.
-
-DESCRIPTION:
-    This configuration parameter is defined if the application wishes to use
-    the device-only filesytem as the root file system.
-
-NOTES:
-    The device-only filesystem supports only device nodes and is smaller in
-    executable code size than the full IMFS and miniIMFS.
-
-    The devFS is comparable in functionality to the pseudo-filesystem name
-    space provided before RTEMS release 4.5.0.
-
-.. index:: CONFIGURE_MAXIMUM_DEVICES
-
-.. _CONFIGURE_MAXIMUM_DEVICES:
-
-CONFIGURE_MAXIMUM_DEVICES
--------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_DEVICES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    If ``BSP_MAXIMUM_DEVICES`` is defined, then the default value is
-    ``BSP_MAXIMUM_DEVICES``, otherwise the default value is 4.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_DEVICES`` is defined to the number of individual
-    devices that may be registered in the device file system (devFS).
-
-NOTES:
-    This option is specific to the device file system (devFS) and should not be
-    confused with the ``CONFIGURE_MAXIMUM_DRIVERS`` option.  This parameter
-    only impacts the devFS and thus is only used by ``<rtems/confdefs.h>`` when
-    ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM`` is specified.
-
 .. index:: CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
 
 .. _CONFIGURE_APPLICATION_DISABLE_FILESYSTEM:
@@ -2261,15 +2197,15 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
+.. index:: CONFIGURE_IMFS_ENABLE_MKFIFO
 
-.. _CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM:
+.. _CONFIGURE_IMFS_ENABLE_MKFIFO:
 
-CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
------------------------------------------
+CONFIGURE_IMFS_ENABLE_MKFIFO
+----------------------------
 
 CONSTANT:
-    ``CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM``
+    ``CONFIGURE_IMFS_ENABLE_MKFIFO``
 
 DATA TYPE:
     Boolean feature macro.
@@ -2281,24 +2217,308 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the following
-    configuration options will be defined as well
+    In case this configuration option is defined, then the support to make FIFOs
+    is enabled in the root IMFS.
 
-    - ``CONFIGURE_IMFS_DISABLE_CHMOD``,
+.. index:: CONFIGURE_IMFS_DISABLE_CHMOD
 
-    - ``CONFIGURE_IMFS_DISABLE_CHOWN``,
+.. _CONFIGURE_IMFS_DISABLE_CHMOD:
 
-    - ``CONFIGURE_IMFS_DISABLE_UTIME``,
+CONFIGURE_IMFS_DISABLE_CHMOD
+----------------------------
 
-    - ``CONFIGURE_IMFS_DISABLE_LINK``,
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_CHMOD``
 
-    - ``CONFIGURE_IMFS_DISABLE_SYMLINK``,
+DATA TYPE:
+    Boolean feature macro.
 
-    - ``CONFIGURE_IMFS_DISABLE_READLINK``,
+RANGE:
+    Defined or undefined.
 
-    - ``CONFIGURE_IMFS_DISABLE_RENAME``, and
+DEFAULT VALUE:
+    This is not defined by default.
 
-    - ``CONFIGURE_IMFS_DISABLE_UNMOUNT``.
+DESCRIPTION:
+    In case this configuration option is defined, then the support to change
+    the mode is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_CHOWN
+
+.. _CONFIGURE_IMFS_DISABLE_CHOWN:
+
+CONFIGURE_IMFS_DISABLE_CHOWN
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_CHOWN``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to change
+    the owner is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_LINK
+
+.. _CONFIGURE_IMFS_DISABLE_LINK:
+
+CONFIGURE_IMFS_DISABLE_LINK
+---------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_LINK``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to create
+    hard links is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_MKNOD
+
+.. _CONFIGURE_IMFS_DISABLE_MKNOD:
+
+CONFIGURE_IMFS_DISABLE_MKNOD
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_MKNOD``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to make
+    directories, devices, regular files and FIFOs is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_MKNOD_FILE
+
+.. _CONFIGURE_IMFS_DISABLE_MKNOD_FILE:
+
+CONFIGURE_IMFS_DISABLE_MKNOD_FILE
+---------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_MKNOD_FILE``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to make
+    regular files is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_MOUNT
+
+.. _CONFIGURE_IMFS_DISABLE_MOUNT:
+
+CONFIGURE_IMFS_DISABLE_MOUNT
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_MOUNT``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to mount
+    other file systems is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_READDIR
+
+.. _CONFIGURE_IMFS_DISABLE_READDIR:
+
+CONFIGURE_IMFS_DISABLE_READDIR
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_READDIR``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to read a
+    directory is disabled in the root IMFS.  It is still possible to open nodes
+    in a directory.
+
+.. index:: CONFIGURE_IMFS_DISABLE_READLINK
+
+.. _CONFIGURE_IMFS_DISABLE_READLINK:
+
+CONFIGURE_IMFS_DISABLE_READLINK
+-------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_READLINK``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to read
+    symbolic links is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_RENAME
+
+.. _CONFIGURE_IMFS_DISABLE_RENAME:
+
+CONFIGURE_IMFS_DISABLE_RENAME
+-----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_RENAME``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to rename
+    nodes is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_RMNOD
+
+.. _CONFIGURE_IMFS_DISABLE_RMNOD:
+
+CONFIGURE_IMFS_DISABLE_RMNOD
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_RMNOD``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to remove
+    nodes is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_SYMLINK
+
+.. _CONFIGURE_IMFS_DISABLE_SYMLINK:
+
+CONFIGURE_IMFS_DISABLE_SYMLINK
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_SYMLINK``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to create
+    symbolic links is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_UNMOUNT
+
+.. _CONFIGURE_IMFS_DISABLE_UNMOUNT:
+
+CONFIGURE_IMFS_DISABLE_UNMOUNT
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_UNMOUNT``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to unmount
+    file systems is disabled in the root IMFS.
+
+.. index:: CONFIGURE_IMFS_DISABLE_UTIME
+
+.. _CONFIGURE_IMFS_DISABLE_UTIME:
+
+CONFIGURE_IMFS_DISABLE_UTIME
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_UTIME``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the support to change
+    times is disabled in the root IMFS.
 
 .. index:: CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
 
@@ -2349,15 +2569,76 @@ DESCRIPTION:
     - when the block size is 512 bytes, the maximum file size is 1,082,195,456
       bytes.
 
-.. index:: CONFIGURE_IMFS_DISABLE_CHOWN
+.. index:: CONFIGURE_MAXIMUM_DEVICES
 
-.. _CONFIGURE_IMFS_DISABLE_CHOWN:
+.. _CONFIGURE_MAXIMUM_DEVICES:
 
-CONFIGURE_IMFS_DISABLE_CHOWN
-----------------------------
+CONFIGURE_MAXIMUM_DEVICES
+-------------------------
 
 CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_CHOWN``
+    ``CONFIGURE_MAXIMUM_DEVICES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    If ``BSP_MAXIMUM_DEVICES`` is defined, then the default value is
+    ``BSP_MAXIMUM_DEVICES``, otherwise the default value is 4.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_DEVICES`` is defined to the number of individual
+    devices that may be registered in the device file system (devFS).
+
+NOTES:
+    This option is specific to the device file system (devFS) and should not be
+    confused with the ``CONFIGURE_MAXIMUM_DRIVERS`` option.  This parameter
+    only impacts the devFS and thus is only used by ``<rtems/confdefs.h>`` when
+    ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM`` is specified.
+
+.. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
+
+.. _CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM:
+
+CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
+--------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default. If no other root file system configuration
+    parameters are specified, the IMFS will be used as the root file system.
+
+DESCRIPTION:
+    This configuration parameter is defined if the application wishes to use
+    the device-only filesytem as the root file system.
+
+NOTES:
+    The device-only filesystem supports only device nodes and is smaller in
+    executable code size than the full IMFS and miniIMFS.
+
+    The devFS is comparable in functionality to the pseudo-filesystem name
+    space provided before RTEMS release 4.5.0.
+
+.. index:: CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
+
+.. _CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM:
+
+CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
+-----------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM``
 
 DATA TYPE:
     Boolean feature macro.
@@ -2369,308 +2650,24 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to change
-    the owner is disabled in the root IMFS.
+    In case this configuration option is defined, then the following
+    configuration options will be defined as well
 
-.. index:: CONFIGURE_IMFS_DISABLE_CHMOD
+    - ``CONFIGURE_IMFS_DISABLE_CHMOD``,
 
-.. _CONFIGURE_IMFS_DISABLE_CHMOD:
+    - ``CONFIGURE_IMFS_DISABLE_CHOWN``,
 
-CONFIGURE_IMFS_DISABLE_CHMOD
-----------------------------
+    - ``CONFIGURE_IMFS_DISABLE_UTIME``,
 
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_CHMOD``
+    - ``CONFIGURE_IMFS_DISABLE_LINK``,
 
-DATA TYPE:
-    Boolean feature macro.
+    - ``CONFIGURE_IMFS_DISABLE_SYMLINK``,
 
-RANGE:
-    Defined or undefined.
+    - ``CONFIGURE_IMFS_DISABLE_READLINK``,
 
-DEFAULT VALUE:
-    This is not defined by default.
+    - ``CONFIGURE_IMFS_DISABLE_RENAME``, and
 
-DESCRIPTION:
-    In case this configuration option is defined, then the support to change
-    the mode is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_UTIME
-
-.. _CONFIGURE_IMFS_DISABLE_UTIME:
-
-CONFIGURE_IMFS_DISABLE_UTIME
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_UTIME``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to change
-    times is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_LINK
-
-.. _CONFIGURE_IMFS_DISABLE_LINK:
-
-CONFIGURE_IMFS_DISABLE_LINK
----------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_LINK``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to create
-    hard links is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_SYMLINK
-
-.. _CONFIGURE_IMFS_DISABLE_SYMLINK:
-
-CONFIGURE_IMFS_DISABLE_SYMLINK
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_SYMLINK``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to create
-    symbolic links is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_READLINK
-
-.. _CONFIGURE_IMFS_DISABLE_READLINK:
-
-CONFIGURE_IMFS_DISABLE_READLINK
--------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_READLINK``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to read
-    symbolic links is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_RENAME
-
-.. _CONFIGURE_IMFS_DISABLE_RENAME:
-
-CONFIGURE_IMFS_DISABLE_RENAME
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_RENAME``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to rename
-    nodes is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_READDIR
-
-.. _CONFIGURE_IMFS_DISABLE_READDIR:
-
-CONFIGURE_IMFS_DISABLE_READDIR
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_READDIR``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to read a
-    directory is disabled in the root IMFS.  It is still possible to open nodes
-    in a directory.
-
-.. index:: CONFIGURE_IMFS_DISABLE_MOUNT
-
-.. _CONFIGURE_IMFS_DISABLE_MOUNT:
-
-CONFIGURE_IMFS_DISABLE_MOUNT
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_MOUNT``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to mount
-    other file systems is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_UNMOUNT
-
-.. _CONFIGURE_IMFS_DISABLE_UNMOUNT:
-
-CONFIGURE_IMFS_DISABLE_UNMOUNT
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_UNMOUNT``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to unmount
-    file systems is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_MKNOD
-
-.. _CONFIGURE_IMFS_DISABLE_MKNOD:
-
-CONFIGURE_IMFS_DISABLE_MKNOD
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_MKNOD``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to make
-    directories, devices, regular files and FIFOs is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_MKNOD_FILE
-
-.. _CONFIGURE_IMFS_DISABLE_MKNOD_FILE:
-
-CONFIGURE_IMFS_DISABLE_MKNOD_FILE
----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_MKNOD_FILE``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to make
-    regular files is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_DISABLE_RMNOD
-
-.. _CONFIGURE_IMFS_DISABLE_RMNOD:
-
-CONFIGURE_IMFS_DISABLE_RMNOD
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_DISABLE_RMNOD``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to remove
-    nodes is disabled in the root IMFS.
-
-.. index:: CONFIGURE_IMFS_ENABLE_MKFIFO
-
-.. _CONFIGURE_IMFS_ENABLE_MKFIFO:
-
-CONFIGURE_IMFS_ENABLE_MKFIFO
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_IMFS_ENABLE_MKFIFO``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the support to make FIFOs
-    is enabled in the root IMFS.
+    - ``CONFIGURE_IMFS_DISABLE_UNMOUNT``.
 
 Block Device Cache Configuration
 ================================
@@ -2730,31 +2727,6 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_BDBUF_BUFFER_MIN_SIZE
-
-.. _CONFIGURE_BDBUF_BUFFER_MIN_SIZE:
-
-CONFIGURE_BDBUF_BUFFER_MIN_SIZE
--------------------------------
-
-CONSTANT:
-    ``CONFIGURE_BDBUF_BUFFER_MIN_SIZE``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is 512 bytes.
-
-DESCRIPTION:
-    Defines the minimum size of a buffer in bytes.
-
-NOTES:
-    None.
-
 .. index:: CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 
 .. _CONFIGURE_BDBUF_BUFFER_MAX_SIZE:
@@ -2780,77 +2752,27 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_SWAPOUT_SWAP_PERIOD
+.. index:: CONFIGURE_BDBUF_BUFFER_MIN_SIZE
 
-.. _CONFIGURE_SWAPOUT_SWAP_PERIOD:
+.. _CONFIGURE_BDBUF_BUFFER_MIN_SIZE:
 
-CONFIGURE_SWAPOUT_SWAP_PERIOD
------------------------------
-
-CONSTANT:
-    ``CONFIGURE_SWAPOUT_SWAP_PERIOD``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is 250 milliseconds.
-
-DESCRIPTION:
-    Defines the swapout task swap period in milliseconds.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_SWAPOUT_BLOCK_HOLD
-
-.. _CONFIGURE_SWAPOUT_BLOCK_HOLD:
-
-CONFIGURE_SWAPOUT_BLOCK_HOLD
-----------------------------
-
-CONSTANT:
-    ``CONFIGURE_SWAPOUT_BLOCK_HOLD``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is 1000 milliseconds.
-
-DESCRIPTION:
-    Defines the swapout task maximum block hold time in milliseconds.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_SWAPOUT_TASK_PRIORITY
-
-.. _CONFIGURE_SWAPOUT_TASK_PRIORITY:
-
-CONFIGURE_SWAPOUT_TASK_PRIORITY
+CONFIGURE_BDBUF_BUFFER_MIN_SIZE
 -------------------------------
 
 CONSTANT:
-    ``CONFIGURE_SWAPOUT_TASK_PRIORITY``
+    ``CONFIGURE_BDBUF_BUFFER_MIN_SIZE``
 
 DATA TYPE:
-    Task priority (``rtems_task_priority``).
+    Unsigned integer (``uint32_t``).
 
 RANGE:
-    Valid task priority.
+    Positive.
 
 DEFAULT VALUE:
-    The default value is 15.
+    The default value is 512 bytes.
 
 DESCRIPTION:
-    Defines the swapout task priority.
+    Defines the minimum size of a buffer in bytes.
 
 NOTES:
     None.
@@ -2907,31 +2829,6 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_BDBUF_TASK_STACK_SIZE
-
-.. _CONFIGURE_BDBUF_TASK_STACK_SIZE:
-
-CONFIGURE_BDBUF_TASK_STACK_SIZE
--------------------------------
-
-CONSTANT:
-    ``CONFIGURE_BDBUF_TASK_STACK_SIZE``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is RTEMS_MINIMUM_STACK_SIZE.
-
-DESCRIPTION:
-    Defines the task stack size of the Block Device Cache tasks in bytes.
-
-NOTES:
-    None.
-
 .. index:: CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY
 
 .. _CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY:
@@ -2957,15 +2854,15 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_SWAPOUT_WORKER_TASKS
+.. index:: CONFIGURE_BDBUF_TASK_STACK_SIZE
 
-.. _CONFIGURE_SWAPOUT_WORKER_TASKS:
+.. _CONFIGURE_BDBUF_TASK_STACK_SIZE:
 
-CONFIGURE_SWAPOUT_WORKER_TASKS
-------------------------------
+CONFIGURE_BDBUF_TASK_STACK_SIZE
+-------------------------------
 
 CONSTANT:
-    ``CONFIGURE_SWAPOUT_WORKER_TASKS``
+    ``CONFIGURE_BDBUF_TASK_STACK_SIZE``
 
 DATA TYPE:
     Unsigned integer (``size_t``).
@@ -2974,10 +2871,85 @@ RANGE:
     Zero or positive.
 
 DEFAULT VALUE:
-    The default value is 0.
+    The default value is RTEMS_MINIMUM_STACK_SIZE.
 
 DESCRIPTION:
-    Defines the swapout worker task count.
+    Defines the task stack size of the Block Device Cache tasks in bytes.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_SWAPOUT_BLOCK_HOLD
+
+.. _CONFIGURE_SWAPOUT_BLOCK_HOLD:
+
+CONFIGURE_SWAPOUT_BLOCK_HOLD
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_SWAPOUT_BLOCK_HOLD``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is 1000 milliseconds.
+
+DESCRIPTION:
+    Defines the swapout task maximum block hold time in milliseconds.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_SWAPOUT_SWAP_PERIOD
+
+.. _CONFIGURE_SWAPOUT_SWAP_PERIOD:
+
+CONFIGURE_SWAPOUT_SWAP_PERIOD
+-----------------------------
+
+CONSTANT:
+    ``CONFIGURE_SWAPOUT_SWAP_PERIOD``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is 250 milliseconds.
+
+DESCRIPTION:
+    Defines the swapout task swap period in milliseconds.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_SWAPOUT_TASK_PRIORITY
+
+.. _CONFIGURE_SWAPOUT_TASK_PRIORITY:
+
+CONFIGURE_SWAPOUT_TASK_PRIORITY
+-------------------------------
+
+CONSTANT:
+    ``CONFIGURE_SWAPOUT_TASK_PRIORITY``
+
+DATA TYPE:
+    Task priority (``rtems_task_priority``).
+
+RANGE:
+    Valid task priority.
+
+DEFAULT VALUE:
+    The default value is 15.
+
+DESCRIPTION:
+    Defines the swapout task priority.
 
 NOTES:
     None.
@@ -3003,6 +2975,31 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     Defines the swapout worker task priority.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_SWAPOUT_WORKER_TASKS
+
+.. _CONFIGURE_SWAPOUT_WORKER_TASKS:
+
+CONFIGURE_SWAPOUT_WORKER_TASKS
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_SWAPOUT_WORKER_TASKS``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    Defines the swapout worker task count.
 
 NOTES:
     None.
@@ -3284,32 +3281,6 @@ DESCRIPTION:
 NOTES:
     None.
 
-.. index:: CONFIGURE_IDLE_TASK_STACK_SIZE
-
-.. _CONFIGURE_IDLE_TASK_STACK_SIZE:
-
-CONFIGURE_IDLE_TASK_STACK_SIZE
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_IDLE_TASK_STACK_SIZE``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Undefined or positive.
-
-DEFAULT VALUE:
-    The default value is RTEMS_MINIMUM_STACK_SIZE.
-
-DESCRIPTION:
-    ``CONFIGURE_IDLE_TASK_STACK_SIZE`` is set to the desired stack size for the
-    IDLE task.
-
-NOTES:
-    None.
-
 .. index:: CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 
 .. _CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION:
@@ -3343,6 +3314,32 @@ NOTES:
     IDLE body loop.
 
     The IDLE task must run at the lowest priority of all tasks in the system.
+
+.. index:: CONFIGURE_IDLE_TASK_STACK_SIZE
+
+.. _CONFIGURE_IDLE_TASK_STACK_SIZE:
+
+CONFIGURE_IDLE_TASK_STACK_SIZE
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IDLE_TASK_STACK_SIZE``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Undefined or positive.
+
+DEFAULT VALUE:
+    The default value is RTEMS_MINIMUM_STACK_SIZE.
+
+DESCRIPTION:
+    ``CONFIGURE_IDLE_TASK_STACK_SIZE`` is set to the desired stack size for the
+    IDLE task.
+
+NOTES:
+    None.
 
 General Scheduler Configuration
 ===============================
@@ -3955,38 +3952,95 @@ suitable for simple applications with no custom device drivers.
 
 Note that network device drivers are not configured in the Device Driver Table.
 
-.. index:: CONFIGURE_MAXIMUM_DRIVERS
+.. index:: CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 
-.. _CONFIGURE_MAXIMUM_DRIVERS:
+.. _CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER:
 
-CONFIGURE_MAXIMUM_DRIVERS
--------------------------
+CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
+------------------------------------------------
 
 CONSTANT:
-
-    ``CONFIGURE_MAXIMUM_DRIVERS``
+    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER``
 
 DATA TYPE:
-    Unsigned integer (``uint32_t``).
+    Boolean feature macro.
 
 RANGE:
-    Zero or positive.
+    Defined or undefined.
 
 DEFAULT VALUE:
-    This is computed by default, and is set to the number of device drivers
-    configured using the ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER``
-    configuration parameters.
+    This is not defined by default.
 
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_DRIVERS`` is defined as the number of device drivers
-    per node.
+    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is defined when the
+    application does *NOT* want the Clock Device Driver and is *NOT* using the
+    Timer Driver.  The inclusion or exclusion of the Clock Driver must be
+    explicit in user applications.
 
 NOTES:
-    If the application will dynamically install device drivers, then this
-    configuration parameter must be larger than the number of statically
-    configured device drivers. Drivers configured using the
-    ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER`` configuration parameters are
-    statically installed.
+    This configuration parameter is intended to prevent the common user error
+    of using the Hello World example as the baseline for an application and
+    leaving out a clock tick source.
+
+.. index:: CONFIGURE_APPLICATION_EXTRA_DRIVERS
+
+.. _CONFIGURE_APPLICATION_EXTRA_DRIVERS:
+
+CONFIGURE_APPLICATION_EXTRA_DRIVERS
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_EXTRA_DRIVERS``
+
+DATA TYPE:
+    device driver entry structures
+
+RANGE:
+    Undefined or set of device driver entry structures
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_APPLICATION_EXTRA_DRIVERS`` is defined if the application has
+    device drivers it needs to include in the Device Driver Table.  This should
+    be defined to the set of device driver entries that will be placed in the
+    table at the *END* of the Device Driver Table.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+----------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`` is defined if the application
+    wishes to include the Clock Device Driver.
+
+NOTES:
+    This device driver is responsible for providing a regular interrupt which
+    invokes a clock tick directive.
+
+    If neither the Clock Driver not Benchmark Timer is enabled and the
+    configuration parameter
+    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is not defined, then a
+    compile time error will occur.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 
@@ -4028,6 +4082,92 @@ NOTES:
     * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
 
     configuration options are mutually exclusive.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
+-----------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`` is defined if the
+    application wishes to include the BSP's Frame Buffer Device Driver.
+
+NOTES:
+    Most BSPs do not include support for a Frame Buffer Device Driver. This is
+    because many boards do not include the required hardware.
+
+    If this is defined and the BSP does not have this device driver, then the
+    user will get a link time error for an undefined symbol.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
+.. index:: /dev/null
+
+.. _CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
+---------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    This configuration variable is specified to enable ``/dev/null`` device driver.
+
+NOTES:
+    This device driver is supported by all BSPs.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
+--------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    ``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`` is defined if the application
+    wishes to include the Real-Time Clock Driver.
+
+NOTES:
+    Most BSPs do not include support for a real-time clock. This is because
+    many boards do not include the required hardware.
+
+    If this is defined and the BSP does not have this device driver, then the
+    user will get a link time error for an undefined symbol.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 
@@ -4128,15 +4268,15 @@ NOTES:
 
     configuration options are mutually exclusive.
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+.. index:: CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
 
-.. _CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER:
+.. _CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER:
 
-CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
-----------------------------------------
+CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
+---------------------------------------
 
 CONSTANT:
-    ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``
+    ``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER``
 
 DATA TYPE:
     Boolean feature macro.
@@ -4148,17 +4288,12 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`` is defined if the application
-    wishes to include the Clock Device Driver.
+    ``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`` is defined if the application
+    wishes to include the Stub Device Driver.
 
 NOTES:
-    This device driver is responsible for providing a regular interrupt which
-    invokes a clock tick directive.
-
-    If neither the Clock Driver not Benchmark Timer is enabled and the
-    configuration parameter
-    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is not defined, then a
-    compile time error will occur.
+    This device driver simply provides entry points that return successful and
+    is primarily a test fixture. It is supported by all BSPs.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
 
@@ -4190,66 +4325,6 @@ NOTES:
     ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is not defined, then a
     compile time error will occur.
 
-.. index:: CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
-
-.. _CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER:
-
-CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
-------------------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is defined when the
-    application does *NOT* want the Clock Device Driver and is *NOT* using the
-    Timer Driver.  The inclusion or exclusion of the Clock Driver must be
-    explicit in user applications.
-
-NOTES:
-    This configuration parameter is intended to prevent the common user error
-    of using the Hello World example as the baseline for an application and
-    leaving out a clock tick source.
-
-.. index:: CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
-
-.. _CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER:
-
-CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
---------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`` is defined if the application
-    wishes to include the Real-Time Clock Driver.
-
-NOTES:
-    Most BSPs do not include support for a real-time clock. This is because
-    many boards do not include the required hardware.
-
-    If this is defined and the BSP does not have this device driver, then the
-    user will get a link time error for an undefined symbol.
-
 .. index:: CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER:
@@ -4280,45 +4355,16 @@ NOTES:
     If this is defined and the BSP does not have this device driver, then the
     user will get a link time error for an undefined symbol.
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
+.. index:: CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
+.. index:: /dev/zero
 
-.. _CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER:
+.. _CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER:
 
-CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
------------------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`` is defined if the
-    application wishes to include the BSP's Frame Buffer Device Driver.
-
-NOTES:
-    Most BSPs do not include support for a Frame Buffer Device Driver. This is
-    because many boards do not include the required hardware.
-
-    If this is defined and the BSP does not have this device driver, then the
-    user will get a link time error for an undefined symbol.
-
-.. index:: CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
-
-.. _CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER:
-
-CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
+CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
 ---------------------------------------
 
 CONSTANT:
-    ``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER``
+    ``CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER``
 
 DATA TYPE:
     Boolean feature macro.
@@ -4330,12 +4376,10 @@ DEFAULT VALUE:
     This is not defined by default.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`` is defined if the application
-    wishes to include the Stub Device Driver.
+    This configuration variable is specified to enable ``/dev/zero`` device driver.
 
 NOTES:
-    This device driver simply provides entry points that return successful and
-    is primarily a test fixture. It is supported by all BSPs.
+    This device driver is supported by all BSPs.
 
 .. index:: CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
 
@@ -4370,87 +4414,38 @@ NOTES:
     with VMEBus. The VMEBus Controller initialization is performed by a device
     driver configured via this configuration parameter.
 
-.. COMMENT: XXX Add example
+.. index:: CONFIGURE_MAXIMUM_DRIVERS
 
-.. index:: CONFIGURE_APPLICATION_EXTRA_DRIVERS
+.. _CONFIGURE_MAXIMUM_DRIVERS:
 
-.. _CONFIGURE_APPLICATION_EXTRA_DRIVERS:
-
-CONFIGURE_APPLICATION_EXTRA_DRIVERS
------------------------------------
+CONFIGURE_MAXIMUM_DRIVERS
+-------------------------
 
 CONSTANT:
-    ``CONFIGURE_APPLICATION_EXTRA_DRIVERS``
+
+    ``CONFIGURE_MAXIMUM_DRIVERS``
 
 DATA TYPE:
-    device driver entry structures
+    Unsigned integer (``uint32_t``).
 
 RANGE:
-    Undefined or set of device driver entry structures
+    Zero or positive.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    This is computed by default, and is set to the number of device drivers
+    configured using the ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER``
+    configuration parameters.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_EXTRA_DRIVERS`` is defined if the application has
-    device drivers it needs to include in the Device Driver Table.  This should
-    be defined to the set of device driver entries that will be placed in the
-    table at the *END* of the Device Driver Table.
+    ``CONFIGURE_MAXIMUM_DRIVERS`` is defined as the number of device drivers
+    per node.
 
 NOTES:
-    None.
-
-.. index:: CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
-.. index:: /dev/null
-
-.. _CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER:
-
-CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
----------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    This configuration variable is specified to enable ``/dev/null`` device driver.
-
-NOTES:
-    This device driver is supported by all BSPs.
-
-.. index:: CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
-.. index:: /dev/zero
-
-.. _CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER:
-
-CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
----------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    This configuration variable is specified to enable ``/dev/zero`` device driver.
-
-NOTES:
-    This device driver is supported by all BSPs.
+    If the application will dynamically install device drivers, then this
+    configuration parameter must be larger than the number of statically
+    configured device drivers. Drivers configured using the
+    ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER`` configuration parameters are
+    statically installed.
 
 Multiprocessing Configuration
 =============================
@@ -4492,62 +4487,6 @@ NOTES:
     This has no impact unless RTEMS was built with the
     ``--enable-multiprocessing`` build configuration option.
 
-.. index:: CONFIGURE_MP_NODE_NUMBER
-
-.. _CONFIGURE_MP_NODE_NUMBER:
-
-CONFIGURE_MP_NODE_NUMBER
-------------------------
-
-CONSTANT:
-    ``CONFIGURE_MP_NODE_NUMBER``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is ``NODE_NUMBER``, which is assumed to be set by the
-    compilation environment.
-
-DESCRIPTION:
-    ``CONFIGURE_MP_NODE_NUMBER`` is the node number of this node in a
-    multiprocessor system.
-
-NOTES:
-    In the RTEMS Multiprocessing Test Suite, the node number is derived from
-    the Makefile variable ``NODE_NUMBER``. The same code is compiled with the
-    ``NODE_NUMBER`` set to different values. The test programs behave
-    differently based upon their node number.
-
-.. index:: CONFIGURE_MP_MAXIMUM_NODES
-
-.. _CONFIGURE_MP_MAXIMUM_NODES:
-
-CONFIGURE_MP_MAXIMUM_NODES
---------------------------
-
-CONSTANT:
-    ``CONFIGURE_MP_MAXIMUM_NODES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is 2.
-
-DESCRIPTION:
-    ``CONFIGURE_MP_MAXIMUM_NODES`` is the maximum number of nodes in a
-    multiprocessor system.
-
-NOTES:
-    None.
-
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 
 .. _CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS:
@@ -4574,6 +4513,32 @@ DESCRIPTION:
 NOTES:
     This value corresponds to the total number of objects which can be created
     with the ``RTEMS_GLOBAL`` attribute.
+
+.. index:: CONFIGURE_MP_MAXIMUM_NODES
+
+.. _CONFIGURE_MP_MAXIMUM_NODES:
+
+CONFIGURE_MP_MAXIMUM_NODES
+--------------------------
+
+CONSTANT:
+    ``CONFIGURE_MP_MAXIMUM_NODES``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is 2.
+
+DESCRIPTION:
+    ``CONFIGURE_MP_MAXIMUM_NODES`` is the maximum number of nodes in a
+    multiprocessor system.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_MP_MAXIMUM_PROXIES
 
@@ -4633,6 +4598,36 @@ NOTES:
     Multiprocessor System assuming the BSP provides the proper set of
     supporting methods.
 
+.. index:: CONFIGURE_MP_NODE_NUMBER
+
+.. _CONFIGURE_MP_NODE_NUMBER:
+
+CONFIGURE_MP_NODE_NUMBER
+------------------------
+
+CONSTANT:
+    ``CONFIGURE_MP_NODE_NUMBER``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is ``NODE_NUMBER``, which is assumed to be set by the
+    compilation environment.
+
+DESCRIPTION:
+    ``CONFIGURE_MP_NODE_NUMBER`` is the node number of this node in a
+    multiprocessor system.
+
+NOTES:
+    In the RTEMS Multiprocessing Test Suite, the node number is derived from
+    the Makefile variable ``NODE_NUMBER``. The same code is compiled with the
+    ``NODE_NUMBER`` set to different values. The test programs behave
+    differently based upon their node number.
+
 PCI Library Configuration
 =========================
 
@@ -4688,33 +4683,6 @@ Plug & Play is not performed.
 Event Recording Configuration
 =============================
 
-.. index:: CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
-
-.. _CONFIGURE_RECORD_PER_PROCESSOR_ITEMS:
-
-CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
-------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_RECORD_PER_PROCESSOR_ITEMS``
-
-DATA TYPE:
-    Unsigned integer (``unsigned int``).
-
-RANGE:
-    A power of two greater than or equal to 16.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    If defined, then a record item buffer of the specified item count is
-    statically allocated for each configured processor
-    (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).
-
-NOTES:
-    None.
-
 .. index:: CONFIGURE_RECORD_EXTENSIONS_ENABLED
 
 .. _CONFIGURE_RECORD_EXTENSIONS_ENABLED:
@@ -4742,6 +4710,33 @@ DESCRIPTION:
 NOTES:
     The record extensions capture thread create, start, restart, delete,
     switch, begin, exitted and terminate events.
+
+.. index:: CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
+
+.. _CONFIGURE_RECORD_PER_PROCESSOR_ITEMS:
+
+CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
+------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_RECORD_PER_PROCESSOR_ITEMS``
+
+DATA TYPE:
+    Unsigned integer (``unsigned int``).
+
+RANGE:
+    A power of two greater than or equal to 16.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    If defined, then a record item buffer of the specified item count is
+    statically allocated for each configured processor
+    (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).
+
+NOTES:
+    None.
 
 .. _ConfigAda:
 
