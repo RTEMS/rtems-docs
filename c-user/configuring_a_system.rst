@@ -3002,69 +3002,13 @@ DESCRIPTION:
 NOTES:
     None.
 
-BSP Specific Settings
-=====================
+BSP Related Configuration Options
+=================================
 
-This section describes BSP specific configuration settings used by
-``<rtems/confdefs.h>``.  The BSP specific configuration settings are defined in
-``<bsp.h>``.
-
-.. index:: CONFIGURE_DISABLE_BSP_SETTINGS
-
-.. _CONFIGURE_DISABLE_BSP_SETTINGS:
-
-CONFIGURE_DISABLE_BSP_SETTINGS
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_DISABLE_BSP_SETTINGS``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
-
-DESCRIPTION:
-    All BSP specific configuration settings can be disabled by the application
-    with the ``CONFIGURE_DISABLE_BSP_SETTINGS`` option.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
-
-.. _CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK:
-
-CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
-----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK``
-
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This option is BSP specific.
-
-DESCRIPTION:
-    This configuration parameter is defined by a BSP to indicate that it does
-    not allocate all available memory to the C Program Heap used by the Malloc
-    Family of routines.
-
-    If defined, when ``malloc()`` is unable to allocate memory, it will call
-    the BSP supplied ``sbrk()`` to obtain more memory.
-
-NOTES:
-    This parameter should not be defined by the application. Only the BSP knows
-    how it allocates memory to the C Program Heap.
+This section describes configuration options related to the BSP.  Some
+configuration options may have a BSP-specific setting which is defined by
+``<bsp.h>``.  The BSP-specific settings can be disabled by the
+:ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option.
 
 .. index:: BSP_IDLE_TASK_BODY
 
@@ -3129,8 +3073,6 @@ NOTES:
     - If defined, then the BSP specific ``BSP_IDLE_TASK_SIZE``.
 
     - If defined, then the application specified ``CONFIGURE_IDLE_TASK_SIZE``.
-
-.. COMMENT: XXX - add cross references to other related values.
 
 .. index:: BSP_INITIAL_EXTENSION
 
@@ -3246,6 +3188,63 @@ NOTES:
     ``CONFIGURE_BSP_PREREQUISITE_DRIVERS`` is typically used by BSPs to
     configure common infrastructure such as bus controllers or probe for
     devices.
+
+.. index:: CONFIGURE_DISABLE_BSP_SETTINGS
+
+.. _CONFIGURE_DISABLE_BSP_SETTINGS:
+
+CONFIGURE_DISABLE_BSP_SETTINGS
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_DISABLE_BSP_SETTINGS``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This is not defined by default.
+
+DESCRIPTION:
+    All BSP specific configuration settings can be disabled by the application
+    with the ``CONFIGURE_DISABLE_BSP_SETTINGS`` option.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
+
+.. _CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK:
+
+CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
+----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK``
+
+DATA TYPE:
+    Boolean feature macro.
+
+RANGE:
+    Defined or undefined.
+
+DEFAULT VALUE:
+    This option is BSP specific.
+
+DESCRIPTION:
+    This configuration parameter is defined by a BSP to indicate that it does
+    not allocate all available memory to the C Program Heap used by the Malloc
+    Family of routines.
+
+    If defined, when ``malloc()`` is unable to allocate memory, it will call
+    the BSP supplied ``sbrk()`` to obtain more memory.
+
+NOTES:
+    This parameter should not be defined by the application. Only the BSP knows
+    how it allocates memory to the C Program Heap.
 
 Idle Task Configuration
 =======================
