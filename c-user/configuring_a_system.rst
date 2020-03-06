@@ -1184,7 +1184,9 @@ DESCRIPTION:
     Message Queues that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode.  You have
+    to account for the memory used to store the messages of each message queue,
+    see :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 .. index:: CONFIGURE_MAXIMUM_BARRIERS
 
@@ -1664,7 +1666,9 @@ DESCRIPTION:
     API Message Queues that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode.  You have
+    to account for the memory used to store the messages of each message queue,
+    see :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
 
@@ -2038,7 +2042,9 @@ Configuring Memory for Classic API Message Buffers
 ==================================================
 
 This section describes the configuration parameters related to specifying the
-amount of memory reserved for Classic API Message Buffers.
+amount of memory reserved for message queue message buffers.  See
+:ref:`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` and
+:ref:`CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES`.
 
 .. index:: CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
 .. index:: memory for a single message queue's buffers
@@ -2076,8 +2082,7 @@ DESCRIPTION:
     ``size_per`` is the size in bytes of the user message.
 
 NOTES:
-
-    This macro is only used in support of ``CONFIGURE_MESSAGE_BUFFER_MEMORY``.
+    This macro is only used in support of :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 .. index:: CONFIGURE_MESSAGE_BUFFER_MEMORY
 .. index:: configure message queue buffer memory
@@ -2105,7 +2110,7 @@ DESCRIPTION:
 
 NOTES:
     The following illustrates how the help macro
-    ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE`` can be used to assist in
+    :ref:`CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE` can be used to assist in
     calculating the message buffer memory required.  In this example, there are
     two message queues used in this application.  The first message queue has
     maximum of 24 pending messages with the message structure defined by the
