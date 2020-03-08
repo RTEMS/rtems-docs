@@ -47,7 +47,7 @@ RTEMS Classic API Guide (|version|).
 	fatal_error
 	board_support_packages
 	user_extensions
-	configuring_a_system
+	config/index
 	self_contained_objects
 	multiprocessing
 	symmetric_multiprocessing_services
