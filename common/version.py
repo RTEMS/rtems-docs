@@ -1,6 +1,6 @@
 #
 # RTEMS Documentation Project (http://www.rtems.org/)
-# Copyright 2019 Chris Johns (chrisj@rtems.org)
+# Copyright 2019, 2020 Chris Johns (chrisj@rtems.org)
 # Copyright (C) 2019 embedded brains GmbH
 # All rights reserved.
 #
@@ -66,6 +66,9 @@ from __future__ import print_function
 import os.path
 
 _version = 'invalid'
+_major = 0
+_minor = 0
+_revision = 0
 _date = 'unknown date'
 _released = False
 
@@ -155,6 +158,17 @@ def get(ctx, rtems_major_version):
         _version = version
         _date = date
         _release = released
+    if version != 'invalid':
+        vs = _version.split('.')
+        _major = vs[0]
+        if len(vs) == 3:
+            _minor = vs[1]
+            _revision = vs[2]
+        elif len(vs) == 2:
+            _minor = 0
+            _revision = vs[1]
+        else:
+            ctx.fatal('Invalid version format: %s' % (_version))
     return version, date, released
 
 def string():
@@ -162,6 +176,15 @@ def string():
 
 def version():
     return _version
+
+def major():
+    return _major
+
+def minor():
+    return _minor
+
+def revision():
+    return revision
 
 def date():
     return _date

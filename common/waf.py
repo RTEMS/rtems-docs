@@ -19,7 +19,10 @@ import conf
 sphinx_min_version = (1, 3)
 
 def version_cmdline(ctx):
-    return '-Drelease="%s" -Dversion="%s"' % (ctx.env.RELEASE, ctx.env.VERSION)
+    return '-Drelease="%s" -Dversion="%s" -Drtems_major="%s" ' \
+           '-Drtems_minor="%s" -D rtems_revision="%s"' \
+        % (ctx.env.RELEASE, ctx.env.VERSION, ctx.env.RTEMS_MAJOR,
+           ctx.env.RTEMS_MINOR, ctx.env.RTEMS_REVISION)
 
 def sphinx_cmdline(ctx, build_type, conf_dir, doctrees,
                    source_dir, output_dir, configs = []):
