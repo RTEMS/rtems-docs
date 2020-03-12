@@ -1,0 +1,96 @@
+.. SPDX-License-Identifier: CC-BY-SA-4.0
+
+.. Copyright (C) 2020 Chris Johns
+
+.. _Migration_4_11_to_5:
+
+RTEMS 4.11 to RTEMS 5
+=====================
+
+This section provides helpful information when migrating from RTEMS 4.11 to
+RTEMS 5.
+
+Configuration
+-------------
+
+A number of configurations macros have moved as a result of internal changes in
+RTEMS. Some of these will produce a warning indicating the new configuration
+setings you need to define. If you need to run an application on RTEMS 4.11 and
+RTEMS 5 the following code exmaple shows how to conditionally define the
+settings. The example is:
+
+.. code-block:: c
+
+    #include <rtems.h>
+
+    #if __RTEMS_MAJOR__ < 5
+     #define CONFIGURE_MAXIMUM_FIFOS 10
+     #define CONFIGURE_MAXIMUM_PIPES 10
+    #else
+     #define CONFIGURE_IMFS_ENABLE_MKFIFO
+    #endif
+
+    #define MAX_FILE_DESCRIPTORS 200
+    #if __RTEMS_MAJOR__ < 5
+     #define CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS MAX_FILE_DESCRIPTORS
+    #else
+     #define CONFIGURE_MAXIMUM_FILE_DESCRIPTORS       MAX_FILE_DESCRIPTORS
+    #endif
+
+Networking
+----------
+
+The following code samples provides a simple way to initialise and start
+networking with the BSD Library's (``libbsd``) networking stack. The simplest
+method to configure the networking stack is to provide a :file:`/etc/rc,conf`
+file on your target. If your target has no non-volatile media for a file system
+create the :file:`rc.conf` file each time your application starts.
+
+The :file:`rc.conf` support in ``libbsd`` provides a number of needed support
+settings. We recommend you search for FreeBSD and ``rc.conf`` to view the
+available online documentation that FreeBSD provides.
+
+In this example the network interface is ``cgem0``, replace with your
+interface name.
+
+.. code-block:: c
+
+    static const char* rc_conf =
+      "# /etc/rc.conf\n" \
+      "hostname=\"rtems5-libbsd\"\n" \
+      "ifconfig_cgem0=\"inet 10.1.2.3 netmask 255.255.255.0 rxcsum txcsum\"\n" \
+      "ifconfig_cgem0_alias0=\"ether 00:80:81:82:83:84\"\n" \
+      "defaultrouter=\"10.1.2.1\"\n" \
+      "telnetd_enable=\"YES\"\n";
+
+    void start_network(void)
+    {
+      FILE *rc;
+      int   r;
+
+      /*
+       * Initialise libbsd.
+       */
+      rtems_bsd_initialize();
+
+      /*
+       * Create the /etc/rc,conf, assume /etc exists.
+       */
+      rc = fopen("/etc/rc.conf", "w");
+      if (rc_conf == NULL) {
+        printf("error: cannot create /etc/rc.conf\n");
+        exit(1);
+      }
+
+      fprintf(rc, rc_conf);
+      fclose(rc);
+
+      /*
+       * Arguments are timeout and trace
+       */
+      r = rtems_bsd_run_etc_rc_conf(30, false);
+      if (r < 0) {
+        printf("error: loading /etc/rc.conf failed: %s\n",strerror(errno));
+        exit(1);
+      }
+    }

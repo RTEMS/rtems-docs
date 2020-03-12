@@ -42,6 +42,8 @@ RTEMS User Manual (|version|).
     testing/index
     tracing/index
 
+    migration/index
+
     tools/index
     rsb/index
 
