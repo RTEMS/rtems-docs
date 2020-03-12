@@ -44,7 +44,7 @@ how to build that package from source and taught this tool.
 
 .. sidebar:: Setting up your Host
 
-   See :ref:`QuickStartHost` for details on setting up hosts.
+   See :ref:`QuickStartPreparation` for details on setting up hosts.
 
 The RTEMS Source Builder is known to work on:
 
