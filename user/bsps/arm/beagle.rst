@@ -2,6 +2,12 @@
 
 .. Copyright (C) 2019 Vijay Kumar Banerjee
 
+.. _BSP_arm_beagle:
+.. _BSP_arm_beagleboardorig:
+.. _BSP_arm_beagleboardxm:
+.. _BSP_arm_beagleboneblack:
+.. _BSP_arm_beaglebonewhite:
+
 beagle
 ======
 
