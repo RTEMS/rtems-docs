@@ -12,20 +12,20 @@ Configuring a System
 
     intro
     general
+    device-driver
     classic-api
     classic-init-task
     posix-api
     posix-init-thread
-    task-stack-alloc
+    event-record
     filesystem
     bdbuf
-    bsp-related
+    task-stack-alloc
     idle-task
     scheduler-general
     scheduler-clustered
-    device-driver
+    bsp-related
     mpci
     libpci
-    event-record
     ada
     obsolete
