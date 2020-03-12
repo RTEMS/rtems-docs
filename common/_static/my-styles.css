@@ -29,6 +29,11 @@
     color: #a87892;
 }
 
+.highlight {
+    background: rgba(250, 252, 237);
+    color: rgba(0, 0, 0);
+}
+
 /*
  * Literals.
  */
