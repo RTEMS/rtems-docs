@@ -2,6 +2,7 @@
 
 .. Copyright (C) 2019 embedded brains GmbH
 .. Copyright (C) 2019 Sebastian Huber
+.. Copyright (C) 2020 Chris Johns
 
 .. _QuickStartSources:
 
@@ -10,14 +11,80 @@ Obtain the Sources
 
 You have considered and chosen a suitable installation prefix in the previous
 section.  We have chosen :file:`$HOME/quick-start/rtems/5` as the installation
-prefix.
+prefix. We will show how to use a released version of RTEMS and then as an
+alternative we will show you using the :ref:`RSB Git repository
+<QuickStartSources_Git>`. Consider using a Git clone if you wish to make
+contributions to the RTEMS Project.
 
-You need at least two source archives or Git repositories to work with RTEMS.
-You can download the source archives for a released RTEMS version or you can
-clone Git repositories to get all versions of RTEMS including the development
-head.
+You need the RTEMS Source Builder (RSB) to work with RTEMS and we prefer you
+use a released version. A released version of the RSB downloads all source code
+from the RTEMS servers. Each release archives all the referenced source
+providing long term stability as changes in upstream projects do not effect a
+release's build.
 
-We will clone the Git repositories into :file:`$HOME/quick-start/src`.
+You will need approximately 1.5G bytes of disk space to build the tools, RTEMS
+kernel, network stack and 3rd party packages for the ERC32 BSP.
+
+.. _QuickStartSources_Released:
+
+Releases
+--------
+
+You can download the source archives for a released RTEMS version from RTEMS'
+servers. Releases can be view at https://ftp.rtems.org/pub/rtems/releases with
+the releases listed as a series under a release's major number. For RTEMS 5.1.0
+the release series is `5 <https://ftp.rtems.org/pub/rtems/releases/5>`_ and the
+release path is https://ftp.rtems.org/pub/rtems/releases/5/5.1.0.
+
+To work with the archives of a released RTEMS version, simply replace the
+version number ``5`` used throughout this chapter with the version number you
+selected, e.g. ``sparc-rtems4.11``, ``sparc-rtems6``, and so on.
+
+Download and unpack using the ``curl`` and ``tar`` command with these commands:
+
+.. code-block:: none
+
+    mkdir -p $HOME/quick-start/src
+    cd $HOME/quick-start/src
+    curl https://ftp.rtems.org/pub/rtems/releases/5/5.1.0/rtems-source-builder-5.1.0.tar.xz | tar xJf -
+
+If ``curl`` does not work consider using ``wget`` or a browser.
+
+The RSB is unpacked under the path ``rtems-source-builder-5.1.0``. Rename this
+to ``rsb`` to get shorter paths during the tool suite build. To do this run
+these commands:
+
+.. code-block:: none
+
+    cd $HOME/quick-start/src
+    mv rtems-source-builder-5.1.0 rsb
+
+.. _QuickStartSources_Released_RTEMS:
+
+If you wish to build the RTEMS kernel from source obtain the RTEMS kernel
+sources:
+
+.. code-block:: none
+
+    cd $HOME/quick-start/src
+    curl https://ftp.rtems.org/pub/rtems/releases/5/5.1.0/rtems-5.1.0.tar.xz | tar xJf -
+
+.. _QuickStartSources_Git:
+
+Git
+---
+
+Alternatively, clone the Git repositories into :file:`$HOME/quick-start/src`.
+
+A Git repository clone gives you some flexibility with the added complexity of
+needing to use a Git branch to build a released version.  With Git you can
+switch between branches to try out different RTEMS versions and you have access
+to the RTEMS source history. The RTEMS Project welcomes contributions.  The Git
+repositories enable you to easily create patches and track local changes.
+
+You can clone the Git repository to get all versions of RTEMS including the
+development head.  Release branches in Git are kept stable however they may
+differ from a release's source archive.
 
 .. code-block:: none
 
@@ -26,27 +93,41 @@ We will clone the Git repositories into :file:`$HOME/quick-start/src`.
     git clone git://git.rtems.org/rtems-source-builder.git rsb
     git clone git://git.rtems.org/rtems.git
 
-The :file:`rsb` repository clone contains the
-:ref:`RTEMS Source Builder (RSB) <RSB>`.  We clone it into
-:file:`rsb` to get shorter paths during the tool suite build.  The
-:file:`rtems` repository clone contains the RTEMS sources.  These two
-repositories are enough to get started.  There are
-`more repositories <https://git.rtems.org>`_ available.
+The :file:`rsb` repository clone contains the :ref:`RTEMS Source Builder (RSB)
+<RSB>`.  We clone it into :file:`rsb` to get shorter paths during the tool
+suite build.  The :file:`rtems` repository clone contains the RTEMS sources.
+These two repositories are enough to get started.  There are `more repositories
+<https://git.rtems.org>`_ available.
 
-Alternatively, you can download the source archives of a released RTEMS
-version.
+Offline Download
+----------------
+
+If you have limited Internet access you can download the source before you
+start building. If you are permanently connected to the Internet you do not
+need to do this and the sources will be automatically download on demand when
+needed.
+
+Once the sources have been downloaded you could disconnect your host computer
+from the Internet.  It is no longer required to work with RTEMS. To download
+the sources to build the ERC 32 BSP before building run the following commands:
 
 .. code-block:: none
 
-    mkdir -p $HOME/quick-start/src
-    cd $HOME/quick-start/src
-    curl https://ftp.rtems.org/pub/rtems/releases/4.11/4.11.3/rtems-4.11.3.tar.xz | tar xJf -
-    curl https://ftp.rtems.org/pub/rtems/releases/4.11/4.11.3/rtems-source-builder-4.11.3.tar.xz | tar xJf -
+    cd $HOME/quick-start/src/rsb/rtems
+    ../source-builder/sb-set-builder --source-only-download 5/rtems-sparc
 
-This quick start chapter focuses on working with the Git repository clones
-since this gives you some flexibility.  You can switch between branches to try
-out different RTEMS versions.  You have access to the RTEMS source history.
-The RTEMS Project welcomes contributions.  The Git repositories enable you to
-easily create patches and track local changes.  If you prefer to work with
-archives of a released RTEMS version, then simply replace the version number 5
-used throughout this chapter with the version number you selected, e.g. 4.11.
+This command should output something like this (omitted lines are denoted by
+``...``):
+
+.. code-block:: none
+
+    RTEMS Source Builder - Set Builder, 5.1.0
+    Build Set: 5/rtems-sparc
+    ...
+    download: https://ftp.rtems.org/pub/rtems/releases/5/5.1.0/5.1.0/sources/gcc-7.5.0.tar.xz -> sources/gcc-7.5.0.tar.xz
+    ...
+    Build Sizes: usage: 0.000B total: 143.814MB (sources: 143.793MB, patches: 21.348KB, installed 0.000B)
+    Build Set: Time 0:05:52.617958
+
+If you encounter errors, check your internet connection, firewall settings,
+virus scanners and the availability of the download servers.

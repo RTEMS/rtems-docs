@@ -8,35 +8,134 @@
 Build a Board Support Package (BSP)
 ===================================
 
-You installed the tool suite in your installation prefix, cloned two RTEMS
-repositories and bootstrapped the RTEMS sources in the previous sections.  We
-installed the tool suite in :file:`$HOME/quick-start/rtems/5` and cloned the
-repositories in :file:`$HOME/quick-start/src`.  We also bootstrapped the RTEMS
-sources.
+You installed the tool suite in your installation prefix, made ready the source
+for two RTEMS source packages and if you are using a Git clone bootstrapped the
+RTEMS sources in the previous sections.  We installed the tool suite in
+:file:`$HOME/quick-start/rtems/5` and unpacked the source in
+:file:`$HOME/quick-start/src`.
 
 You are now able to build :ref:`Board Support Packages (BSPs) <BSPs>` for all
-architectures where you have an RTEMS tool suite installed.  To build
-applications on top of RTEMS, you have to configure, build and install a BSP
-for your target hardware.  To select a proper BSP for your target hardware
-consult the :ref:`BSPs <BSPs>` chapter.  We select the `erc32` BSP.
+architectures you have an installed RTEMS tool suite.  To build applications on
+top of RTEMS, you have to build and install a BSP for your target hardware.  To
+select a proper BSP for your target hardware consult the :ref:`BSPs <BSPs>`
+chapter.  We select the `erc32` BSP. The ``erc32`` BSP uses approximately 2.3G
+bytes of disk space when the testsuite is built and 44M bytes of space when
+installed.
 
-We configure, build and install the BSP in four steps.  The first step is to
-create a build directory.  It must be separate from the RTEMS source directory.
-We use :file:`$HOME/quick-start/build/b-erc32`.
+We will first show how to build the BSP using the RSB and then we will show how
+to build the same BSP `manually <QuickStartBSPBuild_Manual>`_. You only need to
+use one of the listed methods to build the BSP.
+
+In the output in this section the base directory :file:`$HOME/quick-start` was
+replaced by ``$BASE``.
+
+.. QuickStartBSPBuild_RSB:
+
+RSB BSP Build
+-------------
+
+The RSB build of RTEMS does not use the RTEMS source we made ready. It uses the
+RSB source you downloaded in a previous section. If you are using a release RSB
+source archive the BSP built is the released kernel image. If you are using a
+Git clone of the RSB the BSP will be version referenced in the RSB clone.
+
+To build the BSP with all the tests run this command:
+
+.. code-block:: none
+
+    cd $HOME/quick-start/src/rsb/rtems
+    ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/5 \
+        --target=sparc-rtems5 --with-rtems-bsp=erc32 --with-rtems-tests=yes 5/rtems-kernel
+
+This command should output something like this:
+
+.. code-block:: none
+
+    RTEMS Source Builder - Set Builder, 5.1.0
+    Build Set: 5/rtems-kernel
+    config: tools/rtems-kernel-5.cfg
+    package: sparc-rtems5-kernel-erc32-1
+    building: sparc-rtems5-kernel-erc32-1
+    sizes: sparc-rtems5-kernel-erc32-1: 2.279GB (installed: 44.612MB)
+    cleaning: sparc-rtems5-kernel-erc32-1
+    reporting: tools/rtems-kernel-5.cfg -> sparc-rtems5-kernel-erc32-1.txt
+    reporting: tools/rtems-kernel-5.cfg -> sparc-rtems5-kernel-erc32-1.xml
+    installing: sparc-rtems5-kernel-erc32-1 -> $BASE/
+    cleaning: sparc-rtems5-kernel-erc32-1
+    Build Set: Time 0:03:09.896961
+
+The RSB BSP build can be customised with following RSB command line options:
+
+``--with-rtems-tests``:
+    Build the test suite. If ``yes`` is provided all tests in the testsuite are
+    build. If ``no`` is provided no tests are built and if ``samples`` is
+    provided only the sample executables are built, e.g.
+    ``--with-rtems-tests=yes``.
+
+``--with-rtems-smp``:
+    Build with SMP support. The BSP has to have SMP support or this option will
+    fail with an error.
+
+``--with-rtems-legacy-network``:
+    Build the legacy network software. We recommend you use the current network
+    support in the RTEMS BSP Library (libbsd) unless you need to maintain a
+    legacy product. Do not use the legacy networking software for new
+    developments.
+
+``--with-rtems-bspopts``:
+    Build the BSP with BSP specific options. This is an advanced option. Please
+    refer to the BSP specific details in the :ref:`Board Support Packages
+    (BSPs)` of this manual or the BSP source code in the RTEMS source
+    directory. To supply a list of options quote then list with ``"``, e.g.
+    ``--with-rtems-bspopts="BSP_POWER_DOWN_AT_FATAL_HALT=1"``
+
+If you have built a BSP with the RSB, you can move on to
+:ref:`QuickStartBSPTest`.
+
+.. QuickStartBSPBuild_Manual:
+
+Manual BSP Build
+----------------
+
+We manually build the BSP in four steps.  The first step is to create a build
+directory.  It must be separate from the RTEMS source directory.  We use
+:file:`$HOME/quick-start/build/b-erc32`.
 
 .. code-block:: none
 
     mkdir -p $HOME/quick-start/build/b-erc32
 
-The second step is to configure the BSP.  There are various configuration
-options available.  Some configuration options are BSP-specific.  Prepend the
-RTEMS tool suite binary directory to your ``$PATH`` throughout the remaining
-steps.
+The second step is to set your path. Prepend the RTEMS tool suite binary
+directory to your ``$PATH`` throughout the remaining steps. Run the command:
+
+.. code-block:: none
+
+    export PATH=$HOME/quick-start/rtems/5/bin:"$PATH"
+
+Check your installed tools can be found by running:
+
+.. code-block:: none
+
+    command -v sparc-rtems5-gcc && echo "found" || echo "not found"
+
+The output should be:
+
+.. code-block:: none
+
+    found
+
+If ``not found`` is printed the tools are not correctly installed or the path
+has not been correctly set. Check the contents of the path
+:file:`$HOME/quick-start/rtems/5/bin` manually and if :file:`sparc-rtems5-gcc`
+is present the path is wrong. If the file cannot be found return to
+:ref:`QuickStartTools` and install the tools again.
+
+The third step is to configure the BSP.  There are various configuration
+options available.  Some configuration options are BSP-specific.
 
 .. code-block:: none
 
     cd $HOME/quick-start/build/b-erc32
-    export PATH=$HOME/quick-start/rtems/5/bin:"$PATH"
     $HOME/quick-start/src/rtems/configure \
         --prefix=$HOME/quick-start/rtems/5 \
         --enable-maintainer-mode \
@@ -45,7 +144,7 @@ steps.
         --enable-tests
 
 This command should output something like this (omitted lines are denoted by
-...):
+``...``):
 
 .. code-block:: none
 
@@ -64,7 +163,7 @@ This command should output something like this (omitted lines are denoted by
 
     config.status: creating Makefile
 
-Building the BSP is the third step.
+Building the BSP is the forth step.
 
 .. code-block:: none
 
@@ -72,8 +171,7 @@ Building the BSP is the third step.
     make
 
 This command should output something like this (omitted lines are denoted by
-...).  In this output the base directory :file:`$HOME/quick-start` was replaced
-by ``$BASE``.
+...).
 
 .. code-block:: none
 
@@ -97,7 +195,7 @@ by ``$BASE``.
     configure: creating make/erc32.cache
     gmake[3]: Entering directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'
     ...
-    sparc-rtems5-gcc  -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -B./../../lib/libbsp/sparc/erc32 -B$BASE/src/rtems/bsps/sparc/erc32/start -specs bsp_specs -qrtems -L./../../cpukit -L$BASE/src/rtems/bsps/sparc/shared/start -Wl,--wrap=printf -Wl,--wrap=puts -Wl,--wrap=putchar -Wl,--gc-sections -o spwkspace.exe spwkspace/spwkspace-init.o ./../../lib/libbsp/sparc/erc32/librtemsbsp.a ./../../cpukit/librtemscpu.a 
+    sparc-rtems5-gcc  -mcpu=cypress -O2 -g -ffunction-sections -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration -Wstrict-prototypes -Wnested-externs -B./../../lib/libbsp/sparc/erc32 -B$BASE/src/rtems/bsps/sparc/erc32/start -specs bsp_specs -qrtems -L./../../cpukit -L$BASE/src/rtems/bsps/sparc/shared/start -Wl,--wrap=printf -Wl,--wrap=puts -Wl,--wrap=putchar -Wl,--gc-sections -o spwkspace.exe spwkspace/spwkspace-init.o ./../../lib/libbsp/sparc/erc32/librtemsbsp.a ./../../cpukit/librtemscpu.a
     gmake[5]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32/testsuites/sptests'
     gmake[4]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32/testsuites'
     gmake[3]: Leaving directory '$BASE/build/b-erc32/sparc-rtems5/c/erc32'

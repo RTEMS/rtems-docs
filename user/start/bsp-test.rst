@@ -29,7 +29,7 @@ by ``$BASE``.
 
 .. code-block:: none
 
-    RTEMS Testing - Tester, 5.0.not_released
+    RTEMS Testing - Tester, 5.1.0
      Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32-sis --rtems-tools=$BASE/rtems/5 .
      Python: 2.7.15 (default, Jan 10 2019, 01:14:47) [GCC 4.2.1 Compatible FreeBSD Clang 6.0.1 (tags/RELEASE_601/final 335540)]
     Host: FreeBSD-12.0-RELEASE-p2-amd64-64bit-ELF (FreeBSD Build_FreeBSD12 12.0-RELEASE-p2 FreeBSD 12.0-RELEASE-p2 GENERIC amd64 amd64)

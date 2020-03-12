@@ -14,7 +14,7 @@ applications on top of RTEMS.
 
 .. toctree::
 
-    host
+    preparation
     prefixes
     sources
     tools
@@ -22,3 +22,4 @@ applications on top of RTEMS.
     bsp-build
     bsp-test
     app
+    rsb-packages
