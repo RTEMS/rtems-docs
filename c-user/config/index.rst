@@ -17,7 +17,6 @@ Configuring a System
     posix-api
     posix-init-thread
     task-stack-alloc
-    msg-queue-buffer
     filesystem
     bdbuf
     bsp-related

@@ -324,6 +324,79 @@ NOTES:
     Typically the memory allocation will be too low when an application does
     not account for all message queue buffers or task stacks.
 
+.. index:: CONFIGURE_MESSAGE_BUFFER_MEMORY
+.. index:: configure message queue buffer memory
+.. index:: CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE
+.. index:: memory for a single message queue's buffers
+
+.. _CONFIGURE_MESSAGE_BUFFER_MEMORY:
+
+CONFIGURE_MESSAGE_BUFFER_MEMORY
+-------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MESSAGE_BUFFER_MEMORY``
+
+DATA TYPE:
+    integer summation macro
+
+RANGE:
+    undefined (zero) or calculation resulting in a positive integer
+
+DEFAULT VALUE:
+    The default value is zero.
+
+DESCRIPTION:
+    The value of this configuration option defines the number of bytes
+    resereved for message queue buffers in the RTEMS Workspace.
+
+NOTES:
+    The configuration options :ref:`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` and
+    :ref:`CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES` define only how many message
+    queues can be created by the application.  The memory for the message
+    buffers is configured by this option.  For each message queue you have to
+    reserve some memory for the message buffers.  The size dependes on the
+    maximum number of pending messages and the maximum size of the messages of
+    a message queue.  Use the ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()`` macro
+    to specify the message buffer memory for each message queue and sum them up
+    to define the value for ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES``.
+
+    The interface for the ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()`` help
+    macro is as follows:
+
+    .. code-block:: c
+
+        CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( max_messages, max_msg_size )
+
+    Where ``max_messages`` is the maximum number of pending messages and
+    ``max_msg_size`` is the maximum size in bytes of the messages of the
+    corresponding message queue.  Both parameters shall be compile time
+    constants.  Not using this help macro (e.g. just using
+    ``max_messages * max_msg_size``) may result in an underestimate of the
+    RTEMS Workspace size.
+
+    The following example illustrates how the
+    `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` help macro can be used to assist in
+    calculating the message buffer memory required.  In this example, there are
+    two message queues used in this application.  The first message queue has a
+    maximum of 24 pending messages with the message structure defined by the
+    type ``one_message_type``.  The other message queue has a maximum of 500
+    pending messages with the message structure defined by the type
+    ``other_message_type``.
+
+    .. code-block:: c
+
+        #define CONFIGURE_MESSAGE_BUFFER_MEMORY ( \
+            CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( \
+              24, \
+              sizeof( one_message_type ) \
+            ) \
+            + CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( \
+              500, \
+              sizeof( other_message_type ) \
+            ) \
+          )
+
 .. index:: CONFIGURE_MICROSECONDS_PER_TICK
 .. index:: tick quantum
 
