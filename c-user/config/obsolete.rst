@@ -41,7 +41,7 @@ This configuration option is obsolete since RTEMS 5.1.
 CONFIGURE_GNAT_RTEMS
 --------------------
 
-This configuration option was present in all RTEMS versions since at 1997 and is
+This configuration option was present in all RTEMS versions since 1997 and is
 obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 
 .. index:: CONFIGURE_HAS_OWN_CONFIGURATION_TABLE
@@ -98,7 +98,7 @@ This configuration option is obsolete since RTEMS 5.1.
 CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS
 --------------------------------
 
-This configuration option was present in all RTEMS versions since at 1998 and is
+This configuration option was present in all RTEMS versions since 1998 and is
 obsolete since RTEMS 5.1.  See also :ref:`CONFIGURE_MAXIMUM_FILE_DESCRIPTORS`.
 
 .. index:: CONFIGURE_MAXIMUM_ADA_TASKS
@@ -106,7 +106,7 @@ obsolete since RTEMS 5.1.  See also :ref:`CONFIGURE_MAXIMUM_FILE_DESCRIPTORS`.
 CONFIGURE_MAXIMUM_ADA_TASKS
 ---------------------------
 
-This configuration option was present in all RTEMS versions since at 1997 and is
+This configuration option was present in all RTEMS versions since 1997 and is
 obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 
 .. index:: CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
@@ -114,7 +114,7 @@ obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
 --------------------------------
 
-This configuration option was present in all RTEMS versions since at 1997 and is
+This configuration option was present in all RTEMS versions since 1997 and is
 obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 
 .. index:: CONFIGURE_MAXIMUM_GO_CHANNELS
