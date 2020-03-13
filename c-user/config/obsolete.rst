@@ -109,6 +109,16 @@ CONFIGURE_MAXIMUM_ADA_TASKS
 This configuration option was present in all RTEMS versions since 1997 and is
 obsolete since RTEMS 5.1.  See also :ref:`ConfigAda`.
 
+.. index:: CONFIGURE_MAXIMUM_DEVICES
+
+.. _CONFIGURE_MAXIMUM_DEVICES:
+
+CONFIGURE_MAXIMUM_DEVICES
+-------------------------
+
+This configuration option was present in all RTEMS versions since at least 1995
+and is obsolete since RTEMS 5.1.
+
 .. index:: CONFIGURE_MAXIMUM_FAKE_ADA_TASKS
 
 CONFIGURE_MAXIMUM_FAKE_ADA_TASKS

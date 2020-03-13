@@ -446,36 +446,6 @@ DESCRIPTION:
     - when the block size is 512 bytes, the maximum file size is 1,082,195,456
       bytes.
 
-.. index:: CONFIGURE_MAXIMUM_DEVICES
-
-.. _CONFIGURE_MAXIMUM_DEVICES:
-
-CONFIGURE_MAXIMUM_DEVICES
--------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_DEVICES``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    If ``BSP_MAXIMUM_DEVICES`` is defined, then the default value is
-    ``BSP_MAXIMUM_DEVICES``, otherwise the default value is 4.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_DEVICES`` is defined to the number of individual
-    devices that may be registered in the device file system (devFS).
-
-NOTES:
-    This option is specific to the device file system (devFS) and should not be
-    confused with the ``CONFIGURE_MAXIMUM_DRIVERS`` option.  This parameter
-    only impacts the devFS and thus is only used by ``<rtems/confdefs.h>`` when
-    ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM`` is specified.
-
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 
 .. _CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM:
