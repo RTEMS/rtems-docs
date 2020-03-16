@@ -46,7 +46,7 @@ Make sure you have these lines below, in your ``config.txt``.
 
 .. code-block:: none
 
-     enable-uart=1
+     enable_uart=1
      kernel_address=0x200000
      kernel=kernel.img
 
