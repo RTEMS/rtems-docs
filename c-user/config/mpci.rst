@@ -121,9 +121,8 @@ DESCRIPTION:
 NOTES:
     Since a proxy is used to represent a remote task/thread which is blocking
     on this node. This configuration parameter reflects the maximum number of
-    remote tasks/threads which can be blocked on objects on this node.
-
-.. COMMENT: XXX - add xref to proxy discussion in MP chapter
+    remote tasks/threads which can be blocked on objects on this node, see
+    :ref:`MPCIProxies`.
 
 .. index:: CONFIGURE_MP_MPCI_TABLE_POINTER
 

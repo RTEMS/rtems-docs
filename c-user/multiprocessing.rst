@@ -179,6 +179,8 @@ errors.
 
 .. index:: proxy, definition
 
+.. _MPCIProxies:
+
 Proxies
 -------
 
