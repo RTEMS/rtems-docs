@@ -5,8 +5,7 @@
 Idle Task Configuration
 =======================
 
-This section defines the IDLE task related configuration parameters supported
-by ``<rtems/confdefs.h>``.
+This section describes configuration options related to the idle tasks.
 
 .. index:: CONFIGURE_IDLE_TASK_BODY
 

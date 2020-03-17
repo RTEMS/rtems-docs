@@ -5,8 +5,7 @@
 General System Configuration
 ============================
 
-This section defines the general system configuration options supported by
-``<rtems/confdefs.h>``.
+This section describes general system configuration options.
 
 .. index:: CONFIGURE_DIRTY_MEMORY
 

@@ -5,12 +5,8 @@
 Device Driver Configuration
 ===========================
 
-This section defines the configuration parameters related to the automatic
-generation of a Device Driver Table.  As ``<rtems/confdefs.h>`` only is aware
-of a small set of standard device drivers, the generated Device Driver Table is
-suitable for simple applications with no custom device drivers.
-
-Note that network device drivers are not configured in the Device Driver Table.
+This section describes configuration options related to the device drivers.
+Note that network device drivers are not covered by the following options.
 
 .. index:: CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 

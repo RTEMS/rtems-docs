@@ -5,6 +5,8 @@
 Event Recording Configuration
 =============================
 
+This section describes configuration options related to the event recording.
+
 .. index:: CONFIGURE_RECORD_EXTENSIONS_ENABLED
 
 .. _CONFIGURE_RECORD_EXTENSIONS_ENABLED:

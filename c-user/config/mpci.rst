@@ -5,13 +5,12 @@
 Multiprocessing Configuration
 =============================
 
-This section defines the multiprocessing related system configuration
-parameters supported by ``<rtems/confdefs.h>``.  They are only used if RTEMS
-was built with the ``--enable-multiprocessing`` build configuration option.
-The multiprocessing (MPCI) support must not be confused with the SMP support.
-
-Additionally, this class of Configuration Constants are only applicable if
-``CONFIGURE_MP_APPLICATION`` is defined.
+This section describes multiprocessing related configuration options.  The
+options are only used if RTEMS was built with the ``--enable-multiprocessing``
+build configuration option.  Additionally, this class of configuration options
+are only applicable if the configuration option :ref:`CONFIGURE_MP_APPLICATION`
+is defined.  The multiprocessing (MPCI) support must not be confused with the
+SMP support.
 
 .. index:: CONFIGURE_MP_APPLICATION
 

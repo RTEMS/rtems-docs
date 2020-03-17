@@ -5,9 +5,8 @@
 POSIX Initialization Thread Configuration
 =========================================
 
-The ``<rtems/confdefs.h>`` configuration system can automatically generate a
-POSIX Initialization Threads Table named ``POSIX_Initialization_threads`` with
-a single entry.  The following parameters control the generation of that table.
+This section describes configuration options related to the POSIX
+initialization thread.
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 

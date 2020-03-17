@@ -5,9 +5,10 @@
 Task Stack Allocator Configuration
 ==================================
 
-RTEMS allows the application or BSP to define its own allocation and
-deallocation methods for task stacks. This can be used to place task stacks in
-special areas of memory or to utilize a Memory Management Unit so that stack
+This section describes configuration options related to the task stack
+allocator.  RTEMS allows the application or BSP to define its own allocation
+and deallocation methods for task stacks. This can be used to place task stacks
+in special areas of memory or to utilize a Memory Management Unit so that stack
 overflows are detected in hardware.
 
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR

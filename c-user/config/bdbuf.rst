@@ -5,8 +5,8 @@
 Block Device Cache Configuration
 ================================
 
-This section defines Block Device Cache (bdbuf) related configuration
-parameters.
+This section describes configuration options related to the Block Device Cache
+(bdbuf).
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
 

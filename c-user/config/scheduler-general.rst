@@ -6,25 +6,27 @@
 General Scheduler Configuration
 ===============================
 
-This section defines the configuration parameters related to selecting a
+This section describes configuration options related to selecting a
 scheduling algorithm for an application.  A scheduler configuration is optional
 and only necessary in very specific circumstances.  A normal application
 configuration does not need any of the configuration options described in this
-section.  By default, the :ref:`Deterministic Priority Scheduler
-<SchedulerPriority>` algorithm is used in uniprocessor configurations.  In case
-SMP is enabled and the configured maximum processors
+section.
+
+By default, the :ref:`Deterministic Priority Scheduler <SchedulerPriority>`
+algorithm is used in uniprocessor configurations.  In case SMP is enabled and
+the configured maximum processors
 (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`) is greater
 than one, then the :ref:`Earliest Deadline First (EDF) SMP Scheduler
 <SchedulerSMPEDF>` is selected as the default scheduler algorithm.
 
 For the :ref:`schedulers built into
 RTEMS <SchedulingConcepts>`, the configuration is straightforward.  All that is
-required is to define the configuration macro which specifies which scheduler
+required is to define the configuration option which specifies which scheduler
 you want for in your application.
 
 The pluggable scheduler interface also enables the user to provide their own
 scheduling algorithm.  If you choose to do this, you must define multiple
-configuration macros.
+configuration option.
 
 .. index:: CONFIGURE_SCHEDULER_CBS
 

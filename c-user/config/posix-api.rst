@@ -5,10 +5,10 @@
 POSIX API Configuration
 =======================
 
-The parameters in this section are used to configure resources for the POSIX
-API supported by RTEMS.  Most POSIX API objects are available by default since
-RTEMS 5.1.  The queued signals and timers are only available if RTEMS was built
-with the ``--enable-posix`` build configuration option.
+This section describes configuration options related to the POSIX API.  Most
+POSIX API objects are available by default since RTEMS 5.1.  The queued signals
+and timers are only available if RTEMS was built with the ``--enable-posix``
+build configuration option.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
 

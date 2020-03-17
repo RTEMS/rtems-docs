@@ -7,6 +7,7 @@
 Clustered Scheduler Configuration
 =================================
 
+This section describes configuration options related to clustered scheduling.
 A clustered scheduler configuration is optional.  It is an advanced
 configuration area and only necessary in specific circumstances.
 

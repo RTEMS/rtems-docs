@@ -5,8 +5,7 @@
 Classic API Configuration
 =========================
 
-This section defines the Classic API related system configuration parameters
-supported by ``<rtems/confdefs.h>``.
+This section describes configuration options related to the Classic API.
 
 .. index:: CONFIGURE_MAXIMUM_BARRIERS
 

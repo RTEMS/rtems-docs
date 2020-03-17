@@ -5,6 +5,7 @@
 Filesystem Configuration
 ========================
 
+This section describes configuration options related to filesytems.
 By default, the In-Memory Filesystem (IMFS) is used as the base filesystem (also
 known as root filesystem).  In order to save some memory for your application,
 you can disable the filesystem support with the

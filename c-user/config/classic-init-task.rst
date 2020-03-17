@@ -5,9 +5,8 @@
 Classic API Initialization Task Configuration
 =============================================
 
-The ``<rtems/confdefs.h>`` configuration system can automatically generate an
-Initialization Tasks Table named ``Initialization_tasks`` with a single entry.
-The following parameters control the generation of that table.
+This section describes configuration options related to the Classic API
+initialization task.
 
 .. index:: CONFIGURE_INIT_TASK_ARGUMENTS
 
