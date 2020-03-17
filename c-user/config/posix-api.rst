@@ -155,35 +155,6 @@ NOTES:
     with ``sem_init()`` are not affected by this configuration option since the
     storage space for these semaphores is user-provided.
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
-
-.. _CONFIGURE_MAXIMUM_POSIX_TIMERS:
-
-CONFIGURE_MAXIMUM_POSIX_TIMERS
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_MAXIMUM_POSIX_TIMERS``
-
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_POSIX_TIMERS`` is the maximum number of POSIX API
-    Timers that can be concurrently active.
-
-NOTES:
-    This object class can be configured in unlimited allocation mode.
-
-    Timers are only available if RTEMS was built with the
-    ``--enable-posix`` build configuration option.
-
 .. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
 
 .. _CONFIGURE_MAXIMUM_POSIX_THREADS:
@@ -222,6 +193,35 @@ NOTES:
     :ref:`CONFIGURE_MAXIMUM_TASKS <CONFIGURE_MAXIMUM_TASKS>`.
 
     All POSIX threads have floating point enabled.
+
+.. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
+
+.. _CONFIGURE_MAXIMUM_POSIX_TIMERS:
+
+CONFIGURE_MAXIMUM_POSIX_TIMERS
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_TIMERS``
+
+DATA TYPE:
+    Unsigned integer (``uint32_t``).
+
+RANGE:
+    Zero or positive.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+DESCRIPTION:
+    ``CONFIGURE_MAXIMUM_POSIX_TIMERS`` is the maximum number of POSIX API
+    Timers that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode.
+
+    Timers are only available if RTEMS was built with the
+    ``--enable-posix`` build configuration option.
 
 .. index:: CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
 .. index:: minimum POSIX thread stack size

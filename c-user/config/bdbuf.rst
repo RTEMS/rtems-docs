@@ -35,31 +35,6 @@ NOTES:
     by the user with the configuration options below.  The Block Device Cache
     is used for example by the RFS and DOSFS file systems.
 
-.. index:: CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
-
-.. _CONFIGURE_BDBUF_CACHE_MEMORY_SIZE:
-
-CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
----------------------------------
-
-CONSTANT:
-    ``CONFIGURE_BDBUF_CACHE_MEMORY_SIZE``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Positive.
-
-DEFAULT VALUE:
-    The default value is 32768 bytes.
-
-DESCRIPTION:
-    Size of the cache memory in bytes.
-
-NOTES:
-    None.
-
 .. index:: CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 
 .. _CONFIGURE_BDBUF_BUFFER_MAX_SIZE:
@@ -106,6 +81,31 @@ DEFAULT VALUE:
 
 DESCRIPTION:
     Defines the minimum size of a buffer in bytes.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
+
+.. _CONFIGURE_BDBUF_CACHE_MEMORY_SIZE:
+
+CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
+---------------------------------
+
+CONSTANT:
+    ``CONFIGURE_BDBUF_CACHE_MEMORY_SIZE``
+
+DATA TYPE:
+    Unsigned integer (``size_t``).
+
+RANGE:
+    Positive.
+
+DEFAULT VALUE:
+    The default value is 32768 bytes.
+
+DESCRIPTION:
+    Size of the cache memory in bytes.
 
 NOTES:
     None.
