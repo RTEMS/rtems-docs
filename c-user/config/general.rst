@@ -291,7 +291,7 @@ DESCRIPTION:
    This configuration parameter specifies the maximum thread name size
    including the terminating `NUL` character.
 
-NOTE:
+NOTES:
    The size of the thread control block is increased by the maximum thread name
    size.  This configuration option is available since RTEMS 5.1.
 

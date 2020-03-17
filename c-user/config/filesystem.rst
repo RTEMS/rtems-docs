@@ -97,6 +97,9 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to change
     the mode is disabled in the root IMFS.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_DISABLE_CHOWN
 
 .. _CONFIGURE_IMFS_DISABLE_CHOWN:
@@ -119,6 +122,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to change
     the owner is disabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_LINK
 
@@ -143,6 +149,9 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to create
     hard links is disabled in the root IMFS.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD
 
 .. _CONFIGURE_IMFS_DISABLE_MKNOD:
@@ -165,6 +174,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to make
     directories, devices, regular files and FIFOs is disabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD_FILE
 
@@ -189,6 +201,9 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to make
     regular files is disabled in the root IMFS.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_DISABLE_MOUNT
 
 .. _CONFIGURE_IMFS_DISABLE_MOUNT:
@@ -211,6 +226,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to mount
     other file systems is disabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_READDIR
 
@@ -236,6 +254,9 @@ DESCRIPTION:
     directory is disabled in the root IMFS.  It is still possible to open nodes
     in a directory.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_DISABLE_READLINK
 
 .. _CONFIGURE_IMFS_DISABLE_READLINK:
@@ -258,6 +279,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to read
     symbolic links is disabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_RENAME
 
@@ -282,6 +306,9 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to rename
     nodes is disabled in the root IMFS.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_DISABLE_RMNOD
 
 .. _CONFIGURE_IMFS_DISABLE_RMNOD:
@@ -304,6 +331,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to remove
     nodes is disabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_SYMLINK
 
@@ -328,6 +358,9 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to create
     symbolic links is disabled in the root IMFS.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_DISABLE_UNMOUNT
 
 .. _CONFIGURE_IMFS_DISABLE_UNMOUNT:
@@ -350,6 +383,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to unmount
     file systems is disabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_UTIME
 
@@ -374,6 +410,9 @@ DESCRIPTION:
     In case this configuration option is defined, then the support to change
     times is disabled in the root IMFS.
 
+NOTES:
+    None.
+
 .. index:: CONFIGURE_IMFS_ENABLE_MKFIFO
 
 .. _CONFIGURE_IMFS_ENABLE_MKFIFO:
@@ -396,6 +435,9 @@ DEFAULT VALUE:
 DESCRIPTION:
     In case this configuration option is defined, then the support to make FIFOs
     is enabled in the root IMFS.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
 
@@ -445,6 +487,9 @@ DESCRIPTION:
 
     - when the block size is 512 bytes, the maximum file size is 1,082,195,456
       bytes.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 
@@ -515,3 +560,6 @@ DESCRIPTION:
     - ``CONFIGURE_IMFS_DISABLE_RENAME``, and
 
     - ``CONFIGURE_IMFS_DISABLE_UNMOUNT``.
+
+NOTES:
+    None.
