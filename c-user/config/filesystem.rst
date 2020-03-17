@@ -18,8 +18,6 @@ advanced application configuration.
 Features of the IMFS can be disabled and enabled with the following
 configuration options:
 
-* :ref:`CONFIGURE_IMFS_ENABLE_MKFIFO`
-
 * :ref:`CONFIGURE_IMFS_DISABLE_CHMOD`
 
 * :ref:`CONFIGURE_IMFS_DISABLE_CHOWN`
@@ -45,6 +43,8 @@ configuration options:
 * :ref:`CONFIGURE_IMFS_DISABLE_UNMOUNT`
 
 * :ref:`CONFIGURE_IMFS_DISABLE_UTIME`
+
+* :ref:`CONFIGURE_IMFS_ENABLE_MKFIFO`
 
 .. index:: CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
 
