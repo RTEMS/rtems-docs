@@ -589,6 +589,8 @@ NOTES:
     you run out of all available memory rather then just until you run out of
     RTEMS Workspace.
 
+.. index:: CONFIGURE_UNLIMITED_ALLOCATION_SIZE
+
 .. _CONFIGURE_UNLIMITED_ALLOCATION_SIZE:
 
 CONFIGURE_UNLIMITED_ALLOCATION_SIZE
