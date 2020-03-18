@@ -57,23 +57,22 @@ CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
 CONSTANT:
     ``CONFIGURE_APPLICATION_DISABLE_FILESYSTEM``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default. If no other root file system configuration
-    parameters are specified, the IMFS will be used as the root file system.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then a base filesystem and the
+    configured filesystems are initialized during system initialization.
 
 DESCRIPTION:
-    This configuration parameter is defined if the application dose not intend
-    to use any kind of filesystem support. This include the device
-    infrastructure necessary to support ``printf()``.
+    In case this configuration option is defined, then **no** base filesystem is
+    initialized during system initialization and **no** filesystems are
+    configured.
 
 NOTES:
-    None.
+    Filesystems must be initialized to support file descriptor based device
+    drivers and basic input/output functions such as :c:func:`printf`.
+    Filesystems can be disabled to reduce the memory footprint of an application.
 
 .. index:: CONFIGURE_IMFS_DISABLE_CHMOD
 
@@ -85,18 +84,16 @@ CONFIGURE_IMFS_DISABLE_CHMOD
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_CHMOD``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    changing the mode of files.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to change
-    the mode is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support changing the mode of files (no support for :c:func:`chmod`).
 
 NOTES:
     None.
@@ -111,18 +108,16 @@ CONFIGURE_IMFS_DISABLE_CHOWN
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_CHOWN``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    changing the ownership of files.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to change
-    the owner is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support changing the ownership of files (no support for :c:func:`chown`).
 
 NOTES:
     None.
@@ -137,18 +132,16 @@ CONFIGURE_IMFS_DISABLE_LINK
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_LINK``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports hard
+    links.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to create
-    hard links is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support hard links (no support for :c:func:`link`).
 
 NOTES:
     None.
@@ -163,18 +156,16 @@ CONFIGURE_IMFS_DISABLE_MKNOD
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_MKNOD``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports making
+    files.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to make
-    directories, devices, regular files and FIFOs is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support making files (no support for :c:func:`mknod`).
 
 NOTES:
     None.
@@ -189,18 +180,16 @@ CONFIGURE_IMFS_DISABLE_MKNOD_FILE
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_MKNOD_FILE``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports making
+    regular files.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to make
-    regular files is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support making regular files.
 
 NOTES:
     None.
@@ -215,18 +204,16 @@ CONFIGURE_IMFS_DISABLE_MOUNT
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_MOUNT``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    mounting other filesystems.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to mount
-    other file systems is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support mounting other filesystems (no support for :c:func:`mount`).
 
 NOTES:
     None.
@@ -241,19 +228,17 @@ CONFIGURE_IMFS_DISABLE_READDIR
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_READDIR``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    reading directories.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to read a
-    directory is disabled in the root IMFS.  It is still possible to open nodes
-    in a directory.
+    In case this configuration option is defined, then the root IMFS does not
+    support reading directories (no support for :c:func:`readdir`).  It is still
+    possible to open files in a directory.
 
 NOTES:
     None.
@@ -268,18 +253,16 @@ CONFIGURE_IMFS_DISABLE_READLINK
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_READLINK``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    reading symbolic links.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to read
-    symbolic links is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support reading symbolic links (no support for :c:func:`readlink`).
 
 NOTES:
     None.
@@ -294,18 +277,16 @@ CONFIGURE_IMFS_DISABLE_RENAME
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_RENAME``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    renaming files.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to rename
-    nodes is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support renaming files (no support for :c:func:`rename`).
 
 NOTES:
     None.
@@ -320,18 +301,16 @@ CONFIGURE_IMFS_DISABLE_RMNOD
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_RMNOD``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    removing files.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to remove
-    nodes is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support removing files (no support for :c:func:`rmnod`).
 
 NOTES:
     None.
@@ -346,18 +325,16 @@ CONFIGURE_IMFS_DISABLE_SYMLINK
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_SYMLINK``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    creating symbolic links.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to create
-    symbolic links is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support creating symbolic links (no support for :c:func:`symlink`).
 
 NOTES:
     None.
@@ -372,18 +349,16 @@ CONFIGURE_IMFS_DISABLE_UNMOUNT
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_UNMOUNT``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    unmounting other filesystems.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to unmount
-    file systems is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support unmounting other filesystems (no support for :c:func:`unmount`).
 
 NOTES:
     None.
@@ -398,18 +373,16 @@ CONFIGURE_IMFS_DISABLE_UTIME
 CONSTANT:
     ``CONFIGURE_IMFS_DISABLE_UTIME``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports
+    changing file times.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to change
-    times is disabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS does not
+    support changing file times (no support for :c:func:`utime`).
 
 NOTES:
     None.
@@ -424,18 +397,16 @@ CONFIGURE_IMFS_ENABLE_MKFIFO
 CONSTANT:
     ``CONFIGURE_IMFS_ENABLE_MKFIFO``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS does not
+    support making FIFOs (no support for :c:func:`mkfifo`).
 
 DESCRIPTION:
-    In case this configuration option is defined, then the support to make FIFOs
-    is enabled in the root IMFS.
+    In case this configuration option is defined, then the root IMFS supports
+    making FIFOs.
 
 NOTES:
     None.
@@ -502,26 +473,51 @@ CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 CONSTANT:
     ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default. If no other root file system configuration
-    parameters are specified, the IMFS will be used as the root file system.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This configuration parameter is defined if the application wishes to use
-    the device-only filesytem as the root file system.
+    In case this configuration option is defined, then an IMFS with a reduced
+    feature set will be the base filesystem (also known as root filesystem).
 
 NOTES:
-    The device-only filesystem supports only device nodes and is smaller in
-    executable code size than the full IMFS and miniIMFS.
+    In case this configuration option is defined, then the following
+    configuration options will be defined as well
 
-    The devFS is comparable in functionality to the pseudo-filesystem name
-    space provided before RTEMS release 4.5.0.
+    - :ref:`CONFIGURE_IMFS_DISABLE_CHMOD`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_CHOWN`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_LINK`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_MKNOD_FILE`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_MOUNT`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_READDIR`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_READLINK`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_RENAME`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_RMNOD`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_SYMLINK`,
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_UTIME`, and
+
+    - :ref:`CONFIGURE_IMFS_DISABLE_UNMOUNT`.
+
+    In addition, a simplified path evaluation is enabled.  It allows only a look
+    up of absolute paths.
+
+    This configuration of the IMFS is basically a device-only filesystem.  It is
+    comparable in functionality to the pseudo-filesystem name space provided
+    before RTEMS release 4.5.0.
 
 .. index:: CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
 
@@ -533,34 +529,33 @@ CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
 CONSTANT:
     ``CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
+    In case this configuration option is defined, then an IMFS with a reduced
+    feature set will be the base filesystem (also known as root filesystem).
+
+NOTES:
     In case this configuration option is defined, then the following
     configuration options will be defined as well
 
-    - ``CONFIGURE_IMFS_DISABLE_CHMOD``,
+    - :ref:`CONFIGURE_IMFS_DISABLE_CHMOD`,
 
-    - ``CONFIGURE_IMFS_DISABLE_CHOWN``,
+    - :ref:`CONFIGURE_IMFS_DISABLE_CHOWN`,
 
-    - ``CONFIGURE_IMFS_DISABLE_UTIME``,
+    - :ref:`CONFIGURE_IMFS_DISABLE_LINK`,
 
-    - ``CONFIGURE_IMFS_DISABLE_LINK``,
+    - :ref:`CONFIGURE_IMFS_DISABLE_READLINK`,
 
-    - ``CONFIGURE_IMFS_DISABLE_SYMLINK``,
+    - :ref:`CONFIGURE_IMFS_DISABLE_RENAME`,
 
-    - ``CONFIGURE_IMFS_DISABLE_READLINK``,
+    - :ref:`CONFIGURE_IMFS_DISABLE_SYMLINK`,
 
-    - ``CONFIGURE_IMFS_DISABLE_RENAME``, and
+    - :ref:`CONFIGURE_IMFS_DISABLE_UTIME`, and
 
-    - ``CONFIGURE_IMFS_DISABLE_UNMOUNT``.
-
-NOTES:
-    None.
+    - :ref:`CONFIGURE_IMFS_DISABLE_UNMOUNT`.

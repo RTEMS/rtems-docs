@@ -76,29 +76,25 @@ CONFIGURE_POSIX_INIT_THREAD_TABLE
 CONSTANT:
     ``CONFIGURE_POSIX_INIT_THREAD_TABLE``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This field is not defined by default, as the user MUST select their own API
-    for initialization tasks.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_POSIX_INIT_THREAD_TABLE`` is defined if the user wishes to use
-    a POSIX API Initialization Threads Table.  The table built by
-    ``<rtems/confdefs.h>`` specifies the parameters for a single thread. This
-    is sufficient for applications which initialization the system from a
-    single task.
-
-    By default, this field is not defined as the user MUST select their own API
-    for initialization tasks.
+    In case this configuration option is defined, then exactly one POSIX
+    initialization thread is configured.
 
 NOTES:
-    The application may choose to use the initialization tasks or threads table
-    from another API.
+    The application must define exactly one of the following configuration
+    options
 
-    A compile time error will be generated if the user does not configure any
-    initialization tasks or threads.
+    * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+
+    * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+
+    * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+
+    otherwise a compile time error in the configuration file will occur.

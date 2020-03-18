@@ -18,25 +18,31 @@ CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then a Clock Driver may be
+    initialized during system initialization.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is defined when the
-    application does *NOT* want the Clock Device Driver and is *NOT* using the
-    Timer Driver.  The inclusion or exclusion of the Clock Driver must be
-    explicit in user applications.
+    In case this configuration option is defined, then **no** Clock Driver is
+    initialized during system initialization.
 
 NOTES:
     This configuration parameter is intended to prevent the common user error
     of using the Hello World example as the baseline for an application and
     leaving out a clock tick source.
+
+    The application must define exactly one of the following configuration options
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+
+    * :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
+
+    otherwise a compile time error in the configuration file will occur.
 
 .. index:: CONFIGURE_APPLICATION_EXTRA_DRIVERS
 
@@ -76,27 +82,30 @@ CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`` is defined if the application
-    wishes to include the Clock Device Driver.
+    In case this configuration option is defined, then the Clock Driver is
+    initialized during system initialization.
 
 NOTES:
-    This device driver is responsible for providing a regular interrupt which
-    invokes a clock tick directive.
+    The Clock Driver is responsible for providing a regular interrupt
+    which invokes a clock tick directive.
 
-    If neither the Clock Driver not Benchmark Timer is enabled and the
-    configuration parameter
-    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is not defined, then a
-    compile time error will occur.
+    The application must define exactly one of the following configuration options
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+
+    * :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
+
+    otherwise a compile time error in the configuration file will occur.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 
@@ -108,34 +117,32 @@ CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` is defined if the
-    application wishes to include the Console Device Driver.
+    In case this configuration option is defined, then the Console Driver is
+    initialized during system initialization.
 
 NOTES:
-    This device driver is responsible for providing the :file:`/dev/console`
+    The Console Driver is responsible for providing the :file:`/dev/console`
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    BSPs should be constructed in a manner that allows ``printk()`` to work
-    properly without the need for the console driver to be configured.
+    BSPs should be constructed in a manner that allows :c:func:`printk` to work
+    properly without the need for the Console Driver to be configured.
 
     The
 
-    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
 
-    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
 
-    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
     configuration options are mutually exclusive.
 
@@ -149,25 +156,23 @@ CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`` is defined if the
-    application wishes to include the BSP's Frame Buffer Device Driver.
+    In case this configuration option is defined, then the Frame Buffer Driver is
+    initialized during system initialization.
 
 NOTES:
-    Most BSPs do not include support for a Frame Buffer Device Driver. This is
+    Most BSPs do not include support for a Frame Buffer Driver. This is
     because many boards do not include the required hardware.
 
-    If this is defined and the BSP does not have this device driver, then the
-    user will get a link time error for an undefined symbol.
+    If this option is defined and the BSP does not have this device driver, then
+    the user will get a link time error for an undefined symbol.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
 .. index:: /dev/null
@@ -180,17 +185,16 @@ CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This configuration variable is specified to enable ``/dev/null`` device driver.
+    In case this configuration option is defined, then the :file:`/dev/null`
+    Driver is initialized during system initialization.
 
 NOTES:
     This device driver is supported by all BSPs.
@@ -205,21 +209,19 @@ CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`` is defined if the application
-    wishes to include the Real-Time Clock Driver.
+    In case this configuration option is defined, then the Real-Time Clock Driver
+    is initialized during system initialization.
 
 NOTES:
-    Most BSPs do not include support for a real-time clock. This is because
+    Most BSPs do not include support for a real-time clock (RTC). This is because
     many boards do not include the required hardware.
 
     If this is defined and the BSP does not have this device driver, then the
@@ -235,38 +237,36 @@ CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`` is defined if the
-    application wishes to include the Simple Console Device Driver.
+    In case this configuration option is defined, then the Simple Console Driver
+    is initialized during system initialization.
 
 NOTES:
     This device driver is responsible for providing the :file:`/dev/console`
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    This device driver reads via ``getchark()``.
+    This device driver reads via :c:func:`getchark`.
 
-    This device driver writes via ``rtems_putc()``.
+    This device driver writes via :c:func:`rtems_putc`.
 
     The Termios framework is not used.  There is no support to change device
     settings, e.g. baud, stop bits, parity, etc.
 
     The
 
-    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
 
-    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
 
-    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
     configuration options are mutually exclusive.
 
@@ -280,33 +280,31 @@ CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`` is defined if
-    the application wishes to include the Simple Task Console Device Driver.
+    In case this configuration option is defined, then the Simple Task Console
+    Driver is initialized during system initialization.
 
 NOTES:
     This device driver is responsible for providing the :file:`/dev/console`
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    This device driver reads via ``getchark()``.
+    This device driver reads via :c:func:`getchark`.
 
     This device driver writes into a write buffer.  The count of characters
     written into the write buffer is returned.  It might be less than the
     requested count, in case the write buffer is full.  The write is
     non-blocking and may be called from interrupt context.  A dedicated task
     reads from the write buffer and outputs the characters via
-    ``rtems_putc()``.  This task runs with the least important priority.  The
-    write buffer size is 2047 characters and it is not configurable.
+    :c:func:`rtems_putc`.  This task runs with the least important priority.
+    The write buffer size is 2047 characters and it is not configurable.
 
     Use ``fsync(STDOUT_FILENO)`` or ``fdatasync(STDOUT_FILENO)`` to drain the
     write buffer.
@@ -316,11 +314,11 @@ NOTES:
 
     The
 
-    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
 
-    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
 
-    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
     configuration options are mutually exclusive.
 
@@ -334,18 +332,16 @@ CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`` is defined if the application
-    wishes to include the Stub Device Driver.
+    In case this configuration option is defined, then the Stub Driver is
+    initialized during system initialization.
 
 NOTES:
     This device driver simply provides entry points that return successful and
@@ -361,25 +357,30 @@ CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`` is defined if the application
-    wishes to include the Timer Driver.  This device driver is used to
-    benchmark execution times by the RTEMS Timing Test Suites.
+    In case this configuration option is defined, then the Benchmark Timer Driver is
+    initialized during system initialization.
 
 NOTES:
-    If neither the Clock Driver not Benchmark Timer is enabled and the
-    configuration parameter
-    ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`` is not defined, then a
-    compile time error will occur.
+    The Benchmark Timer Driver is intended for the benchmark tests of the RTEMS
+    Testsuite.  Applications should not use this driver.
+
+    The application must define exactly one of the following configuration options
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+
+    * :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
+
+    otherwise a compile time error will occur.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 
@@ -391,18 +392,16 @@ CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER`` is defined if the
-    application wishes to include the Watchdog Driver.
+    In case this configuration option is defined, then the Watchdog Driver is
+    initialized during system initialization.
 
 NOTES:
     Most BSPs do not include support for a watchdog device driver. This is
@@ -422,17 +421,16 @@ CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This configuration variable is specified to enable ``/dev/zero`` device driver.
+    In case this configuration option is defined, then the :file:`/dev/zero`
+    Driver is initialized during system initialization.
 
 NOTES:
     This device driver is supported by all BSPs.

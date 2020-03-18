@@ -22,20 +22,17 @@ CONFIGURE_MP_APPLICATION
 CONSTANT:
     ``CONFIGURE_MP_APPLICATION``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the multiprocessing services
+    are not initialized.
 
 DESCRIPTION:
-    This configuration parameter must be defined to indicate that the
-    application intends to be part of a multiprocessing
-    configuration. Additional configuration parameters are assumed to be
-    provided.
+    This configuration option is defined to indicate that the application intends
+    to be part of a multiprocessing configuration.  Additional configuration
+    options are assumed to be provided.
 
 NOTES:
     This has no impact unless RTEMS was built with the

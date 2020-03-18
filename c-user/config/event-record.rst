@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 2019 embedded brains GmbH (http://www.embedded-brains.de)
 
 Event Recording Configuration
 =============================
@@ -17,23 +17,25 @@ CONFIGURE_RECORD_EXTENSIONS_ENABLED
 CONSTANT:
     ``CONFIGURE_RECORD_EXTENSIONS_ENABLED``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
-    <CONFIGURE_RECORD_PER_PROCESSOR_ITEMS>` is also defined properly, then the
-    record extensions are enabled.
+    In case
+
+    * this configuration option is defined
+
+    * and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+
+    then the event record extensions are enabled.
 
 NOTES:
-    The record extensions capture thread create, start, restart, delete,
-    switch, begin, exitted and terminate events.
+    The record extensions capture thread create, start, restart, delete, switch,
+    begin, exitted and terminate events.
 
 .. index:: CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 

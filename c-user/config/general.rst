@@ -17,26 +17,22 @@ CONFIGURE_DIRTY_MEMORY
 CONSTANT:
     ``CONFIGURE_DIRTY_MEMORY``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    By default, the memory used by the RTEMS Workspace and the C Program Heap
-    is uninitialized memory.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This macro indicates whether RTEMS should dirty the memory used by the
-    RTEMS Workspace and the C Program Heap as part of its initialization.  If
-    defined, the memory areas are dirtied with a ``0xCF`` byte pattern.
-    Otherwise, they are not.
+    In case this configuration option is defined, then the memory areas used for
+    the RTEMS Workspace and the C Program Heap are dirtied with a ``0xCF`` byte
+    pattern during system initialization.
 
 NOTES:
-    Dirtying memory can add significantly to system boot time.  It may assist in
-    finding code that incorrectly assumes the contents of free memory areas is
-    cleared to zero during system initialization.  In case
+    Dirtying memory can add significantly to system initialization time.  It may
+    assist in finding code that incorrectly assumes the contents of free memory
+    areas is cleared to zero during system initialization.  In case
     :ref:`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY` is also defined, then the
     memory is first dirtied and then zeroed.
 
@@ -499,24 +495,23 @@ CONFIGURE_STACK_CHECKER_ENABLED
 CONSTANT:
     ``CONFIGURE_STACK_CHECKER_ENABLED``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default, and thus stack checking is disabled.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This configuration parameter is defined when the application wishes to
-    enable run-time stack bounds checking.
+    In case this configuration option is defined, then the stack checker is
+    enabled.
 
 NOTES:
-    In 4.9 and older, this configuration parameter was named ``STACK_CHECKER_ON``.
+    The stack checker performs run-time stack bounds checking.  This increases
+    the time required to create tasks as well as adding overhead to each context
+    switch.
 
-    This increases the time required to create tasks as well as adding overhead
-    to each context switch.
+    In 4.9 and older, this configuration option was named ``STACK_CHECKER_ON``.
 
 .. index:: CONFIGURE_TICKS_PER_TIMESLICE
 .. index:: ticks per timeslice
@@ -560,22 +555,16 @@ CONFIGURE_UNIFIED_WORK_AREAS
 CONSTANT:
     ``CONFIGURE_UNIFIED_WORK_AREAS``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default, which specifies that the C Program Heap and
-    the RTEMS Workspace will be separate.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then there will be separate memory
+    pools for the RTEMS Workspace and C Program Heap.
 
 DESCRIPTION:
-    When defined, the C Program Heap and the RTEMS Workspace will be one pool
-    of memory.
-
-    When not defined, there will be separate memory pools for the RTEMS
-    Workspace and C Program Heap.
+    In case this configuration option is defined, then the RTEMS Workspace and
+    the C Program Heap will be one pool of memory.
 
 NOTES:
     Having separate pools does have some advantages in the event a task blows a
@@ -584,9 +573,9 @@ NOTES:
     pool is very undesirable.
 
     In high memory environments, this is desirable when you want to use the
-    RTEMS "unlimited" objects option.  You will be able to create objects until
-    you run out of all available memory rather then just until you run out of
-    RTEMS Workspace.
+    :ref:`ConfigUnlimitedObjects` option.  You will be able to create objects
+    until you run out of all available memory rather then just until you run out
+    of RTEMS Workspace.
 
 .. index:: CONFIGURE_UNLIMITED_ALLOCATION_SIZE
 
@@ -630,24 +619,26 @@ CONFIGURE_UNLIMITED_OBJECTS
 CONSTANT:
     ``CONFIGURE_UNLIMITED_OBJECTS``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    ``CONFIGURE_UNLIMITED_OBJECTS`` enables ``rtems_resource_unlimited`` mode
-    for Classic API and POSIX API objects that do not already have a specific
-    maximum limit defined.
+    In case this configuration option is defined, then unlimited objects are used
+    by default.
 
 NOTES:
     When using unlimited objects, it is common practice to also specify
-    ``CONFIGURE_UNIFIED_WORK_AREAS`` so the system operates with a single pool
-    of memory for both RTEMS and application memory allocations.
+    :ref:`CONFIGURE_UNIFIED_WORK_AREAS` so the system operates with a single pool
+    of memory for both RTEMS Workspace and C Program Heap.
+
+    This option does not override an explicit configuration for a particular
+    object class by the user.
+
+    See also :ref:`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`.
 
 .. index:: CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
 
@@ -659,23 +650,20 @@ CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
 CONSTANT:
     ``CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default, and thus the system initialization is
-    quiet.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This configuration option enables to print some information during system
-    initialization.
+    In case this configuration option is defined, then the system initialization
+    is verbose.
 
 NOTES:
     You may use this feature to debug system initialization issues.  The
-    printk() function is used to print the information.
+    :c:func:`printk` function is used to print the information.
 
 .. index:: CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 .. index:: clear C Program Heap
@@ -691,23 +679,20 @@ CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 CONSTANT:
     ``CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.  The default is *NOT* to zero out the RTEMS
-    Workspace or C Program Heap.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This macro indicates whether RTEMS should zero the RTEMS Workspace and C
-    Program Heap as part of its initialization.  If defined, the memory regions
-    are zeroed.  Otherwise, they are not.
+    In case this configuration option is defined, then the memory areas used for
+    the RTEMS Workspace and the C Program Heap are zeroed with a ``0x00`` byte
+    pattern during system initialization.
 
 NOTES:
-    Zeroing memory can add significantly to system boot time. It is not
-    necessary for RTEMS but is often assumed by support libraries.  In case
+    Zeroing memory can add significantly to the system initialization time. It is
+    not necessary for RTEMS but is often assumed by support libraries.  In case
     :ref:`CONFIGURE_DIRTY_MEMORY` is also defined, then the memory is first
     dirtied and then zeroed.

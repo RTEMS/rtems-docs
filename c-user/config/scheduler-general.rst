@@ -38,18 +38,17 @@ CONFIGURE_SCHEDULER_CBS
 CONSTANT:
     ``CONFIGURE_SCHEDULER_CBS``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Constant Bandwidth Server (CBS) Scheduler
-    <SchedulerCBS>` algorithm is made available to the application.
+    In case this configuration option is defined, then
+    :ref:`Constant Bandwidth Server (CBS) Scheduler <SchedulerCBS>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -69,18 +68,17 @@ CONFIGURE_SCHEDULER_EDF
 CONSTANT:
     ``CONFIGURE_SCHEDULER_EDF``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Earliest Deadline First (EDF) Scheduler
-    <SchedulerEDF>` algorithm is made available to the application.
+    In case this configuration option is defined, then
+    :ref:`Earliest Deadline First (EDF) Scheduler <SchedulerEDF>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -100,18 +98,17 @@ CONFIGURE_SCHEDULER_EDF_SMP
 CONSTANT:
     ``CONFIGURE_SCHEDULER_EDF_SMP``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Earliest Deadline First (EDF) SMP Scheduler
-    <SchedulerSMPEDF>` algorithm is made available to the application.
+    In case this configuration option is defined, then
+    :ref:`Earliest Deadline First (EDF) SMP Scheduler <SchedulerSMPEDF>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -125,7 +122,7 @@ NOTES:
     scheduler for up to 32 processors.
 
     This scheduler algorithm is the default in SMP configurations if
-    :ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>` is
+    :ref:`CONFIGURE_MAXIMUM_PROCESSORS` is
     greater than one.
 
 .. index:: CONFIGURE_SCHEDULER_NAME
@@ -174,19 +171,17 @@ CONFIGURE_SCHEDULER_PRIORITY
 CONSTANT:
     ``CONFIGURE_SCHEDULER_PRIORITY``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is defined by default.  This is the default scheduler and specifying
-    this configuration parameter is redundant.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Deterministic Priority Scheduler
-    <SchedulerPriority>` algorithm is made available to the application.
+    In case this configuration option is defined, then
+    :ref:`Deterministic Priority Scheduler <SchedulerPriority>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -197,7 +192,7 @@ NOTES:
     scheduler for exactly one processor.
 
     This scheduler algorithm is the default when
-    :ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>` is
+    :ref:`CONFIGURE_MAXIMUM_PROCESSORS` is
     exactly one.
 
     The memory allocated for this scheduler depends on the
@@ -213,19 +208,17 @@ CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
 CONSTANT:
     ``CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Arbitrary Processor Affinity SMP Scheduler
-    <SchedulerSMPPriorityAffinity>` algorithm is made available to the
-    application.
+    In case this configuration option is defined, then
+    :ref:`Arbitrary Processor Affinity SMP Scheduler <SchedulerSMPPriorityAffinity>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -251,18 +244,17 @@ CONFIGURE_SCHEDULER_PRIORITY_SMP
 CONSTANT:
     ``CONFIGURE_SCHEDULER_PRIORITY_SMP``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Deterministic Priority SMP Scheduler
-    <SchedulerSMPPriority>` algorithm is made available to the application.
+    In case this configuration option is defined, then
+    :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -288,18 +280,17 @@ CONFIGURE_SCHEDULER_SIMPLE
 CONSTANT:
     ``CONFIGURE_SCHEDULER_SIMPLE``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Simple Priority Scheduler
-    <SchedulerPrioritySimple>` algorithm is made available to the application.
+    In case this configuration option is defined, then
+    :ref:`Simple Priority Scheduler <SchedulerPrioritySimple>`
+    algorithm is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -319,18 +310,17 @@ CONFIGURE_SCHEDULER_SIMPLE_SMP
 CONSTANT:
     ``CONFIGURE_SCHEDULER_SIMPLE_SMP``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    If defined, then the :ref:`Simple Priority SMP Scheduler
-    <SchedulerSMPPrioritySimple>` algorithm is made available to the
+    In case this configuration option is defined, then
+    :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`
+    algorithm is made available to the application.
     application.
 
 NOTES:
@@ -354,16 +344,21 @@ CONFIGURE_SCHEDULER_USER
 CONSTANT:
     ``CONFIGURE_SCHEDULER_USER``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
+    In case this configuration option is defined, then the user must provide a
+    scheduler algorithm to the application.
+
+NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
     RTEMS allows the application to provide its own task/thread scheduling
     algorithm. In order to do this, one must define
     ``CONFIGURE_SCHEDULER_USER`` to indicate the application provides its own
@@ -378,10 +373,6 @@ DESCRIPTION:
 
     - ``CONFIGURE_SCHEDULER_USER_PER_THREAD`` must be defined to the type of
       the per-thread information of the user scheduler.
-
-NOTES:
-    This scheduler configuration option is an advanced configuration option.
-    Think twice before you use it.
 
     At this time, the mechanics and requirements for writing a new scheduler
     are evolving and not fully documented.  It is recommended that you look at

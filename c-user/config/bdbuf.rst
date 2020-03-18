@@ -18,22 +18,21 @@ CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
 CONSTANT:
     ``CONFIGURE_APPLICATION_NEEDS_LIBBLOCK``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    Provides a Block Device Cache configuration.
+    In case this configuration option is defined, then the Block Device Cache is
+    initialized during system initialization.
 
 NOTES:
-    Each option of the Block Device Cache configuration can be explicitly set
-    by the user with the configuration options below.  The Block Device Cache
-    is used for example by the RFS and DOSFS file systems.
+    Each option of the Block Device Cache (bdbuf) configuration can be explicitly
+    set by the user with the configuration options below.  The Block Device Cache
+    is used for example by the RFS and DOSFS filesystems.
 
 .. index:: CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 
