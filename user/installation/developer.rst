@@ -559,7 +559,6 @@ Then we generate the pre-install header file automake make files:
   Generating ./c/src/lib/libbsp/arm/csb336/preinstall.am
   Generating ./c/src/lib/libbsp/arm/csb337/preinstall.am
   Generating ./c/src/lib/libbsp/arm/edb7312/preinstall.am
-  Generating ./c/src/lib/libbsp/arm/gdbarmsim/preinstall.am
     .......
   Generating ./cpukit/score/cpu/mips/preinstall.am
   Generating ./cpukit/score/cpu/moxie/preinstall.am

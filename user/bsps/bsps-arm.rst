@@ -12,7 +12,6 @@ arm (ARM)
 .. include:: arm/csb336.rst
 .. include:: arm/csb337.rst
 .. include:: arm/edb7312.rst
-.. include:: arm/gdbarmsim.rst
 .. include:: arm/gumstix.rst
 .. include:: arm/imx.rst
 .. include:: arm/lm3s69xx.rst

@@ -138,8 +138,8 @@ by all BSPs of that architecture.
         $ ls
         acinclude.m4  edb7312    gumstix   Makefile.am    realview-pbx-a9  stm32f4
         configure.ac  gba        lm3s69xx  nds            rtl22xx          xilinx-zynq
-        csb336        gdbarmsim  lpc24xx   preinstall.am  shared
-        csb337        gp32       lpc32xx   raspberrypi    smdk2410
+        csb336        lpc24xx   preinstall.am  shared     csb337           gp32
+        lpc32xx   raspberrypi    smdk2410
 
 Finally, if we cd into a specific BSP, we see the files and .h's that
 compose the package for that particular board. You may recognize the
