@@ -135,31 +135,43 @@ CONFIGURE_SCHEDULER_NAME
 CONSTANT:
     ``CONFIGURE_SCHEDULER_NAME``
 
-DATA TYPE:
-    RTEMS Name (``rtems_name``).
-
-RANGE:
-    Any value.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default name is
+    The default value is
 
-      - ``"MEDF"`` for the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`,
-      - ``"MPA "`` for the :ref:`Arbitrary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
-      - ``"MPD "`` for the :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`,
-      - ``"MPS "`` for the :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`,
-      - ``"UCBS"`` for the :ref:`Uniprocessor CBS Scheduler <SchedulerCBS>`,
-      - ``"UEDF"`` for the :ref:`Uniprocessor EDF Scheduler <SchedulerEDF>`,
-      - ``"UPD "`` for the :ref:`Uniprocessor Deterministic Priority Scheduler <SchedulerPriority>`, and
-      - ``"UPS "`` for the :ref:`Uniprocessor Simple Priority Scheduler <SchedulerPrioritySimple>`.
+    * ``"MEDF"`` for the :ref:`EDF SMP Scheduler <SchedulerSMPEDF>`,
+
+    * ``"MPA "`` for the :ref:`Arbitrary Processor Affinity Priority SMP Scheduler <SchedulerSMPPriorityAffinity>`,
+
+    * ``"MPD "`` for the :ref:`Deterministic Priority SMP Scheduler <SchedulerSMPPriority>`,
+
+    * ``"MPS "`` for the :ref:`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>`,
+
+    * ``"UCBS"`` for the :ref:`Uniprocessor CBS Scheduler <SchedulerCBS>`,
+
+    * ``"UEDF"`` for the :ref:`Uniprocessor EDF Scheduler <SchedulerEDF>`,
+
+    * ``"UPD "`` for the :ref:`Uniprocessor Deterministic Priority Scheduler <SchedulerPriority>`, and
+
+    * ``"UPS "`` for the :ref:`Uniprocessor Simple Priority Scheduler <SchedulerPrioritySimple>`.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid integer of type
+    ``rtems_name``.
 
 DESCRIPTION:
-    Schedulers can be identified via ``rtems_scheduler_ident``.  The name of
-    the scheduler is determined by the configuration.
+    The value of this configuration option defines the name of the default
+    scheduler.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
     Think twice before you use it.
+
+    Schedulers can be identified via c:func:`rtems_scheduler_ident`.
+
+    Use :c:func:`rtems_build_name` to define the scheduler name.
 
 .. index:: CONFIGURE_SCHEDULER_PRIORITY
 
@@ -352,7 +364,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then the user must provide a
+    In case this configuration option is defined, then the user shall provide a
     scheduler algorithm to the application.
 
 NOTES:
@@ -360,18 +372,18 @@ NOTES:
     Think twice before you use it.
 
     RTEMS allows the application to provide its own task/thread scheduling
-    algorithm. In order to do this, one must define
+    algorithm. In order to do this, one shall define
     ``CONFIGURE_SCHEDULER_USER`` to indicate the application provides its own
     scheduling algorithm. If ``CONFIGURE_SCHEDULER_USER`` is defined then the
-    following additional macros must be defined:
+    following additional macros shall be defined:
 
-    - ``CONFIGURE_SCHEDULER`` must be defined to a static definition of
+    - ``CONFIGURE_SCHEDULER`` shall be defined to a static definition of
       the scheduler data structures of the user scheduler.
 
-    - ``CONFIGURE_SCHEDULER_TABLE_ENTRIES`` must be defined to a scheduler
+    - ``CONFIGURE_SCHEDULER_TABLE_ENTRIES`` shall be defined to a scheduler
       table entry initializer for the user scheduler.
 
-    - ``CONFIGURE_SCHEDULER_USER_PER_THREAD`` must be defined to the type of
+    - ``CONFIGURE_SCHEDULER_USER_PER_THREAD`` shall be defined to the type of
       the per-thread information of the user scheduler.
 
     At this time, the mechanics and requirements for writing a new scheduler

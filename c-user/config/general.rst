@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 General System Configuration
@@ -47,23 +48,30 @@ CONFIGURE_EXTRA_TASK_STACKS
 CONSTANT:
     ``CONFIGURE_EXTRA_TASK_STACKS``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Undefined or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be small enough so that the task
+      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``uintptr_t``.
+
 DESCRIPTION:
-    This configuration parameter is set to the number of bytes the applications
-    wishes to add to the task stack requirements calculated by
+    The value of this configuration option defines the number of bytes the
+    applications wishes to add to the task stack requirements calculated by
     ``<rtems/confdefs.h>``.
 
 NOTES:
     This parameter is very important.  If the application creates tasks with
-    stacks larger then the minimum, then that memory is NOT accounted for by
+    stacks larger then the minimum, then that memory is **not** accounted for by
     ``<rtems/confdefs.h>``.
 
 .. index:: CONFIGURE_INITIAL_EXTENSIONS
@@ -76,22 +84,24 @@ CONFIGURE_INITIAL_EXTENSIONS
 CONSTANT:
     ``CONFIGURE_INITIAL_EXTENSIONS``
 
-DATA TYPE:
-    List of user extension initializers (``rtems_extensions_table``).
-
-RANGE:
-    Undefined or a list of one or more user extensions.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    The default value is the empty list.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a list of initializers for
+    structures of type :c:type:`rtems_extensions_table`.
 
 DESCRIPTION:
-    If ``CONFIGURE_INITIAL_EXTENSIONS`` is defined by the application, then
-    this application specific set of initial extensions will be placed in the
-    initial extension table.
+    The value of this configuration option is used to initialize the table of
+    initial user extensions.
 
 NOTES:
-    None.
+    The value of this configuration option is placed before the entries of
+    :ref:`BSP_INITIAL_EXTENSION` and after the entries of all other initial
+    user extensions.
 
 .. index:: CONFIGURE_INTERRUPT_STACK_SIZE
 .. index:: interrupt stack size
@@ -104,29 +114,36 @@ CONFIGURE_INTERRUPT_STACK_SIZE
 CONSTANT:
     ``CONFIGURE_INTERRUPT_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer.
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``BSP_INTERRUPT_STACK_SIZE`` in case it is defined,
+    The default value is :ref:`BSP_INTERRUPT_STACK_SIZE` in case it is defined,
     otherwise the default value is ``CPU_STACK_MINIMUM_SIZE``.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to a
+      BSP-specific and application-specific minimum value.
+
+    * It shall be small enough so that the
+      interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
+      not overflow an integer of type ``size_t``.
+
+    * It shall be aligned according to
+      ``CPU_INTERRUPT_STACK_ALIGNMENT``.
+
 DESCRIPTION:
-    The ``CONFIGURE_INTERRUPT_STACK_SIZE`` configuration option defines the
-    size of an interrupt stack in bytes.
+    The value of this configuration option defines the size of an interrupt stack
+    in bytes.
 
 NOTES:
-    The interrupt stack size must be aligned according to
-    ``CPU_INTERRUPT_STACK_ALIGNMENT``.
-
     There is one interrupt stack available for each configured processor
-    (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).  The
-    interrupt stack areas are statically allocated in a special linker section
-    (``.rtemsstack.interrupt``).  The placement of this linker section is
-    BSP-specific.
+    (:ref:`CONFIGURE_MAXIMUM_PROCESSORS`).  The interrupt stack areas are
+    statically allocated in a special linker section (``.rtemsstack.interrupt``).
+    The placement of this linker section is BSP-specific.
 
     Some BSPs use the interrupt stack as the initialization stack which is used
     to perform the sequential system initialization before the multithreading
@@ -137,8 +154,7 @@ NOTES:
     stack size may still result in undefined behaviour.
 
     In releases before RTEMS 5.1 the default value was
-    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE
-    <CONFIGURE_MINIMUM_TASK_STACK_SIZE>` instead of ``CPU_STACK_MINIMUM_SIZE``.
+    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of ``CPU_STACK_MINIMUM_SIZE``.
 
 .. index:: CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
 .. index:: maximum file descriptors
@@ -151,24 +167,31 @@ CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_FILE_DESCRIPTORS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    If ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`` is defined, then the
-    default value is 3, otherwise the default value is 0.  Three file
-    descriptors allows RTEMS to support standard input, output, and error I/O
-    streams on ``/dev/console``.
+    The default value is 3.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to ``SIZE_MAX``.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
 
 DESCRIPTION:
-    This configuration parameter is set to the maximum number of file like
-    objects that can be concurrently open.
+    The value of this configuration option defines the maximum number of file
+    like objects that can be concurrently open.
 
 NOTES:
-    None.
+    The default value of three file descriptors allows RTEMS to support standard
+    input, output, and error I/O streams on ``/dev/console``.
 
 .. index:: CONFIGURE_MAXIMUM_PRIORITY
 .. index:: maximum priority
@@ -182,21 +205,18 @@ CONFIGURE_MAXIMUM_PRIORITY
 CONSTANT:
     ``CONFIGURE_MAXIMUM_PRIORITY``
 
-DATA TYPE:
-    Unsigned integer (``uint8_t``).
-
-RANGE:
-    Valid values for this configuration parameter must be one (1) less than
-    than a power of two (2) between 4 and 256 inclusively.  In other words,
-    valid values are 3, 7, 31, 63, 127, and 255.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 255, because RTEMS must support 256 priority levels to
-    be compliant with various standards. These priorities range from zero (0)
-    to 255.
+    The default value is 255.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be
+    an element of {3, 7, 31, 63, 127, 255}.
 
 DESCRIPTION:
-    For the schedulers
+    For the following schedulers
 
     * :ref:`SchedulerPriority`, which is the default in uniprocessor
       configurations and can be configured through the
@@ -217,8 +237,8 @@ NOTES:
     The numerically greatest priority is the logically lowest priority in the
     system and will thus be used by the IDLE task.
 
-    Priority zero (0) is reserved for internal use by RTEMS and is not available
-    to applications.
+    Priority zero is reserved for internal use by RTEMS and is not available to
+    applications.
 
     Reducing the number of priorities through this configuration option reduces
     the amount of memory allocated by the schedulers listed above.  These
@@ -227,6 +247,9 @@ NOTES:
     is 12 bytes * (``CONFIGURE_MAXIMUM_PRIORITY`` + 1), e.g. 3072 bytes for 256
     priority levels (default), 48 bytes for 4 priority levels
     (``CONFIGURE_MAXIMUM_PRIORITY == 3``).
+
+    The default value is 255, because RTEMS shall support 256 priority levels to
+    be compliant with various standards.  These priorities range from 0 to 255.
 
 .. index:: CONFIGURE_MAXIMUM_PROCESSORS
 
@@ -238,27 +261,27 @@ CONFIGURE_MAXIMUM_PROCESSORS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_PROCESSORS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 1.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``CPU_MAXIMUM_PROCESSORS``.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PROCESSORS`` must be set to the maximum number of
+    The value of this configuration option defines the maximum number of
     processors an application intends to use.  The number of actually available
-    processors depends on the hardware and may be less.  It is recommended to
-    use the smallest value suitable for the application in order to save
-    memory.  Each processor needs an idle thread and interrupt stack for
-    example.
+    processors depends on the hardware and may be less.  It is recommended to use
+    the smallest value suitable for the application in order to save memory.
+    Each processor needs an IDLE task stack and interrupt stack for example.
 
 NOTES:
     If there are more processors available than configured, the rest will be
-    ignored.  This configuration define is ignored in uniprocessor
-    configurations.
+    ignored.  In uniprocessor configuration, this configuration define is
+    ignored.
 
 .. index:: CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 .. index:: maximum thread name size
@@ -271,24 +294,36 @@ CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 CONSTANT:
     ``CONFIGURE_MAXIMUM_THREAD_NAME_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    No restrictions.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 16.  This value was chosen for Linux compatibility,
-    see
-    `PTHREAD_SETNAME_NP(3) <http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_.
+    The default value is 16.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to ``SIZE_MAX``.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
 
 DESCRIPTION:
-    This configuration parameter specifies the maximum thread name size
-    including the terminating `NUL` character.
+    The value of this configuration option defines the maximum thread name size
+    including the terminating ``NUL`` character.
 
 NOTES:
+    The default value was chosen for Linux compatibility, see
+    `PTHREAD_SETNAME_NP(3) <http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_.
+
     The size of the thread control block is increased by the maximum thread name
-    size.  This configuration option is available since RTEMS 5.1.
+    size.
+
+    This configuration option is available since RTEMS 5.1.
 
 .. index:: CONFIGURE_MEMORY_OVERHEAD
 
@@ -300,24 +335,37 @@ CONFIGURE_MEMORY_OVERHEAD
 CONSTANT:
     ``CONFIGURE_MEMORY_OVERHEAD``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It shall be small enough so that the
+      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
+      not overflow an integer of type ``uintptr_t``.
+
 DESCRIPTION:
-    This parameter is set to the number of kilobytes the application wishes to
-    add to the requirements calculated by ``<rtems/confdefs.h>``.
+    The value of this configuration option defines the number of kilobytes the
+    application wishes to add to the RTEMS Workspace size calculated by
+    ``<rtems/confdefs.h>``.
 
 NOTES:
-    This configuration parameter should only be used when it is suspected that
-    a bug in ``<rtems/confdefs.h>`` has resulted in an underestimation.
-    Typically the memory allocation will be too low when an application does
-    not account for all message queue buffers or task stacks.
+    This configuration option should only be used when it is suspected that a bug
+    in ``<rtems/confdefs.h>`` has resulted in an underestimation.  Typically the
+    memory allocation will be too low when an application does not account for
+    all message queue buffers or task stacks, see
+    :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 .. index:: CONFIGURE_MESSAGE_BUFFER_MEMORY
 .. index:: configure message queue buffer memory
@@ -332,18 +380,29 @@ CONFIGURE_MESSAGE_BUFFER_MEMORY
 CONSTANT:
     ``CONFIGURE_MESSAGE_BUFFER_MEMORY``
 
-DATA TYPE:
-    integer summation macro
-
-RANGE:
-    undefined (zero) or calculation resulting in a positive integer
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is zero.
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It shall be small enough so that the
+      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
+      not overflow an integer of type ``uintptr_t``.
 
 DESCRIPTION:
-    The value of this configuration option defines the number of bytes
-    resereved for message queue buffers in the RTEMS Workspace.
+    The value of this configuration option defines the number of bytes reserved
+    for message queue buffers in the RTEMS Workspace.
 
 NOTES:
     The configuration options :ref:`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` and
@@ -393,6 +452,7 @@ NOTES:
           )
 
 .. index:: CONFIGURE_MICROSECONDS_PER_TICK
+.. index:: clock tick quantum
 .. index:: tick quantum
 
 .. _CONFIGURE_MICROSECONDS_PER_TICK:
@@ -403,18 +463,25 @@ CONFIGURE_MICROSECONDS_PER_TICK
 CONSTANT:
     ``CONFIGURE_MICROSECONDS_PER_TICK``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    This is not defined by default. When not defined, the clock tick quantum is
-    configured to be 10,000 microseconds which is ten (10) milliseconds.
+    The default value is 10000.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to a Clock Driver specific value.
+
+    * It shall be less than or equal to a Clock Driver specific value.
+
+    * The resulting clock ticks per second should be an integer.
 
 DESCRIPTION:
-    This constant is  used to specify the length of time between clock ticks.
+    The value of this configuration option defines the length of time in
+    microseconds between clock ticks (clock tick quantum).
 
     When the clock tick quantum value is too low, the system will spend so much
     time processing clock ticks that it does not have processing time available
@@ -432,11 +499,11 @@ DESCRIPTION:
     application.
 
 NOTES:
-    This configuration parameter has no impact if the Clock Tick Device driver
-    is not configured.
+    This configuration option has no impact if the Clock Driver is not
+    configured, see :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
 
-    There may be BSP specific limits on the resolution or maximum value of a
-    clock tick quantum.
+    There may be Clock Driver specific limits on the resolution or maximum value
+    of a clock tick quantum.
 
 .. index:: CONFIGURE_MINIMUM_TASK_STACK_SIZE
 .. index:: minimum task stack size
@@ -449,27 +516,35 @@ CONFIGURE_MINIMUM_TASK_STACK_SIZE
 CONSTANT:
     ``CONFIGURE_MINIMUM_TASK_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is architecture-specific.
+    The default value is ``CPU_STACK_MINIMUM_SIZE``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be small enough so that the task
+      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``uintptr_t``.
+
+    * It shall be greater than or equal to a
+      BSP-specific and application-specific minimum value.
 
 DESCRIPTION:
-    This configuration parameter defines the minimum stack size in bytes for
-    every user task or thread in the system.
+    The value of this configuration option defines the minimum stack size in
+    bytes for every user task or thread in the system.
 
 NOTES:
     Adjusting this parameter should be done with caution.  Examining the actual
     stack usage using the stack checker usage reporting facility is recommended
-    (see also :ref:`CONFIGURE_STACK_CHECKER_ENABLED <CONFIGURE_STACK_CHECKER_ENABLED>`).
+    (see also :ref:`CONFIGURE_STACK_CHECKER_ENABLED`).
 
     This parameter can be used to lower the minimum from that recommended. This
     can be used in low memory systems to reduce memory consumption for
-    stacks. However, this must be done with caution as it could increase the
+    stacks. However, this shall be done with caution as it could increase the
     possibility of a blown task stack.
 
     This parameter can be used to increase the minimum from that
@@ -478,12 +553,11 @@ NOTES:
 
     By default, this configuration parameter defines also the minimum stack
     size of POSIX threads.  This can be changed with the
-    :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE <CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE>`
+    :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE`
     configuration option.
 
     In releases before RTEMS 5.1 the ``CONFIGURE_MINIMUM_TASK_STACK_SIZE`` was
-    used to define the default value of :ref:`CONFIGURE_INTERRUPT_STACK_SIZE
-    <CONFIGURE_INTERRUPT_STACK_SIZE>`.
+    used to define the default value of :ref:`CONFIGURE_INTERRUPT_STACK_SIZE`.
 
 .. index:: CONFIGURE_STACK_CHECKER_ENABLED
 
@@ -524,22 +598,23 @@ CONFIGURE_TICKS_PER_TIMESLICE
 CONSTANT:
     ``CONFIGURE_TICKS_PER_TIMESLICE``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 50.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    This configuration parameter specifies the length of the timeslice quantum
-    in ticks for each task.
+    The value of this configuration option defines the length of the timeslice
+    quantum in ticks for each task.
 
 NOTES:
-    This configuration parameter has no impact if the Clock Tick Device driver
-    is not configured.
+    This configuration option has no impact if the Clock Driver is not
+    configured, see :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
 
 .. index:: CONFIGURE_UNIFIED_WORK_AREAS
 .. index:: unified work areas
@@ -587,27 +662,28 @@ CONFIGURE_UNLIMITED_ALLOCATION_SIZE
 CONSTANT:
     ``CONFIGURE_UNLIMITED_ALLOCATION_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    If not defined and ``CONFIGURE_UNLIMITED_OBJECTS`` is defined, the default
-    value is eight (8).
+    The default value is 8.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall meet the constraints of all
+    object classes to which it is applied.
 
 DESCRIPTION:
-    ``CONFIGURE_UNLIMITED_ALLOCATION_SIZE`` provides an allocation size to use
-    for ``rtems_resource_unlimited`` when using
-    ``CONFIGURE_UNLIMITED_OBJECTS``.
+    If :ref:`CONFIGURE_UNLIMITED_OBJECTS` is defined, then the value of this
+    configuration option defines the default objects maximum of all object
+    classes supporting :ref:`ConfigUnlimitedObjects` to
+    ``rtems_resource_unlimited(CONFIGURE_UNLIMITED_ALLOCATION_SIZE)``.
 
 NOTES:
     By allowing users to declare all resources as being unlimited the user can
-    avoid identifying and limiting the resources
-    used. ``CONFIGURE_UNLIMITED_OBJECTS`` does not support varying the
-    allocation sizes for different objects; users who want that much control
-    can define the ``rtems_resource_unlimited`` macros themselves.
+    avoid identifying and limiting the resources used.
+
+    The object maximum of each class can be configured also individually using
+    the :c:func:`rtems_resource_unlimited` macro.
 
 .. index:: CONFIGURE_UNLIMITED_OBJECTS
 

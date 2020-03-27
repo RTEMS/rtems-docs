@@ -110,19 +110,31 @@ CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 CONSTANT:
     ``CONFIGURE_RECORD_PER_PROCESSOR_ITEMS``
 
-DATA TYPE:
-    Unsigned integer (``unsigned int``).
-
-RANGE:
-    A power of two greater than or equal to 16.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 16.
+
+    * It shall be less than or equal to ``SIZE_MAX``.
+
+    * It shall be a power of two.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
 
 DESCRIPTION:
-    If defined, then a record item buffer of the specified item count is
-    statically allocated for each configured processor
-    (:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).
+    The value of this configuration option defines the event record item count
+    per processor.
 
 NOTES:
-    None.
+    The event record buffers are statically allocated for each configured
+    processor (:ref:`CONFIGURE_MAXIMUM_PROCESSORS`).  If the value of this
+    configuration option is zero, then nothing is allocated.

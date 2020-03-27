@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Idle Task Configuration
@@ -17,22 +18,27 @@ CONFIGURE_IDLE_TASK_BODY
 CONSTANT:
     ``CONFIGURE_IDLE_TASK_BODY``
 
-DATA TYPE:
-    Function pointer.
-
-RANGE:
-    Undefined or valid function pointer.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    If :ref:`BSP_IDLE_TASK_BODY` is defined, then this will be the default value,
+    otherwise the default value is ``_CPU_Thread_Idle_body``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be defined to a valid function
+    pointer of the type ``void *( *idle_body )( uintptr_t )``.
 
 DESCRIPTION:
-    ``CONFIGURE_IDLE_TASK_BODY`` is set to the function name corresponding to
-    the application specific IDLE thread body.  If not specified, the BSP or
-    RTEMS default IDLE thread body will be used.
+    The value of this configuration option initializes the IDLE thread body.
 
 NOTES:
-    None.
+    IDLE threads shall not block.  A blocking IDLE thread results in undefined
+    system behaviour because the scheduler assume that at least one ready thread
+    exists.
+
+    IDLE threads can be used to initialize the application, see configuration
+    option :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`.
 
 .. index:: CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 
@@ -53,30 +59,30 @@ DEFAULT CONFIGURATION:
 
 DESCRIPTION:
     This configuration option is defined to indicate that the user has configured
-    **no** user initialization tasks or threads and that the user provided idle
+    **no** user initialization tasks or threads and that the user provided IDLE
     task will perform application initialization and then transform itself into
-    an idle task.
+    an IDLE task.
 
 NOTES:
-    If you use this option be careful, the user idle task **cannot** block at all
+    If you use this option be careful, the user IDLE task **cannot** block at all
     during the initialization sequence.  Further, once application
-    initialization is complete, it must make itself preemptible and enter an idle
+    initialization is complete, it shall make itself preemptible and enter an idle
     body loop.
 
-    The idle task must run at the lowest priority of all tasks in the system.
+    The IDLE task shall run at the lowest priority of all tasks in the system.
 
     If this configuration option is defined, then it is mandatory to configure a
-    user idle task with the :ref:`CONFIGURE_IDLE_TASK_BODY` configuration option,
+    user IDLE task with the :ref:`CONFIGURE_IDLE_TASK_BODY` configuration option,
     otherwise a compile time error in the configuration file will occur.
 
-    The application must define exactly one of the following configuration
+    The application shall define exactly one of the following configuration
     options
 
     * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
 
     * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
 
-    * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+    * `CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
 
     otherwise a compile time error in the configuration file will occur.
 
@@ -90,18 +96,27 @@ CONFIGURE_IDLE_TASK_STACK_SIZE
 CONSTANT:
     ``CONFIGURE_IDLE_TASK_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Undefined or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is RTEMS_MINIMUM_STACK_SIZE.
+    The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to a
+      BSP-specific and application-specific minimum value.
+
+    * It shall be small enough so that the IDLE
+      task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``size_t``.
 
 DESCRIPTION:
-    ``CONFIGURE_IDLE_TASK_STACK_SIZE`` is set to the desired stack size for the
+    The value of this configuration option defines the task stack size for an
     IDLE task.
 
 NOTES:
-    None.
+    In SMP configurations, there is one IDLE task per configured processor, see
+    :ref:`CONFIGURE_MAXIMUM_PROCESSORS`.

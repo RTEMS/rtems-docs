@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Classic API Configuration
@@ -17,21 +18,36 @@ CONFIGURE_MAXIMUM_BARRIERS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_BARRIERS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_BARRIERS`` is the maximum number of Classic API
-    Barriers that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Barriers that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
 .. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 
@@ -43,23 +59,38 @@ CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 CONSTANT:
     ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES`` is the maximum number of Classic API
-    Message Queues that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Message Queues that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.  You have
-    to account for the memory used to store the messages of each message queue,
-    see :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.  You have to account for the memory used to
+    store the messages of each message queue, see
+    :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 .. index:: CONFIGURE_MAXIMUM_PARTITIONS
 
@@ -71,21 +102,36 @@ CONFIGURE_MAXIMUM_PARTITIONS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_PARTITIONS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PARTITIONS`` is the maximum number of Classic API
-    Partitions that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Partitions that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
 .. index:: CONFIGURE_MAXIMUM_PERIODS
 
@@ -97,21 +143,36 @@ CONFIGURE_MAXIMUM_PERIODS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_PERIODS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PERIODS`` is the maximum number of Classic API Periods
-    that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Periods that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
 .. index:: CONFIGURE_MAXIMUM_PORTS
 
@@ -123,21 +184,36 @@ CONFIGURE_MAXIMUM_PORTS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_PORTS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_PORTS`` is the maximum number of Classic API Ports that
-    can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Ports that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
 .. index:: CONFIGURE_MAXIMUM_REGIONS
 
@@ -149,21 +225,36 @@ CONFIGURE_MAXIMUM_REGIONS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_REGIONS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_REGIONS`` is the maximum number of Classic API Regions
-    that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Regions that can be concurrently active.
 
 NOTES:
-    None.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
 .. index:: CONFIGURE_MAXIMUM_SEMAPHORES
 
@@ -175,21 +266,36 @@ CONFIGURE_MAXIMUM_SEMAPHORES
 CONSTANT:
     ``CONFIGURE_MAXIMUM_SEMAPHORES``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_SEMAPHORES`` is the maximum number of Classic API
-    Semaphores that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Semaphore that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
     In SMP configurations, the size of a Semaphore Control Block depends on the
     scheduler count (see :ref:`ConfigurationSchedulerTable`).  The semaphores
@@ -205,21 +311,40 @@ CONFIGURE_MAXIMUM_TASKS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_TASKS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``0``.
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It shall be small enough so that the task
+      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``uintptr_t``.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
 
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_TASKS`` is the maximum number of Classic API Tasks that
-    can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Tasks that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
     The calculations for the required memory in the RTEMS Workspace for tasks
     assume that each task has a minimum stack size and has floating point
@@ -230,7 +355,7 @@ NOTES:
     ``CONFIGURE_EXTRA_TASK_STACKS``.
 
     The maximum number of POSIX threads is specified by
-    :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS <CONFIGURE_MAXIMUM_POSIX_THREADS>`.
+    :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS`.
 
     A future enhancement to ``<rtems/confdefs.h>`` could be to eliminate the
     assumption that all tasks have floating point enabled. This would require
@@ -247,21 +372,36 @@ CONFIGURE_MAXIMUM_TIMERS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_TIMERS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_TIMERS`` is the maximum number of Classic API Timers
-    that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API Timers that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
 
 .. index:: CONFIGURE_MAXIMUM_USER_EXTENSIONS
 
@@ -273,18 +413,27 @@ CONFIGURE_MAXIMUM_USER_EXTENSIONS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_USER_EXTENSIONS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_USER_EXTENSIONS`` is the maximum number of Classic API
-    User Extensions that can be concurrently active.
+    The value of this configuration option defines the maximum number of Classic
+    API User Extensions that can be concurrently active.
 
 NOTES:
-    This object class can be configured in unlimited allocation mode.
+    This object class cannot be configured in unlimited allocation mode.

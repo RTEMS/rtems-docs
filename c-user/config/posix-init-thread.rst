@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 POSIX Initialization Thread Configuration
@@ -18,23 +19,23 @@ CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 CONSTANT:
     ``CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT``
 
-DATA TYPE:
-    POSIX thread function pointer (``void *(*entry_point)(void *)``).
-
-RANGE:
-    Undefined or a valid POSIX thread function pointer.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
     The default value is ``POSIX_Init``.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be defined to a valid function
+    pointer of the type ``void *( *entry_point )( void * )``.
+
 DESCRIPTION:
-    ``CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT`` is the entry point
-    (a.k.a. function name) of the single initialization thread defined by the
-    POSIX API Initialization Threads Table.
+    The value of this configuration option initializes the entry point of the
+    POSIX API initialization thread.
 
 NOTES:
-    The user must implement the function ``POSIX_Init`` or the function name
-    provided in this configuration parameter.
+    The application shall provide the function referenced by this configuration
+    option.
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 
@@ -46,25 +47,28 @@ CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 CONSTANT:
     ``CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 2 \* RTEMS_MINIMUM_STACK_SIZE.
+    The default value is :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE`.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+    * It shall be small enough so that the task
+      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``uintptr_t``.
 
 DESCRIPTION:
-    ``CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE`` is the stack size of the single
-    initialization thread defined by the POSIX API Initialization Threads
-    Table.
+    The value of this configuration option defines the thread stack size of the
+    POSIX API initialization thread.
 
 NOTES:
-    If the stack size specified is greater than the configured minimum, it must
-    be accounted for in ``CONFIGURE_EXTRA_TASK_STACKS``.  See :ref:`Reserve
-    Task/Thread Stack Memory Above Minimum` for more information about
-    ``CONFIGURE_EXTRA_TASK_STACKS``.
+    None.
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_TABLE
 
@@ -88,12 +92,12 @@ DESCRIPTION:
     initialization thread is configured.
 
 NOTES:
-    The application must define exactly one of the following configuration
+    The application shall define exactly one of the following configuration
     options
 
     * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
 
-    * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+    * `CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
 
     * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
 

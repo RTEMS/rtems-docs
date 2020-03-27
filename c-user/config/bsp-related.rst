@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 BSP Related Configuration Options
@@ -20,24 +21,30 @@ BSP_IDLE_TASK_BODY
 CONSTANT:
     ``BSP_IDLE_TASK_BODY``
 
-DATA TYPE:
-    Function pointer.
-
-RANGE:
-    Undefined or valid function pointer.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This option is BSP specific.
+    The default value is BSP-specific.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be defined to a valid function
+    pointer of the type ``void *( *idle_body )( uintptr_t )``.
 
 DESCRIPTION:
-    If ``BSP_IDLE_TASK_BODY`` is defined by the BSP and
-    ``CONFIGURE_IDLE_TASK_BODY`` is not defined by the application, then this
-    BSP specific idle task body will be used.
+    If
+
+    * this configuration option is defined by the BSP
+
+    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+    then the value of this configuration option defines the default value of
+    :ref:`CONFIGURE_IDLE_TASK_BODY`.
 
 NOTES:
     As it has knowledge of the specific CPU model, system controller logic, and
-    peripheral buses, a BSP specific IDLE task may be capable of turning
-    components off to save power during extended periods of no task activity
+    peripheral buses, a BSP-specific IDLE task may be capable of turning
+    components off to save power during extended periods of no task activity.
 
 .. index:: BSP_IDLE_TASK_STACK_SIZE
 
@@ -49,30 +56,35 @@ BSP_IDLE_TASK_STACK_SIZE
 CONSTANT:
     ``BSP_IDLE_TASK_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Undefined or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    This option is BSP specific.
+    The default value is BSP-specific.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to a
+      BSP-specific and application-specific minimum value.
+
+    * It shall be small enough so that the IDLE
+      task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``size_t``.
 
 DESCRIPTION:
-    If ``BSP_IDLE_TASK_STACK_SIZE`` is defined by the BSP and
-    ``CONFIGURE_IDLE_TASK_STACK_SIZE`` is not defined by the application, then
-    this BSP suggested idle task stack size will be used.
+    If
+
+    * this configuration option is defined by the BSP
+
+    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+    then the value of this configuration option defines the default value of
+    :ref:`CONFIGURE_IDLE_TASK_SIZE`.
 
 NOTES:
-    The order of precedence for configuring the IDLE task stack size is:
-
-    - RTEMS default minimum stack size.
-
-    - If defined, then ``CONFIGURE_MINIMUM_TASK_STACK_SIZE``.
-
-    - If defined, then the BSP specific ``BSP_IDLE_TASK_SIZE``.
-
-    - If defined, then the application specified ``CONFIGURE_IDLE_TASK_SIZE``.
+    None.
 
 .. index:: BSP_INITIAL_EXTENSION
 
@@ -84,22 +96,29 @@ BSP_INITIAL_EXTENSION
 CONSTANT:
     ``BSP_INITIAL_EXTENSION``
 
-DATA TYPE:
-    List of user extension initializers (``rtems_extensions_table``).
-
-RANGE:
-    Undefined or a list of user extension initializers.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This option is BSP specific.
+    The default value is BSP-specific.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a list of initializers for
+    structures of type :c:type:`rtems_extensions_table`.
 
 DESCRIPTION:
-    If ``BSP_INITIAL_EXTENSION`` is defined by the BSP, then this BSP specific
-    initial extension will be placed as the last entry in the initial extension
-    table.
+    If
+
+    * this configuration option is defined by the BSP
+
+    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+    then the value of this configuration option is used to initialize the table
+    of initial user extensions.
 
 NOTES:
-    None.
+    The value of this configuration option is placed after the entries of all
+    other initial user extensions.
 
 .. index:: BSP_INTERRUPT_STACK_SIZE
 
@@ -111,52 +130,38 @@ BSP_INTERRUPT_STACK_SIZE
 CONSTANT:
     ``BSP_INTERRUPT_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Undefined or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    This option is BSP specific.
+    The default value is BSP-specific.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to a
+      BSP-specific and application-specific minimum value.
+
+    * It shall be small enough so that the
+      interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
+      not overflow an integer of type ``size_t``.
+
+    * It shall be aligned according to
+      ``CPU_INTERRUPT_STACK_ALIGNMENT``.
 
 DESCRIPTION:
-    If ``BSP_INTERRUPT_STACK_SIZE`` is defined by the BSP and
-    ``CONFIGURE_INTERRUPT_STACK_SIZE`` is not defined by the application, then
-    this BSP specific interrupt stack size will be used.
+    If
+
+    * this configuration option is defined by the BSP
+
+    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+    then the value of this configuration option defines the default value of
+    :ref:`CONFIGURE_INTERRUPT_STACK_SIZE`.
 
 NOTES:
     None.
-
-.. index:: BSP_MAXIMUM_DEVICES
-
-.. _BSP_MAXIMUM_DEVICES:
-
-BSP_MAXIMUM_DEVICES
--------------------
-
-CONSTANT:
-    ``BSP_MAXIMUM_DEVICES``
-
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Undefined or positive.
-
-DEFAULT VALUE:
-    This option is BSP specific.
-
-DESCRIPTION:
-    If ``BSP_MAXIMUM_DEVICES`` is defined by the BSP and
-    ``CONFIGURE_MAXIMUM_DEVICES`` is not defined by the application, then this
-    BSP specific maximum device count will be used.
-
-NOTES:
-    This option is specific to the device file system (devFS) and should not be
-    confused with the ``CONFIGURE_MAXIMUM_DRIVERS`` option.  This parameter
-    only impacts the devFS and thus is only used by ``<rtems/confdefs.h>`` when
-    ``CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM`` is specified.
 
 .. index:: CONFIGURE_BSP_PREREQUISITE_DRIVERS
 
@@ -168,26 +173,30 @@ CONFIGURE_BSP_PREREQUISITE_DRIVERS
 CONSTANT:
     ``CONFIGURE_BSP_PREREQUISITE_DRIVERS``
 
-DATA TYPE:
-    List of device driver initializers (``rtems_driver_address_table``).
-
-RANGE:
-    Undefined or array of device drivers.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This option is BSP specific.
+    The default value is BSP-specific.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a list of initializers for
+    structures of type :c:type:`rtems_extensions_table`.
 
 DESCRIPTION:
-    ``CONFIGURE_BSP_PREREQUISITE_DRIVERS`` is defined if the BSP has device
-    drivers it needs to include in the Device Driver Table.  This should be
-    defined to the set of device driver entries that will be placed in the
-    table at the *FRONT* of the Device Driver Table and initialized before any
-    other drivers *INCLUDING* any application prerequisite drivers.
+    If
+
+    * this configuration option is defined by the BSP
+
+    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+    then the value of this configuration option is used to initialize the table
+    of initial user extensions.
 
 NOTES:
-    ``CONFIGURE_BSP_PREREQUISITE_DRIVERS`` is typically used by BSPs to
-    configure common infrastructure such as bus controllers or probe for
-    devices.
+    The value of this configuration option is placed before the entries of all
+    other initial user extensions (including
+    :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`).
 
 .. index:: CONFIGURE_DISABLE_BSP_SETTINGS
 

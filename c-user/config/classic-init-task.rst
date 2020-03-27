@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Classic API Initialization Task Configuration
@@ -18,18 +19,19 @@ CONFIGURE_INIT_TASK_ARGUMENTS
 CONSTANT:
     ``CONFIGURE_INIT_TASK_ARGUMENTS``
 
-DATA TYPE:
-    RTEMS Task Argument (``rtems_task_argument``).
-
-RANGE:
-    Complete range of the type.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid integer of type
+    ``rtems_task_argument``.
+
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_ARGUMENTS`` is the task argument of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
+    The value of this configuration option defines task argument of the Classic
+    API initialization task.
 
 NOTES:
     None.
@@ -44,18 +46,18 @@ CONFIGURE_INIT_TASK_ATTRIBUTES
 CONSTANT:
     ``CONFIGURE_INIT_TASK_ATTRIBUTES``
 
-DATA TYPE:
-    RTEMS Attributes (``rtems_attribute``).
-
-RANGE:
-    Valid task attribute sets.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is ``RTEMS_DEFAULT_ATTRIBUTES``.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid task attribute set.
+
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_ATTRIBUTES`` is the task attributes of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
+    The value of this configuration option defines the task attributes of the
+    Classic API initialization task.
 
 NOTES:
     None.
@@ -70,23 +72,23 @@ CONFIGURE_INIT_TASK_ENTRY_POINT
 CONSTANT:
     ``CONFIGURE_INIT_TASK_ENTRY_POINT``
 
-DATA TYPE:
-    Task entry function pointer (``rtems_task_entry``).
-
-RANGE:
-    Valid task entry function pointer.
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
     The default value is ``Init``.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be defined to a valid function
+    pointer of the type ``void ( *entry_point )( rtems_task_argument )``.
+
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_ENTRY_POINT`` is the entry point (a.k.a. function
-    name) of the single initialization task defined by the Classic API
-    Initialization Tasks Table.
+    The value of this configuration option initializes the entry point of the
+    Classic API initialization task.
 
 NOTES:
-    The user must implement the function ``Init`` or the function name provided
-    in this configuration parameter.
+    The application shall provide the function referenced by this configuration
+    option.
 
 .. index:: CONFIGURE_INIT_TASK_INITIAL_MODES
 
@@ -98,19 +100,19 @@ CONFIGURE_INIT_TASK_INITIAL_MODES
 CONSTANT:
     ``CONFIGURE_INIT_TASK_INITIAL_MODES``
 
-DATA TYPE:
-    RTEMS Mode (``rtems_mode``).
-
-RANGE:
-    Valid task mode sets.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``RTEMS_NO_PREEMPT``.
+    In SMP  configurations, the default value is ``RTEMS_DEFAULT_MODES``,
+    otherwise the default value is ``RTEMS_NO_PREEMPT``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid task mode set.
 
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_INITIAL_MODES`` is the initial execution mode of the
-    single initialization task defined by the Classic API Initialization Tasks
-    Table.
+    The value of this configuration option defines the initial execution mode of
+    the Classic API initialization task.
 
 NOTES:
     None.
@@ -125,21 +127,22 @@ CONFIGURE_INIT_TASK_NAME
 CONSTANT:
     ``CONFIGURE_INIT_TASK_NAME``
 
-DATA TYPE:
-    RTEMS Name (``rtems_name``).
-
-RANGE:
-    Any value.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is ``rtems_build_name( 'U', 'I', '1', ' ' )``.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid integer of type
+    ``rtems_name``.
+
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_NAME`` is the name of the single initialization task
-    defined by the Classic API Initialization Tasks Table.
+    The value of this configuration option defines the name of the Classic API
+    initialization task.
 
 NOTES:
-    None.
+    Use :c:func:`rtems_build_name` to define the task name.
 
 .. index:: CONFIGURE_INIT_TASK_PRIORITY
 
@@ -151,18 +154,19 @@ CONFIGURE_INIT_TASK_PRIORITY
 CONSTANT:
     ``CONFIGURE_INIT_TASK_PRIORITY``
 
-DATA TYPE:
-    RTEMS Task Priority (``rtems_task_priority``).
-
-RANGE:
-    One (1) to the maximum user priority value of the scheduler.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 1, which is the highest priority in the Classic API.
+    The default value is 1.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid Classic API task
+    priority.  The set of valid task priorities is scheduler-specific.
 
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_PRIORITY`` is the initial priority of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
+    The value of this configuration option defines the initial priority of the
+    Classic API initialization task.
 
 NOTES:
     None.
@@ -177,24 +181,28 @@ CONFIGURE_INIT_TASK_STACK_SIZE
 CONSTANT:
     ``CONFIGURE_INIT_TASK_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is RTEMS_MINIMUM_STACK_SIZE.
+    The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+    * It shall be small enough so that the task
+      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``uintptr_t``.
 
 DESCRIPTION:
-    ``CONFIGURE_INIT_TASK_STACK_SIZE`` is the stack size of the single
-    initialization task defined by the Classic API Initialization Tasks Table.
+    The value of this configuration option defines the task stack size of the
+    Classic API initialization task.
 
 NOTES:
-    If the stack size specified is greater than the configured minimum, it must
-    be accounted for in ``CONFIGURE_EXTRA_TASK_STACKS``.  See :ref:`Reserve
-    Task/Thread Stack Memory Above Minimum` for more information about
-    ``CONFIGURE_EXTRA_TASK_STACKS``.
+    None.
 
 .. index:: CONFIGURE_RTEMS_INIT_TASKS_TABLE
 
@@ -218,10 +226,10 @@ DESCRIPTION:
     initialization task is configured.
 
 NOTES:
-    The application must define exactly one of the following configuration
+    The application shall define exactly one of the following configuration
     options
 
-    * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+    * `CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
 
     * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
 

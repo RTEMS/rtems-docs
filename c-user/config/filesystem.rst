@@ -70,7 +70,7 @@ DESCRIPTION:
     configured.
 
 NOTES:
-    Filesystems must be initialized to support file descriptor based device
+    Filesystems shall be initialized to support file descriptor based device
     drivers and basic input/output functions such as :c:func:`printf`.
     Filesystems can be disabled to reduce the memory footprint of an application.
 
@@ -421,26 +421,28 @@ CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
 CONSTANT:
     ``CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK``
 
-DATA TYPE:
-    Boolean feature macro.
-
-RANGE:
-    Valid values for this configuration parameter are a power of two (2)
-    between 16 and 512 inclusive.  In other words, valid values are 16, 32, 64,
-    128, 256,and 512.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default IMFS block size is 128 bytes.
+    The default value is 128.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be
+    an element of {16, 32, 64, 128, 256, 512}.
 
 DESCRIPTION:
-    This configuration parameter specifies the block size for in-memory files
-    managed by the IMFS. The configured block size has two impacts. The first
-    is the average amount of unused memory in the last block of each file. For
-    example, when the block size is 512, on average one-half of the last block
-    of each file will remain unused and the memory is wasted. In contrast, when
-    the block size is 16, the average unused memory per file is only 8
-    bytes. However, it requires more allocations for the same size file and
-    thus more overhead per block for the dynamic memory management.
+    The value of this configuration option defines the block size for in-memory
+    files managed by the IMFS.
+
+NOTES:
+    The configured block size has two impacts. The first is the average amount of
+    unused memory in the last block of each file.  For example, when the block
+    size is 512, on average one-half of the last block of each file will remain
+    unused and the memory is wasted. In contrast, when the block size is 16, the
+    average unused memory per file is only 8 bytes. However, it requires more
+    allocations for the same size file and thus more overhead per block for the
+    dynamic memory management.
 
     Second, the block size has an impact on the maximum size file that can be
     stored in the IMFS. With smaller block size, the maximum file size is
@@ -459,9 +461,6 @@ DESCRIPTION:
 
     - when the block size is 512 bytes, the maximum file size is 1,082,195,456
       bytes.
-
-NOTES:
-    None.
 
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 

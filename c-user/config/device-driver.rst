@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Device Driver Configuration
@@ -34,7 +35,7 @@ NOTES:
     of using the Hello World example as the baseline for an application and
     leaving out a clock tick source.
 
-    The application must define exactly one of the following configuration options
+    The application shall define exactly one of the following configuration options
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
 
@@ -54,23 +55,26 @@ CONFIGURE_APPLICATION_EXTRA_DRIVERS
 CONSTANT:
     ``CONFIGURE_APPLICATION_EXTRA_DRIVERS``
 
-DATA TYPE:
-    device driver entry structures
-
-RANGE:
-    Undefined or set of device driver entry structures
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    The default value is the empty list.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a list of initializers for
+    structures of type :c:type:`rtems_driver_address_table`.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_EXTRA_DRIVERS`` is defined if the application has
-    device drivers it needs to include in the Device Driver Table.  This should
-    be defined to the set of device driver entries that will be placed in the
-    table at the *END* of the Device Driver Table.
+    The value of this configuration option is used to initialize the Device
+    Driver Table.
 
 NOTES:
-    None.
+    The value of this configuration option is placed after the entries of other
+    device driver configuration options.
+
+    See :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS` for an alternative
+    placement of application device driver initializers.
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
@@ -97,7 +101,7 @@ NOTES:
     The Clock Driver is responsible for providing a regular interrupt
     which invokes a clock tick directive.
 
-    The application must define exactly one of the following configuration options
+    The application shall define exactly one of the following configuration options
 
     * `CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
 
@@ -372,7 +376,7 @@ NOTES:
     The Benchmark Timer Driver is intended for the benchmark tests of the RTEMS
     Testsuite.  Applications should not use this driver.
 
-    The application must define exactly one of the following configuration options
+    The application shall define exactly one of the following configuration options
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
 
@@ -445,28 +449,27 @@ CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
 CONSTANT:
     ``CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS``
 
-DATA TYPE:
-    device driver entry structures
-
-RANGE:
-    Undefined or set of device driver entry structures
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    The default value is the empty list.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a list of initializers for
+    structures of type :c:type:`rtems_driver_address_table`.
 
 DESCRIPTION:
-    ``CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`` is defined if the
-    application has device drivers it needs to include in the Device Driver
-    Table.  This should be defined to the set of device driver entries that
-    will be placed in the table at the *FRONT* of the Device Driver Table and
-    initialized before any other drivers *EXCEPT* any BSP prerequisite drivers.
+    The value of this configuration option is used to initialize the Device
+    Driver Table.
 
 NOTES:
-    In some cases, it is used by System On Chip BSPs to support peripheral
-    buses beyond those normally found on the System On Chip. For example, this
-    is used by one RTEMS system which has implemented a SPARC/ERC32 based board
-    with VMEBus. The VMEBus Controller initialization is performed by a device
-    driver configured via this configuration parameter.
+    The value of this configuration option is placed after the entries defined by
+    :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device driver
+    configuration options.
+
+    See :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
+    of application device driver initializers.
 
 .. index:: CONFIGURE_MAXIMUM_DRIVERS
 
@@ -478,24 +481,33 @@ CONFIGURE_MAXIMUM_DRIVERS
 CONSTANT:
     ``CONFIGURE_MAXIMUM_DRIVERS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     This is computed by default, and is set to the number of device drivers
     configured using the ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER``
-    configuration parameters.
+    configuration options.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be less than or equal to ``SIZE_MAX``.
+
+    * It shall be greater than or equal than the number of statically configured
+      device drivers.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
 
 DESCRIPTION:
-    ``CONFIGURE_MAXIMUM_DRIVERS`` is defined as the number of device drivers
-    per node.
+    The value of this configuration option defines the number of device drivers.
 
 NOTES:
     If the application will dynamically install device drivers, then this
-    configuration parameter must be larger than the number of statically
+    configuration parameter shall be larger than the number of statically
     configured device drivers. Drivers configured using the
-    ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER`` configuration parameters are
+    ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER`` configuration options are
     statically installed.

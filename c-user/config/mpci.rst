@@ -48,17 +48,18 @@ CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 CONSTANT:
     ``CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 32.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    ``CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS`` is the maximum number of
+    The value of this configuration option defines the maximum number of
     concurrently active global objects in a multiprocessor system.
 
 NOTES:
@@ -75,18 +76,19 @@ CONFIGURE_MP_MAXIMUM_NODES
 CONSTANT:
     ``CONFIGURE_MP_MAXIMUM_NODES``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 2.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    ``CONFIGURE_MP_MAXIMUM_NODES`` is the maximum number of nodes in a
-    multiprocessor system.
+    The value of this configuration option defines the maximum number of nodes in
+    a multiprocessor system.
 
 NOTES:
     None.
@@ -101,18 +103,20 @@ CONFIGURE_MP_MAXIMUM_PROXIES
 CONSTANT:
     ``CONFIGURE_MP_MAXIMUM_PROXIES``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Undefined or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 32.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    ``CONFIGURE_MP_MAXIMUM_PROXIES`` is the maximum number of concurrently
-    active thread/task proxies on this node in a multiprocessor system.
+    The value of this configuration option defines the maximum number of
+    concurrently active thread/task proxies on this node in a multiprocessor
+    system.
 
 NOTES:
     Since a proxy is used to represent a remote task/thread which is blocking
@@ -130,18 +134,19 @@ CONFIGURE_MP_MPCI_TABLE_POINTER
 CONSTANT:
     ``CONFIGURE_MP_MPCI_TABLE_POINTER``
 
-DATA TYPE:
-    pointer to ``rtems_mpci_table``
-
-RANGE:
-    undefined or valid pointer
+OPTION TYPE:
+    This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    This is not defined by default.
+    The default value is ``&MPCI_table``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a pointer to
+    :c:type:`rtems_mpci_table`.
 
 DESCRIPTION:
-    ``CONFIGURE_MP_MPCI_TABLE_POINTER`` is the pointer to the MPCI
-    Configuration Table.  The default value of this field is``&MPCI_table``.
+    The value of this configuration option initializes the MPCI Configuration
+    Table.
 
 NOTES:
     RTEMS provides a Shared Memory MPCI Device Driver which can be used on any
@@ -158,19 +163,19 @@ CONFIGURE_MP_NODE_NUMBER
 CONSTANT:
     ``CONFIGURE_MP_NODE_NUMBER``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``NODE_NUMBER``, which is assumed to be set by the
-    compilation environment.
+    The default value is ``NODE_NUMBER``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
 
 DESCRIPTION:
-    ``CONFIGURE_MP_NODE_NUMBER`` is the node number of this node in a
-    multiprocessor system.
+    The value of this configuration option defines the node number of this node
+    in a multiprocessor system.
 
 NOTES:
     In the RTEMS Multiprocessing Test Suite, the node number is derived from

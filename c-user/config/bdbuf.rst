@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Block Device Cache Configuration
@@ -44,17 +45,23 @@ CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 CONSTANT:
     ``CONFIGURE_BDBUF_BUFFER_MAX_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    It must be positive and an integral multiple of the buffer minimum size.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 4096 bytes.
+    The default value is 4096.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be an integral multiple of :ref:`CONFIGURE_BDBUF_BUFFER_MIN_SIZE`.
 
 DESCRIPTION:
-    Defines the maximum size of a buffer in bytes.
+    The value of this configuration option defines the maximum size of a buffer
+    in bytes.
 
 NOTES:
     None.
@@ -69,17 +76,19 @@ CONFIGURE_BDBUF_BUFFER_MIN_SIZE
 CONSTANT:
     ``CONFIGURE_BDBUF_BUFFER_MIN_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 512 bytes.
+    The default value is 512.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
 
 DESCRIPTION:
-    Defines the minimum size of a buffer in bytes.
+    The value of this configuration option defines the minimum size of a buffer
+    in bytes.
 
 NOTES:
     None.
@@ -94,17 +103,19 @@ CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
 CONSTANT:
     ``CONFIGURE_BDBUF_CACHE_MEMORY_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 32768 bytes.
+    The default value is 32768.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``SIZE_MAX``.
 
 DESCRIPTION:
-    Size of the cache memory in bytes.
+    The value of this configuration option defines the size of the cache memory
+    in bytes.
 
 NOTES:
     None.
@@ -119,17 +130,19 @@ CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS
 CONSTANT:
     ``CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    Defines the maximum blocks per read-ahead request.
+    The value of this configuration option defines the maximum blocks per
+    read-ahead request.
 
 NOTES:
     A value of 0 disables the read-ahead task (default).  The read-ahead task
@@ -146,17 +159,19 @@ CONFIGURE_BDBUF_MAX_WRITE_BLOCKS
 CONSTANT:
     ``CONFIGURE_BDBUF_MAX_WRITE_BLOCKS``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 16.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    Defines the maximum blocks per write request.
+    The value of this configuration option defines the maximum blocks per write
+    request.
 
 NOTES:
     None.
@@ -171,17 +186,18 @@ CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY
 CONSTANT:
     ``CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY``
 
-DATA TYPE:
-    Task priority (``rtems_task_priority``).
-
-RANGE:
-    Valid task priority.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 15.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid Classic API task
+    priority.  The set of valid task priorities is scheduler-specific.
+
 DESCRIPTION:
-    Defines the read-ahead task priority.
+    The value of this configuration option defines the read-ahead task priority.
 
 NOTES:
     None.
@@ -196,17 +212,29 @@ CONFIGURE_BDBUF_TASK_STACK_SIZE
 CONSTANT:
     ``CONFIGURE_BDBUF_TASK_STACK_SIZE``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is RTEMS_MINIMUM_STACK_SIZE.
+    The default value is ``RTEMS_MINIMUM_STACK_SIZE``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It shall be small enough so that the task
+      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+      overflow an integer of type ``uintptr_t``.
 
 DESCRIPTION:
-    Defines the task stack size of the Block Device Cache tasks in bytes.
+    The value of this configuration option defines the task stack size of the
+    Block Device Cache tasks in bytes.
 
 NOTES:
     None.
@@ -221,17 +249,19 @@ CONFIGURE_SWAPOUT_BLOCK_HOLD
 CONSTANT:
     ``CONFIGURE_SWAPOUT_BLOCK_HOLD``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 1000 milliseconds.
+    The default value is 1000.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
 
 DESCRIPTION:
-    Defines the swapout task maximum block hold time in milliseconds.
+    The value of this configuration option defines the swapout task maximum block
+    hold time in milliseconds.
 
 NOTES:
     None.
@@ -246,17 +276,19 @@ CONFIGURE_SWAPOUT_SWAP_PERIOD
 CONSTANT:
     ``CONFIGURE_SWAPOUT_SWAP_PERIOD``
 
-DATA TYPE:
-    Unsigned integer (``uint32_t``).
-
-RANGE:
-    Positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is 250 milliseconds.
+    The default value is 250.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
 
 DESCRIPTION:
-    Defines the swapout task swap period in milliseconds.
+    The value of this configuration option defines the swapout task swap period
+    in milliseconds.
 
 NOTES:
     None.
@@ -271,17 +303,18 @@ CONFIGURE_SWAPOUT_TASK_PRIORITY
 CONSTANT:
     ``CONFIGURE_SWAPOUT_TASK_PRIORITY``
 
-DATA TYPE:
-    Task priority (``rtems_task_priority``).
-
-RANGE:
-    Valid task priority.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 15.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid Classic API task
+    priority.  The set of valid task priorities is scheduler-specific.
+
 DESCRIPTION:
-    Defines the swapout task priority.
+    The value of this configuration option defines the swapout task priority.
 
 NOTES:
     None.
@@ -296,17 +329,19 @@ CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY
 CONSTANT:
     ``CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY``
 
-DATA TYPE:
-    Task priority (``rtems_task_priority``).
-
-RANGE:
-    Valid task priority.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 15.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid Classic API task
+    priority.  The set of valid task priorities is scheduler-specific.
+
 DESCRIPTION:
-    Defines the swapout worker task priority.
+    The value of this configuration option defines the swapout worker task
+    priority.
 
 NOTES:
     None.
@@ -321,17 +356,18 @@ CONFIGURE_SWAPOUT_WORKER_TASKS
 CONSTANT:
     ``CONFIGURE_SWAPOUT_WORKER_TASKS``
 
-DATA TYPE:
-    Unsigned integer (``size_t``).
-
-RANGE:
-    Zero or positive.
+OPTION TYPE:
+    This configuration option is an integer define.
 
 DEFAULT VALUE:
     The default value is 0.
 
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
 DESCRIPTION:
-    Defines the swapout worker task count.
+    The value of this configuration option defines the swapout worker task count.
 
 NOTES:
     None.
