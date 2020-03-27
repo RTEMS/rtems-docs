@@ -82,7 +82,7 @@ system is based on the `FreeBSD SYSINT Framework
 initialization is performed before multitasking is started.
 
 The RTEMS Tool ``rtems-exeinfo`` can provide some detail about the registered
-handlers. The following shows the initialization handlers for the *hello world*
+handlers. The following shows the initialization handlers for the Hello World
 sample application in the RTEMS kernel's testsuite::
 
 .. code-block:: none

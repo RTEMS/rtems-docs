@@ -95,7 +95,7 @@ perform a pre-test command to covert the executable to a suitable format for
 your target.
 
 Before running all the tests it is a good idea to run the ``hello`` test. The
-``hello`` test is an RTEMS version of the classic "Hello World" example and
+``hello`` test is an RTEMS version of the classic Hello World example and
 running it shows you have a working tool chain and build of RTEMS ready to run
 the tests. Using the run with the ERC32 BSP the command is:
 

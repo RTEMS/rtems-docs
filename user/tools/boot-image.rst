@@ -315,7 +315,7 @@ Create a disk image from a built U-Boot sandbox:
   Finished
   Cleaning up
 
-Create a 32M byte SD card image with the testsuite's hello world
+Create a 32M byte SD card image with the testsuite's Hello World
 executable (``hello.exe``):
 
 .. code-block:: none

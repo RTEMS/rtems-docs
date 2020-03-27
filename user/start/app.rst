@@ -10,7 +10,7 @@ Build Your Application
 You tested a BSP in the previous section.  We built the ``erc32`` BSP
 and it is installed under :file:`$HOME/quick-start/rtems/5`.
 
-We will now create a simple hello world application with a Git
+We will now create a simple Hello World application with a Git
 repository and using the `Waf <https://waf.io>`_ build system.
 
 The application is be created in :file:`$HOME/quick-start/app/hello`.
@@ -77,7 +77,7 @@ settings:
 
     #include <rtems/confdefs.h>
 
-Create the *hello world* application source file. Using an editor
+Create the Hello World application source file. Using an editor
 create :file:`hello.c` and copy the follow code:
 
 .. code-block:: c
