@@ -199,18 +199,28 @@ CONFIGURE_DISABLE_BSP_SETTINGS
 CONSTANT:
     ``CONFIGURE_DISABLE_BSP_SETTINGS``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This is not defined by default.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    All BSP specific configuration settings can be disabled by the application
-    with the ``CONFIGURE_DISABLE_BSP_SETTINGS`` option.
+    In case this configuration option is defined, then the following BSP related
+    configuration options are undefined:
+
+    - :ref:`BSP_IDLE_TASK_BODY`
+
+    - :ref:`BSP_IDLE_TASK_STACK_SIZE`
+
+    - :ref:`BSP_INITIAL_EXTENSION`
+
+    - :ref:`BSP_INTERRUPT_STACK_SIZE`
+
+    - :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
+
+    - :ref:`CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK`
 
 NOTES:
     None.
@@ -225,23 +235,25 @@ CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
 CONSTANT:
     ``CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK``
 
-DATA TYPE:
-    Boolean feature macro.
+OPTION TYPE:
+    This configuration option is a boolean feature define.
 
-RANGE:
-    Defined or undefined.
-
-DEFAULT VALUE:
-    This option is BSP specific.
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
 
 DESCRIPTION:
-    This configuration parameter is defined by a BSP to indicate that it does
-    not allocate all available memory to the C Program Heap used by the Malloc
-    Family of routines.
+    If
 
-    If defined, when ``malloc()`` is unable to allocate memory, it will call
-    the BSP supplied ``sbrk()`` to obtain more memory.
+    * this configuration option is defined by the BSP
+
+    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+    then not all memory is made available to the C Program Heap immediately at
+    system initialization time.  When :c:func:`malloc()` or other standard memory
+    allocation functions are unable to allocate memory, they will call the BSP
+    supplied :c:func:`sbrk()` function to obtain more memory.
 
 NOTES:
-    This parameter should not be defined by the application. Only the BSP knows
-    how it allocates memory to the C Program Heap.
+    This option should not be defined by the application. Only the BSP knows how
+    it allocates memory to the C Program Heap.
