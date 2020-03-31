@@ -37,6 +37,73 @@ NOTES:
     :ref:`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY` is also defined, then the
     memory is first dirtied and then zeroed.
 
+    See also :ref:`CONFIGURE_MALLOC_DIRTY`.
+
+.. index:: CONFIGURE_DISABLE_NEWLIB_REENTRANCY
+
+.. _CONFIGURE_DISABLE_NEWLIB_REENTRANCY:
+
+CONFIGURE_DISABLE_NEWLIB_REENTRANCY
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_DISABLE_NEWLIB_REENTRANCY``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the Newlib reentrancy
+    support per thread is disabled and a global reentrancy structure is used.
+
+NOTES:
+    You can enable this option to reduce the size of the :term:`TCB`.  Use this
+    option with care, since it can lead to race conditions and undefined system
+    behaviour.  For example, :c:data:`errno` is no longer a thread-local variable
+    if this option is enabled.
+
+.. index:: CONFIGURE_EXECUTIVE_RAM_SIZE
+
+.. _CONFIGURE_EXECUTIVE_RAM_SIZE:
+
+CONFIGURE_EXECUTIVE_RAM_SIZE
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_EXECUTIVE_RAM_SIZE``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    If this configuration option is undefined, then the RTEMS Workspace and task
+    stack space size is calculated by ``<rtems/confdefs.h>`` based on the values
+    configuration options.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to ``UINTPTR_MAX``.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+DESCRIPTION:
+    The value of this configuration option defines the RTEMS Workspace size in
+    bytes.
+
+NOTES:
+    This is an advanced configuration option.  Use it only if you know exactly
+    what you are doing.
+
 .. index:: CONFIGURE_EXTRA_TASK_STACKS
 .. index:: memory for task tasks
 
@@ -155,6 +222,34 @@ NOTES:
 
     In releases before RTEMS 5.1 the default value was
     :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of ``CPU_STACK_MINIMUM_SIZE``.
+
+.. index:: CONFIGURE_MALLOC_DIRTY
+
+.. _CONFIGURE_MALLOC_DIRTY:
+
+CONFIGURE_MALLOC_DIRTY
+----------------------
+
+CONSTANT:
+    ``CONFIGURE_MALLOC_DIRTY``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then each memory area returned
+    by C Program Heap allocator functions such as :c:func:`malloc` is dirtied
+    with a ``0xCF`` byte pattern before it is handed over to the application.
+
+NOTES:
+    The dirtying performed by this option is carried out for each successful
+    memory allocation from the C Program Heap in contrast to
+    :ref:`CONFIGURE_DIRTY_MEMORY` which dirties the memory only once during the
+    system initialization.
 
 .. index:: CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
 .. index:: maximum file descriptors

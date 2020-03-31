@@ -76,6 +76,33 @@ NOTES:
     See :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS` for an alternative
     placement of application device driver initializers.
 
+.. index:: CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
+--------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the ATA Driver is
+    initialized during system initialization.
+
+NOTES:
+    Most BSPs do not include support for an ATA Driver.
+
+    If this option is defined and the BSP does not have this device driver, then
+    the user will get a link time error for an undefined symbol.
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER:
@@ -174,6 +201,33 @@ DESCRIPTION:
 NOTES:
     Most BSPs do not include support for a Frame Buffer Driver. This is
     because many boards do not include the required hardware.
+
+    If this option is defined and the BSP does not have this device driver, then
+    the user will get a link time error for an undefined symbol.
+
+.. index:: CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
+
+.. _CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER:
+
+CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
+--------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the IDE Driver is
+    initialized during system initialization.
+
+NOTES:
+    Most BSPs do not include support for an IDE Driver.
 
     If this option is defined and the BSP does not have this device driver, then
     the user will get a link time error for an undefined symbol.
@@ -470,6 +524,33 @@ NOTES:
 
     See :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
     of application device driver initializers.
+
+.. index:: CONFIGURE_ATA_DRIVER_TASK_PRIORITY
+
+.. _CONFIGURE_ATA_DRIVER_TASK_PRIORITY:
+
+CONFIGURE_ATA_DRIVER_TASK_PRIORITY
+----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_ATA_DRIVER_TASK_PRIORITY``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is 140.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be a valid Classic API task
+    priority.  The set of valid task priorities is scheduler-specific.
+
+DESCRIPTION:
+    The value of this configuration option defines the ATA task priority.
+
+NOTES:
+    This configuration option is only evaluated if the configuration option
+    :ref:`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER` is defined.
 
 .. index:: CONFIGURE_MAXIMUM_DRIVERS
 

@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 2010 Gedare Bloom
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
@@ -27,6 +28,83 @@ you want for in your application.
 The pluggable scheduler interface also enables the user to provide their own
 scheduling algorithm.  If you choose to do this, you must define multiple
 configuration option.
+
+.. index:: CONFIGURE_CBS_MAXIMUM_SERVERS
+
+.. _CONFIGURE_CBS_MAXIMUM_SERVERS:
+
+CONFIGURE_CBS_MAXIMUM_SERVERS
+-----------------------------
+
+CONSTANT:
+    ``CONFIGURE_CBS_MAXIMUM_SERVERS``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is :ref:`CONFIGURE_MAXIMUM_TASKS`.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to ``SIZE_MAX``.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+DESCRIPTION:
+    The value of this configuration option defines the maximum number Constant
+    Bandwidth Servers that can be concurrently active.
+
+NOTES:
+    This configuration option is only evaluated if the configuration option
+    :ref:`CONFIGURE_SCHEDULER_CBS` is defined.
+
+.. index:: CONFIGURE_SCHEDULER_ASSIGNMENTS
+
+.. _CONFIGURE_SCHEDULER_ASSIGNMENTS:
+
+CONFIGURE_SCHEDULER_ASSIGNMENTS
+-------------------------------
+
+CONSTANT:
+    ``CONFIGURE_SCHEDULER_ASSIGNMENTS``
+
+OPTION TYPE:
+    This configuration option is an initializer define.
+
+DEFAULT VALUE:
+    The default value of this configuration option is computed so that the
+    default scheduler is assigned to each configured processor (up to 32).
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be a list of the following
+      macros:
+
+      * ``RTEMS_SCHEDULER_ASSIGN( processor_index, attributes )``
+
+      * :c:macro:`RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER`
+
+    * It shall be a list of exactly
+      :ref:`CONFIGURE_MAXIMUM_PROCESSORS` elements.
+
+DESCRIPTION:
+    The value of this configuration option is used to initialize the initial
+    scheduler to processor assignments.
+
+NOTES:
+    This configuration option is only evaluated in SMP configurations.
+
+    This is an advanced configuration option, see
+    :ref:`ConfigurationSchedulersClustered`.
 
 .. index:: CONFIGURE_SCHEDULER_CBS
 
@@ -345,6 +423,36 @@ NOTES:
     In case no explicit :ref:`clustered scheduler configuration
     <ConfigurationSchedulersClustered>` is present, then it is used as the
     scheduler for up to 32 processors.
+
+.. index:: CONFIGURE_SCHEDULER_STRONG_APA
+
+.. _CONFIGURE_SCHEDULER_STRONG_APA:
+
+CONFIGURE_SCHEDULER_STRONG_APA
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_SCHEDULER_STRONG_APA``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then Strong APA algorithm is
+    made available to the application.
+
+NOTES:
+    This scheduler configuration option is an advanced configuration option.
+    Think twice before you use it.
+
+    This scheduler algorithm is only available when RTEMS is built with SMP
+    support enabled.
+
+    This scheduler algorithm is not correctly implemented.  Do not use it.
 
 .. index:: CONFIGURE_SCHEDULER_USER
 

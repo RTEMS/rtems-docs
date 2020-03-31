@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Task Stack Allocator Configuration
@@ -113,3 +114,60 @@ NOTES:
     - :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
 
     - `CONFIGURE_TASK_STACK_DEALLOCATOR`
+
+.. index:: CONFIGURE_TASK_STACK_FROM_ALLOCATOR
+.. index:: task stack allocator
+
+.. _CONFIGURE_TASK_STACK_FROM_ALLOCATOR:
+
+CONFIGURE_TASK_STACK_FROM_ALLOCATOR
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_TASK_STACK_FROM_ALLOCATOR``
+
+OPTION TYPE:
+    This configuration option is an initializer define.
+
+DEFAULT VALUE:
+    The default value is a macro which supports the system heap allocator.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be defined to a macro which
+    accepts exactly one parameter and returns an unsigned integer.  The
+    parameter will be an allocation size and the macro shall return this size
+    plus the overhead of the allocator to manage an allocation request for this
+    size.
+
+DESCRIPTION:
+    The value of this configuration option is used to calculate the task stack
+    space size.
+
+NOTES:
+    This configuration option may be used if a custom task stack allocator is
+    configured, see :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`.
+
+.. index:: CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
+
+.. _CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE:
+
+CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
+------------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the system is informed
+    that the task stack allocator does not use the RTEMS Workspace.
+
+NOTES:
+    This configuration option may be used if a custom task stack allocator is
+    configured, see :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`.

@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Multiprocessing Configuration
@@ -37,6 +38,42 @@ DESCRIPTION:
 NOTES:
     This has no impact unless RTEMS was built with the
     ``--enable-multiprocessing`` build configuration option.
+
+.. index:: CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
+
+.. _CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK:
+
+CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
+-----------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to ``UINT32_MAX``.
+
+    * It shall be small enough so that the
+      MPCI receive server stack area calculation carried out by
+      ``<rtems/confdefs.h>`` does not overflow an integer of type ``size_t``.
+
+DESCRIPTION:
+    The value of this configuration option defines the number of bytes the
+    applications wishes to add to the MPCI task stack on top of
+    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 

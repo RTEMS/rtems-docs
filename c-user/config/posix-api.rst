@@ -235,6 +235,51 @@ NOTES:
     initialized with :c:func:`sem_init()` are not affected by this configuration
     option since the storage space for these semaphores is user-provided.
 
+.. index:: CONFIGURE_MAXIMUM_POSIX_SHMS
+
+.. _CONFIGURE_MAXIMUM_POSIX_SHMS:
+
+CONFIGURE_MAXIMUM_POSIX_SHMS
+----------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_POSIX_SHMS``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to 65535.
+
+    * It shall be less than or equal to a
+      BSP-specific and application-specific value which depends on the size of the
+      memory available to the application.
+
+    * It shall be small enough so that the
+      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
+      not overflow an integer of type ``uintptr_t``.
+
+    * It may be defined through
+      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
+      object class, if the value passed to :c:func:`rtems_resource_unlimited`
+      satisfies all other constraints of this configuration option.
+
+DESCRIPTION:
+    The value of this configuration option defines the maximum number of POSIX
+    API Shared Memory objects that can be concurrently active.
+
+NOTES:
+    This object class can be configured in unlimited allocation mode, see
+    :ref:`ConfigUnlimitedObjects`.
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
 
 .. _CONFIGURE_MAXIMUM_POSIX_THREADS:

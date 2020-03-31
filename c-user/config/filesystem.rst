@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Filesystem Configuration
@@ -73,6 +74,223 @@ NOTES:
     Filesystems shall be initialized to support file descriptor based device
     drivers and basic input/output functions such as :c:func:`printf`.
     Filesystems can be disabled to reduce the memory footprint of an application.
+
+.. index:: CONFIGURE_FILESYSTEM_ALL
+
+.. _CONFIGURE_FILESYSTEM_ALL:
+
+CONFIGURE_FILESYSTEM_ALL
+------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_ALL``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the following
+    configuration options will be defined as well
+
+    - :ref:`CONFIGURE_FILESYSTEM_DOSFS`,
+
+    - :ref:`CONFIGURE_FILESYSTEM_FTPFS`,
+
+    - :ref:`CONFIGURE_FILESYSTEM_IMFS`,
+
+    - :ref:`CONFIGURE_FILESYSTEM_JFFS2`,
+
+    - :ref:`CONFIGURE_FILESYSTEM_NFS`,
+
+    - :ref:`CONFIGURE_FILESYSTEM_RFS`, and
+
+    - :ref:`CONFIGURE_FILESYSTEM_TFTPFS`.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_FILESYSTEM_DOSFS
+
+.. _CONFIGURE_FILESYSTEM_DOSFS:
+
+CONFIGURE_FILESYSTEM_DOSFS
+--------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_DOSFS``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the DOS (FAT) filesystem
+    is registered, so that instances of this filesystem can be mounted by the
+    application.
+
+NOTES:
+    This filesystem requires a Block Device Cache configuration, see
+    :ref:`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`.
+
+.. index:: CONFIGURE_FILESYSTEM_FTPFS
+
+.. _CONFIGURE_FILESYSTEM_FTPFS:
+
+CONFIGURE_FILESYSTEM_FTPFS
+--------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_FTPFS``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the FTP filesystem (FTP
+    client) is registered, so that instances of this filesystem
+    can be mounted by the application.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_FILESYSTEM_IMFS
+
+.. _CONFIGURE_FILESYSTEM_IMFS:
+
+CONFIGURE_FILESYSTEM_IMFS
+-------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_IMFS``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the In-Memory Filesystem
+    (IMFS) is registered, so that instances of this filesystem can be mounted by
+    the application.
+
+NOTES:
+    Applications will rarely need this configuration option.  This configuration
+    option is intended for test programs.  You do not need to define this
+    configuration option for the base filesystem (also known as root filesystem).
+
+.. index:: CONFIGURE_FILESYSTEM_JFFS2
+
+.. _CONFIGURE_FILESYSTEM_JFFS2:
+
+CONFIGURE_FILESYSTEM_JFFS2
+--------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_JFFS2``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the JFFS2 filesystem
+    is registered, so that instances of this filesystem can be mounted by the
+    application.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_FILESYSTEM_NFS
+
+.. _CONFIGURE_FILESYSTEM_NFS:
+
+CONFIGURE_FILESYSTEM_NFS
+------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_NFS``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the Network Filesystem
+    (NFS) client is registered, so that instances of this filesystem can be
+    mounted by the application.
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_FILESYSTEM_RFS
+
+.. _CONFIGURE_FILESYSTEM_RFS:
+
+CONFIGURE_FILESYSTEM_RFS
+------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_RFS``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the RTEMS Filesystem (RFS)
+    is registered, so that instances of this filesystem can be mounted by the
+    application.
+
+NOTES:
+    This filesystem requires a Block Device Cache configuration, see
+    :ref:`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`.
+
+.. index:: CONFIGURE_FILESYSTEM_TFTPFS
+
+.. _CONFIGURE_FILESYSTEM_TFTPFS:
+
+CONFIGURE_FILESYSTEM_TFTPFS
+---------------------------
+
+CONSTANT:
+    ``CONFIGURE_FILESYSTEM_TFTPFS``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the TFTP filesystem (TFTP
+    client) is registered, so that instances of this filesystem can be mounted by
+    the application.
+
+NOTES:
+    None.
 
 .. index:: CONFIGURE_IMFS_DISABLE_CHMOD
 
@@ -166,6 +384,30 @@ DEFAULT CONFIGURATION:
 DESCRIPTION:
     In case this configuration option is defined, then the root IMFS does not
     support making files (no support for :c:func:`mknod`).
+
+NOTES:
+    None.
+
+.. index:: CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE
+
+.. _CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE:
+
+CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE
+-----------------------------------
+
+CONSTANT:
+    ``CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the root IMFS supports making
+    device files.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the root IMFS does not
+    support making device files.
 
 NOTES:
     None.
