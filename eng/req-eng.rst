@@ -934,9 +934,9 @@ program may be provided to place Doxygen markup in assembler files.  The
 software architecture is documented via Doxygen groups.  Each Doxygen group
 name should have a project-specific name and the name should be unique within
 the project, e.g.  RTEMSTopLevel\ MidLevel\ LowLevel.  The link from a Doxygen
-group to its parent group is realized through the `@ingroup` special command.
-The link from a Doxygen group or software component to the corresponding
-requirement is realized through a `@satisfy{req}`
+group to its parent group is realized through the ``@ingroup`` special command.
+The link from a Doxygen group or :term:`software component` to the
+corresponding requirement is realized through a ``@satisfy{req}``
 `custom command <http://www.doxygen.nl/manual/custcmd.html>`_
 which needs the identifier of the requirement as its one and only parameter.
 Only links to parents are explicitly given in the Doxygen markup.  The links

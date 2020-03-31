@@ -29,6 +29,12 @@ Glossary
     ASR
         An acronym for :term:`Asynchronous Signal Routine`.
 
+    assembler language
+        The assembler language is a programming language which can be translated very
+        easily into machine code and data.  For this project assembler languages are
+        restricted to languages accepted by the :term:`GNU` assembler
+        program for the target architectures.
+
     asynchronous
         Not related in order or timing to other occurrences in the system.
 
@@ -75,6 +81,10 @@ Glossary
 
     buffer
         A fixed length block of memory allocated from a partition.
+
+    C language
+        The C language for this project is defined in terms of
+        :term:`C11`.
 
     C++11
         The standard ISO/IEC 14882:2011.
@@ -177,6 +187,10 @@ Glossary
 
     EARS
         An acronym for Easy Approach to Requirements Syntax.
+
+    ELF
+        An acronym for
+        `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
 
     embedded
         An application that is delivered as a hidden part of a larger system.
@@ -303,6 +317,14 @@ Glossary
         A mask used to by the CPU to determine which pending interrupts should be
         serviced.  If a pending interrupt is below the current interrupt level,
         then the CPU does not recognize that interrupt.
+
+    interrupt service
+        An *interrupt service* consists of an
+        :term:`Interrupt Service Routine` which is called with a user
+        provided argument upon reception of an interrupt service request.  The
+        routine is invoked in interrupt context.  Interrupt service requests may have
+        a priority and an affinity to a set of processors.  An *interrupt service* is
+        a :term:`software component`.
 
     Interrupt Service Routine
         An ISR is invoked by the CPU to process a pending interrupt.
@@ -683,11 +705,53 @@ Glossary
         A real-time system in which a missed deadline does not compromise the
         integrity of the system.
 
+    software component
+        This term is defined by ECSS-E-ST-40C 3.2.28 as a "part of a software
+        system".  For this project a *software component* shall be any of the
+        following items and nothing else:
+
+        * :term:`software unit`
+
+        * explicitly defined :term:`ELF` symbol in a
+          :term:`source code` file
+
+        * :term:`assembler language` data in a source code file
+
+        * :term:`C language` object with static storage duration
+
+        * C language object with thread-local storage duration
+
+        * :term:`thread`
+
+        * :term:`interrupt service`
+
+        * collection of *software components* (this is a software architecture
+          element)
+
+        Please note that explicitly defined ELF symbols and assembler language
+        data are considered a software component only if they are defined in a
+        :term:`source code` file.  For example, this rules out symbols
+        and data generated as side-effects by the toolchain (compiler, assembler,
+        linker) such as jump tables, linker trampolines, exception frame information,
+        etc.
+
     software item
         This term has the same meaning as :term:`software product`.
 
     software product
         The *software product* is the :term:`RTEMS` real-time operating system.
+
+    software unit
+        This term is defined by ECSS-E-ST-40C 3.2.24 as a "separately compilable
+        piece of source code".  For this project a *software unit* shall be any of
+        the following items and nothing else:
+
+        * :term:`assembler language` function in a
+          :term:`source code` file
+
+        * :term:`C language` function (external and internal linkage)
+
+        A *software unit* is a :term:`software component`.
 
     source code
         This project uses the *source code* definition of the
@@ -729,12 +793,19 @@ Glossary
         An acronym for Test-And-Set.
 
     task
-        A logically complete thread of execution.  It consists normally of a set
-        of registers and a stack.  The scheduler assigns processors to a subset
-        of the ready tasks.  The terms task and thread are synonym in RTEMS.  The
-        term task is used throughout the Classic API, however, internally in the
-        operating system implementation and the POSIX API the term thread is
-        used.
+        This project uses the
+        `thread definition of Wikipedia <https://en.wikipedia.org/wiki/Thread_(computing)>`_:
+        "a thread of execution is the smallest sequence of programmed
+        instructions that can be managed independently by a scheduler, which is
+        typically a part of the operating system."
+
+        It consists normally of a set of registers and a stack.  The scheduler
+        assigns processors to a subset of the ready tasks.  The terms task and
+        :term:`thread` are synonym in RTEMS.  The term task is used
+        throughout the Classic API, however, internally in the operating system
+        implementation and the POSIX API the term thread is used.
+
+        A *task* is a :term:`software component`.
 
     Task Control Block
         A data structure associated with each task used by RTEMS to manage that
