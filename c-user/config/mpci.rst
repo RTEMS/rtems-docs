@@ -36,8 +36,10 @@ DESCRIPTION:
     options are assumed to be provided.
 
 NOTES:
-    This has no impact unless RTEMS was built with the
-    ``--enable-multiprocessing`` build configuration option.
+    This configuration option shall be undefined if the multiprocessing support
+    is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
+    build configuration option).  Otherwise a compile time error in the
+    configuration file will occur.
 
 .. index:: CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 
@@ -73,7 +75,8 @@ DESCRIPTION:
     :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
 NOTES:
-    None.
+    This configuration option is only evaluated if
+    :ref:`CONFIGURE_MP_APPLICATION` is defined.
 
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 
@@ -103,6 +106,9 @@ NOTES:
     This value corresponds to the total number of objects which can be created
     with the ``RTEMS_GLOBAL`` attribute.
 
+    This configuration option is only evaluated if
+    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+
 .. index:: CONFIGURE_MP_MAXIMUM_NODES
 
 .. _CONFIGURE_MP_MAXIMUM_NODES:
@@ -128,7 +134,8 @@ DESCRIPTION:
     a multiprocessor system.
 
 NOTES:
-    None.
+    This configuration option is only evaluated if
+    :ref:`CONFIGURE_MP_APPLICATION` is defined.
 
 .. index:: CONFIGURE_MP_MAXIMUM_PROXIES
 
@@ -161,6 +168,9 @@ NOTES:
     remote tasks/threads which can be blocked on objects on this node, see
     :ref:`MPCIProxies`.
 
+    This configuration option is only evaluated if
+    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+
 .. index:: CONFIGURE_MP_MPCI_TABLE_POINTER
 
 .. _CONFIGURE_MP_MPCI_TABLE_POINTER:
@@ -189,6 +199,9 @@ NOTES:
     RTEMS provides a Shared Memory MPCI Device Driver which can be used on any
     Multiprocessor System assuming the BSP provides the proper set of
     supporting methods.
+
+    This configuration option is only evaluated if
+    :ref:`CONFIGURE_MP_APPLICATION` is defined.
 
 .. index:: CONFIGURE_MP_NODE_NUMBER
 
@@ -219,3 +232,6 @@ NOTES:
     the Makefile variable ``NODE_NUMBER``. The same code is compiled with the
     ``NODE_NUMBER`` set to different values. The test programs behave
     differently based upon their node number.
+
+    This configuration option is only evaluated if
+    :ref:`CONFIGURE_MP_APPLICATION` is defined.

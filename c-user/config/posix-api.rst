@@ -176,6 +176,11 @@ VALUE CONSTRAINTS:
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
       not overflow an integer of type ``uintptr_t``.
 
+    * It shall be zero if the POSIX API is not
+      enabled (e.g. RTEMS was built without the ``--enable-posix`` build
+      configuration option).  Otherwise a compile time error in the configuration
+      file will occur.
+
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
     API Queued Signals that can be concurrently active.
@@ -365,6 +370,11 @@ VALUE CONSTRAINTS:
       :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
       object class, if the value passed to :c:func:`rtems_resource_unlimited`
       satisfies all other constraints of this configuration option.
+
+    * It shall be zero if the POSIX API is not
+      enabled (e.g. RTEMS was built without the ``--enable-posix`` build
+      configuration option).  Otherwise a compile time error in the configuration
+      file will occur.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX

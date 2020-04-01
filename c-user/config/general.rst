@@ -375,8 +375,11 @@ DESCRIPTION:
 
 NOTES:
     If there are more processors available than configured, the rest will be
-    ignored.  In uniprocessor configuration, this configuration define is
     ignored.
+
+    This configuration option is only evaluated in SMP configurations (e.g. RTEMS
+    was built with the ``--enable-smp`` build configuration option).  In all
+    other configurations it has no effect.
 
 .. index:: CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 .. index:: maximum thread name size
