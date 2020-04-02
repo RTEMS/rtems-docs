@@ -14,6 +14,7 @@ applications on top of RTEMS.
 
 .. toctree::
 
+    gsoc
     preparation
     prefixes
     sources
