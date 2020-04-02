@@ -154,7 +154,7 @@ Patches are added to a component's name and in the ``%prep:`` section the
 patches can be set up, meaning they are applied to source. The patches are
 applied in the order they are added. If there is a dependency make sure you
 order the patches correctly when you add them. You can add any number of
-patches and the RSB will handle them efficently.
+patches and the RSB will handle them efficiently.
 
 Patches can have options. These are added before the patch URL. If no options
 are provided the patch's setup default options are used.

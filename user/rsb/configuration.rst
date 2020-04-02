@@ -181,7 +181,7 @@ errors that can arise.
 
 The protocol option lets you set a specific protocol. The ``git://`` prefix
 used by the RSB to select a git repository can be removed using *none* or
-replaced with one of the standard git protcols.
+replaced with one of the standard git protocols.
 
 CVS
 ~~~
@@ -315,7 +315,7 @@ Maps are declared anywhere in the map using the map directive:
 
   1. The map is set to ``my-special-map``.
 
-Any macro defintions following a map declaration are placed in that map and the
+Any macro definitions following a map declaration are placed in that map and the
 default map is ``global`` when loading a file. Maps are selected in
 configuration files by using the ``%select`` directive:
 
@@ -328,7 +328,7 @@ if present return that value else the ``global`` map is used. Any new macros or
 changes update only the ``global`` map. This may change in future releases so
 please make sure you use the ``override`` attribute.
 
-The macro files specificed on the command line are looked for in the
+The macro files specified on the command line are looked for in the
 ``_configdir`` paths. See <<X1,``_configdir``>> variable for details. Included
 files need to add the ``%{_configdir}`` macro to the start of the file.
 
@@ -636,8 +636,8 @@ source packages based on the outer configuration options:
 The remainder of the script is broken in to the various phases of a build. They
 are:
 
-. Preperation
-. Bulding
+. Preparation
+. Building
 . Installing, and
 . Cleaning
 
@@ -799,8 +799,8 @@ To build this you can use something similar to:
 
 The build is for a FreeBSD host and the prefix is for user installed
 packages. In this example I cannot let the source builder perform the install
-because I never run the RSB with root priviledges so a build set or bset tar
-file is created. This can then be installed using root priviledges.
+because I never run the RSB with root privileges so a build set or bset tar
+file is created. This can then be installed using root privileges.
 
 The command also supplies the ``--trace`` option. The output in the log file
 will contain all the macros.

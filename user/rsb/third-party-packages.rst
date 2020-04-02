@@ -133,7 +133,7 @@ A custom RTEMS patch to an executate's source code can turn it into a function
 that can be called by the RTEMS shell. Users can call the function in their
 executables simulating the running of the package's command. If the package
 does not export the code in a suitable manner please contact the project's
-commuinity and see if you can work with them to provide a way for the code to
+community and see if you can work with them to provide a way for the code to
 be exported. This may be difficult because exporting internal headers and
 functions opens the project up to API compatibility issues they did not have
 before. In the simplest case attempting to get the code into a static library

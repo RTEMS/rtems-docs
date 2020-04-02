@@ -37,7 +37,7 @@ To build the Curl package for RTEMS you enter the RSB command:
 
   2. The ``--host`` command is the RTEMS architecture and version.
 
-  3. The BSP is built and installed in the prefix. The arhcitecture must match
+  3. The BSP is built and installed in the prefix. The architecture must match
      the ``--host`` architecture.
 
 .. note: Installing Into Different Directories
