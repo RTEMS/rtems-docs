@@ -21,7 +21,7 @@ subsections under :ref:`Quick Start <QuickStart>` chapter or ask on the
 :r:list:`devel`.
 
 You will be best served by using a GNU/Linux environment, which could be in a
-virtual machine, for example that uses `​Virtualbox <https://www.virtualbox.org/>`_
+virtual machine, for example that uses `Virtualbox <https://www.virtualbox.org/>`_
 and should run on most modern desktop systems. You should also be able to work
 with a MacOS or Windows system, but might encounter more difficulty than a *nix
 environment.
@@ -129,4 +129,4 @@ Here are a few pointers to keep in mind while creating the patches.
 * Avoid trailing whitespace errors.
 * The author name of the patch is your full name.
 * The author email of the patch is your valid email address.
-* Ensure that your patch builds before sending them for review.
+* Ensure that your patches build before sending them for review.
