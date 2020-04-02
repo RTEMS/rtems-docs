@@ -16,6 +16,7 @@ Software Development Management
     vc-users
     vc-authors
     coding
+    doc-guide
     python-devel
     change-management
     issue-tracking

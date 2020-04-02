@@ -151,50 +151,6 @@ In general, ``<rtems/confdefs.h>`` is very accurate when given enough
 information.  However, it is quite easy to use a library and forget to account
 for its resources.
 
-Format to be followed for making changes in this file
-=====================================================
-
-MACRO NAME:
-  Should be alphanumeric. Can have '_' (underscore).
-
-DATA TYPE:
-  Please refer to all existing formats.
-
-RANGE:
-  The range depends on the Data Type of the macro.
-
-  - If the data type is of type task priority, then its value should be an
-    integer in the range of 1 to 255.
-
-  - If the data type is an integer, then it can have numbers, characters (in
-    case the value is defined using another macro) and arithmetic operations
-    (+, -, \*, /).
-
-  - If the data type is a function pointer the first character should be an
-    alphabet or an underscore. The rest of the string can be alphanumeric.
-
-  - If the data type is RTEMS Attributes or RTEMS Mode then the string should
-    be alphanumeric.
-
-  - If the data type is RTEMS NAME then the value should be an integer>=0 or
-    ``RTEMS_BUILD_NAME( 'U', 'I', '1', ' ' )``
-
-DEFAULT VALUE:
-  The default value should be in the following formats- Please note that the
-  '.' (full stop) is necessary.
-
-  - In case the value is not defined then: This is not defined by default.
-
-  - If we know the default value then: The default value is XXX.
-
-  - If the default value is BSP Specific then: This option is BSP specific.
-
-DESCRIPTION:
-  The description of the macro. (No specific format)
-
-NOTES:
-  Any further notes. (No specific format)
-
 Configuration Example
 =====================
 
