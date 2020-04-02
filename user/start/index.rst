@@ -14,7 +14,6 @@ applications on top of RTEMS.
 
 .. toctree::
 
-    gsoc
     preparation
     prefixes
     sources
@@ -24,3 +23,4 @@ applications on top of RTEMS.
     bsp-test
     app
     rsb-packages
+    gsoc
