@@ -193,6 +193,7 @@ latex_elements = {
 \newcommand{\rtemscopyright}{%s}
 \usepackage{rtemsstyle}
 ''' % (copyright),
+    'maketitle': r'\rtemsmaketitle',
     'parsedliteralwraps': True,
 }
 
