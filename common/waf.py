@@ -87,6 +87,9 @@ class linkcheck(BuildContext):
 def check_sphinx_version(ctx, minver):
     try:
         import sphinx
+    except:
+        ctx.fatal('no sphinx support found; please install')
+    try:
         # sphinx.version_info was introduced in sphinx ver 1.2
         version = sphinx.version_info
         # version looks like (1, 7, 0, 'final', 0))
