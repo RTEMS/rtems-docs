@@ -286,6 +286,7 @@ Arch Linux
 Sphinx:
 
   # pacman -S python-sphinx
+  # pacman -S python-sphinxcontrib-bibtex
 
 PDF:
 
