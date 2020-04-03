@@ -101,6 +101,26 @@ command.
 
 Please add your host as you set it up.
 
+The best environment to use is `virtualenv`. It can create a specific python
+environment using `pip`.
+
+Virtualenv
+~~~~~~~~~~
+
+Create a directory to house the virtualenv, create the envrionment and the
+activate it:
+
+  $ mkdir sphinx
+  $ virtualenv sphinx
+  $ . ./sphinx/bin/activate
+
+The prompt will now change. You can install Sphinx with:
+
+  $ pip install sphinx
+  $ pip install sphinxcontrib-bibtex
+
+When you have finished you enter `deactivate`.
+
 Sphinx Per User Install
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -190,7 +210,7 @@ Python 3:
 
 By default, CentOS 7 has Python 2.x. Luckily they now have Software
 Collections which lets you install and use a "collection" of newer
-software. As root, 
+software. As root,
 
   # yum install centos-release-scl
   # yum install rh-python36
