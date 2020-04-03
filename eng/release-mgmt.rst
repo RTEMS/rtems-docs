@@ -7,11 +7,9 @@
 Software Release Management
 ***************************
 
-TBD write content
-
-
 .. COMMENT: Subsections
 .. toctree::
 
+    release-process
     change-reports
     vdd-generation
