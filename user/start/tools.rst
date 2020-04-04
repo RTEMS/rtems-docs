@@ -3,6 +3,7 @@
 .. Copyright (C) 2019 embedded brains GmbH
 .. Copyright (C) 2019 Sebastian Huber
 .. Copyright (C) 2020 Chris Johns
+.. Copyright (C) 2020 Utkarsh Rai
 
 .. _QuickStartTools:
 
@@ -76,3 +77,35 @@ source code used.
 
 
 Add ``--verbose`` to the GCC command for the the verbose version details.
+
+Need for RTEMS-Specific Cross-Compiler
+---------------------------------------------------------
+
+New users are often confused as to why they cannot use their distribution's
+cross-compiler for their target on rtems, e.g., the riscv64-linux-gnu or the
+arm-none-eabi-gcc on RTEMS. Below mentioned are some of the reasons for using
+the RTEMS cross-compiler.
+
+ Correct configuration of Newlib
+     Newlib is a C standard library implementation intended for use on embedded
+     systems. Most of the POSIX and libc support for RTEMS is derived from
+     Newlib. The RTEMS cross-compiler configures Newlib correctly for RTEMS.
+
+ Threading in GCC support libraries
+     Several threading packages in GCC such as Go threads (libgo), OpenMP
+     (libgomp), and OpenACC need to be customized according to RTEMS. This is
+     done by the RTEMS specific cross-compiler.
+
+ Provide preprocessor define __rtems__
+     The  ``__rtems__``  preprocessor define is used to provide conditional code
+     compilation in source files that are shared with other projects e.g. in
+     Newlib or imported code from FreeBSD.
+
+ Multilib variants to match the BSP
+     RTEMS configures GCC to create separate runtime libraries for each
+     supported instruction set, floating point unit, vector unit, word size
+     (e.g. 32-bit and 64-bit), endianness, ABI, processor errata workarounds,
+     and so on in the architecture. These libraries are termed as :ref:`Multilib
+     <TargetArchitectures>` variants. Multilib variants to match the BSP are set
+     by selecting a specific set of machine options using the RTEMS
+     cross-compiler.
