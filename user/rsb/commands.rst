@@ -199,22 +199,22 @@ The ``arguments`` are a list of build sets to build.
   Path to the configuration directory. This overrides the built in defaults.
 
 ``--builddir path``:
-  Path to the build directory. This overrides the default of +build+.
+  Path to the build directory. This overrides the default of `build`.
 
 ``--sourcedir path``:
-  Path to the source directory. This overrides the default of +source+.
+  Path to the source directory. This overrides the default of `source`.
 
 ``--patchdir path``:
-  Path to the patches directory. This overrides the default of +patches+.
+  Path to the patches directory. This overrides the default of `patches`.
 
 ``--tmppath path``:
-  Path to the temporary directory. This overrides the default of +tmp+.
+  Path to the temporary directory. This overrides the default of `tmp`.
 
 ``--macros files``:
   Macro files to load. The configuration directory path is searched.
 
 ``--log file``:
-  Log all the output from the build process. The output is directed to +stdout+
+  Log all the output from the build process. The output is directed to `stdout`
   if no log file is provided.
 
 ``--url url``:

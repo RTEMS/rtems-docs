@@ -972,10 +972,10 @@ expansions supported are:
 %prep
 ~~~~~
 
-The +%prep+ macro starts a block that continues until the next block macro. The
+The `%prep` macro starts a block that continues until the next block macro. The
 *prep* or preparation block defines the setup of the package's source and is a
 mix of RTEMS Source Builder macros and shell scripting. The sequence is
-typically +%source+ macros for source, +%patch+ macros to patch the source
+typically `%source` macros for source, `%patch` macros to patch the source
 mixed with some shell commands to correct any source issues:
 
 .. code-block:: spec
@@ -999,7 +999,7 @@ example:
 
 This URL is the primary location of the GNU GDB source code and the RTEMS
 Source Builder can download the file from this location and by inspecting the
-file extension use ``bzip2`` decompression with +tar+. When the ``%prep``
+file extension use ``bzip2`` decompression with `tar`. When the ``%prep``
 section is processed a check of the local ``source`` directory is made to see
 if the file has already been downloaded. If not found in the source cache
 directory the package is downloaded from the URL. You can append other base
@@ -1040,9 +1040,9 @@ and set up with:
 
 Patching also occurs during the preparation stage. Patches are handled in a
 similar way to the source packages except you only ``add`` patches. Patches are
-applied using the +setup+ command. The +setup+ command takes the default patch
+applied using the `setup` command. The `setup` command takes the default patch
 option. You can provide options with each patch by adding them as arguments
-before the patch URL. Patches with no options uses the +setup+ default.
+before the patch URL. Patches with no options uses the `setup` default.
 
 .. code-block:: spec
 
