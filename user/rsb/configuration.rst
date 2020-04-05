@@ -113,8 +113,8 @@ supported compression formats are:
 ``zip``:
   ZIP
 
-``xy``:
-  XY
+``xz``:
+  XZ
 
 The output of the decompression tool is fed to the standard ``tar`` utility if
 not a ZIP file and unpacked into the build directory. ZIP files are unpacked by
