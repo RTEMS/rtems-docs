@@ -82,8 +82,8 @@ Need for RTEMS-Specific Cross-Compiler
 ---------------------------------------------------------
 
 New users are often confused as to why they cannot use their distribution's
-cross-compiler for their target on rtems, e.g., the riscv64-linux-gnu or the
-arm-none-eabi-gcc on RTEMS. Below mentioned are some of the reasons for using
+cross-compiler for their target on RTEMS, e.g., the riscv64-linux-gnu or the
+arm-none-eabi-gcc. Below mentioned are some of the reasons for using
 the RTEMS cross-compiler.
 
  Correct configuration of Newlib
