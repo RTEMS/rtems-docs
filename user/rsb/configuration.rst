@@ -329,8 +329,9 @@ changes update only the ``global`` map. This may change in future releases so
 please make sure you use the ``override`` attribute.
 
 The macro files specified on the command line are looked for in the
-``_configdir`` paths. See <<X1,``_configdir``>> variable for details. Included
-files need to add the ``%{_configdir}`` macro to the start of the file.
+``_configdir`` paths. See the definition of ``_configdir`` in
+:ref:`Configuration` for details. Included files need to add the
+``%{_configdir}`` macro to the start of the file.
 
 Macro map files can include other macro map files using the ``%include``
 directive. The macro map to build *binutils*, *gcc*, *newlib*, *gdb* and
