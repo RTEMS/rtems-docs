@@ -10,26 +10,25 @@ RTEMS Tester and Run
 .. index:: Tools, rtems-test, rtems-run
 
 The RTEMS Tester is a test tool that provides a command line interface to run
-test executable on supported targets. The tool provides back-end support for
+test executables on supported targets. The tool provides back end support for
 common simulators, debuggers and boot loaders. Board support package (BSP)
 configurations for RTEMS are provided and can be used to run all the tests in
-the RTEMS test suite. The tool and it's framework is not specific to RTEMS and
+the RTEMS test suite. The tool and its framework is not specific to RTEMS and
 can be configured to run any suitable application.
 
 RTEMS is an embedded operating system and is cross-compiled on a range of host
-machines. The executables run on the target hardware and this can vary widely
-from open source simulators, commercial simulators, debuggers with simulators,
-debuggers with hardware specific pods and devices to targe boot
-loaders. Testing RTEMS requires the cross-compiled test executable is
-transferred to the target hardware, executed and the output captured and
-returned to the test host where it is analyzed to determine the test
-result.
+machines. The executables run on hardware which can vary widely from open
+source simulators, commercial simulators, debuggers with simulators, debuggers
+with hardware specific pods and devices, and targets with boot loaders.
+Testing RTEMS requires that the cross-compiled test executable is transferred
+to the target hardware, executed, the output captured and returned to the test
+host where it is analyzed to determine the test result.
 
 Running the RTEMS tests on your target is very important. It provides you with
 a traceable record showing that your RTEMS version and its tools are working at
 the level the RTEMS development team expect when releasing RTEMS. Being able to
-easily run the tests and verify the results is critical in maintaining a high
-standard.
+easily run the tests and verify the results is critical in maintaining high
+standards.
 
 Available BSP testers
 ---------------------
@@ -62,11 +61,11 @@ You can list the available BSP testers with:
           project.
 
 Some of the BSPs may appear more than once in the list. These are aliased BSP
-configurations that may use a different back-end. An example is the erc32 BSP.
-There is the ``erc32`` tester which uses the GDB back-end and the
-``erc32-run`` tester which uses the ``run`` command for erc32. We will show
-how to use :program:`rtems-test` command with the erc32 BSP because it is easy
-to build an use.
+configurations that may use a different back end. An example is the erc32 BSP.
+There is the erc32 tester which uses the GDB back end and the ``erc32-run``
+tester which uses the ``run`` command for erc32. We will show how to use
+:program:`rtems-test` command with the erc32 BSP because it is easy to build
+and use.
 
 .. _BuildingRTEMSTests:
 
@@ -84,19 +83,20 @@ configure after running ``bootstrap``.
                         --enable-tests --enable-rtemsbsp=erc32
     $ make
 
-Add the `-j` option to the make command with the number of cores to run a
-parallel build.
+Add the `-j` option to the make command with the number of parallel jobs to run a
+parallel build (e.g. `-j 8`).
 
 Building all the tests takes time and it uses more disk so be patient. When
-finished all the tests will have been built. Some BSPs may require a post-build
-process to be run on the RTEMS ELF executable to create an image suitable for
-execution. This can be built into the configuration script and the tester will
-perform a pre-test command to covert the executable to a suitable format for
-your target.
+make finishes, all the tests will have been built.
+
+.. note:: Some BSPs may require a post-build process to be run on the RTEMS ELF
+          executable to create an image suitable for execution. This can be built
+          into the configuration script and the tester will perform a pre-test
+          command to convert the executable to a suitable format for your target.
 
 Before running all the tests it is a good idea to run the ``hello`` test. The
-``hello`` test is an RTEMS version of the classic Hello World example and
-running it shows you have a working tool chain and build of RTEMS ready to run
+``hello`` test is an RTEMS version of the classic "Hello World" example and
+running it shows you have a working toolchain and build of RTEMS ready to run
 the tests. Using the run with the ERC32 BSP the command is:
 
 .. code-block:: none
@@ -145,14 +145,14 @@ Running the example using SIS:
 
     sis> q
 
-The examples can also be run using GDB with SIS as the backend. SIS can be connected to
+The examples can also be run using GDB with SIS as the back end. SIS can be connected to
 gdb through a network socket using the gdb remote interface.
 
 Either start SIS with ``-gdb``, or issue the ``gdb`` command inside SIS, and connect
 gdb with ``target remote:1234``. The default port is ``1234``, the port can be changed
 using the ``-port`` option.
 
-Open a terminal and issue the command:
+Open a terminal and issue the following command:
 
 .. code-block:: none
 
@@ -163,7 +163,7 @@ Open a terminal and issue the command:
 
     gdb: listening on port 1234
 
-Now open another terminal and issue the command:
+Now open another terminal and issue the following command:
 
 .. code-block:: none
 
@@ -187,7 +187,7 @@ Now open another terminal and issue the command:
     (gdb) target remote:1234
 
 The ``target remote:1234`` will tell gdb to connect to the sis simulator. After this
-command the output of the first terminal will change to
+command the output of the first terminal will change to:
 
 .. code-block:: none
 
@@ -199,7 +199,7 @@ command the output of the first terminal will change to
     gdb: listening on port 1234 connected
 
 Before running the executable, it must be loaded, this is done using the
-``load`` command in gdb, and to run, issue ``continue`` command.
+``load`` command in gdb, and to run it, issue the ``continue`` command.
 
 .. code-block:: none
 
@@ -269,11 +269,11 @@ Running the Tests
 -----------------
 
 The :program:`rtems-test` command line accepts a range of options. These are
-discussed later in the manual. Any command line argument without a `--` prefix
-is a test executable. You can pass more than one executable on the command
-line. If the executable is a path to a directory the directories under that
-path are searched for any file with a ``.exe`` extension. This is the default
-extension for RTEMS executables built within RTEMS.
+discussed later in the manual. Command line arguments without a `--` prefix are
+test executables or paths to directories. When using a path to a directory,
+the directories under that path are searched for any file with a ``.exe`` extension.
+This is the default extension for RTEMS executables built within RTEMS. You can
+pass more than one executable on the command line.
 
 To run the erc32 tests enter the following command from the top of the erc32
 BSP build tree:
@@ -311,24 +311,26 @@ BSP build tree:
     Average test time: 0:00:27.963000
     Testing time     : 0:06:03.519012
 
+The output has been shortened so it fits nicely here. Following the order of
+appearance above, we have the following:
+
 * The RTEMS Tester's test command. In this example we are using an absolute
   path.
 * The ``--log`` option sends the output to a log file. By default only failed
   tests log the complete output.
-* Select the erc32 BSP and use GDB.
-* Path to the RTEMS tools so GDB can be found.
-* Path to the erc32 BSP built with all tests to run. If you add subdirectories
+* The ``--rtems-bsp`` option selects the erc32 BSP.
+* The path to the RTEMS tools so GDB can be found.
+* The path to the erc32 BSP tests to run. If you add subdirectories
   to the path specific tests can be run.
-* The output has been shortened so it fits nicely here.
-* The test results shows passes, fails, timeouts, and invalid results. In
-  this run 13 tests passed and 5 tests timed out and 1 is invalid. The
-  timeouts are probably due to the tests not having enough execute time to
-  complete. The default timeout is 180 seconds and some of the interrupt tests
-  need longer. The amount of time depends on the performance of your host CPU
-  running the simulations.
-* The output shows the average time per test and the total time taken to run
-  all the tests.
-* If the path to the testsuites was put to
+* The test results so far. See details below.
+* Overall results of the run. In this run, 13 tests passed, 5 tests timed out
+  and 1 is invalid. The timeouts are probably due to the tests not having enough
+  time to complete. The default timeout is 180 seconds and some of the interrupt
+  tests need more time. The amount of time each test takes depends on the
+  performance of your host CPU when running the simulations.
+* The average time per test and the total time taken to run all the tests.
+
+.. note:: If the path to the testsuites was set to
   ``sparc-rtems5/c/erc32/testsuites`` instead of
   ``sparc-rtems5/c/erc32/testsuites/samples`` then all the executables
   would have been tested and not just those in samples.
@@ -336,33 +338,37 @@ BSP build tree:
 This BSP requires the ``--rtems-tools`` option because the SPARC GDB is the
 ``sparc-rtems4.11-gdb`` command that is part of the RTEMS tools. Not every BSP
 will require this option so you will need to check the specifics of the BSP
-configuration to determine if it is needed.
+configuration you are using in order to determine if it is needed.
 
-The output you see is each test starting to run. The :program:`rtems-test`
+An output line is printed for each test that is executed. The :program:`rtems-test`
 command by default runs multiple tests in parallel so you will see a number
-start quickly and then new tests start as others finish. The output shown here
-is from an 8 core processor so the first 8 are started in parallel and the
-status shows the order in which they actually started, which is not 1 to 8.
+of tests starting quickly and then new tests start as others finish. For example,
+the output shown above is from an 8-core processor. Thus, the first 8 tests
+started in parallel and the status shows the order in which they actually started,
+which is not necessarily sequential, as it happens in the example above where
+test 8 started before test 7.
 
-The test start line shows the current status of the tests. The status reported
-is when the test starts and not the result of that test. A fail, timeout or
-invalid count changing means a test running before this test started failed,
-not the starting test. The status here has 7 tests passed, no failures, 5
-timeouts and 1 invalid test.
+Each output line shows information about the current status of the tests.
+The status reported in each line is the status when the test starts and not the
+result of that particular test. Thus, a fail, timeout or invalid count changing
+means a test running before this test failed. The overall status in the end
+shows that 7 tests passed, no failures, 5 timeouts and 1 invalid test.
+
+Concerning the output of each line, we have the following:
 
 .. code-block:: none
 
     [ 5/13] p:2  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: hello.exe
 
-* [ 5/13] indicates the test number, in this case test 5 of 13 tests.
-* ``p`` is the passed test count (2 in this case)
-* ``f`` is the failed test count (0 in this case)
-* ``u`` is the count for test marked as "user-input" as they expect input from
-  user
-* ``e`` is the expected-fail count (tests that are expected to fail)
-* ``I`` is the count for tests the results of which are indeterminate
-* ``B`` is the count for benchmarked tests
-* ``t`` is the timeout test count
+* [ 5/13] indicates the test number, in this case test 5 out of 13 tests.
+* ``p`` is the passed test count (2 in this case).
+* ``f`` is the failed test count (0 in this case).
+* ``u`` is the count for test marked as "user-input" (tests that expect input
+    from the user).
+* ``e`` is the expected-fail count (tests that are expected to fail).
+* ``I`` is the count for tests the results of which are indeterminate.
+* ``B`` is the count for benchmarked tests.
+* ``t`` is the timeout test count.
 * ``i`` is the invalid test count.
 * ``sparc/erc32`` is the architecture and BSP names.
 * ``hello.exe`` is the executable name.
@@ -371,11 +377,11 @@ The test log records all the tests and results. The logging mode by default
 only provides the output history if a test fails, times out, or is invalid. The
 time taken by each test is also recorded.
 
-The tests must complete in a specified time or the test is marked as timed
-out. The default timeout is 3 minutes and can be globally changed using the
+The tests must complete in a specified period of time or the test is marked as
+timed out. The default timeout is 3 minutes and can be globally changed using the
 ``--timeout`` command line option. The time required to complete a test can
-vary. When simulators are run in parallel the time taken depends on the
-specifics of the host machine being used. A test per core is the most stable
+vary. When simulators are run in parallel, the time taken depends on the resources
+available on the host machine being used. A test per core is the most stable
 method even though more tests can be run than available cores. If your machine
 needs longer or you are using a VM you may need to lengthen the timeout.
 
@@ -408,7 +414,7 @@ A test fails if the start marker is seen and there is no end marker.
 
 User-input
 ^^^^^^^^^^
-A test marked as "user-input" as it expects input from user
+A test marked as "user-input" as it expects input from user.
 
 Expected-fail
 ^^^^^^^^^^^^^
@@ -442,7 +448,7 @@ The following modes of logging are available:
 * Failures (``failures``)
 * None (``none``)
 
-The mode is controlled using the command line option ``--log-mode`` using
+This mode is controlled using the command line option ``--log-mode`` using
 the values listed above.
 
 All
@@ -530,19 +536,19 @@ Reporting
 ---------
 
 The RTEMS Tester supports output in a machine parsable format. This can be
-enabled using the options "--report-path" and "--report-format". Currently,
+enabled using the options ``--report-path`` and ``--report-format``. Currently,
 JSON output is supported using these options like so:
-'--report-path="report" --report-format=json'
+``--report-path="report" --report-format=json``
 
-This will produce a file "report.json" that contains output equivalent to the
-"failure" logging mode.
+This will produce a file ``report.json`` that contains output equivalent to the
+``failure`` logging mode.
 
 Running Tests in Parallel
 -------------------------
 
 The RTEMS Tester supports parallel execution of tests by default. This only
-makes sense if the test back-end can run in parallel without resulting in
-resource contention. Simulators are an example of back-ends that can run in
+makes sense if the test back end can run in parallel without resulting in
+resource contention. Simulators are an example of back ends that can run in
 parallel. A hardware debug tool like a BDM or JTAG pod can manage only a
 single test at once so the tests need to be run one at a time.
 
@@ -554,7 +560,7 @@ Command Line Help
 -----------------
 
 The :program:`rtems-test` command line accepts a range of options. You can
-review the available option by the ``--help`` option:
+review the available options by using the ``--help`` option:
 
 .. code-block:: none
 
@@ -580,3 +586,7 @@ review the available option by the ``--help`` option:
     --timeout                    : Set the test timeout in seconds (default 180 seconds)
     --trace                      : Trace the execution
     --warn-all                   : Generate warnings
+
+.. note:: The list of options may be different for each release. For more
+          information, please see the available options for the release
+          you are using.
