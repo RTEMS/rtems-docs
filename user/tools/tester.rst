@@ -97,19 +97,7 @@ make finishes, all the tests will have been built.
 Before running all the tests it is a good idea to run the ``hello`` test. The
 ``hello`` test is an RTEMS version of the classic "Hello World" example and
 running it shows you have a working toolchain and build of RTEMS ready to run
-the tests. Using the run with the ERC32 BSP the command is:
-
-.. code-block:: none
-
-    $ sparc-rtems5-run sparc-rtems5/c/erc32/testsuites/samples/hello/hello.exe
-
-    *** BEGIN OF TEST HELLO WORLD ***
-    Hello World
-    *** END OF TEST HELLO WORLD ***
-
-The run command is the GDB simulator without the GDB part.
-
-Running the example using SIS:
+the tests. Running the example using SIS:
 
 .. code-block:: none
 
