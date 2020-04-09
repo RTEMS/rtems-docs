@@ -280,7 +280,6 @@ BSP build tree:
     $ ~/development/rtems/test/rtems-tools.git/tester/rtems-test \
              --log=log_erc32_run \
              --rtems-bsp=erc32-run \
-             --rtems-tools=$HOME/development/rtems/5 \
                  sparc-rtems5/c/erc32/testsuites/samples
     RTEMS Testing - Tester, 5.not_released
     [ 1/13] p:0  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: base_sp.exe
@@ -316,7 +315,6 @@ appearance above, we have the following:
 * The ``--log`` option sends the output to a log file. By default only failed
   tests log the complete output.
 * The ``--rtems-bsp`` option selects the erc32 BSP.
-* The path to the RTEMS tools so GDB can be found.
 * The path to the erc32 BSP tests to run. If you add subdirectories
   to the path specific tests can be run.
 * The test results so far. See details below.
@@ -332,10 +330,14 @@ appearance above, we have the following:
   ``sparc-rtems5/c/erc32/testsuites/samples`` then all the executables
   would have been tested and not just those in samples.
 
-This BSP requires the ``--rtems-tools`` option because the SPARC GDB is the
-``sparc-rtems4.11-gdb`` command that is part of the RTEMS tools. Not every BSP
-will require this option so you will need to check the specifics of the BSP
-configuration you are using in order to determine if it is needed.
+.. note:: Some BSPs require the use of the specific target architecture GDB
+          command (e.g. RTEMS 5 SPARC GDB command is ``sparc-rtems5-gdb``).
+          As this command is part of the RTEMS tools, the ``--rtems-tools``
+          option should be added to the ``rtems-test`` command line, e.g.
+          ``--rtems-tools=$HOME/development/rtems/5``.
+          Not every BSP requires this option so you will need to check the
+          specifics of the BSP configuration you are using in order to
+          determine if this option is needed.
 
 An output line is printed for each test that is executed. The :program:`rtems-test`
 command by default runs multiple tests in parallel so you will see a number
