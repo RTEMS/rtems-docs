@@ -61,9 +61,7 @@ You can list the available BSP testers with:
           project.
 
 Some of the BSPs may appear more than once in the list. These are aliased BSP
-configurations that may use a different back end. An example is the erc32 BSP.
-There is the erc32 tester which uses the GDB back end and the ``erc32-run``
-tester which uses the ``run`` command for erc32. We will show how to use
+configurations that may use different back ends. We will show how to use
 :program:`rtems-test` command with the erc32 BSP because it is easy to build
 and use.
 
@@ -266,8 +264,8 @@ BSP build tree:
 .. code-block:: none
 
     $ ~/development/rtems/test/rtems-tools.git/tester/rtems-test \
-             --log=log_erc32_run \
-             --rtems-bsp=erc32-run \
+             --log=log_erc32_sis \
+             --rtems-bsp=erc32-sis \
                  sparc-rtems5/c/erc32/testsuites/samples
     RTEMS Testing - Tester, 5.not_released
     [ 1/13] p:0  f:0  u:0  e:0  I:0  B:0  t:0  i:0  | sparc/erc32: base_sp.exe
