@@ -259,9 +259,6 @@ You can see your executable running in the first terminal.
 
 For more information on the sis simulator refer to this doc: https://gaisler.se/sis/sis.pdf
 
-The command ``r`` is used to debug set break points before issuing the GDB
-``run`` command.
-
 There are currently close to 500 separate tests and you can run them all with a
 single RTEMS Tester command.
 
