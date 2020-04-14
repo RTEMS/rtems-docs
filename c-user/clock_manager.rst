@@ -184,20 +184,29 @@ RTEMS provides multiple directives which can be used by an application to obtain
 Calendar time operations will return an error code if invoked before the date
 and time have been set.
 
-.. index:: rtems_clock_get
+.. _ClockManagerAdviceClockGet:
 
-Transition Advice for the Obsolete rtems_clock_get
---------------------------------------------------
+Transition Advice for the Removed rtems_clock_get()
+---------------------------------------------------
 
-The method ``rtems_clock_get`` took an untyped pointer with an
-options argument to indicate the time information desired. This has
-been replaced with a set of typed directives whose name is of the form
-``rtems_clock_get_INFORMATION`` where INFORMATION indicates the type of
-information and possibly the format.  These methods directly correspond to
-what were previously referred to ask "clock options." These strongly typed
-were available for multiple releases in parallel with ``rtems_clock_get``
-until that method was removed.
+The directive :ref:`rtems_clock_get` took an untyped pointer with an options
+argument to indicate the time information desired. This has been replaced with
+a set of typed directives:
 
+* :ref:`rtems_clock_get_seconds_since_epoch`
+
+* :ref:`rtems_clock_get_ticks_per_second`
+
+* :ref:`rtems_clock_get_ticks_since_boot`
+
+* :ref:`rtems_clock_get_tod`
+
+* :ref:`rtems_clock_get_tod_timeval`
+
+These directives directly correspond to what were previously referred to as
+*clock options*.  These strongly typed directives were available for multiple
+releases in parallel with :c:func:`rtems_clock_get` until that directive was
+removed.
 
 Directives
 ==========
@@ -260,10 +269,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_clock_get_tod:
-
 .. index:: obtain the time of day
 .. index:: rtems_clock_get_tod
+
+.. _rtems_clock_get_tod:
 
 CLOCK_GET_TOD - Get date and time in TOD format
 -----------------------------------------------
@@ -304,10 +313,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_clock_get_tod_timeval:
-
 .. index:: obtain the time of day
 .. index:: rtems_clock_get_tod_timeval
+
+.. _rtems_clock_get_tod_timeval:
 
 CLOCK_GET_TOD_TIMEVAL - Get date and time in timeval format
 -----------------------------------------------------------
@@ -348,10 +357,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_clock_get_seconds_since_epoch:
-
 .. index:: obtain seconds since epoch
 .. index:: rtems_clock_get_seconds_since_epoch
+
+.. _rtems_clock_get_seconds_since_epoch:
 
 CLOCK_GET_SECONDS_SINCE_EPOCH - Get seconds since epoch
 -------------------------------------------------------
@@ -392,10 +401,10 @@ NOTES:
 
    \clearpage
 
-.. _rtems_clock_get_ticks_per_second:
-
 .. index:: obtain seconds since epoch
 .. index:: rtems_clock_get_ticks_per_second
+
+.. _rtems_clock_get_ticks_per_second:
 
 CLOCK_GET_TICKS_PER_SECOND - Get ticks per second
 -------------------------------------------------
@@ -422,11 +431,11 @@ NOTES:
 
    \clearpage
 
-.. _rtems_clock_get_ticks_since_boot:
-
 .. index:: obtain ticks since boot
 .. index:: get current ticks counter value
 .. index:: rtems_clock_get_ticks_since_boot
+
+.. _rtems_clock_get_ticks_since_boot:
 
 CLOCK_GET_TICKS_SINCE_BOOT - Get current ticks counter value
 ------------------------------------------------------------
@@ -666,3 +675,81 @@ DESCRIPTION:
 
 NOTES:
     This directive may be called from an ISR.
+
+Removed Directives
+==================
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems_clock_get:
+
+CLOCK_GET - Get date and time information
+-----------------------------------------
+.. index:: obtain the time of day
+.. index:: rtems_clock_get
+
+.. warning::
+
+    This directive was removed in RTEMS 5.1.  See also
+    :ref:`ClockManagerAdviceClockGet`.
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        rtems_status_code rtems_clock_get(
+           rtems_clock_get_options  option,
+           void                    *time_buffer
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+      :class: rtems-table
+
+      * - ``RTEMS_SUCCESSFUL``
+        - current time obtained successfully
+      * - ``RTEMS_NOT_DEFINED``
+        - system date and time is not set
+      * - ``RTEMS_INVALID_ADDRESS``
+        - ``time_buffer`` is NULL
+
+DESCRIPTION:
+    This directive obtains the system date and time.  If the caller is
+    attempting to obtain the date and time (i.e.  option is set to either
+    ``RTEMS_CLOCK_GET_SECONDS_SINCE_EPOCH``, ``RTEMS_CLOCK_GET_TOD``, or
+    ``RTEMS_CLOCK_GET_TIME_VALUE``) and the date and time has not been set with
+    a previous call to ``rtems_clock_set``, then the ``RTEMS_NOT_DEFINED``
+    status code is returned.  The caller can always obtain the number of ticks
+    per second (option is ``RTEMS_CLOCK_GET_TICKS_PER_SECOND``) and the number
+    of ticks since the executive was initialized option is
+    ``RTEMS_CLOCK_GET_TICKS_SINCE_BOOT``).
+
+    The ``option`` argument may taken on any value of the enumerated type
+    ``rtems_clock_get_options``.  The data type expected for ``time_buffer`` is
+    based on the value of ``option`` as indicated below:
+
+    .. index:: rtems_clock_get_options
+
+    +-----------------------------------------+---------------------------+
+    | Option                                  | Return type               |
+    +=========================================+===========================+
+    | ``RTEMS_CLOCK_GET_TOD``                 | ``(rtems_time_of_day *)`` |
+    +-----------------------------------------+---------------------------+
+    | ``RTEMS_CLOCK_GET_SECONDS_SINCE_EPOCH`` | ``(rtems_interval *)``    |
+    +-----------------------------------------+---------------------------+
+    | ``RTEMS_CLOCK_GET_TICKS_SINCE_BOOT``    | ``(rtems_interval *)``    |
+    +-----------------------------------------+---------------------------+
+    |``RTEMS_CLOCK_GET_TICKS_PER_SECOND``     | ``(rtems_interval *)``    |
+    +-----------------------------------------+---------------------------+
+    | ``RTEMS_CLOCK_GET_TIME_VALUE``          | ``(struct timeval *)``    |
+    +-----------------------------------------+---------------------------+
+
+NOTES:
+    This directive is callable from an ISR.
+
+    This directive will not cause the running task to be preempted.
+    Re-initializing RTEMS causes the system date and time to be reset to an
+    uninitialized state.  Another call to ``rtems_clock_set`` is required to
+    re-initialize the system date and time to application specific
+    specifications.
