@@ -600,7 +600,7 @@ against the current system configuration.
 .. index:: rtems_task_get_note
 .. index:: rtems_task_set_note
 
-Transition Advice for Obsolete Notepads
+Transition Advice for Removed Notepads
 ---------------------------------------
 
 Task notepads and the associated directives :ref:`rtems_task_get_note` and
@@ -618,7 +618,7 @@ also possible that thread-local storage (TLS) is an option for some use cases.
 .. index:: rtems_task_variable_get
 .. index:: rtems_task_variable_delete
 
-Transition Advice for Obsolete Task Variables
+Transition Advice for Removed Task Variables
 ---------------------------------------------
 
 Task notepads and the associated directives :ref:`rtems_task_variable_add`,
@@ -1757,8 +1757,8 @@ NOTES:
     visitor, however, take care that no deadlocks via the object allocator lock
     can occur.
 
-Deprecated and Removed Directives
-=================================
+Deprecated Directives
+=====================
 
 .. raw:: latex
 
@@ -1799,6 +1799,9 @@ NOTES:
     There is **no protection** while this routine is called.  The thread
     control block may be in an inconsistent state or may change due to
     interrupts or activity on other processors.
+
+Removed Directives
+==================
 
 .. raw:: latex
 
