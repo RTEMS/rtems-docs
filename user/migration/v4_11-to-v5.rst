@@ -1,6 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020 Chris Johns
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 
 .. _Migration_4_11_to_5:
 
@@ -10,32 +11,63 @@ RTEMS 4.11 to RTEMS 5
 This section provides helpful information when migrating from RTEMS 4.11 to
 RTEMS 5.
 
-Configuration
--------------
+Application Configuration Options
+---------------------------------
 
-A number of configurations macros have moved as a result of internal changes in
-RTEMS. Some of these will produce a warning indicating the new configuration
-setings you need to define. If you need to run an application on RTEMS 4.11 and
-RTEMS 5 the following code exmaple shows how to conditionally define the
-settings. The example is:
+The evaluation of application configuration options in ``<rtems/confdefs.h>``
+was reworked during the RTEMS 5 development cycle.  All options which let the
+user define data structures were removed, this includes
+
+* ``CONFIGURE_HAS_OWN_CONFIGURATION_TABLE``,
+
+* ``CONFIGURE_HAS_OWN_BDBUF_TABLE``,
+
+* ``CONFIGURE_HAS_OWN_DEVICE_DRIVER_TABLE``,
+
+* ``CONFIGURE_HAS_OWN_FILESYSTEM_TABLE``,
+
+* ``CONFIGURE_HAS_OWN_INIT_TABLE``,
+
+* ``CONFIGURE_HAS_OWN_MOUNT_TABLE``,
+
+* ``CONFIGURE_HAS_OWN_MULTIPROCESSING_TABLE``, and
+
+* ``CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE``.
+
+The configuration of SMP schedulers changed.  For example,
+:c:func:`RTEMS_SCHEDULER_EDF_SMP` has now only one parameter.  Please read
+section `Clustered Scheduler Configuration` in the `RTEMS Classic API Guide`.
+
+A number of configurations options have moved or are obsolete as a result of
+internal changes in RTEMS.  Some of these will produce a warning indicating the
+new configuration settings you need to define. If you need to run an application
+on RTEMS 4.11 and RTEMS 5 the following code example shows how to conditionally
+define the settings. The example is:
 
 .. code-block:: c
 
     #include <rtems.h>
 
     #if __RTEMS_MAJOR__ < 5
-     #define CONFIGURE_MAXIMUM_FIFOS 10
-     #define CONFIGURE_MAXIMUM_PIPES 10
+      #define CONFIGURE_MAXIMUM_FIFOS 10
+      #define CONFIGURE_MAXIMUM_PIPES 10
     #else
-     #define CONFIGURE_IMFS_ENABLE_MKFIFO
+      #define CONFIGURE_IMFS_ENABLE_MKFIFO
     #endif
 
     #define MAX_FILE_DESCRIPTORS 200
     #if __RTEMS_MAJOR__ < 5
-     #define CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS MAX_FILE_DESCRIPTORS
+      #define CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS MAX_FILE_DESCRIPTORS
     #else
-     #define CONFIGURE_MAXIMUM_FILE_DESCRIPTORS       MAX_FILE_DESCRIPTORS
+      #define CONFIGURE_MAXIMUM_FILE_DESCRIPTORS       MAX_FILE_DESCRIPTORS
     #endif
+
+Clock Manager
+-------------
+
+The directive :c:func:`rtems_clock_get` was removed.  See section
+`Transition Advice for the Removed rtems_clock_get()` in the
+`RTEMS Classic API Guide` for alternatives.
 
 Networking
 ----------
