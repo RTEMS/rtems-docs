@@ -38,7 +38,7 @@ Download the Waf build system and set it to executable:
 .. code-block:: none
 
     curl https://waf.io/waf-2.0.19 > waf
-    chmod +w waf
+    chmod +x waf
 
 Initialise a new Git repository:
 
