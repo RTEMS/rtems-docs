@@ -66,7 +66,7 @@ Each scheduler needs some data structures.  Use the following macros to create
 the scheduler data structures for a particular scheduler identified in the
 configuration by ``name``.
 
-- ``RTEMS_SCHEDULER_EDF_SMP(name, max_cpu_count)``,
+- ``RTEMS_SCHEDULER_EDF_SMP(name)``,
 
 - ``RTEMS_SCHEDULER_PRIORITY_AFFINITY_SMP(name, prio_count)``,
 
