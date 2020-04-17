@@ -466,6 +466,8 @@ DIRECTIVE STATUS CODES:
 
      * - ``RTEMS_SUCCESSFUL``
        - extension set created successfully
+     * - ``RTEMS_INVALID_ADDRESS``
+       - ``table`` or ``id`` are NULL
      * - ``RTEMS_INVALID_NAME``
        - invalid extension set name
      * - ``RTEMS_TOO_MANY``
