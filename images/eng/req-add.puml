@@ -1,29 +1,30 @@
 ' SPDX-License-Identifier: CC-BY-SA-4.0
 
-' Copyright (C) 2019 embedded brains GmbH
+' Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
 
 @startuml
 
 start
 
-:Invoke: ""doorstop add RTEMS"";
+:Create file: ""spec/component/new.yml"";
 
 note right
-  This will create a new requirement.
-  For this activity its UID shall be NEW.
-  It is located in a file NEW.yml.
+  Create a new file in the specification
+  directory.  For this activity its UID
+  shall be spec:/component/new.  It is
+  located in the file spec/component/new.yml.
 end note
 
 while (Needs a link to a parent requirement?) is (Yes)
-  :Invoke: ""doorstop link NEW PARENT"";
+  :Add link to links attribute of file: ""spec/component/new.yml"";
 endwhile (No)
 
 repeat
-  :Invoke: ""doorstop edit NEW"";
+  :Edit file: ""spec/component/new.yml"";
 
-  :Edit the requirement according to your needs and save it;
+  :Add attributes according to your needs and save the file;
 
-  :Commit NEW.yml with a proper message;
+  :Commit the changes with a proper message;
 
   :Send the patch to the devel@rtems.org mailing list for review;
 repeat while (Reviewers demand changes in the new requirement?) is (Yes)
@@ -32,7 +33,7 @@ repeat while (Reviewers demand changes in the new requirement?) is (Yes)
 if (New requirement was accepted by reviewers?) then (Yes)
   :Push the commit to the project repository;
 else (No)
-  :Discard the NEW requirement;
+  :Discard the new requirement;
 endif
 
 stop

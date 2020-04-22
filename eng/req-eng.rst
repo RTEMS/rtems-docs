@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019 embedded brains GmbH
+.. Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
 
 .. |E40| replace:: ECSS-E-ST-40C
 
@@ -93,92 +93,93 @@ Identification
 --------------
 
 Each requirement shall have a unique identifier (UID).  The question is in
-which scope should it be unique?  Ideally, it should be universally unique. As
-a best effort approach, the name *RTEMS* shall be used as a part in all
-requirement identifiers. This should ensure that the RTEMS requirements can be
-referenced easily in larger systems.  The standard ECSS-E-ST-10-06C recommends
-in section 8.2.6 that the identifier should reflect the type of the requirement
-and the life profile situation.  Other standards may have other
-recommendations.  To avoid a bias of RTEMS in the direction of ECSS, this
-recommendation will not be followed.
+which scope should it be unique?  Ideally, it should be universally unique.
+Therefore all UIDs used to link one specification item to another should use
+relative UIDs.  This ensures that the RTEMS requirements can be referenced
+easily in larger systems though a system-specific prefix.  The standard
+ECSS-E-ST-10-06C recommends in section 8.2.6 that the identifier should reflect
+the type of the requirement and the life profile situation.  Other standards
+may have other recommendations.  To avoid a bias of RTEMS in the direction of
+ECSS, this recommendation will not be followed.
 
-.. topic:: Doorstop
+The *absolute UID* of a specification item (for example a requirement) is
+defined by a leading ``/`` and the path of directories from the specification
+base directory to the file of the item separated by ``/`` characters and the
+file name without the ``.yml`` extension.  For example, a specification item
+contained in the file :file:`build/cpukit/librtemscpu.yml` inside a
+:file:`spec` directory has the absolute UID of ``/build/cpukit/librtemscpu``.
 
-    The UID of an item (requirement) is defined by its file name without the
-    extension. An UID consists of two parts, the prefix and a name or a number.
-    The parts are divided by an optional separator. The prefix is determined by
-    the document.
+The *relative UID* to a specification item is defined by the path of
+directories from the file containing the source specification item to the file
+of the destination item separated by ``/`` characters and the file name of the
+destination item without the ``.yml`` extension.  For example the relative UID
+from ``/build/bsps/sparc/leon3/grp`` to ``/build/bsps/bspopts`` is
+``../../bspopts``.
 
-The UID scheme for RTEMS requirements is the concatenation of *RTEMS*, one or
-more component names, and a name.  Each part is separated by a "-"
-character.  For example, the UID RTEMS-CLASSIC-TASK-CREATERRINVADDR may specify
-that the `rtems_task_create()` directive shall return a status of
-`RTEMS_INVALID_ADDRESS` if the `id` parameter is `NULL`.
+Basically, the valid characters of an UID are determined by the file system
+storing the item files.  By convention, UID characters shall be restricted to
+the following set defined by the regular expression ``[a-zA-Z0-9_-]+``.  Use
+``-`` as a separator inside an UID part.
 
-.. topic:: Doorstop
+In documents the URL-like prefix ``spec:`` shall be used to indicated
+specification item UIDs.
 
-    Doorstop uses documents to create namespaces (named a prefix in Doorstop).
-    For the example above, you can create the documents like this:
-
-    .. code-block:: none
-
-        doorstop create -s - RTEMS-CLASSIC -p RTEMS spec/classic
-        doorstop create -s - RTEMS-CLASSIC-TASK -p RTEMS-CLASSIC spec/classic/task
-        doorstop create -s - RTEMS-CLASSIC-SEMAPHORE -p RTEMS-CLASSIC spec/classic/semaphore
-
-    The requirement files are organized in directories.
+The UID scheme for RTEMS requirements shall be component based.  For example,
+the UID ``spec:/classic/task/create-err-invaddr`` may specify that the
+:c:func:`rtems_task_create` directive shall return a status of
+``RTEMS_INVALID_ADDRESS`` if the ``id`` parameter is ``NULL``.
 
 A initial requirement item hierarchy could be this:
 
-* RTEMS
+* build (building RTEMS BSPs and libraries)
 
-  * BUILD (building RTEMS BSPs and libraries)
+* acfg (application configuration groups)
 
-  * CONFIG (application configuration)
+    * opt (application configuration options)
 
-  * CLASSIC
+* classic
 
-    * TASK
+    * task
 
-      * CREAT* (requirements for `rtems_task_create()`)
-      * DELT* (requirements for `rtems_task_delete()`)
-      * EXIT* (requirements for `rtems_task_exit()`)
-      * GETAFF* (requirements for `rtems_task_get_affinity()`)
-      * GETPRI* (requirements for `rtems_task_get_priority()`)
-      * GETSHD* (requirements for `rtems_task_get_scheduler()`)
-      * IDNT* (requirements for `rtems_task_ident()`)
-      * ISSUSP* (requirements for `rtems_task_is_suspended()`)
-      * ITER* (requirements for `rtems_task_iterate()`)
-      * MODE* (requirements for `rtems_task_mode()`)
-      * RESTRT* (requirements for `rtems_task_restart()`)
-      * RESUME* (requirements for `rtems_task_resume()`)
-      * SELF* (requirements for `rtems_task_self()`)
-      * SETAFF* (requirements for `rtems_task_set_affinity()`)
-      * SETPRI* (requirements for `rtems_task_set_priority()`)
-      * SETSHD* (requirements for `rtems_task_set_scheduler()`)
-      * START* (requirements for `rtems_task_start()`)
-      * SUSP* (requirements for `rtems_task_suspend()`)
-      * WKAFT* (requirements for `rtems_task_wake_after()`)
-      * WKWHN* (requirements for `rtems_task_wake_when()`)
+        * create-* (requirements for :c:func:`rtems_task_create`)
+        * delete-* (requirements for :c:func:`rtems_task_delete`)
+        * exit-* (requirements for :c:func:`rtems_task_exit`)
+        * getaff-* (requirements for :c:func:`rtems_task_get_affinity`)
+        * getpri-* (requirements for :c:func:`rtems_task_get_priority`)
+        * getsched-* (requirements for :c:func:`rtems_task_get_scheduler`)
+        * ident-* (requirements for :c:func:`rtems_task_ident`)
+        * issusp-* (requirements for :c:func:`rtems_task_is_suspended`)
+        * iter-* (requirements for :c:func:`rtems_task_iterate`)
+        * mode-* (requirements for :c:func:`rtems_task_mode`)
+        * restart-* (requirements for :c:func:`rtems_task_restart`)
+        * resume* (requirements for :c:func:`rtems_task_resume`)
+        * self* (requirements for :c:func:`rtems_task_self`)
+        * setaff-* (requirements for :c:func:`rtems_task_set_affinity`)
+        * setpri-* (requirements for :c:func:`rtems_task_set_priority`)
+        * setsched* (requirements for :c:func:`rtems_task_set_scheduler`)
+        * start-* (requirements for :c:func:`rtems_task_start`)
+        * susp-* (requirements for :c:func:`rtems_task_suspend`)
+        * wkafter-* (requirements for :c:func:`rtems_task_wake_after`)
+        * wkwhen-* (requirements for :c:func:`rtems_task_wake_when`)
 
-    * Semaphore
+    * sema
 
-      * ...
+        * ...
 
-  * POSIX
+* posix
 
-  * ...
+* ...
 
 A more detailed naming scheme and guidelines should be established.  We have to
 find the right balance between the length of UIDs and self-descriptive UIDs.  A
 clear scheme for all Classic API managers may help to keep the UIDs short and
 descriptive.
 
-The specification of the validation of requirements should be maintained also by
-Doorstop.  For each requirement document there should be a validation child
-Doorstop document with a *TEST* component name, e.g. RTEMS-CLASSIC-TASK-TEST.  A
-test document may contain also validations by analysis, by inspection, and by
-design, see :ref:`ReqEngValidation`.
+The specification of the validation of requirements should be maintained also
+by specification items.  For each requirement directory there should be a
+validation subdirectory named *test*, e.g. :file:`spec/classic/task/test`.  A
+test specification directory may contain also validations by analysis, by
+inspection, and by design, see :ref:`ReqEngValidation`.
 
 Level of Requirements
 ---------------------
@@ -363,29 +364,29 @@ Separate Requirements
 
 Requirements shall be stated separately.  A bad example is:
 
-RTEMS-CLASSIC-TASK-CRAT
+spec:/classic/task/create
     The task create directive shall evaluate the parameters, allocate a task
     object and initialize it.
 
 To make this a better example, it should be split into separate requirements:
 
-RTEMS-CLASSIC-TASK-CRAT
+spec:/classic/task/create
     When the task create directive is called with valid parameters and a free
     task object exists, the task create directive shall assign the identifier of
-    an initialized task object to the id parameter and return the
-    RTEMS_SUCCESSFUL status.
+    an initialized task object to the ``id`` parameter and return the
+    ``RTEMS_SUCCESSFUL`` status.
 
-RTEMS-CLASSIC-TASK-CRATERRTOOMANY
+spec:/classic/task/create-err-toomany
     If no free task objects exists, the task create directive shall return the
-    RTEMS_TOO_MANY status.
+    ``RTEMS_TOO_MANY`` status.
 
-RTEMS-CLASSIC-TASK-CRATERRINVADDR
-    If the id parameter is NULL, the task create directive shall return the
-    RTEMS_INVALID_ADDRESS status.
+spec:/classic/task/create-err-invaddr
+    If the ``id`` parameter is ``NULL``, the task create directive shall return the
+    ``RTEMS_INVALID_ADDRESS`` status.
 
-RTEMS-CLASSIC-TASK-CRATERRINVNAME
-    If the name parameter is not valid, the task create directive shall return
-    the RTEMS_INVALID_NAME status.
+spec:/classic/task/create-err-invname
+    If the ``name`` parameter is invalid, the task create directive shall
+    return the ``RTEMS_INVALID_NAME`` status.
 
     ...
 
@@ -395,22 +396,22 @@ Conflict Free Requirements
 Requirements shall not be in conflict with each other inside a specification.
 A bad example is:
 
-RTEMS-CLASSIC-SEMAPHORE-MTXOBWAIT
-    If a mutex is not available, the mutex obtain directive shall enqueue the
+spec:/classic/sema/mtx-obtain-wait
+    When a mutex is not available, the mutex obtain directive shall enqueue the
     calling thread on the wait queue of the mutex.
 
-RTEMS-CLASSIC-SEMAPHORE-MTXOBERRUNSAT
+spec:/classic/sema/mtx-obtain-err-unsat
     If a mutex is not available, the mutex obtain directive shall return the
     RTEMS_UNSATISFIED status.
 
 To resolve this conflict, a condition may be added:
 
-RTEMS-CLASSIC-SEMAPHORE-MTXOBWAIT
-    If a mutex is not available, when the RTEMS_WAIT option is set, the mutex
+spec:/classic/sema/mtx-obtain-wait
+    When a mutex is not available and the RTEMS_WAIT option is set, the mutex
     obtain directive shall enqueue the calling thread on the wait queue of the
     mutex.
 
-RTEMS-CLASSIC-SEMAPHORE-MTXOBERRUNSAT
+spec:/classic/sema/mtx-obtain-err-unsat
     If a mutex is not available, when the RTEMS_WAIT option is not set, the
     mutex obtain directive shall return the RTEMS_UNSATISFIED status.
 
@@ -426,11 +427,8 @@ Justification of Requirements
 -----------------------------
 
 Each requirement shall have a rationale or justification recorded in a
-dedicated section of the requirement file.
-
-.. topic:: Doorstop
-
-    See *rationale* attribute for :ref:`ReqEngSpecItems`.
+dedicated section of the requirement file.  See *rationale* attribute for
+:ref:`ReqEngSpecItems`.
 
 .. _ReqEngSpecItems:
 
@@ -443,107 +441,99 @@ of requirements, :ref:`test procedures <ReqEngTestProcedure>`,
 :ref:`requirement validations <ReqEngValidation>`.  These things will be called
 *specification items* or just *items* if it is clear from the context.
 
-.. topic:: Doorstop
+The specification items are stored in files in :term:`YAML` format with a
+defined set of key-value pairs called attributes.  The key name shall match
+with the pattern defined by the regular expression
+``[a-zA-Z0-9][a-zA-Z0-9-]+``.  In particular, key names which begin with an
+underscore (``_``) are reserved for internal use in tools.
 
-    Doorstop maintains *items* which are included in *documents*.  The normal
-    use case is to store a requirement with meta-data in an item.  However,
-    items can be also used to store other things like test procedures, test
-    suites, test cases, and requirement validations.  Items contain key-value
-    pairs called attributes.  Specializations of requirements may contain extra
-    attributes, e.g. interface, build, configuration requirements. All items
-    have the following standard Doorstop attributes:
+Each specification item shall have the following attributes:
 
-    active
-        A boolean value which indicates if the requirement is active or not.
-        The value is included in the fingerprint via a document configuration
-        option.
+enabled-by
+    The value shall be a list of expressions.  An expression is an operator
+    or an option.  An option evaluates to true if it is included the set of
+    enabled options of the configuration.  An operator is a dictionary with
+    exactly one key and a value.  Valid keys are *and*, *or*, and *not*:
 
-    derived
-        A boolean value which indicates if the requirement is derived or not.
-        For the
-        `definition of derived <https://github.com/jacebrowning/doorstop/blob/develop/docs/reference/item.md#derived>`_.
-        see the Doorstop documentation.  For RTEMS, this value shall be false
-        for all requirements.  The value is not included in the fingerprint.
+    * The value of the *and* operator shall be a list of expressions.  It
+      evaluates to the *logical and* of all outcomes of the expressions in
+      the list.
 
-    normative
-        A boolean value which indicates if the requirement is normative or not.
-        For the
-        `definition of normative <https://github.com/jacebrowning/doorstop/blob/develop/docs/reference/item.md#normative>`_.
-        see the Doorstop documentation.  For RTEMS, this value shall be true
-        for all requirements.  The value is not included in the fingerprint.
+    * The value of the *or* operator shall be a list of expressions.  It
+      evaluates to the *logical or* of all outcomes of the expressions in
+      the list.
 
-    level
-        Indicates the presentation order within a document.  For RTEMS, this
-        value shall be unused.  The value is not included in the fingerprint.
+    * The value of the *not* operator shall be an expression.  It negates
+      the outcome of its expression.
 
-    header
-        A header for an item.  For RTEMS, this value shall be the empty string.
-        The value is not included in the fingerprint.
+    The outcome of a list of expressions without an operator is the
+    *logical or* of all outcomes of the expressions in the list.  An empty
+    list evaluates to true.  Examples:
 
-    reviewed
-        The fingerprint of the item.  Maintain this attribute with the
-        `doorstop clear` command.
+    .. code-block:: none
 
-    links
-        The links from this item to parent items.  Maintain this attribute with
-        the `doorstop link` command.  The value is included in the fingerprint.
+        enabled-by:
+        - RTEMS_SMP
 
-    ref
-        References to files and directories. See
-        `#365 <https://github.com/jacebrowning/doorstop/issues/365>`_,
-        The value is included in the fingerprint.
+    .. code-block:: none
 
-    text
-        The item text.  The value is included in the fingerprint.
+        enabled-by:
+        - and:
+          - RTEMS_NETWORKING
+          - not: RTEMS_SMP
 
-    All specification items shall have the following extended attributes:
+    .. code-block:: none
 
-    type:
-        A list of :ref:`item types <ReqEngItemTypes>`.  The value is not
-        included in the fingerprint.
+        enabled-by:
+        - and:
+          - not: TEST_DEBUGGER01_EXCLUDE
+          - or:
+            - arm
+            - i386
 
-    enabled-by:
-        The value is a list of expressions.  The value is included in the
-        fingerprint.  An expression is an operator or an option.  An option
-        evaluates to true if it is included the set of enabled options of  the
-        configuration.  An operator is a dictionary with exactly one key and a
-        value.  Valid keys are `and`, `or`, and `not`:
+links
+    The value shall be a list of key-value pairs defining links to other
+    specification items.  The list is ordered and defines the order in
+    which links are processed.  There shall be a key *role* with an
+    unspecified value.  There shall be a key *uid* with a relative UID to
+    the item referenced by this link.  Other keys are type-specific.
+    Example:
 
-        * The value of the `and` operator shall be a list of expressions.  It
-          evaluates to the `logical and` of all outcomes of the expressions in
-          the list.
+    .. code-block:: yaml
 
-        * The value of the `or` operator shall be a list of expressions.  It
-          evaluates to the `logical or` of all outcomes of the expressions in
-          the list.
+        links:
+        - role: build-dependency
+          uid: optpwrdwnhlt
+        - role: build-dependency
+          uid: ../../bspopts
+        - role: build-dependency
+          uid: ../start
 
-        * The value of the `not` operator shall be an expression.  It negates
-          the outcome of its expression.
+type
+    The value shall be the specification :ref:`item type <ReqEngItemTypes>`.
 
-        The outcome of a list of expressions without an operator is the
-        `logical or` of all outcomes of the expressions in the list.  An empty
-        list evaluates to true.  Examples:
+The following attributes are used in specification items of various types:
 
-        .. code-block:: none
+.. _ReqEngItemAttrLicense:
 
-            enabled-by:
-            - RTEMS_SMP
+SPDX-License-Identifier
+    The value should be ``BSD-2-Clause OR CC-BY-SA-4.0``.  If content is
+    imported from external sources, then the corresponding license shall be
+    used.  Acceptable licenses are BSD-2-Clause and CC-BY-SA-4.0.  The
+    copyright holder of the external work should be asked to allow a
+    dual-licensing BSD-2-Clause or CC-BY-SA-4.0.  This allows generation of
+    BSD-2-Clause licensed source code and CC-BY-SA-4.0 licensed documentation.
 
-        .. code-block:: none
+.. _ReqEngItemAttrCopyrights:
 
-            enabled-by:
-            - and:
-              - RTEMS_NETWORKING
-              - not: RTEMS_SMP
+copyrights
+    The value shall be a list of copyright statements of the following formats:
 
-        .. code-block:: none
+    * ``Copyright (C) <YEAR> <COPYRIGHT HOLDER>``
 
-            enabled-by:
-            - and:
-              - not: TEST_DEBUGGER01_EXCLUDE
-              - or:
-                - arm
-                - i386
+    * ``Copyright (C) <FIRST YEAR>, <LAST YEAR> <COPYRIGHT HOLDER>``
+
+    See also :ref:`FileHeaderCopyright`.
 
 .. _ReqEngItemTypes:
 
@@ -626,14 +616,10 @@ their definition is work in progress.  A list of types follows:
 Requirements
 ------------
 
-.. topic:: Doorstop
+All requirement specification items shall have the following attribute:
 
-    All requirement specification items shall have the following extended
-    attribute:
-
-    rationale:
-        The rationale or justification of the specification item.  The value is
-        **not** included in the fingerprint.
+rationale:
+    The rationale or justification of the specification item.
 
 Build Configuration
 -------------------
@@ -656,6 +642,10 @@ The item type shall be *interface-requirement*.
 
 Interface
 ---------
+
+.. warning::
+
+    This is work in progress.
 
 Interface items shall specify the interface of the software product to other
 software products and the hardware.  The item type shall be *interface*.  The
@@ -711,56 +701,145 @@ following and nothing else:
 
 * *variable*
 
-.. _ReqEngInterfaceApplicationConfig:
+.. _ReqEngInterfaceApplicationConfigGroups:
 
-Interface - Application Configuration
--------------------------------------
+Interface - Application Configuration Groups
+--------------------------------------------
 
-.. topic:: Doorstop
+The application configuration group items shall have the following attribute
+specializations:
 
-    The application configuration items shall have the following attribute
-    specializations:
+SPDX-License-Identifier
+    See :ref:`SPDX-License-Identifier <ReqEngItemAttrLicense>`.
 
-    type
-        The type value shall be *interface*.
+appl-config-group-description:
+    The value shall be the description of this application configuration group.
 
-    interface-category
-        The interface category value shall be *application-configuration*.
+appl-config-group-name:
+    The value shall be the name of this application configuration group.
 
-    interface-type
-        The interface type value shall be *configuration-option*.
+copyrights
+    See :ref:`copyrights <ReqEngItemAttrCopyrights>`.
 
-    link
-        There shall be a link to a higher level requirement.
+interface-type
+    The interface type value shall be *appl-config-group*.
 
-    text
-        The application configuration requirement.
+link
+    There shall be a link to a higher level requirement.
 
-    configuration-category:
-        A category to which this application configuration option belongs.
+text
+    The application configuration group requirement.
 
-    define:
-        The name of the configuration define.
+type
+    The type value shall be *interface*.
 
-    data-type:
-        The data type of the configuration define.
+.. _ReqEngInterfaceApplicationConfigOptions:
 
-    value-range:
-        The range of valid values.
+Interface - Application Configuration Options
+---------------------------------------------
 
-    default-value:
-        The default value.
+The application configuration option items shall have the following attribute
+specializations:
 
-    description:
-        The description of the application configuration.  The description
-        should focus on the average use-case.  It should not cover potential
-        problems, constraints, obscure use-cases, corner cases and everything
-        which makes matters complicated.
+SPDX-License-Identifier
+    See :ref:`SPDX-License-Identifier <ReqEngItemAttrLicense>`.
 
-    note:
-        Notes for this application configuration.  The notes should explain
-        everything which was omitted from the description.  It should cover all
-        the details.
+appl-config-option-constraint
+    This attribute shall be present only for *initializer* and *integer*
+    type options.  The value shall be a dictionary of the following optional
+    key-value pairs.
+
+    custom
+        The value shall be a list of constraints in natural language.  Use the
+        following wording:
+
+            The value of this configuration option shall be ...
+
+    min
+        The value shall be the minimum value of the option.
+
+    max
+        The value shall be the maximum value of the option.
+
+    links
+        The value shall be a list of relative UIDs to constraints.
+
+    set
+        The value shall be the list of valid values of the option.
+
+appl-config-option-default
+    This attribute shall be present only for *feature* type options.  The value
+    shall be a description of the default configuration in case this boolean
+    feature define is undefined.  Use the following wording:
+
+        If this configuration option is undefined, then ...
+
+appl-config-option-default-value
+    This attribute shall be present only for *initializer* and *integer*
+    type options.  The value shall be an initializer, an integer, or a
+    descriptive text.
+
+appl-config-option-description
+    For *feature* and *feature-enable* type options, the value shall be a
+    description of the configuration in case this boolean feature define is
+    defined.  Use the following wording:
+
+        In case this configuration option is defined, then ...
+
+    For *initializer* and *integer* options, the value shall describe the
+    effect of the option value.  The description should focus on the average
+    use-case.  It should not cover potential problems, constraints, obscure
+    use-cases, corner cases and everything which makes matters complicated.
+    Add these things to *appl-config-option-constraint* and
+    *appl-config-option-notes*.  Use the following wording:
+
+        The value of this configuration option defines ...
+
+appl-config-option-index
+    The value shall be a list of entries for the document index.  By default,
+    the application configuration option name is added to the index.
+
+appl-config-option-name
+    The value shall be the name of the application configuration option.  Use a
+    pattern of ``CONFIGURE_[A-Z0-9_]+`` for the name.
+
+appl-config-option-notes
+    The value shall be the notes for this option.  The notes should explain
+    everything which was omitted from the description.  It should cover all the
+    details, special cases, usage notes, error conditions, configuration
+    dependencies, and references.
+
+appl-config-option-type
+    The value shall be one of the following and nothing else:
+
+    feature
+        Use this type for boolean feature opions which have a behaviour in the
+        default configuration which is not just that the feature is disabled.
+
+    feature-enable
+        Use this type for boolean feature opions which just enables a feature.
+
+    initializer
+        Use this type for options which initialize a data structure.
+
+    integer
+        Use this type for integer options.
+
+copyrights
+    See :ref:`copyrights <ReqEngItemAttrCopyrights>`.
+
+interface-type
+    The interface type value shall be *appl-config-option*.
+
+link
+    There shall be a link to the application configuration group to which this
+    option belongs.
+
+text
+    The application configuration option requirement.
+
+type
+    The type value shall be *interface*.
 
 .. _ReqEngTestProcedure:
 
@@ -769,24 +848,22 @@ Test Procedure
 
 Test procedures shall be executed by the Qualification Toolchain.
 
-.. topic:: Doorstop
+The test procedure items shall have the following attribute
+specializations:
 
-    The test procedure items shall have the following attribute
-    specializations:
+type
+    The type value shall be *test-procedure*.
 
-    type
-        The type value shall be *test-procedure*.
+text
+    The purpose of this test procedure.
 
-    text
-        The purpose of this test procedure.
+platform
+    There shall be links to validation platform requirements.
 
-    platform
-        There shall be links to validation platform requirements.
-
-    steps
-        The test procedure steps.  Could be a list of key-value pairs.  The key
-        is the step name and the value is a description of the actions
-        performed in this step.
+steps
+    The test procedure steps.  Could be a list of key-value pairs.  The key
+    is the step name and the value is a description of the actions
+    performed in this step.
 
 .. _ReqEngTestSuite:
 
@@ -795,15 +872,13 @@ Test Suite
 
 Test suites shall use the :ref:`RTEMS Test Framework <RTEMSTestFramework>`.
 
-.. topic:: Doorstop
+The test suite items shall have the following attribute specializations:
 
-    The test suite items shall have the following attribute specializations:
+type
+    The type value shall be *test-suite*.
 
-    type
-        The type value shall be *test-suite*.
-
-    text
-        The test suite description.
+text
+    The test suite description.
 
 .. _ReqEngTestCase:
 
@@ -812,37 +887,35 @@ Test Case
 
 Test cases shall use the :ref:`RTEMS Test Framework <RTEMSTestFramework>`.
 
-.. topic:: Doorstop
+The test case items shall have the following attribute specializations:
 
-    The test case items shall have the following attribute specializations:
+type
+    The type value shall be *test-case*.
 
-    type
-        The type value shall be *test-case*.
+link
+    The link to the requirement validated by this test case or no links if
+    this is a unit or integration test case.
 
-    link
-        The link to the requirement validated by this test case or no links if
-        this is a unit or integration test case.
+ref
+    If this is a unit test case, then a reference to the :term:`software
+    item` under test shall be provided.  If this is an integration test
+    case, then a reference to the integration under test shall be provided.
+    The integration is identified by its Doxygen group name.
 
-    ref
-        If this is a unit test case, then a reference to the :term:`software
-        item` under test shall be provided.  If this is an integration test
-        case, then a reference to the integration under test shall be provided.
-        The integration is identified by its Doxygen group name.
+text
+    A short description of the test case.
 
-    text
-        A short description of the test case.
+inputs
+    The inputs to execute the test case.
 
-    inputs
-        The inputs to execute the test case.
+outputs
+    The expected outputs.
 
-    outputs
-        The expected outputs.
-
-    The test case code may be also contained in the test case specification
-    item in a *code* attribute.  This is subject to discussion on the RTEMS
-    mailing list.  Alternatively, the test code could be placed directly in
-    source files.  A method is required to find the test case specification of
-    a test case code and vice versa.
+The test case code may be also contained in the test case specification
+item in a *code* attribute.  This is subject to discussion on the RTEMS
+mailing list.  Alternatively, the test code could be placed directly in
+source files.  A method is required to find the test case specification of
+a test case code and vice versa.
 
 .. _ReqEngResAndPerf:
 
@@ -898,7 +971,7 @@ indicate an agreed statement (similar to the
 `Linux kernel patch submission guidelines <https://www.kernel.org/doc/html/latest//process/submitting-patches.html#using-reported-by-tested-by-reviewed-by-suggested-by-and-fixes>`_).
 Git commit procedures may be ensured through a server-side pre-receive hook.
 The history of requirements may be also added to the specification items
-directly in a ``revision`` attribute.  This would make it possible to generate
+directly in a *revision* attribute.  This would make it possible to generate
 the history information for documents without having the Git repository
 available, e.g. from an RTEMS source release archive.
 
@@ -909,7 +982,7 @@ Backward Traceability of Specification Items
 
 Providing backward traceability of specification items means that we must be
 able to find the corresponding higher level specification item for each refined
-specification item.  This is a standard Doorstop feature.
+specification item.  A custom tool needs to verify this.
 
 .. _ReqEngTraceForward:
 
@@ -918,7 +991,7 @@ Forward Traceability of Specification Items
 
 Providing forward traceability of specification items means that we must be
 able to find all the refined specification items for each higher level
-specification item.  This is a standard Doorstop feature.  The links from
+specification item.  A custom tool needs to verify this.  The links from
 parent to child specification items are implicitly defined by links from a
 child item to a parent item.
 
@@ -927,24 +1000,24 @@ child item to a parent item.
 Traceability between Software Requirements, Architecture and Design
 -------------------------------------------------------------------
 
-The software requirements are implemented in Doorstop compatible YAML files.
-The software architecture and design is written in Doxygen markup.  Doxygen
-markup is used throughout all header and source files.  A Doxygen filter
-program may be provided to place Doxygen markup in assembler files.  The
-software architecture is documented via Doxygen groups.  Each Doxygen group
-name should have a project-specific name and the name should be unique within
-the project, e.g.  RTEMSTopLevel\ MidLevel\ LowLevel.  The link from a Doxygen
-group to its parent group is realized through the ``@ingroup`` special command.
-The link from a Doxygen group or :term:`software component` to the
-corresponding requirement is realized through a ``@satisfy{req}``
-`custom command <http://www.doxygen.nl/manual/custcmd.html>`_
-which needs the identifier of the requirement as its one and only parameter.
-Only links to parents are explicitly given in the Doxygen markup.  The links
-from a parent to its children are only implicitly specified via the link from a
-child to its parent.  So, a tool must process all files to get the complete
-hierarchy of software requirements, architecture and design. Links from a
-software component to another software component are realized through automatic
-Doxygen references or the ``@ref`` and ``@see`` special commands.
+The software requirements are implemented in custom YAML files, see
+:ref:`ReqEngSpecItems`.  The software architecture and design is written in
+Doxygen markup.  Doxygen markup is used throughout all header and source files.
+A Doxygen filter program may be provided to place Doxygen markup in assembler
+files.  The software architecture is documented via Doxygen groups.  Each
+Doxygen group name should have a project-specific name and the name should be
+unique within the project, e.g.  RTEMSTopLevel\ MidLevel\ LowLevel.  The link
+from a Doxygen group to its parent group is realized through the ``@ingroup``
+special command.  The link from a Doxygen group or :term:`software component`
+to the corresponding requirement is realized through a ``@satisfy{req}``
+`custom command <http://www.doxygen.nl/manual/custcmd.html>`_ which needs the
+identifier of the requirement as its one and only parameter.  Only links to
+parents are explicitly given in the Doxygen markup.  The links from a parent to
+its children are only implicitly specified via the link from a child to its
+parent.  So, a tool must process all files to get the complete hierarchy of
+software requirements, architecture and design. Links from a software component
+to another software component are realized through automatic Doxygen references
+or the ``@ref`` and ``@see`` special commands.
 
 .. _ReqEngValidation:
 
@@ -971,25 +1044,23 @@ Validation by test is strongly recommended.  The choice of any other validation
 method shall be strongly justified.  The requirements author is obligated to
 provide the means to validate the requirement with detailed instructions.
 
-.. topic:: Doorstop
+For a specification item in a parent directory it could be checked that at
+least one item in a subdirectory has a link to it.  For example a subdirectory
+could contain validation items.  With this feature you could check that all
+requirements are covered by at least one validation item.
 
-    For an item in a parent document it is checked that at least one item in a
-    child document has a link to it.  For example a child document could
-    contain validation items.  With this feature you can check that all
-    requirements are covered by at least one validation item.
+The requirement validation by analysis, by inspection, and by design
+specification items shall have the following attribute specializations:
 
-    The requirement validation by analysis, by inspection, and by design
-    specification items shall have the following attribute specializations:
+type
+    The type attribute value shall be *validation-by-analysis*,
+    *validation-by-inspection*, or *validation-by-review-of-design*.
 
-    type
-        The type attribute value shall be *validation-by-analysis*,
-        *validation-by-inspection*, or *validation-by-review-of-design*.
+link
+    There shall be exactly one link to the validated requirement.
 
-    link
-        There shall be exactly one link to the validated requirement.
-
-    text
-        The statement or rational of the requirement validation.
+text
+    The statement or rational of the requirement validation.
 
 Requirement Management
 ======================
@@ -1121,8 +1192,8 @@ user.
 
 .. _ReqEngDoorstop:
 
-Selected Tool - Doorstop
-------------------------
+Best Available Tool - Doorstop
+------------------------------
 
 :term:`Doorstop` is a requirements management tool.  It has a modern,
 object-oriented and well-structured implementation in Python 3.6 under the
@@ -1145,8 +1216,8 @@ Doorstop consists of three main parts
 For RTEMS, its scope will be extended to manage specifications in general.  The
 primary reason for selecting Doorstop as the requirements management tool for
 the RTEMS Project is its data format which allows a high degree of
-customization.  Doorstop uses a directed, acyclic graph of items.  The items are
-files in YAML format.  Each item has a set of
+customization.  Doorstop uses a directed, acyclic graph (DAG) of items.  The
+items are files in YAML format.  Each item has a set of
 `standard attributes <https://doorstop.readthedocs.io/en/latest/reference/item/>`_
 (key-value pairs).
 
@@ -1175,3 +1246,37 @@ specification items.  This can be done with a table which contains columns for
 Given the source code of RTEMS (which includes the specification items) and this
 table, it can be determined which items are unchanged and which have another
 status (e.g. unknown, changed, etc.).
+
+After some initial work with Doorstop some issues surfaced
+(`#471 <https://github.com/doorstop-dev/doorstop/issues/471>`_)
+It turned out that Doorstop is not designed as a library and contains to much
+policy. This results in a lack of flexibility required for the RTEMS Project.
+
+1. Its primary use case is requirements management. So, it has some standard
+   attributes useful in this domain, like derived, header, level, normative,
+   ref, reviewed, and text. However, we want to use it more generally for
+   specification items and these attributes make not always sense.  Having them
+   in every item is just overhead and may cause confusion.
+
+2. The links cannot have custom attributes, e.g. role, enabled-by. With
+   link-specific attributes you could have multiple DAGs formed up by the same
+   set of items.
+
+3. Inside a document (directory) items are supposed to have a common type (set
+   of attributes). We would like to store at a hierarchy level also distinct
+   specializations.
+
+4. The verification of the items is quite limited.  We need verification with
+   type-based rules.
+
+5. The UIDs in combination with the document hierarchy lead to duplication,
+   e.g. a/b/c/a-b-c-d.yml. You have the path (a/b/c) also in the file name
+   (a-b-c). You cannot have relative UIDs in links (e.g. ../parent-req) . The
+   specification items may contain multiple requirements, e.g. min/max
+   attributes.  There is no way to identify them.
+
+6. The links are ordered by Doorstop alphabetically by UID. For some
+   applications, it would be better to use the order specified by the user. For
+   example, we want to use specification items for a new build system. Here it
+   is handy if you can express things like this: A is composed of B and C.
+   Build B before C.

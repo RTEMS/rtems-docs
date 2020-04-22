@@ -1,23 +1,23 @@
 ' SPDX-License-Identifier: CC-BY-SA-4.0
 
-' Copyright (C) 2019 embedded brains GmbH
+' Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
 
 @startuml
 
 start
 
 repeat
-  :Invoke: ""doorstop edit REQ"";
+  :Edit: ""spec/component/req.yml"";
 
   note right
-    For this activity the UID
-    of the requirement shall be REQ.
-    It is located in a file REQ.yml.
+    For this activity the UID of the
+    requirement shall be spec:/component/req.
+    It is located in a file spec/component/req.yml.
   end note
 
-  :Edit the requirement according to your needs and save it;
+  :Edit the attributes according to your needs and save the file;
 
-  :Commit REQ.yml with a proper message;
+  :Commit the changes with a proper message;
 
   :Send the patch to the devel@rtems.org mailing list for review;
 repeat while (Reviewers demand changes in the modified requirement?) is (Yes)
