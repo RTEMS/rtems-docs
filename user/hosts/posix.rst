@@ -188,36 +188,37 @@ FreeBSD
 -------
 
 The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3, 11 and
-12 64bit version. You need to install some ports. They are:
+12 64bit versions. You need to install some ports. They are:
 
 .. code-block:: none
 
-  # cd /usr/ports
-  # portinstall --batch lang/python27
+  # pkg install -y python
+  # pkg install -y gsed
+
+FreeBSD's default C compiler is LLVM and installing the host's GCC compiler
+package may break building GCC. We recommend you do not install the GCC
+package and you use the default C compiler.
 
 If you wish to build Windows (mingw32) tools please install the following
 ports:
 
 .. code-block:: none
 
-  # cd /usr/ports
-  # portinstall --batch devel/mingw32-binutils devel/mingw32-gcc
-  # portinstall --batch devel/mingw32-zlib devel/mingw32-pthreads
+  # pkg install -y mingw32-binutils mingw32-gcc
+  # pkg install -y mingw32-zlib mingw32-pthreads
 
-The +zlip+ and +pthreads+ ports for MinGW32 are used for builiding a Windows
+The *zlip* and *pthreads* ports for MinGW32 are used when builiding a Windows
 QEMU.
 
-If you are on FreeBSD 10.0 and you have pkgng installed you can use 'pkg
-install' rather than 'portinstall'.
-
-We recommend you run as root the following command to speed up Python
-3's subprocess support:
+Check if your kernel has a ``/dev/fd`` directory. If it does not we recommend
+you run as root the following command to speed up Python 3's subprocess
+support:
 
 .. code-block:: none
 
   # mount -t fdescfs none /dev/fd
 
-This speeds up closing file descriptors when creating subprocesses.
+The support speeds up closing file descriptors when creating subprocesses.
 
 .. _NetBSD:
 
