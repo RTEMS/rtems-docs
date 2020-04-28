@@ -70,7 +70,9 @@ The RSB BSP build can be customised with following RSB command line options:
     Build the test suite. If ``yes`` is provided all tests in the testsuite are
     build. If ``no`` is provided no tests are built and if ``samples`` is
     provided only the sample executables are built, e.g.
-    ``--with-rtems-tests=yes``.
+    ``--with-rtems-tests=yes``. The test executables are install under the BSP
+    in the :file:`tests` directory and you can execute them with the
+    :ref:`tester and run command <rtems-tester-command>`.
 
 ``--with-rtems-smp``:
     Build with SMP support. The BSP has to have SMP support or this option will
