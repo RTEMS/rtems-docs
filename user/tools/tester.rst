@@ -33,7 +33,7 @@ standards.
 Available BSP testers
 ---------------------
 
-You can list the available BSP testers with:
+You can list the available BSP testers with (not all shown):
 
 .. code-block:: none
 
@@ -545,33 +545,4 @@ Command Line Help
 -----------------
 
 The :program:`rtems-test` command line accepts a range of options. You can
-review the available options by using the ``--help`` option:
-
-.. code-block:: none
-
-    RTEMS Tools Project (c) 2012-2014 Chris Johns
-    Options and arguments:
-    --always-clean               : Always clean the build tree, even with an error
-    --debug-trace                : Debug trace based on specific flags
-    --dry-run                    : Do everything but actually run the build
-    --force                      : Force the build to proceed
-    --jobs=[0..n,none,half,full] : Run with specified number of jobs, default: num CPUs.
-    --keep-going                 : Do not stop on an error.
-    --list-bsps                  : List the supported BSPs
-    --log file                   : Log file where all build output is written to
-    --macros file[,file]         : Macro format files to load after the defaults
-    --no-clean                   : Do not clean up the build tree
-    --quiet                      : Quiet output (not used)
-    --report-path                : Report output base path (file extension will be added)
-    --report-format              : Formats in which to report test results: json
-    --log-mode                   : Log modes, failures (default),all,none
-    --rtems-bsp                  : The RTEMS BSP to run the test on
-    --rtems-tools                : The path to the RTEMS tools
-    --target                     : Set the target triplet
-    --timeout                    : Set the test timeout in seconds (default 180 seconds)
-    --trace                      : Trace the execution
-    --warn-all                   : Generate warnings
-
-.. note:: The list of options may be different for each release. For more
-          information, please see the available options for the release
-          you are using.
+review the available options by using the ``--help`` option.
