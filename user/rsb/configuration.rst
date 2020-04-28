@@ -131,14 +131,16 @@ source is broken down in a number of smaller files and you require the full
 package. The source's ``setup`` command must reside in the ``%prep:`` section
 and it unpacks the source code ready to be built.
 
-If the source URL references the GitHub API server https://api.github.com/ a
-tarball of the specified version is download. For example the URL for the
-STLINK project on GitHub and version is:
+If the source URL references the GitHub API server a tarball of the specified
+version is download. For example the URL for a Newlib snapshot GitHub is:
 
 .. code-block:: spec
 
-    %define stlink_version 3494c11
-    %source set stlink https://api.github.com/repos/texane/stlink/texane-stlink-%{stlink_version}.tar.gz
+    %define newlib_version 08eab6396f678cf5e5968acaed0bae9fd129983b
+    %define newlib_external 1
+    %define newlib_expand_name sourceware-mirror-newlib-cygwin-%{newlib_version}
+    %source set newlib --rsb-file=newlib-%{newlib_version}.tar.gz \
+       https://codeload.github.com/RTEMS/sourceware-mirror-newlib-cygwin/tar.gz/%{newlib_version}
 
 GIT
 ~~~
@@ -183,34 +185,6 @@ errors that can arise.
 The protocol option lets you set a specific protocol. The ``git://`` prefix
 used by the RSB to select a git repository can be removed using *none* or
 replaced with one of the standard git protocols.
-
-CVS
-~~~
-
-A CVS repository can be checked out. CVS is more complex than GIT to handle
-because of the modules support. This can effect the paths the source ends up
-in. The CVS URL only supports the CVS protocol. You can control the repository
-via the URL by appending options and arguments to the CVS path. The options are
-delimited by ``?`` and option arguments are delimited from the options with
-``=``. The options are:
-
-``module``:
-  The module to checkout.
-
-``src-prefix``:
-  The path into the source where the module starts.
-
-``tag``:
-  The CVS tag to checkout.
-
-``date``:
-  The CVS date to checkout.
-
-The following is an example of checking out from a CVS repository:
-
-.. code-block:: spec
-
-    %source set newlib cvs://pserver:anoncvs@sourceware.org/cvs/src?module=newlib?src-prefix=src
 
 Macros and Defaults
 ^^^^^^^^^^^^^^^^^^^
@@ -633,13 +607,13 @@ information is kept updated and accurate:
     Summary:   Device Tree Compiler v%{dtc_version} for target %{_target} on host %{_host}
     Version:   %{dtc_version}
     Release:   %{release}
-    URL: 	   http://www.jdl.com/software/
+    URL:       https://www.devicetree.org/
     BuildRoot: %{_tmppath}/%{name}-root-%(%{__id_u} -n)
 
 The next section defines the source and any patches. In this case there is a
 single source package and it can be downloaded using the HTTP protocol. The RSB
 knows this is GZip'ped tar file. If more than one package is needed, add
-them increasing the index. The ``gcc-4.8-1.cfg`` configuration contains
+them increasing the index. The ``gcc-8-1.cfg`` configuration contains
 examples of more than one source package as well as conditionally including
 source packages based on the outer configuration options:
 
@@ -648,7 +622,7 @@ source packages based on the outer configuration options:
     #
     # Source
     #
-    %source set dtc http://www.jdl.com/software/dtc-v%{dtc_version}.tgz
+    %source set dtc https://www.kernel.org/pub/software/utils/dtc/dtc-%{dtc_version}.tar.gz
 
 The remainder of the script is broken in to the various phases of a build. They
 are:
@@ -730,8 +704,8 @@ installed into the prefix on the build host and you may not even have
 permissions to perform a real install. Most packages install to the ``prefix``
 and the prefix is typically supplied via the command to the RSB or the
 package's default is used. The default can vary depending on the host's
-operating system. To install to a path that is not the prefix the ``DESTDIR`` 
-make variable is used. Most packages should honour the ``DISTDIR`` make
+operating system. To install to a path that is not the prefix the ``DESTDIR``
+make variable is used. Most packages should honour the ``DESTDIR`` make
 variables and you can typically specify it on the command line to make when
 invoking the install target. This results in the package being installed to a
 location that is not the prefix but one you can control. The RSB provides a
@@ -773,7 +747,7 @@ in the ``tar`` directory:
     RTEMS Source Builder, Package Builder v0.2.0
     config: devel/dtc-1.2.0
     package: dtc-1.2.0-x86_64-freebsd9.1-1
-    download: http://www.jdl.com/software/dtc-v1.2.0.tgz -> sources/dtc-v1.2.0.tgz
+    download: https://www.kernel.org/pub/software/utils/dtc/dtc-v1.2.0.tgz -> sources/dtc-v1.2.0.tgz
     building: dtc-1.2.0-x86_64-freebsd9.1-1
     $ ls tar
     dtc-1.2.0-x86_64-freebsd9.1-1.tar.bz2
