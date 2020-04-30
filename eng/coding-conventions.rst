@@ -33,15 +33,16 @@ Source Documentation
 Licenses
 --------
 
-* The RTEMS `License <https://devel.rtems.org/wiki/TBR/Website/License>`_. is the typical
-  and preferred license.
-  * 2- and 3-clause BSD, MIT, and other OSI-approved non-copyleft licenses
-    that permit statically linking with the code of different licenses
-    are acceptable.
-  * GPL licensed code is NOT acceptable, neither is LGPL.
-    See `this blog post explanation <http://gedare-csphd.blogspot.com/2013/05/software-licenses-with-rtems.html>`_.
-    for more information.
-  * Advertising obligations are NOT acceptable, but restrictions are permissible.
+The RTEMS Project has strict requirements on the types of software licenses
+that apply to software it includes and distributes. Submissions will be
+summarily rejected that do not follow the correct license or file header
+requirements.
+
+* Refer to :ref:`LicensingRequirements` for a discussion of the acceptable
+  licenses and the rationale.
+
+* Refer to :ref:`FileHeaderCopyright` for example copyright/license comment
+  blocks for various languages.
 
 Language and Compiler
 ---------------------
