@@ -16,7 +16,7 @@ Introduction
 ============
 
 The concept of scheduling in real-time systems dictates the ability to provide
-immediate response to specific external events, particularly the necessity of
+an immediate response to specific external events, particularly the necessity of
 scheduling tasks to run within a specified time limit after the occurrence of
 an event.  For example, software embedded in life-support systems used to
 monitor hospital patients must take instant action if a change in the patient's
@@ -38,7 +38,7 @@ The directives provided by the scheduler manager are:
 - rtems_scheduler_get_maximum_priority_ - Get maximum task priority of a scheduler
 
 - rtems_scheduler_map_priority_to_posix_ - Map task priority to POSIX thread
-  prority
+  priority
 
 - rtems_scheduler_map_priority_from_posix_ - Map POSIX thread priority to task
   prority
@@ -58,8 +58,8 @@ The directives provided by the scheduler manager are:
 Scheduling Algorithms
 ---------------------
 
-RTEMS provides a plugin framework which allows it to support multiple
-scheduling algorithms. RTEMS includes multiple scheduling algorithms and the
+RTEMS provides a plugin framework that allows it to support multiple
+scheduling algorithms. RTEMS includes multiple scheduling algorithms, and the
 user can select which of these they wish to use in their application at
 link-time.  In addition, the user can implement their own scheduling algorithm
 and configure RTEMS to use it.
@@ -69,8 +69,8 @@ select the algorithm which is most appropriate to their use case. Most
 real-time operating systems schedule tasks using a priority based algorithm,
 possibly with preemption control.  The classic RTEMS scheduling algorithm which
 was the only algorithm available in RTEMS 4.10 and earlier, is a fixed-priority
-scheduling algorithm.  This scheduling algoritm is suitable for uniprocessor
-(e.g. non-SMP) systems and is known as the *Deterministic Priority
+scheduling algorithm.  This scheduling algorithm is suitable for uniprocessor
+(e.g., non-SMP) systems and is known as the *Deterministic Priority
 Scheduler*.  Unless the user configures another scheduling algorithm, RTEMS
 will use this on uniprocessor systems.
 
@@ -87,7 +87,7 @@ in time is the one with the highest priority among all tasks in the ready
 state.
 
 When a task is added to the ready chain, it is placed behind all other tasks of
-the same priority.  This rule provides a round-robin within priority group
+the same priority.  This rule provides a round-robin within a priority group
 scheduling characteristic.  This means that in a group of equal priority tasks,
 tasks will execute in the order they become ready or FIFO order.  Even though
 there are ways to manipulate and adjust task priorities, the most important
@@ -100,7 +100,7 @@ rule to remember is:
 
 Priority scheduling is the most commonly used scheduling algorithm.  It should
 be used by applications in which multiple tasks contend for CPU time or other
-resources and there is a need to ensure certain tasks are given priority over
+resources, and there is a need to ensure certain tasks are given priority over
 other tasks.
 
 There are a few common methods of accomplishing the mechanics of this
@@ -127,7 +127,7 @@ algorithm.  These ways involve a list or chain of tasks in the ready state.
   the ready queue.
 
 RTEMS currently includes multiple priority based scheduling algorithms as well
-as other algorithms which incorporate deadline.  Each algorithm is discussed in
+as other algorithms that incorporate deadline.  Each algorithm is discussed in
 the following sections.
 
 Uniprocessor Schedulers
@@ -142,13 +142,13 @@ Deterministic Priority Scheduler
 --------------------------------
 
 This is the scheduler implementation which has always been in RTEMS.  After the
-4.10 release series, it was factored into pluggable scheduler selection.  It
+4.10 release series, it was factored into a pluggable scheduler selection.  It
 schedules tasks using a priority based algorithm which takes into account
 preemption.  It is implemented using an array of FIFOs with a FIFO per
 priority.  It maintains a bitmap which is used to track which priorities have
 ready tasks.
 
-This algorithm is deterministic (e.g. predictable and fixed) in execution time.
+This algorithm is deterministic (e.g., predictable and fixed) in execution time.
 This comes at the cost of using slightly over three (3) kilobytes of RAM on a
 system configured to support 256 priority levels.
 
@@ -167,7 +167,7 @@ determine where to insert the newly readied task.
 This algorithm uses much less RAM than the Deterministic Priority Scheduler but
 is *O(n)* where *n* is the number of ready tasks.  In a small system with a
 small number of tasks, this will not be a performance issue.  Reducing RAM
-consumption is often critical in small systems which are incapable of
+consumption is often critical in small systems that are incapable of
 supporting a large number of tasks.
 
 This scheduler is only aware of a single core.
@@ -179,23 +179,23 @@ This scheduler is only aware of a single core.
 Earliest Deadline First Scheduler
 ---------------------------------
 
-This is an alternative scheduler in RTEMS for single core applications.  The
+This is an alternative scheduler in RTEMS for single-core applications.  The
 primary EDF advantage is high total CPU utilization (theoretically up to
 100%). It assumes that tasks have priorities equal to deadlines.
 
 This EDF is initially preemptive, however, individual tasks may be declared
-not-preemptive. Deadlines are declared using only Rate Monotonic manager which
-goal is to handle periodic behavior. Period is always equal to deadline. All
+not-preemptive. Deadlines are declared using only Rate Monotonic manager whose
+goal is to handle periodic behavior. Period is always equal to the deadline. All
 ready tasks reside in a single ready queue implemented using a red-black tree.
 
 This implementation of EDF schedules two different types of task priority types
 while each task may switch between the two types within its execution. If a
 task does have a deadline declared using the Rate Monotonic manager, the task
-is deadline-driven and its priority is equal to deadline.  On the contrary if a
+is deadline-driven and its priority is equal to deadline.  On the contrary, if a
 task does not have any deadline or the deadline is cancelled using the Rate
 Monotonic manager, the task is considered a background task with priority equal
 to that assigned upon initialization in the same manner as for priority
-scheduler. Each background task is of a lower importance than each
+scheduler. Each background task is of lower importance than each
 deadline-driven one and is scheduled when no deadline-driven task and no higher
 priority background task is ready to run.
 
@@ -203,7 +203,7 @@ Every deadline-driven scheduling algorithm requires means for tasks to claim a
 deadline.  The Rate Monotonic Manager is responsible for handling periodic
 execution. In RTEMS periods are equal to deadlines, thus if a task announces a
 period, it has to be finished until the end of this period. The call of
-``rtems_rate_monotonic_period`` passes the scheduler the length of oncoming
+``rtems_rate_monotonic_period`` passes the scheduler the length of an oncoming
 deadline. Moreover, the ``rtems_rate_monotonic_cancel`` and
 ``rtems_rate_monotonic_delete`` calls clear the deadlines assigned to the task.
 
@@ -214,7 +214,7 @@ deadline. Moreover, the ``rtems_rate_monotonic_cancel`` and
 Constant Bandwidth Server Scheduling (CBS)
 ------------------------------------------
 
-This is an alternative scheduler in RTEMS for single core applications.  The
+This is an alternative scheduler in RTEMS for single-core applications.  The
 CBS is a budget aware extension of EDF scheduler. The main goal of this
 scheduler is to ensure temporal isolation of tasks meaning that a task's
 execution in terms of meeting deadlines must not be influenced by other tasks
@@ -258,7 +258,7 @@ active deadline are background tasks.  In case deadlines are not used, then the
 EDF scheduler behaves exactly like a fixed-priority scheduler.  The tasks with
 an active deadline have a higher priority than the background tasks.  This
 scheduler supports :ref:`task processor affinities <rtems_task_set_affinity>`
-of one-to-one and one-to-all, e.g.  a task can execute on exactly one processor
+of one-to-one and one-to-all, e.g.,  a task can execute on exactly one processor
 or all processors managed by the scheduler instance.  The processor affinity
 set of a task must contain all online processors to select the one-to-all
 affinity.  This is to avoid pathological cases if processors are added/removed
@@ -431,7 +431,7 @@ directive.  While a task occupies this state it does not have a TCB or a task
 ID assigned to it; therefore, no other tasks in the system may reference this
 task.
 
-When a task is created via the ``rtems_task_create`` directive it enters the
+When a task is created via the ``rtems_task_create`` directive, it enters the
 dormant state.  This state is not entered through any other means.  Although
 the task exists in the system, it cannot actively compete for system resources.
 It will remain in the dormant state until it is started via the
@@ -457,10 +457,10 @@ of the following conditions:
 - The running task issues a ``rtems_barrier_wait`` directive.
 
 - The running task issues a ``rtems_message_queue_receive`` directive with the
-  wait option and the message queue is empty.
+  wait option, and the message queue is empty.
 
-- The running task issues an ``rtems_event_receive`` directive with the wait
-  option and the currently pending events do not satisfy the request.
+- The running task issues a ``rtems_event_receive`` directive with the wait
+  option, and the currently pending events do not satisfy the request.
 
 - The running task issues a ``rtems_semaphore_obtain`` directive with the wait
   option and the requested semaphore is unavailable.
@@ -498,7 +498,7 @@ conditions:
   waiting.
 
 - A running task issues an ``rtems_event_send`` directive which sends an event
-  condition to a task which is blocked waiting on that event condition.
+  condition to a task that is blocked waiting on that event condition.
 
 - A running task issues a ``rtems_semaphore_release`` directive which releases
   the semaphore on which the blocked task is waiting.
