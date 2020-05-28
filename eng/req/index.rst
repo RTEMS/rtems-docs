@@ -86,7 +86,6 @@ All procedures should be based on a peer review principles.
 
     req-for-req
     items
-    validation
     traceability
     management
     tooling

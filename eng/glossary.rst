@@ -9,9 +9,6 @@ Glossary
 .. glossary::
     :sorted:
 
-    ABI
-        An acronym for Application Binary Interface.
-
     API
         An acronym for Application Programming Interface.
 
@@ -102,9 +99,6 @@ Glossary
         and data generated as side-effects by the toolchain (compiler, assembler,
         linker) such as jump tables, linker trampolines, exception frame information,
         etc.
-
-    software item
-        This term has the same meaning as :term:`software product`.
 
     software product
         The *software product* is the :term:`RTEMS` real-time operating system.

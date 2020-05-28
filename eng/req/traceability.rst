@@ -57,20 +57,21 @@ Traceability between Software Requirements, Architecture and Design
 -------------------------------------------------------------------
 
 The software requirements are implemented in custom YAML files, see
-:ref:`ReqEngSpecItems`.  The software architecture and design is written in
-Doxygen markup.  Doxygen markup is used throughout all header and source files.
-A Doxygen filter program may be provided to place Doxygen markup in assembler
-files.  The software architecture is documented via Doxygen groups.  Each
-Doxygen group name should have a project-specific name and the name should be
-unique within the project, e.g.  RTEMSTopLevel\ MidLevel\ LowLevel.  The link
-from a Doxygen group to its parent group is realized through the ``@ingroup``
-special command.  The link from a Doxygen group or :term:`software component`
-to the corresponding requirement is realized through a ``@satisfy{req}``
-`custom command <http://www.doxygen.nl/manual/custcmd.html>`_ which needs the
-identifier of the requirement as its one and only parameter.  Only links to
-parents are explicitly given in the Doxygen markup.  The links from a parent to
-its children are only implicitly specified via the link from a child to its
-parent.  So, a tool must process all files to get the complete hierarchy of
-software requirements, architecture and design. Links from a software component
-to another software component are realized through automatic Doxygen references
-or the ``@ref`` and ``@see`` special commands.
+:ref:`ReqEngSpecificationItems`.  The software architecture and design is
+written in Doxygen markup.  Doxygen markup is used throughout all header and
+source files.  A Doxygen filter program may be provided to place Doxygen markup
+in assembler files.  The software architecture is documented via Doxygen
+groups.  Each Doxygen group name should have a project-specific name and the
+name should be unique within the project, e.g.  RTEMSTopLevel\ MidLevel\
+LowLevel.  The link from a Doxygen group to its parent group is realized
+through the ``@ingroup`` special command.  The link from a Doxygen group or
+:term:`software component` to the corresponding requirement is realized through
+a ``@satisfy{req}`` `custom command
+<http://www.doxygen.nl/manual/custcmd.html>`_ which needs the identifier of the
+requirement as its one and only parameter.  Only links to parents are
+explicitly given in the Doxygen markup.  The links from a parent to its
+children are only implicitly specified via the link from a child to its parent.
+So, a tool must process all files to get the complete hierarchy of software
+requirements, architecture and design. Links from a software component to
+another software component are realized through automatic Doxygen references or
+the ``@ref`` and ``@see`` special commands.
