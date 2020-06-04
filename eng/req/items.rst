@@ -127,9 +127,8 @@ attribute key name shall be a :ref:`SpecTypeName`.  In particular, key
 names which begin with an underscore (``_``) are reserved for internal
 use in tools.
 
-This is the root specification item type. All explicitly defined attributes
-shall be specified. The following attributes are explicitly defined for this
-type:
+This is the root specification item type. All explicit attributes shall be
+specified. The explicit attributes for this type are:
 
 SPDX-License-Identifier
     The attribute value shall be a :ref:`SpecTypeSPDXLicenseIdentifier`. It
@@ -187,8 +186,8 @@ Build Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``build``. This set of attributes specifies a build item. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 build-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the build
@@ -230,8 +229,8 @@ additional objects provided by :ref:`SpecTypeBuildObjectsItemType` items.  Test
 programs have an implicit ``enabled-by`` attribute value which is controlled by
 the option action :ref:`set-test-state <SpecTypeBuildOptionItemType>`.  If the
 test state is set to ``exclude``, then the test program is not built. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 ada-main
     The attribute value shall be a string. It shall be the path to the Ada main
@@ -320,8 +319,8 @@ Build BSP Item Type
 
 This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``bsp``. This set of attributes specifies a base BSP
-variant to build. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+variant to build. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 arch
     The attribute value shall be a string. It shall be the target architecture
@@ -407,8 +406,8 @@ This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``config-file``. This set of attributes specifies a
 configuration file placed in the build tree.  The configuration file is
 generated during the configure command execution and are placed in the build
-tree. All explicitly defined attributes shall be specified. The following
-attributes are explicitly defined for this type:
+tree. All explicit attributes shall be specified. The explicit attributes for
+this type are:
 
 content
     The attribute value shall be a string. It shall be the content of the
@@ -454,8 +453,8 @@ configure command execution and is placed in the build tree.  All collected
 configuration defines are written to the configuration header file during the
 configure command execution.  To have all configuration defines from sibling
 items available it is recommended to link them in the proper order. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 guard
     The attribute value shall be a string. It shall be the header guard define.
@@ -480,8 +479,8 @@ attribute if the value is ``group``. This set of attributes provides a means to
 aggregate other build items and modify the build item context which is used by
 referenced build items.  The ``includes``, ``ldflags``, ``objects``, and
 ``use`` variables of the build item context are updated by the corresponding
-attributes of the build group. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+attributes of the build group. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 includes
     The attribute value shall be a list. Each list element shall be a
@@ -538,8 +537,8 @@ This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``library``. This set of attributes specifies a
 static library.  Library items may use additional objects provided by
 :ref:`SpecTypeBuildObjectsItemType` items through the build dependency links of
-the item. All explicitly defined attributes shall be specified. The following
-attributes are explicitly defined for this type:
+the item. All explicit attributes shall be specified. The explicit attributes
+for this type are:
 
 cflags
     The attribute value shall be a list. Each list element shall be a
@@ -605,9 +604,8 @@ Build Objects Item Type
 
 This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``objects``. This set of attributes specifies a set
-of object files used to build static libraries or test programs. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+of object files used to build static libraries or test programs. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 cflags
     The attribute value shall be a list. Each list element shall be a
@@ -665,7 +663,7 @@ Build Option Item Type
 
 This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``option``. This set of attributes specifies a build
-option. The following explicitly defined attributes are required:
+option. The following explicit attributes are mandatory:
 
 * ``actions``
 
@@ -675,7 +673,7 @@ option. The following explicitly defined attributes are required:
 
 * ``description``
 
-The following attributes are explicitly defined for this type:
+The explicit attributes for this type are:
 
 actions
     The attribute value shall be a list. Each list element shall be a
@@ -746,7 +744,7 @@ Build Script Item Type
 This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``script``. This set of attributes specifies a build
 script.  The optional attributes may be required by commands executed through
-the scripts. The following explicitly defined attributes are required:
+the scripts. The following explicit attributes are mandatory:
 
 * ``do-build``
 
@@ -756,7 +754,7 @@ the scripts. The following explicitly defined attributes are required:
 
 * ``prepare-configure``
 
-The following attributes are explicitly defined for this type:
+The explicit attributes for this type are:
 
 asflags
     The attribute value shall be a list. Each list element shall be a
@@ -859,9 +857,8 @@ Build Start File Item Type
 
 This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``start-file``. This set of attributes specifies a
-start file to build.  A start file is used to link an executable. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+start file to build.  A start file is used to link an executable. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 asflags
     The attribute value shall be a list. Each list element shall be a
@@ -915,9 +912,8 @@ test program executable to build. Test programs may use additional objects
 provided by :ref:`SpecTypeBuildObjectsItemType` items.  Test programs have an
 implicit ``enabled-by`` attribute value which is controlled by the option
 action :ref:`set-test-state <SpecTypeBuildOptionItemType>`.  If the test state
-is set to ``exclude``, then the test program is not built. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+is set to ``exclude``, then the test program is not built. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 cflags
     The attribute value shall be a list. Each list element shall be a
@@ -995,8 +991,8 @@ Constraint Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``constraint``. This set of attributes specifies a constraint.
-All explicitly defined attributes shall be specified. The following attributes
-are explicitly defined for this type:
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 rationale
     The attribute value shall be an optional string. If the value is present,
@@ -1017,8 +1013,8 @@ Glossary Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``glossary``. This set of attributes specifies a glossary item.
-All explicitly defined attributes shall be specified. The following attributes
-are explicitly defined for this type:
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 glossary-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
@@ -1037,8 +1033,8 @@ Glossary Group Item Type
 
 This type refines the :ref:`SpecTypeGlossaryItemType` though the
 ``glossary-type`` attribute if the value is ``group``. This set of attributes
-specifies a glossary group. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+specifies a glossary group. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 name
     The attribute value shall be a string. It shall be the human readable name
@@ -1055,8 +1051,8 @@ Glossary Term Item Type
 
 This type refines the :ref:`SpecTypeGlossaryItemType` though the
 ``glossary-type`` attribute if the value is ``term``. This set of attributes
-specifies a glossary term. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+specifies a glossary term. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 term
     The attribute value shall be a string. It shall be the glossary term.
@@ -1076,8 +1072,8 @@ specification item. Interface items shall specify the interface of the software
 product to other software products and the hardware.  Use
 :ref:`SpecTypeInterfaceDomainItemType` items to specify interface domains, for
 example the :term:`API`, C language, compiler, interfaces to the
-implementation, and the hardware. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+implementation, and the hardware. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 interface-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
@@ -1124,9 +1120,8 @@ Application Configuration Group Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``appl-config-group``. This set of
-attributes specifies an application configuration group. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+attributes specifies an application configuration group. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be a string. It shall be the description of the
@@ -1147,9 +1142,8 @@ Application Configuration Option Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``appl-config-option``. This set
-of attributes specifies an application configuration option. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+of attributes specifies an application configuration option. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 appl-config-option-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
@@ -1203,8 +1197,8 @@ Application Configuration Feature Option Item Type
 This type refines the :ref:`SpecTypeApplicationConfigurationOptionItemType`
 though the ``appl-config-option-type`` attribute if the value is ``feature``.
 This set of attributes specifies an application configuration feature option.
-All explicitly defined attributes shall be specified. The following attributes
-are explicitly defined for this type:
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 default
     The attribute value shall be a string. It shall describe what happens if
@@ -1224,8 +1218,8 @@ This type refines the following types:
   ``appl-config-option-type`` attribute if the value is ``integer``
 
 This set of attributes specifies application configuration initializer or
-integer option. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+integer option. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 constraints
     The attribute value shall be an
@@ -1248,9 +1242,8 @@ This type refines the following types:
 * :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
   the value is ``union``
 
-This set of attributes specifies a compound (struct or union). All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+This set of attributes specifies a compound (struct or union). All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1292,8 +1285,8 @@ Interface Define Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``define``. This set of attributes
-specifies a define. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+specifies a define. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1321,9 +1314,8 @@ This type refines the :ref:`SpecTypeInterfaceItemType` though the
 specifies an interface domain.  Items of the types
 :ref:`SpecTypeInterfaceContainerItemType` and
 :ref:`SpecTypeInterfaceHeaderFileItemType` are placed into domains through
-links with the :ref:`SpecTypeInterfacePlacementLinkRole`. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+links with the :ref:`SpecTypeInterfacePlacementLinkRole`. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be a string. It shall be the description of the
@@ -1340,8 +1332,8 @@ Interface Enum Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``enum``. This set of attributes
-specifies an enum. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+specifies an enum. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1365,8 +1357,8 @@ Interface Enumerator Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``enumerator``. This set of
-attributes specifies an enumerator. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+attributes specifies an enumerator. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1404,8 +1396,8 @@ Interface Function Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``function``. This set of
-attributes specifies a function. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+attributes specifies a function. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1438,8 +1430,8 @@ Interface Group Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``group``. This set of attributes
-specifies an interface group. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+specifies an interface group. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1464,8 +1456,8 @@ This type refines the :ref:`SpecTypeInterfaceItemType` though the
 attributes specifies a header file.  The item shall have exactly one link with
 the :ref:`SpecTypeInterfacePlacementLinkRole` to an
 :ref:`SpecTypeInterfaceDomainItemType` item.  This link defines the interface
-domain of the header file. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+domain of the header file. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 path
     The attribute value shall be a string. It shall be the path used to include
@@ -1483,8 +1475,8 @@ Interface Macro Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``macro``. This set of attributes
-specifies a macro. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+specifies a macro. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1516,8 +1508,8 @@ Interface Typedef Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``typedef``. This set of
-attributes specifies a typedef. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+attributes specifies a typedef. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1542,9 +1534,8 @@ Interface Unspecified Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``unspecified``. This set of
-attributes specifies an unspecified interface. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+attributes specifies an unspecified interface. All explicit attributes shall be
+specified. The explicit attributes for this type are:
 
 name
     The attribute value shall be a string. It shall be the name of the
@@ -1557,8 +1548,8 @@ Interface Variable Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` though the
 ``interface-type`` attribute if the value is ``variable``. This set of
-attributes specifies a variable. All explicitly defined attributes shall be
-specified. The following attributes are explicitly defined for this type:
+attributes specifies a variable. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -1584,8 +1575,8 @@ Requirement Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``requirement``. This set of attributes specifies a
-requirement. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+requirement. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 rationale
     The attribute value shall be an optional string. If the value is present,
@@ -1633,9 +1624,8 @@ Functional Requirement Item Type
 
 This type refines the :ref:`SpecTypeRequirementItemType` though the
 ``requirement-type`` attribute if the value is ``functional``. This set of
-attributes specifies a functional requirement. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+attributes specifies a functional requirement. All explicit attributes shall be
+specified. The explicit attributes for this type are:
 
 functional-type
     The attribute value shall be a :ref:`SpecTypeRequirementFunctionalType`. It
@@ -1648,9 +1638,8 @@ Non-Functional Requirement Item Type
 
 This type refines the :ref:`SpecTypeRequirementItemType` though the
 ``requirement-type`` attribute if the value is ``non-functional``. This set of
-attributes specifies a non-functional requirement. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+attributes specifies a non-functional requirement. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 non-functional-type
     The attribute value shall be a
@@ -1665,9 +1654,8 @@ Requirement Validation Item Type
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``validation``. This set of attributes provides a requirement
 validation evidence.  The item shall have exactly one link to the validated
-requirement with the :ref:`SpecTypeRequirementValidationLinkRole`. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+requirement with the :ref:`SpecTypeRequirementValidationLinkRole`. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 method
     The attribute value shall be a :ref:`SpecTypeRequirementValidationMethod`.
@@ -1694,16 +1682,16 @@ Specification Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``spec``. This set of attributes specifies specification types.
-All explicitly defined attributes shall be specified. The following attributes
-are explicitly defined for this type:
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 spec-description
     The attribute value shall be an optional string. It shall be the
     description of the specification type.
 
 spec-example
-    The attribute value shall be an optional string. If this value is present,
-    then tt shall be an example of the specification type.
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be an example of the specification type.
 
 spec-info
     The attribute value shall be a :ref:`SpecTypeSpecificationInformation`.
@@ -1746,7 +1734,7 @@ Please have a look at the following example:
             spec-type: int
         description: |
           This set of attributes specifies an example.
-        required-attributes: all
+        mandatory-attributes: all
     spec-name: Example Item Type
     spec-type: spec
     type: spec
@@ -1758,8 +1746,8 @@ Test Case Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``test-case``. This set of attributes specifies a test case.
-All explicitly defined attributes shall be specified. The following attributes
-are explicitly defined for this type:
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 actions
     The attribute value shall be a list. Each list element shall be a
@@ -1774,15 +1762,15 @@ description
     description.
 
 epilogue
-    The attribute value shall be an optional string. If the attribute value is
-    present, then it shall be the test case epilogue code.  The epilogue code
-    is placed in the test case body after the test case actions.
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case epilogue code.  The epilogue code is placed
+    in the test case body after the test case actions.
 
 fixture
-    The attribute value shall be an optional string. If the attribute value is
-    present, then it shall be a pointer to the test case fixture.  The test
-    case fixture pointer declaration may be provided by the test case support
-    code or via an included header file.
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be a pointer to the test case fixture.  The test case fixture
+    pointer declaration may be provided by the test case support code or via an
+    included header file.
 
 includes
     The attribute value shall be a list of strings. It shall be a list of
@@ -1796,15 +1784,15 @@ name
     The attribute value shall be a :ref:`SpecTypeTestName`.
 
 prologue
-    The attribute value shall be an optional string. If the attribute value is
-    present, then it shall be the test case prologue code.  The prologue code
-    is placed in the test case body before the test case actions.  A use case
-    is the declaration of local variables used by the test case actions.
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case prologue code.  The prologue code is placed
+    in the test case body before the test case actions.  A use case is the
+    declaration of local variables used by the test case actions.
 
 support
-    The attribute value shall be an optional string. If the attribute value is
-    present, then it shall be the test case support code.  The support code is
-    placed at file scope before the test case code.
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case support code. The support code is placed at
+    file scope before the test case code.
 
 target
     The attribute value shall be a string. It shall be the path to the
@@ -1822,9 +1810,8 @@ if the value is ``test-platform``. Please note:
 
      This item type is work in progress.
 
-This set of attributes specifies a test platform. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies a test platform. All explicit attributes shall
+be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be a string. It shall be the description of the
@@ -1846,9 +1833,8 @@ if the value is ``test-procedure``. Please note:
 
      This item type is work in progress.
 
-This set of attributes specifies a test procedure. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies a test procedure. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 name
     The attribute value shall be a string. It shall be the human readable name
@@ -1869,8 +1855,8 @@ Test Suite Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
 if the value is ``test-suite``. This set of attributes specifies a test suite.
-All explicitly defined attributes shall be specified. The following attributes
-are explicitly defined for this type:
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 brief
     The attribute value shall be a string. It shall be the test suite brief
@@ -1920,8 +1906,9 @@ Application Configuration Option Constraint Set
 
 This set of attributes defines application configuration option constraints.
 Additional constraints can be added through the links of the item using the
-:ref:`SpecTypeConstraintLinkRole`. None of the explicitly defined attributes
-are required. The following attributes are explicitly defined for this type:
+:ref:`SpecTypeConstraintLinkRole`. None of the explicit attributes is
+mandatory, they are all are optional. The explicit attributes for this type
+are:
 
 max
     The attribute value shall be an :ref:`SpecTypeIntegerOrString`. It shall be
@@ -2115,9 +2102,8 @@ This type is used by the following types:
 Build Install Directive
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies files installed by a build item. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+This set of attributes specifies files installed by a build item. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 destination
     The attribute value shall be a string. It shall be the install destination
@@ -2183,8 +2169,8 @@ Build Option Action
 ^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies a build option action. Exactly one of the
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 append-test-cppflags
     The attribute value shall be a string. It shall be the name of a test
@@ -2376,8 +2362,8 @@ Build Option C Compiler Check Action
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies a check done using the C compiler. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 cflags
     The attribute value shall be a list. Each list element shall be a
@@ -2402,8 +2388,8 @@ Build Option C++ Compiler Check Action
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies a check done using the C++ compiler. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 cxxflags
     The attribute value shall be a list. Each list element shall be a
@@ -2428,8 +2414,8 @@ Build Option Default by Variant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies build option default values by variant. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 value
     The attribute value shall be a :ref:`SpecTypeBuildOptionValue`. It value
@@ -2461,7 +2447,7 @@ Build Option Set Test State Action
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies test states for a set of test programs.
-Generic attributes may be defined. Each attribute key shall be a
+Generic attributes may be specified. Each attribute key shall be a
 :ref:`SpecTypeName`. The attribute value shall be a
 :ref:`SpecTypeBuildTestState`. The keys shall be test program names.  The names
 shall correspond to the name of a :ref:`SpecTypeBuildTestProgramItemType` or
@@ -2649,8 +2635,8 @@ A value of this type shall be of one of the following variants:
   value.
 
 * The value may be a set of attributes. Each attribute defines an operator.
-  Exactly one of the explicitly defined attributes shall be specified. The
-  following attributes are explicitly defined for this type:
+  Exactly one of the explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
   and
       The attribute value shall be a list. Each list element shall be an
@@ -2789,8 +2775,8 @@ This type refines the following types:
   attribute if the value is ``union``
 
 This set of attributes specifies an interface compound member compound. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 definition
     The attribute value shall be a list. Each list element shall be an
@@ -2803,9 +2789,8 @@ Interface Compound Member Declaration
 
 This type refines the :ref:`SpecTypeInterfaceCompoundMemberDefinition` though
 the ``kind`` attribute if the value is ``member``. This set of attributes
-specifies an interface compound member declaration. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+specifies an interface compound member declaration. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 definition
     The attribute value shall be a string. It shall be the interface compound
@@ -2818,8 +2803,8 @@ Interface Compound Member Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies an interface compound member definition. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
@@ -2853,8 +2838,8 @@ Interface Compound Member Definition Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies an interface compound member definition
-directive. All explicitly defined attributes shall be specified. The following
-attributes are explicitly defined for this type:
+directive. All explicit attributes shall be specified. The explicit attributes
+for this type are:
 
 default
     The attribute value shall be an
@@ -2877,8 +2862,8 @@ Interface Compound Member Definition Variant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies an interface compound member definition
-variant. All explicitly defined attributes shall be specified. The following
-attributes are explicitly defined for this type:
+variant. All explicit attributes shall be specified. The explicit attributes
+for this type are:
 
 definition
     The attribute value shall be an
@@ -2919,8 +2904,8 @@ Interface Definition Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies an interface definition directive. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 default
     The attribute value shall be an :ref:`SpecTypeInterfaceDefinition`. The
@@ -2948,9 +2933,8 @@ This type is used by the following types:
 Interface Definition Variant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an interface definition variant. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+This set of attributes specifies an interface definition variant. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 definition
     The attribute value shall be an :ref:`SpecTypeInterfaceDefinition`. The
@@ -3024,8 +3008,8 @@ A value of this type shall be of one of the following variants:
   in the expression.
 
 * The value may be a set of attributes. Each attribute defines an operator.
-  Exactly one of the explicitly defined attributes shall be specified. The
-  following attributes are explicitly defined for this type:
+  Exactly one of the explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
   and
       The attribute value shall be a list. Each list element shall be an
@@ -3091,9 +3075,8 @@ links.
 Interface Function Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a function definition. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies a function definition. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 body
     The attribute value shall be an optional string. If the value is present,
@@ -3124,9 +3107,8 @@ This type is used by the following types:
 Interface Function Definition Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a function definition directive. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+This set of attributes specifies a function definition directive. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 default
     The attribute value shall be an :ref:`SpecTypeInterfaceFunctionDefinition`.
@@ -3146,9 +3128,8 @@ This type is used by the following types:
 Interface Function Definition Variant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a function definition variant. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+This set of attributes specifies a function definition variant. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 definition
     The attribute value shall be an :ref:`SpecTypeInterfaceFunctionDefinition`.
@@ -3194,8 +3175,8 @@ This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
 value is ``interface-include``. It defines the interface include role of links
 and is used to indicate that an interface container includes another interface
 container.  For example, one header file includes another header file. All
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 enabled-by
     The attribute value shall be an :ref:`SpecTypeEnabledXByExpression`. It
@@ -3235,9 +3216,8 @@ This type is used by the following types:
 Interface Parameter
 ^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an interface parameter. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies an interface parameter. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
@@ -3292,9 +3272,8 @@ interface container, for example a header file.
 Interface Return Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an interface return. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies an interface return. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 return
     The attribute value shall be an optional string. It shall describe the
@@ -3315,9 +3294,8 @@ This type is used by the following types:
 Interface Return Value
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an interface return value. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+This set of attributes specifies an interface return value. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
@@ -3346,8 +3324,8 @@ Link
 
 This set of attributes specifies a link from one specification item to another
 specification item.  The links in a list are ordered.  The first link in the
-list is processed first. All explicitly defined attributes shall be specified.
-The following attributes are explicitly defined for this type:
+list is processed first. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 role
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the role of
@@ -3503,9 +3481,8 @@ This type is used by the following types:
 Requirement Reference
 ^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a requirement reference. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+This set of attributes specifies a requirement reference. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 identifier
     The attribute value shall be a string. It shall be the type-specific
@@ -3743,7 +3720,7 @@ This type is used by the following types:
 Specification Attribute
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Generic attributes may be defined. Each attribute key shall be a
+Generic attributes may be specified. Each attribute key shall be a
 :ref:`SpecTypeName`. The attribute value shall be a
 :ref:`SpecTypeSpecificationAttributeValue`. The generic attributes specify an
 attribute set.
@@ -3757,20 +3734,20 @@ This type is used by the following types:
 Specification Attribute Set
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a set of attributes. The following explicitly
-defined attributes are required:
+This set of attributes specifies a set of attributes. The following explicit
+attributes are mandatory:
 
 * ``attributes``
 
 * ``description``
 
-* ``required-attributes``
+* ``mandatory-attributes``
 
-The following attributes are explicitly defined for this type:
+The explicit attributes for this type are:
 
 attributes
     The attribute value shall be a :ref:`SpecTypeSpecificationAttribute`. It
-    shall be the specification of the set of explicitly defined attributes.
+    shall be the specification of the set of explicit attributes.
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -3781,10 +3758,10 @@ generic-attributes
     :ref:`SpecTypeSpecificationGenericAttributes`. It shall be the
     specification of the generic attributes of the attribute set.
 
-required-attributes
+mandatory-attributes
     The attribute value shall be a
-    :ref:`SpecTypeSpecificationRequiredAttributes`. It shall be the set of
-    required attributes of the attribute set.
+    :ref:`SpecTypeSpecificationMandatoryAttributes`. It shall be the set of
+    mandatory attributes of the attribute set.
 
 This type is used by the following types:
 
@@ -3795,9 +3772,8 @@ This type is used by the following types:
 Specification Attribute Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an attribute value. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies an attribute value. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -3817,8 +3793,7 @@ Specification Boolean Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This attribute set specifies a boolean value. Only the ``description``
-attribute is required. The following attributes are explicitly defined for this
-type:
+attribute is mandatory. The explicit attributes for this type are:
 
 assert
     The attribute value shall be a boolean. This optional attribute defines the
@@ -3849,8 +3824,8 @@ constraints.
 A value of this type shall be of one of the following variants:
 
 * The value may be a set of attributes. Each attribute defines an operator.
-  Exactly one of the explicitly defined attributes shall be specified. The
-  following attributes are explicitly defined for this type:
+  Exactly one of the explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
   and
       The attribute value shall be a list. Each list element shall be a
@@ -3917,8 +3892,8 @@ Specification Floating-Point Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies a floating-point value. Only the
-``description`` attribute is required. The following attributes are explicitly
-defined for this type:
+``description`` attribute is mandatory. The explicit attributes for this type
+are:
 
 assert
     The attribute value shall be a
@@ -3942,8 +3917,8 @@ Specification Generic Attributes
 
 This set of attributes specifies generic attributes.  Generic attributes are
 attributes which are not explicitly defined.  They are restricted to a uniform
-attribute value type. All explicitly defined attributes shall be specified. The
-following attributes are explicitly defined for this type:
+attribute value type. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -3962,9 +3937,8 @@ This type is used by the following types:
 Specification Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies attribute values. At least one of the
-explicitly defined attributes shall be specified. The following attributes are
-explicitly defined for this type:
+This set of attributes specifies attribute values. At least one of the explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 bool
     The attribute value shall be a :ref:`SpecTypeSpecificationBooleanValue`. It
@@ -4009,8 +3983,8 @@ value of the specified attribute satisfies the required constraints.
 A value of this type shall be of one of the following variants:
 
 * The value may be a set of attributes. Each attribute defines an operator.
-  Exactly one of the explicitly defined attributes shall be specified. The
-  following attributes are explicitly defined for this type:
+  Exactly one of the explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
   and
       The attribute value shall be a list. Each list element shall be a
@@ -4075,8 +4049,7 @@ Specification Integer Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies an integer value. Only the ``description``
-attribute is required. The following attributes are explicitly defined for this
-type:
+attribute is mandatory. The explicit attributes for this type are:
 
 assert
     The attribute value shall be a :ref:`SpecTypeSpecificationIntegerAssert`.
@@ -4097,9 +4070,8 @@ This type is used by the following types:
 Specification List
 ^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a list of attributes or values. All explicitly
-defined attributes shall be specified. The following attributes are explicitly
-defined for this type:
+This set of attributes specifies a list of attributes or values. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -4112,6 +4084,36 @@ spec-type
 This type is used by the following types:
 
 * :ref:`SpecTypeSpecificationInformation`
+
+.. _SpecTypeSpecificationMandatoryAttributes:
+
+Specification Mandatory Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It defines which explicit attributes are mandatory.
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a list. Each list element shall be a :ref:`SpecTypeName`.
+  The list defines the mandatory attributes through their key names.
+
+* The value may be a string. It defines how many explicit attributes are
+  mandatory.  If `none` is used, then none of the explicit attributes is
+  mandatory, they are all optional. The value shall be an element of
+
+  * "``all``",
+
+  * "``at-least-one``",
+
+  * "``at-most-one``",
+
+  * "``exactly-one``", and
+
+  * "``none``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeSpecificationAttributeSet`
 
 .. _SpecTypeSpecificationMemberLinkRole:
 
@@ -4129,8 +4131,8 @@ Specification Refinement Link Role
 
 This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
 value is ``spec-refinement``. It defines the specification refinement role of
-links. All explicitly defined attributes shall be specified. The following
-attributes are explicitly defined for this type:
+links. All explicit attributes shall be specified. The explicit attributes for
+this type are:
 
 spec-key
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
@@ -4141,36 +4143,6 @@ spec-value
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
     specification type refinement attribute value of the specification
     refinement.
-
-.. _SpecTypeSpecificationRequiredAttributes:
-
-Specification Required Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This attribute value defines which of the explicitly defined attributes are
-required.
-
-A value of this type shall be of one of the following variants:
-
-* The value may be a list. Each list element shall be a :ref:`SpecTypeName`.
-  This list defines the required attributes through their keys.
-
-* The value may be a string. This string defines the how many explicitly
-  defined attributes are required. The value shall be an element of
-
-  * "``all``",
-
-  * "``at-least-one``",
-
-  * "``at-most-one``",
-
-  * "``exactly-one``", and
-
-  * "``none``".
-
-This type is used by the following types:
-
-* :ref:`SpecTypeSpecificationAttributeSet`
 
 .. _SpecTypeSpecificationStringAssert:
 
@@ -4183,8 +4155,8 @@ the specified attribute satisfies the required constraints.
 A value of this type shall be of one of the following variants:
 
 * The value may be a set of attributes. Each attribute defines an operator.
-  Exactly one of the explicitly defined attributes shall be specified. The
-  following attributes are explicitly defined for this type:
+  Exactly one of the explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
   and
       The attribute value shall be a list. Each list element shall be a
@@ -4269,7 +4241,7 @@ Specification String Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies a string. Only the ``description`` attribute
-is required. The following attributes are explicitly defined for this type:
+is mandatory. The explicit attributes for this type are:
 
 assert
     The attribute value shall be a :ref:`SpecTypeSpecificationStringAssert`.
@@ -4290,9 +4262,8 @@ This type is used by the following types:
 Test Case Action
 ^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a test case action. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies a test case action. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 action
     The attribute value shall be a string. It shall be the test case action
@@ -4319,9 +4290,8 @@ This type is used by the following types:
 Test Case Check
 ^^^^^^^^^^^^^^^
 
-This set of attributes specifies a test case check. All explicitly defined
-attributes shall be specified. The following attributes are explicitly defined
-for this type:
+This set of attributes specifies a test case check. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 check
     The attribute value shall be a string. It shall be the test case check
