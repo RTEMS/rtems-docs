@@ -2447,8 +2447,8 @@ Build Option Set Test State Action
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies test states for a set of test programs.
-Generic attributes may be specified. Each attribute key shall be a
-:ref:`SpecTypeName`. The attribute value shall be a
+Generic attributes may be specified. Each generic attribute key shall be a
+:ref:`SpecTypeName`. Each generic attribute value shall be a
 :ref:`SpecTypeBuildTestState`. The keys shall be test program names.  The names
 shall correspond to the name of a :ref:`SpecTypeBuildTestProgramItemType` or
 :ref:`SpecTypeBuildAdaTestProgramItemType` item.  Due to the processing order
@@ -3385,6 +3385,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildItemType`
 
+* :ref:`SpecTypeBuildOptionSetTestStateAction`
+
 * :ref:`SpecTypeGlossaryItemType`
 
 * :ref:`SpecTypeInterfaceItemType`
@@ -3396,6 +3398,8 @@ This type is used by the following types:
 * :ref:`SpecTypeRootItemType`
 
 * :ref:`SpecTypeSpecificationAttributeValue`
+
+* :ref:`SpecTypeSpecificationExplicitAttributes`
 
 * :ref:`SpecTypeSpecificationGenericAttributes`
 
@@ -3715,20 +3719,6 @@ This type is used by the following types:
 
 * :ref:`SpecTypeRootItemType`
 
-.. _SpecTypeSpecificationAttribute:
-
-Specification Attribute
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Generic attributes may be specified. Each attribute key shall be a
-:ref:`SpecTypeName`. The attribute value shall be a
-:ref:`SpecTypeSpecificationAttributeValue`. The generic attributes specify an
-attribute set.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeSpecificationAttributeSet`
-
 .. _SpecTypeSpecificationAttributeSet:
 
 Specification Attribute Set
@@ -3746,8 +3736,9 @@ attributes are mandatory:
 The explicit attributes for this type are:
 
 attributes
-    The attribute value shall be a :ref:`SpecTypeSpecificationAttribute`. It
-    shall be the specification of the set of explicit attributes.
+    The attribute value shall be a
+    :ref:`SpecTypeSpecificationExplicitAttributes`. It shall specify the
+    explicit attributes of the attribute set.
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -3755,12 +3746,12 @@ description
 
 generic-attributes
     The attribute value shall be a
-    :ref:`SpecTypeSpecificationGenericAttributes`. It shall be the
-    specification of the generic attributes of the attribute set.
+    :ref:`SpecTypeSpecificationGenericAttributes`. It shall specify the generic
+    attributes of the attribute set.
 
 mandatory-attributes
     The attribute value shall be a
-    :ref:`SpecTypeSpecificationMandatoryAttributes`. It shall be the set of
+    :ref:`SpecTypeSpecificationMandatoryAttributes`. It shall specify the
     mandatory attributes of the attribute set.
 
 This type is used by the following types:
@@ -3785,7 +3776,7 @@ spec-type
 
 This type is used by the following types:
 
-* :ref:`SpecTypeSpecificationAttribute`
+* :ref:`SpecTypeSpecificationExplicitAttributes`
 
 .. _SpecTypeSpecificationBooleanValue:
 
@@ -3811,6 +3802,21 @@ description
 This type is used by the following types:
 
 * :ref:`SpecTypeSpecificationInformation`
+
+.. _SpecTypeSpecificationExplicitAttributes:
+
+Specification Explicit Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Generic attributes may be specified. Each generic attribute key shall be a
+:ref:`SpecTypeName`. Each generic attribute value shall be a
+:ref:`SpecTypeSpecificationAttributeValue`. Each generic attribute specifies an
+explicit attribute of the attribute set.  The key of the each generic attribute
+defines the attribute key of the explicit attribute.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeSpecificationAttributeSet`
 
 .. _SpecTypeSpecificationFloatingXPointAssert:
 
@@ -3916,15 +3922,20 @@ Specification Generic Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This set of attributes specifies generic attributes.  Generic attributes are
-attributes which are not explicitly defined.  They are restricted to a uniform
-attribute value type. All explicit attributes shall be specified. The explicit
-attributes for this type are:
+attributes which are not explicitly specified by
+:ref:`SpecTypeSpecificationExplicitAttributes`.  They are restricted to uniform
+attribute key and value types. All explicit attributes shall be specified. The
+explicit attributes for this type are:
 
 description
     The attribute value shall be an optional string. It shall be the
     description of the generic attributes.
 
-spec-type
+key-spec-type
+    The attribute value shall be a :ref:`SpecTypeName`. It shall be the
+    specification type of the generic attribute keys.
+
+value-spec-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
     specification type of the generic attribute values.
 
