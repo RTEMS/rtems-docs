@@ -92,6 +92,10 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeFunctionalRequirementItemType`
 
+      * :ref:`SpecTypeActionRequirementItemType`
+
+      * :ref:`SpecTypeGenericFunctionalRequirementItemType`
+
     * :ref:`SpecTypeNonXFunctionalRequirementItemType`
 
   * :ref:`SpecTypeRequirementValidationItemType`
@@ -1628,8 +1632,132 @@ attributes specifies a functional requirement. All explicit attributes shall be
 specified. The explicit attributes for this type are:
 
 functional-type
-    The attribute value shall be a :ref:`SpecTypeRequirementFunctionalType`. It
-    shall be the functional type of the requirement.
+    The attribute value shall be a :ref:`SpecTypeName`. It shall be the
+    functional type of the requirement.
+
+This type is refined by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+* :ref:`SpecTypeGenericFunctionalRequirementItemType`
+
+.. _SpecTypeActionRequirementItemType:
+
+Action Requirement Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeFunctionalRequirementItemType` though the
+``functional-type`` attribute if the value is ``action``. This set of
+attributes specifies functional requirements and corresponding validation test
+code.  The functional requirements of an action are specified.  An action
+performs a step in a finite state machine.  An action is implemented through a
+function or a macro.  The action is performed through a call of the function or
+an execution of the code of an macro expansion by an actor.  The actor is for
+example a task or an interrupt service routine.
+
+There shall be exactly one link with the
+:ref:`SpecTypeInterfaceFunctionLinkRole` to the interface of the action.
+
+The action requirements are specified by
+
+* a list of pre-conditions, each with a set of states,
+
+* a list of post-conditions, each with a set of states,
+
+* the transition of pre-condition states to post-condition states through
+  the action.
+
+Along with the requirements, the test code to generate a validation test
+is specified.  For an action requirement it is verified that all
+variations of pre-condition states have a set of post-condition states
+specified in the transition map.  All transitions are covered by the
+generated test code. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+post-conditions
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeActionRequirementCondition`.
+
+pre-conditions
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeActionRequirementCondition`.
+
+test-action
+    The attribute value shall be a string. It shall be the test action code.
+
+test-brief
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case brief description.
+
+test-context
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeActionRequirementTestContextMember`.
+
+test-description
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case description.
+
+test-includes
+    The attribute value shall be a list of strings. It shall be a list of
+    header files included via ``#include <...>``.
+
+test-local-includes
+    The attribute value shall be a list of strings. It shall be a list of
+    header files included via ``#include "..."``.
+
+test-name
+    The attribute value shall be a :ref:`SpecTypeTestName`.
+
+test-setup
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementTestFixtureMethod`.
+
+test-stop
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementTestFixtureMethod`.
+
+test-support
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case support code. The support code is placed at
+    file scope before the test case code.
+
+test-target
+    The attribute value shall be a string. It shall be the path to the
+    generated target test case source file.
+
+test-teardown
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementTestFixtureMethod`.
+
+transition-map
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeActionRequirementTransition`.
+
+.. _SpecTypeGenericFunctionalRequirementItemType:
+
+Generic Functional Requirement Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the following types:
+
+* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+  attribute if the value is ``capability``
+
+* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+  attribute if the value is ``dependability-function``
+
+* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+  attribute if the value is ``function``
+
+* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+  attribute if the value is ``operational``
+
+* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+  attribute if the value is ``safety-function``
+
+
+Items of this type state a functional requirement with the functional type
+defined by the specification type refinement.
 
 .. _SpecTypeNonXFunctionalRequirementItemType:
 
@@ -1889,6 +2017,231 @@ target
 
 Specification Attribute Sets and Value Types
 --------------------------------------------
+
+.. _SpecTypeActionRequirementCondition:
+
+Action Requirement Condition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines an action pre-condition or post-condition. All
+explicit attributes shall be specified. The explicit attributes for this type
+are:
+
+name
+    The attribute value shall be an :ref:`SpecTypeActionRequirementName`.
+
+states
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeActionRequirementState`.
+
+test-epilogue
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test epilogue code. The epilogue code is placed in the
+    test condition preparation or check before the state-specific code.  The
+    code may use a local variable ``ctx`` which points to the test context, see
+    :ref:`SpecTypeActionRequirementTestContextMember`.
+
+test-prologue
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test prologue code. The prologue code is placed in the
+    test condition preparation or check after the state-specific code.  The
+    code may use a local variable ``ctx`` which points to the test context, see
+    :ref:`SpecTypeActionRequirementTestContextMember`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+.. _SpecTypeActionRequirementName:
+
+Action Requirement Name
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The value shall be a string. It shall be the name of a condition or a state of
+a condition used to define pre-conditions and post-conditions of an action
+requirement.  It shall be formatted in CamelCase.  It should be brief and
+abbreviated. The rationale for this is that the names are used in tables and
+the horizontal space is limited by the page width.  The more conditions you
+have in an action requirement, the shorter the names should be. The value shall
+match with the regular expression "``^[A-Z][a-zA-Z0-9]+$"``.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementCondition`
+
+* :ref:`SpecTypeActionRequirementState`
+
+* :ref:`SpecTypeActionRequirementTransitionPostXConditions`
+
+* :ref:`SpecTypeActionRequirementTransitionPreXConditions`
+
+.. _SpecTypeActionRequirementState:
+
+Action Requirement State
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines an action pre-condition or post-condition state.
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
+
+name
+    The attribute value shall be an :ref:`SpecTypeActionRequirementName`.
+
+test-code
+    The attribute value shall be a string. It shall be the test code to prepare
+    or check the state of the condition.  The code may use a local variable
+    ``ctx`` which points to the test context, see
+    :ref:`SpecTypeActionRequirementTestContextMember`.
+
+text
+    The attribute value shall be a :ref:`SpecTypeRequirementText`. It shall
+    define the state of the condition.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementCondition`
+
+.. _SpecTypeActionRequirementTestContextMember:
+
+Action Requirement Test Context Member
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes defines an
+  action requirement test context member. All explicit attributes shall be
+  specified. The explicit attributes for this type are:
+
+  brief
+      The attribute value shall be an optional string. It shall be the test
+      context member brief description.
+
+  description
+      The attribute value shall be an optional string. It shall be the test
+      context member description.
+
+  member
+      The attribute value shall be a string. It shall be the test context
+      member definition.  It shall be a valid C structure member definition
+      without a trailing ``;``.
+
+* There may by be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+.. _SpecTypeActionRequirementTestFixtureMethod:
+
+Action Requirement Test Fixture Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes defines an
+  action requirement test fixture method. All explicit attributes shall be
+  specified. The explicit attributes for this type are:
+
+  brief
+      The attribute value shall be an optional string. It shall be the test
+      fixture method brief description.
+
+  code
+      The attribute value shall be a string. It shall be the test fixture
+      method code.  The code may use a local variable ``ctx`` which points to
+      the test context, see :ref:`SpecTypeActionRequirementTestContextMember`.
+
+  description
+      The attribute value shall be an optional string. It shall be the test
+      fixture method description.
+
+* There may by be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+.. _SpecTypeActionRequirementTransition:
+
+Action Requirement Transition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines the transition from all state variations of the
+set of pre-conditions to states of post-conditions through an action in an
+action requirement. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+enabled-by
+    The attribute value shall be an :ref:`SpecTypeEnabledXByExpression`. The
+    transition map may be customized to support configuration variants through
+    this attribute.  The default transitions (``enabled-by: true``) shall be
+    specified before the customized variants in the list.
+
+post-conditions
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementTransitionPostXConditions`.
+
+pre-conditions
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementTransitionPreXConditions`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+.. _SpecTypeActionRequirementTransitionPostXConditions:
+
+Action Requirement Transition Post-Conditions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines for each post-condition the state after the
+action for a transition in an action requirement. Generic attributes may be
+specified. Each generic attribute key shall be an
+:ref:`SpecTypeActionRequirementName`. Each generic attribute value shall be an
+:ref:`SpecTypeActionRequirementName`. There shall be exactly one generic
+attribute key for each post-condition.  The key name shall be the
+post-condition name.  The value of each generic attribute shall be the state of
+the post-condition.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementTransition`
+
+.. _SpecTypeActionRequirementTransitionPreXConditionStateSet:
+
+Action Requirement Transition Pre-Condition State Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a list. Each list element shall be an
+  :ref:`SpecTypeActionRequirementName`. The list defines the set of states of
+  the pre-condition in the transition.
+
+* The value may be a string. The value represents all states of the
+  pre-condition in the transition. The value shall be equal to "``all``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementTransitionPreXConditions`
+
+.. _SpecTypeActionRequirementTransitionPreXConditions:
+
+Action Requirement Transition Pre-Conditions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines for each pre-condition the set of states before
+the action for a transition in an actin requirement. Generic attributes may be
+specified. Each generic attribute key shall be an
+:ref:`SpecTypeActionRequirementName`. Each generic attribute value shall be an
+:ref:`SpecTypeActionRequirementTransitionPreXConditionStateSet`. There shall be
+exactly one generic attribute key for each pre-condition.  The key name shall
+be the pre-condition name.  The value of each generic attribute shall be a set
+of states of the pre-condition.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementTransition`
 
 .. _SpecTypeApplicationConfigurationGroupMemberLinkRole:
 
@@ -2662,6 +3015,8 @@ A value of this type shall be of one of the following variants:
 
 This type is used by the following types:
 
+* :ref:`SpecTypeActionRequirementTransition`
+
 * :ref:`SpecTypeEnabledXByExpression`
 
 * :ref:`SpecTypeInterfaceIncludeLinkRole`
@@ -3145,6 +3500,18 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceFunctionDefinitionDirective`
 
+.. _SpecTypeInterfaceFunctionLinkRole:
+
+Interface Function Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+value is ``interface-function``. It defines the interface function role of
+links.  It is used to indicate that a :ref:`SpecTypeActionRequirementItemType`
+item specifies functional requirements of an
+:ref:`SpecTypeInterfaceFunctionItemType` or a
+:ref:`SpecTypeInterfaceMacroItemType` item.
+
 .. _SpecTypeInterfaceGroupIdentifier:
 
 Interface Group Identifier
@@ -3347,6 +3714,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceEnumeratorLinkRole`
 
+* :ref:`SpecTypeInterfaceFunctionLinkRole`
+
 * :ref:`SpecTypeInterfaceGroupMembershipLinkRole`
 
 * :ref:`SpecTypeInterfaceIncludeLinkRole`
@@ -3387,6 +3756,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildOptionSetTestStateAction`
 
+* :ref:`SpecTypeFunctionalRequirementItemType`
+
 * :ref:`SpecTypeGlossaryItemType`
 
 * :ref:`SpecTypeInterfaceItemType`
@@ -3419,28 +3790,6 @@ A value of this type shall be of one of the following variants:
 * There may by be no value (null).
 
 * The value may be a string.
-
-.. _SpecTypeRequirementFunctionalType:
-
-Requirement Functional Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The value shall be a string. This type shall be used for functional requirement
-types. The value shall be an element of
-
-* "``capability``",
-
-* "``dependability-function``",
-
-* "``function``",
-
-* "``operational``", and
-
-* "``safety-function``".
-
-This type is used by the following types:
-
-* :ref:`SpecTypeFunctionalRequirementItemType`
 
 .. _SpecTypeRequirementNonXFunctionalType:
 
@@ -3664,6 +4013,8 @@ value shall not contain an element of
 * "``when necessary``".
 
 This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementState`
 
 * :ref:`SpecTypeApplicationConfigurationGroupItemType`
 
@@ -4331,6 +4682,8 @@ designator after removal of all white space characters. The value shall match
 with the regular expression "``^[A-Z][a-zA-Z0-9 _]+$"``.
 
 This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
 
 * :ref:`SpecTypeTestCaseItemType`
 
