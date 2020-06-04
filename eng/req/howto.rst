@@ -5,6 +5,81 @@
 How-To
 ======
 
+Getting Started
+---------------
+
+The RTEMS specification items and qualification tools are work in progress and
+not fully integrated in the RTEMS Project.  The first step to work with the
+RTEMS specification and the corresponding tools is a clone of the following
+repository:
+
+.. code-block:: none
+
+    git clone git://git.rtems.org/sebh/rtems-qual.git
+    git submodule init
+    git submodule update
+
+The tools need a virtual Python 3 environment. To set it up use:
+
+.. code-block:: none
+
+    cd rtems-qual
+    make env
+
+Each time you want to use one of the tools, you have to activate the
+environment in your shell:
+
+.. code-block:: none
+
+    cd rtems-qual
+    . env/bin/activate
+
+Glossary Specification
+----------------------
+
+The glossary of terms for the RTEMS Project is defined by
+:ref:`SpecTypeGlossaryTermItemType` items in the :file:`spec/glossary`
+directory.  For a new glossary term add a glossary item to this directory.  As
+the file name use the term in lower case with all white space and special
+characters removed or replaced by alphanumeric characters, for example
+:file:`spec/glossary/magicpower.yml` for the term `magic power`.
+
+Use ``${uid:/attribute}`` substitutions to reference other parts of the
+specification.
+
+.. code-block:: yaml
+
+    SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+    copyrights:
+    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    enabled-by: true
+    glossary-type: term
+    links:
+    - role: glossary-member
+      uid: ../glossary-general
+    term: magic power
+    text: |
+      Magic power enables a caller to create magic objects using a
+      ${magicwand:/term}.
+    type: glossary
+
+Define acronyms with the phrase `This term is an acronym for *.` in the
+``text`` attribute:
+
+.. code-block:: yaml
+
+    ...
+    term: MP
+    ...
+    text: |
+      This term is an acronym for Magic Power.
+    ...
+
+Once you are done with the glossary items, run the script :file:`spec2doc.py`
+to generate the derived documentation content.  Send patches for the generated
+documentation and the specification to the :r:list:`devel` and follow the
+normal patch review process.
+
 Interface Specification
 -----------------------
 
