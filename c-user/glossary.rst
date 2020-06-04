@@ -10,7 +10,7 @@ Glossary
     :sorted:
 
     ABI
-        An acronym for Application Binary Interface.
+        This term is an acronym for Application Binary Interface.
 
     active
         A term used to describe an object which has been created by an
@@ -21,13 +21,13 @@ Glossary
         deadline.
 
     API
-        An acronym for Application Programming Interface.
+        This term is an acronym for Application Programming Interface.
 
     application
         In this document, software which makes use of RTEMS.
 
     ASR
-        An acronym for :term:`Asynchronous Signal Routine`.
+        This term is an acronym for :term:`Asynchronous Signal Routine`.
 
     assembler language
         The assembler language is a programming language which can be translated very
@@ -77,7 +77,7 @@ Glossary
         To simultaneously send a message to a logical set of destinations.
 
     BSP
-        An acronym for :term:`Board Support Package`.
+        This term is an acronym for :term:`Board Support Package`.
 
     buffer
         A fixed length block of memory allocated from a partition.
@@ -99,7 +99,7 @@ Glossary
         set which must be preserved.
 
     CCB
-        An acronym for Change Control Board.
+        This term is an acronym for Change Control Board.
 
     Central Processing Unit
         This term is equivalent to the terms processor and microprocessor.
@@ -140,14 +140,14 @@ Glossary
         of the executive should not be used directly by applications.
 
     CPU
-        An acronym for :term:`Central Processing Unit`.
+        This term is an acronym for :term:`Central Processing Unit`.
 
     critical section
         A section of code which must be executed indivisibly.
 
     CRT
-        An acronym for Cathode Ray Tube.  Normally used in reference to the
-        man-machine interface.
+        This term is an acronym for Cathode Ray Tube.  Normally used in reference to
+        the man-machine interface.
 
     deadline
         A fixed time limit by which a task must have completed a set of actions.
@@ -186,10 +186,10 @@ Glossary
         addresses.
 
     EARS
-        An acronym for Easy Approach to Requirements Syntax.
+        This term is an acronym for Easy Approach to Requirements Syntax.
 
     ELF
-        An acronym for
+        This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
 
     embedded
@@ -236,7 +236,7 @@ Glossary
         system which do not own the memory.
 
     FIFO
-        An acronym for :term:`First In First Out`.
+        This term is an acronym for :term:`First In First Out`.
 
     First In First Out
         A discipline for manipulating entries in a data structure.
@@ -250,7 +250,7 @@ Glossary
         A resource that has been released by the application to RTEMS.
 
     GCC
-        An acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
+        This term is an acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
 
     global
         An object that has been created with the GLOBAL attribute and exported to
@@ -261,7 +261,7 @@ Glossary
         :term:`GCC`.
 
     GNU
-        An acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
+        This term is an acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
 
     handler
         The equivalent of a manager, except that it is internal to RTEMS and
@@ -292,7 +292,7 @@ Glossary
         A multiprocessor computer system composed of a single type of processor.
 
     I/O
-        An acronym for Input/Output.
+        This term is an acronym for Input/Output.
 
     ID
         An RTEMS assigned identification tag used to access an active object.
@@ -330,10 +330,10 @@ Glossary
         An ISR is invoked by the CPU to process a pending interrupt.
 
     ISR
-        An acronym for :term:`Interrupt Service Routine`.
+        This term is an acronym for :term:`Interrupt Service Routine`.
 
     ISVV
-        An acronym for Independent Software Verification and Validation.
+        This term is an acronym for Independent Software Verification and Validation.
 
     kernel
         In this document, this term is used as a synonym for executive.
@@ -372,7 +372,7 @@ Glossary
         over resources.
 
     MCS
-        An acronym for Mellor-Crummey Scott.
+        This term is an acronym for Mellor-Crummey Scott.
 
     memory pool
         Used interchangeably with heap.
@@ -402,7 +402,8 @@ Glossary
         disable level used by the task.
 
     MPCI
-        An acronym for :term:`Multiprocessor Communications Interface Layer`.
+        This term is an acronym for
+        :term:`Multiprocessor Communications Interface Layer`.
 
     multiprocessing
         The simultaneous execution of two or more processes by a multiple
@@ -440,7 +441,7 @@ Glossary
         The state occupied by an uncreated or deleted task.
 
     NUMA
-        An acronym for Non-Uniform Memory Access.
+        This term is an acronym for Non-Uniform Memory Access.
 
     numeric coprocessor
         A component used in computer systems to enhance performance in
@@ -547,13 +548,13 @@ Glossary
         proxy.
 
     PTCB
-        An acronym for :term:`Partition Control Block`.
+        This term is an acronym for :term:`Partition Control Block`.
 
     PXCB
-        An acronym for :term:`Proxy Control Block`.
+        This term is an acronym for :term:`Proxy Control Block`.
 
     QCB
-        An acronym for :term:`Message Queue Control Block`.
+        This term is an acronym for :term:`Message Queue Control Block`.
 
     quantum
         The application defined unit of time in which the processor is allocated.
@@ -597,7 +598,7 @@ Glossary
         the calling task.
 
     ReqIF
-        An acronym for
+        This term is an acronym for
         `Requirements Interchange Format <https://www.omg.org/spec/ReqIF/About-ReqIF/>`_.
 
     resource
@@ -616,7 +617,7 @@ Glossary
         :term:`status code`.
 
     RNCB
-        An acronym for :term:`Region Control Block`.
+        This term is an acronym for :term:`Region Control Block`.
 
     round-robin
         A task scheduling discipline in which tasks of equal priority are
@@ -626,7 +627,7 @@ Glossary
         A standard for serial communications.
 
     RTEMS
-        An acronym for Real-Time Executive for Multiprocessor Systems.
+        This term is an acronym for Real-Time Executive for Multiprocessor Systems.
 
     running
         The state of a rate monotonic timer while it is being used to delineate a
@@ -684,10 +685,10 @@ Glossary
         pending signals and the signals sent to a task.
 
     SMCB
-        An acronym for :term:`Semaphore Control Block`.
+        This term is an acronym for :term:`Semaphore Control Block`.
 
     SMP
-        An acronym for Symmetric Multiprocessing.
+        This term is an acronym for Symmetric Multiprocessing.
 
     SMP barriers
         The SMP barriers ensure that a defined set of independent threads of
@@ -790,7 +791,7 @@ Glossary
         The system on which the application will ultimately execute.
 
     TAS
-        An acronym for Test-And-Set.
+        This term is an acronym for Test-And-Set.
 
     task
         This project uses the
@@ -823,7 +824,7 @@ Glossary
         processor from one task and given to another.
 
     TCB
-        An acronym for :term:`Task Control Block`.
+        This term is an acronym for :term:`Task Control Block`.
 
     thread
         This term has the same meaning as :term:`task`.
@@ -862,12 +863,12 @@ Glossary
         task.
 
     TLS
-        An acronym for Thread-Local Storage :cite:`Drepper:2013:TLS`.  TLS is
-        available in :term:`C11` and :term:`C++11`.  The support for TLS depends
-        on the CPU port :cite:`RTEMS:CPU`.
+        This term is an acronym for Thread-Local Storage :cite:`Drepper:2013:TLS`.
+        TLS is available in :term:`C11` and :term:`C++11`.  The support for TLS
+        depends on the CPU port :cite:`RTEMS:CPU`.
 
     TMCB
-        An acronym for :term:`Timer Control Block`.
+        This term is an acronym for :term:`Timer Control Block`.
 
     transient overload
         A temporary rise in system activity which may cause deadlines to be
@@ -875,7 +876,7 @@ Glossary
         deadlines will be met under transient overload.
 
     TTAS
-        An acronym for Test and Test-And-Set.
+        This term is an acronym for Test and Test-And-Set.
 
     User Extension Table
         A table which contains the entry points for each user extensions.
@@ -905,7 +906,7 @@ Glossary
         them.
 
     YAML
-        An acronym for `YAML Ain't Markup Language <https://yaml.org/>`_.
+        This term is an acronym for `YAML Ain't Markup Language <https://yaml.org/>`_.
 
     yield
         When a task voluntarily releases control of the processor.

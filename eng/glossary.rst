@@ -10,7 +10,7 @@ Glossary
     :sorted:
 
     API
-        An acronym for Application Programming Interface.
+        This term is an acronym for Application Programming Interface.
 
     assembler language
         The assembler language is a programming language which can be translated very
@@ -26,28 +26,28 @@ Glossary
         The standard ISO/IEC 9899:2011.
 
     CCB
-        An acronym for Change Control Board.
+        This term is an acronym for Change Control Board.
 
     Doorstop
         `Doorstop <https://github.com/doorstop-dev/doorstop>`_ is a
         requirements management tool.
 
     EARS
-        An acronym for Easy Approach to Requirements Syntax.
+        This term is an acronym for Easy Approach to Requirements Syntax.
 
     ELF
-        An acronym for
+        This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
 
     GCC
-        An acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
+        This term is an acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
 
     GNAT
         *GNAT* is the :term:`GNU` compiler for Ada, integrated into the
         :term:`GCC`.
 
     GNU
-        An acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
+        This term is an acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
 
     interrupt service
         An *interrupt service* consists of an
@@ -61,14 +61,14 @@ Glossary
         An ISR is invoked by the CPU to process a pending interrupt.
 
     ISVV
-        An acronym for Independent Software Verification and Validation.
+        This term is an acronym for Independent Software Verification and Validation.
 
     ReqIF
-        An acronym for
+        This term is an acronym for
         `Requirements Interchange Format <https://www.omg.org/spec/ReqIF/About-ReqIF/>`_.
 
     RTEMS
-        An acronym for Real-Time Executive for Multiprocessor Systems.
+        This term is an acronym for Real-Time Executive for Multiprocessor Systems.
 
     software component
         This term is defined by ECSS-E-ST-40C 3.2.28 as a "part of a software
@@ -141,4 +141,4 @@ Glossary
         This term has the same meaning as :term:`task`.
 
     YAML
-        An acronym for `YAML Ain't Markup Language <https://yaml.org/>`_.
+        This term is an acronym for `YAML Ain't Markup Language <https://yaml.org/>`_.
