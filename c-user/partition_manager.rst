@@ -192,7 +192,8 @@ DESCRIPTION:
     local PTCB free pool and initializes it.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     The partition buffer area specified by the ``starting_address`` must be
     properly aligned.  It must be possible to directly store target
@@ -360,7 +361,8 @@ DESCRIPTION:
     deleted partition is reclaimed by RTEMS.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     The calling task does not have to be the task that created the partition.
     Any local task that knows the partition id can delete the partition.

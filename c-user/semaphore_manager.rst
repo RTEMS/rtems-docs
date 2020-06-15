@@ -376,7 +376,8 @@ DESCRIPTION:
     are serviced in First In-First Out order.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     The priority inheritance and priority ceiling algorithms are only supported
     for local, binary semaphores that use the priority task wait queue blocking
@@ -523,6 +524,9 @@ DESCRIPTION:
     this semaphore is reclaimed by RTEMS.
 
 NOTES:
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
+
     The calling task will be preempted if it is enabled by the task's execution
     mode and a higher priority local task is waiting on the deleted semaphore.
     The calling task will NOT be preempted if all of the tasks that are waiting

@@ -142,10 +142,11 @@ DESCRIPTION:
     is not used to store the DPCB.
 
 NOTES:
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
+
     The internal_address and external_address parameters must be on a four byte
     boundary.
-
-    This directive will not cause the calling task to be preempted.
 
 .. raw:: latex
 
@@ -222,7 +223,8 @@ DESCRIPTION:
     DPCB for the deleted dual-ported memory area is reclaimed by RTEMS.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     The calling task does not have to be the task that created the port.  Any
     local task that knows the port id can delete the port.

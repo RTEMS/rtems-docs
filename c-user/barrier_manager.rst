@@ -218,7 +218,8 @@ DESCRIPTION:
     the tasks waiting at the barrier unblocked.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     The following barrier attribute constants are defined by RTEMS:
 
@@ -309,6 +310,9 @@ DESCRIPTION:
     barrier is reclaimed by RTEMS.
 
 NOTES:
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
+
     The calling task will be preempted if it is enabled by the task's execution
     mode and a higher priority local task is waiting on the deleted barrier.
     The calling task will NOT be preempted if all of the tasks that are waiting

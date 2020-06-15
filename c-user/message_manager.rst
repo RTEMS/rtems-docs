@@ -273,7 +273,8 @@ DESCRIPTION:
     specified, waiting tasks are serviced in First In-First Out order.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     The following message queue attribute constants are defined by RTEMS:
 
@@ -396,6 +397,9 @@ DESCRIPTION:
     message buffers is reclaimed by RTEMS.
 
 NOTES:
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
+
     The calling task will be preempted if its preemption mode is enabled and
     one or more local tasks with a higher priority than the calling task are
     waiting on the deleted queue.  The calling task will NOT be preempted if

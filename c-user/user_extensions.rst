@@ -487,8 +487,8 @@ DESCRIPTION:
     specified by :c:data:`table` is copied to the ESCB.
 
 NOTES:
-
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
 .. raw:: latex
 
@@ -566,7 +566,8 @@ DESCRIPTION:
     deleted extension set is reclaimed by RTEMS.
 
 NOTES:
-    This directive will not cause the running task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     A extension set can be deleted by a task other than the task which created
     the extension set.

@@ -666,7 +666,8 @@ DESCRIPTION:
     pool and initializes it.
 
 NOTES:
-    This directive will not cause the calling task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
 .. raw:: latex
 
@@ -785,7 +786,8 @@ DESCRIPTION:
     period is reclaimed by RTEMS.
 
 NOTES:
-    This directive will not cause the running task to be preempted.
+    This directive may cause the calling task to be preempted due to an
+    obtain and release of the object allocator mutex.
 
     A rate monotonic period can be deleted by a task other than the task which
     created the period.
