@@ -671,8 +671,6 @@ DIRECTIVE STATUS CODES:
         - invalid task name
       * - ``RTEMS_INVALID_PRIORITY``
         - invalid task priority
-      * - ``RTEMS_MP_NOT_CONFIGURED``
-        - multiprocessing not configured
       * - ``RTEMS_TOO_MANY``
         - too many tasks created
       * - ``RTEMS_UNSATISFIED``

@@ -177,8 +177,6 @@ DIRECTIVE STATUS CODES:
        - ``buffer_size`` is not an integral multiple of the pointer size
      * - ``RTEMS_INVALID_SIZE``
        - ``buffer_size`` is less than two times the pointer size
-     * - ``RTEMS_MP_NOT_CONFIGURED``
-       - multiprocessing not configured
      * - ``RTEMS_TOO_MANY``
        - too many global objects
 

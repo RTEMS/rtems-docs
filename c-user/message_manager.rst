@@ -255,8 +255,6 @@ DIRECTIVE STATUS CODES:
        - too many queues created
      * - ``RTEMS_UNSATISFIED``
        - unable to allocate message buffers
-     * - ``RTEMS_MP_NOT_CONFIGURED``
-       - multiprocessing not configured
      * - ``RTEMS_TOO_MANY``
        - too many global objects
 

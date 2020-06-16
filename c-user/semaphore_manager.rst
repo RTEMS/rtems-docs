@@ -358,8 +358,6 @@ DIRECTIVE STATUS CODES:
        - invalid attribute set
      * - ``RTEMS_INVALID_NUMBER``
        - invalid starting count for binary semaphore
-     * - ``RTEMS_MP_NOT_CONFIGURED``
-       - multiprocessing not configured
      * - ``RTEMS_TOO_MANY``
        - too many global objects
 
