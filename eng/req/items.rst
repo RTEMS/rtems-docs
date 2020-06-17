@@ -1652,11 +1652,12 @@ attributes specifies functional requirements and corresponding validation test
 code.  The functional requirements of an action are specified.  An action
 performs a step in a finite state machine.  An action is implemented through a
 function or a macro.  The action is performed through a call of the function or
-an execution of the code of an macro expansion by an actor.  The actor is for
+an execution of the code of a macro expansion by an actor.  The actor is for
 example a task or an interrupt service routine.
 
-There shall be exactly one link with the
-:ref:`SpecTypeInterfaceFunctionLinkRole` to the interface of the action.
+For action requirements which specify the function of an interface, there
+shall be exactly one link with the :ref:`SpecTypeInterfaceFunctionLinkRole`
+to the interface of the action.
 
 The action requirements are specified by
 
@@ -1735,6 +1736,128 @@ test-teardown
 transition-map
     The attribute value shall be a list. Each list element shall be an
     :ref:`SpecTypeActionRequirementTransition`.
+
+Please have a look at the following example:
+
+.. code-block:: yaml
+
+    SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+    copyrights:
+    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    enabled-by: true
+    functional-type: action
+    links: []
+    post-conditions:
+    - name: Status
+      states:
+      - name: Success
+        test-code: |
+          /* Check that the status is SUCCESS */
+        text: |
+          The status shall be SUCCESS.
+      - name: Error
+        test-code: |
+          /* Check that the status is ERROR */
+        text: |
+          The status shall be ERROR.
+      test-epilogue: null
+      test-prologue: null
+    - name: Data
+      states:
+      - name: Unchanged
+        test-code: |
+          /* Check that the data is unchanged */
+        text: |
+          The data shall be unchanged by the action.
+      - name: Red
+        test-code: |
+          /* Check that the data is red */
+        text: |
+          The data shall be red.
+      - name: Green
+        test-code: |
+          /* Check that the data is green */
+        text: |
+          The data shall be green.
+      test-epilogue: null
+      test-prologue: null
+    pre-conditions:
+    - name: Data
+      states:
+      - name: NullPtr
+        test-code: |
+          /* Set data pointer to NULL */
+        text: |
+          The data pointer shall be NULL.
+      - name: Valid
+        test-code: |
+          /* Set data pointer to reference a valid data buffer */
+        text: |
+          The data pointer shall reference a valid data buffer.
+      test-epilogue: null
+      test-prologue: null
+    - name: Option
+      states:
+      - name: Red
+        test-code: |
+          /* Set option to RED */
+        text: |
+          The option shall be RED.
+      - name: Green
+        test-code: |
+          /* Set option to GREEN */
+        text: |
+          The option shall be GREEN.
+      test-epilogue: null
+      test-prologue: null
+    requirement-type: functional
+    test-action: |
+      /* Call the function of the action */
+    test-brief: null
+    test-context:
+    - brief: null
+      description: null
+      member: void *data
+    - brief: null
+      description: null
+      member: option_type option
+    test-description: null
+    test-header: null
+    test-includes: []
+    test-local-includes: []
+    test-name: RedGreenData
+    test-setup: null
+    test-stop: null
+    test-support: null
+    test-target: tc-red-green-data.c
+    test-teardown: null
+    transition-map:
+    - enabled-by: true
+      post-conditions:
+        Status: Error
+        Data: Unchanged
+      pre-conditions:
+        Data: NullPtr
+        Option: all
+    - enabled-by: true
+      post-conditions:
+        Status: Success
+        Data: Red
+      pre-conditions:
+        Data: Valid
+        Option: Red
+    - enabled-by: true
+      post-conditions:
+        Status: Success
+        Data: Green
+      pre-conditions:
+        Data: Valid
+        Option: Green
+    rationale: null
+    references: []
+    text: |
+      ${.:/text-template}
+    type: requirement
 
 .. _SpecTypeGenericFunctionalRequirementItemType:
 
@@ -2243,9 +2366,16 @@ This type is used by the following types:
 Action Requirement Transition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes defines the transition from all state variations of the
-set of pre-conditions to states of post-conditions through an action in an
-action requirement. All explicit attributes shall be specified. The explicit
+This set of attributes defines the transition from multiple sets of states of
+pre-conditions to a set of states of post-conditions through an action in an
+action requirement.  The ability to specify multiple sets of states of
+pre-conditions which result in a common set of post-conditions may allow a more
+compact specification of the transition map.  For example, let us suppose you
+want to specify the action of a function with a pointer parameter.  The
+function performs an early check that the pointer is NULL and in this case
+returns an error code.  The pointer condition dominates the action outcome if
+the pointer is NULL.  Other pre-condition states can be simply set to ``all``
+for this transition. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 enabled-by
