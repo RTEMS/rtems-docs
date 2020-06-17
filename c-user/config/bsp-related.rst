@@ -219,17 +219,17 @@ DESCRIPTION:
     In case this configuration option is defined, then the following BSP related
     configuration options are undefined:
 
-    - :ref:`BSP_IDLE_TASK_BODY`
+    * :ref:`BSP_IDLE_TASK_BODY`
 
-    - :ref:`BSP_IDLE_TASK_STACK_SIZE`
+    * :ref:`BSP_IDLE_TASK_STACK_SIZE`
 
-    - :ref:`BSP_INITIAL_EXTENSION`
+    * :ref:`BSP_INITIAL_EXTENSION`
 
-    - :ref:`BSP_INTERRUPT_STACK_SIZE`
+    * :ref:`BSP_INTERRUPT_STACK_SIZE`
 
-    - :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
+    * :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
 
-    - :ref:`CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK`
+    * :ref:`CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK`
 
 NOTES:
     None.

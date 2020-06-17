@@ -543,13 +543,13 @@ NOTES:
     scheduling algorithm. If ``CONFIGURE_SCHEDULER_USER`` is defined then the
     following additional macros shall be defined:
 
-    - ``CONFIGURE_SCHEDULER`` shall be defined to a static definition of
+    * ``CONFIGURE_SCHEDULER`` shall be defined to a static definition of
       the scheduler data structures of the user scheduler.
 
-    - ``CONFIGURE_SCHEDULER_TABLE_ENTRIES`` shall be defined to a scheduler
+    * ``CONFIGURE_SCHEDULER_TABLE_ENTRIES`` shall be defined to a scheduler
       table entry initializer for the user scheduler.
 
-    - ``CONFIGURE_SCHEDULER_USER_PER_THREAD`` shall be defined to the type of
+    * ``CONFIGURE_SCHEDULER_USER_PER_THREAD`` shall be defined to the type of
       the per-thread information of the user scheduler.
 
     At this time, the mechanics and requirements for writing a new scheduler

@@ -41,11 +41,11 @@ DESCRIPTION:
 NOTES:
     A correctly configured system shall configure the following to be consistent:
 
-    - :ref:`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+    * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
 
-    - `CONFIGURE_TASK_STACK_ALLOCATOR`
+    * `CONFIGURE_TASK_STACK_ALLOCATOR`
 
-    - :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
+    * :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR_INIT
 
@@ -74,11 +74,11 @@ DESCRIPTION:
 NOTES:
     A correctly configured system shall configure the following to be consistent:
 
-    - `CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+    * `CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
 
-    - :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
+    * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
 
-    - :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
+    * :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
 .. index:: CONFIGURE_TASK_STACK_DEALLOCATOR
 .. index:: task stack deallocator
@@ -109,11 +109,11 @@ DESCRIPTION:
 NOTES:
     A correctly configured system shall configure the following to be consistent:
 
-    - :ref:`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+    * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
 
-    - :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
+    * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
 
-    - `CONFIGURE_TASK_STACK_DEALLOCATOR`
+    * `CONFIGURE_TASK_STACK_DEALLOCATOR`
 
 .. index:: CONFIGURE_TASK_STACK_FROM_ALLOCATOR
 .. index:: task stack allocator
