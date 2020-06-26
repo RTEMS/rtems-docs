@@ -10,7 +10,7 @@ Release Process
 
 The release process creates an RTEMS release. The process has a number of
 stages that happen before a release can be made, during the creation of the
-release procedure and after the release has been made.
+release and after the release has been made.
 
 Releases
 ========
@@ -159,28 +159,72 @@ Release Repositories
 The following are the repositories that a release effects. Any repository
 action is to be performed in the following repositories:
 
-#. rtems.git
+#. ``rtems.git``
 
-#. rtems-docs.git
+#. ``rtems-docs.git``
 
-#. rtems-examples.git
+#. ``rtems-examples.git``
 
-#. rtems-libbsd.git
+#. ``rtems-libbsd.git``
 
-#. rtems-source-builder.git
+#. ``rtems-source-builder.git``
 
-#. rtems-tools
+#. ``rtems-tools.git``
 
-#. rtems_waf
+#. ``rtems_waf.git``
+
+#. ``rtems-release.git``
 
 Pre-Release Procedure
 =====================
 
-* All tickets must be resolved, closed or moved to a later milestone.
+* All tickets must be resolved, closed or moved to a later
+  milestone. Tickets can exist that are specific to the branch and are
+  to be resolved before the first release is made.
+
+* Create release snapshots and post suitable build and test results.
+
+Release Branching
+=================
+
+A release has a release branch in each of the release repositories. A
+release is a created from a release branch. The release branch label
+is the RTEMS major version number.
+
+LibBSD Release Branch
+---------------------
+
+The ``rtems-libbsd.git`` is an exception as it has two active release
+branches. The repository has a release branch based on the ``master``
+like all the release repositories and it can have a FreeBSD version
+specific release branch that is used in the release.
+
+LibBSD runs two branches during it's development cycle. The ``master``
+branch tracks the FreeBSD ``master`` branch. This means LibBSD tracks
+FreeBSD's development. LibBSD also tracks a FreeBSD branch for the
+RTEMS release. For example RTEMS 5 tracks FreeBSD 12 as it's release
+base. This provides functionaly stability to the RTEMS 5 release by
+allowing a control process to track bug fixes in FreeBSD 12.
+
+Pre-Branch Procedure
+--------------------
+
+* All tickets assigned to the release's first milestone must be
+  resolved. Tickets can exist that are specific to the branch and are
+  to be resolved before the first release is made.
 
 * The following BSP must build using the RSB:
 
   - ``arm/beagleboneblack``
+
+* Check and make sure the RSB kernel, libbsd and tools configurations
+  reference the ``master`` when the branch is made.
+
+  The RSB GIT builds reference a specific commit so it is important
+  the relevant configurations are valid.
+
+Branch Procedure
+----------------
 
 * Branch labels are the major number as branch releases increment the minor
   number. A branch is only created when the first major release is made.
@@ -189,6 +233,8 @@ Pre-Release Procedure
 
   .. code-block:: none
 
+      git clone <URL>/<REPO> <REPO>
+      cd <REPO>
       git checkout -b <VERSION> origin/master
       git push origin <VERSION>
 
@@ -201,6 +247,83 @@ Pre-Release Procedure
       git checkout -b 5 origin/master
       git push origin 5
 
+* Check and make sure the RSB kernel, libbsd and tools reference the
+  branch commit.
+
+Post-Branch Procedure
+---------------------
+
+#. Create a release page for the next RTEMS release in Trac.
+
+#. Update the releases table. The page link is:
+
+     https://devel.rtems.org/wiki/Release
+
+   Update the table adding the new development release to the top
+   moving down the previous releases.
+
+   Label the new release branch as "Releasing". The documentation link
+   is left pointing to ``master`` until the release is made and the
+   documentation is installed on the RTEMS Documentation web site.
+
+#. Update the release table in the front page of the Trac Wiki. The
+   page link is:
+
+     https://devel.rtems.org/wiki/
+
+#. Add the milestones for the new development branch. The Trac page
+   is:
+
+  .. code-block:: none
+
+    = 6.1 (open)
+
+    == Statistics
+
+    ||   '''Total'''||[[TicketQuery(milestone=6.1,count)]]                                      ||
+    ||         Fixed||[[TicketQuery(status=closed&milestone=6.1,resolution=fixed,count,)]]      ||
+    ||       Invalid||[[TicketQuery(status=closed&milestone=6.1,resolution=invalid,count,)]]    ||
+    ||  Works for me||[[TicketQuery(status=closed&milestone=6.1,resolution=worksforme,count,)]] ||
+    ||     Duplicate||[[TicketQuery(status=closed&milestone=6.1,resolution=duplicate,count,)]]  ||
+    ||     Won't fix||[[TicketQuery(status=closed&milestone=6.1,resolution=wontfix,count,)]]    ||
+
+    == Distribution
+    [[TicketQuery(milestone=6.1&group=type,format=progress)]]
+
+    == Summary
+    [[TicketQuery(milestone=6.1)]]
+
+    == Details
+    [[TicketQuery(col=id|time|resolution|component|reporter|owner|changetime,status=closed&milestone=6.1,rows=summary|description,table)]]
+
+  Replace ``6.1`` with the required milestone.
+
+#. Create the RC1 release candidate with the source as close the
+   branch point as possible.
+
+#. Create a ticket to the clean the RSB for the release. The RSB's
+   ``master`` branch carries a number of older configurations and new
+   release configurations. These can be confusing to a new user and
+   add no value to a released RSB. For example leaving RTEMS 6 tool
+   building configurations in the RTEMS 5 release.
+
+Post-Branch Version Number Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After the release repositored have been branched the ``master`` branch
+has to have the major version number updated. The follow is a list of
+the needed changes.
+
+#. RSB requires the following files be changed:
+
+   ``source-builder/sb/version.py``
+     Update ``_version``.
+
+#. RTEMS Tools requires the following files be changed:
+
+   ``config/rtems-version.ini``
+     Update ``revision``,
+
 Release Procedure
 =================
 
@@ -208,6 +331,26 @@ The release procedure can be performed on any FreeBSD machine and uploaded to
 the RTEMS FTP server. You will need ssh access to the RTEMS server
 ``dispatch.rtems.org`` and suitable permissions to write into the FTP release
 path on the RTEMS server.
+
+#. The release process starts by branching the repositories. To branch
+   run the script:
+
+   .. code-block:: none
+
+       ./rtems-release-branch [-p] <USER> <VERSION> <REVISION>
+
+   Example:
+
+   .. code-block:: none
+
+       cd
+       mkdir -p development/rtems/releases
+       cd development/rtems/releases
+       git clone git://git.rtems.org/rtems-release.git rtems-release.git
+       cd rtems-release.git
+       ./rtems-release-branch -p chrisj 5
+
+   You need to have suitable commit access to the repositories.
 
 #. To create the RTEMS release run the release script:
 
@@ -219,11 +362,6 @@ path on the RTEMS server.
 
    .. code-block:: none
 
-       cd
-       mkdir -p development/rtems/releases
-       cd development/rtems/releases
-       git clone git://git.rtems.org/rtems-release.git rtems-release.git
-       cd rtems-release.git
        ./rtems-release 5 1.0
 
 #. Copy the release to the RTEMS FTP server:
@@ -267,4 +405,10 @@ Post-Release Procedure
 
 The following procedures are performed after a release has been created.
 
-#. TBD
+#. Update the release to the RTEMS servers:
+
+   .. code-block:: none
+
+     rsync --rsh=ssh -arv 5.1.0 chrisj@dispatch.rtems.org:/data/ftp/pub/rtems/releases/5/.
+
+#. Test a build of the ``beagleboneblack`` BSP.
