@@ -314,15 +314,31 @@ After the release repositored have been branched the ``master`` branch
 has to have the major version number updated. The follow is a list of
 the needed changes.
 
+#. RTEMS requires the following files be changed:
+
+    * :file:`aclocal/version.m4`
+
+    * :file:`c/src/aclocal/version.m4`
+
+    * :file:`cpukit/aclocal/version.m4`
+
+    * :file:`testsuites/aclocal/version.m4`
+
+    * :file:`rtems-bsps`
+
+#. RTEMS Documentation the following files be changed:
+
+    * :file:`wscript`: Update ``rtems_major_version``.
+
 #. RSB requires the following files be changed:
 
-   ``source-builder/sb/version.py``
-     Update ``_version``.
+    * :file:`source-builder/sb/version.py`: Update ``_version``.
 
 #. RTEMS Tools requires the following files be changed:
 
-   ``config/rtems-version.ini``
-     Update ``revision``,
+    * :file:`config/rtems-version.ini`: Update ``revision``.
+
+    * :file:`tester/rtems/version.cfg`: Update ``rtems_version``.
 
 Release Procedure
 =================
