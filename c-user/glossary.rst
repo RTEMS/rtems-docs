@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 Richi Dubey (richidubey@gmail.com)
 .. Copyright (C) 2017, 2019 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
 
@@ -15,6 +16,14 @@ Glossary
     active
         A term used to describe an object which has been created by an
         application.
+
+    APA
+        This term is an acronym for Arbitrary Processor Affinity.  APA schedulers
+        allow a thread to have an arbitrary affinity to a processor set, rather than
+        a restricted mapping to only one processor of the set or the ability to run
+        on all processors of the set.
+
+        It has two variants, :term:`Weak APA` and :term:`Strong APA`.
 
     aperiodic task
         A task which must execute only at irregular intervals and has only a soft
@@ -777,6 +786,17 @@ Glossary
         :term:`return value` to indicate a successful operation or error
         conditions.
 
+    Strong APA
+        Strong APA is a specialization of :term:`APA`.  Schedulers which implement
+        strong APA recursively searches for a processor in the :term:`thread`'s
+        affinity set, whenever a thread becomes ready for execution, followed by the
+        processors in the affinity set of threads that are assigned the processor
+        present in the ready thread's affinity set. This is done to find a thread to
+        processor mapping that does not violate the priority ordering and to provide
+        a thread to processor mapping with a higher total priority of the threads
+        allocated a processor.  Similar analysis is done when a thread blocks.  See
+        also :cite:`Cerqueira:2014:LPA`.
+
     suspend
         A term used to describe a task that is not competing for the CPU because it
         has had a ``rtems_task_suspend`` directive.
@@ -904,6 +924,14 @@ Glossary
         The list of tasks blocked pending the release of a particular resource.
         Message queues, regions, and semaphores have a wait queue associated with
         them.
+
+    Weak APA
+        Weak APA is a specialization of :term:`APA`.  This refers to Linux's push
+        and pull implementation of APA model. When a :term:`thread` becomes ready
+        for execution, it is allocated a processor if there is an idle processor, or
+        a processor executing a lower priority thread in its affinity set.  Unlike
+        :term:`Strong APA`, no thread is migrated from its processor to find a thread
+        to processor mapping.  See also :cite:`Cerqueira:2014:LPA`.
 
     YAML
         This term is an acronym for `YAML Ain't Markup Language <https://yaml.org/>`_.
