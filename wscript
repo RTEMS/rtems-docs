@@ -20,7 +20,7 @@ from common import version
 #
 # Branch version
 #
-rtems_major_version = '5'
+rtems_major_version = '6'
 
 #
 # The documents to build.
