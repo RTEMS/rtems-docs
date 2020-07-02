@@ -96,7 +96,7 @@ Use the following guidelines and template for C and C++ header files (here
 
 .. code-block:: c
 
-    /* SPDX-License-Identifier: BSD-2-Clause
+    /* SPDX-License-Identifier: BSD-2-Clause */
 
     /**
      * @file
