@@ -408,7 +408,7 @@ Build Configuration File Item Type
 This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
 attribute if the value is ``config-file``. This set of attributes specifies a
 configuration file placed in the build tree.  The configuration file is
-generated during the configure command execution and are placed in the build
+generated during the configure command execution and is placed in the build
 tree. All explicit attributes shall be specified. The explicit attributes for
 this type are:
 
