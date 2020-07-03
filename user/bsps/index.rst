@@ -27,7 +27,6 @@ You can see the current BSP list in the RTEMS sources by asking RTEMS with:
     bsps-aarch64
     bsps-arm
     bsps-bfin
-    bsps-epiphany
     bsps-i386
     bsps-lm32
     bsps-m68k
