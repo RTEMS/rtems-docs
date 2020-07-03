@@ -96,7 +96,7 @@ The specification item types have the following hierarchy:
 
       * :ref:`SpecTypeGenericFunctionalRequirementItemType`
 
-    * :ref:`SpecTypeNonXFunctionalRequirementItemType`
+    * :ref:`SpecTypeNonFunctionalRequirementItemType`
 
   * :ref:`SpecTypeRequirementValidationItemType`
 
@@ -125,11 +125,10 @@ specializations of requirements, interface specifications, test suites, test
 cases, and requirement validations.  These things will be called *specification
 items* or just *items* if it is clear from the context.
 
-The specification items are stored in files in :term:`YAML`
-format with a defined set of key-value pairs called attributes.  Each
-attribute key name shall be a :ref:`SpecTypeName`.  In particular, key
-names which begin with an underscore (``_``) are reserved for internal
-use in tools.
+The specification items are stored in files in :term:`YAML` format with a
+defined set of key-value pairs called attributes.  Each attribute key name
+shall be a :ref:`SpecTypeName`.  In particular, key names which begin with an
+underscore (``_``) are reserved for internal use in tools.
 
 This is the root specification item type. All explicit attributes shall be
 specified. The explicit attributes for this type are:
@@ -144,7 +143,7 @@ copyrights
     the item.
 
 enabled-by
-    The attribute value shall be an :ref:`SpecTypeEnabledXByExpression`. It
+    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`. It
     shall define the conditions under which the item is enabled.
 
 links
@@ -1602,7 +1601,7 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeFunctionalRequirementItemType`
 
-* :ref:`SpecTypeNonXFunctionalRequirementItemType`
+* :ref:`SpecTypeNonFunctionalRequirementItemType`
 
 Please have a look at the following example:
 
@@ -1655,9 +1654,9 @@ function or a macro.  The action is performed through a call of the function or
 an execution of the code of a macro expansion by an actor.  The actor is for
 example a task or an interrupt service routine.
 
-For action requirements which specify the function of an interface, there
-shall be exactly one link with the :ref:`SpecTypeInterfaceFunctionLinkRole`
-to the interface of the action.
+For action requirements which specify the function of an interface, there shall
+be exactly one link with the :ref:`SpecTypeInterfaceFunctionLinkRole` to the
+interface of the action.
 
 The action requirements are specified by
 
@@ -1665,15 +1664,15 @@ The action requirements are specified by
 
 * a list of post-conditions, each with a set of states,
 
-* the transition of pre-condition states to post-condition states through
-  the action.
+* the transition of pre-condition states to post-condition states through the
+  action.
 
-Along with the requirements, the test code to generate a validation test
-is specified.  For an action requirement it is verified that all
-variations of pre-condition states have a set of post-condition states
-specified in the transition map.  All transitions are covered by the
-generated test code. All explicit attributes shall be specified. The explicit
-attributes for this type are:
+Along with the requirements, the test code to generate a validation test is
+specified.  For an action requirement it is verified that all variations of
+pre-condition states have a set of post-condition states specified in the
+transition map.  All transitions are covered by the generated test code. All
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 post-conditions
     The attribute value shall be a list. Each list element shall be an
@@ -1885,7 +1884,7 @@ This type refines the following types:
 Items of this type state a functional requirement with the functional type
 defined by the specification type refinement.
 
-.. _SpecTypeNonXFunctionalRequirementItemType:
+.. _SpecTypeNonFunctionalRequirementItemType:
 
 Non-Functional Requirement Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1896,9 +1895,8 @@ attributes specifies a non-functional requirement. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 non-functional-type
-    The attribute value shall be a
-    :ref:`SpecTypeRequirementNonXFunctionalType`. It shall be the
-    non-functional type of the requirement.
+    The attribute value shall be a :ref:`SpecTypeRequirementNonFunctionalType`.
+    It shall be the non-functional type of the requirement.
 
 .. _SpecTypeRequirementValidationItemType:
 
@@ -1919,15 +1917,14 @@ text
     The attribute value shall be a string. It shall provide the validation
     evidence depending on the validation method:
 
-    * *By analysis*: A statement shall be provided how the requirement is
-      met, by analysing static properties of the
-      :term:`software product`.
+    * *By analysis*: A statement shall be provided how the requirement is met,
+      by analysing static properties of the :term:`software product`.
 
-    * *By inspection*: A statement shall be provided how the requirement
-      is met, by inspection of the :term:`source code`.
+    * *By inspection*: A statement shall be provided how the requirement is
+      met, by inspection of the :term:`source code`.
 
-    * *By review of design*: A rationale shall be provided to demonstrate
-      how the requirement is satisfied implicitly by the software design.
+    * *By review of design*: A rationale shall be provided to demonstrate how
+      the requirement is satisfied implicitly by the software design.
 
 .. _SpecTypeSpecificationItemType:
 
@@ -2197,9 +2194,9 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementState`
 
-* :ref:`SpecTypeActionRequirementTransitionPostXConditions`
+* :ref:`SpecTypeActionRequirementTransitionPostConditions`
 
-* :ref:`SpecTypeActionRequirementTransitionPreXConditions`
+* :ref:`SpecTypeActionRequirementTransitionPreConditions`
 
 .. _SpecTypeActionRequirementState:
 
@@ -2379,24 +2376,24 @@ for this transition. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 enabled-by
-    The attribute value shall be an :ref:`SpecTypeEnabledXByExpression`. The
+    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`. The
     transition map may be customized to support configuration variants through
     this attribute.  The default transitions (``enabled-by: true``) shall be
     specified before the customized variants in the list.
 
 post-conditions
     The attribute value shall be an
-    :ref:`SpecTypeActionRequirementTransitionPostXConditions`.
+    :ref:`SpecTypeActionRequirementTransitionPostConditions`.
 
 pre-conditions
     The attribute value shall be an
-    :ref:`SpecTypeActionRequirementTransitionPreXConditions`.
+    :ref:`SpecTypeActionRequirementTransitionPreConditions`.
 
 This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementItemType`
 
-.. _SpecTypeActionRequirementTransitionPostXConditions:
+.. _SpecTypeActionRequirementTransitionPostConditions:
 
 Action Requirement Transition Post-Conditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2414,7 +2411,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementTransition`
 
-.. _SpecTypeActionRequirementTransitionPreXConditionStateSet:
+.. _SpecTypeActionRequirementTransitionPreConditionStateSet:
 
 Action Requirement Transition Pre-Condition State Set
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2430,9 +2427,9 @@ A value of this type shall be of one of the following variants:
 
 This type is used by the following types:
 
-* :ref:`SpecTypeActionRequirementTransitionPreXConditions`
+* :ref:`SpecTypeActionRequirementTransitionPreConditions`
 
-.. _SpecTypeActionRequirementTransitionPreXConditions:
+.. _SpecTypeActionRequirementTransitionPreConditions:
 
 Action Requirement Transition Pre-Conditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2441,7 +2438,7 @@ This set of attributes defines for each pre-condition the set of states before
 the action for a transition in an actin requirement. Generic attributes may be
 specified. Each generic attribute key shall be an
 :ref:`SpecTypeActionRequirementName`. Each generic attribute value shall be an
-:ref:`SpecTypeActionRequirementTransitionPreXConditionStateSet`. There shall be
+:ref:`SpecTypeActionRequirementTransitionPreConditionStateSet`. There shall be
 exactly one generic attribute key for each pre-condition.  The key name shall
 be the pre-condition name.  The value of each generic attribute shall be a set
 of states of the pre-condition.
@@ -3179,7 +3176,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeRootItemType`
 
-.. _SpecTypeEnabledXByExpression:
+.. _SpecTypeEnabledByExpression:
 
 Enabled-By Expression
 ^^^^^^^^^^^^^^^^^^^^^
@@ -3200,22 +3197,22 @@ A value of this type shall be of one of the following variants:
 
   and
       The attribute value shall be a list. Each list element shall be an
-      :ref:`SpecTypeEnabledXByExpression`. The *and* operator evaluates to the
+      :ref:`SpecTypeEnabledByExpression`. The *and* operator evaluates to the
       *logical and* of the evaluation results of the expressions in the list.
 
   not
-      The attribute value shall be an :ref:`SpecTypeEnabledXByExpression`. The
+      The attribute value shall be an :ref:`SpecTypeEnabledByExpression`. The
       *not* operator evaluates to the *logical not* of the evaluation results
       of the expression.
 
   or
       The attribute value shall be a list. Each list element shall be an
-      :ref:`SpecTypeEnabledXByExpression`. The *or* operator evaluates to the
+      :ref:`SpecTypeEnabledByExpression`. The *or* operator evaluates to the
       *logical or* of the evaluation results of the expressions in the list.
 
 * The value may be a list. Each list element shall be an
-  :ref:`SpecTypeEnabledXByExpression`. This list of expressions evaluates to
-  the *logical or* of the evaluation results of the expressions in the list.
+  :ref:`SpecTypeEnabledByExpression`. This list of expressions evaluates to the
+  *logical or* of the evaluation results of the expressions in the list.
 
 * The value may be a string. If the value is in the *enabled set*, this
   expression evaluates to true, otherwise to false.
@@ -3224,7 +3221,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementTransition`
 
-* :ref:`SpecTypeEnabledXByExpression`
+* :ref:`SpecTypeEnabledByExpression`
 
 * :ref:`SpecTypeInterfaceIncludeLinkRole`
 
@@ -3436,7 +3433,7 @@ definition
 
 enabled-by
     The attribute value shall be an
-    :ref:`SpecTypeInterfaceEnabledXByExpression`.
+    :ref:`SpecTypeInterfaceEnabledByExpression`.
 
 This type is used by the following types:
 
@@ -3506,7 +3503,7 @@ definition
 
 enabled-by
     The attribute value shall be an
-    :ref:`SpecTypeInterfaceEnabledXByExpression`.
+    :ref:`SpecTypeInterfaceEnabledByExpression`.
 
 This type is used by the following types:
 
@@ -3555,7 +3552,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceVariableItemType`
 
-.. _SpecTypeInterfaceEnabledXByExpression:
+.. _SpecTypeInterfaceEnabledByExpression:
 
 Interface Enabled-By Expression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3575,22 +3572,22 @@ A value of this type shall be of one of the following variants:
 
   and
       The attribute value shall be a list. Each list element shall be an
-      :ref:`SpecTypeInterfaceEnabledXByExpression`. The *and* operator defines
-      a *logical and* of the expressions in the list.
+      :ref:`SpecTypeInterfaceEnabledByExpression`. The *and* operator defines a
+      *logical and* of the expressions in the list.
 
   not
       The attribute value shall be an
-      :ref:`SpecTypeInterfaceEnabledXByExpression`. The *not* operator defines
-      a *logical not* of the expression.
+      :ref:`SpecTypeInterfaceEnabledByExpression`. The *not* operator defines a
+      *logical not* of the expression.
 
   or
       The attribute value shall be a list. Each list element shall be an
-      :ref:`SpecTypeInterfaceEnabledXByExpression`. The *or* operator defines a
+      :ref:`SpecTypeInterfaceEnabledByExpression`. The *or* operator defines a
       *logical or* of the expressions in the list.
 
 * The value may be a list. Each list element shall be an
-  :ref:`SpecTypeInterfaceEnabledXByExpression`. It defines a *logical or* of
-  the expressions in the list.
+  :ref:`SpecTypeInterfaceEnabledByExpression`. It defines a *logical or* of the
+  expressions in the list.
 
 * The value may be a string. It defines a symbol in the expression.
 
@@ -3600,7 +3597,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceDefinitionVariant`
 
-* :ref:`SpecTypeInterfaceEnabledXByExpression`
+* :ref:`SpecTypeInterfaceEnabledByExpression`
 
 * :ref:`SpecTypeInterfaceFunctionDefinitionVariant`
 
@@ -3701,7 +3698,7 @@ definition
 
 enabled-by
     The attribute value shall be an
-    :ref:`SpecTypeInterfaceEnabledXByExpression`.
+    :ref:`SpecTypeInterfaceEnabledByExpression`.
 
 This type is used by the following types:
 
@@ -3753,7 +3750,7 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 enabled-by
-    The attribute value shall be an :ref:`SpecTypeEnabledXByExpression`. It
+    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`. It
     shall define under which conditions the interface container is included.
 
 .. _SpecTypeInterfaceNotes:
@@ -4000,7 +3997,7 @@ A value of this type shall be of one of the following variants:
 
 * The value may be a string.
 
-.. _SpecTypeRequirementNonXFunctionalType:
+.. _SpecTypeRequirementNonFunctionalType:
 
 Requirement Non-Functional Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4036,7 +4033,7 @@ requirement types. The value shall be an element of
 
 This type is used by the following types:
 
-* :ref:`SpecTypeNonXFunctionalRequirementItemType`
+* :ref:`SpecTypeNonFunctionalRequirementItemType`
 
 .. _SpecTypeRequirementReference:
 
@@ -4378,7 +4375,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeSpecificationAttributeSet`
 
-.. _SpecTypeSpecificationFloatingXPointAssert:
+.. _SpecTypeSpecificationFloatingPointAssert:
 
 Specification Floating-Point Assert
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4395,7 +4392,7 @@ A value of this type shall be of one of the following variants:
 
   and
       The attribute value shall be a list. Each list element shall be a
-      :ref:`SpecTypeSpecificationFloatingXPointAssert`. The *and* operator
+      :ref:`SpecTypeSpecificationFloatingPointAssert`. The *and* operator
       evaluates to the *logical and* of the evaluation results of the
       expressions in the list.
 
@@ -4431,28 +4428,28 @@ A value of this type shall be of one of the following variants:
 
   not
       The attribute value shall be a
-      :ref:`SpecTypeSpecificationFloatingXPointAssert`. The *not* operator
+      :ref:`SpecTypeSpecificationFloatingPointAssert`. The *not* operator
       evaluates to the *logical not* of the evaluation results of the
       expression.
 
   or
       The attribute value shall be a list. Each list element shall be a
-      :ref:`SpecTypeSpecificationFloatingXPointAssert`. The *or* operator
+      :ref:`SpecTypeSpecificationFloatingPointAssert`. The *or* operator
       evaluates to the *logical or* of the evaluation results of the
       expressions in the list.
 
 * The value may be a list. Each list element shall be a
-  :ref:`SpecTypeSpecificationFloatingXPointAssert`. This list of expressions
+  :ref:`SpecTypeSpecificationFloatingPointAssert`. This list of expressions
   evaluates to the *logical or* of the evaluation results of the expressions in
   the list.
 
 This type is used by the following types:
 
-* :ref:`SpecTypeSpecificationFloatingXPointAssert`
+* :ref:`SpecTypeSpecificationFloatingPointAssert`
 
-* :ref:`SpecTypeSpecificationFloatingXPointValue`
+* :ref:`SpecTypeSpecificationFloatingPointValue`
 
-.. _SpecTypeSpecificationFloatingXPointValue:
+.. _SpecTypeSpecificationFloatingPointValue:
 
 Specification Floating-Point Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4463,7 +4460,7 @@ are:
 
 assert
     The attribute value shall be a
-    :ref:`SpecTypeSpecificationFloatingXPointAssert`. This optional attribute
+    :ref:`SpecTypeSpecificationFloatingPointAssert`. This optional attribute
     defines the value constraints of the specified floating-point value.  In
     case the assert attribute is not present, then the value of the specified
     floating-point value may be every valid floating-point number.
@@ -4521,7 +4518,7 @@ dict
 
 float
     The attribute value shall be a
-    :ref:`SpecTypeSpecificationFloatingXPointValue`. It shall specify a
+    :ref:`SpecTypeSpecificationFloatingPointValue`. It shall specify a
     floating-point value.
 
 int
