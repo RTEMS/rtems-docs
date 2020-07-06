@@ -348,11 +348,8 @@ NOTES:
 
     The calculations for the required memory in the RTEMS Workspace for tasks
     assume that each task has a minimum stack size and has floating point
-    support enabled.  The configuration parameter
-    ``CONFIGURE_EXTRA_TASK_STACKS`` is used to specify task stack requirements
-    *ABOVE* the minimum size required.  See :ref:`Reserve Task/Thread Stack
-    Memory Above Minimum` for more information about
-    ``CONFIGURE_EXTRA_TASK_STACKS``.
+    support enabled.  The configuration option :ref:`CONFIGURE_EXTRA_TASK_STACKS` is used
+    to specify task stack requirements *above* the minimum size required.
 
     The maximum number of POSIX threads is specified by
     :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS`.

@@ -325,13 +325,10 @@ NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
 
-    This calculations for the required memory in the RTEMS Workspace for
-    threads assume that each thread has a minimum stack size and has floating
-    point support enabled.  The configuration option
-    :ref:`CONFIGURE_EXTRA_TASK_STACKS` is used to specify thread stack
-    requirements **above** the minimum size required.  See :ref:`Reserve
-    Task/Thread Stack Memory Above Minimum` for more information about
-    ``CONFIGURE_EXTRA_TASK_STACKS``.
+    This calculations for the required memory in the RTEMS Workspace for threads
+    assume that each thread has a minimum stack size and has floating point
+    support enabled.  The configuration option :ref:`CONFIGURE_EXTRA_TASK_STACKS` is used
+    to specify thread stack requirements **above** the minimum size required.
 
     The maximum number of Classic API Tasks is specified by
     :ref:`CONFIGURE_MAXIMUM_TASKS`.

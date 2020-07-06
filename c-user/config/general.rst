@@ -216,9 +216,9 @@ NOTES:
     to perform the sequential system initialization before the multithreading
     is started.
 
-    The interrupt stacks are covered by the :ref:`stack checker
-    <CONFIGURE_STACK_CHECKER_ENABLED>`.  However, using a too small interrupt
-    stack size may still result in undefined behaviour.
+    The interrupt stacks are covered by the stack checker, see
+    :ref:`CONFIGURE_STACK_CHECKER_ENABLED`.  However, using a too small interrupt stack
+    size may still result in undefined behaviour.
 
     In releases before RTEMS 5.1 the default value was
     :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of ``CPU_STACK_MINIMUM_SIZE``.
