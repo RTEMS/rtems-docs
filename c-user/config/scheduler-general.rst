@@ -16,7 +16,7 @@ section.
 By default, the :ref:`Deterministic Priority Scheduler <SchedulerPriority>`
 algorithm is used in uniprocessor configurations.  In case SMP is enabled and
 the configured maximum processors
-(:ref:`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`) is greater
+(:ref:`CONFIGURE_MAXIMUM_PROCESSORS`) is greater
 than one, then the :ref:`Earliest Deadline First (EDF) SMP Scheduler
 <SchedulerSMPEDF>` is selected as the default scheduler algorithm.
 

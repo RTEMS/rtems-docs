@@ -81,7 +81,7 @@ DESCRIPTION:
     * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
 
     then the value of this configuration option defines the default value of
-    :ref:`CONFIGURE_IDLE_TASK_SIZE`.
+    :ref:`CONFIGURE_IDLE_TASK_STACK_SIZE`.
 
 NOTES:
     None.
