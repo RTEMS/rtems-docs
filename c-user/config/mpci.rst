@@ -13,34 +13,6 @@ are only applicable if the configuration option :ref:`CONFIGURE_MP_APPLICATION`
 is defined.  The multiprocessing (MPCI) support must not be confused with the
 SMP support.
 
-.. index:: CONFIGURE_MP_APPLICATION
-
-.. _CONFIGURE_MP_APPLICATION:
-
-CONFIGURE_MP_APPLICATION
-------------------------
-
-CONSTANT:
-    ``CONFIGURE_MP_APPLICATION``
-
-OPTION TYPE:
-    This configuration option is a boolean feature define.
-
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the multiprocessing services
-    are not initialized.
-
-DESCRIPTION:
-    This configuration option is defined to indicate that the application intends
-    to be part of a multiprocessing configuration.  Additional configuration
-    options are assumed to be provided.
-
-NOTES:
-    This configuration option shall be undefined if the multiprocessing support
-    is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
-    build configuration option).  Otherwise a compile time error in the
-    configuration file will occur.
-
 .. index:: CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 
 .. _CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK:
@@ -77,6 +49,34 @@ DESCRIPTION:
 NOTES:
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. index:: CONFIGURE_MP_APPLICATION
+
+.. _CONFIGURE_MP_APPLICATION:
+
+CONFIGURE_MP_APPLICATION
+------------------------
+
+CONSTANT:
+    ``CONFIGURE_MP_APPLICATION``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the multiprocessing services
+    are not initialized.
+
+DESCRIPTION:
+    This configuration option is defined to indicate that the application intends
+    to be part of a multiprocessing configuration.  Additional configuration
+    options are assumed to be provided.
+
+NOTES:
+    This configuration option shall be undefined if the multiprocessing support
+    is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
+    build configuration option).  Otherwise a compile time error in the
+    configuration file will occur.
 
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 

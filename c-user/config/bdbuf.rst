@@ -319,6 +319,32 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. index:: CONFIGURE_SWAPOUT_WORKER_TASKS
+
+.. _CONFIGURE_SWAPOUT_WORKER_TASKS:
+
+CONFIGURE_SWAPOUT_WORKER_TASKS
+------------------------------
+
+CONSTANT:
+    ``CONFIGURE_SWAPOUT_WORKER_TASKS``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to ``UINT32_MAX``.
+
+DESCRIPTION:
+    The value of this configuration option defines the swapout worker task count.
+
+NOTES:
+    None.
+
 .. index:: CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY
 
 .. _CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY:
@@ -342,32 +368,6 @@ VALUE CONSTRAINTS:
 DESCRIPTION:
     The value of this configuration option defines the swapout worker task
     priority.
-
-NOTES:
-    None.
-
-.. index:: CONFIGURE_SWAPOUT_WORKER_TASKS
-
-.. _CONFIGURE_SWAPOUT_WORKER_TASKS:
-
-CONFIGURE_SWAPOUT_WORKER_TASKS
-------------------------------
-
-CONSTANT:
-    ``CONFIGURE_SWAPOUT_WORKER_TASKS``
-
-OPTION TYPE:
-    This configuration option is an integer define.
-
-DEFAULT VALUE:
-    The default value is 0.
-
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
-
-DESCRIPTION:
-    The value of this configuration option defines the swapout worker task count.
 
 NOTES:
     None.

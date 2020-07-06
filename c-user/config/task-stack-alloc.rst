@@ -47,6 +47,31 @@ NOTES:
 
     * :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
+.. index:: CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
+
+.. _CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE:
+
+CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
+------------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the system is informed
+    that the task stack allocator does not use the RTEMS Workspace.
+
+NOTES:
+    This configuration option may be used if a custom task stack allocator is
+    configured, see :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`.
+
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR_INIT
 
 .. _CONFIGURE_TASK_STACK_ALLOCATOR_INIT:
@@ -142,31 +167,6 @@ VALUE CONSTRAINTS:
 DESCRIPTION:
     The value of this configuration option is used to calculate the task stack
     space size.
-
-NOTES:
-    This configuration option may be used if a custom task stack allocator is
-    configured, see :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`.
-
-.. index:: CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
-
-.. _CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE:
-
-CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
-------------------------------------------------
-
-CONSTANT:
-    ``CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE``
-
-OPTION TYPE:
-    This configuration option is a boolean feature define.
-
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
-
-DESCRIPTION:
-    In case this configuration option is defined, then the system is informed
-    that the task stack allocator does not use the RTEMS Workspace.
 
 NOTES:
     This configuration option may be used if a custom task stack allocator is
