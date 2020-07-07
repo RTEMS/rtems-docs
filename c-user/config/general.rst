@@ -305,7 +305,7 @@ DEFAULT VALUE:
     The default value is 1.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
+    The value of this configuration option shall be greater than or equal to 1
     and less than or equal to ``CPU_MAXIMUM_PROCESSORS``.
 
 DESCRIPTION:
