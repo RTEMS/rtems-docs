@@ -15,3 +15,4 @@ from one version of RTEMS to a new version.
 .. toctree::
 
     v4_11-to-v5
+    v5-to-v6
