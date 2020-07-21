@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018, 2019 embedded brains GmbH
-.. Copyright (C) 2018, 2019 Sebastian Huber
+.. Copyright (C) 2018, 2020 embedded brains GmbH
+.. Copyright (C) 2018, 2020 Sebastian Huber
 
 Software Test Framework
 ***********************
@@ -15,6 +15,8 @@ The `RTEMS Test Framework` helps you to write test suites.  It has the following
 features:
 
 * Implemented in standard C11
+
+* Tests can be written in C or C++
 
 * Runs on at least FreeBSD, MSYS2, Linux and RTEMS
 
@@ -67,11 +69,11 @@ A `test suite` is a collection of test cases.  A `test case` consists of
 individual test actions and checks.  A `test check` determines if the outcome
 of a test action meets its expectation.  A `test action` is a program sequence
 with an observable outcome, for example a function invocation with a return
-status.  If the test action outcome is all right, then the test check passes,
-otherwise the test check fails.  The test check failures of a test case are
-summed up.  A test case passes, if the failure count of this test case is zero,
-otherwise the test case fails.  The test suite passes if all test cases pass,
-otherwise it fails.
+status.  If a test action produces the expected outcome as determined by the
+corresponding test check, then this test check passes, otherwise this test
+check fails.  The test check failures of a test case are summed up.  A test
+case passes, if the failure count of this test case is zero, otherwise the test
+case fails.  The test suite passes if all test cases pass, otherwise it fails.
 
 Test Cases
 ----------
@@ -89,7 +91,7 @@ body:
 The test case `name` must be a valid C designator.  The test case names must be
 unique within the test suite.  Just link modules with test cases to the test
 runner to form a test suite.  The test cases are automatically registered via
-static constructors.
+static C constructors.
 
 .. code-block:: c
     :caption: Test Case Example
@@ -144,13 +146,43 @@ macro followed by a function body:
 
 The test case `name` must be a valid C designator.  The test case names must be
 unique within the test suite.  The `fixture` must point to a statically
-initialized read-only object of type `T_fixture`.  The test fixture
-provides methods to setup, stop and tear down a test case.  A context is passed
-to the methods.  The initial context is defined by the read-only fixture
-object.  The context can be obtained by the `T_fixture_context()`
-function.  It can be set within the scope of one test case by the
-`T_set_fixture_context()` function.  This can be used for example to
-dynamically allocate a test environment in the setup method.
+initialized read-only object of type `T_fixture`.
+
+.. code-block:: c
+
+    typedef struct T_fixture {
+        void (*setup)(void *context);
+        void (*stop)(void *context);
+        void (*teardown)(void *context);
+        void (*scope)(void *context, char *buffer, size_t size);
+        void *initial_context;
+    } T_fixture;
+
+The test fixture provides methods to setup, stop, and teardown a test case as
+well as the scope for log messages.  A context is passed to each of the
+methods.  The initial context is defined by the read-only fixture object.  The
+context can be obtained by the `T_fixture_context()` function.  The context can
+be changed within the scope of one test case by the `T_set_fixture_context()`
+function.  The next test case execution using the same fixture will start again
+with the initial context defined by the read-only fixture object.  Setting the
+context can be used for example to dynamically allocate a test environment in
+the setup method.
+
+The test case fixtures of a test case are organized as a stack.  Fixtures can
+be dynamically added to a test case and removed from a test case via the
+`T_push_fixture()` and `T_pop_fixture()` functions.
+
+.. code-block:: c
+
+    void *T_push_fixture(T_fixture_node *node, const T_fixture *fixture);
+
+    void T_pop_fixture(void);
+
+The `T_push_fixture()` function needs an uninitialized fixture node which must
+exist until `T_pop_fixture()` is called.  It returns the initial context of the
+fixture.  At the end of a test case all pushed fixtures are popped
+automatically.  A call of `T_pop_fixture()` invokes the teardown method of the
+fixture and must correspond to a previous call to `T_push_fixture()`.
 
 .. code-block:: c
     :caption: Test Fixture Example
@@ -237,9 +269,9 @@ dynamically allocate a test environment in the setup method.
 Test Case Planning
 ------------------
 
-Each non-quiet test check fetches and increments the test step counter
-atomically.  For each test case execution the planned steps can be specified
-with the `T_plan()` function.
+A non-quiet test check fetches and increments the test step counter atomically.
+For each test case execution the planned steps can be specified with the
+`T_plan()` function.
 
 .. code-block:: c
 
@@ -318,7 +350,7 @@ execution follows exactly the planned steps.
 Test Case Resource Accounting
 -----------------------------
 
-The framework can check if various resources are leaked during a test case
+The framework can check if various resources have leaked during a test case
 execution.  The resource checkers are specified by the test run configuration.
 On RTEMS, checks for the following resources are available
 
@@ -452,13 +484,14 @@ test case execution.  You can provide an optional destroy function to
 Test Case Destructors
 ---------------------
 
-You can add test case destructors with `T_add_destructor()`.  They are called
-automatically at the test case end before the resource accounting takes place.
-Optionally, a registered destructor can be removed before the test case end
-with `T_remove_destructor()`.  The `T_destructor` structure of a destructor
-must exist after the return from the test case body.  Do not use stack memory
-or dynamic memory obtained via `T_malloc()`, `T_calloc()` or `T_zalloc()` for
-the `T_destructor` structure.
+You can add test case destructors with `T_add_destructor()`.  The destructors
+are called automatically at the test case end before the resource accounting
+takes place.  Optionally, a registered destructor can be removed before the
+test case end with `T_remove_destructor()`.  The `T_destructor` structure of a
+destructor must exist after the return from the test case body.  It is
+recommended to use statically allocated memory.  Do not use stack memory or
+dynamic memory obtained via `T_malloc()`, `T_calloc()` or `T_zalloc()` for the
+`T_destructor` structure.
 
 .. code-block:: c
 
@@ -497,16 +530,31 @@ the `T_destructor` structure.
 Test Checks
 -----------
 
-A `test check` determines if the actual value presented to the test check meets
-its expectation.  The actual value should represent the outcome of a test
-action.  If the actual value is all right, then the test check passes,
-otherwise the test check fails.  A failed test check does not stop the test
-case execution immediately unless the `T_assert_*()` test variant is used.
-Each test check increments the test step counter unless the `T_quiet_*()` test
-variant is used.  The test step counter is initialized to zero before the test
-case begins to execute.  The `T_step_*(step, ...)` test check variants verify
-that the test step counter is equal to the planned test step value, otherwise
-the test check fails.
+A `test check` determines if the actual value presented to the test check has
+the expected properties.  The actual value should represent the outcome of a
+test action.  If a test action produces the expected outcome as determined by
+the corresponding test check, then this test check passes, otherwise this test
+check fails.  A failed test check does not stop the test case execution
+immediately unless the `T_assert_*()` test variant is used.  Each test check
+increments the test step counter unless the `T_quiet_*()` test variant is used.
+The test step counter is initialized to zero before the test case begins to
+execute.  The `T_step_*(step, ...)` test check variants verify that the test
+step counter is equal to the planned test step value, otherwise the test check
+fails.
+
+Test Check Variant Conventions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `T_quiet_*()` test check variants do not increment the test step counter
+and only print a message if the test check fails.  This is helpful in case a
+test check appears in a tight loop.
+
+The `T_step_*(step, ...)` test check variants check in addition that the test
+step counter is equal to the specified test step value, otherwise the test
+check fails.
+
+The `T_assert_*()` and `T_step_assert_*(step, ...)` test check variants stop
+the current test case execution if the test check fails.
 
 Test Check Parameter Conventions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -557,21 +605,10 @@ lt
 If the actual value satisfies the test check condition, then the test check
 passes, otherwise it fails.
 
-Test Check Variant Conventions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Test Check Type Conventions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `T_quiet_*()` test check variants do not increment the test step counter
-and only print a message if the test check fails.  This is helpful in case a
-test check appears in a tight loop.
-
-The `T_step_*(step, ...)` test check variants check in addition that the test
-step counter is equal to the specified test step value, otherwise the test
-check fails.
-
-The `T_assert_*()` and `T_step_assert_*(step, ...)` test check variants stop
-the current test case execution if the test check fails.
-
-The following names for test check type variants are used:
+The following names for test check types are used:
 
 ptr
     The test value must be a pointer (`void *`).
@@ -653,6 +690,57 @@ ssz
 
 sz
     The test value must be of type `size_t`.
+
+Integers
+~~~~~~~~
+
+Let `xyz` be the type variant which shall be one of `schar`, `uchar`, `short`,
+`ushort`, `int`, `uint`, `long`, `ulong`, `ll`, `ull`, `i8`, `u8`, `i16`,
+`u16`, `i32`, `u32`, `i64`, `u64`, `iptr`, `uptr`, `ssz`, and `sz`.
+
+Let `I` be the type name which shall be compatible to the type variant.
+
+The following test checks for integers are available:
+
+.. code-block:: c
+
+    void T_eq_xyz(I a, I e);
+    void T_assert_eq_xyz(I a, I e);
+    void T_quiet_eq_xyz(I a, I e);
+    void T_step_eq_xyz(unsigned int step, I a, I e);
+    void T_step_assert_eq_xyz(unsigned int step, I a, I e);
+
+    void T_ne_xyz(I a, I e);
+    void T_assert_ne_xyz(I a, I e);
+    void T_quiet_ne_xyz(I a, I e);
+    void T_step_ne_xyz(unsigned int step, I a, I e);
+    void T_step_assert_ne_xyz(unsigned int step, I a, I e);
+
+    void T_ge_xyz(I a, I e);
+    void T_assert_ge_xyz(I a, I e);
+    void T_quiet_ge_xyz(I a, I e);
+    void T_step_ge_xyz(unsigned int step, I a, I e);
+    void T_step_assert_ge_xyz(unsigned int step, I a, I e);
+
+    void T_gt_xyz(I a, I e);
+    void T_assert_gt_xyz(I a, I e);
+    void T_quiet_gt_xyz(I a, I e);
+    void T_step_gt_xyz(unsigned int step, I a, I e);
+    void T_step_assert_gt_xyz(unsigned int step, I a, I e);
+
+    void T_le_xyz(I a, I e);
+    void T_assert_le_xyz(I a, I e);
+    void T_quiet_le_xyz(I a, I e);
+    void T_step_le_xyz(unsigned int step, I a, I e);
+    void T_step_assert_le_xyz(unsigned int step, I a, I e);
+
+    void T_lt_xyz(I a, I e);
+    void T_assert_lt_xyz(I a, I e);
+    void T_quiet_lt_xyz(I a, I e);
+    void T_step_lt_xyz(unsigned int step, I a, I e);
+    void T_step_assert_lt_xyz(unsigned int step, I a, I e);
+
+An automatically generated message is printed in case the test check fails.
 
 Boolean Expressions
 ~~~~~~~~~~~~~~~~~~~
@@ -838,57 +926,6 @@ The following test checks for characters (`char`) are available:
 
 An automatically generated message is printed in case the test check fails.
 
-Integers
-~~~~~~~~
-
-The following test checks for integers are available:
-
-.. code-block:: c
-
-    void T_eq_xyz(I a, I e);
-    void T_assert_eq_xyz(I a, I e);
-    void T_quiet_eq_xyz(I a, I e);
-    void T_step_eq_xyz(unsigned int step, I a, I e);
-    void T_step_assert_eq_xyz(unsigned int step, I a, I e);
-
-    void T_ne_xyz(I a, I e);
-    void T_assert_ne_xyz(I a, I e);
-    void T_quiet_ne_xyz(I a, I e);
-    void T_step_ne_xyz(unsigned int step, I a, I e);
-    void T_step_assert_ne_xyz(unsigned int step, I a, I e);
-
-    void T_ge_xyz(I a, I e);
-    void T_assert_ge_xyz(I a, I e);
-    void T_quiet_ge_xyz(I a, I e);
-    void T_step_ge_xyz(unsigned int step, I a, I e);
-    void T_step_assert_ge_xyz(unsigned int step, I a, I e);
-
-    void T_gt_xyz(I a, I e);
-    void T_assert_gt_xyz(I a, I e);
-    void T_quiet_gt_xyz(I a, I e);
-    void T_step_gt_xyz(unsigned int step, I a, I e);
-    void T_step_assert_gt_xyz(unsigned int step, I a, I e);
-
-    void T_le_xyz(I a, I e);
-    void T_assert_le_xyz(I a, I e);
-    void T_quiet_le_xyz(I a, I e);
-    void T_step_le_xyz(unsigned int step, I a, I e);
-    void T_step_assert_le_xyz(unsigned int step, I a, I e);
-
-    void T_lt_xyz(I a, I e);
-    void T_assert_lt_xyz(I a, I e);
-    void T_quiet_lt_xyz(I a, I e);
-    void T_step_lt_xyz(unsigned int step, I a, I e);
-    void T_step_assert_lt_xyz(unsigned int step, I a, I e);
-
-The type variant `xyz` must be `schar`, `uchar`, `short`, `ushort`, `int`,
-`uint`, `long`, `ulong`, `ll`, `ull`, `i8`, `u8`, `i16`, `u16`, `i32`, `u32`,
-`i64`, `u64`, `iptr`, `uptr`, `ssz`, or `sz`.
-
-The type name `I` must be compatible to the type variant.
-
-An automatically generated message is printed in case the test check fails.
-
 RTEMS Status Codes
 ~~~~~~~~~~~~~~~~~~
 
@@ -1027,6 +1064,35 @@ and exotic formats may not be supported.  On some architectures supported by
 RTEMS, floating-point operations are only supported in special tasks and may be
 forbidden in interrupt context.  The formatted output functions provided by the
 test framework work in every context.
+
+Utility
+-------
+
+You can stop a test case via the ``T_stop()`` function.  This function does not
+return.  You can indicate unreachable code paths with the ``T_unreachable()``
+function.  If this function is called, then the test case stops.
+
+You can busy wait with the ``T_busy()`` function:
+
+.. code-block:: c
+
+    void T_busy(uint_fast32_t count);
+
+It performs a busy loop with the specified iteration count.  This function is
+optimized to not perform memory accesses and should have a small jitter.  The
+loop iterations have a processor-specific duration.
+
+You can get an iteration count for the ``T_busy()`` function which corresponds
+roughly to one clock tick interval with the ``T_get_one_clock_tick_busy()``
+function:
+
+.. code-block:: c
+
+    uint_fast32_t T_get_one_clock_tick_busy(void);
+
+This function requires a clock driver.  It must be called from thread context
+with interrupts enabled.  It may return a different value each time it is
+called.
 
 Time Services
 -------------
@@ -1353,6 +1419,150 @@ reported.
     M:E:Empty:D:0.015188063
     E:measure_empty:N:1:F:0:D:14.284869
 
+Interrupt Tests
+---------------
+
+In the operating system implementation you may have two kinds of critical
+sections.  Firstly, there are low-level critical sections protected by
+interrupts disabled and maybe also some SMP spin lock.  Secondly, there are
+high-level critical sections which are protected by disabled thread
+dispatching.  The high-level critical sections may contain several low-level
+critical sections.  Between these low-level critical sections interrupts may
+happen which could alter the code path taken in the high-level critical
+section.
+
+The test framework provides support to write test cases for high-level critical
+sections though the `T_interrupt_test()` function:
+
+.. code-block:: c
+
+    typedef enum {
+        T_INTERRUPT_TEST_INITIAL,
+        T_INTERRUPT_TEST_ACTION,
+        T_INTERRUPT_TEST_BLOCKED,
+        T_INTERRUPT_TEST_CONTINUE,
+        T_INTERRUPT_TEST_DONE,
+        T_INTERRUPT_TEST_EARLY,
+        T_INTERRUPT_TEST_INTERRUPT,
+        T_INTERRUPT_TEST_LATE,
+        T_INTERRUPT_TEST_TIMEOUT
+    } T_interrupt_test_state;
+
+    typedef struct {
+        void                   (*prepare)(void *arg);
+        void                   (*action)(void *arg);
+        T_interrupt_test_state (*interrupt)(void *arg);
+        void                   (*blocked)(void *arg);
+        uint32_t                 max_iteration_count;
+    } T_interrupt_test_config;
+
+    T_interrupt_test_state T_interrupt_test(
+        const T_interrupt_test_config *config,
+        void                          *arg
+    );
+
+This function returns ``T_INTERRUPT_TEST_DONE`` if the test condition was
+satisfied within the maximum iteration count, otherwise it returns
+``T_INTERRUPT_TEST_TIMEOUT``.  The interrupt test run uses the specified
+configuration and passes the specified argument to all configured handlers.
+The function shall be called from thread context with interrupts enabled.
+
+.. image:: ../images/eng/interrupt-test.*
+    :scale: 60
+    :align: center
+
+The interrupt test uses an *adaptive bisection algorithm* to try to hit the
+code section under test by an interrupt.  In each test iteration, it waits for
+a time point one quarter of the clock tick interval after a clock tick using
+the monotonic clock.  Then it performs a busy wait using ``T_busy()`` with a
+busy count controlled by the adaptive bisection algorithm.  The test maintains
+a sample set of upper and lower bound busy wait count values.  Initially, the
+lower bound values are zero and the upper bound values are set to a value
+returned by ``T_get_one_clock_tick_busy()``.  The busy wait count for an
+iteration is set to the middle point between the arithmetic mean of the lower
+and upper bound sample values.  After the action handler returns, the set of
+lower and upper bound sample values is updated based on the test state.  If the
+test state is ``T_INTERRUPT_TEST_EARLY``, then the oldest upper bound sample
+value is replaced by the busy wait count used to delay the action and the
+latest lower bound sample value is slightly decreased.  Reducing the lower
+bound helps to avoid a zero length interval between the upper and lower bounds.
+If the test state is ``T_INTERRUPT_TEST_LATE``, then the oldest lower bound
+sample value is replaced by the busy wait count used to delay the action and
+the latest upper bound sample value is slightly increased.  In all other test
+states the timing values remain as is.  Using the arithmetic mean of a sample
+set dampens the effect of each test iteration and is an heuristic to mitigate
+the influence of jitters in the action code execution.
+
+The optional *prepare* handler should prepare the system so that the *action*
+handler can be called.  It is called in a tight loop, so all the time consuming
+setup should be done before ``T_interrupt_test()`` is called.  During the
+preparation the test state is ``T_INTERRUPT_TEST_INITIAL``.  The preparation
+handler shall not change the test state.
+
+The *action* handler should call the function which executes the code section
+under test.  The execution path up to the code section under test should have a
+low jitter.  Otherwise, the adaptive bisection algorithm may not find the right
+spot.
+
+The *interrupt* handler should check if the test condition is satisfied or a
+new iteration is necessary.  This handler is called in interrupt context.  It
+shall return ``T_INTERRUPT_TEST_DONE`` if the test condition is satisfied and
+the test run is done.  It shall return ``T_INTERRUPT_TEST_EARLY`` if the
+interrupt happened too early to satisfy the test condition.  It shall return
+``T_INTERRUPT_TEST_LATE`` if the interrupt happened too late to satisfy the
+test condition.  It shall return ``T_INTERRUPT_TEST_CONTINUE`` if the test
+should continue with the current timing settings.  Other states shall not be
+returned.  It is critical to return the early and late states if the test
+condition was not satisfied, otherwise the adaptive bisection algorithm may not
+work.  The returned state is used to try to change the test state from
+``T_INTERRUPT_TEST_ACTION`` to the returned state.
+
+The optional *blocked* handler is invoked if the executing thread blocks during
+the action processing.  It should remove the blocking condition of the thread
+so that the next iteration can start.  It can use
+``T_interrupt_change_state()`` to change the interrupt test state.
+
+The *max iteration count* configuration member defines the maximum iteration
+count of the test loop.  If the maximum iteration count is reached before the
+test condition is satisfied, then ``T_interrupt_test()`` returns
+``T_INTERRUPT_TEST_TIMEOUT``.
+
+The *interrupt* and *blocked* handlers may be called in arbitrary test states.
+
+The *action*, *interrupt*, and *blocked* handlers can use
+``T_interrupt_test_get_state()`` to get the current test state:
+
+.. code-block:: c
+
+    T_interrupt_test_state T_interrupt_test_get_state(void);
+
+The *action*, *interrupt*, and *blocked* handlers can use
+``T_interrupt_test_change_state()`` to try to change the test state from an
+expected state to a desired state:
+
+.. code-block:: c
+
+    T_interrupt_test_state T_interrupt_test_change_state(
+        T_interrupt_test_state expected_state,
+        T_interrupt_test_state desired_state
+    );
+
+The function returns the previous state.  If it **differs from the expected
+state**, then the requested state **change to the desired state did not take
+place**.  In an SMP configuration, do not call this function in a tight loop.
+It could lock up the test run.  To busy wait for a state change, use
+``T_interrupt_test_get_state()``.
+
+The *action* handler can use ``T_interrupt_test_busy_wait_for_interrupt()`` to
+busy wait for the interrupt:
+
+.. code-block:: c
+
+    void T_interrupt_test_busy_wait_for_interrupt(void);
+
+This is useful if the action code does not block to wait for the interrupt.  If
+the action handler just returns the test code immediately prepares the next
+iteration and may miss an interrupt which happens too late.
 
 Test Runner
 -----------
