@@ -84,7 +84,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the minimum size of a buffer
@@ -111,7 +111,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``SIZE_MAX``.
+    and less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the size of the cache memory
@@ -138,7 +138,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum blocks per
@@ -167,7 +167,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum blocks per write
@@ -216,7 +216,7 @@ OPTION TYPE:
     This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``RTEMS_MINIMUM_STACK_SIZE``.
+    The default value is :c:macro:`RTEMS_MINIMUM_STACK_SIZE`.
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
@@ -230,7 +230,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the task stack size of the
@@ -257,7 +257,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout task maximum block
@@ -284,7 +284,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout task swap period
@@ -337,7 +337,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout worker task count.

@@ -63,8 +63,8 @@ DESCRIPTION:
 NOTES:
     You can enable this option to reduce the size of the :term:`TCB`.  Use this
     option with care, since it can lead to race conditions and undefined system
-    behaviour.  For example, :c:data:`errno` is no longer a thread-local variable
-    if this option is enabled.
+    behaviour.  For example, :c:macro:`errno` is no longer a thread-local
+    variable if this option is enabled.
 
 .. index:: CONFIGURE_EXECUTIVE_RAM_SIZE
 
@@ -90,7 +90,7 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 0.
 
-    * It shall be less than or equal to ``UINTPTR_MAX``.
+    * It shall be less than or equal to `UINTPTR_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It shall be less than or equal to a
       BSP-specific and application-specific value which depends on the size of the
@@ -129,7 +129,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of bytes the
@@ -186,7 +186,7 @@ OPTION TYPE:
 
 DEFAULT VALUE:
     The default value is :ref:`BSP_INTERRUPT_STACK_SIZE` in case it is defined,
-    otherwise the default value is ``CPU_STACK_MINIMUM_SIZE``.
+    otherwise the default value is :c:macro:`CPU_STACK_MINIMUM_SIZE`.
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
@@ -197,10 +197,10 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``size_t``.
+      not overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
     * It shall be aligned according to
-      ``CPU_INTERRUPT_STACK_ALIGNMENT``.
+      :c:macro:`CPU_INTERRUPT_STACK_ALIGNMENT`.
 
 DESCRIPTION:
     The value of this configuration option defines the size of an interrupt stack
@@ -221,7 +221,8 @@ NOTES:
     size may still result in undefined behaviour.
 
     In releases before RTEMS 5.1 the default value was
-    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of ``CPU_STACK_MINIMUM_SIZE``.
+    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of
+    :c:macro:`CPU_STACK_MINIMUM_SIZE`.
 
 .. index:: CONFIGURE_MALLOC_DIRTY
 
@@ -274,7 +275,7 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 0.
 
-    * It shall be less than or equal to ``SIZE_MAX``.
+    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
 
     * It shall be less than or equal to a
       BSP-specific and application-specific value which depends on the size of the
@@ -286,7 +287,7 @@ DESCRIPTION:
 
 NOTES:
     The default value of three file descriptors allows RTEMS to support standard
-    input, output, and error I/O streams on ``/dev/console``.
+    input, output, and error I/O streams on :file:`/dev/console`.
 
 .. index:: CONFIGURE_MAXIMUM_PROCESSORS
 
@@ -306,7 +307,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 1
-    and less than or equal to ``CPU_MAXIMUM_PROCESSORS``.
+    and less than or equal to :c:macro:`CPU_MAXIMUM_PROCESSORS`.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of
@@ -346,7 +347,7 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 0.
 
-    * It shall be less than or equal to ``SIZE_MAX``.
+    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
 
     * It shall be less than or equal to a
       BSP-specific and application-specific value which depends on the size of the
@@ -393,7 +394,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``uintptr_t``.
+      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of kilobytes the
@@ -438,7 +439,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``uintptr_t``.
+      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of bytes reserved
@@ -449,7 +450,7 @@ NOTES:
     :ref:`CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES` define only how many message
     queues can be created by the application.  The memory for the message
     buffers is configured by this option.  For each message queue you have to
-    reserve some memory for the message buffers.  The size dependes on the
+    reserve some memory for the message buffers.  The size depends on the
     maximum number of pending messages and the maximum size of the messages of
     a message queue.  Use the ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()`` macro
     to specify the message buffer memory for each message queue and sum them up
@@ -470,7 +471,7 @@ NOTES:
     RTEMS Workspace size.
 
     The following example illustrates how the
-    `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` help macro can be used to assist in
+    ``CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()`` help macro can be used to assist in
     calculating the message buffer memory required.  In this example, there are
     two message queues used in this application.  The first message queue has a
     maximum of 24 pending messages with the message structure defined by the
@@ -560,7 +561,7 @@ OPTION TYPE:
     This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``CPU_STACK_MINIMUM_SIZE``.
+    The default value is :c:macro:`CPU_STACK_MINIMUM_SIZE`.
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
@@ -568,7 +569,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It shall be greater than or equal to a
       BSP-specific and application-specific minimum value.
@@ -646,7 +647,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the length of the timeslice
@@ -716,7 +717,7 @@ DESCRIPTION:
     If :ref:`CONFIGURE_UNLIMITED_OBJECTS` is defined, then the value of this
     configuration option defines the default objects maximum of all object
     classes supporting :ref:`ConfigUnlimitedObjects` to
-    ``rtems_resource_unlimited(CONFIGURE_UNLIMITED_ALLOCATION_SIZE)``.
+    ``rtems_resource_unlimited( CONFIGURE_UNLIMITED_ALLOCATION_SIZE )``.
 
 NOTES:
     By allowing users to declare all resources as being unlimited the user can

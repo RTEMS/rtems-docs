@@ -61,7 +61,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the thread stack size of the
@@ -97,7 +97,7 @@ NOTES:
 
     * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
 
-    * `CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+    * ``CONFIGURE_POSIX_INIT_THREAD_TABLE``, or
 
     * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
 

@@ -82,7 +82,7 @@ NOTES:
 
     * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
 
-    * `CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+    * ``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
 
     otherwise a compile time error in the configuration file will occur.
 
@@ -111,7 +111,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the IDLE
       task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``size_t``.
+      overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the task stack size for an

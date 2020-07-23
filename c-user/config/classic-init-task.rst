@@ -27,7 +27,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid integer of type
-    ``rtems_task_argument``.
+    :c:type:`rtems_task_argument`.
 
 DESCRIPTION:
     The value of this configuration option defines task argument of the Classic
@@ -50,7 +50,7 @@ OPTION TYPE:
     This configuration option is an integer define.
 
 DEFAULT VALUE:
-    The default value is ``RTEMS_DEFAULT_ATTRIBUTES``.
+    The default value is :c:macro:`RTEMS_DEFAULT_ATTRIBUTES`.
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid task attribute set.
@@ -104,8 +104,8 @@ OPTION TYPE:
     This configuration option is an integer define.
 
 DEFAULT VALUE:
-    In SMP  configurations, the default value is ``RTEMS_DEFAULT_MODES``,
-    otherwise the default value is ``RTEMS_NO_PREEMPT``.
+    In SMP  configurations, the default value is :c:macro:`RTEMS_DEFAULT_MODES`
+    otherwise the default value is :c:macro:`RTEMS_NO_PREEMPT`.
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid task mode set.
@@ -135,7 +135,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid integer of type
-    ``rtems_name``.
+    :c:type:`rtems_name`.
 
 DESCRIPTION:
     The value of this configuration option defines the name of the Classic API
@@ -195,7 +195,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the task stack size of the
@@ -229,7 +229,7 @@ NOTES:
     The application shall define exactly one of the following configuration
     options
 
-    * `CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+    * ``CONFIGURE_RTEMS_INIT_TASKS_TABLE``,
 
     * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
 

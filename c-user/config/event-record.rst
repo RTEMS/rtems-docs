@@ -122,7 +122,7 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 16.
 
-    * It shall be less than or equal to ``SIZE_MAX``.
+    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
 
     * It shall be a power of two.
 

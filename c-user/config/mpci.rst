@@ -35,11 +35,12 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 0.
 
-    * It shall be less than or equal to ``UINT32_MAX``.
+    * It shall be less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It shall be small enough so that the
       MPCI receive server stack area calculation carried out by
-      ``<rtems/confdefs.h>`` does not overflow an integer of type ``size_t``.
+      ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of bytes the
@@ -96,7 +97,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of
@@ -104,7 +105,7 @@ DESCRIPTION:
 
 NOTES:
     This value corresponds to the total number of objects which can be created
-    with the ``RTEMS_GLOBAL`` attribute.
+    with the :c:macro:`RTEMS_GLOBAL` attribute.
 
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
@@ -127,7 +128,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of nodes in
@@ -155,7 +156,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of
@@ -221,7 +222,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to ``UINT32_MAX``.
+    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the node number of this node

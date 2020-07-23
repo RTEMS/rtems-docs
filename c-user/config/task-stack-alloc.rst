@@ -43,7 +43,7 @@ NOTES:
 
     * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
 
-    * `CONFIGURE_TASK_STACK_ALLOCATOR`
+    * ``CONFIGURE_TASK_STACK_ALLOCATOR``
 
     * :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
@@ -86,11 +86,12 @@ OPTION TYPE:
     This configuration option is an initializer define.
 
 DEFAULT VALUE:
-    The default value is ``NULL``.
+    The default value is `NULL <https://en.cppreference.com/w/c/types/NULL>`_.
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be defined to a valid function
-    pointer of the type ``void ( *initialize )( size_t )`` or to ``NULL``.
+    pointer of the type ``void ( *initialize )( size_t )`` or to
+    `NULL <https://en.cppreference.com/w/c/types/NULL>`_.
 
 DESCRIPTION:
     The value of this configuration option initializes the stack allocator
@@ -99,7 +100,7 @@ DESCRIPTION:
 NOTES:
     A correctly configured system shall configure the following to be consistent:
 
-    * `CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+    * ``CONFIGURE_TASK_STACK_ALLOCATOR_INIT``
 
     * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
 
@@ -138,7 +139,7 @@ NOTES:
 
     * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
 
-    * `CONFIGURE_TASK_STACK_DEALLOCATOR`
+    * ``CONFIGURE_TASK_STACK_DEALLOCATOR``
 
 .. index:: CONFIGURE_TASK_STACK_FROM_ALLOCATOR
 .. index:: task stack allocator

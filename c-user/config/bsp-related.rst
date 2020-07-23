@@ -71,7 +71,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the IDLE
       task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``size_t``.
+      overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
 DESCRIPTION:
     If
@@ -145,10 +145,10 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``size_t``.
+      not overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
     * It shall be aligned according to
-      ``CPU_INTERRUPT_STACK_ALIGNMENT``.
+      :c:macro:`CPU_INTERRUPT_STACK_ALIGNMENT`.
 
 DESCRIPTION:
     If
@@ -259,9 +259,9 @@ DESCRIPTION:
     * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
 
     then not all memory is made available to the C Program Heap immediately at
-    system initialization time.  When :c:func:`malloc()` or other standard memory
-    allocation functions are unable to allocate memory, they will call the BSP
-    supplied :c:func:`sbrk()` function to obtain more memory.
+    system initialization time.  When :c:func:`malloc` or other standard
+    memory allocation functions are unable to allocate memory, they will call the
+    BSP supplied :c:func:`sbrk` function to obtain more memory.
 
 NOTES:
     This option should not be defined by the application. Only the BSP knows how

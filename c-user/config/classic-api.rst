@@ -331,7 +331,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It may be defined through
       :c:func:`rtems_resource_unlimited` the enable unlimited objects for this

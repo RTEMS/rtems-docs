@@ -97,7 +97,7 @@ NOTES:
     :ref:`ConfigUnlimitedObjects`.
 
     A key value pair is created by :c:func:`pthread_setspecific` if the value
-    is not :c:macro:`NULL`, otherwise it is deleted.
+    is not `NULL <https://en.cppreference.com/w/c/types/NULL>`_, otherwise it is deleted.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
 
@@ -129,7 +129,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``uintptr_t``.
+      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It may be defined through
       :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
@@ -174,7 +174,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``uintptr_t``.
+      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It shall be zero if the POSIX API is not
       enabled (e.g. RTEMS was built without the ``--enable-posix`` build
@@ -221,7 +221,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``uintptr_t``.
+      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It may be defined through
       :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
@@ -236,9 +236,10 @@ NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
 
-    Named semaphores are created with :c:func:`sem_open()`.  Semaphores
-    initialized with :c:func:`sem_init()` are not affected by this configuration
-    option since the storage space for these semaphores is user-provided.
+    Named semaphores are created with :c:func:`sem_open`.  Semaphores
+    initialized with :c:func:`sem_init` are not affected by this
+    configuration option since the storage space for these semaphores is
+    user-provided.
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_SHMS
 
@@ -270,7 +271,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the
       RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type ``uintptr_t``.
+      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It may be defined through
       :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
@@ -315,7 +316,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -408,7 +409,7 @@ VALUE CONSTRAINTS:
 
     * It shall be small enough so that the task
       stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type ``uintptr_t``.
+      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
     * It shall be greater than or equal to a
       BSP-specific and application-specific minimum value.

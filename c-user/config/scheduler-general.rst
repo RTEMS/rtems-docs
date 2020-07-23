@@ -52,7 +52,7 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 0.
 
-    * It shall be less than or equal to ``SIZE_MAX``.
+    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
 
     * It shall be less than or equal to a
       BSP-specific and application-specific value which depends on the size of the
@@ -150,7 +150,7 @@ VALUE CONSTRAINTS:
 
       * ``RTEMS_SCHEDULER_ASSIGN( processor_index, attributes )``
 
-      * :c:macro:`RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER`
+      * ``RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER``
 
     * It shall be a list of exactly
       :ref:`CONFIGURE_MAXIMUM_PROCESSORS` elements.
@@ -293,7 +293,7 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid integer of type
-    ``rtems_name``.
+    :c:type:`rtems_name`.
 
 DESCRIPTION:
     The value of this configuration option defines the name of the default
@@ -303,7 +303,7 @@ NOTES:
     This scheduler configuration option is an advanced configuration option.
     Think twice before you use it.
 
-    Schedulers can be identified via c:func:`rtems_scheduler_ident`.
+    Schedulers can be identified via :c:func:`rtems_scheduler_ident`.
 
     Use :c:func:`rtems_build_name` to define the scheduler name.
 

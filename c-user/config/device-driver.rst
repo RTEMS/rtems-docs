@@ -39,7 +39,7 @@ NOTES:
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
 
-    * `CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+    * ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER``, or
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
@@ -130,7 +130,7 @@ NOTES:
 
     The application shall define exactly one of the following configuration options
 
-    * `CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+    * ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``,
 
     * :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
 
@@ -169,7 +169,7 @@ NOTES:
 
     The
 
-    * :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+    * ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
 
@@ -311,9 +311,9 @@ NOTES:
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    This device driver reads via :c:func:`getchark`.
+    This device driver reads via :c:func:`rtems_putc`.
 
-    This device driver writes via :c:func:`rtems_putc`.
+    This device driver writes via :c:func:`getchark`.
 
     The Termios framework is not used.  There is no support to change device
     settings, e.g. baud, stop bits, parity, etc.
@@ -322,7 +322,7 @@ NOTES:
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
 
-    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
@@ -354,17 +354,17 @@ NOTES:
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    This device driver reads via :c:func:`getchark`.
+    This device driver reads via :c:func:`rtems_putc`.
 
     This device driver writes into a write buffer.  The count of characters
     written into the write buffer is returned.  It might be less than the
     requested count, in case the write buffer is full.  The write is
     non-blocking and may be called from interrupt context.  A dedicated task
     reads from the write buffer and outputs the characters via
-    :c:func:`rtems_putc`.  This task runs with the least important priority.
+    :c:func:`getchark`.  This task runs with the least important priority.
     The write buffer size is 2047 characters and it is not configurable.
 
-    Use ``fsync(STDOUT_FILENO)`` or ``fdatasync(STDOUT_FILENO)`` to drain the
+    Use ``fsync( STDOUT_FILENO )`` or ``fdatasync( STDOUT_FILENO )`` to drain the
     write buffer.
 
     The Termios framework is not used.  There is no support to change device
@@ -376,7 +376,7 @@ NOTES:
 
     * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
 
-    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
+    * ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
 
     configuration options are mutually exclusive.
 
@@ -436,7 +436,7 @@ NOTES:
 
     * :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
 
-    * `CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
+    * ``CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER``,
 
     otherwise a compile time error will occur.
 
@@ -566,15 +566,49 @@ OPTION TYPE:
     This configuration option is an integer define.
 
 DEFAULT VALUE:
-    This is computed by default, and is set to the number of device drivers
-    configured using the ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER``
-    configuration options.
+    This is computed by default, and is set to the number of statically
+    configured device drivers configured using the following configuration
+    options:
+
+    * :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER`
+
+    * :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
+
+    * :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be less than or equal to ``SIZE_MAX``.
+    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
 
     * It shall be greater than or equal than the number of statically configured
       device drivers.
@@ -587,8 +621,6 @@ DESCRIPTION:
     The value of this configuration option defines the number of device drivers.
 
 NOTES:
-    If the application will dynamically install device drivers, then this
-    configuration parameter shall be larger than the number of statically
-    configured device drivers. Drivers configured using the
-    ``CONFIGURE_APPLICATIONS_NEEDS_XXX_DRIVER`` configuration options are
-    statically installed.
+    If the application will dynamically install device drivers, then the
+    configuration option value shall be larger than the number of statically
+    configured device drivers.

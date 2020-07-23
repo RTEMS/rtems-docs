@@ -455,7 +455,8 @@ DEFAULT CONFIGURATION:
 
 DESCRIPTION:
     In case this configuration option is defined, then the root IMFS does not
-    support mounting other filesystems (no support for :c:func:`mount`).
+    support mounting other filesystems (no support for
+    :c:func:`mount`).
 
 NOTES:
     None.
@@ -479,8 +480,8 @@ DEFAULT CONFIGURATION:
 
 DESCRIPTION:
     In case this configuration option is defined, then the root IMFS does not
-    support reading directories (no support for :c:func:`readdir`).  It is still
-    possible to open files in a directory.
+    support reading directories (no support for :c:func:`readdir`).  It is
+    still possible to open files in a directory.
 
 NOTES:
     None.
@@ -600,7 +601,8 @@ DEFAULT CONFIGURATION:
 
 DESCRIPTION:
     In case this configuration option is defined, then the root IMFS does not
-    support unmounting other filesystems (no support for :c:func:`unmount`).
+    support unmounting other filesystems (no support for
+    :c:func:`unmount`).
 
 NOTES:
     None.
