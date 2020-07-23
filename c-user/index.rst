@@ -38,7 +38,7 @@ RTEMS Classic API Guide (|version|).
 	semaphore/index
 	barrier_manager
 	message_manager
-	event_manager
+	event/index
 	signal_manager
 	partition_manager
 	region_manager
