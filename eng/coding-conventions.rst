@@ -21,7 +21,7 @@ Source Documentation
 * Use Doxygen according to our `Doxygen Recommendations <https://devel.rtems.org/wiki/Developer/Coding/Doxygen>`_..
 * Start each file with a brief description followed by a license.
   See `Boilerplate File Header <https://devel.rtems.org/wiki/Developer/Coding/Boilerplate_File_Header>`_..
-* Use /* */ comments.
+* Use ``/* */`` comments.
 * Use comments wisely within function bodies, to explain
   or draw attention without being verbose.
 * Use English prose and strive for good grammar,
@@ -48,54 +48,80 @@ Language and Compiler
 ---------------------
 
 * Use C99.
+
 * Treat warnings as errors: eliminate them.
+
 * Favor C, but when assembly language is required use inline
   assembly if possible.
+
 * Do not use compiler extensions.
-* Use the RTEMS_macros defined in score/basedefs.h for abstracting
-  compiler-specific features.
+
+* Use the RTEMS macros defined in <rtems/score/basedefs.h> for abstracting
+  compiler-specific features.  For using attributes see the
+  `GCC attribute syntax <https://gcc.gnu.org/onlinedocs/gcc/Attribute-Syntax.html#Attribute-Syntax>`_.
+  Prefer to place attributes in front of the declarator.  Try to be in line
+  with
+  `C++11 attributes <https://en.cppreference.com/w/cpp/language/attributes>`_
+  and C11 keywords such as
+  `_Noreturn <https://en.cppreference.com/w/c/language/_Noreturn>`_.
+
 * Use NULL for the null pointer, and prefer to use explicit
   checks against NULL, e.g.,
 
   .. code-block:: c
 
       if ( ptr != NULL )
+
   instead of
 
   .. code-block:: c
 
       if ( !ptr )
+
 * Use explicit checks for bits in variables.
+
    * Example 1: Use
+
       .. code-block:: c
 
            if ( XBITS == (var & XBITS) )
+
      to check for a set of defined bits.
+
    * Example 2: Use
+
       .. code-block:: c
 
           if ( (var & X_FLAGS) != 0) )
+
      instead of
+
       .. code-block:: c
 
           if ( !!(var & X_FLAGS) )
+
      to check for at least 1 defined bit in a set.
-* Use '(void) unused;' to mark unused parameters and set-but-unused
+
+* Use ``(void) unused;`` to mark unused parameters and set-but-unused
   variables immediately after being set.
+
 * Do not put function prototypes in C source files, any global functions
   should have a prototype in a header file and any private function
   should be declared static.
+
 * Declare global variables in exactly one header file.
   Define global variables in at most one source file.
   Include the header file declaring the global variable as
   the first include file if possible to make sure that the
   compiler checks the declaration and definition and that
   the header file is self-contained.
+
 * Do not cast arguments to any printf() or printk() variant.
   Use <inttypes.h> PRI constants for the types supported there.
   Use <rtems/inttypes.h> for the other POSIX and RTEMS types that
   have PRI constants defined there. This increases the portability
   of the printf() format.
+
 * Do not use the register keyword. It is deprecated since C++14.
 
 Formatting
