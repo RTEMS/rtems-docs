@@ -1466,6 +1466,9 @@ the :ref:`SpecTypeInterfacePlacementLinkRole` to an
 domain of the header file. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
+brief
+    The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
+
 path
     The attribute value shall be a string. It shall be the path used to include
     the header file.  For example :file:`rtems/confdefs.h`.
@@ -3277,7 +3280,8 @@ A value of this type shall be of one of the following variants:
 * There may by be no value (null).
 
 * The value may be a string. It shall be the brief description of the
-  interface.
+  interface.  It should be a single sentence. The value shall not match with
+  the regular expression "``\n\n``".
 
 This type is used by the following types:
 
@@ -3294,6 +3298,8 @@ This type is used by the following types:
 * :ref:`SpecTypeInterfaceFunctionItemType`
 
 * :ref:`SpecTypeInterfaceGroupItemType`
+
+* :ref:`SpecTypeInterfaceHeaderFileItemType`
 
 * :ref:`SpecTypeInterfaceMacroItemType`
 
