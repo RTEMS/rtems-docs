@@ -1449,6 +1449,10 @@ name
     The attribute value shall be a string. It shall be the human readable name
     of the interface group.
 
+text
+    The attribute value shall be a :ref:`SpecTypeRequirementText`. It shall
+    state the requirement for the interface group.
+
 .. _SpecTypeInterfaceHeaderFileItemType:
 
 Interface Header File Item Type
@@ -4229,6 +4233,8 @@ This type is used by the following types:
 * :ref:`SpecTypeApplicationConfigurationOptionItemType`
 
 * :ref:`SpecTypeConstraintItemType`
+
+* :ref:`SpecTypeInterfaceGroupItemType`
 
 * :ref:`SpecTypeRequirementItemType`
 
