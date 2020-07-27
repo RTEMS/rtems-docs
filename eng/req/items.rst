@@ -2192,8 +2192,12 @@ a condition used to define pre-conditions and post-conditions of an action
 requirement.  It shall be formatted in CamelCase.  It should be brief and
 abbreviated. The rationale for this is that the names are used in tables and
 the horizontal space is limited by the page width.  The more conditions you
-have in an action requirement, the shorter the names should be. The value shall
-match with the regular expression "``^[A-Z][a-zA-Z0-9]+$"``.
+have in an action requirement, the shorter the names should be.  The name
+``NA`` is reserved and indicates that a condition is not applicable. The value
+
+* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$"``,
+
+* and, shall be not equal to "``NA``".
 
 This type is used by the following types:
 
@@ -2429,8 +2433,13 @@ A value of this type shall be of one of the following variants:
   :ref:`SpecTypeActionRequirementName`. The list defines the set of states of
   the pre-condition in the transition.
 
-* The value may be a string. The value represents all states of the
-  pre-condition in the transition. The value shall be equal to "``all``".
+* The value may be a string. The value ``all`` represents all states of the
+  pre-condition in this transition.  The value ``N/A`` marks the pre-condition
+  as not applicable in this transition. The value shall be an element of
+
+  * "``all``", and
+
+  * "``N/A``".
 
 This type is used by the following types:
 
