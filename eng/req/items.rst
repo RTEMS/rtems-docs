@@ -1689,6 +1689,10 @@ pre-conditions
     The attribute value shall be a list. Each list element shall be an
     :ref:`SpecTypeActionRequirementCondition`.
 
+skip-reasons
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementSkipReasons`.
+
 test-action
     The attribute value shall be a string. It shall be the test action code.
 
@@ -1817,6 +1821,7 @@ Please have a look at the following example:
       test-epilogue: null
       test-prologue: null
     requirement-type: functional
+    skip-reasons: {}
     test-action: |
       /* Call the function of the action */
     test-brief: null
@@ -2203,11 +2208,31 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementCondition`
 
+* :ref:`SpecTypeActionRequirementSkipReasons`
+
 * :ref:`SpecTypeActionRequirementState`
 
 * :ref:`SpecTypeActionRequirementTransitionPostConditions`
 
 * :ref:`SpecTypeActionRequirementTransitionPreConditions`
+
+.. _SpecTypeActionRequirementSkipReasons:
+
+Action Requirement Skip Reasons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies skip reasons used to justify why transitions
+in the transition map are skipped. Generic attributes may be specified. Each
+generic attribute key shall be an :ref:`SpecTypeActionRequirementName`. Each
+generic attribute value shall be a string. The key defines the name of a skip
+reason.  The name can be used in
+:ref:`SpecTypeActionRequirementTransitionPostConditions` to skip the
+corresponding transitions.  The value shall give a reason why the transitions
+are skipped.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
 
 .. _SpecTypeActionRequirementState:
 
@@ -2409,14 +2434,24 @@ This type is used by the following types:
 Action Requirement Transition Post-Conditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes defines for each post-condition the state after the
-action for a transition in an action requirement. Generic attributes may be
-specified. Each generic attribute key shall be an
-:ref:`SpecTypeActionRequirementName`. Each generic attribute value shall be an
-:ref:`SpecTypeActionRequirementName`. There shall be exactly one generic
-attribute key for each post-condition.  The key name shall be the
-post-condition name.  The value of each generic attribute shall be the state of
-the post-condition.
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes defines for each
+  post-condition the state after the action for a transition in an action
+  requirement. Generic attributes may be specified. Each generic attribute key
+  shall be an :ref:`SpecTypeActionRequirementName`. Each generic attribute
+  value shall be an :ref:`SpecTypeActionRequirementName`. There shall be
+  exactly one generic attribute key for each post-condition.  The key name
+  shall be the post-condition name.  The value of each generic attribute shall
+  be the state of the post-condition.
+
+* The value may be a string. It shall be the name of a skip reason.  If a skip
+  reason is given instead of a listing of post-condition states, then this
+  transition is skipped and no test code runs for this transition. The value
+
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$"``,
+
+  * and, shall be not equal to "``NA``".
 
 This type is used by the following types:
 
