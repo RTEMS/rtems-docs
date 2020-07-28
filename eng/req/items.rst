@@ -2200,7 +2200,7 @@ the horizontal space is limited by the page width.  The more conditions you
 have in an action requirement, the shorter the names should be.  The name
 ``NA`` is reserved and indicates that a condition is not applicable. The value
 
-* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$"``,
+* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
 
 * and, shall be not equal to "``NA``".
 
@@ -2449,7 +2449,7 @@ A value of this type shall be of one of the following variants:
   reason is given instead of a listing of post-condition states, then this
   transition is skipped and no test code runs for this transition. The value
 
-  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$"``,
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
 
   * and, shall be not equal to "``NA``".
 
@@ -2548,7 +2548,7 @@ Application Configuration Option Name
 
 The value shall be a string. It shall be the name of an application
 configuration option. The value shall match with the regular expression
-"``^(CONFIGURE_|BSP_)[A-Z0-9_]+$"``.
+"``^(CONFIGURE_|BSP_)[A-Z0-9_]+$``".
 
 This type is used by the following types:
 
@@ -3043,7 +3043,7 @@ Build Option Name
 ^^^^^^^^^^^^^^^^^
 
 The value shall be a string. It shall be the name of the build option. The
-value shall match with the regular expression "``^[a-zA-Z_][a-zA-Z0-9_]*$"``.
+value shall match with the regular expression "``^[a-zA-Z_][a-zA-Z0-9_]*$``".
 
 This type is used by the following types:
 
@@ -3215,13 +3215,13 @@ The value shall be a string. It shall be a copyright statement of a copyright
 holder of the specification item. The value
 
 * shall match with the regular expression
-  "``^\s*Copyright\s+\(C\)\s+[0-9]+,\s*[0-9]+\s+.+\s*$"``,
+  "``^\s*Copyright\s+\(C\)\s+[0-9]+,\s*[0-9]+\s+.+\s*$``",
 
 * or, shall match with the regular expression
-  "``^\s*Copyright\s+\(C\)\s+[0-9]+\s+.+\s*$"``,
+  "``^\s*Copyright\s+\(C\)\s+[0-9]+\s+.+\s*$``",
 
 * or, shall match with the regular expression
-  "``^\s*Copyright\s+\(C\)\s+.+\s*$"``.
+  "``^\s*Copyright\s+\(C\)\s+.+\s*$``".
 
 This type is used by the following types:
 
@@ -3776,7 +3776,7 @@ Interface Group Identifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The value shall be a string. It shall be the identifier of the interface group.
-The value shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$"``.
+The value shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``".
 
 This type is used by the following types:
 
@@ -4941,7 +4941,7 @@ Test Name
 The value shall be a string. It shall be the name of a test suite or test case.
 It shall be formatted in the style of a caption.  If shall form a valid C
 designator after removal of all white space characters. The value shall match
-with the regular expression "``^[A-Z][a-zA-Z0-9 _]+$"``.
+with the regular expression "``^[A-Z][a-zA-Z0-9 _]+$``".
 
 This type is used by the following types:
 
