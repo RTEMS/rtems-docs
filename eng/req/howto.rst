@@ -8,14 +8,13 @@ How-To
 Getting Started
 ---------------
 
-The RTEMS specification items and qualification tools are work in progress and
-not fully integrated in the RTEMS Project.  The first step to work with the
-RTEMS specification and the corresponding tools is a clone of the following
-repository:
+The RTEMS specification items and qualification tools are work in progress.  The
+first step to work with the RTEMS specification and the corresponding tools is a
+clone of the following repository:
 
 .. code-block:: none
 
-    git clone git://git.rtems.org/sebh/rtems-qual.git
+    git clone git://git.rtems.org/rtems-central.git
     git submodule init
     git submodule update
 
@@ -23,7 +22,7 @@ The tools need a virtual Python 3 environment. To set it up use:
 
 .. code-block:: none
 
-    cd rtems-qual
+    cd rtems-central
     make env
 
 Each time you want to use one of the tools, you have to activate the
@@ -31,7 +30,7 @@ environment in your shell:
 
 .. code-block:: none
 
-    cd rtems-qual
+    cd rtems-central
     . env/bin/activate
 
 Glossary Specification
