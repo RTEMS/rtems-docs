@@ -33,6 +33,125 @@ environment in your shell:
     cd rtems-central
     . env/bin/activate
 
+Application Configuration Options
+---------------------------------
+
+The application configuration options and groups are maintained by
+specification items in the directory :file:`spec/if/acfg`.  Application
+configuration options are grouped by
+:ref:`SpecTypeApplicationConfigurationGroupItemType` items which should be
+stored in files using the :file:`spec/if/acfg/group-*.yml` pattern.  Each
+application configuration option shall link to exactly one group item with the
+:ref:`SpecTypeApplicationConfigurationGroupMemberLinkRole`.  There are four
+application option item types available which cover all existing options:
+
+* The *feature enable options* let the application enable a feature option.  If
+  the option is not defined, then the feature is simply not available or
+  active.  There should be no feature-specific code linked to the application
+  if the option is not defined.  Examples are options which enable a device
+  driver like ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``.  These options are
+  specified by
+  :ref:`SpecTypeApplicationConfigurationFeatureEnableOptionItemType` items.
+
+* The *feature options* let the application enable a specific feature option.
+  If the option is not defined, then a default feature option is used.
+  Regardless whether the option is defined or not defined, feature-specific
+  code may be linked to the application.  Examples are options which disable a
+  feature if the option is defined such as
+  ``CONFIGURE_APPLICATION_DISABLE_FILESYSTEM`` and options which provide a stub
+  implementation of a feature by default and a full implementation if the
+  option is defined such as ``CONFIGURE_IMFS_ENABLE_MKFIFO``.  These options
+  are specified by :ref:`SpecTypeApplicationConfigurationFeatureOptionItemType`
+  items.
+
+* The *integer value options* let the application define a specific value for a
+  system parameter.  If the option is not defined, then a default value is used
+  for the system parameter.  Examples are options which define the maximum
+  count of objects available for application use such as
+  ``CONFIGURE_MAXIMUM_TASKS``.  These options are specified by
+  :ref:`SpecTypeApplicationConfigurationValueOptionItemType` items.
+
+* The *initializer options* let the application define a specific initializer
+  for a system parameter.  If the option is not defined, then a default setting
+  is used for the system parameter.  An example option of this type is
+  ``CONFIGURE_INITIAL_EXTENSIONS``.  These options are specified by
+  :ref:`SpecTypeApplicationConfigurationValueOptionItemType` items.
+
+Sphinx documentation sources and header files with Doxygen markup are generated
+from the specification items.  The descriptions in the items shall use a
+restricted Sphinx formatting.  Emphasis via one asterisk ("*"), strong emphasis
+via two asterisk ("**"), code samples via blockquotes ("``"), code blocks ("..
+code-block:: c") and lists are allowed.  References to interface items are also
+allowed, for example "${appl-needs-clock-driver:/name}" and
+"${../rtems/tasks/create:/name}".  References to other parts of the
+documentation are possible, however, they are currently provided by hard-coded
+tables in :file:`rtemsspec/applconfig.py`.
+
+Modify an Existing Group
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Search for the group by its section header and edit the specification item
+file.  For example:
+
+.. code-block:: none
+
+    $ grep -rl "name: General System Configuration" spec/if/acfg
+    spec/if/acfg/group-general.yml
+    $ vi spec/if/acfg/group-general.yml
+
+Modify an Existing Option
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Search for the option by its C preprocessor define name and edit the
+specification item file.  For example:
+
+.. code-block:: none
+
+    $ grep -rl CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER spec/if/acfg
+    spec/if/acfg/appl-needs-clock-driver.yml
+    $ vi spec/if/acfg/appl-needs-clock-driver.yml
+
+Add a New Group
+^^^^^^^^^^^^^^^
+
+Let ``new`` be the UID name part of the new group.  Create the file
+:file:`spec/if/acfg/group-new.yml` and provide all attributes for an
+:ref:`SpecTypeApplicationConfigurationGroupItemType` item.  For example:
+
+.. code-block:: none
+
+    $ vi spec/if/acfg/group-new.yml
+
+Add a New Option
+^^^^^^^^^^^^^^^^
+
+Let ``my-new-option`` be the UID name of the option.  Create the file
+:file:`if/acfg/my-new-option.yml` and provide all attributes for an appropriate
+refinement of :ref:`SpecTypeApplicationConfigurationOptionItemType`.  For
+example:
+
+.. code-block:: none
+
+    $ vi spec/if/acfg/my-new-option.yml
+
+Generate Content after Changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once you are done with the modifications of an existing item or the creation of
+a new item, the changes need to be propagated to generated source files.  This
+is done by the :file:`spec2doc.py` script.  Before you call this script, make
+sure the Git submodules are up-to-date.
+
+.. code-block:: none
+
+    $ ./spec2doc.py
+
+The script modifies or creates source files in :file:`modules/rtems` and
+:file:`modules/rtems-docs`.  Create patch sets for these changes just as if
+these were work done by a human and follow the normal patch review process
+described in the *RTEMS User Manual*.  When the changes are integrated, update
+the Git submodules and check in the changed items.
+
 Glossary Specification
 ----------------------
 
