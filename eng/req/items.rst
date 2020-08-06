@@ -1716,9 +1716,19 @@ test-brief
     The attribute value shall be an optional string. If the value is present,
     then it shall be the test case brief description.
 
+test-cleanup
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test cleanup code.  The code is placed in the test
+    action loop body after the test post-condition checks.
+
 test-context
     The attribute value shall be a list. Each list element shall be an
     :ref:`SpecTypeActionRequirementTestContextMember`.
+
+test-context-support
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test context support code.  The context support code
+    is placed at file scope before the test context definition.
 
 test-description
     The attribute value shall be an optional string. If the value is present,
@@ -1737,6 +1747,11 @@ test-local-includes
 
 test-name
     The attribute value shall be a :ref:`SpecTypeTestName`.
+
+test-prepare
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the early test preparation code.  The code is placed in
+    the test action loop body before the test pre-condition preparations.
 
 test-setup
     The attribute value shall be an
@@ -1841,6 +1856,7 @@ Please have a look at the following example:
     test-action: |
       /* Call the function of the action */
     test-brief: null
+    test-cleanup: null
     test-context:
     - brief: null
       description: null
@@ -1848,11 +1864,13 @@ Please have a look at the following example:
     - brief: null
       description: null
       member: option_type option
+    test-context-support: null
     test-description: null
     test-header: null
     test-includes: []
     test-local-includes: []
     test-name: RedGreenData
+    test-prepare: null
     test-setup: null
     test-stop: null
     test-support: null
