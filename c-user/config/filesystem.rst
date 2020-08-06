@@ -66,8 +66,8 @@ DEFAULT CONFIGURATION:
     configured filesystems are initialized during system initialization.
 
 DESCRIPTION:
-    In case this configuration option is defined, then **no** base filesystem is
-    initialized during system initialization and **no** filesystems are
+    In case this configuration option is defined, then **no base filesystem** is
+    initialized during system initialization and **no filesystems** are
     configured.
 
 NOTES:
