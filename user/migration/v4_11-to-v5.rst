@@ -126,3 +126,30 @@ interface name.
         exit(1);
       }
     }
+
+Shell Environment
+-----------------
+
+To address resource leaks in the RTEMS shell, the management of shell
+environments changed.  This change may break existing code.  Here is an example
+how a broken Telnet shell can be fixed:
+
+. code-block:: c
+
+    static void
+    telnet_shell( char *name, void *arg )
+    {
+        rtems_shell_env_t env;
+
+        /* Previous WRONG approach: memset( &env, 0, sizeof( env) ); */
+
+        /* Correct way to initialize the shell environment */
+        rtems_shell_dup_current_env( &env );
+
+        env.devname = name;
+        env.taskname = "TLNT";
+        env.login_check = NULL;
+        env.forever = false;
+
+        rtems_shell_main_loop( &env );
+    }
