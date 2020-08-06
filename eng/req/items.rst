@@ -1542,10 +1542,22 @@ notes
 Interface Unspecified Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
-``interface-type`` attribute if the value is ``unspecified``. This set of
-attributes specifies an unspecified interface. All explicit attributes shall be
-specified. The explicit attributes for this type are:
+This type refines the following types:
+
+* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+  the value is ``unspecified``
+
+* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+  the value is ``unspecified-define``
+
+* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+  the value is ``unspecified-function``
+
+* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+  the value is ``unspecified-type``
+
+This set of attributes specifies an unspecified interface. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
 name
     The attribute value shall be a string. It shall be the name of the
