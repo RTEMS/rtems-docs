@@ -322,6 +322,8 @@ the needed changes.
 
     * :file:`cpukit/aclocal/version.m4`
 
+    * :file:`Doxyfile`
+
     * :file:`testsuites/aclocal/version.m4`
 
     * :file:`rtems-bsps`
