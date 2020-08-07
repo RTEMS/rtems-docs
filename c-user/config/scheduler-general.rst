@@ -4,6 +4,13 @@
 .. Copyright (C) 2010 Gedare Bloom
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
+.. This file was automatically generated.  Do not edit it manually.
+.. Please have a look at
+..
+.. https://docs.rtems.org/branches/master/eng/req/howto.html
+..
+.. for information how to maintain and re-generate this file.
+
 General Scheduler Configuration
 ===============================
 

@@ -3,6 +3,13 @@
 .. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
+.. This file was automatically generated.  Do not edit it manually.
+.. Please have a look at
+..
+.. https://docs.rtems.org/branches/master/eng/req/howto.html
+..
+.. for information how to maintain and re-generate this file.
+
 BSP Related Configuration Options
 =================================
 
