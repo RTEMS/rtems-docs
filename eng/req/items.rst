@@ -1563,6 +1563,10 @@ name
     The attribute value shall be a string. It shall be the name of the
     unspecified interface.
 
+reference
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be an URL to the standard or specification of the interface.
+
 .. _SpecTypeInterfaceVariableItemType:
 
 Interface Variable Item Type
