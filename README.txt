@@ -101,14 +101,20 @@ command.
 
 Please add your host as you set it up.
 
-The best environment to use is `virtualenv`. It can create a specific python
-environment using `pip`.
+The best results are produced with Python3 and a virtual environment`. It can
+create a specific python environment using `pip`.
 
-Virtualenv
-~~~~~~~~~~
+Virtual Environment
+~~~~~~~~~~~~~~~~~~~
 
-Create a directory to house the virtualenv, create the envrionment and the
-activate it:
+Create a directory to house the virtual environment, create the envrionment
+and the activate it. This example assumes Python3 and the `venv` module:
+
+  $ mkdir sphinx
+  $ python3 -m venv sphinx
+  $ . ./sphinx/bin/activate
+
+Alternatively you can use the `virtualenv` command:
 
   $ mkdir sphinx
   $ virtualenv sphinx
