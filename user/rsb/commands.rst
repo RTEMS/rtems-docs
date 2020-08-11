@@ -295,3 +295,84 @@ The ``arguments`` are a list of build sets to build.
 ``--list-deps``:
   Print a list of dependent files used by a build set. Dependent files have a
   ``dep[?]` prefix where ``?`` is a number. The files are listed alphabetically.
+
+Track (sb-track)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This command checks build sets and configurations reporting any errors, the
+dependencies and which files are referenced. The command can list all the
+configuration files not referenced. If this option is used when checking all
+build set files a list of all configuration files not referenced can be
+found. The list can be used to purge the RSB of old and unused configurations.
+
+The check runs a build set through a number of host configurations. This
+checks any logic that is specific to a host.
+
+The command reports a dependency tree for a build set in the output
+report. For example the dependency tree for the ``database/sqlite`` build set
+is:
+
+.. code-block:: none
+
+  +-- rtems/config/databases/sqlite.bset
+       +-- rtems/config/databases/sqlite-3.31.1-1.cfg
+            +-- rtems/config/rtems-bsp.cfg
+            +-- source-builder/config/sqlite-3-1.cfg
+       +-- rtems/config/rtems-package.bset
+            +-- rtems/config/rtems-urls.bset
+            +-- rtems/config/rtems-version.bset
+
+The comnmand is:
+
+.. code-block:: none
+
+    $ ../source-builder/sb-track --help
+    usage: sb-dep-check [-h] [--rtems-version RTEMS_VERSION] [--list-hosts]
+                        [--list-bsets] [--output OUTPUT] [--log LOG] [--trace]
+                        [--not-referenced]
+                        [bsets [bsets ...]]
+
+    RTEMS Track Dependencies a build set has for all hosts.
+
+    positional arguments:
+      bsets                 Build sets.
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      --rtems-version RTEMS_VERSION
+                            Set the RTEMS version.
+      --list-hosts          List the hosts.
+      --list-bsets          List the hosts.
+      --output OUTPUT       Output file.
+      --log LOG             Log file.
+      --trace               Enable trace logging for debugging.
+      --not-referenced      Write out the list of config files not referenced.
+
+The ``bsets`` are a list of build sets to check. If none are provided all
+build sets are checked.
+
+**Options**:
+
+``-h, --help``:
+  The command's help.
+
+``--rtems-version``:
+  Set the RTEMS version number.
+
+``--list-hosts``:
+  List the hosts each build set of check against.
+
+``--list-bsets``:
+  List all the build set files.
+
+``--output``:
+  Write the report to the output file.
+
+``--log``:
+  The log file the build set check processing is written too.
+
+``--trace``:
+  Enable trace debugging.
+
+``--not-referenced``:
+  List the configration files not referenced by a build set in the output.
