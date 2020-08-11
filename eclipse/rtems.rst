@@ -44,9 +44,9 @@ Now run the `bootstrap` command:
   $ ./bootstrap
 
 Sit back, this can take a while. The Getting Started Guide talks about using
-the RSB's `sb-bootstrap` to run the bootstrap process in parallel on all
+the `rtems-bootstrap` to run the bootstrap process in parallel on all
 available cores. The output of the bootstrap has not been copied into this
-documentment.
+document.
 
 The source code is now ready.
 

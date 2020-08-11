@@ -576,12 +576,12 @@ Then we generate the pre-install header file automake make files:
   Generating ./cpukit/zlib/preinstall.am
    /c/opt/rtems/kernel/rtems
 
-Finally we run the RSB's parallel ``bootstrap`` command:
+Finally we run the parallel ``bootstrap`` command:
 
 .. code-block:: none
 
-  $ /c/opt/rtems/rsb/source-builder/sb-bootstrap
-  RTEMS Source Builder - RTEMS Bootstrap, 4.11 (76188ee494dd)
+  $ ./rtems-bootstrap
+  RTEMS Bootstrap, 4.11 (76188ee494dd)
     1/139: autoreconf: configure.ac
     2/139: autoreconf: c/configure.ac
     3/139: autoreconf: c/src/configure.ac
