@@ -40,8 +40,7 @@ The configuration search path is a macro variable and is reference as
 
 Build set files have the file extension ``.bset`` and the package build
 configuration files have the file extension of ``.cfg``. The ``sb-set-builder``
-command will search for *build sets* and the ``sb-builder`` commands works with
-package build configuration files.
+command will search for *build sets*.
 
 Both types of configuration files use the ``#`` character as a comment
 character. Anything after this character on the line is ignored. There is no
@@ -450,13 +449,12 @@ tools.
 
 File naming provides configuration management. A specific version of a package
 is captured in a specific set of configuration files. The top level
-configuration file referenced in a *build set* or passed to the ``sb-builder``
-command relates to a specific configuration of the package being built. For
-example the RTEMS configuration file ``rtems-gcc-4.7.2-newlib-2.0.0-1.cfg``
-creates an RTEMS GCC and Newlib package where the GCC version is 4.7.2, the
-Newlib version is 2.0.0, plus any RTEMS specific patches that related to this
-version. The configuration defines the version numbers of the various parts
-that make up this package:
+configuration file referenced in a *build set* relates to a specific
+configuration of the package being built. For example the RTEMS configuration
+file ``rtems-gcc-4.7.2-newlib-2.0.0-1.cfg`` creates an RTEMS GCC and Newlib
+package where the GCC version is 4.7.2, the Newlib version is 2.0.0, plus any
+RTEMS specific patches that related to this version. The configuration defines
+the version numbers of the various parts that make up this package:
 
 .. code-block:: spec
 
@@ -736,28 +734,11 @@ Finally there is an optional clean section. The RSB will run this section if
 ``--no-clean`` has not been provided on the command line. The RSB does clean up
 for you.
 
-Once we have the configuration files we can execute the build using the
-``sb-builder`` command. The command will perform the build and create a tar file
-in the ``tar`` directory:
-
-.. code-block:: none
-
-    $  ../source-builder/sb-builder --prefix=/usr/local \
-         --log=log_dtc devel/dtc-1.2.0
-    RTEMS Source Builder, Package Builder v0.2.0
-    config: devel/dtc-1.2.0
-    package: dtc-1.2.0-x86_64-freebsd9.1-1
-    download: https://www.kernel.org/pub/software/utils/dtc/dtc-v1.2.0.tgz -> sources/dtc-v1.2.0.tgz
-    building: dtc-1.2.0-x86_64-freebsd9.1-1
-    $ ls tar
-    dtc-1.2.0-x86_64-freebsd9.1-1.tar.bz2
-
-If you want to have the package installed automatically you need to create a
-build set. A build set can build one or more packages from their configurations
-at once to create a single package. For example the GNU tools is typically seen
-as binutils, GCC and GDB and a build set will build each of these packages and
-create a single build set tar file or install the tools on the host into the
-prefix path.
+To have a package installed automatically create a build set. A build set can
+build one or more packages from their configurations at once to create a
+single package. For example the GNU tools is typically seen as binutils, GCC
+and GDB and a build set will build each of these packages and create a single
+build set tar file or install the tools on the host into the prefix path.
 
 The DTC build set file is called ``dtc.bset`` and contains:
 
@@ -1591,12 +1572,10 @@ The ``%endif`` macro ends a conditional logic block.
 ~~~~~~~~~~~
 
 The ``%bconf_with`` macro provides a way to test if the user has passed a
-specific option on the command line with the ``--with-<label>`` option. This
-option is only available with the ``sb-builder`` command.
+specific option on the command line with the ``--with-<label>`` option.
 
 %bconf_without
 ~~~~~~~~~~~~~~
 
 The ``%bconf_without`` macro provides a way to test if the user has passed a
-specific option on the command line with the ``--without-<label>`` option. This
-option is only available with the ``sb-builder`` command.
+specific option on the command line with the ``--without-<label>`` option.
