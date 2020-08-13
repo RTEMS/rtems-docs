@@ -134,7 +134,7 @@ To address resource leaks in the RTEMS shell, the management of shell
 environments changed.  This change may break existing code.  Here is an example
 how a broken Telnet shell can be fixed:
 
-. code-block:: c
+.. code-block:: c
 
     static void
     telnet_shell( char *name, void *arg )
