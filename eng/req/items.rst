@@ -1735,7 +1735,7 @@ test-description
     then it shall be the test case description.
 
 test-header
-    The attribute value shall be an :ref:`SpecTypeActionRequirementTestHeader`.
+    The attribute value shall be a :ref:`SpecTypeTestHeader`.
 
 test-includes
     The attribute value shall be a list of strings. It shall be a list of
@@ -2088,6 +2088,9 @@ target
     The attribute value shall be a string. It shall be the path to the
     generated target test case source file.
 
+test-header
+    The attribute value shall be a :ref:`SpecTypeTestHeader`.
+
 .. _SpecTypeTestPlatformItemType:
 
 Test Platform Item Type
@@ -2343,80 +2346,6 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementItemType`
-
-.. _SpecTypeActionRequirementTestHeader:
-
-Action Requirement Test Header
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A value of this type shall be of one of the following variants:
-
-* The value may be a set of attributes. This set of attributes specifies an
-  action requirement test header.  In case a test header is specified, then
-  instead of a test case a test run function will be generated.  The test run
-  function will be declared in the test header target file and defined in the
-  test source target file. The test run function can be used to compose test
-  cases.  The test header file is not automatically included in the test source
-  file.  It should be added to the includes or local includes of the test. All
-  explicit attributes shall be specified. The explicit attributes for this type
-  are:
-
-  code
-      The attribute value shall be an optional string. If the value is present,
-      then it shall be the test case header code. The header code is placed at
-      file scope after the test enum declarations and before the test run
-      function declaration.
-
-  includes
-      The attribute value shall be a list of strings. It shall be a list of
-      header files included by the header file via ``#include <...>``.
-
-  local-includes
-      The attribute value shall be a list of strings. It shall be a list of
-      header files included by the header file via ``#include "..."``.
-
-  run-params
-      The attribute value shall be a list. Each list element shall be an
-      :ref:`SpecTypeActionRequirementTestRunParameter`.
-
-  target
-      The attribute value shall be a string. It shall be the path to the
-      generated test header file.
-
-* There may by be no value (null).
-
-This type is used by the following types:
-
-* :ref:`SpecTypeActionRequirementItemType`
-
-.. _SpecTypeActionRequirementTestRunParameter:
-
-Action Requirement Test Run Parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This set of attributes specifies a parameter for the test run function. The
-parameter is also added as a member to the test context, see
-:ref:`SpecTypeActionRequirementTestContextMember`. All explicit attributes
-shall be specified. The explicit attributes for this type are:
-
-description
-    The attribute value shall be a string. It shall be the description of the
-    parameter.
-
-dir
-    The attribute value shall be an :ref:`SpecTypeInterfaceParameterDirection`.
-
-name
-    The attribute value shall be a string. It shall be the parameter name.
-
-specifier
-    The attribute value shall be a string. It shall be the complete function
-    parameter specifier.  Use ``${.:name}`` for the parameter name, for example
-    ``"int ${.:name}"``.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeActionRequirementTestHeader`
 
 .. _SpecTypeActionRequirementTransition:
 
@@ -3903,9 +3832,9 @@ A value of this type shall be of one of the following variants:
 
 This type is used by the following types:
 
-* :ref:`SpecTypeActionRequirementTestRunParameter`
-
 * :ref:`SpecTypeInterfaceParameter`
+
+* :ref:`SpecTypeTestRunParameter`
 
 .. _SpecTypeInterfacePlacementLinkRole:
 
@@ -4955,6 +4884,82 @@ links
 This type is used by the following types:
 
 * :ref:`SpecTypeTestCaseAction`
+
+.. _SpecTypeTestHeader:
+
+Test Header
+^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes specifies a test
+  header.  In case a test header is specified, then instead of a test case a
+  test run function will be generated.  The test run function will be declared
+  in the test header target file and defined in the test source target file.
+  The test run function can be used to compose test cases.  The test header
+  file is not automatically included in the test source file.  It should be
+  added to the includes or local includes of the test. All explicit attributes
+  shall be specified. The explicit attributes for this type are:
+
+  code
+      The attribute value shall be an optional string. If the value is present,
+      then it shall be the test header code.  The header code is placed at file
+      scope after the general test declarations and before the test run
+      function declaration.
+
+  includes
+      The attribute value shall be a list of strings. It shall be a list of
+      header files included by the header file via ``#include <...>``.
+
+  local-includes
+      The attribute value shall be a list of strings. It shall be a list of
+      header files included by the header file via ``#include "..."``.
+
+  run-params
+      The attribute value shall be a list. Each list element shall be a
+      :ref:`SpecTypeTestRunParameter`.
+
+  target
+      The attribute value shall be a string. It shall be the path to the
+      generated test header file.
+
+* There may by be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+* :ref:`SpecTypeTestCaseItemType`
+
+.. _SpecTypeTestRunParameter:
+
+Test Run Parameter
+^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a parameter for the test run function. In case
+this parameter is used in an :ref:`SpecTypeActionRequirementItemType` item,
+then the parameter is also added as a member to the test context, see
+:ref:`SpecTypeActionRequirementTestContextMember`. All explicit attributes
+shall be specified. The explicit attributes for this type are:
+
+description
+    The attribute value shall be a string. It shall be the description of the
+    parameter.
+
+dir
+    The attribute value shall be an :ref:`SpecTypeInterfaceParameterDirection`.
+
+name
+    The attribute value shall be a string. It shall be the parameter name.
+
+specifier
+    The attribute value shall be a string. It shall be the complete function
+    parameter specifier.  Use ``${.:name}`` for the parameter name, for example
+    ``"int ${.:name}"``.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeTestHeader`
 
 .. _SpecTypeUID:
 
