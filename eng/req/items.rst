@@ -1745,9 +1745,6 @@ test-local-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include "..."``.
 
-test-name
-    The attribute value shall be a :ref:`SpecTypeTestName`.
-
 test-prepare
     The attribute value shall be an optional string. If the value is present,
     then it shall be the early test preparation code.  The code is placed in
@@ -1869,7 +1866,6 @@ Please have a look at the following example:
     test-header: null
     test-includes: []
     test-local-includes: []
-    test-name: RedGreenData
     test-prepare: null
     test-setup: null
     test-stop: null
@@ -2077,9 +2073,6 @@ local-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include "..."``.
 
-name
-    The attribute value shall be a :ref:`SpecTypeTestName`.
-
 prologue
     The attribute value shall be an optional string. If the value is present,
     then it shall be the test case prologue code.  The prologue code is placed
@@ -2174,9 +2167,6 @@ includes
 local-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include "..."``.
-
-name
-    The attribute value shall be a :ref:`SpecTypeTestName`.
 
 target
     The attribute value shall be a string. It shall be the path to the
@@ -4965,24 +4955,6 @@ links
 This type is used by the following types:
 
 * :ref:`SpecTypeTestCaseAction`
-
-.. _SpecTypeTestName:
-
-Test Name
-^^^^^^^^^
-
-The value shall be a string. It shall be the name of a test suite or test case.
-It shall be formatted in the style of a caption.  If shall form a valid C
-designator after removal of all white space characters. The value shall match
-with the regular expression "``^[A-Z][a-zA-Z0-9 _]+$``".
-
-This type is used by the following types:
-
-* :ref:`SpecTypeActionRequirementItemType`
-
-* :ref:`SpecTypeTestCaseItemType`
-
-* :ref:`SpecTypeTestSuiteItemType`
 
 .. _SpecTypeUID:
 
