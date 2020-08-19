@@ -2042,54 +2042,54 @@ if the value is ``test-case``. This set of attributes specifies a test case.
 All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
-actions
+test-actions
     The attribute value shall be a list. Each list element shall be a
     :ref:`SpecTypeTestCaseAction`.
 
-brief
+test-brief
     The attribute value shall be a string. It shall be the test case brief
     description.
 
-description
+test-description
     The attribute value shall be an optional string. It shall be the test case
     description.
 
-epilogue
+test-epilogue
     The attribute value shall be an optional string. If the value is present,
     then it shall be the test case epilogue code.  The epilogue code is placed
     in the test case body after the test case actions.
 
-fixture
+test-fixture
     The attribute value shall be an optional string. If the value is present,
     then it shall be a pointer to the test case fixture.  The test case fixture
     pointer declaration may be provided by the test case support code or via an
     included header file.
 
-includes
+test-header
+    The attribute value shall be a :ref:`SpecTypeTestHeader`.
+
+test-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include <...>``.
 
-local-includes
+test-local-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include "..."``.
 
-prologue
+test-prologue
     The attribute value shall be an optional string. If the value is present,
     then it shall be the test case prologue code.  The prologue code is placed
     in the test case body before the test case actions.  A use case is the
     declaration of local variables used by the test case actions.
 
-support
+test-support
     The attribute value shall be an optional string. If the value is present,
     then it shall be the test case support code. The support code is placed at
     file scope before the test case code.
 
-target
+test-target
     The attribute value shall be a string. It shall be the path to the
     generated target test case source file.
-
-test-header
-    The attribute value shall be a :ref:`SpecTypeTestHeader`.
 
 .. _SpecTypeTestPlatformItemType:
 
@@ -2151,27 +2151,27 @@ if the value is ``test-suite``. This set of attributes specifies a test suite.
 All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
-brief
+test-brief
     The attribute value shall be a string. It shall be the test suite brief
     description.
 
-code
+test-code
     The attribute value shall be a string. It shall be the test suite code.
     The test suite code is placed at file scope in the target source file.
 
-description
+test-description
     The attribute value shall be an optional string. It shall be the test suite
     description.
 
-includes
+test-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include <...>``.
 
-local-includes
+test-local-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include "..."``.
 
-target
+test-target
     The attribute value shall be a string. It shall be the path to the
     generated target test suite source file.
 
