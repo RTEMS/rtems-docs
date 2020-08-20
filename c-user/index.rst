@@ -34,7 +34,7 @@ RTEMS Classic API Guide (|version|).
 	interrupt/index
 	clock/index
 	timer_manager
-	rate_monotonic_manager
+	rate-monotonic/index
 	semaphore/index
 	barrier/index
 	message/index
