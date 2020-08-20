@@ -32,7 +32,7 @@ RTEMS Classic API Guide (|version|).
 	initialization
 	task_manager
 	interrupt_manager
-	clock_manager
+	clock/index
 	timer_manager
 	rate_monotonic_manager
 	semaphore/index
