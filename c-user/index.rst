@@ -31,7 +31,7 @@ RTEMS Classic API Guide (|version|).
 	scheduling_concepts
 	initialization
 	task_manager
-	interrupt_manager
+	interrupt/index
 	clock/index
 	timer_manager
 	rate_monotonic_manager
