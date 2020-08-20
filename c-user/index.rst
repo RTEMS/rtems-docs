@@ -39,7 +39,7 @@ RTEMS Classic API Guide (|version|).
 	barrier/index
 	message/index
 	event/index
-	signal_manager
+	signal/index
 	partition/index
 	region/index
 	dual-ported-memory/index
