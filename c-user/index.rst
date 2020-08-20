@@ -42,7 +42,7 @@ RTEMS Classic API Guide (|version|).
 	signal_manager
 	partition_manager
 	region_manager
-	dual_ports_memory_manager
+	dual-ported-memory/index
 	io_manager
 	fatal_error
 	board_support_packages
