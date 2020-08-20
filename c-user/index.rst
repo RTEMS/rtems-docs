@@ -46,7 +46,7 @@ RTEMS Classic API Guide (|version|).
 	io/index
 	fatal_error
 	board_support_packages
-	user_extensions
+	user-extensions/index
 	config/index
 	self_contained_objects
 	multiprocessing
