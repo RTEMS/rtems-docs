@@ -30,7 +30,7 @@ RTEMS Classic API Guide (|version|).
 	rtems_data_types
 	scheduling_concepts
 	initialization
-	task_manager
+	task/index
 	interrupt/index
 	clock/index
 	timer_manager
