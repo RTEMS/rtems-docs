@@ -37,7 +37,7 @@ RTEMS Classic API Guide (|version|).
 	rate_monotonic_manager
 	semaphore/index
 	barrier/index
-	message_manager
+	message/index
 	event/index
 	signal_manager
 	partition_manager
