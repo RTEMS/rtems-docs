@@ -40,7 +40,7 @@ RTEMS Classic API Guide (|version|).
 	message/index
 	event/index
 	signal_manager
-	partition_manager
+	partition/index
 	region_manager
 	dual-ported-memory/index
 	io/index
