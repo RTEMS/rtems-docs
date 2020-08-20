@@ -41,7 +41,7 @@ RTEMS Classic API Guide (|version|).
 	event/index
 	signal_manager
 	partition/index
-	region_manager
+	region/index
 	dual-ported-memory/index
 	io/index
 	fatal_error
