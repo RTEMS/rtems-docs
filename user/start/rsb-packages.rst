@@ -73,14 +73,14 @@ BSP.
 
     cd $HOME/quick-start/src/rsb/rtems
     ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/5 \
-        --with-rtems-tests=yes 5/bsps/erc32
+        --with-rtems-tests=yes bsps/erc32
 
 This command should output something like this:
 
 .. code-block:: none
 
     RTEMS Source Builder - Set Builder, 5.1.0
-    Build Set: 5/bsps/erc32
+    Build Set: bsps/erc32
     Build Set: 5/rtems-sparc.bset
     Build Set: 5/rtems-autotools.bset
     Build Set: 5/rtems-autotools-internal.bset
@@ -98,8 +98,8 @@ This command should output something like this:
     cleaning: protobuf-2.6.1-sparc-rtems5-1
     Build Set: Time 0:00:23.564992
     Build Set: Time 0:02:27.380299
-    installing: 5/bsps/erc32 -> $HOME/quick-start/rtems/
-    clean staging: 5/bsps/erc32
+    installing: bsps/erc32 -> $HOME/quick-start/rtems/
+    clean staging: bsps/erc32
     Staging Size: 1.372GB
     Build Set: Time 0:24:17.83979
 
