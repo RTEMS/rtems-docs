@@ -92,7 +92,7 @@ Use the following guidelines and template for C and C++ header files (here
 * Separate the Doxygen comment block from the copyright and license, so that
   the copyright and license information is not included in the Doxygen output.
 
-* For C++ header files discard the extern "C".
+* For C++ header files discard the ``extern "C"`` start and end sections.
 
 .. code-block:: c
 
@@ -138,12 +138,14 @@ Use the following guidelines and template for C and C++ header files (here
 
     #include <foo/bar/xyz.h>
 
+    /* Remove for C++ code */
     #ifdef __cplusplus
     extern "C" {
     #endif
 
     /* Declarations, defines, macros, inline functions, etc. */
 
+    /* Remove for C++ code */
     #ifdef __cplusplus
     }
     #endif
@@ -207,13 +209,66 @@ and <COPYRIGHT HOLDER> placeholders see :ref:`FileHeaderCopyright`.
 Python File Template
 --------------------
 
-Use the following template for Python source files and other files which accept
-a ``#``-style comment block.  For the <FIRST YEAR>, <LAST YEAR>, and
-<COPYRIGHT HOLDER> placeholders see :ref:`FileHeaderCopyright`.
+Use the following template for Python source files. For the <FIRST YEAR>,
+<LAST YEAR>, and <COPYRIGHT HOLDER> placeholders see
+:ref:`FileHeaderCopyright`.
+
+The ``File documentation block`` is a `Python docstring (PEP 257)
+<https://www.python.org/dev/peps/pep-0257/>`_ module documentation
+block. RTEMS uses ``"""`` for Python docstrings.
+
+.. code-block:: python
+
+    # SPDX-License-Identifier: BSD-2-Clause
+    """File documentation block"""
+
+    # Copyright (C) <FIRST YEAR>, <LAST YEAR> <COPYRIGHT HOLDER>
+    #
+    # Redistribution and use in source and binary forms, with or without
+    # modification, are permitted provided that the following conditions
+    # are met:
+    # 1. Redistributions of source code must retain the above copyright
+    #    notice, this list of conditions and the following disclaimer.
+    # 2. Redistributions in binary form must reproduce the above copyright
+    #    notice, this list of conditions and the following disclaimer in the
+    #    documentation and/or other materials provided with the distribution.
+    #
+    # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+    # ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+    # LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    # INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+    # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    # POSSIBILITY OF SUCH DAMAGE.
+
+If the Python source file is a command line command add the following as the
+first line of the file:
 
 .. code-block:: python
 
     #!/usr/bin/env python
+
+A command line Python module does not need to have the ``.py`` file extension.
+
+Only specify ``python`` as the command to ``env``. A system that does not
+provide the ``python`` command can install a virtual python environment or the
+user can prepend the specific Python versioned command to the Python script on
+the command line when invoking the command.
+
+Shell Scripts
+-------------
+
+Use the following template for shell script source files and other files which
+accept a ``#``-style comment block. For the <FIRST YEAR>, <LAST YEAR>, and
+<COPYRIGHT HOLDER> placeholders see :ref:`FileHeaderCopyright`.
+
+.. code-block:: shell
+
+    #!/bin/sh
     # SPDX-License-Identifier: BSD-2-Clause
 
     # File documentation block
