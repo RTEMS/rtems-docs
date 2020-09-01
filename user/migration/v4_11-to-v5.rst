@@ -69,6 +69,25 @@ The directive :c:func:`rtems_clock_get` was removed.  See section
 `Transition Advice for the Removed rtems_clock_get()` in the
 `RTEMS Classic API Guide` for alternatives.
 
+File Descriptors
+----------------
+
+In RTEMS 5.1, the list of free file descriptors has a LIFO ordering in contrast
+to previous versions where it was a FIFO.  This means if an application
+regularly opens and closes files (or sockets) it sees the whole range of file
+descriptors.  The reason for this change was to increase the time before file
+descriptors are reused to more likely catch a file descriptor use after close.
+
+This change may surface application issues.  If the configured file descriptor
+maximum (``CONFIGURE_MAXIMUM_FILE_DESCRIPTORS``) is greater than the
+``FD_SETSIZE`` defined by Newlib to 64, then calls to ``select()`` are undefined
+behaviour and may corrupt the thread stack.  In particular, ``FD_SET()`` may
+result in an out of bounds access.  It is possible to define a custom
+``FD_SETSIZE``.  The application must ensure that the custom ``FD_SETSIZE`` is
+defined before ``<sys/select.h>`` is included in all modules used by the
+application, for example via a global compiler command line define.  This
+applies also to all third-party libraries used by the application.
+
 Networking
 ----------
 
