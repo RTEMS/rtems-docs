@@ -366,6 +366,50 @@ NOTES:
     the addition of a new configuration parameter to specify the number of
     tasks which enable floating point support.
 
+.. index:: CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
+
+.. _CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE:
+
+CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
+-------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+
+DESCRIPTION:
+    If the value of this configuration option is greater than zero, then it
+    defines the maximum thread-local storage size, otherwise the thread-local
+    storage size is defined by the linker depending on the thread-local storage
+    objects used by the application in the statically-linked executable.
+
+NOTES:
+    This configuration option can be used to reserve space for the dynamic linking
+    of modules with thread-local storage objects.
+
+    If the thread-local storage size defined by the thread-local storage
+    objects used by the application in the statically-linked executable is greater
+    than a non-zero value of this configuration option, then a fatal error will
+    occur during system initialization.
+
+    Use :c:func:`RTEMS_ALIGN_UP` and
+    :c:macro:`RTEMS_TASK_STORAGE_ALIGNMENT` to adjust the size to meet the
+    minimum alignment requirement of a thread-local storage area.
+
+    The actual thread-local storage size is determined when the application
+    executable is linked.  The ``rtems-exeinfo`` command line tool included in
+    the RTEMS Tools can be used to obtain the thread-local storage size and
+    alignment of an application executable.
+
 .. index:: CONFIGURE_MAXIMUM_TIMERS
 
 .. _CONFIGURE_MAXIMUM_TIMERS:
