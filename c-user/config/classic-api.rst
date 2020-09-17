@@ -485,3 +485,35 @@ DESCRIPTION:
 
 NOTES:
     This object class cannot be configured in unlimited allocation mode.
+
+.. index:: CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE
+
+.. _CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE:
+
+CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE
+--------------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    The default value is 0.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be greater than or equal to 0
+    and less than or equal to :ref:`CONFIGURE_MAXIMUM_TASKS`.
+
+DESCRIPTION:
+    The value of this configuration option defines the minimum count of Classic
+    API Tasks which are constructed by :c:func:`rtems_task_construct`.
+
+NOTES:
+    By default, the calculation for the required memory in the RTEMS Workspace
+    for tasks assumes that all Classic API Tasks are created by
+    :c:func:`rtems_task_create`.  This configuration option can be used to
+    reduce the required memory for the system-provided task storage areas since
+    tasks constructed by :c:func:`rtems_task_construct` use a user-provided
+    task storage area.
