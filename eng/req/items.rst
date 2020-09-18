@@ -1929,7 +1929,6 @@ This type refines the following types:
 * :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
   attribute if the value is ``safety-function``
 
-
 Items of this type state a functional requirement with the functional type
 defined by the specification type refinement.
 
