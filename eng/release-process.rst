@@ -342,14 +342,18 @@ the needed changes.
 
     * :file:`tester/rtems/version.cfg`: Update ``rtems_version``.
 
-#. rtems_libbsd requires the following files and branches be changed:
+#. ``rtems-libbsd`` requires the following files and branches be changed:
 
     * :file:`README.md`: Update ``Branches`` section.
 
     * :file:`wscript`: Update ``rtems_version``.
 
-    * Create a new branch for tracking the FreeBSD stable version. E.g.
+    * Create a new branch for tracking the FreeBSD stable version, for example
       ``6-freebsd-12``.
+
+#. ``rtems-examples`` requires the following files be changed:
+
+    * :file:`wscript`: Update ``rtems_version``.
 
 Release Procedure
 =================
