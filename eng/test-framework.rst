@@ -757,9 +757,9 @@ The following test checks for boolean expressions are available:
 
     void T_false(bool a, const char *fmt, ...);
     void T_assert_false(bool a, const char *fmt, ...);
-    void T_quiet_true(bool a, const char *fmt, ...);
-    void T_step_true(unsigned int step, bool a, const char *fmt, ...);
-    void T_step_assert_true(unsigned int step, bool a, const char *fmt, ...);
+    void T_quiet_false(bool a, const char *fmt, ...);
+    void T_step_false(unsigned int step, bool a, const char *fmt, ...);
+    void T_step_assert_false(unsigned int step, bool a, const char *fmt, ...);
 
 The message is only printed in case the test check fails.  The format parameter
 is mandatory.
