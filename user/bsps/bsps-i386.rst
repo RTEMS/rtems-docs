@@ -131,6 +131,10 @@ inside the Qemu emulator.
 	    device. E.g. ``--console=/dev/com1``. COM device name may
 	    also be followed by a baud rate like ``--console=/dev/com2,19200``
 
+            .. note:: pc386 BSP family is using 9600 as a default baud rate
+                      for console over UART (/dev/comX). It is also using
+                      8 data bits, no parity and 1 stop bit.
+
 .. option:: --printk=<dev>
 
 	    specifies target device for printk/getk
