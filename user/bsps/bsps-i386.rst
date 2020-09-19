@@ -140,6 +140,9 @@ inside the Qemu emulator.
 	    specifies target device for printk/getk
 	    calls. E.g. ``--printk=/dev/vgacons``
 
+If the specified console device is not present then suitable fallback
+device is selected based on the device order specified in `Console Drivers`.
+
 .. option:: --video=<mode>
 
 	    specifies required video mode. The options applies only to
@@ -157,12 +160,27 @@ inside the Qemu emulator.
 
 	    disables usage of COM1 thorough COM4.
 
-If the specified console device is not present then suitable fallback
-device is selected based on the device order specified in `Console Drivers`.
+.. option:: --gdb=<dev>
 
-PCI-based UART devices are named ``/dev/pcicom<number>`` as they are
-probed and found. The numbers sequence starts with 1. E.g. first PCI
-UART device found is accessible with ``/dev/pcicom1`` name.
+            specifies UART device for communication between BSP's
+            GDB stub and GDB running on a host system. Option accepts device
+            and baud rate like the ``--console`` option above.
+            E.g. ``--gdb=/dev/com2,115200`` instructs BSP to use COM2 device
+            for GDB stub/host communication with the speed of 115200 bauds.
+
+            .. note:: default GDB stub/host communication speed and other
+                      communication properties are same like for console over
+                      UART. E.g. 9600 baud rate, 8 data bits, no parity
+                      and 1 stop bit.
+
+.. option:: --gdb-break
+
+            halts BSP execution at a break point in the BSP initialization code
+            and waits for GDB connection.
+
+.. option:: --gdb-remote-debug
+
+            outputs the GDB remote protocol data to printk.
 
 Testing with Qemu
 -----------------
@@ -320,6 +338,10 @@ following order of priority:
 - VGA with PS/2 keyboard
 - COM1 thorough COM4
 - Any COM devices on the PCI bus including IO and memory mapped
+
+PCI-based UART devices are named ``/dev/pcicom<number>`` as they are
+probed and found. The numbers sequence starts with 1. E.g. first PCI
+UART device found is accessible with ``/dev/pcicom1`` name.
 
 Besides supporting generic devices above, the BSP also support
 specific UART chips. The drivers for those are not initialized
