@@ -131,9 +131,8 @@ inside the Qemu emulator.
 	    device. E.g. ``--console=/dev/com1``. COM device name may
 	    also be followed by a baud rate like ``--console=/dev/com2,19200``
 
-            .. note:: pc386 BSP family is using 9600 as a default baud rate
-                      for console over UART (/dev/comX). It is also using
-                      8 data bits, no parity and 1 stop bit.
+The pc386 BSP family uses 9600 as a default baud rate
+for console over UART (/dev/comX) with 8 data bits, no parity and 1 stop bit.
 
 .. option:: --printk=<dev>
 
@@ -168,10 +167,8 @@ device is selected based on the device order specified in `Console Drivers`.
             E.g. ``--gdb=/dev/com2,115200`` instructs BSP to use COM2 device
             for GDB stub/host communication with the speed of 115200 bauds.
 
-            .. note:: default GDB stub/host communication speed and other
-                      communication properties are same like for console over
-                      UART. E.g. 9600 baud rate, 8 data bits, no parity
-                      and 1 stop bit.
+The default GDB stub/host is similar to console over UART, i.e.,
+9600 baud rate, 8 data bits, no parity and 1 stop bit.
 
 .. option:: --gdb-break
 
