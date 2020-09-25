@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019 embedded brains GmbH
-.. Copyright (C) 2019 Sebastian Huber
+.. Copyright (C) 2019, 2020 embedded brains GmbH
+.. Copyright (C) 2019, 2020 Sebastian Huber
 
 .. index:: BSP build system
 .. index:: build system
@@ -283,3 +283,97 @@ example configuration file, building of the tests is enabled for the
     [sparc/erc32]
 
     [riscv/griscv]
+
+Migration from Autoconf/Automake
+================================
+
+The Autoconf/Automake based build system used a ``configure`` command to
+configure a single target architecture and one or more BSPs.  The ``make``
+command was used to build it.  The ``configure`` command is replaced by a
+``./waf configure`` invocation with configuration file.  The ``make`` command
+is replaced by ``./waf`` and ``make install`` is replaced by ``./waf install``.
+
+Here are some hints for how a configure command line can be converted to
+options in the configuration file of the ``waf`` based build system.  BSP
+options given at the configure command line have to be added to the BSP section
+in the configuration file.
+
+``--target=${arch}-rtems6`` ``--enable-rtembsp=${bsp}``
+        To build a BSP add ``[${arch}/${bsp}]`` to the configuration file.
+
+``--enable-ada`` | ``--disable-ada``
+        Set ``__RTEMS_ADA__`` to ``True`` or ``False`` in the BSP section of
+        the configuration file.
+
+``--enable-multiprocessing`` | ``--disable-multiprocessing``
+        Set ``RTEMS_MULTIPROCESSING`` to ``True`` or ``False`` in the BSP
+        section of the configuration file.
+
+``--enable-networking`` | ``--disable-networking``
+        Set ``RTEMS_NETWORKING`` to ``True`` or ``False`` in the BSP section of
+        the configuration file.
+
+``--enable-paravirt`` | ``--disable-paravirt``
+        Set ``RTEMS_PARAVIRT`` to ``True`` or ``False`` in the BSP section of
+        the configuration file.
+
+``--enable-profiling`` | ``--disable-profiling``
+        Set ``RTEMS_PROFILING`` to ``True`` or ``False`` in the BSP section of
+        the configuration file.
+
+``--enable-posix`` | ``--disable-posix``
+        Set ``RTEMS_POSIX_API`` to ``True`` or ``False`` in the BSP section of
+        the configuration file.
+
+``--enable-rtems-debug`` | ``--disable-rtems-debug``
+        Set ``RTEMS_DEBUG`` to ``True`` or ``False`` in the BSP section of the
+        configuration file.
+
+``--enable-smp`` | ``--disable-smp``
+        Set ``RTEMS_SMP`` to ``True`` or ``False`` in the BSP section of the
+        configuration file.
+
+``--enable-tests`` | ``--disable-tests``
+        Set ``BUILD_TESTS`` to ``True`` or ``False`` in the BSP section of the
+        configuration file.
+
+``--enable-tests=samples``
+        Set ``BUILD_SAMPLES`` to ``True`` or ``False`` in the BSP section of
+        the configuration file.
+
+Please have a look at the following example configuration file.
+
+.. code-block:: ini
+
+    # --target=sparc-rtems6 --enable-rtemsbsp=erc32
+    [sparc/erc32]
+
+    # --enable-ada
+    __RTEMS_ADA__ = True
+
+    # --enable-multiprocessing
+    RTEMS_MULTIPROCESSING = False
+
+    # --enable-networking
+    RTEMS_NETWORKING = True
+
+    # --disable-paravirt
+    RTEMS_PARAVIRT = False
+
+    # --enable-profiling
+    RTEMS_PROFILING = True
+
+    # --disable-posix
+    RTEMS_POSIX_API = False
+
+    # --enable-rtems-debug
+    RTEMS_DEBUG = True
+
+    # --disable-smp
+    RTEMS_SMP = False
+
+    # --enable-tests
+    BUILD_TESTS = True
+
+    # BSP_POWER_DOWN_AT_FATAL_HALT=
+    BSP_POWER_DOWN_AT_FATAL_HALT = False
