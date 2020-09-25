@@ -34,10 +34,10 @@ for the values.
 Count Leading Zeroes Instruction
 --------------------------------
 
-The ARMv5 and later has the count leading zeroes ``clz`` instruction which
-could be used to speed up the find first bit operation.  The use of this
-instruction should significantly speed up the scheduling associated with a
-thread blocking.  This is currently not used.
+The ARMv5 and later instruction sets have the count leading zeroes ``clz``
+instruction which could be used to speed up the find first bit operation. The
+use of this instruction should significantly speed up the scheduling associated
+with a thread blocking.  This is currently not used.
 
 Floating Point Unit
 -------------------
@@ -130,7 +130,7 @@ Memory Model
 ============
 
 A flat 32-bit memory model is supported.  The board support package must take
-care about the MMU if necessary.
+care of initializing the MMU if necessary.
 
 Interrupt Processing
 ====================
@@ -194,13 +194,13 @@ actions:
 Symmetric Multiprocessing
 =========================
 
-SMP is supported on ARMv7-A.  Available platforms are
+SMP is supported on ARMv7-A.  Available platforms are:
 
-- Altera Cyclone V,
+- Altera Cyclone V
 
-- NXP i.MX 7, and
+- NXP i.MX 7
 
-- Xilinx Zynq.
+- Xilinx Zynq
 
 Thread-Local Storage
 ====================
