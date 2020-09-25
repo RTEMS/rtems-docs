@@ -1,0 +1,26 @@
+.. SPDX-License-Identifier: CC-BY-SA-4.0
+
+.. Copyright (C) 2020 On-Line Applications Research Corporation (OAR)
+
+.. _BSP_aarch64_qemu_a53_ilp32:
+.. _BSP_aarch64_qemu_a53_lp64:
+
+Qemu A53
+========
+
+This BSP supports two variants, `qemu_a53_ilp32` and `qemu-a53_lp64`. The basic
+hardware initialization is performed by the BSP.
+
+Boot via ELF
+------------
+The executable image is booted by Qemu in ELF format.
+
+Clock Driver
+------------
+
+The clock driver uses the `ARM Generic Timer`.
+
+Console Driver
+--------------
+
+The console driver supports the default Qemu emulated ARM PL011 PrimeCell UART.

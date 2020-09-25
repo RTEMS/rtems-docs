@@ -5,4 +5,4 @@
 aarch64 (AArch64)
 *****************
 
-There are no AArch64 BSPs yet.
+.. include:: aarch64/a53.rst
