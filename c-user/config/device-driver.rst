@@ -318,9 +318,9 @@ NOTES:
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    This device driver reads via :c:func:`rtems_putc`.
+    This device driver reads via :c:func:`getchark`.
 
-    This device driver writes via :c:func:`getchark`.
+    This device driver writes via :c:func:`rtems_putc`.
 
     The Termios framework is not used.  There is no support to change device
     settings, e.g. baud, stop bits, parity, etc.
@@ -361,14 +361,14 @@ NOTES:
     device file.  This device is used to initialize the standard input, output,
     and error file descriptors.
 
-    This device driver reads via :c:func:`rtems_putc`.
+    This device driver reads via :c:func:`getchark`.
 
     This device driver writes into a write buffer.  The count of characters
     written into the write buffer is returned.  It might be less than the
     requested count, in case the write buffer is full.  The write is
     non-blocking and may be called from interrupt context.  A dedicated task
     reads from the write buffer and outputs the characters via
-    :c:func:`getchark`.  This task runs with the least important priority.
+    :c:func:`rtems_putc`.  This task runs with the least important priority.
     The write buffer size is 2047 characters and it is not configurable.
 
     Use ``fsync( STDOUT_FILENO )`` or ``fdatasync( STDOUT_FILENO )`` to drain the
