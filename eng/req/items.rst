@@ -2915,7 +2915,7 @@ split
     The attribute shall have no value. The action splits the action value.
 
 substitute
-    The attribute shall have no value. The action Performs a ``${VARIABLE}``
+    The attribute shall have no value. The action performs a ``${VARIABLE}``
     substitution on the action value.  Use ``$$`` for a plain ``$`` character.
 
 This type is used by the following types:
