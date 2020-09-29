@@ -1,142 +1,227 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://docs.rtems.org/branches/master/user/support/bugs.html
+..
+.. For information on updating and regenerating please refer to:
+..
+.. https://docs.rtems.org/branches/master/eng/req/howto.html
+
+.. _EventManagerDirectives:
 
 Directives
 ==========
 
-This section details the event manager's directives.  A subsection is dedicated
-to each of this manager's directives and describes the calling sequence,
-related constants, usage, and status codes.
+This section details the directives of the Event Manager. A subsection is
+dedicated to each of this manager's directives and lists the calling sequence,
+parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/event/if/send
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: send event set to a task
-.. index:: rtems_event_send
+.. index:: rtems_event_send()
 
-.. _rtems_event_send:
+.. _InterfaceRtemsEventSend:
 
-EVENT_SEND - Send event set to a task
--------------------------------------
+rtems_event_send()
+------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Sends the event set to the task.
 
-        rtems_status_code rtems_event_send (
-            rtems_id         id,
-            rtems_event_set  event_in
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - event set sent successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid task id
+    rtems_status_code rtems_event_send( rtems_id id, rtems_event_set event_in );
 
-DESCRIPTION:
-    This directive sends an event set, event_in, to the task specified by id.
-    If a blocked task's input event condition is satisfied by this directive,
-    then it will be made ready.  If its input event condition is not satisfied,
-    then the events satisfied are updated and the events not satisfied are left
-    pending.  If the task specified by id is not blocked waiting for events,
-    then the events sent are left pending.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    Specifying ``RTEMS_SELF`` for id results in the event set being sent to the
-    calling task.
+``id``
+    This parameter is the identifier of the target task to receive the event
+    set.
 
-    Identical events sent to a task are not queued.  In other words, the
-    second, and subsequent, posting of an event to a task before it can perform
-    an ``rtems_event_receive`` has no effect.
+``event_in``
+    This parameter is the event set to send.
 
-    The calling task will be preempted if it has preemption enabled and a
-    higher priority task is unblocked as the result of this directive.
+.. rubric:: DESCRIPTION:
 
-    Sending an event set to a global task which does not reside on the local
-    node will generate a request telling the remote node to send the event set
-    to the appropriate task.
+This directive sends the event set, ``event_in``, to the target task identified
+by ``id``.  Based upon the state of the target task, one of the following
+situations applies:
+
+* The target task is blocked waiting for events, then
+
+  * if the waiting task's input event condition is satisfied, then the task is
+    made ready for execution, or
+
+  * otherwise, the event set is posted but left pending and the task remains
+    blocked.
+
+* The target task is not waiting for events, then the event set is posted and
+  left pending.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no task with the specified identifier.
+
+.. rubric:: NOTES:
+
+Events can be sent by tasks or an :term:`ISR`.
+
+Specifying :c:macro:`RTEMS_SELF` for ``id`` results in the event set being sent
+to the calling task.
+
+The event set to send shall be built by a *bitwise or* of the desired events.
+The set of valid events is :c:macro:`RTEMS_EVENT_0` through
+:c:macro:`RTEMS_EVENT_31`.  If an event is not explicitly specified in the set,
+then it is not present.
+
+Identical events sent to a task are not queued.  In other words, the second,
+and subsequent, posting of an event to a task before it can perform an
+:ref:`InterfaceRtemsEventReceive` has no effect.
+
+The calling task will be preempted if it has preemption enabled and a higher
+priority task is unblocked as the result of this directive.
+
+Sending an event set to a global task which does not reside on the local node
+will generate a request telling the remote node to send the event set to the
+appropriate task.
+
+.. Generated from spec:/rtems/event/if/receive
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: receive event condition
-.. index:: rtems_event_receive
+.. index:: rtems_event_receive()
 
-.. _rtems_event_receive:
+.. _InterfaceRtemsEventReceive:
 
-EVENT_RECEIVE - Receive event condition
----------------------------------------
+rtems_event_receive()
+---------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Receives or gets an event set from the calling task.
 
-        rtems_status_code rtems_event_receive (
-            rtems_event_set  event_in,
-            rtems_option     option_set,
-            rtems_interval   ticks,
-            rtems_event_set *event_out
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - event received successfully
-     * - ``RTEMS_UNSATISFIED``
-       - input event not satisfied (``RTEMS_NO_WAIT``)
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``event_out`` is NULL
-     * - ``RTEMS_TIMEOUT``
-       - timed out waiting for event
+    rtems_status_code rtems_event_receive(
+      rtems_event_set  event_in,
+      rtems_option     option_set,
+      rtems_interval   ticks,
+      rtems_event_set *event_out
+    );
 
-DESCRIPTION:
+.. rubric:: PARAMETERS:
 
-    This directive attempts to receive the event condition specified in
-    event_in.  If event_in is set to ``RTEMS_PENDING_EVENTS``, then the current
-    pending events are returned in event_out and left pending.  The
-    ``RTEMS_WAIT`` and ``RTEMS_NO_WAIT`` options in the option_set parameter
-    are used to specify whether or not the task is willing to wait for the
-    event condition to be satisfied. ``RTEMS_EVENT_ANY`` and
-    ``RTEMS_EVENT_ALL`` are used in the option_set parameter are used to
-    specify whether a single event or the complete event set is necessary to
-    satisfy the event condition.  The event_out parameter is returned to the
-    calling task with the value that corresponds to the events in event_in that
-    were satisfied.
+``event_in``
+    This parameter is the event set of interest.  Use
+    :c:macro:`RTEMS_PENDING_EVENTS` to get the pending events.
 
-    If pending events satisfy the event condition, then event_out is set to the
-    satisfied events and the pending events in the event condition are cleared.
-    If the event condition is not satisfied and ``RTEMS_NO_WAIT`` is specified,
-    then event_out is set to the currently satisfied events.  If the calling
-    task chooses to wait, then it will block waiting for the event condition.
+``option_set``
+    This parameter is the option set.
 
-    If the calling task must wait for the event condition to be satisfied, then
-    the timeout parameter is used to specify the maximum interval to wait.  If
-    it is set to ``RTEMS_NO_TIMEOUT``, then the calling task will wait forever.
+``ticks``
+    This parameter is the timeout in clock ticks if the :c:macro:`RTEMS_WAIT`
+    option is set.  Use :c:macro:`RTEMS_NO_TIMEOUT` to wait potentially
+    forever.
 
-NOTES:
-    This directive only affects the events specified in event_in.  Any pending
-    events that do not correspond to any of the events specified in event_in
-    will be left pending.
+``event_out``
+    This parameter is the pointer to an event set.  The received or pending
+    events are stored in the referenced event set if the operation was
+    successful.
 
-    The following event receive option constants are defined by RTEMS:
+.. rubric:: DESCRIPTION:
 
-    .. list-table::
-     :class: rtems-table
+This directive can be used to
 
-     * - ``RTEMS_WAIT``
-       - task will wait for event (default)
-     * - ``RTEMS_NO_WAIT``
-       - task should not wait
-     * - ``RTEMS_EVENT_ALL``
-       - return after all events (default)
-     * - ``RTEMS_EVENT_ANY``
-       - return after any events
+* get the pending events of the calling task, or
 
-    A clock tick is required to support the functionality of this directive.
+* receive events.
+
+To **get the pending events** use the constant :c:macro:`RTEMS_PENDING_EVENTS`
+for the ``event_in`` parameter.  The pending events are returned to the calling
+task but the event set of the task is left unaltered.  The ``option_set`` and
+``ticks`` parameters are ignored in this case.  The directive returns
+immediately and does not block.
+
+To **receive events** you have to define an input event condition and some
+options.  The **option set** specified in ``option_set`` defines
+
+* if the task will wait or poll for the events, and
+
+* if the task wants to receive all or any of the input events.
+
+The option set is built through a *bitwise or* of the option constants
+described below.
+
+The task can **wait** or **poll** for the events.
+
+* **Waiting** for events is the default and can be emphasized through the use
+  of the :c:macro:`RTEMS_WAIT` option.  The ``ticks`` parameter defines how
+  long the task is willing to wait.  Use :c:macro:`RTEMS_NO_TIMEOUT` to wait
+  potentially forever, otherwise set a timeout interval in clock ticks.
+
+* Not waiting for events (**polling**) is selected by the
+  :c:macro:`RTEMS_NO_WAIT` option.  If this option is defined, then the
+  ``ticks`` parameter is ignored.
+
+The task can receive **all** or **any** of the input events specified in
+``event_in``.
+
+* Receiving **all** input events is the default and can be emphasized through
+  the use of the :c:macro:`RTEMS_EVENT_ALL` option.
+
+* Receiving **any** of the input events is selected by the
+  :c:macro:`RTEMS_EVENT_ANY` option.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``event_out`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    The events of interest were not immediately available.
+
+:c:macro:`RTEMS_TIMEOUT`
+    The events of interest were not available within the specified timeout
+    interval.
+
+.. rubric:: NOTES:
+
+This directive shall be called by a task.  Calling this directive from
+interrupt context is undefined behaviour.
+
+This directive only affects the events specified in ``event_in``. Any pending
+events that do not correspond to any of the events specified in ``event_in``
+will be left pending.
+
+To receive all events use the event set constant :c:macro:`RTEMS_ALL_EVENTS`
+for the ``event_in`` parameter.  Do not confuse this event set constant with
+the directive option :c:macro:`RTEMS_EVENT_ALL`.
+
+A task can **receive all of the pending events** by calling the directive with
+a value of :c:macro:`RTEMS_ALL_EVENTS` for the ``event_in`` parameter and the
+bitwise or of the :c:macro:`RTEMS_NO_WAIT` and :c:macro:`RTEMS_EVENT_ANY`
+options for the ``option_set`` parameter.  The pending events are returned and
+the event set of the task is cleared.  If no events are pending then the
+:c:macro:`RTEMS_UNSATISFIED` status code will be returned.
