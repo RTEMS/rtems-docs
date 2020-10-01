@@ -279,9 +279,8 @@ source
     :ref:`SpecTypeBuildSource`.
 
 stlib
-    The attribute value shall be a list of strings. It shall be a list of
-    external static library identifiers used to link this test program, e.g.
-    ``m`` for ``libm.a``.
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildLinkStaticLibraryDirective`.
 
 target
     The attribute value shall be a :ref:`SpecTypeBuildTarget`.
@@ -821,9 +820,8 @@ prepare-configure
     context.
 
 stlib
-    The attribute value shall be a list of strings. It shall be a list of
-    external static library identifiers used to link this test program, e.g.
-    ``m`` for ``libm.a``.
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildLinkStaticLibraryDirective`.
 
 use-after
     The attribute value shall be a list. Each list element shall be a
@@ -954,9 +952,8 @@ source
     :ref:`SpecTypeBuildSource`.
 
 stlib
-    The attribute value shall be a list of strings. It shall be a list of
-    external static library identifiers used to link this test program, e.g.
-    ``m`` for ``libm.a``.
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildLinkStaticLibraryDirective`.
 
 target
     The attribute value shall be a :ref:`SpecTypeBuildTarget`.
@@ -2712,6 +2709,26 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildStartFileItemType`
 
+.. _SpecTypeBuildLinkStaticLibraryDirective:
+
+Build Link Static Library Directive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The value shall be a string. It shall be an external static library identifier.
+The library is used to link programs referenced by this item, e.g. ``m`` for
+``libm.a``.  The library is added to the build command through the ``stlib``
+attribute. It shall not be used for internal static libraries.  Internal static
+libraries shall be specified through the ``use-after`` and ``use-before``
+attributes to enable a proper build dependency tracking.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeBuildAdaTestProgramItemType`
+
+* :ref:`SpecTypeBuildScriptItemType`
+
+* :ref:`SpecTypeBuildTestProgramItemType`
+
 .. _SpecTypeBuildLinkerOption:
 
 Build Linker Option
@@ -3123,8 +3140,9 @@ Build Use After Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The value shall be a string. It shall be an internal static library identifier.
-They are used to link programs referenced by this item, e.g. ``z`` for
-``libz.a``.  They are placed after the use items of the build item context.
+The library is used to link programs referenced by this item, e.g. ``z`` for
+``libz.a``.  The library is placed after the use items of the build item
+context.
 
 This type is used by the following types:
 
@@ -3142,8 +3160,9 @@ Build Use Before Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The value shall be a string. It shall be an internal static library identifier.
-They are used to link programs referenced by this item, e.g. ``z`` for
-``libz.a``.  They are placed before the use items of the build item context.
+The library is used to link programs referenced by this item, e.g. ``z`` for
+``libz.a``.  The library is placed before the use items of the build item
+context.
 
 This type is used by the following types:
 
