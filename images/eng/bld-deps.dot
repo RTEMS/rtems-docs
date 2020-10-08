@@ -3,7 +3,7 @@
 # Copyright (C) 2019 embedded brains GmbH
 
 digraph {
-  size="4";
+  size="8";
   margin="0";
   node [shape=box, style="filled, rounded", fontname="Sans serif", margin=0.05,width=0.05,height=0.05];
   tg [label="Test Group", fillcolor=green];
