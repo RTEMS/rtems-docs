@@ -203,6 +203,8 @@ the build system easier, but less general.
     :width: 100%
     :figclass: align-center
 
+    Example with Explicit Item Links
+
     This example shows how build item dependencies are specified explicitly
     by item links.  In this example, a user wants to build a group of tests.
     Each test program has a dependency on the standard RTEMS libraries.  The
@@ -220,6 +222,8 @@ the build system easier, but less general.
 .. figure:: ../images/eng/bld-deps2.*
     :width: 50%
     :figclass: align-center
+
+    Example with Implicit Ordering Rules
 
     This example shows how build item dependencies are specified by dedicated
     BSP items, a top-level group, and ordered item links.  The BSP is
