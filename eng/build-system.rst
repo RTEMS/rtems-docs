@@ -201,7 +201,6 @@ the build system easier, but less general.
 
 .. figure:: ../images/eng/bld-deps.*
     :width: 100%
-    :figclass: align-center
 
     Example with Explicit Item Links
 
@@ -221,7 +220,6 @@ the build system easier, but less general.
 
 .. figure:: ../images/eng/bld-deps2.*
     :width: 50%
-    :figclass: align-center
 
     Example with Implicit Ordering Rules
 
