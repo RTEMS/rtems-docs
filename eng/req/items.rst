@@ -1087,6 +1087,11 @@ example the :term:`API`, C language, compiler, interfaces to the
 implementation, and the hardware. All explicit attributes shall be specified.
 The explicit attributes for this type are:
 
+index-entries
+    The attribute value shall be a list of strings. It shall be a list of
+    additional document index entries.  A document index entry derived from the
+    interface name is added automatically.
+
 interface-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
     interface item type.
@@ -1165,12 +1170,6 @@ description
     The attribute value shall be an :ref:`SpecTypeInterfaceDescription`. The
     :ref:`SpecTypeApplicationConfigurationValueOptionItemType` items have an
     attribute for constraints.
-
-index-entries
-    The attribute value shall be a list of strings. It shall be a list of
-    additional application configuration option document index entries.  The
-    application configuration option name is automatically added to the
-    document index.
 
 name
     The attribute value shall be an
