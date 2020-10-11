@@ -2,12 +2,17 @@
 
 .. Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
 
-.. This file was automatically generated.  Do not edit it manually.
-.. Please have a look at
+.. Do not manually edit this file.  It is part of the RTEMS quality process
+.. and was automatically generated.
+..
+.. If you find something that needs to be fixed or worded better please
+.. post a report to an RTEMS mailing list or raise a bug report:
+..
+.. https://docs.rtems.org/branches/master/user/support/bugs.html
+..
+.. For information on updating and regenerating please refer to:
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
-..
-.. for information how to maintain and re-generate this file.
 
 .. _ReqEngSpecificationItems:
 
