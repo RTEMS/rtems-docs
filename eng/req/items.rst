@@ -3965,6 +3965,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceTargetLinkRole`
 
+* :ref:`SpecTypePlacementOrderLinkRole`
+
 * :ref:`SpecTypeRequirementRefinementLinkRole`
 
 * :ref:`SpecTypeRequirementValidationLinkRole`
@@ -4031,6 +4033,16 @@ A value of this type shall be of one of the following variants:
 * There may by be no value (null).
 
 * The value may be a string.
+
+.. _SpecTypePlacementOrderLinkRole:
+
+Placement Order Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+value is ``placement-order``. This link role defines the placement order of
+items in a container item (for example an interface function in a header file
+or a documentation section).
 
 .. _SpecTypeRequirementNonFunctionalType:
 
