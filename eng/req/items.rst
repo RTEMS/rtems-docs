@@ -3672,6 +3672,13 @@ Interface Function Definition
 This set of attributes specifies a function definition. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
+attributes
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the function attributes. On the attributes a
+    context-sensitive substitution of item variables is performed.  A function
+    attribute is for example the indication that the function does not return
+    to the caller.
+
 body
     The attribute value shall be an optional string. If the value is present,
     then it shall be the definition of a static inline function.  On the
