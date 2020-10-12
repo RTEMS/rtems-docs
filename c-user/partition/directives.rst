@@ -1,349 +1,449 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://docs.rtems.org/branches/master/user/support/bugs.html
+..
+.. For information on updating and regenerating please refer to:
+..
+.. https://docs.rtems.org/branches/master/eng/req/howto.html
+
+.. _PartitionManagerDirectives:
 
 Directives
 ==========
 
-This section details the partition manager's directives.  A subsection is
-dedicated to each of this manager's directives and describes the calling
-sequence, related constants, usage, and status codes.
+This section details the directives of the Partition Manager. A subsection is
+dedicated to each of this manager's directives and lists the calling sequence,
+parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/part/if/create
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_partition_create()
 .. index:: create a partition
-.. index:: rtems_partition_create
 
-.. _rtems_partition_create:
+.. _InterfaceRtemsPartitionCreate:
 
-PARTITION_CREATE - Create a partition
--------------------------------------
+rtems_partition_create()
+------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Creates a partition.
 
-        rtems_status_code rtems_partition_create(
-            rtems_name       name,
-            void            *starting_address,
-            uintptr_t        length,
-            size_t           buffer_size,
-            rtems_attribute  attribute_set,
-            rtems_id        *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - partition created successfully
-     * - ``RTEMS_INVALID_NAME``
-       - invalid partition ``name``
-     * - ``RTEMS_TOO_MANY``
-       - too many partitions created
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``starting_address`` is not on a pointer size boundary
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``starting_address`` is NULL
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_INVALID_SIZE``
-       - ``length`` or ``buffer_size`` is 0
-     * - ``RTEMS_INVALID_SIZE``
-       - ``length`` is less than the ``buffer_size``
-     * - ``RTEMS_INVALID_SIZE``
-       - ``buffer_size`` is not an integral multiple of the pointer size
-     * - ``RTEMS_INVALID_SIZE``
-       - ``buffer_size`` is less than two times the pointer size
-     * - ``RTEMS_TOO_MANY``
-       - too many global objects
+    rtems_status_code rtems_partition_create(
+      rtems_name      name,
+      void           *starting_address,
+      uintptr_t       length,
+      size_t          buffer_size,
+      rtems_attribute attribute_set,
+      rtems_id       *id
+    );
 
-DESCRIPTION:
-    This directive creates a partition of fixed size buffers from a physically
-    contiguous memory space which starts at starting_address and is length
-    bytes in size.  Each allocated buffer is to be of ``buffer_size`` in bytes.
-    The assigned partition id is returned in ``id``.  This partition id is used
-    to access the partition with other partition related directives.  For
-    control and maintenance of the partition, RTEMS allocates a PTCB from the
-    local PTCB free pool and initializes it.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+``name``
+    This parameter is the name of the partition.
 
-    The partition buffer area specified by the ``starting_address`` must be
-    properly aligned.  It must be possible to directly store target
-    architecture pointers and the also the user data.  For example, if the user
-    data contains some long double or vector data types, the partition buffer
-    area and the buffer size must take the alignment of these types into
-    account which is usually larger than the pointer alignment.  A cache line
-    alignment may be also a factor.
+``starting_address``
+    This parameter is the starting address of the buffer area used by the
+    partition.
 
-    The ``buffer_size`` parameter must be an integral multiple of the pointer
-    size on the target architecture.  Additionally, ``buffer_size`` must be
-    large enough to hold two pointers on the target architecture.  This is
-    required for RTEMS to manage the buffers when they are free.
+``length``
+    This parameter is the length in bytes of the buffer area used by the
+    partition.
 
-    Memory from the partition is not used by RTEMS to store the Partition
-    Control Block.
+``buffer_size``
+    This parameter is the size in bytes of a buffer managed by the partition.
 
-    The following partition attribute constants are defined by RTEMS:
+``attribute_set``
+    This parameter is the attribute set of the partition.
 
-    .. list-table::
-     :class: rtems-table
+``id``
+    This parameter is the pointer to an object identifier variable.  The
+    identifier of the created partition object will be stored in this variable,
+    in case of a successful operation.
 
-     * - ``RTEMS_LOCAL``
-       - local partition (default)
-     * - ``RTEMS_GLOBAL``
-       - global partition
+.. rubric:: DESCRIPTION:
 
-    The PTCB for a global partition is allocated on the local node.  The memory
-    space used for the partition must reside in shared memory. Partitions
-    should not be made global unless remote tasks must interact with the
-    partition.  This is to avoid the overhead incurred by the creation of a
-    global partition.  When a global partition is created, the partition's name
-    and id must be transmitted to every node in the system for insertion in the
-    local copy of the global object table.
+This directive creates a partition of fixed size buffers from a physically
+contiguous memory space which starts at ``starting_address`` and is ``length``
+bytes in size.  Each allocated buffer is to be of ``buffer_size`` in bytes.
+The assigned partition identifier is returned in ``id``.  This partition
+identifier is used to access the partition with other partition related
+directives.
 
-    The total number of global objects, including partitions, is limited by the
-    maximum_global_objects field in the Configuration Table.
+The **attribute set** specified in ``attribute_set`` is built through a
+*bitwise or* of the attribute constants described below.  Attributes not
+mentioned below are not evaluated by this directive and have no effect.
 
-EXAMPLE:
-    .. code-block:: c
+The partition can have **local** or **global** scope in a multiprocessing
+network (this attribute does not refer to SMP systems).
 
-        #include <rtems.h>
-        #include <rtems/chain.h>
+* A **local** scope is the default and can be emphasized through the use of the
+  :c:macro:`RTEMS_LOCAL` attribute.  A local partition can be only used by the
+  node which created it.
 
-        #include <assert.h>
+* A **global** scope is established if the :c:macro:`RTEMS_GLOBAL` attribute is
+  set.  The memory space used for the partition must reside in shared memory.
+  Setting the global attribute in a single node system has no effect.
 
-        typedef struct {
-          char  less;
-          short more;
-        } item;
+.. rubric:: RETURN VALUES:
 
-        union {
-          item             data;
-          rtems_chain_node node;
-        } items[ 13 ];
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-        rtems_id create_partition(void)
-        {
-          rtems_id          id;
-          rtems_status_code sc;
+:c:macro:`RTEMS_INVALID_NAME`
+    The partition name was invalid.
 
-          sc = rtems_partition_create(
-            rtems_build_name( 'P', 'A', 'R', 'T' ),
-            items,
-            sizeof( items ),
-            sizeof( items[ 0 ] ),
-            RTEMS_DEFAULT_ATTRIBUTES,
-            &id
-          );
-          assert(sc == RTEMS_SUCCESSFUL);
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-          return id;
-        }
+:c:macro:`RTEMS_INVALID_SIZE`
+    The ``length`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_SIZE`
+    The ``buffer_size`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_SIZE`
+    The ``length`` parameter was less than the ``buffer_size`` parameter.
+
+:c:macro:`RTEMS_INVALID_SIZE`
+    The ``buffer_size`` parameter was not an integral multiple of the pointer
+    size.
+
+:c:macro:`RTEMS_INVALID_SIZE`
+    The ``buffer_size`` parameter was less than two times the pointer size.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``starting_address`` parameter was not on a pointer size boundary.
+
+:c:macro:`RTEMS_TOO_MANY`
+    There was no inactive object available to create a new partition.  The
+    number of partitions available to the application is configured through the
+    :ref:`CONFIGURE_MAXIMUM_PARTITIONS` configuration option.
+
+.. rubric:: NOTES:
+
+This directive may cause the calling task to be preempted due to an obtain and
+release of the object allocator mutex.
+
+The partition buffer area specified by the ``starting_address`` must be
+properly aligned.  It must be possible to directly store target architecture
+pointers and also the user data.  For example, if the user data contains some
+long double or vector data types, the partition buffer area and the buffer size
+must take the alignment of these types into account which is usually larger
+than the pointer alignment.  A cache line alignment may be also a factor.  Use
+:c:macro:`RTEMS_PARTITION_ALIGNMENT` to specify the minimum alignment of a
+partition buffer type.
+
+The ``buffer_size`` parameter must be an integral multiple of the pointer size
+on the target architecture.  Additionally, ``buffer_size`` must be large enough
+to hold two pointers on the target architecture.  This is required for RTEMS to
+manage the buffers when they are free.
+
+For control and maintenance of the partition, RTEMS allocates a :term:`PTCB`
+from the local PTCB free pool and initializes it. Memory from the partition
+buffer area is not used by RTEMS to store the PTCB.
+
+The PTCB for a global partition is allocated on the local node.  Partitions
+should not be made global unless remote tasks must interact with the partition.
+This is to avoid the overhead incurred by the creation of a global partition.
+When a global partition is created, the partition's name and identifier must be
+transmitted to every node in the system for insertion in the local copy of the
+global object table.
+
+The total number of global objects, including partitions, is limited by the
+value of the :ref:`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
+configuration option.
+
+.. Generated from spec:/rtems/part/if/ident
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_partition_ident()
 .. index:: get ID of a partition
 .. index:: obtain ID of a partition
-.. index:: rtems_partition_ident
 
-.. _rtems_partition_ident:
+.. _InterfaceRtemsPartitionIdent:
 
-PARTITION_IDENT - Get ID of a partition
----------------------------------------
+rtems_partition_ident()
+-----------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Identifies a partition by the object name.
 
-        rtems_status_code rtems_partition_ident(
-            rtems_name  name,
-            uint32_t    node,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - partition identified successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_INVALID_NAME``
-       - partition name not found
-     * - ``RTEMS_INVALID_NODE``
-       - invalid node id
+    rtems_status_code rtems_partition_ident(
+      rtems_name name,
+      uint32_t   node,
+      rtems_id  *id
+    );
 
-DESCRIPTION:
-    This directive obtains the partition id associated with the partition name.
-    If the partition name is not unique, then the partition id will match one
-    of the partitions with that name.  However, this partition id is not
-    guaranteed to correspond to the desired partition.  The partition id is
-    used with other partition related directives to access the partition.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``name``
+    This parameter is the object name to look up.
 
-    If node is ``RTEMS_SEARCH_ALL_NODES``, all nodes are searched with the
-    local node being searched first.  All other nodes are searched with the
-    lowest numbered node searched first.
+``node``
+    This parameter is the node or node set to search for a matching object.
 
-    If node is a valid node number which does not represent the local node,
-    then only the partitions exported by the designated node are searched.
+``id``
+    This parameter is the pointer to an object identifier variable.  The object
+    identifier of an object with the specified name will be stored in this
+    variable, in case of a successful operation.
 
-    This directive does not generate activity on remote nodes.  It accesses
-    only the local copy of the global object table.
+.. rubric:: DESCRIPTION:
+
+This directive obtains a partition identifier associated with the partition
+name specified in ``name``.
+
+The node to search is specified in ``node``.  It shall be
+
+* a valid node number,
+
+* the constant :c:macro:`RTEMS_SEARCH_ALL_NODES` to search in all nodes,
+
+* the constant :c:macro:`RTEMS_SEARCH_LOCAL_NODE` to search in the local node
+  only, or
+
+* the constant :c:macro:`RTEMS_SEARCH_OTHER_NODES` to search in all nodes
+  except the local node.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The id parameter was `NULL <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The name parameter was 0.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    There was no object with the specified name on the specified nodes.
+
+:c:macro:`RTEMS_INVALID_NODE`
+    In multiprocessing configurations, the specified node was invalid.
+
+.. rubric:: NOTES:
+
+If the partition name is not unique, then the partition identifier will match
+the first partition with that name in the search order.  However, this
+partition identifier is not guaranteed to correspond to the desired partition.
+The partition identifier is used with other partition related directives to
+access the partition.
+
+If node is :c:macro:`RTEMS_SEARCH_ALL_NODES`, all nodes are searched with the
+local node being searched first.  All other nodes are searched with the lowest
+numbered node searched first.
+
+If node is a valid node number which does not represent the local node, then
+only the partitions exported by the designated node are searched.
+
+This directive does not generate activity on remote nodes.  It accesses only
+the local copy of the global object table.
+
+.. Generated from spec:/rtems/part/if/delete
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_partition_delete()
 .. index:: delete a partition
-.. index:: rtems_partition_delete
 
-.. _rtems_partition_delete:
+.. _InterfaceRtemsPartitionDelete:
 
-PARTITION_DELETE - Delete a partition
--------------------------------------
+rtems_partition_delete()
+------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Deletes the partition.
 
-        rtems_status_code rtems_partition_delete(
-            rtems_id id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - partition deleted successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid partition id
-     * - ``RTEMS_RESOURCE_IN_USE``
-       - buffers still in use
-     * - ``RTEMS_ILLEGAL_ON_REMOTE_OBJECT``
-       - cannot delete remote partition
+    rtems_status_code rtems_partition_delete( rtems_id id );
 
-DESCRIPTION:
-    This directive deletes the partition specified by id.  The partition cannot
-    be deleted if any of its buffers are still allocated.  The PTCB for the
-    deleted partition is reclaimed by RTEMS.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+``id``
+    This parameter is the partition identifier.
 
-    The calling task does not have to be the task that created the partition.
-    Any local task that knows the partition id can delete the partition.
+.. rubric:: DESCRIPTION:
 
-    When a global partition is deleted, the partition id must be transmitted to
-    every node in the system for deletion from the local copy of the global
-    object table.
+This directive deletes the partition specified by the id parameter.  The
+partition cannot be deleted if any of its buffers are still allocated.  The
+:term:`PTCB` for the deleted partition is reclaimed by RTEMS.
 
-    The partition must reside on the local node, even if the partition was
-    created with the ``RTEMS_GLOBAL`` option.
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no partition with the specified identifier.
+
+:c:macro:`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
+    The partition resided on a remote node.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    There were buffers of the partition still in use.
+
+.. rubric:: NOTES:
+
+This directive may cause the calling task to be preempted due to an obtain and
+release of the object allocator mutex.
+
+The calling task does not have to be the task that created the partition. Any
+local task that knows the partition identifier can delete the partition.
+
+When a global partition is deleted, the partition identifier must be
+transmitted to every node in the system for deletion from the local copy of the
+global object table.
+
+The partition must reside on the local node, even if the partition was created
+with the :c:macro:`RTEMS_GLOBAL` attribute.
+
+.. Generated from spec:/rtems/part/if/get-buffer
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_partition_get_buffer()
 .. index:: get buffer from partition
 .. index:: obtain buffer from partition
-.. index:: rtems_partition_get_buffer
 
-.. _rtems_partition_get_buffer:
+.. _InterfaceRtemsPartitionGetBuffer:
 
-PARTITION_GET_BUFFER - Get buffer from a partition
---------------------------------------------------
+rtems_partition_get_buffer()
+----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Tries to get a buffer from the partition.
 
-        rtems_status_code rtems_partition_get_buffer(
-            rtems_id   id,
-            void     **buffer
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - buffer obtained successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``buffer`` is NULL
-     * - ``RTEMS_INVALID_ID``
-       - invalid partition id
-     * - ``RTEMS_UNSATISFIED``
-       - all buffers are allocated
+    rtems_status_code rtems_partition_get_buffer( rtems_id id, void **buffer );
 
-DESCRIPTION:
-    This directive allows a buffer to be obtained from the partition specified
-    in id.  The address of the allocated buffer is returned in buffer.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``id``
+    This parameter is the partition identifier.
 
-    All buffers begin on a four byte boundary.
+``buffer``
+    This parameter is the pointer to a buffer pointer variable.  The pointer to
+    the allocated buffer will be stored in this variable, in case of a
+    successful operation.
 
-    A task cannot wait on a buffer to become available.
+.. rubric:: DESCRIPTION:
 
-    Getting a buffer from a global partition which does not reside on the local
-    node will generate a request telling the remote node to allocate a buffer
-    from the specified partition.
+This directive allows a buffer to be obtained from the partition specified in
+the ``id`` parameter.  The address of the allocated buffer is returned through
+the ``buffer`` parameter.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no partition with the specified identifier.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``buffer`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    There was no free buffer available to allocate and return.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+The buffer start alignment is determined by the memory area and buffer size
+used to create the partition.
+
+A task cannot wait on a buffer to become available.
+
+Getting a buffer from a global partition which does not reside on the local
+node will generate a request telling the remote node to allocate a buffer from
+the partition.
+
+.. Generated from spec:/rtems/part/if/return-buffer
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: return buffer to partitition
-.. index:: rtems_partition_return_buffer
+.. index:: rtems_partition_return_buffer()
+.. index:: return buffer to partition
 
-.. _rtems_partition_return_buffer:
+.. _InterfaceRtemsPartitionReturnBuffer:
 
-PARTITION_RETURN_BUFFER - Return buffer to a partition
-------------------------------------------------------
+rtems_partition_return_buffer()
+-------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Returns the buffer to the partition.
 
-        rtems_status_code rtems_partition_return_buffer(
-            rtems_id  id,
-            void     *buffer
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - buffer returned successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``buffer`` is NULL
-     * - ``RTEMS_INVALID_ID``
-       - invalid partition id
-     * - ``RTEMS_INVALID_ADDRESS``
-       - buffer address not in partition
+    rtems_status_code rtems_partition_return_buffer( rtems_id id, void *buffer );
 
-DESCRIPTION:
-    This directive returns the buffer specified by buffer to the partition
-    specified by id.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``id``
+    This parameter is the partition identifier.
 
-    Returning a buffer to a global partition which does not reside on the local
-    node will generate a request telling the remote node to return the buffer
-    to the specified partition.
+``buffer``
+    This parameter is the pointer to the buffer to return.
 
-    Returning a buffer multiple times is an error.  It will corrupt the
-    internal state of the partition.
+.. rubric:: DESCRIPTION:
+
+This directive returns the buffer specified by ``buffer`` to the partition
+specified by ``id``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no partition with the specified identifier.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The buffer referenced by ``buffer`` was not in the partition.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+Returning a buffer to a global partition which does not reside on the local
+node will generate a request telling the remote node to return the buffer to
+the partition.
+
+Returning a buffer multiple times is an error.  It will corrupt the internal
+state of the partition.
