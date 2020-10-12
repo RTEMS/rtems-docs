@@ -15,11 +15,15 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-devdrv
+
 Device Driver Configuration
 ===========================
 
 This section describes configuration options related to the device drivers.
 Note that network device drivers are not covered by the following options.
+
+.. Generated from spec:/acfg/if/appl-does-not-need-clock-driver
 
 .. index:: CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 
@@ -57,6 +61,8 @@ NOTES:
 
     otherwise a compile time error in the configuration file will occur.
 
+.. Generated from spec:/acfg/if/appl-extra-drivers
+
 .. index:: CONFIGURE_APPLICATION_EXTRA_DRIVERS
 
 .. _CONFIGURE_APPLICATION_EXTRA_DRIVERS:
@@ -88,6 +94,8 @@ NOTES:
     See :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS` for an alternative
     placement of application device driver initializers.
 
+.. Generated from spec:/acfg/if/appl-needs-ata-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER:
@@ -114,6 +122,8 @@ NOTES:
 
     If this option is defined and the BSP does not have this device driver, then
     the user will get a link time error for an undefined symbol.
+
+.. Generated from spec:/acfg/if/appl-needs-clock-driver
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
@@ -149,6 +159,8 @@ NOTES:
     * :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
     otherwise a compile time error in the configuration file will occur.
+
+.. Generated from spec:/acfg/if/appl-needs-console-driver
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 
@@ -189,6 +201,8 @@ NOTES:
 
     configuration options are mutually exclusive.
 
+.. Generated from spec:/acfg/if/appl-needs-framebuffer-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER:
@@ -217,6 +231,8 @@ NOTES:
     If this option is defined and the BSP does not have this device driver, then
     the user will get a link time error for an undefined symbol.
 
+.. Generated from spec:/acfg/if/appl-needs-ide-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER:
@@ -244,6 +260,8 @@ NOTES:
     If this option is defined and the BSP does not have this device driver, then
     the user will get a link time error for an undefined symbol.
 
+.. Generated from spec:/acfg/if/appl-needs-null-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
 .. index:: /dev/null
 
@@ -268,6 +286,8 @@ DESCRIPTION:
 
 NOTES:
     This device driver is supported by all BSPs.
+
+.. Generated from spec:/acfg/if/appl-needs-rtc-driver
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
 
@@ -296,6 +316,8 @@ NOTES:
 
     If this is defined and the BSP does not have this device driver, then the
     user will get a link time error for an undefined symbol.
+
+.. Generated from spec:/acfg/if/appl-needs-simple-console-driver
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 
@@ -339,6 +361,8 @@ NOTES:
     * :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
     configuration options are mutually exclusive.
+
+.. Generated from spec:/acfg/if/appl-needs-simple-task-console-driver
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
 
@@ -392,6 +416,8 @@ NOTES:
 
     configuration options are mutually exclusive.
 
+.. Generated from spec:/acfg/if/appl-needs-stub-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER:
@@ -416,6 +442,8 @@ DESCRIPTION:
 NOTES:
     This device driver simply provides entry points that return successful and
     is primarily a test fixture. It is supported by all BSPs.
+
+.. Generated from spec:/acfg/if/appl-needs-timer-driver
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
 
@@ -452,6 +480,8 @@ NOTES:
 
     otherwise a compile time error will occur.
 
+.. Generated from spec:/acfg/if/appl-needs-watchdog-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 
 .. _CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER:
@@ -480,6 +510,8 @@ NOTES:
     If this is defined and the BSP does not have this device driver, then the
     user will get a link time error for an undefined symbol.
 
+.. Generated from spec:/acfg/if/appl-needs-zero-driver
+
 .. index:: CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
 .. index:: /dev/zero
 
@@ -504,6 +536,8 @@ DESCRIPTION:
 
 NOTES:
     This device driver is supported by all BSPs.
+
+.. Generated from spec:/acfg/if/appl-prerequisite-drivers
 
 .. index:: CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
 
@@ -537,6 +571,8 @@ NOTES:
     See :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
     of application device driver initializers.
 
+.. Generated from spec:/acfg/if/ata-driver-task-priority
+
 .. index:: CONFIGURE_ATA_DRIVER_TASK_PRIORITY
 
 .. _CONFIGURE_ATA_DRIVER_TASK_PRIORITY:
@@ -563,6 +599,8 @@ DESCRIPTION:
 NOTES:
     This configuration option is only evaluated if the configuration option
     :ref:`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER` is defined.
+
+.. Generated from spec:/acfg/if/max-drivers
 
 .. index:: CONFIGURE_MAXIMUM_DRIVERS
 

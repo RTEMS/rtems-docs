@@ -15,6 +15,8 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-filesystem
+
 Filesystem Configuration
 ========================
 
@@ -60,6 +62,8 @@ configuration options:
 
 * :ref:`CONFIGURE_IMFS_ENABLE_MKFIFO`
 
+.. Generated from spec:/acfg/if/appl-disable-filesystem
+
 .. index:: CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
 
 .. _CONFIGURE_APPLICATION_DISABLE_FILESYSTEM:
@@ -86,6 +90,8 @@ NOTES:
     Filesystems shall be initialized to support file descriptor based device
     drivers and basic input/output functions such as :c:func:`printf`.
     Filesystems can be disabled to reduce the memory footprint of an application.
+
+.. Generated from spec:/acfg/if/filesystem-all
 
 .. index:: CONFIGURE_FILESYSTEM_ALL
 
@@ -125,6 +131,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/filesystem-dosfs
+
 .. index:: CONFIGURE_FILESYSTEM_DOSFS
 
 .. _CONFIGURE_FILESYSTEM_DOSFS:
@@ -151,6 +159,8 @@ NOTES:
     This filesystem requires a Block Device Cache configuration, see
     :ref:`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`.
 
+.. Generated from spec:/acfg/if/filesystem-ftpfs
+
 .. index:: CONFIGURE_FILESYSTEM_FTPFS
 
 .. _CONFIGURE_FILESYSTEM_FTPFS:
@@ -175,6 +185,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/filesystem-imfs
 
 .. index:: CONFIGURE_FILESYSTEM_IMFS
 
@@ -203,6 +215,8 @@ NOTES:
     option is intended for test programs.  You do not need to define this
     configuration option for the base filesystem (also known as root filesystem).
 
+.. Generated from spec:/acfg/if/filesystem-jffs2
+
 .. index:: CONFIGURE_FILESYSTEM_JFFS2
 
 .. _CONFIGURE_FILESYSTEM_JFFS2:
@@ -228,6 +242,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/filesystem-nfs
+
 .. index:: CONFIGURE_FILESYSTEM_NFS
 
 .. _CONFIGURE_FILESYSTEM_NFS:
@@ -252,6 +268,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/filesystem-rfs
 
 .. index:: CONFIGURE_FILESYSTEM_RFS
 
@@ -279,6 +297,8 @@ NOTES:
     This filesystem requires a Block Device Cache configuration, see
     :ref:`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`.
 
+.. Generated from spec:/acfg/if/filesystem-tftpfs
+
 .. index:: CONFIGURE_FILESYSTEM_TFTPFS
 
 .. _CONFIGURE_FILESYSTEM_TFTPFS:
@@ -304,6 +324,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-chmod
+
 .. index:: CONFIGURE_IMFS_DISABLE_CHMOD
 
 .. _CONFIGURE_IMFS_DISABLE_CHMOD:
@@ -327,6 +349,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/imfs-disable-chown
 
 .. index:: CONFIGURE_IMFS_DISABLE_CHOWN
 
@@ -352,6 +376,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-link
+
 .. index:: CONFIGURE_IMFS_DISABLE_LINK
 
 .. _CONFIGURE_IMFS_DISABLE_LINK:
@@ -375,6 +401,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/imfs-disable-mknod
 
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD
 
@@ -400,6 +428,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-mknod-device
+
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE
 
 .. _CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE:
@@ -424,6 +454,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-mknod-file
+
 .. index:: CONFIGURE_IMFS_DISABLE_MKNOD_FILE
 
 .. _CONFIGURE_IMFS_DISABLE_MKNOD_FILE:
@@ -447,6 +479,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/imfs-disable-mount
 
 .. index:: CONFIGURE_IMFS_DISABLE_MOUNT
 
@@ -473,6 +507,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-readdir
+
 .. index:: CONFIGURE_IMFS_DISABLE_READDIR
 
 .. _CONFIGURE_IMFS_DISABLE_READDIR:
@@ -498,6 +534,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-readlink
+
 .. index:: CONFIGURE_IMFS_DISABLE_READLINK
 
 .. _CONFIGURE_IMFS_DISABLE_READLINK:
@@ -521,6 +559,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/imfs-disable-rename
 
 .. index:: CONFIGURE_IMFS_DISABLE_RENAME
 
@@ -546,6 +586,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-rmnod
+
 .. index:: CONFIGURE_IMFS_DISABLE_RMNOD
 
 .. _CONFIGURE_IMFS_DISABLE_RMNOD:
@@ -570,6 +612,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-symlink
+
 .. index:: CONFIGURE_IMFS_DISABLE_SYMLINK
 
 .. _CONFIGURE_IMFS_DISABLE_SYMLINK:
@@ -593,6 +637,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/imfs-disable-unmount
 
 .. index:: CONFIGURE_IMFS_DISABLE_UNMOUNT
 
@@ -619,6 +665,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-disable-utime
+
 .. index:: CONFIGURE_IMFS_DISABLE_UTIME
 
 .. _CONFIGURE_IMFS_DISABLE_UTIME:
@@ -643,6 +691,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/imfs-enable-mkfifo
+
 .. index:: CONFIGURE_IMFS_ENABLE_MKFIFO
 
 .. _CONFIGURE_IMFS_ENABLE_MKFIFO:
@@ -666,6 +716,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/imfs-memfile-bytes-per-block
 
 .. index:: CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
 
@@ -717,6 +769,8 @@ NOTES:
 
     * when the block size is 512 bytes, the maximum file size is 1,082,195,456
       bytes.
+
+.. Generated from spec:/acfg/if/use-devfs-as-base-filesystem
 
 .. index:: CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 
@@ -773,6 +827,8 @@ NOTES:
     This configuration of the IMFS is basically a device-only filesystem.  It is
     comparable in functionality to the pseudo-filesystem name space provided
     before RTEMS release 4.5.0.
+
+.. Generated from spec:/acfg/if/use-miniimfs-as-base-filesystem
 
 .. index:: CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
 

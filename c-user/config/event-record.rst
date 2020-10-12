@@ -14,10 +14,14 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-eventrecord
+
 Event Recording Configuration
 =============================
 
 This section describes configuration options related to the event recording.
+
+.. Generated from spec:/acfg/if/record-extensions-enabled
 
 .. index:: CONFIGURE_RECORD_EXTENSIONS_ENABLED
 
@@ -48,6 +52,8 @@ DESCRIPTION:
 NOTES:
     The record extensions capture thread create, start, restart, delete, switch,
     begin, exitted and terminate events.
+
+.. Generated from spec:/acfg/if/record-fatal-dump-base64
 
 .. index:: CONFIGURE_RECORD_FATAL_DUMP_BASE64
 
@@ -81,6 +87,8 @@ DESCRIPTION:
 NOTES:
     This extension can be used to produce crash dumps.
 
+.. Generated from spec:/acfg/if/record-fatal-dump-base64-zlib
+
 .. index:: CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB
 
 .. _CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB:
@@ -111,6 +119,8 @@ DESCRIPTION:
 NOTES:
     The zlib compression needs about 512KiB of RAM.  This extension can be used
     to produce crash dumps.
+
+.. Generated from spec:/acfg/if/record-per-processor-items
 
 .. index:: CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 

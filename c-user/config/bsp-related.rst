@@ -15,6 +15,8 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-bsp
+
 BSP Related Configuration Options
 =================================
 
@@ -22,6 +24,8 @@ This section describes configuration options related to the BSP.  Some
 configuration options may have a BSP-specific setting which is defined by
 ``<bsp.h>``.  The BSP-specific settings can be disabled by the
 :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option.
+
+.. Generated from spec:/acfg/if/bsp-idle-task-body
 
 .. index:: BSP_IDLE_TASK_BODY
 
@@ -57,6 +61,8 @@ NOTES:
     As it has knowledge of the specific CPU model, system controller logic, and
     peripheral buses, a BSP-specific IDLE task may be capable of turning
     components off to save power during extended periods of no task activity.
+
+.. Generated from spec:/acfg/if/bsp-idle-task-stack-size
 
 .. index:: BSP_IDLE_TASK_STACK_SIZE
 
@@ -98,6 +104,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bsp-initial-extension
+
 .. index:: BSP_INITIAL_EXTENSION
 
 .. _BSP_INITIAL_EXTENSION:
@@ -131,6 +139,8 @@ DESCRIPTION:
 NOTES:
     The value of this configuration option is placed after the entries of all
     other initial user extensions.
+
+.. Generated from spec:/acfg/if/bsp-interrupt-stack-size
 
 .. index:: BSP_INTERRUPT_STACK_SIZE
 
@@ -175,6 +185,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bsp-prerequisite-drivers
+
 .. index:: CONFIGURE_BSP_PREREQUISITE_DRIVERS
 
 .. _CONFIGURE_BSP_PREREQUISITE_DRIVERS:
@@ -209,6 +221,8 @@ NOTES:
     The value of this configuration option is placed before the entries of all
     other initial user extensions (including
     :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`).
+
+.. Generated from spec:/acfg/if/disable-bsp-settings
 
 .. index:: CONFIGURE_DISABLE_BSP_SETTINGS
 
@@ -245,6 +259,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/malloc-bsp-supports-sbrk
 
 .. index:: CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
 

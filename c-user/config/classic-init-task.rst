@@ -15,11 +15,15 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-classicinit
+
 Classic API Initialization Task Configuration
 =============================================
 
 This section describes configuration options related to the Classic API
 initialization task.
+
+.. Generated from spec:/acfg/if/init-task-arguments
 
 .. index:: CONFIGURE_INIT_TASK_ARGUMENTS
 
@@ -48,6 +52,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/init-task-attributes
+
 .. index:: CONFIGURE_INIT_TASK_ATTRIBUTES
 
 .. _CONFIGURE_INIT_TASK_ATTRIBUTES:
@@ -73,6 +79,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/init-task-entrypoint
 
 .. index:: CONFIGURE_INIT_TASK_ENTRY_POINT
 
@@ -102,6 +110,8 @@ NOTES:
     The application shall provide the function referenced by this configuration
     option.
 
+.. Generated from spec:/acfg/if/init-task-initial-modes
+
 .. index:: CONFIGURE_INIT_TASK_INITIAL_MODES
 
 .. _CONFIGURE_INIT_TASK_INITIAL_MODES:
@@ -128,6 +138,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/init-task-name
 
 .. index:: CONFIGURE_INIT_TASK_NAME
 
@@ -156,6 +168,8 @@ DESCRIPTION:
 NOTES:
     Use :c:func:`rtems_build_name` to define the task name.
 
+.. Generated from spec:/acfg/if/init-task-priority
+
 .. index:: CONFIGURE_INIT_TASK_PRIORITY
 
 .. _CONFIGURE_INIT_TASK_PRIORITY:
@@ -182,6 +196,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/init-task-stack-size
 
 .. index:: CONFIGURE_INIT_TASK_STACK_SIZE
 
@@ -215,6 +231,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/rtems-init-tasks-table
 
 .. index:: CONFIGURE_RTEMS_INIT_TASKS_TABLE
 

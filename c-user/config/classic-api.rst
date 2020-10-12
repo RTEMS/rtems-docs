@@ -15,10 +15,14 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-classic
+
 Classic API Configuration
 =========================
 
 This section describes configuration options related to the Classic API.
+
+.. Generated from spec:/acfg/if/max-barriers
 
 .. index:: CONFIGURE_MAXIMUM_BARRIERS
 
@@ -60,6 +64,8 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
+
+.. Generated from spec:/acfg/if/max-message-queues
 
 .. index:: CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 
@@ -104,6 +110,8 @@ NOTES:
     store the messages of each message queue, see
     :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
+.. Generated from spec:/acfg/if/max-partitions
+
 .. index:: CONFIGURE_MAXIMUM_PARTITIONS
 
 .. _CONFIGURE_MAXIMUM_PARTITIONS:
@@ -144,6 +152,8 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
+
+.. Generated from spec:/acfg/if/max-periods
 
 .. index:: CONFIGURE_MAXIMUM_PERIODS
 
@@ -186,6 +196,8 @@ NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
 
+.. Generated from spec:/acfg/if/max-ports
+
 .. index:: CONFIGURE_MAXIMUM_PORTS
 
 .. _CONFIGURE_MAXIMUM_PORTS:
@@ -227,6 +239,8 @@ NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
 
+.. Generated from spec:/acfg/if/max-regions
+
 .. index:: CONFIGURE_MAXIMUM_REGIONS
 
 .. _CONFIGURE_MAXIMUM_REGIONS:
@@ -267,6 +281,8 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
+
+.. Generated from spec:/acfg/if/max-semaphores
 
 .. index:: CONFIGURE_MAXIMUM_SEMAPHORES
 
@@ -312,6 +328,8 @@ NOTES:
     In SMP configurations, the size of a Semaphore Control Block depends on the
     scheduler count (see :ref:`ConfigurationSchedulerTable`).  The semaphores
     using the :ref:`MrsP` need a ceiling priority per scheduler.
+
+.. Generated from spec:/acfg/if/max-tasks
 
 .. index:: CONFIGURE_MAXIMUM_TASKS
 
@@ -371,6 +389,8 @@ NOTES:
     the addition of a new configuration parameter to specify the number of
     tasks which enable floating point support.
 
+.. Generated from spec:/acfg/if/max-thread-local-storage-size
+
 .. index:: CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
 
 .. _CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE:
@@ -415,6 +435,8 @@ NOTES:
     the RTEMS Tools can be used to obtain the thread-local storage size and
     alignment of an application executable.
 
+.. Generated from spec:/acfg/if/max-timers
+
 .. index:: CONFIGURE_MAXIMUM_TIMERS
 
 .. _CONFIGURE_MAXIMUM_TIMERS:
@@ -456,6 +478,8 @@ NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
 
+.. Generated from spec:/acfg/if/max-user-extensions
+
 .. index:: CONFIGURE_MAXIMUM_USER_EXTENSIONS
 
 .. _CONFIGURE_MAXIMUM_USER_EXTENSIONS:
@@ -490,6 +514,8 @@ DESCRIPTION:
 
 NOTES:
     This object class cannot be configured in unlimited allocation mode.
+
+.. Generated from spec:/acfg/if/min-tasks-with-user-provided-storage
 
 .. index:: CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE
 

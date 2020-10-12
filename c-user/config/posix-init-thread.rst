@@ -15,11 +15,15 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-posixinit
+
 POSIX Initialization Thread Configuration
 =========================================
 
 This section describes configuration options related to the POSIX
 initialization thread.
+
+.. Generated from spec:/acfg/if/posix-init-thread-entry-point
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 
@@ -48,6 +52,8 @@ DESCRIPTION:
 NOTES:
     The application shall provide the function referenced by this configuration
     option.
+
+.. Generated from spec:/acfg/if/posix-init-thread-stack-size
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 
@@ -81,6 +87,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/posix-init-thread-table
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_TABLE
 

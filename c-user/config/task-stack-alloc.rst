@@ -15,6 +15,8 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-stackalloc
+
 Task Stack Allocator Configuration
 ==================================
 
@@ -23,6 +25,8 @@ allocator.  RTEMS allows the application or BSP to define its own allocation
 and deallocation methods for task stacks. This can be used to place task stacks
 in special areas of memory or to utilize a Memory Management Unit so that stack
 overflows are detected in hardware.
+
+.. Generated from spec:/acfg/if/task-stack-allocator
 
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR
 .. index:: task stack allocator
@@ -59,6 +63,8 @@ NOTES:
 
     * :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
+.. Generated from spec:/acfg/if/task-stack-no-workspace
+
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
 
 .. _CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE:
@@ -83,6 +89,8 @@ DESCRIPTION:
 NOTES:
     This configuration option may be used if a custom task stack allocator is
     configured, see :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`.
+
+.. Generated from spec:/acfg/if/task-stack-allocator-init
 
 .. index:: CONFIGURE_TASK_STACK_ALLOCATOR_INIT
 
@@ -118,6 +126,8 @@ NOTES:
 
     * :ref:`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
+.. Generated from spec:/acfg/if/task-stack-deallocator
+
 .. index:: CONFIGURE_TASK_STACK_DEALLOCATOR
 .. index:: task stack deallocator
 
@@ -152,6 +162,8 @@ NOTES:
     * :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`
 
     * ``CONFIGURE_TASK_STACK_DEALLOCATOR``
+
+.. Generated from spec:/acfg/if/task-stack-from-alloc
 
 .. index:: CONFIGURE_TASK_STACK_FROM_ALLOCATOR
 .. index:: task stack allocator

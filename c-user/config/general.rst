@@ -15,10 +15,14 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-general
+
 General System Configuration
 ============================
 
 This section describes general system configuration options.
+
+.. Generated from spec:/acfg/if/dirty-memory
 
 .. index:: CONFIGURE_DIRTY_MEMORY
 
@@ -51,6 +55,8 @@ NOTES:
 
     See also :ref:`CONFIGURE_MALLOC_DIRTY`.
 
+.. Generated from spec:/acfg/if/disable-newlib-reentrancy
+
 .. index:: CONFIGURE_DISABLE_NEWLIB_REENTRANCY
 
 .. _CONFIGURE_DISABLE_NEWLIB_REENTRANCY:
@@ -77,6 +83,8 @@ NOTES:
     option with care, since it can lead to race conditions and undefined system
     behaviour.  For example, :c:macro:`errno` is no longer a thread-local
     variable if this option is enabled.
+
+.. Generated from spec:/acfg/if/executive-ram-size
 
 .. index:: CONFIGURE_EXECUTIVE_RAM_SIZE
 
@@ -116,6 +124,8 @@ NOTES:
     This is an advanced configuration option.  Use it only if you know exactly
     what you are doing.
 
+.. Generated from spec:/acfg/if/extra-task-stacks
+
 .. index:: CONFIGURE_EXTRA_TASK_STACKS
 .. index:: memory for task tasks
 
@@ -153,6 +163,8 @@ NOTES:
     stacks larger then the minimum, then that memory is **not** accounted for by
     ``<rtems/confdefs.h>``.
 
+.. Generated from spec:/acfg/if/initial-extensions
+
 .. index:: CONFIGURE_INITIAL_EXTENSIONS
 
 .. _CONFIGURE_INITIAL_EXTENSIONS:
@@ -181,6 +193,8 @@ NOTES:
     The value of this configuration option is placed before the entries of
     :ref:`BSP_INITIAL_EXTENSION` and after the entries of all other initial
     user extensions.
+
+.. Generated from spec:/acfg/if/interrupt-stack-size
 
 .. index:: CONFIGURE_INTERRUPT_STACK_SIZE
 .. index:: interrupt stack size
@@ -236,6 +250,8 @@ NOTES:
     :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of
     :c:macro:`CPU_STACK_MINIMUM_SIZE`.
 
+.. Generated from spec:/acfg/if/malloc-dirty
+
 .. index:: CONFIGURE_MALLOC_DIRTY
 
 .. _CONFIGURE_MALLOC_DIRTY:
@@ -263,6 +279,8 @@ NOTES:
     memory allocation from the C Program Heap in contrast to
     :ref:`CONFIGURE_DIRTY_MEMORY` which dirties the memory only once during the
     system initialization.
+
+.. Generated from spec:/acfg/if/max-file-descriptors
 
 .. index:: CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
 .. index:: maximum file descriptors
@@ -301,6 +319,8 @@ NOTES:
     The default value of three file descriptors allows RTEMS to support standard
     input, output, and error I/O streams on :file:`/dev/console`.
 
+.. Generated from spec:/acfg/if/max-processors
+
 .. index:: CONFIGURE_MAXIMUM_PROCESSORS
 
 .. _CONFIGURE_MAXIMUM_PROCESSORS:
@@ -335,6 +355,8 @@ NOTES:
     This configuration option is only evaluated in SMP configurations (e.g. RTEMS
     was built with the ``--enable-smp`` build configuration option).  In all
     other configurations it has no effect.
+
+.. Generated from spec:/acfg/if/max-thread-name-size
 
 .. index:: CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 .. index:: maximum thread name size
@@ -378,6 +400,8 @@ NOTES:
 
     This configuration option is available since RTEMS 5.1.
 
+.. Generated from spec:/acfg/if/memory-overhead
+
 .. index:: CONFIGURE_MEMORY_OVERHEAD
 
 .. _CONFIGURE_MEMORY_OVERHEAD:
@@ -419,6 +443,8 @@ NOTES:
     memory allocation will be too low when an application does not account for
     all message queue buffers or task stacks, see
     :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
+
+.. Generated from spec:/acfg/if/message-buffer-memory
 
 .. index:: CONFIGURE_MESSAGE_BUFFER_MEMORY
 .. index:: configure message queue buffer memory
@@ -504,6 +530,8 @@ NOTES:
             ) \
           )
 
+.. Generated from spec:/acfg/if/microseconds-per-tick
+
 .. index:: CONFIGURE_MICROSECONDS_PER_TICK
 .. index:: clock tick quantum
 .. index:: tick quantum
@@ -557,6 +585,8 @@ NOTES:
 
     There may be Clock Driver specific limits on the resolution or maximum value
     of a clock tick quantum.
+
+.. Generated from spec:/acfg/if/min-task-stack-size
 
 .. index:: CONFIGURE_MINIMUM_TASK_STACK_SIZE
 .. index:: minimum task stack size
@@ -612,6 +642,8 @@ NOTES:
     In releases before RTEMS 5.1 the ``CONFIGURE_MINIMUM_TASK_STACK_SIZE`` was
     used to define the default value of :ref:`CONFIGURE_INTERRUPT_STACK_SIZE`.
 
+.. Generated from spec:/acfg/if/stack-checker-enabled
+
 .. index:: CONFIGURE_STACK_CHECKER_ENABLED
 
 .. _CONFIGURE_STACK_CHECKER_ENABLED:
@@ -639,6 +671,8 @@ NOTES:
     switch.
 
     In 4.9 and older, this configuration option was named ``STACK_CHECKER_ON``.
+
+.. Generated from spec:/acfg/if/ticks-per-time-slice
 
 .. index:: CONFIGURE_TICKS_PER_TIMESLICE
 .. index:: ticks per timeslice
@@ -668,6 +702,8 @@ DESCRIPTION:
 NOTES:
     This configuration option has no impact if the Clock Driver is not
     configured, see :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
+
+.. Generated from spec:/acfg/if/unified-work-areas
 
 .. index:: CONFIGURE_UNIFIED_WORK_AREAS
 .. index:: unified work areas
@@ -705,6 +741,8 @@ NOTES:
     until you run out of all available memory rather then just until you run out
     of RTEMS Workspace.
 
+.. Generated from spec:/acfg/if/unlimited-allocation-size
+
 .. index:: CONFIGURE_UNLIMITED_ALLOCATION_SIZE
 
 .. _CONFIGURE_UNLIMITED_ALLOCATION_SIZE:
@@ -738,6 +776,8 @@ NOTES:
     The object maximum of each class can be configured also individually using
     the :c:func:`rtems_resource_unlimited` macro.
 
+.. Generated from spec:/acfg/if/unlimited-objects
+
 .. index:: CONFIGURE_UNLIMITED_OBJECTS
 
 .. _CONFIGURE_UNLIMITED_OBJECTS:
@@ -769,6 +809,8 @@ NOTES:
 
     See also :ref:`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`.
 
+.. Generated from spec:/acfg/if/verbose-system-init
+
 .. index:: CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
 
 .. _CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION:
@@ -793,6 +835,8 @@ DESCRIPTION:
 NOTES:
     You may use this feature to debug system initialization issues.  The
     :c:func:`printk` function is used to print the information.
+
+.. Generated from spec:/acfg/if/zero-workspace-automatically
 
 .. index:: CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 .. index:: clear C Program Heap

@@ -15,11 +15,15 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-bdbuf
+
 Block Device Cache Configuration
 ================================
 
 This section describes configuration options related to the Block Device Cache
 (bdbuf).
+
+.. Generated from spec:/acfg/if/appl-needs-libblock
 
 .. index:: CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
 
@@ -46,6 +50,8 @@ NOTES:
     Each option of the Block Device Cache (bdbuf) configuration can be explicitly
     set by the user with the configuration options below.  The Block Device Cache
     is used for example by the RFS and DOSFS filesystems.
+
+.. Generated from spec:/acfg/if/bdbuf-buffer-max-size
 
 .. index:: CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 
@@ -78,6 +84,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bdbuf-buffer-min-size
+
 .. index:: CONFIGURE_BDBUF_BUFFER_MIN_SIZE
 
 .. _CONFIGURE_BDBUF_BUFFER_MIN_SIZE:
@@ -105,6 +113,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bdbuf-cache-memory-size
+
 .. index:: CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
 
 .. _CONFIGURE_BDBUF_CACHE_MEMORY_SIZE:
@@ -131,6 +141,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/bdbuf-max-read-ahead-blocks
 
 .. index:: CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS
 
@@ -161,6 +173,8 @@ NOTES:
     will issue speculative read transfers if a sequential access pattern is
     detected.  This can improve the performance on some systems.
 
+.. Generated from spec:/acfg/if/bdbuf-max-write-blocks
+
 .. index:: CONFIGURE_BDBUF_MAX_WRITE_BLOCKS
 
 .. _CONFIGURE_BDBUF_MAX_WRITE_BLOCKS:
@@ -188,6 +202,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bdbuf-read-ahead-task-priority
+
 .. index:: CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY
 
 .. _CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY:
@@ -213,6 +229,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/bdbuf-task-stack-size
 
 .. index:: CONFIGURE_BDBUF_TASK_STACK_SIZE
 
@@ -251,6 +269,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bdbuf-swapout-block-hold
+
 .. index:: CONFIGURE_SWAPOUT_BLOCK_HOLD
 
 .. _CONFIGURE_SWAPOUT_BLOCK_HOLD:
@@ -277,6 +297,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/bdbuf-swapout-swap-period
 
 .. index:: CONFIGURE_SWAPOUT_SWAP_PERIOD
 
@@ -305,6 +327,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bdbuf-swapout-task-priority
+
 .. index:: CONFIGURE_SWAPOUT_TASK_PRIORITY
 
 .. _CONFIGURE_SWAPOUT_TASK_PRIORITY:
@@ -331,6 +355,8 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/bdbuf-swapout-worker-tasks
+
 .. index:: CONFIGURE_SWAPOUT_WORKER_TASKS
 
 .. _CONFIGURE_SWAPOUT_WORKER_TASKS:
@@ -356,6 +382,8 @@ DESCRIPTION:
 
 NOTES:
     None.
+
+.. Generated from spec:/acfg/if/bdbuf-swapout-worker-taskp-riority
 
 .. index:: CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY
 

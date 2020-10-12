@@ -15,10 +15,14 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-idle
+
 Idle Task Configuration
 =======================
 
 This section describes configuration options related to the idle tasks.
+
+.. Generated from spec:/acfg/if/idle-task-body
 
 .. index:: CONFIGURE_IDLE_TASK_BODY
 
@@ -51,6 +55,8 @@ NOTES:
 
     IDLE threads can be used to initialize the application, see configuration
     option :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`.
+
+.. Generated from spec:/acfg/if/idle-task-init-appl
 
 .. index:: CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 
@@ -97,6 +103,8 @@ NOTES:
     * ``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
 
     otherwise a compile time error in the configuration file will occur.
+
+.. Generated from spec:/acfg/if/idle-task-stack-size
 
 .. index:: CONFIGURE_IDLE_TASK_STACK_SIZE
 

@@ -15,6 +15,8 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-mpci
+
 Multiprocessing Configuration
 =============================
 
@@ -24,6 +26,8 @@ build configuration option.  Additionally, this class of configuration options
 are only applicable if the configuration option :ref:`CONFIGURE_MP_APPLICATION`
 is defined.  The multiprocessing (MPCI) support must not be confused with the
 SMP support.
+
+.. Generated from spec:/acfg/if/mp-extra-server-stack
 
 .. index:: CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 
@@ -63,6 +67,8 @@ NOTES:
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
 
+.. Generated from spec:/acfg/if/mp-appl
+
 .. index:: CONFIGURE_MP_APPLICATION
 
 .. _CONFIGURE_MP_APPLICATION:
@@ -90,6 +96,8 @@ NOTES:
     is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
     build configuration option).  Otherwise a compile time error in the
     configuration file will occur.
+
+.. Generated from spec:/acfg/if/mp-max-global-objects
 
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 
@@ -122,6 +130,8 @@ NOTES:
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
 
+.. Generated from spec:/acfg/if/mp-max-nodes
+
 .. index:: CONFIGURE_MP_MAXIMUM_NODES
 
 .. _CONFIGURE_MP_MAXIMUM_NODES:
@@ -149,6 +159,8 @@ DESCRIPTION:
 NOTES:
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. Generated from spec:/acfg/if/mp-max-proxies
 
 .. index:: CONFIGURE_MP_MAXIMUM_PROXIES
 
@@ -184,6 +196,8 @@ NOTES:
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
 
+.. Generated from spec:/acfg/if/mp-mpci-table-pointer
+
 .. index:: CONFIGURE_MP_MPCI_TABLE_POINTER
 
 .. _CONFIGURE_MP_MPCI_TABLE_POINTER:
@@ -215,6 +229,8 @@ NOTES:
 
     This configuration option is only evaluated if
     :ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. Generated from spec:/acfg/if/mp-node-number
 
 .. index:: CONFIGURE_MP_NODE_NUMBER
 

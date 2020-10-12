@@ -15,6 +15,8 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-posix
+
 POSIX API Configuration
 =======================
 
@@ -22,6 +24,8 @@ This section describes configuration options related to the POSIX API.  Most
 POSIX API objects are available by default since RTEMS 5.1.  The queued signals
 and timers are only available if RTEMS was built with the ``--enable-posix``
 build configuration option.
+
+.. Generated from spec:/acfg/if/max-posix-keys
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
 
@@ -63,6 +67,8 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
+
+.. Generated from spec:/acfg/if/max-posix-key-value-pairs
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
 
@@ -111,6 +117,8 @@ NOTES:
     A key value pair is created by :c:func:`pthread_setspecific` if the value
     is not `NULL <https://en.cppreference.com/w/c/types/NULL>`_, otherwise it is deleted.
 
+.. Generated from spec:/acfg/if/max-posix-message-queues
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
 
 .. _CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES:
@@ -158,6 +166,8 @@ NOTES:
     store the messages of each message queue, see
     :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
+.. Generated from spec:/acfg/if/max-posix-queued-signals
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
 
 .. _CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS:
@@ -202,6 +212,8 @@ NOTES:
 
     Queued signals are only available if RTEMS was built with the
     ``--enable-posix`` build configuration option.
+
+.. Generated from spec:/acfg/if/max-posix-semaphores
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
 
@@ -253,6 +265,8 @@ NOTES:
     configuration option since the storage space for these semaphores is
     user-provided.
 
+.. Generated from spec:/acfg/if/max-posix-shms
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_SHMS
 
 .. _CONFIGURE_MAXIMUM_POSIX_SHMS:
@@ -297,6 +311,8 @@ DESCRIPTION:
 NOTES:
     This object class can be configured in unlimited allocation mode, see
     :ref:`ConfigUnlimitedObjects`.
+
+.. Generated from spec:/acfg/if/max-posix-threads
 
 .. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
 
@@ -348,6 +364,8 @@ NOTES:
 
     All POSIX threads have floating point enabled.
 
+.. Generated from spec:/acfg/if/max-posix-timers
+
 .. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
 
 .. _CONFIGURE_MAXIMUM_POSIX_TIMERS:
@@ -396,6 +414,8 @@ NOTES:
 
     Timers are only available if RTEMS was built with the
     ``--enable-posix`` build configuration option.
+
+.. Generated from spec:/acfg/if/min-posix-thread-stack-size
 
 .. index:: CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
 .. index:: minimum POSIX thread stack size

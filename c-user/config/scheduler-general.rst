@@ -16,6 +16,8 @@
 ..
 .. https://docs.rtems.org/branches/master/eng/req/howto.html
 
+.. Generated from spec:/acfg/if/group-schedgeneral
+
 General Scheduler Configuration
 ===============================
 
@@ -41,6 +43,8 @@ application.
 The pluggable scheduler interface also enables the user to provide their own
 scheduling algorithm.  If you choose to do this, you must define multiple
 configuration option.
+
+.. Generated from spec:/acfg/if/cbs-max-servers
 
 .. index:: CONFIGURE_CBS_MAXIMUM_SERVERS
 
@@ -77,6 +81,8 @@ DESCRIPTION:
 NOTES:
     This configuration option is only evaluated if the configuration option
     :ref:`CONFIGURE_SCHEDULER_CBS` is defined.
+
+.. Generated from spec:/acfg/if/max-priority
 
 .. index:: CONFIGURE_MAXIMUM_PRIORITY
 .. index:: maximum priority
@@ -136,6 +142,8 @@ NOTES:
     The default value is 255, because RTEMS shall support 256 priority levels to
     be compliant with various standards.  These priorities range from 0 to 255.
 
+.. Generated from spec:/acfg/if/scheduler-assignments
+
 .. index:: CONFIGURE_SCHEDULER_ASSIGNMENTS
 
 .. _CONFIGURE_SCHEDULER_ASSIGNMENTS:
@@ -177,6 +185,8 @@ NOTES:
     This is an advanced configuration option, see
     :ref:`ConfigurationSchedulersClustered`.
 
+.. Generated from spec:/acfg/if/scheduler-cbs
+
 .. index:: CONFIGURE_SCHEDULER_CBS
 
 .. _CONFIGURE_SCHEDULER_CBS:
@@ -206,6 +216,8 @@ NOTES:
     In case no explicit :ref:`ConfigurationSchedulersClustered`
     is present, then it is used as the scheduler for exactly one processor.
 
+.. Generated from spec:/acfg/if/scheduler-edf
+
 .. index:: CONFIGURE_SCHEDULER_EDF
 
 .. _CONFIGURE_SCHEDULER_EDF:
@@ -234,6 +246,8 @@ NOTES:
 
     In case no explicit :ref:`ConfigurationSchedulersClustered`
     is present, then it is used as the scheduler for exactly one processor.
+
+.. Generated from spec:/acfg/if/scheduler-edf-smp
 
 .. index:: CONFIGURE_SCHEDULER_EDF_SMP
 
@@ -270,6 +284,8 @@ NOTES:
     This scheduler algorithm is the default in SMP configurations if
     :ref:`CONFIGURE_MAXIMUM_PROCESSORS` is
     greater than one.
+
+.. Generated from spec:/acfg/if/scheduler-name
 
 .. index:: CONFIGURE_SCHEDULER_NAME
 
@@ -319,6 +335,8 @@ NOTES:
 
     Use :c:func:`rtems_build_name` to define the scheduler name.
 
+.. Generated from spec:/acfg/if/scheduler-priority
+
 .. index:: CONFIGURE_SCHEDULER_PRIORITY
 
 .. _CONFIGURE_SCHEDULER_PRIORITY:
@@ -355,6 +373,8 @@ NOTES:
     The memory allocated for this scheduler depends on the
     :ref:`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
 
+.. Generated from spec:/acfg/if/scheduler-priority-affinity-smp
+
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
 
 .. _CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP:
@@ -389,6 +409,8 @@ NOTES:
 
     The memory allocated for this scheduler depends on the
     :ref:`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
+
+.. Generated from spec:/acfg/if/scheduler-priority-smp
 
 .. index:: CONFIGURE_SCHEDULER_PRIORITY_SMP
 
@@ -425,6 +447,8 @@ NOTES:
     The memory allocated for this scheduler depends on the
     :ref:`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
 
+.. Generated from spec:/acfg/if/scheduler-simple
+
 .. index:: CONFIGURE_SCHEDULER_SIMPLE
 
 .. _CONFIGURE_SCHEDULER_SIMPLE:
@@ -453,6 +477,8 @@ NOTES:
 
     In case no explicit :ref:`ConfigurationSchedulersClustered`
     is present, then it is used as the scheduler for exactly one processor.
+
+.. Generated from spec:/acfg/if/scheduler-simple-smp
 
 .. index:: CONFIGURE_SCHEDULER_SIMPLE_SMP
 
@@ -487,6 +513,8 @@ NOTES:
     In case no explicit :ref:`ConfigurationSchedulersClustered`
     is present, then it is used as the scheduler for up to 32 processors.
 
+.. Generated from spec:/acfg/if/scheduler-strong-apa
+
 .. index:: CONFIGURE_SCHEDULER_STRONG_APA
 
 .. _CONFIGURE_SCHEDULER_STRONG_APA:
@@ -516,6 +544,8 @@ NOTES:
     support enabled.
 
     This scheduler algorithm is not correctly implemented.  Do not use it.
+
+.. Generated from spec:/acfg/if/scheduler-user
 
 .. index:: CONFIGURE_SCHEDULER_USER
 
