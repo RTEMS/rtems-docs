@@ -101,3 +101,64 @@ The function prototype is given below:
        uintptr_t           register_base,
        rtems_vector_number irq
     );
+
+Debugging
+---------
+
+RTEMS's ``libdebugger`` requires the ARM debug resources be enabled for it to
+work. The TI SOC used on the ``beagleboneblack`` board provides no access for
+software to the ARM defined debug enable signal ``DBGEN``. The signal is
+negated on power up locking software out of the ARM debug hardware. The signal
+can only be accessed via the JTAG interface.
+
+The ``beagleboneblack`` BSP provides a low level solution to enable the
+``DBGEN`` signal via the JTAG interface if the board has the following
+hardware modification installed. The modification requires the addition of two
+small wire links soldered to the pads of the JTAG connect on the underside of
+the board. A small length of fine wire, a fine tip soldering iron, some good
+quality solder and a pair of fine tip pliers are required. If you are new to
+soldering I suggest you find something to practice on first.
+
+The modification details and software driver can be found in the BSP in the
+file ``bsps/arm/beagle/start/bspdebug.c``. The driver is automatically run
+and the ``DBGEN`` is asserted via JTAG when ``libdebugger`` is started.
+
+The modification is:
+
+1. Locate P2 on the bottom side of the board. It is the JTAG connector
+   pads. If you look at the underside of the board with the SD card holder to
+   the right the pads are top center left. There are 20 pads in two
+   columns. The pads are numbered 1 at the top left then 2 top right, 3 is
+   second top on the left, 4 is second top to the right, then the pin number
+   increments as you move left then right down the pads.
+
+2. Connect P2 to P5.
+
+3. Connect P7 to P13.
+
+The resulting wiring is:
+
+.. code-block::
+
+    1 ===  /--=== 2
+    3 ===  |  === 4
+    5 ===--/  === 6
+    7 ===--\  === 8
+    9 ===  |  === 10
+   11 ===  |  === 12
+   13 ===--/  === 14
+   15 ===     === 16
+   17 ===     === 18
+   19 ===     === 20
+
+.. figure:: ../../images/user/bbb-p2-debug-mod.jpg
+  :width: 50%
+  :align: center
+  :alt: BeagleBone Black JTAG Hardware Modification
+
+  BeagleBone Black JTAG Hardware Modification
+
+If ``libdebugger`` fails to detect the registers open the ``bspdebug.c``
+source and change ``has_tdo`` to ``1``, save then rebuild and install the
+BSP. This will turn on an internal feeback to check the JTAG logic. Discard
+the edit once the hardware is working.
