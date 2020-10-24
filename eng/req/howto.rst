@@ -139,12 +139,12 @@ Generate Content after Changes
 
 Once you are done with the modifications of an existing item or the creation of
 a new item, the changes need to be propagated to generated source files.  This
-is done by the :file:`spec2doc.py` script.  Before you call this script, make
-sure the Git submodules are up-to-date.
+is done by the :file:`spec2modules.py` script.  Before you call this script,
+make sure the Git submodules are up-to-date.
 
 .. code-block:: none
 
-    $ ./spec2doc.py
+    $ ./spec2dmodules.py
 
 The script modifies or creates source files in :file:`modules/rtems` and
 :file:`modules/rtems-docs`.  Create patch sets for these changes just as if
@@ -193,10 +193,10 @@ Define acronyms with the phrase `This term is an acronym for *.` in the
       This term is an acronym for Magic Power.
     ...
 
-Once you are done with the glossary items, run the script :file:`spec2doc.py`
-to generate the derived documentation content.  Send patches for the generated
-documentation and the specification to the :r:list:`devel` and follow the
-normal patch review process.
+Once you are done with the glossary items, run the script
+:file:`spec2modules.py` to generate the derived documentation content.  Send
+patches for the generated documentation and the specification to the
+:r:list:`devel` and follow the normal patch review process.
 
 Interface Specification
 -----------------------
