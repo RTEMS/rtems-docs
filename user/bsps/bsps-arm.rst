@@ -23,6 +23,7 @@ arm (ARM)
 .. include:: arm/rtl22xx.rst
 .. include:: arm/smdk2410.rst
 .. include:: arm/stm32f4.rst
+.. include:: arm/stm32h7.rst
 .. include:: arm/tms570.rst
 .. include:: arm/xen.rst
 .. include:: arm/xilinx-zynq.rst
