@@ -16,5 +16,4 @@ TBD  - Write introduction, re-order, identify missing content
     coding-deprecating
     coding-doxygen
     coding-file-hdr
-    coding-gen-patch
     coding-naming
