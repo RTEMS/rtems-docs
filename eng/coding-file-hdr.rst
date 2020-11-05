@@ -72,6 +72,8 @@ Check the top-level :file:`COPYING` file of the repository.  If you are a new
 copyright holder, then add yourself to the top of the list.  If your last year
 of a substantial contribution changed, then please update your copyright line.
 
+.. _CCXXHeaderFileTemplate:
+
 C/C++ Header File Template
 --------------------------
 

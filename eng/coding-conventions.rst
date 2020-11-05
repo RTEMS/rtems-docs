@@ -251,6 +251,43 @@ Miscellaneous
 * If adding code to ''cpukit'' be sure the filename is unique since
   all files under that directory get merged into a single library.
 
+Header Files
+------------
+
+* Do not add top-level header files.  Place the header files in a directory,
+  for example ``#include <rtems/*>``, ``#include <bsp/*>``,
+  ``#include <dev/*>``, etc.
+
+* Use the extension :file:`.h` for C header files.
+
+* Use the extension :file:`.hpp` for C++ header files.
+
+* Use the file template for header files, see :ref:`CCXXHeaderFileTemplate`.
+
+* Use separate header files for the API and the implementation.
+
+* Use :file:`foobar.h` for the header file of the ``foobar`` module which
+  defines API components.
+
+* Use :file:`foobardata.h` for the header file of the ``foobar`` module which
+  defines interfaces used by the application configuration.
+
+* Use :file:`foobarimpl.h` for the header file of the ``foobar`` module which
+  defines interfaces, macros, and inline functions used by the implementation.
+
+* Do not place inline functions which are only used in one implementation
+  source file into the implementation header file.  Add these inline functions
+  directly to the corresponding source file.
+
+* Document all elements in header files with comments in Doxygen markup, see
+  :ref:`DoxygenGuidelines`.
+
+* Only place header files which should be directly included by the user with an
+  ``@file`` Doxygen directive into the API documentation group.  Place internal
+  API header files with an ``@file`` Doxygen command into the implementation
+  documentation group even if they define API elements.  The API documentation
+  group should only list public header files and no internal header files.
+
 Layering
 --------
 

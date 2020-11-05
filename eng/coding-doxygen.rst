@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2019 embedded brains GmbH
 
+.. _DoxygenGuidelines:
+
 Doxygen Guidelines
 ==================
 
