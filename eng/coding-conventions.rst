@@ -9,11 +9,11 @@
 Coding Conventions
 ******************
 
-The style of RTEMS is generally consistent in the core areas.
-This page attempts to capture generally accepted practices.
-When in doubt, consult the code around you or look in cpukit/rtems.
-See the sister page `Doxygen Recommendations <https://devel.rtems.org/wiki/Developer/Coding/Doxygen>`_.
-for examples that illustrate style rules and Doxygen usage.
+The style of RTEMS is generally consistent in the core areas.  This section
+attempts to capture generally accepted practices.  When in doubt, consult the
+code around you, look in the RTEMS sources in the directories
+:file:`cpukit/include/rtems/score` and :file:`cpukit/score`, or ask on the
+:r:list:`devel`.
 
 Source Documentation
 --------------------
