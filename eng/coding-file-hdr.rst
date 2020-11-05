@@ -3,6 +3,8 @@
 .. Copyright (C) 2018, 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 2018, 2020 Sebastian Huber
 
+.. _FileTemplates:
+
 File Templates
 ==============
 

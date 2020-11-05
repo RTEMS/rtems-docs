@@ -18,17 +18,24 @@ for examples that illustrate style rules and Doxygen usage.
 Source Documentation
 --------------------
 
-* Use Doxygen according to our `Doxygen Recommendations <https://devel.rtems.org/wiki/Developer/Coding/Doxygen>`_..
-* Start each file with a brief description followed by a license.
-  See `Boilerplate File Header <https://devel.rtems.org/wiki/Developer/Coding/Boilerplate_File_Header>`_..
+* Use Doxygen according to our :ref:`DoxygenGuidelines`.
+
+* Use the file templates, see :ref:`FileTemplates`.
+
 * Use ``/* */`` comments.
-* Use comments wisely within function bodies, to explain
-  or draw attention without being verbose.
-* Use English prose and strive for good grammar,
-  spelling, and punctuation.
-* Use TODO: with a comment to indicate code that needs improvement.
-  Make it clear what there is to do.
-* Use XXX or FIXME to indicate an error/bug/broken code.
+
+* Do not use ``//`` comments.
+
+* Use comments wisely within function bodies, to explain or draw attention
+  without being verbose.
+
+* Use English prose and strive for good grammar, spelling, and punctuation.
+
+* Use ``TODO`` with a comment to indicate code that needs improvement.  Make
+  it clear what there is to do.  Add a ticket and add a link to it.
+
+* Use ``XXX`` or ``FIXME`` to indicate an error/bug/broken code.  Add a ticket
+  and add a link to it.
 
 Licenses
 --------
