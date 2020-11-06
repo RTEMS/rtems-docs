@@ -156,6 +156,8 @@ Use the following guidelines and template for C and C++ header files (here
 
     #endif /* _FOO_BAR_BAZ_H */
 
+.. _CCXXASMSourceFileTemplate:
+
 C/C++/Assembler Source File Template
 ------------------------------------
 
