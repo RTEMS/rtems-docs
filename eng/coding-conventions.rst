@@ -131,32 +131,6 @@ Language and Compiler
 
 * Do not use the register keyword. It is deprecated since C++14.
 
-Formatting
------------
-
-* Use spaces instead of tabs.
-* Use two spaces for indentation, four spaces for
-  hanging indentation.
-* Adhere to a limit of `80 characters per line <https://devel.rtems.org/wiki/Developer/Coding/80_characters_per_line>`_..
-* Put function return types and names on one line if they fit.
-* Put function calls on one line if they fit.
-* No space between a function name or function-like macro and
-  the opening parens.
-* Put braces on the same line as and one space after the
-  conditional expression ends.
-* Put the opening brace of a function definition one line after
-  the closing parenthesis of its prototype.
-* Put a single space inside and outside of each parenthesis
-  of a conditional expression.
-  * Exception: never put a space before a closing semi-colon.
-* Put a single space before and after ternary operators.
-* Put a single space before and after binary operators.
-* Put no space between unary operators (e.g. *, &, !, ~, ++, --)
-  and their operands.
-* No spaces around dereferencing operators (-> and .).
-* Do not use more than one blank line in a row.
-* Do not use trailing whitespace at the end of a line.
-
 Readability
 ------------
 

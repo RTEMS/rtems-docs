@@ -12,7 +12,7 @@ TBD  - Write introduction, re-order, identify missing content
 .. toctree::
 
     coding-conventions
-    coding-80cols
+    coding-formatting
     coding-deprecating
     coding-doxygen
     coding-file-hdr
