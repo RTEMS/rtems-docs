@@ -1303,14 +1303,14 @@ DirtyCache
     You can disable this variant with the
     `T_MEASURE_RUNTIME_DISABLE_DIRTY_CACHE` request flag.
 
-Load
+Load/<WorkerCount>
     This variant tries to get close to worst-case conditions.  The cache is set
     up according to the `DirtyCache` variant.  In addition, other processors
     try to fully load the memory system.  The load is produced through writes
     to a memory area with twice the size of the outer-most data cache.  The
     load variant is performed multiple times with a different set of active
-    load worker threads (`M:L`).  The active workers range from one up to the
-    processor count.
+    load worker threads.  The <WorkerCount> value is the count of active
+    workers which ranges from one to the processor count.
 
     You can disable these variants with the
     `T_MEASURE_RUNTIME_DISABLE_MINOR_LOAD` and
@@ -1393,8 +1393,7 @@ reported.
     M:D:0.000033244
     M:E:Empty:D:1.887834875
     M:B:Empty
-    M:V:Load
-    M:L:1
+    M:V:Load/1
     M:N:1024
     M:MI:0.000000000
     M:Q1:0.000000002
@@ -1407,8 +1406,7 @@ reported.
     [... 22 more load variants ...]
     M:E:Empty:D:0.021252583
     M:B:Empty
-    M:V:Load
-    M:L:24
+    M:V:Load/24
     M:N:1024
     M:MI:0.000000001
     M:Q1:0.000000002
@@ -1907,8 +1905,6 @@ M
 
     **M:V:<Variant>**
 
-    **M:L:<Load>**
-
     **M:N:<SampleCount>**
 
     **M:S:<Count>:<Value>**
@@ -1937,11 +1933,8 @@ M
 
     <Variant>
         The execution variant which is one of **FullCache**, **HotCache**,
-        **DirtyCache**, or **Load**.
-
-    <Load>
-        The active load workers count which ranges from one to the processor
-        count.
+        **DirtyCache**, or **Load/<WorkerCount>**.  The <WorkerCount> is the
+        count of active workers which ranges from one to the processor count.
 
     <SampleCount>
         The sample count as defined by the runtime measurement configuration.
