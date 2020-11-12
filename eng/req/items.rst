@@ -109,7 +109,13 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeNonFunctionalRequirementItemType`
 
+      * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
+
+      * :ref:`SpecTypeRuntimePerformanceRequirementItemType`
+
   * :ref:`SpecTypeRequirementValidationItemType`
+
+  * :ref:`SpecTypeRuntimeMeasurementTestItemType`
 
   * :ref:`SpecTypeSpecificationItemType`
 
@@ -182,6 +188,8 @@ This type is refined by the following types:
 * :ref:`SpecTypeRequirementItemType`
 
 * :ref:`SpecTypeRequirementValidationItemType`
+
+* :ref:`SpecTypeRuntimeMeasurementTestItemType`
 
 * :ref:`SpecTypeSpecificationItemType`
 
@@ -1729,8 +1737,8 @@ test-cleanup
     action loop body after the test post-condition checks.
 
 test-context
-    The attribute value shall be a list. Each list element shall be an
-    :ref:`SpecTypeActionRequirementTestContextMember`.
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeTestContextMember`.
 
 test-context-support
     The attribute value shall be an optional string. If the value is present,
@@ -1758,12 +1766,10 @@ test-prepare
     the test action loop body before the test pre-condition preparations.
 
 test-setup
-    The attribute value shall be an
-    :ref:`SpecTypeActionRequirementTestFixtureMethod`.
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`.
 
 test-stop
-    The attribute value shall be an
-    :ref:`SpecTypeActionRequirementTestFixtureMethod`.
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`.
 
 test-support
     The attribute value shall be an optional string. If the value is present,
@@ -1775,8 +1781,7 @@ test-target
     generated test case source file.
 
 test-teardown
-    The attribute value shall be an
-    :ref:`SpecTypeActionRequirementTestFixtureMethod`.
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`.
 
 transition-map
     The attribute value shall be a list. Each list element shall be an
@@ -1943,8 +1948,212 @@ attributes specifies a non-functional requirement. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 non-functional-type
-    The attribute value shall be a :ref:`SpecTypeRequirementNonFunctionalType`.
-    It shall be the non-functional type of the requirement.
+    The attribute value shall be a :ref:`SpecTypeName`. It shall be the
+    non-functional type of the requirement.
+
+This type is refined by the following types:
+
+* :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
+
+* :ref:`SpecTypeRuntimePerformanceRequirementItemType`
+
+.. _SpecTypeGenericNonFunctionalRequirementItemType:
+
+Generic Non-Functional Requirement Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the following types:
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``build-configuration``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``constraint``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``design``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``documentation``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``interface``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``interface-requirement``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``maintainability``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``performance``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``portability``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``quality``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``reliability``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``resource``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is ``safety``
+
+Items of this type state a non-functional requirement with the non-functional
+type defined by the specification type refinement.
+
+.. _SpecTypeRuntimePerformanceRequirementItemType:
+
+Runtime Performance Requirement Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeNonFunctionalRequirementItemType` through
+the ``non-functional-type`` attribute if the value is ``performance-runtime``.
+The item shall have exactly one link with the
+:ref:`SpecTypeRuntimeMeasurementRequestLinkRole`.  A requirement text processor
+shall support a substitution of ${.:/limit-kind}:
+
+* For a :ref:`SpecTypeRuntimeMeasurementValueKind` of ``min-lower-bound`` or
+  ``min-upper-bound``, the substitution of ${.:/limit-kind} shall be
+  ``"minimum"``.
+
+* For a :ref:`SpecTypeRuntimeMeasurementValueKind` of ``mean-lower-bound`` or
+  ``mean-upper-bound``, the substitution of ${.:/limit-kind} shall be
+  ``"mean"``.
+
+* For a :ref:`SpecTypeRuntimeMeasurementValueKind` of ``max-lower-bound`` or
+  ``max-upper-bound``, the substitution of ${.:/limit-kind} shall be
+  ``"maximum"``.
+
+A requirement text processor shall support a substitution of
+${.:/limit-condition}:
+
+* For a :ref:`SpecTypeRuntimeMeasurementValueKind` of ``min-lower-bound``,
+  ``mean-lower-bound``, or ``max-lower-bound``, the substitution of
+  ${.:/limit-condition} shall be ``"greater than or equal to <value>"`` with
+  <value> being the value of the corresponding entry in the
+  :ref:`SpecTypeRuntimeMeasurementValueTable`.
+
+* For a :ref:`SpecTypeRuntimeMeasurementValueKind` of ``min-upper-bound``,
+  ``mean-upper-bound``, or ``max-upper-bound``, the substitution of
+  ${.:/limit-condition} shall be ``"less than or equal to <value>"`` with
+  <value> being the value of the corresponding entry in the
+  :ref:`SpecTypeRuntimeMeasurementValueTable`.
+
+A requirement text processor shall support a substitution of ${.:/environment}.
+The value of the substitution shall be ``"<environment> environment"`` with
+<environment> being the environment of the corresponding entry in the
+:ref:`SpecTypeRuntimeMeasurementEnvironmentTable`.
+
+This set of attributes specifies a runtime performance requirement. Along with
+the requirement, the validation test code to execute a measure runtime request
+is specified. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+limits
+    The attribute value shall be a :ref:`SpecTypeRuntimePerformanceLimitTable`.
+
+params
+    The attribute value shall be a
+    :ref:`SpecTypeRuntimePerformanceParameterSet`.
+
+test-body
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. It shall
+    provide the code of the measure runtime body handler.  In contrast to other
+    methods, this method is mandatory.
+
+test-cleanup
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. It may
+    provide the code to clean up the measure runtime request. This method is
+    called before the cleanup method of the corresponding
+    :ref:`SpecTypeRuntimeMeasurementTestItemType` item and after the request.
+
+test-prepare
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. It may
+    provide the code to prepare the measure runtime request.  This method is
+    called after the prepare method of the corresponding
+    :ref:`SpecTypeRuntimeMeasurementTestItemType` item and before the request.
+
+test-setup
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. It may
+    provide the code of the measure runtime setup handler.
+
+test-teardown
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. It may
+    provide the code of the measure runtime teardown handler.
+
+Please have a look at the following example:
+
+.. code-block:: yaml
+
+    SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+    copyrights:
+    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    enabled-by: true
+    links:
+    - role: runtime-measurement-request
+      uid: ../val/performance
+    limits:
+      sparc/leon3:
+        DirtyCache:
+          max-upper-bound: 0.000005
+          mean-upper-bound: 0.000005
+        FullCache:
+          max-upper-bound: 0.000005
+          mean-upper-bound: 0.000005
+        HotCache:
+          max-upper-bound: 0.000005
+          mean-upper-bound: 0.000005
+        Load/1:
+          max-upper-bound: 0.00001
+          mean-upper-bound: 0.00001
+        Load/2:
+          max-upper-bound: 0.00001
+          mean-upper-bound: 0.00001
+        Load/3:
+          max-upper-bound: 0.00001
+          mean-upper-bound: 0.00001
+        Load/4:
+          max-upper-bound: 0.00001
+          mean-upper-bound: 0.00001
+    params: {}
+    rationale: null
+    references: []
+    test-body:
+      brief: |
+        Get a buffer.
+      code: |
+        ctx->status = rtems_partition_get_buffer( ctx->part_many, &ctx->buffer );
+      description: null
+    test-cleanup: null
+    test-prepare: null
+    test-setup: null
+    test-teardown:
+      brief: |
+        Return the buffer.
+      code: |
+        rtems_status_code sc;
+
+        T_quiet_rsc_success( ctx->status );
+
+        sc = rtems_partition_return_buffer( ctx->part_many, ctx->buffer );
+        T_quiet_rsc_success( sc );
+
+        return tic == toc;
+      description: null
+    text: |
+      When a partition has exactly ${../val/performance:/params/buffer-count} free
+      buffers, the ${.:limit-kind} runtime of exactly
+      ${../val/performance:/params/sample-count} successful calls to
+      ${../if/get-buffer:/name} in the ${.:/environment} shall be
+      ${.:limit-condition}.
+    non-functional-type: performance-runtime
+    requirement-type: non-functional
+    type: requirement
 
 .. _SpecTypeRequirementValidationItemType:
 
@@ -1974,6 +2183,76 @@ text
 
     * *By review of design*: A rationale shall be provided to demonstrate how
       the requirement is satisfied implicitly by the software design.
+
+.. _SpecTypeRuntimeMeasurementTestItemType:
+
+Runtime Measurement Test Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``runtime-measurement-test``. This set of attributes
+specifies a runtime measurement test case. All explicit attributes shall be
+specified. The explicit attributes for this type are:
+
+params
+    The attribute value shall be a
+    :ref:`SpecTypeRuntimeMeasurementParameterSet`.
+
+test-brief
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case brief description.
+
+test-cleanup
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. If the
+    value is present, then it shall be the measure runtime request cleanup
+    method.  The method is called after each measure runtime request.
+
+test-context
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeTestContextMember`.
+
+test-context-support
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test context support code.  The context support code
+    is placed at file scope before the test context definition.
+
+test-description
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case description.
+
+test-includes
+    The attribute value shall be a list of strings. It shall be a list of
+    header files included via ``#include <...>``.
+
+test-local-includes
+    The attribute value shall be a list of strings. It shall be a list of
+    header files included via ``#include "..."``.
+
+test-prepare
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. If the
+    value is present, then it shall be the measure runtime request prepare
+    method.  The method is called before each measure runtime request.
+
+test-setup
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. If the
+    value is present, then it shall be the test case setup fixture method.
+
+test-stop
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. If the
+    value is present, then it shall be the test case stop fixture method.
+
+test-support
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the test case support code. The support code is placed at
+    file scope before the test case code.
+
+test-target
+    The attribute value shall be a string. It shall be the path to the
+    generated test case source file.
+
+test-teardown
+    The attribute value shall be a :ref:`SpecTypeTestSupportMethod`. If the
+    value is present, then it shall be the test case teardown fixture method.
 
 .. _SpecTypeSpecificationItemType:
 
@@ -2208,14 +2487,14 @@ test-epilogue
     then it shall be the test epilogue code. The epilogue code is placed in the
     test condition preparation or check before the state-specific code.  The
     code may use a local variable ``ctx`` which points to the test context, see
-    :ref:`SpecTypeActionRequirementTestContextMember`.
+    :ref:`SpecTypeTestContextMember`.
 
 test-prologue
     The attribute value shall be an optional string. If the value is present,
     then it shall be the test prologue code. The prologue code is placed in the
     test condition preparation or check after the state-specific code.  The
     code may use a local variable ``ctx`` which points to the test context, see
-    :ref:`SpecTypeActionRequirementTestContextMember`.
+    :ref:`SpecTypeTestContextMember`.
 
 This type is used by the following types:
 
@@ -2284,7 +2563,7 @@ test-code
     The attribute value shall be a string. It shall be the test code to prepare
     or check the state of the condition.  The code may use a local variable
     ``ctx`` which points to the test context, see
-    :ref:`SpecTypeActionRequirementTestContextMember`.
+    :ref:`SpecTypeTestContextMember`.
 
 text
     The attribute value shall be a :ref:`SpecTypeRequirementText`. It shall
@@ -2293,66 +2572,6 @@ text
 This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementCondition`
-
-.. _SpecTypeActionRequirementTestContextMember:
-
-Action Requirement Test Context Member
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A value of this type shall be of one of the following variants:
-
-* The value may be a set of attributes. This set of attributes defines an
-  action requirement test context member. All explicit attributes shall be
-  specified. The explicit attributes for this type are:
-
-  brief
-      The attribute value shall be an optional string. It shall be the test
-      context member brief description.
-
-  description
-      The attribute value shall be an optional string. It shall be the test
-      context member description.
-
-  member
-      The attribute value shall be a string. It shall be the test context
-      member definition.  It shall be a valid C structure member definition
-      without a trailing ``;``.
-
-* There may by be no value (null).
-
-This type is used by the following types:
-
-* :ref:`SpecTypeActionRequirementItemType`
-
-.. _SpecTypeActionRequirementTestFixtureMethod:
-
-Action Requirement Test Fixture Method
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A value of this type shall be of one of the following variants:
-
-* The value may be a set of attributes. This set of attributes defines an
-  action requirement test fixture method. All explicit attributes shall be
-  specified. The explicit attributes for this type are:
-
-  brief
-      The attribute value shall be an optional string. It shall be the test
-      fixture method brief description.
-
-  code
-      The attribute value shall be a string. It shall be the test fixture
-      method code.  The code may use a local variable ``ctx`` which points to
-      the test context, see :ref:`SpecTypeActionRequirementTestContextMember`.
-
-  description
-      The attribute value shall be an optional string. It shall be the test
-      fixture method description.
-
-* There may by be no value (null).
-
-This type is used by the following types:
-
-* :ref:`SpecTypeActionRequirementItemType`
 
 .. _SpecTypeActionRequirementTransition:
 
@@ -3978,6 +4197,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeRequirementValidationLinkRole`
 
+* :ref:`SpecTypeRuntimeMeasurementRequestLinkRole`
+
 * :ref:`SpecTypeSpecificationMemberLinkRole`
 
 * :ref:`SpecTypeSpecificationRefinementLinkRole`
@@ -4014,9 +4235,15 @@ This type is used by the following types:
 
 * :ref:`SpecTypeLink`
 
+* :ref:`SpecTypeNonFunctionalRequirementItemType`
+
 * :ref:`SpecTypeRequirementItemType`
 
 * :ref:`SpecTypeRootItemType`
+
+* :ref:`SpecTypeRuntimeMeasurementParameterSet`
+
+* :ref:`SpecTypeRuntimePerformanceParameterSet`
 
 * :ref:`SpecTypeSpecificationAttributeValue`
 
@@ -4050,44 +4277,6 @@ This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``placement-order``. This link role defines the placement order of
 items in a container item (for example an interface function in a header file
 or a documentation section).
-
-.. _SpecTypeRequirementNonFunctionalType:
-
-Requirement Non-Functional Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The value shall be a string. This type shall be used for non-functional
-requirement types. The value shall be an element of
-
-* "``build-configuration``",
-
-* "``constraint``",
-
-* "``design``",
-
-* "``documentation``",
-
-* "``interface``",
-
-* "``interface-requirement``",
-
-* "``maintainability``",
-
-* "``performance``",
-
-* "``portability``",
-
-* "``quality``",
-
-* "``reliability``",
-
-* "``resource``", and
-
-* "``safety``".
-
-This type is used by the following types:
-
-* :ref:`SpecTypeNonFunctionalRequirementItemType`
 
 .. _SpecTypeRequirementReference:
 
@@ -4313,6 +4502,140 @@ validation method (except validation by test). The value shall be an element of
 This type is used by the following types:
 
 * :ref:`SpecTypeRequirementValidationItemType`
+
+.. _SpecTypeRuntimeMeasurementEnvironment:
+
+Runtime Measurement Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The value shall be a string. It specifies the runtime measurement environment.
+The value
+
+* shall be an element of
+
+  * "``FullCache``",
+
+  * "``HotCache``", and
+
+  * "``DirtyCache``",
+
+* or, shall match with the regular expression "``^Load/[1-9][0-9]*$``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimeMeasurementEnvironmentTable`
+
+.. _SpecTypeRuntimeMeasurementEnvironmentTable:
+
+Runtime Measurement Environment Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes provides runtime performance limits for a set of runtime
+measurement environments. Generic attributes may be specified. Each generic
+attribute key shall be a :ref:`SpecTypeRuntimeMeasurementEnvironment`. Each
+generic attribute value shall be a :ref:`SpecTypeRuntimeMeasurementValueTable`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimePerformanceLimitTable`
+
+.. _SpecTypeRuntimeMeasurementParameterSet:
+
+Runtime Measurement Parameter Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines parameters of the runtime measurement test case.
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
+
+sample-count
+    The attribute value shall be an integer number. It shall be the sample
+    count of the runtime measurement context.
+
+In addition to the explicit attributes, generic attributes may be specified.
+Each generic attribute key shall be a :ref:`SpecTypeName`. The attribute value
+may have any type.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimeMeasurementTestItemType`
+
+.. _SpecTypeRuntimeMeasurementRequestLinkRole:
+
+Runtime Measurement Request Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``runtime-measurement-request``. It defines the runtime measurement
+request role of links.  The link target shall be a
+:ref:`SpecTypeRuntimeMeasurementTestItemType` item.
+
+.. _SpecTypeRuntimeMeasurementValueKind:
+
+Runtime Measurement Value Kind
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The value shall be a string. It specifies the kind of a runtime measurement
+value. The value shall be an element of
+
+* "``max-lower-bound``",
+
+* "``max-upper-bound``",
+
+* "``mean-lower-bound``",
+
+* "``mean-upper-bound``",
+
+* "``min-lower-bound``", and
+
+* "``min-upper-bound``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimeMeasurementValueTable`
+
+.. _SpecTypeRuntimeMeasurementValueTable:
+
+Runtime Measurement Value Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes provides a set of runtime measurement values each of a
+specified kind.  The unit of the values shall be one second. Generic attributes
+may be specified. Each generic attribute key shall be a
+:ref:`SpecTypeRuntimeMeasurementValueKind`. Each generic attribute value shall
+be a floating-point number.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimeMeasurementEnvironmentTable`
+
+.. _SpecTypeRuntimePerformanceLimitTable:
+
+Runtime Performance Limit Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes provides runtime performance limits for BSP variants
+specified by ``"<arch>/<bsp>"`` with <arch> being the architecture of the BSP
+and <bsp> being the base name of the BSP. Generic attributes may be specified.
+Each generic attribute key shall be a string. Each generic attribute value
+shall be a :ref:`SpecTypeRuntimeMeasurementEnvironmentTable`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimePerformanceRequirementItemType`
+
+.. _SpecTypeRuntimePerformanceParameterSet:
+
+Runtime Performance Parameter Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines parameters of the runtime performance
+requirement. Generic attributes may be specified. Each generic attribute key
+shall be a :ref:`SpecTypeName`. The attribute value may have any type.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRuntimePerformanceRequirementItemType`
 
 .. _SpecTypeSPDXLicenseIdentifier:
 
@@ -4933,6 +5256,38 @@ This type is used by the following types:
 
 * :ref:`SpecTypeTestCaseAction`
 
+.. _SpecTypeTestContextMember:
+
+Test Context Member
+^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes defines an
+  action requirement test context member. All explicit attributes shall be
+  specified. The explicit attributes for this type are:
+
+  brief
+      The attribute value shall be an optional string. It shall be the test
+      context member brief description.
+
+  description
+      The attribute value shall be an optional string. It shall be the test
+      context member description.
+
+  member
+      The attribute value shall be a string. It shall be the test context
+      member definition.  It shall be a valid C structure member definition
+      without a trailing ``;``.
+
+* There may by be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+* :ref:`SpecTypeRuntimeMeasurementTestItemType`
+
 .. _SpecTypeTestHeader:
 
 Test Header
@@ -4987,8 +5342,8 @@ Test Run Parameter
 This set of attributes specifies a parameter for the test run function. In case
 this parameter is used in an :ref:`SpecTypeActionRequirementItemType` item,
 then the parameter is also added as a member to the test context, see
-:ref:`SpecTypeActionRequirementTestContextMember`. All explicit attributes
-shall be specified. The explicit attributes for this type are:
+:ref:`SpecTypeTestContextMember`. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 description
     The attribute value shall be a string. It shall be the description of the
@@ -5008,6 +5363,40 @@ specifier
 This type is used by the following types:
 
 * :ref:`SpecTypeTestHeader`
+
+.. _SpecTypeTestSupportMethod:
+
+Test Support Method
+^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes defines an
+  action requirement test support method. All explicit attributes shall be
+  specified. The explicit attributes for this type are:
+
+  brief
+      The attribute value shall be an optional string. It shall be the test
+      support method brief description.
+
+  code
+      The attribute value shall be a string. It shall be the test support
+      method code.  The code may use a local variable ``ctx`` which points to
+      the test context, see :ref:`SpecTypeTestContextMember`.
+
+  description
+      The attribute value shall be an optional string. It shall be the test
+      support method description.
+
+* There may by be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementItemType`
+
+* :ref:`SpecTypeRuntimeMeasurementTestItemType`
+
+* :ref:`SpecTypeRuntimePerformanceRequirementItemType`
 
 .. _SpecTypeUID:
 
