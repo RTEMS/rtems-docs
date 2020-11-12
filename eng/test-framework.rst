@@ -1256,8 +1256,8 @@ T_MEASURE_RUNTIME_ALLOW_CLOCK_ISR
 T_MEASURE_RUNTIME_REPORT_SAMPLES
     Report all measurement samples.
 
-T_MEASURE_RUNTIME_DISABLE_VALID_CACHE
-    Disable the `ValidCache` execution environment variant.
+T_MEASURE_RUNTIME_DISABLE_FULL_CACHE
+    Disable the `FullCache` execution environment variant.
 
 T_MEASURE_RUNTIME_DISABLE_HOT_CACHE
     Disable the `HotCache` execution environment variant.
@@ -1275,14 +1275,15 @@ T_MEASURE_RUNTIME_DISABLE_MAX_LOAD
 
 The execution environment variants (`M:V`) are:
 
-ValidCache
+FullCache
     Before the `body` request handler is invoked a memory area with twice the
     size of the outer-most data cache is completely read.  This fills the data
     cache with valid cache lines which are unrelated to the `body` request
-    handler.
+    handler.  The cache is full with valid data and loading memory used by the
+    handler needs to evict cache lines.
 
     You can disable this variant with the
-    `T_MEASURE_RUNTIME_DISABLE_VALID_CACHE` request flag.
+    `T_MEASURE_RUNTIME_DISABLE_FULL_CACHE` request flag.
 
 HotCache
     Before the `body` request handler is invoked the `body` request handler is
@@ -1359,7 +1360,7 @@ reported.
     B:measure_empty
     P:0:0:UI1:test-rtems-measure.c:18
     M:B:Empty
-    M:V:ValidCache
+    M:V:FullCache
     M:N:1024
     M:MI:0.000000000
     M:Q1:0.000000000
@@ -1935,7 +1936,7 @@ M
         (`:`).
 
     <Variant>
-        The execution variant which is one of **ValidCache**, **HotCache**,
+        The execution variant which is one of **FullCache**, **HotCache**,
         **DirtyCache**, or **Load**.
 
     <Load>
