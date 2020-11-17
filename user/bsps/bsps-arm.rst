@@ -9,6 +9,7 @@ arm (ARM)
 .. include:: arm/altera-cyclone-v.rst
 .. include:: arm/atsam.rst
 .. include:: arm/beagle.rst
+.. include:: arm/bsp-stm32h7.rst
 .. include:: arm/csb336.rst
 .. include:: arm/csb337.rst
 .. include:: arm/edb7312.rst
@@ -17,8 +18,7 @@ arm (ARM)
 .. include:: arm/imxrt.rst
 .. include:: arm/lm3s69xx.rst
 .. include:: arm/lpc176x.rst
-.. include:: arm/imx.rst
-.. include:: arm/lpc32xx.rst
+.. include:: arm/lpc24xx.rst
 .. include:: arm/raspberrypi.rst
 .. include:: arm/realview-pbx-a9.rst
 .. include:: arm/rtl22xx.rst
