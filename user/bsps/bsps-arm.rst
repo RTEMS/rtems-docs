@@ -14,6 +14,7 @@ arm (ARM)
 .. include:: arm/edb7312.rst
 .. include:: arm/gumstix.rst
 .. include:: arm/imx.rst
+.. include:: arm/imxrt.rst
 .. include:: arm/lm3s69xx.rst
 .. include:: arm/lpc176x.rst
 .. include:: arm/imx.rst
