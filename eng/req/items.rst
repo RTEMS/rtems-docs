@@ -198,10 +198,10 @@ This type is refined by the following types:
 Build Item Type
 ^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``build``. This set of attributes specifies a build item. All
-explicit attributes shall be specified. The explicit attributes for this type
-are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``build``. This set of attributes specifies a build
+item. All explicit attributes shall be specified. The explicit attributes for
+this type are:
 
 build-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the build
@@ -236,7 +236,7 @@ This type is refined by the following types:
 Build Ada Test Program Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``ada-test-program``. This set of attributes
 specifies an Ada test program executable to build. Test programs may use
 additional objects provided by :ref:`SpecTypeBuildObjectsItemType` items.  Test
@@ -330,7 +330,7 @@ Please have a look at the following example:
 Build BSP Item Type
 ^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``bsp``. This set of attributes specifies a base BSP
 variant to build. All explicit attributes shall be specified. The explicit
 attributes for this type are:
@@ -415,7 +415,7 @@ Please have a look at the following example:
 Build Configuration File Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``config-file``. This set of attributes specifies a
 configuration file placed in the build tree.  The configuration file is
 generated during the configure command execution and is placed in the build
@@ -459,7 +459,7 @@ Please have a look at the following example:
 Build Configuration Header Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``config-header``. This set of attributes specifies
 configuration header file.  The configuration header file is generated during
 configure command execution and is placed in the build tree.  All collected
@@ -487,7 +487,7 @@ target
 Build Group Item Type
 ^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``group``. This set of attributes provides a means to
 aggregate other build items and modify the build item context which is used by
 referenced build items.  The ``includes``, ``ldflags``, ``objects``, and
@@ -546,7 +546,7 @@ Please have a look at the following example:
 Build Library Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``library``. This set of attributes specifies a
 static library.  Library items may use additional objects provided by
 :ref:`SpecTypeBuildObjectsItemType` items through the build dependency links of
@@ -615,7 +615,7 @@ Please have a look at the following example:
 Build Objects Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``objects``. This set of attributes specifies a set
 of object files used to build static libraries or test programs. All explicit
 attributes shall be specified. The explicit attributes for this type are:
@@ -674,7 +674,7 @@ Please have a look at the following example:
 Build Option Item Type
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``option``. This set of attributes specifies a build
 option. The following explicit attributes are mandatory:
 
@@ -754,7 +754,7 @@ Please have a look at the following example:
 Build Script Item Type
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``script``. This set of attributes specifies a build
 script.  The optional attributes may be required by commands executed through
 the scripts. The following explicit attributes are mandatory:
@@ -867,7 +867,7 @@ Please have a look at the following example:
 Build Start File Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``start-file``. This set of attributes specifies a
 start file to build.  A start file is used to link an executable. All explicit
 attributes shall be specified. The explicit attributes for this type are:
@@ -918,7 +918,7 @@ Please have a look at the following example:
 Build Test Program Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeBuildItemType` though the ``build-type``
+This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``test-program``. This set of attributes specifies a
 test program executable to build. Test programs may use additional objects
 provided by :ref:`SpecTypeBuildObjectsItemType` items.  Test programs have an
@@ -1000,10 +1000,10 @@ Please have a look at the following example:
 Constraint Item Type
 ^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``constraint``. This set of attributes specifies a constraint.
-All explicit attributes shall be specified. The explicit attributes for this
-type are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``constraint``. This set of attributes specifies a
+constraint. All explicit attributes shall be specified. The explicit attributes
+for this type are:
 
 rationale
     The attribute value shall be an optional string. If the value is present,
@@ -1022,10 +1022,10 @@ text
 Glossary Item Type
 ^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``glossary``. This set of attributes specifies a glossary item.
-All explicit attributes shall be specified. The explicit attributes for this
-type are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``glossary``. This set of attributes specifies a
+glossary item. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 glossary-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
@@ -1042,7 +1042,7 @@ This type is refined by the following types:
 Glossary Group Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeGlossaryItemType` though the
+This type refines the :ref:`SpecTypeGlossaryItemType` through the
 ``glossary-type`` attribute if the value is ``group``. This set of attributes
 specifies a glossary group. All explicit attributes shall be specified. The
 explicit attributes for this type are:
@@ -1060,7 +1060,7 @@ text
 Glossary Term Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeGlossaryItemType` though the
+This type refines the :ref:`SpecTypeGlossaryItemType` through the
 ``glossary-type`` attribute if the value is ``term``. This set of attributes
 specifies a glossary term. All explicit attributes shall be specified. The
 explicit attributes for this type are:
@@ -1077,10 +1077,10 @@ text
 Interface Item Type
 ^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``interface``. This set of attributes specifies an interface
-specification item. Interface items shall specify the interface of the software
-product to other software products and the hardware.  Use
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``interface``. This set of attributes specifies an
+interface specification item. Interface items shall specify the interface of
+the software product to other software products and the hardware.  Use
 :ref:`SpecTypeInterfaceDomainItemType` items to specify interface domains, for
 example the :term:`API`, C language, compiler, interfaces to the
 implementation, and the hardware. All explicit attributes shall be specified.
@@ -1134,7 +1134,7 @@ This type is refined by the following types:
 Application Configuration Group Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``appl-config-group``. This set of
 attributes specifies an application configuration group. All explicit
 attributes shall be specified. The explicit attributes for this type are:
@@ -1156,7 +1156,7 @@ text
 Application Configuration Option Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``appl-config-option``. This set
 of attributes specifies an application configuration option. All explicit
 attributes shall be specified. The explicit attributes for this type are:
@@ -1195,7 +1195,7 @@ Application Configuration Feature Enable Option Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This type refines the :ref:`SpecTypeApplicationConfigurationOptionItemType`
-though the ``appl-config-option-type`` attribute if the value is
+through the ``appl-config-option-type`` attribute if the value is
 ``feature-enable``. This set of attributes specifies an application
 configuration feature enable option.
 
@@ -1205,7 +1205,7 @@ Application Configuration Feature Option Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This type refines the :ref:`SpecTypeApplicationConfigurationOptionItemType`
-though the ``appl-config-option-type`` attribute if the value is ``feature``.
+through the ``appl-config-option-type`` attribute if the value is ``feature``.
 This set of attributes specifies an application configuration feature option.
 All explicit attributes shall be specified. The explicit attributes for this
 type are:
@@ -1221,10 +1221,10 @@ Application Configuration Value Option Item Type
 
 This type refines the following types:
 
-* :ref:`SpecTypeApplicationConfigurationOptionItemType` though the
+* :ref:`SpecTypeApplicationConfigurationOptionItemType` through the
   ``appl-config-option-type`` attribute if the value is ``initializer``
 
-* :ref:`SpecTypeApplicationConfigurationOptionItemType` though the
+* :ref:`SpecTypeApplicationConfigurationOptionItemType` through the
   ``appl-config-option-type`` attribute if the value is ``integer``
 
 This set of attributes specifies application configuration initializer or
@@ -1246,10 +1246,10 @@ Interface Compound Item Type
 
 This type refines the following types:
 
-* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``struct``
 
-* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``union``
 
 This set of attributes specifies a compound (struct or union). All explicit
@@ -1281,7 +1281,7 @@ notes
 Interface Container Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``container``. Items of this type
 specify an interface container.  The item shall have exactly one link with the
 :ref:`SpecTypeInterfacePlacementLinkRole` to an
@@ -1293,7 +1293,7 @@ domain of the container.
 Interface Define Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``define``. This set of attributes
 specifies a define. All explicit attributes shall be specified. The explicit
 attributes for this type are:
@@ -1319,7 +1319,7 @@ notes
 Interface Domain Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``domain``. This set of attributes
 specifies an interface domain.  Items of the types
 :ref:`SpecTypeInterfaceContainerItemType` and
@@ -1340,7 +1340,7 @@ name
 Interface Enum Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``enum``. This set of attributes
 specifies an enum. All explicit attributes shall be specified. The explicit
 attributes for this type are:
@@ -1365,7 +1365,7 @@ notes
 Interface Enumerator Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``enumerator``. This set of
 attributes specifies an enumerator. All explicit attributes shall be specified.
 The explicit attributes for this type are:
@@ -1392,7 +1392,7 @@ notes
 Interface Forward Declaration Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``forward-declaration``. Items of
 this type specify a forward declaration.  The item shall have exactly one link
 with the :ref:`SpecTypeInterfaceTargetLinkRole` to an
@@ -1404,7 +1404,7 @@ declared by the forward declaration.
 Interface Function Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``function``. This set of
 attributes specifies a function. All explicit attributes shall be specified.
 The explicit attributes for this type are:
@@ -1438,7 +1438,7 @@ return
 Interface Group Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``group``. This set of attributes
 specifies an interface group. All explicit attributes shall be specified. The
 explicit attributes for this type are:
@@ -1465,7 +1465,7 @@ text
 Interface Header File Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``header-file``. This set of
 attributes specifies a header file.  The item shall have exactly one link with
 the :ref:`SpecTypeInterfacePlacementLinkRole` to an
@@ -1490,7 +1490,7 @@ prefix
 Interface Macro Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``macro``. This set of attributes
 specifies a macro. All explicit attributes shall be specified. The explicit
 attributes for this type are:
@@ -1523,7 +1523,7 @@ return
 Interface Typedef Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``typedef``. This set of
 attributes specifies a typedef. All explicit attributes shall be specified. The
 explicit attributes for this type are:
@@ -1551,16 +1551,16 @@ Interface Unspecified Item Type
 
 This type refines the following types:
 
-* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified``
 
-* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-define``
 
-* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-function``
 
-* :ref:`SpecTypeInterfaceItemType` though the ``interface-type`` attribute if
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-type``
 
 This set of attributes specifies an unspecified interface. All explicit
@@ -1579,7 +1579,7 @@ reference
 Interface Variable Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` though the
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``variable``. This set of
 attributes specifies a variable. All explicit attributes shall be specified.
 The explicit attributes for this type are:
@@ -1606,8 +1606,8 @@ notes
 Requirement Item Type
 ^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``requirement``. This set of attributes specifies a
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``requirement``. This set of attributes specifies a
 requirement. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
@@ -1655,7 +1655,7 @@ Please have a look at the following example:
 Functional Requirement Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRequirementItemType` though the
+This type refines the :ref:`SpecTypeRequirementItemType` through the
 ``requirement-type`` attribute if the value is ``functional``. This set of
 attributes specifies a functional requirement. All explicit attributes shall be
 specified. The explicit attributes for this type are:
@@ -1675,7 +1675,7 @@ This type is refined by the following types:
 Action Requirement Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeFunctionalRequirementItemType` though the
+This type refines the :ref:`SpecTypeFunctionalRequirementItemType` through the
 ``functional-type`` attribute if the value is ``action``. This set of
 attributes specifies functional requirements and corresponding validation test
 code.  The functional requirements of an action are specified.  An action
@@ -1914,19 +1914,19 @@ Generic Functional Requirement Item Type
 
 This type refines the following types:
 
-* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+* :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
   attribute if the value is ``capability``
 
-* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+* :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
   attribute if the value is ``dependability-function``
 
-* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+* :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
   attribute if the value is ``function``
 
-* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+* :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
   attribute if the value is ``operational``
 
-* :ref:`SpecTypeFunctionalRequirementItemType` though the ``functional-type``
+* :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
   attribute if the value is ``safety-function``
 
 Items of this type state a functional requirement with the functional type
@@ -1937,7 +1937,7 @@ defined by the specification type refinement.
 Non-Functional Requirement Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRequirementItemType` though the
+This type refines the :ref:`SpecTypeRequirementItemType` through the
 ``requirement-type`` attribute if the value is ``non-functional``. This set of
 attributes specifies a non-functional requirement. All explicit attributes
 shall be specified. The explicit attributes for this type are:
@@ -1951,11 +1951,12 @@ non-functional-type
 Requirement Validation Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``validation``. This set of attributes provides a requirement
-validation evidence.  The item shall have exactly one link to the validated
-requirement with the :ref:`SpecTypeRequirementValidationLinkRole`. All explicit
-attributes shall be specified. The explicit attributes for this type are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``validation``. This set of attributes provides a
+requirement validation evidence.  The item shall have exactly one link to the
+validated requirement with the :ref:`SpecTypeRequirementValidationLinkRole`.
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
 
 method
     The attribute value shall be a :ref:`SpecTypeRequirementValidationMethod`.
@@ -1979,10 +1980,10 @@ text
 Specification Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``spec``. This set of attributes specifies specification types.
-All explicit attributes shall be specified. The explicit attributes for this
-type are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``spec``. This set of attributes specifies
+specification types. All explicit attributes shall be specified. The explicit
+attributes for this type are:
 
 spec-description
     The attribute value shall be an optional string. It shall be the
@@ -2043,10 +2044,10 @@ Please have a look at the following example:
 Test Case Item Type
 ^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``test-case``. This set of attributes specifies a test case.
-All explicit attributes shall be specified. The explicit attributes for this
-type are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``test-case``. This set of attributes specifies a
+test case. All explicit attributes shall be specified. The explicit attributes
+for this type are:
 
 test-actions
     The attribute value shall be a list. Each list element shall be a
@@ -2102,8 +2103,8 @@ test-target
 Test Platform Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``test-platform``. Please note:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``test-platform``. Please note:
 
 .. warning::
 
@@ -2125,8 +2126,8 @@ name
 Test Procedure Item Type
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``test-procedure``. Please note:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``test-procedure``. Please note:
 
 .. warning::
 
@@ -2152,10 +2153,10 @@ steps
 Test Suite Item Type
 ^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` though the ``type`` attribute
-if the value is ``test-suite``. This set of attributes specifies a test suite.
-All explicit attributes shall be specified. The explicit attributes for this
-type are:
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``test-suite``. This set of attributes specifies a
+test suite. All explicit attributes shall be specified. The explicit attributes
+for this type are:
 
 test-brief
     The attribute value shall be a string. It shall be the test suite brief
@@ -2462,7 +2463,7 @@ This type is used by the following types:
 Application Configuration Group Member Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``appl-config-group-member``. It defines the application configuration
 group membership role of links.
 
@@ -2626,7 +2627,7 @@ This type is used by the following types:
 Build Dependency Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``build-dependency``. It defines the build dependency role of links.
 
 .. _SpecTypeBuildIncludePath:
@@ -3182,7 +3183,7 @@ This type is used by the following types:
 Constraint Link Role
 ^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``constraint``. It defines the constraint role of links.  The link
 target shall be a constraint.
 
@@ -3272,7 +3273,7 @@ Please have a look at the following example:
 Glossary Membership Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``glossary-member``. It defines the glossary membership role of links.
 
 .. _SpecTypeIntegerOrString:
@@ -3361,10 +3362,10 @@ Interface Compound Member Compound
 
 This type refines the following types:
 
-* :ref:`SpecTypeInterfaceCompoundMemberDefinition` though the ``kind``
+* :ref:`SpecTypeInterfaceCompoundMemberDefinition` through the ``kind``
   attribute if the value is ``struct``
 
-* :ref:`SpecTypeInterfaceCompoundMemberDefinition` though the ``kind``
+* :ref:`SpecTypeInterfaceCompoundMemberDefinition` through the ``kind``
   attribute if the value is ``union``
 
 This set of attributes specifies an interface compound member compound. All
@@ -3380,7 +3381,7 @@ definition
 Interface Compound Member Declaration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceCompoundMemberDefinition` though
+This type refines the :ref:`SpecTypeInterfaceCompoundMemberDefinition` through
 the ``kind`` attribute if the value is ``member``. This set of attributes
 specifies an interface compound member declaration. All explicit attributes
 shall be specified. The explicit attributes for this type are:
@@ -3659,7 +3660,7 @@ This type is used by the following types:
 Interface Enumerator Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-enumerator``. It defines the interface enumerator role of
 links.
 
@@ -3750,7 +3751,7 @@ This type is used by the following types:
 Interface Function Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-function``. It defines the interface function role of
 links.  It is used to indicate that a :ref:`SpecTypeActionRequirementItemType`
 item specifies functional requirements of an
@@ -3774,7 +3775,7 @@ This type is used by the following types:
 Interface Group Membership Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-ingroup``. It defines the interface group membership role
 of links.
 
@@ -3783,7 +3784,7 @@ of links.
 Interface Include Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-include``. It defines the interface include role of links
 and is used to indicate that an interface container includes another interface
 container.  For example, one header file includes another header file. All
@@ -3876,7 +3877,7 @@ This type is used by the following types:
 Interface Placement Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-placement``. It defines the interface placement role of
 links.  It is used to indicate that an interface definition is placed into an
 interface container, for example a header file.
@@ -3927,7 +3928,7 @@ This type is used by the following types:
 Interface Target Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-target``. It defines the interface target role of links.
 It is used for interface forward declarations.
 
@@ -4045,7 +4046,7 @@ A value of this type shall be of one of the following variants:
 Placement Order Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``placement-order``. This link role defines the placement order of
 items in a container item (for example an interface function in a header file
 or a documentation section).
@@ -4137,7 +4138,7 @@ This type is used by the following types:
 Requirement Refinement Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``requirement-refinement``. It defines the requirement refinement role
 of links.
 
@@ -4292,7 +4293,7 @@ This type is used by the following types:
 Requirement Validation Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``validation``. It defines the requirement validation role of links.
 
 .. _SpecTypeRequirementValidationMethod:
@@ -4743,7 +4744,7 @@ This type is used by the following types:
 Specification Member Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``spec-member``. It defines the specification membership role of
 links.
 
@@ -4752,7 +4753,7 @@ links.
 Specification Refinement Link Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeLink` though the ``role`` attribute if the
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``spec-refinement``. It defines the specification refinement role of
 links. All explicit attributes shall be specified. The explicit attributes for
 this type are:
