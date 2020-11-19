@@ -146,15 +146,6 @@ INTERNAL_ERROR_TOO_LITTLE_WORKSPACE (2)
     There is not enough memory for the workspace.  This fatal error may occur
     during system initialization.  It is an application configuration error.
 
-INTERNAL_ERROR_WORKSPACE_ALLOCATION (3)
-    An allocation from the workspace failed.  This fatal error may occur during
-    system initialization.  It is an application configuration error.
-
-INTERNAL_ERROR_INTERRUPT_STACK_TOO_SMALL (4)
-    The configured interrupt stack size is too small.  This fatal error may
-    occur during system initialization.  It is an application configuration
-    error.
-
 INTERNAL_ERROR_THREAD_EXITTED (5)
     A non-POSIX thread entry function returned.  This is an API usage error.
 
@@ -221,17 +212,6 @@ INTERNAL_ERROR_INVALID_GLOBAL_ID (13)
     This fatal error can only occur on MPCI configurations.  The system cannot
     find the global object for a specific object identifier.  In case this
     happens, then this is probably an operating system bug.
-
-INTERNAL_ERROR_BAD_STACK_HOOK (14)
-    The stack allocator hook or stack free hook is NULL.  This fatal error may
-    occur during system initialization.  It is an application configuration
-    error.
-
-INTERNAL_ERROR_UNLIMITED_AND_MAXIMUM_IS_0 (19)
-    An object class is configured to use the unlimited objects option, however,
-    the count of objects for each extension is zero.  This fatal error may
-    occur during system initialization.  It is an application configuration
-    error.
 
 INTERNAL_ERROR_NO_MEMORY_FOR_HEAP (23)
     There is not enough memory for the C program heap.  This fatal error may
@@ -372,15 +352,6 @@ INTERNAL_ERROR_POSIX_INIT_THREAD_CREATE_FAILED (33)
     occur during system initialization.  It is an application configuration
     error.
 
-INTERNAL_ERROR_LIBIO_USER_ENV_KEY_CREATE_FAILED (34)
-    Creation of the IO library user environment POSIX key failed.  This fatal
-    error may occur during system initialization.  It is an application
-    configuration error.
-
-INTERNAL_ERROR_LIBIO_SEM_CREATE_FAILED (35)
-    Creation of the IO library semaphore failed.  This fatal error may occur
-    during system initialization.  It is an application configuration error.
-
 INTERNAL_ERROR_LIBIO_STDOUT_FD_OPEN_FAILED (36)
     Open of the standard output file descriptor failed or resulted in an
     unexpected file descriptor number.  This fatal error may occur during
@@ -404,6 +375,14 @@ INTERNAL_ERROR_NO_MEMORY_FOR_PER_CPU_DATA (40)
     This fatal error may happen during workspace initialization.  There is not
     enough memory available to populate the per-CPU data areas, see
     `<rtems/score/percpudata.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/percpudata.h>`_.
+
+INTERNAL_ERROR_TOO_LARGE_TLS_SIZE (41)
+    This fatal error may happen during system initialization.  The actual
+    thread-local storage (TLS) size of the application exceeds the configured
+    maximum, see
+    :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE <CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE>`.
+    You can get the thread-local storage size of an application using the RTEMS
+    tool ``rtems-execinfo``.
 
 Operations
 ==========
