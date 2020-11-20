@@ -54,7 +54,7 @@ RTEMS Classic API Guide (|version|).
 	pci_library
 	stack_bounds_checker
 	cpu_usage_statistics
-	object_services
+	object-services/index
 	chains
 	red_black_trees
 	timespec_helpers
