@@ -79,6 +79,67 @@ DESCRIPTION:
 NOTES:
     None.
 
+.. Generated from spec:/acfg/if/init-task-construct-storage-size
+
+.. index:: CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE
+
+.. _CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE:
+
+CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE
+------------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE``
+
+OPTION TYPE:
+    This configuration option is an integer define.
+
+DEFAULT VALUE:
+    This configuration option has no default value.  If it is not specified, then
+    the Classic API initialization task will be created with the stack size
+    defined by the :ref:`CONFIGURE_INIT_TASK_STACK_SIZE` configuration option.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+    * It shall be defined using
+      :c:func:`RTEMS_TASK_STORAGE_SIZE`.
+
+DESCRIPTION:
+    The value of this configuration option defines the task storage size of the
+    Classic API initialization task.
+
+NOTES:
+    If this configuration option is specified, then
+
+    * a task storage area of the specified size is statically allocated by
+      ``<rtems/confdefs.h>`` for the Classic API initialization task,
+
+    * the Classic API initialization task is constructed by
+      :c:func:`rtems_task_construct` instead of using
+      :c:func:`rtems_task_create`,
+
+    * the maximum thread-local storage size defined by
+      :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic API
+      initialization task,
+
+    * the Classic API initialization task should be accounted for in
+      :ref:`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE`, and
+
+    * the task storage area used for the Classic API initialization task is not
+      reclaimed by the system if the task is deleted.
+
+    The
+
+    * :ref:`CONFIGURE_INIT_TASK_STACK_SIZE` and
+
+    * ``CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE``
+
+    configuration options are mutually exclusive.
+
 .. Generated from spec:/acfg/if/init-task-entrypoint
 
 .. index:: CONFIGURE_INIT_TASK_ENTRY_POINT
@@ -229,7 +290,13 @@ DESCRIPTION:
     Classic API initialization task.
 
 NOTES:
-    None.
+    The
+
+    * ``CONFIGURE_INIT_TASK_STACK_SIZE`` and
+
+    * :ref:`CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE`
+
+    configuration options are mutually exclusive.
 
 .. Generated from spec:/acfg/if/rtems-init-tasks-table
 
