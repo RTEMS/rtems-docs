@@ -109,6 +109,8 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeNonFunctionalRequirementItemType`
 
+      * :ref:`SpecTypeDesignGroupRequirementItemType`
+
       * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
 
       * :ref:`SpecTypeRuntimePerformanceRequirementItemType`
@@ -1953,9 +1955,29 @@ non-functional-type
 
 This type is refined by the following types:
 
+* :ref:`SpecTypeDesignGroupRequirementItemType`
+
 * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
 
 * :ref:`SpecTypeRuntimePerformanceRequirementItemType`
+
+.. _SpecTypeDesignGroupRequirementItemType:
+
+Design Group Requirement Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeNonFunctionalRequirementItemType` through
+the ``non-functional-type`` attribute if the value is ``design-group``. This
+set of attributes specifies a design group requirement.  Design group
+requirements have an explicit reference to the associated Doxygen group
+specified by the ``identifier`` attribute.  Design group requirements have an
+implicit validation by inspection method.  The qualification toolchain shall
+perform the inspection and check that the specified Doxygen group exists in the
+software source code. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+identifier
+    The attribute value shall be an :ref:`SpecTypeInterfaceGroupIdentifier`.
 
 .. _SpecTypeGenericNonFunctionalRequirementItemType:
 
@@ -3986,6 +4008,8 @@ The value shall be a string. It shall be the identifier of the interface group.
 The value shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``".
 
 This type is used by the following types:
+
+* :ref:`SpecTypeDesignGroupRequirementItemType`
 
 * :ref:`SpecTypeInterfaceGroupItemType`
 
