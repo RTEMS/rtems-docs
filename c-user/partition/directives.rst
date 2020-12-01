@@ -81,9 +81,8 @@ Creates a partition.
 This directive creates a partition of fixed size buffers from a physically
 contiguous memory space which starts at ``starting_address`` and is ``length``
 bytes in size.  Each allocated buffer is to be of ``buffer_size`` in bytes.
-The assigned partition identifier is returned in ``id``.  This partition
-identifier is used to access the partition with other partition related
-directives.
+The assigned object identifier is returned in ``id``.  This identifier is used
+to access the partition with other partition related directives.
 
 The **attribute set** specified in ``attribute_set`` is built through a
 *bitwise or* of the attribute constants described below.  Attributes not
