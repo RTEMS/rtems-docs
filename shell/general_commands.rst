@@ -44,6 +44,14 @@ The RTEMS shell has the following general commands:
 
 - rtc_ - RTC driver configuration
 
+- i2cdetect_ - detect I2C devices
+
+- i2cget_ - get data from an EEPROM like I2C device
+
+- i2cset_ - write data to an EEPROM like I2C device
+
+- spi_ - read and write simple data to an SPI bus
+
 - exit_ - alias for logoff command
 
 Commands
@@ -1173,6 +1181,213 @@ CONFIGURATION:
 
     This command can be excluded from the shell command set by defining
     ``CONFIGURE_SHELL_NO_COMMAND_RTC`` when all shell commands have been
+    configured.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _i2cdetect:
+
+i2cdetect - detect I2C devices
+------------------------------
+.. index:: i2cdetect
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        i2cdetect <I2C_BUS>
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_I2CDETECT
+.. index:: CONFIGURE_SHELL_COMMAND_I2CDETECT
+
+DESCRIPTION:
+    Tries to detect I2C devices connected to the I2C bus. To do that, write
+    requests with the length of 0 are used.
+
+    WARNING: This might confuse some I2C devices, so please use it only if you
+    know what you are doing.
+
+    The command supports a ``-h`` option to get usage details.
+
+    The command works only with I2C bus drivers that use the Linux-Style API.
+
+EXAMPLES:
+    The following is an example where two I2C devices are detected. One on 0x1a
+    and one on 0x1f:
+
+    .. code-block:: shell
+
+        SHLL [/] # i2cdetect /dev/i2c1
+            x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 xA xB xC xD xE xF
+        0x     -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        1x  -- -- -- -- -- -- -- -- -- -- 1a -- -- -- -- 1f
+        2x  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        3x  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        4x  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        5x  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        6x  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        7x  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+        SHLL [/] #
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_I2CDETECT`` to have
+    this command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_I2CDETECT`` when all shell commands have been
+    configured.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _i2cget:
+
+i2cget - get data from an EEPROM like I2C device
+------------------------------------------------
+.. index:: i2cget
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        i2cget <I2C_BUS> <CHIP-ADDRESS> <DATA-ADDRESS> [<NR-BYTES>]
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_I2CGET
+.. index:: CONFIGURE_SHELL_COMMAND_I2CGET
+
+DESCRIPTION:
+    Get one or multiple bytes from an EEPROM like I2C device. If <NR-BYTES> is
+    not given the command defaults to reading one byte. If you read multiple
+    bytes (<NR-BYTES> given and bigger then 1) the read will be done in one
+    single request. An auto incrementing register pointer is assumed.
+
+    The command supports a ``-h`` option to get usage details.
+
+    All numbers can be entered in decimal form (normal digits; e.g. 16),
+    hexadecimal form (with 0x prefix; e.g. 0x10) or octal form (with a leading
+    zero; e.g. 020).
+
+    The command works only with I2C bus drivers that use the Linux-Style API.
+
+EXAMPLES:
+    The following is an example how to read a one byte register at 0xd from the
+    I2C device at 0x1f:
+
+    .. code-block:: shell
+
+        SHLL [/] # i2cget /dev/i2c1 0x1f 0x0d
+        0xc7 
+        SHLL [/] #
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_I2CGET`` to have this
+    command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_I2CGET`` when all shell commands have been
+    configured.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _i2cset:
+
+i2cset - write data to an EEPROM like I2C device
+------------------------------------------------
+.. index:: i2cset
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        i2cset <I2C_BUS> <CHIP-ADDRESS> <DATA-ADDRESS> <VALUE> [<VALUE> [...]]
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_I2CSET
+.. index:: CONFIGURE_SHELL_COMMAND_I2CSET
+
+DESCRIPTION:
+    Write one or multiple bytes to an EEPROM like I2C device. If you write
+    multiple bytes (multiple <VALUE> given) the write will be done in one single
+    request. An auto incrementing register pointer is assumed.
+
+    The command supports a ``-h`` option to get usage details.
+
+    All numbers can be entered in decimal form (normal digits; e.g. 16),
+    hexadecimal form (with 0x prefix; e.g. 0x10) or octal form (with a leading
+    zero; e.g. 020).
+
+    The command works only with I2C bus drivers that use the Linux-Style API.
+
+EXAMPLES:
+    The following is an example how to write one byte of 0x00 to the register at
+    0x11 of the I2C device at 0x1f:
+
+    .. code-block:: shell
+
+        SHLL [/] # i2cset /dev/i2c1 0x1f 0x11 0x00
+        SHLL [/] #
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_I2CSET`` to have this
+    command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_I2CSET`` when all shell commands have been
+    configured.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _spi:
+
+spi - read and write simple data to an SPI bus
+----------------------------------------------
+.. index:: spi
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        spi [-loh] [-c <cs>] [-s <speed>] [-m <mode>] <SPI_BUS> xx [xx [..]]
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_SPI
+.. index:: CONFIGURE_SHELL_COMMAND_SPI
+
+DESCRIPTION:
+    Write data to an SPI bus and read the responses.
+
+    The command supports a ``-h`` option to get usage details.
+
+    The data bytes (``xx`` in the SYNOPSIS) are in hexadecimal form (e.g.
+    ``0x10`` or ``10`` both have a value of decimal 16). This allows longer
+    hex strings before the shell input limit is reached. All other numbers can
+    be entered in decimal form (normal digits; e.g. 16), hexadecimal form (with
+    0x prefix; e.g. 0x10) or octal form (with a leading zero; e.g. 020).
+
+    The command works only with SPI bus drivers that use the Linux-Style API.
+
+EXAMPLES:
+    The following is an example how to write multiple bytes (0x4a 0x4b 0x4c) to
+    the bus. The response is 0xa1 0xa2 0xa3 in this case. Chip select 1 will be
+    used.
+
+    .. code-block:: shell
+
+        SHLL [/] # spi /dev/spi1 -c 1 4a 4b 4c
+        received: a1 a2 a3
+        SHLL [/] #
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_SPI`` to have this
+    command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_SPI`` when all shell commands have been
     configured.
 
 .. raw:: latex
