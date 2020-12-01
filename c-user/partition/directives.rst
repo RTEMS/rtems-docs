@@ -292,8 +292,7 @@ Deletes the partition.
 .. rubric:: DESCRIPTION:
 
 This directive deletes the partition specified by the ``id`` parameter.  The
-partition cannot be deleted if any of its buffers are still allocated.  The
-:term:`PTCB` for the deleted partition is reclaimed by RTEMS.
+partition cannot be deleted if any of its buffers are still allocated.
 
 .. rubric:: RETURN VALUES:
 
@@ -313,6 +312,8 @@ partition cannot be deleted if any of its buffers are still allocated.  The
 
 This directive may cause the calling task to be preempted due to an obtain and
 release of the object allocator mutex.
+
+The :term:`PTCB` for the deleted partition is reclaimed by RTEMS.
 
 The calling task does not have to be the task that created the partition. Any
 local task that knows the partition identifier can delete the partition.
