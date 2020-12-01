@@ -233,10 +233,11 @@ The node to search is specified in ``node``.  It shall be
     The requested operation was successful.
 
 :c:macro:`RTEMS_INVALID_ADDRESS`
-    The id parameter was `NULL <https://en.cppreference.com/w/c/types/NULL>`_.
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
 :c:macro:`RTEMS_INVALID_NAME`
-    The name parameter was 0.
+    The ``name`` parameter was 0.
 
 :c:macro:`RTEMS_INVALID_NAME`
     There was no object with the specified name on the specified nodes.
@@ -291,7 +292,7 @@ Deletes the partition.
 
 .. rubric:: DESCRIPTION:
 
-This directive deletes the partition specified by the id parameter.  The
+This directive deletes the partition specified by the ``id`` parameter.  The
 partition cannot be deleted if any of its buffers are still allocated.  The
 :term:`PTCB` for the deleted partition is reclaimed by RTEMS.
 
