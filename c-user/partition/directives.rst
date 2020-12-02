@@ -300,7 +300,7 @@ partition cannot be deleted if any of its buffers are still allocated.
     The requested operation was successful.
 
 :c:macro:`RTEMS_INVALID_ID`
-    There was no partition with the specified identifier.
+    There was no partition associated with the identifier specified by ``id``.
 
 :c:macro:`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
     The partition resided on a remote node.
@@ -370,7 +370,7 @@ the ``buffer`` parameter.
     The requested operation was successful.
 
 :c:macro:`RTEMS_INVALID_ID`
-    There was no partition with the specified identifier.
+    There was no partition associated with the identifier specified by ``id``.
 
 :c:macro:`RTEMS_INVALID_ADDRESS`
     The ``buffer`` parameter was `NULL
@@ -433,7 +433,7 @@ specified by ``id``.
     The requested operation was successful.
 
 :c:macro:`RTEMS_INVALID_ID`
-    There was no partition with the specified identifier.
+    There was no partition associated with the identifier specified by ``id``.
 
 :c:macro:`RTEMS_INVALID_ADDRESS`
     The buffer referenced by ``buffer`` was not in the partition.

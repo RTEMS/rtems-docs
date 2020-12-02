@@ -76,7 +76,7 @@ situations applies:
     The requested operation was successful.
 
 :c:macro:`RTEMS_INVALID_ID`
-    There was no task with the specified identifier.
+    There was no task associated with the identifier specified by ``id``.
 
 .. rubric:: NOTES:
 
