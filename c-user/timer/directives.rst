@@ -1,463 +1,729 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://docs.rtems.org/branches/master/user/support/bugs.html
+..
+.. For information on updating and regenerating please refer to:
+..
+.. https://docs.rtems.org/branches/master/eng/req/howto.html
+
+.. _TimerManagerDirectives:
 
 Directives
 ==========
 
-This section details the timer manager's directives.  A subsection is dedicated
-to each of this manager's directives and describes the calling sequence,
-related constants, usage, and status codes.
+This section details the directives of the Timer Manager. A subsection is
+dedicated to each of this manager's directives and lists the calling sequence,
+parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/timer/if/create
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
+
+.. index:: rtems_timer_create()
 .. index:: create a timer
-.. index:: rtems_timer_create
 
-.. _rtems_timer_create:
+.. _InterfaceRtemsTimerCreate:
 
-TIMER_CREATE - Create a timer
+rtems_timer_create()
+--------------------
+
+Creates a timer.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_create( rtems_name name, rtems_id *id );
+
+.. rubric:: PARAMETERS:
+
+``name``
+    This parameter is the name of the timer.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  The
+    identifier of the created timer object will be stored in this variable, in
+    case of a successful operation.
+
+.. rubric:: DESCRIPTION:
+
+This directive creates a timer.  The assigned object identifier is returned in
+``id``.  This identifier is used to access the timer with other timer related
+directives.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The timer name was invalid.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_TOO_MANY`
+    There was no inactive object available to create a new timer.  The number
+    of timers available to the application is configured through the
+    :ref:`CONFIGURE_MAXIMUM_TIMERS` configuration option.
+
+.. rubric:: NOTES:
+
+This directive may cause the calling task to be preempted due to an obtain and
+release of the object allocator mutex.
+
+For control and maintenance of the timer, RTEMS allocates a :term:`TMCB` from
+the local TMCB free pool and initializes it.
+
+In SMP configurations, the processor of the currently executing thread
+determines the processor used for the created timer.  During the life-time of
+the timer this processor is used to manage the timer internally.
+
+.. Generated from spec:/rtems/timer/if/ident
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_ident()
+.. index:: obtain the ID of a timer
+
+.. _InterfaceRtemsTimerIdent:
+
+rtems_timer_ident()
+-------------------
+
+Identifies a timer by the object name.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_ident( rtems_name name, rtems_id *id );
+
+.. rubric:: PARAMETERS:
+
+``name``
+    This parameter is the object name to look up.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  The object
+    identifier of an object with the specified name will be stored in this
+    variable, in case of a successful operation.
+
+.. rubric:: DESCRIPTION:
+
+This directive obtains the timer identifier associated with the timer name
+specified in ``name``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    There was no object with the specified name on the local node.
+
+.. rubric:: NOTES:
+
+If the timer name is not unique, then the timer identifier will match the first
+timer with that name in the search order.  However, this timer identifier is
+not guaranteed to correspond to the desired timer.  The timer identifier is
+used with other timer related directives to access the timer.
+
+The objects are searched from lowest to the highest index.  Only the local node
+is searched.
+
+.. Generated from spec:/rtems/timer/if/cancel
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_cancel()
+.. index:: cancel a timer
+
+.. _InterfaceRtemsTimerCancel:
+
+rtems_timer_cancel()
+--------------------
+
+Cancels the timer.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_cancel( rtems_id id );
+
+.. rubric:: PARAMETERS:
+
+``id``
+    This parameter is the timer identifier.
+
+.. rubric:: DESCRIPTION:
+
+This directive cancels the timer specified in the ``id`` parameter.  This timer
+will be reinitiated by the next invocation of :ref:`InterfaceRtemsTimerReset`,
+:ref:`InterfaceRtemsTimerFireAfter`, or :ref:`InterfaceRtemsTimerFireWhen` with
+the same timer identifier.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+.. Generated from spec:/rtems/timer/if/delete
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_delete()
+.. index:: delete a timer
+
+.. _InterfaceRtemsTimerDelete:
+
+rtems_timer_delete()
+--------------------
+
+Deletes the timer.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_delete( rtems_id id );
+
+.. rubric:: PARAMETERS:
+
+``id``
+    This parameter is the timer identifier.
+
+.. rubric:: DESCRIPTION:
+
+This directive deletes the timer specified by the ``id`` parameter.  If the
+timer is running, it is automatically canceled.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive may cause the calling task to be preempted due to an obtain and
+release of the object allocator mutex.
+
+The :term:`TMCB` for the deleted timer is reclaimed by RTEMS.
+
+A timer can be deleted by a task other than the task which created the timer.
+
+.. Generated from spec:/rtems/timer/if/fire-after
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_fire_after()
+.. index:: fire a timer after an interval
+
+.. _InterfaceRtemsTimerFireAfter:
+
+rtems_timer_fire_after()
+------------------------
+
+Fires the timer after the interval.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_fire_after(
+      rtems_id                          id,
+      rtems_interval                    ticks,
+      rtems_timer_service_routine_entry routine,
+      void                             *user_data
+    );
+
+.. rubric:: PARAMETERS:
+
+``id``
+    This parameter is the timer identifier.
+
+``ticks``
+    This parameter is the interval until the routine is fired in clock ticks.
+
+``routine``
+    This parameter is the routine to schedule.
+
+``user_data``
+    This parameter is the argument passed to the routine when it is fired.
+
+.. rubric:: DESCRIPTION:
+
+This directive initiates the timer specified by ``id``.  If the timer is
+running, it is automatically canceled before being initiated.  The timer is
+scheduled to fire after an interval of clock ticks has passed specified by
+``ticks``.  When the timer fires, the timer service routine ``routine`` will be
+invoked with the argument ``user_data`` in the context of the clock tick
+:term:`ISR`.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NUMBER`
+    The ``ticks`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``routine`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+.. Generated from spec:/rtems/timer/if/fire-when
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_fire_when()
+.. index:: fire a timer at time of day
+
+.. _InterfaceRtemsTimerFireWhen:
+
+rtems_timer_fire_when()
+-----------------------
+
+Fires the timer at the time of day.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_fire_when(
+      rtems_id                          id,
+      rtems_time_of_day                *wall_time,
+      rtems_timer_service_routine_entry routine,
+      void                             *user_data
+    );
+
+.. rubric:: PARAMETERS:
+
+``id``
+    This parameter is the timer identifier.
+
+``wall_time``
+    This parameter is the time of day when the routine is fired.
+
+``routine``
+    This parameter is the routine to schedule.
+
+``user_data``
+    This parameter is the argument passed to the routine when it is fired.
+
+.. rubric:: DESCRIPTION:
+
+This directive initiates the timer specified by ``id``.  If the timer is
+running, it is automatically canceled before being initiated.  The timer is
+scheduled to fire at the time of day specified by ``wall_time``.  When the
+timer fires, the timer service routine ``routine`` will be invoked with the
+argument ``user_data`` in the context of the clock tick :term:`ISR`.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_NOT_DEFINED`
+    The system date and time was not set.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``routine`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``wall_time`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_CLOCK`
+    The time of day was invalid.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+.. Generated from spec:/rtems/timer/if/initiate-server
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_initiate_server()
+.. index:: initiate the Timer Server
+
+.. _InterfaceRtemsTimerInitiateServer:
+
+rtems_timer_initiate_server()
 -----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Initiates the Timer Server.
 
-        rtems_status_code rtems_timer_create(
-            rtems_name  name,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - timer created successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_INVALID_NAME``
-       - invalid timer name
-     * - ``RTEMS_TOO_MANY``
-       - too many timers created
+    rtems_status_code rtems_timer_initiate_server(
+      rtems_task_priority priority,
+      size_t              stack_size,
+      rtems_attribute     attribute_set
+    );
 
-DESCRIPTION:
-    This directive creates a timer.  The assigned timer id is returned in id.
-    This id is used to access the timer with other timer manager directives.
-    For control and maintenance of the timer, RTEMS allocates a TMCB from the
-    local TMCB free pool and initializes it.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will obtain the allocator mutex and may cause the calling
-    task to be preempted.
+``priority``
+    This parameter is the task priority.
 
-    In SMP configurations, the processor of the currently executing thread
-    determines the processor used for the created timer.  During the life-time
-    of the timer this processor is used to manage the timer internally.
+``stack_size``
+    This parameter is the task stack size in bytes.
+
+``attribute_set``
+    This parameter is the task attribute set.
+
+.. rubric:: DESCRIPTION:
+
+This directive initiates the Timer Server task.  This task is responsible for
+executing all timers initiated via the
+:ref:`InterfaceRtemsTimerServerFireAfter` or
+:ref:`InterfaceRtemsTimerServerFireWhen` directives.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The Timer Server was already initiated.
+
+:c:macro:`RTEMS_INVALID_PRIORITY`
+    The task priority was invalid.
+
+:c:macro:`RTEMS_TOO_MANY`
+    There was no inactive task object available to create the Timer Server
+    task.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    There was not enough memory to allocate the task storage area.  The task
+    storage area contains the task stack, the thread-local storage, and the
+    floating point context.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    One of the task create extensions failed to create the Timer Server task.
+
+.. rubric:: NOTES:
+
+This directive may cause the calling task to be preempted due to an obtain and
+release of the object allocator mutex.
+
+The Timer Server task is created using the :ref:`InterfaceRtemsTaskCreate`
+directive and must be accounted for when configuring the system.
+
+.. Generated from spec:/rtems/timer/if/server-fire-after
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: obtain the ID of a timer
-.. index:: rtems_timer_ident
+.. index:: rtems_timer_server_fire_after()
+.. index:: fire task-based a timer after an interval
 
-.. _rtems_timer_ident:
+.. _InterfaceRtemsTimerServerFireAfter:
 
-TIMER_IDENT - Get ID of a timer
+rtems_timer_server_fire_after()
 -------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Fires the timer after the interval using the Timer Server.
 
-        rtems_status_code rtems_timer_ident(
-            rtems_name  name,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - timer identified successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_INVALID_NAME``
-       - timer name not found
+    rtems_status_code rtems_timer_server_fire_after(
+      rtems_id                          id,
+      rtems_interval                    ticks,
+      rtems_timer_service_routine_entry routine,
+      void                             *user_data
+    );
 
-DESCRIPTION:
-    This directive obtains the timer id associated with the timer name to be
-    acquired.  If the timer name is not unique, then the timer id will match
-    one of the timers with that name.  However, this timer id is not guaranteed
-    to correspond to the desired timer.  The timer id is used to access this
-    timer in other timer related directives.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``id``
+    This parameter is the timer identifier.
 
-.. raw:: latex
+``ticks``
+    This parameter is the interval until the routine is fired in clock ticks.
 
-   \clearpage
+``routine``
+    This parameter is the routine to schedule.
 
-.. index:: cancel a timer
-.. index:: rtems_timer_cancel
+``user_data``
+    This parameter is the argument passed to the routine when it is fired.
 
-.. _rtems_timer_cancel:
+.. rubric:: DESCRIPTION:
 
-TIMER_CANCEL - Cancel a timer
------------------------------
+This directive initiates the timer specified by ``id``.  If the timer is
+running, it is automatically canceled before being initiated.  The timer is
+scheduled to fire after an interval of clock ticks has passed specified by
+``ticks``.  When the timer fires, the timer service routine ``routine`` will be
+invoked with the argument ``user_data`` in the context of the Timer Server
+task.
 
-CALLING SEQUENCE:
-    .. code-block:: c
+.. rubric:: RETURN VALUES:
 
-        rtems_status_code rtems_timer_cancel(
-            rtems_id id
-        );
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The Timer Server was not initiated.
 
-     * - ``RTEMS_SUCCESSFUL``
-       - timer canceled successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
+:c:macro:`RTEMS_INVALID_NUMBER`
+    The ``ticks`` parameter was 0.
 
-DESCRIPTION:
-    This directive cancels the timer id.  This timer will be reinitiated by the
-    next invocation of ``rtems_timer_reset``, ``rtems_timer_fire_after``, or
-    ``rtems_timer_fire_when`` with this id.
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``routine`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+.. Generated from spec:/rtems/timer/if/server-fire-when
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: delete a timer
-.. index:: rtems_timer_delete
+.. index:: rtems_timer_server_fire_when()
+.. index:: fire a task-based timer at time of day
 
-.. _rtems_timer_delete:
+.. _InterfaceRtemsTimerServerFireWhen:
 
-TIMER_DELETE - Delete a timer
------------------------------
+rtems_timer_server_fire_when()
+------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Fires the timer at the time of day using the Timer Server.
 
-        rtems_status_code rtems_timer_delete(
-            rtems_id id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - timer deleted successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
+    rtems_status_code rtems_timer_server_fire_when(
+      rtems_id                          id,
+      rtems_time_of_day                *wall_time,
+      rtems_timer_service_routine_entry routine,
+      void                             *user_data
+    );
 
-DESCRIPTION:
-    This directive deletes the timer specified by id.  If the timer is running,
-    it is automatically canceled.  The TMCB for the deleted timer is reclaimed
-    by RTEMS.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will obtain the allocator mutex and may cause the calling
-    task to be preempted.
+``id``
+    This parameter is the timer identifier.
 
-    A timer can be deleted by a task other than the task which created the
-    timer.
+``wall_time``
+    This parameter is the time of day when the routine is fired.
 
-.. raw:: latex
+``routine``
+    This parameter is the routine to schedule.
 
-   \clearpage
+``user_data``
+    This parameter is the argument passed to the routine when it is fired.
 
-.. index:: fire a timer after an interval
-.. index:: rtems_timer_fire_after
+.. rubric:: DESCRIPTION:
 
-.. _rtems_timer_fire_after:
+This directive initiates the timer specified by ``id``.  If the timer is
+running, it is automatically canceled before being initiated.  The timer is
+scheduled to fire at the time of day specified by ``wall_time``.  When the
+timer fires, the timer service routine ``routine`` will be invoked with the
+argument ``user_data`` in the context of the Timer Server task.
 
-TIMER_FIRE_AFTER - Fire timer after interval
---------------------------------------------
+.. rubric:: RETURN VALUES:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-        rtems_status_code rtems_timer_fire_after(
-            rtems_id                           id,
-            rtems_interval                     ticks,
-            rtems_timer_service_routine_entry  routine,
-            void                              *user_data
-        );
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The Timer Server was not initiated.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+:c:macro:`RTEMS_NOT_DEFINED`
+    The system date and time was not set.
 
-     * - ``RTEMS_SUCCESSFUL``
-       - timer initiated successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``routine`` is NULL
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
-     * - ``RTEMS_INVALID_NUMBER``
-       - invalid interval
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``routine`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-DESCRIPTION:
-    This directive initiates the timer specified by id.  If the timer is
-    running, it is automatically canceled before being initiated.  The timer is
-    scheduled to fire after an interval ticks clock ticks has passed.  When the
-    timer fires, the timer service routine routine will be invoked with the
-    argument user_data.
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``wall_time`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+:c:macro:`RTEMS_INVALID_CLOCK`
+    The time of day was invalid.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+.. Generated from spec:/rtems/timer/if/reset
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: fire a timer at wall time
-.. index:: rtems_timer_fire_when
-
-.. _rtems_timer_fire_when:
-
-TIMER_FIRE_WHEN - Fire timer when specified
--------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        rtems_status_code rtems_timer_fire_when(
-            rtems_id                           id,
-            rtems_time_of_day                 *wall_time,
-            rtems_timer_service_routine_entry  routine,
-            void                              *user_data
-        );
-
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
-
-     * - ``RTEMS_SUCCESSFUL``
-       - timer initiated successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``routine`` is NULL
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``wall_time`` is NULL
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
-     * - ``RTEMS_NOT_DEFINED``
-       - system date and time is not set
-     * - ``RTEMS_INVALID_CLOCK``
-       - invalid time of day
-
-DESCRIPTION:
-    This directive initiates the timer specified by id.  If the timer is
-    running, it is automatically canceled before being initiated.  The timer is
-    scheduled to fire at the time of day specified by wall_time.  When the
-    timer fires, the timer service routine routine will be invoked with the
-    argument user_data.
-
-NOTES:
-    This directive will not cause the running task to be preempted.
-
-.. raw:: latex
-
-   \clearpage
-
-.. index:: initiate the Timer Server
-.. index:: rtems_timer_initiate_server
-
-.. _rtems_timer_initiate_server:
-
-TIMER_INITIATE_SERVER - Initiate server for task-based timers
--------------------------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        rtems_status_code rtems_timer_initiate_server(
-            uint32_t         priority,
-            uint32_t         stack_size,
-            rtems_attribute  attribute_set
-        );
-
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
-
-     * - ``RTEMS_SUCCESSFUL``
-       - Timer Server initiated successfully
-     * - ``RTEMS_TOO_MANY``
-       - too many tasks created
-
-DESCRIPTION:
-    This directive initiates the Timer Server task.  This task is responsible
-    for executing all timers initiated via the
-    ``rtems_timer_server_fire_after`` or ``rtems_timer_server_fire_when``
-    directives.
-
-NOTES:
-    This directive could cause the calling task to be preempted.
-
-    The Timer Server task is created using the ``rtems_task_create`` service
-    and must be accounted for when configuring the system.
-
-    Even through this directive invokes the ``rtems_task_create`` and
-    ``rtems_task_start`` directives, it should only fail due to resource
-    allocation problems.
-
-.. raw:: latex
-
-   \clearpage
-
-.. index:: fire task-based a timer after an interval
-.. index:: rtems_timer_server_fire_after
-
-.. _rtems_timer_server_fire_after:
-
-TIMER_SERVER_FIRE_AFTER - Fire task-based timer after interval
---------------------------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        rtems_status_code rtems_timer_server_fire_after(
-            rtems_id                           id,
-            rtems_interval                     ticks,
-            rtems_timer_service_routine_entry  routine,
-            void                              *user_data
-        );
-
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
-
-     * - ``RTEMS_SUCCESSFUL``
-       - timer initiated successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``routine`` is NULL
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
-     * - ``RTEMS_INVALID_NUMBER``
-       - invalid interval
-     * - ``RTEMS_INCORRECT_STATE``
-       - Timer Server not initiated
-
-DESCRIPTION:
-    This directive initiates the timer specified by id and specifies that when
-    it fires it will be executed by the Timer Server.
-
-    If the timer is running, it is automatically canceled before being
-    initiated.  The timer is scheduled to fire after an interval ticks clock
-    ticks has passed.  When the timer fires, the timer service routine routine
-    will be invoked with the argument user_data.
-
-NOTES:
-    This directive will not cause the running task to be preempted.
-
-.. raw:: latex
-
-   \clearpage
-
-.. index:: fire a task-based timer at wall time
-.. index:: rtems_timer_server_fire_when
-
-.. _rtems_timer_server_fire_when:
-
-TIMER_SERVER_FIRE_WHEN - Fire task-based timer when specified
--------------------------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        rtems_status_code rtems_timer_server_fire_when(
-            rtems_id                           id,
-            rtems_time_of_day                 *wall_time,
-            rtems_timer_service_routine_entry  routine,
-            void                              *user_data
-        );
-
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
-
-     * - ``RTEMS_SUCCESSFUL``
-       - timer initiated successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``routine`` is NULL
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``wall_time`` is NULL
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
-     * - ``RTEMS_NOT_DEFINED``
-       - system date and time is not set
-     * - ``RTEMS_INVALID_CLOCK``
-       - invalid time of day
-     * - ``RTEMS_INCORRECT_STATE``
-       - Timer Server not initiated
-
-DESCRIPTION:
-    This directive initiates the timer specified by id and specifies that when
-    it fires it will be executed by the Timer Server.
-
-    If the timer is running, it is automatically canceled before being
-    initiated.  The timer is scheduled to fire at the time of day specified by
-    wall_time.  When the timer fires, the timer service routine routine will be
-    invoked with the argument user_data.
-
-NOTES:
-    This directive will not cause the running task to be preempted.
-
-.. raw:: latex
-
-   \clearpage
-
+.. index:: rtems_timer_reset()
 .. index:: reset a timer
-.. index:: rtems_timer_reset
 
-.. _rtems_timer_reset:
+.. _InterfaceRtemsTimerReset:
 
-TIMER_RESET - Reset an interval timer
--------------------------------------
+rtems_timer_reset()
+-------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Resets the timer.
 
-        rtems_status_code rtems_timer_reset(
-            rtems_id   id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - timer reset successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid timer id
-     * - ``RTEMS_NOT_DEFINED``
-       - attempted to reset a when or newly created timer
+    rtems_status_code rtems_timer_reset( rtems_id id );
 
-DESCRIPTION:
-    This directive resets the timer associated with id.  This timer must have
-    been previously initiated with either the ``rtems_timer_fire_after`` or
-    ``rtems_timer_server_fire_after`` directive.  If active the timer is
-    canceled, after which the timer is reinitiated using the same interval and
-    timer service routine which the original ``rtems_timer_fire_after`` or
-    ``rtems_timer_server_fire_after`` directive used.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    If the timer has not been used or the last usage of this timer was by a
-    ``rtems_timer_fire_when`` or ``rtems_timer_server_fire_when`` directive,
-    then the ``RTEMS_NOT_DEFINED`` error is returned.
+``id``
+    This parameter is the timer identifier.
 
-    Restarting a cancelled after timer results in the timer being reinitiated
-    with its previous timer service routine and interval.
+.. rubric:: DESCRIPTION:
 
-    This directive will not cause the running task to be preempted.
+This directive resets the timer specified by ``id``.  This timer must have been
+previously initiated with either the :ref:`InterfaceRtemsTimerFireAfter` or
+:ref:`InterfaceRtemsTimerServerFireAfter` directive.  If active the timer is
+canceled, after which the timer is reinitiated using the same interval and
+timer service routine which the original :ref:`InterfaceRtemsTimerFireAfter` or
+:ref:`InterfaceRtemsTimerServerFireAfter` directive used.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+:c:macro:`RTEMS_NOT_DEFINED`
+    The timer was not of the interval class.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
+
+If the timer has not been used or the last usage of this timer was by a
+:ref:`InterfaceRtemsTimerFireWhen` or :ref:`InterfaceRtemsTimerServerFireWhen`
+directive, then the :c:macro:`RTEMS_NOT_DEFINED` error is returned.
+
+Restarting a cancelled after timer results in the timer being reinitiated with
+its previous timer service routine and interval.
+
+.. Generated from spec:/rtems/timer/if/get-information
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_timer_get_information()
+
+.. _InterfaceRtemsTimerGetInformation:
+
+rtems_timer_get_information()
+-----------------------------
+
+Gets information about the timer.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_get_information(
+      rtems_id                 id,
+      rtems_timer_information *the_info
+    );
+
+.. rubric:: PARAMETERS:
+
+``id``
+    This parameter is the timer identifier.
+
+``the_info``
+    This parameter is the pointer to a timer information variable.  The
+    information about the timer will be stored in this variable, in case of a
+    successful operation.
+
+.. rubric:: DESCRIPTION:
+
+This directive returns information about the timer.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``the_info`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no timer associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+This directive will not cause the running task to be preempted.
