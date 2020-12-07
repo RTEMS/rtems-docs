@@ -6,3 +6,4 @@ aarch64 (AArch64)
 *****************
 
 .. include:: aarch64/a53.rst
+.. include:: aarch64/xilinx-zynqmp.rst
