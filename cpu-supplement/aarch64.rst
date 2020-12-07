@@ -104,7 +104,10 @@ Interrupt Stack
 ---------------
 
 The board support package must initialize the interrupt stack. The memory for
-the stacks is usually reserved in the linker script.
+the stacks is usually reserved in the linker script. The interrupt stack pointer
+is stored in the EL0 stack pointer and is accessed by switching to SP0 mode
+at the beginning of interrupt calls and back to SPx mode after completion of
+interrupt calls using the `spsel` instruction.
 
 Default Fatal Error Processing
 ==============================

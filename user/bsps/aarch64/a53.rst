@@ -8,8 +8,9 @@
 Qemu A53
 ========
 
-This BSP supports two variants, `qemu_a53_ilp32` and `qemu-a53_lp64`. The basic
-hardware initialization is performed by the BSP.
+This BSP supports two variants, `qemu_a53_ilp32` and `qemu_a53_lp64`. The basic
+hardware initialization is performed by the BSP. These BSPs support the GICv3
+interrupt controller.
 
 Boot via ELF
 ------------
