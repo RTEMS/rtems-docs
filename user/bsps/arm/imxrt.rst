@@ -78,17 +78,47 @@ look at the `i.MX RT1050 Processor Reference Manual, Rev. 4, 12/2019` chapter
 FDT
 ---
 
-The BSP used a FDT based initialization. The FDT is linked into the application.
+The BSP uses a FDT based initialization. The FDT is linked into the application.
 You can find the default FDT used in the BSP in
-`bsps/arm/imxrt/dts/imxrt1050-evkb.dts`. To use your own FDT compile it and
-convert it into a C file with (replace `YOUR.dts` and simmilar with your FDT
-source names)::
+`bsps/arm/imxrt/dts/imxrt1050-evkb.dts`. The FDT is split up into two parts. The
+core part is put into an `dtsi` file and is installed together with normal
+headers into `${PREFIX}/arm-rtems6/imxrt1052/lib/include`. You can use that to
+create your own device tree based on that. Basically use something like::
 
-  sh> export BSP_DIR="${RTEMS_SRC_DIR}/bsps/arm/imxrt/"
+  /dts-v1/;
+  
+  #include <imxrt/imxrt1050-pinfunc.h>
+  #include <imxrt/imxrt1050.dtsi>
+  
+  &lpuart1 {
+          pinctrl-0 = <&pinctrl_lpuart1>;
+          status = "okay";
+  };
+  
+  &chosen {
+          stdout-path = &lpuart1;
+  };
+  
+  /* put your further devices here */
+  
+  &iomuxc {
+          pinctrl_lpuart1: lpuart1grp {
+                  fsl,pins = <
+                          IMXRT_PAD_GPIO_AD_B0_12__LPUART1_TX     0x8
+                          IMXRT_PAD_GPIO_AD_B0_13__LPUART1_RX     0x13000
+                  >;
+          };
+  
+          /* put your further pinctrl groups here */
+  };
+
+You can then convert your FDT into a C file with (replace `YOUR.dts` and similar
+with your FDT source names)::
+
   sh> arm-rtems6-cpp -P -x assembler-with-cpp \
-          -I "${BSP_DIR}/include/" \
-          -include "YOUR.dts" /dev/null | \
-      dtc -@ -O dtb -o "YOUR.dtb" -b 0 -p 1024
+                     -I ${PREFIX}/arm-rtems6/imxrt1052/lib/include \
+                     -include "YOUR.dts" /dev/null | \
+            dtc -@ -O dtb -o "YOUR.dtb" -b 0 -p 1024
   sh> rtems-bin2c -C -N imxrt_dtb "YOUR.dtb" "YOUR.c"
 
 Make sure that your new c file is compiled and linked into the application.
