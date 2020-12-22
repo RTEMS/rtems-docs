@@ -179,6 +179,10 @@ extra support for the
 `Linux Trace Toolkit Next Generation (LTTng) <https://lttng.org/>`_.  This
 format can be analysed using `babeltrace <https://babeltrace.org/>`_ or
 `Eclipse Trace Compass <https://www.eclipse.org/tracecompass/>`_.
+The command line tool :file:`rtems-record-lttng` optionally uses
+`LLVM <https://www.llvm.org/>`_ to translate addresses to functions and source
+file locations.  Make sure you have the LLVM development package installed when
+you build the RTEMS Tools to enable this feature.
 
 For example, to get the event records from the record server running on the
 target use:
