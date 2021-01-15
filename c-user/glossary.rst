@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020 Richi Dubey (richidubey@gmail.com)
-.. Copyright (C) 2017, 2019 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2017, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
 
 Glossary
@@ -58,6 +58,9 @@ Glossary
     awakened
         A term used to describe a task that has been unblocked and may be
         scheduled to the CPU.
+
+    BCB
+        This term is an acronym for Barrier Control Block.
 
     big endian
         A data representation scheme in which the bytes composing a numeric value
@@ -190,6 +193,9 @@ Glossary
         The state entered by a task after it is created and before it has been
         started.
 
+    DPCB
+        This term is an acronym for Dual-Ported Memory Control Block.
+
     dual-ported
         A term used to describe memory which can be accessed at two different
         addresses.
@@ -218,6 +224,9 @@ Glossary
 
     error code
         This term has the same meaning as :term:`status code`.
+
+    ESCB
+        This term is an acronym for Extension Set Control Block.
 
     events
         A method for task communication and synchronization. The directives
@@ -491,6 +500,9 @@ Glossary
     Partition Control Block
         A data structure associated with each partition used by RTEMS to manage
         that partition.
+
+    PCB
+        This term is an acronym for Period Control Block.
 
     pending
         A term used to describe a task blocked waiting for an event, message,
