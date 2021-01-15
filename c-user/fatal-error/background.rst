@@ -44,6 +44,8 @@ a register), and halt the processor.  The precise actions of the RTEMS fatal
 error are discussed in the Default Fatal Error Processing chapter of the
 Applications Supplement document for a specific target processor.
 
+.. _FatalErrorSources:
+
 Fatal Sources
 -------------
 
