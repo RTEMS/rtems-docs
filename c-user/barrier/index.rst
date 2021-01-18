@@ -4,6 +4,8 @@
 
 .. index:: barrier
 
+.. _RTEMSAPIClassicBarrier:
+
 Barrier Manager
 ***************
 

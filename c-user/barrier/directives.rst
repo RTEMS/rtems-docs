@@ -1,265 +1,413 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2018 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _BarrierManagerDirectives:
 
 Directives
 ==========
 
-This section details the barrier manager's directives.  A subsection is
-dedicated to each of this manager's directives and describes the calling
-sequence, related constants, usage, and status codes.
+This section details the directives of the Barrier Manager. A subsection is
+dedicated to each of this manager's directives and lists the calling sequence,
+parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/barrier/if/create
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_barrier_create()
 .. index:: create a barrier
-.. index:: rtems_barrier_create
 
-.. _rtems_barrier_create:
+.. _InterfaceRtemsBarrierCreate:
 
-BARRIER_CREATE - Create a barrier
----------------------------------
+rtems_barrier_create()
+----------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Creates a barrier.
 
-        rtems_status_code rtems_barrier_create(
-            rtems_name           name,
-            rtems_attribute      attribute_set,
-            uint32_t             maximum_waiters,
-            rtems_id            *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - barrier created successfully
-     * - ``RTEMS_INVALID_NAME``
-       - invalid barrier name
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_TOO_MANY``
-       - too many barriers created
+    rtems_status_code rtems_barrier_create(
+      rtems_name      name,
+      rtems_attribute attribute_set,
+      uint32_t        maximum_waiters,
+      rtems_id       *id
+    );
 
-DESCRIPTION:
-    This directive creates a barrier which resides on the local node. The
-    created barrier has the user-defined name specified in ``name`` and the
-    initial count specified in ``count``.  For control and maintenance of the
-    barrier, RTEMS allocates and initializes a BCB.  The RTEMS-assigned barrier
-    id is returned in ``id``.  This barrier id is used with other barrier
-    related directives to access the barrier.
+.. rubric:: PARAMETERS:
 
-    .. list-table::
-     :class: rtems-table
+``name``
+    This parameter is the object name of the barrier.
 
-     * - ``RTEMS_BARRIER_MANUAL_RELEASE``
-       - only release
+``attribute_set``
+    This parameter is the attribute set of the barrier.
 
-    Specifying ``RTEMS_BARRIER_AUTOMATIC_RELEASE`` in ``attribute_set`` causes
-    tasks calling the ``rtems_barrier_wait`` directive to block until there are
-    ``maximum_waiters - 1`` tasks waiting at the barrier.  When the
-    ``maximum_waiters`` task invokes the ``rtems_barrier_wait`` directive, the
-    previous ``maximum_waiters - 1`` tasks are automatically released and the
-    caller returns.
+``maximum_waiters``
+    This parameter is the maximum count of waiters on an automatic release
+    barrier.
 
-    In contrast, when the ``RTEMS_BARRIER_MANUAL_RELEASE`` attribute is
-    specified, there is no limit on the number of tasks that will block at the
-    barrier. Only when the ``rtems_barrier_release`` directive is invoked, are
-    the tasks waiting at the barrier unblocked.
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the created barrier will be
+    stored in this variable.
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+.. rubric:: DESCRIPTION:
 
-    The following barrier attribute constants are defined by RTEMS:
+This directive creates a barrier which resides on the local node.  The barrier
+has the user-defined object name specified in ``name`` and the initial count
+specified in ``attribute_set``.  The assigned object identifier is returned in
+``id``.  This identifier is used to access the barrier with other barrier
+related directives.
 
-    .. list-table::
-     :class: rtems-table
+The **attribute set** specified in ``attribute_set`` is built through a
+*bitwise or* of the attribute constants described below.  Not all combinations
+of attributes are allowed.  Some attributes are mutually exclusive.  If
+mutually exclusive attributes are combined, the behaviour is undefined.
+Attributes not mentioned below are not evaluated by this directive and have no
+effect.  Default attributes can be selected by using the
+:c:macro:`RTEMS_DEFAULT_ATTRIBUTES` constant.
 
-     * - ``RTEMS_BARRIER_AUTOMATIC_RELEASE``
-       - automatically release the barrier when the configured number of tasks are
-         blocked
-     * - ``RTEMS_BARRIER_MANUAL_RELEASE``
-       - only release the barrier when the application invokes
-         the ``rtems_barrier_release`` directive.  (default)
+The **barrier class** is selected by the mutually exclusive
+:c:macro:`RTEMS_BARRIER_MANUAL_RELEASE` and
+:c:macro:`RTEMS_BARRIER_AUTOMATIC_RELEASE` attributes.
+
+* The **manual release class** is the default and can be emphasized through use
+  of the :c:macro:`RTEMS_BARRIER_MANUAL_RELEASE` attribute.  For this class,
+  there is no limit on the number of tasks that will block at the barrier. Only
+  when the :ref:`InterfaceRtemsBarrierRelease` directive is invoked, are the
+  tasks waiting at the barrier unblocked.
+
+* The **automatic release class** is selected by the
+  :c:macro:`RTEMS_BARRIER_AUTOMATIC_RELEASE` attribute.  For this class, tasks
+  calling the :ref:`InterfaceRtemsBarrierWait` directive will block until there
+  are ``maximum_waiters`` minus one tasks waiting at the barrier.  When the
+  ``maximum_waiters`` task invokes the :ref:`InterfaceRtemsBarrierWait`
+  directive, the previous ``maximum_waiters`` - 1 tasks are automatically
+  released and the caller returns.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was invalid.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NUMBER`
+    The ``maximum_waiters`` parameter was 0 for an automatic release barrier.
+
+:c:macro:`RTEMS_TOO_MANY`
+    There was no inactive object available to create a barrier.  The number of
+    barriers available to the application is configured through the
+    :ref:`CONFIGURE_MAXIMUM_BARRIERS` application configuration option.
+
+.. rubric:: NOTES:
+
+For control and maintenance of the barrier, RTEMS allocates a :term:`BCB` from
+the local BCB free pool and initializes it.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The number of barriers available to the application is configured through the
+  :ref:`CONFIGURE_MAXIMUM_BARRIERS` application configuration option.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may allocate memory from the RTEMS
+  Workspace.
+
+.. Generated from spec:/rtems/barrier/if/ident
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: get ID of a barrier
-.. index:: obtain ID of a barrier
-.. index:: rtems_barrier_ident
+.. index:: rtems_barrier_ident()
 
-.. _rtems_barrier_ident:
+.. _InterfaceRtemsBarrierIdent:
 
-BARRIER_IDENT - Get ID of a barrier
------------------------------------
+rtems_barrier_ident()
+---------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Identifies a barrier by the object name.
 
-        rtems_status_code rtems_barrier_ident(
-            rtems_name        name,
-            rtems_id         *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - barrier identified successfully
-     * - ``RTEMS_INVALID_NAME``
-       - barrier name not found
-     * - ``RTEMS_INVALID_NODE``
-       - invalid node id
+    rtems_status_code rtems_barrier_ident( rtems_name name, rtems_id *id );
 
-DESCRIPTION:
-    This directive obtains the barrier id associated with the barrier name.  If
-    the barrier name is not unique, then the barrier id will match one of the
-    barriers with that name.  However, this barrier id is not guaranteed to
-    correspond to the desired barrier.  The barrier id is used by other barrier
-    related directives to access the barrier.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``name``
+    This parameter is the object name to look up.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the object identifier of an object with the
+    specified name will be stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive obtains a barrier identifier associated with the barrier name
+specified in ``name``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    There was no object with the specified name on the local node.
+
+.. rubric:: NOTES:
+
+If the barrier name is not unique, then the barrier identifier will match the
+first barrier with that name in the search order.  However, this barrier
+identifier is not guaranteed to correspond to the desired barrier.
+
+The objects are searched from lowest to the highest index.  Only the local node
+is searched.
+
+The barrier identifier is used with other barrier related directives to access
+the barrier.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/barrier/if/delete
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_barrier_delete()
 .. index:: delete a barrier
-.. index:: rtems_barrier_delete
 
-.. _rtems_barrier_delete:
+.. _InterfaceRtemsBarrierDelete:
 
-BARRIER_DELETE - Delete a barrier
----------------------------------
+rtems_barrier_delete()
+----------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Deletes the barrier.
 
-        rtems_status_code rtems_barrier_delete(
-            rtems_id id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - barrier deleted successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid barrier id
+    rtems_status_code rtems_barrier_delete( rtems_id id );
 
-DESCRIPTION:
-    This directive deletes the barrier specified by ``id``.  All tasks blocked
-    waiting for the barrier to be released will be readied and returned a
-    status code which indicates that the barrier was deleted.  The BCB for this
-    barrier is reclaimed by RTEMS.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+``id``
+    This parameter is the barrier identifier.
 
-    The calling task will be preempted if it is enabled by the task's execution
-    mode and a higher priority local task is waiting on the deleted barrier.
-    The calling task will NOT be preempted if all of the tasks that are waiting
-    on the barrier are remote tasks.
+.. rubric:: DESCRIPTION:
 
-    The calling task does not have to be the task that created the barrier.
-    Any local task that knows the barrier id can delete the barrier.
+This directive deletes the barrier specified by ``id``.  All tasks blocked
+waiting for the barrier to be released will be readied and returned a status
+code which indicates that the barrier was deleted.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no barrier associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+The :term:`BCB` for the deleted barrier is reclaimed by RTEMS.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The calling task does not have to be the task that created the object.  Any
+  local task that knows the object identifier can delete the object.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may free memory to the RTEMS Workspace.
+
+.. Generated from spec:/rtems/barrier/if/wait
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_barrier_wait()
 .. index:: wait at a barrier
-.. index:: rtems_barrier_wait
 
-.. _rtems_barrier_wait:
+.. _InterfaceRtemsBarrierWait:
 
-BARRIER_WAIT - Wait at a barrier
-----------------------------------
+rtems_barrier_wait()
+--------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Waits at the barrier.
 
-        rtems_status_code rtems_barrier_wait(
-            rtems_id         id,
-            rtems_interval   timeout
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - barrier released and task unblocked
-     * - ``RTEMS_UNSATISFIED``
-       - barrier not available
-     * - ``RTEMS_TIMEOUT``
-       - timed out waiting for barrier
-     * - ``RTEMS_OBJECT_WAS_DELETED``
-       - barrier deleted while waiting
-     * - ``RTEMS_INVALID_ID``
-       - invalid barrier id
+    rtems_status_code rtems_barrier_wait( rtems_id id, rtems_interval timeout );
 
-DESCRIPTION:
+.. rubric:: PARAMETERS:
 
-    This directive waits at the barrier specified by ``id``.  The timeout
-    parameter specifies the maximum interval the calling task is willing to be
-    blocked waiting for the barrier.  If it is set to ``RTEMS_NO_TIMEOUT``,
-    then the calling task will wait until the barrier is released.
+``id``
+    This parameter is the barrier identifier.
 
-    Conceptually, the calling task should always be thought of as blocking when
-    it makes this call and being unblocked when the barrier is released.  If
-    the barrier is configured for manual release, this rule of thumb will
-    always be valid.  If the barrier is configured for automatic release, all
-    callers will block except for the one which is the Nth task which trips the
-    automatic release condition.
+``timeout``
+    This parameter is the timeout in clock ticks.  Use
+    :c:macro:`RTEMS_NO_TIMEOUT` to wait potentially forever.
 
-NOTES:
-    A clock tick is required to support the timeout functionality of this
-    directive.
+.. rubric:: DESCRIPTION:
+
+This directive waits at the barrier specified by ``id``.  The ``timeout``
+parameter defines how long the calling task is willing to wait.  Use
+:c:macro:`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
+timeout interval in clock ticks.
+
+Conceptually, the calling task should always be thought of as blocking when it
+makes this call and being unblocked when the barrier is released.  If the
+barrier is configured for manual release, this rule of thumb will always be
+valid.  If the barrier is configured for automatic release, all callers will
+block except for the one which trips the automatic release condition.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no barrier associated with the identifier specified by ``id``.
+
+:c:macro:`RTEMS_TIMEOUT`
+    The timeout happened while the calling task was waiting at the barrier.
+
+:c:macro:`RTEMS_OBJECT_WAS_DELETED`
+    The barrier was deleted while the calling task was waiting at the barrier.
+
+.. rubric:: NOTES:
+
+For automatic release barriers, the maximum count of waiting tasks is defined
+during barrier creation, see :ref:`InterfaceRtemsBarrierCreate`.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The timeout functionality of the directive requires a :term:`clock tick`.
+
+.. Generated from spec:/rtems/barrier/if/release
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_barrier_release()
 .. index:: release a barrier
-.. index:: rtems_barrier_release
 
-.. _rtems_barrier_release:
+.. _InterfaceRtemsBarrierRelease:
 
-BARRIER_RELEASE - Release a barrier
------------------------------------
+rtems_barrier_release()
+-----------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Releases the barrier.
 
-        rtems_status_code rtems_barrier_release(
-            rtems_id  id,
-            uint32_t *released
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - barrier released successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid barrier id
+    rtems_status_code rtems_barrier_release( rtems_id id, uint32_t *released );
 
-DESCRIPTION:
-    This directive releases the barrier specified by id.  All tasks waiting at
-    the barrier will be unblocked.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    The calling task may be preempted if it causes a higher priority task to be
-    made ready for execution.
+``id``
+    This parameter is the barrier identifier.
+
+``released``
+    This parameter is the pointer to an integer variable.  When the directive
+    call is successful, the number of released tasks will be stored in this
+    variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive releases the barrier specified by ``id``.  All tasks waiting at
+the barrier will be unblocked.  The number of released tasks will be returned
+in ``released``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``released`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no barrier associated with the identifier specified by ``id``.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within task context.
+
+* The directive may unblock another task which may preempt the calling task.
