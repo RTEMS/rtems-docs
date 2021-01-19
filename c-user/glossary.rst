@@ -928,6 +928,11 @@ Glossary
     target
         The system on which the application will ultimately execute.
 
+    target architecture
+        The target architecture is the instruction set architecture (ISA) of the
+        :term:`target`.  Some RTEMS features depend on the target architecture.  For
+        the details consult the *RTEMS CPU Architecture Supplement*.
+
     TAS
         This term is an acronym for Test-And-Set.
 
