@@ -5,6 +5,8 @@
 .. index:: device drivers
 .. index:: IO Manager
 
+.. _RTEMSAPIClassicIO:
+
 I/O Manager
 ***********
 

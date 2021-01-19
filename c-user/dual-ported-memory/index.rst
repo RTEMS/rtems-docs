@@ -5,6 +5,8 @@
 .. index:: ports
 .. index:: dual ported memory
 
+.. _RTEMSAPIClassicDPMem:
+
 Dual-Ported Memory Manager
 **************************
 

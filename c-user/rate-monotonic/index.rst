@@ -5,6 +5,8 @@
 .. index:: rate mononitonic tasks
 .. index:: periodic tasks
 
+.. _RTEMSAPIClassicRatemon:
+
 Rate Monotonic Manager
 **********************
 

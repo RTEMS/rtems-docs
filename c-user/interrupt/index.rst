@@ -4,6 +4,8 @@
 
 .. index:: interrupts
 
+.. _RTEMSAPIClassicIntr:
+
 Interrupt Manager
 *****************
 

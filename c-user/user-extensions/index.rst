@@ -4,7 +4,7 @@
 
 .. index:: user extensions
 
-.. _User Extensions Manager:
+.. _RTEMSAPIClassicUserext:
 
 User Extensions Manager
 ***********************

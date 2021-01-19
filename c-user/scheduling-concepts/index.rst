@@ -5,7 +5,7 @@
 .. index:: scheduling
 .. index:: task scheduling
 
-.. _SchedulingConcepts:
+.. _RTEMSAPIClassicScheduler:
 
 Scheduling Concepts
 *******************

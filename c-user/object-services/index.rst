@@ -4,6 +4,8 @@
 
 .. index:: object manipulation
 
+.. _RTEMSAPIClassicObject:
+
 Object Services
 ***************
 

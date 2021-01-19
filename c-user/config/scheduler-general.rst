@@ -38,7 +38,7 @@ than one, then the
 :ref:`SchedulerSMPEDF`
 is selected as the default scheduler algorithm.
 
-For the schedulers provided by RTEMS (see :ref:`SchedulingConcepts`), the
+For the schedulers provided by RTEMS (see :ref:`RTEMSAPIClassicScheduler`), the
 configuration is straightforward.  All that is required is to define the
 configuration option which specifies which scheduler you want for in your
 application.

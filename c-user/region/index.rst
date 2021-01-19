@@ -4,6 +4,8 @@
 
 .. index:: regions
 
+.. _RTEMSAPIClassicRegion:
+
 Region Manager
 **************
 

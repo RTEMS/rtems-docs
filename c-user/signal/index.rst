@@ -4,6 +4,8 @@
 
 .. index:: signals
 
+.. _RTEMSAPIClassicSignal:
+
 Signal Manager
 **************
 

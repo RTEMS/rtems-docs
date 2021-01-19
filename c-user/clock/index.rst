@@ -4,6 +4,8 @@
 
 .. index:: clock
 
+.. _RTEMSAPIClassicClock:
+
 Clock Manager
 *************
 

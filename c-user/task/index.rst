@@ -4,6 +4,8 @@
 
 .. index:: tasks
 
+.. _RTEMSAPIClassicTask:
+
 Task Manager
 ************
 

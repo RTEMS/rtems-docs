@@ -205,7 +205,7 @@ deallocating the context area, the task initiation and reinitiation extensions
 would be responsible for priming the context area, and the task context switch
 extension would save and restore the context of the device.
 
-For more information on user extensions, refer to :ref:`User Extensions Manager`.
+For more information on user extensions, refer to :ref:`RTEMSAPIClassicUserext`.
 
 Multiprocessor Communications Interface (MPCI)
 ==============================================

@@ -5,6 +5,8 @@
 .. index:: messages
 .. index:: message queues
 
+.. _RTEMSAPIClassicMessage:
+
 Message Manager
 ***************
 

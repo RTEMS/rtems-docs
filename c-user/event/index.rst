@@ -4,6 +4,8 @@
 
 .. index:: events
 
+.. _RTEMSAPIClassicEvent:
+
 Event Manager
 *************
 

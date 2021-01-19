@@ -4,6 +4,8 @@
 
 .. index:: partitions
 
+.. _RTEMSAPIClassicPart:
+
 Partition Manager
 *****************
 
