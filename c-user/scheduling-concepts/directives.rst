@@ -1,424 +1,701 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 2013, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _SchedulerManagerDirectives:
 
 Directives
 ==========
 
-This section details the scheduler manager.  A subsection is dedicated to each
-of these services and describes the calling sequence, related constants, usage,
-and status codes.
+This section details the directives of the Scheduler Manager. A subsection is
+dedicated to each of this manager's directives and lists the calling sequence,
+parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/scheduler/if/ident
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. _rtems_scheduler_ident:
+.. index:: rtems_scheduler_ident()
 
-SCHEDULER_IDENT - Get ID of a scheduler
+.. _InterfaceRtemsSchedulerIdent:
+
+rtems_scheduler_ident()
+-----------------------
+
+Identifies a scheduler by the object name.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_scheduler_ident( rtems_name name, rtems_id *id );
+
+.. rubric:: PARAMETERS:
+
+``name``
+    This parameter is the scheduler name to look up.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the scheduler will be
+    stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive obtains a scheduler identifier associated with the scheduler
+name specified in ``name``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    There was no scheduler associated with the name.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+.. rubric:: NOTES:
+
+The scheduler name is determined by the scheduler configuration.
+
+The scheduler identifier is used with other scheduler related directives to
+access the scheduler.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/ident-by-processor
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_scheduler_ident_by_processor()
+
+.. _InterfaceRtemsSchedulerIdentByProcessor:
+
+rtems_scheduler_ident_by_processor()
+------------------------------------
+
+Identifies a scheduler by the processor index.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_scheduler_ident_by_processor(
+      uint32_t  cpu_index,
+      rtems_id *id
+    );
+
+.. rubric:: PARAMETERS:
+
+``cpu_index``
+    This parameter is the processor index to identify the scheduler.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the scheduler will be
+    stored in this variable.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The processor index was invalid.
+
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The processor index was valid, however, the corresponding processor was not
+    owned by a scheduler.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/ident-by-processor-set
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_scheduler_ident_by_processor_set()
+
+.. _InterfaceRtemsSchedulerIdentByProcessorSet:
+
+rtems_scheduler_ident_by_processor_set()
+----------------------------------------
+
+Identifies a scheduler by the processor set.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_scheduler_ident_by_processor_set(
+      size_t           cpusetsize,
+      const cpu_set_t *cpuset,
+      rtems_id        *id
+    );
+
+.. rubric:: PARAMETERS:
+
+``cpusetsize``
+    This parameter is the size of the referenced processor set variable in
+    bytes.  This value shall be positive.
+
+``cpuset``
+    This parameter is the pointer to a processor set variable.  The referenced
+    processor set will be used to identify the scheduler.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the scheduler will be
+    stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+The scheduler is selected according to the highest numbered online processor in
+the specified processor set.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_SIZE`
+    The processor set size was invalid.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The processor set contained no online processor.
+
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The processor set was valid, however, the highest numbered online processor
+    in the processor set was not owned by a scheduler.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/get-maximum-priority
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_scheduler_get_maximum_priority()
+
+.. _InterfaceRtemsSchedulerGetMaximumPriority:
+
+rtems_scheduler_get_maximum_priority()
+--------------------------------------
+
+Gets the maximum task priority of the scheduler.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_scheduler_get_maximum_priority(
+      rtems_id             scheduler_id,
+      rtems_task_priority *priority
+    );
+
+.. rubric:: PARAMETERS:
+
+``scheduler_id``
+    This parameter is the scheduler identifier.
+
+``priority``
+    This parameter is the pointer to a task priority variable.  The maximum
+    priority of the scheduler will be stored in this variable, if the operation
+    is successful.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no scheduler associated with the identifier specified by
+    ``scheduler_id``.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``priority`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/map-priority-to-posix
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_scheduler_map_priority_to_posix()
+
+.. _InterfaceRtemsSchedulerMapPriorityToPosix:
+
+rtems_scheduler_map_priority_to_posix()
 ---------------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Maps a Classic API task priority to the corresponding POSIX thread priority.
 
-        rtems_status_code rtems_scheduler_ident(
-            rtems_name  name,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``id`` parameter is ``NULL``.
-     * - ``RTEMS_INVALID_NAME``
-       - Invalid scheduler name.
+    rtems_status_code rtems_scheduler_map_priority_to_posix(
+      rtems_id            scheduler_id,
+      rtems_task_priority priority,
+      int                *posix_priority
+    );
 
-DESCRIPTION:
-    Identifies a scheduler by its name.  The scheduler name is determined by
-    the scheduler configuration.  See :ref:`ConfigurationSchedulerTable`
-    and :ref:`CONFIGURE_SCHEDULER_NAME`.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    None.
+``scheduler_id``
+    This parameter is the scheduler identifier.
 
-.. raw:: latex
+``priority``
+    This parameter is the Classic API task priority to map.
 
-   \clearpage
+``posix_priority``
+    This parameter is the pointer to a POSIX thread priority variable.  When
+    the directive call is successful, the POSIX thread priority value
+    corresponding to the specified Classic API task priority value will be
+    stored in this variable.
 
-.. _rtems_scheduler_ident_by_processor:
+.. rubric:: RETURN VALUES:
 
-SCHEDULER_IDENT_BY_PROCESSOR - Get ID of a scheduler by processor
------------------------------------------------------------------
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-CALLING SEQUENCE:
-    .. code-block:: c
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``posix_priority`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-        rtems_status_code rtems_scheduler_ident_by_processor(
-            uint32_t  cpu_index,
-            rtems_id *id
-        );
+:c:macro:`RTEMS_INVALID_ID`
+    There was no scheduler associated with the identifier specified by
+    ``scheduler_id``.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+:c:macro:`RTEMS_INVALID_PRIORITY`
+    The Classic API task priority was invalid.
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``id`` parameter is ``NULL``.
-     * - ``RTEMS_INVALID_NAME``
-       - Invalid processor index.
-     * - ``RTEMS_INCORRECT_STATE``
-       - The processor index is valid, however, this processor is not owned by
-         a scheduler.
+.. rubric:: CONSTRAINTS:
 
-DESCRIPTION:
-    Identifies a scheduler by a processor.
+The following constraints apply to this directive:
 
-NOTES:
-    None.
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/map-priority-from-posix
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. _rtems_scheduler_ident_by_processor_set:
+.. index:: rtems_scheduler_map_priority_from_posix()
 
-SCHEDULER_IDENT_BY_PROCESSOR_SET - Get ID of a scheduler by processor set
--------------------------------------------------------------------------
+.. _InterfaceRtemsSchedulerMapPriorityFromPosix:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+rtems_scheduler_map_priority_from_posix()
+-----------------------------------------
 
-        rtems_status_code rtems_scheduler_ident_by_processor_set(
-            size_t           cpusetsize,
-            const cpu_set_t *cpuset,
-            rtems_id        *id
-        );
+Maps a POSIX thread priority to the corresponding Classic API task priority.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. rubric:: CALLING SEQUENCE:
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``id`` parameter is ``NULL``.
-     * - ``RTEMS_INVALID_SIZE``
-       - Invalid processor set size.
-     * - ``RTEMS_INVALID_NAME``
-       - The processor set contains no online processor.
-     * - ``RTEMS_INCORRECT_STATE``
-       - The processor set is valid, however, the highest numbered online
-         processor in the specified processor set is not owned by a scheduler.
+.. code-block:: c
 
-DESCRIPTION:
-    Identifies a scheduler by a processor set.  The scheduler is selected
-    according to the highest numbered online processor in the specified
-    processor set.
+    rtems_status_code rtems_scheduler_map_priority_from_posix(
+      rtems_id             scheduler_id,
+      int                  posix_priority,
+      rtems_task_priority *priority
+    );
 
-NOTES:
-    None.
+.. rubric:: PARAMETERS:
 
-.. raw:: latex
+``scheduler_id``
+    This parameter is the scheduler identifier.
 
-   \clearpage
+``posix_priority``
+    This parameter is the POSIX thread priority to map.
 
-.. _rtems_scheduler_get_maximum_priority:
+``priority``
+    This parameter is the pointer to a Classic API task priority variable.
+    When the directive call is successful, the Classic API task priority value
+    corresponding to the specified POSIX thread priority value will be stored
+    in this variable.
 
-SCHEDULER_GET_MAXIMUM_PRIORITY - Get maximum task priority of a scheduler
--------------------------------------------------------------------------
+.. rubric:: RETURN VALUES:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-        rtems_status_code rtems_scheduler_get_maximum_priority(
-            rtems_id             scheduler_id,
-            rtems_task_priority *priority
-        );
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``priority`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+:c:macro:`RTEMS_INVALID_ID`
+    There was no scheduler associated with the identifier specified by
+    ``scheduler_id``.
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ID``
-       - Invalid scheduler instance identifier.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``priority`` parameter is ``NULL``.
+:c:macro:`RTEMS_INVALID_PRIORITY`
+    The POSIX thread priority was invalid.
 
-DESCRIPTION:
-    Returns the maximum task priority of the specified scheduler instance in
-    ``priority``.
+.. rubric:: CONSTRAINTS:
 
-NOTES:
-    None.
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/get-processor
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. _rtems_scheduler_map_priority_to_posix:
+.. index:: rtems_scheduler_get_processor()
 
-SCHEDULER_MAP_PRIORITY_TO_POSIX - Map task priority to POSIX thread prority
----------------------------------------------------------------------------
+.. _InterfaceRtemsSchedulerGetProcessor:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+rtems_scheduler_get_processor()
+-------------------------------
 
-        rtems_status_code rtems_scheduler_map_priority_to_posix(
-            rtems_id             scheduler_id,
-            rtems_task_priority  priority,
-            int                 *posix_priority
-        );
+Returns the index of the current processor.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. rubric:: CALLING SEQUENCE:
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``posix_priority`` parameter is ``NULL``.
-     * - ``RTEMS_INVALID_ID``
-       - Invalid scheduler instance identifier.
-     * - ``RTEMS_INVALID_PRIORITY``
-       - Invalid task priority.
+.. code-block:: c
 
-DESCRIPTION:
-    Maps a task priority to the corresponding POSIX thread priority.
+    uint32_t rtems_scheduler_get_processor( void );
 
-NOTES:
-    None.
+.. rubric:: DESCRIPTION:
 
-.. raw:: latex
+Where the system was built with SMP support disabled, this directive evaluates
+to a compile time constant of zero.
 
-   \clearpage
+Where the system was built with SMP support enabled, this directive returns the
+index of the current processor.  The set of processor indices is the range of
+integers starting with zero up to
+:ref:`InterfaceRtemsSchedulerGetProcessorMaximum` minus one.
 
-.. _rtems_scheduler_map_priority_from_posix:
+.. rubric:: RETURN VALUES:
 
-SCHEDULER_MAP_PRIORITY_FROM_POSIX - Map POSIX thread prority to task priority
------------------------------------------------------------------------------
+Returns the index of the current processor.
 
-CALLING SEQUENCE:
-    .. code-block:: c
+.. rubric:: NOTES:
 
-        rtems_status_code rtems_scheduler_map_priority_from_posix(
-            rtems_id             scheduler_id,
-            int                  posix_priority,
-            rtems_task_priority *priority
-        );
+Outside of sections with disabled thread dispatching the current processor
+index may change after every instruction since the thread may migrate from one
+processor to another.  Sections with disabled interrupts are sections with
+thread dispatching disabled.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. rubric:: CONSTRAINTS:
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``priority`` parameter is ``NULL``.
-     * - ``RTEMS_INVALID_ID``
-       - Invalid scheduler instance identifier.
-     * - ``RTEMS_INVALID_PRIORITY``
-       - Invalid POSIX thread priority.
+The following constraints apply to this directive:
 
-DESCRIPTION:
-    Maps a POSIX thread priority to the corresponding task priority.
+* The directive may be called from within any runtime context.
 
-NOTES:
-    None.
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/get-processor-maximum
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. _rtems_scheduler_get_processor:
+.. index:: rtems_scheduler_get_processor_maximum()
 
-SCHEDULER_GET_PROCESSOR - Get current processor index
------------------------------------------------------
+.. _InterfaceRtemsSchedulerGetProcessorMaximum:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+rtems_scheduler_get_processor_maximum()
+---------------------------------------
 
-        uint32_t rtems_scheduler_get_processor( void );
+Returns the processor maximum supported by the system.
 
-DIRECTIVE STATUS CODES:
-    This directive returns the index of the current processor.
+.. rubric:: CALLING SEQUENCE:
 
-DESCRIPTION:
-    In uniprocessor configurations, a value of zero will be returned.
+.. code-block:: c
 
-    In SMP configurations, an architecture specific method is used to obtain the
-    index of the current processor in the system.  The set of processor indices
-    is the range of integers starting with zero up to the processor count minus
-    one.
+    uint32_t rtems_scheduler_get_processor_maximum( void );
 
-    Outside of sections with disabled thread dispatching the current processor
-    index may change after every instruction since the thread may migrate from
-    one processor to another.  Sections with disabled interrupts are sections
-    with thread dispatching disabled.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    None.
+Where the system was built with SMP support disabled, this directive evaluates
+to a compile time constant of one.
 
-.. raw:: latex
+Where the system was built with SMP support enabled, this directive returns the
+minimum of the processors (physically or virtually) available at the
+:term:`target` and the configured processor maximum (see
+:ref:`CONFIGURE_MAXIMUM_PROCESSORS`).  Not all processors in the range from
+processor index zero to the last processor index (which is the processor
+maximum minus one) may be configured to be used by a scheduler or may be online
+(online processors have a scheduler assigned).
 
-   \clearpage
+.. rubric:: RETURN VALUES:
 
-.. _rtems_scheduler_get_processor_maximum:
+Returns the processor maximum supported by the system.
 
-SCHEDULER_GET_PROCESSOR_MAXIMUM - Get processor maximum
--------------------------------------------------------
+.. rubric:: CONSTRAINTS:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+The following constraints apply to this directive:
 
-        uint32_t rtems_scheduler_get_processor_maximum( void );
+* The directive may be called from within any runtime context.
 
-DIRECTIVE STATUS CODES:
-    This directive returns the processor maximum supported by the system.
+* The directive will not cause the calling task to be preempted.
 
-DESCRIPTION:
-    In uniprocessor configurations, a value of one will be returned.
-
-    In SMP configurations, this directive returns the minimum of the processors
-    (physically or virtually) available by the platform and the configured
-    processor maximum.  Not all processors in the range from processor index
-    zero to the last processor index (which is the processor maximum minus one)
-    may be configured to be used by a scheduler or online (online processors
-    have a scheduler assigned).
-
-NOTES:
-    None.
+.. Generated from spec:/rtems/scheduler/if/get-processor-set
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. _rtems_scheduler_get_processor_set:
+.. index:: rtems_scheduler_get_processor_set()
 
-SCHEDULER_GET_PROCESSOR_SET - Get processor set of a scheduler
---------------------------------------------------------------
+.. _InterfaceRtemsSchedulerGetProcessorSet:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+rtems_scheduler_get_processor_set()
+-----------------------------------
 
-        rtems_status_code rtems_scheduler_get_processor_set(
-            rtems_id   scheduler_id,
-            size_t     cpusetsize,
-            cpu_set_t *cpuset
-        );
+Gets the set of processors owned by the scheduler.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. rubric:: CALLING SEQUENCE:
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ID``
-       - Invalid scheduler instance identifier.
-     * - ``RTEMS_INVALID_ADDRESS``
-       - The ``cpuset`` parameter is ``NULL``.
-     * - ``RTEMS_INVALID_NUMBER``
-       - The processor set buffer is too small for the set of processors owned
-         by the scheduler instance.
+.. code-block:: c
 
-DESCRIPTION:
-    Returns the processor set owned by the scheduler instance in ``cpuset``.  A
-    set bit in the processor set means that this processor is owned by the
-    scheduler instance and a cleared bit means the opposite.
+    rtems_status_code rtems_scheduler_get_processor_set(
+      rtems_id   scheduler_id,
+      size_t     cpusetsize,
+      cpu_set_t *cpuset
+    );
 
-NOTES:
-    None.
+.. rubric:: PARAMETERS:
 
-.. raw:: latex
+``scheduler_id``
+    This parameter is the scheduler identifier.
 
-   \clearpage
+``cpusetsize``
+    This parameter is the size of the referenced processor set variable in
+    bytes.
 
-.. _rtems_scheduler_add_processor:
+``cpuset``
+    This parameter is the pointer to a processor set variable.  When the
+    directive call is successful, the processor set of the scheduler will be
+    stored in this variable.  A set bit in the processor set means that the
+    corresponding processor is owned by the scheduler, otherwise the bit is
+    cleared.
 
-SCHEDULER_ADD_PROCESSOR - Add processor to a scheduler
-------------------------------------------------------
+.. rubric:: RETURN VALUES:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-        rtems_status_code rtems_scheduler_add_processor(
-            rtems_id scheduler_id,
-            uint32_t cpu_index
-        );
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``cpuset`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+:c:macro:`RTEMS_INVALID_ID`
+    There was no scheduler associated with the identifier specified by
+    ``scheduler_id``.
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ID``
-       - Invalid scheduler instance identifier.
-     * - ``RTEMS_NOT_CONFIGURED``
-       - The processor is not configured to be used by the application.
-     * - ``RTEMS_INCORRECT_STATE``
-       - The processor is configured to be used by the application, however, it
-         is not online.
-     * - ``RTEMS_RESOURCE_IN_USE``
-       - The processor is already assigned to a scheduler instance.
+:c:macro:`RTEMS_INVALID_NUMBER`
+    The provided processor set was too small for the set of processors owned by
+    the scheduler.
 
-DESCRIPTION:
-    Adds a processor to the set of processors owned by the specified scheduler
-    instance.
+.. rubric:: CONSTRAINTS:
 
-NOTES:
-    Must be called from task context.  This operation obtains and releases the
-    objects allocator lock.
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/add-processor
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. _rtems_scheduler_remove_processor:
+.. index:: rtems_scheduler_add_processor()
 
-SCHEDULER_REMOVE_PROCESSOR - Remove processor from a scheduler
---------------------------------------------------------------
+.. _InterfaceRtemsSchedulerAddProcessor:
 
-CALLING SEQUENCE:
-    .. code-block:: c
+rtems_scheduler_add_processor()
+-------------------------------
 
-        rtems_status_code rtems_scheduler_remove_processor(
-            rtems_id scheduler_id,
-            uint32_t cpu_index
-        );
+Adds the processor to the set of processors owned by the scheduler.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. rubric:: CALLING SEQUENCE:
 
-     * - ``RTEMS_SUCCESSFUL``
-       - Successful operation.
-     * - ``RTEMS_INVALID_ID``
-       - Invalid scheduler instance identifier.
-     * - ``RTEMS_INVALID_NUMBER``
-       - The processor is not owned by the specified scheduler instance.
-     * - ``RTEMS_RESOURCE_IN_USE``
-       - The set of processors owned by the specified scheduler instance would
-         be empty after the processor removal and there exists a non-idle task
-         that uses this scheduler instance as its home scheduler instance.
-     * - ``RTEMS_RESOURCE_IN_USE``
-       - A task with a restricted processor affinity exists that uses this
-         scheduler instance as its home scheduler instance and it would be no
-         longer possible to allocate a processor for this task after the
-         removal of this processor.
+.. code-block:: c
 
-DESCRIPTION:
-    Removes a processor from set of processors owned by the specified scheduler
-    instance.
+    rtems_status_code rtems_scheduler_add_processor(
+      rtems_id scheduler_id,
+      uint32_t cpu_index
+    );
 
-NOTES:
-    Must be called from task context.  This operation obtains and releases the
-    objects allocator lock.  Removing a processor from a scheduler is a complex
-    operation that involves all tasks of the system.
+.. rubric:: PARAMETERS:
+
+``scheduler_id``
+    This parameter is the scheduler identifier.
+
+``cpu_index``
+    This parameter is the index of the processor to add.
+
+.. rubric:: DESCRIPTION:
+
+This directive adds the processor specified by the ``cpu_index`` to the
+scheduler specified by ``scheduler_id``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no scheduler associated with the identifier specified by
+    ``scheduler_id``.
+
+:c:macro:`RTEMS_NOT_CONFIGURED`
+    The processor was not configured to be used by the application.
+
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The processor was configured to be used by the application, however, it was
+    not online.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The processor was already assigned to a scheduler.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/scheduler/if/remove-processor
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_scheduler_remove_processor()
+
+.. _InterfaceRtemsSchedulerRemoveProcessor:
+
+rtems_scheduler_remove_processor()
+----------------------------------
+
+Removes the processor from the set of processors owned by the scheduler.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_scheduler_remove_processor(
+      rtems_id scheduler_id,
+      uint32_t cpu_index
+    );
+
+.. rubric:: PARAMETERS:
+
+``scheduler_id``
+    This parameter is the scheduler identifier.
+
+``cpu_index``
+    This parameter is the index of the processor to remove.
+
+.. rubric:: DESCRIPTION:
+
+This directive removes the processor specified by the ``cpu_index`` from the
+scheduler specified by ``scheduler_id``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no scheduler associated with the identifier specified by
+    ``scheduler_id``.
+
+:c:macro:`RTEMS_INVALID_NUMBER`
+    The processor was not owned by the scheduler.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The set of processors owned by the scheduler would have been empty after
+    the processor removal and there was at least one non-idle task that used
+    this scheduler as its :term:`home scheduler`.
+
+.. rubric:: NOTES:
+
+Removing a processor from a scheduler is a complex operation that involves all
+tasks of the system.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
