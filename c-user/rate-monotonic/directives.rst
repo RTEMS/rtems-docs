@@ -1,474 +1,719 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2017 Kuan-Hsun Chen
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
-.. Copyright (C) 2017 Kuan-Hsun Chen.
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _RateMonotonicManagerDirectives:
 
 Directives
 ==========
 
-This section details the rate monotonic manager's directives.  A subsection is
-dedicated to each of this manager's directives and describes the calling
-sequence, related constants, usage, and status codes.
+This section details the directives of the Rate-Monotonic Manager. A subsection
+is dedicated to each of this manager's directives and lists the calling
+sequence, parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/ratemon/if/create
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_create()
 .. index:: create a period
-.. index:: rtems_rate_monotonic_create
 
-.. _rtems_rate_monotonic_create:
+.. _InterfaceRtemsRateMonotonicCreate:
 
-RATE_MONOTONIC_CREATE - Create a rate monotonic period
-------------------------------------------------------
+rtems_rate_monotonic_create()
+-----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Creates a period.
 
-        rtems_status_code rtems_rate_monotonic_create(
-            rtems_name  name,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - rate monotonic period created successfully
-     * - ``RTEMS_INVALID_NAME``
-       - invalid period name
-     * - ``RTEMS_TOO_MANY``
-       - too many periods created
+    rtems_status_code rtems_rate_monotonic_create( rtems_name name, rtems_id *id );
 
-DESCRIPTION:
-    This directive creates a rate monotonic period.  The assigned rate
-    monotonic id is returned in id.  This id is used to access the period with
-    other rate monotonic manager directives.  For control and maintenance of
-    the rate monotonic period, RTEMS allocates a PCB from the local PCB free
-    pool and initializes it.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+``name``
+    This parameter is the object name of the period.
 
-.. raw:: latex
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the created period will be
+    stored in this variable.
 
-   \clearpage
+.. rubric:: DESCRIPTION:
 
-.. index:: get ID of a period
-.. index:: obtain ID of a period
-.. index:: rtems_rate_monotonic_ident
+This directive creates a period which resides on the local node.  The period
+has the user-defined object name specified in ``name`` The assigned object
+identifier is returned in ``id``.  This identifier is used to access the period
+with other rate monotonic related directives.
 
-.. _rtems_rate_monotonic_ident:
+.. rubric:: RETURN VALUES:
 
-RATE_MONOTONIC_IDENT - Get ID of a period
------------------------------------------
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
 
-CALLING SEQUENCE:
-    .. code-block:: c
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was invalid.
 
-        rtems_status_code rtems_rate_monotonic_ident(
-            rtems_name  name,
-            rtems_id   *id
-        );
+:c:macro:`RTEMS_TOO_MANY`
+    There was no inactive object available to create a period.  The number of
+    periods available to the application is configured through the
+    :ref:`CONFIGURE_MAXIMUM_PERIODS` application configuration option.
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. rubric:: NOTES:
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period identified successfully
-     * - ``RTEMS_INVALID_NAME``
-       - period name not found
+The calling task is registered as the owner of the created period.  Some
+directives can be only used by this task for the created period.
 
-DESCRIPTION:
-    This directive obtains the period id associated with the period name to be
-    acquired.  If the period name is not unique, then the period id will match
-    one of the periods with that name.  However, this period id is not
-    guaranteed to correspond to the desired period.  The period id is used to
-    access this period in other rate monotonic manager directives.
+For control and maintenance of the period, RTEMS allocates a :term:`PCB` from
+the local PCB free pool and initializes it.
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The number of periods available to the application is configured through the
+  :ref:`CONFIGURE_MAXIMUM_PERIODS` application configuration option.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may allocate memory from the RTEMS
+  Workspace.
+
+.. Generated from spec:/rtems/ratemon/if/ident
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_ident()
+
+.. _InterfaceRtemsRateMonotonicIdent:
+
+rtems_rate_monotonic_ident()
+----------------------------
+
+Identifies a period by the object name.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_rate_monotonic_ident( rtems_name name, rtems_id *id );
+
+.. rubric:: PARAMETERS:
+
+``name``
+    This parameter is the object name to look up.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the object identifier of an object with the
+    specified name will be stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive obtains a period identifier associated with the period name
+specified in ``name``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    There was no object with the specified name on the local node.
+
+.. rubric:: NOTES:
+
+If the period name is not unique, then the period identifier will match the
+first period with that name in the search order.  However, this period
+identifier is not guaranteed to correspond to the desired period.
+
+The objects are searched from lowest to the highest index.  Only the local node
+is searched.
+
+The period identifier is used with other rate monotonic related directives to
+access the period.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/ratemon/if/cancel
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_rate_monotonic_cancel()
 .. index:: cancel a period
-.. index:: rtems_rate_monotonic_cancel
 
-.. _rtems_rate_monotonic_cancel:
+.. _InterfaceRtemsRateMonotonicCancel:
 
-RATE_MONOTONIC_CANCEL - Cancel a period
----------------------------------------
+rtems_rate_monotonic_cancel()
+-----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Cancels the period.
 
-        rtems_status_code rtems_rate_monotonic_cancel(
-            rtems_id id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period canceled successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid rate monotonic period id
-     * - ``RTEMS_NOT_OWNER_OF_RESOURCE``
-       - rate monotonic period not created by calling task
+    rtems_status_code rtems_rate_monotonic_cancel( rtems_id id );
 
-DESCRIPTION:
+.. rubric:: PARAMETERS:
 
-    This directive cancels the rate monotonic period id.  This period will be
-    reinitiated by the next invocation of ``rtems_rate_monotonic_period``
-    with id.
+``id``
+    This parameter is the rate monotonic period identifier.
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+.. rubric:: DESCRIPTION:
 
-    The rate monotonic period specified by id must have been created by the
-    calling task.
+This directive cancels the rate monotonic period specified by ``id``.  This
+period may be reinitiated by the next invocation of
+:ref:`InterfaceRtemsRateMonotonicPeriod`.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no rate monotonic period associated with the identifier specified
+    by ``id``.
+
+:c:macro:`RTEMS_NOT_OWNER_OF_RESOURCE`
+    The rate monotonic period was not created by the calling task.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
+
+* The directive may be used exclusively by the task which created the
+  associated object.
+
+.. Generated from spec:/rtems/ratemon/if/delete
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: rtems_rate_monotonic_delete
+.. index:: rtems_rate_monotonic_delete()
 .. index:: delete a period
 
-.. _rtems_rate_monotonic_delete:
+.. _InterfaceRtemsRateMonotonicDelete:
 
-RATE_MONOTONIC_DELETE - Delete a rate monotonic period
-------------------------------------------------------
+rtems_rate_monotonic_delete()
+-----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Deletes the period.
 
-        rtems_status_code rtems_rate_monotonic_delete(
-            rtems_id id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period deleted successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid rate monotonic period id
+    rtems_status_code rtems_rate_monotonic_delete( rtems_id id );
 
-DESCRIPTION:
+.. rubric:: PARAMETERS:
 
-    This directive deletes the rate monotonic period specified by id.  If the
-    period is running, it is automatically canceled.  The PCB for the deleted
-    period is reclaimed by RTEMS.
+``id``
+    This parameter is the period identifier.
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+.. rubric:: DESCRIPTION:
 
-    A rate monotonic period can be deleted by a task other than the task which
-    created the period.
+This directive deletes the period specified by ``id``.  If the period is
+running, it is automatically canceled.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no period associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+The :term:`PCB` for the deleted period is reclaimed by RTEMS.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The calling task does not have to be the task that created the object.  Any
+  local task that knows the object identifier can delete the object.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may free memory to the RTEMS Workspace.
+
+.. Generated from spec:/rtems/ratemon/if/period
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_period()
 .. index:: conclude current period
 .. index:: start current period
 .. index:: period initiation
-.. index:: rtems_rate_monotonic_period
 
-.. _rtems_rate_monotonic_period:
+.. _InterfaceRtemsRateMonotonicPeriod:
 
-RATE_MONOTONIC_PERIOD - Conclude current/Start next period
-----------------------------------------------------------
+rtems_rate_monotonic_period()
+-----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Concludes the current period and start the next period, or gets the period
+status.
 
-        rtems_status_code rtems_rate_monotonic_period(
-            rtems_id       id,
-            rtems_interval length
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period initiated successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid rate monotonic period id
-     * - ``RTEMS_NOT_OWNER_OF_RESOURCE``
-       - period not created by calling task
-     * - ``RTEMS_NOT_DEFINED``
-       - period has never been initiated (only possible when period is set to PERIOD_STATUS)
-     * - ``RTEMS_TIMEOUT``
-       - period has expired
+    rtems_status_code rtems_rate_monotonic_period(
+      rtems_id       id,
+      rtems_interval length
+    );
 
-DESCRIPTION:
-    This directive initiates the rate monotonic period id with a length of
-    period ticks.  If id is running, then the calling task will block for the
-    remainder of the period before reinitiating the period with the specified
-    period.  If id was not running (either expired or never initiated), the
-    period is immediately initiated and the directive returns immediately.
-    If id has expired its period, the postponed job will be released immediately
-    and the following calls of this directive will release postponed
-    jobs until there is no more deadline miss.
+.. rubric:: PARAMETERS:
 
-    If invoked with a period of ``RTEMS_PERIOD_STATUS`` ticks, the current
-    state of id will be returned.  The directive status indicates the current
-    state of the period.  This does not alter the state or period of the
-    period.
+``id``
+    This parameter is the rate monotonic period identifier.
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``length``
+    This parameter is the period length in :term:`clock ticks <clock tick>` or
+    :c:macro:`RTEMS_PERIOD_STATUS` to get the period status.
+
+.. rubric:: DESCRIPTION:
+
+This directive initiates the rate monotonic period specified by ``id``  with a
+length of period ticks specified by ``length``.  If the period is running, then
+the calling task will block for the remainder of the period before reinitiating
+the period with the specified period length.  If the period was not running
+(either expired or never initiated), the period is immediately initiated and
+the directive returns immediately.  If the period has expired, the postponed
+job will be released immediately and the following calls of this directive will
+release postponed jobs until there is no more deadline miss.
+
+If invoked with a period length of :c:macro:`RTEMS_PERIOD_STATUS` ticks, the
+current state of the period will be returned.  The directive status indicates
+the current state of the period.  This does not alter the state or period
+length of the period.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no rate monotonic period associated with the identifier specified
+    by ``id``.
+
+:c:macro:`RTEMS_NOT_OWNER_OF_RESOURCE`
+    The rate monotonic period was not created by the calling task.
+
+:c:macro:`RTEMS_NOT_DEFINED`
+    The rate monotonic period has never been initiated (only possible when the
+    ``length`` parameter was equal to :c:macro:`RTEMS_PERIOD_STATUS`).
+
+:c:macro:`RTEMS_TIMEOUT`
+    The rate monotonic period has expired.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may be used exclusively by the task which created the
+  associated object.
+
+.. Generated from spec:/rtems/ratemon/if/get-status
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_get_status()
 .. index:: get status of period
 .. index:: obtain status of period
-.. index:: rtems_rate_monotonic_get_status
 
-.. _rtems_rate_monotonic_get_status:
+.. _InterfaceRtemsRateMonotonicGetStatus:
 
-RATE_MONOTONIC_GET_STATUS - Obtain status from a period
--------------------------------------------------------
+rtems_rate_monotonic_get_status()
+---------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Gets the detailed status of the period.
 
-        rtems_status_code rtems_rate_monotonic_get_status(
-            rtems_id                            id,
-            rtems_rate_monotonic_period_status *status
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period status retrieved successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid rate monotonic period id
-     * - ``RTEMS_INVALID_ADDRESS``
-       - invalid address of status
-     * - ``RTEMS_NOT_DEFINED``
-       - no status is available due to the cpu usage of the task having been
-         reset since the period initiated
+    rtems_status_code rtems_rate_monotonic_get_status(
+      rtems_id                            id,
+      rtems_rate_monotonic_period_status *status
+    );
 
-*DESCRIPTION:
-    This directive returns status information associated with the rate
-    monotonic period id in the following data structure:
+.. rubric:: PARAMETERS:
 
-    .. index:: rtems_rate_monotonic_period_status
+``id``
+    This parameter is the rate monotonic period identifier.
 
-    .. code-block:: c
+``status``
+    This parameter is the pointer to a
+    :c:type:`rtems_rate_monotonic_period_status` variable.  When the directive
+    call is successful, the detailed period status will be stored in this
+    variable.
 
-        typedef struct {
-            rtems_id                              owner;
-            rtems_rate_monotonic_period_states    state;
-            rtems_rate_monotonic_period_time_t    since_last_period;
-            rtems_thread_cpu_usage_t              executed_since_last_period;
-            uint32_t                              postponed_jobs_count;
-        }  rtems_rate_monotonic_period_status;
+.. rubric:: DESCRIPTION:
 
-    .. COMMENT: RATE_MONOTONIC_INACTIVE does not have RTEMS in front of it.
+This directive returns the detailed status of the rate monotonic period
+specified by ``id``.  The detailed status of the period will be returned in the
+members of the period status object referenced by ``status``:
 
-    A configure time option can be used to select whether the time information
-    is given in ticks or seconds and nanoseconds.  The default is seconds and
-    nanoseconds.  If the period's state is ``RATE_MONOTONIC_INACTIVE``, both
-    time values will be set to 0.  Otherwise, both time values will contain
-    time information since the last invocation of the
-    ``rtems_rate_monotonic_period`` directive.  More specifically, the
-    since_last_period value contains the elapsed time which has occurred since
-    the last invocation of the ``rtems_rate_monotonic_period`` directive and
-    the ``executed_since_last_period`` contains how much processor time the
-    owning task has consumed since the invocation of the
-    ``rtems_rate_monotonic_period`` directive. In addition, the
-    ``postponed_jobs_count value`` contains the count of jobs which are not
-    released yet.
+* The ``owner`` member is set to the identifier of the owner task of the
+  period.
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+* The ``state`` member is set to the current state of the period.
+
+* The ``postponed_jobs_count`` member is set to the count of jobs which are not
+  released yet.
+
+* If the current state of the period is :c:macro:`RATE_MONOTONIC_INACTIVE`, the
+  ``since_last_period`` and ``executed_since_last_period`` members will be set
+  to zero.  Otherwise, both members will contain time information since the
+  last successful invocation of the :ref:`InterfaceRtemsRateMonotonicPeriod`
+  directive by the owner task.  More specifically, the ``since_last_period``
+  member will be set to the time elapsed since the last successful invocation.
+  The ``executed_since_last_period`` member will be set to the processor time
+  consumed by the owner task since the last successful invocation.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no rate monotonic period associated with the identifier specified
+    by ``id``.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``status`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_NOT_DEFINED`
+    There was no status available due to a reset of the processor time usage of
+    the owner task of the period.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may be called from within interrupt context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/ratemon/if/get-statistics
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_get_statistics()
 .. index:: get statistics of period
 .. index:: obtain statistics of period
-.. index:: rtems_rate_monotonic_get_statistics
 
-.. _rtems_rate_monotonic_get_statistics:
+.. _InterfaceRtemsRateMonotonicGetStatistics:
 
-RATE_MONOTONIC_GET_STATISTICS - Obtain statistics from a period
----------------------------------------------------------------
+rtems_rate_monotonic_get_statistics()
+-------------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Gets the statistics of the period.
 
-        rtems_status_code rtems_rate_monotonic_get_statistics(
-            rtems_id                                id,
-            rtems_rate_monotonic_period_statistics *statistics
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period statistics retrieved successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid rate monotonic period id
-     * - ``RTEMS_INVALID_ADDRESS``
-       - invalid address of statistics
+    rtems_status_code rtems_rate_monotonic_get_statistics(
+      rtems_id                                id,
+      rtems_rate_monotonic_period_statistics *status
+    );
 
-DESCRIPTION:
-    This directive returns statistics information associated with the rate
-    monotonic period id in the following data structure:
+.. rubric:: PARAMETERS:
 
-    .. index:: rtems_rate_monotonic_period_statistics
+``id``
+    This parameter is the rate monotonic period identifier.
 
-    .. code-block:: c
+``status``
+    This parameter is the pointer to a
+    :c:type:`rtems_rate_monotonic_period_statistics` variable.  When the
+    directive call is successful, the period statistics will be stored in this
+    variable.
 
-        typedef struct {
-            uint32_t     count;
-            uint32_t     missed_count;
-            #ifdef RTEMS_ENABLE_NANOSECOND_CPU_USAGE_STATISTICS
-              struct timespec min_cpu_time;
-              struct timespec max_cpu_time;
-              struct timespec total_cpu_time;
-            #else
-              uint32_t  min_cpu_time;
-              uint32_t  max_cpu_time;
-              uint32_t  total_cpu_time;
-            #endif
-            #ifdef RTEMS_ENABLE_NANOSECOND_RATE_MONOTONIC_STATISTICS
-              struct timespec min_wall_time;
-              struct timespec max_wall_time;
-              struct timespec total_wall_time;
-            #else
-             uint32_t  min_wall_time;
-             uint32_t  max_wall_time;
-             uint32_t  total_wall_time;
-            #endif
-        }  rtems_rate_monotonic_period_statistics;
+.. rubric:: DESCRIPTION:
 
-    This directive returns the current statistics information for the period
-    instance assocaited with ``id``.  The information returned is indicated by
-    the structure above.
+This directive returns the statistics of the rate monotonic period specified by
+``id``.  The statistics of the period will be returned in the members of the
+period statistics object referenced by ``status``:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+* The ``count`` member is set to the number of periods executed.
+
+* The ``missed_count`` member is set to the number of periods missed.
+
+* The ``min_cpu_time`` member is set to the least amount of processor time used
+  in the period.
+
+* The ``max_cpu_time`` member is set to the highest amount of processor time
+  used in the period.
+
+* The ``total_cpu_time`` member is set to the total amount of processor time
+  used in the period.
+
+* The ``min_wall_time`` member is set to the least amount of
+  :term:`CLOCK_MONOTONIC` time used in the period.
+
+* The ``max_wall_time`` member is set to the highest amount of
+  :term:`CLOCK_MONOTONIC` time used in the period.
+
+* The ``total_wall_time`` member is set to the total amount of
+  :term:`CLOCK_MONOTONIC` time used in the period.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no rate monotonic period associated with the identifier specified
+    by ``id``.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``status`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may be called from within interrupt context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/ratemon/if/reset-statistics
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_reset_statistics()
 .. index:: reset statistics of period
-.. index:: rtems_rate_monotonic_reset_statistics
 
-.. _rtems_rate_monotonic_reset_statistics:
+.. _InterfaceRtemsRateMonotonicResetStatistics:
 
-RATE_MONOTONIC_RESET_STATISTICS - Reset statistics for a period
----------------------------------------------------------------
+rtems_rate_monotonic_reset_statistics()
+---------------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Resets the statistics of the period.
 
-        rtems_status_code rtems_rate_monotonic_reset_statistics(
-            rtems_id  id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - period initiated successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid rate monotonic period id
+    rtems_status_code rtems_rate_monotonic_reset_statistics( rtems_id id );
 
-DESCRIPTION:
-    This directive resets the statistics information associated with this rate
-    monotonic period instance.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``id``
+    This parameter is the rate monotonic period identifier.
+
+.. rubric:: DESCRIPTION:
+
+This directive resets the statistics of the rate monotonic period specified by
+``id``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no rate monotonic period associated with the identifier specified
+    by ``id``.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may be called from within interrupt context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/ratemon/if/reset-all-statistics
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_reset_all_statistics()
 .. index:: reset statistics of all periods
-.. index:: rtems_rate_monotonic_reset_all_statistics
 
-.. _rtems_rate_monotonic_reset_all_statistics:
+.. _InterfaceRtemsRateMonotonicResetAllStatistics:
 
-RATE_MONOTONIC_RESET_ALL_STATISTICS - Reset statistics for all periods
-----------------------------------------------------------------------
+rtems_rate_monotonic_reset_all_statistics()
+-------------------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Resets the statistics of all periods.
 
-        void rtems_rate_monotonic_reset_all_statistics(void);
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE
+.. code-block:: c
 
-DESCRIPTION:
-    This directive resets the statistics information associated with all rate
-    monotonic period instances.
+    void rtems_rate_monotonic_reset_all_statistics( void );
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+.. rubric:: DESCRIPTION:
+
+This directive resets the statistics information associated with all rate
+monotonic period instances.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/ratemon/if/report-statistics
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_rate_monotonic_report_statistics()
 .. index:: print period statistics report
 .. index:: period statistics report
-.. index:: rtems_rate_monotonic_report_statistics
 
-.. _rtems_rate_monotonic_report_statistics:
+.. _InterfaceRtemsRateMonotonicReportStatistics:
 
-RATE_MONOTONIC_REPORT_STATISTICS - Print period statistics report
------------------------------------------------------------------
+rtems_rate_monotonic_report_statistics()
+----------------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Reports the period statistics using the :c:func:`printk` printer.
 
-        void rtems_rate_monotonic_report_statistics(void);
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE
+.. code-block:: c
 
-DESCRIPTION:
-    This directive prints a report on all active periods which have executed at
-    least one period. The following is an example of the output generated by
-    this directive.
+    void rtems_rate_monotonic_report_statistics( void );
 
-    .. index:: rtems_rate_monotonic_period_statistics
+.. rubric:: DESCRIPTION:
 
-    .. code-block:: c
+This directive prints a report on all active periods which have executed at
+least one period using the :c:func:`printk` printer.
 
-        ID      OWNER   PERIODS  MISSED    CPU TIME    WALL TIME
-        MIN/MAX/AVG  MIN/MAX/AVG
-        0x42010001  TA1       502     0       0/1/0.99    0/0/0.00
-        0x42010002  TA2       502     0       0/1/0.99    0/0/0.00
-        0x42010003  TA3       501     0       0/1/0.99    0/0/0.00
-        0x42010004  TA4       501     0       0/1/0.99    0/0/0.00
-        0x42010005  TA5        10     0       0/1/0.90    0/0/0.00
+.. rubric:: CONSTRAINTS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/ratemon/if/report-statistics-with-plugin
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_rate_monotonic_report_statistics_with_plugin()
+.. index:: print period statistics report
+.. index:: period statistics report
+
+.. _InterfaceRtemsRateMonotonicReportStatisticsWithPlugin:
+
+rtems_rate_monotonic_report_statistics_with_plugin()
+----------------------------------------------------
+
+Reports the period statistics using the printer plugin.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    void rtems_rate_monotonic_report_statistics_with_plugin(
+      const struct rtems_printer *printer
+    );
+
+.. rubric:: PARAMETERS:
+
+``printer``
+    This parameter is the printer plugin to output the report.
+
+.. rubric:: DESCRIPTION:
+
+This directive prints a report on all active periods which have executed at
+least one period using the printer plugin specified by ``printer``.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
