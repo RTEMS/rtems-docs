@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -105,6 +105,18 @@ Sending an event set to a global task which does not reside on the local node
 will generate a request telling the remote node to send the event set to the
 appropriate task.
 
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may unblock another task which may preempt the calling task.
+
 .. Generated from spec:/rtems/event/if/receive
 
 .. raw:: latex
@@ -160,33 +172,37 @@ This directive can be used to
 
 To **get the pending events** use the constant :c:macro:`RTEMS_PENDING_EVENTS`
 for the ``event_in`` parameter.  The pending events are returned to the calling
-task but the event set of the task is left unaltered.  The ``option_set`` and
-``ticks`` parameters are ignored in this case.  The directive returns
-immediately and does not block.
+task but the event set of the calling task is left unaltered.  The
+``option_set`` and ``ticks`` parameters are ignored in this case.  The
+directive returns immediately and does not block.
 
 To **receive events** you have to define an input event condition and some
-options.  The **option set** specified in ``option_set`` defines
+options.
 
-* if the task will wait or poll for the events, and
+The **option set** specified in ``option_set`` is built through a *bitwise or*
+of the option constants described below.  Not all combinations of options are
+allowed.  Some options are mutually exclusive.  If mutually exclusive options
+are combined, the behaviour is undefined.  Options not mentioned below are not
+evaluated by this directive and have no effect. Default options can be selected
+by using the :c:macro:`RTEMS_DEFAULT_OPTIONS` constant.  The option set defines
 
-* if the task wants to receive all or any of the input events.
+* if the calling task will wait or poll for the events, and
 
-The option set is built through a *bitwise or* of the option constants
-described below.
+* if the calling task wants to receive all or any of the input events.
 
-The task can **wait** or **poll** for the events.
+The calling task can **wait** or **poll** for the events.
 
 * **Waiting** for events is the default and can be emphasized through the use
   of the :c:macro:`RTEMS_WAIT` option.  The ``ticks`` parameter defines how
-  long the task is willing to wait.  Use :c:macro:`RTEMS_NO_TIMEOUT` to wait
-  potentially forever, otherwise set a timeout interval in clock ticks.
+  long the calling task is willing to wait.  Use :c:macro:`RTEMS_NO_TIMEOUT` to
+  wait potentially forever, otherwise set a timeout interval in clock ticks.
 
 * Not waiting for events (**polling**) is selected by the
   :c:macro:`RTEMS_NO_WAIT` option.  If this option is defined, then the
   ``ticks`` parameter is ignored.
 
-The task can receive **all** or **any** of the input events specified in
-``event_in``.
+The calling task can receive **all** or **any** of the input events specified
+in ``event_in``.
 
 * Receiving **all** input events is the default and can be emphasized through
   the use of the :c:macro:`RTEMS_EVENT_ALL` option.
@@ -212,9 +228,6 @@ The task can receive **all** or **any** of the input events specified in
 
 .. rubric:: NOTES:
 
-This directive shall be called by a task.  Calling this directive from
-interrupt context is undefined behaviour.
-
 This directive only affects the events specified in ``event_in``. Any pending
 events that do not correspond to any of the events specified in ``event_in``
 will be left pending.
@@ -229,3 +242,13 @@ bitwise or of the :c:macro:`RTEMS_NO_WAIT` and :c:macro:`RTEMS_EVENT_ANY`
 options for the ``option_set`` parameter.  The pending events are returned and
 the event set of the task is cleared.  If no events are pending then the
 :c:macro:`RTEMS_UNSATISFIED` status code will be returned.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The timeout functionality of the directive requires a :term:`clock tick`.
