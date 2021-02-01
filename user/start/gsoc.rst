@@ -20,6 +20,12 @@ delving into the details. For more information you can go through the other
 subsections under :ref:`Quick Start <QuickStart>` chapter or ask on the
 :r:list:`devel`.
 
+We recommend new student developers use the current development (unreleased)
+version. The :ref:`Quick Start Preparation <QuickStartPreparation>` should be
+consulted for guidance. The examples shown here use the released version 5,
+which may not be recommended for your purposes. If you are unsure, feel free to
+inquire on the :r:list:`devel`.
+
 You will be best served by using a GNU/Linux environment, which could be in a
 virtual machine, for example that uses `Virtualbox <https://www.virtualbox.org/>`_
 and should run on most modern desktop systems. You should also be able to work
