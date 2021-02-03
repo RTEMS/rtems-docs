@@ -269,7 +269,7 @@ def cmd_configure(ctx):
             ctx.fatal('Unsupported latex engine: %s' % (conf.latex_engine))
         ctx.env.BUILD_PDF = 'yes'
 
-    ctx.envBUILD_SINGLEHTML = 'no'
+    ctx.env.BUILD_SINGLEHTML = 'no'
     if ctx.options.singlehtml:
         check_inliner = not ctx.env.BIN_INLINER
         if check_inliner:
@@ -279,7 +279,7 @@ def cmd_configure(ctx):
                 ctx.fatal("Node.js inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
 
-    ctx.envBUILD_PLANTUML = 'no'
+    ctx.env.BUILD_PLANTUML = 'no'
     if ctx.options.plantuml:
         check_plantuml = not ctx.env.BIN_PUML
         if check_plantuml:
@@ -289,7 +289,7 @@ def cmd_configure(ctx):
                 ctx.fatal("Node.js puml is required install with 'npm install -g node-plantuml' " +
                           "(https://www.npmjs.com/package/node-plantuml)")
 
-    ctx.envBUILD_DITAA = 'no'
+    ctx.env.BUILD_DITAA = 'no'
     if ctx.options.ditaa:
         #
         # We use DITAA via PlantUML
