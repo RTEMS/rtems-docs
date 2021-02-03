@@ -182,12 +182,15 @@ def check_sphinx_extension(ctx, extension):
         rst_node = bld.srcnode.make_node('testbuild/contents.rst')
         rst_node.parent.mkdir()
         rst_node.write('.. COMMENT test sphinx\n')
+        bib_node = bld.srcnode.make_node('testbuild/refs.bib')
+        conf_node = bld.srcnode.make_node('testbuild/conf.py')
+        conf_node.write("bibtex_bibfiles = ['refs.bib']\n")
         bld(rule = bld.kw['rule'], source = rst_node)
 
     ctx.start_msg("Checking for '%s'" % (extension))
     try:
         ctx.run_build(fragment = 'xx',
-                      rule = "${BIN_SPHINX_BUILD} -b html -D extensions=%s -C . out" % (extension),
+                      rule = "${BIN_SPHINX_BUILD} -b html -D extensions=%s -c . . out" % (extension),
                       build_fun = run_sphinx,
                       env = ctx.env)
     except ctx.errors.ConfigurationError:

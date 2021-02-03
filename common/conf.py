@@ -12,6 +12,8 @@ extensions = [
 	"rtemsdomain",
 ]
 
+bibtex_bibfiles = ['../common/refs.bib']
+
 extlinks = {'release_path': ('https://ftp.rtems.org/pub/rtems/releases', None) }
 
 # Add any paths that contain templates here, relative to this directory.
