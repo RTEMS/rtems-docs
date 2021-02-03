@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -52,18 +52,19 @@ Creates a timer.
 .. rubric:: PARAMETERS:
 
 ``name``
-    This parameter is the name of the timer.
+    This parameter is the object name of the timer.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  The
-    identifier of the created timer object will be stored in this variable, in
-    case of a successful operation.
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the created timer will be
+    stored in this variable.
 
 .. rubric:: DESCRIPTION:
 
-This directive creates a timer.  The assigned object identifier is returned in
-``id``.  This identifier is used to access the timer with other timer related
-directives.
+This directive creates a timer which resides on the local node.  The timer has
+the user-defined object name specified in ``name``.  The assigned object
+identifier is returned in ``id``.  This identifier is used to access the timer
+with other timer related directives.
 
 .. rubric:: RETURN VALUES:
 
@@ -71,28 +72,42 @@ directives.
     The requested operation was successful.
 
 :c:macro:`RTEMS_INVALID_NAME`
-    The timer name was invalid.
+    The ``name`` parameter was invalid.
 
 :c:macro:`RTEMS_INVALID_ADDRESS`
     The ``id`` parameter was `NULL
     <https://en.cppreference.com/w/c/types/NULL>`_.
 
 :c:macro:`RTEMS_TOO_MANY`
-    There was no inactive object available to create a new timer.  The number
-    of timers available to the application is configured through the
-    :ref:`CONFIGURE_MAXIMUM_TIMERS` configuration option.
+    There was no inactive object available to create a timer.  The number of
+    timers available to the application is configured through the
+    :ref:`CONFIGURE_MAXIMUM_TIMERS` application configuration option.
 
 .. rubric:: NOTES:
 
-This directive may cause the calling task to be preempted due to an obtain and
-release of the object allocator mutex.
+The processor used to maintain the timer is the processor of the calling task
+at some point during the timer creation.
 
 For control and maintenance of the timer, RTEMS allocates a :term:`TMCB` from
 the local TMCB free pool and initializes it.
 
-In SMP configurations, the processor of the currently executing thread
-determines the processor used for the created timer.  During the life-time of
-the timer this processor is used to manage the timer internally.
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The number of timers available to the application is configured through the
+  :ref:`CONFIGURE_MAXIMUM_TIMERS` application configuration option.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may allocate memory from the RTEMS
+  Workspace.
 
 .. Generated from spec:/rtems/timer/if/ident
 
@@ -122,13 +137,13 @@ Identifies a timer by the object name.
     This parameter is the object name to look up.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  The object
-    identifier of an object with the specified name will be stored in this
-    variable, in case of a successful operation.
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the object identifier of an object with the
+    specified name will be stored in this variable.
 
 .. rubric:: DESCRIPTION:
 
-This directive obtains the timer identifier associated with the timer name
+This directive obtains a timer identifier associated with the timer name
 specified in ``name``.
 
 .. rubric:: RETURN VALUES:
@@ -150,11 +165,21 @@ specified in ``name``.
 
 If the timer name is not unique, then the timer identifier will match the first
 timer with that name in the search order.  However, this timer identifier is
-not guaranteed to correspond to the desired timer.  The timer identifier is
-used with other timer related directives to access the timer.
+not guaranteed to correspond to the desired timer.
 
 The objects are searched from lowest to the highest index.  Only the local node
 is searched.
+
+The timer identifier is used with other timer related directives to access the
+timer.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/cancel
 
@@ -185,8 +210,8 @@ Cancels the timer.
 
 .. rubric:: DESCRIPTION:
 
-This directive cancels the timer specified in the ``id`` parameter.  This timer
-will be reinitiated by the next invocation of :ref:`InterfaceRtemsTimerReset`,
+This directive cancels the timer specified by ``id``.  This timer will be
+reinitiated by the next invocation of :ref:`InterfaceRtemsTimerReset`,
 :ref:`InterfaceRtemsTimerFireAfter`, or :ref:`InterfaceRtemsTimerFireWhen` with
 the same timer identifier.
 
@@ -198,9 +223,17 @@ the same timer identifier.
 :c:macro:`RTEMS_INVALID_ID`
     There was no timer associated with the identifier specified by ``id``.
 
-.. rubric:: NOTES:
+.. rubric:: CONSTRAINTS:
 
-This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/delete
 
@@ -231,8 +264,8 @@ Deletes the timer.
 
 .. rubric:: DESCRIPTION:
 
-This directive deletes the timer specified by the ``id`` parameter.  If the
-timer is running, it is automatically canceled.
+This directive deletes the timer specified by ``id``.  If the timer is running,
+it is automatically canceled.
 
 .. rubric:: RETURN VALUES:
 
@@ -244,12 +277,24 @@ timer is running, it is automatically canceled.
 
 .. rubric:: NOTES:
 
-This directive may cause the calling task to be preempted due to an obtain and
-release of the object allocator mutex.
-
 The :term:`TMCB` for the deleted timer is reclaimed by RTEMS.
 
-A timer can be deleted by a task other than the task which created the timer.
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The calling task does not have to be the task that created the object.  Any
+  local task that knows the object identifier can delete the object.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may free memory to the RTEMS Workspace.
 
 .. Generated from spec:/rtems/timer/if/fire-after
 
@@ -316,9 +361,17 @@ invoked with the argument ``user_data`` in the context of the clock tick
 :c:macro:`RTEMS_INVALID_ID`
     There was no timer associated with the identifier specified by ``id``.
 
-.. rubric:: NOTES:
+.. rubric:: CONSTRAINTS:
 
-This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/fire-when
 
@@ -391,9 +444,17 @@ argument ``user_data`` in the context of the clock tick :term:`ISR`.
 :c:macro:`RTEMS_INVALID_ID`
     There was no timer associated with the identifier specified by ``id``.
 
-.. rubric:: NOTES:
+.. rubric:: CONSTRAINTS:
 
-This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/initiate-server
 
@@ -464,11 +525,26 @@ executing all timers initiated via the
 
 .. rubric:: NOTES:
 
-This directive may cause the calling task to be preempted due to an obtain and
-release of the object allocator mutex.
-
 The Timer Server task is created using the :ref:`InterfaceRtemsTaskCreate`
 directive and must be accounted for when configuring the system.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The number of timers available to the application is configured through the
+  :ref:`CONFIGURE_MAXIMUM_TIMERS` application configuration option.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may allocate memory from the RTEMS
+  Workspace.
 
 .. Generated from spec:/rtems/timer/if/server-fire-after
 
@@ -538,9 +614,17 @@ task.
 :c:macro:`RTEMS_INVALID_ID`
     There was no timer associated with the identifier specified by ``id``.
 
-.. rubric:: NOTES:
+.. rubric:: CONSTRAINTS:
 
-This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/server-fire-when
 
@@ -616,9 +700,17 @@ argument ``user_data`` in the context of the Timer Server task.
 :c:macro:`RTEMS_INVALID_ID`
     There was no timer associated with the identifier specified by ``id``.
 
-.. rubric:: NOTES:
+.. rubric:: CONSTRAINTS:
 
-This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/reset
 
@@ -669,14 +761,24 @@ timer service routine which the original :ref:`InterfaceRtemsTimerFireAfter` or
 
 .. rubric:: NOTES:
 
-This directive will not cause the running task to be preempted.
-
 If the timer has not been used or the last usage of this timer was by a
 :ref:`InterfaceRtemsTimerFireWhen` or :ref:`InterfaceRtemsTimerServerFireWhen`
 directive, then the :c:macro:`RTEMS_NOT_DEFINED` error is returned.
 
 Restarting a cancelled after timer results in the timer being reinitiated with
 its previous timer service routine and interval.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/timer/if/get-information
 
@@ -708,9 +810,9 @@ Gets information about the timer.
     This parameter is the timer identifier.
 
 ``the_info``
-    This parameter is the pointer to a timer information variable.  The
-    information about the timer will be stored in this variable, in case of a
-    successful operation.
+    This parameter is the pointer to a timer information variable.  When the
+    directive call is successful, the information about the timer will be
+    stored in this variable.
 
 .. rubric:: DESCRIPTION:
 
@@ -728,6 +830,14 @@ This directive returns information about the timer.
 :c:macro:`RTEMS_INVALID_ID`
     There was no timer associated with the identifier specified by ``id``.
 
-.. rubric:: NOTES:
+.. rubric:: CONSTRAINTS:
 
-This directive will not cause the running task to be preempted.
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.

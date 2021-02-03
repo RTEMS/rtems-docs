@@ -4,6 +4,8 @@
 
 .. index:: timers
 
+.. _RTEMSAPIClassicTimer:
+
 Timer Manager
 *************
 
