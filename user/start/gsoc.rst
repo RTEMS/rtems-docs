@@ -114,8 +114,8 @@ running `make` in the BSP build directory.
 
 .. code-block:: none
 
-  cd $HOME/quick-start/build/b-erc32
-  make
+  cd $HOME/quick-start/src/rtems
+  ./waf
 
 If you are happy with your changes you can commit the changes and send the patch
 to :r:list:`devel`.
