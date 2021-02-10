@@ -15,3 +15,4 @@ Clock Manager
     background
     operations
     directives
+    removed-directives

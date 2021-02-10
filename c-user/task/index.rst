@@ -15,3 +15,5 @@ Task Manager
     background
     operations
     directives
+    deprecated-directives
+    removed-directives
