@@ -64,9 +64,9 @@ table and device major number in the Device Driver Table.
     This parameter is the device driver address table.
 
 ``registered_major``
-    This parameter is the pointer to a device major number variable.  The
-    device major number of the registered device will be stored in this
-    variable, in case of a successful operation.
+    This parameter is the pointer to a device major number variable.  When the
+    directive call is successful, the device major number of the registered
+    device will be stored in this variable.
 
 .. rubric:: RETURN VALUES:
 
