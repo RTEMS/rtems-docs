@@ -37,6 +37,18 @@ to return the peripheral clock. Normally this is half the CPU
 clock. This function is declared ``weak`` so you can override the
 default behaviour by providing it in your application.
 
+Console
+-------
+
+The console driver for the UARTs will always be initialized to a 
+baud rate of 115200 with 8 bit characters, 1 stop bit and no parity
+bits during start up.
+Previous configurations programmed into the hardware by the Xilinx
+tools or a bootloader will be overwritten.
+
+The settings for the console driver can be changed by the user
+application through the termios API afterwards.
+
 Debugging with xilinx_zynq_a9_qemu
 ----------------------------------
 
