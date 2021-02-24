@@ -28,6 +28,7 @@ RTEMS BSP and Driver Guide (|version|).
 	initilization_code
 	console
 	clock
+	target-hash
 	getentropy
 	i2c
 	spi
