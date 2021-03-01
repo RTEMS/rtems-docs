@@ -5,7 +5,7 @@
 .. highlight:: c
 
 ======================================
-RTEMS Network User Manual (|version|).
+RTEMS Legacy Network User Manual (|version|).
 ======================================
 
 .. topic:: Copyrights and License

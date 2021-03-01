@@ -23,7 +23,7 @@ Table of Contents
 	cpu_supplement/index.rst
 	develenv/index.rst
 	filesystem/index.rst
-	networking/index.rst
 	porting/index.rst
 	posix1003_1/index.rst
 	posix_users/index.rst
+	legacy_networking/index.rst

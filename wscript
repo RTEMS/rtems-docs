@@ -32,11 +32,11 @@ build_all = ['user',
              'posix-compliance',
              'eng',
              'filesystem',
-             'networking',
              'shell',
              'cpu-supplement',
              'develenv',
-             'eclipse']
+             'eclipse',
+             'legacy-networking']
 
 building = build_all
 
