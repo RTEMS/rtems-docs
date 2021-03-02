@@ -1251,7 +1251,7 @@ constraints
 
 default-value
     The attribute value shall be an :ref:`SpecTypeIntegerOrString`. It shall
-    shall describe the default value of the application configuration option.
+    describe the default value of the application configuration option.
 
 .. _SpecTypeInterfaceCompoundItemType:
 
