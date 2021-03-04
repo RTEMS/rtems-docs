@@ -2,15 +2,16 @@
 
 .. Copyright (C) 2020 On-Line Applications Research Corporation (OAR)
 
-.. _BSP_aarch64_qemu_xilinx_zynqmp_ilp32:
-.. _BSP_aarch64_qemu_xilinx_zynqmp_lp64:
+.. _BSP_aarch64_qemu_xilinx_zynqmp_ilp32_qemu:
+.. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_qemu:
 
 Qemu Xilinx ZynqMP
 ==================
 
-This BSP supports two variants, `xilinx-zynqmp-ilp32` and `xilinx-zynqmp-lp64`.
-The basic hardware initialization is performed by the BSP. These BSPs support
-the GICv2 interrupt controller present in all ZynqMP systems.
+This BSP supports two variants, `xilinx-zynqmp-ilp32-qemu` and
+`xilinx-zynqmp-lp64-qemu`. The basic hardware initialization is performed by the
+BSP. These BSPs support the GICv2 interrupt controller present in all ZynqMP
+systems.
 
 Boot via ELF
 ------------
