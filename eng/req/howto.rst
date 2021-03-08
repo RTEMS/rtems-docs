@@ -304,7 +304,7 @@ syntax for directive object identifier parameters:
         test-code: |
           ctx->id = 0xffffffff;
         text: |
-          The ${../if/directive:/params[0]/name} parameter shall be not
+          The ${../if/directive:/params[0]/name} parameter shall not be
           associated with a thing.
       - name: ClassA
         test-code: |
@@ -376,7 +376,8 @@ aspect which may be changed by a directive call.
 
 For directives returning an :c:type:`rtems_status_code` use the following
 post-condition states.  Specify only status codes which may be returned by the
-directive.  Use it as the first post-condition.
+directive.  Use it as the first post-condition.  The first state shall be
+``Ok``.  The other states shall be listed in the order in which they can occur.
 
 .. code-block:: yaml
 
