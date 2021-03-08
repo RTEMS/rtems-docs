@@ -411,8 +411,14 @@ DEFAULT VALUE:
     The default value is 0.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to 0.
+
+    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+
+    * It shall be an integral multiple of :c:macro:`RTEMS_TASK_STORAGE_ALIGNMENT`.
 
 DESCRIPTION:
     If the value of this configuration option is greater than zero, then it
