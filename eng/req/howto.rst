@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 
 How-To
 ======
@@ -279,3 +279,180 @@ an :ref:`SpecTypeInterfaceForwardDeclarationItemType` item.
       - description: The caller did not have enough magic power.
         value: ${/if/c/null}
     type: interface
+
+Action Requirements
+-------------------
+
+Use :ref:`SpecTypeActionRequirementItemType` items to specify and validate
+directive calls.  Use ``CamelCase`` for the pre-condition names, post-condition
+names, and state names.  The more conditions a directive has, the shorter
+should be the names.  The transition map may be documented as a table and more
+conditions need more table columns.  Use item attribute references in the
+``text`` attributes.  This allows context-sensitive substitutions.
+
+Pre-Conditions
+^^^^^^^^^^^^^^
+
+Specify all directive parameters as separate pre-conditions.  Use the following
+syntax for directive object identifier parameters:
+
+.. code-block:: yaml
+
+    - name: Id
+      states:
+      - name: NoObj
+        test-code: |
+          ctx->id = 0xffffffff;
+        text: |
+          The ${../if/directive:/params[0]/name} parameter shall be not
+          associated with a thing.
+      - name: ClassA
+        test-code: |
+          ctx->id = ctx->class_a_id;
+        text: |
+          The ${../if/directive:/params[0]/name} parameter shall be associated with a
+          class A thing.
+      - name: ClassB
+        test-code: |
+          ctx->id = ctx->class_b_id;
+        text: |
+          The ${../if/directive:/params[0]/name} parameter shall be associated with a
+          class B thing.
+      test-epilogue: null
+      test-prologue: null
+
+Do not add specifications for invalid pointers.  In general, there are a lot of
+invalid pointers and the use of an invalid pointer is in almost all cases
+undefined behaviour in RTEMS.  There may be specifications for special cases
+which deal with some very specific invalid pointers such as the :c:data:`NULL`
+pointer or pointers which do not satisfy a range or boundary condition.  Use
+the following syntax for directive pointer parameters:
+
+.. code-block:: yaml
+
+    - name: Id
+      states:
+      - name: Valid
+        test-code: |
+          ctx->id = &ctx->id_value;
+        text: |
+          The ${../if/directive:/params[3]/name} parameter shall reference an
+          object of type ${../../type/if/id:/name}.
+      - name: 'Null'
+        test-code: |
+          ctx->id = NULL;
+        text: |
+          The ${../if/directive:/params[3]/name} parameter shall be
+          ${/c/if/null:/name}.
+      test-epilogue: null
+      test-prologue: null
+
+Use the following syntax for other directive parameters:
+
+.. code-block:: yaml
+
+    - name: Name
+      states:
+      - name: Valid
+        test-code: |
+          ctx->name = NAME;
+        text: |
+          The ${../if/directive:/params[0]/name} parameter shall be valid.
+      - name: Invalid
+        test-code: |
+          ctx->name = 0;
+        text: |
+          The ${../if/directive:/params[0]/name} parameter shall be invalid.
+      test-epilogue: null
+      test-prologue: null
+
+Post-Conditions
+^^^^^^^^^^^^^^^
+
+Do not mix different things into one post-condition.  If you write multiple
+sentences to describe what happened, then think about splitting up the
+post-condition.  Keep the post-condition simple and focus on one testable
+aspect which may be changed by a directive call.
+
+For directives returning an :c:type:`rtems_status_code` use the following
+post-condition states.  Specify only status codes which may be returned by the
+directive.  Use it as the first post-condition.
+
+.. code-block:: yaml
+
+    - name: Status
+      states:
+      - name: Ok
+        test-code: |
+          T_rsc_success( ctx->status );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/successful:/name}.
+      - name: IncStat
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INCORRECT_STATE );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/incorrect-state:/name}.
+      - name: InvAddr
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_ADDRESS );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/invalid-address:/name}.
+      - name: InvName
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_NAME );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/invalid-name:/name}.
+      - name: InvNum
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_NUMBER );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/invalid-number:/name}.
+      - name: InvSize
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_SIZE );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/invalid-size:/name}.
+      - name: InvPrio
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_PRIORITY );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/invalid-priority:/name}.
+      - name: NotConf
+        test-code: |
+          T_rsc( ctx->status, RTEMS_NOT_CONFIGURED );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/not-configured:/name}.
+      - name: NotDef
+        test-code: |
+          T_rsc( ctx->status, RTEMS_NOT_DEFINED );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/not-defined:/name}.
+      - name: NotImpl
+        test-code: |
+          T_rsc( ctx->status, RTEMS_NOT_IMPLEMENTED );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/not-implemented:/name}.
+      - name: TooMany
+        test-code: |
+          T_rsc( ctx->status, RTEMS_TOO_MANY );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/too-many:/name}.
+      - name: Unsat
+        test-code: |
+          T_rsc( ctx->status, RTEMS_UNSATISFIED  );
+        text: |
+          The return status of ${../if/directive:/name} shall be
+          ${../../status/if/unsatisfied:/name}.
+      test-epilogue: null
+      test-prologue: null
