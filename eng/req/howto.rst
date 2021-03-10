@@ -284,11 +284,29 @@ Action Requirements
 -------------------
 
 Use :ref:`SpecTypeActionRequirementItemType` items to specify and validate
-directive calls.  Use ``CamelCase`` for the pre-condition names, post-condition
+directive calls.  Action requirements are a generator for event-driven
+requirements which should be written in the following :ref:`syntax
+<ReqEngSyntax>`:
+
+    *When* <optional preconditions> <trigger>, the <system name> shall
+    <system response>.
+
+The <optional preconditions> are the pre-conditions of the action requirement.
+The <trigger> is the action of the action requirement.  The post-conditions
+should provide a list of the <system name> shall <system response> clauses.
+Each transition in the transition map is an event-driven requirement composed
+of the pre-condition states, the action, and the post-condition states defined
+by the map entry.
+
+Use ``CamelCase`` for the pre-condition names, post-condition
 names, and state names.  The more conditions a directive has, the shorter
 should be the names.  The transition map may be documented as a table and more
 conditions need more table columns.  Use item attribute references in the
 ``text`` attributes.  This allows context-sensitive substitutions.
+
+Link the action requirement item to an :ref:`SpecTypeInterfaceFunctionItemType`
+or an :ref:`SpecTypeInterfaceMacroItemType` item using the
+:ref:`SpecTypeInterfaceFunctionLinkRole`.
 
 Pre-Conditions
 ^^^^^^^^^^^^^^
@@ -457,3 +475,25 @@ directive.  Use it as the first post-condition.  The first state shall be
           ${../../status/if/unsatisfied:/name}.
       test-epilogue: null
       test-prologue: null
+
+For values which are returned by reference through directive parameters, use
+the following post-condition states.
+
+.. code-block:: yaml
+
+    - name: SomeParam
+      states:
+      - name: Nop
+        test-code: |
+          /* Add code to check that the object was not modified. */
+        text: |
+          Objects referenced by the ${../if/directive:/params[0]/name}
+          parameter in past calls to ${../if/directive:/name} shall not be
+          accessed by the ${../if/directive:/name} call.
+      - name: Set
+        test-code: |
+          /* Add code to check that the object was set to a particular value. */
+        text: |
+          The value of the object referenced by the
+          ${../if/directive:/params[0]/name} parameter shall be set to X after
+          the return of the ${../if/directive:/name} call.
