@@ -481,19 +481,19 @@ the following post-condition states.
 
 .. code-block:: yaml
 
-    - name: SomeParam
+    - name: SomeParamVar
       states:
-      - name: Nop
-        test-code: |
-          /* Add code to check that the object was not modified. */
-        text: |
-          Objects referenced by the ${../if/directive:/params[0]/name}
-          parameter in past calls to ${../if/directive:/name} shall not be
-          accessed by the ${../if/directive:/name} call.
       - name: Set
         test-code: |
-          /* Add code to check that the object was set to a particular value. */
+          /* Add code to check that the object value was set to X */
         text: |
           The value of the object referenced by the
           ${../if/directive:/params[0]/name} parameter shall be set to X after
           the return of the ${../if/directive:/name} call.
+      - name: Nop
+        test-code: |
+          /* Add code to check that the object was not modified */
+        text: |
+          Objects referenced by the ${../if/directive:/params[0]/name}
+          parameter in past calls to ${../if/directive:/name} shall not be
+          accessed by the ${../if/directive:/name} call.
