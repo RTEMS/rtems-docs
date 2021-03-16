@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -2493,6 +2493,62 @@ test-target
 Specification Attribute Sets and Value Types
 --------------------------------------------
 
+.. _SpecTypeActionRequirementBooleanExpression:
+
+Action Requirement Boolean Expression
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type is a boolean expression.
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. Each attribute defines an operator.
+  Exactly one of the explicit attributes shall be specified. The explicit
+  attributes for this type are:
+
+  and
+      The attribute value shall be a list. Each list element shall be an
+      :ref:`SpecTypeActionRequirementBooleanExpression`. The *and* operator
+      evaluates to the *logical and* of the evaluation results of the
+      expressions in the list.
+
+  not
+      The attribute value shall be an
+      :ref:`SpecTypeActionRequirementBooleanExpression`. The *not* operator
+      evaluates to the *logical not* of the evaluation results of the
+      expression.
+
+  or
+      The attribute value shall be a list. Each list element shall be an
+      :ref:`SpecTypeActionRequirementBooleanExpression`. The *or* operator
+      evaluates to the *logical or* of the evaluation results of the
+      expressions in the list.
+
+  post-conditions
+      The attribute value shall be an
+      :ref:`SpecTypeActionRequirementExpressionConditionSet`. The
+      *post-conditions* operator evaluates to true, if the post-condition
+      states of the associated transition are contained in the specified
+      post-condition set, otherwise to false.
+
+  pre-conditions
+      The attribute value shall be an
+      :ref:`SpecTypeActionRequirementExpressionConditionSet`. The
+      *pre-conditions* operator evaluates to true, if the pre-condition states
+      of the associated transition are contained in the specified pre-condition
+      set, otherwise to false.
+
+* The value may be a list. Each list element shall be an
+  :ref:`SpecTypeActionRequirementBooleanExpression`. This list of expressions
+  evaluates to the *logical or* of the evaluation results of the expressions in
+  the list.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementBooleanExpression`
+
+* :ref:`SpecTypeActionRequirementExpression`
+
 .. _SpecTypeActionRequirementCondition:
 
 Action Requirement Condition
@@ -2527,6 +2583,100 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementItemType`
 
+.. _SpecTypeActionRequirementExpression:
+
+Action Requirement Expression
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines an expression which may define the state of a
+post-condition.  The ``else`` and ``specified-by`` shall be used individually.
+The ``if`` and ``then`` or ``then-specified-by`` expressions shall be used
+together. At least one of the explicit attributes shall be specified. The
+explicit attributes for this type are:
+
+else
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementExpressionStateName`. It shall be the name
+    of the state of the post-condition.
+
+if
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementBooleanExpression`. If the boolean
+    expression evaluates to true, then the state is defined according to the
+    ``then`` attribute value.
+
+specified-by
+    The attribute value shall be an :ref:`SpecTypeActionRequirementName`. It
+    shall be the name of a pre-condition.  The name of the state of the
+    pre-condition in the associated transition defines the name of the state of
+    the post-condition.
+
+then
+    The attribute value shall be an
+    :ref:`SpecTypeActionRequirementExpressionStateName`. It shall be the name
+    of the state of the post-condition.
+
+then-specified-by
+    The attribute value shall be an :ref:`SpecTypeActionRequirementName`. It
+    shall be the name of a pre-condition.  The name of the state of the
+    pre-condition in the associated transition defines the name of the state of
+    the post-condition.
+
+.. _SpecTypeActionRequirementExpressionConditionSet:
+
+Action Requirement Expression Condition Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines for the specified conditions a set of states.
+Generic attributes may be specified. Each generic attribute key shall be an
+:ref:`SpecTypeActionRequirementName`. Each generic attribute value shall be an
+:ref:`SpecTypeActionRequirementExpressionStateSet`. There shall be at most one
+generic attribute key for each condition. The key name shall be the condition
+name.  The value of each generic attribute shall be a set of states of the
+condition.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementBooleanExpression`
+
+.. _SpecTypeActionRequirementExpressionStateName:
+
+Action Requirement Expression State Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The value shall be a string. It shall be the name of a state of the condition
+or ``N/A`` if the condition is not applicable. The value
+
+* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+
+* or, shall be equal to "``N/A``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementExpression`
+
+.. _SpecTypeActionRequirementExpressionStateSet:
+
+Action Requirement Expression State Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a list. Each list element shall be an
+  :ref:`SpecTypeActionRequirementExpressionStateName`. The list defines a set
+  of states of the condition.
+
+* The value may be a string. It shall be the name of a state of the condition
+  or ``N/A`` if the condition is not applicable. The value
+
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+
+  * or, shall be equal to "``N/A``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementExpressionConditionSet`
+
 .. _SpecTypeActionRequirementName:
 
 Action Requirement Name
@@ -2547,6 +2697,10 @@ have in an action requirement, the shorter the names should be.  The name
 This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementCondition`
+
+* :ref:`SpecTypeActionRequirementExpressionConditionSet`
+
+* :ref:`SpecTypeActionRequirementExpression`
 
 * :ref:`SpecTypeActionRequirementSkipReasons`
 
@@ -2635,6 +2789,29 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementItemType`
 
+.. _SpecTypeActionRequirementTransitionPostConditionState:
+
+Action Requirement Transition Post-Condition State
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a list. Each list element shall be an
+  :ref:`SpecTypeActionRequirementExpression`. The list contains expressions to
+  define the state of the corresponding post-condition.
+
+* The value may be a string. It shall be the name of a state of the
+  corresponding post-condition or ``N/A`` if the post-condition is not
+  applicable. The value
+
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+
+  * or, shall be equal to "``N/A``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeActionRequirementTransitionPostConditions`
+
 .. _SpecTypeActionRequirementTransitionPostConditions:
 
 Action Requirement Transition Post-Conditions
@@ -2646,10 +2823,12 @@ A value of this type shall be of one of the following variants:
   post-condition the state after the action for a transition in an action
   requirement. Generic attributes may be specified. Each generic attribute key
   shall be an :ref:`SpecTypeActionRequirementName`. Each generic attribute
-  value shall be an :ref:`SpecTypeActionRequirementName`. There shall be
+  value shall be an
+  :ref:`SpecTypeActionRequirementTransitionPostConditionState`. There shall be
   exactly one generic attribute key for each post-condition.  The key name
   shall be the post-condition name.  The value of each generic attribute shall
-  be the state of the post-condition.
+  be the state of the post-condition or ``N/A`` if the post-condition is not
+  applicable.
 
 * The value may be a string. It shall be the name of a skip reason.  If a skip
   reason is given instead of a listing of post-condition states, then this
@@ -2691,14 +2870,22 @@ This type is used by the following types:
 Action Requirement Transition Pre-Conditions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes defines for each pre-condition the set of states before
-the action for a transition in an actin requirement. Generic attributes may be
-specified. Each generic attribute key shall be an
-:ref:`SpecTypeActionRequirementName`. Each generic attribute value shall be an
-:ref:`SpecTypeActionRequirementTransitionPreConditionStateSet`. There shall be
-exactly one generic attribute key for each pre-condition.  The key name shall
-be the pre-condition name.  The value of each generic attribute shall be a set
-of states of the pre-condition.
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes defines for each
+  pre-condition the set of states before the action for a transition in an
+  action requirement. Generic attributes may be specified. Each generic
+  attribute key shall be an :ref:`SpecTypeActionRequirementName`. Each generic
+  attribute value shall be an
+  :ref:`SpecTypeActionRequirementTransitionPreConditionStateSet`. There shall
+  be exactly one generic attribute key for each pre-condition.  The key name
+  shall be the pre-condition name.  The value of each generic attribute shall
+  be a set of states of the pre-condition.
+
+* The value may be a string. If this name is specified instead of explicit
+  pre-condition states, then the post-condition states of this entry are used
+  to define all remaining transitions of the map. The value shall be equal to
+  "``default``".
 
 This type is used by the following types:
 
