@@ -458,6 +458,14 @@ specify a version number for your patch, for example, use
 
 to indicate the second version of a patch, ``-v3`` for a third, and so forth.
 
+Also, in order to create a patch specifying the repo name in the patch message,
+you should use the``--subject-prefix`` flag. For example, if contributing to
+the rtems-docs repo, use
+
+.. code-block:: shell
+
+  git format-patch --subject-prefix="PATCH rtems-docs" ...
+
 Patches created using ``git format-patch`` are formatted so they can be emailed
 and rely on having Git configured with your name and email address, for example
 
