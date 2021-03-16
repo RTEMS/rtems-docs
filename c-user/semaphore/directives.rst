@@ -940,7 +940,8 @@ Please have a look at the following example:
       sc = rtems_semaphore_create(
         rtems_build_name( 'M', 'R', 'S', 'P' ),
         1,
-        RTEMS_BINARY_SEMAPHORE | RTEMS_MULTIPROCESSOR_RESOURCE_SHARING,
+        RTEMS_BINARY_SEMAPHORE | RTEMS_PRIORITY |
+          RTEMS_MULTIPROCESSOR_RESOURCE_SHARING,
         1,
         &semaphore_id
       );
