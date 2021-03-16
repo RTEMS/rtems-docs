@@ -233,9 +233,6 @@ The following constraints apply to this directive:
 * When the directive operates on a global object, the directive sends a message
   to remote nodes.  This may preempt the calling task.
 
-* When a semaphore using the MrsP locking protocol is created, the initial
-  count shall be exactly one.
-
 * The number of semaphores available to the application is configured through
   the :ref:`CONFIGURE_MAXIMUM_SEMAPHORES` application configuration option.
 
