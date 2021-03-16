@@ -280,6 +280,128 @@ an :ref:`SpecTypeInterfaceForwardDeclarationItemType` item.
         value: ${/if/c/null}
     type: interface
 
+Requirements Depending on Build Configuration Options
+-----------------------------------------------------
+
+Use the ``enabled-by`` attribute of items or parts of an item to make it
+dependent on build configuration options such as :c:data:`RTEMS_SMP` or
+architecture-specific options such as
+:c:data:`CPU_ENABLE_ROBUST_THREAD_DISPATCH`, see
+:ref:`SpecTypeEnabledByExpression`.  With this attribute the specification can
+be customized at the level of an item or parts of an item.  If the
+``enabled-by`` attribute evaluates to false for a particular configuration,
+then the item or the associated part is disabled in the specification.  The
+``enabled-by`` attribute acts as a formalized *where* clause, see
+:ref:`recommended requirements syntax <ReqEngSyntax>`.
+
+Please have a look at the following example which specifies the transition map
+of :c:func:`rtems_signal_catch`:
+
+.. code-block:: yaml
+
+    transition-map:
+    - enabled-by: true
+      post-conditions:
+        Status: Ok
+        ASRInfo:
+        - if:
+            pre-conditions:
+              Handler: Valid
+          then: New
+        - else: Inactive
+      pre-conditions:
+        Pending: all
+        Handler: all
+        Preempt: all
+        Timeslice: all
+        ASR: all
+        IntLvl: all
+    - enabled-by: CPU_ENABLE_ROBUST_THREAD_DISPATCH
+      post-conditions:
+        Status: NotImplIntLvl
+        ASRInfo: NopIntLvl
+      pre-conditions:
+        Pending: all
+        Handler:
+        - Valid
+        Preempt: all
+        Timeslice: all
+        ASR: all
+        IntLvl:
+        - Positive
+    - enabled-by: RTEMS_SMP
+      post-conditions:
+        Status: NotImplNoPreempt
+        ASRInfo: NopNoPreempt
+      pre-conditions:
+        Pending: all
+        Handler:
+        - Valid
+        Preempt:
+        - 'No'
+        Timeslice: all
+        ASR: all
+        IntLvl: all
+
+Requirements Depending on Application Configuration Options
+-----------------------------------------------------------
+
+Requirements which depend on application configuration options such as
+:c:data:`CONFIGURE_MAXIMUM_PROCESSORS` should be written in the following
+:ref:`syntax <ReqEngSyntax>`:
+
+    **Where** <feature is included>, the <system name> shall <system response>.
+
+Use these clauses with care.  Make sure all feature combinations are covered.
+Using a truth table may help.  If a requirement depends on multiple features,
+use:
+
+    **Where** <feature 0>, **where** <feature 1>, **where** <feature ...>, the
+    <system name> shall <system response>.
+
+For application configuration options, use the clauses like this:
+
+:c:data:`CONFIGURE_MAXIMUM_PROCESSORS` equal to one
+
+   **Where** the system was configured with a processor maximum of exactly
+   one, ...
+
+:c:data:`CONFIGURE_MAXIMUM_PROCESSORS` greater than one
+
+   **Where** the system was configured with a processor maximum greater than
+   one, ...
+
+Please have a look at the following example used to specify
+:c:func:`rtems_signal_catch`.  The example is a post-condition state
+specification of an action requirement, so there is an implicit set of
+pre-conditions and the trigger:
+
+   **While** <pre-condition(s)>, **when** rtems_signal_catch() is called, ...
+
+The *where* clauses should be mentally placed before the *while* clauses.
+
+.. code-block:: yaml
+
+    post-conditions:
+    - name: ASRInfo
+      states:
+      - name: NopNoPreempt
+        test-code: |
+          if ( rtems_configuration_get_maximum_processors() > 1 ) {
+            CheckNoASRChange( ctx );
+          } else {
+            CheckNewASRSettings( ctx );
+          }
+        text: |
+          Where the scheduler does not support the no-preempt mode, the ASR
+          information of the caller of ${../if/catch:/name} shall not be
+          changed by the ${../if/catch:/name} call.
+
+          Where the scheduler does support the no-preempt mode, the ASR
+          processing for the caller of ${../if/catch:/name} shall be done using
+          the handler specified by ${../if/catch:/params[0]/name} in the mode
+          specified by ${../if/catch:/params[1]/name}.
+
 Action Requirements
 -------------------
 
