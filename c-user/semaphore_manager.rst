@@ -377,9 +377,9 @@ NOTES:
     This directive may cause the calling task to be preempted due to an
     obtain and release of the object allocator mutex.
 
-    The priority inheritance and priority ceiling algorithms are only supported
-    for local, binary semaphores that use the priority task wait queue blocking
-    discipline.
+    The priority inheritance, priority ceiling, and MrsP algorithms are only
+    supported for local, binary semaphores that use the priority task wait
+    queue blocking discipline.
 
     The following semaphore attribute constants are defined by RTEMS:
 
