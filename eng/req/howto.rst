@@ -441,8 +441,408 @@ shorter should be the names.  The transition map may be documented as a table
 and more conditions need more table columns.  Use item attribute references in
 the ``text`` attributes.  This allows context-sensitive substitutions.
 
-Pre-Conditions
-^^^^^^^^^^^^^^
+Example
+^^^^^^^
+
+Lets have a look at an example of an action requirement item.  We would like to
+specify and validate the behaviour of the
+
+.. code-block:: c
+
+    rtems_status_code rtems_timer_create( rtems_name name, rtems_id *id );
+
+directive which is particularly simple.  For a more complex example see the
+specification of :c:func:`rtems_signal_catch` or :c:func:`rtems_signal_send` in
+``spec:/rtems/signal/req/catch`` or ``spec:/rtems/signal/send`` respectively.
+
+The event triggers are calls to :c:func:`rtems_timer_create`.  Firstly, we need
+the list of pre-conditions relevant to this directive.  Good candidates are the
+directive parameters, this gives us the ``Name`` and ``Id`` conditions.  A
+system condition is if an inactive timer object is available so that we can
+create a timer, this gives us the ``Free`` condition.  Secondly, we need the
+list of post-conditions relevant to this directive.  They are the return status
+of the directive, ``Status``, the validity of a unique object name, ``Name``,
+and the value of an object identifier variable, ``IdVar``.  Each condition has
+a set of states, see the YAML data below for the details.  The specified
+conditions and states yield the following transition map:
+
+.. table::
+    :class: longtable
+
+    ===== ========== ======= ===== ==== ======= ======= =====
+    Entry Descriptor Name    Id    Free Status  Name    IdVar
+    ===== ========== ======= ===== ==== ======= ======= =====
+    0     0          Valid   Valid Yes  Ok      Valid   Set
+    1     0          Valid   Valid No   TooMany Invalid Nop
+    2     0          Valid   Null  Yes  InvAddr Invalid Nop
+    3     0          Valid   Null  No   InvAddr Invalid Nop
+    4     0          Invalid Valid Yes  InvName Invalid Nop
+    5     0          Invalid Valid No   InvName Invalid Nop
+    6     0          Invalid Null  Yes  InvName Invalid Nop
+    7     0          Invalid Null  No   InvName Invalid Nop
+    ===== ========== ======= ===== ==== ======= ======= =====
+
+Not all transition maps are that small, the transition map of
+:c:func:`rtems_task_mode` has more than 8000 entries.  We can construct
+requirements from the clauses of the entries.  For example, the three
+requirements of entry 0 (Name=Valid, Id=Valid, and Free=Yes results in
+Status=Ok, Name=Valid, and IdVar=Set) are:
+
+    While the ``name`` parameter is valid, while the ``id`` parameter
+    references an object of type rtems_id, while the system has at least one
+    inactive timer object available, when rtems_timer_create() is called, the
+    return status of rtems_timer_create() shall be RTEMS_SUCCESSFUL.
+
+    While the ``name`` parameter is valid, while the ``id`` parameter
+    references an object of type rtems_id, while the system has at least one
+    inactive timer object available, when rtems_timer_create() is called, the
+    unique object name shall identify the timer created by the
+    rtems_timer_create() call.
+
+    While the ``name`` parameter is valid, while the ``id`` parameter
+    references an object of type rtems_id, while the system has at least one
+    inactive timer object available, when rtems_timer_create() is called, the
+    value of the object referenced by the ``id`` parameter shall be set to the
+    object identifier of the created timer after the return of the
+    rtems_timer_create() call.
+
+Now we will have a look at the specification item line by line.  The top-level
+attributes are normally in alphabetical order in an item file.  For this
+presentation we use a structured order.
+
+.. code-block:: yaml
+
+    SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
+    copyrights:
+    - Copyright (C) 2021 embedded brains GmbH (http://www.embedded-brains.de)
+    enabled-by: true
+    functional-type: action
+    rationale: null
+    references: []
+    requirement-type: functional
+
+The specification items need a bit of boilerplate to tell you what they are,
+who wrote them, and what their license is.
+
+.. code-block:: yaml
+
+    text: ${.:text-template}
+
+Each requirement item needs a ``text`` attribute.  For the action requirements,
+we do not have a single requirement. There is just a template indicator and no
+plain text.  Several event-driven requirements are defined by the
+pre-conditions, the trigger, and the post-conditions.
+
+.. code-block:: yaml
+
+    pre-conditions:
+    - name: Name
+      states:
+      - name: Valid
+        test-code: |
+          ctx->name = NAME;
+        text: |
+          While the ${../if/create:/params[0]/name} parameter is valid.
+      - name: Invalid
+        test-code: |
+          ctx->name = 0;
+        text: |
+          While the ${../if/create:/params[0]/name} parameter is invalid.
+      test-epilogue: null
+      test-prologue: null
+    - name: Id
+      states:
+      - name: Valid
+        test-code: |
+          ctx->id = &ctx->id_value;
+        text: |
+          While the ${../if/create:/params[1]/name} parameter references an object
+          of type ${../../type/if/id:/name}.
+      - name: 'Null'
+        test-code: |
+          ctx->id = NULL;
+        text: |
+          While the ${../if/create:/params[1]/name} parameter is
+          ${/c/if/null:/name}.
+      test-epilogue: null
+      test-prologue: null
+    - name: Free
+      states:
+      - name: 'Yes'
+        test-code: |
+          /* Ensured by the test suite configuration */
+        text: |
+          While the system has at least one inactive timer object available.
+      - name: 'No'
+        test-code: |
+          ctx->seized_objects = T_seize_objects( Create, NULL );
+        text: |
+          While the system has no inactive timer object available.
+      test-epilogue: null
+      test-prologue: null
+
+This list defines the pre-conditions.  Each pre-condition has a list of states
+and corresponding validation test code.
+
+.. code-block:: yaml
+
+    links:
+    - role: interface-function
+      uid: ../if/create
+    test-action: |
+      ctx->status = rtems_timer_create( ctx->name, ctx->id );
+
+The link to the :c:func:`rtems_timer_create` interface specification item with
+the ``interface-function`` link role defines the trigger.  The ``test-action``
+defines the how the triggering directive is invoked for the validation test
+depending on the pre-condition states.  The code is not always as simple as in
+this example.  The validation test is defined in this item along with the
+specification.
+
+.. code-block:: yaml
+
+    post-conditions:
+    - name: Status
+      states:
+      - name: Ok
+        test-code: |
+          T_rsc_success( ctx->status );
+        text: |
+          The return status of ${../if/create:/name} shall be
+          ${../../status/if/successful:/name}.
+      - name: InvName
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_NAME );
+        text: |
+          The return status of ${../if/create:/name} shall be
+          ${../../status/if/invalid-name:/name}.
+      - name: InvAddr
+        test-code: |
+          T_rsc( ctx->status, RTEMS_INVALID_ADDRESS );
+        text: |
+          The return status of ${../if/create:/name} shall be
+          ${../../status/if/invalid-address:/name}.
+      - name: TooMany
+        test-code: |
+          T_rsc( ctx->status, RTEMS_TOO_MANY );
+        text: |
+          The return status of ${../if/create:/name} shall be
+          ${../../status/if/too-many:/name}.
+      test-epilogue: null
+      test-prologue: null
+    - name: Name
+      states:
+      - name: Valid
+        test-code: |
+          id = 0;
+          sc = rtems_timer_ident( NAME, &id );
+          T_rsc_success( sc );
+          T_eq_u32( id, ctx->id_value );
+        text: |
+          The unique object name shall identify the timer created by the
+          ${../if/create:/name} call.
+      - name: Invalid
+        test-code: |
+          sc = rtems_timer_ident( NAME, &id );
+          T_rsc( sc, RTEMS_INVALID_NAME );
+        text: |
+          The unique object name shall not identify a timer.
+      test-epilogue: null
+      test-prologue: |
+        rtems_status_code sc;
+        rtems_id          id;
+    - name: IdVar
+      states:
+      - name: Set
+        test-code: |
+          T_eq_ptr( ctx->id, &ctx->id_value );
+          T_ne_u32( ctx->id_value, INVALID_ID );
+        text: |
+          The value of the object referenced by the ${../if/create:/params[1]/name}
+          parameter shall be set to the object identifier of the created timer
+          after the return of the ${../if/create:/name} call.
+      - name: Nop
+        test-code: |
+          T_eq_u32( ctx->id_value, INVALID_ID );
+        text: |
+          Objects referenced by the ${../if/create:/params[1]/name} parameter in
+          past calls to ${../if/create:/name} shall not be accessed by the
+          ${../if/create:/name} call.
+      test-epilogue: null
+      test-prologue: null
+
+This list defines the post-conditions.  Each post-condition has a list of
+states and corresponding validation test code.
+
+.. code-block:: yaml
+
+    skip-reasons: {}
+    transition-map:
+    - enabled-by: true
+      post-conditions:
+        Status:
+        - if:
+            pre-conditions:
+              Name: Invalid
+          then: InvName
+        - if:
+            pre-conditions:
+              Id: 'Null'
+          then: InvAddr
+        - if:
+            pre-conditions:
+              Free: 'No'
+          then: TooMany
+        - else: Ok
+        Name:
+        - if:
+            post-conditions:
+              Status: Ok
+          then: Valid
+        - else: Invalid
+        IdVar:
+        - if:
+            post-conditions:
+              Status: Ok
+          then: Set
+        - else: Nop
+      pre-conditions:
+        Name: all
+        Id: all
+        Free: all
+    type: requirement
+
+This list of transition descriptors defines the transition map.  For the
+post-conditions, you can use expressions to ease the specification, see
+:ref:`SpecTypeActionRequirementTransitionPostConditionState`.  The
+``skip-reasons`` can be used to skip entire entries in the transition map, see
+:ref:`SpecTypeActionRequirementSkipReasons`.
+
+.. code-block:: yaml
+
+    test-brief: null
+    test-description: null
+
+The item contains the validation test code.  The validation test in general can
+be described by these two attributes.
+
+.. code-block:: yaml
+
+    test-target: testsuites/validation/tc-timer-create.c
+
+This is the target file for the generated validation test code.  Make sure this
+file is included in the build specification, otherwise the test code generation
+will fail.
+
+.. code-block:: yaml
+
+    test-includes:
+    - rtems.h
+    - string.h
+    test-local-includes: []
+
+You can specify a list of includes for the validation test.
+
+.. code-block:: yaml
+
+    test-header: null
+
+A test header may be used to create a parameterized validation test, see
+:ref:`SpecTypeTestHeader`.  This is an advanced topic, see the specification of
+:c:func:`rtems_task_ident` for an example.
+
+.. code-block:: yaml
+
+    test-context-support: null
+    test-context:
+    - brief: |
+        This member is used by the T_seize_objects() and T_surrender_objects()
+        support functions.
+      description: null
+      member: |
+        void *seized_objects
+    - brief: |
+        This member may contain the object identifier returned by
+        rtems_timer_create().
+      description: null
+      member: |
+        rtems_id id_value
+    - brief: |
+        This member specifies the ${../if/create:/params[0]/name} parameter for the
+        action.
+      description: null
+      member: |
+        rtems_name name
+    - brief: |
+        This member specifies the ${../if/create:/params[1]/name} parameter for the
+        action.
+      description: null
+      member: |
+        rtems_id *id
+    - brief: |
+        This member contains the return status of the action.
+      description: null
+      member: |
+        rtems_status_code status
+
+You can specify a list of validation test context members which can be used to
+maintain the state of the validation test.  The context is available through an
+implicit ``ctx`` variable in all code blocks except the support blocks.  The
+context support code can be used to define test-specific types used by context
+members.  Do not use global variables.
+
+.. code-block:: yaml
+
+    test-support: |
+      #define NAME rtems_build_name( 'T', 'E', 'S', 'T' )
+
+      #define INVALID_ID 0xffffffff
+
+      static rtems_status_code Create( void *arg, uint32_t *id )
+      {
+        return rtems_timer_create( rtems_build_name( 'S', 'I', 'Z', 'E' ), id );
+      }
+
+The support code block can be used to provide functions, data structures, and
+constants for the validation test.
+
+.. code-block:: yaml
+
+    test-prepare: null
+    test-cleanup: |
+      if ( ctx->id_value != INVALID_ID ) {
+        rtems_status_code sc;
+
+        sc = rtems_timer_delete( ctx->id_value );
+        T_rsc_success( sc );
+
+        ctx->id_value = INVALID_ID;
+      }
+
+      T_surrender_objects( &ctx->seized_objects, rtems_timer_delete );
+
+The validation test basically executes a couple of nested for loops to iterate
+over each pre-condition and each state of the pre-conditions.  These two
+optional code blocks can be used to prepare the pre-condition state
+preparations and clean up after the post-condition checks in each loop
+iteration.
+
+.. code-block:: yaml
+
+    test-setup:
+      brief: null
+      code: |
+        memset( ctx, 0, sizeof( *ctx ) );
+        ctx->id_value = INVALID_ID;
+      description: null
+    test-stop: null
+    test-teardown: null
+
+These optional code blocks correspond to test fixture methods, see
+:ref:`RTEMSTestFrameworkFixture`.
+
+Pre-Condition Templates
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Specify all directive parameters as separate pre-conditions.  Use the following
 syntax for directive object identifier parameters:
@@ -517,8 +917,8 @@ Use the following syntax for other directive parameters:
       test-epilogue: null
       test-prologue: null
 
-Post-Conditions
-^^^^^^^^^^^^^^^
+Post-Condition Templates
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Do not mix different things into one post-condition.  If you write multiple
 sentences to describe what happened, then think about splitting up the

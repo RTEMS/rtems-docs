@@ -131,6 +131,8 @@ two test steps (`N`) and one test failure (`F`).  The test case execution
 duration (`D`) was 0.001657 seconds.  For test report details see:
 :ref:`Test Reporting <RTEMSTestFrameworkTestReporting>`.
 
+.. _RTEMSTestFrameworkFixture:
+
 Test Fixture
 ------------
 
