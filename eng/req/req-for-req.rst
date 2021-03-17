@@ -171,9 +171,9 @@ Syntax
 
 Use the Easy Approach to Requirements Syntax (:term:`EARS`) to formulate
 requirements.  A recommended reading list to get familiar with this approach is
-:cite:`Mavin:2009:EARS`, :cite:`Mavin:2010:BigEars`, and
-:cite:`Mavin:2016:LLEARS`.  Please also have a look at the EARS quick reference
-sheet :cite:`Uusitalo:2012:EARS`.  The sentence types are:
+:cite:`Mavin:2009:EARS`, :cite:`Mavin:2010:BigEars`,
+:cite:`Mavin:2016:LLEARS`, and `Alisair Mavin's web site
+<https://alistairmavin.com/ears/>`_.  The patterns are:
 
 * Ubiquitous
 
@@ -181,22 +181,34 @@ sheet :cite:`Uusitalo:2012:EARS`.  The sentence types are:
 
 * Event-driven
 
-    *When* <optional preconditions> <trigger>, the <system name> shall <system response>.
+    **When** <trigger>, the <system name> shall <system response>.
 
 * State-driven
 
-    *While* <in state>, the <system name> shall <system response>.
+    **While** <pre-condition>, the <system name> shall <system response>.
 
 * Unwanted behaviour
 
-    *If* <optional preconditions> <trigger>, *then* the <system name> shall <system response>.
+    **If** <trigger>, **then** the <system name> shall <system response>.
 
 * Optional
 
-    *Where* <feature>, the <system name> shall <system response>.
+    **Where** <feature is included>, the <system name> shall <system response>.
 
-The optional sentence type should be only used for application configuration
-options.  The goal is to use the *enabled-by* attribute to enable or disable
+* Complex
+
+    **Where** <feature 0 is included>, **where** <feature 1 is included>, ...,
+    **where** <feature *n* is included>, **while** <pre-condition 0>, **while**
+    <pre-condition 1>, ..., **while** <pre-condition *m*>, **when** <trigger>,
+    the <system name> shall <system response>.
+
+    **Where** <feature 0 is included>, **where** <feature 1 is included>, ...,
+    **where** <feature *n* is included>, **while** <pre-condition 0>, **while**
+    <pre-condition 1>, ..., **while** <pre-condition *m*>, **if** <trigger>,
+    **then** the <system name> shall <system response>.
+
+The optional pattern should be only used for application configuration
+options.  The goal is to use the ``enabled-by`` attribute to enable or disable
 requirements based on configuration parameters that define the RTEMS artefacts
 used to build an application executable (header files, libraries, linker command
 files).  Such configuration parameters are for example the architecture, the
@@ -345,7 +357,7 @@ Justification of Requirements
 -----------------------------
 
 Each requirement shall have a rationale or justification recorded in a
-dedicated section of the requirement file.  See *rationale* attribute for
+dedicated section of the requirement file.  See ``rationale`` attribute for
 :ref:`ReqEngSpecificationItems`.
 
 .. _ReqEngValidation:
