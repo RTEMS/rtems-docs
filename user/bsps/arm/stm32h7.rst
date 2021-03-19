@@ -47,3 +47,29 @@ USB Host Driver
 ---------------
 
 The USB host driver ``dwc_otg`` is provided by the ``libbsd``.
+
+SD/MMC Driver
+-------------
+
+The SDMMC driver ``st_sdmmc`` is provided by the ``libbsd``.
+
+The default initialization is done for the STM32H743I-EVAL 2 board.
+
+To use different pins, you can create a ``HAL_SD_MspInit()`` function in your
+application that overwrites the default one defined in ``RTEMS``. If you don't
+have direction lines like on the evaluation board, you can just skip
+initializing these pins.
+
+If you want to use a different number of data lines, another polarity for the
+data direction pins, a different voltage or similar, you have to redefine
+``st_sdmmc_get_config()`` (normally provided by ``libbsd``) in your application.
+
+Known limitations:
+
+* Currently 1.8V signaling is not implemented. Therefore higher speeds like used
+  for UHS cards are not available. All cards fall back to High Speed transfers.
+* The driver uses the IDMA only. MDMA is currently not implemented. For SDMMC1
+  that means that the memory buffers can only come from AXI SRAM, QSPI memory,
+  Flash or the FMC (SDRAM, ...). The internal SRAM1, SRAM2, SRAM3 and SRAM4 is
+  not supported. SDMMC2 should not have that limitation. See ST AN5200 "Getting
+  started with STM32H7 Series SDMMC host controller" for more details.
