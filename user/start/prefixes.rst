@@ -40,7 +40,7 @@ applications and systems.
 You build and install the tool suite with the :ref:`RTEMS Source Builder (RSB)
 <RSB>`.  By default, the RSB will start the prefix path with a host operating
 system specific path plus :file:`rtems`, and the RTEMS version, e.g.
-:file:`/opt/rtems/5` on Linux, and :file:`/usr/local/rtems/5` on FreeBSD and
+:file:`/opt/rtems/6` on Linux, and :file:`/usr/local/rtems/6` on FreeBSD and
 macOS. Placing the RTEMS version number in the path lets you manage and
 migrate RTEMS versions as they are released.
 
@@ -50,10 +50,10 @@ make sure that your normal user has sufficient privileges to create files and
 directories under the prefix.  For example, you can create a directory
 :file:`/opt/rtems` and give it to a developer group with read, write, and
 execute permissions.  Alternatively, you can choose a prefix in your home
-directory, e.g. :file:`$HOME/rtems/5` or with a project-specific component
-:file:`$HOME/project-x/rtems/5`.  For more ideas, see the :ref:`project
+directory, e.g. :file:`$HOME/rtems/6` or with a project-specific component
+:file:`$HOME/project-x/rtems/6`.  For more ideas, see the :ref:`project
 sandboxing <ProjectSandboxing>` section.  In this quick start chapter, we will
-choose :file:`$HOME/quick-start/rtems/5` for the RTEMS tool suite prefix.
+choose :file:`$HOME/quick-start/rtems/6` for the RTEMS tool suite prefix.
 
 .. warning::
 
