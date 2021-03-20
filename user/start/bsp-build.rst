@@ -154,30 +154,29 @@ by ``$BASE``.
 
 .. code-block:: none
 
-    Setting top to                           : $BASE/src/rtems
-    Setting out to                           : $BASE/src/rtems/build
-    Regenerate build specification cache (needs a couple of seconds)...
-    Configure board support package (BSP)    : sparc/erc32
-    Checking for program 'sparc-rtems5-gcc'  : $BASE/rtems/5/bin/sparc-rtems5-gcc
-    Checking for program 'sparc-rtems5-g++'  : $BASE/rtems/5/bin/sparc-rtems5-g++
-    Checking for program 'sparc-rtems5-ar'   : $BASE/rtems/5/bin/sparc-rtems5-ar
-    Checking for program 'sparc-rtems5-ld'   : $BASE/rtems/5/bin/sparc-rtems5-ld
-    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
-    Checking for program 'g++, c++'          : $BASE/rtems/5/bin/sparc-rtems5-g++
-    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
-    Checking for program 'gas, gcc'          : $BASE/rtems/5/bin/sparc-rtems5-gcc
-    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
-    Checking for program 'gcc, cc'           : $BASE/rtems/5/bin/sparc-rtems5-gcc
-    Checking for program 'ar'                : $BASE/rtems/5/bin/sparc-rtems5-ar
-    Checking for c flags '-MMD'              : yes
-    Checking for cxx flags '-MMD'            : yes
-    Checking for program 'rtems-bin2c'       : $BASE/rtems/5/bin/rtems-bin2c
-    Checking for program 'gzip'              : /usr/bin/gzip
-    Checking for program 'pax'               : /usr/bin/pax
-    Checking for program 'rtems-ld'          : $BASE/rtems/5/bin/rtems-ld
-    Checking for program 'rtems-syms'        : $BASE/rtems/5/bin/rtems-syms
-    Checking for program 'xz'                : /usr/bin/xz
-    'configure' finished successfully (11.069s)
+    Setting top to                           : $BASE/quick-start/src/rtems 
+    Setting out to                           : $BASE/quick-start/src/rtems/build 
+    Configure board support package (BSP)    : sparc/erc32 
+    Checking for program 'sparc-rtems6-gcc'  : $BASE/quick-start/rtems/6/bin/sparc-rtems6-gcc 
+    Checking for program 'sparc-rtems6-g++'  : $BASE/quick-start/rtems/6/bin/sparc-rtems6-g++ 
+    Checking for program 'sparc-rtems6-ar'   : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
+    Checking for program 'sparc-rtems6-ld'   : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ld 
+    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
+    Checking for program 'g++, c++'          : $BASE/quick-start/rtems/6/bin/sparc-rtems6-g++ 
+    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
+    Checking for program 'gas, gcc'          : $BASE/quick-start/rtems/6/bin/sparc-rtems6-gcc 
+    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
+    Checking for program 'gcc, cc'           : $BASE/quick-start/rtems/6/bin/sparc-rtems6-gcc 
+    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
+    Checking for asm flags '-MMD'            : yes 
+    Checking for c flags '-MMD'              : yes 
+    Checking for cxx flags '-MMD'            : yes 
+    Checking for program 'rtems-bin2c'       : $BASE/quick-start/rtems/6/bin/rtems-bin2c 
+    Checking for program 'gzip'              : /usr/bin/gzip 
+    Checking for program 'rtems-ld'          : $BASE/quick-start/rtems/6/bin/rtems-ld 
+    Checking for program 'rtems-syms'        : $BASE/quick-start/rtems/6/bin/rtems-syms 
+    Checking for program 'xz'                : $BASE/anaconda3/bin/xz 
+    'configure' finished successfully (0.414s)
 
 Building the BSP is the second step.
 
@@ -191,17 +190,17 @@ This command should output something like this (omitted lines are denoted by
 
 .. code-block:: none
 
-    Waf: Entering directory `$BASE/src/rtems/build'
-    Waf: Leaving directory `$BASE/src/rtems/build'
-    'build' finished successfully (0.546s)
-    Waf: Entering directory `$BASE/src/rtems/build/sparc/erc32'
-    [   1/3922] Compiling bsps/sparc/shared/start/start.S
-    [   2/3922] Compiling bsps/shared/dev/serial/mc68681_reg4.c
-    [   3/3922] Compiling bsps/shared/dev/rtc/icm7170.c
-    ...
-    [4038/4038] Linking build/sparc/erc32/testsuites/tmtests/tmoverhd.exe
-    Waf: Leaving directory `$BASE/src/rtems/build/sparc/erc32'
-    'build_sparc/erc32' finished successfully (58.678s)
+    Waf: Entering directory `$BASE/quick-start/src/rtems/build'
+    Waf: Leaving directory `$BASE/quick-start/src/rtems/build'
+    'build' finished successfully (0.085s)
+    Waf: Entering directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
+    [   1/4093] Compiling bsps/shared/dev/serial/mc68681_reg2.c
+    [   2/4093] Compiling bsps/shared/dev/rtc/mc146818a_ioreg.c
+    [   3/4093] Compiling bsps/shared/dev/flash/am29lv160.c
+        ...
+    [4093/4093] Processing link: build/sparc/erc32/testsuites/libtests/dl01/dl01-tar.o build/sparc/erc32/testsuites/libtests/dl01/init.o build/sparc/erc32/testsuites/libtests/dl01/dl-load.o build/sparc/erc32/testsuites/libtests/dl01/dl01-sym.o -> build/sparc/erc32/testsuites/libtests/dl01.exe
+    Waf: Leaving directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
+    'build_sparc/erc32' finished successfully (2m14.111s)
 
 The last step is to install the BSP.
 
@@ -216,16 +215,16 @@ by ``$BASE``.
 
 .. code-block:: none
 
-    Waf: Entering directory `$BASE/src/rtems/build'
-    Waf: Leaving directory `$BASE/src/rtems/build'
-    'install' finished successfully (0.544s)
-    Waf: Entering directory `$BASE/src/rtems/build/sparc/erc32'
-    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/start.o (from build/sparc/erc32/start.o)
-    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/bspopts.h (from build/sparc/erc32/bsps/include/bspopts.h)
-    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/zilog/z8036.h (from bsps/include/rtems/zilog/z8036.h)
+    Waf: Entering directory `$BASE/quick-start/src/rtems/build'
+    Waf: Leaving directory `$BASE/quick-start/src/rtems/build'
+    'install' finished successfully (0.081s)
+    Waf: Entering directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
+    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/libchip/am29lv160.h (from bsps/include/libchip/am29lv160.h)
+    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/libchip/mc146818a.h (from bsps/include/libchip/mc146818a.h)
+    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/libchip/mc68681.h (from bsps/include/libchip/mc68681.h))
     ...
-    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/score/watchdogimpl.h (from cpukit/include/rtems/score/watchdogimpl.h)
-    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/score/watchdogticks.h (from cpukit/include/rtems/score/watchdogticks.h)
-    + install $BASE/rtems/5/sparc-rtems5/erc32/lib/include/rtems/score/wkspace.h (from cpukit/include/rtems/score/wkspace.h)
-    Waf: Leaving directory `$BASE/src/rtems/build/sparc/erc32'
-    'install_sparc/erc32' finished successfully (2.985s)
+    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/rtems/score/watchdogticks.h (from cpukit/include/rtems/score/watchdogticks.h)
+    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/rtems/score/wkspace.h (from cpukit/include/rtems/score/wkspace.h)
+    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/rtems/score/wkspacedata.h (from cpukit/include/rtems/score/wkspacedata.h)
+    Waf: Leaving directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
+    'install_sparc/erc32' finished successfully (1.834s))

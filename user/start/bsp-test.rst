@@ -31,36 +31,42 @@ by ``$BASE``.
 
     RTEMS Testing - Tester, 5.1.0
      Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
-     Python: 2.7.15 (default, Jan 10 2019, 01:14:47) [GCC 4.2.1 Compatible FreeBSD Clang 6.0.1 (tags/RELEASE_601/final 335540)]
-    Host: FreeBSD-12.0-RELEASE-p2-amd64-64bit-ELF (FreeBSD Build_FreeBSD12 12.0-RELEASE-p2 FreeBSD 12.0-RELEASE-p2 GENERIC amd64 amd64)
-    [  1/589] p:0   f:0   u:0   e:0   I:0   B:0   t:0   i:0   W:0   | sparc/erc32: dhrystone.exe
+     Host: Linux 5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64
+    Python: 3.8.5 (default, Jan 27 2021, 15:41:15) [GCC 9.3.0]
+    Host: Linux-5.8.0-44-generic-x86_64-with-glibc2.29 (Linux 5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64 x86_64)
+    [  1/570] p:0   f:0   u:0   e:0   I:0   B:0   t:0   L:0   i:0   W:0   | sparc/erc32: dhrystone.exe
     ...
-    [589/589] p:574 f:0   u:5   e:0   I:0   B:3   t:0   i:0   W:0   | sparc/erc32: tmtimer01.exe
+    [570/570] p:554 f:2   u:6   e:1   I:0   B:3   t:0   L:0   i:0   W:0   | sparc/erc32: ts-validation-1.exe
 
-    Passed:        580
-    Failed:          0
-    User Input:      5
-    Expected Fail:   0
+    Passed:        558
+    Failed:          2
+    User Input:      6
+    Expected Fail:   1
     Indeterminate:   0
     Benchmark:       3
-    Timeout:         1
+    Timeout:         0
+    Test too long:   0
     Invalid:         0
     Wrong Version:   0
     Wrong Build:     0
     Wrong Tools:     0
     ------------------
-    Total:         589
+    Total:         570
+    Failures:
+    dl06.exe
+    minimum.exe
     User Input:
-     monitor.exe
-     termios.exe
-     top.exe
-     fileio.exe
-     capture.exe
+    dl10.exe
+    monitor.exe
+    termios.exe
+    top.exe
+    capture.exe
+    fileio.exe
+    Expected Fail:
+    psxfenv01.exe
     Benchmark:
-     whetstone.exe
-     linpack.exe
-     dhrystone.exe
-    Timeouts:
-     pppd.exe
-    Average test time: 0:00:00.437773
-    Testing time     : 0:04:17.848557
+    dhrystone.exe
+    linpack.exe
+    whetstone.exe
+    Average test time: 0:00:00.371256
+    Testing time     : 0:03:31.616055

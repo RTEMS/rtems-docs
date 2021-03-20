@@ -33,22 +33,25 @@ built. The name you see may vary depending on the host you are using:
 
 .. code-block:: none
 
-    RTEMS Source Builder - Set Builder, 5.1.0
-    Build Set: 5/rtems-sparc
+    RTEMS Source Builder - Set Builder, 6 (5e449fb5c2cb)
+    Build Set: 6/rtems-sparc
     ...
-    config: tools/rtems-binutils-2.34.cfg
-    package: sparc-rtems5-binutils-2.34-x86_64-freebsd12.1-1
-    building: sparc-rtems5-binutils-2.34-x86_64-freebsd12.1-1
-    sizes: sparc-rtems5-binutils-2.34-x86_64-freebsd12.1-1: 305.866MB (installed: 29.966MB)
-    cleaning: sparc-rtems5-binutils-2.34-x86_64-freebsd12.1-1
-    reporting: tools/rtems-binutils-2.34.cfg -> sparc-rtems5-binutils-2.34-x86_64-freebsd12.1-1.txt
-    reporting: tools/rtems-binutils-2.34.cfg -> sparc-rtems5-binutils-2.34-x86_64-freebsd12.1-1.xml
-    config: tools/rtems-gcc-7.5.0-newlib-fbaa096.cfg
-    package: sparc-rtems5-gcc-7.5.0-newlib-fbaa096-x86_64-freebsd12.1-1
-    building: sparc-rtems5-gcc-7.5.0-newlib-fbaa096-x86_64-freebsd12.1-1
+    config: tools/rtems-binutils-2.36.cfg
+    package: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1
+    building: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1
+    sizes: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1: 716.015MB (installed: 163.538MB)
+    cleaning: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1
+    reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1.txt
+    reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1.xml
+    config: tools/rtems-gcc-10-newlib-head.cfg
+    package: sparc-rtems6-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
+    building: sparc-rtems6-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
     ....
-    Build Sizes: usage: 5.684GB total: 1.112GB (sources: 143.803MB, patches: 21.348KB, installed 995.188MB)
-    Build Set: Time 0:21:35.626294
+    Build Sizes: usage: 9.607GB total: 2.244GB (sources: 264.186MB, patches: 43.468KB, installed 1.986GB)
+    installing: 6/rtems-sparc -> $HOME/quick-start/rtems/6
+    clean staging: 6/rtems-sparc
+    Staging Size: 5.292MB
+    Build Set: Time 1:01:48.019157
 
 Once the build has successfully completed you can check if the cross C compiler
 works with the following command:
@@ -69,8 +72,8 @@ source code used.
 
 .. code-block:: none
 
-    sparc-rtems5-gcc (GCC) 7.5.0 20191114 (RTEMS 5, RSB 5.1.0, Newlib fbaa096)
-    Copyright (C) 2017 Free Software Foundation, Inc.
+    sparc-rtems6-gcc (GCC) 10.2.1 20210309 (RTEMS 6, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
+    Copyright (C) 2020 Free Software Foundation, Inc.
     This is free software; see the source for copying conditions.  There is NO
     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 

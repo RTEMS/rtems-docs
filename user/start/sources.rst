@@ -121,13 +121,15 @@ This command should output something like this (omitted lines are denoted by
 
 .. code-block:: none
 
-    RTEMS Source Builder - Set Builder, 5.1.0
-    Build Set: 5/rtems-sparc
+    RTEMS Source Builder - Set Builder, 6 (5e449fb5c2cb)
+    Build Set: 6/rtems-sparc
+    Build Set: 6/rtems-autotools.bset
+    Build Set: 6/rtems-autotools-internal.bset
     ...
-    download: https://ftp.rtems.org/pub/rtems/releases/5/5.1.0/5.1.0/sources/gcc-7.5.0.tar.xz -> sources/gcc-7.5.0.tar.xz
+    download: https://git.rtems.org/rtems-tools/snapshot/rtems-tools-90342feb4dd63d188ce945adfb0a769...<see log> -> sources/rtems-tools-90342feb4dd63d188ce945adfb0a7694a42a65cd.tar.bz2
     ...
-    Build Sizes: usage: 0.000B total: 143.814MB (sources: 143.793MB, patches: 21.348KB, installed 0.000B)
-    Build Set: Time 0:05:52.617958
+    Build Sizes: usage: 0.000B total: 264.228MB (sources: 264.186MB, patches: 43.468KB, installed 0.000B)
+    Build Set: Time 0:06:34.357125
 
 If you encounter errors, check your internet connection, firewall settings,
 virus scanners and the availability of the download servers.
