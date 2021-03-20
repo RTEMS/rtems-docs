@@ -8,7 +8,7 @@ Build Your Application
 ======================
 
 You tested a BSP in the previous section.  We built the ``erc32`` BSP
-and it is installed under :file:`$HOME/quick-start/rtems/5`.
+and it is installed under :file:`$HOME/quick-start/rtems/6`.
 
 We will now create a simple Hello World application with a Git
 repository and using the `Waf <https://waf.io>`_ build system.
@@ -107,7 +107,7 @@ and copy the Waf script:
     #
     from __future__ import print_function
 
-    rtems_version = "5"
+    rtems_version = "6"
 
     try:
         import rtems_waf.rtems as rtems
@@ -142,7 +142,7 @@ Configure the application using Waf's ``configure`` command:
 
 .. code-block:: none
 
-    ./waf configure --rtems=$HOME/quick-start/rtems/5 --rtems-bsp=sparc/erc32
+    ./waf configure --rtems=$HOME/quick-start/rtems/6 --rtems-bsp=sparc/erc32
 
 The output will be something close to:
 
@@ -210,7 +210,7 @@ Run the executable:
 
 .. code-block:: none
 
-    $HOME/quick-start/rtems/5/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems5-erc32/hello.exe
+    $HOME/quick-start/rtems/6/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems6-erc32/hello.exe
 
 The output will be something close to:
 
