@@ -10,7 +10,7 @@ Obtain the Sources
 ==================
 
 You have considered and chosen a suitable installation prefix in the previous
-section.  We have chosen :file:`$HOME/quick-start/rtems/5` as the installation
+section.  We have chosen :file:`$HOME/quick-start/rtems/6` as the installation
 prefix. We will show how to use a released version of RTEMS and then as an
 alternative we will show you using the :ref:`RSB Git repository
 <QuickStartSources_Git>`. Consider using a Git clone if you wish to make
@@ -114,7 +114,7 @@ the sources to build the ERC 32 BSP before building run the following commands:
 .. code-block:: none
 
     cd $HOME/quick-start/src/rsb/rtems
-    ../source-builder/sb-set-builder --source-only-download 5/rtems-sparc
+    ../source-builder/sb-set-builder --source-only-download 6/rtems-sparc
 
 This command should output something like this (omitted lines are denoted by
 ``...``):
