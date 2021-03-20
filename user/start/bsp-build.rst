@@ -11,7 +11,7 @@ Build a Board Support Package (BSP)
 You installed the tool suite in your installation prefix, made ready the source
 for two RTEMS source packages and if you are using a Git clone bootstrapped the
 RTEMS sources in the previous sections.  We installed the tool suite in
-:file:`$HOME/quick-start/rtems/5` and unpacked the source in
+:file:`$HOME/quick-start/rtems/6` and unpacked the source in
 :file:`$HOME/quick-start/src`.
 
 You are now able to build :ref:`Board Support Packages (BSPs) <BSPs>` for all
@@ -112,13 +112,13 @@ directory to your ``$PATH`` throughout the remaining steps. Run the command:
 
 .. code-block:: none
 
-    export PATH=$HOME/quick-start/rtems/5/bin:"$PATH"
+    export PATH=$HOME/quick-start/rtems/6/bin:"$PATH"
 
 Check your installed tools can be found by running:
 
 .. code-block:: none
 
-    command -v sparc-rtems5-gcc && echo "found" || echo "not found"
+    command -v sparc-rtems6-gcc && echo "found" || echo "not found"
 
 The output should be:
 
@@ -128,7 +128,7 @@ The output should be:
 
 If ``not found`` is printed the tools are not correctly installed or the path
 has not been correctly set. Check the contents of the path
-:file:`$HOME/quick-start/rtems/5/bin` manually and if :file:`sparc-rtems5-gcc`
+:file:`$HOME/quick-start/rtems/6/bin` manually and if :file:`sparc-rtems6-gcc`
 is present the path is wrong. If the file cannot be found return to
 :ref:`QuickStartTools` and install the tools again.
 
@@ -145,7 +145,7 @@ everything else.  For detailed information about the BSP build system, see
     cd $HOME/quick-start/src/rtems
     echo "[sparc/erc32]" > config.ini
     echo "BUILD_TESTS = True" >> config.ini
-    ./waf configure --prefix=$HOME/quick-start/rtems/5
+    ./waf configure --prefix=$HOME/quick-start/rtems/6
 
 The first invocation of ``./waf`` needs a bit of time (e.g. 10 seconds) since an
 internal cache file is populated.  This command should output something like
