@@ -22,7 +22,7 @@ subsections under :ref:`Quick Start <QuickStart>` chapter or ask on the
 
 We recommend new student developers use the current development (unreleased)
 version. The :ref:`Quick Start Preparation <QuickStartPreparation>` should be
-consulted for guidance. The examples shown here use the released version 5,
+consulted for guidance. Some examples shown may use released versions,
 which may not be recommended for your purposes. If you are unsure, feel free to
 inquire on the :r:list:`devel`.
 
@@ -74,7 +74,9 @@ architecture-specific. We will be installing the SPARC tool suite since we are
 building a SPARC based BSP.
 
 Please refer to the :ref:`QuickStartTools` section for instructions on
-building and installing the tool suite.
+building and installing the tool suite. Remember to use the current version
+associated with the RTEMS development head, see
+:ref:`QuickStartPreparation_Version`.
 
 Building the Board Support Package
 ----------------------------------
