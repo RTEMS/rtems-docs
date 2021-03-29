@@ -102,8 +102,8 @@ The function prototype is given below:
        rtems_vector_number irq
     );
 
-Debugging
----------
+Debugging using libdebugger
+---------------------------
 
 RTEMS's ``libdebugger`` requires the ARM debug resources be enabled for it to
 work. The TI SOC used on the ``beagleboneblack`` board provides no access for
@@ -162,3 +162,66 @@ If ``libdebugger`` fails to detect the registers open the ``bspdebug.c``
 source and change ``has_tdo`` to ``1``, save then rebuild and install the
 BSP. This will turn on an internal feeback to check the JTAG logic. Discard
 the edit once the hardware is working.
+
+Debugging Beagle Bone Black using a JTAG debugger and gdb
+---------------------------------------------------------
+
+Debugging a Beagle Bone Black (or variants) is also possible using a hardware
+JTAG debugger. The JTAG is available via P2. The footprint is for an ARM 20 pin
+cTI connector. That connector should be used, if it is necessary to have access
+to commercially available adapters.
+
+For hand-made cables and adapters a standard 1.27mm pitch header and a 0.635mm
+ribbon cable can be much cheaper. But note that even if it looks compatible,
+it's not the same pin out as a ARM Cortex 20 pin connector!
+
+A lot of JTAG adapters that are working together with OpenOCD will work. There
+are also commercially available systems (like Segger J-Link) that work well with
+the Beagle. Note that the JTAG debugger has to be compatible with ARM Cortex A8.
+Cortex M only debuggers (like the Segger J-Link Edu Mini) won't work.
+
+If the debugger offers a gdb server (like OpenOCD or Segger J-Link) the
+following gdb start script can be used:
+
+.. code-block::
+
+    define reset
+            echo -- Reset target and wait for U-Boot to start kernel.\n
+            monitor reset
+            # RTEMS U-Boot starts at this address.
+            tbreak *0x80000000
+            # Linux starts here.
+            tbreak *0x82000000
+            continue
+
+            echo -- Disable watchdog.\n
+            set *(uint32_t*)0x44e35048=0xAAAA
+            while (*(uint32_t*)0x44e35034 != 0)
+            end
+            set *(uint32_t*)0x44e35048=0x5555
+            while (*(uint32_t*)0x44e35034 != 0)
+            end
+
+            echo -- Overwrite kernel with application to debug.\n
+            load
+    end
+
+    target remote :2331
+
+Note that you might have to replace the ``monitor reset`` by some other command
+that resets the target using your specific debugger. You also have to replace
+the ``target remote :2331`` to match the port of your gdb server.
+
+The script expects that the Beagle Bone Black starts some application from an SD
+card or from eMMC. It defines a ``reset`` command that does the following:
+
+ * reset the target
+ * let U-Boot run, initialize the base system, load an FDT and an application
+ * break at the application entry point
+ * disable the watchdog
+ * overwrite the application that has been loaded by U-Boot with the application
+   provided as an command line argument to gdb
+
+This method has the advantage that the application is executed in nearly the
+same environment like it would be executed if loaded by U-Boot directly (except
+for the watchdog).
