@@ -36,7 +36,7 @@ The boot image tool can:
 
 The disk images are suitable for booting a range of hardware that have
 media interfaces, such as an SD card. The default partition type is
-the Master Boot Record (MRB) and a single root DOS-FS partition is
+the Master Boot Record (MBR) and a single root DOS-FS partition is
 created.
 
 Boot Loaders
