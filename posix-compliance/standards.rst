@@ -69,21 +69,27 @@ and 2.1.1. In these editions, the profiles are as follows:
 
 * General Purpose - 812 APIs, multi-process, much more
 
-FACE Technical Standard Edition 3.0 adds the requirement for an
+FACE Technical Standard, Edition 3.0 adds the requirement for an
 operating system to support ``clock_nanosleep()`` in all profiles and
 defines one additional subcommand for the ``posix_devctl()`` methods.
+
+FACE Technical Standard, Edition 3.1 has a number of minor changes
+to the profiles. Most of these were to improve alignment with the 
+Software Communications Architecture (SCA) profiles. Additionally,
+some inconsistencies in the profiles were noticed and addressed while
+doing the alignment review.
 
 RTEMS provides all of the methods required by the FACE Safety BASE profile
 and all of the methods in the Safety Extended profile which do not require
 multiple processes. Similarly, RTEMS provides most of the methods in the
 General Purpose profile which do not require multiple processes.
 
-The Software Communications Architecture (SCA) specification targets the
-requirements for software-defined radios. This specification was originally
-developed in support of the Joint Tactical Radio System (JTRS) program
-in conjunction with the Object Management Group (OMG). This standard is
-now maintained by the Wireless Innovation Forum with support from the
-U.S. Navy Joint Tactical Network Center (JTNC). Some URLs of interest:
+The SCA specification targets the requirements for software-defined
+radios. This specification was originally developed in support of the
+Joint Tactical Radio System (JTRS) program in conjunction with the Object
+Management Group (OMG). This standard is now maintained by the Wireless
+Innovation Forum with support from the U.S. Navy Joint Tactical Network
+Center (JTNC). Some URLs of interest:
 
 * SCA at Wireless Innovation Forum - http://www.wirelessinnovation.org/sca-based-standards-library
 
