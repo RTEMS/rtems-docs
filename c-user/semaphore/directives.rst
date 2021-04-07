@@ -651,7 +651,7 @@ wait queue is not empty, then
 :c:macro:`RTEMS_NOT_OWNER_OF_RESOURCE`
     The calling task was not the owner of the semaphore.
 
-:c:macro:`RTEMS_INTERNAL_ERROR`
+:c:macro:`RTEMS_UNSATISFIED`
     The semaphore's count already had the maximum value of `UINT32_MAX
     <https://en.cppreference.com/w/c/types/integer>`_.
 
