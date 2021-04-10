@@ -67,23 +67,38 @@ Add the following to a file named uEnv.txt:
 I2C Driver
 ----------
 
-The Beagle has the `i2c-0` device registered at initialization. For registering
-`i2c-1` and `i2c-2` ``bbb_register_i2c_1()`` and
-``bbb_register_i2c_2()`` wrapper functions are respectively used.
+The Beagle i2c initialization is based on the device tree. To initialize a i2c
+device, the user has to enable the respective node in the device tree using
+overlays.
 
-For registering an I2C device with a custom path (say `/dev/i2c-3`) the
-function ``am335x_i2c_bus_register()`` has to be used.
+For registering an I2C device with a custom path (say `/dev/i2c-eeprom`) an
+overlay has to be provided. The overlay must add an additional attribute
+`rtems,path` with the custom path as value to the respective i2c node.
 
-The function prototype is given below:
+For example,
 
-.. code-block:: C
+.. code-block::
+     /dts-v1/;
 
-   int am335x_i2c_bus_register(
-   const char         *bus_path,
-   uintptr_t           register_base,
-   uint32_t            input_clock,
-   rtems_vector_number irq
-   );
+     / {
+        compatible = "ti,am335x-bone-black", "ti,am335x-bone", "ti,am33xx";
+
+        fragment@0 {
+           target = <0xffffffff>;
+
+           __overlay__ {
+              compatible = "rtems,bsp-i2c", "ti,omap4-i2c";
+              status = "okay";
+              rtems,path = "/dev/i2c-eeprom";
+           };
+        };
+
+        __fixups__ {
+           i2c0 = "/fragment@0:target:0";
+        };
+     };
+
+The above example registers a custom path `/dev/i2c-eeprom` for i2c0.
 
 SPI Driver
 ----------
