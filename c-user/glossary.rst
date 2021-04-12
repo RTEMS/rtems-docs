@@ -240,6 +240,10 @@ Glossary
         This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
 
+    eligible scheduler
+        An eligible scheduler of a :term:`task` is a :term:`scheduler` which can be
+        used by the task to allocate a processor for the task.
+
     embedded
         An application that is delivered as a hidden part of a larger system.
         For example, the software in a fuel-injection control system is an
@@ -336,8 +340,19 @@ Glossary
         dispatch is marked as necessary, then the next thread dispatch will make
         the heir task the executing task.
 
+    helping scheduler
+        A helping scheduler of a :term:`task` is a :term:`scheduler` which is a
+        :term:`eligible scheduler` and which is not the :term:`home scheduler` of
+        the task.
+
     heterogeneous
         A multiprocessor computer system composed of dissimilar processors.
+
+    home scheduler
+        The home scheduler of a :term:`task` is a :term:`scheduler` which is a
+        :term:`eligible scheduler` and which is assigned to the task during the
+        initialization or explicitly via a directive call such as
+        :c:func:`rtems_task_set_scheduler`.
 
     homogeneous
         A multiprocessor computer system composed of a single type of processor.
@@ -351,6 +366,10 @@ Glossary
     IDLE task
         A special low priority task which assumes control of the CPU when no
         other task is able to execute.
+
+    ineligible scheduler
+        An ineligible scheduler of a :term:`task` is a :term:`scheduler` which is
+        not an :term:`eligible scheduler`.
 
     interface
         A specification of the methodology used to connect multiple independent
@@ -723,6 +742,11 @@ Glossary
         out of the set of ready tasks.  One method is to assign each task a
         priority number and assign the tasks with the lowest priority number to
         one processor of the set of processors owned by a scheduler instance.
+
+        A scheduler is either an :term:`eligible scheduler` or a
+        :term:`ineligible scheduler` for a task.  An :term:`eligible scheduler` is
+        either the :term:`home scheduler` or a :term:`helping scheduler` for a
+        task.
 
     scheduler instance
         A scheduler instance is a scheduling algorithm with a corresponding
