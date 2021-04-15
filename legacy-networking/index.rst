@@ -22,6 +22,7 @@ RTEMS Legacy Network User Manual (|version|).
 	:numbered:
 
 	preface
+	quick_start
 	network_task_structure
 	networking_driver
 	using_networking_rtems_app
