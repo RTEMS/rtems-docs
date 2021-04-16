@@ -525,8 +525,16 @@ scheduler.
 :c:macro:`RTEMS_INVALID_ID`
     There was no semaphore associated with the identifier specified by ``id``.
 
+:c:macro:`RTEMS_NOT_DEFINED`
+    The semaphore uses a priority ceiling and there was no priority ceiling
+    defined for the :term:`home scheduler` of the calling task.
+
 :c:macro:`RTEMS_UNSATISFIED`
     The semaphore could not be obtained immediately.
+
+:c:macro:`RTEMS_INVALID_PRIORITY`
+    The semaphore uses a priority ceiling and the calling task had a current
+    priority less than the priority ceiling.
 
 :c:macro:`RTEMS_INCORRECT_STATE`
     Acquiring of the local, binary semaphore by the calling task would have
