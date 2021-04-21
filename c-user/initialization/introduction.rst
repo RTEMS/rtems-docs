@@ -7,7 +7,7 @@ Introduction
 
 The Initialization Manager is responsible for initializing the Board Support
 Package, RTEMS, device drivers, the root filesystem and the application.  The
-:ref:`Fatal Error Manager <fatal_error_manager>` is responsible for the system
+:ref:`RTEMSAPIClassicFatal` is responsible for the system
 shutdown.
 
 The Initialization Manager provides only one directive:

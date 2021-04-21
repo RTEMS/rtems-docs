@@ -44,7 +44,7 @@ RTEMS Classic API Guide (|version|).
 	region/index
 	dual-ported-memory/index
 	io/index
-	fatal_error
+	fatal-error/index
 	board_support_packages
 	user-extensions/index
 	config/index
