@@ -1,229 +1,403 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _DualPortedMemoryManagerDirectives:
 
 Directives
 ==========
 
-This section details the dual-ported memory manager's directives.  A subsection
-is dedicated to each of this manager's directives and describes the calling
-sequence, related constants, usage, and status codes.
+This section details the directives of the Dual-Ported Memory Manager. A
+subsection is dedicated to each of this manager's directives and lists the
+calling sequence, parameters, description, return values, and notes of the
+directive.
+
+.. Generated from spec:/rtems/dpmem/if/create
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_port_create()
 .. index:: create a port
-.. index:: rtems_port_create
 
-.. _rtems_port_create:
+.. _InterfaceRtemsPortCreate:
 
-PORT_CREATE - Create a port
----------------------------
+rtems_port_create()
+-------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Creates a port.
 
-        rtems_status_code rtems_port_create(
-            rtems_name  name,
-            void       *internal_start,
-            void       *external_start,
-            uint32_t    length,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - port created successfully
-     * - ``RTEMS_INVALID_NAME``
-       - invalid port name
-     * - ``RTEMS_INVALID_ADDRESS``
-       - address not on four byte boundary
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_TOO_MANY``
-       - too many DP memory areas created
+    rtems_status_code rtems_port_create(
+      rtems_name name,
+      void      *internal_start,
+      void      *external_start,
+      uint32_t   length,
+      rtems_id  *id
+    );
 
-DESCRIPTION:
-    This directive creates a port which resides on the local node for the
-    specified DPMA.  The assigned port id is returned in id.  This port id is
-    used as an argument to other dual-ported memory manager directives to
-    convert addresses within this DPMA.
+.. rubric:: PARAMETERS:
 
-    For control and maintenance of the port, RTEMS allocates and initializes an
-    DPCB from the DPCB free pool.  Thus memory from the dual-ported memory area
-    is not used to store the DPCB.
+``name``
+    This parameter is the object name of the port.
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+``internal_start``
+    This parameter is the internal start address of the memory area.
 
-    The internal_address and external_address parameters must be on a four byte
-    boundary.
+``external_start``
+    This parameter is the external start address of the memory area.
+
+``length``
+    This parameter is the length in bytes of the memory area.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the identifier of the created port will be
+    stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive creates a port which resides on the local node.  The port has
+the user-defined object name specified in ``name``.  The assigned object
+identifier is returned in ``id``.  This identifier is used to access the port
+with other dual-ported memory port related directives.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was invalid.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``internal_start`` parameter was not properly aligned.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``external_start`` parameter was not properly aligned.
+
+:c:macro:`RTEMS_TOO_MANY`
+    There was no inactive object available to create a port.  The number of
+    port available to the application is configured through the
+    :ref:`CONFIGURE_MAXIMUM_PORTS` application configuration option.
+
+.. rubric:: NOTES:
+
+The ``internal_start`` and ``external_start`` parameters must be on a boundary
+defined by the target processor architecture.
+
+For control and maintenance of the port, RTEMS allocates a :term:`DPCB` from
+the local DPCB free pool and initializes it.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The number of ports available to the application is configured through the
+  :ref:`CONFIGURE_MAXIMUM_PORTS` application configuration option.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may allocate memory from the RTEMS
+  Workspace.
+
+.. Generated from spec:/rtems/dpmem/if/ident
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: get ID of a port
-.. index:: obtain ID of a port
-.. index:: rtems_port_ident
+.. index:: rtems_port_ident()
 
-.. _rtems_port_ident:
+.. _InterfaceRtemsPortIdent:
 
-PORT_IDENT - Get ID of a port
------------------------------
+rtems_port_ident()
+------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Identifies a port by the object name.
 
-        rtems_status_code rtems_port_ident(
-            rtems_name  name,
-            rtems_id   *id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - port identified successfully
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``id`` is NULL
-     * - ``RTEMS_INVALID_NAME``
-       - port name not found
+    rtems_status_code rtems_port_ident( rtems_name name, rtems_id *id );
 
-DESCRIPTION:
-    This directive obtains the port id associated with the specified name to be
-    acquired.  If the port name is not unique, then the port id will match one
-    of the DPMAs with that name.  However, this port id is not guaranteed to
-    correspond to the desired DPMA.  The port id is used to access this DPMA in
-    other dual-ported memory area related directives.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive will not cause the running task to be preempted.
+``name``
+    This parameter is the object name to look up.
+
+``id``
+    This parameter is the pointer to an object identifier variable.  When the
+    directive call is successful, the object identifier of an object with the
+    specified name will be stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive obtains a port identifier associated with the port name
+specified in ``name``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``id`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``name`` parameter was 0.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    There was no object with the specified name on the local node.
+
+.. rubric:: NOTES:
+
+If the port name is not unique, then the port identifier will match the first
+port with that name in the search order.  However, this port identifier is not
+guaranteed to correspond to the desired port.
+
+The objects are searched from lowest to the highest index.  Only the local node
+is searched.
+
+The port identifier is used with other dual-ported memory related directives to
+access the port.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/dpmem/if/delete
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_port_delete()
 .. index:: delete a port
-.. index:: rtems_port_delete
 
-.. _rtems_port_delete:
+.. _InterfaceRtemsPortDelete:
 
-PORT_DELETE - Delete a port
----------------------------
+rtems_port_delete()
+-------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Deletes the port.
 
-        rtems_status_code rtems_port_delete(
-            rtems_id id
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_SUCCESSFUL``
-       - port deleted successfully
-     * - ``RTEMS_INVALID_ID``
-       - invalid port id
+    rtems_status_code rtems_port_delete( rtems_id id );
 
-DESCRIPTION:
-    This directive deletes the dual-ported memory area specified by id.  The
-    DPCB for the deleted dual-ported memory area is reclaimed by RTEMS.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive may cause the calling task to be preempted due to an
-    obtain and release of the object allocator mutex.
+``id``
+    This parameter is the port identifier.
 
-    The calling task does not have to be the task that created the port.  Any
-    local task that knows the port id can delete the port.
+.. rubric:: DESCRIPTION:
+
+This directive deletes the port specified by ``id``.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no port associated with the identifier specified by ``id``.
+
+.. rubric:: NOTES:
+
+The :term:`DPCB` for the deleted port is reclaimed by RTEMS.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may obtain and release the object allocator mutex.  This may
+  cause the calling task to be preempted.
+
+* The calling task does not have to be the task that created the object.  Any
+  local task that knows the object identifier can delete the object.
+
+* Where the object class corresponding to the directive is configured to use
+  unlimited objects, the directive may free memory to the RTEMS Workspace.
+
+.. Generated from spec:/rtems/dpmem/if/external-to-internal
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_port_external_to_internal()
 .. index:: convert external to internal address
-.. index:: rtems_port_external_to_internal
 
-.. _rtems_port_external_to_internal:
+.. _InterfaceRtemsPortExternalToInternal:
 
-PORT_EXTERNAL_TO_INTERNAL - Convert external to internal address
-----------------------------------------------------------------
+rtems_port_external_to_internal()
+---------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Converts the external address to the internal address.
 
-        rtems_status_code rtems_port_external_to_internal(
-            rtems_id   id,
-            void      *external,
-            void     **internal
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``internal`` is NULL
-     * - ``RTEMS_SUCCESSFUL``
-       - successful conversion
+    rtems_status_code rtems_port_external_to_internal(
+      rtems_id id,
+      void    *external,
+      void   **internal
+    );
 
-DESCRIPTION:
-    This directive converts a dual-ported memory address from external to
-    internal representation for the specified port.  If the given external
-    address is invalid for the specified port, then the internal address is set
-    to the given external address.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive is callable from an ISR.
+``id``
+    This parameter is the port identifier.
 
-    This directive will not cause the calling task to be preempted.
+``external``
+    This parameter is the external address to convert.
+
+``internal``
+    This parameter is the pointer to a pointer variable.  When the directive
+    call is successful, the external address associated with the internal
+    address will be stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive converts a dual-ported memory address from external to internal
+representation for the specified port.  If the given external address is
+invalid for the specified port, then the internal address is set to the given
+external address.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``id`` parameter was invalid.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``internal`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/dpmem/if/internal-to-external
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_port_internal_to_external()
 .. index:: convert internal to external address
-.. index:: rtems_port_internal_to_external
 
-.. _rtems_port_internal_to_external:
+.. _InterfaceRtemsPortInternalToExternal:
 
-PORT_INTERNAL_TO_EXTERNAL - Convert internal to external address
-----------------------------------------------------------------
+rtems_port_internal_to_external()
+---------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Converts the internal address to the external address.
 
-        rtems_status_code rtems_port_internal_to_external(
-            rtems_id   id,
-            void      *internal,
-            void     **external
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    .. list-table::
-     :class: rtems-table
+.. code-block:: c
 
-     * - ``RTEMS_INVALID_ADDRESS``
-       - ``external`` is NULL
-     * - ``RTEMS_SUCCESSFUL``
-       - successful conversion
+    rtems_status_code rtems_port_internal_to_external(
+      rtems_id id,
+      void    *internal,
+      void   **external
+    );
 
-DESCRIPTION:
-    This directive converts a dual-ported memory address from internal to
-    external representation so that it can be passed to owner of the DPMA
-    represented by the specified port.  If the given internal address is an
-    invalid dual-ported address, then the external address is set to the given
-    internal address.
+.. rubric:: PARAMETERS:
 
-NOTES:
-    This directive is callable from an ISR.
+``id``
+    This parameter is the port identifier.
 
-    This directive will not cause the calling task to be preempted.
+``internal``
+    This parameter is the internal address to convert.
+
+``external``
+    This parameter is the pointer to a pointer variable.  When the directive
+    call is successful, the external address associated with the internal
+    address will be stored in this variable.
+
+.. rubric:: DESCRIPTION:
+
+This directive converts a dual-ported memory address from internal to external
+representation so that it can be passed to owner of the DPMA represented by the
+specified port.  If the given internal address is an invalid dual-ported
+address, then the external address is set to the given internal address.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_NAME`
+    The ``id`` parameter was invalid.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``external`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
