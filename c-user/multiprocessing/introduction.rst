@@ -1,9 +1,35 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. Generated from spec:/rtems/mp/if/group
+
+.. _MultiprocessingManagerIntroduction:
 
 Introduction
 ============
+
+.. The following list was generated from:
+.. spec:/rtems/mp/if/announce
+
+The Multiprocessing Manager provides support for heterogeneous multiprocessing
+systems based on message passing in a network of multiprocessing nodes.
 
 In multiprocessor real-time systems, new requirements, such as sharing data and
 global resources between processors, are introduced.  This requires an
@@ -28,8 +54,8 @@ may then be accessed by any task regardless of the physical location of the
 object and the accessing task.  RTEMS automatically determines that the object
 being accessed resides on another processor and performs the actions required
 to access the desired object.  Simply stated, RTEMS allows the entire system,
-both hardware and software, to be viewed logically as a single system.
+both hardware and software, to be viewed logically as a single system. The
+directives provided by the Multiprocessing Manager are:
 
-The directives provided by the  Manager are:
-
-- :ref:`rtems_multiprocessing_announce`
+* :ref:`InterfaceRtemsMultiprocessingAnnounce` - Announces the arrival of a
+  packet.

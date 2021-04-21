@@ -1,44 +1,74 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _MultiprocessingManagerDirectives:
 
 Directives
 ==========
 
-This section details the additional directives required to support RTEMS in a
-multiprocessor configuration.  A subsection is dedicated to each of this
-manager's directives and describes the calling sequence, related constants,
-usage, and status codes.
+This section details the directives of the Multiprocessing Manager. A
+subsection is dedicated to each of this manager's directives and lists the
+calling sequence, parameters, description, return values, and notes of the
+directive.
+
+.. Generated from spec:/rtems/mp/if/announce
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: announce arrival of package
-.. index:: rtems_multiprocessing_announce
+.. index:: rtems_multiprocessing_announce()
 
-.. _rtems_multiprocessing_announce:
+.. _InterfaceRtemsMultiprocessingAnnounce:
 
-MULTIPROCESSING_ANNOUNCE - Announce the arrival of a packet
------------------------------------------------------------
+rtems_multiprocessing_announce()
+--------------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Announces the arrival of a packet.
 
-        void rtems_multiprocessing_announce( void );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE
+.. code-block:: c
 
-DESCRIPTION:
-    This directive informs RTEMS that a multiprocessing communications packet
-    has arrived from another node.  This directive is called by the
-    user-provided MPCI, and is only used in multiprocessor configurations.
+    void rtems_multiprocessing_announce( void );
 
-NOTES:
-    This directive is typically called from an ISR.
+.. rubric:: DESCRIPTION:
 
-    This directive will almost certainly cause the calling task to be
-    preempted.
+This directive informs RTEMS that a multiprocessing communications packet has
+arrived from another node.  This directive is called by the user-provided MPCI,
+and is only used in multiprocessing configurations.
 
-    This directive does not generate activity on remote nodes.
+.. rubric:: NOTES:
+
+This directive is typically called from an :term:`ISR`.
+
+This directive does not generate activity on remote nodes.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive may unblock another task which may preempt the calling task.
