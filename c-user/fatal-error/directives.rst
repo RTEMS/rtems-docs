@@ -1,226 +1,355 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2015, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _FatalErrorManagerDirectives:
 
 Directives
 ==========
 
-This section details the fatal error manager's directives.  A subsection is
-dedicated to each of this manager's directives and describes the calling
-sequence, related constants, usage, and status codes.
+This section details the directives of the Fatal Error Manager. A subsection is
+dedicated to each of this manager's directives and lists the calling sequence,
+parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/fatal/if/fatal
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_fatal()
 .. index:: announce fatal error
 .. index:: fatal error, announce
-.. index:: rtems_fatal
 
-.. _rtems_fatal:
+.. _InterfaceRtemsFatal:
 
-FATAL - Invoke the fatal error handler
---------------------------------------
+rtems_fatal()
+-------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Invokes the fatal error handler.
 
-        void rtems_fatal(
-          rtems_fatal_source fatal_source,
-          rtems_fatal_code   error_code
-        ) RTEMS_NO_RETURN;
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE - This function will not return to the caller.
+.. code-block:: c
 
-DESCRIPTION:
-    This directive terminates the system.
+    void rtems_fatal(
+      rtems_fatal_source fatal_source,
+      rtems_fatal_code   fatal_code
+    );
 
-NOTE:
-    Registered :c:func:`atexit()` or :c:func:`on_exit()` handlers are not
-    called.  Use :c:func:`exit()` in case these handlers should be invoked.
+.. rubric:: PARAMETERS:
+
+``fatal_source``
+    This parameter is the fatal source.
+
+``fatal_code``
+    This parameter is the fatal code.
+
+.. rubric:: DESCRIPTION:
+
+This directive processes fatal errors.  The fatal source is set to the value of
+the ``fatal_source`` parameter.  The fatal code is set to the value of the
+``fatal_code`` parameter.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not return to the caller.
+
+* The directive invokes the fatal error extensions in :term:`extension forward
+  order`.
+
+* The directive does not invoke handlers registered by :c:func:`atexit` or
+  :c:func:`on_exit`.
+
+* The directive may terminate the system.
+
+.. Generated from spec:/rtems/fatal/if/panic
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_panic()
 .. index:: panic
-.. index:: rtems_panic
 
-.. _rtems_panic:
+.. _InterfaceRtemsPanic:
 
-PANIC - Print a message and invoke the fatal error handler
-----------------------------------------------------------
+rtems_panic()
+-------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Prints the message and invokes the fatal error handler.
 
-        void rtems_panic(
-          const char *fmt,
-          ...
-        ) RTEMS_NO_RETURN RTEMS_PRINTFLIKE( 1, 2 );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE - This function will not return to the caller.
+.. code-block:: c
 
-DESCRIPTION:
-    This directive prints a message via :c:func:`printk` specified by the
-    format and optional parameters and then terminates the system with the
-    :c:macro:`RTEMS_FATAL_SOURCE_PANIC` fatal source.  The fatal code is set to
-    the format string address.
+    void rtems_panic( const char *fmt, ... );
 
-NOTE:
-    Registered :c:func:`atexit()` or :c:func:`on_exit()` handlers are not
-    called.  Use :c:func:`exit()` in case these handlers should be invoked.
+.. rubric:: PARAMETERS:
+
+``fmt``
+    This parameter is the message format.
+
+``...``
+    This parameter is a list of optional parameters required by the message
+    format.
+
+.. rubric:: DESCRIPTION:
+
+This directive prints a message via :c:func:`printk` specified by the ``fmt``
+parameter and optional parameters and then invokes the fatal error handler.
+The fatal source is set to :c:macro:`RTEMS_FATAL_SOURCE_PANIC`.  The fatal code
+is set to the value of the ``fmt`` parameter value.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not return to the caller.
+
+* The directive invokes the fatal error extensions in :term:`extension forward
+  order`.
+
+* The directive does not invoke handlers registered by :c:func:`atexit` or
+  :c:func:`on_exit`.
+
+* The directive may terminate the system.
+
+.. Generated from spec:/rtems/fatal/if/shutdown-executive
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_shutdown_executive()
 .. index:: shutdown RTEMS
-.. index:: rtems_shutdown_executive
 
-.. _rtems_shutdown_executive:
+.. _InterfaceRtemsShutdownExecutive:
 
-SHUTDOWN_EXECUTIVE - Shutdown RTEMS
------------------------------------
+rtems_shutdown_executive()
+--------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Invokes the fatal error handler.
 
-        void rtems_shutdown_executive(
-            uint32_t result
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE - This function will not return to the caller.
+.. code-block:: c
 
-DESCRIPTION:
-    This directive is called when the application wishes to shutdown RTEMS.
-    The system is terminated with a fatal source of ``RTEMS_FATAL_SOURCE_EXIT``
-    and the specified ``result`` code.
+    void rtems_shutdown_executive( uint32_t fatal_code );
 
-NOTES:
-    This directive *must* be the last RTEMS directive invoked by an application
-    and it *does not return* to the caller.
+.. rubric:: PARAMETERS:
 
-    This directive may be called any time.
+``fatal_code``
+    This parameter is the fatal code.
+
+.. rubric:: DESCRIPTION:
+
+This directive processes fatal errors.  The fatal source is set to
+:c:macro:`RTEMS_FATAL_SOURCE_EXIT`.  The fatal code is set to the value of the
+``fatal_code`` parameter.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not return to the caller.
+
+* The directive invokes the fatal error extensions in :term:`extension forward
+  order`.
+
+* The directive does not invoke handlers registered by :c:func:`atexit` or
+  :c:func:`on_exit`.
+
+* The directive may terminate the system.
+
+.. Generated from spec:/rtems/fatal/if/exception-frame-print
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_exception_frame_print()
 .. index:: exception frame
-.. index:: rtems_exception_frame_print
 
-.. _rtems_exception_frame_print:
+.. _InterfaceRtemsExceptionFramePrint:
 
-EXCEPTION_FRAME_PRINT - Prints the exception frame
---------------------------------------------------
+rtems_exception_frame_print()
+-----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Prints the exception frame.
 
-        void rtems_exception_frame_print(
-            const rtems_exception_frame *frame
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE
+.. code-block:: c
 
-DESCRIPTION:
-    Prints the exception frame via ``printk()``.
+    void rtems_exception_frame_print( const rtems_exception_frame *frame );
+
+.. rubric:: PARAMETERS:
+
+``frame``
+    This parameter is the reference to the exception frame to print.
+
+.. rubric:: DESCRIPTION:
+
+The exception frame is printed in an architecture-dependent format using
+:c:func:`printk`.
+
+.. Generated from spec:/rtems/fatal/if/source-text
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_fatal_source_text()
 .. index:: fatal error
-.. index:: rtems_fatal_source_text
 
-.. _rtems_fatal_source_text:
+.. _InterfaceRtemsFatalSourceText:
 
-FATAL_SOURCE_TEXT - Returns a text for a fatal source
------------------------------------------------------
+rtems_fatal_source_text()
+-------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Returns a descriptive text for the fatal source.
 
-        const char *rtems_fatal_source_text(
-            rtems_fatal_source source
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    The fatal source text or "?" in case the passed fatal source is invalid.
+.. code-block:: c
 
-DESCRIPTION:
-    Returns a text for a fatal source.  The text for fatal source is the
-    enumerator constant.
+    const char *rtems_fatal_source_text( rtems_fatal_source fatal_source );
+
+.. rubric:: PARAMETERS:
+
+``fatal_source``
+    This parameter is the fatal source.
+
+.. rubric:: RETURN VALUES:
+
+"?"
+    The ``fatal_source`` parameter value was not a fatal source.
+
+Returns a descriptive text for the fatal source.  The text for the fatal source
+is the enumerator constant name.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+.. Generated from spec:/rtems/fatal/if/internal-error-text
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_internal_error_text()
 .. index:: fatal error
-.. index:: rtems_internal_error_text
 
-.. _rtems_internal_error_text:
+.. _InterfaceRtemsInternalErrorText:
 
-INTERNAL_ERROR_TEXT - Returns a text for an internal error code
----------------------------------------------------------------
+rtems_internal_error_text()
+---------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Returns a descriptive text for the internal error code.
 
-        const char *rtems_internal_error_text(
-            rtems_fatal_code error
-        );
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    The error code text or "?" in case the passed error code is invalid.
+.. code-block:: c
 
-DESCRIPTION:
-    Returns a text for an internal error code.  The text for each internal
-    error code is the enumerator constant.
+    const char *rtems_internal_error_text( rtems_fatal_code internal_error_code );
+
+.. rubric:: PARAMETERS:
+
+``internal_error_code``
+    This parameter is the internal error code.
+
+.. rubric:: RETURN VALUES:
+
+"?"
+    The ``internal_error_code`` parameter value was not an internal error code.
+
+Returns a descriptive text for the internal error code.  The text for the
+internal error code is the enumerator constant name.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+.. Generated from spec:/rtems/fatal/if/error-occurred
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
-.. index:: announce fatal error
-.. index:: fatal error, announce
-.. index:: rtems_fatal_error_occurred
+.. index:: rtems_fatal_error_occurred()
 
-.. _rtems_fatal_error_occurred:
+.. _InterfaceRtemsFatalErrorOccurred:
 
-FATAL_ERROR_OCCURRED - Invoke the fatal error handler (deprecated)
-------------------------------------------------------------------
+rtems_fatal_error_occurred()
+----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Invokes the fatal error handler.
 
-        void rtems_fatal_error_occurred(
-            uint32_t  the_error
-        ) RTEMS_NO_RETURN;
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE - This function will not return to the caller.
+.. code-block:: c
 
-DESCRIPTION:
-    This directive processes fatal errors.  If the FATAL error extension is
-    defined in the configuration table, then the user-defined error extension
-    is called.  If configured and the provided FATAL error extension returns,
-    then the RTEMS default error handler is invoked.  This directive can be
-    invoked by RTEMS or by the user's application code including initialization
-    tasks, other tasks, and ISRs.
+    void rtems_fatal_error_occurred( uint32_t fatal_code );
 
-NOTES:
-    This directive is deprecated and should not be used in new code.
+.. rubric:: PARAMETERS:
 
-    This directive supports local operations only.
+``fatal_code``
+    This parameter is the fatal code.
 
-    Unless the user-defined error extension takes special actions such as
-    restarting the calling task, this directive WILL NOT RETURN to the caller.
+.. rubric:: DESCRIPTION:
 
-    The user-defined extension for this directive may wish to initiate a global
-    shutdown.
+This directive processes fatal errors.  The fatal source is set to
+:c:macro:`INTERNAL_ERROR_RTEMS_API`.  The fatal code is set to the value of the
+``fatal_code`` parameter.
+
+.. rubric:: NOTES:
+
+This directive is deprecated and should not be used in new code.  It is
+recommended to not use this directive since error locations cannot be uniquely
+identified.  A recommended alternative directive is :ref:`InterfaceRtemsFatal`.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within any runtime context.
+
+* The directive will not return to the caller.
+
+* The directive invokes the fatal error extensions in :term:`extension forward
+  order`.
+
+* The directive does not invoke handlers registered by :c:func:`atexit` or
+  :c:func:`on_exit`.
+
+* The directive may terminate the system.
