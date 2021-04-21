@@ -29,7 +29,7 @@ RTEMS Classic API Guide (|version|).
 	key_concepts
 	rtems_data_types
 	scheduling-concepts/index
-	initialization
+	initialization/index
 	task/index
 	interrupt/index
 	clock/index
