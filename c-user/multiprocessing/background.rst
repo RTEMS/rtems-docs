@@ -2,44 +2,6 @@
 
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
-.. index:: multiprocessing
-
-Multiprocessing Manager
-***********************
-
-Introduction
-============
-
-In multiprocessor real-time systems, new requirements, such as sharing data and
-global resources between processors, are introduced.  This requires an
-efficient and reliable communications vehicle which allows all processors to
-communicate with each other as necessary.  In addition, the ramifications of
-multiple processors affect each and every characteristic of a real-time system,
-almost always making them more complicated.
-
-RTEMS addresses these issues by providing simple and flexible real-time
-multiprocessing capabilities.  The executive easily lends itself to both
-tightly-coupled and loosely-coupled configurations of the target system
-hardware.  In addition, RTEMS supports systems composed of both homogeneous and
-heterogeneous mixtures of processors and target boards.
-
-A major design goal of the RTEMS executive was to transcend the physical
-boundaries of the target hardware configuration.  This goal is achieved by
-presenting the application software with a logical view of the target system
-where the boundaries between processor nodes are transparent.  As a result, the
-application developer may designate objects such as tasks, queues, events,
-signals, semaphores, and memory blocks as global objects.  These global objects
-may then be accessed by any task regardless of the physical location of the
-object and the accessing task.  RTEMS automatically determines that the object
-being accessed resides on another processor and performs the actions required
-to access the desired object.  Simply stated, RTEMS allows the entire system,
-both hardware and software, to be viewed logically as a single system.
-
-The directives provided by the  Manager are:
-
-- rtems_multiprocessing_announce_ - A multiprocessing communications packet has
-  arrived
-
 .. index:: multiprocessing topologies
 
 Background
@@ -455,54 +417,3 @@ of the following:
 
 - RTEMS makes no assumptions regarding the application data component of the
   packet.
-
-Operations
-==========
-
-Announcing a Packet
--------------------
-
-The ``rtems_multiprocessing_announce`` directive is called by the MPCI layer to
-inform RTEMS that a packet has arrived from another node.  This directive can
-be called from an interrupt service routine or from within a polling routine.
-
-Directives
-==========
-
-This section details the additional directives required to support RTEMS in a
-multiprocessor configuration.  A subsection is dedicated to each of this
-manager's directives and describes the calling sequence, related constants,
-usage, and status codes.
-
-.. raw:: latex
-
-   \clearpage
-
-.. index:: announce arrival of package
-.. index:: rtems_multiprocessing_announce
-
-.. _rtems_multiprocessing_announce:
-
-MULTIPROCESSING_ANNOUNCE - Announce the arrival of a packet
------------------------------------------------------------
-
-CALLING SEQUENCE:
-    .. code-block:: c
-
-        void rtems_multiprocessing_announce( void );
-
-DIRECTIVE STATUS CODES:
-    NONE
-
-DESCRIPTION:
-    This directive informs RTEMS that a multiprocessing communications packet
-    has arrived from another node.  This directive is called by the
-    user-provided MPCI, and is only used in multiprocessor configurations.
-
-NOTES:
-    This directive is typically called from an ISR.
-
-    This directive will almost certainly cause the calling task to be
-    preempted.
-
-    This directive does not generate activity on remote nodes.

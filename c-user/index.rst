@@ -49,7 +49,7 @@ RTEMS Classic API Guide (|version|).
 	user-extensions/index
 	config/index
 	self_contained_objects
-	multiprocessing
+	multiprocessing/index
 	symmetric_multiprocessing_services
 	pci_library
 	stack_bounds_checker
