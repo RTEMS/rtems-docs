@@ -233,6 +233,12 @@ Glossary
         A term used to describe memory which can be accessed at two different
         addresses.
 
+    dynamic extension sets
+        The dynamic extension sets are a list of :term:`user extensions`.  The list
+        is defined by the system services used by the application and directive calls
+        such as :c:func:`rtems_extension_create`.  See also
+        :term:`initial extension sets`.
+
     EARS
         This term is an acronym for Easy Approach to Requirements Syntax.
 
@@ -285,6 +291,26 @@ Glossary
     exported
         An object known by all nodes in a multiprocessor system.  An object
         created with the GLOBAL attribute will be exported.
+
+    extension forward order
+        The :term:`user extensions` may be invoked in extension forward order.  In
+        forward order, all user extensions of the :term:`initial extension sets` are
+        invoked before all user extensions of the :term:`dynamic extension sets`.
+        In the initial extension sets the order is defined by the table index.  The
+        user extension with the lowest table index is invoked first.  In the dynamic
+        extension sets the order is defined by the registration order.  The first
+        registered user extension is invoked first.  See also
+        :term:`extension reverse order`.
+
+    extension reverse order
+        The :term:`user extensions` may be invoked in extension reverse order.  In
+        reverse order, all user extensions of the :term:`dynamic extension sets` are
+        invoked before all user extensions of the :term:`initial extension sets`.
+        In the dynamic extension sets the order is defined by the registration order.
+        The last registered user extension is invoked first.  In the initial
+        extension sets the order is defined by the table index.  The user extension
+        with the highest table index is invoked first.  See also
+        :term:`extension forward order`.
 
     external address
         The address used to access dual-ported memory by all the nodes in a
@@ -370,6 +396,13 @@ Glossary
     ineligible scheduler
         An ineligible scheduler of a :term:`task` is a :term:`scheduler` which is
         not an :term:`eligible scheduler`.
+
+    initial extension sets
+        The initial extension sets are a table of :term:`user extensions`.  The table
+        is defined by the application configuration for example through the
+        :ref:`CONFIGURE_INITIAL_EXTENSIONS` application configuration option.  The
+        initial extension sets cannot be altered during runtime through directive
+        calls.  See also :term:`dynamic extension sets`.
 
     interface
         A specification of the methodology used to connect multiple independent
@@ -991,8 +1024,11 @@ Glossary
         A table which contains the entry points for each user extensions.
 
     user extensions
-        Software routines provided by the application to enhance the
-        functionality of RTEMS.
+        User extensions are software routines provided by the application to enhance
+        the functionality of RTEMS.  An active user extension is either in the
+        :term:`initial extension sets` or the :term:`dynamic extension sets`.  User
+        extensions are invoked in :term:`extension forward order` or
+        :term:`extension reverse order`.
 
     User Initialization Tasks Table
         A table which contains the information needed to create and start each of

@@ -109,15 +109,10 @@ and release the extension buffers.
 Order of Invocation
 -------------------
 
-The user extensions are invoked in either `forward` or `reverse` order.  In
-forward order, the user extensions of initial extension sets are invoked before
-the user extensions of the dynamic extension sets.  The forward order of
-initial extension sets is defined by the initial extension sets table index.
-The forward order of dynamic extension sets is defined by the order in which
-the dynamic extension sets were created.  The reverse order is defined
-accordingly.  By invoking the user extensions in this order, extensions can be
-built upon one another.  At the following system events, the user extensions
-are invoked in `forward` order
+The user extensions are invoked in either :term:`extension forward order` or
+:term:`extension reverse order`.  By invoking the user extensions in these
+orders, extensions can be built upon one another.  At the following system
+events, the user extensions are invoked in `forward` order
 
 - thread creation,
 
