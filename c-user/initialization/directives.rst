@@ -1,41 +1,69 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2015, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. _InitializationManagerDirectives:
 
 Directives
 ==========
 
-This section details the Initialization Manager's directives.  A subsection is
-dedicated to each of this manager's directives and describes the calling
-sequence, related constants, usage, and status codes.
+This section details the directives of the Initialization Manager. A subsection
+is dedicated to each of this manager's directives and lists the calling
+sequence, parameters, description, return values, and notes of the directive.
+
+.. Generated from spec:/rtems/init/if/initialize-executive
 
 .. raw:: latex
 
-   \clearpage
+    \clearpage
 
+.. index:: rtems_initialize_executive()
 .. index:: initialize RTEMS
 .. index:: start multitasking
-.. index:: rtems_initialize_executive
 
-.. _rtems_initialize_executive:
+.. _InterfaceRtemsInitializeExecutive:
 
-INITIALIZE_EXECUTIVE - Initialize RTEMS
----------------------------------------
+rtems_initialize_executive()
+----------------------------
 
-CALLING SEQUENCE:
-    .. code-block:: c
+Initializes the system and starts multitasking.
 
-        void rtems_initialize_executive(void);
+.. rubric:: CALLING SEQUENCE:
 
-DIRECTIVE STATUS CODES:
-    NONE - This function will not return to the caller.
+.. code-block:: c
 
-DESCRIPTION:
-    Iterates through the system initialization linker set and invokes the
-    registered handlers.  The final step is to start multitasking.
+    void rtems_initialize_executive( void );
 
-NOTES:
-    This directive should be called by :c:func:`boot_card()` only.
+.. rubric:: DESCRIPTION:
 
-    This directive *does not return* to the caller.  Errors in the
-    initialization sequence are usually fatal and lead to a system termination.
+Iterates through the system initialization linker set and invokes the
+registered handlers.  The final step is to start multitasking.
+
+.. rubric:: NOTES:
+
+Errors in the initialization sequence are usually fatal and lead to a system
+termination.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive should be called by :c:func:`boot_card` only.
+
+* The directive will not return to the caller.
