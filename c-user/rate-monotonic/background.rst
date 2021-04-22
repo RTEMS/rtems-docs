@@ -112,7 +112,9 @@ less than its period.  For example, a periodic task's requirements may state
 that it should execute for 10 milliseconds every 100 milliseconds.  Although
 the execution time may be the average, worst, or best case, the worst-case
 execution time is more appropriate for use when analyzing system behavior under
-transient overload conditions... index:: aperiodic task, definition
+transient overload conditions.
+
+.. index:: aperiodic task, definition
 
 In contrast, an aperiodic task executes at irregular intervals and has only a
 soft deadline.  In other words, the deadlines for aperiodic tasks are not
