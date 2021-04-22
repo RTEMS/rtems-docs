@@ -212,8 +212,9 @@ Cancels the timer.
 
 This directive cancels the timer specified by ``id``.  This timer will be
 reinitiated by the next invocation of :ref:`InterfaceRtemsTimerReset`,
-:ref:`InterfaceRtemsTimerFireAfter`, or :ref:`InterfaceRtemsTimerFireWhen` with
-the same timer identifier.
+:ref:`InterfaceRtemsTimerFireAfter`, :ref:`InterfaceRtemsTimerFireWhen`,
+:ref:`InterfaceRtemsTimerServerFireAfter`, or
+:ref:`InterfaceRtemsTimerServerFireWhen` with the same timer identifier.
 
 .. rubric:: RETURN VALUES:
 
