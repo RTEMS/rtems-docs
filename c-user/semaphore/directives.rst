@@ -466,9 +466,9 @@ Obtains the semaphore.
     This parameter is the option set.
 
 ``timeout``
-    This parameter is the timeout in clock ticks if the :c:macro:`RTEMS_WAIT`
-    option is set.  Use :c:macro:`RTEMS_NO_TIMEOUT` to wait potentially
-    forever.
+    This parameter is the timeout in :term:`clock ticks <clock tick>` if the
+    :c:macro:`RTEMS_WAIT` option is set.  Use :c:macro:`RTEMS_NO_TIMEOUT` to
+    wait potentially forever.
 
 .. rubric:: DESCRIPTION:
 
