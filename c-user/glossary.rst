@@ -375,8 +375,8 @@ Glossary
         A multiprocessor computer system composed of dissimilar processors.
 
     home scheduler
-        The home scheduler of a :term:`task` is a :term:`scheduler` which is a
-        :term:`eligible scheduler` and which is assigned to the task during the
+        The home scheduler of a :term:`task` is a :term:`scheduler` which is an
+        :term:`eligible scheduler` and which is assigned to the task during its
         initialization or explicitly via a directive call such as
         :c:func:`rtems_task_set_scheduler`.
 
