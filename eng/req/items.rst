@@ -1584,9 +1584,8 @@ name
     The attribute value shall be a string. It shall be the name of the
     unspecified interface.
 
-reference
-    The attribute value shall be an optional string. If the value is present,
-    then it shall be an URL to the standard or specification of the interface.
+references
+    The attribute value shall be an :ref:`SpecTypeInterfaceReferencesSet`.
 
 .. _SpecTypeInterfaceVariableItemType:
 
@@ -4317,6 +4316,20 @@ value is ``interface-placement``. It defines the interface placement role of
 links.  It is used to indicate that an interface definition is placed into an
 interface container, for example a header file.
 
+.. _SpecTypeInterfaceReferencesSet:
+
+Interface References Set
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes defines references for the interface. Generic attributes
+may be specified. Each generic attribute key shall be a :ref:`SpecTypeName`.
+Each generic attribute value shall be a string. The key defines the reference
+kind.  The value shall be a kind-specific reference target.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeInterfaceUnspecifiedItemType`
+
 .. _SpecTypeInterfaceReturnDirective:
 
 Interface Return Directive
@@ -4448,6 +4461,8 @@ This type is used by the following types:
 * :ref:`SpecTypeGlossaryItemType`
 
 * :ref:`SpecTypeInterfaceItemType`
+
+* :ref:`SpecTypeInterfaceReferencesSet`
 
 * :ref:`SpecTypeLink`
 
