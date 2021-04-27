@@ -396,7 +396,7 @@ Fires the timer at the time of day.
 
     rtems_status_code rtems_timer_fire_when(
       rtems_id                          id,
-      rtems_time_of_day                *wall_time,
+      const rtems_time_of_day          *wall_time,
       rtems_timer_service_routine_entry routine,
       void                             *user_data
     );
@@ -649,7 +649,7 @@ Fires the timer at the time of day using the Timer Server.
 
     rtems_status_code rtems_timer_server_fire_when(
       rtems_id                          id,
-      rtems_time_of_day                *wall_time,
+      const rtems_time_of_day          *wall_time,
       rtems_timer_service_routine_entry routine,
       void                             *user_data
     );
