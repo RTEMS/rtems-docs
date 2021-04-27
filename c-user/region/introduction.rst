@@ -1,29 +1,63 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+.. This file is part of the RTEMS quality process and was automatically
+.. generated.  If you find something that needs to be fixed or
+.. worded better please post a report or patch to an RTEMS mailing list
+.. or raise a bug report:
+..
+.. https://www.rtems.org/bugs.html
+..
+.. For information on updating and regenerating please refer to the How-To
+.. section in the Software Requirements Engineering chapter of the
+.. RTEMS Software Engineering manual.  The manual is provided as a part of
+.. a release.  For development sources please refer to the online
+.. documentation at:
+..
+.. https://docs.rtems.org
+
+.. Generated from spec:/rtems/region/if/group
+
+.. _RegionManagerIntroduction:
 
 Introduction
 ============
 
-The region manager provides facilities to dynamically allocate memory in
-variable sized units.  The directives provided by the region manager are:
+.. The following list was generated from:
+.. spec:/rtems/region/if/create
+.. spec:/rtems/region/if/ident
+.. spec:/rtems/region/if/delete
+.. spec:/rtems/region/if/extend
+.. spec:/rtems/region/if/get-segment
+.. spec:/rtems/region/if/return-segment
+.. spec:/rtems/region/if/resize-segment
+.. spec:/rtems/region/if/get-information
+.. spec:/rtems/region/if/get-free-information
+.. spec:/rtems/region/if/get-segment-size
 
-- :ref:`rtems_region_create`
+The Region Manager provides facilities to dynamically allocate memory in
+variable sized units. The directives provided by the Region Manager are:
 
-- :ref:`rtems_region_ident`
+* :ref:`InterfaceRtemsRegionCreate` - Creates a region.
 
-- :ref:`rtems_region_delete`
+* :ref:`InterfaceRtemsRegionIdent` - Identifies a region by the object name.
 
-- :ref:`rtems_region_extend`
+* :ref:`InterfaceRtemsRegionDelete` - Deletes the region.
 
-- :ref:`rtems_region_get_segment`
+* :ref:`InterfaceRtemsRegionExtend` - Extends the region.
 
-- :ref:`rtems_region_return_segment`
+* :ref:`InterfaceRtemsRegionGetSegment` - Gets a segment from the region.
 
-- :ref:`rtems_region_get_segment_size`
+* :ref:`InterfaceRtemsRegionReturnSegment` - Returns the segment to the region.
 
-- :ref:`rtems_region_resize_segment`
+* :ref:`InterfaceRtemsRegionResizeSegment` - Changes the size of the segment.
 
-- :ref:`rtems_region_get_information`
+* :ref:`InterfaceRtemsRegionGetInformation` - Gets the region information.
 
-- :ref:`rtems_region_get_free_information`
+* :ref:`InterfaceRtemsRegionGetFreeInformation` - Gets the region free
+  information.
+
+* :ref:`InterfaceRtemsRegionGetSegmentSize` - Gets the size of the region
+  segment.
