@@ -589,7 +589,8 @@ The following constraints apply to this directive:
 
 * The directive may be called from within interrupt context.
 
-* The directive may unblock another task which may preempt the calling task.
+* The directive may unblock a task.  This may cause the calling task to be
+  preempted.
 
 * When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply.  This will preempt the calling
@@ -671,7 +672,8 @@ The following constraints apply to this directive:
 
 * The directive may be called from within interrupt context.
 
-* The directive may unblock another task which may preempt the calling task.
+* The directive may unblock a task.  This may cause the calling task to be
+  preempted.
 
 * When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply.  This will preempt the calling
@@ -764,7 +766,8 @@ The following constraints apply to this directive:
 
 * The directive may be called from within interrupt context.
 
-* The directive may unblock another task which may preempt the calling task.
+* The directive may unblock a task.  This may cause the calling task to be
+  preempted.
 
 * When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply.  This will preempt the calling

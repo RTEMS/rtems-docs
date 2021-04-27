@@ -96,10 +96,11 @@ The following constraints apply to this directive:
 
 * The directive may be called from within any runtime context.
 
-* The directive may change the priority of another task which may preempt the
-  calling task.
+* The directive may change the priority of a task.  This may cause the calling
+  task to be preempted.
 
-* The directive may unblock another task which may preempt the calling task.
+* The directive may unblock a task.  This may cause the calling task to be
+  preempted.
 
 .. Generated from spec:/rtems/clock/if/get-tod
 
