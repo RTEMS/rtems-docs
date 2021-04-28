@@ -1180,9 +1180,7 @@ appl-config-option-type
     application configuration option type.
 
 description
-    The attribute value shall be an :ref:`SpecTypeInterfaceDescription`. The
-    :ref:`SpecTypeApplicationConfigurationValueOptionItemType` items have an
-    attribute for constraints.
+    The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
 
 name
     The attribute value shall be an
@@ -1244,10 +1242,6 @@ This type refines the following types:
 This set of attributes specifies application configuration initializer or
 integer option. All explicit attributes shall be specified. The explicit
 attributes for this type are:
-
-constraints
-    The attribute value shall be an
-    :ref:`SpecTypeApplicationConfigurationOptionConstraintSet`.
 
 default-value
     The attribute value shall be an :ref:`SpecTypeIntegerOrString`. It shall
@@ -2899,39 +2893,6 @@ This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``appl-config-group-member``. It defines the application configuration
 group membership role of links.
 
-.. _SpecTypeApplicationConfigurationOptionConstraintSet:
-
-Application Configuration Option Constraint Set
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This set of attributes defines application configuration option constraints.
-Additional constraints can be added through the links of the item using the
-:ref:`SpecTypeConstraintLinkRole`. None of the explicit attributes is
-mandatory, they are all optional. The explicit attributes for this type are:
-
-max
-    The attribute value shall be an :ref:`SpecTypeIntegerOrString`. It shall be
-    the maximum value of the application configuration option.
-
-min
-    The attribute value shall be an :ref:`SpecTypeIntegerOrString`. It shall be
-    the minimum value of the application configuration option.
-
-set
-    The attribute value shall be a list. Each list element shall be an
-    :ref:`SpecTypeIntegerOrString`. It shall be the set of valid values for the
-    application configuration option.
-
-texts
-    The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeRequirementText`. It shall be a list of constraints specific
-    to this application configuration option.  For general constraints, use a
-    link with the :ref:`SpecTypeConstraintLinkRole` to a constraint item.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeApplicationConfigurationValueOptionItemType`
-
 .. _SpecTypeApplicationConfigurationOptionName:
 
 Application Configuration Option Name
@@ -3720,8 +3681,6 @@ A value of this type shall be of one of the following variants:
 * The value may be a string.
 
 This type is used by the following types:
-
-* :ref:`SpecTypeApplicationConfigurationOptionConstraintSet`
 
 * :ref:`SpecTypeApplicationConfigurationValueOptionItemType`
 
@@ -4697,8 +4656,6 @@ This type is used by the following types:
 * :ref:`SpecTypeActionRequirementState`
 
 * :ref:`SpecTypeApplicationConfigurationGroupItemType`
-
-* :ref:`SpecTypeApplicationConfigurationOptionConstraintSet`
 
 * :ref:`SpecTypeApplicationConfigurationOptionItemType`
 
