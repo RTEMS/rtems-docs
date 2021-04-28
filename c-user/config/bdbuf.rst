@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -76,9 +76,10 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be an integral multiple of :ref:`CONFIGURE_BDBUF_BUFFER_MIN_SIZE`.
+    * It shall be an integral multiple of
+      :ref:`CONFIGURE_BDBUF_BUFFER_MIN_SIZE`.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum size of a buffer
@@ -106,8 +107,13 @@ DEFAULT VALUE:
     The default value is 512.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the minimum size of a buffer
@@ -135,8 +141,13 @@ DEFAULT VALUE:
     The default value is 32768.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `SIZE_MAX
+      <https://en.cppreference.com/w/c/types/limits>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the size of the cache memory
@@ -164,8 +175,13 @@ DEFAULT VALUE:
     The default value is 0.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum blocks per
@@ -195,8 +211,13 @@ DEFAULT VALUE:
     The default value is 16.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum blocks per write
@@ -225,7 +246,8 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid Classic API task
-    priority.  The set of valid task priorities is scheduler-specific.
+    priority.  The set of valid task priorities depends on the scheduler
+    configuration.
 
 DESCRIPTION:
     The value of this configuration option defines the read-ahead task priority.
@@ -255,15 +277,16 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+    * It shall be greater than or equal to
+      :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the task stack size of the
@@ -291,8 +314,13 @@ DEFAULT VALUE:
     The default value is 1000.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout task maximum block
@@ -320,8 +348,13 @@ DEFAULT VALUE:
     The default value is 250.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout task swap period
@@ -350,7 +383,8 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid Classic API task
-    priority.  The set of valid task priorities is scheduler-specific.
+    priority.  The set of valid task priorities depends on the scheduler
+    configuration.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout task priority.
@@ -377,8 +411,13 @@ DEFAULT VALUE:
     The default value is 0.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout worker task count.
@@ -406,7 +445,8 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid Classic API task
-    priority.  The set of valid task priorities is scheduler-specific.
+    priority.  The set of valid task priorities depends on the scheduler
+    configuration.
 
 DESCRIPTION:
     The value of this configuration option defines the swapout worker task

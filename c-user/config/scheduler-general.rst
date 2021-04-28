@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 2010 Gedare Bloom
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
@@ -69,13 +69,14 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    * It shall be less than or equal to `SIZE_MAX
+      <https://en.cppreference.com/w/c/types/limits>`_.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number Constant
@@ -106,8 +107,8 @@ DEFAULT VALUE:
     The default value is 255.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be
-    an element of {3, 7, 31, 63, 127, 255}.
+    The value of this configuration option shall be equal to 3, 7, 31, 63, 127,
+    or 255.
 
 DESCRIPTION:
     For the following schedulers
@@ -168,15 +169,14 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be a list of the following
-      macros:
+    * It shall be a list of the following macros:
 
       * ``RTEMS_SCHEDULER_ASSIGN( processor_index, attributes )``
 
       * ``RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER``
 
-    * It shall be a list of exactly
-      :ref:`CONFIGURE_MAXIMUM_PROCESSORS` elements.
+    * It shall be a list of exactly :ref:`CONFIGURE_MAXIMUM_PROCESSORS`
+      elements.
 
 DESCRIPTION:
     The value of this configuration option is used to initialize the initial
@@ -323,8 +323,8 @@ DEFAULT VALUE:
     * ``"UPS "`` for the :ref:`SchedulerPrioritySimple`.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be a valid integer of type
-    :c:type:`rtems_name`.
+    The value of this configuration option shall be convertible to an integer
+    of type :c:type:`rtems_name`.
 
 DESCRIPTION:
     The value of this configuration option defines the name of the default

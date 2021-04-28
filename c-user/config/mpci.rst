@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -52,14 +52,14 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It shall be small enough so that the
-      MPCI receive server stack area calculation carried out by
-      ``<rtems/confdefs.h>`` does not overflow an integer of type
-      `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+    * It shall be small enough so that the MPCI receive server stack area
+      calculation carried out by ``<rtems/confdefs.h>`` does not overflow an
+      integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of bytes the
@@ -119,8 +119,13 @@ DEFAULT VALUE:
     The default value is 32.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of
@@ -152,8 +157,13 @@ DEFAULT VALUE:
     The default value is 2.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of nodes in
@@ -182,8 +192,13 @@ DEFAULT VALUE:
     The default value is 32.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of
@@ -252,8 +267,13 @@ DEFAULT VALUE:
     The default value is ``NODE_NUMBER``.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the node number of this node

@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -739,8 +739,8 @@ DEFAULT VALUE:
     The default value is 128.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be
-    an element of {16, 32, 64, 128, 256, 512}.
+    The value of this configuration option shall be equal to 16, 32, 64, 128,
+    256, or 512.
 
 DESCRIPTION:
     The value of this configuration option defines the block size for in-memory

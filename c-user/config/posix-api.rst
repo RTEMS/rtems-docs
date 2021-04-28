@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -50,18 +50,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -96,18 +96,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of key
@@ -142,22 +142,22 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the
-      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the RTEMS Workspace size calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -191,20 +191,19 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the
-      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the RTEMS Workspace size calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It shall be zero if the POSIX API is not
-      enabled (e.g. RTEMS was built without the ``--enable-posix`` build
-      configuration option).  Otherwise a compile time error in the configuration
-      file will occur.
+    * It shall be zero if the POSIX API is not enabled (e.g. RTEMS was built
+      without the ``RTEMS_POSIX_API = True`` build configuration option).
+      Otherwise a compile time error in the configuration file will occur.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -238,22 +237,22 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the
-      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the RTEMS Workspace size calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -290,22 +289,22 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the
-      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the RTEMS Workspace size calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -337,17 +336,17 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -389,23 +388,22 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
-    * It shall be zero if the POSIX API is not
-      enabled (e.g. RTEMS was built without the ``--enable-posix`` build
-      configuration option).  Otherwise a compile time error in the configuration
-      file will occur.
+    * It shall be zero if the POSIX API is not enabled (e.g. RTEMS was built
+      without the ``RTEMS_POSIX_API = True`` build configuration option).
+      Otherwise a compile time error in the configuration file will occur.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of POSIX
@@ -442,12 +440,12 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It shall be greater than or equal to a
-      BSP-specific and application-specific minimum value.
+    * It shall be greater than or equal to a BSP-specific and
+      application-specific minimum value.
 
 DESCRIPTION:
     The value of this configuration option defines the minimum stack size in

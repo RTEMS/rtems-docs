@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -45,8 +45,8 @@ DEFAULT VALUE:
     The default value is 0.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be a valid integer of type
-    :c:type:`rtems_task_argument`.
+    The value of this configuration option shall be convertible to an integer
+    of type :c:type:`rtems_task_argument`.
 
 DESCRIPTION:
     The value of this configuration option defines task argument of the Classic
@@ -107,10 +107,10 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+    * It shall be greater than or equal to
+      :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
-    * It shall be defined using
-      :c:func:`RTEMS_TASK_STORAGE_SIZE`.
+    * It shall be defined using :c:func:`RTEMS_TASK_STORAGE_SIZE`.
 
 DESCRIPTION:
     The value of this configuration option defines the task storage size of the
@@ -222,8 +222,8 @@ DEFAULT VALUE:
     The default value is ``rtems_build_name( 'U', 'I', '1', ' ' )``.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be a valid integer of type
-    :c:type:`rtems_name`.
+    The value of this configuration option shall be convertible to an integer
+    of type :c:type:`rtems_name`.
 
 DESCRIPTION:
     The value of this configuration option defines the name of the Classic API
@@ -252,7 +252,8 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be a valid Classic API task
-    priority.  The set of valid task priorities is scheduler-specific.
+    priority.  The set of valid task priorities depends on the scheduler
+    configuration.
 
 DESCRIPTION:
     The value of this configuration option defines the initial priority of the
@@ -283,11 +284,12 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+    * It shall be greater than or equal to
+      :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the task stack size of the

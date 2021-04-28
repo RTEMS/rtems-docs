@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -111,13 +111,14 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to `UINTPTR_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be less than or equal to `UINTPTR_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
 DESCRIPTION:
     The value of this configuration option defines the RTEMS Workspace size in
@@ -150,11 +151,11 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of bytes the
@@ -221,12 +222,12 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to a
-      BSP-specific and application-specific minimum value.
+    * It shall be greater than or equal to a BSP-specific and
+      application-specific minimum value.
 
-    * It shall be small enough so that the
-      interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+    * It shall be small enough so that the interrupt stack area calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
     * It shall be aligned according to
       :c:macro:`CPU_INTERRUPT_STACK_ALIGNMENT`.
@@ -306,13 +307,14 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    * It shall be less than or equal to `SIZE_MAX
+      <https://en.cppreference.com/w/c/types/limits>`_.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of file
@@ -341,8 +343,12 @@ DEFAULT VALUE:
     The default value is 1.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 1
-    and less than or equal to :c:macro:`CPU_MAXIMUM_PROCESSORS`.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to one.
+
+    * It shall be less than or equal to :c:macro:`CPU_MAXIMUM_PROCESSORS`.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of
@@ -382,13 +388,14 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    * It shall be less than or equal to `SIZE_MAX
+      <https://en.cppreference.com/w/c/types/limits>`_.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum thread name size
@@ -425,15 +432,15 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the
-      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the RTEMS Workspace size calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of kilobytes the
@@ -472,15 +479,15 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the
-      RTEMS Workspace size calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the RTEMS Workspace size calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the number of bytes reserved
@@ -557,9 +564,11 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to a Clock Driver specific value.
+    * It shall be greater than or equal to a value defined by the :term:`Clock
+      Driver`.
 
-    * It shall be less than or equal to a Clock Driver specific value.
+    * It shall be less than or equal to a value defined by the :term:`Clock
+      Driver`.
 
     * The resulting clock ticks per second should be an integer.
 
@@ -612,12 +621,12 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It shall be greater than or equal to a
-      BSP-specific and application-specific minimum value.
+    * It shall be greater than or equal to a BSP-specific and
+      application-specific minimum value.
 
 DESCRIPTION:
     The value of this configuration option defines the minimum stack size in
@@ -695,8 +704,13 @@ DEFAULT VALUE:
     The default value is 50.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to `UINT32_MAX
+      <https://en.cppreference.com/w/c/types/integer>`_.
 
 DESCRIPTION:
     The value of this configuration option defines the length of the timeslice

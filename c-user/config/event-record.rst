@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -147,13 +147,14 @@ VALUE CONSTRAINTS:
 
     * It shall be greater than or equal to 16.
 
-    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    * It shall be less than or equal to `SIZE_MAX
+      <https://en.cppreference.com/w/c/types/limits>`_.
 
     * It shall be a power of two.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
 DESCRIPTION:
     The value of this configuration option defines the event record item count

@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -113,8 +113,8 @@ DEFAULT VALUE:
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall be defined to a valid function
-    pointer of the type ``void ( *initialize )( size_t )`` or to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_.
+    pointer of the type ``void ( *initialize )( size_t )`` or to `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
 
 DESCRIPTION:
     The value of this configuration option initializes the stack allocator

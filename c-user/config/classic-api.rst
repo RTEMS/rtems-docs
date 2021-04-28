@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -47,18 +47,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -90,18 +90,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -135,18 +135,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -178,18 +178,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -221,18 +221,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -264,18 +264,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -307,18 +307,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -354,22 +354,22 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It shall be small enough so that the task
-      stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+    * It shall be small enough so that the task stack space calculation carried
+      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
+      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -414,11 +414,13 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
-    * It shall be less than or equal to `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+    * It shall be less than or equal to `SIZE_MAX
+      <https://en.cppreference.com/w/c/types/limits>`_.
 
-    * It shall be an integral multiple of :c:macro:`RTEMS_TASK_STORAGE_ALIGNMENT`.
+    * It shall be an integral multiple of
+      :c:macro:`RTEMS_TASK_STORAGE_ALIGNMENT`.
 
 DESCRIPTION:
     If the value of this configuration option is greater than zero, then it
@@ -466,18 +468,18 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
-    * It may be defined through
-      :c:func:`rtems_resource_unlimited` the enable unlimited objects for this
-      object class, if the value passed to :c:func:`rtems_resource_unlimited`
-      satisfies all other constraints of this configuration option.
+    * It may be defined through :c:func:`rtems_resource_unlimited` the enable
+      unlimited objects for the object class, if the value passed to
+      :c:func:`rtems_resource_unlimited` satisfies all other constraints of the
+      configuration option.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -509,13 +511,13 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to 0.
+    * It shall be greater than or equal to zero.
 
     * It shall be less than or equal to 65535.
 
-    * It shall be less than or equal to a
-      BSP-specific and application-specific value which depends on the size of the
-      memory available to the application.
+    * It shall be less than or equal to a BSP-specific and application-specific
+      value which depends on the size of the memory available to the
+      application.
 
 DESCRIPTION:
     The value of this configuration option defines the maximum number of Classic
@@ -543,8 +545,12 @@ DEFAULT VALUE:
     The default value is 0.
 
 VALUE CONSTRAINTS:
-    The value of this configuration option shall be greater than or equal to 0
-    and less than or equal to :ref:`CONFIGURE_MAXIMUM_TASKS`.
+    The value of this configuration option shall satisfy all of the following
+    constraints:
+
+    * It shall be greater than or equal to zero.
+
+    * It shall be less than or equal to :ref:`CONFIGURE_MAXIMUM_TASKS`.
 
 DESCRIPTION:
     The value of this configuration option defines the minimum count of Classic

@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -87,12 +87,12 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to a
-      BSP-specific and application-specific minimum value.
+    * It shall be greater than or equal to a BSP-specific and
+      application-specific minimum value.
 
-    * It shall be small enough so that the IDLE
-      task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
-      overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+    * It shall be small enough so that the IDLE task stack area calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
 DESCRIPTION:
     If
@@ -165,12 +165,12 @@ VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
     constraints:
 
-    * It shall be greater than or equal to a
-      BSP-specific and application-specific minimum value.
+    * It shall be greater than or equal to a BSP-specific and
+      application-specific minimum value.
 
-    * It shall be small enough so that the
-      interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
-      not overflow an integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+    * It shall be small enough so that the interrupt stack area calculation
+      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
+      type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
 
     * It shall be aligned according to
       :c:macro:`CPU_INTERRUPT_STACK_ALIGNMENT`.
