@@ -2473,6 +2473,10 @@ test-local-includes
     The attribute value shall be a list of strings. It shall be a list of
     header files included via ``#include "..."``.
 
+test-suite-name
+    The attribute value shall be a string. It shall be the name of the test
+    suite.
+
 test-target
     The attribute value shall be a string. It shall be the path to the
     generated target test suite source file.
