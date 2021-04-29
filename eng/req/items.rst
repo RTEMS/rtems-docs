@@ -1023,10 +1023,6 @@ rationale
     The attribute value shall be an optional string. If the value is present,
     then it shall state the rationale or justification of the constraint.
 
-scope
-    The attribute value shall be a string. It shall be the scope of the
-    constraint.
-
 text
     The attribute value shall be a :ref:`SpecTypeRequirementText`. It shall
     state the constraint.
