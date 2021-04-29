@@ -208,7 +208,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerCBS`
     algorithm is made available to the application.
 
@@ -239,7 +239,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerEDF`
     algorithm is made available to the application.
 
@@ -270,7 +270,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerSMPEDF`
     algorithm is made available to the application.
 
@@ -358,7 +358,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerPriority`
     algorithm is made available to the application.
 
@@ -396,7 +396,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerSMPPriorityAffinity`
     algorithm is made available to the application.
 
@@ -433,7 +433,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerSMPPriority`
     algorithm is made available to the application.
 
@@ -470,7 +470,7 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerPrioritySimple`
     algorithm is made available to the application.
 
@@ -501,10 +501,9 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then
+    In case this configuration option is defined, then the
     :ref:`SchedulerSMPPrioritySimple`
     algorithm is made available to the application.
-    application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
@@ -536,8 +535,8 @@ DEFAULT CONFIGURATION:
     enabled.
 
 DESCRIPTION:
-    In case this configuration option is defined, then Strong APA algorithm is
-    made available to the application.
+    In case this configuration option is defined, then the Strong APA algorithm
+    is made available to the application.
 
 NOTES:
     This scheduler configuration option is an advanced configuration option.
