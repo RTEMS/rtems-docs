@@ -4391,6 +4391,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeSpecificationRefinementLinkRole`
 
+* :ref:`SpecTypeUnitTestLinkRole`
+
 This type is used by the following types:
 
 * :ref:`SpecTypeRootItemType`
@@ -5414,7 +5416,9 @@ checks
 
 links
     The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeLink`.
+    :ref:`SpecTypeLink`. The links should use the
+    :ref:`SpecTypeRequirementValidationLinkRole` for validation tests and the
+    :ref:`SpecTypeUnitTestLinkRole` for unit tests.
 
 This type is used by the following types:
 
@@ -5438,7 +5442,9 @@ code
 
 links
     The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeLink`.
+    :ref:`SpecTypeLink`. The links should use the
+    :ref:`SpecTypeRequirementValidationLinkRole` for validation tests and the
+    :ref:`SpecTypeUnitTestLinkRole` for unit tests.
 
 This type is used by the following types:
 
@@ -5601,3 +5607,18 @@ item UID.
 This type is used by the following types:
 
 * :ref:`SpecTypeLink`
+
+.. _SpecTypeUnitTestLinkRole:
+
+Unit Test Link Role
+^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``unit-test``. It defines the unit test role of links.  For unit tests
+the link target should be the :ref:`SpecTypeInterfaceDomainItemType` containing
+the software unit. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+name
+    The attribute value shall be a string. It shall be the name of the tested
+    software unit.
