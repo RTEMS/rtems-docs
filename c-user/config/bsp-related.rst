@@ -217,8 +217,8 @@ DESCRIPTION:
 
     * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
 
-    then the value of this configuration option is used to initialize the table
-    of initial user extensions.
+    then the value of this configuration option is used to add BSP-provided
+    prerequisite drivers to the Device Driver Table.
 
 NOTES:
     The value of this configuration option is placed before the entries of all
