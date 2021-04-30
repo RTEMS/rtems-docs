@@ -1185,10 +1185,6 @@ name
 notes
     The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
 
-text
-    The attribute value shall be a :ref:`SpecTypeRequirementText`. It shall
-    state the requirement for the application configuration option.
-
 This type is refined by the following types:
 
 * :ref:`SpecTypeApplicationConfigurationFeatureEnableOptionItemType`
@@ -4658,8 +4654,6 @@ This type is used by the following types:
 * :ref:`SpecTypeActionRequirementState`
 
 * :ref:`SpecTypeApplicationConfigurationGroupItemType`
-
-* :ref:`SpecTypeApplicationConfigurationOptionItemType`
 
 * :ref:`SpecTypeConstraintItemType`
 
