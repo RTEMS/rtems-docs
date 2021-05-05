@@ -12,6 +12,7 @@ import sys
 
 standards = [
     'RTEMS',
+    'POSIX-2017',
     'POSIX-2008',
     'POSIX-2003',
     'PSE51',
@@ -40,7 +41,8 @@ standards = [
 
 standard_names = {
     'RTEMS'                   : 'RTEMS Complete Profile',
-    'POSIX-2008'              : 'POSIX-2008 (Issue 7)',
+    'POSIX-2017'              : 'POSIX-2017 (Issue 7)',
+    'POSIX-2008'              : 'POSIX-2008 (Issue 6 TC2)',
     'POSIX-2003'              : 'POSIX-2003 (Issue 6)',
     'PSE51'                   : 'POSIX PSE51 - Minimal',
     'PSE52'                   : 'POSIX PSE52 - Real-Time Controller',
@@ -71,6 +73,7 @@ col_names = {
     'header'                   : 'Header File',
     'rtems-net'                : 'RTEMS w/ Networking',
     'rtems-impl'               : 'RTEMS Impl Note',
+    'POSIX-2017'               : 'IEEE Std 1003.1-2017',
     'POSIX-2008'               : 'IEEE Std 1003.1-2008',
     'POSIX-2003'               : 'IEEE Std 1003.1-2003',
     'PSE51'                    : 'PSE51',

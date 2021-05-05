@@ -7,12 +7,13 @@ spreadsheet is versioned but that is not reflected in the name
 "RTEMS-Standards-Compliance.csv". The version of the spreadsheet included
 currently is:
 
-v12 - 6 April 2021
+v13 - 5 May 2021
 
 This is the information in each column:
 
   Methods
   Header File
+  IEEE Std 1003.1-2017
   IEEE Std 1003.1-2008
   IEEE Std 1003.1-2003
   PSE51
