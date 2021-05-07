@@ -555,7 +555,7 @@ Gets the set of processors owned by the scheduler.
     There was no scheduler associated with the identifier specified by
     ``scheduler_id``.
 
-:c:macro:`RTEMS_INVALID_NUMBER`
+:c:macro:`RTEMS_INVALID_SIZE`
     The provided processor set was too small for the set of processors owned by
     the scheduler.
 
