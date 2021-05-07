@@ -202,6 +202,10 @@ the specified processor set.
     The ``id`` parameter was `NULL
     <https://en.cppreference.com/w/c/types/NULL>`_.
 
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``cpuset`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
 :c:macro:`RTEMS_INVALID_SIZE`
     The processor set size was invalid.
 
