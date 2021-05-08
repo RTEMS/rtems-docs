@@ -1561,6 +1561,9 @@ This type refines the following types:
   the value is ``unspecified-function``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-group``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-type``
 
 This set of attributes specifies an unspecified interface. All explicit
