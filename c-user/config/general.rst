@@ -403,7 +403,7 @@ DESCRIPTION:
 
 NOTES:
     The default value was chosen for Linux compatibility, see
-    `PTHREAD_SETNAME_NP(3) <http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_.
+    `pthread_setname_np() <http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html>`_.
 
     The size of the thread control block is increased by the maximum thread name
     size.
