@@ -181,10 +181,12 @@ def check_sphinx_extension(ctx, extension):
     def run_sphinx(bld):
         rst_node = bld.srcnode.make_node('testbuild/contents.rst')
         rst_node.parent.mkdir()
-        rst_node.write('.. COMMENT test sphinx\n')
+        rst_node.write('.. COMMENT test sphinx' + os.linesep)
         bib_node = bld.srcnode.make_node('testbuild/refs.bib')
+        bib_node.write(os.linesep)
         conf_node = bld.srcnode.make_node('testbuild/conf.py')
-        conf_node.write("bibtex_bibfiles = ['refs.bib']\n")
+        conf_node.write(os.linesep.join(["master_doc='contents'",
+                                         "bibtex_bibfiles = ['refs.bib']"]))
         bld(rule = bld.kw['rule'], source = rst_node)
 
     ctx.start_msg("Checking for '%s'" % (extension))
