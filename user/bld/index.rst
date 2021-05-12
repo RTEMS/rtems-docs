@@ -309,10 +309,6 @@ in the configuration file.
         Set ``RTEMS_MULTIPROCESSING`` to ``True`` or ``False`` in the BSP
         section of the configuration file.
 
-``--enable-networking`` | ``--disable-networking``
-        Set ``RTEMS_NETWORKING`` to ``True`` or ``False`` in the BSP section of
-        the configuration file.
-
 ``--enable-paravirt`` | ``--disable-paravirt``
         Set ``RTEMS_PARAVIRT`` to ``True`` or ``False`` in the BSP section of
         the configuration file.
@@ -353,9 +349,6 @@ Please have a look at the following example configuration file.
 
     # --enable-multiprocessing
     RTEMS_MULTIPROCESSING = False
-
-    # --enable-networking
-    RTEMS_NETWORKING = True
 
     # --disable-paravirt
     RTEMS_PARAVIRT = False
