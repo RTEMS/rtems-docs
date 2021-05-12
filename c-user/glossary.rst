@@ -194,6 +194,14 @@ Glossary
         This term is an acronym for Cathode Ray Tube.  Normally used in reference to
         the man-machine interface.
 
+    current priority
+        The current priority of a :term:`task` is the :term:`task priority` with
+        respect to the :term:`home scheduler` of the task.  It is an aggregation of
+        the :term:`real priority` and temporary priority adjustments due to locking
+        protocols, the rate-monotonic period objects on some schedulers such as EDF,
+        and the :term:`POSIX` sporadic server.  The current priority is an
+        :term:`eligible priority`.
+
     deadline
         A fixed time limit by which a task must have completed a set of actions.
         Beyond this point, the results are of reduced value and may even be
@@ -245,6 +253,12 @@ Glossary
     ELF
         This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
+
+    eligible priority
+        An eligible priority of a :term:`task` is the :term:`task priority` with
+        respect to the corresponding :term:`eligible scheduler` of the task.  An
+        eligible priority is either the :term:`current priority` or a
+        :term:`helping priority` of a task.
 
     eligible scheduler
         An eligible scheduler of a :term:`task` is a :term:`scheduler` which can be
@@ -365,6 +379,11 @@ Glossary
         In case the executing and heir tasks differ on a processor and a thread
         dispatch is marked as necessary, then the next thread dispatch will make
         the heir task the executing task.
+
+    helping priority
+        A helping priority of a :term:`task` is the :term:`task priority` with
+        respect to the corresponding :term:`helping scheduler` of the task.  A
+        helping priority is an :term:`eligible priority`.
 
     helping scheduler
         A helping scheduler of a :term:`task` is a :term:`scheduler` which is a
@@ -632,9 +651,9 @@ Glossary
         another task.
 
     priority
-        A mechanism used to represent the relative importance of an element in a
-        set of items.  RTEMS uses priority to determine which task should
-        execute.
+        The priority is a mechanism used to represent the relative importance of an
+        element in a set of items.  RTEMS uses :term:`task priorities <task priority>` to determine
+        which :term:`task` should execute.
 
     priority boosting
         A simple approach to extend the priority inheritance protocol for
@@ -685,6 +704,14 @@ Glossary
         processor.  A ready task has no processor assigned.  The scheduler
         decided that other tasks are currently more important.  A task that is
         ready to execute and has a processor assigned is called scheduled.
+
+    real priority
+        Each :term:`task` has exactly one real priority.  The real priority is
+        always with respect to the :term:`home scheduler` of a task.  It is defined
+        during task initialization.  It may be changed by directives such as
+        :c:func:`rtems_task_set_priority` and
+        :c:func:`rtems_task_set_scheduler`.  The real priority is the foundation
+        of the :term:`current priority`.
 
     real-time
         A term used to describe systems which are characterized by requiring
@@ -958,6 +985,14 @@ Glossary
     task migration
         Task migration happens in case a task stops execution on one processor
         and resumes execution on another processor.
+
+    task priority
+        A task priority of a :term:`task` determines its importance relative to
+        other tasks.  The scheduler use task priorities to determine which
+        :term:`ready task` gets a processor allocated, see :term:`scheduled task`.  The
+        :term:`eligible priorities <eligible priority>` of a task define the position of the task in a
+        :term:`wait queue` which uses the priority discipline.  Each task has at
+        least the :term:`real priority`.
 
     task processor affinity
         The set of processors on which a task is allowed to execute.
