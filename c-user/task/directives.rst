@@ -1702,11 +1702,31 @@ This directive sets the :term:`home scheduler` to the scheduler specified by
     ``scheduler_id``.
 
 :c:macro:`RTEMS_INVALID_PRIORITY`
-    There task priority specified in ``priority`` was invalid with respect to
-    the scheduler specified by ``scheduler_id``.
+    The :term:`task priority` specified by ``priority`` was invalid with
+    respect to the scheduler specified by ``scheduler_id``.
 
 :c:macro:`RTEMS_INVALID_ID`
     There was no task associated with the identifier specified by ``task_id``.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The task specified by ``task_id`` was enqueued on a :term:`wait queue`.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The task specified by ``task_id`` had a :term:`current priority` which
+    consisted of more than the :term:`real priority`.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The task specified by ``task_id`` had a :term:`helping scheduler`.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The task specified by ``task_id`` was pinned.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    The scheduler specified by ``scheduler_id`` owned no processor.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    The scheduler specified by ``scheduler_id`` did not support the affinity
+    set of the task specified by ``task_id``.
 
 :c:macro:`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
     The task resided on a remote node.
