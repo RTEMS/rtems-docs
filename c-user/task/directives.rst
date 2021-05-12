@@ -1534,7 +1534,7 @@ Wakes up when specified.
 
 .. code-block:: c
 
-    rtems_status_code rtems_task_wake_when( rtems_time_of_day *time_buffer );
+    rtems_status_code rtems_task_wake_when( const rtems_time_of_day *time_buffer );
 
 .. rubric:: PARAMETERS:
 
