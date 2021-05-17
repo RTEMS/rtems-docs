@@ -118,7 +118,7 @@ with your FDT source names)::
   sh> arm-rtems6-cpp -P -x assembler-with-cpp \
                      -I ${PREFIX}/arm-rtems6/imxrt1052/lib/include \
                      -include "YOUR.dts" /dev/null | \
-            dtc -@ -O dtb -o "YOUR.dtb" -b 0 -p 1024
+            dtc -O dtb -o "YOUR.dtb" -b 0 -p 64
   sh> rtems-bin2c -C -N imxrt_dtb "YOUR.dtb" "YOUR.c"
 
 Make sure that your new c file is compiled and linked into the application.
