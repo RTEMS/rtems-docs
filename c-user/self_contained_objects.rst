@@ -132,6 +132,10 @@ copies of the object in calls to
 
 * :c:func:`rtems_recursive_mutex_lock`,
 
+* :c:func:`rtems_mutex_try_lock`,
+
+* :c:func:`rtems_recursive_mutex_try_lock`,
+
 * :c:func:`rtems_mutex_unlock`,
 
 * :c:func:`rtems_recursive_mutex_unlock`,
@@ -255,6 +259,37 @@ NOTES:
     result is unpredictable.  It could block the owner indefinetly or lead to a
     fatal deadlock error.  A recursive mutex (:c:type:`rtems_recursive_mutex`)
     can be locked recursively by the mutex owner.
+
+    Each mutex lock operation must have a corresponding unlock operation.
+
+.. raw:: latex
+
+    \clearpage
+
+Try to lock the mutex
+---------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        int rtems_mutex_try_lock(
+          rtems_mutex *mutex
+        );
+
+        int rtems_recursive_mutex_try_lock(
+          rtems_recursive_mutex *mutex
+        );
+
+DESCRIPTION:
+    Tries to lock the ``mutex``. In case the mutex is not locked, it will be
+    locked and the function returns with a return value of ``0``. If the mutex
+    is already locked, the function will return with a value of ``EBUSY``.
+
+NOTES:
+    This function must be called from thread context with interrupts enabled.
+
+    For recursively locking a mutex, please also see the notes for
+    :c:func:`rtems_mutex_lock` and :c:func:`rtems_recursive_mutex_lock`.
 
     Each mutex lock operation must have a corresponding unlock operation.
 
