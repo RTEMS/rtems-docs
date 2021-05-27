@@ -802,6 +802,9 @@ specified by ``id``.
 :c:macro:`RTEMS_INVALID_ID`
     There was no task associated with the identifier specified by ``id``.
 
+:c:macro:`RTEMS_CALLED_FROM_ISR`
+    The directive was called from within interrupt context.
+
 :c:macro:`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
     The task resided on a remote node.
 
