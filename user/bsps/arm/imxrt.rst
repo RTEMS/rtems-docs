@@ -123,6 +123,26 @@ with your FDT source names)::
 
 Make sure that your new C file is compiled and linked into the application.
 
+PLL Settings
+------------
+
+The commercial variant of the i.MXRT1052 on the evaluation board allows a clock
+up to 600MHz for the ARM core. For some industrial variants only up to 528MHz
+are specified. To make it possible to adapt to these variants the application
+can overwrite the following constant:
+
+.. code-block:: c
+
+  #include "fsl_clock_config.h"
+  
+  const clock_arm_pll_config_t armPllConfig_BOARD_BootClockRUN = {
+      .loopDivider = 100,
+      .src = 0,
+  };
+
+With the default configuration of a 24MHz oscillator, the loopDivider has to be
+88 for the 528MHz.
+
 Clock Driver
 ------------
 
