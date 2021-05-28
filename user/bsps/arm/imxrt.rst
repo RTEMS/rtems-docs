@@ -121,7 +121,7 @@ with your FDT source names)::
             dtc -O dtb -o "YOUR.dtb" -b 0 -p 64
   sh> rtems-bin2c -C -N imxrt_dtb "YOUR.dtb" "YOUR.c"
 
-Make sure that your new c file is compiled and linked into the application.
+Make sure that your new C file is compiled and linked into the application.
 
 Clock Driver
 ------------
