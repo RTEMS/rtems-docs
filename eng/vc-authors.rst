@@ -166,6 +166,52 @@ flag to prevent merge from issuing an automatic merge commit message.
 When you have committed changes on a branch that is public/shared with another
 developer you should not rebase that branch.
 
+Migrate a Personal Repository to top-level
+------------------------------------------
+
+Once a project is production ready in the personal repository, it's time to
+migrate it to the top-level RTEMS git directory. First, the project directory
+needs to be copied and then the permissions need to be set, so that everyone can
+push into that repository.
+
+.. code-block:: shell
+
+  cp -R /data/git/user/my-rtems-project.git /data/git
+  cd /data/git/my-rtems-project.git
+  chgrp -R gitrw ./
+  chmod -R g+rws ./
+
+Then copy the post-receive script from the rtems.git directory and change the
+name of REPO.
+
+.. code-block:: shell
+
+  cp /data/git/rtems.git/hooks/post-receive  /data/git/my-rtems-project.git/hooks/
+
+After making the change the post-receive script in the new repository should
+look like this
+
+.. code-block:: shell
+
+  #!/bin/sh
+  #
+  # The "post-receive" script is run after receive-pack has accepted a pack
+  # and the repository has been updated.  It is passed arguments in through
+  # stdin in the form
+  #  <oldrev> <newrev> <refname>
+  # For example:
+  #  aa453216d1b3e49e7f6f98441fa56946ddcd6a20 68f7abf4e6f922807889f52bc043ecd31b79f814 refs/heads/master
+  #
+
+  REPO=my-rtems-project
+
+  . /data/support/git-support/hooks/post-receive-0
+  . /data/support/git-support/hooks/post-receive-1
+  #. /data/support/git-support/hooks/post-receive-2
+  . /data/support/git-support/hooks/post-receive-3
+  . /data/support/git-support/hooks/post-receive-4
+  . /data/support/git-support/hooks/post-receive-5
+
 GIT Push Configuration
 ----------------------
 
