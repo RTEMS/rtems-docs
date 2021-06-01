@@ -7,7 +7,7 @@ spreadsheet is versioned but that is not reflected in the name
 "RTEMS-Standards-Compliance.csv". The version of the spreadsheet included
 currently is:
 
-v13 - 5 May 2021
+v15 - 1 June 2021
 
 This is the information in each column:
 
