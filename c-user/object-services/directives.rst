@@ -168,9 +168,9 @@ Gets the object name associated with the object identifier.
     This parameter is the object identifier to get the name.
 
 ``name``
-    This parameter is the pointer to an object name variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_name` object.  When the
     directive call is successful, the object name associated with the object
-    identifier will be stored in this variable.
+    identifier will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -801,9 +801,10 @@ Gets the object class information of the object class of the object API.
     information.
 
 ``info``
-    This parameter is the pointer to an object class information variable.
-    When the directive call is successful, the object class information of the
-    class of the API will be stored in this variable.
+    This parameter is the pointer to an
+    :c:type:`rtems_object_api_class_information` object.  When the directive
+    call is successful, the object class information of the class of the API
+    will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 

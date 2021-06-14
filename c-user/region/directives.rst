@@ -77,9 +77,9 @@ Creates a region.
     This parameter is the attribute set of the region.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the created region will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -193,9 +193,9 @@ Identifies a region by the object name.
     This parameter is the object name to look up.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the object identifier of an object with the
-    specified name will be stored in this variable.
+    specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -427,9 +427,9 @@ Gets a segment from the region.
     wait potentially forever.
 
 ``segment``
-    This parameter is the pointer to a void pointer variable.  When the
+    This parameter is the pointer to a ``void`` pointer object.  When the
     directive call is successful, the begin address of the allocated segment
-    will be stored in this variable.
+    will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -635,9 +635,9 @@ Changes the size of the segment.
 
 ``old_size``
     This parameter is the pointer to an `uintptr_t
-    <https://en.cppreference.com/w/c/types/integer>`_ variable.  When the
+    <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
     directive call is successful, the old size of the segment will be stored in
-    this variable.
+    this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -713,9 +713,9 @@ Gets the region information.
     This parameter is the region identifier.
 
 ``the_info``
-    This parameter is the pointer to a Heap_Information_block variable. When
-    the directive call is successful, the information of the region will be
-    stored in this variable.
+    This parameter is the pointer to a Heap_Information_block object.  When the
+    directive call is successful, the information of the region will be stored
+    in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -788,9 +788,9 @@ Gets the region free information.
     This parameter is the region identifier.
 
 ``the_info``
-    This parameter is the pointer to a Heap_Information_block variable. When
-    the directive call is successful, the free information of the region will
-    be stored in this variable.
+    This parameter is the pointer to a Heap_Information_block object.  When the
+    directive call is successful, the free information of the region will be
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -871,9 +871,9 @@ Gets the size of the region segment.
 
 ``size``
     This parameter is the pointer to a `uintptr_t
-    <https://en.cppreference.com/w/c/types/integer>`_ variable.  When the
+    <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
     directive call is successful, the size of the segment in bytes will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 

@@ -126,10 +126,10 @@ Gets the time of day associated with the current :term:`CLOCK_REALTIME`.
 .. rubric:: PARAMETERS:
 
 ``time_of_day``
-    This parameter is the pointer to a RTEMS time of day variable.  When the
-    directive call is successful, the time of day associated with the
+    This parameter is the pointer to an :c:type:`rtems_time_of_day` object.
+    When the directive call is successful, the time of day associated with the
     :term:`CLOCK_REALTIME` at some point during the directive call will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -179,10 +179,12 @@ current :term:`CLOCK_REALTIME`.
 .. rubric:: PARAMETERS:
 
 ``time_of_day``
-    This parameter is the pointer to a timeval structure variable.  When the
-    directive call is successful, the seconds and microseconds elapsed since
-    the :term:`Unix epoch` and the :term:`CLOCK_REALTIME` at some point during
-    the directive call will be stored in this variable.
+    This parameter is the pointer to a `struct timeval
+    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
+    object.  When the directive call is successful, the seconds and
+    microseconds elapsed since the :term:`Unix epoch` and the
+    :term:`CLOCK_REALTIME` at some point during the directive call will be
+    stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -234,10 +236,10 @@ Gets the seconds elapsed since the :term:`RTEMS epoch` and the current
 .. rubric:: PARAMETERS:
 
 ``seconds_since_rtems_epoch``
-    This parameter is the pointer to an interval variable.  When the directive
-    call is successful, the seconds elapsed since the :term:`RTEMS epoch` and
-    the :term:`CLOCK_REALTIME` at some point during the directive call will be
-    stored in this variable.
+    This parameter is the pointer to an :c:type:`rtems_interval` object.  When
+    the directive call is successful, the seconds elapsed since the
+    :term:`RTEMS epoch` and the :term:`CLOCK_REALTIME` at some point during the
+    directive call will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -370,11 +372,12 @@ system initialization using :term:`CLOCK_MONOTONIC`.
 .. rubric:: PARAMETERS:
 
 ``uptime``
-    This parameter is the pointer to a timeval structure variable.  When the
-    directive call is successful, the seconds and nanoseconds elapsed since
-    some time point during the system initialization and some point during the
-    directive call using :term:`CLOCK_MONOTONIC` will be stored in this
-    variable.
+    This parameter is the pointer to a `struct timeval
+    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
+    object.  When the directive call is successful, the seconds and nanoseconds
+    elapsed since some time point during the system initialization and some
+    point during the directive call using :term:`CLOCK_MONOTONIC` will be
+    stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -420,10 +423,11 @@ system initialization using :term:`CLOCK_MONOTONIC`.
 .. rubric:: PARAMETERS:
 
 ``uptime``
-    This parameter is the pointer to a timeval structure variable.  The seconds
-    and microseconds elapsed since some time point during the system
-    initialization and some point during the directive call using
-    :term:`CLOCK_MONOTONIC` will be stored in this variable.  The pointer shall
+    This parameter is the pointer to a `struct timeval
+    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
+    object.  The seconds and microseconds elapsed since some time point during
+    the system initialization and some point during the directive call using
+    :term:`CLOCK_MONOTONIC` will be stored in this object.  The pointer shall
     be valid, otherwise the behaviour is undefined.
 
 .. rubric:: CONSTRAINTS:

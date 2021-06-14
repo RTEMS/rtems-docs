@@ -54,9 +54,9 @@ Identifies a scheduler by the object name.
     This parameter is the scheduler name to look up.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the scheduler will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -120,9 +120,9 @@ Identifies a scheduler by the processor index.
     This parameter is the processor index to identify the scheduler.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the scheduler will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -176,17 +176,17 @@ Identifies a scheduler by the processor set.
 .. rubric:: PARAMETERS:
 
 ``cpusetsize``
-    This parameter is the size of the referenced processor set variable in
-    bytes.  This value shall be positive.
+    This parameter is the size of the processor set referenced by ``cpuset`` in
+    bytes.  The size shall be positive.
 
 ``cpuset``
-    This parameter is the pointer to a processor set variable.  The referenced
+    This parameter is the pointer to a :c:type:`cpu_set_t`.  The referenced
     processor set will be used to identify the scheduler.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the scheduler will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -254,9 +254,9 @@ Gets the maximum task priority of the scheduler.
     This parameter is the scheduler identifier.
 
 ``priority``
-    This parameter is the pointer to a task priority variable.  The maximum
-    priority of the scheduler will be stored in this variable, if the operation
-    is successful.
+    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
+    When the directive the maximum priority of the scheduler will be stored in
+    this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -313,10 +313,9 @@ Maps a Classic API task priority to the corresponding POSIX thread priority.
     This parameter is the Classic API task priority to map.
 
 ``posix_priority``
-    This parameter is the pointer to a POSIX thread priority variable.  When
-    the directive call is successful, the POSIX thread priority value
-    corresponding to the specified Classic API task priority value will be
-    stored in this variable.
+    This parameter is the pointer to an ``int`` object.  When the directive
+    call is successful, the POSIX thread priority value corresponding to the
+    specified Classic API task priority value will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -376,10 +375,10 @@ Maps a POSIX thread priority to the corresponding Classic API task priority.
     This parameter is the POSIX thread priority to map.
 
 ``priority``
-    This parameter is the pointer to a Classic API task priority variable.
+    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
     When the directive call is successful, the Classic API task priority value
     corresponding to the specified POSIX thread priority value will be stored
-    in this variable.
+    in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -532,13 +531,13 @@ Gets the set of processors owned by the scheduler.
     This parameter is the scheduler identifier.
 
 ``cpusetsize``
-    This parameter is the size of the referenced processor set variable in
+    This parameter is the size of the processor set referenced by ``cpuset`` in
     bytes.
 
 ``cpuset``
-    This parameter is the pointer to a processor set variable.  When the
+    This parameter is the pointer to a :c:type:`cpu_set_t` object.  When the
     directive call is successful, the processor set of the scheduler will be
-    stored in this variable.  A set bit in the processor set means that the
+    stored in this object.  A set bit in the processor set means that the
     corresponding processor is owned by the scheduler, otherwise the bit is
     cleared.
 

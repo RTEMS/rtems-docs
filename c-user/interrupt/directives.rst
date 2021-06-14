@@ -63,10 +63,9 @@ Establishes an interrupt service routine.
     This parameter is the interrupt vector number.
 
 ``old_isr_handler``
-    This parameter is the pointer to an :c:type:`rtems_isr_entry` variable.
-    When the directive call is successful, the previous interrupt service
-    routine established for this interrupt vector will be stored in this
-    variable.
+    This parameter is the pointer to an :c:type:`rtems_isr_entry` object.  When
+    the directive call is successful, the previous interrupt service routine
+    established for this interrupt vector will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 

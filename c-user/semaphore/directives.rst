@@ -75,9 +75,9 @@ Creates a semaphore.
     the attribute set.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the created semaphore will
-    be stored in this variable.
+    be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -278,9 +278,9 @@ Identifies a semaphore by the object name.
     This parameter is the node or node set to search for a matching object.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the object identifier of an object with the
-    specified name will be stored in this variable.
+    specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -862,9 +862,9 @@ Sets the priority by scheduler for the semaphore.
     scheduler.
 
 ``old_priority``
-    This parameter is the pointer to a task priority variable.  When the
-    directive call is successful, the old priority of the semaphore
-    corresponding to the specified scheduler will be stored in this variable.
+    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
+    When the directive call is successful, the old priority of the semaphore
+    corresponding to the specified scheduler will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 

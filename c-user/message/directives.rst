@@ -72,9 +72,9 @@ Creates a message queue.
     This parameter is the attribute set of the message queue.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the created message queue
-    will be stored in this variable.
+    will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -233,9 +233,9 @@ Constructs a message queue from the specified the message queue configuration.
     This parameter is the message queue configuration.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the constructed message
-    queue will be stored in this variable.
+    queue will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -361,9 +361,9 @@ Identifies a message queue by the object name.
     This parameter is the node or node set to search for a matching object.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the object identifier of an object with the
-    specified name will be stored in this variable.
+    specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -719,9 +719,9 @@ Broadcasts the messages to the tasks waiting at the queue.
 
 ``count``
     This parameter is the pointer to an `uint32_t
-    <https://en.cppreference.com/w/c/types/integer>`_ variable.  When the
+    <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
     directive call is successful, the number of unblocked tasks will be stored
-    in this variable.
+    in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -815,9 +815,9 @@ Receives a message from the queue.
 
 ``size``
     This parameter is the pointer to a `size_t
-    <https://en.cppreference.com/w/c/types/size_t>`_ variable.  When the
+    <https://en.cppreference.com/w/c/types/size_t>`_ object.  When the
     directive call is successful, the size in bytes of the received messages
-    will be stored in this variable.  This parameter cannot be used to specify
+    will be stored in this object.  This parameter cannot be used to specify
     the size of the buffer.
 
 ``option_set``
@@ -954,9 +954,9 @@ Gets the number of messages pending on the queue.
 
 ``count``
     This parameter is the pointer to an `uint32_t
-    <https://en.cppreference.com/w/c/types/integer>`_ variable.  When the
+    <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
     directive call is successful, the number of pending messages will be stored
-    in this variable.
+    in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1017,9 +1017,9 @@ Flushes all messages on the queue.
 
 ``count``
     This parameter is the pointer to an `uint32_t
-    <https://en.cppreference.com/w/c/types/integer>`_ variable.  When the
+    <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
     directive call is successful, the number of unblocked tasks will be stored
-    in this variable.
+    in this object.
 
 .. rubric:: DESCRIPTION:
 

@@ -74,9 +74,9 @@ Creates a task.
     This parameter is the attribute set of the task.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the created task will be
-    stored in this variable.
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -335,9 +335,9 @@ Constructs a task from the specified task configuration.
     This parameter is the task configuration.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the constructed task will
-    be stored in this variable.
+    be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -475,9 +475,9 @@ Identifies a task by the object name.
     This parameter is the node or node set to search for a matching object.
 
 ``id``
-    This parameter is the pointer to an object identifier variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the object identifier of an object with the
-    specified name will be stored in this variable.
+    specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1147,10 +1147,10 @@ Sets the real priority or gets the current priority of the task.
     :c:macro:`RTEMS_CURRENT_PRIORITY` to get the current priority.
 
 ``old_priority``
-    This parameter is the pointer to an :c:type:`rtems_task_priority` variable.
+    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
     When the directive call is successful, the current or previous priority of
     the task with respect to its :term:`home scheduler` will be stored in this
-    variable.
+    object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1246,9 +1246,9 @@ Gets the current priority of the task with respect to the scheduler.
     This parameter is the scheduler identifier.
 
 ``priority``
-    This parameter is the pointer to an :c:type:`rtems_task_priority` variable.
+    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
     When the directive call is successful, the current priority of the task
-    with respect to the specified scheduler will be stored in this variable.
+    with respect to the specified scheduler will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1340,9 +1340,9 @@ Gets and optionally sets the mode of the calling task.
     :c:macro:`RTEMS_CURRENT_MODE`, the mode of the calling task is not changed.
 
 ``previous_mode_set``
-    This parameter is the pointer to a mode variable.  When the directive call
-    is successful, the mode of the task before any mode changes done by the
-    directive call will be stored in this variable.
+    This parameter is the pointer to an :c:type:`rtems_mode` object.  When the
+    directive call is successful, the mode of the task before any mode changes
+    done by the directive call will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1615,9 +1615,9 @@ Gets the home scheduler of the task.
     may be used to specify the calling task.
 
 ``scheduler_id``
-    This parameter is the pointer to an :c:type:`rtems_id` variable.  When the
+    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
     directive call is successful, the identifier of the :term:`home scheduler`
-    of the task will be stored in this variable.
+    of the task will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1779,13 +1779,13 @@ Gets the processor affinity of the task.
     may be used to specify the calling task.
 
 ``cpusetsize``
-    This parameter is the size of the referenced processor set variable in
+    This parameter is the size of the processor set referenced by ``cpuset`` in
     bytes.
 
 ``cpuset``
-    This parameter is the pointer to a processor set variable.  When the
+    This parameter is the pointer to a :c:type:`cpu_set_t` object.  When the
     directive call is successful, the processor affinity set of the task will
-    be stored in this variable.  A set bit in the processor set means that the
+    be stored in this object.  A set bit in the processor set means that the
     corresponding processor is in the processor affinity set of the task,
     otherwise the bit is cleared.
 
@@ -1807,8 +1807,8 @@ task specified by ``id``.
     There was no task associated with the identifier specified by ``id``.
 
 :c:macro:`RTEMS_INVALID_SIZE`
-    The provided processor set was too small for the processor affinity set of
-    the task.
+    The size specified by ``cpusetsize`` of the processor set was too small for
+    the processor affinity set of the task.
 
 :c:macro:`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
     The task resided on a remote node.
@@ -1857,14 +1857,14 @@ Sets the processor affinity of the task.
     may be used to specify the calling task.
 
 ``cpusetsize``
-    This parameter is the size of the referenced processor set variable in
+    This parameter is the size of the processor set referenced by ``cpuset`` in
     bytes.
 
 ``cpuset``
-    This parameter is the pointer to a processor set variable.  The processor
-    set defines the new processor affinity set of the task.  A set bit in the
-    processor set means that the corresponding processor shall be in the
-    processor affinity set of the task, otherwise the bit shall be cleared.
+    This parameter is the pointer to a :c:type:`cpu_set_t` object.  The
+    processor set defines the new processor affinity set of the task.  A set
+    bit in the processor set means that the corresponding processor shall be in
+    the processor affinity set of the task, otherwise the bit shall be cleared.
 
 .. rubric:: DESCRIPTION:
 
