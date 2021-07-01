@@ -35,7 +35,6 @@ build_all = ['user',
              'shell',
              'cpu-supplement',
              'develenv',
-             'eclipse',
              'legacy-networking']
 
 building = build_all
