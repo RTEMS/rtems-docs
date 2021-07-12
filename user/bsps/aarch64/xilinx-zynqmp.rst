@@ -59,14 +59,9 @@ Network Configuration
 ---------------------
 
 When used with LibBSD, these BSP variants support networking via the four
-Cadence GEM instances present on all ZynqMP hardware variants. These are enabled
-using config.inc in LibBSD by setting any of the following constants to 1:
-NET_CFG_ZYNQMP_USE_CGEM0 = 1
-NET_CFG_ZYNQMP_USE_CGEM1 = 1
-NET_CFG_ZYNQMP_USE_CGEM2 = 1
-NET_CFG_ZYNQMP_USE_CGEM3 = 1
-
-Most ZynqMP dev boards use CGEM3. None of the interfaces are enabled by default.
+Cadence GEM instances present on all ZynqMP hardware variants. All interfaces
+are enabled by default, but only interfaces with operational MII busses will be
+recognized and usable in RTEMS. Most ZynqMP dev boards use CGEM3.
 
 Running Executables on QEMU
 ---------------------------
