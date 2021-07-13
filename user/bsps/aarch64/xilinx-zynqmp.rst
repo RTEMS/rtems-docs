@@ -55,6 +55,20 @@ Console Driver
 The console driver supports the default Qemu emulated ARM PL011 PrimeCell UART
 as well as the physical ARM PL011 PrimeCell UART in the ZynqMP hardware.
 
+SDHCI Driver
+------------
+
+The ZynqMP bsp has an SDHCI driver which allows reading to and writing from SD
+cards. These can be tested in qemu using the "-sd" option. For example:
+
+.. code-block:: shell
+
+  qemu-system-aarch64 -no-reboot -nographic -serial mon:stdio \
+   -machine xlnx-zcu102 -m 4096 -kernel media01.exe -sd example.img
+
+The SD card image should have an MSDOS partition table with a single partition
+containing a FAT file system.
+
 Network Configuration
 ---------------------
 
