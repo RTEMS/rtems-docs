@@ -287,6 +287,17 @@ PATH:
   export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
   export PATH=${HOME}/.local/bin:${PATH}
 
+CentOS 8
+~~~~~~~~
+
+The steps for Centos 8 are similar to the steps for CentOS 7.
+There are just a couple differences.
+
+First, CentOS 8 uses Python 3.x as the default, so intalling the
+centos-release-scl and rh-python36 packages is unnecessary.
+Second, Centos 8 uses dnf as its package manager instead of yum, so
+packages such as npm should be installed using dnf instead.
+
 Arch Linux
 ~~~~~~~~~~
 
