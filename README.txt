@@ -1,16 +1,17 @@
 RTEMS Project Documentation
 ===========================
 
-The documents are written in ReST and built using Sphinx. The build system will
-check the version of Sphinx and ensure you have a suitable version
-available. If your host does not provide a packaged version use PIP to fetch a
+The documents are written in ReST and built using Sphinx. The waf build system
+will check the version of Sphinx and ensure you have a suitable version
+available. If your host does not provide a packaged version, use PIP to fetch a
 recent version. The Sphinx website provides details on doing this.
 
-ReST is the Re-Structured-Text format. It is a simple markup language that allows
-us to create quality documentaion. It is flexible and powerful however does not
-attempt to train it to create a specific format. You need to test any new way
-of presenting something on all output formats. What may look great in one
-format may not translate with the same clarity to another output format.
+ReST is the Re-Structured-Text format. It is a simple markup language that
+allows us to create quality documentation which can easily be converted to
+multiple different formats. This flexibility is convenient, but you still need
+to test any new way of presenting something on all output formats. What may look
+great in one format may not translate with the same clarity to another output
+format.
 
 The RTEMS Documentation output formats are:
 
@@ -26,7 +27,7 @@ Images can be created from source using PlantUML and Ditaa.
 
 A Sphinx checksheet is:
 
- http://docs.sphinxdocs.com/en/latest/cheatsheet.html#rst-cheat-sheet
+ https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet
 
 Production Quality Hosts
 ------------------------
@@ -45,7 +46,7 @@ NOTE: RedHat Enterprise Linux (RHEL) and Fedora should be the same as CentOS.
 Images
 ------
 
-All images should be placed int he 'images' directory and referenced from the
+All images should be placed in the 'images' directory and referenced from the
 ReST with a relative path. This lets us shared and control images.
 
 We prefer being able to build images from source. This is not always possible
@@ -85,7 +86,7 @@ The home page contain the language options. The PlantUML online demo server
 supports Ditaa so use that resource as an online tool. The Ditaa image source
 extension is '.ditaa'.
 
-You do not need PlantUML or Ditaa install to build our documentation. The
+You do not need PlantUML or Ditaa installed to build our documentation. The
 online resources can be used. Save the source and the generated PNG file in the
 same directory under 'images'.
 
@@ -94,12 +95,12 @@ Host Setup
 
 HTML builds directly with Sphinx, PDF requires a full Latex (texlive) install,
 and building a Single HTML page requires the 'inliner' tool. The
-sphinxcontrib-bibtex extension is mandatory. PlantUML requres the Node.js
+sphinxcontrib-bibtex extension is mandatory. PlantUML requires the Node.js
 package called 'node-plantuml' which installs the 'puml' command and Ditaa needs
 the 'ditaa' command and package. Ditaa images are built using the 'puml'
 command.
 
-Please add your host as you set it up.
+Please add your host to this section as you set it up.
 
 The best results are produced with Python3 and a virtual environment`. It can
 create a specific python environment using `pip`.
@@ -107,8 +108,8 @@ create a specific python environment using `pip`.
 Virtual Environment
 ~~~~~~~~~~~~~~~~~~~
 
-Create a directory to house the virtual environment, create the envrionment
-and the activate it. This example assumes Python3 and the `venv` module:
+Create a directory to house the virtual environment, create the environment,
+and then activate it. This example assumes Python3 and the `venv` module:
 
   $ mkdir sphinx
   $ python3 -m venv sphinx
@@ -120,7 +121,7 @@ Alternatively you can use the `virtualenv` command:
   $ virtualenv sphinx
   $ . ./sphinx/bin/activate
 
-The prompt will now change. You can install Sphinx with:
+Either way, the prompt will now change. You can install Sphinx with:
 
   $ pip install sphinx
   $ pip install sphinxcontrib-bibtex
@@ -321,11 +322,11 @@ packages. There is no common naming and no real way to figure what texlive
 package is present in a host's packaging. It seems not all of texlive is
 available.
 
-The RTEMS Documentation waf configure phase check for each texlive package used
+The RTEMS Documentation waf configure phase checks for each texlive package used
 in the generated output and the styles. If you complete configure with the
 --pdf option you should be able to build PDF documentation.
 
-The texlive package requirments come from the Latex styles we are using and
+The texlive package requirements come from the Latex styles we are using and
 Sphinx.
 
 An example of failures are:
@@ -450,7 +451,7 @@ existing documentation for an example and if unsure ask.
 
 2. Do not insert tab characters, use spaces, no trailing white space.
 
-3. Pasted text such as console output can exceed 80 columns however it is
+3. Pasted text such as console output can exceed 80 columns; however, it is
    preferred even this text is wrapped at 80 columns. Long lines in code block
    text causes issues with the PDF output.
 
@@ -464,7 +465,7 @@ existing documentation for an example and if unsure ask.
       5  ^^^^^^ Sub-sub-sub-section
       6  ~~~~~~ Sub-sub-sub-sub-section
 
-5. For literal output, such as shell commands and code do not use '::'
+5. For literal output such as shell commands and code, do not use '::'
    at the trailing edge of the previous paragraph as it generates
    warnings as the autodetect fails to find a suitable format. Use the
    '.. code-block::' with a suitable lexical label. The lexers are:
@@ -511,8 +512,8 @@ existing documentation for an example and if unsure ask.
        :align: center
        :alt: This is the alt text for some output types.
 
-8. Callouts can be implemented manually using a literal block which can use
-   '::' or a code block and topic block is used for the items. For
+8. Callouts can be implemented manually using a literal block ('::')
+   or a code block. Either way, a topic block is used for the items. For
    example:
 
      .. code-block: c
@@ -535,9 +536,9 @@ existing documentation for an example and if unsure ask.
        4. Exit with an exit code of 0. This value can be checked by the
           caller of this program.
 
-   Note, the topic items are manually numbered, which makes it easier to see
+   Note the topic items are manually numbered, which makes it easier to see
    which item matches the text. Use <> for the number and align at a position
-   that works and makes the number as visible as possible. Use hanging indents
+   that makes the number as visible as possible. Use hanging indents
    if an items extends past a single line.
 
 9. Use the RTEMS domain references for URLs and mailing lists. For example to
