@@ -10,6 +10,10 @@ This BSP offers only one variant, the `imxrt1052`. This variant supports the
 i.MXRT 1052 processor on a IMXRT1050-EVKB (tested with rev A1). You can also
 configure it to work with custom boards.
 
+NOTE: The IMXRT1050-EVKB has an backlight controller that must not be enabled
+without load. Make sure to either attach a load, disable it by software or
+disable it by removing the 0-Ohm resistor on it's input.
+
 Build Configuration Options
 ---------------------------
 
@@ -40,6 +44,11 @@ compiled RTEMS application with for example::
 Then just copy the generated binary to the mass storage provided by the
 debugger. Wait a bit till the mass storage vanishes and re-appears. After that,
 reset the board and the newly programmed application will start.
+
+NOTE: It seems that there is a bug on at least some of the on board debuggers.
+They can't write more than 1MB to the HyperFlash. If your application is bigger
+than that (like quite some of the applications in libbsd), you should use an
+external debugger or find some alternative programming method.
 
 For debugging: Create a special application with a `while(true)` loop at end of
 `bsp_start_hook_1`. Load that application into flash. Then remove the loop
