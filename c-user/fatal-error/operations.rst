@@ -40,12 +40,11 @@ The fatal extensions are called with three parameters:
 
 - the fatal source,
 
-- a legacy parameter which is always false, and
+- a legacy parameter which is always set to :c:macro:`false`, and
 
 - an error code with a fatal source dependent content.
 
-Once all fatal extensions executed, the error information will be stored to
-:c:data:`_Internal_errors_What_happened` and the system state is set to
+Once all fatal extensions executed, the system state is set to
 :c:macro:`SYSTEM_STATE_TERMINATED`.
 
 The final step is to call the CPU port specific :c:func:`_CPU_Fatal_halt()`.
