@@ -116,10 +116,10 @@ Prints the message and invokes the fatal error handler.
 
 .. rubric:: DESCRIPTION:
 
-This directive prints a message via :c:func:`printk` specified by the ``fmt``
-parameter and optional parameters and then invokes the fatal error handler.
-The fatal source is set to :c:macro:`RTEMS_FATAL_SOURCE_PANIC`.  The fatal code
-is set to the value of the ``fmt`` parameter value.
+This directive prints a message via :ref:`InterfacePrintk` specified by the
+``fmt`` parameter and optional parameters and then invokes the fatal error
+handler.  The fatal source is set to :c:macro:`RTEMS_FATAL_SOURCE_PANIC`.  The
+fatal code is set to the value of the ``fmt`` parameter value.
 
 .. rubric:: CONSTRAINTS:
 
@@ -216,7 +216,7 @@ Prints the exception frame.
 .. rubric:: DESCRIPTION:
 
 The exception frame is printed in an architecture-dependent format using
-:c:func:`printk`.
+:ref:`InterfacePrintk`.
 
 .. Generated from spec:/rtems/fatal/if/source-text
 

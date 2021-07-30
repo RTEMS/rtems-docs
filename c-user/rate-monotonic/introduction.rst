@@ -70,7 +70,7 @@ by the Rate-Monotonic Manager are:
   of all periods.
 
 * :ref:`InterfaceRtemsRateMonotonicReportStatistics` - Reports the period
-  statistics using the :c:func:`printk` printer.
+  statistics using the :ref:`InterfacePrintk` printer.
 
 * :ref:`InterfaceRtemsRateMonotonicReportStatisticsWithPlugin` - Reports the
   period statistics using the printer plugin.

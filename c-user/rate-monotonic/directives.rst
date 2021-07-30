@@ -652,7 +652,7 @@ The following constraints apply to this directive:
 rtems_rate_monotonic_report_statistics()
 ----------------------------------------
 
-Reports the period statistics using the :c:func:`printk` printer.
+Reports the period statistics using the :ref:`InterfacePrintk` printer.
 
 .. rubric:: CALLING SEQUENCE:
 
@@ -663,7 +663,7 @@ Reports the period statistics using the :c:func:`printk` printer.
 .. rubric:: DESCRIPTION:
 
 This directive prints a report on all active periods which have executed at
-least one period using the :c:func:`printk` printer.
+least one period using the :ref:`InterfacePrintk` printer.
 
 .. rubric:: CONSTRAINTS:
 
