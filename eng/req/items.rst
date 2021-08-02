@@ -5503,6 +5503,12 @@ A value of this type shall be of one of the following variants:
       scope after the general test declarations and before the test run
       function declaration.
 
+  freestanding
+      The attribute value shall be a boolean. The value shall be ``true``, if
+      the test case is freestanding, otherwise ``false``.  Freestanding test
+      cases are not statically registered.  Instead the generated test runner
+      uses :c:func:`T_case_begin` and :c:func:`T_case_end`.
+
   includes
       The attribute value shall be a list of strings. It shall be a list of
       header files included by the header file via ``#include <...>``.
