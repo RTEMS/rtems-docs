@@ -5,8 +5,9 @@
 raspberrypi
 ===========
 
-This BSP supports `Raspberry Pi 1` and `Raspberry Pi 2` currently.
-The support for `Raspberry Pi 3` is work under progress.
+The 'raspberrypi' BSP supports the single core models (Zero,  Zero W, A+, B+),
+and the 'raspberrypi2' BSP supports the Raspberry Pi 2, Raspberry Pi 3 A+, and Raspberry Pi 3.
+The Raspberry Pi 4 is not supported currently.
 The default bootloader on the Raspberry Pi which is used to boot Raspbian
 or other OS can be also used to boot RTEMS. U-boot can also be used.
 
@@ -19,10 +20,12 @@ The bootloader looks for a kernel image, by default the kernel images must
 have a name of the form ``kernel*.img`` but this can be changed by adding
 `kernel=<img_name>` to ``config.txt``.
 
-You must provide the required files for the GPU to proceed. These files
+You must provide the required firmware files on the SD card for the GPU to proceed,
+and thereby to boot RTEMS.
+The BSP currently boots up with an older version of the official firmware. These files
 can be downloaded from
-`the Raspberry Pi Firmware Repository <https://github.com/raspberrypi/firmware/tree/master/boot>`_.
-You can remove the ``kernel*.img`` files if you want too, but don't touch
+`the Raspberry Pi Firmware Repository <https://github.com/raspberrypi/firmware/tree/1.20200601/boot>`_.
+You can remove the ``kernel*.img`` files if you want to, but don't touch
 the other files.
 
 Copy these files in to a SD card with FAT filesystem.
@@ -46,9 +49,45 @@ Make sure you have these lines below, in your ``config.txt``.
 
 .. code-block:: none
 
-     enable_uart=1
+     dtoverlay=disable-bt
      kernel_address=0x200000
      kernel=kernel.img
+
+SPI Driver
+------------
+
+SPI drivers are registered by the ``rpi_spi_init(bool bidirectional_mode)`` function.
+
+.. code-block:: none
+
+     #include <assert.h>
+     #include <bsp.h>
+
+     void spi_init(void)
+     {
+       int rv;
+
+       rv = rpi_spi_init(false);
+       assert(rv == 0);
+     }
+
+I2C Driver
+------------
+
+I2C drivers are registered by the ``rpi_setup_i2c_bus()`` function.
+
+.. code-block:: none
+
+     #include <assert.h>
+     #include <bsp.h>
+
+     void i2c_init(void)
+     {
+       int rv;
+
+       rv = rpi_setup_i2c_bus();
+       assert(rv == 0);
+     }
 
 Testing using QEMU
 ------------------
