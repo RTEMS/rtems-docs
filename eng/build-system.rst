@@ -355,8 +355,8 @@ Add a Base BSP to a BSP Family
     items ``spec:/build/bsps/arch/family/bsprst``,
     ``spec:/build/bsps/arch/family/bspuvw``, and
     ``spec:/build/bsps/arch/family/bspxyz`` just define the name of the base
-    BSP and set a link to the group item.  The base BSP names can be used for
-    example in the ``default-by-variant`` attribute of
+    BSP and set a link to the group item.  The base BSP and BSP family names
+    can be used for example in the ``default-by-variant`` attribute of
     :ref:`SpecTypeBuildOptionItemType` items.  The items linked by the BSP
     items are shown using relative UIDs.
 

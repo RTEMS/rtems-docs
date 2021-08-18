@@ -719,8 +719,11 @@ default
 
 default-by-variant
     The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeBuildOptionDefaultByVariant`. The list is processed from top
-    to bottom.  If a matching variant is found, then the processing stops.
+    :ref:`SpecTypeBuildOptionDefaultByVariant`. The list is checked two times
+    and processed from top to bottom. Firstly, the base BSP name is used to
+    match with a variant. Secondly, the BSP family name prefixed by ``bsps/``
+    is used to match with a variant.  If a matching variant is found, then the
+    processing stops.
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -750,6 +753,7 @@ Please have a look at the following example:
     default-by-variant:
     - value: 9600
       variants:
+      - bsps/powerpc/motorola_powerpc
       - m68k/m5484FireEngine
       - powerpc/hsc_cm01
     - value: 19200
