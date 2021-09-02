@@ -219,8 +219,6 @@ Performance
 * Understand the constraints of `real-time programming <https://devel.rtems.org/wiki/TBR/Review/Real-Time_Resources>`_..
   Limit execution times in interrupt contexts and critical sections,
   such as Interrupt and Timer Service Routines (TSRs).
-* Functions used only through function pointers should be declared
-  'static inline' (RTEMS_INLINE_ROUTINE)
 * Prefer to ++preincrement instead of postincrement++.
 * Avoid using floating point except where absolutely necessary.
 
