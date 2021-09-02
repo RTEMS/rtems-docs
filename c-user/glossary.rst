@@ -334,7 +334,8 @@ Glossary
         This term is an acronym for :term:`First In First Out`.
 
     First In First Out
-        A discipline for manipulating entries in a data structure.
+        A discipline for manipulating entries in a data structure.  See also
+        :term:`Last In First Out`.
 
     floating point coprocessor
         A component used in computer systems to enhance performance in
@@ -459,6 +460,13 @@ Glossary
 
     kernel
         In this document, this term is used as a synonym for executive.
+
+    Last In First Out
+        A discipline for manipulating entries in a data structure.  See also
+        :term:`First In First Out`.
+
+    LIFO
+        This term is an acronym for :term:`Last In First Out`.
 
     list
         A data structure which allows for dynamic addition and removal of
