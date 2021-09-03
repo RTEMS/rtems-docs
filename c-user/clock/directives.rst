@@ -70,10 +70,15 @@ Sets the :term:`CLOCK_REALTIME` to the time of day.
 The date, time, and ticks specified by ``time_of_day`` are all range-checked,
 and an error is returned if any one is out of its valid range.
 
-RTEMS can represent time points of this clock in nanoseconds ranging from
-1988-01-01T00:00:00.000000000Z to 2514-05-31T01:53:03.999999999Z.  The future
-uptime of the system shall be in this range, otherwise the system behaviour is
-undefined.
+RTEMS can represent time points of the :term:`CLOCK_REALTIME` clock in
+nanoseconds ranging from 1988-01-01T00:00:00.000000000Z to
+2514-05-31T01:53:03.999999999Z.  The future uptime of the system shall be in
+this range, otherwise the system behaviour is undefined.  Due to implementation
+constraints, the time of day set by the directive shall be before
+2100-01-01:00:00.000000000Z.  The latest valid time of day accepted by the
+POSIX `clock_settime()
+<https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_settime.html>`_
+is 2400-01-01T00:00:00.999999999Z.
 
 The specified time is based on the configured :term:`clock tick` rate, see the
 :ref:`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
@@ -101,6 +106,12 @@ The following constraints apply to this directive:
 
 * The directive may unblock a task.  This may cause the calling task to be
   preempted.
+
+* The time of day set by the directive shall be 1988-01-01T00:00:00.000000000Z
+  or later.
+
+* The time of day set by the directive shall be before
+  2100-01-01T00:00:00.000000000Z.
 
 .. Generated from spec:/rtems/clock/if/get-tod
 
