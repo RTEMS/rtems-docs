@@ -3797,23 +3797,27 @@ definition
 Interface Compound Member Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an interface compound member definition. All
-explicit attributes shall be specified. The explicit attributes for this type
-are:
+A value of this type shall be of one of the following variants:
 
-brief
-    The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
+* The value may be a set of attributes. This set of attributes specifies an
+  interface compound member definition. All explicit attributes shall be
+  specified. The explicit attributes for this type are:
 
-description
-    The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
+  brief
+      The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
 
-kind
-    The attribute value shall be a string. It shall be the interface compound
-    member kind.
+  description
+      The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
 
-name
-    The attribute value shall be a string. It shall be the interface compound
-    member name.
+  kind
+      The attribute value shall be a string. It shall be the interface compound
+      member kind.
+
+  name
+      The attribute value shall be a string. It shall be the interface compound
+      member name.
+
+* There may by be no value (null).
 
 This type is refined by the following types:
 
@@ -4070,33 +4074,38 @@ links.
 Interface Function Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a function definition. All explicit attributes
-shall be specified. The explicit attributes for this type are:
+A value of this type shall be of one of the following variants:
 
-attributes
-    The attribute value shall be an optional string. If the value is present,
-    then it shall be the function attributes. On the attributes a
-    context-sensitive substitution of item variables is performed.  A function
-    attribute is for example the indication that the function does not return
-    to the caller.
+* The value may be a set of attributes. This set of attributes specifies a
+  function definition. All explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
-body
-    The attribute value shall be an optional string. If the value is present,
-    then it shall be the definition of a static inline function.  On the
-    function definition a context-sensitive substitution of item variables is
-    performed.  If no value is present, then the function is declared as an
-    external function.
+  attributes
+      The attribute value shall be an optional string. If the value is present,
+      then it shall be the function attributes. On the attributes a
+      context-sensitive substitution of item variables is performed.  A
+      function attribute is for example the indication that the function does
+      not return to the caller.
 
-params
-    The attribute value shall be a list of strings. It shall be the list of
-    parameter declarations of the function.  On the function parameter
-    declarations a context-sensitive substitution of item variables is
-    performed.
+  body
+      The attribute value shall be an optional string. If the value is present,
+      then it shall be the definition of a static inline function.  On the
+      function definition a context-sensitive substitution of item variables is
+      performed.  If no value is present, then the function is declared as an
+      external function.
 
-return
-    The attribute value shall be a string. It shall be the function return
-    type.  On the return type a context-sensitive substitution of item
-    variables is performed.
+  params
+      The attribute value shall be a list of strings. It shall be the list of
+      parameter declarations of the function.  On the function parameter
+      declarations a context-sensitive substitution of item variables is
+      performed.
+
+  return
+      The attribute value shall be a string. It shall be the function return
+      type.  On the return type a context-sensitive substitution of item
+      variables is performed.
+
+* There may by be no value (null).
 
 This type is used by the following types:
 
