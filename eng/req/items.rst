@@ -4297,16 +4297,21 @@ This type is used by the following types:
 Interface Return Directive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies an interface return. All explicit attributes
-shall be specified. The explicit attributes for this type are:
+A value of this type shall be of one of the following variants:
 
-return
-    The attribute value shall be an optional string. It shall describe the
-    interface return for unspecified return values.
+* The value may be a set of attributes. This set of attributes specifies an
+  interface return. All explicit attributes shall be specified. The explicit
+  attributes for this type are:
 
-return-values
-    The attribute value shall be a list. Each list element shall be an
-    :ref:`SpecTypeInterfaceReturnValue`.
+  return
+      The attribute value shall be an optional string. It shall describe the
+      interface return for unspecified return values.
+
+  return-values
+      The attribute value shall be a list. Each list element shall be an
+      :ref:`SpecTypeInterfaceReturnValue`.
+
+* There may by be no value (null).
 
 This type is used by the following types:
 
