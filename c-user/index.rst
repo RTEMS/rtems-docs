@@ -45,6 +45,7 @@ RTEMS Classic API Guide (|version|).
 	dual-ported-memory/index
 	io/index
 	kernel-character-io/index
+	cache/index
 	fatal-error/index
 	board_support_packages
 	user-extensions/index
