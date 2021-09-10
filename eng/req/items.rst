@@ -4191,6 +4191,18 @@ This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-ingroup``. It defines the interface group membership role
 of links.
 
+.. _SpecTypeInterfaceHiddenGroupMembershipLinkRole:
+
+Interface Hidden Group Membership Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``interface-ingroup-hidden``. It defines the interface hidden group
+membership role of links.  This role may be used to make an interface a group
+member and hide this relationship in the documentation.  An example is an
+optimized macro implementation of a directive which has the same name as the
+corresponding directive.
+
 .. _SpecTypeInterfaceIncludeLinkRole:
 
 Interface Include Link Role
@@ -4400,6 +4412,8 @@ This type is refined by the following types:
 * :ref:`SpecTypeInterfaceFunctionLinkRole`
 
 * :ref:`SpecTypeInterfaceGroupMembershipLinkRole`
+
+* :ref:`SpecTypeInterfaceHiddenGroupMembershipLinkRole`
 
 * :ref:`SpecTypeInterfaceIncludeLinkRole`
 
