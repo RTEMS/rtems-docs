@@ -1548,6 +1548,13 @@ name
 notes
     The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
 
+params
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeInterfaceParameter`.
+
+return
+    The attribute value shall be an :ref:`SpecTypeInterfaceReturnDirective`.
+
 .. _SpecTypeInterfaceUnspecifiedItemType:
 
 Interface Unspecified Item Type
@@ -4244,6 +4251,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceMacroItemType`
 
+* :ref:`SpecTypeInterfaceTypedefItemType`
+
 .. _SpecTypeInterfaceParameterDirection:
 
 Interface Parameter Direction
@@ -4318,6 +4327,8 @@ This type is used by the following types:
 * :ref:`SpecTypeInterfaceFunctionItemType`
 
 * :ref:`SpecTypeInterfaceMacroItemType`
+
+* :ref:`SpecTypeInterfaceTypedefItemType`
 
 .. _SpecTypeInterfaceReturnValue:
 
