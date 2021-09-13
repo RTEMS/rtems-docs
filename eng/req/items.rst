@@ -3101,7 +3101,7 @@ Build Install Path
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string. It shall be the installation path of a
   :ref:`SpecTypeBuildTarget`.
@@ -3462,7 +3462,7 @@ A value of this type shall be of one of the following variants:
 
 * The value may be a list. Each list element shall be a string.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string.
 
@@ -3703,7 +3703,7 @@ Interface Brief Description
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string. It shall be the brief description of the
   interface.  It should be a single sentence. The value shall not match with
@@ -3817,7 +3817,7 @@ A value of this type shall be of one of the following variants:
       The attribute value shall be a string. It shall be the interface compound
       member name.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 This type is refined by the following types:
 
@@ -3886,7 +3886,7 @@ Interface Definition
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string. It shall be the definition.  On the definition a
   context-sensitive substitution of item variables is performed.
@@ -3956,7 +3956,7 @@ Interface Description
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string. It shall be the description of the interface.  The
   description should be short and concentrate on the average case.  All special
@@ -4105,7 +4105,7 @@ A value of this type shall be of one of the following variants:
       type.  On the return type a context-sensitive substitution of item
       variables is performed.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 This type is used by the following types:
 
@@ -4226,7 +4226,7 @@ Interface Notes
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string. It shall be the notes for the interface.
 
@@ -4281,7 +4281,7 @@ Interface Parameter Direction
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string. It specifies the interface parameter direction.
   The value shall be an element of
@@ -4341,7 +4341,7 @@ A value of this type shall be of one of the following variants:
       The attribute value shall be a list. Each list element shall be an
       :ref:`SpecTypeInterfaceReturnValue`.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 This type is used by the following types:
 
@@ -4498,7 +4498,7 @@ Optional String
 
 A value of this type shall be of one of the following variants:
 
-* There may by be no value (null).
+* There may be no value (null).
 
 * The value may be a string.
 
@@ -5514,7 +5514,7 @@ A value of this type shall be of one of the following variants:
       member definition.  It shall be a valid C structure member definition
       without a trailing ``;``.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 This type is used by the following types:
 
@@ -5568,7 +5568,7 @@ A value of this type shall be of one of the following variants:
       The attribute value shall be a string. It shall be the path to the
       generated test header file.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 This type is used by the following types:
 
@@ -5630,7 +5630,7 @@ A value of this type shall be of one of the following variants:
       The attribute value shall be an optional string. It shall be the test
       support method description.
 
-* There may by be no value (null).
+* There may be no value (null).
 
 This type is used by the following types:
 
