@@ -102,11 +102,15 @@ The extension set is initialized using the extension table specified in
 
 .. rubric:: NOTES:
 
-The user-provided extension set table is not used after the return of the
+The user-provided extension table is not used after the return of the
 directive.
 
-Newly created extension sets are immediately installed and are invoked upon the
-next system event supporting an extension.
+Each extension of the extension table is optional and may be `NULL
+<https://en.cppreference.com/w/c/types/NULL>`_.  All extensions except the task
+switch extension of the extension table are atomically and immediately
+installed.  A task switch extension is separately installed after the other
+extensions.  The extensions of the extension table are invoked upon the next
+system event supporting an extension.
 
 An alternative to dynamically created extension sets are initial extensions,
 see :ref:`CONFIGURE_INITIAL_EXTENSIONS`.  Initial extensions are recommended
