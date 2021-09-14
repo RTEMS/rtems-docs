@@ -394,6 +394,10 @@ Glossary
     heterogeneous
         A multiprocessor computer system composed of dissimilar processors.
 
+    higher priority
+        A :term:`task` ``H`` has a higher :term:`priority` than a task ``L``, if
+        task ``H`` is more important than task ``L``.
+
     home scheduler
         The home scheduler of a :term:`task` is a :term:`scheduler` which is an
         :term:`eligible scheduler` and which is assigned to the task during its
@@ -493,6 +497,10 @@ Glossary
     loosely-coupled
         A multiprocessor configuration where shared memory is not used for
         communication.
+
+    lower priority
+        A :term:`task` ``L`` has a lower :term:`priority` than a task ``H``, if
+        task ``L`` is less important than task ``H``.
 
     major number
         The index of a device driver in the Device Driver Table.
@@ -660,8 +668,22 @@ Glossary
 
     priority
         The priority is a mechanism used to represent the relative importance of an
-        element in a set of items.  RTEMS uses :term:`task priorities <task priority>` to determine
-        which :term:`task` should execute.
+        element in a set of items.
+
+        For example, :term:`RTEMS` uses :term:`task priorities <task priority>` to determine which
+        :term:`task` should execute on a processor.  In RTEMS, priorities are
+        represented by non-negative integers.
+
+        For the Classic :term:`API`, if a numerical priority value ``A`` is greater
+        than a numerical priority value ``B``, then ``A`` expresses a
+        :term:`higher priority` than ``B``.  If a numerical priority value ``C`` is
+        less than a numerical priority value ``D``, then ``C`` expresses a
+        :term:`lower priority` than ``D``.
+
+        For the :term:`POSIX` API, if a numerical priority value ``R`` is less than
+        a numerical priority value ``S``, then ``R`` expresses a lower priority than
+        ``S``.  If a numerical priority value ``T`` is greater than a numerical
+        priority value ``U``, then ``T`` expresses a higher priority than ``U``.
 
     priority boosting
         A simple approach to extend the priority inheritance protocol for
@@ -995,12 +1017,17 @@ Glossary
         and resumes execution on another processor.
 
     task priority
-        A task priority of a :term:`task` determines its importance relative to
-        other tasks.  The scheduler use task priorities to determine which
-        :term:`ready task` gets a processor allocated, see :term:`scheduled task`.  The
+        A task :term:`priority` of a :term:`task` determines its importance
+        relative to other tasks.
+
+        The scheduler use task priorities to determine which :term:`ready task` gets
+        a processor allocated, see :term:`scheduled task`.  The
         :term:`eligible priorities <eligible priority>` of a task define the position of the task in a
         :term:`wait queue` which uses the priority discipline.  Each task has at
         least the :term:`real priority`.
+
+        Task priorities are used in :term:`wait queues <wait queue>` which use the priority
+        discipline to determine the dequeueing order of tasks.
 
     task processor affinity
         The set of processors on which a task is allowed to execute.
