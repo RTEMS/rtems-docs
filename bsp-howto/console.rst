@@ -17,7 +17,7 @@ processing in addition to the "normal" standard input and output device
 functions required of a console.
 
 The serial driver may be called as the consequence of a C Library call such as
-``printf`` or ``scanf`` or directly via the``read`` or ``write`` system calls.
+``printf`` or ``scanf`` or directly via the ``read`` or ``write`` system calls.
 There are two main functioning modes:
 
 - console: formatted input/output, with special characters (end of line,
