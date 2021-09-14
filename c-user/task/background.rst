@@ -127,13 +127,19 @@ scheduling of a task is based on its current state and priority.
 .. index:: priority, task
 .. index:: rtems_task_priority
 
+.. _TaskPriority:
+
 Task Priority
 -------------
 
-A task's priority determines its importance in relation to the other tasks
-executing on the same processor.  RTEMS supports 255 levels of priority ranging
-from 1 to 255.  The data type ``rtems_task_priority`` is used to store task
-priorities.
+A task's :term:`priority` determines its importance in relation to the other
+tasks executing on the processor set owned by a :term:`scheduler`.  Normally,
+RTEMS supports 256 levels of priority ranging from 0 to 255.  The priority
+level 0 represents a special priority reserved for the operating system.  The
+data type :c:type:`rtems_task_priority` is used to store task priorities.  The
+maximum priority level depends on the configured scheduler, see
+:ref:`CONFIGURE_MAXIMUM_PRIORITY`, :ref:`ConfigurationSchedulersClustered`, and
+:ref:`RTEMSAPIClassicScheduler`.
 
 Tasks of numerically smaller priority values are more important tasks than
 tasks of numerically larger priority values.  For example, a task at priority

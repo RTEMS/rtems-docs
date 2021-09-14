@@ -45,7 +45,7 @@ Deterministic Priority SMP Scheduler
 A fixed-priority scheduler which uses a table of chains with one chain per
 priority level for the ready tasks.  The maximum priority level is
 configurable.  By default, the maximum priority level is 255 (256 priority
-levels).
+levels), see :ref:`CONFIGURE_MAXIMUM_PRIORITY`.
 
 .. _SchedulerSMPPrioritySimple:
 
@@ -64,6 +64,7 @@ Arbitrary Processor Affinity Priority SMP Scheduler
 A fixed-priority scheduler which uses a table of chains with one chain per
 priority level for the ready tasks.  The maximum priority level is
 configurable.  By default, the maximum priority level is 255 (256 priority
-levels).  This scheduler supports arbitrary task processor affinities.  The
-worst-case run-time complexity of some scheduler operations exceeds
-:math:`O(n)` while :math:`n` is the count of ready tasks.
+levels), see :ref:`CONFIGURE_MAXIMUM_PRIORITY`.  This scheduler supports
+arbitrary task processor affinities.  The worst-case run-time complexity of
+some scheduler operations exceeds :math:`O(n)` while :math:`n` is the count of
+ready tasks.

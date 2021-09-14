@@ -117,10 +117,7 @@ Task Priority and Scheduling
 
 The most significant task scheduling modification mechanism is the ability for
 the user to assign a priority level to each individual task when it is created
-and to alter a task's priority at run-time.  The maximum priority level depends
-on the configured scheduler.  A lower priority level means higher priority
-(higher importance).  The maximum priority level of the default uniprocessor
-scheduler is 255.
+and to alter a task's priority at run-time, see :ref:`TaskPriority`.
 
 .. index:: preemption
 
