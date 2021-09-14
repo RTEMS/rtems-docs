@@ -891,10 +891,6 @@ queue.
 :c:macro:`RTEMS_UNSATISFIED`
     The queue was empty.
 
-:c:macro:`RTEMS_UNSATISFIED`
-    The queue was flushed while the calling task was waiting to receive a
-    message.
-
 :c:macro:`RTEMS_TIMEOUT`
     The timeout happened while the calling task was waiting to receive a
     message
@@ -1039,17 +1035,22 @@ present on the queue, count is set to zero.
     The ``count`` parameter was `NULL
     <https://en.cppreference.com/w/c/types/NULL>`_.
 
+.. rubric:: NOTES:
+
+The directive does not flush tasks waiting to receive a message from the
+:term:`wait queue` of the message queue.
+
 .. rubric:: CONSTRAINTS:
 
 The following constraints apply to this directive:
 
-* The directive may be called from within task context.
-
 * The directive may be called from within interrupt context.
 
-* When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply.  This will preempt the calling
-  task.
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
 
 .. Generated from spec:/rtems/message/if/buffer
 
