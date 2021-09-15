@@ -676,9 +676,9 @@ Glossary
 
         For the Classic :term:`API`, if a numerical priority value ``A`` is greater
         than a numerical priority value ``B``, then ``A`` expresses a
-        :term:`higher priority` than ``B``.  If a numerical priority value ``C`` is
+        :term:`lower priority` than ``B``.  If a numerical priority value ``C`` is
         less than a numerical priority value ``D``, then ``C`` expresses a
-        :term:`lower priority` than ``D``.
+        :term:`higher priority` than ``D``.
 
         For the :term:`POSIX` API, if a numerical priority value ``R`` is less than
         a numerical priority value ``S``, then ``R`` expresses a lower priority than
