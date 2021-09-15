@@ -1014,8 +1014,8 @@ Flushes all messages on the queue.
 ``count``
     This parameter is the pointer to an `uint32_t
     <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
-    directive call is successful, the number of unblocked tasks will be stored
-    in this object.
+    directive call is successful, the number of pending messages removed from
+    the queue will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
