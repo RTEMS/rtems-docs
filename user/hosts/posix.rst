@@ -195,6 +195,13 @@ The RTEMS Source Builder has been tested on FreeBSD 9.1, 10.3, 11 and
   # pkg install -y python
   # pkg install -y gsed
 
+For FreeBSD 13, you will need to install the packages listed above, as well as
+the following additional ones. They are:
+
+.. code-block:: none
+
+  # pkg install -y bison texinfo gmake binutils
+
 FreeBSD's default C compiler is LLVM and installing the host's GCC compiler
 package may break building GCC. We recommend you do not install the GCC
 package and you use the default C compiler.
