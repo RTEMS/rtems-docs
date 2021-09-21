@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
+.. Copyright (C) 2018,2021 Chris Johns <chrisj@rtems.org>
 
 Tester Configuration
 --------------------
@@ -226,9 +226,10 @@ supported directives are:
 - ``%execute``
 - ``%gdb``
 - ``%tftp``
+- ``%wait``
 
-.. _tester-config-console:
 .. index:: Console, %console
+.. _tester-config-console:
 
 Console
 ~~~~~~~
@@ -278,10 +279,12 @@ configuration script. If the ``%{console_stdio}`` is defined the console will
 be ``stdio`` else the console will be the BSP console or ``%{bsp_tty_dev}``.
 
 Telnet can be combined with the ``ser2net`` daemon to remotely access a
-target's physical serial UART interface.
+target's physical serial UART interface. The syntax is ``host:port``::
 
-.. _tester-config-execute:
+  %define bsp_tty_dev      1.2.3.4:8989
+
 .. index:: Execute, %execute
+.. _tester-config-execute:
 
 Execute
 ~~~~~~~
@@ -297,8 +300,8 @@ An example is::
 
   %execute %{run_cmd} %{run_opts} %{test_executable} %{test_executable_opts}
 
-.. _tester-config-gdb:
 .. index:: GDB, %gdb
+.. _tester-config-gdb:
 
 GDB
 ~~~
@@ -313,8 +316,8 @@ An example is::
 
   %gdb %{gdb_cmd} %{test_executable} %{gdb_script}
 
-.. _tester-config-tftp:
 .. index:: TFTP, %tftp
+.. _tester-config-tftp:
 
 TFTP
 ~~~~
@@ -328,3 +331,72 @@ board running the test.
 An example is::
 
   %tftp %{test_executable} %{tftp_port}
+
+The RTEMS Tester contains a TFTP server so an external TFTP is not
+needed. It is recommended a TFTP Proxy is set up to handle the TFTP
+sessions for your network. The internal TFTP server ignores the
+requrest file and serves the next executable. If the target requires
+the executable ne in a specific format provide a script via the
+``target_pretest_command`` option in your user configuration file.
+
+The RTEMS Tools provides a TFTP protocol proxy server. It takes a list
+of MAC addresses and proxies TFTP sessions for that MAC address to
+another IP address and port. A proxy provides the following benefits:
+
+1. The TFTP proxy server is the only software required to run as root
+
+2. All hardware targets can be configured to serve from a single
+   machine and the proxy can distribute the sessions out to developer
+   machines
+
+3. There is no need to provide a globally writable file system a
+   central TFTP server acceses
+
+If you have a central TFTP server refer to the ``%wait`` directive.
+
+.. index:: Wait, %wait
+.. _tester-config-wait:
+
+Wait
+~~~~
+
+The ``%wait`` directive waits the timeout period for a test to
+complete. The directive monitors the console output and resets the
+timeout timer if console output is seen. If the test runs for too long
+while outputing data an error is reported.
+
+The wait directive can be used in systems where there is an external
+mechanism being used to send the executable to the target hardware.
+
+An example is::
+
+  %wait
+
+Wait has no options. The timeouts are controlled in other ways.
+
+If you have an external system wide TFTP server with global access
+wait can used by providing a `` script that places the file in the
+location the TFTP server can see. This is done as the test start so if
+networking loading there is normally enough time to get the executable
+image in place before the transfer starts. The MVME2700
+(``powerpc/mvme2307``) is a BSP that supports the ``%wait`` directive.
+
+The following is an example user configuration file (see
+``--user-config``)::
+
+  #
+  # MVME2700 (mvme2307)
+  #
+  [mvme2307]
+  bsp_tty_dev            = 1.2.3.4:5678
+  target_pretest_command = mk-mvme2307-img @EXE@ /tftp/cjohns/rtems.img
+  target_exe_filter      = /\.exe/.exe.img/
+  target_on_command      = pw-ctl 1.2.3.4 toggle-on 3 1
+  target_off_command     = pw-ctl 1.2.3.4 off 3
+  target_reset_command   = pw-ctl 1.2.3.4 toggle-on 3 1
+
+The script ``mk-mvme2307-img`` converts the RTEMS ELF executable into
+the PowerPC prep bootloader format and copies the file to the TFTP
+server's network wide location. The MVME2700 is configured to request
+``rtems.img`` from this location. The command ``pw-ctl`` is a command
+to control the power to the board.

@@ -10,10 +10,14 @@ TFTP and U-Boot
 .. index:: TFTP, U-Boot, Testing
 
 TFTP and U-Boot provides a simple way to test RTEMS on a network capable
-target. The RTEMS Tester starts a TFTP server for each test and the target's
-boot monitor, in this case U-Boot request a file, any file, which the TFTP
-server supplies. U-Boot loads the executable and boots it using a standard
-U-Boot script.
+target. The RTEMS Tester starts a TFTP server session for each test and the
+target's boot monitor, in this case U-Boot request a file, any file, which the
+TFTP server supplies. U-Boot loads the executable and boots it using a
+standard U-Boot script.
+
+The RTEMS Tester contains a TFTP server so no external TFTP server or
+configuration is required. If you have an external TFTP server and wish to use
+that resource the :ref:`tester-config-wait` directive can be used.
 
 .. _fig-tester-tftp-u-boot:
 
