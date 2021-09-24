@@ -101,6 +101,8 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeInterfaceVariableItemType`
 
+    * :ref:`SpecTypeRegisterBlockItemType`
+
   * :ref:`SpecTypeProxyItemTypes`
 
   * :ref:`SpecTypeRequirementItemType`
@@ -1163,6 +1165,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceVariableItemType`
 
+* :ref:`SpecTypeRegisterBlockItemType`
+
 .. _SpecTypeApplicationConfigurationGroupItemType:
 
 Application Configuration Group Item Type
@@ -1626,6 +1630,64 @@ name
 
 notes
     The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
+
+.. _SpecTypeRegisterBlockItemType:
+
+Register Block Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
+``interface-type`` attribute if the value is ``register-block``. This set of
+attributes specifies a register block.  A register block may be used to specify
+the interface of devices.  Register blocks consist of register block members
+specified by the ``definition`` attribute. Register block members are either
+instances of registers specified by the ``registers`` attribute or instances of
+other register blocks specified by links with the
+:ref:`SpecTypeRegisterBlockIncludeRole`. Registers consists of bit fields (see
+:ref:`SpecTypeRegisterBitsDefinition`.  The register block members are placed
+into the address space of the device relative to the base address of the
+register block.  Register member offsets and the register block size are
+specified in units of the address space granule. All explicit attributes shall
+be specified. The explicit attributes for this type are:
+
+brief
+    The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
+
+definition
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterBlockMemberDefinitionDirective`.
+
+description
+    The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
+
+identifier
+    The attribute value shall be an :ref:`SpecTypeInterfaceGroupIdentifier`.
+
+name
+    The attribute value shall be a string. It shall be the name of the register
+    block.
+
+notes
+    The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
+
+register-block-group
+    The attribute value shall be a string. It shall be the name of the
+    interface group defined for the register block.  For the group identifier
+    see the ``identifier`` attribute.
+
+register-block-size
+    The attribute value shall be an :ref:`SpecTypeOptionalInteger`. If the
+    value is present, then it shall be the size of the register block in units
+    of the address space granule.
+
+register-prefix
+    The attribute value shall be an optional string. If the value is present,
+    then it will be used to prefix register bit field names, otherwise the
+    value of the ``name`` attribute will be used.
+
+registers
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterDefinition`.
 
 .. _SpecTypeProxyItemTypes:
 
@@ -3943,6 +4005,12 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceVariableItemType`
 
+* :ref:`SpecTypeRegisterBitsDefinition`
+
+* :ref:`SpecTypeRegisterBlockItemType`
+
+* :ref:`SpecTypeRegisterDefinition`
+
 .. _SpecTypeInterfaceCompoundDefinitionKind:
 
 Interface Compound Definition Kind
@@ -4198,6 +4266,12 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceVariableItemType`
 
+* :ref:`SpecTypeRegisterBitsDefinition`
+
+* :ref:`SpecTypeRegisterBlockItemType`
+
+* :ref:`SpecTypeRegisterDefinition`
+
 .. _SpecTypeInterfaceEnabledByExpression:
 
 Interface Enabled-By Expression
@@ -4246,6 +4320,10 @@ This type is used by the following types:
 * :ref:`SpecTypeInterfaceEnabledByExpression`
 
 * :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`
+
+* :ref:`SpecTypeRegisterBitsDefinitionVariant`
+
+* :ref:`SpecTypeRegisterBlockMemberDefinitionVariant`
 
 .. _SpecTypeInterfaceEnumDefinitionKind:
 
@@ -4388,6 +4466,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceGroupItemType`
 
+* :ref:`SpecTypeRegisterBlockItemType`
+
 .. _SpecTypeInterfaceGroupMembershipLinkRole:
 
 Interface Group Membership Link Role
@@ -4451,6 +4531,8 @@ This type is used by the following types:
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
 * :ref:`SpecTypeInterfaceVariableItemType`
+
+* :ref:`SpecTypeRegisterBlockItemType`
 
 .. _SpecTypeInterfaceParameter:
 
@@ -4615,6 +4697,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeProxyMemberLinkRole`
 
+* :ref:`SpecTypeRegisterBlockIncludeRole`
+
 * :ref:`SpecTypeRequirementRefinementLinkRole`
 
 * :ref:`SpecTypeRequirementValidationLinkRole`
@@ -4661,6 +4745,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeNonFunctionalRequirementItemType`
 
+* :ref:`SpecTypeRegisterDefinition`
+
 * :ref:`SpecTypeRequirementItemType`
 
 * :ref:`SpecTypeRequirementValidationItemType`
@@ -4693,6 +4779,21 @@ A value of this type shall be of one of the following variants:
 * The value may be a floating-point number.
 
 * There may be no value (null).
+
+.. _SpecTypeOptionalInteger:
+
+Optional Integer
+^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be an integer number.
+
+* There may be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBlockItemType`
 
 .. _SpecTypeOptionalString:
 
@@ -4737,6 +4838,242 @@ Proxy Member Link Role
 This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``proxy-member``. It defines the proxy member role of links.  Items
 may use this role to link to :ref:`SpecTypeProxyItemTypes` items.
+
+.. _SpecTypeRegisterBitsDefinition:
+
+Register Bits Definition
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes specifies a
+  register bit field.  Single bits are bit fields with a width of one. All
+  explicit attributes shall be specified. The explicit attributes for this type
+  are:
+
+  brief
+      The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
+
+  description
+      The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
+
+  name
+      The attribute value shall be a string. It shall be the name of the
+      register bit field.
+
+  properties
+      The attribute value shall be a list of strings. It shall be the list of
+      bit field properties.  Properties are for example if the bit field can be
+      read or written, or an access has side-effects such as clearing a status.
+
+  start
+      The attribute value shall be an integer number. It shall be the start bit
+      of the bit field.  Bit ``0`` is the least-significant bit.
+
+  width
+      The attribute value shall be an integer number. It shall be the width in
+      bits of the bit field.
+
+* There may be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBitsDefinitionDirective`
+
+* :ref:`SpecTypeRegisterBitsDefinitionVariant`
+
+.. _SpecTypeRegisterBitsDefinitionDirective:
+
+Register Bits Definition Directive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a register bits directive. All explicit
+attributes shall be specified. The explicit attributes for this type are:
+
+default
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterBitsDefinition`. The default definition will be used
+    if no variant-specific definition is enabled.
+
+variants
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterBitsDefinitionVariant`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterDefinition`
+
+.. _SpecTypeRegisterBitsDefinitionVariant:
+
+Register Bits Definition Variant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a register bits variant. All explicit
+attributes shall be specified. The explicit attributes for this type are:
+
+definition
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterBitsDefinition`. The definition will be used if the
+    expression defined by the ``enabled-by`` attribute evaluates to true.  In
+    generated header files, the expression is evaluated by the C preprocessor.
+
+enabled-by
+    The attribute value shall be an
+    :ref:`SpecTypeInterfaceEnabledByExpression`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBitsDefinitionDirective`
+
+.. _SpecTypeRegisterBlockIncludeRole:
+
+Register Block Include Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``register-block-include``. It defines the register block include role
+of links.  Links of this role are used to build register blocks using other
+register blocks. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+name
+    The attribute value shall be a string. It shall be a name to identify the
+    included register block within the item.  The name shall be unique within
+    the scope of the item links of this role and the
+    :ref:`SpecTypeRegisterList`.
+
+.. _SpecTypeRegisterBlockMemberDefinition:
+
+Register Block Member Definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a set of attributes. This set of attributes specifies a
+  register block member definition. All explicit attributes shall be specified.
+  The explicit attributes for this type are:
+
+  count
+      The attribute value shall be an integer number. It shall be the count of
+      registers of the register block member.
+
+  name
+      The attribute value shall be a :ref:`SpecTypeRegisterName`.
+
+* There may be no value (null).
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBlockMemberDefinitionDirective`
+
+* :ref:`SpecTypeRegisterBlockMemberDefinitionVariant`
+
+.. _SpecTypeRegisterBlockMemberDefinitionDirective:
+
+Register Block Member Definition Directive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a register block member definition directive.
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
+
+default
+    The attribute value shall be a
+    :ref:`SpecTypeRegisterBlockMemberDefinition`. The default definition will
+    be used if no variant-specific definition is enabled.
+
+offset
+    The attribute value shall be an integer number. It shall be the address of
+    the register block member relative to the base address of the register
+    block.
+
+variants
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterBlockMemberDefinitionVariant`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBlockItemType`
+
+.. _SpecTypeRegisterBlockMemberDefinitionVariant:
+
+Register Block Member Definition Variant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a register block member definition variant.
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
+
+definition
+    The attribute value shall be a
+    :ref:`SpecTypeRegisterBlockMemberDefinition`. The definition will be used
+    if the expression defined by the ``enabled-by`` attribute evaluates to
+    true.  In generated header files, the expression is evaluated by the C
+    preprocessor.
+
+enabled-by
+    The attribute value shall be an
+    :ref:`SpecTypeInterfaceEnabledByExpression`.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBlockMemberDefinitionDirective`
+
+.. _SpecTypeRegisterDefinition:
+
+Register Definition
+^^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a register. All explicit attributes shall be
+specified. The explicit attributes for this type are:
+
+bits
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeRegisterBitsDefinitionDirective`.
+
+brief
+    The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
+
+description
+    The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
+
+name
+    The attribute value shall be a string. It shall be the name to identify the
+    register definition.  The name shall be unique within the scope of the
+    :ref:`SpecTypeRegisterBlockIncludeRole` links of the item and the
+    :ref:`SpecTypeRegisterList`.
+
+width
+    The attribute value shall be an integer number. It shall be the width of
+    the register in bits.
+
+In addition to the explicit attributes, generic attributes may be specified.
+Each generic attribute key shall be a :ref:`SpecTypeName`. The attribute value
+may have any type.
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBlockItemType`
+
+.. _SpecTypeRegisterName:
+
+Register Name
+^^^^^^^^^^^^^
+
+The value shall be a string. The name consists either of an identifier, or an
+identifier and an alias. The identifier and alias are separated by a colon
+(``:``).  The identifier shall match with the name of a register definition of
+the item (see :ref:`SpecTypeRegisterDefinition`) or the name of a register
+block include of the item (see :ref:`SpecTypeRegisterBlockIncludeRole`).  If no
+alias is specified, then the identifier is used for the register block member
+name, otherwise the alias is used.  If the register block member names are not
+unique within the item, then a postfix number is appended to the names.  The
+number starts with zero for each set of names. The value shall match with the
+regular expression "``^[a-zA-Z_][a-zA-Z0-9_]*(:[a-zA-Z_][a-zA-Z0-9_]*)?$``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeRegisterBlockMemberDefinition`
 
 .. _SpecTypeRequirementDesignGroupIdentifier:
 
