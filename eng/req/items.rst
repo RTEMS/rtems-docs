@@ -3037,6 +3037,20 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildTestProgramItemType`
 
+.. _SpecTypeBuildDependencyConditionalLinkRole:
+
+Build Dependency Conditional Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``build-dependency-conditional``. It defines the build dependency
+conditional role of links. All explicit attributes shall be specified. The
+explicit attributes for this type are:
+
+enabled-by
+    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`. It
+    shall define under which conditions the build dependency is enabled.
+
 .. _SpecTypeBuildDependencyLinkRole:
 
 Build Dependency Link Role
@@ -3680,6 +3694,8 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementTransition`
+
+* :ref:`SpecTypeBuildDependencyConditionalLinkRole`
 
 * :ref:`SpecTypeBuildOptionDefaultValue`
 
@@ -4506,6 +4522,8 @@ uid
 This type is refined by the following types:
 
 * :ref:`SpecTypeApplicationConfigurationGroupMemberLinkRole`
+
+* :ref:`SpecTypeBuildDependencyConditionalLinkRole`
 
 * :ref:`SpecTypeBuildDependencyLinkRole`
 
