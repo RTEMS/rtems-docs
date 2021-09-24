@@ -600,6 +600,12 @@ Glossary
         variety of entities.  Object-oriented systems shield the application from
         implementation details.
 
+    OMIP
+        This term is an acronym for O(m) Independence-Preserving Protocol.  OMIP is a
+        generalization of the :term:`priority inheritance` locking protocol to
+        clustered scheduling.  The ``m`` denotes the number of processors in the
+        system.
+
     operating system
         The software which controls all the computer's resources and provides the
         base upon which application programs can be written.
