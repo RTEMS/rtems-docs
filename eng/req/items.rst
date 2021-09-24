@@ -1575,7 +1575,8 @@ name
     unspecified interface.
 
 references
-    The attribute value shall be an :ref:`SpecTypeInterfaceReferencesSet`.
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeExternalReference`.
 
 .. _SpecTypeInterfaceVariableItemType:
 
@@ -1619,8 +1620,8 @@ rationale
     then it shall state the rationale or justification of the requirement.
 
 references
-    The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeRequirementReference`.
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeExternalReference`.
 
 requirement-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the
@@ -2181,6 +2182,10 @@ type are:
 method
     The attribute value shall be a :ref:`SpecTypeRequirementValidationMethod`.
     Validation by test is done through :ref:`SpecTypeTestCaseItemType` items.
+
+references
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeExternalReference`.
 
 text
     The attribute value shall be a string. It shall provide the validation
@@ -3693,6 +3698,71 @@ Please have a look at the following example:
       - RTEMS_NETWORKING
       - not: RTEMS_SMP
 
+.. _SpecTypeExternalDocumentReference:
+
+External Document Reference
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeExternalReference` through the ``type``
+attribute if the value is ``document``. It specifies a reference to a document.
+
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
+
+name
+    The attribute value shall be a string. It shall be the name of the
+    document.
+
+.. _SpecTypeExternalFileReference:
+
+External File Reference
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeExternalReference` through the ``type``
+attribute if the value is ``file``. It specifies a reference to a file.
+
+All explicit attributes shall be specified. The explicit attributes for this
+type are:
+
+hash
+    The attribute value shall be a :ref:`SpecTypeSHA256HashValue`. It shall be
+    the SHA256 hash value of the content of the referenced file.
+
+.. _SpecTypeExternalReference:
+
+External Reference
+^^^^^^^^^^^^^^^^^^
+
+This set of attributes specifies a reference to some object external to the
+specification. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+identifier
+    The attribute value shall be a string. It shall be the type-specific
+    identifier of the referenced object. For *group* references use the Doxygen
+    group identifier.  For *file* references use a file system path to the
+    file.
+
+type
+    The attribute value shall be a :ref:`SpecTypeName`. It shall be the type of
+    the referenced object.
+
+This type is refined by the following types:
+
+* :ref:`SpecTypeExternalDocumentReference`
+
+* :ref:`SpecTypeExternalFileReference`
+
+* :ref:`SpecTypeGenericExternalReference`
+
+This type is used by the following types:
+
+* :ref:`SpecTypeInterfaceUnspecifiedItemType`
+
+* :ref:`SpecTypeRequirementItemType`
+
+* :ref:`SpecTypeRequirementValidationItemType`
+
 .. _SpecTypeFunctionImplementationLinkRole:
 
 Function Implementation Link Role
@@ -3703,6 +3773,33 @@ value is ``function-implementation``. It defines the function implementation
 role of links.  It is used to indicate that a
 :ref:`SpecTypeFunctionalRequirementItemType` item specifies parts of the
 function.
+
+.. _SpecTypeGenericExternalReference:
+
+Generic External Reference
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the following types:
+
+* :ref:`SpecTypeExternalReference` through the ``type`` attribute if the value
+  is ``define``
+
+* :ref:`SpecTypeExternalReference` through the ``type`` attribute if the value
+  is ``function``
+
+* :ref:`SpecTypeExternalReference` through the ``type`` attribute if the value
+  is ``group``
+
+* :ref:`SpecTypeExternalReference` through the ``type`` attribute if the value
+  is ``macro``
+
+* :ref:`SpecTypeExternalReference` through the ``type`` attribute if the value
+  is ``url``
+
+* :ref:`SpecTypeExternalReference` through the ``type`` attribute if the value
+  is ``variable``
+
+It specifies a reference to an object of the specified type.
 
 .. _SpecTypeGlossaryMembershipLinkRole:
 
@@ -4333,20 +4430,6 @@ value is ``interface-placement``. It defines the interface placement role of
 links.  It is used to indicate that an interface definition is placed into an
 interface container, for example a header file.
 
-.. _SpecTypeInterfaceReferencesSet:
-
-Interface References Set
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-This set of attributes defines references for the interface. Generic attributes
-may be specified. Each generic attribute key shall be a :ref:`SpecTypeName`.
-Each generic attribute value shall be a string. The key defines the reference
-kind.  The value shall be a kind-specific reference target.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeInterfaceUnspecifiedItemType`
-
 .. _SpecTypeInterfaceReturnDirective:
 
 Interface Return Directive
@@ -4486,13 +4569,13 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildOptionSetTestStateAction`
 
+* :ref:`SpecTypeExternalReference`
+
 * :ref:`SpecTypeFunctionalRequirementItemType`
 
 * :ref:`SpecTypeGlossaryItemType`
 
 * :ref:`SpecTypeInterfaceItemType`
-
-* :ref:`SpecTypeInterfaceReferencesSet`
 
 * :ref:`SpecTypeLink`
 
@@ -4552,50 +4635,6 @@ This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``placement-order``. This link role defines the placement order of
 items in a container item (for example an interface function in a header file
 or a documentation section).
-
-.. _SpecTypeRequirementReference:
-
-Requirement Reference
-^^^^^^^^^^^^^^^^^^^^^
-
-This set of attributes specifies a requirement reference. All explicit
-attributes shall be specified. The explicit attributes for this type are:
-
-identifier
-    The attribute value shall be a string. It shall be the type-specific
-    identifier of the reference target. For *group* references use the Doxygen
-    group identifier.
-
-type
-    The attribute value shall be a :ref:`SpecTypeRequirementReferenceType`.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeRequirementItemType`
-
-.. _SpecTypeRequirementReferenceType:
-
-Requirement Reference Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The value shall be a string. It specifies the type of a requirement reference.
-The value shall be an element of
-
-* "``define``",
-
-* "``file``",
-
-* "``function``",
-
-* "``group``",
-
-* "``macro``", and
-
-* "``variable``".
-
-This type is used by the following types:
-
-* :ref:`SpecTypeRequirementReference`
 
 .. _SpecTypeRequirementRefinementLinkRole:
 
@@ -4878,6 +4917,19 @@ shall be a :ref:`SpecTypeName`. The attribute value may have any type.
 This type is used by the following types:
 
 * :ref:`SpecTypeRuntimePerformanceRequirementItemType`
+
+.. _SpecTypeSHA256HashValue:
+
+SHA256 Hash Value
+^^^^^^^^^^^^^^^^^
+
+The value shall be a string. It shall be a SHA256 hash value encoded in
+base64url. The value shall match with the regular expression
+"``^[A-Za-z0-9+_=-]{44}$``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeExternalFileReference`
 
 .. _SpecTypeSPDXLicenseIdentifier:
 
