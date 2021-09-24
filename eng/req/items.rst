@@ -113,6 +113,8 @@ The specification item types have the following hierarchy:
 
       * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
 
+      * :ref:`SpecTypeRuntimeMeasurementEnvironmentItemType`
+
       * :ref:`SpecTypeRuntimePerformanceRequirementItemType`
 
   * :ref:`SpecTypeRequirementValidationItemType`
@@ -1950,6 +1952,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
 
+* :ref:`SpecTypeRuntimeMeasurementEnvironmentItemType`
+
 * :ref:`SpecTypeRuntimePerformanceRequirementItemType`
 
 .. _SpecTypeDesignGroupRequirementItemType:
@@ -2002,6 +2006,10 @@ This type refines the following types:
   ``non-functional-type`` attribute if the value is ``performance``
 
 * :ref:`SpecTypeNonFunctionalRequirementItemType` through the
+  ``non-functional-type`` attribute if the value is
+  ``performance-runtime-limits``
+
+* :ref:`SpecTypeNonFunctionalRequirementItemType` through the
   ``non-functional-type`` attribute if the value is ``portability``
 
 * :ref:`SpecTypeNonFunctionalRequirementItemType` through the
@@ -2018,6 +2026,22 @@ This type refines the following types:
 
 Items of this type state a non-functional requirement with the non-functional
 type defined by the specification type refinement.
+
+.. _SpecTypeRuntimeMeasurementEnvironmentItemType:
+
+Runtime Measurement Environment Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeNonFunctionalRequirementItemType` through
+the ``non-functional-type`` attribute if the value is
+``performance-runtime-environment``. This set of attributes specifies a runtime
+measurement environment. All explicit attributes shall be specified. The
+explicit attributes for this type are:
+
+name
+    The attribute value shall be a string. It shall be the runtime measurement
+    environment name.  See also
+    :ref:`SpecTypeRuntimeMeasurementEnvironmentName`.
 
 .. _SpecTypeRuntimePerformanceRequirementItemType:
 
@@ -2067,9 +2091,6 @@ the requirement, the validation test code to execute a measure runtime request
 is specified. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
-limits
-    The attribute value shall be a :ref:`SpecTypeRuntimePerformanceLimitTable`.
-
 params
     The attribute value shall be a
     :ref:`SpecTypeRuntimePerformanceParameterSet`.
@@ -2105,34 +2126,11 @@ Please have a look at the following example:
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     links:
     - role: runtime-measurement-request
-      uid: ../val/performance
-    limits:
-      sparc/leon3:
-        DirtyCache:
-          max-upper-bound: 0.000005
-          mean-upper-bound: 0.000005
-        FullCache:
-          max-upper-bound: 0.000005
-          mean-upper-bound: 0.000005
-        HotCache:
-          max-upper-bound: 0.000005
-          mean-upper-bound: 0.000005
-        Load/1:
-          max-upper-bound: 0.00001
-          mean-upper-bound: 0.00001
-        Load/2:
-          max-upper-bound: 0.00001
-          mean-upper-bound: 0.00001
-        Load/3:
-          max-upper-bound: 0.00001
-          mean-upper-bound: 0.00001
-        Load/4:
-          max-upper-bound: 0.00001
-          mean-upper-bound: 0.00001
+      uid: ../val/perf
     params: {}
     rationale: null
     references: []
@@ -2159,11 +2157,11 @@ Please have a look at the following example:
         return tic == toc;
       description: null
     text: |
-      When a partition has exactly ${../val/performance:/params/buffer-count} free
-      buffers, the ${.:limit-kind} runtime of exactly
-      ${../val/performance:/params/sample-count} successful calls to
+      When a partition has exactly ${../val/perf:/params/buffer-count} free
+      buffers, the ${.:/limit-kind} runtime of exactly
+      ${../val/perf:/params/sample-count} successful calls to
       ${../if/get-buffer:/name} in the ${.:/environment} shall be
-      ${.:limit-condition}.
+      ${.:/limit-condition}.
     non-functional-type: performance-runtime
     requirement-type: non-functional
     type: requirement
@@ -4448,6 +4446,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceTargetLinkRole`
 
+* :ref:`SpecTypePerformanceRuntimeLimitsLinkRole`
+
 * :ref:`SpecTypePlacementOrderLinkRole`
 
 * :ref:`SpecTypeRequirementRefinementLinkRole`
@@ -4528,6 +4528,20 @@ A value of this type shall be of one of the following variants:
 * There may be no value (null).
 
 * The value may be a string.
+
+.. _SpecTypePerformanceRuntimeLimitsLinkRole:
+
+Performance Runtime Limits Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``performance-runtime-limits``. It defines the performance runtime
+limits role of links. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+limits
+    The attribute value shall be a
+    :ref:`SpecTypeRuntimeMeasurementEnvironmentTable`.
 
 .. _SpecTypePlacementOrderLinkRole:
 
@@ -4742,13 +4756,13 @@ Requirement Validation Link Role
 This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``validation``. It defines the requirement validation role of links.
 
-.. _SpecTypeRuntimeMeasurementEnvironment:
+.. _SpecTypeRuntimeMeasurementEnvironmentName:
 
-Runtime Measurement Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Runtime Measurement Environment Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The value shall be a string. It specifies the runtime measurement environment.
-The value
+The value shall be a string. It specifies the runtime measurement environment
+name. The value
 
 * shall be an element of
 
@@ -4771,12 +4785,12 @@ Runtime Measurement Environment Table
 
 This set of attributes provides runtime performance limits for a set of runtime
 measurement environments. Generic attributes may be specified. Each generic
-attribute key shall be a :ref:`SpecTypeRuntimeMeasurementEnvironment`. Each
+attribute key shall be a :ref:`SpecTypeRuntimeMeasurementEnvironmentName`. Each
 generic attribute value shall be a :ref:`SpecTypeRuntimeMeasurementValueTable`.
 
 This type is used by the following types:
 
-* :ref:`SpecTypeRuntimePerformanceLimitTable`
+* :ref:`SpecTypePerformanceRuntimeLimitsLinkRole`
 
 .. _SpecTypeRuntimeMeasurementParameterSet:
 
@@ -4851,21 +4865,6 @@ be a floating-point number.
 This type is used by the following types:
 
 * :ref:`SpecTypeRuntimeMeasurementEnvironmentTable`
-
-.. _SpecTypeRuntimePerformanceLimitTable:
-
-Runtime Performance Limit Table
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This set of attributes provides runtime performance limits for BSP variants
-specified by ``"<arch>/<bsp>"`` with <arch> being the architecture of the BSP
-and <bsp> being the base name of the BSP. Generic attributes may be specified.
-Each generic attribute key shall be a string. Each generic attribute value
-shall be a :ref:`SpecTypeRuntimeMeasurementEnvironmentTable`.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeRuntimePerformanceRequirementItemType`
 
 .. _SpecTypeRuntimePerformanceParameterSet:
 

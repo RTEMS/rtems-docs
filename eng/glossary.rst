@@ -122,6 +122,9 @@ Glossary
         software as it is originally written (i.e., typed into a computer) by a
         human in plain text (i.e., human readable alphanumeric characters)."
 
+    target
+        The system on which the application will ultimately execute.
+
     task
         This project uses the
         `thread definition of Wikipedia <https://en.wikipedia.org/wiki/Thread_(computing)>`_:
