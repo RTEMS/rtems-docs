@@ -101,8 +101,20 @@ Glossary
     C++11
         The standard ISO/IEC 14882:2011.
 
+    C++14
+        The standard ISO/IEC 14882:2014.
+
+    C++17
+        The standard ISO/IEC 14882:2017.
+
+    C++20
+        The standard ISO/IEC 14882:2020.
+
     C11
         The standard ISO/IEC 9899:2011.
+
+    C17
+        The standard ISO/IEC 9899:2018.
 
     calling convention
         The processor and compiler dependent rules which define the mechanism
@@ -250,6 +262,9 @@ Glossary
     EARS
         This term is an acronym for Easy Approach to Requirements Syntax.
 
+    EDF
+        This term is an acronym for Earliest Deadline First.
+
     ELF
         This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
@@ -344,6 +359,14 @@ Glossary
 
     freed
         A resource that has been released by the application to RTEMS.
+
+    Futex
+        This term is an abbreviation for
+        `Fast User-Space Locking <https://man7.org/linux/man-pages/man2/futex.2.html>`_.
+        The futex support in RTEMS is provided for the barriers of the
+        :term:`OpenMP` library provided by :term:`GCC`.  It could be used to
+        implement high performance :term:`SMP` synchronization primitives which
+        offer random-fairness.
 
     GCC
         This term is an acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
@@ -543,6 +566,9 @@ Glossary
         This term is an acronym for
         :term:`Multiprocessor Communications Interface Layer`.
 
+    MrsP
+        This term is an acronym for Multiprocessor Resource-Sharing Protocol.
+
     multiprocessing
         The simultaneous execution of two or more processes by a multiple
         processor computer system.
@@ -605,6 +631,10 @@ Glossary
         generalization of the :term:`priority inheritance` locking protocol to
         clustered scheduling.  The ``m`` denotes the number of processors in the
         system.
+
+    OpenMP
+        This term is an acronym for
+        `Open Multi-Processing <https://www.openmp.org/>`_.
 
     operating system
         The software which controls all the computer's resources and provides the
