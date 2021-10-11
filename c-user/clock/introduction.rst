@@ -29,6 +29,22 @@ Introduction
 .. spec:/rtems/clock/if/set
 .. spec:/rtems/clock/if/get-tod
 .. spec:/rtems/clock/if/get-tod-timeval
+.. spec:/rtems/clock/if/get-realtime
+.. spec:/rtems/clock/if/get-realtime-bintime
+.. spec:/rtems/clock/if/get-realtime-timeval
+.. spec:/rtems/clock/if/get-realtime-coarse
+.. spec:/rtems/clock/if/get-realtime-coarse-bintime
+.. spec:/rtems/clock/if/get-realtime-coarse-timeval
+.. spec:/rtems/clock/if/get-monotonic
+.. spec:/rtems/clock/if/get-monotonic-bintime
+.. spec:/rtems/clock/if/get-monotonic-sbintime
+.. spec:/rtems/clock/if/get-monotonic-timeval
+.. spec:/rtems/clock/if/get-monotonic-coarse
+.. spec:/rtems/clock/if/get-monotonic-coarse-bintime
+.. spec:/rtems/clock/if/get-monotonic-coarse-timeval
+.. spec:/rtems/clock/if/get-boot-time
+.. spec:/rtems/clock/if/get-boot-time-bintime
+.. spec:/rtems/clock/if/get-boot-time-timeval
 .. spec:/rtems/clock/if/get-seconds-since-epoch
 .. spec:/rtems/clock/if/get-ticks-per-second
 .. spec:/rtems/clock/if/get-ticks-since-boot
@@ -51,6 +67,71 @@ capabilities. The directives provided by the Clock Manager are:
 
 * :ref:`InterfaceRtemsClockGetTodTimeval` - Gets the seconds and microseconds
   elapsed since the :term:`Unix epoch` and the current :term:`CLOCK_REALTIME`.
+
+* :ref:`InterfaceRtemsClockGetRealtime` - Gets the time elapsed since the
+  :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in seconds and
+  nanoseconds format.
+
+* :ref:`InterfaceRtemsClockGetRealtimeBintime` - Gets the time elapsed since
+  the :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in binary time
+  format.
+
+* :ref:`InterfaceRtemsClockGetRealtimeTimeval` - Gets the time elapsed since
+  the :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in seconds and
+  microseconds format.
+
+* :ref:`InterfaceRtemsClockGetRealtimeCoarse` - Gets the time elapsed since the
+  :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse precision
+  in seconds and nanoseconds format.
+
+* :ref:`InterfaceRtemsClockGetRealtimeCoarseBintime` - Gets the time elapsed
+  since the :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse
+  precision in binary time format.
+
+* :ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` - Gets the time elapsed
+  since the :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse
+  precision in seconds and microseconds format.
+
+* :ref:`InterfaceRtemsClockGetMonotonic` - Gets the time elapsed since some
+  fixed time point in the past measured using the :term:`CLOCK_MONOTONIC` in
+  seconds and nanoseconds format.
+
+* :ref:`InterfaceRtemsClockGetMonotonicBintime` - Gets the time elapsed since
+  some fixed time point in the past measured using the :term:`CLOCK_MONOTONIC`
+  in binary time format.
+
+* :ref:`InterfaceRtemsClockGetMonotonicSbintime` - Gets the time elapsed since
+  some fixed time point in the past measured using the :term:`CLOCK_MONOTONIC`
+  in signed binary time format.
+
+* :ref:`InterfaceRtemsClockGetMonotonicTimeval` - Gets the time elapsed since
+  some fixed time point in the past measured using the :term:`CLOCK_MONOTONIC`
+  in seconds and microseconds format.
+
+* :ref:`InterfaceRtemsClockGetMonotonicCoarse` - Gets the time elapsed since
+  some fixed time point in the past measured using the :term:`CLOCK_MONOTONIC`
+  in coarse precision in seconds and nanoseconds format.
+
+* :ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` - Gets the time elapsed
+  since some fixed time point in the past measured using the
+  :term:`CLOCK_MONOTONIC` in coarse precision in binary time format.
+
+* :ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` - Gets the time elapsed
+  since some fixed time point in the past measured using the
+  :term:`CLOCK_MONOTONIC` in coarse precision in seconds and microseconds
+  format.
+
+* :ref:`InterfaceRtemsClockGetBootTime` - Gets the time elapsed since the
+  :term:`Unix epoch` at some time point during system initialization in seconds
+  and nanoseconds format.
+
+* :ref:`InterfaceRtemsClockGetBootTimeBintime` - Gets the time elapsed since
+  the :term:`Unix epoch` at some time point during system initialization in
+  binary time format.
+
+* :ref:`InterfaceRtemsClockGetBootTimeTimeval` - Gets the time elapsed since
+  the :term:`Unix epoch` at some time point during system initialization in
+  seconds and microseconds format.
 
 * :ref:`InterfaceRtemsClockGetSecondsSinceEpoch` - Gets the seconds elapsed
   since the :term:`RTEMS epoch` and the current :term:`CLOCK_REALTIME`.
