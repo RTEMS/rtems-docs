@@ -199,3 +199,36 @@ DESCRIPTION:
 NOTES:
     This configuration option may be used if a custom task stack allocator is
     configured, see :ref:`CONFIGURE_TASK_STACK_ALLOCATOR`.
+
+.. index:: _CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE
+.. index:: IDLE task stack allocator
+
+.. _CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE:
+
+CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE
+---------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE``
+
+OPTION TYPE:
+    This configuration option is an initializer define.
+
+DEFAULT VALUE:
+    The default value is ``_Stack_Allocator_allocate_for_idle``, which
+    indicates that IDLE task stacks will be allocated from an area statically
+    reserved by `<rtems/confdefs.h>``.
+
+VALUE CONSTRAINTS:
+    The value of this configuration option shall be defined to a valid
+    function pointer of the type ``void *( *allocate )( uint32_t, size_t )``.
+
+DESCRIPTION:
+    The value of this configuration option is the address for the the
+    IDLE stack allocator allocate handler.
+
+NOTES:
+    This configuration option is independent of the other thread stack allocator
+    configuration options. It is assumed that any memory allocated for IDLE
+    task stacks will not be from the RTEMS Workspace or the memory statically
+    reserved by default.
