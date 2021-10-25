@@ -366,6 +366,11 @@ length of the period.
 :c:macro:`RTEMS_TIMEOUT`
     The rate monotonic period has expired.
 
+.. rubric:: NOTES:
+
+Resetting the processor usage time of tasks has no impact on the period status
+and statistics.
+
 .. rubric:: CONSTRAINTS:
 
 The following constraints apply to this directive:
@@ -447,10 +452,6 @@ members of the period status object referenced by ``status``:
 :c:macro:`RTEMS_INVALID_ADDRESS`
     The ``status`` parameter was `NULL
     <https://en.cppreference.com/w/c/types/NULL>`_.
-
-:c:macro:`RTEMS_NOT_DEFINED`
-    There was no status available due to a reset of the processor time usage of
-    the owner task of the period.
 
 .. rubric:: CONSTRAINTS:
 
