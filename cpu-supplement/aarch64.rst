@@ -9,7 +9,7 @@ This chapter discusses the dependencies of the
 *ARM AArch64 architecture*
 (https://en.wikipedia.org/wiki/ARM_architecture#AArch64_features) in this port
 of RTEMS.  The ARMv8-A versions are supported by RTEMS.  Processors with a MMU
-use a static configuration which is set up during system start.  SMP is not
+use a static configuration which is set up during system start.  SMP is
 supported.
 
 **Architecture Documents**
@@ -124,7 +124,9 @@ actions:
 Symmetric Multiprocessing
 =========================
 
-SMP is not currently supported on ARMv8-A.
+SMP is supported on ARMv8-A.  Available platforms are:
+
+- Xilinx ZynqMP (QEMU and hardware using PSCI via ARM Trusted Firmware)
 
 Thread-Local Storage
 ====================
