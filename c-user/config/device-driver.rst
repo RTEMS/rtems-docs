@@ -604,6 +604,36 @@ NOTES:
     This configuration option is only evaluated if the configuration option
     :ref:`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER` is defined.
 
+.. Generated from spec:/acfg/if/exception-to-signal-mapping
+
+.. index:: CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
+
+.. _CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING:
+
+CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
+-------------------------------------
+
+CONSTANT:
+    ``CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING``
+
+OPTION TYPE:
+    This configuration option is a boolean feature define.
+
+DEFAULT CONFIGURATION:
+    If this configuration option is undefined, then the described feature is not
+    enabled.
+
+DESCRIPTION:
+    In case this configuration option is defined, then the machine exception to
+    POSIX signal mapping is configured during system initialization.
+
+NOTES:
+    This device driver is responsible for setting up a mapping from machine
+    exceptions to POSIX signals so that applications may consume them and alter
+    task execution as necessary.
+
+    This is especially useful for applications written in Ada or C++.
+
 .. Generated from spec:/acfg/if/max-drivers
 
 .. index:: CONFIGURE_MAXIMUM_DRIVERS
