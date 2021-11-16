@@ -30,6 +30,10 @@ configuration options may have a BSP-specific setting which is defined by
 
 .. Generated from spec:/acfg/if/bsp-idle-task-body
 
+.. raw:: latex
+
+    \clearpage
+
 .. index:: BSP_IDLE_TASK_BODY
 
 .. _BSP_IDLE_TASK_BODY:
@@ -37,35 +41,45 @@ configuration options may have a BSP-specific setting which is defined by
 BSP_IDLE_TASK_BODY
 ------------------
 
-CONSTANT:
-    ``BSP_IDLE_TASK_BODY``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``BSP_IDLE_TASK_BODY``
 
-DEFAULT VALUE:
-    The default value is BSP-specific.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be defined to a valid function
-    pointer of the type ``void *( *idle_body )( uintptr_t )``.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    If
+.. rubric:: DEFAULT VALUE:
 
-    * this configuration option is defined by the BSP
+The default value is BSP-specific.
 
-    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+.. rubric:: DESCRIPTION:
 
-    then the value of this configuration option defines the default value of
-    :ref:`CONFIGURE_IDLE_TASK_BODY`.
+If
 
-NOTES:
-    As it has knowledge of the specific CPU model, system controller logic, and
-    peripheral buses, a BSP-specific IDLE task may be capable of turning
-    components off to save power during extended periods of no task activity.
+* this configuration option is defined by the BSP
+
+* and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+then the value of this configuration option defines the default value of
+:ref:`CONFIGURE_IDLE_TASK_BODY`.
+
+.. rubric:: NOTES:
+
+As it has knowledge of the specific CPU model, system controller logic, and
+peripheral buses, a BSP-specific IDLE task may be capable of turning
+components off to save power during extended periods of no task activity.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be defined to a valid function
+pointer of the type ``void *( *idle_body )( uintptr_t )``.
 
 .. Generated from spec:/acfg/if/bsp-idle-task-stack-size
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: BSP_IDLE_TASK_STACK_SIZE
 
@@ -74,40 +88,46 @@ NOTES:
 BSP_IDLE_TASK_STACK_SIZE
 ------------------------
 
-CONSTANT:
-    ``BSP_IDLE_TASK_STACK_SIZE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``BSP_IDLE_TASK_STACK_SIZE``
 
-DEFAULT VALUE:
-    The default value is BSP-specific.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to a BSP-specific and
-      application-specific minimum value.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be small enough so that the IDLE task stack area calculation
-      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
-      type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+The default value is BSP-specific.
 
-DESCRIPTION:
-    If
+.. rubric:: DESCRIPTION:
 
-    * this configuration option is defined by the BSP
+If
 
-    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+* this configuration option is defined by the BSP
 
-    then the value of this configuration option defines the default value of
-    :ref:`CONFIGURE_IDLE_TASK_STACK_SIZE`.
+* and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
 
-NOTES:
-    None.
+then the value of this configuration option defines the default value of
+:ref:`CONFIGURE_IDLE_TASK_STACK_SIZE`.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to a
+  BSP-specific and application-specific minimum value.
+
+* The value of the configuration option shall be small enough so that the IDLE
+  task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
+  overflow an integer of type `size_t
+  <https://en.cppreference.com/w/c/types/size_t>`_.
 
 .. Generated from spec:/acfg/if/bsp-initial-extension
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: BSP_INITIAL_EXTENSION
 
@@ -116,34 +136,44 @@ NOTES:
 BSP_INITIAL_EXTENSION
 ---------------------
 
-CONSTANT:
-    ``BSP_INITIAL_EXTENSION``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``BSP_INITIAL_EXTENSION``
 
-DEFAULT VALUE:
-    The default value is BSP-specific.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be a list of initializers for
-    structures of type :c:type:`rtems_extensions_table`.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    If
+.. rubric:: DEFAULT VALUE:
 
-    * this configuration option is defined by the BSP
+The default value is BSP-specific.
 
-    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+.. rubric:: DESCRIPTION:
 
-    then the value of this configuration option is used to initialize the table
-    of initial user extensions.
+If
 
-NOTES:
-    The value of this configuration option is placed after the entries of all
-    other initial user extensions.
+* this configuration option is defined by the BSP
+
+* and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+then the value of this configuration option is used to initialize the table
+of initial user extensions.
+
+.. rubric:: NOTES:
+
+The value of this configuration option is placed after the entries of all
+other initial user extensions.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a list of initializers for
+structures of type :c:type:`rtems_extensions_table`.
 
 .. Generated from spec:/acfg/if/bsp-interrupt-stack-size
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: BSP_INTERRUPT_STACK_SIZE
 
@@ -152,43 +182,49 @@ NOTES:
 BSP_INTERRUPT_STACK_SIZE
 ------------------------
 
-CONSTANT:
-    ``BSP_INTERRUPT_STACK_SIZE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``BSP_INTERRUPT_STACK_SIZE``
 
-DEFAULT VALUE:
-    The default value is BSP-specific.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to a BSP-specific and
-      application-specific minimum value.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be small enough so that the interrupt stack area calculation
-      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
-      type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+The default value is BSP-specific.
 
-    * It shall be aligned according to
-      :c:macro:`CPU_INTERRUPT_STACK_ALIGNMENT`.
+.. rubric:: DESCRIPTION:
 
-DESCRIPTION:
-    If
+If
 
-    * this configuration option is defined by the BSP
+* this configuration option is defined by the BSP
 
-    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+* and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
 
-    then the value of this configuration option defines the default value of
-    :ref:`CONFIGURE_INTERRUPT_STACK_SIZE`.
+then the value of this configuration option defines the default value of
+:ref:`CONFIGURE_INTERRUPT_STACK_SIZE`.
 
-NOTES:
-    None.
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to a
+  BSP-specific and application-specific minimum value.
+
+* The value of the configuration option shall be small enough so that the
+  interrupt stack area calculation carried out by ``<rtems/confdefs.h>`` does
+  not overflow an integer of type `size_t
+  <https://en.cppreference.com/w/c/types/size_t>`_.
+
+* The value of the configuration option shall be aligned according to
+  :c:macro:`CPU_INTERRUPT_STACK_ALIGNMENT`.
 
 .. Generated from spec:/acfg/if/bsp-prerequisite-drivers
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_BSP_PREREQUISITE_DRIVERS
 
@@ -197,35 +233,45 @@ NOTES:
 CONFIGURE_BSP_PREREQUISITE_DRIVERS
 ----------------------------------
 
-CONSTANT:
-    ``CONFIGURE_BSP_PREREQUISITE_DRIVERS``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``CONFIGURE_BSP_PREREQUISITE_DRIVERS``
 
-DEFAULT VALUE:
-    The default value is BSP-specific.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be a list of initializers for
-    structures of type :c:type:`rtems_extensions_table`.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    If
+.. rubric:: DEFAULT VALUE:
 
-    * this configuration option is defined by the BSP
+The default value is BSP-specific.
 
-    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+.. rubric:: DESCRIPTION:
 
-    then the value of this configuration option is used to add BSP-provided
-    prerequisite drivers to the Device Driver Table.
+If
 
-NOTES:
-    The value of this configuration option is placed before the entries of all
-    other initial user extensions (including
-    :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`).
+* this configuration option is defined by the BSP
+
+* and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+then the value of this configuration option is used to add BSP-provided
+prerequisite drivers to the Device Driver Table.
+
+.. rubric:: NOTES:
+
+The value of this configuration option is placed before the entries of all
+other initial user extensions (including
+:ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`).
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a list of initializers for
+structures of type :c:type:`rtems_extensions_table`.
 
 .. Generated from spec:/acfg/if/disable-bsp-settings
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_DISABLE_BSP_SETTINGS
 
@@ -234,36 +280,41 @@ NOTES:
 CONFIGURE_DISABLE_BSP_SETTINGS
 ------------------------------
 
-CONSTANT:
-    ``CONFIGURE_DISABLE_BSP_SETTINGS``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_DISABLE_BSP_SETTINGS``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    In case this configuration option is defined, then the following BSP related
-    configuration options are undefined:
+This configuration option is a boolean feature define.
 
-    * :ref:`BSP_IDLE_TASK_BODY`
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * :ref:`BSP_IDLE_TASK_STACK_SIZE`
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    * :ref:`BSP_INITIAL_EXTENSION`
+.. rubric:: DESCRIPTION:
 
-    * :ref:`BSP_INTERRUPT_STACK_SIZE`
+In case this configuration option is defined, then the following BSP related
+configuration options are undefined:
 
-    * :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
+* :ref:`BSP_IDLE_TASK_BODY`
 
-    * :ref:`CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK`
+* :ref:`BSP_IDLE_TASK_STACK_SIZE`
 
-NOTES:
-    None.
+* :ref:`BSP_INITIAL_EXTENSION`
+
+* :ref:`BSP_INTERRUPT_STACK_SIZE`
+
+* :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
+
+* :ref:`CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK`
 
 .. Generated from spec:/acfg/if/malloc-bsp-supports-sbrk
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
 
@@ -272,28 +323,33 @@ NOTES:
 CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK
 ----------------------------------
 
-CONSTANT:
-    ``CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_MALLOC_BSP_SUPPORTS_SBRK``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    If
+This configuration option is a boolean feature define.
 
-    * this configuration option is defined by the BSP
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    then not all memory is made available to the C Program Heap immediately at
-    system initialization time.  When :c:func:`malloc` or other standard
-    memory allocation functions are unable to allocate memory, they will call the
-    BSP supplied :c:func:`sbrk` function to obtain more memory.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    This option should not be defined by the application. Only the BSP knows how
-    it allocates memory to the C Program Heap.
+If
+
+* this configuration option is defined by the BSP
+
+* and :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` is undefined,
+
+then not all memory is made available to the C Program Heap immediately at
+system initialization time.  When :c:func:`malloc` or other standard
+memory allocation functions are unable to allocate memory, they will call the
+BSP supplied :c:func:`sbrk` function to obtain more memory.
+
+.. rubric:: NOTES:
+
+This option should not be defined by the application. Only the BSP knows how
+it allocates memory to the C Program Heap.

@@ -32,6 +32,10 @@ SMP support.
 
 .. Generated from spec:/acfg/if/mp-extra-server-stack
 
+.. raw:: latex
+
+    \clearpage
+
 .. index:: CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 
 .. _CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK:
@@ -39,38 +43,48 @@ SMP support.
 CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 -----------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK``
 
-DEFAULT VALUE:
-    The default value is 0.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to zero.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be less than or equal to `UINT32_MAX
-      <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is 0.
 
-    * It shall be small enough so that the MPCI receive server stack area
-      calculation carried out by ``<rtems/confdefs.h>`` does not overflow an
-      integer of type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+.. rubric:: DESCRIPTION:
 
-DESCRIPTION:
-    The value of this configuration option defines the number of bytes the
-    applications wishes to add to the MPCI task stack on top of
-    :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+The value of this configuration option defines the number of bytes the
+applications wishes to add to the MPCI task stack on top of
+:ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
-NOTES:
-    This configuration option is only evaluated if
-    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+.. rubric:: NOTES:
+
+This configuration option is only evaluated if
+:ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to zero.
+
+* The value of the configuration option shall be less than or equal to
+  `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
+
+* The value of the configuration option shall be small enough so that the MPCI
+  receive server stack area calculation carried out by ``<rtems/confdefs.h>``
+  does not overflow an integer of type `size_t
+  <https://en.cppreference.com/w/c/types/size_t>`_.
 
 .. Generated from spec:/acfg/if/mp-appl
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MP_APPLICATION
 
@@ -79,28 +93,37 @@ NOTES:
 CONFIGURE_MP_APPLICATION
 ------------------------
 
-CONSTANT:
-    ``CONFIGURE_MP_APPLICATION``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_MP_APPLICATION``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the multiprocessing services
-    are not initialized.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    This configuration option is defined to indicate that the application intends
-    to be part of a multiprocessing configuration.  Additional configuration
-    options are assumed to be provided.
+This configuration option is a boolean feature define.
 
-NOTES:
-    This configuration option shall be undefined if the multiprocessing support
-    is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
-    build configuration option).  Otherwise a compile time error in the
-    configuration file will occur.
+.. rubric:: DEFAULT CONFIGURATION:
+
+If this configuration option is undefined, then the multiprocessing services
+are not initialized.
+
+.. rubric:: DESCRIPTION:
+
+This configuration option is defined to indicate that the application intends
+to be part of a multiprocessing configuration.  Additional configuration
+options are assumed to be provided.
+
+.. rubric:: NOTES:
+
+This configuration option shall be undefined if the multiprocessing support
+is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
+build configuration option).  Otherwise a compile time error in the
+configuration file will occur.
 
 .. Generated from spec:/acfg/if/mp-max-global-objects
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 
@@ -109,36 +132,45 @@ NOTES:
 CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 -----------------------------------
 
-CONSTANT:
-    ``CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS``
 
-DEFAULT VALUE:
-    The default value is 32.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to zero.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be less than or equal to `UINT32_MAX
-      <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is 32.
 
-DESCRIPTION:
-    The value of this configuration option defines the maximum number of
-    concurrently active global objects in a multiprocessor system.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    This value corresponds to the total number of objects which can be created
-    with the :c:macro:`RTEMS_GLOBAL` attribute.
+The value of this configuration option defines the maximum number of
+concurrently active global objects in a multiprocessor system.
 
-    This configuration option is only evaluated if
-    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+.. rubric:: NOTES:
+
+This value corresponds to the total number of objects which can be created
+with the :c:macro:`RTEMS_GLOBAL` attribute.
+
+This configuration option is only evaluated if
+:ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to zero.
+
+* The value of the configuration option shall be less than or equal to
+  `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 .. Generated from spec:/acfg/if/mp-max-nodes
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MP_MAXIMUM_NODES
 
@@ -147,33 +179,42 @@ NOTES:
 CONFIGURE_MP_MAXIMUM_NODES
 --------------------------
 
-CONSTANT:
-    ``CONFIGURE_MP_MAXIMUM_NODES``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_MP_MAXIMUM_NODES``
 
-DEFAULT VALUE:
-    The default value is 2.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to zero.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be less than or equal to `UINT32_MAX
-      <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is 2.
 
-DESCRIPTION:
-    The value of this configuration option defines the maximum number of nodes in
-    a multiprocessor system.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    This configuration option is only evaluated if
-    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+The value of this configuration option defines the maximum number of nodes in
+a multiprocessor system.
+
+.. rubric:: NOTES:
+
+This configuration option is only evaluated if
+:ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to zero.
+
+* The value of the configuration option shall be less than or equal to
+  `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 .. Generated from spec:/acfg/if/mp-max-proxies
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MP_MAXIMUM_PROXIES
 
@@ -182,39 +223,48 @@ NOTES:
 CONFIGURE_MP_MAXIMUM_PROXIES
 ----------------------------
 
-CONSTANT:
-    ``CONFIGURE_MP_MAXIMUM_PROXIES``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_MP_MAXIMUM_PROXIES``
 
-DEFAULT VALUE:
-    The default value is 32.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to zero.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be less than or equal to `UINT32_MAX
-      <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is 32.
 
-DESCRIPTION:
-    The value of this configuration option defines the maximum number of
-    concurrently active thread/task proxies on this node in a multiprocessor
-    system.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    Since a proxy is used to represent a remote task/thread which is blocking
-    on this node. This configuration parameter reflects the maximum number of
-    remote tasks/threads which can be blocked on objects on this node, see
-    :ref:`MPCIProxies`.
+The value of this configuration option defines the maximum number of
+concurrently active thread/task proxies on this node in a multiprocessor
+system.
 
-    This configuration option is only evaluated if
-    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+.. rubric:: NOTES:
+
+Since a proxy is used to represent a remote task/thread which is blocking
+on this node. This configuration parameter reflects the maximum number of
+remote tasks/threads which can be blocked on objects on this node, see
+:ref:`MPCIProxies`.
+
+This configuration option is only evaluated if
+:ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to zero.
+
+* The value of the configuration option shall be less than or equal to
+  `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
 
 .. Generated from spec:/acfg/if/mp-mpci-table-pointer
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MP_MPCI_TABLE_POINTER
 
@@ -223,32 +273,42 @@ NOTES:
 CONFIGURE_MP_MPCI_TABLE_POINTER
 -------------------------------
 
-CONSTANT:
-    ``CONFIGURE_MP_MPCI_TABLE_POINTER``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``CONFIGURE_MP_MPCI_TABLE_POINTER``
 
-DEFAULT VALUE:
-    The default value is ``&MPCI_table``.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be a pointer to
-    :c:type:`rtems_mpci_table`.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    The value of this configuration option initializes the MPCI Configuration
-    Table.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    RTEMS provides a Shared Memory MPCI Device Driver which can be used on any
-    Multiprocessor System assuming the BSP provides the proper set of
-    supporting methods.
+The default value is ``&MPCI_table``.
 
-    This configuration option is only evaluated if
-    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option initializes the MPCI Configuration
+Table.
+
+.. rubric:: NOTES:
+
+RTEMS provides a Shared Memory MPCI Device Driver which can be used on any
+Multiprocessor System assuming the BSP provides the proper set of
+supporting methods.
+
+This configuration option is only evaluated if
+:ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a pointer to
+:c:type:`rtems_mpci_table`.
 
 .. Generated from spec:/acfg/if/mp-node-number
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_MP_NODE_NUMBER
 
@@ -257,33 +317,38 @@ NOTES:
 CONFIGURE_MP_NODE_NUMBER
 ------------------------
 
-CONSTANT:
-    ``CONFIGURE_MP_NODE_NUMBER``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_MP_NODE_NUMBER``
 
-DEFAULT VALUE:
-    The default value is ``NODE_NUMBER``.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to zero.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be less than or equal to `UINT32_MAX
-      <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is ``NODE_NUMBER``.
 
-DESCRIPTION:
-    The value of this configuration option defines the node number of this node
-    in a multiprocessor system.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    In the RTEMS Multiprocessing Test Suite, the node number is derived from
-    the Makefile variable ``NODE_NUMBER``. The same code is compiled with the
-    ``NODE_NUMBER`` set to different values. The test programs behave
-    differently based upon their node number.
+The value of this configuration option defines the node number of this node
+in a multiprocessor system.
 
-    This configuration option is only evaluated if
-    :ref:`CONFIGURE_MP_APPLICATION` is defined.
+.. rubric:: NOTES:
+
+In the RTEMS Multiprocessing Test Suite, the node number is derived from
+the Makefile variable ``NODE_NUMBER``. The same code is compiled with the
+``NODE_NUMBER`` set to different values. The test programs behave
+differently based upon their node number.
+
+This configuration option is only evaluated if
+:ref:`CONFIGURE_MP_APPLICATION` is defined.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to zero.
+
+* The value of the configuration option shall be less than or equal to
+  `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.

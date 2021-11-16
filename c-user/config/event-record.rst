@@ -26,6 +26,10 @@ This section describes configuration options related to the event recording.
 
 .. Generated from spec:/acfg/if/record-extensions-enabled
 
+.. raw:: latex
+
+    \clearpage
+
 .. index:: CONFIGURE_RECORD_EXTENSIONS_ENABLED
 
 .. _CONFIGURE_RECORD_EXTENSIONS_ENABLED:
@@ -33,30 +37,39 @@ This section describes configuration options related to the event recording.
 CONFIGURE_RECORD_EXTENSIONS_ENABLED
 -----------------------------------
 
-CONSTANT:
-    ``CONFIGURE_RECORD_EXTENSIONS_ENABLED``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_RECORD_EXTENSIONS_ENABLED``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    In case
+This configuration option is a boolean feature define.
 
-    * this configuration option is defined
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    then the event record extensions are enabled.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    The record extensions capture thread create, start, restart, delete, switch,
-    begin, exitted and terminate events.
+In case
+
+* this configuration option is defined
+
+* and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+
+then the event record extensions are enabled.
+
+.. rubric:: NOTES:
+
+The record extensions capture thread create, start, restart, delete, switch,
+begin, exitted and terminate events.
 
 .. Generated from spec:/acfg/if/record-fatal-dump-base64
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_RECORD_FATAL_DUMP_BASE64
 
@@ -65,32 +78,41 @@ NOTES:
 CONFIGURE_RECORD_FATAL_DUMP_BASE64
 ----------------------------------
 
-CONSTANT:
-    ``CONFIGURE_RECORD_FATAL_DUMP_BASE64``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_RECORD_FATAL_DUMP_BASE64``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    In case
+This configuration option is a boolean feature define.
 
-    * this configuration option is defined
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    * and :ref:`CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB` is undefined,
+.. rubric:: DESCRIPTION:
 
-    then the event records are dumped in Base64 encoding in a fatal error
-    extension (see :ref:`Terminate`).
+In case
 
-NOTES:
-    This extension can be used to produce crash dumps.
+* this configuration option is defined
+
+* and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+
+* and :ref:`CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB` is undefined,
+
+then the event records are dumped in Base64 encoding in a fatal error
+extension (see :ref:`Terminate`).
+
+.. rubric:: NOTES:
+
+This extension can be used to produce crash dumps.
 
 .. Generated from spec:/acfg/if/record-fatal-dump-base64-zlib
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB
 
@@ -99,31 +121,40 @@ NOTES:
 CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB
 ---------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    In case
+This configuration option is a boolean feature define.
 
-    * this configuration option is defined
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    then the event records are compressed by zlib and dumped in Base64 encoding
-    in a fatal error extension (see :ref:`Terminate`).
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    The zlib compression needs about 512KiB of RAM.  This extension can be used
-    to produce crash dumps.
+In case
+
+* this configuration option is defined
+
+* and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+
+then the event records are compressed by zlib and dumped in Base64 encoding
+in a fatal error extension (see :ref:`Terminate`).
+
+.. rubric:: NOTES:
+
+The zlib compression needs about 512KiB of RAM.  This extension can be used
+to produce crash dumps.
 
 .. Generated from spec:/acfg/if/record-per-processor-items
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 
@@ -132,35 +163,40 @@ NOTES:
 CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 ------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_RECORD_PER_PROCESSOR_ITEMS``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_RECORD_PER_PROCESSOR_ITEMS``
 
-DEFAULT VALUE:
-    The default value is 0.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to 16.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be less than or equal to `SIZE_MAX
-      <https://en.cppreference.com/w/c/types/limits>`_.
+The default value is 0.
 
-    * It shall be a power of two.
+.. rubric:: DESCRIPTION:
 
-    * It shall be less than or equal to a BSP-specific and application-specific
-      value which depends on the size of the memory available to the
-      application.
+The value of this configuration option defines the event record item count
+per processor.
 
-DESCRIPTION:
-    The value of this configuration option defines the event record item count
-    per processor.
+.. rubric:: NOTES:
 
-NOTES:
-    The event record buffers are statically allocated for each configured
-    processor (:ref:`CONFIGURE_MAXIMUM_PROCESSORS`).  If the value of this
-    configuration option is zero, then nothing is allocated.
+The event record buffers are statically allocated for each configured
+processor (:ref:`CONFIGURE_MAXIMUM_PROCESSORS`).  If the value of this
+configuration option is zero, then nothing is allocated.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to 16.
+
+* The value of the configuration option shall be less than or equal to
+  `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
+
+* The value of the configuration option shall be a power of two.
+
+* The value of the configuration option shall be less than or equal to a
+  BSP-specific and application-specific value which depends on the size of the
+  memory available to the application.

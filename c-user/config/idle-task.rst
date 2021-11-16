@@ -27,6 +27,10 @@ This section describes configuration options related to the idle tasks.
 
 .. Generated from spec:/acfg/if/idle-task-body
 
+.. raw:: latex
+
+    \clearpage
+
 .. index:: CONFIGURE_IDLE_TASK_BODY
 
 .. _CONFIGURE_IDLE_TASK_BODY:
@@ -34,32 +38,42 @@ This section describes configuration options related to the idle tasks.
 CONFIGURE_IDLE_TASK_BODY
 ------------------------
 
-CONSTANT:
-    ``CONFIGURE_IDLE_TASK_BODY``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``CONFIGURE_IDLE_TASK_BODY``
 
-DEFAULT VALUE:
-    If :ref:`BSP_IDLE_TASK_BODY` is defined, then this will be the default value,
-    otherwise the default value is ``_CPU_Thread_Idle_body``.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be defined to a valid function
-    pointer of the type ``void *( *idle_body )( uintptr_t )``.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    The value of this configuration option initializes the IDLE thread body.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    IDLE threads shall not block.  A blocking IDLE thread results in undefined
-    system behaviour because the scheduler assume that at least one ready thread
-    exists.
+If :ref:`BSP_IDLE_TASK_BODY` is defined, then this will be the default value,
+otherwise the default value is ``_CPU_Thread_Idle_body``.
 
-    IDLE threads can be used to initialize the application, see configuration
-    option :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`.
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option initializes the IDLE thread body.
+
+.. rubric:: NOTES:
+
+IDLE threads shall not block.  A blocking IDLE thread results in undefined
+system behaviour because the scheduler assume that at least one ready thread
+exists.
+
+IDLE threads can be used to initialize the application, see configuration
+option :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be defined to a valid function
+pointer of the type ``void *( *idle_body )( uintptr_t )``.
 
 .. Generated from spec:/acfg/if/idle-task-init-appl
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 
@@ -68,46 +82,55 @@ NOTES:
 CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 -------------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the user is assumed to
-    provide one or more initialization tasks.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    This configuration option is defined to indicate that the user has configured
-    **no** user initialization tasks or threads and that the user provided IDLE
-    task will perform application initialization and then transform itself into
-    an IDLE task.
+This configuration option is a boolean feature define.
 
-NOTES:
-    If you use this option be careful, the user IDLE task **cannot** block at all
-    during the initialization sequence.  Further, once application
-    initialization is complete, it shall make itself preemptible and enter an idle
-    body loop.
+.. rubric:: DEFAULT CONFIGURATION:
 
-    The IDLE task shall run at the lowest priority of all tasks in the system.
+If this configuration option is undefined, then the user is assumed to
+provide one or more initialization tasks.
 
-    If this configuration option is defined, then it is mandatory to configure a
-    user IDLE task with the :ref:`CONFIGURE_IDLE_TASK_BODY` configuration option,
-    otherwise a compile time error in the configuration file will occur.
+.. rubric:: DESCRIPTION:
 
-    The application shall define exactly one of the following configuration
-    options
+This configuration option is defined to indicate that the user has configured
+**no** user initialization tasks or threads and that the user provided IDLE
+task will perform application initialization and then transform itself into
+an IDLE task.
 
-    * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+.. rubric:: NOTES:
 
-    * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+If you use this option be careful, the user IDLE task **cannot** block at all
+during the initialization sequence.  Further, once application
+initialization is complete, it shall make itself preemptible and enter an idle
+body loop.
 
-    * ``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
+The IDLE task shall run at the lowest priority of all tasks in the system.
 
-    otherwise a compile time error in the configuration file will occur.
+If this configuration option is defined, then it is mandatory to configure a
+user IDLE task with the :ref:`CONFIGURE_IDLE_TASK_BODY` configuration option,
+otherwise a compile time error in the configuration file will occur.
+
+The application shall define exactly one of the following configuration
+options
+
+* :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+
+* :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+
+* ``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
+
+otherwise a compile time error in the configuration file will occur.
 
 .. Generated from spec:/acfg/if/idle-task-stack-size
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_IDLE_TASK_STACK_SIZE
 
@@ -116,30 +139,36 @@ NOTES:
 CONFIGURE_IDLE_TASK_STACK_SIZE
 ------------------------------
 
-CONSTANT:
-    ``CONFIGURE_IDLE_TASK_STACK_SIZE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_IDLE_TASK_STACK_SIZE``
 
-DEFAULT VALUE:
-    The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to a BSP-specific and
-      application-specific minimum value.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be small enough so that the IDLE task stack area calculation
-      carried out by ``<rtems/confdefs.h>`` does not overflow an integer of
-      type `size_t <https://en.cppreference.com/w/c/types/size_t>`_.
+The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
-DESCRIPTION:
-    The value of this configuration option defines the task stack size for an
-    IDLE task.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    In SMP configurations, there is one IDLE task per configured processor, see
-    :ref:`CONFIGURE_MAXIMUM_PROCESSORS`.
+The value of this configuration option defines the task stack size for an
+IDLE task.
+
+.. rubric:: NOTES:
+
+In SMP configurations, there is one IDLE task per configured processor, see
+:ref:`CONFIGURE_MAXIMUM_PROCESSORS`.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to a
+  BSP-specific and application-specific minimum value.
+
+* The value of the configuration option shall be small enough so that the IDLE
+  task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
+  overflow an integer of type `size_t
+  <https://en.cppreference.com/w/c/types/size_t>`_.

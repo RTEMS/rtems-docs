@@ -28,6 +28,10 @@ initialization task.
 
 .. Generated from spec:/acfg/if/init-task-arguments
 
+.. raw:: latex
+
+    \clearpage
+
 .. index:: CONFIGURE_INIT_TASK_ARGUMENTS
 
 .. _CONFIGURE_INIT_TASK_ARGUMENTS:
@@ -35,27 +39,33 @@ initialization task.
 CONFIGURE_INIT_TASK_ARGUMENTS
 -----------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_ARGUMENTS``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_ARGUMENTS``
 
-DEFAULT VALUE:
-    The default value is 0.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be convertible to an integer
-    of type :c:type:`rtems_task_argument`.
+This configuration option is an integer define.
 
-DESCRIPTION:
-    The value of this configuration option defines task argument of the Classic
-    API initialization task.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    None.
+The default value is 0.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option defines task argument of the Classic
+API initialization task.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be convertible to an integer of
+type :c:type:`rtems_task_argument`.
 
 .. Generated from spec:/acfg/if/init-task-attributes
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_ATTRIBUTES
 
@@ -64,26 +74,32 @@ NOTES:
 CONFIGURE_INIT_TASK_ATTRIBUTES
 ------------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_ATTRIBUTES``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_ATTRIBUTES``
 
-DEFAULT VALUE:
-    The default value is :c:macro:`RTEMS_DEFAULT_ATTRIBUTES`.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be a valid task attribute set.
+This configuration option is an integer define.
 
-DESCRIPTION:
-    The value of this configuration option defines the task attributes of the
-    Classic API initialization task.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    None.
+The default value is :c:macro:`RTEMS_DEFAULT_ATTRIBUTES`.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option defines the task attributes of the
+Classic API initialization task.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a valid task attribute set.
 
 .. Generated from spec:/acfg/if/init-task-construct-storage-size
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE
 
@@ -92,59 +108,69 @@ NOTES:
 CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE
 ------------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE``
 
-DEFAULT VALUE:
-    This configuration option has no default value.  If it is not specified, then
-    the Classic API initialization task will be created with the stack size
-    defined by the :ref:`CONFIGURE_INIT_TASK_STACK_SIZE` configuration option.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to
-      :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be defined using :c:func:`RTEMS_TASK_STORAGE_SIZE`.
+This configuration option has no default value.  If it is not specified, then
+the Classic API initialization task will be created with the stack size
+defined by the :ref:`CONFIGURE_INIT_TASK_STACK_SIZE` configuration option.
 
-DESCRIPTION:
-    The value of this configuration option defines the task storage size of the
-    Classic API initialization task.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    If this configuration option is specified, then
+The value of this configuration option defines the task storage size of the
+Classic API initialization task.
 
-    * a task storage area of the specified size is statically allocated by
-      ``<rtems/confdefs.h>`` for the Classic API initialization task,
+.. rubric:: NOTES:
 
-    * the Classic API initialization task is constructed by
-      :c:func:`rtems_task_construct` instead of using
-      :c:func:`rtems_task_create`,
+If this configuration option is specified, then
 
-    * the maximum thread-local storage size defined by
-      :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic API
-      initialization task,
+* a task storage area of the specified size is statically allocated by
+  ``<rtems/confdefs.h>`` for the Classic API initialization task,
 
-    * the Classic API initialization task should be accounted for in
-      :ref:`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE`, and
+* the Classic API initialization task is constructed by
+  :c:func:`rtems_task_construct` instead of using
+  :c:func:`rtems_task_create`,
 
-    * the task storage area used for the Classic API initialization task is not
-      reclaimed by the system if the task is deleted.
+* the maximum thread-local storage size defined by
+  :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic API
+  initialization task,
 
-    The
+* the Classic API initialization task should be accounted for in
+  :ref:`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE`, and
 
-    * :ref:`CONFIGURE_INIT_TASK_STACK_SIZE` and
+* the task storage area used for the Classic API initialization task is not
+  reclaimed by the system if the task is deleted.
 
-    * ``CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE``
+The
 
-    configuration options are mutually exclusive.
+* :ref:`CONFIGURE_INIT_TASK_STACK_SIZE` and
+
+* ``CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE``
+
+configuration options are mutually exclusive.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to
+  :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+* The value of the configuration option shall be defined using
+  :c:func:`RTEMS_TASK_STORAGE_SIZE`.
 
 .. Generated from spec:/acfg/if/init-task-entrypoint
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_ENTRY_POINT
 
@@ -153,28 +179,38 @@ NOTES:
 CONFIGURE_INIT_TASK_ENTRY_POINT
 -------------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_ENTRY_POINT``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``CONFIGURE_INIT_TASK_ENTRY_POINT``
 
-DEFAULT VALUE:
-    The default value is ``Init``.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be defined to a valid function
-    pointer of the type ``void ( *entry_point )( rtems_task_argument )``.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    The value of this configuration option initializes the entry point of the
-    Classic API initialization task.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    The application shall provide the function referenced by this configuration
-    option.
+The default value is ``Init``.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option initializes the entry point of the
+Classic API initialization task.
+
+.. rubric:: NOTES:
+
+The application shall provide the function referenced by this configuration
+option.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be defined to a valid function
+pointer of the type ``void ( *entry_point )( rtems_task_argument )``.
 
 .. Generated from spec:/acfg/if/init-task-initial-modes
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_INITIAL_MODES
 
@@ -183,27 +219,33 @@ NOTES:
 CONFIGURE_INIT_TASK_INITIAL_MODES
 ---------------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_INITIAL_MODES``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_INITIAL_MODES``
 
-DEFAULT VALUE:
-    In SMP  configurations, the default value is :c:macro:`RTEMS_DEFAULT_MODES`
-    otherwise the default value is :c:macro:`RTEMS_NO_PREEMPT`.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be a valid task mode set.
+This configuration option is an integer define.
 
-DESCRIPTION:
-    The value of this configuration option defines the initial execution mode of
-    the Classic API initialization task.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    None.
+In SMP  configurations, the default value is :c:macro:`RTEMS_DEFAULT_MODES`
+otherwise the default value is :c:macro:`RTEMS_NO_PREEMPT`.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option defines the initial execution mode of
+the Classic API initialization task.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a valid task mode set.
 
 .. Generated from spec:/acfg/if/init-task-name
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_NAME
 
@@ -212,27 +254,37 @@ NOTES:
 CONFIGURE_INIT_TASK_NAME
 ------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_NAME``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_NAME``
 
-DEFAULT VALUE:
-    The default value is ``rtems_build_name( 'U', 'I', '1', ' ' )``.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be convertible to an integer
-    of type :c:type:`rtems_name`.
+This configuration option is an integer define.
 
-DESCRIPTION:
-    The value of this configuration option defines the name of the Classic API
-    initialization task.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    Use :c:func:`rtems_build_name` to define the task name.
+The default value is ``rtems_build_name( 'U', 'I', '1', ' ' )``.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option defines the name of the Classic API
+initialization task.
+
+.. rubric:: NOTES:
+
+Use :c:func:`rtems_build_name` to define the task name.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be convertible to an integer of
+type :c:type:`rtems_name`.
 
 .. Generated from spec:/acfg/if/init-task-priority
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_PRIORITY
 
@@ -241,28 +293,34 @@ NOTES:
 CONFIGURE_INIT_TASK_PRIORITY
 ----------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_PRIORITY``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_PRIORITY``
 
-DEFAULT VALUE:
-    The default value is 1.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be a valid Classic API task
-    priority.  The set of valid task priorities depends on the scheduler
-    configuration.
+This configuration option is an integer define.
 
-DESCRIPTION:
-    The value of this configuration option defines the initial priority of the
-    Classic API initialization task.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    None.
+The default value is 1.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option defines the initial priority of the
+Classic API initialization task.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a valid Classic API task
+priority.  The set of valid task priorities depends on the scheduler
+configuration.
 
 .. Generated from spec:/acfg/if/init-task-stack-size
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_INIT_TASK_STACK_SIZE
 
@@ -271,40 +329,50 @@ NOTES:
 CONFIGURE_INIT_TASK_STACK_SIZE
 ------------------------------
 
-CONSTANT:
-    ``CONFIGURE_INIT_TASK_STACK_SIZE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_INIT_TASK_STACK_SIZE``
 
-DEFAULT VALUE:
-    The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to
-      :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be small enough so that the task stack space calculation carried
-      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
-      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
-DESCRIPTION:
-    The value of this configuration option defines the task stack size of the
-    Classic API initialization task.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    The
+The value of this configuration option defines the task stack size of the
+Classic API initialization task.
 
-    * ``CONFIGURE_INIT_TASK_STACK_SIZE`` and
+.. rubric:: NOTES:
 
-    * :ref:`CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE`
+The
 
-    configuration options are mutually exclusive.
+* ``CONFIGURE_INIT_TASK_STACK_SIZE`` and
+
+* :ref:`CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE`
+
+configuration options are mutually exclusive.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to
+  :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+* The value of the configuration option shall be small enough so that the task
+  stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+  overflow an integer of type `uintptr_t
+  <https://en.cppreference.com/w/c/types/integer>`_.
 
 .. Generated from spec:/acfg/if/rtems-init-tasks-table
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_RTEMS_INIT_TASKS_TABLE
 
@@ -313,28 +381,33 @@ NOTES:
 CONFIGURE_RTEMS_INIT_TASKS_TABLE
 --------------------------------
 
-CONSTANT:
-    ``CONFIGURE_RTEMS_INIT_TASKS_TABLE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_RTEMS_INIT_TASKS_TABLE``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    In case this configuration option is defined, then exactly one Classic API
-    initialization task is configured.
+This configuration option is a boolean feature define.
 
-NOTES:
-    The application shall define exactly one of the following configuration
-    options
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * ``CONFIGURE_RTEMS_INIT_TASKS_TABLE``,
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    * :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+.. rubric:: DESCRIPTION:
 
-    * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+In case this configuration option is defined, then exactly one Classic API
+initialization task is configured.
 
-    otherwise a compile time error in the configuration file will occur.
+.. rubric:: NOTES:
+
+The application shall define exactly one of the following configuration
+options
+
+* ``CONFIGURE_RTEMS_INIT_TASKS_TABLE``,
+
+* :ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+
+* :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+
+otherwise a compile time error in the configuration file will occur.

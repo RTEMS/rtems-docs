@@ -28,6 +28,10 @@ initialization thread.
 
 .. Generated from spec:/acfg/if/posix-init-thread-entry-point
 
+.. raw:: latex
+
+    \clearpage
+
 .. index:: CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 
 .. _CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT:
@@ -35,28 +39,38 @@ initialization thread.
 CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 ---------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an initializer define.
+``CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT``
 
-DEFAULT VALUE:
-    The default value is ``POSIX_Init``.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall be defined to a valid function
-    pointer of the type ``void *( *entry_point )( void * )``.
+This configuration option is an initializer define.
 
-DESCRIPTION:
-    The value of this configuration option initializes the entry point of the
-    POSIX API initialization thread.
+.. rubric:: DEFAULT VALUE:
 
-NOTES:
-    The application shall provide the function referenced by this configuration
-    option.
+The default value is ``POSIX_Init``.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option initializes the entry point of the
+POSIX API initialization thread.
+
+.. rubric:: NOTES:
+
+The application shall provide the function referenced by this configuration
+option.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be defined to a valid function
+pointer of the type ``void *( *entry_point )( void * )``.
 
 .. Generated from spec:/acfg/if/posix-init-thread-stack-size
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 
@@ -65,34 +79,40 @@ NOTES:
 CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 --------------------------------------
 
-CONSTANT:
-    ``CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is an integer define.
+``CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE``
 
-DEFAULT VALUE:
-    The default value is :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE`.
+.. rubric:: OPTION TYPE:
 
-VALUE CONSTRAINTS:
-    The value of this configuration option shall satisfy all of the following
-    constraints:
+This configuration option is an integer define.
 
-    * It shall be greater than or equal to
-      :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+.. rubric:: DEFAULT VALUE:
 
-    * It shall be small enough so that the task stack space calculation carried
-      out by ``<rtems/confdefs.h>`` does not overflow an integer of type
-      `uintptr_t <https://en.cppreference.com/w/c/types/integer>`_.
+The default value is :ref:`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE`.
 
-DESCRIPTION:
-    The value of this configuration option defines the thread stack size of the
-    POSIX API initialization thread.
+.. rubric:: DESCRIPTION:
 
-NOTES:
-    None.
+The value of this configuration option defines the thread stack size of the
+POSIX API initialization thread.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be greater than or equal to
+  :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
+* The value of the configuration option shall be small enough so that the task
+  stack space calculation carried out by ``<rtems/confdefs.h>`` does not
+  overflow an integer of type `uintptr_t
+  <https://en.cppreference.com/w/c/types/integer>`_.
 
 .. Generated from spec:/acfg/if/posix-init-thread-table
+
+.. raw:: latex
+
+    \clearpage
 
 .. index:: CONFIGURE_POSIX_INIT_THREAD_TABLE
 
@@ -101,28 +121,33 @@ NOTES:
 CONFIGURE_POSIX_INIT_THREAD_TABLE
 ---------------------------------
 
-CONSTANT:
-    ``CONFIGURE_POSIX_INIT_THREAD_TABLE``
+.. rubric:: CONSTANT:
 
-OPTION TYPE:
-    This configuration option is a boolean feature define.
+``CONFIGURE_POSIX_INIT_THREAD_TABLE``
 
-DEFAULT CONFIGURATION:
-    If this configuration option is undefined, then the described feature is not
-    enabled.
+.. rubric:: OPTION TYPE:
 
-DESCRIPTION:
-    In case this configuration option is defined, then exactly one POSIX
-    initialization thread is configured.
+This configuration option is a boolean feature define.
 
-NOTES:
-    The application shall define exactly one of the following configuration
-    options
+.. rubric:: DEFAULT CONFIGURATION:
 
-    * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+If this configuration option is undefined, then the described feature is not
+enabled.
 
-    * ``CONFIGURE_POSIX_INIT_THREAD_TABLE``, or
+.. rubric:: DESCRIPTION:
 
-    * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+In case this configuration option is defined, then exactly one POSIX
+initialization thread is configured.
 
-    otherwise a compile time error in the configuration file will occur.
+.. rubric:: NOTES:
+
+The application shall define exactly one of the following configuration
+options
+
+* :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+
+* ``CONFIGURE_POSIX_INIT_THREAD_TABLE``, or
+
+* :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
+
+otherwise a compile time error in the configuration file will occur.
