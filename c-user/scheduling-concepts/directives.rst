@@ -683,9 +683,12 @@ scheduler specified by ``scheduler_id``.
     The processor was not owned by the scheduler.
 
 :c:macro:`RTEMS_RESOURCE_IN_USE`
-    The set of processors owned by the scheduler would have been empty after
-    the processor removal and there was at least one non-idle task that used
-    this scheduler as its :term:`home scheduler`.
+    The processor was required by at least one non-idle task that used the
+    scheduler as its :term:`home scheduler`.
+
+:c:macro:`RTEMS_RESOURCE_IN_USE`
+    The processor was the last processor owned by the scheduler and there was
+    at least one task that used the scheduler as a :term:`helping scheduler`.
 
 .. rubric:: NOTES:
 
