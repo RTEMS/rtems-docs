@@ -89,8 +89,8 @@ OPTION TYPE:
 DEFAULT VALUE:
     The default value is
     :ref:`CONFIGURE_MAXIMUM_POSIX_KEYS` *
-    :ref:`CONFIGURE_MAXIMUM_TASKS` +
-    :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS`.
+    ( :ref:`CONFIGURE_MAXIMUM_TASKS` +
+    :ref:`CONFIGURE_MAXIMUM_POSIX_THREADS` ).
 
 VALUE CONSTRAINTS:
     The value of this configuration option shall satisfy all of the following
