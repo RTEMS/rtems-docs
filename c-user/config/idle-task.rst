@@ -48,8 +48,11 @@ This configuration option is an initializer define.
 
 .. rubric:: DEFAULT VALUE:
 
-If :ref:`BSP_IDLE_TASK_BODY` is defined, then this will be the default value,
-otherwise the default value is ``_CPU_Thread_Idle_body``.
+If the :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
+:c:macro:`BSP_IDLE_TASK_BODY` is provided by the
+:term:`BSP`, then the default value is defined by
+:c:macro:`BSP_IDLE_TASK_BODY`, otherwise the default value is
+``_CPU_Thread_Idle_body``.
 
 .. rubric:: DESCRIPTION:
 
@@ -63,6 +66,11 @@ exists.
 
 IDLE threads can be used to initialize the application, see configuration
 option :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`.
+
+The BSP may have knowledge of the specific CPU model, system controller
+logic, and peripheral buses, so a BSP-specific IDLE task may be capable of
+turning components off to save power during extended periods of no task
+activity.
 
 .. rubric:: CONSTRAINTS:
 
@@ -149,7 +157,11 @@ This configuration option is an integer define.
 
 .. rubric:: DEFAULT VALUE:
 
-The default value is :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+If the :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
+:c:macro:`BSP_IDLE_TASK_STACK_SIZE` is provided by the
+:term:`BSP`, then the default value is defined by
+:c:macro:`BSP_IDLE_TASK_STACK_SIZE`, otherwise the default value is
+defined by the :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` configuration option.
 
 .. rubric:: DESCRIPTION:
 

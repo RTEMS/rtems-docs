@@ -67,6 +67,55 @@ memory is first dirtied and then zeroed.
 
 See also :ref:`CONFIGURE_MALLOC_DIRTY`.
 
+.. Generated from spec:/acfg/if/disable-bsp-settings
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: CONFIGURE_DISABLE_BSP_SETTINGS
+
+.. _CONFIGURE_DISABLE_BSP_SETTINGS:
+
+CONFIGURE_DISABLE_BSP_SETTINGS
+------------------------------
+
+.. rubric:: CONSTANT:
+
+``CONFIGURE_DISABLE_BSP_SETTINGS``
+
+.. rubric:: OPTION TYPE:
+
+This configuration option is a boolean feature define.
+
+.. rubric:: DEFAULT CONFIGURATION:
+
+If this configuration option is undefined, then the described feature is not
+enabled.
+
+.. rubric:: DESCRIPTION:
+
+In case this configuration option is defined, then the optional BSP provided
+settings listed below are disabled.
+
+The optional BSP provided default values for the following application
+configuration options are disabled:
+
+* :ref:`CONFIGURE_IDLE_TASK_BODY`
+
+* :ref:`CONFIGURE_IDLE_TASK_STACK_SIZE`
+
+* :ref:`CONFIGURE_INTERRUPT_STACK_SIZE`
+
+The optional BSP provided initial extension set is disabled (see
+:term:`initial extension sets`).  The optional BSP provided
+prerequisite IO device drivers are disabled (see
+Device Driver Configuration).  The optional BSP provided support for
+:c:func:`sbrk` is disabled.
+
+This configuration option provides an all or nothing choice with respect to
+the optional BSP provided settings.
+
 .. Generated from spec:/acfg/if/disable-newlib-reentrancy
 
 .. raw:: latex
@@ -237,8 +286,8 @@ initial user extensions.
 .. rubric:: NOTES:
 
 The value of this configuration option is placed before the entries of
-:ref:`BSP_INITIAL_EXTENSION` and after the entries of all other initial
-user extensions.
+:c:macro:`BSP_INITIAL_EXTENSION` and after the entries of all other
+initial user extensions.
 
 .. rubric:: CONSTRAINTS:
 
@@ -269,8 +318,11 @@ This configuration option is an integer define.
 
 .. rubric:: DEFAULT VALUE:
 
-The default value is :ref:`BSP_INTERRUPT_STACK_SIZE` in case it is defined,
-otherwise the default value is :c:macro:`CPU_STACK_MINIMUM_SIZE`.
+If the :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
+:c:macro:`BSP_INTERRUPT_STACK_SIZE` is provided by the
+:term:`BSP`, then the default value is defined by
+:c:macro:`BSP_INTERRUPT_STACK_SIZE`, otherwise the default value is
+:c:macro:`CPU_STACK_MINIMUM_SIZE`.
 
 .. rubric:: DESCRIPTION:
 

@@ -709,7 +709,7 @@ Driver Table.
 .. rubric:: NOTES:
 
 The value of this configuration option is placed after the entries defined by
-:ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device driver
+:c:macro:`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device driver
 configuration options.
 
 See :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
@@ -858,7 +858,10 @@ options:
 
 * :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
 
-* :ref:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`
+If the :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
+the :term:`BSP` provides
+:c:macro:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`, then the BSP-provided
+prerequisite device drivers are also taken into account.
 
 .. rubric:: DESCRIPTION:
 
