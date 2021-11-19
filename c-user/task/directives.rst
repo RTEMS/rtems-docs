@@ -484,8 +484,8 @@ Identifies a task by the object name.
 This directive obtains a task identifier associated with the task name
 specified in ``name``.
 
-A task may obtain its own identifier by specifying :c:macro:`RTEMS_SELF` for
-the name.
+A task may obtain its own identifier by specifying :c:macro:`RTEMS_WHO_AM_I`
+for the name.
 
 The node to search is specified in ``node``.  It shall be
 
