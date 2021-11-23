@@ -255,9 +255,9 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.  Alternatively, the
+time in the highest resolution available to the system.  Alternatively, the
 :ref:`InterfaceRtemsClockGetRealtimeCoarse` directive may be used to get the
-time with less precision and less runtime overhead.
+time in a lower resolution and with less runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetRealtimeBintime` and
 :ref:`InterfaceRtemsClockGetRealtimeTimeval` to get the time in alternative
@@ -307,9 +307,9 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.  Alternatively, the
+time in the highest resolution available to the system.  Alternatively, the
 :ref:`InterfaceRtemsClockGetRealtimeCoarseBintime` directive may be used to get
-the time with less precision and less runtime overhead.
+the time in a lower resolution and with less runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetRealtime` and
 :ref:`InterfaceRtemsClockGetRealtimeTimeval` to get the time in alternative
@@ -360,9 +360,9 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.  Alternatively, the
+time in the highest resolution available to the system.  Alternatively, the
 :ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` directive may be used to get
-the time with less precision and less runtime overhead.
+the time in a lower resolution and with less runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetRealtime` and
 :ref:`InterfaceRtemsClockGetRealtimeBintime` to get the time in alternative
@@ -392,7 +392,7 @@ rtems_clock_get_realtime_coarse()
 ---------------------------------
 
 Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in coarse precision in seconds and nanoseconds format.
+:term:`CLOCK_REALTIME` in coarse resolution in seconds and nanoseconds format.
 
 .. rubric:: CALLING SEQUENCE:
 
@@ -415,8 +415,8 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 
 The directive does not access a device to get the time.  It uses a recent
 snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtime` directive may be used to get the time
-with higher precision and higher runtime overhead.
+:ref:`InterfaceRtemsClockGetRealtime` directive may be used to get the time in
+a higher resolution and with a higher runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetRealtimeCoarseBintime` and
 :ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
@@ -446,7 +446,7 @@ rtems_clock_get_realtime_coarse_bintime()
 -----------------------------------------
 
 Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in coarse precision in binary time format.
+:term:`CLOCK_REALTIME` in coarse resolution in binary time format.
 
 .. rubric:: CALLING SEQUENCE:
 
@@ -469,7 +469,7 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 The directive does not access a device to get the time.  It uses a recent
 snapshot provided by the :term:`Clock Driver`.  Alternatively, the
 :ref:`InterfaceRtemsClockGetRealtimeBintime` directive may be used to get the
-time with higher precision and higher runtime overhead.
+time in a higher resolution and with a higher runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetRealtimeCoarse` and
 :ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
@@ -499,7 +499,7 @@ rtems_clock_get_realtime_coarse_timeval()
 -----------------------------------------
 
 Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in coarse precision in seconds and microseconds format.
+:term:`CLOCK_REALTIME` in coarse resolution in seconds and microseconds format.
 
 .. rubric:: CALLING SEQUENCE:
 
@@ -523,7 +523,7 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 The directive does not access a device to get the time.  It uses a recent
 snapshot provided by the :term:`Clock Driver`.  Alternatively, the
 :ref:`InterfaceRtemsClockGetRealtimeTimeval` directive may be used to get the
-time with higher precision and higher runtime overhead.
+time in a higher resolution and with a higher runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetRealtimeCoarse` and
 :ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
@@ -574,9 +574,9 @@ the :term:`CLOCK_MONOTONIC` in seconds and nanoseconds format.
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.  Alternatively, the
+time in the highest resolution available to the system.  Alternatively, the
 :ref:`InterfaceRtemsClockGetMonotonicCoarse` directive may be used to get the
-time with less precision and less runtime overhead.
+time with in a lower resolution and with less runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetMonotonicBintime`,
 :ref:`InterfaceRtemsClockGetMonotonicSbintime`, and
@@ -628,9 +628,9 @@ the :term:`CLOCK_MONOTONIC` in binary time format.
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.  Alternatively, the
+time in the highest resolution available to the system.  Alternatively, the
 :ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` directive may be used to
-get the time with less precision and less runtime overhead.
+get the time in a lower resolution and with less runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetMonotonic`,
 :ref:`InterfaceRtemsClockGetMonotonicSbintime`, and
@@ -677,7 +677,7 @@ the :term:`CLOCK_MONOTONIC` at some time point during the directive call.
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.
+time in the highest resolution available to the system.
 
 See :ref:`InterfaceRtemsClockGetMonotonic`,
 :ref:`InterfaceRtemsClockGetMonotonicBintime`, and
@@ -729,9 +729,9 @@ the :term:`CLOCK_MONOTONIC` in seconds and microseconds format.
 .. rubric:: NOTES:
 
 The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest precision available to the system.  Alternatively, the
+time in the highest resolution available to the system.  Alternatively, the
 :ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` directive may be used to
-get the time with less precision and less runtime overhead.
+get the time in a lower resolution and with less runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetMonotonic`,
 :ref:`InterfaceRtemsClockGetMonotonicBintime`, and
@@ -762,7 +762,7 @@ rtems_clock_get_monotonic_coarse()
 ----------------------------------
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in coarse precision in seconds and nanoseconds
+the :term:`CLOCK_MONOTONIC` in coarse resolution in seconds and nanoseconds
 format.
 
 .. rubric:: CALLING SEQUENCE:
@@ -785,8 +785,8 @@ format.
 
 The directive does not access a device to get the time.  It uses a recent
 snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonic` directive may be used to get the time
-with higher precision and higher runtime overhead.
+:ref:`InterfaceRtemsClockGetMonotonic` directive may be used to get the time in
+a higher resolution and with a higher runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` and
 :ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` to get the time in
@@ -816,7 +816,7 @@ rtems_clock_get_monotonic_coarse_bintime()
 ------------------------------------------
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in coarse precision in binary time format.
+the :term:`CLOCK_MONOTONIC` in coarse resolution in binary time format.
 
 .. rubric:: CALLING SEQUENCE:
 
@@ -839,7 +839,7 @@ the :term:`CLOCK_MONOTONIC` in coarse precision in binary time format.
 The directive does not access a device to get the time.  It uses a recent
 snapshot provided by the :term:`Clock Driver`.  Alternatively, the
 :ref:`InterfaceRtemsClockGetMonotonicBintime` directive may be used to get the
-time with higher precision and higher runtime overhead.
+time in a higher resolution and with a higher runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetMonotonicCoarse` and
 :ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` to get the time in
@@ -869,7 +869,7 @@ rtems_clock_get_monotonic_coarse_timeval()
 ------------------------------------------
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in coarse precision in seconds and microseconds
+the :term:`CLOCK_MONOTONIC` in coarse resolution in seconds and microseconds
 format.
 
 .. rubric:: CALLING SEQUENCE:
@@ -893,7 +893,7 @@ format.
 The directive does not access a device to get the time.  It uses a recent
 snapshot provided by the :term:`Clock Driver`.  Alternatively, the
 :ref:`InterfaceRtemsClockGetMonotonicTimeval` directive may be used to get the
-time with higher precision and higher runtime overhead.
+time in a higher resolution and with a higher runtime overhead.
 
 See :ref:`InterfaceRtemsClockGetMonotonicCoarse` and
 :ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` to get the time in

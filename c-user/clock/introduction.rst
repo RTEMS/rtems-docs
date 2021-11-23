@@ -81,16 +81,16 @@ capabilities. The directives provided by the Clock Manager are:
   microseconds format.
 
 * :ref:`InterfaceRtemsClockGetRealtimeCoarse` - Gets the time elapsed since the
-  :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse precision
+  :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse resolution
   in seconds and nanoseconds format.
 
 * :ref:`InterfaceRtemsClockGetRealtimeCoarseBintime` - Gets the time elapsed
   since the :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse
-  precision in binary time format.
+  resolution in binary time format.
 
 * :ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` - Gets the time elapsed
   since the :term:`Unix epoch` measured using :term:`CLOCK_REALTIME` in coarse
-  precision in seconds and microseconds format.
+  resolution in seconds and microseconds format.
 
 * :ref:`InterfaceRtemsClockGetMonotonic` - Gets the time elapsed since some
   fixed time point in the past measured using the :term:`CLOCK_MONOTONIC` in
@@ -110,15 +110,15 @@ capabilities. The directives provided by the Clock Manager are:
 
 * :ref:`InterfaceRtemsClockGetMonotonicCoarse` - Gets the time elapsed since
   some fixed time point in the past measured using the :term:`CLOCK_MONOTONIC`
-  in coarse precision in seconds and nanoseconds format.
+  in coarse resolution in seconds and nanoseconds format.
 
 * :ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` - Gets the time elapsed
   since some fixed time point in the past measured using the
-  :term:`CLOCK_MONOTONIC` in coarse precision in binary time format.
+  :term:`CLOCK_MONOTONIC` in coarse resolution in binary time format.
 
 * :ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` - Gets the time elapsed
   since some fixed time point in the past measured using the
-  :term:`CLOCK_MONOTONIC` in coarse precision in seconds and microseconds
+  :term:`CLOCK_MONOTONIC` in coarse resolution in seconds and microseconds
   format.
 
 * :ref:`InterfaceRtemsClockGetBootTime` - Gets the time elapsed since the
