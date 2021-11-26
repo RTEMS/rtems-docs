@@ -285,11 +285,11 @@ Special Registers
 ~~~~~~~~~~~~~~~~~
 
 The SPARC architecture includes two special registers which are critical to the
-programming model: the Processor State Register (psr) and the Window Invalid
-Mask (wim).  The psr contains the condition codes, processor interrupt level,
+programming model: the Processor State Register (``PSR``) and the Window Invalid
+Mask (``WIM``).  The ``PSR`` contains the condition codes, processor interrupt level,
 trap enable bit, supervisor mode and previous supervisor mode bits, version
 information, floating point unit and coprocessor enable bits, and the current
-window pointer (cwp).  The cwp field of the psr and wim register are used to
+window pointer (``CWP``).  The ``CWP`` field of the ``PSR`` and ``WIM`` register are used to
 manage the register windows in the SPARC architecture.  The register windows
 are discussed in more detail below.
 
@@ -330,15 +330,15 @@ underflow condition must be handled in software by a trap handler.  The window
 underflow trap handler is responsible for reloading the contents of the
 register window requested by the restore instruction from the program stack.
 
-The Window Invalid Mask (wim) and the Current Window Pointer (cwp) field in the
-psr are used in conjunction to manage the finite set of register windows and
-detect the window overflow and underflow conditions.  The cwp contains the
+The Window Invalid Mask (``WIM``) and the Current Window Pointer (``CWP``) field in the
+``PSR`` are used in conjunction to manage the finite set of register windows and
+detect the window overflow and underflow conditions.  The ``CWP`` contains the
 index of the register window currently in use.  The save instruction decrements
-the cwp modulo the number of register windows.  Similarly, the restore
-instruction increments the cwp modulo the number of register windows.  Each bit
-in the wim represents represents whether a register window contains valid
+the ``CWP`` modulo the number of register windows.  Similarly, the restore
+instruction increments the ``CWP`` modulo the number of register windows.  Each bit
+in the ``WIM`` represents represents whether a register window contains valid
 information.  The value of 0 indicates the register window is valid and 1
-indicates it is invalid.  When a save instruction causes the cwp to point to a
+indicates it is invalid.  When a save instruction causes the ``CWP`` to point to a
 register window which is marked as invalid, a window overflow condition
 results.  Conversely, the restore instruction may result in a window underflow
 condition.
@@ -346,8 +346,8 @@ condition.
 Other than the assumption that a register window is always available for trap
 (i.e. interrupt) handlers, the SPARC architecture places no limits on the
 number of register windows simultaneously marked as invalid (i.e. number of
-bits set in the wim).  However, RTEMS assumes that only one register window is
-marked invalid at a time (i.e. only one bit set in the wim).  This makes the
+bits set in the ``WIM``).  However, RTEMS assumes that only one register window is
+marked invalid at a time (i.e. only one bit set in the ``WIM``).  This makes the
 maximum possible number of register windows available to the user while still
 meeting the requirement that window overflow and underflow conditions can be
 detected.
@@ -356,7 +356,7 @@ The window overflow and window underflow trap handlers are a critical part of
 the run-time environment for a SPARC application.  The SPARC architectural
 specification allows for the number of register windows to be any power of two
 less than or equal to 32.  The most common choice for SPARC implementations
-appears to be 8 register windows.  This results in the cwp ranging in value
+appears to be 8 register windows.  This results in the ``CWP`` ranging in value
 from 0 to 7 on most implementations.
 
 The second complicating factor is the sharing of registers between adjacent
@@ -569,25 +569,25 @@ Vectoring of Interrupt Handler
 Upon receipt of an interrupt the SPARC automatically performs the following
 actions:
 
-- disables traps (sets the ET bit of the psr to 0),
+- disables traps (sets the ET bit of the ``PSR`` to 0),
 
-- the S bit of the psr is copied into the Previous Supervisor Mode (PS) bit of
-  the psr,
+- the S bit of the ``PSR`` is copied into the Previous Supervisor Mode (PS) bit of
+  the ``PSR``,
 
-- the cwp is decremented by one (modulo the number of register windows) to
+- the ``CWP`` is decremented by one (modulo the number of register windows) to
   activate a trap window,
 
 - the PC and nPC are loaded into local register 1 and 2 (l0 and l1),
 
-- the trap type (tt) field of the Trap Base Register (TBR) is set to the
+- the trap type (tt) field of the Trap Base Register (``TBR``) is set to the
   appropriate value, and
 
 - if the trap is not a reset, then the PC is written with the contents of the
-  TBR and the nPC is written with TBR + 4.  If the trap is a reset, then the PC
+  ``TBR`` and the nPC is written with ``TBR`` + 4.  If the trap is a reset, then the PC
   is set to zero and the nPC is set to 4.
 
 Trap processing on the SPARC has two features which are noticeably different
-than interrupt processing on other architectures.  First, the value of psr
+than interrupt processing on other architectures.  First, the value of ``PSR``
 register in effect immediately before the trap occurred is not explicitly
 saved.  Instead only reversible alterations are made to it.  Second, the
 Processor Interrupt Level (pil) is not set to correspond to that of the
@@ -764,27 +764,27 @@ An RTEMS based application is initiated or re-initiated when the SPARC
 processor is reset.  When the SPARC is reset, the processor performs the
 following actions:
 
-- the enable trap (ET) of the psr is set to 0 to disable traps,
+- the enable trap (ET) of the ``PSR`` is set to 0 to disable traps,
 
-- the supervisor bit (S) of the psr is set to 1 to enter supervisor mode, and
+- the supervisor bit (S) of the ``PSR`` is set to 1 to enter supervisor mode, and
 
 - the PC is set 0 and the nPC is set to 4.
 
 The processor then begins to execute the code at location 0.  It is important
-to note that all fields in the psr are not explicitly set by the above steps
+to note that all fields in the ``PSR`` are not explicitly set by the above steps
 and all other registers retain their value from the previous execution mode.
-This is true even of the Trap Base Register (TBR) whose contents reflect the
+This is true even of the Trap Base Register (``TBR``) whose contents reflect the
 last trap which occurred before the reset.
 
 Processor Initialization
 ------------------------
 
 It is the responsibility of the application's initialization code to initialize
-the TBR and install trap handlers for at least the register window overflow and
+the ``TBR`` and install trap handlers for at least the register window overflow and
 register window underflow conditions.  Traps should be enabled before invoking
 any subroutines to allow for register window management.  However, interrupts
 should be disabled by setting the Processor Interrupt Level (pil) field of the
-psr to 15.  RTEMS installs it's own Trap Table as part of initialization which
+``PSR`` to 15.  RTEMS installs it's own Trap Table as part of initialization which
 is initialized with the contents of the Trap Table in place when the
 ``rtems_initialize_executive`` directive was invoked.  Upon completion of
 executive initialization, interrupts are enabled.
