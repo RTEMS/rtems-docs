@@ -25,7 +25,7 @@ to that processor.
 **SPARC Architecture Documents**
 
 For information on the SPARC architecture, refer to the following documents
-available from SPARC International, Inc.  (http://www.sparc.com):
+available from SPARC International, Inc.  (`<https://sparc.org/>`_):
 
 - SPARC Standard Version 7.
 
