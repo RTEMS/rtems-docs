@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
 SPARC Specific Information
@@ -563,35 +564,52 @@ state changes occur in the processor itself.  The return address reported by
 the processor for synchronous traps is the instruction which caused the trap
 and the following instruction.
 
+Trap Table
+----------
+
+A SPARC processor uses a trap table to execute the trap handler associated with
+a trap.  The trap table location is defined by the Trap Base Register
+(``TBR``).  The trap table has 256 entries.  Each entry has space for four
+instructions (16 bytes).  RTEMS uses a statically initialized trap table.  The
+start address of the trap table is associated with the ``trap_table`` global
+symbol.  The first action of the system initialization (entry points ``_start``
+and ``hard_reset``) is to set the ``TBR`` to ``trap_table``.  The interrupt
+traps (trap numbers 16 to 31) are connected with the RTEMS interrupt handling.
+Some traps are connected to standard services defined by the SPARC
+architecture, for example the window overflow, underflow, and flush handling.
+Most traps are connected to a fatal error handler.  The fatal error trap
+handler saves the processor context to an exception frame and starts the system
+termination procedure.
+
 Vectoring of Interrupt Handler
 ------------------------------
 
-Upon receipt of an interrupt the SPARC automatically performs the following
-actions:
+Upon receipt of an interrupt a SPARC processor automatically performs the
+following actions:
 
-- disables traps (sets the ET bit of the ``PSR`` to 0),
+- disables traps (sets the ``PSR.ET`` bit to 0 in the ``PSR``),
 
-- the S bit of the ``PSR`` is copied into the Previous Supervisor Mode (PS) bit of
-  the ``PSR``,
+- the ``PSR.S`` bit is copied into the Previous Supervisor Mode (``PSR.PS``)
+  bit in the ``PSR``,
 
 - the ``CWP`` is decremented by one (modulo the number of register windows) to
   activate a trap window,
 
-- the PC and nPC are loaded into local register 1 and 2 (l0 and l1),
+- the PC and nPC are loaded into local register 1 and 2 (``%l0`` and ``%l1``),
 
-- the trap type (tt) field of the Trap Base Register (``TBR``) is set to the
-  appropriate value, and
+- the trap type (``tt``) field of the Trap Base Register (``TBR``) is set to
+  the appropriate value, and
 
 - if the trap is not a reset, then the PC is written with the contents of the
-  ``TBR`` and the nPC is written with ``TBR`` + 4.  If the trap is a reset, then the PC
-  is set to zero and the nPC is set to 4.
+  ``TBR`` and the nPC is written with ``TBR`` + 4.  If the trap is a reset,
+  then the PC is set to zero and the nPC is set to 4.
 
 Trap processing on the SPARC has two features which are noticeably different
 than interrupt processing on other architectures.  First, the value of ``PSR``
 register in effect immediately before the trap occurred is not explicitly
 saved.  Instead only reversible alterations are made to it.  Second, the
-Processor Interrupt Level (pil) is not set to correspond to that of the
-interrupt being processed.  When a trap occurs, ALL subsequent traps are
+Processor Interrupt Level (``PSR.PIL``) is not set to correspond to that of the
+interrupt being processed.  When a trap occurs, **all** subsequent traps are
 disabled.  In order to safely invoke a subroutine during trap handling, traps
 must be enabled to allow for the possibility of register window overflow and
 underflow traps.
@@ -698,15 +716,16 @@ Interrupt Stack
 The SPARC architecture does not provide for a dedicated interrupt stack.  Thus
 by default, trap handlers would execute on the stack of the RTEMS task which
 they interrupted.  This artificially inflates the stack requirements for each
-task since EVERY task stack would have to include enough space to account for
-the worst case interrupt stack requirements in addition to it's own worst case
-usage.  RTEMS addresses this problem on the SPARC by providing a dedicated
+task since **every** task stack would have to include enough space to account
+for the worst case interrupt stack requirements in addition to it's own worst
+case usage.  RTEMS addresses this problem on the SPARC by providing a dedicated
 interrupt stack managed by software.
 
-During system initialization, RTEMS allocates the interrupt stack from the
-Workspace Area.  The amount of memory allocated for the interrupt stack is
-determined by the interrupt_stack_size field in the CPU Configuration Table.
-As part of processing a non-nested interrupt, RTEMS will switch to the
+The interrupt stack is statically allocated by RTEMS.  There is one interrupt
+stack for each configured processor.  The interrupt stack is used to initialize
+the system.  The amount of memory allocated for the interrupt stack is
+determined by the ``CONFIGURE_INTERRUPT_STACK_SIZE`` application configuration
+option.  As part of processing a non-nested interrupt, RTEMS will switch to the
 interrupt stack before invoking the installed handler.
 
 Default Fatal Error Processing
