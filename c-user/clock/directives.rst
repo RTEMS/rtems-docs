@@ -298,7 +298,7 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a ``struct bintime`` object.  The time
     elapsed since the :term:`Unix epoch` measured using the
     :term:`CLOCK_REALTIME` at some time point during the directive call will be
     stored in this object.  Calling the directive with a pointer equal to `NULL
@@ -457,7 +457,7 @@ Gets the time elapsed since the :term:`Unix epoch` measured using
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a ``struct bintime`` object.  The time
     elapsed since the :term:`Unix epoch` measured using the
     :term:`CLOCK_REALTIME` at some time point close to the directive call will
     be stored in this object.  Calling the directive with a pointer equal to
@@ -564,7 +564,8 @@ the :term:`CLOCK_MONOTONIC` in seconds and nanoseconds format.
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a `struct timespec
+    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
     elapsed since some fixed time point in the past measured using the
     :term:`CLOCK_MONOTONIC` at some time point during the directive call will
     be stored in this object.  Calling the directive with a pointer equal to
@@ -618,7 +619,7 @@ the :term:`CLOCK_MONOTONIC` in binary time format.
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a ``struct bintime`` object.  The time
     elapsed since some fixed time point in the past measured using the
     :term:`CLOCK_MONOTONIC` at some time point during the directive call will
     be stored in this object.  Calling the directive with a pointer equal to
@@ -719,11 +720,12 @@ the :term:`CLOCK_MONOTONIC` in seconds and microseconds format.
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
-    elapsed since some fixed time point in the past measured using the
-    :term:`CLOCK_MONOTONIC` at some time point during the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
+    This parameter is the pointer to a `struct timeval
+    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
+    object.  The time elapsed since some fixed time point in the past measured
+    using the :term:`CLOCK_MONOTONIC` at some time point during the directive
+    call will be stored in this object.  Calling the directive with a pointer
+    equal to `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
     behaviour.
 
 .. rubric:: NOTES:
@@ -774,7 +776,8 @@ format.
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a `struct timespec
+    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
     elapsed since some fixed time point in the past measured using the
     :term:`CLOCK_MONOTONIC` at some time point close to the directive call will
     be stored in this object.  Calling the directive with a pointer equal to
@@ -827,7 +830,7 @@ the :term:`CLOCK_MONOTONIC` in coarse resolution in binary time format.
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a ``struct bintime`` object.  The time
     elapsed since some fixed time point in the past measured using the
     :term:`CLOCK_MONOTONIC` at some time point close to the directive call will
     be stored in this object.  Calling the directive with a pointer equal to
@@ -881,11 +884,12 @@ format.
 .. rubric:: PARAMETERS:
 
 ``time_snapshot``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
-    elapsed since some fixed time point in the past measured using the
-    :term:`CLOCK_MONOTONIC` at some time point close to the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
+    This parameter is the pointer to a `struct timeval
+    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
+    object.  The time elapsed since some fixed time point in the past measured
+    using the :term:`CLOCK_MONOTONIC` at some time point close to the directive
+    call will be stored in this object.  Calling the directive with a pointer
+    equal to `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
     behaviour.
 
 .. rubric:: NOTES:
@@ -983,7 +987,7 @@ system initialization in binary time format.
 .. rubric:: PARAMETERS:
 
 ``boot_time``
-    This parameter is the pointer to a :c:type:`bintime` object.  The time
+    This parameter is the pointer to a ``struct bintime`` object.  The time
     elapsed since the :term:`Unix epoch` at some time point during system
     initialization call will be stored in this object.  Calling the directive
     with a pointer equal to `NULL
