@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2021 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Background
@@ -29,7 +30,7 @@ and date format:
 
 .. code-block:: c
 
-    struct rtems_tod_control {
+    typedef struct {
         uint32_t year;   /* greater than 1987 */
         uint32_t month;  /* 1 - 12 */
         uint32_t day;    /* 1 - 31 */
@@ -37,20 +38,34 @@ and date format:
         uint32_t minute; /* 0 - 59 */
         uint32_t second; /* 0 - 59 */
         uint32_t ticks;  /* elapsed between seconds */
-    };
-    typedef struct rtems_tod_control rtems_time_of_day;
+    } rtems_time_of_day;
 
 The native date and time format is the only format supported when setting the
-system date and time using the ``rtems_clock_set`` directive.  Some
+system date and time using the :ref:`InterfaceRtemsClockSet` directive.  Some
 applications expect to operate on a *UNIX-style* date and time data structure.
-The ``rtems_clock_get_tod_timeval`` always returns the date and time in
-``struct timeval`` format.
+For example, the :ref:`InterfaceRtemsClockGetTodTimeval` returns the date and
+time in ``struct timeval`` format.
 
-The ``struct timeval`` data structure has two fields: ``tv_sec`` and
-``tv_usec`` which are seconds and microseconds, respectively.  The ``tv_sec``
-field in this data structure is the number of seconds since the POSIX epoch of
-*January 1, 1970* but will never be prior to the RTEMS epoch of *January 1,
-1988*.
+.. index:: struct timeval
+.. index:: struct timespec
+
+Some directives use data structures defined by :term:`POSIX`.  The ``struct
+timeval`` data structure has two members: ``tv_sec`` and ``tv_usec`` which are
+seconds and microseconds, respectively.  The ``struct timespec`` data structure
+has two members: ``tv_sec`` and ``tv_nsec`` which are seconds and nanoseconds,
+respectively.  For :term:`CLOCK_REALTIME` time points, the ``tv_sec`` member in
+these data structures is the number of seconds since the :term:`Unix epoch` but
+will never be prior to the :term:`RTEMS epoch`.
+
+.. index:: struct bintime
+.. index:: sbintime_t
+
+The ``struct bintime`` and ``sbintime_t`` time formats used by some directives
+originate in FreeBSD.  The ``struct bintime`` data structure which represents
+time in a binary time format has two members: ``sec`` and ``frac`` which are
+seconds and fractions of a second in units of :math:`1 / 2^{64}` seconds,
+respectively.  The ``sbintime_t`` type is a signed 64-bit integer type used to
+represent time in units of :math:`1 / 2^{32}` seconds.
 
 .. index:: timeslicing
 
