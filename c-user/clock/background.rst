@@ -9,20 +9,28 @@ Background
 Required Support
 ----------------
 
-For the features provided by the clock manager to be utilized, periodic timer
-interrupts are required.  Therefore, a real-time clock or hardware timer is
-necessary to create the timer interrupts.  The clock tick directive
-is normally called by the timer ISR to announce to RTEMS that a system clock
-tick has occurred.  Elapsed time is measured in ticks.  A tick is defined to be
-an integral number of microseconds which is specified by the user in the
-Configuration Table.
+For the features provided by the Clock Manager to be utilized, a :term:`Clock
+Driver` is required.  The Clock Driver usually provides a clock interrupt which
+is serviced on each configured processor at each :term:`clock tick`.  In
+addition, the Clock Driver provides three clock sources:
+
+* clock tick
+
+* :term:`CLOCK_REALTIME`
+
+* :term:`CLOCK_MONOTONIC`
+
+The time of these clock sources advances at each clock tick.  This yields the
+time of the clock sources in a coarse resolution.  To get the time of the
+``CLOCK_REALTIME`` or ``CLOCK_MONOTONIC`` clock sources in a higher resolution,
+the Clock Driver may use a clock device to get the time between clock ticks.
 
 .. _Time and Date Data Structures:
 
 Time and Date Data Structures
 -----------------------------
 
-The clock facilities of the clock manager operate upon calendar time.  These
+The clock facilities of the Clock Manager operate upon calendar time.  These
 directives utilize the following date and time structure for the native time
 and date format:
 
