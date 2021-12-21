@@ -87,8 +87,9 @@ scheduling algorithm.  The length of time allocated to each task is known as
 the quantum or timeslice.
 
 The system's timeslice is defined as an integral number of ticks, and is
-specified in the Configuration Table.  The timeslice is defined for the entire
-system of tasks, but timeslicing is enabled and disabled on a per task basis.
+specified by the :ref:`CONFIGURE_TICKS_PER_TIMESLICE` application configuration
+option.  The timeslice is defined for the entire system of tasks, but
+timeslicing is enabled and disabled on a per task basis.
 
 The clock tick directives implement timeslicing by decrementing the
 running task's time-remaining counter when both timeslicing and preemption are
@@ -102,10 +103,10 @@ Delays
 
 A sleep timer allows a task to delay for a given interval or up until a given
 time, and then wake and continue execution.  This type of timer is created
-automatically by the ``rtems_task_wake_after`` and ``rtems_task_wake_when``
-directives and, as a result, does not have an RTEMS ID.  Once activated, a
-sleep timer cannot be explicitly deleted.  Each task may activate one and only
-one sleep timer at a time.
+automatically by the :ref:`InterfaceRtemsTaskWakeAfter` and
+:ref:`InterfaceRtemsTaskWakeWhen` directives and, as a result, does not have an
+object identifier.  Once activated, a sleep timer cannot be explicitly deleted.
+Each task may activate one and only one sleep timer at a time.
 
 .. index:: timeouts
 
@@ -113,7 +114,8 @@ Timeouts
 --------
 
 Timeouts are a special type of timer automatically created when the timeout
-option is used on the ``rtems_message_queue_receive``, ``rtems_event_receive``,
-``rtems_semaphore_obtain`` and ``rtems_region_get_segment`` directives.  Each
-task may have one and only one timeout active at a time.  When a timeout
-expires, it unblocks the task with a timeout status code.
+option is used on the :ref:`InterfaceRtemsBarrierWait`,
+:ref:`InterfaceRtemsEventReceive`, :ref:`InterfaceRtemsMessageQueueReceive`,
+:ref:`InterfaceRtemsRegionGetSegment`, and :ref:`InterfaceRtemsSemaphoreObtain`
+directives.  Each task may have one and only one timeout active at a time.
+When a timeout expires, it unblocks the task with a timeout status code.
