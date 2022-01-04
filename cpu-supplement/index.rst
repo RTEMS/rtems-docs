@@ -24,6 +24,7 @@ RTEMS CPU Architecture Supplement (|version|).
 
 	preface
 	port
+	aarch64
 	arm
 	atmel_avr
 	blackfin
