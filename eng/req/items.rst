@@ -4822,6 +4822,10 @@ value. The value shall be an element of
 
 * "``mean-upper-bound``",
 
+* "``median-lower-bound``",
+
+* "``median-upper-bound``",
+
 * "``min-lower-bound``", and
 
 * "``min-upper-bound``".
