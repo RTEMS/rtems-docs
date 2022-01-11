@@ -2650,7 +2650,7 @@ Action Requirement Expression State Name
 The value shall be a string. It shall be the name of a state of the condition
 or ``N/A`` if the condition is not applicable. The value
 
-* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``",
 
 * or, shall be equal to "``N/A``".
 
@@ -2672,7 +2672,7 @@ A value of this type shall be of one of the following variants:
 * The value may be a string. It shall be the name of a state of the condition
   or ``N/A`` if the condition is not applicable. The value
 
-  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``",
 
   * or, shall be equal to "``N/A``".
 
@@ -2693,7 +2693,7 @@ the horizontal space is limited by the page width.  The more conditions you
 have in an action requirement, the shorter the names should be.  The name
 ``NA`` is reserved and indicates that a condition is not applicable. The value
 
-* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+* shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``",
 
 * and, shall be not equal to "``NA``".
 
@@ -2807,7 +2807,7 @@ A value of this type shall be of one of the following variants:
   corresponding post-condition or ``N/A`` if the post-condition is not
   applicable. The value
 
-  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``",
 
   * or, shall be equal to "``N/A``".
 
@@ -2837,7 +2837,7 @@ A value of this type shall be of one of the following variants:
   reason is given instead of a listing of post-condition states, then this
   transition is skipped and no test code runs for this transition. The value
 
-  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]+$``",
+  * shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``",
 
   * and, shall be not equal to "``NA``".
 
