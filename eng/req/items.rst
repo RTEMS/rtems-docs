@@ -3322,6 +3322,12 @@ get-string
     ``name`` attribute. If no such variable exists in the configuration file,
     then the default value is used.  The value is converted to a string.
 
+get-string-command-line
+    The attribute value shall be an optional string. The action gets the action
+    value for subsequent actions from the value of a command line option named
+    by the items ``name`` attribute. If no such command line option is present,
+    then the attribute value is used.  The value is converted to a string.
+
 script
     The attribute value shall be a string. The action executes the attribute
     value with the Python ``eval()`` function in the context of the script
