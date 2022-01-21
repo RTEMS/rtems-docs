@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 
 How-To
 ======
@@ -32,6 +32,100 @@ environment in your shell:
 
     cd rtems-central
     . env/bin/activate
+
+View the Specification Graph
+----------------------------
+
+The specification items form directed graphs through :ref:`SpecTypeLink`
+attributes.  Each link has a role.  For a particular view only specific roles
+may be of interest.  For example, the requirements specification of RTEMS
+starts with the ``spec:/req/root`` specification item.  It should form a tree
+(connected graph without cycles).  A text representation of the tree can be
+printed with the ``./specview.py`` script:
+
+.. code-block:: none
+
+    cd rtems-central
+    . env/bin/activate
+    ./specview.py
+
+This gives the following example output (shortened):
+
+.. code-block:: none
+
+    /req/root (type=requirement/non-functional/design)
+      /bsp/if/group (type=requirement/non-functional/design-group, role=requirement-refinement)
+        /bsp/if/acfg-idle-task-body (type=interface/unspecified-define, role=interface-ingroup)
+          /bsp/sparc/leon3/req/idle-task-body (type=requirement/functional/function, role=interface-function)
+            /bsp/sparc/leon3/req/idle-task-power-down (type=requirement/functional/function, role=requirement-refinement)
+              /bsp/sparc/leon3/val/errata-gr712rc-08 (type=validation, role=validation)
+            /bsp/sparc/leon3/req/idle-task-power-down-errata (type=requirement/functional/function, role=requirement-refinement)
+              /bsp/sparc/leon3/val/errata-gr712rc-08 (type=validation, role=validation)
+
+The actual specification graph depends on build configuration options which
+enable or disable specification items.  The ``--enabled`` command line option
+may be used to specify the build configuration options, for example
+``--enabled=sparc,bsps/sparc/leon3,sparc/gr740,RTEMS_SMP,RTEMS_QUAL``.
+
+The ``./specview.py`` script can display other views of the specification
+through the ``--filter`` command line option.  Transition maps of
+:ref:`SpecTypeActionRequirementItemType` items can be printed using the
+``--filter=action-table`` or ``--filter=action-list`` filters.  For example,
+``./specview.py --filter=action-table /rtems/timer/req/create`` prints
+something like this:
+
+.. code-block:: none
+
+    .. table::
+        :class: longtable
+
+        ===== ========== ======= ===== ==== ======= ======= =====
+        Entry Descriptor Name    Id    Free Status  Name    IdVar
+        ===== ========== ======= ===== ==== ======= ======= =====
+        0     0          Valid   Valid Yes  Ok      Valid   Set
+        1     0          Valid   Valid No   TooMany Invalid Nop
+        2     0          Valid   Null  Yes  InvAddr Invalid Nop
+        3     0          Valid   Null  No   InvAddr Invalid Nop
+        4     0          Invalid Valid Yes  InvName Invalid Nop
+        5     0          Invalid Valid No   InvName Invalid Nop
+        6     0          Invalid Null  Yes  InvName Invalid Nop
+        7     0          Invalid Null  No   InvName Invalid Nop
+        ===== ========== ======= ===== ==== ======= ======= =====
+
+For example, ``./specview.py --filter=action-list /rtems/timer/req/create``
+prints something like this:
+
+.. code-block:: none
+
+    Status = Ok, Name = Valid, IdVar = Set
+
+        * Name = Valid, Id = Valid, Free = Yes
+
+    Status = TooMany, Name = Invalid, IdVar = Nop
+
+        * Name = Valid, Id = Valid, Free = No
+
+    Status = InvAddr, Name = Invalid, IdVar = Nop
+
+        * Name = Valid, Id = Null, Free = { Yes, No }
+
+    Status = InvName, Name = Invalid, IdVar = Nop
+
+        * Name = Invalid, Id = { Valid, Null }, Free = { Yes, No }
+
+The view above yields for each variation of post-condition states the list of
+associated pre-condition state variations.
+
+Generate Files from Specification Items
+---------------------------------------
+
+The ``./spec2modules.py`` script generates program and documentation files in
+:file:`modules/rtems` and :file:`modules/rtems-docs` using the specification
+items as input.  The script should be invoked whenever a specification item was
+modified.  After running the script, go into the subdirectories and create
+corresponding patch sets.  For these patch sets, the normal patch review
+process applies, see *Support and Contributing* chapter of the *RTEMS User
+Manual*.
 
 Application Configuration Options
 ---------------------------------
@@ -1030,3 +1124,10 @@ the following post-condition states.
           Objects referenced by the ${../if/directive:/params[0]/name}
           parameter in past calls to ${../if/directive:/name} shall not be
           accessed by the ${../if/directive:/name} call.
+
+Verify the Specification Items
+------------------------------
+
+The ``./specverify.py`` script verifies that the specification items have the
+format documented in :ref:`ReqEngSpecificationItems`.  To some extent the
+values of attributes are verified as well.
