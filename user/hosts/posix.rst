@@ -74,7 +74,7 @@ provide a manual override:
 CentOS
 ~~~~~~
 
-The following packages are required on a minimal CentOS 6.3 or Cent)S 7
+The following packages are required on a minimal CentOS 6.3 or CentOS 7
 64-bit installation:
 
 .. code-block:: none
