@@ -220,7 +220,7 @@ Pre-Branch Procedure
 * Check and make sure the RSB kernel, libbsd and tools configurations
   reference the ``master`` when the branch is made.
 
-  The RSB GIT builds reference a specific commit so it is important
+  The RSB Git builds reference a specific commit so it is important
   the relevant configurations are valid.
 
 Branch Procedure
@@ -316,17 +316,17 @@ the needed changes.
 
 #. RTEMS requires the following files be changed:
 
-    * :file:`aclocal/version.m4`
+    * :file:`Doxyfile`: Update ``PROJECT_NUMBER``.
 
-    * :file:`c/src/aclocal/version.m4`
+    * :file:`rtems-bsps`: Update ``rtems_version``.
 
-    * :file:`cpukit/aclocal/version.m4`
+    * :file:`spec/build/cpukit/optvermaj.yml`: Update ``set-value``.
 
-    * :file:`Doxyfile`
+    * :file:`spec/build/cpukit/optvermin.yml`: Update ``set-value``.
 
-    * :file:`testsuites/aclocal/version.m4`
+    * :file:`spec/build/cpukit/optverrev.yml`: Update ``set-value``.
 
-    * :file:`rtems-bsps`
+    * :file:`wscript`: Update ``default_prefix``.
 
 #. RTEMS Documentation the following files be changed:
 
