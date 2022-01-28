@@ -274,29 +274,29 @@ Post-Branch Procedure
 #. Add the milestones for the new development branch. The Trac page
    is:
 
-  .. code-block:: none
+   .. code-block:: none
 
-    = 6.1 (open)
+       = 6.1 (open)
 
-    == Statistics
+       == Statistics
 
-    ||   '''Total'''||[[TicketQuery(milestone=6.1,count)]]                                      ||
-    ||         Fixed||[[TicketQuery(status=closed&milestone=6.1,resolution=fixed,count,)]]      ||
-    ||       Invalid||[[TicketQuery(status=closed&milestone=6.1,resolution=invalid,count,)]]    ||
-    ||  Works for me||[[TicketQuery(status=closed&milestone=6.1,resolution=worksforme,count,)]] ||
-    ||     Duplicate||[[TicketQuery(status=closed&milestone=6.1,resolution=duplicate,count,)]]  ||
-    ||     Won't fix||[[TicketQuery(status=closed&milestone=6.1,resolution=wontfix,count,)]]    ||
+       ||   '''Total'''||[[TicketQuery(milestone=6.1,count)]]                                      ||
+       ||         Fixed||[[TicketQuery(status=closed&milestone=6.1,resolution=fixed,count,)]]      ||
+       ||       Invalid||[[TicketQuery(status=closed&milestone=6.1,resolution=invalid,count,)]]    ||
+       ||  Works for me||[[TicketQuery(status=closed&milestone=6.1,resolution=worksforme,count,)]] ||
+       ||     Duplicate||[[TicketQuery(status=closed&milestone=6.1,resolution=duplicate,count,)]]  ||
+       ||     Won't fix||[[TicketQuery(status=closed&milestone=6.1,resolution=wontfix,count,)]]    ||
 
-    == Distribution
-    [[TicketQuery(milestone=6.1&group=type,format=progress)]]
+       == Distribution
+       [[TicketQuery(milestone=6.1&group=type,format=progress)]]
 
-    == Summary
-    [[TicketQuery(milestone=6.1)]]
+       == Summary
+       [[TicketQuery(milestone=6.1)]]
 
-    == Details
-    [[TicketQuery(col=id|time|resolution|component|reporter|owner|changetime,status=closed&milestone=6.1,rows=summary|description,table)]]
+       == Details
+       [[TicketQuery(col=id|time|resolution|component|reporter|owner|changetime,status=closed&milestone=6.1,rows=summary|description,table)]]
 
-  Replace ``6.1`` with the required milestone.
+   Replace ``6.1`` with the required milestone.
 
 #. Create the RC1 release candidate with the source as close the
    branch point as possible.
