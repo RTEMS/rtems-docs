@@ -159,21 +159,23 @@ Release Repositories
 The following are the repositories that a release effects. Any repository
 action is to be performed in the following repositories:
 
-#. ``rtems.git``
+* ``rtems.git``
 
-#. ``rtems-docs.git``
+* ``rtems-central.git``
 
-#. ``rtems-examples.git``
+* ``rtems-docs.git``
 
-#. ``rtems-libbsd.git``
+* ``rtems-examples.git``
 
-#. ``rtems-source-builder.git``
+* ``rtems-libbsd.git``
 
-#. ``rtems-tools.git``
+* ``rtems-release.git``
 
-#. ``rtems_waf.git``
+* ``rtems-source-builder.git``
 
-#. ``rtems-release.git``
+* ``rtems-tools.git``
+
+* ``rtems_waf.git``
 
 Pre-Release Procedure
 =====================
@@ -306,6 +308,14 @@ Post-Branch Procedure
    release configurations. These can be confusing to a new user and
    add no value to a released RSB. For example leaving RTEMS 6 tool
    building configurations in the RTEMS 5 release.
+
+#. Check out the release branch of ``rtems-central.git``.  Change all Git
+   submodules to reference commits of the corresponding release branch.  Run
+   ``./spec2modules.py``.  Inspect all Git submodules for changes.  If there
+   are locally modified files, then there are two options.  Firstly, integrate
+   the changes in the release branches.  Afterwards update the Git submodule
+   commit.  Secondly, change the specification so that a particular change is
+   not made.  Make sure that there are no changes after this procedure.
 
 Post-Branch Version Number Updates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
