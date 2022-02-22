@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 2010 Gedare Bloom
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
@@ -198,7 +198,8 @@ scheduler to processor assignments.
 
 .. rubric:: NOTES:
 
-This configuration option is only evaluated in SMP configurations.
+Where the system was built with SMP support enabled, this configuration
+option is evaluated, otherwise it is ignored.
 
 This is an advanced configuration option, see
 :ref:`ConfigurationSchedulersClustered`.
@@ -210,9 +211,20 @@ The following constraints apply to this configuration option:
 * The value of the configuration option shall be a list of the following
   macros:
 
-  * ``RTEMS_SCHEDULER_ASSIGN( processor_index, attributes )``
+  * ``RTEMS_SCHEDULER_ASSIGN( scheduler_index, attributes )``
 
   * ``RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER``
+
+  The ``scheduler_index`` macro parameter shall be a valid index of the
+  scheduler table defined by the :ref:`CONFIGURE_SCHEDULER_TABLE_ENTRIES`
+  configuration option.
+
+  The ``attributes`` macro parameter shall be set to exactly one of the
+  following constants:
+
+  * ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY``
+
+  * ``RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL``
 
 * The value of the configuration option shall be a list of exactly
   :ref:`CONFIGURE_MAXIMUM_PROCESSORS` elements.
@@ -666,6 +678,81 @@ This scheduler algorithm is only available when RTEMS is built with SMP
 support enabled.
 
 This scheduler algorithm is not correctly implemented.  Do not use it.
+
+.. Generated from spec:/acfg/if/scheduler-table-entries
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: CONFIGURE_SCHEDULER_TABLE_ENTRIES
+
+.. _CONFIGURE_SCHEDULER_TABLE_ENTRIES:
+
+CONFIGURE_SCHEDULER_TABLE_ENTRIES
+---------------------------------
+
+.. rubric:: CONSTANT:
+
+``CONFIGURE_SCHEDULER_TABLE_ENTRIES``
+
+.. rubric:: OPTION TYPE:
+
+This configuration option is an initializer define.
+
+.. rubric:: DEFAULT VALUE:
+
+The default value of this configuration option is the definition of exactly
+one table entry for the configured scheduler.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option is used to initialize the table of
+configured schedulers.
+
+.. rubric:: NOTES:
+
+Schedulers registered in the scheduler table by this configuration option are
+available to the application.  The scheduler table entry index defines the
+index of the scheduler.
+
+This is an advanced configuration option, see
+:ref:`ConfigurationSchedulersClustered`.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be a list of the following
+  macros:
+
+  * ``RTEMS_SCHEDULER_TABLE_CBS( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_EDF( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_EDF_SMP( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_PRIORITY_AFFINITY_SMP( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_PRIORITY( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_PRIORITY_SMP( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_SIMPLE( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_SIMPLE_SMP( name, obj_name )``
+
+  * ``RTEMS_SCHEDULER_TABLE_STRONG_APA( name, obj_name )``
+
+  The ``name`` macro parameter shall be the name associated with the scheduler
+  data structures, see :ref:`ConfigurationSchedulersClustered`.
+
+  The ``obj_name`` macro parameter shall be the scheduler object name.  It is
+  recommended to define the scheduler object name through
+  :c:func:`rtems_build_name`.
+
+* Where the system was build with SMP support enabled, the table shall have one
+  or more entries, otherwise it shall have exactly one entry.
 
 .. Generated from spec:/acfg/if/scheduler-user
 
