@@ -132,6 +132,12 @@ Memory Model
 A flat 32-bit memory model is supported.  The board support package must take
 care of initializing the MMU if necessary.
 
+Note that architecture variants which support unaligned accesses must not use
+memcpy() or memset() on device memory as those functions are hand-optimized and
+will take advantage of unaligned accesses where available. *As per ARM*
+(https://developer.arm.com/documentation/ddi0406/c/Application-Level-Architecture/Application-Level-Memory-Model/Alignment-support/Unaligned-data-access-restrictions-in-ARMv7-and-ARMv6),
+unaligned accesses are not permitted for device memory.
+
 Interrupt Processing
 ====================
 

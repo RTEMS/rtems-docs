@@ -73,6 +73,11 @@ A flat 64-bit or 32-bit memory model is supported depending on the selected mult
 variant.  All AArch64 CPU variants support a built-in MMU for which basic initialization
 for a flat memory model is handled.
 
+Note that memcpy() and memset() must not be used on device memory as those
+functions are hand-optimized and will take advantage of unaligned accesses.
+*As per ARM*(https://developer.arm.com/documentation/ka004708/latest), unaligned
+accesses are not permitted for device memory.
+
 Interrupt Processing
 ====================
 
