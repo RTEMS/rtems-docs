@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2008, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2008, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -2122,6 +2122,11 @@ Sets the processor affinity set of the interrupt vector.
 
 The :ref:`InterfaceRtemsInterruptGetAttributes` directive may be used to check
 if the processor affinity of an interrupt vector can be set.
+
+Only online processors of the affinity set specified by ``affinity_size`` and
+``affinity`` are considered by the directive.  Other processors of the set are
+ignored.  If the set contains no online processor, then the set is invalid and
+an error status is returned.
 
 .. rubric:: CONSTRAINTS:
 
