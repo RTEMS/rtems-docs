@@ -86,9 +86,9 @@ identifier is returned in ``id``.  This identifier is used to access the task
 with other task related directives.
 
 The **initial priority** of the task is specified in ``initial_priority``. The
-scheduler of the created task is the scheduler of the calling task at some
-point during the task creation.  The initial task priority specified in
-``initial_priority`` shall be valid for this scheduler.
+:term:`home scheduler` of the created task is the home scheduler of the calling
+task at some time point during the task creation. The initial task priority
+specified in ``initial_priority`` shall be valid for this scheduler.
 
 The **stack size** of the task is specified in ``stack_size``.  If the
 requested stack size is less than the configured minimum stack size, then RTEMS
