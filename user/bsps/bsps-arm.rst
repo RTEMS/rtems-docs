@@ -9,7 +9,6 @@ arm (ARM)
 .. include:: arm/altera-cyclone-v.rst
 .. include:: arm/atsam.rst
 .. include:: arm/beagle.rst
-.. include:: arm/bsp-stm32h7.rst
 .. include:: arm/csb336.rst
 .. include:: arm/csb337.rst
 .. include:: arm/edb7312.rst
