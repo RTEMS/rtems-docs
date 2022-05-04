@@ -355,6 +355,7 @@ sophisticated real-time applications are significantly reduced.
 
 .. [#] Thread-local storage requires some support by the tool chain and the
        RTEMS architecture support, e.g. context-switch code.  It is supported
-       at least on ARM, PowerPC, RISC-V, SPARC and m68k.  Check the
-       `RTEMS CPU Architecture Supplement <https://docs.rtems.org/branches/master/cpu-supplement.pdf>`_
-       if it is supported.
+       at least on ARM, AArch64, PowerPC, RISC-V, SPARC, MicroBlaze, Nios II,
+       and m68k.  Check the `RTEMS CPU Architecture Supplement
+       <https://docs.rtems.org/branches/master/cpu-supplement.pdf>`_ if it is
+       supported.
