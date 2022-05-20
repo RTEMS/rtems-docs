@@ -13,9 +13,18 @@ Symmetric Multiprocessing (SMP)
 Introduction
 ============
 
-The Symmetric Multiprocessing (SMP) support of the RTEMS is available on
+RTEMS Symmetric Multiprocessing (SMP) support is available on a subset
+of target architectures supported by RTEMS. Further on some target
+architectures, it is only available on a subset of BSPs. The user is
+advised to check the BSP specific documentation and RTEMS source code
+to verify the status of SMP support for a specific BSP. The following
+architectures have support for SMP:
+
+-- AArch64
 
 - ARMv7-A,
+
+- i386,
 
 - PowerPC,
 
@@ -25,8 +34,8 @@ The Symmetric Multiprocessing (SMP) support of the RTEMS is available on
 
 .. warning::
 
-    The SMP support is only available if RTEMS was built with the
-    ``--enable-smp`` build configuration option.
+    SMP support is only available if RTEMS was built with the
+    SMP build configuration option enabled.
 
 RTEMS is supposed to be a real-time operating system.  What does this mean in
 the context of SMP?  The RTEMS interpretation of real-time on SMP is the
@@ -580,10 +589,10 @@ Profiling
 ---------
 
 To identify the bottlenecks in the system, support for profiling of low-level
-synchronization is optionally available.  The profiling support is a BSP build
-time configuration option (``--enable-profiling``) and is implemented with an
-acceptable overhead, even for production systems.  A low-overhead counter for
-short time intervals must be provided by the hardware.
+synchronization is optionally available.  The profiling support is
+an RTEMS build time configuration option and is implemented with an
+acceptable overhead, even for production systems.  A low-overhead counter
+for short time intervals must be provided by the hardware.
 
 Profiling reports are generated in XML for most test programs of the RTEMS
 testsuite (more than 500 test programs).  This gives a good sample set for

@@ -23,12 +23,13 @@
 Multiprocessing Configuration
 =============================
 
-This section describes multiprocessing related configuration options.  The
-options are only used if RTEMS was built with the ``--enable-multiprocessing``
-build configuration option.  Additionally, this class of configuration options
-are only applicable if the configuration option :ref:`CONFIGURE_MP_APPLICATION`
-is defined.  The multiprocessing (MPCI) support must not be confused with the
-SMP support.
+This section describes multiprocessing related configuration options.
+The options are only used if RTEMS was built when the multiprocessing
+build configuration option is enabled. The multiprocessing configuration
+is distinct from the SMP configuration.  Additionally, this class of
+configuration options are only applicable if the configuration option
+:ref:`CONFIGURE_MP_APPLICATION` is defined.  The multiprocessing (MPCI)
+support must not be confused with the SMP support.
 
 .. Generated from spec:/acfg/if/mp-extra-server-stack
 
@@ -115,8 +116,8 @@ options are assumed to be provided.
 .. rubric:: NOTES:
 
 This configuration option shall be undefined if the multiprocessing support
-is not enabled (e.g. RTEMS was built without the ``--enable-multiprocessing``
-build configuration option).  Otherwise a compile time error in the
+is not enabled (e.g. RTEMS was built without the multiprocessing build
+configuration option enabled).  Otherwise a compile time error in the
 configuration file will occur.
 
 .. Generated from spec:/acfg/if/mp-max-global-objects

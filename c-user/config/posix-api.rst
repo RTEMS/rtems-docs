@@ -25,7 +25,7 @@ POSIX API Configuration
 
 This section describes configuration options related to the POSIX API.  Most
 POSIX API objects are available by default since RTEMS 5.1.  The queued signals
-and timers are only available if RTEMS was built with the ``--enable-posix``
+and timers are only available if RTEMS was built with the enable POSIX
 build configuration option.
 
 .. Generated from spec:/acfg/if/max-posix-keys
@@ -231,8 +231,8 @@ API Queued Signals that can be concurrently active.
 
 Unlimited objects are not available for queued signals.
 
-Queued signals are only available if RTEMS was built with the
-``--enable-posix`` build configuration option.
+Queued signals are only available if RTEMS was built with the POSIX API
+build configuration option enabled.
 
 .. rubric:: CONSTRAINTS:
 
@@ -470,29 +470,33 @@ API Timers that can be concurrently active.
 This object class can be configured in unlimited allocation mode, see
 :ref:`ConfigUnlimitedObjects`.
 
-Timers are only available if RTEMS was built with the
-``--enable-posix`` build configuration option.
+Timers are only available if RTEMS was built with the POSIX API build
+configuration option enabled.
 
 .. rubric:: CONSTRAINTS:
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
+* The value of the configuration option shall be greater than or equal
+to zero.
 
-* The value of the configuration option shall be less than or equal to 65535.
+* The value of the configuration option shall be less than or equal
+to 65535.
 
 * The value of the configuration option shall be less than or equal to a
-  BSP-specific and application-specific value which depends on the size of the
-  memory available to the application.
+  BSP-specific and application-specific value which depends on the size
+  of the memory available to the application.
 
 * The value of the configuration option may be defined through
   :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
   object class, if the value passed to :c:func:`rtems_resource_unlimited`
   satisfies all other constraints of the configuration option.
 
-* The value of the configuration option shall be zero if the POSIX API is not
-  enabled (e.g. RTEMS was built without the ``RTEMS_POSIX_API = True`` build
-  configuration option).  Otherwise a compile time error in the configuration
+* The value of the configuration option shall be zero if the POSIX API
+is not
+  enabled (e.g. RTEMS was built without the ``RTEMS_POSIX_API = True``
+  build configuration option).  Otherwise a compile time error in the
+  configuration
   file will occur.
 
 .. Generated from spec:/acfg/if/min-posix-thread-stack-size

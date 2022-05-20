@@ -437,9 +437,9 @@ Each processor needs an IDLE task stack and interrupt stack for example.
 If there are more processors available than configured, the rest will be
 ignored.
 
-This configuration option is only evaluated in SMP configurations (e.g. RTEMS
-was built with the ``--enable-smp`` build configuration option).  In all
-other configurations it has no effect.
+This configuration option is only evaluated in SMP configurations of RTEMS
+(e.g. RTEMS was built with the SMP build configuration option enabled).
+In all other configurations it has no effect.
 
 .. rubric:: CONSTRAINTS:
 
