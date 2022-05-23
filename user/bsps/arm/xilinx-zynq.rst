@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 Chris Johns (chrisj@rtems.org)
+.. Copyright (C) 2015, 2020 Chris Johns (chrisj@rtems.org)
 
 xilinx-zynq
 ===========
@@ -48,6 +48,22 @@ tools or a bootloader will be overwritten.
 
 The settings for the console driver can be changed by the user
 application through the termios API afterwards.
+
+Network
+-------
+
+The Cadence network interface driver of LibBSD works on the Xilinx Zynq
+platform. The hardware checksum support works on real hardware but does not
+seem to be supported on Qemu therefore the default state is to disable
+``IFCAP_TXCSUM`` and ``IFCAP_RXCSUM`` and this can be enabled from the shell
+with:
+
+.. code-block:: none
+
+    ifconfig cgem0 rxcsum txcsum
+
+or with an ``ioctl()`` call to the network interface driver with ``SIOCSIFCAP``
+and the mask ``IFCAP_TXCSUM`` and ``IFCAP_RXCSUM`` set.
 
 Debugging with xilinx_zynq_a9_qemu
 ----------------------------------
