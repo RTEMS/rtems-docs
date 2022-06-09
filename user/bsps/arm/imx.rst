@@ -174,6 +174,23 @@ config like that:
     SYSINIT_DRIVER_REFERENCE(ksz8091rnb, miibus);
     #include <machine/rtems-bsd-config.h>
 
+On chips with two Ethernet controllers, the MDIO lines are shared between the
+two controllers for a number of chips variants. This is currently supported with
+some restrictions on the initialization order. For this configuration to work,
+you have to make sure that the pins are assigned to the Ethernet controller that
+is initialized first. The initialization order in `libbsd` depends on the order
+of the Ethernet controllers in the device tree. So if (for example) `fec2` is
+defined in the device tree sources before `fec1`, make sure that the MDIO lines
+are routed to `fec2` and that the Ethernet PHYs are a sub-node of `fec2` in the
+device tree.
+
+Note that the clock for the second Ethernet controller is not necessarily
+enabled in the `CCM`. On the i.MX6UL/ULL, the clock will be enabled by the
+startup code if the node that is compatible with `fsl,imx6ul-anatop` can be
+found in the device tree. If you have trouble with the second Ethernet
+controller make sure that the `ENET2_125M_EN` bit in the `CCM_ANALOG_PLL_ENET`
+register is set as expected.
+
 MMC/SDCard Driver
 -----------------
 
