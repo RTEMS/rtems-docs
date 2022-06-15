@@ -206,7 +206,7 @@ Portability
 Maintainability
 ---------------
 
-* Minimize modifications to `third-party code <https://devel.rtems.org/wiki/Developer/Coding/ThirdPartyCode>`_..
+* Minimize modifications to `third-party code <https://devel.rtems.org/wiki/Developer/Coding/ThirdPartyCode>`_.
 * Keep it simple! Simple code is easier to debug and easier to read than clever code.
 * Share code with other architectures, CPUs, and BSPs where possible.
 * Do not duplicate standard OS or C Library routines.
