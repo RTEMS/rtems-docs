@@ -244,6 +244,18 @@ Cadence GEM instances present on all ZynqMP hardware variants. All interfaces
 are enabled by default, but only interfaces with operational MII busses will be
 recognized and usable in RTEMS. Most ZynqMP dev boards use CGEM3.
 
+When used with lwIP from the rtems-lwip integration repository, these BSP
+variants support networking via CGEM0 and one of the other CGEM* instances
+simultaneously. This is a limitation of the Xilinx driver, specifically
+in code referring directly to XPAR_XEMACPS_0_BASEADDR. Attempting to use more
+than two interfaces simultaneously may cause unexpected behavior. Attempting to
+use a set of two interfaces that does not include CGEM0 may cause unexpected
+behavior.
+
+The interfaces will not come up by default under lwIP and must be configured
+manually. There are examples of this in the start_networking() implementation
+in netstart.c as used by the network tests.
+
 Running Executables on QEMU
 ---------------------------
 
