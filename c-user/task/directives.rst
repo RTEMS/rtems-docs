@@ -805,14 +805,26 @@ specified by ``id``.
 :c:macro:`RTEMS_CALLED_FROM_ISR`
     The directive was called from within interrupt context.
 
+:c:macro:`RTEMS_INCORRECT_STATE`
+    The task termination procedure was started, however, waiting for the
+    terminating task would have resulted in a deadlock.
+
 :c:macro:`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
     The task resided on a remote node.
 
 .. rubric:: NOTES:
 
-RTEMS stops the execution of the task and reclaims the stack memory, any
-allocated delay or timeout timers, the TCB, and, if the task is
-:c:macro:`RTEMS_FLOATING_POINT`, its floating point context area. RTEMS
+The task deletion is done in several steps.  Firstly, the task is marked as
+terminating.  While the task life of the terminating task is protected, it
+executes normally until it disables the task life protection or it deletes
+itself.  A terminating task will eventually stop its normal execution and start
+its termination procedure.  The procedure executes in the context of the
+terminating task.  The task termination procedure involves the destruction of
+POSIX key values and running the task termination user extensions.  Once
+complete the execution of the task is stopped and task-specific resources are
+reclaimed by the system, such as the stack memory, any allocated delay or
+timeout timers, the :term:`TCB`, and, if the task is
+:c:macro:`RTEMS_FLOATING_POINT`, its floating point context area.  RTEMS
 explicitly does not reclaim the following resources: region segments, partition
 buffers, semaphores, timers, or rate monotonic periods.
 
@@ -824,10 +836,13 @@ resources before deletion.  A task can be directed to release its resources and
 delete itself by restarting it with a special argument or by sending it a
 message, an event, or a signal.
 
-Deletion of the current task (:c:macro:`RTEMS_SELF`) will force RTEMS to select
+Deletion of the calling task (:c:macro:`RTEMS_SELF`) will force RTEMS to select
 another task to execute.
 
-The :term:`TCB` for the deleted task is reclaimed by RTEMS.
+When a task deletes another task, the calling task waits until the task
+termination procedure of the task being deleted has completed.  The terminating
+task inherits the :term:`eligible priorities <eligible priority>` of the
+calling task.
 
 When a global task is deleted, the task identifier must be transmitted to every
 node in the system for deletion from the local copy of the global object table.
