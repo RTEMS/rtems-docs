@@ -330,7 +330,7 @@ O(m) Independence-Preserving Protocol (OMIP)
 
 The :math:`O(m)` Independence-Preserving Protocol (OMIP) is a generalization of
 the priority inheritance protocol to clustered scheduling which avoids the
-non-preemptive sections present with priority boosting
+non-preemptive sections present with :term:`priority boosting`
 :cite:`Brandenburg:2013:OMIP`.  The :math:`m` denotes the number of processors
 in the system.  Similar to the uniprocessor priority inheritance protocol, the
 OMIP mutexes do not need any external configuration data, e.g. a ceiling
