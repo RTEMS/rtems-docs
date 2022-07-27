@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 Background
@@ -232,6 +232,58 @@ the task will execute at interrupt level n.
 
 The set of default modes may be selected by specifying the
 ``RTEMS_DEFAULT_MODES`` constant.
+
+.. index:: task life states
+
+Task Life States
+----------------
+
+Independent of the task state with respect to the scheduler, the task life is
+determined by several orthogonal states:
+
+* *protected* or *unprotected*
+
+* *deferred life changes* or *no deferred life changes*
+
+* *restarting* or *not restarting*
+
+* *terminating* or *not terminating*
+
+* *detached* or *not detached*
+
+While the task life is *protected*, asynchronous task restart and termination
+requests are blocked.  A task may still restart or terminate itself.  All tasks
+are created with an unprotected task life.  The task life protection is used by
+the system to prevent system resources being affected by asynchronous task
+restart and termination requests.  The task life protection can be enabled
+(``PTHREAD_CANCEL_DISABLE``) or disabled (``PTHREAD_CANCEL_ENABLE``) for the
+calling task through the ``pthread_setcancelstate()`` directive.
+
+While *deferred life changes* are enabled, asynchronous task restart and
+termination requests are delayed until the task performs a life change itself
+or calls ``pthread_testcancel()``.  Cancellation points are not implemented in
+RTEMS.  Deferred task life changes can be enabled (``PTHREAD_CANCEL_DEFERRED``)
+or disabled (``PTHREAD_CANCEL_ASYNCHRONOUS``) for the calling task through the
+``pthread_setcanceltype()`` directive.  Classic API tasks are created with
+deferred life changes disabled.  POSIX threads are created with deferred life
+changes enabled.
+
+A task is made *restarting* by issuing a task restart request through the
+:ref:`InterfaceRtemsTaskRestart` directive.
+
+A task is made *terminating* by issuing a task termination request through the
+:ref:`InterfaceRtemsTaskExit`, :ref:`InterfaceRtemsTaskDelete`,
+``pthread_exit()``, and ``pthread_cancel()`` directives.
+
+When a *detached* task terminates, the termination procedure completes without
+the need for another task to join with the terminated task.  Classic API tasks
+are created as not detached.  The detached state of created POSIX threads is
+determined by the thread attributes.  They are created as not detached by
+default.  The calling task is made detached through the ``pthread_detach()``
+directive.  The :ref:`InterfaceRtemsTaskExit` directive and self deletion
+though :ref:`InterfaceRtemsTaskDelete` directive make the calling task
+detached.  In contrast, the ``pthread_exit()`` directive does not change the
+detached state of the calling task.
 
 .. index:: task arguments
 .. index:: task prototype
