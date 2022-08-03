@@ -116,7 +116,7 @@ Prepare your RTEMS image to boot from u-boot with the following commands:
 
 .. code-block:: shell
 
-  $ aarch64-rtems6-objcopy -Obinary ticker.exe ticker.bin
+  $ aarch64-rtems@rtems-ver-major@-objcopy -Obinary ticker.exe ticker.bin
   $ gzip -9 ticker.bin
   $ mkimage -A arm64 -O rtems -T kernel -a 0x10000000 -e 0x10000000 -n RTEMS -d ticker.bin.gz rtems.img
 
@@ -179,7 +179,7 @@ This is the entire boot sequence:
   ## Transferring control to RTEMS (at address 10000000) ...
 
   *** BEGIN OF TEST CLOCK TICK ***
-  *** TEST VERSION: 6.0.0.f381e9bab29278e4434b1a93e70d17a7562dc64c
+  *** TEST VERSION: @rtems-version@.f381e9bab29278e4434b1a93e70d17a7562dc64c
   *** TEST STATE: EXPECTED_PASS
   *** TEST BUILD: RTEMS_POSIX_API RTEMS_SMP
   *** TEST TOOLS: 10.3.1 20210409 (RTEMS 6, RSB ad54d1dd3cf8249d9d39deb1dd28b2f294df062d, Newlib eb03ac1)
