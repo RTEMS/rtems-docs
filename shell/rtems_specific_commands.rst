@@ -10,6 +10,8 @@ Introduction
 
 The RTEMS shell has the following RTEMS specific commands:
 
+- rtems_ - Display RTEMS specific detail
+
 - shutdown_ - Shutdown the system
 
 - cpuinfo_ - print per-processor information
@@ -54,6 +56,99 @@ Commands
 This section details the RTEMS Specific Commands available.  A subsection is
 dedicated to each of the commands and describes the behavior and configuration
 of that command as well as providing an example usage.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _rtems:
+
+rtems - RTEMS Details
+---------------------
+.. index:: rtems
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        rtems
+
+DESCRIPTION:
+    This command reports various RTEMS specific details such as a the
+    version, CPU and CPU module, BSP name, version of tools and the
+    build options.
+
+EXIT STATUS:
+    This command returns 0 on success and non-zero if an error is encountered.
+
+NOTES:
+    The following commands are supported:
+
+    - ``ver``:
+      Version of RTEMS running
+
+    - ``cpu``:
+      CPU name and model
+
+    - ``bsp``:
+      Name of the BSP
+
+    - ``tools``:
+      Version of the tools used to build RTEMS
+
+    - ``opts``:
+      RTEMS build options
+
+    - ``all``:
+      All of the available commands
+
+
+EXAMPLES:
+    The following is an example of how to use ``rtems``:
+
+    .. code-block:: shell
+
+        SHLL [/] # rtems
+        RTEMS: 6.0.0 (071640d310b432d15350188c2ebf086653a0d578)
+
+    The version of RTEMS running is displayed. To see the CPU name and
+    moduel enter:
+
+    .. code-block:: shell
+
+        SHLL [/] # rtems cpu
+        CPU: SPARC (w/FPU)
+
+    The ``help`` command will list all available commands. The ``all``
+    command will display all avalable output:
+
+    .. code-block:: shell
+
+        SHLL [/] # rtems all
+        RTEMS: 6.0.0 (071640d310b432d15350188c2ebf086653a0d578)
+        CPU: SPARC (w/FPU)
+        BSP: erc32
+        Tools: 12.1.1 20220622 (RTEMS 6, RSB f4f5d43a98051f7562103aaa2ec7723c628c6947, Newlib ea99f21)
+        Options: DEBUG POSIX
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_RTEMS
+.. index:: CONFIGURE_SHELL_COMMAND_RTEMS
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_RTEMS`` to have
+    this command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_RTEMS`` when all shell commands have been
+    configured.
+
+PROGRAMMING INFORMATION:
+    The configuration structure for the ``rtems`` has the following
+    prototype:
+
+    .. code-block:: c
+
+        extern rtems_shell_cmd_t rtems_shell_RTEMS_Command;
 
 .. raw:: latex
 
