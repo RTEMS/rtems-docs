@@ -8,7 +8,7 @@ Build Your Application
 ======================
 
 You tested a BSP in the previous section.  We built the ``erc32`` BSP
-and it is installed under :file:`$HOME/quick-start/rtems/6`.
+and it is installed under :file:`$HOME/quick-start/rtems/@rtems-ver-major@`.
 
 We will now create a simple Hello World application with a Git
 repository and using the `Waf <https://waf.io>`_ build system.
@@ -148,45 +148,45 @@ The output will be something close to:
 
 .. code-block:: none
 
-     Setting top to                           : $BASE/app/hello 
-     Setting out to                           : $BASE/app/hello/build 
-     RTEMS Version                            : 6 
-     Architectures                            : sparc-rtems6 
-     Board Support Package (BSP)              : sparc-rtems6-erc32 
-     Show commands                            : no 
-     Long commands                            : no 
-     Checking for program 'sparc-rtems6-gcc'  : $BASE/rtems/6/bin/sparc-rtems6-gcc 
-     Checking for program 'sparc-rtems6-g++'  : $BASE/rtems/6/bin/sparc-rtems6-g++ 
-     Checking for program 'sparc-rtems6-gcc'  : $BASE/rtems/6/bin/sparc-rtems6-gcc 
-     Checking for program 'sparc-rtems6-ld'   : $BASE/rtems/6/bin/sparc-rtems6-ld 
-     Checking for program 'sparc-rtems6-ar'   : $BASE/rtems/6/bin/sparc-rtems6-ar 
-     Checking for program 'sparc-rtems6-nm'   : $BASE/rtems/6/bin/sparc-rtems6-nm 
-     Checking for program 'sparc-rtems6-objdump' : $BASE/rtems/6/bin/sparc-rtems6-objdump 
-     Checking for program 'sparc-rtems6-objcopy' : $BASE/rtems/6/bin/sparc-rtems6-objcopy 
-     Checking for program 'sparc-rtems6-readelf' : $BASE/rtems/6/bin/sparc-rtems6-readelf 
-     Checking for program 'sparc-rtems6-strip'   : $BASE/rtems/6/bin/sparc-rtems6-strip 
-     Checking for program 'sparc-rtems6-ranlib'  : $BASE/rtems/6/bin/sparc-rtems6-ranlib 
-     Checking for program 'rtems-ld'             : $BASE/rtems/6/bin/rtems-ld 
-     Checking for program 'rtems-tld'            : $BASE/rtems/6/bin/rtems-tld 
-     Checking for program 'rtems-syms'           : $BASE/rtems/6/bin/rtems-syms 
-     Checking for program 'rtems-bin2c'          : $BASE/rtems/6/bin/rtems-bin2c 
-     Checking for program 'tar'                  : /usr/bin/tar 
-     Checking for program 'gcc, cc'              : $BASE/rtems/6/bin/sparc-rtems6-gcc 
-     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar 
-     Checking for program 'g++, c++'             : $BASE/rtems/6/bin/sparc-rtems6-g++ 
-     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar 
-     Checking for program 'gas, gcc'             : $BASE/rtems/6/bin/sparc-rtems6-gcc 
-     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar 
-     Checking for c flags '-MMD'                 : yes 
-     Checking for cxx flags '-MMD'               : yes 
-     Compiler version (sparc-rtems6-gcc)         : 10.2.1 20210309 (RTEMS 6, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9) 
-     Checking for a valid RTEMS BSP installation : yes 
-     Checking for RTEMS_DEBUG                    : no 
-     Checking for RTEMS_MULTIPROCESSING          : no 
-     Checking for RTEMS_NEWLIB                   : yes 
-     Checking for RTEMS_POSIX_API                : no 
-     Checking for RTEMS_SMP                      : no 
-     Checking for RTEMS_NETWORKING               : no 
+     Setting top to                           : $BASE/app/hello
+     Setting out to                           : $BASE/app/hello/build
+     RTEMS Version                            : @rtems-ver-major@
+     Architectures                            : sparc-rtems@rtems-ver-major@
+     Board Support Package (BSP)              : sparc-rtems@rtems-ver-major@-erc32
+     Show commands                            : no
+     Long commands                            : no
+     Checking for program 'sparc-rtems@rtems-ver-major@-gcc'  : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+     Checking for program 'sparc-rtems@rtems-ver-major@-g++'  : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-g++
+     Checking for program 'sparc-rtems@rtems-ver-major@-gcc'  : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+     Checking for program 'sparc-rtems@rtems-ver-major@-ld'   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ld
+     Checking for program 'sparc-rtems@rtems-ver-major@-ar'   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+     Checking for program 'sparc-rtems@rtems-ver-major@-nm'   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-nm
+     Checking for program 'sparc-rtems@rtems-ver-major@-objdump' : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-objdump
+     Checking for program 'sparc-rtems@rtems-ver-major@-objcopy' : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-objcopy
+     Checking for program 'sparc-rtems@rtems-ver-major@-readelf' : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-readelf
+     Checking for program 'sparc-rtems6-strip'   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-strip
+     Checking for program 'sparc-rtems6-ranlib'  : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ranlib
+     Checking for program 'rtems-ld'             : $BASE/rtems/@rtems-ver-major@/bin/rtems-ld
+     Checking for program 'rtems-tld'            : $BASE/rtems/@rtems-ver-major@/bin/rtems-tld
+     Checking for program 'rtems-syms'           : $BASE/rtems/@rtems-ver-major@/bin/rtems-syms
+     Checking for program 'rtems-bin2c'          : $BASE/rtems/@rtems-ver-major@/bin/rtems-bin2c
+     Checking for program 'tar'                  : /usr/bin/tar
+     Checking for program 'gcc, cc'              : $BASE/rtems/6/bin/sparc-rtems6-gcc
+     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar
+     Checking for program 'g++, c++'             : $BASE/rtems/6/bin/sparc-rtems6-g++
+     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar
+     Checking for program 'gas, gcc'             : $BASE/rtems/6/bin/sparc-rtems6-gcc
+     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar
+     Checking for c flags '-MMD'                 : yes
+     Checking for cxx flags '-MMD'               : yes
+     Compiler version (sparc-rtems@rtems-ver-major@-gcc)         : 10.2.1 20210309 (RTEMS @rtems-ver-major@, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
+     Checking for a valid RTEMS BSP installation : yes
+     Checking for RTEMS_DEBUG                    : no
+     Checking for RTEMS_MULTIPROCESSING          : no
+     Checking for RTEMS_NEWLIB                   : yes
+     Checking for RTEMS_POSIX_API                : no
+     Checking for RTEMS_SMP                      : no
+     Checking for RTEMS_NETWORKING               : no
      'configure' finished successfully (1.142s)
 Build the application:
 
@@ -198,25 +198,25 @@ The output will be something close to:
 
 .. code-block:: none
 
-    Waf: Entering directory `$BASE/app/hello/build/sparc-rtems6-erc32'
+    Waf: Entering directory `$BASE/app/hello/build/sparc-rtems@rtems-ver-major@-erc32'
     [1/3] Compiling init.c
     [2/3] Compiling hello.c
-    [3/3] Linking build/sparc-rtems6-erc32/hello.exe
-    Waf: Leaving directory `$BASE/app/hello/build/sparc-rtems6-erc32'
-    'build-sparc-rtems6-erc32' finished successfully (0.183s)
+    [3/3] Linking build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
+    Waf: Leaving directory `$BASE/app/hello/build/sparc-rtems@rtems-ver-major@-erc32'
+    'build-sparc-rtems@rtems-ver-major@-erc32' finished successfully (0.183s)
 
 Run the executable:
 
 .. code-block:: none
 
-    $HOME/quick-start/rtems/6/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems6-erc32/hello.exe
+    $HOME/quick-start/rtems/@rtems-ver-major@/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
 
 The output will be something close to:
 
 .. code-block:: none
 
-    RTEMS Testing - Run, 6.0.not_released
-    Command Line: $BASE/quick-start/rtems/6/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems6-erc32/hello.exe
+    RTEMS Testing - Run, @rtems-ver-mjminrev@
+    Command Line: $BASE/quick-start/rtems/@rtems-ver-major@/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
     Host: Linux  5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64
     Python: 3.8.5 (default, Jan 27 2021, 15:41:15) [GCC 9.3.0]
     Host: Linux-5.8.0-44-generic-x86_64-with-glibc2.29 (Linux 5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64 x86_64)
@@ -226,7 +226,7 @@ The output will be something close to:
 
     ERC32 emulation enabled
 
-    Loaded build/sparc-rtems6-erc32/hello.exe, entry 0x02000000
+    Loaded build/sparc-rtems@rtems-ver-major@-erc32/hello.exe, entry 0x02000000
 
     Hello World
 
@@ -234,9 +234,9 @@ The output will be something close to:
     fatal source: 5 (RTEMS_FATAL_SOURCE_EXIT)
     fatal code: 0 (0x00000000)
     RTEMS version: 6.0.0.586e06ec6222f1cd1f005aa8f4a34a8b33f5d862
-    RTEMS tools: 10.2.1 20210309 (RTEMS 6, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
+    RTEMS tools: 10.2.1 20210309 (RTEMS @rtems-ver-major@, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
     executing thread ID: 0x08a010001
-    executing thread name: UI1 
+    executing thread name: UI1
     cpu 0 in error mode (tt = 0x101)
     158479  0200d500:  91d02000   ta  0x0
     Run time     : 0:00:00.259136

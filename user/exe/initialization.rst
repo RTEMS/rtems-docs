@@ -87,15 +87,15 @@ sample application in the RTEMS kernel's testsuite::
 
 .. code-block:: none
 
- $ rtems-exeinfo --init arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
- RTEMS Executable Info 5.5416cfa39dd6
- $ rtems-exeinfo --init arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
- exe: arm-rtems5/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
+ $ rtems-exeinfo --init arm-rtems@rtems-ver-major@/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
+ RTEMS Executable Info @rtems-ver-major@.5416cfa39dd6
+ $ rtems-exeinfo --init arm-rtems@rtems-ver-major@/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
+ exe: arm-rtems@rtems-ver-major@/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
 
  Compilation:
   Producers: 2
    |  GNU AS 2.31.1: 14 objects
-   |  GNU C11 7.3.0 20180125 (RTEMS 5, RSB e55769c64cf1a201588565a5662deafe3f1ccdcc, Newlib 103b055035fea328f8bc7826801760fb1c055683): 284 objects
+   |  GNU C11 7.3.0 20180125 (RTEMS @rtems-ver-major@, RSB e55769c64cf1a201588565a5662deafe3f1ccdcc, Newlib 103b055035fea328f8bc7826801760fb1c055683): 284 objects
   Common flags: 4
    | -march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard
 

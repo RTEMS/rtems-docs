@@ -79,4 +79,4 @@ proven over the years to be difficult to manage in production systems.
 
       $ git checkout -t origin/4.11
 
-    Branches are available for the 4.9, 4.10, and 4.11 versions of RTEMS.
+    Branches are available for the 4.9, 4.10, 4.11 and 5 versions of RTEMS.

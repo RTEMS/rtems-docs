@@ -18,11 +18,12 @@ directory suitable permissions to be writable by you as a user.
 
 Lets create a project sandbox for my *Box Sorter* project. First create a
 project directory called :file:`/bd/projects/box-sorter`. Under this create
-:file:`rtems` and under that create :file:`rtems-4.11.0`. Under this path you
-can follow the :ref:`released-version` procedure to build a tool set using the
-prefix of :file:`/bd/projects/box-sorter/rtems/4.11.0`. You are free to create
-your project specific directories under :file:`/bd/projects/box-sorter`. The
-top level directories would be:
+:file:`rtems` and under that create :file:`rtems-@rtems-ver-majminrev@`. Under
+this path you can follow the :ref:`released-version` procedure to build a tool
+set using the prefix of
+:file:`/bd/projects/box-sorter/rtems/@rtems-ver-majminrev@`. You are free to
+create your project specific directories under
+:file:`/bd/projects/box-sorter`. The top level directories would be:
 
 :file:`/bd/projects`
   Project specific development trees.
@@ -30,9 +31,9 @@ top level directories would be:
 :file:`/bd/projects/box-sorter`
   Box Sorter project sandbox.
 
-:file:`/bd/projects/box-sorter/rtems/4.11.0`
-  Project prefix for RTEMS 4.11.0 compiler, debuggers, tools and installed
-  Board Support Package (BSP).
+:file:`/bd/projects/box-sorter/rtems/@rtems-ver-majminrev@`
+  Project prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers, tools and
+  installed Board Support Package (BSP).
 
 A variation is to use the ``--without-rtems`` option with the RSB to not build
 the BSPs when building the tools and to build RTEMS specifically for each
@@ -43,8 +44,9 @@ RTEMS. The top level directories would be:
 :file:`/bd/rtems`
   The top path to production tools.
 
-:file:`/bd/rtems/4.11.0`
-  Production prefix for RTEMS 4.11.0 compiler, debuggers and tools.
+:file:`/bd/rtems/@rtems-ver-majminrev@`
+  Production prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers and
+  tools.
 
 :file:`/bd/projects`
   Project specific development trees.
@@ -62,14 +64,16 @@ up with:
 :file:`/bd/rtems`
   The top path to production tools and kernels.
 
-:file:`/bd/rtems/4.11.0`
-  Production prefix for RTEMS 4.11.0.
+:file:`/bd/rtems/@rtems-ver-majminrev@`
+  Production prefix for RTEMS @rtems-ver-majminrev@.
 
-:file:`/bd/rtems/4.11.0/tools`
-  Production prefix for RTEMS 4.11.0 compiler, debuggers and tools.
+:file:`/bd/rtems/@rtems-ver-majminrev@/tools`
+  Production prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers and
+  tools.
 
-:file:`/bd/rtems/4.11.0/bsps`
-  Production prefix for RTEMS 4.11.0 Board Support Packages (BSPs).
+:file:`/bd/rtems/@rtems-ver-majminrev@/bsps`
+  Production prefix for RTEMS @rtems-ver-majminrev@ Board Support Packages
+  (BSPs).
 
 :file:`/bd/projects`
   Project specific development trees.
@@ -84,9 +88,9 @@ directories would be:
 :file:`/bd/rtems`
   The top path to production tools and kernels.
 
-:file:`/bd/rtems/4.11.0`
-  Production prefix for RTEMS 4.11.0 compiler, debuggers, tools and Board
-  Support Packages (BSPs).
+:file:`/bd/rtems/@rtems-ver-majminrev@`
+  Production prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers, tools
+  and Board Support Packages (BSPs).
 
 :file:`/bd/projects`
   Project specific development trees.

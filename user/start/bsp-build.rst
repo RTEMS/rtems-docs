@@ -45,23 +45,23 @@ To build the BSP with all the tests run this command:
 
     cd $HOME/quick-start/src/rsb/rtems
     ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/5 \
-        --target=sparc-rtems5 --with-rtems-bsp=erc32 --with-rtems-tests=yes 5/rtems-kernel
+        --target=sparc-rtems@rtems-ver-major@ --with-rtems-bsp=erc32 --with-rtems-tests=yes @rtems-ver-major@/rtems-kernel
 
-This command should output something like this:
+This command should output something like:
 
 .. code-block:: none
 
-    RTEMS Source Builder - Set Builder, 5.1.0
-    Build Set: 5/rtems-kernel
-    config: tools/rtems-kernel-5.cfg
-    package: sparc-rtems5-kernel-erc32-1
-    building: sparc-rtems5-kernel-erc32-1
-    sizes: sparc-rtems5-kernel-erc32-1: 2.279GB (installed: 44.612MB)
-    cleaning: sparc-rtems5-kernel-erc32-1
-    reporting: tools/rtems-kernel-5.cfg -> sparc-rtems5-kernel-erc32-1.txt
-    reporting: tools/rtems-kernel-5.cfg -> sparc-rtems5-kernel-erc32-1.xml
-    installing: sparc-rtems5-kernel-erc32-1 -> $BASE/
-    cleaning: sparc-rtems5-kernel-erc32-1
+    RTEMS Source Builder - Set Builder, @rtems-ver-majminver@
+    Build Set: @rtems-ver-major@/rtems-kernel
+    config: tools/rtems-kernel-@rtems-ver-major@.cfg
+    package: sparc-rtems@rtems-ver-major@-kernel-erc32-1
+    building: sparc-rtems@rtems-ver-major@-kernel-erc32-1
+    sizes: sparc-rtems@rtems-ver-major@-kernel-erc32-1: 2.279GB (installed: 44.612MB)
+    cleaning: sparc-rtems@rtems-ver-major@-kernel-erc32-1
+    reporting: tools/rtems-kernel-@rtems-ver-major@.cfg -> sparc-rtems@rtems-ver-major@-kernel-erc32-1.txt
+    reporting: tools/rtems-kernel-@rtems-ver-major@.cfg -> sparc-rtems@rtems-ver-major@-kernel-erc32-1.xml
+    installing: sparc-rtems@rtems-ver-major@-kernel-erc32-1 -> $BASE/
+    cleaning: sparc-rtems@rtems-ver-major@-kernel-erc32-1
     Build Set: Time 0:03:09.896961
 
 The RSB BSP build can be customised with following RSB command line options:
@@ -112,13 +112,13 @@ directory to your ``$PATH`` throughout the remaining steps. Run the command:
 
 .. code-block:: none
 
-    export PATH=$HOME/quick-start/rtems/6/bin:"$PATH"
+    export PATH=$HOME/quick-start/rtems/@rtems-ver-major@/bin:"$PATH"
 
 Check your installed tools can be found by running:
 
 .. code-block:: none
 
-    command -v sparc-rtems6-gcc && echo "found" || echo "not found"
+    command -v sparc-rtems@rtems-ver-major@-gcc && echo "found" || echo "not found"
 
 The output should be:
 
@@ -128,9 +128,10 @@ The output should be:
 
 If ``not found`` is printed the tools are not correctly installed or the path
 has not been correctly set. Check the contents of the path
-:file:`$HOME/quick-start/rtems/6/bin` manually and if :file:`sparc-rtems6-gcc`
-is present the path is wrong. If the file cannot be found return to
-:ref:`QuickStartTools` and install the tools again.
+:file:`$HOME/quick-start/rtems/@rtems-ver-major@/bin` manually and if
+:file:`sparc-rtems@rtems-ver-major@-gcc` is present the path is wrong. If the
+file cannot be found return to :ref:`QuickStartTools` and install the tools
+again.
 
 The first step is to configure the BSP.  There are various BSP build
 configuration options available.  Some options are BSP-specific.  Each section
@@ -145,7 +146,7 @@ everything else.  For detailed information about the BSP build system, see
     cd $HOME/quick-start/src/rtems
     echo "[sparc/erc32]" > config.ini
     echo "BUILD_TESTS = True" >> config.ini
-    ./waf configure --prefix=$HOME/quick-start/rtems/6
+    ./waf configure --prefix=$HOME/quick-start/rtems/@rtems-ver-major@
 
 The first invocation of ``./waf`` needs a bit of time (e.g. 10 seconds) since an
 internal cache file is populated.  This command should output something like
@@ -154,28 +155,28 @@ by ``$BASE``.
 
 .. code-block:: none
 
-    Setting top to                           : $BASE/quick-start/src/rtems 
-    Setting out to                           : $BASE/quick-start/src/rtems/build 
-    Configure board support package (BSP)    : sparc/erc32 
-    Checking for program 'sparc-rtems6-gcc'  : $BASE/quick-start/rtems/6/bin/sparc-rtems6-gcc 
-    Checking for program 'sparc-rtems6-g++'  : $BASE/quick-start/rtems/6/bin/sparc-rtems6-g++ 
-    Checking for program 'sparc-rtems6-ar'   : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
-    Checking for program 'sparc-rtems6-ld'   : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ld 
-    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
-    Checking for program 'g++, c++'          : $BASE/quick-start/rtems/6/bin/sparc-rtems6-g++ 
-    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
-    Checking for program 'gas, gcc'          : $BASE/quick-start/rtems/6/bin/sparc-rtems6-gcc 
-    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
-    Checking for program 'gcc, cc'           : $BASE/quick-start/rtems/6/bin/sparc-rtems6-gcc 
-    Checking for program 'ar'                : $BASE/quick-start/rtems/6/bin/sparc-rtems6-ar 
-    Checking for asm flags '-MMD'            : yes 
-    Checking for c flags '-MMD'              : yes 
-    Checking for cxx flags '-MMD'            : yes 
-    Checking for program 'rtems-bin2c'       : $BASE/quick-start/rtems/6/bin/rtems-bin2c 
-    Checking for program 'gzip'              : /usr/bin/gzip 
-    Checking for program 'rtems-ld'          : $BASE/quick-start/rtems/6/bin/rtems-ld 
-    Checking for program 'rtems-syms'        : $BASE/quick-start/rtems/6/bin/rtems-syms 
-    Checking for program 'xz'                : $BASE/anaconda3/bin/xz 
+    Setting top to                           : $BASE/quick-start/src/rtems
+    Setting out to                           : $BASE/quick-start/src/rtems/build
+    Configure board support package (BSP)    : sparc/erc32
+    Checking for program 'sparc-rtems@rtems-ver-major@-gcc'  : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+    Checking for program 'sparc-rtems@rtems-ver-major@-g++'  : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-g++
+    Checking for program 'sparc-rtems@rtems-ver-major@-ar'   : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+    Checking for program 'sparc-rtems@rtems-ver-major@-ld'   : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ld
+    Checking for program 'ar'                : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+    Checking for program 'g++, c++'          : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-g++
+    Checking for program 'ar'                : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+    Checking for program 'gas, gcc'          : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+    Checking for program 'ar'                : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+    Checking for program 'gcc, cc'           : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+    Checking for program 'ar'                : $BASE/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+    Checking for asm flags '-MMD'            : yes
+    Checking for c flags '-MMD'              : yes
+    Checking for cxx flags '-MMD'            : yes
+    Checking for program 'rtems-bin2c'       : $BASE/quick-start/rtems/@rtems-ver-major@/bin/rtems-bin2c
+    Checking for program 'gzip'              : /usr/bin/gzip
+    Checking for program 'rtems-ld'          : $BASE/quick-start/rtems/@rtems-ver-major@/bin/rtems-ld
+    Checking for program 'rtems-syms'        : $BASE/quick-start/rtems/@rtems-ver-major@/bin/rtems-syms
+    Checking for program 'xz'                : $BASE/anaconda3/bin/xz
     'configure' finished successfully (0.414s)
 
 Building the BSP is the second step.
@@ -219,12 +220,12 @@ by ``$BASE``.
     Waf: Leaving directory `$BASE/quick-start/src/rtems/build'
     'install' finished successfully (0.081s)
     Waf: Entering directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
-    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/libchip/am29lv160.h (from bsps/include/libchip/am29lv160.h)
-    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/libchip/mc146818a.h (from bsps/include/libchip/mc146818a.h)
-    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/libchip/mc68681.h (from bsps/include/libchip/mc68681.h))
+    + install $BASE/quick-start/rtems/@rtems-ver-major@/sparc-rtems@rtems-ver-major@/erc32/lib/include/libchip/am29lv16.h (from bsps/include/libchip/am29lv1.h)
+    + install $BASE/quick-start/rtems/@rtems-ver-major@/sparc-rtems@rtems-ver-major@/erc32/lib/include/libchip/mc146818a.h (from bsps/include/libchip/mc146818a.h)
+    + install $BASE/quick-start/rtems/@rtems-ver-major@/sparc-rtems@rtems-ver-major@/erc32/lib/include/libchip/mc68681.h (from bsps/include/libchip/mc68681.h))
     ...
-    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/rtems/score/watchdogticks.h (from cpukit/include/rtems/score/watchdogticks.h)
-    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/rtems/score/wkspace.h (from cpukit/include/rtems/score/wkspace.h)
-    + install $BASE/quick-start/rtems/6/sparc-rtems6/erc32/lib/include/rtems/score/wkspacedata.h (from cpukit/include/rtems/score/wkspacedata.h)
+    + install $BASE/quick-start/rtems/@rtems-ver-major@/sparc-rtems@rtems-ver-major@/erc32/lib/include/rtems/score/watchdogticks.h (from cpukit/include/rtems/score/watchdogticks.h)
+    + install $BASE/quick-start/rtems/@rtems-ver-major@/sparc-rtems@rtems-ver-major@/erc32/lib/include/rtems/score/wkspace.h (from cpukit/include/rtems/score/wkspace.h)
+    + install $BASE/quick-start/rtems/@rtems-ver-major@/sparc-rtems@rtems-ver-major@/erc32/lib/include/rtems/score/wkspacedata.h (from cpukit/include/rtems/score/wkspacedata.h)
     Waf: Leaving directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
     'install_sparc/erc32' finished successfully (1.834s))

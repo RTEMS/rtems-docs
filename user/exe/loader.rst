@@ -458,9 +458,9 @@ into the base image.
 
 .. code-block:: none
 
- $ sparc-rtems5-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.pre
- $ rtems-syms -e -C sparc-rtems5-gcc -c "-mcpu=cypress" -o foo-sym.o foo.pre
- $ sparc-rtems5-gcc -mcpu=cypress foo.o foo-sym.o -lrtemsbsp -lrtemscpu -o foo.exe
+ $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.pre
+ $ rtems-syms -e -C sparc-rtems@rtems-ver-major@-gcc -c "-mcpu=cypress" -o foo-sym.o foo.pre
+ $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o foo-sym.o -lrtemsbsp -lrtemscpu -o foo.exe
 
 The link command line steps in this example are not complete.
 
@@ -486,8 +486,8 @@ file. First create the symbol table's executable object file:
 
 .. code-block:: none
 
- $ sparc-rtems5-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.exe
- $ rtems-syms -C sparc-rtems5-gcc -c "-mcpu=cypress" -o foo-sym.o foo.exe
+ $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.exe
+ $ rtems-syms -C sparc-rtems@rtems-ver-major@-gcc -c "-mcpu=cypress" -o foo-sym.o foo.exe
 
 The link command line steps in this example are not complete.
 
@@ -632,7 +632,7 @@ in a library with a single command.
 
 .. code-block:: none
 
-  $ sparc-rtems5-strip libc.a
+  $ sparc-rtems@rtems-ver-major@-strip libc.a
 
 Large Memory
 ------------
