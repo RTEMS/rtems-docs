@@ -50,7 +50,8 @@ The reference platform for this BSP is the Qemu `virt` machine.
 Build Configuration Options
 ---------------------------
 
-The following options are available at the configure command line.
+The following options can be used in the BSP section of the ``waf``
+configuration INI file. The ``waf`` defaults can be used to inspect the values.
 
 ``BSP_PRESS_KEY_FOR_RESET``
     If defined to a non-zero value, then print a message and wait until pressed

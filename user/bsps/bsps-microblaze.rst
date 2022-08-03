@@ -53,8 +53,8 @@ The name ``system_dtb`` is significant as it is the name expected by the BSP.
   $ rtems-bin2c -C -A 8 -N system_dtb my_device_tree.dtb my_dtb
 
 The ``BSP_MICROBLAZE_FPGA_DTB_HEADER_PATH`` BSP configuration option can then be
-set to the path of the resulting source file, ``my_dtb.c``, to include it in the
-BSP build.
+set to the path of the resulting source file, ``my_dtb.c``, in the waf INI file
+to include it in the BSP build.
 
 .. code-block:: none
 
@@ -64,7 +64,7 @@ BSP build.
 Running Executables
 -------------------
 
-A .dtb (device tree blob) file should be provided to QEMU via the ``-hw-dtb``
+A ``.dtb`` (device tree blob) file should be provided to QEMU via the ``-hw-dtb``
 option. In the example command below, the device tree blob comes from the Xilinx
 Petalinux KCU105 MicroBlaze BSP (https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html).
 
@@ -94,7 +94,7 @@ Then start GDB and connect to QEMU.
 
 .. code-block:: none
 
-  $ microblaze-rtems6-gdb build/microblaze/kcu105_qemu/testsuites/samples/hello.exe
+  $ microblaze-rtems@rtems-ver-major@-gdb build/microblaze/kcu105_qemu/testsuites/samples/hello.exe
   (gdb) target remote localhost:1234
   (gdb) break Init
   (gdb) continue
@@ -146,7 +146,7 @@ application, and debug as usual. By default the GDB server listens on port 3002.
 
 .. code-block:: none
 
-  $ microblaze-rtems6-gdb example.exe
+  $ microblaze-rtems@rtems-ver-major@-gdb example.exe
   (gdb) target extended-remote localhost:3002
   (gdb) load
   (gdb) break Init

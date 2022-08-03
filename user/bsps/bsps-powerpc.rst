@@ -36,10 +36,10 @@ image.  Use the following commands:
 
 .. code-block:: none
 
-    powerpc-rtems5-objcopy -O binary -R .comment -S ticker.exe rtems
+    powerpc-rtems@rtems-ver-major@-objcopy -O binary -R .comment -S ticker.exe rtems
     gzip -9 -f rtems
-    powerpc-rtems5-ld -o ticker.boot bootloader.o --just-symbols=ticker.exe -b binary rtems.gz -T ppcboot.lds -no-warn-mismatch
-    powerpc-rtems5-objcopy -O binary ticker.boot ticker.bin
+    powerpc-rtems@rtems-ver-major@-ld -o ticker.boot bootloader.o --just-symbols=ticker.exe -b binary rtems.gz -T ppcboot.lds -no-warn-mismatch
+    powerpc-rtems@rtems-ver-major@-objcopy -O binary ticker.boot ticker.bin
 
 mpc55xxevb
 ==========
@@ -107,7 +107,7 @@ image.  Use the following commands:
 
 .. code-block:: none
 
-    powerpc-rtems5-objcopy -O binary app.exe app.bin
+    powerpc-rtems@rtems-ver-major@-objcopy -O binary app.exe app.bin
     gzip -9 -f -c app.bin > app.bin.gz
     mkimage -A ppc -O linux -T kernel -a 0x4000 -e 0x4000 -n RTEMS -d app.bin.gz app.img
 

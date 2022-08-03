@@ -20,7 +20,7 @@ in the RTEMS testsuite.
 Build Configuration Options
 ---------------------------
 
-There are no options available to ``configure`` at build time, at the moment.
+There are no BSP configuration options available at build time.
 
 Testing with QEMU
 -----------------
