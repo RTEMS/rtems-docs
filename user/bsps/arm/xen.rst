@@ -42,13 +42,13 @@ The ``ticker.exe`` file can be found in the BSP build tree at:
 
 .. code-block:: none
 
-    arm-rtems5/c/xen_virtual/testsuites/samples/ticker.exe
+    arm-rtems@rtems-ver-major@/c/xen_virtual/testsuites/samples/ticker.exe
 
 The ``ticker.exe`` elf file must be translated to a binary format.
 
 .. code-block:: none
 
-    arm-rtems5-objcopy -O binary ticker.exe ticker.bin
+    arm-rtems@rtems-ver-major@-objcopy -O binary ticker.exe ticker.bin
 
 Then place the ``ticker.bin`` file on the dom0 filesystem.
 

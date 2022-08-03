@@ -12,7 +12,7 @@ The default bootloader on the Raspberry Pi which is used to boot Raspbian
 or other OS can be also used to boot RTEMS. U-boot can also be used.
 
 Setup SD card
-----------------
+-------------
 
 The Raspberry Pis have an unconventional booting mechanism. The GPU
 boots first, initializes itself, runs the bootloader and starts the CPU.
@@ -20,13 +20,13 @@ The bootloader looks for a kernel image, by default the kernel images must
 have a name of the form ``kernel*.img`` but this can be changed by adding
 `kernel=<img_name>` to ``config.txt``.
 
-You must provide the required firmware files on the SD card for the GPU to proceed,
-and thereby to boot RTEMS.
-The BSP currently boots up with an older version of the official firmware. These files
-can be downloaded from
-`the Raspberry Pi Firmware Repository <https://github.com/raspberrypi/firmware/tree/1.20200601/boot>`_.
-You can remove the ``kernel*.img`` files if you want to, but don't touch
-the other files.
+You must provide the required firmware files on the SD card for the GPU to
+proceed, and thereby to boot RTEMS.  The BSP currently boots up with an older
+version of the official firmware. These files can be downloaded from `the
+Raspberry Pi Firmware Repository
+<https://github.com/raspberrypi/firmware/tree/1.20200601/boot>`_.  You can
+remove the ``kernel*.img`` files if you want to, but don't touch the other
+files.
 
 Copy these files in to a SD card with FAT filesystem.
 
@@ -41,7 +41,7 @@ To create the kernel image:
 
 .. code-block:: none
 
-     $ arm-rtems5-objcopy -Obinary hello.exe kernel.img
+     $ xsarm-rtems@rtems-ver-major@-objcopy -Obinary hello.exe kernel.img
 
 Copy the kernel image to the SD card.
 
@@ -54,7 +54,7 @@ Make sure you have these lines below, in your ``config.txt``.
      kernel=kernel.img
 
 SPI Driver
-------------
+----------
 
 SPI drivers are registered by the ``rpi_spi_init(bool bidirectional_mode)`` function.
 
@@ -72,7 +72,7 @@ SPI drivers are registered by the ``rpi_spi_init(bool bidirectional_mode)`` func
      }
 
 I2C Driver
-------------
+----------
 
 I2C drivers are registered by the ``rpi_setup_i2c_bus()`` function.
 
@@ -132,7 +132,7 @@ In a new terminal, run GDB using
 
 .. code-block:: none
 
-     $ arm-rtems5-gdb hello.exe
+     $ arm-rtems@rtems-ver-major@-gdb hello.exe
 
 This will open GDB and will load the symbol table from hello.exe. Issue the
 following commands in the GDB prompt.

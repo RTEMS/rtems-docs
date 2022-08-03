@@ -32,7 +32,7 @@ To boot via uboot, the ELF must be converted to a U-Boot image like below:
 
 .. code-block:: none
 
-    arm-rtems5-objcopy hello.exe -O binary app.bin
+    arm-rtems@rtems-ver-major@-objcopy hello.exe -O binary app.bin
     gzip -9 app.bin
     mkimage -A arm -O linux -T kernel -a 0x80000000 -e 0x80000000 -n RTEMS -d app.bin.gz rtems-app.img
 
@@ -77,7 +77,8 @@ overlay has to be provided. The overlay must add an additional attribute
 
 For example,
 
-.. code-block::
+.. code-block:: none
+
      /dts-v1/;
 
      / {
@@ -109,7 +110,7 @@ For registering with a custom path, the ``bsp_register_spi()`` can be used.
 
 The function prototype is given below:
 
-.. code-block:: C
+.. code-block:: c
 
     rtems_status_code bsp_register_spi(
        const char         *bus_path,
@@ -153,7 +154,7 @@ The modification is:
 
 The resulting wiring is:
 
-.. code-block::
+.. code-block:: none
 
     1 ===  /--=== 2
     3 ===  |  === 4
@@ -198,7 +199,7 @@ Cortex M only debuggers (like the Segger J-Link Edu Mini) won't work.
 If the debugger offers a gdb server (like OpenOCD or Segger J-Link) the
 following gdb start script can be used:
 
-.. code-block::
+.. code-block:: none
 
     define reset
             echo -- Reset target and wait for U-Boot to start kernel.\n

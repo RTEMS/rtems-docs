@@ -6,25 +6,27 @@
 arm (ARM)
 *********
 
-.. include:: arm/altera-cyclone-v.rst
-.. include:: arm/atsam.rst
-.. include:: arm/beagle.rst
-.. include:: arm/csb336.rst
-.. include:: arm/csb337.rst
-.. include:: arm/edb7312.rst
-.. include:: arm/gumstix.rst
-.. include:: arm/imx.rst
-.. include:: arm/imxrt.rst
-.. include:: arm/lm3s69xx.rst
-.. include:: arm/lpc176x.rst
-.. include:: arm/lpc24xx.rst
-.. include:: arm/raspberrypi.rst
-.. include:: arm/realview-pbx-a9.rst
-.. include:: arm/rtl22xx.rst
-.. include:: arm/smdk2410.rst
-.. include:: arm/stm32f4.rst
-.. include:: arm/stm32h7.rst
-.. include:: arm/tms570.rst
-.. include:: arm/xen.rst
-.. include:: arm/xilinx-zynq.rst
-.. include:: arm/xilinx-zynqmp.rst
+.. toctree::
+
+  arm/altera-cyclone-v.rst
+  arm/atsam.rst
+  arm/beagle.rst
+  arm/csb336.rst
+  arm/csb337.rst
+  arm/edb7312.rst
+  arm/gumstix.rst
+  arm/imx.rst
+  arm/imxrt.rst
+  arm/lm3s69xx.rst
+  arm/lpc176x.rst
+  arm/lpc24xx.rst
+  arm/raspberrypi.rst
+  arm/realview-pbx-a9.rst
+  arm/rtl22xx.rst
+  arm/smdk2410.rst
+  arm/stm32f4.rst
+  arm/stm32h7.rst
+  arm/tms570.rst
+  arm/xen.rst
+  arm/xilinx-zynq.rst
+  arm/xilinx-zynqmp.rst

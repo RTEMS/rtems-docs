@@ -15,7 +15,9 @@ U-Boot or barebox.
 Build Configuration Options
 ---------------------------
 
-The following options are available at the configure command line.
+The following options can be used in the BSP section of the waf
+configuration INI file. The waf defaults can be used to inspect the
+values.
 
 ``BSP_PRESS_KEY_FOR_RESET``
     If defined to a non-zero value, then print a message and wait until pressed
@@ -73,7 +75,7 @@ image.  Use the following commands:
 
 .. code-block:: none
 
-    arm-rtems5-objcopy -O binary app.exe app.bin
+    arm-rtems@rtems-ver-major@-objcopy -O binary app.exe app.bin
     gzip -9 -f -c app.bin > app.bin.gz
     mkimage -A arm -O linux -T kernel -a 0x80200000 -e 0x80200000 -n RTEMS -d app.bin.gz app.img
 

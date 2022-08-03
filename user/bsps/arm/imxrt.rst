@@ -39,7 +39,7 @@ For programming the HyperFlash in case 1, you can use the on board debugger
 integrated into the IMXRT1050-EVKB. You can generate a flash image out of a
 compiled RTEMS application with for example::
 
-  arm-rtems6-objcopy -O binary build/arm/imxrt1052/testsuites/samples/hello.exe hello.bin
+  arm-rtems@rtems-ver-major@-objcopy -O binary build/arm/imxrt1052/testsuites/samples/hello.exe hello.bin
 
 Then just copy the generated binary to the mass storage provided by the
 debugger. Wait a bit till the mass storage vanishes and re-appears. After that,
@@ -91,25 +91,26 @@ The BSP uses a FDT based initialization. The FDT is linked into the application.
 You can find the default FDT used in the BSP in
 `bsps/arm/imxrt/dts/imxrt1050-evkb.dts`. The FDT is split up into two parts. The
 core part is put into an `dtsi` file and is installed together with normal
-headers into `${PREFIX}/arm-rtems6/imxrt1052/lib/include`. You can use that to
-create your own device tree based on that. Basically use something like::
+headers into `${PREFIX}/arm-rtems@rtems-ver-major@/imxrt1052/lib/include`. You
+can use that to create your own device tree based on that. Basically use
+something like::
 
   /dts-v1/;
-  
+
   #include <imxrt/imxrt1050-pinfunc.h>
   #include <imxrt/imxrt1050.dtsi>
-  
+
   &lpuart1 {
           pinctrl-0 = <&pinctrl_lpuart1>;
           status = "okay";
   };
-  
+
   &chosen {
           stdout-path = &lpuart1;
   };
-  
+
   /* put your further devices here */
-  
+
   &iomuxc {
           pinctrl_lpuart1: lpuart1grp {
                   fsl,pins = <
@@ -117,17 +118,19 @@ create your own device tree based on that. Basically use something like::
                           IMXRT_PAD_GPIO_AD_B0_13__LPUART1_RX     0x13000
                   >;
           };
-  
+
           /* put your further pinctrl groups here */
   };
 
 You can then convert your FDT into a C file with (replace `YOUR.dts` and similar
-with your FDT source names)::
+with your FDT source names):
 
-  sh> arm-rtems6-cpp -P -x assembler-with-cpp \
-                     -I ${PREFIX}/arm-rtems6/imxrt1052/lib/include \
-                     -include "YOUR.dts" /dev/null | \
-            dtc -O dtb -o "YOUR.dtb" -b 0 -p 64
+.. code-block:: none
+
+  sh> arm-rtems@rtems-ver-major@-cpp -P -x assembler-with-cpp \
+             -I ${PREFIX}/arm-rtems@rtems-ver-major@/imxrt1052/lib/include \
+             -include "YOUR.dts" /dev/null | \
+         dtc -O dtb -o "YOUR.dtb" -b 0 -p 64
   sh> rtems-bin2c -A 8 -C -N imxrt_dtb "YOUR.dtb" "YOUR.c"
 
 You'll get a C file which defines the `imxrt_dtb` array. Make sure that your new
@@ -145,7 +148,7 @@ can overwrite the following constant:
 .. code-block:: c
 
   #include "fsl_clock_config.h"
-  
+
   const clock_arm_pll_config_t armPllConfig_BOARD_BootClockRUN = {
       .loopDivider = 100,
       .src = 0,

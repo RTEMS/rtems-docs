@@ -27,7 +27,7 @@ image.  Use the following commands:
 
 .. code-block:: none
 
-    arm-rtems5-objcopy -O binary app.exe app.bin
+    arm-rtems@rtems-ver-major@-objcopy -O binary app.exe app.bin
     gzip -9 -f -c app.bin > app.bin.gz
     mkimage -A arm -O linux -T kernel -a 0x00300000 -e 0x00300000 -n RTEMS -d app.bin.gz app.img
 
