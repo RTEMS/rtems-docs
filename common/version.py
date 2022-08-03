@@ -111,6 +111,9 @@ def _pretty_day(ctx, date):
 
 def get(ctx, rtems_major_version):
     global _version
+    global _major
+    global _minor
+    global _revision
     global _date
     global _released
     version = _version
@@ -184,7 +187,7 @@ def minor():
     return _minor
 
 def revision():
-    return revision
+    return _revision
 
 def date():
     return _date

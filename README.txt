@@ -504,6 +504,9 @@ existing documentation for an example and if unsure ask.
    identifed by the standard shell prompt characters where '$' is a
    user prompt and '#' is a 'root' prompt.
 
+   Do not embed the version or version major number in the literal
+   commands or examples. Use the replacements listed in 10.
+
 6. Use the directives for 'note', 'warning', and 'topic'. Do not add 'TIP',
    'Important' or 'Warning' to the text. Let the mark-up language handle
    this. The supported directives are:
@@ -582,3 +585,31 @@ existing documentation for an example and if unsure ask.
      bugs         : https://devel.rtems.org/wiki/Bugs/
      gsoc         : https://devel.rtems.org/wiki/GSoC/
      socis        : https://devel.rtems.org/wiki/SOCIS/
+
+10. Use the following to embed the version number in any part of the
+    documentation source:
+
+     1. @rtems-version@
+
+        The complete version string of the documentation.
+
+     2. @rtems-ver-major@
+
+        The version major number.
+
+     2. @rtems-ver-minor@
+
+        The version minor number.
+
+     2. @rtems-ver-revision@
+
+        The version revision number.
+
+    The replacement happens during the source read phase of the build
+    and is not context specific. The subsituation will happen in code
+    blocks and other normally quoated area.
+
+    It is a requirement these be used then embedded commands or
+    related text in the documentation to let the documentatoin track
+    the release. For example `microblaze-rtems6-gdb` should be written
+    as `microblaze-rtems@rtems-ver-major@-gdb`.
