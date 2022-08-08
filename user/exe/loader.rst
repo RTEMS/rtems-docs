@@ -837,6 +837,7 @@ Architectures
 
 The following architectures are supported:
 
+ - AArch64
  - ARM
  - Blackfin
  - H8300
@@ -849,10 +850,19 @@ The following architectures are supported:
  - SPARC
  - V850
 
+AArch64
+^^^^^^^
+
+The AArch64 relocation backend supports veneers which is trampolines.
+
+The veneer implementation is two instructions and a 64bit target address
+making the overhead 16 bytes for each veneer. The performance overhead is two
+instructions.
+
 ARM
 ^^^
 
-The ARM relocation backend supports veneers which is trampolines.
+The ARM relocation backend supports veneers.
 
 The veneer implementation is a single instruction and a 32bit target address
 making the overhead 8 bytes for each veneer. The performance overhead is a
