@@ -238,7 +238,7 @@ make sure the Git submodules are up-to-date.
 
 .. code-block:: none
 
-    $ ./spec2dmodules.py
+    $ ./spec2modules.py
 
 The script modifies or creates source files in :file:`modules/rtems` and
 :file:`modules/rtems-docs`.  Create patch sets for these changes just as if
