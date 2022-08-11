@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 1988, 2022 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -477,26 +477,22 @@ configuration option enabled.
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal
-to zero.
+* The value of the configuration option shall be greater than or equal to zero.
 
-* The value of the configuration option shall be less than or equal
-to 65535.
+* The value of the configuration option shall be less than or equal to 65535.
 
 * The value of the configuration option shall be less than or equal to a
-  BSP-specific and application-specific value which depends on the size
-  of the memory available to the application.
+  BSP-specific and application-specific value which depends on the size of the
+  memory available to the application.
 
 * The value of the configuration option may be defined through
   :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
   object class, if the value passed to :c:func:`rtems_resource_unlimited`
   satisfies all other constraints of the configuration option.
 
-* The value of the configuration option shall be zero if the POSIX API
-is not
-  enabled (e.g. RTEMS was built without the ``RTEMS_POSIX_API = True``
-  build configuration option).  Otherwise a compile time error in the
-  configuration
+* The value of the configuration option shall be zero if the POSIX API is not
+  enabled (e.g. RTEMS was built without the ``RTEMS_POSIX_API = True`` build
+  configuration option).  Otherwise a compile time error in the configuration
   file will occur.
 
 .. Generated from spec:/acfg/if/min-posix-thread-stack-size
