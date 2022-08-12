@@ -167,7 +167,7 @@ The resulting wiring is:
    17 ===     === 18
    19 ===     === 20
 
-.. figure:: ../../images/user/bbb-p2-debug-mod.jpg
+.. figure:: ../../../images/user/bbb-p2-debug-mod.jpg
   :width: 50%
   :align: center
   :alt: BeagleBone Black JTAG Hardware Modification
