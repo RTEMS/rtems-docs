@@ -340,12 +340,15 @@ def doc_pdf(ctx, source_dir, conf_dir, sources):
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
+    env_latex = ctx.env.derive()
+    env_latex.TEXINPUTS = output_dir + ':'
     ctx(
         features     = 'tex',
         cwd          = output_dir,
         type         = ctx.env.LATEX_CMD,
         source       = "%s/%s.tex" % (buildtype, ctx.path.name),
-        prompt       = 0
+        prompt       = 0,
+        env          = env_latex
     )
     ctx.install_files('${PREFIX}',
                       '%s/%s.pdf' % (buildtype, ctx.path.name),
