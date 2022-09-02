@@ -24,6 +24,7 @@ Configuring a System
     idle-task
     scheduler-general
     scheduler-clustered
+    face-technical-standard
     bsp-related
     mpci
     libpci
