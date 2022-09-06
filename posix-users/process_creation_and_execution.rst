@@ -313,16 +313,22 @@ pthread_atfork - Register Fork Handlers
 .. list-table::
  :class: rtems-table
 
- * - ``ENOSYS``
-   - This routine is not supported by RTEMS.
+ * - ``0``
+   - This routine is a non-functional stub.
 
 **DESCRIPTION:**
 
-This routine is not supported by RTEMS.
+This routine is non-functional stub.
 
 **NOTES:**
 
-NONE
+The POSIX specification for ``pthread_atfork()`` does not address the behavior
+when in a single process environment. Originally, the RTEMS implementation
+returned -1 and set errno to ``ENOSYS``. This was an arbitrary decision
+part with no basis from the wider POSIX community. The FACE Technical
+Standard includes profiles without multiple process support and defined
+the behavior in a single process environment to return 0. Logically, the
+application can register atfork handlers but they will never be invoked.
 
 .. _wait:
 
@@ -344,7 +350,7 @@ wait - Wait for Process Termination
 **STATUS CODES:**
 
 .. list-table::
- :class: rtems-table
+ 
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
