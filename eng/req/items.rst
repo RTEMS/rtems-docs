@@ -284,6 +284,10 @@ cppflags
     The attribute value shall be a list. Each list element shall be a
     :ref:`SpecTypeBuildCPreprocessorOption`.
 
+cxxflags
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildCXXCompilerOption`.
+
 includes
     The attribute value shall be a list. Each list element shall be a
     :ref:`SpecTypeBuildIncludePath`.
@@ -327,6 +331,7 @@ Please have a look at the following example:
     copyrights:
     - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
     cppflags: []
+    cxxflags: []
     enabled-by: true
     includes: []
     ldflags: []
@@ -509,6 +514,18 @@ referenced build items.  The ``includes``, ``ldflags``, ``objects``, and
 attributes of the build group. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
+cflags
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildCCompilerOption`.
+
+cppflags
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildCPreprocessorOption`.
+
+cxxflags
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildCXXCompilerOption`.
+
 includes
     The attribute value shall be a list. Each list element shall be a
     :ref:`SpecTypeBuildIncludePath`.
@@ -536,8 +553,11 @@ Please have a look at the following example:
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     build-type: group
+    cflags: []
     copyrights:
     - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    cppflags: []
+    cxxflags: []
     enabled-by:
     - BUILD_TESTS
     - BUILD_SAMPLES
