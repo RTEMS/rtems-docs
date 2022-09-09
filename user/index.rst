@@ -20,7 +20,7 @@ RTEMS User Manual (|version|).
     | |copy| 2017 Tanu Hari Dixit
     | |copy| 2016, 2019 embedded brains GmbH
     | |copy| 2016, 2019 Sebastian Huber
-    | |copy| 2012, 2020 Chris Johns
+    | |copy| 2012, 2022 Chris Johns
     | |copy| 2012, 2020 Gedare Bloom
     | |copy| 1988, 2018 On-Line Applications Research Corporation (OAR)
 
@@ -37,6 +37,7 @@ RTEMS User Manual (|version|).
     support/index
     hosts/index
     installation/index
+    deployment/index
 
     hardware/index
     bld/index
