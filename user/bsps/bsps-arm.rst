@@ -14,6 +14,7 @@ arm (ARM)
   arm/csb336.rst
   arm/csb337.rst
   arm/edb7312.rst
+  arm/fvp.rst
   arm/gumstix.rst
   arm/imx.rst
   arm/imxrt.rst
