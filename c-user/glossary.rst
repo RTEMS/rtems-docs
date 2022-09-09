@@ -256,7 +256,7 @@ Glossary
     dynamic extension sets
         The dynamic extension sets are a list of :term:`user extensions`.  The list
         is defined by the system services used by the application and directive calls
-        such as :c:func:`rtems_extension_create`.  See also
+        such as :ref:`InterfaceRtemsExtensionCreate`.  See also
         :term:`initial extension sets`.
 
     EARS
@@ -425,7 +425,7 @@ Glossary
         The home scheduler of a :term:`task` is a :term:`scheduler` which is an
         :term:`eligible scheduler` and which is assigned to the task during its
         initialization or explicitly via a directive call such as
-        :c:func:`rtems_task_set_scheduler`.
+        :ref:`InterfaceRtemsTaskSetScheduler`.
 
     homogeneous
         A multiprocessor computer system composed of a single type of processor.
@@ -776,8 +776,8 @@ Glossary
         Each :term:`task` has exactly one real priority.  The real priority is
         always with respect to the :term:`home scheduler` of a task.  It is defined
         during task initialization.  It may be changed by directives such as
-        :c:func:`rtems_task_set_priority` and
-        :c:func:`rtems_task_set_scheduler`.  The real priority is the foundation
+        :ref:`InterfaceRtemsTaskSetPriority` and
+        :ref:`InterfaceRtemsTaskSetScheduler`.  The real priority is the foundation
         of the :term:`current priority`.
 
     real-time

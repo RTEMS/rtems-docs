@@ -407,9 +407,9 @@ scheduler.
 This scheduler configuration option is an advanced configuration option.
 Think twice before you use it.
 
-Schedulers can be identified via :c:func:`rtems_scheduler_ident`.
+Schedulers can be identified via :ref:`InterfaceRtemsSchedulerIdent`.
 
-Use :c:func:`rtems_build_name` to define the scheduler name.
+Use :ref:`InterfaceRtemsBuildName` to define the scheduler name.
 
 .. rubric:: CONSTRAINTS:
 
@@ -749,7 +749,7 @@ The following constraints apply to this configuration option:
 
   The ``obj_name`` macro parameter shall be the scheduler object name.  It is
   recommended to define the scheduler object name through
-  :c:func:`rtems_build_name`.
+  :ref:`InterfaceRtemsBuildName`.
 
 * Where the system was build with SMP support enabled, the table shall have one
   or more entries, otherwise it shall have exactly one entry.

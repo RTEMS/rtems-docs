@@ -135,8 +135,8 @@ If this configuration option is specified, then
   ``<rtems/confdefs.h>`` for the Classic API initialization task,
 
 * the Classic API initialization task is constructed by
-  :c:func:`rtems_task_construct` instead of using
-  :c:func:`rtems_task_create`,
+  :ref:`InterfaceRtemsTaskConstruct` instead of using
+  :ref:`InterfaceRtemsTaskCreate`,
 
 * the maximum thread-local storage size defined by
   :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic API
@@ -164,7 +164,7 @@ The following constraints apply to this configuration option:
   :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
 * The value of the configuration option shall be defined using
-  :c:func:`RTEMS_TASK_STORAGE_SIZE`.
+  :ref:`InterfaceRTEMSTASKSTORAGESIZE`.
 
 .. Generated from spec:/acfg/if/init-task-entrypoint
 
@@ -273,7 +273,7 @@ initialization task.
 
 .. rubric:: NOTES:
 
-Use :c:func:`rtems_build_name` to define the task name.
+Use :ref:`InterfaceRtemsBuildName` to define the task name.
 
 .. rubric:: CONSTRAINTS:
 

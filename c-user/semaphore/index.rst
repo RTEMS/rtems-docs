@@ -7,7 +7,7 @@
 .. index:: counting semaphores
 .. index:: mutual exclusion
 
-.. _RTEMSAPIClassicSemaphore:
+.. _RTEMSAPIClassicSem:
 
 Semaphore Manager
 *****************

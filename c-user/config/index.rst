@@ -10,6 +10,7 @@ Configuring a System
 
 .. toctree::
 
+    introduction
     intro
     general
     device-driver
@@ -29,4 +30,5 @@ Configuring a System
     mpci
     libpci
     ada
+    directives
     obsolete

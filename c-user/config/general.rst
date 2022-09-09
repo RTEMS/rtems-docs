@@ -1008,7 +1008,7 @@ By allowing users to declare all resources as being unlimited the user can
 avoid identifying and limiting the resources used.
 
 The object maximum of each class can be configured also individually using
-the :c:func:`rtems_resource_unlimited` macro.
+the :ref:`InterfaceRtemsResourceUnlimited` macro.
 
 .. rubric:: CONSTRAINTS:
 
@@ -1091,7 +1091,7 @@ is verbose.
 .. rubric:: NOTES:
 
 You may use this feature to debug system initialization issues.  The
-:c:func:`printk` function is used to print the information.
+:ref:`InterfacePrintk` function is used to print the information.
 
 .. Generated from spec:/acfg/if/zero-workspace-automatically
 

@@ -73,8 +73,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-message-queues
@@ -127,8 +127,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-partitions
@@ -179,8 +179,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-periods
@@ -231,8 +231,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-ports
@@ -283,8 +283,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-regions
@@ -335,8 +335,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-semaphores
@@ -391,8 +391,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-tasks
@@ -461,8 +461,8 @@ The following constraints apply to this configuration option:
   <https://en.cppreference.com/w/c/types/integer>`_.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-thread-local-storage-size
@@ -576,8 +576,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-user-extensions
@@ -654,15 +654,15 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 
 The value of this configuration option defines the minimum count of Classic
-API Tasks which are constructed by :c:func:`rtems_task_construct`.
+API Tasks which are constructed by :ref:`InterfaceRtemsTaskConstruct`.
 
 .. rubric:: NOTES:
 
 By default, the calculation for the required memory in the RTEMS Workspace
 for tasks assumes that all Classic API Tasks are created by
-:c:func:`rtems_task_create`.  This configuration option can be used to
+:ref:`InterfaceRtemsTaskCreate`.  This configuration option can be used to
 reduce the required memory for the system-provided task storage areas since
-tasks constructed by :c:func:`rtems_task_construct` use a user-provided
+tasks constructed by :ref:`InterfaceRtemsTaskConstruct` use a user-provided
 task storage area.
 
 .. rubric:: CONSTRAINTS:

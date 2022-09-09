@@ -76,8 +76,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-posix-key-value-pairs
@@ -134,8 +134,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-posix-message-queues
@@ -193,8 +193,8 @@ The following constraints apply to this configuration option:
   <https://en.cppreference.com/w/c/types/integer>`_.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-posix-queued-signals
@@ -312,8 +312,8 @@ The following constraints apply to this configuration option:
   <https://en.cppreference.com/w/c/types/integer>`_.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-posix-shms
@@ -369,8 +369,8 @@ The following constraints apply to this configuration option:
   <https://en.cppreference.com/w/c/types/integer>`_.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 .. Generated from spec:/acfg/if/max-posix-threads
@@ -486,8 +486,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 
 * The value of the configuration option may be defined through
-  :c:func:`rtems_resource_unlimited` the enable unlimited objects for the
-  object class, if the value passed to :c:func:`rtems_resource_unlimited`
+  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
 * The value of the configuration option shall be zero if the POSIX API is not
