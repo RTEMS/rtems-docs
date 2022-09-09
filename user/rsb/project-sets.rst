@@ -116,6 +116,15 @@ build sets:
 ``--with-objc``
   Attempt to build a C++ compiler.
 
+``--with-newlib-tls`` or ``--without-newlib-tls``
+  Enable or disable the ``--enable-newlib-reent-thread-local`` Newlib
+  configuration option.  This option is enabled by default on the aarch64, arm,
+  nios2, powerpc, riscv, and sparc targets.  If this option is enabled, then
+  each member of the Newlib struct _reent is replaced by a dedicated
+  thread-local object.  The thread-local objects are defined in translation
+  units which use the corresponding object so that only objects used by the
+  application are linked in.
+
 The RSB provides build sets for some BSPs. These build sets will build:
 
 - Compiler, linker, debugger and RTEMS Tools.
