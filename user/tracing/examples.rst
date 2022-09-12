@@ -61,7 +61,7 @@ to your installation.
 .. code-block:: none
 
   sparc-rtems5-gcc -Bsparc-rtems5/erc32/lib/ \
-  -specs bsp_specs -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
+  -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
   -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration \
   -Wstrict-prototypes -Wnested-externs -Wl,--gc-sections -mcpu=cypress \
   -o sparc-rtems5/c/erc32/testsuites/samples/fileio.exe sparc-rtems5/c/erc32/\
@@ -75,7 +75,7 @@ the wrapper c file.
 .. code-block:: none
 
   rtems-tld -C fileio-trace.ini -W fileio-wrapper -- -Bsparc-rtems5/erc32/lib/ \
-  -specs bsp_specs -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
+  -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
   -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration \
   -Wstrict-prototypes -Wnested-externs -Wl,--gc-sections -mcpu=cypress \
   -o sparc-rtems5/c/erc32/testsuites/samples/fileio.exe sparc-rtems5/c/erc32/\

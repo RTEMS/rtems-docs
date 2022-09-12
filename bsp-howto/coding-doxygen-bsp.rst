@@ -151,8 +151,8 @@ directories contain implementations of these features.
 
         $ cd raspberrypi
         $ ls
-        bsp_specs  configure.ac  include  make         misc           README
-        clock      console       irq      Makefile.am  preinstall.am  startup
+        include       misc        README   clock          console          irq
+        start
 
 Another way to get an idea of the structure of bsps/ is to navigate
 to a directory and execute the "tree -f" command. This outputs a nice
@@ -164,8 +164,7 @@ directory.
         $ pwd
         ~/rtems/bsps/arm/raspberrypi
         $ tree -f
-                .
-                |-- ./bsp_specs
+        .
         |-- ./clock
         |   `-- ./clock/clockdrv.c
         |-- ./configure.ac

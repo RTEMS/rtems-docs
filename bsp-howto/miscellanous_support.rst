@@ -10,44 +10,6 @@ Miscellaneous Support Files
 
    This chapter contains outdated and confusing information.
 
-GCC Compiler Specifications File
-================================
-
-The file ``bsp_specs`` defines the start files and libraries that are always
-used with this BSP.  The format of this file is admittedly cryptic and this
-document will make no attempt to explain it completely.  Below is the
-``bsp_specs`` file from the PowerPC psim BSP:
-
-.. code-block:: c
-
-    %rename endfile old_endfile
-    %rename startfile old_startfile
-    %rename link old_link
-    *startfile:
-    %{!qrtems: %(old_startfile)} \
-    %{!nostdlib: %{qrtems: ecrti%O%s rtems_crti%O%s crtbegin.o%s start.o%s}}
-    *link:
-    %{!qrtems: %(old_link)} %{qrtems: -Qy -dp -Bstatic -e _start -u __vectors}
-    *endfile:
-    %{!qrtems: %(old_endfile)} %{qrtems: crtend.o%s ecrtn.o%s}
-
-The first section of this file renames the built-in definition of some
-specification variables so they can be augmented without embedded their
-original definition.  The subsequent sections specify what behavior is expected
-when the ``-qrtems`` option is specified.
-
-The ``*startfile`` section specifies that the BSP specific file ``start.o``
-will be used instead of ``crt0.o``.  In addition, various EABI support files
-(``ecrti.o`` etc.) will be linked in with the executable.
-
-The ``*link`` section adds some arguments to the linker when it is invoked by
-GCC to link an application for this BSP.
-
-The format of this file is specific to the GNU Compiler Suite.  The argument
-used to override and extend the compiler built-in specifications is available
-in all recent GCC versions.  The ``-specs`` option is present in all ``egcs``
-distributions and ``gcc`` distributions starting with version 2.8.0.
-
 README Files
 ============
 
