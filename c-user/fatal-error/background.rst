@@ -316,13 +316,13 @@ INTERNAL_ERROR_BAD_THREAD_DISPATCH_ENVIRONMENT (31)
         }
 
 INTERNAL_ERROR_RTEMS_INIT_TASK_CREATE_FAILED (32)
-    Creation of an RTEMS initialization task failed.  This fatal error may
+    The creation of the RTEMS initialization task failed.  This fatal error may
     occur during system initialization.  It is an application configuration
     error.
 
 INTERNAL_ERROR_POSIX_INIT_THREAD_CREATE_FAILED (33)
-    Creation of a POSIX initialization thread failed.  This fatal error may
-    occur during system initialization.  It is an application configuration
+    The creation of the POSIX initialization thread failed.  This fatal error
+    may occur during system initialization.  It is an application configuration
     error.
 
 INTERNAL_ERROR_LIBIO_STDOUT_FD_OPEN_FAILED (36)
@@ -356,3 +356,8 @@ INTERNAL_ERROR_TOO_LARGE_TLS_SIZE (41)
     :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE <CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE>`.
     You can get the thread-local storage size of an application using the RTEMS
     tool ``rtems-execinfo``.
+
+INTERNAL_ERROR_RTEMS_INIT_TASK_CONSTRUCT_FAILED (42)
+    The construction of the RTEMS initialization task failed.  This fatal error
+    may occur during system initialization.  It is an application configuration
+    error.
