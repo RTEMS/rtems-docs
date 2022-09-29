@@ -713,9 +713,9 @@ Gets the region information.
     This parameter is the region identifier.
 
 ``the_info``
-    This parameter is the pointer to a Heap_Information_block object.  When the
-    directive call is successful, the information of the region will be stored
-    in this object.
+    This parameter is the pointer to a :c:type:`Heap_Information_block` object.
+    When the directive call is successful, the information of the region will
+    be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -788,9 +788,9 @@ Gets the region free information.
     This parameter is the region identifier.
 
 ``the_info``
-    This parameter is the pointer to a Heap_Information_block object.  When the
-    directive call is successful, the free information of the region will be
-    stored in this object.
+    This parameter is the pointer to a :c:type:`Heap_Information_block` object.
+    When the directive call is successful, the free information of the region
+    will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
