@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -136,27 +136,46 @@ This configuration option is an initializer define.
 
 .. rubric:: DEFAULT VALUE:
 
-The default value is ``_Stack_Allocator_allocate_for_idle_default``, which
-indicates that IDLE task stacks will be allocated from an area statically
-allocated by ``<rtems/confdefs.h>``.
+By default, the IDLE task storage area will be allocated from the RTEMS
+Workspace.
 
 .. rubric:: DESCRIPTION:
 
 The value of this configuration option is the address for the stack allocator
-allocate handler used to allocate the task stack of each
+allocate handler used to allocate the task storage area of each
 :term:`IDLE task`.
 
 .. rubric:: NOTES:
 
 This configuration option is independent of the other thread stack allocator
-configuration options.  It is assumed that any memory allocated for the stack
-of an :term:`IDLE task` will not be from the RTEMS Workspace or the
-memory statically allocated by default.
+configuration options.  It is assumed that any memory allocated for the task
+storage area of an :term:`IDLE task` will not be from the RTEMS
+Workspace.
+
+The IDLE task stack allocator may increase the size of the allocated memory
+area to account for the actually allocated memory area.
+
+The
+
+* :ref:`CONFIGURE_IDLE_TASK_STORAGE_SIZE`, and
+
+* ``CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE``
+
+configuration options are mutually exclusive.
 
 .. rubric:: CONSTRAINTS:
 
-The value of the configuration option shall be defined to a valid function
-pointer of the type ``void *( *allocate )( uint32_t, size_t )``.
+The following constraints apply to this configuration option:
+
+* The value of the configuration option shall be defined to a valid function
+  pointer of the type ``void *( *allocate )( uint32_t, size_t * )``.
+
+* The IDLE task stack allocator shall return a pointer to the allocated memory
+  area or terminate the system with a fatal error if the allocation request
+  cannot be satisfied.
+
+* The IDLE task stack allocator may increase the size of the allocated memory
+  area.
 
 .. Generated from spec:/acfg/if/task-stack-allocator-init
 

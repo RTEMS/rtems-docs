@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -184,3 +184,74 @@ The following constraints apply to this configuration option:
   task stack area calculation carried out by ``<rtems/confdefs.h>`` does not
   overflow an integer of type `size_t
   <https://en.cppreference.com/w/c/types/size_t>`_.
+
+.. Generated from spec:/acfg/if/idle-task-storage-size
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: CONFIGURE_IDLE_TASK_STORAGE_SIZE
+.. index:: IDLE task storage size
+
+.. _CONFIGURE_IDLE_TASK_STORAGE_SIZE:
+
+CONFIGURE_IDLE_TASK_STORAGE_SIZE
+--------------------------------
+
+.. rubric:: CONSTANT:
+
+``CONFIGURE_IDLE_TASK_STORAGE_SIZE``
+
+.. rubric:: OPTION TYPE:
+
+This configuration option is an integer define.
+
+.. rubric:: DEFAULT VALUE:
+
+This configuration option has no default value.  If it is not specified, then
+the task storage area for each :term:`IDLE task` will allocated
+from the RTEMS Workspace or through a custom IDLE task stack allocator.
+
+.. rubric:: DESCRIPTION:
+
+If this configuration option is specified, then the task storage areas for
+the :term:`IDLE tasks <IDLE task>` are statically allocated by
+<rtems/confdefs.h>.  The value of this configuration option defines the size
+in bytes of the task storage area of each IDLE task in the system.
+
+.. rubric:: NOTES:
+
+By default, the IDLE task storage areas are allocated from the RTEMS
+Workspace.  Applications which do not want to use a heap allocator can use
+this configuration option to use statically allocated memory for the IDLE
+task storage areas.  The task storage area contains the task stack, the
+thread-local storage, and the floating-point context on architectures with a
+separate floating-point context.  The size of the thread-local storage area
+is defined at link time or by the :ref:`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE`
+configuration option.  You have to estimate the actual thread-local storage
+size if you want to use this configuration option.  If the IDLE task stack
+size would be less than the value defined by the
+:ref:`CONFIGURE_IDLE_TASK_STACK_SIZE` configuration option, for example because the
+thread-local storage size is larger than expected, then the system terminates
+with the :ref:`INTERNAL_ERROR_CORE <FatalErrorSources>` fatal source and the
+:ref:`INTERNAL_ERROR_IDLE_THREAD_STACK_TOO_SMALL <internal_errors>` fatal code during
+system initialization.
+
+The value of this configuration option is passed to
+:ref:`InterfaceRTEMSTASKSTORAGESIZE` by <rtems/confdefs.h> to determine the
+actual size of the statically allocated area to take architecture-specific
+overheads into account.
+
+The
+
+* ``CONFIGURE_IDLE_TASK_STORAGE_SIZE``, and
+
+* :ref:`CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE`
+
+configuration options are mutually exclusive.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be greater than or equal to
+:ref:`CONFIGURE_IDLE_TASK_STACK_SIZE`.
