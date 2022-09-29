@@ -361,3 +361,8 @@ INTERNAL_ERROR_RTEMS_INIT_TASK_CONSTRUCT_FAILED (42)
     The construction of the RTEMS initialization task failed.  This fatal error
     may occur during system initialization.  It is an application configuration
     error.
+
+INTERNAL_ERROR_IDLE_THREAD_CREATE_FAILED (43)
+    The creation of an IDLE task failed.  This fatal error may occur during
+    system initialization.  It happens if a task create extension fails for an
+    IDLE task.
