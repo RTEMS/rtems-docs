@@ -371,3 +371,10 @@ INTERNAL_ERROR_NO_MEMORY_FOR_IDLE_TASK_STORAGE (44)
     There was not enough memory available to allocate an IDLE task stack.  This
     fatal error may occur during system initialization.  It is an application
     configuration error.
+
+INTERNAL_ERROR_IDLE_THREAD_STACK_TOO_SMALL (45)
+    The task stack size of an IDLE task would have been less than the
+    configured stack size for IDLE tasks, see
+    :ref:`CONFIGURE_IDLE_TASK_STACK_SIZE <CONFIGURE_IDLE_TASK_STACK_SIZE>`.
+    This fatal error may occur during system initialization.  It is an
+    application configuration error.
