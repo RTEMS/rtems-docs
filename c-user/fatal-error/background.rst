@@ -366,3 +366,8 @@ INTERNAL_ERROR_IDLE_THREAD_CREATE_FAILED (43)
     The creation of an IDLE task failed.  This fatal error may occur during
     system initialization.  It happens if a task create extension fails for an
     IDLE task.
+
+INTERNAL_ERROR_NO_MEMORY_FOR_IDLE_TASK_STORAGE (44)
+    There was not enough memory available to allocate an IDLE task stack.  This
+    fatal error may occur during system initialization.  It is an application
+    configuration error.
