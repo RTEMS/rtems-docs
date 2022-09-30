@@ -128,7 +128,7 @@ Disables the maskable interrupts on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_disable( isr_cookie )
+    void rtems_interrupt_disable( rtems_interrupt_level isr_cookie );
 
 .. rubric:: PARAMETERS:
 
@@ -218,7 +218,7 @@ Restores the previous interrupt level on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_enable( isr_cookie )
+    void rtems_interrupt_enable( rtems_interrupt_level isr_cookie );
 
 .. rubric:: PARAMETERS:
 
@@ -280,7 +280,7 @@ Flashes interrupts on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_flash( isr_cookie )
+    void rtems_interrupt_flash( rtems_interrupt_level isr_cookie );
 
 .. rubric:: PARAMETERS:
 
@@ -338,7 +338,7 @@ Disables the maskable interrupts on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_local_disable( isr_cookie )
+    void rtems_interrupt_local_disable( rtems_interrupt_level isr_cookie );
 
 .. rubric:: PARAMETERS:
 
@@ -428,7 +428,7 @@ Restores the previous interrupt level on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_local_enable( isr_cookie )
+    void rtems_interrupt_local_enable( rtems_interrupt_level isr_cookie );
 
 .. rubric:: PARAMETERS:
 
@@ -484,7 +484,7 @@ Checks if an ISR is in progress on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_is_in_progress()
+    bool rtems_interrupt_is_in_progress( void );
 
 .. rubric:: DESCRIPTION:
 
@@ -525,7 +525,10 @@ Initializes the ISR lock.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_initialize( lock, name )
+    void rtems_interrupt_lock_initialize(
+      rtems_interrupt_lock *lock,
+      const char           *name
+    );
 
 .. rubric:: PARAMETERS:
 
@@ -561,7 +564,7 @@ Destroys the ISR lock.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_destroy( lock )
+    void rtems_interrupt_lock_destroy( rtems_interrupt_lock *lock );
 
 .. rubric:: PARAMETERS:
 
@@ -605,7 +608,10 @@ Acquires the ISR lock.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_acquire( lock, lock_context )
+    void rtems_interrupt_lock_acquire(
+      rtems_interrupt_lock         *lock,
+      rtems_interrupt_lock_context *lock_context
+    );
 
 .. rubric:: PARAMETERS:
 
@@ -679,7 +685,7 @@ Releases the ISR lock.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_release( lock, lock_context )
+    void rtems_interrupt_lock_release( rtems_interrupt_lock_context *lock );
 
 .. rubric:: PARAMETERS:
 
@@ -737,7 +743,10 @@ Acquires the ISR lock from within an ISR.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_acquire_isr( lock, lock_context )
+    void rtems_interrupt_lock_acquire_isr(
+      rtems_interrupt_lock         *lock,
+      rtems_interrupt_lock_context *lock_context
+    );
 
 .. rubric:: PARAMETERS:
 
@@ -800,7 +809,10 @@ Releases the ISR lock from within an ISR.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_release_isr( lock, lock_context )
+    void rtems_interrupt_lock_release_isr(
+      rtems_interrupt_lock         *lock,
+      rtems_interrupt_lock_context *lock_context
+    );
 
 .. rubric:: PARAMETERS:
 
@@ -853,7 +865,9 @@ Disables maskable interrupts on the current processor.
 
 .. code-block:: c
 
-    #define rtems_interrupt_lock_interrupt_disable( lock_context )
+    void rtems_interrupt_lock_interrupt_disable(
+      rtems_interrupt_lock_context *lock_context
+    );
 
 .. rubric:: PARAMETERS:
 
@@ -892,7 +906,7 @@ Declares an ISR lock object.
 
 .. code-block:: c
 
-    #define RTEMS_INTERRUPT_LOCK_DECLARE( specifier, designator )
+    RTEMS_INTERRUPT_LOCK_DECLARE( specifier, designator );
 
 .. rubric:: PARAMETERS:
 
@@ -926,7 +940,7 @@ Defines an ISR lock object.
 
 .. code-block:: c
 
-    #define RTEMS_INTERRUPT_LOCK_DEFINE( specifier, designator, name )
+    RTEMS_INTERRUPT_LOCK_DEFINE( specifier, designator, const char *name );
 
 .. rubric:: PARAMETERS:
 
@@ -968,7 +982,7 @@ Statically initializes an ISR lock object.
 
 .. code-block:: c
 
-    #define RTEMS_INTERRUPT_LOCK_INITIALIZER( name )
+    RTEMS_INTERRUPT_LOCK_INITIALIZER( const char *name );
 
 .. rubric:: PARAMETERS:
 
@@ -1001,7 +1015,7 @@ Defines an ISR lock member.
 
 .. code-block:: c
 
-    #define RTEMS_INTERRUPT_LOCK_MEMBER( designator )
+    RTEMS_INTERRUPT_LOCK_MEMBER( designator );
 
 .. rubric:: PARAMETERS:
 
@@ -1031,7 +1045,7 @@ Defines an ISR lock object reference.
 
 .. code-block:: c
 
-    #define RTEMS_INTERRUPT_LOCK_REFERENCE( designator, target )
+    RTEMS_INTERRUPT_LOCK_REFERENCE( designator, rtems_interrupt_lock *target );
 
 .. rubric:: PARAMETERS:
 
@@ -1064,7 +1078,11 @@ Statically initializes an interrupt entry object.
 
 .. code-block:: c
 
-    #define RTEMS_INTERRUPT_ENTRY_INITIALIZER( routine, arg, info )
+    RTEMS_INTERRUPT_ENTRY_INITIALIZER(
+      rtems_interrupt_handler routine,
+      void                   *arg,
+      const char             *info
+    );
 
 .. rubric:: PARAMETERS:
 

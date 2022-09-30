@@ -879,7 +879,11 @@ MPCI node components.
 
 .. code-block:: c
 
-    #define RTEMS_OBJECT_ID_INITIAL( api, class, node )
+    rtems_id RTEMS_OBJECT_ID_INITIAL(
+      uint32_t api,
+      uint32_t class,
+      uint32_t node
+    );
 
 .. rubric:: PARAMETERS:
 

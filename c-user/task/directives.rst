@@ -1991,7 +1991,7 @@ Gets the recommended task storage area size for the size and task attributes.
 
 .. code-block:: c
 
-    #define RTEMS_TASK_STORAGE_SIZE( size, attributes )
+    size_t RTEMS_TASK_STORAGE_SIZE( size_t size, rtems_attribute attributes );
 
 .. rubric:: PARAMETERS:
 

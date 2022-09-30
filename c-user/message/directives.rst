@@ -1072,7 +1072,7 @@ the specified maximum size.
 
 .. code-block:: c
 
-    #define RTEMS_MESSAGE_QUEUE_BUFFER( maximum_message_size )
+    RTEMS_MESSAGE_QUEUE_BUFFER( size_t maximum_message_size );
 
 .. rubric:: PARAMETERS:
 
