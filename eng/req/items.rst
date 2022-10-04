@@ -1534,10 +1534,16 @@ Interface Unspecified Item Type
 This type refines the following types:
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
-  the value is ``unspecified``
+  the value is ``unspecified-define``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
-  the value is ``unspecified-define``
+  the value is ``unspecified-define-or-object``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-enum``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-enumerator``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-function``
@@ -1546,7 +1552,22 @@ This type refines the following types:
   the value is ``unspecified-group``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
-  the value is ``unspecified-type``
+  the value is ``unspecified-macro``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-macro-or-function``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-object``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-struct``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-typedef``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``unspecified-union``
 
 This set of attributes specifies an unspecified interface. All explicit
 attributes shall be specified. The explicit attributes for this type are:
