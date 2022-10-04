@@ -77,8 +77,6 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeInterfaceCompoundItemType`
 
-    * :ref:`SpecTypeInterfaceContainerItemType`
-
     * :ref:`SpecTypeInterfaceDefineItemType`
 
     * :ref:`SpecTypeInterfaceDomainItemType`
@@ -1137,8 +1135,6 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceCompoundItemType`
 
-* :ref:`SpecTypeInterfaceContainerItemType`
-
 * :ref:`SpecTypeInterfaceDefineItemType`
 
 * :ref:`SpecTypeInterfaceDomainItemType`
@@ -1300,18 +1296,6 @@ name
 notes
     The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
 
-.. _SpecTypeInterfaceContainerItemType:
-
-Interface Container Item Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This type refines the :ref:`SpecTypeInterfaceItemType` through the
-``interface-type`` attribute if the value is ``container``. Items of this type
-specify an interface container.  The item shall have exactly one link with the
-:ref:`SpecTypeInterfacePlacementLinkRole` to an
-:ref:`SpecTypeInterfaceDomainItemType` item.  This link defines the interface
-domain of the container.
-
 .. _SpecTypeInterfaceDefineItemType:
 
 Interface Define Item Type
@@ -1345,9 +1329,7 @@ Interface Domain Item Type
 
 This type refines the :ref:`SpecTypeInterfaceItemType` through the
 ``interface-type`` attribute if the value is ``domain``. This set of attributes
-specifies an interface domain.  Items of the types
-:ref:`SpecTypeInterfaceContainerItemType` and
-:ref:`SpecTypeInterfaceHeaderFileItemType` are placed into domains through
+specifies an interface domain.  Interface items are placed into domains through
 links with the :ref:`SpecTypeInterfacePlacementLinkRole`. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
