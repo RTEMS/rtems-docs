@@ -117,6 +117,8 @@ The specification item types have the following hierarchy:
 
   * :ref:`SpecTypeRequirementValidationItemType`
 
+    * :ref:`SpecTypeRequirementValidationMethod`
+
   * :ref:`SpecTypeRuntimeMeasurementTestItemType`
 
   * :ref:`SpecTypeSpecificationItemType`
@@ -2200,6 +2202,26 @@ text
 
     * *By review of design*: A rationale shall be provided to demonstrate how
       the requirement is satisfied implicitly by the software design.
+
+This type is refined by the following types:
+
+* :ref:`SpecTypeRequirementValidationMethod`
+
+.. _SpecTypeRequirementValidationMethod:
+
+Requirement Validation Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the following types:
+
+* :ref:`SpecTypeRequirementValidationItemType` through the ``method`` attribute
+  if the value is ``by-analysis``
+
+* :ref:`SpecTypeRequirementValidationItemType` through the ``method`` attribute
+  if the value is ``by-inspection``
+
+* :ref:`SpecTypeRequirementValidationItemType` through the ``method`` attribute
+  if the value is ``by-review-of-design``
 
 .. _SpecTypeRuntimeMeasurementTestItemType:
 
@@ -4706,24 +4728,6 @@ Requirement Validation Link Role
 
 This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``validation``. It defines the requirement validation role of links.
-
-.. _SpecTypeRequirementValidationMethod:
-
-Requirement Validation Method
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The value shall be a string. This value type characterizes a requirement
-validation method (except validation by test). The value shall be an element of
-
-* "``by-analysis``",
-
-* "``by-inspection``", and
-
-* "``by-review-of-design``".
-
-This type is used by the following types:
-
-* :ref:`SpecTypeRequirementValidationItemType`
 
 .. _SpecTypeRuntimeMeasurementEnvironment:
 
