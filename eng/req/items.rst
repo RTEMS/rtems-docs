@@ -2472,10 +2472,16 @@ steps
 Test Suite Item Type
 ^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeRootItemType` through the ``type``
-attribute if the value is ``test-suite``. This set of attributes specifies a
-test suite. All explicit attributes shall be specified. The explicit attributes
-for this type are:
+This type refines the following types:
+
+* :ref:`SpecTypeRootItemType` through the ``type`` attribute if the value is
+  ``memory-benchmark``
+
+* :ref:`SpecTypeRootItemType` through the ``type`` attribute if the value is
+  ``test-suite``
+
+This set of attributes specifies a test suite. All explicit attributes shall be
+specified. The explicit attributes for this type are:
 
 test-brief
     The attribute value shall be a string. It shall be the test suite brief
