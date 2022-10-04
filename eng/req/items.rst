@@ -2886,15 +2886,6 @@ This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementTransition`
 
-.. _SpecTypeApplicationConfigurationGroupMemberLinkRole:
-
-Application Configuration Group Member Link Role
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
-value is ``appl-config-group-member``. It defines the application configuration
-group membership role of links.
-
 .. _SpecTypeApplicationConfigurationOptionName:
 
 Application Configuration Option Name
