@@ -87,13 +87,11 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeInterfaceForwardDeclarationItemType`
 
-    * :ref:`SpecTypeInterfaceFunctionItemType`
+    * :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
     * :ref:`SpecTypeInterfaceGroupItemType`
 
     * :ref:`SpecTypeInterfaceHeaderFileItemType`
-
-    * :ref:`SpecTypeInterfaceMacroItemType`
 
     * :ref:`SpecTypeInterfaceTypedefItemType`
 
@@ -1145,13 +1143,11 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceForwardDeclarationItemType`
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
 * :ref:`SpecTypeInterfaceGroupItemType`
 
 * :ref:`SpecTypeInterfaceHeaderFileItemType`
-
-* :ref:`SpecTypeInterfaceMacroItemType`
 
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
@@ -1405,29 +1401,35 @@ with the :ref:`SpecTypeInterfaceTargetLinkRole` to an
 :ref:`SpecTypeInterfaceCompoundItemType` item.  This link defines the type
 declared by the forward declaration.
 
-.. _SpecTypeInterfaceFunctionItemType:
+.. _SpecTypeInterfaceFunctionOrMacroItemType:
 
-Interface Function Item Type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface Function or Macro Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type refines the :ref:`SpecTypeInterfaceItemType` through the
-``interface-type`` attribute if the value is ``function``. This set of
-attributes specifies a function. All explicit attributes shall be specified.
-The explicit attributes for this type are:
+This type refines the following types:
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``function``
+
+* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
+  the value is ``macro``
+
+This set of attributes specifies a function or a macro. All explicit attributes
+shall be specified. The explicit attributes for this type are:
 
 brief
     The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
 
 definition
     The attribute value shall be an
-    :ref:`SpecTypeInterfaceFunctionDefinitionDirective`.
+    :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`.
 
 description
     The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
 
 name
-    The attribute value shall be a string. It shall be the name of the
-    function.
+    The attribute value shall be a string. It shall be the name of the function
+    or macro.
 
 notes
     The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
@@ -1490,39 +1492,6 @@ prefix
     The attribute value shall be a string. It shall be the prefix directory
     path to the header file in the interface domain.  For example
     :file:`cpukit/include`.
-
-.. _SpecTypeInterfaceMacroItemType:
-
-Interface Macro Item Type
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This type refines the :ref:`SpecTypeInterfaceItemType` through the
-``interface-type`` attribute if the value is ``macro``. This set of attributes
-specifies a macro. All explicit attributes shall be specified. The explicit
-attributes for this type are:
-
-brief
-    The attribute value shall be an :ref:`SpecTypeInterfaceBriefDescription`.
-
-definition
-    The attribute value shall be an
-    :ref:`SpecTypeInterfaceDefinitionDirective`.
-
-description
-    The attribute value shall be an :ref:`SpecTypeInterfaceDescription`.
-
-name
-    The attribute value shall be a string. It shall be the name of the macro.
-
-notes
-    The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
-
-params
-    The attribute value shall be a list. Each list element shall be an
-    :ref:`SpecTypeInterfaceParameter`.
-
-return
-    The attribute value shall be an :ref:`SpecTypeInterfaceReturnDirective`.
 
 .. _SpecTypeInterfaceTypedefItemType:
 
@@ -3729,13 +3698,11 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceEnumeratorItemType`
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
 * :ref:`SpecTypeInterfaceGroupItemType`
 
 * :ref:`SpecTypeInterfaceHeaderFileItemType`
-
-* :ref:`SpecTypeInterfaceMacroItemType`
 
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
@@ -3929,8 +3896,6 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceEnumeratorItemType`
 
-* :ref:`SpecTypeInterfaceMacroItemType`
-
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
 * :ref:`SpecTypeInterfaceVariableItemType`
@@ -3986,11 +3951,9 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceEnumeratorItemType`
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
 * :ref:`SpecTypeInterfaceGroupItemType`
-
-* :ref:`SpecTypeInterfaceMacroItemType`
 
 * :ref:`SpecTypeInterfaceParameter`
 
@@ -4047,7 +4010,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceEnabledByExpression`
 
-* :ref:`SpecTypeInterfaceFunctionDefinitionVariant`
+* :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`
 
 .. _SpecTypeInterfaceEnumDefinitionKind:
 
@@ -4077,10 +4040,21 @@ This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``interface-enumerator``. It defines the interface enumerator role of
 links.
 
-.. _SpecTypeInterfaceFunctionDefinition:
+.. _SpecTypeInterfaceFunctionLinkRole:
 
-Interface Function Definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface Function Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``interface-function``. It defines the interface function role of
+links.  It is used to indicate that a :ref:`SpecTypeActionRequirementItemType`
+item specifies functional requirements of an
+:ref:`SpecTypeInterfaceFunctionOrMacroItemType` item.
+
+.. _SpecTypeInterfaceFunctionOrMacroDefinition:
+
+Interface Function or Macro Definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A value of this type shall be of one of the following variants:
 
@@ -4109,52 +4083,55 @@ A value of this type shall be of one of the following variants:
       performed.
 
   return
-      The attribute value shall be a string. It shall be the function return
-      type.  On the return type a context-sensitive substitution of item
-      variables is performed.
+      The attribute value shall be an optional string. If the value is present,
+      then it shall be the function return type. On the return type a
+      context-sensitive substitution of item variables is performed.
 
 * There may be no value (null).
 
 This type is used by the following types:
 
-* :ref:`SpecTypeInterfaceFunctionDefinitionDirective`
+* :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`
 
-* :ref:`SpecTypeInterfaceFunctionDefinitionVariant`
+* :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`
 
-.. _SpecTypeInterfaceFunctionDefinitionDirective:
+.. _SpecTypeInterfaceFunctionOrMacroDefinitionDirective:
 
-Interface Function Definition Directive
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface Function or Macro Definition Directive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a function definition directive. All explicit
-attributes shall be specified. The explicit attributes for this type are:
+This set of attributes specifies a function or macro definition directive. All
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 default
-    The attribute value shall be an :ref:`SpecTypeInterfaceFunctionDefinition`.
-    The default definition will be used if no variant-specific definition is
-    enabled.
+    The attribute value shall be an
+    :ref:`SpecTypeInterfaceFunctionOrMacroDefinition`. The default definition
+    will be used if no variant-specific definition is enabled.
 
 variants
     The attribute value shall be a list. Each list element shall be an
-    :ref:`SpecTypeInterfaceFunctionDefinitionVariant`.
+    :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`.
 
 This type is used by the following types:
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
-.. _SpecTypeInterfaceFunctionDefinitionVariant:
+.. _SpecTypeInterfaceFunctionOrMacroDefinitionVariant:
 
-Interface Function Definition Variant
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interface Function or Macro Definition Variant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies a function definition variant. All explicit
-attributes shall be specified. The explicit attributes for this type are:
+This set of attributes specifies a function or macro definition variant. All
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 definition
-    The attribute value shall be an :ref:`SpecTypeInterfaceFunctionDefinition`.
-    The definition will be used if the expression defined by the ``enabled-by``
-    attribute evaluates to true.  In generated header files, the expression is
-    evaluated by the C preprocessor.
+    The attribute value shall be an
+    :ref:`SpecTypeInterfaceFunctionOrMacroDefinition`. The definition will be
+    used if the expression defined by the ``enabled-by`` attribute evaluates to
+    true.  In generated header files, the expression is evaluated by the C
+    preprocessor.
 
 enabled-by
     The attribute value shall be an
@@ -4162,19 +4139,7 @@ enabled-by
 
 This type is used by the following types:
 
-* :ref:`SpecTypeInterfaceFunctionDefinitionDirective`
-
-.. _SpecTypeInterfaceFunctionLinkRole:
-
-Interface Function Link Role
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
-value is ``interface-function``. It defines the interface function role of
-links.  It is used to indicate that a :ref:`SpecTypeActionRequirementItemType`
-item specifies functional requirements of an
-:ref:`SpecTypeInterfaceFunctionItemType` or a
-:ref:`SpecTypeInterfaceMacroItemType` item.
+* :ref:`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`
 
 .. _SpecTypeInterfaceGroupIdentifier:
 
@@ -4248,9 +4213,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeInterfaceEnumeratorItemType`
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
-
-* :ref:`SpecTypeInterfaceMacroItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
@@ -4276,9 +4239,7 @@ name
 
 This type is used by the following types:
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
-
-* :ref:`SpecTypeInterfaceMacroItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
@@ -4353,9 +4314,7 @@ A value of this type shall be of one of the following variants:
 
 This type is used by the following types:
 
-* :ref:`SpecTypeInterfaceFunctionItemType`
-
-* :ref:`SpecTypeInterfaceMacroItemType`
+* :ref:`SpecTypeInterfaceFunctionOrMacroItemType`
 
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
