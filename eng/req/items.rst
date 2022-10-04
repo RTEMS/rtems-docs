@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -3648,6 +3648,17 @@ Please have a look at the following example:
       - RTEMS_NETWORKING
       - not: RTEMS_SMP
 
+.. _SpecTypeFunctionImplementationLinkRole:
+
+Function Implementation Link Role
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``function-implementation``. It defines the function implementation
+role of links.  It is used to indicate that a
+:ref:`SpecTypeFunctionalRequirementItemType` item specifies parts of the
+function.
+
 .. _SpecTypeGlossaryMembershipLinkRole:
 
 Glossary Membership Link Role
@@ -4371,6 +4382,8 @@ This type is refined by the following types:
 * :ref:`SpecTypeBuildDependencyLinkRole`
 
 * :ref:`SpecTypeConstraintLinkRole`
+
+* :ref:`SpecTypeFunctionImplementationLinkRole`
 
 * :ref:`SpecTypeGlossaryMembershipLinkRole`
 
