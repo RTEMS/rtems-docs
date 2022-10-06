@@ -278,8 +278,6 @@ generally considered a safer embedded systems programming practice to know the
 system limits rather than experience an out of memory error at an arbitrary and
 largely unpredictable time in the field.
 
-.. index:: rtems_resource_unlimited
-
 .. _ConfigUnlimitedObjectsClass:
 
 Unlimited Objects by Class
@@ -287,7 +285,7 @@ Unlimited Objects by Class
 
 When the number of objects is not known ahead of time, RTEMS provides an
 auto-extending mode that can be enabled individually for each object type by
-using the macro ``rtems_resource_unlimited``. This takes a value as a
+using the macro :ref:`InterfaceRtemsResourceUnlimited`. This takes a value as a
 parameter, and is used to set the object maximum number field in an API
 Configuration table. The value is an allocation unit size. When RTEMS is
 required to grow the object table it is grown by this size. The kernel will
@@ -295,18 +293,15 @@ return the object memory back to the RTEMS Workspace when an object is
 destroyed. The kernel will only return an allocated block of objects to the
 RTEMS Workspace if at least half the allocation size of free objects remain
 allocated. RTEMS always keeps one allocation block of objects allocated. Here
-is an example of using ``rtems_resource_unlimited``:
+is an example of using :c:func:`rtems_resource_unlimited`:
 
 .. code-block:: c
 
-    #define CONFIGURE_MAXIMUM_TASKS rtems_resource_unlimited(5)
-
-.. index:: rtems_resource_is_unlimited
-.. index:: rtems_resource_maximum_per_allocation
+    #define CONFIGURE_MAXIMUM_TASKS rtems_resource_unlimited( 5 )
 
 Object maximum specifications can be evaluated with the
-``rtems_resource_is_unlimited`` and``rtems_resource_maximum_per_allocation``
-macros.
+:ref:`InterfaceRtemsResourceIsUnlimited` and
+:ref:`InterfaceRtemsResourceMaximumPerAllocation` macros.
 
 .. _ConfigUnlimitedObjectsDefault:
 
