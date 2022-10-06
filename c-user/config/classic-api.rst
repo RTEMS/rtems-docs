@@ -465,69 +465,6 @@ The following constraints apply to this configuration option:
   object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
-.. Generated from spec:/acfg/if/max-thread-local-storage-size
-
-.. raw:: latex
-
-    \clearpage
-
-.. index:: CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
-
-.. _CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE:
-
-CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
--------------------------------------------
-
-.. rubric:: CONSTANT:
-
-``CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE``
-
-.. rubric:: OPTION TYPE:
-
-This configuration option is an integer define.
-
-.. rubric:: DEFAULT VALUE:
-
-The default value is 0.
-
-.. rubric:: DESCRIPTION:
-
-If the value of this configuration option is greater than zero, then it
-defines the maximum thread-local storage size, otherwise the thread-local
-storage size is defined by the linker depending on the thread-local storage
-objects used by the application in the statically-linked executable.
-
-.. rubric:: NOTES:
-
-This configuration option can be used to reserve space for the dynamic linking
-of modules with thread-local storage objects.
-
-If the thread-local storage size defined by the thread-local storage
-objects used by the application in the statically-linked executable is greater
-than a non-zero value of this configuration option, then a fatal error will
-occur during system initialization.
-
-Use :c:func:`RTEMS_ALIGN_UP` and
-:c:macro:`RTEMS_TASK_STORAGE_ALIGNMENT` to adjust the size to meet the
-minimum alignment requirement of a thread-local storage area.
-
-The actual thread-local storage size is determined when the application
-executable is linked.  The ``rtems-exeinfo`` command line tool included in
-the RTEMS Tools can be used to obtain the thread-local storage size and
-alignment of an application executable.
-
-.. rubric:: CONSTRAINTS:
-
-The following constraints apply to this configuration option:
-
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to
-  `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
-
-* The value of the configuration option shall be an integral multiple of
-  :c:macro:`RTEMS_TASK_STORAGE_ALIGNMENT`.
-
 .. Generated from spec:/acfg/if/max-timers
 
 .. raw:: latex
