@@ -9,3 +9,4 @@ aarch64 (AArch64)
 .. include:: aarch64/a72.rst
 .. include:: aarch64/xilinx-versal.rst
 .. include:: aarch64/xilinx-zynqmp.rst
+.. include:: aarch64/raspberrypi4.rst
