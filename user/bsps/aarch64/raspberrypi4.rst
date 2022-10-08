@@ -34,10 +34,14 @@ raspberrypi hardware. Mini-uart is not supported.
 Preparing to boot
 ------------------
 
-Raspberry Pi uses a different mechanism to boot. First the GPU initializes,
-loads the bootloader and then looks for the kernel img. By default the arm64
-mode looks for the ``kernel8.img``. Any other kernel can be loaded by adding
-``kernel=<img_name>`` to the ``config.txt`` file.
+Raspberry Pi uses a different mechanism to boot when compared with any ARM SoC.
+First the GPU initializes, loads the bootloader (Raspberry pi firmware) and then
+looks for the kernel img. This whole process is done by the GPU (VideoCore IV)
+till the kernel is loaded. More information can be found on the `Raspberry pi
+documentation page
+<https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#boot-sequence>`_.
+By default the arm64 mode looks for the ``kernel8.img``. Any other kernel can be
+loaded by adding ``kernel=<img_name>`` to the ``config.txt`` file.
 
 The Firmware files are required in order to boot RTEMS. The latest firmware can
 be downloaded from the `Raspberry Pi Firmware Repository
@@ -56,6 +60,9 @@ default Mini-uart.
 
 .. code-block:: none
 
+  # if user wants to enable GIC, uncomment the next line
+  # enable_gic=1
+  arm_64bit=1
   dtoverlay = disable-bt
   enable_uart=1
 
