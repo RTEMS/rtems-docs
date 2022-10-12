@@ -65,8 +65,8 @@ Clock Tick Only
 Initialization
 ==============
 
-The clock driver is initialized by a dedicated system initialization handler if
-requested by the application configuration option
+The clock driver is initialized by the ``_Clock_Initialize()`` system
+initialization handler if requested by the application configuration option
 ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``.  The clock driver does not use the
 legacy IO driver framework.
 
