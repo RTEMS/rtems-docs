@@ -90,6 +90,21 @@ You do not need PlantUML or Ditaa installed to build our documentation. The
 online resources can be used. Save the source and the generated PNG file in the
 same directory under 'images'.
 
+*Note:*
+Please consider using PlantUML and Ditaa before other tools because we
+can generate the images from source automatically and it gives the
+documentation a similar look and feel. Other options may be considered
+if the image cannot be easly created by PlantUML or Ditaa but please
+ask before starting down that path because it may not be accepted.
+
+Image editing tools tend to have a specific look and feel and this
+characterizes the images they create. Altering an image often means
+the original tool is required. An open output format allows us to
+integrate the image into the document however we are then required to
+monitor and maintain that tool if we need to make changes. The fewer
+alternatives we have to maintain the easier it is for the project over
+a long period of time.
+
 Host Setup
 ----------
 
