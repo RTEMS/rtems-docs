@@ -275,15 +275,19 @@ repository):
 Usage
 =====
 
-The following diagram shows how the TFTP filesystem is used by an
+The following diagram usage_ shows how the TFTP filesystem is used by an
 application.  The mount point can be any directory.  The name ``/tftp``
 used in the figure serves only as an example.  The final unmounting and
 remove directory steps are optional.
 
+.. _usage:
+
 .. figure:: ../images/filesystem/tftpfs_usage.png
-  :width: 90%
+  :width: 75%
   :align: center
   :alt: TFTP Usage Diagram
+
+  TFTP file system usage
 
 Mounting the TFTP Filesystem
 ----------------------------

@@ -1,0 +1,37 @@
+'
+' TFTP file system : usage
+'
+' Copyright (c) 2022 Frank Kuehndel <frank.kuehndel@embedded-brains.de>
+' All rights reserved.
+'
+@startuml
+:Initialize libbsd;
+:Initialize Networking;
+:const char *mount_point = "/tftp"
+result = mkdir( mount_point, S_IRWXU | S_IRWXG | S_IRWXO );
+:result = mount(
+    "",
+    mount_point,
+    RTEMS_FILESYSTEM_TYPE_TFTPFS,
+    RTEMS_FILESYSTEM_READ_WRITE,
+    "blocksize=1024,windowsize=4,verbose"
+  );
+repeat
+    if () then
+        :fd = open( path, O_RDONLY );
+        repeat
+            :bytes = read( fd, data_buffer,
+            sizeof( data_buffer ) );
+        repeat while ()
+        :result = close( fd );
+    else
+        :fd = open( path, O_WRONLY );
+        repeat
+            :bytes = write( fd, data, size );
+        repeat while ()
+        :result = close( fd );
+    endif
+repeat while ()
+:result = unmount( mount_point );
+:result = rmdir( mount_point );
+@enduml
