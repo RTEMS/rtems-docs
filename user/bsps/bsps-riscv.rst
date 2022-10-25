@@ -45,7 +45,7 @@ ISA with ABI and code model choice.
 
 The BSP must be started im machine mode.
 
-The reference platform for this BSP is the Qemu `virt` machine.
+The reference platform for this BSP is the QEMU `virt` machine.
 
 The reference platform for the mpfs64imafdc BSP variant is the Microchip
 PolarFire SoC Icicle Kit.
@@ -140,6 +140,21 @@ The console driver supports devices compatible to
 They are initialized according to the device tree.  The console driver does not
 configure the pins or peripheral clocks.  The console device is selected
 according to the device tree "/chosen/stdout-path" property value.
+
+QEMU
+----
+
+All of the BSP variants that start with rv can be run on QEMU's virt machine.
+For instance, to run the ``rv64imafdc_medany`` BSP with the following
+"config.ini" file:
+
+.. code-block:: none
+    [riscv/rv64imafdc_medany]
+
+Run the following QEMU command:
+
+.. code-block:: shell
+    $ qemu-system-riscv64 -M virt -nographic -bios $RTEMS_EXE
 
 Microchip PolarFire SoC
 -----------------------
