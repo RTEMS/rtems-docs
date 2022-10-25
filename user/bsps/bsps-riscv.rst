@@ -43,9 +43,7 @@ This BSP offers 15 variants:
 Each variant corresponds to a GCC multilib.  A particular variant reflects an
 ISA with ABI and code model choice.
 
-The basic hardware initialization is not performed by the BSP.  A boot loader
-with device tree support must be used to start the BSP, e.g. BBL.  The BSP must
-be started im machine mode.
+The BSP must be started im machine mode.
 
 The reference platform for this BSP is the Qemu `virt` machine.
 
