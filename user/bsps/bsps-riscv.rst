@@ -261,6 +261,63 @@ Serial terminal UART1 displays the SMP example messages
 
     *** END OF TEST SMP 1 ***
 
+noel
+====
+
+This BSP supports the `NOEL-V <https://gaisler.com/noel-v>`_ systems from Cobham
+Gaisler. The NOEL-V is a synthesizable VHDL model of a processor that
+implements the RISC-V architecture. It is part of the open source
+`GRLIB <https://gaisler.com/grlib>`_ IP Library. The following BSP
+variants correspond to common NOEL-V configurations:
+
+* noel32im
+
+* noel32imafd
+
+* noel64imac
+
+* noel64imafd
+
+* noel64imafdc
+
+The start of the memory is set to 0x0 to match a standard NOEL-V system,
+but can be changed using the ``RISCV_RAM_REGION_BEGIN`` configuration
+option. The size of the memory is taken from the information available
+in the device tree.
+
+Reference Designs
+-----------------
+
+The BSP has been tested with NOEL-V reference designs for
+`Digilent Arty A7 <https://gaisler.com/noel-artya7>`_,
+`Microchip PolarFire Splash Kit <https://gaisler.com/noel-pf>`_,
+and `Xilinx KCU105 <https://gaisler.com/noel-xcku>`_.
+See the accompanying quickstart guide for each reference design
+to determine which BSP configuration to use.
+
+Build Configuration Options
+---------------------------
+
+The following options can be used in the BSP section of the ``waf``
+configuration INI file. The ``waf`` defaults can be used to inspect the values.
+
+``BSP_CONSOLE_USE_INTERRUPTS``
+     Use the Termios interrupt mode in the console driver (true by default).
+
+``BSP_FDT_BLOB_SIZE_MAX``
+    The maximum size of the device tree blob in bytes (262144 by default).
+
+``RISCV_CONSOLE_MAX_APBUART_DEVICES``
+     The maximum number of APBUART devices supported by the console driver
+     (2 by default).
+
+``RISCV_RAM_REGION_BEGIN``
+     The begin of the RAM region for linker command file (0x0 by default).
+
+``RISCV_MAXIMUM_EXTERNAL_INTERRUPTS``
+     The maximum number of external interrupts supported by the BSP (64 by
+     default).
+
 griscv
 ======
 
