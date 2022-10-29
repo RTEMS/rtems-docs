@@ -179,8 +179,19 @@ than the usual zlib-dev):
 openSUSE
 ~~~~~~~~
 
-This has been reported to work but no instructions were provided. This is an
-opportunity to contribute. Please submit any guidance you can provide.
+The RTEMS Source Builder has been tested on openSUSE Leap 15.4 64bit.
+Starting with a clean install with source repositories enabled, the following
+zypper command installs the required packages:
+
+.. code-block:: none
+
+   # sudo zypper in -t pattern devel_C_C++ devel_python3
+
+In addition, the following command can set python3 as the default python interpreter:
+
+.. code-block:: none
+
+   # sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 .. _FreeBSD:
 
