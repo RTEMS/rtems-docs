@@ -6,19 +6,39 @@
 .. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_qemu:
 .. _BSP_aarch64_qemu_xilinx_zynqmp_ilp32_zu3eg:
 .. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_zu3eg:
+.. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_cfc400x:
 
 Qemu Xilinx ZynqMP
 ==================
 
-This BSP supports four variants: `xilinx-zynqmp-ilp32-qemu`,
-`xilinx-zynqmp-lp64-qemu`, `xilinx-zynqmp-ilp32-zu3eg`, and
-`xilinx-zynqmp-lp64-zu3eg`. Platform-specific hardware initialization is
-performed by ARM Trusted Firmware (ATF). Other basic hardware initialization is
-performed by the BSP. These BSPs support the GICv2 interrupt controller present
-in all ZynqMP systems. The zu3eg BSPs have also been tested to be fully
-functional on zu2cg boards and should also work on any other ZynqMP chip variant
-since the Processing Subsystem (PS) does not vary among chip variants other than
-the number of CPU cores available.
+This BSP family supports the following variants:
+
+* `xilinx-zynqmp-ilp32-qemu`
+
+* `xilinx-zynqmp-lp64-qemu`
+
+* `xilinx-zynqmp-ilp32-zu3eg`
+
+* `xilinx-zynqmp-lp64-zu3eg`
+
+* `xilinx-zynqmp-lp64-cfc400x`
+
+Platform-specific hardware initialization is performed by ARM Trusted Firmware
+(ATF). Other basic hardware initialization is performed by the BSP. These BSPs
+support the GICv2 interrupt controller present in all ZynqMP systems. The zu3eg
+BSPs have also been tested to be fully functional on zu2cg boards and should
+also work on any other ZynqMP chip variant since the Processing Subsystem (PS)
+does not vary among chip variants other than the number of CPU cores available.
+
+This BSP family has been tested on the following hardware:
+
+* `Avnet UltraZed-EG SOM`
+
+* `Innoflight CFC-400X`
+
+* `Trenz TE0802`
+
+* `Xilinx ZCU102`
 
 Boot on QEMU
 ------------
@@ -32,6 +52,14 @@ directly as part of BOOT.bin. Regardless of the exception level at boot, RTEMS
 will drop to EL1 for execution. For quick turnaround during testing, it is
 recommended to use the u-boot BOOT.bin that comes with the PetaLinux prebuilts
 for the board in question.
+
+Some systems such as the CFC-400X may require a bitstream to be loaded into the
+FPGA portion of the chip to operate as expected. This bitstream must be loaded
+before RTEMS begins operation since accesses to programmable logic (PL) memory
+space can cause the CPU to hang if the FPGA is not initialized. This can be
+performed as part of BOOT.bin or by a bootloader such as u-boot. Loading
+bitstreams from RTEMS has not been tested on the ZynqMP platform and requires
+additional libraries from Xilinx.
 
 Hardware Boot Image Generation
 ------------------------------
@@ -242,7 +270,7 @@ Network Configuration
 When used with LibBSD, these BSP variants support networking via the four
 Cadence GEM instances present on all ZynqMP hardware variants. All interfaces
 are enabled by default, but only interfaces with operational MII busses will be
-recognized and usable in RTEMS. Most ZynqMP dev boards use CGEM3.
+recognized and usable in RTEMS. Most ZynqMP dev boards use RGMII with CGEM3.
 
 When used with lwIP from the rtems-lwip integration repository, these BSP
 variants support networking via CGEM0 and one of the other CGEM* instances
