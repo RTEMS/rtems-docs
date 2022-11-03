@@ -466,6 +466,11 @@ the rtems-docs repo, use
 
   git format-patch --subject-prefix="PATCH rtems-docs" ...
 
+You can set a default subject prefix for each repository locally, for example:
+
+.. code-block:: shell
+  git config format.subjectprefix "PATCH rtems-docs"
+
 Patches created using ``git format-patch`` are formatted so they can be emailed
 and rely on having Git configured with your name and email address, for example
 
