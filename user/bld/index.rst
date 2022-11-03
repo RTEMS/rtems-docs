@@ -54,7 +54,7 @@ Work Flow
 There are five steps necessary to build and install one or more BSPs.
 
 1. Select which BSPs you want to build.  See also :ref:`BSPs` and
-   ``./waf bsp_list``.
+   ``./waf bsplist``.
 
 2. Write a BSP build configuration file (e.g. ``config.ini``) which determines
    which BSPs are built and how they are configured.
@@ -93,7 +93,7 @@ Use ``./waf --help`` to get a list of commands and options.
 BSP List
 --------
 
-The BSP list command ``./waf bsp_list`` loads the build specification items and
+The BSP list command ``./waf bsplist`` loads the build specification items and
 generates a list of base BSPs from it.  The list is sorted by architecture and
 base BSP name.  Which base BSPs are listed can be controlled by the
 ``--rtems-bsps`` command line option.  It expects a comma-separated list of
@@ -103,7 +103,7 @@ items can be specified by the ``--rtems-specs`` command line option.
 
 .. code-block:: none
 
-    $ ./waf bsp_list --rtems-bsps=sparc/
+    $ ./waf bsplist --rtems-bsps=sparc/
     sparc/at697f
     sparc/erc32
     sparc/gr712rc
@@ -115,7 +115,7 @@ items can be specified by the ``--rtems-specs`` command line option.
 
 .. code-block:: none
 
-    $ ./waf bsp_list --rtems-bsps='/leon,/rv64imac$'
+    $ ./waf bsplist --rtems-bsps='/leon,/rv64imac$'
     riscv/rv64imac
     sparc/leon2
     sparc/leon3
@@ -186,7 +186,7 @@ name.
 
 This one line configuration file is sufficient to build the base BSP
 `sparc/erc32` with default values for all options.  The base BSPs are determined
-by the build specification.  The ``./waf bsp_list`` command lists all base BSPs.
+by the build specification.  The ``./waf bsplist`` command lists all base BSPs.
 You can create your own BSP names.  However, in this case you have to inherit
 from a base BSP.  The inheritance works only within an architecture, e.g. a
 `riscv` BSP cannot inherit options from an `arm` BSP.

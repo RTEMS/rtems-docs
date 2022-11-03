@@ -73,7 +73,7 @@ the following ``waf`` commands do.
 BSP List
 --------
 
-In the ``./waf bsp_list`` command, the BSP list is generated from the
+In the ``./waf bsplist`` command, the BSP list is generated from the
 :ref:`SpecTypeBuildBSPItemType` items.
 
 BSP Defaults
