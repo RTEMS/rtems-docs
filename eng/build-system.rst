@@ -79,7 +79,7 @@ In the ``./waf bsp_list`` command, the BSP list is generated from the
 BSP Defaults
 ------------
 
-In the ``./waf bsp_defaults`` command, the BSP defaults are generated from the
+In the ``./waf bspdefaults`` command, the BSP defaults are generated from the
 :ref:`SpecTypeBuildBSPItemType` and :ref:`SpecTypeBuildOptionItemType` items.
 Build specification items contribute to the command through the
 ``do_defaults()`` method in the ``wscript``.

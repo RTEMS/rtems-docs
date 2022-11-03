@@ -20,7 +20,7 @@ Build Configuration Options
 Please see the documentation of the `IMXRT_*` and `BSP_*` configuration options
 for that. You can generate a default set of options with::
 
-  ./waf bsp_defaults --rtems-bsps=arm/imxrt1052 > config.ini
+  ./waf bspdefaults --rtems-bsps=arm/imxrt1052 > config.ini
 
 Boot Process
 ------------

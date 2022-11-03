@@ -123,7 +123,7 @@ items can be specified by the ``--rtems-specs`` command line option.
 BSP Defaults
 ------------
 
-The BSP defaults command ``./waf bsp_defaults`` loads the build specification
+The BSP defaults command ``./waf bspdefaults`` loads the build specification
 items and generates a list options with default values for each base BSP from
 it.  The list is sorted by architecture and base BSP name.  Which base BSPs are
 listed can be controlled by the ``--rtems-bsps`` command line option.  Default
@@ -134,12 +134,12 @@ option.
 
 .. code-block:: none
 
-    $ ./waf bsp_defaults --rtems-bsps=gr712rc --rtems-compiler=gcc | grep ABI_FLAGS
+    $ ./waf bspdefaults --rtems-bsps=gr712rc --rtems-compiler=gcc | grep ABI_FLAGS
     ABI_FLAGS = -mcpu=leon3 -mfix-gr712rc
 
 .. code-block:: none
 
-    $ ./waf bsp_defaults --rtems-bsps=gr712rc --rtems-compiler=clang | grep ABI_FLAGS
+    $ ./waf bspdefaults --rtems-bsps=gr712rc --rtems-compiler=clang | grep ABI_FLAGS
     ABI_FLAGS = -mcpu=gr712rc
 
 Configure
@@ -222,12 +222,12 @@ option.
     INHERIT = gr740
     COMPILER = clang
 
-Use the ``./waf bsp_defaults`` command to get a list of all configuration
+Use the ``./waf bspdefaults`` command to get a list of all configuration
 options with default values.
 
 .. code-block:: none
 
-    $ ./waf bsp_defaults --rtems-bsps=sparc/erc32
+    $ ./waf bspdefaults --rtems-bsps=sparc/erc32
     [sparc/erc32]
     # Flags passed to the library archiver
     ARFLAGS = crD
@@ -246,7 +246,7 @@ options with default values.
     INSTALL_LEGACY_MAKEFILES = True
 
 It is not recommended to blindly add all the options obtained through the
-``./waf bsp_defaults`` command to custom configuration files.  The specified
+``./waf bspdefaults`` command to custom configuration files.  The specified
 options should be kept at the necessary minimum to get the desired build.
 
 Some projects may still want to specify all options in a configuration file to
@@ -255,9 +255,9 @@ the user and base BSP values with the ``diff`` command.
 
 .. code-block:: none
 
-    $ ./waf bsp_defaults --rtems-bsps=sparc/erc32 > config.ini
+    $ ./waf bspdefaults --rtems-bsps=sparc/erc32 > config.ini
     $ sed -i 's/BUILD_TESTS = False/BUILD_TESTS = True/' config.ini
-    $ ./waf bsp_defaults --rtems-bsps=sparc/erc32 | diff -u - config.ini
+    $ ./waf bspdefaults --rtems-bsps=sparc/erc32 | diff -u - config.ini
     --- config.ini  2019-12-04 08:21:36.049335872 +0100
     +++ -   2019-12-04 08:21:41.187432405 +0100
     @@ -31,7 +31,7 @@

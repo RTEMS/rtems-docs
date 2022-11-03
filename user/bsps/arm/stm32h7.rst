@@ -332,7 +332,7 @@ Generate default configuration for the board:
 
 .. code-block:: shell
 
-                $ ./waf bsp_defaults --rtems-bsps=arm/stm32h747i-disco > stm32h747i-disco.ini
+                $ ./waf bspdefaults --rtems-bsps=arm/stm32h747i-disco > stm32h747i-disco.ini
                 Regenerate build specification cache (needs a couple of seconds)...
 
 To run basic hello world or ticker samples you do not need to modify
