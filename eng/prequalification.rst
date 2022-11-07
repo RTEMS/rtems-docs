@@ -15,7 +15,7 @@ standards typically do not specify software functionality but address
 topics like requirements definition, traceability, having a documented
 change process, coding style, testing requirements, and a user's
 manual. During system test, these standards call for a review - usually
-by an independent entity - that the standard has been adhered too. These
+by an independent entity - that the standard has been adhered to. These
 reviews cover a broad variety of topics and activities, but the process
 is generally referred to as qualification, verification, or auditing
 against the specific standard in use. The RTEMS Project will use the
@@ -83,8 +83,8 @@ Stakeholder Involvement
 
 Qualification of RTEMS is a specialized activity and only specific users
 of RTEMS will complete a formal qualification activity. The RTEMS Project
-cannot self-fund this entire activity and requires stakeholder to invest
-in an ongoing basis to ensure that any investment they make is maintained
-and viable in an ongoing basis. The RTEMS core developers view steady
+cannot self-fund this entire activity and requires stakeholders to invest
+on an ongoing basis to ensure that any investment they make is maintained
+and viable in the long-term. The RTEMS core developers view steady
 support of the qualification effort as necessary to continue to lower
 the overall costs of qualifying RTEMS.
