@@ -1222,7 +1222,7 @@ system initialization using :term:`CLOCK_MONOTONIC`.
 .. rubric:: PARAMETERS:
 
 ``uptime``
-    This parameter is the pointer to a `struct timeval
+    This parameter is the pointer to a `struct timespec
     <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
     object.  When the directive call is successful, the seconds and nanoseconds
     elapsed since some time point during the system initialization and some
