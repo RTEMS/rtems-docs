@@ -1223,11 +1223,10 @@ system initialization using :term:`CLOCK_MONOTONIC`.
 
 ``uptime``
     This parameter is the pointer to a `struct timespec
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  When the directive call is successful, the seconds and nanoseconds
-    elapsed since some time point during the system initialization and some
-    point during the directive call using :term:`CLOCK_MONOTONIC` will be
-    stored in this object.
+    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  When the
+    directive call is successful, the seconds and nanoseconds elapsed since
+    some time point during the system initialization and some point during the
+    directive call using :term:`CLOCK_MONOTONIC` will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
