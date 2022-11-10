@@ -275,21 +275,21 @@ def cmd_configure(ctx):
     if ctx.options.singlehtml:
         check_inliner = not ctx.env.BIN_INLINER
         if check_inliner:
-            ctx.env.BUILD_SINGLEHTML = 'yes'
             ctx.find_program("inliner", var = "BIN_INLINER", mandatory = False)
             if not ctx.env.BIN_INLINER:
                 ctx.fatal("Node.js inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
+        ctx.env.BUILD_SINGLEHTML = 'yes'
 
     ctx.env.BUILD_PLANTUML = 'no'
     if ctx.options.plantuml:
         check_plantuml = not ctx.env.BIN_PUML
         if check_plantuml:
-            ctx.env.BUILD_PLANTUML = 'yes'
             ctx.find_program("puml", var = "BIN_PUML", mandatory = False)
             if not ctx.env.BIN_PUML:
                 ctx.fatal("Node.js puml is required install with 'npm install -g node-plantuml' " +
                           "(https://www.npmjs.com/package/node-plantuml)")
+        ctx.env.BUILD_PLANTUML = 'yes'
 
     ctx.env.BUILD_DITAA = 'no'
     if ctx.options.ditaa:
@@ -304,10 +304,10 @@ def cmd_configure(ctx):
                           "(https://www.npmjs.com/package/node-plantuml)")
         check_ditaa = not ctx.env.BIN_DITAA
         if check_ditaa:
-            ctx.env.BUILD_DITAA = 'yes'
             ctx.find_program("ditaa", var = "BIN_DITAA", mandatory = False)
             if not ctx.env.BIN_DITAA:
                 ctx.fatal("DITAA not found, plase install")
+        ctx.env.BUILD_DITAA = 'yes'
 
 def sources_exclude(ctx, sources):
     exclude = sources.get('exclude', [])
