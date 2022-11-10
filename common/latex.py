@@ -3,7 +3,6 @@
 #
 
 import os
-import platform
 import re
 
 package_test_preamble = ['\\newif\\ifsphinxKeepOldNames \\sphinxKeepOldNamestrue',
@@ -82,7 +81,11 @@ def tex_test(test):
 def host_name():
     uname = os.uname()
     if uname[0] == 'Linux':
-        distro = platform.dist()
+        try:
+            from distro import linux_distribution
+        except:
+            from platform import linux_distribution
+        distro = linux_distribution()
         name = '%s/%s' % (uname[0], distro[0])
         version = distro[1]
     else:

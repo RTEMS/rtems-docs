@@ -8,6 +8,8 @@ from sphinx.domains import Domain, ObjType, Index
 from sphinx.util.nodes import make_refnode
 from sphinx.util.docfields import Field, TypedField
 
+import version as rtems_version
+
 """
 :r:bsp:`sparc/sis`
 
@@ -30,28 +32,28 @@ role_name = {
 }
 
 role_url = {
-	"trac": 			("Trac",				"https://devel.rtems.org"),
-	"devel": 			("Developer Site",		"https://devel.rtems.org"),
-	"www":				("RTEMS Home",			"https://www.rtems.org/"),
-	"buildbot":			("Buildbot Instance",	"https://buildbot.rtems.org/"),
-	"builder":			("Builder Site",		"https://builder.rtems.org/"),
-	"docs":				("Documentation Site",	"https://docs.rtems.org/"),
-	"lists":			("Mailing Lists",		"https://lists.rtems.org/"),
-	"git":				("Git Repositories",	"https://git.rtems.org/"),
-	"ftp":				("FTP File Server",	"https://ftp.rtems.org/"),
-	"review":			("Gerrit Code Review",	"https://review.rtems.org/"),
-	"bugs":				("Bugs Database",		"https://devel.rtems.org/wiki/Bugs/"),
-	"gsoc":				("Google Summer of Code", "https://devel.rtems.org/wiki/GSoC/"),
-	"socis":			("ESA SOCIS",			"https://devel.rtems.org/wiki/SOCIS/")
+	"trac": 	("Trac",			"https://devel.rtems.org"),
+	"devel": 	("Developer Site",		"https://devel.rtems.org"),
+	"www":		("RTEMS Home",			"https://www.rtems.org/"),
+	"buildbot":	("Buildbot Instance",		"https://buildbot.rtems.org/"),
+	"builder":	("Builder Site",		"https://builder.rtems.org/"),
+	"docs":		("Documentation Site",		"https://docs.rtems.org/"),
+	"lists":	("Mailing Lists",		"https://lists.rtems.org/"),
+	"git":		("Git Repositories",		"https://git.rtems.org/"),
+	"ftp":		("FTP File Server",		"https://ftp.rtems.org/"),
+	"review":	("Gerrit Code Review",		"https://review.rtems.org/"),
+	"bugs":		("Bugs Database",		"https://devel.rtems.org/wiki/Bugs/"),
+	"gsoc":		("Google Summer of Code", 	"https://devel.rtems.org/wiki/GSoC/"),
+	"socis":	("ESA SOCIS",			"https://devel.rtems.org/wiki/SOCIS/")
 }
 
 
 role_list = {
-	"announce":	("Announce Mailing List",			"https://lists.rtems.org/mailman/listinfo/announce/"),
-	"bugs":		("Bugs Mailing List",				"https://lists.rtems.org/mailman/listinfo/bugs/"),
-	"devel":	("Developers Mailing List",			"https://lists.rtems.org/mailman/listinfo/devel/"),
-	"build":	("Build Logs",					"https://lists.rtems.org/mailman/listinfo/build"),
-	"users":	("Users Mailing List",				"https://lists.rtems.org/mailman/listinfo/users/"),
+	"announce":	("Announce Mailing List",		"https://lists.rtems.org/mailman/listinfo/announce/"),
+	"bugs":		("Bugs Mailing List",			"https://lists.rtems.org/mailman/listinfo/bugs/"),
+	"devel":	("Developers Mailing List",		"https://lists.rtems.org/mailman/listinfo/devel/"),
+	"build":	("Build Logs",				"https://lists.rtems.org/mailman/listinfo/build"),
+	"users":	("Users Mailing List",			"https://lists.rtems.org/mailman/listinfo/users/"),
 	"vc":		("Version Control Mailing List",	"https://lists.rtems.org/mailman/listinfo/vc/"),
 }
 
@@ -119,7 +121,33 @@ class RTEMSDomain(Domain):
 		pass # XXX is this needed?
 
 
+def rtems_replace(app, docname, source):
+	dump = False
+	line = source[0]
+	for key in app.config.replacements:
+		line = line.replace(key, app.config.replacements[key])
+	source[0] = line
+
+replacements = {
+}
 
 def setup(app):
+	app.add_config_value('rtems_major', str(app.config.overrides['rtems_major']), True)
+	app.add_config_value('rtems_minor', str(app.config.overrides['rtems_minor']), True)
+	app.add_config_value('rtems_revision', str(app.config.overrides['rtems_revision']), True)
+	major = str(app.config.overrides['rtems_major'])
+	minor = str(app.config.overrides['rtems_minor'])
+	revision = str(app.config.overrides['rtems_revision'])
+	if revision.isdigit():
+		majminrev = major + '.' + minor + '.' + revision
+	else:
+		majminrev = major + '.' + revision
+	replacements["@rtems-version@"] = str(app.config.overrides['version'])
+	replacements["@rtems-ver-major@"] = major
+	replacements["@rtems-ver-minor@"] = minor
+	replacements["@rtems-ver-revision@"] = revision
+	replacements["@rtems-ver-majminrev@"] = majminrev
+	app.add_config_value('replacements', replacements, True)
+	app.connect('source-read', rtems_replace)
 	app.add_domain(RTEMSDomain)
 	return {'version': "1.0", 'parallel_read_safe': True}

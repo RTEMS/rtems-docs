@@ -181,13 +181,18 @@ def check_sphinx_extension(ctx, extension):
     def run_sphinx(bld):
         rst_node = bld.srcnode.make_node('testbuild/contents.rst')
         rst_node.parent.mkdir()
-        rst_node.write('.. COMMENT test sphinx\n')
+        rst_node.write('.. COMMENT test sphinx' + os.linesep)
+        bib_node = bld.srcnode.make_node('testbuild/refs.bib')
+        bib_node.write(os.linesep)
+        conf_node = bld.srcnode.make_node('testbuild/conf.py')
+        conf_node.write(os.linesep.join(["master_doc='contents'",
+                                         "bibtex_bibfiles = ['refs.bib']"]))
         bld(rule = bld.kw['rule'], source = rst_node)
 
     ctx.start_msg("Checking for '%s'" % (extension))
     try:
         ctx.run_build(fragment = 'xx',
-                      rule = "${BIN_SPHINX_BUILD} -b html -D extensions=%s -C . out" % (extension),
+                      rule = "${BIN_SPHINX_BUILD} -b html -D extensions=%s -c . . out" % (extension),
                       build_fun = run_sphinx,
                       env = ctx.env)
     except ctx.errors.ConfigurationError:
@@ -266,7 +271,7 @@ def cmd_configure(ctx):
             ctx.fatal('Unsupported latex engine: %s' % (conf.latex_engine))
         ctx.env.BUILD_PDF = 'yes'
 
-    ctx.envBUILD_SINGLEHTML = 'no'
+    ctx.env.BUILD_SINGLEHTML = 'no'
     if ctx.options.singlehtml:
         check_inliner = not ctx.env.BIN_INLINER
         if check_inliner:
@@ -276,7 +281,7 @@ def cmd_configure(ctx):
                 ctx.fatal("Node.js inliner is required install with 'npm install -g inliner' " +
                           "(https://github.com/remy/inliner)")
 
-    ctx.envBUILD_PLANTUML = 'no'
+    ctx.env.BUILD_PLANTUML = 'no'
     if ctx.options.plantuml:
         check_plantuml = not ctx.env.BIN_PUML
         if check_plantuml:
@@ -286,7 +291,7 @@ def cmd_configure(ctx):
                 ctx.fatal("Node.js puml is required install with 'npm install -g node-plantuml' " +
                           "(https://www.npmjs.com/package/node-plantuml)")
 
-    ctx.envBUILD_DITAA = 'no'
+    ctx.env.BUILD_DITAA = 'no'
     if ctx.options.ditaa:
         #
         # We use DITAA via PlantUML
@@ -335,12 +340,15 @@ def doc_pdf(ctx, source_dir, conf_dir, sources):
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
+    env_latex = ctx.env.derive()
+    env_latex.TEXINPUTS = output_dir + ':'
     ctx(
         features     = 'tex',
         cwd          = output_dir,
         type         = ctx.env.LATEX_CMD,
         source       = "%s/%s.tex" % (buildtype, ctx.path.name),
-        prompt       = 0
+        prompt       = 0,
+        env          = env_latex
     )
     ctx.install_files('${PREFIX}',
                       '%s/%s.pdf' % (buildtype, ctx.path.name),
