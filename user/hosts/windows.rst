@@ -156,6 +156,7 @@ The packages we require are:
 * python
 * mingw-w64-x86_64-python2
 * mingw-w64-x86_64-gcc
+* flex
 * git
 * bison
 * cvs
@@ -176,7 +177,7 @@ Install the packages using ``pacman``:
 .. code-block:: none
 
   $ pacman -S python mingw-w64-x86_64-python2 mingw-w64-x86_64-gcc \
-  bison cvs diffutils git make patch tar texinfo unzip
+  bison flex cvs diffutils git make patch tar texinfo unzip
   resolving dependencies...
   looking for conflicting packages...
       .... output shortened for brevity ....
