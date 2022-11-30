@@ -9,7 +9,7 @@ Deprecated Directives
 
    \clearpage
 
-.. index:: rtems_iterate_over_all_threads
+.. index:: rtems_iterate_over_all_threads()
 
 .. _rtems_iterate_over_all_threads:
 

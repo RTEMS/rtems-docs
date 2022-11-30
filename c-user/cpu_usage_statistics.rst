@@ -108,7 +108,7 @@ calling sequence, related constants, usage, and status codes.
 
    \clearpage
 
-.. index:: rtems_cpu_usage_report
+.. index:: rtems_cpu_usage_report()
 
 .. _rtems_cpu_usage_report:
 
@@ -134,7 +134,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_cpu_usage_reset
+.. index:: rtems_cpu_usage_reset()
 
 .. _rtems_cpu_usage_reset:
 

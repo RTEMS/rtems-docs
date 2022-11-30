@@ -10,7 +10,7 @@ Removed Directives
    \clearpage
 
 .. index:: get task notepad entry
-.. index:: rtems_task_get_note
+.. index:: rtems_task_get_note()
 
 .. _rtems_task_get_note:
 
@@ -64,7 +64,7 @@ NOTES:
    \clearpage
 
 .. index:: set task notepad entry
-.. index:: rtems_task_set_note
+.. index:: rtems_task_set_note()
 
 .. _rtems_task_set_note:
 
@@ -119,7 +119,7 @@ NOTES:
 .. index:: per-task variable
 .. index:: task private variable
 .. index:: task private data
-.. index:: rtems_task_variable_add
+.. index:: rtems_task_variable_add()
 
 .. _rtems_task_variable_add:
 
@@ -182,7 +182,7 @@ NOTES:
 
 .. index:: get per-task variable
 .. index:: obtain per-task variable
-.. index:: rtems_task_variable_get
+.. index:: rtems_task_variable_get()
 
 .. _rtems_task_variable_get:
 
@@ -241,7 +241,7 @@ NOTES:
 .. index:: per-task variable
 .. index:: task private variable
 .. index:: task private data
-.. index:: rtems_task_variable_delete
+.. index:: rtems_task_variable_delete()
 
 .. _rtems_task_variable_delete:
 

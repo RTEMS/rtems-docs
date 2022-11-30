@@ -143,7 +143,7 @@ installed after the Standard C Library will operate correctly even if they
 utilize the C Library because the C Library's thread delete extension is
 invoked after that of the other thread delete extensions.
 
-.. index:: rtems_task_create_extension
+.. index:: rtems_task_create_extension()
 
 Thread Create Extension
 -----------------------

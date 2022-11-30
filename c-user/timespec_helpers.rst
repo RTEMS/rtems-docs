@@ -125,7 +125,7 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. index:: set struct timespec instance
-.. index:: rtems_timespec_set
+.. index:: rtems_timespec_set()
 
 .. _rtems_timespec_set:
 
@@ -156,7 +156,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_zero
+.. index:: rtems_timespec_zero()
 
 .. _rtems_timespec_zero:
 
@@ -184,7 +184,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_is_valid
+.. index:: rtems_timespec_is_valid()
 
 .. _rtems_timespec_is_valid:
 
@@ -214,7 +214,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_add_to
+.. index:: rtems_timespec_add_to()
 
 .. _rtems_timespec_add_to:
 
@@ -244,7 +244,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_subtract
+.. index:: rtems_timespec_subtract()
 
 .. _rtems_timespec_subtract:
 
@@ -279,7 +279,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_divide
+.. index:: rtems_timespec_divide()
 
 .. _rtems_timespec_divide:
 
@@ -320,7 +320,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_divide_by_integer
+.. index:: rtems_timespec_divide_by_integer()
 
 .. _rtems_timespec_divide_by_integer:
 
@@ -352,7 +352,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_less_than
+.. index:: rtems_timespec_less_than()
 
 .. _rtems_timespec_less_than:
 
@@ -383,7 +383,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_greater_than
+.. index:: rtems_timespec_greater_than()
 
 .. _rtems_timespec_greater_than:
 
@@ -412,7 +412,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_equal_to
+.. index:: rtems_timespec_equal_to()
 
 .. _rtems_timespec_equal_to:
 
@@ -441,7 +441,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_get_seconds
+.. index:: rtems_timespec_get_seconds()
 
 .. _rtems_timespec_get_seconds:
 
@@ -470,7 +470,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_get_nanoseconds
+.. index:: rtems_timespec_get_nanoseconds()
 
 .. _rtems_timespec_get_nanoseconds:
 
@@ -499,7 +499,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_to_ticks
+.. index:: rtems_timespec_to_ticks()
 
 .. _rtems_timespec_to_ticks:
 
@@ -527,7 +527,7 @@ NOTES:
 
    \clearpage
 
-.. index:: rtems_timespec_from_ticks
+.. index:: rtems_timespec_from_ticks()
 
 .. _rtems_timespec_from_ticks:
 

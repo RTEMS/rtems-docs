@@ -45,7 +45,7 @@ An object name is an unsigned thirty-two bit entity associated with the object
 by the user.  The data type ``rtems_name`` is used to store object
 names.
 
-.. index:: rtems_build_name
+.. index:: rtems_build_name()
 
 Although not required by RTEMS, object names are often composed of four ASCII
 characters which help identify that object.  For example, a task which causes a
@@ -64,7 +64,7 @@ would be difficult to assign meaningful ASCII names to each task.  A more
 convenient approach would be to name them the binary values one through
 one-hundred, respectively.
 
-.. index:: rtems_object_get_name
+.. index:: rtems_object_get_name()
 
 RTEMS provides a helper routine, ``rtems_object_get_name``, which can be used
 to obtain the name of any RTEMS object using just its ID.  This routine
@@ -150,10 +150,10 @@ prototyped as follows:
 .. index:: get class from object ID
 .. index:: get node from object ID
 .. index:: get index from object ID
-.. index:: rtems_object_id_get_api
-.. index:: rtems_object_id_get_class
-.. index:: rtems_object_id_get_node
-.. index:: rtems_object_id_get_index
+.. index:: rtems_object_id_get_api()
+.. index:: rtems_object_id_get_class()
+.. index:: rtems_object_id_get_node()
+.. index:: rtems_object_id_get_index()
 
 .. code-block:: c
 

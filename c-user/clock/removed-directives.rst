@@ -14,7 +14,7 @@ Removed Directives
 CLOCK_GET - Get date and time information
 -----------------------------------------
 .. index:: obtain the time of day
-.. index:: rtems_clock_get
+.. index:: rtems_clock_get()
 
 .. warning::
 

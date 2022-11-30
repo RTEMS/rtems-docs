@@ -87,7 +87,7 @@ The directives are:
 
    \clearpage
 
-.. index:: rtems_status_text
+.. index:: rtems_status_text()
 
 .. _rtems_status_text:
 

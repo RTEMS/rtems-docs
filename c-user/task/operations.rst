@@ -160,8 +160,8 @@ It is important to note that the ``cpuset`` is not validated until the
 ``rtems_task_set_affinity`` call is made. At that point, it is validated
 against the current system configuration.
 
-.. index:: rtems_task_get_note
-.. index:: rtems_task_set_note
+.. index:: rtems_task_get_note()
+.. index:: rtems_task_set_note()
 
 Transition Advice for Removed Notepads
 ---------------------------------------
@@ -177,9 +177,9 @@ over the key (e.g. notepad index) selection. For most applications, POSIX Keys
 should be used. These are available in all RTEMS build configurations. It is
 also possible that thread-local storage (TLS) is an option for some use cases.
 
-.. index:: rtems_task_variable_add
-.. index:: rtems_task_variable_get
-.. index:: rtems_task_variable_delete
+.. index:: rtems_task_variable_add()
+.. index:: rtems_task_variable_get()
+.. index:: rtems_task_variable_delete()
 
 Transition Advice for Removed Task Variables
 ---------------------------------------------

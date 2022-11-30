@@ -233,7 +233,7 @@ sequence, related constants, usage, and status codes.
    \clearpage
 
 .. index:: initialize the CBS library
-.. index:: rtems_cbs_initialize
+.. index:: rtems_cbs_initialize()
 .. _rtems_cbs_initialize:
 
 CBS_INITIALIZE - Initialize the CBS library
@@ -271,7 +271,7 @@ NOTES:
    \clearpage
 
 .. index:: cleanup the CBS library
-.. index:: rtems_cbs_cleanup
+.. index:: rtems_cbs_cleanup()
 
 .. _rtems_cbs_cleanup:
 
@@ -302,7 +302,7 @@ NOTES:
    \clearpage
 
 .. index:: create a new bandwidth server
-.. index:: rtems_cbs_create_server
+.. index:: rtems_cbs_create_server()
 
 .. _rtems_cbs_create_server:
 
@@ -351,7 +351,7 @@ NOTES:
    \clearpage
 
 .. index:: attach a thread to server
-.. index:: rtems_cbs_attach_thread
+.. index:: rtems_cbs_attach_thread()
 
 .. _rtems_cbs_attach_thread:
 
@@ -394,7 +394,7 @@ NOTES:
    \clearpage
 
 .. index:: detach a thread from server
-.. index:: rtems_cbs_detach_thread
+.. index:: rtems_cbs_detach_thread()
 
 .. _rtems_cbs_detach_thread:
 
@@ -432,7 +432,7 @@ NOTES:
    \clearpage
 
 .. index:: destroy a bandwidth server
-.. index:: rtems_cbs_destroy_server
+.. index:: rtems_cbs_destroy_server()
 
 .. _rtems_cbs_destroy_server:
 
@@ -470,7 +470,7 @@ NOTES:
    \clearpage
 
 .. index:: get an ID of a server
-.. index:: rtems_cbs_get_server_id
+.. index:: rtems_cbs_get_server_id()
 
 .. _rtems_cbs_get_server_id:
 
@@ -502,7 +502,7 @@ DESCRIPTION:
    \clearpage
 
 .. index:: get scheduling parameters of a server
-.. index:: rtems_cbs_get_parameters
+.. index:: rtems_cbs_get_parameters()
 
 .. _rtems_cbs_get_parameters:
 
@@ -540,7 +540,7 @@ NOTES:
    \clearpage
 
 .. index:: set scheduling parameters
-.. index:: rtems_cbs_set_parameters
+.. index:: rtems_cbs_set_parameters()
 
 .. _rtems_cbs_set_parameters:
 
@@ -580,7 +580,7 @@ NOTES:
    \clearpage
 
 .. index:: get elapsed execution time
-.. index:: rtems_cbs_get_execution_time
+.. index:: rtems_cbs_get_execution_time()
 
 .. _rtems_cbs_get_execution_time:
 
@@ -619,7 +619,7 @@ NOTES:
    \clearpage
 
 .. index:: get remaining execution time
-.. index:: rtems_cbs_get_remaining_budget
+.. index:: rtems_cbs_get_remaining_budget()
 
 .. _rtems_cbs_get_remaining_budget:
 
@@ -658,7 +658,7 @@ NOTES:
    \clearpage
 
 .. index:: get scheduler approved execution time
-.. index:: rtems_cbs_get_approved_budget
+.. index:: rtems_cbs_get_approved_budget()
 
 .. _rtems_cbs_get_approved_budget:
 

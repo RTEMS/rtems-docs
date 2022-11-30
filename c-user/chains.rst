@@ -220,7 +220,7 @@ The section details the Chains directives.
 .. _rtems_chain_initialize:
 
 .. index:: chain initialize
-.. index:: rtems_chain_initialize
+.. index:: rtems_chain_initialize()
 
 Initialize Chain With Nodes
 ---------------------------
@@ -258,7 +258,7 @@ NOTES:
 .. _rtems_chain_initialize_empty:
 
 .. index:: chain initialize empty
-.. index:: rtems_chain_initialize_empty
+.. index:: rtems_chain_initialize_empty()
 
 Initialize Empty
 ----------------
@@ -287,7 +287,7 @@ NOTES:
 .. _rtems_chain_is_null_node:
 
 .. index:: chain is node null
-.. index:: rtems_chain_is_null_node
+.. index:: rtems_chain_is_null_node()
 
 Is Null Node ?
 --------------
@@ -313,7 +313,7 @@ DESCRIPTION:
 .. _rtems_chain_head:
 
 .. index:: chain get head
-.. index:: rtems_chain_head
+.. index:: rtems_chain_head()
 
 Head
 ----
@@ -338,7 +338,7 @@ DESCRIPTION:
 .. _rtems_chain_tail:
 
 .. index:: chain get tail
-.. index:: rtems_chain_tail
+.. index:: rtems_chain_tail()
 
 Tail
 ----
@@ -363,7 +363,7 @@ DESCRIPTION:
 .. _rtems_chain_are_nodes_equal:
 
 .. index:: chare are nodes equal
-.. index:: rtems_chain_are_nodes_equal
+.. index:: rtems_chain_are_nodes_equal()
 
 Are Two Nodes Equal ?
 ---------------------
@@ -391,7 +391,7 @@ DESCRIPTION:
 .. _rtems_chain_is_empty:
 
 .. index:: chain is chain empty
-.. index:: rtems_chain_is_empty
+.. index:: rtems_chain_is_empty()
 
 Is the Chain Empty
 ------------------
@@ -418,7 +418,7 @@ DESCRIPTION:
 .. _rtems_chain_is_first:
 
 .. index:: chain is node the first
-.. index:: rtems_chain_is_first
+.. index:: rtems_chain_is_first()
 
 Is this the First Node on the Chain ?
 -------------------------------------
@@ -445,7 +445,7 @@ DESCRIPTION:
 .. _rtems_chain_is_last:
 
 .. index:: chain is node the last
-.. index:: rtems_chain_is_last
+.. index:: rtems_chain_is_last()
 
 Is this the Last Node on the Chain ?
 ------------------------------------
@@ -472,7 +472,7 @@ DESCRIPTION:
 .. _rtems_chain_has_only_one_node:
 
 .. index:: chain only one node
-.. index:: rtems_chain_has_only_one_node
+.. index:: rtems_chain_has_only_one_node()
 
 Does this Chain have only One Node ?
 ------------------------------------
@@ -499,7 +499,7 @@ DESCRIPTION:
 .. _rtems_chain_node_count_unprotected:
 
 .. index:: chain only one node
-.. index:: rtems_chain_node_count_unprotected
+.. index:: rtems_chain_node_count_unprotected()
 
 Returns the node count of the chain (unprotected)
 -------------------------------------------------
@@ -524,7 +524,7 @@ DESCRIPTION:
 .. _rtems_chain_is_head:
 
 .. index:: chain is node the head
-.. index:: rtems_chain_is_head
+.. index:: rtems_chain_is_head()
 
 Is this Node the Chain Head ?
 -----------------------------
@@ -552,7 +552,7 @@ DESCRIPTION:
 .. _rtems_chain_is_tail:
 
 .. index:: chain is node the tail
-.. index:: rtems_chain_is_tail
+.. index:: rtems_chain_is_tail()
 
 Is this Node the Chain Tail ?
 -----------------------------
@@ -580,7 +580,7 @@ DESCRIPTION:
 .. _rtems_chain_extract:
 
 .. index:: chain extract a node
-.. index:: rtems_chain_extract
+.. index:: rtems_chain_extract()
 
 Extract a Node
 --------------
@@ -611,7 +611,7 @@ NOTES:
 .. _rtems_chain_extract_unprotected:
 
 .. index:: chain extract a node unprotected
-.. index:: rtems_chain_extract_unprotected
+.. index:: rtems_chain_extract_unprotected()
 
 Extract a Node (unprotected)
 ----------------------------
@@ -639,7 +639,7 @@ NOTES:
 .. _rtems_chain_get:
 
 .. index:: chain get first node
-.. index:: rtems_chain_get
+.. index:: rtems_chain_get()
 
 Get the First Node
 ------------------
@@ -672,7 +672,7 @@ NOTES:
 .. _rtems_chain_get_unprotected:
 
 .. index:: chain get first node
-.. index:: rtems_chain_get_unprotected
+.. index:: rtems_chain_get_unprotected()
 
 Get the First Node (unprotected)
 --------------------------------
@@ -701,7 +701,7 @@ NOTES:
 .. _rtems_chain_insert:
 
 .. index:: chain insert a node
-.. index:: rtems_chain_insert
+.. index:: rtems_chain_insert()
 
 Insert a Node
 -------------
@@ -734,7 +734,7 @@ NOTES:
 .. _rtems_chain_insert_unprotected:
 
 .. index:: chain insert a node unprotected
-.. index:: rtems_chain_insert_unprotected
+.. index:: rtems_chain_insert_unprotected()
 
 Insert a Node (unprotected)
 ---------------------------
@@ -764,7 +764,7 @@ NOTES:
 .. _rtems_chain_append:
 
 .. index:: chain append a node
-.. index:: rtems_chain_append
+.. index:: rtems_chain_append()
 
 Append a Node
 -------------
@@ -796,7 +796,7 @@ NOTES:
 .. _rtems_chain_append_unprotected:
 
 .. index:: chain append a node unprotected
-.. index:: rtems_chain_append_unprotected
+.. index:: rtems_chain_append_unprotected()
 
 Append a Node (unprotected)
 ---------------------------
@@ -825,7 +825,7 @@ NOTES:
 .. _rtems_chain_prepend:
 
 .. index:: prepend node
-.. index:: rtems_chain_prepend
+.. index:: rtems_chain_prepend()
 
 Prepend a Node
 --------------
@@ -857,7 +857,7 @@ NOTES:
 .. _rtems_chain_prepend_unprotected:
 
 .. index:: prepend node unprotected
-.. index:: rtems_chain_prepend_unprotected
+.. index:: rtems_chain_prepend_unprotected()
 
 Prepend a Node (unprotected)
 ----------------------------
