@@ -48,8 +48,11 @@ The application enables the event recording support via the configuration
 option :c:macro:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS`.  The configuration
 option :c:macro:`CONFIGURE_RECORD_EXTENSIONS_ENABLED` enables the generation of
 thread create, start, restart, delete, switch, begin, exitted and terminate
-events.  Dumps of the event records in a fatal error handler can be enabled by
-the mutually exclusive :c:macro:`CONFIGURE_RECORD_FATAL_DUMP_BASE64` and
+events.  The configuration option
+:c:macro:`CONFIGURE_RECORD_INTERRUPTS_ENABLED` enables the generation of
+interrupt entry and exit events.  Dumps of the event records in a fatal error
+handler can be enabled by the mutually exclusive
+:c:macro:`CONFIGURE_RECORD_FATAL_DUMP_BASE64` and
 :c:macro:`CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB` configuration options.
 
 Custom events can be recorded for example with the
@@ -97,64 +100,6 @@ instrumented functions:
        (rtems_record_data) this_fn
      );
    }
-
-To generate interrupt handler entry/exit events, the following patch can be
-used:
-
-.. code-block:: diff
-
-    diff --git a/bsps/arm/shared/clock/clock-armv7m.c b/bsps/arm/shared/clock/clock-armv7m.c
-    index 255de1ca42..0d37c63ac6 100644
-    --- a/bsps/arm/shared/clock/clock-armv7m.c
-    +++ b/bsps/arm/shared/clock/clock-armv7m.c
-    @@ -29,6 +29,7 @@
-     #include <bsp/clock-armv7m.h>
-
-     #include <rtems.h>
-    +#include <rtems/record.h>
-     #include <rtems/sysinit.h>
-
-     #ifdef ARM_MULTILIB_ARCH_V7M
-    @@ -45,9 +46,11 @@ static uint32_t _ARMV7M_TC_get_timecount(struct timecounter *base)
-
-     void _ARMV7M_Clock_handler(void)
-     {
-    +  rtems_record_produce(RTEMS_RECORD_INTERRUPT_ENTRY, ARMV7M_VECTOR_SYSTICK);
-       _ARMV7M_Interrupt_service_enter();
-       Clock_isr(NULL);
-       _ARMV7M_Interrupt_service_leave();
-    +  rtems_record_produce(RTEMS_RECORD_INTERRUPT_EXIT, ARMV7M_VECTOR_SYSTICK);
-     }
-
-     static void _ARMV7M_Clock_handler_install(void)
-    diff --git a/bsps/include/bsp/irq-generic.h b/bsps/include/bsp/irq-generic.h
-    index 31835d07ba..2ab2f78b65 100644
-    --- a/bsps/include/bsp/irq-generic.h
-    +++ b/bsps/include/bsp/irq-generic.h
-    @@ -30,6 +30,7 @@
-     #include <stdbool.h>
-
-     #include <rtems/irq-extension.h>
-    +#include <rtems/record.h>
-     #include <rtems/score/assert.h>
-
-     #ifdef RTEMS_SMP
-    @@ -258,6 +259,7 @@ void bsp_interrupt_vector_disable(rtems_vector_number vector);
-      */
-     static inline void bsp_interrupt_handler_dispatch(rtems_vector_number vector)
-     {
-    +  rtems_record_produce(RTEMS_RECORD_INTERRUPT_ENTRY, vector);
-       if (bsp_interrupt_is_valid_vector(vector)) {
-         const bsp_interrupt_handler_entry *e =
-           &bsp_interrupt_handler_table [bsp_interrupt_handler_index(vector)];
-    @@ -276,6 +278,7 @@ static inline void bsp_interrupt_handler_dispatch(rtems_vector_number vector)
-       } else {
-         bsp_interrupt_handler_default(vector);
-       }
-    +  rtems_record_produce(RTEMS_RECORD_INTERRUPT_EXIT, vector);
-     }
-
-     /**
 
 Transfer of Event Records to the Host Computer
 ----------------------------------------------

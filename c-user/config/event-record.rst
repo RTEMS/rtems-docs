@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2022 embedded brains GmbH (http://www.embedded-brains.de)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -149,6 +149,47 @@ in a fatal error extension (see :ref:`Terminate`).
 
 The zlib compression needs about 512KiB of RAM.  This extension can be used
 to produce crash dumps.
+
+.. Generated from spec:/acfg/if/record-interrupts-enabled
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: CONFIGURE_RECORD_INTERRUPTS_ENABLED
+
+.. _CONFIGURE_RECORD_INTERRUPTS_ENABLED:
+
+CONFIGURE_RECORD_INTERRUPTS_ENABLED
+-----------------------------------
+
+.. rubric:: CONSTANT:
+
+``CONFIGURE_RECORD_INTERRUPTS_ENABLED``
+
+.. rubric:: OPTION TYPE:
+
+This configuration option is a boolean feature define.
+
+.. rubric:: DEFAULT CONFIGURATION:
+
+If this configuration option is undefined, then the described feature is not
+enabled.
+
+.. rubric:: DESCRIPTION:
+
+In case
+
+* this configuration option is defined
+
+* and :ref:`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+
+then the interrupt event recording is enabled.
+
+.. rubric:: NOTES:
+
+The interrupt event recording generates interrupt entry and exit events when
+interrupt entries are dispatched.
 
 .. Generated from spec:/acfg/if/record-per-processor-items
 
