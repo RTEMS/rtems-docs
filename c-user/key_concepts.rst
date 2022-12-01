@@ -85,18 +85,75 @@ name:
         printk( "ID=0x%08x name=%s\n", id, ((result) ? result : "no name") );
     }
 
-.. index:: object ID
-.. index:: object ID composition
+.. index:: object id
+.. index:: object id composition
 .. index:: rtems_id
 
-Object IDs
+Object Ids
 ----------
 
-An object ID is a unique 32-bit unsigned integer value which uniquely
-identifies an object instance.  Object IDs are passed as arguments to many
-directives in RTEMS and RTEMS translates the ID to an internal object pointer.
-The efficient manipulation of object IDs is critical to the performance of some
-RTEMS services.
+an object id is a unique 32-bit unsigned integer value which uniquely
+identifies an object instance.  object ids are passed as arguments to many
+directives in rtems and rtems translates the id to an internal object pointer.
+the efficient manipulation of object ids is critical to the performance of some
+rtems services.
+
+.. index:: rtems_extension_ident()
+.. index:: rtems_barrier_ident()
+.. index:: rtems_port_ident()
+.. index:: rtems_message_queue_ident()
+.. index:: rtems_partition_ident()
+.. index:: rtems_region_ident()
+.. index:: rtems_semaphore_ident()
+.. index:: rtems_task_ident()
+.. index:: rtems_timer_ident()
+
+There are multiple directives with names of the form
+``rtems_@CLASS@_ident`` that take a name as argument and return the associated
+id if the name is found. The following is the set of name to id services:
+which can look up an object 
+
+* ``rtems_extension_ident()``
+* ``rtems_barrier_ident()``
+* ``rtems_port_ident()``
+* ``rtems_message_queue_ident()``
+* ``rtems_partition_ident()``
+* ``rtems_region_ident()``
+* ``rtems_semaphore_ident()``
+* ``rtems_task_ident()``
+* ``rtems_timer_ident()``
+
+Local and Global Scope
+----------------------
+
+.. index:: uniprocesor
+.. index:: multiprocessing
+.. index:: distributed multiprocessing
+.. index:: symmetric multiprocessing (SMP)
+.. index:: local scope
+.. index:: global scope
+.. index:: RTEMS_GLOBAL
+.. index:: RTEMS_LOCAL
+.. index:: RTEMS_GLOBAL
+
+RTEMS supports uniprocessing, distributed multiprocessing, and Symmetric
+Multiprocessing (SMP) configurations. A uniprocessor system includes only
+a single processor in a single node. Distributed multiprocessor systems
+include multiple nodes, each of which is a single processor and is usually
+referred to as just multiprocessor mode for historical reasons. SMP
+systems consist of multiple processors cores in a single node.
+
+In distributed multiprocessing configurations, there are multiple nodes in
+the system and object instances may be visible on just the creating node
+or to all nodes. If visible only to the creating node, this is referred to
+as **local scope** and corresponds to the RTEMS_LOCAL attribute setting
+which is the default. If RTEMS GLOBAL is specified as part of the object
+attributes, then the object instance has **global scope** and the object
+id can be used anywhere in the system to identify that object instance.
+
+In uniprocessing and SMP configurations, there is only one node in
+the system and object instances are locally scoped to that node. Any
+attempt to create with the RTEMS_GLOBAL attribute is an error.
 
 Object ID Format
 ~~~~~~~~~~~~~~~~
@@ -121,6 +178,9 @@ number is always one (1) in a single processor system.  The least significant
 sixteen bits form an identifier within a particular object type.  This
 identifier, called the object index, ranges in value from 1 to the maximum
 number of objects configured for this object type.
+
+None of the fields in an object id may be zero except for the special
+case of RTEMS_SELF to indicate the currently running thread.
 
 Object ID Description
 ---------------------
