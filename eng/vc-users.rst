@@ -422,20 +422,91 @@ then you rewrite those commits with ``git rebase`` and push them up again, the
 others will have to re-merge their work and trying to integrate their work
 into yours can become messy.
 
-Accessing a developer's repository
+Accessing a Developer's Repository
 ----------------------------------
 
 RTEMS developers with Git commit access have personal repositories
 on https://git.rtems.org/ that can be cloned to view cutting-edge
 development work shared there.
 
-Creating a Patch
-----------------
+Commit Message Guidance
+-----------------------
 
-Before submitting a patch read about `Contributing
-<https://devel.rtems.org/wiki/Developer/Contributing>`_ to RTEMS and the
-`Commit Message <https://devel.rtems.org/wiki/Developer/Git#GitCommits>`_
-formatting we require.
+The commit message associated with a change to any software project
+is of critical importance. It is the explanation of the change and the
+rationale for it. Future users looing back through the project history
+will rely on it. Even the author of the change will likely rely on it
+once they have forgotten the details of the change. It is important to
+make the message useful. Here are some guidelines followed by the RTEMS
+Project to help improve the quality of our commit messages.
+
+* When committing a change the first line is a summary. Please make it short
+  while hinting at the nature of the change. You can discuses the change
+  if you wish in a ticket that has a PR number which can be referenced in
+  the commit message. After the first line, leave an empty line and add
+  whatever required details you feel are needed.
+
+* Patches should be as single purpose as possible. This is reflected in
+  the first line summary message. If you find yourself writing something
+  like "Fixed X and Y", "Updated A and B", or similar, then evaluate
+  whether the patch should really be a patch series rather than a single
+  larger patch.
+
+* Format the commit message so it is readable and clear. If you have
+  specific points related to the change make them with separate paragraphs
+  and if you wish you can optionally uses a `-` marker with suitable
+  indents and alignment to aid readability.
+
+* Limit the line length to less than 80 characters
+
+* Please use a real name with a valid email address. Please do not use
+  pseudonyms or provide anonymous contributions.
+
+* Please do not use terms such as "Fix bug", "With this change it
+  works", or "Bump hash". If you fix a bug please state the nature of the
+  bug and why this change fixes it. If a change makes something work then
+  detail the reason. You do not need to explain the change line by line
+  as the commits diff and associated ticket will.
+
+* If you change the formatting of source code in a repository please
+  make that a separate patch and use "Formatting changes only" on the first
+  line. Please indicate the reason or process. For example to "Conforming
+  to code standing", "Reverting to upstream format", "Result of automatic
+  formatting".
+
+* Similarly, if addressing a spelling, grammar, or Doxygen issue, please
+  put that in a commit by itself separate from technical changes.
+
+An example commit message:
+
+.. code-block:: shell
+
+  test/change: Test message on formatting of commits
+
+  - Shows a simple single first line
+
+  - Has an empty second line
+
+  - Shows the specifics of adding separate points in the commit message as
+    separate paragraphs. It also shows a `-` separator and multilines
+    that are less than the 80 character width
+
+  - Show a ticket update and close
+
+  Updates #9876
+  Closes #8765
+
+The first line generally starts with a file or directory name which
+indicates the area in RTEMS to which the commit applies. For a patch
+series which impacts multiple BSPs, it is common to put each BSP into
+a separate patch. This improves the quality and specificity of the
+commit messages.
+
+Creating a Patch
+-----------------
+
+Before submitting a patch, please read `Commit Message Guidance`_ to
+become familiar with the commit message formatting we require.
 
 The recommended way to create a patch is to branch the Git repository master
 and use one commit for each logical change. Then you can use
