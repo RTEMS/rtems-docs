@@ -8,7 +8,7 @@ riscv (RISC-V)
 riscv
 =====
 
-This BSP offers 15 variants:
+This BSP offers 12 variants:
 
 * rv32i
 
@@ -26,22 +26,20 @@ This BSP offers 15 variants:
 
 * rv64imac
 
-* rv64imac_medany
-
 * rv64imafd
 
-* rv64imafd_medany
-
 * rv64imafdc
-
-* rv64imafdc_medany
 
 * frdme310arty
 
 * mpfs64imafdc
 
-Each variant corresponds to a GCC multilib.  A particular variant reflects an
-ISA with ABI and code model choice.
+Each rv* variant corresponds to a GCC multilib.  A particular variant reflects an
+ISA with ABI and code model choice. All rv64 BSPs have medany code model by
+default, while rv32 BSPs are medlow. The reason is that RV32 medlow can access
+the entire 32-bit address space, while RV64 medlow can only access addresses
+below 0x80000000. With RV64 medany, it's possible to perform accesses above
+0x80000000.
 
 The BSP must be started im machine mode.
 
@@ -94,8 +92,7 @@ configuration INI file. The ``waf`` defaults can be used to inspect the values.
      by default).
 
 ``RISCV_RAM_REGION_BEGIN``
-     The begin of the RAM region for linker command file (default is 0x70000000
-     for 64-bit with -mcmodel=medlow and 0x80000000 for all other).
+     The begin of the RAM region for linker command file (default is 0x80000000).
 
 ``RISCV_RAM_REGION_SIZE``
      The size of the RAM region for linker command file (default 64MiB).
@@ -145,13 +142,13 @@ QEMU
 ----
 
 All of the BSP variants that start with rv can be run on QEMU's virt machine.
-For instance, to run the ``rv64imafdc_medany`` BSP with the following
-"config.ini" file:
+For instance, to run the ``rv64imafdc`` BSP with the following
+"config.ini" file.
 
 .. code-block:: none
-    [riscv/rv64imafdc_medany]
+    [riscv/rv64imafdc]
 
-Run the following QEMU command:
+Run the following QEMU command.
 
 .. code-block:: shell
     $ qemu-system-riscv64 -M virt -nographic -bios $RTEMS_EXE
