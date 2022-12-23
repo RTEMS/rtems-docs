@@ -137,9 +137,9 @@ according to the device tree "/chosen/stdout-path" property value.
 QEMU
 ----
 
-All of the BSP variants that start with rv can be run on QEMU's virt machine.
-For instance, to run the ``rv64imafdc`` BSP with the following
-"config.ini" file.
+All of the BSP variants that start with rv can be run on QEMU's virt
+and spike machines. For instance, to run the ``rv64imafdc`` BSP with the
+following "config.ini" file.
 
 .. code-block:: none
     [riscv/rv64imafdc]
@@ -148,6 +148,26 @@ Run the following QEMU command.
 
 .. code-block:: shell
     $ qemu-system-riscv64 -M virt -nographic -bios $RTEMS_EXE
+    $ qemu-system-riscv64 -M spike -nographic -bios $RTEMS_EXE
+
+Spike
+----
+All of the BSP variants that start with rv can be run on Spike.
+For instance, to run the ``rv64imafdc`` BSP with the following
+"config.ini" file.
+
+.. code-block:: none
+    [riscv/rv64imafdc]
+
+Run the following Spike command.
+
+.. code-block:: shell
+    $ spike --isa=rv64imafdc $RTEMS_EXE
+
+Unlike QEMU, Spike supports enabling/disabling a subset of the imafdc extensions
+and has support for further RISC-V extensions as well. A fault will be triggered
+if an executable built with rv64imafdc RISC-V's -march option run on Spike with
+--isa=rv64i option. If no --isa option is specified, the default is rv64imafdc.
 
 Microchip PolarFire SoC
 -----------------------
