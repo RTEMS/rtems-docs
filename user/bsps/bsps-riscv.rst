@@ -83,10 +83,6 @@ configuration INI file. The ``waf`` defaults can be used to inspect the values.
      The maximum number of external interrupts supported by the BSP (default
      64).
 
-``RISCV_ENABLE_HTIF_SUPPORT``
-     Enables the HTIF support if defined to a non-zero value, otherwise it is
-     disabled (disabled by default).
-
 ``RISCV_CONSOLE_MAX_NS16550_DEVICES``
      The maximum number of NS16550 devices supported by the console driver (2
      by default).
@@ -126,7 +122,7 @@ Console Driver
 
 The console driver supports devices compatible to
 
-* "ucb,htif0" (depending on the ``RISCV_ENABLE_HTIF_SUPPORT`` BSP option),
+* "ucb,htif0" (always probed for and enabled if it exists),
 
 * "ns16550a" (see ``RISCV_CONSOLE_MAX_NS16550_DEVICES`` BSP option), and
 
