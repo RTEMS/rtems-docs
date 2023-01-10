@@ -222,8 +222,9 @@ assumptions:
 - The execution time for each task without preemption or interruption is
   constant and does not vary.
 
-- Any non-periodic tasks in the system are special.  These tasks displace
-  periodic tasks while executing and do not have hard, critical deadlines.
+- Any non-periodic tasks in the system are special.  These tasks should not
+  displace periodic tasks while executing and do not have hard, critical
+  deadlines.
 
 Once the basic schedulability analysis is understood, some of the above
 assumptions can be relaxed and the side-effects accounted for.
@@ -290,9 +291,9 @@ by the Processor Utilization Rule, they can still be guaranteed to meet all
 their deadlines by application of the First Deadline Rule.  This rule can be
 stated as follows:
 
-For a given set of independent periodic tasks, if each task meets its first
-deadline when all tasks are started at the same time, then the deadlines will
-always be met for any combination of start times.
+    For a given set of independent periodic tasks, if each task meets its first
+    deadline when all tasks are started at the same time, then the
+    deadlines will always be met for any combination of start times.
 
 A key point with this rule is that ALL periodic tasks are assumed to start at
 the exact same instant in time.  Although this assumption may seem to be
