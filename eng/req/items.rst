@@ -4597,130 +4597,130 @@ of links.
 Requirement Text
 ^^^^^^^^^^^^^^^^
 
-The value shall be a string. It shall state a requirement or constraint. The
-value shall not contain an element of
+The value shall be a string. It shall state a requirement or constraint.  The
+text should not use one of the following words or phrases:
 
-* "``acceptable``",
+* acceptable
 
-* "``adequate``",
+* adequate
 
-* "``almost always``",
+* almost always
 
-* "``and/or``",
+* and/or
 
-* "``appropriate``",
+* appropriate
 
-* "``approximately``",
+* approximately
 
-* "``as far as possible``",
+* as far as possible
 
-* "``as much as practicable``",
+* as much as practicable
 
-* "``best``",
+* best
 
-* "``best possible``",
+* best possible
 
-* "``easy``",
+* easy
 
-* "``efficient``",
+* efficient
 
-* "``e.g.``",
+* e.g.
 
-* "``enable``",
+* enable
 
-* "``enough``",
+* enough
 
-* "``etc.``",
+* etc.
 
-* "``few``",
+* few
 
-* "``first rate``",
+* first rate
 
-* "``flexible``",
+* flexible
 
-* "``generally``",
+* generally
 
-* "``goal``",
+* goal
 
-* "``graceful``",
+* graceful
 
-* "``great``",
+* great
 
-* "``greatest``",
+* greatest
 
-* "``ideally``",
+* ideally
 
-* "``i.e.``",
+* i.e.
 
-* "``if possible``",
+* if possible
 
-* "``in most cases``",
+* in most cases
 
-* "``large``",
+* large
 
-* "``many``",
+* many
 
-* "``maximize``",
+* maximize
 
-* "``minimize``",
+* minimize
 
-* "``most``",
+* most
 
-* "``multiple``",
+* multiple
 
-* "``necessary``",
+* necessary
 
-* "``numerous``",
+* numerous
 
-* "``optimize``",
+* optimize
 
-* "``ought to``",
+* ought to
 
-* "``probably``",
+* probably
 
-* "``quick``",
+* quick
 
-* "``rapid``",
+* rapid
 
-* "``reasonably``",
+* reasonably
 
-* "``relevant``",
+* relevant
 
-* "``robust``",
+* robust
 
-* "``satisfactory``",
+* satisfactory
 
-* "``several``",
+* several
 
-* "``shall be included but not limited to``",
+* shall be included but not limited to
 
-* "``simple``",
+* simple
 
-* "``small``",
+* small
 
-* "``some``",
+* some
 
-* "``state of the art``",
+* state of the art
 
-* "``sufficient``",
+* sufficient
 
-* "``suitable``",
+* suitable
 
-* "``support``",
+* support
 
-* "``systematically``",
+* systematically
 
-* "``transparent``",
+* transparent
 
-* "``typical``",
+* typical
 
-* "``user friendly``",
+* user friendly
 
-* "``usually``",
+* usually
 
-* "``versatile``", and
+* versatile
 
-* "``when necessary``".
+* when necessary
 
 This type is used by the following types:
 
