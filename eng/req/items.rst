@@ -3449,14 +3449,25 @@ This type is used by the following types:
 Build Option Set Test State Action
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies test states for a set of test programs.
-Generic attributes may be specified. Each generic attribute key shall be a
-:ref:`SpecTypeName`. Each generic attribute value shall be a
-:ref:`SpecTypeBuildTestState`. The keys shall be test program names.  The names
-shall correspond to the name of a :ref:`SpecTypeBuildTestProgramItemType` or
-:ref:`SpecTypeBuildAdaTestProgramItemType` item.  Due to the processing order
-of items, there is no way to check if the name specified by the attribute key
-is valid.
+This set of attributes specifies the test state for a set of test programs with
+an optional reason. All explicit attributes shall be specified. The explicit
+attributes for this type are:
+
+reason
+    The attribute value shall be an optional string. If the value is present,
+    then it shall be the reason for the test state definition.
+
+state
+    The attribute value shall be a :ref:`SpecTypeBuildTestState`. It shall be
+    the test state for the associated list of tests.
+
+tests
+    The attribute value shall be a list of strings. It shall be the list of
+    test program names associated with the test state.  The names shall
+    correspond to the name of a :ref:`SpecTypeBuildTestProgramItemType` or
+    :ref:`SpecTypeBuildAdaTestProgramItemType` item.  Due to the processing
+    order of items, there is no way to check if a specified test program name
+    is valid.
 
 This type is used by the following types:
 
