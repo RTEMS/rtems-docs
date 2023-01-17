@@ -2978,6 +2978,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildBSPItemType`
 
+* :ref:`SpecTypeBuildGroupItemType`
+
 * :ref:`SpecTypeBuildLibraryItemType`
 
 * :ref:`SpecTypeBuildObjectsItemType`
@@ -3004,6 +3006,8 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildBSPItemType`
 
+* :ref:`SpecTypeBuildGroupItemType`
+
 * :ref:`SpecTypeBuildLibraryItemType`
 
 * :ref:`SpecTypeBuildObjectsItemType`
@@ -3025,6 +3029,10 @@ this attribute succeed the options presented to the item by the build item
 context.
 
 This type is used by the following types:
+
+* :ref:`SpecTypeBuildAdaTestProgramItemType`
+
+* :ref:`SpecTypeBuildGroupItemType`
 
 * :ref:`SpecTypeBuildLibraryItemType`
 
