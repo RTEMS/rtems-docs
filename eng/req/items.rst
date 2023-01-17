@@ -714,8 +714,6 @@ option. The following explicit attributes are mandatory:
 
 * ``default``
 
-* ``default-by-variant``
-
 * ``description``
 
 The explicit attributes for this type are:
@@ -729,19 +727,11 @@ actions
     actions are carried out during the configure command execution.
 
 default
-    The attribute value shall be a :ref:`SpecTypeBuildOptionValue`. It shall be
-    the default value of the option if no variant-specific default value is
-    specified.  Use ``null`` to specify that no default value exits.  The
-    variant-specific default values may be specified by the
-    ``default-by-variant`` attribute.
-
-default-by-variant
     The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeBuildOptionDefaultByVariant`. The list is checked two times
-    and processed from top to bottom. Firstly, the base BSP name is used to
-    match with a variant. Secondly, the BSP family name prefixed by ``bsps/``
-    is used to match with a variant.  If a matching variant is found, then the
-    processing stops.
+    :ref:`SpecTypeBuildOptionDefaultValue`. It shall be the list of default
+    values of the option.  When a default value is needed, the first value on
+    the list which is enabled according to the enabled set is choosen.  If no
+    value is enabled, then the default value is ``null``.
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -766,17 +756,17 @@ Please have a look at the following example:
     - define: null
     build-type: option
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
-    default: 115200
-    default-by-variant:
-    - value: 9600
-      variants:
+    - Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
+    default:
+    - enabled-by:
       - bsps/powerpc/motorola_powerpc
       - m68k/m5484FireEngine
       - powerpc/hsc_cm01
-    - value: 19200
-      variants:
-      - m68k/COBRA5475
+      value: 9600
+    - enabled-by: m68k/COBRA5475
+      value: 19200
+    - enabled-by: true
+      value: 115200
     description: |
       Default baud for console and other serial devices.
     enabled-by: true
@@ -3423,22 +3413,20 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildOptionAction`
 
-.. _SpecTypeBuildOptionDefaultByVariant:
+.. _SpecTypeBuildOptionDefaultValue:
 
-Build Option Default by Variant
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build Option Default Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This set of attributes specifies build option default values by variant. All
-explicit attributes shall be specified. The explicit attributes for this type
-are:
+This set of attributes specifies a build option default value. All explicit
+attributes shall be specified. The explicit attributes for this type are:
+
+enabled-by
+    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`.
 
 value
-    The attribute value shall be a :ref:`SpecTypeBuildOptionValue`. It value
-    shall be the default value for the matching variants.
-
-variants
-    The attribute value shall be a list of strings. It shall be a list of
-    Python regular expression matching with the desired variants.
+    The attribute value shall be a :ref:`SpecTypeBuildOptionValue`. Its value
+    shall be the default value for the associated enabled-by expression.
 
 This type is used by the following types:
 
@@ -3495,9 +3483,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildOptionAction`
 
-* :ref:`SpecTypeBuildOptionDefaultByVariant`
-
-* :ref:`SpecTypeBuildOptionItemType`
+* :ref:`SpecTypeBuildOptionDefaultValue`
 
 .. _SpecTypeBuildSource:
 
@@ -3680,6 +3666,8 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 * :ref:`SpecTypeActionRequirementTransition`
+
+* :ref:`SpecTypeBuildOptionDefaultValue`
 
 * :ref:`SpecTypeEnabledByExpression`
 
