@@ -727,7 +727,7 @@ Broadcasts the messages to the tasks waiting at the queue.
 
 This directive causes all tasks that are waiting at the queue specified by
 ``id`` to be unblocked and sent the message contained in ``buffer``.  Before a
-task is unblocked, the message ``buffer`` of ``size`` byes in length is copied
+task is unblocked, the message ``buffer`` of ``size`` bytes in length is copied
 to that task's message buffer.  The number of tasks that were unblocked is
 returned in ``count``.
 
