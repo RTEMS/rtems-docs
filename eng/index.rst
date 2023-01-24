@@ -11,6 +11,7 @@ RTEMS Software Engineering (|version|)
 
 .. topic:: Copyrights and License
 
+    | |copy| 2020 Trinity College Dublin
     | |copy| 2018, 2020 embedded brains GmbH
     | |copy| 2018, 2020 Sebastian Huber
     | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
@@ -31,6 +32,7 @@ RTEMS Software Engineering (|version|)
     management
     test-plan
     test-framework
+    fv/index
     build-system
     release-mgmt
     users-manuals
