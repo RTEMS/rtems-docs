@@ -28,6 +28,16 @@ Glossary
     CCB
         This term is an acronym for Change Control Board.
 
+    concurrent system
+        The term refers to a system composed of a number of seperate computations
+        running at the "same" time. In practice, each computation is taking turns
+        in getting access to one of the available processors. Most 
+        :term:`formal semantics` view these as involving :term:`nondeterministic`
+        choices regarding when each computation runs on any given processor.
+
+        In the RTEMS context, such a computation could be a :term:`task` or
+        :term:`thread`, but could also be a scheduler instance in a SMP setting.
+
     Doorstop
         `Doorstop <https://github.com/doorstop-dev/doorstop>`_ is a
         requirements management tool.
@@ -38,6 +48,10 @@ Glossary
     ELF
         This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
+
+    formal model
+        The term describes a model based on a notation that has a precise
+        mathematical :term:`semantics`.
 
     GCC
         This term is an acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
@@ -63,12 +77,34 @@ Glossary
     ISVV
         This term is an acronym for Independent Software Verification and Validation.
 
+    nondeterministic
+        This term refers to a choice being made in a system where the precise 
+        (deterministic) reason for that choice is hard to reason about. The most 
+        common example is when developing concurrent code, where often the only 
+        practical approach is to assume that the sheduler is *nondeterministic*.
+
+    refinement
+        This term describes a relationship between the semantics of software
+        engineering artifacts at different levels. This relationship characterises
+        when a lower-level artifact can be viewed as a correct implementation of the
+        corresponding high-level artifact. The most common form of refinement is that
+        which relates a specification to the code that implements it.
+        
     ReqIF
         This term is an acronym for
         `Requirements Interchange Format <https://www.omg.org/spec/ReqIF/About-ReqIF/>`_.
 
     RTEMS
         This term is an acronym for Real-Time Executive for Multiprocessor Systems.
+
+    scenario
+        This terms refers to a single run of a concurrent system where
+        :term:`nondeterministic` choices have been resolved in some way. One form of
+        :term:`semantics` for a concurrent system is the set of all possible
+        *scenarios*. 
+
+    semantics
+        This term refers to the meaning of a language or notation.
 
     software component
         This term is defined by ECSS-E-ST-40C 3.2.28 as a "part of a software
