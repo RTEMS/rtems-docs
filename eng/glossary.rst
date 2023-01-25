@@ -77,6 +77,9 @@ Glossary
     ISVV
         This term is an acronym for Independent Software Verification and Validation.
 
+    LTL
+        This term is an acronym for `Linear-time Temporal Logic <https://en.wikipedia.org/wiki/Linear_temporal_logic>`.
+
     nondeterministic
         This term refers to a choice being made in a system where the precise 
         (deterministic) reason for that choice is hard to reason about. The most 

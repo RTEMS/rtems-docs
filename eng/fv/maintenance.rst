@@ -7,6 +7,8 @@
 Test Generation Maintenance
 ===========================
 
+**DEPRECATED**
+
 The standard RTEMS technique of emailing a patch-set for review shall be used.
 the basic principle is that any file modified as a result of changes, *including
 generated C test code* will be included in the patch-sets. A complication is

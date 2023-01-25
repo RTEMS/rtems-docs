@@ -14,5 +14,4 @@ Formal Verification
     promela
     refinement
     methodology
-    maintenance
     model-guide
