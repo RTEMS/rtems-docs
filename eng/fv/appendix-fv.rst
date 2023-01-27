@@ -2,18 +2,8 @@
 
 .. Copyright (C) 2022 Trinity College Dublin
 
-RTEMS Formal Model Guide
-========================
-
-**GB: Section 9.7 "RTEMS Formal Model Guide" seems like it includes both
-some aspects of a How-To but also a lot of details that might be
-better as a separate document specific to the Promela/Verification
-detailed implementation. The point of the RTEMS Software Engineering
-manual is to provide developers with the guidelines of how to work
-with RTEMS. This section is very detailed about the implementation of
-specific models and feels unbalanced with the rest of the new section.
-For example, this section is about 3/5 of the entire "Formal
-Verification" section.**
+Appendix: RTEMS Formal Model Guide
+**********************************
 
 Here we describe the various formal models of RTEMS that are currently in
 existence. The following were delivered as part of the ESA-sponsored activity,

@@ -10,8 +10,5 @@ Formal Verification
 .. toctree::
 
     overview
-    tool-setup
-    promela
-    refinement
-    methodology
+    promela-index
     model-guide
