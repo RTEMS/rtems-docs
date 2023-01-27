@@ -10,5 +10,6 @@ Formal Verification
 .. toctree::
 
     overview
+    approaches
     promela-index
     model-guide
