@@ -9,11 +9,9 @@ Promela models are more abstract than concrete C code. We need to establish a
 rigourous link, known as a :term:`refinement`, from Promela to C. This is composed of
 two parts: manual annotations in the Promela model to make its behaviour easy
 to identify and parse; and a refinement defined as a YAML file that maps from
-annotations to corresponding C code.
-
-**GB: In section "9.4 Promela to C Refinement" what is the name of the YAML
-file? Is there more than one, or is it unique.**
-
+annotations to corresponding C code. We associate a single refinement YAML file
+with each Promela model.
+s
 Model Annotations
 -----------------
 

@@ -2,6 +2,7 @@
 
 .. Copyright (C) 2022 Trinity College Dublin
 
+.. _FormalToolSetup:
 
 Formal Tools Setup
 ==================
@@ -130,45 +131,61 @@ Configuration involves copying and adapting that template.
   simulatorargs: -leon3 -r s -m 2  
   spinallscenarios: -DTEST_GEN -run -E -c0 -e 
 
-
+The test building program uses a sub-program ``spin2test`` to do the actual
+test generation. This is defined by ``spin2test.coco``, also found in 
+``formal/promela/src``.
 
 Running Test Generation 
 -----------------------
 
+The testbuilder takes a command as its first command-line argument. Some of
+these commands require the model-name as a second argument:
 
-The help:
+  Usage:   ``tbuild <command> [<modelname>]``
 
-.. code-block::
+The commands provided are:
 
-  testbuilder - manages the generation of test files from a Promela model
+``clean <model>``
+  Removes generated files.
 
-  Usage:   testbuilder <command> [<modelname>]
-      clean <model>    Removes generated files.
-      spin <model>     Runs SPIN to find all scenarios. The scenarios are found 
-                      in numbered files called <model>N.spn 
-      gentests <model> Convert SPIN scenarios to test sources. 
-                      Each <model>N.spn produces a numbered test source file.
-      copy <model>     Copies the generated test files to the relevant test
-                      source directory, and updates the relevant test
-                      configuration files
-      archive <model>  Copies generated spn, trail, source, and test log files to
-                      an archive sub-directory of the model directory.
-      compile          Rebuilds the test executable
-      run              Runs tests in a simulator
-      all <model>      Does clean, spin, gentests, copy, compile, and run
-      zero             Removes all generated test filenames from the test 
-                      configuration files, but does NOT remove the test sources
-                      from the test source directory
+``spin <model>``
+  Runs SPIN to find all scenarios. The scenarios are found  in numbered files
+  called ``<model>N.spn``. 
 
-  In order to generate test files the following input files are required:
-      `<model>.pml`
-      `<model>-rfn.yml`
-      `<model>-pre.h`
-      `<model>-post.h`
-      `<model>-run.h`
-  where `<model>` is the name of the model. In addition there may be other files
-  whose names have <model> embedded in them. These are included in what is 
-  transfered to the test source directory by the copy command.
+``gentests <model>``
+  Convert SPIN scenarios to test sources. Each ``<model>N.spn`` produces a numbered
+  test source file.
+
+``copy <model>``
+  Copies the generated test files to the relevant test source directory, and
+  updates the relevant test configuration files.
+
+``archive <model>``
+  Copies generated spn, trail, source, and test log files to an archive
+  sub-directory of the model directory.
+
+``compile``
+  Rebuilds the test executable.
+
+``run``
+  Runs tests in a simulator.
+
+``all <model>``
+  Does clean, spin, gentests, copy, compile, and run.
+
+``zero``
+  Removes all generated test filenames from the test configuration files, but
+  does NOT remove the test sources from the test source directory.
+
+In order to generate test files the following input files are required:
+    ``<model>.pml``, 
+    ``<model>-rfn.yml``, 
+    ``<model>-pre.h``, 
+    ``<model>-post.h``, and
+    ``<model>-run.h``.
+In addition there may be other files
+whose names have <model> embedded in them. These are included in what is 
+transfered to the test source directory by the copy command.
 
 
 
