@@ -7,7 +7,7 @@ Appendix: RTEMS Formal Model Guide
 
 Here we describe the various formal models of RTEMS that are currently in
 existence. The following were delivered as part of the ESA-sponsored activity,
-and will be included as the initial set when the directory ``formal`` is added
+and are included in the initial set when the directory ``formal`` was added
 to ``rtems-central``:
 
 Chains API (ESA-sponsored Activity)
@@ -19,14 +19,9 @@ Events Manager (ESA-sponsored Activity, M.Sc. Dissertation :cite:`Jennings:2021:
     Guide. This had to tackle real concurrency and deal with multiple CPUs and priority
     issues.
 
-Thread-Queues (ESA-sponsored Activity)
-    Models related to the SMP versions of the scheduler thread queues. These are
-    a work in progress and no test generation is currently available.
-
 A number of other Classic RTEMS Managers have been modelled and have had tests
-generated, as M.Sc. Dissertation topics. This need some final validation and
-will be added later. They will be used to assess the proposed mechanism for
-upgrade and maintenance (:numref:`FormalMaint`):
+generated, as M.Sc. Dissertation topics. These have also been included in the initial set
+of models.
 
 
 Barrier Manager (M.Sc. Dissertation :cite:`Jaskuc:2022:TESTGEN` )
@@ -34,6 +29,10 @@ Barrier Manager (M.Sc. Dissertation :cite:`Jaskuc:2022:TESTGEN` )
 
 Message Manager (M.Sc. Dissertation :cite:`Lynch:2022:TESTGEN` )
     Models the Classic Message Manager API.
+
+
+Models of the MrsP scheduler thread queues, and the Semaphore Manager are currently in
+progress, and should appear at some point in the future.
 
 .. _TestGenOverview:
 
@@ -45,7 +44,7 @@ Given an RTEMS feature we want to test, we first define a rootname
 our tests on a model.
 
 We develop a Promela model of the feature as file ``feature-model.pml``. We
-ensure this model captures the correct behaviour and verify it correctness.
+ensure this model captures the correct behaviour and verify its correctness.
 We also add annotation ``printf()`` statements and a way to negate the
 relevant properties.
 
@@ -298,7 +297,7 @@ Refinement
 ^^^^^^^^^^
 
 Files:
- | ``chains-api-model-N.spn`` where ``N`` ranges from 0 to 20.
+ | ``chains-api-model-N.spn`` where ``N`` ranges from 0 upwards.
  | ``chains-api-model-rfn.yml``
 
 The ``spin2test`` script takes these annotations, along with the YAML
@@ -456,7 +455,7 @@ with respect to formal testing. This application constitutes as well a way to
 measure the completeness of our manual and automatic test generation tools
 previously developed.
 
-he RTEMS Event Manager was chosen as the second case-study because
+The RTEMS Event Manager was chosen as the second case-study because
 it involved concurrency and communication, had a small number of API calls
 (just two),
 but also had somewhat complex requirements related to task priorities.
@@ -1137,7 +1136,7 @@ Refinement
 ^^^^^^^^^^
 
 Files:
- | ``event-mgr-model-N.spn`` where ``N`` ranges from 0 to 8.
+ | ``event-mgr-model-N.spn`` where ``N`` ranges from 0 upwards.
  | ``event-mgr-model-rfn.yml``
 
 The test-code we generate here is based on the test-code generated from the
@@ -1233,238 +1232,34 @@ Files:
  | ``tc-event-mgr-model.c``
  | ``tr-event-mgr-model.h``
  | ``tr-event-mgr-model.c``
- | ``tr-event-mgr-model-N.c`` where ``N`` ranges from 0 to 8.
+ | ``tr-event-mgr-model-N.c`` where ``N`` ranges from 0 upwards.
 
 All the above files are copied to ``testsuites/validation`` in the ``rtems``
 repository, where they should be built and run using ``waf`` as normal.
 
+Testing Barriers
+----------------
 
-Modelling Thread Queues
------------------------
+The Barrier Manager is used to arrange for a number of tasks to wait on a 
+designated barrier object, until either another tasks releases them, or a 
+given number of tasks are waiting, at which point they are all released.
 
-Below,
-we summarise the current state of the thread queue verification effort.
-All this verification material can be found at
-``formal/promela/models/threadq``, which contains the following directories:
+While the fine details of the Promela model here, in
+``barrier-mgr-model.pml``, differs from those used for the Event Manager,
+the overall architecture in terms of Promela  processes is very similar,
+with processes ``init``, ``System``, ``Clock``, ``Sender``, and
+``Receiver``.
 
-``MrsP-Code``
-    Contains Promela models of the MrsP semaphore implementation, based on a
-    reading of the actual code, assuming ``RTEMS_SMP`` is defined (among other
-    settings). It is intended to check for desirable properties, and the
-    absence of undesirable ones. It is not suitable for test generation. The
-    main module is found in ``MAIN.pml``.
-
-``MrsP-Tests``
-    Contains Promela models of the MrsP semaphore behaviour, at a high level of
-    abstraction. These are intended for test generation, which is not currently
-    completed. The main module is ``mrsp-threadq-model.pml``, which currently
-    generates 1092 scenarios. We go into more detail about this in sub-section
-    :ref:`TestingThreadQueues`.
-
-``Weak-Memory``
-    Contains models of various aspects of weak memory. Parts of these may find
-    their way into the MrsP models.
-
-``docs``
-    Contains LaTeX sources for early working documents. Currently out of scope.
-
-
-
-Weak Memory Models
-^^^^^^^^^^^^^^^^^^
-
-Files in ``Weak-Memory/``:
- | ``memory_model.pml``
- | ``RAM.pml``
- | ``SPARC-TSO.pml``
- | ``wmemory.pml``
-
-A model of generic weak memory is found in ``memory_model.pml`` (which includes
-``RAM.pml`` and ``wmemory.pml``). This replaces an ideal atomic load or store
-by one that has two phases, a move from register or RAM into some transport
-medium (aether), follwed by a subsequent move into RAM or register. The model
-has two threads that try to increment a memory location. At the end it asserts
-that the location has value 2. This can be simulated using:
-
-.. code-block:: shell
-
-  spin memory_model.pml
-
-This will sometimes succeed, and sometimes fail, as expected. If we run the
-following commands:
-
-.. code-block:: shell
-
-  spin -run memory_model.pml
-  spin -t -v memory_model.pml
-
-then the first command reports an assertion violation error, while the second
-replays the generated counter-example.
-
-The file ``SPARC-TSO.pml`` is a standalone model of the Sparc architectures
-Total Store Order (TSO) memory model. It is low-level, modelling individual
-memory access instructions.
-
-Modelling Thread Code
-^^^^^^^^^^^^^^^^^^^^^
-
-Files in ``MrsP-Code/`` :
- | ``MAIN.pml``
- | ``Chains.pml``
- | ``Concurrency.pml``
- | ``Heaps.pml``
- | ``Init.pml``
- | ``Locks.pml``
- | ``Priority.pml``
- | ``RBTrees.pml``
- | ``Scenarios.pml``
- | ``Semaphores.pml``
- | ``Sizing.pml``
- | ``State.pml``
- | ``Structs.pml``
- | ``Values.pml``
-
-Scoping
-~~~~~~~
-
-
-
-Scoping is complete, and at first glance seems reasonable in size.
-We are looking at scenarios involving a number of processors and schedulers
-running a number of tasks of varying priorities that simply create,
-obtain,
-and release MrsP semaphores.
-In practise, this touches a large part of the RTEMS code base.
-We need to handle a wide variety of queues, implemented using both chains
-and red-black trees, as well as different locking protocols.
-The datastructures that represent processors, schedulers and threads,
-are complex, with many linkages in between them. The MrsP protocols require
-task to migrate from one processor to another under certain circumstances.
-
-Modelling
-~~~~~~~~~
-
-Modelling began by looking at the key RTEMS API calls involved,
-namely `rtems_semaphore_create()`, `rtems_semaphore_obtain()`,
-and `rtems_semaphore_release()`.
-Progress was good until an assertion from the RTEMS source failed
-when transcribed into the Promela model.
-This raised the need to model how the entire system is initialized,
-at least those parts that can influence the MrsP protocol behaviour.
-RTEMS initialization is very complex,
-and an initial working model has only just been completed.
-
-Validation
-~~~~~~~~~~
-
-In the current state of the model,
-the main methods of validation are:
-careful reading of the Promela code with respect to the corresponding C code;
-and implementing every C code assertion in Promela using the `assert()` construct.
-The C assertions capture the implementors understanding of good behaviour,
-and our model should at least check they are satisfied within the model.
-
-Verification
-~~~~~~~~~~~~
-
-We can perform simulation runs to observe behaviour,
-but the model is not at the stage where we can use the model-checker to check
-high-level properties, such as deadlock- or live-lock freedom.
-
-.. _TestingThreadQueues:
-
-Testing Thread Queues
------------------------
-
-The test-generation code is found in ``MrsP-Tests/``.
-
-Model
-^^^^^
-
-Files:
- | ``Utilities.pml``
- | ``Sizing.pml``
- | ``Configure.pml``
- | ``Run.pml``
- | ``mrsp-threadq-model.pml``
-
-``Utilities.pml``
-~~~~~~~~~~~~~~~~~
-
-Promela ``inline``\ s implementing useful calculations:
-
-.. code-block:: c
-
-    inline setMin( a, b, min ) { ... }
-    inline chooseLowHigh( low, high, choice ) { ... }
-    inline lowerRatio( n, p, lowerbound) { ... }
-
-``Sizing.pml``
-~~~~~~~~~~~~~~
-
-This Promela code makes a non-deterministic choice of various sizes as follows:
-
-  1. Choose number of cores, at least one
-  2. Choose number of tasks, at least two, and at least one per core
-  3. Choose number of resources, at least one
-
-The maximum number of cores and resources possible is four, while up to six
-tasks are possible.
-
-``Configure.pml``
-~~~~~~~~~~~~~~~~~
-
-Given the number of cores, resources, and tasks, assign tasks to cores, and
-resources to tasks, so that:
-
- 1. Every core has at least one task.
- 2. Every resource is associated with at least two tasks.
-
-``Run.pml``
-~~~~~~~~~~~
-
-This builds a Promela model of a task that takes its nominal behaviour (a.k.a.
-its business logic) and interleaves this with regular checks to see if it is
-not blocked, doing its business, and then invoking a context switch.
-
-.. code-block:: c
-
-   WAIT_TO_RUN( tno );   // <1>
-   tryObtain( tno, 3 );   // <2>
-   contextSwitch( taskConfig[tno].taskCore );   // <3>
-
-.. topic:: Items:
-
-  1. Wait here until the scheduler makes me ``Ready``.
-  2. Do my business logic (here trying to obtain a semaphore).
-  3. Perform a context switch that allows the scheduler (model) to run.
-
-``mrsp-threadq-model.pml``
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Chooses a scenario, launches all the tasks, waits for them to complete, and then
-asserts ``false`` if test generation is active and we are about to terminate.
-
-Annotations
-^^^^^^^^^^^
-
-The only annotations that have been developed at this point are those in
-``Sizing.pml`` that report the number of key elements in a scenario.
-
-Refinement
-^^^^^^^^^^
-
-No refinement has been developed at this point.
 
 Assembly
 ^^^^^^^^
 
 Files:
- | ``tr-mrsp-threadq-model.h``
- | ``tr-mrsp-threadq-model.c``
- | ``mrsp-threadq-model-pre.h`` (Preamble)
- | ``mrsp-threadq-model-post.h`` (Postamble)
- | ``mrsp-threadq-model-run.h`` (Runner)
+ | ``tr-barrier-mgr-model.h``
+ | ``tr-barrier-mgr-model.c``
+ | ``barrier-mgr-model-pre.h`` (Preamble)
+ | ``barrier-mgr-model-post.h`` (Postamble)
+ | ``barrier-mgr-model-run.h`` (Runner)
 
 
 The assembly process is the same as described for Chains.
@@ -1473,10 +1268,51 @@ Deployment
 ^^^^^^^^^^
 
 Files:
- | ``tc-mrsp-threadq-model.c``
- | ``tr-mrsp-threadq-model.h``
- | ``tr-mrsp-threadq-model.c``
- | ``tr-mrsp-threadq-model-N.c`` where ``N`` ranges from 0 to 1091.
+ | ``tc-barrier-mgr-model.c``
+ | ``tr-barrier-mgr-model.h``
+ | ``tr-barrier-mgr-model.c``
+ | ``tr-barrier-mgr-model-N.c`` where ``N`` ranges from 0 upwards.
 
 All the above files are copied to ``testsuites/validation`` in the ``rtems``
 repository, where they should be built and run using ``waf`` as normal.
+
+
+
+Testing Messages
+----------------
+
+The Message Manager provides objects that act as message queues. Tasks can 
+interact with these by enqueuing and/or dequeuing message objects.
+
+While the fine details of the Promela model here, in
+``msg-mgr-model.pml``, differs from those used for the Event Manager,
+the overall architecture in terms of Promela processes is very similar,
+with processes ``init``, ``System``, ``Clock``, ``Sender``, and
+``Receiver``.
+
+
+Assembly
+^^^^^^^^
+
+Files:
+ | ``tr-msg-mgr-model.h``
+ | ``tr-msg-mgr-model.c``
+ | ``msg-mgr-model-pre.h`` (Preamble)
+ | ``msg-mgr-model-post.h`` (Postamble)
+ | ``msg-mgr-model-run.h`` (Runner)
+
+
+The assembly process is the same as described for Chains.
+
+Deployment
+^^^^^^^^^^
+
+Files:
+ | ``tc-msg-mgr-model.c``
+ | ``tr-msg-mgr-model.h``
+ | ``tr-msg-mgr-model.c``
+ | ``tr-msg-mgr-model-N.c`` where ``N`` ranges from 0 upwards.
+
+All the above files are copied to ``testsuites/validation`` in the ``rtems``
+repository, where they should be built and run using ``waf`` as normal.
+
