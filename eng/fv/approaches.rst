@@ -5,25 +5,8 @@
 Formal Verification Approaches
 ==============================
 
-We need to discuss various concepts here:
-
-* Logics
-* Semantics
-* Proof
-* Models
-* Model checking
-* Tools
-* FM-based test generation
-
-**BELOW: the METHODS section from FV Planning doc in QDP**
-
-.. _section_METHODS:
-
-METHODS
-*******
-
 We present here an overview of a range of formal methods and tools
-that look feasible for use in Task 3.2.
+that look feasible for use with RTEMS.
 
 A key criterion for any proposed tool is the ability to deploy it
 in a highly automated manner.
@@ -48,8 +31,26 @@ in order to be acceptable to the RTEMS community.
 We start with a general overview of formal methods and testing,
 and discuss a number of formalisms and tools against the criteria above.
 
+We need to discuss various concepts here:
+
+* Logics
+* Semantics
+* Proof
+* Models
+* Model checking
+* Tools
+* FM-based test generation
+
+**BELOW: the METHODS section from FV Planning doc in QDP**
+
+
+METHODS
+=======
+
+
+
 Formal Methods and Testing
-==========================
+--------------------------
 
 A good survey of formal techniques and testing
 is found in a 2009 ACM survey paper :cite:`Hierons:2009:FMT`.
@@ -154,10 +155,10 @@ In :cite:`Hierons:2009:FMT` they clearly state:
 
 
 Formalisms and Tools
-====================
+--------------------
 
 Promela/SPIN
-------------
+^^^^^^^^^^^^
 
 A technique mentioned based on the SPIN model checker, with its
 modelling language called Promela (spinroot.com). Promela is quite a low-level
@@ -170,7 +171,7 @@ linear-time temporal logic (LTL) to express properties of interest.
 It is open-source, and very easy to install, needing only cc and lex/yacc.
 
 Automation
-^^^^^^^^^^
+~~~~~~~~~~
 
 The ``spin`` program is command-line driven,
 so it can be easily automated.
@@ -184,7 +185,7 @@ Promela models.
 These can always be subsequently exercised from the command-line.
 
 Test Generation
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Given a Promela model that checks successfully,
 we can generated tests for a property P by asking
@@ -208,7 +209,7 @@ models close to the actual run-time environment.
 
 
 Code Handling
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 There is a program called ``modex`` that extracts Promela models
 from C code.
@@ -227,7 +228,7 @@ we observe the following:
     > verify chain.c
 
     	Extract Model:
-    	==============
+    	--------------
     modex chain.c
     MODEX Version 2.11 - 3 November 2017
     chain.c:27: Error (syntax error, unexpected STAR, expecting RPAREN or COMMA) before '*'
@@ -259,7 +260,7 @@ and the code should be re-written so that the tool no longer reports an error.
 
 
 TLA+/PlusCal
-------------
+^^^^^^^^^^^^
 
 The formalism Temporal Logic of Actions (TLA), is comprised of the specification
 language TLA+, an algorithmic language called PlusCal, and various tools
@@ -272,7 +273,7 @@ It is open-source, easy to install,
 but does require the Java Runtime Environment (JRE1.8+)
 
 Automation
-^^^^^^^^^^
+~~~~~~~~~~
 
 The TLA+ model checked (``tlc``) has a command-line interface.
 It is not clear if such a thing is available for the prover.
@@ -280,7 +281,7 @@ The documentation for it says it should be used from the TLA+ Toolbox IDE.
 
 
 Test Generation
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Again, should be possible using ``tlc``
 as it is a model checker.
@@ -290,7 +291,7 @@ commented with code line number and name of function.
 It is not clear how this could be turned into a test.
 
 Code Handling
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 There is no automatic extraction of TLA+ from C.
 There is a modelling language called PlusCal
@@ -299,7 +300,7 @@ but this must be built by hand.
 Another tool translates PlusCal into TLA+.
 
 Frama-C
--------
+^^^^^^^
 
 Frama-C (frama-c.com) is a platform supporting a range of tools for analysing C
 code, including static analysers, support for functional specifications (ANSI-C
@@ -321,7 +322,7 @@ We shall refer to some of what was said below,
 citing the "Frama-C team".
 
 Automation
-^^^^^^^^^^
+~~~~~~~~~~
 Frama-C has a very comprehensive command-line interface,
 and it has clearly been designed to fit
 into an automated test/verification environment.
@@ -357,7 +358,7 @@ Frama-C into the current systems used by ``rtems.org``
 for CI, see Section :numref:`%s <subsubsection_FutureCI>`.
 
 Test Generation
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 There is a Frama-C plugin called ``pathcrawler`` that does test generation,
 but is only available by email request for research/evaluation purposes.
@@ -384,7 +385,7 @@ with ACSL and converts it to a form that can be passed to CEGAR tools (e.g. SATA
 However it is not clear how to get to tests from there.
 
 Code Handling
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Frama-C is designed to handle C99 from the very beginning.
 However, the RTEMS sources also use C11, and so there may be
@@ -410,7 +411,7 @@ to obtain `threadqenqueue.i` to pass to Frama-C, we get a syntax error:
       38
       39
       40    typedef _Atomic _Bool atomic_bool;
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       41    typedef _Atomic char atomic_char;
       42    typedef _Atomic signed char atomic_schar;
     [kernel] Frama-C aborted: invalid user input.
@@ -429,7 +430,7 @@ which supports C++. It's a prototype right now.
 
 
 Isabelle/HOL
-------------
+^^^^^^^^^^^^
 
 Isabelle/HOL is a wide-spectrum theorem-prover, implemented as an embedding of
 Higher-Order Logic (HOL) into the Isabelle generic proof assistant
@@ -446,7 +447,7 @@ is open-source, and is easy to install.
 
 
 Automation
-^^^^^^^^^^
+~~~~~~~~~~
 
 Proof development in Isabelle/HOL is best done using their IDE.
 However, all proofs can be replayed from the command-line.
@@ -457,12 +458,12 @@ for CI, see Section :numref:`%s <subsubsection_FutureCI>`.
 
 
 Test Generation
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Currently not aware of work in this space.
 
 Code Handling
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 There are encodings of the semantics of C in Isabelle/HOL,
 most notably that developed by NICTA/Data61 for their verification of
@@ -477,7 +478,7 @@ and both were developed in tandem to ensure interoperability.
     developing Isabelle/C, which captures C semantics in Isabelle.
 
 Probabilistic Methods
-=====================
+---------------------
 
 There is quite a lot of activity in the field of
 `probabilistic model-checking` (PMC)
@@ -507,7 +508,7 @@ built on top of more functional prior
 modelling done with classic model checkers.
 
 .. Other formalisms and Tools
-   ==========================
+   --------------------------
     Do we consider: Verisoft? HOL4; CakeML and L3?
     What else?
     Paper about ATG from CBMC :cite:`Angeletti:2009:MC`.
@@ -520,7 +521,7 @@ modelling done with classic model checkers.
 .. (Andrew Butterfield) deleted
 
 Handling Assembler
-==================
+------------------
 
 One issue that has been raised is that of using formal methods
 to assist in determining test coverage for assembly language.
@@ -572,7 +573,7 @@ simulator?
 
 
 Conclusions
-===========
+-----------
 
 We have surveyed a number of formal techniques to
 assess their ability to support testing,
@@ -588,10 +589,10 @@ for any given algorithm that we choose for formal verification or testing.
 .. _section_METHODOLOGY:
 
 Methodology
-***********
+===========
 
 Promela/SPIN
-==============
+--------------
 
 Our chosen formal modelling is Promela/SPIN  (``spinroot.com``).
 Promela is the modelling language, while SPIN is the model checking tool.
@@ -618,7 +619,7 @@ Each trail file can be re-played by SPIN
 to show the details of the erroneous scenario.
 
 Scenario Notation
-=================
+-----------------
 
 While SPIN produces plenty of output to allow a user see what is happening,
 it is not easy to parse.
@@ -637,7 +638,7 @@ We refer to these lines as model, feature or scenario *annotations*.
 
 
 Test Generation
-================
+----------------
 
 The key idea for test generation using model-checkers is the following:
 
