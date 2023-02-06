@@ -26,7 +26,6 @@ Configuring a System
     scheduler-general
     scheduler-clustered
     face-technical-standard
-    bsp-related
     mpci
     libpci
     ada
