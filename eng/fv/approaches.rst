@@ -23,281 +23,91 @@ Other important criteria concern the support available
 for for test generation support,
 and how close we can connect the formalism to actual C code.
 
-Apart from the above,
-there is one criteria that is a definite show-stopper:
-any tool we add to the tool-chain needs to be open-source,
-in order to be acceptable to the RTEMS community.
+The final key criteria is whatever techniques we propose should fit in 
+with the RTEMS Project Mission Statement (Section 2 in this document).
+This requires, among other things, 
+that any tool we add to the tool-chain needs to be open-source.
 
 We start with a general overview of formal methods and testing,
 and discuss a number of formalisms and tools against the criteria above.
 
-We need to discuss various concepts here:
+Formal Methods Overview
+-----------------------
 
-* Logics
-* Semantics
-* Proof
-* Models
-* Model checking
-* Tools
-* FM-based test generation
-
-**BELOW: the METHODS section from FV Planning doc in QDP**
-
-
-METHODS
-=======
-
-
-
-Formal Methods and Testing
---------------------------
-
-A good survey of formal techniques and testing
-is found in a 2009 ACM survey paper :cite:`Hierons:2009:FMT`.
-They idea is that a formal specification of some form
-may be able to support testing in a variety of ways.
-They divide formal specification languages into the following groups:
+We can divide formal specification languages into the following groups:
 
   Model-based:  e.g., Z, VDM, B
 
-  Finite State-based: e.g., finite-state machines (FSMs), SDL, Statecharts, X-machines
+    These have a language that describes a system in terms of having an abstract
+    state and how it is modified by operations. Reasoning is typically based 
+    around the notions of pre- and post-conditions and state invariants.
+    The usual method of reasoning is by using theorem-proving. The resulting
+    models often have an unbounded number of possible states, and are capable
+    of describing unbounded numbers of operation steps.
 
-  Process Algebras: e.g., CSP, CCS, LOTOS
+  Finite State-based: e.g., finite-state machines (FSMs), SDL, Statecharts
 
-  Hybrid:
+    These a variant of model-based specification, with the added constraint
+    that the number of states are bounded. Desired model properties are often
+    expressed using some form of temporal logic. The languages used to describe
+    these are often more constrained than in more general model-based
+    approaches. The finiteness allows reasoning by searching the model,
+    including doing exhaustive searches, a.k.a. model-checking.
 
-    mixing continuous and discrete descriptions, e.g., CHARON,
-    here considered out of scope.
+  Process Algebras: e.g., CSP, CCS, pi-calculus, LOTOS
 
-  Algebraic: e.g., OBJ, CASL
+    The model systems in terms of the sequence of externally observable
+    events that they perform. There is no explicit definition of the abstract
+    states, but their underlying semantics is given as a state machine,
+    where the states are deduced from the overall behaviour of the system,
+    and events denote transitions between these state. In general both the
+    number of such states and length of observed event sequences are unbounded.
+    While temporal logics can be used to express properties, many process 
+    algebras use their own notation to express desired properties by simpler
+    systems. A technique called bisimulation is used reason about the 
+    relationships between these.
 
+  Most of the methods above start with formal specifications/models. Also 
+  needed is a way to bridge the gap to actual code. The relationship between
+  specification and code is often referred to as a refinement 
+  (some prefer the term reification). Most model-based methods have refinement,
+  with the concept baked in as a key part of the methodology.
 
-In terms of how to use formal methods and tests,
-they suggest that automation can be provided by either:
-using formal specifications to generate test cases;
-or deriving provably correct oracles for test result checking.
-They also point out that executable formal models
-can be tested themselves by model-checking.
+  Theorem Provers: e.g., CoQ, HOL4, PVS, Isabelle/HOL
 
-In terms of the formal foundations of the relationship
-between specification and tests, they give this some discussion,
-citing Marie-Claude Gaudel :cite:`Gaudel:1995:FMT` as a key article.
-In it she identified how certain key assumptions,
-called *test selection hypotheses*, are important.
+    Many modern theorem provers are not only useful to help reason about the
+    formalisms mentioned above, but are often powerful enough to be used to 
+    describe formal models in their own terms and then apply their proof
+    systems directly to those.
 
-For each language group above,
-they describe test-generation techniques associated with that group.
+  Model Checkers: SPIN, FDR
 
-  Model-based:
+    Model checkers are tools that do exhaustive searches over models with a 
+    finite number of states. These are most commonly used with the finite-state
+    methods, as well as the process algebras were some bound is put on the
+    state-space. As model-checking is basically exhaustive testing, these are
+    often the easiest way to get test generation from formal techniques.
 
-    Input-domain partitioning methods,
-    usually relying on a uniformity hypothesis;
-    Automation often uses disjunctive normal forms of predicates.
-    Also used are domain propagation techniques that look at boundaries
-    on the behaviour of basic operators and functions.
-    Various other techniques including formal refinement, mutation, have also been
-    proposed. They conclude that these formalisms are good for test oracles,
-    but can be hard to use for test generation, often requiring theorem proving support.
+  Formal Development frameworks: e.g. TLA+, Frama-C, Key
 
-  Finite State-based:
+    There are also a number of frameworks that support a close connection
+    between a programming language, a formalism to specify desired behaviour
+    for programs in that language, as well as tools to support the reasoning 
+    (proof, simulation, test).
 
-    Based on definitions of *conformance* defined in terms of the language
-    of the corresponding formal automaton.
-    Usually involves a test hypothesis or fault-model,
-    that bounds the number of states that need to be used.
-    There are a number of techniques for test generation,
-    and they start with complete deterministic FSMs,
-    then consider those that are partial,
-    and finally those that are non-deterministic.
-    Deterministic FSMs are conceptually straightforward,
-    while partiality has a number of differing semantic interpretations
-    when transitions are missing.
-    A  common issue is often how to minimize the resulting test suite.
-    An interesting sub-class is when a system is modelled as a number of
-    smaller FSMs connected together, rather than one big one.
-    The main message here is that test generation is relatively easy,
-    with the main problem being how to avoid combinatorial explosions.
+  
+Formal Methods actively considered
+----------------------------------
 
-  Process Algebras:
+Given the emphasis on verifying RTEMS C code,
+we rapidly focussed in on freely available tools that could easily connect to C.
+These included: Frama-C, TLA+/PlusCal, Isabelle/HOL, and Promela/SPIN.
+Further investigation ruled out TLA+/PlusCal because it is Java-based,
+and requires installing a Java Runtime Environment.
 
-    They have labelled transistion-systems (LTS) as semantics,
-    although these can often be infinite,
-    so some form of space reduction is needed.
-    In many respects the testing has similar advantages and disadvantages
-    as is found for FSMs.
+Frama-C, Isabelle/HOL, and Promela/SPIN were all explored in more detail,
+and used in initial experiments to assess their suitability.
 
-  Algebraic:
-
-    These are described as being very suitable for OO testing.
-    Test are either generated on the basis of operation syntax,
-    or from the axioms.
-    Tests based on syntax simply produce larger and larger terms
-    built from that syntax and check that they execute correctly.
-    Tests based on axioms replace axiom variables by larger and larger terms,
-    and then test that evaluating the many axiom instances so produced
-    always results in a true result.
-
-A discussion of the automated reasoning tools
-indicates that these can indeed support testing.
-Model checkers produce counterexample witnesses,
-and these can be converted into tests.
-Temporal logics describe properties
-that can again be converted into test sequences.
-In :cite:`Hierons:2009:FMT` they clearly state:
-
-  "The most important role for formal verification in testing
-  is in the automated generation of test cases.
-  In this context,
-  model checking is the formal verification technology of choice;
-  this is due to the ability of model checkers
-  to produce counterexamples
-  in case a temporal property does not hold for a system model."
-
-
-Formalisms and Tools
---------------------
-
-Promela/SPIN
-^^^^^^^^^^^^
-
-A technique mentioned based on the SPIN model checker, with its
-modelling language called Promela (spinroot.com). Promela is quite a low-level
-modelling language that makes it easy to get close to code level, and is
-specifically targeted to modelling software. It is one of the most widely used
-model-checkers, both in industry and education. It also has a tool called modex
-that will automatically generate a Promela model from C code. It uses
-linear-time temporal logic (LTL) to express properties of interest.
-
-It is open-source, and very easy to install, needing only cc and lex/yacc.
-
-Automation
-~~~~~~~~~~
-
-The ``spin`` program is command-line driven,
-so it can be easily automated.
-It's output is plain text reporting
-with some structure.
-We would need to decide how these get transformed
-into a form suitable for the datapack.
-
-It has a GUI interface as well which may assist in developing
-Promela models.
-These can always be subsequently exercised from the command-line.
-
-Test Generation
-~~~~~~~~~~~~~~~
-
-Given a Promela model that checks successfully,
-we can generated tests for a property P by asking
-Spin to check its negation.
-There are ways to get Spin to generate multiple counterexamples,
-as well as getting it to find the shortest.
-A tool called TorX was developed by the University of Twente
-to produce tests :cite:`deVries:2000:FMT`, released under the Apache License,
-but no longer seems to be downloadable.
-Another system, *ScenTest* uses Promela to model and analyse test *scenarios*
-which are then translated into tests for a Java implementation :cite:`Ulrich:2010:FMT`.
-The tool requires Sparx Enterprise Architect, which is commercial.
-Promela/SPIN along with LTL has been used to model/test a multi-core RTOS
-called AUTOSAR :cite:`Fang:2012:FMT`. Key there is keeping the Promela
-models close to the actual run-time environment.
-
-.. (Manuel Coutinho) type -> implementation. Consider running a spellchecker (there are more errors).
-.. (Andrew Butterfield) fixed - the editor I use, Atom,
-  has a bad habit of autocompleting typos.
-  Will check the document carefully.
-
-
-Code Handling
-~~~~~~~~~~~~~
-
-There is a program called ``modex`` that extracts Promela models
-from C code.
-It assumes that the programmer is using a well-known thread library
-such as pthreads,
-so may not suit our needs.
-Modex will take ``assert()`` statements in C code and bring those
-into the Promela model, making it possible to have code annotations
-that are available for interpretation by Spin.
-
-However in a test using ``rtems/cpukit/score/src/chain.c``
-we observe the following:
-
-.. code-block:: c
-
-    > verify chain.c
-
-    	Extract Model:
-    	--------------
-    modex chain.c
-    MODEX Version 2.11 - 3 November 2017
-    chain.c:27: Error (syntax error, unexpected STAR, expecting RPAREN or COMMA) before '*'
-      Chain_Control *the_chain,
-                    ^
-    1 errors
-    modex: cannot happen fct decl1
-
-Some of the tools like modex above, and Frama-C later,
-report syntax errors on RTEMS code.
-This may be due to differences in the syntax allowed between C99 and C11.
-Whether or not RTEMS code should be, or can be,
-modified to use a conservative coding style that satisfies both C99, C11,
-where possible, is something that should be discussed.
-This is related to the view in the SoW that we should adopt
-the NASA/JPL approach to code that fails static analysis, even
-if shown to be a false positive.
-This is because these indicate some form of "code smell"
-and the code should be re-written so that the tool no longer reports an error.
-
-.. (Manuel Coutinho) I don't think it is feasible to change the RTEMS code in order to fit a tool
-.. (Andrew Butterfield) Part of the SoW talks about adopting the
-   NASA/JPL approach to code that fails static analysis, even
-   if shown to be a false positive:namely that these indicate
-   some form of "code smell" and the code should be re-written
-   so that the tool no longer reports an error.
-   This needs to be discussed.
-   "rewrite" might be a better term to use here than "refactor".
-
-
-TLA+/PlusCal
-^^^^^^^^^^^^
-
-The formalism Temporal Logic of Actions (TLA), is comprised of the specification
-language TLA+, an algorithmic language called PlusCal, and various tools
-(tlaplus.net). The specification language uses simple mathematics to specify
-concurrent systems. The PlusCal language looks like pseudo-code, but has a direct
-translation into TLA+, so lowering the barrier to be able to produce
-specifications. Tools include both a model-checker and a theorem prover.
-
-It is open-source, easy to install,
-but does require the Java Runtime Environment (JRE1.8+)
-
-Automation
-~~~~~~~~~~
-
-The TLA+ model checked (``tlc``) has a command-line interface.
-It is not clear if such a thing is available for the prover.
-The documentation for it says it should be used from the TLA+ Toolbox IDE.
-
-
-Test Generation
-~~~~~~~~~~~~~~~
-
-Again, should be possible using ``tlc``
-as it is a model checker.
-However, the output when a failure is found is
-a sequence of predicates describing states,
-commented with code line number and name of function.
-It is not clear how this could be turned into a test.
-
-Code Handling
-~~~~~~~~~~~~~
-
-There is no automatic extraction of TLA+ from C.
-There is a modelling language called PlusCal
-that helps building models close to the level of a C program,
-but this must be built by hand.
-Another tool translates PlusCal into TLA+.
 
 Frama-C
 ^^^^^^^
@@ -423,11 +233,6 @@ and they said that the syntax issues are easy to fix,
 but the real challenge is how to use ACSL to model atomic behaviour
 and the underlying semantics that will drive the WP logic.
 
-**Stop Press**
-
-As of September 13th 2019, Frama-C has a release Frama-Clang 0.0.7
-which supports C++. It's a prototype right now.
-
 
 Isabelle/HOL
 ^^^^^^^^^^^^
@@ -476,49 +281,6 @@ and both were developed in tandem to ensure interoperability.
     One of the candidates for the Research Fellow position with TCD
     has a lot of Isabelle/HOL experience and recent work has looked
     developing Isabelle/C, which captures C semantics in Isabelle.
-
-Probabilistic Methods
----------------------
-
-There is quite a lot of activity in the field of
-`probabilistic model-checking` (PMC)
-:cite:`Kwiatkowska:2002:PMC`
-:cite:`Herault:2004:PMC`
-:cite:`Filieri:2011:PMC`
-with a good survey in :cite:`Agha:2018:PMC`
-of `statistical model-checking` (SMC).
-
-PMC is exhaustive, with probabilities on edges,
-while SMC does sampling (simulations)
-and uses statistical inference to estimate the answer
-that PMC would give.
-
-A good overview is available at https://project.inria.fr/plasma-lab/statistical-model-checking/
-
-At this point we have not done much more investigation
-of these tools.
-At the very least,
-they need at least as much modelling
-as is required to use more "functional" model checking,
-such as provided by Promela/SPIN.
-This is because probabilistic models are basically
-functional ones where transitions are annotated with probabilities.
-We can envisage experiment and exploration with these tools being
-built on top of more functional prior
-modelling done with classic model checkers.
-
-.. Other formalisms and Tools
-   --------------------------
-    Do we consider: Verisoft? HOL4; CakeML and L3?
-    What else?
-    Paper about ATG from CBMC :cite:`Angeletti:2009:MC`.
-    However it requires every branch have a statement asserting false,
-    so MC generates a counterexample to that point.
-    Not sure this will fly with the RTEMS community!
-    Verisoft? Seems to have gone off the grid.
-
-.. (Manuel Coutinho) this text seems to have been written as a future and not to be delivered.
-.. (Andrew Butterfield) deleted
 
 Handling Assembler
 ------------------
@@ -571,28 +333,141 @@ simulator?
     also spent time with David Sanan and others in Singapore,
     where the Isabelle/HOL models of SPARCv8 were developed.
 
+More detailed description of what we actually explored.
 
-Conclusions
------------
+A good survey of formal techniques and testing
+is found in a 2009 ACM survey paper :cite:`Hierons:2009:FMT`.
+They idea is that a formal specification of some form
+may be able to support testing in a varie
 
-We have surveyed a number of formal techniques to
-assess their ability to support testing,
-and to capture the behaviour of the actual C code.
-What is clear is that there is no one formalism/tool
-that covers everything.
-We may need to carefully tailor the tools, and abstraction level used,
-for any given algorithm that we choose for formal verification or testing.
+ discussion of the automated reasoning tools
+indicates that these can indeed support testing.
+Model checkers produce counterexample witnesses,
+and these can be converted into tests.
+Temporal logics describe properties
+that can again be converted into test sequences.
+In :cite:`Hierons:2009:FMT` they clearly state:
+
+  "The most important role for formal verification in testing
+  is in the automated generation of test cases.
+  In this context,
+  model checking is the formal verification technology of choice;
+  this is due to the ability of model checkers
+  to produce counterexamples
+  in case a temporal property does not hold for a system model."
 
 
-**This is from the FV Report in the QDP**
 
-.. _section_METHODOLOGY:
+Formal Method actually used
+---------------------------
 
-Methodology
-===========
+The current use of formal methods in RTEMS is based on using Promela to model
+key RTEMS features, in such a way that we can generate tests using SPIN.
+The delivered tests do not use the more advanced techniques we explored.
 
 Promela/SPIN
---------------
+^^^^^^^^^^^^
+
+A technique mentioned based on the SPIN model checker, with its
+modelling language called Promela (spinroot.com). Promela is quite a low-level
+modelling language that makes it easy to get close to code level, and is
+specifically targeted to modelling software. It is one of the most widely used
+model-checkers, both in industry and education. It also has a tool called modex
+that will automatically generate a Promela model from C code. It uses
+linear-time temporal logic (LTL) to express properties of interest.
+
+It is open-source, and very easy to install, needing only cc and lex/yacc.
+
+Automation
+~~~~~~~~~~
+
+The ``spin`` program is command-line driven,
+so it can be easily automated.
+It's output is plain text reporting
+with some structure.
+We would need to decide how these get transformed
+into a form suitable for the datapack.
+
+It has a GUI interface as well which may assist in developing
+Promela models.
+These can always be subsequently exercised from the command-line.
+
+Test Generation
+~~~~~~~~~~~~~~~
+
+Given a Promela model that checks successfully,
+we can generated tests for a property P by asking
+Spin to check its negation.
+There are ways to get Spin to generate multiple counterexamples,
+as well as getting it to find the shortest.
+A tool called TorX was developed by the University of Twente
+to produce tests :cite:`deVries:2000:FMT`, released under the Apache License,
+but no longer seems to be downloadable.
+Another system, *ScenTest* uses Promela to model and analyse test *scenarios*
+which are then translated into tests for a Java implementation :cite:`Ulrich:2010:FMT`.
+The tool requires Sparx Enterprise Architect, which is commercial.
+Promela/SPIN along with LTL has been used to model/test a multi-core RTOS
+called AUTOSAR :cite:`Fang:2012:FMT`. Key there is keeping the Promela
+models close to the actual run-time environment.
+
+.. (Manuel Coutinho) type -> implementation. Consider running a spellchecker (there are more errors).
+.. (Andrew Butterfield) fixed - the editor I use, Atom,
+  has a bad habit of autocompleting typos.
+  Will check the document carefully.
+
+
+Code Handling
+~~~~~~~~~~~~~
+
+There is a program called ``modex`` that extracts Promela models
+from C code.
+It assumes that the programmer is using a well-known thread library
+such as pthreads,
+so may not suit our needs.
+Modex will take ``assert()`` statements in C code and bring those
+into the Promela model, making it possible to have code annotations
+that are available for interpretation by Spin.
+
+However in a test using ``rtems/cpukit/score/src/chain.c``
+we observe the following:
+
+.. code-block:: c
+
+    > verify chain.c
+
+    	Extract Model:
+    	--------------
+    modex chain.c
+    MODEX Version 2.11 - 3 November 2017
+    chain.c:27: Error (syntax error, unexpected STAR, expecting RPAREN or COMMA) before '*'
+      Chain_Control *the_chain,
+                    ^
+    1 errors
+    modex: cannot happen fct decl1
+
+Some of the tools like modex above, and Frama-C later,
+report syntax errors on RTEMS code.
+This may be due to differences in the syntax allowed between C99 and C11.
+Whether or not RTEMS code should be, or can be,
+modified to use a conservative coding style that satisfies both C99, C11,
+where possible, is something that should be discussed.
+This is related to the view in the SoW that we should adopt
+the NASA/JPL approach to code that fails static analysis, even
+if shown to be a false positive.
+This is because these indicate some form of "code smell"
+and the code should be re-written so that the tool no longer reports an error.
+
+.. (Manuel Coutinho) I don't think it is feasible to change the RTEMS code in order to fit a tool
+.. (Andrew Butterfield) Part of the SoW talks about adopting the
+   NASA/JPL approach to code that fails static analysis, even
+   if shown to be a false positive:namely that these indicate
+   some form of "code smell" and the code should be re-written
+   so that the tool no longer reports an error.
+   This needs to be discussed.
+   "rewrite" might be a better term to use here than "refactor".
+
+
+
 
 Our chosen formal modelling is Promela/SPIN  (``spinroot.com``).
 Promela is the modelling language, while SPIN is the model checking tool.
