@@ -649,8 +649,12 @@ Build Objects Item Type
 
 This type refines the :ref:`SpecTypeBuildItemType` through the ``build-type``
 attribute if the value is ``objects``. This set of attributes specifies a set
-of object files used to build static libraries or test programs. All explicit
-attributes shall be specified. The explicit attributes for this type are:
+of object files used to build static libraries or test programs. Objects Items
+must not be included on multiple paths through the build dependency graph with
+identical build options. Violating this can cause race conditions in the build
+system due to duplicate installs and multiple instances of build tasks. All
+explicit attributes shall be specified. The explicit attributes for this type
+are:
 
 cflags
     The attribute value shall be a list. Each list element shall be a

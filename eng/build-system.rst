@@ -489,3 +489,32 @@ Add a link to the new library item using a relative UID:
    links:
    - role: build-dependency
      uid: libnew
+
+Add an Object
+-------------
+
+Build objects logically separate relatively independent segments of
+functionality (for example a device driver, an architecture-dependent feature,
+etc.). Let *new* be the name of the new object.  You can add the new object
+with:
+
+.. code-block:: none
+
+    $ vi spec/build/cpukit/objnew.yml
+
+Define the attributes of your new object according to
+:ref:`SpecTypeBuildObjectsItemType`.
+
+Edit corresponding group item:
+
+.. code-block:: none
+
+    $ vi spec/build/cpukit/grp.yml
+
+Add a link to the new objects item using a relative UID:
+
+.. code-block:: yaml
+
+    links:
+    - role: build-dependency
+      uid: objnew
