@@ -62,8 +62,8 @@ queue which has a full queue of pending messages.
 
 ## Broadcasting a Message
 
-The `rtems_message_queue_broadcast` directive sends the same message to every
-task waiting on the specified message queue as an atomic operation. The
+The `rtems_message_queue_broadcast` directive sends the same message to each
+task waiting on the specified message queue until no more tasks remain. The
 message is copied to each waiting task's message buffer and each task is
 unblocked. The number of tasks which were unblocked is returned to the caller.
 
