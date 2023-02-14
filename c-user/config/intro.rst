@@ -28,9 +28,9 @@ automatically.  It assumes that all tasks are floating point and that all will
 be allocated the minimum stack space.  This calculation includes the amount of
 memory that will be allocated for internal use by RTEMS. The automatic
 calculation may underestimate the workspace size truly needed by the
-application, in which case one can use the ``CONFIGURE_MEMORY_OVERHEAD`` macro
-to add a value to the estimate. See :ref:`Specify Memory Overhead` for more
-details.
+application, in which case one can use the :ref:`CONFIGURE_MEMORY_OVERHEAD`
+macro to add a value to the estimate. See :ref:`Specify Memory Overhead` for
+more details.
 
 The memory area for the RTEMS Workspace is determined by the BSP.  In case the
 RTEMS Workspace is too large for the available memory, then a fatal run-time
@@ -40,8 +40,8 @@ The file ``<rtems/confdefs.h>`` will calculate the value of the
 ``work_space_size`` parameter of the Configuration Table. There are many
 parameters the application developer can specify to help ``<rtems/confdefs.h>``
 in its calculations.  Correctly specifying the application requirements via
-parameters such as ``CONFIGURE_EXTRA_TASK_STACKS`` and
-``CONFIGURE_MAXIMUM_TASKS`` is critical for production software.
+parameters such as :ref:`CONFIGURE_EXTRA_TASK_STACKS` and
+:ref:`CONFIGURE_MAXIMUM_TASKS` is critical for production software.
 
 For each class of objects, the allocation can operate in one of two ways.  The
 default way has an ceiling on the maximum number of object instances which can
@@ -133,41 +133,42 @@ milliseconds is as follows:
 In this example, only a few configuration parameters are specified. The impact
 of these are as follows:
 
-- The example specified ``CONFIGURE_RTEMS_INIT_TASK_TABLE`` but did not specify
-  any additional parameters. This results in a configuration of an application
-  which will begin execution of a single initialization task named ``Init``
-  which is non-preemptible and at priority one (1).
+- The example specified :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE` but did not
+  specify any additional parameters. This results in a configuration of an
+  application which will begin execution of a single initialization task named
+  ``Init`` which is non-preemptible and at priority one (1).
 
-- By specifying ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``, this application
-  is configured to have a clock tick device driver. Without a clock tick device
-  driver, RTEMS has no way to know that time is passing and will be unable to
-  support delays and wall time. Further configuration details about time are
-  provided. Per ``CONFIGURE_MICROSECONDS_PER_TICK`` and
-  ``CONFIGURE_TICKS_PER_TIMESLICE``, the user specified they wanted a clock
+- By specifying :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`, this
+  application is configured to have a clock tick device driver. Without a clock
+  tick device driver, RTEMS has no way to know that time is passing and will be
+  unable to support delays and wall time. Further configuration details about
+  time are provided. Per :ref:`CONFIGURE_MICROSECONDS_PER_TICK` and
+  :ref:`CONFIGURE_TICKS_PER_TIMESLICE`, the user specified they wanted a clock
   tick to occur each millisecond, and that the length of a timeslice would be
   fifty (50) milliseconds.
 
-- By specifying ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``, the application
-  will include a console device driver. Although the console device driver may
-  support a combination of multiple serial ports and display and keyboard
-  combinations, it is only required to provide a single device named
+- By specifying :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`, the
+  application will include a console device driver. Although the console device
+  driver may support a combination of multiple serial ports and display and
+  keyboard combinations, it is only required to provide a single device named
   ``/dev/console``. This device will be used for Standard Input, Output and
-  Error I/O Streams. Thus when ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``
-  is specified, implicitly three (3) file descriptors are reserved for the
-  Standard I/O Streams and those file descriptors are associated with
-  ``/dev/console`` during initialization. All console devices are expected to
-  support the POSIX*termios* interface.
+  Error I/O Streams. Thus when
+  :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER` is specified, implicitly
+  three (3) file descriptors are reserved for the Standard I/O Streams and
+  those file descriptors are associated with ``/dev/console`` during
+  initialization. All console devices are expected to support the
+  POSIX*termios* interface.
 
-- The example above specifies via ``CONFIGURE_MAXIMUM_TASKS`` that the
+- The example above specifies via :ref:`CONFIGURE_MAXIMUM_TASKS` that the
   application requires a maximum of four (4) simultaneously existing Classic
-  API tasks. Similarly, by specifying ``CONFIGURE_MAXIMUM_MESSAGE_QUEUES``,
+  API tasks. Similarly, by specifying :ref:`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`,
   there may be a maximum of only one (1) concurrently existent Classic API
   message queues.
 
 - The most surprising configuration parameter in this example is the use of
-  ``CONFIGURE_MESSAGE_BUFFER_MEMORY``. Message buffer memory is allocated from
-  the RTEMS Workspace and must be accounted for. In this example, the single
-  message queue will have up to twenty (20) messages of type ``struct
+  :ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`. Message buffer memory is allocated
+  from the RTEMS Workspace and must be accounted for. In this example, the
+  single message queue will have up to twenty (20) messages of type ``struct
   USER_MESSAGE``.
 
 - The :ref:`CONFIGURE_INIT` constant must be defined in order to make
