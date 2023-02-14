@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2023 embedded brains GmbH (http://www.embedded-brains.de)
 .. Copyright (C) 1988, 2022 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -252,6 +252,42 @@ The following constraints apply to this configuration option:
   stack space calculation carried out by ``<rtems/confdefs.h>`` does not
   overflow an integer of type `uintptr_t
   <https://en.cppreference.com/w/c/types/integer>`_.
+
+.. Generated from spec:/acfg/if/init
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: CONFIGURE_INIT
+
+.. _CONFIGURE_INIT:
+
+CONFIGURE_INIT
+--------------
+
+.. rubric:: CONSTANT:
+
+``CONFIGURE_INIT``
+
+.. rubric:: OPTION TYPE:
+
+This configuration option is a boolean feature define.
+
+.. rubric:: DEFAULT CONFIGURATION:
+
+There is no default configuration associated with this configuration option.
+If ``<rtems/confdefs.h>`` is included and this configuration option is not
+defined, then only white space is included.
+
+.. rubric:: DESCRIPTION:
+
+While this configuration option is defined, when the ``<rtems/confdefs.h>``
+is included, the system settings defined by present application configuration
+options are statically allocated and initialized.  All user provided
+application configuration options defined before the include of
+``<rtems/confdefs.h>`` are evaluated.  They define the actual system
+settings.
 
 .. Generated from spec:/acfg/if/initial-extensions
 

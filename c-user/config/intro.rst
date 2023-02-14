@@ -170,7 +170,7 @@ of these are as follows:
   message queue will have up to twenty (20) messages of type ``struct
   USER_MESSAGE``.
 
-- The ``CONFIGURE_INIT`` constant must be defined in order to make
+- The :ref:`CONFIGURE_INIT` constant must be defined in order to make
   ``<rtems/confdefs.h>`` instantiate the configuration data structures.  This
   can only be defined in one source file per application that includes
   ``<rtems/confdefs.h>`` or the symbol table will be instantiated multiple
