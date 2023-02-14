@@ -178,8 +178,8 @@ This configuration option is an integer define.
 .. rubric:: DEFAULT VALUE:
 
 If this configuration option is undefined, then the RTEMS Workspace and task
-stack space size is calculated by ``<rtems/confdefs.h>`` based on the values
-configuration options.
+stack space size is calculated by ``<rtems/confdefs.h>`` based on the
+values configuration options.
 
 .. rubric:: DESCRIPTION:
 

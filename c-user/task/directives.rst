@@ -407,9 +407,9 @@ An application based solely on static allocation can avoid any runtime memory
 allocators.  This can simplify the application architecture as well as any
 analysis that may be required.
 
-The stack space estimate done by <rtems/confdefs.h> assumes that all tasks are
-created by :ref:`InterfaceRtemsTaskCreate`.  The estimate can be adjusted to
-take user-provided task storage areas into account through the
+The stack space estimate done by ``<rtems/confdefs.h>`` assumes that all tasks
+are created by :ref:`InterfaceRtemsTaskCreate`.  The estimate can be adjusted
+to take user-provided task storage areas into account through the
 :ref:`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE` application
 configuration option.
 

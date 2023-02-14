@@ -217,8 +217,8 @@ from the RTEMS Workspace or through a custom IDLE task stack allocator.
 
 If this configuration option is specified, then the task storage areas for
 the :term:`IDLE tasks <IDLE task>` are statically allocated by
-<rtems/confdefs.h>.  The value of this configuration option defines the size
-in bytes of the task storage area of each IDLE task in the system.
+``<rtems/confdefs.h>``.  The value of this configuration option defines the
+size in bytes of the task storage area of each IDLE task in the system.
 
 .. rubric:: NOTES:
 
@@ -239,9 +239,9 @@ with the :ref:`INTERNAL_ERROR_CORE <FatalErrorSources>` fatal source and the
 system initialization.
 
 The value of this configuration option is passed to
-:ref:`InterfaceRTEMSTASKSTORAGESIZE` by <rtems/confdefs.h> to determine the
-actual size of the statically allocated area to take architecture-specific
-overheads into account.
+:ref:`InterfaceRTEMSTASKSTORAGESIZE` by ``<rtems/confdefs.h>`` to determine
+the actual size of the statically allocated area to take
+architecture-specific overheads into account.
 
 The
 
