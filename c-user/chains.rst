@@ -192,11 +192,12 @@ placed on another chain:
 
         rtems_chain_initialize_empty (out);
 
-        node = rtems_chain_head (chain);
+        node = rtems_chain_first (chain);
+
         while (!rtems_chain_is_tail (chain, node))
         {
             bar = (foo*) node;
-            rtems_chain_node* next_node = node->next;
+            rtems_chain_node* next_node = rtems_chain_next(node);
             if (strcmp (match, bar->data) == 0)
             {
                 rtems_chain_extract (node);
