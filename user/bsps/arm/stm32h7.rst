@@ -248,7 +248,7 @@ installed. Please go to its *bin* directory. E.g.
                 $ cd plugins/com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.linux64_2.0.200.202202231230/tools/bin
 
 Now, you will need to edit provided *config.txt* file inside the
-directory. Use your favorite editor. Open the file and scrolls
+directory. Use your favorite editor. Open the file and scroll
 down to its end. You will see following comment:
 
 .. code-block:: none
