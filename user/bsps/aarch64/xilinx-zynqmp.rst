@@ -253,7 +253,7 @@ as well as the physical ARM PL011 PrimeCell UART in the ZynqMP hardware.
 SDHCI Driver
 ------------
 
-The ZynqMP bsp has an SDHCI driver which allows reading to and writing from SD
+The ZynqMP bsp has an SDHCI driver which allows writing to and reading from SD
 cards. These can be tested in qemu using the "-sd" option. For example:
 
 .. code-block:: shell
