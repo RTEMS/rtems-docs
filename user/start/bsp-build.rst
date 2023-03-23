@@ -99,16 +99,9 @@ If you have built a BSP with the RSB, you can move on to
 Manual BSP Build
 ----------------
 
-We manually build the BSP in four steps.  The first step is to create a build
-directory.  It must be separate from the RTEMS source directory.  We use
-:file:`$HOME/quick-start/build/b-erc32`.
-
-.. code-block:: none
-
-    mkdir -p $HOME/quick-start/build/b-erc32
-
-The second step is to set your path. Prepend the RTEMS tool suite binary
-directory to your ``$PATH`` throughout the remaining steps. Run the command:
+We manually build the BSP in four steps. The first step is to set your path.
+Prepend the RTEMS tool suite binary directory to your ``$PATH`` throughout the
+remaining steps. Run the command:
 
 .. code-block:: none
 
@@ -133,7 +126,7 @@ has not been correctly set. Check the contents of the path
 file cannot be found return to :ref:`QuickStartTools` and install the tools
 again.
 
-The first step is to configure the BSP.  There are various BSP build
+The second step is to configure the BSP.  There are various BSP build
 configuration options available.  Some options are BSP-specific.  Each section
 in the INI-style configuration file ``config.ini`` instructs the build system to
 build a particular BSP variant (`sparc/erc32` in our case).  We enable the build
@@ -179,7 +172,7 @@ by ``$BASE``.
     Checking for program 'xz'                : $BASE/anaconda3/bin/xz
     'configure' finished successfully (0.414s)
 
-Building the BSP is the second step.
+Building the BSP is the third step.
 
 .. code-block:: none
 

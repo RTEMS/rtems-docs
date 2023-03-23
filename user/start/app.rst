@@ -209,7 +209,7 @@ Run the executable:
 
 .. code-block:: none
 
-    $HOME/quick-start/rtems/@rtems-ver-major@/bin/rtems-run --rtems-bsps=erc32-sis build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
+    rtems-run --rtems-bsps=erc32-sis build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
 
 The output will be something close to:
 
