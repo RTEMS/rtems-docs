@@ -20,7 +20,7 @@ advised to check the BSP specific documentation and RTEMS source code
 to verify the status of SMP support for a specific BSP. The following
 architectures have support for SMP:
 
--- AArch64
+- AArch64,
 
 - ARMv7-A,
 
