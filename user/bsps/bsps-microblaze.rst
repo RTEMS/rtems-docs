@@ -61,6 +61,16 @@ to include it in the BSP build.
   BSP_MICROBLAZE_FPGA_DTB_HEADER_PATH = /path/to/my_dtb.c
 
 
+QSPI NOR JFFS2 Driver
+---------------------
+
+The QSPI NOR JFFS2 driver supports the QEMU emulated n25q512a11 QSPI NOR flash
+device. It is initialized to a page size of 256 bytes and a sector size of 64
+KiB. If device tree support is enabled in the build configuration, the QSPI NOR
+JFFS2 driver will use the node that is compatible with `xlnx,xps-spi-2.00.a`
+from the device tree to configure the QSPI NOR JFFS2 driver.
+
+
 Running Executables
 -------------------
 
