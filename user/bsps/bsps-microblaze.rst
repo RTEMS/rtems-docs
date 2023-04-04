@@ -21,13 +21,21 @@ Clock Driver
 ------------
 
 The clock driver supports the QEMU emulated Xilinx AXI Timer v2.0. It is
-implemented as a simple downcounter.
+implemented as a simple downcounter. If device tree support is enabled in the
+build configuration, the clock driver will use the node that is compatible with
+`xlnx,xps-timer-1.00.a` from the device tree to configure the clock. The
+following device tree node properties are used to configure the clock driver:
+``reg``, ``clock-frequency``, and ``interrupts``.
 
 Console Driver
 --------------
 
 The console driver supports the QEMU emulated Xilinx AXI UART Lite v2.0. It is
-initialized to a baud rate of 115200.
+initialized to a baud rate of 115200. If device tree support is enabled in the
+build configuration, the console driver will use the node that is compatible
+with `xlnx,xps-uartlite-1.00.a` from the device tree to configure the console.
+The following device tree node properties are used to configure the console
+driver: ``reg``, ``status``, ``port-number``, and ``interrupts``.
 
 Network Driver
 --------------
@@ -68,7 +76,9 @@ The QSPI NOR JFFS2 driver supports the QEMU emulated n25q512a11 QSPI NOR flash
 device. It is initialized to a page size of 256 bytes and a sector size of 64
 KiB. If device tree support is enabled in the build configuration, the QSPI NOR
 JFFS2 driver will use the node that is compatible with `xlnx,xps-spi-2.00.a`
-from the device tree to configure the QSPI NOR JFFS2 driver.
+from the device tree to configure the QSPI NOR JFFS2 driver. The following
+device tree node properties are used to configure the QSPI NOR JFFS2 driver:
+``reg`` and ``interrupts``.
 
 
 Running Executables
@@ -124,12 +134,21 @@ Clock Driver
 ------------
 
 The clock driver supports the Xilinx AXI Timer v2.0. It is implemented as a
-simple downcounter.
+simple downcounter. If device tree support is enabled in the
+build configuration, the clock driver will use the node that is compatible with
+`xlnx,xps-timer-1.00.a` from the device tree to configure the clock. The
+following device tree node properties are used to configure the clock driver:
+``reg``, ``clock-frequency``, and ``interrupts``.
 
 Console Driver
 --------------
 
-The console driver supports the Xilinx AXI UART Lite v2.0.
+The console driver supports the Xilinx AXI UART Lite v2.0. It is initialized to
+a baud rate of 115200. If device tree support is enabled in the build
+configuration, the console driver will use the node that is compatible with
+`xlnx,xps-uartlite-1.00.a` from the device tree to configure the console. The
+following device tree node properties are used to configure the console driver:
+``reg``, ``status``, ``port-number``, and ``interrupts``.
 
 Debugging
 ---------
