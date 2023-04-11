@@ -8,7 +8,7 @@ riscv (RISC-V)
 riscv
 =====
 
-**This BSP offers 10 variants, each corresponding to a GCC multilib:**
+This BSP offers 12 variants:
 
 * rv32i
 
@@ -30,22 +30,23 @@ riscv
 
 * rv64imafdc
 
-Each variant reflects an ISA with ABI and code model choice. All rv64 BSPs have medany code model by
+* frdme310arty
+
+* mpfs64imafdc
+
+Each rv* variant corresponds to a GCC multilib.  A particular variant reflects an
+ISA with ABI and code model choice. All rv64 BSPs have medany code model by
 default, while rv32 BSPs are medlow. The reason is that RV32 medlow can access
 the entire 32-bit address space, while RV64 medlow can only access addresses
 below 0x80000000. With RV64 medany, it's possible to perform accesses above
-0x80000000. The BSP must be started in machine mode.
+0x80000000.
 
-The reference platform for the rv* variants is the QEMU `virt` machine.
+The BSP must be started im machine mode.
 
-**The BSP also provides the following 3 variants for specific hardware targets:**
+The reference platform for this BSP is the QEMU `virt` machine.
 
-* frdme310arty - The reference platform for this variant is the Arty FPGA board with the Sifive Freedom E310 reference design.
-
-* mpfs64imafdc - The reference platform for this variant is the Microchip PolarFire SoC Icicle Kit.
-
-* kendrytek210 - The reference platform for this variant is the Kendryte K210 SoC on the Sipeed MAiX Bit or MAiXDuino board.
-
+The reference platform for the mpfs64imafdc BSP variant is the Microchip
+PolarFire SoC Icicle Kit.
 
 Build Configuration Options
 ---------------------------
@@ -89,9 +90,6 @@ configuration INI file. The ``waf`` defaults can be used to inspect the values.
      The maximum number of NS16550 devices supported by the console driver (2
      by default).
 
-``RISCV_ENABLE_SIFIVE_UART_SUPPORT``
-     Enable the Sifive console UART (disabled by default)
-
 ``RISCV_RAM_REGION_BEGIN``
      The begin of the RAM region for linker command file (default is 0x80000000).
 
@@ -104,10 +102,6 @@ configuration INI file. The ``waf`` defaults can be used to inspect the values.
 
 ``RISCV_ENABLE_MPFS_SUPPORT``
      Enables support Microchip PolarFire SoC if defined to a non-zero
-     value, otherwise it is disabled (disabled by default).
-
-``RISCV_ENABLE_KENDRYTE_K210_SUPPORT``
-     Enables support for the Kendtryte K210 SoC if defined to a non-zero
      value, otherwise it is disabled (disabled by default).
 
 ``RISCV_BOOT_HARTID``
@@ -137,7 +131,7 @@ The console driver supports devices compatible to
 
 * "ns16750" (see ``RISCV_CONSOLE_MAX_NS16550_DEVICES`` BSP option).
 
-* "sifive,uart0" (see ``RISCV_ENABLE_SIFIVE_UART_SUPPORT`` BSP option). This console driver is used by the frdme310arty and kendrytek210 BSP variants.
+* "sifive,uart0" (see ``RISCV_ENABLE_FRDME310ARTY_SUPPORT`` BSP option).
 
 They are initialized according to the device tree.  The console driver does not
 configure the pins or peripheral clocks.  The console device is selected
@@ -151,13 +145,11 @@ and spike machines. For instance, to run the ``rv64imafdc`` BSP with the
 following "config.ini" file.
 
 .. code-block:: none
-
     [riscv/rv64imafdc]
 
 Run the following QEMU command.
 
 .. code-block:: shell
-
     $ qemu-system-riscv64 -M virt -nographic -bios $RTEMS_EXE
     $ qemu-system-riscv64 -M spike -nographic -bios $RTEMS_EXE
 
@@ -168,13 +160,11 @@ For instance, to run the ``rv64imafdc`` BSP with the following
 "config.ini" file.
 
 .. code-block:: none
-
     [riscv/rv64imafdc]
 
 Run the following Spike command.
 
 .. code-block:: shell
-
     $ spike --isa=rv64imafdc $RTEMS_EXE
 
 Unlike QEMU, Spike supports enabling/disabling a subset of the imafdc extensions
@@ -286,86 +276,6 @@ Serial terminal UART1 displays the SMP example messages
     CPU 0 running Task TA2
 
     *** END OF TEST SMP 1 ***
-
-Kendryte K210
--------------
-
-The Kendryte K210 SoC is a dual core 64-bit RISC-V SoC with an AI NPU,
-built in SRAM, and a variety of peripherals. Currently just the console UART, interrupt controller, and timer are supported.
-
-The device tree blob is embedded in the ``kendrytek210`` BSP variant by default.
-When the kendrytek210 BSP variant is selected, ``BSP_DTB_IS_SUPPORTED`` enabled and the DTB header path
-``BSP_DTB_HEADER_PATH`` is set to bsp/kendryte-k210-dtb.h.
-
-The ``kendrytek210`` BSP variant has been tested on the following simulator and boards:
-
-* Renode.io simulator using the Kendrtye k210 model
-* Sipeed MAix BiT board
-* Sipeed MaixDuino board
-
-**Building the Kendryte K210 BSP**
-
-Configuration file ``config.ini``:
-
-.. code-block:: none
-
-    [riscv/kendrytek210]
-    RTEMS_SMP = True
-
-Build RTEMS:
-
-.. code-block:: shell
-
-    $ ./waf configure --prefix=$HOME/rtems-start/rtems/6
-    $ ./waf
-
-**Flash an executable to the Sipeed MAix BiT or MAixDuino board**
-
-Binary images can be flashed to the Sipeed boards through the USB port using the kflash.py utility available from the python pip utility.
-
-.. code-block:: shell
-
-    $ riscv-rtems6-objcopy -Obinary ticker.exe ticker.bin
-    $ kflash.py --uart /dev/ttyUSB0 ticker.bin
-
-After the image is flashed, the RTEMS image will automatically boot. It will also run when the board is reset or powered through the USB cable. The USB port provides the power and console UART. Plug the USB cable into a host PC and bring up a terminal emulator at 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control. On Linux the UART device is often ``/dev/ttyUSB0``.
-
-**Run a RTEMS application on the Renode.io simulator**
-
-RTEMS executables compiled with the kendrytek210 BSP can run on the renode.io simulator using the built-in K210 model. The simulator currently supports the console UART, interrupt controller, and timer.
-
-To install renode.io please refer to the `installation instructions <https://github.com/renode/renode#installation>`_. Once installed make a local copy of the ``kendryte_k210.resc`` script from the ``renode/scripts/single-node`` directory to a local directory where it can be edited. Edit the script and change the line that loads the Linux image to load a RTEMS elf image instead. The default extension for the RTEMS sample ELF images is ``.exe``.
-
-Change this line in the kendryte_k210.resc file:
-
-.. code-block:: shell
-
-    sysbus LoadELF @https://dl.antmicro.com/projects/renode/kendryte-k210--vmlinux-s_2206416-2c1f2b2c2f2fc0c48a7b12a3f3c65809b81f452e
-
-To this:
-
-.. code-block:: shell
-
-    sysbus LoadELF @ticker.exe
-
-After editing the script, start renode and load the kendryte_k210.resc script to start the emulation.
-
-.. code-block:: shell
-
-    (monitor) s @kendryte_k210.resc
-
-You should see a renode UART window and the RTEMS ticker example output.
-
-
-**Generating the Device Tree Header**
-
-The kendrytek210 BSP uses a built in device tree blob. If additional peripheral support is added to the BSP, the device tree may need to be updated. After editing the device tree source, compile it to a device tree blob with the following command:
-
-.. code-block:: shell
-
-    $ dtc -O dtb -b 0 -o kendryte-k210.dtb kendryte-k210.dts
-
-The dtb file can then be converted to a C array using the rtems-bin2c tool. The data for the device tree binary can then replace the existing device tree binary data in the ``kendryte-k210-dtb.h`` header file.
 
 noel
 ====
