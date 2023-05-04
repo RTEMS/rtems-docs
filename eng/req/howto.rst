@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2020, 2023 embedded brains GmbH & Co. KG
 
 How-To
 ======
@@ -131,12 +131,12 @@ Application Configuration Options
 ---------------------------------
 
 The application configuration options and groups are maintained by
-specification items in the directory :file:`spec/if/acfg`.  Application
+specification items in the directory :file:`spec/acfg/if`.  Application
 configuration options are grouped by
 :ref:`SpecTypeApplicationConfigurationGroupItemType` items which should be
-stored in files using the :file:`spec/if/acfg/group-*.yml` pattern.  Each
+stored in files using the :file:`spec/acfg/if/group-*.yml` pattern.  Each
 application configuration option shall link to exactly one group item with the
-:ref:`SpecTypeApplicationConfigurationGroupMemberLinkRole`.  There are four
+:ref:`SpecTypeInterfaceGroupMembershipLinkRole`.  There are four
 application option item types available which cover all existing options:
 
 * The *feature enable options* let the application enable a feature option.  If
@@ -177,9 +177,9 @@ restricted Sphinx formatting.  Emphasis via one asterisk ("*"), strong emphasis
 via two asterisk ("**"), code samples via blockquotes ("``"), code blocks ("..
 code-block:: c") and lists are allowed.  References to interface items are also
 allowed, for example "${appl-needs-clock-driver:/name}" and
-"${../rtems/tasks/create:/name}".  References to other parts of the
-documentation are possible, however, they are currently provided by hard-coded
-tables in :file:`rtemsspec/applconfig.py`.
+"${/rtems/task/if/create:/name}".  References to other parts of the
+documentation are possible, however, they have to be provided by
+:file:`spec:/doc/if/*` items.
 
 Modify an Existing Group
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -189,9 +189,9 @@ file.  For example:
 
 .. code-block:: none
 
-    $ grep -rl "name: General System Configuration" spec/if/acfg
-    spec/if/acfg/group-general.yml
-    $ vi spec/if/acfg/group-general.yml
+    $ grep -rl "name: General System Configuration" spec/acfg/if
+    spec/acfg/if/group-general.yml
+    $ vi spec/acfg/if/group-general.yml
 
 Modify an Existing Option
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -201,20 +201,20 @@ specification item file.  For example:
 
 .. code-block:: none
 
-    $ grep -rl CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER spec/if/acfg
-    spec/if/acfg/appl-needs-clock-driver.yml
-    $ vi spec/if/acfg/appl-needs-clock-driver.yml
+    $ grep -rl CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER spec/acfg/if
+    spec/acfg/if/appl-needs-clock-driver.yml
+    $ vi spec/acfg/if/appl-needs-clock-driver.yml
 
 Add a New Group
 ^^^^^^^^^^^^^^^
 
 Let ``new`` be the UID name part of the new group.  Create the file
-:file:`spec/if/acfg/group-new.yml` and provide all attributes for an
+:file:`spec/acfg/if/group-new.yml` and provide all attributes for an
 :ref:`SpecTypeApplicationConfigurationGroupItemType` item.  For example:
 
 .. code-block:: none
 
-    $ vi spec/if/acfg/group-new.yml
+    $ vi spec/acfg/if/group-new.yml
 
 Add a New Option
 ^^^^^^^^^^^^^^^^
@@ -226,7 +226,7 @@ example:
 
 .. code-block:: none
 
-    $ vi spec/if/acfg/my-new-option.yml
+    $ vi spec/acfg/if/my-new-option.yml
 
 Generate Content after Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -263,7 +263,7 @@ specification.
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     glossary-type: term
     links:
@@ -300,23 +300,25 @@ Interface Specification
 Specify an API Header File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The RTEMS :term:`API` header files are specified under ``spec:/if/rtems/*``.
+The RTEMS :term:`API` header files are specified under ``spec:/rtems/*/if``.
 Create a subdirectory with a corresponding name for the API, for example in
-:file:`spec/if/rtems/foo` for the `foo` API.  In this new subdirectory place an
+:file:`spec/rtems/foo/if` for the `foo` API.  In this new subdirectory place an
 :ref:`SpecTypeInterfaceHeaderFileItemType` item named :file:`header.yml`
-(:file:`spec/if/rtems/foo/header.yml`) and populate it with the required
+(:file:`spec/rtems/foo/if/header.yml`) and populate it with the required
 attributes.
 
 .. code-block:: yaml
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     interface-type: header-file
     links:
     - role: interface-placement
-      uid: /if/domains/api
+      uid: /if/domain
+    - role: interface-ingroup
+      uid: ../req/group
     path: rtems/rtems/foo.h
     prefix: cpukit/include
     type: interface
@@ -327,7 +329,7 @@ Specify an API Element
 Figure out the corresponding header file item.  If it does not exist, see
 :ref:`ReqEngAddAPIHeaderFile`.  Place a specialization of an
 :ref:`SpecTypeInterfaceItemType` item into the directory of the header file
-item, for example :file:`spec/if/rtems/foo/bar.yml` for the :c:func:`bar`
+item, for example :file:`spec/rtems/foo/if/bar.yml` for the :c:func:`bar`
 function.  Add the required attributes for the new interface item.  Do not hard
 code interface names which are used to define the new interface.  Use
 ``${uid-of-interface-item:/name}`` instead.  If the referenced interface is
@@ -344,7 +346,7 @@ an :ref:`SpecTypeInterfaceForwardDeclarationItemType` item.
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     brief: Tries to create a magic object and returns it.
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     definition:
       default:
         body: null
@@ -371,7 +373,7 @@ an :ref:`SpecTypeInterfaceForwardDeclarationItemType` item.
       return: Otherwise, the magic object is returned.
       return-values:
       - description: The caller did not have enough magic power.
-        value: ${/if/c/null}
+        value: ${/c/if/null}
     type: interface
 
 Requirements Depending on Build Configuration Options
@@ -608,7 +610,7 @@ presentation we use a structured order.
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2021 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2021 embedded brains GmbH & Co. KG
     enabled-by: true
     functional-type: action
     rationale: null

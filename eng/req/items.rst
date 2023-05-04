@@ -4522,8 +4522,6 @@ uid
 
 This type is refined by the following types:
 
-* :ref:`SpecTypeApplicationConfigurationGroupMemberLinkRole`
-
 * :ref:`SpecTypeBuildDependencyConditionalLinkRole`
 
 * :ref:`SpecTypeBuildDependencyLinkRole`
