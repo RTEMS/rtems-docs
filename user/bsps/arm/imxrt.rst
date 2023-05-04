@@ -6,13 +6,16 @@
 imxrt (NXP i.MXRT)
 ==================
 
-This BSP offers only one variant, the `imxrt1052`. This variant supports the
-i.MXRT 1052 processor on a IMXRT1050-EVKB (tested with rev A1). You can also
-configure it to work with custom boards.
+This BSP offers multiple variants. The `imxrt1052` supports the i.MXRT 1052
+processor on a IMXRT1050-EVKB (tested with rev A1). Some possibilities to adapt
+it to a custom board are described below.
 
 NOTE: The IMXRT1050-EVKB has an backlight controller that must not be enabled
 without load. Make sure to either attach a load, disable it by software or
 disable it by removing the 0-Ohm resistor on it's input.
+
+The `imxrt1166-cm7-saltshaker` supports an application specific board. Adapting
+it to another i.MXRT1166 based board works similar like for the `imxrt1052` BSP.
 
 Build Configuration Options
 ---------------------------
@@ -22,8 +25,24 @@ for that. You can generate a default set of options with::
 
   ./waf bspdefaults --rtems-bsps=arm/imxrt1052 > config.ini
 
-Boot Process
-------------
+Adapting to a different board
+-----------------------------
+
+This is only a short overview for the most important steps to adapt the BSP to
+another board. Details for most steps follow further below.
+
+#. The device tree has to be adapted to fit the target hardware.
+#. A matching clock configuration is necessary (simplest method is to generate
+   it with the NXP PinMux tool)
+#. The `dcd_data` has to be adapted. That is used for example to initialize
+   SDRAM.
+#. `imxrt_flexspi_config` has to be adapted to match the Flash connected to
+   FlexSPI (if that is used).
+#. `BOARD_InitDEBUG_UARTPins` should be adapted to match the used system
+   console.
+
+Boot Process of IMXRT1050-EVKB
+------------------------------
 
 There are two possible boot processes supported:
 
@@ -82,18 +101,19 @@ ones that need different values):
 
 You can find the default definitions in `bsps/arm/imxrt/start/flash-*.c`. Take a
 look at the `i.MX RT1050 Processor Reference Manual, Rev. 4, 12/2019` chapter
-`9.7 Program image` for details about the contents.
+`9.7 Program image` or `i.MX RT1166 Processor Reference Manual, Rev. 0, 05/2021`
+chapter `10.7 Program image` for details about the contents.
 
 FDT
 ---
 
 The BSP uses a FDT based initialization. The FDT is linked into the application.
-You can find the default FDT used in the BSP in
-`bsps/arm/imxrt/dts/imxrt1050-evkb.dts`. The FDT is split up into two parts. The
-core part is put into an `dtsi` file and is installed together with normal
-headers into `${PREFIX}/arm-rtems@rtems-ver-major@/imxrt1052/lib/include`. You
-can use that to create your own device tree based on that. Basically use
-something like::
+You can find the default FDT used in the BSPs in `bsps/arm/imxrt/dts`. The FDT
+is split up into two parts. The controller specific part is put into an `dtsi`
+file. The board specific one is in the dts file. Both are installed together
+with normal headers into
+`${PREFIX}/arm-rtems@rtems-ver-major@/${BSP}/lib/include`. You can use that to
+create your own device tree based on that. Basically use something like::
 
   /dts-v1/;
 
@@ -136,26 +156,6 @@ with your FDT source names):
 You'll get a C file which defines the `imxrt_dtb` array. Make sure that your new
 C file is compiled and linked into the application. It will overwrite the
 existing definition of the `imxrt_dtb` in RTEMS.
-
-PLL Settings
-------------
-
-The commercial variant of the i.MXRT1052 on the evaluation board allows a clock
-up to 600MHz for the ARM core. For some industrial variants only up to 528MHz
-are specified. To make it possible to adapt to these variants the application
-can overwrite the following constant:
-
-.. code-block:: c
-
-  #include "fsl_clock_config.h"
-
-  const clock_arm_pll_config_t armPllConfig_BOARD_BootClockRUN = {
-      .loopDivider = 100,
-      .src = 0,
-  };
-
-With the default configuration of a 24MHz oscillator, the loopDivider has to be
-88 for the 528MHz.
 
 Clock Driver
 ------------
@@ -225,13 +225,58 @@ the SDK. But please note that they are not tested and maybe won't work out of
 the box. Everything that works with interrupts most likely needs some special
 treatment.
 
-Caveats
--------
+The SDK files are imported to RTEMS from the NXP mcux-sdk git repository that
+you can find here: https://github.com/nxp-mcuxpresso/mcux-sdk/
+
+The directory structure has been preserved and all files are in a
+`bsps/arm/imxrt/mcux-sdk` directory. All patches to the files are marked with
+`#ifdef __rtems__` markers.
+
+The suggested method to import new or updated files is to apply all RTEMS
+patches to the mcux-sdk repository, rebase them to the latest mcux-sdk release
+and re-import the files. The new base revision should be mentioned in the commit
+description to make future updates simpler.
+
+A import helper script (that might or might not work on newer releases of the
+mcux-sdk) can be found here:
+https://raw.githubusercontent.com/c-mauderer/nxp-mcux-sdk/d21c3e61eb8602b2cf8f45fed0afa50c6aee932f/export_to_RTEMS.py
+
+Clocks and SDRAM
+----------------
 
 The clock configuration support is quite rudimentary. The same is true for
 SDRAM. It mostly relies on the DCD and on a static clock configuration that is
 taken from the NXP SDK example projects.
 
-The MPU settings are currently quite permissive.
+If you need to adapt the DCD or clock config to support a different hardware,
+you should generate these files using the NXP MCUXpresso Configuration Tools.
+You can add the generated files to your application to overwrite the default
+RTEMS ones or you can add them to RTEMS in a new BSP variant.
 
-There is no power management support.
+As a special case, the imxrt1052 BSP will adapt it's PLL setting based on the
+chip variant. The commercial variant of the i.MXRT1052 will use a core clock of
+600MHz for the ARM core. The industrial variants only uses 528MHz. For other
+chip or BSP variants, you should adapt the files generated with the MCUXpresso
+Configuration Tools.
+
+Caveats
+-------
+
+* The MPU settings are currently quite permissive.
+
+* There is no power management support.
+
+* On the i.MXRT1166, sleeping of the Cortex M7 can't be disabled even for
+  debugging purposes. That makes it hard for a debugger to access the
+  controller. To make debugging a bit easier, it's possible to overwrite the
+  idle thread with the following one in the application:
+
+    .. code-block:: c
+
+      void * _CPU_Thread_Idle_body(uintptr_t ignored)
+      {
+        (void)ignored;
+        while (true) {
+          /* void */
+        }
+      }
