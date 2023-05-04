@@ -2180,8 +2180,9 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 method
-    The attribute value shall be a :ref:`SpecTypeRequirementValidationMethod`.
-    Validation by test is done through :ref:`SpecTypeTestCaseItemType` items.
+    The attribute value shall be a :ref:`SpecTypeName`. It shall specify the
+    requirement validation method (except validation by test).  Validation by
+    test is done through :ref:`SpecTypeTestCaseItemType` items.
 
 references
     The attribute value shall be a list. Each list element shall be an
@@ -4600,6 +4601,8 @@ This type is used by the following types:
 * :ref:`SpecTypeNonFunctionalRequirementItemType`
 
 * :ref:`SpecTypeRequirementItemType`
+
+* :ref:`SpecTypeRequirementValidationItemType`
 
 * :ref:`SpecTypeRootItemType`
 
