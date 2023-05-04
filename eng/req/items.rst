@@ -4622,6 +4622,17 @@ This type is used by the following types:
 
 * :ref:`SpecTypeSpecificationRefinementLinkRole`
 
+.. _SpecTypeOptionalFloatingPointNumber:
+
+Optional Floating-Point Number
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* The value may be a floating-point number.
+
+* There may be no value (null).
+
 .. _SpecTypeOptionalString:
 
 Optional String
