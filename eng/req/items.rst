@@ -111,6 +111,8 @@ The specification item types have the following hierarchy:
 
       * :ref:`SpecTypeDesignGroupRequirementItemType`
 
+      * :ref:`SpecTypeDesignTargetItemType`
+
       * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
 
       * :ref:`SpecTypeRuntimeMeasurementEnvironmentItemType`
@@ -1951,6 +1953,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeDesignGroupRequirementItemType`
 
+* :ref:`SpecTypeDesignTargetItemType`
+
 * :ref:`SpecTypeGenericNonFunctionalRequirementItemType`
 
 * :ref:`SpecTypeRuntimeMeasurementEnvironmentItemType`
@@ -1974,6 +1978,27 @@ attributes for this type are:
 
 identifier
     The attribute value shall be an :ref:`SpecTypeInterfaceGroupIdentifier`.
+
+.. _SpecTypeDesignTargetItemType:
+
+Design Target Item Type
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeNonFunctionalRequirementItemType` through
+the ``non-functional-type`` attribute if the value is ``design-target``. This
+set of attributes specifies a design :term:`target`. All explicit attributes
+shall be specified. The explicit attributes for this type are:
+
+brief
+    The attribute value shall be an optional string. If the value is present,
+    then it shall briefly describe the target.
+
+description
+    The attribute value shall be an optional string. If the value is present,
+    then it shall thoroughly describe the target.
+
+name
+    The attribute value shall be a string. It shall be the target name.
 
 .. _SpecTypeGenericNonFunctionalRequirementItemType:
 
