@@ -4584,8 +4584,6 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildItemType`
 
-* :ref:`SpecTypeBuildOptionSetTestStateAction`
-
 * :ref:`SpecTypeExternalReference`
 
 * :ref:`SpecTypeFunctionalRequirementItemType`
