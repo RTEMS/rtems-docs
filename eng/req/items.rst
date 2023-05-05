@@ -1541,9 +1541,6 @@ This type refines the following types:
   the value is ``unspecified-define``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
-  the value is ``unspecified-define-or-object``
-
-* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-enum``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
@@ -1557,9 +1554,6 @@ This type refines the following types:
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-macro``
-
-* :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
-  the value is ``unspecified-macro-or-function``
 
 * :ref:`SpecTypeInterfaceItemType` through the ``interface-type`` attribute if
   the value is ``unspecified-object``
