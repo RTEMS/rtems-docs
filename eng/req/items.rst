@@ -1939,6 +1939,9 @@ This type refines the following types:
   attribute if the value is ``function``
 
 * :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
+  attribute if the value is ``interface-define-not-defined``
+
+* :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
   attribute if the value is ``operational``
 
 * :ref:`SpecTypeFunctionalRequirementItemType` through the ``functional-type``
