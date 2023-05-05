@@ -1992,7 +1992,8 @@ software source code. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 identifier
-    The attribute value shall be an :ref:`SpecTypeInterfaceGroupIdentifier`.
+    The attribute value shall be a
+    :ref:`SpecTypeRequirementDesignGroupIdentifier`.
 
 .. _SpecTypeDesignTargetItemType:
 
@@ -4361,8 +4362,6 @@ The value shall match with the regular expression "``^[A-Z][a-zA-Z0-9]*$``".
 
 This type is used by the following types:
 
-* :ref:`SpecTypeDesignGroupRequirementItemType`
-
 * :ref:`SpecTypeInterfaceGroupItemType`
 
 .. _SpecTypeInterfaceGroupMembershipLinkRole:
@@ -4714,6 +4713,23 @@ Proxy Member Link Role
 This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``proxy-member``. It defines the proxy member role of links.  Items
 may use this role to link to :ref:`SpecTypeProxyItemTypes` items.
+
+.. _SpecTypeRequirementDesignGroupIdentifier:
+
+Requirement Design Group Identifier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A value of this type shall be of one of the following variants:
+
+* There may be no value (null).
+
+* The value may be a string. It shall be the identifier of the requirement
+  design group. The value shall match with the regular expression
+  "``^[a-zA-Z0-9_]*$``".
+
+This type is used by the following types:
+
+* :ref:`SpecTypeDesignGroupRequirementItemType`
 
 .. _SpecTypeRequirementRefinementLinkRole:
 
