@@ -99,6 +99,8 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeInterfaceVariableItemType`
 
+  * :ref:`SpecTypeProxyItemTypes`
+
   * :ref:`SpecTypeRequirementItemType`
 
     * :ref:`SpecTypeFunctionalRequirementItemType`
@@ -192,6 +194,8 @@ This type is refined by the following types:
 * :ref:`SpecTypeGlossaryItemType`
 
 * :ref:`SpecTypeInterfaceItemType`
+
+* :ref:`SpecTypeProxyItemTypes`
 
 * :ref:`SpecTypeRequirementItemType`
 
@@ -1606,6 +1610,20 @@ name
 
 notes
     The attribute value shall be an :ref:`SpecTypeInterfaceNotes`.
+
+.. _SpecTypeProxyItemTypes:
+
+Proxy Item Types
+^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeRootItemType` through the ``type``
+attribute if the value is ``proxy``. Items of similar characteristics may link
+to a proxy item through links with the :ref:`SpecTypeProxyMemberLinkRole`.  A
+proxy item resolves to the first member item which is enabled.  Proxies may be
+used to provide an interface with a common name and implementations which
+depend on configuration options.  For example, in one configuration a constant
+could be a compile time constant and in another configuration it could be a
+read-only object.
 
 .. _SpecTypeRequirementItemType:
 
@@ -4575,6 +4593,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypePlacementOrderLinkRole`
 
+* :ref:`SpecTypeProxyMemberLinkRole`
+
 * :ref:`SpecTypeRequirementRefinementLinkRole`
 
 * :ref:`SpecTypeRequirementValidationLinkRole`
@@ -4688,6 +4708,15 @@ This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
 value is ``placement-order``. This link role defines the placement order of
 items in a container item (for example an interface function in a header file
 or a documentation section).
+
+.. _SpecTypeProxyMemberLinkRole:
+
+Proxy Member Link Role
+^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeLink` through the ``role`` attribute if the
+value is ``proxy-member``. It defines the proxy member role of links.  Items
+may use this role to link to :ref:`SpecTypeProxyItemTypes` items.
 
 .. _SpecTypeRequirementRefinementLinkRole:
 
