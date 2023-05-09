@@ -137,7 +137,7 @@ Gets the time of day associated with the current :term:`CLOCK_REALTIME`.
 .. rubric:: PARAMETERS:
 
 ``time_of_day``
-    This parameter is the pointer to an :c:type:`rtems_time_of_day` object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsTimeOfDay` object.
     When the directive call is successful, the time of day associated with the
     :term:`CLOCK_REALTIME` at some point during the directive call will be
     stored in this object.
@@ -1086,8 +1086,8 @@ Gets the seconds elapsed since the :term:`RTEMS epoch` and the current
 .. rubric:: PARAMETERS:
 
 ``seconds_since_rtems_epoch``
-    This parameter is the pointer to an :c:type:`rtems_interval` object.  When
-    the directive call is successful, the seconds elapsed since the
+    This parameter is the pointer to an :ref:`InterfaceRtemsInterval` object.
+    When the directive call is successful, the seconds elapsed since the
     :term:`RTEMS epoch` and the :term:`CLOCK_REALTIME` at some point during the
     directive call will be stored in this object.
 

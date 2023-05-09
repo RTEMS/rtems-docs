@@ -71,9 +71,9 @@ Creates a port.
     This parameter is the length in bytes of the memory area.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the created port will be
-    stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the created port will
+    be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -158,9 +158,9 @@ Identifies a port by the object name.
     This parameter is the object name to look up.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the object identifier of an object with the
-    specified name will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the object identifier of an object with
+    the specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 

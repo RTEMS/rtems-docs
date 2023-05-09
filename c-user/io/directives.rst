@@ -64,7 +64,7 @@ table and device major number in the Device Driver Table.
     This parameter is the device driver address table.
 
 ``registered_major``
-    This parameter is the pointer to an :c:type:`rtems_device_major_number`
+    This parameter is the pointer to an :ref:`InterfaceRtemsDeviceMajorNumber`
     object.  When the directive call is successful, the device major number of
     the registered device will be stored in this object.
 

@@ -74,9 +74,9 @@ Creates a task.
     This parameter is the attribute set of the task.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the created task will be
-    stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the created task will
+    be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -332,12 +332,13 @@ Constructs a task from the specified task configuration.
 .. rubric:: PARAMETERS:
 
 ``config``
-    This parameter is the task configuration.
+    This parameter is the pointer to an :ref:`InterfaceRtemsTaskConfig` object.
+    It configures the task.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the constructed task will
-    be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the constructed task
+    will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -475,9 +476,9 @@ Identifies a task by the object name.
     This parameter is the node or node set to search for a matching object.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the object identifier of an object with the
-    specified name will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the object identifier of an object with
+    the specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1162,10 +1163,10 @@ Sets the real priority or gets the current priority of the task.
     :c:macro:`RTEMS_CURRENT_PRIORITY` to get the current priority.
 
 ``old_priority``
-    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
-    When the directive call is successful, the current or previous priority of
-    the task with respect to its :term:`home scheduler` will be stored in this
-    object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsTaskPriority`
+    object.  When the directive call is successful, the current or previous
+    priority of the task with respect to its :term:`home scheduler` will be
+    stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1261,9 +1262,9 @@ Gets the current priority of the task with respect to the scheduler.
     This parameter is the scheduler identifier.
 
 ``priority``
-    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
-    When the directive call is successful, the current priority of the task
-    with respect to the specified scheduler will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsTaskPriority`
+    object.  When the directive call is successful, the current priority of the
+    task with respect to the specified scheduler will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -1630,9 +1631,9 @@ Gets the home scheduler of the task.
     may be used to specify the calling task.
 
 ``scheduler_id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the :term:`home scheduler`
-    of the task will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the :term:`home
+    scheduler` of the task will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 

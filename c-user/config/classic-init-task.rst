@@ -59,7 +59,7 @@ API initialization task.
 .. rubric:: CONSTRAINTS:
 
 The value of the configuration option shall be convertible to an integer of
-type :c:type:`rtems_task_argument`.
+type :ref:`InterfaceRtemsTaskArgument`.
 
 .. Generated from spec:/acfg/if/init-task-attributes
 

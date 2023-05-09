@@ -76,9 +76,9 @@ Creates a partition.
     This parameter is the attribute set of the partition.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the created partition will
-    be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the created partition
+    will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -241,9 +241,9 @@ Identifies a partition by the object name.
     This parameter is the node or node set to search for a matching object.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the object identifier of an object with the
-    specified name will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the object identifier of an object with
+    the specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 

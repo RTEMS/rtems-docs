@@ -54,8 +54,8 @@ Identifies a scheduler by the object name.
     This parameter is the scheduler name to look up.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the scheduler will be
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the scheduler will be
     stored in this object.
 
 .. rubric:: DESCRIPTION:
@@ -120,8 +120,8 @@ Identifies a scheduler by the processor index.
     This parameter is the processor index to identify the scheduler.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the scheduler will be
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the scheduler will be
     stored in this object.
 
 .. rubric:: RETURN VALUES:
@@ -184,8 +184,8 @@ Identifies a scheduler by the processor set.
     processor set will be used to identify the scheduler.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the scheduler will be
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the scheduler will be
     stored in this object.
 
 .. rubric:: DESCRIPTION:
@@ -254,9 +254,9 @@ Gets the maximum task priority of the scheduler.
     This parameter is the scheduler identifier.
 
 ``priority``
-    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
-    When the directive the maximum priority of the scheduler will be stored in
-    this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsTaskPriority`
+    object.  When the directive the maximum priority of the scheduler will be
+    stored in this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -375,10 +375,10 @@ Maps a POSIX thread priority to the corresponding Classic API task priority.
     This parameter is the POSIX thread priority to map.
 
 ``priority``
-    This parameter is the pointer to an :c:type:`rtems_task_priority` object.
-    When the directive call is successful, the Classic API task priority value
-    corresponding to the specified POSIX thread priority value will be stored
-    in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsTaskPriority`
+    object.  When the directive call is successful, the Classic API task
+    priority value corresponding to the specified POSIX thread priority value
+    will be stored in this object.
 
 .. rubric:: RETURN VALUES:
 

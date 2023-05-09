@@ -72,9 +72,9 @@ Creates a message queue.
     This parameter is the attribute set of the message queue.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the created message queue
-    will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the created message
+    queue will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -230,11 +230,12 @@ Constructs a message queue from the specified the message queue configuration.
 .. rubric:: PARAMETERS:
 
 ``config``
-    This parameter is the message queue configuration.
+    This parameter is the pointer to an :ref:`InterfaceRtemsMessageQueueConfig`
+    object.  It configures the message queue.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the constructed message
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the constructed message
     queue will be stored in this object.
 
 .. rubric:: RETURN VALUES:
@@ -361,9 +362,9 @@ Identifies a message queue by the object name.
     This parameter is the node or node set to search for a matching object.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the object identifier of an object with the
-    specified name will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the object identifier of an object with
+    the specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 

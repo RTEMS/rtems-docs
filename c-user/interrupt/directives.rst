@@ -63,9 +63,10 @@ Establishes an interrupt service routine.
     This parameter is the interrupt vector number.
 
 ``old_isr_handler``
-    This parameter is the pointer to an :c:type:`rtems_isr_entry` object.  When
-    the directive call is successful, the previous interrupt service routine
-    established for this interrupt vector will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsIsrEntry` object.
+    When the directive call is successful, the previous interrupt service
+    routine established for this interrupt vector will be stored in this
+    object.
 
 .. rubric:: DESCRIPTION:
 
@@ -133,8 +134,8 @@ Disables the maskable interrupts on the current processor.
 .. rubric:: PARAMETERS:
 
 ``isr_cookie``
-    This parameter is a variable of type :c:type:`rtems_interrupt_level` which
-    will be used to save the previous interrupt level.
+    This parameter is a variable of type :ref:`InterfaceRtemsInterruptLevel`
+    which will be used to save the previous interrupt level.
 
 .. rubric:: DESCRIPTION:
 
@@ -343,8 +344,8 @@ Disables the maskable interrupts on the current processor.
 .. rubric:: PARAMETERS:
 
 ``isr_cookie``
-    This parameter is a variable of type :c:type:`rtems_interrupt_level` which
-    will be used to save the previous interrupt level.
+    This parameter is a variable of type :ref:`InterfaceRtemsInterruptLevel`
+    which will be used to save the previous interrupt level.
 
 .. rubric:: DESCRIPTION:
 
@@ -2188,9 +2189,10 @@ Gets the attributes of the interrupt vector.
     This parameter is the interrupt vector number.
 
 ``attributes``
-    This parameter is the pointer to an :c:type:`rtems_interrupt_attributes`
-    object.  When the directive call is successful, the attributes of the
-    interrupt vector will be stored in this object.
+    This parameter is the pointer to an
+    :ref:`InterfaceRtemsInterruptAttributes` object.  When the directive call
+    is successful, the attributes of the interrupt vector will be stored in
+    this object.
 
 .. rubric:: RETURN VALUES:
 
@@ -2418,9 +2420,9 @@ Creates an interrupt server.
 
 ``control``
     This parameter is the pointer to an
-    :c:type:`rtems_interrupt_server_control` object.  When the directive call
-    was successful, the ownership of the object was transferred from the caller
-    of the directive to the interrupt server management.
+    :ref:`InterfaceRtemsInterruptServerControl` object.  When the directive
+    call was successful, the ownership of the object was transferred from the
+    caller of the directive to the interrupt server management.
 
 ``config``
     This parameter is the interrupt server configuration.

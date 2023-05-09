@@ -328,7 +328,7 @@ initial user extensions.
 .. rubric:: CONSTRAINTS:
 
 The value of the configuration option shall be a list of initializers for
-structures of type :c:type:`rtems_extensions_table`.
+structures of type :ref:`InterfaceRtemsExtensionsTable`.
 
 .. Generated from spec:/acfg/if/interrupt-stack-size
 

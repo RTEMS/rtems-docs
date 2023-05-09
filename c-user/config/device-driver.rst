@@ -114,7 +114,7 @@ placement of application device driver initializers.
 .. rubric:: CONSTRAINTS:
 
 The value of the configuration option shall be a list of initializers for
-structures of type :c:type:`rtems_driver_address_table`.
+structures of type :ref:`InterfaceRtemsDriverAddressTable`.
 
 .. Generated from spec:/acfg/if/appl-needs-ata-driver
 
@@ -718,7 +718,7 @@ of application device driver initializers.
 .. rubric:: CONSTRAINTS:
 
 The value of the configuration option shall be a list of initializers for
-structures of type :c:type:`rtems_driver_address_table`.
+structures of type :ref:`InterfaceRtemsDriverAddressTable`.
 
 .. Generated from spec:/acfg/if/ata-driver-task-priority
 

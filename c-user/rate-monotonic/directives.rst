@@ -56,9 +56,9 @@ Creates a period.
     This parameter is the object name of the period.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the identifier of the created period will be
-    stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the identifier of the created period will
+    be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -133,9 +133,9 @@ Identifies a period by the object name.
     This parameter is the object name to look up.
 
 ``id``
-    This parameter is the pointer to an :c:type:`rtems_id` object.  When the
-    directive call is successful, the object identifier of an object with the
-    specified name will be stored in this object.
+    This parameter is the pointer to an :ref:`InterfaceRtemsId` object.  When
+    the directive call is successful, the object identifier of an object with
+    the specified name will be stored in this object.
 
 .. rubric:: DESCRIPTION:
 
@@ -413,7 +413,7 @@ Gets the detailed status of the period.
 
 ``status``
     This parameter is the pointer to an
-    :c:type:`rtems_rate_monotonic_period_status` object.  When the directive
+    :ref:`InterfaceRtemsRateMonotonicPeriodStatus` object.  When the directive
     call is successful, the detailed period status will be stored in this
     object.
 
@@ -496,7 +496,7 @@ Gets the statistics of the period.
 
 ``status``
     This parameter is the pointer to an
-    :c:type:`rtems_rate_monotonic_period_statistics` object.  When the
+    :ref:`InterfaceRtemsRateMonotonicPeriodStatistics` object.  When the
     directive call is successful, the period statistics will be stored in this
     object.
 
