@@ -95,6 +95,8 @@ The specification item types have the following hierarchy:
 
     * :ref:`SpecTypeInterfaceTypedefItemType`
 
+    * :ref:`SpecTypeInterfaceUnspecifiedHeaderFileItemType`
+
     * :ref:`SpecTypeInterfaceUnspecifiedItemType`
 
     * :ref:`SpecTypeInterfaceVariableItemType`
@@ -1155,6 +1157,8 @@ This type is refined by the following types:
 
 * :ref:`SpecTypeInterfaceTypedefItemType`
 
+* :ref:`SpecTypeInterfaceUnspecifiedHeaderFileItemType`
+
 * :ref:`SpecTypeInterfaceUnspecifiedItemType`
 
 * :ref:`SpecTypeInterfaceVariableItemType`
@@ -1529,6 +1533,24 @@ params
 
 return
     The attribute value shall be an :ref:`SpecTypeInterfaceReturnDirective`.
+
+.. _SpecTypeInterfaceUnspecifiedHeaderFileItemType:
+
+Interface Unspecified Header File Item Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type refines the :ref:`SpecTypeInterfaceItemType` through the
+``interface-type`` attribute if the value is ``unspecified-header-file``. This
+set of attributes specifies an unspecified header file. All explicit attributes
+shall be specified. The explicit attributes for this type are:
+
+path
+    The attribute value shall be a string. It shall be the path used to include
+    the header file.  For example :file:`rtems/confdefs.h`.
+
+references
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeExternalReference`.
 
 .. _SpecTypeInterfaceUnspecifiedItemType:
 
@@ -3814,6 +3836,8 @@ This type is refined by the following types:
 * :ref:`SpecTypeGenericExternalReference`
 
 This type is used by the following types:
+
+* :ref:`SpecTypeInterfaceUnspecifiedHeaderFileItemType`
 
 * :ref:`SpecTypeInterfaceUnspecifiedItemType`
 
