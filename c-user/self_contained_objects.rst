@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2014, 2017.
-.. COMMENT: embedded brains GmbH.
+.. COMMENT: embedded brains GmbH & Co. KG
 
 Self-Contained Objects
 **********************

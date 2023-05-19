@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2020 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2020 embedded brains GmbH & Co. KG
 
 .. _BSPBuildSystem:
 
@@ -294,7 +294,7 @@ shows the GCC-specific ABI flags item of the ``sparc/leon3`` BSP family:
     - env-append: null
     build-type: option
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     default:
     - -mcpu=leon3
     default-by-variant:

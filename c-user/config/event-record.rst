@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2022 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2022 embedded brains GmbH & Co. KG
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or

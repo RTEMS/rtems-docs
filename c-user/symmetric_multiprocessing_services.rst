@@ -2,7 +2,7 @@
 
 .. Copyright (C) 2014.
 .. COMMENT: On-Line Applications Research Corporation (OAR).
-.. Copyright (C) 2017 embedded brains GmbH.
+.. Copyright (C) 2017 embedded brains GmbH & Co. KG
 
 .. index:: Symmetric Multiprocessing
 .. index:: SMP

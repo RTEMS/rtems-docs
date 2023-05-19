@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2022 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2019, 2023 embedded brains GmbH & Co. KG
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -339,7 +339,7 @@ Please have a look at the following example:
     build-type: ada-test-program
     cflags: []
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     cxxflags: []
     enabled-by: true
@@ -406,7 +406,7 @@ Please have a look at the following example:
     build-type: bsp
     cflags: []
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     enabled-by: true
     family: mybsp
@@ -476,7 +476,7 @@ Please have a look at the following example:
       Name: ${ARCH}-rtems${__RTEMS_MAJOR__}-${BSP_NAME}
       # ...
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     install-path: ${PREFIX}/lib/pkgconfig
     links: []
@@ -565,7 +565,7 @@ Please have a look at the following example:
     build-type: group
     cflags: []
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     cxxflags: []
     enabled-by:
@@ -637,7 +637,7 @@ Please have a look at the following example:
     cflags:
     - -Wno-pointer-sign
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     cxxflags: []
     enabled-by: true
@@ -700,7 +700,7 @@ Please have a look at the following example:
     build-type: objects
     cflags: []
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     cxxflags: []
     enabled-by: true
@@ -772,7 +772,7 @@ Please have a look at the following example:
     - define: null
     build-type: option
     copyrights:
-    - Copyright (C) 2020, 2022 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020, 2022 embedded brains GmbH & Co. KG
     default:
     - enabled-by:
       - bsps/powerpc/motorola_powerpc
@@ -884,7 +884,7 @@ Please have a look at the following example:
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     build-type: script
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     default: null
     default-by-variant: []
     do-build: |
@@ -944,7 +944,7 @@ Please have a look at the following example:
     asflags: []
     build-type: start-file
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     enabled-by: true
     includes: []
@@ -1020,7 +1020,7 @@ Please have a look at the following example:
     build-type: test-program
     cflags: []
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     cppflags: []
     cxxflags: []
     enabled-by: true
@@ -1741,7 +1741,7 @@ Please have a look at the following example:
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     functional-type: capability
     links: []
@@ -1887,7 +1887,7 @@ Please have a look at the following example:
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     functional-type: action
     links: []
@@ -2451,7 +2451,7 @@ Please have a look at the following example:
 
     SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
     copyrights:
-    - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
+    - Copyright (C) 2020 embedded brains GmbH & Co. KG
     enabled-by: true
     links:
     - role: spec-member

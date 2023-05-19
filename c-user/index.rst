@@ -10,7 +10,7 @@ RTEMS Classic API Guide (|version|).
 
     | |copy| 2017 Chris Johns
     | |copy| 2017 Kuan-Hsun Chen
-    | |copy| 2015, 2020 embedded brains GmbH
+    | |copy| 2015, 2020 embedded brains GmbH & Co. KG
     | |copy| 2015, 2020 Sebastian Huber
     | |copy| 2011 Petr Benes
     | |copy| 2010 Gedare Bloom

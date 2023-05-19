@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2018 Shashvat Jain
-.. Copyright (C) 2019 embedded brains GmbH
+.. Copyright (C) 2019 embedded brains GmbH & Co. KG
 .. Copyright (C) 2019 Sebastian Huber
 .. Copyright (C) 2020 Chris Johns
 .. Copyright (C) 2020 Gedare Bloom

@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH
+.. Copyright (C) 2020 embedded brains GmbH & Co. KG
 .. Copyright (C) 2016, 2018 RTEMS Foundation, The RTEMS Documentation Project
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 

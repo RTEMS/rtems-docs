@@ -11,7 +11,7 @@ RTEMS Software Engineering (|version|)
 
 .. topic:: Copyrights and License
 
-    | |copy| 2018, 2020 embedded brains GmbH
+    | |copy| 2018, 2020 embedded brains GmbH & Co. KG
     | |copy| 2018, 2020 Sebastian Huber
     | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
 

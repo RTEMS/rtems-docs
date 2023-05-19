@@ -11,7 +11,7 @@ RTEMS Shell Guide (|version|).
 .. topic:: Copyrights and License
 
     | |copy| 2016, 2019 Chris Johns
-    | |copy| 2016, 2017 embedded brains GmbH
+    | |copy| 2016, 2017 embedded brains GmbH & Co. KG
     | |copy| 2016, 2017 Sebastian Huber
     | |copy| 1988, 2017 On-Line Applications Research Corporation (OAR)
 

@@ -9,7 +9,7 @@ RTEMS Filesystem Design Guide (|version|).
 .. topic:: Copyrights and License
 
     | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
-    | |copy| 2022 embedded brains GmbH (http://www.embedded-brains.de)
+    | |copy| 2022 embedded brains GmbH & Co. KG
 
     .. include:: ../common/license.rst
 

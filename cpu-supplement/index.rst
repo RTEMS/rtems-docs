@@ -8,7 +8,7 @@ RTEMS CPU Architecture Supplement (|version|).
 
 .. topic:: Copyrights and License
 
-    | |copy| 2016, 2018 embedded brains GmbH
+    | |copy| 2016, 2018 embedded brains GmbH & Co. KG
     | |copy| 2016, 2018 Sebastian Huber
     | |copy| 2014, 2015 Hesham Almatary
     | |copy| 2010 Gedare Bloom

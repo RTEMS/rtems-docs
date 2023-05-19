@@ -9,7 +9,7 @@ RTEMS BSP and Driver Guide (|version|).
 .. topic:: Copyrights and License
 
     | |copy| 2017 Christian Mauderer
-    | |copy| 2016, 2020 embedded brains GmbH
+    | |copy| 2016, 2020 embedded brains GmbH & Co. KG
     | |copy| 2016, 2020 Sebastian Huber
     | |copy| 1988, 2017 On-Line Applications Research Corporation (OAR)
 

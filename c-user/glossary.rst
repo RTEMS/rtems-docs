@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020 Richi Dubey (richidubey@gmail.com)
-.. Copyright (C) 2015, 2021 embedded brains GmbH (http://www.embedded-brains.de)
+.. Copyright (C) 2015, 2023 embedded brains GmbH & Co. KG
 .. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
 
 Glossary

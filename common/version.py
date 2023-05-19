@@ -1,7 +1,7 @@
 #
 # RTEMS Documentation Project (http://www.rtems.org/)
 # Copyright 2019, 2020 Chris Johns (chrisj@rtems.org)
-# Copyright (C) 2019 embedded brains GmbH
+# Copyright (C) 2019 embedded brains GmbH & Co. KG
 # All rights reserved.
 #
 # This file is part of the RTEMS Documentation package in 'rtems-docs'.

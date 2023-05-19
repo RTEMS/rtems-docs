@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2017, 2019 embedded brains GmbH
+.. Copyright (C) 2017, 2019 embedded brains GmbH & Co. KG
 .. Copyright (C) 2017, 2019 Sebastian Huber
 
 lpc24xx (NXP LPC17XX/LPC24XX/LPC40XX)

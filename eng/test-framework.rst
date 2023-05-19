@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018, 2020 embedded brains GmbH
+.. Copyright (C) 2018, 2020 embedded brains GmbH & Co. KG
 .. Copyright (C) 2018, 2020 Sebastian Huber
 
 Software Test Framework
