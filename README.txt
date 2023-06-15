@@ -47,13 +47,13 @@ Images
 ------
 
 All images should be placed in the 'images' directory and referenced from the
-ReST with a relative path. This lets us shared and control images.
+ReST with a relative path. This lets us share and control images.
 
 We prefer being able to build images from source. This is not always possible
 so SVG format is preferred with generated PNG images to make sure the quality
 is consistent when building PDF output.
 
-Building images requires the source with an apporoiate file extension
+Building images requires the source with an appropriate file extension
 is placed in the images directory. The built output image is written
 back to the images directory. All images may be built or rebuilt when
 building images is enabled via the waf configure command line. Please
@@ -70,7 +70,7 @@ We support the PlantUML image language. The PlantUML home page is:
  http://plantuml.com/
 
 The page as a link to an 'online demo server' you can use to create images
-rathre than installing PlantUML. Save you source then View and save the PNG
+rather than installing PlantUML. Save you source then View and save the PNG
 format image. The PlantUML language reference guide is:
 
  http://plantuml.com/PlantUML_Language_Reference_Guide.pdf
@@ -82,7 +82,7 @@ We also support Ditaa image language. The Ditaa home page is:
 
  http://ditaa.sourceforge.net/
 
-The home page contain the language options. The PlantUML online demo server
+The home page contains the language options. The PlantUML online demo server
 supports Ditaa so use that resource as an online tool. The Ditaa image source
 extension is '.ditaa'.
 
@@ -94,7 +94,7 @@ same directory under 'images'.
 Please consider using PlantUML and Ditaa before other tools because we
 can generate the images from source automatically and it gives the
 documentation a similar look and feel. Other options may be considered
-if the image cannot be easly created by PlantUML or Ditaa but please
+if the image cannot be easily created by PlantUML or Ditaa but please
 ask before starting down that path because it may not be accepted.
 
 Image editing tools tend to have a specific look and feel and this
@@ -175,7 +175,7 @@ and sphinx:
 Windows
 ~~~~~~~
 
-To build the documentation on Windows you need to install an offical Python
+To build the documentation on Windows you need to install an official Python
 build from https://www.python.org/. We suggest you install a recent 2.7 series
 64bit build. The versions 2.7.9 and after include pip.
 
@@ -308,8 +308,8 @@ CentOS 8
 The steps for Centos 8 are similar to the steps for CentOS 7.
 There are just a couple differences.
 
-First, CentOS 8 uses Python 3.x as the default, so intalling the
-centos-release-scl and rh-python36 packages is unnecessary.
+First, CentOS 8 uses Python 3.x as the default, so installing the
+centos-release-scl and rh-python36 packages are unnecessary.
 Second, Centos 8 uses dnf as its package manager instead of yum, so
 packages such as npm should be installed using dnf instead.
 
@@ -438,7 +438,7 @@ warnings and extra information about the source to help make sure our
 documentation source is as clean as possible. Please use this when writing
 documentation or making updates.
 
-The '--disable-extra-fonts' allows you to build PDF documents with out the
+The '--disable-extra-fonts' allows you to build PDF documents without the
 fonts we use for a better quality document. Use this option to build without
 needing the extra fonts accepting you will get poor quality documents.
 
@@ -516,7 +516,7 @@ existing documentation for an example and if unsure ask.
 
    The second is to use a single block of type 'none' with the command
    and output together as seen in a terminal session. The commands are
-   identifed by the standard shell prompt characters where '$' is a
+   identified by the standard shell prompt characters where '$' is a
    user prompt and '#' is a 'root' prompt.
 
    Do not embed the version or version major number in the literal
@@ -537,7 +537,7 @@ existing documentation for an example and if unsure ask.
    of images. To add an image use:
 
     .. figure:: ../images/my-image.png
-       :wdith: 75%
+       :width: 75%
        :align: center
        :alt: This is the alt text for some output types.
 
@@ -568,7 +568,7 @@ existing documentation for an example and if unsure ask.
    Note the topic items are manually numbered, which makes it easier to see
    which item matches the text. Use <> for the number and align at a position
    that makes the number as visible as possible. Use hanging indents
-   if an items extends past a single line.
+   if an item extends past a single line.
 
 9. Use the RTEMS domain references for URLs and mailing lists. For example to
    insert the RTEMS developers list use:
@@ -621,10 +621,10 @@ existing documentation for an example and if unsure ask.
         The version revision number.
 
     The replacement happens during the source read phase of the build
-    and is not context specific. The subsituation will happen in code
-    blocks and other normally quoated area.
+    and is not context specific. The substitution will happen in code
+    blocks and other normally quoted areas.
 
     It is a requirement these be used then embedded commands or
-    related text in the documentation to let the documentatoin track
+    related text in the documentation to let the documentation track
     the release. For example `microblaze-rtems6-gdb` should be written
     as `microblaze-rtems@rtems-ver-major@-gdb`.
