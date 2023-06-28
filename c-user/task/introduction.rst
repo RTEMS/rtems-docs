@@ -84,8 +84,8 @@ and administer tasks. The directives provided by the Task Manager are:
 * :ref:`InterfaceRtemsTaskMode` - Gets and optionally sets the mode of the
   calling task.
 
-* :ref:`InterfaceRtemsTaskWakeAfter` - Wakes up after an interval in
-  :term:`clock ticks <clock tick>` or yields the processor.
+* :ref:`InterfaceRtemsTaskWakeAfter` - Wakes up after a count of :term:`clock
+  ticks <clock tick>` have occurred or yields the processor.
 
 * :ref:`InterfaceRtemsTaskWakeWhen` - Wakes up when specified.
 

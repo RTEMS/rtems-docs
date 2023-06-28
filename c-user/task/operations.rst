@@ -75,9 +75,9 @@ Delaying the Currently Executing Task
 -------------------------------------
 
 The ``rtems_task_wake_after`` directive creates a sleep timer which allows a
-task to go to sleep for a specified interval.  The task is blocked until the
-delay interval has elapsed, at which time the task is unblocked.  A task
-calling the ``rtems_task_wake_after`` directive with a delay interval of
+task to go to sleep for a specified count of clock ticks.  The task is blocked
+until the count of clock ticks has elapsed, at which time the task is unblocked.
+A task calling the ``rtems_task_wake_after`` directive with a delay of
 ``RTEMS_YIELD_PROCESSOR`` ticks will yield the processor to any other ready
 task of equal or greater priority and remain ready to execute.
 

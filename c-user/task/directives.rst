@@ -1475,16 +1475,16 @@ The following constraints apply to this directive:
     \clearpage
 
 .. index:: rtems_task_wake_after()
-.. index:: delay a task for an interval
-.. index:: wake up after an interval
+.. index:: delay a task for a count of clock ticks
+.. index:: wake up after a count of clock ticks
 
 .. _InterfaceRtemsTaskWakeAfter:
 
 rtems_task_wake_after()
 -----------------------
 
-Wakes up after an interval in :term:`clock ticks <clock tick>` or yields the
-processor.
+Wakes up after a count of :term:`clock ticks <clock tick>` have occurred or
+yields the processor.
 
 .. rubric:: CALLING SEQUENCE:
 
@@ -1495,16 +1495,16 @@ processor.
 .. rubric:: PARAMETERS:
 
 ``ticks``
-    This parameter is the interval in :term:`clock ticks <clock tick>` to delay
+    This parameter is the count of :term:`clock ticks <clock tick>` to delay
     the task or :c:macro:`RTEMS_YIELD_PROCESSOR` to yield the processor.
 
 .. rubric:: DESCRIPTION:
 
-This directive blocks the calling task for the specified ``ticks`` of clock
-ticks if the value is not equal to :c:macro:`RTEMS_YIELD_PROCESSOR`.  When the
-requested interval has elapsed, the task is made ready.  The clock tick
-directives automatically updates the delay period.  The calling task may give
-up the processor and remain in the ready state by specifying a value of
+This directive blocks the calling task for the specified ``ticks`` count of
+clock ticks if the value is not equal to :c:macro:`RTEMS_YIELD_PROCESSOR`. When
+the requested count of ticks have occurred, the task is made ready.  The clock
+tick directives automatically update the delay period.  The calling task may
+give up the processor and remain in the ready state by specifying a value of
 :c:macro:`RTEMS_YIELD_PROCESSOR` in ``ticks``.
 
 .. rubric:: RETURN VALUES:
@@ -1516,7 +1516,12 @@ up the processor and remain in the ready state by specifying a value of
 
 Setting the system date and time with the :ref:`InterfaceRtemsClockSet`
 directive and similar directives which set :term:`CLOCK_REALTIME` have no
-effect on a :ref:`InterfaceRtemsTaskWakeAfter` blocked task.
+effect on a :ref:`InterfaceRtemsTaskWakeAfter` blocked task.  The delay until
+first clock tick will never be a whole clock tick interval since this directive
+will never excute exactly on a clock tick.  Applications requiring use of a
+clock (CLOCK_REALTIME or CLOCK_MONOTONIC) instead of clock ticks should make
+use of `clock_nanosleep()
+<https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_nanosleep.html>`_.
 
 .. rubric:: CONSTRAINTS:
 

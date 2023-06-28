@@ -160,7 +160,7 @@ Manual Round-Robin
 
 The final mechanism for altering the RTEMS scheduling algorithm is called
 manual round-robin.  Manual round-robin is invoked by using
-the ``rtems_task_wake_after`` directive with a time interval of
+the ``rtems_task_wake_after`` directive with a ``ticks`` parameter of
 ``RTEMS_YIELD_PROCESSOR``.  This allows a task to give up the processor and be
 immediately returned to the ready chain at the end of its priority group.  If
 no other tasks of the same priority are ready to run, then the task does not
@@ -243,7 +243,7 @@ of the following conditions:
   option and the requested semaphore is unavailable.
 
 - The running task issues a ``rtems_task_wake_after`` directive which blocks
-  the task for the given time interval.  If the time interval specified is
+  the task for the given count of ticks.  If the count of ticks specified is
   zero, the task yields the processor and remains in the ready state.
 
 - The running task issues a ``rtems_task_wake_when`` directive which blocks the
@@ -280,8 +280,8 @@ conditions:
 - A running task issues a ``rtems_semaphore_release`` directive which releases
   the semaphore on which the blocked task is waiting.
 
-- A timeout interval expires for a task which was blocked by a call to the
-  ``rtems_task_wake_after`` directive.
+- The requested count of ticks has elapsed for a task which was blocked by a
+  call to the ``rtems_task_wake_after`` directive.
 
 - A timeout period expires for a task which blocked by a call to the
   ``rtems_task_wake_when`` directive.
