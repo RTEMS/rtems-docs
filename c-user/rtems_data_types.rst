@@ -1171,6 +1171,101 @@ executed_since_last_period
 postponed_jobs_count
     This member contains the count of jobs which are not released yet.
 
+.. Handwritten 
+
+.. index:: rtems_regulator_attributes
+
+.. _InterfaceRtemsRegulatorAttributes:
+
+rtems_regulator_attributes
+--------------------------
+
+This structure defines the configuration of a regulator created by
+:ref:`InterfaceRtemsRegulatorCreate`.
+
+.. rubric:: MEMBERS:
+
+deliverer
+  This member contains a pointer to an application function invoked by
+  the Delivery thread to output a message to the destination.
+
+deliverer_context
+  This member contains a pointer to an application defined context which
+  is passed to delivery function.
+
+maximum_message_size
+  This member contains the maximum size message to process.
+
+maximum_messages
+  This member contains the maximum number of messages to be able to buffer.
+
+output_thread_priority
+  This member contains the priority of output thread.
+
+output_thread_stack_size
+  This member contains the Stack size of output thread.
+
+output_thread_period
+  This member contains the period (in ticks) of output thread.
+
+maximum_to_dequeue_per_period
+  This member contains the maximum number of messages the output thread
+  should dequeue and deliver per period.
+
+.. rubric:: NOTES:
+
+This type is passed as an argument to :ref:`InterfaceRtemsRegulatorCreate`.
+
+.. Handwritten 
+
+.. index:: rtems_regulator_deliverer
+
+.. _InterfaceRtemsRegulatorDeliverer:
+
+rtems_regulator_deliverer
+-------------------------
+
+This type represents the function signature used to specify a delivery
+function for the RTEMS Regulator.
+
+.. rubric:: NOTES:
+
+This type is used in the :ref:`InterfaceRtemsRegulatorAttributes`
+structure which is passed as an argument to
+:ref:`InterfaceRtemsRegulatorCreate`.
+
+.. Handwritten 
+
+.. index:: rtems_regulator_statistics
+
+.. _InterfaceRtemsRegulatorStatistics:
+
+rtems_regulator_statistics
+--------------------------
+
+This structure defines the statistics maintained by each Regulator instance.
+
+.. rubric:: MEMBERS:
+
+obtained
+  This member contains the number of successfully obtained buffers.
+
+released
+  This member contains the number of successfully released buffers.
+
+delivered
+  This member contains the number of successfully delivered buffers.
+
+period_statistics
+  This member contains the Rate Monotonic Period
+  statistics for the Delivery Thread. It is an instance of the
+  :ref:`InterfaceRtemsRateMonotonicPeriodStatistics` structure.
+
+.. rubric:: NOTES:
+
+This type is passed as an argument to
+:ref:`InterfaceRtemsRegulatorGetStatistics`.
+
 .. Generated from spec:/rtems/signal/if/set
 
 .. index:: rtems_signal_set

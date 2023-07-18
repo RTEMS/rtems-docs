@@ -51,6 +51,7 @@ RTEMS Classic API Guide (|version|).
 	user-extensions/index
 	config/index
 	self_contained_objects
+	regulator/index
 	multiprocessing/index
 	symmetric_multiprocessing_services
 	pci_library

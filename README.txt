@@ -120,8 +120,10 @@ Please add your host to this section as you set it up.
 The best results are produced with Python3 and a virtual environment`. It can
 create a specific python environment using `pip`.
 
-Virtual Environment
-~~~~~~~~~~~~~~~~~~~
+Similarly, npm packages can be installed into a users $HOME directory.
+
+Python Virtual Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create a directory to house the virtual environment, create the environment,
 and then activate it. This example assumes Python3 and the `venv` module:
@@ -142,6 +144,19 @@ Either way, the prompt will now change. You can install Sphinx with:
   $ pip install sphinxcontrib-bibtex
 
 When you have finished you enter `deactivate`.
+
+NPM Per User Environment
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Change npm's default directory to a local one:
+
+  mkdir ~/.npm-global
+  npm config set prefix '~/.npm-global'
+
+Subsequent packages installed via `npm install` will be local
+to the user. The following shows the PATH changes needed.
+
+  export PATH=${HOME}/.npm-global/bin:$PATH
 
 Sphinx Per User Install
 ~~~~~~~~~~~~~~~~~~~~~~~
