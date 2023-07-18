@@ -31,11 +31,13 @@ RTEMS Software Engineering (|version|)
     management
     test-plan
     test-framework
+    fv/index
     build-system
     release-mgmt
     users-manuals
     license-requirements
     appendix-a
+    fv/appendix-fv
     function_and_variable
     concept
     glossary
