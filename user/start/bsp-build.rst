@@ -45,7 +45,7 @@ To build the BSP with all the tests run this command:
 
     cd $HOME/quick-start/src/rsb/rtems
     ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/5 \
-        --target=sparc-rtems@rtems-ver-major@ --with-rtems-bsp=erc32 --with-rtems-tests=yes @rtems-ver-major@/rtems-kernel
+        --target=sparc-rtems@rtems-ver-major@ --with-rtems-bsp=sparc/erc32 --with-rtems-tests=yes @rtems-ver-major@/rtems-kernel
 
 This command should output something like:
 
