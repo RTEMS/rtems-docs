@@ -382,6 +382,18 @@ Glossary
     GNU
         This term is an acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
 
+    GR712RC
+        The
+        `GR712RC <https://www.gaisler.com/index.php/products/components/gr712rc>`_
+        is a :term:`system-on-chip` containing two processors of the :term:`SPARC`
+        :term:`target architecture`.
+
+    GR740
+        The
+        `GR740 <https://www.gaisler.com/index.php/products/components/gr740>`_
+        is a :term:`system-on-chip` containing four processors of the :term:`SPARC`
+        :term:`target architecture`.
+
     handler
         The equivalent of a manager, except that it is internal to RTEMS and
         forms part of the core.  A handler is a collection of routines which
@@ -905,6 +917,10 @@ Glossary
         A thirty-two bit entity which is used to represent a task's collection of
         pending signals and the signals sent to a task.
 
+    SIS
+        This term is an acronym for Simple Instruction Simulator.  The SIS is a
+        :term:`SPARC` V7/V8 and RISC-V RV32IMACFD :term:`target architecture` simulator.
+
     SMCB
         This term is an acronym for :term:`Semaphore Control Block`.
 
@@ -982,6 +998,11 @@ Glossary
         software as it is originally written (i.e., typed into a computer) by a
         human in plain text (i.e., human readable alphanumeric characters)."
 
+    SPARC
+        This term is an acronym for
+        `Scalable Processor ARChitecture <https://en.wikipedia.org/wiki/SPARC>`_.
+        See also :term:`target architecture`.
+
     sporadic task
         A task which executes at irregular intervals and must comply with a hard
         deadline.  A minimum period of time between successive iterations of the
@@ -1018,6 +1039,15 @@ Glossary
 
     system call
         In this document, this is used as an alternate term for directive.
+
+    system-on-chip
+        This project uses the `system on a chip definition of Wikipedia
+        <https://en.wikipedia.org/wiki/System_on_a_chip>`_: "A system on a chip or
+        system-on-chip is an integrated circuit that integrates most or all
+        components of a computer or other electronic system."
+
+        Systems on a chip are :term:`target` systems for applications using
+        :term:`RTEMS`.
 
     target
         The system on which the application will ultimately execute.
