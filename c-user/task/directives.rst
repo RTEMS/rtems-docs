@@ -1518,7 +1518,7 @@ Setting the system date and time with the :ref:`InterfaceRtemsClockSet`
 directive and similar directives which set :term:`CLOCK_REALTIME` have no
 effect on a :ref:`InterfaceRtemsTaskWakeAfter` blocked task.  The delay until
 first clock tick will never be a whole clock tick interval since this directive
-will never excute exactly on a clock tick.  Applications requiring use of a
+will never execute exactly on a clock tick.  Applications requiring use of a
 clock (:term:`CLOCK_REALTIME` or :term:`CLOCK_MONOTONIC`) instead of clock
 ticks should make use of `clock_nanosleep()
 <https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_nanosleep.html>`_.
