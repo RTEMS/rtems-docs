@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 1988, 2023 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or

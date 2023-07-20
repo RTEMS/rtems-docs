@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 1988, 2023 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -1519,8 +1519,8 @@ directive and similar directives which set :term:`CLOCK_REALTIME` have no
 effect on a :ref:`InterfaceRtemsTaskWakeAfter` blocked task.  The delay until
 first clock tick will never be a whole clock tick interval since this directive
 will never excute exactly on a clock tick.  Applications requiring use of a
-clock (CLOCK_REALTIME or CLOCK_MONOTONIC) instead of clock ticks should make
-use of `clock_nanosleep()
+clock (:term:`CLOCK_REALTIME` or :term:`CLOCK_MONOTONIC`) instead of clock
+ticks should make use of `clock_nanosleep()
 <https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_nanosleep.html>`_.
 
 .. rubric:: CONSTRAINTS:
