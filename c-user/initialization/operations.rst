@@ -285,19 +285,24 @@ Many of RTEMS actions during initialization are based upon the contents of the
 Configuration Table.  For more information regarding the format and contents of
 this table, please refer to the chapter :ref:`Configuring a System`.
 
+.. index:: global construction
+
+.. _GlobalConstruction:
+
 Global Construction
 -------------------
 
-The global construction is carried out by the first Classic API initialization
-task (first is defined by index zero in the Classic API initialization task
-configuration table).  If no Classic API initialization task exists, then it is
-carried out by the first POSIX API initialization thread.  If no initialization
-task or thread exists, then no global construction is performed, see for
-example :ref:`Specify Idle Task Performs Application Initialization`.  The
-Classic API task or POSIX API thread which carries out global construction is
-called the main thread.
+The :term:`global construction` is carried out by the Classic API
+initialization task.  If no Classic API initialization task exists, then it is
+carried out by the POSIX API initialization thread.  If no initialization task
+or thread exists, then no global construction is performed.  The Classic API
+task or POSIX API thread which carries out global construction is called the
+main thread.  For configuration options related to initialization tasks, see
+:ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+:ref:`CONFIGURE_POSIX_INIT_THREAD_TABLE`, and
+:ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`.
 
-Global construction runs before the entry function of the main thread.  The
+Global construction runs before the :term:`task entry` of the main thread.  The
 configuration of the main thread must take the global construction into
 account.  In particular, the main thread stack size, priority, attributes and
 initial modes must be set accordingly.  Thread-local objects and POSIX key
