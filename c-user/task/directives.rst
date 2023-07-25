@@ -624,9 +624,9 @@ Starts the task.
 .. rubric:: DESCRIPTION:
 
 This directive readies the task, specified by ``id``, for execution based on
-the priority and execution mode specified when the task was created.  The entry
-point of the task is given in ``entry_point``. The task's entry point argument
-is contained in ``argument``.
+the priority and execution mode specified when the task was created.  The
+:term:`task entry` point of the task is given in ``entry_point``.  The task's
+entry point argument is contained in ``argument``.
 
 .. rubric:: RETURN VALUES:
 

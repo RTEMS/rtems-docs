@@ -123,7 +123,7 @@ If this configuration option is defined, then it is mandatory to configure a
 user IDLE task with the :ref:`CONFIGURE_IDLE_TASK_BODY` configuration option,
 otherwise a compile time error in the configuration file will occur.
 
-The application shall define exactly one of the following configuration
+The application shall define at least one of the following configuration
 options
 
 * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
@@ -133,6 +133,9 @@ options
 * ``CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION``
 
 otherwise a compile time error in the configuration file will occur.
+
+If no Classic API initialization task and no POSIX API initialization thread
+is configured, then no :ref:`GlobalConstruction` is performed.
 
 .. Generated from spec:/acfg/if/idle-task-stack-size
 

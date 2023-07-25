@@ -1523,7 +1523,7 @@ extension set.
 rtems_task_entry
 ----------------
 
-This type defines the entry point of an RTEMS task.
+This type defines the :term:`task entry` point of an RTEMS task.
 
 .. Generated from spec:/rtems/userext/if/task-exitted
 

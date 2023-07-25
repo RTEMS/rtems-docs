@@ -401,7 +401,7 @@ initialization task is configured.
 
 .. rubric:: NOTES:
 
-The application shall define exactly one of the following configuration
+The application shall define at least one of the following configuration
 options
 
 * ``CONFIGURE_RTEMS_INIT_TASKS_TABLE``,
@@ -411,3 +411,6 @@ options
 * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
 
 otherwise a compile time error in the configuration file will occur.
+
+The Classic API initialization task performs the
+:ref:`GlobalConstruction`.

@@ -375,6 +375,10 @@ Glossary
         An object that has been created with the GLOBAL attribute and exported to
         all nodes in a multiprocessor system.
 
+    global construction
+        In the global construction, the C++ global constructors and constructor
+        functions are invoked.  See :ref:`GlobalConstruction`.
+
     GNAT
         *GNAT* is the :term:`GNU` compiler for Ada, integrated into the
         :term:`GCC`.
@@ -1078,6 +1082,15 @@ Glossary
     Task Control Block
         A data structure associated with each task used by RTEMS to manage that
         task.
+
+    task entry
+        The task entry is invoked to execute the task's job.  Before the task entry
+        is invoked, the thread begin :term:`user extensions` run in the context of
+        the task.  After the return of the task entry, the thread exitted user
+        extensions run in the context of the task.  The first user initialization
+        task performs the :term:`global construction` after running the thread begin
+        extensions and before the task entry is invoked.  See also
+        :ref:`InterfaceRtemsTaskStart`.
 
     task migration
         Task migration happens in case a task stops execution on one processor

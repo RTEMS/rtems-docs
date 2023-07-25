@@ -141,7 +141,7 @@ initialization thread is configured.
 
 .. rubric:: NOTES:
 
-The application shall define exactly one of the following configuration
+The application shall define at least one of the following configuration
 options
 
 * :ref:`CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
@@ -151,3 +151,6 @@ options
 * :ref:`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
 
 otherwise a compile time error in the configuration file will occur.
+
+If no Classic API initialization task is configured, then the POSIX API
+initialization thread performs the :ref:`GlobalConstruction`.
