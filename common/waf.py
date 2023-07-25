@@ -16,7 +16,11 @@ from waflib.Build import BuildContext
 import latex
 import conf
 
+# Sphinx >= 6 are currently broken. 
+# If you do not want to check for a maximum version, set it to None.
 sphinx_min_version = (1, 3)
+sphinx_max_version = (5, 9)
+#sphinx_max_version = None
 
 def version_cmdline(ctx):
     return '-Drelease="%s" -Dversion="%s" -Drtems_major="%s" ' \
@@ -84,7 +88,7 @@ class linkcheck(BuildContext):
     cmd = 'linkcheck'
     fun = 'cmd_linkcheck'
 
-def check_sphinx_version(ctx, minver):
+def check_sphinx_version(ctx, minver, maxver):
     try:
         import sphinx
     except:
@@ -115,6 +119,9 @@ def check_sphinx_version(ctx, minver):
                 ctx.fatal("Sphinx version cannot be checked or Sphinx is not installed")
     if ver < minver:
         ctx.fatal("Sphinx version is too old: %s" % ".".join(map(str, ver)))
+    if maxver is not None:
+        if ver > maxver:
+            ctx.fatal("Sphinx version is too new: %s" % ".".join(map(str, ver)))
     return ver
 
 def sphinx_options(ctx):
@@ -206,8 +213,12 @@ def cmd_configure(ctx):
         ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
         ctx.find_program("aspell", var = "BIN_ASPELL", mandatory = False)
 
-        ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
-        ver = check_sphinx_version(ctx, sphinx_min_version)
+        if sphinx_max_version is None:
+          ctx.start_msg("Checking if Sphinx is at least %s.%s" % sphinx_min_version)
+        else:
+          ctx.start_msg("Checking if Sphinx is between %s.%s and %s.%s" % (sphinx_min_version + sphinx_max_version))
+
+        ver = check_sphinx_version(ctx, sphinx_min_version, sphinx_max_version)
         ctx.end_msg("yes (%s)" % ".".join(map(str, ver)))
 
         ctx.start_msg("Checking Sphinx Options ")
