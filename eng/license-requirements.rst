@@ -98,9 +98,33 @@ these guidelines:
 * Advertising obligations are not acceptable.
 
 * Some license restrictions may be permissible. These will be considered
-  on a case-by-case basis.
+  on a case-by-case basis. See below for a list of such restrictions.
 
 In practice, these guidelines are not hard to follow. Critically,
 they protect the freedom of the RTEMS source code and that of end users
 to select the license and distribution terms they prefer for their
 RTEMS-based application.
+
+License restrictions
+--------------------
+
+* Apache License 2.0 in section 4 (b) requires modified files to carry
+  prominent notice about performed modification. In case you modify such
+  file and the notice is not there yet you are required to put notice
+  below at the top of the modified file. If the notice is already
+  there you don't need to add it second time.
+  The notice should look:
+
+  .. code-block:: c
+
+     /*
+      * The file was modified by RTEMS contributors.
+      */
+
+ .. warning:: Do not import any project or files covered by the Apache
+              License 2.0 into the RTEMS project source tree without
+              discussing first with developers on the mailing list!
+              Handling of Apache License 2.0 projects is a bit
+              sensitive manner and RTEMS project is not prepared to
+              handle one kind of those projects yet. E.g. the projects
+              with NOTICE file present in the source tree.
