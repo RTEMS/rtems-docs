@@ -25,7 +25,7 @@ RTEMS sources
 
 * the `waf <https://waf.io/>`_ meta build system command line tool,
 
-* a `wscript <https://git.rtems.org/rtems/tree/wcript>`_ file used by ``waf``,
+* a `wscript <https://git.rtems.org/rtems/tree/wscript>`_ file used by ``waf``,
   and
 
 * a
