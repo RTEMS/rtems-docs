@@ -869,6 +869,9 @@ stlib
     The attribute value shall be a list. Each list element shall be a
     :ref:`SpecTypeBuildLinkStaticLibraryDirective`.
 
+target
+    The attribute value shall be a :ref:`SpecTypeBuildTarget`.
+
 use-after
     The attribute value shall be a list. Each list element shall be a
     :ref:`SpecTypeBuildUseAfterDirective`.
@@ -3679,6 +3682,8 @@ This type is used by the following types:
 * :ref:`SpecTypeBuildConfigurationHeaderItemType`
 
 * :ref:`SpecTypeBuildLibraryItemType`
+
+* :ref:`SpecTypeBuildScriptItemType`
 
 * :ref:`SpecTypeBuildStartFileItemType`
 
