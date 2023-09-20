@@ -108,7 +108,7 @@ annotation are then textually substituted in, to produce a segment of test code.
 Specifying Refinement
 ---------------------
 
-Using the terminology of the RTEMS Test Framework Section (in this document)
+Using the terminology of the :ref:`RTEMSTestFramework`
 each Promela model is converted into a set of Test Cases, 
 one for each complete scenario produced by test generation. 
 There are a number of template files, tailored for each model, 
@@ -504,23 +504,25 @@ They appear in the YAML file under the ``source`` key:
 Performing Tests
 ^^^^^^^^^^^^^^^^
 
-At this point, ``waf`` can be invoked in the main ``rtems`` directory as normal,
+At this point build RTEMS as normal. e.g., with ``waf``,
 and the tests will get built.
 The executable will be found in the designated build directory,
 *(e.g.):*
 
  ``rtems/build/sparc/gr740/testsuites/validation/ts-model-0.exe``
 
- This can be run using the ``sis`` simulator, 
+ This can be run using the simulator, 
  or directly on the hardware, if available.
 
- Both building the code and running on the simulator is also automated.
+ Both building the code and running on the simulator is also automated
+ (see :ref:`FormalToolSetup`).
 
 Traceability
 ------------
 
-Traceability between requirements, specifications, designs, code, and tests, is
-a key part of any qualification/certification effort. The test generation methodology developed here supports this in two ways, when refining an
+Traceability between requirements, specifications, designs, code, and tests, 
+is a key part of any qualification/certification effort. The test generation
+methodology developed here supports this in two ways, when refining an
 annotation:
 
 1.  If the annotation is for a declaration of some sort, the annotation itself

@@ -50,7 +50,7 @@ Formal specification languages can be divided into the following groups:
 
   Finite State-based: e.g., finite-state machines (FSMs), SDL, Statecharts
 
-    These a variant of model-based specification, with the added constraint
+    These are a variant of model-based specification, with the added constraint
     that the number of states are bounded. Desired model properties are often
     expressed using some form of temporal logic. The languages used to describe
     these are often more constrained than in more general model-based
@@ -83,7 +83,7 @@ Formal specification languages can be divided into the following groups:
     describe formal models in their own terms and then apply their proof
     systems directly to those.
 
-  Model Checkers: SPIN, FDR
+  Model Checkers: e.g., SPIN, FDR
 
     Model checkers are tools that do exhaustive searches over models with a 
     finite number of states. These are most commonly used with the finite-state

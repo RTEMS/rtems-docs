@@ -36,7 +36,7 @@ behavior of the system, demonstrating the truth of each property.
   and do not alter the possible behaviors of the model in any way.
 
 With Promela, there are a number of different ways to do systematic
-negation. The precise approach adopted depends the nature of the models, and
+negation. The precise approach adopted depends on the nature of the models, and
 more details can be found 
 in the RTEMS Formal Models Guide Appendix in this document.
 

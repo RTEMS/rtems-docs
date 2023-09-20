@@ -9,7 +9,7 @@ Promela is a large language with many features,
 but only a subset is used here for test generation. 
 This is a short overview of that subset.
 The definitive documentation can be found at
-https://spinroot.com/spin/Man/promela.html .
+https://spinroot.com/spin/Man/promela.html.
 
 Promela Execution
 -----------------
