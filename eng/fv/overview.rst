@@ -32,6 +32,7 @@ Often it is quite difficult to get a useful formal model of real code. Some
 formal modelling approaches are capable of generating machine-readable
 :term:`scenarios` that describe possible correct behaviors of the system at the
 relevant level of abstraction. A refinement for these can be defined by
-using them to generate test code. This is the technique that is used here to
+using them to generate test code. 
+This is the technique that is used in :ref:`FormalVerifMethodology` to
 verify parts of RTEMS. Formal models are constructed based on requirements
 documentation, and are used as a basis for test generation.
