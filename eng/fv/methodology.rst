@@ -35,6 +35,12 @@ behavior of the system, demonstrating the truth of each property.
 
   It is very important that the negations only apply to stated properties,
   and do not alter the possible behaviors of the model in any way.
+  The behaviours of the model are determined by the control-flow constructs,
+  so any boolean-valued expression statements used in these, 
+  or used in sequential code to wait for some some condition, 
+  should not be altered. 
+  What can be altered are the expressions in ``assert()`` statements, 
+  and any LTL properties.
 
 With Promela, there are a number of different ways to do systematic
 negation. The precise approach adopted depends on the nature of the models, and
