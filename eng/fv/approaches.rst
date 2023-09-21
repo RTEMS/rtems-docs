@@ -72,8 +72,8 @@ Formal specification languages can be divided into the following groups:
 
   Most of the methods above start with formal specifications/models. Also 
   needed is a way to bridge the gap to actual code. The relationship between
-  specification and code is often referred to as a refinement 
-  (some prefer the term reification). Most model-based methods have refinement,
+  specification and code is often referred to as a :term:`refinement`
+  (some prefer the term :term:`reification`). Most model-based methods have refinement,
   with the concept baked in as a key part of the methodology.
 
   Theorem Provers: e.g., CoQ, HOL4, PVS, Isabelle/HOL
@@ -166,9 +166,8 @@ in such a way that tests can be generated using the SPIN model checker
 Promela is quite a low-level modelling language that makes it easy to get close
 to code level, and is specifically targeted to modelling software. It is one of
 the most widely used model-checkers, both in industry and education. It uses
-assertions, and linear-time temporal logic (LTL) to express properties of
-interest. It uses linear-time temporal logic (:term:`LTL`) to express properties
-of interest.
+assertions, and :term:`Linear Temporal Logic` (LTL) to express properties of
+interest.
 
 Given a Promela model that checks key properties successfully,
 tests can be generated for a property *P* by asking

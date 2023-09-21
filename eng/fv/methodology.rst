@@ -15,7 +15,8 @@ Construct a model that describes the desired properties (`P1`, ..., `PN`)
 and use the model-checker to verify those properties.
 
 Promela can specify properties using the ``assert()`` statement, to be
-true at the point where it gets executed, and can use Linear Temporal Logic
+true at the point where it gets executed, 
+and can use :term:`Linear Temporal Logic`
 (LTL) to specify more complex properties over execution sequences. SPIN will
 also check generic correctness properties such as deadlock and
 livelock freedom.
@@ -41,7 +42,7 @@ more details can be found
 in the RTEMS Formal Models Guide Appendix in this document.
 
 Map good behavior scenarios to tests
---------------------------------------
+------------------------------------
 
 Define a mapping from counter-example output to test code, 
 and use this in the process of constructing a test program.
