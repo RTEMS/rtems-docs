@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2022 Trinity College Dublin
 
+.. _Promela2CRefinement:
+
 Promela to C Refinement
 =======================
 

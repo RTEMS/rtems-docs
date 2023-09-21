@@ -2,6 +2,8 @@
 
 .. Copyright (C) 2022 Trinity College Dublin
 
+.. _PromelaModelling:
+
 Modelling with Promela
 ======================
 
