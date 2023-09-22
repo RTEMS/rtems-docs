@@ -513,10 +513,11 @@ The executable will be found in the designated build directory,
 
  ``rtems/build/sparc/gr740/testsuites/validation/ts-model-0.exe``
 
- This can be run using the simulator, 
- or directly on the hardware, if available.
+ This can be run using the RTEMS Tester 
+ (RTEMS User Manual, Host Tools, RTEMS Tester and Run).
+ 
 
- Both building the code and running on the simulator is also automated
+ Both building the code and running on the tester is also automated
  (see :ref:`FormalToolSetup`).
 
 Traceability

@@ -107,8 +107,6 @@ and each entry updated as follows:
 
     ``/.../formal/promela/src/spin2test.py``
 
-
-
 * rtems: 
     This should be the absolute path to your RTEMS source directory,
     with the terminating ``/``.
@@ -130,7 +128,10 @@ and each entry updated as follows:
     ``/.../rtems-central/modules/rsb/6/bin/`` 
   
 * simulator: 
-    This should be the absolute path to the ``sis`` simulator:
+    This should be the absolute path to the RTEMS Tester
+    (See Host Tools in the RTEMS User Manual)
+
+    It defaults at present to the ``sis`` simulator 
     
     ``/.../rtems-central/modules/rsb/6/bin/sparc-rtems6-sis``
   
@@ -160,7 +161,8 @@ and each entry updated as follows:
     This will contain ``ts-<testsuite>.exe`` (e.g. ``ts-model-0.exe``)
   
 * simulatorargs:
-    These are the command line arguments for the ``sis`` simulator.
+    These are the command line arguments for the RTEMS Tester.
+    It defaults at present to those for the ``sis`` simulator.
 
     ``-<bsp> -r s -m <cpus>``
 
