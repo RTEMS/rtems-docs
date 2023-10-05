@@ -844,6 +844,7 @@ The following architectures are supported:
  - Intel x86 (i386)
  - LM32
  - M68K
+ - MicroBlaze
  - MIPS
  - Moxie
  - PowerPC
