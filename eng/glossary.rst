@@ -63,6 +63,20 @@ Glossary
     ISVV
         This term is an acronym for Independent Software Verification and Validation.
 
+    Linear Temporal Logic
+        This is a logic that states properties about
+        (possibly infinite) sequences of states.
+
+    LTL
+        This term is an acronym for Linear Temporal Logic.
+
+    refinement
+        A *refinement* is a relationship between a specification
+        and its implementation as code.
+
+    reification
+        Another term used to denote :term:`refinement`.
+
     ReqIF
         This term is an acronym for
         `Requirements Interchange Format <https://www.omg.org/spec/ReqIF/About-ReqIF/>`_.
