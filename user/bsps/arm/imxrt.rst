@@ -198,10 +198,38 @@ Note that the SPI-pins on the evaluation board are shared with the SD card.
 Populate R278, R279, R280, R281 on the IMXRT1050-EVKB (Rev A) to use the SPI
 pins on the Arduino connector.
 
+By default, the native chip selects are used. If you want to use GPIOs as chip
+select instead, you can use the `cs-gpios` and `num-cs` attributes just like on
+a Linux SPI controller. A maximum of `IMXRT_LPSPI_MAX_CS` pins can be used.
+
+The hardware doesn't support selecting no native chip select during a transfer.
+Therefore one native chip select has to be reserved as a dummy if you want to be
+able to use GPIOs. The pin function for this chip select must not be configured
+on any pin. Dummy will be the first of the first four chip selects that is not a
+native one. Example configuration::
+
+  &lpspi4 {
+    status = "okay";
+    pinctrl-0 = <&my_pinctrl_lpspi4>;
+    cs-gpios = <0>, <0>, <&gpio1 1 0>, <0>, <&gpio11 5 1>;
+    num-cs = <5>;
+  }
+
+In this case, CS2 will be the dummy chip select and no pin must be configured
+with that function. CS0, CS1 and CS3 are just native chip selects and should be
+used via pin functions. GPIO1.1 is used as a high active CS and GPIO11.5 a low
+active one.
+
 Limitations:
 
 * Only a basic SPI driver is implemented. This is mostly a driver limitation and
   not a hardware one.
+* GPIO CS pins on i.MXRT10xx are not tested. The chip has a lot of errate so
+  they might not work.
+* Switching from one mode (CPOL/CPHA) to another one can lead to single wrong
+  edges on the CLK line if GPIO CS pins are involved. Make sure to stuff a dummy
+  transfer with `SPI_NO_CS` set if you use multiple modes together with a GPIO
+  CS.
 
 Network Interface Driver
 ------------------------
