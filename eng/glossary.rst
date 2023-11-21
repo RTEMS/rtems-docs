@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2022, 2023 Trinity College Dublin
 .. Copyright (C) 2017, 2019 embedded brains GmbH & Co. KG
 .. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
 
@@ -39,6 +40,10 @@ Glossary
         This term is an acronym for
         `Executable and Linkable Format <https://en.wikipedia.org/wiki/Executable_and_Linkable_Format>`_.
 
+    formal model
+        A model of a computing component (hardware or software) that has a
+        mathematically based :term:`semantics`.
+
     GCC
         This term is an acronym for `GNU Compiler Collection <https://gcc.gnu.org/>`_.
 
@@ -64,15 +69,15 @@ Glossary
         This term is an acronym for Independent Software Verification and Validation.
 
     Linear Temporal Logic
-        This is a logic that states properties about
-        (possibly infinite) sequences of states.
+        This is a logic that states properties about (possibly infinite) sequences of
+        states.
 
     LTL
-        This term is an acronym for Linear Temporal Logic.
+        This term is an acronym for :term:`Linear Temporal Logic`.
 
     refinement
-        A *refinement* is a relationship between a specification
-        and its implementation as code.
+        A *refinement* is a relationship between a specification and its
+        implementation as code.
 
     reification
         Another term used to denote :term:`refinement`.
@@ -83,6 +88,17 @@ Glossary
 
     RTEMS
         This term is an acronym for Real-Time Executive for Multiprocessor Systems.
+
+    scenario
+        In the context of formal verification, in a setting that involves many
+        concurrent tasks that interleave in arbitrary ways, a scenario describes a
+        single specific possible interleaving.  One interpretation of the behaviour
+        of a concurrent system is the set of all its scenarios.
+
+    semantics
+        This term refers to the meaning of text or utterances in some language.  In a
+        software engineering context these will be programming, modelling or
+        specification languages.
 
     software component
         This term is defined by ECSS-E-ST-40C 3.2.28 as a "part of a software

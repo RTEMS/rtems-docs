@@ -168,7 +168,7 @@ in such a way that tests can be generated using the SPIN model checker
 Promela is quite a low-level modelling language that makes it easy to get close
 to code level, and is specifically targeted to modelling software. It is one of
 the most widely used model-checkers, both in industry and education. It uses
-assertions, and :term:`Linear Temporal Logic` (LTL) to express properties of
+assertions, and :term:`Linear Temporal Logic` (:term:`LTL`) to express properties of
 interest.
 
 Given a Promela model that checks key properties successfully,

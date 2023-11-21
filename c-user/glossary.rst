@@ -1,5 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. Copyright (C) 2022, 2023 Trinity College Dublin
 .. Copyright (C) 2020 Richi Dubey (richidubey@gmail.com)
 .. Copyright (C) 2015, 2023 embedded brains GmbH & Co. KG
 .. Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
@@ -16,6 +17,9 @@ Glossary
     active
         A term used to describe an object which has been created by an
         application.
+
+    AMP
+        This term is an acronym for Asymmetric Multiprocessing.
 
     APA
         This term is an acronym for Arbitrary Processor Affinity.  APA schedulers
@@ -357,6 +361,10 @@ Glossary
         mathematically intensive situations.  It is typically viewed as a logical
         extension of the primary processor.
 
+    formal model
+        A model of a computing component (hardware or software) that has a
+        mathematically based :term:`semantics`.
+
     freed
         A resource that has been released by the application to RTEMS.
 
@@ -385,6 +393,18 @@ Glossary
 
     GNU
         This term is an acronym for `GNU's Not Unix <https://www.gnu.org/>`_.
+
+    GPL
+        This term is an acronym for
+        `GNU General Public License <https://www.gnu.org/licenses>`__.
+
+    GPLv2
+        This term is an acronym for
+        `GNU General Public License Version 2 <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>`__.
+
+    GPLv3
+        This term is an acronym for
+        `GNU General Public License Version 3 <https://www.gnu.org/licenses/gpl-3.0.html>`__.
 
     GR712RC
         The
@@ -511,6 +531,10 @@ Glossary
     LIFO
         This term is an acronym for :term:`Last In First Out`.
 
+    Linear Temporal Logic
+        This is a logic that states properties about (possibly infinite) sequences of
+        states.
+
     list
         A data structure which allows for dynamic addition and removal of
         entries.  It is not statically limited to a particular size.
@@ -519,6 +543,12 @@ Glossary
         A data representation scheme in which the bytes composing a numeric value
         are arranged such that the least significant byte is at the lowest
         address.
+
+    LLVM
+        This term is an acronym for
+        `Low Level Virtual Machine <https://www.llvm.org>`__.
+        The LLVM Project is a collection of modular and reusable compiler and
+        toolchain technologies.
 
     local
         An object which was created with the LOCAL attribute and is accessible
@@ -540,6 +570,9 @@ Glossary
     lower priority
         A :term:`task` ``L`` has a lower :term:`priority` than a task ``H``, if
         task ``L`` is less important than task ``H``.
+
+    LTL
+        This term is an acronym for :term:`Linear Temporal Logic`.
 
     major number
         The index of a device driver in the Device Driver Table.
@@ -631,6 +664,9 @@ Glossary
         A component used in computer systems to enhance performance in
         mathematically intensive situations.  It is typically viewed as a logical
         extension of the primary processor.
+
+    OBC
+        This term is an acronym for On-Board Computer.
 
     object
         In this document, this term is used to refer collectively to tasks,
@@ -806,6 +842,10 @@ Glossary
         A term used to describe routines which do not modify themselves or global
         variables.
 
+    refinement
+        A *refinement* is a relationship between a specification and its
+        implementation as code.
+
     region
         An RTEMS object which is used to allocate and deallocate variable size
         blocks of memory from a dynamically specified area of memory.
@@ -817,6 +857,9 @@ Glossary
     registers
         Registers are locations physically located within a component, typically
         used for device control or general purpose storage.
+
+    reification
+        Another term used to denote :term:`refinement`.
 
     remote
         Any object that does not reside on the local node.
@@ -865,6 +908,12 @@ Glossary
         The state of a rate monotonic timer while it is being used to delineate a
         period.  The timer exits this state by either expiring or being canceled.
 
+    scenario
+        In the context of formal verification, in a setting that involves many
+        concurrent tasks that interleave in arbitrary ways, a scenario describes a
+        single specific possible interleaving.  One interpretation of the behaviour
+        of a concurrent system is the set of all its scenarios.
+
     schedulable
         A set of tasks which can be guaranteed to meet their deadlines based upon
         a specific scheduling algorithm.
@@ -900,6 +949,11 @@ Glossary
 
     segments
         Variable sized memory blocks allocated from a region.
+
+    semantics
+        This term refers to the meaning of text or utterances in some language.  In a
+        software engineering context these will be programming, modelling or
+        specification languages.
 
     semaphore
         An RTEMS object which is used to synchronize tasks and provide mutually
