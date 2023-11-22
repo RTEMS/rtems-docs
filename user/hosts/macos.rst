@@ -7,17 +7,104 @@
 Apple macOS
 ===========
 
-Apple's macOS is fully supported. You need to download and install a recent
-version of the Apple developer application Xcode. Xocde is available in the App
-Store. Make sure you install the Command Line Tools add on available for
-download within Xcode and once installed open a Terminal shell and enter the
-command ``cc`` and accept the license agreement.
+Apple's macOS is supported. You need to download and install a recent
+version of the Apple developer application Xcode. Xcode is available
+in the App Store. Make sure you install the Command Line Tools add on
+available for download within Xcode and once installed open a Terminal
+shell and enter the command ``cc`` and accept the license agreement.
 
-The normal prefix when working on macOS as a user is under your home directory.
-Prefixes of :file:`$HOME/development/rtems` or :file:`$HOME/rtems` are
-suitable.
+The normal prefix when working on macOS as a user is under your home
+directory.  Prefixes of :file:`$HOME/development/rtems` or
+:file:`$HOME/rtems` are suitable.
 
 :ref:`QuickStartPrefixes` details using Prefixes to manage the installation.
+
+Homebrew and Macports should work but are not tested by the project as
+they are rolling releases making it difficult to reproduce any
+problems there may be. We recommend reaching out to those projects for
+support.
+
+Intel and Apple silicon is supported.
+
+Python
+~~~~~~
+
+Building GDB requires the installation of Python's development
+libraries. Building GDB includes the Python runtime header
+``Python.h`` and linking to the Python runtime libraries. The RSB
+detects a valid header and libraries before starting a GDB
+build.
+
+It is recommended you run the RSB in a Python virtual environment. A
+virtual environment manages paths for you, provides a ``python``
+executable mapped to the version the virtual environment is built with
+and a command to find the appropiate runtime header and library files
+GDB needs. Virtual environments make it easier to update Python to a
+newer version if this is needed.
+
+Apple has removed support for Python's development libraries from
+recent versions of MacOS as users can manage Python using the
+installer packages provided by the Python project.
+
+To install:
+
+#. Download a Python installer for MacOS from https://www.python.org/.
+
+#. Run the installer and install Python.
+
+#. Open a terminal and update your shell profile using the command
+   Python provides. For Python 3.12 the command is:
+
+   .. code-block:: shell
+
+      /Applications/Python\ 3.12/Update\ Shell\ Profile.command
+
+   Check with:
+
+   .. code-block:: shell
+
+      % type python3.12
+      python3.12 is /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12
+
+#. Create a virtual environment:
+
+   .. code-block:: shell
+
+      mkdir $HOME/development/rtems
+      cd $HOME/development/rtems
+      python3.12 -m venv py3.12
+
+   Activate the virtual environment:
+
+   .. code-block:: shell
+
+      . $HOME/development/rtems/py3.12/bin/activate
+
+   You are now ready to the build the tools within the virtual
+   environment.
+
+.. _Sonoma:
+
+Sonoma
+~~~~~~
+
+The RSB is supported on Sonoma and Applie silicon.
+
+.. _Ventura:
+
+Ventura
+~~~~~~~
+
+The RSB is supported on Ventura and Intel silicon.
+
+.. _Monterey:
+
+Monterey
+~~~~~~~~
+
+The RSB is supported on Ventura and Intel silicon.
+
+.. _Catalina:
 
 Catalina
 ~~~~~~~~
@@ -29,6 +116,8 @@ also
 `Xcode 11 Release Notes <https://developer.apple.com/documentation/xcode_release_notes/xcode_11_release_notes>`_.
 Due to the deprecated Python 2.7 support, we recommend to install and use the
 `latest Python 3 release from python.org <https://www.python.org/downloads/mac-osx/>`_.
+
+.. _Sierra:
 
 Sierra
 ~~~~~~
