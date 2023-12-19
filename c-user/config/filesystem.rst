@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+.. Copyright (C) 1988, 2023 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -918,6 +918,41 @@ based on the configured block size:
 
 The value of the configuration option shall be equal to 16, 32, 64, 128, 256,
 or 512.
+
+.. Generated from spec:/acfg/if/jffs2-delayed-write-task-priority
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY
+
+.. _CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY:
+
+CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY
+-------------------------------------------
+
+.. rubric:: CONSTANT:
+
+``CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY``
+
+.. rubric:: OPTION TYPE:
+
+This configuration option is an integer define.
+
+.. rubric:: DEFAULT VALUE:
+
+The default value is 15.
+
+.. rubric:: DESCRIPTION:
+
+The value of this configuration option defines the JFFS2 delayed write task priority.
+
+.. rubric:: CONSTRAINTS:
+
+The value of the configuration option shall be a valid Classic API task
+priority.  The set of valid task priorities depends on the scheduler
+configuration.
 
 .. Generated from spec:/acfg/if/use-devfs-as-base-filesystem
 
