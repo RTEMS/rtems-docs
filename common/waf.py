@@ -16,11 +16,9 @@ from waflib.Build import BuildContext
 import latex
 import conf
 
-# Sphinx >= 6 are currently broken. 
 # If you do not want to check for a maximum version, set it to None.
 sphinx_min_version = (1, 3)
-sphinx_max_version = (5, 9)
-#sphinx_max_version = None
+sphinx_max_version = None
 
 def version_cmdline(ctx):
     return '-Drelease="%s" -Dversion="%s" -Drtems_major="%s" ' \
