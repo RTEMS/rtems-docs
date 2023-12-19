@@ -48,19 +48,19 @@ BSP is configured with the following command -
 
 .. code-block:: none
 
-  ../rtems/configure --target=sparc-rtems5 --prefix=/development/rtems/5 \
+  ../rtems/configure --target=sparc-rtems@rtems-ver-major@ --prefix=/development/rtems/5 \
   --enable-networking --enable-tests --enable-rtemsbsp=erc32 --enable-cxx
 
 The next two commands are used to link the fileio executable.The `-B` option
 signifies the use of the complete path to the required directory or file. Write
-the full path instead of the path file: `sparc-rtems5/erc32/lib/` in the
+the full path instead of the path file: `sparc-rtems@rtems-ver-major@/erc32/lib/` in the
 following commands according to your installation. Also confirm the path of the
 fileio's executable and object files in the last line of the command according
 to your installation.
 
 .. code-block:: none
 
-  sparc-rtems5-gcc -Bsparc-rtems5/erc32/lib/ \
+  sparc-rtems@rtems-ver-major@-gcc -Bsparc-rtems@rtems-ver-major@/erc32/lib/ \
   -qrtems -mcpu=cypress -O2 -g -ffunction-sections \
   -fdata-sections -Wall -Wmissing-prototypes -Wimplicit-function-declaration \
   -Wstrict-prototypes -Wnested-externs -Wl,--gc-sections -mcpu=cypress \
@@ -97,10 +97,10 @@ The output from the above commands will be as follows:
 .. code-block:: none
 
   *** BEGIN OF TEST FILE I/O ***
-  *** TEST VERSION: 5.0.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8
+  *** TEST VERSION: @rtems-ver-major@.@rtems-ver-minor@.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8
   *** TEST STATE: USER_INPUT
   *** TEST BUILD: RTEMS_NETWORKING RTEMS_POSIX_API
-  *** TEST TOOLS: 7.3.0 20180125 (RTEMS 5, RSB a3a6c34c150a357e57769a26a460c475e188438f, Newlib 3.0.0)
+  *** TEST TOOLS: 7.3.0 20180125 (RTEMS @rtems-ver-major@, RSB a3a6c34c150a357e57769a26a460c475e188438f, Newlib 3.0.0)
   Press any key to start file I/O sample (20s remaining)
   Press any key to start file I/O sample (19s remaining)
   Press any key to start file I/O sample (18s remaining)
@@ -128,7 +128,7 @@ The output from the above commands will be as follows:
      starting shell
    =========================
 
-  Welcome to rtems-5.0.0 (SPARC/w/FPU/erc32)
+  Welcome to rtems-@rtems-ver-major@.@rtems-ver-minor@.0 (SPARC/w/FPU/erc32)
   COPYRIGHT (c) 1989-2008.
   On-Line Applications Research Corporation (OAR).
 

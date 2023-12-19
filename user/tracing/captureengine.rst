@@ -14,22 +14,22 @@ runtime and does not require RTEMS or your application to be rebuilt in order
 to use it.
 
 The Capture Engine's sample testcase for the `sparc/erc32` is available in
-build directory created when building RTEMS in the path
-file: `sparc-rtems5/c/erc32/testsuites/samples`. In order to access the capture
-testcase perform the following set of operations inside the RTEMS build
-directory.
+build directory created when building RTEMS in the path file:
+`sparc-rtems@rtems-ver-major@/c/erc32/testsuites/samples`. In order to access
+the capture testcase perform the following set of operations inside the RTEMS
+build directory.
 
 .. code-block:: none
 
-  $ cd /sparc-rtems5/c/erc32/testsuites/samples
-  $ sparc-rtems5-run ./capture.exe
+  $ cd /sparc-rtems@rtems-ver-major@/c/erc32/testsuites/samples
+  $ sparc-rtems@rtems-ver-major@-run ./capture.exe
 
 
   *** BEGIN OF TEST CAPTURE ENGINE ***
-  *** TEST VERSION: 5.0.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8
+  *** TEST VERSION: @rtems-ver-major@.@rtems-ver-minor@.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8
   *** TEST STATE: USER_INPUT
   *** TEST BUILD: RTEMS_NETWORKING RTEMS_POSIX_API
-  *** TEST TOOLS: 7.3.0 20180125 (RTEMS 5, RSB a3a6c34c150a357e57769a26a460c475e188438f, Newlib 3.0.0)
+  *** TEST TOOLS: 7.3.0 20180125 (RTEMS @rtems-ver-major@, RSB a3a6c34c150a357e57769a26a460c475e188438f, Newlib 3.0.0)
   Press any key to start capture engine (20s remaining)
   Press any key to start capture engine (19s remaining)
   Press any key to start capture engine (18s remaining)
@@ -101,10 +101,10 @@ number of context switches between tasks we are not interested in.
 .. code-block:: none
 
   *** BEGIN OF TEST CAPTURE ENGINE ***
-  *** TEST VERSION: 5.0.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8
+  *** TEST VERSION: @rtems-ver-major@.@rtems-ver-minor@.0.de9b7d712bf5da6593386fd4fbca0d5f8b8431d8
   *** TEST STATE: USER_INPUT
   *** TEST BUILD: RTEMS_NETWORKING RTEMS_POSIX_API
-  *** TEST TOOLS: 7.3.0 20180125 (RTEMS 5, RSB a3a6c34c150a357e57769a26a460c475e188438f, Newlib 3.0.0)
+  *** TEST TOOLS: 7.3.0 20180125 (RTEMS @rtems-ver-major@, RSB a3a6c34c150a357e57769a26a460c475e188438f, Newlib 3.0.0)
   Press any key to start capture engine (20s remaining)
   Press any key to start capture engine (19s remaining)
   Press any key to start capture engine (18s remaining)

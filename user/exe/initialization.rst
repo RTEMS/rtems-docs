@@ -83,13 +83,12 @@ initialization is performed before multitasking is started.
 
 The RTEMS Tool ``rtems-exeinfo`` can provide some detail about the registered
 handlers. The following shows the initialization handlers for the Hello World
-sample application in the RTEMS kernel's testsuite::
+sample application in the RTEMS kernel's testsuite:
 
 .. code-block:: none
 
  $ rtems-exeinfo --init arm-rtems@rtems-ver-major@/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
  RTEMS Executable Info @rtems-ver-major@.5416cfa39dd6
- $ rtems-exeinfo --init arm-rtems@rtems-ver-major@/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
  exe: arm-rtems@rtems-ver-major@/c/xilinx_zynq_zedboard/testsuites/samples/hello.exe
 
  Compilation:
