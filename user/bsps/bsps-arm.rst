@@ -31,3 +31,4 @@ arm (ARM)
   arm/xen.rst
   arm/xilinx-zynq.rst
   arm/xilinx-zynqmp.rst
+  arm/xilinx-zynqmp-rpu.rst
