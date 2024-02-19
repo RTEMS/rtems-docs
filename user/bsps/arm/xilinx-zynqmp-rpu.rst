@@ -31,8 +31,18 @@ Boot on ZynqMP Hardware
 
 On the ZynqMP RPU, RTEMS can be started by Cortes-R5 u-boot, Cortex-A53 u-boot,
 via JTAG, or directly as part of BOOT.bin. For quick turnaround during testing,
-it is recommended to use Cortex-R5 u-boot to avoid repeated BOOT.bin generation
-and to ensure that the Cortex-R5 FSBL is run.
+it is recommended to use Cortex-A53 u-boot to avoid repeated BOOT.bin
+generation since the provided Cortex-R5 u-boot is highly limited and has no
+network or MMC/SD access.
+
+Note that if the RPU image is started by the Cortex-A53 u-boot, the BSP
+configuration must be updated to move ZYNQMP_RPU_RAM_INT_0_ORIGIN and
+ZYNQMP_RPU_RAM_INT_1_ORIGIN into DDR since the TCMs are not directly available
+to the Cortex-A53 cores at their Cortex-R5 internal addresses. Alternatively,
+those sections could be copied to the TCMs using their global addresses, but
+this must be done using additional commands within u-boot. If this is not taken
+into account, the Cortex-R5 CPU will fail to boot correctly since execution
+will jump into uninitialized TCM.
 
 Hardware Boot Image Generation
 ------------------------------
