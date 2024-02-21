@@ -122,8 +122,28 @@ create a specific python environment using `pip`.
 
 Similarly, npm packages can be installed into a users $HOME directory.
 
+Versions
+~~~~~~~~
+
+  Sphinx                        7.2.6
+  sphinx-rtd-theme              2.0.0
+  sphinxcontrib-applehelp       1.0.7
+  sphinxcontrib-bibtex          2.6.1
+  sphinxcontrib-devhelp         1.0.5
+  sphinxcontrib-htmlhelp        2.0.4
+  sphinxcontrib-jquery          4.1
+  sphinxcontrib-jsmath          1.0.1
+  sphinxcontrib-qthelp          1.0.6
+  sphinxcontrib-serializinghtml 1.1.9
+
+
 Python Virtual Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The project recommends virtual environments for building RTEMS
+documentation using Sphinx. A virtual envionment lets you install and
+maintain a Sphinx build environment without installing and depending
+on system wide packages.
 
 Create a directory to house the virtual environment, create the environment,
 and then activate it. This example assumes Python3 and the `venv` module:
@@ -142,8 +162,11 @@ Either way, the prompt will now change. You can install Sphinx with:
 
   $ pip install sphinx
   $ pip install sphinxcontrib-bibtex
+  $ pip install sphinxcontrib-jquery
+  $ pip install sphinx-rtd-theme
 
-When you have finished you enter `deactivate`.
+When you have finished using sphinx and buildind documentation you
+enter `deactivate`.
 
 NPM Per User Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,6 +189,8 @@ does not provide a suitable package:
 
   $ pip install -U --user sphinx
   $ pip install --user sphinxcontrib-bibtex
+  $ pip install --user sphinxcontrib-jquery
+  $ pip install --user sphinx-rtd-theme
 
 On some hosts, this may complain that a newer version of pip is available.
 If so, then upgrade pip into your personal area.
@@ -209,6 +234,8 @@ Install Sphinx and any needed extensions:
 
  $ pip install sphinx
  $ pip install sphinxcontrib-bibtex
+ $ pip install sphinxcontrib-jquery
+ $ pip install sphinx-rtd-theme
 
 FreeBSD
 ~~~~~~~
@@ -217,7 +244,7 @@ PDF Quality: production
 
 Sphinx:
 
-  # pkg install py27-sphinx
+  Use a virtual environment and pip.
 
 PDF:
 

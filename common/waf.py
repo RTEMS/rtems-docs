@@ -205,6 +205,34 @@ def check_sphinx_extension(ctx, extension):
         ctx.fatal('The configuration failed')
     ctx.end_msg('found')
 
+def check_sphinx_theme(ctx, theme):
+    def run_sphinx(bld):
+        rst_node = bld.srcnode.make_node('testbuild/contents.rst')
+        rst_node.parent.mkdir()
+        rst_node.write('.. COMMENT test sphinx' + os.linesep)
+        bib_node = bld.srcnode.make_node('testbuild/refs.bib')
+        bib_node.write(os.linesep)
+        conf_node = bld.srcnode.make_node('testbuild/conf.py')
+        conf_node.write(os.linesep.join(["master_doc='contents'",
+                                         "bibtex_bibfiles = ['refs.bib']"]))
+        bld(rule = bld.kw['rule'], source = rst_node)
+
+    ctx.start_msg("Checking for '%s'" % (theme))
+    try:
+        theme__ = theme.replace('-', '_')
+        bld_rule = '${BIN_SPHINX_BUILD} -b html -c . '
+        bld_rule += '-D html_theme=%s ' % (theme__)
+        bld_rule += '-D "html_them_path=[%s.get_html_theme_path()]" ' % (theme__)
+        bld_rule += '. out'
+        ctx.run_build(fragment = 'xx',
+                      rule = bld_rule,
+                      build_fun = run_sphinx,
+                      env = ctx.env)
+    except ctx.errors.ConfigurationError:
+        ctx.end_msg('not found (see README.txt)', 'RED')
+        ctx.fatal('The configuration failed')
+    ctx.end_msg('found')
+
 def cmd_configure(ctx):
     check_sphinx = not ctx.env.BIN_SPHINX_BUILD
     if check_sphinx:
@@ -240,6 +268,7 @@ def cmd_configure(ctx):
         #
         # Check extensions.
         #
+        check_sphinx_theme(ctx, 'sphinx-rtd-theme')
         check_sphinx_extension(ctx, 'sphinx.ext.autodoc')
         check_sphinx_extension(ctx, 'sphinx.ext.coverage')
         check_sphinx_extension(ctx, 'sphinx.ext.doctest')
@@ -247,6 +276,7 @@ def cmd_configure(ctx):
         check_sphinx_extension(ctx, 'sphinx.ext.intersphinx')
         check_sphinx_extension(ctx, 'sphinx.ext.mathjax')
         check_sphinx_extension(ctx, 'sphinxcontrib.bibtex')
+        check_sphinx_extension(ctx, 'sphinxcontrib.jquery')
 
     #
     # Optional builds.
