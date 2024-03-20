@@ -1017,7 +1017,7 @@ configured, see :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
+* The value of the configuration option shall be greater than or equal to one.
 
 * The value of the configuration option shall be less than or equal to
   `UINT32_MAX <https://en.cppreference.com/w/c/types/integer>`_.
