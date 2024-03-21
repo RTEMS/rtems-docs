@@ -380,6 +380,9 @@ The interrupt stacks are covered by the stack checker, see
 :ref:`CONFIGURE_STACK_CHECKER_ENABLED`.  However, using a too small interrupt stack
 size may still result in undefined behaviour.
 
+The interrupt stack size may depend on the interrupt priority settings, see
+also :ref:`InterfaceRtemsInterruptSetPriority`.
+
 In releases before RTEMS 5.1 the default value was
 :ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE` instead of
 :c:macro:`CPU_STACK_MINIMUM_SIZE`.

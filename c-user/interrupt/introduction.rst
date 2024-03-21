@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2008, 2022 embedded brains GmbH & Co. KG
+.. Copyright (C) 2008, 2024 embedded brains GmbH & Co. KG
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -58,6 +58,8 @@ Introduction
 .. spec:/rtems/intr/if/raise
 .. spec:/rtems/intr/if/raise-on
 .. spec:/rtems/intr/if/clear
+.. spec:/rtems/intr/if/get-priority
+.. spec:/rtems/intr/if/set-priority
 .. spec:/rtems/intr/if/get-affinity
 .. spec:/rtems/intr/if/set-affinity
 .. spec:/rtems/intr/if/get-attributes
@@ -172,6 +174,12 @@ from an ISR. The directives provided by the Interrupt Manager are:
   processor.
 
 * :ref:`InterfaceRtemsInterruptClear` - Clears the interrupt vector.
+
+* :ref:`InterfaceRtemsInterruptGetPriority` - Gets the priority of the
+  interrupt vector.
+
+* :ref:`InterfaceRtemsInterruptSetPriority` - Sets the priority of the
+  interrupt vector.
 
 * :ref:`InterfaceRtemsInterruptGetAffinity` - Gets the processor affinity set
   of the interrupt vector.

@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2008, 2021 embedded brains GmbH & Co. KG
+.. Copyright (C) 2008, 2024 embedded brains GmbH & Co. KG
 .. Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -571,6 +571,23 @@ trigger_signal
     indicate an interrupt request from a peripheral.  Interrupts may be also
     triggered by messages, :ref:`InterfaceRtemsInterruptRaise`, or
     :ref:`InterfaceRtemsInterruptRaiseOn`.
+
+can_get_priority
+    This member is true, if the priority of the interrupt vector can be
+    obtained by :ref:`InterfaceRtemsInterruptGetPriority`, otherwise it is
+    false.
+
+can_set_priority
+    This member is true, if the priority of the interrupt vector can be set by
+    :ref:`InterfaceRtemsInterruptSetPriority`, otherwise it is false.
+
+maximum_priority
+    This member represents the maximum priority value of the interrupt vector.
+    By convention, the minimum priority value is zero.  Lower priority values
+    shall be associated with a higher importance.  The higher the priority
+    value, the less important is the service of the associated interrupt
+    vector.  Where nested interrupts are supported, interrupts with a lower
+    priority value may preempt other interrupts having a higher priority value.
 
 .. rubric:: DESCRIPTION:
 

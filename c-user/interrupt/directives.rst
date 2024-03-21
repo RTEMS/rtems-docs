@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2008, 2022 embedded brains GmbH & Co. KG
+.. Copyright (C) 2008, 2024 embedded brains GmbH & Co. KG
 .. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -1992,6 +1992,203 @@ Clears the interrupt vector.
 
 The :ref:`InterfaceRtemsInterruptGetAttributes` directive may be used to check
 if an interrupt vector can be cleared.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/intr/if/get-priority
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_interrupt_get_priority()
+
+.. _InterfaceRtemsInterruptGetPriority:
+
+rtems_interrupt_get_priority()
+------------------------------
+
+Gets the priority of the interrupt vector.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_interrupt_get_priority(
+      rtems_vector_number vector,
+      uint32_t           *priority
+    );
+
+.. rubric:: PARAMETERS:
+
+``vector``
+    This parameter is the interrupt vector number.
+
+``priority``
+    This parameter is the pointer to an `uint32_t
+    <https://en.cppreference.com/w/c/types/integer>`_ object.  When the
+    directive call is successful, the priority of the interrupt vector will be
+    stored in this object.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ADDRESS`
+    The ``priority`` parameter was `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no interrupt vector associated with the number specified by
+    ``vector``.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    There is no priority associated with the interrupt vector.
+
+.. rubric:: NOTES:
+
+The :ref:`InterfaceRtemsInterruptSetPriority` directive may be used to set the
+priority associated with an interrupt vector.
+
+.. rubric:: CONSTRAINTS:
+
+The following constraints apply to this directive:
+
+* The directive may be called from within interrupt context.
+
+* The directive may be called from within device driver initialization context.
+
+* The directive may be called from within task context.
+
+* The directive will not cause the calling task to be preempted.
+
+.. Generated from spec:/rtems/intr/if/set-priority
+
+.. raw:: latex
+
+    \clearpage
+
+.. index:: rtems_interrupt_set_priority()
+
+.. _InterfaceRtemsInterruptSetPriority:
+
+rtems_interrupt_set_priority()
+------------------------------
+
+Sets the priority of the interrupt vector.
+
+.. rubric:: CALLING SEQUENCE:
+
+.. code-block:: c
+
+    rtems_status_code rtems_interrupt_set_priority(
+      rtems_vector_number vector,
+      uint32_t            priority
+    );
+
+.. rubric:: PARAMETERS:
+
+``vector``
+    This parameter is the interrupt vector number.
+
+``priority``
+    This parameter is the new priority for the interrupt vector.
+
+.. rubric:: DESCRIPTION:
+
+This directive sets the priority of the interrupt specified by ``vector`` to
+the priority specified by ``priority``.
+
+For processor-specific interrupts, the priority of the interrupt specific to a
+processor executing the directive call will be set.
+
+.. rubric:: RETURN VALUES:
+
+:c:macro:`RTEMS_SUCCESSFUL`
+    The requested operation was successful.
+
+:c:macro:`RTEMS_INVALID_ID`
+    There was no interrupt vector associated with the number specified by
+    ``vector``.
+
+:c:macro:`RTEMS_INVALID_PRIORITY`
+    The priority specified by ``priority`` was not a valid new priority for the
+    interrupt vector.
+
+:c:macro:`RTEMS_UNSATISFIED`
+    The request to set the priority of the interrupt vector has not been
+    satisfied.
+
+.. rubric:: NOTES:
+
+The :ref:`InterfaceRtemsInterruptGetPriority` directive may be used to get the
+priority associated with an interrupt vector.
+
+The interrupt prioritization support depends on the interrupt controller of the
+:term:`target`.  It is strongly recommended to read the relevant hardware
+documentation.  What happens when the priority of a pending or active interrupt
+is changed, depends on the interrupt controller.  In general, you should set
+the interrupt priority of an interrupt vector before a handler is installed.
+On some interrupt controllers, setting the priority to the maximum value
+(lowest importance) effectively disables the interrupt.
+
+On some architectures, a range of interrupt priority values may be not disabled
+by the interrupt disable directives such as
+:ref:`InterfaceRtemsInterruptDisable` and
+:ref:`InterfaceRtemsInterruptLocalDisable`.  These interrupts are called
+non-maskable interrupts. Handlers of non-maskable interrupts shall not use
+operating system services. In addition, non-maskable interrupts may be not
+installable through :ref:`InterfaceRtemsInterruptEntryInstall` or
+:ref:`InterfaceRtemsInterruptHandlerInstall`, and may require
+architecture-specific prologue and epilogue code.
+
+The interrupt priority settings affect the maximum nesting depth while
+servicing interrupts.  The interrupt stack size calculation needs to take this
+into account, see also :ref:`CONFIGURE_INTERRUPT_STACK_SIZE`.
+
+For the ARM Generic Interrupt Controller (GIC), an 8-bit priority value is
+supported.  The granularity of the priority levels depends on the interrupt
+controller configuration.  Some low-order bits of a priority value may be
+read-as-zero (RAZ) and writes are ignored (WI).  Where group 0 (FIQ) and group
+1 (IRQ) interrupts are used, it is recommended to use the lower half of the
+supported priority value range for the group 0 interrupts and the upper half
+for group 1 interrupts.  This ensures that group 1 interrupts cannot preempt
+group 0 interrupts.
+
+For the Armv7-M Nested Vector Interrupt Controller (NVIC), an 8-bit priority
+value is supported.  The granularity of the priority levels depends on the
+interrupt controller configuration.  Some lower bits of a priority value may be
+read-as-zero (RAZ) and writes are ignored (WI).  Interrupts with a priority
+value less than 128 are not disabled by the RTEMS interrupt disable directives.
+Handlers of such interrupts shall not use operating system services.
+
+For the RISC-V Platform-Level Interrupt Controller (PLIC), all priority values
+from 0 up to and including the 0xffffffff are supported since the priority for
+the PLIC is defined by a write-any-read-legal (WARL) register. Please note that
+for this directive in contrast to the PLIC, a higher priority value is
+associated with a lower importance.  The maximum priority value (mapped to the
+value 0 for the PLIC) is reserved to mean "never interrupt" and effectively
+disables the interrupt.
+
+For the QorIQ Multicore Programmable Interrupt Controller (MPIC), a 4-bit
+priority value is supported.  Please note that for this directive in contrast
+to the MPIC, a higher priority value is associated with a lower importance. The
+maximum priority value of 15 (mapped to the value 0 for the MPIC) inhibits
+signalling of this interrupt.
+
+Consult the *RTEMS CPU Architecture Supplement* and the :term:`BSP`
+documentation in the *RTEMS User Manual* for further information.
 
 .. rubric:: CONSTRAINTS:
 
