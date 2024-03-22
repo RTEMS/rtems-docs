@@ -139,6 +139,9 @@ Simple Timecounter Variant
 
 For an example see the `ERC32 clock driver
 <https://git.rtems.org/rtems/tree/bsps/sparc/erc32/clock/ckinit.c>`_.
+The argument parameter of ``Clock_driver_timecounter_tick( arg )`` is the
+argument used to install the clock interrupt handler.  Device drivers may use
+this argument to access their control state.
 
 .. code-block:: c
 
@@ -165,9 +168,9 @@ For an example see the `ERC32 clock driver
       );
     }
 
-    static void some_tc_tick( void )
+    static void some_tc_tick( rtems_timecounter_simple *tc )
     {
-      rtems_timecounter_simple_downcounter_tick( &some_tc, some_tc_get );
+      rtems_timecounter_simple_downcounter_tick( tc, some_tc_get );
     }
 
     static void some_support_initialize_hardware( void )
@@ -193,8 +196,8 @@ For an example see the `ERC32 clock driver
 
     #define Clock_driver_support_initialize_hardware() \
       some_support_initialize_hardware()
-    #define Clock_driver_timecounter_tick() \
-      some_tc_tick()
+    #define Clock_driver_timecounter_tick( arg ) \
+      some_tc_tick( arg )
 
     #include "../../../shared/dev/clock/clockimpl.h"
 
@@ -224,14 +227,19 @@ Install Clock Tick Interrupt Service Routine
 ============================================
 
 The clock driver may provide a function to install the clock tick interrupt
-service routine via ``Clock_driver_support_install_isr()``.  The clock tick
-interrupt service routine is passed as the one and only parameter to this
-macro.  The default implementation will do nothing.
+service routine via ``Clock_driver_support_install_isr( isr )``.  The clock
+tick interrupt service routine is passed as the one and only parameter to this
+macro.  The default implementation will do nothing.  The argument parameter (in
+the code below ``&some_instance``) for the installed interrupt handler is
+available in the ``Clock_driver_support_at_tick( arg )`` and
+``Clock_driver_support_initialize_hardware( arg )`` customization macros.
 
 .. code-block:: c
 
     #include <bsp/irq.h>
     #include <bsp/fatal.h>
+
+    static some_control some_instance;
 
     static void some_support_install_isr( rtems_interrupt_handler isr )
     {
@@ -241,7 +249,7 @@ macro.  The default implementation will do nothing.
         "Clock",
         RTEMS_INTERRUPT_UNIQUE,
         isr,
-        NULL
+        &some_instance
       );
       if ( sc != RTEMS_SUCCESSFUL ) {
         bsp_fatal( SOME_FATAL_IRQ_INSTALL );
@@ -257,17 +265,19 @@ Support At Tick
 ===============
 
 The hardware-specific support at tick is specified by
-``Clock_driver_support_at_tick()``.
+``Clock_driver_support_at_tick( arg )``.  The ``arg`` is the argument used to
+install the clock interrupt handler.  Device drivers may use this argument to
+access their control state.
 
 .. code-block:: c
 
-    static void some_support_at_tick( void )
+    static void some_support_at_tick( some_control *arg )
     {
       /* Clear interrupt */
     }
 
-    #define Clock_driver_support_at_tick() \
-      some_support_at_tick()
+    #define Clock_driver_support_at_tick( arg ) \
+      some_support_at_tick( arg )
 
     #include "../../../shared/dev/clock/clockimpl.h"
 
