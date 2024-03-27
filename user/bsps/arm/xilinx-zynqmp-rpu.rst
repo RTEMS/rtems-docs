@@ -35,14 +35,13 @@ it is recommended to use Cortex-A53 u-boot to avoid repeated BOOT.bin
 generation since the provided Cortex-R5 u-boot is highly limited and has no
 network or MMC/SD access.
 
-Note that if the RPU image is started by the Cortex-A53 u-boot, the BSP
-configuration must be updated to move ZYNQMP_RPU_RAM_INT_0_ORIGIN and
-ZYNQMP_RPU_RAM_INT_1_ORIGIN into DDR since the TCMs are not directly available
-to the Cortex-A53 cores at their Cortex-R5 internal addresses. Alternatively,
-those sections could be copied to the TCMs using their global addresses, but
-this must be done using additional commands within u-boot. If this is not taken
-into account, the Cortex-R5 CPU will fail to boot correctly since execution
-will jump into uninitialized TCM.
+Note that if the RPU image is started by the Cortex-A53 u-boot, the program
+sections located at ZYNQMP_RPU_RAM_INT_0_ORIGIN and ZYNQMP_RPU_RAM_INT_1_ORIGIN
+must be manually relocated from DDR to TCM since the TCMs are not directly
+available to the Cortex-A53 cores at their Cortex-R5 internal addresses. This
+can be accomplished by disabling dcache in u-boot and using u-boot's "cp"
+command. Once this is done, the program can be started at 0x0 by using u-boot's
+"cpu" command to first disable core 4 and then release it in split mode.
 
 Hardware Boot Image Generation
 ------------------------------
@@ -74,3 +73,23 @@ following command:
    -device loader,addr=0xff9a0000,data=0x80000218,data-len=4 \
    -hw-dtb /xlnx-qemu-devtrees-path/LATEST/SINGLE_ARCH/board-zynqmp-zcu102.dtb \
    -m 4096 -display none
+
+Debugging Executables on QEMU
+-----------------------------
+
+Debugging the RPU cores under QEMU presents unique challenges due to requiring
+the AArch64 QEMU to emulate the entire processing subsystem. Debugging requires
+a multi-arch GDB which can be created by adding "--enable-targets=all" to the
+normal GDB configure line and then building as normal.
+
+To attach to the RPU core once QEMU is started with "-s -S", The following steps
+are required:
+
+.. code-block:: shell
+
+  aarch64-rtems6-gdb
+  (gdb) tar ext :1234
+  (gdb) add-inferior
+  (gdb) inferior 2
+  (gdb) file example.exe
+  (gdb) attach 2
