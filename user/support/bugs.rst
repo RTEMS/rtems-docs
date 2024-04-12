@@ -3,7 +3,7 @@
 .. Copyright (C) 2019 embedded brains GmbH & Co. KG
 .. Copyright (C) 2019 Sebastian Huber
 .. Copyright (C) 2015 Chris Johns <chrisj@rtems.org>
-.. Copyright (C) 2012 Gedare Bloom
+.. Copyright (C) 2012, 2023 Gedare Bloom
 
 .. index:: bugs
 .. index:: reporting bugs
@@ -13,7 +13,8 @@ Report Bugs
 
 The RTEMS Project uses a ticket system to deal with bugs, organize enhancement
 requests, and manage small tasks and projects.  You can `submit a bug report
-<https://devel.rtems.org/newticket>`_ to the RTEMS Project ticket system.
+<https://gitlab.rtems.org/groups/rtems/-/issues>`_ to the RTEMS Project ticket
+system.
 Before you do this, please read the following information.  Good bug reports
 are more likely to get addressed quickly.  If you have patches not specifically
 related to bugs or existing tickets, please have a look at the
@@ -22,7 +23,8 @@ related to bugs or existing tickets, please have a look at the
 Search for Existing Bugs
 ========================
 
-You can `search for existing bugs <https://devel.rtems.org/query>`_ in the
+You can `search for existing bugs
+<https://gitlab.rtems.org/groups/rtems/-/issues>`_ in the
 RTEMS Project ticket system.  Please try to avoid duplicate bug reports and
 search for an existing bug before you report a new bug.  If you are unsure,
 please ask on the :r:list:`users` and we will help you sort it out.
@@ -51,9 +53,9 @@ behaviour or in the scope of other projects.
   Thus, when passing a NULL for attributes to pthread_create(), the application
   is not guaranteed any particular thread behaviour.
 
-* The defaults for all
-  `RTEMS Application Configuration <https://docs.rtems.org/branches/master/c-user/configuring_a_system.html>`_
-  parameters are intentionally small. Thus, it is common for RTEMS tasking and
+* The defaults for all RTEMS Application Configuration parameters are
+  intentionally small, see *Configuring a System* chapter of the *RTEMS Classic
+  API Guide*. Thus, it is common for RTEMS tasking and
   file related calls to return errors indicating out of resources until the
   configuration parameters are properly tuned for the application. For example,
   there are only three file descriptors available by default: stdin, stdout, and
@@ -75,26 +77,31 @@ behaviour or in the scope of other projects.
 * Bugs in releases or snapshots of RTEMS not issued by the RTEMS Project.
   Report them to whoever provided you with the release.
 
-Good Bug Reports
-================
+Creating Good Bug Reports
+=========================
 
-Please open the page to `submit a bug <https://devel.rtems.org/newticket>`_ to
+Please `open a page <https://gitlab.rtems.org/groups/rtems/-/issues>`_ to
 the RTEMS Project ticket system and follow the guidelines below to write a good
 bug report.
 
-* Provide a useful single line **Summary**.
+* Click the "Select project to create issue" button for the relevant repository.
 
-* Use `WikiFormatting <https://devel.rtems.org/wiki/WikiFormatting>`_ to
-  structure the information you provide.  It does help the readability of the
-  information you provide.
+* Click the *New Issue* button for the selected project repository.
+
+* Provide a useful single line **Summary** in the Title.
+
+* Fill out a description with target details, reproduction steps, build
+  environment, exact versions, etc. Use MarkDown to structure the information
+  you provide. It does help the readability of the information you provide.
 
 * Add a description of the expected behaviour.  The expected behaviour may be
   obvious to you, but maybe not to someone else reading the bug report.
 
 * Add a description of the actual undesired behaviour.
 
-* Name the :ref:`target hardware <Hardware>` (processor architecture, chip family
-  or model, and :ref:`BSP <BSPs>`) in the description.
+* Name the :ref:`target hardware <Hardware>` (processor architecture, chip
+  family or model, and :ref:`BSP <BSPs>`) in the description. In addition,
+  select the appropriate `arch::` label if the bug is hardware-specific.
 
 * Add the toolchain version used (GCC, Binutils, Newlib) to the description.
   Custom toolchain builds are discouraged.  To avoid problems caused by custom
@@ -124,8 +131,8 @@ bug report.
   In any case, make sure the above are included in the body of your bug report
   as plain text, even if needlessly duplicated as part of an archive.
 
-* Please try to reproduce the bug on the current Git master.  If it is not
-  reproducible on the Git master, you should figure out if the bug was already
+* Please try to reproduce the bug on the current Git main branch.  If it is not
+  reproducible on main, you should figure out if the bug was already
   fixed.  You can search the existing bugs once again, ask on the
   :r:list:`users`, or do a Git bisect to find a commit which fixed the bug.
 
@@ -133,44 +140,20 @@ bug report.
 
 * Write separate bug reports for different bugs.
 
-* Select a **Type** for the ticket.
+* Select the Milestone to which this bug applies. It should be the nearest
+  unreleased Milestone from the affected branch. Ask for help if you are not
+  sure.
 
-  * Use ``defect`` for a bug.
+* Select a set of appropriate **Labels** for the issue.
 
-  * Use ``enhancement`` for a feature request in the software or an addition to
-    the documentation.
-
-  * Note ``infra`` is used to report issues with the RTEMS servers at OSUOSL.
-
-* Select a **Version** for the ticket.  This should be the first RTEMS version
-  which is affected by this bug.  If this is the current Git master branch use
-  the version of the next release.  Please provide the exact version of RTEMS
-  in the description.  If you use an RTEMS release, then the release number.
-  If you use a Git clone, then the commit hash.  The commit hash should be
-  present in an RTEMS Project repository.  Commit hashes of private branches
-  are not interesting.
-
-* Select a **Component** for the ticket.  Use ``unspecified`` if you are unsure.
-
-* Select a **Severity** for the ticket.
-
-* The fields **Milestone** and **Priority** will be most likely set by an RTEMS
-  maintainer.
-
-* You can relate your new bug to existing bugs through the **Blocked by** and
-  **Blocking** fields.
-
-* If you have any external files, such as screenshots or examples, please
-  *attach* these as files to the ticket.  *Do not use external hosting* because
-  if you do use external hosting, then our historical record is broken when
-  those files are no longer available.
+* Select whether the issue is confidential. This is only expected in the
+  potential context of security bugs.
 
 * Some fields should only be set by the maintainers, as it is not always clear
   what they should be set to.  Feel free to make your own choices.
 
 When you have checked that your report meets the criteria for a good bug
-report, please click on the ``Create ticket`` button to submit it to the RTEMS
-Project ticket system.
+report, please submit it.
 
 If you fail to supply enough information for a bug report to be reproduced,
 someone will probably ask you to post additional information. In this case,
