@@ -21,7 +21,7 @@ to the RTEMS Project community.
     Home              https://www.rtems.org
     Documentation     https://docs.rtems.org
     Mailing Lists     https://lists.rtems.org
-    Bug Reporting     https://devel.rtems.org/wiki/Developer/Bug_Reporting
-    Git Repositories  https://git.rtems.org
-    Developers        https://devel.rtems.org
+    Bug Reporting     https://gitlab.rtems.org
+    Git Repositories  https://gitlab.rtems.org
+    Developers        https://gitlab.rtems.org
     ================  ====================================================
