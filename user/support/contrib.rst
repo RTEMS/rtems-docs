@@ -48,7 +48,7 @@ Preparing and Submitting Merge Requests
 
 The RTEMS Project uses Git for version control and uses Gitlab for managing
 changes. Contributions are made by creating a Merge Request (MR) on Gitlab. The
-`Gitlab documentation <https://docs.gitlab.com/ee/user/project/merge_requests/>`
+`Gitlab documentation <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
 comprehensively explains the concepts of using merge requests.
 
 .. _ChecklistForPatches:
@@ -56,7 +56,7 @@ comprehensively explains the concepts of using merge requests.
 Checklist for Merge Requests
 ============================
 
-Check the following items before you push commits to your merge requests:
+Check the following items before you publish your merge requests:
 
 * The author name of each commit is a full name of the author.
 
@@ -99,8 +99,11 @@ Check the following items before you push commits to your merge requests:
 Review Process
 ==============
 
-Merge requests sent to the RTEMS Gitlab undergo a
-:ref:`patch review process <PatchReviewProcess>`.
+Merge requests sent to the RTEMS Gitlab undergo a public review process. At
+least two approvals are required before a merge request can be pushed to the
+RTEMS repository. One of those approvals must be from a code owner, identified
+by the `CODEOWNERS` file and by sub-groups beneath `Approvers`.
+Any one who has requested approval permission can approve a merge request. 
 Once a patch series is approved for integration into the RTEMS code base it can
 be merged by anyone with approval rights or by the merge request submitter.
 Approvers are volunteering their time so be polite.  If you do not get a
@@ -109,15 +112,6 @@ send email to the :r:list:`devel`.
 It helps if you follow the :ref:`ChecklistForPatches`.
 An easy to review patch series which meets the quality standards of the RTEMS
 Project will be more likely to get integrated quickly.
-
-.. _PatchReviewProcess:
-
-.. figure:: ../../images/user/patch-review.*
-   :width: 70%
-   :alt: RTEMS Patch Review Process
-   :figclass: align-center
-
-   RTEMS Patch Review Process.
 
 Why Contribute?
 ===============
