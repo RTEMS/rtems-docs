@@ -48,8 +48,38 @@ Preparing and Submitting Merge Requests
 
 The RTEMS Project uses Git for version control and uses Gitlab for managing
 changes. Contributions are made by creating a Merge Request (MR) on Gitlab. The
-`Gitlab documentation <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
-comprehensively explains the concepts of using merge requests.
+`Gitlab merge request documentation
+<https://docs.gitlab.com/ee/user/project/merge_requests/>`_ comprehensively
+explains the concepts of using merge requests.  RTEMS will only accept changes
+via a Merge Request. Most merge requests should have one or more Issues
+associated with them, unless it is a simple, isolated change. Please do not use
+merge requests to introduce new code, concepts, styles or to change existing
+behaviours such as APIs or internal interfaces.  Please create an issue before
+you start the work so the community is aware of the changes coming.  The merge
+requests can then focus on the details of the implementation and approval does
+not need to be about approval of change at a functional level.
+
+We use project forks as the base of our workflow and outside of that there is
+no workflow we mandate.  What works for one task or work package may not work
+for another. Complex tasks may affect a number of our GitLab Projects with
+issues and merge requests in a number of projects. You may want to use an Epic
+to bring work together.
+
+With our GitLab instance, you fork a repo into your personal workspace and use
+that to manage your changes.  This means you need to keep your forked project
+up to date. See the `Gitlab forking workflow documentation
+<https://docs.gitlab.com/ee/user/project/merge_requests/authorization_for_merge_requests.html#forking-workflow>`
+for details. If you are part of a team working on a change you can `collaborate
+on merge requests
+<https://docs.gitlab.com/ee/user/project/merge_requests/allow_collaboration.html>`.
+GitLab enforces branch naming rules and provides `branch naming patterns
+<https://docs.gitlab.com/ee/user/project/repository/branches/index.html#prefix-branch-names-with-issue-numbers>`
+that simplifies code review and software change management.  You can `create
+merge requests from your fork
+<https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html#when-you-work-in-a-fork>`
+back to the upstream repository. We do not normally squash merge requests. A
+merge request with more than one commit should be buildable at each commit so a
+bisect of main does not break.
 
 .. _ChecklistForPatches:
 
@@ -101,9 +131,9 @@ Review Process
 
 Merge requests sent to the RTEMS Gitlab undergo a public review process. At
 least two approvals are required before a merge request can be pushed to the
-RTEMS repository. One of those approvals must be from a code owner, identified
+RTEMS repository. Both approvals must be from a code owner, identified
 by the `CODEOWNERS` file and by sub-groups beneath `Approvers`.
-Any one who has requested approval permission can approve a merge request. 
+Any one who has requested approval permission can approve a merge request.
 Once a patch series is approved for integration into the RTEMS code base it can
 be merged by anyone with approval rights or by the merge request submitter.
 Approvers are volunteering their time so be polite.  If you do not get a
