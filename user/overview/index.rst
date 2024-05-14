@@ -66,6 +66,8 @@ RTEMS provides the following basic feature set:
 
     - Python and MicroPython
 
+    - :ref:`Rust <Rust>`
+
 - Parallel languages
 
     - :ref:term:`EMB²`
