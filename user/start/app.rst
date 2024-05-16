@@ -24,7 +24,7 @@ it.
 
 Setup the application work space. Create a new Git repository, download
 the Waf build system, and the `RTEMS Waf
-<https://git.rtems.org/rtems_waf.git/tree/README>`_.
+<https://gitlab.rtems.org/rtems/tools/rtems-waf>`_.
 
 Create the application directory and change into it:
 
@@ -50,7 +50,7 @@ Add RTEMS Waf support as a Git sub-module and initialise it:
 
 .. code-block:: none
 
-    git submodule add git://git.rtems.org/rtems_waf.git rtems_waf
+    git submodule add ssh://git@gitlab.rtems.org:2222/rtems/tools/rtems-waf.git rtems_waf
 
 Create the application source files. Three files are created with an
 editor of your choice.
