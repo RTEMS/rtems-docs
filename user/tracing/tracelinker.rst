@@ -475,8 +475,7 @@ instrumented. The trace code generated is driven by the configuration INI files.
 Development
 ===========
 
-The Trace Linker is part of the RTEMS tools git repository available at :
-https://git.rtems.org/rtems-tools
+The Trace Linker is part of the `RTEMS tools git repository <https://gitlab.rtems.org/rtems/tools/rtems-tools>`_.
 The RTEMS tools project utilizes the waf build system. Use the following
 commands in the topmost build directory to build the tools project:
 
