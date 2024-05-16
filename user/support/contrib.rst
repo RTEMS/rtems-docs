@@ -126,22 +126,95 @@ Check the following items before you publish your merge requests:
 
 * Each patch does not introduce new test failures in existing tests.
 
+.. _PatchReviewProcess:
+
 Review Process
 ==============
 
 Merge requests sent to the RTEMS Gitlab undergo a public review process. At
 least two approvals are required before a merge request can be pushed to the
-RTEMS repository. Both approvals must be from a code owner, identified
+RTEMS repository. It helps if you follow the :ref:`ChecklistForPatches`.
+An easy to review patch series which meets the quality standards of the RTEMS
+Project will be more likely to get integrated quickly.
+
+The review process includes both objective and subjective feedback. You should
+reflect upon and consider all feedback before making or refusing changes. It
+is important to note that some feedback may be relevant at one point in time,
+but less relevant in the future. Also, what concerns one developer may not
+concern another. Just because you address all the feedback in one round of
+review does not mean your submission will be approved, as someone (even the
+same reviewer) may notice something that was not seen before. It is important
+to have patience, humility, and open-mindedness when engaging in open-source
+software review and approval processes. This is true for both contributors and
+reviewers.
+
+Reviews should be conducted primarily via the GitLab interface using the
+in-line commenting feature. Follow-up comments to the same line should be
+threaded, while new comments should be added to the specific, relevant line
+of modified code. Although high-level comments about the entire patch set are
+allowed, the most useful commments are those that are specifically targeted
+to problematic lines of code.
+
+.. _UpdatingMergeRequest:
+
+Updating a Merge Request
+========================
+
+As you make changes to your merge request through the review process, you will
+either be layering additional patches on top of your current patch set, or you
+will be rebasing your patch set. Either approach is acceptable, but remember
+that every patch in your patch set must pass continuous integration testing
+and adhere to the :ref:`ChecklistForPatches`. Most often, this means that you
+should rebase the patch set in your merge request to include the updates.
+
+There are several ways you can rebase the patch set. The following is one
+suggested workflow:
+
+# Before making changes, create a new local branch of your merge request. Make
+  your changes on this branch, so that you can always go back to your previous
+  state. Always keep your original branch until you have pushed a new, clean
+  version that supersedes it. Even then, you may want to keep your original
+  branch around in case something went wrong that you did not notice, such as
+  you accidentally removed a necessary commit while rebasing.
+
+# Make and commit changes locally until you are satisfied with your code
+
+# Interactively rebase your local branch using `git rebase --interactive`
+  to allow you to select the order of commits and to reword or fixup
+  commits. One good strategy here is to reorder and fixup commits in one round
+  and then reword them in a second round, so that you get your commits in
+  the right order and shape you want before finalizing the patch descriptions.
+
+# Force-push your local branch to your merge request branch on your fork. If
+  something goes wrong, you can revert back to your local version.
+
+Rebasing a Merge Request
+========================
+
+You can follow a similar process as :ref:`UpdatingMergeRequest` to rebase your
+merge request branch to an updated target branch, e.g., to pick up changes on
+`main`. In this case, after creating a local branch, use `git pull --rebase`
+stopping to fix merge conflicts along the way. If it gets out of hand, you can
+either `abort` the rebase or you can go back to your original branch.
+
+When merge conflicts are too much to handle doing a rebase, you may instead
+like to create a fresh branch from `main` and then use `git-cherry-pick` to
+pull commits from your merge request branch on to the head of `main`. If you
+are having too much trouble, ask for help.
+
+Approvers
+=========
+
+Merge Request approvals must be from a code owner, identified
 by the `CODEOWNERS` file and by sub-groups beneath `Approvers`.
 Any one who has requested approval permission can approve a merge request.
 Once a patch series is approved for integration into the RTEMS code base it can
-be merged by anyone with approval rights or by the merge request submitter.
+be merged by anyone with merge rights, which may include an automated bot.
+
 Approvers are volunteering their time so be polite.  If you do not get a
-response to a merge request after five work days, please send a reminder or
-send email to the :r:list:`devel`.
-It helps if you follow the :ref:`ChecklistForPatches`.
-An easy to review patch series which meets the quality standards of the RTEMS
-Project will be more likely to get integrated quickly.
+response to a merge request after five working days, please send a reminder
+on the merge request or send email to the :r:list:`devel`.
+
 
 Why Contribute?
 ===============
