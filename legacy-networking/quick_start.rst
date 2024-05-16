@@ -6,7 +6,8 @@ Quick Start
 This legacy networking is now a standalone repository and needs to be built
 separately.
 
-The repository can be found here: https://git.rtems.org/rtems-net-legacy/
+The repository can be found here:
+https://gitlab.rtems.org/rtems/pkg/rtems-net-legacy
 
 There's an RSB recipe to build rtems-net-legacy. Here's an example of building
 rtems-net-legacy using RSB for powerpc/beatnik BSP with rtems version 6:
