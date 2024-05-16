@@ -25,11 +25,11 @@ RTEMS sources
 
 * the `waf <https://waf.io/>`_ meta build system command line tool,
 
-* a `wscript <https://git.rtems.org/rtems/tree/wscript>`_ file used by ``waf``,
-  and
+* a `wscript <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/wscript>`_
+  file used by ``waf``, and
 
 * a
-  `set of build specification items <https://git.rtems.org/rtems/tree/spec/build>`_
+  `set of build specification items <https://gitlab.rtems.org/rtems/rtos/rtems/-/tree/main/spec/build>`_
   maintained by a text editor just like other source files.
 
 The build system is controlled by the user through
