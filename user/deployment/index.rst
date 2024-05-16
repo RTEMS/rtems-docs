@@ -70,7 +70,8 @@ Add the RSB as a sub-module:
 
 .. code-block:: none
 
-    $ git submodule add git://git.rtems.org/rtems-source-builder.git
+    $ git submodule add \
+      ssh://git@gitlab.rtems.org:2222/rtems/tools/rtems-source-builder.git
 
 Create a configuration directory:
 
