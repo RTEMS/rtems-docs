@@ -93,8 +93,7 @@ Examples:
 Release Scripts
 ----------------
 
-* The release scripts are held in the top level repository
-  https://git.rtems.org/rtems-release.git.
+* The release scripts are held in the `RTEMS Release repository <https://gitlab.rtems.org/rtems/rtos/rtems-release>`_.
 
 * The scripts are written for FreeBSD and can run on FreeBSD 10 through
   FreeBSD 12. No other host operating system is supported for the release
@@ -387,7 +386,7 @@ path on the RTEMS server.
        cd
        mkdir -p development/rtems/releases
        cd development/rtems/releases
-       git clone git://git.rtems.org/rtems-release.git rtems-release.git
+       git clone ssh://git@gitlab.rtems.org:2222/rtems/rtos/rtems-release.git
        cd rtems-release.git
        ./rtems-release-branch -p chrisj 5
 
