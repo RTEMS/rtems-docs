@@ -129,8 +129,8 @@ RTEMS libbsd
 ------------
 
 Instructions on how to obtain, compile and install RTEMS libbsd can be
-found in the ``README.rst`` of the ``rtems-libbsd`` GIT repository:
-``git://git.rtems.org/rtems-libbsd.git``.
+found in the ``README.rst`` of the ``rtems-libbsd``
+`GIT repository <https://gitlab.rtems.org/rtems/pkg/rtems-libbsd>`_.
 Make sure to compile and install libbsd for the correct RTEMS version
 (here ``6``).  The default build set (``--buildset=buildset/default.ini``)
 does suffice and as BSP ``--rtems-bsp=arm/xilinx_zynq_a9_qemu`` is
