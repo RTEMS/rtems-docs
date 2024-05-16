@@ -97,7 +97,7 @@ Check the following items before you publish your merge requests:
 
 * If you are the copyright holder of the entire patch content, then please
   contribute it under the
-  `BSD-2-Clause <https://git.rtems.org/rtems/tree/LICENSE.BSD-2-Clause>`_
+  `BSD-2-Clause <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.BSD-2-Clause?ref_type=heads>`_
   license.  For documentation use
   `CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`_.
 
@@ -156,7 +156,7 @@ to work effectively.
 
 Nobody likes to do a lot of work and find it was duplicated effort.
 So when you work on a major new feature, you should tell
-:r:list:`users` what you are working on, and give
+:r:list:`devel` what you are working on, and give
 occasional reports of how far you have come and how confident
 you are that you will finish the job. This way, other developers
 (if they are paying attention) will be aware which projects would
@@ -164,10 +164,8 @@ duplicate your effort, and can either join up with you, or at
 least avoid spending time on something that will be unnecessary
 because of your work. If, for whatever reason, you are not in a
 position to publicly discuss your work, please at least privately
-let an
-`RTEMS maintainer <https://git.rtems.org/rtems/tree/MAINTAINERS>`_
-know about it so they can look out for duplicated effort or possible
-collaborators.
+let other developers know about it so they can look out for duplicated effort
+or possible collaborators.
 
 You should also monitor the :r:list:`users` and :r:list:`devel`
 to see if someone else mentions working on a similar
