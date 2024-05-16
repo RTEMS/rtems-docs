@@ -67,7 +67,7 @@ Clone the RTEMS Source Builder (RSB) repository:
   $ cd
   $ mkdir -p development/rtems
   $ cd development/rtems
-  $ git clone git://git.rtems.org/rtems-source-builder.git rsb
+  $ git clone ssh://git@gitlab.rtems.org:2222/rtems/tools/rtems-source-builder.git rsb
   Cloning into 'rsb'...
   remote: Counting objects: 5837, done.
   remote: Compressing objects: 100% (2304/2304), done.
@@ -250,7 +250,7 @@ created. Change to that directory and get a copy of the RSB:
    ~
   $ cd /c/opt/rtems
    /c/opt/rtems
-  $ git clone git://git.rtems.org/rtems-source-builder.git rsb
+  $ git clone ssh://git@gitlab.rtems.org:2222/rtems/tools/rtems-source-builder.git rsb
   Cloning into 'rsb'...
   remote: Counting objects: 5716, done.
   remote: Compressing objects: 100% (2183/2183), done.
@@ -430,7 +430,7 @@ We currently build RTEMS from the git release branch for 4.11:
    /c/opt/rtems
   $ cd kernel
    /c/opt/rtems/kernel
-  $ git clone git://git.rtems.org/rtems.git rtems
+  $ git clone ssh://git@gitlab.rtems.org:2222/rtems/rtos/rtems.git rtems
   Cloning into 'rtems'...
   remote: Counting objects: 482766, done.
   remote: Compressing objects: 100% (88781/88781), done.
