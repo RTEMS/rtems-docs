@@ -145,4 +145,4 @@ Glossary
     Waf build system.  For more information see http://www.waf.io/
 
   YAFFS2
-    `Yet Another Flash File System version 2 <https://git.rtems.org/sebh/rtems-yaffs2.git>`_
+    `Yet Another Flash File System version 2 <https://gitlab.rtems.org/sebhub/rtems-yaffs2>`_
