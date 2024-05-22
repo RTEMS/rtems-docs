@@ -25,8 +25,7 @@ The following sources may be helpful to find a matching BSP and target:
 - ``./waf bsplist`` -- executed in an RTEMS git clone
 - ``source-builder/sb-set-builder --list-bsets`` -- executed in an
   RTEMS source builder git clone
-- `RTEMS Supported Architectures <https://devel.rtems.org/wiki/TBR/UserManual/SupportedCPUs>`_
-- `RTEMS Board Support Packages <https://devel.rtems.org/wiki/TBR/Website/Board_Support_Packages>`_
+- ``./rtems-bsps``  -- executed in an RTEMS git clone
 - ``rustc --print target-list``
 - ``rustc --target=riscv64gc-unknown-none-elf --print target-features``
 - ``rustc --target=riscv64gc-unknown-none-elf  --print target-cpus``
@@ -69,7 +68,7 @@ create the following ``Dockerfile``.
 
     cat >Dockerfile <<"EOF"
     # Dockerfile to build a container image to use Rust on top of RTEMS
-    FROM ubuntu:22.04
+    FROM ubuntu:24.04
     RUN apt-get update && \
         apt-get -y upgrade && \
         apt-get install -y \
@@ -96,7 +95,8 @@ create the following ``Dockerfile``.
                 -d "/home/ferris" --create-home "ferris" && \
         mkdir -p /opt/rtems && \
         chown ferris:users /opt/rtems && \
-        runuser -u ferris echo 'export PATH=/opt/rtems/6/bin:${PATH}' \
+        runuser -u ferris echo \
+                'export PATH=/opt/rtems/@rtems-ver-major@/bin:${PATH}' \
                 >>/home/ferris/.bashrc
     USER ferris
     WORKDIR /home/ferris
@@ -130,35 +130,36 @@ git repository:
 
 .. code-block:: shell
 
-    git clone git://git.rtems.org/rtems-source-builder.git rsb
+    git clone https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git rsb
 
 Next build the RTEMS tools. In this example, you need tools for
 *SPARC* and *RISC-V* architectures. The source builder installs them
-in the prefix directory ``/opt/rtems/6``. The directory ``/opt/rtems``
-must exist and the user must have read and write access.
+in the prefix directory ``/opt/rtems/@rtems-ver-major@``. The
+directory ``/opt/rtems`` must exist and the user must have read and
+write access.
 
 .. code-block:: shell
 
     cd rsb/rtems
-    ../source-builder/sb-set-builder --prefix /opt/rtems/6 \
-        6/rtems-sparc \
-        6/rtems-riscv
+    ../source-builder/sb-set-builder --prefix /opt/rtems/@rtems-ver-major@ \
+        @rtems-ver-major@/rtems-sparc \
+        @rtems-ver-major@/rtems-riscv
     cd ../..
 
-The tools will end up in ``/opt/rtems/6/bin`` and that directory
-should be part of the ``$PATH`` environment variable of the user. For
-example:
+The tools will end up in ``/opt/rtems/@rtems-ver-major@/bin`` and that
+directory should be part of the ``$PATH`` environment variable of the
+user. For example:
 
 .. code-block:: shell
 
-    export PATH=/opt/rtems/6/bin:${PATH}
+    export PATH=/opt/rtems/@rtems-ver-major@/bin:${PATH}
 
 The following commands should work:
 
 .. code-block:: shell
 
-    sparc-rtems6-gcc --version
-    riscv-rtems6-gcc --version
+    sparc-rtems@rtems-ver-major@-gcc --version
+    riscv-rtems@rtems-ver-major@-gcc --version
 
 .. _RustBareMetal_RTEMSBSP:
 
@@ -169,7 +170,7 @@ Clone the RTEMS git repository:
 
 .. code-block:: shell
 
-    git clone git://git.rtems.org/rtems.git
+    git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 
 Create a ``config.ini`` file for the two BSPs for which your are going
 to build RTEMS:
@@ -188,7 +189,7 @@ Build and install RTEMS:
 
 .. code-block:: shell
 
-    ./waf configure --prefix=/opt/rtems/6
+    ./waf configure --prefix=/opt/rtems/@rtems-ver-major@
     ./waf
     ./waf install
 
@@ -197,10 +198,14 @@ are working:
 
 .. code-block:: shell
 
-    sparc-rtems6-sis -leon3 -nouartrx -r m 4 build/sparc/leon3/testsuites/samples/hello.exe
-    sparc-rtems6-sis -leon3 -nouartrx -r m 4 build/sparc/leon3/testsuites/samples/ticker.exe
-    qemu-system-riscv64 -M virt -nographic -bios build/riscv/rv64imafdc/testsuites/samples/hello.exe
-    qemu-system-riscv64 -M virt -nographic -bios build/riscv/rv64imafdc/testsuites/samples/ticker.exe
+    sparc-rtems@rtems-ver-major@-sis -leon3 -nouartrx -r m 4 \
+        build/sparc/leon3/testsuites/samples/hello.exe
+    sparc-rtems@rtems-ver-major@-sis -leon3 -nouartrx -r m 4 \
+        build/sparc/leon3/testsuites/samples/ticker.exe
+    qemu-system-riscv64 -M virt -nographic -bios \
+        build/riscv/rv64imafdc/testsuites/samples/hello.exe
+    qemu-system-riscv64 -M virt -nographic -bios \
+        build/riscv/rv64imafdc/testsuites/samples/ticker.exe
 
 Finally, leave the git working tree:
 
@@ -267,7 +272,11 @@ Create a new Rust project which produces a static linked library:
 .. code-block:: shell
 
     cargo new --lib --vcs=none hello-rtems
-    sed -i '/^#/ a \\n[lib]\ncrate-type = ["staticlib"]' hello-rtems/Cargo.toml
+    cat >>hello-rtems/Cargo.toml <<"EOF"
+
+    [lib]
+    crate-type = ["staticlib"]
+    EOF
 
 Store the Rust application code:
 
@@ -370,8 +379,8 @@ Create a configuration file for Cargo:
     cat >hello-rtems/.cargo/config.toml <<"EOF"
     [target.riscv64gc-unknown-none-elf]
     # Either kind should work as a linker
-    linker = "riscv-rtems6-gcc"
-    # linker = "riscv-rtems6-clang"
+    linker = "riscv-rtems@rtems-ver-major@-gcc"
+    # linker = "riscv-rtems@rtems-ver-major@-clang"
     rustflags = [
         # See `rustc --target=riscv64gc-unknown-none-elf  --print target-cpus`
         "-Ctarget-cpu=generic-rv64",
@@ -389,8 +398,8 @@ Create a configuration file for Cargo:
     # Target available in rust nightly from 2023-07-18
     [target.sparc-unknown-none-elf]
     # Either kind should work as a linker
-    linker = "sparc-rtems6-gcc"
-    # linker = "sparc-rtems6-clang"
+    linker = "sparc-rtems@rtems-ver-major@-gcc"
+    # linker = "sparc-rtems@rtems-ver-major@-clang"
     rustflags = [
         # The target is LEON3
         "-Ctarget-cpu=leon3",
@@ -401,7 +410,7 @@ Create a configuration file for Cargo:
         # Rust needs libatomic.a to satisfy Rust's compiler-builtin library
         "-Clink-arg=-latomic",
     ]
-    runner = "sparc-rtems6-sis -leon3 -nouartrx -r m 4"
+    runner = "sparc-rtems@rtems-ver-major@-sis -leon3 -nouartrx -r m 4"
 
     [build]
     target = ["riscv64gc-unknown-none-elf", "sparc-unknown-none-elf"]
@@ -440,12 +449,13 @@ together into a single executable:
 
 .. code-block:: shell
 
-    export PKG_CONFIG_RISCV=/opt/rtems/6/lib/pkgconfig/riscv-rtems6-rv64imafdc.pc
+    export PKG_CONFIG_RISCV=/opt/rtems/@rtems-ver-major@/lib/pkgconfig/riscv-rtems@rtems-ver-major@-rv64imafdc.pc
 
-    riscv-rtems6-gcc -Wall -Wextra -O2 -g -fdata-sections -ffunction-sections \
+    riscv-rtems@rtems-ver-major@-gcc -Wall -Wextra -O2 -g \
+        -fdata-sections -ffunction-sections \
         $(pkg-config --cflags ${PKG_CONFIG_RISCV}) init.c -c -o init_riscv.o
 
-    riscv-rtems6-gcc init_riscv.o \
+    riscv-rtems@rtems-ver-major@-gcc init_riscv.o \
       -Lhello-rtems/target/riscv64gc-unknown-none-elf/debug \
       -lhello_rtems \
       -ohello_rtems_riscv.exe \
@@ -463,19 +473,21 @@ The emulator run should produce the following output:
 
 .. code-block:: none
 
-    RTEMS Testing - Run, 6.0.not_released
-     Command Line: /opt/rtems/6/bin/rtems-run --rtems-bsp=rv64imafdc hello_rtems_riscv.exe
-     Host: Linux 7319d7ad96ee 5.14.21-150500.228.g3903735-default #1 SMP PREEMPT_DYNAMIC Fri Jan 19 17:58:02 UTC 2024 (3903735) x86_64
-     Python: 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]
-    Host: Linux-5.14.21-150500.228.g3903735-default-x86_64-with-glibc2.35 (Linux 7319d7ad96ee 5.14.21-150500.228.g3903735-default #1 SMP PREEMPT_DYNAMIC Fri Jan 19 17:58:02 UTC 2024 (3903735) x86_64 x86_64)
+    RTEMS Testing - Run, @rtems-ver-major@.0.not_released
+     Command Line: /opt/rtems/@rtems-ver-major@/bin/rtems-run --rtems-bsp=rv64imafdc hello_rtems_riscv.exe
+     Host: Linux 0fa931a464ca 5.14.21-150500.55.62-default #1 SMP PREEMPT_DYNAMIC Tue May 7 11:55:30 UTC 2024 (66dfe0d) x86_64
+     Python: 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0]
+    Host: Linux-5.14.21-150500.55.62-default-x86_64-with-glibc2.39 (Linux 0fa931a464ca 5.14.21-150500.55.62-default #1 SMP PREEMPT_DYNAMIC Tue May 7 11:55:30 UTC 2024 (66dfe0d) x86_64 x86_64)
     Hello from Rust
 
     [ RTEMS shutdown ]
-    RTEMS version: 6.0.0.b1fdf753387189afe720d3fa1ac13af5fb9943c2
-    RTEMS tools: 13.2.0 20230727 (RTEMS 6, RSB 43d029e85817bd78dc564ffa265c18fccc428dc4, Newlib 3cacedb)
+    RTEMS version: @rtems-ver-major@.0.0.e74cea4172ee8564bef5f8500c5dd07512257d99
+    RTEMS tools: 13.2.1 20240502 (RTEMS @rtems-ver-major@, RSB 484c7a4095fe8cebba0320b58bf9477f2f40b1b6, Newlib 730703b)
     executing thread ID: 0x0a010001
     executing thread name: UI1
-    Run time     : 0:00:00.255214
+    Run time     : 0:00:00.254684
+
+Version numbers may be different in your output.
 
 .. _RustBareMetal_BuildSparc:
 
@@ -507,12 +519,13 @@ together into an executable:
 
 .. code-block:: shell
 
-    export PKG_CONFIG_SPARC=/opt/rtems/6/lib/pkgconfig/sparc-rtems6-leon3.pc
+    export PKG_CONFIG_SPARC=/opt/rtems/@rtems-ver-major@/lib/pkgconfig/sparc-rtems@rtems-ver-major@-leon3.pc
 
-    sparc-rtems6-gcc -Wall -Wextra -O2 -g -fdata-sections -ffunction-sections \
+    sparc-rtems@rtems-ver-major@-gcc -Wall -Wextra -O2 -g \
+        -fdata-sections -ffunction-sections \
         $(pkg-config --cflags ${PKG_CONFIG_SPARC}) init.c -c -o init_sparc.o
 
-    sparc-rtems6-gcc init_sparc.o \
+    sparc-rtems@rtems-ver-major@-gcc init_sparc.o \
         -qnolinkcmds -T linkcmds.leon3 \
         -Lhello-rtems/target/sparc-unknown-none-elf/debug \
         -lhello_rtems \
@@ -530,11 +543,11 @@ The emulator run should produce the following output:
 
 .. code-block:: none
 
-    RTEMS Testing - Run, 6.0.not_released
-     Command Line: /opt/rtems/6/bin/rtems-run --rtems-bsp=leon3-sis hello_rtems_sparc.exe
-     Host: Linux 7319d7ad96ee 5.14.21-150500.228.g3903735-default #1 SMP PREEMPT_DYNAMIC Fri Jan 19 17:58:02 UTC 2024 (3903735) x86_64
-     Python: 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]
-    Host: Linux-5.14.21-150500.228.g3903735-default-x86_64-with-glibc2.35 (Linux 7319d7ad96ee 5.14.21-150500.228.g3903735-default #1 SMP PREEMPT_DYNAMIC Fri Jan 19 17:58:02 UTC 2024 (3903735) x86_64 x86_64)
+    RTEMS Testing - Run, @rtems-ver-major@.0.not_released
+     Command Line: /opt/rtems/@rtems-ver-major@/bin/rtems-run --rtems-bsp=leon3-sis hello_rtems_sparc.exe
+     Host: Linux 0fa931a464ca 5.14.21-150500.55.62-default #1 SMP PREEMPT_DYNAMIC Tue May 7 11:55:30 UTC 2024 (66dfe0d) x86_64
+     Python: 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0]
+    Host: Linux-5.14.21-150500.55.62-default-x86_64-with-glibc2.39 (Linux 0fa931a464ca 5.14.21-150500.55.62-default #1 SMP PREEMPT_DYNAMIC Tue May 7 11:55:30 UTC 2024 (66dfe0d) x86_64 x86_64)
 
      SIS - SPARC/RISCV instruction simulator 2.30,  copyright Jiri Gaisler 2020
      Bug-reports to jiri@gaisler.se
@@ -544,5 +557,7 @@ The emulator run should produce the following output:
      Loaded hello_rtems_sparc.exe, entry 0x40000000
     Hello from Rust
     cpu 0 in error mode (tt = 0x80)
-       218400  40019fa0:  91d02000   ta  0x0
-    Run time     : 0:00:00.255628
+       217550  40018f60:  91d02000   ta  0x0
+    Run time     : 0:00:00.253700
+
+Version numbers may be different in your output.
