@@ -140,7 +140,7 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 ### Python Virtual Environment
 
 The project recommends virtual environments for building RTEMS
-documentation using Sphinx. A virtual envionment lets you install and
+documentation using Sphinx. A virtual environment lets you install and
 maintain a Sphinx build environment without installing and depending
 on system wide packages.
 
@@ -170,7 +170,7 @@ $ pip install sphinxcontrib-jquery
 $ pip install sphinx-rtd-theme
 ```
 
-When you have finished using sphinx and buildind documentation you
+When you have finished using sphinx and building documentation you
 enter `deactivate`.
 
 ## NPM Per User Environment
@@ -486,7 +486,7 @@ If you find there is an issue please post the developers list.
 
 ## Building
 
-To build enter in the top directory and configure with suirable optionns:
+To build enter in the top directory and configure with suitable options:
 ```bash
 waf configure [--pdf] [--singlehtml] [--prefix] \
                [--sphinx-options] \
