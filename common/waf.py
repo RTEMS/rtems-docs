@@ -144,7 +144,7 @@ def build_dir_setup(ctx, buildtype):
     doctrees = os.path.join(os.path.dirname(output_dir), 'doctrees', buildtype)
     return build_dir, output_node, output_dir, doctrees
 
-def pdf_resources(ctx, buildtype):
+def pdf_resources(ctx, buildtype, book):
     packages_base = ctx.path.parent.find_dir('common/latex')
     if packages_base is None:
         ctx.fatal('Latex package directory not found')
@@ -153,34 +153,38 @@ def pdf_resources(ctx, buildtype):
     fnode.mkdir()
     local_packages = latex.local_packages()
     targets = []
+    name = 'pdf-' + book,
     if local_packages is not None:
         srcs = [os.path.join(base, p) for p in local_packages]
         targets += [fnode.make_node(p) for p in local_packages]
         ctx(features = "subst",
+            name     = name,
             is_copy  = True,
             source   = srcs,
             target   = targets)
     targets += [fnode.make_node('rtemsextrafonts.sty')]
     ctx(features = "subst",
+        name     = name,
         is_copy  = True,
         source   = os.path.join(base, ctx.env.RTEMSEXTRAFONTS),
         target   = fnode.make_node('rtemsextrafonts.sty'))
-    return targets
+    return name
 
-def html_resources(ctx, buildtype):
+def html_resources(ctx, buildtype, book):
     resources = []
     for dir_name in ["_static", "_templates"]:
         files = ctx.path.parent.find_node("common").ant_glob("%s/*" % dir_name)
         fnode = ctx.path.get_bld().make_node(os.path.join(buildtype, dir_name))
         targets = [fnode.make_node(x.name) for x in files]
         resources += targets
+        name = 'html-' + book
         fnode.mkdir() # dirs
         ctx(features = "subst",
+            name = name,
             is_copy  = True,
             source   = files,
             target   = targets)
-        ctx.add_group()
-    return resources
+    return name
 
 def check_sphinx_extension(ctx, extension):
     def run_sphinx(bld):
@@ -367,15 +371,16 @@ def sources_source(ctx, sources):
     return [s for s in source if s not in exclude] + extra
 
 def doc_pdf(ctx, source_dir, conf_dir, sources):
+    book = os.path.basename(source_dir.abspath())
     buildtype = 'latex'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    resources = pdf_resources(ctx, buildtype)
+    resources = pdf_resources(ctx, buildtype, book)
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
         source       = sources_source(ctx, sources),
-        depends_on   = sources_extra(ctx, sources),
+        depends_on   = [resources] + sources_extra(ctx, sources),
         target       = ctx.path.find_or_declare("%s/%s.tex" % (buildtype,
                                                                ctx.path.name))
     )
@@ -387,7 +392,8 @@ def doc_pdf(ctx, source_dir, conf_dir, sources):
         type         = ctx.env.LATEX_CMD,
         source       = "%s/%s.tex" % (buildtype, ctx.path.name),
         prompt       = 0,
-        env          = env_latex
+        env          = env_latex,
+        depends_on   = resources
     )
     ctx.install_files('${PREFIX}',
                       '%s/%s.pdf' % (buildtype, ctx.path.name),
@@ -429,9 +435,10 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
         o.close()
         return r
 
+    book = os.path.basename(source_dir.abspath())
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    resources = html_resources(ctx, buildtype)
+    resources = html_resources(ctx, buildtype, book)
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
     ctx(
         rule         = rule,
@@ -450,9 +457,10 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
     )
 
 def doc_html(ctx, source_dir, conf_dir, sources):
+    book = os.path.basename(source_dir.abspath())
     buildtype = 'html'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
-    resources = html_resources(ctx, buildtype)
+    resources =  html_resources(ctx, buildtype, book)
     templates = os.path.join(str(ctx.path.get_bld()), buildtype, '_templates')
     configs = { 'templates_path': templates }
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir, configs)
