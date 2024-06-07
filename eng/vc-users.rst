@@ -13,8 +13,21 @@ Software Development (Git Users)
 Browse the Git Repository Online
 --------------------------------
 
-You can browse all available repositories online by
-accessing https://gitlab.rtems.org/rtems/
+You can browse repositories from `your home page <https://gitlab.rtems.org>`_
+or from https://gitlab.rtems.org/explore/projects to see a global view
+including all forks and most starred projects on the RTEMS gitlab instance.
+
+The sort order can be changed by the drop-down at the far right of the GUI. If
+you are logged in, your preferences should be saved so that the sort order is
+persistent.
+
+From your home page, you can also view
+`your starred repositories <https://gitlab.rtems.org/dashboard/projects/starred>`_.
+This is a handy page to use to navigate to the repositories that interest you
+the most. In addition, you can
+`change your preferences <https://gitlab.rtems.org/-/profile/preferences>`_
+for your Homepage to show the Starred Projects among other possibly useful
+landing pages.
 
 Using the Git Repository
 ------------------------
