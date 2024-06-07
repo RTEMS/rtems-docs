@@ -147,10 +147,10 @@ Test Configuration
 ^^^^^^^^^^^^^^^^^^
 
 Tests can be configured for each BSP using test configuration files. These
-files have the file extension ``.tcfg``. The testsuite supports global test
-configurations in the ``testsuite/testdata`` directory. Global test states are
-applied to all BSPs. BSPs can provide a test configuration that applies to
-just that BSP and these files can include subsets of test configurations.
+files exist under the ``spec`` directory and have the form ``tst*.yml``. Global
+default test states exist as part of the tests themselves and are applied to
+all BSPs. BSPs can provide a test configuration that applies to just that BSP
+and these files can include subsets of test configurations.
 
 The configuration supports:
 
@@ -163,22 +163,15 @@ The configuration supports:
 
 #. Specifing a BSP specific build configuration for a test.
 
-The test configuration file format is:
+The test configuration file format is described in the engineering manual.
+Expected test state is configured using ``set-test-state`` action blocks in
+build type YAML configuration files. These ``set-test-state`` action blocks
+contain one or more sub blocks that each describe a ``reason``, an expected
+``state``, and a list of ``tests`` to which the ``state`` and ``reason`` apply.
 
-.. code-block:: none
-
-  state: test
-
-where the ``state`` is state of the test and ``test`` is a comma separated
-list of tests the state applies too. The configuration format is:
-
-.. code-block:: none
-
-  flags: test: configuration
-
-where ``flags`` is the type of flags being set, the ``test`` is a comma
-separate list of regular expresions that match the test the configuration
-is applied too and the ``configuration`` is the string of flags.
+The ``reason`` is a text description of why the expected test state is being
+changed from the default and will typically include a ticket number that further
+documents the status of the listed tests.
 
 The ``state`` is one of:
 
@@ -204,56 +197,8 @@ The ``state`` is one of:
   The tests listed are benchmarks. Benchmarks are flagged and not left to
   run to completion because they may take too long.
 
-Specialized filtering using regular expressions is supported using:
-
-``rexclude``
-  The test matching the regular expression are excluded.
-
-``rinclude``
-  The tests matching the regular expression are included.
-
 By default all tests are included, specific excluded tests using the
-``exclude`` state are excluded and cannot be included again. If a test
-matching a ``rexclude`` regular it is excluded unless it is included using a
-``rinclude`` regular expression. For example to build only the ``hello``
-sample application you can:
-
-.. code-block:: none
-
-  rexclude .*
-  rinclude hello
-
-Test configuration flags can be applied to a range of tests using
-flags. Currently only ``cflags`` is support. Tests need to support the
-configuration for it to work. For example to configure a test:
-
-.. code-block:: none
-
-  cflags: tm.*: -DTEST_CONFIG=42
-  cflags: sp0[456]: -DA_SET_OF_TESTS=1
-
-Flags setting are joined together and passed to the compiler's command
-line. For example:
-
-.. code-block:: none
-
-  cflags: tm.*: -DTEST_CONFIG=42
-  cflags: tm03: -DTEST_TM03_CONFIG=1
-
-would result in the command line to the test ``tm03`` being:
-
-.. code-block:: none
-
-  -DTEST_CONFIG=42 -DTEST_TM03_CONFIG=1
-
-Specific flags can be set for one test in a group. For example to set
-a configuration for all timer tests and a special configuraiton for
-one test:
-
-.. code-block:: none
-
-  cflags: (?!tm02)tm.*: -DTEST_CONFIG=one
-  cflags: tm02: -DTEST_CONFIG=two
+``exclude`` state are excluded and cannot be included again.
 
 Test Builds
 -----------

@@ -33,11 +33,10 @@ the RTEMS kernel. The tests check functionality, provide coverage testing and
 make sure the kernel is operating as intended on your target system. The
 testsuite has support to make creating a test simple and uniform.
 
-The tests are built by adding ``--enable-tests`` to the RTEMS build
-configuration command line. There are over 600 tests and building them does
-extend the RTEMS kernel's build time and use more disk space but it worth
-building and running them. The RTEMS test executables have the ``.exe`` file
-extension.
+The tests are built by adding ``BUILD_TESTS = True`` to a BSP section in
+``config.ini``. There are over 600 tests and building them does extend the
+RTEMS kernel's build time and use more disk space but it worth building and
+running them. The RTEMS test executables have the ``.exe`` file extension.
 
 .. toctree::
 

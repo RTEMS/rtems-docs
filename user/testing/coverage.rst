@@ -29,12 +29,12 @@ following command is used:
 .. code-block:: none
 
     rtems-test \
-    --rtems-tools=$HOME/development/rtems/5 \
+    --rtems-tools=$HOME/development/rtems/6 \
     --log=coverage_analysis.log \
     --no-clean \
     --coverage \
     --rtems-bsp=leon3-sis-cov \
-    $HOME/development/rtems/kernel/leon3/sparc-rtems5/c/leon3/testsuites/samples/hello.exe
+    $HOME/development/rtems/kernel/leon3/sparc-rtems6/c/leon3/testsuites/samples/hello.exe
 
 The command will create the coverage report in the following tree structure:
 
