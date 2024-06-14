@@ -65,19 +65,23 @@ updated version of the Standard C Library. It deletes a few methods
 from the C99 version but adds many methods. A large portion of these
 methods are optional and not commonly implemented.
 
+Similarly, the C17 Programming Language standard defines an updated
+versoin of the Standard C Library.
+
 The Open Group FACE Consortium (https://www.opengroup.org/face)
 has defined four POSIX profiles targetting the avionics application
 domain. The FACE Technical Standard has been through multiple revisions
 and the POSIX API profiles are identical in Editions 1.0, 2.0, 2.1,
-and 2.1.1. In these editions, the profiles are as follows:
+and 2.1.1. In these editions, the profiles and the approximate number
+of APIs in each are as follows:
 
-* Security - 163 APIs, single process, no FILE *
+* Security - ~165 APIs, single process, no FILE *
 
-* Safety Basic - 246 APIs, single process, some FILE *
+* Safety Basic - ~250 APIs, single process, some FILE *
 
-* Safety Extended - 335 APIs, multi-process, more FILE *
+* Safety Extended - ~335 APIs, multi-process, more FILE *
 
-* General Purpose - 812 APIs, multi-process, much more
+* General Purpose - ~825 APIs, multi-process, much more
 
 FACE Technical Standard, Edition 3.0 adds the requirement for an
 operating system to support ``clock_nanosleep()`` in all profiles and
@@ -89,16 +93,21 @@ Software Communications Architecture (SCA) profiles. Additionally,
 some inconsistencies in the profiles were noticed and addressed while
 doing the alignment review.
 
+FACE Technical Standard, Edition 3.2 has a few minor changes
+to the profiles.
+
 RTEMS provides all of the methods required by the FACE Safety BASE profile
 and all of the methods in the Safety Extended profile which do not require
-multiple processes. Similarly, RTEMS provides most of the methods in the
-General Purpose profile which do not require multiple processes.
+multiple processes. Similarly, RTEMS provides nearly all of the methods in
+the General Purpose profile which do not require multiple processes. Support
+for the functions defined in fenv.h is processor architecture dependent.
 
-The SCA specification targets the requirements for software-defined
-radios. This specification was originally developed in support of the
-Joint Tactical Radio System (JTRS) program in conjunction with the Object
-Management Group (OMG). This standard is now maintained by the Wireless
-Innovation Forum with support from the U.S. Navy Joint Tactical Network
+The Software Communications Architecture (SCA) specification targets
+the requirements for software-defined radios. This specification was
+originally developed in support of the Joint Tactical Radio System (JTRS)
+program in conjunction with the Object Management Group (OMG). This
+standard is now maintained by the Wireless Innovation Forum with support
+from the U.S. Navy Joint Tactical Network
 Center (JTNC). Some URLs of interest:
 
 * SCA at Wireless Innovation Forum - http://www.wirelessinnovation.org/sca-based-standards-library

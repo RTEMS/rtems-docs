@@ -4,10 +4,14 @@ The .cvs file is exported from a spreadsheet used to track the status
 of RTEMS versus various POSIX related standards. The spreadsheet
 is maintained and managed outside the RTEMS Documentation. The
 spreadsheet is versioned but that is not reflected in the name
-"RTEMS-Standards-Compliance.csv". The version of the spreadsheet included
-currently is:
+"RTEMS-Standards-Compliance.csv". 
 
-v15 - 1 June 2021
+The version of the spreadsheet included currently is:
+
+v19 - 13 June 2024
+
+The spreadsheet MUST be exported as "MS-DOS CSV" to be processed by
+the Python script.
 
 This is the information in each column:
 
@@ -22,6 +26,7 @@ This is the information in each column:
   PSE54
   C99
   C11
+  C17
   FACE 2.1 Security
   FACE 2.1 Safety Base
   FACE 2.1 Safety Extended
@@ -34,6 +39,10 @@ This is the information in each column:
   FACE 3.1 Safety Base
   FACE 3.1 Safety Extended
   FACE 3.1 General Purpose
+  FACE 3.2 Security
+  FACE 3.2 Safety Base
+  FACE 3.2 Safety Extended
+  FACE 3.2 General Purpose
   SCA 2.2.2 AEP
   SCA 4.1 Ultra Lightweight AEP
   SCA 4.1 Lightweight AEP
