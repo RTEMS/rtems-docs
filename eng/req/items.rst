@@ -3342,6 +3342,11 @@ assert-gt
     The attribute value shall be an :ref:`SpecTypeIntegerOrString`. The action
     asserts that the action value is greater than the attribute value.
 
+assert-in-set
+    The attribute value shall be a list. Each list element shall be an
+    :ref:`SpecTypeIntegerOrString`. The action asserts that the action value is
+    in the attribute value set.
+
 assert-int16
     The attribute shall have no value. The action asserts that the action value
     is a valid signed 16-bit integer.
