@@ -66,7 +66,7 @@ from the C99 version but adds many methods. A large portion of these
 methods are optional and not commonly implemented.
 
 Similarly, the C17 Programming Language standard defines an updated
-versoin of the Standard C Library.
+version of the Standard C Library.
 
 The Open Group FACE Consortium (https://www.opengroup.org/face)
 has defined four POSIX profiles targetting the avionics application
