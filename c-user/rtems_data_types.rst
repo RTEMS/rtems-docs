@@ -406,6 +406,21 @@ rtems_fatal_extension
 
 Fatal extensions are invoked when the system should terminate.
 
+.. rubric:: PARAMETERS:
+
+``source``
+    This parameter is the system termination source.  The source indicates the
+    component which caused the system termination request, see
+    :ref:`InterfaceRtemsFatalSource`.  The system termination code may provide
+    additional information related to the system termination request.
+
+``always_set_to_false``
+    This parameter is a value equal to :c:macro:`false`.
+
+``code``
+    This parameter is the system termination code.  This value must be
+    interpreted with respect to the source.
+
 .. rubric:: NOTES:
 
 The fatal extensions are invoked in :term:`extension forward order`.
@@ -1489,6 +1504,11 @@ rtems_task_begin_extension
 
 Task begin extensions are invoked when a task begins execution.
 
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.
+
 .. rubric:: NOTES:
 
 The task begin extensions are invoked in :term:`extension forward order`.
@@ -1588,6 +1608,20 @@ rtems_task_create_extension
 
 Task create extensions are invoked when a task is created.
 
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.  When the idle
+    thread is created, the executing thread is equal to `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+``created``
+    This parameter is the :term:`TCB` of the created thread.
+
+.. rubric:: RETURN VALUES:
+
+Returns true, if the task create extension was successful, otherwise false.
+
 .. rubric:: NOTES:
 
 The task create extensions are invoked in :term:`extension forward order`.
@@ -1614,6 +1648,18 @@ rtems_task_delete_extension
 ---------------------------
 
 Task delete extensions are invoked when a task is deleted.
+
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.  If the idle
+    thread is created and one of the initial task create extension fails, then
+    the executing thread is equal to `NULL
+    <https://en.cppreference.com/w/c/types/NULL>`_.
+
+``created``
+    This parameter is the :term:`TCB` of the deleted thread.  The executing and
+    deleted arguments are never equal.
 
 .. rubric:: NOTES:
 
@@ -1648,6 +1694,11 @@ rtems_task_exitted_extension
 
 Task exitted extensions are invoked when a task entry returns.
 
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.
+
 .. rubric:: NOTES:
 
 The task exitted extensions are invoked in :term:`extension forward order`.
@@ -1674,6 +1725,15 @@ rtems_task_restart_extension
 
 Task restart extensions are invoked when a task restarts.
 
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.
+
+``restarted``
+    This parameter is the :term:`TCB` of the executing thread.  Yes, the
+    executing thread.
+
 .. rubric:: NOTES:
 
 The task restart extensions are invoked in :term:`extension forward order`.
@@ -1697,6 +1757,14 @@ rtems_task_start_extension
 Task start extensions are invoked when a task was made ready for the first
 time.
 
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.
+
+``started``
+    This parameter is the :term:`TCB` of the started thread.
+
 .. rubric:: NOTES:
 
 The task start extensions are invoked in :term:`extension forward order`.
@@ -1719,6 +1787,17 @@ rtems_task_switch_extension
 Task switch extensions are invoked when a thread switch from an executing
 thread to a heir thread takes place.
 
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.  In SMP
+    configurations, this is the previously executing thread also known as the
+    ancestor thread.
+
+``heir``
+    This parameter is the :term:`TCB` of the heir thread.  In SMP
+    configurations, this is the executing thread.
+
 .. rubric:: NOTES:
 
 The task switch extensions are invoked in :term:`extension forward order`.
@@ -1729,16 +1808,16 @@ the differences to correctly implement a task switch extension.
 
 Where the system was built with SMP support disabled, the task switch
 extensions are invoked before the context switch from the currently executing
-thread to the heir thread.  The executing is a pointer to the :term:`TCB` of
-the currently executing thread. The heir is a pointer to the TCB of the heir
-thread.  The context switch initiated through the multitasking start is not
-covered by the task switch extensions.
+thread to the heir thread.  The ``executing`` is a pointer to the :term:`TCB`
+of the currently executing thread. The ``heir`` is a pointer to the TCB of the
+heir thread.  The context switch initiated through the multitasking start is
+not covered by the task switch extensions.
 
 Where the system was built with SMP support enabled, the task switch extensions
-are invoked after the context switch to the heir thread.  The executing is a
-pointer to the TCB of the previously executing thread. Despite the name, this
-is not the currently executing thread. The heir is a pointer to the TCB of the
-newly executing thread. This is the currently executing thread. The context
+are invoked after the context switch to the heir thread.  The ``executing`` is
+a pointer to the TCB of the previously executing thread. Despite the name, this
+is not the currently executing thread. The ``heir`` is a pointer to the TCB of
+the newly executing thread. This is the currently executing thread. The context
 switches initiated through the multitasking start are covered by the task
 switch extensions. The reason for the differences to uniprocessor
 configurations is that the context switch may update the heir thread of the
@@ -1759,6 +1838,12 @@ rtems_task_terminate_extension
 ------------------------------
 
 Task terminate extensions are invoked when a task terminates.
+
+.. rubric:: PARAMETERS:
+
+``executing``
+    This parameter is the :term:`TCB` of the executing thread.  This is the
+    terminating thread.
 
 .. rubric:: NOTES:
 
