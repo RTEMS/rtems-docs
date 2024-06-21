@@ -437,3 +437,11 @@ INTERNAL_ERROR_IDLE_THREAD_STACK_TOO_SMALL (45)
     :ref:`CONFIGURE_IDLE_TASK_STACK_SIZE <CONFIGURE_IDLE_TASK_STACK_SIZE>`.
     This fatal error may occur during system initialization.  It is an
     application configuration error.
+
+INTERNAL_ERROR_CANNOT_DISABLE_DATA_CACHE (46)
+    This fatal error may be caused by :ref:`InterfaceRtemsCacheDisableData` if
+    the data cache cannot be disabled for a particular :term:`target` or
+    configuration.  The data cache may be necessary to provide :term:`atomic
+    operations`.  In SMP configurations, the data cache may be required to
+    ensure data coherency.  See the BSP documentation in the *RTEMS User
+    Manual* for more information.

@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2016 Pavel Pisa
-.. Copyright (C) 2014, 2021 embedded brains GmbH & Co. KG
+.. Copyright (C) 2014, 2024 embedded brains GmbH & Co. KG
 .. Copyright (C) 2000, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
@@ -552,6 +552,16 @@ Disables the data cache.
 .. code-block:: c
 
     void rtems_cache_disable_data( void );
+
+.. rubric:: NOTES:
+
+On some :term:`targets <target>` or configurations, calling this directive may
+case a fatal error with a fatal source of :ref:`INTERNAL_ERROR_CORE
+<FatalErrorSources>` and fatal code of
+:ref:`INTERNAL_ERROR_CANNOT_DISABLE_DATA_CACHE <internal_errors>`.   The data
+cache may be necessary to provide :term:`atomic operations`. In SMP
+configurations, the data cache may be required to ensure data coherency.  See
+the BSP documentation in the *RTEMS User Manual* for more information.
 
 .. rubric:: CONSTRAINTS:
 

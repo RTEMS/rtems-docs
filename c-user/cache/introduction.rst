@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2016 Pavel Pisa
-.. Copyright (C) 2014, 2021 embedded brains GmbH & Co. KG
+.. Copyright (C) 2014, 2024 embedded brains GmbH & Co. KG
 .. Copyright (C) 2000, 2008 On-Line Applications Research Corporation (OAR)
 
 .. This file is part of the RTEMS quality process and was automatically
