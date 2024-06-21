@@ -20,8 +20,10 @@ detected from various sources, for example
 
 - the executive (RTEMS),
 - support libraries,
-- user system code, and
-- user application code.
+- user system code,
+- user application code, and
+- processor interrupts and exceptions (data abort, instruction prefetch errors,
+  ECC errors, spurious interrupts, etc.).
 
 RTEMS automatically invokes the fatal error manager upon detection of an error
 it considers to be fatal.  Similarly, the user should invoke the fatal error
@@ -43,6 +45,63 @@ code in a known processor dependent place (generally either on the stack or in
 a register), and halt the processor.  The precise actions of the RTEMS fatal
 error are discussed in the Default Fatal Error Processing chapter of the
 Applications Supplement document for a specific target processor.
+
+.. index:: _Terminate
+
+.. _Terminate:
+
+System Termination Procedure
+----------------------------
+
+The :c:func:`_Terminate()` handler is invoked to terminate the system.  It is
+called by all services which determine that a system termination is required.
+For example, it is called by all higher level directives which announce a fatal
+error, see :ref:`AnnounceFatalError`.
+
+The first action of the system termination handler is to call the fatal
+extensions of the :term:`user extensions`.
+
+The fatal extensions are called with three parameters:
+
+- the :ref:`fatal source <FatalErrorSources>`,
+
+- a legacy parameter which is always set to :c:macro:`false`, and
+
+- an error code with a fatal source dependent content.
+
+The fatal extensions of the :term:`initial extension sets` are invoked first.
+For them, the following execution environment is required
+
+- a valid stack pointer and enough stack space,
+
+- a valid code memory, and
+
+- valid read-only data.
+
+In uniprocessor configurations, the read-write data (including ``.bss``
+segment) is not required.  In SMP configurations, however, the read-write data
+must have been initialized to determine the state of the other processors and
+request them to shut-down if necessary.  The board support package (BSP) may
+install an initial extension that performs a system reset.  See the BSP
+documentation in the *RTEMS User Manual* for more information how the system
+reset is done.  The BSP provided fatal extension can be disabled by the
+:ref:`CONFIGURE_DISABLE_BSP_SETTINGS` application configuration option.  It is
+recommended to provide an application-specific fatal extension using the
+:ref:`CONFIGURE_INITIAL_EXTENSIONS` application configuration option.  In
+certain error conditions, it may be unreliable to carry out the following steps
+of the termination procedure since the read-write data may be corrupt.  One of
+the fatal extensions of the initial extension set should reset the system to
+stop the system termination procedure.
+
+After the invoking the fatal extensions of the initial extension sets, the
+fatal extensions of the :term:`dynamic extension sets` are invoked.  For this
+procedure valid read-write data is required.
+
+Once all fatal extensions executed, the system state is set to
+:c:macro:`SYSTEM_STATE_TERMINATED`.
+
+The final step is to call the CPU port or BSP specific function
+:c:func:`_CPU_Fatal_halt()`.
 
 .. _FatalErrorSources:
 

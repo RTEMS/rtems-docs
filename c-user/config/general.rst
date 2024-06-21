@@ -325,6 +325,9 @@ The value of this configuration option is placed before the entries of
 :c:macro:`BSP_INITIAL_EXTENSION` and after the entries of all other
 initial user extensions.
 
+It is recommended that applications provide a fatal extension to customize
+the :ref:`Terminate`.
+
 .. rubric:: CONSTRAINTS:
 
 The value of the configuration option shall be a list of initializers for
