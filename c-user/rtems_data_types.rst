@@ -666,6 +666,31 @@ rtems_interrupt_lock
 
 This structure represents an ISR lock.
 
+.. rubric:: NOTES:
+
+Lock objects are only needed in some RTEMS build configurations, for example
+where the SMP support is enabled.  The
+:c:macro:`RTEMS_INTERRUPT_LOCK_NEEDS_OBJECT` constant can be used to determine
+whether a lock object is needed or not.  This may help to reduce the memory
+demands of an application.  All lock operations do not use the lock object
+parameter if lock objects are not needed.
+
+.. code-block:: c
+    :linenos:
+
+    #include <rtems.h>
+
+    #if RTEMS_INTERRUPT_LOCK_NEEDS_OBJECT
+    rtems_interrupt_lock lock = RTEMS_INTERRUPT_LOCK_INITIALIZER( "name" );
+    #endif
+
+    struct s {
+    #if RTEMS_INTERRUPT_LOCK_NEEDS_OBJECT
+      rtems_interrupt_lock lock;
+    #endif
+      int foobar;
+    };
+
 .. Generated from spec:/rtems/intr/if/lock-context
 
 .. index:: rtems_interrupt_lock_context
