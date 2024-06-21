@@ -31,6 +31,39 @@ feature set. The console driver supports the default Qemu emulated ARM PL011
 PrimeCell UART as well as the physical ARM PL011 PrimeCell UART in the
 raspberrypi hardware. Mini-uart is not supported.
 
+GPIO Driver
+-----------
+
+The GPIO of Raspberry pi 4B can be controlled by the following functions:
+``raspberrypi_gpio_set_function()``
+``raspberrypi_gpio_set_pin()``
+``raspberrypi_gpio_clear_pin()``
+``raspberrypi_gpio_set_pull()``
+
+.. code-block:: none
+  #include <bsp/rpi-gpio.h>
+
+  void gpio(void)
+  {
+    /* Define the operation of the general-purpose I/O pins. Each of the 58
+     * GPIO pins has at least two alternative functions as defined.
+     * The optional functions are GPIO_INPUT, GPIO_OUTPUT, GPIO_AF5, GPIO_AF4,
+     * GPIO_AF0, GPIO_AF1, GPIO_AF2, GPIO_AF3
+     */
+    raspberrypi_gpio_set_function(8, GPIO_AF0);
+
+    /* Control the actuation of the internal pull-up/down resistors. 
+     * The optional value are GPIO_PULL_NONE, GPIO_PULL_UP, GPIO_PULL_DOWN
+     */
+    raspberrypi_gpio_set_pull(8, GPIO_PULL_NONE);
+
+    /* Clear a GPIO pin. */
+    raspberrypi_gpio_clear_pin(8);
+    
+    /* Set a GPIO pin. */
+    raspberrypi_gpio_set_pin(8);
+  }
+
 Preparing to boot
 ------------------
 
