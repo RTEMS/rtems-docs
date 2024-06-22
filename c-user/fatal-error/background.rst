@@ -93,11 +93,11 @@ of the termination procedure since the read-write data may be corrupt.  One of
 the fatal extensions of the initial extension set should reset the system to
 stop the system termination procedure.
 
-After the invoking the fatal extensions of the initial extension sets, the
+After invoking the fatal extensions of the initial extension sets, the
 fatal extensions of the :term:`dynamic extension sets` are invoked.  For this
 procedure valid read-write data is required.
 
-Once all fatal extensions executed, the system state is set to
+Once all fatal extensions are executed, the system state is set to
 :c:macro:`SYSTEM_STATE_TERMINATED`.
 
 The final step is to call the CPU port or BSP specific function
