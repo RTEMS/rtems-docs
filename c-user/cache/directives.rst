@@ -556,7 +556,7 @@ Disables the data cache.
 .. rubric:: NOTES:
 
 On some :term:`targets <target>` or configurations, calling this directive may
-case a fatal error with a fatal source of :ref:`INTERNAL_ERROR_CORE
+cause a fatal error with a fatal source of :ref:`INTERNAL_ERROR_CORE
 <FatalErrorSources>` and fatal code of
 :ref:`INTERNAL_ERROR_CANNOT_DISABLE_DATA_CACHE <internal_errors>`.   The data
 cache may be necessary to provide :term:`atomic operations`. In SMP
