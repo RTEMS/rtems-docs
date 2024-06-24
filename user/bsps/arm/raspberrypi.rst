@@ -1,15 +1,15 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019 TBD
+.. Copyright (C) 2020 G S Niteesh <gsnb.gn@gmail.com>
 
 raspberrypi
 ===========
 
 The 'raspberrypi' BSP supports the single core models (Zero,  Zero W, A+, B+),
-and the 'raspberrypi2' BSP supports the Raspberry Pi 2, Raspberry Pi 3 A+, and Raspberry Pi 3.
-The Raspberry Pi 4 is not supported currently.
-The default bootloader on the Raspberry Pi which is used to boot Raspbian
-or other OS can be also used to boot RTEMS. U-boot can also be used.
+and the 'raspberrypi2' BSP supports the Raspberry Pi 2, Raspberry Pi 3 A+, and
+Raspberry Pi 3. The Raspberry Pi 4 is supported by the AArch64 Raspberry Pi BSP.
+The default bootloader on the Raspberry Pi which is used to boot Raspbian or
+other OS can be also used to boot RTEMS. U-boot can also be used.
 
 Setup SD card
 -------------
@@ -41,7 +41,7 @@ To create the kernel image:
 
 .. code-block:: none
 
-     $ xsarm-rtems@rtems-ver-major@-objcopy -Obinary hello.exe kernel.img
+     $ arm-rtems@rtems-ver-major@-objcopy -Obinary hello.exe kernel.img
 
 Copy the kernel image to the SD card.
 
@@ -56,7 +56,8 @@ Make sure you have these lines below, in your ``config.txt``.
 SPI Driver
 ----------
 
-SPI drivers are registered by the ``rpi_spi_init(bool bidirectional_mode)`` function.
+SPI drivers are registered by the ``rpi_spi_init(bool bidirectional_mode)``
+function.
 
 .. code-block:: none
 
@@ -97,7 +98,7 @@ and run this command.
 
 .. code-block:: none
 
-     $ ../source-builder/sb-set-builder --prefix=<TOOLCHAIN_DIR> devel/qemu4.bset
+     $ ../source-builder/sb-set-builder --prefix=<TOOLCHAIN_DIR> devel/qemu
 
 **Note**: Replace ``<SOURCE_BUILDER_DIR>`` and ``<TOOLCHAIN_DIR>`` with the
 correct path of the directories. For example, if you used quick-start section
