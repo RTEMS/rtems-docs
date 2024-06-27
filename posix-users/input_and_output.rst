@@ -839,18 +839,34 @@ aio_read - Asynchronous Read
 
 **STATUS CODES:**
 
+If the request is successfully enqueued, zero is returned.
+On error, this routine returns -1 and sets ``errno`` to one of the following:
+
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EBADF``
+   - The file descriptor is not open for reading.
+ * - ``EINVAL``
+   - Invalid aio_reqprio, aio_offset, or aio_nbytes.
+ * - ``EAGAIN``
+   - Not enough memory to queue the request.
+ * - ``EINVAL``
+   - The starting position is past the maximum offset for the file.
+ * - ``EINVAL``
+   - ``aiocbp`` is a NULL pointer.
 
 **DESCRIPTION:**
 
+The ``aio_read()`` function is the asynchronous equivalent of ``read()``.
+This function returns immediately, the request is serviced by thread(s)
+running in the background.
+
+The parameters for the read are specified in the ``aiocbp`` structure.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+NONE
 
 .. _aio_write:
 
@@ -861,7 +877,7 @@ aio_write - Asynchronous Write
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
+.. code-block:: con wich the operatiopn requested to be eliminated are gonna operate.
 
     #include <aio.h>
     int aio_write(
@@ -870,18 +886,32 @@ aio_write - Asynchronous Write
 
 **STATUS CODES:**
 
+If the request is successfully enqueued, zero is returned.
+On error, this routine returns -1 and sets ``errno`` to one of the following:
+
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EBADF``
+   - The file descriptor is not open for writing.
+ * - ``EINVAL``on wich the operatiopn requested to be eliminated are gonna operate.
+   - Invalid aio_reqprio, aio_offset, or aio_nbytes.
+ * - ``EAGAIN``
+   - Not enough memory to queue the request.
+ * - ``EINVAL``
+   - ``aiocbp`` is a NULL pointer.
 
 **DESCRIPTION:**
 
+The ``aio_write()`` function is the asynchronous equivalent of ``write()``.
+This function returns immediately, the request is serviced by thread(s)
+running in the background.
+
+The parameters for the write are specified in the ``aiocbp`` structure.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+NONE
 
 .. _lio_listio:
 
@@ -904,6 +934,9 @@ lio_listio - List Directed I/O
 
 **STATUS CODES:**
 
+If the requests are succesfully enqueued, zero is returned.
+On error, this routine returns -1 and sets ``errno`` to one of the following:
+
 .. list-table::
  :class: rtems-table
 
@@ -912,10 +945,17 @@ lio_listio - List Directed I/O
 
 **DESCRIPTION:**
 
+The ``lio_listio()`` function allows for the simultaneous initiation of
+multiple asynchronous I/O operations.
+
+Each operation is described by an ``aiocb`` structure in the array ``list``.
+
+The ``mode`` parameter determines whether the operations are submitted
+simultaneously or sequentially.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+This routine is not currently supported by RTEMS.
 
 .. _aio_error:
 
@@ -935,23 +975,34 @@ aio_error - Retrieve Error Status of Asynchronous I/O Operation
 
 **STATUS CODES:**
 
+The function return the error status of the request, if 0 is returned the
+operation completed without errors.
+
+If the request is still in progress, the function returns ``EINPROGRESS``.
+
+On error, this routine returns -1 and sets ``errno`` to one of the following:
+
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EINVAL``
+   - The return status for the request has already been retrieved.
+ * - ``EINVAL``
+   - ``aiocbp`` is a NULL pointer.
 
 **DESCRIPTION:**
 
+The ``aio_error()`` function retrieves the error status of the request.
+
+``aiocbp`` is a pointer to the request control block.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
-
+NONE
 .. _aio_return:
 
-aio_return - Retrieve Return Status Asynchronous I/O Operation
---------------------------------------------------------------
+aio_return - Retrieve Return Status of Asynchronous I/O Operation
+-----------------------------------------------------------------
 .. index:: aio_return
 .. index:: retrieve return status asynchronous i/o operation
 
@@ -966,18 +1017,28 @@ aio_return - Retrieve Return Status Asynchronous I/O Operation
 
 **STATUS CODES:**
 
+If the result can be returned, it is returned as defined by the various
+operations.
+
+On error, this routine returns -1 and sets ``errno`` to one of the following:
+
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EINVAL``
+   - The return status for the request has already been retrieved.
+ * - ``EINVAL``
+   - ``aiocbp`` is a NULL pointer.
 
 **DESCRIPTION:**
 
+The ``aio_return()`` function retrieves the return status of the
+asynchronous I/O operation.
+``aiocbp`` is a pointer to the request control block.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+NONE
 
 .. _aio_cancel:
 
@@ -998,18 +1059,39 @@ aio_cancel - Cancel Asynchronous I/O Request
 
 **STATUS CODES:**
 
+If the function terminated without errors, the return value has one
+of the following values:
+
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``AIO_CANCELED``
+   - The requested operation(s) were canceled.
+ * - ``AIO_NOTCANCELED``
+   - Some operations could not be canceled because they are in progress.
+ * - ``AIO_ALLDONE``
+   - None of the operations could be canceled because they are already complete.
+
+If the file descriptor is invalid, -1 is returned and ``errno`` is set to ``EBADF``
 
 **DESCRIPTION:**
 
+The ``aio_cancel()`` function attempts to cancel asynchronous I/O operations.
+
+``filedes`` is the file descriptor associated with the operations to be canceled.
+``aiocbp`` is a pointer to an asynchronous I/O control block.
+
+If ``aiocbp`` is NULL, the function will attempt to eliminate all the operations
+enqueued for the specified ``filedes``.
+
+If ``aiocbp`` points to a control block, then only the referenced operation
+shall be eliminated. 
+The ``aio_filedef`` value of ``aiocbp`` must be equal to ``filedes``, otherwise
+the function will return with an error.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+NONE
 
 .. _aio_suspend:
 
@@ -1031,6 +1113,9 @@ aio_suspend - Wait for Asynchronous I/O Request
 
 **STATUS CODES:**
 
+On success, zero is returned.
+On error, -1 is returned, and ``errno`` is set appropriately.
+
 .. list-table::
  :class: rtems-table
 
@@ -1039,10 +1124,13 @@ aio_suspend - Wait for Asynchronous I/O Request
 
 **DESCRIPTION:**
 
+The ``aio_suspend()`` function suspends the calling process until one or more
+operations have completed or until the specified ``timeout`` has expired.
+``list`` contains the requests that must complete.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+This routine is not currently supported by RTEMS.
 
 .. _aio_fsync:
 
@@ -1063,15 +1151,30 @@ aio_fsync - Asynchronous File Synchronization
 
 **STATUS CODES:**
 
+If the requests are succesfully enqueued, zero is returned.
+On error, this routine returns -1 and sets ``errno`` to one of the following:
+
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EAGAIN``
+   - The operation could not be queued due to temporary resource limitations.
+ * - ``EBADF``
+   - The aio_fildes member of aiocbp is not a valid file descriptor.
+ * - ``EINVAL``
+   - A value of op other than O_SYNC was specified.
+ * - ``EINVAL``
+   - ``aiocbp`` is a NULL pointer.
 
 **DESCRIPTION:**
 
+The ``aio_fsync()`` function initiates an asynchronous file sync operation.
+``op`` specifies what kind of synchronization should be performed.
+If ``op`` is ``O_DSYNC``, all currently queued I/O operations shall be
+synchronized as if by a call to ``fdatasync()``.
+If ``op`` is ``O_SYNC``, all currently queued I/O operations shall be
+synchronized as if by a call to ``fsync()``.
+
 **NOTES:**
 
-This routine is not currently supported by RTEMS but could be in a future
-version.
+Currently ``O_DSYNC`` is not supported.
