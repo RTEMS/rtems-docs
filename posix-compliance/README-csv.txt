@@ -1,4 +1,4 @@
-7 April 2021
+1 July 2024
 
 The .cvs file is exported from a spreadsheet used to track the status
 of RTEMS versus various POSIX related standards. The spreadsheet
@@ -8,7 +8,7 @@ spreadsheet is versioned but that is not reflected in the name
 
 The version of the spreadsheet included currently is:
 
-v19 - 13 June 2024
+v20 - 1 July 2024
 
 The spreadsheet MUST be exported as "MS-DOS CSV" to be processed by
 the Python script.
@@ -17,6 +17,7 @@ This is the information in each column:
 
   Methods
   Header File
+  IEEE Std 1003.1-2024
   IEEE Std 1003.1-2017
   IEEE Std 1003.1-2008
   IEEE Std 1003.1-2003
