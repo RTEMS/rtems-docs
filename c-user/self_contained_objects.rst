@@ -606,6 +606,10 @@ result of referring to copies of the object in calls to
 
 * :c:func:`rtems_counting_semaphore_wait`,
 
+* :c:func:`rtems_counting_semaphore_wait_timed_ticks`,
+
+* :c:func:`rtems_counting_semaphore_try_wait`,
+
 * :c:func:`rtems_counting_semaphore_post`,
 
 * :c:func:`rtems_counting_semaphore_set_name`,
@@ -693,6 +697,75 @@ DESCRIPTION:
 NOTES:
     This function must be called from thread context with interrupts enabled.
     Threads wait in priority order.
+
+.. raw:: latex
+
+    \clearpage
+
+Wait for a counting semaphore with timeout in ticks
+---------------------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        int rtems_counting_semaphore_wait_timed_ticks(
+          rtems_counting_semaphore *counting_semaphore,
+          uint32_t                  ticks
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+      :class: rtems-table
+
+      * - ``0``
+        - The semaphore wait was successful.
+      * - ``ETIMEDOUT``
+        - The semaphore wait timed out.
+
+DESCRIPTION:
+    Waits for the ``counting_semaphore`` with a timeout in ``ticks``.  In case
+    the current semaphore value is positive, then the value is decremented and 
+    the function returns immediately with a return value of ``0``, otherwise the
+    thread is blocked waiting for a semaphore post.  The time waiting for a
+    semaphore post is limited by ``ticks``.  A ``ticks`` value of zero
+    specifies an infinite timeout.
+
+NOTES:
+    This function must be called from thread context with interrupts enabled.
+    Threads wait in priority order.
+
+.. raw:: latex
+
+    \clearpage
+
+Tries to wait for a counting semaphore
+--------------------------------------
+
+CALLING SEQUENCE:
+    .. code-block:: c
+
+        int rtems_counting_semaphore_try_wait(
+          rtems_counting_semaphore *counting_semaphore
+        );
+
+DIRECTIVE STATUS CODES:
+    .. list-table::
+      :class: rtems-table
+
+      * - ``0``
+        - The semaphore wait was successful.
+      * - ``EAGAIN``
+        - The semaphore wait failed.
+
+DESCRIPTION:
+    Tries to wait for the ``counting_semaphore``.  In case the current semaphore
+    value is positive, then the value is decremented and the function returns
+    immediately with a return value of ``0``, otherwise it returns immediately
+    with a return value of ``EAGAIN``.
+
+NOTES:
+    This function may be called from interrupt context.  In case it is called
+    from thread context, then interrupts must be enabled.
 
 .. raw:: latex
 
