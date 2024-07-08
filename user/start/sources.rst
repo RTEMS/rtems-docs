@@ -90,8 +90,8 @@ differ from a release's source archive.
 
     mkdir -p $HOME/quick-start/src
     cd $HOME/quick-start/src
-    git clone ssh://git@gitlab.rtems.org:2222/rtems/tools/rtems-source-builder.git rsb
-    git clone ssh://git@gitlab.rtems.org:2222/rtems/rtos/rtems.git
+    git clone https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git rsb
+    git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 
 The :file:`rsb` repository clone contains the :ref:`RTEMS Source Builder (RSB)
 <RSB>`.  We clone it into :file:`rsb` to get shorter paths during the tool

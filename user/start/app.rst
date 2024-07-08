@@ -50,7 +50,7 @@ Add RTEMS Waf support as a Git sub-module and initialise it:
 
 .. code-block:: none
 
-    git submodule add ssh://git@gitlab.rtems.org:2222/rtems/tools/rtems-waf.git rtems_waf
+    git submodule add https://gitlab.rtems.org/rtems/tools/rtems_waf.git rtems_waf
 
 Create the application source files. Three files are created with an
 editor of your choice.

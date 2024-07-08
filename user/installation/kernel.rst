@@ -26,7 +26,7 @@ Clone the RTEMS respository:
 
 .. code-block:: none
 
-  $ git clone ssh://git@gitlab.rtems.org:2222/rtems/rtos/rtems.git rtems
+  $ git clone https://gitlab.rtems.org/rtems/rtos/rtems.git rtems
   Cloning into 'rtems'...
   remote: Counting objects: 483342, done.
   remote: Compressing objects: 100% (88974/88974), done.
