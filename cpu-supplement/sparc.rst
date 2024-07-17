@@ -728,34 +728,6 @@ determined by the ``CONFIGURE_INTERRUPT_STACK_SIZE`` application configuration
 option.  As part of processing a non-nested interrupt, RTEMS will switch to the
 interrupt stack before invoking the installed handler.
 
-Default Fatal Error Processing
-==============================
-
-Upon detection of a fatal error by either the application or RTEMS the fatal
-error manager is invoked.  The fatal error manager will invoke the
-user-supplied fatal error handlers.  If no user-supplied handlers are
-configured, the RTEMS provided default fatal error handler is invoked.  If the
-user-supplied fatal error handlers return to the executive the default fatal
-error handler is then invoked.  This chapter describes the precise operations
-of the default fatal error handler.
-
-Default Fatal Error Handler Operations
---------------------------------------
-
-The default fatal error handler which is invoked by the fatal_error_occurred
-directive when there is no user handler configured or the user handler returns
-control to RTEMS.
-
-If the BSP has been configured with ``BSP_POWER_DOWN_AT_FATAL_HALT`` set to
-true, the default handler will disable interrupts and enter power down mode. If
-power down mode is not available, it goes into an infinite loop to simulate a
-halt processor instruction.
-
-If ``BSP_POWER_DOWN_AT_FATAL_HALT`` is set to false, the default handler will
-place the value ``1`` in register ``g1``, the error source in register ``g2``,
-and the error code in register``g3``. It will then generate a system error
-which will hand over control to the debugger, simulator, etc.
-
 Symmetric Multiprocessing
 =========================
 

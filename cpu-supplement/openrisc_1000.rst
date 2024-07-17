@@ -78,18 +78,6 @@ for interrupts is allocated during interrupt driver initialization.  When an
 interrupt is entered, the _ISR_Handler routine is responsible for switching
 from the interrupted task stack to RTEMS software interrupt stack.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for this architecture performs the following
-actions:
-
-- disables operating system supported interrupts (IRQ),
-
-- places the error code in ``r0``, and
-
-- executes an infinite loop to simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 

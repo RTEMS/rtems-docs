@@ -3,20 +3,6 @@
 Miscellaneous
 #############
 
-Fatal Error Default Handler
-===========================
-
-The ``_CPU_Fatal_halt`` routine is the default fatal error handler. This
-routine copies _error into a known place - typically a stack location or
-a register, optionally disables interrupts, and halts/stops the CPU.  It
-is prototyped as follows and is often implemented as a macro:
-
-.. code-block:: c
-
-    void _CPU_Fatal_halt(
-      unsigned32 _error
-    );
-
 CPU Context Validation
 ======================
 

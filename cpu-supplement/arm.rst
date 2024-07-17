@@ -185,18 +185,6 @@ Interrupt Stack
 The board support package must initialize the interrupt stack. The memory for
 the stacks is usually reserved in the linker script.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for this architecture performs the following
-actions:
-
-- disables operating system supported interrupts (IRQ),
-
-- places the error code in ``r0``, and
-
-- executes an infinite loop to simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 

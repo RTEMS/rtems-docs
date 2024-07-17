@@ -115,19 +115,6 @@ The Blackfin Architecture works with two different kind of stacks, User and
 Supervisor Stack. Since RTEMS and its Application run in supervisor mode, all
 interrupts will use the interrupted tasks stack for execution.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for the Blackfin performs the following
-actions:
-
-- disables processor interrupts,
-
-- places the error code in *r0*, and
-
-- executes an infinite loop (``while(0);`` to
-  simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 

@@ -104,11 +104,6 @@ Interrupt Stack
 The interrupt stack size can be configured via the
 ``CONFIGURE_INTERRUPT_STACK_SIZE`` application configuration option.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler is BSP-specific.
-
 Symmetric Multiprocessing
 =========================
 

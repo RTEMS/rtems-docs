@@ -423,7 +423,8 @@ Fatal extensions are invoked when the system should terminate.
 
 .. rubric:: NOTES:
 
-The fatal extensions are invoked in :term:`extension forward order`.
+The fatal extensions are invoked in :term:`extension forward order` and with
+maskable interrupts disabled.
 
 The fatal extension should be extremely careful with respect to the RTEMS
 directives it calls.  Depending on the system termination source, the system

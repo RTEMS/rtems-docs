@@ -114,18 +114,6 @@ is stored in the EL0 stack pointer and is accessed by switching to SP0 mode
 at the beginning of interrupt calls and back to SPx mode after completion of
 interrupt calls using the `spsel` instruction.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for this architecture performs the following
-actions:
-
-- disables operating system supported interrupts (IRQ),
-
-- places the error code in ``x0``, and
-
-- executes an infinite loop to simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 

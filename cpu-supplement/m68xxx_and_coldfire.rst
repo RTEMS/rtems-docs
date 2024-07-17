@@ -277,13 +277,6 @@ eight.  RTEMS interrupt levels 0 through 7 directly correspond to MC68xxx
 interrupt levels.  All other RTEMS interrupt levels are undefined and their
 behavior is unpredictable.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for this architecture disables processor
-interrupts to level 7, places the error code in D0, and executes a ``stop``
-instruction to simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 

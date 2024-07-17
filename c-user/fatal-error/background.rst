@@ -29,22 +29,14 @@ RTEMS automatically invokes the fatal error manager upon detection of an error
 it considers to be fatal.  Similarly, the user should invoke the fatal error
 manager upon detection of a fatal error.
 
-Each static or dynamic user extension set may include a fatal error handler.
-The fatal error handler in the static extension set can be used to provide
+Each :term:`user extensions` set may include a fatal error handler.  The fatal
+error handler in the :term:`initial extension sets` can be used to provide
 access to debuggers and monitors which may be present on the target hardware.
 If any user-supplied fatal error handlers are installed, the fatal error
 manager will invoke them.  Usually, the board support package provides a fatal
 error extension which resets the board.  If no user handlers are configured or
-if all the user handler return control to the fatal error manager, then the
-RTEMS default fatal error handler is invoked.  If the default fatal error
-handler is invoked, then the system state is marked as failed.
-
-Although the precise behavior of the default fatal error handler is processor
-specific, in general, it will disable all maskable interrupts, place the error
-code in a known processor dependent place (generally either on the stack or in
-a register), and halt the processor.  The precise actions of the RTEMS fatal
-error are discussed in the Default Fatal Error Processing chapter of the
-Applications Supplement document for a specific target processor.
+if all the user handler return control to the fatal error manager, then
+the CPU port provided idle loop executes.
 
 .. index:: _Terminate
 
@@ -58,7 +50,12 @@ called by all services which determine that a system termination is required.
 For example, it is called by all higher level directives which announce a fatal
 error, see :ref:`AnnounceFatalError`.
 
-The first action of the system termination handler is to call the fatal
+The first action of the system termination handler is to disable maskable
+interrupts.  This ensures that interrupts on this processor do not interfere
+with the system termination procedure.  This reduces the likelihood to end up
+in a recursive system termination procedure.
+
+The second action of the system termination handler is to call the fatal
 extensions of the :term:`user extensions`.
 
 The fatal extensions are called with three parameters:
@@ -87,21 +84,20 @@ documentation in the *RTEMS User Manual* for more information how the system
 reset is done.  The BSP provided fatal extension can be disabled by the
 :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` application configuration option.  It is
 recommended to provide an application-specific fatal extension using the
-:ref:`CONFIGURE_INITIAL_EXTENSIONS` application configuration option.  In
-certain error conditions, it may be unreliable to carry out the following steps
-of the termination procedure since the read-write data may be corrupt.  One of
-the fatal extensions of the initial extension set should reset the system to
-stop the system termination procedure.
+:ref:`CONFIGURE_INITIAL_EXTENSIONS` application configuration option.
+
+In certain error conditions, it may be unreliable to carry out the following
+steps of the termination procedure since the read-write data may be corrupt.
+One of the fatal extensions of the initial extension set should reset the
+system to stop the system termination procedure.
 
 After invoking the fatal extensions of the initial extension sets, the
 fatal extensions of the :term:`dynamic extension sets` are invoked.  For this
 procedure valid read-write data is required.
 
-Once all fatal extensions are executed, the system state is set to
-:c:macro:`SYSTEM_STATE_TERMINATED`.
-
-The final step is to call the CPU port or BSP specific function
-:c:func:`_CPU_Fatal_halt()`.
+The last action of the system termination handler is to execute the CPU port
+provided idle loop with maskable interrupts disabled.  Please note, that
+properly configured applications should not reach this point.
 
 .. _FatalErrorSources:
 

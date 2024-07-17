@@ -103,13 +103,6 @@ Interrupt Levels
 
 TBD
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for this architecture disables processor
-interrupts, places the error code in *XXX*, and executes a ``XXX`` instruction
-to simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 

@@ -298,25 +298,6 @@ unpredictable results may occur due to the inability of RTEMS to protect its
 critical sections.  However, ISRs that make no system calls may safely execute
 as non-maskable interrupts.
 
-Default Fatal Error Processing
-==============================
-
-Upon detection of a fatal error by either the application or RTEMS during
-initialization the ``rtems_fatal_error_occurred`` directive supplied by the
-Fatal Error Manager is invoked.  The Fatal Error Manager will invoke the
-user-supplied fatal error handlers.  If no user-supplied handlers are
-configured or all of them return without taking action to shutdown the
-processor or reset, a default fatal error handler is invoked.
-
-Most of the action performed as part of processing the fatal error are
-described in detail in the Fatal Error Manager chapter in the User's Guide.
-However, the if no user provided extension or BSP specific fatal error handler
-takes action, the final default action is to invoke a CPU architecture specific
-function.  Typically this function disables interrupts and halts the processor.
-
-In each of the architecture specific chapters, this describes the precise
-operations of the default CPU specific fatal error handler.
-
 Symmetric Multiprocessing
 =========================
 

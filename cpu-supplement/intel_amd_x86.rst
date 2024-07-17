@@ -184,13 +184,6 @@ of the interrupted task to a dedicated interrupt stack.  When a non-nested
 interrupt returns, RTEMS switches back to the stack of the interrupted stack.
 The current stack pointer is not altered by RTEMS on nested interrupt.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error handler for this architecture disables processor
-interrupts, places the error code in EAX, and executes a HLT instruction to
-halt the processor.
-
 Symmetric Multiprocessing
 =========================
 

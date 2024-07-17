@@ -48,11 +48,6 @@ Interrupt Stack
 
 The memory region for the interrupt stack is defined by the BSP.
 
-Default Fatal Error Processing
-==============================
-
-The default fatal error is BSP-specific.
-
 Symmetric Multiprocessing
 =========================
 

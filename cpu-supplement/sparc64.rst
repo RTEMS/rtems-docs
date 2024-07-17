@@ -530,26 +530,6 @@ determined by the interrupt_stack_size field in the CPU Configuration Table.
 As part of processing a non-nested interrupt, RTEMS will switch to the
 interrupt stack before invoking the installed handler.
 
-Default Fatal Error Processing
-==============================
-
-Upon detection of a fatal error by either the application or RTEMS the fatal
-error manager is invoked.  The fatal error manager will invoke the
-user-supplied fatal error handlers.  If no user-supplied handlers are
-configured, the RTEMS provided default fatal error handler is invoked.  If the
-user-supplied fatal error handlers return to the executive the default fatal
-error handler is then invoked.  This chapter describes the precise operations
-of the default fatal error handler.
-
-Default Fatal Error Handler Operations
---------------------------------------
-
-The default fatal error handler which is invoked by the fatal_error_occurred
-directive when there is no user handler configured or the user handler returns
-control to RTEMS.  The default fatal error handler disables processor
-interrupts to level 15, places the error code in g1, and goes into an infinite
-loop to simulate a halt processor instruction.
-
 Symmetric Multiprocessing
 =========================
 
