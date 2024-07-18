@@ -37,6 +37,8 @@ The directives provided by the process environment manager are:
 
 - getpgrp_ - Get Process Group ID
 
+- getrusage_ - Get Resource Utilization
+
 - setsid_ - Create Session and Set Process Group ID
 
 - setpgid_ - Set Process Group ID for Job Control
@@ -446,6 +448,56 @@ This service returns the current progress group Id.
 
 This routine is implemented in a somewhat meaningful way for RTEMS but is truly
 not functional.
+
+.. _getrusage:
+
+getrusage - Get Resource Utilization
+------------------------------------
+.. index:: getrusage
+.. index:: get resource utilization
+
+**CALLING SEQUENCE:**
+
+.. code-block:: c
+
+    int getrusage( int who, struct rusage *rusage );
+
+**STATUS CODES:**
+
+Returns the value 0 if successful; otherwise the value -1 is returned
+and the global variable ``errno`` is set to indicate the error.
+
+**DESCRIPTION:**
+
+This function provides a measures of the resources being used by
+RTEMS. RTEMS is a single process environment so child process requests
+result in an error being returned.
+
+A ``who`` value of ``RUSAGE_SELF`` results in the ``struct rusage``
+field ``ru_utime`` returning the total active time of all threads that
+exist when the call is made and the field ``ru_stime`` returning the
+total idle time.
+
+A ``who`` value of ``RUSAGE_THREAD`` results in the ``struct rusage``
+field ``ru_utime`` returning the total active time of the current
+thread and the field ``ru_stime`` is set to 0.
+
+
+**NOTES:**
+
+The time returned can be more than the system up time if there is more
+than one CPU.
+
+This routine is implemented using the internal thread iterator and
+accounts for time spent by the currently active threads. RTEMS does
+not account for the execution time of threads that are no longer
+running.
+
+The idle time is the total time spent in ``IDLE`` since RTEMS
+started. The time for each CPU is summed.
+
+The ratio of the difference between samples made by ``getrusage`` of
+the user and system idle time can be used to compute the current load.
 
 .. _setsid:
 
