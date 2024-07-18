@@ -48,10 +48,10 @@ the MCU supports about 10 U(S)ARTs, only those supported by the chosen
 board are enabled by default configuration. The board needs to support
 some kind of connector-based connection to the U(S)ART in order for the
 feature to be considered supported here.
-..
+
 .. Leaving previous notes here as a comment. They may still be useful
 .. and incorporated into the later version of the document.
-..
+
 .. Different board variations use different GPIO pins and blocks for the default
 .. communication UART and it is recommended to check whether the default
 .. configuration provided is valid in the BSP.
