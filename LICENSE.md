@@ -1,4 +1,5 @@
 RTEMS Project Documentation Licenses
+====================================
 
 The RTEMS Project Documentation is part of the RTEMS Project and you can
 find the project's website at https://www.rtems.org/
@@ -6,13 +7,15 @@ find the project's website at https://www.rtems.org/
 This file contains 3 licenses and are applied as noted.
 
 Unless otherwise noted all documentation within this repository is covered 
-under the following CC-BY-SA-4.0 license (LICENSE 1).
+under the following `CC-BY-SA-4.0` [License 1](#license-1).
 
------------------------------------------------------------------------
+  * [License 1](#license-1)
+  * [License 2](#license-2)
+  * [License 3](#license-3)
 
-=========
-LICENSE 1
-=========
+
+License 1
+---------
 
 Attribution-ShareAlike 4.0 International
 
@@ -442,12 +445,9 @@ public licenses.
 
 Creative Commons may be contacted at creativecommons.org.
 
------------------------------------------------------------------------
 
-=========
-LICENSE 2
-=========
-
+License 2
+---------
 
 The build system for RTEMS documentation is covered under the following license
 
@@ -474,11 +474,9 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
 
------------------------------------------------------------------------
 
-=========
-LICENSE 3
-=========
+License 3
+---------
 
 Where noted some documentation may follow the following license:
 
