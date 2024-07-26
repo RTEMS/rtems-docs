@@ -28,8 +28,7 @@ the master technical data does not bit rot.
 
 Must use tools from:
 
-TBD - Change URL to git.rtems.org and list support tools
-RTEMS Tools Project: https://github.com/RTEMS/rtems-tools
+RTEMS Tools Project: https://gitlab.rtems.org/rtems/tools/rtems-tools
 
 
 Scope, Procedures, Methodologies, Tools

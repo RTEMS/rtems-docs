@@ -9,7 +9,8 @@ IDE Controller Driver
 
    The ATA/IDE Drivers are out of date and should not be used for new BSPs.
    The preferred alternative is to port the ATA/SATA/SCSI/NVMe support from
-   FreeBSD to RTEMS using the `libbsd <https://git.rtems.org/rtems-libbsd>`_.
+   FreeBSD to RTEMS using the `libbsd
+   <https://gitlab.rtems.org/rtems/pkg/rtems-libbsd>`_.
    Ask on the mailing list if you plan to write a driver for an ATA/IDE device.
 
 Introduction

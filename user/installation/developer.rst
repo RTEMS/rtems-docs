@@ -369,9 +369,9 @@ tools is:
   package: i386-rtems4.11-gdb-7.9-x86_64-w64-mingw32-1
   download: http://ftp.gnu.org/gnu/gdb/gdb-7.9.tar.xz -> sources/gdb-7.9.tar.xz
   downloading: sources/gdb-7.9.tar.xz - 17.0MB of 17.0MB (100%)
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.11/gdb/gdb-sim-arange-inline.diff -> patches/gdb-sim-arange-inline.diff
+  download: https://gitlab.rtems.org/rtems-tools/plain/tools/4.11/gdb/gdb-sim-arange-inline.diff -> patches/gdb-sim-arange-inline.diff
   downloading: patches/gdb-sim-arange-inline.diff - 761.0 bytes of 761.0 bytes (100%)
-  download: https://git.rtems.org/rtems-tools/plain/tools/4.11/gdb/gdb-sim-cgen-inline.diff -> patches/gdb-sim-cgen-inline.diff
+  download: https://gitlab.rtems.org/rtems-tools/plain/tools/4.11/gdb/gdb-sim-cgen-inline.diff -> patches/gdb-sim-cgen-inline.diff
   downloading: patches/gdb-sim-cgen-inline.diff - 706.0 bytes of 706.0 bytes (100%)
   building: i386-rtems4.11-gdb-7.9-x86_64-w64-mingw32-1
   reporting: tools/rtems-gdb-7.9-1.cfg ->
@@ -381,11 +381,11 @@ tools is:
   config: tools/rtems-tools-4.11-1.cfg
   package: rtems-tools-4.11-1
   Creating source directory: sources/git
-  git: clone: git://git.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
-  git: reset: git://git.rtems.org/rtems-tools.git
-  git: fetch: git://git.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
-  git: checkout: git://git.rtems.org/rtems-tools.git => 4.11
-  git: pull: git://git.rtems.org/rtems-tools.git
+  git: clone: https://gitlab.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
+  git: reset: https://gitlab.rtems.org/rtems-tools.git
+  git: fetch: https://gitlab.rtems.org/rtems-tools.git -> sources/git/rtems-tools.git
+  git: checkout: https://gitlab.rtems.org/rtems-tools.git => 4.11
+  git: pull: httpst://gitlab.rtems.org/rtems-tools.git
   building: rtems-tools-4.11-1
   reporting: tools/rtems-tools-4.11-1.cfg -> rtems-tools-4.11-1.txt
   reporting: tools/rtems-tools-4.11-1.cfg -> rtems-tools-4.11-1.xml

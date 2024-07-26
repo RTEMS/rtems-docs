@@ -126,7 +126,7 @@ This command should output something like this (omitted lines are denoted by
     Build Set: 6/rtems-autotools.bset
     Build Set: 6/rtems-autotools-internal.bset
     ...
-    download: https://git.rtems.org/rtems-tools/snapshot/rtems-tools-90342feb4dd63d188ce945adfb0a769...<see log> -> sources/rtems-tools-90342feb4dd63d188ce945adfb0a7694a42a65cd.tar.bz2
+    download: https://gitlab.rtems.org/rtems-tools/snapshot/rtems-tools-90342feb4dd63d188ce945adfb0a769...<see log> -> sources/rtems-tools-90342feb4dd63d188ce945adfb0a7694a42a65cd.tar.bz2
     ...
     Build Sizes: usage: 0.000B total: 264.228MB (sources: 264.186MB, patches: 43.468KB, installed 0.000B)
     Build Set: Time 0:06:34.357125

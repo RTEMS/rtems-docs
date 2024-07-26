@@ -39,9 +39,9 @@ has some weaknesses:
 For applications that use fine grained locking the mapping of the identifier to
 the object representation and the parameter evaluation are a significant
 overhead that may degrade the performance dramatically.  An example is the `new
-network stack (libbsd) <https://git.rtems.org/rtems-libbsd>`_ which uses
-hundreds of locks in a basic setup.  Another example is the OpenMP support
-(libgomp).
+network stack (libbsd) <https://gitlab.rtems.org/rtems/pkg/rtems-libbsd>`_
+which uses hundreds of locks in a basic setup.  Another example is the OpenMP
+support (libgomp).
 
 To overcome these issues new self-contained synchronization objects are
 available since RTEMS 4.11.  Self-contained synchronization objects encapsulate

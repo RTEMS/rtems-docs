@@ -17,7 +17,7 @@ Browse the Git Repository Online
 --------------------------------
 
 You can browse all available repositories online by
-accessing https://git.rtems.org/.
+accessing https://gitlab.rtems.org/rtems/
 
 Using the Git Repository
 ------------------------
@@ -30,7 +30,7 @@ First, we need to obtain our own local copy of the RTEMS Git repository:
 
 .. code-block:: shell
 
-  git clone git://git.rtems.org/rtems.git rtems
+  git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 
 This command will create a folder named rtems in the current directory. This
 folder will contain a full-featured RTEMS' Git repository and the current HEAD
@@ -53,8 +53,9 @@ the command:
 
 This will create a local branch named "rtems410", containing the rtems-4.10
 release, that will track the remote branch "rtems-4-10-branch" in origin
-(git://git.rtems.org/rtems.git). The ``git branch`` command prints a list of
-the current local branches, indicating the one currently checked out.
+(https://gitlab.rtems.org/rtems/rtos/rtems.git). The ``git branch`` command
+prints a list of the current local branches, indicating the one currently
+checked out.
 
 If you want to switch between local branches:
 
@@ -92,7 +93,7 @@ First, you need to clone the repository:
 
 .. code-block:: shell
 
-  git clone git://git.rtems.org/rtems.git rtems
+  git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 
 Or if you already cloned it before, then you might want to update to the latest
 version before making your changes:
@@ -426,7 +427,7 @@ Accessing a Developer's Repository
 ----------------------------------
 
 RTEMS developers with Git commit access have personal repositories
-on https://git.rtems.org/ that can be cloned to view cutting-edge
+on https://gitlab.rtems.org/ that can be cloned to view cutting-edge
 development work shared there.
 
 Commit Message Guidance
@@ -626,21 +627,6 @@ So all you need is:
 
   git send-email /path/to/patch
 
-Troubleshooting
----------------
-
-Some restrictive corporate firewalls block access through the Git protocol
-(git://). If you are unable to reach the server git://git.rtems.org/ you can
-try accessing through http. To clone the rtems repository using the http
-protocol use the following command:
-
-.. code-block:: shell
-
-  git clone http://git.rtems.org/rtems/ rtems
-
-This access through http is slower (way slower!) than through the git protocol,
-therefore, the Git protocol is preferred.
-
 Manage Your Code
 ----------------
 
@@ -698,12 +684,12 @@ uses a slightly different approach than the one just outlined:
 
   ssh @SERVER@
   mkdir git
-  git clone --mirror git://git.rtems.org/rtems.git
+  git clone --mirror https://gitlab.rtems.org/rtems/rtos/rtems.git
   ## Add your ssh key to ~/.ssh/authorized_keys
   exit
   git clone ssh://@SERVER@/home/@USER@/git/rtems.git
   cd rtems
-  git remote add upstream git://git.rtems.org/rtems.git
+  git remote add upstream https://gitlab.rtems.org/rtems/rtos/rtems.git
   git fetch upstream
   git pull upstream master
   git push

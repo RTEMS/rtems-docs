@@ -39,7 +39,7 @@ role_url = {
 	"builder":	("Builder Site",		"https://builder.rtems.org/"),
 	"docs":		("Documentation Site",		"https://docs.rtems.org/"),
 	"lists":	("Mailing Lists",		"https://lists.rtems.org/"),
-	"git":		("Git Repositories",		"https://git.rtems.org/"),
+	"git":		("Git Repositories",		"https://gitlab.rtems.org/"),
 	"ftp":		("FTP File Server",		"https://ftp.rtems.org/"),
 	"review":	("Gerrit Code Review",		"https://review.rtems.org/"),
 	"bugs":		("Bugs Database",		"https://devel.rtems.org/wiki/Bugs/"),

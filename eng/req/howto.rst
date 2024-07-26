@@ -14,7 +14,7 @@ clone of the following repository:
 
 .. code-block:: none
 
-    git clone git://git.rtems.org/rtems-central.git
+    git clone https://gitlab.rtems.org/rtems/prequal/rtems-central.git
     git submodule init
     git submodule update
 
