@@ -20,10 +20,6 @@ There are the following actors involved:
 * *RTEMS developers*: The persons developing and maintaining RTEMS.  They write
   patches to add or modify code, requirements, tests and documentation.
 
-* *RTEMS maintainers*: They are listed in the
-  `MAINTAINERS <https://git.rtems.org/rtems/tree/MAINTAINERS>`_ file and have
-  write access to the project repositories.
-
 Adding and changing requirements follows the normal patch review process.  The
 normal patch review process is described in the
 `RTEMS User Manual <https://docs.rtems.org/branches/master/user/support/contrib.html#patch-review-process>`_.
