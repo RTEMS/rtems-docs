@@ -29,7 +29,8 @@ kernel-space/user-space separation.  It is capable to operate in an
 :ref:term:`SMP` configuration providing a state of the art feature set.
 
 RTEMS is licensed under a
-`modified GPL 2.0 or later license with an exception for static linking <https://git.rtems.org/rtems/tree/LICENSE>`_
+`modified GPL 2.0 or later license with an exception for static linking
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md>`_
 [#]_.  It exposes no license requirements on application code.  The third-party
 software used and distributed by RTEMS which may be linked to the application
 is licensed under permissive open source licenses.  Everything necessary to
@@ -349,7 +350,7 @@ sophisticated real-time applications are significantly reduced.
 
 .. [#] The goal is to use the
        `BSD 2-Clause license
-       <https://git.rtems.org/rtems/tree/LICENSE.BSD-2-Clause>`_ for new code
+       <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md>`_ for new code
        or code those copyright holder agreed to a license change, see `#3053
        <https://devel.rtems.org/ticket/3053>`_ for the details.
 
