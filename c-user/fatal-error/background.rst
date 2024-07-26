@@ -406,7 +406,7 @@ INTERNAL_ERROR_ARC4RANDOM_GETENTROPY_FAIL (39)
 INTERNAL_ERROR_NO_MEMORY_FOR_PER_CPU_DATA (40)
     This fatal error may happen during workspace initialization.  There is not
     enough memory available to populate the per-CPU data areas, see
-    `<rtems/score/percpudata.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/percpudata.h>`_.
+    `<rtems/score/percpudata.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/cpukit/include/rtems/score/percpudata.h>`_.
 
 INTERNAL_ERROR_TOO_LARGE_TLS_SIZE (41)
     This fatal error may happen during system initialization.  The actual

@@ -77,7 +77,7 @@ Examples
 --------
 
 For example applications see `testsuites/smptests
-<https://git.rtems.org/rtems/tree/testsuites/smptests>`_.
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/testsuites/smptests>`_.
 
 Uniprocessor versus SMP Parallelism
 -----------------------------------
@@ -499,7 +499,7 @@ map it to the actual object structure which resides in a global objects table
 for each object class.  So, unrelated objects are packed together in a table.
 This may result in false sharing of cache lines.  The effect of false sharing
 of cache lines can be observed with the `TMFINE 1
-<https://git.rtems.org/rtems/tree/testsuites/tmtests/tmfine01>`_ test program
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/testsuites/tmtests/tmfine01>`_ test program
 on a suitable platform, e.g. QorIQ T4240.  High-performance SMP applications
 need full control of the object storage :cite:`Drepper:2007:Memory`.
 Therefore, self-contained synchronization objects are now available for RTEMS.
@@ -533,7 +533,7 @@ interesting in the future for systems with a processor count in the range of 32
 or more, e.g.  :term:`NUMA`, many-core systems.
 
 The test program `SMPLOCK 1
-<https://git.rtems.org/rtems/tree/testsuites/smptests/smplock01>`_ can be used
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/testsuites/smptests/smplock01>`_ can be used
 to gather performance and fairness data for several scenarios.  The SMP lock
 performance and fairness measured on the QorIQ T4240 follows as an example.
 This chip contains three L2 caches.  Each L2 cache is shared by eight
@@ -746,7 +746,7 @@ RTEMS provides two means for per-processor data:
 
 2. For low level support libraries an API for statically allocated
    per-processor data is available via
-   `<rtems/score/percpudata.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/percpudata.h>`_.
+   `<rtems/score/percpudata.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/cpukit/include/rtems/score/percpudata.h>`_.
    This API is not intended for general application use.  Please ask on the
    development mailing list in case you want to use it.
 

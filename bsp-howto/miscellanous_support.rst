@@ -121,7 +121,7 @@ The ``bsp_fatal_extension()`` is an optional BSP specific initial extension
 invoked once a fatal system state is reached.  Most of the BSPs use the same
 shared version of ``bsp_fatal_extension()`` that does nothing or performs a
 system reset.  This implementation is located in the
-`bsps/shared/start/bspfatal-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspfatal-default.c>`_
+`bsps/shared/start/bspfatal-default.c <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/start/bspfatal-default.c>`_
 file.
 
 The ``bsp_fatal_extension()`` routine can be used to return to a ROM monitor,
@@ -222,16 +222,16 @@ case profiling is enabled via the RTEMS build configuration option
 times.  The BSP can feed interrupt delay times with the
 ``_Profiling_Update_max_interrupt_delay()`` function (``#include
 <rtems/score/profiling.h>``).  For an example please have a look at
-`bsps/sparc/leon3/clock/ckinit.c <https://git.rtems.org/rtems/tree/bsps/sparc/leon3/clock/ckinit.c>`_.
+`bsps/sparc/leon3/clock/ckinit.c <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/sparc/leon3/clock/ckinit.c>`_.
 
 Programmable Interrupt Controller API
 =====================================
 
 A BSP can use the PIC API to install Interrupt Service Routines through a set
 of generic methods. In order to do so, the header files
-`<bsp/irq-generic.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/irq-generic.h>`_
+`<bsp/irq-generic.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/include/bsp/irq-generic.h>`_
 and
-`<bsp/irq-info.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/irq-info.h>`_
+`<bsp/irq-info.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/include/bsp/irq-info.h>`_
 must be included by the bsp specific irq.h file present in the include/
 directory. The irq.h acts as a BSP interrupt support configuration file which
 is used to define some important MACROS. It contains the declarations for any

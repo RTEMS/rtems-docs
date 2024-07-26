@@ -30,10 +30,10 @@ that can only be reached with some extra hardware support. Some microcontrollers
 integrate a true random number generator or something similar for cryptographic
 applications. That is the preferred source of entropy for most BSPs. For example
 the
-`atsam BSP uses the TRNG for its entropy source <https://git.rtems.org/rtems/tree/bsps/arm/atsam/start/getentropy-trng.c>`_.
+`atsam BSP uses the TRNG for its entropy source <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/arm/atsam/start/getentropy-trng.c>`_.
 
 There is also a quite limited
-`default implementation based on the CPU counter <https://git.rtems.org/rtems/tree/bsps/shared/dev/getentropy/getentropy-cpucounter.c>`_.
+`default implementation based on the CPU counter <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/dev/getentropy/getentropy-cpucounter.c>`_.
 Due to the fact that it is a time based source, the values provided by
 :c:func:`getentropy` are quite predictable. This implementation is not
 appropriate for any cryptographic applications but it is good enough for some

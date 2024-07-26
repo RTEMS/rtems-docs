@@ -23,7 +23,7 @@ and earlier board generations:
 They can be used as a base line for customization.  The basic hardware
 initialization is performed by the BSP.  It can be customized via configuration
 options and configuration tables.  See also
-`<bsp/start-config.h> <https://git.rtems.org/rtems/tree/bsps/arm/lpc24xx/include/bsp/start-config.h>`_.
+`<bsp/start-config.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/arm/lpc24xx/include/bsp/start-config.h>`_.
 
 Clock Driver
 ------------
@@ -44,7 +44,7 @@ I2C Bus Driver
 I2C bus drivers are registered by the ``lpc24xx_register_i2c_0()``,
 ``lpc24xx_register_i2c_1()`` and ``lpc24xx_register_i2c_2()`` functions.  The
 I2C driver does not configure the pins.  See also
-`<bsp/i2c.h> <https://git.rtems.org/rtems/tree/bsps/arm/lpc24xx/include/bsp/i2c.h>`_.
+`<bsp/i2c.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/arm/lpc24xx/include/bsp/i2c.h>`_.
 
 SPI Bus Driver
 --------------
@@ -52,14 +52,14 @@ SPI Bus Driver
 SPI bus drivers are registered by the ``lpc24xx_register_ssp_0()``,
 ``lpc24xx_register_ssp_1()`` and ``lpc24xx_register_ssp_2()`` functions.  The
 SSP driver does not configure the pins.  See also
-`<bsp/ssp.h> <https://git.rtems.org/rtems/tree/bsps/arm/lpc24xx/include/bsp/ssp.h>`_.
+`<bsp/ssp.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/arm/lpc24xx/include/bsp/ssp.h>`_.
 
 Network Interface Driver
 ------------------------
 
 Only a legacy network driver is support.  For a `libbsd` base driver the
 platform support is missing, see
-`if_lpe.c <https://git.rtems.org/rtems-libbsd/tree/rtemsbsd/sys/arm/lpc/if_lpe.c>`_.
+`if_lpe.c <https://gitlab.rtems.org/rtems/pkg/rtems-libbsd/-/blob/main/rtemsbsd/sys/arm/lpc/if_lpe.c>`_.
 
 USB Driver
 ----------
@@ -70,7 +70,7 @@ Framebuffer Driver
 ------------------
 
 For a custom framebuffer driver see
-`<bsp/lcd.h> <https://git.rtems.org/rtems/tree/bsps/arm/lpc24xx/include/bsp/lcd.h>`_.
+`<bsp/lcd.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/arm/lpc24xx/include/bsp/lcd.h>`_.
 
 RTC Driver
 ----------

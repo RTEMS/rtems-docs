@@ -59,7 +59,7 @@ This class of code provides the most specific glue between RTEMS and a
 particular board.  This code is represented by the Board Support Packages and
 associated Device Drivers.  Sources for the BSPs included in the RTEMS
 distribution are located in the directory
-`bsps <https://git.rtems.org/rtems/tree/bsps>`_.  The BSP source directory is
+`bsps <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps>`_.  The BSP source directory is
 further subdivided based on the CPU family and BSP.
 
 Some BSPs may support multiple board models within a single board family.  This
@@ -80,8 +80,8 @@ the same thing.
 
 The source code for the reusable peripheral driver library may be found in the
 directory
-`cpukit/dev <https://git.rtems.org/rtems/tree/cpukit/dev>`_ or
-`bsps/shared/dev <https://git.rtems.org/rtems/tree/bsps/shared/dev>`_.  The
+`cpukit/dev <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/cpukit/dev>`_ or
+`bsps/shared/dev <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/dev>`_.  The
 source code is further divided based upon the class of hardware.  Example
 classes include serial communications controllers, real-time clocks,
 non-volatile memory, and network controllers.
@@ -138,7 +138,7 @@ within that family.
 Board Support Package Structure
 ===============================
 
-The BSPs are all under the `bsps <https://git.rtems.org/rtems/tree/bsps>`_
+The BSPs are all under the `bsps <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps>`_
 directory.  The structure in this source subtree is:
 
 * ``bsps/shared``

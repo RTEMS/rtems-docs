@@ -42,8 +42,8 @@ Network Driver
 
 Support for networking is provided by the libbsd library. Network interface
 configuration is extracted from the device tree binary which, by default, is
-in `<bsp/microblaze-dtb.h> <https://git.rtems.org/rtems/tree/bsps/microblaze/microblaze_fpga/include/bsp/microblaze-dtb.h>`_.
-The device tree source for the default device tree is at `dts/system.dts <https://git.rtems.org/rtems/tree/bsps/microblaze/microblaze_fpga/dts/system.dts>`_.
+in `<bsp/microblaze-dtb.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/microblaze/microblaze_fpga/include/bsp/microblaze-dtb.h>`_.
+The device tree source for the default device tree is at `dts/system.dts <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/microblaze/microblaze_fpga/dts/system.dts>`_.
 
 To replace the default device tree with your own, assuming ``my_device_tree.dts``
 is the name of your device tree source file, first you must convert your device

@@ -21,7 +21,7 @@ system.
 
 The clock driver is usually located in the :file:`clock` directory of the BSP.
 Clock drivers must use the :dfn:`Clock Driver Shell` available via the
-`clockimpl.h <https://git.rtems.org/rtems/tree/bsps/shared/dev/clock/clockimpl.h>`_
+`clockimpl.h <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/dev/clock/clockimpl.h>`_
 include file.  This include file is not a normal header file and instead
 defines the clock driver functions declared in ``#include <rtems/clockdrv.h>``
 which are used by RTEMS configuration file ``#include <rtems/confdefs.h>``.  In
@@ -88,7 +88,7 @@ fields of the ``struct timecounter`` must be zero initialized.  Install the
 initialized timecounter via ``rtems_timecounter_install()``.
 
 For an example see the `QorIQ clock driver
-<https://git.rtems.org/rtems/tree/bsps/powerpc/qoriq/clock/clock-config.c>`_.
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/powerpc/qoriq/clock/clock-config.c>`_.
 
 .. code-block:: c
 
@@ -138,7 +138,7 @@ Simple Timecounter Variant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For an example see the `ERC32 clock driver
-<https://git.rtems.org/rtems/tree/bsps/sparc/erc32/clock/ckinit.c>`_.
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/sparc/erc32/clock/ckinit.c>`_.
 The argument parameter of ``Clock_driver_timecounter_tick( arg )`` is the
 argument used to install the clock interrupt handler.  Device drivers may use
 this argument to access their control state.
@@ -205,7 +205,7 @@ Clock Tick Only Variant
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 For an example see the `Motrola 68360 clock driver
-<https://git.rtems.org/rtems/tree/bsps/m68k/gen68360/clock/clock.c>`_.
+<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/m68k/gen68360/clock/clock.c>`_.
 
 .. code-block:: c
 

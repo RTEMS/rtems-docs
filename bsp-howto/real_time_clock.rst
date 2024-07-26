@@ -26,11 +26,11 @@ an *RTC* device.  The capabilities provided by this driver are:
   In this chapter, the abbreviation `TOD` is used for *Time of Day*.
 
 The reference implementation for a real-time clock driver can be found in
-`bsps/shared/dev/rtc/rtc-support.c <https://git.rtems.org/rtems/tree/bsps/shared/dev/rtc/rtc-support.c>`_.
+`bsps/shared/dev/rtc/rtc-support.c <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/dev/rtc/rtc-support.c>`_.
 This driver is based on the libchip concept and can be easily configured to
 work with any of the RTC chips supported by the RTC chip drivers in the
 directory
-`bsps/shared/dev/rtc <https://git.rtems.org/rtems/tree/bsps/shared/dev/rtc>`_.
+`bsps/shared/dev/rtc <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/dev/rtc>`_.
 There is a README file in this directory for each supported RTC chip.  Each of
 these README explains how to configure the shared libchip implementation of the
 RTC driver for that particular RTC chip.

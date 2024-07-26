@@ -355,7 +355,7 @@ Header File Examples
 --------------------
 
 The
-`<rtems/score/thread.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/thread.h>`_
+`<rtems/score/thread.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/cpukit/include/rtems/score/thread.h>`_
 and
-`<rtems/score/threadimpl.h> <https://git.rtems.org/rtems/tree/cpukit/include/rtems/score/threadimpl.h>`_
+`<rtems/score/threadimpl.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/cpukit/include/rtems/score/threadimpl.h>`_
 header files are a good example of how header files should be documented.

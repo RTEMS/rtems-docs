@@ -64,9 +64,9 @@ the following steps:
 
 For examples of start file codes see:
 
-* `bsps/arm/shared/start/start.S <https://git.rtems.org/rtems/tree/bsps/arm/shared/start/start.S>`_
+* `bsps/arm/shared/start/start.S <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/arm/shared/start/start.S>`_
 
-* `bsps/riscv/shared/start/start.S <https://git.rtems.org/rtems/tree/bsps/riscv/shared/start/start.S>`_
+* `bsps/riscv/shared/start/start.S <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/riscv/shared/start/start.S>`_
 
 High-Level Initialization via boot_card()
 =========================================
@@ -90,7 +90,7 @@ Memory Information
 The BSP must provide the memory information to the system with an
 implementation of the :c:func:`_Memory_Get()` function.  The BSP should use the
 default implementation in
-`bsps/shared/shared/start/bspgetworkarea-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspgetworkarea-default.c>`_.
+`bsps/shared/shared/start/bspgetworkarea-default.c <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/start/bspgetworkarea-default.c>`_.
 The memory information is used by low-level memory consumers such as the
 per-CPU data, the workspace, and the C program heap.  The BSP may use a system
 initialization handler (order :c:macro:`RTEMS_SYSINIT_MEMORY`) to set up the
@@ -117,11 +117,11 @@ Errors during system initialization are fatal and end up in a call to
 RTEMS Classic API Guide.
 
 The BSP may use BSP-specific fatal error codes, see
-`<bsp/fatal.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/fatal.h>`_.
+`<bsp/fatal.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/include/bsp/fatal.h>`_.
 
 The BSP should provide an initial extension which implements a fatal error
 handler.  It should use the default implementation provided by
-`<bsp/default-initial-extension.h> <https://git.rtems.org/rtems/tree/bsps/include/bsp/default-initial-extension.h>`_ and
-`bspfatal-default.c <https://git.rtems.org/rtems/tree/bsps/shared/start/bspfatal-default.c>`_.
+`<bsp/default-initial-extension.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/include/bsp/default-initial-extension.h>`_ and
+`bspfatal-default.c <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/shared/start/bspfatal-default.c>`_.
 If the default implementation is used, the BSP must implement a
 :c:func:`bsp_reset()` function which should reset the platform.
