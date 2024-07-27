@@ -256,22 +256,6 @@ Post-Branch Procedure
 
 #. Create a release page for the next RTEMS release in Trac.
 
-#. Update the releases table. The page link is:
-
-     https://devel.rtems.org/wiki/Release
-
-   Update the table adding the new development release to the top
-   moving down the previous releases.
-
-   Label the new release branch as "Releasing". The documentation link
-   is left pointing to ``master`` until the release is made and the
-   documentation is installed on the RTEMS Documentation web site.
-
-#. Update the release table in the front page of the Trac Wiki. The
-   page link is:
-
-     https://devel.rtems.org/wiki/
-
 #. Add the milestones for the new development branch. The Trac page
    is:
 

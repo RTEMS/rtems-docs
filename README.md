@@ -672,8 +672,8 @@ existing documentation for an example and if unsure ask.
 
    | Label     | URL                                  |
    | ---       | ---                                  |
-   | trac      | https://devel.rtems.org/             |
-   | devel     | https://devel.rtems.org/             |
+   | trac      | https://gitlab.rtems.org/            |
+   | devel     | https://gitlab.rtems.org/            |
    | www       | https://www.rtems.org/               |
    | buildbot  | https://buildbot.rtems.org/          |
    | builder   | https://builder.rtems.org/           |
@@ -683,8 +683,8 @@ existing documentation for an example and if unsure ask.
    | ftp       | https://ftp.rtems.org/               |
    | review    | https://review.rtems.org/            |
    | bugs      | https://gitlab.rtems.org/            |
-   | gsoc      | https://devel.rtems.org/wiki/GSoC/   |
-   | socis     | https://devel.rtems.org/wiki/SOCIS/  |
+   | gsoc      | https://gitlab.rtems.org/rtems/programs/gsoc   |
+   | socis     | https://gitlab.rtems.org/            |
 
 10. Use the following to embed the version number in any part of the
     documentation source:

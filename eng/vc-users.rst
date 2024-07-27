@@ -7,9 +7,6 @@
 Software Development (Git Users)
 ********************************
 
-.. COMMENT: TBD - Convert https://devel.rtems.org/wiki/Developer/Git/Users to
-.. COMMENT: TBD - Rest and insert here.
-
 .. COMMENT: TBD - Managing a (private/public) Git mirror, using GitHub,
 .. COMMENT: TBD - submitting pull requests...
 

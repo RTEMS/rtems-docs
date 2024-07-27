@@ -19,7 +19,7 @@ exception (https://www.rtems.org/license). It is preferred that new
 submissions be under one of the two preferred licenses. If you have
 previously submitted code to RTEMS under a historical license, please
 grant the project permission to relicense. See
-https://devel.rtems.org/ticket/3053 for details.
+https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/3053 for details.
 
 For example templates for what to include in source code and 
 documentation, see :ref:`FileHeaderCopyright`.

@@ -6,9 +6,6 @@
 Test Suites
 ***********
 
-.. COMMENT:TBD  - Convert the following to Rest and insert into this file
-.. COMMENT:TBD  from https://devel.rtems.org/wiki/Developer/Testing/TestSuites
-
 .. COMMENT:TBD also update list of tests based on rtems/testsuites
 
 All RTEMS source distributions include the complete RTEMS test suites. These

@@ -149,7 +149,7 @@ affinity. Although the behavior is scheduler specific, if the scheduler does
 not support affinity, it is likely to ignore all attempts to set affinity.
 
 The scheduler with support for arbitary processor affinities uses a proof of
-concept implementation.  See https://devel.rtems.org/ticket/2510.
+concept implementation.  See https://gitlab.rtems.org/rtems/programs/gsoc/-/issues/34
 
 .. index:: task migration
 .. index:: thread migration

@@ -7,9 +7,6 @@
 Software Development Management
 *******************************
 
-.. COMMENT:TBD - Convert https://devel.rtems.org/wiki/TBR/Website/WhyContribute to Rest
-.. COMMENT:TBD - and insert here
-
 .. COMMENT: Subsections
 .. toctree::
 

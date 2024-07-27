@@ -56,7 +56,6 @@ the target hardware or simulator.
 Step 4: RTEMS shell provides the "rtrace" command to display and save trace
 buffers.
 
-.. comment: taken from https://devel.rtems.org/wiki/Developer/Tracing
 .. figure:: ../../images/user/rtems-trace-buffering.png
   :align: center
   :width: 75%
@@ -94,7 +93,6 @@ Step 4: The application is run in the hardware directly or using a debugger. The
 printk() output appears on the target console and the user can save that to a
 file.
 
-.. comment: taken from https://devel.rtems.org/wiki/Developer/Tracing
 .. figure:: ../../images/user/rtems-trace-printk.png
   :align: center
   :width: 75%

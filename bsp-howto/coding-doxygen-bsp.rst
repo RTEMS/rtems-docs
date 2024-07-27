@@ -3,11 +3,6 @@
 .. Copyright (C) 2018.
 .. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-
-.. COMMENT:TBD  - Convert the following to Rest and insert into this file
-.. COMMENT:TBD - https://devel.rtems.org/wiki/Developer/Coding/Doxygen_for_BSPs
-
-
 Doxygen Recommendations for BSPs
 ================================
 

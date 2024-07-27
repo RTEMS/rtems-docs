@@ -32,8 +32,8 @@ role_name = {
 }
 
 role_url = {
-	"trac": 	("Trac",			"https://devel.rtems.org"),
-	"devel": 	("Developer Site",		"https://devel.rtems.org"),
+	"trac": 	("Trac",			"https://gitlab.rtems.org"),
+	"devel": 	("Developer Site",		"https://gitlab.rtems.org"),
 	"www":		("RTEMS Home",			"https://www.rtems.org/"),
 	"buildbot":	("Buildbot Instance",		"https://buildbot.rtems.org/"),
 	"builder":	("Builder Site",		"https://builder.rtems.org/"),
@@ -41,10 +41,9 @@ role_url = {
 	"lists":	("Mailing Lists",		"https://lists.rtems.org/"),
 	"git":		("Git Repositories",		"https://gitlab.rtems.org/"),
 	"ftp":		("FTP File Server",		"https://ftp.rtems.org/"),
-	"review":	("Gerrit Code Review",		"https://review.rtems.org/"),
-	"bugs":		("Bugs Database",		"https://devel.rtems.org/wiki/Bugs/"),
-	"gsoc":		("Google Summer of Code", 	"https://devel.rtems.org/wiki/GSoC/"),
-	"socis":	("ESA SOCIS",			"https://devel.rtems.org/wiki/SOCIS/")
+	"bugs":		("Bugs Database",		"https://gitlab.rtems.org"),
+	"gsoc":		("Google Summer of Code", 	"https://gitlab.rtems.org/rtems/programs/gsoc/"),
+	"socis":	("ESA SOCIS",			"https://gitlab.rtems.org/")
 }
 
 

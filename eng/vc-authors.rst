@@ -7,9 +7,6 @@
 Software Development (Git Writers)
 **********************************
 
-.. COMMENT: TBD - Convert https://devel.rtems.org/wiki/Developer/Git/Committers
-.. COMMENT: TBD - and insert here.
-
 .. COMMENT: TBD - Some guidelines for anyone who wishes to contribute to
 .. COMMENT: TBD - rtems... Patches? Pull Requests?...
 

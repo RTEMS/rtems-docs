@@ -352,9 +352,9 @@ sophisticated real-time applications are significantly reduced.
        `BSD 2-Clause license
        <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md>`_ for new code
        or code those copyright holder agreed to a license change, see `#3053
-       <https://devel.rtems.org/ticket/3053>`_ for the details.
+       <https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/3053>`_ for the details.
 
-.. [#] See `#2832 <https://devel.rtems.org/ticket/2832>`_.
+.. [#] See `#2832 <https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/2832>`_.
 
 .. [#] Thread-local storage requires some support by the tool chain and the
        RTEMS architecture support, e.g. context-switch code.  It is supported

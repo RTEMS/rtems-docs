@@ -6,9 +6,6 @@
 Naming Rules
 ************
 
-.. COMMENT:TBD  - Convert the following to Rest and insert into this file
-.. COMMENT:TBD  - https://devel.rtems.org/wiki/Developer/Coding/NamingRules
-
 General Rules
 -------------
 
@@ -21,7 +18,7 @@ General Rules
  *  File names should be lower-case alphabet letters only, plus the extension.
     Avoid symbols in file names.
  *  Prefer to use underscores to separate words, rather than
-    `CamelCase <https://devel.rtems.org/wiki/CamelCase>`_.or !TitleCase.
+    `CamelCase <https://en.wikipedia.org/wiki/Camel_case>`_.or !TitleCase.
  *  Local-scope variable names are all lower case with underscores between words.
  *  CPP macros are all capital letters with underscores between words.
  *  Enumerated (enum) values are all capital letters with underscores between
