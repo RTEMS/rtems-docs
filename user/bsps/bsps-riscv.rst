@@ -480,28 +480,32 @@ NIOS V
 ======
 
 This BSP supports the `NIOS V <https://www.intel.com/content/www/us/en/products/details/fpga/intellectual-property/processors-peripherals/niosv.html>`_
-systems from Intel. The NIOS V is a synthesizable verilog model of a processor that
-implements the RISC-V architecture. It is part of the Intel `Quartus Prime <https://www.intel.com/content/www/us/en/products/details/fpga/development-tools/quartus-prime.html>`_
-Design Software and free licenses can be obtained from the `Intel FPGA Self-Service Licensing Center <https://licensing.intel.com/psg/s/?language=en_US>`_.
-The following BSP variant corresponds to an example configuration of a NIOS V system running on an Intel FPGA Development Board:
+systems from Intel. The NIOS V is a synthesizable verilog model of a processor
+that implements the RISC-V architecture. It is part of the Intel `Quartus Prime <https://www.intel.com/content/www/us/en/products/details/fpga/development-tools/quartus-prime.html>`_
+Design Software and free licenses can be obtained from the `Intel FPGA Self-
+Service Licensing Center <https://licensing.intel.com/psg/s/?language=en_US>`_.
+The following BSP variant corresponds to an example configuration of a NIOS V
+system running on an Intel FPGA Development Board:
 
 * niosvc10lp - Cyclone 10 LP Evaluation Board ($99)
 
-The NIOS V IP comes in three variants: ``NIOS V/c``, ``NIOS V/m``, and ``NIOS V/g``.
-The ``NIOS V/c`` does not support an OS (no interrupt controller). The ``NIOS V/m`` is a
-bare bones CPU with an interrupt controller, trap controller, ECC module, timer,
-arihmetic logic unit, general purpose registers, control and status registers,
-instruction/data buses, and JTAG debug module. The ``NIOS V/g`` includes all the
-features of the ``NIOS V/m`` but adds an integer mul/div unit, a floating point unit,
-support for custom instructions, tightly coupled memory, and instruction/data caches. The
-floating point unit can be disabled on the NIOS V/g to save resources.
+The NIOS V IP comes in three variants: ``NIOS V/c``, ``NIOS V/m``, and
+``NIOS V/g``. The ``NIOS V/c`` does not support an OS (no interrupt controller).
+The ``NIOS V/m`` is a bare bones CPU with an interrupt controller, trap
+controller, ECC module, timer, arihmetic logic unit, general purpose registers,
+control and status registers, instruction/data buses, and JTAG debug module. The
+``NIOS V/g`` includes all the features of the ``NIOS V/m`` but adds an integer
+mul/div unit, a floating point unit, support for custom instructions, tightly
+coupled memory, and instruction/data caches. The floating point unit can be
+disabled on the NIOS V/g to save resources.
 
 Reference Designs
 -----------------
 
 The BSP has been tested on the `Intel Cyclone 10 LP Evaluation board <https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/cyclone/10-lp-evaluation-kit.html>`_.
-A ``README.md`` in the ``riscv/niosv`` BSP folder describes how the reference design was built. The reference design implemented three different variants of the
-NIOS V processor: V/m, V/g, V/g with FPU.
+A ``README.md`` in the ``riscv/niosv`` BSP folder describes how the reference
+design was built. The reference design implemented three different variants of
+the NIOS V processor: V/m, V/g, V/g with FPU.
 
 Build Configuration Options
 ---------------------------
@@ -510,36 +514,47 @@ The following options will need to be used in the BSP section of the ``waf``
 configuration INI file. The ``waf`` defaults can be used to inspect the values.
 
 ``NIOSV_EPCQ_ROM_REGION_BEGIN``
-     The starting address of the EPCQ device connected to the NIOS V (0xFFFFFFFF by default).
+     The starting address of the EPCQ device connected to the NIOS V
+     (0xFFFFFFFF by default).
 
 ``NIOSV_EPCQ_ROM_REGION_SIZE``
-    The size of the EPCQ device connected to the NIOS V (0x00000000 by default).
+    The size of the EPCQ device connected to the NIOS V
+    (0x00000000 by default).
 
 ``NIOSV_ONCHIP_ROM_REGION_BEGIN``
-     The starting address of the On-Chip ROM connected to the NIOS V (0xFFFFFFFF by default).
+     The starting address of the On-Chip ROM connected to the NIOS V
+     (0xFFFFFFFF by default).
 
 ``NIOSV_ONCHIP_ROM_REGION_SIZE``
-     The size of the On-Chip ROM connected to the NIOS V (0 by default).
+     The size of the On-Chip ROM connected to the NIOS V
+     (0 by default).
 
 ``NIOSV_ONCHIP_RAM_REGION_BEGIN``
-     The starting address of the On-Chip RAM connected to the NIOS V (0xFFFFFFFF by default).
+     The starting address of the On-Chip RAM connected to the NIOS V
+     (0xFFFFFFFF by default).
 
 ``NIOSV_ONCHIP_RAM_REGION_SIZE``
-     The size of the On-Chip RAM connected to the NIOS V (0 by default).
+     The size of the On-Chip RAM connected to the NIOS V
+     (0 by default).
 
 ``NIOSV_EXT_RAM_REGION_BEGIN``
-     The starting address of the external RAM connected to the NIOS V (0xFFFFFFFF by default).
+     The starting address of the external RAM connected to the NIOS V
+     (0xFFFFFFFF by default).
 
 ``NIOSV_EXT_RAM_REGION_SIZE``
-     The size of the external RAM connected to the NIOS V (0x00000000 by default).
+     The size of the external RAM connected to the NIOS V
+     (0x00000000 by default).
 
 ``NIOSV_IS_NIOSVG``
-     Whether or not the ``NIOS V/g`` processor is used (false by default).
+     Whether or not the ``NIOS V/g`` processor is used
+     (false by default).
 
 ``NIOSV_HAS_FP``
-     Whether or not the ``NIOS V/g`` processor has a FPU (false by default).
+     Whether or not the ``NIOS V/g`` processor has a FPU
+     (false by default).
 
-**Building the Cyclone 10 LP BSP**
+Building the Cyclone 10 LP BSP
+------------------------------
 
 Configuration file ``config.ini`` for NIOS V/m:
 
@@ -596,9 +611,10 @@ Build RTEMS:
     $ ./waf configure --prefix=$HOME/rtems-start/rtems/@rtems-ver-major@
     $ ./waf
 
-**Program Cyclone 10 LP Evaluation Board**
+Program Cyclone 10 LP Evaluation Board
+--------------------------------------
 
-The ``README.md`` file in the ``riscv/niosv`` BSP folder describes how to build the FPGA configuration file,
-On-Chip ROM boot loader to load an executable from the EPCQ device to external RAM, an application
-executable, and a ``rtems_xx.jic`` file for programming onto the EPCQ device using the Quartus
-programmer.
+The ``README.md`` file in the ``riscv/niosv`` BSP folder describes how to build
+the FPGA configuration file, On-Chip ROM boot loader to load an executable from
+the EPCQ device to external RAM, an application executable, and a ``rtems_xx.jic``
+file for programming onto the EPCQ device using the Quartus programmer.
