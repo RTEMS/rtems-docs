@@ -432,14 +432,14 @@ Commit Message Guidance
 
 The commit message associated with a change to any software project
 is of critical importance. It is the explanation of the change and the
-rationale for it. Future users looing back through the project history
+rationale for it. Future users looking back through the project history
 will rely on it. Even the author of the change will likely rely on it
 once they have forgotten the details of the change. It is important to
 make the message useful. Here are some guidelines followed by the RTEMS
 Project to help improve the quality of our commit messages.
 
 * When committing a change the first line is a summary. Please make it short
-  while hinting at the nature of the change. You can discuses the change
+  while hinting at the nature of the change. You can discuss the change
   if you wish in a ticket that has a PR number which can be referenced in
   the commit message. After the first line, leave an empty line and add
   whatever required details you feel are needed.
