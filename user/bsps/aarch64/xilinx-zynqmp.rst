@@ -8,8 +8,8 @@
 .. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_zu3eg:
 .. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_cfc400x:
 
-Qemu Xilinx ZynqMP
-==================
+Xilinx ZynqMP
+=============
 
 This BSP family supports the following variants:
 
