@@ -480,7 +480,7 @@ NIOS V
 ======
 
 This BSP supports the `NIOS V <https://www.intel.com/content/www/us/en/products/details/fpga/intellectual-property/processors-peripherals/niosv.html>`_
-systems from Intel. The NIOS V is a synthesizable verilog model of a processor
+systems from Intel. The NIOS V is a synthesizable Verilog model of a processor
 that implements the RISC-V architecture. It is part of the Intel `Quartus Prime <https://www.intel.com/content/www/us/en/products/details/fpga/development-tools/quartus-prime.html>`_
 Design Software and free licenses can be obtained from the `Intel FPGA Self-
 Service Licensing Center <https://licensing.intel.com/psg/s/?language=en_US>`_.
