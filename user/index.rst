@@ -23,6 +23,8 @@ RTEMS User Manual (|version|).
     | |copy| 2012, 2022 Chris Johns
     | |copy| 2012, 2020 Gedare Bloom
     | |copy| 1988, 2018 On-Line Applications Research Corporation (OAR)
+    | |copy| 2024 Suraj Kumar
+    
 
     .. include:: ../common/license.rst
 
@@ -44,6 +46,7 @@ RTEMS User Manual (|version|).
     bsps/index
 
     exe/index
+    debugging/index
     testing/index
     tracing/index
 

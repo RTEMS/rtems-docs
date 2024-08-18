@@ -19,6 +19,5 @@ execiutable, and creating and dynamically loading code.
    executables
    execution
    initialization
-   debugging
    loader
    device-tree
