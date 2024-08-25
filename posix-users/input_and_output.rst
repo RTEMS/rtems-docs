@@ -851,8 +851,13 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
    - Invalid aio_reqprio, aio_offset, or aio_nbytes.
  * - ``EAGAIN``
    - Not enough memory to queue the request.
+ * - ``EAGAIN``
+   - the addition of a new request to the queue would violate
+     the ``RTEMS_AIO_MAX`` limit.
  * - ``EINVAL``
    - The starting position is past the maximum offset for the file.
+ * - ``EINVAL``
+   - ``aiocbp->aio_sigevent`` does not point to a valid sigevent struct.
  * - ``EINVAL``
    - ``aiocbp`` is a NULL pointer.
 
@@ -877,7 +882,7 @@ aio_write - Asynchronous Write
 
 **CALLING SEQUENCE:**
 
-.. code-block:: con wich the operatiopn requested to be eliminated are gonna operate.
+.. code-block:: c
 
     #include <aio.h>
     int aio_write(
@@ -894,10 +899,15 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
 
  * - ``EBADF``
    - The file descriptor is not open for writing.
- * - ``EINVAL``on wich the operatiopn requested to be eliminated are gonna operate.
+ * - ``EINVAL``
    - Invalid aio_reqprio, aio_offset, or aio_nbytes.
  * - ``EAGAIN``
    - Not enough memory to queue the request.
+ * - ``EAGAIN``
+   - the addition of a new request to the queue would violate
+     the ``RTEMS_AIO_MAX`` limit.
+ * - ``EINVAL``
+   - ``aiocbp->aio_sigevent`` does not point to a valid sigevent struct.
  * - ``EINVAL``
    - ``aiocbp`` is a NULL pointer.
 
@@ -934,14 +944,30 @@ lio_listio - List Directed I/O
 
 **STATUS CODES:**
 
-If the requests are succesfully enqueued, zero is returned.
+If the call to ``lio_listio`` is successful, zero is returned.
 On error, this routine returns -1 and sets ``errno`` to one of the following:
 
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EAGAIN``
+   - The call failed due to resources limitations.
+ * - ``EAGAIN``
+   - The number of entries indicated by nent value would cause the 
+     ``RTEMS_AIO_MAX`` limit to be excedeed.
+ * - ``EINVAL``
+   - list is a ``NULL`` pointer.
+ * - ``EINVAL``
+   -  ``mode`` is not a valid value.
+ * - ``EINVAL``
+   - the value of ``nent`` is not valid or higher than ``AIO_LISTIO_MAX``.
+ * - ``EINVAL``
+   - the ``sigevent`` struct pointed by ``sig`` is not valid.
+ * - ``EINTR``
+   - The wait for list completion during a ``LIO_WAIT`` operation was 
+     interrupted by an external event.
+ * - ``EIO``
+   - One or more of the individual I/O operations failed.
 
 **DESCRIPTION:**
 
@@ -950,12 +976,22 @@ multiple asynchronous I/O operations.
 
 Each operation is described by an ``aiocb`` structure in the array ``list``.
 
-The ``mode`` parameter determines whether the operations are submitted
-simultaneously or sequentially.
+The ``mode`` parameter determines when the function will return.
+If ``mode`` is ``LIO_WAIT`` the function returns when the I/O operation have
+completed, if ``mode`` is ``LIO_NOWAIT`` the function returns after enqueueing
+the operations.
+
+If ``mode`` is ``LIO_NOWAIT``, the sigevent struct pointed by ``sig`` is used to
+notify list completion. 
 
 **NOTES:**
 
-This routine is not currently supported by RTEMS.
+When the ``mode`` is ``LIO_NOWAIT`` and the ``sigev_notify`` field of ``sig``
+is set to ``SIGEV_SIGNAL``, a signal is sent to the process to notify the 
+completion of the list. Since each RTEMS application is logically a single POSIX
+process, if the user wants to wait for the signal (using, for example,
+``sigwait()``), it is necessary to ensure that the signal is blocked by every 
+thread.
 
 .. _aio_error:
 
@@ -1159,10 +1195,15 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
 
  * - ``EAGAIN``
    - The operation could not be queued due to temporary resource limitations.
+ * - ``EAGAIN``
+   - the addition of a new request to the queue would violate
+     the ``RTEMS_AIO_MAX`` limit.
  * - ``EBADF``
    - The aio_fildes member of aiocbp is not a valid file descriptor.
  * - ``EINVAL``
-   - A value of op other than O_SYNC was specified.
+   - A value of op other than O_SYNC or O_DSYNC was specified.
+ * - ``EINVAL``
+   - ``aiocbp->aio_sigevent`` does not point to a valid sigevent struct.
  * - ``EINVAL``
    - ``aiocbp`` is a NULL pointer.
 
@@ -1170,11 +1211,12 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
 
 The ``aio_fsync()`` function initiates an asynchronous file sync operation.
 ``op`` specifies what kind of synchronization should be performed.
-If ``op`` is ``O_DSYNC``, all currently queued I/O operations shall be
-synchronized as if by a call to ``fdatasync()``.
 If ``op`` is ``O_SYNC``, all currently queued I/O operations shall be
 synchronized as if by a call to ``fsync()``.
+If ``op`` is ``O_DSYNC``, all currently queued I/O operations shall be
+synchronized as if by a call to ``fdatasync()``.
 
 **NOTES:**
 
-Currently ``O_DSYNC`` is not supported.
+Currently, ``O_DSYNC`` and ``O_SYNC`` are mapped to the same value.
+As a result, every file will be synced as if by a call to ``fsync()``.
