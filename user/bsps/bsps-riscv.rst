@@ -1,6 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2018 embedded brains GmbH & Co. KG
+.. Copyright (c) 2024 Purva Yeshi <purvayeshi550@gmail.com>
 
 riscv (RISC-V)
 **************
@@ -414,6 +415,169 @@ following command:
 The dtb file can then be converted to a C array using the rtems-bin2c tool.
 The data for the device tree binary can then replace the existing device tree
 binary data in the ``kendryte-k210-dtb.h`` header file.
+
+BeagleV-Fire
+-------------
+
+The BeagleV-Fire board is equipped with the Microchip’s PolarFire MPFS025T System on Chip (SoC), featuring a 5-core configuration. It includes 4 RV64GC cores for U54 and 1 RV64IMAC core for E51.
+
+Francescodario Cuzzocrea created a Base BSP for BeagleV-Fire board with Clock, IRQs, Console and UART support, which can find in the `bvf branch <https://github.com/fcuzzocrea/rtems/tree/bvf>`__.
+
+BeagleV-Fire supports the riscv/beaglevfire BSP variant.
+
+Building upon base BSP work to further enhance the functionality and compatibility of the `BSP <https://github.com/purviyeshi/rtems/tree/bvf>`__ for uni-processing and multi-processing.
+
+**Configure the BSP:** Following section in the INI-style configuration
+file, config.ini instructs the build system to build a
+``riscv/beaglevfire`` BSP variant
+
+.. code:: shell
+
+   $ cd $HOME/quick-start/src/rtems
+
+   $ echo "[riscv/beaglevfire]" > config.ini
+   $ echo "BUILD_TESTS = True" >> config.ini
+   $ echo "RTEMS_POSIX_API = True" >> config.ini
+   $ echo "RTEMS_SMP = False" >> config.ini
+   $ echo "BSP_START_COPY_FDT_FROM_U_BOOT = False" >> config.ini
+   $ echo "BSP_VERBOSE_FATAL_EXTENSION = False" >> config.ini
+
+The BeagleV-Fire supports Symmetric Multiprocessing (SMP) with its
+quad-core configuration. SMP enables efficient parallel processing
+across multiple cores, enhancing performance for multi-threaded
+applications.
+
+``RTEMS_SMP``: Set to ``False`` to run the system in uniprocessor mode,
+where only one core (e.g., U54_1) handles processing. This mode is
+suitable for scenarios where multiprocessing is not required or not
+supported.
+
+To enable multiprocessing and utilize all available cores, set
+``RTEMS_SMP = True`` in config.ini. This configuration allows the
+BeagleV-Fire to utilize all cores efficiently for parallel processing
+tasks.
+
+**Build RTEMS:**
+
+.. code:: shell
+
+   $ ./waf configure --prefix=$HOME/rtems-start/rtems/6
+   $ ./waf
+
+**Convert .exe to .elf file:**
+
+.. code:: shell
+
+   $ riscv-rtems6-objcopy build/riscv/beaglevfire/testsuites/samples/hello.exe build/riscv/beaglevfire/testsuites/samples/hello.elf
+
+**Generate a payload for the hello.elf using
+the**\ `hss-payload-generator <https://github.com/polarfire-soc/hart-software-services/tree/master/tools/hss-payload-generator>`__
+
+-  Copy hello.elf file to the HSS/tools/hss-payload-generator/test
+   directory.
+-  Go to hss-payload-generator source directory.
+
+.. code:: shell
+
+   $ cd hart-software-services/tools/hss-payload-generator
+
+-  Edit test/hss.yaml file for the hart entry points and correct name
+   of the binary file.
+
+   The HSS repository has been forked, and the modified test/hss.yaml file is directly accessible `here <https://github.com/purviyeshi/hart-software-services.git>`__
+
+For ``uni-processing``:
+
+.. code:: none
+
+   set-name: 'PolarFire-SoC-HSS::RTEMS'
+   hart-entry-points: {u54_1: '0x1000000000'}
+   payloads:
+     test/hello.elf: {exec-addr: '0x1000000000', owner-hart: u54_1, priv-mode: prv_m, skip-opensbi: true}
+
+For ``multi-processing``:
+
+.. code:: none
+
+   set-name: 'PolarFire-SoC-HSS::RTEMS'
+   hart-entry-points: {u54_1: '0x1000000000', u54_2: '0x1000000000', u54_3: '0x1000000000', u54_4: '0x1000000000'}
+   payloads:
+     test/hello.elf: {exec-addr: '0x1000000000', owner-hart: u54_1, secondary-hart: u54_2, secondary-hart: u54_3, secondary-hart: u54_4, priv-mode: prv_m, skip-opensbi: true}
+
+Generate payload:
+
+.. code:: shell
+
+   $ ./hss-payload-generator -c test/uboot.yaml payload.bin
+
+Once the payload binary is generated, it should be copied to the
+eMMC/SD.
+
+**Program the eMMC/SD with the payload binary:**
+
+-  Setting Up UART Communication from the Host PC
+
+   1. List USB Serial Devices
+
+   .. code:: shell
+
+      $ ls /dev | grep -i ttyusb
+
+   This command lists all connected USB serial devices. Look for
+   ``ttyUSB0`` or similar entries
+
+   2. Modify the permissions of the identified USB serial device to
+      allow read and write access
+
+   .. code:: shell
+
+      $ sudo chmod 777 /dev/ttyUSB0
+
+   3. Start a terminal session with the specified USB serial device at a
+      baud rate of ``115200``. This opens a communication channel
+      between your host PC and the connected device
+
+   .. code:: shell
+
+      $ screen /dev/ttyUSB0 115200
+
+-  Power up BeagleV-Fire board and stop at the HSS by pressing any key
+   from keyboard (eg. Press ``ENTER``)
+
+-  Enter HSS CLI commands
+
+   .. code:: shell
+
+      $ MMC
+
+   .. code:: shell
+
+      $ USBDMSC
+
+   These commands switch the HSS to handle MMC (MultiMediaCard) and USB
+   Device Mass Storage Class operations, preparing it for the binary
+   payload transfer.
+
+-  Load the Payload from Host PC, use the ``dd`` command to
+   copy the payload binary to the eMMC/SD card. 
+   Ensure the correct device path for eMMC/SD card. In most cases it is ``/dev/sdb``
+
+   .. code:: shell
+
+      $ sudo dd if=payload.bin of=/dev/sdb bs=512
+
+**Reset the BeagleV-Fire board and check the output**
+
+.. code:: none
+
+   *** BEGIN OF TEST HELLO WORLD ***
+   *** TEST VERSION: 6.0.0
+   *** TEST STATE: EXPECTED_PASS
+   *** TEST BUILD: RTEMS_POSIX_API
+   *** TEST TOOLS: 13.2.0 20230727 (RTEMS 6, RSB d24131ac781eeff8be5a4a5fd185d1be20176461, Newlib 176b19f)
+   Hello World
+
+   *** END OF TEST HELLO WORLD ***
 
 noel
 ====
