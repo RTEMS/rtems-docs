@@ -950,6 +950,8 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
 .. list-table::
  :class: rtems-table
 
+ * - ``ENOSYS``
+   - The project has been build with RTEMS_POSIX_API not defined.
  * - ``EAGAIN``
    - The call failed due to resources limitations.
  * - ``EAGAIN``
@@ -992,6 +994,9 @@ completion of the list. Since each RTEMS application is logically a single POSIX
 process, if the user wants to wait for the signal (using, for example,
 ``sigwait()``), it is necessary to ensure that the signal is blocked by every 
 thread.
+
+This function is only available when ``RTEMS_POSIX_API`` is defined. To do so,
+it's necessary to add ``RTEMS_POSIX_API = True`` to the ``config.ini`` file.
 
 .. _aio_error:
 
