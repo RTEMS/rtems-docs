@@ -11,20 +11,21 @@
 beagle
 ======
 
-This BSP supports four variants, `beagleboardorig`, `beagleboardxm`,
-`beaglebonewhite` and `beagleboneblack`. The basic hardware initialization is
-not performed by the BSP.  A boot loader with device tree support must be used
-to start the BSP, e.g., U-Boot.
+This BSP supports four variants, `beagleboardorig` (for the original
+BeagleBoard), `beagleboardxm` (for the BeagleBoard-xM), `beaglebonewhite` (for
+the original BeagleBone) and `beagleboneblack` (for the BeagleBone Black). The
+`beagleboneblack` should also work for the PocketBeagle.
 
-TODO(These drivers are present but not documented yet):
+Currently the only distinction in the BSP are between the `beagleboards` and
+the `beaglebones`, but the 4 names are specified in case hardware-specific
+distinctions are made in the future, so this can be done without changing the
+usage.
 
- *  Clock driver.
- *  Network Interface Driver.
- *  SDcard driver.
- *  GPIO Driver.
- *  Console driver.
- *  PWM Driver.
- *  RTC driver.
+Note that the `beagleboards` are not well tested because the hardware isn't
+available any more. Expect that some drivers won't work out of the box.
+
+The basic hardware initialization is not performed by the BSP.  A boot loader
+with device tree support must be used to start the BSP, e.g., U-Boot.
 
 Boot via U-Boot
 ---------------
@@ -36,8 +37,10 @@ To boot via uboot, the ELF must be converted to a U-Boot image like below:
     gzip -9 app.bin
     mkimage -A arm -O linux -T kernel -a 0x80000000 -e 0x80000000 -n RTEMS -d app.bin.gz rtems-app.img
 
+All beagles have memory starting at 0x80000000 so the load & run syntax is the same.
+
 Getting the Device Tree Blob
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Device Tree Blob (DTB) is needed to load the device tree while starting up
 the kernel. We build the dtb from the FreeBSD source matching the commit hash
@@ -50,7 +53,7 @@ Please refer to the :ref:`DeviceTree` to know more about building and applying
 the Device Trees.
 
 Writing the uEnv.txt file
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The uEnv.txt file is needed to set any environment variable before the kernel is
 loaded. Each line is a u-boot command that the uboot will execute during start
@@ -64,8 +67,67 @@ Add the following to a file named uEnv.txt:
      uenvcmd=run boot
      boot=fatload mmc 0 0x80800000 rtems-app.img ; fatload mmc 0 0x88000000 am335x-boneblack.dtb ; bootm 0x80800000 - 0x88000000
 
+Booting from SD
+~~~~~~~~~~~~~~~
+
+You can either use the U-Boot that is on the on-board eMMC of the BeagleBone.
+For that, copy the generated ``rtems-app.img``, the ``am335x-boneblack.dtb``
+device tree and the ``uEnv.txt`` to a FAT formatted SD card. Any recent enough
+U-Boot will pick up the ``uEnv.txt`` and boot based on that.
+
+If you want to boot purely from SD card (you have to clear the on-board eMMC for
+that) or if you want to write the application to the eMMC, you additionally need
+the ``MLO`` and ``u-boot.img`` on your SD card. You can get these either by
+building U-Boot yourself. Or you an get them from one of the pre-build images
+that you can download from beagleboard.org.
+
+Booting via Network
+~~~~~~~~~~~~~~~~~~~
+
+The Beagle can also be booted via a TFTP server. To do that using an U-Boot
+console on the BeagleBones, use the following commands:
+
+.. code-block:: none
+
+    uboot# setenv ipaddr 192.168.12.20
+    uboot# setenv serverip 192.168.12.10
+    uboot# echo starting from TFTP
+    uboot# tftp 0x88000000 am335x-boneblack.dtb
+    uboot# tftp 0x80800000 rtems-app.img
+    uboot# dcache off ; icache off
+    uboot# bootm 0x80800000 - 0x88000000
+
+The BeagleBoards use Ethernet over USB. Therefore the commands are a bit
+different. Note that these commands haven't been tested recently and you might
+have to add a devicetree similar to the BeagleBone:
+
+.. code-block:: none
+
+    uboot# setenv serverip 192.168.12.10
+    uboot# setenv ipaddr 192.168.12.62
+    uboot# setenv usbnet_devaddr e8:03:9a:24:f9:10
+    uboot# setenv usbethaddr e8:03:9a:24:f9:11
+    uboot# usb start
+    uboot# echo starting from TFTP
+    uboot# tftp 0x80800000 rtems-app.img
+    uboot# dcache off ; icache off
+    uboot# bootm 0x80800000
+
+Drivers
+-------
+
+TODO(These drivers are present but not documented yet):
+
+ *  Clock driver.
+ *  Network Interface Driver.
+ *  SDcard driver.
+ *  GPIO Driver.
+ *  Console driver.
+ *  PWM Driver.
+ *  RTC driver.
+
 I2C Driver
-----------
+~~~~~~~~~~
 
 The Beagle i2c initialization is based on the device tree. To initialize a i2c
 device, the user has to enable the respective node in the device tree using
@@ -102,7 +164,7 @@ For example,
 The above example registers a custom path `/dev/i2c-eeprom` for i2c0.
 
 SPI Driver
-----------
+~~~~~~~~~~
 
 The SPI device `/dev/spi-0` can be registered with ``bbb_register_spi_0()``
 
@@ -241,3 +303,62 @@ card or from eMMC. It defines a ``reset`` command that does the following:
 This method has the advantage that the application is executed in nearly the
 same environment like it would be executed if loaded by U-Boot directly (except
 for the watchdog).
+
+Debugging using a JTAG debugger and gdb without any bootcode
+------------------------------------------------------------
+
+Note: These instructions haven't been tested for quite some time. So you maybe
+have to adapt them. If possible, prefer the method with a dummy application
+described above.
+
+To run RTEMS from scratch (without any other bootcode) on the beagles,
+you can comfortably load the executables over JTAG using gdb. This is
+necessarily target-specific however.
+
+1. BBXM
+
+    * For access to JTAG using openocd, see simscripts/bbxm.cfg.
+    * openocd then offers access to gdb using simscripts/gdbinit.bbxm.
+    * start openocd using bbxm.cfg
+    * copy your .exe to a new dir and that gdbinit file as .gdbinit in the same
+      dir
+    * go there and start gdb:
+      $ arm-rtems4.11-gdb hello.exe
+    * gdb will invoke the BBXM hardware initialization in the bbxm.cfg
+      and load the ELF over JTAG. type 'c' (for continue) to run it.
+    * breakpoints, C statement and single-instruction stepping work.
+
+2. beaglebone white
+
+   This has been tested with openocd and works but not in as much detail as for
+   the BBXM yet (i.e. loading an executable from scratch).
+
+Testing
+-------
+
+Note: These instructions haven't been tested for quite some time. So you maybe
+have to adapt them. Please update the documentation if you find bugs.
+
+To build and run the tests for this BSP, use the RTEMS tester.
+The necessary software can be built with the RTEMS source builder.
+
+To build the BSP for testing:
+
+* set CONSOLE_POLLED=1 in the configure environment, some tests
+  assume console i/o is polled
+* Enable the tests during BSP configuration
+
+Then you can run the tests:
+
+1. Qemu
+
+   Linaro Qemu can emulate the beagleboard xm and so run all regression
+   tests in software. Build the bbxm.bset from the RTEMS source builder and
+   you will get qemu linaro that can run them. There is a beagleboardxm_qemu
+   bsp in the RTEMS tester to invoke it with every test.
+
+2. bbxm hardware
+
+   This requires JTAG, see README.JTAG. Use the beagleboardxm bsp in the
+   RTEMS tester. It starts gdb to connect to openocd to reset the target
+   and load the RTEMS executable for each test iteration.
