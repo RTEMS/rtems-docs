@@ -54,5 +54,6 @@ RTEMS User Manual (|version|).
     tools/index
     rsb/index
     rust/index
+    package/index
 
     glossary/index

@@ -34,8 +34,7 @@ build_all = ['user',
              'filesystem',
              'shell',
              'cpu-supplement',
-             'develenv',
-             'legacy-networking']
+             'develenv']
 
 building = build_all
 
