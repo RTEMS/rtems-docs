@@ -12,3 +12,6 @@ drivers or new subsystems for it.
 
 FIXME: This documentation is still under construction. Contributions are
 welcome.
+
+.. toctree::
+    network_drivers

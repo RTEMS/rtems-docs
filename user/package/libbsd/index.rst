@@ -25,3 +25,4 @@ welcome.
 
 .. toctree::
 	usage/index
+	drivers/index
