@@ -19,4 +19,6 @@ separately and alternative stacks have been added as separate packages.
 
 .. toctree::
 
+    lwip/index
+    libbsd/index
     legacy-networking/index
