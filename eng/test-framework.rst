@@ -2415,9 +2415,10 @@ clang.  This violates `TF.Portability.C11`.
 Google Test
 -----------
 
-`Google Test 1.8.1 <https://git.rtems.org/sebh/rtems-gtest.git/>`_
-is supported by RTEMS.  Unfortunately, it is written in C++ and is to heavy
-weight for low-end platforms.  Otherwise it is a nice framework.
+`Google Test 1.8.1 <https://ftp.rtems.org/pub/rtems/archive/misc/rtems/rtems-gtest-2018-11-15.tar.xz>`_
+was supported by RTEMS.  Unfortunately, it is written in C++ and is too heavy
+weight for low-end platforms.  Otherwise it is a nice framework. We have
+archived it in case someone wants to try to bring it back.
 
 Unity
 -----
