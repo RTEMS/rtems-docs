@@ -7,12 +7,31 @@
 Xilinx ZynqMP RPU
 =================
 
-This BSP supports the Cortex-R5 processor on the Xilinx Zynq UltraScale+ MPSoC
-platform. Basic hardware initialization is performed by the Cortex-R5 FSBL and
-the BSP. This BSP supports the GICv2 interrupt controller available to the
-Cortex-R5 subsystem. Since the Cortex-R5 subsystem only varies in speed, this
-BSP should be functional across all chip variants as well as on Xilinx's QEMU
-branch. SMP operation is not currently supported.
+This BSP supports the Real-time Processing Unit (RPU) on the Xilinx Zynq
+UltraScale+ MPSoC and RFSoC platforms. The RPU has two Cortex-R5 cores which
+can operate in lock-step or split mode.  Basic hardware initialization is
+performed by the Cortex-R5 FSBL and the BSP. This BSP supports the GICv2
+interrupt controller available to the RPU subsystem. Since the RPU subsystem
+only varies in speed, this BSP should be functional across all chip variants as
+well as on Xilinx's QEMU branch. There are three BSP variants available for
+customization:
+
+* ``zynqmp_rpu_lock_step``
+
+* ``zynqmp_rpu_split_0``
+
+* ``zynqmp_rpu_split_1``
+
+The ``zynqmp_rpu_lock_step`` BSP variant is intended to be used for the RPU in
+lock-step mode.  In this case, the ATCM and BTCM will be used as a combined
+memory area for code and data.  The ``zynqmp_rpu_split_0`` and
+``zynqmp_rpu_split_1`` BSP variants are intended to be used for the RPU in
+split mode for core 0 and 1 respectively.  The core 0 variant initializes the
+GIC distributor.  The core 1 variants waits for the GIC distributor
+initialization done by core 0 during the system initialization.  The DDR RAM is
+a shared resource and should be used according to applications-specific
+requirements.  The default BSP settings for the DDR RAM usage aimed at testing
+the BSP variants.
 
 Clock Driver
 ------------
