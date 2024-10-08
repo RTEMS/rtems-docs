@@ -503,25 +503,12 @@ in stable Rust:
     rustup toolchain add nightly
     rustup component add rust-src --toolchain=nightly
 
-.. note::
-    The ``--release`` option in the following ``cargo`` command is a
-    workaround for a bug which appeared in August 2024 in the Rust
-    compiler. When the bug is fixed, it is unnecessary and can
-    be removed. In that case, the library path in the linker
-    command below:
-
-        ``-Lhello-rtems/target/sparc-unknown-none-elf/release``
-
-    must also be replaced by:
-
-        ``-Lhello-rtems/target/sparc-unknown-none-elf/debug``
-
 Compile the Rust source file into a static library:
 
 .. code-block:: shell
 
     cd hello-rtems
-    cargo +nightly build --release --target=sparc-unknown-none-elf
+    cargo +nightly build --target=sparc-unknown-none-elf
     cd ..
 
 It should create
@@ -540,7 +527,7 @@ together into an executable:
 
     sparc-rtems@rtems-ver-major@-gcc init_sparc.o \
         -qnolinkcmds -T linkcmds.leon3 \
-        -Lhello-rtems/target/sparc-unknown-none-elf/release \
+        -Lhello-rtems/target/sparc-unknown-none-elf/debug \
         -lhello_rtems \
         -ohello_rtems_sparc.exe \
         $(pkg-config --libs ${PKG_CONFIG_SPARC})
