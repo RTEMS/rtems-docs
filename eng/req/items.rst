@@ -1,6 +1,6 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019, 2023 embedded brains GmbH & Co. KG
+.. Copyright (C) 2019, 2024 embedded brains GmbH & Co. KG
 
 .. This file is part of the RTEMS quality process and was automatically
 .. generated.  If you find something that needs to be fixed or
@@ -224,12 +224,16 @@ Build Item Type
 
 This type refines the :ref:`SpecTypeRootItemType` through the ``type``
 attribute if the value is ``build``. This set of attributes specifies a build
-item. All explicit attributes shall be specified. The explicit attributes for
-this type are:
+item. Only the ``build-type`` attribute is mandatory. The explicit attributes
+for this type are:
 
 build-type
     The attribute value shall be a :ref:`SpecTypeName`. It shall be the build
     item type.
+
+extra-files
+    The attribute value shall be a list of strings. If the value is present, it
+    shall be the list of extra files associated with the item.
 
 This type is refined by the following types:
 
@@ -744,10 +748,10 @@ actions
 
 default
     The attribute value shall be a list. Each list element shall be a
-    :ref:`SpecTypeBuildOptionDefaultValue`. It shall be the list of default
-    values of the option.  When a default value is needed, the first value on
-    the list which is enabled according to the enabled set is choosen.  If no
-    value is enabled, then the default value is ``null``.
+    :ref:`SpecTypeBuildOptionValue`. It shall be the list of default values of
+    the option.  When a default value is needed, the first value on the list
+    which is enabled according to the enabled set is chosen.  If no value is
+    enabled, then the default value is ``null``.
 
 description
     The attribute value shall be an optional string. It shall be the
@@ -3403,6 +3407,10 @@ check-cxx
     The attribute value shall be a
     :ref:`SpecTypeBuildOptionCXXCompilerCheckAction`.
 
+comment
+    The attribute value shall be a string. There is no action performed.  The
+    attribute value is a comment.
+
 define
     The attribute value shall be an optional string. The action adds a define
     to the configuration set.  If the attribute value is present, then it is
@@ -3498,8 +3506,13 @@ set-test-state
     :ref:`SpecTypeBuildOptionSetTestStateAction`.
 
 set-value
-    The attribute value shall be a :ref:`SpecTypeBuildOptionValue`. The action
-    sets the action value for subsequent actions to the attribute value.
+    The attribute value may have any type. The action sets the action value for
+    subsequent actions to the attribute value.
+
+set-value-enabled-by
+    The attribute value shall be a list. Each list element shall be a
+    :ref:`SpecTypeBuildOptionValue`. The action sets the action value for
+    subsequent actions to the first enabled attribute value.
 
 split
     The attribute shall have no value. The action splits the action value.
@@ -3564,25 +3577,6 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildOptionAction`
 
-.. _SpecTypeBuildOptionDefaultValue:
-
-Build Option Default Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This set of attributes specifies a build option default value. All explicit
-attributes shall be specified. The explicit attributes for this type are:
-
-enabled-by
-    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`.
-
-value
-    The attribute value shall be a :ref:`SpecTypeBuildOptionValue`. Its value
-    shall be the default value for the associated enabled-by expression.
-
-This type is used by the following types:
-
-* :ref:`SpecTypeBuildOptionItemType`
-
 .. _SpecTypeBuildOptionName:
 
 Build Option Name
@@ -3629,23 +3623,22 @@ This type is used by the following types:
 Build Option Value
 ^^^^^^^^^^^^^^^^^^
 
-A value of this type shall be of one of the following variants:
+This set of attributes specifies an optional build option value. All explicit
+attributes shall be specified. The explicit attributes for this type are:
 
-* The value may be a boolean.
+enabled-by
+    The attribute value shall be an :ref:`SpecTypeEnabledByExpression`.
 
-* The value may be an integer number.
-
-* The value may be a list. Each list element shall be a string.
-
-* There may be no value (null).
-
-* The value may be a string.
+value
+    The attribute value may have any type. If the associated enabled-by
+    expression evaluates to true for the current enabled set, then the
+    attribute value is active and may get selected.
 
 This type is used by the following types:
 
 * :ref:`SpecTypeBuildOptionAction`
 
-* :ref:`SpecTypeBuildOptionDefaultValue`
+* :ref:`SpecTypeBuildOptionItemType`
 
 .. _SpecTypeBuildSource:
 
@@ -3833,7 +3826,7 @@ This type is used by the following types:
 
 * :ref:`SpecTypeBuildDependencyConditionalLinkRole`
 
-* :ref:`SpecTypeBuildOptionDefaultValue`
+* :ref:`SpecTypeBuildOptionValue`
 
 * :ref:`SpecTypeEnabledByExpression`
 
