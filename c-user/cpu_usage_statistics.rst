@@ -12,7 +12,7 @@ Introduction
 
 The CPU usage statistics manager is an RTEMS support component that provides a
 convenient way to manipulate the CPU usage information associated with each
-task The routines provided by the CPU usage statistics manager are:
+task.  The routines provided by the CPU usage statistics manager are:
 
 - rtems_cpu_usage_report_ - Report CPU Usage Statistics
 
@@ -152,8 +152,7 @@ STATUS CODES:
 DESCRIPTION:
     This routine re-initializes the CPU usage statistics for all tasks in the
     system to their initial state.  The initial state is that a task has not
-    executed and thus has consumed no CPU time.  default state which is when
-    zero period executions have occurred.
+    executed and thus has consumed no CPU time.
 
 NOTES:
     NONE
