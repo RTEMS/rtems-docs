@@ -14,7 +14,7 @@ Introduction
 ============
 
 Linker sets are a flexible means to create arrays of items out of a set of
-object files at link-time.  For example its possible to define an item *I* of
+object files at link-time.  For example it is possible to define an item *I* of
 type *T* in object file *A* and an item *J* of type *T* in object file *B* to
 be a member of a linker set *S*.  The linker will then collect these two items
 *I* and *J* and place them in consecutive memory locations, so that they can be
@@ -81,10 +81,10 @@ linker set consists of
 
 - a begin marker (e.g. provided by ``crtbegin.o``, and
 
-- an end marker (e.g. provided by ``ctrend.o``).
+- an end marker (e.g. provided by ``crtend.o``).
 
 A module may place a certain data item into the dedicated input section.  The
-linker will collect all such data items in this section and creates a begin and
+linker will collect all such data items in this section and create a begin and
 end marker.  The initialization code can then use the begin and end markers to
 find all the collected data items (e.g. pointers to initialization functions).
 
@@ -110,7 +110,7 @@ input sections lexicographically.  Please note the lexicographical order of the
 sets macros which ensures that the position of the begin and end markers are
 right.
 
-So, what is the benefit of using linker sets to initialize modules?  It can be
+So, what is the benefit of using linker sets to initialize modules?  They can be
 used to initialize and include only those RTEMS managers and other components
 which are used by the application.  For example, in case an application uses
 message queues, it must call ``rtems_message_queue_create()``.  In the module
