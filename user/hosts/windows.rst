@@ -155,6 +155,7 @@ The packages we require are:
 
 * python
 * mingw-w64-x86_64-python2
+* mingw-w64-x86_64-python3
 * mingw-w64-x86_64-gcc
 * flex
 * git
@@ -176,11 +177,24 @@ Install the packages using ``pacman``:
 
 .. code-block:: none
 
-  $ pacman -S python mingw-w64-x86_64-python2 mingw-w64-x86_64-gcc \
+  $ pacman -S python mingw-w64-x86_64-python3 mingw-w64-x86_64-python2 \
+  mingw-w64-x86_64-gcc \
   bison flex cvs diffutils git make patch tar texinfo unzip
   resolving dependencies...
   looking for conflicting packages...
       .... output shortened for brevity ....
+
+The base installer executable puts the compiler you want to use in
+``/mingw64/bin`` which needs to be added to the beginning of your ``PATH``.
+You can do that for example by adding this line to the end of
+``${HOME}/.bashrc``:
+
+.. code-block:: none
+
+  export PATH=/mingw64/bin:$PATH
+
+You will also likely want to add to ``PATH`` the ``bin`` directory of the prefix where you plan
+to install RTEMS.
 
 .. _Cygwin:
 
