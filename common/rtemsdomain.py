@@ -43,7 +43,8 @@ role_url = {
 	"ftp":		("FTP File Server",		"https://ftp.rtems.org/"),
 	"bugs":		("Bugs Database",		"https://gitlab.rtems.org"),
 	"gsoc":		("Google Summer of Code", 	"https://gitlab.rtems.org/rtems/programs/gsoc/"),
-	"socis":	("ESA SOCIS",			"https://gitlab.rtems.org/")
+	"socis":	("ESA SOCIS",			"https://gitlab.rtems.org/"),
+	"user":		("RTEMS User Manual",	"https://docs.rtems.org/branches/master/user/index.html"),
 }
 
 
@@ -67,7 +68,7 @@ def rtems_resolve_role(name, rawtext, text, lineno, inliner, options={}, content
 			text, url = role_url[text]
 	except KeyError:
 		msg = inliner.reporter.error("rtems_resolve_role: '%s' is not a valid %s" % (text, role))
-		err = inliner.problematic("ERROR: %s" % rawtext, None, msg)
+		err = inliner.problematic("ERROR (Missing in rtemsdomain.py): %s" % rawtext, None, msg)
 		return [err], [msg]
 
 	# XXX: how do you add an alt tag?
