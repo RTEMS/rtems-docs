@@ -1,0 +1,15 @@
+html[data-theme="light"] {
+    --pst-color-primary: #bd0600;
+    --pst-color-content: #b32a39;
+    --pst-color-visited: #bd0600;
+    --pst-color-link-hover: 9b0000;
+}
+
+/*
+        "color-brand-primary": "#bd0600",
+        "color-brand-content": "#b32a39",
+        "color-brand-visited": "#bd0600",
+        "color-topic-title-background": "#ffcac8",
+        "color-topic-title": "#bd0600",
+
+*/

@@ -238,6 +238,9 @@ def check_sphinx_theme(ctx, theme):
     ctx.end_msg('found')
 
 def cmd_configure(ctx):
+    ctx.env.PYTHON = ["python3"]
+    ctx.check_python_version((3,9))
+    ctx.load("python")
     check_sphinx = not ctx.env.BIN_SPHINX_BUILD
     if check_sphinx:
         ctx.find_program("sphinx-build", var="BIN_SPHINX_BUILD", mandatory = True)
@@ -272,7 +275,6 @@ def cmd_configure(ctx):
         #
         # Check extensions.
         #
-        check_sphinx_theme(ctx, 'sphinx-rtd-theme')
         check_sphinx_extension(ctx, 'sphinx.ext.autodoc')
         check_sphinx_extension(ctx, 'sphinx.ext.coverage')
         check_sphinx_extension(ctx, 'sphinx.ext.doctest')
@@ -280,7 +282,10 @@ def cmd_configure(ctx):
         check_sphinx_extension(ctx, 'sphinx.ext.intersphinx')
         check_sphinx_extension(ctx, 'sphinx.ext.mathjax')
         check_sphinx_extension(ctx, 'sphinxcontrib.bibtex')
+        check_sphinx_extension(ctx, 'sphinx_copybutton')
         check_sphinx_extension(ctx, 'sphinxcontrib.jquery')
+
+        ctx.check_python_module('sphinx_book_theme')
 
     #
     # Optional builds.
@@ -462,7 +467,7 @@ def doc_html(ctx, source_dir, conf_dir, sources):
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     resources =  html_resources(ctx, buildtype, book)
     templates = os.path.join(str(ctx.path.get_bld()), buildtype, '_templates')
-    configs = { 'templates_path': templates }
+    configs = { 'templates_path': templates, 'html_context.doc_path': book }
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir, configs)
     ctx(
         rule         = rule,
@@ -522,6 +527,7 @@ def cmd_build_images(ctx):
         images_plantuml(ctx, source_dir, conf_dir, '.ditaa')
 
 def cmd_options(ctx):
+    ctx.load('python')
     ctx.add_option('--disable-extra-fonts',
                    action = 'store_true',
                    default = False,

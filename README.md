@@ -127,7 +127,7 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 | Package                         | Version |
 | ---                             | ---     |
 | `Sphinx`                        | 7.2.6   |
-| `sphinx-rtd-theme`              | 2.0.0   |
+| `sphinx-book-theme`             | 1.1.3   |
 | `sphinxcontrib-applehelp`       | 1.0.7   |
 | `sphinxcontrib-bibtex`          | 2.6.1   |
 | `sphinxcontrib-devhelp`         | 1.0.5   |
@@ -136,6 +136,8 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 | `sphinxcontrib-jsmath`          | 1.0.1   |
 | `sphinxcontrib-qthelp`          | 1.0.6   |
 | `sphinxcontrib-serializinghtml` | 1.1.9   |
+| `sphinx-copybutton`             | 0.5.2   |
+
 
 ### Python Virtual Environment
 
