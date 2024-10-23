@@ -503,7 +503,8 @@ Reference Designs
 -----------------
 
 The BSP has been tested on the `Intel Cyclone 10 LP Evaluation board <https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/cyclone/10-lp-evaluation-kit.html>`_.
-A ``README.md`` in the ``riscv/niosv`` BSP folder describes how the reference
+The reference design and how it was made can be found `here <https://ftp.rtems.org/pub/rtems/archive/misc/rtems/riscv-niosv-supporting-2024-10-23.tar.xz>`_.
+This zip file contains a ``README.md`` file which describes how the reference
 design was built. The reference design implemented three different variants of
 the NIOS V processor: V/m, V/g, V/g with FPU.
 
@@ -614,7 +615,7 @@ Build RTEMS:
 Program Cyclone 10 LP Evaluation Board
 --------------------------------------
 
-The ``README.md`` file in the ``riscv/niosv`` BSP folder describes how to build
+The ``README.md`` file in the zip file describes how to build
 the FPGA configuration file, On-Chip ROM boot loader to load an executable from
 the EPCQ device to external RAM, an application executable, and a ``rtems_xx.jic``
 file for programming onto the EPCQ device using the Quartus programmer.
