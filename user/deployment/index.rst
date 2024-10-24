@@ -201,7 +201,7 @@ configuration could be:
 .. code-block:: none
 
    %define with_rtems_bsp     aarch64/versal_aiedge \
-                              aarch64/xilinx_zynqmp_lp64_zu3eg
+                              aarch64/zynqmp_apu
 
 This is useful when deploying more than one BSP. If you need multiple
 architectures and BSPs consider the Tools and Kernel With Config
@@ -263,7 +263,7 @@ Add the following to the kernel configuration INI file and save:
    BSP_XILINX_VERSAL_NOCACHE_LENGTH = 0x4000000
    BSP_XILINX_VERSAL_RAM_LENGTH = 0x200000000
 
-   [aarch64/xilinx_zynqmp_lp64_zu3eg]
+   [aarch64/zynqmp_apu]
    RTEMS_SMP = True
 
    [arm/xilinx_zynq_zc706]

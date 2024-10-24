@@ -2,26 +2,26 @@
 
 .. Copyright (C) 2020 On-Line Applications Research Corporation (OAR)
 
-.. _BSP_aarch64_qemu_xilinx_zynqmp_ilp32_qemu:
-.. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_qemu:
-.. _BSP_aarch64_qemu_xilinx_zynqmp_ilp32_zu3eg:
-.. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_zu3eg:
-.. _BSP_aarch64_qemu_xilinx_zynqmp_lp64_cfc400x:
+.. _BSP_aarch64_qemu_zynqmp_qemu_ilp32:
+.. _BSP_aarch64_qemu_zynqmp_qemu:
+.. _BSP_aarch64_qemu_zynqmp_apu_ilp32:
+.. _BSP_aarch64_qemu_zynqmp_apu:
+.. _BSP_aarch64_qemu_zynqmp_cfc400x:
 
 Xilinx ZynqMP
 =============
 
 This BSP family supports the following variants:
 
-* `xilinx-zynqmp-ilp32-qemu`
+* `zynqmp_qemu_ilp32`
 
-* `xilinx-zynqmp-lp64-qemu`
+* `zynqmp_qemu`
 
-* `xilinx-zynqmp-ilp32-zu3eg`
+* `zynqmp_apu_ilp32`
 
-* `xilinx-zynqmp-lp64-zu3eg`
+* `zynqmp_apu`
 
-* `xilinx-zynqmp-lp64-cfc400x`
+* `zynqmp_cfc400x`
 
 Platform-specific hardware initialization is performed by ARM Trusted Firmware
 (ATF). Other basic hardware initialization is performed by the BSP. These BSPs
@@ -130,12 +130,12 @@ u-boot command prompt.
 Build RTEMS with examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Build the RTEMS `xilinx-zynqmp-lp64-zu3eg` BSP. Use the ticker.exe sample which
+Build the RTEMS `zynqmp_apu` BSP. Use the ticker.exe sample which
 can be found in the directory:
 
 .. code-block:: shell
 
-  build/aarch64/xilinx-zynqmp-lp64-zu3eg/testsuites/samples
+  build/aarch64/zynqmp_apu/testsuites/samples
 
 Prepare the RTEMS image
 ^^^^^^^^^^^^^^^^^^^^^^^
