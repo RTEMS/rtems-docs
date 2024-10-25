@@ -41,15 +41,15 @@ To see all available remote branches issue the following command:
 
   git branch -r
 
-We can check out one of those remote branches (e.g. rtems-4.10 branch) using
+We can check out one of those remote branches (e.g. rtems-@rtems-ver-major@.@rtems-ver-minor@ branch) using
 the command:
 
 .. code-block:: shell
 
-  git checkout -b rtems410 origin/4.10
+  git checkout -b rtems@rtems-ver-major@@rtems-ver-minor@ origin/@rtems-ver-major@.@rtems-ver-minor@
 
-This will create a local branch named "rtems410", containing the rtems-4.10
-release, that will track the remote branch "rtems-4-10-branch" in origin
+This will create a local branch named "rtems@rtems-ver-major@@rtems-ver-minor@", containing the rtems-@rtems-ver-major@.@rtems-ver-minor@
+release, that will track the remote branch "rtems-@rtems-ver-major@.@rtems-ver-minor@-branch" in origin
 (https://gitlab.rtems.org/rtems/rtos/rtems.git). The ``git branch`` command
 prints a list of the current local branches, indicating the one currently
 checked out.
@@ -165,7 +165,7 @@ Then check out the desired remote branch, for example:
 
 .. code-block:: shell
 
-  git checkout -b rtems410 origin/4.10
+  git checkout -b rtems@rtems-ver-major@@rtems-ver-minor@ origin/@rtems-ver-major@.@rtems-ver-minor@
 
 Or if you have previously checked out the remote branch then you should see it
 in your local branches:
@@ -178,7 +178,7 @@ You can change to an existing local branch easily:
 
 .. code-block:: shell
 
-  git checkout rtems410
+  git checkout rtems@rtems-ver-major@@rtems-ver-minor@
 
 You can also create a new branch and switch to it:
 

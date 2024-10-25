@@ -295,7 +295,7 @@ tools is:
 .. code-block:: none
 
    /c/opt/rtems/rsb/rtems
-  $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/4.11 \
+  $ ../source-builder/sb-set-builder --prefix=/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@ \
                                      --jobs=none 4.11/rtems-i386
   RTEMS Source Builder - Set Builder, 4.11 (01ac76f2f90f)
   Build Set: 4.11/rtems-i386
@@ -369,9 +369,9 @@ tools is:
   package: i386-rtems4.11-gdb-7.9-x86_64-w64-mingw32-1
   download: http://ftp.gnu.org/gnu/gdb/gdb-7.9.tar.xz -> sources/gdb-7.9.tar.xz
   downloading: sources/gdb-7.9.tar.xz - 17.0MB of 17.0MB (100%)
-  download: https://gitlab.rtems.org/rtems-tools/plain/tools/4.11/gdb/gdb-sim-arange-inline.diff -> patches/gdb-sim-arange-inline.diff
+  download: https://gitlab.rtems.org/rtems-tools/plain/tools/@rtems-ver-major@.@rtems-ver-minor@/gdb/gdb-sim-arange-inline.diff -> patches/gdb-sim-arange-inline.diff
   downloading: patches/gdb-sim-arange-inline.diff - 761.0 bytes of 761.0 bytes (100%)
-  download: https://gitlab.rtems.org/rtems-tools/plain/tools/4.11/gdb/gdb-sim-cgen-inline.diff -> patches/gdb-sim-cgen-inline.diff
+  download: https://gitlab.rtems.org/rtems-tools/plain/tools/@rtems-ver-major@.@rtems-ver-minor@/gdb/gdb-sim-cgen-inline.diff -> patches/gdb-sim-cgen-inline.diff
   downloading: patches/gdb-sim-cgen-inline.diff - 706.0 bytes of 706.0 bytes (100%)
   building: i386-rtems4.11-gdb-7.9-x86_64-w64-mingw32-1
   reporting: tools/rtems-gdb-7.9-1.cfg ->
@@ -417,7 +417,7 @@ built. First we need to set the path to the tools:
    /c
   $ cd /c/opt/rtems
    /c/opt/rtems
-  $ export PATH=/c/opt/rtems/4.11/bin:$PATH
+  $ export PATH=/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/bin:$PATH
    /c/opt/rtems
   $
 
@@ -548,7 +548,7 @@ networking disabled, We will build the external libBSD stack later:
 .. code-block:: none
 
    /c/opt/rtems/kernel/pc686
-  $ /c/opt/rtems/kernel/rtems/configure --prefix=/c/opt/rtems/4.11 \
+  $ /c/opt/rtems/kernel/rtems/configure --prefix=/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@ \
          --target=i386-rtems4.11 --disable-networking --enable-rtemsbsp=pc686
   checking for gmake... no
   checking for make... make
@@ -628,11 +628,11 @@ Install the kernel to our prefix:
   Making install in tools/build
   make[1]: Entering directory '/c/opt/rtems/kernel/pc686/tools/build'
   make[2]: Entering directory '/c/opt/rtems/kernel/pc686/tools/build'
-   /usr/bin/mkdir -p '/c/opt/rtems/4.11/bin'
+   /usr/bin/mkdir -p '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/bin'
     /usr/bin/install -c cklength.exe eolstrip.exe packhex.exe unhex.exe
-    rtems-bin2c.exe '/c/opt/rtems/4.11/bin'
-   /usr/bin/mkdir -p '/c/opt/rtems/4.11/bin'
-   /usr/bin/install -c install-if-change '/c/opt/rtems/4.11/bin'
+    rtems-bin2c.exe '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/bin'
+   /usr/bin/mkdir -p '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/bin'
+   /usr/bin/install -c install-if-change '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/bin'
   make[2]: Nothing to be done for 'install-data-am'.
   make[2]: Leaving directory '/c/opt/rtems/kernel/pc686/tools/build'
   make[1]: Leaving directory '/c/opt/rtems/kernel/pc686/tools/build'
@@ -652,18 +652,18 @@ Install the kernel to our prefix:
     ..........
   make[2]: Entering directory '/c/opt/rtems/kernel/pc686'
   make[2]: Nothing to be done for 'install-exec-am'.
-   /usr/bin/mkdir -p '/c/opt/rtems/4.11/make'
+   /usr/bin/mkdir -p '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/make'
    /usr/bin/install -c -m 644 /c/opt/rtems/kernel/rtems/make/main.cfg
-   /c/opt/rtems/kernel/rtems/make/leaf.cfg '/c/opt/rtems/4.11/make'
-   /usr/bin/mkdir -p '/c/opt/rtems/4.11/share/rtems4.11/make/Templates'
+   /c/opt/rtems/kernel/rtems/make/leaf.cfg '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/make'
+   /usr/bin/mkdir -p '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/share/rtems4.11/make/Templates'
    /usr/bin/install -c -m 644
    /c/opt/rtems/kernel/rtems/make/Templates/Makefile.dir
    /c/opt/rtems/kernel/rtems/make/Templates/Makefile.leaf
    /c/opt/rtems/kernel/rtems/make/Templates/Makefile.lib
-   '/c/opt/rtems/4.11/share/rtems4.11/make/Templates'
-   /usr/bin/mkdir -p '/c/opt/rtems/4.11/make/custom'
+   '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/share/rtems4.11/make/Templates'
+   /usr/bin/mkdir -p '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/make/custom'
    /usr/bin/install -c -m 644 /c/opt/rtems/kernel/rtems/make/custom/default.cfg
-   '/c/opt/rtems/4.11/make/custom'
+   '/c/opt/rtems/@rtems-ver-major@.@rtems-ver-minor@/make/custom'
   make[2]: Leaving directory '/c/opt/rtems/kernel/pc686'
   make[1]: Leaving directory '/c/opt/rtems/kernel/pc686'
    /c/opt/rtems/kernel/pc686

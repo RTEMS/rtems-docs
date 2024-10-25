@@ -48,13 +48,13 @@ proven over the years to be difficult to manage in production systems.
     The RSB by default will install (copy) the executables to a directory tree
     under the *prefix* you supply. To use the tools once finished just set your
     path to the ``bin`` directory under the *prefix* you use. In the examples
-    that follow the *prefix* is ``$HOME/development/rtems/4.11`` and is set
+    that follow the *prefix* is ``$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@`` and is set
     using the ``--prefix`` option so the path you need to configure to build
     applications can be set with the following in a BASH shell:
 
     .. code-block:: none
 
-      $ export PATH=$HOME/development/rtems/4.11/bin:$PATH
+      $ export PATH=$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@/bin:$PATH
 
     Make sure you place the RTEMS tool path at the front of your path so they
     are searched first. RTEMS can provide newer versions of some tools your
@@ -77,6 +77,6 @@ proven over the years to be difficult to manage in production systems.
 
     .. code-block:: none
 
-      $ git checkout -t origin/4.11
+      $ git checkout -t origin/@rtems-ver-major@.@rtems-ver-minor@
 
     Branches are available for the 4.9, 4.10, 4.11 and 5 versions of RTEMS.

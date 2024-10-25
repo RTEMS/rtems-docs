@@ -34,7 +34,7 @@ You can download the source archives for a released RTEMS version from RTEMS'
 servers. Releases can be view at https://ftp.rtems.org/pub/rtems/releases with
 the releases listed as a series under a release's major number. For RTEMS 5.1
 the release series is `5 <https://ftp.rtems.org/pub/rtems/releases/5>`_ and the
-release path is https://ftp.rtems.org/pub/rtems/releases/5/5.1.
+release path is https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@.
 
 To work with the archives of a released RTEMS version, simply replace the
 version number ``5`` used throughout this chapter with the version number you
@@ -46,18 +46,18 @@ Download and unpack using the ``curl`` and ``tar`` command with these commands:
 
     mkdir -p $HOME/quick-start/src
     cd $HOME/quick-start/src
-    curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-source-builder-5.1.tar.xz | tar xJf -
+    curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@/sources/rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@.tar.xz | tar xJf -
 
 If ``curl`` does not work consider using ``wget`` or a browser.
 
-The RSB is unpacked under the path ``rtems-source-builder-5.1``. Rename this
+The RSB is unpacked under the path ``rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@``. Rename this
 to ``rsb`` to get shorter paths during the tool suite build. To do this run
 these commands:
 
 .. code-block:: none
 
     cd $HOME/quick-start/src
-    mv rtems-source-builder-5.1 rsb
+    mv rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@ rsb
 
 .. _QuickStartSources_Released_RTEMS:
 
@@ -67,7 +67,7 @@ sources:
 .. code-block:: none
 
     cd $HOME/quick-start/src
-    curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-5.1.tar.xz | tar xJf -
+    curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@/sources/rtems-@rtems-ver-major@.@rtems-ver-minor@.tar.xz | tar xJf -
 
 .. _QuickStartSources_Git:
 

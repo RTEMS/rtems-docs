@@ -18,7 +18,7 @@ the following example which hints at some of the capabilities available:
 
 .. code-block:: shell
 
-    Welcome to rtems-4.10.99.0(SPARC/w/FPU/sis)
+    Welcome to rtems-@rtems-ver-major@.@rtems-ver-minor@.99.0(SPARC/w/FPU/sis)
     COPYRIGHT (c) 1989-2011.
     On-Line Applications Research Corporation (OAR).
     Login into RTEMS

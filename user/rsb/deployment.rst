@@ -27,7 +27,7 @@ to remove the parts you do not have write access too or you may need to unpack
 the tar file somewhere and copy the file tree from the level you have write
 access from. Embedding the full prefix path in the tar files lets you know what
 the prefix is and is recommended. For example if
-``/home/chris/development/rtems/4.11`` is the prefix used you cannot change
+``/home/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@`` is the prefix used you cannot change
 directory to the root (``/``) and untar the file because the ``/home`` is root
 access only. To install a tar file you have downloaded into your new machine's
 ``Downloads`` directory in your home directoty you would enter:
@@ -44,7 +44,7 @@ A build set tar file is created by adding ``--bset-tar-file`` option to the
 .. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
-             --prefix=$HOME/development/rtems/4.11 \
+             --prefix=$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ \
              --bset-tar-file \     <1>
              4.11/rtems-sparc
     Source Builder - Set Builder, v0.2.0
@@ -61,10 +61,10 @@ A build set tar file is created by adding ``--bset-tar-file`` option to the
     config: tools/rtems-gdb-7.5.1-1.cfg
     package: sparc-rtems4.11-gdb-7.5.1-1
     building: sparc-rtems4.11-gdb-7.5.1-1
-    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/4.11 <2>
-    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/4.11
-    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/4.11
-    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/4.11
+    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ <2>
+    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
+    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
+    installing: rtems-4.11-sparc-rtems4.11-1 -> /home/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
     tarball: tar/rtems-4.11-sparc-rtems4.11-1.tar.bz2      <3>
     cleaning: expat-2.1.0-x86_64-freebsd9.1-1
     cleaning: sparc-rtems4.11-binutils-2.22-1
@@ -87,7 +87,7 @@ building Canadian cross compiled tool sets:
 .. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
-                --prefix=$HOME/development/rtems/4.11 \
+                --prefix=$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ \
                 --bset-tar-file \
                 --no-install \      <1>
                 4.11/rtems-sparc
@@ -127,7 +127,7 @@ build set:
 .. code-block:: none
 
     $ ../source-builder/sb-set-builder --log=l-sparc.txt \
-            --prefix=$HOME/development/rtems/4.11 \
+            --prefix=$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ \
             --bset-tar-file \
             --pkg-tar-files \        <1>
             --no-install 4.11/rtems-sparc

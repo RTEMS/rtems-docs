@@ -260,7 +260,7 @@ is:
 
   chris@cygwin ~/development/rtems/src/rtems-source-builder/rtems
   $ ../source-builder/sb-set-builder --log=l-arm.txt \
-                --prefix=$HOME/development/rtems/4.10 4.10/rtems-arm
+                --prefix=$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ 4.10/rtems-arm
   RTEMS Source Builder - Set Builder, v0.2
   Build Set: 4.10/rtems-arm
   config: expat-2.1.0-1.cfg
@@ -289,11 +289,11 @@ is:
   package: arm-rtems4.10-kernel-4.10.2-1
   building: arm-rtems4.10-kernel-4.10.2-1
   reporting: tools/rtems-kernel-4.10.2.cfg -> arm-rtems4.10-kernel-4.10.2-1.html
-  installing: expat-2.1.0-x86_64-w64-mingw32-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-  installing: arm-rtems4.10-binutils-2.20.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10 <3>
-  installing: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-  installing: arm-rtems4.10-gdb-7.3.1-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
-  installing: arm-rtems4.10-kernel-4.10.2-1 -> /cygdrive/c/Users/chris/development/rtems/4.10
+  installing: expat-2.1.0-x86_64-w64-mingw32-1 -> /cygdrive/c/Users/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
+  installing: arm-rtems4.10-binutils-2.20.1-1 -> /cygdrive/c/Users/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ <3>
+  installing: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1 -> /cygdrive/c/Users/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
+  installing: arm-rtems4.10-gdb-7.3.1-1 -> /cygdrive/c/Users/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
+  installing: arm-rtems4.10-kernel-4.10.2-1 -> /cygdrive/c/Users/chris/development/rtems/@rtems-ver-major@.@rtems-ver-minor@
   cleaning: expat-2.1.0-x86_64-w64-mingw32-1
   cleaning: arm-rtems4.10-binutils-2.20.1-1
   cleaning: arm-rtems4.10-gcc-4.4.7-newlib-1.18.0-1

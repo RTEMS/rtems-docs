@@ -365,7 +365,7 @@ in an example which simply (and quickly) applies a patch to the branch:
 
 .. code-block:: shell
 
-  git checkout -b rtems4.10 --track remotes/upstream/4.10
+  git checkout -b rtems@rtems-ver-major@.@rtems-ver-minor@ --track remotes/upstream/@rtems-ver-major@.@rtems-ver-minor@
   cat /tmp/sp.diff | patch
   vi sparc.t
   git add sparc.t
