@@ -168,7 +168,7 @@ Add the following to the buildset configuration file and save:
    #
    # Project Tools and BSP
    #
-   %define with_rtems_bsp     aarch64/xilinx_versal_aiedge
+   %define with_rtems_bsp     aarch64/versal_aiedge
    %define with_rtems_bspopts BSP_XILINX_VERSAL_NOCACHE_LENGTH=0x4000000 \
                               BSP_XILINX_VERSAL_RAM_LENGTH=0x200000000
    @rtems-ver-major@/rtems-aarch64
@@ -200,7 +200,7 @@ configuration could be:
 
 .. code-block:: none
 
-   %define with_rtems_bsp     aarch64/xilinx_versal_aiedge \
+   %define with_rtems_bsp     aarch64/versal_aiedge \
                               aarch64/xilinx_zynqmp_lp64_zu3eg
 
 This is useful when deploying more than one BSP. If you need multiple
@@ -259,7 +259,7 @@ Add the following to the kernel configuration INI file and save:
    BUILD_SAMPLES = True
    BUILD_TESTS = False
 
-   [aarch64/xilinx_versal_aiedge]
+   [aarch64/versal_aiedge]
    BSP_XILINX_VERSAL_NOCACHE_LENGTH = 0x4000000
    BSP_XILINX_VERSAL_RAM_LENGTH = 0x200000000
 
@@ -310,7 +310,7 @@ Add the following to the buildset configuration file and save:
    #
    # Project Tools, BSP and LibBSD
    #
-   %define with_rtems_bsp     aarch64/xilinx_versal_aiedge
+   %define with_rtems_bsp     aarch64/versal_aiedge
    %define with_rtems_bspopts BSP_XILINX_VERSAL_NOCACHE_LENGTH=0x4000000 \
                               BSP_XILINX_VERSAL_RAM_LENGTH=0x200000000
    6/rtems-aarch64
@@ -339,21 +339,21 @@ The tarfile can be reviewed to see the BSP libraries built (sizes may vary):
 .. code-block:: none
 
    $ tar jtvf tar/project-aarch64-tools-bsp-libbsd.tar.bz2 | \
-              grep -e '\.a$' | grep -e 'xilinx_versal_aiedge'
-   -rw-r--r--  0 chris  eng 138936312 Sep  7 14:58 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libbsd.a
-   -rw-r--r--  0 chris  eng    686190 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libdebugger.a
-   -rw-r--r--  0 chris  eng    164086 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libftpd.a
-   -rw-r--r--  0 chris  eng    107560 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libftpfs.a
-   -rw-r--r--  0 chris  eng    978812 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libjffs2.a
-   -rw-r--r--  0 chris  eng    412354 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libmghttpd.a
-   -rw-r--r--  0 chris  eng   2099962 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/librtemsbsp.a
-   -rw-r--r--  0 chris  eng  29693496 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/librtemscpu.a
-   -rw-r--r--  0 chris  eng    435236 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/librtemscxx.a
-   -rw-r--r--  0 chris  eng    141234 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/librtemsdefaultconfig.a
-   -rw-r--r--  0 chris  eng    856514 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/librtemstest.a
-   -rw-r--r--  0 chris  eng    159004 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libtelnetd.a
-   -rw-r--r--  0 chris  eng    137386 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libtftpfs.a
-   -rw-r--r--  0 chris  eng    476692 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/xilinx_versal_aiedge/lib/libz.a
+              grep -e '\.a$' | grep -e 'versal_aiedge'
+   -rw-r--r--  0 chris  eng 138936312 Sep  7 14:58 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libbsd.a
+   -rw-r--r--  0 chris  eng    686190 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libdebugger.a
+   -rw-r--r--  0 chris  eng    164086 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libftpd.a
+   -rw-r--r--  0 chris  eng    107560 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libftpfs.a
+   -rw-r--r--  0 chris  eng    978812 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libjffs2.a
+   -rw-r--r--  0 chris  eng    412354 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libmghttpd.a
+   -rw-r--r--  0 chris  eng   2099962 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/librtemsbsp.a
+   -rw-r--r--  0 chris  eng  29693496 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/librtemscpu.a
+   -rw-r--r--  0 chris  eng    435236 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/librtemscxx.a
+   -rw-r--r--  0 chris  eng    141234 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/librtemsdefaultconfig.a
+   -rw-r--r--  0 chris  eng    856514 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/librtemstest.a
+   -rw-r--r--  0 chris  eng    159004 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libtelnetd.a
+   -rw-r--r--  0 chris  eng    137386 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libtftpfs.a
+   -rw-r--r--  0 chris  eng    476692 Sep  7 14:56 opt/project/aarch64-rtems@rtems-ver-major@/versal_aiedge/lib/libz.a
 
 Tools, Kernel with Config and Packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -404,7 +404,7 @@ Add the following kernel configuration INI file and save:
    BUILD_SAMPLES = True
    BUILD_TESTS = False
 
-   [aarch64/xilinx_versal_aiedge]
+   [aarch64/versal_aiedge]
    BSP_XILINX_VERSAL_NOCACHE_LENGTH = 0x4000000
    BSP_XILINX_VERSAL_RAM_LENGTH = 0x200000000
 

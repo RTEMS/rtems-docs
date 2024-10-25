@@ -2,14 +2,15 @@
 
 .. Copyright (C) 2021 Gedare Bloom 
 
-.. _BSP_aarch64_qemu_xilinx_versal_ilp32_qemu:
-.. _BSP_aarch64_qemu_xilinx_versal_lp64_qemu:
+.. _BSP_aarch64_versal_aiedge:
+.. _BSP_aarch64_versal_qemu:
+.. _BSP_aarch64_versal_vck190:
 
 Qemu Xilinx Versal 
 ==================
 
-This BSP supports two variants, `xilinx-versal-ilp32-qemu` and
-`xilinx-versal-lp64-qemu`. The basic hardware initialization is performed by the
+This BSP supports three variants: `versal-qemu`, `versal-aiedge` and
+`versal-vck190`. The basic hardware initialization is performed by the
 BSP. These BSPs support the GICv3 interrupt controller present in the Xilinx
 Versal Adaptive Compute Acceleration Platform (ACAP) systems. The BSPs
 currently only work when started in the secure mode.
