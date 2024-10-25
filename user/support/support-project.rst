@@ -50,31 +50,15 @@ We have several mailing lists for RTEMS users and developers:
 
 * :r:list:`vc`: Commits to the RTEMS Project repositories.
 
-IRC
-===
+Discord
+=======
 
-.. index:: community; IRC
-.. index:: IRC
+.. index:: community; Discord
+.. index:: Discord
 
-RTEMS IRC is available on the Freenode network. See the `Freenode
-<http://www.freenode.net/>`_ web site for details on connecting, selecting a
-nickname, and general usage tips. If you are new to IRC it is recommended
-reading.
+The RTEMS Discord server is available at https://www.rtems.org/discord
 
-These is currently only one IRC channel available for RTEMS:
+We have several channels available for discussion please be kind.  The purpose 
+of each channel is listed in thier discriptions.
 
-  **#rtems**
-
-This is a general channel for all things RTEMS. You can just hang out with
-other RTEMS users and developers to talk about RTEMS, using RTEMS or to make
-contact with other RTEMS users.
-
-The ``#rtems`` channel is logged. You can find the logs at:
-
-   http://www.rtems.org/irclogs/
-
-You can search the logs using Google by adding
-
-   **site:rtems.org inurl:irclogs**
-
-to your search terms.
+For support with GitLab there is also the `#gitlab-support` channel.
