@@ -15,11 +15,6 @@ developer set up.  The project encourages all users to inspect, review, comment
 and contribute to the code base. The processes described here are the same
 processes the core development team use when developing and maintaining RTEMS.
 
-.. warning::
-
-   The development version is not for use in production and it can break from
-   time to time.
-
 Please read :ref:`development-host` before continuing. The following procedure
 assumes you have installed and configured your host operating system. It also
 assumes you have installed any dependent packages needed when building the
@@ -217,21 +212,8 @@ Professional`. Building on `Windows 10` has been reported as working.
 
 Please see :ref:`microsoft-windows` before continuing.
 
-.. note::
-
-   If the RSB reports ``error: no hosts defaults found; please add`` you have
-   probably opened an MSYS2 32bit Shell. Close all 32bit Shell windows and open
-   the MSYS2 64bit Shell.
-
 RTEMS Windows Tools
 ^^^^^^^^^^^^^^^^^^^
-
-Create a workspace for RTEMS using the following shell command:
-
-.. sidebar:: *Creating Tool Archives*
-
-  Add ``--bset-tar-file`` to the ``sb-set-builder`` command line to create
-  tar files of the built package set.
 
 .. code-block:: none
 

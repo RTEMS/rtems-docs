@@ -13,10 +13,7 @@ RTEMS releases provide a stable version of the kernel for the supported
 architectures. RTEMS maintaines the current and previous releases. Support for
 older releases is provided using the RTEMS support channels.
 
-Please read :ref:`development-host` before continuing. The following procedure
-assumes you have installed and configured your host operating. It also assumes
-you have installed any dependent packages needed when building the tools and
-the kernel.
+Please read :ref:`development-host` before continuing. 
 
 You need to select a location to build and install the RTEMS Tool chain and
 RTEMS. Make sure there is plenty of disk space and a fast disk is
@@ -28,12 +25,7 @@ the top level paths as short as possible. :ref:`windows-path-length` provides
 more detail about path lengths on Windows.
 
 The location used to install the tools and kernel is called the `prefix`.
-:ref:`QuickStartPrefixes` explains prefixes and how to use them. It is best to
-have a `prefix` for each different version of RTEMS you are using. If you are
-using RTEMS in production it is **not** a good idea to install a development
-version of over the top by using the same `prefix`. A separate `prefix` for each
-version avoids this.
-
+:ref:`QuickStartPrefixes` explains prefixes and how to use them. 
 Released versions of the RTEMS Source Builder (RSB) download all source code
 for all packages from the :r:url:`ftp` rather than from the package's home
 site. Hosting all the source on the :r:url:`ftp` ensures the source is present

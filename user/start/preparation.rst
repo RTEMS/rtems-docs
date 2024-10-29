@@ -15,9 +15,21 @@ You need to perform some basic preparation to get started with RTEMS
 development.  You need tools from your host's operating system to build the
 RTEMS tool suite from source.  The RTEMS tools you build are used to build the
 Board Support Package (BSP) libraries for your target hardware from source. The
-BSP libraries contain the RTEMS operating system.  This is not a one-click
+BSP libraries contain the RTEMS operating system. All RTEMS tools
+and runtime libraries are built from source on your host machine. The RTEMS
+Project does not maintain binary builds of the tools. This may appear to be the
+opposite to what you normally experience with host operating systems, and it
+is, however this approach works well. RTEMS is not a host operating system and
+it is not a distrbution. Providing binary packages for every possible host
+operating system is too big a task for the RTEMS Project and it is not a good
+use of core developer time. Their time is better spent making RTEMS better and
+faster. This is not a one-click
 installation process, but there are :ref:`good reasons <WhyBuildFromSource>` to
 build everything from source.
+The RTEMS Project base installation sets up the tools and the RTEMS kernel for
+the selected BSPs. The tools run on your host computer are used to compile,
+link, and format executables so they can run on your target hardware.
+
 
 During this Quick Start guide you will:
 
@@ -42,7 +54,10 @@ Host Computer
 
 The *host computer* is a computer you use to develop applications.  It runs all
 your tools, editors, documentation viewers, etc.  You need a native C, C++, and
-Python development environment.  Please make sure you can build native C/C++
+Python development environment. The following procedure assumes you have
+installed and configured your host operating system. It also assumes
+you have installed any dependent packages needed when building the tools and
+the kernel. Please make sure you can build native C/C++
 applications on your host computer.  You must be able to build native Python C
 modules as some RTEMS tools contain these modules.  Usually, you have to
 install a Python development package for this.  The Python scripts of the RTEMS

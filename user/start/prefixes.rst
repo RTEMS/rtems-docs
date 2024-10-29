@@ -36,13 +36,23 @@ Newlib, etc.)  for your target architecture and :ref:`RTEMS tools <HostTools>`
 provided by the RTEMS Project. The RTEMS Tools are a toolkit that help create
 the RTEMS ecosystem and help support the building of embedded real-time
 applications and systems.
+The RTEMS tool chain changes less often than the RTEMS kernel. One method of
+working with development releases is to have a separate `prefix` for the RTEMS
+tools and a different one for the RTEMS kernel. You can then update each
+without interacting with the other. You can also have a number of RTEMS
+versions available to test with.
+
 
 You build and install the tool suite with the :ref:`RTEMS Source Builder (RSB)
 <RSB>`.  By default, the RSB will start the prefix path with a host operating
 system specific path plus :file:`rtems`, and the RTEMS version, e.g.
 :file:`/opt/rtems/6` on Linux, and :file:`/usr/local/rtems/6` on FreeBSD and
 macOS. Placing the RTEMS version number in the path lets you manage and
-migrate RTEMS versions as they are released.
+migrate RTEMS versions as they are released. It is best to
+have a `prefix` for each different version of RTEMS you are using. If you are
+using RTEMS in production it is **not** a good idea to install a development
+version of over the top by using the same `prefix`. A separate `prefix` for each
+version avoids this.
 
 It is strongly recommended to run the RSB as a *normal user* and not with
 *root* privileges (also known as *super user* or *Administrator*).  You have to

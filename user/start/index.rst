@@ -10,7 +10,9 @@ Quick Start
 ***********
 
 Follow the sections of this chapter step by step to get started developing
-applications on top of RTEMS.
+applications on top of RTEMS. You will create a set of tools and an RTEMS
+kernel for your selected Board Support Package (BSP).
+
 
 .. toctree::
 

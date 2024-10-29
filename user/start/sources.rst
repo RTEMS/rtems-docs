@@ -99,6 +99,11 @@ suite build.  The :file:`rtems` repository clone contains the RTEMS sources.
 These two repositories are enough to get started.  There are `more repositories
 <https://gitlab.rtems.org/explore/projects>`_ available.
 
+.. warning::
+
+   The development version is not for use in production and it can break from
+   time to time.
+
 Offline Download
 ----------------
 

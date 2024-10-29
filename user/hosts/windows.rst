@@ -151,6 +151,13 @@ Open a 64bit MSYS shell from the Start Menu:
   :align: center
   :alt: MSYS2 64bit Shell Start Menu
 
+.. note::
+
+   If you ever see ``error: no hosts defaults found; please add`` you have
+   probably opened an MSYS2 32bit Shell. Close all 32bit Shell windows and open
+   the MSYS2 64bit Shell.
+
+
 The packages we require are:
 
 * python
