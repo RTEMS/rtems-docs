@@ -29,8 +29,8 @@ by ``$BASE``.
 
 .. code-block:: none
 
-    RTEMS Testing - Tester, 5.1.0
-     Command Line: $BASE/rtems/5/bin/rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
+    RTEMS Testing - Tester, @rtems-ver-major@.@rtems-ver-minor@.not_released
+     Command Line: $BASE/rtems/@rtems-ver-major@/bin/rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
      Host: Linux 5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64
     Python: 3.8.5 (default, Jan 27 2021, 15:41:15) [GCC 9.3.0]
     Host: Linux-5.8.0-44-generic-x86_64-with-glibc2.29 (Linux 5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64 x86_64)
