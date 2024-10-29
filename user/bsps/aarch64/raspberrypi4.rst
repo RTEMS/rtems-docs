@@ -1,6 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 .. Copyright (C) 2022 Mohd Noor Aman
+.. Copyright (C) 2024 Ning Yang
 
 .. _BSP_aarch64_Raspberrypi_4:
 
@@ -8,19 +9,65 @@ Raspberry Pi 4B
 ===============
 
 The 'raspberrypi4b' BSP currently supports only the LP64 ABI. ILP32 is not
-supported. Raspberry pi 4B all variants and Raspberry Pi 400  are supported. The
-default bootloader which is used by the Raspbian OS or other OS can be used to
-boot RTEMS. SMP is currently not supported.
+supported. Raspberry pi 4B all variants and Raspberry Pi 400  are supported. 
+The default bootloader which is used by the Raspbian OS or other OS can be used
+to boot RTEMS. SMP is currently not supported.
 
 Raspberry Pi 4B has 2 types of interrupt controller, GIC-400 (GICv2) and ARM
-legacy generic controller. Both are supported. By default, raspberrypi 4B uses
-ARM legacy generic controller. Set ``enable_gic=1`` in the ``config.txt`` file
-to enable GIC.
+legacy generic controller. Both are supported.
+
+The documentation says that ``enable_gic=1`` is the default but that seems to 
+be true only if device tree is present otherwise it reverts to the legacy 
+interrupt controller. So set ``enable_gic=1`` in the ``config.txt`` file
+to make sure gic is enable.
+
+Build Configuration Options
+---------------------------
+
+The following options can be used in the BSP section of the waf
+configuration INI file. The waf defaults can be used to inspect the
+values.
+
+``CONSOLE_USE_INTERRUPTS``
+    Use interrupt driven mode for console devices (enabled by default).
+
+``GPU_CORE_CLOCK_RATE``
+    The GPU processor core frequency in Hz (default is 500000000), The value of
+    this option should be the same as the value of option ``core_freq`` in 
+    ``config.txt``. `See the Raspberry Pi documentation for details
+    <https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking>`_.
+
+``BSP_SPI_USE_INTERRUPTS``
+    Use interrupt mode in the SPI driver (enabled by default).
+
+``BSP_CLOCK_USE_SYSTEMTIMER``
+    Use the ``System Timer`` in the clock driver (disable by default).
+
+``BSP_CONSOLE_PORT``
+    Default UART port for the console device (default is UART0). The optional
+    ports are ``UART0``, ``UART2``,  ``UART3``, ``UART4``, ``UART5``.
+
+``BSP_PL011_CLOCK_FREQ``
+    PL011 UART clock frequency in Hz (default is 48000000). The value of
+    this option should be the same as the value of option ``init_uart_clock``
+    in ``config.txt``. `See the Raspberry Pi documentation for details
+    <https://www.raspberrypi.com/documentation/computers/legacy_config_txt.html#init_uart_clock>`_.
 
 Clock Driver
 ------------
 
-The clock driver uses the `ARM Generic Timer`.
+Raspberry pi 4B has two timers. 
+
+The ``System Timer`` and The ``ARM Generic Timer``.
+
+The clock from the ARM timer is derived from the system clock. This clock can
+change dynamically e.g. if the system goes into reduced power or in low power
+mode. Thus the clock speed adapts to the overall system performance
+capabilities. For accurate timing it is recommended to use the system timers.
+
+The clock driver uses the ``ARM Generic Timer`` by default. 
+Set ``BSP_CLOCK_USE_SYSTEMTIMER = True`` in the ``Build Configuration Options``
+to enable the ``System Timer``.
 
 Console Driver
 --------------
@@ -31,6 +78,26 @@ feature set. The console driver supports the default Qemu emulated ARM PL011
 PrimeCell UART as well as the physical ARM PL011 PrimeCell UART in the
 raspberrypi hardware. Mini-uart is not supported.
 
+Set ``BSP_CONSOLE_PORT`` in the ``Build Configuration Options`` to set the 
+default UART port for the console device.
+
+Initialize gpio of UART and install UART to the dev directory by 
+``raspberrypi_uart_init()`` function.
+
+.. code-block:: c
+
+    #include <assert.h>
+    #include <bsp/console.h>
+
+    void uart_init(void)
+    {
+      int rv;
+
+      /* The optional devices are UART0, UART2, UART3, UART4, UART5. */
+      rv =  raspberrypi_uart_init(UART0);
+      assert(rv == 0);
+    }
+
 GPIO Driver
 -----------
 
@@ -40,7 +107,7 @@ The GPIO of Raspberry pi 4B can be controlled by the following functions:
 ``raspberrypi_gpio_clear_pin()``
 ``raspberrypi_gpio_set_pull()``
 
-.. code-block:: none
+.. code-block:: c
   #include <bsp/rpi-gpio.h>
 
   void gpio(void)
@@ -64,6 +131,51 @@ The GPIO of Raspberry pi 4B can be controlled by the following functions:
     raspberrypi_gpio_set_pin(8);
   }
 
+SPI Driver
+----------
+
+The BCM2711 device has five SPI interfaces of this type: SPI0, SPI3, SPI4, 
+SPI5 & SPI6. It has two additional mini SPI interfaces (SPI1 and SPI2).
+The SPI driver supports SPI0, SPI3, SPI4, SPI5 & SPI6. The mini SPI is not 
+supported.
+
+SPI drivers are registered by the ``raspberrypi_spi_init()`` function. 
+The driver has no DMA support, but has interrupt support.
+
+.. code-block:: c
+
+    #include <assert.h>
+    #include <bsp/raspberrypi-spi.h>
+
+    void spi_init(void)
+    {
+      int rv;
+
+      /* 
+       * The optional devices are raspberrypi_SPI0, raspberrypi_SPI3,
+       * raspberrypi_SPI4, raspberrypi_SPI5, raspberrypi_SPI6.
+       */
+      rv =  raspberrypi_spi_init(raspberrypi_SPI0);
+      assert(rv == 0);
+    }
+
+Watchdog Driver
+---------------
+
+.. code-block:: c
+
+  void raspberrypi_watchdog_example()
+  {
+    raspberrypi_watchdog_init();
+    raspberrypi_watchdog_start(15000);
+    
+    raspberrypi_watchdog_reload();
+    /* ... */
+    raspberrypi_watchdog_reload();
+    
+    raspberrypi_watchdog_stop();
+  }
+
 Preparing to boot
 ------------------
 
@@ -81,7 +193,7 @@ be downloaded from the `Raspberry Pi Firmware Repository
 <https://github.com/raspberrypi/firmware/>`_. USB boot is supported. All the
 files (Firmwares and kernel) must be place in the FAT32 partition only. Add
 ``arm_64bit=1`` in the ``config.txt`` file in order to boot the BSP in 64bit
-kernel mode.
+kernel mode (it is default).
 
 
 UART Setup
@@ -91,17 +203,19 @@ Connect your serial device to the GPIO15 and GPIO14. Add the following to the
 ``config.txt`` file in order to use the PL011 UART0 and thus disabling the
 default Mini-uart.
 
+A Minimal version of ``config.txt``:
 .. code-block:: none
 
-  # if user wants to enable GIC, uncomment the next line
-  # enable_gic=1
-  arm_64bit=1
-  dtoverlay = disable-bt
-  enable_uart=1
+  # If you use mini-uart, please comment it out.
+  dtoverlay=disable-bt
 
-.. note::
-  The Raspberry Pi 4B and 400 have an additional four PL011 UARTs. They are not
-  supported.
+  # If you use mini-uart, enable it.
+  # enable_uart=1
+
+  # The documentation says that enable_gic=1 is the default but that seems to be
+  # true only if device tree is present otherwise it reverts to the legacy 
+  # interrupt controller.
+  enable_gic = 1
 
 Generating kernel image
 ^^^^^^^^^^^^^^^^^^^^^^^
