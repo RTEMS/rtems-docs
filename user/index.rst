@@ -38,7 +38,6 @@ RTEMS User Manual (|version|).
     start/index
     support/index
     hosts/index
-    installation/index
     deployment/index
 
     hardware/index
