@@ -230,23 +230,49 @@ export PATH=${HOME}/.local/bin:${PATH}
 ### Windows
 
 To build the documentation on Windows you need to install an official Python
-build from https://www.python.org/. We suggest you install a recent 2.7 series
+build from https://www.python.org/. We suggest you install a recent 3.x series
 64bit build. The versions 2.7.9 and after include pip.
 
 Note: you cannot use the MSYS2 versions of Python because the pip libraries
 that contain C or C++ code are built with MSVC libraries and cannot integrate
 with the MSYS2 built python.
 
-The following assumes Python is installed to its default path of C:\Python27.
+The following assumes Python is installed to a default path of C:\Python313.
+The actual path will be set during the install, possibly to a default like
+C:\Users\username\Local Settings\Application Data\Programs\Python\Python313.
+You should avoid having paths with space characters in the install path, as
+they will cause problems in the shell.
 
 Open an MSYS2 terminal window and add the needed paths to Python and its
 scripts:
 
 ```bash
-$ export PATH=/c/Python27/Scripts:/c/Python27:$PATH
+$ export PATH=/c/Python313/Scripts:/c/Python313:$PATH
+```
+You should not add this to your default `PATH` (i.e., in your `.bashrc`),
+because you need other versions of Python to be found for building RTEMS.
+You can put this in a file e.g., `pyenv.sh` and then source it into your
+environment:
+```bash
+$ . pyenv.sh
 ```
 
-Install Sphinx and any needed extensions:
+Upgrade pip:
+```bash
+$ python -m pip install --upgrade pip
+```
+
+Create a directory to house the virtual environment, create the environment,
+and then activate it. This is slightly different than the procedure in
+[Python Virtual Environment](#python-virtual-environment).
+
+```bash
+$ mkdir sphinx
+$ python -m venv sphinx
+$ . ./sphinx/Scripts/activate
+```
+
+The prompt will now change. You can install Sphinx with:
 
 ```bash
 $ pip install sphinx
@@ -254,6 +280,28 @@ $ pip install sphinxcontrib-bibtex
 $ pip install sphinxcontrib-jquery
 $ pip install sphinx-rtd-theme
 ```
+You may want to update pip in your virtual environment as well.
+
+Windows does not provide `python3` so you will need to create a wrapper in the
+virtual environment. A simple workaround is:
+```bash
+echo '#!/usr/bin/env bash' > ./sphinx/Scripts/python3
+echo 'python $*' >> ./sphinx/Scripts/python3
+```
+In Windows10 you may need to repolace `python` with `py -3`.
+
+A bug in python causes waf to fail when trying to communicate with pre-forked
+processes. A workaround is to use:
+```bash
+export WAF_NO_PREFORK=1
+```
+You could add this to your `pyenv.sh` file.
+
+Continue from [Building](#building).
+
+When you have finished building the documentation run `deactivate` in the
+terminal to leave the virtual environment.
+
 
 ### FreeBSD
 
