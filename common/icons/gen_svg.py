@@ -10,7 +10,7 @@ with open("list.txt", "r") as fp:
 with open("base.svg", "r") as fp:
     base = fp.read()
 
-os.makedirs("png", exist_ok=True)
+os.makedirs("icons", exist_ok=True)
 for colour, text in map:
     filename = "icons/{}.svg".format(text.lower())
     with open(filename, "w") as fp:
