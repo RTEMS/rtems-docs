@@ -52,6 +52,8 @@ The RTEMS shell has the following general commands:
 
 - spi_ - read and write simple data to an SPI bus
 
+- flashdev_ - read, write, erase and use
+
 - exit_ - alias for logoff command
 
 Commands
@@ -1388,6 +1390,71 @@ CONFIGURATION:
 
     This command can be excluded from the shell command set by defining
     ``CONFIGURE_SHELL_NO_COMMAND_SPI`` when all shell commands have been
+    configured.
+
+.. raw:: latex
+
+   \clearpage
+
+.. _flashdev:
+
+flashdev - read, write, erase and use
+----------------------------------------------
+.. index:: flashdev
+
+SYNOPSYS:
+    .. code-block:: shell
+
+        flashdev <FLASH_DEV_PATH> [OPTION]
+                -r <address> <bytes>  Read at address for bytes
+                -w <address> <file>   Write file to address
+                -e <address> <bytes>  Erase at address for bytes
+                -t                    Print the flash type
+                -d                    Print the JEDEC ID of flash device
+                -o <address>          Print the page information of page at address
+                -i <index>            Print the page information of page at index
+                -p                    Print the number of pages
+                -b                    Print the write block size
+                -s <address>          Print the sector information of erase sector at address
+                -c                    Print the number of erase sectors
+                -h                    Print this help
+
+.. index:: CONFIGURE_SHELL_NO_COMMAND_FLASHDEV
+.. index:: CONFIGURE_SHELL_COMMAND_FLASHDEV
+
+DESCRIPTION:
+    Read, write, erase and use IOCTL calls to a flashdev device and display
+    responses from flash.
+
+    The command supports a ``-h`` option to get usage details.
+
+    The command supports all IOCTL calls for a flashdev device except
+    region mapping calls.
+
+    WARNING there is no confirmation for writes or erases, so please
+    use with care.
+
+    The command works only with registered flashdev devices.
+
+EXAMPLES:
+    The following is an example how to read ``0x10`` bytes from the flashdev
+    device ``/dev/flashdev0`` at the address ``0x10000``.
+
+    .. code-block:: shell
+
+        SHLL [/] # flashdev /dev/flashdev0 -r 0x10000 0x10
+        Reading /dev/flashdev0 at 0x00010000 for 0x10 bytes
+        00000033 f80007b8 00003f01 00000201
+
+        SHLL [/] #
+
+CONFIGURATION:
+    This command is included in the default shell command set.  When building a
+    custom command set, define ``CONFIGURE_SHELL_COMMAND_FLASHDEV`` to have this
+    command included.
+
+    This command can be excluded from the shell command set by defining
+    ``CONFIGURE_SHELL_NO_COMMAND_FLASHDEV`` when all shell commands have been
     configured.
 
 .. raw:: latex
