@@ -21,3 +21,7 @@
 #f68b83	Int
 #e4bd6e	Um
 #94b561	D
+#ff6e6e	WD
+#ffa0ed	WP
+#b1eaff	WT
+#ffd097	WR
