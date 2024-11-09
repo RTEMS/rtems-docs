@@ -191,7 +191,7 @@ on Spike with --isa=rv64i option. If no --isa option is specified, the default
 is rv64imafdc.
 
 Microchip PolarFire SoC
------------------------
+=======================
 
 The PolarFire SoC is the 4x 64-bit RISC-V U54 cores and a 64-bit RISC-V E51
 monitor core SoC from the Microchip.
@@ -296,7 +296,7 @@ Serial terminal UART1 displays the SMP example messages
     *** END OF TEST SMP 1 ***
 
 Kendryte K210
--------------
+=============
 
 The Kendryte K210 SoC is a dual core 64-bit RISC-V SoC with an AI NPU, built in
 SRAM, and a variety of peripherals. Currently just the console UART, interrupt
@@ -417,7 +417,7 @@ The data for the device tree binary can then replace the existing device tree
 binary data in the ``kendryte-k210-dtb.h`` header file.
 
 BeagleV-Fire
--------------
+=============
 
 The BeagleV-Fire board is equipped with the Microchip’s PolarFire MPFS025T
 System on Chip (SoC), featuring a 5-core configuration. It includes 4 RV64GC
