@@ -419,13 +419,11 @@ binary data in the ``kendryte-k210-dtb.h`` header file.
 BeagleV-Fire
 -------------
 
-The BeagleV-Fire board is equipped with the Microchip’s PolarFire MPFS025T System on Chip (SoC), featuring a 5-core configuration. It includes 4 RV64GC cores for U54 and 1 RV64IMAC core for E51.
+The BeagleV-Fire board is equipped with the Microchip’s PolarFire MPFS025T
+System on Chip (SoC), featuring a 5-core configuration. It includes 4 RV64GC
+cores for U54 and 1 RV64IMAC core for E51.
 
-Francescodario Cuzzocrea created a Base BSP for BeagleV-Fire board with Clock, IRQs, Console and UART support, which can find in the `bvf branch <https://github.com/fcuzzocrea/rtems/tree/bvf>`__.
-
-BeagleV-Fire supports the riscv/beaglevfire BSP variant.
-
-Building upon base BSP work to further enhance the functionality and compatibility of the `BSP <https://github.com/purviyeshi/rtems/tree/bvf>`__ for uni-processing and multi-processing.
+The Base BSP `riscv/beaglevfire` for BeagleV-Fire board supports Clock, IRQs, Console and UART.
 
 **Configure the BSP:** Following section in the INI-style configuration
 file, config.ini instructs the build system to build a
@@ -448,32 +446,17 @@ across multiple cores, enhancing performance for multi-threaded
 applications.
 
 ``RTEMS_SMP``: Set to ``False`` to run the system in uniprocessor mode,
-where only one core (e.g., U54_1) handles processing. This mode is
-suitable for scenarios where multiprocessing is not required or not
-supported.
+where only one core (e.g., U54_1) handles processing.
 
 To enable multiprocessing and utilize all available cores, set
 ``RTEMS_SMP = True`` in config.ini. This configuration allows the
 BeagleV-Fire to utilize all cores efficiently for parallel processing
 tasks.
 
-**Build RTEMS:**
-
-.. code:: shell
-
-   $ ./waf configure --prefix=$HOME/rtems-start/rtems/6
-   $ ./waf
-
-**Convert .exe to .elf file:**
-
-.. code:: shell
-
-   $ riscv-rtems6-objcopy build/riscv/beaglevfire/testsuites/samples/hello.exe build/riscv/beaglevfire/testsuites/samples/hello.elf
-
-**Generate a payload for the hello.elf using
+**Generate a payload for executables using
 the**\ `hss-payload-generator <https://github.com/polarfire-soc/hart-software-services/tree/master/tools/hss-payload-generator>`__
 
--  Copy hello.elf file to the HSS/tools/hss-payload-generator/test
+-  Copy executable file (e.g., hello.exe) to the HSS/tools/hss-payload-generator/test
    directory.
 -  Go to hss-payload-generator source directory.
 
@@ -482,9 +465,10 @@ the**\ `hss-payload-generator <https://github.com/polarfire-soc/hart-software-se
    $ cd hart-software-services/tools/hss-payload-generator
 
 -  Edit test/hss.yaml file for the hart entry points and correct name
-   of the binary file.
+   of the binary file (e.g., hello.exe).
 
-   The HSS repository has been forked, and the modified test/hss.yaml file is directly accessible `here <https://github.com/purviyeshi/hart-software-services.git>`__
+   A modified test/hss.yaml file is `directly accessible in a fork
+   <https://github.com/purviyeshi/hart-software-services.git>`__
 
 For ``uni-processing``:
 
@@ -508,6 +492,7 @@ Generate payload:
 
 .. code:: shell
 
+   $ make
    $ ./hss-payload-generator -c test/uboot.yaml payload.bin
 
 Once the payload binary is generated, it should be copied to the
@@ -515,16 +500,16 @@ eMMC/SD.
 
 **Program the eMMC/SD with the payload binary:**
 
--  Setting Up UART Communication from the Host PC
+-  Setting Up UART Communication via the Debug serial console from the Host PC
 
    1. List USB Serial Devices
 
    .. code:: shell
 
-      $ ls /dev | grep -i ttyusb
+      $ ls /dev | grep -i ttyUSB
 
-   This command lists all connected USB serial devices. Look for
-   ``ttyUSB0`` or similar entries
+   This will vary by host. The command lists all connected USB serial devices.
+   Look for ``ttyUSB0`` or similar entries. See also the BeagleV-Fire docs.
 
    2. Modify the permissions of the identified USB serial device to
       allow read and write access
@@ -560,11 +545,15 @@ eMMC/SD.
 
 -  Load the Payload from Host PC, use the ``dd`` command to
    copy the payload binary to the eMMC/SD card. 
-   Ensure the correct device path for eMMC/SD card. In most cases it is ``/dev/sdb``
+   Ensure the correct device path for eMMC/SD card. You can figure out which
+   device to use for example by executing ``ls -lt /dev/sd*`` and seeing the
+   most recently created disk, for example it could be  ``/dev/sdg``. You
+   should be careful to check this before running the command to flash the
+   device:
 
    .. code:: shell
 
-      $ sudo dd if=payload.bin of=/dev/sdb bs=512
+      $ sudo dd if=payload.bin of=/dev/sdg bs=512
 
 **Reset the BeagleV-Fire board and check the output**
 
