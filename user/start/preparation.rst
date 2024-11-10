@@ -113,14 +113,15 @@ the version number **N.2.0**. The release branch will have the version
 number **N.M.1** with **M** being the last minor release of this series.
 
 For example:
-+ 5.0.0 is the version number of the development master for the 5 series.
-+ 5.1.0 is the first release of the 5 series.
-+ 5.1.1 is the version number of the 5 series release branch right after
+
+* 5.0.0 is the version number of the development master for the 5 series.
+* 5.1.0 is the first release of the 5 series.
+* 5.1.1 is the version number of the 5 series release branch right after
   the 5.1.0 release until 5.2.0 is released.
-+ 5.2.0 is the first bugfix release of the 5 series
-+ 5.2.1 is the version number of the 5 series release branch right after
+* 5.2.0 is the first bugfix release of the 5 series
+* 5.2.1 is the version number of the 5 series release branch right after
   the 5.2.0 release until 5.3.0 is released.
-+ 6.0.0 is the version number of the development master for the 6 series.
+* 6.0.0 is the version number of the development master for the 6 series.
 
 RTEMS development tools use **N** as the version number and are expected to
 work with all releases and the release branch of the N series.
