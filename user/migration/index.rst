@@ -9,10 +9,10 @@
 Changing Versions
 *****************
 
-Follow the sections provide support help when migratiing applications
-from one version of RTEMS to a new version.
+The following sections provide support and advice for migrating applications
+from the previous version of RTEMS to this version. For migration from older
+versions, please see the relevant section in the previous user manual.
 
 .. toctree::
 
-    v4_11-to-v5
     v5-to-v6
