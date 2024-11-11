@@ -146,7 +146,13 @@ Prepare your RTEMS image to boot from u-boot with the following commands:
 
   $ aarch64-rtems@rtems-ver-major@-objcopy -Obinary ticker.exe ticker.bin
   $ gzip -9 ticker.bin
-  $ mkimage -A arm64 -O rtems -T kernel -a 0x10000000 -e 0x10000000 -n RTEMS -d ticker.bin.gz rtems.img
+  $ mkimage -A arm64 -O rtems -T kernel -a 0x10000 -e 0x10000 -n RTEMS -d ticker.bin.gz rtems.img
+
+Note: If the start address has been changed in the BSP configuration, you have
+to adapt the `-a` and `-e` parameters accordingly. To find out the start address
+of an application, `aarch64-rtems6-nm ticker.exe | grep \ _start` can be used.
+That will show the address of the `_start` symbol which is the value that has to
+be used for the two parameters.
 
 Boot the RTEMS image
 ^^^^^^^^^^^^^^^^^^^^
