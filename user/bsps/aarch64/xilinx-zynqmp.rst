@@ -25,10 +25,11 @@ This BSP family supports the following variants:
 
 Platform-specific hardware initialization is performed by ARM Trusted Firmware
 (ATF). Other basic hardware initialization is performed by the BSP. These BSPs
-support the GICv2 interrupt controller present in all ZynqMP systems. The zu3eg
-BSPs have also been tested to be fully functional on zu2cg boards and should
-also work on any other ZynqMP chip variant since the Processing Subsystem (PS)
-does not vary among chip variants other than the number of CPU cores available.
+support the GICv2 interrupt controller present in all ZynqMP systems. The
+`zynqmp_apu` BSP has been tested on zu2cg, zu3eg, and zu9cg chip variants and
+should also work on any other ZynqMP chip variant since the Processing Subsystem
+(PS) does not vary among chip variants other than the number of CPU cores
+available.
 
 This BSP family has been tested on the following hardware:
 
