@@ -54,8 +54,14 @@ html_context = {
     "doc_path": "SET_ON_COMMANDLINE",
 }
 
+
 html_theme_logo = {
     "text": "SET_ON_COMMANDLINE"
+}
+
+html_theme_version_switcher = {
+        "json_url": "https://docs.rtems.org/docs_version_switcher.json",
+        "version_match": "SET_ON_COMMANDLINE",
 }
 
 html_theme_options = {
@@ -69,7 +75,14 @@ html_theme_options = {
     "use_fullscreen_button": True,
     "use_repository_button": True,
     "logo": html_theme_logo,
+    "switcher": html_theme_version_switcher
 }
+
+html_sidebars = {
+    "**": ["navbar-logo.html","icon-links.html", "version-switcher", "search-button-field.html","sbt-sidebar-nav.html"]
+
+}
+
 
 
 bibtex_bibfiles = ['../common/refs.bib']
@@ -79,9 +92,7 @@ source_suffix = '.rst'
 
 
 pygments_style = 'default' # sphinx
-html_sidebars = {}
 htmlhelp_basename = 'rtemsdoc'
-
 
 
 # -- Options for LaTeX output --------------------------------------------------

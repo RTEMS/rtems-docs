@@ -88,6 +88,7 @@ def build(ctx):
     ctx.env.RTEMS_MAJOR = version.major()
     ctx.env.RTEMS_MINOR = version.minor()
     ctx.env.RTEMS_REVISION = version.revision()
+    ctx.env.RTEMS_RELEASED = version.released()
     ctx.to_log('Build: %s%s' % (ctx.env.RELEASE, os.linesep))
 
     #
