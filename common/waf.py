@@ -444,7 +444,8 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     resources = html_resources(ctx, buildtype, book)
-    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir)
+    configs = { 'html_sidebars."**"': "" }
+    rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir, configs)
     ctx(
         rule         = rule,
         cwd          = ctx.path,
