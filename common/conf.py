@@ -54,6 +54,10 @@ html_context = {
     "doc_path": "SET_ON_COMMANDLINE",
 }
 
+html_theme_logo = {
+    "text": "SET_ON_COMMANDLINE"
+}
+
 html_theme_options = {
     "use_sidenotes": True,
     "repsitory_provider": "gitlab",
@@ -64,6 +68,7 @@ html_theme_options = {
     "show_toc_level": 4,
     "use_fullscreen_button": True,
     "use_repository_button": True,
+    "logo": html_theme_logo,
 }
 
 

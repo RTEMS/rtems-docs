@@ -22,9 +22,9 @@ sphinx_max_version = None
 
 def version_cmdline(ctx):
     return '-Drelease="%s" -Dversion="%s" -Drtems_major="%s" ' \
-           '-Drtems_minor="%s" -D rtems_revision="%s"' \
+           '-Drtems_minor="%s" -D rtems_revision="%s" -Dhtml_theme_logo.text="%s"' \
         % (ctx.env.RELEASE, ctx.env.VERSION, ctx.env.RTEMS_MAJOR,
-           ctx.env.RTEMS_MINOR, ctx.env.RTEMS_REVISION)
+           ctx.env.RTEMS_MINOR, ctx.env.RTEMS_REVISION, ctx.env.VERSION)
 
 def sphinx_cmdline(ctx, build_type, conf_dir, doctrees,
                    source_dir, output_dir, configs = []):
