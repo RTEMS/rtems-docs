@@ -10,6 +10,18 @@ RTEMS 5 to RTEMS 6
 This section provides helpful information when migrating from RTEMS 5 to
 RTEMS 6.
 
+Update Development Sites to GitLab
+----------------------------------
+
+The source code repos and ticket tracking systems have been migrated from the
+previous sites at git.rtems.org and devel.rtems.org to a new :r:url:`devel`
+built with GitLab.  GitLab lets you have repositories structured as projects.
+We have a top level namespace called RTEMS and our repositories reside under
+this namespace.  We have updated the RTEMS Documentation to reflect the new
+worfklow and use of this GitLab service. If you have cloned repositories from
+RTEMS you may need to correct the remote or re-clone those repositories.
+Additional help can be found in `#gitlab-support` on our :r:url:`discord`.
+
 Update to GCC 10 and Later
 --------------------------
 

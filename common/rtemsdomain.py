@@ -34,6 +34,7 @@ role_name = {
 role_url = {
 	"trac": 	("Trac",			"https://gitlab.rtems.org"),
 	"devel": 	("Developer Site",		"https://gitlab.rtems.org"),
+	"discord":	("Discord",				"https://www.rtems.org/discord"),
 	"www":		("RTEMS Home",			"https://www.rtems.org/"),
 	"buildbot":	("Buildbot Instance",		"https://buildbot.rtems.org/"),
 	"builder":	("Builder Site",		"https://builder.rtems.org/"),
