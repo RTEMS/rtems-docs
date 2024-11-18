@@ -536,7 +536,7 @@ If you find there is an issue please post the developers list.
 
 To build enter in the top directory and configure with suitable options:
 ```bash
-waf configure [--pdf] [--singlehtml] [--prefix] \
+./waf configure [--pdf] [--singlehtml] [--prefix] \
                [--sphinx-options] \
                [--sphinx-nit-pick] \
                [--plantuml] \
