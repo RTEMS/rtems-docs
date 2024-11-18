@@ -293,14 +293,7 @@ virtual environment. A simple workaround is:
 echo '#!/usr/bin/env bash' > ./sphinx/Scripts/python3
 echo 'python $*' >> ./sphinx/Scripts/python3
 ```
-In Windows10 you may need to repolace `python` with `py -3`.
-
-A bug in python causes waf to fail when trying to communicate with pre-forked
-processes. A workaround is to use:
-```bash
-export WAF_NO_PREFORK=1
-```
-You could add this to your `pyenv.sh` file.
+In Windows10 you may need to replace `python` with `py -3`.
 
 Continue from [Building](#building).
 
