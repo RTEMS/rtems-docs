@@ -15,4 +15,5 @@ versions, please see the relevant section in the previous user manual.
 
 .. toctree::
 
+    v6-highlights
     v5-to-v6
