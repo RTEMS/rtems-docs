@@ -169,7 +169,8 @@ Either way, the prompt will now change. You can install Sphinx with:
 $ pip install sphinx
 $ pip install sphinxcontrib-bibtex
 $ pip install sphinxcontrib-jquery
-$ pip install sphinx-rtd-theme
+$ pip install sphinx-book-theme
+$ pip install sphinx-copybutton
 ```
 
 When you have finished using sphinx and building documentation you
@@ -200,7 +201,8 @@ does not provide a suitable package:
 $ pip install -U --user sphinx
 $ pip install --user sphinxcontrib-bibtex
 $ pip install --user sphinxcontrib-jquery
-$ pip install --user sphinx-rtd-theme
+$ pip install --user sphinx-book-theme
+$ pip install --user sphinx-copybutton
 ```
 
 On some hosts, this may complain that a newer version of pip is available.
@@ -280,7 +282,8 @@ The prompt will now change. You can install Sphinx with:
 $ pip install sphinx
 $ pip install sphinxcontrib-bibtex
 $ pip install sphinxcontrib-jquery
-$ pip install sphinx-rtd-theme
+$ pip install sphinx-book-theme
+$ pip install sphinx-copybutton
 ```
 You may want to update pip in your virtual environment as well.
 
