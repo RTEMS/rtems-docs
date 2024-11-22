@@ -421,6 +421,14 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
         cmd = '%s %s' % (task.env.BIN_INLINER[0], src)
         so = open(tgt, 'w')
         se = open(tgt + '.err', 'w')
+
+        # inliner does not handle digests and fails to open the file.
+        with open(src, "rb") as fp:
+            no_hash = re.sub(b'\?v=[a-z0-9]{8}', b'', fp.read())
+            no_digest = re.sub(b'\?digest=[a-z0-9]{20}', b'', no_hash)
+        with open(src, "wb") as fp:
+            fp.write(no_digest)
+
         r = task.exec_command(cmd, stdout = so, stderr = se)
         so.close()
         se.close()
@@ -449,7 +457,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
     buildtype = 'singlehtml'
     build_dir, output_node, output_dir, doctrees = build_dir_setup(ctx, buildtype)
     resources = html_resources(ctx, buildtype, book)
-    configs = { 'html_sidebars."**"': "" }
+    configs = { 'singlehtml_sidebars.index': "" }
     rule = sphinx_cmdline(ctx, buildtype, conf_dir, doctrees, source_dir, output_dir, configs)
     ctx(
         rule         = rule,
