@@ -669,35 +669,35 @@ configuration INI file. The ``waf`` defaults can be used to inspect the values.
 
 ``NIOSV_EPCQ_ROM_REGION_BEGIN``
      The starting address of the EPCQ device connected to the NIOS V
-     (0xFFFFFFFF by default).
+     (0x11000000 by default).
 
 ``NIOSV_EPCQ_ROM_REGION_SIZE``
     The size of the EPCQ device connected to the NIOS V
-    (0x00000000 by default).
+    (0x01000000 by default).
 
 ``NIOSV_ONCHIP_ROM_REGION_BEGIN``
      The starting address of the On-Chip ROM connected to the NIOS V
-     (0xFFFFFFFF by default).
+     (0x10010000 by default).
 
 ``NIOSV_ONCHIP_ROM_REGION_SIZE``
      The size of the On-Chip ROM connected to the NIOS V
-     (0 by default).
+     (4096 by default).
 
 ``NIOSV_ONCHIP_RAM_REGION_BEGIN``
      The starting address of the On-Chip RAM connected to the NIOS V
-     (0xFFFFFFFF by default).
+     (0x10020000 by default).
 
 ``NIOSV_ONCHIP_RAM_REGION_SIZE``
      The size of the On-Chip RAM connected to the NIOS V
-     (0 by default).
+     (8192 by default).
 
 ``NIOSV_EXT_RAM_REGION_BEGIN``
      The starting address of the external RAM connected to the NIOS V
-     (0xFFFFFFFF by default).
+     (0x01000000 by default).
 
 ``NIOSV_EXT_RAM_REGION_SIZE``
      The size of the external RAM connected to the NIOS V
-     (0x00000000 by default).
+     (0x00800000 by default).
 
 ``NIOSV_IS_NIOSVG``
      Whether or not the ``NIOS V/g`` processor is used
