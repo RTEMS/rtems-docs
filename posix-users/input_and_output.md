@@ -1220,21 +1220,35 @@ int aio_suspend(
 **STATUS CODES:**
 
 On success, zero is returned.
-On error, -1 is returned, and `errno` is set appropriately.
+On error, -1 is returned, and ``errno`` is set to one of the following:
 
 ```{eval-rst}
 .. list-table::
  :class: rtems-table
 
- * - ``E``
-   - The
+ * - ``EINVAL``
+   - The ``nent`` value is invalid.
+ * - ``EAGAIN``
+   - Could not suspend due to resource limitation.
+ * - ``ENOMEM``
+   - Could not suspend due to memory limitation.
+ * - ``EAGAIN``
+   - No asynchronous I/O operation in the ``list`` completed within the time
+     interval specified by ``timeout``.
+ * - ``EINTR``
+   - The ``aio_suspend()`` function was interrupted by an event.
 ```
 
 **DESCRIPTION:**
 
-The `aio_suspend()` function suspends the calling process until one or more
-operations have completed or until the specified `timeout` has expired.
-`list` contains the requests that must complete.
+The ``aio_suspend()`` function suspends the calling process until one or more
+asynchronous I/O operations specified in the ``list`` have completed or until
+the specified ``timeout`` expires.
+
+The ``list`` parameter is a pointer to an array of ``aiocb`` structures
+representing asynchronous I/O requests. The ``nent`` parameter specifies the
+number of elements in the array. The ``timeout`` parameter specifies the maximum
+amount of time to wait before returning if no operations have completed.
 
 **NOTES:**
 
