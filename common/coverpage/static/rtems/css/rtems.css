@@ -4,7 +4,7 @@
 }
 
 header {
-    background: #38532f;
+    background: #f8f8f8;
 }
 
 .h1, h1 {
@@ -17,7 +17,7 @@ header {
 }
 
 .navbar-default {
-    background-color: #dbe5c6;
+    background-color: #ffffff;
     border-color: #b2baa1;
 }
 
@@ -45,8 +45,8 @@ header {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  color: #fcfcfc;
-  background-color: #38532f;
+  color: #0c0c0c;
+  background-color: #f8f8f8;
 }
 
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
@@ -60,12 +60,16 @@ header {
 }
 
 col-md-3 {
-    background: #38532f;
+    background: #f8f8f8;
     color: #333;
 }
 
 col-md-9, h1 {
-    color: #fcfcfc;
+    color: #0c0c0c;
+}
+
+.col-md-3 {
+    padding-top: 10px;
 }
 
 .table-condensed > thead > tr > td,
