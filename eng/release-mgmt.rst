@@ -11,5 +11,6 @@ Software Release Management
 .. toctree::
 
     release-process
+    release-maintenance
     change-reports
     vdd-generation
