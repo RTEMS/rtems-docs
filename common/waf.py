@@ -156,17 +156,8 @@ def pdf_resources(ctx, buildtype, book):
     base = packages_base.path_from(ctx.path)
     fnode = ctx.path.get_bld().make_node(buildtype)
     fnode.mkdir()
-    local_packages = latex.local_packages()
     targets = []
     name = 'pdf-' + book,
-    if local_packages is not None:
-        srcs = [os.path.join(base, p) for p in local_packages]
-        targets += [fnode.make_node(p) for p in local_packages]
-        ctx(features = "subst",
-            name     = name,
-            is_copy  = True,
-            source   = srcs,
-            target   = targets)
     targets += [fnode.make_node('rtemsextrafonts.sty')]
     ctx(features = "subst",
         name     = name,
