@@ -336,10 +336,26 @@ allowing a control process to track bug fixes in FreeBSD 12.
 Pre-Branch Procedure
 --------------------
 
-#. All issues and merge requests assigned to the release's first
-   milestone must be resolved. Issues can exist that are specific to
-   the branch and are to be resolved before the first release is
-   made. All merge requests must be resolved.
+#. Create a milestone for the next version of RTEMS and for the next
+   minor version (i.e., ``.2``) after the release. To create a new
+   milestone open an issue in
+   https://gitlab.rtems.org/administration/gitlab  If no start date is
+   provided it will be set to the end date of the previous release in
+   the same major series.
+
+#. Create an Epic for the release branch named ``RTEMS <Major> Release``
+   where ``<Major>`` is the Major number of the release. Create two
+   children Epics for the first two releases named ``RTEMS <Major>.<Minor>``
+   where ``<Minor>`` will be ``.1`` and ``.2``.
+
+#. All issues assigned to the release's first milestone must be resolved.
+   Issues can exist that are specific to the release branch. Those issues
+   must be assigned to the child Epic that matches the milestone.
+
+#. All merge requests must be resolved. Any merge requests that remain open
+   against the ``main`` branch must be set to draft status and have the
+   milestone updated to the next major version before branching to ensure they
+   do not accidentally land on the wrong version.
 
 #. The following BSP must build using the RSB:
 
@@ -397,16 +413,15 @@ Branch Procedure
 Post-Branch Procedure
 ---------------------
 
-#. Create a milestone for the next version of RTEMS. To create a new
-   milestone open an issue in
-   https://gitlab.rtems.org/administration/gitlab  If no start date is
-   provided it will be set to the end date of the previous release in
-   series.
+#. All issues on a child epic must be resolved before that minor release
+   is created. Resolutions may include closing as ``resolution::wontfix``,
+   closing due to an accepted merge request, or advancing the Milestone to the
+   next release and linking the issue to the next release's child epic.
 
 #. Create the next RC release candidate with the source as close the
    branch point as possible.
 
-#. Create a ticket to the clean the RSB for the release. The RSB's
+#. Create a ticket to clean the RSB for the release. The RSB's
    ``main`` branch carries a number of older configurations and new
    release configurations. These can be confusing to a new user and
    add no value to a released RSB. For example leaving RTEMS 7 tool
@@ -508,6 +523,10 @@ path on the RTEMS server.
    the same list of repositories used to create the release branch for
    the release and the commit hash in each repository to tag. See the
    `Branch Procedure`_ for the list of repositories to tag.
+
+#. Create the next release Milestone and child Epic attached to
+   the release branch's epic. These are for the release that will
+   follow the next release on the release branch.
 
 Post-Release Procedure
 ======================

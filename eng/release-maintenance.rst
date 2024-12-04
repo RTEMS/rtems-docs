@@ -24,8 +24,8 @@ Release Branch Maintenance
 ==========================
 
 #. The management of release branch epics, issues and merge requests
-   is the responsibility of all users with approver or higher GitLab
-   status. Normal GitLab account holders cannot set milestones or
+   is the responsibility of all users with Developer or higher GitLab
+   roles. Normal GitLab account holders cannot set milestones or
    labels, they cannot assign reviewers or promote issues to epics so
    issues need to be triaged before they can be worked on and
    resolved. Please help by triaging new issues and merge requests
@@ -56,7 +56,8 @@ Release Branch Maintenance
    determine what is suitable.
 
 #. Development should occur on a repository's ``main`` branch where
-   possible and any fixes backported to release branches using epics.
+   possible and any fix backported to a release branch using an issue
+   attached to an epic.
 
 #. The ``main`` branch shall have only one milestone, the next
    version's first release. For example if the next version is ``7``
@@ -78,60 +79,59 @@ Release Branch Maintenance
    processes. Releases from older release branches can be made under
    service agreements and with the support of the community.
 
-Release Labels
-==============
-
-Release labels are used to help management and report release branch
-epics, issues and merge requests.
-
-#. GitLab labels for release maintenance shall use a single colon
-   character (``:``) as a delimiter as double colons are scoped labels
-   and you can only have one scoped label per epic, issue or merge
-   request.
-
-#. Epics and issues affecting release branches are required to
-   have the ``backport`` label.
-
-#. The ``version:<version>`` label indicates an epic or issue may
-   affect a version of RTEMS. For example an issue may have
-   ``version:5`` and ``version:6`` assigned to indicate the issue
-   relates to RTEMS 5 and RTEMS 6.
-
-#. The ``backport`` label indicates an epic or issue is to be resolved
-   on more than one version of RTEMS. If the issue is for a single
-   version of RTEMS a single version label is required.
-
 Release Epics and Issues
 ========================
 
-#. Management of an issue on more than one version of RTEMS shall use
-   an epic.
+Epics and issues are used to help manage the approval process for commits
+to release branches.
 
-#. A release branch epic is to be labelled ``backport``. This lets
-   us filter release branch epics.
+#. Every release branch shall have an associated Epic named ``RTEMS
+   <Major> Release`` where ``<Major>`` is the branch name. This Epic
+   shall have children Epics named ``RTEMS <Major>.<Minor>`` for the
+   next two releases on the release branch.
 
-#. A release branch epic shall have a child issue for each version of
-   RTEMS it relates to. This includes the development branch
-   ``main``. Each issue shall have the milestone set to the verion of
-   RTEMS effected.
-
-#. An issue raised by a user needs to provide the version or versions
-   of RTEMS it relates to in the description. The issue or merge
-   request template shall provide a pre-filled field that can be
-   edited.
-
-#. Issue triaging shall promote a user issue to an epic if it effects
-   more than one version of RTEMS.
-
-#. A release branch issues that is a child of an epic can only be
-   referenced by merge requests for the milestone branch.
+#. Every Issue with a Milestone set to a release branch shall be linked to
+   the Epic named ``RTEMS <Major>.<Minor>`` where the Major.Minor matches
+   the Milestone.
 
 Release Merge Requests
 ======================
 
-#. A merge request for a release branch must have an issue set to the
-   same milestone.
+#. Every merge request to a release branch shall have a Milestone that
+   matches the next release version on that branch, and shall
+   reference or close an Issue with the same Milestone. The commit
+   messages within the Merge Request must refer to the Issue.
 
 #. A merge request target branch shall be the milestone's major version
-   number. If the milestone's major number is the next release the
-   target shall be ``main``.
+   number. If the milestone's major number is the next RTEMS Major release
+   the target shall be ``main``.
+
+How to Handle Backports
+=======================
+
+#. Issue triaging shall determine if an issue should be considered for
+   backporting. Issues that are opened against one branch and
+   requested to backport to a release branch must be cloned, which can
+   be done with the GitLab Quick Action ``/clone --with_notes`` in a
+   comment on the Issue. It is preferred to clone the notes so that
+   the discussion/comment history leading to the backport request is
+   preserved on the backport Issue. The milestone on the cloned issue
+   shall be set to the requested backport release branch's next version.
+
+#. Issues that are opened against a release branch milestone must be
+   linked to that milestone's epic, which should be named ``RTEMS
+   <Milestone>``. Linking is accomplished by using the GitLab Quick
+   Action ``/epic rtems&<NNN>`` where ``<NNN>`` is replaced with the
+   Epic number for the relevant milestone's epic.
+
+#. Issues that are determined out of scope for backporting shall be labelled
+   ``resolution::wontfix`` and closed.
+
+#. Merge Requests that target a release branch must reference or close
+   an open Issue with a Milestone that matches the next release on that
+   branch. It is the responsibility of submitters to ensure they
+   close the correct Issue, and it is the responsibility of
+   approvers to ensure that merge requests to a release branch close
+   an open Issue with a matching milestone. When cherry-picking changes,
+   commit messages will need to be modified locally to add the correct
+   Issue number to the commit.
