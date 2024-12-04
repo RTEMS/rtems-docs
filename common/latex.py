@@ -65,42 +65,12 @@ package_tests = {
 package_optional = ['inconsolata',
                     'lato']
 
-#
-# Add per host support. If there is a version clash for the same texlive
-# package create a directory, add to that directory and use the path in this
-# name here.
-#
-hosts = {
-}
 
 def tex_test(test):
     return os.linesep.join(package_test_preamble +
                            package_tests[test] +
                            package_test_postamble)
 
-def host_name():
-    uname = os.uname()
-    if uname[0] == 'Linux':
-        try:
-            from distro import linux_distribution
-        except:
-            from platform import linux_distribution
-        distro = linux_distribution()
-        name = '%s/%s' % (uname[0], distro[0])
-        version = distro[1]
-    else:
-        name = uname[0]
-        version = uname[2]
-    return name, version
-
-def local_packages():
-    host, version = host_name()
-    packages = None
-    if host in hosts:
-        for hv in list(hosts[host].keys()):
-            if re.compile(hv).match(version) is not None:
-                packages = hosts[host][hv]
-    return packages
 
 def configure_tests(conf):
     #
@@ -122,10 +92,7 @@ def configure_tests(conf):
         bld(features = 'tex', type = 'pdflatex', source = 'main.tex', prompt = 0)
 
     tests = sorted(package_tests.keys())
-    local_packs = local_packages()
     excludes = [p for p in package_optional]
-    if local_packs is not None:
-        excludes += [p[:p.rfind('.')] for p in local_packs]
     for e in excludes:
         if e in tests:
             tests.remove(e)
