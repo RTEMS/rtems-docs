@@ -17,6 +17,7 @@ import latex
 import conf
 
 import os
+import subprocess
 
 windows = os.name == 'nt'
 
@@ -436,7 +437,7 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
         tgt = task.outputs[0].abspath()
         cmd = '%s %s' % (task.env.BIN_INLINER[0], src)
         so = open(tgt, 'w')
-        se = open(tgt + '.err', 'w')
+        se = open("{}_stderr".format(tgt), 'w')
 
         # inliner does not handle digests and fails to open the file.
         with open(src, "rb") as fp:
@@ -445,9 +446,11 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
         with open(src, "wb") as fp:
             fp.write(no_digest)
 
-        r = task.exec_command(cmd, stdout = so, stderr = se)
+        r = task.exec_command(cmd, stdout = so, stderr = se, stdin=None)
+
         so.close()
         se.close()
+
         #
         # The inliner does not handle internal href's correctly and places the
         # input's file name in the href. Strip these.
