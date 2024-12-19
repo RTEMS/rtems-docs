@@ -48,19 +48,19 @@ implemented in order to have a real time system you can develop on. Some
 of the most common shared features across most boards include:
 
  *  **console**: is technically the serial driver for the BSP rather than
- just a console driver, it deals with the board UART (i.e. serial devices)
+    just a console driver, it deals with the board UART (i.e. serial devices)
  *  **clock**: support for the clock tick - a regular time basis for the kernel
  *  **timer**: support of timer devices, used for timing tests
  *  **rtc** or **tod**: support for the hardware real time clock
  *  **network**: the Ethernet driver
  *  **shmsupp**: support of shared memory driver MPCI layer in a
- multiprocessor system
+    multiprocessor system
  *  **gnatsupp**: BSP specific support for the GNU Ada run-time
  *  **irq**: support for how the processor handles interrupts (probably
- the most common module shared by all boards)
+    the most common module shared by all boards)
  *  **tm27**: specific routines for the tm27 timing test
  *  **start** and **startup**: C and assembly used to initialize the
- board during startups/resets/reboots
+    board during startups/resets/reboots
 
 These are just some of the things you should be looking for when adding
 Doxygen to a BSP.
@@ -477,22 +477,22 @@ of this new group. In command form:
 Some examples of this:
 
 *  **bsp_arm**: This is the group for the arm architecture. It is a
-member of the all inclusive bsp-kit group (more on this in structure
-conventions), so we prefix it with the "**bsp**" super group name. This
-is the group for the arm architecture, so the rest is just "'''arm'''"
+   member of the all inclusive bsp-kit group (more on this in structure
+   conventions), so we prefix it with the "**bsp**" super group name. This
+   is the group for the arm architecture, so the rest is just "'''arm'''"
 
 *  **arm_raspberrypi**: This is the group for the Raspberry Pi BSP. It
-is is an arm board, and as such, is nested within the bsp_arm group. We
-prefix the group name with an "**arm**" (notice we drop the bsp prefix
-of the arm group - we only care about the immediate super group),
-and the rest is a simple "'''raspberrypi'''", indicating this is the
-raspberrypi group, which is nested within the bsp_arm group.
+   is is an arm board, and as such, is nested within the bsp_arm group. We
+   prefix the group name with an "**arm**" (notice we drop the bsp prefix
+   of the arm group - we only care about the immediate super group),
+   and the rest is a simple "'''raspberrypi'''", indicating this is the
+   raspberrypi group, which is nested within the bsp_arm group.
 
 *  **raspberrypi_interrupt** This is the group for code handling
-interrupts on the Raspberry Pi platform. Because this code and the group
-that envelops it is Raspberry Pi dependent, we prefix our name with a
-"**raspberrypi**", indicating this group is nested within the raspberrypi
-group.= Structure Conventions =
+   interrupts on the Raspberry Pi platform. Because this code and the group
+   that envelops it is Raspberry Pi dependent, we prefix our name with a
+   "**raspberrypi**", indicating this group is nested within the raspberrypi
+   group.= Structure Conventions =
 
 This covers where, when, and why you should place the second type of
 Doxygen header. Remember that our goal is to have the structure of
@@ -663,7 +663,7 @@ Where to place @ingroup
 
 The @ingroups you add should make sense.
 
-* If you are working within an architecture's shared directory, @ingroup should be adding things either to the *architecture*_shared group, or some sub group of it.
+* If you are working within an architecture's shared directory, @ingroup should be adding things either to the *architecture_shared* group, or some sub group of it.
 
 * If you are working within a BSP directory, @ingroup should be adding things to either the *architecture_*bsp* group, or some sub group of it.
 
@@ -698,7 +698,7 @@ This is tricky. You may end up in a situation where your BSP uses code
 found in either the architecture shared directory, or the bsps/shared
 directory. Even though this code is logically associated with the BSP,
 as stated above: all files in the shared directory should be added to
-either the *architecture*_shared group, or some subgroup of it ''not''
+either the *architecture_shared* group, or some subgroup of it ''not''
 the BSP group. You could make a note under the @brief line in the header
 (which shows up in the resulting documentation) that a particular BSP
 uses this code.

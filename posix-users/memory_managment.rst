@@ -238,6 +238,7 @@ function of the parameter addr and the values of ``flags``. A successful
 RTEMS is a single address space operating system without privilege separation
 between the kernel and user space. Therefore, the implementation of ``mmap``
 has a number of implementation-specific issues to be aware of:
+
  * Read, write and execute permissions are allowed because the memory in RTEMS
    does not normally have protections but we cannot hide access to memory.
    Thus, the use of ``PROT_NONE`` for the ``prot`` argument is not supported.

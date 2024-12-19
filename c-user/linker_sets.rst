@@ -257,7 +257,7 @@ DESCRIPTION:
 .. _RTEMS_LINKER_SET_FOREACH:
 
 RTEMS_LINKER_SET_FOREACH - Iterate through the linker set items
----------------------------------------------------------
+---------------------------------------------------------------
 
 CALLING SEQUENCE:
     .. code-block:: c

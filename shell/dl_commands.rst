@@ -654,6 +654,7 @@ PROGRAMMING INFORMATION:
     and captured.
 
     .. index:: rtems_rtl_shell_list
+
     ``list``
       The RTL list command.
 
@@ -668,6 +669,7 @@ PROGRAMMING INFORMATION:
          );
 
     .. index:: rtems_rtl_shell_object
+
     ``sym``
       The RTL symbol command.
 
@@ -682,6 +684,7 @@ PROGRAMMING INFORMATION:
          );
 
     .. index:: rtems_rtl_shell_object
+
     ``sym``
       The RTL object command.
 
@@ -696,6 +699,7 @@ PROGRAMMING INFORMATION:
          );
 
     .. index:: rtems_rtl_shell_archive
+
     ``ar``
       The RTL object command.
 
@@ -710,6 +714,7 @@ PROGRAMMING INFORMATION:
          );
 
     .. index:: rtems_rtl_shell_call
+
     ``call``
       The RTL object command.
 

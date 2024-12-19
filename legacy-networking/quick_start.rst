@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
 Quick Start
-#######
+###########
 
 This legacy networking is now a standalone repository and needs to be built
 separately.

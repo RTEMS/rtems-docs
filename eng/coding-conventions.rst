@@ -156,7 +156,7 @@ Readability
 * Define non-inline functions in a .c source file.
 * Declare all global (non-static) functions in a .h header file.
 * Declare and define inline functions in one place. Usually, this
-  is a *impl.h header file.
+  is a *impl.h* header file.
 * Declare and define static functions in one place. Usually, this is
   toward the start of a .c file. Minimize forward declarations of
   static functions.
@@ -268,7 +268,7 @@ Layering
 --------
 
 * TBD: add something about the dependencies and header file layering.
-* Understand the `RTEMS Software Architecture <https://devel.rtems.org/wiki/TBR/UserManual/RTEMS_Software_Architecture>'_.
+* Understand the `RTEMS Software Architecture <https://devel.rtems.org/wiki/TBR/UserManual/RTEMS_Software_Architecture>`_.
 
 Exceptions to the Rules
 -----------------------

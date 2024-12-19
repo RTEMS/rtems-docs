@@ -3,7 +3,7 @@
 .. Copyright (C) 1988, 2020 On-Line Applications Research Corporation (OAR)
 
 AArch64 Specific Information
-************************
+****************************
 
 This chapter discusses the dependencies of the
 *ARM AArch64 architecture*
@@ -75,7 +75,7 @@ for a flat memory model is handled.
 
 Note that memcpy() and memset() must not be used on device memory as those
 functions are hand-optimized and will take advantage of unaligned accesses.
-*As per ARM*(https://developer.arm.com/documentation/ka004708/latest), unaligned
+*As per ARM* (https://developer.arm.com/documentation/ka004708/latest), unaligned
 accesses are not permitted for device memory.
 
 Interrupt Processing

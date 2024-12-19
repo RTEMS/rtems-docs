@@ -43,6 +43,7 @@ posix_devctl - Control a Device
 
 .. code-block:: c
 
+```
     #include <devctl.h>
     int posix_devctl(
       int            fd,
@@ -51,7 +52,7 @@ posix_devctl - Control a Device
       size_t         nbyte,
       int *restrict  dev_info_ptr
     );
-
+```
 **STATUS CODES:**
 
 The status codes returned reflect those returned by the ``ioctl()`` service
