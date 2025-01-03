@@ -8,14 +8,17 @@
 Test a Board Support Package (BSP)
 ==================================
 
-You built a BSP with tests in the previous section.  We built the
-``sparc/erc32`` BSP in :file:`$HOME/quick-start/src/rtems`.
+You built a BSP with tests in the previous section.  The manual build of the
+``sparc/erc32`` BSP placed build artifacts in :file:`$HOME/quick-start/src/rtems`
+while the RSB build placed build artifacts under
+:file:`$HOME/quick-start/rtems/@rtems-ver-major@/sparc/erc32-rtems*/tests` which
+will need to be adjusted below.
 
 You should run the RTEMS test suite on your target hardware.  The RTEMS Project
 provides some support to do this, see the :ref:`Testing <Testing>` chapter for
 the details.
 
-On the ``sparc/erc32`` BSP we selected for this quick start chapter this is
+On the ``sparc/erc32`` BSP we selected for this quick start chapter, this is
 easy.  Just run this command:
 
 .. code-block:: none
