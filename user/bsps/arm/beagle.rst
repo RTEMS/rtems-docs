@@ -81,6 +81,20 @@ the ``MLO`` and ``u-boot.img`` on your SD card. You can get these either by
 building U-Boot yourself. Or you an get them from one of the pre-build images
 that you can download from beagleboard.org.
 
+.. note::
+    U-Boot needs to be configured to allow for Legacy format images to be \
+    loaded. If not, the following error will be shown when booting the RTEMS \
+    image:
+
+        Wrong Image Type for bootm command
+
+        ERROR -91: can't get kernel image!
+
+    Older versions (<v2022.01) of U-Boot will normally allow this by default. \
+    Newer versions might need to be reconfigured. Make sure the \
+    ``CONFIG_LEGACY_IMAGE_FORMAT`` is set to ``y`` in the U-Boot config when \
+    compiling.
+
 Booting via Network
 ~~~~~~~~~~~~~~~~~~~
 
