@@ -11,17 +11,17 @@ TBD - write and link to useful documentation, potential URLs:
 
 Reference the RTEMS Classic API Guide
 
-* https://docs.rtems.org/doc-current/share/rtems/pdf/c_user.pdf
+* https://docs.rtems.org/docs/main/c-user.pdf
 
 Reference any other existing user documentation
 
-* https://docs.rtems.org/doxygen/cpukit/html/index.html
+* https://docs.rtems.org/doxygen/main/
 
 * https://gitlab.rtems.org/
 
 * http://www.rtems.com/
 
-* https://docs.rtems.org/releases/rtemsdocs-4.10.1/share/rtems/html/
+* https://docs.rtems.org/main/
 
 
 Documentation Style Guidelines

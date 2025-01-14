@@ -62,7 +62,7 @@ Overview
 ========
 
 For an overview of the build system, see the *BSP Build System* chapter of the
-`RTEMS User Manual <https://docs.rtems.org/branches/master/user/bld/>`_.
+`RTEMS User Manual <https://docs.rtems.org/docs/main/user/bld/>`_.
 
 Commands
 ========

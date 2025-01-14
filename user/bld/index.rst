@@ -82,7 +82,7 @@ specifies paths to build specification items.  It is an advanced option and
 there is normally no need to use it.  It may be used to customize the build at
 the level of the build specification.  For more information see the
 `Build System` chapter of the
-`RTEMS Software Engineering <https://docs.rtems.org/branches/master/eng/build-system.rst>`_
+`RTEMS Software Engineering <https://docs.rtems.org/docs/main/eng/build-system.html>`_
 guide.
 
 Help
