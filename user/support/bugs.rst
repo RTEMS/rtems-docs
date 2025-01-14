@@ -170,7 +170,7 @@ attention and the bug is not magically fixed.  This may have several reasons
 
 * the target hardware is not available to others,
 
-* the bug is not reproducible on the Git master,
+* the bug is not reproducible on the Git main branch,
 
 * the bug is not reproducible at all,
 
