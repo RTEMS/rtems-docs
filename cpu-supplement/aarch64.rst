@@ -125,7 +125,7 @@ Thread-Local Storage
 ====================
 
 Thread-local storage (TLS) is supported. AArch64 uses unmodified TLS variant I
-which is not explcitly stated, but can be inferred from the behavior of GCC and
+which is not explicitly stated, but can be inferred from the behavior of GCC and
 *Addenda to, and Errata in, the ABI for the Arm® Architecture*
 (https://developer.arm.com/documentation/ihi0045/g). This alters expectations
 for the size of the TLS Thread Control Block (TCB) such that, under the LP64

@@ -212,8 +212,8 @@ not dictate what you need to use in your project. You can and should select the
 work-flow that best suites the demands of your project and what you are
 delivering.
 
-Rational
---------
+Rationale
+---------
 
 RTEMS is complex and the focus of the RTEMS Ecosystem is to simplify the
 complexity for users by providing a stable documented way to build, configure
