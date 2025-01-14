@@ -22,7 +22,7 @@ There are the following actors involved:
 
 Adding and changing requirements follows the normal patch review process.  The
 normal patch review process is described in the
-`RTEMS User Manual <https://docs.rtems.org/branches/master/user/support/contrib.html#patch-review-process>`_.
+`RTEMS User Manual <https://docs.rtems.org/docs/main/user/support/contrib.html#patch-review-process>`_.
 Reviews and comments may be submitted by anyone, but a maintainer review is
 required to approve *significant* changes.  In addition for significant
 changes, there should be at least one reviewer with a sufficient independence

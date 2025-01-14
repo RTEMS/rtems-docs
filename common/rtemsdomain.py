@@ -45,7 +45,7 @@ role_url = {
 	"bugs":		("Bugs Database",		"https://gitlab.rtems.org"),
 	"gsoc":		("Google Summer of Code", 	"https://gitlab.rtems.org/rtems/programs/gsoc/"),
 	"socis":	("ESA SOCIS",			"https://gitlab.rtems.org/"),
-	"user":		("RTEMS User Manual",	"https://docs.rtems.org/branches/master/user/index.html"),
+	"user":		("RTEMS User Manual",	"https://docs.rtems.org/docs/main/user/index.html"),
 }
 
 

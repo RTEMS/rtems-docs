@@ -45,7 +45,7 @@ RTEMS provides the following basic feature set:
       `pthreads <http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html>`_
       (enables a broad range of standard software to run on RTEMS)
 
-    - `Classic <https://docs.rtems.org/branches/master/c-user.pdf>`_
+    - `Classic <https://docs.rtems.org/docs/main/c-user.pdf>`_
 
     - :ref:term:`C11` (including
       `thread <https://en.cppreference.com/w/c/thread>`_ support)
@@ -360,5 +360,5 @@ sophisticated real-time applications are significantly reduced.
        RTEMS architecture support, e.g. context-switch code.  It is supported
        at least on ARM, AArch64, PowerPC, RISC-V, SPARC, MicroBlaze, Nios II,
        and m68k.  Check the `RTEMS CPU Architecture Supplement
-       <https://docs.rtems.org/branches/master/cpu-supplement.pdf>`_ if it is
+       <https://docs.rtems.org/docs/main/cpu-supplement.pdf>`_ if it is
        supported.

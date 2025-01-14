@@ -11,6 +11,6 @@ The RTEMS Project uses Trac to manage all change requests and problem reports
 and refers to either as a ticket.
 
 The bug reporting procedure is documented in the
-`RTEMS User Manual <https://docs.rtems.org/branches/master/user/support/bugs.html>`_.
+`RTEMS User Manual <https://docs.rtems.org/docs/main/user/support/bugs.html>`_.
 
 TBD Review process, workflows, etc.
