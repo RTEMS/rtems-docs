@@ -157,19 +157,18 @@ prefix under your home directory as recommended and end up on the SD card.
 Ubuntu
 ~~~~~~
 
-The latest version is Ubuntu 22.04 LTS 64-bit. This section also includes
+The latest version is Ubuntu 24.04 LTS 64-bit. This section also includes
 Xubuntu. A minimal installation was used and the following packages installed:
 
 .. code-block:: none
 
   $ sudo apt install build-essential g++ gdb unzip pax bison flex texinfo \
-  python3-dev python-is-python3 libpython2-dev libncurses5-dev zlib1g-dev \
+  python3-dev python-is-python3 libncurses-dev zlib1g-dev \
   ninja-build pkg-config
 
-Note that in older versions of Ubuntu, the package libpython2-dev was
-python2.7-dev. The name of packages changes over time. You need the
-package with Python development libraries for C/C++ programs. The following
-is needed for recent versions:
+The name of packages changes over time. You need the package with Python
+development libraries for C/C++ programs. The following is needed for recent
+versions:
 
 .. code-block:: none
 

@@ -432,6 +432,33 @@ centos-release-scl and rh-python36 packages are unnecessary.
 Second, Centos 8 uses dnf as its package manager instead of yum, so
 packages such as npm should be installed using dnf instead.
 
+### Ubuntu
+
+- Host Tools:
+  ```bash
+  $ sudo apt install python3-venv npm aspell
+  ```
+
+- PDF
+  ```bash
+  $ sudo apt install texlive-base texlive-latex-extra texlive-fonts-extra
+  ```
+
+- Single-HTML
+  ```bash
+  $ sudo npm install -g inliner
+  ```
+
+- PlantUML
+  ```bash
+  $ sudo npm install -g node-plantuml
+  ```
+
+- Ditaa
+  ```bash
+  $ sudo apt install ditaa
+  ```
+
 ### Arch Linux
 
 - Sphinx:
