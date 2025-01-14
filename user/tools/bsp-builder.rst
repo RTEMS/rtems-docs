@@ -25,9 +25,9 @@ debugging such as QEMU, while developers of a new BSP or a new port tend to
 work on target hardware. This type of development does not check the other
 architectures, BSP, and build options and a change may change the number of
 warnings or introduce build errors. It is important for the RTEMS project to
-have developers fix these issues before pushing the changes to the master
+have developers fix these issues before pushing the changes to the development
 repository to avoid breaking the code for other developers. It is best for a
-developer to resolve as many issues as they work on changes because comming
+developer to resolve as many issues as they work on changes because coming
 back to a problem often proves difficult.
 
 The RTEMS BSP Builder forms part of a developers workflow where patches are

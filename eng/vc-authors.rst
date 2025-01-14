@@ -13,14 +13,14 @@ Software Development (Git Writers)
  The preferred workflow for making changes to RTEMS is to push patches to a
  committer's personal repository in public view and then merge changes from
  there. For working on enhancements or bug fixes committers are encouraged to
- push to branches on their personal repositories and to merge into the main
+ push to branches on their personal repositories and to merge into the upstream
  RTEMS repository from their personal repository. Personal branches should
  not be pushed to the RTEMS repository.
 
 SSH Access
 ----------
 
-Currently all committer's should have an ssh account on the main git server,
+Currently all committers should have an ssh account on the primary git server,
 dispatch.rtems.org. If you have been granted commit access and do have an
 account on dispatch.rtems.org one should be requested on the devel@ list.
 SSH access for git uses key logins instead of passwords. The key should be at
@@ -36,10 +36,10 @@ Or replace `rtems.git` with another repo to clone another one.
 
 Personal Repository
 -------------------
-Personal repositories keep the clutter away from the master repository. A
+Personal repositories keep the clutter away from the upstream repository. A
 user with a personal repository can make commits, create and delete branches,
-plus more without interfering with the master repository. Commits to the
-master repository generate email to the vc@ list and development type commits
+plus more without interfering with the upstream repository. Commits to the
+upstream repository generate email to the vc@ list and development type commits
 by a developer would only add noise and lessen the effectiveness of the commit
 list
 
@@ -71,12 +71,12 @@ username.
   [user@git ~]$ cd git
   [user@git git]$ git clone --mirror /data/git/rtems.git
 
-Provide a description for the repository, for example "Clone of master
+Provide a description for the repository, for example "Clone of upstream
 repository."
 
 .. code-block:: shell
 
-  [user@git git]$ echo "Clone of master repository." > rtems.git/description
+  [user@git git]$ echo "Clone of upstream repository." > rtems.git/description
   [user@git git]$ logout
 
 Clone the repository on your local machine
@@ -120,18 +120,18 @@ Should print something similar to
  * remote origin
    Fetch URL: ssh://user@dispatch.rtems.org/home/user/git/rtems.git
    Push  URL: ssh://user@dispatch.rtems.org/home/user/git/rtems.git
-   HEAD branch: master
+   HEAD branch: main
    Remote branches:
      4.10   tracked
      4.8    tracked
      4.9    tracked
-     master tracked
+     main   tracked
    Local branch configured for 'git pull':
-     master merges with remote master
+     main merges with remote main
    Local ref configured for 'git push':
-     master pushes to master (up to date)
+     main pushes to main (up to date)
 
-Push commits to personal repo master from local master
+Push commits to personal repo main from local main
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: shell
@@ -145,7 +145,7 @@ Push a branch onto personal repo
 
   # git push origin branchname
 
-Update from upstream master (RTEMS head)
+Update from upstream main (RTEMS head)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  When you have committed changes on a branch that is private (hasn't been
@@ -155,7 +155,7 @@ Update from upstream master (RTEMS head)
 .. code-block:: shell
 
   # git checkout new_features
-  # git pull --rebase upstream master
+  # git pull --rebase upstream main
 
 If you cannot do a fast-forward merge then you could use the ``--no-commit``
 flag to prevent merge from issuing an automatic merge commit message.
@@ -197,7 +197,7 @@ look like this
   # stdin in the form
   #  <oldrev> <newrev> <refname>
   # For example:
-  #  aa453216d1b3e49e7f6f98441fa56946ddcd6a20 68f7abf4e6f922807889f52bc043ecd31b79f814 refs/heads/master
+  #  aa453216d1b3e49e7f6f98441fa56946ddcd6a20 68f7abf4e6f922807889f52bc043ecd31b79f814 refs/heads/main
   #
 
   REPO=my-rtems-project
@@ -212,18 +212,18 @@ look like this
 GIT Push Configuration
 ----------------------
 
-People with write access to the main repository should make sure that they
+People with write access to the upstream repository should make sure that they
 push the right branch with the git push command. The above setup ensures
-that git push will not touch the main repository, which is identified as
-upstream, unless you specify the upstream (by ``git push upstream master``).
+that git push will not touch the upstream repository, which is identified as
+upstream, unless you specify the upstream (by ``git push upstream main``).
 
-Lets suppose we have a test branch intended for integration into the master
-branch of the main repository.
+Lets suppose we have a test branch intended for integration into the main
+branch of the upstream repository.
 
 .. code-block:: shell
 
   # git branch
-    master
+    main
    *  test
 
 There are two options for pushing with the branch. First,
@@ -243,14 +243,14 @@ You'll still need to delete your local branch if you are done with it.
 
 If you are going to work exclusively with one branch for a while, you might
 want to configure git to automatically push that branch when you use git push.
-By default git push will use the local master branch, but you can use the
+By default git push will use the local main branch, but you can use the
 `test` branch as the source of your changes:
 
 .. code-block:: shell
 
-  # git config remote.origin.push test:master
+  # git config remote.origin.push test:main
 
-Now git push will merge into your master branch on your personal repository.
+Now git push will merge into your main branch on your personal repository.
 You can also setup a remote branch:
 
 .. code-block:: shell
@@ -267,7 +267,7 @@ And reset to the default
 
 .. code-block:: shell
 
-  # git config remote.origin.push master
+  # git config remote.origin.push main
 
 Pull a Developer's Repo
 -----------------------
@@ -321,22 +321,22 @@ Commands
 When merging someone's work, whether your own or otherwise, we have some
 suggested procedures to follow.
 
-* Never work in the master branch. Checkout a new branch and apply
+* Never work in the main branch. Checkout a new branch and apply
   patches/commits to it.
 * Before pushing upstream:
-  - Update master by fetching from the server
-  - Rebase the working branch against the updated master
-  - Push the working branch to the server master
+  - Update main by fetching from the server
+  - Rebase the working branch against the updated main
+  - Push the working branch to the server main
 
 The basic workflow looks like
 
 .. code-block:: shell
 
-  # git checkout -b somebranch upstream/master
+  # git checkout -b somebranch upstream/main
   # patch .. git add/rm/etc
   # git commit ...
-  # git pull --rebase upstream master
-  # git push upstream somebranch:master
+  # git pull --rebase upstream main
+  # git push upstream somebranch:main
 
 If someone pushed since you updated the server rejects your push until you
 are up to date.
@@ -348,10 +348,10 @@ For example a workflow where you will commit a series of patches from
 
   # git checkout -b am
   # git am ../patches/am*
-  # git pull --rebase upstream master
-  # git push upstream am:master
-  # git checkout master
-  # git pull upstream master
+  # git pull --rebase upstream main
+  # git push upstream am:main
+  # git checkout main
+  # git pull upstream main
   # git log
   # git branch -d am
   # git push
@@ -371,7 +371,7 @@ in an example which simply (and quickly) applies a patch to the branch:
   git add sparc.t
   git commit -m "sparc.t: Correct for V8/V9"
   git push upstream rtems4.10:4.10
-  git checkout master
+  git checkout main
   git log
   git branch -d rtems4.10
 
@@ -384,10 +384,10 @@ following script to push a single commit at a time:
 .. code-block:: shell
 
   #! /bin/sh
-  commits=$(git log --format='%h' origin/master..HEAD | tail -r)
+  commits=$(git log --format='%h' origin/main..HEAD | tail -r)
   for c in $commits
   do
-    cmd=$(echo $c | sed 's%\(.*\)%git push origin \1:master%')
+    cmd=$(echo $c | sed 's%\(.*\)%git push origin \1:main%')
     echo $cmd
   $cmd
   done

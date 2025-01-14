@@ -24,7 +24,7 @@ RTEMS, tools will be needed to assist in verifying that requirements are
 "fully tested." A fully tested requirement is one which is implemented
 and tested with associated logical tracing. Tools automating this analysis
 and generating reporting and alerts will be a critical part of ensuring
-the master technical data does not bit rot.
+the source technical data does not bit rot.
 
 Must use tools from:
 

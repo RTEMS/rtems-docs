@@ -78,10 +78,10 @@ locally. We recommend you make all your changes in local branches. If you are
 working on a few different changes or a progression of changes it is best to
 use a local branch for each change.
 
-A branch for each change lets your repo's master branch track the upstream
-RTEMS' master branch without interacting with any of the changes you are
+A branch for each change lets your repo's main branch track the upstream
+RTEMS' main branch without interacting with any of the changes you are
 working on. A completed change is emailed to the developer's list for review
-and this can take time. While this is happening the upstream's master branch
+and this can take time. While this is happening the upstream's main branch
 may be updated and you may need to rebase your work and test again if you are
 required to change or update your patch. A local branch isolates a specific
 change from others and helps you manage the process.
@@ -139,15 +139,15 @@ send for review:
 
   git format-patch -2
 
- There are new changes pushed to the RTEMS' master branch and our local branch
+ There are new changes pushed to the RTEMS' main branch and our local branch
  needs to be updated:
 
 .. code-block:: shell
 
-  git checkout master
+  git checkout main
   git pull
   git checkout faster-context-switch
-  git rebase master
+  git rebase main
 
 Working with Branches
 ---------------------
@@ -205,7 +205,7 @@ When a branch is no longer useful you can delete it.
 
 .. code-block:: shell
 
-  git checkout master
+  git checkout main
   git branch -d temporary
 
 If you have unmerged changes in the old branch Git complains and you need to
@@ -220,11 +220,11 @@ To view all changes since the last commit:
 
   git diff HEAD
 
-To view all changes between the current branch and another branch, say master:
+To view all changes between the current branch and another branch, say main:
 
 .. code-block:: shell
 
-  git diff master..HEAD
+  git diff main..HEAD
 
 To view descriptions of committed changes:
 
@@ -242,13 +242,13 @@ To view the changesets made between two branches:
 
 .. code-block:: shell
 
-  git log master..HEAD
+  git log main..HEAD
 
 Or for a more brief description use shortlog:
 
 .. code-block:: shell
 
-  git shortlog master..HEAD
+  git shortlog main..HEAD
 
 Reverting Changes
 -----------------
@@ -367,12 +367,12 @@ then merge them into your branch:
 
 .. code-block:: shell
 
-  git checkout master
+  git checkout main
   git pull
   git checkout branch1
-  git merge master
+  git merge main
 
-If all goes well the new commits you pulled into your master branch will be
+If all goes well the new commits you pulled into your main branch will be
 merged into your branch1, which will now be up-to-date. However, if branch1
 has not been pushed remotely then rebasing might be a good alternative to
 merging because the merge generates a commit.
@@ -390,20 +390,20 @@ For example
 .. code-block:: shell
 
   git checkout branch1
-  git rebase master
+  git rebase main
 
 or more concisely
 
 .. code-block:: shell
 
-  git rebase master branch1
+  git rebase main branch1
 
-will bring the changes of master into branch1, and then you can fast-forward
-master to include branch1 quite easily
+will bring the changes of main into branch1, and then you can fast-forward
+main to include branch1 quite easily
 
 .. code-block:: shell
 
-  git checkout master
+  git checkout main
   git merge branch1
 
 Rebasing makes a cleaner history than merging; the log of a rebased branch
@@ -506,15 +506,15 @@ Creating a Patch
 Before submitting a patch, please read `Commit Message Guidance`_ to
 become familiar with the commit message formatting we require.
 
-The recommended way to create a patch is to branch the Git repository master
+The recommended way to create a patch is to branch the Git repository main
 and use one commit for each logical change. Then you can use
 ``git format-patch`` to turn your commits into patches and easily submit them.
 
 .. code-block:: shell
 
-  git format-patch master
+  git format-patch main
 
-Creates a separate patch for each commit that has been made between the master
+Creates a separate patch for each commit that has been made between the main
 branch and the current branch and writes them in the current directory. Use the
 ``-o`` flag to redirect the files to a different directory.
 
@@ -665,7 +665,7 @@ perhaps one you cloned from elsewhere, or one that you made locally with
 .. code-block:: shell
 
   git remote add @SERVER@ ssh://@SERVER@/home/@USER@/git/@REPO@.git
-  git push @SERVER@ master
+  git push @SERVER@ main
 
 You can replace the @SERVER@ with another name for your remote if you like.
 And now you can push other branches that you might have created. Now you can
@@ -688,13 +688,13 @@ uses a slightly different approach than the one just outlined:
   cd rtems
   git remote add upstream https://gitlab.rtems.org/rtems/rtos/rtems.git
   git fetch upstream
-  git pull upstream master
+  git pull upstream main
   git push
-  ## If you want to track RTEMS on your personal master branch,
-  ## you should only push changes to origin/master that you pull
+  ## If you want to track RTEMS on your personal main branch,
+  ## you should only push changes to origin/main that you pull
   ## from upstream. The basic workflow should look something like:
-  git checkout master
-  git pull upstream master
+  git checkout main
+  git pull upstream main
   git push
   git checkout -b anewbranch
   ## Repeat: do work, git commit -a

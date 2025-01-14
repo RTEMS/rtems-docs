@@ -30,7 +30,7 @@ from `freebsd/sys/tools/fdt` must be used as most of the DTS files in FreeBSD
 have included `.dtsi` files from their source tree. An example is given below as
 a reference for how to build the device tree from the FreeBSD source.
 
-`NOTE: The following example uses FreeBSD master branch from github mirror as
+`NOTE: The following example uses FreeBSD main branch from github mirror as
 an example. It is advised to always use the source from the commit matching the
 freebsd-org HEAD in libBSD.`
 

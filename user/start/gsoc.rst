@@ -132,7 +132,7 @@ sending patches.
 
 Here are a few pointers to keep in mind while creating the patches.
 
-* Make sure not to commit changes in the master branch. This is to avoid merge
+* Make sure not to commit changes in the main branch. This is to avoid merge
   conflicts when you are pulling the latest changes from the remote branch.
 * Avoid trailing whitespace errors.
 * The author name of the patch is your full name.
