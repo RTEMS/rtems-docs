@@ -101,6 +101,26 @@ The minimal CentOS distribution is a specific DVD that installs a minimal
 system. If you use a full system some of these packages may have been
 installed.
 
+.. _Rocky:
+
+Rocky
+~~~~~~
+
+On Rocky Linux 9 the PowerTools has been renamed as ``crb``.
+On a fresh install, the following commands should install everything you
+need for RTEMS development:
+
+.. code-block:: none
+
+  # dnf install yum-utils
+  # dnf config-manager --enable crb
+  # dnf update
+  # dnf groupinstall "Development Tools"
+  # dnf install python3 python3-pip python3-setuptools python3-devel
+  # dnf install texinfo
+
+At present there does not seem to be a solution for ``pax`` on Rocky 9.
+
 .. _Fedora:
 
 Fedora
