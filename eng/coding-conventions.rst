@@ -162,7 +162,7 @@ Readability
   static functions.
 * Function declarations should include variable names.
 * Avoid excess parentheses. Learn the
-  `operator precedence <https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B#Operator_precedence>`_. rules.
+  `operator precedence <https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B#Operator_precedence>`_ rules.
 * Always use parentheses with sizeof. This is an exception to the rule
   about excess parentheses.
 
