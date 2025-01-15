@@ -131,7 +131,7 @@ Language and Compiler
 Readability
 ------------
 
-* Understand and follow the `naming rules <https://devel.rtems.org/wiki/Developer/Coding/NamingRules>`_..
+* Understand and follow the `naming rules <https://devel.rtems.org/wiki/Developer/Coding/NamingRules>`_.
 * Use typedef to remove 'struct', but do not use typedef
   to hide pointers or arrays.
   * Exception: typedef can be used to simplify function pointer types.
@@ -152,7 +152,7 @@ Readability
 * Avoid complex logic in conditional and loop statements.
 * Put conditional and loop statements on the line after the expression.
 * Favor inline functions to hide
-  `compile-time feature-conditioned compilation <https://devel.rtems.org/wiki/Developer/Coding/Compile-time_feature-conditioned_compilation>`_..
+  `compile-time feature-conditioned compilation <https://devel.rtems.org/wiki/Developer/Coding/Compile-time_feature-conditioned_compilation>`_.
 * Define non-inline functions in a .c source file.
 * Declare all global (non-static) functions in a .h header file.
 * Declare and define inline functions in one place. Usually, this
@@ -162,7 +162,7 @@ Readability
   static functions.
 * Function declarations should include variable names.
 * Avoid excess parentheses. Learn the
-  `operator precedence <https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B#Operator_precedence>`_. rules.
+  `operator precedence <https://en.wikipedia.org/wiki/Operators_in_C_and_C%2B%2B#Operator_precedence>`_ rules.
 * Always use parentheses with sizeof. This is an exception to the rule
   about excess parentheses.
 
@@ -190,7 +190,7 @@ Robustness
   and decision points.
 * Prefer inline functions, enum, and const variables instead of CPP macros.
 * CPP macros should use a leading underscore for parameter
-  names and `avoid macro pitfalls <https://gcc.gnu.org/onlinedocs/cpp/Macro-Pitfalls.html#Macro-Pitfalls>`_..
+  names and `avoid macro pitfalls <https://gcc.gnu.org/onlinedocs/cpp/Macro-Pitfalls.html#Macro-Pitfalls>`_.
 
 Portability
 -----------
@@ -213,7 +213,7 @@ Performance
 
 * Prefer algorithms with the `lowest order of time and space <https://devel.rtems.org/wiki/FAQ/AlgorithmicComplexity>`_.
   for fast, deterministic execution times with small memory footprints.
-* Understand the constraints of `real-time programming <https://devel.rtems.org/wiki/TBR/Review/Real-Time_Resources>`_..
+* Understand the constraints of `real-time programming <https://devel.rtems.org/wiki/TBR/Review/Real-Time_Resources>`_.
   Limit execution times in interrupt contexts and critical sections,
   such as Interrupt and Timer Service Routines (TSRs).
 * Prefer to ++preincrement instead of postincrement++.
