@@ -472,20 +472,127 @@ packages such as npm should be installed using dnf instead.
   # pacman -S texlive-bin texlive-core texlive-latexextra texlive-fontsextra
   ```
 
-### openSUSE
+### OpenSUSE
 
-- Packages:
+The instructions in the `Dockerfile` below should provide an
+inspiration how to set up an OpenSUSE leap machine and to build the
+RTEMS documentation. The build process of the container image does not
+only install all needed packages in the image but also builds the
+documentation.
+
+In the `Dockerfile` the `root` user executes `waf`. This is not
+necessary. Any ordinary user can build the documentation. Moreover,
+in the container image the resulting document files are installed
+into directory `/srv/www/htdocs`. This is the directory used by the
+`lighttpd` ("lighty") web-server which is run when the container
+is started after the build.
+
+To build the container image, create the following `Dockerfile`
+in an empty directory of your choice.
+
   ```bash
-  # zypper in python-pip 'texlive*'
+  cat >Dockerfile <<"EOF"
+  # Dockerfile to build the RTEMS documentation
+
+  FROM opensuse/leap:15.6
+  RUN <<EOT bash
+      set -exu -o pipefail
+      # ==== Install required packages ====
+      zypper --non-interactive refresh
+      zypper --non-interactive update
+      zypper --non-interactive install \
+              --solver-focus=Update --force-resolution \
+          aspell \
+          git \
+          graphviz \
+          lighttpd \
+          npm-default \
+          plantuml \
+          poppler-tools \
+          python311 \
+          python311-poetry \
+          texinfo \
+          texlive-inconsolata \
+          texlive-lato \
+          texlive-scheme-tetex \
+          texlive-anyfontsize \
+          texlive-eqparbox \
+          texlive-fncychap \
+          texlive-sectsty \
+          texlive-threeparttable \
+          texlive-wrapfig \
+          unzip \
+          wget
+      npm install -g inliner
+      npm install -g node-plantuml
+      # Note: OpenSUSE does not provide package ditaa.
+      wget --output-document=/root/ditaa0_9.zip \
+              https://sourceforge.net/projects/ditaa/files/latest/download
+      unzip /root/ditaa0_9.zip ditaa0_9.jar -d /usr/local/bin
+      /bin/echo -e '#! /bin/bash\n\nexec java -jar \
+              /usr/local/bin/ditaa0_9.jar \$@' >/usr/local/bin/ditaa
+      chmod a+rx /usr/local/bin/ditaa
+
+      # ==== Obtain rtems-docs sources and setup Python packages ====
+      git -C \${HOME} clone https://gitlab.rtems.org/rtems/docs/rtems-docs.git
+      cd \${HOME}/rtems-docs
+      poetry init --name=rtems-docs --no-interaction
+      poetry add sphinx
+      poetry add sphinxcontrib-bibtex
+      poetry add sphinxcontrib-jquery
+      poetry add sphinx-book-theme
+      poetry add sphinx-copybutton
+
+      # ==== Build the RTEMS documentation ====
+      cd \${HOME}/rtems-docs
+      poetry run ./waf configure --singlehtml --plantuml --ditaa \
+              --pdf --prefix="/srv/www/htdocs"
+      poetry run ./waf
+      poetry run ./waf install
+  EOT
+
+  # This container starts a web-server
+  CMD ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+  EOF
   ```
 
-- Sphinx:
+Podman is used in the shell commands below. If you prefer Docker
+simply replace `podman` through `docker`.
+
+Build the container image `rtems-docs-server_img` with this command:
+
   ```bash
-  # pip install -U Sphinx
+  podman build -t rtems-docs-server_img -f Dockerfile .
   ```
 
-  Using pip to install Sphinx destroys the python-Sphinx package if
-  installed via RPM.
+Create and start a container with (effectively, this "only" starts the
+web-server):
+
+  ```bash
+  podman run -d -p 8080:80 --rm --name rtems-docs-server rtems-docs-server_img
+  ```
+
+Point a web-browser to `http://localhost:8080/` to browse the
+documentation created during the build of the container image.
+For example:
+
+  ```bash
+  firefox http://localhost:8080/
+  ```
+
+Notes:
+
+* Accesses from remote hosts to port 8080 may be blocked by a firewall.
+
+* The single html pages may be empty. This is a
+  [known bug](https://gitlab.rtems.org/rtems/rtos/rtems-release/-/issues/7).
+
+To stop the container and to delete the image, use these commands:
+
+  ```bash
+  podman stop rtems-docs-server
+  podman rmi rtems-docs-server_img
+  ```
 
 ### Latex Setup
 
