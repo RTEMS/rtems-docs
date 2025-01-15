@@ -108,14 +108,14 @@ def check_sphinx_version(ctx, minver, maxver):
                               ['--version'], output=Context.BOTH)
             # err looks like 'sphinx-build 1.7.0\n'
             version = err.split(" ")[-1:][0].strip()
-            ver = tuple(map(int, re.split('[\D]', version)))
+            ver = tuple(map(int, re.split(r'[\D]', version)))
         except:
             try:
                 # sphinx-build returns its version info in stdout
                 version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD +
                               ['--version']).split(" ")[-1:][0].strip()
                 try:
-                    ver = tuple(map(int, re.split('[\D]', version)))
+                    ver = tuple(map(int, re.split(r'[\D]', version)))
                 except:
                     ctx.fatal("Sphinx version cannot be checked or Sphinx is not installed")
             except:
@@ -415,8 +415,8 @@ def doc_singlehtml(ctx, source_dir, conf_dir, sources):
 
         # inliner does not handle digests and fails to open the file.
         with open(src, "rb") as fp:
-            no_hash = re.sub(b'\?v=[a-z0-9]{8}', b'', fp.read())
-            no_digest = re.sub(b'\?digest=[a-z0-9]{20}', b'', no_hash)
+            no_hash = re.sub(b'\\?v=[a-z0-9]{8}', b'', fp.read())
+            no_digest = re.sub(b'\\?digest=[a-z0-9]{20}', b'', no_hash)
         with open(src, "wb") as fp:
             fp.write(no_digest)
 
