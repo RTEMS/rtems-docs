@@ -57,11 +57,11 @@ instructions to install the tools for your OS.
 Choosing an installation prefix
 -------------------------------
 
-The term ``prefix`` refers to the path on your computer where the software is to
-be installed.
-You can refer to the :ref:`Prefix <QuickStartPrefixes>` section for details on
-choosing an installation prefix. Prefer a prefix that is writable by your user
-account.
+The term ``prefix`` refers to the path on your computer where the software is
+to be installed.  You can refer to the :ref:`Prefix <QuickStartPrefixes>`
+section for details on choosing an installation prefix.  You should avoid using
+prefixes that require root permission, as building with root is not supported
+or recommended.
 
 Downloading the Sources
 -----------------------

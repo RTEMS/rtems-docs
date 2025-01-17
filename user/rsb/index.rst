@@ -77,8 +77,15 @@ systems. There is no automatic dependence checking between various packages you
 build or packages and software your host system you may have installed. We
 assume the build sets and configuration files you are using have been created
 by developers who do. Support is provided for package config or ``pkgconfig``
-type files so you can check and use standard libraries if present. If you have
-a problem please ask on our :r:list:`devel`.
+type files so you can check and use standard libraries if present.
+
+The RSB is not intended to be run with administrator privileges, and it is
+known to break in certain builds if run as the *root* or *superuser* account.
+If you need to install with elevated privileges, you should stage your build
+into a tar file using `--bset-tar-file --no-install` and then unpack it to the
+destination, as described in :ref:`RSBDeployment`.
+
+If you have a problem please ask on our :r:list:`devel`.
 
 .. topic:: Bug Reporting
 

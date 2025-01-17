@@ -55,11 +55,12 @@ version of over the top by using the same `prefix`. A separate `prefix` for each
 version avoids this.
 
 It is strongly recommended to run the RSB as a *normal user* and not with
-*root* privileges (also known as *super user* or *Administrator*).  You have to
-make sure that your normal user has sufficient privileges to create files and
-directories under the prefix.  For example, you can create a directory
-:file:`/opt/rtems` and give it to a developer group with read, write, and
-execute permissions.  Alternatively, you can choose a prefix in your home
+*root* privileges (also known as *super user* or *Administrator*). We do not
+support running RSB as *root* and it is known to not work for certain builds.
+You have to make sure that your normal user has sufficient privileges to create
+files and directories under the prefix.  For example, you can create a
+directory :file:`/opt/rtems` and give it to a developer group with read, write,
+and execute permissions.  Alternatively, you can choose a prefix in your home
 directory, e.g. :file:`$HOME/rtems/6` or with a project-specific component
 :file:`$HOME/project-x/rtems/6`.  For more ideas, see the :ref:`project
 sandboxing <ProjectSandboxing>` section.  In this quick start chapter, we will
