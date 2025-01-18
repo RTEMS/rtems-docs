@@ -273,9 +273,9 @@ architecture or BSP. The RTEMS Project encourages users and organizations to
 fill this role for the community. The :ref:`RTEMS Source Builder <RSB>`
 provides some aid to :ref:`build and deploy tool binaries <RSBDeployment>`.
 
-.. include:: ../../common/content/RTAS.rst
+.. include:: ../../common/content/real-time-application-systems.rst
 
-.. include:: ../../common/content/RTE.rst
+.. include:: ../../common/content/real-time-executive.rst
 
 .. [#] The goal is to use the
        `BSD 2-Clause license

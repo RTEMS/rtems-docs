@@ -38,11 +38,11 @@ provided for each processor type that is supported.
 
 .. index:: Real-time applications
 
-.. include:: ../common/content/RTAS.rst 
+.. include:: ../common/content/real-time-application-systems.rst
 
 .. index:: Real-time executive
 
-.. include:: ../common/content/RTE.rst
+.. include:: ../common/content/real-time-executive.rst
 
 .. index:: Application architecture
 
