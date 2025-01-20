@@ -16,6 +16,10 @@ from waflib.Build import BuildContext
 import latex
 import conf
 
+import os
+
+windows = os.name == 'nt'
+
 # If you do not want to check for a maximum version, set it to None.
 sphinx_min_version = (1, 3)
 sphinx_max_version = None
@@ -281,7 +285,11 @@ def cmd_configure(ctx):
         check_sphinx_extension(ctx, 'sphinx_copybutton')
         check_sphinx_extension(ctx, 'sphinxcontrib.jquery')
 
-        ctx.check_python_module('sphinx_book_theme')
+        # FIXME: Checking for the Python module is broken on MSYS2
+        if not windows:
+            ctx.check_python_module('sphinx_book_theme')
+        else:
+            pass
 
     #
     # Optional builds.
