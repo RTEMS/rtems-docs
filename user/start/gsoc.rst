@@ -22,7 +22,7 @@ fixing small errors in the getting started resources.
 This section will help you to quickly setup a development environment without
 delving into the details. For more information you can go through the other
 subsections under :ref:`Quick Start <QuickStart>` chapter, ask in
-:r:url:`discord`, or ask on the :r:list:`user` and :r:list:`devel`.
+:r:url:`discord`, or ask on the :r:list:`users` and :r:list:`devel`.
 
 We recommend all new developers use the current development (unreleased)
 version, which is currently @rtems-ver-major@. The
