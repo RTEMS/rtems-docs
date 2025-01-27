@@ -75,8 +75,8 @@ standard_names = {
     'FACE 3.2 Safety Extended': 'FACE Technical Standard, Edition 3.2 Safety Extended',
     'FACE 3.2 General Purpose': 'FACE Technical Standard, Edition 3.2 General Purpose',
     'SCA 2.2.2 AEP'           : 'Software Communications Architecture 2.2.2 AEP',
-    'SCA 4.1 Ultra Lightweight AEP' : 'Software Communications Architecture 4.1 Ultra Lightweight Appliation Environment Profile',
-    'SCA 4.1 Lightweight AEP' : 'Software Communications Architecture 4.1 Lightweight Appliation Environment Profile',
+    'SCA 4.1 Ultra Lightweight AEP' : 'Software Communications Architecture 4.1 Ultra Lightweight Application Environment Profile',
+    'SCA 4.1 Lightweight AEP' : 'Software Communications Architecture 4.1 Lightweight Application Environment Profile',
     'SCA 4.1 [Full] AEP'      : 'Software Communications Architecture 4.1 [Full] Appliation Environment Profile'
 }
 
