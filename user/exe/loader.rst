@@ -839,17 +839,13 @@ The following architectures are supported:
 
  - AArch64
  - ARM
- - Blackfin
- - H8300
  - Intel x86 (i386)
- - LM32
  - M68K
  - MicroBlaze
  - MIPS
  - Moxie
  - PowerPC
  - SPARC
- - V850
 
 AArch64
 ^^^^^^^
