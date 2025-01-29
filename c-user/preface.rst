@@ -114,19 +114,19 @@ was begun that will eliminate the major drawbacks of the Ada programming
 language mentioned above. The Real Time Executive for Multiprocessor Systems
 (RTEMS) provides full capabilities for management of tasks, interrupts, time,
 and multiple processors in addition to those features typical of generic
-operating systems.  The code is Government owned, so no licensing fees are
-necessary.  RTEMS has been implemented in both the Ada and C programming
-languages.  It has been ported to the following processor families:
+operating systems.  The code is open source, so no licensing fees are
+necessary.
 
-- Adapteva Epiphany
+RTEMS has been ported to over three dozen processor families
+over its long history. Some of these architectures are obsolete
+and were removed.  The current RTEMS version includes ports to
+the following processor families:
 
-- Altera NIOS II
-
-- Analog Devices Blackfin
-
-- Atmel AVR
+- Intel (Altera) NIOS II
 
 - ARM
+
+- AArch64
 
 - Freescale (formerly Motorola) MC68xxx
 
@@ -136,40 +136,39 @@ languages.  It has been ported to the following processor families:
 
 - Intel i386 and above
 
-- Lattice Semiconductor LM32
+- Intel x86_64
 
-- NEC V850
+- Xilinx (AMD) Microblaze
 
 - MIPS
 
 - Moxie Processor
 
-- OpenRISC
+- OpenRISC OR1K
 
 - PowerPC
 
-- Renesas (formerly Hitachi) SuperH
+- RISC-V
 
-- Renesas (formerly Hitachi) H8/300
-
-- Renesas M32C
-
-- SPARC v7, v8, and V9
+- SPARC v7 and v8
 
 Since almost all of RTEMS is written in a high level language, ports to
-additional processor families require minimal effort.
+additional processor families require minimal effort. The portabilty and
+abstraction layers provided by RTEMS enable transitioning an application
+one processor family to another without major application redesign.
 
-RTEMS multiprocessor support is capable of handling either homogeneous or
-heterogeneous systems.  The kernel automatically compensates for architectural
-differences (byte swapping, etc.) between processors.  This allows a much
-easier transition from one processor family to another without a major system
-redesign.
+RTEMS includes two types of multiprocess support: Symmetric Multiprocessing
+(SMP) and distributed multiprocessing. SMP is supported on a subset of
+supported architectures including ARM, AArch64, PowerPC, RISC-V, and SPARC.
+RTEMS distributed multiprocessor support assumes each node in the distributed
+system is an independent system with its own CPU, RAM, and copy of RTEMS.
+A subset of RTEMS APIs support operations on remote nodes in the system.
+This is capable of handling either homogeneous or heterogeneous systems.
+The kernel automatically compensates for architectural
+differences (byte swapping, etc.) between processors.
 
-Since the proposed standards are still in draft form, RTEMS cannot and does not
-claim compliance.  However, the status of the standard is being carefully
-monitored to guarantee that RTEMS provides the functionality specified in the
-standard.  Once approved, RTEMS will be made compliant.
-
-This document is a detailed users guide for a functionally compliant real-time
-multiprocessor executive.  It describes the user interface and run-time
-behavior of Release 4.10.99.0 of the C interface to RTEMS.
+This document details the Classic API which was originally based on
+the Real-Time Executive Interface Definition (RTEID) and Open Real-Time
+Kernel Interface Definition (ORKID). Neither of those efforts reached
+the status of a published standard but influenced the APIs available
+from multiple real-time operating systems.
