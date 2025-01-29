@@ -12,7 +12,7 @@ RTEMS CPU Architecture Supplement (|version|).
     | |copy| 2016, 2018 Sebastian Huber
     | |copy| 2014, 2015 Hesham Almatary
     | |copy| 2010 Gedare Bloom
-    | |copy| 1988, 2018 On-Line Applications Research Corporation (OAR)
+    | |copy| 1988, 2018, 2025 On-Line Applications Research Corporation (OAR)
 
     .. include:: ../common/license.rst
 
@@ -26,12 +26,7 @@ RTEMS CPU Architecture Supplement (|version|).
 	port
 	aarch64
 	arm
-	atmel_avr
-	blackfin
-	epiphany
 	intel_amd_x86
-	lattice_micro32
-	renesas_m32c
 	m68xxx_and_coldfire
 	xilinx_microblaze
 	mips
@@ -39,7 +34,5 @@ RTEMS CPU Architecture Supplement (|version|).
 	openrisc_1000
 	powerpc
 	riscv
-	superh
 	sparc
-	sparc64
 	zreferences
