@@ -117,10 +117,8 @@ all implementations.
 
         $ cd bsps
         $ ls
-        arm   bsp.am  lm32  m68k             mips   no_cpu         README  sparc
-        avr   h8300   m32c  Makefile.am      moxie  powerpc        sh      sparc64
-        bfin  i386    m32r  MERGE.PROCEDURE  nios2  preinstall.am  shared  v850
-
+        aarch64  i386     m68k        mips   nios2   or1k     riscv   sparc
+        arm      include  microblaze  moxie  no_cpu  powerpc  shared  x86_64
 
 If we cd into a specific architecture, we see that a similar structure is
 employed. bsps/arm/ contains directories for each Board Support Package
@@ -131,10 +129,12 @@ by all BSPs of that architecture.
 
         $ cd arm
         $ ls
-        acinclude.m4  edb7312    gumstix   Makefile.am    realview-pbx-a9  stm32f4
-        configure.ac  gba        lm3s69xx  nds            rtl22xx          xilinx-zynq
-        csb336        lpc24xx   preinstall.am  shared     csb337           gp32
-        lpc32xx   raspberrypi    smdk2410
+        altera-cyclone-v  fvp       lpc176x          shared    xilinx-zynq
+        atsam             gumstix   lpc24xx          smdk2410  xilinx-zynqmp
+        beagle            imx       lpc32xx          stm32f4   xilinx-zynqmp-rpu
+        csb336            imxrt     raspberrypi      stm32h7
+        csb337            include   realview-pbx-a9  tms570
+        edb7312           lm3s69xx  rtl22xx          xen
 
 Finally, if we cd into a specific BSP, we see the files and .h's that
 compose the package for that particular board. You may recognize the
@@ -146,8 +146,7 @@ directories contain implementations of these features.
 
         $ cd raspberrypi
         $ ls
-        include       misc        README   clock          console          irq
-        start
+        config  console  gpio  i2c  include  irq  README.md  spi  start
 
 Another way to get an idea of the structure of bsps/ is to navigate
 to a directory and execute the "tree -f" command. This outputs a nice
@@ -160,34 +159,54 @@ directory.
         ~/rtems/bsps/arm/raspberrypi
         $ tree -f
         .
-        |-- ./clock
-        |   `-- ./clock/clockdrv.c
-        |-- ./configure.ac
-        |-- ./console
-        |   |-- ./console/console-config.c
-                |   `-- ./console/usart.c
-        |-- ./include
-        |   |-- ./include/bsp.h
-        |   |-- ./include/irq.h
-        |   |-- ./include/mmu.h
-        |   |-- ./include/raspberrypi.h
-        |   `-- ./include/usart.h
-        |-- ./irq
-        |   `-- ./irq/irq.c
-        |-- ./make
-        |   `-- ./make/custom
-        |       `-- ./make/custom/raspberrypi.cfg
-        |-- ./Makefile.am
-        |-- ./misc
-        |   `-- ./misc/timer.c
-        |-- ./preinstall.am
-        |-- ./README
-        `-- ./startup
-            |-- ./startup/bspreset.c
-            |-- ./startup/bspstart.c
-            |-- ./startup/bspstarthooks.c
-            |-- ./startup/linkcmds
-            `-- ./startup/mm_config_table.c
+        ├── ./config
+        │   ├── ./config/raspberrypi2.cfg
+        │   ├── ./config/raspberrypi.cfg
+        │   └── ./config/raspberrypi.inc
+        ├── ./console
+        │   ├── ./console/console-config.c
+        │   ├── ./console/fb.c
+        │   ├── ./console/fbcons.c
+        │   ├── ./console/font_data.h
+        │   └── ./console/outch.c
+        ├── ./gpio
+        │   ├── ./gpio/gpio-interfaces-pi1-rev2.c
+        │   └── ./gpio/rpi-gpio.c
+        ├── ./i2c
+        │   └── ./i2c/i2c.c
+        ├── ./include
+        │   ├── ./include/bsp
+        │   │   ├── ./include/bsp/fbcons.h
+        │   │   ├── ./include/bsp/i2c.h
+        │   │   ├── ./include/bsp/irq.h
+        │   │   ├── ./include/bsp/mailbox.h
+        │   │   ├── ./include/bsp/mmu.h
+        │   │   ├── ./include/bsp/raspberrypi.h
+        │   │   ├── ./include/bsp/rpi-fb.h
+        │   │   ├── ./include/bsp/rpi-gpio.h
+        │   │   ├── ./include/bsp/spi.h
+        │   │   ├── ./include/bsp/usart.h
+        │   │   └── ./include/bsp/vc.h
+        │   ├── ./include/bsp.h
+        │   └── ./include/tm27.h
+        ├── ./irq
+        │   └── ./irq/irq.c
+        ├── ./README.md
+        ├── ./spi
+        │   └── ./spi/spi.c
+        └── ./start
+            ├── ./start/bspreset.c
+            ├── ./start/bspsmp.c
+            ├── ./start/bspsmp_init.c
+            ├── ./start/bspstart.c
+            ├── ./start/bspstarthooks.c
+            ├── ./start/cmdline.c
+            ├── ./start/mailbox.c
+            ├── ./start/timer.c
+            ├── ./start/vc.c
+            └── ./start/vc_defines.h
+        
+        9 directories, 37 files
 
 
 In short, BSPs will use the following directories:
