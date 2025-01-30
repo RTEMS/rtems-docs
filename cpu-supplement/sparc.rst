@@ -16,7 +16,7 @@ files, and the assembly language interface to the executive.
 
 This document discusses the SPARC architecture dependencies in this port of
 RTEMS.  This architectural port is for SPARC Version 7 and
-8. Implementations for SPARC V9 are in the sparc64 target.
+8.
 
 It is highly recommended that the SPARC RTEMS application developer obtain and
 become familiar with the documentation for the processor being used as well as
