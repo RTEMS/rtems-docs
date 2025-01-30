@@ -20,7 +20,7 @@ been generated:
     ...
     ...
     Build FAILED   <1>
-      See error report: rsb-report-4.11-rtems-lm32.txt   <2>
+      See error report: rsb-report-@rtems-ver-major@.@rtems-ver-minor@-rtems-sparc.txt   <2>
 
 .. topic:: Items:
 

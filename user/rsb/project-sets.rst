@@ -170,11 +170,11 @@ are provided the patch's setup default options are used.
 
 Patches can be declared in build set up files.
 
-This examples shows how to declare a patch for gdb in the ``lm32`` architecture:
+This example shows how to declare a patch for gdb in the ``sparc`` architecture:
 
 .. code-block:: spec
 
-    %patch add <1> gdb <2> %{rtems_gdb_patches}/lm32/gdb-sim-lm32uart.diff <3>
+    %patch add <1> gdb <2> %{rtems_gdb_patches}/gdb-8.2.1-disable-sis.patch <3>
 
 .. topic:: Items:
 
@@ -189,7 +189,7 @@ used to add a checksum for a patch that is used to verify the patch:
 
 .. code-block:: spec
 
-    %hash sha512 <1> gdb-sim-lm32uart.diff <2> 77d07087 ... e7db17fb <3>
+    %hash sha512 <1> gdb-8.2.1-disable-sis.patch <2> 295f91 ... 051c6960 <3>
 
 .. topic:: Items:
 
