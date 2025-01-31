@@ -25,22 +25,26 @@ Copyright and License Block
 
 You are the copyright holder.  Use the following copyright and license block for
 your source code contributions to the RTEMS Project.  Place it after the SPDX
-License Identifier line and the optional file documentation block.  Replace the
-<FIRST YEAR> placeholder with the year of your first substantial contribution to
-this file.  Update the <LAST YEAR> with the year of your last substantial
-contribution to this file.  If the first and last years are the same, then
-remove the <LAST YEAR> placeholder with the comma.  Replace the <COPYRIGHT
-HOLDER> placeholder with your name.
+License Identifier line and the optional file documentation block. 
 
-In case you are a real person, then use the following format for
-<COPYRIGHT HOLDER>: <FIRST NAME> <MIDDLE NAMES> <LAST NAME>.  The <FIRST NAME>
-is your first name (also known as given name), the <MIDDLE NAMES> are your
-optional middle names, the <LAST NAME> is your last name (also known as family
-name).
+* In case you are a real person, then use the following format for
+  <COPYRIGHT HOLDER>: <FIRST NAME> <MIDDLE NAMES> <LAST NAME>.  The <FIRST NAME>
+  is your first name (also known as given name), the <MIDDLE NAMES> are your
+  optional middle names, the <LAST NAME> is your last name (also known as family
+  name).
 
-If more than one copyright holder exists for a file, then sort the copyright
-lines by the first year (earlier years are below later years) followed by the
-copyright holder in alphabetical order (A is above B in the file).
+* URLs are not permitted within the copyright block except for an email address
+  for the copyright holder/author's contact information.
+
+* Replace the <FIRST YEAR> placeholder with the year of your first substantial
+  contribution to this file.  Update the <LAST YEAR> with the year of your last
+  substantial contribution to this file.  If the first and last years are the
+  same, then remove the <LAST YEAR> placeholder with the comma.  Replace the
+  <COPYRIGHT HOLDER> placeholder with your name.
+
+* If more than one copyright holder exists for a file, then sort the copyright
+  lines by the first year (earlier years are below later years) followed by the
+  copyright holder in alphabetical order (A is above B in the file).
 
 Use the following template for a copyright and license block.  Do not change the
 license text.
