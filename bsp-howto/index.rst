@@ -30,6 +30,7 @@ RTEMS BSP and Driver Guide (|version|).
 	clock
 	target-hash
 	getentropy
+	can
 	i2c
 	spi
 	real_time_clock
