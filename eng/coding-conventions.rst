@@ -184,8 +184,7 @@ Readability
 * Test and action should stay close together.
 * Avoid complex logic in conditional and loop statements.
 * Put conditional and loop statements on the line after the expression.
-* Favor inline functions to hide
-  `compile-time feature-conditioned compilation <https://devel.rtems.org/wiki/Developer/Coding/Compile-time_feature-conditioned_compilation>`_.
+* Favor inline functions to hide `compile-time conditional code features`_.
 * Define non-inline functions in a .c source file.
 * Declare all global (non-static) functions in a .h header file.
 * Declare and define inline functions in one place. Usually, this
