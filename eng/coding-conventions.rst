@@ -48,6 +48,42 @@ requirements.
 * Refer to :ref:`FileHeaderCopyright` for example copyright/license comment
   blocks for various languages.
 
+Third-Party Source Code
+-----------------------
+
+The appropriate use of code from other open-source projects is encouraged. We
+refer to such code as "third-party code" and we refer to the origin project as
+the "upstream" source. We treat third-party code carefully to ensure compliance
+with license terms and to ease maintenance burdens. We aim to return code back
+to the upstream whenever possible. The following guidelines should be followed
+to meet the high-level goal of respecting the third-party code and upstream.
+
+When importing code from anywhere you must retain the original code's licensing
+and copyright or other attribution information. Be careful with copyright and
+code ownership, these things matter. The best approach is to provide an
+isolated patch that adds all of the code from the third party, and then layer on
+patches that modify or make use of the third party code. Attempt to minimize
+changes, and submit patches upstream when possible.
+
+When you have to change third-party code, it is best to provide a clear
+identification of the change like this, omitting the comments:
+
+  .. code-block:: C
+
+    /* unmodified code */
+    #if defined(__rtems__)
+      /* changes made */
+    #endif
+    /* unmodified code */
+
+This approach helps to minimize code review, identify very clearly the
+origin of source code, and eases maintenance in case of updating the
+third-party code.
+
+* Exception: unmaintained third-party code adopted and maintained by RTEMS may
+  be directly modified and reformatted to a suitable style and to meet coding
+  conventions.
+
 Language and Compiler
 ---------------------
 
@@ -235,7 +271,7 @@ Portability
 Maintainability
 ---------------
 
-* Minimize modifications to `third-party code <https://devel.rtems.org/wiki/Developer/Coding/ThirdPartyCode>`_.
+* Minimize modifications to `third-party source code`_.
 * Keep it simple! Simple code is easier to debug and easier to read than clever code.
 * Share code with other architectures, CPUs, and BSPs where possible.
 * Do not duplicate standard OS or C Library routines.
@@ -307,11 +343,6 @@ Exceptions to the Rules
 
 * Minimize reformatting existing code in RTEMS unless the file undergoes
   substantial non-style changes.
-* `Third-party code <https://devel.rtems.org/wiki/Developer/Coding/ThirdPartyCode>`_.
-  should not be reformatted to fit RTEMS style.
-  Exception: unmaintained third-party code adopted and
-  maintained by RTEMS may be reformatted, subject to the
-  above rules.
 
 Tools
 -----
