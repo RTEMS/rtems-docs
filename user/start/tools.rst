@@ -12,12 +12,12 @@ Install the Tool Suite
 
 You have chosen an installation prefix, the BSP to build, the tool's
 architecure and prepared the source for the RSB in the previous sections.  We
-have chosen :file:`$HOME/quick-start/rtems/6` as the installation prefix, the
-``erc32`` BSP and the SPARC architecture name of ``sparc-rtems6``, and unpacked
+have chosen :file:`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation prefix, the
+``erc32`` BSP and the SPARC architecture name of ``sparc-rtems@rtems-ver-major@``, and unpacked
 the RSB source in :file:`$HOME/quick-start/src`.
 
 The tool suite for RTEMS and the RTEMS sources are tightly coupled.  For
-example, do not use a RTEMS version 6 tool suite with RTEMS version 4.11 or 5
+example, do not use a RTEMS version @rtems-ver-major@ tool suite with RTEMS version 4.11 or 5
 sources and vice versa.
 
 If you are unsure how to specify the build set for the architecture you wish to
@@ -32,7 +32,7 @@ Build and install the tool suite:
 .. code-block:: none
 
     cd $HOME/quick-start/src/rsb/rtems
-    ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/6 6/rtems-sparc
+    ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ @rtems-ver-major@/rtems-sparc
 
 This command should output something like this (omitted lines are denoted by
 ...). The build host appears as part of the name of the package being
@@ -40,23 +40,23 @@ built. The name you see may vary depending on the host you are using:
 
 .. code-block:: none
 
-    RTEMS Source Builder - Set Builder, 6 (5e449fb5c2cb)
-    Build Set: 6/rtems-sparc
+    RTEMS Source Builder - Set Builder, @rtems-ver-major@ (5e449fb5c2cb)
+    Build Set: @rtems-ver-major@/rtems-sparc
     ...
     config: tools/rtems-binutils-2.36.cfg
-    package: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1
-    building: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1
-    sizes: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1: 716.015MB (installed: 163.538MB)
-    cleaning: sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1
-    reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1.txt
-    reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems6-binutils-fbb9a7e-x86_64-linux-gnu-1.xml
+    package: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1
+    building: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1
+    sizes: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1: 716.015MB (installed: 163.538MB)
+    cleaning: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1
+    reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1.txt
+    reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1.xml
     config: tools/rtems-gcc-10-newlib-head.cfg
-    package: sparc-rtems6-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
-    building: sparc-rtems6-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
+    package: sparc-rtems@rtems-ver-major@-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
+    building: sparc-rtems@rtems-ver-major@-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
     ....
     Build Sizes: usage: 9.607GB total: 2.244GB (sources: 264.186MB, patches: 43.468KB, installed 1.986GB)
-    installing: 6/rtems-sparc -> $HOME/quick-start/rtems/6
-    clean staging: 6/rtems-sparc
+    installing: @rtems-ver-major@/rtems-sparc -> $HOME/quick-start/rtems/@rtems-ver-major@
+    clean staging: @rtems-ver-major@/rtems-sparc
     Staging Size: 5.292MB
     Build Set: Time 1:01:48.019157
 
@@ -65,7 +65,7 @@ works with the following command:
 
 .. code-block:: none
 
-    $HOME/quick-start/rtems/6/bin/sparc-rtems6-gcc --version
+    $HOME/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc --version
 
 This command should output something like below.  The version informtion helps
 you to identify the exact sources used to build the cross compiler of your
@@ -79,8 +79,8 @@ source code used.
 
 .. code-block:: none
 
-    sparc-rtems6-gcc (GCC) 10.2.1 20210309 (RTEMS 6, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
-    Copyright (C) 2020 Free Software Foundation, Inc.
+    sparc-rtems@rtems-ver-major@-gcc (GCC) 10.2.1 20210309 (RTEMS @rtems-ver-major@, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
+    Copyright (C) 2023 Free Software Foundation, Inc.
     This is free software; see the source for copying conditions.  There is NO
     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 

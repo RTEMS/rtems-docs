@@ -107,7 +107,7 @@ and copy the Waf script:
     #
     from __future__ import print_function
 
-    rtems_version = "6"
+    rtems_version = "@rtems-ver-major@"
 
     try:
         import rtems_waf.rtems as rtems
@@ -142,7 +142,7 @@ Configure the application using Waf's ``configure`` command:
 
 .. code-block:: none
 
-    ./waf configure --rtems=$HOME/quick-start/rtems/6 --rtems-bsp=sparc/erc32
+    ./waf configure --rtems=$HOME/quick-start/rtems/@rtems-ver-major@ --rtems-bsp=sparc/erc32
 
 The output will be something close to:
 
@@ -164,19 +164,19 @@ The output will be something close to:
      Checking for program 'sparc-rtems@rtems-ver-major@-objdump' : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-objdump
      Checking for program 'sparc-rtems@rtems-ver-major@-objcopy' : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-objcopy
      Checking for program 'sparc-rtems@rtems-ver-major@-readelf' : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-readelf
-     Checking for program 'sparc-rtems6-strip'   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-strip
-     Checking for program 'sparc-rtems6-ranlib'  : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ranlib
+     Checking for program 'sparc-rtems@rtems-ver-major@-strip'   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-strip
+     Checking for program 'sparc-rtems@rtems-ver-major@-ranlib'  : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ranlib
      Checking for program 'rtems-ld'             : $BASE/rtems/@rtems-ver-major@/bin/rtems-ld
      Checking for program 'rtems-tld'            : $BASE/rtems/@rtems-ver-major@/bin/rtems-tld
      Checking for program 'rtems-syms'           : $BASE/rtems/@rtems-ver-major@/bin/rtems-syms
      Checking for program 'rtems-bin2c'          : $BASE/rtems/@rtems-ver-major@/bin/rtems-bin2c
      Checking for program 'tar'                  : /usr/bin/tar
-     Checking for program 'gcc, cc'              : $BASE/rtems/6/bin/sparc-rtems6-gcc
-     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar
-     Checking for program 'g++, c++'             : $BASE/rtems/6/bin/sparc-rtems6-g++
-     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar
-     Checking for program 'gas, gcc'             : $BASE/rtems/6/bin/sparc-rtems6-gcc
-     Checking for program 'ar'                   : $BASE/rtems/6/bin/sparc-rtems6-ar
+     Checking for program 'gcc, cc'              : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+     Checking for program 'ar'                   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+     Checking for program 'g++, c++'             : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-g++
+     Checking for program 'ar'                   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
+     Checking for program 'gas, gcc'             : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc
+     Checking for program 'ar'                   : $BASE/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-ar
      Checking for c flags '-MMD'                 : yes
      Checking for cxx flags '-MMD'               : yes
      Compiler version (sparc-rtems@rtems-ver-major@-gcc)         : 10.2.1 20210309 (RTEMS @rtems-ver-major@, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
@@ -233,7 +233,7 @@ The output will be something close to:
     *** FATAL ***
     fatal source: 5 (RTEMS_FATAL_SOURCE_EXIT)
     fatal code: 0 (0x00000000)
-    RTEMS version: 6.0.0.586e06ec6222f1cd1f005aa8f4a34a8b33f5d862
+    RTEMS version: @rtems-ver-major@.0.0.586e06ec6222f1cd1f005aa8f4a34a8b33f5d862
     RTEMS tools: 10.2.1 20210309 (RTEMS @rtems-ver-major@, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
     executing thread ID: 0x08a010001
     executing thread name: UI1

@@ -11,7 +11,7 @@ Build a Board Support Package (BSP)
 You installed the tool suite in your installation prefix, made ready the source
 for two RTEMS source packages and if you are using a Git clone bootstrapped the
 RTEMS sources in the previous sections.  We installed the tool suite in
-:file:`$HOME/quick-start/rtems/6` and unpacked the source in
+:file:`$HOME/quick-start/rtems/@rtems-ver-major@` and unpacked the source in
 :file:`$HOME/quick-start/src`.
 
 You are now able to build :ref:`Board Support Packages (BSPs) <BSPs>` for all

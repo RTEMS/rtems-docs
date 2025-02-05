@@ -10,7 +10,7 @@ Obtain the Sources
 ==================
 
 You have considered and chosen a suitable installation prefix in the previous
-section.  We have chosen :file:`$HOME/quick-start/rtems/6` as the installation
+section.  We have chosen :file:`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation
 prefix. We will show how to use a released version of RTEMS and then as an
 alternative we will show you using the :ref:`RSB Git repository
 <QuickStartSources_Git>`. Consider using a Git clone if you wish to make
@@ -119,17 +119,17 @@ the sources to build the ERC 32 BSP before building run the following commands:
 .. code-block:: none
 
     cd $HOME/quick-start/src/rsb/rtems
-    ../source-builder/sb-set-builder --source-only-download 6/rtems-sparc
+    ../source-builder/sb-set-builder --source-only-download @rtems-ver-major@/rtems-sparc
 
 This command should output something like this (omitted lines are denoted by
 ``...``):
 
 .. code-block:: none
 
-    RTEMS Source Builder - Set Builder, 6 (5e449fb5c2cb)
-    Build Set: 6/rtems-sparc
-    Build Set: 6/rtems-autotools.bset
-    Build Set: 6/rtems-autotools-internal.bset
+    RTEMS Source Builder - Set Builder, @rtems-ver-major@ (5e449fb5c2cb)
+    Build Set: @rtems-ver-major@/rtems-sparc
+    Build Set: @rtems-ver-major@/rtems-autotools.bset
+    Build Set: @rtems-ver-major@/rtems-autotools-internal.bset
     ...
     download: https://gitlab.rtems.org/rtems-tools/snapshot/rtems-tools-90342feb4dd63d188ce945adfb0a769...<see log> -> sources/rtems-tools-90342feb4dd63d188ce945adfb0a7694a42a65cd.tar.bz2
     ...
