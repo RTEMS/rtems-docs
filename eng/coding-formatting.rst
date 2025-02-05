@@ -3,8 +3,10 @@
 .. Copyright (C) 2018.
 .. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-Formatting
-**********
+.. _CodeFormatting:
+
+Code Formatting
+***************
 
 Rules
 -----

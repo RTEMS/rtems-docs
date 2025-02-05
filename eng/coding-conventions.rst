@@ -3,6 +3,8 @@
 .. Copyright (C) 2018.
 .. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
+.. _CodingConventions:
+
 Coding Conventions
 ******************
 
@@ -11,6 +13,11 @@ attempts to capture generally accepted practices.  When in doubt, consult the
 code around you, look in the RTEMS sources in the directories
 :file:`cpukit/include/rtems/score` and :file:`cpukit/score`, or ask on the
 :r:list:`devel`.
+
+Coding Style
+------------
+
+See :ref:`CodeFormatting`.
 
 Source Documentation
 --------------------
@@ -348,7 +355,5 @@ Tools
 Some of the above can be assisted by tool support. Feel free to add
 more tools, configurations, etc here.
 
+* ``clang-format`` -- TODO.
 
-* `Uncrustify <http://uncrustify.sourceforge.net/>`_.
-  Configuration for RTEMS:
-  `rtems.uncrustify <https://devel.rtems.org/attachment/wiki/Developer/Coding/Conventions/rtems.uncrustify>`_.
