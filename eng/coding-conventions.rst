@@ -128,10 +128,43 @@ Language and Compiler
 
 * Do not use the register keyword. It is deprecated since C++14.
 
+Compile-Time Conditional Code Features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Some RTEMS features are compile-time dependent and normally can be
+enabled/disabled via RTEMS build configuration options, for example
+``ENABLE_SMP``, ``ENABLE_PROFILING``, etc.  There usually
+exists a C pre-processor symbol which is defined in case the feature is
+enabled, e.g., ``RTEMS_SMP``, ``RTEMS_PROFILING``, etc. The
+following rules should be followed when using these conditional features:
+
+* Use inline functions to wrap code-blocks controlled by conditional features.
+
+* The inline function should evaluate to an empty body if the feature is not
+  defined whenever possible.
+
+* Use ``(void) arg;`` to silence unused parameter warnings within the function.
+
+This provides type checks for the function calls even in case the feature is
+disabled.  The compiler can easily optimize empty inline functions away.
+Example:
+
+   .. code-block:: C
+
+      static inline feature_x_func(int a, double b, void *c)
+      {
+        #ifdef FEATURE_X
+          /* Do something */
+        #else
+          (void) a;
+          (void) b;
+          (void) c;
+        #endif
+      }
+
 Readability
 ------------
 
-* Understand and follow the `naming rules <https://devel.rtems.org/wiki/Developer/Coding/NamingRules>`_.
+* Understand and follow the :ref:`NamingRules`.
 * Use typedef to remove 'struct', but do not use typedef
   to hide pointers or arrays.
   * Exception: typedef can be used to simplify function pointer types.
