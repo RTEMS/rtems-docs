@@ -342,17 +342,12 @@ Layering
 * TBD: add something about the dependencies and header file layering.
 * Understand the RTEMS Software Architecture.
 
-Exceptions to the Rules
------------------------
-
-* Minimize reformatting existing code in RTEMS unless the file undergoes
-  substantial non-style changes.
-
 Tools
 -----
 
 Some of the above can be assisted by tool support. Feel free to add
 more tools, configurations, etc here.
+
 
 * `Uncrustify <http://uncrustify.sourceforge.net/>`_.
   Configuration for RTEMS:

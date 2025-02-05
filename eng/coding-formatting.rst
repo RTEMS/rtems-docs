@@ -9,6 +9,9 @@ Formatting
 Rules
 -----
 
+* Minimize reformatting existing code in RTEMS unless the file undergoes
+  substantial non-style changes.
+
 * Adhere to the :ref:`EightyCharacterLineLimit`.
 
 * Use spaces instead of tabs.
