@@ -279,12 +279,16 @@ Maintainability
 Performance
 -----------
 
-* Prefer algorithms with the `lowest order of time and space <https://devel.rtems.org/wiki/FAQ/AlgorithmicComplexity>`_.
-  for fast, deterministic execution times with small memory footprints.
-* Understand the constraints of `real-time programming <https://devel.rtems.org/wiki/TBR/Review/Real-Time_Resources>`_.
-  Limit execution times in interrupt contexts and critical sections,
-  such as Interrupt and Timer Service Routines (TSRs).
-* Prefer to ++preincrement instead of postincrement++.
+* Prefer algorithms with the `lowest order of time and space
+  <https://en.wikipedia.org/wiki/Algorithmic_complexity>`_. for fast,
+  deterministic execution times with small memory footprints.
+* Understand the constraints of `real-time programming
+  <https://en.wikipedia.org/wiki/Real-time_computing>`_.
+
+  * Limit execution times in interrupt contexts and critical sections, such as
+    Interrupt and Timer Service Routines (TSRs).
+
+* Prefer to ``++preincrement`` instead of ``postincrement++``.
 * Avoid using floating point except where absolutely necessary.
 
 Miscellaneous
