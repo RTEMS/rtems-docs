@@ -340,7 +340,7 @@ Layering
 --------
 
 * TBD: add something about the dependencies and header file layering.
-* Understand the `RTEMS Software Architecture <https://devel.rtems.org/wiki/TBR/UserManual/RTEMS_Software_Architecture>`_.
+* Understand the RTEMS Software Architecture.
 
 Exceptions to the Rules
 -----------------------
