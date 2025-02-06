@@ -64,9 +64,9 @@ further subdivided based on the CPU family and BSP.
 
 Some BSPs may support multiple board models within a single board family.  This
 is necessary when the board supports multiple variants on a single base board.
-For example, the Motorola MVME162 board family has a fairly large number of
+For example, the SPARC LEON3 board family has a fairly large number of
 variations based upon the particular CPU model and the peripherals actually
-placed on the board.
+placed on the SoC.
 
 Peripheral Dependent
 ====================
