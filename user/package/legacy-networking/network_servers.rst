@@ -45,7 +45,7 @@ Initializing FTPD (Starting the daemon)
 
 Starting FTPD is done with a call to ``rtems_initialize_ftpd()``.  The
 configuration structure must be provided in the application source code.
-Example hooks structure and configuration structure folllow.
+Example hooks structure and configuration structure follow.
 
 .. code-block:: c
 

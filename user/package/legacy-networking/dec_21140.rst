@@ -42,7 +42,7 @@ Document Revision History
 DEC21140 PCI Board Generalities
 ===============================
 
-.. COMMENT: XXX add crossreference to PCI Register Figure
+.. COMMENT: XXX add cross-reference to PCI Register Figure
 
 This chapter describes rapidely the PCI interface of this Ethernet controller.
 The board we have chosen for our PC386 implementation is a D-Link DFE-500TX.
@@ -65,7 +65,7 @@ PowerPC target.
   :align: center
   :alt: PCI Device's Configuration Header Space Format
 
-.. COMMENT: XXX add crossreference to PCI Register Figure
+.. COMMENT: XXX add cross-reference to PCI Register Figure
 
 On RTEMS, a PCI API exists. We have used it to configure the board. After
 initializing this PCI module via the ``pci_initialize()`` function, we try to
@@ -75,7 +75,7 @@ the``pcib_find_by_deviceid`` function which returns , if the device is present,
 a pointer to the configuration header space (see PCI Registers Fgure). Once
 this operation performed, the driver is able to extract the information it
 needs to configure the board internal registers, like the interrupt line, the
-base address,... The board internal registers will not be detailled here. You
+base address,... The board internal registers will not be detailed here. You
 can find them in *DIGITAL Semiconductor 21140A PCI Fast Ethernet LAN Controller
 - Hardware Reference Manual*.
 
@@ -218,14 +218,14 @@ of adapters which support this driver :
 
 - Thomas Conrad TC5048.
 
-- Znyx ZX345 21140-A, usually with the DP83840 N-Way MII transciever. Some ZX345
+- Znyx ZX345 21140-A, usually with the DP83840 N-Way MII transceiver. Some ZX345
   cards made in 1996 have an ICS 1890 transciver instead.
 
-- ZNYX ZX348 Two 21140-A chips using ICS 1890 transcievers and either a 21052
-  or 21152 bridge. Early versions used National 83840 transcievers, but later
+- ZNYX ZX348 Two 21140-A chips using ICS 1890 transceivers and either a 21052
+  or 21152 bridge. Early versions used National 83840 transceivers, but later
   versions are depopulated ZX346 boards.
 
-- ZNYX ZX351 21140 chip with a Broadcom 100BaseT4 transciever.
+- ZNYX ZX351 21140 chip with a Broadcom 100BaseT4 transceiver.
 
 Our DEC driver has not been tested with all these cards, only with the D-Link
 DFE500-TX.

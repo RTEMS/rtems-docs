@@ -214,7 +214,7 @@ Write the Driver Start Function.
 ================================
 
 This function is called each time the network stack wants to start the
-transmitter.  This occures whenever the network stack adds a packet to a
+transmitter.  This occurs whenever the network stack adds a packet to a
 device's send queue and the ``IFF_OACTIVE`` bit in the device's ``if_flags`` is
 not set.
 
@@ -245,7 +245,7 @@ not accidentally started.
 Write the Driver Transmit Task
 ==============================
 
-This task is reponsible for removing packets from the driver send queue and
+This task is responsible for removing packets from the driver send queue and
 sending them to the device.  The task should block waiting for an event from
 the driver start function indicating that packets are waiting to be
 transmitted.  When the transmit task has drained the driver send queue the task

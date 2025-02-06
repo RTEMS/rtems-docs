@@ -335,7 +335,7 @@ performed. This is done by calling:
 This function is declared in ``rtems/rtems_bsdnet.h``.  t returns 0 on success
 and -1 on failure with an error code in ``errno``.  It is not possible to undo
 the effects of a partial initialization, though, so the function can be called
-only once irregardless of the return code.  Consequently, if the condition for
+only once regardless of the return code.  Consequently, if the condition for
 the failure can be corrected, the system must be reset to permit another
 network initialization attempt.
 
