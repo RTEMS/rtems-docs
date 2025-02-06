@@ -36,19 +36,6 @@ of another target board.
 If a BSP supports multiple variants, then there may be multiple ``times``
 files.  Usually these are named ``times.VARIANTn``.
 
-Tools Subdirectory
-==================
-
-Some BSPs provide additional tools that aid in using the target board.  These
-tools run on the development host and are built as part of building the BSP.
-Most common is a script to automate running the RTEMS Test Suites on the BSP.
-Examples of this include:
-
-- ``powerpc/psim`` includes scripts to ease use of the simulator
-
-- ``m68k/mvme162`` includes a utility to download across the VMEbus into target
-  memory if the host is a VMEbus board in the same chasis.
-
 bsp.h Include File
 ==================
 
