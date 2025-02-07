@@ -89,10 +89,15 @@ Add ``--verbose`` to the GCC command for the verbose version details.
 
 Creating a Tool Archive
 -----------------------
-.. sidebar:: *Creating Tool Archives*
 
-  Add ``--bset-tar-file`` to the ``sb-set-builder`` command line to create
-  tar files of the built package set.
+Since the RTEMS Project does not provide binary tool distributions, some users
+may need to create their own relocatable toolchains. This need can be due to
+Canadian Cross-Compilation (CxC or three-way), configuration control, or
+because a user wants to synchronize development environments across multiple
+workstations or to share tools among multiple developers. To support such
+needs, the RSB can create tar files of the built package set by adding
+``--bset-tar-file`` to the ``sb-set-builder`` command line. These tar files can
+then be relocated or adapted as needed to suit the user's needs.
 
 
 Need for RTEMS-Specific Cross-Compiler
