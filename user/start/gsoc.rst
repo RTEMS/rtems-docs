@@ -83,7 +83,9 @@ building a SPARC based BSP.
 Please refer to the :ref:`QuickStartTools` section for instructions on
 building and installing the tool suite. Remember to use the current version
 associated with the RTEMS development head, see
-:ref:`QuickStartPreparation_Version`.
+:ref:`QuickStartPreparation_Version`. You do not need to create a toolchain
+archive, but you should read the rest of the :ref:`Quick Start <QuickStart>`
+while your tools build.
 
 Building the Board Support Package
 ----------------------------------
