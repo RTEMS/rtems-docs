@@ -81,12 +81,12 @@ def cmd_linkcheck(ctx):
     ctx(
         rule   = rule,
         cwd    = ctx.path.abspath(),
-        source = ctx.path.ant_glob('**/*.rst'),
+        source = ctx.path.ant_glob('**/*.md'),
         target = "linkcheck/output.txt"
     )
 
 class spell(BuildContext):
-    __doc__ = "Check spelling.  Supply a list of files or a glob (*.rst)"
+    __doc__ = "Check spelling.  Supply a list of files or a glob (*.md)"
     cmd = 'spell'
     fun = 'cmd_spell'
 
@@ -188,15 +188,15 @@ def html_resources(ctx, buildtype, book):
 
 def check_sphinx_extension(ctx, extension):
     def run_sphinx(bld):
-        rst_node = bld.srcnode.make_node('testbuild/contents.rst')
-        rst_node.parent.mkdir()
-        rst_node.write('.. COMMENT test sphinx' + os.linesep)
+        md_node = bld.srcnode.make_node('testbuild/contents.rst')
+        md_node.parent.mkdir()
+        md_node.write('.. COMMENT test sphinx' + os.linesep)
         bib_node = bld.srcnode.make_node('testbuild/refs.bib')
         bib_node.write(os.linesep)
         conf_node = bld.srcnode.make_node('testbuild/conf.py')
         conf_node.write(os.linesep.join(["master_doc='contents'",
                                          "bibtex_bibfiles = ['refs.bib']"]))
-        bld(rule = bld.kw['rule'], source = rst_node)
+        bld(rule = bld.kw['rule'], source = md_node)
 
     ctx.start_msg("Checking for '%s'" % (extension))
     try:
@@ -211,15 +211,15 @@ def check_sphinx_extension(ctx, extension):
 
 def check_sphinx_theme(ctx, theme):
     def run_sphinx(bld):
-        rst_node = bld.srcnode.make_node('testbuild/contents.rst')
-        rst_node.parent.mkdir()
-        rst_node.write('.. COMMENT test sphinx' + os.linesep)
+        md_node = bld.srcnode.make_node('testbuild/contents.md')
+        md_node.parent.mkdir()
+        md_node.write('.. COMMENT test sphinx' + os.linesep)
         bib_node = bld.srcnode.make_node('testbuild/refs.bib')
         bib_node.write(os.linesep)
         conf_node = bld.srcnode.make_node('testbuild/conf.py')
         conf_node.write(os.linesep.join(["master_doc='contents'",
                                          "bibtex_bibfiles = ['refs.bib']"]))
-        bld(rule = bld.kw['rule'], source = rst_node)
+        bld(rule = bld.kw['rule'], source = md_node)
 
     ctx.start_msg("Checking for '%s'" % (theme))
     try:
@@ -278,7 +278,7 @@ def cmd_configure(ctx):
         #
         # Check extensions.
         #
-        check_sphinx_extension(ctx, 'sphinx.ext.autodoc')
+#        check_sphinx_extension(ctx, 'sphinx.ext.autodoc')
         check_sphinx_extension(ctx, 'sphinx.ext.coverage')
         check_sphinx_extension(ctx, 'sphinx.ext.doctest')
         check_sphinx_extension(ctx, 'sphinx.ext.graphviz')
@@ -291,6 +291,8 @@ def cmd_configure(ctx):
         # FIXME: Checking for the Python module is broken on MSYS2
         if not windows:
             ctx.check_python_module('sphinx_book_theme')
+            ctx.check_python_module('sphinx_copybutton')
+            ctx.check_python_module('linkify_it')
         else:
             pass
 
@@ -380,7 +382,7 @@ def sources_extra(ctx, sources):
 def sources_source(ctx, sources):
     extra = sources_extra(ctx, sources)
     exclude = sources_exclude(ctx, sources)
-    source = ctx.path.ant_glob('**/*.rst')
+    source = ctx.path.ant_glob('**/*.md')
     return [s for s in source if s not in exclude] + extra
 
 def doc_pdf(ctx, source_dir, conf_dir, sources):

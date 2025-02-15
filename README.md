@@ -171,6 +171,7 @@ $ pip install sphinxcontrib-bibtex
 $ pip install sphinxcontrib-jquery
 $ pip install sphinx-book-theme
 $ pip install sphinx-copybutton
+$ pip install linkify-it-py
 ```
 
 When you have finished using sphinx and building documentation you

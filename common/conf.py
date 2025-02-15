@@ -10,7 +10,6 @@ author = "RTEMS Project"
 master_doc = 'index'
 
 extensions = [
-	"sphinx.ext.autodoc",
 	"sphinx.ext.coverage",
 	"sphinx.ext.doctest",
 	"sphinx.ext.extlinks",
@@ -21,6 +20,7 @@ extensions = [
 	"sphinxcontrib.jquery",
 	"rtemsdomain",
 	"sphinx_copybutton",
+	"myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -88,8 +88,10 @@ html_sidebars = {
 bibtex_bibfiles = ['../common/refs.bib']
 extlinks = {'release_path': ('https://ftp.rtems.org/pub/rtems/releases', None) }
 # The suffix of source filenames.
-source_suffix = '.rst'
-
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 pygments_style = 'default' # sphinx
 htmlhelp_basename = 'rtemsdoc'
@@ -140,3 +142,25 @@ latex_show_pagerefs = True
 #latex_domain_indices = True
 
 highlight_language = "c"
+
+myst_enable_extensions = [
+    "amsmath",
+    "attrs_block",
+    "attrs_inline",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
+
+myst_heading_anchors = 4
+
+
