@@ -97,6 +97,13 @@ def build(ctx):
     ctx.recurse('images')
     ctx.add_group('images')
 
+    if ctx.env.DOC_LIST:
+        global building
+        for doc in ctx.env.DOC_LIST:
+            if doc not in building:
+                ctx.fatal("'{}' not in doc list".format(doc))
+        building = ctx.env.DOC_LIST
+
     for b in building:
         ctx.recurse(b)
 

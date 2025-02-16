@@ -238,6 +238,8 @@ def check_sphinx_theme(ctx, theme):
     ctx.end_msg('found')
 
 def cmd_configure(ctx):
+    ctx.env.DOC_LIST = ctx.options.doc_list[0].split(
+        ",") if ctx.options.doc_list else []
     ctx.env.PYTHON = ["python3"]
     ctx.check_python_version((3,9))
     ctx.load("python")
@@ -272,6 +274,7 @@ def cmd_configure(ctx):
         ctx.env.append_value('SPHINX_OPTIONS', opt)
         ctx.end_msg(msg)
 
+
         #
         # Check extensions.
         #
@@ -290,6 +293,7 @@ def cmd_configure(ctx):
             ctx.check_python_module('sphinx_book_theme')
         else:
             pass
+
 
     #
     # Optional builds.
@@ -569,6 +573,11 @@ def cmd_options(ctx):
                    action = 'store_true',
                    default = False,
                    help = "Build DITAA images using PlantUML from source, need ditaa and puml")
+    ctx.add_option('--doc-list',
+                   action = 'store',
+                   default = "",
+                   nargs="+",
+                   help = "Comma separated list of docs to build.")
 
 def cmd_options_path(ctx):
     cmd_options(ctx)
