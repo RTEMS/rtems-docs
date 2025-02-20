@@ -71,11 +71,14 @@ html_theme_options = {
     "use_edit_page_button": True,
     "use_repository_button": True,
     "use_issues_button": True,
-    "show_toc_level": 4,
     "use_fullscreen_button": True,
     "use_repository_button": True,
     "logo": html_theme_logo,
-    "switcher": html_theme_version_switcher
+    "switcher": html_theme_version_switcher,
+    "show_navbar_depth": 3,
+    "navigation_depth": 3,
+    "show_nav_level": 3,
+    "show_toc_level": 4
 }
 
 html_sidebars = {
