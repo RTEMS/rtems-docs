@@ -66,7 +66,7 @@ html_theme_version_switcher = {
 
 html_theme_options = {
     "use_sidenotes": True,
-    "repsitory_provider": "gitlab",
+    "repository_provider": "gitlab",
     "use_source_button": True,
     "use_edit_page_button": True,
     "use_repository_button": True,
