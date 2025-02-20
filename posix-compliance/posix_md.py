@@ -160,7 +160,7 @@ cat_columns = {
     }
 }
 
-rst_defaults = {
+md_defaults = {
     'header': ['',
                'This chapter has a subsection per header file to detail the methods',
                'provided by RTEMS that are in that header file.',
@@ -221,10 +221,7 @@ class compliance:
         else:
             std_line = 'The follow table summarizes alignment with ' \
                        'the %s standard:' % (standard_names[standard])
-        s = ['Summary',
-             '=======',
-             '',
-             std_line,
+        s = [std_line,
              '']
         cols = [0, 1]
         for cat in categories['order']:
@@ -254,7 +251,7 @@ class compliance:
 
         if standard not in standards:
             error('invalid standard": %s' % (standard))
-        s = rst_defaults['header'] + self.summary(standard)
+        s = md_defaults['header'] + self.summary(standard)
         for header in sorted(self.data['headers'].keys()):
             hr = self.process_header(header, standard)
             if 'invalid' in hr:
@@ -263,8 +260,7 @@ class compliance:
             for cat in categories['order']:
                 if cat in hr:
                     if print_heading:
-                        s += ['``<%s>``' % (header),
-                              '=' * (len(header) + 2),
+                        s += ['## ``<%s>``' % (header),
                               '']
                         print_heading = False
                     patterns = { '@HEADER@': header }
