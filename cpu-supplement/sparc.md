@@ -737,6 +737,5 @@ specific requirements:
 
 % COMMENT: Keep separate until completely formatted, maybe forever
 
-```{eval-rst}
-.. include:: sparc_v8_stacks_regwin.rst
+```{include} sparc_v8_stacks_regwin.rst
 ```

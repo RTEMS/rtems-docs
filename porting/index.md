@@ -1,28 +1,19 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS Porting Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
-
- 1988, 2016 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+```{topic} Copyrights and License
+(c) 1988, 2016 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 3
-:numbered: true
 
 preface
 development_tools

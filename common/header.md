@@ -16,10 +16,12 @@ RTEMS, its related support components, or its documentation should be directed
 to the RTEMS Project community.
 
 ```{admonition} RTEMS Online Resources
-Home              https://www.rtems.org
-Documentation     https://docs.rtems.org
-Mailing Lists     https://lists.rtems.org
-Bug Reporting     https://gitlab.rtems.org
-Git Repositories  https://gitlab.rtems.org
-Developers        https://gitlab.rtems.org
+
+* Home              https://www.rtems.org
+* Documentation     https://docs.rtems.org
+* Mailing Lists     https://lists.rtems.org
+* Bug Reporting     https://gitlab.rtems.org
+* Git Repositories  https://gitlab.rtems.org
+* Developers        https://gitlab.rtems.org
+
 ```

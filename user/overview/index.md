@@ -223,12 +223,10 @@ architecture or BSP. The RTEMS Project encourages users and organizations to
 fill this role for the community. The {ref}`RTEMS Source Builder <RSB>`
 provides some aid to {ref}`build and deploy tool binaries <RSBDeployment>`.
 
-```{eval-rst}
-.. include:: ../../common/content/real-time-application-systems.rst
+```{include} ../../common/content/real-time-application-systems.md
 ```
 
-```{eval-rst}
-.. include:: ../../common/content/real-time-executive.rst
+```{include} ../../common/content/real-time-executive.rst
 ```
 
 FOOTNOTE The goal is to use the

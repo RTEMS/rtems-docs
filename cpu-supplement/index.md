@@ -1,44 +1,28 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS CPU Architecture Supplement ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2016, 2018 embedded brains GmbH & Co. KG
 
- 2016, 2018 embedded brains GmbH & Co. KG
+(c) 2016, 2018 Sebastian Huber
 
-{{ copy }}
+(c) 2014, 2015 Hesham Almatary
 
- 2016, 2018 Sebastian Huber
+(c) 2010 Gedare Bloom
 
-{{ copy }}
-
- 2014, 2015 Hesham Almatary
-
-{{ copy }}
-
- 2010 Gedare Bloom
-
-{{ copy }}
-
- 1988, 2018, 2025 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 1988, 2018, 2025 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
 ```
+
+```{include} ../common/header.md
+```
+
 
 ```{toctree}
 :maxdepth: 5
-:numbered: true
 
 preface
 port

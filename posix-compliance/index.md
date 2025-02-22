@@ -1,32 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS POSIX 1003.1 Compliance Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2017 Chris Johns
 
- 2017 Chris Johns
-
-{{ copy }}
-
- 1988, 2018 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 1988, 2018 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 5
-:numbered: true
 
 preface
 standards

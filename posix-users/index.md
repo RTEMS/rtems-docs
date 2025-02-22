@@ -1,36 +1,23 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS POSIX API Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2018 Marçal Comajoan Cara
 
- 2018 Marçal Comajoan Cara
+(c) 2017 Gedare Bloom
 
-{{ copy }}
-
- 2017 Gedare Bloom
-
-{{ copy }}
-
- 1988, 2018 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 1988, 2018 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 3
-:numbered: true
 
 preface
 process_creation_and_execution

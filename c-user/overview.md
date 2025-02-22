@@ -29,15 +29,13 @@ provided for each processor type that is supported.
 ```{index} Real-time applications
 ```
 
-```{eval-rst}
-.. include:: ../common/content/real-time-application-systems.rst
+```{include} ../common/content/real-time-application-systems.md
 ```
 
 ```{index} Real-time executive
 ```
 
-```{eval-rst}
-.. include:: ../common/content/real-time-executive.rst
+```{include} ../common/content/real-time-executive.md
 ```
 
 ```{index} Application architecture

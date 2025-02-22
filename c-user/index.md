@@ -1,52 +1,32 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS Classic API Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2017 Chris Johns
 
- 2017 Chris Johns
+(c) 2017 Kuan-Hsun Chen
 
-{{ copy }}
+(c) 2015, 2020 embedded brains GmbH & Co. KG
 
- 2017 Kuan-Hsun Chen
+(c) 2015, 2020 Sebastian Huber
 
-{{ copy }}
+(c) 2011 Petr Benes
 
- 2015, 2020 embedded brains GmbH & Co. KG
+(c) 2010 Gedare Bloom
 
-{{ copy }}
-
- 2015, 2020 Sebastian Huber
-
-{{ copy }}
-
- 2011 Petr Benes
-
-{{ copy }}
-
- 2010 Gedare Bloom
-
-{{ copy }}
-
- 1988, 2018 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 1988, 2018 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
 ```
+
+```{include} ../common/header.md
+```
+
 
 ```{toctree}
 :maxdepth: 5
-:numbered: true
 
 preface
 overview

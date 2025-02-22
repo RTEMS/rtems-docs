@@ -4,22 +4,17 @@
 
 # aarch64 (AArch64)
 
-```{eval-rst}
-.. include:: aarch64/a53.rst
+```{include} aarch64/a53.rst
 ```
 
-```{eval-rst}
-.. include:: aarch64/a72.rst
+```{include} aarch64/a72.rst
 ```
 
-```{eval-rst}
-.. include:: aarch64/xilinx-versal.rst
+```{include} aarch64/xilinx-versal.rst
 ```
 
-```{eval-rst}
-.. include:: aarch64/xilinx-zynqmp.rst
+```{include} aarch64/xilinx-zynqmp.rst
 ```
 
-```{eval-rst}
-.. include:: aarch64/raspberrypi4.rst
+```{include} aarch64/raspberrypi4.rst
 ```

@@ -1,42 +1,25 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-% Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS Shell Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2016, 2019 Chris Johns
 
- 2016, 2019 Chris Johns
+(c) 2016, 2017 embedded brains GmbH & Co. KG
 
-{{ copy }}
+(c) 2016, 2017 Sebastian Huber
 
- 2016, 2017 embedded brains GmbH & Co. KG
-
-{{ copy }}
-
- 2016, 2017 Sebastian Huber
-
-{{ copy }}
-
- 1988, 2017 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 1988, 2008, 2017 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 4
-:numbered: true
 
 preface
 configuration_and_init

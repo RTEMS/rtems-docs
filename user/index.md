@@ -1,83 +1,45 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
-```{highlight} c
-```
-
 # RTEMS User Manual ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2020 Niteesh Babu
 
- 2020 Niteesh Babu
+(c) 2020 Utkarsh Rai
 
-{{ copy }}
+(c) 2019 Vijay Kumar Banerjee
 
- 2020 Utkarsh Rai
+(c) 2018 Amaan Cheval
 
-{{ copy }}
+(c) 2018 Marçal Comajoan Cara
 
- 2019 Vijay Kumar Banerjee
+(c) 2018 Shashvat Jain
 
-{{ copy }}
+(c) 2018 Vidushi Vashishth
 
- 2018 Amaan Cheval
+(c) 2017 Tanu Hari Dixit
 
-{{ copy }}
+(c) 2016, 2024 embedded brains GmbH & Co. KG
 
- 2018 Marçal Comajoan Cara
+(c) 2016, 2019 Sebastian Huber
 
-{{ copy }}
+(c) 2012, 2022 Chris Johns
 
- 2018 Shashvat Jain
+(c) 2012, 2020 Gedare Bloom
 
-{{ copy }}
+(c) 1988, 2018 On-Line Applications Research Corporation (OAR)
 
- 2018 Vidushi Vashishth
-
-{{ copy }}
-
- 2017 Tanu Hari Dixit
-
-{{ copy }}
-
- 2016, 2024 embedded brains GmbH & Co. KG
-
-{{ copy }}
-
- 2016, 2019 Sebastian Huber
-
-{{ copy }}
-
- 2012, 2022 Chris Johns
-
-{{ copy }}
-
- 2012, 2020 Gedare Bloom
-
-{{ copy }}
-
- 1988, 2018 On-Line Applications Research Corporation (OAR)
-
-{{ copy }}
-
- 2024 Suraj Kumar
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 2024 Suraj Kumar
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 5
-:numbered: true
 
 overview/index
 start/index

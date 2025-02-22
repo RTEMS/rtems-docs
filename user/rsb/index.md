@@ -93,7 +93,7 @@ Build Failures`.
 ```
 
 ```{toctree}
-why-build-from-source.rst
+why-build-from-source
 project-sets
 cross-canadian-cross
 third-party-packages

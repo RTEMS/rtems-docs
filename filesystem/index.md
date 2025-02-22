@@ -1,32 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS Filesystem Design Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 1988, 2015 On-Line Applications Research Corporation (OAR)
 
- 1988, 2015 On-Line Applications Research Corporation (OAR)
-
-{{ copy }}
-
- 2022 embedded brains GmbH & Co. KG
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 2022 embedded brains GmbH & Co. KG
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 5
-:numbered: true
 
 preface
 pathname_eval

@@ -1,40 +1,25 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-```{eval-rst}
-.. include:: ../common/unicode.rst
-```
-
 # RTEMS BSP and Driver Guide ({{ env.config.version }}).
 
-````{topic} Copyrights and License
-{{ copy }}
+```{topic} Copyrights and License
+(c) 2017 Christian Mauderer
 
- 2017 Christian Mauderer
+(c) 2016, 2020 embedded brains GmbH & Co. KG
 
-{{ copy }}
+(c) 2016, 2020 Sebastian Huber
 
- 2016, 2020 embedded brains GmbH & Co. KG
-
-{{ copy }}
-
- 2016, 2020 Sebastian Huber
-
-{{ copy }}
-
- 1988, 2017 On-Line Applications Research Corporation (OAR)
-
-```{eval-rst}
-.. include:: ../common/license.rst
+(c) 1988, 2017 On-Line Applications Research Corporation (OAR)
 ```
-````
 
-```{eval-rst}
-.. include:: ../common/header.rst
+```{include} ../common/license.md
+```
+
+```{include} ../common/header.md
 ```
 
 ```{toctree}
 :maxdepth: 5
-:numbered: true
 
 preface
 target_dependant_files

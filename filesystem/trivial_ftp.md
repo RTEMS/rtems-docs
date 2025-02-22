@@ -123,7 +123,7 @@ The bsp-option should have the following value to match the example BSP:
 ### RTEMS libbsd
 
 Instructions on how to obtain, compile and install RTEMS libbsd can be
-found in the `README.rst` of the `rtems-libbsd`
+found in the `README.md` of the `rtems-libbsd`
 [GIT repository](https://gitlab.rtems.org/rtems/pkg/rtems-libbsd).
 Make sure to compile and install libbsd for the correct RTEMS version
 (here `6`). The default build set (`--buildset=buildset/default.ini`)
@@ -217,7 +217,7 @@ will cause this TFTP server to deliver files found below directory
 
 Alternatively, it is of course possible to use other kinds of QEMU
 networking (as for example the TAP virtual Ethernet interface described
-in the above mentioned `README.rst` in section *Qemu and Networking*).
+in the above mentioned `README.md` in section *Qemu and Networking*).
 Also an external TFTP server can be used.
 
 ### External TFTP Server Example for OpenSUSE
@@ -255,7 +255,7 @@ The `atftp` server will then be reachable from an application executed
 by QEMU at the address of the TAP interface which is in this case
 `169.254.1.1`. When used with this TAP interface, the QEMU network
 option must be changed to (replacing the `-net` options in the examples
-found in the already mentioned `README.rst` of the `rtems-libbsd` GIT
+found in the already mentioned `README.md` of the `rtems-libbsd` GIT
 repository):
 
 ```none
@@ -409,7 +409,7 @@ transferred.
 It is possible to use the RTEMS shell through test `media01` of
 libbsd to exercise the TFTP filesystem. This text assumes that libbsd
 has already been setup, configured, compiled and installed as described
-in the `README.rst` of the `rtems-libbsd` GIT repository.
+in the `README.md` of the `rtems-libbsd` GIT repository.
 How the test `media01.exe` can be executed is described in
 section *Qemu and Networking* of that file.
 
