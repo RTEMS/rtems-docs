@@ -1,16 +1,14 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2022 Trinity College Dublin
+% Copyright (C) 2022 Trinity College Dublin
 
-.. _FormalVerif:
+(formalverif)=
 
-Formal Verification
-*******************
+# Formal Verification
 
-.. toctree::
-
-    overview
-    approaches
-    methodology
-    promela-index
-
+```{toctree}
+overview
+approaches
+methodology
+promela-index
+```

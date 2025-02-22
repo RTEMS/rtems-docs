@@ -1,13 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
-.. highlight:: shell
+```{highlight} shell
+```
 
-.. _RSB:
+(rsb)=
 
-Source Builder
-**************
+# Source Builder
 
 The RTEMS Source Builder or RSB is a tool to build packages from source. The
 RTEMS project uses it to build it's compilers, tools, kernel and 3rd party
@@ -18,11 +18,11 @@ The RSB consolidates the details you need to build a package from source in a
 controlled and verifiable way. The RSB is not limited to building tools for
 RTEMS, you can build bare metal development environments.
 
-.. comment: TBD: The section "Installing and Tar Files" does not exist.
+% comment: TBD: The section "Installing and Tar Files" does not exist.
 
 The RSB section of this manual caters for a range of users from new to
 experienced RTEMS developers who want to understand the RTEMS Source
-Builder. New users who just want to build tools should follow :ref:`QuickStart`
+Builder. New users who just want to build tools should follow {ref}`QuickStart`
 in this manual. Users building a binary tool set for release can read the
 "Installing and Tar Files". Users wanting to run and test bleeding edge tools
 or packages, or wanting update or extend the RSB's configuration can read the
@@ -42,9 +42,9 @@ the package on. The RSB is not some sort of magic that can take any piece of
 source code and make it build. Someone at some point in time has figured out
 how to build that package from source and taught this tool.
 
-.. sidebar:: Setting up your Host
-
-   See :ref:`QuickStartPreparation` for details on setting up hosts.
+```{sidebar} Setting up your Host
+See {ref}`QuickStartPreparation` for details on setting up hosts.
+```
 
 The RTEMS Source Builder is known to work on:
 
@@ -76,30 +76,30 @@ The RTEMS Source Builder does not interact with any host package management
 systems. There is no automatic dependence checking between various packages you
 build or packages and software your host system you may have installed. We
 assume the build sets and configuration files you are using have been created
-by developers who do. Support is provided for package config or ``pkgconfig``
+by developers who do. Support is provided for package config or `pkgconfig`
 type files so you can check and use standard libraries if present.
 
 The RSB is not intended to be run with administrator privileges, and it is
 known to break in certain builds if run as the *root* or *superuser* account.
 If you need to install with elevated privileges, you should stage your build
 into a tar file using `--bset-tar-file --no-install` and then unpack it to the
-destination, as described in :ref:`RSBDeployment`.
+destination, as described in {ref}`RSBDeployment`.
 
-If you have a problem please ask on our :r:list:`devel`.
+If you have a problem please ask on our {r:list}`devel`.
 
-.. topic:: Bug Reporting
+```{topic} Bug Reporting
+If you think you have found a problem please see {ref}`Bugs, Crashes, and
+Build Failures`.
+```
 
-   If you think you have found a problem please see :ref:`Bugs, Crashes, and
-   Build Failures`.
-
-.. toctree::
-
-   why-build-from-source.rst
-   project-sets
-   cross-canadian-cross
-   third-party-packages
-   configuration
-   commands
-   deployment
-   bug-reporting
-   history
+```{toctree}
+why-build-from-source.rst
+project-sets
+cross-canadian-cross
+third-party-packages
+configuration
+commands
+deployment
+bug-reporting
+history
+```

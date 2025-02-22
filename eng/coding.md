@@ -1,19 +1,20 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018.
-.. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
+% Copyright (C) 2018.
 
-Coding Standards
-****************
+% COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-TBD  - Write introduction, re-order, identify missing content
+# Coding Standards
 
-.. COMMENT: Subsections
-.. toctree::
+TBD - Write introduction, re-order, identify missing content
 
-    coding-conventions
-    coding-formatting
-    coding-deprecating
-    coding-doxygen
-    coding-file-hdr
-    coding-naming
+% COMMENT: Subsections
+
+```{toctree}
+coding-conventions
+coding-formatting
+coding-deprecating
+coding-doxygen
+coding-file-hdr
+coding-naming
+```

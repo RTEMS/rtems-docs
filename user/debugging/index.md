@@ -1,13 +1,16 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2024 Suraj Kumar 
+% Copyright (C) 2024 Suraj Kumar
 
-.. _Debugging:
+(debugging)=
 
-Debugging
-***********
-.. index:: Debugging
-.. index:: Embedded executable
+# Debugging
+
+```{index} Debugging
+```
+
+```{index} Embedded executable
+```
 
 Debugging is a critical process in software development that involves
 identifying and resolving bugs or defects in a program. A debugger is a tool
@@ -17,11 +20,10 @@ program's execution flow and state.
 
 A debugger allows us to:
 
-#. Set breakpoints to pause execution at specific points
-#. Step through code line-by-line or instruction by instruction 
-#. Inspect/modify variables and memory 
-#. Monitor a program's call stack and thread states
-
+1. Set breakpoints to pause execution at specific points
+2. Step through code line-by-line or instruction by instruction
+3. Inspect/modify variables and memory
+4. Monitor a program's call stack and thread states
 
 Debugging an RTEMS executable involves loading its code, data and read-only data
 into the target system while a debugger on a host computer connects to it. The
@@ -29,7 +31,7 @@ debugger reads the ELF (Executable and Linkable Format) file to accesses the
 embedded debug information.
 
 To enable effective debugging, the executable must be build with compiler and
-linker options that include debug information (the ``-g`` tag in GCC, for
+linker options that include debug information (the `-g` tag in GCC, for
 example). Although this debug information increases the size of the ELF file, it
 does not impact the binary footprint (loadable memory size) of the executable on
 the target system. Target bootloaders and file conversion tools extract the
@@ -62,14 +64,15 @@ additional component called a debug agent facilitates communication between the
 debugger on the host and the target system. The following diagram illustrates
 this setup:
 
-.. _fig-exe-debug:
+(fig-exe-debug)=
 
-.. figure:: ../../images/user/exe-debug.png
-   :width: 80%
-   :alt: Embedded Executable Debugging
-   :figclass: align-center
+```{figure} ../../images/user/exe-debug.png
+:alt: Embedded Executable Debugging
+:figclass: align-center
+:width: 80%
 
-   Embedded Executable Debugging
+Embedded Executable Debugging
+```
 
 A desktop or server operating system's kernel hosts the executable being
 debugged, handling the interaction with the executable and the debugger. The
@@ -86,7 +89,7 @@ the targets can be remote from the developer's desktop, allowing for better
 control of the target hardware while avoiding the need to plug devices into an
 expensive desktop or server machine.
 
-.. toctree::
-
-   gdb 
-   pretty-printing
+```{toctree}
+gdb
+pretty-printing
+```

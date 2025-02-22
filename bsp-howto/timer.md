@@ -1,93 +1,87 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Timer Driver
-************
+# Timer Driver
 
-.. warning::
+```{warning}
+The Timer Driver is superfluous and should be replaced by the RTEMS counter
+support. Ask on the mailing list if you plan to write a Timer Driver.
+```
 
-   The Timer Driver is superfluous and should be replaced by the RTEMS counter
-   support.  Ask on the mailing list if you plan to write a Timer Driver.
-
-The timer driver is primarily used by the RTEMS Timing Tests.  This driver
-provides as accurate a benchmark timer as possible.  It typically reports its
-time in microseconds, CPU cycles, or bus cycles.  This information can be very
+The timer driver is primarily used by the RTEMS Timing Tests. This driver
+provides as accurate a benchmark timer as possible. It typically reports its
+time in microseconds, CPU cycles, or bus cycles. This information can be very
 useful for determining precisely what pieces of code require optimization and
 to measure the impact of specific minor changes.
 
 The gen68340 BSP also uses the Timer Driver to support a high performance mode
 of the on-CPU UART.
 
-Benchmark Timer
-===============
+## Benchmark Timer
 
-The RTEMS Timing Test Suite requires a benchmark timer.  The RTEMS Timing Test
+The RTEMS Timing Test Suite requires a benchmark timer. The RTEMS Timing Test
 Suite is very helpful for determining the performance of target hardware and
 comparing its performance to that of other RTEMS targets.
 
 This section describes the routines which are assumed to exist by the RTEMS
-Timing Test Suite.  The names used are *EXACTLY* what is used in the RTEMS
+Timing Test Suite. The names used are *EXACTLY* what is used in the RTEMS
 Timing Test Suite so follow the naming convention.
 
-benchmark_timer_initialize
---------------------------
+### benchmark_timer_initialize
 
 Initialize the timer source.
 
-.. code-block:: c
+```c
+void benchmark_timer_initialize(void)
+{
+  initialize the benchmark timer
+}
+```
 
-    void benchmark_timer_initialize(void)
-    {
-      initialize the benchmark timer
-    }
+### Read_timer
 
-Read_timer
-----------
-
-The ``benchmark_timer_read`` routine returns the number of benchmark time units
+The `benchmark_timer_read` routine returns the number of benchmark time units
 (typically microseconds) that have elapsed since the last call to
-``benchmark_timer_initialize``.
+`benchmark_timer_initialize`.
 
-.. code-block:: c
-
-    benchmark_timer_t benchmark_timer_read(void)
-    {
-      stop time = read the hardware timer
-      if the subtract overhead feature is enabled
-        subtract overhead from stop time
-      return the stop time
-    }
+```c
+benchmark_timer_t benchmark_timer_read(void)
+{
+  stop time = read the hardware timer
+  if the subtract overhead feature is enabled
+    subtract overhead from stop time
+  return the stop time
+}
+```
 
 Many implementations of this routine subtract the overhead required to
-initialize and read the benchmark timer.  This makes the times reported more
+initialize and read the benchmark timer. This makes the times reported more
 accurate.
 
 Some implementations report 0 if the harware timer value change is sufficiently
-small.  This is intended to indicate that the execution time is below the
+small. This is intended to indicate that the execution time is below the
 resolution of the timer.
 
-benchmark_timer_disable_subtracting_average_overhead
-----------------------------------------------------
+### benchmark_timer_disable_subtracting_average_overhead
 
-This routine is invoked by the "Check Timer" (``tmck``) test in the RTEMS
-Timing Test Suite.  It makes the ``benchmark_timer_read`` routine NOT subtract
-the overhead required to initialize and read the benchmark timer.  This is used
-by the ``tmoverhd`` test to determine the overhead required to initialize and
+This routine is invoked by the "Check Timer" (`tmck`) test in the RTEMS
+Timing Test Suite. It makes the `benchmark_timer_read` routine NOT subtract
+the overhead required to initialize and read the benchmark timer. This is used
+by the `tmoverhd` test to determine the overhead required to initialize and
 read the timer.
 
-.. code-block:: c
+```c
+void benchmark_timer_disable_subtracting_average_overhead(bool find_flag)
+{
+  disable the subtract overhead feature
+}
+```
 
-    void benchmark_timer_disable_subtracting_average_overhead(bool find_flag)
-    {
-      disable the subtract overhead feature
-    }
-
-The ``benchmark_timer_find_average_overhead`` variable is used to indicate the
+The `benchmark_timer_find_average_overhead` variable is used to indicate the
 state of the "subtract overhead feature".
 
-gen68340 UART FIFO Full Mode
-============================
+## gen68340 UART FIFO Full Mode
 
 The gen68340 BSP is an example of the use of the timer to support the UART
 input FIFO full mode (FIFO means First In First Out and roughly means
@@ -101,5 +95,4 @@ broken:
 
 - if no character was received last time the interrupt subroutine was entered,
   set a long delay,
-
-- otherwise set the delay to the delay needed for ``n`` characters receipt.
+- otherwise set the delay to the delay needed for `n` characters receipt.

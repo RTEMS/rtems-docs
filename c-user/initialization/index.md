@@ -1,15 +1,14 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2021 embedded brains GmbH & Co. KG
+% Copyright (C) 2021 embedded brains GmbH & Co. KG
 
-.. _RTEMSAPIClassicInit:
+(rtemsapiclassicinit)=
 
-Initialization Manager
-**********************
+# Initialization Manager
 
-.. toctree::
-
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

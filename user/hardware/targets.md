@@ -1,12 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _targets:
+(targets)=
 
-Targets
-=======
-.. index:: Targets
+# Targets
+
+```{index} Targets
+```
 
 *Target hardware* that can run RTEMS is often referred to simply as the
 *target* because RTEMS is specifically aimed at that target hardware. An RTEMS
@@ -18,18 +19,22 @@ protected process address space is running within the RTEMS arena and the RTEMS
 executive, drivers and application have unprotected access to the whole address
 space and all hardware.
 
-Target hardware supported by RTEMS has a :ref:`Board Support Package <BSPs>` or
-BSP.  A BSP is a specific instance of an RTEMS architecture that allows the
+Target hardware supported by RTEMS has a {ref}`Board Support Package <BSPs>` or
+BSP. A BSP is a specific instance of an RTEMS architecture that allows the
 creation of an RTEMS executable. You can view the layering as:
 
-.. comment Build image with:
-.. comment  aafigure hw-layers.txt --textual --type png --option
-.. comment    font=/usr/local/lib/X11/fonts/webfonts/arialbd.ttf --background
-.. comment    '#dbe5c6' --scale 1.5 -o ../../images/user/hw-layers.png
+% comment Build image with:
 
-.. figure:: ../../images/user/hw-layers.png
-  :align: center
-  :alt:  Software Layers on Hardware
+% comment  aafigure hw-layers.txt --textual --type png --option
+
+% comment    font=/usr/local/lib/X11/fonts/webfonts/arialbd.ttf --background
+
+% comment    '#dbe5c6' --scale 1.5 -o ../../images/user/hw-layers.png
+
+```{figure} ../../images/user/hw-layers.png
+:align: center
+:alt: Software Layers on Hardware
+```
 
 RTEMS targets are grouped by architectures and within an architecture there are
 a number of Board Support Packages or BPSs. An architecture is a specific class

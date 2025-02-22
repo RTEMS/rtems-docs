@@ -1,14 +1,15 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _host-computer:
+(host-computer)=
 
-.. _development-host:
+(development-host)=
 
-Host Computer
-*************
-.. index:: Host Computer
+# Host Computer
+
+```{index} Host Computer
+```
 
 RTEMS applications are developed using cross-development tools running on a
 development computer, more often called the host computer. These are typically
@@ -44,10 +45,10 @@ built all your time can be spent writing and developing your application. It
 may take longer than an hour for the ARM architecture and with all BSPs it can
 be many hours.
 
-.. toctree::
-
-   python
-   os
-   posix
-   macos
-   windows
+```{toctree}
+python
+os
+posix
+macos
+windows
+```

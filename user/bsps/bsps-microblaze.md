@@ -1,76 +1,69 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 embedded brains GmbH & Co. KG
-.. Copyright (C) 2022 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2018 embedded brains GmbH & Co. KG
 
-microblaze (MicroBlaze)
-***********************
+% Copyright (C) 2022 On-Line Applications Research Corporation (OAR)
 
-KCU105 QEMU
-===========
+# microblaze (MicroBlaze)
+
+## KCU105 QEMU
 
 The basic hardware initialization is performed by the BSP. This BSP supports the
 QEMU emulated Xilinx AXI Interrupt Controller v4.1.
 
-Boot via ELF
-------------
+### Boot via ELF
 
 The executable image is booted by QEMU in ELF format.
 
-Clock Driver
-------------
+### Clock Driver
 
 The clock driver supports the QEMU emulated Xilinx AXI Timer v2.0. It is
 implemented as a simple downcounter. If device tree support is enabled in the
 build configuration, the clock driver will use the node that is compatible with
 `xlnx,xps-timer-1.00.a` from the device tree to configure the clock. The
 following device tree node properties are used to configure the clock driver:
-``reg``, ``clock-frequency``, and ``interrupts``.
+`reg`, `clock-frequency`, and `interrupts`.
 
-Console Driver
---------------
+### Console Driver
 
 The console driver supports the QEMU emulated Xilinx AXI UART Lite v2.0. It is
 initialized to a baud rate of 115200. If device tree support is enabled in the
 build configuration, the console driver will use the node that is compatible
 with `xlnx,xps-uartlite-1.00.a` from the device tree to configure the console.
 The following device tree node properties are used to configure the console
-driver: ``reg``, ``status``, ``port-number``, and ``interrupts``.
+driver: `reg`, `status`, `port-number`, and `interrupts`.
 
-Network Driver
---------------
+### Network Driver
 
 Support for networking is provided by the libbsd library. Network interface
 configuration is extracted from the device tree binary which, by default, is
-in `<bsp/microblaze-dtb.h> <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/microblaze/microblaze_fpga/include/bsp/microblaze-dtb.h>`_.
-The device tree source for the default device tree is at `dts/system.dts <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/microblaze/microblaze_fpga/dts/system.dts>`_.
+in [\<bsp/microblaze-dtb.h>](https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/microblaze/microblaze_fpga/include/bsp/microblaze-dtb.h).
+The device tree source for the default device tree is at [dts/system.dts](https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/microblaze/microblaze_fpga/dts/system.dts).
 
-To replace the default device tree with your own, assuming ``my_device_tree.dts``
+To replace the default device tree with your own, assuming `my_device_tree.dts`
 is the name of your device tree source file, first you must convert your device
 tree to .dtb format.
 
-.. code-block:: none
+```none
+$ dtc -I dts -O dtb my_device_tree.dts > my_device_tree.dtb
+```
 
-  $ dtc -I dts -O dtb my_device_tree.dts > my_device_tree.dtb
+The device tree blob, `my_device_tree.dtb`, can now be converted to a C file.
+The name `system_dtb` is significant as it is the name expected by the BSP.
 
-The device tree blob, ``my_device_tree.dtb``, can now be converted to a C file.
-The name ``system_dtb`` is significant as it is the name expected by the BSP.
+```none
+$ rtems-bin2c -C -A 8 -N system_dtb my_device_tree.dtb my_dtb
+```
 
-.. code-block:: none
-
-  $ rtems-bin2c -C -A 8 -N system_dtb my_device_tree.dtb my_dtb
-
-The ``BSP_MICROBLAZE_FPGA_DTB_HEADER_PATH`` BSP configuration option can then be
-set to the path of the resulting source file, ``my_dtb.c``, in the waf INI file
+The `BSP_MICROBLAZE_FPGA_DTB_HEADER_PATH` BSP configuration option can then be
+set to the path of the resulting source file, `my_dtb.c`, in the waf INI file
 to include it in the BSP build.
 
-.. code-block:: none
+```none
+BSP_MICROBLAZE_FPGA_DTB_HEADER_PATH = /path/to/my_dtb.c
+```
 
-  BSP_MICROBLAZE_FPGA_DTB_HEADER_PATH = /path/to/my_dtb.c
-
-
-QSPI NOR JFFS2 Driver
----------------------
+### QSPI NOR JFFS2 Driver
 
 The QSPI NOR JFFS2 driver supports the QEMU emulated n25q512a11 QSPI NOR flash
 device. It is initialized to a page size of 256 bytes and a sector size of 64
@@ -78,49 +71,45 @@ KiB. If device tree support is enabled in the build configuration, the QSPI NOR
 JFFS2 driver will use the node that is compatible with `xlnx,xps-spi-2.00.a`
 from the device tree to configure the QSPI NOR JFFS2 driver. The following
 device tree node properties are used to configure the QSPI NOR JFFS2 driver:
-``reg`` and ``interrupts``.
+`reg` and `interrupts`.
 
+### Running Executables
 
-Running Executables
--------------------
-
-A ``.dtb`` (device tree blob) file should be provided to QEMU via the ``-hw-dtb``
+A `.dtb` (device tree blob) file should be provided to QEMU via the `-hw-dtb`
 option. In the example command below, the device tree blob comes from the Xilinx
-Petalinux KCU105 MicroBlaze BSP (https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html).
+Petalinux KCU105 MicroBlaze BSP (<https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html>).
 
 Executables generated by this BSP can be run using the following command:
 
-.. code-block:: none
+```none
+$ qemu-system-microblazeel -no-reboot -nographic -M microblaze-fdt-plnx -m 256 \
+ -serial mon:stdio -display none -hw-dtb system.dtb -kernel example.exe
+```
 
-  $ qemu-system-microblazeel -no-reboot -nographic -M microblaze-fdt-plnx -m 256 \
-   -serial mon:stdio -display none -hw-dtb system.dtb -kernel example.exe
+### Debugging with QEMU
 
-Debugging with QEMU
--------------------
-
-To debug an application, add the option ``-s`` to make QEMU listen for GDB
-connections on port 1234. Add the ``-S`` option to also stop execution until
+To debug an application, add the option `-s` to make QEMU listen for GDB
+connections on port 1234. Add the `-S` option to also stop execution until
 a connection is made.
 
-For example, to debug the hello sample and break at ``Init``, first start QEMU.
+For example, to debug the hello sample and break at `Init`, first start QEMU.
 
-.. code-block:: none
-
-  $ qemu-system-microblazeel -no-reboot -nographic -M microblaze-fdt-plnx -m 256 \
-   -serial mon:stdio -display none -hw-dtb system.dtb -kernel \
-   build/microblaze/kcu105_qemu/testsuites/samples/hello.exe -s -S
+```none
+$ qemu-system-microblazeel -no-reboot -nographic -M microblaze-fdt-plnx -m 256 \
+ -serial mon:stdio -display none -hw-dtb system.dtb -kernel \
+ build/microblaze/kcu105_qemu/testsuites/samples/hello.exe -s -S
+```
 
 Then start GDB and connect to QEMU.
 
-.. code-block:: none
+```none
+$ microblaze-rtems@rtems-ver-major@-gdb build/microblaze/kcu105_qemu/testsuites/samples/hello.exe
+(gdb) target remote localhost:1234
+(gdb) break Init
+(gdb) continue
+```
 
-  $ microblaze-rtems@rtems-ver-major@-gdb build/microblaze/kcu105_qemu/testsuites/samples/hello.exe
-  (gdb) target remote localhost:1234
-  (gdb) break Init
-  (gdb) continue
-
-KCU105
-======
+## KCU105
 
 The basic hardware initialization is performed by the BSP. This BSP supports the
 Xilinx AXI Interrupt Controller v4.1.
@@ -130,53 +119,50 @@ configured with the default Petalinux KCU105 MicroBlaze BSP. The defaults may
 need to be adjusted using BSP configuration options to match the memory layout
 and configuration of your board.
 
-Clock Driver
-------------
+### Clock Driver
 
 The clock driver supports the Xilinx AXI Timer v2.0. It is implemented as a
 simple downcounter. If device tree support is enabled in the
 build configuration, the clock driver will use the node that is compatible with
 `xlnx,xps-timer-1.00.a` from the device tree to configure the clock. The
 following device tree node properties are used to configure the clock driver:
-``reg``, ``clock-frequency``, and ``interrupts``.
+`reg`, `clock-frequency`, and `interrupts`.
 
-Console Driver
---------------
+### Console Driver
 
 The console driver supports the Xilinx AXI UART Lite v2.0. It is initialized to
 a baud rate of 115200. If device tree support is enabled in the build
 configuration, the console driver will use the node that is compatible with
 `xlnx,xps-uartlite-1.00.a` from the device tree to configure the console. The
 following device tree node properties are used to configure the console driver:
-``reg``, ``status``, ``port-number``, and ``interrupts``.
+`reg`, `status`, `port-number`, and `interrupts`.
 
-Debugging
----------
+### Debugging
 
 The following debugging procedure was used for debugging RTEMS applications
 running on the Xilinx KCU105 board using GDB.
 
 First send an FPGA bitstream to the board using OpenOCD.
 
-.. code-block:: none
+```none
+$ openocd -f board/kcu105.cfg -c "init; pld load 0 system.bit; exit"
+```
 
-  $ openocd -f board/kcu105.cfg -c "init; pld load 0 system.bit; exit"
-
-After the board has been programmed, start the Vivado ``hw_server`` application
+After the board has been programmed, start the Vivado `hw_server` application
 to serve as the debug server. Leave it running in the background for the rest of
 the process.
 
-.. code-block:: none
-
-  $ tools/Xilinx/Vivado/2020.2/bin/hw_server
+```none
+$ tools/Xilinx/Vivado/2020.2/bin/hw_server
+```
 
 With the debug server running, connect to the debug server with GDB, load the
 application, and debug as usual. By default the GDB server listens on port 3002.
 
-.. code-block:: none
-
-  $ microblaze-rtems@rtems-ver-major@-gdb example.exe
-  (gdb) target extended-remote localhost:3002
-  (gdb) load
-  (gdb) break Init
-  (gdb) continue
+```none
+$ microblaze-rtems@rtems-ver-major@-gdb example.exe
+(gdb) target extended-remote localhost:3002
+(gdb) load
+(gdb) break Init
+(gdb) continue
+```

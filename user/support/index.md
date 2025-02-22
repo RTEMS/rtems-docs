@@ -1,16 +1,17 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019 embedded brains GmbH & Co. KG
-.. Copyright (C) 2019 Sebastian Huber
+% Copyright (C) 2019 embedded brains GmbH & Co. KG
 
-.. index:: support
+% Copyright (C) 2019 Sebastian Huber
 
-Support and Contributing
-************************
+```{index} support
+```
 
-.. toctree::
+# Support and Contributing
 
-    support-project
-    bugs
-    contrib
-    support-commercial
+```{toctree}
+support-project
+bugs
+contrib
+support-commercial
+```

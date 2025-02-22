@@ -1,6 +1,7 @@
-.. only:: html
+```{only} html
+# References
+```
 
-    References
-    **********
-
+```{eval-rst}
 .. bibliography:: ../common/refs.bib
+```

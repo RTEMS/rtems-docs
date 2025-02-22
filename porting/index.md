@@ -1,32 +1,39 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
+```{eval-rst}
 .. include:: ../common/unicode.rst
+```
 
-================================
-RTEMS Porting Guide (|version|).
-================================
+# RTEMS Porting Guide ({{ version }}).
 
-.. topic:: Copyrights and License
+````{topic} Copyrights and License
+{{ copy }}
 
-    | |copy| 1988, 2016 On-Line Applications Research Corporation (OAR)
+ 1988, 2016 On-Line Applications Research Corporation (OAR)
 
-    .. include:: ../common/license.rst
+```{eval-rst}
+.. include:: ../common/license.rst
+```
+````
 
+```{eval-rst}
 .. include:: ../common/header.rst
+```
 
-.. toctree::
-	:maxdepth: 3
-	:numbered:
+```{toctree}
+:maxdepth: 3
+:numbered: true
 
-	preface
-	development_tools
-	source_code_org
-	cpu_model_variations
-	cpu_init
-	interrupts
-	task_context
-	idle_thread
-	priority_bitmap
-	code_tuning
-	miscellanous
-	command
+preface
+development_tools
+source_code_org
+cpu_model_variations
+cpu_init
+interrupts
+task_context
+idle_thread
+priority_bitmap
+code_tuning
+miscellanous
+command
+```

@@ -1,18 +1,20 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: messages
-.. index:: message queues
+```{index} messages
+```
 
-.. _RTEMSAPIClassicMessage:
+```{index} message queues
+```
 
-Message Manager
-***************
+(rtemsapiclassicmessage)=
 
-.. toctree::
+# Message Manager
 
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

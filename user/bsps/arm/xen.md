@@ -1,25 +1,23 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019 DornerWorks
-.. Copyright (C) 2019 Jeff Kubascik <jeff.kubascik@dornerworks.com>
+% Copyright (C) 2019 DornerWorks
 
-xen (Xen on ARM)
-================
+% Copyright (C) 2019 Jeff Kubascik <jeff.kubascik@dornerworks.com>
+
+# xen (Xen on ARM)
 
 This BSP enables RTEMS to run as a guest virtual machine in AArch32 mode on the
 Xen hypervisor for ARMv8 platforms.
 
 Drivers:
 
-* Clock: ARMv7-AR Generic Timer
-
-* Console: Virtual PL011 device
-
-* Interrupt: GICv2
+- Clock: ARMv7-AR Generic Timer
+- Console: Virtual PL011 device
+- Interrupt: GICv2
 
 BSP variants:
 
-* xen_virtual: completely virtualized guest with no dependence on underlying
+- xen_virtual: completely virtualized guest with no dependence on underlying
   hardware
 
 The xen_virtual BSP variant relies on standard Xen features, so it should be
@@ -32,48 +30,46 @@ platforms and include the appropriate drivers.
 This BSP was tested with Xen running on the Xilinx Zynq UltraScale+ MPSoC using
 the Virtuosity distribution maintained by DornerWorks.
 
-Execution
----------
+## Execution
 
 This procedure describes how to run the ticker sample application that should
 already be built with the BSP.
 
-The ``ticker.exe`` file can be found in the BSP build tree at:
+The `ticker.exe` file can be found in the BSP build tree at:
 
-.. code-block:: none
+```none
+arm-rtems@rtems-ver-major@/c/xen_virtual/testsuites/samples/ticker.exe
+```
 
-    arm-rtems@rtems-ver-major@/c/xen_virtual/testsuites/samples/ticker.exe
+The `ticker.exe` elf file must be translated to a binary format.
 
-The ``ticker.exe`` elf file must be translated to a binary format.
+```none
+arm-rtems@rtems-ver-major@-objcopy -O binary ticker.exe ticker.bin
+```
 
-.. code-block:: none
+Then place the `ticker.bin` file on the dom0 filesystem.
 
-    arm-rtems@rtems-ver-major@-objcopy -O binary ticker.exe ticker.bin
-
-Then place the ``ticker.bin`` file on the dom0 filesystem.
-
-From the dom0 console, create a configuration file ``ticker.cfg`` with the
+From the dom0 console, create a configuration file `ticker.cfg` with the
 following contents.
 
-.. code-block:: none
-
-    name = "ticker"1G
-    kernel = "ticker.bin"
-    memory = 8
-    vcpus = 1
-    gic_version = "v2"
-    vuart = "sbsa_uart"
+```none
+name = "ticker"1G
+kernel = "ticker.bin"
+memory = 8
+vcpus = 1
+gic_version = "v2"
+vuart = "sbsa_uart"
+```
 
 Create the virtual machine and attach to the virtual vpl011 console.
 
-.. code-block:: none
+```none
+xl create ticker.cfg && xl console -t vuart ticker
+```
 
-    xl create ticker.cfg && xl console -t vuart ticker
-
-To return back to the dom0 console, press both ``Ctrl`` and ``]`` on your
+To return back to the dom0 console, press both `Ctrl` and `]` on your
 keyboard.
 
-Additional Information
-----------------------
+## Additional Information
 
-* `Virtuosity distribution <https://dornerworks.com/xen/virtuosity>`_
+- [Virtuosity distribution](https://dornerworks.com/xen/virtuosity)

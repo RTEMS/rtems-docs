@@ -1,31 +1,41 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
+```{eval-rst}
 .. include:: ../common/unicode.rst
+```
 
-==========================================
-RTEMS Filesystem Design Guide (|version|).
-==========================================
+# RTEMS Filesystem Design Guide ({{ version }}).
 
-.. topic:: Copyrights and License
+````{topic} Copyrights and License
+{{ copy }}
 
-    | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
-    | |copy| 2022 embedded brains GmbH & Co. KG
+ 1988, 2015 On-Line Applications Research Corporation (OAR)
 
-    .. include:: ../common/license.rst
+{{ copy }}
 
+ 2022 embedded brains GmbH & Co. KG
+
+```{eval-rst}
+.. include:: ../common/license.rst
+```
+````
+
+```{eval-rst}
 .. include:: ../common/header.rst
+```
 
-.. toctree::
-	:maxdepth: 5
-	:numbered:
+```{toctree}
+:maxdepth: 5
+:numbered: true
 
-	preface
-	pathname_eval
-	system_init
-	mounting_and_unmounting
-	call_development
-	fileystem_implmentation
-	in-memory
-	minature_in-memory
-	trivial_ftp
-	command_and_variable
+preface
+pathname_eval
+system_init
+mounting_and_unmounting
+call_development
+fileystem_implmentation
+in-memory
+minature_in-memory
+trivial_ftp
+command_and_variable
+```

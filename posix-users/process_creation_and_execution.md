@@ -1,88 +1,78 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Process Creation and Execution Manager
-######################################
+# Process Creation and Execution Manager
 
-Introduction
-============
+## Introduction
 
 The process creation and execution manager provides the functionality
 associated with the creation and termination of processes.
 
 The directives provided by the process creation and execution manager are:
 
-- fork_ - Create a Process
+- [fork] - Create a Process
+- [execl] - Execute a File
+- [execv] - Execute a File
+- [execle] - Execute a File
+- [execve] - Execute a File
+- [execlp] - Execute a File
+- [execvp] - Execute a File
+- [pthread_atfork] - Register Fork Handlers
+- [wait] - Wait for Process Termination
+- [waitpid] - Wait for Process Termination
+- [\_exit][_exit] - Terminate a Process
 
-- execl_ - Execute a File
+## Background
 
-- execv_ - Execute a File
-
-- execle_ - Execute a File
-
-- execve_ - Execute a File
-
-- execlp_ - Execute a File
-
-- execvp_ - Execute a File
-
-- pthread_atfork_ - Register Fork Handlers
-
-- wait_ - Wait for Process Termination
-
-- waitpid_ - Wait for Process Termination
-
-- `_exit`_ - Terminate a Process
-
-Background
-==========
-
-POSIX process functionality can not be completely supported by RTEMS.  This is
+POSIX process functionality can not be completely supported by RTEMS. This is
 because RTEMS provides no memory protection and implements a *single process,
-multi-threaded execution model*.  In this light, RTEMS provides none of the
-routines that are associated with the creation of new processes.  However,
+multi-threaded execution model*. In this light, RTEMS provides none of the
+routines that are associated with the creation of new processes. However,
 since the entire RTEMS application (e.g. executable) is logically a single
 POSIX process, RTEMS is able to provide implementations of many operations on
-processes.  The rule of thumb is that those routines provide a meaningful
-result.  For example, ``getpid()`` returns the node number.
+processes. The rule of thumb is that those routines provide a meaningful
+result. For example, `getpid()` returns the node number.
 
-Operations
-==========
+## Operations
 
 The only functionality method defined by this manager which is supported by
-RTEMS is the ``_exit`` service.  The implementation of ``_exit`` shuts the
-application down and is equivalent to invoking either ``exit`` or
-``rtems_shutdown_executive``.
+RTEMS is the `_exit` service. The implementation of `_exit` shuts the
+application down and is equivalent to invoking either `exit` or
+`rtems_shutdown_executive`.
 
-Directives
-==========
+## Directives
 
 This section details the process creation and execution manager's directives.
 A subsection is dedicated to each of this manager's directives and describes
 the calling sequence, related constants, usage, and status codes.
 
-.. _fork:
+(fork)=
 
-fork - Create a Process
------------------------
-.. index:: fork
-.. index:: create a process
+### fork - Create a Process
+
+```{index} fork
+```
+
+```{index} create a process
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    int fork( void );
+```c
+#include <sys/types.h>
+int fork( void );
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -92,30 +82,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _execl:
+(execl)=
 
-execl - Execute a File
-----------------------
-.. index:: execl
-.. index:: execute a file
+### execl - Execute a File
+
+```{index} execl
+```
+
+```{index} execute a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int execl(
-        const char *path,
-        const char *arg,
-        ...
-    );
+```c
+int execl(
+    const char *path,
+    const char *arg,
+    ...
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -125,30 +120,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _execv:
+(execv)=
 
-execv - Execute a File
-----------------------
-.. index:: execv
-.. index:: execute a file
+### execv - Execute a File
+
+```{index} execv
+```
+
+```{index} execute a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int execv(
-        const char *path,
-        char const *argv[],
-        ...
-    );
+```c
+int execv(
+    const char *path,
+    char const *argv[],
+    ...
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -158,30 +158,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _execle:
+(execle)=
 
-execle - Execute a File
------------------------
-.. index:: execle
-.. index:: execute a file
+### execle - Execute a File
+
+```{index} execle
+```
+
+```{index} execute a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int execle(
-        const char *path,
-        const char *arg,
-        ...
-    );
+```c
+int execle(
+    const char *path,
+    const char *arg,
+    ...
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -191,30 +196,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _execve:
+(execve)=
 
-execve - Execute a File
------------------------
-.. index:: execve
-.. index:: execute a file
+### execve - Execute a File
+
+```{index} execve
+```
+
+```{index} execute a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int execve(
-        const char *path,
-        char *const argv[],
-        char *const envp[]
-    );
+```c
+int execve(
+    const char *path,
+    char *const argv[],
+    char *const envp[]
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -224,30 +234,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _execlp:
+(execlp)=
 
-execlp - Execute a File
------------------------
-.. index:: execlp
-.. index:: execute a file
+### execlp - Execute a File
+
+```{index} execlp
+```
+
+```{index} execute a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int execlp(
-        const char *file,
-        const char *arg,
-        ...
-    );
+```c
+int execlp(
+    const char *file,
+    const char *arg,
+    ...
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -257,30 +272,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _execvp:
+(execvp)=
 
-execvp - Execute a File
------------------------
-.. index:: execvp
-.. index:: execute a file
+### execvp - Execute a File
+
+```{index} execvp
+```
+
+```{index} execute a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int execvp(
-        const char *file,
-        char *const argv[],
-        ...
-    );
+```c
+int execvp(
+    const char *file,
+    char *const argv[],
+    ...
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -290,31 +310,36 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _pthread_atfork:
+(pthread-atfork)=
 
-pthread_atfork - Register Fork Handlers
----------------------------------------
-.. index:: pthread_atfork
-.. index:: register fork handlers
+### pthread_atfork - Register Fork Handlers
+
+```{index} pthread_atfork
+```
+
+```{index} register fork handlers
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    int pthread_atfork(
-        void (*prepare)(void),
-        void (*parent)(void),
-        void (*child)(void)
-    );
+```c
+#include <sys/types.h>
+int pthread_atfork(
+    void (*prepare)(void),
+    void (*parent)(void),
+    void (*child)(void)
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``0``
    - This routine is a non-functional stub.
+```
 
 **DESCRIPTION:**
 
@@ -322,38 +347,43 @@ This routine is non-functional stub.
 
 **NOTES:**
 
-The POSIX specification for ``pthread_atfork()`` does not address the behavior
+The POSIX specification for `pthread_atfork()` does not address the behavior
 when in a single process environment. Originally, the RTEMS implementation
-returned -1 and set errno to ``ENOSYS``. This was an arbitrary decision
+returned -1 and set errno to `ENOSYS`. This was an arbitrary decision
 part with no basis from the wider POSIX community. The FACE Technical
 Standard includes profiles without multiple process support and defined
 the behavior in a single process environment to return 0. Logically, the
 application can register atfork handlers but they will never be invoked.
 
-.. _wait:
+(wait)=
 
-wait - Wait for Process Termination
------------------------------------
-.. index:: wait
-.. index:: wait for process termination
+### wait - Wait for Process Termination
+
+```{index} wait
+```
+
+```{index} wait for process termination
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/wait.h>
-    int wait(
-        int *stat_loc
-    );
+```c
+#include <sys/types.h>
+#include <sys/wait.h>
+int wait(
+    int *stat_loc
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
- 
+
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -363,30 +393,35 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _waitpid:
+(waitpid)=
 
-waitpid - Wait for Process Termination
---------------------------------------
-.. index:: waitpid
-.. index:: wait for process termination
+### waitpid - Wait for Process Termination
+
+```{index} waitpid
+```
+
+```{index} wait for process termination
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    int wait(
-        pid_t  pid,
-        int   *stat_loc,
-        int    options
-    );
+```c
+int wait(
+    pid_t  pid,
+    int   *stat_loc,
+    int    options
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOSYS``
    - This routine is not supported by RTEMS.
+```
 
 **DESCRIPTION:**
 
@@ -396,20 +431,23 @@ This routine is not supported by RTEMS.
 
 NONE
 
-.. _\_exit:
+(exit)=
 
-_exit - Terminate a Process
----------------------------
-.. index:: _exit
-.. index:: terminate a process
+### \_exit - Terminate a Process
+
+```{index} _exit
+```
+
+```{index} terminate a process
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    void _exit(
-        int status
-    );
+```c
+void _exit(
+    int status
+);
+```
 
 **STATUS CODES:**
 
@@ -417,7 +455,7 @@ NONE
 
 **DESCRIPTION:**
 
-The ``_exit()`` function terminates the calling process.
+The `_exit()` function terminates the calling process.
 
 **NOTES:**
 

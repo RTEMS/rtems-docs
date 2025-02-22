@@ -1,34 +1,35 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018.
-.. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
+% Copyright (C) 2018.
 
+% COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-Appendix: Core Qualification Artifacts/Documents
-************************************************
+# Appendix: Core Qualification Artifacts/Documents
 
 An effort at NASA has been performed to suggest a core set of artifacts
 (as defined by **BOTH** NASA NPR 7150.2B and DO-178B) that can be utilized
 by a mission as a baselined starting point for "pre-qualification"
 for (open-source) software that is intended to be utilized for flight
-purposes.  This effort analyzed the overlap between NPR 7150.2B
+purposes. This effort analyzed the overlap between NPR 7150.2B
 and DO-178B and highlighted a core set of artifacts to serve as a
-starting point for any open-source project.  These artifacts were also
+starting point for any open-source project. These artifacts were also
 cross-referenced with similar activities for other NASA flight software
 qualification efforts, such as the open-source Core Flight System (cFS).
 Along with the specific artifact, the intent of the artifact was also
 captured; in some cases open-source projects, such as RTEMS, are already
 meeting the intent of the artifacts with information simply needing
-organized and formalized.  The table below lists the general category,
-artifact name, and its intent.  Please note that this table does **NOT**
+organized and formalized. The table below lists the general category,
+artifact name, and its intent. Please note that this table does **NOT**
 represent all the required artifacts for qualification per the standards;
 instead, this table represents a subset of the most basic/core artifacts
 that form a strong foundation for a software engineering qualification
 effort.
 
-.. COMMENT: TBD convert to a table; see original PDF for guidance on desired look
-.. COMMENT: TBD The PDF is in https://ftp.rtems.org/pub/rtems/people/joel/sw_eng_hb/
+% COMMENT: TBD convert to a table; see original PDF for guidance on desired look
 
+% COMMENT: TBD The PDF is in https://ftp.rtems.org/pub/rtems/people/joel/sw_eng_hb/
+
+```{eval-rst}
 .. table:: Table 1. Core Qualification Artifacts
    :class: rtems-table
 
@@ -130,10 +131,11 @@ effort.
    |                | Manual                | defines user instructions for   |
    |                |                       | the software.                   |
    +----------------+-----------------------+---------------------------------+
+```
 
 In an effort to remain lightweight and sustainable for open-source
 projects, Table 1 above was condensed into a single artifact outline
-that encompasses the artifacts' intents.  The idea is that this living
+that encompasses the artifacts' intents. The idea is that this living
 qualification document will reside under RTEMS source control and be
-updated with additional detail accordingly.  The artifact outline is
+updated with additional detail accordingly. The artifact outline is
 as follows:

@@ -1,12 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _tracing-framework:
+(tracing-framework)=
 
-Tracing
-*******
-.. index:: Tracing Framework
+# Tracing
+
+```{index} Tracing Framework
+```
 
 RTEMS Tracing Framework is an on-target software based system which helps track
 the ongoings inside the operation of applications, third-party packages, and the
@@ -20,10 +21,10 @@ requirement in RTEMS trace process is to take existing code in compiled format
 However instrumenting of the code for tracing should happen without rebuilding
 the code from the source and without annotating the source with trace code.
 
-.. toctree::
-
-   introduction
-   examples
-   captureengine
-   tracelinker
-   eventrecording
+```{toctree}
+introduction
+examples
+captureengine
+tracelinker
+eventrecording
+```

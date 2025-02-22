@@ -1,15 +1,15 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2021 embedded brains GmbH & Co. KG
+% Copyright (C) 2021 embedded brains GmbH & Co. KG
 
-.. index:: cache
+```{index} cache
+```
 
-.. _RTEMSAPIClassicCache:
+(rtemsapiclassiccache)=
 
-Cache Manager
-*************
+# Cache Manager
 
-.. toctree::
-
-    introduction
-    directives
+```{toctree}
+introduction
+directives
+```

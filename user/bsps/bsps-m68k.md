@@ -1,30 +1,24 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 embedded brains GmbH & Co. KG
+% Copyright (C) 2018 embedded brains GmbH & Co. KG
 
-m68k (Motorola 68000 / ColdFire)
-********************************
+# m68k (Motorola 68000 / ColdFire)
 
-av5282
-======
+## av5282
 
 TODO.
 
-genmcf548x
-==========
+## genmcf548x
 
 TODO.
 
-mcf5235
-=======
+## mcf5235
 
 TODO.
 
-mcf5329
-=======
+## mcf5329
 
-Overview
---------
+### Overview
 
 This BSP is heavily based on the MCF5235 BSP. The MCF5329EVB is a Motorola
 evaluation board (Zoom) with a LogicPD MCF5329-10 SODIMM-144 card. The
@@ -35,9 +29,8 @@ LCD controller, FEC, USB, uarts, CAN bus, QSPI, I2C, and 10/100 Ethernet.
 
 You can find the link to MCF5329 Reference Manual below:
 
-* `MCF5329 Reference Manual <https://www.nxp.com/docs/en/reference-manual/MCF5329RM.pdf>`_
+- [MCF5329 Reference Manual](https://www.nxp.com/docs/en/reference-manual/MCF5329RM.pdf)
 
-uC5282
-======
+## uC5282
 
 TODO.

@@ -1,90 +1,81 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Task Context Management
-#######################
+# Task Context Management
 
-Introduction
-============
+## Introduction
 
 XXX
 
-Task Stacks
-===========
+## Task Stacks
 
 XXX
 
-Direction of Stack Growth
--------------------------
+### Direction of Stack Growth
 
 The CPU_STACK_GROWS_UP macro is set based upon the answer to the following
 question: Does the stack grow up (toward higher addresses) or down (toward
-lower addresses)?  If the stack grows upward in memory, then this macro
-should be set to TRUE.  Otherwise, it should be set to FALSE to indicate
+lower addresses)? If the stack grows upward in memory, then this macro
+should be set to TRUE. Otherwise, it should be set to FALSE to indicate
 that the stack grows downward toward smaller addresses.
 
 The following illustrates how the CPU_STACK_GROWS_UP macro is set:
 
-.. code-block:: c
+```c
+#define CPU_STACK_GROWS_UP               TRUE
+```
 
-    #define CPU_STACK_GROWS_UP               TRUE
-
-Minimum Task Stack Size
------------------------
+### Minimum Task Stack Size
 
 The CPU_STACK_MINIMUM_SIZE macro should be set to the minimum size of each
-task stack.  This size is specified as the number of bytes.  This minimum
-stack size should be large enough to run all RTEMS tests.  The minimum
+task stack. This size is specified as the number of bytes. This minimum
+stack size should be large enough to run all RTEMS tests. The minimum
 stack size is chosen such that a "reasonable" small application should not
-have any problems.  Choosing a minimum stack size that is too small will
+have any problems. Choosing a minimum stack size that is too small will
 result in the RTEMS tests "blowing" their stack and not executing
 properly.
 
 There are many reasons a task could require a stack size larger than the
-minimum.  For example, a task could have a very deep call path or declare
-large data structures on the stack.  Tasks which utilize C++ exceptions
+minimum. For example, a task could have a very deep call path or declare
+large data structures on the stack. Tasks which utilize C++ exceptions
 tend to require larger stacks as do Ada tasks.
 
 The following illustrates setting the minimum stack size to 4 kilobytes
 per task.
 
-.. code-block:: c
+```c
+#define CPU_STACK_MINIMUM_SIZE          (1024*4)
+```
 
-    #define CPU_STACK_MINIMUM_SIZE          (1024*4)
-
-Stack Alignment Requirements
-----------------------------
+### Stack Alignment Requirements
 
 The CPU_STACK_ALIGNMENT macro is set to indicate the byte alignment
-requirement for the stack.  This alignment requirement may be stricter
-than that for the data types alignment specified by CPU_ALIGNMENT.  If the
+requirement for the stack. This alignment requirement may be stricter
+than that for the data types alignment specified by CPU_ALIGNMENT. If the
 CPU_ALIGNMENT is strict enough for the stack, then this should be set to
-0.
+0\.
 
 The following illustrates how the CPU_STACK_ALIGNMENT macro should be set
 when there are no special requirements:
 
-.. code-block:: c
+```c
+#define CPU_STACK_ALIGNMENT        0
+```
 
-    #define CPU_STACK_ALIGNMENT        0
+NOTE: This must be a power of 2 either 0 or greater than CPU_ALIGNMENT. [XXX is this true?]
 
-NOTE:  This must be a power of 2 either 0 or greater than CPU_ALIGNMENT. [XXX is this true?]
-
-Task Context
-============
+## Task Context
 
 Associated with each task is a context that distinguishes it from other
 tasks in the system and logically gives it its own scratch pad area for
-computations.  In addition, when an interrupt occurs some processor
-context information must be saved and restored.  This is managed in RTEMS
+computations. In addition, when an interrupt occurs some processor
+context information must be saved and restored. This is managed in RTEMS
 as three items:
 
 - Basic task level context (e.g. the Context_Control structure)
-
 - Floating point task context (e.g. Context_Control_fp structure)
-
-- Interrupt level context (e.g.  the Context_Control_interrupt
+- Interrupt level context (e.g. the Context_Control_interrupt
   structure)
 
 The integer and floating point context structures and the routines that
@@ -94,439 +85,420 @@ interrupt level context structure is discussed in the XXX.
 Additionally, if the GNU debugger gdb is to be made aware of RTEMS tasks
 for this CPU, then care should be used in designing the context area.
 
-.. code-block:: c
+```c
+typedef struct {
+  unsigned32 special_interrupt_register;
+} CPU_Interrupt_frame;
+```
 
-    typedef struct {
-      unsigned32 special_interrupt_register;
-    } CPU_Interrupt_frame;
-
-Basic Context Data Structure
-----------------------------
+### Basic Context Data Structure
 
 The Context_Control data structure contains the basic integer context of a
-task.  In addition, this context area contains stack and frame pointers,
+task. In addition, this context area contains stack and frame pointers,
 processor status register(s), and any other registers that are normally
-altered by compiler generated code.  In addition, this context must
+altered by compiler generated code. In addition, this context must
 contain the processor interrupt level since the processor interrupt level
-is maintained on a per-task basis.  This is necessary to support the
+is maintained on a per-task basis. This is necessary to support the
 interrupt level portion of the task mode as provided by the Classic RTEMS
 API.
 
 On some processors, it is cost-effective to save only the callee preserved
-registers during a task context switch.  This means that the ISR code
+registers during a task context switch. This means that the ISR code
 needs to save those registers which do not persist across function calls.
 It is not mandatory to make this distinctions between the caller/callee
 saves registers for the purpose of minimizing context saved during task
-switch and on interrupts.  If the cost of saving extra registers is
-minimal, simplicity is the choice.  Save the same context on interrupt
+switch and on interrupts. If the cost of saving extra registers is
+minimal, simplicity is the choice. Save the same context on interrupt
 entry as for tasks in this case.
 
 The Context_Control data structure should be defined such that the order
 of elements results in the simplest, most efficient implementation of XXX.
 A typical implementation starts with a definition such as the following:
 
-.. code-block:: c
+```c
+typedef struct {
+  unsigned32 some_integer_register;
+  unsigned32 another_integer_register;
+  unsigned32 some_system_register;
+} Context_Control;
+```
 
-    typedef struct {
-      unsigned32 some_integer_register;
-      unsigned32 another_integer_register;
-      unsigned32 some_system_register;
-    } Context_Control;
+### Initializing a Context
 
-Initializing a Context
-----------------------
-
-The _CPU_Context_Initialize routine initializes the context to a state
+The \_CPU_Context_Initialize routine initializes the context to a state
 suitable for starting a task after a context restore operation.
 Generally, this involves:
 
 - setting a starting address,
-
 - preparing the stack,
-
 - preparing the stack and frame pointers,
-
 - setting the proper interrupt level in the context, and
-
 - initializing the floating point context
 
 This routine generally does not set any unnecessary register in the
-context.  The state of the "general data" registers is undefined at task
-start time. The _CPU_Context_initialize routine is prototyped as follows:
+context. The state of the "general data" registers is undefined at task
+start time. The \_CPU_Context_initialize routine is prototyped as follows:
 
-.. code-block:: c
+```c
+void _CPU_Context_Initialize(
+  Context_Control *_the_context,
+  void            *_stack_base,
+  unsigned32       _size,
+  unsigned32       _isr,
+  void            *_entry_point,
+  unsigned32       _is_fp
+);
+```
 
-    void _CPU_Context_Initialize(
-      Context_Control *_the_context,
-      void            *_stack_base,
-      unsigned32       _size,
-      unsigned32       _isr,
-      void            *_entry_point,
-      unsigned32       _is_fp
-    );
-
-The ``is_fp`` parameter is TRUE if the thread is to be a floating point
-thread.  This is typically only used on CPUs where the FPU may be easily
+The `is_fp` parameter is TRUE if the thread is to be a floating point
+thread. This is typically only used on CPUs where the FPU may be easily
 disabled by software such as on the SPARC where the PSR contains an enable
-FPU bit.  The use of an FPU enable bit allows RTEMS to ensure that a
-non-floating point task is unable to access the FPU.  This guarantees that
+FPU bit. The use of an FPU enable bit allows RTEMS to ensure that a
+non-floating point task is unable to access the FPU. This guarantees that
 a deferred floating point context switch is safe.
 
-The ``_stack_base`` parameter is the base address of the memory area
-allocated for use as the task stack.  It is critical to understand that
-``_stack_base`` may not be the starting stack pointer for this task.
+The `_stack_base` parameter is the base address of the memory area
+allocated for use as the task stack. It is critical to understand that
+`_stack_base` may not be the starting stack pointer for this task.
 On CPU families where the stack grows from high addresses to lower ones,
-(i.e. ``CPU_STACK_GROWS_UP`` is FALSE) the starting stack point
-will be near the end of the stack memory area or close to ``_stack_base``
-+ ``_size``.  Even on CPU families where the stack grows from low to
+(i.e. `CPU_STACK_GROWS_UP` is FALSE) the starting stack point
+will be near the end of the stack memory area or close to `_stack_base`
+\+ `_size`. Even on CPU families where the stack grows from low to
 higher addresses, there may be some required outermost stack frame that
-must be put at the address ``_stack_base``.
+must be put at the address `_stack_base`.
 
-The ``_size`` parameter is the requested size in bytes of the stack for
-this task.  It is assumed that the memory area ``_stack_base``
+The `_size` parameter is the requested size in bytes of the stack for
+this task. It is assumed that the memory area `_stack_base`
 is of this size.
 
 XXX explain other parameters and check prototype
 
-Performing a Context Switch
----------------------------
+### Performing a Context Switch
 
-The _CPU_Context_switch performs a normal non-FP context switch from the
+The \_CPU_Context_switch performs a normal non-FP context switch from the
 context of the current executing thread to the context of the heir thread.
 
-.. code-block:: c
-
-    void _CPU_Context_switch(
-      Context_Control  *run,
-      Context_Control  *heir
-    );
+```c
+void _CPU_Context_switch(
+  Context_Control  *run,
+  Context_Control  *heir
+);
+```
 
 This routine begins by saving the current state of the CPU (i.e. the
-context) in the context area at ``run``.  Then the routine should load the
-CPU context pointed to by ``heir``.  Loading the new context will cause a
-branch to its task code, so the task that invoked ``_CPU_Context_switch``
-will not run for a while.  When, eventually, a context switch is
-made to load context from ``*run`` again, this task will resume and
-``_CPU_Context_switch`` will return to its caller.
+context) in the context area at `run`. Then the routine should load the
+CPU context pointed to by `heir`. Loading the new context will cause a
+branch to its task code, so the task that invoked `_CPU_Context_switch`
+will not run for a while. When, eventually, a context switch is
+made to load context from `*run` again, this task will resume and
+`_CPU_Context_switch` will return to its caller.
 
-Care should be exercise when writing this routine.  All registers
+Care should be exercise when writing this routine. All registers
 assumed to be preserved across subroutine calls must be preserved.
 These registers may be saved in the task's context area or on its stack.
 However, the stack pointer and address to resume executing the task at
 must be included in the context (normally the subroutine return address to
-the caller of ``_Thread_Dispatch``.  The decision of where to store the
+the caller of `_Thread_Dispatch`. The decision of where to store the
 task's context is based on numerous factors including the capabilities
 of the CPU architecture itself and simplicity as well as external
 considerations such as debuggers wishing to examine a task's context.
 In this case, it is often simpler to save all data in the context area.
 
 Also there may be special considerations when loading the stack pointers
-or interrupt level of the incoming task.  Independent of CPU specific
+or interrupt level of the incoming task. Independent of CPU specific
 considerations, if some context is saved on the task stack, then the
 porter must ensure that the stack pointer is adjusted *BEFORE* to make
 room for this context information before the information is written.
 Otherwise, an interrupt could occur writing over the context data.
 The following is an example of an *INCORRECT* sequence:
 
-.. code-block:: c
+```c
+save part of context beyond current top of stack
+interrupt pushes context -- overwriting written context
+interrupt returns
+adjust stack pointer
+```
 
-    save part of context beyond current top of stack
-    interrupt pushes context -- overwriting written context
-    interrupt returns
-    adjust stack pointer
+### Restoring a Context
 
-Restoring a Context
--------------------
-
-The _CPU_Context_restore routine is generally used only to restart the
-currently executing thread (i.e. self) in an efficient manner.  In many
-ports, it can simply be a label in _CPU_Context_switch. It may be
+The \_CPU_Context_restore routine is generally used only to restart the
+currently executing thread (i.e. self) in an efficient manner. In many
+ports, it can simply be a label in \_CPU_Context_switch. It may be
 unnecessary to reload some registers.
 
-.. code-block:: c
+```c
+void _CPU_Context_restore(
+  Context_Control *new_context
+);
+```
 
-    void _CPU_Context_restore(
-      Context_Control *new_context
-    );
+### Restarting the Currently Executing Task
 
-Restarting the Currently Executing Task
----------------------------------------
-
-The _CPU_Context_Restart_self is responsible for somehow restarting the
-currently executing task.  If you are lucky when porting RTEMS, then all
-that is necessary is restoring the context.  Otherwise, there will need to
-be a routine that does something special in this case.  Performing a
-_CPU_Context_Restore on the currently executing task after reinitializing
-that context should work on most ports.  It will not work if restarting
+The \_CPU_Context_Restart_self is responsible for somehow restarting the
+currently executing task. If you are lucky when porting RTEMS, then all
+that is necessary is restoring the context. Otherwise, there will need to
+be a routine that does something special in this case. Performing a
+\_CPU_Context_Restore on the currently executing task after reinitializing
+that context should work on most ports. It will not work if restarting
 self conflicts with the stack frame assumptions of restoring a context.
 
-The following is an implementation of _CPU_Context_Restart_self that can
+The following is an implementation of \_CPU_Context_Restart_self that can
 be used when no special handling is required for this case.
 
-.. code-block:: c
-
-    #define _CPU_Context_Restart_self( _the_context ) \
-      _CPU_Context_restore( (_the_context) )
+```c
+#define _CPU_Context_Restart_self( _the_context ) \
+  _CPU_Context_restore( (_the_context) )
+```
 
 XXX find a port which does not do it this way and include it here
 
-Floating Point Context
-======================
+## Floating Point Context
 
-CPU_HAS_FPU Macro Definition
-----------------------------
+### CPU_HAS_FPU Macro Definition
 
 The CPU_HAS_FPU macro is set based on the answer to the question: Does the
-CPU have hardware floating point?  If the CPU has an FPU, then this should
-be set to TRUE.  Otherwise, it should be set to FALSE.  The primary
+CPU have hardware floating point? If the CPU has an FPU, then this should
+be set to TRUE. Otherwise, it should be set to FALSE. The primary
 implication of setting this macro to TRUE is that it indicates that tasks
-may have floating point contexts.  In the Classic API, this means that the
+may have floating point contexts. In the Classic API, this means that the
 RTEMS_FLOATING_POINT task attribute specified as part of rtems_task_create
-is supported on this CPU.  If CPU_HAS_FPU is set to FALSE, then no tasks
+is supported on this CPU. If CPU_HAS_FPU is set to FALSE, then no tasks
 or threads may be floating point and the RTEMS_FLOATING_POINT task
-attribute is ignored.  On an API such as POSIX where all threads
+attribute is ignored. On an API such as POSIX where all threads
 implicitly have a floating point context, then the setting of this macro
 determines whether every POSIX thread has a floating point context.
 
 The following example illustrates how the CPU_HARDWARE_FP (XXX macro name
 is varying) macro is set based on the CPU family dependent macro.
 
-.. code-block:: c
+```c
+#if ( THIS_CPU_FAMILY_HAS_FPU == 1 ) /* where THIS_CPU_FAMILY */
+                                     /* might be M68K */
+  #define CPU_HARDWARE_FP     TRUE
+#else
+  #define CPU_HARDWARE_FP     FALSE
+#endif
+```
 
-    #if ( THIS_CPU_FAMILY_HAS_FPU == 1 ) /* where THIS_CPU_FAMILY */
-                                         /* might be M68K */
-      #define CPU_HARDWARE_FP     TRUE
-    #else
-      #define CPU_HARDWARE_FP     FALSE
-    #endif
-
-The macro name THIS_CPU_FAMILY_HAS_FPU should be made CPU specific.  It
-indicates whether or not this CPU model has FP support.  For example, the
+The macro name THIS_CPU_FAMILY_HAS_FPU should be made CPU specific. It
+indicates whether or not this CPU model has FP support. For example, the
 definition of the i386ex and i386sx CPU models would set I386_HAS_FPU to
 FALSE to indicate that these CPU models are i386's without an i387 and
 wish to leave floating point support out of RTEMS when built for the
-i386_nofp processor model.  On a CPU with a built-in FPU like the i486,
+i386_nofp processor model. On a CPU with a built-in FPU like the i486,
 this would be defined as TRUE.
 
 On some processor families, the setting of the THIS_CPU_FAMILY_HAS_FPU
-macro may be derived from compiler predefinitions.  This can be used when
+macro may be derived from compiler predefinitions. This can be used when
 the compiler distinguishes the individual CPU models for this CPU family
-as distinctly as RTEMS requires.  Often RTEMS needs to need more about the
+as distinctly as RTEMS requires. Often RTEMS needs to need more about the
 CPU model than the compiler because of differences at the system level
 such as caching, interrupt structure.
 
-CPU_ALL_TASKS_ARE_FP Macro Setting
-----------------------------------
+### CPU_ALL_TASKS_ARE_FP Macro Setting
 
 The CPU_ALL_TASKS_ARE_FP macro is set to TRUE or FALSE based upon the
 answer to the following question: Are all tasks RTEMS_FLOATING_POINT tasks
-implicitly?  If this macro is set TRUE, then all tasks and threads are
-assumed to have a floating point context.  In the Classic API, this is
+implicitly? If this macro is set TRUE, then all tasks and threads are
+assumed to have a floating point context. In the Classic API, this is
 equivalent to setting the RTEMS_FLOATING_POINT task attribute on all
-rtems_task_create calls.  If the CPU_ALL_TASKS_ARE_FP macro is set to
+rtems_task_create calls. If the CPU_ALL_TASKS_ARE_FP macro is set to
 FALSE, then the RTEMS_FLOATING_POINT task attribute in the Classic API is
 honored.
 
 The rationale for this macro is that if a function that an application
 developer would not think utilize the FP unit DOES, then one can not
 easily predict which tasks will use the FP hardware. In this case, this
-option should be TRUE.  So far, the only CPU families for which this macro
-has been to TRUE are the HP PA-RISC and PowerPC.  For the HP PA-RISC, the
+option should be TRUE. So far, the only CPU families for which this macro
+has been to TRUE are the HP PA-RISC and PowerPC. For the HP PA-RISC, the
 HP C compiler and gcc both implicitly use the floating point registers to
-perform integer multiplies.  For the PowerPC, this feature macro is set to
+perform integer multiplies. For the PowerPC, this feature macro is set to
 TRUE because the printf routine saves a floating point register whether or
-not a floating point number is actually printed.  If the newlib
+not a floating point number is actually printed. If the newlib
 implementation of printf were restructured to avoid this, then the PowerPC
 port would not have to have this option set to TRUE.
 
 The following example illustrates how the CPU_ALL_TASKS_ARE_FP is set on
-the PowerPC.  On this CPU family, this macro is set to TRUE if the CPU
+the PowerPC. On this CPU family, this macro is set to TRUE if the CPU
 model has hardware floating point.
 
-.. code-block:: c
-
-    #if (CPU_HARDWARE_FP == TRUE)
-      #define CPU_ALL_TASKS_ARE_FP     TRUE
-    #else
-      #define CPU_ALL_TASKS_ARE_FP     FALSE
-    #endif
+```c
+#if (CPU_HARDWARE_FP == TRUE)
+  #define CPU_ALL_TASKS_ARE_FP     TRUE
+#else
+  #define CPU_ALL_TASKS_ARE_FP     FALSE
+#endif
+```
 
 NOTE: If CPU_HARDWARE_FP is FALSE, then this should be FALSE as well.
 
-CPU_USE_DEFERRED_FP_SWITCH Macro Setting
-----------------------------------------
+### CPU_USE_DEFERRED_FP_SWITCH Macro Setting
 
 The CPU_USE_DEFERRED_FP_SWITCH macro is set based upon the answer to the
-following question:  Should the saving of the floating point registers be
+following question: Should the saving of the floating point registers be
 deferred until a context switch is made to another different floating
-point task?  If the floating point context will not be stored until
-necessary, then this macro should be set to TRUE.  When set to TRUE, the
+point task? If the floating point context will not be stored until
+necessary, then this macro should be set to TRUE. When set to TRUE, the
 floating point context of a task will remain in the floating point
 registers and not disturbed until another floating point task is switched
 to.
 
 If the CPU_USE_DEFERRED_FP_SWITCH is set to FALSE, then the floating point
 context is saved each time a floating point task is switched out and
-restored when the next floating point task is restored.  The state of the
+restored when the next floating point task is restored. The state of the
 floating point registers between those two operations is not specified.
 
 There are a couple of known cases where the port should not defer saving
-the floating point context.  The first case is when the compiler generates
+the floating point context. The first case is when the compiler generates
 instructions that use the FPU when floating point is not actually used.
 This occurs on the HP PA-RISC for example when an integer multiply is
-performed.  On the PowerPC, the printf routine includes a save of a
+performed. On the PowerPC, the printf routine includes a save of a
 floating point register to support printing floating point numbers even if
 the path that actually prints the floating point number is not invoked.
 In both of these cases, deferred floating point context switches can not
-be used.  If the floating point context has to be saved as part of
+be used. If the floating point context has to be saved as part of
 interrupt dispatching, then it may also be necessary to disable deferred
 context switches.
 
 Setting this flag to TRUE results in using a different algorithm for
-deciding when to save and restore the floating point context.  The
+deciding when to save and restore the floating point context. The
 deferred FP switch algorithm minimizes the number of times the FP context
-is saved and restored.  The FP context is not saved until a context switch
-is made to another, different FP task.  Thus in a system with only one FP
+is saved and restored. The FP context is not saved until a context switch
+is made to another, different FP task. Thus in a system with only one FP
 task, the FP context will never be saved or restored.
 
 The following illustrates setting the CPU_USE_DEFERRED_FP_SWITCH macro on
 a processor family such as the M68K or i386 which can use deferred
 floating point context switches.
 
-.. code-block:: c
-
-    #define CPU_USE_DEFERRED_FP_SWITCH       TRUE
+```c
+#define CPU_USE_DEFERRED_FP_SWITCH       TRUE
+```
 
 Note that currently, when in SMP configuration, deferred floating point
 context switching is unavailable.
 
-Floating Point Context Data Structure
--------------------------------------
+### Floating Point Context Data Structure
 
 The Context_Control_fp contains the per task information for the floating
-point unit.  The organization of this structure may be a list of floating
+point unit. The organization of this structure may be a list of floating
 point registers along with any floating point control and status registers
-or it simply consist of an array of a fixed number of bytes.  Defining the
+or it simply consist of an array of a fixed number of bytes. Defining the
 floating point context area as an array of bytes is done when the floating
 point context is dumped by a "FP save context" type instruction and the
 format is either not completely defined by the CPU documentation or the
 format is not critical for the implementation of the floating point
-context switch routines.  In this case, there is no need to figure out the
-exact format - only the size.  Of course, although this is enough
+context switch routines. In this case, there is no need to figure out the
+exact format - only the size. Of course, although this is enough
 information for RTEMS, it is probably not enough for a debugger such as
-gdb.  But that is another problem.
+gdb. But that is another problem.
 
-.. code-block:: c
-
-    typedef struct {
-      double      some_float_register;
-    } Context_Control_fp;
+```c
+typedef struct {
+  double      some_float_register;
+} Context_Control_fp;
+```
 
 On some CPUs with hardware floating point support, the Context_Control_fp
 structure will not be used.
 
-Size of Floating Point Context Macro
-------------------------------------
+### Size of Floating Point Context Macro
 
 The CPU_CONTEXT_FP_SIZE macro is set to the size of the floating point
 context area. On some CPUs this will not be a "sizeof" because the format
-of the floating point area is not defined - only the size is.  This is
-usually on CPUs with a "floating point save context" instruction.  In
+of the floating point area is not defined - only the size is. This is
+usually on CPUs with a "floating point save context" instruction. In
 general, though it is easier to define the structure as a "sizeof"
 operation and define the Context_Control_fp structure to be an area of
 bytes of the required size in this case.
 
-.. code-block:: c
+```c
+#define CPU_CONTEXT_FP_SIZE sizeof( Context_Control_fp )
+```
 
-    #define CPU_CONTEXT_FP_SIZE sizeof( Context_Control_fp )
+### Start of Floating Point Context Area Macro
 
-Start of Floating Point Context Area Macro
-------------------------------------------
+The \_CPU_Context_Fp_start macro is used in the XXX routine and allows the initial pointer into a floating point context area (used to save the floating point context) to be at an arbitrary place in the floating point context area. This is necessary because some FP units are designed to have their context saved as a stack which grows into lower addresses. Other FP units can be saved by simply moving registers into offsets from the base of the context area. Finally some FP units provide a "dump context" instruction which could fill in from high to low or low to high based on the whim of the CPU designers. Regardless, the address at which that floating point context area pointer should start within the actual floating point context area varies between ports and this macro provides a clean way of addressing this.
 
-The _CPU_Context_Fp_start macro is used in the XXX routine and allows the initial pointer into a  floating point context area (used to save the floating point context) to be at an arbitrary place in the floating point context area.  This is necessary because some FP units are designed to have their context saved as a stack which grows into lower addresses.  Other FP units can be saved by simply moving registers into offsets from the base of the context area.  Finally some FP units provide a "dump context" instruction which could fill in from high to low or low to high based on the whim of the CPU designers.  Regardless, the address at which that floating point context area pointer should start within the actual floating point context area varies between ports and this macro provides a clean way of addressing this.
-
-This is a common implementation of the _CPU_Context_Fp_start routine which
-is suitable for many processors.  In particular, RISC processors tend to
+This is a common implementation of the \_CPU_Context_Fp_start routine which
+is suitable for many processors. In particular, RISC processors tend to
 use this implementation since the floating point context is saved as a
 sequence of store operations.
 
-.. code-block:: c
-
-    #define _CPU_Context_Fp_start( _base, _offset ) \
-      ( (void *) _Addresses_Add_offset( (_base), (_offset) ) )
+```c
+#define _CPU_Context_Fp_start( _base, _offset ) \
+  ( (void *) _Addresses_Add_offset( (_base), (_offset) ) )
+```
 
 In contrast, the m68k treats the floating point context area as a stack
-which grows downward in memory.  Thus the following implementation of
-_CPU_Context_Fp_start is used in that port:
+which grows downward in memory. Thus the following implementation of
+\_CPU_Context_Fp_start is used in that port:
 
-.. code-block:: c
+```c
+XXX insert m68k version here
+```
 
-    XXX insert m68k version here
+### Initializing a Floating Point Context
 
-Initializing a Floating Point Context
--------------------------------------
-
-The _CPU_Context_Initialize_fp routine initializes the floating point
+The \_CPU_Context_Initialize_fp routine initializes the floating point
 context area passed to it to. There are a few standard ways in which to
-initialize the floating point context.  The simplest, and least
-deterministic behaviorally, is to do nothing.  This leaves the FPU in a
+initialize the floating point context. The simplest, and least
+deterministic behaviorally, is to do nothing. This leaves the FPU in a
 random state and is generally not a suitable way to implement this
-routine.  The second common implementation is to place a "null FP status
-word" into some status/control register in the FPU.  This mechanism is
-simple and works on many FPUs.  Another common way is to initialize the
-FPU to a known state during _CPU_Initialize and save the context (using
-_CPU_Context_save_fp_context) into the special floating point context
-_CPU_Null_fp_context.  Then all that is required to initialize a floating
-point context is to copy _CPU_Null_fp_context to the destination floating
-point context passed to it.  The following example implementation shows
+routine. The second common implementation is to place a "null FP status
+word" into some status/control register in the FPU. This mechanism is
+simple and works on many FPUs. Another common way is to initialize the
+FPU to a known state during \_CPU_Initialize and save the context (using
+\_CPU_Context_save_fp_context) into the special floating point context
+\_CPU_Null_fp_context. Then all that is required to initialize a floating
+point context is to copy \_CPU_Null_fp_context to the destination floating
+point context passed to it. The following example implementation shows
 how to accomplish this:
 
-.. code-block:: c
+```c
+#define _CPU_Context_Initialize_fp( _destination ) \
+{ \
+  *((Context_Control_fp *) *((void **) _destination)) = \
+    _CPU_Null_fp_context; \
+}
+```
 
-    #define _CPU_Context_Initialize_fp( _destination ) \
-    { \
-      *((Context_Control_fp *) *((void **) _destination)) = \
-        _CPU_Null_fp_context; \
-    }
+The \_CPU_Null_fp_context is optional. A port need only include this variable when it uses the above mechanism to initialize a floating point context. This is typically done on CPUs where it is difficult to generate an "uninitialized" FP context. If the port requires this variable, then it is declared as follows:
 
-The _CPU_Null_fp_context is optional.  A port need only include this variable when it uses the above mechanism to initialize a floating point context.  This is typically done on CPUs where it is difficult to generate an "uninitialized" FP context.  If the port requires this variable, then it is declared as follows:
+```c
+Context_Control_fp  _CPU_Null_fp_context;
+```
 
-.. code-block:: c
+### Saving a Floating Point Context
 
-    Context_Control_fp  _CPU_Null_fp_context;
-
-Saving a Floating Point Context
--------------------------------
-
-The _CPU_Context_save_fp_context routine is responsible for saving the FP
-context at ``*fp_context_ptr``.  If the point to load the FP context from is
+The \_CPU_Context_save_fp_context routine is responsible for saving the FP
+context at `*fp_context_ptr`. If the point to load the FP context from is
 changed then the pointer is modified by this routine.
 
 Sometimes a macro implementation of this is in cpu.h which dereferences
-the ``**`` and a similarly named routine in this file is passed something like
-a ``(Context_Control_fp *)``.  The general rule on making this decision is to
+the `**` and a similarly named routine in this file is passed something like
+a `(Context_Control_fp *)`. The general rule on making this decision is to
 avoid writing assembly language.
 
-.. code-block:: c
+```c
+void _CPU_Context_save_fp(
+  void **fp_context_ptr
+)
+```
 
-    void _CPU_Context_save_fp(
-      void **fp_context_ptr
-    )
+### Restoring a Floating Point Context
 
-Restoring a Floating Point Context
-----------------------------------
-
-The _CPU_Context_restore_fp_context is responsible for restoring the FP
-context at ``*fp_context_ptr``.  If the point to load the FP context from is
+The \_CPU_Context_restore_fp_context is responsible for restoring the FP
+context at `*fp_context_ptr`. If the point to load the FP context from is
 changed then the pointer is modified by this routine.
 
 Sometimes a macro implementation of this is in cpu.h which dereferences
-the ``**`` and a similarly named routine in this file is passed something like
-a ``(Context_Control_fp *)``.  The general rule on making this decision is to
+the `**` and a similarly named routine in this file is passed something like
+a `(Context_Control_fp *)`. The general rule on making this decision is to
 avoid writing assembly language.
 
-.. code-block:: c
-
-    void _CPU_Context_restore_fp(
-      void **fp_context_ptr
-    );
+```c
+void _CPU_Context_restore_fp(
+  void **fp_context_ptr
+);
+```

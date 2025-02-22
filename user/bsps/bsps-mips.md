@@ -1,36 +1,29 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 embedded brains GmbH & Co. KG
+% Copyright (C) 2018 embedded brains GmbH & Co. KG
 
-mips (MIPS)
-***********
+# mips (MIPS)
 
-csb350
-======
+## csb350
 
 TODO.
 
-hurricane
-=========
+## hurricane
 
 TODO.
 
-jmr3904
-=======
+## jmr3904
 
 TODO.
 
-malta
-=====
+## malta
 
 TODO.
 
-rbtx4925
-========
+## rbtx4925
 
 TODO.
 
-rbtx4938
-========
+## rbtx4938
 
 TODO.

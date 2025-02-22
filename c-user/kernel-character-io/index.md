@@ -1,15 +1,15 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2021 embedded brains GmbH & Co. KG
+% Copyright (C) 2021 embedded brains GmbH & Co. KG
 
-.. index:: Kernel Character I/O Support
+```{index} Kernel Character I/O Support
+```
 
-.. _RTEMSAPIKernelCharIO:
+(rtemsapikernelchario)=
 
-Kernel Character I/O Support
-****************************
+# Kernel Character I/O Support
 
-.. toctree::
-
-    introduction
-    directives
+```{toctree}
+introduction
+directives
+```

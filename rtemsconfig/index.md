@@ -1,15 +1,15 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. highlight:: c
+```{highlight} c
+```
 
-============================
-RTEMS |version| user manual.
-============================
+# RTEMS {{ version }} user manual.
 
-Table of Contents
------------------
-.. toctree::
-	:maxdepth: 2
+## Table of Contents
 
-	rtemsconfig
-	option
+```{toctree}
+:maxdepth: 2
+
+rtemsconfig
+option
+```

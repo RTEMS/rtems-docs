@@ -1,17 +1,17 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: regions
+```{index} regions
+```
 
-.. _RTEMSAPIClassicRegion:
+(rtemsapiclassicregion)=
 
-Region Manager
-**************
+# Region Manager
 
-.. toctree::
-
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

@@ -1,11 +1,10 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 embedded brains GmbH & Co. KG
+% Copyright (C) 2018 embedded brains GmbH & Co. KG
 
-.. _libbsd_user:
+(libbsd-user)=
 
-LibBSD Drivers and Subsystems
-*****************************
+# LibBSD Drivers and Subsystems
 
 This chapter describes internals of LibBSD and aides with porting or developing
 drivers or new subsystems for it.
@@ -13,5 +12,6 @@ drivers or new subsystems for it.
 FIXME: This documentation is still under construction. Contributions are
 welcome.
 
-.. toctree::
-    network_drivers
+```{toctree}
+network_drivers
+```

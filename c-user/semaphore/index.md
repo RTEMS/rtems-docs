@@ -1,20 +1,26 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: semaphores
-.. index:: binary semaphores
-.. index:: counting semaphores
-.. index:: mutual exclusion
+```{index} semaphores
+```
 
-.. _RTEMSAPIClassicSem:
+```{index} binary semaphores
+```
 
-Semaphore Manager
-*****************
+```{index} counting semaphores
+```
 
-.. toctree::
+```{index} mutual exclusion
+```
 
-    introduction
-    background
-    operations
-    directives
+(rtemsapiclassicsem)=
+
+# Semaphore Manager
+
+```{toctree}
+introduction
+background
+operations
+directives
+```

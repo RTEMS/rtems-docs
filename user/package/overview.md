@@ -1,9 +1,8 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2024 Christian Mauderer <christian.mauderer@embedded-brains.de>
+% Copyright (C) 2024 Christian Mauderer <christian.mauderer@embedded-brains.de>
 
-About this Manual
-*****************
+# About this Manual
 
 This manual provides information for various bigger add-on-packages for RTEMS
 that are maintained by the RTEMS community like various network stacks.

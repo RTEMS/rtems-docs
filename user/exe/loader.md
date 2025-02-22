@@ -1,15 +1,23 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2019 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2019 Chris Johns <chrisj@rtems.org>
 
-.. index:: Dynamic Loader
+```{index} Dynamic Loader
+```
 
-Dynamic Loader
-==============
-.. index:: Dynamic Loader
-.. index:: Run-time Loader
-.. index:: RTL
-.. index:: Libdl
+# Dynamic Loader
+
+```{index} Dynamic Loader
+```
+
+```{index} Run-time Loader
+```
+
+```{index} RTL
+```
+
+```{index} Libdl
+```
 
 RTEMS supports dynamically loading of executable code and data in the form of
 object files into a running system where the run-time loaded code can be
@@ -28,14 +36,15 @@ can be made available in the global symbol table. The executing performance of
 dynamically loaded code is similar to the same code statically linked into an
 executable. This is a core requirement of the RTEMS link editor.
 
-.. _fig-dl-libdl:
+(fig-dl-libdl)=
 
-.. figure:: ../../images/user/libdl.png
-   :width: 95%
-   :alt: Run Time Loader (libdl)
-   :figclass: align-center
+```{figure} ../../images/user/libdl.png
+:alt: Run Time Loader (libdl)
+:figclass: align-center
+:width: 95%
 
-   Run Time Loader (libdl)
+Run Time Loader (libdl)
+```
 
 The RTEMS operating system's dynamic loader is not the same as the dynamic
 shared library support Unix or Windows have. Those operating systems use dynamic
@@ -55,7 +64,7 @@ activity. A system should not respond to real-time external events by loading
 code. The loading of code should happen before a system is considered available
 and the activity the system is experiencing is low and stable.
 
-.. index: base image
+% index: base image
 
 The statically linked executable that is loaded and run after reset is called
 the *base image*. The *base image* contains your base application that is used
@@ -76,10 +85,9 @@ same tool set and header files used to the build the base image.
 
 An executable object file's text or code has to be built for the target's
 architecture it is loaded on and it must be built with the same ABI flags the
-base image is built with. See :ref:`MachineFlagsandABI`.
+base image is built with. See {ref}`MachineFlagsandABI`.
 
-System Design
--------------
+## System Design
 
 The use of dynamic loading in a project is a system design decision. Some
 systems will have strict requirements where loading code into a live system is
@@ -134,21 +142,29 @@ A project can use dynamic loading during development, shipping statically linked
 executables in production. Hardware used by a development team can have more
 memory, extra media for disk drives, or a network interface.
 
-Loader Interface
-----------------
-.. index:: Loader Interface
-.. index:: Loading object files
-.. index:: dlfcn.h
+## Loader Interface
+
+```{index} Loader Interface
+```
+
+```{index} Loading object files
+```
+
+```{index} dlfcn.h
+```
 
 Run-time executable object file loading and management is via the standard's
-based calls provided by the header file ``<dlfcn.h>``. The details of the calls
+based calls provided by the header file `<dlfcn.h>`. The details of the calls
 follow.
 
-.. _dlopen:
-.. index:: dlopen
+(dlopen)=
 
-``void* dlopen(const char* path, int mode);``
-  The ``dlopen()`` function makes the symbols (function identifiers and data
+```{index} dlopen
+```
+
+`void* dlopen(const char* path, int mode);`
+
+: The `dlopen()` function makes the symbols (function identifiers and data
   object identifiers) in the executable object file specified by `file`
   available to the calling program.
 
@@ -156,45 +172,45 @@ follow.
   format.
 
   The link loader may load embedded dependencies in executable object files. In
-  such cases, a ``dlopen()`` operation may load those dependencies in addition
+  such cases, a `dlopen()` operation may load those dependencies in addition
   to the executable object file specified by `file`.
 
-  A successful ``dlopen()`` returns a `handle` which the caller may use on
-  subsequent calls to ``dlsym()``, ``dlinfo()`` and ``dlclose()``.
+  A successful `dlopen()` returns a `handle` which the caller may use on
+  subsequent calls to `dlsym()`, `dlinfo()` and `dlclose()`.
 
   The value of the `handle` should not be interpreted in any way by the caller.
 
-  Subsequent calls to ``dlopen()`` for the same executable object file increases
+  Subsequent calls to `dlopen()` for the same executable object file increases
   the references to it.
 
   The `file` argument is used to construct a pathname to the executable object
   file or archive library of executable object files. If the `file` argument
-  contains a colon (``:``) the name of the executable object file in the library
-  follows and this file name may optionally end with ``@`` followed by a number
+  contains a colon (`:`) the name of the executable object file in the library
+  follows and this file name may optionally end with `@` followed by a number
   which is the absolute offset in the library file where the executable object
   file starts. If an executable object file is not detected at the offset the
   archive library's file table is searched.
 
-  If `file` is a null pointer, ``dlopen()`` returns a global symbol table
+  If `file` is a null pointer, `dlopen()` returns a global symbol table
   handle. This `handle` provides access to the global symbols from an ordered
   set of executable object files consisting of the original base image file, the
-  set of executable object files loaded using ``dlopen()`` operations with the
-  ``RTLD_GLOBAL`` flag, and any dependencies loaded. As the latter sets of
+  set of executable object files loaded using `dlopen()` operations with the
+  `RTLD_GLOBAL` flag, and any dependencies loaded. As the latter sets of
   executable object files can change during execution, the set of symbols made
   available by this `handle` can also change dynamically.
 
   Only a single copy of an executable object file is brought into the address
-  space, even if ``dlopen()`` is invoked multiple times in reference to the
+  space, even if `dlopen()` is invoked multiple times in reference to the
   executable object file, and even if different pathnames are used to reference
   the executable object file.
 
   Unresolved external symbols do not cause an error to be returned allowing the
   loading of jointly dependent executable object files.
 
-  If ``dlopen()`` fails, it returns a null pointer, and sets an error condition
-  which may be interrogated with ``dlerror()``.
+  If `dlopen()` fails, it returns a null pointer, and sets an error condition
+  which may be interrogated with `dlerror()`.
 
-  The `mode` parameter describes how ``dlopen()`` operates upon `file` with
+  The `mode` parameter describes how `dlopen()` operates upon `file` with
   respect to the processing of relocations and the scope of visibility of the
   symbols provided within `file`. When an executable object file is brought into
   the address space, it may contain references to symbols whose addresses are
@@ -202,59 +218,64 @@ follow.
 
   If a loaded executable object file and any dependent executable object files
   loaded with it contain any initialiser functions, they are called in the order
-  loaded before ``dlopen()`` returns.
+  loaded before `dlopen()` returns.
 
-  The modes ``RTLD_LAZY`` and ``RTLD_NOW`` do not effect the type of relocation
+  The modes `RTLD_LAZY` and `RTLD_NOW` do not effect the type of relocation
   performed, it is same for both modes. All relocations of an executable object
   file and any dependent executable object files loaded with it are completed
-  before the ``dlopen()`` call returns. The execution performance of the code
-  loaded can be considered deterministic once ``dlopen()`` has returned.
+  before the `dlopen()` call returns. The execution performance of the code
+  loaded can be considered deterministic once `dlopen()` has returned.
 
-  Any executable object file loaded by ``dlopen()`` can reference global symbols
+  Any executable object file loaded by `dlopen()` can reference global symbols
   in the base image, any executable object files loaded included in the same
-  ``dlopen()`` invocation, and any executable object files that were loaded in
-  any ``dlopen()`` invocation and which specified the ``RTLD_GLOBAL`` flag. To
-  determine the scope of visibility for the symbols loaded with a ``dlopen()``
-  invocation, the `mode` parameter should be a bitwise-inclusive ``OR`` with one
+  `dlopen()` invocation, and any executable object files that were loaded in
+  any `dlopen()` invocation and which specified the `RTLD_GLOBAL` flag. To
+  determine the scope of visibility for the symbols loaded with a `dlopen()`
+  invocation, the `mode` parameter should be a bitwise-inclusive `OR` with one
   of the following values:
 
-  ``RTLD_GLOBAL``
-     The executable object file's symbols are made available for relocation
-     processing of any other executable object file. In addition, symbol lookup
-     using ``dlopen(NULL,mode)`` and an associated ``dlsym()`` allows
-     executable object files loaded with this mode to be searched.
+  `RTLD_GLOBAL`
 
-  ``RTLD_LOCAL``
-    The executable object file's symbols shall not be made available for
+  : The executable object file's symbols are made available for relocation
+    processing of any other executable object file. In addition, symbol lookup
+    using `dlopen(NULL,mode)` and an associated `dlsym()` allows
+    executable object files loaded with this mode to be searched.
+
+  `RTLD_LOCAL`
+
+  : The executable object file's symbols shall not be made available for
     relocation processing of any other executable object files.
 
-  If neither ``RTLD_GLOBAL`` nor ``RTLD_LOCAL`` is specified, the default
+  If neither `RTLD_GLOBAL` nor `RTLD_LOCAL` is specified, the default
   behavior is unspecified.
 
-  If ``RTLD_GLOBAL`` has been specified, the executable object file maintains
-  it's ``RTLD_GLOBAL`` status regardless of any previous or future specification
-  of ``RTLD_LOCAL``, as long as the executable object file remains in the
+  If `RTLD_GLOBAL` has been specified, the executable object file maintains
+  it's `RTLD_GLOBAL` status regardless of any previous or future specification
+  of `RTLD_LOCAL`, as long as the executable object file remains in the
   address space.
 
-  Symbols introduced through calls to ``dlopen()`` may be used in relocation
+  Symbols introduced through calls to `dlopen()` may be used in relocation
   activities. Symbols that duplicate symbols already defined by the base image
-  or previous ``dlopen()`` calls are treated as an error and the object file is
+  or previous `dlopen()` calls are treated as an error and the object file is
   not loaded. Symbols introduced through loading dependent executable object
   files are ignored or not loaded depending on the method used to build the
   executable object files.
 
-  The symbols introduced by ``dlopen()`` operations and available through
-  ``dlsym()`` are at a minimum those which are exported as identifiers of global
+  The symbols introduced by `dlopen()` operations and available through
+  `dlsym()` are at a minimum those which are exported as identifiers of global
   scope by the executable object file. Typically, such identifiers shall be
-  those that were specified in (for example) C source code as having ``extern``
+  those that were specified in (for example) C source code as having `extern`
   linkage.
 
-.. _dlclose:
-.. index:: dlclose
+(dlclose)=
 
-``int dlclose(void* handle);``
-  Releases a reference to the executable object file referenced by `handle`. If
-  the reference count drops to ``0``, the executable object file's global symbol
+```{index} dlclose
+```
+
+`int dlclose(void* handle);`
+
+: Releases a reference to the executable object file referenced by `handle`. If
+  the reference count drops to `0`, the executable object file's global symbol
   table is made unavailable. When all references to the global symbols the
   executable object file provided have been removed the object file is removed
   from the address space.
@@ -262,143 +283,161 @@ follow.
   If the executable object being removed has any termination routines in it they
   are called.
 
-.. _dlsym:
-.. index:: dlsym
+(dlsym)=
 
-``void* dlsym(void* handle, const char* symbol);``
- The ``dlsym()`` function obtains the address of a symbol (a function identifier
- or a data object identifier) defined in the symbol table identified by the
- handle argument. The handle argument is a symbol table handle returned from a
- call to ``dlopen()`` (and which has not since been released by a call to
- ``dlclose()``), and name is the symbol's name as a character string. The return
- value from ``dlsym()``, cast to a pointer to the type of the named symbol, can
- be used to call (in the case of a function) or access the contents of (in the
- case of a data object) the named symbol.
+```{index} dlsym
+```
 
- The ``dlsym()`` function searches for the named symbol in the symbol table
- referenced by handle and returns the address of the code or data location
- specified by the null-terminated character string symbol. Which libraries and
- objects are searched depends on the `handle` parameter.
+`void* dlsym(void* handle, const char* symbol);`
 
- Upon successful completion, if name names a function identifier, ``dlsym()``
- returns the address of the function converted from type pointer to function to
- type pointer to ``void``; otherwise, ``dlsym()`` shall return the address of
- the data object associated with the data object identifier named by name
- converted from a pointer to the type of the data object to a pointer to
- ``void``. If `handle` does not refer to a valid symbol table handle or if the
- symbol named by name cannot be found in the symbol table associated with
- `handle`, ``dlsym()`` shall return a null pointer.
+: The `dlsym()` function obtains the address of a symbol (a function identifier
+  or a data object identifier) defined in the symbol table identified by the
+  handle argument. The handle argument is a symbol table handle returned from a
+  call to `dlopen()` (and which has not since been released by a call to
+  `dlclose()`), and name is the symbol's name as a character string. The return
+  value from `dlsym()`, cast to a pointer to the type of the named symbol, can
+  be used to call (in the case of a function) or access the contents of (in the
+  case of a data object) the named symbol.
 
-.. _dlinfo:
-.. index:: dlinfo
+  The `dlsym()` function searches for the named symbol in the symbol table
+  referenced by handle and returns the address of the code or data location
+  specified by the null-terminated character string symbol. Which libraries and
+  objects are searched depends on the `handle` parameter.
 
-``int dlinfo(void* handle, int request, void* args);``
+  Upon successful completion, if name names a function identifier, `dlsym()`
+  returns the address of the function converted from type pointer to function to
+  type pointer to `void`; otherwise, `dlsym()` shall return the address of
+  the data object associated with the data object identifier named by name
+  converted from a pointer to the type of the data object to a pointer to
+  `void`. If `handle` does not refer to a valid symbol table handle or if the
+  symbol named by name cannot be found in the symbol table associated with
+  `handle`, `dlsym()` shall return a null pointer.
 
- The ``dlinfo()`` function provides information about dynamically loaded object.
- The action taken by ``dlinfo()`` and exact meaning and type of the argument
- `args` depend on value of the `request` argument provided by the caller.
+(dlinfo)=
 
- ``RTLD_DI_UNRESOLVED``
-   Return ``1`` in an indexer value pointed to by `args` if the symbol table
-   handle has unresolved relocation records to symbols. If the `handle` is the
-   global symbol table handle or ``RTLD_SELF`` return ``1`` if any unresolved
-   relocation records to symbols are present in any loaded executable object
-   files..
+```{index} dlinfo
+```
 
-.. _dlerror:
-.. index:: dlerror
+`int dlinfo(void* handle, int request, void* args);`
 
-``const char *dlerror(void);``
- The ``dlerror()`` function returns a null-terminated character string (with no
- trailing ``<newline>``) that describes the last error that occurred during
- dynamic linking processing. If no dynamic linking errors have occurred since
- the last invocation of ``dlerror()``, ``dlerror()`` returns ``NULL``. Thus,
- invoking ``dlerror()`` a second time, immediately following a prior
- invocation, results in ``NULL`` being returned.
+> The `dlinfo()` function provides information about dynamically loaded object.
+> The action taken by `dlinfo()` and exact meaning and type of the argument
+> `args` depend on value of the `request` argument provided by the caller.
+>
+> `RTLD_DI_UNRESOLVED`
+>
+> : Return `1` in an indexer value pointed to by `args` if the symbol table
+>   handle has unresolved relocation records to symbols. If the `handle` is the
+>   global symbol table handle or `RTLD_SELF` return `1` if any unresolved
+>   relocation records to symbols are present in any loaded executable object
+>   files..
+
+(dlerror)=
+
+```{index} dlerror
+```
+
+`const char *dlerror(void);`
+
+: The `dlerror()` function returns a null-terminated character string (with no
+  trailing `<newline>`) that describes the last error that occurred during
+  dynamic linking processing. If no dynamic linking errors have occurred since
+  the last invocation of `dlerror()`, `dlerror()` returns `NULL`. Thus,
+  invoking `dlerror()` a second time, immediately following a prior
+  invocation, results in `NULL` being returned.
 
 This example opens an object file, checks for any unresolved symbols the object
 file may have, locates a global symbol in the object file, calls it then closes
 the object file:
 
-.. code-block:: c
+```c
+#include <stdbool.h>
+#include <stdio.h>
+#include <dlfcn.h>
 
- #include <stdbool.h>
- #include <stdio.h>
- #include <dlfcn.h>
+typedef int (*call_sig)(void);
 
- typedef int (*call_sig)(void);
+bool load_object (void)
+{
+  void*    handle;
+  call_sig call;
+  int      unresolved;
 
- bool load_object (void)
- {
-   void*    handle;
-   call_sig call;
-   int      unresolved;
+  handle = dlopen ("/code.o", RTLD_NOW | RTLD_GLOBAL);
+  if (handle == NULL)
+  {
+    printf ("dlopen failed: %s\n", dlerror ());
+    return false;
+  }
 
-   handle = dlopen ("/code.o", RTLD_NOW | RTLD_GLOBAL);
-   if (handle == NULL)
-   {
-     printf ("dlopen failed: %s\n", dlerror ());
-     return false;
-   }
+  if (dlinfo (handle, RTLD_DI_UNRESOLVED, &unresolved) < 0)
+  {
+    printf ("dlinfo failed: %s\n", dlerror ());
+    dlclose (handle);
+    return false;
+  }
 
-   if (dlinfo (handle, RTLD_DI_UNRESOLVED, &unresolved) < 0)
-   {
-     printf ("dlinfo failed: %s\n", dlerror ());
-     dlclose (handle);
-     return false;
-   }
+  if (unresolved != 0)
+  {
+    printf ("object.o has unresolved external symbols\n");
+    dlclose (handle);
+    return false;
+  }
 
-   if (unresolved != 0)
-   {
-     printf ("object.o has unresolved external symbols\n");
-     dlclose (handle);
-     return false;
-   }
+  call = dlsym (handle, "foo");
+  if (call == NULL)
+  {
+    printf("dlsym failed: symbol 'foo' not found\n");
+    dlclose (handle);
+    return false;
+  }
 
-   call = dlsym (handle, "foo");
-   if (call == NULL)
-   {
-     printf("dlsym failed: symbol 'foo' not found\n");
-     dlclose (handle);
-     return false;
-   }
+  printf ("'foo()' returns: %i\n", call ());
 
-   printf ("'foo()' returns: %i\n", call ());
+  if (dlclose (handle) < 0)
+  {
+    printf("dlclose failed: %s\n", dlerror());
+    return false;
+  }
 
-   if (dlclose (handle) < 0)
-   {
-     printf("dlclose failed: %s\n", dlerror());
-     return false;
-   }
+  return true;
+}
+```
 
-   return true;
- }
+## Symbols
 
-Symbols
--------
-.. index:: symbol
-.. index:: global symbol
-.. index:: function identifier
-.. index:: data object identifier
+```{index} symbol
+```
+
+```{index} global symbol
+```
+
+```{index} function identifier
+```
+
+```{index} data object identifier
+```
 
 The RTEMS link editor manages the symbols for the base image and all resident
 executable object files. A symbol is an identifier string and a pointer value to
 a function identifier or a data object identifier. The symbols held in the
 symbol tables are used in the relocation of executable object files or they can
-be accessed by application code using the :ref:`dlsym() <dlsym>` call.
+be accessed by application code using the {ref}`dlsym() <dlsym>` call.
 
-.. index:: orphaned object file
+```{index} orphaned object file
+```
 
 An executable object file's symbols are removed from the global symbol table
 when it is closed or orphaned. An executale object file cannot be unloaded if a
 symbol it provides is referenced by another object and that object is still
 resident. An executable object file that has no references to any of its symbols
-and was not explicitly loaded using the :ref:`dlopen() <dlopen>` call is
+and was not explicitly loaded using the {ref}`dlopen() <dlopen>` call is
 orphaned and automatically removed from the address space.
 
-Base Image Symbols
-^^^^^^^^^^^^^^^^^^
-.. index:: base image symbols
+### Base Image Symbols
+
+```{index} base image symbols
+```
 
 The base image symbol table provides access to the function and data objects
 statically linked into the base image. Loaded executable object files can be
@@ -413,27 +452,27 @@ this is not known until it has been linked. This means the base image symbol
 table needs to be constructed after the base image executable has been linked
 and the list of global symbols is known.
 
-The RTEMS Tools command :program:`rtems-syms` (see :ref:`RTEMSSymbols`) extracts
+The RTEMS Tools command {program}`rtems-syms` (see {ref}`RTEMSSymbols`) extracts
 the global and weak symbols from an RTEMS static executable file, creates a C
 file and compiles it creating a relocatable executable object file. This file
 can be linked with the static executable's object files and libraries to create
 a static executables with an embedded symbol table or the executable file can be
 loaded dynamically at run-time. The following needs to be observed:
 
-#. The option ``-e`` or ``--embedded`` to :program:`rtems-syms` creates an
+1. The option `-e` or `--embedded` to {program}`rtems-syms` creates an
    executable object file to be embedded in the base image and not providing
    either of these options creates a symbols executable object file that is
    loaded at run-time. The same executable object file cannot be used to
    embedded or load.
+2. The target C compiler and machine options need to be provided to make sure
+   the correct ABI for the target is used. See {ref}`MachineFlagsandABI`.
 
-#. The target C compiler and machine options need to be provided to make sure
-   the correct ABI for the target is used. See :ref:`MachineFlagsandABI`.
+```{index} embedded symbol table
+```
 
-.. index:: embedded symbol table
-.. _EmbbeddedSymbolTable:
+(embbeddedsymboltable)=
 
-Embedded Symbols
-^^^^^^^^^^^^^^^^
+### Embedded Symbols
 
 An embedded symbol table is *embedded* within the base image executable file and
 loaded when the static executable is loaded into memory by the bootloader. The
@@ -456,21 +495,20 @@ is made more complex as it needs to have extra steps to link a second time.
 This example shows creating an embedded symbol table object file and linking it
 into the base image.
 
-.. code-block:: none
-
- $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.pre
- $ rtems-syms -e -C sparc-rtems@rtems-ver-major@-gcc -c "-mcpu=cypress" -o foo-sym.o foo.pre
- $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o foo-sym.o -lrtemsbsp -lrtemscpu -o foo.exe
+```none
+$ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.pre
+$ rtems-syms -e -C sparc-rtems@rtems-ver-major@-gcc -c "-mcpu=cypress" -o foo-sym.o foo.pre
+$ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o foo-sym.o -lrtemsbsp -lrtemscpu -o foo.exe
+```
 
 The link command line steps in this example are not complete.
 
-.. _LoadableSymbolTable:
+(loadablesymboltable)=
 
-Loadable Symbols
-^^^^^^^^^^^^^^^^
+### Loadable Symbols
 
 A run-time loaded symbol table is the default for the command
-:program:`rtems-syms`. The symbol table executable object file is packaged with
+{program}`rtems-syms`. The symbol table executable object file is packaged with
 the other files to be dynamically loaded at run-time and placed on the target's
 file system. It needs to be loaded before any other executable object file are
 loaded or unresolved symbols can occur that will not be resolved.
@@ -484,41 +522,40 @@ unpredictable. No checks are made.
 The example shows creating and loading a symbol table executable object
 file. First create the symbol table's executable object file:
 
-.. code-block:: none
-
- $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.exe
- $ rtems-syms -C sparc-rtems@rtems-ver-major@-gcc -c "-mcpu=cypress" -o foo-sym.o foo.exe
+```none
+$ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o -lrtemsbsp -lrtemscpu -o foo.exe
+$ rtems-syms -C sparc-rtems@rtems-ver-major@-gcc -c "-mcpu=cypress" -o foo-sym.o foo.exe
+```
 
 The link command line steps in this example are not complete.
 
 Load the symbol table:
 
-.. code-block:: c
+```c
+#include <stdbool.h>
+#include <stdio.h>
+#include <dlfcn.h>
 
- #include <stdbool.h>
- #include <stdio.h>
- #include <dlfcn.h>
-
- bool load (void)
+bool load (void)
+{
+ void* handle = dlopen ("/foo-sym.o", RTLD_NOW | RTLD_GLOBAL);
+ if (handle == NULL)
  {
-  void* handle = dlopen ("/foo-sym.o", RTLD_NOW | RTLD_GLOBAL);
-  if (handle == NULL)
-  {
-    printf ("failed to load the symbol table: %s\n", dlerror ());
-    return false;
-  }
-  return true;
+   printf ("failed to load the symbol table: %s\n", dlerror ());
+   return false;
  }
+ return true;
+}
+```
 
-Unresolved Symbols
-------------------
+## Unresolved Symbols
 
 The RTEMS link editor does not return an error when an executable object file is
 loaded with unresolved symbols. This allows dependent object files to be
-loaded. For example an executable object file :file:`foo.o` contains the
-function ``foo()`` and that function calls ``bar()`` and an executable object
-file :file:`bar.o` contains a function ``bar()`` that calls the function
-``foo()``. Either of these executable object files can be loaded first as long
+loaded. For example an executable object file {file}`foo.o` contains the
+function `foo()` and that function calls `bar()` and an executable object
+file {file}`bar.o` contains a function `bar()` that calls the function
+`foo()`. Either of these executable object files can be loaded first as long
 both are loaded before any symbols are accessed.
 
 The link editor defers the resolution of unresolved symbols until the symbol is
@@ -533,60 +570,60 @@ of each library are searched and if the symbol is found the dependent executable
 object file is loaded. This process repeats until no more symbols can be
 resolved.
 
-The ``dlinfo()`` call can be used to see if a loaded executable object file has
+The `dlinfo()` call can be used to see if a loaded executable object file has
 any unresolved symbols:
 
-.. code-block:: c
+```c
+#include <stdbool.h>
+#include <stdio.h>
+#include <dlfcn.h>
 
- #include <stdbool.h>
- #include <stdio.h>
- #include <dlfcn.h>
+bool has_unresolved(void* handle)
+{
+  int unresolved;
+  if (dlinfo (handle, RTLD_DI_UNRESOLVED, &unresolved) < 0)
+  {
+    printf ("dlinfo failed: %s\n", dlerror ());
+    return false;
+  }
+  return unresolved != 0;
+}
+```
 
- bool has_unresolved(void* handle)
- {
-   int unresolved;
-   if (dlinfo (handle, RTLD_DI_UNRESOLVED, &unresolved) < 0)
-   {
-     printf ("dlinfo failed: %s\n", dlerror ());
-     return false;
-   }
-   return unresolved != 0;
- }
-
-The handle ``RTLD_SELF`` checks for any unresolved symbols in all resident
+The handle `RTLD_SELF` checks for any unresolved symbols in all resident
 object files:
 
-.. code-block:: c
+```c
+if (has_unresolved(RTLD_SELF))
+  printf("system has unsolved symbols\n");
+```
 
- if (has_unresolved(RTLD_SELF))
-   printf("system has unsolved symbols\n");
-
-Libraries
----------
+## Libraries
 
 The RTEMS link editor supports loading executable object files from
 libraries. Executable object files can be explicitly loaded from a library using
-a specific path to :ref:`dlopen() <dlopen>` and treated the same as loading a
+a specific path to {ref}`dlopen() <dlopen>` and treated the same as loading a
 stand alone executable object file. Libraries can be searched and an executable
 object file containing the search symbol can be loaded automatically as a
 dependent executable object file. A dependent executable object file loaded from
 a library with no symbol references to it's symbols is orphaned and
 automatically unloaded and removed from the address space.
 
-.. _fig-dl-libs:
+(fig-dl-libs)=
 
-.. figure:: ../../images/user/libdl-load.png
-   :width: 65%
-   :alt: Loading Executable Object Files
-   :figclass: align-center
+```{figure} ../../images/user/libdl-load.png
+:alt: Loading Executable Object Files
+:figclass: align-center
+:width: 65%
 
-   Loading Executable Object Files
+Loading Executable Object Files
+```
 
 A library is an archive format file created using the RTEMS architecture
-prefixed :program:`ar` command. The RTEMS tool suite provides the :program:`ar`
-program and system libraries such as :file:`libc.a` and :file:`libm.a` for each
+prefixed {program}`ar` command. The RTEMS tool suite provides the {program}`ar`
+program and system libraries such as {file}`libc.a` and {file}`libm.a` for each
 architecture and ABI. Libraries used by the RTEMS link editor for searching must
-contain a symbol table created by the :program:`ranlib` program from the RTEMS
+contain a symbol table created by the {program}`ranlib` program from the RTEMS
 tool suite.
 
 Searching a library's symbol table and loading an executable object file
@@ -599,19 +636,19 @@ searching and loading. Dependent loading from libraries on the target provides a
 simple and understandable way to manage the dependency issue between the base
 image, loaded code and the system libraries.
 
-The RTEMS link editor checks for the configuration file :file:`/etc/libdl.conf`
-on each call to :ref:`dlopen() <dlopen>`. If the file has changed since the last
+The RTEMS link editor checks for the configuration file {file}`/etc/libdl.conf`
+on each call to {ref}`dlopen() <dlopen>`. If the file has changed since the last
 check it is loaded again and the contents processed. The file format is:
 
-#. Comments start with the ``#`` character.
-#. A line is a wildcard path of libraries to search for. The wildcard search
-   uses the ``fnmatch()`` call. The ``fnmatch()`` function matches patterns
+1. Comments start with the `#` character.
+2. A line is a wildcard path of libraries to search for. The wildcard search
+   uses the `fnmatch()` call. The `fnmatch()` function matches patterns
    according to the rules used by a shell.
 
 Files that match the search pattern are verified as a library and if a symbol
 table is found it is loaded and the symbols it contains made search-able.
 
-A call to :ref:`dlopen() <dlopen>` checks the global symbols table and any
+A call to {ref}`dlopen() <dlopen>` checks the global symbols table and any
 references to relocation symbols not found are *unresolved* and added to the
 unresolved symbol table. Once the executable object file is loaded the link
 editor attempts to resolve any unresolved symbols. The unresolved symbol
@@ -623,19 +660,19 @@ symbols are not in the global symbol table or any libraries. The loading of a
 library executable object file will resolve at least one symbol and it may add
 more unresolved symbols requiring further searching of the libraries.
 
-.. index:: strip library
+```{index} strip library
+```
 
 A library of executable object files built by the RTEMS Tool suite can contain
 debug information and this should be stripped before loading on to the
-target. The tool suite's command :program:`strip` can strip all the object files
+target. The tool suite's command {program}`strip` can strip all the object files
 in a library with a single command.
 
-.. code-block:: none
+```none
+$ sparc-rtems@rtems-ver-major@-strip libc.a
+```
 
-  $ sparc-rtems@rtems-ver-major@-strip libc.a
-
-Large Memory
-------------
+## Large Memory
 
 The RTEMS link editor supports large memory relocations. Some architectures have
 instructions where the relative branch or jump offset from the instruction to
@@ -668,144 +705,170 @@ Trampolines support is available for the ARM and PowerPC architectures. The
 SPARC and Intel x86 architectures do not need trampolines and MIPS needs support
 added.
 
-Allocator
----------
+## Allocator
 
 The RTEMS link editor supports custom allocators. A custom allocator lets you
 manage the memory used by the RTEMS link editor as it runs. Allocators could
 provide:
 
-#. Support for the various types of memory that can be allocated allowing
+1. Support for the various types of memory that can be allocated allowing
    specialised target support for specific use cases.
-#. Locking of read-only memory. The link editor unlocks read-only memory when it
+2. Locking of read-only memory. The link editor unlocks read-only memory when it
    needs to write to it.
-#. Separation of memory holding code and data from the heap.
+3. Separation of memory holding code and data from the heap.
 
-The allocator can be hooked using the ``rtems_rtl_alloc_hook`` call before any
-calls to :ref:`dlopen() <dlopen>` are made. The hook call returns the current
+The allocator can be hooked using the `rtems_rtl_alloc_hook` call before any
+calls to {ref}`dlopen() <dlopen>` are made. The hook call returns the current
 allocate allowing the allocators to be chained.
 
 The default allocator uses the heap.
 
-.. _rtems_rtl_alloc_tags:
-.. index:: rtems_rtl_alloc_tags
+(rtems-rtl-alloc-tags)=
+
+```{index} rtems_rtl_alloc_tags
+```
 
 The allocator tags specify the type of memory the allocator is handling. The tag
 used to allocate memory at an address must be used when making allocator
-calls. The ``rtems_rtl_alloc_tags`` are:
+calls. The `rtems_rtl_alloc_tags` are:
 
- .. index:: RTEMS_RTL_ALLOC_OBJECT
+> ```{index} RTEMS_RTL_ALLOC_OBJECT
+> ```
+>
+> `RTEMS_RTL_ALLOC_OBJECT`
+>
+> : Allocate a generic object. The link editor uses this memory for data
+>   structures it uses to manage the linking process and resident executable
+>   object files.
+>
+> ```{index} RTEMS_RTL_ALLOC_SYMBOL
+> ```
+>
+> `RTEMS_RTL_ALLOC_SYMBOL`
+>
+> : Allocate memory to hold symbol data.
+>
+> ```{index} RTEMS_RTL_ALLOC_EXTERNAL
+> ```
+>
+> `RTEMS_RTL_ALLOC_EXTERNAL`
+>
+> : Allocate memory for unresolved external symbols.
+>
+> ```{index} RTEMS_RTL_ALLOC_READ
+> ```
+>
+> `RTEMS_RTL_ALLOC_READ`
+>
+> : Allocate memory for read-only data such as constants and exception tables.
+>
+> ```{index} RTEMS_RTL_ALLOC_READ_WRITE
+> ```
+>
+> `RTEMS_RTL_ALLOC_READ_WRITE`
+>
+> : Allocate memory for read-write data such as a initialised, uninitialized and
+>   common variables.
+>
+> ```{index} RTEMS_RTL_ALLOC_READ_EXEC
+> ```
+>
+> `RTEMS_RTL_ALLOC_READ_EXEC`
+>
+> : Allocate memory for code to be executed in. The address space is configure for
+>   read and execute.
 
- ``RTEMS_RTL_ALLOC_OBJECT``
-  Allocate a generic object. The link editor uses this memory for data
-  structures it uses to manage the linking process and resident executable
-  object files.
+(rtems-rtl-alloc-cmd)=
 
- .. index:: RTEMS_RTL_ALLOC_SYMBOL
-
- ``RTEMS_RTL_ALLOC_SYMBOL``
-  Allocate memory to hold symbol data.
-
- .. index:: RTEMS_RTL_ALLOC_EXTERNAL
-
- ``RTEMS_RTL_ALLOC_EXTERNAL``
-  Allocate memory for unresolved external symbols.
-
- .. index:: RTEMS_RTL_ALLOC_READ
-
- ``RTEMS_RTL_ALLOC_READ``
-  Allocate memory for read-only data such as constants and exception tables.
-
- .. index:: RTEMS_RTL_ALLOC_READ_WRITE
-
- ``RTEMS_RTL_ALLOC_READ_WRITE``
-  Allocate memory for read-write data such as a initialised, uninitialized and
-  common variables.
-
- .. index:: RTEMS_RTL_ALLOC_READ_EXEC
-
- ``RTEMS_RTL_ALLOC_READ_EXEC``
-  Allocate memory for code to be executed in. The address space is configure for
-  read and execute.
-
-.. _rtems_rtl_alloc_cmd:
-.. index:: rtems_rtl_alloc_cmd
+```{index} rtems_rtl_alloc_cmd
+```
 
 The commands are used to control the action the allocator performs. The
-``rtems_rtl_alloc_cmd`` are:
+`rtems_rtl_alloc_cmd` are:
 
- .. index:: RTEMS_RTL_ALLOC_NEW
+> ```{index} RTEMS_RTL_ALLOC_NEW
+> ```
+>
+> `RTEMS_RTL_ALLOC_NEW`
+>
+> : Allocate memory of the `tag` type. Returns `NULL` if the allocation fails.
+>
+> ```{index} RTEMS_RTL_ALLOC_DEL
+> ```
+>
+> `RTEMS_RTL_ALLOC_DEL`
+>
+> : Delete a previous allocation freeing the memory. The `tag` has to match
+>   address of the memory being deleted.
+>
+> ```{index} RTEMS_RTL_ALLOC_WR_ENABLE
+> ```
+>
+> `RTEMS_RTL_ALLOC_WR_ENABLE`
+>
+> : Enable writes to a region of memory previously allocated. The `tag` has to
+>   match the address of the memory being write enabled. The link editor may call
+>   issue this command for memory that is already write enabled.
+>
+> ```{index} RTEMS_RTL_ALLOC_WR_DISABLE
+> ```
+>
+> `RTEMS_RTL_ALLOC_WR_DISABLE`
+>
+> : Disable writes to a region of memory previously allocated. The `tag` has to
+>   match address of the memory being write disabled. The link editor may call
+>   issue this command for memory that is writable and not to be write
+>   disabled. The allocator need to manage this case.
 
- ``RTEMS_RTL_ALLOC_NEW``
-  Allocate memory of the ``tag`` type. Returns ``NULL`` if the allocation fails.
+(rtems-rtl-allocator)=
 
- .. index:: RTEMS_RTL_ALLOC_DEL
-
- ``RTEMS_RTL_ALLOC_DEL``
-  Delete a previous allocation freeing the memory. The ``tag`` has to match
-  address of the memory being deleted.
-
- .. index:: RTEMS_RTL_ALLOC_WR_ENABLE
-
- ``RTEMS_RTL_ALLOC_WR_ENABLE``
-  Enable writes to a region of memory previously allocated. The ``tag`` has to
-  match the address of the memory being write enabled. The link editor may call
-  issue this command for memory that is already write enabled.
-
- .. index:: RTEMS_RTL_ALLOC_WR_DISABLE
-
- ``RTEMS_RTL_ALLOC_WR_DISABLE``
-  Disable writes to a region of memory previously allocated. The ``tag`` has to
-  match address of the memory being write disabled. The link editor may call
-  issue this command for memory that is writable and not to be write
-  disabled. The allocator need to manage this case.
-
-.. _rtems_rtl_allocator:
-.. index:: rtems_rtl_allocator
+```{index} rtems_rtl_allocator
+```
 
 The allocator handler is a single call to handle all allocator requests. The
 handler called on evey allocation action made by the link editor. The type of
 the function you need is:
 
-.. code-block:: c
-
- typedef void (*rtems_rtl_allocator)(rtems_rtl_alloc_cmd cmd,
-                                     rtems_rtl_alloc_tag tag,
-                                     void**              address,
-                                     size_t              size);
-
+```c
+typedef void (*rtems_rtl_allocator)(rtems_rtl_alloc_cmd cmd,
+                                    rtems_rtl_alloc_tag tag,
+                                    void**              address,
+                                    size_t              size);
+```
 
 The arguments are:
 
-``cmd``
- The command to action. See `rtems_rtl_alloc_cmd <rtems_rtl_alloc_cmd_>`_.
+`cmd`
 
-``tag``
+: The command to action. See [rtems_rtl_alloc_cmd].
 
- The type of memory the command is for. The ``tag`` must match the
- address for commands other than ``RTEMS_RTL_ALLOC_OBJECT``.  See
- `rtems_rtl_alloc_tags <rtems_rtl_alloc_tags_>`_.
+`tag`
 
-``address``
- Pointer to the address. This is set of the ``RTEMS_RTL_ALLOC_OBJECT`` command
- and read for the other commands. The ``tag`` must match the address for
- commands that read the address from the pointer.
+> The type of memory the command is for. The `tag` must match the
+> address for commands other than `RTEMS_RTL_ALLOC_OBJECT`. See
+> [rtems_rtl_alloc_tags].
 
-``size``
- The size of the memory to allocate. This is only valid for the
- ``RTEMS_RTL_ALLOC_OBJECT`` command.
+`address`
+
+: Pointer to the address. This is set of the `RTEMS_RTL_ALLOC_OBJECT` command
+  and read for the other commands. The `tag` must match the address for
+  commands that read the address from the pointer.
+
+`size`
+
+: The size of the memory to allocate. This is only valid for the
+  `RTEMS_RTL_ALLOC_OBJECT` command.
 
 The call to hook the allocator is:
 
-.. code-block:: c
-
- rtems_rtl_allocator rtems_rtl_alloc_hook (rtems_rtl_allocator handler);
+```c
+rtems_rtl_allocator rtems_rtl_alloc_hook (rtems_rtl_allocator handler);
+```
 
 The current allocator is returned. You can provide a full allocator or you can
 filter commands.
 
-Languages
----------
+## Languages
 
 C is supported.
 
@@ -822,8 +885,7 @@ module. If you are using C++ and exceptions it is recommended some exception
 code is added to the base image to place the architecture specific support in
 the base image.
 
-Thread Local Storage
---------------------
+## Thread Local Storage
 
 Thread local storage (TLS) is currenly not supported by the RTEMS link
 editor. The RTEMS executive needs to have a special allocator added to manage
@@ -832,23 +894,21 @@ dynamically allocating TLS variables in a thread.
 If you need TLS support in dynamically loaded code please consider the RTEMS
 support options.
 
-Architectures
--------------
+## Architectures
 
 The following architectures are supported:
 
- - AArch64
- - ARM
- - Intel x86 (i386)
- - M68K
- - MicroBlaze
- - MIPS
- - Moxie
- - PowerPC
- - SPARC
+> - AArch64
+> - ARM
+> - Intel x86 (i386)
+> - M68K
+> - MicroBlaze
+> - MIPS
+> - Moxie
+> - PowerPC
+> - SPARC
 
-AArch64
-^^^^^^^
+### AArch64
 
 The AArch64 relocation backend supports veneers which is trampolines.
 
@@ -856,8 +916,7 @@ The veneer implementation is two instructions and a 64bit target address
 making the overhead 16 bytes for each veneer. The performance overhead is two
 instructions.
 
-ARM
-^^^
+### ARM
 
 The ARM relocation backend supports veneers.
 
@@ -865,8 +924,7 @@ The veneer implementation is a single instruction and a 32bit target address
 making the overhead 8 bytes for each veneer. The performance overhead is a
 single instruction.
 
-PowerPC
-^^^^^^^
+### PowerPC
 
 The PowerPC relocation backend support trampolines and small data.
 
@@ -880,11 +938,11 @@ executable object file are parsed and small data are tagged as needing
 architecture specific allocations. These sections are not allocated as part of
 the standard section allocation. Small data sections are allocated in the global
 small data region of memory. The size of this region is defined in the BSP's
-linker command file by setting ``bsp_section_small_data_area_size`` variable:
+linker command file by setting `bsp_section_small_data_area_size` variable:
 
-.. code-block:: c
-
- bsp_section_small_data_area_size = 65536;
+```c
+bsp_section_small_data_area_size = 65536;
+```
 
 The maximum size of the small data region is 65536 bytes. It is recommended code
 built for loading uses the same settings for small base as the base image.

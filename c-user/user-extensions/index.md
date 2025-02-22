@@ -1,16 +1,16 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: user extensions
+```{index} user extensions
+```
 
-.. _RTEMSAPIClassicUserext:
+(rtemsapiclassicuserext)=
 
-User Extensions Manager
-***********************
+# User Extensions Manager
 
-.. toctree::
-
-    introduction
-    background
-    directives
+```{toctree}
+introduction
+background
+directives
+```

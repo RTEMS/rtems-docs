@@ -1,149 +1,143 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-Miscellaneous
-#############
+# Miscellaneous
 
-CPU Context Validation
-======================
+## CPU Context Validation
 
-The test case ``sptests/spcontext01`` ensures that the context switching and
-interrupt processing works.  This test uses two support functions provided by
-the CPU port.  These two functions are only used for this test and have no
+The test case `sptests/spcontext01` ensures that the context switching and
+interrupt processing works. This test uses two support functions provided by
+the CPU port. These two functions are only used for this test and have no
 other purpose.
 
-.. code-block:: c
+```c
+void _CPU_Context_volatile_clobber( uintptr_t pattern );
+void _CPU_Context_validate( uintptr_t pattern );
+```
 
-    void _CPU_Context_volatile_clobber( uintptr_t pattern );
-    void _CPU_Context_validate( uintptr_t pattern );
-
-The ``_CPU_Context_volatile_clobber()`` function clobbers all volatile
-registers with values derived from the pattern parameter.  This makes sure that
+The `_CPU_Context_volatile_clobber()` function clobbers all volatile
+registers with values derived from the pattern parameter. This makes sure that
 the interrupt prologue code restores all volatile registers of the interrupted
 context.
 
-The ``_CPU_Context_validate()`` function initializes and validates the CPU
-context with values derived from the pattern parameter.  This function will not
-return if the CPU context remains consistent.  In case this function returns
-the CPU port is broken.  The test uses two threads which concurrently validate
-the CPU context with a different patterns for each thread.  This ensures that
+The `_CPU_Context_validate()` function initializes and validates the CPU
+context with values derived from the pattern parameter. This function will not
+return if the CPU context remains consistent. In case this function returns
+the CPU port is broken. The test uses two threads which concurrently validate
+the CPU context with a different patterns for each thread. This ensures that
 the context switching code works.
 
-Processor Endianness
-====================
+## Processor Endianness
 
 Endianness refers to the order in which numeric values are stored in
-memory by the microprocessor.  Big endian architectures store the most
+memory by the microprocessor. Big endian architectures store the most
 significant byte of a multi-byte numeric value in the byte with the lowest
-address.  This results in the hexadecimal value 0x12345678 being stored as
+address. This results in the hexadecimal value 0x12345678 being stored as
 0x12345678 with 0x12 in the byte at offset zero, 0x34 in the byte at
-offset one, etc..  The Motorola M68K and numerous RISC processor families
-is big endian.  Conversely, little endian architectures store the least
+offset one, etc.. The Motorola M68K and numerous RISC processor families
+is big endian. Conversely, little endian architectures store the least
 significant byte of a multi-byte numeric value in the byte with the lowest
-address.  This results in the hexadecimal value 0x12345678 being stored as
+address. This results in the hexadecimal value 0x12345678 being stored as
 0x78563412 with 0x78 in the byte at offset zero, 0x56 in the byte at
-offset one, etc..  The Intel ix86 family is little endian.
+offset one, etc.. The Intel ix86 family is little endian.
 Interestingly, some CPU models within the PowerPC and MIPS architectures
-can be switched between big and little endian modes.  Most embedded
+can be switched between big and little endian modes. Most embedded
 systems use these families strictly in big endian mode.
 
 RTEMS must be informed of the byte ordering for this microprocessor family
 and, optionally, endian conversion routines may be provided as part of the
-port.  Conversion between endian formats is often necessary in
+port. Conversion between endian formats is often necessary in
 multiprocessor environments and sometimes needed when interfacing with
 peripheral controllers.
 
-Specifying Processor Endianness
--------------------------------
+### Specifying Processor Endianness
 
-The ``CPU_BIG_ENDIAN`` and ``CPU_LITTLE_ENDIAN`` are set to specify
-the endian format used by this microprocessor.  These macros should not
-be set to the same value.  The following example illustrates how these
+The `CPU_BIG_ENDIAN` and `CPU_LITTLE_ENDIAN` are set to specify
+the endian format used by this microprocessor. These macros should not
+be set to the same value. The following example illustrates how these
 macros should be set on a processor family that is big endian.
 
-.. code-block:: c
+```c
+#define CPU_BIG_ENDIAN                           TRUE
+#define CPU_LITTLE_ENDIAN                        FALSE
+```
 
-    #define CPU_BIG_ENDIAN                           TRUE
-    #define CPU_LITTLE_ENDIAN                        FALSE
-
-The ``CPU_MPCI_RECEIVE_SERVER_EXTRA_STACK`` macro is set to the amount of
+The `CPU_MPCI_RECEIVE_SERVER_EXTRA_STACK` macro is set to the amount of
 stack space above the minimum thread stack space required by the MPCI
-Receive Server Thread.  This macro is needed because in a multiprocessor
+Receive Server Thread. This macro is needed because in a multiprocessor
 system the MPCI Receive Server Thread must be able to process all
 directives.
 
-.. code-block:: c
+```c
+#define CPU_MPCI_RECEIVE_SERVER_EXTRA_STACK 0
+```
 
-    #define CPU_MPCI_RECEIVE_SERVER_EXTRA_STACK 0
+### Endian Swap Unsigned Integers
 
-Endian Swap Unsigned Integers
------------------------------
-
-The port should provide routines to swap sixteen (``CPU_swap_u16``) and
-thirty-bit (``CPU_swap_u32``) unsigned integers.  These are primarily used in
+The port should provide routines to swap sixteen (`CPU_swap_u16`) and
+thirty-bit (`CPU_swap_u32`) unsigned integers. These are primarily used in
 two areas of RTEMS - multiprocessing support and the network endian swap
-routines.  The ``CPU_swap_u32`` routine must be implemented as a static
+routines. The `CPU_swap_u32` routine must be implemented as a static
 routine rather than a macro because its address is taken and used
-indirectly.  On the other hand, the ``CPU_swap_u16`` routine may be
+indirectly. On the other hand, the `CPU_swap_u16` routine may be
 implemented as a macro.
 
 Some CPUs have special instructions that swap a 32-bit quantity in a
-single instruction (e.g. i486).  It is probably best to avoid an "endian
-swapping control bit" in the CPU.  One good reason is that interrupts
+single instruction (e.g. i486). It is probably best to avoid an "endian
+swapping control bit" in the CPU. One good reason is that interrupts
 would probably have to be disabled to insure that an interrupt does not
-try to access the same "chunk" with the wrong endian.  Another good reason
+try to access the same "chunk" with the wrong endian. Another good reason
 is that on some CPUs, the endian bit endianness for ALL fetches - both
 code and data - so the code will be fetched incorrectly.
 
-The following is an implementation of the ``CPU_swap_u32`` routine that will
-work on any CPU.  It operates by breaking the unsigned thirty-two bit
+The following is an implementation of the `CPU_swap_u32` routine that will
+work on any CPU. It operates by breaking the unsigned thirty-two bit
 integer into four byte-wide quantities and reassemblying them.
 
-.. code-block:: c
-
-    static inline unsigned int CPU_swap_u32(
-      unsigned int value
-    )
-    {
-      unsigned32 byte1, byte2, byte3, byte4, swapped;
-      byte4 = (value >> 24) & 0xff;
-      byte3 = (value >> 16) & 0xff;
-      byte2 = (value >> 8)  & 0xff;
-      byte1 =  value        & 0xff;
-      swapped = (byte1 << 24) | (byte2 << 16) | (byte3 << 8) | byte4;
-      return( swapped );
-    }
+```c
+static inline unsigned int CPU_swap_u32(
+  unsigned int value
+)
+{
+  unsigned32 byte1, byte2, byte3, byte4, swapped;
+  byte4 = (value >> 24) & 0xff;
+  byte3 = (value >> 16) & 0xff;
+  byte2 = (value >> 8)  & 0xff;
+  byte1 =  value        & 0xff;
+  swapped = (byte1 << 24) | (byte2 << 16) | (byte3 << 8) | byte4;
+  return( swapped );
+}
+```
 
 Although the above implementation is portable, it is not particularly
-efficient.  So if there is a better way to implement this on a particular
-CPU family or model, please do so.  The efficiency of this routine has
+efficient. So if there is a better way to implement this on a particular
+CPU family or model, please do so. The efficiency of this routine has
 significant impact on the efficiency of the multiprocessing support code
 in the shared memory driver and in network applications using the ntohl()
 family of routines.
 
 Most microprocessor families have rotate instructions which can be used to
-greatly improve the ``CPU_swap_u32`` routine.  The most common
+greatly improve the `CPU_swap_u32` routine. The most common
 way to do this is to:
 
-.. code-block:: c
-
-    swap least significant two bytes with 16-bit rotate
-    swap upper and lower 16-bits
-    swap most significant two bytes with 16-bit rotate
+```c
+swap least significant two bytes with 16-bit rotate
+swap upper and lower 16-bits
+swap most significant two bytes with 16-bit rotate
+```
 
 Some CPUs have special instructions that swap a 32-bit quantity in a
-single instruction (e.g. i486).  It is probably best to avoid an "endian
-swapping control bit" in the CPU.  One good reason is that interrupts
+single instruction (e.g. i486). It is probably best to avoid an "endian
+swapping control bit" in the CPU. One good reason is that interrupts
 would probably have to be disabled to insure that an interrupt does not
-try to access the same "chunk" with the wrong endian.  Another good reason
+try to access the same "chunk" with the wrong endian. Another good reason
 is that on some CPUs, the endian bit endianness for ALL fetches - both
 code and data - so the code will be fetched incorrectly.
 
-Similarly, here is a portable implementation of the ``CPU_swap_u16``
-routine.  Just as with the ``CPU_swap_u32`` routine, the porter
+Similarly, here is a portable implementation of the `CPU_swap_u16`
+routine. Just as with the `CPU_swap_u32` routine, the porter
 should provide a better implementation if possible.
 
-.. code-block:: c
-
-    #define CPU_swap_u16( value ) \\
-      (((value&0xff) << 8) | ((value >> 8)&0xff))
-
+```c
+#define CPU_swap_u16( value ) \\
+  (((value&0xff) << 8) | ((value >> 8)&0xff))
+```

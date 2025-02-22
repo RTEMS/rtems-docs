@@ -1,185 +1,193 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Condition Variable Manager
-##########################
+# Condition Variable Manager
 
-Introduction
-============
+## Introduction
 
 The condition variable manager ...
 
 The directives provided by the condition variable manager are:
 
-- pthread_condattr_init_ - Initialize a Condition Variable Attribute Set
+- [pthread_condattr_init] - Initialize a Condition Variable Attribute Set
+- [pthread_condattr_destroy] - Destroy a Condition Variable Attribute Set
+- [pthread_condattr_setpshared] - Set Process Shared Attribute
+- [pthread_condattr_getpshared] - Get Process Shared Attribute
+- [pthread_cond_init] - Initialize a Condition Variable
+- [pthread_cond_destroy] - Destroy a Condition Variable
+- [pthread_cond_signal] - Signal a Condition Variable
+- [pthread_cond_broadcast] - Broadcast a Condition Variable
+- [pthread_cond_wait] - Wait on a Condition Variable
+- [pthread_cond_timedwait] - With with Timeout a Condition Variable
 
-- pthread_condattr_destroy_ - Destroy a Condition Variable Attribute Set
-
-- pthread_condattr_setpshared_ - Set Process Shared Attribute
-
-- pthread_condattr_getpshared_ - Get Process Shared Attribute
-
-- pthread_cond_init_ - Initialize a Condition Variable
-
-- pthread_cond_destroy_ - Destroy a Condition Variable
-
-- pthread_cond_signal_ - Signal a Condition Variable
-
-- pthread_cond_broadcast_ - Broadcast a Condition Variable
-
-- pthread_cond_wait_ - Wait on a Condition Variable
-
-- pthread_cond_timedwait_ - With with Timeout a Condition Variable
-
-Background
-==========
+## Background
 
 There is currently no text in this section.
 
-Operations
-==========
+## Operations
 
 There is currently no text in this section.
 
-Directives
-==========
+## Directives
 
-This section details the condition variable manager's directives.  A subsection
+This section details the condition variable manager's directives. A subsection
 is dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
-.. _pthread_condattr_init:
+(pthread-condattr-init)=
 
-pthread_condattr_init - Initialize a Condition Variable Attribute Set
----------------------------------------------------------------------
-.. index:: pthread_condattr_init
-.. index:: initialize a condition variable attribute set
+### pthread_condattr_init - Initialize a Condition Variable Attribute Set
+
+```{index} pthread_condattr_init
+```
+
+```{index} initialize a condition variable attribute set
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_condattr_init(
-        pthread_condattr_t *attr
-    );
+```c
+#include <pthread.h>
+int pthread_condattr_init(
+    pthread_condattr_t *attr
+);
+```
 
 **STATUS CODES:**
 
- * - ``ENOMEM``
-   - Insufficient memory is available to initialize the condition variable
-     attributes object.
+> - - `ENOMEM`
+>   - Insufficient memory is available to initialize the condition variable
+>     attributes object.
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_condattr_destroy:
+(pthread-condattr-destroy)=
 
-pthread_condattr_destroy - Destroy a Condition Variable Attribute Set
----------------------------------------------------------------------
-.. index:: pthread_condattr_destroy
-.. index:: destroy a condition variable attribute set
+### pthread_condattr_destroy - Destroy a Condition Variable Attribute Set
+
+```{index} pthread_condattr_destroy
+```
+
+```{index} destroy a condition variable attribute set
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_condattr_destroy(
-        pthread_condattr_t *attr
-    );
+```c
+#include <pthread.h>
+int pthread_condattr_destroy(
+    pthread_condattr_t *attr
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EINVAL``
    - The attribute object specified is invalid.
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_condattr_setpshared:
+(pthread-condattr-setpshared)=
 
-pthread_condattr_setpshared - Set Process Shared Attribute
-----------------------------------------------------------
-.. index:: pthread_condattr_setpshared
-.. index:: set process shared attribute
+### pthread_condattr_setpshared - Set Process Shared Attribute
+
+```{index} pthread_condattr_setpshared
+```
+
+```{index} set process shared attribute
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_condattr_setpshared(
-        pthread_condattr_t *attr,
-        int                 pshared
-    );
+```c
+#include <pthread.h>
+int pthread_condattr_setpshared(
+    pthread_condattr_t *attr,
+    int                 pshared
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EINVAL``
    - Invalid argument passed.
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_condattr_getpshared:
+(pthread-condattr-getpshared)=
 
-pthread_condattr_getpshared - Get Process Shared Attribute
-----------------------------------------------------------
-.. index:: pthread_condattr_getpshared
-.. index:: get process shared attribute
+### pthread_condattr_getpshared - Get Process Shared Attribute
+
+```{index} pthread_condattr_getpshared
+```
+
+```{index} get process shared attribute
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_condattr_getpshared(
-        const pthread_condattr_t *attr,
-        int                      *pshared
-    );
+```c
+#include <pthread.h>
+int pthread_condattr_getpshared(
+    const pthread_condattr_t *attr,
+    int                      *pshared
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EINVAL``
    - Invalid argument passed.
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_cond_init:
+(pthread-cond-init)=
 
-pthread_cond_init - Initialize a Condition Variable
----------------------------------------------------
-.. index:: pthread_cond_init
-.. index:: initialize a condition variable
+### pthread_cond_init - Initialize a Condition Variable
+
+```{index} pthread_cond_init
+```
+
+```{index} initialize a condition variable
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_cond_init(
-        pthread_cond_t           *cond,
-        const pthread_condattr_t *attr
-    );
+```c
+#include <pthread.h>
+int pthread_cond_init(
+    pthread_cond_t           *cond,
+    const pthread_condattr_t *attr
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -193,29 +201,34 @@ pthread_cond_init - Initialize a Condition Variable
    - The specified condition variable has already been initialized.
  * - ``EINVAL``
    - The specified attribute value is invalid.
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_cond_destroy:
+(pthread-cond-destroy)=
 
-pthread_cond_destroy - Destroy a Condition Variable
----------------------------------------------------
-.. index:: pthread_cond_destroy
-.. index:: destroy a condition variable
+### pthread_cond_destroy - Destroy a Condition Variable
+
+```{index} pthread_cond_destroy
+```
+
+```{index} destroy a condition variable
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_cond_destroy(
-        pthread_cond_t *cond
-    );
+```c
+#include <pthread.h>
+int pthread_cond_destroy(
+    pthread_cond_t *cond
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -223,34 +236,40 @@ pthread_cond_destroy - Destroy a Condition Variable
    - The specified condition variable is invalid.
  * - ``EBUSY``
    - The specified condition variable is currently in use.
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_cond_signal:
+(pthread-cond-signal)=
 
-pthread_cond_signal - Signal a Condition Variable
--------------------------------------------------
-.. index:: pthread_cond_signal
-.. index:: signal a condition variable
+### pthread_cond_signal - Signal a Condition Variable
+
+```{index} pthread_cond_signal
+```
+
+```{index} signal a condition variable
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_cond_signal(
-        pthread_cond_t *cond
-    );
+```c
+#include <pthread.h>
+int pthread_cond_signal(
+    pthread_cond_t *cond
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EINVAL``
    - The specified condition variable is not valid.
+```
 
 **DESCRIPTION:**
 
@@ -259,29 +278,34 @@ pthread_cond_signal - Signal a Condition Variable
 This routine should not be invoked from a handler from an asynchronous signal
 handler or an interrupt service routine.
 
-.. _pthread_cond_broadcast:
+(pthread-cond-broadcast)=
 
-pthread_cond_broadcast - Broadcast a Condition Variable
--------------------------------------------------------
-.. index:: pthread_cond_broadcast
-.. index:: broadcast a condition variable
+### pthread_cond_broadcast - Broadcast a Condition Variable
+
+```{index} pthread_cond_broadcast
+```
+
+```{index} broadcast a condition variable
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_cond_broadcast(
-        pthread_cond_t *cond
-    );
+```c
+#include <pthread.h>
+int pthread_cond_broadcast(
+    pthread_cond_t *cond
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EINVAL``
    - The specified condition variable is not valid.
+```
 
 **DESCRIPTION:**
 
@@ -290,25 +314,29 @@ pthread_cond_broadcast - Broadcast a Condition Variable
 This routine should not be invoked from a handler from an asynchronous signal
 handler or an interrupt service routine.
 
-.. _pthread_cond_wait:
+(pthread-cond-wait)=
 
-pthread_cond_wait - Wait on a Condition Variable
-------------------------------------------------
-.. index:: pthread_cond_wait
-.. index:: wait on a condition variable
+### pthread_cond_wait - Wait on a Condition Variable
+
+```{index} pthread_cond_wait
+```
+
+```{index} wait on a condition variable
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_cond_wait(
-        pthread_cond_t *cond,
-        pthread_mutex_t *mutex
-    );
+```c
+#include <pthread.h>
+int pthread_cond_wait(
+    pthread_cond_t *cond,
+    pthread_mutex_t *mutex
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -317,31 +345,36 @@ pthread_cond_wait - Wait on a Condition Variable
      mutexes were specified for concurrent ``pthread_cond_wait()`` and
      ``pthread_cond_timedwait()`` operations on the same condition variable OR
      the mutex was not owned by the current thread at the time of the call.
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _pthread_cond_timedwait:
+(pthread-cond-timedwait)=
 
-pthread_cond_timedwait - Wait with Timeout a Condition Variable
----------------------------------------------------------------
-.. index:: pthread_cond_timedwait
-.. index:: wait with timeout a condition variable
+### pthread_cond_timedwait - Wait with Timeout a Condition Variable
+
+```{index} pthread_cond_timedwait
+```
+
+```{index} wait with timeout a condition variable
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <pthread.h>
-    int pthread_cond_timedwait(
-        pthread_cond_t        *cond,
-        pthread_mutex_t       *mutex,
-        const struct timespec *abstime
-    );
+```c
+#include <pthread.h>
+int pthread_cond_timedwait(
+    pthread_cond_t        *cond,
+    pthread_mutex_t       *mutex,
+    const struct timespec *abstime
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -355,6 +388,7 @@ pthread_cond_timedwait - Wait with Timeout a Condition Variable
  * - ``ETIMEDOUT``
    - The specified time has elapsed without the condition variable being
      satisfied.
+```
 
 **DESCRIPTION:**
 

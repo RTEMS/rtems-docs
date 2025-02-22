@@ -1,540 +1,626 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2022 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
 
-.. This file is part of the RTEMS quality process and was automatically
-.. generated.  If you find something that needs to be fixed or
-.. worded better please post a report or patch to an RTEMS mailing list
-.. or raise a bug report:
-..
-.. https://www.rtems.org/bugs.html
-..
-.. For information on updating and regenerating please refer to the How-To
-.. section in the Software Requirements Engineering chapter of the
-.. RTEMS Software Engineering manual.  The manual is provided as a part of
-.. a release.  For development sources please refer to the online
-.. documentation at:
-..
-.. https://docs.rtems.org
+% Copyright (C) 1988, 2022 On-Line Applications Research Corporation (OAR)
 
-.. Generated from spec:/acfg/if/group-posix
+% This file is part of the RTEMS quality process and was automatically
 
-POSIX API Configuration
-=======================
+% generated.  If you find something that needs to be fixed or
 
-This section describes configuration options related to the POSIX API.  Most
-POSIX API objects are available by default since RTEMS 5.1.  The queued signals
+% worded better please post a report or patch to an RTEMS mailing list
+
+% or raise a bug report:
+
+%
+
+% https://www.rtems.org/bugs.html
+
+%
+
+% For information on updating and regenerating please refer to the How-To
+
+% section in the Software Requirements Engineering chapter of the
+
+% RTEMS Software Engineering manual.  The manual is provided as a part of
+
+% a release.  For development sources please refer to the online
+
+% documentation at:
+
+%
+
+% https://docs.rtems.org
+
+% Generated from spec:/acfg/if/group-posix
+
+# POSIX API Configuration
+
+This section describes configuration options related to the POSIX API. Most
+POSIX API objects are available by default since RTEMS 5.1. The queued signals
 and timers are only available if RTEMS was built with the enable POSIX
 build configuration option.
 
-.. Generated from spec:/acfg/if/max-posix-keys
+% Generated from spec:/acfg/if/max-posix-keys
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_KEYS
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_KEYS
+(configure-maximum-posix-keys)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_KEYS:
+## CONFIGURE_MAXIMUM_POSIX_KEYS
 
-CONFIGURE_MAXIMUM_POSIX_KEYS
-----------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_KEYS``
+`CONFIGURE_MAXIMUM_POSIX_KEYS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Keys that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option may be defined through
-  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
-  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
+- The value of the configuration option may be defined through
+  {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
-.. Generated from spec:/acfg/if/max-posix-key-value-pairs
+% Generated from spec:/acfg/if/max-posix-key-value-pairs
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
+(configure-maximum-posix-key-value-pairs)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS:
+## CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
 
-CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
----------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS``
+`CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is
-:ref:`CONFIGURE_MAXIMUM_POSIX_KEYS` *
-( :ref:`CONFIGURE_MAXIMUM_TASKS` +
-:ref:`CONFIGURE_MAXIMUM_POSIX_THREADS` ).
+{ref}`CONFIGURE_MAXIMUM_POSIX_KEYS` *
+( {ref}`CONFIGURE_MAXIMUM_TASKS` +
+{ref}`CONFIGURE_MAXIMUM_POSIX_THREADS` ).
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of key
 value pairs used by POSIX API Keys that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
-A key value pair is created by :c:func:`pthread_setspecific` if the value
-is not `NULL <https://en.cppreference.com/w/c/types/NULL>`_, otherwise it is deleted.
+A key value pair is created by {c:func}`pthread_setspecific` if the value
+is not [NULL](https://en.cppreference.com/w/c/types/NULL), otherwise it is deleted.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option may be defined through
-  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
-  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
+- The value of the configuration option may be defined through
+  {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
-.. Generated from spec:/acfg/if/max-posix-message-queues
+% Generated from spec:/acfg/if/max-posix-message-queues
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
+(configure-maximum-posix-message-queues)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES:
+## CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
 
-CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
---------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES``
+`CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Message Queues that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.  You have to account for the memory used to
+{ref}`ConfigUnlimitedObjects`. You have to account for the memory used to
 store the messages of each message queue, see
-:ref:`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
+{ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option shall be small enough so that the RTEMS
-  Workspace size calculation carried out by ``<rtems/confdefs.h>`` does not
-  overflow an integer of type `uintptr_t
-  <https://en.cppreference.com/w/c/types/integer>`_.
-
-* The value of the configuration option may be defined through
-  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
-  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
+- The value of the configuration option shall be small enough so that the RTEMS
+  Workspace size calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+- The value of the configuration option may be defined through
+  {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
-.. Generated from spec:/acfg/if/max-posix-queued-signals
+% Generated from spec:/acfg/if/max-posix-queued-signals
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
+(configure-maximum-posix-queued-signals)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS:
+## CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
 
-CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
---------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS``
+`CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Queued Signals that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 Unlimited objects are not available for queued signals.
 
 Queued signals are only available if RTEMS was built with the POSIX API
 build configuration option enabled.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option shall be small enough so that the RTEMS
-  Workspace size calculation carried out by ``<rtems/confdefs.h>`` does not
-  overflow an integer of type `uintptr_t
-  <https://en.cppreference.com/w/c/types/integer>`_.
-
-* The value of the configuration option shall be zero if the POSIX API is not
-  enabled (e.g. RTEMS was built without the ``RTEMS_POSIX_API = True`` build
-  configuration option).  Otherwise a compile time error in the configuration
+- The value of the configuration option shall be small enough so that the RTEMS
+  Workspace size calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+- The value of the configuration option shall be zero if the POSIX API is not
+  enabled (e.g. RTEMS was built without the `RTEMS_POSIX_API = True` build
+  configuration option). Otherwise a compile time error in the configuration
   file will occur.
 
-.. Generated from spec:/acfg/if/max-posix-semaphores
+% Generated from spec:/acfg/if/max-posix-semaphores
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
+(configure-maximum-posix-semaphores)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_SEMAPHORES:
+## CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
 
-CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
-----------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_SEMAPHORES``
+`CONFIGURE_MAXIMUM_POSIX_SEMAPHORES`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Named Semaphores that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
-Named semaphores are created with :c:func:`sem_open`.  Semaphores
-initialized with :c:func:`sem_init` are not affected by this
+Named semaphores are created with {c:func}`sem_open`. Semaphores
+initialized with {c:func}`sem_init` are not affected by this
 configuration option since the storage space for these semaphores is
 user-provided.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option shall be small enough so that the RTEMS
-  Workspace size calculation carried out by ``<rtems/confdefs.h>`` does not
-  overflow an integer of type `uintptr_t
-  <https://en.cppreference.com/w/c/types/integer>`_.
-
-* The value of the configuration option may be defined through
-  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
-  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
+- The value of the configuration option shall be small enough so that the RTEMS
+  Workspace size calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+- The value of the configuration option may be defined through
+  {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
-.. Generated from spec:/acfg/if/max-posix-shms
+% Generated from spec:/acfg/if/max-posix-shms
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_SHMS
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_SHMS
+(configure-maximum-posix-shms)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_SHMS:
+## CONFIGURE_MAXIMUM_POSIX_SHMS
 
-CONFIGURE_MAXIMUM_POSIX_SHMS
-----------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_SHMS``
+`CONFIGURE_MAXIMUM_POSIX_SHMS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Shared Memory objects that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option shall be small enough so that the RTEMS
-  Workspace size calculation carried out by ``<rtems/confdefs.h>`` does not
-  overflow an integer of type `uintptr_t
-  <https://en.cppreference.com/w/c/types/integer>`_.
-
-* The value of the configuration option may be defined through
-  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
-  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
+- The value of the configuration option shall be small enough so that the RTEMS
+  Workspace size calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+- The value of the configuration option may be defined through
+  {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
 
-.. Generated from spec:/acfg/if/max-posix-threads
+% Generated from spec:/acfg/if/max-posix-threads
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_POSIX_THREADS
+```
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_THREADS
+(configure-maximum-posix-threads)=
 
-.. _CONFIGURE_MAXIMUM_POSIX_THREADS:
+## CONFIGURE_MAXIMUM_POSIX_THREADS
 
-CONFIGURE_MAXIMUM_POSIX_THREADS
--------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_THREADS``
+`CONFIGURE_MAXIMUM_POSIX_THREADS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Threads that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
 This calculations for the required memory in the RTEMS Workspace for threads
 assume that each thread has a minimum stack size and has floating point
-support enabled.  The configuration option :ref:`CONFIGURE_EXTRA_TASK_STACKS` is used
+support enabled. The configuration option {ref}`CONFIGURE_EXTRA_TASK_STACKS` is used
 to specify thread stack requirements **above** the minimum size required.
 
 The maximum number of Classic API Tasks is specified by
-:ref:`CONFIGURE_MAXIMUM_TASKS`.
+{ref}`CONFIGURE_MAXIMUM_TASKS`.
 
 All POSIX threads have floating point enabled.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+- The value of the configuration option shall be small enough so that the task
+  stack space calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
-* The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-  overflow an integer of type `uintptr_t
-  <https://en.cppreference.com/w/c/types/integer>`_.
+% Generated from spec:/acfg/if/max-posix-timers
 
-.. Generated from spec:/acfg/if/max-posix-timers
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} CONFIGURE_MAXIMUM_POSIX_TIMERS
+```
 
-    \clearpage
+(configure-maximum-posix-timers)=
 
-.. index:: CONFIGURE_MAXIMUM_POSIX_TIMERS
+## CONFIGURE_MAXIMUM_POSIX_TIMERS
 
-.. _CONFIGURE_MAXIMUM_POSIX_TIMERS:
-
-CONFIGURE_MAXIMUM_POSIX_TIMERS
-------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_POSIX_TIMERS``
+`CONFIGURE_MAXIMUM_POSIX_TIMERS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 0.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the maximum number of POSIX
 API Timers that can be concurrently active.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This object class can be configured in unlimited allocation mode, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
 Timers are only available if RTEMS was built with the POSIX API build
 configuration option enabled.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be greater than or equal to zero.
-
-* The value of the configuration option shall be less than or equal to 65535.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be greater than or equal to zero.
+- The value of the configuration option shall be less than or equal to 65535.
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
-
-* The value of the configuration option may be defined through
-  :ref:`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
-  object class, if the value passed to :ref:`InterfaceRtemsResourceUnlimited`
+- The value of the configuration option may be defined through
+  {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
+  object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
   satisfies all other constraints of the configuration option.
-
-* The value of the configuration option shall be zero if the POSIX API is not
-  enabled (e.g. RTEMS was built without the ``RTEMS_POSIX_API = True`` build
-  configuration option).  Otherwise a compile time error in the configuration
+- The value of the configuration option shall be zero if the POSIX API is not
+  enabled (e.g. RTEMS was built without the `RTEMS_POSIX_API = True` build
+  configuration option). Otherwise a compile time error in the configuration
   file will occur.
 
-.. Generated from spec:/acfg/if/min-posix-thread-stack-size
+% Generated from spec:/acfg/if/min-posix-thread-stack-size
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
+```
 
-.. index:: CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
-.. index:: minimum POSIX thread stack size
+```{index} minimum POSIX thread stack size
+```
 
-.. _CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE:
+(configure-minimum-posix-thread-stack-size)=
 
-CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
------------------------------------------
+## CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
 
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE``
+`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is two times the value of
-:ref:`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+{ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the minimum stack size in
 bytes for every POSIX thread in the system.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by ``<rtems/confdefs.h>`` does not
-  overflow an integer of type `uintptr_t
-  <https://en.cppreference.com/w/c/types/integer>`_.
-
-* The value of the configuration option shall be greater than or equal to a
+- The value of the configuration option shall be small enough so that the task
+  stack space calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+- The value of the configuration option shall be greater than or equal to a
   BSP-specific and application-specific minimum value.

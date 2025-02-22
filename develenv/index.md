@@ -1,25 +1,32 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
+```{eval-rst}
 .. include:: ../common/unicode.rst
+```
 
-================================================
-RTEMS Development Environment Guide (|version|).
-================================================
+# RTEMS Development Environment Guide ({{ version }}).
 
-.. topic:: Copyrights and License
+````{topic} Copyrights and License
+{{ copy }}
 
-    | |copy| 1988, 2015 On-Line Applications Research Corporation (OAR)
+ 1988, 2015 On-Line Applications Research Corporation (OAR)
 
-    .. include:: ../common/license.rst
+```{eval-rst}
+.. include:: ../common/license.rst
+```
+````
 
+```{eval-rst}
 .. include:: ../common/header.rst
+```
 
-.. toctree::
-	:maxdepth: 5
-	:numbered:
+```{toctree}
+:maxdepth: 5
+:numbered: true
 
-	introduction
-	directory
-	sample
-	utilities
-	command
+introduction
+directory
+sample
+utilities
+command
+```

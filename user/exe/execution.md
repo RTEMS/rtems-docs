@@ -1,12 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
 
-.. _TargetExecution:
+(targetexecution)=
 
-Target Execution
-================
-.. index::  Target Execution
+# Target Execution
+
+```{index} Target Execution
+```
 
 Fixed position statically linked executables have a fixed address in a target's
 address space. The location in the address space for code, data and read-only

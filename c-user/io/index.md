@@ -1,18 +1,20 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: device drivers
-.. index:: IO Manager
+```{index} device drivers
+```
 
-.. _RTEMSAPIClassicIO:
+```{index} IO Manager
+```
 
-I/O Manager
-***********
+(rtemsapiclassicio)=
 
-.. toctree::
+# I/O Manager
 
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

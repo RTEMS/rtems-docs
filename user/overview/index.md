@@ -1,111 +1,83 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-Introduction
-************
+# Introduction
 
-.. _Overview:
+(overview)=
 
-Overview
-========
+## Overview
 
-You are someone looking for a real-time operating system.  This document
+You are someone looking for a real-time operating system. This document
 
 - presents the basic features of RTEMS, so that you can decide if it is worth to
   look at,
-
-- gives you a :ref:`quick start <QuickStart>` to install all the tools
+- gives you a {ref}`quick start <QuickStart>` to install all the tools
   necessary to work with RTEMS, and
-
 - helps you to build an example application on top of RTEMS.
 
-Features
-========
+## Features
 
-The Real-Time Executive for Multiprocessor Systems (:ref:term:`RTEMS`) is a
+The Real-Time Executive for Multiprocessor Systems ({ref:term}`RTEMS`) is a
 multi-threaded, single address-space, real-time operating system with no
-kernel-space/user-space separation.  It is capable to operate in an
-:ref:term:`SMP` configuration providing a state of the art feature set.
+kernel-space/user-space separation. It is capable to operate in an
+{ref:term}`SMP` configuration providing a state of the art feature set.
 
 RTEMS is licensed under a
-`modified GPL 2.0 or later license with an exception for static linking
-<https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md>`_
-[#]_.  It exposes no license requirements on application code.  The third-party
+[modified GPL 2.0 or later license with an exception for static linking](https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md)
+FOOTNOTE. It exposes no license requirements on application code. The third-party
 software used and distributed by RTEMS which may be linked to the application
-is licensed under permissive open source licenses.  Everything necessary to
-build RTEMS applications is available as open source software.  This makes you
+is licensed under permissive open source licenses. Everything necessary to
+build RTEMS applications is available as open source software. This makes you
 completely vendor independent.
 
 RTEMS provides the following basic feature set:
 
-- :ref:term:`APIs <API>`
+- {ref:term}`APIs <API>`
 
-    - :ref:term:`POSIX` with
-      `pthreads <http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html>`_
-      (enables a broad range of standard software to run on RTEMS)
-
-    - `Classic <https://docs.rtems.org/docs/main/c-user.pdf>`_
-
-    - :ref:term:`C11` (including
-      `thread <https://en.cppreference.com/w/c/thread>`_ support)
-
-    - :ref:term:`C++11` (including
-      `thread <https://en.cppreference.com/w/cpp/thread>`_ support)
-
-    - Newlib and :ref:term:`GCC` internal
+  > - {ref:term}`POSIX` with
+  >   [pthreads](http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/pthread.h.html)
+  >   (enables a broad range of standard software to run on RTEMS)
+  > - [Classic](https://docs.rtems.org/docs/main/c-user.pdf)
+  > - {ref:term}`C11` (including
+  >   [thread](https://en.cppreference.com/w/c/thread) support)
+  > - {ref:term}`C++11` (including
+  >   [thread](https://en.cppreference.com/w/cpp/thread) support)
+  > - Newlib and {ref:term}`GCC` internal
 
 - Programming languages
 
-    - C/C++/OpenMP (RTEMS Source Builder, RSB)
-
-    - Ada (RSB, ``--with-ada``)
-
-    - Erlang
-
-    - Fortran (RSB, ``--with-fortran``)
-
-    - Python and MicroPython
-
-    - :ref:`Rust <Rust>`
+  > - C/C++/OpenMP (RTEMS Source Builder, RSB)
+  > - Ada (RSB, `--with-ada`)
+  > - Erlang
+  > - Fortran (RSB, `--with-fortran`)
+  > - Python and MicroPython
+  > - {ref}`Rust <Rust>`
 
 - Parallel languages
 
-    - :ref:term:`EMB²`
-
-    - Google Go [#]_
-
-    - :ref:term:`OpenMP` 4.5
+  > - {ref:term}`EMB²`
+  > - Google Go FOOTNOTE
+  > - {ref:term}`OpenMP` 4.5
 
 - Thread synchronization and communication
 
-    - Mutexes with and without locking protocols
-
-    - Counting semaphores
-
-    - Binary semaphores
-
-    - Condition variables
-
-    - Events
-
-    - Message queues
-
-    - Barriers
-
-    - :ref:term:`Futex` (used by :ref:term:`OpenMP` barriers)
-
-    - Epoch Based Reclamation (libbsd)
+  > - Mutexes with and without locking protocols
+  > - Counting semaphores
+  > - Binary semaphores
+  > - Condition variables
+  > - Events
+  > - Message queues
+  > - Barriers
+  > - {ref:term}`Futex` (used by {ref:term}`OpenMP` barriers)
+  > - Epoch Based Reclamation (libbsd)
 
 - Locking protocols
 
-    - Transitive Priority Inheritance
-
-    - :ref:term:`OMIP` (SMP feature)
-
-    - Priority Ceiling
-
-    - :ref:term:`MrsP` (SMP feature)
+  > - Transitive Priority Inheritance
+  > - {ref:term}`OMIP` (SMP feature)
+  > - Priority Ceiling
+  > - {ref:term}`MrsP` (SMP feature)
 
 - Scalable timer and timeout support
 
@@ -113,27 +85,22 @@ RTEMS provides the following basic feature set:
 
 - Responsive interrupt management
 
-- C11/C++11 :ref:term:`TLS` [#]_
+- C11/C++11 {ref:term}`TLS` FOOTNOTE
 
 - Link-time configurable schedulers
 
-    - Fixed-priority
-
-    - Job-level fixed-priority (:ref:term:`EDF`)
-
-    - Constant Bandwidth Server (experimental)
+  > - Fixed-priority
+  > - Job-level fixed-priority ({ref:term}`EDF`)
+  > - Constant Bandwidth Server (experimental)
 
 - Clustered scheduling (SMP feature)
 
-    - Flexible link-time configuration
-
-    - Job-level fixed-priority scheduler (:ref:term:`EDF`) with support for
-      one-to-one and one-to-all thread to processor affinities (default SMP
-      scheduler)
-
-    - Fixed-priority scheduler
-
-    - Proof-of-concept strong :ref:term:`APA` scheduler
+  > - Flexible link-time configuration
+  > - Job-level fixed-priority scheduler ({ref:term}`EDF`) with support for
+  >   one-to-one and one-to-all thread to processor affinities (default SMP
+  >   scheduler)
+  > - Fixed-priority scheduler
+  > - Proof-of-concept strong {ref:term}`APA` scheduler
 
 - Focus on link-time application-specific configuration
 
@@ -143,57 +110,43 @@ RTEMS provides the following basic feature set:
 
 - Dynamic memory allocators
 
-    - First-fit (default)
-
-    - Universal Memory Allocator
-      (`UMA <https://www.freebsd.org/cgi/man.cgi?query=uma&sektion=9>`_ ,
-      libbsd)
+  > - First-fit (default)
+  > - Universal Memory Allocator
+  >   ([UMA](https://www.freebsd.org/cgi/man.cgi?query=uma&sektion=9) ,
+  >   libbsd)
 
 - File systems
 
-    - :ref:term:`IMFS`
-
-    - :ref:term:`FAT`
-
-    - :ref:term:`RFS`
-
-    - :ref:term:`NFSv2`
-
-    - :ref:term:`JFFS2` (NOR flashes)
-
-    - :ref:term:`YAFFS2` (NAND flashes, GPL or commercial license required)
+  > - {ref:term}`IMFS`
+  > - {ref:term}`FAT`
+  > - {ref:term}`RFS`
+  > - {ref:term}`NFSv2`
+  > - {ref:term}`JFFS2` (NOR flashes)
+  > - {ref:term}`YAFFS2` (NAND flashes, GPL or commercial license required)
 
 - Device drivers
 
-    - Termios (serial interfaces)
-
-    - I2C (Linux user-space API compatible)
-
-    - SPI (Linux user-space API compatible)
-
-    - Network stacks (legacy, libbsd, lwIP)
-
-    - USB stack (libbsd)
-
-    - SD/MMC card stack (libbsd)
-
-    - Framebuffer (Linux user-space API compatible, Qt)
-
-    - Application runs in kernel-space and can access hardware directly
+  > - Termios (serial interfaces)
+  > - I2C (Linux user-space API compatible)
+  > - SPI (Linux user-space API compatible)
+  > - Network stacks (legacy, libbsd, lwIP)
+  > - USB stack (libbsd)
+  > - SD/MMC card stack (libbsd)
+  > - Framebuffer (Linux user-space API compatible, Qt)
+  > - Application runs in kernel-space and can access hardware directly
 
 - libbsd
 
-    - Port of FreeBSD user-space and kernel-space components to RTEMS
+  > - Port of FreeBSD user-space and kernel-space components to RTEMS
+  > - Easy access to FreeBSD software for RTEMS
+  > - Support to stay in synchronization with FreeBSD
 
-    - Easy access to FreeBSD software for RTEMS
+(ecosystem)=
 
-    - Support to stay in synchronization with FreeBSD
+## Ecosystem
 
-.. _ecosystem:
-
-Ecosystem
-=========
-.. index:: Ecosystem
+```{index} Ecosystem
+```
 
 The RTEMS Ecosystem is the collection of tools, packages, code, documentation
 and online content provided by the RTEMS Project. The ecosystem provides a way
@@ -212,8 +165,7 @@ not dictate what you need to use in your project. You can and should select the
 work-flow that best suites the demands of your project and what you are
 delivering.
 
-Rationale
----------
+### Rationale
 
 RTEMS is complex and the focus of the RTEMS Ecosystem is to simplify the
 complexity for users by providing a stable documented way to build, configure
@@ -248,8 +200,7 @@ components and items of the RTEMS development environment. A user can create
 an archive of the complete build process including all the source code for long
 term storage. This is important for projects with a long life cycle.
 
-Open Source
------------
+### Open Source
 
 RTEMS is an open source operating system and an open source project and this
 extends to the ecosystem. We encourage users to integrate the processes to
@@ -263,31 +214,33 @@ every tool as well as the executable from source. The RTEMS Project believes
 the freedom this gives a user is as important as the freedom of having access
 to the source code for a package.
 
-Deployment
-----------
+### Deployment
 
 The RTEMS Project provides the ecosystem as source code that users can download
 to create personalised development environments. The RTEMS Project does not
 provide packaging and deployment for a specific host environment, target
 architecture or BSP. The RTEMS Project encourages users and organizations to
-fill this role for the community. The :ref:`RTEMS Source Builder <RSB>`
-provides some aid to :ref:`build and deploy tool binaries <RSBDeployment>`.
+fill this role for the community. The {ref}`RTEMS Source Builder <RSB>`
+provides some aid to {ref}`build and deploy tool binaries <RSBDeployment>`.
 
+```{eval-rst}
 .. include:: ../../common/content/real-time-application-systems.rst
+```
 
+```{eval-rst}
 .. include:: ../../common/content/real-time-executive.rst
+```
 
-.. [#] The goal is to use the
-       `BSD 2-Clause license
-       <https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md>`_ for new code
-       or code those copyright holder agreed to a license change, see `#3053
-       <https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/3053>`_ for the details.
+FOOTNOTE The goal is to use the
 
-.. [#] See `#2832 <https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/2832>`_.
+: [BSD 2-Clause license](https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md) for new code
+  or code those copyright holder agreed to a license change, see [#3053](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/3053) for the details.
 
-.. [#] Thread-local storage requires some support by the tool chain and the
-       RTEMS architecture support, e.g. context-switch code.  It is supported
-       at least on ARM, AArch64, PowerPC, RISC-V, SPARC, MicroBlaze, Nios II,
-       and m68k.  Check the `RTEMS CPU Architecture Supplement
-       <https://docs.rtems.org/docs/main/cpu-supplement.pdf>`_ if it is
-       supported.
+FOOTNOTE See [#2832](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/2832).
+
+FOOTNOTE Thread-local storage requires some support by the tool chain and the
+
+: RTEMS architecture support, e.g. context-switch code. It is supported
+  at least on ARM, AArch64, PowerPC, RISC-V, SPARC, MicroBlaze, Nios II,
+  and m68k. Check the [RTEMS CPU Architecture Supplement](https://docs.rtems.org/docs/main/cpu-supplement.pdf) if it is
+  supported.

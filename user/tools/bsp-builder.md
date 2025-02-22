@@ -1,19 +1,18 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2017 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2017 Chris Johns <chrisj@rtems.org>
 
-RTEMS BSP Builder
-=================
+# RTEMS BSP Builder
 
-.. index:: Tools, rtems-bsp-builder
+```{index} Tools, rtems-bsp-builder
+```
 
 The RTEMS BSP Builder is an RTEMS developer tool to build RTEMS in ways users
 do not to test changes to RTEMS. RTEMS has large number of architectures, board
 support packages and configuration options. This tool provides a standard way
 to test a change.
 
-Developer Workflows
--------------------
+## Developer Workflows
 
 There are a number of RTEMS developers each with a different view or expertise
 in RTEMS. Developers can work in the generic areas such as scheduling, file
@@ -33,19 +32,15 @@ back to a problem often proves difficult.
 The RTEMS BSP Builder forms part of a developers workflow where patches are
 tested before being pushed to the repository.
 
-Build Characteristics
----------------------
+## Build Characteristics
 
 Build characteristic are the various parts of a build that can varied changing
 what is built. RTEMS can vary builds based on:
 
-#. Architecture
-
-#. Board Support Package (BSP)
-
-#. Build options
-
-#. BSP Options
+1. Architecture
+2. Board Support Package (BSP)
+3. Build options
+4. BSP Options
 
 The BSP Builder provides a template of builds to try and reduce the possble
 combinations to something manageable. It is not realistic to build all possible
@@ -53,37 +48,29 @@ combinations on a single machine in reasonible time.
 
 The RTEMS BSP Builder specifies it builds in terms of:
 
-#. Profiles
-
-#. Architectures
-
-#. BSPs
-
-#. Builds
+1. Profiles
+2. Architectures
+3. BSPs
+4. Builds
 
 The RTEMS BSP Builder builds are created by user options that vary these parameters.
 
-Profiles
-^^^^^^^^
+### Profiles
 
 A profile is named collection of architectures and board support packages. When
 the RTEMS BSP Builder is asked to build a specific profile it builds the BSPs
 in the specified architectures.
 
-The default configuration provides standard profiles for :ref:`Tiers`. They are:
+The default configuration provides standard profiles for {ref}`Tiers`. They are:
 
-#. ``tier-1`` (default)
+1. `tier-1` (default)
+2. `tier-2`
+3. `tier-3`
+4. `tier-4`
 
-#. ``tier-2``
+The `everythings` profile allows all BSPs to be built.
 
-#. ``tier-3``
-
-#. ``tier-4``
-
-The ``everythings`` profile allows all BSPs to be built.
-
-Builds
-^^^^^^
+### Builds
 
 A build is a list of builds or a build set and each BSP in a profile,
 architecture of BSP is built with.
@@ -93,146 +80,131 @@ varied configure options.
 
 The builds are:
 
-#. ``all`` (default)
+01. `all` (default)
+02. `tests`
+03. `standard`, also `no-tests`
+04. `debug`
+05. `profiling`
+06. `smp`
+07. `smp-debug`
+08. `posix`
+09. `no-posix`
+10. `posix-debug`
+11. `posix-profiling`
+12. `network`
+13. `no-network`
+14. `network-debug`
+15. `smp-network`
+16. `smp-network-debug`
 
-#. ``tests``
+#### All Build
 
-#. ``standard``, also ``no-tests``
+The `all` build is:
 
-#. ``debug``
-
-#. ``profiling``
-
-#. ``smp``
-
-#. ``smp-debug``
-
-#. ``posix``
-
-#. ``no-posix``
-
-#. ``posix-debug``
-
-#. ``posix-profiling``
-
-#. ``network``
-
-#. ``no-network``
-
-#. ``network-debug``
-
-#. ``smp-network``
-
-#. ``smp-network-debug``
-
-All Build
-~~~~~~~~~
-
-The ``all`` build is:
-
-- ``debug``
-- ``profiling``
-- ``smp``
-- ``smp-debug``
-- ``posix``
-- ``no-posix``
-- ``posix-debug``
-- ``posix-profiling``
-- ``network``
-- ``no-network``
-- ``network-debug``
-- ``smp-network``
-- ``smp-network-debug``
+- `debug`
+- `profiling`
+- `smp`
+- `smp-debug`
+- `posix`
+- `no-posix`
+- `posix-debug`
+- `posix-profiling`
+- `network`
+- `no-network`
+- `network-debug`
+- `smp-network`
+- `smp-network-debug`
 
 A build maps to specific configuration options. The mappings are:
 
- +-----------------------+-----------------------------------------------------+
- | ``debug``             | ``config:base``, ``config:debug``                   |
- +-----------------------+-----------------------------------------------------+
- | ``profiling``         | ``config:base``, ``config:profiling``               |
- +-----------------------+-----------------------------------------------------+
- | ``smp``               | ``config:base``, ``config:smp``                     |
- +-----------------------+-----------------------------------------------------+
- | ``smp-debug``         | ``config:base``, ``config:smp``, ``config:debug``   |
- +-----------------------+-----------------------------------------------------+
- | ``posix``             | ``config:base``, ``config:posix``                   |
- +-----------------------+-----------------------------------------------------+
- | ``no-posix``          | ``config:base``, ``config:no-posix``                |
- +-----------------------+-----------------------------------------------------+
- | ``posix-debug``       | ``config:base``, ``config:posix``, ``config:debug`` |
- +-----------------------+-----------------------------------------------------+
- | ``posix-profiling``   | ``config:base``, ``config:posix``,                  |
- |                       | ``config:profiling``                                |
- +-----------------------+-----------------------------------------------------+
- | ``network``           | ``config:base``, ``config:network``                 |
- +-----------------------+-----------------------------------------------------+
- | ``no-network``        | ``config:base``, ``config:no-network``              |
- +-----------------------+-----------------------------------------------------+
- | ``network-debug``     | ``config:base``, ``config:network``,                |
- |                       | ``config:debug``                                    |
- +-----------------------+-----------------------------------------------------+
- | ``smp-network``       | ``config:base``, ``config:smp``, ``config:network`` |
- +-----------------------+-----------------------------------------------------+
- | ``smp-network-debug`` | ``config:base``, ``config:smp``,                    |
- |                       | ``config:network``, ``config:debug``                |
- +-----------------------+-----------------------------------------------------+
+> ```{eval-rst}
+> +-----------------------+-----------------------------------------------------+
+> | ``debug``             | ``config:base``, ``config:debug``                   |
+> +-----------------------+-----------------------------------------------------+
+> | ``profiling``         | ``config:base``, ``config:profiling``               |
+> +-----------------------+-----------------------------------------------------+
+> | ``smp``               | ``config:base``, ``config:smp``                     |
+> +-----------------------+-----------------------------------------------------+
+> | ``smp-debug``         | ``config:base``, ``config:smp``, ``config:debug``   |
+> +-----------------------+-----------------------------------------------------+
+> | ``posix``             | ``config:base``, ``config:posix``                   |
+> +-----------------------+-----------------------------------------------------+
+> | ``no-posix``          | ``config:base``, ``config:no-posix``                |
+> +-----------------------+-----------------------------------------------------+
+> | ``posix-debug``       | ``config:base``, ``config:posix``, ``config:debug`` |
+> +-----------------------+-----------------------------------------------------+
+> | ``posix-profiling``   | ``config:base``, ``config:posix``,                  |
+> |                       | ``config:profiling``                                |
+> +-----------------------+-----------------------------------------------------+
+> | ``network``           | ``config:base``, ``config:network``                 |
+> +-----------------------+-----------------------------------------------------+
+> | ``no-network``        | ``config:base``, ``config:no-network``              |
+> +-----------------------+-----------------------------------------------------+
+> | ``network-debug``     | ``config:base``, ``config:network``,                |
+> |                       | ``config:debug``                                    |
+> +-----------------------+-----------------------------------------------------+
+> | ``smp-network``       | ``config:base``, ``config:smp``, ``config:network`` |
+> +-----------------------+-----------------------------------------------------+
+> | ``smp-network-debug`` | ``config:base``, ``config:smp``,                    |
+> |                       | ``config:network``, ``config:debug``                |
+> +-----------------------+-----------------------------------------------------+
+> ```
 
-Build Configurations
---------------------
+## Build Configurations
 
-Build configurations are ``configure`` options. These are mapped to the various
+Build configurations are `configure` options. These are mapped to the various
 builds. The configurations are:
 
- +------------------+----------------------------------------------------------+
- | ``base``         | ``--target=@ARCH@-rtems@RTEMS_VERSION@``                 |
- |                  | ``--enable-rtemsbsp=@BSP@``                              |
- |                  | ``--prefix=@PREFIX@``                                    |
- +------------------+----------------------------------------------------------+
- | ``tests``        | ``--enable-tests``                                       |
- +------------------+----------------------------------------------------------+
- | ``debug``        | ``--enable-debug``                                       |
- +------------------+----------------------------------------------------------+
- | ``no-debug``     | ``--disable-debug``                                      |
- +------------------+----------------------------------------------------------+
- | ``profiling``    | ``--enable-profiling``                                   |
- +------------------+----------------------------------------------------------+
- | ``no-profiling`` | ``--disable-profiling``                                  |
- +------------------+----------------------------------------------------------+
- | ``smp``          | ``--enable-smp``                                         |
- +------------------+----------------------------------------------------------+
- | ``no-smp``       | ``--disable-smp``                                        |
- +------------------+----------------------------------------------------------+
- | ``posix``        | ``--enable-posix``                                       |
- +------------------+----------------------------------------------------------+
- | ``no-posix``     | ``--disable-posix``                                      |
- +------------------+----------------------------------------------------------+
- | ``network``      | ``--enable-networking``                                  |
- +------------------+----------------------------------------------------------+
- | ``no-network``   | ``--disable-networking``                                 |
- +------------------+----------------------------------------------------------+
+> ```{eval-rst}
+> +------------------+----------------------------------------------------------+
+> | ``base``         | ``--target=@ARCH@-rtems@RTEMS_VERSION@``                 |
+> |                  | ``--enable-rtemsbsp=@BSP@``                              |
+> |                  | ``--prefix=@PREFIX@``                                    |
+> +------------------+----------------------------------------------------------+
+> | ``tests``        | ``--enable-tests``                                       |
+> +------------------+----------------------------------------------------------+
+> | ``debug``        | ``--enable-debug``                                       |
+> +------------------+----------------------------------------------------------+
+> | ``no-debug``     | ``--disable-debug``                                      |
+> +------------------+----------------------------------------------------------+
+> | ``profiling``    | ``--enable-profiling``                                   |
+> +------------------+----------------------------------------------------------+
+> | ``no-profiling`` | ``--disable-profiling``                                  |
+> +------------------+----------------------------------------------------------+
+> | ``smp``          | ``--enable-smp``                                         |
+> +------------------+----------------------------------------------------------+
+> | ``no-smp``       | ``--disable-smp``                                        |
+> +------------------+----------------------------------------------------------+
+> | ``posix``        | ``--enable-posix``                                       |
+> +------------------+----------------------------------------------------------+
+> | ``no-posix``     | ``--disable-posix``                                      |
+> +------------------+----------------------------------------------------------+
+> | ``network``      | ``--enable-networking``                                  |
+> +------------------+----------------------------------------------------------+
+> | ``no-network``   | ``--disable-networking``                                 |
+> +------------------+----------------------------------------------------------+
+> ```
 
-Performance
------------
+## Performance
 
 The RTEMS BSP Builder is designed to extract the maximum performance from your
-hardware when building RTEMS. The RTEMS build system is based on ``autoconf``,
-``automake`` and GNU ``make``. Building consists of two phases:
+hardware when building RTEMS. The RTEMS build system is based on `autoconf`,
+`automake` and GNU `make`. Building consists of two phases:
 
-#. Configuring
-
-#. Building
+1. Configuring
+2. Building
 
 The Configuring phase and the start of the Build phase runs autoconf's
-``configure`` scripts. These execute as a single linear process and are not run
-in parallel even if you specify more than one job to ``make``. The configure
+`configure` scripts. These execute as a single linear process and are not run
+in parallel even if you specify more than one job to `make`. The configure
 part of a build is approximately 30% of the total time and higher if building
 the tests. Performing a single build at a time will not fully utilized a
 multi-core machine because of the large amount of time the system is idle.
 
 The RTEMS BSP Builder can run more than one build in parallel. A build can also
-request ``make`` run its build with more than one job. The ``--jobs`` option
+request `make` run its build with more than one job. The `--jobs` option
 lets a user specify the number of build jobs to run at once and the number of
-``make`` jobs each build runs with. Together these options can fully load a
+`make` jobs each build runs with. Together these options can fully load a
 system and can overload a machine.
 
 Tuning the best ratio of buld jobs to make jobs requires running some builds
@@ -243,7 +215,7 @@ system's overheads in administting too processes at once lowers the overall
 performance.
 
 A fast eight core machine where the operating system shows sixteen cores can
-support a build option of ``--jobs=5/10``. The machine will be fully loaded the
+support a build option of `--jobs=5/10`. The machine will be fully loaded the
 average build time is around 18 seconds.
 
 The type of build selected effects the optimum jobs option. For example
@@ -251,92 +223,124 @@ building the tests changes the percentage of time spent configuring copmared to
 bulding so the make jobs parameter becomes a dominant factor. Lowering the make
 jobs value avoids having too many active processes running at once.
 
-Command
--------
+## Command
 
-:program:`rtems-bsp-builder` [options]
+{program}`rtems-bsp-builder` [options]
 
+```{eval-rst}
 .. option:: -?
 
    Display a compact help.
+```
 
+```{eval-rst}
 .. option:: -h, --help
 
    Display the full help.
+```
 
+```{eval-rst}
 .. option:: --prefix
 
    Prefix to pass to configure when building a BSP.
+```
 
+```{eval-rst}
 .. option:: --rtems-tools
 
    The path the RTEMS tools such as the C compiler. This option avoid polluting
    your path. This path is to the tool's prefix used to build and install the
    tools and not exact path to an executable.
+```
 
+```{eval-rst}
 .. option:: --rtems
 
    The path the RTEMS source tree to build.
+```
 
+```{eval-rst}
 .. option:: --build-path
 
    The path to build the BSP and place the build output. This can be any path
    and away from your current directory or the RTEMS source code. The storage
    does not need to be fast like an SSD.
+```
 
+```{eval-rst}
 .. option:: --log
 
    The log file.
+```
 
+```{eval-rst}
 .. option:: --config-report
 
    Print a configuration report and exit.
+```
 
+```{eval-rst}
 .. option:: --warnings-report
 
    Create a warnings report once all builds have finished.
+```
 
+```{eval-rst}
 .. option:: --stop-on-error
 
    Stop the build on an error. The default is to build all the builds for a
    profile.
+```
 
+```{eval-rst}
 .. option:: --no-clean
 
    Do not remove the build once finished. This option lets you inspect the
    built output. The amount of output can be large and disks can fill with this
    option.
+```
 
+```{eval-rst}
 .. option:: --profiles
 
    Build the comma separated list of profiles. The default is ``tier-1``.
+```
 
+```{eval-rst}
 .. option:: --arch
 
    A comma separated list of architecures to build using the selected build.
+```
 
+```{eval-rst}
 .. option:: --bsp
 
    A comma separated list of BSPs to build where a BSP is of the format
    ``arch/bsp`` using the selected build.
+```
 
+```{eval-rst}
 .. option:: --build
 
    The build to be used. The default is ``all``. See ``--config-report`` for a
    list of vlaid builds.
+```
 
+```{eval-rst}
 .. option:: --jobs
 
    The jobs options where the format is ``build-jobs/make-jobs``. The default
    is ``1/num-cores`` where ``num-cores`` is the operating system reported
    number of cores.
+```
 
+```{eval-rst}
 .. option:: --dry-run
 
    Do not do the actual builds just show what would be built.
+```
 
-Examples
-^^^^^^^^
+### Examples
 
 The following is a *tier-1* profile build of *all* on a machine where all the
 source and tools are located on fast SSD disks and the build happens on a
@@ -344,104 +348,104 @@ spinning disk mounted under `build`. The build uses a development source tree
 that is bootstrapped and ready to build. The source can have local patches that
 need to be regression tested:
 
-.. code-block:: none
-
-  $ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
-            --rtems-tools=/opt/work/rtems/5 \
-            --rtems=/opt/work/chris/rtems/kernel/rtems.git \
-            --profiles=tier-1 \
-            --jobs=5/10
-  RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
-  Profile(s): tier-1
-  Cleaning: bsp-builds
-  [  1/655] arm/altcycv_devkit (debug)                         Start
-  [  1/655] arm/altcycv_devkit (debug)                         Creating: bsp-builds/arm/altcycv_devkit.debug
-  [  2/655] arm/altcycv_devkit (no-posix)                      Start
-  [  2/655] arm/altcycv_devkit (no-posix)                      Creating: bsp-builds/arm/altcycv_devkit.no-posix
-  [  3/655] arm/altcycv_devkit (posix)                         Start
-  [  1/655] arm/altcycv_devkit (debug)                         Configuring
-  [  3/655] arm/altcycv_devkit (posix)                         Creating: bsp-builds/arm/altcycv_devkit.posix
-  [  2/655] arm/altcycv_devkit (no-posix)                      Configuring
-  [  4/655] arm/altcycv_devkit (posix-debug)                   Start
-  [  1/655] arm/altcycv_devkit (debug)                         Building
-  [  3/655] arm/altcycv_devkit (posix)                         Configuring
-  [  4/655] arm/altcycv_devkit (posix-debug)                   Creating: bsp-builds/arm/altcycv_devkit.posix-debug
-  [  2/655] arm/altcycv_devkit (no-posix)                      Building
-  [  5/655] arm/altcycv_devkit (posix-profiling)               Start
-  [  4/655] arm/altcycv_devkit (posix-debug)                   Configuring
-  [  3/655] arm/altcycv_devkit (posix)                         Building
-   ....
-  [654/655] sparc/ngmp (posix-profiling)                       PASS
-  [654/655] sparc/ngmp (posix-profiling)                       Warnings:0  exes:0  objs:0  libs:0
-  [654/655] sparc/ngmp (posix-profiling)                       Finished (duration:0:01:49.002189)
-  [654/655] sparc/ngmp (posix-profiling)                       Status: Pass:  655  Fail:    0 (configure:0 build:0)
-  [655/655] sparc/ngmp (profiling)                             PASS
-  [655/655] sparc/ngmp (profiling)                             Warnings:0  exes:0  objs:0  libs:0
-  [655/655] sparc/ngmp (profiling)                             Finished (duration:0:01:260.002098)
-  [655/655] sparc/ngmp (profiling)                             Status: Pass:  655  Fail:    0 (configure:0 build:0)
-  [651/655] sparc/ngmp (no-posix)                              Cleaning: bsp-builds/sparc/ngmp.no-posix
-  [652/655] sparc/ngmp (posix)                                 Cleaning: bsp-builds/sparc/ngmp.posix
-  [653/655] sparc/ngmp (posix-debug)                           Cleaning: bsp-builds/sparc/ngmp.posix-debug
-  [654/655] sparc/ngmp (posix-profiling)                       Cleaning: bsp-builds/sparc/ngmp.posix-profiling
-  [655/655] sparc/ngmp (profiling)                             Cleaning: bsp-builds/sparc/ngmp.profiling
-  Total: Warnings:31689  exes:6291  objs:793839  libs:37897
-  Failures:
-   No failure(s)
-  Average BSP Build Time: 0:00:18.165000
-  Total Time 3:41:48.075006
-  Passes: 655   Failures: 0
+```none
+$ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
+          --rtems-tools=/opt/work/rtems/5 \
+          --rtems=/opt/work/chris/rtems/kernel/rtems.git \
+          --profiles=tier-1 \
+          --jobs=5/10
+RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
+Profile(s): tier-1
+Cleaning: bsp-builds
+[  1/655] arm/altcycv_devkit (debug)                         Start
+[  1/655] arm/altcycv_devkit (debug)                         Creating: bsp-builds/arm/altcycv_devkit.debug
+[  2/655] arm/altcycv_devkit (no-posix)                      Start
+[  2/655] arm/altcycv_devkit (no-posix)                      Creating: bsp-builds/arm/altcycv_devkit.no-posix
+[  3/655] arm/altcycv_devkit (posix)                         Start
+[  1/655] arm/altcycv_devkit (debug)                         Configuring
+[  3/655] arm/altcycv_devkit (posix)                         Creating: bsp-builds/arm/altcycv_devkit.posix
+[  2/655] arm/altcycv_devkit (no-posix)                      Configuring
+[  4/655] arm/altcycv_devkit (posix-debug)                   Start
+[  1/655] arm/altcycv_devkit (debug)                         Building
+[  3/655] arm/altcycv_devkit (posix)                         Configuring
+[  4/655] arm/altcycv_devkit (posix-debug)                   Creating: bsp-builds/arm/altcycv_devkit.posix-debug
+[  2/655] arm/altcycv_devkit (no-posix)                      Building
+[  5/655] arm/altcycv_devkit (posix-profiling)               Start
+[  4/655] arm/altcycv_devkit (posix-debug)                   Configuring
+[  3/655] arm/altcycv_devkit (posix)                         Building
+ ....
+[654/655] sparc/ngmp (posix-profiling)                       PASS
+[654/655] sparc/ngmp (posix-profiling)                       Warnings:0  exes:0  objs:0  libs:0
+[654/655] sparc/ngmp (posix-profiling)                       Finished (duration:0:01:49.002189)
+[654/655] sparc/ngmp (posix-profiling)                       Status: Pass:  655  Fail:    0 (configure:0 build:0)
+[655/655] sparc/ngmp (profiling)                             PASS
+[655/655] sparc/ngmp (profiling)                             Warnings:0  exes:0  objs:0  libs:0
+[655/655] sparc/ngmp (profiling)                             Finished (duration:0:01:260.002098)
+[655/655] sparc/ngmp (profiling)                             Status: Pass:  655  Fail:    0 (configure:0 build:0)
+[651/655] sparc/ngmp (no-posix)                              Cleaning: bsp-builds/sparc/ngmp.no-posix
+[652/655] sparc/ngmp (posix)                                 Cleaning: bsp-builds/sparc/ngmp.posix
+[653/655] sparc/ngmp (posix-debug)                           Cleaning: bsp-builds/sparc/ngmp.posix-debug
+[654/655] sparc/ngmp (posix-profiling)                       Cleaning: bsp-builds/sparc/ngmp.posix-profiling
+[655/655] sparc/ngmp (profiling)                             Cleaning: bsp-builds/sparc/ngmp.profiling
+Total: Warnings:31689  exes:6291  objs:793839  libs:37897
+Failures:
+ No failure(s)
+Average BSP Build Time: 0:00:18.165000
+Total Time 3:41:48.075006
+Passes: 655   Failures: 0
+```
 
 To build a couple of BSPs you are interested in with tests:
 
-.. code-block:: none
+```none
+$ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
+          --rtems-tools=/opt/work/rtems/5 \
+          --rtems=/opt/work/chris/rtems/kernel/rtems.git \
+          ----log=lpc-log \
+          --bsp=arm/lpc2362,arm/lpc23xx_tli800 \
+          --build=tests \
+          --jobs=5/12
+RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
+BSPS(s): arm/lpc2362, arm/lpc23xx_tli800
+Cleaning: bsp-builds
+[1/2] arm/lpc2362 (tests)        Start
+[1/2] arm/lpc2362 (tests)        Creating: bsp-builds/arm/lpc2362.tests
+[2/2] arm/lpc23xx_tli800 (tests) Start
+[2/2] arm/lpc23xx_tli800 (tests) Creating: bsp-builds/arm/lpc23xx_tli800.tests
+[1/2] arm/lpc2362 (tests)        Configuring
+[2/2] arm/lpc23xx_tli800 (tests) Configuring
+[1/2] arm/lpc2362 (tests)        Building
+[2/2] arm/lpc23xx_tli800 (tests) Building
+[1/2] arm/lpc2362 (tests)        FAIL
+[1/2] arm/lpc2362 (tests)        Warnings:74  exes:58  objs:1645  libs:74
+[1/2] arm/lpc2362 (tests)        Finished (duration:0:01:31.708252)
+[1/2] arm/lpc2362 (tests)        Status: Pass:    0  Fail:    2 (configure:0 build:2)
+[2/2] arm/lpc23xx_tli800 (tests) FAIL
+[2/2] arm/lpc23xx_tli800 (tests) Warnings:74  exes:51  objs:1632  libs:74
+[2/2] arm/lpc23xx_tli800 (tests) Finished (duration:0:01:31.747582)
+[2/2] arm/lpc23xx_tli800 (tests) Status: Pass:    0  Fail:    2 (configure:0 build:2)
+[1/2] arm/lpc2362 (tests)        Cleaning: bsp-builds/arm/lpc2362.tests
+[2/2] arm/lpc23xx_tli800 (tests) Cleaning: bsp-builds/arm/lpc23xx_tli800.tests
+Total: Warnings:74  exes:109  objs:3277  libs:148
+Failures:
+   1 tests arm/lpc2362 build:
+      configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
+      =arm-rtems5 --enable-rtemsbsp=lpc2362 --prefix=/opt/rtems/5\
+      --enable-tests
+     error: ld/collect2:0 error: math.exe section '.rodata' will not fit
+            in region 'ROM_INT'; region 'ROM_INT' overflowed by 7284 bytes
 
-  $ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
-            --rtems-tools=/opt/work/rtems/5 \
-            --rtems=/opt/work/chris/rtems/kernel/rtems.git \
-            ----log=lpc-log \
-            --bsp=arm/lpc2362,arm/lpc23xx_tli800 \
-            --build=tests \
-            --jobs=5/12
-  RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
-  BSPS(s): arm/lpc2362, arm/lpc23xx_tli800
-  Cleaning: bsp-builds
-  [1/2] arm/lpc2362 (tests)        Start
-  [1/2] arm/lpc2362 (tests)        Creating: bsp-builds/arm/lpc2362.tests
-  [2/2] arm/lpc23xx_tli800 (tests) Start
-  [2/2] arm/lpc23xx_tli800 (tests) Creating: bsp-builds/arm/lpc23xx_tli800.tests
-  [1/2] arm/lpc2362 (tests)        Configuring
-  [2/2] arm/lpc23xx_tli800 (tests) Configuring
-  [1/2] arm/lpc2362 (tests)        Building
-  [2/2] arm/lpc23xx_tli800 (tests) Building
-  [1/2] arm/lpc2362 (tests)        FAIL
-  [1/2] arm/lpc2362 (tests)        Warnings:74  exes:58  objs:1645  libs:74
-  [1/2] arm/lpc2362 (tests)        Finished (duration:0:01:31.708252)
-  [1/2] arm/lpc2362 (tests)        Status: Pass:    0  Fail:    2 (configure:0 build:2)
-  [2/2] arm/lpc23xx_tli800 (tests) FAIL
-  [2/2] arm/lpc23xx_tli800 (tests) Warnings:74  exes:51  objs:1632  libs:74
-  [2/2] arm/lpc23xx_tli800 (tests) Finished (duration:0:01:31.747582)
-  [2/2] arm/lpc23xx_tli800 (tests) Status: Pass:    0  Fail:    2 (configure:0 build:2)
-  [1/2] arm/lpc2362 (tests)        Cleaning: bsp-builds/arm/lpc2362.tests
-  [2/2] arm/lpc23xx_tli800 (tests) Cleaning: bsp-builds/arm/lpc23xx_tli800.tests
-  Total: Warnings:74  exes:109  objs:3277  libs:148
-  Failures:
-     1 tests arm/lpc2362 build:
-        configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
-        =arm-rtems5 --enable-rtemsbsp=lpc2362 --prefix=/opt/rtems/5\
-        --enable-tests
-       error: ld/collect2:0 error: math.exe section '.rodata' will not fit
-              in region 'ROM_INT'; region 'ROM_INT' overflowed by 7284 bytes
+   2 tests arm/lpc23xx_tli800 build:
+      configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
+      =arm-rtems5 --enable-rtemsbsp=lpc23xx_tli800\
+      --prefix=/opt/rtems/5 --enable-tests
+     error: ld/collect2:0 error: math.exe section '.text' will not fit in
+            region 'ROM_INT'; region 'ROM_INT' overflowed by 13972 bytes
 
-     2 tests arm/lpc23xx_tli800 build:
-        configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
-        =arm-rtems5 --enable-rtemsbsp=lpc23xx_tli800\
-        --prefix=/opt/rtems/5 --enable-tests
-       error: ld/collect2:0 error: math.exe section '.text' will not fit in
-              region 'ROM_INT'; region 'ROM_INT' overflowed by 13972 bytes
-
-  Average BSP Build Time: 0:00:46.658257
-  Total Time 0:01:33.316514
-  Passes: 0   Failures: 2
+Average BSP Build Time: 0:00:46.658257
+Total Time 0:01:33.316514
+Passes: 0   Failures: 2
+```
 
 The summary report printed shows both BSP builds failed with the error detail
 shown. In this case both are linker related errors where the test do not fit

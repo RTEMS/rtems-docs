@@ -1,94 +1,57 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Files and Directories Manager
-#############################
+# Files and Directories Manager
 
-Introduction
-============
+## Introduction
 
 The files and directories manager is ...
 
 The directives provided by the files and directories manager are:
 
-- opendir_ - Open a Directory
+- [opendir] - Open a Directory
+- [readdir] - Reads a directory
+- [rewinddir] - Resets the `readdir()` pointer
+- [scandir] - Scan a directory for matching entries
+- [telldir] - Return current location in directory stream
+- [closedir] - Ends directory read operation
+- [getdents] - Get directory entries
+- [chdir] - Changes the current working directory
+- [fchdir] - Changes the current working directory
+- [getcwd] - Gets current working directory
+- [open] - Opens a file
+- [creat] - Create a new file or rewrite an existing one
+- [umask] - Sets a file creation mask
+- [link] - Creates a link to a file
+- [symlink] - Creates a symbolic link to a file
+- [readlink] - Obtain the name of the link destination
+- [mkdir] - Makes a directory
+- [mkfifo] - Makes a FIFO special file
+- [unlink] - Removes a directory entry
+- [rmdir] - Delete a directory
+- [rename] - Renames a file
+- [stat] - Gets information about a file.
+- [fstat] - Gets file status
+- [lstat] - Gets file status
+- [access] - Check permissions for a file.
+- [chmod] - Changes file mode
+- [fchmod] - Changes permissions of a file
+- [chown] - Changes the owner and/ or group of a file
+- [utime] - Change access and/or modification times of an inode
+- [ftruncate] - Truncate a file to a specified length
+- [truncate] - Truncate a file to a specified length
+- [pathconf] - Gets configuration values for files
+- [fpathconf] - Get configuration values for files
+- [mknod] - Create a directory
 
-- readdir_ - Reads a directory
+## Background
 
-- rewinddir_ - Resets the ``readdir()`` pointer
+### Path Name Evaluation
 
-- scandir_ - Scan a directory for matching entries
-
-- telldir_ - Return current location in directory stream
-
-- closedir_ - Ends directory read operation
-
-- getdents_ - Get directory entries
-
-- chdir_ - Changes the current working directory
-
-- fchdir_ - Changes the current working directory
-
-- getcwd_ - Gets current working directory
-
-- open_ - Opens a file
-
-- creat_ - Create a new file or rewrite an existing one
-
-- umask_ - Sets a file creation mask
-
-- link_ - Creates a link to a file
-
-- symlink_ - Creates a symbolic link to a file
-
-- readlink_ - Obtain the name of the link destination
-
-- mkdir_ - Makes a directory
-
-- mkfifo_ - Makes a FIFO special file
-
-- unlink_ - Removes a directory entry
-
-- rmdir_ - Delete a directory
-
-- rename_ - Renames a file
-
-- stat_ - Gets information about a file.
-
-- fstat_ - Gets file status
-
-- lstat_ - Gets file status
-
-- access_ - Check permissions for a file.
-
-- chmod_ - Changes file mode
-
-- fchmod_ - Changes permissions of a file
-
-- chown_ - Changes the owner and/ or group of a file
-
-- utime_ - Change access and/or modification times of an inode
-
-- ftruncate_ - Truncate a file to a specified length
-
-- truncate_ - Truncate a file to a specified length
-
-- pathconf_ - Gets configuration values for files
-
-- fpathconf_ - Get configuration values for files
-
-- mknod_ - Create a directory
-
-Background
-==========
-
-Path Name Evaluation
---------------------
-
-A pathname is a string that consists of no more than ``PATH_MAX`` bytes,
+A pathname is a string that consists of no more than `PATH_MAX` bytes,
 including the terminating null character. A pathname has an optional beginning
-slash, followed by zero or more filenames separated by slashes.  If the
+slash, followed by zero or more filenames separated by slashes. If the
 pathname refers to a directory, it may also have one or more trailing
 slashes. Multiple successive slahes are considered to be the same as one slash.
 
@@ -98,37 +61,39 @@ recognize this as a special condition. Any number of successive slashes is
 treated the same as a single slash. POSIX requires that an implementation treat
 more than two leading slashes as a single slash.
 
-Operations
-==========
+## Operations
 
 There is currently no text in this section.
 
-Directives
-==========
+## Directives
 
-This section details the files and directories manager's directives.  A
+This section details the files and directories manager's directives. A
 subsection is dedicated to each of this manager's directives and describes the
 calling sequence, related constants, usage, and status codes.
 
-.. _opendir:
+(opendir)=
 
-opendir - Open a Directory
---------------------------
-.. index:: opendir
-.. index:: open a directory
+### opendir - Open a Directory
+
+```{index} opendir
+```
+
+```{index} open a directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <dirent.h>
-    int opendir(
-        const char *dirname
-    );
+```c
+#include <sys/types.h>
+#include <dirent.h>
+int opendir(
+    const char *dirname
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -145,79 +110,88 @@ opendir - Open a Directory
    - Insufficient memory to complete the operation.
  * - ``ENOTDIR``
    - ``name`` is not a directory.
+```
 
 **DESCRIPTION:**
 
 This routine opens a directory stream corresponding to the
-directory specified by the ``dirname`` argument. The
+directory specified by the `dirname` argument. The
 directory stream is positioned at the first entry.
 
 **NOTES:**
 
 The routine is implemented in Cygnus newlib.
 
-.. _readdir:
+(readdir)=
 
-readdir - Reads a directory
----------------------------
-.. index:: readdir
-.. index:: reads a directory
+### readdir - Reads a directory
+
+```{index} readdir
+```
+
+```{index} reads a directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <dirent.h>
-        int readdir(
-        DIR *dirp
-    );
+```c
+#include <sys/types.h>
+#include <dirent.h>
+    int readdir(
+    DIR *dirp
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EBADF``
    - Invalid file descriptor
+```
 
 **DESCRIPTION:**
 
-The ``readdir()`` function returns a pointer to a structure ``dirent``
+The `readdir()` function returns a pointer to a structure `dirent`
 representing the next directory entry from the directory stream pointed to by
-``dirp``. On end-of-file, ``NULL`` is returned.
+`dirp`. On end-of-file, `NULL` is returned.
 
-The ``readdir()`` function may (or may not) return entries for ``.`` or ``..``
+The `readdir()` function may (or may not) return entries for `.` or `..`
 Your program should tolerate reading dot and dot-dot but not require them.
 
-The data pointed to be ``readdir()`` may be overwritten by another call to
-``readdir()`` for the same directory stream. It will not be overwritten by a
+The data pointed to be `readdir()` may be overwritten by another call to
+`readdir()` for the same directory stream. It will not be overwritten by a
 call for another directory.
 
 **NOTES:**
 
-If ``ptr`` is not a pointer returned by ``malloc()``, ``calloc()``, or
-``realloc()`` or has been deallocated with ``free()`` or ``realloc()``, the
+If `ptr` is not a pointer returned by `malloc()`, `calloc()`, or
+`realloc()` or has been deallocated with `free()` or `realloc()`, the
 results are not portable and are probably disastrous.
 
 The routine is implemented in Cygnus newlib.
 
-.. _rewinddir:
+(rewinddir)=
 
-rewinddir - Resets the readdir() pointer
-----------------------------------------
-.. index:: rewinddir
-.. index:: resets the readdir() pointer
+### rewinddir - Resets the readdir() pointer
+
+```{index} rewinddir
+```
+
+```{index} resets the readdir() pointer
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <dirent.h>
-    void rewinddir(
-        DIR *dirp
-    );
+```c
+#include <sys/types.h>
+#include <dirent.h>
+void rewinddir(
+    DIR *dirp
+);
+```
 
 **STATUS CODES:**
 
@@ -225,150 +199,169 @@ No value is returned.
 
 **DESCRIPTION:**
 
-The ``rewinddir()`` function resets the position associated with the directory
-stream pointed to by ``dirp``. It also causes the directory stream to refer to
+The `rewinddir()` function resets the position associated with the directory
+stream pointed to by `dirp`. It also causes the directory stream to refer to
 the current state of the directory.
 
 **NOTES:**
 
 NONE
 
-If ``dirp`` is not a pointer by ``opendir()``, the results are undefined.
+If `dirp` is not a pointer by `opendir()`, the results are undefined.
 
 The routine is implemented in Cygnus newlib.
 
-.. _scandir:
+(scandir)=
 
-scandir - Scan a directory for matching entries
------------------------------------------------
-.. index:: scandir
-.. index:: scan a directory for matching entries
+### scandir - Scan a directory for matching entries
+
+```{index} scandir
+```
+
+```{index} scan a directory for matching entries
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <dirent.h>
-    int scandir(
-        const char       *dir,
-        struct dirent ***namelist,
-        int  (*select)(const struct dirent *),
-        int  (*compar)(const struct dirent **, const struct dirent **)
-    );
+```c
+#include <dirent.h>
+int scandir(
+    const char       *dir,
+    struct dirent ***namelist,
+    int  (*select)(const struct dirent *),
+    int  (*compar)(const struct dirent **, const struct dirent **)
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``ENOMEM``
    - Insufficient memory to complete the operation.
+```
 
 **DESCRIPTION:**
 
-The ``scandir()`` function scans the directory ``dir``, calling ``select()`` on
-each directory entry. Entries for which ``select()`` returns non-zero are
-stored in strings allocated via ``malloc()``, sorted using ``qsort()`` with the
-comparison function ``compar()``, and collected in array ``namelist`` which is
-allocated via ``malloc()``.  If ``select`` is ``NULL``, all entries are
+The `scandir()` function scans the directory `dir`, calling `select()` on
+each directory entry. Entries for which `select()` returns non-zero are
+stored in strings allocated via `malloc()`, sorted using `qsort()` with the
+comparison function `compar()`, and collected in array `namelist` which is
+allocated via `malloc()`. If `select` is `NULL`, all entries are
 selected.
 
 **NOTES:**
 
 The routine is implemented in Cygnus newlib.
 
-.. _telldir:
+(telldir)=
 
-telldir - Return current location in directory stream
------------------------------------------------------
-.. index:: telldir
-.. index:: return current location in directory stream
+### telldir - Return current location in directory stream
+
+```{index} telldir
+```
+
+```{index} return current location in directory stream
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <dirent.h>
-    off_t telldir(
-        DIR *dir
-    );
+```c
+#include <dirent.h>
+off_t telldir(
+    DIR *dir
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EBADF``
    - Invalid directory stream descriptor ``dir``.
+```
 
 **DESCRIPTION:**
 
-The ``telldir()`` function returns the current location associated with the
-directory stream ``dir``.
+The `telldir()` function returns the current location associated with the
+directory stream `dir`.
 
 **NOTES:**
 
 The routine is implemented in Cygnus newlib.
 
-.. _closedir:
+(closedir)=
 
-closedir - Ends directory read operation
-----------------------------------------
-.. index:: closedir
-.. index:: ends directory read operation
+### closedir - Ends directory read operation
+
+```{index} closedir
+```
+
+```{index} ends directory read operation
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <dirent.h>
-    int closedir(
-        DIR *dirp
-    );
+```c
+#include <sys/types.h>
+#include <dirent.h>
+int closedir(
+    DIR *dirp
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EBADF``
    - Invalid file descriptor
+```
 
 **DESCRIPTION:**
 
-The directory stream associated with ``dirp`` is closed.  The value in ``dirp``
-may not be usable after a call to ``closedir()``.
+The directory stream associated with `dirp` is closed. The value in `dirp`
+may not be usable after a call to `closedir()`.
 
 **NOTES:**
 
 NONE
 
-The argument to ``closedir()`` must be a pointer returned by ``opendir()``. If
+The argument to `closedir()` must be a pointer returned by `opendir()`. If
 it is not, the results are not portable and most likely unpleasant.
 
 The routine is implemented in Cygnus newlib.
 
-.. _chdir:
+(chdir)=
 
-chdir - Changes the current working directory
----------------------------------------------
-.. index:: chdir
-.. index:: changes the current working directory
+### chdir - Changes the current working directory
+
+```{index} chdir
+```
+
+```{index} changes the current working directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int chdir(
-        const char *path
-    );
+```c
+#include <unistd.h>
+int chdir(
+    const char *path
+);
+```
 
 **STATUS CODES:**
 
-On error, this routine returns -1 and sets ``errno`` to one of the following:
+On error, this routine returns -1 and sets `errno` to one of the following:
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -382,39 +375,44 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
  * - ``ENOTDIR``
    - A component of the specified pathname was not a directory when directory
      was expected.
+```
 
 **DESCRIPTION:**
 
-The ``chdir()`` function causes the directory named by ``path`` to become the
+The `chdir()` function causes the directory named by `path` to become the
 current working directory; that is, the starting point for searches of
 pathnames not beginning with a slash.
 
-If ``chdir()`` detects an error, the current working directory is not changed.
+If `chdir()` detects an error, the current working directory is not changed.
 
 **NOTES:**
 
 NONE
 
-.. _fchdir:
+(fchdir)=
 
-fchdir - Changes the current working directory
-----------------------------------------------
-.. index:: fchdir
-.. index:: changes the current working directory
+### fchdir - Changes the current working directory
+
+```{index} fchdir
+```
+
+```{index} changes the current working directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int fchdir(
-        int fd
-    );
+```c
+#include <unistd.h>
+int fchdir(
+    int fd
+);
+```
 
 **STATUS CODES:**
 
-On error, this routine returns -1 and sets ``errno`` to one of the following:
+On error, this routine returns -1 and sets `errno` to one of the following:
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -428,35 +426,40 @@ On error, this routine returns -1 and sets ``errno`` to one of the following:
  * - ``ENOTDIR``
    - A component of the specified pathname was not a directory when directory
      was expected.
+```
 
 **DESCRIPTION:**
 
-The ``fchdir()`` function causes the directory named by ``fd`` to become the
+The `fchdir()` function causes the directory named by `fd` to become the
 current working directory; that is, the starting point for searches of
 pathnames not beginning with a slash.
 
-If ``fchdir()`` detects an error, the current working directory is not changed.
+If `fchdir()` detects an error, the current working directory is not changed.
 
 **NOTES:**
 
 NONE
 
-.. _getcwd:
+(getcwd)=
 
-getcwd - Gets current working directory
----------------------------------------
-.. index:: getcwd
-.. index:: gets current working directory
+### getcwd - Gets current working directory
+
+```{index} getcwd
+```
+
+```{index} gets current working directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int getcwd( void );
+```c
+#include <unistd.h>
+int getcwd( void );
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -466,46 +469,51 @@ getcwd - Gets current working directory
    - Result is too large
  * - ``EACCES``
    - Search permission is denied for a directory in a file's path prefix.
+```
 
 **DESCRIPTION:**
 
-The ``getcwd()`` function copies the absolute pathname of the current working
-directory to the character array pointed to by ``buf``. The ``size`` argument
-is the number of bytes available in ``buf``
+The `getcwd()` function copies the absolute pathname of the current working
+directory to the character array pointed to by `buf`. The `size` argument
+is the number of bytes available in `buf`
 
 **NOTES:**
 
-There is no way to determine the maximum string length that ``fetcwd()`` may
-need to return. Applications should tolerate getting ``ERANGE`` and allocate a
+There is no way to determine the maximum string length that `fetcwd()` may
+need to return. Applications should tolerate getting `ERANGE` and allocate a
 larger buffer.
 
-It is possible for ``getcwd()`` to return EACCES if, say, ``login`` puts the
+It is possible for `getcwd()` to return EACCES if, say, `login` puts the
 process into a directory without read access.
 
-The 1988 standard uses ``int`` instead of ``size_t`` for the second parameter.
+The 1988 standard uses `int` instead of `size_t` for the second parameter.
 
-.. _open:
+(open)=
 
-open - Opens a file
--------------------
-.. index:: open
-.. index:: opens a file
+### open - Opens a file
+
+```{index} open
+```
+
+```{index} opens a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    #include <fcntl.h>
-    int open(
-        const char *path,
-        int         oflag,
-        mode_t      mode
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+int open(
+    const char *path,
+    int         oflag,
+    mode_t      mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -537,18 +545,20 @@ open - Opens a file
      example, a tape drive is off-line.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
-The ``open`` function establishes a connection between a file and a file
+The `open` function establishes a connection between a file and a file
 descriptor. The file descriptor is a small integer that is used by I/O
-functions to reference the file. The ``path`` argument points to the pathname
+functions to reference the file. The `path` argument points to the pathname
 for the file.
 
-The ``oflag`` argument is the bitwise inclusive OR of the values of symbolic
+The `oflag` argument is the bitwise inclusive OR of the values of symbolic
 constants. The programmer must specify exactly one of the following three
 symbols:
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -558,9 +568,11 @@ symbols:
    - Open for writing only.
  * - ``O_RDWR``
    - Open for reading and writing.
+```
 
 Any combination of the following symbols may also be used.
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -582,34 +594,39 @@ Any combination of the following symbols may also be used.
  * - ``O_TRUNC``
    - This flag should be used only on ordinary files opened for writing. It
      causes the file to be tuncated to zero length..
+```
 
-Upon successful completion, ``open`` returns a non-negative file descriptor.
+Upon successful completion, `open` returns a non-negative file descriptor.
 
 **NOTES:**
 
 NONE
 
-.. _creat:
+(creat)=
 
-creat - Create a new file or rewrite an existing one
-----------------------------------------------------
-.. index:: creat
-.. index:: create a new file or rewrite an existing one
+### creat - Create a new file or rewrite an existing one
+
+```{index} creat
+```
+
+```{index} create a new file or rewrite an existing one
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    #include <fcntl.h>
-    int creat(
-        const char *path,
-        mode_t      mode
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+int creat(
+    const char *path,
+    mode_t      mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -642,10 +659,11 @@ creat - Create a new file or rewrite an existing one
  * - ``EROFS``
    - ``path`` refers to a file on a read-only filesystem and write access was
      requested
+```
 
 **DESCRIPTION:**
 
-``creat`` attempts to create a file and return a file descriptor for use in
+`creat` attempts to create a file and return a file descriptor for use in
 read, write, etc.
 
 **NOTES:**
@@ -654,64 +672,71 @@ NONE
 
 The routine is implemented in Cygnus newlib.
 
-.. _umask:
+(umask)=
 
-umask - Sets a file creation mask.
-----------------------------------
-.. index:: umask
-.. index:: sets a file creation mask.
+### umask - Sets a file creation mask.
+
+```{index} umask
+```
+
+```{index} sets a file creation mask.
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    mode_t umask(
-        mode_t cmask
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+mode_t umask(
+    mode_t cmask
+);
+```
 
 **STATUS CODES:**
 
 **DESCRIPTION:**
 
-The ``umask()`` function sets the process file creation mask to ``cmask``.  The
-file creation mask is used during ``open()``, ``creat()``, ``mkdir()``,
-``mkfifo()`` calls to turn off permission bits in the ``mode`` argument.  Bit
-positions that are set in ``cmask`` are cleared in the mode of the created
+The `umask()` function sets the process file creation mask to `cmask`. The
+file creation mask is used during `open()`, `creat()`, `mkdir()`,
+`mkfifo()` calls to turn off permission bits in the `mode` argument. Bit
+positions that are set in `cmask` are cleared in the mode of the created
 file.
 
 **NOTES:**
 
 NONE
 
-The ``cmask`` argument should have only permission bits set. All other bits
+The `cmask` argument should have only permission bits set. All other bits
 should be zero.
 
 In a system which supports multiple processes, the file creation mask is
-inherited across ``fork()`` and ``exec()`` calls. This makes it possible to
+inherited across `fork()` and `exec()` calls. This makes it possible to
 alter the default permission bits of created files. RTEMS does not support
 multiple processes so this behavior is not possible.
 
-.. _link:
+(link)=
 
-link - Creates a link to a file
--------------------------------
-.. index:: link
-.. index:: creates a link to a file
+### link - Creates a link to a file
+
+```{index} link
+```
+
+```{index} creates a link to a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int link(
-        const char *existing,
-        const char *new
-    );
+```c
+#include <unistd.h>
+int link(
+    const char *existing,
+    const char *new
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -738,15 +763,16 @@ link - Creates a link to a file
    - Read-only file system.
  * - ``EXDEV``
    - Attempt to link a file to another file system.
+```
 
 **DESCRIPTION:**
 
-The ``link()`` function atomically creates a new link for an existing file and
+The `link()` function atomically creates a new link for an existing file and
 increments the link count for the file.
 
-If the ``link()`` function fails, no directories are modified.
+If the `link()` function fails, no directories are modified.
 
-The ``existing`` argument should not be a directory.
+The `existing` argument should not be a directory.
 
 The caller may (or may not) need permission to access the existing file.
 
@@ -754,25 +780,29 @@ The caller may (or may not) need permission to access the existing file.
 
 NONE
 
-.. _symlink:
+(symlink)=
 
-symlink - Creates a symbolic link to a file
--------------------------------------------
-.. index:: symlink
-.. index:: creates a symbolic link to a file
+### symlink - Creates a symbolic link to a file
+
+```{index} symlink
+```
+
+```{index} creates a symbolic link to a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int symlink(
-        const char *topath,
-        const char *frompath
-    );
+```c
+#include <unistd.h>
+int symlink(
+    const char *topath,
+    const char *frompath
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -795,13 +825,14 @@ symlink - Creates a symbolic link to a file
      priviledges or permissions to perform the requested operations.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
-The ``symlink()`` function creates a symbolic link from the frombath to the
+The `symlink()` function creates a symbolic link from the frombath to the
 topath. The symbolic link will be interpreted at run-time.
 
-If the ``symlink()`` function fails, no directories are modified.
+If the `symlink()` function fails, no directories are modified.
 
 The caller may (or may not) need permission to access the existing file.
 
@@ -809,26 +840,30 @@ The caller may (or may not) need permission to access the existing file.
 
 NONE
 
-.. _readlink:
+(readlink)=
 
-readlink - Obtain the name of a symbolic link destination
----------------------------------------------------------
-.. index:: readlink
-.. index:: obtain the name of a symbolic link destination
+### readlink - Obtain the name of a symbolic link destination
+
+```{index} readlink
+```
+
+```{index} obtain the name of a symbolic link destination
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int readlink(
-        const char *path,
-        char       *buf,
-        size_t      bufsize
-    );
+```c
+#include <unistd.h>
+int readlink(
+    const char *path,
+    char       *buf,
+    size_t      bufsize
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -848,10 +883,11 @@ readlink - Obtain the name of a symbolic link destination
    - The pathname does not refer to a symbolic link
  * - ``EFAULT``
    - An invalid pointer was passed into the ``readlink()`` routine.
+```
 
 **DESCRIPTION:**
 
-The ``readlink()`` function places the symbolic link destination into ``buf``
+The `readlink()` function places the symbolic link destination into `buf`
 argument and returns the number of characters copied.
 
 If the symbolic link destination is longer than bufsize characters the name
@@ -861,26 +897,30 @@ will be truncated.
 
 NONE
 
-.. _mkdir:
+(mkdir)=
 
-mkdir - Makes a directory
--------------------------
-.. index:: mkdir
-.. index:: makes a directory
+### mkdir - Makes a directory
+
+```{index} mkdir
+```
+
+```{index} makes a directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int mkdir(
-        const char *path,
-        mode_t      mode
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int mkdir(
+    const char *path,
+    mode_t      mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -902,40 +942,45 @@ mkdir - Makes a directory
      was expected.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
-The ``mkdir()`` function creates a new diectory named ``path``. The permission
-bits (modified by the file creation mask) are set from ``mode``.  The owner and
+The `mkdir()` function creates a new diectory named `path`. The permission
+bits (modified by the file creation mask) are set from `mode`. The owner and
 group IDs for the directory are set from the effective user ID and group ID.
 
-The new directory may (or may not) contain entries for ``.`` and ``..`` but is
+The new directory may (or may not) contain entries for `.` and `..` but is
 otherwise empty.
 
 **NOTES:**
 
 NONE
 
-.. _mkfifo:
+(mkfifo)=
 
-mkfifo - Makes a FIFO special file
-----------------------------------
-.. index:: mkfifo
-.. index:: makes a fifo special file
+### mkfifo - Makes a FIFO special file
+
+```{index} mkfifo
+```
+
+```{index} makes a fifo special file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int mkfifo(
-        const char *path,
-        mode_t      mode
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int mkfifo(
+    const char *path,
+    mode_t      mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -952,11 +997,12 @@ mkfifo - Makes a FIFO special file
      was expected.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
-The ``mkfifo()`` function creates a new FIFO special file named ``path``.  The
-permission bits (modified by the file creation mask) are set from ``mode``. The
+The `mkfifo()` function creates a new FIFO special file named `path`. The
+permission bits (modified by the file creation mask) are set from `mode`. The
 owner and group IDs for the FIFO are set from the efective user ID and
 group ID.
 
@@ -964,24 +1010,28 @@ group ID.
 
 NONE
 
-.. _unlink:
+(unlink)=
 
-unlink - Removes a directory entry
-----------------------------------
-.. index:: unlink
-.. index:: removes a directory entry
+### unlink - Removes a directory entry
+
+```{index} unlink
+```
+
+```{index} removes a directory entry
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int unlink(
-        const char path
-    );
+```c
+#include <unistd.h>
+int unlink(
+    const char path
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1002,10 +1052,11 @@ unlink - Removes a directory entry
      priviledges or permissions to perform the requested operations.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
-The ``unlink`` function removes the link named by ``path`` and decrements the
+The `unlink` function removes the link named by `path` and decrements the
 link count of the file referenced by the link. When the link count goes to zero
 and no process has the file open, the space occupied by the file is freed and
 the file is no longer accessible.
@@ -1014,24 +1065,28 @@ the file is no longer accessible.
 
 NONE
 
-.. _rmdir:
+(rmdir)=
 
-rmdir - Delete a directory
---------------------------
-.. index:: rmdir
-.. index:: delete a directory
+### rmdir - Delete a directory
+
+```{index} rmdir
+```
+
+```{index} delete a directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int rmdir(
-        const char *pathname
-    );
+```c
+#include <unistd.h>
+int rmdir(
+    const char *pathname
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1069,34 +1124,39 @@ rmdir - Delete a directory
    - ``pathname`` refers to a file on a read-only filesystem.
  * - ``ELOOP``
    - ``pathname`` contains a reference to a circular symbolic link
+```
 
 **DESCRIPTION:**
 
-``rmdir`` deletes a directory, which must be empty
+`rmdir` deletes a directory, which must be empty
 
 **NOTES:**
 
 NONE
 
-.. _rename:
+(rename)=
 
-rename - Renames a file
------------------------
-.. index:: rename
-.. index:: renames a file
+### rename - Renames a file
+
+```{index} rename
+```
+
+```{index} renames a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int rename(
-        const char *old,
-        const char *new
-    );
+```c
+#include <unistd.h>
+int rename(
+    const char *old,
+    const char *new
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1129,46 +1189,51 @@ rename - Renames a file
    - Read-only file system
  * - ``EXDEV``
    - Attempt to link a file to another file system.
+```
 
 **DESCRIPTION:**
 
-The ``rename()`` function causes the file known bo ``old`` to now be known as
-``new``.
+The `rename()` function causes the file known bo `old` to now be known as
+`new`.
 
 Ordinary files may be renamed to ordinary files, and directories may be renamed
-to directories; however, files cannot be converted using ``rename()``. The
-``new`` pathname may not contain a path prefix of ``old``.
+to directories; however, files cannot be converted using `rename()`. The
+`new` pathname may not contain a path prefix of `old`.
 
 **NOTES:**
 
-If a file already exists by the name ``new``, it is removed. The ``rename()``
-function is atomic. If the ``rename()`` detects an error, no files are
-removed. This guarantees that the ``rename("x", "x")`` does not remove ``x``.
+If a file already exists by the name `new`, it is removed. The `rename()`
+function is atomic. If the `rename()` detects an error, no files are
+removed. This guarantees that the `rename("x", "x")` does not remove `x`.
 
 You may not rename dot or dot-dot.
 
-The routine is implemented in Cygnus newlib using ``link()`` and ``unlink()``.
+The routine is implemented in Cygnus newlib using `link()` and `unlink()`.
 
-.. _stat:
+(stat)=
 
-stat - Gets information about a file
-------------------------------------
-.. index:: stat
-.. index:: gets information about a file
+### stat - Gets information about a file
+
+```{index} stat
+```
+
+```{index} gets information about a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int stat(
-        const char  *path,
-        struct stat *buf
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int stat(
+    const char  *path,
+    struct stat *buf
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1184,114 +1249,129 @@ stat - Gets information about a file
  * - ``ENOTDIR``
    - A component of the specified pathname was not a directory when a directory
      was expected.
+```
 
 **DESCRIPTION:**
 
-The ``path`` argument points to a pathname for a file. Read, write, or execute
-permission for the file is not required, but all directories listed in ``path``
-must be searchable. The ``stat()`` function obtains information about the named
-file and writes it to the area pointed to by ``buf``.
+The `path` argument points to a pathname for a file. Read, write, or execute
+permission for the file is not required, but all directories listed in `path`
+must be searchable. The `stat()` function obtains information about the named
+file and writes it to the area pointed to by `buf`.
 
 **NOTES:**
 
 NONE
 
-.. _fstat:
+(fstat)=
 
-fstat - Gets file status
-------------------------
-.. index:: fstat
-.. index:: gets file status
+### fstat - Gets file status
+
+```{index} fstat
+```
+
+```{index} gets file status
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int fstat(
-        int          fildes,
-        struct stat *buf
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int fstat(
+    int          fildes,
+    struct stat *buf
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EBADF``
    - Invalid file descriptor
+```
 
 **DESCRIPTION:**
 
-The ``fstat()`` function obtains information about the file associated with
-``fildes`` and writes it to the area pointed to by the ``buf`` argument.
+The `fstat()` function obtains information about the file associated with
+`fildes` and writes it to the area pointed to by the `buf` argument.
 
 **NOTES:**
 
-If the filesystem object referred to by ``fildes`` is a link, then the
-information returned in ``buf`` refers to the destination of that link.  This
-is in contrast to ``lstat()`` which does not follow the link.
+If the filesystem object referred to by `fildes` is a link, then the
+information returned in `buf` refers to the destination of that link. This
+is in contrast to `lstat()` which does not follow the link.
 
-.. _lstat:
+(lstat)=
 
-lstat - Gets file status
-------------------------
-.. index:: lstat
-.. index:: gets file status
+### lstat - Gets file status
+
+```{index} lstat
+```
+
+```{index} gets file status
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int lstat(
-        int          fildes,
-        struct stat *buf
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int lstat(
+    int          fildes,
+    struct stat *buf
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``EBADF``
    - Invalid file descriptor
+```
 
 **DESCRIPTION:**
 
-The ``lstat()`` function obtains information about the file associated with
-``fildes`` and writes it to the area pointed to by the ``buf`` argument.
+The `lstat()` function obtains information about the file associated with
+`fildes` and writes it to the area pointed to by the `buf` argument.
 
 **NOTES:**
 
-If the filesystem object referred to by ``fildes`` is a link, then the
-information returned in ``buf`` refers to the link itself.  This is in contrast
-to ``fstat()`` which follows the link.
+If the filesystem object referred to by `fildes` is a link, then the
+information returned in `buf` refers to the link itself. This is in contrast
+to `fstat()` which follows the link.
 
-The ``lstat()`` routine is defined by BSD 4.3 and SVR4 and not included in
+The `lstat()` routine is defined by BSD 4.3 and SVR4 and not included in
 POSIX 1003.1b-1996.
 
-.. _access:
+(access)=
 
-access - Check permissions for a file
--------------------------------------
-.. index:: access
-.. index:: check permissions for a file
+### access - Check permissions for a file
+
+```{index} access
+```
+
+```{index} check permissions for a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int access(
-        const char *pathname,
-        int         mode
-    );
+```c
+#include <unistd.h>
+int access(
+    const char *pathname,
+    int         mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1312,41 +1392,46 @@ access - Check permissions for a file
      directory.
  * - ``ENOMEM``
    - Insufficient kernel memory was available.
+```
 
 **DESCRIPTION:**
 
-``Access`` checks whether the process would be allowed to read, write or test
+`Access` checks whether the process would be allowed to read, write or test
 for existence of the file (or other file system object) whose name is
-``pathname``. If ``pathname`` is a symbolic link permissions of the file
+`pathname`. If `pathname` is a symbolic link permissions of the file
 referred by this symbolic link are tested.
 
-``Mode`` is a mask consisting of one or more of ``R_OK``, ``W_OK``, ``X_OK``
-and ``F_OK``.
+`Mode` is a mask consisting of one or more of `R_OK`, `W_OK`, `X_OK`
+and `F_OK`.
 
 **NOTES:**
 
 NONE
 
-.. _chmod:
+(chmod)=
 
-chmod - Changes file mode.
---------------------------
-.. index:: chmod
-.. index:: changes file mode.
+### chmod - Changes file mode.
+
+```{index} chmod
+```
+
+```{index} changes file mode.
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int chmod(
-        const char *path,
-        mode_t      mode
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int chmod(
+    const char *path,
+    mode_t      mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1365,38 +1450,43 @@ chmod - Changes file mode.
      priviledges or permissions to perform the requested operations.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
 Set the file permission bits, the set user ID bit, and the set group ID bit for
-the file named by ``path`` to ``mode``. If the effective user ID does not match
+the file named by `path` to `mode`. If the effective user ID does not match
 the owner of the file and the calling process does not have the appropriate
-privileges, ``chmod()`` returns -1 and sets ``errno`` to ``EPERM``.
+privileges, `chmod()` returns -1 and sets `errno` to `EPERM`.
 
 **NOTES:**
 
 NONE
 
-.. _fchmod:
+(fchmod)=
 
-fchmod - Changes permissions of a file
---------------------------------------
-.. index:: fchmod
-.. index:: changes permissions of a file
+### fchmod - Changes permissions of a file
+
+```{index} fchmod
+```
+
+```{index} changes permissions of a file
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    int fchmod(
-        int    fildes,
-        mode_t mode
-    );
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+int fchmod(
+    int    fildes,
+    mode_t mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1424,41 +1514,46 @@ fchmod - Changes permissions of a file
    - The effective UID does not match the owner of the file, and is not zero
  * - ``EROFS``
    - Read-only file system
+```
 
 **DESCRIPTION:**
 
-The mode of the file given by ``path`` or referenced by ``filedes`` is changed.
+The mode of the file given by `path` or referenced by `filedes` is changed.
 
 **NOTES:**
 
 NONE
 
-.. _getdents:
+(getdents)=
 
-getdents - Get directory entries
---------------------------------
-.. index:: getdents
-.. index:: get directory entries
+### getdents - Get directory entries
+
+```{index} getdents
+```
+
+```{index} get directory entries
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    #include <linux/dirent.h>
-    #include <linux/unistd.h>
-    long getdents(
-        int   dd_fd,
-        char *dd_buf,
-        int   dd_len
-    );
+```c
+#include <unistd.h>
+#include <linux/dirent.h>
+#include <linux/unistd.h>
+long getdents(
+    int   dd_fd,
+    char *dd_buf,
+    int   dd_len
+);
+```
 
 **STATUS CODES:**
 
-A successful call to ``getdents`` returns th the number of bytes read.  On end
+A successful call to `getdents` returns th the number of bytes read. On end
 of directory, 0 is returned. When an error occurs, -1 is returned, and
-``errno`` is set appropriately.
+`errno` is set appropriately.
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1472,38 +1567,43 @@ of directory, 0 is returned. When an error occurs, -1 is returned, and
    - No such directory.
  * - ``ENOTDIR``
    - File descriptor does not refer to a directory.
+```
 
 **DESCRIPTION:**
 
-``getdents`` reads several ``dirent`` structures from the directory pointed by
-``fd`` into the memory area pointed to by ``dirp``. The parameter ``count`` is
+`getdents` reads several `dirent` structures from the directory pointed by
+`fd` into the memory area pointed to by `dirp`. The parameter `count` is
 the size of the memory area.
 
 **NOTES:**
 
 NONE
 
-.. _chown:
+(chown)=
 
-chown - Changes the owner and/or group of a file.
--------------------------------------------------
-.. index:: chown
-.. index:: changes the owner and/or group of a file.
+### chown - Changes the owner and/or group of a file.
+
+```{index} chown
+```
+
+```{index} changes the owner and/or group of a file.
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    #include <unistd.h>
-    int chown(
-        const char *path,
-        uid_t       owner,
-        gid_t       group
-    );
+```c
+#include <sys/types.h>
+#include <unistd.h>
+int chown(
+    const char *path,
+    uid_t       owner,
+    gid_t       group
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1524,45 +1624,50 @@ chown - Changes the owner and/or group of a file.
      priviledges or permissions to perform the requested operations.
  * - ``EROFS``
    - Read-only file system.
+```
 
 **DESCRIPTION:**
 
-The user ID and group ID of the file named by ``path`` are set to ``owner`` and
-``path``, respectively.
+The user ID and group ID of the file named by `path` are set to `owner` and
+`path`, respectively.
 
-For regular files, the set group ID (``S_ISGID``) and set user ID (``S_ISUID``)
+For regular files, the set group ID (`S_ISGID`) and set user ID (`S_ISUID`)
 bits are cleared.
 
 Some systems consider it a security violation to allow the owner of a file to
 be changed, If users are billed for disk space usage, loaning a file to another
-user could result in incorrect billing. The ``chown()`` function may be
+user could result in incorrect billing. The `chown()` function may be
 restricted to privileged users for some or all files. The group ID can still be
 changed to one of the supplementary group IDs.
 
 **NOTES:**
 
-This function may be restricted for some file. The ``pathconf`` function can be
-used to test the ``_PC_CHOWN_RESTRICTED`` flag.
+This function may be restricted for some file. The `pathconf` function can be
+used to test the `_PC_CHOWN_RESTRICTED` flag.
 
-.. _utime:
+(utime)=
 
-utime - Change access and/or modification times of an inode
------------------------------------------------------------
-.. index:: utime
-.. index:: change access and/or modification times of an inode
+### utime - Change access and/or modification times of an inode
+
+```{index} utime
+```
+
+```{index} change access and/or modification times of an inode
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/types.h>
-    int utime(
-        const char     *filename,
-        struct utimbuf *buf
-    );
+```c
+#include <sys/types.h>
+int utime(
+    const char     *filename,
+    struct utimbuf *buf
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1570,37 +1675,42 @@ utime - Change access and/or modification times of an inode
    - Permission to write the file is denied
  * - ``ENOENT``
    - ``Filename`` does not exist
+```
 
 **DESCRIPTION:**
 
-``Utime`` changes the access and modification times of the inode specified by
-``filename`` to the ``actime`` and ``modtime`` fields of ``buf``
-respectively. If ``buf`` is ``NULL``, then the access and modification times of the
+`Utime` changes the access and modification times of the inode specified by
+`filename` to the `actime` and `modtime` fields of `buf`
+respectively. If `buf` is `NULL`, then the access and modification times of the
 file are set to the current time.
 
 **NOTES:**
 
 NONE
 
-.. _ftruncate:
+(ftruncate)=
 
-ftruncate - truncate a file to a specified length
--------------------------------------------------
-.. index:: ftruncate
-.. index:: truncate a file to a specified length
+### ftruncate - truncate a file to a specified length
+
+```{index} ftruncate
+```
+
+```{index} truncate a file to a specified length
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int ftrunctate(
-        int    fd,
-        size_t length
-    );
+```c
+#include <unistd.h>
+int ftrunctate(
+    int    fd,
+    size_t length
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1631,37 +1741,42 @@ ftruncate - truncate a file to a specified length
    - ``Path`` points outside the process's allocated address space.
  * - ``EBADF``
    - The ``fd`` is not a valid descriptor.
+```
 
 **DESCRIPTION:**
 
-``truncate()`` causes the file named by ``path`` or referenced by ``fd`` to be
-truncated to at most ``length`` bytes in size. If the file previously was
-larger than this size, the extra data is lost. With ``ftruncate()``, the file
+`truncate()` causes the file named by `path` or referenced by `fd` to be
+truncated to at most `length` bytes in size. If the file previously was
+larger than this size, the extra data is lost. With `ftruncate()`, the file
 must be open for writing.
 
 **NOTES:**
 
 NONE
 
-.. _truncate:
+(truncate)=
 
-truncate - truncate a file to a specified length
-------------------------------------------------
-.. index:: truncate
-.. index:: truncate a file to a specified length
+### truncate - truncate a file to a specified length
+
+```{index} truncate
+```
+
+```{index} truncate a file to a specified length
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int trunctate(
-        const char *path,
-        size_t      length
-    );
+```c
+#include <unistd.h>
+int trunctate(
+    const char *path,
+    size_t      length
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1692,37 +1807,42 @@ truncate - truncate a file to a specified length
    - ``Path`` points outside the process's allocated address space.
  * - ``EBADF``
    - The ``fd`` is not a valid descriptor.
+```
 
 **DESCRIPTION:**
 
-``truncate()`` causes the file named by ``path`` or referenced by``fd`` to be
-truncated to at most ``length`` bytes in size. If the file previously was
-larger than this size, the extra data is lost. With ``ftruncate()``, the file
+`truncate()` causes the file named by `path` or referenced by\`\`fd\`\` to be
+truncated to at most `length` bytes in size. If the file previously was
+larger than this size, the extra data is lost. With `ftruncate()`, the file
 must be open for writing.
 
 **NOTES:**
 
 NONE
 
-.. _pathconf:
+(pathconf)=
 
-pathconf - Gets configuration values for files
-----------------------------------------------
-.. index:: pathconf
-.. index:: gets configuration values for files
+### pathconf - Gets configuration values for files
+
+```{index} pathconf
+```
+
+```{index} gets configuration values for files
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int pathconf(
-        const char *path,
-        int         name
-    );
+```c
+#include <unistd.h>
+int pathconf(
+    const char *path,
+    int         name
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1738,14 +1858,16 @@ pathconf - Gets configuration values for files
  * - ``ENOTDIR``
    - A component of the specified ``path`` was not a directory whan a directory
      was expected.
+```
 
 **DESCRIPTION:**
 
-``pathconf()`` gets a value for the configuration option ``name`` for the open
-file descriptor ``filedes``.
+`pathconf()` gets a value for the configuration option `name` for the open
+file descriptor `filedes`.
 
-The possible values for ``name`` are:
+The possible values for `name` are:
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1777,31 +1899,36 @@ The possible values for ``name`` are:
      file. If``filedes`` or ``path`` refer to a directory, then this applies to
      all files in that directory. The corresponding macro is
      ``_POSIX_CHOWN_RESTRICTED``.
+```
 
 **NOTES:**
 
-Files with name lengths longer than the value returned for ``name`` equal
-``_PC_NAME_MAX`` may exist in the given directory.
+Files with name lengths longer than the value returned for `name` equal
+`_PC_NAME_MAX` may exist in the given directory.
 
-.. _fpathconf:
+(fpathconf)=
 
-fpathconf - Gets configuration values for files
------------------------------------------------
-.. index:: fpathconf
-.. index:: gets configuration values for files
+### fpathconf - Gets configuration values for files
+
+```{index} fpathconf
+```
+
+```{index} gets configuration values for files
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    int fpathconf(
-        int filedes,
-        int name
-    );
+```c
+#include <unistd.h>
+int fpathconf(
+    int filedes,
+    int name
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1817,14 +1944,16 @@ fpathconf - Gets configuration values for files
  * - ``ENOTDIR``
    - A component of the specified ``path`` was not a directory whan a directory
      was expected.
+```
 
 **DESCRIPTION:**
 
-``pathconf()`` gets a value for the configuration option ``name`` for the open
-file descriptor ``filedes``.
+`pathconf()` gets a value for the configuration option `name` for the open
+file descriptor `filedes`.
 
 The possible values for name are:
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1856,37 +1985,42 @@ The possible values for name are:
      ``filedes`` or ``path`` refer to a directory, then this applies to all
      files in that directory. The corresponding macro is
      ``_POSIX_CHOWN_RESTRICTED``.
+```
 
 **NOTES:**
 
 NONE
 
-.. _mknod:
+(mknod)=
 
-mknod - create a directory
---------------------------
-.. index:: mknod
-.. index:: create a directory
+### mknod - create a directory
+
+```{index} mknod
+```
+
+```{index} create a directory
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <unistd.h>
-    #include <fcntl.h>
-    #include <sys/types.h>
-    #include <sys/stat.h>
-    long mknod(
-        const char *pathname,
-        mode_t      mode,
-        dev_t       dev
-    );
+```c
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+long mknod(
+    const char *pathname,
+    mode_t      mode,
+    dev_t       dev
+);
+```
 
 **STATUS CODES:**
 
-``mknod`` returns zero on success, or -1 if an error occurred (in which case,
+`mknod` returns zero on success, or -1 if an error occurred (in which case,
 errno is set appropriately).
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -1907,26 +2041,27 @@ errno is set appropriately).
      symbolic link whose expansion contains a reference to itself.
  * - ``ENOSPC``
    - The device containing ``pathname`` has no room for the new node.
+```
 
 **DESCRIPTION:**
 
-``mknod`` attempts to create a filesystem node (file, device special file or
-named pipe) named ``pathname``, specified by ``mode`` and ``dev``.
+`mknod` attempts to create a filesystem node (file, device special file or
+named pipe) named `pathname`, specified by `mode` and `dev`.
 
-``mode`` specifies both the permissions to use and the type of node to be created.
+`mode` specifies both the permissions to use and the type of node to be created.
 
 It should be a combination (using bitwise OR) of one of the file types listed
 below and the permissions for the new node.
 
-The permissions are modified by the process's ``umask`` in the usual way: the
-permissions of the created node are ``(mode & ~umask)``.
+The permissions are modified by the process's `umask` in the usual way: the
+permissions of the created node are `(mode & ~umask)`.
 
-The file type should be one of ``S_IFREG``, ``S_IFCHR``, ``S_IFBLK`` and
-``S_IFIFO`` to specify a normal file (which will be created empty), character
+The file type should be one of `S_IFREG`, `S_IFCHR`, `S_IFBLK` and
+`S_IFIFO` to specify a normal file (which will be created empty), character
 special file, block special file or FIFO (named pipe), respectively, or zero,
 which will create a normal file.
 
-If the file type is ``S_IFCHR`` or ``S_IFBLK`` then ``dev`` specifies the major
+If the file type is `S_IFCHR` or `S_IFBLK` then `dev` specifies the major
 and minor numbers of the newly created device special file; otherwise it is
 ignored.
 

@@ -1,19 +1,21 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2023 OAR Corporation
+% Copyright (C) 2023 OAR Corporation
 
-.. index:: regulator
+```{index} regulator
+```
 
-.. _RTEMSAPIRegulator
+% RTEMSAPIRegulator
 
-Regulator Manager
-*****************
+# Regulator Manager
 
-.. toctree::
+```{toctree}
+introduction
+background
+operations
+directives
+```
 
-    introduction
-    background
-    operations
-    directives
-..  deprecated-directives
-..  removed-directives
+% deprecated-directives
+
+% removed-directives

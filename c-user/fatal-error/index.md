@@ -1,17 +1,17 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2021 embedded brains GmbH & Co. KG
+% Copyright (C) 2021 embedded brains GmbH & Co. KG
 
-.. index:: fatal errors
+```{index} fatal errors
+```
 
-.. _RTEMSAPIClassicFatal:
+(rtemsapiclassicfatal)=
 
-Fatal Error Manager
-*******************
+# Fatal Error Manager
 
-.. toctree::
-
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

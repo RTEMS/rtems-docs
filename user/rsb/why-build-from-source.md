@@ -1,18 +1,17 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
-.. _WhyBuildFromSource:
+(whybuildfromsource)=
 
-Why Build from Source?
-----------------------
+# Why Build from Source?
 
 The RTEMS Source Builder is not a replacement for the binary install systems
 you have with commercial operating systems or open source operating system
 distributions. Those products and distributions are critically important and
 are the base that allows the RSB to work. The RTEMS Source Builder sits
 somewhere between you manually entering the commands to build a tool set and a
-tool such as ``yum`` or ``apt-get`` to install binary packages made
+tool such as `yum` or `apt-get` to install binary packages made
 specifically for your host operating system. Building manually or installing a
 binary package from a remote repository are valid and real alternatives. The
 RSB provides the specific service of repeatably being able to build tool sets
@@ -46,7 +45,7 @@ tools. Building your tools from source and controlling the specific version of
 these dependent parts means you are not exposing yourself to unexpected and
 often difficult to resolve problems. On the other side you need to make sure
 your tools build and work with newer versions of the host operating
-system. Given the stability of standards based libraries like ``libc`` and ever
+system. Given the stability of standards based libraries like `libc` and ever
 improving support for standard header file locations this task is becoming
 easier.
 

@@ -1,17 +1,17 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: timers
+```{index} timers
+```
 
-.. _RTEMSAPIClassicTimer:
+(rtemsapiclassictimer)=
 
-Timer Manager
-*************
+# Timer Manager
 
-.. toctree::
-
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

@@ -1,1550 +1,1828 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2009, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2009, 2021 embedded brains GmbH & Co. KG
 
-.. This file is part of the RTEMS quality process and was automatically
-.. generated.  If you find something that needs to be fixed or
-.. worded better please post a report or patch to an RTEMS mailing list
-.. or raise a bug report:
-..
-.. https://www.rtems.org/bugs.html
-..
-.. For information on updating and regenerating please refer to the How-To
-.. section in the Software Requirements Engineering chapter of the
-.. RTEMS Software Engineering manual.  The manual is provided as a part of
-.. a release.  For development sources please refer to the online
-.. documentation at:
-..
-.. https://docs.rtems.org
+% Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
 
-.. _ApplicationConfigurationInformationDirectives:
+% This file is part of the RTEMS quality process and was automatically
 
-Directives
-==========
+% generated.  If you find something that needs to be fixed or
+
+% worded better please post a report or patch to an RTEMS mailing list
+
+% or raise a bug report:
+
+%
+
+% https://www.rtems.org/bugs.html
+
+%
+
+% For information on updating and regenerating please refer to the How-To
+
+% section in the Software Requirements Engineering chapter of the
+
+% RTEMS Software Engineering manual.  The manual is provided as a part of
+
+% a release.  For development sources please refer to the online
+
+% documentation at:
+
+%
+
+% https://docs.rtems.org
+
+(applicationconfigurationinformationdirectives)=
+
+# Directives
 
 This section details the directives of the Application Configuration
 Information. A subsection is dedicated to each of this manager's directives and
 lists the calling sequence, parameters, description, return values, and notes
 of the directive.
 
-.. Generated from spec:/rtems/config/if/get-build-label
+% Generated from spec:/rtems/config/if/get-build-label
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} rtems_get_build_label()
+```
 
-.. index:: rtems_get_build_label()
+(interfacertemsgetbuildlabel)=
 
-.. _InterfaceRtemsGetBuildLabel:
-
-rtems_get_build_label()
------------------------
+## rtems_get_build_label()
 
 Gets the RTEMS build label.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const char *rtems_get_build_label( void );
+```
 
-    const char *rtems_get_build_label( void );
-
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The build label is a user-provided string defined by the build configuration
-through the ``RTEMS_BUILD_LABEL`` build option.  The format of the string is
+through the `RTEMS_BUILD_LABEL` build option. The format of the string is
 completely user-defined.
 
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the RTEMS build label.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The build label can be used to distinguish test suite results obtained from
-different build configurations.  A use case is to record test results with
-performance data to track performance regressions.  For this a database of
-performance limits is required.  The build label and the target hash obtained
-from :ref:`InterfaceRtemsGetTargetHash` can be used as a key to obtain
+different build configurations. A use case is to record test results with
+performance data to track performance regressions. For this a database of
+performance limits is required. The build label and the target hash obtained
+from {ref}`InterfaceRtemsGetTargetHash` can be used as a key to obtain
 performance limits.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-copyright-notice
 
-.. Generated from spec:/rtems/config/if/get-copyright-notice
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_get_copyright_notice()
+```
 
-    \clearpage
+(interfacertemsgetcopyrightnotice)=
 
-.. index:: rtems_get_copyright_notice()
-
-.. _InterfaceRtemsGetCopyrightNotice:
-
-rtems_get_copyright_notice()
-----------------------------
+## rtems_get_copyright_notice()
 
 Gets the RTEMS copyright notice.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const char *rtems_get_copyright_notice( void );
+```
 
-    const char *rtems_get_copyright_notice( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the RTEMS copyright notice.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-target-hash
 
-.. Generated from spec:/rtems/config/if/get-target-hash
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_get_target_hash()
+```
 
-    \clearpage
+(interfacertemsgettargethash)=
 
-.. index:: rtems_get_target_hash()
-
-.. _InterfaceRtemsGetTargetHash:
-
-rtems_get_target_hash()
------------------------
+## rtems_get_target_hash()
 
 Gets the RTEMS target hash.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const char *rtems_get_target_hash( void );
+```
 
-    const char *rtems_get_target_hash( void );
-
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The target hash is calculated from BSP-specific values which characterize a
-target system.  The target hash is encoded as a base64url string.  The target
+target system. The target hash is encoded as a base64url string. The target
 hash algorithm is unspecified.
 
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the RTEMS target hash.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 For example, the device tree, settings of the memory controller, processor and
 bus frequencies, a serial number of a chip may be used to calculate the target
 hash.
 
 The target hash can be used to distinguish test suite results obtained from
-different target systems.  See also :ref:`InterfaceRtemsGetBuildLabel`.
+different target systems. See also {ref}`InterfaceRtemsGetBuildLabel`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-version-string
 
-.. Generated from spec:/rtems/config/if/get-version-string
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_get_version_string()
+```
 
-    \clearpage
+(interfacertemsgetversionstring)=
 
-.. index:: rtems_get_version_string()
-
-.. _InterfaceRtemsGetVersionString:
-
-rtems_get_version_string()
---------------------------
+## rtems_get_version_string()
 
 Gets the RTEMS version string.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const char *rtems_get_version_string( void );
+```
 
-    const char *rtems_get_version_string( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the RTEMS version string.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The version string has no particular format.  Parsing the string may break
+The version string has no particular format. Parsing the string may break
 across RTEMS releases.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-do-zero-of-workspace
 
-.. Generated from spec:/rtems/config/if/get-do-zero-of-workspace
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_do_zero_of_workspace()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetdozeroofworkspace)=
 
-.. index:: rtems_configuration_get_do_zero_of_workspace()
-
-.. _InterfaceRtemsConfigurationGetDoZeroOfWorkspace:
-
-rtems_configuration_get_do_zero_of_workspace()
-----------------------------------------------
+## rtems_configuration_get_do_zero_of_workspace()
 
 Indicates if the RTEMS Workspace is configured to be zeroed during system
 initialization for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+bool rtems_configuration_get_do_zero_of_workspace( void );
+```
 
-    bool rtems_configuration_get_do_zero_of_workspace( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns true, if the RTEMS Workspace is configured to be zeroed during system
 initialization for this application, otherwise false.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The setting is defined by the :ref:`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY`
+The setting is defined by the {ref}`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY`
 application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-idle-task-stack-size
 
-.. Generated from spec:/rtems/config/if/get-idle-task-stack-size
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_idle_task_stack_size()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetidletaskstacksize)=
 
-.. index:: rtems_configuration_get_idle_task_stack_size()
-
-.. _InterfaceRtemsConfigurationGetIdleTaskStackSize:
-
-rtems_configuration_get_idle_task_stack_size()
-----------------------------------------------
+## rtems_configuration_get_idle_task_stack_size()
 
 Gets the IDLE task stack size in bytes of this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+size_t rtems_configuration_get_idle_task_stack_size( void );
+```
 
-    size_t rtems_configuration_get_idle_task_stack_size( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the IDLE task stack size in bytes of this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The IDLE task stack size is defined by the
-:ref:`CONFIGURE_IDLE_TASK_STACK_SIZE` application configuration option.
+{ref}`CONFIGURE_IDLE_TASK_STACK_SIZE` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-idle-task
 
-.. Generated from spec:/rtems/config/if/get-idle-task
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_idle_task()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetidletask)=
 
-.. index:: rtems_configuration_get_idle_task()
-
-.. _InterfaceRtemsConfigurationGetIdleTask:
-
-rtems_configuration_get_idle_task()
------------------------------------
+## rtems_configuration_get_idle_task()
 
 Gets the IDLE task body of this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void *( * )( uintptr_t ) rtems_configuration_get_idle_task( void );
+```
 
-    void *( * )( uintptr_t ) rtems_configuration_get_idle_task( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the IDLE task body of this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The IDLE task body is defined by the :ref:`CONFIGURE_IDLE_TASK_BODY`
+The IDLE task body is defined by the {ref}`CONFIGURE_IDLE_TASK_BODY`
 application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-interrupt-stack-size
 
-.. Generated from spec:/rtems/config/if/get-interrupt-stack-size
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_interrupt_stack_size()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetinterruptstacksize)=
 
-.. index:: rtems_configuration_get_interrupt_stack_size()
-
-.. _InterfaceRtemsConfigurationGetInterruptStackSize:
-
-rtems_configuration_get_interrupt_stack_size()
-----------------------------------------------
+## rtems_configuration_get_interrupt_stack_size()
 
 Gets the interrupt stack size in bytes of this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+size_t rtems_configuration_get_interrupt_stack_size( void );
+```
 
-    size_t rtems_configuration_get_interrupt_stack_size( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the interrupt stack size in bytes of this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The interrupt stack size is defined by the
-:ref:`CONFIGURE_INTERRUPT_STACK_SIZE` application configuration option.
+{ref}`CONFIGURE_INTERRUPT_STACK_SIZE` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-barriers
 
-.. Generated from spec:/rtems/config/if/get-maximum-barriers
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_barriers()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumbarriers)=
 
-.. index:: rtems_configuration_get_maximum_barriers()
+## rtems_configuration_get_maximum_barriers()
 
-.. _InterfaceRtemsConfigurationGetMaximumBarriers:
-
-rtems_configuration_get_maximum_barriers()
-------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicBarrier` objects configured
+Gets the resource number of {ref}`RTEMSAPIClassicBarrier` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_barriers( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_barriers( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicBarrier` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicBarrier` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_BARRIERS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_BARRIERS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-extensions
 
-.. Generated from spec:/rtems/config/if/get-maximum-extensions
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_extensions()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumextensions)=
 
-.. index:: rtems_configuration_get_maximum_extensions()
+## rtems_configuration_get_maximum_extensions()
 
-.. _InterfaceRtemsConfigurationGetMaximumExtensions:
-
-rtems_configuration_get_maximum_extensions()
---------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicUserExt` objects configured
+Gets the resource number of {ref}`RTEMSAPIClassicUserExt` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_extensions( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_extensions( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicUserExt` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicUserExt` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_USER_EXTENSIONS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_USER_EXTENSIONS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-message-queues
 
-.. Generated from spec:/rtems/config/if/get-maximum-message-queues
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_message_queues()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximummessagequeues)=
 
-.. index:: rtems_configuration_get_maximum_message_queues()
+## rtems_configuration_get_maximum_message_queues()
 
-.. _InterfaceRtemsConfigurationGetMaximumMessageQueues:
-
-rtems_configuration_get_maximum_message_queues()
-------------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicMessage` objects configured
+Gets the resource number of {ref}`RTEMSAPIClassicMessage` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_message_queues( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_message_queues( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicMessage` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicMessage` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-partitions
 
-.. Generated from spec:/rtems/config/if/get-maximum-partitions
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_partitions()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumpartitions)=
 
-.. index:: rtems_configuration_get_maximum_partitions()
+## rtems_configuration_get_maximum_partitions()
 
-.. _InterfaceRtemsConfigurationGetMaximumPartitions:
-
-rtems_configuration_get_maximum_partitions()
---------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicPart` objects configured for
+Gets the resource number of {ref}`RTEMSAPIClassicPart` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_partitions( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_partitions( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicPart` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicPart` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_PARTITIONS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_PARTITIONS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-periods
 
-.. Generated from spec:/rtems/config/if/get-maximum-periods
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_periods()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumperiods)=
 
-.. index:: rtems_configuration_get_maximum_periods()
+## rtems_configuration_get_maximum_periods()
 
-.. _InterfaceRtemsConfigurationGetMaximumPeriods:
-
-rtems_configuration_get_maximum_periods()
------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicRatemon` objects configured
+Gets the resource number of {ref}`RTEMSAPIClassicRatemon` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_periods( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_periods( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicRatemon` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicRatemon` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_PERIODS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_PERIODS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-ports
 
-.. Generated from spec:/rtems/config/if/get-maximum-ports
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_ports()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumports)=
 
-.. index:: rtems_configuration_get_maximum_ports()
+## rtems_configuration_get_maximum_ports()
 
-.. _InterfaceRtemsConfigurationGetMaximumPorts:
-
-rtems_configuration_get_maximum_ports()
----------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicDPMem` objects configured for
+Gets the resource number of {ref}`RTEMSAPIClassicDPMem` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_ports( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_ports( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicDPMem` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicDPMem` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_PORTS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_PORTS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-processors
 
-.. Generated from spec:/rtems/config/if/get-maximum-processors
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_processors()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumprocessors)=
 
-.. index:: rtems_configuration_get_maximum_processors()
-
-.. _InterfaceRtemsConfigurationGetMaximumProcessors:
-
-rtems_configuration_get_maximum_processors()
---------------------------------------------
+## rtems_configuration_get_maximum_processors()
 
 Gets the maximum number of processors configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_processors( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_processors( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the maximum number of processors configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The actual number of processors available to the application is returned by
-:ref:`InterfaceRtemsSchedulerGetProcessorMaximum` which less than or equal to
+{ref}`InterfaceRtemsSchedulerGetProcessorMaximum` which less than or equal to
 the configured maximum number of processors
-(:ref:`CONFIGURE_MAXIMUM_PROCESSORS`).
+({ref}`CONFIGURE_MAXIMUM_PROCESSORS`).
 
 In uniprocessor configurations, this macro is a compile time constant which
 evaluates to one.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-regions
 
-.. Generated from spec:/rtems/config/if/get-maximum-regions
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_regions()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumregions)=
 
-.. index:: rtems_configuration_get_maximum_regions()
+## rtems_configuration_get_maximum_regions()
 
-.. _InterfaceRtemsConfigurationGetMaximumRegions:
-
-rtems_configuration_get_maximum_regions()
------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicRegion` objects configured for
+Gets the resource number of {ref}`RTEMSAPIClassicRegion` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_regions( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_regions( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicRegion` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicRegion` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_REGIONS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_REGIONS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-semaphores
 
-.. Generated from spec:/rtems/config/if/get-maximum-semaphores
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_semaphores()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumsemaphores)=
 
-.. index:: rtems_configuration_get_maximum_semaphores()
+## rtems_configuration_get_maximum_semaphores()
 
-.. _InterfaceRtemsConfigurationGetMaximumSemaphores:
-
-rtems_configuration_get_maximum_semaphores()
---------------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicSem` objects configured for
+Gets the resource number of {ref}`RTEMSAPIClassicSem` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_semaphores( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_semaphores( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicSem` objects configured for
+Returns the resource number of {ref}`RTEMSAPIClassicSem` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_SEMAPHORES`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_SEMAPHORES`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-tasks
 
-.. Generated from spec:/rtems/config/if/get-maximum-tasks
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_tasks()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumtasks)=
 
-.. index:: rtems_configuration_get_maximum_tasks()
+## rtems_configuration_get_maximum_tasks()
 
-.. _InterfaceRtemsConfigurationGetMaximumTasks:
-
-rtems_configuration_get_maximum_tasks()
----------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicTasks` objects configured for
+Gets the resource number of {ref}`RTEMSAPIClassicTasks` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_tasks( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_tasks( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicTasks` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicTasks` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_TASKS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_TASKS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-maximum-timers
 
-.. Generated from spec:/rtems/config/if/get-maximum-timers
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_maximum_timers()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmaximumtimers)=
 
-.. index:: rtems_configuration_get_maximum_timers()
+## rtems_configuration_get_maximum_timers()
 
-.. _InterfaceRtemsConfigurationGetMaximumTimers:
-
-rtems_configuration_get_maximum_timers()
-----------------------------------------
-
-Gets the resource number of :ref:`RTEMSAPIClassicTimer` objects configured for
+Gets the resource number of {ref}`RTEMSAPIClassicTimer` objects configured for
 this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_maximum_timers( void );
+```
 
-    uint32_t rtems_configuration_get_maximum_timers( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the resource number of :ref:`RTEMSAPIClassicTimer` objects configured
+Returns the resource number of {ref}`RTEMSAPIClassicTimer` objects configured
 for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The resource number is defined by the :ref:`CONFIGURE_MAXIMUM_TIMERS`
-application configuration option.  See also
-:ref:`InterfaceRtemsResourceIsUnlimited` and
-:ref:`InterfaceRtemsResourceMaximumPerAllocation`.
+The resource number is defined by the {ref}`CONFIGURE_MAXIMUM_TIMERS`
+application configuration option. See also
+{ref}`InterfaceRtemsResourceIsUnlimited` and
+{ref}`InterfaceRtemsResourceMaximumPerAllocation`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-microseconds-per-tick
 
-.. Generated from spec:/rtems/config/if/get-microseconds-per-tick
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_microseconds_per_tick()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmicrosecondspertick)=
 
-.. index:: rtems_configuration_get_microseconds_per_tick()
-
-.. _InterfaceRtemsConfigurationGetMicrosecondsPerTick:
-
-rtems_configuration_get_microseconds_per_tick()
------------------------------------------------
+## rtems_configuration_get_microseconds_per_tick()
 
 Gets the number of microseconds per clock tick configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_microseconds_per_tick( void );
+```
 
-    uint32_t rtems_configuration_get_microseconds_per_tick( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the number of microseconds per clock tick configured for this
 application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The number of microseconds per :term:`clock tick` is defined by the
-:ref:`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
+The number of microseconds per {term}`clock tick` is defined by the
+{ref}`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-milliseconds-per-tick
 
-.. Generated from spec:/rtems/config/if/get-milliseconds-per-tick
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_milliseconds_per_tick()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetmillisecondspertick)=
 
-.. index:: rtems_configuration_get_milliseconds_per_tick()
-
-.. _InterfaceRtemsConfigurationGetMillisecondsPerTick:
-
-rtems_configuration_get_milliseconds_per_tick()
------------------------------------------------
+## rtems_configuration_get_milliseconds_per_tick()
 
 Gets the number of milliseconds per clock tick configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_milliseconds_per_tick( void );
+```
 
-    uint32_t rtems_configuration_get_milliseconds_per_tick( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the number of milliseconds per clock tick configured for this
 application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The number of milliseconds per :term:`clock tick` is defined by the
-:ref:`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
+The number of milliseconds per {term}`clock tick` is defined by the
+{ref}`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-nanoseconds-per-tick
 
-.. Generated from spec:/rtems/config/if/get-nanoseconds-per-tick
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_nanoseconds_per_tick()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetnanosecondspertick)=
 
-.. index:: rtems_configuration_get_nanoseconds_per_tick()
-
-.. _InterfaceRtemsConfigurationGetNanosecondsPerTick:
-
-rtems_configuration_get_nanoseconds_per_tick()
-----------------------------------------------
+## rtems_configuration_get_nanoseconds_per_tick()
 
 Gets the number of microseconds per clock tick configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_nanoseconds_per_tick( void );
+```
 
-    uint32_t rtems_configuration_get_nanoseconds_per_tick( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the number of microseconds per clock tick configured for this
 application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The number of nanoseconds per :term:`clock tick` is defined by the
-:ref:`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
+The number of nanoseconds per {term}`clock tick` is defined by the
+{ref}`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-number-of-initial-extensions
 
-.. Generated from spec:/rtems/config/if/get-number-of-initial-extensions
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_number_of_initial_extensions()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetnumberofinitialextensions)=
 
-.. index:: rtems_configuration_get_number_of_initial_extensions()
-
-.. _InterfaceRtemsConfigurationGetNumberOfInitialExtensions:
-
-rtems_configuration_get_number_of_initial_extensions()
-------------------------------------------------------
+## rtems_configuration_get_number_of_initial_extensions()
 
 Gets the number of initial extensions configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_number_of_initial_extensions( void );
+```
 
-    uint32_t rtems_configuration_get_number_of_initial_extensions( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the number of initial extensions configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The number of initial extensions is defined by the
-:ref:`CONFIGURE_INITIAL_EXTENSIONS` application configuration option and
+{ref}`CONFIGURE_INITIAL_EXTENSIONS` application configuration option and
 related options.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-stack-allocate-for-idle-hook
 
-.. Generated from spec:/rtems/config/if/get-stack-allocate-for-idle-hook
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_stack_allocate_for_idle_hook()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetstackallocateforidlehook)=
 
-.. index:: rtems_configuration_get_stack_allocate_for_idle_hook()
-
-.. _InterfaceRtemsConfigurationGetStackAllocateForIdleHook:
-
-rtems_configuration_get_stack_allocate_for_idle_hook()
-------------------------------------------------------
+## rtems_configuration_get_stack_allocate_for_idle_hook()
 
 Gets the task stack allocator allocate hook used to allocate the stack of each
-:term:`IDLE task` configured for this application.
+{term}`IDLE task` configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void *( * )( uint32_t, size_t * )
+rtems_configuration_get_stack_allocate_for_idle_hook( void );
+```
 
-    void *( * )( uint32_t, size_t * )
-    rtems_configuration_get_stack_allocate_for_idle_hook( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the task stack allocator allocate hook used to allocate the stack of
-each :term:`IDLE task` configured for this application.
+each {term}`IDLE task` configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The task stack allocator allocate hook for idle tasks is defined by the
-:ref:`CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE` application configuration
+{ref}`CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE` application configuration
 option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-stack-allocate-hook
 
-.. Generated from spec:/rtems/config/if/get-stack-allocate-hook
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_stack_allocate_hook()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetstackallocatehook)=
 
-.. index:: rtems_configuration_get_stack_allocate_hook()
-
-.. _InterfaceRtemsConfigurationGetStackAllocateHook:
-
-rtems_configuration_get_stack_allocate_hook()
----------------------------------------------
+## rtems_configuration_get_stack_allocate_hook()
 
 Gets the task stack allocator allocate hook configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void *( * )( size_t ) rtems_configuration_get_stack_allocate_hook( void );
+```
 
-    void *( * )( size_t ) rtems_configuration_get_stack_allocate_hook( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the task stack allocator allocate hook configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The task stack allocator allocate hook is defined by the
-:ref:`CONFIGURE_TASK_STACK_ALLOCATOR` application configuration option.
+{ref}`CONFIGURE_TASK_STACK_ALLOCATOR` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-stack-allocate-init-hook
 
-.. Generated from spec:/rtems/config/if/get-stack-allocate-init-hook
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_stack_allocate_init_hook()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetstackallocateinithook)=
 
-.. index:: rtems_configuration_get_stack_allocate_init_hook()
-
-.. _InterfaceRtemsConfigurationGetStackAllocateInitHook:
-
-rtems_configuration_get_stack_allocate_init_hook()
---------------------------------------------------
+## rtems_configuration_get_stack_allocate_init_hook()
 
 Gets the task stack allocator initialization hook configured for this
 application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void ( * )( size_t ) rtems_configuration_get_stack_allocate_init_hook( void );
+```
 
-    void ( * )( size_t ) rtems_configuration_get_stack_allocate_init_hook( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the task stack allocator initialization hook configured for this
 application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The task stack allocator initialization hook is defined by the
-:ref:`CONFIGURE_TASK_STACK_ALLOCATOR_INIT` application configuration option.
+{ref}`CONFIGURE_TASK_STACK_ALLOCATOR_INIT` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-stack-allocator-avoids-work-space
 
-.. Generated from spec:/rtems/config/if/get-stack-allocator-avoids-work-space
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_stack_allocator_avoids_work_space()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetstackallocatoravoidsworkspace)=
 
-.. index:: rtems_configuration_get_stack_allocator_avoids_work_space()
-
-.. _InterfaceRtemsConfigurationGetStackAllocatorAvoidsWorkSpace:
-
-rtems_configuration_get_stack_allocator_avoids_work_space()
------------------------------------------------------------
+## rtems_configuration_get_stack_allocator_avoids_work_space()
 
 Indicates if the task stack allocator is configured to avoid the RTEMS
 Workspace for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+bool rtems_configuration_get_stack_allocator_avoids_work_space( void );
+```
 
-    bool rtems_configuration_get_stack_allocator_avoids_work_space( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns true, if the task stack allocator is configured to avoid the RTEMS
 Workspace for this application, otherwise false.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The setting is defined by the
-:ref:`CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE` application
+{ref}`CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE` application
 configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-stack-free-hook
 
-.. Generated from spec:/rtems/config/if/get-stack-free-hook
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_stack_free_hook()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetstackfreehook)=
 
-.. index:: rtems_configuration_get_stack_free_hook()
-
-.. _InterfaceRtemsConfigurationGetStackFreeHook:
-
-rtems_configuration_get_stack_free_hook()
------------------------------------------
+## rtems_configuration_get_stack_free_hook()
 
 Gets the task stack allocator free hook configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void ( * )( void * ) rtems_configuration_get_stack_free_hook( void );
+```
 
-    void ( * )( void * ) rtems_configuration_get_stack_free_hook( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the task stack allocator free hook configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The task stack allocator free hook is defined by the
-:ref:`CONFIGURE_TASK_STACK_DEALLOCATOR` application configuration option.
+{ref}`CONFIGURE_TASK_STACK_DEALLOCATOR` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-stack-space-size
 
-.. Generated from spec:/rtems/config/if/get-stack-space-size
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_stack_space_size()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetstackspacesize)=
 
-.. index:: rtems_configuration_get_stack_space_size()
-
-.. _InterfaceRtemsConfigurationGetStackSpaceSize:
-
-rtems_configuration_get_stack_space_size()
-------------------------------------------
+## rtems_configuration_get_stack_space_size()
 
 Gets the configured size in bytes of the memory space used to allocate thread
 stacks for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uintptr_t rtems_configuration_get_stack_space_size( void );
+```
 
-    uintptr_t rtems_configuration_get_stack_space_size( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the configured size in bytes of the memory space used to allocate
 thread stacks for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The size takes only threads and tasks into account with are known at the
 application configuration time.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-ticks-per-timeslice
 
-.. Generated from spec:/rtems/config/if/get-ticks-per-timeslice
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_ticks_per_timeslice()
+```
 
-    \clearpage
+(interfacertemsconfigurationgettickspertimeslice)=
 
-.. index:: rtems_configuration_get_ticks_per_timeslice()
-
-.. _InterfaceRtemsConfigurationGetTicksPerTimeslice:
-
-rtems_configuration_get_ticks_per_timeslice()
----------------------------------------------
+## rtems_configuration_get_ticks_per_timeslice()
 
 Gets the clock ticks per timeslice configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_configuration_get_ticks_per_timeslice( void );
+```
 
-    uint32_t rtems_configuration_get_ticks_per_timeslice( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the clock ticks per timeslice configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The :term:`clock ticks <clock tick>` per timeslice is defined by the
-:ref:`CONFIGURE_TICKS_PER_TIMESLICE` application configuration option.
+The {term}`clock ticks <clock tick>` per timeslice is defined by the
+{ref}`CONFIGURE_TICKS_PER_TIMESLICE` application configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-unified-work-area
 
-.. Generated from spec:/rtems/config/if/get-unified-work-area
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_unified_work_area()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetunifiedworkarea)=
 
-.. index:: rtems_configuration_get_unified_work_area()
-
-.. _InterfaceRtemsConfigurationGetUnifiedWorkArea:
-
-rtems_configuration_get_unified_work_area()
--------------------------------------------
+## rtems_configuration_get_unified_work_area()
 
 Indicates if the RTEMS Workspace and C Program Heap are configured to be
 unified for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+bool rtems_configuration_get_unified_work_area( void );
+```
 
-    bool rtems_configuration_get_unified_work_area( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns true, if the RTEMS Workspace and C Program Heap are configured to be
 unified for this application, otherwise false.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The setting is defined by the :ref:`CONFIGURE_UNIFIED_WORK_AREAS` application
+The setting is defined by the {ref}`CONFIGURE_UNIFIED_WORK_AREAS` application
 configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-user-extension-table
 
-.. Generated from spec:/rtems/config/if/get-user-extension-table
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_user_extension_table()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetuserextensiontable)=
 
-.. index:: rtems_configuration_get_user_extension_table()
-
-.. _InterfaceRtemsConfigurationGetUserExtensionTable:
-
-rtems_configuration_get_user_extension_table()
-----------------------------------------------
+## rtems_configuration_get_user_extension_table()
 
 Gets the initial extensions table configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const rtems_extensions_table *rtems_configuration_get_user_extension_table(
+  void
+);
+```
 
-    const rtems_extensions_table *rtems_configuration_get_user_extension_table(
-      void
-    );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the initial extensions table configured for this
 application.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-user-multiprocessing-table
 
-.. Generated from spec:/rtems/config/if/get-user-multiprocessing-table
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_user_multiprocessing_table()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetusermultiprocessingtable)=
 
-.. index:: rtems_configuration_get_user_multiprocessing_table()
-
-.. _InterfaceRtemsConfigurationGetUserMultiprocessingTable:
-
-rtems_configuration_get_user_multiprocessing_table()
-----------------------------------------------------
+## rtems_configuration_get_user_multiprocessing_table()
 
 Gets the MPCI configuration table configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const MPCI_Configuration *rtems_configuration_get_user_multiprocessing_table(
+  void
+);
+```
 
-    const MPCI_Configuration *rtems_configuration_get_user_multiprocessing_table(
-      void
-    );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the MPCI configuration table configured for this
 application.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-work-space-size
 
-.. Generated from spec:/rtems/config/if/get-work-space-size
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_work_space_size()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetworkspacesize)=
 
-.. index:: rtems_configuration_get_work_space_size()
-
-.. _InterfaceRtemsConfigurationGetWorkSpaceSize:
-
-rtems_configuration_get_work_space_size()
------------------------------------------
+## rtems_configuration_get_work_space_size()
 
 Gets the RTEMS Workspace size in bytes configured for this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uintptr_t rtems_configuration_get_work_space_size( void );
+```
 
-    uintptr_t rtems_configuration_get_work_space_size( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the RTEMS Workspace size in bytes configured for this application.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/get-api-configuration
 
-.. Generated from spec:/rtems/config/if/get-api-configuration
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_configuration_get_rtems_api_configuration()
+```
 
-    \clearpage
+(interfacertemsconfigurationgetrtemsapiconfiguration)=
 
-.. index:: rtems_configuration_get_rtems_api_configuration()
-
-.. _InterfaceRtemsConfigurationGetRtemsApiConfiguration:
-
-rtems_configuration_get_rtems_api_configuration()
--------------------------------------------------
+## rtems_configuration_get_rtems_api_configuration()
 
 Gets the Classic API Configuration Table of this application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+const rtems_api_configuration_table *
+rtems_configuration_get_rtems_api_configuration( void );
+```
 
-    const rtems_api_configuration_table *
-    rtems_configuration_get_rtems_api_configuration( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns a pointer to the Classic API Configuration Table of this application.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/resource-is-unlimited
 
-.. Generated from spec:/rtems/config/if/resource-is-unlimited
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_resource_is_unlimited()
+```
 
-    \clearpage
+(interfacertemsresourceisunlimited)=
 
-.. index:: rtems_resource_is_unlimited()
-
-.. _InterfaceRtemsResourceIsUnlimited:
-
-rtems_resource_is_unlimited()
------------------------------
+## rtems_resource_is_unlimited()
 
 Indicates if the resource is unlimited.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+bool rtems_resource_is_unlimited( uint32_t resource );
+```
 
-    bool rtems_resource_is_unlimited( uint32_t resource );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``resource``
-    This parameter is the resource number.
+`resource`
 
+: This parameter is the resource number.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns true, if the resource is unlimited, otherwise false.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive is implemented by a macro and may be called from within C/C++
-  constant expressions.  In addition, a function implementation of the
+- The directive is implemented by a macro and may be called from within C/C++
+  constant expressions. In addition, a function implementation of the
   directive exists for bindings to other programming languages.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/resource-maximum-per-allocation
 
-.. Generated from spec:/rtems/config/if/resource-maximum-per-allocation
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_resource_maximum_per_allocation()
+```
 
-    \clearpage
+(interfacertemsresourcemaximumperallocation)=
 
-.. index:: rtems_resource_maximum_per_allocation()
-
-.. _InterfaceRtemsResourceMaximumPerAllocation:
-
-rtems_resource_maximum_per_allocation()
----------------------------------------
+## rtems_resource_maximum_per_allocation()
 
 Gets the maximum number per allocation of a resource number.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_resource_maximum_per_allocation( uint32_t resource );
+```
 
-    uint32_t rtems_resource_maximum_per_allocation( uint32_t resource );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``resource``
-    This parameter is the resource number.
+`resource`
 
+: This parameter is the resource number.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the maximum number per allocation of a resource number.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive is implemented by a macro and may be called from within C/C++
-  constant expressions.  In addition, a function implementation of the
+- The directive is implemented by a macro and may be called from within C/C++
+  constant expressions. In addition, a function implementation of the
   directive exists for bindings to other programming languages.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/config/if/resource-unlimited
 
-.. Generated from spec:/rtems/config/if/resource-unlimited
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_resource_unlimited()
+```
 
-    \clearpage
+(interfacertemsresourceunlimited)=
 
-.. index:: rtems_resource_unlimited()
-
-.. _InterfaceRtemsResourceUnlimited:
-
-rtems_resource_unlimited()
---------------------------
+## rtems_resource_unlimited()
 
 Augments the resource number so that it indicates an unlimited resource.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint32_t rtems_resource_unlimited( uint32_t resource );
+```
 
-    uint32_t rtems_resource_unlimited( uint32_t resource );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``resource``
-    This parameter is the resource number to augment.
+`resource`
 
+: This parameter is the resource number to augment.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the resource number augmented to indicate an unlimited resource.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This directive should be used to configure unlimited objects, see
-:ref:`ConfigUnlimitedObjects`.
+{ref}`ConfigUnlimitedObjects`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive is implemented by a macro and may be called from within C/C++
-  constant expressions.  In addition, a function implementation of the
+- The directive is implemented by a macro and may be called from within C/C++
+  constant expressions. In addition, a function implementation of the
   directive exists for bindings to other programming languages.
-
-* The directive will not cause the calling task to be preempted.
+- The directive will not cause the calling task to be preempted.

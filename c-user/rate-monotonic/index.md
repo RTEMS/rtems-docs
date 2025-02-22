@@ -1,18 +1,20 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-.. index:: rate mononitonic tasks
-.. index:: periodic tasks
+```{index} rate mononitonic tasks
+```
 
-.. _RTEMSAPIClassicRatemon:
+```{index} periodic tasks
+```
 
-Rate Monotonic Manager
-**********************
+(rtemsapiclassicratemon)=
 
-.. toctree::
+# Rate Monotonic Manager
 
-    introduction
-    background
-    operations
-    directives
+```{toctree}
+introduction
+background
+operations
+directives
+```

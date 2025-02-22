@@ -1,5 +1,11 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+---
+substitutions:
+  copy: |-
+    ```{eval-rst}
+    .. unicode:: U+000A9 .. COPYRIGHT SIGN
+    ```
+---
 
-.. Copyright (C) 2019 Chris Johns <chrisj@rtems.org>
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. |copy| unicode:: U+000A9 .. COPYRIGHT SIGN
+% Copyright (C) 2019 Chris Johns <chrisj@rtems.org>

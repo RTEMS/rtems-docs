@@ -1,90 +1,113 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2014, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2014, 2021 embedded brains GmbH & Co. KG
 
-.. This file is part of the RTEMS quality process and was automatically
-.. generated.  If you find something that needs to be fixed or
-.. worded better please post a report or patch to an RTEMS mailing list
-.. or raise a bug report:
-..
-.. https://www.rtems.org/bugs.html
-..
-.. For information on updating and regenerating please refer to the How-To
-.. section in the Software Requirements Engineering chapter of the
-.. RTEMS Software Engineering manual.  The manual is provided as a part of
-.. a release.  For development sources please refer to the online
-.. documentation at:
-..
-.. https://docs.rtems.org
+% Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
-.. _ClockManagerDirectives:
+% This file is part of the RTEMS quality process and was automatically
 
-Directives
-==========
+% generated.  If you find something that needs to be fixed or
+
+% worded better please post a report or patch to an RTEMS mailing list
+
+% or raise a bug report:
+
+%
+
+% https://www.rtems.org/bugs.html
+
+%
+
+% For information on updating and regenerating please refer to the How-To
+
+% section in the Software Requirements Engineering chapter of the
+
+% RTEMS Software Engineering manual.  The manual is provided as a part of
+
+% a release.  For development sources please refer to the online
+
+% documentation at:
+
+%
+
+% https://docs.rtems.org
+
+(clockmanagerdirectives)=
+
+# Directives
 
 This section details the directives of the Clock Manager. A subsection is
 dedicated to each of this manager's directives and lists the calling sequence,
 parameters, description, return values, and notes of the directive.
 
-.. Generated from spec:/rtems/clock/if/set
+% Generated from spec:/rtems/clock/if/set
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} rtems_clock_set()
+```
 
-.. index:: rtems_clock_set()
+(interfacertemsclockset)=
 
-.. _InterfaceRtemsClockSet:
+## rtems_clock_set()
 
-rtems_clock_set()
------------------
+Sets the {term}`CLOCK_REALTIME` to the time of day.
 
-Sets the :term:`CLOCK_REALTIME` to the time of day.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
+```
 
-    rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_of_day``
-    This parameter is the time of day to set the clock.
+`time_of_day`
 
+: This parameter is the time of day to set the clock.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-:c:macro:`RTEMS_SUCCESSFUL`
-    The requested operation was successful.
+{c:macro}`RTEMS_SUCCESSFUL`
 
-:c:macro:`RTEMS_INVALID_ADDRESS`
-    The ``time_of_day`` parameter was `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_.
+: The requested operation was successful.
 
-:c:macro:`RTEMS_INVALID_CLOCK`
-    The time of day specified by ``time_of_day`` was invalid.
+{c:macro}`RTEMS_INVALID_ADDRESS`
 
+: The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+{c:macro}`RTEMS_INVALID_CLOCK`
+
+: The time of day specified by `time_of_day` was invalid.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The date, time, and ticks specified by ``time_of_day`` are all range-checked,
+The date, time, and ticks specified by `time_of_day` are all range-checked,
 and an error is returned if any one is out of its valid range.
 
-RTEMS can represent time points of the :term:`CLOCK_REALTIME` clock in
+RTEMS can represent time points of the {term}`CLOCK_REALTIME` clock in
 nanoseconds ranging from 1988-01-01T00:00:00.000000000Z to
-2514-05-31T01:53:03.999999999Z.  The future uptime of the system shall be in
-this range, otherwise the system behaviour is undefined.  Due to implementation
+2514-05-31T01:53:03.999999999Z. The future uptime of the system shall be in
+this range, otherwise the system behaviour is undefined. Due to implementation
 constraints, the time of day set by the directive shall be before
-2100-01-01:00:00.000000000Z.  The latest valid time of day accepted by the
-POSIX `clock_settime()
-<https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_settime.html>`_
+2100-01-01:00:00.000000000Z. The latest valid time of day accepted by the
+POSIX [clock_settime()](https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_settime.html)
 is 2400-01-01T00:00:00.999999999Z.
 
-The specified time is based on the configured :term:`clock tick` rate, see the
-:ref:`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
+The specified time is based on the configured {term}`clock tick` rate, see the
+{ref}`CONFIGURE_MICROSECONDS_PER_TICK` application configuration option.
 
-Setting the time forward will fire all :term:`CLOCK_REALTIME` timers which are
-scheduled at a time point before or at the time set by the directive.  This may
+Setting the time forward will fire all {term}`CLOCK_REALTIME` timers which are
+scheduled at a time point before or at the time set by the directive. This may
 unblock tasks, which may preempt the calling task. User-provided timer routines
 will execute in the context of the caller.
 
@@ -92,1422 +115,1598 @@ It is allowed to call this directive from within interrupt context, however,
 this is not recommended since an arbitrary number of timers may fire.
 
 The directive shall be called at least once to enable the service of
-:term:`CLOCK_REALTIME` related directives.  If the clock is not set at least
+{term}`CLOCK_REALTIME` related directives. If the clock is not set at least
 once, they may return an error status.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
-
-* The directive may change the priority of a task.  This may cause the calling
+- The directive may be called from within any runtime context.
+- The directive may change the priority of a task. This may cause the calling
   task to be preempted.
-
-* The directive may unblock a task.  This may cause the calling task to be
+- The directive may unblock a task. This may cause the calling task to be
   preempted.
-
-* The time of day set by the directive shall be 1988-01-01T00:00:00.000000000Z
+- The time of day set by the directive shall be 1988-01-01T00:00:00.000000000Z
   or later.
-
-* The time of day set by the directive shall be before
+- The time of day set by the directive shall be before
   2100-01-01T00:00:00.000000000Z.
 
-.. Generated from spec:/rtems/clock/if/get-tod
+% Generated from spec:/rtems/clock/if/get-tod
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} rtems_clock_get_tod()
+```
 
-.. index:: rtems_clock_get_tod()
+(interfacertemsclockgettod)=
 
-.. _InterfaceRtemsClockGetTod:
+## rtems_clock_get_tod()
 
-rtems_clock_get_tod()
----------------------
+Gets the time of day associated with the current {term}`CLOCK_REALTIME`.
 
-Gets the time of day associated with the current :term:`CLOCK_REALTIME`.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
+```
 
-    rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_of_day``
-    This parameter is the pointer to an :ref:`InterfaceRtemsTimeOfDay` object.
-    When the directive call is successful, the time of day associated with the
-    :term:`CLOCK_REALTIME` at some point during the directive call will be
-    stored in this object.
+`time_of_day`
 
+: This parameter is the pointer to an {ref}`InterfaceRtemsTimeOfDay` object.
+  When the directive call is successful, the time of day associated with the
+  {term}`CLOCK_REALTIME` at some point during the directive call will be
+  stored in this object.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-:c:macro:`RTEMS_SUCCESSFUL`
-    The requested operation was successful.
+{c:macro}`RTEMS_SUCCESSFUL`
 
-:c:macro:`RTEMS_INVALID_ADDRESS`
-    The ``time_of_day`` parameter was `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_.
+: The requested operation was successful.
 
-:c:macro:`RTEMS_NOT_DEFINED`
-    The :term:`CLOCK_REALTIME` was not set.  It can be set with
-    :ref:`InterfaceRtemsClockSet`.
+{c:macro}`RTEMS_INVALID_ADDRESS`
 
+: The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+{c:macro}`RTEMS_NOT_DEFINED`
+
+: The {term}`CLOCK_REALTIME` was not set. It can be set with
+  {ref}`InterfaceRtemsClockSet`.
+
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-tod-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-tod-timeval
+```{index} rtems_clock_get_tod_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgettodtimeval)=
 
-    \clearpage
+## rtems_clock_get_tod_timeval()
 
-.. index:: rtems_clock_get_tod_timeval()
+Gets the seconds and microseconds elapsed since the {term}`Unix epoch` and the
+current {term}`CLOCK_REALTIME`.
 
-.. _InterfaceRtemsClockGetTodTimeval:
-
-rtems_clock_get_tod_timeval()
------------------------------
-
-Gets the seconds and microseconds elapsed since the :term:`Unix epoch` and the
-current :term:`CLOCK_REALTIME`.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
+```
 
-    rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_of_day``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  When the directive call is successful, the seconds and
-    microseconds elapsed since the :term:`Unix epoch` and the
-    :term:`CLOCK_REALTIME` at some point during the directive call will be
-    stored in this object.
+`time_of_day`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. When the directive call is successful, the seconds and
+  microseconds elapsed since the {term}`Unix epoch` and the
+  {term}`CLOCK_REALTIME` at some point during the directive call will be
+  stored in this object.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-:c:macro:`RTEMS_SUCCESSFUL`
-    The requested operation was successful.
+{c:macro}`RTEMS_SUCCESSFUL`
 
-:c:macro:`RTEMS_INVALID_ADDRESS`
-    The ``time_of_day`` parameter was `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_.
+: The requested operation was successful.
 
-:c:macro:`RTEMS_NOT_DEFINED`
-    The :term:`CLOCK_REALTIME` was not set.  It can be set with
-    :ref:`InterfaceRtemsClockSet`.
+{c:macro}`RTEMS_INVALID_ADDRESS`
 
+: The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+{c:macro}`RTEMS_NOT_DEFINED`
+
+: The {term}`CLOCK_REALTIME` was not set. It can be set with
+  {ref}`InterfaceRtemsClockSet`.
+
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-realtime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-realtime
+```{index} rtems_clock_get_realtime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetrealtime)=
 
-    \clearpage
+## rtems_clock_get_realtime()
 
-.. index:: rtems_clock_get_realtime()
+Gets the time elapsed since the {term}`Unix epoch` measured using
+{term}`CLOCK_REALTIME` in seconds and nanoseconds format.
 
-.. _InterfaceRtemsClockGetRealtime:
-
-rtems_clock_get_realtime()
---------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in seconds and nanoseconds format.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_realtime( struct timespec *time_snapshot );
+```
 
-    void rtems_clock_get_realtime( struct timespec *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timespec
-    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
-    elapsed since the :term:`Unix epoch` measured using the
-    :term:`CLOCK_REALTIME` at some time point during the directive call will be
-    stored in this object.  Calling the directive with a pointer equal to `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_ is undefined behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
+  elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point during the directive call will be
+  stored in this object. Calling the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest resolution available to the system.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtimeCoarse` directive may be used to get the
+The directive accesses a device provided by the {term}`Clock Driver` to get the
+time in the highest resolution available to the system. Alternatively, the
+{ref}`InterfaceRtemsClockGetRealtimeCoarse` directive may be used to get the
 time in a lower resolution and with less runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetRealtimeBintime` and
-:ref:`InterfaceRtemsClockGetRealtimeTimeval` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetRealtimeBintime` and
+{ref}`InterfaceRtemsClockGetRealtimeTimeval` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-realtime-bintime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-realtime-bintime
+```{index} rtems_clock_get_realtime_bintime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetrealtimebintime)=
 
-    \clearpage
+## rtems_clock_get_realtime_bintime()
 
-.. index:: rtems_clock_get_realtime_bintime()
+Gets the time elapsed since the {term}`Unix epoch` measured using
+{term}`CLOCK_REALTIME` in binary time format.
 
-.. _InterfaceRtemsClockGetRealtimeBintime:
-
-rtems_clock_get_realtime_bintime()
-----------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in binary time format.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_realtime_bintime( struct bintime *time_snapshot );
+```
 
-    void rtems_clock_get_realtime_bintime( struct bintime *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a ``struct bintime`` object.  The time
-    elapsed since the :term:`Unix epoch` measured using the
-    :term:`CLOCK_REALTIME` at some time point during the directive call will be
-    stored in this object.  Calling the directive with a pointer equal to `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_ is undefined behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a `struct bintime` object. The time
+  elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point during the directive call will be
+  stored in this object. Calling the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest resolution available to the system.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtimeCoarseBintime` directive may be used to get
+The directive accesses a device provided by the {term}`Clock Driver` to get the
+time in the highest resolution available to the system. Alternatively, the
+{ref}`InterfaceRtemsClockGetRealtimeCoarseBintime` directive may be used to get
 the time in a lower resolution and with less runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetRealtime` and
-:ref:`InterfaceRtemsClockGetRealtimeTimeval` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetRealtime` and
+{ref}`InterfaceRtemsClockGetRealtimeTimeval` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-realtime-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-realtime-timeval
+```{index} rtems_clock_get_realtime_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgetrealtimetimeval)=
 
-    \clearpage
+## rtems_clock_get_realtime_timeval()
 
-.. index:: rtems_clock_get_realtime_timeval()
+Gets the time elapsed since the {term}`Unix epoch` measured using
+{term}`CLOCK_REALTIME` in seconds and microseconds format.
 
-.. _InterfaceRtemsClockGetRealtimeTimeval:
-
-rtems_clock_get_realtime_timeval()
-----------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in seconds and microseconds format.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_realtime_timeval( struct timeval *time_snapshot );
+```
 
-    void rtems_clock_get_realtime_timeval( struct timeval *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  The time elapsed since the :term:`Unix epoch` measured using the
-    :term:`CLOCK_REALTIME` at some time point during the directive call will be
-    stored in this object.  Calling the directive with a pointer equal to `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_ is undefined behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The time elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point during the directive call will be
+  stored in this object. Calling the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest resolution available to the system.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` directive may be used to get
+The directive accesses a device provided by the {term}`Clock Driver` to get the
+time in the highest resolution available to the system. Alternatively, the
+{ref}`InterfaceRtemsClockGetRealtimeCoarseTimeval` directive may be used to get
 the time in a lower resolution and with less runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetRealtime` and
-:ref:`InterfaceRtemsClockGetRealtimeBintime` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetRealtime` and
+{ref}`InterfaceRtemsClockGetRealtimeBintime` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-realtime-coarse
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-realtime-coarse
+```{index} rtems_clock_get_realtime_coarse()
+```
 
-.. raw:: latex
+(interfacertemsclockgetrealtimecoarse)=
 
-    \clearpage
+## rtems_clock_get_realtime_coarse()
 
-.. index:: rtems_clock_get_realtime_coarse()
+Gets the time elapsed since the {term}`Unix epoch` measured using
+{term}`CLOCK_REALTIME` in coarse resolution in seconds and nanoseconds format.
 
-.. _InterfaceRtemsClockGetRealtimeCoarse:
-
-rtems_clock_get_realtime_coarse()
----------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in coarse resolution in seconds and nanoseconds format.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_realtime_coarse( struct timespec *time_snapshot );
+```
 
-    void rtems_clock_get_realtime_coarse( struct timespec *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timespec
-    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
-    elapsed since the :term:`Unix epoch` measured using the
-    :term:`CLOCK_REALTIME` at some time point close to the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
+  elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point close to the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive does not access a device to get the time.  It uses a recent
-snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtime` directive may be used to get the time in
+The directive does not access a device to get the time. It uses a recent
+snapshot provided by the {term}`Clock Driver`. Alternatively, the
+{ref}`InterfaceRtemsClockGetRealtime` directive may be used to get the time in
 a higher resolution and with a higher runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetRealtimeCoarseBintime` and
-:ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
+See {ref}`InterfaceRtemsClockGetRealtimeCoarseBintime` and
+{ref}`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
 alternative formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-realtime-coarse-bintime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-realtime-coarse-bintime
+```{index} rtems_clock_get_realtime_coarse_bintime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetrealtimecoarsebintime)=
 
-    \clearpage
+## rtems_clock_get_realtime_coarse_bintime()
 
-.. index:: rtems_clock_get_realtime_coarse_bintime()
+Gets the time elapsed since the {term}`Unix epoch` measured using
+{term}`CLOCK_REALTIME` in coarse resolution in binary time format.
 
-.. _InterfaceRtemsClockGetRealtimeCoarseBintime:
-
-rtems_clock_get_realtime_coarse_bintime()
------------------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in coarse resolution in binary time format.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_realtime_coarse_bintime( struct bintime *time_snapshot );
+```
 
-    void rtems_clock_get_realtime_coarse_bintime( struct bintime *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a ``struct bintime`` object.  The time
-    elapsed since the :term:`Unix epoch` measured using the
-    :term:`CLOCK_REALTIME` at some time point close to the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a `struct bintime` object. The time
+  elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point close to the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive does not access a device to get the time.  It uses a recent
-snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtimeBintime` directive may be used to get the
+The directive does not access a device to get the time. It uses a recent
+snapshot provided by the {term}`Clock Driver`. Alternatively, the
+{ref}`InterfaceRtemsClockGetRealtimeBintime` directive may be used to get the
 time in a higher resolution and with a higher runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetRealtimeCoarse` and
-:ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
+See {ref}`InterfaceRtemsClockGetRealtimeCoarse` and
+{ref}`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
 alternative formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-realtime-coarse-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-realtime-coarse-timeval
+```{index} rtems_clock_get_realtime_coarse_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgetrealtimecoarsetimeval)=
 
-    \clearpage
+## rtems_clock_get_realtime_coarse_timeval()
 
-.. index:: rtems_clock_get_realtime_coarse_timeval()
+Gets the time elapsed since the {term}`Unix epoch` measured using
+{term}`CLOCK_REALTIME` in coarse resolution in seconds and microseconds format.
 
-.. _InterfaceRtemsClockGetRealtimeCoarseTimeval:
-
-rtems_clock_get_realtime_coarse_timeval()
------------------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` measured using
-:term:`CLOCK_REALTIME` in coarse resolution in seconds and microseconds format.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_realtime_coarse_timeval( struct timeval *time_snapshot );
+```
 
-    void rtems_clock_get_realtime_coarse_timeval( struct timeval *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  The time elapsed since the :term:`Unix epoch` measured using the
-    :term:`CLOCK_REALTIME` at some time point close to the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The time elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point close to the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive does not access a device to get the time.  It uses a recent
-snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetRealtimeTimeval` directive may be used to get the
+The directive does not access a device to get the time. It uses a recent
+snapshot provided by the {term}`Clock Driver`. Alternatively, the
+{ref}`InterfaceRtemsClockGetRealtimeTimeval` directive may be used to get the
 time in a higher resolution and with a higher runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetRealtimeCoarse` and
-:ref:`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
+See {ref}`InterfaceRtemsClockGetRealtimeCoarse` and
+{ref}`InterfaceRtemsClockGetRealtimeCoarseTimeval` to get the time in
 alternative formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic
+```{index} rtems_clock_get_monotonic()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotonic)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic()
-
-.. _InterfaceRtemsClockGetMonotonic:
-
-rtems_clock_get_monotonic()
----------------------------
+## rtems_clock_get_monotonic()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in seconds and nanoseconds format.
+the {term}`CLOCK_MONOTONIC` in seconds and nanoseconds format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_monotonic( struct timespec *time_snapshot );
+```
 
-    void rtems_clock_get_monotonic( struct timespec *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timespec
-    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
-    elapsed since some fixed time point in the past measured using the
-    :term:`CLOCK_MONOTONIC` at some time point during the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
+  elapsed since some fixed time point in the past measured using the
+  {term}`CLOCK_MONOTONIC` at some time point during the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest resolution available to the system.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonicCoarse` directive may be used to get the
+The directive accesses a device provided by the {term}`Clock Driver` to get the
+time in the highest resolution available to the system. Alternatively, the
+{ref}`InterfaceRtemsClockGetMonotonicCoarse` directive may be used to get the
 time with in a lower resolution and with less runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetMonotonicBintime`,
-:ref:`InterfaceRtemsClockGetMonotonicSbintime`, and
-:ref:`InterfaceRtemsClockGetMonotonicTimeval` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetMonotonicBintime`,
+{ref}`InterfaceRtemsClockGetMonotonicSbintime`, and
+{ref}`InterfaceRtemsClockGetMonotonicTimeval` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic-bintime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic-bintime
+```{index} rtems_clock_get_monotonic_bintime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotonicbintime)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic_bintime()
-
-.. _InterfaceRtemsClockGetMonotonicBintime:
-
-rtems_clock_get_monotonic_bintime()
------------------------------------
+## rtems_clock_get_monotonic_bintime()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in binary time format.
+the {term}`CLOCK_MONOTONIC` in binary time format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_monotonic_bintime( struct bintime *time_snapshot );
+```
 
-    void rtems_clock_get_monotonic_bintime( struct bintime *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a ``struct bintime`` object.  The time
-    elapsed since some fixed time point in the past measured using the
-    :term:`CLOCK_MONOTONIC` at some time point during the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a `struct bintime` object. The time
+  elapsed since some fixed time point in the past measured using the
+  {term}`CLOCK_MONOTONIC` at some time point during the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest resolution available to the system.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` directive may be used to
+The directive accesses a device provided by the {term}`Clock Driver` to get the
+time in the highest resolution available to the system. Alternatively, the
+{ref}`InterfaceRtemsClockGetMonotonicCoarseBintime` directive may be used to
 get the time in a lower resolution and with less runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetMonotonic`,
-:ref:`InterfaceRtemsClockGetMonotonicSbintime`, and
-:ref:`InterfaceRtemsClockGetMonotonicTimeval` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetMonotonic`,
+{ref}`InterfaceRtemsClockGetMonotonicSbintime`, and
+{ref}`InterfaceRtemsClockGetMonotonicTimeval` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic-sbintime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic-sbintime
+```{index} rtems_clock_get_monotonic_sbintime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotonicsbintime)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic_sbintime()
-
-.. _InterfaceRtemsClockGetMonotonicSbintime:
-
-rtems_clock_get_monotonic_sbintime()
-------------------------------------
+## rtems_clock_get_monotonic_sbintime()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in signed binary time format.
+the {term}`CLOCK_MONOTONIC` in signed binary time format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+int64_t rtems_clock_get_monotonic_sbintime( void );
+```
 
-    int64_t rtems_clock_get_monotonic_sbintime( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` at some time point during the directive call.
+the {term}`CLOCK_MONOTONIC` at some time point during the directive call.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
+The directive accesses a device provided by the {term}`Clock Driver` to get the
 time in the highest resolution available to the system.
 
-See :ref:`InterfaceRtemsClockGetMonotonic`,
-:ref:`InterfaceRtemsClockGetMonotonicBintime`, and
-:ref:`InterfaceRtemsClockGetMonotonicTimeval` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetMonotonic`,
+{ref}`InterfaceRtemsClockGetMonotonicBintime`, and
+{ref}`InterfaceRtemsClockGetMonotonicTimeval` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic-timeval
+```{index} rtems_clock_get_monotonic_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotonictimeval)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic_timeval()
-
-.. _InterfaceRtemsClockGetMonotonicTimeval:
-
-rtems_clock_get_monotonic_timeval()
------------------------------------
+## rtems_clock_get_monotonic_timeval()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in seconds and microseconds format.
+the {term}`CLOCK_MONOTONIC` in seconds and microseconds format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_monotonic_timeval( struct timeval *time_snapshot );
+```
 
-    void rtems_clock_get_monotonic_timeval( struct timeval *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  The time elapsed since some fixed time point in the past measured
-    using the :term:`CLOCK_MONOTONIC` at some time point during the directive
-    call will be stored in this object.  Calling the directive with a pointer
-    equal to `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The time elapsed since some fixed time point in the past measured
+  using the {term}`CLOCK_MONOTONIC` at some time point during the directive
+  call will be stored in this object. Calling the directive with a pointer
+  equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive accesses a device provided by the :term:`Clock Driver` to get the
-time in the highest resolution available to the system.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` directive may be used to
+The directive accesses a device provided by the {term}`Clock Driver` to get the
+time in the highest resolution available to the system. Alternatively, the
+{ref}`InterfaceRtemsClockGetMonotonicCoarseTimeval` directive may be used to
 get the time in a lower resolution and with less runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetMonotonic`,
-:ref:`InterfaceRtemsClockGetMonotonicBintime`, and
-:ref:`InterfaceRtemsClockGetMonotonicSbintime` to get the time in alternative
+See {ref}`InterfaceRtemsClockGetMonotonic`,
+{ref}`InterfaceRtemsClockGetMonotonicBintime`, and
+{ref}`InterfaceRtemsClockGetMonotonicSbintime` to get the time in alternative
 formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic-coarse
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic-coarse
+```{index} rtems_clock_get_monotonic_coarse()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotoniccoarse)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic_coarse()
-
-.. _InterfaceRtemsClockGetMonotonicCoarse:
-
-rtems_clock_get_monotonic_coarse()
-----------------------------------
+## rtems_clock_get_monotonic_coarse()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in coarse resolution in seconds and nanoseconds
+the {term}`CLOCK_MONOTONIC` in coarse resolution in seconds and nanoseconds
 format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_monotonic_coarse( struct timespec *time_snapshot );
+```
 
-    void rtems_clock_get_monotonic_coarse( struct timespec *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timespec
-    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
-    elapsed since some fixed time point in the past measured using the
-    :term:`CLOCK_MONOTONIC` at some time point close to the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
+  elapsed since some fixed time point in the past measured using the
+  {term}`CLOCK_MONOTONIC` at some time point close to the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive does not access a device to get the time.  It uses a recent
-snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonic` directive may be used to get the time in
+The directive does not access a device to get the time. It uses a recent
+snapshot provided by the {term}`Clock Driver`. Alternatively, the
+{ref}`InterfaceRtemsClockGetMonotonic` directive may be used to get the time in
 a higher resolution and with a higher runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` and
-:ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` to get the time in
+See {ref}`InterfaceRtemsClockGetMonotonicCoarseBintime` and
+{ref}`InterfaceRtemsClockGetMonotonicCoarseTimeval` to get the time in
 alternative formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic-coarse-bintime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic-coarse-bintime
+```{index} rtems_clock_get_monotonic_coarse_bintime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotoniccoarsebintime)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic_coarse_bintime()
-
-.. _InterfaceRtemsClockGetMonotonicCoarseBintime:
-
-rtems_clock_get_monotonic_coarse_bintime()
-------------------------------------------
+## rtems_clock_get_monotonic_coarse_bintime()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in coarse resolution in binary time format.
+the {term}`CLOCK_MONOTONIC` in coarse resolution in binary time format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_monotonic_coarse_bintime( struct bintime *time_snapshot );
+```
 
-    void rtems_clock_get_monotonic_coarse_bintime( struct bintime *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a ``struct bintime`` object.  The time
-    elapsed since some fixed time point in the past measured using the
-    :term:`CLOCK_MONOTONIC` at some time point close to the directive call will
-    be stored in this object.  Calling the directive with a pointer equal to
-    `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a `struct bintime` object. The time
+  elapsed since some fixed time point in the past measured using the
+  {term}`CLOCK_MONOTONIC` at some time point close to the directive call will
+  be stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive does not access a device to get the time.  It uses a recent
-snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonicBintime` directive may be used to get the
+The directive does not access a device to get the time. It uses a recent
+snapshot provided by the {term}`Clock Driver`. Alternatively, the
+{ref}`InterfaceRtemsClockGetMonotonicBintime` directive may be used to get the
 time in a higher resolution and with a higher runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetMonotonicCoarse` and
-:ref:`InterfaceRtemsClockGetMonotonicCoarseTimeval` to get the time in
+See {ref}`InterfaceRtemsClockGetMonotonicCoarse` and
+{ref}`InterfaceRtemsClockGetMonotonicCoarseTimeval` to get the time in
 alternative formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-monotonic-coarse-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-monotonic-coarse-timeval
+```{index} rtems_clock_get_monotonic_coarse_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgetmonotoniccoarsetimeval)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_monotonic_coarse_timeval()
-
-.. _InterfaceRtemsClockGetMonotonicCoarseTimeval:
-
-rtems_clock_get_monotonic_coarse_timeval()
-------------------------------------------
+## rtems_clock_get_monotonic_coarse_timeval()
 
 Gets the time elapsed since some fixed time point in the past measured using
-the :term:`CLOCK_MONOTONIC` in coarse resolution in seconds and microseconds
+the {term}`CLOCK_MONOTONIC` in coarse resolution in seconds and microseconds
 format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_monotonic_coarse_timeval( struct timeval *time_snapshot );
+```
 
-    void rtems_clock_get_monotonic_coarse_timeval( struct timeval *time_snapshot );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``time_snapshot``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  The time elapsed since some fixed time point in the past measured
-    using the :term:`CLOCK_MONOTONIC` at some time point close to the directive
-    call will be stored in this object.  Calling the directive with a pointer
-    equal to `NULL <https://en.cppreference.com/w/c/types/NULL>`_ is undefined
-    behaviour.
+`time_snapshot`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The time elapsed since some fixed time point in the past measured
+  using the {term}`CLOCK_MONOTONIC` at some time point close to the directive
+  call will be stored in this object. Calling the directive with a pointer
+  equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The directive does not access a device to get the time.  It uses a recent
-snapshot provided by the :term:`Clock Driver`.  Alternatively, the
-:ref:`InterfaceRtemsClockGetMonotonicTimeval` directive may be used to get the
+The directive does not access a device to get the time. It uses a recent
+snapshot provided by the {term}`Clock Driver`. Alternatively, the
+{ref}`InterfaceRtemsClockGetMonotonicTimeval` directive may be used to get the
 time in a higher resolution and with a higher runtime overhead.
 
-See :ref:`InterfaceRtemsClockGetMonotonicCoarse` and
-:ref:`InterfaceRtemsClockGetMonotonicCoarseBintime` to get the time in
+See {ref}`InterfaceRtemsClockGetMonotonicCoarse` and
+{ref}`InterfaceRtemsClockGetMonotonicCoarseBintime` to get the time in
 alternative formats.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-boot-time
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-boot-time
+```{index} rtems_clock_get_boot_time()
+```
 
-.. raw:: latex
+(interfacertemsclockgetboottime)=
 
-    \clearpage
+## rtems_clock_get_boot_time()
 
-.. index:: rtems_clock_get_boot_time()
-
-.. _InterfaceRtemsClockGetBootTime:
-
-rtems_clock_get_boot_time()
----------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` at some time point during
+Gets the time elapsed since the {term}`Unix epoch` at some time point during
 system initialization in seconds and nanoseconds format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_boot_time( struct timespec *boot_time );
+```
 
-    void rtems_clock_get_boot_time( struct timespec *boot_time );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``boot_time``
-    This parameter is the pointer to a `struct timespec
-    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  The time
-    elapsed since the :term:`Unix epoch` at some time point during system
-    initialization call will be stored in this object.  Calling the directive
-    with a pointer equal to `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_ is undefined behaviour.
+`boot_time`
 
+: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
+  elapsed since the {term}`Unix epoch` at some time point during system
+  initialization call will be stored in this object. Calling the directive
+  with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-See :ref:`InterfaceRtemsClockGetBootTimeBintime` and
-:ref:`InterfaceRtemsClockGetBootTimeTimeval` to get the boot time in
-alternative formats.  Setting the :term:`CLOCK_REALTIME` will also set the boot
+See {ref}`InterfaceRtemsClockGetBootTimeBintime` and
+{ref}`InterfaceRtemsClockGetBootTimeTimeval` to get the boot time in
+alternative formats. Setting the {term}`CLOCK_REALTIME` will also set the boot
 time.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-boot-time-bintime
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-boot-time-bintime
+```{index} rtems_clock_get_boot_time_bintime()
+```
 
-.. raw:: latex
+(interfacertemsclockgetboottimebintime)=
 
-    \clearpage
+## rtems_clock_get_boot_time_bintime()
 
-.. index:: rtems_clock_get_boot_time_bintime()
-
-.. _InterfaceRtemsClockGetBootTimeBintime:
-
-rtems_clock_get_boot_time_bintime()
------------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` at some time point during
+Gets the time elapsed since the {term}`Unix epoch` at some time point during
 system initialization in binary time format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_boot_time_bintime( struct bintime *boot_time );
+```
 
-    void rtems_clock_get_boot_time_bintime( struct bintime *boot_time );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``boot_time``
-    This parameter is the pointer to a ``struct bintime`` object.  The time
-    elapsed since the :term:`Unix epoch` at some time point during system
-    initialization call will be stored in this object.  Calling the directive
-    with a pointer equal to `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_ is undefined behaviour.
+`boot_time`
 
+: This parameter is the pointer to a `struct bintime` object. The time
+  elapsed since the {term}`Unix epoch` at some time point during system
+  initialization call will be stored in this object. Calling the directive
+  with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-See :ref:`InterfaceRtemsClockGetBootTime` and
-:ref:`InterfaceRtemsClockGetBootTimeTimeval` to get the boot time in
-alternative formats.  Setting the :term:`CLOCK_REALTIME` will also set the boot
+See {ref}`InterfaceRtemsClockGetBootTime` and
+{ref}`InterfaceRtemsClockGetBootTimeTimeval` to get the boot time in
+alternative formats. Setting the {term}`CLOCK_REALTIME` will also set the boot
 time.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-boot-time-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-boot-time-timeval
+```{index} rtems_clock_get_boot_time_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgetboottimetimeval)=
 
-    \clearpage
+## rtems_clock_get_boot_time_timeval()
 
-.. index:: rtems_clock_get_boot_time_timeval()
-
-.. _InterfaceRtemsClockGetBootTimeTimeval:
-
-rtems_clock_get_boot_time_timeval()
------------------------------------
-
-Gets the time elapsed since the :term:`Unix epoch` at some time point during
+Gets the time elapsed since the {term}`Unix epoch` at some time point during
 system initialization in seconds and microseconds format.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_boot_time_timeval( struct timeval *boot_time );
+```
 
-    void rtems_clock_get_boot_time_timeval( struct timeval *boot_time );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``boot_time``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  The time elapsed since the :term:`Unix epoch` at some time point
-    during system initialization call will be stored in this object.  Calling
-    the directive with a pointer equal to `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_ is undefined behaviour.
+`boot_time`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The time elapsed since the {term}`Unix epoch` at some time point
+  during system initialization call will be stored in this object. Calling
+  the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-See :ref:`InterfaceRtemsClockGetBootTime` and
-:ref:`InterfaceRtemsClockGetBootTimeBintime` to get the boot time in
-alternative formats.  Setting the :term:`CLOCK_REALTIME` will also set the boot
+See {ref}`InterfaceRtemsClockGetBootTime` and
+{ref}`InterfaceRtemsClockGetBootTimeBintime` to get the boot time in
+alternative formats. Setting the {term}`CLOCK_REALTIME` will also set the boot
 time.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-seconds-since-epoch
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-seconds-since-epoch
+```{index} rtems_clock_get_seconds_since_epoch()
+```
 
-.. raw:: latex
+(interfacertemsclockgetsecondssinceepoch)=
 
-    \clearpage
+## rtems_clock_get_seconds_since_epoch()
 
-.. index:: rtems_clock_get_seconds_since_epoch()
+Gets the seconds elapsed since the {term}`RTEMS epoch` and the current
+{term}`CLOCK_REALTIME`.
 
-.. _InterfaceRtemsClockGetSecondsSinceEpoch:
-
-rtems_clock_get_seconds_since_epoch()
--------------------------------------
-
-Gets the seconds elapsed since the :term:`RTEMS epoch` and the current
-:term:`CLOCK_REALTIME`.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_status_code rtems_clock_get_seconds_since_epoch(
+  rtems_interval *seconds_since_rtems_epoch
+);
+```
 
-    rtems_status_code rtems_clock_get_seconds_since_epoch(
-      rtems_interval *seconds_since_rtems_epoch
-    );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``seconds_since_rtems_epoch``
-    This parameter is the pointer to an :ref:`InterfaceRtemsInterval` object.
-    When the directive call is successful, the seconds elapsed since the
-    :term:`RTEMS epoch` and the :term:`CLOCK_REALTIME` at some point during the
-    directive call will be stored in this object.
+`seconds_since_rtems_epoch`
 
+: This parameter is the pointer to an {ref}`InterfaceRtemsInterval` object.
+  When the directive call is successful, the seconds elapsed since the
+  {term}`RTEMS epoch` and the {term}`CLOCK_REALTIME` at some point during the
+  directive call will be stored in this object.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-:c:macro:`RTEMS_SUCCESSFUL`
-    The requested operation was successful.
+{c:macro}`RTEMS_SUCCESSFUL`
 
-:c:macro:`RTEMS_INVALID_ADDRESS`
-    The ``seconds_since_rtems_epoch`` parameter was `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_.
+: The requested operation was successful.
 
-:c:macro:`RTEMS_NOT_DEFINED`
-    The :term:`CLOCK_REALTIME` was not set.  It can be set with
-    :ref:`InterfaceRtemsClockSet`.
+{c:macro}`RTEMS_INVALID_ADDRESS`
 
+: The `seconds_since_rtems_epoch` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+{c:macro}`RTEMS_NOT_DEFINED`
+
+: The {term}`CLOCK_REALTIME` was not set. It can be set with
+  {ref}`InterfaceRtemsClockSet`.
+
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-ticks-per-second
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-ticks-per-second
+```{index} rtems_clock_get_ticks_per_second()
+```
 
-.. raw:: latex
+(interfacertemsclockgettickspersecond)=
 
-    \clearpage
+## rtems_clock_get_ticks_per_second()
 
-.. index:: rtems_clock_get_ticks_per_second()
-
-.. _InterfaceRtemsClockGetTicksPerSecond:
-
-rtems_clock_get_ticks_per_second()
-----------------------------------
-
-Gets the number of :term:`clock ticks <clock tick>` per second configured for
+Gets the number of {term}`clock ticks <clock tick>` per second configured for
 the application.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_interval rtems_clock_get_ticks_per_second( void );
+```
 
-    rtems_interval rtems_clock_get_ticks_per_second( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the number of clock ticks per second configured for this application.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The number of clock ticks per second is defined indirectly by the
-:ref:`CONFIGURE_MICROSECONDS_PER_TICK` configuration option.
+{ref}`CONFIGURE_MICROSECONDS_PER_TICK` configuration option.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-ticks-since-boot
 
-.. Generated from spec:/rtems/clock/if/get-ticks-since-boot
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_clock_get_ticks_since_boot()
+```
 
-    \clearpage
+(interfacertemsclockgettickssinceboot)=
 
-.. index:: rtems_clock_get_ticks_since_boot()
+## rtems_clock_get_ticks_since_boot()
 
-.. _InterfaceRtemsClockGetTicksSinceBoot:
-
-rtems_clock_get_ticks_since_boot()
-----------------------------------
-
-Gets the number of :term:`clock ticks <clock tick>` since some time point
+Gets the number of {term}`clock ticks <clock tick>` since some time point
 during the system initialization or the last overflow of the clock tick
 counter.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_interval rtems_clock_get_ticks_since_boot( void );
+```
 
-    rtems_interval rtems_clock_get_ticks_since_boot( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns the number of :term:`clock ticks <clock tick>` since some time point
+Returns the number of {term}`clock ticks <clock tick>` since some time point
 during the system initialization or the last overflow of the clock tick
 counter.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-With a 1ms clock tick, this counter overflows after 50 days since boot.  This
-is the historical measure of uptime in an RTEMS system.  The newer service
-:ref:`InterfaceRtemsClockGetUptime` is another and potentially more accurate
+With a 1ms clock tick, this counter overflows after 50 days since boot. This
+is the historical measure of uptime in an RTEMS system. The newer service
+{ref}`InterfaceRtemsClockGetUptime` is another and potentially more accurate
 way of obtaining similar information.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-uptime
 
-.. Generated from spec:/rtems/clock/if/get-uptime
+```{raw} latex
+\clearpage
+```
 
-.. raw:: latex
+```{index} rtems_clock_get_uptime()
+```
 
-    \clearpage
+(interfacertemsclockgetuptime)=
 
-.. index:: rtems_clock_get_uptime()
-
-.. _InterfaceRtemsClockGetUptime:
-
-rtems_clock_get_uptime()
-------------------------
+## rtems_clock_get_uptime()
 
 Gets the seconds and nanoseconds elapsed since some time point during the
-system initialization using :term:`CLOCK_MONOTONIC`.
+system initialization using {term}`CLOCK_MONOTONIC`.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
+```
 
-    rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``uptime``
-    This parameter is the pointer to a `struct timespec
-    <https://en.cppreference.com/w/c/chrono/timespec>`_ object.  When the
-    directive call is successful, the seconds and nanoseconds elapsed since
-    some time point during the system initialization and some point during the
-    directive call using :term:`CLOCK_MONOTONIC` will be stored in this object.
+`uptime`
 
+: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. When the
+  directive call is successful, the seconds and nanoseconds elapsed since
+  some time point during the system initialization and some point during the
+  directive call using {term}`CLOCK_MONOTONIC` will be stored in this object.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-:c:macro:`RTEMS_SUCCESSFUL`
-    The requested operation was successful.
+{c:macro}`RTEMS_SUCCESSFUL`
 
-:c:macro:`RTEMS_INVALID_ADDRESS`
-    The ``uptime`` parameter was `NULL
-    <https://en.cppreference.com/w/c/types/NULL>`_.
+: The requested operation was successful.
 
+{c:macro}`RTEMS_INVALID_ADDRESS`
+
+: The `uptime` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-uptime-timeval
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-uptime-timeval
+```{index} rtems_clock_get_uptime_timeval()
+```
 
-.. raw:: latex
+(interfacertemsclockgetuptimetimeval)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_uptime_timeval()
-
-.. _InterfaceRtemsClockGetUptimeTimeval:
-
-rtems_clock_get_uptime_timeval()
---------------------------------
+## rtems_clock_get_uptime_timeval()
 
 Gets the seconds and microseconds elapsed since some time point during the
-system initialization using :term:`CLOCK_MONOTONIC`.
+system initialization using {term}`CLOCK_MONOTONIC`.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+void rtems_clock_get_uptime_timeval( struct timeval *uptime );
+```
 
-    void rtems_clock_get_uptime_timeval( struct timeval *uptime );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``uptime``
-    This parameter is the pointer to a `struct timeval
-    <https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html>`_
-    object.  The seconds and microseconds elapsed since some time point during
-    the system initialization and some point during the directive call using
-    :term:`CLOCK_MONOTONIC` will be stored in this object.  The pointer shall
-    be valid, otherwise the behaviour is undefined.
+`uptime`
 
+: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The seconds and microseconds elapsed since some time point during
+  the system initialization and some point during the directive call using
+  {term}`CLOCK_MONOTONIC` will be stored in this object. The pointer shall
+  be valid, otherwise the behaviour is undefined.
+
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-uptime-seconds
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-uptime-seconds
+```{index} rtems_clock_get_uptime_seconds()
+```
 
-.. raw:: latex
+(interfacertemsclockgetuptimeseconds)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_uptime_seconds()
-
-.. _InterfaceRtemsClockGetUptimeSeconds:
-
-rtems_clock_get_uptime_seconds()
---------------------------------
+## rtems_clock_get_uptime_seconds()
 
 Gets the seconds elapsed since some time point during the system initialization
-using :term:`CLOCK_MONOTONIC`.
+using {term}`CLOCK_MONOTONIC`.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+time_t rtems_clock_get_uptime_seconds( void );
+```
 
-    time_t rtems_clock_get_uptime_seconds( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the seconds elapsed since some time point during the system
 initialization and some point during the directive call using
-:term:`CLOCK_MONOTONIC`.
+{term}`CLOCK_MONOTONIC`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/get-uptime-nanoseconds
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/get-uptime-nanoseconds
+```{index} rtems_clock_get_uptime_nanoseconds()
+```
 
-.. raw:: latex
+(interfacertemsclockgetuptimenanoseconds)=
 
-    \clearpage
-
-.. index:: rtems_clock_get_uptime_nanoseconds()
-
-.. _InterfaceRtemsClockGetUptimeNanoseconds:
-
-rtems_clock_get_uptime_nanoseconds()
-------------------------------------
+## rtems_clock_get_uptime_nanoseconds()
 
 Gets the nanoseconds elapsed since some time point during the system
-initialization using :term:`CLOCK_MONOTONIC`.
+initialization using {term}`CLOCK_MONOTONIC`.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+uint64_t rtems_clock_get_uptime_nanoseconds( void );
+```
 
-    uint64_t rtems_clock_get_uptime_nanoseconds( void );
-
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
 Returns the nanoseconds elapsed since some time point during the system
 initialization and some point during the directive call using
-:term:`CLOCK_MONOTONIC`.
+{term}`CLOCK_MONOTONIC`.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/tick-later
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/tick-later
+```{index} rtems_clock_tick_later()
+```
 
-.. raw:: latex
+(interfacertemsclockticklater)=
 
-    \clearpage
+## rtems_clock_tick_later()
 
-.. index:: rtems_clock_tick_later()
-
-.. _InterfaceRtemsClockTickLater:
-
-rtems_clock_tick_later()
-------------------------
-
-Gets a :term:`clock tick` value which is at least delta clock ticks in the
+Gets a {term}`clock tick` value which is at least delta clock ticks in the
 future.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_interval rtems_clock_tick_later( rtems_interval delta );
+```
 
-    rtems_interval rtems_clock_tick_later( rtems_interval delta );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``delta``
-    This parameter is the delta value in clock ticks.
+`delta`
 
+: This parameter is the delta value in clock ticks.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns a :term:`clock tick` counter value which is at least ``delta`` clock
+Returns a {term}`clock tick` counter value which is at least `delta` clock
 ticks in the future.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/tick-later-usec
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/tick-later-usec
+```{index} rtems_clock_tick_later_usec()
+```
 
-.. raw:: latex
+(interfacertemsclockticklaterusec)=
 
-    \clearpage
+## rtems_clock_tick_later_usec()
 
-.. index:: rtems_clock_tick_later_usec()
-
-.. _InterfaceRtemsClockTickLaterUsec:
-
-rtems_clock_tick_later_usec()
------------------------------
-
-Gets a :term:`clock tick` value which is at least delta microseconds in the
+Gets a {term}`clock tick` value which is at least delta microseconds in the
 future.
 
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+rtems_interval rtems_clock_tick_later_usec( rtems_interval delta_in_usec );
+```
 
-    rtems_interval rtems_clock_tick_later_usec( rtems_interval delta_in_usec );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``delta_in_usec``
-    This parameter is the delta value in microseconds.
+`delta_in_usec`
 
+: This parameter is the delta value in microseconds.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns a :term:`clock tick` counter value which is at least ``delta_in_usec``
+Returns a {term}`clock tick` counter value which is at least `delta_in_usec`
 microseconds in the future.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.
 
-* The directive will not cause the calling task to be preempted.
+% Generated from spec:/rtems/clock/if/tick-before
 
-* The directive requires a :term:`Clock Driver`.
+```{raw} latex
+\clearpage
+```
 
-.. Generated from spec:/rtems/clock/if/tick-before
+```{index} rtems_clock_tick_before()
+```
 
-.. raw:: latex
+(interfacertemsclocktickbefore)=
 
-    \clearpage
+## rtems_clock_tick_before()
 
-.. index:: rtems_clock_tick_before()
+Indicates if the current {term}`clock tick` counter is before the ticks.
 
-.. _InterfaceRtemsClockTickBefore:
-
-rtems_clock_tick_before()
--------------------------
-
-Indicates if the current :term:`clock tick` counter is before the ticks.
-
+```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
+```
 
-.. code-block:: c
+```c
+bool rtems_clock_tick_before( rtems_interval ticks );
+```
 
-    bool rtems_clock_tick_before( rtems_interval ticks );
-
+```{eval-rst}
 .. rubric:: PARAMETERS:
+```
 
-``ticks``
-    This parameter is the ticks value to check.
+`ticks`
 
+: This parameter is the ticks value to check.
+
+```{eval-rst}
 .. rubric:: RETURN VALUES:
+```
 
-Returns true, if current :term:`clock tick` counter indicates a time before the
+Returns true, if current {term}`clock tick` counter indicates a time before the
 time in ticks, otherwise returns false.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This directive can be used to write busy loops with a timeout.
 
-.. code-block:: c
-    :linenos:
+```{code-block} c
+:linenos: true
 
-    status busy( void )
-    {
-      rtems_interval timeout;
+status busy( void )
+{
+  rtems_interval timeout;
 
-      timeout = rtems_clock_tick_later_usec( 10000 );
+  timeout = rtems_clock_tick_later_usec( 10000 );
 
-      do {
-        if ( ok() ) {
-          return success;
-        }
-      } while ( rtems_clock_tick_before( timeout ) );
-
-      return timeout;
+  do {
+    if ( ok() ) {
+      return success;
     }
+  } while ( rtems_clock_tick_before( timeout ) );
 
+  return timeout;
+}
+```
+
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this directive:
 
-* The directive may be called from within any runtime context.
-
-* The directive will not cause the calling task to be preempted.
-
-* The directive requires a :term:`Clock Driver`.
+- The directive may be called from within any runtime context.
+- The directive will not cause the calling task to be preempted.
+- The directive requires a {term}`Clock Driver`.

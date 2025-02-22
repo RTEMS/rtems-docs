@@ -1,42 +1,66 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2013, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2013, 2021 embedded brains GmbH & Co. KG
 
-.. This file is part of the RTEMS quality process and was automatically
-.. generated.  If you find something that needs to be fixed or
-.. worded better please post a report or patch to an RTEMS mailing list
-.. or raise a bug report:
-..
-.. https://www.rtems.org/bugs.html
-..
-.. For information on updating and regenerating please refer to the How-To
-.. section in the Software Requirements Engineering chapter of the
-.. RTEMS Software Engineering manual.  The manual is provided as a part of
-.. a release.  For development sources please refer to the online
-.. documentation at:
-..
-.. https://docs.rtems.org
+% Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
 
-.. Generated from spec:/rtems/scheduler/if/group
+% This file is part of the RTEMS quality process and was automatically
 
-.. _SchedulerManagerIntroduction:
+% generated.  If you find something that needs to be fixed or
 
-Introduction
-============
+% worded better please post a report or patch to an RTEMS mailing list
 
-.. The following list was generated from:
-.. spec:/rtems/scheduler/if/ident
-.. spec:/rtems/scheduler/if/ident-by-processor
-.. spec:/rtems/scheduler/if/ident-by-processor-set
-.. spec:/rtems/scheduler/if/get-maximum-priority
-.. spec:/rtems/scheduler/if/map-priority-to-posix
-.. spec:/rtems/scheduler/if/map-priority-from-posix
-.. spec:/rtems/scheduler/if/get-processor
-.. spec:/rtems/scheduler/if/get-processor-maximum
-.. spec:/rtems/scheduler/if/get-processor-set
-.. spec:/rtems/scheduler/if/add-processor
-.. spec:/rtems/scheduler/if/remove-processor
+% or raise a bug report:
+
+%
+
+% https://www.rtems.org/bugs.html
+
+%
+
+% For information on updating and regenerating please refer to the How-To
+
+% section in the Software Requirements Engineering chapter of the
+
+% RTEMS Software Engineering manual.  The manual is provided as a part of
+
+% a release.  For development sources please refer to the online
+
+% documentation at:
+
+%
+
+% https://docs.rtems.org
+
+% Generated from spec:/rtems/scheduler/if/group
+
+(schedulermanagerintroduction)=
+
+# Introduction
+
+% The following list was generated from:
+
+% spec:/rtems/scheduler/if/ident
+
+% spec:/rtems/scheduler/if/ident-by-processor
+
+% spec:/rtems/scheduler/if/ident-by-processor-set
+
+% spec:/rtems/scheduler/if/get-maximum-priority
+
+% spec:/rtems/scheduler/if/map-priority-to-posix
+
+% spec:/rtems/scheduler/if/map-priority-from-posix
+
+% spec:/rtems/scheduler/if/get-processor
+
+% spec:/rtems/scheduler/if/get-processor-maximum
+
+% spec:/rtems/scheduler/if/get-processor-set
+
+% spec:/rtems/scheduler/if/add-processor
+
+% spec:/rtems/scheduler/if/remove-processor
 
 The scheduling concepts relate to the allocation of processing time for tasks.
 
@@ -52,35 +76,25 @@ appropriately called the scheduler. The scheduler’s sole purpose is to allocat
 the all important resource of processor time to the various tasks competing for
 attention. The directives provided by the Scheduler Manager are:
 
-* :ref:`InterfaceRtemsSchedulerIdent` - Identifies a scheduler by the object
+- {ref}`InterfaceRtemsSchedulerIdent` - Identifies a scheduler by the object
   name.
-
-* :ref:`InterfaceRtemsSchedulerIdentByProcessor` - Identifies a scheduler by
+- {ref}`InterfaceRtemsSchedulerIdentByProcessor` - Identifies a scheduler by
   the processor index.
-
-* :ref:`InterfaceRtemsSchedulerIdentByProcessorSet` - Identifies a scheduler by
+- {ref}`InterfaceRtemsSchedulerIdentByProcessorSet` - Identifies a scheduler by
   the processor set.
-
-* :ref:`InterfaceRtemsSchedulerGetMaximumPriority` - Gets the maximum task
+- {ref}`InterfaceRtemsSchedulerGetMaximumPriority` - Gets the maximum task
   priority of the scheduler.
-
-* :ref:`InterfaceRtemsSchedulerMapPriorityToPosix` - Maps a Classic API task
+- {ref}`InterfaceRtemsSchedulerMapPriorityToPosix` - Maps a Classic API task
   priority to the corresponding POSIX thread priority.
-
-* :ref:`InterfaceRtemsSchedulerMapPriorityFromPosix` - Maps a POSIX thread
+- {ref}`InterfaceRtemsSchedulerMapPriorityFromPosix` - Maps a POSIX thread
   priority to the corresponding Classic API task priority.
-
-* :ref:`InterfaceRtemsSchedulerGetProcessor` - Returns the index of the current
+- {ref}`InterfaceRtemsSchedulerGetProcessor` - Returns the index of the current
   processor.
-
-* :ref:`InterfaceRtemsSchedulerGetProcessorMaximum` - Returns the processor
+- {ref}`InterfaceRtemsSchedulerGetProcessorMaximum` - Returns the processor
   maximum supported by the system.
-
-* :ref:`InterfaceRtemsSchedulerGetProcessorSet` - Gets the set of processors
+- {ref}`InterfaceRtemsSchedulerGetProcessorSet` - Gets the set of processors
   owned by the scheduler.
-
-* :ref:`InterfaceRtemsSchedulerAddProcessor` - Adds the processor to the set of
+- {ref}`InterfaceRtemsSchedulerAddProcessor` - Adds the processor to the set of
   processors owned by the scheduler.
-
-* :ref:`InterfaceRtemsSchedulerRemoveProcessor` - Removes the processor from
+- {ref}`InterfaceRtemsSchedulerRemoveProcessor` - Removes the processor from
   the set of processors owned by the scheduler.

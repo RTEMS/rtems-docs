@@ -1,25 +1,24 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1989, 2017 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1989, 2017 On-Line Applications Research Corporation (OAR)
 
-.. index:: Ada
-.. _ada_support:
+```{index} Ada
+```
 
-Ada Support
-************
+(ada-support)=
 
-Introduction
-============
+# Ada Support
+
+## Introduction
+
 RTEMS has long had support for the Ada programming language
 by supporting the GNU Ada Compiler (GNAT). There are two primary
 components to this support:
 
 - Ada Programming Language Support
-
 - Classic API Ada Bindings
 
-Ada Programming Language Support
-================================
+## Ada Programming Language Support
 
 The Ada programming natively supports multi-threaded programming
 with its own tasking and concurrency model. Native Ada multi-threaded
@@ -29,14 +28,13 @@ The application developer will have to account for the specific
 requirements of the GNAT Run-Time when configuring RTEMS. There
 are example Ada programs with RTEMS configuration and startup sequences.
 
-Classic API Ada Bindings
-========================
+## Classic API Ada Bindings
 
 An Ada language binding exists for a subset of the RTEMS Classic
 API. In the early 1990's, there were C and Ada implementations of
 RTEMS which were functionally equivalent. The source structure was as
-similar as possible. In fact, the top level ``c/`` directory at one point
-had a sibling ``ada/``. The current Ada language bindings and test code was
+similar as possible. In fact, the top level `c/` directory at one point
+had a sibling `ada/`. The current Ada language bindings and test code was
 derived from that Ada implementation.
 
 The Ada binding specifically excludes some methods which are either not
@@ -45,17 +43,16 @@ generally only added to this binding when a user makes a requests. Thus
 some methods that could be supported are not. If in doubt, ask about a
 methods and contribute bindings.
 
-The bindings are located in the ``c/src/ada`` directory of the RTEMS source
-tree. The tests are in ``c/src/ada-tests``.  The bindings following a simple
+The bindings are located in the `c/src/ada` directory of the RTEMS source
+tree. The tests are in `c/src/ada-tests`. The bindings following a simple
 pattern to map the C Classic API calls into Ada subprograms. The following
 rules are used:
 
-- All RTEMS interfaces are in the RTEMS Ada package.  The rtems\_ and
+- All RTEMS interfaces are in the RTEMS Ada package. The rtems\_ and
   RTEMS\_ prefixes in the C version of the Classic API thus correspond to
-  "RTEMS." in Ada symbol nomenclature. For example, ``rtems_task_create()``
-  in C is ``RTEMS.Task_Create()`` in Ada.
-
-- Classic API directives tend to return an ``rtems_status_code``. Some
+  "RTEMS." in Ada symbol nomenclature. For example, `rtems_task_create()`
+  in C is `RTEMS.Task_Create()` in Ada.
+- Classic API directives tend to return an `rtems_status_code`. Some
   directives also have an output parameter such as an object id on a create
   operation. Ada subprograms are either pure functions with only a single
   return value or subprograms. For consistency, the returned status code

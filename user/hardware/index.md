@@ -1,16 +1,19 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _Hardware:
+(hardware)=
 
-Target Hardware
-***************
-.. index:: Hardware
-.. index:: Target Hardware
+# Target Hardware
 
-.. toctree::
+```{index} Hardware
+```
 
-   targets
-   architectures
-   tiers
+```{index} Target Hardware
+```
+
+```{toctree}
+targets
+architectures
+tiers
+```

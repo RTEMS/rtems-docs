@@ -1,11 +1,14 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. _libbsd_network_stack:
+(libbsd-network-stack)=
 
-LibBSD - FreeBSD Network and Driver Stack
-*****************************************
-.. index:: LibBSD Network Stack
-.. index:: LibBSD
+# LibBSD - FreeBSD Network and Driver Stack
+
+```{index} LibBSD Network Stack
+```
+
+```{index} LibBSD
+```
 
 The RTEMS LibBSD is a framework to port various drivers and subsystems from
 FreeBSD to RTEMS. Main features are:
@@ -23,6 +26,7 @@ FreeBSD version.
 FIXME: This documentation is still under construction. Contributions are
 welcome.
 
-.. toctree::
-	usage/index
-	drivers/index
+```{toctree}
+usage/index
+drivers/index
+```

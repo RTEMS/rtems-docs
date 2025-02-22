@@ -1,34 +1,31 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
-Operations
-==========
+# Operations
 
-Establishing an ISR
--------------------
+## Establishing an ISR
 
-The ``rtems_interrupt_catch`` directive establishes an ISR for the system.  The
+The `rtems_interrupt_catch` directive establishes an ISR for the system. The
 address of the ISR and its associated CPU vector number are specified to this
-directive.  This directive installs the RTEMS interrupt wrapper in the
+directive. This directive installs the RTEMS interrupt wrapper in the
 processor's Interrupt Vector Table and the address of the user's ISR in the
-RTEMS' Vector Table.  This directive returns the previous contents of the
+RTEMS' Vector Table. This directive returns the previous contents of the
 specified vector in the RTEMS' Vector Table.
 
-Directives Allowed from an ISR
-------------------------------
+## Directives Allowed from an ISR
 
 Using the interrupt manager ensures that RTEMS knows when a directive is being
-called from an ISR.  The ISR may then use system calls to synchronize itself
-with an application task.  The synchronization may involve messages, events or
-signals being passed by the ISR to the desired task.  Directives invoked by an
-ISR must operate only on objects which reside on the local node.  The following
+called from an ISR. The ISR may then use system calls to synchronize itself
+with an application task. The synchronization may involve messages, events or
+signals being passed by the ISR to the desired task. Directives invoked by an
+ISR must operate only on objects which reside on the local node. The following
 is a list of RTEMS system calls that may be made from an ISR:
 
 - Task Management
-  Although it is acceptable to operate on the RTEMS_SELF task (e.g.  the
+  Although it is acceptable to operate on the RTEMS_SELF task (e.g. the
   currently executing task), while in an ISR, this will refer to the
-  interrupted task.  Most of the time, it is an application implementation
+  interrupted task. Most of the time, it is an application implementation
   error to use RTEMS_SELF from an ISR.
 
   - rtems_task_suspend
@@ -92,7 +89,7 @@ is a list of RTEMS system calls that may be made from an ISR:
 
 - IO Management
   The following services are safe to call from an ISR if and only if
-  the device driver service invoked is also safe.  The IO Manager itself
+  the device driver service invoked is also safe. The IO Manager itself
   is safe but the invoked driver entry point may or may not be.
 
   - rtems_io_initialize

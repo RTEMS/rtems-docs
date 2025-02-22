@@ -1,26 +1,26 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2015 embedded brains GmbH & Co. KG
+% Copyright (C) 2015 embedded brains GmbH & Co. KG
 
-.. index:: Status Codes
+```{index} Status Codes
+```
 
-Directive Status Codes
-**********************
+# Directive Status Codes
 
-Introduction
-============
+## Introduction
 
 The directive status code directives are:
 
-- rtems_status_text_ - Return the name for the status code
+- [rtems_status_text] - Return the name for the status code
 
-Directives
-==========
+## Directives
 
 The directives are:
 
-.. index:: rtems_status_code
+```{index} rtems_status_code
+```
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -82,27 +82,30 @@ The directives are:
    - driver I/O error
  * - ``RTEMS_INTERRUPTED``
    - returned by driver to indicate interrupted operation
+```
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-   \clearpage
+```{index} rtems_status_text()
+```
 
-.. index:: rtems_status_text()
+(rtems-status-text)=
 
-.. _rtems_status_text:
-
-STATUS_TEXT - Returns the enumeration name for a status code
-------------------------------------------------------------
+### STATUS_TEXT - Returns the enumeration name for a status code
 
 CALLING SEQUENCE:
-    .. code-block:: c
-
-        const char *rtems_status_text(
-            rtems_status_code code
-        );
+: ```c
+  const char *rtems_status_text(
+      rtems_status_code code
+  );
+  ```
 
 DIRECTIVE STATUS CODES
-    The status code enumeration name or "?" in case the status code is invalid.
+
+: The status code enumeration name or "?" in case the status code is invalid.
 
 DESCRIPTION:
-    Returns the enumeration name for the specified status code.
+
+: Returns the enumeration name for the specified status code.

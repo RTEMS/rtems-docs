@@ -1,192 +1,202 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Memory Management Manager
-#########################
+# Memory Management Manager
 
-Introduction
-============
+## Introduction
 
 The
 memory management manager is ...
 
 The directives provided by the memory management manager are:
 
-- mlockall_ - Lock the Address Space of a Process
+- [mlockall] - Lock the Address Space of a Process
+- [munlockall] - Unlock the Address Space of a Process
+- [mlock] - Lock a Range of the Process Address Space
+- [munlock] - Unlock a Range of the Process Address Space
+- [mmap] - Map Process Addresses to a Memory Object
+- [munmap] - Unmap Previously Mapped Addresses
+- [mprotect] - Change Memory Protection
+- [msync] - Memory Object Synchronization
+- [shm_open] - Open a Shared Memory Object
+- [shm_unlink] - Remove a Shared Memory Object
 
-- munlockall_ - Unlock the Address Space of a Process
-
-- mlock_ - Lock a Range of the Process Address Space
-
-- munlock_ - Unlock a Range of the Process Address Space
-
-- mmap_ - Map Process Addresses to a Memory Object
-
-- munmap_ - Unmap Previously Mapped Addresses
-
-- mprotect_ - Change Memory Protection
-
-- msync_ - Memory Object Synchronization
-
-- shm_open_ - Open a Shared Memory Object
-
-- shm_unlink_ - Remove a Shared Memory Object
-
-Background
-==========
+## Background
 
 There is currently no text in this section.
 
-Operations
-==========
+## Operations
 
 There is currently no text in this section.
 
-Directives
-==========
+## Directives
 
-This section details the memory management manager's directives.  A subsection
+This section details the memory management manager's directives. A subsection
 is dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
-.. _mlockall:
+(mlockall)=
 
-mlockall - Lock the Address Space of a Process
-----------------------------------------------
-.. index:: mlockall
-.. index:: lock the address space of a process
+### mlockall - Lock the Address Space of a Process
+
+```{index} mlockall
+```
+
+```{index} lock the address space of a process
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int mlockall(
-        int flags
-    );
+```c
+#include <sys/mman.h>
+int mlockall(
+    int flags
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``E``
    - The
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _munlockall:
+(munlockall)=
 
-munlockall - Unlock the Address Space of a Process
---------------------------------------------------
-.. index:: munlockall
-.. index:: unlock the address space of a process
+### munlockall - Unlock the Address Space of a Process
+
+```{index} munlockall
+```
+
+```{index} unlock the address space of a process
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int munlockall(
-        void
-    );
+```c
+#include <sys/mman.h>
+int munlockall(
+    void
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``E``
    - The
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _mlock:
+(mlock)=
 
-mlock - Lock a Range of the Process Address Space
--------------------------------------------------
-.. index:: mlock
-.. index:: lock a range of the process address space
+### mlock - Lock a Range of the Process Address Space
+
+```{index} mlock
+```
+
+```{index} lock a range of the process address space
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int mlock(
-        const void *addr,
-        size_t len
-    );
+```c
+#include <sys/mman.h>
+int mlock(
+    const void *addr,
+    size_t len
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``E``
    - The
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _munlock:
+(munlock)=
 
-munlock - Unlock a Range of the Process Address Space
------------------------------------------------------
-.. index:: munlock
-.. index:: unlock a range of the process address space
+### munlock - Unlock a Range of the Process Address Space
+
+```{index} munlock
+```
+
+```{index} unlock a range of the process address space
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int munlock(
-        const void *addr,
-        size_t len
-    );
+```c
+#include <sys/mman.h>
+int munlock(
+    const void *addr,
+    size_t len
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``E``
    - The
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _mmap:
+(mmap)=
 
-mmap - Map Process Addresses to a Memory Object
------------------------------------------------
-.. index:: mmap
-.. index:: map process addresses to a memory object
+### mmap - Map Process Addresses to a Memory Object
+
+```{index} mmap
+```
+
+```{index} map process addresses to a memory object
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    void *mmap(
-        void *addr,
-        size_t len,
-        int prot,
-        int flags,
-        int fildes,
-        off_t off
-    );
+```c
+#include <sys/mman.h>
+void *mmap(
+    void *addr,
+    size_t len,
+    int prot,
+    int flags,
+    int fildes,
+    off_t off
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -201,7 +211,7 @@ mmap - Map Process Addresses to a Memory Object
      the page size as returned by sysconf(), or is considered invalid by the
      implementation.
  * - ``ENODEV``
-   - The fildes argument refers to a file whose type is not supported by mmap. 
+   - The fildes argument refers to a file whose type is not supported by mmap.
  * - ``ENOMEM``
    - MAP_FIXED was specified, and the range [addr,addr+len) exceeds that
      allowed for the address space of a process; or, if MAP_FIXED was not
@@ -223,52 +233,57 @@ mmap - Map Process Addresses to a Memory Object
    - The file is a regular file and the value of off plus len exceeds the
      offset maximum established in the open file description associated with
      fildes.
+```
 
 **DESCRIPTION:**
 
-``mmap`` establishes a mapping between an address ``pa`` for ``len`` bytes to
-the memory object represented by the file descriptor ``fildes`` at offset
-``off`` for ``len`` bytes.  The value of ``pa`` is an implementation-defined
-function of the parameter addr and the values of ``flags``. A successful
-``mmap()`` call shall return ``pa`` as its result. An unsuccessful call returns
-``MAP_FAILED`` and sets ``errno`` accordingly. 
+`mmap` establishes a mapping between an address `pa` for `len` bytes to
+the memory object represented by the file descriptor `fildes` at offset
+`off` for `len` bytes. The value of `pa` is an implementation-defined
+function of the parameter addr and the values of `flags`. A successful
+`mmap()` call shall return `pa` as its result. An unsuccessful call returns
+`MAP_FAILED` and sets `errno` accordingly.
 
 **NOTES:**
 
 RTEMS is a single address space operating system without privilege separation
-between the kernel and user space. Therefore, the implementation of ``mmap``
+between the kernel and user space. Therefore, the implementation of `mmap`
 has a number of implementation-specific issues to be aware of:
 
- * Read, write and execute permissions are allowed because the memory in RTEMS
-   does not normally have protections but we cannot hide access to memory.
-   Thus, the use of ``PROT_NONE`` for the ``prot`` argument is not supported.
-   Similarly, there is no restriction of write access, so ``PROT_WRITE`` must
-   be in the ``prot`` argument.
- * Anonymous mappings must have ``fildes`` set to -1 and ``off`` set to 0.
-   Shared mappings are not supported with Anonymous mappings.
- * ``MAP_FIXED`` is not supported for shared memory objects with ``MAP_SHARED``.
- * Support for shared mappings is dependent on the underlying object's
-   filesystem implementation of an ``mmap_h`` file operation handler.
+> - Read, write and execute permissions are allowed because the memory in RTEMS
+>   does not normally have protections but we cannot hide access to memory.
+>   Thus, the use of `PROT_NONE` for the `prot` argument is not supported.
+>   Similarly, there is no restriction of write access, so `PROT_WRITE` must
+>   be in the `prot` argument.
+> - Anonymous mappings must have `fildes` set to -1 and `off` set to 0.
+>   Shared mappings are not supported with Anonymous mappings.
+> - `MAP_FIXED` is not supported for shared memory objects with `MAP_SHARED`.
+> - Support for shared mappings is dependent on the underlying object's
+>   filesystem implementation of an `mmap_h` file operation handler.
 
-.. _munmap:
+(munmap)=
 
-munmap - Unmap Previously Mapped Addresses
-------------------------------------------
-.. index:: munmap
-.. index:: unmap previously mapped addresses
+### munmap - Unmap Previously Mapped Addresses
+
+```{index} munmap
+```
+
+```{index} unmap previously mapped addresses
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int munmap(
-        void *addr,
-        size_t len
-    );
+```c
+#include <sys/mman.h>
+int munmap(
+    void *addr,
+    size_t len
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -277,99 +292,114 @@ munmap - Unmap Previously Mapped Addresses
      address space.
  * - ``EINVAL``
    - The len argument is 0.
+```
 
 **DESCRIPTION:**
 
-The ``munmap()`` function shall remove any mappings for those entire pages
-containing any part of the address space of the process starting at ``addr``
-and continuing for ``len`` bytes.  If there are no mappings in the specified
-address range, then ``munmap()`` has no effect.
+The `munmap()` function shall remove any mappings for those entire pages
+containing any part of the address space of the process starting at `addr`
+and continuing for `len` bytes. If there are no mappings in the specified
+address range, then `munmap()` has no effect.
 
-Upon successful completion, ``munmap()`` shall return 0; otherwise, it shall
-return -1 and set ``errno`` to indicate the error.
+Upon successful completion, `munmap()` shall return 0; otherwise, it shall
+return -1 and set `errno` to indicate the error.
 
 **NOTES:**
 
-.. _mprotect:
+(mprotect)=
 
-mprotect - Change Memory Protection
------------------------------------
-.. index:: mprotect
-.. index:: change memory protection
+### mprotect - Change Memory Protection
+
+```{index} mprotect
+```
+
+```{index} change memory protection
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int mprotect(
-        void *addr,
-        size_t len,
-        int prot
-    );
+```c
+#include <sys/mman.h>
+int mprotect(
+    void *addr,
+    size_t len,
+    int prot
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``E``
    - The
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _msync:
+(msync)=
 
-msync - Memory Object Synchronization
--------------------------------------
-.. index:: msync
-.. index:: memory object synchronization
+### msync - Memory Object Synchronization
+
+```{index} msync
+```
+
+```{index} memory object synchronization
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int msync(
-        void *addr,
-        size_t len,
-        int flags
-    );
+```c
+#include <sys/mman.h>
+int msync(
+    void *addr,
+    size_t len,
+    int flags
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
  * - ``E``
    - The
+```
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. _shm_open:
+(shm-open)=
 
-shm_open - Open a Shared Memory Object
---------------------------------------
-.. index:: shm_open
-.. index:: open a shared memory object
+### shm_open - Open a Shared Memory Object
+
+```{index} shm_open
+```
+
+```{index} open a shared memory object
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int shm_open(
-        const char *name,
-        int oflag,
-        mode_t mode
-    );
+```c
+#include <sys/mman.h>
+int shm_open(
+    const char *name,
+    int oflag,
+    mode_t mode
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -395,45 +425,50 @@ shm_open - Open a Shared Memory Object
  * - ``ENAMETOOLONG``
    - The length of the name argument exceeds ``_POSIX_PATH_MAX``.
 
+```
 
 **DESCRIPTION:**
 
-The ``shm_open()`` function shall establish a connection between a shared
+The `shm_open()` function shall establish a connection between a shared
 memory object and a file descriptor. It shall create an open file description
 that refers to the shared memory object and a file descriptor that refers to
-that open file description. The ``name`` argument points to a string naming a
-shared memory object. 
+that open file description. The `name` argument points to a string naming a
+shared memory object.
 
-If successful, ``shm_open()`` shall return a file descriptor for the shared
-memory object. Upon successful completion, the ``shm_open()`` function shall
+If successful, `shm_open()` shall return a file descriptor for the shared
+memory object. Upon successful completion, the `shm_open()` function shall
 return a non-negative integer representing the file descriptor. Otherwise, it
-shall return -1 and set ``errno`` to indicate the error.
+shall return -1 and set `errno` to indicate the error.
 
 **NOTES:**
 
-An application can set the ``_POSIX_Shm_Object_operations`` to control the
+An application can set the `_POSIX_Shm_Object_operations` to control the
 behavior of shared memory objects when accessed via the file descriptor.
 
-The ``name`` must be valid for an RTEMS SuperCore Object.
+The `name` must be valid for an RTEMS SuperCore Object.
 
-.. _shm_unlink:
+(shm-unlink)=
 
-shm_unlink - Remove a Shared Memory Object
-------------------------------------------
-.. index:: shm_unlink
-.. index:: remove a shared memory object
+### shm_unlink - Remove a Shared Memory Object
+
+```{index} shm_unlink
+```
+
+```{index} remove a shared memory object
+```
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <sys/mman.h>
-    int shm_unlink(
-        const char *name
-    );
+```c
+#include <sys/mman.h>
+int shm_unlink(
+    const char *name
+);
+```
 
 **STATUS CODES:**
 
+```{eval-rst}
 .. list-table::
  :class: rtems-table
 
@@ -441,19 +476,20 @@ shm_unlink - Remove a Shared Memory Object
    - The named shared memory object does not exist.
  * - ``ENAMETOOLONG``
    - The length of the name argument exceeds ``_POSIX_PATH_MAX``.
+```
 
 **DESCRIPTION:**
 
-The ``shm_unlink()`` function shall remove the name of the shared memory object
-named by the string pointed to by ``name``.
+The `shm_unlink()` function shall remove the name of the shared memory object
+named by the string pointed to by `name`.
 
 If one or more references to the shared memory object exist when the object is
-unlinked, the name shall be removed before ``shm_unlink()`` returns, but the
+unlinked, the name shall be removed before `shm_unlink()` returns, but the
 removal of the memory object contents shall be postponed until all open and map
 references to the shared memory object have been removed.
 
-Even if the object continues to exist after the last ``shm_unlink()``, reuse of
-the name shall subsequently cause ``shm_open()`` to behave as if no shared
+Even if the object continues to exist after the last `shm_unlink()`, reuse of
+the name shall subsequently cause `shm_open()` to behave as if no shared
 memory object of this name exists.
 
 Upon successful completion, a value of zero shall be returned. Otherwise, a
@@ -462,4 +498,3 @@ returned, the named shared memory object shall not be changed by this function
 call.
 
 **NOTES:**
-

@@ -1,13 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. index:: support; commercial
+```{index} support; commercial
+```
 
-.. _SupportCommercial:
+(supportcommercial)=
 
-Commercial Support Services
-***************************
+# Commercial Support Services
 
 The wider RTEMS community has developers and organizations who can provide
 commercial support services. These services range from training, implementing

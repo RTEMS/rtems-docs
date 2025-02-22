@@ -1,16 +1,16 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018.
-.. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
+% Copyright (C) 2018.
 
+% COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-Software Release Management
-***************************
+# Software Release Management
 
-.. COMMENT: Subsections
-.. toctree::
+% COMMENT: Subsections
 
-    release-process
-    release-maintenance
-    change-reports
-    vdd-generation
+```{toctree}
+release-process
+release-maintenance
+change-reports
+vdd-generation
+```

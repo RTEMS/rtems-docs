@@ -1,14 +1,12 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018.
-.. COMMENT: RTEMS Foundation, The RTEMS Documentation Project
+% Copyright (C) 2018.
 
+% COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-Software Test Plan Assurance and Procedures
-********************************************
+# Software Test Plan Assurance and Procedures
 
-Testing and Coverage
-====================
+## Testing and Coverage
 
 Testing to verify that requirements are implemented is a critical part of
 the high integrity processes. Similarly, measuring and reporting source
@@ -28,14 +26,14 @@ the source technical data does not bit rot.
 
 Must use tools from:
 
-RTEMS Tools Project: https://gitlab.rtems.org/rtems/tools/rtems-tools
-
+RTEMS Tools Project: <https://gitlab.rtems.org/rtems/tools/rtems-tools>
 
 Scope, Procedures, Methodologies, Tools
 TBD - Write content
 
-.. COMMENT: Subsections
-.. toctree::
+% COMMENT: Subsections
 
-    test-suites
-    tester
+```{toctree}
+test-suites
+tester
+```

@@ -1,11 +1,12 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020 embedded brains GmbH & Co. KG
-.. Copyright (C) 2016, 2018 RTEMS Foundation, The RTEMS Documentation Project
-.. Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-Introduction to Pre-Qualification
-*********************************
+% Copyright (C) 2016, 2018 RTEMS Foundation, The RTEMS Documentation Project
+
+% Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
+
+# Introduction to Pre-Qualification
 
 RTEMS has a long history of being used to support critical
 applications. In some of these application domains, there are standards
@@ -78,8 +79,7 @@ identify how the RTEMS Project is currently doing when reviewed per each
 standard. These will be maintained in the open as community resources
 which will guide the community in improving its infrastructure.
 
-Stakeholder Involvement
-=======================
+## Stakeholder Involvement
 
 Qualification of RTEMS is a specialized activity and only specific users
 of RTEMS will complete a formal qualification activity. The RTEMS Project

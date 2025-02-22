@@ -1,162 +1,148 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 1988, 2002 On-Line Applications Research Corporation (OAR)
 
-Timer Manager
-#############
+# Timer Manager
 
-Introduction
-============
+## Introduction
 
 The timer manager is ...
 
 The services provided by the timer manager are:
 
-- timer_create_ - Create a Per-Process Timer
+- [timer_create] - Create a Per-Process Timer
+- [timer_delete] - Delete a Per-Process Timer
+- [timer_settime] - Set Next Timer Expiration
+- [timer_gettime] - Get Time Remaining on Timer
+- [timer_getoverrun] - Get Timer Overrun Count
 
-- timer_delete_ - Delete a Per-Process Timer
+## Background
 
-- timer_settime_ - Set Next Timer Expiration
+## Operations
 
-- timer_gettime_ - Get Time Remaining on Timer
+## System Calls
 
-- timer_getoverrun_ - Get Timer Overrun Count
-
-Background
-==========
-
-Operations
-==========
-
-System Calls
-============
-
-This section details the timer manager's services.  A subsection is dedicated
+This section details the timer manager's services. A subsection is dedicated
 to each of this manager's services and describes the calling sequence, related
 constants, usage, and status codes.
 
-.. COMMENT: timer_create
+% COMMENT: timer_create
 
-.. _timer_create:
+(timer-create)=
 
-timer_create - Create a Per-Process Timer
------------------------------------------
+### timer_create - Create a Per-Process Timer
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <time.h>
-    #include <signal.h>
-    int timer_create(
-        clockid_t        clock_id,
-        struct sigevent *evp,
-        timer_t         *timerid
-    );
+```c
+#include <time.h>
+#include <signal.h>
+int timer_create(
+    clockid_t        clock_id,
+    struct sigevent *evp,
+    timer_t         *timerid
+);
+```
 
 **STATUS CODES:**
 
-``EXXX`` -
+`EXXX` -
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. COMMENT: timer_delete
+% COMMENT: timer_delete
 
-.. _timer_delete:
+(timer-delete)=
 
-timer_delete - Delete a Per-Process Timer
------------------------------------------
+### timer_delete - Delete a Per-Process Timer
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <time.h>
-    int timer_delete(
-        timer_t timerid
-    );
+```c
+#include <time.h>
+int timer_delete(
+    timer_t timerid
+);
+```
 
 **STATUS CODES:**
 
-``EXXX`` -
+`EXXX` -
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. COMMENT: timer_settime
+% COMMENT: timer_settime
 
-.. _timer_settime:
+(timer-settime)=
 
-timer_settime - Set Next Timer Expiration
------------------------------------------
+### timer_settime - Set Next Timer Expiration
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <time.h>
-    int timer_settime(
-        timer_t                  timerid,
-        int                      flags,
-        const struct itimerspec *value,
-        struct itimerspec       *ovalue
-    );
+```c
+#include <time.h>
+int timer_settime(
+    timer_t                  timerid,
+    int                      flags,
+    const struct itimerspec *value,
+    struct itimerspec       *ovalue
+);
+```
 
 **STATUS CODES:**
 
-``EXXX`` -
+`EXXX` -
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. COMMENT: timer_gettime
+% COMMENT: timer_gettime
 
-.. _timer_gettime:
+(timer-gettime)=
 
-timer_gettime - Get Time Remaining on Timer
--------------------------------------------
+### timer_gettime - Get Time Remaining on Timer
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <time.h>
-    int timer_gettime(
-        timer_t            timerid,
-        struct itimerspec *value
-    );
+```c
+#include <time.h>
+int timer_gettime(
+    timer_t            timerid,
+    struct itimerspec *value
+);
+```
 
 **STATUS CODES:**
 
-``EXXX`` -
+`EXXX` -
 
 **DESCRIPTION:**
 
 **NOTES:**
 
-.. COMMENT: timer_getoverrun
+% COMMENT: timer_getoverrun
 
-.. _timer_getoverrun:
+(timer-getoverrun)=
 
-timer_getoverrun - Get Timer Overrun Count
-------------------------------------------
+### timer_getoverrun - Get Timer Overrun Count
 
 **CALLING SEQUENCE:**
 
-.. code-block:: c
-
-    #include <time.h>
-    int timer_getoverrun(
-        timer_t   timerid
-    );
+```c
+#include <time.h>
+int timer_getoverrun(
+    timer_t   timerid
+);
+```
 
 **STATUS CODES:**
 
-``EXXX`` -
+`EXXX` -
 
 **DESCRIPTION:**
 

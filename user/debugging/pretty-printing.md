@@ -1,12 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2024 Suraj Kumar 
+% Copyright (C) 2024 Suraj Kumar
 
-.. _PrettyPrinting:
+(prettyprinting)=
 
-Pretty Printing and GDB  
-================
-.. index::  Pretty printing and GDB  
+# Pretty Printing and GDB
+
+```{index} Pretty printing and GDB
+```
 
 Pretty-printing in GDB refers to the customisation of the output format for
 complex data structures during debugging sessions. By default, GDB may display
@@ -21,31 +22,27 @@ the list's elements and structure. This enhanced visualization aids in quickly
 identifying issues and comprehending the program's state without manually
 parsing the data.
 
-
-Enabling Pretty-printing in RTEMS
--------------
+## Enabling Pretty-printing in RTEMS
 
 Pretty-printing support in RTEMS has been made possible through a combination of
 custom sections in the executable and Python scripts that register the necessary
 pretty-printers. An overview of the setup is as follows:
 
-#. *Custom section in executable*
-    To ensure that the pretty-printers are automatically loaded when debugging,
-    a custom section named ``.debug_gdb_scripts`` is added to each executable
-    being linked in RTEMS. This section contains a small assembly code snippet
-    that, when the executable is loaded into GDB, automatically imports a Python
-    script responsible for setting up the pretty-printers. You can dump the code
-    present with the following command:
+1. *Custom section in executable*
+   : To ensure that the pretty-printers are automatically loaded when debugging,
+     a custom section named `.debug_gdb_scripts` is added to each executable
+     being linked in RTEMS. This section contains a small assembly code snippet
+     that, when the executable is loaded into GDB, automatically imports a Python
+     script responsible for setting up the pretty-printers. You can dump the code
+     present with the following command:
 
-    .. code-block:: shell
-        
-        arm-rtems@rtems-ver-major@-objdump -s -j .debug_gdb_scripts build/arm-rtems@rtems-ver-major@-xilinx_zynq_a9_qemu/iostream.exe
-
-#. *Python script for Pretty-printer Registration*
-    The ``pprinter.py`` script, located in the ``rtems`` directory within the
-    GDB Python directory, is imported and executed when the executable (and
-    thereby, the custom section) is loaded. This script is responsible for
-    registering all the pretty-printers defined for various RTEMS kernel
-    structures, as well as ``libstdcxx`` printers (which are shipped and
-    maintained by GCC).
-    
+     ```shell
+     arm-rtems@rtems-ver-major@-objdump -s -j .debug_gdb_scripts build/arm-rtems@rtems-ver-major@-xilinx_zynq_a9_qemu/iostream.exe
+     ```
+2. *Python script for Pretty-printer Registration*
+   : The `pprinter.py` script, located in the `rtems` directory within the
+     GDB Python directory, is imported and executed when the executable (and
+     thereby, the custom section) is loaded. This script is responsible for
+     registering all the pretty-printers defined for various RTEMS kernel
+     structures, as well as `libstdcxx` printers (which are shipped and
+     maintained by GCC).

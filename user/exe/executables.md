@@ -1,10 +1,11 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2018 Chris Johns <chrisj@rtems.org>
 
-RTEMS Executable
-================
-.. index:: RTEMS Executable
+# RTEMS Executable
+
+```{index} RTEMS Executable
+```
 
 Running executables is the most important part of working with RTEMS, it is
 after all how you run your application and use the RTEMS kernel services.
@@ -20,7 +21,7 @@ An RTEMS Source Builder (RSB) built RTEMS tool chain is used to create RTEMS
 executables. The tool chain executable creates a fixed position statically
 linked Extendable Loader Format (ELF) file that contains the RTEMS kernel,
 standard libraries, third-party libraries and application code. RTEMS executes in
-a single address space which means it does not support the ``fork`` or ``exec``
+a single address space which means it does not support the `fork` or `exec`
 system calls so statically linking all the code is the easiest and best way to
 create an executable.
 
@@ -32,18 +33,20 @@ interpreted languages, and protocol stacks sit between the RTEMS APIs and the
 application components. The software built into an executable can be see as a
 vertical software stack.
 
-.. _fig-exe-vert-stack:
+(fig-exe-vert-stack)=
 
-.. figure:: ../../images/user/exe-vert-stack.png
-   :width: 35%
-   :alt: Vertical Software Stack
-   :figclass: align-center
+```{figure} ../../images/user/exe-vert-stack.png
+:alt: Vertical Software Stack
+:figclass: align-center
+:width: 35%
 
-   Vertical Software Stack
+Vertical Software Stack
+```
 
-Building an Application
-=======================
-.. index:: Building an Application
+# Building an Application
+
+```{index} Building an Application
+```
 
 RTEMS views any code it is running and using it's interfaces as an
 application. RTEMS conforms to a number of international standards such as
@@ -58,14 +61,15 @@ target and a bootloader loads it from the non-volatile storage into RAM or the
 code is executed in place in the non-volatile storage. The target hardware
 defines what happens.
 
-.. _fig-exe-app:
+(fig-exe-app)=
 
-.. figure:: ../../images/user/exe-app.png
-   :width: 90%
-   :alt: Building an Application
-   :figclass: align-center
+```{figure} ../../images/user/exe-app.png
+:alt: Building an Application
+:figclass: align-center
+:width: 90%
 
-   Building an Application
+Building an Application
+```
 
 The standard and third-party libraries are a collection of object files built
 using the same set of tools the application source is compiled with. The
@@ -73,18 +77,22 @@ package collects it's object files into an archive or library.
 
 RTEMS does not provide a standard application build system. The RTEMS ecosystem
 provides support so a range of build systems can be used. Applications can be
-built with ``make``, ``autotools``, ``cmake``, ``waf`` and more. User should
+built with `make`, `autotools`, `cmake`, `waf` and more. User should
 select a build system that meets their project, system, corporate or personal
 needs.
 
-.. _MachineFlagsandABI:
+(machineflagsandabi)=
 
-Machine Flags and ABI
----------------------
-.. index:: Machine flags
-.. index:: Application Binary Interface
-.. index:: ABI
+## Machine Flags and ABI
 
+```{index} Machine flags
+```
+
+```{index} Application Binary Interface
+```
+
+```{index} ABI
+```
 
 All code in an RTEMS executable must be built with the same machine flags. The
 machine flags control the instruction set and application binary interface
@@ -93,7 +101,7 @@ must use the same instruction set the hardware is configured to support and all
 code must conform to the same ABI. Any variation can result in unpredictable
 behavior such as crashes, failures or lock ups. It is recommend an executable
 is built with the same or equivalent tool set. Mixing of tool set versions can
-also result in undefined behavior. The RTEMS tool ``rtems-execinfo`` can audit
+also result in undefined behavior. The RTEMS tool `rtems-execinfo` can audit
 an RTEMS executable and list the machine flags and compilers used.
 
 RTEMS by default does not support instruction emulation for unsupported

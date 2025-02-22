@@ -1,63 +1,86 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-.. Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
+% Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
 
-.. This file is part of the RTEMS quality process and was automatically
-.. generated.  If you find something that needs to be fixed or
-.. worded better please post a report or patch to an RTEMS mailing list
-.. or raise a bug report:
-..
-.. https://www.rtems.org/bugs.html
-..
-.. For information on updating and regenerating please refer to the How-To
-.. section in the Software Requirements Engineering chapter of the
-.. RTEMS Software Engineering manual.  The manual is provided as a part of
-.. a release.  For development sources please refer to the online
-.. documentation at:
-..
-.. https://docs.rtems.org
+% Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
 
-.. Generated from spec:/acfg/if/group-devdrv
+% This file is part of the RTEMS quality process and was automatically
 
-Device Driver Configuration
-===========================
+% generated.  If you find something that needs to be fixed or
+
+% worded better please post a report or patch to an RTEMS mailing list
+
+% or raise a bug report:
+
+%
+
+% https://www.rtems.org/bugs.html
+
+%
+
+% For information on updating and regenerating please refer to the How-To
+
+% section in the Software Requirements Engineering chapter of the
+
+% RTEMS Software Engineering manual.  The manual is provided as a part of
+
+% a release.  For development sources please refer to the online
+
+% documentation at:
+
+%
+
+% https://docs.rtems.org
+
+% Generated from spec:/acfg/if/group-devdrv
+
+# Device Driver Configuration
 
 This section describes configuration options related to the device drivers.
 Note that network device drivers are not covered by the following options.
 
-.. Generated from spec:/acfg/if/appl-does-not-need-clock-driver
+% Generated from spec:/acfg/if/appl-does-not-need-clock-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
+(configure-application-does-not-need-clock-driver)=
 
-.. _CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER:
+## CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 
-CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
-------------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER``
+`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then a Clock Driver may be
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then **no** Clock Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This configuration parameter is intended to prevent the common user error
 of using the Hello World example as the baseline for an application and
@@ -65,223 +88,269 @@ leaving out a clock tick source.
 
 The application shall define exactly one of the following configuration options
 
-* :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
-
-* ``CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER``, or
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
+- {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+- `CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+- {ref}`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
 otherwise a compile time error in the configuration file will occur.
 
-.. Generated from spec:/acfg/if/appl-extra-drivers
+% Generated from spec:/acfg/if/appl-extra-drivers
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_EXTRA_DRIVERS
+```
 
-.. index:: CONFIGURE_APPLICATION_EXTRA_DRIVERS
+(configure-application-extra-drivers)=
 
-.. _CONFIGURE_APPLICATION_EXTRA_DRIVERS:
+## CONFIGURE_APPLICATION_EXTRA_DRIVERS
 
-CONFIGURE_APPLICATION_EXTRA_DRIVERS
------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_EXTRA_DRIVERS``
+`CONFIGURE_APPLICATION_EXTRA_DRIVERS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an initializer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is the empty list.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option is used to initialize the Device
 Driver Table.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The value of this configuration option is placed after the entries of other
 device driver configuration options.
 
-See :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS` for an alternative
+See {ref}`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS` for an alternative
 placement of application device driver initializers.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The value of the configuration option shall be a list of initializers for
-structures of type :ref:`InterfaceRtemsDriverAddressTable`.
+structures of type {ref}`InterfaceRtemsDriverAddressTable`.
 
-.. Generated from spec:/acfg/if/appl-needs-ata-driver
+% Generated from spec:/acfg/if/appl-needs-ata-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
+(configure-application-needs-ata-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
---------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the ATA Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 Most BSPs do not include support for an ATA Driver.
 
 If this option is defined and the BSP does not have this device driver, then
 the user will get a link time error for an undefined symbol.
 
-.. Generated from spec:/acfg/if/appl-needs-clock-driver
+% Generated from spec:/acfg/if/appl-needs-clock-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+(configure-application-needs-clock-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
-----------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Clock Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The Clock Driver is responsible for providing a regular interrupt
 which invokes a clock tick directive.
 
 The application shall define exactly one of the following configuration options
 
-* ``CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER``,
-
-* :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
+- `CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+- {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+- {ref}`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
 otherwise a compile time error in the configuration file will occur.
 
-.. Generated from spec:/acfg/if/appl-needs-console-driver
+% Generated from spec:/acfg/if/appl-needs-console-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
+(configure-application-needs-console-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
-------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Console Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-The Console Driver is responsible for providing the :file:`/dev/console`
-device file.  This device is used to initialize the standard input, output,
+The Console Driver is responsible for providing the {file}`/dev/console`
+device file. This device is used to initialize the standard input, output,
 and error file descriptors.
 
-BSPs should be constructed in a manner that allows :ref:`InterfacePrintk` to work
+BSPs should be constructed in a manner that allows {ref}`InterfacePrintk` to work
 properly without the need for the Console Driver to be configured.
 
 The
 
-* ``CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER``,
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
+- `CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+- {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+- {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
 configuration options are mutually exclusive.
 
-.. Generated from spec:/acfg/if/appl-needs-framebuffer-driver
+% Generated from spec:/acfg/if/appl-needs-framebuffer-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
+(configure-application-needs-frame-buffer-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
------------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Frame Buffer Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 Most BSPs do not include support for a Frame Buffer Driver. This is
 because many boards do not include the required hardware.
@@ -289,112 +358,144 @@ because many boards do not include the required hardware.
 If this option is defined and the BSP does not have this device driver, then
 the user will get a link time error for an undefined symbol.
 
-.. Generated from spec:/acfg/if/appl-needs-ide-driver
+% Generated from spec:/acfg/if/appl-needs-ide-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
+(configure-application-needs-ide-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
---------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the IDE Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 Most BSPs do not include support for an IDE Driver.
 
 If this option is defined and the BSP does not have this device driver, then
 the user will get a link time error for an undefined symbol.
 
-.. Generated from spec:/acfg/if/appl-needs-null-driver
+% Generated from spec:/acfg/if/appl-needs-null-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
-.. index:: /dev/null
+```{index} /dev/null
+```
 
-.. _CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER:
+(configure-application-needs-null-driver)=
 
-CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
----------------------------------------
+## CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
 
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
-In case this configuration option is defined, then the :file:`/dev/null`
+In case this configuration option is defined, then the {file}`/dev/null`
 Driver is initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This device driver is supported by all BSPs.
 
-.. Generated from spec:/acfg/if/appl-needs-rtc-driver
+% Generated from spec:/acfg/if/appl-needs-rtc-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
+(configure-application-needs-rtc-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
---------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Real-Time Clock Driver
 is initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 Most BSPs do not include support for a real-time clock (RTC). This is because
 many boards do not include the required hardware.
@@ -402,237 +503,281 @@ many boards do not include the required hardware.
 If this is defined and the BSP does not have this device driver, then the
 user will get a link time error for an undefined symbol.
 
-.. Generated from spec:/acfg/if/appl-needs-simple-console-driver
+% Generated from spec:/acfg/if/appl-needs-simple-console-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
+(configure-application-needs-simple-console-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
--------------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Simple Console Driver
 is initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-This device driver is responsible for providing the :file:`/dev/console`
-device file.  This device is used to initialize the standard input, output,
+This device driver is responsible for providing the {file}`/dev/console`
+device file. This device is used to initialize the standard input, output,
 and error file descriptors.
 
-This device driver reads via :ref:`InterfaceGetchark`.
+This device driver reads via {ref}`InterfaceGetchark`.
 
-This device driver writes via :ref:`InterfaceRtemsPutc`.
+This device driver writes via {ref}`InterfaceRtemsPutc`.
 
-The Termios framework is not used.  There is no support to change device
+The Termios framework is not used. There is no support to change device
 settings, e.g. baud, stop bits, parity, etc.
 
 The
 
-* :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
-
-* ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER``, and
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+- `CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+- {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
 configuration options are mutually exclusive.
 
-.. Generated from spec:/acfg/if/appl-needs-simple-task-console-driver
+% Generated from spec:/acfg/if/appl-needs-simple-task-console-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
+(configure-application-needs-simple-task-console-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
-------------------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Simple Task Console
 Driver is initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
-This device driver is responsible for providing the :file:`/dev/console`
-device file.  This device is used to initialize the standard input, output,
+This device driver is responsible for providing the {file}`/dev/console`
+device file. This device is used to initialize the standard input, output,
 and error file descriptors.
 
-This device driver reads via :ref:`InterfaceGetchark`.
+This device driver reads via {ref}`InterfaceGetchark`.
 
-This device driver writes into a write buffer.  The count of characters
-written into the write buffer is returned.  It might be less than the
-requested count, in case the write buffer is full.  The write is
-non-blocking and may be called from interrupt context.  A dedicated task
+This device driver writes into a write buffer. The count of characters
+written into the write buffer is returned. It might be less than the
+requested count, in case the write buffer is full. The write is
+non-blocking and may be called from interrupt context. A dedicated task
 reads from the write buffer and outputs the characters via
-:ref:`InterfaceRtemsPutc`.  This task runs with the least important priority.
+{ref}`InterfaceRtemsPutc`. This task runs with the least important priority.
 The write buffer size is 2047 characters and it is not configurable.
 
-Use ``fsync( STDOUT_FILENO )`` or ``fdatasync( STDOUT_FILENO )`` to drain the
+Use `fsync( STDOUT_FILENO )` or `fdatasync( STDOUT_FILENO )` to drain the
 write buffer.
 
-The Termios framework is not used.  There is no support to change device
-settings, e.g.  baud, stop bits, parity, etc.
+The Termios framework is not used. There is no support to change device
+settings, e.g. baud, stop bits, parity, etc.
 
 The
 
-* :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
-
-* ``CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER``
+- {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+- {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+- `CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
 configuration options are mutually exclusive.
 
-.. Generated from spec:/acfg/if/appl-needs-stub-driver
+% Generated from spec:/acfg/if/appl-needs-stub-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
+(configure-application-needs-stub-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
----------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Stub Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This device driver simply provides entry points that return successful and
 is primarily a test fixture. It is supported by all BSPs.
 
-.. Generated from spec:/acfg/if/appl-needs-timer-driver
+% Generated from spec:/acfg/if/appl-needs-timer-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
+(configure-application-needs-timer-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
-----------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Benchmark Timer Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The Benchmark Timer Driver is intended for the benchmark tests of the RTEMS
-Testsuite.  Applications should not use this driver.
+Testsuite. Applications should not use this driver.
 
 The application shall define exactly one of the following configuration options
 
-* :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
-
-* :ref:`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
-
-* ``CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER``,
+- {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+- {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+- `CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
 otherwise a compile time error will occur.
 
-.. Generated from spec:/acfg/if/appl-needs-watchdog-driver
+% Generated from spec:/acfg/if/appl-needs-watchdog-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
+(configure-application-needs-watchdog-driver)=
 
-.. _CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER:
+## CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 
-CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
--------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the Watchdog Driver is
 initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 Most BSPs do not include support for a watchdog device driver. This is
 because many boards do not include the required hardware.
@@ -640,158 +785,204 @@ because many boards do not include the required hardware.
 If this is defined and the BSP does not have this device driver, then the
 user will get a link time error for an undefined symbol.
 
-.. Generated from spec:/acfg/if/appl-needs-zero-driver
+% Generated from spec:/acfg/if/appl-needs-zero-driver
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
+```
 
-.. index:: CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
-.. index:: /dev/zero
+```{index} /dev/zero
+```
 
-.. _CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER:
+(configure-application-needs-zero-driver)=
 
-CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
----------------------------------------
+## CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
 
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER``
+`CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
-In case this configuration option is defined, then the :file:`/dev/zero`
+In case this configuration option is defined, then the {file}`/dev/zero`
 Driver is initialized during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This device driver is supported by all BSPs.
 
-.. Generated from spec:/acfg/if/appl-prerequisite-drivers
+% Generated from spec:/acfg/if/appl-prerequisite-drivers
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
+```
 
-.. index:: CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
+(configure-application-prerequisite-drivers)=
 
-.. _CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS:
+## CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
 
-CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
-------------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS``
+`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an initializer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is the empty list.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option is used to initialize the Device
 Driver Table.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 The value of this configuration option is placed after the entries defined by
-:c:macro:`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device driver
+{c:macro}`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device driver
 configuration options.
 
-See :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
+See {ref}`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
 of application device driver initializers.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The value of the configuration option shall be a list of initializers for
-structures of type :ref:`InterfaceRtemsDriverAddressTable`.
+structures of type {ref}`InterfaceRtemsDriverAddressTable`.
 
-.. Generated from spec:/acfg/if/ata-driver-task-priority
+% Generated from spec:/acfg/if/ata-driver-task-priority
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_ATA_DRIVER_TASK_PRIORITY
+```
 
-.. index:: CONFIGURE_ATA_DRIVER_TASK_PRIORITY
+(configure-ata-driver-task-priority)=
 
-.. _CONFIGURE_ATA_DRIVER_TASK_PRIORITY:
+## CONFIGURE_ATA_DRIVER_TASK_PRIORITY
 
-CONFIGURE_ATA_DRIVER_TASK_PRIORITY
-----------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_ATA_DRIVER_TASK_PRIORITY``
+`CONFIGURE_ATA_DRIVER_TASK_PRIORITY`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 The default value is 140.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the ATA task priority.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This configuration option is only evaluated if the configuration option
-:ref:`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER` is defined.
+{ref}`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER` is defined.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The value of the configuration option shall be a valid Classic API task
-priority.  The set of valid task priorities depends on the scheduler
+priority. The set of valid task priorities depends on the scheduler
 configuration.
 
-.. Generated from spec:/acfg/if/exception-to-signal-mapping
+% Generated from spec:/acfg/if/exception-to-signal-mapping
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
+```
 
-.. index:: CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
+(configure-exception-to-signal-mapping)=
 
-.. _CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING:
+## CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
 
-CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
--------------------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING``
+`CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is a boolean feature define.
 
+```{eval-rst}
 .. rubric:: DEFAULT CONFIGURATION:
+```
 
 If this configuration option is undefined, then the described feature is not
 enabled.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 In case this configuration option is defined, then the machine exception to
 POSIX signal mapping is configured during system initialization.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 This device driver is responsible for setting up a mapping from machine
 exceptions to POSIX signals so that applications may consume them and alter
@@ -799,90 +990,85 @@ task execution as necessary.
 
 This is especially useful for applications written in Ada or C++.
 
-.. Generated from spec:/acfg/if/max-drivers
+% Generated from spec:/acfg/if/max-drivers
 
-.. raw:: latex
+```{raw} latex
+\clearpage
+```
 
-    \clearpage
+```{index} CONFIGURE_MAXIMUM_DRIVERS
+```
 
-.. index:: CONFIGURE_MAXIMUM_DRIVERS
+(configure-maximum-drivers)=
 
-.. _CONFIGURE_MAXIMUM_DRIVERS:
+## CONFIGURE_MAXIMUM_DRIVERS
 
-CONFIGURE_MAXIMUM_DRIVERS
--------------------------
-
+```{eval-rst}
 .. rubric:: CONSTANT:
+```
 
-``CONFIGURE_MAXIMUM_DRIVERS``
+`CONFIGURE_MAXIMUM_DRIVERS`
 
+```{eval-rst}
 .. rubric:: OPTION TYPE:
+```
 
 This configuration option is an integer define.
 
+```{eval-rst}
 .. rubric:: DEFAULT VALUE:
+```
 
 This is computed by default, and is set to the number of statically
 configured device drivers configured using the following configuration
 options:
 
-* :ref:`CONFIGURE_APPLICATION_EXTRA_DRIVERS`
+- {ref}`CONFIGURE_APPLICATION_EXTRA_DRIVERS`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER`
+- {ref}`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
 
-* :ref:`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER`
-
-* :ref:`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
-
-If the :ref:`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
-the :term:`BSP` provides
-:c:macro:`CONFIGURE_BSP_PREREQUISITE_DRIVERS`, then the BSP-provided
+If the {ref}`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
+the {term}`BSP` provides
+{c:macro}`CONFIGURE_BSP_PREREQUISITE_DRIVERS`, then the BSP-provided
 prerequisite device drivers are also taken into account.
 
+```{eval-rst}
 .. rubric:: DESCRIPTION:
+```
 
 The value of this configuration option defines the number of device drivers.
 
+```{eval-rst}
 .. rubric:: NOTES:
+```
 
 If the application will dynamically install device drivers, then the
 configuration option value shall be larger than the number of statically
 configured device drivers.
 
+```{eval-rst}
 .. rubric:: CONSTRAINTS:
+```
 
 The following constraints apply to this configuration option:
 
-* The value of the configuration option shall be less than or equal to
-  `SIZE_MAX <https://en.cppreference.com/w/c/types/limits>`_.
-
-* The value of the configuration option shall be greater than or equal than the
+- The value of the configuration option shall be less than or equal to
+  [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+- The value of the configuration option shall be greater than or equal than the
   number of statically configured device drivers.
-
-* The value of the configuration option shall be less than or equal to a
+- The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.

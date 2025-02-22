@@ -1,18 +1,18 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _applications:
+(applications)=
 
-Applications
-============
-.. index:: Applications
+# Applications
+
+```{index} Applications
+```
 
 this section discusses RTEMS Applications and guides you on how to create an
 application.
 
-Executables
------------
+## Executables
 
 The RTEMS applications are statically linked executable that run on bare target
 hardware in a single address space. The application code, RTEMS kernel and any

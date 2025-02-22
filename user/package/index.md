@@ -1,12 +1,13 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2024 embedded brains GmbH & Co. KG
-.. Copyright (C) 2024 Christian Mauderer
+% Copyright (C) 2024 embedded brains GmbH & Co. KG
 
-.. index:: Package
+% Copyright (C) 2024 Christian Mauderer
 
-Packages
-********
+```{index} Package
+```
+
+# Packages
 
 This section provides information for various add-on-packages for RTEMS (like
 various network stacks) that are maintained by the RTEMS community.
@@ -17,8 +18,8 @@ should now be in separate repositories to allow more flexibility. For example,
 the network stack that had been included in RTEMS 5 is now maintained
 separately and alternative stacks have been added as separate packages.
 
-.. toctree::
-
-    lwip/index
-    libbsd/index
-    legacy-networking/index
+```{toctree}
+lwip/index
+libbsd/index
+legacy-networking/index
+```

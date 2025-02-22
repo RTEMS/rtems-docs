@@ -1,11 +1,10 @@
-.. SPDX-License-Identifier: CC-BY-SA-4.0
+% SPDX-License-Identifier: CC-BY-SA-4.0
 
-.. Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
+% Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-.. _IntroductionToTracing:
+(introductiontotracing)=
 
-Introduction to Tracing
-***********************
+# Introduction to Tracing
 
 Tracing is an important function which has several applications including
 identification of complex threading, detection of deadlocks, tracing
@@ -17,18 +16,17 @@ RTEMS tracing framework is under development and welcomes contribution by users.
 
 RTEMS has the following trace components:
 
-- :ref:`RTEMS Trace Linker <TraceLinker>`
-- :ref:`RTEMS Capture Engine <CaptureEngine>`
-- :ref:`RTEMS Event Recording <EventRecording>`
+- {ref}`RTEMS Trace Linker <TraceLinker>`
+- {ref}`RTEMS Capture Engine <CaptureEngine>`
+- {ref}`RTEMS Event Recording <EventRecording>`
 - Common Trace Format Integration
 
 RTEMS trace framework can currently function using the following methods. Both
-of the methods make use of the :ref:`tracelinker` :
+of the methods make use of the {ref}`tracelinker` :
 
-.. _tracebuffering:
+(tracebuffering)=
 
-RTEMS Trace Using Trace Buffering
-=================================
+## RTEMS Trace Using Trace Buffering
 
 This scheme of tracing goes through the flow of events described in a
 subsequent flowchart:
@@ -56,14 +54,14 @@ the target hardware or simulator.
 Step 4: RTEMS shell provides the "rtrace" command to display and save trace
 buffers.
 
-.. figure:: ../../images/user/rtems-trace-buffering.png
-  :align: center
-  :width: 75%
+```{figure} ../../images/user/rtems-trace-buffering.png
+:align: center
+:width: 75%
+```
 
-.. _printk:
+(printk)=
 
-RTEMS Trace Using Printk
-========================
+## RTEMS Trace Using Printk
 
 This scheme of tracing goes through the flow of events described in a subsequent
 flowchart:
@@ -93,9 +91,10 @@ Step 4: The application is run in the hardware directly or using a debugger. The
 printk() output appears on the target console and the user can save that to a
 file.
 
-.. figure:: ../../images/user/rtems-trace-printk.png
-  :align: center
-  :width: 75%
+```{figure} ../../images/user/rtems-trace-printk.png
+:align: center
+:width: 75%
+```
 
-The :ref:`examples` section describes generation of traces using Trace Buffering
+The {ref}`examples` section describes generation of traces using Trace Buffering
 technique for the `fileio` testsuite available with RTEMS installation.
