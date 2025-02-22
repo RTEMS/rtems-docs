@@ -21,7 +21,7 @@ The directives provided by the process creation and execution manager are:
 - [pthread_atfork] - Register Fork Handlers
 - [wait] - Wait for Process Termination
 - [waitpid] - Wait for Process Termination
-- [\_exit][_exit] - Terminate a Process
+- [\_exit][\_exit] - Terminate a Process
 
 ## Background
 

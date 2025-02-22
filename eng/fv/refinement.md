@@ -186,7 +186,6 @@ by the test generation software.
 ### LOG
 
 `LOG <word1> ... <wordN>` (Direct Output)
-
 : Generate a call to `T_log()` with a message formed from the `<word..>`
   parameters.
   This message will appear in the test output for certain verbosity settings.
@@ -194,7 +193,6 @@ by the test generation software.
 ### NAME
 
 `NAME <name>` (Keyword Refinement)
-
 : Looks up `NAME` (currently ignoring `<name>`) and returns the resulting
   text as is as part of the code. This code should define the name of the
   testcase, if needed.
@@ -202,37 +200,31 @@ by the test generation software.
 ### INIT
 
 `INIT` (Keyword Refinement)
-
 : Lookup `INIT` and expect to obtain test initialisation code.
 
 ### TASK
 
 `TASK <name>` (Name Refinement)
-
 : Lookup `<name>` and return corresponding C code.
 
 ### SIGNAL
 
 `SIGNAL <value>` (Keyword Refinement)
-
 : Lookup `SIGNAL` and return code with `<value>` substituted in.
 
 ### WAIT
 
 `WAIT <value>` (Keyword Refinement)
-
 : Lookup `WAIT` and return code with `<value>` substituted in.
 
 ### DEF
 
 `DEF <name> <value>` (Direct Output)
-
 : Output `#define <name> <value>`.
 
 ### DECL
 
 `DECL <type> <name> [<value>]` (Name Refinement)
-
 : Lookup `<name>_DCL` and substitute `<name>` in. If `<value>` is
   present, append `=<value>`. Add a final semicolon. If the `<pid>` value
   is zero, prepend `static`.
@@ -240,26 +232,22 @@ by the test generation software.
 ### DCLARRAY
 
 `DCLARRAY <type> <name> <value>` (Name Refinement)
-
 : Lookup `<name>_DCL` and substitute `<name>` and `<value>` in. If the
   `<pid>` value is zero, prepend `static`.
 
 ### CALL
 
 `CALL <name> <value0> .. <valueN>` (Name refinement, `N` < 6)
-
 : Lookup `<name>` and substitute all `<value..>` in.
 
 ### STATE
 
 `STATE <tid> <name>` (Name Refinement)
-
 : Lookup `<name>` and substitute in `<tid>`.
 
 ### STRUCT
 
 `STRUCT <name>`
-
 : Declares the output of the contents of variable `<name>`
   that is itself a structure. The `<name>` is noted, as is the fact
   that a structured value is being processes.
@@ -268,7 +256,6 @@ by the test generation software.
 ### SEQ
 
 `SEQ <name>`
-
 : Declares the output of the contents of array variable `<name>`.
   The `<name>` is noted, as is the fact that an array is being processed.
   Values are accumulated in a string now initialsed to empty.
@@ -416,12 +403,10 @@ is converted to a C test runner file `tr-mymodel-I.c`
 by concatenating the following components:
 
 `mymodel-pre.h`
-
 : This is a fairly standard first part of an RTEMS test C file.
   It is used unchanged.
 
 refined test segments
-
 : The annotations in `mymodel-I.spn` are converted, in order,
   into test code snippets using the refinement file `mymodel-rfn.yml`.
   Snippets are gathered into distinct code segments based on the Promela
@@ -430,13 +415,11 @@ refined test segments
   `TestSegmentP()`, where `P` is the relevant process number.
 
 `mymodel-post.h`
-
 : This is static code that declares the top-level RTEMS Tasks
   used in the test.
   These are where the code segments above get invoked.
 
 `mymodel-run.h`
-
 : This defines top-level C functions that implement a given test runner. The top-level function has a name like `RtemsMyModel_Run`
   This is not valid C as it needs to produce a name parameterized by
   the relevant scenario number. It contains Python string format substitution

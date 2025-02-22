@@ -68,11 +68,9 @@ rtems_status_code rtems_scheduler_ident( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the scheduler name to look up.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the scheduler will be
   stored in this object.
@@ -89,15 +87,12 @@ name specified in `name`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no scheduler associated with the name.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -149,11 +144,9 @@ rtems_status_code rtems_scheduler_ident_by_processor(
 ```
 
 `cpu_index`
-
 : This parameter is the processor index to identify the scheduler.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the scheduler will be
   stored in this object.
@@ -163,19 +156,15 @@ rtems_status_code rtems_scheduler_ident_by_processor(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The processor index was invalid.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The processor index was valid, however, the corresponding processor was not
   owned by a scheduler.
 
@@ -220,17 +209,14 @@ rtems_status_code rtems_scheduler_ident_by_processor_set(
 ```
 
 `cpusetsize`
-
 : This parameter is the size of the processor set referenced by `cpuset` in
   bytes. The size shall be positive.
 
 `cpuset`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t`. The referenced
   processor set will be used to identify the scheduler.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the scheduler will be
   stored in this object.
@@ -247,27 +233,21 @@ the specified processor set.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The processor set size was invalid.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The processor set contained no online processor.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The processor set was valid, however, the highest numbered online processor
   in the processor set was not owned by a scheduler.
 
@@ -311,11 +291,9 @@ rtems_status_code rtems_scheduler_get_maximum_priority(
 ```
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `priority`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
   object. When the directive the maximum priority of the scheduler will be
   stored in this object.
@@ -325,16 +303,13 @@ rtems_status_code rtems_scheduler_get_maximum_priority(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -378,15 +353,12 @@ rtems_status_code rtems_scheduler_map_priority_to_posix(
 ```
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `priority`
-
 : This parameter is the Classic API task priority to map.
 
 `posix_priority`
-
 : This parameter is the pointer to an `int` object. When the directive
   call is successful, the POSIX thread priority value corresponding to the
   specified Classic API task priority value will be stored in this object.
@@ -396,20 +368,16 @@ rtems_status_code rtems_scheduler_map_priority_to_posix(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `posix_priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The Classic API task priority was invalid.
 
 ```{eval-rst}
@@ -453,15 +421,12 @@ rtems_status_code rtems_scheduler_map_priority_from_posix(
 ```
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `posix_priority`
-
 : This parameter is the POSIX thread priority to map.
 
 `priority`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
   object. When the directive call is successful, the Classic API task
   priority value corresponding to the specified POSIX thread priority value
@@ -472,20 +437,16 @@ rtems_status_code rtems_scheduler_map_priority_from_posix(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The POSIX thread priority was invalid.
 
 ```{eval-rst}
@@ -641,16 +602,13 @@ rtems_status_code rtems_scheduler_get_processor_set(
 ```
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `cpusetsize`
-
 : This parameter is the size of the processor set referenced by `cpuset` in
   bytes.
 
 `cpuset`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. When the
   directive call is successful, the processor set of the scheduler will be
   stored in this object. A set bit in the processor set means that the
@@ -662,20 +620,16 @@ rtems_status_code rtems_scheduler_get_processor_set(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The provided processor set was too small for the set of processors owned by
   the scheduler.
 
@@ -719,11 +673,9 @@ rtems_status_code rtems_scheduler_add_processor(
 ```
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `cpu_index`
-
 : This parameter is the index of the processor to add.
 
 ```{eval-rst}
@@ -738,25 +690,20 @@ scheduler specified by `scheduler_id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_NOT_CONFIGURED`
-
 : The processor was not configured to be used by the application.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The processor was configured to be used by the application, however, it was
   not online.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The processor was already assigned to a scheduler.
 
 ```{eval-rst}
@@ -801,11 +748,9 @@ rtems_status_code rtems_scheduler_remove_processor(
 ```
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `cpu_index`
-
 : This parameter is the index of the processor to remove.
 
 ```{eval-rst}
@@ -820,25 +765,20 @@ scheduler specified by `scheduler_id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The processor was not owned by the scheduler.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The processor was required by at least one non-idle task that used the
   scheduler as its {term}`home scheduler`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The processor was the last processor owned by the scheduler and there was
   at least one task that used the scheduler as a {term}`helping scheduler`.
 

@@ -26,20 +26,17 @@ placed at the beginning of the initialization handler list. The BSP can
 provides:
 
 `bsp_work_area_initialize`
-
 : This function determines the amount of memory that can be given to RTEMS for
   the workspace and the C library heap which `malloc` uses. The call
   typically uses the `bsp_work_area_initialize_default` to perform actually
   perform the initialization.
 
 `bsp_start`
-
 : This function is specialized for each architecture and even for some BSPs. It
   performs the low level initialization RTEMS needs so it can run on the
   architecture and BSP.
 
 `bsp_predriver_hook`
-
 : This function can be used to initialize hardware drivers depend on such as
   configuring an interrupt controller. The default version is empty and does
   nothing.

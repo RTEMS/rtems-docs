@@ -77,28 +77,23 @@ rtems_status_code rtems_semaphore_create(
 ```
 
 `name`
-
 : This parameter is the object name of the semaphore.
 
 `count`
-
 : This parameter is the initial count of the semaphore. If the semaphore is
   a binary semaphore, then a count of 0 will make the calling task the owner
   of the binary semaphore and a count of 1 will create a binary semaphore
   without an owner.
 
 `attribute_set`
-
 : This parameter is the attribute set of the semaphore.
 
 `priority_ceiling`
-
 : This parameter is the priority ceiling if the semaphore is a binary
   semaphore with the priority ceiling or MrsP locking protocol as defined by
   the attribute set.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created semaphore
   will be stored in this object.
@@ -195,33 +190,26 @@ and {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING` attributes.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `count` parameter was invalid.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The `attribute_set` parameter was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a semaphore. The number
   of semaphores available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_SEMAPHORES` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : In multiprocessing configurations, there was no inactive global object
   available to create a global semaphore. The number of global objects
   available to the application is configured through the
@@ -229,7 +217,6 @@ and {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING` attributes.
   option.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The `priority_ceiling` parameter was invalid.
 
 ```{eval-rst}
@@ -299,15 +286,12 @@ rtems_status_code rtems_semaphore_ident(
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `node`
-
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -333,23 +317,18 @@ The node to search is specified in `node`. It shall be
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the specified nodes.
 
 {c:macro}`RTEMS_INVALID_NODE`
-
 : In multiprocessing configurations, the specified node was invalid.
 
 ```{eval-rst}
@@ -414,7 +393,6 @@ rtems_status_code rtems_semaphore_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the semaphore identifier.
 
 ```{eval-rst}
@@ -428,19 +406,15 @@ This directive deletes the semaphore specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no semaphore associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The semaphore resided on a remote node.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The binary semaphore had an owner.
 
 ```{eval-rst}
@@ -520,15 +494,12 @@ rtems_status_code rtems_semaphore_obtain(
 ```
 
 `id`
-
 : This parameter is the semaphore identifier.
 
 `option_set`
-
 : This parameter is the option set.
 
 `timeout`
-
 : This parameter is the timeout in {term}`clock ticks <clock tick>` if the
   {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to
   wait potentially forever.
@@ -586,49 +557,39 @@ scheduler.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no semaphore associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The semaphore uses a priority ceiling and there was no priority ceiling
   defined for the {term}`home scheduler` of the calling task.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The semaphore could not be obtained immediately.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The semaphore uses a priority ceiling and the calling task had a current
   priority less than the priority ceiling.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : Acquiring of the local, binary semaphore by the calling task would have
   cased a deadlock.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The calling task attempted to recursively obtain a local, binary semaphore
   using the MrsP locking protocol.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The semaphore was flushed while the calling task was waiting to obtain the
   semaphore.
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The timeout happened while the calling task was waiting to obtain the
   semaphore.
 
 {c:macro}`RTEMS_OBJECT_WAS_DELETED`
-
 : The semaphore was deleted while the calling task was waiting to obtain the
   semaphore.
 
@@ -718,7 +679,6 @@ rtems_status_code rtems_semaphore_release( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the semaphore identifier.
 
 ```{eval-rst}
@@ -738,19 +698,15 @@ wait queue is not empty, then
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no semaphore associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_NOT_OWNER_OF_RESOURCE`
-
 : The calling task was not the owner of the semaphore.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The semaphore's count already had the maximum value of [UINT32_MAX](https://en.cppreference.com/w/c/types/integer).
 
 ```{eval-rst}
@@ -825,7 +781,6 @@ rtems_status_code rtems_semaphore_flush( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the semaphore identifier.
 
 ```{eval-rst}
@@ -843,19 +798,15 @@ unblocked as the result of this directive will return from the
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no semaphore associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The semaphore resided on a remote node.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : Flushing a semaphore using the MrsP locking protocol is undefined
   behaviour.
 
@@ -881,8 +832,9 @@ with another semaphore may be subject to the lost wake-up problem. The
 following attempt to implement a condition variable is broken.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <rtems.h>
 #include <assert.h>
 
@@ -965,21 +917,17 @@ rtems_status_code rtems_semaphore_set_priority(
 ```
 
 `semaphore_id`
-
 : This parameter is the semaphore identifier.
 
 `scheduler_id`
-
 : This parameter is the identifier of the scheduler corresponding to the new
   priority.
 
 `new_priority`
-
 : This parameter is the new priority corresponding to the specified
   scheduler.
 
 `old_priority`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
   object. When the directive call is successful, the old priority of the
   semaphore corresponding to the specified scheduler will be stored in this
@@ -1011,33 +959,26 @@ protocol of the semaphore:
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `old_priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no semaphore associated with the identifier specified by
   `semaphore_id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The semaphore resided on a remote node.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The `new_priority` parameter was invalid.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : Setting a priority for the class or locking protocol of the semaphore is
   undefined behaviour.
 
@@ -1048,8 +989,9 @@ protocol of the semaphore:
 Please have a look at the following example:
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <assert.h>
 #include <rtems.h>
 

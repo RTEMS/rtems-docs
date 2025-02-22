@@ -185,5 +185,4 @@ Task notepads and the associated directives {ref}`rtems_task_variable_add`,
 {ref}`rtems_task_variable_get` and {ref}`rtems_task_variable_delete` were
 removed in RTEMS 5.1. Task variables must be replaced by POSIX Keys or
 thread-local storage (TLS). POSIX Keys are available in all configurations and
-support value destructors. For the TLS support consult the {title}`RTEMS CPU
-Architecture Supplement`.
+support value destructors. For the TLS support consult the {title}`RTEMS CPU Architecture Supplement`.

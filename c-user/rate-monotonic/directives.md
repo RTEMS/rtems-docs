@@ -73,11 +73,9 @@ rtems_status_code rtems_rate_monotonic_create( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name of the period.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created period will
   be stored in this object.
@@ -96,15 +94,12 @@ with other rate monotonic related directives.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a period. The number of
   periods available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_PERIODS` application configuration option.
@@ -163,11 +158,9 @@ rtems_status_code rtems_rate_monotonic_ident( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -184,19 +177,15 @@ specified in `name`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the local node.
 
 ```{eval-rst}
@@ -253,7 +242,6 @@ rtems_status_code rtems_rate_monotonic_cancel( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the rate monotonic period identifier.
 
 ```{eval-rst}
@@ -269,16 +257,13 @@ period may be reinitiated by the next invocation of
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no rate monotonic period associated with the identifier specified
   by `id`.
 
 {c:macro}`RTEMS_NOT_OWNER_OF_RESOURCE`
-
 : The rate monotonic period was not created by the calling task.
 
 ```{eval-rst}
@@ -323,7 +308,6 @@ rtems_status_code rtems_rate_monotonic_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the period identifier.
 
 ```{eval-rst}
@@ -338,11 +322,9 @@ running, it is automatically canceled.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no period associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -407,11 +389,9 @@ rtems_status_code rtems_rate_monotonic_period(
 ```
 
 `id`
-
 : This parameter is the rate monotonic period identifier.
 
 `length`
-
 : This parameter is the period length in {term}`clock ticks <clock tick>` or
   {c:macro}`RTEMS_PERIOD_STATUS` to get the period status.
 
@@ -438,25 +418,20 @@ length of the period.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no rate monotonic period associated with the identifier specified
   by `id`.
 
 {c:macro}`RTEMS_NOT_OWNER_OF_RESOURCE`
-
 : The rate monotonic period was not created by the calling task.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The rate monotonic period has never been initiated (only possible when the
   `length` parameter was equal to {c:macro}`RTEMS_PERIOD_STATUS`).
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The rate monotonic period has expired.
 
 ```{eval-rst}
@@ -513,11 +488,9 @@ rtems_status_code rtems_rate_monotonic_get_status(
 ```
 
 `id`
-
 : This parameter is the rate monotonic period identifier.
 
 `status`
-
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsRateMonotonicPeriodStatus` object. When the directive
   call is successful, the detailed period status will be stored in this
@@ -550,16 +523,13 @@ members of the period status object referenced by `status`:
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no rate monotonic period associated with the identifier specified
   by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `status` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -609,11 +579,9 @@ rtems_status_code rtems_rate_monotonic_get_statistics(
 ```
 
 `id`
-
 : This parameter is the rate monotonic period identifier.
 
 `status`
-
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsRateMonotonicPeriodStatistics` object. When the
   directive call is successful, the period statistics will be stored in this
@@ -647,16 +615,13 @@ period statistics object referenced by `status`:
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no rate monotonic period associated with the identifier specified
   by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `status` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -700,7 +665,6 @@ rtems_status_code rtems_rate_monotonic_reset_statistics( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the rate monotonic period identifier.
 
 ```{eval-rst}
@@ -715,11 +679,9 @@ This directive resets the statistics of the rate monotonic period specified by
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no rate monotonic period associated with the identifier specified
   by `id`.
 
@@ -858,7 +820,6 @@ void rtems_rate_monotonic_report_statistics_with_plugin(
 ```
 
 `printer`
-
 : This parameter is the printer plugin to output the report.
 
 ```{eval-rst}

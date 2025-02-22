@@ -156,28 +156,23 @@ This is the root specification item type. All explicit attributes shall be
 specified. The explicit attributes for this type are:
 
 SPDX-License-Identifier
-
 : The attribute value shall be a {ref}`SpecTypeSPDXLicenseIdentifier`. It
   shall be the license of the item.
 
 copyrights
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeCopyright`. It shall be the list of copyright statements of
   the item.
 
 enabled-by
-
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. It
   shall define the conditions under which the item is enabled.
 
 links
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeLink`.
 
 type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the item
   type. The selection of types and the level of detail depends on a
   particular standard and product model. We need enough flexibility to be in
@@ -211,12 +206,10 @@ item. Only the `build-type` attribute is mandatory. The explicit attributes
 for this type are:
 
 build-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the build
   item type.
 
 extra-files
-
 : The attribute value shall be a list of strings. If the value is present, it
   shall be the list of extra files associated with the item.
 
@@ -249,71 +242,57 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 ada-main
-
 : The attribute value shall be a string. It shall be the path to the Ada main
   body file.
 
 ada-object-directory
-
 : The attribute value shall be a string. It shall be the path to the Ada
   object directory (`-D` option value for `gnatmake`).
 
 adaflags
-
 : The attribute value shall be a list of strings. It shall be a list of
   options for the Ada compiler.
 
 adaincludes
-
 : The attribute value shall be a list of strings. It shall be a list of Ada
   include paths.
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 ldflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildLinkerOption`.
 
 source
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildSource`.
 
 stlib
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildLinkStaticLibraryDirective`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
 use-after
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseAfterDirective`.
 
 use-before
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseBeforeDirective`.
 
@@ -356,42 +335,34 @@ variant to build. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 arch
-
 : The attribute value shall be a string. It shall be the target architecture
   of the BSP.
 
 bsp
-
 : The attribute value shall be a string. It shall be the base BSP variant
   name.
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 family
-
 : The attribute value shall be a string. It shall be the BSP family name.
   The name shall be the last directory of the path to the BSP sources.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 install
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildInstallDirective`.
 
 source
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildSource`.
 
@@ -450,7 +421,6 @@ tree. All explicit attributes shall be specified. The explicit attributes for
 this type are:
 
 content
-
 : The attribute value shall be a string. It shall be the content of the
   configuration file. A \$\{VARIABLE} substitution is performed during the
   configure command execution using the variables of the configuration set.
@@ -459,11 +429,9 @@ content
   order.
 
 install-path
-
 : The attribute value shall be a {ref}`SpecTypeBuildInstallPath`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
 Please have a look at the following example:
@@ -499,20 +467,16 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 guard
-
 : The attribute value shall be a string. It shall be the header guard define.
 
 include-headers
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files to include via `#include <...>`.
 
 install-path
-
 : The attribute value shall be a {ref}`SpecTypeBuildInstallPath`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
 (spectypebuildgroupitemtype)=
@@ -528,43 +492,35 @@ attributes of the build group. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 install
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildInstallDirective`.
 
 ldflags
-
 : The attribute value shall be a list of strings. It shall be a list of
   options for the linker. They are used to link executables referenced by
   this item.
 
 use-after
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseAfterDirective`.
 
 use-before
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseBeforeDirective`.
 
@@ -608,41 +564,33 @@ the item. All explicit attributes shall be specified. The explicit attributes
 for this type are:
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 install
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildInstallDirective`.
 
 install-path
-
 : The attribute value shall be a {ref}`SpecTypeBuildInstallPath`.
 
 source
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildSource`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`. It shall be the
   name of the static library, e.g. `z` for `libz.a`.
 
@@ -686,32 +634,26 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 install
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildInstallDirective`.
 
 source
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildSource`.
 
@@ -755,7 +697,6 @@ option. The following explicit attributes are mandatory:
 The explicit attributes for this type are:
 
 actions
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildOptionAction`. Each action operates on the *action
   value* handed over by a previous action and action-specific attribute
@@ -764,7 +705,6 @@ actions
   actions are carried out during the configure command execution.
 
 default
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildOptionValue`. It shall be the list of default values of
   the option. When a default value is needed, the first value on the list
@@ -772,18 +712,15 @@ default
   enabled, then the default value is `null`.
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the option.
 
 format
-
 : The attribute value shall be an optional string. It shall be a [Python
   format string](https://docs.python.org/3/library/string.html#formatstrings), for
   example `'{}'` or `'{:#010x}'`.
 
 name
-
 : The attribute value shall be a {ref}`SpecTypeBuildOptionName`.
 
 Please have a look at the following example:
@@ -832,27 +769,22 @@ the scripts. The following explicit attributes are mandatory:
 The explicit attributes for this type are:
 
 asflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildAssemblerOption`.
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 do-build
-
 : The attribute value shall be an optional string. If this script shall
   execute, then it shall be Python code which is executed via `exec()` in
   the context of the `do_build()` method of the {file}`wscript`. A local
@@ -860,7 +792,6 @@ do-build
   variable `bic` is available with the build item context.
 
 do-configure
-
 : The attribute value shall be an optional string. If this script shall
   execute, then it shall be Python code which is executed via `exec()` in
   the context of the `do_configure()` method of the {file}`wscript`. A
@@ -869,17 +800,14 @@ do-configure
   context.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 ldflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildLinkerOption`.
 
 prepare-build
-
 : The attribute value shall be an optional string. If this script shall
   execute, then it shall be Python code which is executed via `exec()` in
   the context of the `prepare_build()` method of the {file}`wscript`. A
@@ -887,7 +815,6 @@ prepare-build
   local variable `bic` is available with the build item context.
 
 prepare-configure
-
 : The attribute value shall be an optional string. If this script shall
   execute, then it shall be Python code which is executed via `exec()` in
   the context of the `prepare_configure()` method of the {file}`wscript`.
@@ -896,21 +823,17 @@ prepare-configure
   context.
 
 stlib
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildLinkStaticLibraryDirective`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
 use-after
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseAfterDirective`.
 
 use-before
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseBeforeDirective`.
 
@@ -951,31 +874,25 @@ start file to build. A start file is used to link an executable. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 asflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildAssemblerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 install-path
-
 : The attribute value shall be a {ref}`SpecTypeBuildInstallPath`.
 
 source
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildSource`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
 Please have a look at the following example:
@@ -1011,56 +928,45 @@ is set to `exclude`, then the test program is not built. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 cppflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCPreprocessorOption`.
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 features
-
 : The attribute value shall be a string. It shall be the `waf` build
   features for this test program.
 
 includes
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildIncludePath`.
 
 ldflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildLinkerOption`.
 
 source
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildSource`.
 
 stlib
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildLinkStaticLibraryDirective`.
 
 target
-
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
 use-after
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseAfterDirective`.
 
 use-before
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildUseBeforeDirective`.
 
@@ -1099,12 +1005,10 @@ constraint. All explicit attributes shall be specified. The explicit attributes
 for this type are:
 
 rationale
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall state the rationale or justification of the constraint.
 
 text
-
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the constraint.
 
@@ -1118,7 +1022,6 @@ glossary item. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 glossary-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   glossary item type.
 
@@ -1137,12 +1040,10 @@ specifies a glossary group. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 name
-
 : The attribute value shall be a string. It shall be the human readable name
   of the glossary group.
 
 text
-
 : The attribute value shall be a string. It shall state the requirement for
   the glossary group.
 
@@ -1156,11 +1057,9 @@ specifies a glossary term. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 term
-
 : The attribute value shall be a string. It shall be the glossary term.
 
 text
-
 : The attribute value shall be a string. It shall be the definition of the
   glossary term.
 
@@ -1178,13 +1077,11 @@ implementation, and the hardware. All explicit attributes shall be specified.
 The explicit attributes for this type are:
 
 index-entries
-
 : The attribute value shall be a list of strings. It shall be a list of
   additional document index entries. A document index entry derived from the
   interface name is added automatically.
 
 interface-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   interface item type.
 
@@ -1217,17 +1114,14 @@ attributes specifies an application configuration group. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be a string. It shall be the description of the
   application configuration group.
 
 name
-
 : The attribute value shall be a string. It shall be human readable name of
   the application configuration group.
 
 text
-
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the requirement for the application configuration group.
 
@@ -1241,21 +1135,17 @@ of attributes specifies an application configuration option. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 appl-config-option-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   application configuration option type.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be an
   {ref}`SpecTypeApplicationConfigurationOptionName`.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 This type is refined by the following types:
@@ -1284,7 +1174,6 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 default
-
 : The attribute value shall be a string. It shall describe what happens if
   the configuration option is undefined.
 
@@ -1304,7 +1193,6 @@ integer option. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 default-value
-
 : The attribute value shall be an {ref}`SpecTypeIntegerOrString`. It shall
   describe the default value of the application configuration option.
 
@@ -1323,30 +1211,24 @@ This set of attributes specifies a compound (struct or union). All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceCompoundMemberDefinitionDirective`.
 
 definition-kind
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceCompoundDefinitionKind`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the compound
   (struct or union).
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 (spectypeinterfacedefineitemtype)=
@@ -1359,24 +1241,19 @@ specifies a define. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceDefinitionDirective`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the define.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 (spectypeinterfacedomainitemtype)=
@@ -1390,12 +1267,10 @@ links with the {ref}`SpecTypeInterfacePlacementLinkRole`. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be a string. It shall be the description of the
   domain
 
 name
-
 : The attribute value shall be a string. It shall be the human readable name
   of the domain.
 
@@ -1409,23 +1284,18 @@ specifies an enum. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition-kind
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceEnumDefinitionKind`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the enum.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 (spectypeinterfaceenumeratoritemtype)=
@@ -1438,25 +1308,20 @@ attributes specifies an enumerator. All explicit attributes shall be specified.
 The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceDefinitionDirective`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the
   enumerator.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 (spectypeinterfaceforwarddeclarationitemtype)=
@@ -1485,34 +1350,27 @@ This set of attributes specifies a function or a macro. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the function
   or macro.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 params
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceParameter`.
 
 return
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceReturnDirective`.
 
 (spectypeinterfacegroupitemtype)=
@@ -1525,24 +1383,19 @@ specifies an interface group. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 identifier
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceGroupIdentifier`.
 
 name
-
 : The attribute value shall be a string. It shall be the human readable name
   of the interface group.
 
 text
-
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the requirement for the interface group.
 
@@ -1559,16 +1412,13 @@ domain of the header file. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 path
-
 : The attribute value shall be a string. It shall be the path used to include
   the header file. For example {file}`rtems/confdefs.h`.
 
 prefix
-
 : The attribute value shall be a string. It shall be the prefix directory
   path to the header file in the interface domain. For example
   {file}`cpukit/include`.
@@ -1583,33 +1433,26 @@ attributes specifies a typedef. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceDefinitionDirective`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the typedef.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 params
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceParameter`.
 
 return
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceReturnDirective`.
 
 (spectypeinterfaceunspecifiedheaderfileitemtype)=
@@ -1622,12 +1465,10 @@ set of attributes specifies an unspecified header file. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 path
-
 : The attribute value shall be a string. It shall be the path used to include
   the header file. For example {file}`rtems/confdefs.h`.
 
 references
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeExternalReference`.
 
@@ -1662,12 +1503,10 @@ This set of attributes specifies an unspecified interface. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 name
-
 : The attribute value shall be a string. It shall be the name of the
   unspecified interface.
 
 references
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeExternalReference`.
 
@@ -1681,25 +1520,20 @@ attributes specifies a variable. All explicit attributes shall be specified.
 The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceDefinitionDirective`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the
   variable.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 (spectyperegisterblockitemtype)=
@@ -1721,51 +1555,41 @@ specified in units of the address space granule. All explicit attributes shall
 be specified. The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 definition
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterBlockMemberDefinitionDirective`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 identifier
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceGroupIdentifier`.
 
 name
-
 : The attribute value shall be a string. It shall be the name of the register
   block.
 
 notes
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
 register-block-group
-
 : The attribute value shall be a string. It shall be the name of the
   interface group defined for the register block. For the group identifier
   see the `identifier` attribute.
 
 register-block-size
-
 : The attribute value shall be an {ref}`SpecTypeOptionalInteger`. If the
   value is present, then it shall be the size of the register block in units
   of the address space granule.
 
 register-prefix
-
 : The attribute value shall be an optional string. If the value is present,
   then it will be used to prefix register bit field names, otherwise the
   value of the `name` attribute will be used.
 
 registers
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterDefinition`.
 
@@ -1792,22 +1616,18 @@ requirement. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 rationale
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall state the rationale or justification of the requirement.
 
 references
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeExternalReference`.
 
 requirement-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   requirement item type.
 
 text
-
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the requirement.
 
@@ -1843,7 +1663,6 @@ attributes specifies a functional requirement. All explicit attributes shall be
 specified. The explicit attributes for this type are:
 
 functional-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   functional type of the requirement.
 
@@ -1884,96 +1703,77 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 post-conditions
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeActionRequirementCondition`.
 
 pre-conditions
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeActionRequirementCondition`.
 
 skip-reasons
-
 : The attribute value shall be an
   {ref}`SpecTypeActionRequirementSkipReasons`.
 
 test-action
-
 : The attribute value shall be a string. It shall be the test action code.
 
 test-brief
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case brief description.
 
 test-cleanup
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test cleanup code. The code is placed in the test
   action loop body after the test post-condition checks.
 
 test-context
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeTestContextMember`.
 
 test-context-support
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test context support code. The context support code
   is placed at file scope before the test context definition.
 
 test-description
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case description.
 
 test-header
-
 : The attribute value shall be a {ref}`SpecTypeTestHeader`.
 
 test-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include <...>`.
 
 test-local-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include "..."`.
 
 test-prepare
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the early test preparation code. The code is placed in
   the test action loop body before the test pre-condition preparations.
 
 test-setup
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
 test-stop
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
 test-support
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case support code. The support code is placed at
   file scope before the test case code.
 
 test-target
-
 : The attribute value shall be a string. It shall be the path to the
   generated test case source file.
 
 test-teardown
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
 transition-map
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeActionRequirementTransition`.
 
@@ -2134,7 +1934,6 @@ attributes specifies a non-functional requirement. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 non-functional-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   non-functional type of the requirement.
 
@@ -2161,7 +1960,6 @@ software source code. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 identifier
-
 : The attribute value shall be a
   {ref}`SpecTypeRequirementDesignGroupIdentifier`.
 
@@ -2175,17 +1973,14 @@ set of attributes specifies a design {term}`target`. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall briefly describe the target.
 
 description
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall thoroughly describe the target.
 
 name
-
 : The attribute value shall be a string. It shall be the target name.
 
 (spectypegenericnonfunctionalrequirementitemtype)=
@@ -2238,7 +2033,6 @@ measurement environment. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 name
-
 : The attribute value shall be a string. It shall be the runtime measurement
   environment name. See also
   {ref}`SpecTypeRuntimeMeasurementEnvironmentName`.
@@ -2288,37 +2082,31 @@ is specified. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 params
-
 : The attribute value shall be a
   {ref}`SpecTypeRuntimePerformanceParameterSet`.
 
 test-body
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. It shall
   provide the code of the measure runtime body handler. In contrast to other
   methods, this method is mandatory.
 
 test-cleanup
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. It may
   provide the code to clean up the measure runtime request. This method is
   called before the cleanup method of the corresponding
   {ref}`SpecTypeRuntimeMeasurementTestItemType` item and after the request.
 
 test-prepare
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. It may
   provide the code to prepare the measure runtime request. This method is
   called after the prepare method of the corresponding
   {ref}`SpecTypeRuntimeMeasurementTestItemType` item and before the request.
 
 test-setup
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. It may
   provide the code of the measure runtime setup handler.
 
 test-teardown
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. It may
   provide the code of the measure runtime teardown handler.
 
@@ -2429,76 +2217,62 @@ specifies a runtime measurement test case. All explicit attributes shall be
 specified. The explicit attributes for this type are:
 
 params
-
 : The attribute value shall be a
   {ref}`SpecTypeRuntimeMeasurementParameterSet`.
 
 test-brief
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case brief description.
 
 test-cleanup
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. If the
   value is present, then it shall be the measure runtime request cleanup
   method. The method is called after each measure runtime request.
 
 test-context
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeTestContextMember`.
 
 test-context-support
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test context support code. The context support code
   is placed at file scope before the test context definition.
 
 test-description
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case description.
 
 test-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include <...>`.
 
 test-local-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include "..."`.
 
 test-prepare
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. If the
   value is present, then it shall be the measure runtime request prepare
   method. The method is called before each measure runtime request.
 
 test-setup
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. If the
   value is present, then it shall be the test case setup fixture method.
 
 test-stop
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. If the
   value is present, then it shall be the test case stop fixture method.
 
 test-support
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case support code. The support code is placed at
   file scope before the test case code.
 
 test-target
-
 : The attribute value shall be a string. It shall be the path to the
   generated test case source file.
 
 test-teardown
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. If the
   value is present, then it shall be the test case teardown fixture method.
 
@@ -2512,26 +2286,21 @@ specification types. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 spec-description
-
 : The attribute value shall be an optional string. It shall be the
   description of the specification type.
 
 spec-example
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be an example of the specification type.
 
 spec-info
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationInformation`.
 
 spec-name
-
 : The attribute value shall be an optional string. It shall be the human
   readable name of the specification type.
 
 spec-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall the
   specification type.
 
@@ -2580,66 +2349,53 @@ test case. All explicit attributes shall be specified. The explicit attributes
 for this type are:
 
 test-actions
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeTestCaseAction`.
 
 test-brief
-
 : The attribute value shall be a string. It shall be the test case brief
   description.
 
 test-context
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeTestContextMember`.
 
 test-context-support
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test context support code. The context support code
   is placed at file scope before the test context definition.
 
 test-description
-
 : The attribute value shall be an optional string. It shall be the test case
   description.
 
 test-header
-
 : The attribute value shall be a {ref}`SpecTypeTestHeader`.
 
 test-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include <...>`.
 
 test-local-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include "..."`.
 
 test-setup
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
 test-stop
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
 test-support
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test case support code. The support code is placed at
   file scope before the test case code.
 
 test-target
-
 : The attribute value shall be a string. It shall be the path to the
   generated target test case source file.
 
 test-teardown
-
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
 (spectypetestplatformitemtype)=
@@ -2657,12 +2413,10 @@ This set of attributes specifies a test platform. All explicit attributes shall
 be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be a string. It shall be the description of the
   test platform.
 
 name
-
 : The attribute value shall be a string. It shall be the human readable name
   of the test platform.
 
@@ -2681,17 +2435,14 @@ This set of attributes specifies a test procedure. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 name
-
 : The attribute value shall be a string. It shall be the human readable name
   of the test procedure.
 
 purpose
-
 : The attribute value shall be a string. It shall state the purpose of the
   test procedure.
 
 steps
-
 : The attribute value shall be a string. It shall describe the steps of the
   test procedure execution.
 
@@ -2710,32 +2461,26 @@ This set of attributes specifies a test suite. All explicit attributes shall be
 specified. The explicit attributes for this type are:
 
 test-brief
-
 : The attribute value shall be a string. It shall be the test suite brief
   description.
 
 test-code
-
 : The attribute value shall be a string. It shall be the test suite code.
   The test suite code is placed at file scope in the target source file.
 
 test-description
-
 : The attribute value shall be an optional string. It shall be the test suite
   description.
 
 test-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include <...>`.
 
 test-local-includes
-
 : The attribute value shall be a list of strings. It shall be a list of
   header files included via `#include "..."`.
 
 test-target
-
 : The attribute value shall be a string. It shall be the path to the
   generated target test suite source file.
 
@@ -2756,28 +2501,24 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   and
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeActionRequirementBooleanExpression`. The *and* operator
     evaluates to the *logical and* of the evaluation results of the
     expressions in the list.
 
   not
-
   : The attribute value shall be an
     {ref}`SpecTypeActionRequirementBooleanExpression`. The *not* operator
     evaluates to the *logical not* of the evaluation results of the
     expression.
 
   or
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeActionRequirementBooleanExpression`. The *or* operator
     evaluates to the *logical or* of the evaluation results of the
     expressions in the list.
 
   post-conditions
-
   : The attribute value shall be an
     {ref}`SpecTypeActionRequirementExpressionConditionSet`. The
     *post-conditions* operator evaluates to true, if the post-condition
@@ -2785,7 +2526,6 @@ A value of this type shall be of one of the following variants:
     post-condition set, otherwise to false.
 
   pre-conditions
-
   : The attribute value shall be an
     {ref}`SpecTypeActionRequirementExpressionConditionSet`. The
     *pre-conditions* operator evaluates to true, if the pre-condition states
@@ -2811,16 +2551,13 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 name
-
 : The attribute value shall be an {ref}`SpecTypeActionRequirementName`.
 
 states
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeActionRequirementState`.
 
 test-epilogue
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test epilogue code. The epilogue code is placed in the
   test condition preparation or check before the state-specific code. The
@@ -2828,7 +2565,6 @@ test-epilogue
   {ref}`SpecTypeTestContextMember`.
 
 test-prologue
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the test prologue code. The prologue code is placed in the
   test condition preparation or check after the state-specific code. The
@@ -2850,33 +2586,28 @@ together. At least one of the explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 else
-
 : The attribute value shall be an
   {ref}`SpecTypeActionRequirementExpressionStateName`. It shall be the name
   of the state of the post-condition.
 
 if
-
 : The attribute value shall be an
   {ref}`SpecTypeActionRequirementBooleanExpression`. If the boolean
   expression evaluates to true, then the state is defined according to the
   `then` attribute value.
 
 specified-by
-
 : The attribute value shall be an {ref}`SpecTypeActionRequirementName`. It
   shall be the name of a pre-condition. The name of the state of the
   pre-condition in the associated transition defines the name of the state of
   the post-condition.
 
 then
-
 : The attribute value shall be an
   {ref}`SpecTypeActionRequirementExpressionStateName`. It shall be the name
   of the state of the post-condition.
 
 then-specified-by
-
 : The attribute value shall be an {ref}`SpecTypeActionRequirementName`. It
   shall be the name of a pre-condition. The name of the state of the
   pre-condition in the associated transition defines the name of the state of
@@ -2983,18 +2714,15 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 name
-
 : The attribute value shall be an {ref}`SpecTypeActionRequirementName`.
 
 test-code
-
 : The attribute value shall be a string. It shall be the test code to prepare
   or check the state of the condition. The code may use a local variable
   `ctx` which points to the test context, see
   {ref}`SpecTypeTestContextMember`.
 
 text
-
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   define the state of the condition.
 
@@ -3019,19 +2747,16 @@ for this transition. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 enabled-by
-
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. The
   transition map may be customized to support configuration variants through
   this attribute. The default transitions (`enabled-by: true`) shall be
   specified before the customized variants in the list.
 
 post-conditions
-
 : The attribute value shall be an
   {ref}`SpecTypeActionRequirementTransitionPostConditions`.
 
 pre-conditions
-
 : The attribute value shall be an
   {ref}`SpecTypeActionRequirementTransitionPreConditions`.
 
@@ -3243,7 +2968,6 @@ conditional role of links. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 enabled-by
-
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. It
   shall define under which conditions the build dependency is enabled.
 
@@ -3288,12 +3012,10 @@ This set of attributes specifies files installed by a build item. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 destination
-
 : The attribute value shall be a string. It shall be the install destination
   directory.
 
 source
-
 : The attribute value shall be a list of strings. It shall be the list of
   source files to be installed in the destination directory. The path to a
   source file shall be relative to the directory of the {file}`wscript`.
@@ -3362,7 +3084,6 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 append-test-cppflags
-
 : The attribute value shall be a string. It shall be the name of a test
   program. The action appends the action value to the `CPPFLAGS` of the
   test program. The name shall correspond to the name of a
@@ -3371,109 +3092,88 @@ append-test-cppflags
   value is valid.
 
 assert-aligned
-
 : The attribute value shall be an integer number. The action asserts that the
   action value is aligned according to the attribute value.
 
 assert-eq
-
 : The attribute value shall be a {ref}`SpecTypeBooleanOrIntegerOrString`. The
   action asserts that the action value is equal to the attribute value.
 
 assert-ge
-
 : The attribute value shall be an {ref}`SpecTypeIntegerOrString`. The action
   asserts that the action value is greater than or equal to the attribute
   value.
 
 assert-gt
-
 : The attribute value shall be an {ref}`SpecTypeIntegerOrString`. The action
   asserts that the action value is greater than the attribute value.
 
 assert-in-set
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeIntegerOrString`. The action asserts that the action value is
   in the attribute value set.
 
 assert-int16
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid signed 16-bit integer.
 
 assert-int32
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid signed 32-bit integer.
 
 assert-int64
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid signed 64-bit integer.
 
 assert-int8
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid signed 8-bit integer.
 
 assert-le
-
 : The attribute value shall be an {ref}`SpecTypeIntegerOrString`. The action
   asserts that the action value is less than or equal to the attribute value.
 
 assert-lt
-
 : The attribute value shall be an {ref}`SpecTypeIntegerOrString`. The action
   asserts that the action value is less than the attribute value.
 
 assert-ne
-
 : The attribute value shall be a {ref}`SpecTypeBooleanOrIntegerOrString`. The
   action asserts that the action value is not equal to the attribute value.
 
 assert-power-of-two
-
 : The attribute shall have no value. The action asserts that the action value
   is a power of two.
 
 assert-uint16
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid unsigned 16-bit integer.
 
 assert-uint32
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid unsigned 32-bit integer.
 
 assert-uint64
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid unsigned 64-bit integer.
 
 assert-uint8
-
 : The attribute shall have no value. The action asserts that the action value
   is a valid unsigned 8-bit integer.
 
 check-cc
-
 : The attribute value shall be a
   {ref}`SpecTypeBuildOptionCCompilerCheckAction`.
 
 check-cxx
-
 : The attribute value shall be a
   {ref}`SpecTypeBuildOptionCXXCompilerCheckAction`.
 
 comment
-
 : The attribute value shall be a string. There is no action performed. The
   attribute value is a comment.
 
 define
-
 : The attribute value shall be an optional string. The action adds a define
   to the configuration set. If the attribute value is present, then it is
   used as the name of the define, otherwise the `name` of the item is used.
@@ -3481,14 +3181,12 @@ define
   string, then it is quoted.
 
 define-condition
-
 : The attribute value shall be an optional string. The action adds a
   conditional define to the configuration set. If the attribute value is
   present, then it is used as the name of the define, otherwise the `name`
   of the item is used. The value of the define is the action value.
 
 define-unquoted
-
 : The attribute value shall be an optional string. The action adds a define
   to the configuration set. If the attribute value is present, then it is
   used as the name of the define, otherwise the `name` of the item is used.
@@ -3496,41 +3194,35 @@ define-unquoted
   string, then it is not quoted.
 
 env-append
-
 : The attribute value shall be an optional string. The action appends the
   action value to an environment of the configuration set. If the attribute
   value is present, then it is used as the name of the environment variable,
   otherwise the `name` of the item is used.
 
 env-assign
-
 : The attribute value shall be an optional string. The action assigns the
   action value to an environment of the configuration set. If the attribute
   value is present, then it is used as the name of the environment variable,
   otherwise the `name` of the item is used.
 
 env-enable
-
 : The attribute value shall be an optional string. If the action value is
   true, then a name is appended to the `ENABLE` environment variable of the
   configuration set. If the attribute value is present, then it is used as
   the name, otherwise the `name` of the item is used.
 
 find-program
-
 : The attribute shall have no value. The action tries to find the program
   specified by the action value. Uses the `${PATH}` to find the program.
   Returns the result of the find operation, e.g. a path to the program.
 
 find-tool
-
 : The attribute shall have no value. The action tries to find the tool
   specified by the action value. Uses the tool paths specified by the
   `--rtems-tools` command line option. Returns the result of the find
   operation, e.g. a path to the program.
 
 format-and-define
-
 : The attribute value shall be an optional string. The action adds a define
   to the configuration set. If the attribute value is present, then it is
   used as the name of the define, otherwise the `name` of the item is used.
@@ -3538,67 +3230,56 @@ format-and-define
   according to the `format` attribute value.
 
 get-boolean
-
 : The attribute shall have no value. The action gets the action value for
   subsequent actions from a configuration file variable named by the items
   `name` attribute. If no such variable exists in the configuration file,
   then the default value is used. The value is converted to a boolean.
 
 get-env
-
 : The attribute value shall be a string. The action gets the action value for
   subsequent actions from the environment variable of the configuration set
   named by the attribute value.
 
 get-integer
-
 : The attribute shall have no value. The action gets the action value for
   subsequent actions from a configuration file variable named by the items
   `name` attribute. If no such variable exists in the configuration file,
   then the default value is used. The value is converted to an integer.
 
 get-string
-
 : The attribute shall have no value. The action gets the action value for
   subsequent actions from a configuration file variable named by the items
   `name` attribute. If no such variable exists in the configuration file,
   then the default value is used. The value is converted to a string.
 
 get-string-command-line
-
 : The attribute value shall be a string. The action gets the action value for
   subsequent actions from the value of a command line option named by the
   items `name` attribute. If no such command line option is present, then
   the attribute value is used. The value is converted to a string.
 
 script
-
 : The attribute value shall be a string. The action executes the attribute
   value with the Python `eval()` function in the context of the script
   action handler.
 
 set-test-state
-
 : The attribute value shall be a
   {ref}`SpecTypeBuildOptionSetTestStateAction`.
 
 set-value
-
 : The attribute value may have any type. The action sets the action value for
   subsequent actions to the attribute value.
 
 set-value-enabled-by
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildOptionValue`. The action sets the action value for
   subsequent actions to the first enabled attribute value.
 
 split
-
 : The attribute shall have no value. The action splits the action value.
 
 substitute
-
 : The attribute shall have no value. The action performs a `${VARIABLE}`
   substitution on the action value. Use `$$` for a plain `$` character.
 
@@ -3615,18 +3296,15 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 cflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCCompilerOption`.
 
 fragment
-
 : The attribute value shall be a string. It shall be a code fragment used to
   check the availability of a certain feature through compilation with the C
   compiler. The resulting object is not linked to an executable.
 
 message
-
 : The attribute value shall be a string. It shall be a description of the
   feature to check.
 
@@ -3643,18 +3321,15 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 cxxflags
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeBuildCXXCompilerOption`.
 
 fragment
-
 : The attribute value shall be a string. It shall be a code fragment used to
   check the availability of a certain feature through compilation with the
   C++ compiler. The resulting object is not linked to an executable.
 
 message
-
 : The attribute value shall be a string. It shall be a description of the
   feature to check.
 
@@ -3682,17 +3357,14 @@ an optional reason. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 reason
-
 : The attribute value shall be an optional string. If the value is present,
   then it shall be the reason for the test state definition.
 
 state
-
 : The attribute value shall be a {ref}`SpecTypeBuildTestState`. It shall be
   the test state for the associated list of tests.
 
 tests
-
 : The attribute value shall be a list of strings. It shall be the list of
   test program names associated with the test state. The names shall
   correspond to the name of a {ref}`SpecTypeBuildTestProgramItemType` or
@@ -3712,11 +3384,9 @@ This set of attributes specifies an optional build option value. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 enabled-by
-
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`.
 
 value
-
 : The attribute value may have any type. If the associated enabled-by
   expression evaluates to true for the current enabled set, then the
   attribute value is active and may get selected.
@@ -3854,19 +3524,16 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   and
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeEnabledByExpression`. The *and* operator evaluates to the
     *logical and* of the evaluation results of the expressions in the list.
 
   not
-
   : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. The
     *not* operator evaluates to the *logical not* of the evaluation results
     of the expression.
 
   or
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeEnabledByExpression`. The *or* operator evaluates to the
     *logical or* of the evaluation results of the expressions in the list.
@@ -3907,7 +3574,6 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 name
-
 : The attribute value shall be a string. It shall be the name of the
   document.
 
@@ -3922,7 +3588,6 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 hash
-
 : The attribute value shall be a {ref}`SpecTypeSHA256HashValue`. It shall be
   the SHA256 hash value of the content of the referenced file.
 
@@ -3935,14 +3600,12 @@ specification. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 identifier
-
 : The attribute value shall be a string. It shall be the type-specific
   identifier of the referenced object. For *group* references use the Doxygen
   group identifier. For *file* references use a file system path to the
   file.
 
 type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the type of
   the referenced object.
 
@@ -4072,7 +3735,6 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 definition
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceCompoundMemberDefinitionDirective`.
 
@@ -4086,7 +3748,6 @@ specifies an interface compound member declaration. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 definition
-
 : The attribute value shall be a string. It shall be the interface compound
   member declaration. On the declaration a context-sensitive substitution of
   item variables is performed.
@@ -4102,20 +3763,16 @@ A value of this type shall be of one of the following variants:
   specified. The explicit attributes for this type are:
 
   brief
-
   : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
   description
-
   : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
   kind
-
   : The attribute value shall be a string. It shall be the interface compound
     member kind.
 
   name
-
   : The attribute value shall be a string. It shall be the interface compound
     member name.
 
@@ -4140,13 +3797,11 @@ directive. All explicit attributes shall be specified. The explicit attributes
 for this type are:
 
 default
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceCompoundMemberDefinition`. The default definition
   will be used if no variant-specific definition is enabled.
 
 variants
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceCompoundMemberDefinitionVariant`.
 
@@ -4164,7 +3819,6 @@ variant. All explicit attributes shall be specified. The explicit attributes
 for this type are:
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceCompoundMemberDefinition`. The definition will be
   used if the expression defined by the `enabled-by` attribute evaluates to
@@ -4172,7 +3826,6 @@ definition
   preprocessor.
 
 enabled-by
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceEnabledByExpression`.
 
@@ -4204,13 +3857,11 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 default
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDefinition`. The
   default definition will be used if no variant-specific definition is
   enabled.
 
 variants
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceDefinitionVariant`.
 
@@ -4229,14 +3880,12 @@ This set of attributes specifies an interface definition variant. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 definition
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDefinition`. The
   definition will be used if the expression defined by the `enabled-by`
   attribute evaluates to true. In generated header files, the expression is
   evaluated by the C preprocessor.
 
 enabled-by
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceEnabledByExpression`.
 
@@ -4293,19 +3942,16 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   and
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeInterfaceEnabledByExpression`. The *and* operator defines a
     *logical and* of the expressions in the list.
 
   not
-
   : The attribute value shall be an
     {ref}`SpecTypeInterfaceEnabledByExpression`. The *not* operator defines a
     *logical not* of the expression.
 
   or
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeInterfaceEnabledByExpression`. The *or* operator defines a
     *logical or* of the expressions in the list.
@@ -4370,7 +4016,6 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   attributes
-
   : The attribute value shall be an optional string. If the value is present,
     then it shall be the function attributes. On the attributes a
     context-sensitive substitution of item variables is performed. A
@@ -4378,7 +4023,6 @@ A value of this type shall be of one of the following variants:
     not return to the caller.
 
   body
-
   : The attribute value shall be an optional string. If the value is present,
     then it shall be the definition of a static inline function. On the
     function definition a context-sensitive substitution of item variables is
@@ -4386,14 +4030,12 @@ A value of this type shall be of one of the following variants:
     external function.
 
   params
-
   : The attribute value shall be a list of strings. It shall be the list of
     parameter declarations of the function. On the function parameter
     declarations a context-sensitive substitution of item variables is
     performed.
 
   return
-
   : The attribute value shall be an optional string. If the value is present,
     then it shall be the function return type. On the return type a
     context-sensitive substitution of item variables is performed.
@@ -4414,13 +4056,11 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 default
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceFunctionOrMacroDefinition`. The default definition
   will be used if no variant-specific definition is enabled.
 
 variants
-
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`.
 
@@ -4437,7 +4077,6 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 definition
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceFunctionOrMacroDefinition`. The definition will be
   used if the expression defined by the `enabled-by` attribute evaluates to
@@ -4445,7 +4084,6 @@ definition
   preprocessor.
 
 enabled-by
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceEnabledByExpression`.
 
@@ -4496,7 +4134,6 @@ explicit attributes shall be specified. The explicit attributes for this type
 are:
 
 enabled-by
-
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. It
   shall define under which conditions the interface container is included.
 
@@ -4528,15 +4165,12 @@ This set of attributes specifies an interface parameter. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 dir
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceParameterDirection`.
 
 name
-
 : The attribute value shall be a string. It shall be the interface parameter
   name.
 
@@ -4585,12 +4219,10 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   return
-
   : The attribute value shall be an optional string. It shall describe the
     interface return for unspecified return values.
 
   return-values
-
   : The attribute value shall be a list. Each list element shall be an
     {ref}`SpecTypeInterfaceReturnValue`.
 
@@ -4609,11 +4241,9 @@ This set of attributes specifies an interface return value. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 value
-
 : The attribute value shall be a {ref}`SpecTypeBooleanOrIntegerOrString`. It
   shall be the described interface return value.
 
@@ -4639,12 +4269,10 @@ list is processed first. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 role
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the role of
   the link.
 
 uid
-
 : The attribute value shall be an {ref}`SpecTypeUID`. It shall be the
   absolute or relative UID of the link target item.
 
@@ -4750,7 +4378,6 @@ limits role of links. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 limits
-
 : The attribute value shall be a
   {ref}`SpecTypeRuntimeMeasurementEnvironmentTable`.
 
@@ -4783,31 +4410,25 @@ A value of this type shall be of one of the following variants:
   are:
 
   brief
-
   : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
   description
-
   : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
   name
-
   : The attribute value shall be a string. It shall be the name of the
     register bit field.
 
   properties
-
   : The attribute value shall be a list of strings. It shall be the list of
     bit field properties. Properties are for example if the bit field can be
     read or written, or an access has side-effects such as clearing a status.
 
   start
-
   : The attribute value shall be an integer number. It shall be the start bit
     of the bit field. Bit `0` is the least-significant bit.
 
   width
-
   : The attribute value shall be an integer number. It shall be the width in
     bits of the bit field.
 
@@ -4826,13 +4447,11 @@ This set of attributes specifies a register bits directive. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 default
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterBitsDefinition`. The default definition will be used
   if no variant-specific definition is enabled.
 
 variants
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterBitsDefinitionVariant`.
 
@@ -4848,14 +4467,12 @@ This set of attributes specifies a register bits variant. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 definition
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterBitsDefinition`. The definition will be used if the
   expression defined by the `enabled-by` attribute evaluates to true. In
   generated header files, the expression is evaluated by the C preprocessor.
 
 enabled-by
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceEnabledByExpression`.
 
@@ -4874,7 +4491,6 @@ register blocks. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 name
-
 : The attribute value shall be a string. It shall be a name to identify the
   included register block within the item. The name shall be unique within
   the scope of the item links of this role and the
@@ -4891,12 +4507,10 @@ A value of this type shall be of one of the following variants:
   The explicit attributes for this type are:
 
   count
-
   : The attribute value shall be an integer number. It shall be the count of
     registers of the register block member.
 
   name
-
   : The attribute value shall be a {ref}`SpecTypeRegisterName`.
 
 - There may be no value (null).
@@ -4915,19 +4529,16 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 default
-
 : The attribute value shall be a
   {ref}`SpecTypeRegisterBlockMemberDefinition`. The default definition will
   be used if no variant-specific definition is enabled.
 
 offset
-
 : The attribute value shall be an integer number. It shall be the address of
   the register block member relative to the base address of the register
   block.
 
 variants
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterBlockMemberDefinitionVariant`.
 
@@ -4944,7 +4555,6 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 definition
-
 : The attribute value shall be a
   {ref}`SpecTypeRegisterBlockMemberDefinition`. The definition will be used
   if the expression defined by the `enabled-by` attribute evaluates to
@@ -4952,7 +4562,6 @@ definition
   preprocessor.
 
 enabled-by
-
 : The attribute value shall be an
   {ref}`SpecTypeInterfaceEnabledByExpression`.
 
@@ -4968,27 +4577,22 @@ This set of attributes specifies a register. All explicit attributes shall be
 specified. The explicit attributes for this type are:
 
 bits
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterBitsDefinitionDirective`.
 
 brief
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceBriefDescription`.
 
 description
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
 name
-
 : The attribute value shall be a string. It shall be the name to identify the
   register definition. The name shall be unique within the scope of the
   {ref}`SpecTypeRegisterBlockIncludeRole` links of the item and the
   {ref}`SpecTypeRegisterList`.
 
 width
-
 : The attribute value shall be an integer number. It shall be the width of
   the register in bits.
 
@@ -5167,7 +4771,6 @@ All explicit attributes shall be specified. The explicit attributes for this
 type are:
 
 sample-count
-
 : The attribute value shall be an integer number. It shall be the sample
   count of the runtime measurement context.
 
@@ -5275,24 +4878,20 @@ attributes are mandatory:
 The explicit attributes for this type are:
 
 attributes
-
 : The attribute value shall be a
   {ref}`SpecTypeSpecificationExplicitAttributes`. It shall specify the
   explicit attributes of the attribute set.
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the attribute set.
 
 generic-attributes
-
 : The attribute value shall be a
   {ref}`SpecTypeSpecificationGenericAttributes`. It shall specify the generic
   attributes of the attribute set.
 
 mandatory-attributes
-
 : The attribute value shall be a
   {ref}`SpecTypeSpecificationMandatoryAttributes`. It shall specify the
   mandatory attributes of the attribute set.
@@ -5309,12 +4908,10 @@ This set of attributes specifies an attribute value. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the attribute value.
 
 spec-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   specification type of the attribute value.
 
@@ -5330,7 +4927,6 @@ This attribute set specifies a boolean value. Only the `description`
 attribute is mandatory. The explicit attributes for this type are:
 
 assert
-
 : The attribute value shall be a boolean. This optional attribute defines the
   value constraint of the specified boolean value. If the value of the
   assert attribute is true, then the value of the specified boolean value
@@ -5340,7 +4936,6 @@ assert
   be true or false.
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the specified boolean value.
 
@@ -5377,57 +4972,48 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   and
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeSpecificationFloatingPointAssert`. The *and* operator
     evaluates to the *logical and* of the evaluation results of the
     expressions in the list.
 
   eq
-
   : The attribute value shall be a floating-point number. The *eq* operator
     evaluates to true, if the value to check is equal to the value of this
     attribute, otherwise to false.
 
   ge
-
   : The attribute value shall be a floating-point number. The *ge* operator
     evaluates to true, if the value to check is greater than or equal to the
     value of this attribute, otherwise to false.
 
   gt
-
   : The attribute value shall be a floating-point number. The *gt* operator
     evaluates to true, if the value to check is greater than the value of
     this attribute, otherwise to false.
 
   le
-
   : The attribute value shall be a floating-point number. The *le* operator
     evaluates to true, if the value to check is less than or equal to the
     value of this attribute, otherwise to false.
 
   lt
-
   : The attribute value shall be a floating-point number. The *lt* operator
     evaluates to true, if the value to check is less than the value of this
     attribute, otherwise to false.
 
   ne
-
   : The attribute value shall be a floating-point number. The *ne* operator
     evaluates to true, if the value to check is not equal to the value of
     this attribute, otherwise to false.
 
   not
-
   : The attribute value shall be a
     {ref}`SpecTypeSpecificationFloatingPointAssert`. The *not* operator
     evaluates to the *logical not* of the evaluation results of the
     expression.
 
   or
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeSpecificationFloatingPointAssert`. The *or* operator
     evaluates to the *logical or* of the evaluation results of the
@@ -5452,7 +5038,6 @@ This set of attributes specifies a floating-point value. Only the
 are:
 
 assert
-
 : The attribute value shall be a
   {ref}`SpecTypeSpecificationFloatingPointAssert`. This optional attribute
   defines the value constraints of the specified floating-point value. In
@@ -5460,7 +5045,6 @@ assert
   floating-point value may be every valid floating-point number.
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the specified floating-point value.
 
@@ -5479,17 +5063,14 @@ attribute key and value types. All explicit attributes shall be specified. The
 explicit attributes for this type are:
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the generic attributes.
 
 key-spec-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   specification type of the generic attribute keys.
 
 value-spec-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   specification type of the generic attribute values.
 
@@ -5505,37 +5086,30 @@ This set of attributes specifies attribute values. At least one of the explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 bool
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationBooleanValue`. It
   shall specify a boolean value.
 
 dict
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationAttributeSet`. It
   shall specify a set of attributes.
 
 float
-
 : The attribute value shall be a
   {ref}`SpecTypeSpecificationFloatingPointValue`. It shall specify a
   floating-point value.
 
 int
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationIntegerValue`. It
   shall specify an integer value.
 
 list
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationList`. It shall
   specify a list of attributes or values.
 
 none
-
 : The attribute shall have no value. It specifies that no value is required.
 
 str
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationStringValue`. It
   shall specify a string.
 
@@ -5557,56 +5131,47 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   and
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeSpecificationIntegerAssert`. The *and* operator evaluates
     to the *logical and* of the evaluation results of the expressions in the
     list.
 
   eq
-
   : The attribute value shall be an integer number. The *eq* operator
     evaluates to true, if the value to check is equal to the value of this
     attribute, otherwise to false.
 
   ge
-
   : The attribute value shall be an integer number. The *ge* operator
     evaluates to true, if the value to check is greater than or equal to the
     value of this attribute, otherwise to false.
 
   gt
-
   : The attribute value shall be an integer number. The *gt* operator
     evaluates to true, if the value to check is greater than the value of
     this attribute, otherwise to false.
 
   le
-
   : The attribute value shall be an integer number. The *le* operator
     evaluates to true, if the value to check is less than or equal to the
     value of this attribute, otherwise to false.
 
   lt
-
   : The attribute value shall be an integer number. The *lt* operator
     evaluates to true, if the value to check is less than the value of this
     attribute, otherwise to false.
 
   ne
-
   : The attribute value shall be an integer number. The *ne* operator
     evaluates to true, if the value to check is not equal to the value of
     this attribute, otherwise to false.
 
   not
-
   : The attribute value shall be a {ref}`SpecTypeSpecificationIntegerAssert`.
     The *not* operator evaluates to the *logical not* of the evaluation
     results of the expression.
 
   or
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeSpecificationIntegerAssert`. The *or* operator evaluates to
     the *logical or* of the evaluation results of the expressions in the
@@ -5629,14 +5194,12 @@ This set of attributes specifies an integer value. Only the `description`
 attribute is mandatory. The explicit attributes for this type are:
 
 assert
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationIntegerAssert`.
   This optional attribute defines the value constraints of the specified
   integer value. In case the assert attribute is not present, then the value
   of the specified integer value may be every valid integer number.
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the specified integer value.
 
@@ -5652,12 +5215,10 @@ This set of attributes specifies a list of attributes or values. All explicit
 attributes shall be specified. The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the list.
 
 spec-type
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   specification type of elements of the list.
 
@@ -5708,13 +5269,11 @@ links. All explicit attributes shall be specified. The explicit attributes for
 this type are:
 
 spec-key
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   specification type refinement attribute key of the specification
   refinement.
 
 spec-value
-
 : The attribute value shall be a {ref}`SpecTypeName`. It shall be the
   specification type refinement attribute value of the specification
   refinement.
@@ -5733,82 +5292,69 @@ A value of this type shall be of one of the following variants:
   attributes for this type are:
 
   and
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeSpecificationStringAssert`. The *and* operator evaluates to
     the *logical and* of the evaluation results of the expressions in the
     list.
 
   contains
-
   : The attribute value shall be a list of strings. The *contains* operator
     evaluates to true, if the string to check converted to lower case with
     all white space characters converted to a single space character contains
     a string of the list of strings of this attribute, otherwise to false.
 
   eq
-
   : The attribute value shall be a string. The *eq* operator evaluates to
     true, if the string to check is equal to the value of this attribute,
     otherwise to false.
 
   ge
-
   : The attribute value shall be a string. The *ge* operator evaluates to
     true, if the string to check is greater than or equal to the value of
     this attribute, otherwise to false.
 
   gt
-
   : The attribute value shall be a string. The *gt* operator evaluates to
     true, if the string to check is greater than the value of this attribute,
     otherwise to false.
 
   in
-
   : The attribute value shall be a list of strings. The *in* operator
     evaluates to true, if the string to check is contained in the list of
     strings of this attribute, otherwise to false.
 
   le
-
   : The attribute value shall be a string. The *le* operator evaluates to
     true, if the string to check is less than or equal to the value of this
     attribute, otherwise to false.
 
   lt
-
   : The attribute value shall be a string. The *lt* operator evaluates to
     true, if the string to check is less than the value of this attribute,
     otherwise to false.
 
   ne
-
   : The attribute value shall be a string. The *ne* operator evaluates to
     true, if the string to check is not equal to the value of this attribute,
     otherwise to false.
 
   not
-
   : The attribute value shall be a {ref}`SpecTypeSpecificationStringAssert`.
     The *not* operator evaluates to the *logical not* of the evaluation
     results of the expression.
 
   or
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeSpecificationStringAssert`. The *or* operator evaluates to
     the *logical or* of the evaluation results of the expressions in the
     list.
 
   re
-
   : The attribute value shall be a string. The *re* operator evaluates to
     true, if the string to check matches with the regular expression of this
     attribute, otherwise to false.
 
   uid
-
   : The attribute shall have no value. The *uid* operator evaluates to true,
     if the string is a valid UID, otherwise to false.
 
@@ -5829,14 +5375,12 @@ This set of attributes specifies a string. Only the `description` attribute
 is mandatory. The explicit attributes for this type are:
 
 assert
-
 : The attribute value shall be a {ref}`SpecTypeSpecificationStringAssert`.
   This optional attribute defines the constraints of the specified string.
   In case the assert attribute is not present, then the specified string may
   be every valid string.
 
 description
-
 : The attribute value shall be an optional string. It shall be the
   description of the specified string attribute.
 
@@ -5852,22 +5396,18 @@ This set of attributes specifies a test case action. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 action-brief
-
 : The attribute value shall be an optional string. It shall be the test case
   action brief description.
 
 action-code
-
 : The attribute value shall be a string. It shall be the test case action
   code.
 
 checks
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeTestCaseCheck`.
 
 links
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeLink`. The links should use the
   {ref}`SpecTypeRequirementValidationLinkRole` for validation tests and the
@@ -5885,17 +5425,14 @@ This set of attributes specifies a test case check. All explicit attributes
 shall be specified. The explicit attributes for this type are:
 
 brief
-
 : The attribute value shall be an optional string. It shall be the test case
   check brief description.
 
 code
-
 : The attribute value shall be a string. It shall be the test case check
   code.
 
 links
-
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeLink`. The links should use the
   {ref}`SpecTypeRequirementValidationLinkRole` for validation tests and the
@@ -5916,17 +5453,14 @@ A value of this type shall be of one of the following variants:
   specified. The explicit attributes for this type are:
 
   brief
-
   : The attribute value shall be an optional string. It shall be the test
     context member brief description.
 
   description
-
   : The attribute value shall be an optional string. It shall be the test
     context member description.
 
   member
-
   : The attribute value shall be a string. It shall be the test context
     member definition. It shall be a valid C structure member definition
     without a trailing `;`.
@@ -5955,36 +5489,30 @@ A value of this type shall be of one of the following variants:
   shall be specified. The explicit attributes for this type are:
 
   code
-
   : The attribute value shall be an optional string. If the value is present,
     then it shall be the test header code. The header code is placed at file
     scope after the general test declarations and before the test run
     function declaration.
 
   freestanding
-
   : The attribute value shall be a boolean. The value shall be `true`, if
     the test case is freestanding, otherwise `false`. Freestanding test
     cases are not statically registered. Instead the generated test runner
     uses {c:func}`T_case_begin` and {c:func}`T_case_end`.
 
   includes
-
   : The attribute value shall be a list of strings. It shall be a list of
     header files included by the header file via `#include <...>`.
 
   local-includes
-
   : The attribute value shall be a list of strings. It shall be a list of
     header files included by the header file via `#include "..."`.
 
   run-params
-
   : The attribute value shall be a list. Each list element shall be a
     {ref}`SpecTypeTestRunParameter`.
 
   target
-
   : The attribute value shall be a string. It shall be the path to the
     generated test header file.
 
@@ -6006,20 +5534,16 @@ then the parameter is also added as a member to the test context, see
 The explicit attributes for this type are:
 
 description
-
 : The attribute value shall be a string. It shall be the description of the
   parameter.
 
 dir
-
 : The attribute value shall be an {ref}`SpecTypeInterfaceParameterDirection`.
 
 name
-
 : The attribute value shall be a string. It shall be the parameter name.
 
 specifier
-
 : The attribute value shall be a string. It shall be the complete function
   parameter specifier. Use `${.:name}` for the parameter name, for example
   `"int ${.:name}"`.
@@ -6039,18 +5563,15 @@ A value of this type shall be of one of the following variants:
   specified. The explicit attributes for this type are:
 
   brief
-
   : The attribute value shall be an optional string. It shall be the test
     support method brief description.
 
   code
-
   : The attribute value shall be a string. It shall be the test support
     method code. The code may use a local variable `ctx` which points to
     the test context, see {ref}`SpecTypeTestContextMember`.
 
   description
-
   : The attribute value shall be an optional string. It shall be the test
     support method description.
 
@@ -6085,6 +5606,5 @@ the software unit. All explicit attributes shall be specified. The explicit
 attributes for this type are:
 
 name
-
 : The attribute value shall be a string. It shall be the name of the tested
   software unit.

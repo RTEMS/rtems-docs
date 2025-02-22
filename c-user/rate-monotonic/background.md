@@ -26,44 +26,35 @@ obtained at any time by the application. The following is a list of the
 information kept:
 
 `owner`
-
 : is the id of the thread that owns this period.
 
 `count`
-
 : is the total number of periods executed.
 
 `missed_count`
-
 : is the number of periods that were missed.
 
 `min_cpu_time`
-
 : is the minimum amount of CPU execution time consumed on any execution of the
   periodic loop.
 
 `max_cpu_time`
-
 : is the maximum amount of CPU execution time consumed on any execution of the
   periodic loop.
 
 `total_cpu_time`
-
 : is the total amount of CPU execution time consumed by executions of the
   periodic loop.
 
 `min_wall_time`
-
 : is the minimum amount of wall time that passed on any execution of the
   periodic loop.
 
 `max_wall_time`
-
 : is the maximum amount of wall time that passed on any execution of the
   periodic loop.
 
 `total_wall_time`
-
 : is the total amount of wall time that passed during executions of the
   periodic loop.
 
@@ -236,8 +227,7 @@ assumptions can be relaxed and the side-effects accounted for.
 
 The Processor Utilization Rule requires that processor utilization be
 calculated based upon the period and execution time of each task.
-The fraction of processor time spent executing task index is `Time(i)
-/ Period(i)`. The processor utilization can be calculated as follows
+The fraction of processor time spent executing task index is `Time(i) / Period(i)`. The processor utilization can be calculated as follows
 where n is the number of tasks in the set being analyzed:
 
 $$

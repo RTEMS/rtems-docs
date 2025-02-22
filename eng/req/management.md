@@ -47,8 +47,10 @@ invalidate all references to previous versions.
 ## Add a Requirement
 
 ```{image} ../../images/eng/req-add.*
-:align: center
-:scale: 70
+---
+align: center
+scale: 70
+---
 ```
 
 (reqengmodifyrequirement)=
@@ -56,13 +58,14 @@ invalidate all references to previous versions.
 ## Modify a Requirement
 
 ```{image} ../../images/eng/req-modify.*
-:align: center
-:scale: 70
+---
+align: center
+scale: 70
+---
 ```
 
 ## Mark a Requirement as Obsolete
 
 Requirements shall be never removed. They shall be marked as obsolete. This
 ensures that requirement identifiers are not reused. The procedure to obsolete
-a requirement is the same as the one to {ref}`modify a requirement
-<ReqEngModifyRequirement>`.
+a requirement is the same as the one to {ref}`modify a requirement <ReqEngModifyRequirement>`.

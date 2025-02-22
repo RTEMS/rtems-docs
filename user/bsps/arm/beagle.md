@@ -233,10 +233,11 @@ The resulting wiring is:
 ```
 
 ```{figure} ../../../images/user/bbb-p2-debug-mod.jpg
-:align: center
-:alt: BeagleBone Black JTAG Hardware Modification
-:width: 50%
-
+---
+align: center
+alt: BeagleBone Black JTAG Hardware Modification
+width: 50%
+---
 BeagleBone Black JTAG Hardware Modification
 ```
 

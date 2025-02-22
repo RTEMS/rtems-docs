@@ -8,6 +8,7 @@ To build them you need Inkscape installed if you require PNG icons.
   ./gen_svg.py
   ./gen_png.py
 ```
+
 Will build the SVG and PNG files if you need them.
 
 `list.txt` contains the colours and the icon names respectively.

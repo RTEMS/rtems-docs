@@ -46,19 +46,16 @@ Depending on the hardware capabilities one out of three clock driver variants
 must be selected.
 
 Timecounter
-
 : The variant which provides all features needs a free running hardware
   counter and a periodic clock tick interrupt. This variant is mandatory in
   SMP configurations.
 
 Simple Timecounter
-
 : A simple timecounter can be used if the hardware provides no free running
   hardware counter and only a periodic hardware counter synchronous to the
   clock tick interrupt is available.
 
 Clock Tick Only
-
 : The most basic clock driver provides only a periodic clock tick interrupt.
   The timestamp resolution is limited to the clock tick interval.
 
@@ -293,8 +290,7 @@ interrupt affinity of the clock tick interrupt.
 
 In case the hardware needs more than one clock driver tick per clock tick (e.g.
 due to a limited range of the hardware timer), then this can be specified with
-the optional `#define CLOCK_DRIVER_ISRS_PER_TICK` and `#define
-CLOCK_DRIVER_ISRS_PER_TICK_VALUE` defines. This is currently used only for
+the optional `#define CLOCK_DRIVER_ISRS_PER_TICK` and `#define CLOCK_DRIVER_ISRS_PER_TICK_VALUE` defines. This is currently used only for
 x86 and it hopefully remains that way.
 
 ```c

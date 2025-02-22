@@ -60,10 +60,11 @@ RTEMS kernel regression testing and application development.
 (fig-tftp-proxy-1)=
 
 ```{figure} ../../images/user/tftp-proxy-1.png
-:alt: RTEMS TFTP Proxy Test Lab
-:figclass: align-center
-:width: 75%
-
+---
+alt: RTEMS TFTP Proxy Test Lab
+figclass: align-center
+width: 75%
+---
 RTEMS TFTP Proxy Test Lab
 ```
 

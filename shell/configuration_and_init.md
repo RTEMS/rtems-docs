@@ -54,13 +54,11 @@ individual commands or starting with a complete set and disabling individual
 commands. Each command has two configuration macros associated with it.
 
 *CONFIGURE_SHELL_COMMAND_XXX*
-
 : Each command has a constant of this form which is defined when
   building a command set by individually enabling specific
   commands.
 
 *CONFIGURE_SHELL_NO_COMMAND_XXX*
-
 : In contrast, each command has a similar command which is
   defined when the application is configuring a command set
   by disabling specific commands in the set.

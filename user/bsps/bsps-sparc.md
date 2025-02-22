@@ -81,9 +81,7 @@ The following options can be used in the BSP section of the `waf`
 configuration INI file. The `waf` defaults can be used to inspect the values.
 
 `CONSOLE_USE_INTERRUPTS`
-
 : Use the Termios interrupt mode in the console driver (false by default).
 
 `RTEMS_DRVMGR_STARTUP`
-
 : Enable the Driver Manager at startup (false by default).

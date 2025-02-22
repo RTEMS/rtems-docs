@@ -66,7 +66,6 @@ Build Set: Time 0:03:09.896961
 The RSB BSP build can be customised with following RSB command line options:
 
 `--with-rtems-tests`:
-
 : Build the test suite. If `yes` is provided all tests in the testsuite are
   build. If `no` is provided no tests are built and if `samples` is
   provided only the sample executables are built, e.g.
@@ -75,22 +74,18 @@ The RSB BSP build can be customised with following RSB command line options:
   {ref}`tester and run command <rtems-tester-command>`.
 
 `--with-rtems-smp`:
-
 : Build with SMP support. The BSP has to have SMP support or this option will
   fail with an error.
 
 `--with-rtems-legacy-network`:
-
 : Build the legacy network software. We recommend you use the current network
   support in the RTEMS BSP Library (libbsd) unless you need to maintain a
   legacy product. Do not use the legacy networking software for new
   developments.
 
 `--with-rtems-bspopts`:
-
 : Build the BSP with BSP specific options. This is an advanced option. Please
-  refer to the BSP specific details in the {ref}`Board Support Packages
-  (BSPs)` of this manual or the BSP source code in the RTEMS source
+  refer to the BSP specific details in the {ref}`Board Support Packages (BSPs)` of this manual or the BSP source code in the RTEMS source
   directory. To supply a list of options quote then list with `"`, e.g.
   `--with-rtems-bspopts="BSP_POWER_DOWN_AT_FATAL_HALT=1"`
 

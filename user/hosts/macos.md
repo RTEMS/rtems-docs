@@ -133,5 +133,4 @@ environment and I want to know the minimal requirements when building
 tools. The following are required:
 
 . The XZ package's home page is <http://tukaani.org/xz/> and I use version
-
 : 5.0.5. XZ builds and installs cleanly.

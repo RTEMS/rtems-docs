@@ -1704,7 +1704,6 @@ bool rtems_resource_is_unlimited( uint32_t resource );
 ```
 
 `resource`
-
 : This parameter is the resource number.
 
 ```{eval-rst}
@@ -1752,7 +1751,6 @@ uint32_t rtems_resource_maximum_per_allocation( uint32_t resource );
 ```
 
 `resource`
-
 : This parameter is the resource number.
 
 ```{eval-rst}
@@ -1800,7 +1798,6 @@ uint32_t rtems_resource_unlimited( uint32_t resource );
 ```
 
 `resource`
-
 : This parameter is the resource number to augment.
 
 ```{eval-rst}

@@ -16,28 +16,23 @@ Some of the following sample applications will be covered in more detail in
 subsequent sections:
 
 *Hello World*
-
 : The RTEMS Hello World test is provided in the subdirectory
   `${RTEMS_ROOT}/testsuites/samples/hello/`. This test is helpful when
   testing new RTEMS development environment.
 
 *Clock Tick*
-
 : The `${RTEMS_ROOT}/testsuites/samples/ticker/` subdirectory provides a
   test for verification of clock chip device drivers of BSPs.
 
 *Base Single Processor*
-
 : A simple single processor test similar to those in the single processor
   test suite is provided in `${RTEMS_ROOT}/testsuites/samples/base_sp/`.
 
 *Base Multiple Processor*
-
 : A simple two node multiprocessor test capable of testing an newly developed
   MPCI layer is provided in `${RTEMS_ROOT}/testsuites/samples/base_mp/`.
 
 *Capture*
-
 : The RTEMS Capture test is provided in the subdirectory
   `${RTEMS_ROOT}/testsuites/samples/capture/`. This is an interactive test
   which demonstrates the capabilities of the RTEMS Capture Engine. It
@@ -46,7 +41,6 @@ subsequent sections:
   for a sample session.
 
 *Constructor/Destructor C++ Test*
-
 : The `${RTEMS_ROOT}/testsuites/samples/cdtest/` subdirectory provides a
   simple C++ application using constructors and destructors. It is only
   built when C++ is enabled and its primary purpose is to demonstrate that
@@ -54,7 +48,6 @@ subsequent sections:
   linker script for your BSP be correct, this is an important test.
 
 *File IO*
-
 : The RTEMS File IO test is provided in the subdirectory
   `${RTEMS_ROOT}/testsuites/samples/fileio/`. This is an interactive test
   which allows the user to interact with an ATA/IDE device. It will read the
@@ -63,7 +56,6 @@ subsequent sections:
   the disk.
 
 *IO Stream*
-
 : The RTEMS IO Stream test is provided in the subdirectory
   `${RTEMS_ROOT}/testsuites/samples/iostream/`. This test is a simple C++
   application which demonstrates that C++ iostreams are functional. This
@@ -71,21 +63,18 @@ subsequent sections:
   test is only build when C++ is enabled.
 
 *Network Loopback Test*
-
 : The `${RTEMS_ROOT}/testsuites/samples/loopback/` directory contains a
   sample test that demonstrates the use of sockets and the loopback network
   device. It does not require the presence of network hardware in order to
   run. It is only built if RTEMS was configured with networking enabled.
 
 *Minimum Size Test*
-
 : The directory `${RTEMS_ROOT}/testsuites/samples/minimum/` contains a
   simple RTEMS program that results in a non-functional executable. It is
   intended to show the size of a minimum footprint application based upon the
   current RTEMS configuration.
 
 *Nanoseconds*
-
 : The RTEMS Nanoseconds test is provided in the subdirectory
   `${RTEMS_ROOT}/testsuites/samples/nsecs/`. This test demonstrates that
   the BSP has support for nanosecond timestamp granularity. It prints the
@@ -94,19 +83,16 @@ subsequent sections:
   clock support and it is functional.
 
 *Paranoia Floating Point Test*
-
 : The directory `${RTEMS_ROOT}/testsuites/samples/paranoia/` contains the
   public domain floating point and math library test.
 
 *Point-to-Point Protocol Daemon*
-
 : The RTEMS Point-to-Point Protocol Daemon test is provided in the
   subdirectory `${RTEMS_ROOT}/testsuites/samples/pppd/`. This test
   primarily serves as the baseline for a user application using the PPP
   protocol.
 
 *Unlimited Object Allocation*
-
 : The `${RTEMS_ROOT}/testsuites/samples/unlimited/` directory contains a
   sample test that demonstrates the use of the\*unlimited\* object allocation
   configuration option to RTEMS.

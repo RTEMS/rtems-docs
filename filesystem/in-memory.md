@@ -202,43 +202,34 @@ rtems_filesystem_operations_table  IMFS_ops = {
 #### IMFS_evalpath()
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_evalformake()
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_link()
 
 Corresponding Structure Element:
-
 : `link`
 
 Arguments:
@@ -249,7 +240,6 @@ Arguments:
   ```
 
 File:
-
 : `imfs_link.c`
 
 Description:
@@ -282,19 +272,15 @@ Description:
 #### IMFS_unlink()
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_node_type()
@@ -362,19 +348,15 @@ Description:
 #### IMFS_rmnod()
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_chown()
@@ -432,7 +414,6 @@ Description:
 #### IMFS_freenodinfo()
 
 Corresponding Structure Element:
-
 : `IMFS_freenodinfo()`
 
 Arguments:
@@ -441,11 +422,9 @@ Arguments:
   ```
 
 File:
-
 : `imfs_free.c`
 
 Description:
-
 : The In-Memory File System does not need to allocate memory during the
   evaluate routines. Therefore, this routine simply routines PASS.
 
@@ -654,37 +633,29 @@ Description:
 #### IMFS_utime()
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_eval_link()
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 ### Regular File Handler Table Functions
@@ -717,7 +688,6 @@ rtems_filesystem_file_handlers_r IMFS_memfile_handlers = {
 #### memfile_open() for Regular Files
 
 Corresponding Structure Element:
-
 : `memfile_open()`
 
 Arguments:
@@ -729,18 +699,15 @@ Arguments:
   ```
 
 File:
-
 : `memfile.c`
 
 Description:
-
 : Currently this function is a shell. No meaningful processing is performed
   and a success code is always returned.
 
 #### memfile_close() for Regular Files
 
 Corresponding Structure Element:
-
 : `memfile_close()`
 
 Arguments:
@@ -749,11 +716,9 @@ Arguments:
   ```
 
 File:
-
 : `memfile.c`
 
 Description:
-
 : This routine is a dummy for regular files under the base filesystem. It
   performs a capture of the IMFS_jnode_t pointer from the file control block
   and then immediately returns a success status.
@@ -794,25 +759,20 @@ Description:
 #### memfile_write() for Regular Files
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### memfile_ioctl() for Regular Files
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
@@ -823,11 +783,9 @@ Arguments:
   ```
 
 File:
-
 : `memfile.c`
 
 Description:
-
 : The current code is a placeholder for future development. The routine
   returns a successful completion status.
 
@@ -940,73 +898,57 @@ Description:
 #### memfile_ftruncate() for Regular Files
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### No pathconf() for Regular Files
 
 Corresponding Structure Element:
-
 : `NULL`
 
 Arguments:
-
 : Not Implemented
 
 File:
-
 : Not Implemented
 
 Description:
-
 : Not Implemented
 
 #### No fsync() for Regular Files
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_fdatasync() for Regular Files
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 ### Directory Handler Table Functions
@@ -1068,7 +1010,6 @@ Description:
 #### IMFS_dir_close() for Directories
 
 Corresponding Structure Element:
-
 : `imfs_dir_close()`
 
 Arguments:
@@ -1077,18 +1018,15 @@ Arguments:
   ```
 
 File:
-
 : `imfs_directory.c`
 
 Description:
-
 : This routine is a dummy for directories under the base filesystem. It
   immediately returns a success status.
 
 #### IMFS_dir_read() for Directories
 
 Corresponding Structure Element:
-
 : `imfs_dir_read`
 
 Arguments:
@@ -1099,11 +1037,9 @@ Arguments:
   ```
 
 File:
-
 : `imfs_directory.c`
 
 Description:
-
 : This routine will read a fixed number of directory entries from the current
   directory offset. The number of directory bytes read will be returned from
   this routine.
@@ -1111,37 +1047,29 @@ Description:
 #### No write() for Directories
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### No ioctl() for Directories
 
 Corresponding Structure Element:
-
 : `ioctl`
 
 Arguments:
-
 : Not supported
 
 File:
-
 : Not supported
 
 Description:
-
 : XXX
 
 #### IMFS_dir_lseek() for Directories
@@ -1245,73 +1173,57 @@ Description:
 #### No ftruncate() for Directories
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### No fpathconf() for Directories
 
 Corresponding Structure Element:
-
 : `fpathconf`
 
 Arguments:
-
 : Not Implemented
 
 File:
-
 : Not Implemented
 
 Description:
-
 : Not Implemented
 
 #### No fsync() for Directories
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### IMFS_fdatasync() for Directories
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 ### Device Handler Table Functions
@@ -1433,19 +1345,15 @@ Description:
 #### device_write() for Devices
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### device_ioctl() for Devices
@@ -1490,7 +1398,6 @@ Description:
 #### device_lseek() for Devices
 
 Corresponding Structure Element:
-
 : `device_lseek()`
 
 Arguments:
@@ -1501,11 +1408,9 @@ Arguments:
   ```
 
 File:
-
 : `deviceio.c`
 
 Description:
-
 : At the present time this is a placeholder function. It always returns a
   successful status.
 
@@ -1591,55 +1496,43 @@ Description:
 #### No ftruncate() for Devices
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### No fpathconf() for Devices
 
 Corresponding Structure Element:
-
 : `fpathconf`
 
 Arguments:
-
 : Not Implemented
 
 File:
-
 : Not Implemented
 
 Description:
-
 : Not Implemented
 
 #### No fsync() for Devices
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### No fdatasync() for Devices
@@ -1647,17 +1540,13 @@ Description:
 Not Implemented
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 File:
-
 : XXX
 
 Description:
-
 : XXX

@@ -34,16 +34,13 @@ The networking tasks allocate some RTEMS objects. These must be accounted for
 in the application configuration table. The following lists the requirements.
 
 *TASKS*
-
 : One network task plus a receive and transmit task for each device.
 
 *SEMAPHORES*
-
 : One network semaphore plus one syslog mutex semaphore if the application
   uses openlog/syslog.
 
 *EVENTS*
-
 : The network stack uses `RTEMS_EVENT_24` and `RTEMS_EVENT_25`. This has
   no effect on the application configuration, but application tasks which
   call the network functions should not use these events for other purposes.
@@ -249,16 +246,13 @@ In addition, the following fields in the `rtems_bsdnet_ifconfig` are of
 interest.
 
 *int port*
-
 : The I/O port number (ex: 0x240) on which the external Ethernet can be
   accessed.
 
 *int irno*
-
 : The interrupt number of the external Ethernet controller.
 
 *int bpar*
-
 : The address of the shared memory on the external Ethernet controller.
 
 ### Network device configuration
@@ -272,7 +266,6 @@ from a BOOTP/DHCP server, and uses the default values for all driver parameters
 needs to initialize only the first two entries in the structure.
 
 `char *name`
-
 : The full name of the network device. This name consists of the driver name
   and the unit number (e.g. `"scc1"`). The `bsp.h` include file usually
   defines `RTEMS_BSP_NETWORK_DRIVER_NAME` as the name of the primary (or
@@ -287,46 +280,38 @@ needs to initialize only the first two entries in the structure.
 > the primary (or only) network driver.
 
 `struct rtems_bsdnet_ifconfig *next`
-
 : A pointer to the network device configuration structure for the next
   network interface, or `NULL` if this is the configuration structure of
   the last network interface.
 
 `char *ip_address`
-
 : The Internet address of the device, specified in 'dotted decimal'
   (`129.128.4.2`) form, or `NULL` if the device configuration information
   is being obtained from a BOOTP/DHCP server.
 
 `char *ip_netmask`
-
 : The Internet inetwork mask of the device, specified in 'dotted decimal'
   (`255.255.255.0`) form, or `NULL` if the device configuration
   information is being obtained from a BOOTP/DHCP server.
 
 `void *hardware_address`
-
 : The hardware address of the device, or `NULL` if the driver is to obtain
   the hardware address in some other way (usually by reading it from the
   device or from the bootstrap ROM).
 
 `int ignore_broadcast`
-
 : Zero if the device is to accept broadcast packets, non-zero if the device
   is to ignore broadcast packets.
 
 `int mtu`
-
 : The maximum transmission unit of the device, or zero if the driver is to
   choose a default value (typically 1500 for Ethernet devices).
 
 `int rbuf_count`
-
 : The number of receive buffers to use, or zero if the driver is to choose a
   default value
 
 `int xbuf_count`
-
 : The number of transmit buffers to use, or zero if the driver is to choose a
   default value Keep in mind that some network devices may use 4 or more
   transmit descriptors for a single transmit buffer.
@@ -400,31 +385,24 @@ There are a number of functions to print statistics gathered by the network
 stack. These function are declared in `rtems/rtems_bsdnet.h`.
 
 `rtems_bsdnet_show_if_stats`
-
 : Display statistics gathered by network interfaces.
 
 `rtems_bsdnet_show_ip_stats`
-
 : Display IP packet statistics.
 
 `rtems_bsdnet_show_icmp_stats`
-
 : Display ICMP packet statistics.
 
 `rtems_bsdnet_show_tcp_stats`
-
 : Display TCP packet statistics.
 
 `rtems_bsdnet_show_udp_stats`
-
 : Display UDP packet statistics.
 
 `rtems_bsdnet_show_mbuf_stats`
-
 : Display mbuf statistics.
 
 `rtems_bsdnet_show_inet_routes`
-
 : Display the routing table.
 
 ### Tapping Into an Interface

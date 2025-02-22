@@ -78,15 +78,12 @@ rtems_status_code rtems_interrupt_catch(
 ```
 
 `new_isr_handler`
-
 : This parameter is the new interrupt service routine.
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `old_isr_handler`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsIsrEntry` object.
   When the directive call is successful, the previous interrupt service
   routine established for this interrupt vector will be stored in this
@@ -109,19 +106,15 @@ the vector was first capture.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The interrupt vector number was illegal.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `new_isr_handler` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `old_isr_handler` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -168,7 +161,6 @@ void rtems_interrupt_disable( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-
 : This parameter is a variable of type {ref}`InterfaceRtemsInterruptLevel`
   which will be used to save the previous interrupt level.
 
@@ -190,8 +182,9 @@ This directive is implemented as a macro which sets the `isr_cookie`
 parameter.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <rtems.h>
 
 void local_critical_section( void )
@@ -272,7 +265,6 @@ void rtems_interrupt_enable( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-
 : This parameter is the previous interrupt level to restore. The value must
   be obtained by a previous call to {ref}`InterfaceRtemsInterruptDisable` or
   {ref}`InterfaceRtemsInterruptFlash`.
@@ -344,7 +336,6 @@ void rtems_interrupt_flash( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-
 : This parameter is the previous interrupt level.
 
 ```{eval-rst}
@@ -413,7 +404,6 @@ void rtems_interrupt_local_disable( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-
 : This parameter is a variable of type {ref}`InterfaceRtemsInterruptLevel`
   which will be used to save the previous interrupt level.
 
@@ -441,8 +431,9 @@ sections may be used to access processor-specific data structures or disable
 thread dispatching.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <rtems.h>
 
 void local_critical_section( void )
@@ -518,7 +509,6 @@ void rtems_interrupt_local_enable( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-
 : This parameter is the previous interrupt level to restore. The value must
   be obtained by a previous call to
   {ref}`InterfaceRtemsInterruptLocalDisable`.
@@ -636,11 +626,9 @@ void rtems_interrupt_lock_initialize(
 ```
 
 `lock`
-
 : This parameter is the ISR lock to initialize.
 
 `name`
-
 : This parameter is the ISR lock name. It shall be a string. The name is
   only used where the system was built with profiling support enabled.
 
@@ -680,7 +668,6 @@ void rtems_interrupt_lock_destroy( rtems_interrupt_lock *lock );
 ```
 
 `lock`
-
 : This parameter is the ISR lock to destroy.
 
 ```{eval-rst}
@@ -735,11 +722,9 @@ void rtems_interrupt_lock_acquire(
 ```
 
 `lock`
-
 : This parameter is the ISR lock to acquire.
 
 `lock_context`
-
 : This parameter is the ISR lock context. This lock context shall be used to
   release the lock by calling {ref}`InterfaceRtemsInterruptLockRelease`.
 
@@ -766,8 +751,9 @@ This directive establishes a non-preemptive critical section with system wide
 mutual exclusion on the local node in all RTEMS build configurations.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <rtems.h>
 
 void critical_section( rtems_interrupt_lock *lock )
@@ -821,11 +807,9 @@ void rtems_interrupt_lock_release( rtems_interrupt_lock_context *lock );
 ```
 
 `lock`
-
 : This parameter is the ISR lock to release.
 
 `lock_context`
-
 : This parameter is the ISR lock context. This lock context shall have been
   used to acquire the lock by calling
   {ref}`InterfaceRtemsInterruptLockAcquire`.
@@ -892,11 +876,9 @@ void rtems_interrupt_lock_acquire_isr(
 ```
 
 `lock`
-
 : This parameter is the ISR lock to acquire within an ISR.
 
 `lock_context`
-
 : This parameter is the ISR lock context. This lock context shall be used to
   release the lock by calling {ref}`InterfaceRtemsInterruptLockReleaseIsr`.
 
@@ -969,11 +951,9 @@ void rtems_interrupt_lock_release_isr(
 ```
 
 `lock`
-
 : This parameter is the ISR lock to release within an ISR.
 
 `lock_context`
-
 : This parameter is the ISR lock context. This lock context shall have been
   used to acquire the lock by calling
   {ref}`InterfaceRtemsInterruptLockAcquireIsr`.
@@ -1035,7 +1015,6 @@ void rtems_interrupt_lock_interrupt_disable(
 ```
 
 `lock_context`
-
 : This parameter is the ISR lock context for an acquire and release pair.
 
 ```{eval-rst}
@@ -1082,12 +1061,10 @@ RTEMS_INTERRUPT_LOCK_DECLARE( specifier, designator );
 ```
 
 `specifier`
-
 : This parameter is the storage-class specifier for the ISR lock to declare,
   for example `extern` or `static`.
 
 `designator`
-
 : This parameter is the ISR lock object designator.
 
 ```{eval-rst}
@@ -1124,16 +1101,13 @@ RTEMS_INTERRUPT_LOCK_DEFINE( specifier, designator, const char *name );
 ```
 
 `specifier`
-
 : This parameter is the storage-class specifier for the ISR lock to declare,
   for example `extern` or `static`.
 
 `designator`
-
 : This parameter is the ISR lock object designator.
 
 `name`
-
 : This parameter is the ISR lock name. It shall be a string. The name is
   only used where the system was built with profiling support enabled.
 
@@ -1175,7 +1149,6 @@ RTEMS_INTERRUPT_LOCK_INITIALIZER( const char *name );
 ```
 
 `name`
-
 : This parameter is the ISR lock name. It shall be a string. The name is
   only used where the system was built with profiling support enabled.
 
@@ -1215,7 +1188,6 @@ RTEMS_INTERRUPT_LOCK_MEMBER( designator );
 ```
 
 `designator`
-
 : This parameter is the ISR lock member designator.
 
 ```{eval-rst}
@@ -1252,11 +1224,9 @@ RTEMS_INTERRUPT_LOCK_REFERENCE( designator, rtems_interrupt_lock *target );
 ```
 
 `designator`
-
 : This parameter is the ISR lock reference designator.
 
 `target`
-
 : This parameter is the target object to reference.
 
 ```{eval-rst}
@@ -1297,15 +1267,12 @@ RTEMS_INTERRUPT_ENTRY_INITIALIZER(
 ```
 
 `routine`
-
 : This parameter is the interrupt handler routine for the entry.
 
 `arg`
-
 : This parameter is the interrupt handler argument for the entry.
 
 `info`
-
 : This parameter is the descriptive information for the entry.
 
 ```{eval-rst}
@@ -1348,19 +1315,15 @@ void rtems_interrupt_entry_initialize(
 ```
 
 `entry`
-
 : This parameter is the interrupt entry to initialize.
 
 `routine`
-
 : This parameter is the interrupt handler routine for the entry.
 
 `arg`
-
 : This parameter is the interrupt handler argument for the entry.
 
 `info`
-
 : This parameter is the descriptive information for the entry.
 
 ```{eval-rst}
@@ -1411,15 +1374,12 @@ rtems_status_code rtems_interrupt_entry_install(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `options`
-
 : This parameter is the interrupt entry install option set.
 
 `entry`
-
 : This parameter is the interrupt entry to install.
 
 ```{eval-rst}
@@ -1449,46 +1409,36 @@ may be installed for the interrupt vector.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `entry` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The handler routine of the entry was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : An option specified by `options` was not applicable.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The {c:macro}`RTEMS_INTERRUPT_UNIQUE` option was set in `entry` and the
   interrupt vector was already occupied by a handler.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The {c:macro}`RTEMS_INTERRUPT_SHARED` option was set in `entry` and the
   interrupt vector was already occupied by a unique handler.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The handler routine of the entry specified by `entry` was already
   installed for the interrupt vector specified by `vector` with an argument
   equal to the handler argument of the entry.
@@ -1547,11 +1497,9 @@ rtems_status_code rtems_interrupt_entry_remove(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `entry`
-
 : This parameter is the interrupt entry to remove.
 
 ```{eval-rst}
@@ -1559,28 +1507,22 @@ rtems_status_code rtems_interrupt_entry_remove(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `entry` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The entry specified by `entry` was not installed at the interrupt vector
   specified by `vector`.
 
@@ -1638,24 +1580,19 @@ rtems_status_code rtems_interrupt_handler_install(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `info`
-
 : This parameter is the descriptive information of the interrupt handler to
   install.
 
 `options`
-
 : This parameter is the interrupt handler install option set.
 
 `routine`
-
 : This parameter is the interrupt handler routine to install.
 
 `arg`
-
 : This parameter is the interrupt handler argument to install.
 
 ```{eval-rst}
@@ -1697,49 +1634,39 @@ persistent as long as the handler is installed.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_NO_MEMORY`
-
 : There was not enough memory available to allocate data structures to
   install the handler.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The {c:macro}`RTEMS_INTERRUPT_UNIQUE` option was set in `options` and the
   interrupt vector was already occupied by a handler.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The {c:macro}`RTEMS_INTERRUPT_SHARED` option was set in `options` and the
   interrupt vector was already occupied by a unique handler.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The handler specified by `routine` was already installed for the
   interrupt vector specified by `vector` with an argument equal to the
   argument specified by `arg`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The {c:macro}`RTEMS_INTERRUPT_REPLACE` option was set in `options` and no
   handler to replace was installed.
 
@@ -1786,15 +1713,12 @@ rtems_status_code rtems_interrupt_handler_remove(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `routine`
-
 : This parameter is the interrupt handler routine to remove.
 
 `arg`
-
 : This parameter is the interrupt handler argument to remove.
 
 ```{eval-rst}
@@ -1802,28 +1726,22 @@ rtems_status_code rtems_interrupt_handler_remove(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There was no handler routine and argument pair installed specified by
   `routine` and `arg`.
 
@@ -1869,11 +1787,9 @@ rtems_status_code rtems_interrupt_vector_is_enabled(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `enabled`
-
 : This parameter is the pointer to a `bool` object. When the directive
   call is successful, the enabled status of the interrupt associated with the
   interrupt vector specified by `vector` will be stored in this object.
@@ -1894,15 +1810,12 @@ call at some time point during the call.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `enabled` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
@@ -1952,7 +1865,6 @@ rtems_status_code rtems_interrupt_vector_enable( rtems_vector_number vector );
 ```
 
 `vector`
-
 : This parameter is the number of the interrupt vector to enable.
 
 ```{eval-rst}
@@ -1970,16 +1882,13 @@ raised by {ref}`InterfaceRtemsInterruptRaise`,
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to enable the interrupt vector has not been satisfied.
 
 ```{eval-rst}
@@ -2029,7 +1938,6 @@ rtems_status_code rtems_interrupt_vector_disable( rtems_vector_number vector );
 ```
 
 `vector`
-
 : This parameter is the number of the interrupt vector to disable.
 
 ```{eval-rst}
@@ -2045,16 +1953,13 @@ of the interrupt vector.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to disable the interrupt vector has not been satisfied.
 
 ```{eval-rst}
@@ -2109,11 +2014,9 @@ rtems_status_code rtems_interrupt_is_pending(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `pending`
-
 : This parameter is the pointer to a `bool` object. When the directive
   call is successful, the pending status of the interrupt associated with the
   interrupt vector specified by `vector` will be stored in this object.
@@ -2134,20 +2037,16 @@ call at some time point during the call.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `pending` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to get the pending status has not been satisfied.
 
 ```{eval-rst}
@@ -2198,7 +2097,6 @@ rtems_status_code rtems_interrupt_raise( rtems_vector_number vector );
 ```
 
 `vector`
-
 : This parameter is the number of the interrupt vector to raise.
 
 ```{eval-rst}
@@ -2206,16 +2104,13 @@ rtems_status_code rtems_interrupt_raise( rtems_vector_number vector );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to raise the interrupt vector has not been satisfied.
 
 ```{eval-rst}
@@ -2267,11 +2162,9 @@ rtems_status_code rtems_interrupt_raise_on(
 ```
 
 `vector`
-
 : This parameter is the number of the interrupt vector to raise.
 
 `cpu_index`
-
 : This parameter is the index of the target processor of the interrupt vector
   to raise.
 
@@ -2280,26 +2173,21 @@ rtems_status_code rtems_interrupt_raise_on(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_NOT_CONFIGURED`
-
 : The processor specified by `cpu_index` was not configured to be used by
   the application.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The processor specified by `cpu_index` was configured to be used by the
   application, however, it was not online.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to raise the interrupt vector has not been satisfied.
 
 ```{eval-rst}
@@ -2348,7 +2236,6 @@ rtems_status_code rtems_interrupt_clear( rtems_vector_number vector );
 ```
 
 `vector`
-
 : This parameter is the number of the interrupt vector to clear.
 
 ```{eval-rst}
@@ -2356,16 +2243,13 @@ rtems_status_code rtems_interrupt_clear( rtems_vector_number vector );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to raise the interrupt vector has not been satisfied.
 
 ```{eval-rst}
@@ -2417,11 +2301,9 @@ rtems_status_code rtems_interrupt_get_priority(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `priority`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the priority of the interrupt vector will be
   stored in this object.
@@ -2431,20 +2313,16 @@ rtems_status_code rtems_interrupt_get_priority(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There is no priority associated with the interrupt vector.
 
 ```{eval-rst}
@@ -2496,11 +2374,9 @@ rtems_status_code rtems_interrupt_set_priority(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `priority`
-
 : This parameter is the new priority for the interrupt vector.
 
 ```{eval-rst}
@@ -2518,21 +2394,17 @@ processor executing the directive call will be set.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The priority specified by `priority` was not a valid new priority for the
   interrupt vector.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to set the priority of the interrupt vector has not been
   satisfied.
 
@@ -2641,16 +2513,13 @@ rtems_status_code rtems_interrupt_get_affinity(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `affinity_size`
-
 : This parameter is the size of the processor set referenced by `affinity`
   in bytes.
 
 `affinity`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. When the
   directive call is successful, the processor affinity set of the interrupt
   vector will be stored in this object. A set bit in the processor set means
@@ -2662,20 +2531,16 @@ rtems_status_code rtems_interrupt_get_affinity(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `affinity` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The size specified by `affinity_size` of the processor set was too small
   for the processor affinity set of the interrupt vector.
 
@@ -2722,16 +2587,13 @@ rtems_status_code rtems_interrupt_set_affinity(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `affinity_size`
-
 : This parameter is the size of the processor set referenced by `affinity`
   in bytes.
 
 `affinity`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. The
   processor set defines the new processor affinity set of the interrupt
   vector. A set bit in the processor set means that the corresponding
@@ -2743,25 +2605,20 @@ rtems_status_code rtems_interrupt_set_affinity(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `affinity` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The referenced processor set was not a valid new processor affinity set for
   the interrupt vector.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The request to set the processor affinity of the interrupt vector has not
   been satisfied.
 
@@ -2819,11 +2676,9 @@ rtems_status_code rtems_interrupt_get_attributes(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `attributes`
-
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsInterruptAttributes` object. When the directive call
   is successful, the attributes of the interrupt vector will be stored in
@@ -2834,15 +2689,12 @@ rtems_status_code rtems_interrupt_get_attributes(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `attributes` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
@@ -2889,15 +2741,12 @@ rtems_status_code rtems_interrupt_handler_iterate(
 ```
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `routine`
-
 : This parameter is the visitor routine.
 
 `arg`
-
 : This parameter is the visitor argument.
 
 ```{eval-rst}
@@ -2913,24 +2762,19 @@ and the handler information, options, routine and argument.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 ```{eval-rst}
@@ -2987,24 +2831,19 @@ rtems_status_code rtems_interrupt_server_initialize(
 ```
 
 `priority`
-
 : This parameter is the initial {term}`task priority` of the created
   interrupt servers.
 
 `stack_size`
-
 : This parameter is the task stack size of the created interrupt servers.
 
 `modes`
-
 : This parameter is the initial mode set of the created interrupt servers.
 
 `attributes`
-
 : This parameter is the attribute set of the created interrupt servers.
 
 `server_count`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object or [NULL](https://en.cppreference.com/w/c/types/NULL). When the pointer is not
   equal to [NULL](https://en.cppreference.com/w/c/types/NULL), the count of
   successfully created interrupt servers is stored in this object regardless
@@ -3026,11 +2865,9 @@ if the pointer is not equal to [NULL](https://en.cppreference.com/w/c/types/NULL
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The interrupt servers were already initialized.
 
 The directive uses {ref}`InterfaceRtemsTaskCreate`. If this directive fails,
@@ -3092,18 +2929,15 @@ rtems_status_code rtems_interrupt_server_create(
 ```
 
 `control`
-
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsInterruptServerControl` object. When the directive
   call was successful, the ownership of the object was transferred from the
   caller of the directive to the interrupt server management.
 
 `config`
-
 : This parameter is the interrupt server configuration.
 
 `server_index`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call was successful, the index of the created interrupt server
   will be stored in this object.
@@ -3113,7 +2947,6 @@ rtems_status_code rtems_interrupt_server_create(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 The directive uses {ref}`InterfaceRtemsTaskCreate`. If this directive fails,
@@ -3173,30 +3006,24 @@ rtems_status_code rtems_interrupt_server_handler_install(
 ```
 
 `server_index`
-
 : This parameter is the interrupt server index. The constant
   {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
   default interrupt server.
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `info`
-
 : This parameter is the descriptive information of the interrupt handler to
   install.
 
 `options`
-
 : This parameter is the interrupt handler install option set.
 
 `routine`
-
 : This parameter is the interrupt handler routine to install.
 
 `arg`
-
 : This parameter is the interrupt handler argument to install.
 
 ```{eval-rst}
@@ -3211,49 +3038,39 @@ context of the interrupt server task specified by `server_index`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : An option specified by `info` was not applicable.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The {c:macro}`RTEMS_INTERRUPT_UNIQUE` option was set in `info` and the
   interrupt vector was already occupied by a handler.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The {c:macro}`RTEMS_INTERRUPT_SHARED` option was set in `info` and the
   interrupt vector was already occupied by a unique handler.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The handler specified by `routine` was already installed for the
   interrupt vector specified by `vector` with an argument equal to the
   argument specified by `arg`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The {c:macro}`RTEMS_INTERRUPT_REPLACE` option was set in `info` and no
   handler to replace was installed.
 
@@ -3308,21 +3125,17 @@ rtems_status_code rtems_interrupt_server_handler_remove(
 ```
 
 `server_index`
-
 : This parameter is the interrupt server index. The constant
   {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
   default interrupt server.
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `routine`
-
 : This parameter is the interrupt handler routine to remove.
 
 `arg`
-
 : This parameter is the interrupt handler argument to remove.
 
 ```{eval-rst}
@@ -3330,21 +3143,17 @@ rtems_status_code rtems_interrupt_server_handler_remove(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There was no handler routine and argument pair installed specified by
   `routine` and `arg`.
 
@@ -3396,18 +3205,15 @@ rtems_status_code rtems_interrupt_server_set_affinity(
 ```
 
 `server_index`
-
 : This parameter is the interrupt server index. The constant
   {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
   default interrupt server.
 
 `affinity_size`
-
 : This parameter is the size of the processor set referenced by `affinity`
   in bytes.
 
 `affinity`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. The
   processor set defines the new processor affinity set of the interrupt
   server. A set bit in the processor set means that the corresponding
@@ -3415,7 +3221,6 @@ rtems_status_code rtems_interrupt_server_set_affinity(
   bit shall be cleared.
 
 `priority`
-
 : This parameter is the new {term}`real priority` for the interrupt server.
 
 ```{eval-rst}
@@ -3423,11 +3228,9 @@ rtems_status_code rtems_interrupt_server_set_affinity(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
@@ -3488,7 +3291,6 @@ rtems_status_code rtems_interrupt_server_delete( uint32_t server_index );
 ```
 
 `server_index`
-
 : This parameter is the index of the interrupt server to delete.
 
 ```{eval-rst}
@@ -3496,11 +3298,9 @@ rtems_status_code rtems_interrupt_server_delete( uint32_t server_index );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the server index specified by
   `server_index`.
 
@@ -3555,7 +3355,6 @@ rtems_status_code rtems_interrupt_server_suspend( uint32_t server_index );
 ```
 
 `server_index`
-
 : This parameter is the index of the interrupt server to suspend. The
   constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
   the default interrupt server.
@@ -3565,11 +3364,9 @@ rtems_status_code rtems_interrupt_server_suspend( uint32_t server_index );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
@@ -3620,7 +3417,6 @@ rtems_status_code rtems_interrupt_server_resume( uint32_t server_index );
 ```
 
 `server_index`
-
 : This parameter is the index of the interrupt server to resume. The
   constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
   the default interrupt server.
@@ -3630,11 +3426,9 @@ rtems_status_code rtems_interrupt_server_resume( uint32_t server_index );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
@@ -3691,17 +3485,14 @@ rtems_status_code rtems_interrupt_server_move(
 ```
 
 `source_server_index`
-
 : This parameter is the index of the source interrupt server. The constant
   {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
   default interrupt server.
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `destination_server_index`
-
 : This parameter is the index of the destination interrupt server. The
   constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
   the default interrupt server.
@@ -3711,21 +3502,17 @@ rtems_status_code rtems_interrupt_server_move(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `source_server_index`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `destination_server_index`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
@@ -3776,19 +3563,15 @@ rtems_status_code rtems_interrupt_server_handler_iterate(
 ```
 
 `server_index`
-
 : This parameter is the index of the interrupt server.
 
 `vector`
-
 : This parameter is the interrupt vector number.
 
 `routine`
-
 : This parameter is the visitor routine.
 
 `arg`
-
 : This parameter is the visitor argument.
 
 ```{eval-rst}
@@ -3805,16 +3588,13 @@ argument.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
@@ -3869,13 +3649,11 @@ rtems_status_code rtems_interrupt_server_entry_initialize(
 ```
 
 `server_index`
-
 : This parameter is the interrupt server index. The constant
   {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
   default interrupt server.
 
 `entry`
-
 : This parameter is the interrupt server entry to initialize.
 
 ```{eval-rst}
@@ -3883,11 +3661,9 @@ rtems_status_code rtems_interrupt_server_entry_initialize(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
@@ -3949,22 +3725,18 @@ void rtems_interrupt_server_action_prepend(
 ```
 
 `entry`
-
 : This parameter is the interrupt server entry to prepend the interrupt
   server action. It shall have been initialized via
   {ref}`InterfaceRtemsInterruptServerEntryInitialize`.
 
 `action`
-
 : This parameter is the interrupt server action to initialize and prepend to
   the list of actions of the entry.
 
 `routine`
-
 : This parameter is the interrupt handler routine to set in the action.
 
 `arg`
-
 : This parameter is the interrupt handler argument to set in the action.
 
 ```{eval-rst}
@@ -4031,7 +3803,6 @@ void rtems_interrupt_server_entry_destroy(
 ```
 
 `entry`
-
 : This parameter is the interrupt server entry to destroy.
 
 ```{eval-rst}
@@ -4086,7 +3857,6 @@ void rtems_interrupt_server_entry_submit(
 ```
 
 `entry`
-
 : This parameter is the interrupt server entry to submit.
 
 ```{eval-rst}
@@ -4163,11 +3933,9 @@ rtems_status_code rtems_interrupt_server_entry_move(
 ```
 
 `entry`
-
 : This parameter is the interrupt server entry to move.
 
 `server_index`
-
 : This parameter is the index of the destination interrupt server. The
   constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
   the default interrupt server.
@@ -4177,11 +3945,9 @@ rtems_status_code rtems_interrupt_server_entry_move(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
@@ -4246,21 +4012,17 @@ rtems_status_code rtems_interrupt_server_request_initialize(
 ```
 
 `server_index`
-
 : This parameter is the interrupt server index. The constant
   {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
   default interrupt server.
 
 `request`
-
 : This parameter is the interrupt server request to initialize.
 
 `routine`
-
 : This parameter is the interrupt handler routine for the request action.
 
 `arg`
-
 : This parameter is the interrupt handler argument for the request action.
 
 ```{eval-rst}
@@ -4268,11 +4030,9 @@ rtems_status_code rtems_interrupt_server_request_initialize(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no interrupt server associated with the index specified by
   `server_index`.
 
@@ -4329,11 +4089,9 @@ void rtems_interrupt_server_request_set_vector(
 ```
 
 `request`
-
 : This parameter is the interrupt server request to change.
 
 `vector`
-
 : This parameter is the interrupt vector number to be used by the request.
 
 ```{eval-rst}
@@ -4402,7 +4160,6 @@ void rtems_interrupt_server_request_destroy(
 ```
 
 `request`
-
 : This parameter is the interrupt server request to destroy.
 
 ```{eval-rst}
@@ -4456,7 +4213,6 @@ void rtems_interrupt_server_request_submit(
 ```
 
 `request`
-
 : This parameter is the interrupt server request to submit.
 
 ```{eval-rst}

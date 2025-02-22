@@ -33,9 +33,11 @@ paragraphs.
 (fig-regulator-input-sequence)=
 
 ```{figure} ../../images/c_user/regulator_input_sequence.png
-:alt: Regulator Application Input Source Usage
-:figclass: align-center
-:width: 90%
+---
+alt: Regulator Application Input Source Usage
+figclass: align-center
+width: 90%
+---
 ```
 
 As illustrated in the preceding sequence diagram, the Source usually

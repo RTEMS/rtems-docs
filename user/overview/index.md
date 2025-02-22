@@ -230,14 +230,12 @@ provides some aid to {ref}`build and deploy tool binaries <RSBDeployment>`.
 ```
 
 FOOTNOTE The goal is to use the
-
 : [BSD 2-Clause license](https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/LICENSE.md) for new code
   or code those copyright holder agreed to a license change, see [#3053](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/3053) for the details.
 
 FOOTNOTE See [#2832](https://gitlab.rtems.org/rtems/rtos/rtems/-/issues/2832).
 
 FOOTNOTE Thread-local storage requires some support by the tool chain and the
-
 : RTEMS architecture support, e.g. context-switch code. It is supported
   at least on ARM, AArch64, PowerPC, RISC-V, SPARC, MicroBlaze, Nios II,
   and m68k. Check the [RTEMS CPU Architecture Supplement](https://docs.rtems.org/docs/main/cpu-supplement.pdf) if it is

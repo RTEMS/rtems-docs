@@ -154,7 +154,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates the designator of the end marker of the linker set
   identified by `set`. The item at the end marker address is not a member
   of the linker set. The `set` parameter itself must be a valid C
@@ -178,7 +177,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro returns the size of the linker set identified by `set` in
   characters. The `set` parameter itself must be a valid C designator on
   which no macro expansion is performed. It uniquely identifies the linker
@@ -201,7 +199,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro returns the item count of the linker set identified by `set`.
   The `set` parameter itself must be a valid C designator on which no macro
   expansion is performed. It uniquely identifies the linker set.
@@ -223,7 +220,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro returns true if the linker set identified by `set` is empty,
   otherwise returns false. The `set` parameter itself must be a valid C
   designator on which no macro expansion is performed. It uniquely
@@ -259,7 +255,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a for loop statement which iterates through each item
   of a linker set identified by `set`. The `set` parameter itself must
   be a valid C designator on which no macro expansion is performed. It
@@ -284,7 +279,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates declarations for the begin and end markers of a
   read-only linker set identified by `set`. The `set` parameter itself
   must be a valid C designator on which no macro expansion is performed. It
@@ -309,7 +303,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates definitions for the begin and end markers of a
   read-only linker set identified by `set`. The `set` parameter itself
   must be a valid C designator on which no macro expansion is performed. It
@@ -334,7 +327,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a declaration of an item contained in the read-only
   linker set identified by `set`. For a description of the `set`,
   `type`, and `item` parameters see {ref}`RTEMS_LINKER_ROSET_ITEM`.
@@ -356,7 +348,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a declaration of an ordered item contained in the
   read-only linker set identified by `set`. For a description of the
   `set`, `type`, `item`, and `order` parameters see
@@ -379,7 +370,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a reference to an item contained in the read-only
   linker set identified by `set`. The `set` parameter itself must be a
   valid C designator on which no macro expansion is performed. It uniquely
@@ -406,7 +396,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a definition of an item contained in the read-only
   linker set identified by `set`. The `set` parameter itself must be a
   valid C designator on which no macro expansion is performed. It uniquely
@@ -493,7 +482,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro marks a declaration as a read-only linker set content. The
   linker set is identified by `set`. The `set` parameter itself must be
   a valid C designator on which no macro expansion is performed. It uniquely
@@ -517,7 +505,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates declarations for the begin and end markers of a
   read-write linker set identified by `set`. The `set` parameter itself
   must be a valid C designator on which no macro expansion is performed. It
@@ -542,7 +529,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates definitions for the begin and end markers of a
   read-write linker set identified by `set`. The `set` parameter itself
   must be a valid C designator on which no macro expansion is performed. It
@@ -567,7 +553,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a declaration of an item contained in the read-write
   linker set identified by `set`. For a description of the `set`,
   `type`, and `item` parameters see {ref}`RTEMS_LINKER_RWSET_ITEM`.
@@ -589,7 +574,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a declaration of an ordered item contained in the
   read-write linker set identified by `set`. For a description of the
   `set`, `type`, `item`, and `order` parameters see
@@ -612,7 +596,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a reference to an item contained in the read-write
   linker set identified by `set`. The `set` parameter itself must be a
   valid C designator on which no macro expansion is performed. It uniquely
@@ -639,7 +622,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro generates a definition of an item contained in the read-write
   linker set identified by `set`. The `set` parameter itself must be a
   valid C designator on which no macro expansion is performed. It uniquely
@@ -726,7 +708,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : This macro marks a declaration as a read-write linker set content. The
   linker set is identified by `set`. The `set` parameter itself must be
   a valid C designator on which no macro expansion is performed. It uniquely

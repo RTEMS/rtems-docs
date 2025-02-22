@@ -68,7 +68,6 @@ rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
 ```
 
 `time_of_day`
-
 : This parameter is the time of day to set the clock.
 
 ```{eval-rst}
@@ -76,15 +75,12 @@ rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
-
 : The time of day specified by `time_of_day` was invalid.
 
 ```{eval-rst}
@@ -162,7 +158,6 @@ rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
 ```
 
 `time_of_day`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTimeOfDay` object.
   When the directive call is successful, the time of day associated with the
   {term}`CLOCK_REALTIME` at some point during the directive call will be
@@ -173,15 +168,12 @@ rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The {term}`CLOCK_REALTIME` was not set. It can be set with
   {ref}`InterfaceRtemsClockSet`.
 
@@ -224,7 +216,6 @@ rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
 ```
 
 `time_of_day`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. When the directive call is successful, the seconds and
   microseconds elapsed since the {term}`Unix epoch` and the
@@ -236,15 +227,12 @@ rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The {term}`CLOCK_REALTIME` was not set. It can be set with
   {ref}`InterfaceRtemsClockSet`.
 
@@ -287,7 +275,6 @@ void rtems_clock_get_realtime( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
   elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point during the directive call will be
@@ -345,7 +332,6 @@ void rtems_clock_get_realtime_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a `struct bintime` object. The time
   elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point during the directive call will be
@@ -403,7 +389,6 @@ void rtems_clock_get_realtime_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point during the directive call will be
@@ -461,7 +446,6 @@ void rtems_clock_get_realtime_coarse( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
   elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point close to the directive call will
@@ -521,7 +505,6 @@ void rtems_clock_get_realtime_coarse_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a `struct bintime` object. The time
   elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point close to the directive call will
@@ -581,7 +564,6 @@ void rtems_clock_get_realtime_coarse_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point close to the directive call will
@@ -641,7 +623,6 @@ void rtems_clock_get_monotonic( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
   elapsed since some fixed time point in the past measured using the
   {term}`CLOCK_MONOTONIC` at some time point during the directive call will
@@ -702,7 +683,6 @@ void rtems_clock_get_monotonic_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a `struct bintime` object. The time
   elapsed since some fixed time point in the past measured using the
   {term}`CLOCK_MONOTONIC` at some time point during the directive call will
@@ -816,7 +796,6 @@ void rtems_clock_get_monotonic_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since some fixed time point in the past measured
   using the {term}`CLOCK_MONOTONIC` at some time point during the directive
@@ -878,7 +857,6 @@ void rtems_clock_get_monotonic_coarse( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
   elapsed since some fixed time point in the past measured using the
   {term}`CLOCK_MONOTONIC` at some time point close to the directive call will
@@ -938,7 +916,6 @@ void rtems_clock_get_monotonic_coarse_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a `struct bintime` object. The time
   elapsed since some fixed time point in the past measured using the
   {term}`CLOCK_MONOTONIC` at some time point close to the directive call will
@@ -999,7 +976,6 @@ void rtems_clock_get_monotonic_coarse_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since some fixed time point in the past measured
   using the {term}`CLOCK_MONOTONIC` at some time point close to the directive
@@ -1059,7 +1035,6 @@ void rtems_clock_get_boot_time( struct timespec *boot_time );
 ```
 
 `boot_time`
-
 : This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
   elapsed since the {term}`Unix epoch` at some time point during system
   initialization call will be stored in this object. Calling the directive
@@ -1113,7 +1088,6 @@ void rtems_clock_get_boot_time_bintime( struct bintime *boot_time );
 ```
 
 `boot_time`
-
 : This parameter is the pointer to a `struct bintime` object. The time
   elapsed since the {term}`Unix epoch` at some time point during system
   initialization call will be stored in this object. Calling the directive
@@ -1167,7 +1141,6 @@ void rtems_clock_get_boot_time_timeval( struct timeval *boot_time );
 ```
 
 `boot_time`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since the {term}`Unix epoch` at some time point
   during system initialization call will be stored in this object. Calling
@@ -1223,7 +1196,6 @@ rtems_status_code rtems_clock_get_seconds_since_epoch(
 ```
 
 `seconds_since_rtems_epoch`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsInterval` object.
   When the directive call is successful, the seconds elapsed since the
   {term}`RTEMS epoch` and the {term}`CLOCK_REALTIME` at some point during the
@@ -1234,15 +1206,12 @@ rtems_status_code rtems_clock_get_seconds_since_epoch(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `seconds_since_rtems_epoch` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The {term}`CLOCK_REALTIME` was not set. It can be set with
   {ref}`InterfaceRtemsClockSet`.
 
@@ -1382,7 +1351,6 @@ rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
 ```
 
 `uptime`
-
 : This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. When the
   directive call is successful, the seconds and nanoseconds elapsed since
   some time point during the system initialization and some point during the
@@ -1393,11 +1361,9 @@ rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `uptime` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -1439,7 +1405,6 @@ void rtems_clock_get_uptime_timeval( struct timeval *uptime );
 ```
 
 `uptime`
-
 : This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The seconds and microseconds elapsed since some time point during
   the system initialization and some point during the directive call using
@@ -1569,7 +1534,6 @@ rtems_interval rtems_clock_tick_later( rtems_interval delta );
 ```
 
 `delta`
-
 : This parameter is the delta value in clock ticks.
 
 ```{eval-rst}
@@ -1618,7 +1582,6 @@ rtems_interval rtems_clock_tick_later_usec( rtems_interval delta_in_usec );
 ```
 
 `delta_in_usec`
-
 : This parameter is the delta value in microseconds.
 
 ```{eval-rst}
@@ -1666,7 +1629,6 @@ bool rtems_clock_tick_before( rtems_interval ticks );
 ```
 
 `ticks`
-
 : This parameter is the ticks value to check.
 
 ```{eval-rst}
@@ -1683,8 +1645,9 @@ time in ticks, otherwise returns false.
 This directive can be used to write busy loops with a timeout.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 status busy( void )
 {
   rtems_interval timeout;

@@ -28,30 +28,24 @@ configuration INI file. The waf defaults can be used to inspect the
 values.
 
 `CONSOLE_USE_INTERRUPTS`
-
 : Use interrupt driven mode for console devices (enabled by default).
 
 `GPU_CORE_CLOCK_RATE`
-
 : The GPU processor core frequency in Hz (default is 500000000), The value of
   this option should be the same as the value of option `core_freq` in
   `config.txt`. [See the Raspberry Pi documentation for details](https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking).
 
 `BSP_SPI_USE_INTERRUPTS`
-
 : Use interrupt mode in the SPI driver (enabled by default).
 
 `BSP_CLOCK_USE_SYSTEMTIMER`
-
 : Use the `System Timer` in the clock driver (disable by default).
 
 `BSP_CONSOLE_PORT`
-
 : Default UART port for the console device (default is UART0). The optional
   ports are `UART0`, `UART2`, `UART3`, `UART4`, `UART5`.
 
 `BSP_PL011_CLOCK_FREQ`
-
 : PL011 UART clock frequency in Hz (default is 48000000). The value of
   this option should be the same as the value of option `init_uart_clock`
   in `config.txt`. [See the Raspberry Pi documentation for details](https://www.raspberrypi.com/documentation/computers/legacy_config_txt.html#init_uart_clock).

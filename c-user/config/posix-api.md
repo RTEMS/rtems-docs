@@ -132,7 +132,7 @@ This configuration option is an integer define.
 ```
 
 The default value is
-{ref}`CONFIGURE_MAXIMUM_POSIX_KEYS` *
+{ref}`CONFIGURE_MAXIMUM_POSIX_KEYS` \*
 ( {ref}`CONFIGURE_MAXIMUM_TASKS` +
 {ref}`CONFIGURE_MAXIMUM_POSIX_THREADS` ).
 

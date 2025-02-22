@@ -40,44 +40,35 @@ including SSE3 instructions.
 ### Build Configuration Options
 
 `BSP_PRESS_KEY_FOR_RESET`
-
 : If defined to a non-zero value, then print a message and wait until
   any key is pressed before resetting board when application
   terminates (disabled by default).
 
 `BSP_RESET_BOARD_AT_EXIT`
-
 : If defined to a non-zero value, then reset the board when the
   application terminates (enabled by default).
 
 `BSP_PRINT_EXCEPTION_CONTEXT`
-
 : If defined to a non-zero value, then print the exception context
   when an unexpected exception occurs (enabled by default).
 
 `BSP_VERBOSE_FATAL_EXTENSION`
-
 : If defined to a non-zero value, then print more information in case
   of a fatal error (enabled by default).
 
 `BSP_ENABLE_VGA`
-
 : Enables VGA console driver (enabled by default).
 
 `BSP_ENABLE_COM1_COM4`
-
 : Enables support of COM1 thorough COM4 (enabled by default).
 
 `USE_COM1_AS_CONSOLE`
-
 : Enforces usage of COM1 as a console device (disabled by default).
 
 `BSP_ENABLE_IDE`
-
 : Enables legacy IDE driver (enabled by default).
 
 `IDE_USE_PRIMARY_INTERFACE`
-
 : Allows RTEMS to use storage drive(s) connected to the primary IDE
   interface. Disable if (i) the target hardware does not have primary
   IDE interface or (ii) it does not have any drive attached to the
@@ -85,7 +76,6 @@ including SSE3 instructions.
   attached to the primary IDE interface at all (enabled by default).
 
 `IDE_USE_SECONDARY_INTERFACE`
-
 : Allows RTEMS to use storage drive(s) connected to the secondary IDE
   interface. Enable if (i) the target hardware does have secondary IDE
   interface and (ii) there is at least one drive attached to the
@@ -93,44 +83,36 @@ including SSE3 instructions.
   attached to the secondary IDE interface (disabled by default).
 
 `BSP_VIDEO_80x50`
-
 : Sets the VGA display to 80x50 character mode (disabled by default).
 
 `CLOCK_DRIVER_USE_TSC`
-
 : Enforces clock driver to use TSC register available on Pentium and
   higher class CPUs. If disabled and `CLOCK_DRIVER_USE_8243` is
   disabled too, then BSP will choose clock driver mechanism itself
   during the runtime (disabled by default).
 
 `CLOCK_DRIVER_USE_8254`
-
 : Enforces clock driver to use 8254 chip. If disabled and
   `CLOCK_DRIVER_USE_TSC` is disabled too, then BSP will choose clock
   driver mechanism itself during the runtime (disabled by default).
 
 `NUM_APP_DRV_GDT_DESCRIPTORS`
-
 : Defines how many descriptors in GDT may be allocated for the
   application or driver usage.
 
 `USE_CIRRUS_GD5446`
-
 : Enables usage of Cirrus GD5446 graphic card for RTEMS frame-buffer
   (disabled by default).
 
 `USE_VGA`
-
 : Enables usage of generic VGA graphic card for RTEMS frame-buffer
   (disabled by default).
 
 `USE_VBE_RM`
-
 : Enables usage of graphic card implementing VESA BIOS Extensions for
   RTEMS frame-buffer (enabled by default).
 
 `BSP_GDB_STUB`
-
 : Enables GDB support for debugging over serial port (enabled by
   default).
 

@@ -39,18 +39,16 @@ sequence, related constants, usage, and status codes.
 
 ```
 
+\: #include \<devctl.h>
+int posix_devctl(
 
+> int fd,
+> int dcmd,
+> void restrict dev_data_ptr,
+> size_t nbyte,
+> int restrict dev_info_ptr
 
-: #include \<devctl.h>
-  int posix_devctl(
-
-  > int fd,
-  > int dcmd,
-  > void restrict dev_data_ptr,
-  > size_t nbyte,
-  > int restrict dev_info_ptr
-
-  );
+);
 
 \`
 **STATUS CODES:**

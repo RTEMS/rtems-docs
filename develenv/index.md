@@ -14,8 +14,9 @@
 ```
 
 ```{toctree}
-:maxdepth: 5
-
+---
+maxdepth: 5
+---
 introduction
 directory
 sample

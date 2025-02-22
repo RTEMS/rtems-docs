@@ -12,14 +12,12 @@ RTEMS executive is tested.
 RTEMS-TESTER takes the following arguments to produce coverage reports:
 
 `--coverage :`
-
 : When the coverage option is enabled the tester produces coverage reports for
   all the symbols in cpukit. To generate a coverage report for a specific
   symbol-set ( e.g.: score) the symbol-set is passed as an argument to the
   option, e.g.: --coverage=score.
 
 `--no-clean :`
-
 : Tells the script not to delete the .cov trace files generated while running
   the coverage. These trace files are used for debugging purposes and will not
   be needed for a normal user.

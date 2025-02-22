@@ -106,30 +106,25 @@ arm-none-eabi-gcc. Below mentioned are some of the reasons for using
 the RTEMS cross-compiler.
 
 > Correct configuration of Newlib
->
 > : Newlib is a C standard library implementation intended for use on embedded
 >   systems. Most of the POSIX and libc support for RTEMS is derived from
 >   Newlib. The RTEMS cross-compiler configures Newlib correctly for RTEMS.
 >
 > Threading in GCC support libraries
->
 > : Several threading packages in GCC such as Go threads (libgo), OpenMP
 >   (libgomp), and OpenACC need to be customized according to RTEMS. This is
 >   done by the RTEMS specific cross-compiler.
 >
 > Provide preprocessor define \_\_rtems\_\_
->
 > : The `__rtems__` preprocessor define is used to provide conditional code
 >   compilation in source files that are shared with other projects e.g. in
 >   Newlib or imported code from FreeBSD.
 >
 > Multilib variants to match the BSP
->
 > : RTEMS configures GCC to create separate runtime libraries for each
 >   supported instruction set, floating point unit, vector unit, word size
 >   (e.g. 32-bit and 64-bit), endianness, ABI, processor errata workarounds,
->   and so on in the architecture. These libraries are termed as {ref}`Multilib
->   <TargetArchitectures>` variants. Multilib variants to match the BSP are set
+>   and so on in the architecture. These libraries are termed as {ref}`Multilib <TargetArchitectures>` variants. Multilib variants to match the BSP are set
 >   by selecting a specific set of machine options using the RTEMS
 >   cross-compiler.
 
@@ -156,15 +151,12 @@ create your project specific directories under
 {file}`/bd/projects/box-sorter`. The top level directories would be:
 
 {file}`/bd/projects`
-
 : Project specific development trees.
 
 {file}`/bd/projects/box-sorter`
-
 : Box Sorter project sandbox.
 
 {file}`/bd/projects/box-sorter/rtems/@rtems-ver-majminrev@`
-
 : Project prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers, tools and
   installed Board Support Package (BSP).
 
@@ -175,24 +167,19 @@ disk and each project can have a specific and possibly customised version of
 RTEMS. The top level directories would be:
 
 {file}`/bd/rtems`
-
 : The top path to production tools.
 
 {file}`/bd/rtems/@rtems-ver-majminrev@`
-
 : Production prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers and
   tools.
 
 {file}`/bd/projects`
-
 : Project specific development trees.
 
 {file}`/bd/projects/box-sorter`
-
 : Box Sorter project sandbox.
 
 {file}`/bd/projects/box-sorter/rtems`
-
 : Box Sorter project's custom RTEMS kernel source and installed BSP.
 
 A further varation if there is an RTEMS kernel you want to share between
@@ -200,29 +187,23 @@ projects is it to move this to a top level and share. In this case you will end
 up with:
 
 {file}`/bd/rtems`
-
 : The top path to production tools and kernels.
 
 {file}`/bd/rtems/@rtems-ver-majminrev@`
-
 : Production prefix for RTEMS @rtems-ver-majminrev@.
 
 {file}`/bd/rtems/@rtems-ver-majminrev@/tools`
-
 : Production prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers and
   tools.
 
 {file}`/bd/rtems/@rtems-ver-majminrev@/bsps`
-
 : Production prefix for RTEMS @rtems-ver-majminrev@ Board Support Packages
   (BSPs).
 
 {file}`/bd/projects`
-
 : Project specific development trees.
 
 {file}`/bd/projects/box-sorter`
-
 : Box Sorter project sandbox.
 
 Finally you can have a single set of *production* tools and RTEMS BSPs on the
@@ -230,20 +211,16 @@ disk under {file}`/bd/rtems` you can share between your projects. The top level
 directories would be:
 
 {file}`/bd/rtems`
-
 : The top path to production tools and kernels.
 
 {file}`/bd/rtems/@rtems-ver-majminrev@`
-
 : Production prefix for RTEMS @rtems-ver-majminrev@ compiler, debuggers, tools
   and Board Support Packages (BSPs).
 
 {file}`/bd/projects`
-
 : Project specific development trees.
 
 {file}`/bd/projects/box-sorter`
-
 : Box Sorter project sandbox.
 
 The project sandoxing approach allows you move a specific production part into

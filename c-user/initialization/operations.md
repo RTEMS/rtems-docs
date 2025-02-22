@@ -30,77 +30,63 @@ on the requested feature set of the application. The initialization steps are
 execute in the order presented here.
 
 RTEMS_SYSINIT_RECORD
-
 : Initialization of the event recording is the first initialization step.
   This allows to record the further system initialization. This step is
   optional and depends on the {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS`
   configuration option.
 
 RTEMS_SYSINIT_BSP_EARLY
-
 : The Board Support Package may perform an early platform initialization in
   this step. This step is optional.
 
 RTEMS_SYSINIT_MEMORY
-
 : The Board Support Package should initialize everything so that calls to
   {c:func}`_Memory_Get()` can be made after this step. This step is optional.
 
 RTEMS_SYSINIT_DIRTY_MEMORY
-
 : The free memory is dirtied in this step. This step is optional and depends
   on the {c:macro}`BSP_DIRTY_MEMORY` BSP option.
 
 RTEMS_SYSINIT_ISR_STACK
-
 : The stack checker initializes the ISR stacks in this step. This step is
   optional and depends on the {ref}`CONFIGURE_STACK_CHECKER_ENABLED`
   configuration option.
 
 RTEMS_SYSINIT_PER_CPU_DATA
-
 : The per-CPU data is initialized in this step. This step is mandatory.
 
 RTEMS_SYSINIT_SBRK
-
 : The Board Support Package may initialize the {c:func}`sbrk()` support in
   this step. This step is optional.
 
 RTEMS_SYSINIT_WORKSPACE
-
 : The workspace is initialized in this step. This step is optional and
   depends on the application configuration.
 
 RTEMS_SYSINIT_MALLOC
-
 : The C program heap is initialized in this step. This step is optional and
   depends on the application configuration.
 
 RTEMS_SYSINIT_BSP_START
-
 : The Board Support Package should perform a general platform initialization
   in this step (e.g. interrupt controller initialization). This step is
   mandatory.
 
 RTEMS_SYSINIT_CPU_COUNTER
-
 : Initialization of the CPU counter hardware and support functions. The CPU
   counter is initialized early to allow its use in the tracing and profiling
   of the system initialization sequence. This step is optional and depends
   on the application configuration.
 
 RTEMS_SYSINIT_INITIAL_EXTENSIONS
-
 : Registers the initial extensions. This step is optional and depends on the
   application configuration.
 
 RTEMS_SYSINIT_MP_EARLY
-
 : In MPCI configurations, an early MPCI initialization is performed in this
   step. This step is mandatory in MPCI configurations.
 
 RTEMS_SYSINIT_DATA_STRUCTURES
-
 : This directive is called when the Board Support Package has completed its
   basic initialization and allows RTEMS to initialize the application
   environment based upon the information in the Configuration Table, User
@@ -109,179 +95,145 @@ RTEMS_SYSINIT_DATA_STRUCTURES
   Interface (MPCI) Table.
 
 RTEMS_SYSINIT_MP
-
 : In MPCI configurations, a general MPCI initialization is performed in this
   step. This step is mandatory in MPCI configurations.
 
 RTEMS_SYSINIT_USER_EXTENSIONS
-
 : Initialization of the User Extensions object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_TASKS
-
 : Initialization of the Classic Tasks object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_TASKS_MP
-
 : In MPCI configurations, the Classic Tasks MPCI support is initialized in
   this step. This step is optional and depends on the application
   configuration.
 
 RTEMS_SYSINIT_CLASSIC_TIMER
-
 : Initialization of the Classic Timer object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_SIGNAL
-
 : Initialization of the Classic Signal support. This step is optional and
   depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_SIGNAL_MP
-
 : In MPCI configurations, the Classic Signal MPCI support is initialized in
   this step. This step is optional and depends on the application
   configuration.
 
 RTEMS_SYSINIT_CLASSIC_EVENT
-
 : Initialization of the Classic Event support. This step is optional and
   depends on the application configuration. This step is only used on MPCI
   configurations.
 
 RTEMS_SYSINIT_CLASSIC_EVENT_MP
-
 : In MPCI configurations, the Classic Event MPCI support is initialized in
   this step. This step is optional and depends on the application
   configuration.
 
 RTEMS_SYSINIT_CLASSIC_MESSAGE_QUEUE
-
 : Initialization of the Classic Message Queue object class. This step is
   optional and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_SEMAPHORE
-
 : Initialization of the Classic Semaphore object class. This step is
   optional and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_SEMAPHORE_MP
-
 : In MPCI configurations, the Classic Semaphore MPCI support is initialized
   in this step. This step is optional and depends on the application
   configuration.
 
 RTEMS_SYSINIT_CLASSIC_PARTITION
-
 : Initialization of the Classic Partition object class. This step is
   optional and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_PARTITION_MP
-
 : In MPCI configurations, the Classic Partition MPCI support is initialized
   in this step. This step is optional and depends on the application
   configuration.
 
 RTEMS_SYSINIT_CLASSIC_REGION
-
 : Initialization of the Classic Region object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_DUAL_PORTED_MEMORY
-
 : Initialization of the Classic Dual-Ported Memory object class. This step
   is optional and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_RATE_MONOTONIC
-
 : Initialization of the Classic Rate-Monotonic object class. This step is
   optional and depends on the application configuration.
 
 RTEMS_SYSINIT_CLASSIC_BARRIER
-
 : Initialization of the Classic Barrier object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_SIGNALS
-
 : Initialization of the POSIX Signals support. This step is optional and
   depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_THREADS
-
 : Initialization of the POSIX Threads object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_MESSAGE_QUEUE
-
 : Initialization of the POSIX Message Queue object class. This step is
   optional and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_SEMAPHORE
-
 : Initialization of the POSIX Semaphore object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_TIMER
-
 : Initialization of the POSIX Timer object class. This step is optional and
   depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_SHM
-
 : Initialization of the POSIX Shared Memory object class. This step is
   optional and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_KEYS
-
 : Initialization of the POSIX Keys object class. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_CLEANUP
-
 : Initialization of the POSIX Cleanup support. This step is optional and
   depends on the application configuration.
 
 RTEMS_SYSINIT_IDLE_THREADS
-
 : Initialization of idle threads. This step is mandatory.
 
 RTEMS_SYSINIT_LIBIO
-
 : Initialization of IO library. This step is optional and depends on the
   application configuration.
 
 RTEMS_SYSINIT_ROOT_FILESYSTEM
-
 : Initialization of the root filesystem. This step is optional and depends
   on the application configuration.
 
 RTEMS_SYSINIT_DRVMGR
-
 : Driver manager initialization. This step is optional and depends on the
   application configuration. Only available if the driver manager is
   enabled.
 
 RTEMS_SYSINIT_MP_SERVER
-
 : In MPCI configurations, the MPCI server is initialized in this step. This
   step is mandatory in MPCI configurations.
 
 RTEMS_SYSINIT_BSP_PRE_DRIVERS
-
 : Initialization step performed right before device drivers are initialized.
   This step is mandatory.
 
 RTEMS_SYSINIT_DRVMGR_LEVEL_1
-
 : Driver manager level 1 initialization. This step is optional and depends
   on the application configuration. Only available if the driver manager is
   enabled.
 
 RTEMS_SYSINIT_DEVICE_DRIVERS
-
 : This step initializes all statically configured device drivers and performs
   all RTEMS initialization which requires device drivers to be initialized.
   This step is mandatory. In a multiprocessor configuration, this service
@@ -289,40 +241,33 @@ RTEMS_SYSINIT_DEVICE_DRIVERS
   synchronize with the other nodes in the system.
 
 RTEMS_SYSINIT_DRVMGR_LEVEL_2
-
 : Driver manager level 2 initialization. This step is optional and depends
   on the application configuration. Only available if the driver manager is
   enabled.
 
 RTEMS_SYSINIT_DRVMGR_LEVEL_3
-
 : Driver manager level 3 initialization. This step is optional and depends
   on the application configuration. Only available if the driver manager is
   enabled.
 
 RTEMS_SYSINIT_DRVMGR_LEVEL_4
-
 : Driver manager level 4 initialization. This step is optional and depends
   on the application configuration. Only available if the driver manager is
   enabled.
 
 RTEMS_SYSINIT_MP_FINALIZE
-
 : Finalize MPCI initialization. This step is mandatory on MPCI
   configurations.
 
 RTEMS_SYSINIT_CLASSIC_USER_TASKS
-
 : Creates and starts the Classic initialization tasks. This step is optional
   and depends on the application configuration.
 
 RTEMS_SYSINIT_POSIX_USER_THREADS
-
 : Creates POSIX initialization threads. This step is optional and depends on
   the application configuration.
 
 RTEMS_SYSINIT_STD_FILE_DESCRIPTORS
-
 : Open the standard input, output and error file descriptors. This step is
   optional and depends on the application configuration.
 

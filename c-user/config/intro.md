@@ -152,8 +152,7 @@ of these are as follows:
 - The most surprising configuration parameter in this example is the use of
   {ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`. Message buffer memory is allocated
   from the RTEMS Workspace and must be accounted for. In this example, the
-  single message queue will have up to twenty (20) messages of type `struct
-  USER_MESSAGE`.
+  single message queue will have up to twenty (20) messages of type `struct USER_MESSAGE`.
 - The {ref}`CONFIGURE_INIT` constant must be defined in order to make
   `<rtems/confdefs.h>` instantiate the configuration data structures. This
   can only be defined in one source file per application that includes
@@ -177,8 +176,7 @@ things, the application implicitly used the following defaults:
 
 In real-time embedded systems the RAM is normally a limited, critical resource
 and dynamic allocation is avoided as much as possible to ensure predictable,
-deterministic execution times. For such cases, see {ref}`Sizing the RTEMS
-Workspace` for an overview of how to tune the size of the workspace.
+deterministic execution times. For such cases, see {ref}`Sizing the RTEMS Workspace` for an overview of how to tune the size of the workspace.
 Frequently when users are porting software to RTEMS the precise resource
 requirements of the software is unknown. In these situations users do not need
 to control the size of the workspace very tightly because they just want to get
@@ -218,8 +216,7 @@ The following object classes can *not* be configured in unlimited mode:
 ```
 
 Due to the memory requirements of unlimited objects it is strongly recommended
-to use them only in combination with the unified work areas. See {ref}`Separate
-or Unified Work Areas` for more information on unified work areas.
+to use them only in combination with the unified work areas. See {ref}`Separate or Unified Work Areas` for more information on unified work areas.
 
 The following example demonstrates how the two simple configuration defines for
 unlimited objects and unified works areas can replace many seperate

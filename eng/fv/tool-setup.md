@@ -97,11 +97,13 @@ This template should be copied/renamed to `testbuilder.yml`
 and each entry updated as follows:
 
 - spin2test:
+
   : This should be the absolute path to `spin2test.py`
     in the Promela sources directory.
 
     `/.../formal/promela/src/spin2test.py`
 - rtems:
+
   : This should be the absolute path to your RTEMS source directory,
     with the terminating `/`.
     From `rtems-central` this would be:
@@ -113,6 +115,7 @@ and each entry updated as follows:
 
     We refer to this path below as `<rtems>`.
 - rsb:
+
   : This should be the absolute path
     to your RTEMS source-builder binaries directory,
     with the terminating `/`.
@@ -120,6 +123,7 @@ and each entry updated as follows:
 
     `/.../rtems-central/modules/rsb/6/bin/`
 - simulator:
+
   : This should be the absolute path to the RTEMS Tester
     (See Host Tools in the RTEMS User Manual)
 
@@ -127,19 +131,23 @@ and each entry updated as follows:
 
     `/.../rtems-central/modules/rsb/6/bin/sparc-rtems6-sis`
 - testsuite:
+
   : This is the name for the testsuite :
 
     Default value: `model-0`
 - testyamldir:
+
   : This should be the absolute path to where validation tests are *specified*:
 
     `<rtems>/spec/build/testsuites/validation/`
 - testcode:
+
   : This should be the absolute path to where validation test sources
     are found:
 
     `<rtems>/testsuites/validation/`
 - testexedir:
+
   : This should be the absolute path to where
     the model-based validation test executable
     will be found:
@@ -148,6 +156,7 @@ and each entry updated as follows:
 
     This will contain `ts-<testsuite>.exe` (e.g. `ts-model-0.exe`)
 - simulatorargs:
+
   : These are the command line arguments for the RTEMS Tester.
     It defaults at present to those for the `sis` simulator.
 
@@ -160,6 +169,7 @@ and each entry updated as follows:
 
     Default: `-leon3 -r s -m 2`
 - spinallscenarios:
+
   : These are command line arguments for SPIN,
     that ensure that all counter-examples are generated.
 
@@ -211,43 +221,34 @@ these commands require the model-name as a second argument:
 The commands provided are:
 
 `clean <model>`
-
 : Removes generated files.
 
 `spin <model>`
-
 : Runs SPIN to find all scenarios. The scenarios are found in numbered files
   called `<model>N.spn`.
 
 `gentests <model>`
-
 : Convert SPIN scenarios to test sources. Each `<model>N.spn` produces a numbered
   test source file.
 
 `copy <model>`
-
 : Copies the generated test files to the relevant test source directory, and
   updates the relevant test configuration files.
 
 `archive <model>`
-
 : Copies generated spn, trail, source, and test log files to an archive
   sub-directory of the model directory.
 
 `compile`
-
 : Rebuilds the test executable.
 
 `run`
-
 : Runs tests in a simulator.
 
 `all <model>`
-
 : Does clean, spin, gentests, copy, compile, and run.
 
 `zero`
-
 : Removes all generated test filenames from the test configuration files, but
   does NOT remove the test sources from the test source directory.
 

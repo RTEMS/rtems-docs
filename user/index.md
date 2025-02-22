@@ -39,8 +39,9 @@
 ```
 
 ```{toctree}
-:maxdepth: 5
-
+---
+maxdepth: 5
+---
 overview/index
 start/index
 support/index

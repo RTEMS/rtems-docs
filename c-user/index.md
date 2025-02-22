@@ -24,10 +24,10 @@
 ```{include} ../common/header.md
 ```
 
-
 ```{toctree}
-:maxdepth: 5
-
+---
+maxdepth: 5
+---
 preface
 overview
 key_concepts

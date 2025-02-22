@@ -99,9 +99,11 @@ to <https://git.rtems.org/@USER@/> if you need. For example, `joel`'s personal
 repos appear at <https://git.rtems.org/joel/>.
 
 ```{figure} ../images/eng/Git-personalrepo.png
-:align: center
-:alt: Git Personal Repositories
-:width: 50%
+---
+align: center
+alt: Git Personal Repositories
+width: 50%
+---
 ```
 
 ### Check your setup

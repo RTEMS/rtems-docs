@@ -294,18 +294,15 @@ via `#include <rtems/score/tls.h>` which implement Variants I and II
 according to {cite}`Drepper:2013:TLS`.
 
 `_TLS_TCB_at_area_begin_initialize()`
-
 : Uses Variant I, TLS offsets emitted by linker takes the TCB into account.
   For a reference implementation see {file}`cpukit/score/cpu/arm/cpu.c`.
 
 `_TLS_TCB_before_TLS_block_initialize()`
-
 : Uses Variant I, TLS offsets emitted by linker neglects the TCB. For a
   reference implementation see
   {file}`c/src/lib/libcpu/powerpc/new-exceptions/cpu.c`.
 
 `_TLS_TCB_after_TLS_block_initialize()`
-
 : Uses Variant II. For a reference implementation see
   {file}`cpukit/score/cpu/sparc/cpu.c`.
 
@@ -358,8 +355,7 @@ option `--enable-profiling` (in this case the pre-processor symbol
 `RTEMS_PROFILING` is defined) the CPU port may provide data for the interrupt
 entry and exit times of the outer-most interrupt. The CPU port can feed
 interrupt entry and exit times with the
-`_Profiling_Outer_most_interrupt_entry_and_exit()` function (`#include
-<rtems/score/profiling.h>`). For an example please have a look at
+`_Profiling_Outer_most_interrupt_entry_and_exit()` function (`#include <rtems/score/profiling.h>`). For an example please have a look at
 {file}`cpukit/score/cpu/arm/arm_exc_interrupt.S`.
 
 ## Board Support Packages

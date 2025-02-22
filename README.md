@@ -18,9 +18,9 @@ format.
 
 The RTEMS Documentation output formats are:
 
-* HTML        - Multi-page HTML with files in a single directory per manual.
-* PDF         - Single PDF per manual.
-* Single HTML - Single HTML, one file per manual.
+- HTML - Multi-page HTML with files in a single directory per manual.
+- PDF - Single PDF per manual.
+- Single HTML - Single HTML, one file per manual.
 
 The PDF format is created using Latex and that uses texlive packages. This
 exposes us to the complex world of Latex however the quality of the documents
@@ -92,11 +92,11 @@ online resources can be used. Save the source and the generated PNG file in the
 same directory under `images`.
 
 > **Note:**
-Please consider using PlantUML and Ditaa before other tools because we
-can generate the images from source automatically and it gives the
-documentation a similar look and feel. Other options may be considered
-if the image cannot be easily created by PlantUML or Ditaa but please
-ask before starting down that path because it may not be accepted.
+> Please consider using PlantUML and Ditaa before other tools because we
+> can generate the images from source automatically and it gives the
+> documentation a similar look and feel. Other options may be considered
+> if the image cannot be easily created by PlantUML or Ditaa but please
+> ask before starting down that path because it may not be accepted.
 
 Image editing tools tend to have a specific look and feel and this
 characterizes the images they create. Altering an image often means
@@ -125,7 +125,7 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 ### Versions
 
 | Package                         | Version |
-| ---                             | ---     |
+| ------------------------------- | ------- |
 | `Sphinx`                        | 7.2.6   |
 | `sphinx-book-theme`             | 1.1.3   |
 | `sphinxcontrib-applehelp`       | 1.0.7   |
@@ -137,7 +137,6 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 | `sphinxcontrib-qthelp`          | 1.0.6   |
 | `sphinxcontrib-serializinghtml` | 1.1.9   |
 | `sphinx-copybutton`             | 0.5.2   |
-
 
 ### Python Virtual Environment
 
@@ -213,7 +212,7 @@ If so, then upgrade pip into your personal area.
 $ pip install --upgrade --user pip
 ```
 
-The personal area for these tools is ${HOME}/.local/bin. It should
+The personal area for these tools is \$\{HOME}/.local/bin. It should
 be PREPENDED to your path. On a 32-bit install of CentOS, RHEL, or
 Fedora, these were the PATH modifications to use the local install of
 Texlive and sphinx:
@@ -242,9 +241,9 @@ Note: you cannot use the MSYS2 versions of Python because the pip libraries
 that contain C or C++ code are built with MSVC libraries and cannot integrate
 with the MSYS2 built python.
 
-The following assumes Python is installed to a default path of C:\Python313.
+The following assumes Python is installed to a default path of C:\\Python313.
 The actual path will be set during the install, possibly to a default like
-C:\Users\username\Local Settings\Application Data\Programs\Python\Python313.
+C:\\Users\\username\\Local Settings\\Application Data\\Programs\\Python\\Python313.
 You should avoid having paths with space characters in the install path, as
 they will cause problems in the shell.
 
@@ -254,15 +253,18 @@ scripts:
 ```bash
 $ export PATH=/c/Python313/Scripts:/c/Python313:$PATH
 ```
+
 You should not add this to your default `PATH` (i.e., in your `.bashrc`),
 because you need other versions of Python to be found for building RTEMS.
 You can put this in a file e.g., `pyenv.sh` and then source it into your
 environment:
+
 ```bash
 $ . pyenv.sh
 ```
 
 Upgrade pip:
+
 ```bash
 $ python -m pip install --upgrade pip
 ```
@@ -286,21 +288,23 @@ $ pip install sphinxcontrib-jquery
 $ pip install sphinx-book-theme
 $ pip install sphinx-copybutton
 ```
+
 You may want to update pip in your virtual environment as well.
 
 Windows does not provide `python3` so you will need to create a wrapper in the
 virtual environment. A simple workaround is:
+
 ```bash
 echo '#!/usr/bin/env bash' > ./sphinx/Scripts/python3
 echo 'python $*' >> ./sphinx/Scripts/python3
 ```
+
 In Windows10 you may need to replace `python` with `py -3`.
 
 Continue from [Building](#building).
 
 When you have finished building the documentation run `deactivate` in the
 terminal to leave the virtual environment.
-
 
 ### FreeBSD
 
@@ -311,11 +315,13 @@ PDF Quality: production
   Use a virtual environment and `pip`.
 
 - PDF:
+
   ```bash
   # pkg install texlive-full
   ```
 
 - Single HTML:
+
   ```bash
   # pkg install npm
   # npm install -g inliner
@@ -330,6 +336,7 @@ PDF Quality: production
   ```
 
 - Ditaa:
+
   ```bash
   # pkg install ditaa
   ```
@@ -343,6 +350,7 @@ PDF Quality: production
   By default, CentOS 7 has Python 2.x. Luckily they now have Software
   Collections which lets you install and use a "collection" of newer
   software. As root,
+
   ```bash
   # yum install centos-release-scl
   # yum install rh-python36
@@ -350,18 +358,21 @@ PDF Quality: production
 
   Then you can create your own virtual Python environment for use with
   the Sphinx toolchain.
+
   ```bash
   $ cd ~
   $ python -m venv rtemsdocs
   ```
 
   When you want to use the Sphinx toolchain.
+
   ```bash
   $ scl enable rh-python36 bash
   $ source ~/rtemsdocs/bin/activate
   ```
 
 - Sphinx:
+
   ```bash
   $ pip install -U sphinx
   ```
@@ -369,34 +380,39 @@ PDF Quality: production
 - PDF:
 
   > **WARNING:** Do NOT use the RPMs for texlive. They are incomplete
-  and, in the best case, result in ugly PDFs.
+  > and, in the best case, result in ugly PDFs.
 
   As root, install texlive per the instructions at
   http://tug.org/texlive/acquire-netinstall.html
+
   ```bash
   # wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
   # tar xf install-tl-unx.tar.gz
   # cd install-tl-20161106
   ```
+
   > **NOTE:** The date in the name of the directory will change.
+
   ```bash
   # ./install-tl
   ```
+
   - Use the command line system. Select "O" for options if you want to
     change from A4 to US letter paper size by default.
   - Select "I" to install
   - The tools will be installed into a directory like the following:
     /usr/local/texlive/2016/bin/i386-linux/
-  -  **NOTE:** The year (2016) and host OS (i386-linux) will change to
-  reflect 32 or 64 bit and OS name.
+  - **NOTE:** The year (2016) and host OS (i386-linux) will change to
+    reflect 32 or 64 bit and OS name.
 
   You will also likely need to install the aspell RPM.
 
 - Single HTML:
 
   > **NOTE:** npm appears to be part of the EPEL repository for RHEL
-  and CentOS.  You may have to add that repository to your
-  configuration.
+  > and CentOS. You may have to add that repository to your
+  > configuration.
+
   ```bash
   # yum install npm
   # npm install -g inliner
@@ -405,11 +421,13 @@ PDF Quality: production
 - Plant UML:
 
   Install NPM as shown in Single HTML then:
+
   ```bash
   # npm install -g node-plantuml
   ```
 
 - Spell check:
+
   ```bash
   # yum install aspell
   ```
@@ -418,6 +436,7 @@ PDF Quality: production
 
   Ensure the appropriate directories are PREPENDED to your PATH before
   building the documentation. Examples are shown below:
+
   ```bash
   export PATH=/usr/local/texlive/2016/bin/i386-linux/:${PATH}
   export PATH=${HOME}/.local/bin:${PATH}
@@ -436,26 +455,31 @@ packages such as npm should be installed using dnf instead.
 ### Ubuntu
 
 - Host Tools:
+
   ```bash
   $ sudo apt install python3-venv npm aspell
   ```
 
 - PDF
+
   ```bash
   $ sudo apt install texlive-base texlive-latex-extra texlive-fonts-extra
   ```
 
 - Single-HTML
+
   ```bash
   $ sudo npm install -g inliner
   ```
 
 - PlantUML
+
   ```bash
   $ sudo npm install -g node-plantuml
   ```
 
 - Ditaa
+
   ```bash
   $ sudo apt install ditaa
   ```
@@ -463,12 +487,14 @@ packages such as npm should be installed using dnf instead.
 ### Arch Linux
 
 - Sphinx:
+
   ```bash
   # pacman -S python-sphinx
   # pacman -S python-sphinxcontrib-bibtex
   ```
 
 - PDF:
+
   ```bash
   # pacman -S texlive-bin texlive-core texlive-latexextra texlive-fontsextra
   ```
@@ -491,109 +517,109 @@ is started after the build.
 To build the container image, create the following `Dockerfile`
 in an empty directory of your choice.
 
-  ```bash
-  cat >Dockerfile <<"EOF"
-  # Dockerfile to build the RTEMS documentation
+```bash
+cat >Dockerfile <<"EOF"
+# Dockerfile to build the RTEMS documentation
 
-  FROM opensuse/leap:15.6
-  RUN <<EOT bash
-      set -exu -o pipefail
-      # ==== Install required packages ====
-      zypper --non-interactive refresh
-      zypper --non-interactive update
-      zypper --non-interactive install \
-              --solver-focus=Update --force-resolution \
-          aspell \
-          git \
-          graphviz \
-          lighttpd \
-          npm-default \
-          plantuml \
-          poppler-tools \
-          python311 \
-          python311-poetry \
-          texinfo \
-          texlive-inconsolata \
-          texlive-lato \
-          texlive-scheme-tetex \
-          texlive-anyfontsize \
-          texlive-eqparbox \
-          texlive-fncychap \
-          texlive-sectsty \
-          texlive-threeparttable \
-          texlive-wrapfig \
-          unzip \
-          wget
-      npm install -g inliner
-      npm install -g node-plantuml
-      # Note: OpenSUSE does not provide package ditaa.
-      wget --output-document=/root/ditaa0_9.zip \
-              https://sourceforge.net/projects/ditaa/files/latest/download
-      unzip /root/ditaa0_9.zip ditaa0_9.jar -d /usr/local/bin
-      /bin/echo -e '#! /bin/bash\n\nexec java -jar \
-              /usr/local/bin/ditaa0_9.jar \$@' >/usr/local/bin/ditaa
-      chmod a+rx /usr/local/bin/ditaa
+FROM opensuse/leap:15.6
+RUN <<EOT bash
+    set -exu -o pipefail
+    # ==== Install required packages ====
+    zypper --non-interactive refresh
+    zypper --non-interactive update
+    zypper --non-interactive install \
+            --solver-focus=Update --force-resolution \
+        aspell \
+        git \
+        graphviz \
+        lighttpd \
+        npm-default \
+        plantuml \
+        poppler-tools \
+        python311 \
+        python311-poetry \
+        texinfo \
+        texlive-inconsolata \
+        texlive-lato \
+        texlive-scheme-tetex \
+        texlive-anyfontsize \
+        texlive-eqparbox \
+        texlive-fncychap \
+        texlive-sectsty \
+        texlive-threeparttable \
+        texlive-wrapfig \
+        unzip \
+        wget
+    npm install -g inliner
+    npm install -g node-plantuml
+    # Note: OpenSUSE does not provide package ditaa.
+    wget --output-document=/root/ditaa0_9.zip \
+            https://sourceforge.net/projects/ditaa/files/latest/download
+    unzip /root/ditaa0_9.zip ditaa0_9.jar -d /usr/local/bin
+    /bin/echo -e '#! /bin/bash\n\nexec java -jar \
+            /usr/local/bin/ditaa0_9.jar \$@' >/usr/local/bin/ditaa
+    chmod a+rx /usr/local/bin/ditaa
 
-      # ==== Obtain rtems-docs sources and setup Python packages ====
-      git -C \${HOME} clone https://gitlab.rtems.org/rtems/docs/rtems-docs.git
-      cd \${HOME}/rtems-docs
-      poetry init --name=rtems-docs --no-interaction
-      poetry add sphinx
-      poetry add sphinxcontrib-bibtex
-      poetry add sphinxcontrib-jquery
-      poetry add sphinx-book-theme
-      poetry add sphinx-copybutton
+    # ==== Obtain rtems-docs sources and setup Python packages ====
+    git -C \${HOME} clone https://gitlab.rtems.org/rtems/docs/rtems-docs.git
+    cd \${HOME}/rtems-docs
+    poetry init --name=rtems-docs --no-interaction
+    poetry add sphinx
+    poetry add sphinxcontrib-bibtex
+    poetry add sphinxcontrib-jquery
+    poetry add sphinx-book-theme
+    poetry add sphinx-copybutton
 
-      # ==== Build the RTEMS documentation ====
-      cd \${HOME}/rtems-docs
-      poetry run ./waf configure --singlehtml --plantuml --ditaa \
-              --pdf --prefix="/srv/www/htdocs"
-      poetry run ./waf
-      poetry run ./waf install
-  EOT
+    # ==== Build the RTEMS documentation ====
+    cd \${HOME}/rtems-docs
+    poetry run ./waf configure --singlehtml --plantuml --ditaa \
+            --pdf --prefix="/srv/www/htdocs"
+    poetry run ./waf
+    poetry run ./waf install
+EOT
 
-  # This container starts a web-server
-  CMD ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
-  EOF
-  ```
+# This container starts a web-server
+CMD ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+EOF
+```
 
 Podman is used in the shell commands below. If you prefer Docker
 simply replace `podman` through `docker`.
 
 Build the container image `rtems-docs-server_img` with this command:
 
-  ```bash
-  podman build -t rtems-docs-server_img -f Dockerfile .
-  ```
+```bash
+podman build -t rtems-docs-server_img -f Dockerfile .
+```
 
 Create and start a container with (effectively, this "only" starts the
 web-server):
 
-  ```bash
-  podman run -d -p 8080:80 --rm --name rtems-docs-server rtems-docs-server_img
-  ```
+```bash
+podman run -d -p 8080:80 --rm --name rtems-docs-server rtems-docs-server_img
+```
 
 Point a web-browser to `http://localhost:8080/` to browse the
 documentation created during the build of the container image.
 For example:
 
-  ```bash
-  firefox http://localhost:8080/
-  ```
+```bash
+firefox http://localhost:8080/
+```
 
 Notes:
 
-* Accesses from remote hosts to port 8080 may be blocked by a firewall.
+- Accesses from remote hosts to port 8080 may be blocked by a firewall.
 
-* The single html pages may be empty. This is a
+- The single html pages may be empty. This is a
   [known bug](https://gitlab.rtems.org/rtems/rtos/rtems-release/-/issues/7).
 
 To stop the container and to delete the image, use these commands:
 
-  ```bash
-  podman stop rtems-docs-server
-  podman rmi rtems-docs-server_img
-  ```
+```bash
+podman stop rtems-docs-server
+podman rmi rtems-docs-server_img
+```
 
 ### Latex Setup
 
@@ -611,6 +637,7 @@ The texlive package requirements come from the Latex styles we are using and
 Sphinx.
 
 An example of failures are:
+
 ```
 Checking for Tex package 'Bjarne'        : ok
 Checking for Tex package 'alltt'         : ok
@@ -668,6 +695,7 @@ If you find there is an issue please post the developers list.
 ## Building
 
 To build enter in the top directory and configure with suitable options:
+
 ```bash
 ./waf configure [--pdf] [--singlehtml] [--prefix] \
                [--sphinx-options] \
@@ -676,7 +704,9 @@ To build enter in the top directory and configure with suitable options:
                [--ditaa] \
                [--disable-extra-fonts]
 ```
+
 To build:
+
 ```bash
 $ ./waf
 ```
@@ -698,18 +728,21 @@ fonts we use for a better quality document. Use this option to build without
 needing the extra fonts accepting you will get poor quality documents.
 
 To build and install to a specific location:
+
 ```bash
 $ ./waf configure --prefix=/foo/my/location
 $ ./waf build install
 ```
 
 To build the PlantUML and Ditaa images:
+
 ```bash
 $ ./waf configure --plantuml --ditaa
 $ ./waf clean build
 ```
 
 To nit-pick the source use:
+
 ```bash
 $ ./waf configure --sphinx-nit-pick
 $ ./waf clean build
@@ -717,6 +750,7 @@ $ ./waf clean build
 
 If you need to debug what is happening use configure with a suitable Sphinx
 verbose level:
+
 ```bash
 $ ./waf configure --sphinx-options "-V -V"
 $ ./waf clean build
@@ -730,161 +764,169 @@ just that manual.
 This following details the documentation standard. If in doubt first search the
 existing documentation for an example and if unsure ask.
 
-1. All text is to be formatted to wrap at 80 columns. Do not manually line feed
-   before 80.
+01. All text is to be formatted to wrap at 80 columns. Do not manually line feed
+    before 80.
 
-2. Do not insert tab characters, use spaces, no trailing white space.
+02. Do not insert tab characters, use spaces, no trailing white space.
 
-3. Pasted text such as console output can exceed 80 columns; however, it is
-   preferred even this text is wrapped at 80 columns. Long lines in code block
-   text causes issues with the PDF output.
+03. Pasted text such as console output can exceed 80 columns; however, it is
+    preferred even this text is wrapped at 80 columns. Long lines in code block
+    text causes issues with the PDF output.
 
-4. The headings use the following:
-   ```
-      Heading   Description
-   1  ###### Part
-   2  ****** Section
-   3  ====== Sub-section
-   4  ------ Sub-sub-section
-   5  ^^^^^^ Sub-sub-sub-section
-   6  ~~~~~~ Sub-sub-sub-sub-section
-   ```
+04. The headings use the following:
 
-5. For literal output such as shell commands and code, do not use `::`
-   at the trailing edge of the previous paragraph as it generates
-   warnings as the autodetect fails to find a suitable format. Use the
-   `.. code-block::` with a suitable lexical label. The lexers are:
+    ```
+       Heading   Description
+    1  ###### Part
+    2  ****** Section
+    3  ====== Sub-section
+    4  ------ Sub-sub-section
+    5  ^^^^^^ Sub-sub-sub-section
+    6  ~~~~~~ Sub-sub-sub-sub-section
+    ```
 
-   -  http://pygments.org/docs/lexers/
+05. For literal output such as shell commands and code, do not use `::`
+    at the trailing edge of the previous paragraph as it generates
+    warnings as the autodetect fails to find a suitable format. Use the
+    `.. code-block::` with a suitable lexical label. The lexers are:
 
-   Use the short names. For C code use `c` code and `shell` for shell
-   scripts and for terminal output use `none`. If you need line
-   numbers use:
-   ```
-   .. code-block:: shell
-      :linenos:
-   ```
+    - http://pygments.org/docs/lexers/
 
-   We support two forms of commands and outputs.
+    Use the short names. For C code use `c` code and `shell` for shell
+    scripts and for terminal output use `none`. If you need line
+    numbers use:
 
-   The first is to have a shell command block with just the commands
-   and if required an output block with the output or some of the
-   output. Use `none` for the output block. Make sure the text clearly
-   states the block is the output, if it has been edited to shorten
-   the amount of output and if there are any special operating modes,
-   for example needing to be `root`.
+    ```
+    .. code-block:: shell
+       :linenos:
+    ```
 
-   The second is to use a single block of type `none` with the command
-   and output together as seen in a terminal session. The commands are
-   identified by the standard shell prompt characters where `$` is a
-   user prompt and `#` is a `root` prompt.
+    We support two forms of commands and outputs.
 
-   Do not embed the version or version major number in the literal
-   commands or examples. Use the replacements listed in 10.
+    The first is to have a shell command block with just the commands
+    and if required an output block with the output or some of the
+    output. Use `none` for the output block. Make sure the text clearly
+    states the block is the output, if it has been edited to shorten
+    the amount of output and if there are any special operating modes,
+    for example needing to be `root`.
 
-6. Use the directives for `note`, `warning`, and `topic`. Do not add `TIP`,
-   `Important` or `Warning` to the text. Let the mark-up language handle
-   this. The supported directives are:
-   ```
-   .. warning::
-   .. note::
-   .. topic::
-   ```
-   These directives reference specific CSS style support.
+    The second is to use a single block of type `none` with the command
+    and output together as seen in a terminal session. The commands are
+    identified by the standard shell prompt characters where `$` is a
+    user prompt and `#` is a `root` prompt.
 
-7. Images are placed in the `images` directory. Do not place images in the
-   source directories. Using a common `images` tree of images promotes sharing
-   of images. To add an image use:
-   ```
-   .. figure:: ../images/my-image.png
-      :width: 75%
-      :align: center
-      :alt: This is the alt text for some output types.
-   ```
+    Do not embed the version or version major number in the literal
+    commands or examples. Use the replacements listed in 10.
 
-8. Callouts can be implemented manually using a literal block (`::`)
-   or a code block. Either way, a topic block is used for the items. For
-   example:
-   ```
-   .. code-block: c
+06. Use the directives for `note`, `warning`, and `topic`. Do not add `TIP`,
+    `Important` or `Warning` to the text. Let the mark-up language handle
+    this. The supported directives are:
 
-      #include <stdio.h>  <1>
-      int main(int argc, char** argv)  <2>
-      {
-         printf("Hello world\n");  <3>
-         return 0;   <4>
-      }
+    ```
+    .. warning::
+    .. note::
+    .. topic::
+    ```
 
-   .. topic:: Items:
+    These directives reference specific CSS style support.
 
-     1. Include the standard input/output header file.
+07. Images are placed in the `images` directory. Do not place images in the
+    source directories. Using a common `images` tree of images promotes sharing
+    of images. To add an image use:
 
-     2. The program starts here.
+    ```
+    .. figure:: ../images/my-image.png
+       :width: 75%
+       :align: center
+       :alt: This is the alt text for some output types.
+    ```
 
-     3. Print something to the standard output device.
+08. Callouts can be implemented manually using a literal block (`::`)
+    or a code block. Either way, a topic block is used for the items. For
+    example:
 
-     4. Exit with an exit code of 0. This value can be checked by the
-        caller of this program.
-   ```
-   **Note:** the topic items are manually numbered, which makes it easier to see
-   which item matches the text. Use `<>` for the number and align at a position
-   that makes the number as visible as possible. Use hanging indents
-   if an item extends past a single line.
+    ```
+    .. code-block: c
 
-9. Use the RTEMS domain references for URLs and mailing lists. For example to
-   insert the RTEMS developers list use:
-   ```
-   :r:list:`devel`
-   :r:url:`git`
-   ```
+       #include <stdio.h>  <1>
+       int main(int argc, char** argv)  <2>
+       {
+          printf("Hello world\n");  <3>
+          return 0;   <4>
+       }
 
-   The valid lists are:
+    .. topic:: Items:
 
-   | Label      | Description                   |
-   | ---        | ---                           |
-   | `announce` | Announce Mailing List         |
-   | `bugs`     | Bugs Mailing List             |
-   | `devel`    | Developers Mailing List       |
-   | `build`    | Build Logs                    |
-   | `users`    | Users Mailing List            |
-   | `vc`       | Version Control Mailing List  |
+      1. Include the standard input/output header file.
 
-   The valid URLs are:
+      2. The program starts here.
 
-   | Label     | URL                                  |
-   | ---       | ---                                  |
-   | trac      | https://gitlab.rtems.org/            |
-   | devel     | https://gitlab.rtems.org/            |
-   | www       | https://www.rtems.org/               |
-   | buildbot  | https://buildbot.rtems.org/          |
-   | builder   | https://builder.rtems.org/           |
-   | docs      | https://docs.rtems.org/              |
-   | lists     | https://lists.rtems.org/             |
-   | git       | https://gitlab.rtems.org/            |
-   | ftp       | https://ftp.rtems.org/               |
-   | review    | https://review.rtems.org/            |
-   | bugs      | https://gitlab.rtems.org/            |
-   | gsoc      | https://gitlab.rtems.org/rtems/programs/gsoc   |
-   | socis     | https://gitlab.rtems.org/            |
+      3. Print something to the standard output device.
+
+      4. Exit with an exit code of 0. This value can be checked by the
+         caller of this program.
+    ```
+
+    **Note:** the topic items are manually numbered, which makes it easier to see
+    which item matches the text. Use `<>` for the number and align at a position
+    that makes the number as visible as possible. Use hanging indents
+    if an item extends past a single line.
+
+09. Use the RTEMS domain references for URLs and mailing lists. For example to
+    insert the RTEMS developers list use:
+
+    ```
+    :r:list:`devel`
+    :r:url:`git`
+    ```
+
+    The valid lists are:
+
+    | Label      | Description                  |
+    | ---------- | ---------------------------- |
+    | `announce` | Announce Mailing List        |
+    | `bugs`     | Bugs Mailing List            |
+    | `devel`    | Developers Mailing List      |
+    | `build`    | Build Logs                   |
+    | `users`    | Users Mailing List           |
+    | `vc`       | Version Control Mailing List |
+
+    The valid URLs are:
+
+    | Label    | URL                                          |
+    | -------- | -------------------------------------------- |
+    | trac     | https://gitlab.rtems.org/                    |
+    | devel    | https://gitlab.rtems.org/                    |
+    | www      | https://www.rtems.org/                       |
+    | buildbot | https://buildbot.rtems.org/                  |
+    | builder  | https://builder.rtems.org/                   |
+    | docs     | https://docs.rtems.org/                      |
+    | lists    | https://lists.rtems.org/                     |
+    | git      | https://gitlab.rtems.org/                    |
+    | ftp      | https://ftp.rtems.org/                       |
+    | review   | https://review.rtems.org/                    |
+    | bugs     | https://gitlab.rtems.org/                    |
+    | gsoc     | https://gitlab.rtems.org/rtems/programs/gsoc |
+    | socis    | https://gitlab.rtems.org/                    |
 
 10. Use the following to embed the version number in any part of the
     documentation source:
 
-     1. `@rtems-version@`
+    1. `@rtems-version@`
 
-        The complete version string of the documentation.
+       The complete version string of the documentation.
 
-     2. `@rtems-ver-major@`
+    2. `@rtems-ver-major@`
 
-        The version major number.
+       The version major number.
 
-     2. `@rtems-ver-minor@`
+    3. `@rtems-ver-minor@`
 
-        The version minor number.
+       The version minor number.
 
-     2. `@rtems-ver-revision@`
+    4. `@rtems-ver-revision@`
 
-        The version revision number.
+       The version revision number.
 
     The replacement happens during the source read phase of the build
     and is not context specific. The substitution will happen in code

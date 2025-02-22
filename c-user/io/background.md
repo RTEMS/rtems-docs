@@ -139,15 +139,12 @@ the device drivers by invoking each device driver initialization entry point
 with the following parameters:
 
 `major`
-
 : the major device number for this device driver.
 
 `minor`
-
 : zero.
 
 `argument_block`
-
 : will point to the Configuration Table.
 
 The returned status will be ignored by RTEMS. If the driver cannot

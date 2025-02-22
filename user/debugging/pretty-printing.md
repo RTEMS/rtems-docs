@@ -29,6 +29,7 @@ custom sections in the executable and Python scripts that register the necessary
 pretty-printers. An overview of the setup is as follows:
 
 1. *Custom section in executable*
+
    : To ensure that the pretty-printers are automatically loaded when debugging,
      a custom section named `.debug_gdb_scripts` is added to each executable
      being linked in RTEMS. This section contains a small assembly code snippet

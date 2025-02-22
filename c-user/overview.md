@@ -50,10 +50,12 @@ target hardware. Most hardware dependencies for real-time applications can be
 localized to the low level device drivers.
 
 ```{figure} ../images/c_user/rtemsarc.png
-:align: center
-:alt: RTEMS Application Architecture
-:height: 100px
-:width: 488
+---
+align: center
+alt: RTEMS Application Architecture
+height: 100px
+width: 488
+---
 ```
 
 The RTEMS I/O interface manager provides an efficient tool for incorporating
@@ -79,9 +81,11 @@ that promotes the development of efficient real-time application systems. The
 following figure illustrates this organization:
 
 ```{figure} ../images/c_user/rtemspie.png
-:align: center
-:alt: RTEMS Internal Architecture
-:width: 70%
+---
+align: center
+alt: RTEMS Internal Architecture
+width: 70%
+---
 ```
 
 Subsequent chapters present a detailed description of the capabilities provided
@@ -198,148 +202,119 @@ format for each directive includes the following sections:
 The following provides an overview of the remainder of this manual:
 
 Chapter 3:
-
 : Key Concepts: presents an introduction to the ideas which are common across
   multiple RTEMS managers.
 
 Chapter 4:
-
 : RTEMS Data Types: describes the fundamental data types shared by the
   services in the RTEMS Classic API.
 
 Chapter 5:
-
 : Scheduling Concepts: details the various RTEMS scheduling algorithms and
   task state transitions.
 
 Chapter 6:
-
 : Initialization Manager: describes the functionality and directives provided
   by the Initialization Manager.
 
 Chapter 7:
-
 : Task Manager: describes the functionality and directives provided by the
   Task Manager.
 
 Chapter 8:
-
 : Interrupt Manager: describes the functionality and directives provided by
   the Interrupt Manager.
 
 Chapter 9:
-
 : Clock Manager: describes the functionality and directives provided by the
   Clock Manager.
 
 Chapter 10:
-
 : Timer Manager: describes the functionality and directives provided by the
   Timer Manager.
 
 Chapter 11:
-
 : Rate Monotonic Manager: describes the functionality and directives provided
   by the Rate Monotonic Manager.
 
 Chapter 12:
-
 : Semaphore Manager: describes the functionality and directives provided by
   the Semaphore Manager.
 
 Chapter 13:
-
 : Barrier Manager: describes the functionality and directives provided by the
   Barrier Manager.
 
 Chapter 14:
-
 : Message Manager: describes the functionality and directives provided by the
   Message Manager.
 
 Chapter 15:
-
 : Event Manager: describes the functionality and directives provided by the
   Event Manager.
 
 Chapter 16:
-
 : Signal Manager: describes the functionality and directives provided by the
   Signal Manager.
 
 Chapter 17:
-
 : Partition Manager: describes the functionality and directives provided by
   the Partition Manager.
 
 Chapter 18:
-
 : Region Manager: describes the functionality and directives provided by the
   Region Manager.
 
 Chapter 19:
-
 : Dual-Ported Memory Manager: describes the functionality and directives
   provided by the Dual-Ported Memory Manager.
 
 Chapter 20:
-
 : I/O Manager: describes the functionality and directives provided by the I/O
   Manager.
 
 Chapter 21:
-
 : Fatal Error Manager: describes the functionality and directives provided by
   the Fatal Error Manager.
 
 Chapter 22:
-
 : Board Support Packages: defines the functionality required of user-supplied
   board support packages.
 
 Chapter 23:
-
 : User Extensions: shows the user how to extend RTEMS to incorporate custom
   features.
 
 Chapter 24:
-
 : Configuring a System: details the process by which one tailors RTEMS for a
   particular single-processor or multiprocessor application.
 
 Chapter 25:
-
 : Self-Contained Objects: contains information about objects like threads,
   mutexes and semaphores.
 
 Chapter 26:
-
 : Multiprocessing Manager: presents a conceptual overview of the
   multiprocessing capabilities provided by RTEMS as well as describing the
   Multiprocessing Communications Interface Layer and Multiprocessing Manager
   directives.
 
 Chapter 27:
-
 : Symmetric Multiprocessing (SMP): information regarding the SMP features.
 
 Chapter 28:
-
 : PCI Library: information about using the PCI bus in RTEMS.
 
 Chapter 29:
-
 : Stack Bounds Checker: presents the capabilities of the RTEMS task stack
   checker which can report stack usage as well as detect bounds violations.
 
 Chapter 30:
-
 : CPU Usage Statistics: presents the capabilities of the CPU Usage statistics
   gathered on a per task basis along with the mechanisms for reporting and
   resetting the statistics.
 
 Chapter 31:
-
 : Object Services: presents a collection of helper services useful when
   manipulating RTEMS objects. These include methods to assist in obtaining an
   object's name in printable form. Additional services are provided to
@@ -347,49 +322,38 @@ Chapter 31:
   to.
 
 Chapter 32:
-
 : Chains: presents the methods provided to build, iterate and manipulate
   doubly-linked chains. This manager makes the chain implementation used
   internally by RTEMS to user space applications.
 
 Chapter 33:
-
 : Red-Black Trees: information about how to use the Red-Black Tree API.
 
 Chapter 34:
-
 : Timespec Helpers: presents a set of helper services useful when
   manipulating POSIX `struct timespec` instances.
 
 Chapter 35:
-
 : Constant Bandwidth Server Scheduler API.
 
 Chapter 36:
-
 : Ada Support: information about Ada programming language support.
 
 Chapter 37:
-
 : Directive Status Codes: provides a definition of each of the directive
   status codes referenced in this manual.
 
 Chapter 38:
-
 : Linker Sets: information about linker set features.
 
 Chapter 39:
-
 : Example Application: provides a template for simple RTEMS applications.
 
 Chapter 40:
-
 : Glossary: defines terms used throughout this manual.
 
 Chapter 41:
-
 : References: References.
 
 Chapter 42:
-
 : Index: Index.

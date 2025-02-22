@@ -25,7 +25,6 @@ block.
 The execution model is based on the following concepts:
 
 Interleaving Concurrency
-
 : A running Promela system consists of one or more concurrent processes. Each
   process is described by a segment of code that defines a sequence of
   atomic steps. The scheduler looks at all the available next-steps and makes
@@ -33,7 +32,6 @@ Interleaving Concurrency
   invoked after every atomic step.
 
 Executability
-
 : At any point in time, a Promela process is either able to perform a step,
   and is considered executable, or is unable to do so, and is considered
   blocked. Whether a statement is executable or blocked may depend on the
@@ -154,11 +152,9 @@ The are a number of variable identifiers that have a special meaning in Promela.
 These all start with an underscore. We use the following:
 
 Process Id
-
 : `_pid` holds the process id of the currently active process
 
 Process Count
-
 : `_nr_pr` gives the number of currently active processes.
 
 ## Promela Atomic Statements

@@ -52,17 +52,14 @@ is used.
 The following special-purpose registers are used by RTEMS:
 
 *Special-Purpose Register General 0 (SPRG0)*
-
 : In SMP configurations, this register contains the address of the per-CPU
   control of the processor.
 
 *Special-Purpose Register General 1 (SPRG1)*
-
 : This register contains the interrupt stack pointer for the outer-most
   interrupt service routine.
 
 *Special-Purpose Register General 2 (SPRG2)*
-
 : This register contains the address of interrupt stack area begin.
 
 ## Memory Model

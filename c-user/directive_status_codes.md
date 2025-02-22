@@ -103,9 +103,7 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES
-
 : The status code enumeration name or "?" in case the status code is invalid.
 
 DESCRIPTION:
-
 : Returns the enumeration name for the specified status code.

@@ -13,8 +13,7 @@
 You have considered and chosen a suitable installation prefix in the previous
 section. We have chosen {file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation
 prefix. We will show how to use a released version of RTEMS and then as an
-alternative we will show you using the {ref}`RSB Git repository
-<QuickStartSources_Git>`. Consider using a Git clone if you wish to make
+alternative we will show you using the {ref}`RSB Git repository <QuickStartSources_Git>`. Consider using a Git clone if you wish to make
 contributions to the RTEMS Project.
 
 You need the RTEMS Source Builder (RSB) to work with RTEMS and we prefer you
@@ -92,8 +91,7 @@ git clone https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git rsb
 git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 ```
 
-The {file}`rsb` repository clone contains the {ref}`RTEMS Source Builder (RSB)
-<RSB>`. We clone it into {file}`rsb` to get shorter paths during the tool
+The {file}`rsb` repository clone contains the {ref}`RTEMS Source Builder (RSB) <RSB>`. We clone it into {file}`rsb` to get shorter paths during the tool
 suite build. The {file}`rtems` repository clone contains the RTEMS sources.
 These two repositories are enough to get started. There are [more repositories](https://gitlab.rtems.org/explore/projects) available.
 

@@ -71,8 +71,7 @@ release notes are an accurate account of the changes made.
 Epics and issues are used to help manage the approval process for commits
 to release branches.
 
-1. Every release branch shall have an associated Epic named `RTEMS
-   <Major> Release` where `<Major>` is the branch name. This Epic
+1. Every release branch shall have an associated Epic named `RTEMS <Major> Release` where `<Major>` is the branch name. This Epic
    shall have children Epics named `RTEMS <Major>.<Minor>` for the
    next two releases on the release branch.
 2. Every Issue with a Milestone set to a release branch shall be linked to
@@ -100,8 +99,7 @@ to release branches.
    preserved on the backport Issue. The milestone on the cloned issue
    shall be set to the requested backport release branch's next version.
 2. Issues that are opened against a release branch milestone must be
-   linked to that milestone's epic, which should be named `RTEMS
-   <Milestone>`. Linking is accomplished by using the GitLab Quick
+   linked to that milestone's epic, which should be named `RTEMS <Milestone>`. Linking is accomplished by using the GitLab Quick
    Action `/epic rtems&<NNN>` where `<NNN>` is replaced with the
    Epic number for the relevant milestone's epic.
 3. Issues that are determined out of scope for backporting shall be labelled

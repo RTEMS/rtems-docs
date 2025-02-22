@@ -84,35 +84,28 @@ tracing the behavior of the network stack. The following is a list of them:
   For a quick reference to the flags, see the table below:
 
   '`U`'
-
   : Up: The route is active.
 
   '`H`'
-
   : Host: The route destination is a single host.
 
   '`G`'
-
   : Gateway: Send anything for this destination on to this remote system,
     which will figure out from there where to send it.
 
   '`S`'
-
   : Static: This route was configured manually, not automatically generated
     by the system.
 
   '`C`'
-
   : Clone: Generates a new route based upon this route for machines we
     connect to. This type of route is normally used for local networks.
 
   '`W`'
-
   : WasCloned: Indicated a route that was auto-configured based upon a local
     area network (Clone) route.
 
   '`L`'
-
   : Link: Route involves references to Ethernet hardware.
 
 - `mbuf`
@@ -261,8 +254,7 @@ follows:
 
 > 1. On the host run `ttcp -s -r`.
 > 2. Download and start the ttcp program on the Target.
-> 3. In response to the `ttcp` prompt, enter `-s -t <<insert the hostname or
->    IP address of the Target here>>`. You need to type the IP address of the
+> 3. In response to the `ttcp` prompt, enter `-s -t <<insert the hostname or IP address of the Target here>>`. You need to type the IP address of the
 >    host unless your Target is talking to your Domain Name Server.
 
 To change the number of buffers, the buffer size, etc. you just add the extra

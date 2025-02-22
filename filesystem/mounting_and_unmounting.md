@@ -48,11 +48,9 @@ struct rtems_filesystem_mount_table_entry_tt
 ```
 
 *Node*
-
 : The Node is used to produce a linked list of mount table entry nodes.
 
 *mt_point_node*
-
 : The mt_point_node contains all information necessary to access the
   directory where a filesystem is mounted onto. This element may contain
   memory that is allocated during a path evaluation of the filesystem
@@ -61,18 +59,15 @@ struct rtems_filesystem_mount_table_entry_tt
   unmounted.
 
 *mt_fs_root*
-
 : The mt_fs_root contains all information necessary to identify the root of
   the mounted filesystem. The user is never allowed access to this node by
   the generic code, but it is used to identify to the mounted filesystem
   where to start evaluation of pathnames at.
 
 *options*
-
 : XXX
 
 *fs_info*
-
 : The fs_info element is a location available for use by the mounted file
   system to identify unique things applicable to this instance of the file
   system. For example the IMFS uses this space to provide node
@@ -80,11 +75,9 @@ struct rtems_filesystem_mount_table_entry_tt
   filesystem.
 
 *pathconf_limits_and_options*
-
 : XXX
 
 *dev*
-
 : This character string represents the device where the filesystem will reside.
 
 ## Adding entries to the chain during mount

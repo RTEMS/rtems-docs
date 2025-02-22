@@ -784,8 +784,7 @@ read - Reads from a file, read()*, this routine may return -1 and sets
 
 The `readv()` function is equivalent to `read()` except as described
 here. The `readv()` function shall place the input data into the `iovcnt`
-buffers specified by the members of the `iov` array: `iov[0], iov[1], ...,
-iov[iovcnt-1]`.
+buffers specified by the members of the `iov` array: `iov[0], iov[1], ..., iov[iovcnt-1]`.
 
 Each `iovec` entry specifies the base address and length of an area in memory
 where data should be placed. The `readv()` function always fills an area
@@ -838,8 +837,7 @@ write - Write to a file, write()*, this routine may return -1 and sets
 
 The `writev()` function is equivalent to `write()`, except as noted
 here. The `writev()` function gathers output data from the `iovcnt` buffers
-specified by the members of the `iov array`: `iov[0], iov[1], ...,
-iov[iovcnt-1]`. The `iovcnt` argument is valid if greater than 0 and less
+specified by the members of the `iov array`: `iov[0], iov[1], ..., iov[iovcnt-1]`. The `iovcnt` argument is valid if greater than 0 and less
 than or equal to `IOV_MAX`.
 
 Each `iovec` entry specifies the base address and length of an area in memory

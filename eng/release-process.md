@@ -35,22 +35,18 @@ e.g. `5.1.0`. This identifies an RTEMS Project release.
 - Top level contains:
 
   {file}`README.txt`:
-
   : A set of brief release links and instructions in text format
     generated from the {file}`README` markdown file.
 
   {file}`index.txt`:
-
   : A set of brief release links and instructions as an HTML web
     page generated from the {file}`README` markdown file.
 
   {file}`contrib`:
-
   : Contributed sources. For example the release scripts used to
     create the release.
 
   {file}`docs`:
-
   : Compressed documentation in HTML, Single page HTML and PDF
     formats. The directory contains compressed files for each
     document and a single archive of all the documentation. An
@@ -60,30 +56,24 @@ e.g. `5.1.0`. This identifies an RTEMS Project release.
     the PDF documentation. Links are provided in release cover page.
 
   {file}`rtems-<VERSION>-release-notes`:
-
   : RTEMS Release notes as an HTML web site. This is a capture of
     the Gitlab milestone issues and merge requests in the release.
 
   {file}`rtems-<VERSION>-release-notes.pdf`:
-
   : RTEMS Release notes as a PDF document. This is a capture of the
     Gitlab milestone issues and merge request.
 
   {file}`rtems-<VERSION>-release-notes.jzon.xz`:
-
   : RTEMS Release JSON data captured from Gitlab for the release
     milestone abnd used to create the release notes.
 
   {file}`rtems-docs-<VERSION>.tar.xz`:
-
   : RTEMS Release Documentation source code.
 
   {file}`sha512sum.txt`:
-
   : SHA512 checksum of all files in this directory.
 
   {file}`sources`:
-
   : All source code referenced by the release.
 
 ### Release Version Numbering
@@ -109,13 +99,11 @@ A release number has the following fields separated by the dot (`.`)
 character:
 
 `RTEMS_MAJOR`
-
 : The major version number. This number increments with each
   release. The value is updated after a release branch has been
   created.
 
 `RTEMS_MINOR`
-
 : The minor version number is the branch release number and it
   increments with each release made on that release branch. The minor
   version number shall be `0` on all branches in the repository. The

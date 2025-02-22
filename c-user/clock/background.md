@@ -8,8 +8,7 @@
 
 ## Required Support
 
-For the features provided by the Clock Manager to be utilized, a {term}`Clock
-Driver` is required. The Clock Driver usually provides a clock interrupt which
+For the features provided by the Clock Manager to be utilized, a {term}`Clock Driver` is required. The Clock Driver usually provides a clock interrupt which
 is serviced on each configured processor at each {term}`clock tick`. In
 addition, the Clock Driver provides three clock sources:
 
@@ -57,8 +56,7 @@ time in `struct timeval` format.
 ```{index} struct timespec
 ```
 
-Some directives use data structures defined by {term}`POSIX`. The `struct
-timeval` data structure has two members: `tv_sec` and `tv_usec` which are
+Some directives use data structures defined by {term}`POSIX`. The `struct timeval` data structure has two members: `tv_sec` and `tv_usec` which are
 seconds and microseconds, respectively. The `struct timespec` data structure
 has two members: `tv_sec` and `tv_nsec` which are seconds and nanoseconds,
 respectively. For {term}`CLOCK_REALTIME` time points, the `tv_sec` member in

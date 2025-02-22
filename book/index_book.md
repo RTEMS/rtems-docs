@@ -8,9 +8,10 @@
 ## Table of Contents
 
 ```{toctree}
-:maxdepth: 3
-:numbered: true
-
+---
+maxdepth: 3
+numbered: true
+---
 user/index.rst
 rtemsconfig/index.rst
 shell/index.rst

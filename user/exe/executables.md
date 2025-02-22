@@ -36,10 +36,11 @@ vertical software stack.
 (fig-exe-vert-stack)=
 
 ```{figure} ../../images/user/exe-vert-stack.png
-:alt: Vertical Software Stack
-:figclass: align-center
-:width: 35%
-
+---
+alt: Vertical Software Stack
+figclass: align-center
+width: 35%
+---
 Vertical Software Stack
 ```
 
@@ -64,10 +65,11 @@ defines what happens.
 (fig-exe-app)=
 
 ```{figure} ../../images/user/exe-app.png
-:alt: Building an Application
-:figclass: align-center
-:width: 90%
-
+---
+alt: Building an Application
+figclass: align-center
+width: 90%
+---
 Building an Application
 ```
 

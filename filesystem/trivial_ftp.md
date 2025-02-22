@@ -272,10 +272,11 @@ remove directory steps are optional.
 (usage-1)=
 
 ```{figure} ../images/filesystem/tftpfs_usage.png
-:align: center
-:alt: TFTP Usage Diagram
-:width: 75%
-
+---
+align: center
+alt: TFTP Usage Diagram
+width: 75%
+---
 TFTP file system usage
 ```
 
@@ -414,8 +415,8 @@ How the test `media01.exe` can be executed is described in
 section *Qemu and Networking* of that file.
 
 A TFTP server must be setup and run. The instructions to setup an TAP
-device and an `atftp` server found above in section [External TFTP
-Server Example for OpenSUSE][external tftp server example for opensuse] could be followed for this purpose.
+device and an `atftp` server found above in section \[External TFTP
+Server Example for OpenSUSE\][external tftp server example for opensuse] could be followed for this purpose.
 It may be useful to create a sample file for later download in the
 directory served by the TFTP server. For `atftp` "root" could create
 a file with these instructions:

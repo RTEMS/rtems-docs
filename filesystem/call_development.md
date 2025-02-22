@@ -43,18 +43,15 @@ these functions.
 ## access
 
 File:
-
 : `access.c`
 
 Processing:
-
 : This routine is layered on the stat() function. It acquires the current
   status information for the specified file and then determines if the caller
   has the ability to access the file for read, write or execute according to
   the mode argument to this function.
 
 Development Comments:
-
 : This routine is layered on top of the stat() function. As long as the
   st_mode element in the returned structure follow the standard UNIX
   conventions, this function should support other filesystems without
@@ -229,7 +226,6 @@ Development Comments:
 ## dup() Unimplemented
 
 File:
-
 : `dup.c`
 
 Processing:
@@ -239,7 +235,6 @@ Development Comments:
 ## dup2() Unimplemented
 
 File:
-
 : `dup2.c`
 
 Processing:
@@ -586,31 +581,25 @@ Development Comments:
 ## mkdir
 
 File:
-
 : `mkdir.c`
 
 Processing:
-
 : This routine attempts to create a directory node under the filesystem. The
   routine is layered the mknod() function.
 
 Development Comments:
-
 : See mknod() for developmental comments.
 
 ## mkfifo
 
 File:
-
 : `mkfifo.c`
 
 Processing:
-
 : This routine attempts to create a FIFO node under the filesystem. The
   routine is layered the mknod() function.
 
 Development Comments:
-
 : See mknod() for developmental comments
 
 % COMMENT: @page
@@ -814,18 +803,15 @@ Development Comments:
 ## opendir
 
 File:
-
 : `opendir.c`
 
 Processing:
-
 : This routine will attempt to open a directory for read access. It will
   setup a DIR control structure that will be used to access directory
   information. This routine is layered on the generic open() routine and
   filesystem specific directory processing routines.
 
 Development Comments:
-
 : The BSD group provided this routine.
 
 ## pathconf
@@ -945,27 +931,21 @@ Development Comments:
 ## eval
 
 File:
-
 : `XXX`
 
 Processing:
-
 : XXX
 
 Development Comments:
-
 : XXX
 
 ## getdentsc
 
 File:
-
 : `XXX`
 
 Processing:
-
 : XXX
 
 Development Comments:
-
 : XXX

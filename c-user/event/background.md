@@ -59,8 +59,7 @@ exactly once in the event set list.
 
 For example, when sending the event set consisting of `RTEMS_EVENT_6`,
 `RTEMS_EVENT_15`, and `RTEMS_EVENT_31`, the event parameter to the
-`rtems_event_send` directive should be `RTEMS_EVENT_6 | RTEMS_EVENT_15 |
-RTEMS_EVENT_31`.
+`rtems_event_send` directive should be `RTEMS_EVENT_6 | RTEMS_EVENT_15 | RTEMS_EVENT_31`.
 
 ## Building an EVENT_RECEIVE Option Set
 
@@ -91,7 +90,6 @@ practice to specify default options. If all defaults are desired, the option
 
 This example demonstrates the option parameter needed to poll for all events in
 a particular event condition to arrive. The option parameter passed to the
-`rtems_event_receive` directive should be either `RTEMS_EVENT_ALL |
-RTEMS_NO_WAIT` or `RTEMS_NO_WAIT`. The option parameter can be set to
+`rtems_event_receive` directive should be either `RTEMS_EVENT_ALL | RTEMS_NO_WAIT` or `RTEMS_NO_WAIT`. The option parameter can be set to
 `RTEMS_NO_WAIT` because `RTEMS_EVENT_ALL` is the default condition for
 `rtems_event_receive`.

@@ -508,42 +508,33 @@ DESCRIPTION:
   performed:
 
   *b*
-
   : A backspace character is output.
 
   *c*
-
   : Subsequent output is suppressed. This is normally used at the end of
     the last argument to suppress the trailing newline that echo would
     otherwise output.
 
   *f*
-
   : Output a form feed.
 
   *n*
-
   : Output a newline character.
 
   *r*
-
   : Output a carriage return.
 
   *t*
-
   : Output a (horizontal) tab character.
 
   *v*
-
   : Output a vertical tab.
 
   *0digits*
-
   : Output the character whose value is given by zero to three digits. If
     there are zero digits, a nul character is output.
 
   *\\*
-
   : Output a backslash.
 
 EXIT STATUS:

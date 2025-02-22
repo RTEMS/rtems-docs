@@ -283,49 +283,54 @@ ls -l new-trace
 Start {file}`tracecompass` and follow the steps below.
 
 ```{figure} ../../images/user/trace-compass-new-project.png
-:alt: Trace Compass - New Tracing Project
-:figclass: align-center
-:width: 50%
-
+---
+alt: Trace Compass - New Tracing Project
+figclass: align-center
+width: 50%
+---
 After starting *Trace Compass* the first time, the *Project Explorer* tells
 you that there are no projects in your workspace. Select *Create a new
 Tracing project*. This will open the *Tracing Project* dialog box.
 ```
 
 ```{figure} ../../images/user/trace-compass-create-project.png
-:alt: Trace Compass - Create Tracing Project
-:figclass: align-center
-:width: 50%
-
+---
+alt: Trace Compass - Create Tracing Project
+figclass: align-center
+width: 50%
+---
 In the *Tracing Project* dialog box, select a name for your tracing
 project. We select *new-trace*. Afterwards, continue with a click to
 *Finish*.
 ```
 
 ```{figure} ../../images/user/trace-compass-open-trace.png
-:alt: Trace Compass - Open Trace
-:figclass: align-center
-:width: 50%
-
+---
+alt: Trace Compass - Open Trace
+figclass: align-center
+width: 50%
+---
 Open the context menu of the *Traces [0]* folder and select *Open
 Trace...*.
 ```
 
 ```{figure} ../../images/user/trace-compass-open-trace-file.png
-:alt: Trace Compass - Open Trace File
-:figclass: align-center
-:width: 50%
-
+---
+alt: Trace Compass - Open Trace File
+figclass: align-center
+width: 50%
+---
 Navigate to a directory containing the CTF files created by the
 {file}`rtems-record-lttng` tool. We select {file}`metadata` located in
 {file}`/tmp/new-trace`. Afterwards, continue with a click to *Open*.
 ```
 
 ```{figure} ../../images/user/trace-compass-main-window.png
-:alt: Trace Compass - Main Window
-:figclass: align-center
-:width: 100%
-
+---
+alt: Trace Compass - Main Window
+figclass: align-center
+width: 100%
+---
 Once a trace is opened, the main window shows you a couple of views, for
 example *Resources*, the trace log, and *CPU Usage*. The *Resources* view
 shows you the CPU utilization at a given time. A CPU may be idle,
@@ -335,10 +340,11 @@ Usage* view.
 ```
 
 ```{figure} ../../images/user/trace-compass-control-flow.png
-:alt: Trace Compass - Control Flow
-:figclass: align-center
-:width: 100%
-
+---
+alt: Trace Compass - Control Flow
+figclass: align-center
+width: 100%
+---
 The *Control Flow* view shows which threads execute when on which CPU. The
 arrows indicate thread switches.
 ```

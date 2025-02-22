@@ -127,7 +127,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Opens CAN device at path {c:type}`pathname` with mode defined in
   {c:type}`flags` argument. Modes are defined according to POSIX standard.
 
@@ -220,7 +219,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Discard TX and/or RX queues based on integer "type" argument. Defines
   {c:type}`RTEMS_CAN_QUEUE_TX` and {c:type}`RTEMS_CAN_QUEUE_RX` can be used
   to specify queues for deletion.
@@ -237,7 +235,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Flushes TX and/or RX queues based on integer "type" argument. Defines
   {c:type}`RTEMS_CAN_QUEUE_TX` and {c:type}`RTEMS_CAN_QUEUE_RX` can be used
   to specify queues for deletion. The operation flushes all RX or/and all
@@ -383,7 +380,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Starts the chip (enables write/read). Repeated calls on already started
   chip do not have any effect.
 
@@ -400,7 +396,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Starts the chip (enables write/read). Repeated calls on already started
   chip do not have any effect.
 
@@ -588,7 +583,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Passes CAN frame represented by {c:type}`can_frame` structure to the
   network. Return values comply with POSIX standard. Write size {c:type}`count`
   can be calculated with {c:func}`can_framesize()` function. It is possible
@@ -630,7 +624,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Implements polling function on outgoing edges. Timeout is defined with
   {c:type}`timespec` structure. The timeout is specified as a relative
   timeout. It waits until there is an available frame in any of the input
@@ -651,7 +644,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Reads CAN frame represented by {c:type}`can_frame` from the network.
   Return values comply with POSIX standard. The call returns error if
   read size specified by {c:type}`count` is less than the length
@@ -671,7 +663,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Implements polling function on incoming edges. Timeout is defined with
   {c:type}`timespec` structure. It waits until there is an available
   frame in any of the input FIFOs or until timeout.
@@ -783,7 +774,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Initializes controller's side of ends defined in {c:type}`chip` structure
   and connects them to the FIFO queues. It also creates a worker binary
   semaphore {c:type}`worker_sem` named {c:type}`name` and used by the
@@ -820,7 +810,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Tests and retrieves the oldest ready slot from the highest priority active
   queue (priority class).
 
@@ -841,7 +830,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Releases processed slot previously acquired by a function
   {c:func}`rtems_can_queue_test_outslot()` call.
 
@@ -862,7 +850,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Reschedules slot previously acquired with a {c:func}`rtems_can_queue_test_outslot()`
   function call for a second time processing.
 
@@ -882,7 +869,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Tests whether there is ready slot for given ends and minimum priority
   to be considered. Negative value informs this is not a case, positive
   value informs about the available slot priority class.
@@ -903,7 +889,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Sends a message (frame) defined with {c:type}`frame` argument to all
   outgoing edges connected to the given ends ({c:type}`qends`) with
   additional flags defined by {c:type}`flags2add` argument. Argument

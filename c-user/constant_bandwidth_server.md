@@ -284,12 +284,10 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This routine detaches all tasks from their servers, destroys all servers
   and returns memory back to the system.
 
 NOTES:
-
 : All tasks continue executing with their initial priorities.
 
 ```{raw} latex
@@ -331,7 +329,6 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This routine prepares an instance of a constant bandwidth server. The
   input parameter `rtems_cbs_parameters` specifies scheduling parameters of
   the server (period and budget). If these are not valid,
@@ -344,7 +341,6 @@ DESCRIPTION:
   `RTEMS_CBS_ERROR_FULL` is returned.
 
 NOTES:
-
 : No task execution is being influenced so far.
 
 ```{raw} latex
@@ -385,7 +381,6 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : Attaches a task (`task_id`) to a server (`server_id`). The server has
   to be previously created. Now, the task starts to be scheduled according to
   the server parameters and not using initial priority. This implementation
@@ -393,7 +388,6 @@ DESCRIPTION:
   the same server, `RTEMS_CBS_ERROR_FULL` is returned.
 
 NOTES:
-
 : Tasks attached to servers become preemptible.
 
 ```{raw} latex
@@ -432,12 +426,10 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive detaches a thread from server. The task continues its
   execution with initial priority.
 
 NOTES:
-
 : The server can be reused for any other task.
 
 ```{raw} latex
@@ -475,13 +467,11 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive destroys a server. If any task was attached to the server,
   the task is detached and continues its execution according to EDF rules
   with initial properties.
 
 NOTES:
-
 : This again enables one more task to be created.
 
 ```{raw} latex
@@ -518,7 +508,6 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive returns an id of server belonging to a given task.
 
 ```{raw} latex
@@ -557,12 +546,10 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive returns a structure with current scheduling parameters of a
   given server (period and execution time).
 
 NOTES:
-
 : It makes no difference if any task is assigned or not.
 
 ```{raw} latex
@@ -601,14 +588,12 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive sets new scheduling parameters to the server. This operation
   can be performed regardless of whether a task is assigned or not. If a
   task is assigned, the parameters become effective imediately, therefore it
   is recommended to apply the change between two subsequent periods.
 
 NOTES:
-
 : There is an upper limit on both period and budget equal to (2^31)-1 ticks.
 
 ```{raw} latex
@@ -648,12 +633,10 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This routine returns consumed execution time (`exec_time`) of a server
   during the current period.
 
 NOTES:
-
 : Absolute time (`abs_time`) not supported now.
 
 ```{raw} latex
@@ -692,12 +675,10 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive returns remaining execution time of a given server for
   current period.
 
 NOTES:
-
 : If the execution time approaches zero, the assigned task should finish
   computations of the current period.
 
@@ -737,5 +718,4 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive returns server's approved budget for subsequent periods.

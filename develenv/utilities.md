@@ -22,35 +22,27 @@ omitted to conserve space. Each of the permissible paragraph headers and their
 contents are described below:
 
 `SYNOPSIS`
-
 : describes the command syntax
 
 `DESCRIPTION`
-
 : a full description of the command
 
 `OPTIONS`
-
 : describes each of the permissible options for the command
 
 `NOTES`
-
 : lists any special noteworthy comments about the command
 
 `ENVIRONMENT`
-
 : describes all environment variables utilized by the command
 
 `EXAMPLES`
-
 : illustrates the use of the command with specific examples
 
 `FILES`
-
 : provides a list of major files that the command references
 
 `SEE ALSO`
-
 : lists any relevant commands which can be consulted
 
 Most environment variables referenced by the commands are defined for the RTEMS
@@ -67,15 +59,12 @@ notation is used: command(code). Where command is the name of a related
 command, and code is a section number. Valid section numbers are as follows:
 
 `1`
-
 : Section 1 of the standard UNIX documentation
 
 `1G`
-
 : Section 1 of the GNU documentation
 
 `1R`
-
 : a manual page from this document, the RTEMS Development Environment Guide
 
 For example, `ls(1)` means see the standard ls command in section 1 of the
@@ -142,23 +131,18 @@ their outputs logically concatenated into the output file.
 This command has the following options:
 
 `v`
-
 : Verbose
 
 `a base`
-
 : First byte of output corresponds with base address
 
 `l`
-
 : Linear Output
 
 `o file`
-
 : Output File
 
 `F k_bits`
-
 : Fill holes in input with 0xFFs up to k_bits * 1024 bits
 
 **EXAMPLES**

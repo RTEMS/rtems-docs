@@ -46,8 +46,7 @@ scheduler algorithms. After these definitions the configuration file must
 configuration macros.
 
 It is possible to make more than one scheduler algorithm available to the
-application. For example a {ref}`Simple Priority SMP Scheduler
-<SchedulerSMPPrioritySimple>` could be used in a partition for low latency
+application. For example a {ref}`Simple Priority SMP Scheduler <SchedulerSMPPrioritySimple>` could be used in a partition for low latency
 tasks in addition to an {ref}`EDF SMP Scheduler <SchedulerSMPEDF>` for a
 general-purpose cluster. Since the per-thread overhead depends on the
 scheduler algorithm only the scheduler algorithms used by the application
@@ -83,8 +82,7 @@ list of the following scheduler table entry initializers
 
 The `name` parameter must correspond to the parameter defining the scheduler
 data structures of configuration step 2. The `obj_name` determines the
-scheduler object name and can be used in {ref}`rtems_scheduler_ident()
-<rtems_scheduler_ident>` to get the scheduler object identifier. The scheduler
+scheduler object name and can be used in {ref}`rtems_scheduler_ident() <rtems_scheduler_ident>` to get the scheduler object identifier. The scheduler
 index is defined by the index of the scheduler table. It is a configuration
 error to add a scheduler multiple times to the scheduler table.
 

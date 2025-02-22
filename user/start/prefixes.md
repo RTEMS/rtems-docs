@@ -44,8 +44,7 @@ tools and a different one for the RTEMS kernel. You can then update each
 without interacting with the other. You can also have a number of RTEMS
 versions available to test with.
 
-You build and install the tool suite with the {ref}`RTEMS Source Builder (RSB)
-<RSB>`. By default, the RSB will start the prefix path with a host operating
+You build and install the tool suite with the {ref}`RTEMS Source Builder (RSB) <RSB>`. By default, the RSB will start the prefix path with a host operating
 system specific path plus {file}`rtems`, and the RTEMS version, e.g.
 {file}`/opt/rtems/@rtems-ver-major@` on Linux, and {file}`/usr/local/rtems/@rtems-ver-major@` on FreeBSD and
 macOS. Placing the RTEMS version number in the path lets you manage and
@@ -62,8 +61,7 @@ directories under the prefix. For example, you can create a directory
 {file}`/opt/rtems` and give it to a developer group with read, write, and
 execute permissions. Alternatively, you can choose a prefix in your home
 directory, e.g. {file}`$HOME/rtems/@rtems-ver-major@` or with a project-specific component
-{file}`$HOME/project-x/rtems/@rtems-ver-major@`. For more ideas, see the {ref}`project
-sandboxing <ProjectSandboxing>` section. In this quick start chapter, we will
+{file}`$HOME/project-x/rtems/@rtems-ver-major@`. For more ideas, see the {ref}`project sandboxing <ProjectSandboxing>` section. In this quick start chapter, we will
 choose {file}`$HOME/quick-start/rtems/@rtems-ver-major@` for the RTEMS tool suite prefix.
 
 ```{warning}

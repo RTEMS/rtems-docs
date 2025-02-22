@@ -19,46 +19,36 @@ configuration INI file. The waf defaults can be used to inspect the
 values.
 
 `BSP_PRESS_KEY_FOR_RESET`
-
 : If defined to a non-zero value, then print a message and wait until pressed
   before resetting board when application terminates.
 
 `BSP_RESET_BOARD_AT_EXIT`
-
 : If defined to a non-zero value, then reset the board when the application
   terminates.
 
 `BSP_PRINT_EXCEPTION_CONTEXT`
-
 : If defined to a non-zero value, then print the exception context when an
   unexpected exception occurs.
 
 `BSP_FDT_BLOB_SIZE_MAX`
-
 : The maximum size of the device tree blob in bytes (default is 262144).
 
 `CONSOLE_USE_INTERRUPTS`
-
 : Use interrupt driven mode for console devices (enabled by default).
 
 `IMX_CCM_IPG_HZ`
-
 : The IPG clock frequency in Hz (default is 67500000).
 
 `IMX_CCM_UART_HZ`
-
 : The UART clock frequency in Hz (default is 24000000).
 
 `IMX_CCM_ECSPI_HZ`
-
 : The ECSPI clock frequency in Hz (default is 67500000).
 
 `IMX_CCM_AHB_HZ`
-
 : The AHB clock frequency in Hz (default is 135000000).
 
 `IMX_CCM_SDHCI_HZ`
-
 : The SDHCI clock frequency in Hz (default is 196363000).
 
 ## Clock settings for different boards

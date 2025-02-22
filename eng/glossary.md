@@ -9,8 +9,9 @@
 # Glossary
 
 ```{glossary}
-:sorted: true
-
+---
+sorted: true
+---
 API
 
 : This term is an acronym for Application Programming Interface.

@@ -24,22 +24,18 @@ The following models are included in the directory `formal/promela/models/`
 at the top-level in `rtems-central`:
 
 Chains API (`chains/`)
-
 : Models the unprotected chain append and get API calls in the Classic
   Chains API Guide. This was an early model to develop the basic methodology.
 
 Events Manager (`events/`)
-
 : Models the behaviour of all the API calls in the Classic Events Manager API
   Guide. This had to tackle real concurrency and deal with multiple CPUs and priority
   issues.
 
 Barrier Manager (`barriers/`)
-
 : Models the behaviour of all the API calls in then Classic Barrier Manager API.
 
 Message Manager (`messages/`)
-
 : Models the create, send and receive API calls in the Classic Message Manager API.
 
 At the end of this guide is a section that discusses various issues that should be tackled in future work.
@@ -735,11 +731,9 @@ and then obtaining a C template that can be populated with those arguments.
 This refinement is a bridge between two distinct worlds:
 
 > Model World:
->
 > : where the key focus is on correctness and clarity.
 >
 > Code World:
->
 > : where clarity is often sacrificed for efficiency.
 
 This means that the model-to-code relationship
@@ -768,11 +762,9 @@ events are just uninterpreted numbers in the range 0..31,
 encoded as a 32-bit bitset.
 
 `rtems_event_send(id,event_in)`
-
 : allows a task to send a bitset to a designated task
 
 `rtems_event_receive(event_in,option_set,ticks,event_out)`
-
 : allows a task to specify a desired bitset
   with options on what to do if it is not present.
 
@@ -817,20 +809,16 @@ event_send(self,tid,evts,rc)
 
 The four arguments are:
 : `self`
-
-   : id of process modelling the task/IDR making call.
+  : id of process modelling the task/IDR making call.
 
   `tid`
-
-   : id of process modelling the target task of the call.
+  : id of process modelling the target task of the call.
 
   `evts`
-
-   : event set being sent.
+  : event set being sent.
 
   `rc`
-
-   : updated with the return code when the send completes.
+  : updated with the return code when the send completes.
 
 The main complication in the otherwise straightforward model is the requirement
 to preempt under certain circumstances.
@@ -864,17 +852,14 @@ inline event_send(self,tid,evts,rc) {
 Three inline abstractions are used:
 
 `satisfied(task,out,sat)`
-
 : updates `out` with the wanted events received so far, and then checks if a receive has been satisfied. It
   updates its `sat` argument to reflect the check outcome.
 
 `preemptIfRequired(self,tid)`
-
 : forces the sending process to enter the `OtherWait`,
   if circumstances require it.
 
 `waitUntilReady(self)`
-
 : basically waits for the process state to become `Ready`.
 
 #### Event Receive
@@ -889,33 +874,26 @@ event_receive(self,evts,wait,wantall,interval,out,rc)
 
 The seven arguments are:
 : `self`
-
-   : id of process modelling the task making call
+  : id of process modelling the task making call
 
   `evts`
-
-   : input event set
+  : input event set
 
   `wait`
-
-   : true if receive should wait
+  : true if receive should wait
 
   `what`
-
-   : all, or some?
+  : all, or some?
 
   `interval`
-
-   : wait interval (0 waits forever)
+  : wait interval (0 waits forever)
 
   `out`
-
-   : pointer to location for satisfying events when the receive
-  completes.
+  : pointer to location for satisfying events when the receive
+    completes.
 
   `rc`
-
-   : updated with the return code when the receive completes.
+  : updated with the return code when the receive completes.
 
 There is a small complication, in that there are distinct variables in the model
 for receiver options that are combined into a single RTEMS option set. The
@@ -995,26 +973,21 @@ The Event Manager model consists of
 five Promela processes:
 
 `init`
-
 : The first top-level Promela process that performs initialisation,
   starts the other processes, waits for them to terminate, and finishes.
 
 `System`
-
 : A Promela process that models the behaviour of the operating system,
   in particular that of the scheduler.
 
 `Clock`
-
 : A Promela process used to facilitate modelling timeouts.
 
 `Receiver`
-
 : The Promela process modelling the test Runner,
   that also invokes the receive API call.
 
 `Sender`
-
 : A Promela process modelling a singe test Worker
   that invokes the send API call.
 
@@ -1023,23 +996,18 @@ Two simple binary semaphores are used to synchronise the tasks.
 The Task model only looks at an abstracted version of RTEMS Task states:
 
 `Zombie`
-
 : used to model a task that has just terminated. It can only be deleted.
 
 `Ready`
-
 : same as the RTEMS notion of `Ready`.
 
 `EventWait`
-
 : is `Blocked` inside a call of `event_receive()` with no timeout.
 
 `TimeWait`
-
 : is `Blocked` inside a call of `event_receive()` with a timeout.
 
 `OtherWait`
-
 : is `Blocked` for some other reason, which arises in this model when a
   sender gets pre-empted by a higher priority receiver it has just satisfied.
 
@@ -1091,15 +1059,12 @@ bool semaphore[SEMA_MAX]; // Semaphore
 The synchronisation mechanisms are:
 
 `Obtain(sem_id)`
-
 : call that waits to obtain semaphore `sem_id`.
 
 `Release(sem_id)`
-
 : call that releases semaphore `sem_id`
 
 `Released(sem_id)`
-
 : simulates ecosystem behaviour that releases `sem_id`.
 
 The difference between `Release` and `Released` is that the first issues

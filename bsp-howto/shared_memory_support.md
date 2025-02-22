@@ -75,16 +75,13 @@ where the fields are defined as follows:
   structure contains the following fields:
 
   `address`
-
   : is the address to write at to cause an interrupt on that node. For a
     polled node, this should be NULL.
 
   `value`
-
   : is the value to write to cause an interrupt.
 
   `length`
-
   : is the length of the entity to write on the node to cause an interrupt.
     This can be 0 to indicate polled operation, 1 to write a byte, 2 to
     write a sixteen-bit entity, and 4 to write a thirty-two bit entity.
@@ -149,21 +146,17 @@ typedef struct {
 where each field is defined as follows:
 
 `lock`
-
 : is the lock field. Every node in the system must agree on how this field
   will be used. Many processor families provide an atomic "test and set"
   instruction that is used to manage this field.
 
 `front`
-
 : is the index of the first message on this locked queue.
 
 `rear`
-
 : is the index of the last message on this locked queue.
 
 `owner`
-
 : is the node number of the node that currently has this structure locked.
 
 #### Initializing a Shared Lock

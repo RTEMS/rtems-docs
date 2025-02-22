@@ -44,12 +44,10 @@ rtems_status_code rtems_regulator_create(
 ```
 
 `attributes`
-
 : This parameter is the attributes associated with the regulator
   being created.
 
 `regulator`
-
 : This parameter is the pointer to a regulator instance. When the
   directive call is successful, a pointer to the created regulator
   will be stored in this object.
@@ -85,42 +83,33 @@ For each regulator instance, the following resources are allocated:
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `attributes` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `regulator` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `deliverer` field in the structure pointed to by the
   `attributes` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `maximum_messages` field in the structure pointed to by the
   `attributes` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `maximum_to_dequeue_per_period` field in the structure pointed
   to by the `attributes` parameter was 0.
 
 {c:macro}`RTEMS_NO_MEMORY`
-
 : The allocation of memory for the regulator instance failed.
 
 {c:macro}`RTEMS_NO_MEMORY`
-
 : The allocation of memory for the buffers failed.
 
 {c:macro}`RTEMS_NO_MEMORY`
-
 : The allocation of memory for the internal message queue failed.
 
 ```{eval-rst}
@@ -184,11 +173,9 @@ rtems_status_code rtems_regulator_delete(
 ```
 
 `regulator`
-
 : This parameter points to the regulator instance.
 
 `ticks`
-
 : This parameter specifies the maximum length of time to wait.
 
 ```{eval-rst}
@@ -211,23 +198,18 @@ request the thread to voluntarily exit. This call will wait up to `ticks` for th
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `regulator` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The `regulator` instance was not initialized.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The `regulator` instance has buffers outstanding.
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The `regulator` instance was not able to be deleted within the
   specific number of `ticks`.
 
@@ -292,11 +274,9 @@ rtems_status_code rtems_regulator_obtain_buffer(
 ```
 
 `regulator`
-
 : This parameter is the regulator instance to operate upon.
 
 `buffer`
-
 : This parameter will point to the buffer allocated.
 
 ```{eval-rst}
@@ -320,15 +300,12 @@ attributes passed in to {ref}`InterfaceRtemsRegulatorCreate`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `regulator` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The `regulator` instance was not initialized.
 
 ```{eval-rst}
@@ -382,11 +359,9 @@ rtems_status_code rtems_regulator_release_buffer(
 ```
 
 `regulator`
-
 : This parameter is the regulator instance to operate upon.
 
 `buffer`
-
 : This parameter will point to the buffer to be released.
 
 ```{eval-rst}
@@ -411,15 +386,12 @@ thread and released.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `regulator` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The `regulator` instance was not initialized.
 
 ```{eval-rst}
@@ -474,15 +446,12 @@ rtems_status_code rtems_regulator_send(
 ```
 
 `regulator`
-
 : This parameter is the regulator instance to operate upon.
 
 `message`
-
 : This parameter points to the buffer to send.
 
 `length`
-
 : This parameter specifies the number of bytes in the `message`.
 
 ```{eval-rst}
@@ -517,15 +486,12 @@ should be increased
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `regulator` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The `regulator` instance was not initialized.
 
 ```{eval-rst}
@@ -579,11 +545,9 @@ rtems_status_code rtems_regulator_get_statistics(
 ```
 
 `regulator`
-
 : This parameter is the regulator instance to operate upon.
 
 `statistics`
-
 : This parameter points to the statistics structure to be filled in.
 
 ```{eval-rst}
@@ -601,7 +565,7 @@ provided includes:
 - the number of buffers delivered by the Delivery
   Thread via the `deliverer` function specified in the
   {ref}`InterfaceRtemsRegulatorAttributes` structure provided to
-  {ref}`InterfaceRtemsRegulatorCreate`` via the `attibutes` parameter.
+  {ref}`InterfaceRtemsRegulatorCreate``via the`attibutes\` parameter.
 - the `period_statistics` for the Delivery Thread. For more details on
   period statistics, see {ref}`InterfaceRtemsRateMonotonicPeriodStatistics`.
 
@@ -610,15 +574,12 @@ provided includes:
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `regulator` or `statistics` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The `regulator` instance was not initialized.
 
 ```{eval-rst}

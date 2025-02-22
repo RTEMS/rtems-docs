@@ -96,7 +96,6 @@ int pthread_mutexattr_init(
 **STATUS CODES:**
 
 *EINVAL*
-
 : The attribute pointer argument is invalid.
 
 **DESCRIPTION:**

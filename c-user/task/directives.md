@@ -78,27 +78,21 @@ rtems_status_code rtems_task_create(
 ```
 
 `name`
-
 : This parameter is the object name of the task.
 
 `initial_priority`
-
 : This parameter is the initial task priority.
 
 `stack_size`
-
 : This parameter is the task stack size in bytes.
 
 `initial_modes`
-
 : This parameter is the initial mode set of the task.
 
 `attribute_set`
-
 : This parameter is the attribute set of the task.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created task will
   be stored in this object.
@@ -237,29 +231,23 @@ all tasks. Consult the *RTEMS CPU Architecture Supplement* for the details.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The `initial_priority` was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a task. The number of
   tasks available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TASKS` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : In multiprocessing configurations, there was no inactive global object
   available to create a global task. The number of global objects available
   to the application is configured through the
@@ -267,21 +255,17 @@ all tasks. Consult the *RTEMS CPU Architecture Supplement* for the details.
   option.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There was not enough memory to allocate the task storage area. The task
   storage area contains the task stack, the thread-local storage, and the
   floating point context.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : One of the task create extensions failed to create the task.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : In SMP configurations, the non-preemption mode was not supported.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : In SMP configurations, the interrupt level mode was not supported.
 
 ```{eval-rst}
@@ -361,12 +345,10 @@ rtems_status_code rtems_task_construct(
 ```
 
 `config`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTaskConfig` object.
   It configures the task.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the constructed task
   will be stored in this object.
@@ -376,34 +358,27 @@ rtems_status_code rtems_task_construct(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `config` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The task name was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The initial task priority was invalid.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The thread-local storage size is greater than the maximum thread-local
   storage size specified in the task configuration. The thread-local storage
   size is determined by the thread-local variables used by the application
   and {ref}`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The task storage area was too small to provide a task stack of the
   configured minimum size, see {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`. The
   task storage area contains the task stack, the thread-local storage, and
@@ -411,24 +386,19 @@ rtems_status_code rtems_task_construct(
   context.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive task object available to construct a task.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : In multiprocessing configurations, there was no inactive global object
   available to construct a global task.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : One of the task create extensions failed during the task construction.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : In SMP configurations, the non-preemption mode was not supported.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : In SMP configurations, the interrupt level mode was not supported.
 
 ```{eval-rst}
@@ -515,15 +485,12 @@ rtems_status_code rtems_task_ident(
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `node`
-
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -552,19 +519,15 @@ The node to search is specified in `node`. It shall be
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the specified nodes.
 
 {c:macro}`RTEMS_INVALID_NODE`
-
 : In multiprocessing configurations, the specified node was invalid.
 
 ```{eval-rst}
@@ -681,16 +644,13 @@ rtems_status_code rtems_task_start(
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `entry_point`
-
 : This parameter is the task entry point.
 
 `argument`
-
 : This parameter is the task entry point argument.
 
 ```{eval-rst}
@@ -707,23 +667,18 @@ entry point argument is contained in `argument`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `entry_point` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The task was not in the dormant state.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -787,12 +742,10 @@ rtems_status_code rtems_task_restart(
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `argument`
-
 : This parameter is the task entry point argument.
 
 ```{eval-rst}
@@ -811,19 +764,15 @@ except the dormant state. The task's entry point argument is contained in
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The task never started.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -890,7 +839,6 @@ rtems_status_code rtems_task_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
@@ -906,24 +854,19 @@ specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The task termination procedure was started, however, waiting for the
   terminating task would have resulted in a deadlock.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -1083,7 +1026,6 @@ rtems_status_code rtems_task_suspend( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
@@ -1103,19 +1045,15 @@ directive will also remove the suspended state.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_ALREADY_SUSPENDED`
-
 : The task was already suspended.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -1170,7 +1108,6 @@ rtems_status_code rtems_task_resume( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the task identifier.
 
 ```{eval-rst}
@@ -1187,15 +1124,12 @@ suspension is removed, then it will remain in that blocked state.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The task was not suspended.
 
 ```{eval-rst}
@@ -1241,7 +1175,6 @@ rtems_status_code rtems_task_is_suspended( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
@@ -1257,19 +1190,15 @@ specified by `id` is currently suspended.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The task was **not** suspended.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_ALREADY_SUSPENDED`
-
 : The task was suspended.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -1327,17 +1256,14 @@ rtems_status_code rtems_task_set_priority(
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `new_priority`
-
 : This parameter is the new real priority or
   {c:macro}`RTEMS_CURRENT_PRIORITY` to get the current priority.
 
 `old_priority`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
   object. When the directive call is successful, the current or previous
   priority of the task with respect to its {term}`home scheduler` will be
@@ -1358,19 +1284,15 @@ current priority is returned in `old_priority`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `old_priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The task priority specified in `new_priority` was invalid with respect to
   the {term}`home scheduler` of the task.
 
@@ -1447,16 +1369,13 @@ rtems_status_code rtems_task_get_priority(
 ```
 
 `task_id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `scheduler_id`
-
 : This parameter is the scheduler identifier.
 
 `priority`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
   object. When the directive call is successful, the current priority of the
   task with respect to the specified scheduler will be stored in this object.
@@ -1474,28 +1393,22 @@ specified by `task_id` with respect to the scheduler specified by
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `task_id`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The task had no priority with respect to the scheduler.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -1567,19 +1480,16 @@ rtems_status_code rtems_task_mode(
 ```
 
 `mode_set`
-
 : This parameter is the mode set to apply to the calling task. When `mask`
   is set to {c:macro}`RTEMS_CURRENT_MODE`, the value of this parameter is
   ignored. Only modes requested by `mask` are applied to the calling task.
 
 `mask`
-
 : This parameter is the mode mask which specifies which modes in `mode_set`
   are applied to the calling task. When the value is
   {c:macro}`RTEMS_CURRENT_MODE`, the mode of the calling task is not changed.
 
 `previous_mode_set`
-
 : This parameter is the pointer to an {c:type}`rtems_mode` object. When the
   directive call is successful, the mode of the task before any mode changes
   done by the directive call will be stored in this object.
@@ -1661,17 +1571,14 @@ actually supported by the target processor in a processor dependent fashion.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
-
 : The {c:macro}`RTEMS_NO_PREEMPT` was set in `mode_set` and setting the
   preemption mode was requested by {c:macro}`RTEMS_PREEMPT_MASK` in `mask`
   and the system configuration had no implementation for this mode.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
-
 : The {c:func}`RTEMS_INTERRUPT_LEVEL` was set to a positive level in
   `mode_set` and setting the interrupt level was requested by
   {c:macro}`RTEMS_INTERRUPT_MASK` in `mask` and the system configuration
@@ -1727,7 +1634,6 @@ rtems_status_code rtems_task_wake_after( rtems_interval ticks );
 ```
 
 `ticks`
-
 : This parameter is the count of {term}`clock ticks <clock tick>` to delay
   the task or {c:macro}`RTEMS_YIELD_PROCESSOR` to yield the processor.
 
@@ -1747,7 +1653,6 @@ give up the processor and remain in the ready state by specifying a value of
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 ```{eval-rst}
@@ -1810,7 +1715,6 @@ rtems_status_code rtems_task_wake_when( const rtems_time_of_day *time_buffer );
 ```
 
 `time_buffer`
-
 : This parameter is the date and time to wake up.
 
 ```{eval-rst}
@@ -1826,19 +1730,15 @@ unblocked and made ready to execute.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The system date and time was not set.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `time_buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
-
 : The time of day was invalid.
 
 ```{eval-rst}
@@ -1893,15 +1793,12 @@ rtems_status_code rtems_task_get_scheduler(
 ```
 
 `task_id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `scheduler_id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the {term}`home
-  scheduler` of the task will be stored in this object.
+  the directive call is successful, the identifier of the {term}`home scheduler` of the task will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1915,19 +1812,15 @@ specified by `task_id` in `scheduler_id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `scheduler_id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `task_id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -1973,17 +1866,13 @@ rtems_status_code rtems_task_set_scheduler(
 ```
 
 `task_id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `scheduler_id`
-
-: This parameter is the scheduler identifier of the new {term}`home
-  scheduler` for the task specified by `task_id`.
+: This parameter is the scheduler identifier of the new {term}`home scheduler` for the task specified by `task_id`.
 
 `priority`
-
 : This parameter is the new real priority for the task with respect to the
   scheduler specified by `scheduler_id`.
 
@@ -1999,51 +1888,40 @@ This directive sets the {term}`home scheduler` to the scheduler specified by
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no scheduler associated with the identifier specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The {term}`task priority` specified by `priority` was invalid with
   respect to the scheduler specified by `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `task_id`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The task specified by `task_id` was enqueued on a {term}`wait queue`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The task specified by `task_id` had a {term}`current priority` which
   consisted of more than the {term}`real priority`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The task specified by `task_id` had a {term}`helping scheduler`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The task specified by `task_id` was pinned.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The scheduler specified by `scheduler_id` owned no processor.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The scheduler specified by `scheduler_id` did not support the affinity
   set of the task specified by `task_id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -2090,17 +1968,14 @@ rtems_status_code rtems_task_get_affinity(
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `cpusetsize`
-
 : This parameter is the size of the processor set referenced by `cpuset` in
   bytes.
 
 `cpuset`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. When the
   directive call is successful, the processor affinity set of the task will
   be stored in this object. A set bit in the processor set means that the
@@ -2119,24 +1994,19 @@ task specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The size specified by `cpusetsize` of the processor set was too small for
   the processor affinity set of the task.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -2182,17 +2052,14 @@ rtems_status_code rtems_task_set_affinity(
 ```
 
 `id`
-
 : This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
   may be used to specify the calling task.
 
 `cpusetsize`
-
 : This parameter is the size of the processor set referenced by `cpuset` in
   bytes.
 
 `cpuset`
-
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. The
   processor set defines the new processor affinity set of the task. A set
   bit in the processor set means that the corresponding processor shall be in
@@ -2209,24 +2076,19 @@ This directive sets the processor affinity of the task specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The referenced processor set was not a valid new processor affinity set for
   the task.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The task resided on a remote node.
 
 ```{eval-rst}
@@ -2269,11 +2131,9 @@ void rtems_task_iterate( rtems_task_visitor visitor, void *arg );
 ```
 
 `visitor`
-
 : This parameter is the visitor routine invoked for each task.
 
 `arg`
-
 : This parameter is the argument passed to each visitor routine invocation
   during the iteration.
 
@@ -2334,12 +2194,10 @@ size_t RTEMS_TASK_STORAGE_SIZE( size_t size, rtems_attribute attributes );
 ```
 
 `size`
-
 : This parameter is the size dedicated to the task stack and thread-local
   storage in bytes.
 
 `attributes`
-
 : This parameter is the attribute set of the task using the storage area.
 
 ```{eval-rst}

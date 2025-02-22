@@ -11,8 +11,9 @@
 # Glossary
 
 ```{glossary}
-:sorted: true
-
+---
+sorted: true
+---
 ABI
 
 : This term is an acronym for Application Binary Interface.

@@ -284,51 +284,41 @@ options given at the configure command line have to be added to the BSP section
 in the configuration file.
 
 `--target=${arch}-rtems6` `--enable-rtembsp=${bsp}`
-
 : To build a BSP add `[${arch}/${bsp}]` to the configuration file.
 
 `--enable-ada` | `--disable-ada`
-
 : Set `__RTEMS_ADA__` to `True` or `False` in the BSP section of
   the configuration file.
 
 `--enable-multiprocessing` | `--disable-multiprocessing`
-
 : Set `RTEMS_MULTIPROCESSING` to `True` or `False` in the BSP
   section of the configuration file.
 
 `--enable-paravirt` | `--disable-paravirt`
-
 : Set `RTEMS_PARAVIRT` to `True` or `False` in the BSP section of
   the configuration file.
 
 `--enable-profiling` | `--disable-profiling`
-
 : Set `RTEMS_PROFILING` to `True` or `False` in the BSP section of
   the configuration file.
 
 `--enable-posix` | `--disable-posix`
-
 : Set `RTEMS_POSIX_API` to `True` or `False` in the BSP section of
   the configuration file.
 
 `--enable-rtems-debug` | `--disable-rtems-debug`
-
 : Set `RTEMS_DEBUG` to `True` or `False` in the BSP section of the
   configuration file.
 
 `--enable-smp` | `--disable-smp`
-
 : Set `RTEMS_SMP` to `True` or `False` in the BSP section of the
   configuration file.
 
 `--enable-tests` | `--disable-tests`
-
 : Set `BUILD_TESTS` to `True` or `False` in the BSP section of the
   configuration file.
 
 `--enable-tests=samples`
-
 : Set `BUILD_SAMPLES` to `True` or `False` in the BSP section of
   the configuration file.
 

@@ -137,23 +137,19 @@ DESCRIPTION:
     The options are:
 
     `-u`
-
     : List the system wide unresolved externals. Symbols are not displayed
       when displaying unresolved externals.
 
     `-o name`
-
     : Display the symbols for the matching object files. The name is a
       regular expression and it is a partial match.
 
     `-b`
-
     : Include the base kernel image in the list of object modules. It is not
       included by default. If this option is included the base kernel module
       name of `rtems-kernel` can be used as a `name`.
 
     `symbol`
-
     : The optional `symbol` argument is a regular expression filter for the
       symbols. The match is partial. If no symbol argument is provided all
       symbols and their values are displayed.
@@ -342,11 +338,9 @@ DESCRIPTION:
     The options are:
 
     `-l`
-
     : List the available flags that can be cleared or set.
 
     `-?`
-
     : A `trace` command specific help
 
     The flags are:

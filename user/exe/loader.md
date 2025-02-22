@@ -39,10 +39,11 @@ executable. This is a core requirement of the RTEMS link editor.
 (fig-dl-libdl)=
 
 ```{figure} ../../images/user/libdl.png
-:alt: Run Time Loader (libdl)
-:figclass: align-center
-:width: 95%
-
+---
+alt: Run Time Loader (libdl)
+figclass: align-center
+width: 95%
+---
 Run Time Loader (libdl)
 ```
 
@@ -235,14 +236,12 @@ follow.
   of the following values:
 
   `RTLD_GLOBAL`
-
   : The executable object file's symbols are made available for relocation
     processing of any other executable object file. In addition, symbol lookup
     using `dlopen(NULL,mode)` and an associated `dlsym()` allows
     executable object files loaded with this mode to be searched.
 
   `RTLD_LOCAL`
-
   : The executable object file's symbols shall not be made available for
     relocation processing of any other executable object files.
 
@@ -325,7 +324,6 @@ follow.
 > `args` depend on value of the `request` argument provided by the caller.
 >
 > `RTLD_DI_UNRESOLVED`
->
 > : Return `1` in an indexer value pointed to by `args` if the symbol table
 >   handle has unresolved relocation records to symbols. If the `handle` is the
 >   global symbol table handle or `RTLD_SELF` return `1` if any unresolved
@@ -338,7 +336,6 @@ follow.
 ```
 
 `const char *dlerror(void);`
-
 : The `dlerror()` function returns a null-terminated character string (with no
   trailing `<newline>`) that describes the last error that occurred during
   dynamic linking processing. If no dynamic linking errors have occurred since
@@ -612,10 +609,11 @@ automatically unloaded and removed from the address space.
 (fig-dl-libs)=
 
 ```{figure} ../../images/user/libdl-load.png
-:alt: Loading Executable Object Files
-:figclass: align-center
-:width: 65%
-
+---
+alt: Loading Executable Object Files
+figclass: align-center
+width: 65%
+---
 Loading Executable Object Files
 ```
 
@@ -736,7 +734,6 @@ calls. The `rtems_rtl_alloc_tags` are:
 > ```
 >
 > `RTEMS_RTL_ALLOC_OBJECT`
->
 > : Allocate a generic object. The link editor uses this memory for data
 >   structures it uses to manage the linking process and resident executable
 >   object files.
@@ -745,28 +742,24 @@ calls. The `rtems_rtl_alloc_tags` are:
 > ```
 >
 > `RTEMS_RTL_ALLOC_SYMBOL`
->
 > : Allocate memory to hold symbol data.
 >
 > ```{index} RTEMS_RTL_ALLOC_EXTERNAL
 > ```
 >
 > `RTEMS_RTL_ALLOC_EXTERNAL`
->
 > : Allocate memory for unresolved external symbols.
 >
 > ```{index} RTEMS_RTL_ALLOC_READ
 > ```
 >
 > `RTEMS_RTL_ALLOC_READ`
->
 > : Allocate memory for read-only data such as constants and exception tables.
 >
 > ```{index} RTEMS_RTL_ALLOC_READ_WRITE
 > ```
 >
 > `RTEMS_RTL_ALLOC_READ_WRITE`
->
 > : Allocate memory for read-write data such as a initialised, uninitialized and
 >   common variables.
 >
@@ -774,7 +767,6 @@ calls. The `rtems_rtl_alloc_tags` are:
 > ```
 >
 > `RTEMS_RTL_ALLOC_READ_EXEC`
->
 > : Allocate memory for code to be executed in. The address space is configure for
 >   read and execute.
 
@@ -790,14 +782,12 @@ The commands are used to control the action the allocator performs. The
 > ```
 >
 > `RTEMS_RTL_ALLOC_NEW`
->
 > : Allocate memory of the `tag` type. Returns `NULL` if the allocation fails.
 >
 > ```{index} RTEMS_RTL_ALLOC_DEL
 > ```
 >
 > `RTEMS_RTL_ALLOC_DEL`
->
 > : Delete a previous allocation freeing the memory. The `tag` has to match
 >   address of the memory being deleted.
 >
@@ -805,7 +795,6 @@ The commands are used to control the action the allocator performs. The
 > ```
 >
 > `RTEMS_RTL_ALLOC_WR_ENABLE`
->
 > : Enable writes to a region of memory previously allocated. The `tag` has to
 >   match the address of the memory being write enabled. The link editor may call
 >   issue this command for memory that is already write enabled.
@@ -814,7 +803,6 @@ The commands are used to control the action the allocator performs. The
 > ```
 >
 > `RTEMS_RTL_ALLOC_WR_DISABLE`
->
 > : Disable writes to a region of memory previously allocated. The `tag` has to
 >   match address of the memory being write disabled. The link editor may call
 >   issue this command for memory that is writable and not to be write
@@ -839,7 +827,6 @@ typedef void (*rtems_rtl_allocator)(rtems_rtl_alloc_cmd cmd,
 The arguments are:
 
 `cmd`
-
 : The command to action. See [rtems_rtl_alloc_cmd].
 
 `tag`
@@ -849,13 +836,11 @@ The arguments are:
 > [rtems_rtl_alloc_tags].
 
 `address`
-
 : Pointer to the address. This is set of the `RTEMS_RTL_ALLOC_OBJECT` command
   and read for the other commands. The `tag` must match the address for
   commands that read the address from the pointer.
 
 `size`
-
 : The size of the memory to allocate. This is only valid for the
   `RTEMS_RTL_ALLOC_OBJECT` command.
 

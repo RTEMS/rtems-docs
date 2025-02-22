@@ -29,6 +29,7 @@ There are many ways in which you can configure this path (or even choose not
 to), depending on how frequently you will be debugging applications.
 
 1. *Suggested safe method*
+
    : A less easy (but safer) way, would be to only add specific paths as safe to
      your `~/.gdbinit` file. For example, if you only use trusted applications
      in your `/home/user/*` directory, you can add it to the list of paths GDB
@@ -40,6 +41,7 @@ to), depending on how frequently you will be debugging applications.
 
      You can add any number of paths as trusted using this method.
 2. *Lazy unsafe method*
+
    : The easiest (and most unsafe) way is to add this line to your `~/.gdbinit`
      file:
 
@@ -53,6 +55,7 @@ to), depending on how frequently you will be debugging applications.
      use it at your own discretion and only load trusted executables in GDB.
      ```
 3. *One time solution*
+
    : If you are only going to be debugging an application a handful of times, you
      can utilise GDB's command line options to do so. To enable auto-loading for
      your application for a single session only, you can invoke GDB like so:
@@ -80,10 +83,11 @@ this setup:
 (fig-exe-debug-qemu)=
 
 ```{figure} ../../images/user/exe-debug-qemu.png
-:alt: QEMU Executable Debugging
-:figclass: align-center
-:width: 70%
-
+---
+alt: QEMU Executable Debugging
+figclass: align-center
+width: 70%
+---
 QEMU Executable Debugging
 ```
 
@@ -93,6 +97,7 @@ this example, but it can be generalised for any architecture/BSP pair.
 ### Steps to Set Up Remote Debugging with QEMU
 
 1. *Start the Debug Agent (GDB Server) on the Target*
+
    : The debug agent needs to be running on the target system, or in the case of
      a simulator like QEMU, it is started as part of the simulation.
 
@@ -115,6 +120,7 @@ this example, but it can be generalised for any architecture/BSP pair.
      - `-s`: enables GDB to debug. The server is begun by default locally at
        port `1234`
 2. *Connect GDB to the Debug Agent from the Host*
+
    : On the host system, start GDB and connect it to the debug agent running on
      the target system
 
@@ -127,6 +133,7 @@ this example, but it can be generalised for any architecture/BSP pair.
      `<port>` with the port number where the GDB server is listening (e.g.,
      `localhost:1234` if using QEMU).
 3. *Debugging commands*
+
    : Once connected, the code needs to be loaded before it can be run.
 
      ```none
@@ -151,10 +158,11 @@ processor and architecture. Common functions include:
 (fig-exe-debug-jtag)=
 
 ```{figure} ../../images/user/exe-debug-jtag.png
-:alt: OpenOCD JTAG Executable Debugging
-:figclass: align-center
-:width: 70%
-
+---
+alt: OpenOCD JTAG Executable Debugging
+figclass: align-center
+width: 70%
+---
 OpenOCD JTAG Executable Debugging
 ```
 
@@ -169,9 +177,10 @@ stop model debug experience.
 (fig-exe-debug-libdebugger)=
 
 ```{figure} ../../images/user/exe-debug-libdebugger.png
-:alt: Libdebugger Executable Debugging
-:figclass: align-center
-:width: 70%
-
+---
+alt: Libdebugger Executable Debugging
+figclass: align-center
+width: 70%
+---
 Libdebugger Executable Debugging
 ```

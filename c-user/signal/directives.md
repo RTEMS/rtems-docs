@@ -77,11 +77,9 @@ rtems_status_code rtems_signal_catch(
 ```
 
 `asr_handler`
-
 : This parameter is the handler to process an asynchronous signal set.
 
 `mode_set`
-
 : This parameter is the task mode while an asynchronous signal set is
   processed by the handler. See {ref}`InterfaceRtemsTaskMode`.
 
@@ -103,16 +101,13 @@ execution mode while the ASR is executing.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
-
 : The {c:macro}`RTEMS_NO_PREEMPT` was set in `mode_set` and the system
   configuration had no implementation for this mode.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
-
 : The {c:func}`RTEMS_INTERRUPT_LEVEL` was set to a positive level in
   `mode_set` and the system configuration had no implementation for this
   mode.
@@ -176,12 +171,10 @@ rtems_status_code rtems_signal_send(
 ```
 
 `id`
-
 : This parameter is the identifier of the target task to receive the signal
   set.
 
 `signal_set`
-
 : This parameter is the signal set to send.
 
 ```{eval-rst}
@@ -203,19 +196,15 @@ is caught and the ASR will execute the next time the task is dispatched to run.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `signal_set` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The target task had no valid ASR installed.
 
 ```{eval-rst}

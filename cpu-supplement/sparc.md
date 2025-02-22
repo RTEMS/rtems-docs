@@ -473,11 +473,11 @@ Doubleword load and store operations must use a pair of registers as their
 source or destination. This pair of registers must be an adjacent pair of
 registers with the first of the pair being even numbered. For example, a valid
 destination for a doubleword load might be input registers 0 and 1 (i0 and i1).
-The pair i1 and i2 would be invalid. [NOTE: Some assemblers for the SPARC do
+The pair i1 and i2 would be invalid. \[NOTE: Some assemblers for the SPARC do
 not generate an error if an odd numbered register is specified as the beginning
 register of the pair. In this case, the assembler assumes that what the
 programmer meant was to use the even-odd pair which ends at the specified
-register. This may or may not have been a correct assumption.]
+register. This may or may not have been a correct assumption.\]
 
 RTEMS does not support any SPARC Memory Management Units, therefore, virtual
 memory or segmentation systems involving the SPARC are not supported.
@@ -626,14 +626,14 @@ previous level upon completion of the section. RTEMS has been optimized to
 ensure that interrupts are disabled for less than RTEMS_MAXIMUM_DISABLE_PERIOD
 microseconds on a RTEMS_MAXIMUM_DISABLE_PERIOD_MHZ Mhz ERC32 with zero wait
 states. These numbers will vary based the number of wait states and processor
-speed present on the target board. [NOTE: The maximum period with interrupts
+speed present on the target board. \[NOTE: The maximum period with interrupts
 disabled is hand calculated. This calculation was last performed for Release
-RTEMS_RELEASE_FOR_MAXIMUM_DISABLE_PERIOD.]
+RTEMS_RELEASE_FOR_MAXIMUM_DISABLE_PERIOD.\]
 
-[NOTE: It is thought that the length of time at which the processor interrupt
+\[NOTE: It is thought that the length of time at which the processor interrupt
 level is elevated to fifteen by RTEMS is not anywhere near as long as the
 length of time ALL traps are disabled as part of the "flush all register
-windows" operation.]
+windows" operation.\]
 
 Non-maskable interrupts (NMI) cannot be disabled, and ISRs which execute at
 this level MUST NEVER issue RTEMS system calls. If a directive is invoked,

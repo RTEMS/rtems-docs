@@ -77,25 +77,20 @@ rtems_status_code rtems_message_queue_create(
 ```
 
 `name`
-
 : This parameter is the object name of the message queue.
 
 `count`
-
 : This parameter is the maximum count of pending messages supported by the
   message queue.
 
 `max_message_size`
-
 : This parameter is the maximum size in bytes of a message supported by the
   message queue.
 
 `attribute_set`
-
 : This parameter is the attribute set of the message queue.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created message
   queue will be stored in this object.
@@ -150,34 +145,27 @@ empty message queue.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `count` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `max_message_size` parameter was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a message queue. The
   number of message queue available to the application is configured through
   the {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` application configuration
   option.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : In multiprocessing configurations, there was no inactive global object
   available to create a global message queue. The number of global objects
   available to the application is configured through the
@@ -185,12 +173,10 @@ empty message queue.
   option.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The product of `count` and `max_message_size` is greater than the
   maximum storage size.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There was not enough memory available in the RTEMS Workspace to allocate
   the message buffers for the message queue.
 
@@ -265,12 +251,10 @@ rtems_status_code rtems_message_queue_construct(
 ```
 
 `config`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsMessageQueueConfig`
   object. It configures the message queue.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the constructed message
   queue will be stored in this object.
@@ -280,57 +264,45 @@ rtems_status_code rtems_message_queue_construct(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `config` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The message queue name in the configuration was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The maximum number of pending messages in the configuration was zero.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The maximum message size in the configuration was zero.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive message queue object available to construct a message
   queue.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : In multiprocessing configurations, there was no inactive global object
   available to construct a global message queue.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The maximum message size in the configuration was too big and resulted in
   integer overflows in calculations carried out to determine the size of the
   message buffer area.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The maximum number of pending messages in the configuration was too big and
   resulted in integer overflows in calculations carried out to determine the
   size of the message buffer area.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The message queue storage area begin pointer in the configuration was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The message queue storage area size in the configuration was not equal to
   the size calculated from the maximum number of pending messages and the
   maximum message size.
@@ -406,15 +378,12 @@ rtems_status_code rtems_message_queue_ident(
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `node`
-
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -440,23 +409,18 @@ The node to search is specified in `node`. It shall be
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the specified nodes.
 
 {c:macro}`RTEMS_INVALID_NODE`
-
 : In multiprocessing configurations, the specified node was invalid.
 
 ```{eval-rst}
@@ -522,7 +486,6 @@ rtems_status_code rtems_message_queue_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the message queue identifier.
 
 ```{eval-rst}
@@ -539,16 +502,13 @@ queue was deleted.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no message queue associated with the identifier specified by
   `id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The message queue resided on a remote node.
 
 ```{eval-rst}
@@ -623,15 +583,12 @@ rtems_status_code rtems_message_queue_send(
 ```
 
 `id`
-
 : This parameter is the queue identifier.
 
 `buffer`
-
 : This parameter is the begin address of the message buffer to send.
 
 `size`
-
 : This parameter is the size in bytes of the message buffer to send.
 
 ```{eval-rst}
@@ -650,25 +607,20 @@ is then placed at the rear of the queue.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The size of the message exceeded the maximum message size of the queue as
   defined by {ref}`InterfaceRtemsMessageQueueCreate` or
   {ref}`InterfaceRtemsMessageQueueConstruct`.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The maximum number of pending messages supported by the queue as defined by
   {ref}`InterfaceRtemsMessageQueueCreate` or
   {ref}`InterfaceRtemsMessageQueueConstruct` has been reached.
@@ -722,15 +674,12 @@ rtems_status_code rtems_message_queue_urgent(
 ```
 
 `id`
-
 : This parameter is the queue identifier.
 
 `buffer`
-
 : This parameter is the begin address of the message buffer to send urgently.
 
 `size`
-
 : This parameter is the size in bytes of the message buffer to send urgently.
 
 ```{eval-rst}
@@ -749,25 +698,20 @@ is then placed at the front of the queue.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The size of the message exceeded the maximum message size of the queue as
   defined by {ref}`InterfaceRtemsMessageQueueCreate` or
   {ref}`InterfaceRtemsMessageQueueConstruct`.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The maximum number of pending messages supported by the queue as defined by
   {ref}`InterfaceRtemsMessageQueueCreate` or
   {ref}`InterfaceRtemsMessageQueueConstruct` has been reached.
@@ -822,19 +766,15 @@ rtems_status_code rtems_message_queue_broadcast(
 ```
 
 `id`
-
 : This parameter is the queue identifier.
 
 `buffer`
-
 : This parameter is the begin address of the message buffer to broadcast.
 
 `size`
-
 : This parameter is the size in bytes of the message buffer to broadcast.
 
 `count`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the number of unblocked tasks will be stored
   in this object.
@@ -854,23 +794,18 @@ returned in `count`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `count` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The size of the message exceeded the maximum message size of the queue as
   defined by {ref}`InterfaceRtemsMessageQueueCreate` or
   {ref}`InterfaceRtemsMessageQueueConstruct`.
@@ -934,11 +869,9 @@ rtems_status_code rtems_message_queue_receive(
 ```
 
 `id`
-
 : This parameter is the queue identifier.
 
 `buffer`
-
 : This parameter is the begin address of the buffer to receive the message.
   The buffer shall be large enough to receive a message of the maximum length
   of the queue as defined by {ref}`InterfaceRtemsMessageQueueCreate` or
@@ -946,18 +879,15 @@ rtems_status_code rtems_message_queue_receive(
   be used to specify the size of the buffer.
 
 `size`
-
 : This parameter is the pointer to a [size_t](https://en.cppreference.com/w/c/types/size_t) object. When the
   directive call is successful, the size in bytes of the received messages
   will be stored in this object. This parameter cannot be used to specify
   the size of the buffer.
 
 `option_set`
-
 : This parameter is the option set.
 
 `timeout`
-
 : This parameter is the timeout in {term}`clock ticks <clock tick>` if the
   {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to
   wait potentially forever.
@@ -1012,32 +942,25 @@ queue.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `size` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The queue was empty.
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The timeout happened while the calling task was waiting to receive a
   message
 
 {c:macro}`RTEMS_OBJECT_WAS_DELETED`
-
 : The queue was deleted while the calling task was waiting to receive a
   message.
 
@@ -1092,11 +1015,9 @@ rtems_status_code rtems_message_queue_get_number_pending(
 ```
 
 `id`
-
 : This parameter is the queue identifier.
 
 `count`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the number of pending messages will be stored
   in this object.
@@ -1114,15 +1035,12 @@ zero.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `count` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -1168,11 +1086,9 @@ rtems_status_code rtems_message_queue_flush( rtems_id id, uint32_t *count );
 ```
 
 `id`
-
 : This parameter is the queue identifier.
 
 `count`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the number of pending messages removed from
   the queue will be stored in this object.
@@ -1190,15 +1106,12 @@ present on the queue, count is set to zero.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `count` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -1248,7 +1161,6 @@ RTEMS_MESSAGE_QUEUE_BUFFER( size_t maximum_message_size );
 ```
 
 `maximum_message_size`
-
 : This parameter is the maximum message size in bytes.
 
 ```{eval-rst}

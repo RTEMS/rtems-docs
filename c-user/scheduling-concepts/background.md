@@ -214,9 +214,11 @@ task is now permitted to be scheduled for the processor and to compete for
 other system resources.
 
 ```{figure} ../../images/c_user/states.png
-:align: center
-:alt: Task State Transitions
-:width: 70%
+---
+align: center
+alt: Task State Transitions
+width: 70%
+---
 ```
 
 A task occupies the blocked state whenever it is unable to be scheduled to run.

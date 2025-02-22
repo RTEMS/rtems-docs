@@ -226,8 +226,8 @@ what you are actually reading this wiki page for: adding Doxygen to the
 bsps/ directory. Let's start with some Doxygen basics. Skip this if you
 are already comfortable with Doxygen.
 
-In addition to this, check out the page on [Doxygen Recommendations
-\<wiki:Developer/Coding/Doxygen >][doxygen recommendations <wiki:developer/coding/doxygen >]. , which also contains a fair amount
+In addition to this, check out the page on \[Doxygen Recommendations
+\<wiki:Developer/Coding/Doxygen >\][doxygen recommendations \<wiki:developer/coding/doxygen >]. , which also contains a fair amount
 of information that will not be covered here.
 
 ## Doxygen Basics

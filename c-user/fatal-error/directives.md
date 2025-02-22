@@ -77,11 +77,9 @@ void rtems_fatal(
 ```
 
 `fatal_source`
-
 : This parameter is the fatal source.
 
 `fatal_code`
-
 : This parameter is the fatal code.
 
 ```{eval-rst}
@@ -100,8 +98,7 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward
-  order`.
+- The directive invokes the fatal error extensions in {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.
@@ -137,11 +134,9 @@ void rtems_panic( const char *fmt, ... );
 ```
 
 `fmt`
-
 : This parameter is the message format.
 
 `...`
-
 : This parameter is a list of optional parameters required by the message
   format.
 
@@ -162,8 +157,7 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward
-  order`.
+- The directive invokes the fatal error extensions in {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.
@@ -199,7 +193,6 @@ void rtems_shutdown_executive( uint32_t fatal_code );
 ```
 
 `fatal_code`
-
 : This parameter is the fatal code.
 
 ```{eval-rst}
@@ -218,8 +211,7 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward
-  order`.
+- The directive invokes the fatal error extensions in {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.
@@ -255,7 +247,6 @@ void rtems_exception_frame_print( const rtems_exception_frame *frame );
 ```
 
 `frame`
-
 : This parameter is the reference to the exception frame to print.
 
 ```{eval-rst}
@@ -296,7 +287,6 @@ const char *rtems_fatal_source_text( rtems_fatal_source fatal_source );
 ```
 
 `fatal_source`
-
 : This parameter is the fatal source.
 
 ```{eval-rst}
@@ -304,7 +294,6 @@ const char *rtems_fatal_source_text( rtems_fatal_source fatal_source );
 ```
 
 "?"
-
 : The `fatal_source` parameter value was not a fatal source.
 
 Returns a descriptive text for the fatal source. The text for the fatal source
@@ -349,7 +338,6 @@ const char *rtems_internal_error_text( rtems_fatal_code internal_error_code );
 ```
 
 `internal_error_code`
-
 : This parameter is the internal error code.
 
 ```{eval-rst}
@@ -357,7 +345,6 @@ const char *rtems_internal_error_text( rtems_fatal_code internal_error_code );
 ```
 
 "?"
-
 : The `internal_error_code` parameter value was not an internal error code.
 
 Returns a descriptive text for the internal error code. The text for the
@@ -399,7 +386,6 @@ void rtems_fatal_error_occurred( uint32_t fatal_code );
 ```
 
 `fatal_code`
-
 : This parameter is the fatal code.
 
 ```{eval-rst}
@@ -426,8 +412,7 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward
-  order`.
+- The directive invokes the fatal error extensions in {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.

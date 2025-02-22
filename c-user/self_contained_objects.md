@@ -160,13 +160,11 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : An initializer for static initialization. It is equivalent to a call to
   {c:func}`rtems_mutex_init` or {c:func}`rtems_recursive_mutex_init`
   respectively.
 
 NOTES:
-
 : Global mutexes with a `name` of `NULL` may reside in the `.bss`
   section.
 
@@ -190,11 +188,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Initializes the `mutex` with the specified `name`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the mutex. A
   `name` of `NULL` is valid. The mutex is unlocked after initialization.
 
@@ -320,11 +316,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Sets the `mutex` name to `name`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the mutex. A
   `name` of `NULL` is valid.
 
@@ -346,11 +340,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Returns the `mutex` name.
 
 NOTES:
-
 : The name may be `NULL`.
 
 ### Mutex destruction
@@ -367,11 +359,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Destroys the `mutex`.
 
 NOTES:
-
 : In case the mutex is locked or still in use, then the result is
   unpredictable.
 
@@ -413,12 +403,10 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : An initializer for static initialization. It is equivalent to a call to
   {c:func}`rtems_condition_variable_init`.
 
 NOTES:
-
 : Global condition variables with a `name` of `NULL` may reside in the
   `.bss` section.
 
@@ -437,11 +425,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Initializes the `condition_variable` with the specified `name`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the condition
   variable. A `name` of `NULL` is valid.
 
@@ -460,12 +446,10 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Atomically waits for a condition signal and unlocks the mutex. Once the
   condition is signalled to the thread it wakes up and locks the mutex again.
 
 NOTES:
-
 : This function must be called from thread context with interrupts enabled.
   Threads wait in priority order.
 
@@ -483,7 +467,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Signals a condition change to the highest priority waiting thread. If no
   threads wait currently on this condition variable, then nothing happens.
 
@@ -501,7 +484,6 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Signals a condition change to all waiting thread. If no threads wait
   currently on this condition variable, then nothing happens.
 
@@ -524,11 +506,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Sets the `condition_variable` name to `name`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the condition
   variable. A `name` of `NULL` is valid.
 
@@ -546,11 +526,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Returns the `condition_variable` name.
 
 NOTES:
-
 : The name may be `NULL`.
 
 ### Condition variable destruction
@@ -563,11 +541,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Destroys the `condition_variable`.
 
 NOTES:
-
 : In case the condition variable still in use, then the result is
   unpredictable.
 
@@ -611,12 +587,10 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : An initializer for static initialization. It is equivalent to a call to
   {c:func}`rtems_counting_semaphore_init`.
 
 NOTES:
-
 : Global counting semaphores with a `name` of `NULL` may reside in the
   `.bss` section.
 
@@ -636,12 +610,10 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Initializes the `counting_semaphore` with the specified `name` and
   `value`. The initial value is set to `value`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the counting
   semaphore. A `name` of `NULL` is valid.
 
@@ -659,13 +631,11 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Waits for the `counting_semaphore`. In case the current semaphore value
   is positive, then the value is decremented and the function returns
   immediately, otherwise the thread is blocked waiting for a semaphore post.
 
 NOTES:
-
 : This function must be called from thread context with interrupts enabled.
   Threads wait in priority order.
 
@@ -695,7 +665,6 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : Waits for the `counting_semaphore` with a timeout in `ticks`. In case
   the current semaphore value is positive, then the value is decremented and
   the function returns immediately with a return value of `0`, otherwise the
@@ -704,7 +673,6 @@ DESCRIPTION:
   specifies an infinite timeout.
 
 NOTES:
-
 : This function must be called from thread context with interrupts enabled.
   Threads wait in priority order.
 
@@ -733,14 +701,12 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : Tries to wait for the `counting_semaphore`. In case the current semaphore
   value is positive, then the value is decremented and the function returns
   immediately with a return value of `0`, otherwise it returns immediately
   with a return value of `EAGAIN`.
 
 NOTES:
-
 : This function may be called from interrupt context. In case it is called
   from thread context, then interrupts must be enabled.
 
@@ -758,13 +724,11 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Posts the `counting_semaphore`. In case at least one thread is waiting
   on the counting semaphore, then the highest priority thread is woken up,
   otherwise the current value is incremented.
 
 NOTES:
-
 : This function may be called from interrupt context. In case it is called
   from thread context, then interrupts must be enabled.
 
@@ -787,11 +751,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Sets the `counting_semaphore` name to `name`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the counting
   semaphore. A `name` of `NULL` is valid.
 
@@ -809,11 +771,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Returns the `counting_semaphore` name.
 
 NOTES:
-
 : The name may be `NULL`.
 
 ### Counting semaphore destruction
@@ -826,11 +786,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Destroys the `counting_semaphore`.
 
 NOTES:
-
 : In case the counting semaphore still in use, then the result is
   unpredictable.
 
@@ -873,12 +831,10 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : An initializer for static initialization. It is equivalent to a call to
   {c:func}`rtems_binary_semaphore_init`.
 
 NOTES:
-
 : Global binary semaphores with a `name` of `NULL` may reside in the
   `.bss` section.
 
@@ -897,12 +853,10 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Initializes the `binary_semaphore` with the specified `name`. The
   initial value is set to zero.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the binary
   semaphore. A `name` of `NULL` is valid.
 
@@ -920,13 +874,11 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Waits for the `binary_semaphore`. In case the current semaphore value is
   one, then the value is set to zero and the function returns immediately,
   otherwise the thread is blocked waiting for a semaphore post.
 
 NOTES:
-
 : This function must be called from thread context with interrupts enabled.
   Threads wait in priority order.
 
@@ -956,7 +908,6 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : Waits for the `binary_semaphore` with a timeout in `ticks`. In case
   the current semaphore value is one, then the value is set to zero and the
   function returns immediately with a return value of `0`, otherwise the
@@ -965,7 +916,6 @@ DESCRIPTION:
   specifies an infinite timeout.
 
 NOTES:
-
 : This function must be called from thread context with interrupts enabled.
   Threads wait in priority order.
 
@@ -994,14 +944,12 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : Tries to wait for the `binary_semaphore`. In case the current semaphore
   value is one, then the value is set to zero and the function returns
   immediately with a return value of `0`, otherwise it returns immediately
   with a return value of `EAGAIN`.
 
 NOTES:
-
 : This function may be called from interrupt context. In case it is called
   from thread context, then interrupts must be enabled.
 
@@ -1019,13 +967,11 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Posts the `binary_semaphore`. In case at least one thread is waiting
   on the binary semaphore, then the highest priority thread is woken up,
   otherwise the current value is set to one.
 
 NOTES:
-
 : This function may be called from interrupt context. In case it is called
   from thread context, then interrupts must be enabled.
 
@@ -1048,11 +994,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Sets the `binary_semaphore` name to `name`.
 
 NOTES:
-
 : The `name` must be persistent throughout the life-time of the binary
   semaphore. A `name` of `NULL` is valid.
 
@@ -1070,11 +1014,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Returns the `binary_semaphore` name.
 
 NOTES:
-
 : The name may be `NULL`.
 
 ### Binary semaphore destruction
@@ -1087,11 +1029,9 @@ CALLING SEQUENCE:
   ```
 
 DESCRIPTION:
-
 : Destroys the `binary_semaphore`.
 
 NOTES:
-
 : In case the binary semaphore still in use, then the result is
   unpredictable.
 

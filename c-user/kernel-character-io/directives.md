@@ -69,7 +69,6 @@ void rtems_putc( char c );
 ```
 
 `c`
-
 : This parameter is the character to output.
 
 ```{eval-rst}
@@ -121,11 +120,9 @@ void rtems_put_char( int c, void *unused );
 ```
 
 `c`
-
 : This parameter is the character to output.
 
 `unused`
-
 : This parameter is an unused argument.
 
 ```{eval-rst}
@@ -172,7 +169,6 @@ int putk( const char *s );
 ```
 
 `s`
-
 : This parameter is the string to output.
 
 ```{eval-rst}
@@ -230,11 +226,9 @@ int printk( const char *fmt, ... );
 ```
 
 `fmt`
-
 : This parameter is a printf()-style format string.
 
 `...`
-
 : This parameter is a list of optional parameters required by the format
   string.
 
@@ -294,11 +288,9 @@ int vprintk( const char *fmt, va_list ap );
 ```
 
 `fmt`
-
 : This parameter is a printf()-style format string.
 
 `ap`
-
 : This parameter is the variable argument list required by the format string.
 
 ```{eval-rst}
@@ -357,15 +349,12 @@ int rtems_printk_printer( void *unused, const char *fmt, va_list ap );
 ```
 
 `unused`
-
 : This parameter is an unused argument.
 
 `fmt`
-
 : This parameter is a printf()-style format string.
 
 `ap`
-
 : This parameter is the variable argument list required by the format string.
 
 ```{eval-rst}
@@ -431,11 +420,9 @@ BSP_poll_char if it is available.
 ```
 
 `-1`
-
 : The BSP_poll_char pointer was equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 `-1`
-
 : There was no character enqueued on the kernel character input device.
 
 Returns the character least recently enqueued on the kernel character input

@@ -78,30 +78,24 @@ rtems_status_code rtems_region_create(
 ```
 
 `name`
-
 : This parameter is the object name of the region.
 
 `starting_address`
-
 : This parameter is the starting address of the memory area managed by the
   region.
 
 `length`
-
 : This parameter is the length in bytes of the memory area managed by the
   region.
 
 `page_size`
-
 : This parameter is the alignment of the starting address and length of each
   allocated segment of the region.
 
 `attribute_set`
-
 : This parameter is the attribute set of the region.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created region will
   be stored in this object.
@@ -146,33 +140,26 @@ empty region.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `starting_address` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a region. The number of
   regions available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_REGIONS` application configuration option.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `page_size` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The memory area specified in `starting_address` and `length` was too
   small.
 
@@ -227,11 +214,9 @@ rtems_status_code rtems_region_ident( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -248,19 +233,15 @@ specified in `name`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the local node.
 
 ```{eval-rst}
@@ -317,7 +298,6 @@ rtems_status_code rtems_region_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 ```{eval-rst}
@@ -331,15 +311,12 @@ This directive deletes the region specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : There were segments of the region still in use.
 
 ```{eval-rst}
@@ -403,16 +380,13 @@ rtems_status_code rtems_region_extend(
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `starting_address`
-
 : This parameter is the starting address of the memory area to extend the
   region.
 
 `length`
-
 : This parameter is the length in bytes of the memory area to extend the
   region.
 
@@ -428,19 +402,15 @@ This directive adds the memory area which starts at `starting_address` for
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `starting_address` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The memory area specified by `starting_address` and `length` was
   insufficient to extend the heap.
 
@@ -502,25 +472,20 @@ rtems_status_code rtems_region_get_segment(
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `size`
-
 : This parameter is the size in bytes of the segment to allocate.
 
 `option_set`
-
 : This parameter is the option set.
 
 `timeout`
-
 : This parameter is the timeout in {term}`clock ticks <clock tick>` if the
   {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to
   wait potentially forever.
 
 `segment`
-
 : This parameter is the pointer to a `void` pointer object. When the
   directive call is successful, the begin address of the allocated segment
   will be stored in this object.
@@ -573,32 +538,25 @@ rear of the wait queue.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `segment` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `size` parameter was zero.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `size` parameter exceeded the maximum segment size which is possible
   for the region.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The region had no segment of the requested size immediately available.
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The timeout happened while the calling task was waiting to get a segment
   from the region.
 
@@ -655,11 +613,9 @@ rtems_status_code rtems_region_return_segment( rtems_id id, void *segment );
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `segment`
-
 : This parameter is the begin address of the segment to return.
 
 ```{eval-rst}
@@ -678,15 +634,12 @@ request cannot be satisfied.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The segment was not within the region.
 
 ```{eval-rst}
@@ -749,19 +702,15 @@ rtems_status_code rtems_region_resize_segment(
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `segment`
-
 : This parameter is the begin address of the segment to resize.
 
 `size`
-
 : This parameter is the requested new size of the segment.
 
 `old_size`
-
 : This parameter is the pointer to an [uintptr_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the old size of the segment will be stored in
   this object.
@@ -780,23 +729,18 @@ case, the request is unsatisfied.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `old_size` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The segment was not within the region.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The region was unable to resize the segment.
 
 ```{eval-rst}
@@ -853,11 +797,9 @@ rtems_status_code rtems_region_get_information(
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `the_info`
-
 : This parameter is the pointer to a {c:type}`Heap_Information_block` object.
   When the directive call is successful, the information of the region will
   be stored in this object.
@@ -875,15 +817,12 @@ information will be returned in the structure pointed to by `the_info`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `the_info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -944,11 +883,9 @@ rtems_status_code rtems_region_get_free_information(
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `the_info`
-
 : This parameter is the pointer to a {c:type}`Heap_Information_block` object.
   When the directive call is successful, the free information of the region
   will be stored in this object.
@@ -966,15 +903,12 @@ information will be returned in the structure pointed to by `the_info`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `the_info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -1039,15 +973,12 @@ rtems_status_code rtems_region_get_segment_size(
 ```
 
 `id`
-
 : This parameter is the region identifier.
 
 `segment`
-
 : This parameter is the begin address of the segment.
 
 `size`
-
 : This parameter is the pointer to a [uintptr_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the size of the segment in bytes will be
   stored in this object.
@@ -1064,23 +995,18 @@ This directive obtains the size in bytes of the segment specified by
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `segment` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `size` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The segment was not within the region.
 
 ```{eval-rst}

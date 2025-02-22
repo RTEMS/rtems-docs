@@ -29,24 +29,20 @@ priorities.
 The following scheduling policies are available:
 
 *SCHED_FIFO*
-
 : Priority-based, preemptive scheduling with no timeslicing. This is
   equivalent to what is called "manual round-robin" scheduling.
 
 *SCHED_RR*
-
 : Priority-based, preemptive scheduling with timeslicing. Time quantums are
   maintained on a per-thread basis and are not reset at each context switch.
   Thus, a thread which is preempted and subsequently resumes execution will
   attempt to complete the unused portion of its time quantum.
 
 *SCHED_OTHER*
-
 : Priority-based, preemptive scheduling with timeslicing. Time quantums are
   maintained on a per-thread basis and are reset at each context switch.
 
 *SCHED_SPORADIC*
-
 : Priority-based, preemptive scheduling utilizing three additional
   parameters: budget, replenishment period, and low priority. Under this
   policy, the thread is allowed to execute for "budget" amount of time before

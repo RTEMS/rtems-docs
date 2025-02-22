@@ -483,8 +483,7 @@ post-conditions:
 
 {ref}`SpecTypeActionRequirementItemType` items may be used to specify and
 validate directive calls. They are a generator for event-driven requirements.
-Event-driven requirements should be written in the following {ref}`syntax
-<ReqEngSyntax>`:
+Event-driven requirements should be written in the following {ref}`syntax <ReqEngSyntax>`:
 
 > **While** \<pre-condition 0>, **while** \<pre-condition 1>, ..., **while**
 > \<pre-condition *n*>, **when** \<trigger>, the \<system name> shall \<system

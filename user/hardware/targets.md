@@ -32,8 +32,10 @@ creation of an RTEMS executable. You can view the layering as:
 % comment    '#dbe5c6' --scale 1.5 -o ../../images/user/hw-layers.png
 
 ```{figure} ../../images/user/hw-layers.png
-:align: center
-:alt: Software Layers on Hardware
+---
+align: center
+alt: Software Layers on Hardware
+---
 ```
 
 RTEMS targets are grouped by architectures and within an architecture there are

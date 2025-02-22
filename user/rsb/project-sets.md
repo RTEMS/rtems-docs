@@ -102,23 +102,18 @@ Following features can be enabled/disabled via the command line for the RTEMS
 build sets:
 
 `--without-cxx`
-
 : Do not build a C++ compiler.
 
 `--with-ada`
-
 : Attempt to build an Ada compiler. You need a native GNAT installed.
 
 `--with-fortran`
-
 : Attempt to build a Fortran compiler.
 
 `--with-objc`
-
 : Attempt to build a C++ compiler.
 
 `--with-newlib-tls` or `--without-newlib-tls`
-
 : Enable or disable the `--enable-newlib-reent-thread-local` Newlib
   configuration option. This option is enabled by default on the aarch64, arm,
   nios2, powerpc, riscv, and sparc targets. If this option is enabled, then

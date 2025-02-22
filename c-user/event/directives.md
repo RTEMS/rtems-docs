@@ -68,12 +68,10 @@ rtems_status_code rtems_event_send( rtems_id id, rtems_event_set event_in );
 ```
 
 `id`
-
 : This parameter is the identifier of the target task to receive the event
   set.
 
 `event_in`
-
 : This parameter is the event set to send.
 
 ```{eval-rst}
@@ -99,11 +97,9 @@ situations applies:
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no task associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -176,22 +172,18 @@ rtems_status_code rtems_event_receive(
 ```
 
 `event_in`
-
 : This parameter is the event set of interest. Use
   {c:macro}`RTEMS_PENDING_EVENTS` to get the pending events.
 
 `option_set`
-
 : This parameter is the option set.
 
 `ticks`
-
 : This parameter is the timeout in clock ticks if the {c:macro}`RTEMS_WAIT`
   option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially
   forever.
 
 `event_out`
-
 : This parameter is the pointer to an event set. The received or pending
   events are stored in the referenced event set if the operation was
   successful.
@@ -247,19 +239,15 @@ in `event_in`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `event_out` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The events of interest were not immediately available.
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The events of interest were not available within the specified timeout
   interval.
 

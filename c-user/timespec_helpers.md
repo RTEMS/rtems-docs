@@ -39,8 +39,7 @@ Time can be stored in many ways. One of them is the `struct timespec` format
 which is a structure that consists of the fields `tv_sec` to represent
 seconds and `tv_nsec` to represent nanoseconds. The\`\`struct timeval\`\`
 structure is simular and consists of seconds (stored in `tv_sec`) and
-microseconds (stored in `tv_usec`). Either\`\`struct timespec\`\` or `struct
-timeval` can be used to represent elapsed time, time of executing some
+microseconds (stored in `tv_usec`). Either\`\`struct timespec\`\` or `struct timeval` can be used to represent elapsed time, time of executing some
 operations, or time of day.
 
 ## Operations
@@ -69,11 +68,9 @@ on `struct timespec` instances.
   calculate total amount of time consumed by multiple operations.
 - The `rtems_timespec_subtract` is used to subtract two `struct timespecs`
   instances and determine the elapsed time between those two points in time.
-- The `rtems_timespec_divide` is used to use to divide one `struct
-  timespec` instance by another. This calculates the percentage with a
+- The `rtems_timespec_divide` is used to use to divide one `struct timespec` instance by another. This calculates the percentage with a
   precision to three decimal points.
-- The `rtems_timespec_divide_by_integer` is used to divide a `struct
-  timespec` instance by an integer. It is commonly used in benchmark
+- The `rtems_timespec_divide_by_integer` is used to divide a `struct timespec` instance by an integer. It is commonly used in benchmark
   calculations to dividing duration by the number of iterations performed.
 
 ### Comparing struct timespec Instances
@@ -120,16 +117,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This directive sets the `struct timespec` *time* to the desired
   `seconds` and `nanoseconds` values.
 
 NOTES:
-
 : This method does NOT check if `nanoseconds` is less than the maximum
   number of nanoseconds in a second.
 
@@ -152,16 +146,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This routine sets the contents of the `struct timespec` instance `time` to
   zero.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -183,18 +174,15 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : This method returns `true` if the instance is valid, and `false`
   otherwise.
 
 DESCRIPTION:
-
 : This routine check validity of a `struct timespec` instance. It checks if
   the nanoseconds portion of the `struct timespec` instanceis in allowed
   range (less than the maximum number of nanoseconds per second).
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -217,17 +205,14 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : The method returns the number of seconds `time` increased by.
 
 DESCRIPTION:
-
 : This routine adds two `struct timespec` instances. The second argument is
   added to the first. The parameter `time` is the base time to which the
   `add` parameter is added.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -251,16 +236,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This routine subtracts `start` from `end` saves the difference in
   `result`. The primary use of this directive is to calculate elapsed time.
 
 NOTES:
-
 : It is possible to subtract when `end` is less than `start` and it
   produce negative `result`. When doing this you should be careful and
   remember that only the seconds portion of a `struct timespec` instance is
@@ -333,16 +315,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This routine divides the `struct timespec` instance `time` by the
   integer value `iterations`. The result is saved in `result`.
 
 NOTES:
-
 : The expected use is to assist in benchmark calculations where you typically
   divide a duration (`time`) by a number of iterations what gives average
   time.
@@ -367,18 +346,15 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : This method returns `struct true` if `lhs` is less than `rhs` and
   `struct false` otherwise.
 
 DESCRIPTION:
-
 : This method is the less than operator for `struct timespec`
   instances. The first parameter is the left hand side and the second is the
   right hand side of the comparison.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -401,16 +377,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : This method returns `struct true` if `lhs` is greater than `rhs` and
   `struct false` otherwise.
 
 DESCRIPTION:
-
 : This method is greater than operator for `struct timespec` instances.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -433,16 +406,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : This method returns `struct true` if `lhs` is equal to `rhs` and
   `struct false` otherwise.
 
 DESCRIPTION:
-
 : This method is equality operator for `struct timespec` instances.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -464,17 +434,12 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
-: This method returns the seconds portion of the specified `struct
-  timespec` instance.
+: This method returns the seconds portion of the specified `struct timespec` instance.
 
 DESCRIPTION:
-
-: This method returns the seconds portion of the specified `struct
-  timespec` instance `time`.
+: This method returns the seconds portion of the specified `struct timespec` instance `time`.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -496,17 +461,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
-: This method returns the nanoseconds portion of the specified `struct
-  timespec` instance.
+: This method returns the nanoseconds portion of the specified `struct timespec` instance.
 
 DESCRIPTION:
-
 : This method returns the nanoseconds portion of the specified timespec which
   is pointed by `_time`.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -528,16 +489,13 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : This directive returns the number of ticks computed.
 
 DESCRIPTION:
-
 : This directive converts the `time` timespec to the corresponding number
   of clock ticks.
 
 NOTES:
-
 : NONE
 
 ```{raw} latex
@@ -560,14 +518,10 @@ CALLING SEQUENCE:
   ```
 
 DIRECTIVE STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
-: This routine converts the `ticks` to the corresponding `struct
-  timespec` representation and stores it in `time`.
+: This routine converts the `ticks` to the corresponding `struct timespec` representation and stores it in `time`.
 
 NOTES:
-
 : NONE

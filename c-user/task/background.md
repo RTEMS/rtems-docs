@@ -86,8 +86,7 @@ By default, the task name is defined by the task object name given to
 with the [pthread_getname_np()](http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html) function.
 Optionally, a new task name may be set with the [pthread_setname_np()](http://man7.org/linux/man-pages/man3/pthread_setname_np.3.html) function.
 The maximum size of a task name is defined by the application configuration
-option {ref}`CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
-<CONFIGURE_MAXIMUM_THREAD_NAME_SIZE>`.
+option {ref}`CONFIGURE_MAXIMUM_THREAD_NAME_SIZE <CONFIGURE_MAXIMUM_THREAD_NAME_SIZE>`.
 
 ```{index} task states
 ```
@@ -439,8 +438,6 @@ should be used.
 
 The following example demonstrates the mode and mask parameters used with the
 `rtems_task_mode` directive to place a task at interrupt level 3 and make it
-non-preemptible. The mode should be set to `RTEMS_INTERRUPT_LEVEL(3) |
-RTEMS_NO_PREEMPT` to indicate the desired preemption mode and interrupt level,
-while the mask parameter should be set to `RTEMS_INTERRUPT_MASK |
-RTEMS_NO_PREEMPT_MASK` to indicate that the calling task's interrupt level and
+non-preemptible. The mode should be set to `RTEMS_INTERRUPT_LEVEL(3) | RTEMS_NO_PREEMPT` to indicate the desired preemption mode and interrupt level,
+while the mask parameter should be set to `RTEMS_INTERRUPT_MASK | RTEMS_NO_PREEMPT_MASK` to indicate that the calling task's interrupt level and
 preemption mode are being altered.

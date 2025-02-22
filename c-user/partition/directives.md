@@ -78,29 +78,23 @@ rtems_status_code rtems_partition_create(
 ```
 
 `name`
-
 : This parameter is the object name of the partition.
 
 `starting_address`
-
 : This parameter is the starting address of the buffer area used by the
   partition.
 
 `length`
-
 : This parameter is the length in bytes of the buffer area used by the
   partition.
 
 `buffer_size`
-
 : This parameter is the size in bytes of a buffer managed by the partition.
 
 `attribute_set`
-
 : This parameter is the attribute set of the partition.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created partition
   will be stored in this object.
@@ -141,50 +135,39 @@ attributes.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `length` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `buffer_size` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `length` parameter was less than the `buffer_size` parameter.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `buffer_size` parameter was not an integral multiple of the pointer
   size.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-
 : The `buffer_size` parameter was less than two times the pointer size.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `starting_address` parameter was not on a pointer size boundary.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a partition. The number
   of partitions available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_PARTITIONS` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : In multiprocessing configurations, there was no inactive global object
   available to create a global semaphore. The number of global objects
   available to the application is configured through the
@@ -279,15 +262,12 @@ rtems_status_code rtems_partition_ident(
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `node`
-
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -313,23 +293,18 @@ The node to search is specified in `node`. It shall be
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the specified nodes.
 
 {c:macro}`RTEMS_INVALID_NODE`
-
 : In multiprocessing configurations, the specified node was invalid.
 
 ```{eval-rst}
@@ -394,7 +369,6 @@ rtems_status_code rtems_partition_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the partition identifier.
 
 ```{eval-rst}
@@ -408,19 +382,15 @@ This directive deletes the partition specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no partition associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
-
 : The partition resided on a remote node.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : There were buffers of the partition still in use.
 
 ```{eval-rst}
@@ -489,11 +459,9 @@ rtems_status_code rtems_partition_get_buffer( rtems_id id, void **buffer );
 ```
 
 `id`
-
 : This parameter is the partition identifier.
 
 `buffer`
-
 : This parameter is the pointer to a `void` pointer object. When the
   directive call is successful, the pointer to the allocated buffer will be
   stored in this object.
@@ -511,19 +479,15 @@ parameter.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no partition associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There was no free buffer available to allocate and return.
 
 ```{eval-rst}
@@ -585,11 +549,9 @@ rtems_status_code rtems_partition_return_buffer( rtems_id id, void *buffer );
 ```
 
 `id`
-
 : This parameter is the partition identifier.
 
 `buffer`
-
 : This parameter is the pointer to the buffer to return.
 
 ```{eval-rst}
@@ -604,15 +566,12 @@ specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no partition associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The buffer referenced by `buffer` was not in the partition.
 
 ```{eval-rst}

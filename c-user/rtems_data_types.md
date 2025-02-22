@@ -94,27 +94,22 @@ The timer class indicates how the timer was most recently fired.
 ```
 
 TIMER_DORMANT
-
 : This timer class indicates that the timer was never in use.
 
 TIMER_INTERVAL
-
 : This timer class indicates that the timer is currently in use as an
   interval timer which will fire in the context of the clock tick
   {term}`ISR`.
 
 TIMER_INTERVAL_ON_TASK
-
 : This timer class indicates that the timer is currently in use as an
   interval timer which will fire in the context of the Timer Server task.
 
 TIMER_TIME_OF_DAY
-
 : This timer class indicates that the timer is currently in use as an time of
   day timer which will fire in the context of the clock tick {term}`ISR`.
 
 TIMER_TIME_OF_DAY_ON_TASK
-
 : This timer class indicates that the timer is currently in use as an time of
   day timer which will fire in the context of the Timer Server task.
 
@@ -134,65 +129,53 @@ This structure contains a summary of the Classic API configuration.
 ```
 
 maximum_tasks
-
 : This member contains the maximum number of Classic API Tasks configured for
   this application. See {ref}`CONFIGURE_MAXIMUM_TASKS`.
 
 notepads_enabled
-
 : This member is true, if the Classic API Notepads are enabled, otherwise it
   is false.
 
 maximum_timers
-
 : This member contains the maximum number of Classic API Timers configured
   for this application. See {ref}`CONFIGURE_MAXIMUM_TIMERS`.
 
 maximum_semaphores
-
 : This member contains the maximum number of Classic API Semaphores
   configured for this application. See {ref}`CONFIGURE_MAXIMUM_SEMAPHORES`.
 
 maximum_message_queues
-
 : This member contains the maximum number of Classic API Message Queues
   configured for this application. See
   {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`.
 
 maximum_partitions
-
 : This member contains the maximum number of Classic API Partitions
   configured for this application. See {ref}`CONFIGURE_MAXIMUM_PARTITIONS`.
 
 maximum_regions
-
 : This member contains the maximum number of Classic API Regions configured
   for this application. See {ref}`CONFIGURE_MAXIMUM_REGIONS`.
 
 maximum_ports
-
 : This member contains the maximum number of Classic API Dual-Ported Memories
   configured for this application. See {ref}`CONFIGURE_MAXIMUM_PORTS`.
 
 maximum_periods
-
 : This member contains the maximum number of Classic API Rate Monotonic
   Periods configured for this application. See
   {ref}`CONFIGURE_MAXIMUM_PERIODS`.
 
 maximum_barriers
-
 : This member contains the maximum number of Classic API Barriers configured
   for this application. See {ref}`CONFIGURE_MAXIMUM_BARRIERS`.
 
 number_of_initialization_tasks
-
 : This member contains the number of Classic API Initialization Tasks
   configured for this application. See
   {ref}`CONFIGURE_RTEMS_INIT_TASKS_TABLE`.
 
 User_initialization_tasks_table
-
 : This member contains the pointer to Classic API Initialization Tasks Table
   of this application. See {ref}`CONFIGURE_RTEMS_INIT_TASKS_TABLE`.
 
@@ -250,22 +233,18 @@ This structure provides the context in which an assertion failed.
 ```
 
 file
-
 : This member provides the file name of the source code file containing the
   failed assertion statement.
 
 line
-
 : This member provides the line number in the source code file containing the
   failed assertion statement.
 
 function
-
 : This member provides the function name containing the failed assertion
   statement.
 
 failed_expression
-
 : This member provides the expression of the failed assertion statement.
 
 % Generated from spec:/rtems/attr/if/attribute
@@ -366,32 +345,26 @@ This structure contains the device driver entries.
 ```
 
 initialization_entry
-
 : This member is the device driver initialization entry. This entry is called
   by {ref}`InterfaceRtemsIoInitialize`.
 
 open_entry
-
 : This member is the device driver open entry. This entry is called by
   {ref}`InterfaceRtemsIoOpen`.
 
 close_entry
-
 : This member is the device driver close entry. This entry is called by
   {ref}`InterfaceRtemsIoClose`.
 
 read_entry
-
 : This member is the device driver read entry. This entry is called by
   {ref}`InterfaceRtemsIoRead`.
 
 write_entry
-
 : This member is the device driver write entry. This entry is called by
   {ref}`InterfaceRtemsIoWrite`.
 
 control_entry
-
 : This member is the device driver control entry. This entry is called by
   {ref}`InterfaceRtemsIoControl`.
 
@@ -478,18 +451,15 @@ Fatal extensions are invoked when the system should terminate.
 ```
 
 `source`
-
 : This parameter is the system termination source. The source indicates the
   component which caused the system termination request, see
   {ref}`InterfaceRtemsFatalSource`. The system termination code may provide
   additional information related to the system termination request.
 
 `always_set_to_false`
-
 : This parameter is a value equal to {c:macro}`false`.
 
 `code`
-
 : This parameter is the system termination code. This value must be
   interpreted with respect to the source.
 
@@ -504,8 +474,7 @@ The fatal extension should be extremely careful with respect to the RTEMS
 directives it calls. Depending on the system termination source, the system
 may be in an undefined and corrupt state.
 
-It is recommended to register fatal extensions through {term}`initial extension
-sets`, see {ref}`CONFIGURE_INITIAL_EXTENSIONS`.
+It is recommended to register fatal extensions through {term}`initial extension sets`, see {ref}`CONFIGURE_INITIAL_EXTENSIONS`.
 
 % Generated from spec:/rtems/userext/if/fatal-source
 
@@ -553,31 +522,24 @@ task.
 ```
 
 name
-
 : This member defines the task name.
 
 stack_size
-
 : This member defines the task stack size in bytes.
 
 initial_priority
-
 : This member defines the initial task priority.
 
 attribute_set
-
 : This member defines the attribute set of the task.
 
 entry_point
-
 : This member defines the entry point of the task.
 
 mode_set
-
 : This member defines the initial modes of the task.
 
 argument
-
 : This member defines the entry point argument of the task.
 
 % Generated from spec:/rtems/intr/if/attributes
@@ -596,7 +558,6 @@ This structure provides the attributes of an interrupt vector.
 ```
 
 is_maskable
-
 : This member is true, if the interrupt vector is maskable by
   {ref}`InterfaceRtemsInterruptLocalDisable`, otherwise it is false.
   Interrupt vectors which are not maskable by
@@ -604,7 +565,6 @@ is_maskable
   they cannot use most operating system services.
 
 can_enable
-
 : This member is true, if the interrupt vector can be enabled by
   {ref}`InterfaceRtemsInterruptVectorEnable`, otherwise it is false. When an
   interrupt vector can be enabled, this means that the enabled state can
@@ -612,7 +572,6 @@ can_enable
   can be enabled it follows that it may be enabled.
 
 maybe_enable
-
 : This member is true, if the interrupt vector may be enabled by
   {ref}`InterfaceRtemsInterruptVectorEnable`, otherwise it is false. When an
   interrupt vector may be enabled, this means that the enabled state may be
@@ -622,7 +581,6 @@ maybe_enable
   particular {term}`target`.
 
 can_disable
-
 : This member is true, if the interrupt vector can be disabled by
   {ref}`InterfaceRtemsInterruptVectorDisable`, otherwise it is false. When an
   interrupt vector can be disabled, this means that the enabled state can be
@@ -630,7 +588,6 @@ can_disable
   disabled it follows that it may be disabled.
 
 maybe_disable
-
 : This member is true, if the interrupt vector may be disabled by
   {ref}`InterfaceRtemsInterruptVectorDisable`, otherwise it is false. When an
   interrupt vector may be disabled, this means that the enabled state may be
@@ -640,39 +597,32 @@ maybe_disable
   particular {term}`target`.
 
 can_raise
-
 : This member is true, if the interrupt vector can be raised by
   {ref}`InterfaceRtemsInterruptRaise`, otherwise it is false.
 
 can_raise_on
-
 : This member is true, if the interrupt vector can be raised on a processor
   by {ref}`InterfaceRtemsInterruptRaiseOn`, otherwise it is false.
 
 can_clear
-
 : This member is true, if the interrupt vector can be cleared by
   {ref}`InterfaceRtemsInterruptClear`, otherwise it is false.
 
 cleared_by_acknowledge
-
 : This member is true, if the pending status of the interrupt associated with
   the interrupt vector is cleared by an interrupt acknowledge from the
   processor, otherwise it is false.
 
 can_get_affinity
-
 : This member is true, if the affinity set of the interrupt vector can be
   obtained by {ref}`InterfaceRtemsInterruptGetAffinity`, otherwise it is
   false.
 
 can_set_affinity
-
 : This member is true, if the affinity set of the interrupt vector can be set
   by {ref}`InterfaceRtemsInterruptSetAffinity`, otherwise it is false.
 
 can_be_triggered_by_message
-
 : This member is true, if the interrupt associated with the interrupt vector
   can be triggered by a message. Interrupts may be also triggered by signals,
   {ref}`InterfaceRtemsInterruptRaise`, or
@@ -681,7 +631,6 @@ can_be_triggered_by_message
   Peripheral Interrupts (LPI).
 
 trigger_signal
-
 : This member describes the trigger signal of the interrupt associated with
   the interrupt vector. Interrupts are normally triggered by signals which
   indicate an interrupt request from a peripheral. Interrupts may be also
@@ -689,18 +638,15 @@ trigger_signal
   {ref}`InterfaceRtemsInterruptRaiseOn`.
 
 can_get_priority
-
 : This member is true, if the priority of the interrupt vector can be
   obtained by {ref}`InterfaceRtemsInterruptGetPriority`, otherwise it is
   false.
 
 can_set_priority
-
 : This member is true, if the priority of the interrupt vector can be set by
   {ref}`InterfaceRtemsInterruptSetPriority`, otherwise it is false.
 
 maximum_priority
-
 : This member represents the maximum priority value of the interrupt vector.
   By convention, the minimum priority value is zero. Lower priority values
   shall be associated with a higher importance. The higher the priority
@@ -788,8 +734,9 @@ demands of an application. All lock operations do not use the lock object
 parameter if lock objects are not needed.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <rtems.h>
 
 #if RTEMS_INTERRUPT_LOCK_NEEDS_OBJECT
@@ -974,32 +921,26 @@ This enumeration provides interrupt trigger signal variants.
 ```
 
 RTEMS_INTERRUPT_UNSPECIFIED_SIGNAL
-
 : This interrupt signal variant indicates that the interrupt trigger signal
   is unspecified.
 
 RTEMS_INTERRUPT_NO_SIGNAL
-
 : This interrupt signal variant indicates that the interrupt cannot be
   triggered by a signal.
 
 RTEMS_INTERRUPT_SIGNAL_LEVEL_LOW
-
 : This interrupt signal variant indicates that the interrupt is triggered by
   a low level signal.
 
 RTEMS_INTERRUPT_SIGNAL_LEVEL_HIGH
-
 : This interrupt signal variant indicates that the interrupt is triggered by
   a high level signal.
 
 RTEMS_INTERRUPT_SIGNAL_EDGE_FALLING
-
 : This interrupt signal variant indicates that the interrupt is triggered by
   a falling edge signal.
 
 RTEMS_INTERRUPT_SIGNAL_EDGE_RAISING
-
 : This interrupt signal variant indicates that the interrupt is triggered by
   a raising edge signal.
 
@@ -1061,32 +1002,26 @@ This structure defines the configuration of a message queue constructed by
 ```
 
 name
-
 : This member defines the name of the message queue.
 
 maximum_pending_messages
-
 : This member defines the maximum number of pending messages supported by the
   message queue.
 
 maximum_message_size
-
 : This member defines the maximum message size supported by the message
   queue.
 
 storage_area
-
 : This member shall point to the message buffer storage area begin. The
   message buffer storage area for the message queue shall be an array of the
   type defined by {ref}`InterfaceRTEMSMESSAGEQUEUEBUFFER` with a maximum
   message size equal to the maximum message size of this configuration.
 
 storage_size
-
 : This member defines size of the message buffer storage area in bytes.
 
 storage_free
-
 : This member defines the optional handler to free the message buffer storage
   area. It is called when the message queue is deleted. It is called from
   task context under protection of the object allocator lock. It is allowed
@@ -1094,7 +1029,6 @@ storage_free
   performed.
 
 attributes
-
 : This member defines the attributes of the message queue.
 
 % Generated from spec:/rtems/mode/if/mode
@@ -1243,25 +1177,20 @@ objects configured for a specific API/Class combination.
 ```
 
 minimum_id
-
 : This member contains the minimum valid object identifier for this class.
 
 maximum_id
-
 : This member contains the maximum valid object identifier for this class.
 
 maximum
-
 : This member contains the maximum number of active objects configured for
   this class.
 
 auto_extend
-
 : This member is true, if this class is configured for automatic object
   extension, otherwise it is false.
 
 unallocated
-
 : This member contains the number of currently inactive objects of this
   class.
 
@@ -1304,17 +1233,14 @@ This enumeration defines the states in which a period may be.
 ```
 
 RATE_MONOTONIC_INACTIVE
-
 : This status indicates the period is off the watchdog chain, and has never
   been initialized.
 
 RATE_MONOTONIC_ACTIVE
-
 : This status indicates the period is on the watchdog chain, and running.
   The owner may be executing or blocked waiting on another object.
 
 RATE_MONOTONIC_EXPIRED
-
 : This status indicates the period is off the watchdog chain, and has
   expired. The owner may still execute and has taken too much time to
   complete this iteration of the period.
@@ -1335,37 +1261,29 @@ This structure provides the statistics of a period.
 ```
 
 count
-
 : This member contains the number of periods executed.
 
 missed_count
-
 : This member contains the number of periods missed.
 
 min_cpu_time
-
 : This member contains the least amount of processor time used in a period.
 
 max_cpu_time
-
 : This member contains the highest amount of processor time used in a period.
 
 total_cpu_time
-
 : This member contains the total amount of processor time used in a period.
 
 min_wall_time
-
 : This member contains the least amount of {term}`CLOCK_MONOTONIC` time used
   in a period.
 
 max_wall_time
-
 : This member contains the highest amount of {term}`CLOCK_MONOTONIC` time
   used in a period.
 
 total_wall_time
-
 : This member contains the total amount of {term}`CLOCK_MONOTONIC` time used
   in a period.
 
@@ -1385,29 +1303,24 @@ This structure provides the detailed status of a period.
 ```
 
 owner
-
 : This member contains the identifier of the owner task of the period.
 
 state
-
 : This member contains the state of the period.
 
 since_last_period
-
 : This member contains the time elapsed since the last successful invocation
   {ref}`InterfaceRtemsRateMonotonicPeriod` using {term}`CLOCK_MONOTONIC`. If
   the period is expired or has not been initiated, then this value has no
   meaning.
 
 executed_since_last_period
-
 : This member contains the processor time consumed by the owner task since
   the last successful invocation {ref}`InterfaceRtemsRateMonotonicPeriod`. If
   the period is expired or has not been initiated, then this value has no
   meaning.
 
 postponed_jobs_count
-
 : This member contains the count of jobs which are not released yet.
 
 % Handwritten
@@ -1427,37 +1340,29 @@ This structure defines the configuration of a regulator created by
 ```
 
 deliverer
-
 : This member contains a pointer to an application function invoked by
   the Delivery thread to output a message to the destination.
 
 deliverer_context
-
 : This member contains a pointer to an application defined context which
   is passed to delivery function.
 
 maximum_message_size
-
 : This member contains the maximum size message to process.
 
 maximum_messages
-
 : This member contains the maximum number of messages to be able to buffer.
 
 output_thread_priority
-
 : This member contains the priority of output thread.
 
 output_thread_stack_size
-
 : This member contains the Stack size of output thread.
 
 output_thread_period
-
 : This member contains the period (in ticks) of output thread.
 
 maximum_to_dequeue_per_period
-
 : This member contains the maximum number of messages the output thread
   should dequeue and deliver per period.
 
@@ -1503,19 +1408,15 @@ This structure defines the statistics maintained by each Regulator instance.
 ```
 
 obtained
-
 : This member contains the number of successfully obtained buffers.
 
 released
-
 : This member contains the number of successfully released buffers.
 
 delivered
-
 : This member contains the number of successfully delivered buffers.
 
 period_statistics
-
 : This member contains the Rate Monotonic Period
   statistics for the Delivery Thread. It is an instance of the
   {ref}`InterfaceRtemsRateMonotonicPeriodStatistics` structure.
@@ -1588,136 +1489,106 @@ This enumeration provides status codes for directives of the Classic API.
 ```
 
 RTEMS_SUCCESSFUL
-
 : This status code indicates successful completion of a requested operation.
 
 RTEMS_TASK_EXITTED
-
 : This status code indicates that a thread exitted.
 
 RTEMS_MP_NOT_CONFIGURED
-
 : This status code indicates that multiprocessing was not configured.
 
 RTEMS_INVALID_NAME
-
 : This status code indicates that an object name was invalid.
 
 RTEMS_INVALID_ID
-
 : This status code indicates that an object identifier was invalid.
 
 RTEMS_TOO_MANY
-
 : This status code indicates you have attempted to create too many instances
   of a particular object class.
 
 RTEMS_TIMEOUT
-
 : This status code indicates that a blocking directive timed out.
 
 RTEMS_OBJECT_WAS_DELETED
-
 : This status code indicates the object was deleted while the thread was
   blocked waiting.
 
 RTEMS_INVALID_SIZE
-
 : This status code indicates that a specified size was invalid.
 
 RTEMS_INVALID_ADDRESS
-
 : This status code indicates that a specified address was invalid.
 
 RTEMS_INVALID_NUMBER
-
 : This status code indicates that a specified number was invalid.
 
 RTEMS_NOT_DEFINED
-
 : This status code indicates that the item has not been initialized.
 
 RTEMS_RESOURCE_IN_USE
-
 : This status code indicates that the object still had resources in use.
 
 RTEMS_UNSATISFIED
-
 : This status code indicates that the request was not satisfied.
 
 RTEMS_INCORRECT_STATE
-
 : This status code indicates that an object was in wrong state for the
   requested operation.
 
 RTEMS_ALREADY_SUSPENDED
-
 : This status code indicates that the thread was already suspended.
 
 RTEMS_ILLEGAL_ON_SELF
-
 : This status code indicates that the operation was illegal on the calling
   thread.
 
 RTEMS_ILLEGAL_ON_REMOTE_OBJECT
-
 : This status code indicates that the operation was illegal on a remote
   object.
 
 RTEMS_CALLED_FROM_ISR
-
 : This status code indicates that the operation should not be called from
   this execution environment.
 
 RTEMS_INVALID_PRIORITY
-
 : This status code indicates that an invalid thread priority was provided.
 
 RTEMS_INVALID_CLOCK
-
 : This status code indicates that a specified date or time was invalid.
 
 RTEMS_INVALID_NODE
-
 : This status code indicates that a specified node identifier was invalid.
 
 RTEMS_NOT_CONFIGURED
-
 : This status code indicates that the directive was not configured.
 
 RTEMS_NOT_OWNER_OF_RESOURCE
-
 : This status code indicates that the caller was not the owner of the
   resource.
 
 RTEMS_NOT_IMPLEMENTED
-
 : This status code indicates the directive or requested portion of the
   directive is not implemented. This is a hint that you have stumbled across
   an opportunity to submit code to the RTEMS Project.
 
 RTEMS_INTERNAL_ERROR
-
 : This status code indicates that an internal RTEMS inconsistency was
   detected.
 
 RTEMS_NO_MEMORY
-
 : This status code indicates that the directive attempted to allocate memory
   but was unable to do so.
 
 RTEMS_IO_ERROR
-
 : This status code indicates a device driver IO error.
 
 RTEMS_INTERRUPTED
-
 : This status code is used internally by the implementation to indicate a
   blocking device driver call has been interrupted and should be reflected to
   the caller as interrupted.
 
 RTEMS_PROXY_BLOCKING
-
 : This status code is used internally by the implementation when performing
   operations on behalf of remote tasks. This is referred to as proxying
   operations and this status indicates that the operation could not be
@@ -1774,7 +1645,6 @@ Task begin extensions are invoked when a task begins execution.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread.
 
 ```{eval-rst}
@@ -1892,12 +1762,10 @@ Task create extensions are invoked when a task is created.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread. When the idle
   thread is created, the executing thread is equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 `created`
-
 : This parameter is the {term}`TCB` of the created thread.
 
 ```{eval-rst}
@@ -1940,13 +1808,11 @@ Task delete extensions are invoked when a task is deleted.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread. If the idle
   thread is created and one of the initial task create extension fails, then
   the executing thread is equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 `created`
-
 : This parameter is the {term}`TCB` of the deleted thread. The executing and
   deleted arguments are never equal.
 
@@ -1990,7 +1856,6 @@ Task exitted extensions are invoked when a task entry returns.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread.
 
 ```{eval-rst}
@@ -2026,11 +1891,9 @@ Task restart extensions are invoked when a task restarts.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread.
 
 `restarted`
-
 : This parameter is the {term}`TCB` of the executing thread. Yes, the
   executing thread.
 
@@ -2064,11 +1927,9 @@ time.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread.
 
 `started`
-
 : This parameter is the {term}`TCB` of the started thread.
 
 ```{eval-rst}
@@ -2100,13 +1961,11 @@ thread to a heir thread takes place.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread. In SMP
   configurations, this is the previously executing thread also known as the
   ancestor thread.
 
 `heir`
-
 : This parameter is the {term}`TCB` of the heir thread. In SMP
   configurations, this is the executing thread.
 
@@ -2158,7 +2017,6 @@ Task terminate extensions are invoked when a task terminates.
 ```
 
 `executing`
-
 : This parameter is the {term}`TCB` of the executing thread. This is the
   terminating thread.
 
@@ -2215,31 +2073,24 @@ This type represents Classic API calendar times.
 ```
 
 year
-
 : This member contains the year A.D.
 
 month
-
 : This member contains the month of the year with values from 1 to 12.
 
 day
-
 : This member contains the day of the month with values from 1 to 31.
 
 hour
-
 : This member contains the hour of the day with values from 0 to 23.
 
 minute
-
 : This member contains the minute of the hour with values from 0 to 59.
 
 second
-
 : This member contains the second of the minute with values from 0 to 59.
 
 ticks
-
 : This member contains the clock tick of the second with values from 0 to
   {ref}`InterfaceRtemsClockGetTicksPerSecond` minus one.
 
@@ -2259,21 +2110,17 @@ The structure contains information about a timer.
 ```
 
 the_class
-
 : The timer class member indicates how the timer was most recently fired.
 
 initial
-
 : This member indicates the initial requested interval.
 
 start_time
-
 : This member indicates the time the timer was initially scheduled. The time
   is in clock ticks since the clock driver initialization or the last clock
   tick counter overflow.
 
 stop_time
-
 : This member indicates the time the timer was scheduled to fire. The time is
   in clock ticks since the clock driver initialization or the last clock tick
   counter overflow.

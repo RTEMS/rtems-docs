@@ -313,10 +313,8 @@ DIRECTIVE STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This directive removes the given location from a task's context.
 
 NOTES:
-
 : Per-task variables are disabled in SMP configurations and this service is
   not available.

@@ -60,16 +60,10 @@ to bring work together.
 
 With our GitLab instance, you fork a repo into your personal workspace and use
 that to manage your changes. This means you need to keep your forked project
-up to date. See the `Gitlab forking workflow documentation
-<https://docs.gitlab.com/ee/user/project/merge_requests/authorization_for_merge_requests.html#forking-workflow>`
-for details. If you are part of a team working on a change you can `collaborate
-on merge requests
-<https://docs.gitlab.com/ee/user/project/merge_requests/allow_collaboration.html>`.
-GitLab enforces branch naming rules and provides `branch naming patterns
-<https://docs.gitlab.com/ee/user/project/repository/branches/index.html#prefix-branch-names-with-issue-numbers>`
-that simplifies code review and software change management. You can `create
-merge requests from your fork
-<https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html#when-you-work-in-a-fork>`
+up to date. See the `Gitlab forking workflow documentation <https://docs.gitlab.com/ee/user/project/merge_requests/authorization_for_merge_requests.html#forking-workflow>`
+for details. If you are part of a team working on a change you can `collaborate on merge requests <https://docs.gitlab.com/ee/user/project/merge_requests/allow_collaboration.html>`.
+GitLab enforces branch naming rules and provides `branch naming patterns <https://docs.gitlab.com/ee/user/project/repository/branches/index.html#prefix-branch-names-with-issue-numbers>`
+that simplifies code review and software change management. You can `create merge requests from your fork <https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html#when-you-work-in-a-fork>`
 back to the upstream repository. We do not normally squash merge requests. A
 merge request with more than one commit should be buildable at each commit so a
 bisect of main does not break.
@@ -150,24 +144,24 @@ suggested workflow:
 
 # Before making changes, create a new local branch of your merge request. Make
 
-: your changes on this branch, so that you can always go back to your previous
-  state. Always keep your original branch until you have pushed a new, clean
-  version that supersedes it. Even then, you may want to keep your original
-  branch around in case something went wrong that you did not notice, such as
-  you accidentally removed a necessary commit while rebasing.
+\: your changes on this branch, so that you can always go back to your previous
+state. Always keep your original branch until you have pushed a new, clean
+version that supersedes it. Even then, you may want to keep your original
+branch around in case something went wrong that you did not notice, such as
+you accidentally removed a necessary commit while rebasing.
 
 \# Make and commit changes locally until you are satisfied with your code
 
 # Interactively rebase your local branch using `git rebase --interactive`
 
-: to allow you to select the order of commits and to reword or fixup
-  commits. One good strategy here is to reorder and fixup commits in one round
-  and then reword them in a second round, so that you get your commits in
-  the right order and shape you want before finalizing the patch descriptions.
+\: to allow you to select the order of commits and to reword or fixup
+commits. One good strategy here is to reorder and fixup commits in one round
+and then reword them in a second round, so that you get your commits in
+the right order and shape you want before finalizing the patch descriptions.
 
 # Force-push your local branch to your merge request branch on your fork. If
 
-: something goes wrong, you can revert back to your local version.
+\: something goes wrong, you can revert back to your local version.
 
 ## Rebasing a Merge Request
 

@@ -56,27 +56,21 @@ The URL can reference remote and local source and patch resources. The
 following schemes are provided:
 
 `http`:
-
 : Remote access using the HTTP protocol.
 
 `https`:
-
 : Remote access using the Secure HTTP protocol.
 
 `ftp`:
-
 : Remote access using the FTP protocol.
 
 `git`:
-
 : Remote access to a GIT repository.
 
 `pm`:
-
 : Remote access to a patch management repository.
 
 `file`:
-
 : Local access to an existing source directory.
 
 ### HTTP, HTTPS, and FTP
@@ -106,19 +100,15 @@ The type of compression is automatically detected from the file extension. The
 supported compression formats are:
 
 `gz`:
-
 : GNU ZIP
 
 `bzip2`:
-
 : BZIP2
 
 `zip`:
-
 : ZIP
 
 `xz`:
-
 : XZ
 
 The output of the decompression tool is fed to the standard `tar` utility if
@@ -158,24 +148,19 @@ path. The options are delimited by `?` and option arguments are delimited
 from the options with `=`. The options are:
 
 `protocol`:
-
 : Use a specific protocol. The supported values are `ssh`, `git`, `http`,
   `https`, `ftp`, `ftps`, `rsync`, and `none`.
 
 `branch`:
-
 : Checkout the specified branch.
 
 `pull`:
-
 : Perform a pull to update the repository.
 
 `fetch`:
-
 : Perform a fetch to get any remote updates.
 
 `reset`:
-
 : Reset the repository. Useful to remove any local changes. You can pass the
   `hard` argument to force a hard reset.
 
@@ -246,42 +231,33 @@ Name Type Attribute String
 where `Name` is a case insensitive macro name, the `Type` field is:
 
 `none`:
-
 : Nothing, ignore.
 
 `dir`:
-
 : A directory path.
 
 `exe`:
-
 : An executable path.
 
 `triplet`:
-
 : A GNU style architecture, platform, operating system string.
 
 the `Attribute` field is:
 
 `none`:
-
 : Nothing, ignore
 
 `required`:
-
 : The host check must find the executable or path.
 
 `optional`:
-
 : The host check generates a warning if not found.
 
 `override`:
-
 : Only valid outside of the `global` map to indicate this macro overrides the
   same one in the `global` map when the map containing it is selected.
 
 `undefine`:
-
 : Only valid outside of the `global` map to undefine the macro if it exists
   in the `global` map when the map containing it is selected. The `global`
   map's macro is not visible but still exists.
@@ -806,124 +782,94 @@ format RPM needs and uses.
 The script language is implemented in terms of macros. The built-in list is:
 
 `%{}`:
-
 : Macro expansion with conditional logic.
 
 `%()`:
-
 : Shell expansion.
 
 `%prep`:
-
 : The source preparation shell commands.
 
 `%build`:
-
 : The build shell commands.
 
 `%install`:
-
 : The package install shell commands.
 
 `%clean`:
-
 : The package clean shell commands.
 
 `%include`:
-
 : Inline include another configuration file.
 
 `%name`:
-
 : The name of the package.
 
 `%summary`:
-
 : A brief package description. Useful when reporting about a build.
 
 `%release`:
-
 : The package release. A number that is the release as built by this tool.
 
 `%version`:
-
 : The package's version string.
 
 `%buildarch`:
-
 : The build architecture.
 
 `%source`:
-
 : Define a source code package. This macro has a number appended.
 
 `%patch`:
-
 : Define a patch. This macro has a number appended.
 
 `%hash`:
-
 : Define a checksum for a source or patch file.
 
 `%{echo message}`:
-
 : Print the following string as a message.
 
 `%{warning message}`:
-
 : Print the following string as a warning and continue.
 
 `%{error message}`:
-
 : Print the following string as an error and exit.
 
 `%select`:
-
 : Select the macro map. If there is no map nothing is reported.
 
 `%define`:
-
 : Define a macro. Macros cannot be redefined, you must first undefine it.
 
 `%undefine`:
-
 : Undefine a macro.
 
 `%if`:
-
 : Start a conditional logic block that ends with a `%endif`.
 
 `%ifn`:
-
 : Inverted start of a conditional logic block.
 
 `%ifarch`:
-
 : Test the architecture against the following string.
 
 `%ifnarch`:
-
 : Inverted test of the architecture
 
 `%ifos`:
-
 : Test the host operating system.
 
 `%else`:
-
 : Start the *else* conditional logic block.
 
 `%endfi`:
-
 : End the conditional logic block.
 
 `%bconf_with`:
-
 : Test the build condition *with* setting. This is the `--with-*` command
   line option.
 
 `%bconf_without`:
-
 : Test the build condition *without* setting. This is the `--without-*`
   command line option.
 
@@ -933,41 +879,34 @@ A macro can be `%{string}` or the equivalent of `%string`. The following macro
 expansions supported are:
 
 `%{string}`:
-
 : Expand the 'string' replacing the entire macro text with the text in the
   table for the entry 'string . For example if 'var' is 'foo' then `${var}`
   would become `foo`.
 
 `%{expand: string}`:
-
 : Expand the 'string' and then use it as a `string` to the macro expanding
   the macro. For example if `foo` is set to `bar` and `bar` is set to
   `foobar` then `%{expand:foo}` would result in `foobar`. Shell expansion
   can also be used.
 
 `%{with string}`:
-
 : Expand the macro to `1` if the macro `with_string` is defined else expand
   to `0`. Macros with the name `with_string` can be define with command
   line arguments to the RTEMS Source Builder commands.
 
 `%{defined string}`:
-
 : Expand the macro to `1` if a macro of name `string` is defined else
   expand to '0'.
 
 `%{?string: expression}`:
-
 : Expand the macro to `expression` if a macro of name `string` is defined
   else expand to `%{nil}`.
 
 `%{!?string: expression}`:
-
 : Expand the macro to `expression` if a macro of name `string` is not
   defined. If the macro is define expand to `%{nil}`.
 
 `%(expression)`:
-
 : Expand the macro to the result of running the `expression` in a host
   shell. It is assumed this is a Unix type shell. For example `%(whoami)`
   will return your user name and `%(date)` will return the current date
@@ -1290,31 +1229,26 @@ setup is:
 Accepted options are:
 
 `-n`:
-
 : The `-n` option is used to set the name of the software's build
   directory. This is necessary only when the source archive unpacks into a
   directory named other than `<name>-<version>`.
 
 `-c`:
-
 : The `-c` option is used to direct `%setup` to create the top-level build
   directory before unpacking the sources.
 
 `-D`:
-
 : The `-D` option is used to direct `%setup` to not delete the build
   directory prior to unpacking the sources. This option is used when more than
   one source archive is to be unpacked into the build directory, normally with
   the `-b` or `-a` options.
 
 `-T`:
-
 : The `-T` option is used to direct %setup to not perform the default
   unpacking of the source archive specified by the first `Source:` macro. It
   is used with the `-a` or `-b` options.
 
 `-b <n>`:
-
 : The `-b` option is used to direct `%setup` to unpack the source archive
   specified on the nth `Source:` macro line before changing directory into
   the build directory.

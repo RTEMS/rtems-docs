@@ -65,7 +65,6 @@ struct rtems_filesystem_location_info_tt {
 ```
 
 *node_access*
-
 : This element is filesystem specific. A filesystem can define and store any
   information necessary to identify a node at this location. This element is
   normally filled in by the filesystem's evaluate routine. For the
@@ -74,7 +73,6 @@ struct rtems_filesystem_location_info_tt {
   unmounted.
 
 *handlers*
-
 : This element is defined as a set of routines that may change within a given
   filesystem based upon node type. For example a directory and a memory file
   may have to completely different read routines. This element is set to an
@@ -82,12 +80,10 @@ struct rtems_filesystem_location_info_tt {
   desired state by the evaluation routines.
 
 *ops*
-
 : This element is defined as a set of routines that remain static for the
   filesystem. This element identifies entry points into the filesystem to
   the generic code.
 
 *mt_entry*
-
 : This element identifies the mount table entry for this instance of the
   filesystem.

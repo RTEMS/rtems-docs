@@ -20,51 +20,51 @@ This figure includes networking and disk caching layering.
 
 # Application programs are presented with a standard set of POSIX compliant
 
-: functions that allow them to interface with the files, devices and
-  directories in the filesystem. The interfaces to these routines do not
-  reflect the type of subordinate filesystem implementation in which the file
-  will be found.
+\: functions that allow them to interface with the files, devices and
+directories in the filesystem. The interfaces to these routines do not
+reflect the type of subordinate filesystem implementation in which the file
+will be found.
 
 # The filesystem framework developed under RTEMS allows for mounting filesystem
 
-: of different types under the base filesystem.
+\: of different types under the base filesystem.
 
 # The mechanics of locating file information may be quite different between
 
-: filesystem types.
+\: filesystem types.
 
 \# The process of locating a file may require crossing filesystem boundaries.
 
 # The transitions between filesystem and the processing required to access
 
-: information in different filesystem is not visible at the level of the POSIX
-  function call.
+\: information in different filesystem is not visible at the level of the POSIX
+function call.
 
 # The POSIX interface standard provides file access by character pathname to
 
-: the file in some functions and through an integer file descriptor in other
-  functions.
+\: the file in some functions and through an integer file descriptor in other
+functions.
 
 # The nature of the integer file descriptor and its associated processing is
 
-: operating system and filesystem specific.
+\: operating system and filesystem specific.
 
 # Directory and device information must be processed with some of the same
 
-: routines that apply to files.
+\: routines that apply to files.
 
 # The form and content of directory and device information differs greatly from
 
-: that of a regular file.
+\: that of a regular file.
 
 # Files, directories and devices represent elements (nodes) of a tree
 
-: hierarchy.
+\: hierarchy.
 
 # The rules for processing each of the node types that exist under the
 
-: filesystem are node specific but are still not reflected in the POSIX
-  interface routines.
+\: filesystem are node specific but are still not reflected in the POSIX
+interface routines.
 
 ```shell
 Figure of the Filesystem Functional Layering goes here.
@@ -358,21 +358,17 @@ Description:
 #### unlink Handler
 
 Corresponding Structure Element:
-
 : `unlink`
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### node_type Handler
 
 Corresponding Structure Element:
-
 : `node_type()`
 
 Arguments:
@@ -381,13 +377,11 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 #### mknod Handler
 
 Corresponding Structure Element:
-
 : `mknod()`
 
 Arguments:
@@ -399,27 +393,22 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 #### rmnod Handler
 
 Corresponding Structure Element:
-
 : `rmnod()`
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### chown Handler
 
 Corresponding Structure Element:
-
 : `chown()`
 
 Arguments:
@@ -430,7 +419,6 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 #### freenod Handler
@@ -456,7 +444,6 @@ Description:
 #### mount Handler
 
 Corresponding Structure Element:
-
 : `mount()`
 
 Arguments:
@@ -465,7 +452,6 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 #### fsmount_me Handler
@@ -587,21 +573,17 @@ Description:
 #### unmount Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### fsunmount_me Handler
 
 Corresponding Structure Element:
-
 : `imfs_fsunmount_me()`
 
 Arguments:
@@ -610,49 +592,39 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 #### utime Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### eval_link Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 #### symlink Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 ### File Handler Table Functions
@@ -685,7 +657,6 @@ typedef struct {
 #### open Handler
 
 Corresponding Structure Element:
-
 : `open()`
 
 Arguments:
@@ -697,13 +668,11 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 ##### close Handler
 
 Corresponding Structure Element:
-
 : `close()`
 
 Arguments:
@@ -712,17 +681,14 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### read Handler
 
 Corresponding Structure Element:
-
 : `read()`
 
 Arguments:
@@ -733,35 +699,28 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### write Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### ioctl Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
@@ -772,17 +731,14 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### lseek Handler
 
 Corresponding Structure Element:
-
 : `lseek()`
 
 Arguments:
@@ -793,11 +749,9 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### fstat Handler
@@ -839,7 +793,6 @@ NOTES:
 ##### fchmod Handler
 
 Corresponding Structure Element:
-
 : `fchmod()`
 
 Arguments:
@@ -849,99 +802,77 @@ Arguments:
   ```
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### ftruncate Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### fpathconf Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### fsync Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### fdatasync Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX
 
 ##### fcntl Handler
 
 Corresponding Structure Element:
-
 : XXX
 
 Arguments:
-
 : XXX
 
 Description:
-
 : XXX
 
 NOTES:
-
 : XXX

@@ -168,8 +168,7 @@ provide default values. All values are defined by specification items. The
 entry point to what is built are the {ref}`SpecTypeBuildBSPItemType` items and
 the top-level {ref}`SpecTypeBuildGroupItemType` item. The user configuration
 defines which BSPs are built. The top-level group defaults to `/grp` and can
-be changed by the `--rtems-top-level` command line option given to the `waf
-configure` command.
+be changed by the `--rtems-top-level` command line option given to the `waf configure` command.
 
 The top-level group is a trade-off between the specification complexity and a
 strict dependency definition. Dependencies are normally explicit though the
@@ -183,8 +182,9 @@ the build system easier, but less general.
 (buildexplicitdeps)=
 
 ```{figure} ../images/eng/bld-deps.*
-:width: 100%
-
+---
+width: 100%
+---
 Example with Explicit Item Links
 
 This example shows how build item dependencies are specified explicitly
@@ -203,8 +203,9 @@ header item.
 (buildorderdeps)=
 
 ```{figure} ../images/eng/bld-deps2.*
-:width: 50%
-
+---
+width: 50%
+---
 Example with Implicit Ordering Rules
 
 This example shows how build item dependencies are specified by dedicated
@@ -313,9 +314,10 @@ $ vi spec/build/bsps/arch/family/start.yml
 (buildbspfamilyonebsp)=
 
 ```{figure} ../images/eng/bld-bsp.*
-:figclass: align-center
-:width: 40%
-
+---
+figclass: align-center
+width: 40%
+---
 This example shows a BSP family named *family* in the architecture *arch*
 which consists of only one base BSP named *xyz*. The BSP sources and
 installation information is contained in the
@@ -326,9 +328,10 @@ BSP item are shown using relative UIDs.
 (buildbspfamilymanybsps)=
 
 ```{figure} ../images/eng/bld-bsp2.*
-:figclass: align-center
-:width: 50%
-
+---
+figclass: align-center
+width: 50%
+---
 This example shows a BSP family named *family* in the architecture *arch*
 which consists of three base BSPs named *rst*, *uvw*, and *xyz*. The BSP
 sources and installation information is contained in the *obj* objects

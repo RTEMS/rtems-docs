@@ -206,8 +206,7 @@ Configuration Information are:
 - {ref}`InterfaceRtemsConfigurationGetNumberOfInitialExtensions` - Gets the
   number of initial extensions configured for this application.
 - {ref}`InterfaceRtemsConfigurationGetStackAllocateForIdleHook` - Gets the task
-  stack allocator allocate hook used to allocate the stack of each {term}`IDLE
-  task` configured for this application.
+  stack allocator allocate hook used to allocate the stack of each {term}`IDLE task` configured for this application.
 - {ref}`InterfaceRtemsConfigurationGetStackAllocateHook` - Gets the task stack
   allocator allocate hook configured for this application.
 - {ref}`InterfaceRtemsConfigurationGetStackAllocateInitHook` - Gets the task

@@ -107,69 +107,55 @@ The following fatal sources are defined for RTEMS via the
 corresponding numeric fatal source in parenthesis.
 
 INTERNAL_ERROR_CORE (0)
-
 : Errors of the core operating system. See {ref}`internal_errors`.
 
 INTERNAL_ERROR_RTEMS_API (1)
-
 : Errors of the Classic API.
 
 INTERNAL_ERROR_POSIX_API (2)
-
 : Errors of the POSIX API.
 
 RTEMS_FATAL_SOURCE_BDBUF (3)
-
 : Fatal source for the block device cache. See
   {c:type}`rtems_bdbuf_fatal_code`.
 
 RTEMS_FATAL_SOURCE_APPLICATION (4)
-
 : Fatal source for application-specific errors. The fatal code is
   application-specific.
 
 RTEMS_FATAL_SOURCE_EXIT (5)
-
 : Fatal source of {c:func}`exit()`. The fatal code is the {c:func}`exit()`
   status code.
 
 RTEMS_FATAL_SOURCE_BSP (6)
-
 : Fatal source for BSP errors. The fatal codes are defined in
   {file}`<bsp/fatal.h>`. Examples are interrupt and exception
   initialization. See {c:type}`bsp_fatal_code` and {c:func}`bsp_fatal()`.
 
 RTEMS_FATAL_SOURCE_ASSERT (7)
-
 : Fatal source of {c:macro}`assert()`. The fatal code is the pointer value
   of the assert context. See {c:type}`rtems_assert_context`.
 
 RTEMS_FATAL_SOURCE_STACK_CHECKER (8)
-
 : Fatal source of the stack checker. The fatal code is the object name of
   the executing task.
 
 RTEMS_FATAL_SOURCE_EXCEPTION (9)
-
 : Fatal source of the exceptions. The fatal code is the pointer value of the
   exception frame pointer. See {c:type}`rtems_exception_frame` and
   {ref}`rtems_exception_frame_print`.
 
 RTEMS_FATAL_SOURCE_SMP (10)
-
 : Fatal source of SMP domain. See {c:type}`SMP_Fatal_code`.
 
 RTEMS_FATAL_SOURCE_PANIC (11)
-
 : Fatal source of {c:func}`rtems_panic`, see {ref}`rtems_panic`.
 
 RTEMS_FATAL_SOURCE_INVALID_HEAP_FREE (12)
-
 : Fatal source for invalid C program heap frees via {c:func}`free`. The
   fatal code is the bad pointer.
 
 RTEMS_FATAL_SOURCE_HEAP (13)
-
 : Fatal source for heap errors. The fatal code is the address to a heap error
   context. See {c:type}`Heap_Error_context`.
 
@@ -478,7 +464,6 @@ INTERNAL_ERROR_CANNOT_DISABLE_DATA_CACHE (46)
 
 : This fatal error may be caused by {ref}`InterfaceRtemsCacheDisableData` if
   the data cache cannot be disabled for a particular {term}`target` or
-  configuration. The data cache may be necessary to provide {term}`atomic
-  operations`. In SMP configurations, the data cache may be required to
+  configuration. The data cache may be necessary to provide {term}`atomic operations`. In SMP configurations, the data cache may be required to
   ensure data coherency. See the BSP documentation in the *RTEMS User
   Manual* for more information.

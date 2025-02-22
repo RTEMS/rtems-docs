@@ -55,8 +55,10 @@ Step 4: RTEMS shell provides the "rtrace" command to display and save trace
 buffers.
 
 ```{figure} ../../images/user/rtems-trace-buffering.png
-:align: center
-:width: 75%
+---
+align: center
+width: 75%
+---
 ```
 
 (printk)=
@@ -92,8 +94,10 @@ printk() output appears on the target console and the user can save that to a
 file.
 
 ```{figure} ../../images/user/rtems-trace-printk.png
-:align: center
-:width: 75%
+---
+align: center
+width: 75%
+---
 ```
 
 The {ref}`examples` section describes generation of traces using Trace Buffering

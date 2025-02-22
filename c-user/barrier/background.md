@@ -37,12 +37,10 @@ In general, an attribute set is built by a bitwise OR of the desired attribute
 components. The following table lists the set of valid barrier attributes:
 
 `RTEMS_BARRIER_AUTOMATIC_RELEASE`
-
 : automatically release the barrier when the configured number of tasks are
   blocked
 
 `RTEMS_BARRIER_MANUAL_RELEASE`
-
 : only release the barrier when the application invokes the
   `rtems_barrier_release` directive. (default)
 

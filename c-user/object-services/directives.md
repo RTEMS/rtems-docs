@@ -74,19 +74,15 @@ rtems_id rtems_build_id(
 ```
 
 `api`
-
 : This parameter is the API of the object identifier to build.
 
 `the_class`
-
 : This parameter is the class of the object identifier to build.
 
 `node`
-
 : This parameter is the MPCI node of the object identifier to build.
 
 `index`
-
 : This parameter is the index of the object identifier to build.
 
 ```{eval-rst}
@@ -135,19 +131,15 @@ rtems_name rtems_build_name( char c1, char c2, char c3, char c4 );
 ```
 
 `c1`
-
 : This parameter is the first character of the name.
 
 `c2`
-
 : This parameter is the second character of the name.
 
 `c3`
-
 : This parameter is the third character of the name.
 
 `c4`
-
 : This parameter is the fourth character of the name.
 
 ```{eval-rst}
@@ -206,11 +198,9 @@ rtems_status_code rtems_object_get_classic_name(
 ```
 
 `id`
-
 : This parameter is the object identifier to get the name.
 
 `name`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsName` object. When
   the directive call is successful, the object name associated with the
   object identifier will be stored in this object.
@@ -220,23 +210,18 @@ rtems_status_code rtems_object_get_classic_name(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `name` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no object information available for the object identifier.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : The object name associated with the object identifier was a string.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no object associated with the object identifier.
 
 ```{eval-rst}
@@ -276,15 +261,12 @@ char *rtems_object_get_name( rtems_id id, size_t length, char *name );
 ```
 
 `id`
-
 : This parameter is the object identifier to get the name.
 
 `length`
-
 : This parameter is the buffer length in bytes.
 
 `name`
-
 : This parameter is the pointer to a buffer of the specified length.
 
 ```{eval-rst}
@@ -302,19 +284,15 @@ string even if the object has the Classic API 32-bit integer style name.
 ```
 
 [NULL](https://en.cppreference.com/w/c/types/NULL)
-
 : The `length` parameter was 0.
 
 [NULL](https://en.cppreference.com/w/c/types/NULL)
-
 : The `name` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 [NULL](https://en.cppreference.com/w/c/types/NULL)
-
 : There was no object information available for the object identifier.
 
 [NULL](https://en.cppreference.com/w/c/types/NULL)
-
 : There was no object associated with the object identifier.
 
 Returns the `name` parameter value, if there is an object name associated
@@ -357,11 +335,9 @@ rtems_status_code rtems_object_set_name( rtems_id id, const char *name );
 ```
 
 `id`
-
 : This parameter is the object identifier of the object to set the name.
 
 `name`
-
 : This parameter is the object name to set.
 
 ```{eval-rst}
@@ -375,23 +351,18 @@ This directive will set the object name based upon the user string.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `name` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no object information available for the object identifier.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no object associated with the object identifier.
 
 {c:macro}`RTEMS_NO_MEMORY`
-
 : There was no memory available to duplicate the name.
 
 ```{eval-rst}
@@ -449,7 +420,6 @@ int rtems_object_id_get_api( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the object identifier with the API component to get.
 
 ```{eval-rst}
@@ -503,7 +473,6 @@ int rtems_object_id_get_class( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the object identifier with the class component to get.
 
 ```{eval-rst}
@@ -557,7 +526,6 @@ int rtems_object_id_get_node( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the object identifier with the MPCI node component to
   get.
 
@@ -612,7 +580,6 @@ int rtems_object_id_get_index( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the object identifier with the index component to get.
 
 ```{eval-rst}
@@ -746,7 +713,6 @@ int rtems_object_api_minimum_class( int api );
 ```
 
 `api`
-
 : This parameter is the object API to get the lowest valid class value.
 
 ```{eval-rst}
@@ -754,7 +720,6 @@ int rtems_object_api_minimum_class( int api );
 ```
 
 `-1`
-
 : The object API was invalid.
 
 Returns the lowest valid class value of the object API.
@@ -796,7 +761,6 @@ int rtems_object_api_maximum_class( int api );
 ```
 
 `api`
-
 : This parameter is the object API to get the highest valid class value.
 
 ```{eval-rst}
@@ -804,7 +768,6 @@ int rtems_object_api_maximum_class( int api );
 ```
 
 `0`
-
 : The object API was invalid.
 
 Returns the highest valid class value of the object API.
@@ -846,7 +809,6 @@ const char *rtems_object_get_api_name( int api );
 ```
 
 `api`
-
 : This parameter is the object API to get the name.
 
 ```{eval-rst}
@@ -854,7 +816,6 @@ const char *rtems_object_get_api_name( int api );
 ```
 
 "BAD API"
-
 : The API was invalid.
 
 Returns a descriptive name of the API, if the API was valid.
@@ -902,11 +863,9 @@ const char *rtems_object_get_api_class_name( int the_api, int the_class );
 ```
 
 `the_api`
-
 : This parameter is the object API of the object class.
 
 `the_class`
-
 : This parameter is the object class of the object API to get the name.
 
 ```{eval-rst}
@@ -914,11 +873,9 @@ const char *rtems_object_get_api_class_name( int the_api, int the_class );
 ```
 
 "BAD API"
-
 : The API was invalid.
 
 "BAD CLASS"
-
 : The class of the API was invalid.
 
 Returns a descriptive name of the class of the API, if the class of the API and
@@ -971,16 +928,13 @@ rtems_status_code rtems_object_get_class_information(
 ```
 
 `the_api`
-
 : This parameter is the object API of the object class.
 
 `the_class`
-
 : This parameter is the object class of the object API to get the class
   information.
 
 `info`
-
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsObjectApiClassInformation` object. When the directive
   call is successful, the object class information of the class of the API
@@ -991,15 +945,12 @@ rtems_status_code rtems_object_get_class_information(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The class of the API or the API was invalid.
 
 ```{eval-rst}
@@ -1082,15 +1033,12 @@ rtems_id RTEMS_OBJECT_ID_INITIAL(
 ```
 
 `api`
-
 : This parameter is the API of the object identifier to build.
 
 `class`
-
 : This parameter is the class of the object identifier to build.
 
 `node`
-
 : This parameter is the MPCI node of the object identifier to build.
 
 ```{eval-rst}

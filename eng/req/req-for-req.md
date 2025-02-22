@@ -283,7 +283,6 @@ build commands.
 Requirements shall be stated separately. A bad example is:
 
 spec:/classic/task/create
-
 : The task create directive shall evaluate the parameters, allocate a task
   object and initialize it.
 
@@ -319,25 +318,21 @@ Requirements shall not be in conflict with each other inside a specification.
 A bad example is:
 
 spec:/classic/sema/mtx-obtain-wait
-
 : When a mutex is not available, the mutex obtain directive shall enqueue the
   calling thread on the wait queue of the mutex.
 
 spec:/classic/sema/mtx-obtain-err-unsat
-
 : If a mutex is not available, the mutex obtain directive shall return the
   RTEMS_UNSATISFIED status.
 
 To resolve this conflict, a condition may be added:
 
 spec:/classic/sema/mtx-obtain-wait
-
 : When a mutex is not available and the RTEMS_WAIT option is set, the mutex
   obtain directive shall enqueue the calling thread on the wait queue of the
   mutex.
 
 spec:/classic/sema/mtx-obtain-err-unsat
-
 : If a mutex is not available, when the RTEMS_WAIT option is not set, the
   mutex obtain directive shall return the RTEMS_UNSATISFIED status.
 

@@ -22,10 +22,11 @@ that resource the {ref}`tester-config-wait` directive can be used.
 (fig-tester-tftp-u-boot)=
 
 ```{figure} ../../images/user/test-tftp.png
-:alt: RTEMS Tester using TFTP and U-Boot
-:figclass: align-center
-:width: 35%
-
+---
+alt: RTEMS Tester using TFTP and U-Boot
+figclass: align-center
+width: 35%
+---
 RTEMS Tester using TFTP and U-Boot.
 ```
 
@@ -101,16 +102,13 @@ tester = %{_rtscripts}/tftp.cfg
 The TFTP configuration supports the following field's:
 
 `bsp_tty_dev`
-
 : The target's tty console. For telnet this is a host and port pair written in
   the standard networking format, for example `serserver:12345`.
 
 `test_restarts`
-
 : The number of restarts before the test is considered `invalid`.
 
 `target_reset_regex`
-
 : The target reset regular expression. This is a [Python regular expression](https://docs.python.org/2/library/re.html#regular-expression-syntax) used
   to filter the console input. If a match is made something has happened during
   the boot process that requires a reset. The `target_reset_command`
@@ -118,14 +116,12 @@ The TFTP configuration supports the following field's:
   error messages that indicate the boot process as failed.
 
 `target_start_regex`
-
 : The target start regular expression. This also a Python regular expression to
   filter the console input to detect if a target has reset. If a board crashes
   running a test or at any point in time and reset this filter detects this as
   happened and end the test with a suitable result.
 
 `target_on_command`
-
 : The target on command is a host shell command that is called before the first
   test. This command powers on a target. Targets should be left powered off
   when not running tests or the target may request TFTP downloads that are for
@@ -134,19 +130,16 @@ The TFTP configuration supports the following field's:
   command.
 
 `target_off_command`
-
 : The target off command is a host shell command that is called after the last
   test powering off the target.
 
 `target_reset_command`
-
 : The target reset command is a host shell command that is called when the
   target needs to be reset. This command can power cycle the target or toggle a
   reset signal connected to the target. If you are power cycling a target make
   sure you have a suitable pause to let the target completely power down.
 
 `target_pretest_command`
-
 : The target pretest command is a host shell comment that is called before the
   test is run
 
@@ -154,23 +147,18 @@ The commands in the listed fields can include parameters that are
 substituted. The parameters are:
 
 `@ARCH@`
-
 : The BSP architecture
 
 `@BSP@`
-
 : The BSP's name
 
 `@EXE@`
-
 : The executable name.
 
 `@FEXE@`
-
 : The
 
 . The
-
 : `@ARCH` is the
 
 substituted
@@ -232,10 +220,11 @@ loaded and executed and a pass or fail is determined:
 (fig-tester-tftp-seq-1)=
 
 ```{figure} ../../images/user/test-tftp-seq-1.png
-:alt: Test Pass and Fail Sequence
-:figclass: align-center
-:width: 90%
-
+---
+alt: Test Pass and Fail Sequence
+figclass: align-center
+width: 90%
+---
 Test Pass and Fail Sequences
 ```
 
@@ -246,10 +235,11 @@ repeatedly the test result is invalid:
 (fig-tester-tftp-seq-2)=
 
 ```{figure} ../../images/user/test-tftp-seq-2.png
-:alt: Target Start Filter Trigger
-:figclass: align-center
-:width: 80%
-
+---
+alt: Target Start Filter Trigger
+figclass: align-center
+width: 80%
+---
 Target Start Filter Trigger
 ```
 
@@ -260,10 +250,11 @@ not being able to load the test executable. If the filter triggers the
 (fig-tester-tftp-seq-3)=
 
 ```{figure} ../../images/user/test-tftp-seq-3.png
-:alt: Target Reset Filter Trigger
-:figclass: align-center
-:width: 50%
-
+---
+alt: Target Reset Filter Trigger
+figclass: align-center
+width: 50%
+---
 Target Reset Filter Trigger
 ```
 
@@ -274,9 +265,10 @@ reset, request a JTAG pod issue a reset or turn the power off and on:
 (fig-tester-tftp-seq-4)=
 
 ```{figure} ../../images/user/test-tftp-seq-4.png
-:alt: Target Timeout
-:figclass: align-center
-:width: 60%
-
+---
+alt: Target Timeout
+figclass: align-center
+width: 60%
+---
 Target Timeout
 ```

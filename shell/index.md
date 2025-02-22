@@ -19,8 +19,9 @@
 ```
 
 ```{toctree}
-:maxdepth: 4
-
+---
+maxdepth: 4
+---
 preface
 configuration_and_init
 general_commands

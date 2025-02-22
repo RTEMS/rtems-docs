@@ -32,23 +32,18 @@ invocation of the `rtems_clock_set` directive.
 RTEMS provides multiple directives which can be used by an application to obtain the current date and time or date and time related information. These directives allow a task or an ISR to obtain the current date and time or date and time related information. The current date and time can be returned in either native or *UNIX-style* format. Additionally, the application can obtain date and time related information such as the number of seconds since the RTEMS epoch, the number of ticks since the executive was initialized, and the number of ticks per second. The following directives are available:
 
 `rtems_clock_get_tod`
-
 : obtain native style date and time
 
 `rtems_clock_get_time_value`
-
 : obtain *UNIX-style* date and time
 
 `rtems_clock_get_ticks_since_boot`
-
 : obtain number of ticks since RTEMS was initialized
 
 `rtems_clock_get_seconds_since_epoch`
-
 : obtain number of seconds since RTEMS epoch
 
 `rtems_clock_get_ticks_per_second`
-
 : obtain number of clock ticks per second
 
 Calendar time operations will return an error code if invoked before the date

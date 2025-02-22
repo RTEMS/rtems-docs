@@ -429,8 +429,7 @@ cd ..
 ```
 
 This should create
-`hello-rtems/target/riscv64gc-unknown-none-elf/debug/libhello_rtems.
-a`. Note that the project directory (`hello-rtems`) is written with
+`hello-rtems/target/riscv64gc-unknown-none-elf/debug/libhello_rtems. a`. Note that the project directory (`hello-rtems`) is written with
 a minus "`-`" while the library (`libhello_rtems.a`) is written
 with an underscore "`_`".
 

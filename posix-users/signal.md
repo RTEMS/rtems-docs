@@ -548,7 +548,6 @@ The function returns 0 on success, otherwise it returns -1 and sets `errno`
 to indicate the error. `errno` may be set to:
 
 *EINVAL*
-
 : Invalid argument passed.
 
 **DESCRIPTION:**
@@ -806,7 +805,6 @@ The function returns 0 on success, otherwise it returns -1 and sets `errno`
 to indicate the error. `errno` may be set to:
 
 *EINTR*
-
 : Signal interrupted this function.
 
 **DESCRIPTION:**

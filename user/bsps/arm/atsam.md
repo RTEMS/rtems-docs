@@ -90,8 +90,7 @@ The console driver supports the USART and UART devices.
 The default linker command file places the code into the internal flash. There
 are the alternative linker command files `linkcmds.sdram`,
 `linkcmds.qspiflash` and `linkcmds.intsram` that use other memories. To use
-them in your application, add the following linker flags: `LDFLAGS +=
--qnolinkcmds -T linkcmds.XYZ`.
+them in your application, add the following linker flags: `LDFLAGS += -qnolinkcmds -T linkcmds.XYZ`.
 
 The fast text section uses the ITCM. The fast data section uses the DTCM.
 

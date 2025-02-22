@@ -78,23 +78,18 @@ rtems_status_code rtems_port_create(
 ```
 
 `name`
-
 : This parameter is the object name of the port.
 
 `internal_start`
-
 : This parameter is the internal start address of the memory area.
 
 `external_start`
-
 : This parameter is the external start address of the memory area.
 
 `length`
-
 : This parameter is the length in bytes of the memory area.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created port will
   be stored in this object.
@@ -113,27 +108,21 @@ with other dual-ported memory port related directives.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `internal_start` parameter was not properly aligned.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `external_start` parameter was not properly aligned.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a port. The number of
   port available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_PORTS` application configuration option.
@@ -192,11 +181,9 @@ rtems_status_code rtems_port_ident( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -213,19 +200,15 @@ specified in `name`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the local node.
 
 ```{eval-rst}
@@ -282,7 +265,6 @@ rtems_status_code rtems_port_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the port identifier.
 
 ```{eval-rst}
@@ -296,11 +278,9 @@ This directive deletes the port specified by `id`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no port associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -359,15 +339,12 @@ rtems_status_code rtems_port_external_to_internal(
 ```
 
 `id`
-
 : This parameter is the port identifier.
 
 `external`
-
 : This parameter is the external address to convert.
 
 `internal`
-
 : This parameter is the pointer to a `void` pointer object. When the
   directive call is successful, the external address associated with the
   internal address will be stored in this object.
@@ -386,15 +363,12 @@ external address.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `id` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `internal` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
@@ -443,15 +417,12 @@ rtems_status_code rtems_port_internal_to_external(
 ```
 
 `id`
-
 : This parameter is the port identifier.
 
 `internal`
-
 : This parameter is the internal address to convert.
 
 `external`
-
 : This parameter is the pointer to a `void` pointer object. When the
   directive call is successful, the external address associated with the
   internal address will be stored in this object.
@@ -470,15 +441,12 @@ address, then the external address is set to the given internal address.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `id` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `external` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}

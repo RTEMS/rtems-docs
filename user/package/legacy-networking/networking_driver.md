@@ -129,18 +129,15 @@ The driver should then set up several fields in the ifnet structure in the
 device-dependent data structure supplied and maintained by the driver:
 
 `ifp->if_softc`
-
 : Pointer to the device-dependent data. The first entry in the
   device-dependent data structure must be an `arpcom` structure.
 
 `ifp->if_name`
-
 : The name of the device. The network stack uses this string and the device
   number for device name lookups. The device name should be obtained from
   the `name` entry in the configuration structure.
 
 `ifp->if_unit`
-
 : The device number. The network stack uses this number and the device name
   for device name lookups. For example, if `ifp->if_name` is `scc` and
   `ifp->if_unit` is `1`, the full device name would be `scc1`. The
@@ -148,36 +145,29 @@ device-dependent data structure supplied and maintained by the driver:
   structure.
 
 `ifp->if_mtu`
-
 : The maximum transmission unit for the device. For Ethernet devices this
   value should almost always be 1500.
 
 `ifp->if_flags`
-
 : The device flags. Ethernet devices should set the flags to
   `IFF_BROADCAST|IFF_SIMPLEX`, indicating that the device can broadcast
   packets to multiple destinations and does not receive and transmit at the
   same time.
 
 `ifp->if_snd.ifq_maxlen`
-
 : The maximum length of the queue of packets waiting to be sent to the
   driver. This is normally set to `ifqmaxlen`.
 
 `ifp->if_init`
-
 : The address of the driver initialization function.
 
 `ifp->if_start`
-
 : The address of the driver start function.
 
 `ifp->if_ioctl`
-
 : The address of the driver ioctl function.
 
 `ifp->if_output`
-
 : The address of the output function. Ethernet devices should set this to
   `ether_output`.
 
@@ -277,19 +267,15 @@ commands which must be handled are:
   state of the interface `IFF_UP` and `IFF_RUNNING` bits in `if_flags`:
 
   `IFF_RUNNING`
-
   : Stop the device.
 
   `IFF_UP`
-
   : Start the device.
 
   `IFF_UP|IFF_RUNNING`
-
   : Stop then start the device.
 
   `0`
-
   : Do nothing.
 
 ## Write the Driver Statistic-Printing Function

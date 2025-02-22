@@ -111,16 +111,13 @@ CALLING SEQUENCE:
   ```
 
 STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This routine prints out a table detailing the CPU usage statistics for all
   tasks in the system.
 
 NOTES:
-
 : The table is printed using the `printk` routine.
 
 ```{raw} latex
@@ -140,15 +137,12 @@ CALLING SEQUENCE:
   ```
 
 STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This routine re-initializes the CPU usage statistics for all tasks in the
   system to their initial state. The initial state is that a task has not
   executed and thus has consumed no CPU time.
 
 NOTES:
-
 : NONE

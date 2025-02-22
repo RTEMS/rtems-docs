@@ -10,8 +10,10 @@ A schematic diagram of the tasks and message *mbuf* queues in a simple RTEMS
 networking application is shown in the following figure:
 
 ```{figure} ../../../images/networking/networkflow.png
-:align: center
-:alt: Network Flow
+---
+align: center
+alt: Network Flow
+---
 ```
 
 The transmit task for each network interface is normally blocked waiting for a

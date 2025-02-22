@@ -69,8 +69,9 @@ runner to form a test suite. The test cases are automatically registered via
 static C constructors.
 
 ```{code-block} c
-:caption: Test Case Example
-
+---
+caption: Test Case Example
+---
 #include <t.h>
 
 static int add(int a, int b)
@@ -89,8 +90,9 @@ T_TEST_CASE(a_test_case)
 ```
 
 ```{code-block} none
-:caption: Test Case Report
-
+---
+caption: Test Case Report
+---
 B:a_test_case
 P:0:8:UI1:test-simple.c:13
 F:1:8:UI1:test-simple.c:14:a test failure message
@@ -163,8 +165,9 @@ automatically. A call of `T_pop_fixture()` invokes the teardown method of the
 fixture and must correspond to a previous call to `T_push_fixture()`.
 
 ```{code-block} c
-:caption: Test Fixture Example
-
+---
+caption: Test Fixture Example
+---
 #include <t.h>
 
 static int initial_value = 3;
@@ -226,8 +229,9 @@ T_TEST_CASE_FIXTURE(fixture, &fixture)
 ```
 
 ```{code-block} none
-:caption: Test Fixture Report
-
+---
+caption: Test Fixture Report
+---
 B:fixture
 L:setup begin
 P:0:0:UI1:test-fixture.c:13
@@ -265,8 +269,9 @@ Use the `T_step_*(step, ...)` test check variants to ensure that the test case
 execution follows exactly the planned steps.
 
 ```{code-block} c
-:caption: Test Planning Example
-
+---
+caption: Test Planning Example
+---
 #include <t.h>
 
 T_TEST_CASE(wrong_step)
@@ -305,8 +310,9 @@ T_TEST_CASE(steps)
 ```
 
 ```{code-block} none
-:caption: Test Planning Report
-
+---
+caption: Test Planning Report
+---
 B:wrong_step
 P:0:0:UI1:test-plan.c:6
 F:1:0:UI1:test-plan.c:7:planned step (2)
@@ -348,8 +354,9 @@ On RTEMS, checks for the following resources are available
 - RTEMS timers.
 
 ```{code-block} c
-:caption: Resource Accounting Example
-
+---
+caption: Resource Accounting Example
+---
 #include <t.h>
 
 #include <stdlib.h>
@@ -376,8 +383,9 @@ T_TEST_CASE(missing_free)
 ```
 
 ```{code-block} none
-:caption: Resource Accounting Report
-
+---
+caption: Resource Accounting Report
+---
 B:missing_sema_delete
 P:0:0:UI1:test-leak.c:14
 F:*:0:UI1:*:*:RTEMS semaphore leak (1)
@@ -406,8 +414,9 @@ void T_free(void *ptr);
 ```
 
 ```{code-block} c
-:caption: Test Case Scoped Dynamic Memory Example
-
+---
+caption: Test Case Scoped Dynamic Memory Example
+---
 #include <t.h>
 
 T_TEST_CASE(malloc_free)
@@ -449,8 +458,9 @@ T_TEST_CASE(zalloc_auto)
 ```
 
 ```{code-block} none
-:caption: Test Case Scoped Dynamic Memory Report
-
+---
+caption: Test Case Scoped Dynamic Memory Report
+---
 B:malloc_free
 P:0:0:UI1:test-malloc.c:8
 E:malloc_free:N:1:F:0:D:0.005200
@@ -483,8 +493,9 @@ void T_remove_destructor(T_destructor *destructor);
 ```
 
 ```{code-block} c
-:caption: Test Case Destructor Example
-
+---
+caption: Test Case Destructor Example
+---
 #include <t.h>
 
 static void
@@ -504,8 +515,9 @@ T_TEST_CASE(destructor)
 ```
 
 ```{code-block} none
-:caption: Test Case Destructor Report
-
+---
+caption: Test Case Destructor Report
+---
 B:destructor
 P:0:0:UI1:test-destructor.c:7
 E:destructor:N:1:F:0:D:0.003714
@@ -544,23 +556,19 @@ The following names for test check parameters are used throughout the test
 checks:
 
 step
-
 : The planned test step for this test check.
 
 a
-
 : The actual value to check against an expected value. It is usually the
   first parameter in all test checks, except in the `T_step_*(step, ...)`
   test check variants, here it is the second parameter.
 
 e
-
 : The expected value of a test check. This parameter is optional. Some test
   checks have an implicit expected value. If present, then this parameter is
   directly after the actual value parameter of the test check.
 
 fmt
-
 : A printf()-like format string. Floating-point and exotic formats may be
   not supported.
 
@@ -569,27 +577,21 @@ fmt
 The following names for test check conditions are used:
 
 eq
-
 : The actual value must equal the expected value.
 
 ne
-
 : The actual value must not equal the value of the second parameter.
 
 ge
-
 : The actual value must be greater than or equal to the expected value.
 
 gt
-
 : The actual value must be greater than the expected value.
 
 le
-
 : The actual value must be less than or equal to the expected value.
 
 lt
-
 : The actual value must be less than the expected value.
 
 If the actual value satisfies the test check condition, then the test check
@@ -600,111 +602,84 @@ passes, otherwise it fails.
 The following names for test check types are used:
 
 ptr
-
 : The test value must be a pointer (`void *`).
 
 mem
-
 : The test value must be a memory area with a specified length.
 
 str
-
 : The test value must be a null byte terminated string.
 
 nstr
-
 : The length of the test value string is limited to a specified maximum.
 
 char
-
 : The test value must be a character (`char`).
 
 schar
-
 : The test value must be a signed character (`signed char`).
 
 uchar
-
 : The test value must be an unsigned character (`unsigned char`).
 
 short
-
 : The test value must be a short integer (`short`).
 
 ushort
-
 : The test value must be an unsigned short integer (`unsigned short`).
 
 int
-
 : The test value must be an integer (`int`).
 
 uint
-
 : The test value must be an unsigned integer (`unsigned int`).
 
 long
-
 : The test value must be a long integer (`long`).
 
 ulong
-
 : The test value must be an unsigned long integer (`unsigned long`).
 
 ll
-
 : The test value must be a long long integer (`long long`).
 
 ull
-
 : The test value must be an unsigned long long integer (`unsigned long long`).
 
 i8
-
 : The test value must be a signed 8-bit integer (`int8_t`).
 
 u8
-
 : The test value must be an unsigned 8-bit integer (`uint8_t`).
 
 i16
-
 : The test value must be a signed 16-bit integer (`int16_t`).
 
 u16
-
 : The test value must be an unsigned 16-bit integer (`uint16_t`).
 
 i32
-
 : The test value must be a signed 32-bit integer (`int32_t`).
 
 u32
-
 : The test value must be an unsigned 32-bit integer (`uint32_t`).
 
 i64
-
 : The test value must be a signed 64-bit integer (`int64_t`).
 
 u64
-
 : The test value must be an unsigned 64-bit integer (`uint64_t`).
 
 iptr
-
 : The test value must be of type `intptr_t`.
 
 uptr
-
 : The test value must be of type `uintptr_t`.
 
 ssz
-
 : The test value must be of type `ssize_t`.
 
 sz
-
 : The test value must be of type `size_t`.
 
 #### Integers
@@ -779,8 +754,9 @@ The message is only printed in case the test check fails. The format parameter
 is mandatory.
 
 ```{code-block} c
-:caption: Boolean Test Checks Example
-
+---
+caption: Boolean Test Checks Example
+---
 #include <t.h>
 
 T_TEST_CASE(example)
@@ -796,8 +772,9 @@ T_TEST_CASE(example)
 ```
 
 ```{code-block} none
-:caption: Boolean Test Checks Report
-
+---
+caption: Boolean Test Checks Report
+---
 B:example
 P:0:0:UI1:test-example.c:5
 F:1:0:UI1:test-example.c:6:test fails
@@ -1003,8 +980,9 @@ an error. An automatically generated message is printed in case the test check
 fails.
 
 ```{code-block} c
-:caption: POSIX Status Code Example
-
+---
+caption: POSIX Status Code Example
+---
 #include <t.h>
 
 #include <sys/stat.h>
@@ -1022,8 +1000,9 @@ T_TEST_CASE(stat)
 ```
 
 ```{code-block} none
-:caption: POSIX Status Code Report
-
+---
+caption: POSIX Status Code Report
+---
 B:stat
 P:0:0:UI1:test-psx.c:13
 E:stat:N:1:F:0
@@ -1040,8 +1019,9 @@ void T_log(T_verbosity verbosity, char const *fmt, ...);
 A newline is automatically added to terminate the log message line.
 
 ```{code-block} c
-:caption: Log Message Example
-
+---
+caption: Log Message Example
+---
 #include <t.h>
 
 T_TEST_CASE(log)
@@ -1053,8 +1033,9 @@ T_TEST_CASE(log)
 ```
 
 ```{code-block} none
-:caption: Log Message Report
-
+---
+caption: Log Message Report
+---
 B:log
 L:a log message 1, 2, 3
 E:log:N:0:F:0
@@ -1162,8 +1143,9 @@ const char *T_time_to_string_s(T_time time, T_time_string buffer);
 ```
 
 ```{code-block} c
-:caption: Time String Example
-
+---
+caption: Time String Example
+---
 #include <t.h>
 
 T_TEST_CASE(time_to_string)
@@ -1186,8 +1168,9 @@ T_TEST_CASE(time_to_string)
 ```
 
 ```{code-block} none
-:caption: Time String Report
-
+---
+caption: Time String Report
+---
 B:time_to_string
 P:0:0:UI1:test-time.c:11
 P:1:0:UI1:test-time.c:12
@@ -1259,34 +1242,27 @@ You can control some aspects of the measurement through the request flags (use
 zero for the default):
 
 T_MEASURE_RUNTIME_ALLOW_CLOCK_ISR
-
 : Allow clock interrupts during the measurement. By default, measurements
   during which a clock interrupt happened are discarded unless it happens two
   times in a row.
 
 T_MEASURE_RUNTIME_REPORT_SAMPLES
-
 : Report all measurement samples.
 
 T_MEASURE_RUNTIME_DISABLE_FULL_CACHE
-
 : Disable the `FullCache` execution environment variant.
 
 T_MEASURE_RUNTIME_DISABLE_HOT_CACHE
-
 : Disable the `HotCache` execution environment variant.
 
 T_MEASURE_RUNTIME_DISABLE_DIRTY_CACHE
-
 : Disable the `DirtyCache` execution environment variant.
 
 T_MEASURE_RUNTIME_DISABLE_MINOR_LOAD
-
 : Disable the `Load` execution environment variants with a load worker count
   less than the processor count.
 
 T_MEASURE_RUNTIME_DISABLE_MAX_LOAD
-
 : Disable the `Load` execution environment variant with a load worker count
   equal to the processor count.
 
@@ -1348,8 +1324,9 @@ absolute deviation (`M:MAD`), and the sum of the sample values (`M:D`) is
 reported.
 
 ```{code-block} c
-:caption: Code Runtime Measurement Example
-
+---
+caption: Code Runtime Measurement Example
+---
 #include <t.h>
 
 static void
@@ -1377,8 +1354,9 @@ T_TEST_CASE(measure_empty)
 ```
 
 ```{code-block} none
-:caption: Code Runtime Measurement Report
-
+---
+caption: Code Runtime Measurement Report
+---
 B:measure_empty
 P:0:0:UI1:test-rtems-measure.c:18
 M:B:Empty
@@ -1489,8 +1467,10 @@ configuration and passes the specified argument to all configured handlers.
 The function shall be called from thread context with interrupts enabled.
 
 ```{image} ../images/eng/interrupt-test.*
-:align: center
-:scale: 60
+---
+align: center
+scale: 60
+---
 ```
 
 The interrupt test uses an *adaptive bisection algorithm* to try to hit the
@@ -1688,16 +1668,13 @@ for the test case events (`T_EVENT_CASE_EARLY`, `T_EVENT_CASE_BEGIN`,
 Three test verbosity levels are defined:
 
 T_QUIET
-
 : Only the test suite begin, system, test case end, and test suite end lines
   are printed.
 
 T_NORMAL
-
 : Prints everything except passed test lines.
 
 T_VERBOSE
-
 : Prints everything.
 
 The test verbosity level can be set within the scope of one test case with the
@@ -1787,7 +1764,6 @@ A
   A description of the field follows:
 
   \<TestSuite>
-
   : The test suite name. Must not contain colon characters (`:`).
 
 S
@@ -1799,11 +1775,9 @@ S
   A description of the fields follows:
 
   \<Key>
-
   : A key string. Must not contain colon characters (`:`).
 
   \<Value>
-
   : An arbitrary key value string. May contain colon characters (`:`).
 
 B
@@ -1815,7 +1789,6 @@ B
   A description of the field follows:
 
   \<TestCase>
-
   : A test case name. Must not contain colon characters (`:`).
 
 P
@@ -1827,32 +1800,27 @@ P
   A description of the fields follows:
 
   \<Step>
-
   : Each non-quiet test has a unique test step counter value in each test case
     execution. The test step counter is set to zero before the test case
     executes. For quiet test checks, there is no associated test step and the
     character `*` instead of an integer is used to indicate this.
 
   \<Processor>
-
   : The processor index of the processor which executed at least one
     instruction of the corresponding test.
 
   \<Task>
-
   : The name of the task which executed the corresponding test if the test
     executed in task context. The name `ISR` indicates that the test executed
     in interrupt context. The name `?` indicates that the test executed in an
     arbitrary context with no valid executing task.
 
   \<File>
-
   : The name of the source file which contains the corresponding test. A
     source file of `*` indicates that no test source file is associated
     with the test, e.g. it was produced by the test framework itself.
 
   \<Line>
-
   : The line of the test statement in the source file which contains the
     corresponding test. A line number of `*` indicates that no test source
     file is associated with the test, e.g. it was produced by the test
@@ -1867,11 +1835,9 @@ F
   A description of the fields follows:
 
   \<Step> \<Processor> \<Task> \<File> \<Line>
-
   : See above **P** line.
 
   \<Message>
-
   : An arbitrary message string. May contain colon characters (`:`).
 
 L
@@ -1883,7 +1849,6 @@ L
   A description of the field follows:
 
   \<Message>
-
   : An arbitrary message string. May contain colon characters (`:`).
 
 E
@@ -1895,20 +1860,16 @@ E
   A description of the fields follows:
 
   \<TestCase>
-
   : A test case name. Must not contain colon characters (`:`).
 
   \<Steps>
-
   : The final test step counter of a test case. Quiet test checks produce
     no test steps.
 
   \<Failures>
-
   : The count of failed test checks of a test case.
 
   \<Duration>
-
   : The test case duration in seconds.
 
 Z
@@ -1920,23 +1881,18 @@ Z
   A description of the fields follows:
 
   \<TestSuite>
-
   : The test suite name. Must not contain colon characters (`:`).
 
   \<TestCases>
-
   : The count of test cases in the test suite.
 
   \<OverallSteps>
-
   : The overall count of test steps in the test suite.
 
   \<OverallFailures>
-
   : The overall count of failed test cases in the test suite.
 
   \<Duration>
-
   : The test suite duration in seconds.
 
 Y
@@ -1948,7 +1904,6 @@ Y
   A description of the fields follows:
 
   \<Hash>
-
   : The SHA256 hash value of the test suite report from the begin to the
     end of the test suite.
 
@@ -1983,64 +1938,52 @@ M
   A description of the fields follows:
 
   \<Name>
-
   : A code runtime measurement name. Must not contain colon characters
     (`:`).
 
   \<Variant>
-
   : The execution variant which is one of **FullCache**, **HotCache**,
     **DirtyCache**, or **Load/\<WorkerCount>**. The \<WorkerCount> is the
     count of active workers which ranges from one to the processor count.
 
   \<SampleCount>
-
   : The sample count as defined by the runtime measurement configuration.
 
   \<Count>
-
   : The count of samples with the same value.
 
   \<Value>
-
   : A sample value in seconds.
 
   \<Minimum>
-
   : The minimum of the sample set in seconds.
 
   \<FirstQuartile>
-
   : The first quartile of the sample set in seconds.
 
   \<Median>
-
   : The median of the sample set in seconds.
 
   \<ThirdQuartile>
-
   : The third quartile of the sample set in seconds.
 
   \<Maximum>
-
   : The maximum of the sample set in seconds.
 
   \<MedianAbsoluteDeviation>
-
   : The median absolute deviation of the sample set in seconds.
 
   \<SumOfSampleValues>
-
   : The sum of all sample values of the sample set in seconds.
 
   \<Duration>
-
   : The runtime measurement duration in seconds. It includes time to set
     up the execution environment variant.
 
 ```{code-block} none
-:caption: Example Test Report
-
+---
+caption: Example Test Report
+---
 A:xyz
 S:Platform:RTEMS
 S:Compiler:7.4.0 20181206 (RTEMS 5, RSB e0aec65182449a4e22b820e773087636edaf5b32, Newlib 1d35a003f)
@@ -2102,7 +2045,6 @@ The requirements on a test framework suitable for RTEMS are:
 ### License Requirements
 
 TF.License.Permissive
-
 : The test framework shall have a permissive open source license such as
   BSD-2-Clause.
 
@@ -2123,11 +2065,9 @@ TF.Portability
     on multiple platforms.
 
     TF.Portability.POSIX.Linux
-
     : The test framework shall run on Linux.
 
     TF.Portability.POSIX.FreeBSD
-
     : The test framework shall run on FreeBSD.
 
   TF.Portability.C11
@@ -2193,12 +2133,10 @@ TF.Reporting
   : The test framework shall provide printf()-like output functions.
 
     TF.Reporting.Printf.WithFP
-
     : There shall be a printf()-like output function with floating point
       support.
 
     TF.Reporting.Printf.WithoutFP
-
     : There shall be a printf()-like output function without floating
       point support on RTEMS.
 
@@ -2207,39 +2145,30 @@ TF.Reporting
   : The test platform shall be reported.
 
     TF.Reporting.Platform.RTEMS.Git
-
     : The RTEMS source Git commit shall be reported.
 
     TF.Reporting.Platform.RTEMS.Arch
-
     : The RTEMS architecture name shall be reported.
 
     TF.Reporting.Platform.RTEMS.BSP
-
     : The RTEMS BSP name shall be reported.
 
     TF.Reporting.Platform.RTEMS.Tools
-
     : The RTEMS tool chain version shall be reported.
 
     TF.Reporting.Platform.RTEMS.Config.Debug
-
     : The shall be reported if RTEMS_DEBUG is defined.
 
     TF.Reporting.Platform.RTEMS.Config.Multiprocessing
-
     : The shall be reported if RTEMS_MULTIPROCESSING is defined.
 
     TF.Reporting.Platform.RTEMS.Config.POSIX
-
     : The shall be reported if RTEMS_POSIX_API is defined.
 
     TF.Reporting.Platform.RTEMS.Config.Profiling
-
     : The shall be reported if RTEMS_PROFILING is defined.
 
     TF.Reporting.Platform.RTEMS.Config.SMP
-
     : The shall be reported if RTEMS_SMP is defined.
 
   TF.Reporting.TestCase
@@ -2247,27 +2176,21 @@ TF.Reporting
   : The test cases shall be reported.
 
     TF.Reporting.TestCase.Begin
-
     : The test case begin shall be reported.
 
     TF.Reporting.TestCase.End
-
     : The test case end shall be reported.
 
     TF.Reporting.TestCase.Tests
-
     : The count of test checks of the test case shall be reported.
 
     TF.Reporting.TestCase.Failures
-
     : The count of failed test checks of the test case shall be reported.
 
     TF.Reporting.TestCase.Timing
-
     : Test case timing shall be reported.
 
     TF.Reporting.TestCase.Tracing
-
     : Automatic tracing and reporting of thread context switches and
       interrupt service routines shall be optionally performed.
 
@@ -2278,17 +2201,14 @@ TF.Environment
 : The test framework shall support all environment conditions of the platform.
 
   TF.Environment.SystemStart
-
   : The test framework shall run during early stages of the system start,
     e.g. valid stack pointer, initialized data and cleared BSS, nothing
     more.
 
   TF.Environment.BeforeDeviceDrivers
-
   : The test framework shall run before device drivers are initialized.
 
   TF.Environment.InterruptContext
-
   : The test framework shall support test case code in interrupt context.
 
 ### Usability Requirements
@@ -2322,22 +2242,18 @@ TF.Usability
       the test case.
 
       TF.Usability.TestCase.Resources.Memory
-
       : It shall be possible to dynamically allocate memory which is
         automatically freed once the test case completed.
 
       TF.Usability.TestCase.Resources.File
-
       : It shall be possible to create a file which is automatically
         unlinked once the test case completed.
 
       TF.Usability.TestCase.Resources.Directory
-
       : It shall be possible to create a directory which is automatically
         removed once the test case completed.
 
       TF.Usability.TestCase.Resources.FileDescriptor
-
       : It shall be possible to open a file descriptor which is
         automatically closed once the test case completed.
 
@@ -2346,11 +2262,9 @@ TF.Usability
     : It shall be possible to use a text fixture for test cases.
 
       TF.Usability.TestCase.Fixture.SetUp
-
       : It shall be possible to provide a set up handler for each test case.
 
       TF.Usability.TestCase.Fixture.TearDown
-
       : It shall be possible to provide a tear down handler for each test
         case.
 
@@ -2405,43 +2319,34 @@ TF.Usability
       : It shall be possible to verify Classic API objects.
 
         TF.Usability.TestCase.Context.Classic.Barrier
-
         : It shall be possible to verify Classic API Barrier objects.
 
         TF.Usability.TestCase.Context.Classic.Extensions
-
         : It shall be possible to verify Classic API User Extensions
           objects.
 
         TF.Usability.TestCase.Context.Classic.MessageQueues
-
         : It shall be possible to verify Classic API Message Queue
           objects.
 
         TF.Usability.TestCase.Context.Classic.Partitions
-
         : It shall be possible to verify Classic API Partition objects.
 
         TF.Usability.TestCase.Context.Classic.Periods
-
         : It shall be possible to verify Classic API Rate Monotonic
           Period objects.
 
         TF.Usability.TestCase.Context.Classic.Regions
-
         : It shall be possible to verify Classic API Region objects.
 
         TF.Usability.TestCase.Context.Classic.Semaphores
-
         : It shall be possible to verify Classic API Semaphore
           objects.
 
         TF.Usability.TestCase.Context.Classic.Tasks
-
         : It shall be possible to verify Classic API Task objects.
 
         TF.Usability.TestCase.Context.Classic.Timers
-
         : It shall be possible to verify Classic API Timer objects.
 
       TF.Usability.TestCase.Context.POSIX
@@ -2449,35 +2354,28 @@ TF.Usability
       : It shall be possible to verify POSIX API objects.
 
         TF.Usability.TestCase.Context.POSIX.Keys
-
         : It shall be possible to verify POSIX API Key objects.
 
         TF.Usability.TestCase.Context.POSIX.KeyValuePairs
-
         : It shall be possible to verify POSIX API Key Value Pair
           objects.
 
         TF.Usability.TestCase.Context.POSIX.MessageQueues
-
         : It shall be possible to verify POSIX API Message Queue
           objects.
 
         TF.Usability.TestCase.Context.POSIX.Semaphores
-
         : It shall be possible to verify POSIX API Named Semaphores
           objects.
 
         TF.Usability.TestCase.Context.POSIX.Shms
-
         : It shall be possible to verify POSIX API Shared Memory
           objects.
 
         TF.Usability.TestCase.Context.POSIX.Threads
-
         : It shall be possible to verify POSIX API Thread objects.
 
         TF.Usability.TestCase.Context.POSIX.Timers
-
         : It shall be possible to verify POSIX API Timer objects.
 
   TF.Usability.Assert
@@ -2485,17 +2383,14 @@ TF.Usability
   : There shall be functions to assert test objectives.
 
     TF.Usability.Assert.Safe
-
     : Test assert functions shall be safe to use, e.g. assert(a == b) vs.
       assert(a = b) vs. assert_eq(a, b).
 
     TF.Usability.Assert.Continue
-
     : There shall be assert functions which allow the test case to
       continue in case of an assertion failure.
 
     TF.Usability.Assert.Abort
-
     : There shall be assert functions which abourt the test case in case
       of an assertion failure.
 
@@ -2513,17 +2408,14 @@ TF.Usability
   : The test framework shall support test patterns.
 
     TF.Usability.Pattern.Interrupts
-
     : The test framework shall support test cases which use interrupts,
       e.g. spintrcritical\*.
 
     TF.Usability.Pattern.Parallel
-
     : The test framework shall support test cases which want to run code
       in parallel on SMP machines.
 
     TF.Usability.Pattern.Timing
-
     : The test framework shall support test cases which want to measure
       the timing of code sections under various platform conditions, e.g.
       dirty cache, empty cache, hot cache, with load from other
@@ -2534,14 +2426,12 @@ TF.Usability
   : The test framework shall be configurable.
 
     TF.Usability.Configuration.Time
-
     : The timestamp function shall be configurable, e.g. to allow test
       runs without a clock driver.
 
 ### Performance Requirements
 
 TF.Performance.RTEMS.No64BitDivision
-
 : The test framework shall not use 64-bit divisions on RTEMS.
 
 ## Off-the-shelf Test Frameworks
@@ -2600,8 +2490,7 @@ You know the failure count only after a complete test run. This runs contrary
 to requirement `TF.Portability.Small.Memory`. It is also a bit verbose
 (`TF.Reporting.Compact`).
 
-It is easy to convert a full test report generated by {ref}`The RTEMS Test
-Framework <RTEMSTestFramework>` to the JUnit XML format.
+It is easy to convert a full test report generated by {ref}`The RTEMS Test Framework <RTEMSTestFramework>` to the JUnit XML format.
 
 ### Test Anything Protocol
 
@@ -2621,5 +2510,4 @@ You have to know in advance how many test statements you want to execute in a
 test case. The problem with this format is that there is no standard way to
 provide auxiliary data such as test timing or a tracing report.
 
-It is easy to convert a full test report generated by {ref}`The RTEMS Test
-Framework <RTEMSTestFramework>` to the TAP format.
+It is easy to convert a full test report generated by {ref}`The RTEMS Test Framework <RTEMSTestFramework>` to the TAP format.

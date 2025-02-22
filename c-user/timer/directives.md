@@ -71,11 +71,9 @@ rtems_status_code rtems_timer_create( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name of the timer.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created timer will
   be stored in this object.
@@ -94,19 +92,15 @@ with other timer related directives.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a timer. The number of
   timers available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TIMERS` application configuration option.
@@ -168,11 +162,9 @@ rtems_status_code rtems_timer_ident( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -189,19 +181,15 @@ specified in `name`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the local node.
 
 ```{eval-rst}
@@ -258,7 +246,6 @@ rtems_status_code rtems_timer_cancel( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 ```{eval-rst}
@@ -276,11 +263,9 @@ reinitiated by the next invocation of {ref}`InterfaceRtemsTimerReset`,
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -325,7 +310,6 @@ rtems_status_code rtems_timer_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 ```{eval-rst}
@@ -340,11 +324,9 @@ it is automatically canceled.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -404,19 +386,15 @@ rtems_status_code rtems_timer_fire_after(
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 `ticks`
-
 : This parameter is the interval until the routine is fired in clock ticks.
 
 `routine`
-
 : This parameter is the routine to schedule.
 
 `user_data`
-
 : This parameter is the argument passed to the routine when it is fired.
 
 ```{eval-rst}
@@ -435,19 +413,15 @@ invoked with the argument `user_data` in the context of the clock tick
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `ticks` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -497,19 +471,15 @@ rtems_status_code rtems_timer_fire_when(
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 `wall_time`
-
 : This parameter is the time of day when the routine is fired.
 
 `routine`
-
 : This parameter is the routine to schedule.
 
 `user_data`
-
 : This parameter is the argument passed to the routine when it is fired.
 
 ```{eval-rst}
@@ -527,27 +497,21 @@ argument `user_data` in the context of the clock tick {term}`ISR`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The system date and time was not set.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `wall_time` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
-
 : The time of day was invalid.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -596,15 +560,12 @@ rtems_status_code rtems_timer_initiate_server(
 ```
 
 `priority`
-
 : This parameter is the task priority.
 
 `stack_size`
-
 : This parameter is the task stack size in bytes.
 
 `attribute_set`
-
 : This parameter is the task attribute set.
 
 ```{eval-rst}
@@ -621,30 +582,24 @@ executing all timers initiated via the
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The Timer Server was already initiated.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-
 : The task priority was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive task object available to create the Timer Server
   task.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : There was not enough memory to allocate the task storage area. The task
   storage area contains the task stack, the thread-local storage, and the
   floating point context.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : One of the task create extensions failed to create the Timer Server task.
 
 ```{eval-rst}
@@ -706,19 +661,15 @@ rtems_status_code rtems_timer_server_fire_after(
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 `ticks`
-
 : This parameter is the interval until the routine is fired in clock ticks.
 
 `routine`
-
 : This parameter is the routine to schedule.
 
 `user_data`
-
 : This parameter is the argument passed to the routine when it is fired.
 
 ```{eval-rst}
@@ -737,23 +688,18 @@ task.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The Timer Server was not initiated.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `ticks` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -803,19 +749,15 @@ rtems_status_code rtems_timer_server_fire_when(
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 `wall_time`
-
 : This parameter is the time of day when the routine is fired.
 
 `routine`
-
 : This parameter is the routine to schedule.
 
 `user_data`
-
 : This parameter is the argument passed to the routine when it is fired.
 
 ```{eval-rst}
@@ -833,31 +775,24 @@ argument `user_data` in the context of the Timer Server task.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-
 : The Timer Server was not initiated.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The system date and time was not set.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `wall_time` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
-
 : The time of day was invalid.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -902,7 +837,6 @@ rtems_status_code rtems_timer_reset( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 ```{eval-rst}
@@ -921,15 +855,12 @@ timer service routine which the original {ref}`InterfaceRtemsTimerFireAfter` or
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-
 : The timer was not of the interval class.
 
 ```{eval-rst}
@@ -985,11 +916,9 @@ rtems_status_code rtems_timer_get_information(
 ```
 
 `id`
-
 : This parameter is the timer identifier.
 
 `the_info`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsTimerInformation`
   object. When the directive call is successful, the information about the
   timer will be stored in this object.
@@ -1005,15 +934,12 @@ This directive returns information about the timer.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `the_info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no timer associated with the identifier specified by `id`.
 
 ```{eval-rst}

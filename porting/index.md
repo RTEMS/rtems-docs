@@ -13,8 +13,9 @@
 ```
 
 ```{toctree}
-:maxdepth: 3
-
+---
+maxdepth: 3
+---
 preface
 development_tools
 source_code_org

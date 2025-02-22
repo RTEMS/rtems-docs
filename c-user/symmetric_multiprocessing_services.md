@@ -226,9 +226,7 @@ real-time requirements and functions that profit from fairness and high
 throughput provided the scheduler instances are fully decoupled and adequate
 inter-cluster synchronization primitives are used.
 
-To set the scheduler of a task see {ref}`rtems_scheduler_ident()
-<rtems_scheduler_ident>` and {ref}`rtems_task_set_scheduler()
-<rtems_task_set_scheduler>`.
+To set the scheduler of a task see {ref}`rtems_scheduler_ident() <rtems_scheduler_ident>` and {ref}`rtems_task_set_scheduler() <rtems_task_set_scheduler>`.
 
 ### OpenMP
 
@@ -387,8 +385,9 @@ disabled. While converting legacy code to interrupt locks, care must be taken
 to avoid this situation to happen.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <rtems.h>
 
 void legacy_code_with_interrupt_disable_enable( void )
@@ -417,8 +416,9 @@ An alternative to the RTEMS-specific interrupt locks are POSIX spinlocks. The
 user must provide the storage for this synchronization object.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 #include <assert.h>
 #include <pthread.h>
 
@@ -447,8 +447,7 @@ are zero-initialized, e.g. statically initialized global locks reside in the
 ### Interrupt Service Routines Execute in Parallel With Threads
 
 On a machine with more than one processor, interrupt service routines (this
-includes timer service routines installed via {ref}`rtems_timer_fire_after()
-<rtems_timer_fire_after>`) and threads can execute in parallel. Interrupt
+includes timer service routines installed via {ref}`rtems_timer_fire_after() <rtems_timer_fire_after>`) and threads can execute in parallel. Interrupt
 service routines must take this into account and use proper locking mechanisms
 to protect critical sections from interference by threads (interrupt locks or
 POSIX spinlocks). This likely requires code modifications in legacy device
@@ -507,13 +506,17 @@ This chip contains three L2 caches. Each L2 cache is shared by eight
 processors.
 
 ```{image} ../images/c_user/smplock01perf-t4240.*
-:align: center
-:width: 400
+---
+align: center
+width: 400
+---
 ```
 
 ```{image} ../images/c_user/smplock01fair-t4240.*
-:align: center
-:width: 400
+---
+align: center
+width: 400
+---
 ```
 
 ### Internal Locking

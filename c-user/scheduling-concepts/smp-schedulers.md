@@ -33,8 +33,7 @@ currently owned by the scheduler instance. This scheduler algorithm supports
 with the task priority as the key.
 
 This scheduler algorithm is the default scheduler in SMP configurations if more
-than one processor is configured ({ref}`CONFIGURE_MAXIMUM_PROCESSORS
-<CONFIGURE_MAXIMUM_PROCESSORS>`).
+than one processor is configured ({ref}`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).
 
 (schedulersmppriority)=
 

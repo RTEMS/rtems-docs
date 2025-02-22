@@ -14,7 +14,6 @@ depending on how `CONFIGURE_PCI_CONFIG_LIB` is defined:
 ```
 
 `PCI_LIB_AUTO`
-
 : Used to enable the PCI auto configuration software. PCI will be automatically
   probed, PCI buses enumerated, all devices and bridges will be initialized
   using Plug & Play software routines. The PCI device tree will be populated
@@ -26,7 +25,6 @@ depending on how `CONFIGURE_PCI_CONFIG_LIB` is defined:
 ```
 
 `PCI_LIB_READ`
-
 : Used to enable the PCI read configuration software. The current PCI
   configuration is read to create the RAM representation (the PCI device tree)
   of the PCI devices present. PCI devices are assumed to already have been
@@ -37,7 +35,6 @@ depending on how `CONFIGURE_PCI_CONFIG_LIB` is defined:
 ```
 
 `PCI_LIB_STATIC`
-
 : Used to enable the PCI static configuration software. The user provides a PCI
   tree with information how all PCI devices are to be configured at compile
   time by linking in a custom `struct pci_bus pci_hb` tree. The static PCI
@@ -51,7 +48,6 @@ depending on how `CONFIGURE_PCI_CONFIG_LIB` is defined:
 ```
 
 `PCI_LIB_PERIPHERAL`
-
 : Used to enable the PCI peripheral configuration. It is similar to
   `PCI_LIB_STATIC`, but it will never write the configuration to the PCI
   devices since PCI peripherals are not allowed to access PCI configuration

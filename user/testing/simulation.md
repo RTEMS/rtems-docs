@@ -15,10 +15,11 @@ on each core of your testing host machine lower the time to run all tests.
 (fig-tester-simulation)=
 
 ```{figure} ../../images/user/test-simulation.png
-:alt: RTEMS Tester Simulation
-:figclass: align-center
-:width: 30%
-
+---
+alt: RTEMS Tester Simulation
+figclass: align-center
+width: 30%
+---
 RTEMS Tester Simulation
 ```
 

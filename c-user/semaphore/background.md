@@ -134,8 +134,7 @@ parameter passed to the `rtems_semaphore_create` directive could be either
 `RTEMS_PRIORITY` or `RTEMS_LOCAL | RTEMS_PRIORITY`. The attribute_set
 parameter can be set to `RTEMS_PRIORITY` because `RTEMS_LOCAL` is the
 default for all created tasks. If a similar semaphore were to be known
-globally, then the attribute_set parameter would be `RTEMS_GLOBAL |
-RTEMS_PRIORITY`.
+globally, then the attribute_set parameter would be `RTEMS_GLOBAL | RTEMS_PRIORITY`.
 
 Some combinatinos of these attributes are invalid. For example, priority
 ordered blocking discipline must be applied to a binary semaphore in order to
@@ -143,9 +142,11 @@ use either the priority inheritance or priority ceiling functionality. The
 following tree figure illustrates the valid combinations.
 
 ```{figure} ../../images/c_user/semaphore_attributes.png
-:align: center
-:alt: Semaphore Attributes
-:width: 90%
+---
+align: center
+alt: Semaphore Attributes
+width: 90%
+---
 ```
 
 (building-a-semaphore-obtain-option-set)=

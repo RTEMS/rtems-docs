@@ -76,20 +76,16 @@ rtems_status_code rtems_barrier_create(
 ```
 
 `name`
-
 : This parameter is the object name of the barrier.
 
 `attribute_set`
-
 : This parameter is the attribute set of the barrier.
 
 `maximum_waiters`
-
 : This parameter is the maximum count of waiters on an automatic release
   barrier.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the identifier of the created barrier
   will be stored in this object.
@@ -134,23 +130,18 @@ The **barrier class** is selected by the mutually exclusive
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The `maximum_waiters` parameter was 0 for an automatic release barrier.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : There was no inactive object available to create a barrier. The number of
   barriers available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_BARRIERS` application configuration option.
@@ -206,11 +197,9 @@ rtems_status_code rtems_barrier_ident( rtems_name name, rtems_id *id );
 ```
 
 `name`
-
 : This parameter is the object name to look up.
 
 `id`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
   the directive call is successful, the object identifier of an object with
   the specified name will be stored in this object.
@@ -227,19 +216,15 @@ specified in `name`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : The `name` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_NAME`
-
 : There was no object with the specified name on the local node.
 
 ```{eval-rst}
@@ -296,7 +281,6 @@ rtems_status_code rtems_barrier_delete( rtems_id id );
 ```
 
 `id`
-
 : This parameter is the barrier identifier.
 
 ```{eval-rst}
@@ -312,11 +296,9 @@ code which indicates that the barrier was deleted.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no barrier associated with the identifier specified by `id`.
 
 ```{eval-rst}
@@ -371,11 +353,9 @@ rtems_status_code rtems_barrier_wait( rtems_id id, rtems_interval timeout );
 ```
 
 `id`
-
 : This parameter is the barrier identifier.
 
 `timeout`
-
 : This parameter is the timeout in clock ticks. Use
   {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever.
 
@@ -399,19 +379,15 @@ block except for the one which trips the automatic release condition.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no barrier associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_TIMEOUT`
-
 : The timeout happened while the calling task was waiting at the barrier.
 
 {c:macro}`RTEMS_OBJECT_WAS_DELETED`
-
 : The barrier was deleted while the calling task was waiting at the barrier.
 
 ```{eval-rst}
@@ -461,11 +437,9 @@ rtems_status_code rtems_barrier_release( rtems_id id, uint32_t *released );
 ```
 
 `id`
-
 : This parameter is the barrier identifier.
 
 `released`
-
 : This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the number of released tasks will be stored
   in this object.
@@ -483,15 +457,12 @@ in `released`.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The `released` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
-
 : There was no barrier associated with the identifier specified by `id`.
 
 ```{eval-rst}

@@ -3,8 +3,9 @@
 # Glossary
 
 ```{glossary}
-:sorted: true
-
+---
+sorted: true
+---
 POSIX
 
 : Portable Operating System Interface is a family of standards specified

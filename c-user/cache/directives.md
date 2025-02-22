@@ -70,11 +70,9 @@ void rtems_cache_flush_multiple_data_lines( const void *begin, size_t size );
 ```
 
 `begin`
-
 : This parameter is the begin address of the memory area to flush.
 
 `size`
-
 : This parameter is the size in bytes of the memory area to flush.
 
 ```{eval-rst}
@@ -124,11 +122,9 @@ void rtems_cache_invalidate_multiple_data_lines(
 ```
 
 `begin`
-
 : This parameter is the begin address of the memory area to invalidate.
 
 `size`
-
 : This parameter is the size in bytes of the memory area to invalidate.
 
 ```{eval-rst}
@@ -187,11 +183,9 @@ void rtems_cache_invalidate_multiple_instruction_lines(
 ```
 
 `begin`
-
 : This parameter is the begin address of the memory area to invalidate.
 
 `size`
-
 : This parameter is the size in bytes of the memory area to invalidate.
 
 ```{eval-rst}
@@ -248,11 +242,9 @@ void rtems_cache_instruction_sync_after_code_change(
 ```
 
 `begin`
-
 : This parameter is the begin address of the code area to synchronize.
 
 `size`
-
 : This parameter is the size in bytes of the code area to synchronize.
 
 ```{eval-rst}
@@ -303,7 +295,6 @@ size_t rtems_cache_get_maximal_line_size( void );
 ```
 
 `0`
-
 : There is no cache present.
 
 Returns the maximal cache line size in bytes of all caches (data, instruction,
@@ -346,7 +337,6 @@ size_t rtems_cache_get_data_line_size( void );
 ```
 
 `0`
-
 : There is no data cache present.
 
 Returns the data cache line size in bytes. For multi-level caches this is the
@@ -389,7 +379,6 @@ size_t rtems_cache_get_instruction_line_size( void );
 ```
 
 `0`
-
 : There is no instruction cache present.
 
 Returns the instruction cache line size in bytes. For multi-level caches this
@@ -432,7 +421,6 @@ size_t rtems_cache_get_data_cache_size( uint32_t level );
 ```
 
 `level`
-
 : This parameter is the requested data cache level. The cache level zero
   specifies the entire data cache.
 
@@ -441,7 +429,6 @@ size_t rtems_cache_get_data_cache_size( uint32_t level );
 ```
 
 `0`
-
 : There is no data cache present at the requested cache level.
 
 Returns the data cache size in bytes of the requested cache level.
@@ -483,7 +470,6 @@ size_t rtems_cache_get_instruction_cache_size( uint32_t level );
 ```
 
 `level`
-
 : This parameter is the requested instruction cache level. The cache level
   zero specifies the entire instruction cache.
 
@@ -492,7 +478,6 @@ size_t rtems_cache_get_instruction_cache_size( uint32_t level );
 ```
 
 `0`
-
 : There is no instruction cache present at the requested cache level.
 
 Returns the instruction cache size in bytes of the requested cache level.
@@ -662,8 +647,7 @@ void rtems_cache_disable_data( void );
 ```
 
 On some {term}`targets <target>` or configurations, calling this directive may
-cause a fatal error with a fatal source of {ref}`INTERNAL_ERROR_CORE
-<FatalErrorSources>` and fatal code of
+cause a fatal error with a fatal source of {ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and fatal code of
 {ref}`INTERNAL_ERROR_CANNOT_DISABLE_DATA_CACHE <internal_errors>`. The data
 cache may be necessary to provide {term}`atomic operations`. In SMP
 configurations, the data cache may be required to ensure data coherency. See
@@ -770,7 +754,6 @@ void *rtems_cache_aligned_malloc( size_t size );
 ```
 
 `size`
-
 : This parameter is the size in bytes of the memory area to allocate.
 
 ```{eval-rst}
@@ -778,7 +761,6 @@ void *rtems_cache_aligned_malloc( size_t size );
 ```
 
 [NULL](https://en.cppreference.com/w/c/types/NULL)
-
 : There is not enough memory available to satisfy the allocation request.
 
 Returns the begin address of the allocated memory. The begin address is on a

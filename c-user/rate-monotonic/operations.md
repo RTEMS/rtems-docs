@@ -85,8 +85,9 @@ This example consists of a single periodic task which, after initialization,
 executes every 100 clock ticks.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 rtems_task Periodic_task(rtems_task_argument arg)
 {
     rtems_name        name;
@@ -134,8 +135,9 @@ second set of actions is performed between the fortieth and seventieth clock
 ticks. The last thirty clock ticks are not used by this task.
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 rtems_task Periodic_task(rtems_task_argument arg)
 {
     rtems_name        name_1, name_2;
@@ -179,8 +181,7 @@ initialization. The first time the loop is executed, the
 `rtems_rate_monotonic_period` directive for period_1 will result in the task
 blocking for the remainder of the 100 tick period. The period_2 period is used
 to control the execution time of the two sets of actions within each 100 tick
-period established by period_1. The `rtems_rate_monotonic_cancel( period_2
-)` call is performed to ensure that the period_2 period does not expire while
+period established by period_1. The `rtems_rate_monotonic_cancel( period_2 )` call is performed to ensure that the period_2 period does not expire while
 the task is blocked on the period_1 period. If this cancel operation were not
 performed, every time the `rtems_rate_monotonic_period( period_2, 40 )` call
 is executed, except for the initial one, a directive status of

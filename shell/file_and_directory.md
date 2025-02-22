@@ -211,8 +211,7 @@ SYNOPSYS:
 
 DESCRIPTION:
 
-: This command is an alias or alternate name for the `chdir`. See `ls -
-  list files in the directory` for more information.
+: This command is an alias or alternate name for the `chdir`. See `ls - list files in the directory` for more information.
 
 EXIT STATUS:
 
@@ -574,39 +573,32 @@ DESCRIPTION:
   The following options are available:
 
   *-f*
-
   : For each existing destination pathname, attempt to overwrite it. If
     permissions do not allow copy to succeed, remove it and create a new
     file, without prompting for confirmation. (The -i option is ignored if
     the -f option is specified.)
 
   *-H*
-
   : If the -R option is specified, symbolic links on the command line are
     followed. (Symbolic links encountered in the tree traversal are not
     followed.)
 
   *-i*
-
   : Causes cp to write a prompt to the standard error output before copying
     a file that would overwrite an existing file. If the response from the
     standard input begins with the character 'y', the file copy is
     attempted.
 
   *-L*
-
   : If the -R option is specified, all symbolic links are followed.
 
   *-N*
-
   : When used with -p, do not copy file flags.
 
   *-P*
-
   : No symbolic links are followed.
 
   *-p*
-
   : Causes cp to preserve in the copy as many of the modification time,
     access time, file flags, file mode, user ID, and group ID as allowed by
     permissions. If the user ID and group ID cannot be preserved, no error
@@ -621,7 +613,6 @@ DESCRIPTION:
     copy's permissions.
 
   *-R*
-
   : If source_file designates a directory, cp copies the directory and the
     entire subtree connected at that point. This option also causes
     symbolic links to be copied, rather than indirected through, and for cp
@@ -630,7 +621,6 @@ DESCRIPTION:
     source directory, unmodified by the process's umask.
 
   *-v*
-
   : Cause cp to be verbose, showing files as they are copied.
 
   For each destination file that already exists, its contents are overwritten
@@ -843,7 +833,6 @@ DESCRIPTION:
   : Where value is one of the symbols from the following list.
 
     *ascii, oldascii*
-
     : The same as the unblock value except that characters are translated
       from EBCDIC to ASCII before the records are converted. (These
       values imply unblock if the operand cbs is also specified.) There
@@ -853,7 +842,6 @@ DESCRIPTION:
       4.3BSD-Reno systems.
 
     *block*
-
     : Treats the input as a sequence of newline or end-of-file terminated
       variable length records independent of input and output block
       boundaries. Any trailing newline character is discarded. Each
@@ -865,7 +853,6 @@ DESCRIPTION:
       error output at the completion of the copy.
 
     *ebcdic, ibm, oldebcdic, oldibm*
-
     : The same as the block value except that characters are translated
       from ASCII to EBCDIC after the records are converted. (These
       values imply block if the operand cbs is also specified.) There
@@ -876,11 +863,9 @@ DESCRIPTION:
       oldibm are maps used in historic AT&T and pre 4.3BSD-Reno systems.
 
     *lcase*
-
     : Transform uppercase characters into lowercase characters.
 
     *noerror*
-
     : Do not stop processing on an input error. When an input error
       occurs, a diagnostic message followed by the current input and
       output block counts will be written to the standard error output in
@@ -894,13 +879,11 @@ DESCRIPTION:
       the error occurred using lseek(2).
 
     *notrunc*
-
     : Do not truncate the output file. This will preserve any blocks in
       the output file not explicitly written by dd. The notrunc value is
       not supported for tapes.
 
     *osync*
-
     : Pad the final output block to the full output block size. If the
       input file is not a multiple of the output block size after
       conversion, this conversion forces the final output block to be the
@@ -909,29 +892,24 @@ DESCRIPTION:
       with use of the bs=n block size specification.
 
     *sparse*
-
     : If one or more non-final output blocks would consist solely of NUL
       bytes, try to seek the output file by the required space instead of
       filling them with NULs. This results in a sparse file on some file
       systems.
 
     *swab*
-
     : Swap every pair of input bytes. If an input buffer has an odd
       number of bytes, the last byte will be ignored during swapping.
 
     *sync*
-
     : Pad every input block to the input buffer size. Spaces are used
       for pad bytes if a block oriented conversion value is specified,
       otherwise NUL bytes are used.
 
     *ucase*
-
     : Transform lowercase characters into uppercase characters.
 
     *unblock*
-
     : Treats the input as a sequence of fixed length records independent
       of input and output block boundaries. The length of the input
       records is specified by the cbs operand. Any trailing space
@@ -942,27 +920,21 @@ DESCRIPTION:
   may have one of the following optional suffixes:
 
   *b*
-
   : Block; multiply by 512
 
   *k*
-
   : Kibi; multiply by 1024 (1 KiB)
 
   *m*
-
   : Mebi; multiply by 1048576 (1 MiB)
 
   *g*
-
   : Gibi; multiply by 1073741824 (1 GiB)
 
   *t*
-
   : Tebi; multiply by 1099511627776 (1 TiB)
 
   *w*
-
   : Word; multiply by the number of bytes in an integer
 
   When finished, dd displays the number of complete and partial input and
@@ -1055,15 +1027,12 @@ DESCRIPTION:
   The options are:
 
   *-h*
-
   : Print a help message.
 
   *-l*
-
   : List the commands.
 
   *path*
-
   : Path to the mounted RFS file system. The file system has to be mounted
     to view to use this command.
 
@@ -1091,15 +1060,12 @@ DESCRIPTION:
     provides all inodes are displayed.
 
     *-a*
-
     : Display all inodes. That is allocated and unallocated inodes.
 
     *-e*
-
     : Search and display on inodes that have an error.
 
     *-f*
-
     : Force display of inodes, even when in error.
 
 EXIT STATUS:
@@ -1254,8 +1220,7 @@ SYNOPSYS:
 
 DESCRIPTION:
 
-: This command is an alias or alternate name for the `ls`. See `ls - list
-  files in the directory` for more information.
+: This command is an alias or alternate name for the `ls`. See `ls - list files in the directory` for more information.
 
 EXIT STATUS:
 
@@ -1375,52 +1340,43 @@ DESCRIPTION:
   The options are as follows:
 
   *-b*
-
   : One-byte octal display. Display the input offset in hexadecimal,
     followed by sixteen space-separated, three column, zero-filled, bytes
     of input data, in octal, per line.
 
   *-c*
-
   : One-byte character display. Display the input offset in hexadecimal,
     followed by sixteen space-separated, three column, space-filled,
     characters of input data per line.
 
   *-C*
-
   : Canonical hex+ASCII display. Display the input offset in hexadecimal,
     followed by sixteen space-separated, two column, hexadecimal bytes,
     followed by the same sixteen bytes in %\_p format enclosed in "|"
     characters.
 
   *-d*
-
   : Two-byte decimal display. Display the input offset in hexadecimal,
     followed by eight space-separated, five column, zero-filled, two-byte
     units of input data, in unsigned decimal, per line.
 
   *-e format_string*
-
   : Specify a format string to be used for displaying data.
 
   *-f format_file*
-
   : Specify a file that contains one or more newline separated format
     strings. Empty lines and lines whose first non-blank character is a
     hash mark (#) are ignored.
 
   *-n length*
-
   : Interpret only length bytes of input.
 
   *-o*
-
   : Two-byte octal display. Display the input offset in hexadecimal,
     followed by eight space-separated, six column, zerofilled, two byte
     quantities of input data, in octal, per line.
 
   *-s offset*
-
   : Skip offset bytes from the beginning of the input. By default, offset
     is interpreted as a decimal number. With a leading 0x or 0X, offset is
     interpreted as a hexadecimal number, otherwise, with a leading 0,
@@ -1429,14 +1385,12 @@ DESCRIPTION:
     1024, or 1048576, respectively.
 
   *-v*
-
   : The -v option causes hexdump to display all input data. Without the -v
     option, any number of groups of output lines, which would be identical
     to the immediately preceding group of output lines (except for the
     input offsets), are replaced with a line containing a single asterisk.
 
   *-x*
-
   : Two-byte hexadecimal display. Display the input offset in hexadecimal,
     followed by eight, space separated, four column, zero-filled, two-byte
     quantities of input data, in hexadecimal, per line.
@@ -1666,17 +1620,14 @@ DESCRIPTION:
   The options are as follows:
 
   *-f*
-
   : Unlink any already existing file, permitting the link to occur.
 
   *-h*
-
   : If the target_file or target_dir is a symbolic link, do not follow it.
     This is most useful with the -f option, to replace a symlink which may
     point to a directory.
 
   *-i*
-
   : Cause ln to write a prompt to standard error if the target file exists.
     If the response from the standard input begins with the character 'y'
     or 'Y', then unlink the target file so that the link may occur.
@@ -1684,15 +1635,12 @@ DESCRIPTION:
     previous -f options.)
 
   *-n*
-
   : Same as -h, for compatibility with other ln implementations.
 
   *-s*
-
   : Create a symbolic link.
 
   *-v*
-
   : Cause ln to be verbose, showing files as they are processed.
 
   By default ln makes hard links. A hard link to a file is indistinguishable
@@ -2047,19 +1995,15 @@ DESCRIPTION:
 : This command formats a block device entry with the DOSFS file system.
 
   *-V label*
-
   : Specify the volume label.
 
   *-s sectors/cluster*
-
   : Specify the number of sectors per cluster.
 
   *-r size*
-
   : Specify the number of entries in the root directory.
 
   *-v*
-
   : Enable verbose output mode.
 
 EXIT STATUS:
@@ -2144,67 +2088,56 @@ DESCRIPTION:
   To make nodes manually, the arguments are:
 
   *-r*
-
   : Replace an existing file if its type is incorrect.
 
   *-R*
-
   : Replace an existing file if its type is incorrect. Correct the mode,
     user and group.
 
   *-g gid*
-
   : Specify the group for the device node. The gid operand may be a
     numeric group ID or a group name. If a group name is also a numeric
     group ID, the operand is used as a group name. Precede a numeric group
     ID with a # to stop it being treated as a name.
 
   *-m mode*
-
   : Specify the mode for the device node. The mode may be absolute or
     symbolic, see *chmod*.
 
   *-u uid*
-
   : Specify the user for the device node. The uid operand may be a numeric
     user ID or a user name. If a user name is also a numeric user ID, the
     operand is used as a user name. Precede a numeric user ID with a # to
     stop it being treated as a name.
 
   *name*
-
   : Device name, for example "tty" for a termios serial device or "hd" for
     a disk.
 
   *b | c | p*
-
   : Type of device. If the device is a block type device such as a tape or
     disk drive which needs both cooked and raw special files, the type
     is b. All other devices are character type devices, such as terminal
     and pseudo devices, and are type c. Specifying p creates fifo files.
 
   *driver | major*
-
   : The major device number is an integer number which tells the kernel
     which device driver entry point to use. If the device driver is
     configured into the current kernel it may be specified by driver name
     or major number.
 
   *minor*
-
   : The minor device number tells the kernel which one of several similar
     devices the node corresponds to; for example, it may be a specific
     serial port or pty.
 
   *unit and subunit*
-
   : The unit and subunit numbers select a subset of a device; for example,
     the unit may specify a particular disk, and the subunit a partition on
     that disk. (Currently this form of specification is only supported by
     the bsdos format, for compatibility with the BSD/OS mknod).
 
   *number*
-
   : A single opaque device number. Useful for netbooted computers which
     require device numbers packed in a format that isn't supported by -F.
 
@@ -2292,35 +2225,28 @@ DESCRIPTION:
   The following options are provided:
 
   *-v*
-
   : Display configuration and progress of the format.
 
   *-s*
-
   : Set the block size in bytes.
 
   *-b*
-
   : The number of blocks in a group. The block count must be equal or less
     than the number of bits in a block.
 
   *-i*
-
   : Number of inodes in a group. The inode count must be equal or less than
     the number of bits in a block.
 
   *-I*
-
   : Initialise the inodes. The default is not to initialise the inodes and
     to rely on the inode being initialised when allocated. Initialising the
     inode table helps recovery if a problem appears.
 
   *-o*
-
   : Integer percentage of the media used by inodes. The default is 1%.
 
   *device*
-
   : Path of the device to format.
 
 EXIT STATUS:
@@ -2539,17 +2465,14 @@ DESCRIPTION:
   The following options are available:
 
   *-f*
-
   : Do not prompt for confirmation before overwriting the destination path.
 
   *-i*
-
   : Causes mv to write a prompt to standard error before moving a file that
     would overwrite an existing file. If the response from the standard
     input begins with the character 'y', the move is attempted.
 
   *-v*
-
   : Cause mv to be verbose, showing files as they are processed.
 
   The last of any -f or -i options is the one which affects mv's behavior.

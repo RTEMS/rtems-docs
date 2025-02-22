@@ -135,7 +135,6 @@ access to the package's main functionality.
 A package requires at least three (3) files to be created:
 
 > Published Package Name:
->
 > : The first file is the RTEMS build set file and it resides under the
 >   `rtems/config` path in a directory tree based on the FreeBSD ports
 >   collection. For the Curl package and RTEMS 5 this is
@@ -146,7 +145,6 @@ A package requires at least three (3) files to be created:
 >   new version requires changing the build set to the new configuration file.
 >
 > Package Version Configuration File:
->
 > : The second file is an RTEMS version specific configuration file and it
 >   includes the RSB RTEMS BSP support. These configuration files reside in
 >   the `rtems/config` tree and under the FreeBSD port's path name. For
@@ -160,7 +158,6 @@ A package requires at least three (3) files to be created:
 >   package that is downloaded.
 >
 > Build Configuration File:
->
 > : The build configuration. This is a common script that builds the
 >   package. It resides in the `source-builder/config` directory and
 >   typically has the packages's name with the major version number. If the
@@ -216,100 +213,79 @@ host or a cross-compile build.
 For a cross-complication build the flags are:
 
 `CC`, `CC_FOR_HOST`:
-
 : The C compiler used to build the package. For an RTEMS build this is the
   RTEMS C compiler. For example the ARM architecture and RTEMS 5 the value is
   set to `arm-rtems5-gcc`.
 
 `CXX`, `CXX_FOR_HOST`:
-
 : The C++ compiler used to build the package. For an RTEMS build this is the
   RTEMS C++ compiler. For example the ARM architecture and RTEMS 5 the value is
   set to `arm-rtems5-g++`.
 
 `CPPFLAGS`, `CPPFLAGS_FOR_HOST`:
-
 : The C compiler preprocessor flags used to build the package. Set any include
   paths in this variable as some configure scripts will warns you if include
   paths are set in the `CFLAGS`.
 
 `CFLAGS`, `CFLAGS_FOR_HOST`:
-
 : The C compiler flags used when running the C compiler. Set any include paths
   in the `CPPFLAGS` variable as some configure scripts will warn you if
   include paths in this variable.
 
 `CXXFLAGS`, `CXXFLAGS_FOR_HOST`:
-
 : The C++ compiler flags used when running the C++ compiler. Set any include
   paths in the `CPPFLAGS` variable as some configure scripts will warn you if
   include paths in this variable.
 
 `LDFLAGS`, `LDFLAGS_FOR_HOST`:
-
 : The linker flags used whne link package executables. The C or C++ compiler
   is used to run the linker.
 
 `LIBS`, `LIBS_FOR_HOST`:
-
 : A list of libraries passed to the linker when linking an executable.
 
 `CC_FOR_BUILD`:
-
 : The native C compiler.
 
 `CXX_FOR_BUILD`:
-
 : The native C++ compiler.
 
 `CPPFLAGS_FOR_BUILD`:
-
 : The C preprocessor flags used when preprocessoring a native C source file.
 
 `CFLAGS_FOR_BUILD`:
-
 : The native C compiler flags used when running the native C compiler.
 
 `CXXFLAGS_FOR_BUILD`:
-
 : The native C++ compiler flags used when running the native C++ compiler.
 
 `LDFLAGS_FOR_BUILD`:
-
 : The native linker flags used when linking a native executable.
 
 `LIBS_FOR_BUILD`:
-
 : The native libraries used to when linking a native executable.
 
 For a native build the flags are:
 
 `CC`, `CC_FOR_BUILD`:
-
 : The native C compiler.
 
 `CXX`, `CXX_FOR_BUILD`:
-
 : The native C++ compiler.
 
 `CPPFLAGS`, `CPPFLAGS_FOR_BUILD`:
-
 : The C preprocessor flags used when preprocessoring a native C source file.
 
 `CFLAGS`, `CFLAGS_FOR_BUILD`:
-
 : The native C compiler flags used when running the native C compiler.
 
 `CXXFLAGS`, `CXXFLAGS_FOR_BUILD`:
-
 : The native C++ compiler flags used when running the native C++ compiler.
 
 `LDFLAGS`, `LDFLAGS_FOR_BUILD`:
-
 : The native linker flags used when linking a native executable.
 
 `LIBS`, `LIBS_FOR_BUILD`:
-
 : The native libraries used to when linking a native executable.
 
 ## BSP Support
@@ -548,76 +524,59 @@ is loaded.
 ```
 
 `%{rtems_bsp}`:
-
 : The name of the RTEMS BSP.
 
 `%{rtems_bsp_cc}`:
-
 : The C compiler name for the RTEMS BSP.
 
 `%{rtems_bsp_cflags}`:
-
 : The C compiler flags for the RTEMS BSP.
 
 `%{rtems_bsp_ccflags}`:
-
 : The C++ compiler flags for the RTEMS BSP.
 
 `%{rtems_bsp_incpath}`:
-
 : The include path to teh RTEMS BSP header files.
 
 `%{rtems_bsp_ldflags}`:
-
 : The linker flags for the RTEMS BSP.
 
 `%{rtems_bsp_libs}`:
-
 : The libraries used when linking an RTEMS BSP executable.
 
 `%{rtems_bsp_prefix}`:
-
 : The prefix for the RTEMS BSP.
 
 `%{rtems-libbsd}`:
-
 : The variable is set to `found` if LibBSD is available.
 
 `%{rtems-defaultconfig}`:
-
 : The path of the RSB helper script to locate find header files or libraries.
 
 `%{_host}`
-
 : The host triplet passed on the command line to the set builder using the
   `--host` options. This is the RTEMS architecture and version. For example
   `arm-rtems5`.
 
 `%{host_cflags}`:
-
 : The BSP `CFLAGS` returned by `pkgconfig`.
 
 `%{host_cxxflags}`:
-
 : The BSP `CXXFLAGS` returned by `pkgconfig`.
 
 `%{host_includes}`:
-
 : The BSP include paths returned by `pkgconfig`.
 
 `%{host_ldflags}`:
-
 : The BSP `LDFLAGS` returned by `pkgconfig`.
 
 `%{host_libs}`:
-
 : The libraries needed to be linked to create an executable. If LibBSD is
   installed the library `-lbsd` is added. If the BSP has installed the RTEMS
   default configuration library (`-lrtemsdefaultconfig`) it is added to the
   list of libraries.
 
 `%{host_build_flags}`:
-
 : This macro is defined in `defaults.mc` and is a series of shell commands
   that set up the environment to build an RTEMS package. If the host and the
   build triplets are the same it is a native build for your development host. If
@@ -625,17 +584,14 @@ is loaded.
   case the following are defined.
 
 `%{_host_os}`:
-
 : The host operating system extracted from the `--host` command line
   option. For example the operating sstem for the host of `arm-rtems5` is
   `rtems5`.
 
 `%{_host_arch}`:
-
 : The host architecture extracted from the `--host` command line option. For
   example the architecture for the host of `arm-rtems5` is `arm`.
 
 `%{_host_cpu}`:
-
 : The host cpu extracted from the `--host` command line option. For
   example the cpu for the host of `arm-rtems5` is `arm`.

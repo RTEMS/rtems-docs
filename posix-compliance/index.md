@@ -15,8 +15,9 @@
 ```
 
 ```{toctree}
-:maxdepth: 5
-
+---
+maxdepth: 5
+---
 preface
 standards
 posix-compliance

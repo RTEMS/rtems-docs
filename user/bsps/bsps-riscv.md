@@ -46,81 +46,64 @@ The following options can be used in the BSP section of the `waf`
 configuration INI file. The `waf` defaults can be used to inspect the values.
 
 `BSP_PRESS_KEY_FOR_RESET`
-
 : If defined to a non-zero value, then print a message and wait until pressed
   before resetting board when application terminates.
 
 `BSP_RESET_BOARD_AT_EXIT`
-
 : If defined to a non-zero value, then reset the board when the application
   terminates.
 
 `BSP_PRINT_EXCEPTION_CONTEXT`
-
 : If defined to a non-zero value, then print the exception context when an
   unexpected exception occurs.
 
 `BSP_FDT_BLOB_SIZE_MAX`
-
 : The maximum size of the device tree blob in bytes (default is 65536).
 
 `BSP_DTB_IS_SUPPORTED`
-
 : If defined to a non-zero value, then the device tree blob is embedded in
   the BSP.
 
 `BSP_DTB_HEADER_PATH`
-
 : The path to the header file containing the device tree blob.
 
 `BSP_CONSOLE_BAUD`
-
 : The default baud for console driver devices (default is 115200).
 
 `RISCV_MAXIMUM_EXTERNAL_INTERRUPTS`
-
 : The maximum number of external interrupts supported by the BSP (default
   is 64).
 
 `RISCV_ENABLE_HTIF_SUPPORT`
-
 : Enable the Host/Target Interface (HTIF) support (enabled by default).
 
 `RISCV_CONSOLE_MAX_NS16550_DEVICES`
-
 : The maximum number of NS16550 devices supported by the console driver
   (default is 2).
 
 `RISCV_ENABLE_SIFIVE_UART_SUPPORT`
-
 : Enable the SiFive console UART (disabled by default).
 
 `RISCV_RAM_REGION_BEGIN`
-
 : The begin of the RAM region for linker command file
   (default is 0x80000000).
 
 `RISCV_RAM_REGION_SIZE`
-
 : The size of the RAM region for linker command file (default 64MiB).
 
 `RISCV_ENABLE_FRDME310ARTY_SUPPORT`
-
 : Enables support sifive Freedom E310 Arty board if defined to a non-zero
   value,otherwise it is disabled (disabled by default).
 
 `RISCV_ENABLE_MPFS_SUPPORT`
-
 : Enables support Microchip PolarFire SoC if defined to a non-zero
   value, otherwise it is disabled (disabled by default).
 
 `RISCV_ENABLE_KENDRYTE_K210_SUPPORT`
-
 : Enables support for the Kendtryte K210 SoC if defined to a non-zero
   value, otherwise it is disabled (disabled by default).
 
 `RISCV_BOOT_HARTID`
-
 : The boot hartid (processor number) of risc-v cpu by default 0.
 
 ### Interrupt Controller
@@ -584,24 +567,19 @@ The following options can be used in the BSP section of the `waf`
 configuration INI file. The `waf` defaults can be used to inspect the values.
 
 `BSP_CONSOLE_USE_INTERRUPTS`
-
 : Use the Termios interrupt mode in the console driver (true by default).
 
 `BSP_FDT_BLOB_SIZE_MAX`
-
 : The maximum size of the device tree blob in bytes (262144 by default).
 
 `RISCV_CONSOLE_MAX_APBUART_DEVICES`
-
 : The maximum number of APBUART devices supported by the console driver
   (2 by default).
 
 `RISCV_RAM_REGION_BEGIN`
-
 : The begin of the RAM region for linker command file (0x0 by default).
 
 `RISCV_MAXIMUM_EXTERNAL_INTERRUPTS`
-
 : The maximum number of external interrupts supported by the BSP (64 by
   default).
 
@@ -646,52 +624,42 @@ The following options will need to be used in the BSP section of the `waf`
 configuration INI file. The `waf` defaults can be used to inspect the values.
 
 `NIOSV_EPCQ_ROM_REGION_BEGIN`
-
 : The starting address of the EPCQ device connected to the NIOS V
   (0x11000000 by default).
 
 `NIOSV_EPCQ_ROM_REGION_SIZE`
-
 : The size of the EPCQ device connected to the NIOS V
   (0x01000000 by default).
 
 `NIOSV_ONCHIP_ROM_REGION_BEGIN`
-
 : The starting address of the On-Chip ROM connected to the NIOS V
   (0x10010000 by default).
 
 `NIOSV_ONCHIP_ROM_REGION_SIZE`
-
 : The size of the On-Chip ROM connected to the NIOS V
   (4096 by default).
 
 `NIOSV_ONCHIP_RAM_REGION_BEGIN`
-
 : The starting address of the On-Chip RAM connected to the NIOS V
   (0x10020000 by default).
 
 `NIOSV_ONCHIP_RAM_REGION_SIZE`
-
 : The size of the On-Chip RAM connected to the NIOS V
   (8192 by default).
 
 `NIOSV_EXT_RAM_REGION_BEGIN`
-
 : The starting address of the external RAM connected to the NIOS V
   (0x01000000 by default).
 
 `NIOSV_EXT_RAM_REGION_SIZE`
-
 : The size of the external RAM connected to the NIOS V
   (0x00800000 by default).
 
 `NIOSV_IS_NIOSVG`
-
 : Whether or not the `NIOS V/g` processor is used
   (false by default).
 
 `NIOSV_HAS_FP`
-
 : Whether or not the `NIOS V/g` processor has a FPU
   (false by default).
 

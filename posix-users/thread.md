@@ -55,7 +55,6 @@ structure may be initialized and passed as an argument to the
 `pthread_create` routine.
 
 *stack address*
-
 : is the address of the optionally user specified stack area for this thread.
   If this value is NULL, then RTEMS allocates the memory for the thread stack
   from the RTEMS Workspace Area. Otherwise, this is the user specified
@@ -64,7 +63,6 @@ structure may be initialized and passed as an argument to the
   rules which should be followed.
 
 *stack size*
-
 : is the minimum desired size for this thread's stack area. If the size of
   this area as specified by the stack size attribute is smaller than the
   minimum for this processor family and the stack is not user specified, then
@@ -72,19 +70,16 @@ structure may be initialized and passed as an argument to the
   processor family.
 
 *contention scope*
-
 : specifies the scheduling contention scope. RTEMS only supports the
   PTHREAD_SCOPE_PROCESS scheduling contention scope.
 
 *scheduling inheritance*
-
 : specifies whether a user specified or the scheduling policy and parameters
   of the currently executing thread are to be used. When this is
   PTHREAD_INHERIT_SCHED, then the scheduling policy and parameters of the
   currently executing thread are inherited by the newly created thread.
 
 *scheduling policy and parameters*
-
 : specify the manner in which the thread will contend for the processor. The
   scheduling parameters are interpreted based on the specified policy. All
   policies utilize the thread priority parameter.

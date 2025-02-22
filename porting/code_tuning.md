@@ -15,9 +15,9 @@ Basically this is an example of the classic trade-off of size versus
 speed. Inlining the call (TRUE) typically increases the size of RTEMS
 while speeding up the enabling of dispatching.
 
-[NOTE: In general, the \_Thread_Dispatch_disable_level will only be 0 or 1
+\[NOTE: In general, the \_Thread_Dispatch_disable_level will only be 0 or 1
 unless you are in an interrupt handler and that interrupt handler invokes
-the executive.] When not inlined something calls \_Thread_Enable_dispatch
+the executive.\] When not inlined something calls \_Thread_Enable_dispatch
 which in turns calls \_Thread_Dispatch. If the enable dispatch is inlined,
 then one subroutine call is avoided entirely.\]
 

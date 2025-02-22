@@ -368,8 +368,7 @@ result of a lazy garbage collection of zombie threads.
 
 ## Fatal Error Extension
 
-The fatal error extension is invoked during {ref}`system termination
-<Terminate>`. The fatal error extension is defined as follows.
+The fatal error extension is invoked during {ref}`system termination <Terminate>`. The fatal error extension is defined as follows.
 
 ```c
 typedef void( *rtems_fatal_extension )(

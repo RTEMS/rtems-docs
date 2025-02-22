@@ -15,10 +15,11 @@ JTAG port of a target.
 (fig-tester-gdb-jtag)=
 
 ```{figure} ../../images/user/test-gdb-jtag.png
-:alt: RTEMS Tester using GDB and  JTAG
-:figclass: align-center
-:width: 35%
-
+---
+alt: RTEMS Tester using GDB and  JTAG
+figclass: align-center
+width: 35%
+---
 RTEMS Tester using GDB and JTAG
 ```
 

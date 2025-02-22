@@ -19,8 +19,9 @@
 ```
 
 ```{toctree}
-:maxdepth: 5
-
+---
+maxdepth: 5
+---
 preface
 target_dependant_files
 linker_script

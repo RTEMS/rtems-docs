@@ -67,10 +67,11 @@ this setup:
 (fig-exe-debug)=
 
 ```{figure} ../../images/user/exe-debug.png
-:alt: Embedded Executable Debugging
-:figclass: align-center
-:width: 80%
-
+---
+alt: Embedded Executable Debugging
+figclass: align-center
+width: 80%
+---
 Embedded Executable Debugging
 ```
 

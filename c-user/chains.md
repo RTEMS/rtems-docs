@@ -249,16 +249,13 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns nothing.
 
 DESCRIPTION:
-
 : This function take in a pointer to a chain control and initializes it to
   empty.
 
 NOTES:
-
 : This call will discard any nodes on the chain.
 
 ```{raw} latex
@@ -283,12 +280,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns `true` is the node point is NULL and `false` if the node is not
   NULL.
 
 DESCRIPTION:
-
 : Tests the node to see if it is a NULL returning `true` if a null.
 
 ```{raw} latex
@@ -313,11 +308,9 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns the permanent head node of the chain.
 
 DESCRIPTION:
-
 : This function returns a pointer to the first node on the chain.
 
 ```{raw} latex
@@ -342,11 +335,9 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns the permanent tail node of the chain.
 
 DESCRIPTION:
-
 : This function returns a pointer to the last node on the chain.
 
 ```{raw} latex
@@ -372,12 +363,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if the left node and the right node are
   equal, and `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if the left node and the right node are
   equal, and `false` otherwise.
 
@@ -403,12 +392,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if there a no nodes on the chain and
   `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if there a no nodes on the chain and
   `false` otherwise.
 
@@ -434,12 +421,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if the node is the first node on a chain and
   `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if the node is the first node on a chain and
   `false` otherwise.
 
@@ -465,12 +450,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if the node is the last node on a chain and
   `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if the node is the last node on a chain and
   `false` otherwise.
 
@@ -496,12 +479,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if there is only one node on the chain and
   `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if there is only one node on the chain and
   `false` otherwise.
 
@@ -527,11 +508,9 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns the node count of the chain.
 
 DESCRIPTION:
-
 : This function returns the node count of the chain.
 
 ```{raw} latex
@@ -557,12 +536,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if the node is the head of the chain and
   `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if the node is the head of the chain and
   `false` otherwise.
 
@@ -589,12 +566,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : This function returns `true` if the node is the tail of the chain and
   `false` otherwise.
 
 DESCRIPTION:
-
 : This function returns `true` if the node is the tail of the chain and
   `false` otherwise.
 
@@ -656,15 +631,12 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns nothing.
 
 DESCRIPTION:
-
 : This routine extracts the node from the chain on which it resides.
 
 NOTES:
-
 : The function does nothing to ensure the atomicity of the operation.
 
 ```{raw} latex
@@ -727,16 +699,13 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : A pointer to the former first node is returned.
 
 DESCRIPTION:
-
 : Removes the first node from the chain and returns a pointer to it. In case
   the chain was empty, then the results are unpredictable.
 
 NOTES:
-
 : The function does nothing to ensure the atomicity of the operation.
 
 ```{raw} latex
@@ -800,16 +769,13 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns nothing.
 
 DESCRIPTION:
-
 : This routine inserts a node on a chain immediately following the specified
   node.
 
 NOTES:
-
 : The function does nothing to ensure the atomicity of the operation.
 
 ```{raw} latex
@@ -872,15 +838,12 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns nothing.
 
 DESCRIPTION:
-
 : This routine appends a node to the end of a chain.
 
 NOTES:
-
 : The function does nothing to ensure the atomicity of the operation.
 
 ```{raw} latex
@@ -943,13 +906,10 @@ CALLING SEQUENCE:
   ```
 
 RETURNS:
-
 : Returns nothing.
 
 DESCRIPTION:
-
 : This routine prepends a node to the front of the chain.
 
 NOTES:
-
 : The function does nothing to ensure the atomicity of the operation.

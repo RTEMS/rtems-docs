@@ -140,9 +140,11 @@ Pin the MSYS2 64bit Shell to the Taskbar so you always use it rather than the
 Open a 64bit MSYS shell from the Start Menu:
 
 ```{figure} ../../images/msys2-minw64-start-menu.png
-:align: center
-:alt: MSYS2 64bit Shell Start Menu
-:width: 50%
+---
+align: center
+alt: MSYS2 64bit Shell Start Menu
+width: 50%
+---
 ```
 
 ```{note}

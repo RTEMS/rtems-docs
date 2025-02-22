@@ -162,12 +162,10 @@ STATUS CODES:
   ```
 
 DESCRIPTION:
-
 : This method is used to determine if the current stack pointer of the
   currently executing task is within bounds.
 
 NOTES:
-
 : This method checks the current stack pointer against the high and low
   addresses of the stack memory allocated when the task was created and it
   looks for damage to the high water mark pattern for the worst case usage of
@@ -183,14 +181,11 @@ CALLING SEQUENCE:
   ```
 
 STATUS CODES:
-
 : NONE
 
 DESCRIPTION:
-
 : This routine prints a table with the peak stack usage and stack space
   allocation of every task in the system.
 
 NOTES:
-
 : NONE

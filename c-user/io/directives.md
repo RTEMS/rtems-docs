@@ -76,16 +76,13 @@ rtems_status_code rtems_io_register_driver(
 ```
 
 `major`
-
 : This parameter is the device major number. Use a value of zero to let the
   system obtain a device major number automatically.
 
 `driver_table`
-
 : This parameter is the device driver address table.
 
 `registered_major`
-
 : This parameter is the pointer to an {ref}`InterfaceRtemsDeviceMajorNumber`
   object. When the directive call is successful, the device major number of
   the registered device will be stored in this object.
@@ -95,32 +92,25 @@ rtems_status_code rtems_io_register_driver(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The device major number of the device was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-
 : The device driver address table was empty.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number of the device was out of range, see
   {ref}`CONFIGURE_MAXIMUM_DRIVERS`.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The system was unable to obtain a device major number.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-
 : The device major number was already in use.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from interrupt context.
 
 Other status codes may be returned by {ref}`InterfaceRtemsIoInitialize`.
@@ -169,7 +159,6 @@ rtems_status_code rtems_io_unregister_driver(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 ```{eval-rst}
@@ -177,15 +166,12 @@ rtems_status_code rtems_io_unregister_driver(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_UNSATISFIED`
-
 : The device major number was invalid.
 
 {c:macro}`RTEMS_CALLED_FROM_ISR`
-
 : The directive was called from interrupt context.
 
 ```{eval-rst}
@@ -229,15 +215,12 @@ rtems_status_code rtems_io_initialize(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 `minor`
-
 : This parameter is the minor number of the device.
 
 `argument`
-
 : This parameter is the argument passed to the device driver initialization
   entry.
 
@@ -253,11 +236,9 @@ Device Driver Table for the specified device major number.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number was invalid.
 
 Other status codes may be returned by the device driver initialization entry.
@@ -310,15 +291,12 @@ rtems_status_code rtems_io_register_name(
 ```
 
 `device_name`
-
 : This parameter is the device name in the file system.
 
 `major`
-
 : This parameter is the device major number.
 
 `minor`
-
 : This parameter is the device minor number.
 
 ```{eval-rst}
@@ -326,11 +304,9 @@ rtems_status_code rtems_io_register_name(
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_TOO_MANY`
-
 : The name was already in use or other errors occurred.
 
 ```{eval-rst}
@@ -374,15 +350,12 @@ rtems_status_code rtems_io_open(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 `minor`
-
 : This parameter is the minor number of the device.
 
 `argument`
-
 : This parameter is the argument passed to the device driver close entry.
 
 ```{eval-rst}
@@ -397,11 +370,9 @@ Driver Table for the specified device major number.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number was invalid.
 
 Other status codes may be returned by the device driver open entry.
@@ -448,15 +419,12 @@ rtems_status_code rtems_io_close(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 `minor`
-
 : This parameter is the minor number of the device.
 
 `argument`
-
 : This parameter is the argument passed to the device driver close entry.
 
 ```{eval-rst}
@@ -471,11 +439,9 @@ Driver Table for the specified device major number.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number was invalid.
 
 Other status codes may be returned by the device driver close entry.
@@ -522,15 +488,12 @@ rtems_status_code rtems_io_read(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 `minor`
-
 : This parameter is the minor number of the device.
 
 `argument`
-
 : This parameter is the argument passed to the device driver read entry.
 
 ```{eval-rst}
@@ -545,11 +508,9 @@ Driver Table for the specified device major number.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number was invalid.
 
 Other status codes may be returned by the device driver read entry.
@@ -597,15 +558,12 @@ rtems_status_code rtems_io_write(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 `minor`
-
 : This parameter is the minor number of the device.
 
 `argument`
-
 : This parameter is the argument passed to the device driver write entry.
 
 ```{eval-rst}
@@ -620,11 +578,9 @@ Driver Table for the specified device major number.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number was invalid.
 
 Other status codes may be returned by the device driver write entry.
@@ -674,15 +630,12 @@ rtems_status_code rtems_io_control(
 ```
 
 `major`
-
 : This parameter is the major number of the device.
 
 `minor`
-
 : This parameter is the minor number of the device.
 
 `argument`
-
 : This parameter is the argument passed to the device driver I/O control
   entry.
 
@@ -698,11 +651,9 @@ Device Driver Table for the specified device major number.
 ```
 
 {c:macro}`RTEMS_SUCCESSFUL`
-
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-
 : The device major number was invalid.
 
 Other status codes may be returned by the device driver I/O control entry.

@@ -646,8 +646,7 @@ system was initialized (e.g. the application was started).
 
 **DESCRIPTION:**
 
-`times` stores the current process times in `ptms`. The format of `struct
-tms` is as defined in `<sys/times.h>`. RTEMS fills in the field
+`times` stores the current process times in `ptms`. The format of `struct tms` is as defined in `<sys/times.h>`. RTEMS fills in the field
 `tms_utime` with the number of ticks that the calling thread has executed and
 the field `tms_stime` with the number of clock ticks since system boot (also
 returned). All other fields in the `ptms` are left zero.
@@ -694,8 +693,7 @@ matches the specified `name`. If found, it returns the associated value.
 
 **NOTES:**
 
-The environment list consists of name value pairs that are of the form `name =
-value`.
+The environment list consists of name value pairs that are of the form `name = value`.
 
 (setenv)=
 

@@ -5,8 +5,9 @@
 # Example Application
 
 ```{code-block} c
-:linenos: true
-
+---
+linenos: true
+---
 /*
 *  This file contains an example of a simple RTEMS
 *  application.  It instantiates the RTEMS Configuration
