@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS POSIX API Guide ({{ version }}).
+# RTEMS POSIX API Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

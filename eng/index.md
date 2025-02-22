@@ -8,7 +8,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS Software Engineering ({{ version }})
+# RTEMS Software Engineering ({{ env.config.version }})
 
 ````{topic} Copyrights and License
 {{ copy }}

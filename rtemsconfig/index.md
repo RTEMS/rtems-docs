@@ -3,7 +3,7 @@
 ```{highlight} c
 ```
 
-# RTEMS {{ version }} user manual.
+# RTEMS {{ env.config.version }} user manual.
 
 ## Table of Contents
 

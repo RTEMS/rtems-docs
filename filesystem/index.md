@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS Filesystem Design Guide ({{ version }}).
+# RTEMS Filesystem Design Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

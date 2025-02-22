@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS CPU Architecture Supplement ({{ version }}).
+# RTEMS CPU Architecture Supplement ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

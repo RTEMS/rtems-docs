@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS POSIX 1003.1 Compliance Guide ({{ version }}).
+# RTEMS POSIX 1003.1 Compliance Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

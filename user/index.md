@@ -7,7 +7,7 @@
 ```{highlight} c
 ```
 
-# RTEMS User Manual ({{ version }}).
+# RTEMS User Manual ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

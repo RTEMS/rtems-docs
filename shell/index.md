@@ -6,7 +6,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS Shell Guide ({{ version }}).
+# RTEMS Shell Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

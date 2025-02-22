@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS Classic API Guide ({{ version }}).
+# RTEMS Classic API Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

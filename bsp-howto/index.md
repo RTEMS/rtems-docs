@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS BSP and Driver Guide ({{ version }}).
+# RTEMS BSP and Driver Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

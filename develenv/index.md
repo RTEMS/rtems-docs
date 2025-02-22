@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS Development Environment Guide ({{ version }}).
+# RTEMS Development Environment Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}

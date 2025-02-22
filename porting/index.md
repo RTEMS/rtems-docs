@@ -4,7 +4,7 @@
 .. include:: ../common/unicode.rst
 ```
 
-# RTEMS Porting Guide ({{ version }}).
+# RTEMS Porting Guide ({{ env.config.version }}).
 
 ````{topic} Copyrights and License
 {{ copy }}
