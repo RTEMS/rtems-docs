@@ -137,6 +137,7 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 | `sphinxcontrib-qthelp`          | 1.0.6   |
 | `sphinxcontrib-serializinghtml` | 1.1.9   |
 | `sphinx-copybutton`             | 0.5.2   |
+| `myst-parser`                   | 4.0.0   |
 
 ### Python Virtual Environment
 
@@ -171,6 +172,7 @@ $ pip install sphinxcontrib-jquery
 $ pip install sphinx-book-theme
 $ pip install sphinx-copybutton
 $ pip install linkify-it-py
+$ pip install myst-parser
 ```
 
 When you have finished using sphinx and building documentation you
