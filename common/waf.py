@@ -12,6 +12,7 @@ import re
 import sys
 
 from waflib.Build import BuildContext
+from waflib.TaskGen import feature, before_method, after_method
 
 import latex
 import conf
@@ -511,7 +512,7 @@ def doc_html(ctx, source_dir, conf_dir, sources):
         install_path = None
     )
     ctx.install_files('${PREFIX}/%s' % (ctx.path.name),
-                      output_node.ant_glob('**/*', quiet = True),
+                      output_node.ant_glob('**/*', quiet = True, remove=False),
                       cwd = output_node,
                       relative_trick = True,
                       quiet = True)
@@ -539,9 +540,11 @@ def images_plantuml(ctx, source_dir, conf_dir, ext):
             install_path = None
         )
 
-def cmd_build(ctx, sources = {}):
+def cmd_build(ctx, sources = {}, source_dir=None):
+
     conf_dir = ctx.path.get_src()
-    source_dir = ctx.path.get_src()
+    if not source_dir:
+        source_dir = ctx.path.get_src()
 
     if ctx.env.BUILD_PDF == 'yes':
         doc_pdf(ctx, source_dir, conf_dir, sources)
@@ -558,6 +561,38 @@ def cmd_build_images(ctx):
         images_plantuml(ctx, source_dir, conf_dir, '.puml')
     if ctx.env.BUILD_DITAA == 'yes':
         images_plantuml(ctx, source_dir, conf_dir, '.ditaa')
+
+@feature('deferred_doc_target_creation')
+@before_method('process_source', 'process_rule')
+def deferred_doc_target_creation(self):
+    if self.sources_val.get('deferred_glob', None):
+        found_nodes = self.path.get_bld().ant_glob(self.sources_val['deferred_glob'], remove=False)
+        self.sources_val['extra'] = [x.path_from(self.path) for x in found_nodes]
+    self.bld.path = self.path # hack, we are not traversing folders here
+
+    source_dir = self.sources_val.get('source_dir', None)
+    cmd_build(self.bld, self.sources_val, source_dir=source_dir)
+
+@after_method('process_rules', 'process_source')
+def force_dependency_on(self):
+    if hasattr(self, 'depends_on'):
+        node_list = self.to_nodes(self.to_list(self.depends_on))
+        for task in self.tasks:
+            task.add_manual_dependency(node_list)
+
+def deferred_cmd_build(ctx, sources = {}):
+    # assume one main build group for most targets such as file copies to the build directory
+    if not ctx.groups:
+        ctx.add_group(move=False)
+
+    # second build group for sphinx targets
+    try:
+        ctx.add_group('doc_building', move=False)
+    except Exception:
+        pass
+
+    # Add task generators in the second build group called 'doc_building'
+    ctx(features='deferred_doc_target_creation', sources_val=sources, group='doc_building')
 
 def cmd_options(ctx):
     ctx.load('python')

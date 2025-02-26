@@ -8,20 +8,21 @@
 (c) 1988, 2018 On-Line Applications Research Corporation (OAR)
 ```
 
-```{include} ../common/license.md
+```{include} ../../common/license.md
 ```
 
-```{include} ../common/header.md
+```{include} ../../common/header.md
 ```
 
 ```{toctree}
 ---
 maxdepth: 5
 numbered: 4
+glob:
 ---
 preface
 standards
-posix-compliance
+posixc-*
 glossary
 zreferences
 ```

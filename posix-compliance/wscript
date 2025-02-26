@@ -1,29 +1,59 @@
 from common.waf import cmd_configure as configure
-from common.waf import cmd_build as doc_build
+from common.waf import deferred_cmd_build as doc_build
 from common.waf import cmd_options as options
 from common.waf import spell
 from common.waf import cmd_spell
 from common.waf import linkcheck
 from common.waf import cmd_linkcheck
 
+import glob
+import os
+import re
+
 import posix_md
+
+import time
+from waflib.Task import Task
+
 
 def gen_posix_md(task):
     c = posix_md.compliance()
     c.load(task.inputs[1].abspath())
     s = ['']
+    num = 1
     for standard in posix_md.standards:
-        s += ['% SPDX-License-Identifier: CC-BY-SA-4.0',
-              '',
-              '# {}'.format(posix_md.standard_names[standard]),
-               ''] + c.output(standard)
-    with open(task.outputs[0].abspath(), 'w') as w:
-        from os import linesep
-        w.write(linesep.join(s))
+        num_pad = "{:02d}".format(num)
+
+        s += [
+            '% SPDX-License-Identifier: CC-BY-SA-4.0', '', '# {}'.format(
+                posix_md.standard_names[standard]), ''
+        ] + c.output(standard)
+
+        #        with open(task.outputs[0].abspath(), 'w') as w:
+
+        standard_name = re.sub(r'[\., _\[\]()]', '-', posix_md.standard_names[standard])
+        standard_name = re.sub(r'\-+', '-', standard_name)
+        standard_name = standard_name.lower()
+
+        file_name = "{}/posixc-{}-{}.md".format(
+            os.path.dirname(task.outputs[0].abspath()), num_pad, standard_name)
+
+        with open(file_name, 'w') as w:
+            w.write(os.linesep.join(s))
+        s = ['']
+        num += 1
 
 def build(ctx):
+    for file in sorted(glob.glob("{}/../posix-compliance/*.md".format(ctx.bldnode.abspath()))):
+      file_name = os.path.basename(file)
+      ctx(features='subst', source=file_name, target=file_name, is_copy=True)
+
     ctx(rule = gen_posix_md,
         source = ['posix_md.py', 'RTEMS-Standards-Compliance.csv'],
-        target = 'generated-posix-compliance.md')
-    sources = { 'extra' : ['generated-posix-compliance.md'] }
+        target = 'posixc-01-rtems-complete-profile.md')
+
+    sources = {
+        'deferred_glob': '*.md',
+        'source_dir': ctx.bldnode.make_node("posix-compliance/")
+    }
     doc_build(ctx, sources = sources)
