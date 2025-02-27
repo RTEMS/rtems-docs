@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/sem/if/group
 
-(semaphoremanagerintroduction)=
+(SemaphoreManagerIntroduction)=
 
 # Introduction
 

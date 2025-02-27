@@ -37,7 +37,7 @@ count of zero. One task waits for the arrival of another task by issuing a
 The other task performs a corresponding `rtems_semaphore_release` operation
 when it reaches its synchronization point, thus unblocking the pending task.
 
-(nested-resource-access)=
+(Nested Resource Access)=
 
 ## Nested Resource Access
 
@@ -57,7 +57,7 @@ matched with a `rtems_semaphore_release`.
 Simple binary semaphores do not allow nested access and so can be used for task
 synchronization.
 
-(priority-inheritance)=
+(Priority Inheritance)=
 
 ## Priority Inheritance
 
@@ -65,14 +65,14 @@ RTEMS supports {ref}`priority inheritance <PriorityInheritance>` for local,
 binary semaphores that use the priority task wait queue blocking discipline.
 In SMP configurations, the {ref}`OMIP` is used instead.
 
-(priority-ceiling)=
+(Priority Ceiling)=
 
 ## Priority Ceiling
 
 RTEMS supports {ref}`priority ceiling <PriorityCeiling>` for local, binary
 semaphores that use the priority task wait queue blocking discipline.
 
-(multiprocessor-resource-sharing-protocol)=
+(Multiprocessor Resource Sharing Protocol)=
 
 ## Multiprocessor Resource Sharing Protocol
 
@@ -80,7 +80,7 @@ RTEMS supports the {ref}`MrsP` for local, binary semaphores that use the
 priority task wait queue blocking discipline. In uniprocessor configurations,
 the {ref}`PriorityCeiling` is used instead.
 
-(building-a-semaphore-attribute-set)=
+(Building a Semaphore Attribute Set)=
 
 ## Building a Semaphore Attribute Set
 
@@ -149,7 +149,7 @@ width: 90%
 ---
 ```
 
-(building-a-semaphore-obtain-option-set)=
+(Building a SEMAPHORE_OBTAIN Option Set)=
 
 ## Building a SEMAPHORE_OBTAIN Option Set
 

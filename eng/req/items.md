@@ -30,11 +30,11 @@
 
 % https://docs.rtems.org
 
-(reqengspecificationitems)=
+(ReqEngSpecificationItems)=
 
 # Specification Items
 
-(reqengspecificationitemhierarchy)=
+(ReqEngSpecificationItemHierarchy)=
 
 ## Specification Item Hierarchy
 
@@ -134,11 +134,11 @@ The specification item types have the following hierarchy:
 
   - {ref}`SpecTypeTestSuiteItemType`
 
-(reqengspecificationitemtypes)=
+(ReqEngSpecificationItemTypes)=
 
 ## Specification Item Types
 
-(spectyperootitemtype)=
+(SpecTypeRootItemType)=
 
 ### Root Item Type
 
@@ -196,7 +196,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeTestProcedureItemType`
 - {ref}`SpecTypeTestSuiteItemType`
 
-(spectypebuilditemtype)=
+(SpecTypeBuildItemType)=
 
 ### Build Item Type
 
@@ -227,7 +227,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeBuildStartFileItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildadatestprogramitemtype)=
+(SpecTypeBuildAdaTestProgramItemType)=
 
 ### Build Ada Test Program Item Type
 
@@ -325,7 +325,7 @@ use-after: []
 use-before: []
 ```
 
-(spectypebuildbspitemtype)=
+(SpecTypeBuildBSPItemType)=
 
 ### Build BSP Item Type
 
@@ -409,7 +409,7 @@ source:
 type: build
 ```
 
-(spectypebuildconfigurationfileitemtype)=
+(SpecTypeBuildConfigurationFileItemType)=
 
 ### Build Configuration File Item Type
 
@@ -452,7 +452,7 @@ target: ${ARCH}-rtems${__RTEMS_MAJOR__}-${BSP_NAME}.pc
 type: build
 ```
 
-(spectypebuildconfigurationheaderitemtype)=
+(SpecTypeBuildConfigurationHeaderItemType)=
 
 ### Build Configuration Header Item Type
 
@@ -479,7 +479,7 @@ install-path
 target
 : The attribute value shall be a {ref}`SpecTypeBuildTarget`.
 
-(spectypebuildgroupitemtype)=
+(SpecTypeBuildGroupItemType)=
 
 ### Build Group Item Type
 
@@ -552,7 +552,7 @@ use-before:
 - rtemstest
 ```
 
-(spectypebuildlibraryitemtype)=
+(SpecTypeBuildLibraryItemType)=
 
 ### Build Library Item Type
 
@@ -620,7 +620,7 @@ target: jffs2
 type: build
 ```
 
-(spectypebuildobjectsitemtype)=
+(SpecTypeBuildObjectsItemType)=
 
 ### Build Objects Item Type
 
@@ -682,7 +682,7 @@ source:
 type: build
 ```
 
-(spectypebuildoptionitemtype)=
+(SpecTypeBuildOptionItemType)=
 
 ### Build Option Item Type
 
@@ -752,7 +752,7 @@ name: BSP_CONSOLE_BAUD
 type: build
 ```
 
-(spectypebuildscriptitemtype)=
+(SpecTypeBuildScriptItemType)=
 
 ### Build Script Item Type
 
@@ -864,7 +864,7 @@ prepare-configure: null
 type: build
 ```
 
-(spectypebuildstartfileitemtype)=
+(SpecTypeBuildStartFileItemType)=
 
 ### Build Start File Item Type
 
@@ -914,7 +914,7 @@ target: start.o
 type: build
 ```
 
-(spectypebuildtestprogramitemtype)=
+(SpecTypeBuildTestProgramItemType)=
 
 ### Build Test Program Item Type
 
@@ -995,7 +995,7 @@ use-after: []
 use-before: []
 ```
 
-(spectypeconstraintitemtype)=
+(SpecTypeConstraintItemType)=
 
 ### Constraint Item Type
 
@@ -1012,7 +1012,7 @@ text
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the constraint.
 
-(spectypeglossaryitemtype)=
+(SpecTypeGlossaryItemType)=
 
 ### Glossary Item Type
 
@@ -1030,7 +1030,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeGlossaryGroupItemType`
 - {ref}`SpecTypeGlossaryTermItemType`
 
-(spectypeglossarygroupitemtype)=
+(SpecTypeGlossaryGroupItemType)=
 
 ### Glossary Group Item Type
 
@@ -1047,7 +1047,7 @@ text
 : The attribute value shall be a string. It shall state the requirement for
   the glossary group.
 
-(spectypeglossarytermitemtype)=
+(SpecTypeGlossaryTermItemType)=
 
 ### Glossary Term Item Type
 
@@ -1063,7 +1063,7 @@ text
 : The attribute value shall be a string. It shall be the definition of the
   glossary term.
 
-(spectypeinterfaceitemtype)=
+(SpecTypeInterfaceItemType)=
 
 ### Interface Item Type
 
@@ -1104,7 +1104,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeInterfaceVariableItemType`
 - {ref}`SpecTypeRegisterBlockItemType`
 
-(spectypeapplicationconfigurationgroupitemtype)=
+(SpecTypeApplicationConfigurationGroupItemType)=
 
 ### Application Configuration Group Item Type
 
@@ -1125,7 +1125,7 @@ text
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the requirement for the application configuration group.
 
-(spectypeapplicationconfigurationoptionitemtype)=
+(SpecTypeApplicationConfigurationOptionItemType)=
 
 ### Application Configuration Option Item Type
 
@@ -1154,7 +1154,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeApplicationConfigurationFeatureOptionItemType`
 - {ref}`SpecTypeApplicationConfigurationValueOptionItemType`
 
-(spectypeapplicationconfigurationfeatureenableoptionitemtype)=
+(SpecTypeApplicationConfigurationFeatureEnableOptionItemType)=
 
 ### Application Configuration Feature Enable Option Item Type
 
@@ -1163,7 +1163,7 @@ through the `appl-config-option-type` attribute if the value is
 `feature-enable`. This set of attributes specifies an application
 configuration feature enable option.
 
-(spectypeapplicationconfigurationfeatureoptionitemtype)=
+(SpecTypeApplicationConfigurationFeatureOptionItemType)=
 
 ### Application Configuration Feature Option Item Type
 
@@ -1177,7 +1177,7 @@ default
 : The attribute value shall be a string. It shall describe what happens if
   the configuration option is undefined.
 
-(spectypeapplicationconfigurationvalueoptionitemtype)=
+(SpecTypeApplicationConfigurationValueOptionItemType)=
 
 ### Application Configuration Value Option Item Type
 
@@ -1196,7 +1196,7 @@ default-value
 : The attribute value shall be an {ref}`SpecTypeIntegerOrString`. It shall
   describe the default value of the application configuration option.
 
-(spectypeinterfacecompounditemtype)=
+(SpecTypeInterfaceCompoundItemType)=
 
 ### Interface Compound Item Type
 
@@ -1231,7 +1231,7 @@ name
 notes
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
-(spectypeinterfacedefineitemtype)=
+(SpecTypeInterfaceDefineItemType)=
 
 ### Interface Define Item Type
 
@@ -1256,7 +1256,7 @@ name
 notes
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
-(spectypeinterfacedomainitemtype)=
+(SpecTypeInterfaceDomainItemType)=
 
 ### Interface Domain Item Type
 
@@ -1274,7 +1274,7 @@ name
 : The attribute value shall be a string. It shall be the human readable name
   of the domain.
 
-(spectypeinterfaceenumitemtype)=
+(SpecTypeInterfaceEnumItemType)=
 
 ### Interface Enum Item Type
 
@@ -1298,7 +1298,7 @@ name
 notes
 : The attribute value shall be an {ref}`SpecTypeInterfaceDescription`.
 
-(spectypeinterfaceenumeratoritemtype)=
+(SpecTypeInterfaceEnumeratorItemType)=
 
 ### Interface Enumerator Item Type
 
@@ -1324,7 +1324,7 @@ name
 notes
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
-(spectypeinterfaceforwarddeclarationitemtype)=
+(SpecTypeInterfaceForwardDeclarationItemType)=
 
 ### Interface Forward Declaration Item Type
 
@@ -1335,7 +1335,7 @@ with the {ref}`SpecTypeInterfaceTargetLinkRole` to an
 {ref}`SpecTypeInterfaceCompoundItemType` item. This link defines the type
 declared by the forward declaration.
 
-(spectypeinterfacefunctionormacroitemtype)=
+(SpecTypeInterfaceFunctionOrMacroItemType)=
 
 ### Interface Function or Macro Item Type
 
@@ -1373,7 +1373,7 @@ params
 return
 : The attribute value shall be an {ref}`SpecTypeInterfaceReturnDirective`.
 
-(spectypeinterfacegroupitemtype)=
+(SpecTypeInterfaceGroupItemType)=
 
 ### Interface Group Item Type
 
@@ -1399,7 +1399,7 @@ text
 : The attribute value shall be a {ref}`SpecTypeRequirementText`. It shall
   state the requirement for the interface group.
 
-(spectypeinterfaceheaderfileitemtype)=
+(SpecTypeInterfaceHeaderFileItemType)=
 
 ### Interface Header File Item Type
 
@@ -1423,7 +1423,7 @@ prefix
   path to the header file in the interface domain. For example
   {file}`cpukit/include`.
 
-(spectypeinterfacetypedefitemtype)=
+(SpecTypeInterfaceTypedefItemType)=
 
 ### Interface Typedef Item Type
 
@@ -1455,7 +1455,7 @@ params
 return
 : The attribute value shall be an {ref}`SpecTypeInterfaceReturnDirective`.
 
-(spectypeinterfaceunspecifiedheaderfileitemtype)=
+(SpecTypeInterfaceUnspecifiedHeaderFileItemType)=
 
 ### Interface Unspecified Header File Item Type
 
@@ -1472,7 +1472,7 @@ references
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeExternalReference`.
 
-(spectypeinterfaceunspecifieditemtype)=
+(SpecTypeInterfaceUnspecifiedItemType)=
 
 ### Interface Unspecified Item Type
 
@@ -1510,7 +1510,7 @@ references
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeExternalReference`.
 
-(spectypeinterfacevariableitemtype)=
+(SpecTypeInterfaceVariableItemType)=
 
 ### Interface Variable Item Type
 
@@ -1536,7 +1536,7 @@ name
 notes
 : The attribute value shall be an {ref}`SpecTypeInterfaceNotes`.
 
-(spectyperegisterblockitemtype)=
+(SpecTypeRegisterBlockItemType)=
 
 ### Register Block Item Type
 
@@ -1593,7 +1593,7 @@ registers
 : The attribute value shall be a list. Each list element shall be a
   {ref}`SpecTypeRegisterDefinition`.
 
-(spectypeproxyitemtypes)=
+(SpecTypeProxyItemTypes)=
 
 ### Proxy Item Types
 
@@ -1606,7 +1606,7 @@ depend on configuration options. For example, in one configuration a constant
 could be a compile time constant and in another configuration it could be a
 read-only object.
 
-(spectyperequirementitemtype)=
+(SpecTypeRequirementItemType)=
 
 ### Requirement Item Type
 
@@ -1653,7 +1653,7 @@ text: |
 type: requirement
 ```
 
-(spectypefunctionalrequirementitemtype)=
+(SpecTypeFunctionalRequirementItemType)=
 
 ### Functional Requirement Item Type
 
@@ -1671,7 +1671,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeActionRequirementItemType`
 - {ref}`SpecTypeGenericFunctionalRequirementItemType`
 
-(spectypeactionrequirementitemtype)=
+(SpecTypeActionRequirementItemType)=
 
 ### Action Requirement Item Type
 
@@ -1902,7 +1902,7 @@ text: |
 type: requirement
 ```
 
-(spectypegenericfunctionalrequirementitemtype)=
+(SpecTypeGenericFunctionalRequirementItemType)=
 
 ### Generic Functional Requirement Item Type
 
@@ -1924,7 +1924,7 @@ This type refines the following types:
 Items of this type state a functional requirement with the functional type
 defined by the specification type refinement.
 
-(spectypenonfunctionalrequirementitemtype)=
+(SpecTypeNonFunctionalRequirementItemType)=
 
 ### Non-Functional Requirement Item Type
 
@@ -1945,7 +1945,7 @@ This type is refined by the following types:
 - {ref}`SpecTypeRuntimeMeasurementEnvironmentItemType`
 - {ref}`SpecTypeRuntimePerformanceRequirementItemType`
 
-(spectypedesigngrouprequirementitemtype)=
+(SpecTypeDesignGroupRequirementItemType)=
 
 ### Design Group Requirement Item Type
 
@@ -1963,7 +1963,7 @@ identifier
 : The attribute value shall be a
   {ref}`SpecTypeRequirementDesignGroupIdentifier`.
 
-(spectypedesigntargetitemtype)=
+(SpecTypeDesignTargetItemType)=
 
 ### Design Target Item Type
 
@@ -1983,7 +1983,7 @@ description
 name
 : The attribute value shall be a string. It shall be the target name.
 
-(spectypegenericnonfunctionalrequirementitemtype)=
+(SpecTypeGenericNonFunctionalRequirementItemType)=
 
 ### Generic Non-Functional Requirement Item Type
 
@@ -2022,7 +2022,7 @@ This type refines the following types:
 Items of this type state a non-functional requirement with the non-functional
 type defined by the specification type refinement.
 
-(spectyperuntimemeasurementenvironmentitemtype)=
+(SpecTypeRuntimeMeasurementEnvironmentItemType)=
 
 ### Runtime Measurement Environment Item Type
 
@@ -2037,7 +2037,7 @@ name
   environment name. See also
   {ref}`SpecTypeRuntimeMeasurementEnvironmentName`.
 
-(spectyperuntimeperformancerequirementitemtype)=
+(SpecTypeRuntimePerformanceRequirementItemType)=
 
 ### Runtime Performance Requirement Item Type
 
@@ -2156,7 +2156,7 @@ requirement-type: non-functional
 type: requirement
 ```
 
-(spectyperequirementvalidationitemtype)=
+(SpecTypeRequirementValidationItemType)=
 
 ### Requirement Validation Item Type
 
@@ -2194,7 +2194,7 @@ This type is refined by the following types:
 
 - {ref}`SpecTypeRequirementValidationMethod`
 
-(spectyperequirementvalidationmethod)=
+(SpecTypeRequirementValidationMethod)=
 
 ### Requirement Validation Method
 
@@ -2207,7 +2207,7 @@ This type refines the following types:
 - {ref}`SpecTypeRequirementValidationItemType` through the `method` attribute
   if the value is `by-review-of-design`
 
-(spectyperuntimemeasurementtestitemtype)=
+(SpecTypeRuntimeMeasurementTestItemType)=
 
 ### Runtime Measurement Test Item Type
 
@@ -2276,7 +2276,7 @@ test-teardown
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`. If the
   value is present, then it shall be the test case teardown fixture method.
 
-(spectypespecificationitemtype)=
+(SpecTypeSpecificationItemType)=
 
 ### Specification Item Type
 
@@ -2339,7 +2339,7 @@ spec-type: spec
 type: spec
 ```
 
-(spectypetestcaseitemtype)=
+(SpecTypeTestCaseItemType)=
 
 ### Test Case Item Type
 
@@ -2398,7 +2398,7 @@ test-target
 test-teardown
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
 
-(spectypetestplatformitemtype)=
+(SpecTypeTestPlatformItemType)=
 
 ### Test Platform Item Type
 
@@ -2420,7 +2420,7 @@ name
 : The attribute value shall be a string. It shall be the human readable name
   of the test platform.
 
-(spectypetestprocedureitemtype)=
+(SpecTypeTestProcedureItemType)=
 
 ### Test Procedure Item Type
 
@@ -2446,7 +2446,7 @@ steps
 : The attribute value shall be a string. It shall describe the steps of the
   test procedure execution.
 
-(spectypetestsuiteitemtype)=
+(SpecTypeTestSuiteItemType)=
 
 ### Test Suite Item Type
 
@@ -2484,11 +2484,11 @@ test-target
 : The attribute value shall be a string. It shall be the path to the
   generated target test suite source file.
 
-(reqengspecificationattributesetsandvaluetypes)=
+(ReqEngSpecificationAttributeSetsAndValueTypes)=
 
 ## Specification Attribute Sets and Value Types
 
-(spectypeactionrequirementbooleanexpression)=
+(SpecTypeActionRequirementBooleanExpression)=
 
 ### Action Requirement Boolean Expression
 
@@ -2542,7 +2542,7 @@ This type is used by the following types:
 - {ref}`SpecTypeActionRequirementBooleanExpression`
 - {ref}`SpecTypeActionRequirementExpression`
 
-(spectypeactionrequirementcondition)=
+(SpecTypeActionRequirementCondition)=
 
 ### Action Requirement Condition
 
@@ -2575,7 +2575,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
 
-(spectypeactionrequirementexpression)=
+(SpecTypeActionRequirementExpression)=
 
 ### Action Requirement Expression
 
@@ -2613,7 +2613,7 @@ then-specified-by
   pre-condition in the associated transition defines the name of the state of
   the post-condition.
 
-(spectypeactionrequirementexpressionconditionset)=
+(SpecTypeActionRequirementExpressionConditionSet)=
 
 ### Action Requirement Expression Condition Set
 
@@ -2629,7 +2629,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementBooleanExpression`
 
-(spectypeactionrequirementexpressionstatename)=
+(SpecTypeActionRequirementExpressionStateName)=
 
 ### Action Requirement Expression State Name
 
@@ -2643,7 +2643,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementExpression`
 
-(spectypeactionrequirementexpressionstateset)=
+(SpecTypeActionRequirementExpressionStateSet)=
 
 ### Action Requirement Expression State Set
 
@@ -2663,7 +2663,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementExpressionConditionSet`
 
-(spectypeactionrequirementname)=
+(SpecTypeActionRequirementName)=
 
 ### Action Requirement Name
 
@@ -2688,7 +2688,7 @@ This type is used by the following types:
 - {ref}`SpecTypeActionRequirementTransitionPostConditions`
 - {ref}`SpecTypeActionRequirementTransitionPreConditions`
 
-(spectypeactionrequirementskipreasons)=
+(SpecTypeActionRequirementSkipReasons)=
 
 ### Action Requirement Skip Reasons
 
@@ -2705,7 +2705,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
 
-(spectypeactionrequirementstate)=
+(SpecTypeActionRequirementState)=
 
 ### Action Requirement State
 
@@ -2730,7 +2730,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementCondition`
 
-(spectypeactionrequirementtransition)=
+(SpecTypeActionRequirementTransition)=
 
 ### Action Requirement Transition
 
@@ -2764,7 +2764,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
 
-(spectypeactionrequirementtransitionpostconditionstate)=
+(SpecTypeActionRequirementTransitionPostConditionState)=
 
 ### Action Requirement Transition Post-Condition State
 
@@ -2785,7 +2785,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementTransitionPostConditions`
 
-(spectypeactionrequirementtransitionpostconditions)=
+(SpecTypeActionRequirementTransitionPostConditions)=
 
 ### Action Requirement Transition Post-Conditions
 
@@ -2813,7 +2813,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementTransition`
 
-(spectypeactionrequirementtransitionpreconditionstateset)=
+(SpecTypeActionRequirementTransitionPreConditionStateSet)=
 
 ### Action Requirement Transition Pre-Condition State Set
 
@@ -2834,7 +2834,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementTransitionPreConditions`
 
-(spectypeactionrequirementtransitionpreconditions)=
+(SpecTypeActionRequirementTransitionPreConditions)=
 
 ### Action Requirement Transition Pre-Conditions
 
@@ -2858,7 +2858,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementTransition`
 
-(spectypeapplicationconfigurationoptionname)=
+(SpecTypeApplicationConfigurationOptionName)=
 
 ### Application Configuration Option Name
 
@@ -2870,7 +2870,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationOptionItemType`
 
-(spectypebooleanorintegerorstring)=
+(SpecTypeBooleanOrIntegerOrString)=
 
 ### Boolean or Integer or String
 
@@ -2885,7 +2885,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildOptionAction`
 - {ref}`SpecTypeInterfaceReturnValue`
 
-(spectypebuildassembleroption)=
+(SpecTypeBuildAssemblerOption)=
 
 ### Build Assembler Option
 
@@ -2899,7 +2899,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildStartFileItemType`
 
-(spectypebuildccompileroption)=
+(SpecTypeBuildCCompilerOption)=
 
 ### Build C Compiler Option
 
@@ -2919,7 +2919,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildcpreprocessoroption)=
+(SpecTypeBuildCPreprocessorOption)=
 
 ### Build C Preprocessor Option
 
@@ -2939,7 +2939,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildStartFileItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildcxxcompileroption)=
+(SpecTypeBuildCXXCompilerOption)=
 
 ### Build C++ Compiler Option
 
@@ -2958,7 +2958,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuilddependencyconditionallinkrole)=
+(SpecTypeBuildDependencyConditionalLinkRole)=
 
 ### Build Dependency Conditional Link Role
 
@@ -2971,14 +2971,14 @@ enabled-by
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. It
   shall define under which conditions the build dependency is enabled.
 
-(spectypebuilddependencylinkrole)=
+(SpecTypeBuildDependencyLinkRole)=
 
 ### Build Dependency Link Role
 
 This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `build-dependency`. It defines the build dependency role of links.
 
-(spectypebuildincludepath)=
+(SpecTypeBuildIncludePath)=
 
 ### Build Include Path
 
@@ -3004,7 +3004,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildStartFileItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildinstalldirective)=
+(SpecTypeBuildInstallDirective)=
 
 ### Build Install Directive
 
@@ -3027,7 +3027,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildLibraryItemType`
 - {ref}`SpecTypeBuildObjectsItemType`
 
-(spectypebuildinstallpath)=
+(SpecTypeBuildInstallPath)=
 
 ### Build Install Path
 
@@ -3044,7 +3044,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildLibraryItemType`
 - {ref}`SpecTypeBuildStartFileItemType`
 
-(spectypebuildlinkstaticlibrarydirective)=
+(SpecTypeBuildLinkStaticLibraryDirective)=
 
 ### Build Link Static Library Directive
 
@@ -3061,7 +3061,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildlinkeroption)=
+(SpecTypeBuildLinkerOption)=
 
 ### Build Linker Option
 
@@ -3075,7 +3075,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildoptionaction)=
+(SpecTypeBuildOptionAction)=
 
 ### Build Option Action
 
@@ -3287,7 +3287,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionItemType`
 
-(spectypebuildoptionccompilercheckaction)=
+(SpecTypeBuildOptionCCompilerCheckAction)=
 
 ### Build Option C Compiler Check Action
 
@@ -3312,7 +3312,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionAction`
 
-(spectypebuildoptioncxxcompilercheckaction)=
+(SpecTypeBuildOptionCXXCompilerCheckAction)=
 
 ### Build Option C++ Compiler Check Action
 
@@ -3337,7 +3337,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionAction`
 
-(spectypebuildoptionname)=
+(SpecTypeBuildOptionName)=
 
 ### Build Option Name
 
@@ -3348,7 +3348,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionItemType`
 
-(spectypebuildoptionsetteststateaction)=
+(SpecTypeBuildOptionSetTestStateAction)=
 
 ### Build Option Set Test State Action
 
@@ -3376,7 +3376,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionAction`
 
-(spectypebuildoptionvalue)=
+(SpecTypeBuildOptionValue)=
 
 ### Build Option Value
 
@@ -3396,7 +3396,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildOptionAction`
 - {ref}`SpecTypeBuildOptionItemType`
 
-(spectypebuildsource)=
+(SpecTypeBuildSource)=
 
 ### Build Source
 
@@ -3412,7 +3412,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildStartFileItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildtarget)=
+(SpecTypeBuildTarget)=
 
 ### Build Target
 
@@ -3430,7 +3430,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildStartFileItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildteststate)=
+(SpecTypeBuildTestState)=
 
 ### Build Test State
 
@@ -3447,7 +3447,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionSetTestStateAction`
 
-(spectypebuilduseafterdirective)=
+(SpecTypeBuildUseAfterDirective)=
 
 ### Build Use After Directive
 
@@ -3463,7 +3463,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypebuildusebeforedirective)=
+(SpecTypeBuildUseBeforeDirective)=
 
 ### Build Use Before Directive
 
@@ -3479,7 +3479,7 @@ This type is used by the following types:
 - {ref}`SpecTypeBuildScriptItemType`
 - {ref}`SpecTypeBuildTestProgramItemType`
 
-(spectypeconstraintlinkrole)=
+(SpecTypeConstraintLinkRole)=
 
 ### Constraint Link Role
 
@@ -3487,7 +3487,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `constraint`. It defines the constraint role of links. The link
 target shall be a constraint.
 
-(spectypecopyright)=
+(SpecTypeCopyright)=
 
 ### Copyright
 
@@ -3505,7 +3505,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRootItemType`
 
-(spectypeenabledbyexpression)=
+(SpecTypeEnabledByExpression)=
 
 ### Enabled-By Expression
 
@@ -3563,7 +3563,7 @@ enabled-by:
   - not: RTEMS_SMP
 ```
 
-(spectypeexternaldocumentreference)=
+(SpecTypeExternalDocumentReference)=
 
 ### External Document Reference
 
@@ -3577,7 +3577,7 @@ name
 : The attribute value shall be a string. It shall be the name of the
   document.
 
-(spectypeexternalfilereference)=
+(SpecTypeExternalFileReference)=
 
 ### External File Reference
 
@@ -3591,7 +3591,7 @@ hash
 : The attribute value shall be a {ref}`SpecTypeSHA256HashValue`. It shall be
   the SHA256 hash value of the content of the referenced file.
 
-(spectypeexternalreference)=
+(SpecTypeExternalReference)=
 
 ### External Reference
 
@@ -3622,7 +3622,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRequirementItemType`
 - {ref}`SpecTypeRequirementValidationItemType`
 
-(spectypefunctionimplementationlinkrole)=
+(SpecTypeFunctionImplementationLinkRole)=
 
 ### Function Implementation Link Role
 
@@ -3632,7 +3632,7 @@ role of links. It is used to indicate that a
 {ref}`SpecTypeFunctionalRequirementItemType` item specifies parts of the
 function.
 
-(spectypegenericexternalreference)=
+(SpecTypeGenericExternalReference)=
 
 ### Generic External Reference
 
@@ -3653,14 +3653,14 @@ This type refines the following types:
 
 It specifies a reference to an object of the specified type.
 
-(spectypeglossarymembershiplinkrole)=
+(SpecTypeGlossaryMembershipLinkRole)=
 
 ### Glossary Membership Link Role
 
 This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `glossary-member`. It defines the glossary membership role of links.
 
-(spectypeintegerorstring)=
+(SpecTypeIntegerOrString)=
 
 ### Integer or String
 
@@ -3674,7 +3674,7 @@ This type is used by the following types:
 - {ref}`SpecTypeApplicationConfigurationValueOptionItemType`
 - {ref}`SpecTypeBuildOptionAction`
 
-(spectypeinterfacebriefdescription)=
+(SpecTypeInterfaceBriefDescription)=
 
 ### Interface Brief Description
 
@@ -3701,7 +3701,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRegisterBlockItemType`
 - {ref}`SpecTypeRegisterDefinition`
 
-(spectypeinterfacecompounddefinitionkind)=
+(SpecTypeInterfaceCompoundDefinitionKind)=
 
 ### Interface Compound Definition Kind
 
@@ -3719,7 +3719,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundItemType`
 
-(spectypeinterfacecompoundmembercompound)=
+(SpecTypeInterfaceCompoundMemberCompound)=
 
 ### Interface Compound Member Compound
 
@@ -3738,7 +3738,7 @@ definition
 : The attribute value shall be a list. Each list element shall be an
   {ref}`SpecTypeInterfaceCompoundMemberDefinitionDirective`.
 
-(spectypeinterfacecompoundmemberdeclaration)=
+(SpecTypeInterfaceCompoundMemberDeclaration)=
 
 ### Interface Compound Member Declaration
 
@@ -3752,7 +3752,7 @@ definition
   member declaration. On the declaration a context-sensitive substitution of
   item variables is performed.
 
-(spectypeinterfacecompoundmemberdefinition)=
+(SpecTypeInterfaceCompoundMemberDefinition)=
 
 ### Interface Compound Member Definition
 
@@ -3788,7 +3788,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceCompoundMemberDefinitionDirective`
 - {ref}`SpecTypeInterfaceCompoundMemberDefinitionVariant`
 
-(spectypeinterfacecompoundmemberdefinitiondirective)=
+(SpecTypeInterfaceCompoundMemberDefinitionDirective)=
 
 ### Interface Compound Member Definition Directive
 
@@ -3810,7 +3810,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceCompoundItemType`
 - {ref}`SpecTypeInterfaceCompoundMemberCompound`
 
-(spectypeinterfacecompoundmemberdefinitionvariant)=
+(SpecTypeInterfaceCompoundMemberDefinitionVariant)=
 
 ### Interface Compound Member Definition Variant
 
@@ -3833,7 +3833,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundMemberDefinitionDirective`
 
-(spectypeinterfacedefinition)=
+(SpecTypeInterfaceDefinition)=
 
 ### Interface Definition
 
@@ -3848,7 +3848,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceDefinitionDirective`
 - {ref}`SpecTypeInterfaceDefinitionVariant`
 
-(spectypeinterfacedefinitiondirective)=
+(SpecTypeInterfaceDefinitionDirective)=
 
 ### Interface Definition Directive
 
@@ -3872,7 +3872,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceTypedefItemType`
 - {ref}`SpecTypeInterfaceVariableItemType`
 
-(spectypeinterfacedefinitionvariant)=
+(SpecTypeInterfaceDefinitionVariant)=
 
 ### Interface Definition Variant
 
@@ -3893,7 +3893,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceDefinitionDirective`
 
-(spectypeinterfacedescription)=
+(SpecTypeInterfaceDescription)=
 
 ### Interface Description
 
@@ -3924,7 +3924,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRegisterBlockItemType`
 - {ref}`SpecTypeRegisterDefinition`
 
-(spectypeinterfaceenabledbyexpression)=
+(SpecTypeInterfaceEnabledByExpression)=
 
 ### Interface Enabled-By Expression
 
@@ -3971,7 +3971,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRegisterBitsDefinitionVariant`
 - {ref}`SpecTypeRegisterBlockMemberDefinitionVariant`
 
-(spectypeinterfaceenumdefinitionkind)=
+(SpecTypeInterfaceEnumDefinitionKind)=
 
 ### Interface Enum Definition Kind
 
@@ -3987,7 +3987,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceEnumItemType`
 
-(spectypeinterfaceenumeratorlinkrole)=
+(SpecTypeInterfaceEnumeratorLinkRole)=
 
 ### Interface Enumerator Link Role
 
@@ -3995,7 +3995,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `interface-enumerator`. It defines the interface enumerator role of
 links.
 
-(spectypeinterfacefunctionlinkrole)=
+(SpecTypeInterfaceFunctionLinkRole)=
 
 ### Interface Function Link Role
 
@@ -4005,7 +4005,7 @@ links. It is used to indicate that a {ref}`SpecTypeActionRequirementItemType`
 item specifies functional requirements of an
 {ref}`SpecTypeInterfaceFunctionOrMacroItemType` item.
 
-(spectypeinterfacefunctionormacrodefinition)=
+(SpecTypeInterfaceFunctionOrMacroDefinition)=
 
 ### Interface Function or Macro Definition
 
@@ -4047,7 +4047,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`
 - {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`
 
-(spectypeinterfacefunctionormacrodefinitiondirective)=
+(SpecTypeInterfaceFunctionOrMacroDefinitionDirective)=
 
 ### Interface Function or Macro Definition Directive
 
@@ -4068,7 +4068,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
 
-(spectypeinterfacefunctionormacrodefinitionvariant)=
+(SpecTypeInterfaceFunctionOrMacroDefinitionVariant)=
 
 ### Interface Function or Macro Definition Variant
 
@@ -4091,7 +4091,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`
 
-(spectypeinterfacegroupidentifier)=
+(SpecTypeInterfaceGroupIdentifier)=
 
 ### Interface Group Identifier
 
@@ -4103,7 +4103,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceGroupItemType`
 - {ref}`SpecTypeRegisterBlockItemType`
 
-(spectypeinterfacegroupmembershiplinkrole)=
+(SpecTypeInterfaceGroupMembershipLinkRole)=
 
 ### Interface Group Membership Link Role
 
@@ -4111,7 +4111,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `interface-ingroup`. It defines the interface group membership role
 of links.
 
-(spectypeinterfacehiddengroupmembershiplinkrole)=
+(SpecTypeInterfaceHiddenGroupMembershipLinkRole)=
 
 ### Interface Hidden Group Membership Link Role
 
@@ -4122,7 +4122,7 @@ member and hide this relationship in the documentation. An example is an
 optimized macro implementation of a directive which has the same name as the
 corresponding directive.
 
-(spectypeinterfaceincludelinkrole)=
+(SpecTypeInterfaceIncludeLinkRole)=
 
 ### Interface Include Link Role
 
@@ -4137,7 +4137,7 @@ enabled-by
 : The attribute value shall be an {ref}`SpecTypeEnabledByExpression`. It
   shall define under which conditions the interface container is included.
 
-(spectypeinterfacenotes)=
+(SpecTypeInterfaceNotes)=
 
 ### Interface Notes
 
@@ -4157,7 +4157,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceVariableItemType`
 - {ref}`SpecTypeRegisterBlockItemType`
 
-(spectypeinterfaceparameter)=
+(SpecTypeInterfaceParameter)=
 
 ### Interface Parameter
 
@@ -4179,7 +4179,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
 - {ref}`SpecTypeInterfaceTypedefItemType`
 
-(spectypeinterfaceparameterdirection)=
+(SpecTypeInterfaceParameterDirection)=
 
 ### Interface Parameter Direction
 
@@ -4199,7 +4199,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceParameter`
 - {ref}`SpecTypeTestRunParameter`
 
-(spectypeinterfaceplacementlinkrole)=
+(SpecTypeInterfacePlacementLinkRole)=
 
 ### Interface Placement Link Role
 
@@ -4208,7 +4208,7 @@ value is `interface-placement`. It defines the interface placement role of
 links. It is used to indicate that an interface definition is placed into an
 interface container, for example a header file.
 
-(spectypeinterfacereturndirective)=
+(SpecTypeInterfaceReturnDirective)=
 
 ### Interface Return Directive
 
@@ -4233,7 +4233,7 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
 - {ref}`SpecTypeInterfaceTypedefItemType`
 
-(spectypeinterfacereturnvalue)=
+(SpecTypeInterfaceReturnValue)=
 
 ### Interface Return Value
 
@@ -4251,7 +4251,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceReturnDirective`
 
-(spectypeinterfacetargetlinkrole)=
+(SpecTypeInterfaceTargetLinkRole)=
 
 ### Interface Target Link Role
 
@@ -4259,7 +4259,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `interface-target`. It defines the interface target role of links.
 It is used for interface forward declarations.
 
-(spectypelink)=
+(SpecTypeLink)=
 
 ### Link
 
@@ -4307,7 +4307,7 @@ This type is used by the following types:
 - {ref}`SpecTypeTestCaseAction`
 - {ref}`SpecTypeTestCaseCheck`
 
-(spectypename)=
+(SpecTypeName)=
 
 ### Name
 
@@ -4337,7 +4337,7 @@ This type is used by the following types:
 - {ref}`SpecTypeSpecificationList`
 - {ref}`SpecTypeSpecificationRefinementLinkRole`
 
-(spectypeoptionalfloatingpointnumber)=
+(SpecTypeOptionalFloatingPointNumber)=
 
 ### Optional Floating-Point Number
 
@@ -4346,7 +4346,7 @@ A value of this type shall be of one of the following variants:
 - The value may be a floating-point number.
 - There may be no value (null).
 
-(spectypeoptionalinteger)=
+(SpecTypeOptionalInteger)=
 
 ### Optional Integer
 
@@ -4359,7 +4359,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBlockItemType`
 
-(spectypeoptionalstring)=
+(SpecTypeOptionalString)=
 
 ### Optional String
 
@@ -4368,7 +4368,7 @@ A value of this type shall be of one of the following variants:
 - There may be no value (null).
 - The value may be a string.
 
-(spectypeperformanceruntimelimitslinkrole)=
+(SpecTypePerformanceRuntimeLimitsLinkRole)=
 
 ### Performance Runtime Limits Link Role
 
@@ -4381,7 +4381,7 @@ limits
 : The attribute value shall be a
   {ref}`SpecTypeRuntimeMeasurementEnvironmentTable`.
 
-(spectypeplacementorderlinkrole)=
+(SpecTypePlacementOrderLinkRole)=
 
 ### Placement Order Link Role
 
@@ -4390,7 +4390,7 @@ value is `placement-order`. This link role defines the placement order of
 items in a container item (for example an interface function in a header file
 or a documentation section).
 
-(spectypeproxymemberlinkrole)=
+(SpecTypeProxyMemberLinkRole)=
 
 ### Proxy Member Link Role
 
@@ -4398,7 +4398,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `proxy-member`. It defines the proxy member role of links. Items
 may use this role to link to {ref}`SpecTypeProxyItemTypes` items.
 
-(spectyperegisterbitsdefinition)=
+(SpecTypeRegisterBitsDefinition)=
 
 ### Register Bits Definition
 
@@ -4439,7 +4439,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRegisterBitsDefinitionDirective`
 - {ref}`SpecTypeRegisterBitsDefinitionVariant`
 
-(spectyperegisterbitsdefinitiondirective)=
+(SpecTypeRegisterBitsDefinitionDirective)=
 
 ### Register Bits Definition Directive
 
@@ -4459,7 +4459,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterDefinition`
 
-(spectyperegisterbitsdefinitionvariant)=
+(SpecTypeRegisterBitsDefinitionVariant)=
 
 ### Register Bits Definition Variant
 
@@ -4480,7 +4480,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBitsDefinitionDirective`
 
-(spectyperegisterblockincluderole)=
+(SpecTypeRegisterBlockIncludeRole)=
 
 ### Register Block Include Role
 
@@ -4496,7 +4496,7 @@ name
   the scope of the item links of this role and the
   {ref}`SpecTypeRegisterList`.
 
-(spectyperegisterblockmemberdefinition)=
+(SpecTypeRegisterBlockMemberDefinition)=
 
 ### Register Block Member Definition
 
@@ -4520,7 +4520,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRegisterBlockMemberDefinitionDirective`
 - {ref}`SpecTypeRegisterBlockMemberDefinitionVariant`
 
-(spectyperegisterblockmemberdefinitiondirective)=
+(SpecTypeRegisterBlockMemberDefinitionDirective)=
 
 ### Register Block Member Definition Directive
 
@@ -4546,7 +4546,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBlockItemType`
 
-(spectyperegisterblockmemberdefinitionvariant)=
+(SpecTypeRegisterBlockMemberDefinitionVariant)=
 
 ### Register Block Member Definition Variant
 
@@ -4569,7 +4569,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBlockMemberDefinitionDirective`
 
-(spectyperegisterdefinition)=
+(SpecTypeRegisterDefinition)=
 
 ### Register Definition
 
@@ -4604,7 +4604,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBlockItemType`
 
-(spectyperegistername)=
+(SpecTypeRegisterName)=
 
 ### Register Name
 
@@ -4623,7 +4623,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBlockMemberDefinition`
 
-(spectyperequirementdesigngroupidentifier)=
+(SpecTypeRequirementDesignGroupIdentifier)=
 
 ### Requirement Design Group Identifier
 
@@ -4638,7 +4638,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeDesignGroupRequirementItemType`
 
-(spectyperequirementrefinementlinkrole)=
+(SpecTypeRequirementRefinementLinkRole)=
 
 ### Requirement Refinement Link Role
 
@@ -4646,7 +4646,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `requirement-refinement`. It defines the requirement refinement role
 of links.
 
-(spectyperequirementtext)=
+(SpecTypeRequirementText)=
 
 ### Requirement Text
 
@@ -4723,14 +4723,14 @@ This type is used by the following types:
 - {ref}`SpecTypeInterfaceGroupItemType`
 - {ref}`SpecTypeRequirementItemType`
 
-(spectyperequirementvalidationlinkrole)=
+(SpecTypeRequirementValidationLinkRole)=
 
 ### Requirement Validation Link Role
 
 This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `validation`. It defines the requirement validation role of links.
 
-(spectyperuntimemeasurementenvironmentname)=
+(SpecTypeRuntimeMeasurementEnvironmentName)=
 
 ### Runtime Measurement Environment Name
 
@@ -4749,7 +4749,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRuntimeMeasurementEnvironmentTable`
 
-(spectyperuntimemeasurementenvironmenttable)=
+(SpecTypeRuntimeMeasurementEnvironmentTable)=
 
 ### Runtime Measurement Environment Table
 
@@ -4762,7 +4762,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypePerformanceRuntimeLimitsLinkRole`
 
-(spectyperuntimemeasurementparameterset)=
+(SpecTypeRuntimeMeasurementParameterSet)=
 
 ### Runtime Measurement Parameter Set
 
@@ -4782,7 +4782,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRuntimeMeasurementTestItemType`
 
-(spectyperuntimemeasurementrequestlinkrole)=
+(SpecTypeRuntimeMeasurementRequestLinkRole)=
 
 ### Runtime Measurement Request Link Role
 
@@ -4791,7 +4791,7 @@ value is `runtime-measurement-request`. It defines the runtime measurement
 request role of links. The link target shall be a
 {ref}`SpecTypeRuntimeMeasurementTestItemType` item.
 
-(spectyperuntimemeasurementvaluekind)=
+(SpecTypeRuntimeMeasurementValueKind)=
 
 ### Runtime Measurement Value Kind
 
@@ -4811,7 +4811,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRuntimeMeasurementValueTable`
 
-(spectyperuntimemeasurementvaluetable)=
+(SpecTypeRuntimeMeasurementValueTable)=
 
 ### Runtime Measurement Value Table
 
@@ -4825,7 +4825,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRuntimeMeasurementEnvironmentTable`
 
-(spectyperuntimeperformanceparameterset)=
+(SpecTypeRuntimePerformanceParameterSet)=
 
 ### Runtime Performance Parameter Set
 
@@ -4837,7 +4837,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRuntimePerformanceRequirementItemType`
 
-(spectypesha256hashvalue)=
+(SpecTypeSHA256HashValue)=
 
 ### SHA256 Hash Value
 
@@ -4849,7 +4849,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeExternalFileReference`
 
-(spectypespdxlicenseidentifier)=
+(SpecTypeSPDXLicenseIdentifier)=
 
 ### SPDX License Identifier
 
@@ -4864,7 +4864,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeRootItemType`
 
-(spectypespecificationattributeset)=
+(SpecTypeSpecificationAttributeSet)=
 
 ### Specification Attribute Set
 
@@ -4900,7 +4900,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationInformation`
 
-(spectypespecificationattributevalue)=
+(SpecTypeSpecificationAttributeValue)=
 
 ### Specification Attribute Value
 
@@ -4919,7 +4919,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationExplicitAttributes`
 
-(spectypespecificationbooleanvalue)=
+(SpecTypeSpecificationBooleanValue)=
 
 ### Specification Boolean Value
 
@@ -4943,7 +4943,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationInformation`
 
-(spectypespecificationexplicitattributes)=
+(SpecTypeSpecificationExplicitAttributes)=
 
 ### Specification Explicit Attributes
 
@@ -4957,7 +4957,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationAttributeSet`
 
-(spectypespecificationfloatingpointassert)=
+(SpecTypeSpecificationFloatingPointAssert)=
 
 ### Specification Floating-Point Assert
 
@@ -5029,7 +5029,7 @@ This type is used by the following types:
 - {ref}`SpecTypeSpecificationFloatingPointAssert`
 - {ref}`SpecTypeSpecificationFloatingPointValue`
 
-(spectypespecificationfloatingpointvalue)=
+(SpecTypeSpecificationFloatingPointValue)=
 
 ### Specification Floating-Point Value
 
@@ -5052,7 +5052,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationInformation`
 
-(spectypespecificationgenericattributes)=
+(SpecTypeSpecificationGenericAttributes)=
 
 ### Specification Generic Attributes
 
@@ -5078,7 +5078,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationAttributeSet`
 
-(spectypespecificationinformation)=
+(SpecTypeSpecificationInformation)=
 
 ### Specification Information
 
@@ -5117,7 +5117,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationItemType`
 
-(spectypespecificationintegerassert)=
+(SpecTypeSpecificationIntegerAssert)=
 
 ### Specification Integer Assert
 
@@ -5186,7 +5186,7 @@ This type is used by the following types:
 - {ref}`SpecTypeSpecificationIntegerAssert`
 - {ref}`SpecTypeSpecificationIntegerValue`
 
-(spectypespecificationintegervalue)=
+(SpecTypeSpecificationIntegerValue)=
 
 ### Specification Integer Value
 
@@ -5207,7 +5207,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationInformation`
 
-(spectypespecificationlist)=
+(SpecTypeSpecificationList)=
 
 ### Specification List
 
@@ -5226,7 +5226,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationInformation`
 
-(spectypespecificationmandatoryattributes)=
+(SpecTypeSpecificationMandatoryAttributes)=
 
 ### Specification Mandatory Attributes
 
@@ -5251,7 +5251,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationAttributeSet`
 
-(spectypespecificationmemberlinkrole)=
+(SpecTypeSpecificationMemberLinkRole)=
 
 ### Specification Member Link Role
 
@@ -5259,7 +5259,7 @@ This type refines the {ref}`SpecTypeLink` through the `role` attribute if the
 value is `spec-member`. It defines the specification membership role of
 links.
 
-(spectypespecificationrefinementlinkrole)=
+(SpecTypeSpecificationRefinementLinkRole)=
 
 ### Specification Refinement Link Role
 
@@ -5278,7 +5278,7 @@ spec-value
   specification type refinement attribute value of the specification
   refinement.
 
-(spectypespecificationstringassert)=
+(SpecTypeSpecificationStringAssert)=
 
 ### Specification String Assert
 
@@ -5367,7 +5367,7 @@ This type is used by the following types:
 - {ref}`SpecTypeSpecificationStringAssert`
 - {ref}`SpecTypeSpecificationStringValue`
 
-(spectypespecificationstringvalue)=
+(SpecTypeSpecificationStringValue)=
 
 ### Specification String Value
 
@@ -5388,7 +5388,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationInformation`
 
-(spectypetestcaseaction)=
+(SpecTypeTestCaseAction)=
 
 ### Test Case Action
 
@@ -5417,7 +5417,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeTestCaseItemType`
 
-(spectypetestcasecheck)=
+(SpecTypeTestCaseCheck)=
 
 ### Test Case Check
 
@@ -5442,7 +5442,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeTestCaseAction`
 
-(spectypetestcontextmember)=
+(SpecTypeTestContextMember)=
 
 ### Test Context Member
 
@@ -5473,7 +5473,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRuntimeMeasurementTestItemType`
 - {ref}`SpecTypeTestCaseItemType`
 
-(spectypetestheader)=
+(SpecTypeTestHeader)=
 
 ### Test Header
 
@@ -5523,7 +5523,7 @@ This type is used by the following types:
 - {ref}`SpecTypeActionRequirementItemType`
 - {ref}`SpecTypeTestCaseItemType`
 
-(spectypetestrunparameter)=
+(SpecTypeTestRunParameter)=
 
 ### Test Run Parameter
 
@@ -5552,7 +5552,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeTestHeader`
 
-(spectypetestsupportmethod)=
+(SpecTypeTestSupportMethod)=
 
 ### Test Support Method
 
@@ -5584,7 +5584,7 @@ This type is used by the following types:
 - {ref}`SpecTypeRuntimePerformanceRequirementItemType`
 - {ref}`SpecTypeTestCaseItemType`
 
-(spectypeuid)=
+(SpecTypeUID)=
 
 ### UID
 
@@ -5595,7 +5595,7 @@ This type is used by the following types:
 
 - {ref}`SpecTypeLink`
 
-(spectypeunittestlinkrole)=
+(SpecTypeUnitTestLinkRole)=
 
 ### Unit Test Link Role
 

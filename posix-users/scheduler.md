@@ -60,7 +60,7 @@ This section details the scheduler manager's directives. A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
-(sched-get-priority-min)=
+(sched_get_priority_min)=
 
 ### sched_get_priority_min - Get Minimum Priority Value
 
@@ -100,7 +100,7 @@ the specified `policy`.
 
 NONE
 
-(sched-get-priority-max)=
+(sched_get_priority_max)=
 
 ### sched_get_priority_max - Get Maximum Priority Value
 
@@ -140,7 +140,7 @@ for the specified `policy`.
 
 NONE
 
-(sched-rr-get-interval)=
+(sched_rr_get_interval)=
 
 ### sched_rr_get_interval - Get Timeslicing Quantum
 
@@ -183,7 +183,7 @@ parameter for the specified `pid`.
 
 The `pid` argument should be 0 to indicate the calling process.
 
-(sched-yield)=
+(sched_yield)=
 
 ### sched_yield - Yield the Processor
 

@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/mp/if/group
 
-(multiprocessingmanagerintroduction)=
+(MultiprocessingManagerIntroduction)=
 
 # Introduction
 

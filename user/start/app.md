@@ -2,7 +2,7 @@
 
 % Copyright (C) 2020 Chris Johns
 
-(quickstartapp)=
+(QuickStartAPP)=
 
 # Build Your Application
 

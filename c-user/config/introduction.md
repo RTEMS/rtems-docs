@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/config/if/group
 
-(applicationconfigurationinformationintroduction)=
+(ApplicationConfigurationInformationIntroduction)=
 
 # Introduction
 

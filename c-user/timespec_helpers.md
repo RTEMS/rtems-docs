@@ -103,7 +103,7 @@ sequence, related constants, usage, and status codes.
 ```{index} rtems_timespec_set()
 ```
 
-(rtems-timespec-set)=
+(rtems_timespec_set)=
 
 ### TIMESPEC_SET - Set struct timespec Instance
 
@@ -134,7 +134,7 @@ NOTES:
 ```{index} rtems_timespec_zero()
 ```
 
-(rtems-timespec-zero)=
+(rtems_timespec_zero)=
 
 ### TIMESPEC_ZERO - Zero struct timespec Instance
 
@@ -162,7 +162,7 @@ NOTES:
 ```{index} rtems_timespec_is_valid()
 ```
 
-(rtems-timespec-is-valid)=
+(rtems_timespec_is_valid)=
 
 ### TIMESPEC_IS_VALID - Check validity of a struct timespec instance
 
@@ -192,7 +192,7 @@ NOTES:
 ```{index} rtems_timespec_add_to()
 ```
 
-(rtems-timespec-add-to)=
+(rtems_timespec_add_to)=
 
 ### TIMESPEC_ADD_TO - Add Two struct timespec Instances
 
@@ -222,7 +222,7 @@ NOTES:
 ```{index} rtems_timespec_subtract()
 ```
 
-(rtems-timespec-subtract)=
+(rtems_timespec_subtract)=
 
 ### TIMESPEC_SUBTRACT - Subtract Two struct timespec Instances
 
@@ -257,7 +257,7 @@ NOTES:
 ```{index} rtems_timespec_divide()
 ```
 
-(rtems-timespec-divide)=
+(rtems_timespec_divide)=
 
 ### TIMESPEC_DIVIDE - Divide Two struct timespec Instances
 
@@ -301,7 +301,7 @@ NOTES:
 ```{index} rtems_timespec_divide_by_integer()
 ```
 
-(rtems-timespec-divide-by-integer)=
+(rtems_timespec_divide_by_integer)=
 
 ### TIMESPEC_DIVIDE_BY_INTEGER - Divide a struct timespec Instance by an Integer
 
@@ -333,7 +333,7 @@ NOTES:
 ```{index} rtems_timespec_less_than()
 ```
 
-(rtems-timespec-less-than)=
+(rtems_timespec_less_than)=
 
 ### TIMESPEC_LESS_THAN - Less than operator
 
@@ -364,7 +364,7 @@ NOTES:
 ```{index} rtems_timespec_greater_than()
 ```
 
-(rtems-timespec-greater-than)=
+(rtems_timespec_greater_than)=
 
 ### TIMESPEC_GREATER_THAN - Greater than operator
 
@@ -393,7 +393,7 @@ NOTES:
 ```{index} rtems_timespec_equal_to()
 ```
 
-(rtems-timespec-equal-to)=
+(rtems_timespec_equal_to)=
 
 ### TIMESPEC_EQUAL_TO - Check equality of timespecs
 
@@ -422,7 +422,7 @@ NOTES:
 ```{index} rtems_timespec_get_seconds()
 ```
 
-(rtems-timespec-get-seconds)=
+(rtems_timespec_get_seconds)=
 
 ### TIMESPEC_GET_SECONDS - Get Seconds Portion of struct timespec Instance
 
@@ -449,7 +449,7 @@ NOTES:
 ```{index} rtems_timespec_get_nanoseconds()
 ```
 
-(rtems-timespec-get-nanoseconds)=
+(rtems_timespec_get_nanoseconds)=
 
 ### TIMESPEC_GET_NANOSECONDS - Get Nanoseconds Portion of the struct timespec Instance
 
@@ -477,7 +477,7 @@ NOTES:
 ```{index} rtems_timespec_to_ticks()
 ```
 
-(rtems-timespec-to-ticks)=
+(rtems_timespec_to_ticks)=
 
 ### TIMESPEC_TO_TICKS - Convert struct timespec Instance to Ticks
 
@@ -505,7 +505,7 @@ NOTES:
 ```{index} rtems_timespec_from_ticks()
 ```
 
-(rtems-timespec-from-ticks)=
+(rtems_timespec_from_ticks)=
 
 ### TIMESPEC_FROM_TICKS - Convert Ticks to struct timespec Representation
 

@@ -6,13 +6,13 @@
 
 # sparc (SPARC / LEON)
 
-(bsp-sparc-erc32)=
+(BSP_sparc_erc32)=
 
 ## erc32
 
 TODO.
 
-(bsp-sparc-leon2)=
+(BSP_sparc_leon2)=
 
 ## leon2
 
@@ -25,7 +25,7 @@ default build configurations are provided:
 The BSP contains UART, timer, and interrupt controller drivers.
 Drivers for PCI are available through the {ref}`driver manager <BSP_sparc_leon3_drv_mgr>`.
 
-(bsp-sparc-leon3)=
+(BSP_sparc_leon3)=
 
 ## leon3
 
@@ -41,7 +41,7 @@ The following default build configurations are provided:
 The BSP contains UART, timer, and interrupt controller drivers. Drivers for additional
 peripherals are available through the driver manager.
 
-(bsp-sparc-leon3-drv-mgr)=
+(BSP_sparc_leon3_drv_mgr)=
 
 ### Driver Manager
 

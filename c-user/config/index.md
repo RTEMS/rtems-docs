@@ -5,7 +5,7 @@
 ```{index} configuring a system
 ```
 
-(configuring-a-system)=
+(Configuring a System)=
 
 # Configuring a System
 

@@ -188,7 +188,7 @@ The section details the Chains directives.
 \clearpage
 ```
 
-(rtems-chain-initialize)=
+(rtems_chain_initialize)=
 
 ```{index} chain initialize
 ```
@@ -231,7 +231,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-initialize-empty)=
+(rtems_chain_initialize_empty)=
 
 ```{index} chain initialize empty
 ```
@@ -262,7 +262,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-is-null-node)=
+(rtems_chain_is_null_node)=
 
 ```{index} chain is node null
 ```
@@ -290,7 +290,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-head)=
+(rtems_chain_head)=
 
 ```{index} chain get head
 ```
@@ -317,7 +317,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-tail)=
+(rtems_chain_tail)=
 
 ```{index} chain get tail
 ```
@@ -344,7 +344,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-are-nodes-equal)=
+(rtems_chain_are_nodes_equal)=
 
 ```{index} chare are nodes equal
 ```
@@ -374,7 +374,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-is-empty)=
+(rtems_chain_is_empty)=
 
 ```{index} chain is chain empty
 ```
@@ -403,7 +403,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-is-first)=
+(rtems_chain_is_first)=
 
 ```{index} chain is node the first
 ```
@@ -432,7 +432,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-is-last)=
+(rtems_chain_is_last)=
 
 ```{index} chain is node the last
 ```
@@ -461,7 +461,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-has-only-one-node)=
+(rtems_chain_has_only_one_node)=
 
 ```{index} chain only one node
 ```
@@ -490,7 +490,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-node-count-unprotected)=
+(rtems_chain_node_count_unprotected)=
 
 ```{index} chain only one node
 ```
@@ -517,7 +517,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-is-head)=
+(rtems_chain_is_head)=
 
 ```{index} chain is node the head
 ```
@@ -547,7 +547,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-is-tail)=
+(rtems_chain_is_tail)=
 
 ```{index} chain is node the tail
 ```
@@ -577,7 +577,7 @@ DESCRIPTION:
 \clearpage
 ```
 
-(rtems-chain-extract)=
+(rtems_chain_extract)=
 
 ```{index} chain extract a node
 ```
@@ -613,7 +613,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-extract-unprotected)=
+(rtems_chain_extract_unprotected)=
 
 ```{index} chain extract a node unprotected
 ```
@@ -643,7 +643,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-get)=
+(rtems_chain_get)=
 
 ```{index} chain get first node
 ```
@@ -681,7 +681,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-get-unprotected)=
+(rtems_chain_get_unprotected)=
 
 ```{index} chain get first node
 ```
@@ -712,7 +712,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-insert)=
+(rtems_chain_insert)=
 
 ```{index} chain insert a node
 ```
@@ -750,7 +750,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-insert-unprotected)=
+(rtems_chain_insert_unprotected)=
 
 ```{index} chain insert a node unprotected
 ```
@@ -782,7 +782,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-append)=
+(rtems_chain_append)=
 
 ```{index} chain append a node
 ```
@@ -819,7 +819,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-append-unprotected)=
+(rtems_chain_append_unprotected)=
 
 ```{index} chain append a node unprotected
 ```
@@ -850,7 +850,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-prepend)=
+(rtems_chain_prepend)=
 
 ```{index} prepend node
 ```
@@ -887,7 +887,7 @@ NOTES:
 \clearpage
 ```
 
-(rtems-chain-prepend-unprotected)=
+(rtems_chain_prepend_unprotected)=
 
 ```{index} prepend node unprotected
 ```

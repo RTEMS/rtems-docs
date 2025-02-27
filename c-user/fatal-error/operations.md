@@ -4,7 +4,7 @@
 
 # Operations
 
-(announcefatalerror)=
+(AnnounceFatalError)=
 
 ## Announcing a Fatal Error
 

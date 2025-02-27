@@ -4,7 +4,7 @@
 
 % Copyright (C) 2019 Sebastian Huber
 
-(quickstartbsptest)=
+(QuickStartBSPTest)=
 
 # Test a Board Support Package (BSP)
 

@@ -14,7 +14,7 @@
 ```{index} mutual exclusion
 ```
 
-(rtemsapiclassicsem)=
+(RTEMSAPIClassicSem)=
 
 # Semaphore Manager
 

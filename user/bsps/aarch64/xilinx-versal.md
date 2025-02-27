@@ -2,11 +2,11 @@
 
 % Copyright (C) 2021 Gedare Bloom
 
-(bsp-aarch64-versal-aiedge)=
+(BSP_aarch64_versal_aiedge)=
 
-(bsp-aarch64-versal-qemu)=
+(BSP_aarch64_versal_qemu)=
 
-(bsp-aarch64-versal-vck190)=
+(BSP_aarch64_versal_vck190)=
 
 # Qemu Xilinx Versal
 

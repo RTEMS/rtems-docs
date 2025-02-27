@@ -50,7 +50,7 @@ build configuration option.
 ```{index} CONFIGURE_MAXIMUM_POSIX_KEYS
 ```
 
-(configure-maximum-posix-keys)=
+(CONFIGURE_MAXIMUM_POSIX_KEYS)=
 
 ## CONFIGURE_MAXIMUM_POSIX_KEYS
 
@@ -111,7 +111,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
 ```
 
-(configure-maximum-posix-key-value-pairs)=
+(CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS)=
 
 ## CONFIGURE_MAXIMUM_POSIX_KEY_VALUE_PAIRS
 
@@ -178,7 +178,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
 ```
 
-(configure-maximum-posix-message-queues)=
+(CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES)=
 
 ## CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES
 
@@ -244,7 +244,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
 ```
 
-(configure-maximum-posix-queued-signals)=
+(CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS)=
 
 ## CONFIGURE_MAXIMUM_POSIX_QUEUED_SIGNALS
 
@@ -309,7 +309,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
 ```
 
-(configure-maximum-posix-semaphores)=
+(CONFIGURE_MAXIMUM_POSIX_SEMAPHORES)=
 
 ## CONFIGURE_MAXIMUM_POSIX_SEMAPHORES
 
@@ -378,7 +378,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_SHMS
 ```
 
-(configure-maximum-posix-shms)=
+(CONFIGURE_MAXIMUM_POSIX_SHMS)=
 
 ## CONFIGURE_MAXIMUM_POSIX_SHMS
 
@@ -442,7 +442,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_THREADS
 ```
 
-(configure-maximum-posix-threads)=
+(CONFIGURE_MAXIMUM_POSIX_THREADS)=
 
 ## CONFIGURE_MAXIMUM_POSIX_THREADS
 
@@ -512,7 +512,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_POSIX_TIMERS
 ```
 
-(configure-maximum-posix-timers)=
+(CONFIGURE_MAXIMUM_POSIX_TIMERS)=
 
 ## CONFIGURE_MAXIMUM_POSIX_TIMERS
 
@@ -583,7 +583,7 @@ The following constraints apply to this configuration option:
 ```{index} minimum POSIX thread stack size
 ```
 
-(configure-minimum-posix-thread-stack-size)=
+(CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE)=
 
 ## CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE
 

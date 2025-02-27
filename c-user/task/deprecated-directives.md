@@ -11,7 +11,7 @@
 ```{index} rtems_iterate_over_all_threads()
 ```
 
-(rtems-iterate-over-all-threads)=
+(rtems_iterate_over_all_threads)=
 
 ## ITERATE_OVER_ALL_THREADS - Iterate Over Tasks
 

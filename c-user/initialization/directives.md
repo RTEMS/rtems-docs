@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(initializationmanagerdirectives)=
+(InitializationManagerDirectives)=
 
 # Directives
 
@@ -55,7 +55,7 @@ sequence, parameters, description, return values, and notes of the directive.
 ```{index} start multitasking
 ```
 
-(interfacertemsinitializeexecutive)=
+(InterfaceRtemsInitializeExecutive)=
 
 ## rtems_initialize_executive()
 

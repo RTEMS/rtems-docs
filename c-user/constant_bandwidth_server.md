@@ -220,7 +220,7 @@ sequence, related constants, usage, and status codes.
 ```{index} rtems_cbs_initialize()
 ```
 
-(rtems-cbs-initialize)=
+(rtems_cbs_initialize)=
 
 ### CBS_INITIALIZE - Initialize the CBS library
 
@@ -265,7 +265,7 @@ NOTES:
 ```{index} rtems_cbs_cleanup()
 ```
 
-(rtems-cbs-cleanup)=
+(rtems_cbs_cleanup)=
 
 ### CBS_CLEANUP - Cleanup the CBS library
 
@@ -300,7 +300,7 @@ NOTES:
 ```{index} rtems_cbs_create_server()
 ```
 
-(rtems-cbs-create-server)=
+(rtems_cbs_create_server)=
 
 ### CBS_CREATE_SERVER - Create a new bandwidth server
 
@@ -353,7 +353,7 @@ NOTES:
 ```{index} rtems_cbs_attach_thread()
 ```
 
-(rtems-cbs-attach-thread)=
+(rtems_cbs_attach_thread)=
 
 ### CBS_ATTACH_THREAD - Attach a thread to server
 
@@ -400,7 +400,7 @@ NOTES:
 ```{index} rtems_cbs_detach_thread()
 ```
 
-(rtems-cbs-detach-thread)=
+(rtems_cbs_detach_thread)=
 
 ### CBS_DETACH_THREAD - Detach a thread from server
 
@@ -442,7 +442,7 @@ NOTES:
 ```{index} rtems_cbs_destroy_server()
 ```
 
-(rtems-cbs-destroy-server)=
+(rtems_cbs_destroy_server)=
 
 ### CBS_DESTROY_SERVER - Destroy a bandwidth server
 
@@ -484,7 +484,7 @@ NOTES:
 ```{index} rtems_cbs_get_server_id()
 ```
 
-(rtems-cbs-get-server-id)=
+(rtems_cbs_get_server_id)=
 
 ### CBS_GET_SERVER_ID - Get an ID of a server
 
@@ -520,7 +520,7 @@ DESCRIPTION:
 ```{index} rtems_cbs_get_parameters()
 ```
 
-(rtems-cbs-get-parameters)=
+(rtems_cbs_get_parameters)=
 
 ### CBS_GET_PARAMETERS - Get scheduling parameters of a server
 
@@ -562,7 +562,7 @@ NOTES:
 ```{index} rtems_cbs_set_parameters()
 ```
 
-(rtems-cbs-set-parameters)=
+(rtems_cbs_set_parameters)=
 
 ### CBS_SET_PARAMETERS - Set scheduling parameters
 
@@ -606,7 +606,7 @@ NOTES:
 ```{index} rtems_cbs_get_execution_time()
 ```
 
-(rtems-cbs-get-execution-time)=
+(rtems_cbs_get_execution_time)=
 
 ### CBS_GET_EXECUTION_TIME - Get elapsed execution time
 
@@ -649,7 +649,7 @@ NOTES:
 ```{index} rtems_cbs_get_remaining_budget()
 ```
 
-(rtems-cbs-get-remaining-budget)=
+(rtems_cbs_get_remaining_budget)=
 
 ### CBS_GET_REMAINING_BUDGET - Get remaining execution time
 
@@ -692,7 +692,7 @@ NOTES:
 ```{index} rtems_cbs_get_approved_budget()
 ```
 
-(rtems-cbs-get-approved-budget)=
+(rtems_cbs_get_approved_budget)=
 
 ### CBS_GET_APPROVED_BUDGET - Get scheduler approved execution time
 

@@ -2,7 +2,7 @@
 
 % Copyright (C) 2020 embedded brains GmbH & Co. KG
 
-(docguide)=
+(DocGuide)=
 
 # Documentation Guidelines
 

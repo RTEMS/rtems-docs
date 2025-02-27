@@ -10,7 +10,7 @@
 ```{index} build system
 ```
 
-(bspbuildsystem)=
+(BSPBuildSystem)=
 
 # BSP Build System
 

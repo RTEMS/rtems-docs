@@ -8,7 +8,7 @@
 ```{index} dual ported memory
 ```
 
-(rtemsapiclassicdpmem)=
+(RTEMSAPIClassicDPMem)=
 
 # Dual-Ported Memory Manager
 

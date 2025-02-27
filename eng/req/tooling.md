@@ -45,7 +45,7 @@ best candidates to manage requirements in the RTEMS Project. The Doorstop tool
 was selected as the first candidate mainly due a recommendation by an RTEMS
 user.
 
-(reqengdoorstop)=
+(ReqEngDoorstop)=
 
 ## Best Available Tool - Doorstop
 
@@ -126,7 +126,7 @@ policy. This results in a lack of flexibility required for the RTEMS Project.
    is handy if you can express things like this: A is composed of B and C.
    Build B before C.
 
-(reqengmanagementtool)=
+(ReqEngManagementTool)=
 
 ## Custom Requirements Management Tool
 

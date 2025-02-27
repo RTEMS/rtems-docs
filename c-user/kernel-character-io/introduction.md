@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/io/if/group-3
 
-(kernelcharacteriosupportintroduction)=
+(KernelCharacterIOSupportIntroduction)=
 
 # Introduction
 

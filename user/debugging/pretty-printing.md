@@ -2,7 +2,7 @@
 
 % Copyright (C) 2024 Suraj Kumar
 
-(prettyprinting)=
+(PrettyPrinting)=
 
 # Pretty Printing and GDB
 

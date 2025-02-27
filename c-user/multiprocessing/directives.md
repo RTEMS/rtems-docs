@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(multiprocessingmanagerdirectives)=
+(MultiprocessingManagerDirectives)=
 
 # Directives
 
@@ -50,7 +50,7 @@ directive.
 ```{index} rtems_multiprocessing_announce()
 ```
 
-(interfacertemsmultiprocessingannounce)=
+(InterfaceRtemsMultiprocessingAnnounce)=
 
 ## rtems_multiprocessing_announce()
 

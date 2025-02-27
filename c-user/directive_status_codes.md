@@ -91,7 +91,7 @@ The directives are:
 ```{index} rtems_status_text()
 ```
 
-(rtems-status-text)=
+(rtems_status_text)=
 
 ### STATUS_TEXT - Returns the enumeration name for a status code
 

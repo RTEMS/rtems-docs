@@ -10,7 +10,7 @@
 
 % Copyright (C) 2020 Gedare Bloom
 
-(quickstartpreparation)=
+(QuickStartPreparation)=
 
 # Preparation
 
@@ -78,7 +78,7 @@ BSP. The BeagleBone Black support includes the RTEMS BSD Library (`libbsd`)
 and networking. The BeagleBone Black BSP is an ARM architecture BSP so the tool
 suite name is `arm-rtems5`.
 
-(quickstartpreparation-version)=
+(QuickStartPreparation_Version)=
 
 ## Selecting a Version of RTEMS
 

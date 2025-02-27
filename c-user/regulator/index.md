@@ -5,6 +5,8 @@
 ```{index} regulator
 ```
 
+(RTEMSAPIRegulator)=
+
 % RTEMSAPIRegulator
 
 # Regulator Manager

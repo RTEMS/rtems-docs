@@ -1,6 +1,6 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-(libbsd-network-stack)=
+(libbsd_network_stack)=
 
 # LibBSD - FreeBSD Network and Driver Stack
 

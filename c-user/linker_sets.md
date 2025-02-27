@@ -7,7 +7,7 @@
 ```{index} linkersets
 ```
 
-(linker-sets)=
+(linker_sets)=
 
 # Linker Sets
 
@@ -108,7 +108,7 @@ For an example see test program {file}`sptests/splinkersets01`.
 ```{index} RTEMS_LINKER_SET_BEGIN
 ```
 
-(rtems-linker-set-begin)=
+(RTEMS_LINKER_SET_BEGIN)=
 
 ### RTEMS_LINKER_SET_BEGIN - Designator of the linker set begin marker
 
@@ -144,7 +144,7 @@ NOTE:
 ```{index} RTEMS_LINKER_SET_END
 ```
 
-(rtems-linker-set-end)=
+(RTEMS_LINKER_SET_END)=
 
 ### RTEMS_LINKER_SET_END - Designator of the linker set end marker
 
@@ -167,7 +167,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_SET_SIZE
 ```
 
-(rtems-linker-set-size)=
+(RTEMS_LINKER_SET_SIZE)=
 
 ### RTEMS_LINKER_SET_SIZE - The linker set size in characters
 
@@ -189,7 +189,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_SET_ITEM_COUNT
 ```
 
-(rtems-linker-set-item-count)=
+(RTEMS_LINKER_SET_ITEM_COUNT)=
 
 ### RTEMS_LINKER_SET_ITEM_COUNT - The linker set item count
 
@@ -210,7 +210,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_SET_IS_EMPTY
 ```
 
-(rtems-linker-set-is-empty)=
+(RTEMS_LINKER_SET_IS_EMPTY)=
 
 ### RTEMS_LINKER_SET_IS_EMPTY - Is the linker set empty?
 
@@ -232,7 +232,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_SET_FOREACH
 ```
 
-(rtems-linker-set-foreach)=
+(RTEMS_LINKER_SET_FOREACH)=
 
 ### RTEMS_LINKER_SET_FOREACH - Iterate through the linker set items
 
@@ -269,7 +269,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET_DECLARE
 ```
 
-(rtems-linker-roset-declare)=
+(RTEMS_LINKER_ROSET_DECLARE)=
 
 ### RTEMS_LINKER_ROSET_DECLARE - Declares a read-only linker set
 
@@ -293,7 +293,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET
 ```
 
-(rtems-linker-roset)=
+(RTEMS_LINKER_ROSET)=
 
 ### RTEMS_LINKER_ROSET - Defines a read-only linker set
 
@@ -317,7 +317,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET_ITEM_DECLARE
 ```
 
-(rtems-linker-roset-item-declare)=
+(RTEMS_LINKER_ROSET_ITEM_DECLARE)=
 
 ### RTEMS_LINKER_ROSET_ITEM_DECLARE - Declares a read-only linker set item
 
@@ -338,7 +338,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE
 ```
 
-(rtems-linker-roset-item-ordered-declare)=
+(RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE)=
 
 ### RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE - Declares an ordered read-only linker set item
 
@@ -360,7 +360,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET_ITEM_REFERENCE
 ```
 
-(rtems-linker-roset-item-reference)=
+(RTEMS_LINKER_ROSET_ITEM_REFERENCE)=
 
 ### RTEMS_LINKER_ROSET_ITEM_REFERENCE - References a read-only linker set item
 
@@ -386,7 +386,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET_ITEM
 ```
 
-(rtems-linker-roset-item)=
+(RTEMS_LINKER_ROSET_ITEM)=
 
 ### RTEMS_LINKER_ROSET_ITEM - Defines a read-only linker set item
 
@@ -412,7 +412,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_ROSET_ITEM_ORDERED
 ```
 
-(rtems-linker-roset-item-ordered)=
+(RTEMS_LINKER_ROSET_ITEM_ORDERED)=
 
 ### RTEMS_LINKER_ROSET_ITEM_ORDERED - Defines an ordered read-only linker set item
 
@@ -472,7 +472,7 @@ NOTES:
 ```{index} RTEMS_LINKER_ROSET_CONTENT
 ```
 
-(rtems-linker-roset-content)=
+(RTEMS_LINKER_ROSET_CONTENT)=
 
 ### RTEMS_LINKER_ROSET_CONTENT - Marks a declaration as a read-only linker set content
 
@@ -495,7 +495,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET_DECLARE
 ```
 
-(rtems-linker-rwset-declare)=
+(RTEMS_LINKER_RWSET_DECLARE)=
 
 ### RTEMS_LINKER_RWSET_DECLARE - Declares a read-write linker set
 
@@ -519,7 +519,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET
 ```
 
-(rtems-linker-rwset)=
+(RTEMS_LINKER_RWSET)=
 
 ### RTEMS_LINKER_RWSET - Defines a read-write linker set
 
@@ -543,7 +543,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET_ITEM_DECLARE
 ```
 
-(rtems-linker-rwset-item-declare)=
+(RTEMS_LINKER_RWSET_ITEM_DECLARE)=
 
 ### RTEMS_LINKER_RWSET_ITEM_DECLARE - Declares a read-write linker set item
 
@@ -564,7 +564,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE
 ```
 
-(rtems-linker-rwset-item-ordered-declare)=
+(RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE)=
 
 ### RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE - Declares an ordered read-write linker set item
 
@@ -586,7 +586,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET_ITEM_REFERENCE
 ```
 
-(rtems-linker-rwset-item-reference)=
+(RTEMS_LINKER_RWSET_ITEM_REFERENCE)=
 
 ### RTEMS_LINKER_RWSET_ITEM_REFERENCE - References a read-write linker set item
 
@@ -612,7 +612,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET_ITEM
 ```
 
-(rtems-linker-rwset-item)=
+(RTEMS_LINKER_RWSET_ITEM)=
 
 ### RTEMS_LINKER_RWSET_ITEM - Defines a read-write linker set item
 
@@ -638,7 +638,7 @@ DESCRIPTION:
 ```{index} RTEMS_LINKER_RWSET_ITEM_ORDERED
 ```
 
-(rtems-linker-rwset-item-ordered)=
+(RTEMS_LINKER_RWSET_ITEM_ORDERED)=
 
 ### RTEMS_LINKER_RWSET_ITEM_ORDERED - Defines an ordered read-write linker set item
 
@@ -698,7 +698,7 @@ NOTES:
 ```{index} RTEMS_LINKER_RWSET_CONTENT
 ```
 
-(rtems-linker-rwset-content)=
+(RTEMS_LINKER_RWSET_CONTENT)=
 
 ### RTEMS_LINKER_RWSET_CONTENT - Marks a declaration as a read-write linker set content
 

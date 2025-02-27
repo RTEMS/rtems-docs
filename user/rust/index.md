@@ -5,7 +5,7 @@
 ```{index} Rust
 ```
 
-(rust)=
+(Rust)=
 
 # Rust
 

@@ -66,7 +66,7 @@ struct group *getgrgid(
 
 **NOTES:**
 
-(getgrgid-r)=
+(getgrgid_r)=
 
 ### getgrgid_r - Reentrant Get Group File Entry
 
@@ -136,7 +136,7 @@ struct group *getgrnam(
 
 **NOTES:**
 
-(getgrnam-r)=
+(getgrnam_r)=
 
 ### getgrnam_r - Reentrant Get Group File Entry for Name
 
@@ -206,7 +206,7 @@ struct passwd *getpwuid(
 
 **NOTES:**
 
-(getpwuid-r)=
+(getpwuid_r)=
 
 ### getpwuid_r - Reentrant Get Password File Entry for UID
 
@@ -276,7 +276,7 @@ struct passwd *getpwnam(
 
 **NOTES:**
 
-(getpwnam-r)=
+(getpwnam_r)=
 
 ### getpwnam_r - Reentrant Get Password File Entry for Name
 

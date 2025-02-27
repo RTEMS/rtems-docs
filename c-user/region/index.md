@@ -5,7 +5,7 @@
 ```{index} regions
 ```
 
-(rtemsapiclassicregion)=
+(RTEMSAPIClassicRegion)=
 
 # Region Manager
 

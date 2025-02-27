@@ -4,7 +4,7 @@
 
 # Operations
 
-(creating-a-semaphore)=
+(Creating a Semaphore)=
 
 ## Creating a Semaphore
 
@@ -23,7 +23,7 @@ free list. This data structure is used by RTEMS to manage the newly created
 semaphore. Also, a unique semaphore ID is generated and returned to the
 calling task.
 
-(obtaining-semaphore-ids)=
+(Obtaining Semaphore IDs)=
 
 ## Obtaining Semaphore IDs
 
@@ -35,7 +35,7 @@ provided location. Second, the semaphore ID may be obtained later using the
 `rtems_semaphore_ident` directive. The semaphore ID is used by other
 semaphore manager directives to access this semaphore.
 
-(acquiring-a-semaphore)=
+(Acquiring a Semaphore)=
 
 ## Acquiring a Semaphore
 
@@ -68,7 +68,7 @@ When a task successfully obtains a semaphore using priority ceiling and the
 priority ceiling for this semaphore is greater than that of the holder, then
 the holder's priority will be elevated.
 
-(releasing-a-semaphore)=
+(Releasing a Semaphore)=
 
 ## Releasing a Semaphore
 
@@ -85,7 +85,7 @@ inheritance or priority ceiling and the task does not currently hold any other
 binary semaphores, then the task performing the `rtems_semaphore_release`
 will have its priority restored to its normal value.
 
-(deleting-a-semaphore)=
+(Deleting a Semaphore)=
 
 ## Deleting a Semaphore
 

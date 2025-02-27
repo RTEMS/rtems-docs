@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(barriermanagerdirectives)=
+(BarrierManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a barrier
 ```
 
-(interfacertemsbarriercreate)=
+(InterfaceRtemsBarrierCreate)=
 
 ## rtems_barrier_create()
 
@@ -178,7 +178,7 @@ The following constraints apply to this directive:
 ```{index} rtems_barrier_ident()
 ```
 
-(interfacertemsbarrierident)=
+(InterfaceRtemsBarrierIdent)=
 
 ## rtems_barrier_ident()
 
@@ -262,7 +262,7 @@ The following constraints apply to this directive:
 ```{index} delete a barrier
 ```
 
-(interfacertemsbarrierdelete)=
+(InterfaceRtemsBarrierDelete)=
 
 ## rtems_barrier_delete()
 
@@ -334,7 +334,7 @@ The following constraints apply to this directive:
 ```{index} wait at a barrier
 ```
 
-(interfacertemsbarrierwait)=
+(InterfaceRtemsBarrierWait)=
 
 ## rtems_barrier_wait()
 
@@ -418,7 +418,7 @@ The following constraints apply to this directive:
 ```{index} release a barrier
 ```
 
-(interfacertemsbarrierrelease)=
+(InterfaceRtemsBarrierRelease)=
 
 ## rtems_barrier_release()
 

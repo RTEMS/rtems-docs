@@ -2,7 +2,7 @@
 
 % Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-(rsbdeployment)=
+(RSBDeployment)=
 
 # Building and Deploying Tool Binaries
 

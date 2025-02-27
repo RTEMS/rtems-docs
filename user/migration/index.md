@@ -5,7 +5,7 @@
 ```{index} Migration
 ```
 
-(migration)=
+(Migration)=
 
 # Changing Versions
 

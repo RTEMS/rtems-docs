@@ -47,7 +47,7 @@ This section describes general system configuration options.
 ```{index} CONFIGURE_DIRTY_MEMORY
 ```
 
-(configure-dirty-memory)=
+(CONFIGURE_DIRTY_MEMORY)=
 
 ## CONFIGURE_DIRTY_MEMORY
 
@@ -99,7 +99,7 @@ See also {ref}`CONFIGURE_MALLOC_DIRTY`.
 ```{index} CONFIGURE_DISABLE_BSP_SETTINGS
 ```
 
-(configure-disable-bsp-settings)=
+(CONFIGURE_DISABLE_BSP_SETTINGS)=
 
 ## CONFIGURE_DISABLE_BSP_SETTINGS
 
@@ -154,7 +154,7 @@ the optional BSP provided settings.
 ```{index} CONFIGURE_DISABLE_NEWLIB_REENTRANCY
 ```
 
-(configure-disable-newlib-reentrancy)=
+(CONFIGURE_DISABLE_NEWLIB_REENTRANCY)=
 
 ## CONFIGURE_DISABLE_NEWLIB_REENTRANCY
 
@@ -202,7 +202,7 @@ variable if this option is enabled.
 ```{index} CONFIGURE_EXECUTIVE_RAM_SIZE
 ```
 
-(configure-executive-ram-size)=
+(CONFIGURE_EXECUTIVE_RAM_SIZE)=
 
 ## CONFIGURE_EXECUTIVE_RAM_SIZE
 
@@ -265,7 +265,7 @@ The following constraints apply to this configuration option:
 ```{index} memory for task tasks
 ```
 
-(configure-extra-task-stacks)=
+(CONFIGURE_EXTRA_TASK_STACKS)=
 
 ## CONFIGURE_EXTRA_TASK_STACKS
 
@@ -323,7 +323,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_INIT
 ```
 
-(configure-init)=
+(CONFIGURE_INIT)=
 
 ## CONFIGURE_INIT
 
@@ -367,7 +367,7 @@ settings.
 ```{index} CONFIGURE_INITIAL_EXTENSIONS
 ```
 
-(configure-initial-extensions)=
+(CONFIGURE_INITIAL_EXTENSIONS)=
 
 ## CONFIGURE_INITIAL_EXTENSIONS
 
@@ -426,7 +426,7 @@ structures of type {ref}`InterfaceRtemsExtensionsTable`.
 ```{index} interrupt stack size
 ```
 
-(configure-interrupt-stack-size)=
+(CONFIGURE_INTERRUPT_STACK_SIZE)=
 
 ## CONFIGURE_INTERRUPT_STACK_SIZE
 
@@ -506,7 +506,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MALLOC_DIRTY
 ```
 
-(configure-malloc-dirty)=
+(CONFIGURE_MALLOC_DIRTY)=
 
 ## CONFIGURE_MALLOC_DIRTY
 
@@ -558,7 +558,7 @@ system initialization.
 ```{index} maximum file descriptors
 ```
 
-(configure-maximum-file-descriptors)=
+(CONFIGURE_MAXIMUM_FILE_DESCRIPTORS)=
 
 ## CONFIGURE_MAXIMUM_FILE_DESCRIPTORS
 
@@ -616,7 +616,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_PROCESSORS
 ```
 
-(configure-maximum-processors)=
+(CONFIGURE_MAXIMUM_PROCESSORS)=
 
 ## CONFIGURE_MAXIMUM_PROCESSORS
 
@@ -678,7 +678,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
 ```
 
-(configure-maximum-thread-local-storage-size)=
+(CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE)=
 
 ## CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE
 
@@ -754,7 +754,7 @@ The following constraints apply to this configuration option:
 ```{index} maximum thread name size
 ```
 
-(configure-maximum-thread-name-size)=
+(CONFIGURE_MAXIMUM_THREAD_NAME_SIZE)=
 
 ## CONFIGURE_MAXIMUM_THREAD_NAME_SIZE
 
@@ -817,7 +817,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MEMORY_OVERHEAD
 ```
 
-(configure-memory-overhead)=
+(CONFIGURE_MEMORY_OVERHEAD)=
 
 ## CONFIGURE_MEMORY_OVERHEAD
 
@@ -889,7 +889,7 @@ The following constraints apply to this configuration option:
 ```{index} memory for a single message queue's buffers
 ```
 
-(configure-message-buffer-memory)=
+(CONFIGURE_MESSAGE_BUFFER_MEMORY)=
 
 ## CONFIGURE_MESSAGE_BUFFER_MEMORY
 
@@ -997,7 +997,7 @@ The following constraints apply to this configuration option:
 ```{index} tick quantum
 ```
 
-(configure-microseconds-per-tick)=
+(CONFIGURE_MICROSECONDS_PER_TICK)=
 
 ## CONFIGURE_MICROSECONDS_PER_TICK
 
@@ -1075,7 +1075,7 @@ The following constraints apply to this configuration option:
 ```{index} minimum task stack size
 ```
 
-(configure-minimum-task-stack-size)=
+(CONFIGURE_MINIMUM_TASK_STACK_SIZE)=
 
 ## CONFIGURE_MINIMUM_TASK_STACK_SIZE
 
@@ -1150,7 +1150,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_STACK_CHECKER_ENABLED
 ```
 
-(configure-stack-checker-enabled)=
+(CONFIGURE_STACK_CHECKER_ENABLED)=
 
 ## CONFIGURE_STACK_CHECKER_ENABLED
 
@@ -1202,7 +1202,7 @@ In 4.9 and older, this configuration option was named `STACK_CHECKER_ON`.
 ```{index} ticks per timeslice
 ```
 
-(configure-ticks-per-timeslice)=
+(CONFIGURE_TICKS_PER_TIMESLICE)=
 
 ## CONFIGURE_TICKS_PER_TIMESLICE
 
@@ -1269,7 +1269,7 @@ The following constraints apply to this configuration option:
 ```{index} C Program Heap
 ```
 
-(configure-unified-work-areas)=
+(CONFIGURE_UNIFIED_WORK_AREAS)=
 
 ## CONFIGURE_UNIFIED_WORK_AREAS
 
@@ -1322,7 +1322,7 @@ of RTEMS Workspace.
 ```{index} CONFIGURE_UNLIMITED_ALLOCATION_SIZE
 ```
 
-(configure-unlimited-allocation-size)=
+(CONFIGURE_UNLIMITED_ALLOCATION_SIZE)=
 
 ## CONFIGURE_UNLIMITED_ALLOCATION_SIZE
 
@@ -1379,7 +1379,7 @@ classes to which it is applied.
 ```{index} CONFIGURE_UNLIMITED_OBJECTS
 ```
 
-(configure-unlimited-objects)=
+(CONFIGURE_UNLIMITED_OBJECTS)=
 
 ## CONFIGURE_UNLIMITED_OBJECTS
 
@@ -1431,7 +1431,7 @@ See also {ref}`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`.
 ```{index} CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
 ```
 
-(configure-verbose-system-initialization)=
+(CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION)=
 
 ## CONFIGURE_VERBOSE_SYSTEM_INITIALIZATION
 
@@ -1489,7 +1489,7 @@ You may use this feature to debug system initialization issues. The
 ```{index} zero RTEMS Workspace
 ```
 
-(configure-zero-workspace-automatically)=
+(CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY)=
 
 ## CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY
 

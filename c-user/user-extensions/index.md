@@ -5,7 +5,7 @@
 ```{index} user extensions
 ```
 
-(rtemsapiclassicuserext)=
+(RTEMSAPIClassicUserext)=
 
 # User Extensions Manager
 

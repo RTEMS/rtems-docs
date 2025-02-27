@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/init/if/group
 
-(initializationmanagerintroduction)=
+(InitializationManagerIntroduction)=
 
 # Introduction
 

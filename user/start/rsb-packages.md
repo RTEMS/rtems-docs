@@ -4,7 +4,7 @@
 
 % Copyright (C) 2020 Chris Johns
 
-(quickstartbsppackages)=
+(QuickStartBSPPackages)=
 
 # Build an RSB Package
 

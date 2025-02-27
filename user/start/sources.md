@@ -6,7 +6,7 @@
 
 % Copyright (C) 2020 Chris Johns
 
-(quickstartsources)=
+(QuickStartSources)=
 
 # Obtain the Sources
 
@@ -25,7 +25,7 @@ release's build.
 You will need approximately 1.5G bytes of disk space to build the tools, RTEMS
 kernel, network stack and 3rd party packages for the ERC32 BSP.
 
-(quickstartsources-released)=
+(QuickStartSources_Released)=
 
 ## Releases
 
@@ -58,7 +58,7 @@ cd $HOME/quick-start/src
 mv rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@ rsb
 ```
 
-(quickstartsources-released-rtems)=
+(QuickStartSources_Released_RTEMS)=
 
 If you wish to build the RTEMS kernel from source obtain the RTEMS kernel
 sources:
@@ -68,7 +68,7 @@ cd $HOME/quick-start/src
 curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@/sources/rtems-@rtems-ver-major@.@rtems-ver-minor@.tar.xz | tar xJf -
 ```
 
-(quickstartsources-git)=
+(QuickStartSources_Git)=
 
 ## Git
 

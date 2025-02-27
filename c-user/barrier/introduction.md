@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/barrier/if/group
 
-(barriermanagerintroduction)=
+(BarrierManagerIntroduction)=
 
 # Introduction
 

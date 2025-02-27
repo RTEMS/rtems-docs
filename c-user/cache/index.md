@@ -5,7 +5,7 @@
 ```{index} cache
 ```
 
-(rtemsapiclassiccache)=
+(RTEMSAPIClassicCache)=
 
 # Cache Manager
 

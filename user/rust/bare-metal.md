@@ -2,7 +2,7 @@
 
 % Copyright (C) 2024 embedded brains GmbH & Co. KG
 
-(rustbaremetal)=
+(RustBareMetal)=
 
 # Bare Metal Rust with RTEMS
 
@@ -51,7 +51,7 @@ skip the section *Build a Container*. Just make sure that you machine
 meets all prerequisites to build the RTEMS tools and install the Rust
 tools.
 
-(rustbaremetal-container)=
+(RustBareMetal_Container)=
 
 ## Build a Container
 
@@ -115,7 +115,7 @@ this container will not automatically be deleted on `exit`.
 The building of the RTEMS tools takes a while and you probably want
 to keep the container for further experiments.
 
-(rustbaremetal-rtemstools)=
+(RustBareMetal_RTEMSTools)=
 
 ## Build the RTEMS Tools
 
@@ -155,7 +155,7 @@ sparc-rtems@rtems-ver-major@-gcc --version
 riscv-rtems@rtems-ver-major@-gcc --version
 ```
 
-(rustbaremetal-rtemsbsp)=
+(RustBareMetal_RTEMSBSP)=
 
 ## Build and Install the RTEMS BSPs
 
@@ -206,7 +206,7 @@ Finally, leave the git working tree:
 cd ..
 ```
 
-(rustbaremetal-installrust)=
+(RustBareMetal_InstallRust)=
 
 ## Install and Setup Rust Tools
 
@@ -229,7 +229,7 @@ rustup update
 cargo --version
 ```
 
-(rustbaremetal-sources)=
+(RustBareMetal_Sources)=
 
 ## Setup a Rust Project and Create Sources
 
@@ -410,7 +410,7 @@ build-std = ["core"]
 EOF
 ```
 
-(rustbaremetal-buildriscv)=
+(RustBareMetal_BuildRiscV)=
 
 ## Build and Run on RISC-V
 
@@ -478,7 +478,7 @@ Run time     : 0:00:00.254684
 
 Version numbers may be different in your output.
 
-(rustbaremetal-buildsparc)=
+(RustBareMetal_BuildSparc)=
 
 ## Build and Run on SPARC
 

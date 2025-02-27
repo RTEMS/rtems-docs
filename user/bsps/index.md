@@ -2,7 +2,7 @@
 
 % Copyright (C) 2018 embedded brains GmbH & Co. KG
 
-(bsps)=
+(BSPs)=
 
 # Board Support Packages
 

@@ -4,7 +4,7 @@
 
 % Copyright (C) 2024 Ning Yang
 
-(bsp-aarch64-raspberrypi-4)=
+(BSP_aarch64_Raspberrypi_4)=
 
 # Raspberry Pi 4B
 

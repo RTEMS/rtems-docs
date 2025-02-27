@@ -2,7 +2,7 @@
 
 % Copyright (C) 2022 Trinity College Dublin
 
-(promela2crefinement)=
+(Promela2CRefinement)=
 
 # Promela to C Refinement
 

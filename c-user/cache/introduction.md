@@ -36,7 +36,7 @@
 
 % Generated from spec:/rtems/cache/if/group
 
-(cachemanagerintroduction)=
+(CacheManagerIntroduction)=
 
 # Introduction
 

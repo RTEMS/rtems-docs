@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/message/if/group
 
-(messagemanagerintroduction)=
+(MessageManagerIntroduction)=
 
 # Introduction
 

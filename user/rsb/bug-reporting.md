@@ -43,7 +43,7 @@ pays to re-run the command with the `--jobs=none` option to get a log that is
 correctly sequenced. If searching the log file seach for `error:` and the
 error should be just above it.
 
-(contributing)=
+(Contributing)=
 
 ## Contributing
 

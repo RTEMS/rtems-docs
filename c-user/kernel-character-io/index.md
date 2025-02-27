@@ -5,7 +5,7 @@
 ```{index} Kernel Character I/O Support
 ```
 
-(rtemsapikernelchario)=
+(RTEMSAPIKernelCharIO)=
 
 # Kernel Character I/O Support
 

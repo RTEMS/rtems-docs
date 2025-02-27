@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(fatalerrormanagerdirectives)=
+(FatalErrorManagerDirectives)=
 
 # Directives
 
@@ -55,7 +55,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} fatal error, announce
 ```
 
-(interfacertemsfatal)=
+(InterfaceRtemsFatal)=
 
 ## rtems_fatal()
 
@@ -115,7 +115,7 @@ The following constraints apply to this directive:
 ```{index} panic
 ```
 
-(interfacertemspanic)=
+(InterfaceRtemsPanic)=
 
 ## rtems_panic()
 
@@ -174,7 +174,7 @@ The following constraints apply to this directive:
 ```{index} shutdown RTEMS
 ```
 
-(interfacertemsshutdownexecutive)=
+(InterfaceRtemsShutdownExecutive)=
 
 ## rtems_shutdown_executive()
 
@@ -228,7 +228,7 @@ The following constraints apply to this directive:
 ```{index} exception frame
 ```
 
-(interfacertemsexceptionframeprint)=
+(InterfaceRtemsExceptionFramePrint)=
 
 ## rtems_exception_frame_print()
 
@@ -268,7 +268,7 @@ The exception frame is printed in an architecture-dependent format using
 ```{index} fatal error
 ```
 
-(interfacertemsfatalsourcetext)=
+(InterfaceRtemsFatalSourceText)=
 
 ## rtems_fatal_source_text()
 
@@ -319,7 +319,7 @@ The following constraints apply to this directive:
 ```{index} fatal error
 ```
 
-(interfacertemsinternalerrortext)=
+(InterfaceRtemsInternalErrorText)=
 
 ## rtems_internal_error_text()
 
@@ -367,7 +367,7 @@ The following constraints apply to this directive:
 ```{index} rtems_fatal_error_occurred()
 ```
 
-(interfacertemsfatalerroroccurred)=
+(InterfaceRtemsFatalErrorOccurred)=
 
 ## rtems_fatal_error_occurred()
 

@@ -283,7 +283,7 @@ this table, please refer to the chapter {ref}`Configuring a System`.
 ```{index} global construction
 ```
 
-(globalconstruction)=
+(GlobalConstruction)=
 
 ## Global Construction
 

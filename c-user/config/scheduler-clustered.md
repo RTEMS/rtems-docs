@@ -2,7 +2,7 @@
 
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
-(configurationschedulersclustered)=
+(ConfigurationSchedulersClustered)=
 
 # Clustered Scheduler Configuration
 
@@ -67,7 +67,7 @@ The `name` parameter is used as part of a designator for scheduler-specific
 data structures, so the usual C/C++ designator rules apply. This `name` is
 not the scheduler object name. Additional parameters are scheduler-specific.
 
-(configurationschedulertable)=
+(ConfigurationSchedulerTable)=
 
 ## Configuration Step 3 - Scheduler Table
 

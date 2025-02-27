@@ -4,7 +4,7 @@
 
 % Copyright (C) 2019 Sebastian Huber
 
-(eventrecording)=
+(EventRecording)=
 
 # Event Recording
 

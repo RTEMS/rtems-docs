@@ -8,7 +8,7 @@
 ```{index} task scheduling
 ```
 
-(rtemsapiclassicscheduler)=
+(RTEMSAPIClassicScheduler)=
 
 # Scheduling Concepts
 

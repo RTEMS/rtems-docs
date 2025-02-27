@@ -376,7 +376,7 @@ int msync(
 
 **NOTES:**
 
-(shm-open)=
+(shm_open)=
 
 ### shm_open - Open a Shared Memory Object
 
@@ -447,7 +447,7 @@ behavior of shared memory objects when accessed via the file descriptor.
 
 The `name` must be valid for an RTEMS SuperCore Object.
 
-(shm-unlink)=
+(shm_unlink)=
 
 ### shm_unlink - Remove a Shared Memory Object
 

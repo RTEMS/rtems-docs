@@ -44,7 +44,7 @@ the CPU port provided idle loop executes.
 ```{index} _Terminate
 ```
 
-(terminate)=
+(Terminate)=
 
 ## System Termination Procedure
 
@@ -98,7 +98,7 @@ The last action of the system termination handler is to execute the CPU port
 provided idle loop with maskable interrupts disabled. Please note, that
 properly configured applications should not reach this point.
 
-(fatalerrorsources)=
+(FatalErrorSources)=
 
 ## Fatal Sources
 
@@ -159,7 +159,7 @@ RTEMS_FATAL_SOURCE_HEAP (13)
 : Fatal source for heap errors. The fatal code is the address to a heap error
   context. See {c:type}`Heap_Error_context`.
 
-(internal-errors)=
+(internal_errors)=
 
 ## Internal Error Codes
 

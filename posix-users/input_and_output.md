@@ -852,7 +852,7 @@ effect. For other file types, the behavior is unspecified by POSIX.
 
 NONE
 
-(aio-read)=
+(aio_read)=
 
 ### aio_read - Asynchronous Read
 
@@ -909,7 +909,7 @@ The parameters for the read are specified in the `aiocbp` structure.
 
 NONE
 
-(aio-write)=
+(aio_write)=
 
 ### aio_write - Asynchronous Write
 
@@ -964,7 +964,7 @@ The parameters for the write are specified in the `aiocbp` structure.
 
 NONE
 
-(lio-listio)=
+(lio_listio)=
 
 ### lio_listio - List Directed I/O
 
@@ -1044,7 +1044,7 @@ thread.
 This function is only available when `RTEMS_POSIX_API` is defined. To do so,
 it's necessary to add `RTEMS_POSIX_API = True` to the `config.ini` file.
 
-(aio-error)=
+(aio_error)=
 
 ### aio_error - Retrieve Error Status of Asynchronous I/O Operation
 
@@ -1091,7 +1091,7 @@ The `aio_error()` function retrieves the error status of the request.
 **NOTES:**
 
 NONE
-.. \_aio_return:
+(aio_return)=
 
 ### aio_return - Retrieve Return Status of Asynchronous I/O Operation
 
@@ -1137,7 +1137,7 @@ asynchronous I/O operation.
 
 NONE
 
-(aio-cancel)=
+(aio_cancel)=
 
 ### aio_cancel - Cancel Asynchronous I/O Request
 
@@ -1195,7 +1195,7 @@ the function will return with an error.
 
 NONE
 
-(aio-suspend)=
+(aio_suspend)=
 
 ### aio_suspend - Wait for Asynchronous I/O Request
 
@@ -1239,7 +1239,7 @@ operations have completed or until the specified `timeout` has expired.
 
 This routine is not currently supported by RTEMS.
 
-(aio-fsync)=
+(aio_fsync)=
 
 ### aio_fsync - Asynchronous File Synchronization
 

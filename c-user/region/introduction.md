@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/region/if/group
 
-(regionmanagerintroduction)=
+(RegionManagerIntroduction)=
 
 # Introduction
 

@@ -101,7 +101,7 @@ calling sequence, related constants, usage, and status codes.
 ```{index} rtems_cpu_usage_report()
 ```
 
-(rtems-cpu-usage-report)=
+(rtems_cpu_usage_report)=
 
 ### cpu_usage_report - Report CPU Usage Statistics
 
@@ -127,7 +127,7 @@ NOTES:
 ```{index} rtems_cpu_usage_reset()
 ```
 
-(rtems-cpu-usage-reset)=
+(rtems_cpu_usage_reset)=
 
 ### cpu_usage_reset - Reset CPU Usage Statistics
 

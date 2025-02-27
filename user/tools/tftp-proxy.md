@@ -2,7 +2,7 @@
 
 % Copyright (C) 2020 Chris Johns <chrisj@rtems.org>
 
-(rtemstftpproxy)=
+(RTEMSTFTPProxy)=
 
 # RTEMS TFTP Proxy
 

@@ -8,7 +8,7 @@
 
 % Copyright (C) 2020 Utkarsh Rai
 
-(quickstarttools)=
+(QuickStartTools)=
 
 # Install the Tool Suite
 
@@ -128,7 +128,7 @@ the RTEMS cross-compiler.
 >   by selecting a specific set of machine options using the RTEMS
 >   cross-compiler.
 
-(projectsandboxing)=
+(ProjectSandboxing)=
 
 ## Project Sandboxing
 

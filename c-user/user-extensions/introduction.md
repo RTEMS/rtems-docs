@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/userext/if/group
 
-(userextensionsmanagerintroduction)=
+(UserExtensionsManagerIntroduction)=
 
 # Introduction
 

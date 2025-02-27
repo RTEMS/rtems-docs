@@ -30,7 +30,7 @@ This section details the key manager's directives. A subsection is dedicated
 to each of this manager's directives and describes the calling sequence,
 related constants, usage, and status codes.
 
-(pthread-key-create)=
+(pthread_key_create)=
 
 ### pthread_key_create - Create Thread Specific Data Key
 
@@ -78,7 +78,7 @@ is set to NULL, and then the function pointed to is called with the previously
 associated value as its sole argument. The order of destructor calls is
 unspecified if more than one destructor exists for a thread when it exits.
 
-(pthread-key-delete)=
+(pthread_key_delete)=
 
 ### pthread_key_delete - Delete Thread Specific Data Key
 
@@ -120,7 +120,7 @@ functions. No destructor functions shall be invoked by
 `pthread_key_delete()`. Any destructor function that may have been associated
 with key shall no longer be called upon thread exit.
 
-(pthread-setspecific)=
+(pthread_setspecific)=
 
 ### pthread_setspecific - Set Thread Specific Key Value
 
@@ -164,7 +164,7 @@ destructor routine may result either in lost storage (after at least
 `PTHREAD_DESTRUCTOR_ITERATIONS` attempts at destruction) or in an infinite
 loop.
 
-(pthread-getspecific)=
+(pthread_getspecific)=
 
 ### pthread_getspecific - Get Thread Specific Key Value
 

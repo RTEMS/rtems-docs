@@ -66,7 +66,7 @@ configurations that may use different back ends. We will show how to use
 {program}`rtems-test` command with the erc32 BSP because it is easy to build
 and use.
 
-(buildingrtemstests)=
+(BuildingRTEMSTests)=
 
 ## Building RTEMS Tests
 

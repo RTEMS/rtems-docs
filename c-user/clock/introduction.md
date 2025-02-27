@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/clock/if/group
 
-(clockmanagerintroduction)=
+(ClockManagerIntroduction)=
 
 # Introduction
 

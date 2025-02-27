@@ -79,7 +79,7 @@ The `amd64` variant supports being booted through the FreeBSD bootloader
 supports being booted by a multiboot2 compliant bootloader, such as GRUB
 ({ref}`Booting via GRUB`).
 
-(booting-via-the-freebsd-bootloader)=
+(Booting via the FreeBSD bootloader)=
 
 ##### Booting via the FreeBSD bootloader
 
@@ -149,7 +149,7 @@ After rebooting, the RTEMS kernel should run after the UEFI firmware and
 FreeBSD's bootloader. The `-serial stdio` QEMU flag will let the RTEMS console
 send its output to the host's `stdio` stream.
 
-(booting-via-grub)=
+(Booting via GRUB)=
 
 ##### Booting via GRUB
 
@@ -239,7 +239,7 @@ amd64_freebsd_boot_image_path = {FREEBSD_BOOT_IMAGE_PATH}
 amd64_ovmf_path = {OVMF_PATH}
 ```
 
-(creating-a-freebsd-boot-image)=
+(Creating a FreeBSD Boot Image)=
 
 #### Creating a FreeBSD Boot Image
 
@@ -303,7 +303,7 @@ makefs -t ffs -o version=2 ROOTFS.img rootfs-image
 mkimg -s gpt -p efi:=EFI.img -p freebsd-ufs:=ROOTFS.img -o FreeBSDBoot.img
 ```
 
-(booting-in-qemu-using-the-boot-image)=
+(Booting in QEMU Using the Boot Image)=
 
 ##### Booting in QEMU Using the Boot Image:
 

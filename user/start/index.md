@@ -5,7 +5,7 @@
 ```{index} Quick Start
 ```
 
-(quickstart)=
+(QuickStart)=
 
 # Quick Start
 

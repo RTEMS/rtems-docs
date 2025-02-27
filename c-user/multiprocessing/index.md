@@ -5,7 +5,7 @@
 ```{index} multiprocessing
 ```
 
-(rtemsapiclassicmp)=
+(RTEMSAPIClassicMP)=
 
 # Multiprocessing Manager
 

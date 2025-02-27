@@ -5,7 +5,7 @@
 ```{index} timers
 ```
 
-(rtemsapiclassictimer)=
+(RTEMSAPIClassicTimer)=
 
 # Timer Manager
 

@@ -29,6 +29,8 @@ sequence, related constants, usage, and status codes.
 
 % COMMENT: posix_devctl
 
+(posix_devctl)=
+
 % _posix_devctl
 
 ### posix_devctl - Control a Device

@@ -2,7 +2,7 @@
 
 % Copyright (C) 2019, 2020 embedded brains GmbH & Co. KG
 
-(bspbuildsystem)=
+(BSPBuildSystem)=
 
 # BSP Build System
 
@@ -158,7 +158,7 @@ tst\*
 
 : Use the prefix `tst` for test states.
 
-(buildspecitems)=
+(BuildSpecItems)=
 
 ## Build Specification Items
 
@@ -179,7 +179,7 @@ specification complexity since they use a priori knowledge of global build
 dependencies, see {numref}`BuildOrderDeps` for an example. This approach makes
 the build system easier, but less general.
 
-(buildexplicitdeps)=
+(BuildExplicitDeps)=
 
 ```{figure} ../images/eng/bld-deps.*
 ---
@@ -200,7 +200,7 @@ issue is that each BSP has to define its own `bspopts.h` configuration
 header item.
 ```
 
-(buildorderdeps)=
+(BuildOrderDeps)=
 
 ```{figure} ../images/eng/bld-deps2.*
 ---
@@ -218,7 +218,7 @@ results are written to the configuration header `bspopts.h` as defined by
 the BSP item link order.
 ```
 
-(buildhowto)=
+(BuildHowTo)=
 
 ## How-To
 
@@ -311,7 +311,7 @@ $ vi spec/build/bsps/arch/family/start.yml
 
 ### Add a Base BSP to a BSP Family
 
-(buildbspfamilyonebsp)=
+(BuildBSPFamilyOneBSP)=
 
 ```{figure} ../images/eng/bld-bsp.*
 ---
@@ -325,7 +325,7 @@ installation information is contained in the
 BSP item are shown using relative UIDs.
 ```
 
-(buildbspfamilymanybsps)=
+(BuildBSPFamilyManyBSPs)=
 
 ```{figure} ../images/eng/bld-bsp2.*
 ---
@@ -392,7 +392,7 @@ links:
   uid: optnew
 ```
 
-(buildhowtobspfamilygroup)=
+(BuildHowToBSPFamilyGroup)=
 
 ### Extend a BSP Family with a Group
 

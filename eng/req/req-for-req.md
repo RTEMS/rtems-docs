@@ -4,7 +4,7 @@
 
 # Requirements for Requirements
 
-(reqengident)=
+(ReqEngIdent)=
 
 ## Identification
 
@@ -156,7 +156,7 @@ with guidance from RFC 2119:
 Possibilities and capabilities shall be expressed with the verbal form *can*
 and no other terms.
 
-(reqengsyntax)=
+(ReqEngSyntax)=
 
 ## Syntax
 
@@ -341,7 +341,7 @@ spec:/classic/sema/mtx-obtain-err-unsat
 All project-specific terms and abbreviations used to formulate requirements
 shall be defined in the project glossary.
 
-(reqengjustreq)=
+(ReqEngJustReq)=
 
 ## Justification of Requirements
 
@@ -349,7 +349,7 @@ Each requirement shall have a rationale or justification recorded in a
 dedicated section of the requirement file. See `rationale` attribute for
 {ref}`ReqEngSpecificationItems`.
 
-(reqengvalidation)=
+(ReqEngValidation)=
 
 ## Requirement Validation
 
@@ -363,7 +363,7 @@ Validation by test is strongly recommended. The choice of any other validation
 method shall be strongly justified. The requirements author is obligated to
 provide the means to validate the requirement with detailed instructions.
 
-(reqengresandperf)=
+(ReqEngResAndPerf)=
 
 ## Resources and Performance
 

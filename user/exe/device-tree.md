@@ -2,7 +2,7 @@
 
 % Copyright (C) 2019 Vijay Kumar Banerjee <vijaykumar9597@gmail.com>
 
-(devicetree)=
+(DeviceTree)=
 
 # Device Tree
 

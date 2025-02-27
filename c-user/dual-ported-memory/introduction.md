@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/dpmem/if/group
 
-(dualportedmemorymanagerintroduction)=
+(DualPortedMemoryManagerIntroduction)=
 
 # Introduction
 

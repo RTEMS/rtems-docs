@@ -53,7 +53,7 @@ support must not be confused with the SMP support.
 ```{index} CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 ```
 
-(configure-extra-mpci-receive-server-stack)=
+(CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK)=
 
 ## CONFIGURE_EXTRA_MPCI_RECEIVE_SERVER_STACK
 
@@ -112,7 +112,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MP_APPLICATION
 ```
 
-(configure-mp-application)=
+(CONFIGURE_MP_APPLICATION)=
 
 ## CONFIGURE_MP_APPLICATION
 
@@ -161,7 +161,7 @@ configuration file will occur.
 ```{index} CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 ```
 
-(configure-mp-maximum-global-objects)=
+(CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS)=
 
 ## CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS
 
@@ -219,7 +219,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MP_MAXIMUM_NODES
 ```
 
-(configure-mp-maximum-nodes)=
+(CONFIGURE_MP_MAXIMUM_NODES)=
 
 ## CONFIGURE_MP_MAXIMUM_NODES
 
@@ -274,7 +274,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MP_MAXIMUM_PROXIES
 ```
 
-(configure-mp-maximum-proxies)=
+(CONFIGURE_MP_MAXIMUM_PROXIES)=
 
 ## CONFIGURE_MP_MAXIMUM_PROXIES
 
@@ -335,7 +335,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MP_MPCI_TABLE_POINTER
 ```
 
-(configure-mp-mpci-table-pointer)=
+(CONFIGURE_MP_MPCI_TABLE_POINTER)=
 
 ## CONFIGURE_MP_MPCI_TABLE_POINTER
 
@@ -391,7 +391,7 @@ The value of the configuration option shall be a pointer to
 ```{index} CONFIGURE_MP_NODE_NUMBER
 ```
 
-(configure-mp-node-number)=
+(CONFIGURE_MP_NODE_NUMBER)=
 
 ## CONFIGURE_MP_NODE_NUMBER
 

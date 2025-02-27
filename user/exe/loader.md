@@ -467,7 +467,7 @@ loaded dynamically at run-time. The following needs to be observed:
 ```{index} embedded symbol table
 ```
 
-(embbeddedsymboltable)=
+(EmbbeddedSymbolTable)=
 
 ### Embedded Symbols
 
@@ -500,7 +500,7 @@ $ sparc-rtems@rtems-ver-major@-gcc -mcpu=cypress foo.o foo-sym.o -lrtemsbsp -lrt
 
 The link command line steps in this example are not complete.
 
-(loadablesymboltable)=
+(LoadableSymbolTable)=
 
 ### Loadable Symbols
 
@@ -721,7 +721,7 @@ allocate allowing the allocators to be chained.
 
 The default allocator uses the heap.
 
-(rtems-rtl-alloc-tags)=
+(rtems_rtl_alloc_tags)=
 
 ```{index} rtems_rtl_alloc_tags
 ```
@@ -770,7 +770,7 @@ calls. The `rtems_rtl_alloc_tags` are:
 > : Allocate memory for code to be executed in. The address space is configure for
 >   read and execute.
 
-(rtems-rtl-alloc-cmd)=
+(rtems_rtl_alloc_cmd)=
 
 ```{index} rtems_rtl_alloc_cmd
 ```
@@ -808,7 +808,7 @@ The commands are used to control the action the allocator performs. The
 >   issue this command for memory that is writable and not to be write
 >   disabled. The allocator need to manage this case.
 
-(rtems-rtl-allocator)=
+(rtems_rtl_allocator)=
 
 ```{index} rtems_rtl_allocator
 ```

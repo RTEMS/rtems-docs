@@ -2,7 +2,7 @@
 
 % Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
-(whybuildfromsource)=
+(WhyBuildFromSource)=
 
 # Why Build from Source?
 

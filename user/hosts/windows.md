@@ -71,7 +71,7 @@ Parts of the PATH inherited from the native Windows environment often
 include directory names with spaces. Sometimes it is necessary to set
 the PATH explicitly to avoid these.
 
-(msys2-parallel-builds)=
+(msys2_parallel_builds)=
 
 ## Parallel Builds with Make
 
@@ -198,7 +198,7 @@ export PATH=/mingw64/bin:$PATH
 You will also likely want to add to `PATH` the `bin` directory of the prefix where you plan
 to install RTEMS.
 
-(cygwin)=
+(Cygwin)=
 
 ## Cygwin
 

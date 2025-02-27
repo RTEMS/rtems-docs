@@ -5,7 +5,7 @@
 ```{index} signals
 ```
 
-(rtemsapiclassicsignal)=
+(RTEMSAPIClassicSignal)=
 
 # Signal Manager
 

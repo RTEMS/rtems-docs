@@ -2,7 +2,7 @@
 
 % Copyright (C) 2019, 2020 embedded brains GmbH & Co. KG
 
-(reqengtrace)=
+(ReqEngTrace)=
 
 # Traceability of Specification Items
 
@@ -11,7 +11,7 @@ configuration management, backwards-traceable and forward-traceable
 {cite}`ECSS_E_ST_10_06C`. Requirements are a specialization of specification
 items in RTEMS.
 
-(reqengtracehistory)=
+(ReqEngTraceHistory)=
 
 ## History of Specification Items
 
@@ -29,7 +29,7 @@ directly in a *revision* attribute. This would make it possible to generate
 the history information for documents without having the Git repository
 available, e.g. from an RTEMS source release archive.
 
-(reqengtracebackward)=
+(ReqEngTraceBackward)=
 
 ## Backward Traceability of Specification Items
 
@@ -37,7 +37,7 @@ Providing backward traceability of specification items means that we must be
 able to find the corresponding higher level specification item for each refined
 specification item. A custom tool needs to verify this.
 
-(reqengtraceforward)=
+(ReqEngTraceForward)=
 
 ## Forward Traceability of Specification Items
 
@@ -47,7 +47,7 @@ specification item. A custom tool needs to verify this. The links from
 parent to child specification items are implicitly defined by links from a
 child item to a parent item.
 
-(reqengtracereqarchdesign)=
+(ReqEngTraceReqArchDesign)=
 
 ## Traceability between Software Requirements, Architecture and Design
 

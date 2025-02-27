@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/task/if/group
 
-(taskmanagerintroduction)=
+(TaskManagerIntroduction)=
 
 # Introduction
 

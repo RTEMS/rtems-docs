@@ -233,7 +233,7 @@ void funlockfile(FILE *file);
 
 **NOTES:**
 
-(getc-unlocked)=
+(getc_unlocked)=
 
 ### getc_unlocked - Get Character without Locking
 
@@ -264,7 +264,7 @@ int getc_unlocked(FILE *stream);
 
 **NOTES:**
 
-(getchar-unlocked)=
+(getchar_unlocked)=
 
 ### getchar_unlocked - Get Character from stdin without Locking
 
@@ -295,7 +295,7 @@ int getchar_unlocked(void);
 
 **NOTES:**
 
-(putc-unlocked)=
+(putc_unlocked)=
 
 ### putc_unlocked - Put Character without Locking
 
@@ -326,7 +326,7 @@ int putc_unlocked(int c, FILE *stream);
 
 **NOTES:**
 
-(putchar-unlocked)=
+(putchar_unlocked)=
 
 ### putchar_unlocked - Put Character to stdin without Locking
 
@@ -515,7 +515,7 @@ void tzset(void);
 
 **NOTES:**
 
-(strtok-r)=
+(strtok_r)=
 
 ### strtok_r - Reentrant Extract Token from String
 
@@ -547,7 +547,7 @@ char **restrict state);
 
 **NOTES:**
 
-(asctime-r)=
+(asctime_r)=
 
 ### asctime_r - Reentrant struct tm to ASCII Time Conversion
 
@@ -578,7 +578,7 @@ char *asctime_r(const struct tm *restrict tm, char *restrict buf);
 
 **NOTES:**
 
-(ctime-r)=
+(ctime_r)=
 
 ### ctime_r - Reentrant time_t to ASCII Time Conversion
 
@@ -609,7 +609,7 @@ char *ctime_r(const time_t *clock, char *buf);
 
 **NOTES:**
 
-(gmtime-r)=
+(gmtime_r)=
 
 ### gmtime_r - Reentrant UTC Time Conversion
 
@@ -641,7 +641,7 @@ struct tm *restrict result);
 
 **NOTES:**
 
-(localtime-r)=
+(localtime_r)=
 
 ### localtime_r - Reentrant Local Time Conversion
 
@@ -673,7 +673,7 @@ struct tm *restrict result);
 
 **NOTES:**
 
-(rand-r)=
+(rand_r)=
 
 ### rand_r - Reentrant Random Number Generation
 

@@ -2,11 +2,11 @@
 
 % Copyright (C) 2024 On-Line Applications Research Corporation (OAR)
 
-(bsp-arm-zynqmp-rpu-lock-step)=
+(BSP_arm_zynqmp_rpu_lock_step)=
 
-(bsp-arm-zynqmp-rpu-split-0)=
+(BSP_arm_zynqmp_rpu_split_0)=
 
-(bsp-arm-zynqmp-rpu-split-1)=
+(BSP_arm_zynqmp_rpu_split_1)=
 
 # Xilinx ZynqMP RPU
 

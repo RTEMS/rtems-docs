@@ -48,7 +48,7 @@ initialization task.
 ```{index} CONFIGURE_INIT_TASK_ARGUMENTS
 ```
 
-(configure-init-task-arguments)=
+(CONFIGURE_INIT_TASK_ARGUMENTS)=
 
 ## CONFIGURE_INIT_TASK_ARGUMENTS
 
@@ -93,7 +93,7 @@ type {ref}`InterfaceRtemsTaskArgument`.
 ```{index} CONFIGURE_INIT_TASK_ATTRIBUTES
 ```
 
-(configure-init-task-attributes)=
+(CONFIGURE_INIT_TASK_ATTRIBUTES)=
 
 ## CONFIGURE_INIT_TASK_ATTRIBUTES
 
@@ -137,7 +137,7 @@ The value of the configuration option shall be a valid task attribute set.
 ```{index} CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE
 ```
 
-(configure-init-task-construct-storage-size)=
+(CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE)=
 
 ## CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE
 
@@ -214,7 +214,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_INIT_TASK_ENTRY_POINT
 ```
 
-(configure-init-task-entry-point)=
+(CONFIGURE_INIT_TASK_ENTRY_POINT)=
 
 ## CONFIGURE_INIT_TASK_ENTRY_POINT
 
@@ -266,7 +266,7 @@ pointer of the type `void ( *entry_point )( rtems_task_argument )`.
 ```{index} CONFIGURE_INIT_TASK_INITIAL_MODES
 ```
 
-(configure-init-task-initial-modes)=
+(CONFIGURE_INIT_TASK_INITIAL_MODES)=
 
 ## CONFIGURE_INIT_TASK_INITIAL_MODES
 
@@ -311,7 +311,7 @@ The value of the configuration option shall be a valid task mode set.
 ```{index} CONFIGURE_INIT_TASK_NAME
 ```
 
-(configure-init-task-name)=
+(CONFIGURE_INIT_TASK_NAME)=
 
 ## CONFIGURE_INIT_TASK_NAME
 
@@ -362,7 +362,7 @@ type {c:type}`rtems_name`.
 ```{index} CONFIGURE_INIT_TASK_PRIORITY
 ```
 
-(configure-init-task-priority)=
+(CONFIGURE_INIT_TASK_PRIORITY)=
 
 ## CONFIGURE_INIT_TASK_PRIORITY
 
@@ -408,7 +408,7 @@ configuration.
 ```{index} CONFIGURE_INIT_TASK_STACK_SIZE
 ```
 
-(configure-init-task-stack-size)=
+(CONFIGURE_INIT_TASK_STACK_SIZE)=
 
 ## CONFIGURE_INIT_TASK_STACK_SIZE
 
@@ -469,7 +469,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_RTEMS_INIT_TASKS_TABLE
 ```
 
-(configure-rtems-init-tasks-table)=
+(CONFIGURE_RTEMS_INIT_TASKS_TABLE)=
 
 ## CONFIGURE_RTEMS_INIT_TASKS_TABLE
 

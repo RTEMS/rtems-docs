@@ -2,7 +2,7 @@
 
 % Copyright (C) 2022 Trinity College Dublin
 
-(formalverifmethodology)=
+(FormalVerifMethodology)=
 
 # Test Generation Methodology
 

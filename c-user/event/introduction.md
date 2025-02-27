@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/event/if/group
 
-(eventmanagerintroduction)=
+(EventManagerIntroduction)=
 
 # Introduction
 

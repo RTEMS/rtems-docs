@@ -10,7 +10,7 @@ All SMP schedulers included in RTEMS are priority based. The processors
 managed by a scheduler instance are allocated to the highest priority tasks
 allowed to run.
 
-(schedulersmpedf)=
+(SchedulerSMPEDF)=
 
 ## Earliest Deadline First SMP Scheduler
 
@@ -35,7 +35,7 @@ with the task priority as the key.
 This scheduler algorithm is the default scheduler in SMP configurations if more
 than one processor is configured ({ref}`CONFIGURE_MAXIMUM_PROCESSORS <CONFIGURE_MAXIMUM_PROCESSORS>`).
 
-(schedulersmppriority)=
+(SchedulerSMPPriority)=
 
 ## Deterministic Priority SMP Scheduler
 
@@ -44,7 +44,7 @@ priority level for the ready tasks. The maximum priority level is
 configurable. By default, the maximum priority level is 255 (256 priority
 levels), see {ref}`CONFIGURE_MAXIMUM_PRIORITY`.
 
-(schedulersmpprioritysimple)=
+(SchedulerSMPPrioritySimple)=
 
 ## Simple Priority SMP Scheduler
 
@@ -52,7 +52,7 @@ A fixed-priority scheduler which uses a sorted chain for the ready tasks. By
 convention, the maximum priority level is 255. The implementation limit is
 actually $2^{63} - 1$.
 
-(schedulersmppriorityaffinity)=
+(SchedulerSMPPriorityAffinity)=
 
 ## Arbitrary Processor Affinity Priority SMP Scheduler
 

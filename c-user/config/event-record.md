@@ -45,7 +45,7 @@ This section describes configuration options related to the event recording.
 ```{index} CONFIGURE_RECORD_EXTENSIONS_ENABLED
 ```
 
-(configure-record-extensions-enabled)=
+(CONFIGURE_RECORD_EXTENSIONS_ENABLED)=
 
 ## CONFIGURE_RECORD_EXTENSIONS_ENABLED
 
@@ -95,7 +95,7 @@ begin, exitted and terminate events.
 ```{index} CONFIGURE_RECORD_FATAL_DUMP_BASE64
 ```
 
-(configure-record-fatal-dump-base64)=
+(CONFIGURE_RECORD_FATAL_DUMP_BASE64)=
 
 ## CONFIGURE_RECORD_FATAL_DUMP_BASE64
 
@@ -146,7 +146,7 @@ This extension can be used to produce crash dumps.
 ```{index} CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB
 ```
 
-(configure-record-fatal-dump-base64-zlib)=
+(CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB)=
 
 ## CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB
 
@@ -197,7 +197,7 @@ to produce crash dumps.
 ```{index} CONFIGURE_RECORD_INTERRUPTS_ENABLED
 ```
 
-(configure-record-interrupts-enabled)=
+(CONFIGURE_RECORD_INTERRUPTS_ENABLED)=
 
 ## CONFIGURE_RECORD_INTERRUPTS_ENABLED
 
@@ -247,7 +247,7 @@ interrupt entries are dispatched.
 ```{index} CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 ```
 
-(configure-record-per-processor-items)=
+(CONFIGURE_RECORD_PER_PROCESSOR_ITEMS)=
 
 ## CONFIGURE_RECORD_PER_PROCESSOR_ITEMS
 

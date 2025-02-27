@@ -14,7 +14,7 @@
 ```{index} rtems_task_get_note()
 ```
 
-(rtems-task-get-note)=
+(rtems_task_get_note)=
 
 ## TASK_GET_NOTE - Get task notepad entry
 
@@ -74,7 +74,7 @@ NOTES:
 ```{index} rtems_task_set_note()
 ```
 
-(rtems-task-set-note)=
+(rtems_task_set_note)=
 
 ## TASK_SET_NOTE - Set task notepad entry
 
@@ -139,7 +139,7 @@ NOTES:
 ```{index} rtems_task_variable_add()
 ```
 
-(rtems-task-variable-add)=
+(rtems_task_variable_add)=
 
 ## TASK_VARIABLE_ADD - Associate per task variable
 
@@ -210,7 +210,7 @@ NOTES:
 ```{index} rtems_task_variable_get()
 ```
 
-(rtems-task-variable-get)=
+(rtems_task_variable_get)=
 
 ## TASK_VARIABLE_GET - Obtain value of a per task variable
 
@@ -279,7 +279,7 @@ NOTES:
 ```{index} rtems_task_variable_delete()
 ```
 
-(rtems-task-variable-delete)=
+(rtems_task_variable_delete)=
 
 ## TASK_VARIABLE_DELETE - Remove per task variable
 

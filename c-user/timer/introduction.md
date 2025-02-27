@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/timer/if/group
 
-(timermanagerintroduction)=
+(TimerManagerIntroduction)=
 
 # Introduction
 

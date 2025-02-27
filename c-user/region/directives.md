@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(regionmanagerdirectives)=
+(RegionManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a region
 ```
 
-(interfacertemsregioncreate)=
+(InterfaceRtemsRegionCreate)=
 
 ## rtems_region_create()
 
@@ -195,7 +195,7 @@ The following constraints apply to this directive:
 ```{index} rtems_region_ident()
 ```
 
-(interfacertemsregionident)=
+(InterfaceRtemsRegionIdent)=
 
 ## rtems_region_ident()
 
@@ -279,7 +279,7 @@ The following constraints apply to this directive:
 ```{index} delete a region
 ```
 
-(interfacertemsregiondelete)=
+(InterfaceRtemsRegionDelete)=
 
 ## rtems_region_delete()
 
@@ -357,7 +357,7 @@ The following constraints apply to this directive:
 ```{index} region, add memory
 ```
 
-(interfacertemsregionextend)=
+(InterfaceRtemsRegionExtend)=
 
 ## rtems_region_extend()
 
@@ -447,7 +447,7 @@ The following constraints apply to this directive:
 ```{index} get segment from region
 ```
 
-(interfacertemsregiongetsegment)=
+(InterfaceRtemsRegionGetSegment)=
 
 ## rtems_region_get_segment()
 
@@ -594,7 +594,7 @@ The following constraints apply to this directive:
 ```{index} return segment to region
 ```
 
-(interfacertemsregionreturnsegment)=
+(InterfaceRtemsRegionReturnSegment)=
 
 ## rtems_region_return_segment()
 
@@ -678,7 +678,7 @@ The following constraints apply to this directive:
 ```{index} resize segment
 ```
 
-(interfacertemsregionresizesegment)=
+(InterfaceRtemsRegionResizeSegment)=
 
 ## rtems_region_resize_segment()
 
@@ -775,7 +775,7 @@ The following constraints apply to this directive:
 ```{index} obtain region information
 ```
 
-(interfacertemsregiongetinformation)=
+(InterfaceRtemsRegionGetInformation)=
 
 ## rtems_region_get_information()
 
@@ -861,7 +861,7 @@ The following constraints apply to this directive:
 ```{index} obtain region information on free blocks
 ```
 
-(interfacertemsregiongetfreeinformation)=
+(InterfaceRtemsRegionGetFreeInformation)=
 
 ## rtems_region_get_free_information()
 
@@ -950,7 +950,7 @@ The following constraints apply to this directive:
 ```{index} get size of segment
 ```
 
-(interfacertemsregiongetsegmentsize)=
+(InterfaceRtemsRegionGetSegmentSize)=
 
 ## rtems_region_get_segment_size()
 

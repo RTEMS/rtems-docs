@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(eventmanagerdirectives)=
+(EventManagerDirectives)=
 
 # Directives
 
@@ -49,7 +49,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} rtems_event_send()
 ```
 
-(interfacertemseventsend)=
+(InterfaceRtemsEventSend)=
 
 ## rtems_event_send()
 
@@ -148,7 +148,7 @@ The following constraints apply to this directive:
 ```{index} rtems_event_receive()
 ```
 
-(interfacertemseventreceive)=
+(InterfaceRtemsEventReceive)=
 
 ## rtems_event_receive()
 

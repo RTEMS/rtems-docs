@@ -5,7 +5,7 @@
 ```{index} partitions
 ```
 
-(rtemsapiclassicpart)=
+(RTEMSAPIClassicPart)=
 
 # Partition Manager
 

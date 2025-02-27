@@ -5,7 +5,7 @@
 ```{index} fatal errors
 ```
 
-(rtemsapiclassicfatal)=
+(RTEMSAPIClassicFatal)=
 
 # Fatal Error Manager
 

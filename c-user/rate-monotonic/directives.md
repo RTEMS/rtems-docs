@@ -34,7 +34,7 @@
 
 % https://docs.rtems.org
 
-(ratemonotonicmanagerdirectives)=
+(RateMonotonicManagerDirectives)=
 
 # Directives
 
@@ -54,7 +54,7 @@ sequence, parameters, description, return values, and notes of the directive.
 ```{index} create a period
 ```
 
-(interfacertemsratemonotoniccreate)=
+(InterfaceRtemsRateMonotonicCreate)=
 
 ## rtems_rate_monotonic_create()
 
@@ -139,7 +139,7 @@ The following constraints apply to this directive:
 ```{index} rtems_rate_monotonic_ident()
 ```
 
-(interfacertemsratemonotonicident)=
+(InterfaceRtemsRateMonotonicIdent)=
 
 ## rtems_rate_monotonic_ident()
 
@@ -223,7 +223,7 @@ The following constraints apply to this directive:
 ```{index} cancel a period
 ```
 
-(interfacertemsratemonotoniccancel)=
+(InterfaceRtemsRateMonotonicCancel)=
 
 ## rtems_rate_monotonic_cancel()
 
@@ -289,7 +289,7 @@ The following constraints apply to this directive:
 ```{index} delete a period
 ```
 
-(interfacertemsratemonotonicdelete)=
+(InterfaceRtemsRateMonotonicDelete)=
 
 ## rtems_rate_monotonic_delete()
 
@@ -366,7 +366,7 @@ The following constraints apply to this directive:
 ```{index} period initiation
 ```
 
-(interfacertemsratemonotonicperiod)=
+(InterfaceRtemsRateMonotonicPeriod)=
 
 ## rtems_rate_monotonic_period()
 
@@ -466,7 +466,7 @@ The following constraints apply to this directive:
 ```{index} obtain status of period
 ```
 
-(interfacertemsratemonotonicgetstatus)=
+(InterfaceRtemsRateMonotonicGetStatus)=
 
 ## rtems_rate_monotonic_get_status()
 
@@ -557,7 +557,7 @@ The following constraints apply to this directive:
 ```{index} obtain statistics of period
 ```
 
-(interfacertemsratemonotonicgetstatistics)=
+(InterfaceRtemsRateMonotonicGetStatistics)=
 
 ## rtems_rate_monotonic_get_statistics()
 
@@ -646,7 +646,7 @@ The following constraints apply to this directive:
 ```{index} reset statistics of period
 ```
 
-(interfacertemsratemonotonicresetstatistics)=
+(InterfaceRtemsRateMonotonicResetStatistics)=
 
 ## rtems_rate_monotonic_reset_statistics()
 
@@ -707,7 +707,7 @@ The following constraints apply to this directive:
 ```{index} reset statistics of all periods
 ```
 
-(interfacertemsratemonotonicresetallstatistics)=
+(InterfaceRtemsRateMonotonicResetAllStatistics)=
 
 ## rtems_rate_monotonic_reset_all_statistics()
 
@@ -753,7 +753,7 @@ The following constraints apply to this directive:
 ```{index} period statistics report
 ```
 
-(interfacertemsratemonotonicreportstatistics)=
+(InterfaceRtemsRateMonotonicReportStatistics)=
 
 ## rtems_rate_monotonic_report_statistics()
 
@@ -799,7 +799,7 @@ The following constraints apply to this directive:
 ```{index} period statistics report
 ```
 
-(interfacertemsratemonotonicreportstatisticswithplugin)=
+(InterfaceRtemsRateMonotonicReportStatisticsWithPlugin)=
 
 ## rtems_rate_monotonic_report_statistics_with_plugin()
 

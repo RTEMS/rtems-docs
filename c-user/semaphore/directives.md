@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(semaphoremanagerdirectives)=
+(SemaphoreManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a semaphore
 ```
 
-(interfacertemssemaphorecreate)=
+(InterfaceRtemsSemaphoreCreate)=
 
 ## rtems_semaphore_create()
 
@@ -263,7 +263,7 @@ The following constraints apply to this directive:
 ```{index} rtems_semaphore_ident()
 ```
 
-(interfacertemssemaphoreident)=
+(InterfaceRtemsSemaphoreIdent)=
 
 ## rtems_semaphore_ident()
 
@@ -374,7 +374,7 @@ The following constraints apply to this directive:
 ```{index} delete a semaphore
 ```
 
-(interfacertemssemaphoredelete)=
+(InterfaceRtemsSemaphoreDelete)=
 
 ## rtems_semaphore_delete()
 
@@ -471,7 +471,7 @@ The following constraints apply to this directive:
 ```{index} lock a semaphore
 ```
 
-(interfacertemssemaphoreobtain)=
+(InterfaceRtemsSemaphoreObtain)=
 
 ## rtems_semaphore_obtain()
 
@@ -660,7 +660,7 @@ The following constraints apply to this directive:
 ```{index} unlock a semaphore
 ```
 
-(interfacertemssemaphorerelease)=
+(InterfaceRtemsSemaphoreRelease)=
 
 ## rtems_semaphore_release()
 
@@ -762,7 +762,7 @@ The following constraints apply to this directive:
 ```{index} unblock all tasks waiting on a semaphore
 ```
 
-(interfacertemssemaphoreflush)=
+(InterfaceRtemsSemaphoreFlush)=
 
 ## rtems_semaphore_flush()
 
@@ -893,7 +893,7 @@ The following constraints apply to this directive:
 ```{index} set priority by scheduler for a semaphore
 ```
 
-(interfacertemssemaphoresetpriority)=
+(InterfaceRtemsSemaphoreSetPriority)=
 
 ## rtems_semaphore_set_priority()
 

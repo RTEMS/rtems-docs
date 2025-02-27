@@ -2,7 +2,7 @@
 
 % Copyright (C) 2023 On-Line Applications Research Corporation (OAR)
 
-(regulatormanagerdirectives)=
+(RegulatorManagerDirectives)=
 
 # Directives
 
@@ -22,7 +22,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a regulator
 ```
 
-(interfacertemsregulatorcreate)=
+(InterfaceRtemsRegulatorCreate)=
 
 ## rtems_regulator_create()
 
@@ -151,7 +151,7 @@ The following constraints apply to this directive:
 ```{index} delete a regulator
 ```
 
-(interfacertemsregulatordelete)=
+(InterfaceRtemsRegulatorDelete)=
 
 ## rtems_regulator_delete()
 
@@ -252,7 +252,7 @@ The following constraints apply to this directive:
 ```{index} obtain buffer from regulator
 ```
 
-(interfacertemsregulatorobtainbuffer)=
+(InterfaceRtemsRegulatorObtainBuffer)=
 
 ## rtems_regulator_obtain_buffer()
 
@@ -337,7 +337,7 @@ The following constraints apply to this directive:
 ```{index} release buffer back to regulator
 ```
 
-(interfacertemsregulatorreleasebuffer)=
+(InterfaceRtemsRegulatorReleaseBuffer)=
 
 ## rtems_regulator_release_buffer()
 
@@ -423,7 +423,7 @@ The following constraints apply to this directive:
 ```{index} send buffer to regulator for delivery
 ```
 
-(interfacertemsregulatorsend)=
+(InterfaceRtemsRegulatorSend)=
 
 ## rtems_regulator_send()
 
@@ -523,7 +523,7 @@ The following constraints apply to this directive:
 ```{index} obtain statistics from regulator
 ```
 
-(interfacertemsregulatorgetstatistics)=
+(InterfaceRtemsRegulatorGetStatistics)=
 
 ## rtems_regulator_get_statistics()
 

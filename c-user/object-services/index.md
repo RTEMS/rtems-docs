@@ -5,7 +5,7 @@
 ```{index} object manipulation
 ```
 
-(rtemsapiclassicobject)=
+(RTEMSAPIClassicObject)=
 
 # Object Services
 

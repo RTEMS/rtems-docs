@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(clockmanagerdirectives)=
+(ClockManagerDirectives)=
 
 # Directives
 
@@ -49,7 +49,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} rtems_clock_set()
 ```
 
-(interfacertemsclockset)=
+(InterfaceRtemsClockSet)=
 
 ## rtems_clock_set()
 
@@ -139,7 +139,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_tod()
 ```
 
-(interfacertemsclockgettod)=
+(InterfaceRtemsClockGetTod)=
 
 ## rtems_clock_get_tod()
 
@@ -196,7 +196,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_tod_timeval()
 ```
 
-(interfacertemsclockgettodtimeval)=
+(InterfaceRtemsClockGetTodTimeval)=
 
 ## rtems_clock_get_tod_timeval()
 
@@ -255,7 +255,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_realtime()
 ```
 
-(interfacertemsclockgetrealtime)=
+(InterfaceRtemsClockGetRealtime)=
 
 ## rtems_clock_get_realtime()
 
@@ -312,7 +312,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_realtime_bintime()
 ```
 
-(interfacertemsclockgetrealtimebintime)=
+(InterfaceRtemsClockGetRealtimeBintime)=
 
 ## rtems_clock_get_realtime_bintime()
 
@@ -369,7 +369,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_realtime_timeval()
 ```
 
-(interfacertemsclockgetrealtimetimeval)=
+(InterfaceRtemsClockGetRealtimeTimeval)=
 
 ## rtems_clock_get_realtime_timeval()
 
@@ -426,7 +426,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_realtime_coarse()
 ```
 
-(interfacertemsclockgetrealtimecoarse)=
+(InterfaceRtemsClockGetRealtimeCoarse)=
 
 ## rtems_clock_get_realtime_coarse()
 
@@ -485,7 +485,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_realtime_coarse_bintime()
 ```
 
-(interfacertemsclockgetrealtimecoarsebintime)=
+(InterfaceRtemsClockGetRealtimeCoarseBintime)=
 
 ## rtems_clock_get_realtime_coarse_bintime()
 
@@ -544,7 +544,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_realtime_coarse_timeval()
 ```
 
-(interfacertemsclockgetrealtimecoarsetimeval)=
+(InterfaceRtemsClockGetRealtimeCoarseTimeval)=
 
 ## rtems_clock_get_realtime_coarse_timeval()
 
@@ -603,7 +603,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic()
 ```
 
-(interfacertemsclockgetmonotonic)=
+(InterfaceRtemsClockGetMonotonic)=
 
 ## rtems_clock_get_monotonic()
 
@@ -663,7 +663,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic_bintime()
 ```
 
-(interfacertemsclockgetmonotonicbintime)=
+(InterfaceRtemsClockGetMonotonicBintime)=
 
 ## rtems_clock_get_monotonic_bintime()
 
@@ -723,7 +723,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic_sbintime()
 ```
 
-(interfacertemsclockgetmonotonicsbintime)=
+(InterfaceRtemsClockGetMonotonicSbintime)=
 
 ## rtems_clock_get_monotonic_sbintime()
 
@@ -776,7 +776,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic_timeval()
 ```
 
-(interfacertemsclockgetmonotonictimeval)=
+(InterfaceRtemsClockGetMonotonicTimeval)=
 
 ## rtems_clock_get_monotonic_timeval()
 
@@ -836,7 +836,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic_coarse()
 ```
 
-(interfacertemsclockgetmonotoniccoarse)=
+(InterfaceRtemsClockGetMonotonicCoarse)=
 
 ## rtems_clock_get_monotonic_coarse()
 
@@ -896,7 +896,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic_coarse_bintime()
 ```
 
-(interfacertemsclockgetmonotoniccoarsebintime)=
+(InterfaceRtemsClockGetMonotonicCoarseBintime)=
 
 ## rtems_clock_get_monotonic_coarse_bintime()
 
@@ -955,7 +955,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_monotonic_coarse_timeval()
 ```
 
-(interfacertemsclockgetmonotoniccoarsetimeval)=
+(InterfaceRtemsClockGetMonotonicCoarseTimeval)=
 
 ## rtems_clock_get_monotonic_coarse_timeval()
 
@@ -1015,7 +1015,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_boot_time()
 ```
 
-(interfacertemsclockgetboottime)=
+(InterfaceRtemsClockGetBootTime)=
 
 ## rtems_clock_get_boot_time()
 
@@ -1068,7 +1068,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_boot_time_bintime()
 ```
 
-(interfacertemsclockgetboottimebintime)=
+(InterfaceRtemsClockGetBootTimeBintime)=
 
 ## rtems_clock_get_boot_time_bintime()
 
@@ -1121,7 +1121,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_boot_time_timeval()
 ```
 
-(interfacertemsclockgetboottimetimeval)=
+(InterfaceRtemsClockGetBootTimeTimeval)=
 
 ## rtems_clock_get_boot_time_timeval()
 
@@ -1174,7 +1174,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_seconds_since_epoch()
 ```
 
-(interfacertemsclockgetsecondssinceepoch)=
+(InterfaceRtemsClockGetSecondsSinceEpoch)=
 
 ## rtems_clock_get_seconds_since_epoch()
 
@@ -1234,7 +1234,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_ticks_per_second()
 ```
 
-(interfacertemsclockgettickspersecond)=
+(InterfaceRtemsClockGetTicksPerSecond)=
 
 ## rtems_clock_get_ticks_per_second()
 
@@ -1280,7 +1280,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_ticks_since_boot()
 ```
 
-(interfacertemsclockgettickssinceboot)=
+(InterfaceRtemsClockGetTicksSinceBoot)=
 
 ## rtems_clock_get_ticks_since_boot()
 
@@ -1331,7 +1331,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_uptime()
 ```
 
-(interfacertemsclockgetuptime)=
+(InterfaceRtemsClockGetUptime)=
 
 ## rtems_clock_get_uptime()
 
@@ -1385,7 +1385,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_uptime_timeval()
 ```
 
-(interfacertemsclockgetuptimetimeval)=
+(InterfaceRtemsClockGetUptimeTimeval)=
 
 ## rtems_clock_get_uptime_timeval()
 
@@ -1430,7 +1430,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_uptime_seconds()
 ```
 
-(interfacertemsclockgetuptimeseconds)=
+(InterfaceRtemsClockGetUptimeSeconds)=
 
 ## rtems_clock_get_uptime_seconds()
 
@@ -1472,7 +1472,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_get_uptime_nanoseconds()
 ```
 
-(interfacertemsclockgetuptimenanoseconds)=
+(InterfaceRtemsClockGetUptimeNanoseconds)=
 
 ## rtems_clock_get_uptime_nanoseconds()
 
@@ -1514,7 +1514,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_tick_later()
 ```
 
-(interfacertemsclockticklater)=
+(InterfaceRtemsClockTickLater)=
 
 ## rtems_clock_tick_later()
 
@@ -1562,7 +1562,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_tick_later_usec()
 ```
 
-(interfacertemsclockticklaterusec)=
+(InterfaceRtemsClockTickLaterUsec)=
 
 ## rtems_clock_tick_later_usec()
 
@@ -1610,7 +1610,7 @@ The following constraints apply to this directive:
 ```{index} rtems_clock_tick_before()
 ```
 
-(interfacertemsclocktickbefore)=
+(InterfaceRtemsClockTickBefore)=
 
 ## rtems_clock_tick_before()
 

@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/scheduler/if/group
 
-(schedulermanagerintroduction)=
+(SchedulerManagerIntroduction)=
 
 # Introduction
 

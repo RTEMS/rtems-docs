@@ -5,7 +5,7 @@
 ```{highlight} shell
 ```
 
-(rsb)=
+(RSB)=
 
 # Source Builder
 

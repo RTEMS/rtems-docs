@@ -13,7 +13,7 @@
 ```{index} community; developers
 ```
 
-(contributing)=
+(Contributing)=
 
 # Contributing
 
@@ -68,7 +68,7 @@ back to the upstream repository. We do not normally squash merge requests. A
 merge request with more than one commit should be buildable at each commit so a
 bisect of main does not break.
 
-(checklistforpatches)=
+(ChecklistForPatches)=
 
 ## Checklist for Merge Requests
 
@@ -100,7 +100,7 @@ Check the following items before you publish your merge requests:
 - Each patch does not introduce new compiler warnings.
 - Each patch does not introduce new test failures in existing tests.
 
-(patchreviewprocess)=
+(PatchReviewProcess)=
 
 ## Review Process
 
@@ -128,7 +128,7 @@ of modified code. Although high-level comments about the entire patch set are
 allowed, the most useful commments are those that are specifically targeted
 to problematic lines of code.
 
-(updatingmergerequest)=
+(UpdatingMergeRequest)=
 
 ## Updating a Merge Request
 

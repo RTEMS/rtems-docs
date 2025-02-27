@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/intr/if/group
 
-(interruptmanagerintroduction)=
+(InterruptManagerIntroduction)=
 
 # Introduction
 

@@ -12,7 +12,7 @@ possible. By default, no application resources are configured. The
 thread is configured and that at least one of the initialization task/thread
 tables is configured.
 
-(sizing-the-rtems-workspace)=
+(Sizing the RTEMS Workspace)=
 
 # Sizing the RTEMS Workspace
 
@@ -170,7 +170,7 @@ things, the application implicitly used the following defaults:
 - The minimum task stack size will be that recommended by RTEMS for the target
   architecture.
 
-(configunlimitedobjects)=
+(ConfigUnlimitedObjects)=
 
 # Unlimited Objects
 
@@ -238,7 +238,7 @@ generally considered a safer embedded systems programming practice to know the
 system limits rather than experience an out of memory error at an arbitrary and
 largely unpredictable time in the field.
 
-(configunlimitedobjectsclass)=
+(ConfigUnlimitedObjectsClass)=
 
 ## Unlimited Objects by Class
 
@@ -262,7 +262,7 @@ Object maximum specifications can be evaluated with the
 {ref}`InterfaceRtemsResourceIsUnlimited` and
 {ref}`InterfaceRtemsResourceMaximumPerAllocation` macros.
 
-(configunlimitedobjectsdefault)=
+(ConfigUnlimitedObjectsDefault)=
 
 ## Unlimited Objects by Default
 

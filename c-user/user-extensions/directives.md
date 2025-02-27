@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(userextensionsmanagerdirectives)=
+(UserExtensionsManagerDirectives)=
 
 # Directives
 
@@ -53,7 +53,7 @@ directive.
 ```{index} create an extension set
 ```
 
-(interfacertemsextensioncreate)=
+(InterfaceRtemsExtensionCreate)=
 
 ## rtems_extension_create()
 
@@ -167,7 +167,7 @@ The following constraints apply to this directive:
 ```{index} delete an extension set
 ```
 
-(interfacertemsextensiondelete)=
+(InterfaceRtemsExtensionDelete)=
 
 ## rtems_extension_delete()
 
@@ -233,7 +233,7 @@ The following constraints apply to this directive:
 ```{index} rtems_extension_ident()
 ```
 
-(interfacertemsextensionident)=
+(InterfaceRtemsExtensionIdent)=
 
 ## rtems_extension_ident()
 

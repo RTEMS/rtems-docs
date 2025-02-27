@@ -2,7 +2,7 @@
 
 % Copyright (C) 2022 Trinity College Dublin
 
-(formalverifoverview)=
+(FormalVerifOverview)=
 
 # Formal Verification Overview
 

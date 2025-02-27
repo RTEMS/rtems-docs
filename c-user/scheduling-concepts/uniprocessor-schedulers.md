@@ -9,7 +9,7 @@
 All uniprocessor schedulers included in RTEMS are priority based. The
 processor is allocated to the highest priority task allowed to run.
 
-(schedulerpriority)=
+(SchedulerPriority)=
 
 ## Deterministic Priority Scheduler
 
@@ -26,7 +26,7 @@ system configured to support 256 priority levels.
 
 This scheduler is only aware of a single core.
 
-(schedulerprioritysimple)=
+(SchedulerPrioritySimple)=
 
 ## Simple Priority Scheduler
 
@@ -46,7 +46,7 @@ This scheduler is only aware of a single core.
 ```{index} earliest deadline first scheduling
 ```
 
-(scheduleredf)=
+(SchedulerEDF)=
 
 ## Earliest Deadline First Scheduler
 
@@ -81,7 +81,7 @@ deadline. Moreover, the `rtems_rate_monotonic_cancel` and
 ```{index} constant bandwidth server scheduling
 ```
 
-(schedulercbs)=
+(SchedulerCBS)=
 
 ## Constant Bandwidth Server Scheduling (CBS)
 

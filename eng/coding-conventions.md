@@ -4,7 +4,7 @@
 
 % COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-(codingconventions)=
+(CodingConventions)=
 
 # Coding Conventions
 

@@ -280,7 +280,7 @@ patches for the generated documentation and the specification to the
 
 ## Interface Specification
 
-(reqengaddapiheaderfile)=
+(ReqEngAddAPIHeaderFile)=
 
 ### Specify an API Header File
 

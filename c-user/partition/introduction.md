@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/part/if/group
 
-(partitionmanagerintroduction)=
+(PartitionManagerIntroduction)=
 
 # Introduction
 

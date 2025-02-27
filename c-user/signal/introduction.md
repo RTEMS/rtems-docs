@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/signal/if/group
 
-(signalmanagerintroduction)=
+(SignalManagerIntroduction)=
 
 # Introduction
 

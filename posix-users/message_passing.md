@@ -249,7 +249,7 @@ This section details the message passing manager's directives. A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
-(mq-open)=
+(mq_open)=
 
 ### mq_open - Open a Message Queue
 
@@ -356,7 +356,7 @@ The `mq_open()` function does not add or remove messages from the queue.
 When a new message queue is being created, the `mq_flag` field of the
 attribute structure is not used.
 
-(mq-close)=
+(mq_close)=
 
 ### mq_close - Close a Message Queue
 
@@ -400,7 +400,7 @@ available for another process to attach for notification. `mq_close` has no
 effect on the contents of the message queue, all the messages that were in the
 queue remain in the queue.
 
-(mq-unlink)=
+(mq_unlink)=
 
 ### mq_unlink - Remove a Message Queue
 
@@ -448,7 +448,7 @@ Calls to `mq_open()` to re-create the message queue may fail until the
 message queue is actually removed. However, the `mq_unlink()` call need not
 block until all references have been closed; it may return immediately.
 
-(mq-send)=
+(mq_send)=
 
 ### mq_send - Send a Message to a Message Queue
 
@@ -518,7 +518,7 @@ is set to indicate the error.
 If the specified message queue is not full, `mq_send` inserts the message at
 the position indicated by the `msg_prio` argument.
 
-(mq-receive)=
+(mq_receive)=
 
 ### mq_receive - Receive a Message from a Message Queue
 
@@ -587,7 +587,7 @@ If the size of the buffer in bytes, specified by the `msg_len` argument, is
 less than the `mq_msgsize` attribute of the message queue, the function fails
 and returns an error
 
-(mq-notify)=
+(mq_notify)=
 
 ### mq_notify - Notify Process that a Message is Available
 
@@ -653,7 +653,7 @@ It is possible for another process to receive the message after the
 notification is sent but before the notified process has sent its receive
 request.
 
-(mq-setattr)=
+(mq_setattr)=
 
 ### mq_setattr - Set Message Queue Attributes
 
@@ -712,7 +712,7 @@ and sets `errno` to indicate the error.
 
 All other fields in the `mq_attr` are ignored by this call.
 
-(mq-getattr)=
+(mq_getattr)=
 
 ### mq_getattr - Get Message Queue Attributes
 

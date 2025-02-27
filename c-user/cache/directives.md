@@ -34,7 +34,7 @@
 
 % https://docs.rtems.org
 
-(cachemanagerdirectives)=
+(CacheManagerDirectives)=
 
 # Directives
 
@@ -51,7 +51,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} rtems_cache_flush_multiple_data_lines()
 ```
 
-(interfacertemscacheflushmultipledatalines)=
+(InterfaceRtemsCacheFlushMultipleDataLines)=
 
 ## rtems_cache_flush_multiple_data_lines()
 
@@ -100,7 +100,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_invalidate_multiple_data_lines()
 ```
 
-(interfacertemscacheinvalidatemultipledatalines)=
+(InterfaceRtemsCacheInvalidateMultipleDataLines)=
 
 ## rtems_cache_invalidate_multiple_data_lines()
 
@@ -161,7 +161,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_invalidate_multiple_instruction_lines()
 ```
 
-(interfacertemscacheinvalidatemultipleinstructionlines)=
+(InterfaceRtemsCacheInvalidateMultipleInstructionLines)=
 
 ## rtems_cache_invalidate_multiple_instruction_lines()
 
@@ -220,7 +220,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_instruction_sync_after_code_change()
 ```
 
-(interfacertemscacheinstructionsyncaftercodechange)=
+(InterfaceRtemsCacheInstructionSyncAfterCodeChange)=
 
 ## rtems_cache_instruction_sync_after_code_change()
 
@@ -275,7 +275,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_get_maximal_line_size()
 ```
 
-(interfacertemscachegetmaximallinesize)=
+(InterfaceRtemsCacheGetMaximalLineSize)=
 
 ## rtems_cache_get_maximal_line_size()
 
@@ -318,7 +318,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_get_data_line_size()
 ```
 
-(interfacertemscachegetdatalinesize)=
+(InterfaceRtemsCacheGetDataLineSize)=
 
 ## rtems_cache_get_data_line_size()
 
@@ -360,7 +360,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_get_instruction_line_size()
 ```
 
-(interfacertemscachegetinstructionlinesize)=
+(InterfaceRtemsCacheGetInstructionLineSize)=
 
 ## rtems_cache_get_instruction_line_size()
 
@@ -402,7 +402,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_get_data_cache_size()
 ```
 
-(interfacertemscachegetdatacachesize)=
+(InterfaceRtemsCacheGetDataCacheSize)=
 
 ## rtems_cache_get_data_cache_size()
 
@@ -451,7 +451,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_get_instruction_cache_size()
 ```
 
-(interfacertemscachegetinstructioncachesize)=
+(InterfaceRtemsCacheGetInstructionCacheSize)=
 
 ## rtems_cache_get_instruction_cache_size()
 
@@ -500,7 +500,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_flush_entire_data()
 ```
 
-(interfacertemscacheflushentiredata)=
+(InterfaceRtemsCacheFlushEntireData)=
 
 ## rtems_cache_flush_entire_data()
 
@@ -532,7 +532,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_invalidate_entire_data()
 ```
 
-(interfacertemscacheinvalidateentiredata)=
+(InterfaceRtemsCacheInvalidateEntireData)=
 
 ## rtems_cache_invalidate_entire_data()
 
@@ -564,7 +564,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_invalidate_entire_instruction()
 ```
 
-(interfacertemscacheinvalidateentireinstruction)=
+(InterfaceRtemsCacheInvalidateEntireInstruction)=
 
 ## rtems_cache_invalidate_entire_instruction()
 
@@ -596,7 +596,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_enable_data()
 ```
 
-(interfacertemscacheenabledata)=
+(InterfaceRtemsCacheEnableData)=
 
 ## rtems_cache_enable_data()
 
@@ -628,7 +628,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_disable_data()
 ```
 
-(interfacertemscachedisabledata)=
+(InterfaceRtemsCacheDisableData)=
 
 ## rtems_cache_disable_data()
 
@@ -671,7 +671,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_enable_instruction()
 ```
 
-(interfacertemscacheenableinstruction)=
+(InterfaceRtemsCacheEnableInstruction)=
 
 ## rtems_cache_enable_instruction()
 
@@ -703,7 +703,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_disable_instruction()
 ```
 
-(interfacertemscachedisableinstruction)=
+(InterfaceRtemsCacheDisableInstruction)=
 
 ## rtems_cache_disable_instruction()
 
@@ -735,7 +735,7 @@ The following constraints apply to this directive:
 ```{index} rtems_cache_aligned_malloc()
 ```
 
-(interfacertemscachealignedmalloc)=
+(InterfaceRtemsCacheAlignedMalloc)=
 
 ## rtems_cache_aligned_malloc()
 

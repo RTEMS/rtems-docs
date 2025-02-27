@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(signalmanagerdirectives)=
+(SignalManagerDirectives)=
 
 # Directives
 
@@ -55,7 +55,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} install an ASR
 ```
 
-(interfacertemssignalcatch)=
+(InterfaceRtemsSignalCatch)=
 
 ## rtems_signal_catch()
 
@@ -149,7 +149,7 @@ The following constraints apply to this directive:
 ```{index} send signal set
 ```
 
-(interfacertemssignalsend)=
+(InterfaceRtemsSignalSend)=
 
 ## rtems_signal_send()
 

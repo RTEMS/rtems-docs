@@ -32,7 +32,7 @@ This section details the thread cancellation manager's directives. A
 subsection is dedicated to each of this manager's directives and describes the
 calling sequence, related constants, usage, and status codes.
 
-(pthread-cancel)=
+(pthread_cancel)=
 
 ### pthread_cancel - Cancel Execution of a Thread
 
@@ -65,7 +65,7 @@ int pthread_cancel(
 
 **NOTES:**
 
-(pthread-setcancelstate)=
+(pthread_setcancelstate)=
 
 ### pthread_setcancelstate - Set Cancelability State
 
@@ -99,7 +99,7 @@ int pthread_setcancelstate(
 
 **NOTES:**
 
-(pthread-setcanceltype)=
+(pthread_setcanceltype)=
 
 ### pthread_setcanceltype - Set Cancelability Type
 
@@ -133,7 +133,7 @@ int pthread_setcanceltype(
 
 **NOTES:**
 
-(pthread-testcancel)=
+(pthread_testcancel)=
 
 ### pthread_testcancel - Create Cancellation Point
 
@@ -166,7 +166,7 @@ void pthread_testcancel(
 
 **NOTES:**
 
-(pthread-cleanup-push)=
+(pthread_cleanup_push)=
 
 ### pthread_cleanup_push - Establish Cancellation Handler
 
@@ -200,7 +200,7 @@ void pthread_cleanup_push(
 
 **NOTES:**
 
-(pthread-cleanup-pop)=
+(pthread_cleanup_pop)=
 
 ### pthread_cleanup_pop - Remove Cancellation Handler
 

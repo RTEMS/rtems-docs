@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(schedulermanagerdirectives)=
+(SchedulerManagerDirectives)=
 
 # Directives
 
@@ -49,7 +49,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} rtems_scheduler_ident()
 ```
 
-(interfacertemsschedulerident)=
+(InterfaceRtemsSchedulerIdent)=
 
 ## rtems_scheduler_ident()
 
@@ -122,7 +122,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_ident_by_processor()
 ```
 
-(interfacertemsscheduleridentbyprocessor)=
+(InterfaceRtemsSchedulerIdentByProcessor)=
 
 ## rtems_scheduler_ident_by_processor()
 
@@ -186,7 +186,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_ident_by_processor_set()
 ```
 
-(interfacertemsscheduleridentbyprocessorset)=
+(InterfaceRtemsSchedulerIdentByProcessorSet)=
 
 ## rtems_scheduler_ident_by_processor_set()
 
@@ -269,7 +269,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_get_maximum_priority()
 ```
 
-(interfacertemsschedulergetmaximumpriority)=
+(InterfaceRtemsSchedulerGetMaximumPriority)=
 
 ## rtems_scheduler_get_maximum_priority()
 
@@ -330,7 +330,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_map_priority_to_posix()
 ```
 
-(interfacertemsschedulermapprioritytoposix)=
+(InterfaceRtemsSchedulerMapPriorityToPosix)=
 
 ## rtems_scheduler_map_priority_to_posix()
 
@@ -398,7 +398,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_map_priority_from_posix()
 ```
 
-(interfacertemsschedulermappriorityfromposix)=
+(InterfaceRtemsSchedulerMapPriorityFromPosix)=
 
 ## rtems_scheduler_map_priority_from_posix()
 
@@ -467,7 +467,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_get_processor()
 ```
 
-(interfacertemsschedulergetprocessor)=
+(InterfaceRtemsSchedulerGetProcessor)=
 
 ## rtems_scheduler_get_processor()
 
@@ -526,7 +526,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_get_processor_maximum()
 ```
 
-(interfacertemsschedulergetprocessormaximum)=
+(InterfaceRtemsSchedulerGetProcessorMaximum)=
 
 ## rtems_scheduler_get_processor_maximum()
 
@@ -579,7 +579,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_get_processor_set()
 ```
 
-(interfacertemsschedulergetprocessorset)=
+(InterfaceRtemsSchedulerGetProcessorSet)=
 
 ## rtems_scheduler_get_processor_set()
 
@@ -651,7 +651,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_add_processor()
 ```
 
-(interfacertemsscheduleraddprocessor)=
+(InterfaceRtemsSchedulerAddProcessor)=
 
 ## rtems_scheduler_add_processor()
 
@@ -726,7 +726,7 @@ The following constraints apply to this directive:
 ```{index} rtems_scheduler_remove_processor()
 ```
 
-(interfacertemsschedulerremoveprocessor)=
+(InterfaceRtemsSchedulerRemoveProcessor)=
 
 ## rtems_scheduler_remove_processor()
 

@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(messagemanagerdirectives)=
+(MessageManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a message queue
 ```
 
-(interfacertemsmessagequeuecreate)=
+(InterfaceRtemsMessageQueueCreate)=
 
 ## rtems_message_queue_create()
 
@@ -229,7 +229,7 @@ The following constraints apply to this directive:
 ```{index} rtems_message_queue_construct()
 ```
 
-(interfacertemsmessagequeueconstruct)=
+(InterfaceRtemsMessageQueueConstruct)=
 
 ## rtems_message_queue_construct()
 
@@ -355,7 +355,7 @@ The following constraints apply to this directive:
 ```{index} rtems_message_queue_ident()
 ```
 
-(interfacertemsmessagequeueident)=
+(InterfaceRtemsMessageQueueIdent)=
 
 ## rtems_message_queue_ident()
 
@@ -467,7 +467,7 @@ The following constraints apply to this directive:
 ```{index} delete a message queue
 ```
 
-(interfacertemsmessagequeuedelete)=
+(InterfaceRtemsMessageQueueDelete)=
 
 ## rtems_message_queue_delete()
 
@@ -560,7 +560,7 @@ The following constraints apply to this directive:
 ```{index} send message to a queue
 ```
 
-(interfacertemsmessagequeuesend)=
+(InterfaceRtemsMessageQueueSend)=
 
 ## rtems_message_queue_send()
 
@@ -651,7 +651,7 @@ The following constraints apply to this directive:
 ```{index} put message at front of queue
 ```
 
-(interfacertemsmessagequeueurgent)=
+(InterfaceRtemsMessageQueueUrgent)=
 
 ## rtems_message_queue_urgent()
 
@@ -742,7 +742,7 @@ The following constraints apply to this directive:
 ```{index} broadcast message to a queue
 ```
 
-(interfacertemsmessagequeuebroadcast)=
+(InterfaceRtemsMessageQueueBroadcast)=
 
 ## rtems_message_queue_broadcast()
 
@@ -844,7 +844,7 @@ The following constraints apply to this directive:
 ```{index} receive message from a queue
 ```
 
-(interfacertemsmessagequeuereceive)=
+(InterfaceRtemsMessageQueueReceive)=
 
 ## rtems_message_queue_receive()
 
@@ -993,7 +993,7 @@ The following constraints apply to this directive:
 ```{index} get number of pending messages
 ```
 
-(interfacertemsmessagequeuegetnumberpending)=
+(InterfaceRtemsMessageQueueGetNumberPending)=
 
 ## rtems_message_queue_get_number_pending()
 
@@ -1067,7 +1067,7 @@ The following constraints apply to this directive:
 ```{index} flush messages on a queue
 ```
 
-(interfacertemsmessagequeueflush)=
+(InterfaceRtemsMessageQueueFlush)=
 
 ## rtems_message_queue_flush()
 
@@ -1141,7 +1141,7 @@ The following constraints apply to this directive:
 ```{index} RTEMS_MESSAGE_QUEUE_BUFFER()
 ```
 
-(interfacertemsmessagequeuebuffer)=
+(InterfaceRTEMSMESSAGEQUEUEBUFFER)=
 
 ## RTEMS_MESSAGE_QUEUE_BUFFER()
 

@@ -5,7 +5,7 @@
 ```{index} support; commercial
 ```
 
-(supportcommercial)=
+(SupportCommercial)=
 
 # Commercial Support Services
 

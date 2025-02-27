@@ -8,7 +8,7 @@
 ```{index} IO Manager
 ```
 
-(rtemsapiclassicio)=
+(RTEMSAPIClassicIO)=
 
 # I/O Manager
 

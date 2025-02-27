@@ -5,7 +5,7 @@
 ```{index} events
 ```
 
-(rtemsapiclassicevent)=
+(RTEMSAPIClassicEvent)=
 
 # Event Manager
 

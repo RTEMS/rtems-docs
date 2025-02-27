@@ -2,7 +2,7 @@
 
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
-(configada)=
+(ConfigAda)=
 
 # Ada Configuration
 

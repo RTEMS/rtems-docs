@@ -4,7 +4,7 @@
 
 % Copyright (C) 2018, 2020 Sebastian Huber
 
-(filetemplates)=
+(FileTemplates)=
 
 # File Templates
 
@@ -18,7 +18,7 @@ The preferred license for source code is
 license for documentation is
 [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
-(fileheadercopyright)=
+(FileHeaderCopyright)=
 
 ## Copyright and License Block
 
@@ -74,7 +74,7 @@ Check the top-level {file}`COPYING` file of the repository. If you are a new
 copyright holder, then add yourself to the top of the list. If your last year
 of a substantial contribution changed, then please update your copyright line.
 
-(ccxxheaderfiletemplate)=
+(CCXXHeaderFileTemplate)=
 
 ## C/C++ Header File Template
 
@@ -149,7 +149,7 @@ extern "C" {
 #endif /* _FOO_BAR_BAZ_H */
 ```
 
-(ccxxasmsourcefiletemplate)=
+(CCXXASMSourceFileTemplate)=
 
 ## C/C++/Assembler Source File Template
 

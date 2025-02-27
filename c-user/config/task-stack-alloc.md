@@ -54,7 +54,7 @@ overflows are detected in hardware.
 ```{index} task stack allocator
 ```
 
-(configure-task-stack-allocator)=
+(CONFIGURE_TASK_STACK_ALLOCATOR)=
 
 ## CONFIGURE_TASK_STACK_ALLOCATOR
 
@@ -110,7 +110,7 @@ pointer of the type `void *( *allocate )( size_t )`.
 ```{index} CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
 ```
 
-(configure-task-stack-allocator-avoids-work-space)=
+(CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE)=
 
 ## CONFIGURE_TASK_STACK_ALLOCATOR_AVOIDS_WORK_SPACE
 
@@ -159,7 +159,7 @@ configured, see {ref}`CONFIGURE_TASK_STACK_ALLOCATOR`.
 ```{index} task stack allocator for IDLE tasks
 ```
 
-(configure-task-stack-allocator-for-idle)=
+(CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE)=
 
 ## CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE
 
@@ -232,7 +232,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_TASK_STACK_ALLOCATOR_INIT
 ```
 
-(configure-task-stack-allocator-init)=
+(CONFIGURE_TASK_STACK_ALLOCATOR_INIT)=
 
 ## CONFIGURE_TASK_STACK_ALLOCATOR_INIT
 
@@ -290,7 +290,7 @@ pointer of the type `void ( *initialize )( size_t )` or to [NULL](https://en.cpp
 ```{index} task stack deallocator
 ```
 
-(configure-task-stack-deallocator)=
+(CONFIGURE_TASK_STACK_DEALLOCATOR)=
 
 ## CONFIGURE_TASK_STACK_DEALLOCATOR
 
@@ -349,7 +349,7 @@ pointer of the type `void ( *deallocate )( void * )`.
 ```{index} task stack allocator
 ```
 
-(configure-task-stack-from-allocator)=
+(CONFIGURE_TASK_STACK_FROM_ALLOCATOR)=
 
 ## CONFIGURE_TASK_STACK_FROM_ALLOCATOR
 

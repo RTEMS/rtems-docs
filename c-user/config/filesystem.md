@@ -74,7 +74,7 @@ configuration options:
 ```{index} CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
 ```
 
-(configure-application-disable-filesystem)=
+(CONFIGURE_APPLICATION_DISABLE_FILESYSTEM)=
 
 ## CONFIGURE_APPLICATION_DISABLE_FILESYSTEM
 
@@ -122,7 +122,7 @@ Filesystems can be disabled to reduce the memory footprint of an application.
 ```{index} CONFIGURE_FILESYSTEM_ALL
 ```
 
-(configure-filesystem-all)=
+(CONFIGURE_FILESYSTEM_ALL)=
 
 ## CONFIGURE_FILESYSTEM_ALL
 
@@ -169,7 +169,7 @@ configuration options will be defined as well
 ```{index} CONFIGURE_FILESYSTEM_DOSFS
 ```
 
-(configure-filesystem-dosfs)=
+(CONFIGURE_FILESYSTEM_DOSFS)=
 
 ## CONFIGURE_FILESYSTEM_DOSFS
 
@@ -216,7 +216,7 @@ This filesystem requires a Block Device Cache configuration, see
 ```{index} CONFIGURE_FILESYSTEM_FTPFS
 ```
 
-(configure-filesystem-ftpfs)=
+(CONFIGURE_FILESYSTEM_FTPFS)=
 
 ## CONFIGURE_FILESYSTEM_FTPFS
 
@@ -256,7 +256,7 @@ can be mounted by the application.
 ```{index} CONFIGURE_FILESYSTEM_IMFS
 ```
 
-(configure-filesystem-imfs)=
+(CONFIGURE_FILESYSTEM_IMFS)=
 
 ## CONFIGURE_FILESYSTEM_IMFS
 
@@ -304,7 +304,7 @@ configuration option for the base filesystem (also known as root filesystem).
 ```{index} CONFIGURE_FILESYSTEM_JFFS2
 ```
 
-(configure-filesystem-jffs2)=
+(CONFIGURE_FILESYSTEM_JFFS2)=
 
 ## CONFIGURE_FILESYSTEM_JFFS2
 
@@ -344,7 +344,7 @@ application.
 ```{index} CONFIGURE_FILESYSTEM_NFS
 ```
 
-(configure-filesystem-nfs)=
+(CONFIGURE_FILESYSTEM_NFS)=
 
 ## CONFIGURE_FILESYSTEM_NFS
 
@@ -384,7 +384,7 @@ mounted by the application.
 ```{index} CONFIGURE_FILESYSTEM_RFS
 ```
 
-(configure-filesystem-rfs)=
+(CONFIGURE_FILESYSTEM_RFS)=
 
 ## CONFIGURE_FILESYSTEM_RFS
 
@@ -431,7 +431,7 @@ This filesystem requires a Block Device Cache configuration, see
 ```{index} CONFIGURE_FILESYSTEM_TFTPFS
 ```
 
-(configure-filesystem-tftpfs)=
+(CONFIGURE_FILESYSTEM_TFTPFS)=
 
 ## CONFIGURE_FILESYSTEM_TFTPFS
 
@@ -471,7 +471,7 @@ the application.
 ```{index} CONFIGURE_IMFS_DISABLE_CHMOD
 ```
 
-(configure-imfs-disable-chmod)=
+(CONFIGURE_IMFS_DISABLE_CHMOD)=
 
 ## CONFIGURE_IMFS_DISABLE_CHMOD
 
@@ -510,7 +510,7 @@ support changing the mode of files (no support for {c:func}`chmod`).
 ```{index} CONFIGURE_IMFS_DISABLE_CHOWN
 ```
 
-(configure-imfs-disable-chown)=
+(CONFIGURE_IMFS_DISABLE_CHOWN)=
 
 ## CONFIGURE_IMFS_DISABLE_CHOWN
 
@@ -549,7 +549,7 @@ support changing the ownership of files (no support for {c:func}`chown`).
 ```{index} CONFIGURE_IMFS_DISABLE_LINK
 ```
 
-(configure-imfs-disable-link)=
+(CONFIGURE_IMFS_DISABLE_LINK)=
 
 ## CONFIGURE_IMFS_DISABLE_LINK
 
@@ -588,7 +588,7 @@ support hard links (no support for {c:func}`link`).
 ```{index} CONFIGURE_IMFS_DISABLE_MKNOD
 ```
 
-(configure-imfs-disable-mknod)=
+(CONFIGURE_IMFS_DISABLE_MKNOD)=
 
 ## CONFIGURE_IMFS_DISABLE_MKNOD
 
@@ -627,7 +627,7 @@ support making files (no support for {c:func}`mknod`).
 ```{index} CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE
 ```
 
-(configure-imfs-disable-mknod-device)=
+(CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE)=
 
 ## CONFIGURE_IMFS_DISABLE_MKNOD_DEVICE
 
@@ -666,7 +666,7 @@ support making device files.
 ```{index} CONFIGURE_IMFS_DISABLE_MKNOD_FILE
 ```
 
-(configure-imfs-disable-mknod-file)=
+(CONFIGURE_IMFS_DISABLE_MKNOD_FILE)=
 
 ## CONFIGURE_IMFS_DISABLE_MKNOD_FILE
 
@@ -705,7 +705,7 @@ support making regular files.
 ```{index} CONFIGURE_IMFS_DISABLE_MOUNT
 ```
 
-(configure-imfs-disable-mount)=
+(CONFIGURE_IMFS_DISABLE_MOUNT)=
 
 ## CONFIGURE_IMFS_DISABLE_MOUNT
 
@@ -745,7 +745,7 @@ support mounting other filesystems (no support for
 ```{index} CONFIGURE_IMFS_DISABLE_READDIR
 ```
 
-(configure-imfs-disable-readdir)=
+(CONFIGURE_IMFS_DISABLE_READDIR)=
 
 ## CONFIGURE_IMFS_DISABLE_READDIR
 
@@ -785,7 +785,7 @@ still possible to open files in a directory.
 ```{index} CONFIGURE_IMFS_DISABLE_READLINK
 ```
 
-(configure-imfs-disable-readlink)=
+(CONFIGURE_IMFS_DISABLE_READLINK)=
 
 ## CONFIGURE_IMFS_DISABLE_READLINK
 
@@ -824,7 +824,7 @@ support reading symbolic links (no support for {c:func}`readlink`).
 ```{index} CONFIGURE_IMFS_DISABLE_RENAME
 ```
 
-(configure-imfs-disable-rename)=
+(CONFIGURE_IMFS_DISABLE_RENAME)=
 
 ## CONFIGURE_IMFS_DISABLE_RENAME
 
@@ -863,7 +863,7 @@ support renaming files (no support for {c:func}`rename`).
 ```{index} CONFIGURE_IMFS_DISABLE_RMNOD
 ```
 
-(configure-imfs-disable-rmnod)=
+(CONFIGURE_IMFS_DISABLE_RMNOD)=
 
 ## CONFIGURE_IMFS_DISABLE_RMNOD
 
@@ -902,7 +902,7 @@ support removing files (no support for {c:func}`rmnod`).
 ```{index} CONFIGURE_IMFS_DISABLE_SYMLINK
 ```
 
-(configure-imfs-disable-symlink)=
+(CONFIGURE_IMFS_DISABLE_SYMLINK)=
 
 ## CONFIGURE_IMFS_DISABLE_SYMLINK
 
@@ -941,7 +941,7 @@ support creating symbolic links (no support for {c:func}`symlink`).
 ```{index} CONFIGURE_IMFS_DISABLE_UNMOUNT
 ```
 
-(configure-imfs-disable-unmount)=
+(CONFIGURE_IMFS_DISABLE_UNMOUNT)=
 
 ## CONFIGURE_IMFS_DISABLE_UNMOUNT
 
@@ -981,7 +981,7 @@ support unmounting other filesystems (no support for
 ```{index} CONFIGURE_IMFS_DISABLE_UTIME
 ```
 
-(configure-imfs-disable-utime)=
+(CONFIGURE_IMFS_DISABLE_UTIME)=
 
 ## CONFIGURE_IMFS_DISABLE_UTIME
 
@@ -1020,7 +1020,7 @@ support changing file times (no support for {c:func}`utime`).
 ```{index} CONFIGURE_IMFS_ENABLE_MKFIFO
 ```
 
-(configure-imfs-enable-mkfifo)=
+(CONFIGURE_IMFS_ENABLE_MKFIFO)=
 
 ## CONFIGURE_IMFS_ENABLE_MKFIFO
 
@@ -1059,7 +1059,7 @@ making FIFOs.
 ```{index} CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
 ```
 
-(configure-imfs-memfile-bytes-per-block)=
+(CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK)=
 
 ## CONFIGURE_IMFS_MEMFILE_BYTES_PER_BLOCK
 
@@ -1129,7 +1129,7 @@ or 512.
 ```{index} CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY
 ```
 
-(configure-jffs2-delayed-write-task-priority)=
+(CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY)=
 
 ## CONFIGURE_JFFS2_DELAYED_WRITE_TASK_PRIORITY
 
@@ -1174,7 +1174,7 @@ configuration.
 ```{index} CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 ```
 
-(configure-use-devfs-as-base-filesystem)=
+(CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM)=
 
 ## CONFIGURE_USE_DEVFS_AS_BASE_FILESYSTEM
 
@@ -1240,7 +1240,7 @@ before RTEMS release 4.5.0.
 ```{index} CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
 ```
 
-(configure-use-miniimfs-as-base-filesystem)=
+(CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM)=
 
 ## CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM
 

@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(timermanagerdirectives)=
+(TimerManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a timer
 ```
 
-(interfacertemstimercreate)=
+(InterfaceRtemsTimerCreate)=
 
 ## rtems_timer_create()
 
@@ -143,7 +143,7 @@ The following constraints apply to this directive:
 ```{index} obtain the ID of a timer
 ```
 
-(interfacertemstimerident)=
+(InterfaceRtemsTimerIdent)=
 
 ## rtems_timer_ident()
 
@@ -227,7 +227,7 @@ The following constraints apply to this directive:
 ```{index} cancel a timer
 ```
 
-(interfacertemstimercancel)=
+(InterfaceRtemsTimerCancel)=
 
 ## rtems_timer_cancel()
 
@@ -291,7 +291,7 @@ The following constraints apply to this directive:
 ```{index} delete a timer
 ```
 
-(interfacertemstimerdelete)=
+(InterfaceRtemsTimerDelete)=
 
 ## rtems_timer_delete()
 
@@ -362,7 +362,7 @@ The following constraints apply to this directive:
 ```{index} fire a timer after an interval
 ```
 
-(interfacertemstimerfireafter)=
+(InterfaceRtemsTimerFireAfter)=
 
 ## rtems_timer_fire_after()
 
@@ -447,7 +447,7 @@ The following constraints apply to this directive:
 ```{index} fire a timer at time of day
 ```
 
-(interfacertemstimerfirewhen)=
+(InterfaceRtemsTimerFireWhen)=
 
 ## rtems_timer_fire_when()
 
@@ -537,7 +537,7 @@ The following constraints apply to this directive:
 ```{index} initiate the Timer Server
 ```
 
-(interfacertemstimerinitiateserver)=
+(InterfaceRtemsTimerInitiateServer)=
 
 ## rtems_timer_initiate_server()
 
@@ -637,7 +637,7 @@ The following constraints apply to this directive:
 ```{index} fire task-based a timer after an interval
 ```
 
-(interfacertemstimerserverfireafter)=
+(InterfaceRtemsTimerServerFireAfter)=
 
 ## rtems_timer_server_fire_after()
 
@@ -725,7 +725,7 @@ The following constraints apply to this directive:
 ```{index} fire a task-based timer at time of day
 ```
 
-(interfacertemstimerserverfirewhen)=
+(InterfaceRtemsTimerServerFireWhen)=
 
 ## rtems_timer_server_fire_when()
 
@@ -818,7 +818,7 @@ The following constraints apply to this directive:
 ```{index} reset a timer
 ```
 
-(interfacertemstimerreset)=
+(InterfaceRtemsTimerReset)=
 
 ## rtems_timer_reset()
 
@@ -894,7 +894,7 @@ The following constraints apply to this directive:
 ```{index} rtems_timer_get_information()
 ```
 
-(interfacertemstimergetinformation)=
+(InterfaceRtemsTimerGetInformation)=
 
 ## rtems_timer_get_information()
 

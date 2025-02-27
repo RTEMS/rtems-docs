@@ -2,7 +2,7 @@
 
 % Copyright (C) 2020 Niteesh Babu <niteesh.gs@gmail.com>
 
-(quickstartgsoc)=
+(QuickStartGSoC)=
 
 # GSoC Getting Started
 

@@ -385,7 +385,7 @@ This routine returns the name of the current user.
 This routine is not reentrant and subsequent calls to `getlogin()` will
 overwrite the same buffer.
 
-(getlogin-r)=
+(getlogin_r)=
 
 ### getlogin_r - Reentrant Get User Name
 
@@ -799,7 +799,7 @@ terminal device, then NULL is returned.
 
 This routine uses a static buffer.
 
-(ttyname-r)=
+(ttyname_r)=
 
 ### ttyname_r - Reentrant Determine Terminal Device Name
 

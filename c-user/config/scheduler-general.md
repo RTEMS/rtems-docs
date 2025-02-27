@@ -70,7 +70,7 @@ configuration option.
 ```{index} CONFIGURE_CBS_MAXIMUM_SERVERS
 ```
 
-(configure-cbs-maximum-servers)=
+(CONFIGURE_CBS_MAXIMUM_SERVERS)=
 
 ## CONFIGURE_CBS_MAXIMUM_SERVERS
 
@@ -134,7 +134,7 @@ The following constraints apply to this configuration option:
 ```{index} number of priority levels
 ```
 
-(configure-maximum-priority)=
+(CONFIGURE_MAXIMUM_PRIORITY)=
 
 ## CONFIGURE_MAXIMUM_PRIORITY
 
@@ -212,7 +212,7 @@ The value of the configuration option shall be equal to 3, 7, 31, 63, 127, or
 ```{index} CONFIGURE_SCHEDULER_ASSIGNMENTS
 ```
 
-(configure-scheduler-assignments)=
+(CONFIGURE_SCHEDULER_ASSIGNMENTS)=
 
 ## CONFIGURE_SCHEDULER_ASSIGNMENTS
 
@@ -286,7 +286,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_SCHEDULER_CBS
 ```
 
-(configure-scheduler-cbs)=
+(CONFIGURE_SCHEDULER_CBS)=
 
 ## CONFIGURE_SCHEDULER_CBS
 
@@ -336,7 +336,7 @@ is present, then it is used as the scheduler for exactly one processor.
 ```{index} CONFIGURE_SCHEDULER_EDF
 ```
 
-(configure-scheduler-edf)=
+(CONFIGURE_SCHEDULER_EDF)=
 
 ## CONFIGURE_SCHEDULER_EDF
 
@@ -386,7 +386,7 @@ is present, then it is used as the scheduler for exactly one processor.
 ```{index} CONFIGURE_SCHEDULER_EDF_SMP
 ```
 
-(configure-scheduler-edf-smp)=
+(CONFIGURE_SCHEDULER_EDF_SMP)=
 
 ## CONFIGURE_SCHEDULER_EDF_SMP
 
@@ -443,7 +443,7 @@ greater than one.
 ```{index} CONFIGURE_SCHEDULER_NAME
 ```
 
-(configure-scheduler-name)=
+(CONFIGURE_SCHEDULER_NAME)=
 
 ## CONFIGURE_SCHEDULER_NAME
 
@@ -508,7 +508,7 @@ type {c:type}`rtems_name`.
 ```{index} CONFIGURE_SCHEDULER_PRIORITY
 ```
 
-(configure-scheduler-priority)=
+(CONFIGURE_SCHEDULER_PRIORITY)=
 
 ## CONFIGURE_SCHEDULER_PRIORITY
 
@@ -565,7 +565,7 @@ The memory allocated for this scheduler depends on the
 ```{index} CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
 ```
 
-(configure-scheduler-priority-affinity-smp)=
+(CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP)=
 
 ## CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP
 
@@ -621,7 +621,7 @@ The memory allocated for this scheduler depends on the
 ```{index} CONFIGURE_SCHEDULER_PRIORITY_SMP
 ```
 
-(configure-scheduler-priority-smp)=
+(CONFIGURE_SCHEDULER_PRIORITY_SMP)=
 
 ## CONFIGURE_SCHEDULER_PRIORITY_SMP
 
@@ -677,7 +677,7 @@ The memory allocated for this scheduler depends on the
 ```{index} CONFIGURE_SCHEDULER_SIMPLE
 ```
 
-(configure-scheduler-simple)=
+(CONFIGURE_SCHEDULER_SIMPLE)=
 
 ## CONFIGURE_SCHEDULER_SIMPLE
 
@@ -727,7 +727,7 @@ is present, then it is used as the scheduler for exactly one processor.
 ```{index} CONFIGURE_SCHEDULER_SIMPLE_SMP
 ```
 
-(configure-scheduler-simple-smp)=
+(CONFIGURE_SCHEDULER_SIMPLE_SMP)=
 
 ## CONFIGURE_SCHEDULER_SIMPLE_SMP
 
@@ -780,7 +780,7 @@ is present, then it is used as the scheduler for up to 32 processors.
 ```{index} CONFIGURE_SCHEDULER_STRONG_APA
 ```
 
-(configure-scheduler-strong-apa)=
+(CONFIGURE_SCHEDULER_STRONG_APA)=
 
 ## CONFIGURE_SCHEDULER_STRONG_APA
 
@@ -831,7 +831,7 @@ This scheduler algorithm is not correctly implemented. Do not use it.
 ```{index} CONFIGURE_SCHEDULER_TABLE_ENTRIES
 ```
 
-(configure-scheduler-table-entries)=
+(CONFIGURE_SCHEDULER_TABLE_ENTRIES)=
 
 ## CONFIGURE_SCHEDULER_TABLE_ENTRIES
 
@@ -910,7 +910,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_SCHEDULER_USER
 ```
 
-(configure-scheduler-user)=
+(CONFIGURE_SCHEDULER_USER)=
 
 ## CONFIGURE_SCHEDULER_USER
 

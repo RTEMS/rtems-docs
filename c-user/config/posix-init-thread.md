@@ -48,7 +48,7 @@ initialization thread.
 ```{index} CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 ```
 
-(configure-posix-init-thread-entry-point)=
+(CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT)=
 
 ## CONFIGURE_POSIX_INIT_THREAD_ENTRY_POINT
 
@@ -100,7 +100,7 @@ pointer of the type `void *( *entry_point )( void * )`.
 ```{index} CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 ```
 
-(configure-posix-init-thread-stack-size)=
+(CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE)=
 
 ## CONFIGURE_POSIX_INIT_THREAD_STACK_SIZE
 
@@ -150,7 +150,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_POSIX_INIT_THREAD_TABLE
 ```
 
-(configure-posix-init-thread-table)=
+(CONFIGURE_POSIX_INIT_THREAD_TABLE)=
 
 ## CONFIGURE_POSIX_INIT_THREAD_TABLE
 

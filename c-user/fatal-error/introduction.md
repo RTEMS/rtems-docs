@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/fatal/if/group
 
-(fatalerrormanagerintroduction)=
+(FatalErrorManagerIntroduction)=
 
 # Introduction
 

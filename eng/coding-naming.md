@@ -4,7 +4,7 @@
 
 % COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-(namingrules)=
+(NamingRules)=
 
 # Naming Rules
 

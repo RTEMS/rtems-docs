@@ -5,7 +5,7 @@
 ```{index} clock
 ```
 
-(rtemsapiclassicclock)=
+(RTEMSAPIClassicClock)=
 
 # Clock Manager
 

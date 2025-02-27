@@ -47,7 +47,7 @@ This section describes configuration options related to the idle tasks.
 ```{index} CONFIGURE_IDLE_TASK_BODY
 ```
 
-(configure-idle-task-body)=
+(CONFIGURE_IDLE_TASK_BODY)=
 
 ## CONFIGURE_IDLE_TASK_BODY
 
@@ -111,7 +111,7 @@ pointer of the type `void *( *idle_body )( uintptr_t )`.
 ```{index} CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 ```
 
-(configure-idle-task-initializes-application)=
+(CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION)=
 
 ## CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION
 
@@ -179,7 +179,7 @@ is configured, then no {ref}`GlobalConstruction` is performed.
 ```{index} CONFIGURE_IDLE_TASK_STACK_SIZE
 ```
 
-(configure-idle-task-stack-size)=
+(CONFIGURE_IDLE_TASK_STACK_SIZE)=
 
 ## CONFIGURE_IDLE_TASK_STACK_SIZE
 
@@ -243,7 +243,7 @@ The following constraints apply to this configuration option:
 ```{index} IDLE task storage size
 ```
 
-(configure-idle-task-storage-size)=
+(CONFIGURE_IDLE_TASK_STORAGE_SIZE)=
 
 ## CONFIGURE_IDLE_TASK_STORAGE_SIZE
 

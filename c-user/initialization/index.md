@@ -2,7 +2,7 @@
 
 % Copyright (C) 2021 embedded brains GmbH & Co. KG
 
-(rtemsapiclassicinit)=
+(RTEMSAPIClassicInit)=
 
 # Initialization Manager
 

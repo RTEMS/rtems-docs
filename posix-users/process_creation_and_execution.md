@@ -310,7 +310,7 @@ This routine is not supported by RTEMS.
 
 NONE
 
-(pthread-atfork)=
+(pthread_atfork)=
 
 ### pthread_atfork - Register Fork Handlers
 
@@ -431,7 +431,7 @@ This routine is not supported by RTEMS.
 
 NONE
 
-(exit)=
+(\_exit)=
 
 ### \_exit - Terminate a Process
 

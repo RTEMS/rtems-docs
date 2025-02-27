@@ -5,7 +5,7 @@
 ```{index} tasks
 ```
 
-(rtemsapiclassictasks)=
+(RTEMSAPIClassicTasks)=
 
 # Task Manager
 

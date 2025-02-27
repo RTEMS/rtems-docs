@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(dualportedmemorymanagerdirectives)=
+(DualPortedMemoryManagerDirectives)=
 
 # Directives
 
@@ -53,7 +53,7 @@ directive.
 ```{index} create a port
 ```
 
-(interfacertemsportcreate)=
+(InterfaceRtemsPortCreate)=
 
 ## rtems_port_create()
 
@@ -162,7 +162,7 @@ The following constraints apply to this directive:
 ```{index} rtems_port_ident()
 ```
 
-(interfacertemsportident)=
+(InterfaceRtemsPortIdent)=
 
 ## rtems_port_ident()
 
@@ -246,7 +246,7 @@ The following constraints apply to this directive:
 ```{index} delete a port
 ```
 
-(interfacertemsportdelete)=
+(InterfaceRtemsPortDelete)=
 
 ## rtems_port_delete()
 
@@ -316,7 +316,7 @@ The following constraints apply to this directive:
 ```{index} convert external to internal address
 ```
 
-(interfacertemsportexternaltointernal)=
+(InterfaceRtemsPortExternalToInternal)=
 
 ## rtems_port_external_to_internal()
 
@@ -394,7 +394,7 @@ The following constraints apply to this directive:
 ```{index} convert internal to external address
 ```
 
-(interfacertemsportinternaltoexternal)=
+(InterfaceRtemsPortInternalToExternal)=
 
 ## rtems_port_internal_to_external()
 

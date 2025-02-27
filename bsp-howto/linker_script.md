@@ -294,7 +294,7 @@ dpram : {
 } >ram
 ```
 
-(initialized-data)=
+(Initialized Data)=
 
 ## Initialized Data
 

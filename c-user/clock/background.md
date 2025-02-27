@@ -21,7 +21,7 @@ time of the clock sources in a coarse resolution. To get the time of the
 `CLOCK_REALTIME` or `CLOCK_MONOTONIC` clock sources in a higher resolution,
 the Clock Driver may use a clock device to get the time between clock ticks.
 
-(time-and-date-data-structures)=
+(Time and Date Data Structures)=
 
 ## Time and Date Data Structures
 

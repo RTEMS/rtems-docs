@@ -2,7 +2,7 @@
 
 % Copyright (C) 2019 embedded brains GmbH & Co. KG
 
-(doxygenguidelines)=
+(DoxygenGuidelines)=
 
 # Doxygen Guidelines
 

@@ -48,7 +48,7 @@ This section describes configuration options related to the Block Device Cache
 ```{index} CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
 ```
 
-(configure-application-needs-libblock)=
+(CONFIGURE_APPLICATION_NEEDS_LIBBLOCK)=
 
 ## CONFIGURE_APPLICATION_NEEDS_LIBBLOCK
 
@@ -95,7 +95,7 @@ is used for example by the RFS and DOSFS filesystems.
 ```{index} CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 ```
 
-(configure-bdbuf-buffer-max-size)=
+(CONFIGURE_BDBUF_BUFFER_MAX_SIZE)=
 
 ## CONFIGURE_BDBUF_BUFFER_MAX_SIZE
 
@@ -143,7 +143,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_BDBUF_BUFFER_MIN_SIZE
 ```
 
-(configure-bdbuf-buffer-min-size)=
+(CONFIGURE_BDBUF_BUFFER_MIN_SIZE)=
 
 ## CONFIGURE_BDBUF_BUFFER_MIN_SIZE
 
@@ -191,7 +191,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
 ```
 
-(configure-bdbuf-cache-memory-size)=
+(CONFIGURE_BDBUF_CACHE_MEMORY_SIZE)=
 
 ## CONFIGURE_BDBUF_CACHE_MEMORY_SIZE
 
@@ -239,7 +239,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS
 ```
 
-(configure-bdbuf-max-read-ahead-blocks)=
+(CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS)=
 
 ## CONFIGURE_BDBUF_MAX_READ_AHEAD_BLOCKS
 
@@ -295,7 +295,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_BDBUF_MAX_WRITE_BLOCKS
 ```
 
-(configure-bdbuf-max-write-blocks)=
+(CONFIGURE_BDBUF_MAX_WRITE_BLOCKS)=
 
 ## CONFIGURE_BDBUF_MAX_WRITE_BLOCKS
 
@@ -343,7 +343,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY
 ```
 
-(configure-bdbuf-read-ahead-task-priority)=
+(CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY)=
 
 ## CONFIGURE_BDBUF_READ_AHEAD_TASK_PRIORITY
 
@@ -388,7 +388,7 @@ configuration.
 ```{index} CONFIGURE_BDBUF_TASK_STACK_SIZE
 ```
 
-(configure-bdbuf-task-stack-size)=
+(CONFIGURE_BDBUF_TASK_STACK_SIZE)=
 
 ## CONFIGURE_BDBUF_TASK_STACK_SIZE
 
@@ -441,7 +441,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_SWAPOUT_BLOCK_HOLD
 ```
 
-(configure-swapout-block-hold)=
+(CONFIGURE_SWAPOUT_BLOCK_HOLD)=
 
 ## CONFIGURE_SWAPOUT_BLOCK_HOLD
 
@@ -489,7 +489,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_SWAPOUT_SWAP_PERIOD
 ```
 
-(configure-swapout-swap-period)=
+(CONFIGURE_SWAPOUT_SWAP_PERIOD)=
 
 ## CONFIGURE_SWAPOUT_SWAP_PERIOD
 
@@ -537,7 +537,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_SWAPOUT_TASK_PRIORITY
 ```
 
-(configure-swapout-task-priority)=
+(CONFIGURE_SWAPOUT_TASK_PRIORITY)=
 
 ## CONFIGURE_SWAPOUT_TASK_PRIORITY
 
@@ -582,7 +582,7 @@ configuration.
 ```{index} CONFIGURE_SWAPOUT_WORKER_TASKS
 ```
 
-(configure-swapout-worker-tasks)=
+(CONFIGURE_SWAPOUT_WORKER_TASKS)=
 
 ## CONFIGURE_SWAPOUT_WORKER_TASKS
 
@@ -629,7 +629,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY
 ```
 
-(configure-swapout-worker-task-priority)=
+(CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY)=
 
 ## CONFIGURE_SWAPOUT_WORKER_TASK_PRIORITY
 

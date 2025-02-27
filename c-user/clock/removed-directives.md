@@ -8,7 +8,7 @@
 \clearpage
 ```
 
-(rtems-clock-get)=
+(rtems_clock_get)=
 
 ## CLOCK_GET - Get date and time information
 

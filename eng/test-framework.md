@@ -6,7 +6,7 @@
 
 # Software Test Framework
 
-(rtemstestframework)=
+(RTEMSTestFramework)=
 
 ## The RTEMS Test Framework
 
@@ -110,7 +110,7 @@ two test steps (`N`) and one test failure (`F`). The test case execution
 duration (`D`) was 0.001657 seconds. For test report details see:
 {ref}`Test Reporting <RTEMSTestFrameworkTestReporting>`.
 
-(rtemstestframeworkfixture)=
+(RTEMSTestFrameworkFixture)=
 
 ### Test Fixture
 
@@ -1747,7 +1747,7 @@ The same example with `T_VERBOSE` verbosity:
 > Z:xyz:C:4:N:9:F:3
 > ```
 
-(rtemstestframeworktestreporting)=
+(RTEMSTestFrameworkTestReporting)=
 
 ### Test Reporting
 

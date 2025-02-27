@@ -5,7 +5,7 @@
 ```{index} barrier
 ```
 
-(rtemsapiclassicbarrier)=
+(RTEMSAPIClassicBarrier)=
 
 # Barrier Manager
 

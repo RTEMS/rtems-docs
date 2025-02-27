@@ -5,7 +5,7 @@
 ```{index} interrupts
 ```
 
-(rtemsapiclassicintr)=
+(RTEMSAPIClassicIntr)=
 
 # Interrupt Manager
 

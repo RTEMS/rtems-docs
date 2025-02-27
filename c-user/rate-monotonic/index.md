@@ -8,7 +8,7 @@
 ```{index} periodic tasks
 ```
 
-(rtemsapiclassicratemon)=
+(RTEMSAPIClassicRatemon)=
 
 # Rate Monotonic Manager
 

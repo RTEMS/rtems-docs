@@ -47,7 +47,7 @@ This section describes configuration options related to the Classic API.
 ```{index} CONFIGURE_MAXIMUM_BARRIERS
 ```
 
-(configure-maximum-barriers)=
+(CONFIGURE_MAXIMUM_BARRIERS)=
 
 ## CONFIGURE_MAXIMUM_BARRIERS
 
@@ -108,7 +108,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 ```
 
-(configure-maximum-message-queues)=
+(CONFIGURE_MAXIMUM_MESSAGE_QUEUES)=
 
 ## CONFIGURE_MAXIMUM_MESSAGE_QUEUES
 
@@ -171,7 +171,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_PARTITIONS
 ```
 
-(configure-maximum-partitions)=
+(CONFIGURE_MAXIMUM_PARTITIONS)=
 
 ## CONFIGURE_MAXIMUM_PARTITIONS
 
@@ -232,7 +232,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_PERIODS
 ```
 
-(configure-maximum-periods)=
+(CONFIGURE_MAXIMUM_PERIODS)=
 
 ## CONFIGURE_MAXIMUM_PERIODS
 
@@ -293,7 +293,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_PORTS
 ```
 
-(configure-maximum-ports)=
+(CONFIGURE_MAXIMUM_PORTS)=
 
 ## CONFIGURE_MAXIMUM_PORTS
 
@@ -354,7 +354,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_REGIONS
 ```
 
-(configure-maximum-regions)=
+(CONFIGURE_MAXIMUM_REGIONS)=
 
 ## CONFIGURE_MAXIMUM_REGIONS
 
@@ -415,7 +415,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_SEMAPHORES
 ```
 
-(configure-maximum-semaphores)=
+(CONFIGURE_MAXIMUM_SEMAPHORES)=
 
 ## CONFIGURE_MAXIMUM_SEMAPHORES
 
@@ -480,7 +480,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_TASKS
 ```
 
-(configure-maximum-tasks)=
+(CONFIGURE_MAXIMUM_TASKS)=
 
 ## CONFIGURE_MAXIMUM_TASKS
 
@@ -557,7 +557,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_TIMERS
 ```
 
-(configure-maximum-timers)=
+(CONFIGURE_MAXIMUM_TIMERS)=
 
 ## CONFIGURE_MAXIMUM_TIMERS
 
@@ -618,7 +618,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MAXIMUM_USER_EXTENSIONS
 ```
 
-(configure-maximum-user-extensions)=
+(CONFIGURE_MAXIMUM_USER_EXTENSIONS)=
 
 ## CONFIGURE_MAXIMUM_USER_EXTENSIONS
 
@@ -674,7 +674,7 @@ The following constraints apply to this configuration option:
 ```{index} CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE
 ```
 
-(configure-minimum-tasks-with-user-provided-storage)=
+(CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE)=
 
 ## CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE
 

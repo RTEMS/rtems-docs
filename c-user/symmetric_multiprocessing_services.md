@@ -170,7 +170,7 @@ to another. There are four reasons why tasks migrate in RTEMS.
 Task migration should be avoided so that the working set of a task can stay on
 the most local cache level.
 
-(clusteredscheduling)=
+(ClusteredScheduling)=
 
 ### Clustered Scheduling
 
@@ -661,7 +661,7 @@ The withdraw operation takes away scheduler nodes once the thread is no longer
 allowed to use them, e.g. it released a mutex. The availability of scheduler
 nodes for a thread is controlled by the thread queues.
 
-(smpthreaddispatchdetails)=
+(SMPThreadDispatchDetails)=
 
 ### Thread Dispatch Details
 
@@ -714,7 +714,7 @@ RTEMS provides two means for per-processor data:
    This API is not intended for general application use. Please ask on the
    development mailing list in case you want to use it.
 
-(threadpinning)=
+(ThreadPinning)=
 
 ### Thread Pinning
 

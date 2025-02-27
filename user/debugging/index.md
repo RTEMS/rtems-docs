@@ -2,7 +2,7 @@
 
 % Copyright (C) 2024 Suraj Kumar
 
-(debugging)=
+(Debugging)=
 
 # Debugging
 

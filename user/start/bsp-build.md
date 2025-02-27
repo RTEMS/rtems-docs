@@ -4,7 +4,7 @@
 
 % Copyright (C) 2019 Sebastian Huber
 
-(quickstartbspbuild)=
+(QuickStartBSPBuild)=
 
 # Build a Board Support Package (BSP)
 
@@ -29,7 +29,7 @@ use one of the listed methods to build the BSP.
 In the output in this section the base directory {file}`$HOME/quick-start` was
 replaced by `$BASE`.
 
-(quickstartbspbuild-rsb)=
+(QuickStartBSPBuild_RSB)=
 
 ## RSB BSP Build
 
@@ -92,7 +92,7 @@ The RSB BSP build can be customised with following RSB command line options:
 If you have built a BSP with the RSB, you can move on to
 {ref}`QuickStartBSPTest`.
 
-(quickstartbspbuild-manual)=
+(QuickStartBSPBuild_Manual)=
 
 ## Manual BSP Build
 

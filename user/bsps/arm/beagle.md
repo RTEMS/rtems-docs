@@ -2,15 +2,15 @@
 
 % Copyright (C) 2019 Vijay Kumar Banerjee
 
-(bsp-arm-beagle)=
+(BSP_arm_beagle)=
 
-(bsp-arm-beagleboardorig)=
+(BSP_arm_beagleboardorig)=
 
-(bsp-arm-beagleboardxm)=
+(BSP_arm_beagleboardxm)=
 
-(bsp-arm-beagleboneblack)=
+(BSP_arm_beagleboneblack)=
 
-(bsp-arm-beaglebonewhite)=
+(BSP_arm_beaglebonewhite)=
 
 # beagle
 

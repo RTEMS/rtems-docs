@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(kernelcharacteriosupportdirectives)=
+(KernelCharacterIOSupportDirectives)=
 
 # Directives
 
@@ -50,7 +50,7 @@ directive.
 ```{index} rtems_putc()
 ```
 
-(interfacertemsputc)=
+(InterfaceRtemsPutc)=
 
 ## rtems_putc()
 
@@ -101,7 +101,7 @@ The following constraints apply to this directive:
 ```{index} rtems_put_char()
 ```
 
-(interfacertemsputchar)=
+(InterfaceRtemsPutChar)=
 
 ## rtems_put_char()
 
@@ -149,7 +149,7 @@ The following constraints apply to this directive:
 ```{index} putk()
 ```
 
-(interfaceputk)=
+(InterfacePutk)=
 
 ## putk()
 
@@ -206,7 +206,7 @@ The following constraints apply to this directive:
 ```{index} printk()
 ```
 
-(interfaceprintk)=
+(InterfacePrintk)=
 
 ## printk()
 
@@ -268,7 +268,7 @@ The following constraints apply to this directive:
 ```{index} vprintk()
 ```
 
-(interfacevprintk)=
+(InterfaceVprintk)=
 
 ## vprintk()
 
@@ -329,7 +329,7 @@ The following constraints apply to this directive:
 ```{index} rtems_printk_printer()
 ```
 
-(interfacertemsprintkprinter)=
+(InterfaceRtemsPrintkPrinter)=
 
 ## rtems_printk_printer()
 
@@ -393,7 +393,7 @@ The following constraints apply to this directive:
 ```{index} getchark()
 ```
 
-(interfacegetchark)=
+(InterfaceGetchark)=
 
 ## getchark()
 

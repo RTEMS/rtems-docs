@@ -4,7 +4,7 @@
 
 % Copyright (C) 2024 Gedare Bloom
 
-(migration-5-to-6)=
+(Migration_5_to_6)=
 
 # RTEMS 5 to RTEMS 6
 

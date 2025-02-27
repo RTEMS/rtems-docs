@@ -34,7 +34,7 @@
 
 % Generated from spec:/rtems/object/if/group
 
-(objectservicesintroduction)=
+(ObjectServicesIntroduction)=
 
 # Introduction
 

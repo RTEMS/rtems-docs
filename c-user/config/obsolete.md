@@ -69,7 +69,7 @@ and is obsolete since RTEMS 5.1.
 ```{index} CONFIGURE_HAS_OWN_INIT_TASK_TABLE
 ```
 
-(configure-has-own-init-task-table)=
+(CONFIGURE_HAS_OWN_INIT_TASK_TABLE)=
 
 ## CONFIGURE_HAS_OWN_INIT_TASK_TABLE
 
@@ -111,7 +111,7 @@ obsolete since RTEMS 5.1. See also {ref}`ConfigAda`.
 ```{index} CONFIGURE_MAXIMUM_DEVICES
 ```
 
-(configure-maximum-devices)=
+(CONFIGURE_MAXIMUM_DEVICES)=
 
 ## CONFIGURE_MAXIMUM_DEVICES
 
@@ -200,7 +200,7 @@ This configuration option is obsolete since RTEMS 5.1.
 ```{index} CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
 ```
 
-(configure-posix-has-own-init-thread-table)=
+(CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE)=
 
 ## CONFIGURE_POSIX_HAS_OWN_INIT_THREAD_TABLE
 

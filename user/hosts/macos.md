@@ -2,7 +2,7 @@
 
 % Copyright (C) 2016 Chris Johns <chrisj@rtems.org>
 
-(macos)=
+(MacOS)=
 
 # Apple macOS
 
@@ -81,25 +81,25 @@ To install:
    You are now ready to the build the tools within the virtual
    environment.
 
-(sonoma)=
+(Sonoma)=
 
 ## Sonoma
 
 The RSB is supported on Sonoma and Applie silicon.
 
-(ventura)=
+(Ventura)=
 
 ## Ventura
 
 The RSB is supported on Ventura and Intel silicon.
 
-(monterey)=
+(Monterey)=
 
 ## Monterey
 
 The RSB is supported on Ventura and Intel silicon.
 
-(catalina)=
+(Catalina)=
 
 ## Catalina
 
@@ -111,13 +111,13 @@ also
 Due to the deprecated Python 2.7 support, we recommend to install and use the
 [latest Python 3 release from python.org](https://www.python.org/downloads/mac-osx/).
 
-(sierra)=
+(Sierra)=
 
 ## Sierra
 
 The RSB works on Sierra with the latest Xcode.
 
-(mavericks)=
+(Mavericks)=
 
 ## Mavericks
 

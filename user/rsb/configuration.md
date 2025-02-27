@@ -4,7 +4,7 @@
 
 % Copyright (C) 2012, 2016 Chris Johns <chrisj@rtems.org>
 
-(configuration)=
+(Configuration)=
 
 # Configuration
 
@@ -353,14 +353,14 @@ function. These are:
 - From mail address
 - SMTP host
 
-(to-mail-address)=
+(To Mail Address)=
 
 The `to` mail address is taken from the macro `%{_mail_tools_to}` and the
 default is *rtems-tooltestresults at rtems.org*. You can override the default
 with a personal or user macro file or via the command line option
 `--mail-to`.
 
-(from-mail-address)=
+(From Mail Address)=
 
 The `from` mail address is taken from:
 

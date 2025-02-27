@@ -2,15 +2,15 @@
 
 % Copyright (C) 2020 On-Line Applications Research Corporation (OAR)
 
-(bsp-aarch64-qemu-zynqmp-qemu-ilp32)=
+(BSP_aarch64_qemu_zynqmp_qemu_ilp32)=
 
-(bsp-aarch64-qemu-zynqmp-qemu)=
+(BSP_aarch64_qemu_zynqmp_qemu)=
 
-(bsp-aarch64-qemu-zynqmp-apu-ilp32)=
+(BSP_aarch64_qemu_zynqmp_apu_ilp32)=
 
-(bsp-aarch64-qemu-zynqmp-apu)=
+(BSP_aarch64_qemu_zynqmp_apu)=
 
-(bsp-aarch64-qemu-zynqmp-cfc400x)=
+(BSP_aarch64_qemu_zynqmp_cfc400x)=
 
 # Xilinx ZynqMP
 

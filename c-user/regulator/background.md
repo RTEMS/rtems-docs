@@ -2,7 +2,7 @@
 
 % Copyright (C) 2023 On-Line Applications Research Corporation (OAR)
 
-(regulatormanagerbackground)=
+(RegulatorManagerBackground)=
 
 # Background
 

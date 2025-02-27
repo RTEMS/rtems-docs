@@ -7,7 +7,7 @@ substitutions:
 
 % Copyright (C) 2019, 2020 embedded brains GmbH & Co. KG
 
-(reqeng)=
+(ReqEng)=
 
 # Software Requirements Engineering
 

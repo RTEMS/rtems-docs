@@ -37,7 +37,7 @@ This section details the clock manager's directives. A subsection is dedicated
 to each of this manager's directives and describes the calling sequence,
 related constants, usage, and status codes.
 
-(clock-gettime)=
+(clock_gettime)=
 
 ### clock_gettime - Obtain Time of Day
 
@@ -77,7 +77,7 @@ On error, this routine returns -1 and sets `errno` to one of the following:
 
 NONE
 
-(clock-settime)=
+(clock_settime)=
 
 ### clock_settime - Set Time of Day
 
@@ -119,7 +119,7 @@ On error, this routine returns -1 and sets `errno` to one of the following:
 
 NONE
 
-(clock-getres)=
+(clock_getres)=
 
 ### clock_getres - Get Clock Resolution
 

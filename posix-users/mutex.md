@@ -74,7 +74,7 @@ This section details the mutex manager's services. A subsection is dedicated
 to each of this manager's services and describes the calling sequence, related
 constants, usage, and status codes.
 
-(pthread-mutexattr-init)=
+(pthread_mutexattr_init)=
 
 ### pthread_mutexattr_init - Initialize a Mutex Attribute Set
 
@@ -108,7 +108,7 @@ attributes.
 
 XXX insert list of default attributes here.
 
-(pthread-mutexattr-destroy)=
+(pthread_mutexattr_destroy)=
 
 ### pthread_mutexattr_destroy - Destroy a Mutex Attribute Set
 
@@ -149,7 +149,7 @@ destroyed is implementation dependent.
 
 NONE
 
-(pthread-mutexattr-setprotocol)=
+(pthread_mutexattr_setprotocol)=
 
 ### pthread_mutexattr_setprotocol - Set the Blocking Protocol
 
@@ -210,7 +210,7 @@ The `protocol` can be one of the following:
 There is currently no way to get simple priority blocking ordering with POSIX
 mutexes even though this could easily by supported by RTEMS.
 
-(pthread-mutexattr-getprotocol)=
+(pthread_mutexattr_getprotocol)=
 
 ### pthread_mutexattr_getprotocol - Get the Blocking Protocol
 
@@ -254,7 +254,7 @@ waiting on this mutex will receive it.
 
 NONE
 
-(pthread-mutexattr-setprioceiling)=
+(pthread_mutexattr_setprioceiling)=
 
 ### pthread_mutexattr_setprioceiling - Set the Priority Ceiling
 
@@ -300,7 +300,7 @@ priority will be elevated to `prioceiling`.
 
 NONE
 
-(pthread-mutexattr-getprioceiling)=
+(pthread_mutexattr_getprioceiling)=
 
 ### pthread_mutexattr_getprioceiling - Get the Priority Ceiling
 
@@ -344,7 +344,7 @@ for this mutex.
 
 NONE
 
-(pthread-mutexattr-setpshared)=
+(pthread_mutexattr_setpshared)=
 
 ### pthread_mutexattr_setpshared - Set the Visibility
 
@@ -382,7 +382,7 @@ int pthread_mutexattr_setpshared(
 
 **NOTES:**
 
-(pthread-mutexattr-getpshared)=
+(pthread_mutexattr_getpshared)=
 
 ### pthread_mutexattr_getpshared - Get the Visibility
 
@@ -420,7 +420,7 @@ int pthread_mutexattr_getpshared(
 
 **NOTES:**
 
-(pthread-mutex-init)=
+(pthread_mutex_init)=
 
 ### pthread_mutex_init - Initialize a Mutex
 
@@ -463,7 +463,7 @@ int pthread_mutex_init(
 
 **NOTES:**
 
-(pthread-mutex-destroy)=
+(pthread_mutex_destroy)=
 
 ### pthread_mutex_destroy - Destroy a Mutex
 
@@ -499,7 +499,7 @@ int pthread_mutex_init(
 
 **NOTES:**
 
-(pthread-mutex-lock)=
+(pthread_mutex_lock)=
 
 ### pthread_mutex_lock - Lock a Mutex
 
@@ -538,7 +538,7 @@ int pthread_mutex_lock(
 
 **NOTES:**
 
-(pthread-mutex-trylock)=
+(pthread_mutex_trylock)=
 
 ### pthread_mutex_trylock - Poll to Lock a Mutex
 
@@ -576,7 +576,7 @@ int pthread_mutex_trylock(
 
 **NOTES:**
 
-(pthread-mutex-timedlock)=
+(pthread_mutex_timedlock)=
 
 ### pthread_mutex_timedlock - Lock a Mutex with Timeout
 
@@ -622,7 +622,7 @@ int pthread_mutex_timedlock(
 
 **NOTES:**
 
-(pthread-mutex-unlock)=
+(pthread_mutex_unlock)=
 
 ### pthread_mutex_unlock - Unlock a Mutex
 
@@ -655,7 +655,7 @@ int pthread_mutex_unlock(
 
 **NOTES:**
 
-(pthread-mutex-setprioceiling)=
+(pthread_mutex_setprioceiling)=
 
 ### pthread_mutex_setprioceiling - Dynamically Set the Priority Ceiling
 
@@ -694,7 +694,7 @@ int pthread_mutex_setprioceiling(
 
 **NOTES:**
 
-(pthread-mutex-getprioceiling)=
+(pthread_mutex_getprioceiling)=
 
 ### pthread_mutex_getprioceiling - Get the Current Priority Ceiling
 

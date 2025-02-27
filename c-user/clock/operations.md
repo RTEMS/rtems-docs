@@ -49,7 +49,7 @@ RTEMS provides multiple directives which can be used by an application to obtain
 Calendar time operations will return an error code if invoked before the date
 and time have been set.
 
-(clockmanageradviceclockget)=
+(ClockManagerAdviceClockGet)=
 
 ## Transition Advice for the Removed rtems_clock_get()
 

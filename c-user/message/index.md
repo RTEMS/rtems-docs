@@ -8,7 +8,7 @@
 ```{index} message queues
 ```
 
-(rtemsapiclassicmessage)=
+(RTEMSAPIClassicMessage)=
 
 # Message Manager
 

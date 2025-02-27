@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(objectservicesdirectives)=
+(ObjectServicesDirectives)=
 
 # Directives
 
@@ -49,7 +49,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} rtems_build_id()
 ```
 
-(interfacertemsbuildid)=
+(InterfaceRtemsBuildId)=
 
 ## rtems_build_id()
 
@@ -112,7 +112,7 @@ The following constraints apply to this directive:
 ```{index} rtems_build_name()
 ```
 
-(interfacertemsbuildname)=
+(InterfaceRtemsBuildName)=
 
 ## rtems_build_name()
 
@@ -176,7 +176,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_get_classic_name()
 ```
 
-(interfacertemsobjectgetclassicname)=
+(InterfaceRtemsObjectGetClassicName)=
 
 ## rtems_object_get_classic_name()
 
@@ -242,7 +242,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_get_name()
 ```
 
-(interfacertemsobjectgetname)=
+(InterfaceRtemsObjectGetName)=
 
 ## rtems_object_get_name()
 
@@ -316,7 +316,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_set_name()
 ```
 
-(interfacertemsobjectsetname)=
+(InterfaceRtemsObjectSetName)=
 
 ## rtems_object_set_name()
 
@@ -401,7 +401,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_id_get_api()
 ```
 
-(interfacertemsobjectidgetapi)=
+(InterfaceRtemsObjectIdGetApi)=
 
 ## rtems_object_id_get_api()
 
@@ -454,7 +454,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_id_get_class()
 ```
 
-(interfacertemsobjectidgetclass)=
+(InterfaceRtemsObjectIdGetClass)=
 
 ## rtems_object_id_get_class()
 
@@ -507,7 +507,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_id_get_node()
 ```
 
-(interfacertemsobjectidgetnode)=
+(InterfaceRtemsObjectIdGetNode)=
 
 ## rtems_object_id_get_node()
 
@@ -561,7 +561,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_id_get_index()
 ```
 
-(interfacertemsobjectidgetindex)=
+(InterfaceRtemsObjectIdGetIndex)=
 
 ## rtems_object_id_get_index()
 
@@ -614,7 +614,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_id_api_minimum()
 ```
 
-(interfacertemsobjectidapiminimum)=
+(InterfaceRtemsObjectIdApiMinimum)=
 
 ## rtems_object_id_api_minimum()
 
@@ -654,7 +654,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_id_api_maximum()
 ```
 
-(interfacertemsobjectidapimaximum)=
+(InterfaceRtemsObjectIdApiMaximum)=
 
 ## rtems_object_id_api_maximum()
 
@@ -694,7 +694,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_api_minimum_class()
 ```
 
-(interfacertemsobjectapiminimumclass)=
+(InterfaceRtemsObjectApiMinimumClass)=
 
 ## rtems_object_api_minimum_class()
 
@@ -742,7 +742,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_api_maximum_class()
 ```
 
-(interfacertemsobjectapimaximumclass)=
+(InterfaceRtemsObjectApiMaximumClass)=
 
 ## rtems_object_api_maximum_class()
 
@@ -790,7 +790,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_get_api_name()
 ```
 
-(interfacertemsobjectgetapiname)=
+(InterfaceRtemsObjectGetApiName)=
 
 ## rtems_object_get_api_name()
 
@@ -844,7 +844,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_get_api_class_name()
 ```
 
-(interfacertemsobjectgetapiclassname)=
+(InterfaceRtemsObjectGetApiClassName)=
 
 ## rtems_object_get_api_class_name()
 
@@ -905,7 +905,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_get_class_information()
 ```
 
-(interfacertemsobjectgetclassinformation)=
+(InterfaceRtemsObjectGetClassInformation)=
 
 ## rtems_object_get_class_information()
 
@@ -971,7 +971,7 @@ The following constraints apply to this directive:
 ```{index} rtems_object_get_local_node()
 ```
 
-(interfacertemsobjectgetlocalnode)=
+(InterfaceRtemsObjectGetLocalNode)=
 
 ## rtems_object_get_local_node()
 
@@ -1009,7 +1009,7 @@ The following constraints apply to this directive:
 ```{index} RTEMS_OBJECT_ID_INITIAL()
 ```
 
-(interfacertemsobjectidinitial)=
+(InterfaceRTEMSOBJECTIDINITIAL)=
 
 ## RTEMS_OBJECT_ID_INITIAL()
 

@@ -2,7 +2,7 @@
 
 % Copyright (C) 2017 Chris Johns <chrisj@rtems.org>
 
-(hosttools)=
+(HostTools)=
 
 # Host Tools
 

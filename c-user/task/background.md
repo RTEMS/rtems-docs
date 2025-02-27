@@ -28,7 +28,7 @@ From RTEMS' perspective, a task is the smallest thread of execution which can
 compete on its own for system resources. A task is manifested by the existence
 of a task control block (TCB).
 
-(taskcontrolblock)=
+(TaskControlBlock)=
 
 ## Task Control Block
 
@@ -118,7 +118,7 @@ scheduling of a task is based on its current state and priority.
 ```{index} rtems_task_priority
 ```
 
-(taskpriority)=
+(TaskPriority)=
 
 ## Task Priority
 
@@ -303,7 +303,7 @@ an index into an array of parameter blocks.
 ```{index} floating point
 ```
 
-(taskfloatingpointconsiderations)=
+(TaskFloatingPointConsiderations)=
 
 ## Floating Point Considerations
 

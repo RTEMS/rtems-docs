@@ -48,7 +48,7 @@ Note that network device drivers are not covered by the following options.
 ```{index} CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 ```
 
-(configure-application-does-not-need-clock-driver)=
+(CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER)=
 
 ## CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER
 
@@ -103,7 +103,7 @@ otherwise a compile time error in the configuration file will occur.
 ```{index} CONFIGURE_APPLICATION_EXTRA_DRIVERS
 ```
 
-(configure-application-extra-drivers)=
+(CONFIGURE_APPLICATION_EXTRA_DRIVERS)=
 
 ## CONFIGURE_APPLICATION_EXTRA_DRIVERS
 
@@ -158,7 +158,7 @@ structures of type {ref}`InterfaceRtemsDriverAddressTable`.
 ```{index} CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
 ```
 
-(configure-application-needs-ata-driver)=
+(CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER
 
@@ -206,7 +206,7 @@ the user will get a link time error for an undefined symbol.
 ```{index} CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 ```
 
-(configure-application-needs-clock-driver)=
+(CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
 
@@ -260,7 +260,7 @@ otherwise a compile time error in the configuration file will occur.
 ```{index} CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 ```
 
-(configure-application-needs-console-driver)=
+(CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 
@@ -318,7 +318,7 @@ configuration options are mutually exclusive.
 ```{index} CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
 ```
 
-(configure-application-needs-frame-buffer-driver)=
+(CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER
 
@@ -367,7 +367,7 @@ the user will get a link time error for an undefined symbol.
 ```{index} CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
 ```
 
-(configure-application-needs-ide-driver)=
+(CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER
 
@@ -418,7 +418,7 @@ the user will get a link time error for an undefined symbol.
 ```{index} /dev/null
 ```
 
-(configure-application-needs-null-driver)=
+(CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER
 
@@ -463,7 +463,7 @@ This device driver is supported by all BSPs.
 ```{index} CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
 ```
 
-(configure-application-needs-rtc-driver)=
+(CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER
 
@@ -512,7 +512,7 @@ user will get a link time error for an undefined symbol.
 ```{index} CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 ```
 
-(configure-application-needs-simple-console-driver)=
+(CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER
 
@@ -574,7 +574,7 @@ configuration options are mutually exclusive.
 ```{index} CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
 ```
 
-(configure-application-needs-simple-task-console-driver)=
+(CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER
 
@@ -645,7 +645,7 @@ configuration options are mutually exclusive.
 ```{index} CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
 ```
 
-(configure-application-needs-stub-driver)=
+(CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER
 
@@ -691,7 +691,7 @@ is primarily a test fixture. It is supported by all BSPs.
 ```{index} CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
 ```
 
-(configure-application-needs-timer-driver)=
+(CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER
 
@@ -745,7 +745,7 @@ otherwise a compile time error will occur.
 ```{index} CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 ```
 
-(configure-application-needs-watchdog-driver)=
+(CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER
 
@@ -797,7 +797,7 @@ user will get a link time error for an undefined symbol.
 ```{index} /dev/zero
 ```
 
-(configure-application-needs-zero-driver)=
+(CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER)=
 
 ## CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER
 
@@ -842,7 +842,7 @@ This device driver is supported by all BSPs.
 ```{index} CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
 ```
 
-(configure-application-prerequisite-drivers)=
+(CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS)=
 
 ## CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS
 
@@ -898,7 +898,7 @@ structures of type {ref}`InterfaceRtemsDriverAddressTable`.
 ```{index} CONFIGURE_ATA_DRIVER_TASK_PRIORITY
 ```
 
-(configure-ata-driver-task-priority)=
+(CONFIGURE_ATA_DRIVER_TASK_PRIORITY)=
 
 ## CONFIGURE_ATA_DRIVER_TASK_PRIORITY
 
@@ -950,7 +950,7 @@ configuration.
 ```{index} CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
 ```
 
-(configure-exception-to-signal-mapping)=
+(CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING)=
 
 ## CONFIGURE_EXCEPTION_TO_SIGNAL_MAPPING
 
@@ -999,7 +999,7 @@ This is especially useful for applications written in Ada or C++.
 ```{index} CONFIGURE_MAXIMUM_DRIVERS
 ```
 
-(configure-maximum-drivers)=
+(CONFIGURE_MAXIMUM_DRIVERS)=
 
 ## CONFIGURE_MAXIMUM_DRIVERS
 

@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(taskmanagerdirectives)=
+(TaskManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a task
 ```
 
-(interfacertemstaskcreate)=
+(InterfaceRtemsTaskCreate)=
 
 ## rtems_task_create()
 
@@ -323,7 +323,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_construct()
 ```
 
-(interfacertemstaskconstruct)=
+(InterfaceRtemsTaskConstruct)=
 
 ## rtems_task_construct()
 
@@ -462,7 +462,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_ident()
 ```
 
-(interfacertemstaskident)=
+(InterfaceRtemsTaskIdent)=
 
 ## rtems_task_ident()
 
@@ -573,7 +573,7 @@ The following constraints apply to this directive:
 ```{index} obtain ID of caller
 ```
 
-(interfacertemstaskself)=
+(InterfaceRtemsTaskSelf)=
 
 ## rtems_task_self()
 
@@ -621,7 +621,7 @@ The following constraints apply to this directive:
 ```{index} starting a task
 ```
 
-(interfacertemstaskstart)=
+(InterfaceRtemsTaskStart)=
 
 ## rtems_task_start()
 
@@ -720,7 +720,7 @@ The following constraints apply to this directive:
 ```{index} restarting a task
 ```
 
-(interfacertemstaskrestart)=
+(InterfaceRtemsTaskRestart)=
 
 ## rtems_task_restart()
 
@@ -820,7 +820,7 @@ The following constraints apply to this directive:
 ```{index} delete a task
 ```
 
-(interfacertemstaskdelete)=
+(InterfaceRtemsTaskDelete)=
 
 ## rtems_task_delete()
 
@@ -938,7 +938,7 @@ The following constraints apply to this directive:
 ```{index} deleting a task
 ```
 
-(interfacertemstaskexit)=
+(InterfaceRtemsTaskExit)=
 
 ## rtems_task_exit()
 
@@ -1007,7 +1007,7 @@ The following constraints apply to this directive:
 ```{index} suspending a task
 ```
 
-(interfacertemstasksuspend)=
+(InterfaceRtemsTaskSuspend)=
 
 ## rtems_task_suspend()
 
@@ -1089,7 +1089,7 @@ The following constraints apply to this directive:
 ```{index} resuming a task
 ```
 
-(interfacertemstaskresume)=
+(InterfaceRtemsTaskResume)=
 
 ## rtems_task_resume()
 
@@ -1156,7 +1156,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_is_suspended()
 ```
 
-(interfacertemstaskissuspended)=
+(InterfaceRtemsTaskIsSuspended)=
 
 ## rtems_task_is_suspended()
 
@@ -1233,7 +1233,7 @@ The following constraints apply to this directive:
 ```{index} obtain task priority
 ```
 
-(interfacertemstasksetpriority)=
+(InterfaceRtemsTaskSetPriority)=
 
 ## rtems_task_set_priority()
 
@@ -1346,7 +1346,7 @@ The following constraints apply to this directive:
 ```{index} obtain task priority
 ```
 
-(interfacertemstaskgetpriority)=
+(InterfaceRtemsTaskGetPriority)=
 
 ## rtems_task_get_priority()
 
@@ -1457,7 +1457,7 @@ The following constraints apply to this directive:
 ```{index} obtain task mode
 ```
 
-(interfacertemstaskmode)=
+(InterfaceRtemsTaskMode)=
 
 ## rtems_task_mode()
 
@@ -1614,7 +1614,7 @@ The following constraints apply to this directive:
 ```{index} wake up after a count of clock ticks
 ```
 
-(interfacertemstaskwakeafter)=
+(InterfaceRtemsTaskWakeAfter)=
 
 ## rtems_task_wake_after()
 
@@ -1696,7 +1696,7 @@ The following constraints apply to this directive:
 ```{index} wake up at a wall time
 ```
 
-(interfacertemstaskwakewhen)=
+(InterfaceRtemsTaskWakeWhen)=
 
 ## rtems_task_wake_when()
 
@@ -1771,7 +1771,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_get_scheduler()
 ```
 
-(interfacertemstaskgetscheduler)=
+(InterfaceRtemsTaskGetScheduler)=
 
 ## rtems_task_get_scheduler()
 
@@ -1843,7 +1843,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_set_scheduler()
 ```
 
-(interfacertemstasksetscheduler)=
+(InterfaceRtemsTaskSetScheduler)=
 
 ## rtems_task_set_scheduler()
 
@@ -1945,7 +1945,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_get_affinity()
 ```
 
-(interfacertemstaskgetaffinity)=
+(InterfaceRtemsTaskGetAffinity)=
 
 ## rtems_task_get_affinity()
 
@@ -2029,7 +2029,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_set_affinity()
 ```
 
-(interfacertemstasksetaffinity)=
+(InterfaceRtemsTaskSetAffinity)=
 
 ## rtems_task_set_affinity()
 
@@ -2112,7 +2112,7 @@ The following constraints apply to this directive:
 ```{index} rtems_task_iterate()
 ```
 
-(interfacertemstaskiterate)=
+(InterfaceRtemsTaskIterate)=
 
 ## rtems_task_iterate()
 
@@ -2175,7 +2175,7 @@ The following constraints apply to this directive:
 ```{index} RTEMS_TASK_STORAGE_SIZE()
 ```
 
-(interfacertemstaskstoragesize)=
+(InterfaceRTEMSTASKSTORAGESIZE)=
 
 ## RTEMS_TASK_STORAGE_SIZE()
 

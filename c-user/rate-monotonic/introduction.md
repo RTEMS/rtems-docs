@@ -36,7 +36,7 @@
 
 % Generated from spec:/rtems/ratemon/if/group
 
-(ratemonotonicmanagerintroduction)=
+(RateMonotonicManagerIntroduction)=
 
 # Introduction
 

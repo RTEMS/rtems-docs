@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(interruptmanagerdirectives)=
+(InterruptManagerDirectives)=
 
 # Directives
 
@@ -55,7 +55,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} install an ISR
 ```
 
-(interfacertemsinterruptcatch)=
+(InterfaceRtemsInterruptCatch)=
 
 ## rtems_interrupt_catch()
 
@@ -142,7 +142,7 @@ The following constraints apply to this directive:
 ```{index} disable interrupts
 ```
 
-(interfacertemsinterruptdisable)=
+(InterfaceRtemsInterruptDisable)=
 
 ## rtems_interrupt_disable()
 
@@ -246,7 +246,7 @@ The following constraints apply to this directive:
 ```{index} restore interrupt level
 ```
 
-(interfacertemsinterruptenable)=
+(InterfaceRtemsInterruptEnable)=
 
 ## rtems_interrupt_enable()
 
@@ -317,7 +317,7 @@ The following constraints apply to this directive:
 ```{index} flash interrupts
 ```
 
-(interfacertemsinterruptflash)=
+(InterfaceRtemsInterruptFlash)=
 
 ## rtems_interrupt_flash()
 
@@ -385,7 +385,7 @@ The following constraints apply to this directive:
 ```{index} disable interrupts
 ```
 
-(interfacertemsinterruptlocaldisable)=
+(InterfaceRtemsInterruptLocalDisable)=
 
 ## rtems_interrupt_local_disable()
 
@@ -490,7 +490,7 @@ The following constraints apply to this directive:
 ```{index} restore interrupt level
 ```
 
-(interfacertemsinterruptlocalenable)=
+(InterfaceRtemsInterruptLocalEnable)=
 
 ## rtems_interrupt_local_enable()
 
@@ -556,7 +556,7 @@ The following constraints apply to this directive:
 ```{index} is interrupt in progress
 ```
 
-(interfacertemsinterruptisinprogress)=
+(InterfaceRtemsInterruptIsInProgress)=
 
 ## rtems_interrupt_is_in_progress()
 
@@ -604,7 +604,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_lock_initialize()
 ```
 
-(interfacertemsinterruptlockinitialize)=
+(InterfaceRtemsInterruptLockInitialize)=
 
 ## rtems_interrupt_lock_initialize()
 
@@ -649,7 +649,7 @@ ISR locks may also be statically defined by
 ```{index} rtems_interrupt_lock_destroy()
 ```
 
-(interfacertemsinterruptlockdestroy)=
+(InterfaceRtemsInterruptLockDestroy)=
 
 ## rtems_interrupt_lock_destroy()
 
@@ -700,7 +700,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_lock_acquire()
 ```
 
-(interfacertemsinterruptlockacquire)=
+(InterfaceRtemsInterruptLockAcquire)=
 
 ## rtems_interrupt_lock_acquire()
 
@@ -788,7 +788,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_lock_release()
 ```
 
-(interfacertemsinterruptlockrelease)=
+(InterfaceRtemsInterruptLockRelease)=
 
 ## rtems_interrupt_lock_release()
 
@@ -854,7 +854,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_lock_acquire_isr()
 ```
 
-(interfacertemsinterruptlockacquireisr)=
+(InterfaceRtemsInterruptLockAcquireIsr)=
 
 ## rtems_interrupt_lock_acquire_isr()
 
@@ -929,7 +929,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_lock_release_isr()
 ```
 
-(interfacertemsinterruptlockreleaseisr)=
+(InterfaceRtemsInterruptLockReleaseIsr)=
 
 ## rtems_interrupt_lock_release_isr()
 
@@ -994,7 +994,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_lock_interrupt_disable()
 ```
 
-(interfacertemsinterruptlockinterruptdisable)=
+(InterfaceRtemsInterruptLockInterruptDisable)=
 
 ## rtems_interrupt_lock_interrupt_disable()
 
@@ -1042,7 +1042,7 @@ The following constraints apply to this directive:
 ```{index} RTEMS_INTERRUPT_LOCK_DECLARE()
 ```
 
-(interfacertemsinterruptlockdeclare)=
+(InterfaceRTEMSINTERRUPTLOCKDECLARE)=
 
 ## RTEMS_INTERRUPT_LOCK_DECLARE()
 
@@ -1082,7 +1082,7 @@ Do not add a ";" after this macro.
 ```{index} RTEMS_INTERRUPT_LOCK_DEFINE()
 ```
 
-(interfacertemsinterruptlockdefine)=
+(InterfaceRTEMSINTERRUPTLOCKDEFINE)=
 
 ## RTEMS_INTERRUPT_LOCK_DEFINE()
 
@@ -1130,7 +1130,7 @@ ISR locks may also be dynamically initialized by
 ```{index} RTEMS_INTERRUPT_LOCK_INITIALIZER()
 ```
 
-(interfacertemsinterruptlockinitializer)=
+(InterfaceRTEMSINTERRUPTLOCKINITIALIZER)=
 
 ## RTEMS_INTERRUPT_LOCK_INITIALIZER()
 
@@ -1169,7 +1169,7 @@ ISR locks may also be dynamically initialized by
 ```{index} RTEMS_INTERRUPT_LOCK_MEMBER()
 ```
 
-(interfacertemsinterruptlockmember)=
+(InterfaceRTEMSINTERRUPTLOCKMEMBER)=
 
 ## RTEMS_INTERRUPT_LOCK_MEMBER()
 
@@ -1205,7 +1205,7 @@ Do not add a ";" after this macro.
 ```{index} RTEMS_INTERRUPT_LOCK_REFERENCE()
 ```
 
-(interfacertemsinterruptlockreference)=
+(InterfaceRTEMSINTERRUPTLOCKREFERENCE)=
 
 ## RTEMS_INTERRUPT_LOCK_REFERENCE()
 
@@ -1244,7 +1244,7 @@ Do not add a ";" after this macro.
 ```{index} RTEMS_INTERRUPT_ENTRY_INITIALIZER()
 ```
 
-(interfacertemsinterruptentryinitializer)=
+(InterfaceRTEMSINTERRUPTENTRYINITIALIZER)=
 
 ## RTEMS_INTERRUPT_ENTRY_INITIALIZER()
 
@@ -1291,7 +1291,7 @@ dynamically initialize an interrupt entry.
 ```{index} rtems_interrupt_entry_initialize()
 ```
 
-(interfacertemsinterruptentryinitialize)=
+(InterfaceRtemsInterruptEntryInitialize)=
 
 ## rtems_interrupt_entry_initialize()
 
@@ -1351,7 +1351,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_entry_install()
 ```
 
-(interfacertemsinterruptentryinstall)=
+(InterfaceRtemsInterruptEntryInstall)=
 
 ## rtems_interrupt_entry_install()
 
@@ -1475,7 +1475,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_entry_remove()
 ```
 
-(interfacertemsinterruptentryremove)=
+(InterfaceRtemsInterruptEntryRemove)=
 
 ## rtems_interrupt_entry_remove()
 
@@ -1555,7 +1555,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_handler_install()
 ```
 
-(interfacertemsinterrupthandlerinstall)=
+(InterfaceRtemsInterruptHandlerInstall)=
 
 ## rtems_interrupt_handler_install()
 
@@ -1690,7 +1690,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_handler_remove()
 ```
 
-(interfacertemsinterrupthandlerremove)=
+(InterfaceRtemsInterruptHandlerRemove)=
 
 ## rtems_interrupt_handler_remove()
 
@@ -1765,7 +1765,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_vector_is_enabled()
 ```
 
-(interfacertemsinterruptvectorisenabled)=
+(InterfaceRtemsInterruptVectorIsEnabled)=
 
 ## rtems_interrupt_vector_is_enabled()
 
@@ -1846,7 +1846,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_vector_enable()
 ```
 
-(interfacertemsinterruptvectorenable)=
+(InterfaceRtemsInterruptVectorEnable)=
 
 ## rtems_interrupt_vector_enable()
 
@@ -1919,7 +1919,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_vector_disable()
 ```
 
-(interfacertemsinterruptvectordisable)=
+(InterfaceRtemsInterruptVectorDisable)=
 
 ## rtems_interrupt_vector_disable()
 
@@ -1992,7 +1992,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_is_pending()
 ```
 
-(interfacertemsinterruptispending)=
+(InterfaceRtemsInterruptIsPending)=
 
 ## rtems_interrupt_is_pending()
 
@@ -2078,7 +2078,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_raise()
 ```
 
-(interfacertemsinterruptraise)=
+(InterfaceRtemsInterruptRaise)=
 
 ## rtems_interrupt_raise()
 
@@ -2140,7 +2140,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_raise_on()
 ```
 
-(interfacertemsinterruptraiseon)=
+(InterfaceRtemsInterruptRaiseOn)=
 
 ## rtems_interrupt_raise_on()
 
@@ -2217,7 +2217,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_clear()
 ```
 
-(interfacertemsinterruptclear)=
+(InterfaceRtemsInterruptClear)=
 
 ## rtems_interrupt_clear()
 
@@ -2279,7 +2279,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_get_priority()
 ```
 
-(interfacertemsinterruptgetpriority)=
+(InterfaceRtemsInterruptGetPriority)=
 
 ## rtems_interrupt_get_priority()
 
@@ -2352,7 +2352,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_set_priority()
 ```
 
-(interfacertemsinterruptsetpriority)=
+(InterfaceRtemsInterruptSetPriority)=
 
 ## rtems_interrupt_set_priority()
 
@@ -2490,7 +2490,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_get_affinity()
 ```
 
-(interfacertemsinterruptgetaffinity)=
+(InterfaceRtemsInterruptGetAffinity)=
 
 ## rtems_interrupt_get_affinity()
 
@@ -2564,7 +2564,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_set_affinity()
 ```
 
-(interfacertemsinterruptsetaffinity)=
+(InterfaceRtemsInterruptSetAffinity)=
 
 ## rtems_interrupt_set_affinity()
 
@@ -2654,7 +2654,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_get_attributes()
 ```
 
-(interfacertemsinterruptgetattributes)=
+(InterfaceRtemsInterruptGetAttributes)=
 
 ## rtems_interrupt_get_attributes()
 
@@ -2718,7 +2718,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_handler_iterate()
 ```
 
-(interfacertemsinterrupthandleriterate)=
+(InterfaceRtemsInterruptHandlerIterate)=
 
 ## rtems_interrupt_handler_iterate()
 
@@ -2806,7 +2806,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_initialize()
 ```
 
-(interfacertemsinterruptserverinitialize)=
+(InterfaceRtemsInterruptServerInitialize)=
 
 ## rtems_interrupt_server_initialize()
 
@@ -2906,7 +2906,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_create()
 ```
 
-(interfacertemsinterruptservercreate)=
+(InterfaceRtemsInterruptServerCreate)=
 
 ## rtems_interrupt_server_create()
 
@@ -2979,7 +2979,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_handler_install()
 ```
 
-(interfacertemsinterruptserverhandlerinstall)=
+(InterfaceRtemsInterruptServerHandlerInstall)=
 
 ## rtems_interrupt_server_handler_install()
 
@@ -3100,7 +3100,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_handler_remove()
 ```
 
-(interfacertemsinterruptserverhandlerremove)=
+(InterfaceRtemsInterruptServerHandlerRemove)=
 
 ## rtems_interrupt_server_handler_remove()
 
@@ -3181,7 +3181,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_set_affinity()
 ```
 
-(interfacertemsinterruptserversetaffinity)=
+(InterfaceRtemsInterruptServerSetAffinity)=
 
 ## rtems_interrupt_server_set_affinity()
 
@@ -3272,7 +3272,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_delete()
 ```
 
-(interfacertemsinterruptserverdelete)=
+(InterfaceRtemsInterruptServerDelete)=
 
 ## rtems_interrupt_server_delete()
 
@@ -3336,7 +3336,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_suspend()
 ```
 
-(interfacertemsinterruptserversuspend)=
+(InterfaceRtemsInterruptServerSuspend)=
 
 ## rtems_interrupt_server_suspend()
 
@@ -3398,7 +3398,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_resume()
 ```
 
-(interfacertemsinterruptserverresume)=
+(InterfaceRtemsInterruptServerResume)=
 
 ## rtems_interrupt_server_resume()
 
@@ -3461,7 +3461,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_move()
 ```
 
-(interfacertemsinterruptservermove)=
+(InterfaceRtemsInterruptServerMove)=
 
 ## rtems_interrupt_server_move()
 
@@ -3538,7 +3538,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_handler_iterate()
 ```
 
-(interfacertemsinterruptserverhandleriterate)=
+(InterfaceRtemsInterruptServerHandlerIterate)=
 
 ## rtems_interrupt_server_handler_iterate()
 
@@ -3627,7 +3627,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_entry_initialize()
 ```
 
-(interfacertemsinterruptserverentryinitialize)=
+(InterfaceRtemsInterruptServerEntryInitialize)=
 
 ## rtems_interrupt_server_entry_initialize()
 
@@ -3700,7 +3700,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_action_prepend()
 ```
 
-(interfacertemsinterruptserveractionprepend)=
+(InterfaceRtemsInterruptServerActionPrepend)=
 
 ## rtems_interrupt_server_action_prepend()
 
@@ -3782,7 +3782,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_entry_destroy()
 ```
 
-(interfacertemsinterruptserverentrydestroy)=
+(InterfaceRtemsInterruptServerEntryDestroy)=
 
 ## rtems_interrupt_server_entry_destroy()
 
@@ -3836,7 +3836,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_entry_submit()
 ```
 
-(interfacertemsinterruptserverentrysubmit)=
+(InterfaceRtemsInterruptServerEntrySubmit)=
 
 ## rtems_interrupt_server_entry_submit()
 
@@ -3911,7 +3911,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_entry_move()
 ```
 
-(interfacertemsinterruptserverentrymove)=
+(InterfaceRtemsInterruptServerEntryMove)=
 
 ## rtems_interrupt_server_entry_move()
 
@@ -3988,7 +3988,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_request_initialize()
 ```
 
-(interfacertemsinterruptserverrequestinitialize)=
+(InterfaceRtemsInterruptServerRequestInitialize)=
 
 ## rtems_interrupt_server_request_initialize()
 
@@ -4067,7 +4067,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_request_set_vector()
 ```
 
-(interfacertemsinterruptserverrequestsetvector)=
+(InterfaceRtemsInterruptServerRequestSetVector)=
 
 ## rtems_interrupt_server_request_set_vector()
 
@@ -4139,7 +4139,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_request_destroy()
 ```
 
-(interfacertemsinterruptserverrequestdestroy)=
+(InterfaceRtemsInterruptServerRequestDestroy)=
 
 ## rtems_interrupt_server_request_destroy()
 
@@ -4192,7 +4192,7 @@ The following constraints apply to this directive:
 ```{index} rtems_interrupt_server_request_submit()
 ```
 
-(interfacertemsinterruptserverrequestsubmit)=
+(InterfaceRtemsInterruptServerRequestSubmit)=
 
 ## rtems_interrupt_server_request_submit()
 

@@ -5,7 +5,7 @@
 ```{index} Ada
 ```
 
-(ada-support)=
+(ada_support)=
 
 # Ada Support
 

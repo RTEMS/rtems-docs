@@ -94,7 +94,7 @@ This section details the thread manager's services. A subsection is dedicated
 to each of this manager's services and describes the calling sequence, related
 constants, usage, and status codes.
 
-(pthread-attr-init)=
+(pthread_attr_init)=
 
 ### pthread_attr_init - Initialize a Thread Attribute Set
 
@@ -151,7 +151,7 @@ the default attributes are as follows:
    - is set to ``PTHREAD_CREATE_JOINABLE``.
 ```
 
-(pthread-attr-destroy)=
+(pthread_attr_destroy)=
 
 ### pthread_attr_destroy - Destroy a Thread Attribute Set
 
@@ -192,7 +192,7 @@ implementation dependent.
 
 NONE
 
-(pthread-attr-setdetachstate)=
+(pthread_attr_setdetachstate)=
 
 ### pthread_attr_setdetachstate - Set Detach State
 
@@ -241,7 +241,7 @@ The `detachstate` can be either `PTHREAD_CREATE_DETACHED` or
 If a thread is in a detached state, then the use of the ID with the
 `pthread_detach` or `pthread_join` routines is an error.
 
-(pthread-attr-getdetachstate)=
+(pthread_attr_getdetachstate)=
 
 ### pthread_attr_getdetachstate - Get Detach State
 
@@ -285,7 +285,7 @@ object.
 
 NONE
 
-(pthread-attr-setstacksize)=
+(pthread_attr_setstacksize)=
 
 ### pthread_attr_setstacksize - Set Thread Stack Size
 
@@ -331,7 +331,7 @@ If the specified stacksize is below the minimum required for this CPU
 (`PTHREAD_STACK_MIN`, then the stacksize will be set to the minimum for this
 CPU.
 
-(pthread-attr-getstacksize)=
+(pthread_attr_getstacksize)=
 
 ### pthread_attr_getstacksize - Get Thread Stack Size
 
@@ -375,7 +375,7 @@ attribute in the `attr` thread attribute object.
 As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_ATTR_STACKSIZE` to indicate that this routine is supported.
 
-(pthread-attr-setstackaddr)=
+(pthread_attr_setstackaddr)=
 
 ### pthread_attr_setstackaddr - Set Thread Stack Address
 
@@ -420,7 +420,7 @@ As required by POSIX, RTEMS defines the feature symbol
 It is imperative to the proper operation of the system that each thread have
 sufficient stack space.
 
-(pthread-attr-getstackaddr)=
+(pthread_attr_getstackaddr)=
 
 ### pthread_attr_getstackaddr - Get Thread Stack Address
 
@@ -464,7 +464,7 @@ attribute in the `attr` thread attribute object.
 As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_ATTR_STACKADDR` to indicate that this routine is supported.
 
-(pthread-attr-setscope)=
+(pthread_attr_setscope)=
 
 ### pthread_attr_setscope - Set Thread Scheduling Scope
 
@@ -517,7 +517,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-getscope)=
+(pthread_attr_getscope)=
 
 ### pthread_attr_getscope - Get Thread Scheduling Scope
 
@@ -563,7 +563,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-setinheritsched)=
+(pthread_attr_setinheritsched)=
 
 ### pthread_attr_setinheritsched - Set Inherit Scheduler Flag
 
@@ -617,7 +617,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-getinheritsched)=
+(pthread_attr_getinheritsched)=
 
 ### pthread_attr_getinheritsched - Get Inherit Scheduler Flag
 
@@ -662,7 +662,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-setschedpolicy)=
+(pthread_attr_setschedpolicy)=
 
 ### pthread_attr_setschedpolicy - Set Scheduling Policy
 
@@ -718,7 +718,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-getschedpolicy)=
+(pthread_attr_getschedpolicy)=
 
 ### pthread_attr_getschedpolicy - Get Scheduling Policy
 
@@ -764,7 +764,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-setschedparam)=
+(pthread_attr_setschedparam)=
 
 ### pthread_attr_setschedparam - Set Scheduling Parameters
 
@@ -810,7 +810,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-getschedparam)=
+(pthread_attr_getschedparam)=
 
 ### pthread_attr_getschedparam - Get Scheduling Parameters
 
@@ -856,7 +856,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-attr-getaffinity-np)=
+(pthread_attr_getaffinity_np)=
 
 ### pthread_attr_getaffinity_np - Get Thread Affinity Attribute
 
@@ -897,7 +897,7 @@ this field is returned in `cpuset`.
 
 NONE
 
-(pthread-attr-setaffinity-np)=
+(pthread_attr_setaffinity_np)=
 
 ### pthread_attr_setaffinity_np - Set Thread Affinity Attribute
 
@@ -942,7 +942,7 @@ returned in `cpuset`.
 
 NONE
 
-(pthread-create)=
+(pthread_create)=
 
 ### pthread_create - Create a Thread
 
@@ -1021,7 +1021,7 @@ RTEMS.
 The signal mask of the newly created thread is inherited from its creator and
 the set of pending signals for this thread is empty.
 
-(pthread-exit)=
+(pthread_exit)=
 
 ### pthread_exit - Terminate the Current Thread
 
@@ -1076,7 +1076,7 @@ thread exits. Thus references (i.e. pointers) to local variables of a thread
 should not be used in a global manner without care. As a specific example, a
 pointer to a local variable should NOT be used as the return value.
 
-(pthread-detach)=
+(pthread_detach)=
 
 ### pthread_detach - Detach a Thread
 
@@ -1121,7 +1121,7 @@ specified thread will fail.
 
 % COMMENT: pthread_getconcurrency
 
-(pthread-getconcurrency)=
+(pthread_getconcurrency)=
 
 ### pthread_getconcurrency - Obtain Thread Concurrency
 
@@ -1155,7 +1155,7 @@ NONE
 
 % COMMENT: pthread_setconcurrency
 
-(pthread-setconcurrency)=
+(pthread_setconcurrency)=
 
 ### pthread_setconcurrency - Set Thread Concurrency
 
@@ -1192,7 +1192,7 @@ NONE
 
 % COMMENT: pthread_getattr_np
 
-(pthread-getattr-np)=
+(pthread_getattr_np)=
 
 ### pthread_getattr_np - Get Thread Attributes
 
@@ -1235,7 +1235,7 @@ with `thread`.
 Modification of the execution modes and priority through the Classic API may
 result in a combination that is not representable in the POSIX API.
 
-(pthread-join)=
+(pthread_join)=
 
 ### pthread_join - Wait for Thread Termination
 
@@ -1288,7 +1288,7 @@ specified thread will fail.
 
 If value_ptr is NULL, then no value is returned.
 
-(pthread-self)=
+(pthread_self)=
 
 ### pthread_self - Get Thread ID
 
@@ -1317,7 +1317,7 @@ This routine returns the ID of the calling thread.
 
 NONE
 
-(pthread-equal)=
+(pthread_equal)=
 
 ### pthread_equal - Compare Thread IDs
 
@@ -1358,7 +1358,7 @@ if they are equal.
 
 The behavior is undefined if the thread IDs are not valid.
 
-(pthread-once)=
+(pthread_once)=
 
 ### pthread_once - Dynamic Package Initialization
 
@@ -1400,7 +1400,7 @@ The behavior of `pthread_once` is undefined if `once_control` is automatic
 storage (i.e. on a task stack) or is not initialized using
 `PTHREAD_ONCE_INIT`.
 
-(pthread-setschedparam)=
+(pthread_setschedparam)=
 
 ### pthread_setschedparam - Set Thread Scheduling Parameters
 
@@ -1454,7 +1454,7 @@ As required by POSIX, RTEMS defines the feature symbol
 `_POSIX_THREAD_PRIORITY_SCHEDULING` to indicate that the family of routines
 to which this routine belongs is supported.
 
-(pthread-getschedparam)=
+(pthread_getschedparam)=
 
 ### pthread_getschedparam - Get Thread Scheduling Parameters
 
@@ -1503,7 +1503,7 @@ to which this routine belongs is supported.
 
 % COMMENT: pthread_getaffinity_np
 
-(pthread-getaffinity-np)=
+(pthread_getaffinity_np)=
 
 ### pthread_getaffinity_np - Get Thread Affinity
 
@@ -1544,7 +1544,7 @@ NONE
 
 % COMMENT: pthread_setaffinity_np
 
-(pthread-setaffinity-np)=
+(pthread_setaffinity_np)=
 
 ### pthread_setaffinity_np - Set Thread Affinity
 

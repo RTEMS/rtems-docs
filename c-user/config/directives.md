@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(applicationconfigurationinformationdirectives)=
+(ApplicationConfigurationInformationDirectives)=
 
 # Directives
 
@@ -50,7 +50,7 @@ of the directive.
 ```{index} rtems_get_build_label()
 ```
 
-(interfacertemsgetbuildlabel)=
+(InterfaceRtemsGetBuildLabel)=
 
 ## rtems_get_build_label()
 
@@ -107,7 +107,7 @@ The following constraints apply to this directive:
 ```{index} rtems_get_copyright_notice()
 ```
 
-(interfacertemsgetcopyrightnotice)=
+(InterfaceRtemsGetCopyrightNotice)=
 
 ## rtems_get_copyright_notice()
 
@@ -145,7 +145,7 @@ The following constraints apply to this directive:
 ```{index} rtems_get_target_hash()
 ```
 
-(interfacertemsgettargethash)=
+(InterfaceRtemsGetTargetHash)=
 
 ## rtems_get_target_hash()
 
@@ -202,7 +202,7 @@ The following constraints apply to this directive:
 ```{index} rtems_get_version_string()
 ```
 
-(interfacertemsgetversionstring)=
+(InterfaceRtemsGetVersionString)=
 
 ## rtems_get_version_string()
 
@@ -247,7 +247,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_do_zero_of_workspace()
 ```
 
-(interfacertemsconfigurationgetdozeroofworkspace)=
+(InterfaceRtemsConfigurationGetDoZeroOfWorkspace)=
 
 ## rtems_configuration_get_do_zero_of_workspace()
 
@@ -294,7 +294,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_idle_task_stack_size()
 ```
 
-(interfacertemsconfigurationgetidletaskstacksize)=
+(InterfaceRtemsConfigurationGetIdleTaskStackSize)=
 
 ## rtems_configuration_get_idle_task_stack_size()
 
@@ -339,7 +339,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_idle_task()
 ```
 
-(interfacertemsconfigurationgetidletask)=
+(InterfaceRtemsConfigurationGetIdleTask)=
 
 ## rtems_configuration_get_idle_task()
 
@@ -384,7 +384,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_interrupt_stack_size()
 ```
 
-(interfacertemsconfigurationgetinterruptstacksize)=
+(InterfaceRtemsConfigurationGetInterruptStackSize)=
 
 ## rtems_configuration_get_interrupt_stack_size()
 
@@ -429,7 +429,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_barriers()
 ```
 
-(interfacertemsconfigurationgetmaximumbarriers)=
+(InterfaceRtemsConfigurationGetMaximumBarriers)=
 
 ## rtems_configuration_get_maximum_barriers()
 
@@ -478,7 +478,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_extensions()
 ```
 
-(interfacertemsconfigurationgetmaximumextensions)=
+(InterfaceRtemsConfigurationGetMaximumExtensions)=
 
 ## rtems_configuration_get_maximum_extensions()
 
@@ -527,7 +527,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_message_queues()
 ```
 
-(interfacertemsconfigurationgetmaximummessagequeues)=
+(InterfaceRtemsConfigurationGetMaximumMessageQueues)=
 
 ## rtems_configuration_get_maximum_message_queues()
 
@@ -576,7 +576,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_partitions()
 ```
 
-(interfacertemsconfigurationgetmaximumpartitions)=
+(InterfaceRtemsConfigurationGetMaximumPartitions)=
 
 ## rtems_configuration_get_maximum_partitions()
 
@@ -625,7 +625,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_periods()
 ```
 
-(interfacertemsconfigurationgetmaximumperiods)=
+(InterfaceRtemsConfigurationGetMaximumPeriods)=
 
 ## rtems_configuration_get_maximum_periods()
 
@@ -674,7 +674,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_ports()
 ```
 
-(interfacertemsconfigurationgetmaximumports)=
+(InterfaceRtemsConfigurationGetMaximumPorts)=
 
 ## rtems_configuration_get_maximum_ports()
 
@@ -723,7 +723,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_processors()
 ```
 
-(interfacertemsconfigurationgetmaximumprocessors)=
+(InterfaceRtemsConfigurationGetMaximumProcessors)=
 
 ## rtems_configuration_get_maximum_processors()
 
@@ -773,7 +773,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_regions()
 ```
 
-(interfacertemsconfigurationgetmaximumregions)=
+(InterfaceRtemsConfigurationGetMaximumRegions)=
 
 ## rtems_configuration_get_maximum_regions()
 
@@ -822,7 +822,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_semaphores()
 ```
 
-(interfacertemsconfigurationgetmaximumsemaphores)=
+(InterfaceRtemsConfigurationGetMaximumSemaphores)=
 
 ## rtems_configuration_get_maximum_semaphores()
 
@@ -871,7 +871,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_tasks()
 ```
 
-(interfacertemsconfigurationgetmaximumtasks)=
+(InterfaceRtemsConfigurationGetMaximumTasks)=
 
 ## rtems_configuration_get_maximum_tasks()
 
@@ -920,7 +920,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_maximum_timers()
 ```
 
-(interfacertemsconfigurationgetmaximumtimers)=
+(InterfaceRtemsConfigurationGetMaximumTimers)=
 
 ## rtems_configuration_get_maximum_timers()
 
@@ -969,7 +969,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_microseconds_per_tick()
 ```
 
-(interfacertemsconfigurationgetmicrosecondspertick)=
+(InterfaceRtemsConfigurationGetMicrosecondsPerTick)=
 
 ## rtems_configuration_get_microseconds_per_tick()
 
@@ -1015,7 +1015,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_milliseconds_per_tick()
 ```
 
-(interfacertemsconfigurationgetmillisecondspertick)=
+(InterfaceRtemsConfigurationGetMillisecondsPerTick)=
 
 ## rtems_configuration_get_milliseconds_per_tick()
 
@@ -1061,7 +1061,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_nanoseconds_per_tick()
 ```
 
-(interfacertemsconfigurationgetnanosecondspertick)=
+(InterfaceRtemsConfigurationGetNanosecondsPerTick)=
 
 ## rtems_configuration_get_nanoseconds_per_tick()
 
@@ -1107,7 +1107,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_number_of_initial_extensions()
 ```
 
-(interfacertemsconfigurationgetnumberofinitialextensions)=
+(InterfaceRtemsConfigurationGetNumberOfInitialExtensions)=
 
 ## rtems_configuration_get_number_of_initial_extensions()
 
@@ -1153,7 +1153,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_stack_allocate_for_idle_hook()
 ```
 
-(interfacertemsconfigurationgetstackallocateforidlehook)=
+(InterfaceRtemsConfigurationGetStackAllocateForIdleHook)=
 
 ## rtems_configuration_get_stack_allocate_for_idle_hook()
 
@@ -1202,7 +1202,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_stack_allocate_hook()
 ```
 
-(interfacertemsconfigurationgetstackallocatehook)=
+(InterfaceRtemsConfigurationGetStackAllocateHook)=
 
 ## rtems_configuration_get_stack_allocate_hook()
 
@@ -1247,7 +1247,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_stack_allocate_init_hook()
 ```
 
-(interfacertemsconfigurationgetstackallocateinithook)=
+(InterfaceRtemsConfigurationGetStackAllocateInitHook)=
 
 ## rtems_configuration_get_stack_allocate_init_hook()
 
@@ -1294,7 +1294,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_stack_allocator_avoids_work_space()
 ```
 
-(interfacertemsconfigurationgetstackallocatoravoidsworkspace)=
+(InterfaceRtemsConfigurationGetStackAllocatorAvoidsWorkSpace)=
 
 ## rtems_configuration_get_stack_allocator_avoids_work_space()
 
@@ -1342,7 +1342,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_stack_free_hook()
 ```
 
-(interfacertemsconfigurationgetstackfreehook)=
+(InterfaceRtemsConfigurationGetStackFreeHook)=
 
 ## rtems_configuration_get_stack_free_hook()
 
@@ -1387,7 +1387,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_stack_space_size()
 ```
 
-(interfacertemsconfigurationgetstackspacesize)=
+(InterfaceRtemsConfigurationGetStackSpaceSize)=
 
 ## rtems_configuration_get_stack_space_size()
 
@@ -1434,7 +1434,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_ticks_per_timeslice()
 ```
 
-(interfacertemsconfigurationgettickspertimeslice)=
+(InterfaceRtemsConfigurationGetTicksPerTimeslice)=
 
 ## rtems_configuration_get_ticks_per_timeslice()
 
@@ -1479,7 +1479,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_unified_work_area()
 ```
 
-(interfacertemsconfigurationgetunifiedworkarea)=
+(InterfaceRtemsConfigurationGetUnifiedWorkArea)=
 
 ## rtems_configuration_get_unified_work_area()
 
@@ -1526,7 +1526,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_user_extension_table()
 ```
 
-(interfacertemsconfigurationgetuserextensiontable)=
+(InterfaceRtemsConfigurationGetUserExtensionTable)=
 
 ## rtems_configuration_get_user_extension_table()
 
@@ -1567,7 +1567,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_user_multiprocessing_table()
 ```
 
-(interfacertemsconfigurationgetusermultiprocessingtable)=
+(InterfaceRtemsConfigurationGetUserMultiprocessingTable)=
 
 ## rtems_configuration_get_user_multiprocessing_table()
 
@@ -1608,7 +1608,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_work_space_size()
 ```
 
-(interfacertemsconfigurationgetworkspacesize)=
+(InterfaceRtemsConfigurationGetWorkSpaceSize)=
 
 ## rtems_configuration_get_work_space_size()
 
@@ -1646,7 +1646,7 @@ The following constraints apply to this directive:
 ```{index} rtems_configuration_get_rtems_api_configuration()
 ```
 
-(interfacertemsconfigurationgetrtemsapiconfiguration)=
+(InterfaceRtemsConfigurationGetRtemsApiConfiguration)=
 
 ## rtems_configuration_get_rtems_api_configuration()
 
@@ -1685,7 +1685,7 @@ The following constraints apply to this directive:
 ```{index} rtems_resource_is_unlimited()
 ```
 
-(interfacertemsresourceisunlimited)=
+(InterfaceRtemsResourceIsUnlimited)=
 
 ## rtems_resource_is_unlimited()
 
@@ -1732,7 +1732,7 @@ The following constraints apply to this directive:
 ```{index} rtems_resource_maximum_per_allocation()
 ```
 
-(interfacertemsresourcemaximumperallocation)=
+(InterfaceRtemsResourceMaximumPerAllocation)=
 
 ## rtems_resource_maximum_per_allocation()
 
@@ -1779,7 +1779,7 @@ The following constraints apply to this directive:
 ```{index} rtems_resource_unlimited()
 ```
 
-(interfacertemsresourceunlimited)=
+(InterfaceRtemsResourceUnlimited)=
 
 ## rtems_resource_unlimited()
 

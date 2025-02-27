@@ -1,6 +1,6 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-(lwip-network-stack)=
+(lwip_network_stack)=
 
 # lwIP Network Stack
 

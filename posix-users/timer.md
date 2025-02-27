@@ -28,7 +28,7 @@ constants, usage, and status codes.
 
 % COMMENT: timer_create
 
-(timer-create)=
+(timer_create)=
 
 ### timer_create - Create a Per-Process Timer
 
@@ -54,7 +54,7 @@ int timer_create(
 
 % COMMENT: timer_delete
 
-(timer-delete)=
+(timer_delete)=
 
 ### timer_delete - Delete a Per-Process Timer
 
@@ -77,7 +77,7 @@ int timer_delete(
 
 % COMMENT: timer_settime
 
-(timer-settime)=
+(timer_settime)=
 
 ### timer_settime - Set Next Timer Expiration
 
@@ -103,7 +103,7 @@ int timer_settime(
 
 % COMMENT: timer_gettime
 
-(timer-gettime)=
+(timer_gettime)=
 
 ### timer_gettime - Get Time Remaining on Timer
 
@@ -127,7 +127,7 @@ int timer_gettime(
 
 % COMMENT: timer_getoverrun
 
-(timer-getoverrun)=
+(timer_getoverrun)=
 
 ### timer_getoverrun - Get Timer Overrun Count
 

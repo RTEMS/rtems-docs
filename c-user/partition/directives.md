@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(partitionmanagerdirectives)=
+(PartitionManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} create a partition
 ```
 
-(interfacertemspartitioncreate)=
+(InterfaceRtemsPartitionCreate)=
 
 ## rtems_partition_create()
 
@@ -239,7 +239,7 @@ The following constraints apply to this directive:
 ```{index} obtain ID of a partition
 ```
 
-(interfacertemspartitionident)=
+(InterfaceRtemsPartitionIdent)=
 
 ## rtems_partition_ident()
 
@@ -350,7 +350,7 @@ The following constraints apply to this directive:
 ```{index} delete a partition
 ```
 
-(interfacertemspartitiondelete)=
+(InterfaceRtemsPartitionDelete)=
 
 ## rtems_partition_delete()
 
@@ -440,7 +440,7 @@ The following constraints apply to this directive:
 ```{index} obtain buffer from partition
 ```
 
-(interfacertemspartitiongetbuffer)=
+(InterfaceRtemsPartitionGetBuffer)=
 
 ## rtems_partition_get_buffer()
 
@@ -530,7 +530,7 @@ The following constraints apply to this directive:
 ```{index} return buffer to partition
 ```
 
-(interfacertemspartitionreturnbuffer)=
+(InterfaceRtemsPartitionReturnBuffer)=
 
 ## rtems_partition_return_buffer()
 

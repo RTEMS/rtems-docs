@@ -350,7 +350,7 @@ resource dependency graph.
 ```{index} priority inversion
 ```
 
-(priorityinversion)=
+(PriorityInversion)=
 
 ### Priority Inversion
 
@@ -370,7 +370,7 @@ priority task is effectively prevented from executing by lower priority tasks.
 ```{index} immediate ceiling priority protocol
 ```
 
-(priorityceiling)=
+(PriorityCeiling)=
 
 ### Immediate Ceiling Priority Protocol (ICPP)
 
@@ -396,7 +396,7 @@ information.
 ```{index} priority inheritance protocol
 ```
 
-(priorityinheritance)=
+(PriorityInheritance)=
 
 ### Priority Inheritance Protocol
 
@@ -411,7 +411,7 @@ of this mutex inherits the priority of the task A.
 ```{index} Multiprocessor Resource Sharing Protocol (MrsP)
 ```
 
-(mrsp)=
+(MrsP)=
 
 ### Multiprocessor Resource Sharing Protocol (MrsP)
 
@@ -433,7 +433,7 @@ overcome some shortcomings of the original implementation
 ```{index} O(m) Independence-Preserving Protocol (OMIP)
 ```
 
-(omip)=
+(OMIP)=
 
 ### O(m) Independence-Preserving Protocol (OMIP)
 

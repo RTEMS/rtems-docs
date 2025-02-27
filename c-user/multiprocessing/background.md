@@ -134,7 +134,7 @@ errors.
 ```{index} proxy, definition
 ```
 
-(mpciproxies)=
+(MPCIProxies)=
 
 ## Proxies
 

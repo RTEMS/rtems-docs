@@ -35,7 +35,7 @@ This section details the condition variable manager's directives. A subsection
 is dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
-(pthread-condattr-init)=
+(pthread_condattr_init)=
 
 ### pthread_condattr_init - Initialize a Condition Variable Attribute Set
 
@@ -64,7 +64,7 @@ int pthread_condattr_init(
 
 **NOTES:**
 
-(pthread-condattr-destroy)=
+(pthread_condattr_destroy)=
 
 ### pthread_condattr_destroy - Destroy a Condition Variable Attribute Set
 
@@ -97,7 +97,7 @@ int pthread_condattr_destroy(
 
 **NOTES:**
 
-(pthread-condattr-setpshared)=
+(pthread_condattr_setpshared)=
 
 ### pthread_condattr_setpshared - Set Process Shared Attribute
 
@@ -131,7 +131,7 @@ int pthread_condattr_setpshared(
 
 **NOTES:**
 
-(pthread-condattr-getpshared)=
+(pthread_condattr_getpshared)=
 
 ### pthread_condattr_getpshared - Get Process Shared Attribute
 
@@ -165,7 +165,7 @@ int pthread_condattr_getpshared(
 
 **NOTES:**
 
-(pthread-cond-init)=
+(pthread_cond_init)=
 
 ### pthread_cond_init - Initialize a Condition Variable
 
@@ -207,7 +207,7 @@ int pthread_cond_init(
 
 **NOTES:**
 
-(pthread-cond-destroy)=
+(pthread_cond_destroy)=
 
 ### pthread_cond_destroy - Destroy a Condition Variable
 
@@ -242,7 +242,7 @@ int pthread_cond_destroy(
 
 **NOTES:**
 
-(pthread-cond-signal)=
+(pthread_cond_signal)=
 
 ### pthread_cond_signal - Signal a Condition Variable
 
@@ -278,7 +278,7 @@ int pthread_cond_signal(
 This routine should not be invoked from a handler from an asynchronous signal
 handler or an interrupt service routine.
 
-(pthread-cond-broadcast)=
+(pthread_cond_broadcast)=
 
 ### pthread_cond_broadcast - Broadcast a Condition Variable
 
@@ -314,7 +314,7 @@ int pthread_cond_broadcast(
 This routine should not be invoked from a handler from an asynchronous signal
 handler or an interrupt service routine.
 
-(pthread-cond-wait)=
+(pthread_cond_wait)=
 
 ### pthread_cond_wait - Wait on a Condition Variable
 
@@ -351,7 +351,7 @@ int pthread_cond_wait(
 
 **NOTES:**
 
-(pthread-cond-timedwait)=
+(pthread_cond_timedwait)=
 
 ### pthread_cond_timedwait - Wait with Timeout a Condition Variable
 

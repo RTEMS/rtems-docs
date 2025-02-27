@@ -45,7 +45,7 @@ using your package manager. Install it, if it is not present on your system.
 A number of different Linux distrubutions are known to work. The following have
 been tested and report as working.
 
-(archlinux)=
+(ArchLinux)=
 
 ### ArchLinux
 
@@ -65,7 +65,7 @@ $ yaourt -S texinfo-legacy
 # ln -s /usr/bin/makeinfo-4.13a /usr/bin/makeinfo
 ```
 
-(centos)=
+(CentOS)=
 
 ### CentOS
 
@@ -96,7 +96,7 @@ The minimal CentOS distribution is a specific DVD that installs a minimal
 system. If you use a full system some of these packages may have been
 installed.
 
-(rocky)=
+(Rocky)=
 
 ### Rocky
 
@@ -115,7 +115,7 @@ need for RTEMS development:
 
 At present there does not seem to be a solution for `pax` on Rocky 9.
 
-(fedora)=
+(Fedora)=
 
 ### Fedora
 
@@ -127,7 +127,7 @@ packages:
      flex texinfo patch perl-Text-ParseWords zlib-devel
 ```
 
-(raspbian)=
+(Raspbian)=
 
 ### Raspbian
 
@@ -143,9 +143,9 @@ It is recommended you get Model B of the Pi with 512M of memory and to mount a
 remote disk over the network. The tools can be built on the network disk with a
 prefix under your home directory as recommended and end up on the SD card.
 
-(ubuntu)=
+(Ubuntu)=
 
-(xubuntu)=
+(Xubuntu)=
 
 ### Ubuntu
 
@@ -173,7 +173,7 @@ instructions:
 - <https://askubuntu.com/questions/158871/how-do-i-enable-the-source-code-repositories/158872>
 - <https://askubuntu.com/questions/496549/error-you-must-put-some-source-uris-in-your-sources-list>
 
-(linux-mint)=
+(Linux Mint)=
 
 ### Linux Mint
 
@@ -184,7 +184,7 @@ than the usual zlib-dev):
 # sudo apt-get install zlib1g-dev
 ```
 
-(opensuse)=
+(openSUSE)=
 
 ### openSUSE
 
@@ -202,7 +202,7 @@ In addition, the following command can set python3 as the default python interpr
 # sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 ```
 
-(freebsd)=
+(FreeBSD)=
 
 ## FreeBSD
 
@@ -246,7 +246,7 @@ support:
 
 The support speeds up closing file descriptors when creating subprocesses.
 
-(netbsd)=
+(NetBSD)=
 
 ## NetBSD
 

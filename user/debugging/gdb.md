@@ -2,7 +2,7 @@
 
 % Copyright (C) 2024 Suraj Kumar
 
-(debuggingwithgdb)=
+(DebuggingWithGDB)=
 
 # Debugging with GDB
 

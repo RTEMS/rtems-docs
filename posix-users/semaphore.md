@@ -72,7 +72,7 @@ This section details the semaphore manager's directives. A subsection is
 dedicated to each of this manager's directives and describes the calling
 sequence, related constants, usage, and status codes.
 
-(sem-init)=
+(sem_init)=
 
 ### sem_init - Initialize an unnamed semaphore
 
@@ -125,7 +125,7 @@ that occurred.
 
 Multiprocessing is currently not supported in this implementation.
 
-(sem-destroy)=
+(sem_destroy)=
 
 ### sem_destroy - Destroy an unnamed semaphore
 
@@ -171,7 +171,7 @@ that occurred.
 
 Multiprocessing is currently not supported in this implementation.
 
-(sem-open)=
+(sem_open)=
 
 ### sem_open - Open a named semaphore
 
@@ -249,7 +249,7 @@ by a call to `sem_open()`.
 
 **NOTES:**
 
-(sem-close)=
+(sem_close)=
 
 ### sem_close - Close a named semaphore
 
@@ -289,7 +289,7 @@ returns a 1, otherwise a value of -1 is return and `errno` is set.
 
 **NOTES:**
 
-(sem-unlink)=
+(sem_unlink)=
 
 ### sem_unlink - Unlink a semaphore
 
@@ -341,7 +341,7 @@ is returned and the `errno` is set.
 
 **NOTES:**
 
-(sem-wait)=
+(sem_wait)=
 
 ### sem_wait - Wait on a Semaphore
 
@@ -385,7 +385,7 @@ the appropriate error code.
 
 Multiprocessing is not supported in this implementation.
 
-(sem-trywait)=
+(sem_trywait)=
 
 ### sem_trywait - Non-blocking Wait on a Semaphore
 
@@ -432,7 +432,7 @@ the appropriate error code.
 
 Multiprocessing is not supported in this implementation.
 
-(sem-timedwait)=
+(sem_timedwait)=
 
 ### sem_timedwait - Wait on a Semaphore for a Specified Time
 
@@ -485,7 +485,7 @@ appropriate error code.
 
 Multiprocessing is not supported in this implementation.
 
-(sem-post)=
+(sem_post)=
 
 ### sem_post - Unlock a Semaphore
 
@@ -529,7 +529,7 @@ appropriate error code.
 
 Multiprocessing is not supported in this implementation.
 
-(sem-getvalue)=
+(sem_getvalue)=
 
 ### sem_getvalue - Get the value of a semaphore
 

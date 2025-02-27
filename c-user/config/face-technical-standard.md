@@ -59,7 +59,7 @@ and they are included in the "RTEMS POSIX 1003.1 Compliance Guide."
 ```{index} CONFIGURE_POSIX_TIMERS_FACE_BEHAVIOR
 ```
 
-(configure-posix-timers-face-behavior)=
+(CONFIGURE_POSIX_TIMERS_FACE_BEHAVIOR)=
 
 ## CONFIGURE_POSIX_TIMERS_FACE_BEHAVIOR
 

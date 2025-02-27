@@ -1,6 +1,6 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-(legacy-network-stack)=
+(legacy_network_stack)=
 
 # RTEMS Legacy Network Stack
 

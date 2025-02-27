@@ -32,7 +32,7 @@
 
 % https://docs.rtems.org
 
-(iomanagerdirectives)=
+(IOManagerDirectives)=
 
 # Directives
 
@@ -52,7 +52,7 @@ parameters, description, return values, and notes of the directive.
 ```{index} register a device driver
 ```
 
-(interfacertemsioregisterdriver)=
+(InterfaceRtemsIoRegisterDriver)=
 
 ## rtems_io_register_driver()
 
@@ -137,7 +137,7 @@ directive will be called to initialize the device.
 ```{index} unregister a device driver
 ```
 
-(interfacertemsiounregisterdriver)=
+(InterfaceRtemsIoUnregisterDriver)=
 
 ## rtems_io_unregister_driver()
 
@@ -192,7 +192,7 @@ Currently no specific checks are made and the driver is not closed.
 ```{index} initialize a device driver
 ```
 
-(interfacertemsioinitialize)=
+(InterfaceRtemsIoInitialize)=
 
 ## rtems_io_initialize()
 
@@ -267,7 +267,7 @@ allocate memory to be used during other operations.
 ```{index} register a device in the file system
 ```
 
-(interfacertemsioregistername)=
+(InterfaceRtemsIoRegisterName)=
 
 ## rtems_io_register_name()
 
@@ -327,7 +327,7 @@ The device is registered as a character device.
 ```{index} open a device
 ```
 
-(interfacertemsioopen)=
+(InterfaceRtemsIoOpen)=
 
 ## rtems_io_open()
 
@@ -396,7 +396,7 @@ access to a device.
 ```{index} close a device
 ```
 
-(interfacertemsioclose)=
+(InterfaceRtemsIoClose)=
 
 ## rtems_io_close()
 
@@ -465,7 +465,7 @@ exclusive access to a device.
 ```{index} read from a device
 ```
 
-(interfacertemsioread)=
+(InterfaceRtemsIoRead)=
 
 ## rtems_io_read()
 
@@ -535,7 +535,7 @@ the device.
 ```{index} write to a device
 ```
 
-(interfacertemsiowrite)=
+(InterfaceRtemsIoWrite)=
 
 ## rtems_io_write()
 
@@ -607,7 +607,7 @@ parameter block. The contents of this buffer will be sent to the device.
 ```{index} special device services
 ```
 
-(interfacertemsiocontrol)=
+(InterfaceRtemsIoControl)=
 
 ## rtems_io_control()
 

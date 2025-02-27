@@ -141,7 +141,7 @@ constants, usage, and status codes.
 
 % COMMENT: rtems_stack_checker_is_blown
 
-(rtems-stack-checker-is-blown)=
+(rtems_stack_checker_is_blown)=
 
 ### STACK_CHECKER_IS_BLOWN - Has Current Task Blown Its Stack
 
@@ -171,7 +171,7 @@ NOTES:
   looks for damage to the high water mark pattern for the worst case usage of
   the task being called.
 
-(rtems-stack-checker-report-usage)=
+(rtems_stack_checker_report_usage)=
 
 ### STACK_CHECKER_REPORT_USAGE - Report Task Stack Usage
 

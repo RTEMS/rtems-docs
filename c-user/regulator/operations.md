@@ -2,7 +2,7 @@
 
 % Copyright (C) 2023 On-Line Applications Research Corporation (OAR)
 
-(regulatormanageroperations)=
+(RegulatorManagerOperations)=
 
 # Operations
 
@@ -30,7 +30,7 @@ The sequence diagram below shows the interaction between a message Source,
 a Regulator instance, and RTEMS, given the usage described in the above
 paragraphs.
 
-(fig-regulator-input-sequence)=
+(fig-regulator_input_sequence)=
 
 ```{figure} ../../images/c_user/regulator_input_sequence.png
 ---

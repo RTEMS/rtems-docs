@@ -40,7 +40,7 @@
 
 # RTEMS Data Types
 
-(introduction)=
+(Introduction)=
 
 ## Introduction
 
@@ -49,7 +49,7 @@ alphabetical order. This is intended to be an overview and the user is
 encouraged to look at the appropriate chapters in the manual for more
 information about the usage of the various data types.
 
-(listofdatatypes)=
+(ListOfDataTypes)=
 
 ## List of Data Types
 
@@ -61,7 +61,7 @@ alphabetical order:
 ```{index} BSP_output_char_function_type
 ```
 
-(interfacebspoutputcharfunctiontype)=
+(InterfaceBSPOutputCharFunctionType)=
 
 ### BSP_output_char_function_type
 
@@ -72,7 +72,7 @@ Polled character output functions shall have this type.
 ```{index} BSP_polling_getchar_function_type
 ```
 
-(interfacebsppollinggetcharfunctiontype)=
+(InterfaceBSPPollingGetcharFunctionType)=
 
 ### BSP_polling_getchar_function_type
 
@@ -83,7 +83,7 @@ Polled character input functions shall have this type.
 ```{index} Timer_Classes
 ```
 
-(interfacetimerclasses)=
+(InterfaceTimerClasses)=
 
 ### Timer_Classes
 
@@ -118,7 +118,7 @@ TIMER_TIME_OF_DAY_ON_TASK
 ```{index} rtems_api_configuration_table
 ```
 
-(interfacertemsapiconfigurationtable)=
+(InterfaceRtemsApiConfigurationTable)=
 
 ### rtems_api_configuration_table
 
@@ -191,7 +191,7 @@ configuration table.
 ```{index} rtems_asr
 ```
 
-(interfacertemsasr)=
+(InterfaceRtemsAsr)=
 
 ### rtems_asr
 
@@ -210,7 +210,7 @@ code.
 ```{index} rtems_asr_entry
 ```
 
-(interfacertemsasrentry)=
+(InterfaceRtemsAsrEntry)=
 
 ### rtems_asr_entry
 
@@ -222,7 +222,7 @@ asynchronous signals.
 ```{index} rtems_assert_context
 ```
 
-(interfacertemsassertcontext)=
+(InterfaceRtemsAssertContext)=
 
 ### rtems_assert_context
 
@@ -252,7 +252,7 @@ failed_expression
 ```{index} rtems_attribute
 ```
 
-(interfacertemsattribute)=
+(InterfaceRtemsAttribute)=
 
 ### rtems_attribute
 
@@ -269,7 +269,7 @@ Attributes are primarily used when creating objects.
 ```{index} rtems_device_driver
 ```
 
-(interfacertemsdevicedriver)=
+(InterfaceRtemsDeviceDriver)=
 
 ### rtems_device_driver
 
@@ -287,7 +287,7 @@ type definition helps to document device driver entries in the source code.
 ```{index} rtems_device_driver_entry
 ```
 
-(interfacertemsdevicedriverentry)=
+(InterfaceRtemsDeviceDriverEntry)=
 
 ### rtems_device_driver_entry
 
@@ -298,7 +298,7 @@ Device driver entries shall have this type.
 ```{index} rtems_device_major_number
 ```
 
-(interfacertemsdevicemajornumber)=
+(InterfaceRtemsDeviceMajorNumber)=
 
 ### rtems_device_major_number
 
@@ -317,7 +317,7 @@ The major number of a device is determined by
 ```{index} rtems_device_minor_number
 ```
 
-(interfacertemsdeviceminornumber)=
+(InterfaceRtemsDeviceMinorNumber)=
 
 ### rtems_device_minor_number
 
@@ -334,7 +334,7 @@ The minor number of devices is managed by the device driver.
 ```{index} rtems_driver_address_table
 ```
 
-(interfacertemsdriveraddresstable)=
+(InterfaceRtemsDriverAddressTable)=
 
 ### rtems_driver_address_table
 
@@ -380,7 +380,7 @@ This structure is used to register a device driver via
 ```{index} rtems_event_set
 ```
 
-(interfacertemseventset)=
+(InterfaceRtemsEventSet)=
 
 ### rtems_event_set
 
@@ -392,7 +392,7 @@ events.
 ```{index} rtems_exception_frame
 ```
 
-(interfacertemsexceptionframe)=
+(InterfaceRtemsExceptionFrame)=
 
 ### rtems_exception_frame
 
@@ -403,7 +403,7 @@ This structure represents an architecture-dependent exception frame.
 ```{index} rtems_extensions_table
 ```
 
-(interfacertemsextensionstable)=
+(InterfaceRtemsExtensionsTable)=
 
 ### rtems_extensions_table
 
@@ -416,7 +416,7 @@ configuration option or the {ref}`InterfaceRtemsExtensionCreate` directive.
 ```{index} rtems_fatal_code
 ```
 
-(interfacertemsfatalcode)=
+(InterfaceRtemsFatalCode)=
 
 ### rtems_fatal_code
 
@@ -440,7 +440,7 @@ termination source, see {ref}`InterfaceRtemsFatalSource`.
 ```{index} rtems_fatal_extension
 ```
 
-(interfacertemsfatalextension)=
+(InterfaceRtemsFatalExtension)=
 
 ### rtems_fatal_extension
 
@@ -481,7 +481,7 @@ It is recommended to register fatal extensions through {term}`initial extension 
 ```{index} rtems_fatal_source
 ```
 
-(interfacertemsfatalsource)=
+(InterfaceRtemsFatalSource)=
 
 ### rtems_fatal_source
 
@@ -499,7 +499,7 @@ system termination source, see {ref}`InterfaceRtemsFatalCode`.
 ```{index} rtems_id
 ```
 
-(interfacertemsid)=
+(InterfaceRtemsId)=
 
 ### rtems_id
 
@@ -510,7 +510,7 @@ This type represents RTEMS object identifiers.
 ```{index} rtems_initialization_tasks_table
 ```
 
-(interfacertemsinitializationtaskstable)=
+(InterfaceRtemsInitializationTasksTable)=
 
 ### rtems_initialization_tasks_table
 
@@ -547,7 +547,7 @@ argument
 ```{index} rtems_interrupt_attributes
 ```
 
-(interfacertemsinterruptattributes)=
+(InterfaceRtemsInterruptAttributes)=
 
 ### rtems_interrupt_attributes
 
@@ -666,7 +666,7 @@ the attributes of an interrupt vector.
 ```{index} rtems_interrupt_entry
 ```
 
-(interfacertemsinterruptentry)=
+(InterfaceRtemsInterruptEntry)=
 
 ### rtems_interrupt_entry
 
@@ -694,7 +694,7 @@ from an interrupt vector by {ref}`InterfaceRtemsInterruptEntryRemove`.
 ```{index} rtems_interrupt_handler
 ```
 
-(interfacertemsinterrupthandler)=
+(InterfaceRtemsInterruptHandler)=
 
 ### rtems_interrupt_handler
 
@@ -705,7 +705,7 @@ Interrupt handler routines shall have this type.
 ```{index} rtems_interrupt_level
 ```
 
-(interfacertemsinterruptlevel)=
+(InterfaceRtemsInterruptLevel)=
 
 ### rtems_interrupt_level
 
@@ -716,7 +716,7 @@ This integer type represents interrupt levels.
 ```{index} rtems_interrupt_lock
 ```
 
-(interfacertemsinterruptlock)=
+(InterfaceRtemsInterruptLock)=
 
 ### rtems_interrupt_lock
 
@@ -756,7 +756,7 @@ struct s {
 ```{index} rtems_interrupt_lock_context
 ```
 
-(interfacertemsinterruptlockcontext)=
+(InterfaceRtemsInterruptLockContext)=
 
 ### rtems_interrupt_lock_context
 
@@ -767,7 +767,7 @@ This structure provides an ISR lock context for acquire and release pairs.
 ```{index} rtems_interrupt_per_handler_routine
 ```
 
-(interfacertemsinterruptperhandlerroutine)=
+(InterfaceRtemsInterruptPerHandlerRoutine)=
 
 ### rtems_interrupt_per_handler_routine
 
@@ -779,7 +779,7 @@ have this type.
 ```{index} rtems_interrupt_server_action
 ```
 
-(interfacertemsinterruptserveraction)=
+(InterfaceRtemsInterruptServerAction)=
 
 ### rtems_interrupt_server_action
 
@@ -803,7 +803,7 @@ point of view. Members shall not be accessed directly.
 ```{index} rtems_interrupt_server_config
 ```
 
-(interfacertemsinterruptserverconfig)=
+(InterfaceRtemsInterruptServerConfig)=
 
 ### rtems_interrupt_server_config
 
@@ -826,7 +826,7 @@ See also {ref}`InterfaceRtemsInterruptServerCreate`.
 ```{index} rtems_interrupt_server_control
 ```
 
-(interfacertemsinterruptservercontrol)=
+(InterfaceRtemsInterruptServerControl)=
 
 ### rtems_interrupt_server_control
 
@@ -852,7 +852,7 @@ interrupt server support.
 ```{index} rtems_interrupt_server_entry
 ```
 
-(interfacertemsinterruptserverentry)=
+(InterfaceRtemsInterruptServerEntry)=
 
 ### rtems_interrupt_server_entry
 
@@ -881,7 +881,7 @@ be serviced by {ref}`InterfaceRtemsInterruptServerEntrySubmit`.
 ```{index} rtems_interrupt_server_request
 ```
 
-(interfacertemsinterruptserverrequest)=
+(InterfaceRtemsInterruptServerRequest)=
 
 ### rtems_interrupt_server_request
 
@@ -910,7 +910,7 @@ to be serviced by {ref}`InterfaceRtemsInterruptServerRequestSubmit`.
 ```{index} rtems_interrupt_signal_variant
 ```
 
-(interfacertemsinterruptsignalvariant)=
+(InterfaceRtemsInterruptSignalVariant)=
 
 ### rtems_interrupt_signal_variant
 
@@ -949,7 +949,7 @@ RTEMS_INTERRUPT_SIGNAL_EDGE_RAISING
 ```{index} rtems_interval
 ```
 
-(interfacertemsinterval)=
+(InterfaceRtemsInterval)=
 
 ### rtems_interval
 
@@ -960,7 +960,7 @@ This type represents clock tick intervals.
 ```{index} rtems_isr
 ```
 
-(interfacertemsisr)=
+(InterfaceRtemsIsr)=
 
 ### rtems_isr
 
@@ -978,7 +978,7 @@ code.
 ```{index} rtems_isr_entry
 ```
 
-(interfacertemsisrentry)=
+(InterfaceRtemsIsrEntry)=
 
 ### rtems_isr_entry
 
@@ -990,7 +990,7 @@ shall have this type.
 ```{index} rtems_message_queue_config
 ```
 
-(interfacertemsmessagequeueconfig)=
+(InterfaceRtemsMessageQueueConfig)=
 
 ### rtems_message_queue_config
 
@@ -1036,7 +1036,7 @@ attributes
 ```{index} rtems_mode
 ```
 
-(interfacertemsmode)=
+(InterfaceRtemsMode)=
 
 ### rtems_mode
 
@@ -1047,7 +1047,7 @@ This type represents a Classic API task mode set.
 ```{index} rtems_mp_packet_classes
 ```
 
-(interfacertemsmppacketclasses)=
+(InterfaceRtemsMpPacketClasses)=
 
 ### rtems_mp_packet_classes
 
@@ -1058,7 +1058,7 @@ This enumeration defines the MPCI packet classes.
 ```{index} rtems_mpci_entry
 ```
 
-(interfacertemsmpcientry)=
+(InterfaceRtemsMpciEntry)=
 
 ### rtems_mpci_entry
 
@@ -1069,7 +1069,7 @@ MPCI handler routines shall have this return type.
 ```{index} rtems_mpci_get_packet_entry
 ```
 
-(interfacertemsmpcigetpacketentry)=
+(InterfaceRtemsMpciGetPacketEntry)=
 
 ### rtems_mpci_get_packet_entry
 
@@ -1080,7 +1080,7 @@ MPCI get packet routines shall have this type.
 ```{index} rtems_mpci_initialization_entry
 ```
 
-(interfacertemsmpciinitializationentry)=
+(InterfaceRtemsMpciInitializationEntry)=
 
 ### rtems_mpci_initialization_entry
 
@@ -1091,7 +1091,7 @@ MPCI initialization routines shall have this type.
 ```{index} rtems_mpci_receive_packet_entry
 ```
 
-(interfacertemsmpcireceivepacketentry)=
+(InterfaceRtemsMpciReceivePacketEntry)=
 
 ### rtems_mpci_receive_packet_entry
 
@@ -1102,7 +1102,7 @@ MPCI receive packet routines shall have this type.
 ```{index} rtems_mpci_return_packet_entry
 ```
 
-(interfacertemsmpcireturnpacketentry)=
+(InterfaceRtemsMpciReturnPacketEntry)=
 
 ### rtems_mpci_return_packet_entry
 
@@ -1113,7 +1113,7 @@ MPCI return packet routines shall have this type.
 ```{index} rtems_mpci_send_packet_entry
 ```
 
-(interfacertemsmpcisendpacketentry)=
+(InterfaceRtemsMpciSendPacketEntry)=
 
 ### rtems_mpci_send_packet_entry
 
@@ -1124,7 +1124,7 @@ MPCI send packet routines shall have this type.
 ```{index} rtems_mpci_table
 ```
 
-(interfacertemsmpcitable)=
+(InterfaceRtemsMpciTable)=
 
 ### rtems_mpci_table
 
@@ -1135,7 +1135,7 @@ This type represents the user-provided MPCI control.
 ```{index} rtems_multiprocessing_table
 ```
 
-(interfacertemsmultiprocessingtable)=
+(InterfaceRtemsMultiprocessingTable)=
 
 ### rtems_multiprocessing_table
 
@@ -1146,7 +1146,7 @@ This type represents the user-provided MPCI configuration.
 ```{index} rtems_name
 ```
 
-(interfacertemsname)=
+(InterfaceRtemsName)=
 
 ### rtems_name
 
@@ -1165,7 +1165,7 @@ characters. A value of zero may have a special meaning in some directives.
 ```{index} rtems_object_api_class_information
 ```
 
-(interfacertemsobjectapiclassinformation)=
+(InterfaceRtemsObjectApiClassInformation)=
 
 ### rtems_object_api_class_information
 
@@ -1199,7 +1199,7 @@ unallocated
 ```{index} rtems_option
 ```
 
-(interfacertemsoption)=
+(InterfaceRtemsOption)=
 
 ### rtems_option
 
@@ -1210,7 +1210,7 @@ This type represents a Classic API directive option set.
 ```{index} rtems_packet_prefix
 ```
 
-(interfacertemspacketprefix)=
+(InterfaceRtemsPacketPrefix)=
 
 ### rtems_packet_prefix
 
@@ -1222,7 +1222,7 @@ between nodes.
 ```{index} rtems_rate_monotonic_period_states
 ```
 
-(interfacertemsratemonotonicperiodstates)=
+(InterfaceRtemsRateMonotonicPeriodStates)=
 
 ### rtems_rate_monotonic_period_states
 
@@ -1250,7 +1250,7 @@ RATE_MONOTONIC_EXPIRED
 ```{index} rtems_rate_monotonic_period_statistics
 ```
 
-(interfacertemsratemonotonicperiodstatistics)=
+(InterfaceRtemsRateMonotonicPeriodStatistics)=
 
 ### rtems_rate_monotonic_period_statistics
 
@@ -1292,7 +1292,7 @@ total_wall_time
 ```{index} rtems_rate_monotonic_period_status
 ```
 
-(interfacertemsratemonotonicperiodstatus)=
+(InterfaceRtemsRateMonotonicPeriodStatus)=
 
 ### rtems_rate_monotonic_period_status
 
@@ -1328,7 +1328,7 @@ postponed_jobs_count
 ```{index} rtems_regulator_attributes
 ```
 
-(interfacertemsregulatorattributes)=
+(InterfaceRtemsRegulatorAttributes)=
 
 ### rtems_regulator_attributes
 
@@ -1377,7 +1377,7 @@ This type is passed as an argument to {ref}`InterfaceRtemsRegulatorCreate`.
 ```{index} rtems_regulator_deliverer
 ```
 
-(interfacertemsregulatordeliverer)=
+(InterfaceRtemsRegulatorDeliverer)=
 
 ### rtems_regulator_deliverer
 
@@ -1397,7 +1397,7 @@ structure which is passed as an argument to
 ```{index} rtems_regulator_statistics
 ```
 
-(interfacertemsregulatorstatistics)=
+(InterfaceRtemsRegulatorStatistics)=
 
 ### rtems_regulator_statistics
 
@@ -1433,7 +1433,7 @@ This type is passed as an argument to
 ```{index} rtems_signal_set
 ```
 
-(interfacertemssignalset)=
+(InterfaceRtemsSignalSet)=
 
 ### rtems_signal_set
 
@@ -1445,7 +1445,7 @@ signals.
 ```{index} rtems_stack_allocate_hook
 ```
 
-(interfacertemsstackallocatehook)=
+(InterfaceRtemsStackAllocateHook)=
 
 ### rtems_stack_allocate_hook
 
@@ -1456,7 +1456,7 @@ A thread stack allocator allocate handler shall have this type.
 ```{index} rtems_stack_allocate_init_hook
 ```
 
-(interfacertemsstackallocateinithook)=
+(InterfaceRtemsStackAllocateInitHook)=
 
 ### rtems_stack_allocate_init_hook
 
@@ -1467,7 +1467,7 @@ A task stack allocator initialization handler shall have this type.
 ```{index} rtems_stack_free_hook
 ```
 
-(interfacertemsstackfreehook)=
+(InterfaceRtemsStackFreeHook)=
 
 ### rtems_stack_free_hook
 
@@ -1478,7 +1478,7 @@ A task stack allocator free handler shall have this type.
 ```{index} rtems_status_code
 ```
 
-(interfacertemsstatuscode)=
+(InterfaceRtemsStatusCode)=
 
 ### rtems_status_code
 
@@ -1599,7 +1599,7 @@ RTEMS_PROXY_BLOCKING
 ```{index} rtems_task
 ```
 
-(interfacertemstask)=
+(InterfaceRtemsTask)=
 
 ### rtems_task
 
@@ -1616,7 +1616,7 @@ This type can be used to document task entry points in the source code.
 ```{index} rtems_task_argument
 ```
 
-(interfacertemstaskargument)=
+(InterfaceRtemsTaskArgument)=
 
 ### rtems_task_argument
 
@@ -1634,7 +1634,7 @@ enough to represent pointer values and 32-bit unsigned integers.
 ```{index} rtems_task_begin_extension
 ```
 
-(interfacertemstaskbeginextension)=
+(InterfaceRtemsTaskBeginExtension)=
 
 ### rtems_task_begin_extension
 
@@ -1667,7 +1667,7 @@ The task begin extensions may be called as a result of a task restart through
 ```{index} rtems_task_config
 ```
 
-(interfacertemstaskconfig)=
+(InterfaceRtemsTaskConfig)=
 
 ### rtems_task_config
 
@@ -1751,7 +1751,7 @@ attributes
 ```{index} rtems_task_create_extension
 ```
 
-(interfacertemstaskcreateextension)=
+(InterfaceRtemsTaskCreateExtension)=
 
 ### rtems_task_create_extension
 
@@ -1797,7 +1797,7 @@ this case, all task delete extensions are invoked, see
 ```{index} rtems_task_delete_extension
 ```
 
-(interfacertemstaskdeleteextension)=
+(InterfaceRtemsTaskDeleteExtension)=
 
 ### rtems_task_delete_extension
 
@@ -1834,7 +1834,7 @@ extension set.
 ```{index} rtems_task_entry
 ```
 
-(interfacertemstaskentry)=
+(InterfaceRtemsTaskEntry)=
 
 ### rtems_task_entry
 
@@ -1845,7 +1845,7 @@ This type defines the {term}`task entry` point of an RTEMS task.
 ```{index} rtems_task_exitted_extension
 ```
 
-(interfacertemstaskexittedextension)=
+(InterfaceRtemsTaskExittedExtension)=
 
 ### rtems_task_exitted_extension
 
@@ -1869,7 +1869,7 @@ The task exitted extensions are invoked in {term}`extension forward order`.
 ```{index} rtems_task_priority
 ```
 
-(interfacertemstaskpriority)=
+(InterfaceRtemsTaskPriority)=
 
 ### rtems_task_priority
 
@@ -1880,7 +1880,7 @@ This integer type represents task priorities of the Classic API.
 ```{index} rtems_task_restart_extension
 ```
 
-(interfacertemstaskrestartextension)=
+(InterfaceRtemsTaskRestartExtension)=
 
 ### rtems_task_restart_extension
 
@@ -1915,7 +1915,7 @@ recursion.
 ```{index} rtems_task_start_extension
 ```
 
-(interfacertemstaskstartextension)=
+(InterfaceRtemsTaskStartExtension)=
 
 ### rtems_task_start_extension
 
@@ -1949,7 +1949,7 @@ configurations, see {ref}`InterfaceRtemsTaskSwitchExtension` and
 ```{index} rtems_task_switch_extension
 ```
 
-(interfacertemstaskswitchextension)=
+(InterfaceRtemsTaskSwitchExtension)=
 
 ### rtems_task_switch_extension
 
@@ -2006,7 +2006,7 @@ extensions. A global SMP lock should be avoided for performance reasons, see
 ```{index} rtems_task_terminate_extension
 ```
 
-(interfacertemstaskterminateextension)=
+(InterfaceRtemsTaskTerminateExtension)=
 
 ### rtems_task_terminate_extension
 
@@ -2039,7 +2039,7 @@ recursion.
 ```{index} rtems_task_visitor
 ```
 
-(interfacertemstaskvisitor)=
+(InterfaceRtemsTaskVisitor)=
 
 ### rtems_task_visitor
 
@@ -2051,7 +2051,7 @@ type.
 ```{index} rtems_tcb
 ```
 
-(interfacertemstcb)=
+(InterfaceRtemsTcb)=
 
 ### rtems_tcb
 
@@ -2062,7 +2062,7 @@ This structure represents the {term}`TCB`.
 ```{index} rtems_time_of_day
 ```
 
-(interfacertemstimeofday)=
+(InterfaceRtemsTimeOfDay)=
 
 ### rtems_time_of_day
 
@@ -2099,7 +2099,7 @@ ticks
 ```{index} rtems_timer_information
 ```
 
-(interfacertemstimerinformation)=
+(InterfaceRtemsTimerInformation)=
 
 ### rtems_timer_information
 
@@ -2130,7 +2130,7 @@ stop_time
 ```{index} rtems_timer_service_routine
 ```
 
-(interfacertemstimerserviceroutine)=
+(InterfaceRtemsTimerServiceRoutine)=
 
 ### rtems_timer_service_routine
 
@@ -2148,7 +2148,7 @@ This type can be used to document timer service routines in the source code.
 ```{index} rtems_timer_service_routine_entry
 ```
 
-(interfacertemstimerserviceroutineentry)=
+(InterfaceRtemsTimerServiceRoutineEntry)=
 
 ### rtems_timer_service_routine_entry
 
@@ -2160,7 +2160,7 @@ the Timer Manager.
 ```{index} rtems_vector_number
 ```
 
-(interfacertemsvectornumber)=
+(InterfaceRtemsVectorNumber)=
 
 ### rtems_vector_number
 

@@ -4,7 +4,7 @@
 
 % COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-(codeformatting)=
+(CodeFormatting)=
 
 # Code Formatting
 
@@ -33,7 +33,7 @@
 - Do not use more than one blank line in a row.
 - Do not use trailing white space at the end of a line.
 
-(eightycharacterlinelimit)=
+(EightyCharacterLineLimit)=
 
 ## Eighty Character Line Limit
 

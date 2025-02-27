@@ -413,7 +413,7 @@ typedef struct
 
 The signal number cannot be SIGKILL.
 
-(pthread-kill)=
+(pthread_kill)=
 
 ### pthread_kill - Send a Signal to a Thread
 
@@ -521,7 +521,7 @@ It is not an error to unblock a signal which is not blocked.
 In the current implementation of RTEMS POSIX API `sigprocmask()` is
 technically mapped to `pthread_sigmask()`.
 
-(pthread-sigmask)=
+(pthread_sigmask)=
 
 ### pthread_sigmask - Examine and Change Thread Blocked Signals
 
