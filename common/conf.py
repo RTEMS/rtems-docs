@@ -47,7 +47,7 @@ html_favicon = "../common/_static/favicon_docs.ico"
 html_copy_source = True
 html_last_updated_fmt = ""
 html_static_path = ['../common/_static']
-html_css_files = ['custom.css',]
+html_css_files = ['custom.css', 'tippy.css']
 
 html_context = {
     "gitlab_url": "https://gitlab.rtems.org",
@@ -168,5 +168,6 @@ myst_enable_extensions = [
 ]
 
 myst_heading_anchors = 4
-
-
+myst_footnote_transition = True
+myst_dmath_double_inline = True
+myst_enable_checkboxes = True
