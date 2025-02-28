@@ -21,6 +21,7 @@
 ```{toctree}
 ---
 maxdepth: 4
+numbered: 4
 ---
 preface
 configuration_and_init

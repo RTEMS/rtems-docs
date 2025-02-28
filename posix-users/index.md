@@ -19,6 +19,7 @@
 ```{toctree}
 ---
 maxdepth: 3
+numbered: 4
 ---
 preface
 process_creation_and_execution

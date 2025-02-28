@@ -41,6 +41,7 @@
 ```{toctree}
 ---
 maxdepth: 5
+numbered: 4
 ---
 overview/index
 start/index

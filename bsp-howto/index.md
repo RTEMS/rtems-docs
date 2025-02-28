@@ -21,6 +21,7 @@
 ```{toctree}
 ---
 maxdepth: 5
+numbered: 4
 ---
 preface
 target_dependant_files

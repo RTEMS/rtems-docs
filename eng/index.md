@@ -24,6 +24,7 @@
 ```{toctree}
 ---
 maxdepth: 4
+numbered: 4
 ---
 preface
 mission
