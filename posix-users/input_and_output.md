@@ -1091,6 +1091,7 @@ The `aio_error()` function retrieves the error status of the request.
 **NOTES:**
 
 NONE
+
 (aio_return)=
 
 ### aio_return - Retrieve Return Status of Asynchronous I/O Operation
