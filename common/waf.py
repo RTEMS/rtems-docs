@@ -283,6 +283,7 @@ def cmd_configure(ctx):
             ctx.check_python_module('sphinx_design')
             ctx.check_python_module('sphinx_tippy')
             ctx.check_python_module('sphinx_togglebutton')
+            ctx.check_python_module('sphinxext.opengraph')
         else:
             pass
 
@@ -304,6 +305,7 @@ def cmd_configure(ctx):
         check_sphinx_extension(ctx, 'sphinx_design')
         check_sphinx_extension(ctx, 'sphinx_tippy')
         check_sphinx_extension(ctx, 'sphinx_togglebutton')
+        check_sphinx_extension(ctx, 'sphinxext.opengraph')
 
 
     #

@@ -23,7 +23,8 @@ extensions = [
 	"myst_parser",
     "sphinx_design",
     "sphinx_tippy",
-    "sphinx_togglebutton"
+    "sphinx_togglebutton",
+    "sphinxext.opengraph"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -171,3 +172,10 @@ myst_heading_anchors = 4
 myst_footnote_transition = True
 myst_dmath_double_inline = True
 myst_enable_checkboxes = True
+
+
+ogp_site_url = "https://docs.rtems.org/"
+ogp_image = "https://docs.rtems.org/rtems.webp"
+ogp_custom_meta_tags = [
+    '<meta name="twitter:card" content="summary_large_image">',
+]
