@@ -173,9 +173,13 @@ myst_footnote_transition = True
 myst_dmath_double_inline = True
 myst_enable_checkboxes = True
 
-
 ogp_site_url = "https://docs.rtems.org/"
 ogp_image = "https://docs.rtems.org/rtems.webp"
 ogp_custom_meta_tags = [
     '<meta name="twitter:card" content="summary_large_image">',
 ]
+
+# TODO: Disabled for now.
+ogp_social_cards = {
+    "enable": False
+}
