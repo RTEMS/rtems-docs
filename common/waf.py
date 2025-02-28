@@ -274,6 +274,19 @@ def cmd_configure(ctx):
         ctx.env.append_value('SPHINX_OPTIONS', opt)
         ctx.end_msg(msg)
 
+        # FIXME: Checking for the Python module is broken on MSYS2
+        if not windows:
+            ctx.check_python_module('sphinx_book_theme')
+            ctx.check_python_module('sphinx_copybutton')
+            ctx.check_python_module('linkify_it')
+            ctx.check_python_module('myst_parser')
+            ctx.check_python_module('sphinx_design')
+            ctx.check_python_module('sphinx_tippy')
+            ctx.check_python_module('sphinx_togglebutton')
+        else:
+            pass
+
+
 
         #
         # Check extensions.
@@ -291,18 +304,6 @@ def cmd_configure(ctx):
         check_sphinx_extension(ctx, 'sphinx_design')
         check_sphinx_extension(ctx, 'sphinx_tippy')
         check_sphinx_extension(ctx, 'sphinx_togglebutton')
-
-        # FIXME: Checking for the Python module is broken on MSYS2
-        if not windows:
-            ctx.check_python_module('sphinx_book_theme')
-            ctx.check_python_module('sphinx_copybutton')
-            ctx.check_python_module('linkify_it')
-            ctx.check_python_module('myst_parser')
-            ctx.check_python_module('sphinx_design')
-            ctx.check_python_module('sphinx_tippy')
-            ctx.check_python_module('sphinx_togglebutton')
-        else:
-            pass
 
 
     #
