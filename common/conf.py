@@ -22,7 +22,7 @@ extensions = [
 	"sphinx_copybutton",
 	"myst_parser",
     "sphinx_design",
-    "sphinx_tippy",
+#    "sphinx_tippy",
     "sphinx_togglebutton",
     "sphinxext.opengraph"
 ]
