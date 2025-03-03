@@ -579,6 +579,12 @@ RUN <<EOT bash
     poetry add sphinxcontrib-jquery
     poetry add sphinx-book-theme
     poetry add sphinx-copybutton
+    poetry add linkify-it-py
+    poetry add myst-parser
+    poetry add sphinx-design
+    poetry add sphinx-togglebutton
+    poetry add sphinxext-opengraph
+    poetry add sphinx-tippy
 
     # ==== Build the RTEMS documentation ====
     cd \${HOME}/rtems-docs
