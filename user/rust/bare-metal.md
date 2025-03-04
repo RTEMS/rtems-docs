@@ -279,7 +279,7 @@ cat >hello-rtems/src/lib.rs <<"EOF"
 use core::fmt::Write;
 use core::ffi::c_char;
 
-extern "C" {
+unsafe extern "C" {
     fn printk(fmt: *const core::ffi::c_char, ...) -> core::ffi::c_int;
     fn rtems_panic(fmt: *const core::ffi::c_char, ...) -> !;
     fn rtems_shutdown_executive(fatal_code: u32);
@@ -306,7 +306,7 @@ impl core::fmt::Write for Console {
 }
 
 /// Our `Init()` calls `rust_main()` and handles errors
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn Init() {
     if let Err(e) = rust_main() {
         panic!("Main returned {:?}", e);
