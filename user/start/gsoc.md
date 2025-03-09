@@ -129,14 +129,14 @@ git format-patch HEAD^ -o ../
 This should create a file in the parent directory (`../`) with a filename
 like `0001-commit-message.patch` where the first (subject) line of your
 commit message gets embedded in the filename. You can just attach these files
-to a :r:url:`discord` message in the `#gsoc` channel.
+to a {r:url}:`discord` message in the `#gsoc` channel.
 
 ## Creating and Sending Merge Requests
 
 Instead of passing around patches, we use merge requests (MRs) in GitLab to
 share code and conduct code reviews. Before sending an MR, make sure that the
 changes you have made conforms to RTEMS coding standards. You can refer to
-\:ref:`Contributing` section for instruction on creating and sending merge
+{ref}`Contributing` section for instruction on creating and sending merge
 requests.
 
 Here are a few pointers to keep in mind while creating the patches.
@@ -152,4 +152,4 @@ Here are a few pointers to keep in mind while creating the patches.
 - Ensure that your changeset builds before sending the MR for review.
 
 As an initial test of submitting an MR, please add yourself to the correct
-tracking page of :r:url:`gsoc` for the current year.
+tracking page of {r:url}`gsoc` for the current year.
