@@ -104,12 +104,8 @@ This section is intended for contributors interested in Google Summer of Code.
 You have to finish the following task to prove that you can work on RTEMS.
 
 Modify the hello world example to include a new different print statement.
-Something like "Hello from The Dark Side!". Then send us enough to prove to us
-that you did this. We want to know you can work with RTEMS.
 
-Create a Merge Request (MR) of your changes and submit it along with a
-screenshot of the output from running your modified hello world in the
-simulator.
+Something like "Hello from The Dark Side!".
 
 If you followed this guide, this hello world modification will likely need to be
 made in `$HOME/quick-start/src/rtems/testsuites/samples/hello/init.c`.
@@ -121,17 +117,31 @@ cd $HOME/quick-start/src/rtems
 ./waf
 ```
 
-If you are happy with your changes you can commit the changes and submit the MR.
+If you are happy with your changes you can commit the changes. Create a patch
+of your changes and attach it with your screenshot to send to us to prove
+that you did this. We want to know you can work with RTEMS. You can create
+a patch using this command from inside your modified rtems.git:
+
+```shell
+git format-patch HEAD^ -o ../
+```
+
+This should create a file in the parent directory (`../`) with a filename
+like `0001-commit-message.patch` where the first (subject) line of your
+commit message gets embedded in the filename. You can just attach these files
+to a :r:url:`discord` message in the `#gsoc` channel.
 
 ## Creating and Sending Merge Requests
 
-Before sending an MR, make sure that the changes you have made conforms to
-RTEMS coding standards.
-You can refer to {ref}`Contributing` section for instruction on creating and
-sending merge requests.
+Instead of passing around patches, we use merge requests (MRs) in GitLab to
+share code and conduct code reviews. Before sending an MR, make sure that the
+changes you have made conforms to RTEMS coding standards. You can refer to
+\:ref:`Contributing` section for instruction on creating and sending merge
+requests.
 
 Here are a few pointers to keep in mind while creating the patches.
 
+- Always work in a fork.
 - Make sure not to commit changes in the `main` branch. This is to avoid
   merge conflicts when you are pulling the latest changes from the remote
   branch.
@@ -140,3 +150,6 @@ Here are a few pointers to keep in mind while creating the patches.
 - The author name of the patch is your full legal name.
 - The author email of the patch is your valid email address.
 - Ensure that your changeset builds before sending the MR for review.
+
+As an initial test of submitting an MR, please add yourself to the correct
+tracking page of :r:url:`gsoc` for the current year.
