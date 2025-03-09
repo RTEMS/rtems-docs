@@ -129,7 +129,7 @@ git format-patch HEAD^ -o ../
 This should create a file in the parent directory (`../`) with a filename
 like `0001-commit-message.patch` where the first (subject) line of your
 commit message gets embedded in the filename. You can just attach these files
-to a {r:url}:`discord` message in the `#gsoc` channel.
+to a {r:url}`discord` message in the `#gsoc` channel.
 
 ## Creating and Sending Merge Requests
 
