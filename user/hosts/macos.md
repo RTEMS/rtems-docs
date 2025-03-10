@@ -85,7 +85,7 @@ To install:
 
 ## Sonoma
 
-The RSB is supported on Sonoma and Applie silicon.
+The RSB is supported on Sonoma and Apple silicon.
 
 (Ventura)=
 
