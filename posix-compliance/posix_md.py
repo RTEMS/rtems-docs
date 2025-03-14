@@ -48,8 +48,8 @@ standards = [
 standard_names = {
     'RTEMS'                   : 'RTEMS Complete Profile',
     'POSIX-2024'              : 'POSIX-2024 (Issue 8)',
-    'POSIX-2017'              : 'POSIX-2017 (Issue 7)',
-    'POSIX-2008'              : 'POSIX-2008 (Issue 6 TC2)',
+    'POSIX-2017'              : 'POSIX-2017 (Issue 7 TC2)',
+    'POSIX-2008'              : 'POSIX-2008 (Issue 7)',
     'POSIX-2003'              : 'POSIX-2003 (Issue 6)',
     'PSE51'                   : 'POSIX PSE51 - Minimal',
     'PSE52'                   : 'POSIX PSE52 - Real-Time Controller',

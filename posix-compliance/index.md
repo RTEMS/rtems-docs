@@ -5,7 +5,7 @@
 ```{topic} Copyrights and License
 (c) 2017 Chris Johns
 
-(c) 1988, 2018 On-Line Applications Research Corporation (OAR)
+(c) 1988, 2025 On-Line Applications Research Corporation (OAR)
 ```
 
 ```{include} ../../common/license.md

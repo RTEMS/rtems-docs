@@ -1,26 +1,27 @@
-1 July 2024
+14 March 2025
 
 The .cvs file is exported from a spreadsheet used to track the status
-of RTEMS versus various POSIX related standards. The spreadsheet
-is maintained and managed outside the RTEMS Documentation. The
-spreadsheet is versioned but that is not reflected in the name
-"RTEMS-Standards-Compliance.csv". 
+of RTEMS versus various C language standards and multiple POSIX related
+standards. The spreadsheet is maintained and managed outside the RTEMS
+Documentation. The spreadsheet is versioned but that is not reflected
+in the name "RTEMS-Standards-Compliance.csv".
 
 The version of the spreadsheet included currently is:
 
-v20 - 1 July 2024
+v21 - 14 March 2025
 
 The spreadsheet MUST be exported as "MS-DOS CSV" to be processed by
 the Python script.
 
 This is the information in each column:
 
+
   Methods
   Header File
-  IEEE Std 1003.1-2024
-  IEEE Std 1003.1-2017
-  IEEE Std 1003.1-2008
-  IEEE Std 1003.1-2003
+  IEEE Std 1003.1-2024 (Issue 8)
+  IEEE Std 1003.1-2017 (Issue 7 TC2)
+  IEEE Std 1003.1-2008 (Issue 7)
+  IEEE Std 1003.1-2003 (Issue 6)
   PSE51
   PSE52
   PSE53
@@ -44,6 +45,13 @@ This is the information in each column:
   FACE 3.2 Safety Base
   FACE 3.2 Safety Extended
   FACE 3.2 General Purpose
+  FACE 3.3 Security (draft)
+  FACE 3.3 Safety Base (draft)
+  FACE 3.3 Safety Extended (draft)
+  FACE 3.3 General Purpose (draft)
+  FACE 3.3 General Purpose C11 Threads (draft)
+  FACE 3.3 ARINC 653 C Library Security (draft)
+  FACE 3.3 ARINC 653 C >= SB Security (draft)
   SCA 2.2.2 AEP
   SCA 4.1 Ultra Lightweight AEP
   SCA 4.1 Lightweight AEP
@@ -78,4 +86,5 @@ The "RTEMS Impl Notes" column has the following values:
   returns -1
 + SUSP to indicate the method is limited due to the Single Use,
   Single Process nature of RTEMS.
++ NA to indicate the method reflects capabilities not present in RTEMS.
 
