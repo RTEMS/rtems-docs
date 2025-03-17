@@ -45,7 +45,7 @@ version major number `5` and minor number `1` used throughout this section with
 the version number you selected, e.g., `sparc-rtems4.11`, `sparc-rtems6`, and
 so on. The specific instructions for working with released versions of RTEMS
 are available in the released documents associated with those versions.
-However, the procedures should generally work fine replacing `@rtems-ver-major`
+However, the procedures should generally work fine replacing `@rtems-ver-major@`
 with the release version major number you are using.
 
 Download and unpack using the `curl` and `tar` command with these commands:
