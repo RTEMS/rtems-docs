@@ -11,16 +11,21 @@
 # Obtain the Sources
 
 You have considered and chosen a suitable installation prefix in the previous
-section. We have chosen {file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation
-prefix. We will show how to use a released version of RTEMS and then as an
-alternative we will show you using the {ref}`RSB Git repository <QuickStartSources_Git>`. Consider using a Git clone if you wish to make
-contributions to the RTEMS Project.
+section. For example, if you are building RTEMS with version
+`@rtems-ver-major@` tools we have chosen
+{file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation prefix.
+We will show how to use a released version of RTEMS and then as an alternative
+we will show you using the {ref}`RSB Git repository <QuickStartSources_Git>`.
+Consider using a Git clone if you wish to make contributions to the RTEMS
+Project.
 
-You need the RTEMS Source Builder (RSB) to work with RTEMS and we prefer you
-use a released version. A released version of the RSB downloads all source code
-from the RTEMS servers. Each release archives all the referenced source
-providing long term stability as changes in upstream projects do not effect a
-release's build.
+You need the RTEMS Source Builder (RSB) to work with RTEMS. You should use the
+same version of the RSB as you plan to use for RTEMS, for example
+`@rtems-ver-major@` for the development head of RTEMS, or a released version
+of the RSB matching the released version of RTEMS.
+A released version of the RSB downloads all source code from the RTEMS servers.
+Each release archives all the referenced source providing long term stability
+as changes in upstream projects do not effect a release's build.
 
 You will need approximately 1.5G bytes of disk space to build the tools, RTEMS
 kernel, network stack and 3rd party packages for the ERC32 BSP.
@@ -36,26 +41,31 @@ the release series is [5](https://ftp.rtems.org/pub/rtems/releases/5) and the
 release path is <https://ftp.rtems.org/pub/rtems/releases/5/5.1>.
 
 To work with the archives of a released RTEMS version, simply replace the
-version number @rtems-ver-major@ used throughout this chapter with the version
-number you selected, e.g. `sparc-rtems4.11`, `sparc-rtems6`, and so on.
+version major number `5` and minor number `1` used throughout this section with
+the version number you selected, e.g., `sparc-rtems4.11`, `sparc-rtems6`, and
+so on. The specific instructions for working with released versions of RTEMS
+are available in the released documents associated with those versions.
+However, the procedures should generally work fine replacing `@rtems-ver-major`
+with the release version major number you are using.
 
 Download and unpack using the `curl` and `tar` command with these commands:
 
 ```none
 mkdir -p $HOME/quick-start/src
 cd $HOME/quick-start/src
-curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@/sources/rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@.tar.xz | tar xJf -
+curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-source-builder-5.1.tar.xz | tar xJf -
 ```
 
 If `curl` does not work consider using `wget` or a browser.
 
-The RSB is unpacked under the path `rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@`. Rename this
-to `rsb` to get shorter paths during the tool suite build. To do this run
-these commands:
+The RSB is unpacked under the path `rtems-source-builder-5.1`. We rename this
+to `rsb` so that the subsequent directions are consistent regardless of what
+version is being used. This has the added benefit of using shorter paths during
+the tool suite build. To do this run these commands:
 
 ```none
 cd $HOME/quick-start/src
-mv rtems-source-builder-@rtems-ver-major@.@rtems-ver-minor@ rsb
+mv rtems-source-builder-5.1 rsb
 ```
 
 (QuickStartSources_Released_RTEMS)=
@@ -65,7 +75,7 @@ sources:
 
 ```none
 cd $HOME/quick-start/src
-curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@/sources/rtems-@rtems-ver-major@.@rtems-ver-minor@.tar.xz | tar xJf -
+curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-5.1.tar.xz | tar xJf -
 ```
 
 (QuickStartSources_Git)=
@@ -75,7 +85,7 @@ curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major
 Alternatively, clone the Git repositories into {file}`$HOME/quick-start/src`.
 
 A Git repository clone gives you some flexibility with the added complexity of
-needing to use a Git branch to build a released version. With Git you can
+needing to use a Git tag or branch to build a released version. With Git you can
 switch between branches to try out different RTEMS versions and you have access
 to the RTEMS source history. The RTEMS Project welcomes contributions. The Git
 repositories enable you to easily create patches and track local changes.
@@ -91,8 +101,9 @@ git clone https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git rsb
 git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 ```
 
-The {file}`rsb` repository clone contains the {ref}`RTEMS Source Builder (RSB) <RSB>`. We clone it into {file}`rsb` to get shorter paths during the tool
-suite build. The {file}`rtems` repository clone contains the RTEMS sources.
+The {file}`rsb` repository clone contains the {ref}`RTEMS Source Builder (RSB) <RSB>`. We clone it into {file}`rsb` to get a consistent (and shorter) path for
+the subsequent instructions. This renaming is optional.
+The {file}`rtems` repository clone contains the RTEMS sources.
 These two repositories are enough to get started. There are [more repositories](https://gitlab.rtems.org/explore/projects) available.
 
 ```{warning}
