@@ -4,6 +4,7 @@
 #
 
 from __future__ import print_function
+from py_markdown_table.markdown_table import markdown_table
 
 import copy
 import csv
@@ -223,22 +224,22 @@ class compliance:
                        'the %s standard:' % (standard_names[standard])
         s = [std_line,
              '']
-        cols = [0, 1]
+
+        table = []
+
         for cat in categories['order']:
-            if len(categories['name'][cat]) > cols[0]:
-                cols[0] = len(categories['name'][cat])
+            amount = 0
             if cat in results:
-                num = '%d' % results[cat]
-                if len(num) > cols[1]:
-                    cols[1] = len(num)
-        table_def = ' %s  %s' % ('=' * cols[0], '=' * cols[1])
-        s += [table_def]
-        for cat in categories['order']:
-            if cat in results:
-                s += [' %-*s  %d' % (cols[0], categories['name'][cat], results[cat])]
-            else:
-                s += [' %-*s  %d' % (cols[0], categories['name'][cat], 0)]
-        s += [table_def, '']
+                amount = results[cat]
+
+            table.append({
+                "Support": categories['name'][cat],
+                "Amount": amount,
+            })
+
+        s += markdown_table(table) \
+             .set_params(quote=False, row_sep="markdown") \
+             .get_markdown().splitlines() + [""]
         return s
 
     def output(self, standard = 'RTEMS'):

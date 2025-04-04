@@ -142,6 +142,7 @@ Similarly, `npm` packages can be installed into a users `$HOME` directory.
 | `sphinx-togglebutton`           | 0.3.2   |
 | `sphinxext-opengraph`           | 0.9.1   |
 | `sphinx-tippy`                  | 0.4.3   |
+| `py_markdown_table`             | 1.3.0   |
 
 ### Python Virtual Environment
 
@@ -181,6 +182,7 @@ $ pip install sphinx-design
 $ pip install sphinx-togglebutton
 $ pip install sphinxext-opengraph
 $ pip install sphinx-tippy
+$ pip install py_markdown_table
 ```
 
 When you have finished using sphinx and building documentation you
