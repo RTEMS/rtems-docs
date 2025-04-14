@@ -21,7 +21,7 @@ shall use [Title Case](https://en.wikipedia.org/wiki/Letter_case#Title_Case).
 /**
  * @defgroup RTEMSScoreThread Thread Handler
  *
- * @ingrop RTEMSScore
+ * @ingroup RTEMSScore
  *
  * ...
  */
@@ -47,7 +47,7 @@ For the `@brief` description use phrases like this:
 /**
  * @defgroup RTEMSScoreThread Thread Handler
  *
- * @ingrop RTEMSScore
+ * @ingroup RTEMSScore
  *
  * @brief The Thread Handler provides functionality related to the
  *   management of threads.
