@@ -5,8 +5,7 @@
 # powerpc (PowerPC)
 
 ## beatnik
-
-TODO.
+The ``beatnik`` BSP supports the ``MVME5500`` and the ``MVME6100`` boards.
 
 ## gen5200
 
@@ -43,10 +42,6 @@ TODO.
 TODO.
 
 ## mvme3100
-
-TODO.
-
-## mvme5500
 
 TODO.
 
