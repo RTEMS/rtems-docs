@@ -105,11 +105,11 @@ int opendir(
  * - ``ENFILE``
    - Too many files are currently open in the system.
  * - ``ENOENT``
-   - Directory does not exist, or ``name`` is an empty string.
+   - Directory does not exist, or ``dirname`` is an empty string.
  * - ``ENOMEM``
    - Insufficient memory to complete the operation.
  * - ``ENOTDIR``
-   - ``name`` is not a directory.
+   - ``dirname`` is not a directory.
 ```
 
 **DESCRIPTION:**
