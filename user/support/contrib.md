@@ -142,26 +142,23 @@ should rebase the patch set in your merge request to include the updates.
 There are several ways you can rebase the patch set. The following is one
 suggested workflow:
 
-# Before making changes, create a new local branch of your merge request. Make
+* Before making changes, create a new local branch of your merge request. Make
+  your changes on this branch, so that you can always go back to your previous
+  state. Always keep your original branch until you have pushed a new, clean
+  version that supersedes it. Even then, you may want to keep your original
+  branch around in case something went wrong that you did not notice, such as
+  you accidentally removed a necessary commit while rebasing.
 
-\: your changes on this branch, so that you can always go back to your previous
-state. Always keep your original branch until you have pushed a new, clean
-version that supersedes it. Even then, you may want to keep your original
-branch around in case something went wrong that you did not notice, such as
-you accidentally removed a necessary commit while rebasing.
+* Make and commit changes locally until you are satisfied with your code
 
-\# Make and commit changes locally until you are satisfied with your code
+* Interactively rebase your local branch using `git rebase --interactive`
+  to allow you to select the order of commits and to reword or fixup
+  commits. One good strategy here is to reorder and fixup commits in one round
+  and then reword them in a second round, so that you get your commits in
+  the right order and shape you want before finalizing the patch descriptions.
 
-# Interactively rebase your local branch using `git rebase --interactive`
-
-\: to allow you to select the order of commits and to reword or fixup
-commits. One good strategy here is to reorder and fixup commits in one round
-and then reword them in a second round, so that you get your commits in
-the right order and shape you want before finalizing the patch descriptions.
-
-# Force-push your local branch to your merge request branch on your fork. If
-
-\: something goes wrong, you can revert back to your local version.
+* Force-push your local branch to your merge request branch on your fork. If
+  something goes wrong, you can revert back to your local version.
 
 ## Rebasing a Merge Request
 
