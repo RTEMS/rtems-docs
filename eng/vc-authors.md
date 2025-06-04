@@ -14,7 +14,7 @@ for those individuals.
 
 ### Assignee
 
-The assignee of a merge request should usually be set to the submitter.  Not
+The assignee of a merge request should usually be set to the submitter. Not
 all users will appear in the Edit boxes. Add the user by a @user in a comment,
 refresh your browser and then you can edit the assignee.
 
@@ -46,10 +46,10 @@ of the {ref}`Release_Process`. For requested backports, please refer directly
 to {ref}`Release_Backports`. With any Merge Request targeting a release branch,
 ensure that:
 
-* The commit messages of the Merge Request refer to an Issue with the Milestone
+- The commit messages of the Merge Request refer to an Issue with the Milestone
   that matches the release branch. Add this Milestone to the Merge Request.
 
-* The Issue referenced by the Merge Request is linked to the Epic for the
+- The Issue referenced by the Merge Request is linked to the Epic for the
   target release.
 
 ## Approving Merge Requests
@@ -81,7 +81,7 @@ sure they have set a name and email address in their git metadata.
 
 Navigate to the `Changes` tab in GitLab, and provide inline comments. It is up
 to you if you want to add comments one at a time or in bulk using the "Start a
-review" option. 
+review" option.
 
 Avoid adding comments directly in the `Overview` tab. If you do make comments
 there that need to be addressed, you should ensure they show up as "threads" by
@@ -107,7 +107,40 @@ merged.
 Prior to approving, it is your responsibility to ensure that the change works
 as intended. In some cases this may be done without having to clone and test
 changes, but often you will need to do some work locally. There are a few ways
-you can do this.
+you can do this. The [GitLab Documentation](https://docs.gitlab.com/user/project/merge_requests/merge_request_troubleshooting/#check-out-merge-requests-locally-through-the-head-ref) has advice on this. You can also get a check-out from the
+"Code" button dropdown, "Check out branch" menu.
+
+The following are some potentially useful `git` aliases that may help simplify
+this process:
+
+```
+[alias]
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  fetch-fork = !sh -c 'git remote add $1 ssh://git@gitlab.rtems.org:2222/$1/$(basename $(git rev-parse --show-toplevel)).git && git fetch $1' -
+  push-fork = !sh -c 'git push $1 $(git rev-parse --abbrev-ref --symbolic-full-name HEAD):$2 $3' -
+  checkout-fork = !git checkout -t $1/$2
+  close-fork = !git remote remove
+  close-mr = !sh -c 'git checkout main && git fetch && git pull && git branch -d mr-$1-$2' -
+```
+
+These aliases were created on a Linux machine and would likely need
+modification in other hosts. The mainly useful alias is the first one, you can
+use `git mr origin 123` to checkout merge request 123 against the origin repo.
+If you want to make changes and push them back, you have to use the other
+commands, for example:
+
+```
+git fetch-fork gedare
+git checkout-fork gedare somebranch
+edit edit edit
+git commit/rebase
+git push-fork gedare somebranch -f
+```
+
+Which is a fairly rude thing to do, but can be a handy way to fix a submitted
+Merge Request if the submitter is unable to do so themselves. The ability to
+push to the Merge Request submitter's branch can be disabled, but it is turned
+on by default.
 
 ### Approving
 
@@ -118,4 +151,3 @@ use the preceding instructions for cloning the Merge Request to fix it
 yourself. It is generally preferable to give the submitter a chance to fix it
 on their own. If you cannot see why a Merge Request cannot be merged, please
 make an inquiry in the {r:url}`discord`.
-
