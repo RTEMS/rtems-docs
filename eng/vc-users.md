@@ -6,11 +6,6 @@
 
 # Software Development with GitLab
 
-
-```{include} ../../common/content/merge-request-creation.rst
-```
-
-
 ## Browse the Git Repository Online
 
 You can browse repositories from [your home page](https://gitlab.rtems.org)
@@ -97,12 +92,6 @@ then you rewrite those commits with `git rebase` and push them up again, the
 others will have to re-merge their work and trying to integrate their work
 into yours can become messy.
 
-## Accessing a Developer's Repository
-
-RTEMS developers with Git commit access have personal repositories
-on <https://gitlab.rtems.org/> that can be cloned to view cutting-edge
-development work shared there.
-
 ## Commit Message Guidance
 
 The commit message associated with a change to any software project
@@ -168,3 +157,8 @@ series which impacts multiple BSPs, it is common to put each BSP into
 a separate patch. This improves the quality and specificity of the
 commit messages.
 
+```{include} ../../common/content/merge-request-creation.rst
+```
+
+```{include} ../../common/content/merge-request-review.rst
+```
