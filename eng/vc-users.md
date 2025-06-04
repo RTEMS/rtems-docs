@@ -92,6 +92,8 @@ then you rewrite those commits with `git rebase` and push them up again, the
 others will have to re-merge their work and trying to integrate their work
 into yours can become messy.
 
+(Commit_Messages)=
+
 ## Commit Message Guidance
 
 The commit message associated with a change to any software project
