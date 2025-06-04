@@ -4,11 +4,12 @@
 
 % COMMENT: RTEMS Foundation, The RTEMS Documentation Project
 
-# Software Development (Git Users)
+# Software Development with GitLab
 
-% COMMENT: TBD - Managing a (private/public) Git mirror, using GitHub,
 
-% COMMENT: TBD - submitting pull requests...
+```{include} ../../common/content/merge-request-creation.rst
+```
+
 
 ## Browse the Git Repository Online
 
