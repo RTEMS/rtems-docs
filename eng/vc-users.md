@@ -28,60 +28,16 @@ the most. In addition, you can
 for your Homepage to show the Starred Projects among other possibly useful
 landing pages.
 
-## Using the Git Repository
+## Using Git
 
-The following examples demonstrate how to use the RTEMS' Git repos. These
-examples are provided for the main rtems module, but they are also valid
-for the other modules.
+An exhaustive treatment here is not possible. We suggest availing yourself of
+online resources to learn how to use Git, such as:
 
-First, we need to obtain our own local copy of the RTEMS Git repository:
+- <http://gitready.com/> - An excellent resource from beginner to very advanced.
+- <https://git-scm.com/docs> - The official Git reference.
+- <https://docs.gitlab.com/> - GitLab's documentation.
 
-```shell
-git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
-```
-
-This command will create a folder named rtems in the current directory. This
-folder will contain a full-featured RTEMS' Git repository and the current HEAD
-revision checked out. Since all the history is available we can check out any
-release of RTEMS. Major RTEMS releases are available as separate branches in
-the repo.
-
-To see all available remote branches issue the following command:
-
-```shell
-git branch -r
-```
-
-We can check out one of those remote branches (e.g. <mailto:rtems-@rtems-ver>-major@.@rtems-ver-minor@ branch) using
-the command:
-
-```shell
-git checkout -b rtems@rtems-ver-major@@rtems-ver-minor@ origin/@rtems-ver-major@.@rtems-ver-minor@
-```
-
-This will create a local branch named "<mailto:rtems@rtems-ver>-major@@rtems-ver-minor@", containing the <mailto:rtems-@rtems-ver>-major@.@rtems-ver-minor@
-release, that will track the remote branch "<mailto:rtems-@rtems-ver>-major@.@rtems-<mailto:ver-minor@-branch>" in origin
-(<https://gitlab.rtems.org/rtems/rtos/rtems.git>). The `git branch` command
-prints a list of the current local branches, indicating the one currently
-checked out.
-
-If you want to switch between local branches:
-
-```shell
-git checkout <branch-name>
-```
-
-With time your local repository will diverge from the main RTEMS repository. To
-keep your local copy up to date you need to issue:
-
-```shell
-git pull origin
-```
-
-This command will update all your local branches with any new code revisions
-available on the central repository.
-
-## Making Changes
+## Making Changes with Branches
 
 Git allows you to make changes in the RTEMS source tree and track those changes
 locally. We recommend you make all your changes in local branches. If you are
@@ -90,90 +46,25 @@ use a local branch for each change.
 
 A branch for each change lets your repo's main branch track the upstream
 RTEMS' main branch without interacting with any of the changes you are
-working on. A completed change is emailed to the developer's list for review
+working on. A completed change is submitted as Merge Request for review
 and this can take time. While this is happening the upstream's main branch
 may be updated and you may need to rebase your work and test again if you are
 required to change or update your patch. A local branch isolates a specific
 change from others and helps you manage the process.
 
-First, you need to clone the repository:
-
-```shell
-git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
-```
-
-Or if you already cloned it before, then you might want to update to the latest
-version before making your changes:
-
-```shell
-cd rtems
-git pull
-```
-
-Create a local branch to make your changes in, in this example, the change is
-`faster-context-switch`:
-
-```shell
-git checkout -b faster-context-switch
-```
-
-Next, make your changes to files. If you add, delete ormove/rename files you
-need to inform Git
-
-```shell
-git add /some/new/file
-git rm /some/old/file
-git mv /some/old/file /some/new/file
-```
-
-When you're satisfied with the changes you made, commit them (locally)
-
-```shell
-git commit -a
-```
-
-The `-a` flag commits all the changes that were made, but you can also
-control which changes to commit by individually adding files as you modify
-them by using. You can also specify other options to commit, such as a message
-with the `-m` flag.
-
-```shell
-git add /some/changed/files
-git commit
-```
-
-Create a patch from your branch, in this case, we have two commits we want to
-send for review:
-
-```shell
- git format-patch -2
-
-There are new changes pushed to the RTEMS' main branch and our local branch
-needs to be updated:
-```
-
-```shell
-git checkout main
-git pull
-git checkout faster-context-switch
-git rebase main
-```
-
-## Working with Branches
-
-Branches facilitate trying out new code and creating patches.
+## Working with Remote Branches
 
 The previous releases of RTEMS are available through remote branches. To check
 out a remote branch, first query the Git repository for the list of branches:
 
 ```shell
-git branch -r
+git branch origin -r
 ```
 
 Then check out the desired remote branch, for example:
 
 ```shell
-git checkout -b rtems@rtems-ver-major@@rtems-ver-minor@ origin/@rtems-ver-major@.@rtems-ver-minor@
+git checkout -t rtems@rtems-ver-major@@rtems-ver-minor@ origin/@rtems-ver-major@.@rtems-ver-minor@
 ```
 
 Or if you have previously checked out the remote branch then you should see it
@@ -183,204 +74,6 @@ in your local branches:
 git branch
 ```
 
-You can change to an existing local branch easily:
-
-```shell
-git checkout rtems@rtems-ver-major@@rtems-ver-minor@
-```
-
-You can also create a new branch and switch to it:
-
-```shell
-git branch temporary
-git checkout temporary
-```
-
-Or more concisely:
-
-```shell
-git checkout -b temporary
-```
-
-If you forget which branch you are on
-
-```shell
-git branch
-```
-
-shows you by placing a * next to the current one.
-
-When a branch is no longer useful you can delete it.
-
-```shell
-git checkout main
-git branch -d temporary
-```
-
-If you have unmerged changes in the old branch Git complains and you need to
-use `-D` instead of `-d`.
-
-## Viewing Changes
-
-To view all changes since the last commit:
-
-```shell
-git diff HEAD
-```
-
-To view all changes between the current branch and another branch, say main:
-
-```shell
-git diff main..HEAD
-```
-
-To view descriptions of committed changes:
-
-```shell
-git log
-```
-
-Or view the changeset for some file (or directory):
-
-```shell
-git log /some/file
-```
-
-To view the changesets made between two branches:
-
-```shell
-git log main..HEAD
-```
-
-Or for a more brief description use shortlog:
-
-```shell
-git shortlog main..HEAD
-```
-
-## Reverting Changes
-
-To remove all (uncommitted) changes on a branch
-
-```shell
-git checkout -f
-```
-
-Or to selectively revert (uncommited) files, for example if you
-accidentally deleted ./some/file
-
-```shell
-git checkout -- ./some/file
-```
-
-or
-
-```shell
-git checkout HEAD ./some/file
-```
-
-To remove commits there are two useful options, reset and revert. `git reset`
-should only be used on local branches that no one else is accessing remotely.
-`git revert` is cleaner and is the right way to revert changes that have
-already been pushed/pulled remotely.
-
-## git reset
-
-`git reset` is a powerful and tricky command that should only be used on
-local (un-pushed) branches): A good description of what it enables to do can be
-found here. The following are a few useful examples. Note that adding a ~
-after HEAD refers to the most recent commit, and you can add a number after
-the ~ to refer to commits even further back; HEAD by itself refers to the
-current working directory (changes since the last commit).
-
-```shell
-git reset HEAD~
-```
-
-Will undo the last commit and unstage those changes. Your working directory
-will remain the same, therefore a `git status` will yield any changes you
-made plus the changes made in your last commit. This can be used to fix the
-last commit. You will need to add the files again.
-
-```shell
-git reset --soft HEAD~
-```
-
-Will just undo the last commit. The changes from the last commit will still be
-staged (just as if you finished git adding them). This can be used to amend the
-last commit (e.g. You forgot to add a file to the last commit).
-
-```shell
-git reset --hard HEAD~
-```
-
-Will revert everything, including the working directory, to the previous
-commit. This is dangerous and can lead to you losing all your changes; the
-`--hard` flag ignores errors.
-
-```shell
-git reset HEAD
-```
-
-Will unstage any change. This is used to revert a wrong `git add`. (e.g. You
-added a file that shouldn't be there, but you haven't 'committed')
-
-Will revert your working directory to a HEAD state. You will lose any change
-you made to files after the last commit. This is used when you just want to
-destroy all changes you made since the last commit.
-
-## git revert
-
-`git revert` does the same as reset but creates a new commit with the
-reverted changes instead of modifying the local repository directly.
-
-```shell
-git revert HEAD
-```
-
-This will create a new commit which undoes the change in HEAD. You will be
-given a chance to edit the commit message for the new commit.
-
-## Merging Changes
-
-Suppose you commit changes in two different branches, branch1 and branch2,
-and want to create a new branch containing both sets of changes:
-
-```shell
-git checkout -b merged
-git merge branch1
-git merge branch2
-```
-
-Or you might want to bring the changes in one branch into the other:
-
-```shell
-git checkout branch1
-git merge branch2
-```
-
-And now that branch2 is merged you might get rid of it:
-
-```shell
-git branch -d branch2
-```
-
-If you have done work on a branch, say branch1, and have gone out-of-sync
-with the remote repository, you can pull the changes from the remote repo and
-then merge them into your branch:
-
-```shell
-git checkout main
-git pull
-git checkout branch1
-git merge main
-```
-
-If all goes well the new commits you pulled into your main branch will be
-merged into your branch1, which will now be up-to-date. However, if branch1
-has not been pushed remotely then rebasing might be a good alternative to
-merging because the merge generates a commit.
-
 ## Rebasing
 
 An alternative to the merge command is rebase, which replays the changes
@@ -388,33 +81,13 @@ An alternative to the merge command is rebase, which replays the changes
 of the two branches, stores each commit of the branch you are on to temporary
 files and applies each commit in order.
 
-For example
-
-```shell
-git checkout branch1
-git rebase main
-```
-
-or more concisely
-
-```shell
-git rebase main branch1
-```
-
-will bring the changes of main into branch1, and then you can fast-forward
-main to include branch1 quite easily
-
-```shell
-git checkout main
-git merge branch1
-```
-
 Rebasing makes a cleaner history than merging; the log of a rebased branch
 looks like a linear history as if the work was done serially rather than in
 parallel. A primary reason to rebase is to ensure commits apply cleanly on a
 remote branch, e.g. when submitting patches to RTEMS that you create by working
 on a branch in a personal repository. Using rebase to merge your work with the
 remote branch eliminates most integration work for the committer/maintainer.
+We require maintaining a linear history in our repositories.
 
 There is one caveat to using rebase: Do not rebase commits that you have pushed
 to a public repository. Rebase abandons existing commits and creates new ones
@@ -494,9 +167,3 @@ series which impacts multiple BSPs, it is common to put each BSP into
 a separate patch. This improves the quality and specificity of the
 commit messages.
 
-## Learn more about Git
-
-Links to the sites with good Git information:
-
-- <http://gitready.com/> - An excellent resource from beginner to very advanced.
-- <https://git-scm.com/docs> - The official Git reference.
