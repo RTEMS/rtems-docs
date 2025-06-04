@@ -98,7 +98,7 @@ void print_name(rtems_id id)
 
 ### Object Ids
 
-an object id is a unique 32-bit unsigned integer value which uniquely
+An object id is a unique 32-bit unsigned integer value which uniquely
 identifies an object instance. object ids are passed as arguments to many
 directives in rtems and rtems translates the id to an internal object pointer.
 the efficient manipulation of object ids is critical to the performance of some
