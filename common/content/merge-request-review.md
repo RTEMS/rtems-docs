@@ -1,6 +1,6 @@
 (PatchReviewProcess)=
 
-# Merge Request Review Process
+## Merge Request Review Process
 
 Merge requests sent to the RTEMS Gitlab undergo a public review process. At
 least two approvals are required before a merge request can be pushed to the
@@ -31,7 +31,7 @@ reviewer who wrote the first comment. In particular, code submitters should not
 resolve the threads but should reply to the thread to indicate that they think
 they have addressed the concern.
 
-## Approvers
+### Approvers
 
 Merge Request approvals must be from a code owner, identified
 by the `CODEOWNERS` file and by sub-groups beneath `Approvers`.

@@ -38,10 +38,10 @@ done through a
 {ref}`patch review process <PatchReviewProcess>`
 on Gitlab.
 
-```{include} ../../common/content/merge-request-creation.rst
+```{include} ../../common/content/merge-request-creation.md
 ```
 
-```{include} ../../common/content/merge-request-review.rst
+```{include} ../../common/content/merge-request-review.md
 ```
 
 ## Why Contribute?

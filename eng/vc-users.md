@@ -159,8 +159,8 @@ series which impacts multiple BSPs, it is common to put each BSP into
 a separate patch. This improves the quality and specificity of the
 commit messages.
 
-```{include} ../../common/content/merge-request-creation.rst
+```{include} ../common/content/merge-request-creation.md
 ```
 
-```{include} ../../common/content/merge-request-review.rst
+```{include} ../common/content/merge-request-review.md
 ```

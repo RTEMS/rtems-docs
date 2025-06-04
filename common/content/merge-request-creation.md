@@ -1,4 +1,4 @@
-# Preparing and Submitting Merge Requests
+## Preparing and Submitting Merge Requests
 
 The RTEMS Project uses Git for version control and uses Gitlab for managing
 changes. Contributions are made by creating a Merge Request (MR) on Gitlab. The
@@ -30,7 +30,7 @@ bisect of main does not break.
 
 (ChecklistForPatches)=
 
-## Checklist for Merge Requests
+### Checklist for Merge Requests
 
 Check the following items before you publish your merge requests:
 
@@ -62,7 +62,7 @@ Check the following items before you publish your merge requests:
 
 (UpdatingMergeRequest)=
 
-## Updating a Merge Request
+### Updating a Merge Request
 
 As you make changes to your merge request through the review process, you will
 either be layering additional patches on top of your current patch set, or you
@@ -92,7 +92,7 @@ suggested workflow:
 - Force-push your local branch to your merge request branch on your fork. If
   something goes wrong, you can revert back to your local version.
 
-# Rebasing a Merge Request
+## Rebasing a Merge Request
 
 You can follow a similar process as {ref}`UpdatingMergeRequest` to rebase your
 merge request branch to an updated target branch, e.g., to pick up changes on
