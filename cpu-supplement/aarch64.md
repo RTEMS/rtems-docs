@@ -8,8 +8,10 @@ This chapter discusses the dependencies of the
 *ARM AArch64 architecture*
 (<https://en.wikipedia.org/wiki/ARM_architecture#AArch64_features>) in this port
 of RTEMS. The ARMv8-A versions are supported by RTEMS. Processors with a MMU
-use a static configuration which is set up during system start. SMP is
-supported.
+use a static configuration which is set up during system start. RTEMS operates
+exclusively at Exception Level 1 (EL1), dropping from EL2 or EL3 as necessary
+during the startup preamble in the shared `start.S`. RTEMS does not operate at
+EL0 at any time.
 
 **Architecture Documents**
 
@@ -106,6 +108,10 @@ SMP is supported on ARMv8-A. Available platforms are:
 
 - Xilinx ZynqMP (QEMU and hardware using PSCI via ARM Trusted Firmware)
 
+When operating in SMP configurations, TPIDR_EL1 is repurposed to hold the
+`Per_CPU_Control` for the current processor and is set by the shared startup
+code in `start.S`.
+
 ## Thread-Local Storage
 
 Thread-local storage (TLS) is supported. AArch64 uses unmodified TLS variant I
@@ -113,4 +119,6 @@ which is not explicitly stated, but can be inferred from the behavior of GCC and
 *Addenda to, and Errata in, the ABI for the Arm® Architecture*
 (<https://developer.arm.com/documentation/ihi0045/g>). This alters expectations
 for the size of the TLS Thread Control Block (TCB) such that, under the LP64
-multilib variant, the TCB is 16 bytes in size instead of 8 bytes.
+multilib variant, the TCB is 16 bytes in size instead of 8 bytes. This is stored
+in `TPIDR_EL0` as expected by the platform ABI since in most systems all threads
+would run at EL0 whereas RTEMS runs exclusively at EL1 during normal operation.
