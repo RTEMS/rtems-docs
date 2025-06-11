@@ -191,19 +191,13 @@ Connect your serial device to the GPIO15 and GPIO14. Add the following to the
 `config.txt` file in order to use the PL011 UART0 and thus disabling the
 default Mini-uart.
 
-A Minimal version of `config.txt`:
-.. code-block:: none
-
-> \# If you use mini-uart, please comment it out.
-> dtoverlay=disable-bt
->
-> \# If you use mini-uart, enable it.
-> \# enable_uart=1
->
-> \# The documentation says that enable_gic=1 is the default but that seems to be
-> \# true only if device tree is present otherwise it reverts to the legacy
-> \# interrupt controller.
-> enable_gic = 1
+A Minimal version of `config.txt` using UART0:
+```ini
+dtoverlay=disable-bt
+arm_64bit=1
+kernel=kernel8.img
+enable_uart=1
+```
 
 ### Generating kernel image
 
