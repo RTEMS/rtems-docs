@@ -11,7 +11,7 @@
 The 'raspberrypi4b' BSP currently supports only the LP64 ABI. ILP32 is not
 supported. Raspberry pi 4B all variants and Raspberry Pi 400 are supported.
 The default bootloader which is used by the Raspbian OS or other OS can be used
-to boot RTEMS. SMP is currently not supported.
+to boot RTEMS. SMP is supported.
 
 Raspberry Pi 4B has 2 types of interrupt controller, GIC-400 (GICv2) and ARM
 legacy generic controller. Both are supported.
@@ -166,6 +166,8 @@ void raspberrypi_watchdog_example()
   raspberrypi_watchdog_stop();
 }
 ```
+
+The watchdog driver is used to implement BSP/system reset.
 
 ## Preparing to boot
 
