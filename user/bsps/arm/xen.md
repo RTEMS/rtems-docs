@@ -38,7 +38,7 @@ already be built with the BSP.
 The `ticker.exe` file can be found in the BSP build tree at:
 
 ```none
-arm-rtems@rtems-ver-major@/c/xen_virtual/testsuites/samples/ticker.exe
+arm/xen_virtual/testsuites/samples/ticker.exe
 ```
 
 The `ticker.exe` elf file must be translated to a binary format.
@@ -53,7 +53,7 @@ From the dom0 console, create a configuration file `ticker.cfg` with the
 following contents.
 
 ```none
-name = "ticker"1G
+name = "ticker"
 kernel = "ticker.bin"
 memory = 8
 vcpus = 1
