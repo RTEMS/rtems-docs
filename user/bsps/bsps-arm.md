@@ -26,6 +26,7 @@ arm/rtl22xx
 arm/smdk2410
 arm/stm32f4
 arm/stm32h7
+arm/stm32u5
 arm/tms570
 arm/xen
 arm/xilinx-zynq
