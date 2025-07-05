@@ -14,6 +14,7 @@ This section lists the routines that provided by the Newlib C Library.
 - `abs` - Integer absolute value (magnitude)
 - `assert` - Macro for Debugging Diagnostics
 - `atexit` - Request execution of functions at program exit
+- `at_quick_exit` - Request execution of functions at quick program exit
 - `atof` - String to double or float
 - `atoi` - String to integer
 - `bsearch` - Binary search
@@ -36,6 +37,7 @@ This section lists the routines that provided by the Newlib C Library.
 - `mblen` - Minimal multibyte length
 - `mbtowc` - Minimal multibyte to wide character converter
 - `qsort` - Sort an array
+- `quick_exit` - Quick program termination without full cleanup
 - `rand` - Pseudo-random numbers
 - `strtod` - String to double or float
 - `strtol` - String to long
