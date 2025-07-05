@@ -26,6 +26,7 @@ The services provided by the mutex manager are:
 - [pthread_mutex_lock] - Lock a Mutex
 - [pthread_mutex_trylock] - Poll to Lock a Mutex
 - [pthread_mutex_timedlock] - Lock a Mutex with Timeout
+- [pthread_mutex_clocklock] - Lock a Mutex with Timeout against the chosen clock (monotonic or realtime)
 - [pthread_mutex_unlock] - Unlock a Mutex
 - [pthread_mutex_setprioceiling] - Dynamically Set the Priority Ceiling
 - [pthread_mutex_getprioceiling] - Dynamically Get the Priority Ceiling
@@ -619,6 +620,59 @@ int pthread_mutex_timedlock(
 ```
 
 **DESCRIPTION:**
+
+**NOTES:**
+
+(pthread_mutex_clocklock)=
+
+### pthread_mutex_clocklock - Lock a Mutex with Timeout against the chosen clock
+
+```{index} pthread_mutex_clocklock
+```
+
+```{index} lock a mutex with timeout against chosen clock
+```
+
+**CALLING SEQUENCE:**
+
+```c
+#include <pthread.h>
+#include <time.h>
+int pthread_mutex_clocklock(
+    pthread_mutex_t       *mutex,
+    clockid_t              clockid,
+    const struct timespec *abstime
+);
+```
+
+**STATUS CODES:**
+
+```{eval-rst}
+.. list-table::
+ :class: rtems-table
+
+ * - ``EINVAL``
+   - The specified mutex is invalid.
+ * - ``EINVAL``
+   - The nanoseconds field of timeout is invalid.
+ * - ``EINVAL``
+   - The mutex has the protocol attribute of ``PTHREAD_PRIO_PROTECT`` and the
+     priority of the calling thread is higher than the current priority
+     ceiling.
+ * - ``EINVAL``
+   - The clock specified by clockid is not supported.
+ * - ``EDEADLK``
+   - The current thread already owns the mutex.
+ * - ``ETIMEDOUT``
+   - The calling thread was unable to obtain the mutex within the specified
+     timeout period.
+```
+
+**DESCRIPTION:**
+
+The `pthread_mutex_clocklock()` function locks the mutex specified by `mutex`. If the mutex is already locked, the calling thread blocks until the mutex becomes available or until the absolute timeout specified by `abstime` is reached. The timeout is measured against the clock specified by `clockid`.
+
+The only supported clocks are `CLOCK_MONOTONIC` and `CLOCK_REALTIME`.
 
 **NOTES:**
 

@@ -20,6 +20,7 @@ The directives provided by the condition variable manager are:
 - [pthread_cond_broadcast] - Broadcast a Condition Variable
 - [pthread_cond_wait] - Wait on a Condition Variable
 - [pthread_cond_timedwait] - With with Timeout a Condition Variable
+- [pthread_cond_clockwait] - Wait on a Condition Variable with Timeout against the chosen clock
 
 ## Background
 
@@ -342,8 +343,8 @@ int pthread_cond_wait(
 
  * - ``EINVAL``
    - The specified condition variable or mutex is not initialized OR different
-     mutexes were specified for concurrent ``pthread_cond_wait()`` and
-     ``pthread_cond_timedwait()`` operations on the same condition variable OR
+     mutexes were specified for concurrent ``pthread_cond_wait()``, 
+     ``pthread_cond_timedwait()``, and ``pthread_cond_clockwait()`` operations on the same condition variable OR
      the mutex was not owned by the current thread at the time of the call.
 ```
 
@@ -382,8 +383,8 @@ int pthread_cond_timedwait(
    - The nanoseconds field of timeout is invalid.
  * - ``EINVAL``
    - The specified condition variable or mutex is not initialized OR different
-     mutexes were specified for concurrent ``pthread_cond_wait()`` and
-     ``pthread_cond_timedwait()`` operations on the same condition variable OR
+     mutexes were specified for concurrent ``pthread_cond_wait()``, 
+     ``pthread_cond_timedwait()``, and ``pthread_cond_clockwait()`` operations on the same condition variable OR
      the mutex was not owned by the current thread at the time of the call.
  * - ``ETIMEDOUT``
    - The specified time has elapsed without the condition variable being
@@ -391,5 +392,55 @@ int pthread_cond_timedwait(
 ```
 
 **DESCRIPTION:**
+
+**NOTES:**
+
+(pthread_cond_clockwait)=
+
+### pthread_cond_clockwait - Wait on a Condition Variable with Timeout against the chosen clock
+
+```{index} pthread_cond_clockwait
+```
+
+```{index} wait on a condition variable with timeout against chosen clock
+```
+
+**CALLING SEQUENCE:**
+
+```c
+#include <pthread.h>
+int pthread_cond_clockwait(
+    pthread_cond_t        *cond,
+    pthread_mutex_t       *mutex,
+    clockid_t              clockid,
+    const struct timespec *abstime
+);
+```
+
+**STATUS CODES:**
+
+```{eval-rst}
+.. list-table::
+ :class: rtems-table
+
+ * - ``EINVAL``
+   - The nanoseconds field of timeout is invalid.
+ * - ``EINVAL``
+   - The specified condition variable or mutex is not initialized OR different
+     mutexes were specified for concurrent ``pthread_cond_wait()``, 
+     ``pthread_cond_timedwait()``, and ``pthread_cond_clockwait()`` operations on the same condition variable OR
+     the mutex was not owned by the current thread at the time of the call.
+ * - ``EINVAL``
+   - The clock specified by clockid is not supported.
+ * - ``ETIMEDOUT``
+   - The specified time has elapsed without the condition variable being
+     satisfied.
+```
+
+**DESCRIPTION:**
+
+The `pthread_cond_clockwait()` function blocks the calling thread until the condition variable is signaled or until the absolute timeout specified by `abstime` is reached. The timeout is measured against the clock specified by `clockid`.
+
+The only supported clocks are `CLOCK_MONOTONIC` and `CLOCK_REALTIME`.
 
 **NOTES:**
