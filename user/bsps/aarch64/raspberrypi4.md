@@ -169,6 +169,44 @@ void raspberrypi_watchdog_example()
 
 The watchdog driver is used to implement BSP/system reset.
 
+## PWM Driver
+
+The Raspberry Pi has 2 PWM masters PWM0 and PWM1.
+Each of these masters has 2 channels each PWMx_0 and PWMx_1.
+The PWM driver allows the user to configure the PWM clock, Data and Range.
+
+```c
+#include "bsp/raspberrypi-pwm.h"
+
+void pwm_example()
+{
+  /* 
+   * Set the Clock divisor where 0 < DIVI < 4096.
+   */
+  rtems_status_code sc = rpi_pwm_set_clock(DIVI);
+
+  /* 
+   * Initialise the master and the channel with duty and range.
+   * The DUTY cannot be greater than the RANGE.
+   */
+  sc = rpi_pwm_init(
+      raspberrypi_pwm_master1,   /* PWM Master 1 */
+      raspberrypi_pwm0,          /* Channel 0 */
+      RANGE,                     /* Range (max counter value) */
+      DUTY                       /* Initial duty cycle (<= RANGE) */
+  );
+
+  /* 
+   * To change the duty after initialising the PWM channel.
+   */
+  sc = rpi_pwm_set_data(
+      raspberrypi_pwm_master1,
+      raspberrypi_pwm0,
+      DUTY2
+  );
+}
+```
+
 ## Preparing to boot
 
 Raspberry Pi uses a different mechanism to boot when compared with any ARM SoC.
