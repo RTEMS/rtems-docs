@@ -230,6 +230,7 @@ Connect your serial device to the GPIO15 and GPIO14. Add the following to the
 default Mini-uart.
 
 A Minimal version of `config.txt` using UART0:
+
 ```ini
 dtoverlay=disable-bt
 arm_64bit=1
