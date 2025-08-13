@@ -668,6 +668,41 @@ determined by the `CONFIGURE_INTERRUPT_STACK_SIZE` application configuration
 option. As part of processing a non-nested interrupt, RTEMS will switch to the
 interrupt stack before invoking the installed handler.
 
+### Installing Hardware Interrupt Handlers
+
+To install a hardware interrupt handler on SPARC, use the RTEMS interrupt manager API.
+The process typically involves:
+
+1. Initialize an interrupt entry structure with the handler and context.
+2. Install the handler using the hardware interrupt number.
+3. Clear and unmask the interrupt at the CPU level using the corresponding
+   trap vector.
+
+Example:
+
+```c
+rtems_interrupt_entry_initialize(
+  &entry,
+  isr,
+  arg,
+  "info"
+);
+
+rtems_interrupt_entry_install(
+  HW_INTERRUPT_NUMBER,    // hardware interrupt number
+  RTEMS_INTERRUPT_UNIQUE,
+  &entry
+);
+
+SPARC_Clear_and_unmask_interrupt(SPARC_TRAP_VECTOR); // trap vector
+```
+
+- Use the hardware interrupt number with RTEMS APIs.
+- Use the trap vector with SPARC/CPU-level functions.
+
+This ensures the handler is registered with RTEMS and the CPU is ready
+to receive the interrupt.
+
 ## Symmetric Multiprocessing
 
 SMP is supported. Available platforms are the Cobham Gaisler GR712RC and

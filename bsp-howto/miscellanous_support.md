@@ -155,42 +155,6 @@ macros:
   desirable when the BSP is known to always have very little RAM and thus
   saving memory by any means is desirable.
 
-## set_vector() - Install an Interrupt Vector
-
-On targets with Simple Vectored Interrupts, the BSP must provide an
-implementation of the `set_vector` routine. This routine is responsible for
-installing an interrupt vector. It invokes the support routines necessary to
-install an interrupt handler as either a "raw" or an RTEMS interrupt handler.
-Raw handlers bypass the RTEMS interrupt structure and are responsible for
-saving and restoring all their own registers. Raw handlers are useful for
-handling traps, debug vectors, etc.
-
-The `set_vector` routine is a central place to perform interrupt controller
-manipulation and encapsulate that information. It is usually implemented as
-follows:
-
-```c
-rtems_isr_entry set_vector(                 /* returns old vector */
-  rtems_isr_entry handler,                  /* isr routine        */
-  rtems_vector_number vector,               /* vector number      */
-  int                 type                  /* RTEMS or RAW intr  */
-)
-{
-  if the type is RAW
-    install the raw vector
-  else
-    use rtems_interrupt_catch to install the vector
-  perform any interrupt controller necessary to unmask the interrupt source
-  return the previous handler
-}
-```
-
-```{note}
-The i386, PowerPC and ARM ports use a Programmable Interrupt Controller
-model which does not require the BSP to implement `set_vector`. BSPs for
-these architectures must provide a different set of support routines.
-```
-
 ## Interrupt Delay Profiling
 
 The RTEMS profiling needs support by the BSP for the interrupt delay times. In
