@@ -207,6 +207,54 @@ void pwm_example()
 }
 ```
 
+## DMA Driver
+
+The DMA driver currently supports memory-to-memory transfers. The DMA driver can
+be controlled using the following functions:
+`rpi_dma_mem_to_mem_init()`
+`rpi_dma_start_transfer()`
+`rpi_dma_wait()`
+
+```c
+#include <bsp/raspberrypi-dma.h>
+
+void dma_test()
+{
+  /* The source and destination pointers must be cache aligned */
+  void* src = rtems_heap_allocate_aligned_with_boundary(BUFFER_SIZE,
+                                                        CPU_CACHE_LINE_BYTES,
+                                                        0);
+  void* dst = rtems_heap_allocate_aligned_with_boundary(BUFFER_SIZE,
+                                                        CPU_CACHE_LINE_BYTES,
+                                                        0);
+
+  rtems_status_code ret = rpi_dma_mem_to_mem_init(channel,
+                                                  src,
+                                                  dst,
+                                                  BUFFER_SIZE);
+  if (ret != RTEMS_SUCCESSFUL) {
+    free(src);
+    free(dst);
+    return;
+  }
+
+  ret = rpi_dma_start_transfer(channel);
+  if (ret != RTEMS_SUCCESSFUL) {
+    free(src);
+    free(dst);
+    return;
+  }
+
+  ret = rpi_dma_wait(channel);
+  if (ret != RTEMS_SUCCESSFUL) {
+    free(src);
+    free(dst);
+    return;
+  }
+
+}
+```
+
 ## Preparing to boot
 
 Raspberry Pi uses a different mechanism to boot when compared with any ARM SoC.
