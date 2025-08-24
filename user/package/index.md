@@ -22,4 +22,5 @@ separately and alternative stacks have been added as separate packages.
 lwip/index
 libbsd/index
 legacy-networking/index
+net-services/index
 ```
