@@ -9,68 +9,65 @@
 # Glossary
 
 ```{glossary}
----
-sorted: true
----
 API
 
-: This term is an acronym for Application Programming Interface.
+  This term is an acronym for Application Programming Interface.
 
 assembler language
 
-: The assembler language is a programming language which can be translated very
+  The assembler language is a programming language which can be translated very
   easily into machine code and data. For this project assembler languages are
   restricted to languages accepted by the {term}`GNU` assembler
   program for the target architectures.
 
 C language
 
-: The C language for this project is defined in terms of
+  The C language for this project is defined in terms of
   {term}`C11`.
 
 C11
 
-: The standard ISO/IEC 9899:2011.
+  The standard ISO/IEC 9899:2011.
 
 CCB
 
-: This term is an acronym for Change Control Board.
+  This term is an acronym for Change Control Board.
 
 Doorstop
 
-: [Doorstop](https://github.com/doorstop-dev/doorstop) is a
+  [Doorstop](https://github.com/doorstop-dev/doorstop) is a
   requirements management tool.
 
 EARS
 
-: This term is an acronym for Easy Approach to Requirements Syntax.
+  This term is an acronym for Easy Approach to Requirements Syntax.
 
 ELF
 
-: This term is an acronym for
+  This term is an acronym for
   [Executable and Linkable Format](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format).
 
 formal model
 
-: A model of a computing component (hardware or software) that has a
+  A model of a computing component (hardware or software) that has a
   mathematically based {term}`semantics`.
 
 GCC
 
-: This term is an acronym for [GNU Compiler Collection](https://gcc.gnu.org/).
+  This term is an acronym for [GNU Compiler Collection](https://gcc.gnu.org/).
 
 GNAT
 
-: *GNAT* is the {term}`GNU` compiler for Ada, integrated into the
+  *GNAT* is the {term}`GNU` compiler for Ada, integrated into the
   {term}`GCC`.
 
 GNU
 
-: This term is an acronym for [GNU's Not Unix](https://www.gnu.org/).
+  This term is an acronym for [GNU's Not Unix](https://www.gnu.org/).
 
 interrupt service
 
-: An *interrupt service* consists of an
+  An *interrupt service* consists of an
   {term}`Interrupt Service Routine` which is called with a user
   provided argument upon reception of an interrupt service request. The
   routine is invoked in interrupt context. Interrupt service requests may have
@@ -79,55 +76,55 @@ interrupt service
 
 Interrupt Service Routine
 
-: An ISR is invoked by the CPU to process a pending interrupt.
+  An ISR is invoked by the CPU to process a pending interrupt.
 
 ISVV
 
-: This term is an acronym for Independent Software Verification and Validation.
+  This term is an acronym for Independent Software Verification and Validation.
 
 Linear Temporal Logic
 
-: This is a logic that states properties about (possibly infinite) sequences of
+  This is a logic that states properties about (possibly infinite) sequences of
   states.
 
 LTL
 
-: This term is an acronym for {term}`Linear Temporal Logic`.
+  This term is an acronym for {term}`Linear Temporal Logic`.
 
 refinement
 
-: A *refinement* is a relationship between a specification and its
+  A *refinement* is a relationship between a specification and its
   implementation as code.
 
 reification
 
-: Another term used to denote {term}`refinement`.
+  Another term used to denote {term}`refinement`.
 
 ReqIF
 
-: This term is an acronym for
+  This term is an acronym for
   [Requirements Interchange Format](https://www.omg.org/spec/ReqIF/About-ReqIF/).
 
 RTEMS
 
-: This term is an acronym for Real-Time Executive for Multiprocessor Systems.
+  This term is an acronym for Real-Time Executive for Multiprocessor Systems.
 
 scenario
 
-: In the context of formal verification, in a setting that involves many
+  In the context of formal verification, in a setting that involves many
   concurrent tasks that interleave in arbitrary ways, a scenario describes a
   single specific possible interleaving. One interpretation of the behaviour
   of a concurrent system is the set of all its scenarios.
 
 semantics
 
-: This term refers to the meaning of text or utterances in some language. In a
+  This term refers to the meaning of text or utterances in some language. In a
   software engineering context these will be programming, modelling or
   specification languages.
 
 software component
 
-: This term is defined by ECSS-E-ST-40C 3.2.28 as a "part of a software
+  This term is defined by ECSS-E-ST-40C 3.2.28 as a "part of a software
   system". For this project a *software component* shall be any of the
   following items and nothing else:
 
@@ -151,11 +148,11 @@ software component
 
 software product
 
-: The *software product* is the {term}`RTEMS` real-time operating system.
+  The *software product* is the {term}`RTEMS` real-time operating system.
 
 software unit
 
-: This term is defined by ECSS-E-ST-40C 3.2.24 as a "separately compilable
+  This term is defined by ECSS-E-ST-40C 3.2.24 as a "separately compilable
   piece of source code". For this project a *software unit* shall be any of
   the following items and nothing else:
 
@@ -167,7 +164,7 @@ software unit
 
 source code
 
-: This project uses the *source code* definition of the
+  This project uses the *source code* definition of the
   [Linux Information Project](http://www.linfo.org/source_code.html):
   "Source code (also referred to as source or code) is the version of
   software as it is originally written (i.e., typed into a computer) by a
@@ -175,11 +172,11 @@ source code
 
 target
 
-: The system on which the application will ultimately execute.
+  The system on which the application will ultimately execute.
 
 task
 
-: This project uses the
+  This project uses the
   [thread definition of Wikipedia](<https://en.wikipedia.org/wiki/Thread_(computing)>):
   "a thread of execution is the smallest sequence of programmed
   instructions that can be managed independently by a scheduler, which is
@@ -195,9 +192,9 @@ task
 
 thread
 
-: This term has the same meaning as {term}`task`.
+  This term has the same meaning as {term}`task`.
 
 YAML
 
-: This term is an acronym for [YAML Ain't Markup Language](https://yaml.org/).
+  This term is an acronym for [YAML Ain't Markup Language](https://yaml.org/).
 ```
