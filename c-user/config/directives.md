@@ -1719,8 +1719,8 @@ Returns true, if the resource is unlimited, otherwise false.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/resource-maximum-per-allocation
@@ -1766,8 +1766,8 @@ Returns the maximum number per allocation of a resource number.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/resource-unlimited
@@ -1820,6 +1820,6 @@ This directive should be used to configure unlimited objects, see
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.

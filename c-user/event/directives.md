@@ -68,8 +68,7 @@ rtems_status_code rtems_event_send( rtems_id id, rtems_event_set event_in );
 ```
 
 `id`
-: This parameter is the identifier of the target task to receive the event
-  set.
+: This parameter is the identifier of the target task to receive the event set.
 
 `event_in`
 : This parameter is the event set to send.
@@ -116,8 +115,8 @@ The set of valid events is {c:macro}`RTEMS_EVENT_0` through
 {c:macro}`RTEMS_EVENT_31`. If an event is not explicitly specified in the set,
 then it is not present.
 
-Identical events sent to a task are not queued. In other words, the second,
-and subsequent, posting of an event to a task before it can perform an
+Identical events sent to a task are not queued. In other words, the second, and
+subsequent, posting of an event to a task before it can perform an
 {ref}`InterfaceRtemsEventReceive` has no effect.
 
 The calling task will be preempted if it has preemption enabled and a higher
@@ -180,13 +179,11 @@ rtems_status_code rtems_event_receive(
 
 `ticks`
 : This parameter is the timeout in clock ticks if the {c:macro}`RTEMS_WAIT`
-  option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially
-  forever.
+  option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever.
 
 `event_out`
-: This parameter is the pointer to an event set. The received or pending
-  events are stored in the referenced event set if the operation was
-  successful.
+: This parameter is the pointer to an event set. The received or pending events
+  are stored in the referenced event set if the operation was successful.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -199,17 +196,17 @@ This directive can be used to
 
 To **get the pending events** use the constant {c:macro}`RTEMS_PENDING_EVENTS`
 for the `event_in` parameter. The pending events are returned to the calling
-task but the event set of the calling task is left unaltered. The
-`option_set` and `ticks` parameters are ignored in this case. The
-directive returns immediately and does not block.
+task but the event set of the calling task is left unaltered. The `option_set`
+and `ticks` parameters are ignored in this case. The directive returns
+immediately and does not block.
 
 To **receive events** you have to define an input event condition and some
 options.
 
-The **option set** specified in `option_set` is built through a *bitwise or*
-of the option constants described below. Not all combinations of options are
-allowed. Some options are mutually exclusive. If mutually exclusive options
-are combined, the behaviour is undefined. Options not mentioned below are not
+The **option set** specified in `option_set` is built through a *bitwise or* of
+the option constants described below. Not all combinations of options are
+allowed. Some options are mutually exclusive. If mutually exclusive options are
+combined, the behaviour is undefined. Options not mentioned below are not
 evaluated by this directive and have no effect. Default options can be selected
 by using the {c:macro}`RTEMS_DEFAULT_OPTIONS` constant. The option set defines
 
@@ -219,12 +216,12 @@ by using the {c:macro}`RTEMS_DEFAULT_OPTIONS` constant. The option set defines
 The calling task can **wait** or **poll** for the events.
 
 - **Waiting** for events is the default and can be emphasized through the use
-  of the {c:macro}`RTEMS_WAIT` option. The `ticks` parameter defines how
-  long the calling task is willing to wait. Use {c:macro}`RTEMS_NO_TIMEOUT` to
-  wait potentially forever, otherwise set a timeout interval in clock ticks.
+  of the {c:macro}`RTEMS_WAIT` option. The `ticks` parameter defines how long
+  the calling task is willing to wait. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait
+  potentially forever, otherwise set a timeout interval in clock ticks.
 - Not waiting for events (**polling**) is selected by the
-  {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the
-  `ticks` parameter is ignored.
+  {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the `ticks`
+  parameter is ignored.
 
 The calling task can receive **all** or **any** of the input events specified
 in `event_in`.
@@ -242,7 +239,8 @@ in `event_in`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `event_out` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `event_out` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
 : The events of interest were not immediately available.
@@ -256,18 +254,18 @@ in `event_in`.
 ```
 
 This directive only affects the events specified in `event_in`. Any pending
-events that do not correspond to any of the events specified in `event_in`
-will be left pending.
+events that do not correspond to any of the events specified in `event_in` will
+be left pending.
 
 To receive all events use the event set constant {c:macro}`RTEMS_ALL_EVENTS`
-for the `event_in` parameter. Do not confuse this event set constant with
-the directive option {c:macro}`RTEMS_EVENT_ALL`.
+for the `event_in` parameter. Do not confuse this event set constant with the
+directive option {c:macro}`RTEMS_EVENT_ALL`.
 
 A task can **receive all of the pending events** by calling the directive with
 a value of {c:macro}`RTEMS_ALL_EVENTS` for the `event_in` parameter and the
 bitwise or of the {c:macro}`RTEMS_NO_WAIT` and {c:macro}`RTEMS_EVENT_ANY`
-options for the `option_set` parameter. The pending events are returned and
-the event set of the task is cleared. If no events are pending then the
+options for the `option_set` parameter. The pending events are returned and the
+event set of the task is cleared. If no events are pending then the
 {c:macro}`RTEMS_UNSATISFIED` status code will be returned.
 
 ```{eval-rst}

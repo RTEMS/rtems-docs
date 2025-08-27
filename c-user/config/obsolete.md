@@ -206,8 +206,8 @@ This configuration option is obsolete since RTEMS 5.1.
 
 This configuration option was present in all RTEMS versions since at least 1995
 and is obsolete since RTEMS 5.1. If you used this configuration option or you
-think that there should be a way to configure more than one POSIX initialization
-thread, then please ask on the {r:list}`users`.
+think that there should be a way to configure more than one POSIX
+initialization thread, then please ask on the {r:list}`users`.
 
 ```{index} CONFIGURE_SMP_APPLICATION
 ```

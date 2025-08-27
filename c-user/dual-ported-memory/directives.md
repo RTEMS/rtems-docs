@@ -90,18 +90,18 @@ rtems_status_code rtems_port_create(
 : This parameter is the length in bytes of the memory area.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created port will
-  be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created port will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive creates a port which resides on the local node. The port has
-the user-defined object name specified in `name`. The assigned object
-identifier is returned in `id`. This identifier is used to access the port
-with other dual-ported memory port related directives.
+This directive creates a port which resides on the local node. The port has the
+user-defined object name specified in `name`. The assigned object identifier is
+returned in `id`. This identifier is used to access the port with other
+dual-ported memory port related directives.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -123,8 +123,8 @@ with other dual-ported memory port related directives.
 : The `external_start` parameter was not properly aligned.
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive object available to create a port. The number of
-  port available to the application is configured through the
+: There was no inactive object available to create a port. The number of port
+  available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_PORTS` application configuration option.
 
 ```{eval-rst}
@@ -184,9 +184,9 @@ rtems_status_code rtems_port_ident( rtems_name name, rtems_id *id );
 : This parameter is the object name to look up.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -345,18 +345,18 @@ rtems_status_code rtems_port_external_to_internal(
 : This parameter is the external address to convert.
 
 `internal`
-: This parameter is the pointer to a `void` pointer object. When the
-  directive call is successful, the external address associated with the
-  internal address will be stored in this object.
+: This parameter is the pointer to a `void` pointer object. When the directive
+  call is successful, the external address associated with the internal address
+  will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 This directive converts a dual-ported memory address from external to internal
-representation for the specified port. If the given external address is
-invalid for the specified port, then the internal address is set to the given
-external address.
+representation for the specified port. If the given external address is invalid
+for the specified port, then the internal address is set to the given external
+address.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -369,7 +369,8 @@ external address.
 : The `id` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `internal` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `internal` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -423,9 +424,9 @@ rtems_status_code rtems_port_internal_to_external(
 : This parameter is the internal address to convert.
 
 `external`
-: This parameter is the pointer to a `void` pointer object. When the
-  directive call is successful, the external address associated with the
-  internal address will be stored in this object.
+: This parameter is the pointer to a `void` pointer object. When the directive
+  call is successful, the external address associated with the internal address
+  will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -447,7 +448,8 @@ address, then the external address is set to the given internal address.
 : The `id` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `external` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `external` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:

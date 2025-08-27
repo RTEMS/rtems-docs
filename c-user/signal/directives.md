@@ -80,21 +80,22 @@ rtems_status_code rtems_signal_catch(
 : This parameter is the handler to process an asynchronous signal set.
 
 `mode_set`
-: This parameter is the task mode while an asynchronous signal set is
-  processed by the handler. See {ref}`InterfaceRtemsTaskMode`.
+: This parameter is the task mode while an asynchronous signal set is processed
+  by the handler. See {ref}`InterfaceRtemsTaskMode`.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 This directive establishes an asynchronous signal routine (ASR) for the calling
-task. The `asr_handler` parameter specifies the entry point of the ASR. A
-task may have at most one handler installed at a time. The most recently
-installed handler is used. When `asr_handler` is [NULL](https://en.cppreference.com/w/c/types/NULL), the ASR for the calling task is
-invalidated and all pending signals are cleared. Any signals sent to a task
-with an invalid ASR are discarded. The `mode_set` parameter specifies the
-execution mode for the ASR. This execution mode supersedes the task's
-execution mode while the ASR is executing.
+task. The `asr_handler` parameter specifies the entry point of the ASR. A task
+may have at most one handler installed at a time. The most recently installed
+handler is used. When `asr_handler` is
+[NULL](https://en.cppreference.com/w/c/types/NULL), the ASR for the calling
+task is invalidated and all pending signals are cleared. Any signals sent to a
+task with an invalid ASR are discarded. The `mode_set` parameter specifies the
+execution mode for the ASR. This execution mode supersedes the task's execution
+mode while the ASR is executing.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -108,18 +109,16 @@ execution mode while the ASR is executing.
   configuration had no implementation for this mode.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
-: The {c:func}`RTEMS_INTERRUPT_LEVEL` was set to a positive level in
-  `mode_set` and the system configuration had no implementation for this
-  mode.
+: The {c:func}`RTEMS_INTERRUPT_LEVEL` was set to a positive level in `mode_set`
+  and the system configuration had no implementation for this mode.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
 It is strongly recommended to disable ASR processing during ASR processing by
-setting {c:macro}`RTEMS_NO_ASR` in `mode_set`, otherwise a recursion may
-happen during ASR processing. Uncontrolled recursion may lead to stack
-overflows.
+setting {c:macro}`RTEMS_NO_ASR` in `mode_set`, otherwise a recursion may happen
+during ASR processing. Uncontrolled recursion may lead to stack overflows.
 
 Using the same mutex (in particular a recursive mutex) in normal task context
 and during ASR processing may result in undefined behaviour.
@@ -231,5 +230,4 @@ The following constraints apply to this directive:
 - When the directive operates on a local object, the directive will not cause
   the calling task to be preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.

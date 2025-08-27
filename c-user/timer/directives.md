@@ -74,9 +74,9 @@ rtems_status_code rtems_timer_create( rtems_name name, rtems_id *id );
 : This parameter is the object name of the timer.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created timer will
-  be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created timer will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -165,9 +165,9 @@ rtems_status_code rtems_timer_ident( rtems_name name, rtems_id *id );
 : This parameter is the object name to look up.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -197,8 +197,8 @@ specified in `name`.
 ```
 
 If the timer name is not unique, then the timer identifier will match the first
-timer with that name in the search order. However, this timer identifier is
-not guaranteed to correspond to the desired timer.
+timer with that name in the search order. However, this timer identifier is not
+guaranteed to correspond to the desired timer.
 
 The objects are searched from lowest to the highest index. Only the local node
 is searched.
@@ -316,8 +316,8 @@ rtems_status_code rtems_timer_delete( rtems_id id );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive deletes the timer specified by `id`. If the timer is running,
-it is automatically canceled.
+This directive deletes the timer specified by `id`. If the timer is running, it
+is automatically canceled.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -401,12 +401,11 @@ rtems_status_code rtems_timer_fire_after(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive initiates the timer specified by `id`. If the timer is
-running, it is automatically canceled before being initiated. The timer is
-scheduled to fire after an interval of clock ticks has passed specified by
-`ticks`. When the timer fires, the timer service routine `routine` will be
-invoked with the argument `user_data` in the context of the clock tick
-{term}`ISR`.
+This directive initiates the timer specified by `id`. If the timer is running,
+it is automatically canceled before being initiated. The timer is scheduled to
+fire after an interval of clock ticks has passed specified by `ticks`. When the
+timer fires, the timer service routine `routine` will be invoked with the
+argument `user_data` in the context of the clock tick {term}`ISR`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -419,7 +418,8 @@ invoked with the argument `user_data` in the context of the clock tick
 : The `ticks` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no timer associated with the identifier specified by `id`.
@@ -486,11 +486,11 @@ rtems_status_code rtems_timer_fire_when(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive initiates the timer specified by `id`. If the timer is
-running, it is automatically canceled before being initiated. The timer is
-scheduled to fire at the time of day specified by `wall_time`. When the
-timer fires, the timer service routine `routine` will be invoked with the
-argument `user_data` in the context of the clock tick {term}`ISR`.
+This directive initiates the timer specified by `id`. If the timer is running,
+it is automatically canceled before being initiated. The timer is scheduled to
+fire at the time of day specified by `wall_time`. When the timer fires, the
+timer service routine `routine` will be invoked with the argument `user_data`
+in the context of the clock tick {term}`ISR`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -503,10 +503,12 @@ argument `user_data` in the context of the clock tick {term}`ISR`.
 : The system date and time was not set.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `wall_time` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `wall_time` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
 : The time of day was invalid.
@@ -591,8 +593,7 @@ executing all timers initiated via the
 : The task priority was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive task object available to create the Timer Server
-  task.
+: There was no inactive task object available to create the Timer Server task.
 
 {c:macro}`RTEMS_UNSATISFIED`
 : There was not enough memory to allocate the task storage area. The task
@@ -676,12 +677,11 @@ rtems_status_code rtems_timer_server_fire_after(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive initiates the timer specified by `id`. If the timer is
-running, it is automatically canceled before being initiated. The timer is
-scheduled to fire after an interval of clock ticks has passed specified by
-`ticks`. When the timer fires, the timer service routine `routine` will be
-invoked with the argument `user_data` in the context of the Timer Server
-task.
+This directive initiates the timer specified by `id`. If the timer is running,
+it is automatically canceled before being initiated. The timer is scheduled to
+fire after an interval of clock ticks has passed specified by `ticks`. When the
+timer fires, the timer service routine `routine` will be invoked with the
+argument `user_data` in the context of the Timer Server task.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -697,7 +697,8 @@ task.
 : The `ticks` parameter was 0.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no timer associated with the identifier specified by `id`.
@@ -764,11 +765,11 @@ rtems_status_code rtems_timer_server_fire_when(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive initiates the timer specified by `id`. If the timer is
-running, it is automatically canceled before being initiated. The timer is
-scheduled to fire at the time of day specified by `wall_time`. When the
-timer fires, the timer service routine `routine` will be invoked with the
-argument `user_data` in the context of the Timer Server task.
+This directive initiates the timer specified by `id`. If the timer is running,
+it is automatically canceled before being initiated. The timer is scheduled to
+fire at the time of day specified by `wall_time`. When the timer fires, the
+timer service routine `routine` will be invoked with the argument `user_data`
+in the context of the Timer Server task.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -784,10 +785,12 @@ argument `user_data` in the context of the Timer Server task.
 : The system date and time was not set.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `wall_time` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `wall_time` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
 : The time of day was invalid.
@@ -937,7 +940,8 @@ This directive returns information about the timer.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `the_info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `the_info` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no timer associated with the identifier specified by `id`.

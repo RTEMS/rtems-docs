@@ -128,8 +128,8 @@ In case
 - and {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
 - and {ref}`CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB` is undefined,
 
-then the event records are dumped in Base64 encoding in a fatal error
-extension (see {ref}`Terminate`).
+then the event records are dumped in Base64 encoding in a fatal error extension
+(see {ref}`Terminate`).
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -178,15 +178,15 @@ In case
 - this configuration option is defined
 - and {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
 
-then the event records are compressed by zlib and dumped in Base64 encoding
-in a fatal error extension (see {ref}`Terminate`).
+then the event records are compressed by zlib and dumped in Base64 encoding in
+a fatal error extension (see {ref}`Terminate`).
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-The zlib compression needs about 512KiB of RAM. This extension can be used
-to produce crash dumps.
+The zlib compression needs about 512KiB of RAM. This extension can be used to
+produce crash dumps.
 
 % Generated from spec:/acfg/if/record-interrupts-enabled
 
@@ -273,16 +273,16 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the event record item count
-per processor.
+The value of this configuration option defines the event record item count per
+processor.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-The event record buffers are statically allocated for each configured
-processor ({ref}`CONFIGURE_MAXIMUM_PROCESSORS`). If the value of this
-configuration option is zero, then nothing is allocated.
+The event record buffers are statically allocated for each configured processor
+({ref}`CONFIGURE_MAXIMUM_PROCESSORS`). If the value of this configuration
+option is zero, then nothing is allocated.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:

@@ -76,18 +76,18 @@ rtems_status_code rtems_rate_monotonic_create( rtems_name name, rtems_id *id );
 : This parameter is the object name of the period.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created period will
-  be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created period will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive creates a period which resides on the local node. The period
-has the user-defined object name specified in `name` The assigned object
-identifier is returned in `id`. This identifier is used to access the period
-with other rate monotonic related directives.
+This directive creates a period which resides on the local node. The period has
+the user-defined object name specified in `name` The assigned object identifier
+is returned in `id`. This identifier is used to access the period with other
+rate monotonic related directives.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -161,9 +161,9 @@ rtems_status_code rtems_rate_monotonic_ident( rtems_name name, rtems_id *id );
 : This parameter is the object name to look up.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -248,8 +248,8 @@ rtems_status_code rtems_rate_monotonic_cancel( rtems_id id );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive cancels the rate monotonic period specified by `id`. This
-period may be reinitiated by the next invocation of
+This directive cancels the rate monotonic period specified by `id`. This period
+may be reinitiated by the next invocation of
 {ref}`InterfaceRtemsRateMonotonicPeriod`.
 
 ```{eval-rst}
@@ -314,8 +314,8 @@ rtems_status_code rtems_rate_monotonic_delete( rtems_id id );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive deletes the period specified by `id`. If the period is
-running, it is automatically canceled.
+This directive deletes the period specified by `id`. If the period is running,
+it is automatically canceled.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -404,14 +404,14 @@ length of period ticks specified by `length`. If the period is running, then
 the calling task will block for the remainder of the period before reinitiating
 the period with the specified period length. If the period was not running
 (either expired or never initiated), the period is immediately initiated and
-the directive returns immediately. If the period has expired, the postponed
-job will be released immediately and the following calls of this directive will
+the directive returns immediately. If the period has expired, the postponed job
+will be released immediately and the following calls of this directive will
 release postponed jobs until there is no more deadline miss.
 
 If invoked with a period length of {c:macro}`RTEMS_PERIOD_STATUS` ticks, the
 current state of the period will be returned. The directive status indicates
-the current state of the period. This does not alter the state or period
-length of the period.
+the current state of the period. This does not alter the state or period length
+of the period.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -493,8 +493,7 @@ rtems_status_code rtems_rate_monotonic_get_status(
 `status`
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsRateMonotonicPeriodStatus` object. When the directive
-  call is successful, the detailed period status will be stored in this
-  object.
+  call is successful, the detailed period status will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -504,15 +503,14 @@ This directive returns the detailed status of the rate monotonic period
 specified by `id`. The detailed status of the period will be returned in the
 members of the period status object referenced by `status`:
 
-- The `owner` member is set to the identifier of the owner task of the
-  period.
+- The `owner` member is set to the identifier of the owner task of the period.
 - The `state` member is set to the current state of the period.
 - The `postponed_jobs_count` member is set to the count of jobs which are not
   released yet.
 - If the current state of the period is {c:macro}`RATE_MONOTONIC_INACTIVE`, the
-  `since_last_period` and `executed_since_last_period` members will be set
-  to zero. Otherwise, both members will contain time information since the
-  last successful invocation of the {ref}`InterfaceRtemsRateMonotonicPeriod`
+  `since_last_period` and `executed_since_last_period` members will be set to
+  zero. Otherwise, both members will contain time information since the last
+  successful invocation of the {ref}`InterfaceRtemsRateMonotonicPeriod`
   directive by the owner task. More specifically, the `since_last_period`
   member will be set to the time elapsed since the last successful invocation.
   The `executed_since_last_period` member will be set to the processor time
@@ -530,7 +528,8 @@ members of the period status object referenced by `status`:
   by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `status` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `status` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -583,9 +582,8 @@ rtems_status_code rtems_rate_monotonic_get_statistics(
 
 `status`
 : This parameter is the pointer to an
-  {ref}`InterfaceRtemsRateMonotonicPeriodStatistics` object. When the
-  directive call is successful, the period statistics will be stored in this
-  object.
+  {ref}`InterfaceRtemsRateMonotonicPeriodStatistics` object. When the directive
+  call is successful, the period statistics will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -599,10 +597,10 @@ period statistics object referenced by `status`:
 - The `missed_count` member is set to the number of periods missed.
 - The `min_cpu_time` member is set to the least amount of processor time used
   in the period.
-- The `max_cpu_time` member is set to the highest amount of processor time
-  used in the period.
-- The `total_cpu_time` member is set to the total amount of processor time
-  used in the period.
+- The `max_cpu_time` member is set to the highest amount of processor time used
+  in the period.
+- The `total_cpu_time` member is set to the total amount of processor time used
+  in the period.
 - The `min_wall_time` member is set to the least amount of
   {term}`CLOCK_MONOTONIC` time used in the period.
 - The `max_wall_time` member is set to the highest amount of
@@ -622,7 +620,8 @@ period statistics object referenced by `status`:
   by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `status` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `status` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:

@@ -78,7 +78,8 @@ rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `time_of_day` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
 : The time of day specified by `time_of_day` was invalid.
@@ -87,16 +88,16 @@ rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
 .. rubric:: NOTES:
 ```
 
-The date, time, and ticks specified by `time_of_day` are all range-checked,
-and an error is returned if any one is out of its valid range.
+The date, time, and ticks specified by `time_of_day` are all range-checked, and
+an error is returned if any one is out of its valid range.
 
 RTEMS can represent time points of the {term}`CLOCK_REALTIME` clock in
 nanoseconds ranging from 1988-01-01T00:00:00.000000000Z to
 2514-05-31T01:53:03.999999999Z. The future uptime of the system shall be in
 this range, otherwise the system behaviour is undefined. Due to implementation
 constraints, the time of day set by the directive shall be before
-2100-01-01:00:00.000000000Z. The latest valid time of day accepted by the
-POSIX [clock_settime()](https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_settime.html)
+2100-01-01:00:00.000000000Z. The latest valid time of day accepted by the POSIX
+[clock_settime()](https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_settime.html)
 is 2400-01-01T00:00:00.999999999Z.
 
 The specified time is based on the configured {term}`clock tick` rate, see the
@@ -160,8 +161,8 @@ rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
 `time_of_day`
 : This parameter is the pointer to an {ref}`InterfaceRtemsTimeOfDay` object.
   When the directive call is successful, the time of day associated with the
-  {term}`CLOCK_REALTIME` at some point during the directive call will be
-  stored in this object.
+  {term}`CLOCK_REALTIME` at some point during the directive call will be stored
+  in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -171,7 +172,8 @@ rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `time_of_day` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_NOT_DEFINED`
 : The {term}`CLOCK_REALTIME` was not set. It can be set with
@@ -216,11 +218,11 @@ rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
 ```
 
 `time_of_day`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
-  object. When the directive call is successful, the seconds and
-  microseconds elapsed since the {term}`Unix epoch` and the
-  {term}`CLOCK_REALTIME` at some point during the directive call will be
-  stored in this object.
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. When the directive call is successful, the seconds and microseconds
+  elapsed since the {term}`Unix epoch` and the {term}`CLOCK_REALTIME` at some
+  point during the directive call will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -230,7 +232,8 @@ rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `time_of_day` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `time_of_day` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_NOT_DEFINED`
 : The {term}`CLOCK_REALTIME` was not set. It can be set with
@@ -275,10 +278,12 @@ void rtems_clock_get_realtime( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
-  elapsed since the {term}`Unix epoch` measured using the
+: This parameter is the pointer to a
+  [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object.
+  The time elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point during the directive call will be
-  stored in this object. Calling the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+  stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -332,10 +337,11 @@ void rtems_clock_get_realtime_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a `struct bintime` object. The time
-  elapsed since the {term}`Unix epoch` measured using the
-  {term}`CLOCK_REALTIME` at some time point during the directive call will be
-  stored in this object. Calling the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+: This parameter is the pointer to a `struct bintime` object. The time elapsed
+  since the {term}`Unix epoch` measured using the {term}`CLOCK_REALTIME` at
+  some time point during the directive call will be stored in this object.
+  Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -389,10 +395,12 @@ void rtems_clock_get_realtime_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since the {term}`Unix epoch` measured using the
   {term}`CLOCK_REALTIME` at some time point during the directive call will be
-  stored in this object. Calling the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+  stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -446,12 +454,12 @@ void rtems_clock_get_realtime_coarse( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
-  elapsed since the {term}`Unix epoch` measured using the
-  {term}`CLOCK_REALTIME` at some time point close to the directive call will
-  be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+: This parameter is the pointer to a
+  [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object.
+  The time elapsed since the {term}`Unix epoch` measured using the
+  {term}`CLOCK_REALTIME` at some time point close to the directive call will be
+  stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -505,12 +513,11 @@ void rtems_clock_get_realtime_coarse_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a `struct bintime` object. The time
-  elapsed since the {term}`Unix epoch` measured using the
-  {term}`CLOCK_REALTIME` at some time point close to the directive call will
-  be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+: This parameter is the pointer to a `struct bintime` object. The time elapsed
+  since the {term}`Unix epoch` measured using the {term}`CLOCK_REALTIME` at
+  some time point close to the directive call will be stored in this object.
+  Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -564,12 +571,12 @@ void rtems_clock_get_realtime_coarse_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since the {term}`Unix epoch` measured using the
-  {term}`CLOCK_REALTIME` at some time point close to the directive call will
-  be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+  {term}`CLOCK_REALTIME` at some time point close to the directive call will be
+  stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -623,12 +630,12 @@ void rtems_clock_get_monotonic( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
-  elapsed since some fixed time point in the past measured using the
-  {term}`CLOCK_MONOTONIC` at some time point during the directive call will
-  be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+: This parameter is the pointer to a
+  [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object.
+  The time elapsed since some fixed time point in the past measured using the
+  {term}`CLOCK_MONOTONIC` at some time point during the directive call will be
+  stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -683,12 +690,11 @@ void rtems_clock_get_monotonic_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a `struct bintime` object. The time
-  elapsed since some fixed time point in the past measured using the
-  {term}`CLOCK_MONOTONIC` at some time point during the directive call will
-  be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+: This parameter is the pointer to a `struct bintime` object. The time elapsed
+  since some fixed time point in the past measured using the
+  {term}`CLOCK_MONOTONIC` at some time point during the directive call will be
+  stored in this object. Calling the directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -796,7 +802,8 @@ void rtems_clock_get_monotonic_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since some fixed time point in the past measured
   using the {term}`CLOCK_MONOTONIC` at some time point during the directive
   call will be stored in this object. Calling the directive with a pointer
@@ -857,12 +864,12 @@ void rtems_clock_get_monotonic_coarse( struct timespec *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
-  elapsed since some fixed time point in the past measured using the
+: This parameter is the pointer to a
+  [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object.
+  The time elapsed since some fixed time point in the past measured using the
   {term}`CLOCK_MONOTONIC` at some time point close to the directive call will
   be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -916,12 +923,11 @@ void rtems_clock_get_monotonic_coarse_bintime( struct bintime *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a `struct bintime` object. The time
-  elapsed since some fixed time point in the past measured using the
+: This parameter is the pointer to a `struct bintime` object. The time elapsed
+  since some fixed time point in the past measured using the
   {term}`CLOCK_MONOTONIC` at some time point close to the directive call will
   be stored in this object. Calling the directive with a pointer equal to
-  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
-  behaviour.
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -976,7 +982,8 @@ void rtems_clock_get_monotonic_coarse_timeval( struct timeval *time_snapshot );
 ```
 
 `time_snapshot`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since some fixed time point in the past measured
   using the {term}`CLOCK_MONOTONIC` at some time point close to the directive
   call will be stored in this object. Calling the directive with a pointer
@@ -1035,10 +1042,12 @@ void rtems_clock_get_boot_time( struct timespec *boot_time );
 ```
 
 `boot_time`
-: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. The time
-  elapsed since the {term}`Unix epoch` at some time point during system
-  initialization call will be stored in this object. Calling the directive
-  with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+: This parameter is the pointer to a
+  [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object.
+  The time elapsed since the {term}`Unix epoch` at some time point during
+  system initialization call will be stored in this object. Calling the
+  directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1088,10 +1097,11 @@ void rtems_clock_get_boot_time_bintime( struct bintime *boot_time );
 ```
 
 `boot_time`
-: This parameter is the pointer to a `struct bintime` object. The time
-  elapsed since the {term}`Unix epoch` at some time point during system
-  initialization call will be stored in this object. Calling the directive
-  with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+: This parameter is the pointer to a `struct bintime` object. The time elapsed
+  since the {term}`Unix epoch` at some time point during system initialization
+  call will be stored in this object. Calling the directive with a pointer
+  equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined
+  behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1141,10 +1151,12 @@ void rtems_clock_get_boot_time_timeval( struct timeval *boot_time );
 ```
 
 `boot_time`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
   object. The time elapsed since the {term}`Unix epoch` at some time point
-  during system initialization call will be stored in this object. Calling
-  the directive with a pointer equal to [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
+  during system initialization call will be stored in this object. Calling the
+  directive with a pointer equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL) is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1209,7 +1221,8 @@ rtems_status_code rtems_clock_get_seconds_since_epoch(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `seconds_since_rtems_epoch` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `seconds_since_rtems_epoch` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_NOT_DEFINED`
 : The {term}`CLOCK_REALTIME` was not set. It can be set with
@@ -1308,8 +1321,8 @@ counter.
 .. rubric:: NOTES:
 ```
 
-With a 1ms clock tick, this counter overflows after 50 days since boot. This
-is the historical measure of uptime in an RTEMS system. The newer service
+With a 1ms clock tick, this counter overflows after 50 days since boot. This is
+the historical measure of uptime in an RTEMS system. The newer service
 {ref}`InterfaceRtemsClockGetUptime` is another and potentially more accurate
 way of obtaining similar information.
 
@@ -1351,10 +1364,12 @@ rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
 ```
 
 `uptime`
-: This parameter is the pointer to a [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object. When the
-  directive call is successful, the seconds and nanoseconds elapsed since
-  some time point during the system initialization and some point during the
-  directive call using {term}`CLOCK_MONOTONIC` will be stored in this object.
+: This parameter is the pointer to a
+  [struct timespec](https://en.cppreference.com/w/c/chrono/timespec) object.
+  When the directive call is successful, the seconds and nanoseconds elapsed
+  since some time point during the system initialization and some point during
+  the directive call using {term}`CLOCK_MONOTONIC` will be stored in this
+  object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -1364,7 +1379,8 @@ rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `uptime` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `uptime` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1405,11 +1421,12 @@ void rtems_clock_get_uptime_timeval( struct timeval *uptime );
 ```
 
 `uptime`
-: This parameter is the pointer to a [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
-  object. The seconds and microseconds elapsed since some time point during
-  the system initialization and some point during the directive call using
-  {term}`CLOCK_MONOTONIC` will be stored in this object. The pointer shall
-  be valid, otherwise the behaviour is undefined.
+: This parameter is the pointer to a
+  [struct timeval](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/sys/time.h.html)
+  object. The seconds and microseconds elapsed since some time point during the
+  system initialization and some point during the directive call using
+  {term}`CLOCK_MONOTONIC` will be stored in this object. The pointer shall be
+  valid, otherwise the behaviour is undefined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:

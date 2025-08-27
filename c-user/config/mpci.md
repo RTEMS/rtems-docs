@@ -36,13 +36,13 @@
 
 # Multiprocessing Configuration
 
-This section describes multiprocessing related configuration options.
-The options are only used if RTEMS was built when the multiprocessing
-build configuration option is enabled. The multiprocessing configuration
-is distinct from the SMP configuration. Additionally, this class of
-configuration options are only applicable if the configuration option
-{ref}`CONFIGURE_MP_APPLICATION` is defined. The multiprocessing (MPCI)
-support must not be confused with the SMP support.
+This section describes multiprocessing related configuration options. The
+options are only used if RTEMS was built when the multiprocessing build
+configuration option is enabled. The multiprocessing configuration is distinct
+from the SMP configuration. Additionally, this class of configuration options
+are only applicable if the configuration option {ref}`CONFIGURE_MP_APPLICATION`
+is defined. The multiprocessing (MPCI) support must not be confused with the
+SMP support.
 
 % Generated from spec:/acfg/if/mp-extra-server-stack
 
@@ -87,8 +87,8 @@ applications wishes to add to the MPCI task stack on top of
 .. rubric:: NOTES:
 ```
 
-This configuration option is only evaluated if
-{ref}`CONFIGURE_MP_APPLICATION` is defined.
+This configuration option is only evaluated if {ref}`CONFIGURE_MP_APPLICATION`
+is defined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -101,7 +101,8 @@ The following constraints apply to this configuration option:
   [UINT32_MAX](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option shall be small enough so that the MPCI
   receive server stack area calculation carried out by `<rtems/confdefs.h>`
-  does not overflow an integer of type [size_t](https://en.cppreference.com/w/c/types/size_t).
+  does not overflow an integer of type
+  [size_t](https://en.cppreference.com/w/c/types/size_t).
 
 % Generated from spec:/acfg/if/mp-appl
 
@@ -140,15 +141,15 @@ are not initialized.
 ```
 
 This configuration option is defined to indicate that the application intends
-to be part of a multiprocessing configuration. Additional configuration
-options are assumed to be provided.
+to be part of a multiprocessing configuration. Additional configuration options
+are assumed to be provided.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This configuration option shall be undefined if the multiprocessing support
-is not enabled (e.g. RTEMS was built without the multiprocessing build
+This configuration option shall be undefined if the multiprocessing support is
+not enabled (e.g. RTEMS was built without the multiprocessing build
 configuration option enabled). Otherwise a compile time error in the
 configuration file will occur.
 
@@ -194,11 +195,11 @@ concurrently active global objects in a multiprocessor system.
 .. rubric:: NOTES:
 ```
 
-This value corresponds to the total number of objects which can be created
-with the {c:macro}`RTEMS_GLOBAL` attribute.
+This value corresponds to the total number of objects which can be created with
+the {c:macro}`RTEMS_GLOBAL` attribute.
 
-This configuration option is only evaluated if
-{ref}`CONFIGURE_MP_APPLICATION` is defined.
+This configuration option is only evaluated if {ref}`CONFIGURE_MP_APPLICATION`
+is defined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -245,15 +246,15 @@ The default value is 2.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of nodes in
-a multiprocessor system.
+The value of this configuration option defines the maximum number of nodes in a
+multiprocessor system.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This configuration option is only evaluated if
-{ref}`CONFIGURE_MP_APPLICATION` is defined.
+This configuration option is only evaluated if {ref}`CONFIGURE_MP_APPLICATION`
+is defined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -308,13 +309,13 @@ system.
 .. rubric:: NOTES:
 ```
 
-Since a proxy is used to represent a remote task/thread which is blocking
-on this node. This configuration parameter reflects the maximum number of
-remote tasks/threads which can be blocked on objects on this node, see
+Since a proxy is used to represent a remote task/thread which is blocking on
+this node. This configuration parameter reflects the maximum number of remote
+tasks/threads which can be blocked on objects on this node, see
 {ref}`MPCIProxies`.
 
-This configuration option is only evaluated if
-{ref}`CONFIGURE_MP_APPLICATION` is defined.
+This configuration option is only evaluated if {ref}`CONFIGURE_MP_APPLICATION`
+is defined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -369,11 +370,11 @@ Table.
 ```
 
 RTEMS provides a Shared Memory MPCI Device Driver which can be used on any
-Multiprocessor System assuming the BSP provides the proper set of
-supporting methods.
+Multiprocessor System assuming the BSP provides the proper set of supporting
+methods.
 
-This configuration option is only evaluated if
-{ref}`CONFIGURE_MP_APPLICATION` is defined.
+This configuration option is only evaluated if {ref}`CONFIGURE_MP_APPLICATION`
+is defined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -417,20 +418,20 @@ The default value is `NODE_NUMBER`.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the node number of this node
-in a multiprocessor system.
+The value of this configuration option defines the node number of this node in
+a multiprocessor system.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-In the RTEMS Multiprocessing Test Suite, the node number is derived from
-the Makefile variable `NODE_NUMBER`. The same code is compiled with the
-`NODE_NUMBER` set to different values. The test programs behave
-differently based upon their node number.
+In the RTEMS Multiprocessing Test Suite, the node number is derived from the
+Makefile variable `NODE_NUMBER`. The same code is compiled with the
+`NODE_NUMBER` set to different values. The test programs behave differently
+based upon their node number.
 
-This configuration option is only evaluated if
-{ref}`CONFIGURE_MP_APPLICATION` is defined.
+This configuration option is only evaluated if {ref}`CONFIGURE_MP_APPLICATION`
+is defined.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:

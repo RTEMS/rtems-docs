@@ -97,13 +97,12 @@ TIMER_DORMANT
 : This timer class indicates that the timer was never in use.
 
 TIMER_INTERVAL
-: This timer class indicates that the timer is currently in use as an
-  interval timer which will fire in the context of the clock tick
-  {term}`ISR`.
+: This timer class indicates that the timer is currently in use as an interval
+  timer which will fire in the context of the clock tick {term}`ISR`.
 
 TIMER_INTERVAL_ON_TASK
-: This timer class indicates that the timer is currently in use as an
-  interval timer which will fire in the context of the Timer Server task.
+: This timer class indicates that the timer is currently in use as an interval
+  timer which will fire in the context of the Timer Server task.
 
 TIMER_TIME_OF_DAY
 : This timer class indicates that the timer is currently in use as an time of
@@ -133,38 +132,36 @@ maximum_tasks
   this application. See {ref}`CONFIGURE_MAXIMUM_TASKS`.
 
 notepads_enabled
-: This member is true, if the Classic API Notepads are enabled, otherwise it
-  is false.
+: This member is true, if the Classic API Notepads are enabled, otherwise it is
+  false.
 
 maximum_timers
-: This member contains the maximum number of Classic API Timers configured
-  for this application. See {ref}`CONFIGURE_MAXIMUM_TIMERS`.
+: This member contains the maximum number of Classic API Timers configured for
+  this application. See {ref}`CONFIGURE_MAXIMUM_TIMERS`.
 
 maximum_semaphores
-: This member contains the maximum number of Classic API Semaphores
-  configured for this application. See {ref}`CONFIGURE_MAXIMUM_SEMAPHORES`.
+: This member contains the maximum number of Classic API Semaphores configured
+  for this application. See {ref}`CONFIGURE_MAXIMUM_SEMAPHORES`.
 
 maximum_message_queues
 : This member contains the maximum number of Classic API Message Queues
-  configured for this application. See
-  {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`.
+  configured for this application. See {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`.
 
 maximum_partitions
-: This member contains the maximum number of Classic API Partitions
-  configured for this application. See {ref}`CONFIGURE_MAXIMUM_PARTITIONS`.
+: This member contains the maximum number of Classic API Partitions configured
+  for this application. See {ref}`CONFIGURE_MAXIMUM_PARTITIONS`.
 
 maximum_regions
-: This member contains the maximum number of Classic API Regions configured
-  for this application. See {ref}`CONFIGURE_MAXIMUM_REGIONS`.
+: This member contains the maximum number of Classic API Regions configured for
+  this application. See {ref}`CONFIGURE_MAXIMUM_REGIONS`.
 
 maximum_ports
 : This member contains the maximum number of Classic API Dual-Ported Memories
   configured for this application. See {ref}`CONFIGURE_MAXIMUM_PORTS`.
 
 maximum_periods
-: This member contains the maximum number of Classic API Rate Monotonic
-  Periods configured for this application. See
-  {ref}`CONFIGURE_MAXIMUM_PERIODS`.
+: This member contains the maximum number of Classic API Rate Monotonic Periods
+  configured for this application. See {ref}`CONFIGURE_MAXIMUM_PERIODS`.
 
 maximum_barriers
 : This member contains the maximum number of Classic API Barriers configured
@@ -172,12 +169,11 @@ maximum_barriers
 
 number_of_initialization_tasks
 : This member contains the number of Classic API Initialization Tasks
-  configured for this application. See
-  {ref}`CONFIGURE_RTEMS_INIT_TASKS_TABLE`.
+  configured for this application. See {ref}`CONFIGURE_RTEMS_INIT_TASKS_TABLE`.
 
 User_initialization_tasks_table
-: This member contains the pointer to Classic API Initialization Tasks Table
-  of this application. See {ref}`CONFIGURE_RTEMS_INIT_TASKS_TABLE`.
+: This member contains the pointer to Classic API Initialization Tasks Table of
+  this application. See {ref}`CONFIGURE_RTEMS_INIT_TASKS_TABLE`.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -460,8 +456,8 @@ Fatal extensions are invoked when the system should terminate.
 : This parameter is a value equal to {c:macro}`false`.
 
 `code`
-: This parameter is the system termination code. This value must be
-  interpreted with respect to the source.
+: This parameter is the system termination code. This value must be interpreted
+  with respect to the source.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -471,10 +467,11 @@ The fatal extensions are invoked in {term}`extension forward order` and with
 maskable interrupts disabled.
 
 The fatal extension should be extremely careful with respect to the RTEMS
-directives it calls. Depending on the system termination source, the system
-may be in an undefined and corrupt state.
+directives it calls. Depending on the system termination source, the system may
+be in an undefined and corrupt state.
 
-It is recommended to register fatal extensions through {term}`initial extension sets`, see {ref}`CONFIGURE_INITIAL_EXTENSIONS`.
+It is recommended to register fatal extensions through
+{term}`initial extension sets`, see {ref}`CONFIGURE_INITIAL_EXTENSIONS`.
 
 % Generated from spec:/rtems/userext/if/fatal-source
 
@@ -559,26 +556,26 @@ This structure provides the attributes of an interrupt vector.
 
 is_maskable
 : This member is true, if the interrupt vector is maskable by
-  {ref}`InterfaceRtemsInterruptLocalDisable`, otherwise it is false.
-  Interrupt vectors which are not maskable by
-  {ref}`InterfaceRtemsInterruptLocalDisable` should be used with care since
-  they cannot use most operating system services.
+  {ref}`InterfaceRtemsInterruptLocalDisable`, otherwise it is false. Interrupt
+  vectors which are not maskable by {ref}`InterfaceRtemsInterruptLocalDisable`
+  should be used with care since they cannot use most operating system
+  services.
 
 can_enable
 : This member is true, if the interrupt vector can be enabled by
   {ref}`InterfaceRtemsInterruptVectorEnable`, otherwise it is false. When an
-  interrupt vector can be enabled, this means that the enabled state can
-  always be changed from disabled to enabled. For an interrupt vector which
-  can be enabled it follows that it may be enabled.
+  interrupt vector can be enabled, this means that the enabled state can always
+  be changed from disabled to enabled. For an interrupt vector which can be
+  enabled it follows that it may be enabled.
 
 maybe_enable
 : This member is true, if the interrupt vector may be enabled by
   {ref}`InterfaceRtemsInterruptVectorEnable`, otherwise it is false. When an
   interrupt vector may be enabled, this means that the enabled state may be
-  changed from disabled to enabled. The requested enabled state change
-  should be checked by {ref}`InterfaceRtemsInterruptVectorIsEnabled`. Some
-  interrupt vectors may be optionally available and cannot be enabled on a
-  particular {term}`target`.
+  changed from disabled to enabled. The requested enabled state change should
+  be checked by {ref}`InterfaceRtemsInterruptVectorIsEnabled`. Some interrupt
+  vectors may be optionally available and cannot be enabled on a particular
+  {term}`target`.
 
 can_disable
 : This member is true, if the interrupt vector can be disabled by
@@ -591,18 +588,18 @@ maybe_disable
 : This member is true, if the interrupt vector may be disabled by
   {ref}`InterfaceRtemsInterruptVectorDisable`, otherwise it is false. When an
   interrupt vector may be disabled, this means that the enabled state may be
-  changed from enabled to disabled. The requested enabled state change
-  should be checked by {ref}`InterfaceRtemsInterruptVectorIsEnabled`. Some
-  interrupt vectors may be always enabled and cannot be disabled on a
-  particular {term}`target`.
+  changed from enabled to disabled. The requested enabled state change should
+  be checked by {ref}`InterfaceRtemsInterruptVectorIsEnabled`. Some interrupt
+  vectors may be always enabled and cannot be disabled on a particular
+  {term}`target`.
 
 can_raise
 : This member is true, if the interrupt vector can be raised by
   {ref}`InterfaceRtemsInterruptRaise`, otherwise it is false.
 
 can_raise_on
-: This member is true, if the interrupt vector can be raised on a processor
-  by {ref}`InterfaceRtemsInterruptRaiseOn`, otherwise it is false.
+: This member is true, if the interrupt vector can be raised on a processor by
+  {ref}`InterfaceRtemsInterruptRaiseOn`, otherwise it is false.
 
 can_clear
 : This member is true, if the interrupt vector can be cleared by
@@ -615,8 +612,7 @@ cleared_by_acknowledge
 
 can_get_affinity
 : This member is true, if the affinity set of the interrupt vector can be
-  obtained by {ref}`InterfaceRtemsInterruptGetAffinity`, otherwise it is
-  false.
+  obtained by {ref}`InterfaceRtemsInterruptGetAffinity`, otherwise it is false.
 
 can_set_affinity
 : This member is true, if the affinity set of the interrupt vector can be set
@@ -631,28 +627,27 @@ can_be_triggered_by_message
   Peripheral Interrupts (LPI).
 
 trigger_signal
-: This member describes the trigger signal of the interrupt associated with
-  the interrupt vector. Interrupts are normally triggered by signals which
-  indicate an interrupt request from a peripheral. Interrupts may be also
-  triggered by messages, {ref}`InterfaceRtemsInterruptRaise`, or
+: This member describes the trigger signal of the interrupt associated with the
+  interrupt vector. Interrupts are normally triggered by signals which indicate
+  an interrupt request from a peripheral. Interrupts may be also triggered by
+  messages, {ref}`InterfaceRtemsInterruptRaise`, or
   {ref}`InterfaceRtemsInterruptRaiseOn`.
 
 can_get_priority
-: This member is true, if the priority of the interrupt vector can be
-  obtained by {ref}`InterfaceRtemsInterruptGetPriority`, otherwise it is
-  false.
+: This member is true, if the priority of the interrupt vector can be obtained
+  by {ref}`InterfaceRtemsInterruptGetPriority`, otherwise it is false.
 
 can_set_priority
 : This member is true, if the priority of the interrupt vector can be set by
   {ref}`InterfaceRtemsInterruptSetPriority`, otherwise it is false.
 
 maximum_priority
-: This member represents the maximum priority value of the interrupt vector.
-  By convention, the minimum priority value is zero. Lower priority values
-  shall be associated with a higher importance. The higher the priority
-  value, the less important is the service of the associated interrupt
-  vector. Where nested interrupts are supported, interrupts with a lower
-  priority value may preempt other interrupts having a higher priority value.
+: This member represents the maximum priority value of the interrupt vector. By
+  convention, the minimum priority value is zero. Lower priority values shall
+  be associated with a higher importance. The higher the priority value, the
+  less important is the service of the associated interrupt vector. Where
+  nested interrupts are supported, interrupts with a lower priority value may
+  preempt other interrupts having a higher priority value.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -869,12 +864,12 @@ Members of the type shall not be accessed directly by the application.
 ```
 
 This structure shall be treated as an opaque data type from the {term}`API`
-point of view. Members shall not be accessed directly. An entry is
-initialized by {ref}`InterfaceRtemsInterruptServerEntryInitialize` and
-destroyed by {ref}`InterfaceRtemsInterruptServerEntryDestroy`. Interrupt
-server actions can be prepended to the entry by
-{ref}`InterfaceRtemsInterruptServerActionPrepend`. The entry is submitted to
-be serviced by {ref}`InterfaceRtemsInterruptServerEntrySubmit`.
+point of view. Members shall not be accessed directly. An entry is initialized
+by {ref}`InterfaceRtemsInterruptServerEntryInitialize` and destroyed by
+{ref}`InterfaceRtemsInterruptServerEntryDestroy`. Interrupt server actions can
+be prepended to the entry by {ref}`InterfaceRtemsInterruptServerActionPrepend`.
+The entry is submitted to be serviced by
+{ref}`InterfaceRtemsInterruptServerEntrySubmit`.
 
 % Generated from spec:/rtems/intr/if/server-request
 
@@ -898,12 +893,12 @@ Members of the type shall not be accessed directly by the application.
 ```
 
 This structure shall be treated as an opaque data type from the {term}`API`
-point of view. Members shall not be accessed directly. A request is
-initialized by {ref}`InterfaceRtemsInterruptServerRequestInitialize` and
-destroyed by {ref}`InterfaceRtemsInterruptServerRequestDestroy`. The interrupt
-vector of the request can be set by
-{ref}`InterfaceRtemsInterruptServerRequestSetVector`. The request is submitted
-to be serviced by {ref}`InterfaceRtemsInterruptServerRequestSubmit`.
+point of view. Members shall not be accessed directly. A request is initialized
+by {ref}`InterfaceRtemsInterruptServerRequestInitialize` and destroyed by
+{ref}`InterfaceRtemsInterruptServerRequestDestroy`. The interrupt vector of the
+request can be set by {ref}`InterfaceRtemsInterruptServerRequestSetVector`. The
+request is submitted to be serviced by
+{ref}`InterfaceRtemsInterruptServerRequestSubmit`.
 
 % Generated from spec:/rtems/intr/if/signal-variant
 
@@ -921,28 +916,28 @@ This enumeration provides interrupt trigger signal variants.
 ```
 
 RTEMS_INTERRUPT_UNSPECIFIED_SIGNAL
-: This interrupt signal variant indicates that the interrupt trigger signal
-  is unspecified.
+: This interrupt signal variant indicates that the interrupt trigger signal is
+  unspecified.
 
 RTEMS_INTERRUPT_NO_SIGNAL
 : This interrupt signal variant indicates that the interrupt cannot be
   triggered by a signal.
 
 RTEMS_INTERRUPT_SIGNAL_LEVEL_LOW
-: This interrupt signal variant indicates that the interrupt is triggered by
-  a low level signal.
+: This interrupt signal variant indicates that the interrupt is triggered by a
+  low level signal.
 
 RTEMS_INTERRUPT_SIGNAL_LEVEL_HIGH
-: This interrupt signal variant indicates that the interrupt is triggered by
-  a high level signal.
+: This interrupt signal variant indicates that the interrupt is triggered by a
+  high level signal.
 
 RTEMS_INTERRUPT_SIGNAL_EDGE_FALLING
-: This interrupt signal variant indicates that the interrupt is triggered by
-  a falling edge signal.
+: This interrupt signal variant indicates that the interrupt is triggered by a
+  falling edge signal.
 
 RTEMS_INTERRUPT_SIGNAL_EDGE_RAISING
-: This interrupt signal variant indicates that the interrupt is triggered by
-  a raising edge signal.
+: This interrupt signal variant indicates that the interrupt is triggered by a
+  raising edge signal.
 
 % Generated from spec:/rtems/type/if/interval
 
@@ -1009,23 +1004,23 @@ maximum_pending_messages
   message queue.
 
 maximum_message_size
-: This member defines the maximum message size supported by the message
-  queue.
+: This member defines the maximum message size supported by the message queue.
 
 storage_area
-: This member shall point to the message buffer storage area begin. The
-  message buffer storage area for the message queue shall be an array of the
-  type defined by {ref}`InterfaceRTEMSMESSAGEQUEUEBUFFER` with a maximum
-  message size equal to the maximum message size of this configuration.
+: This member shall point to the message buffer storage area begin. The message
+  buffer storage area for the message queue shall be an array of the type
+  defined by {ref}`InterfaceRTEMSMESSAGEQUEUEBUFFER` with a maximum message
+  size equal to the maximum message size of this configuration.
 
 storage_size
 : This member defines size of the message buffer storage area in bytes.
 
 storage_free
 : This member defines the optional handler to free the message buffer storage
-  area. It is called when the message queue is deleted. It is called from
-  task context under protection of the object allocator lock. It is allowed
-  to call {c:func}`free` in this handler. If handler is [NULL](https://en.cppreference.com/w/c/types/NULL), then no action will be
+  area. It is called when the message queue is deleted. It is called from task
+  context under protection of the object allocator lock. It is allowed to call
+  {c:func}`free` in this handler. If handler is
+  [NULL](https://en.cppreference.com/w/c/types/NULL), then no action will be
   performed.
 
 attributes
@@ -1183,16 +1178,15 @@ maximum_id
 : This member contains the maximum valid object identifier for this class.
 
 maximum
-: This member contains the maximum number of active objects configured for
-  this class.
+: This member contains the maximum number of active objects configured for this
+  class.
 
 auto_extend
 : This member is true, if this class is configured for automatic object
   extension, otherwise it is false.
 
 unallocated
-: This member contains the number of currently inactive objects of this
-  class.
+: This member contains the number of currently inactive objects of this class.
 
 % Generated from spec:/rtems/option/if/option
 
@@ -1237,13 +1231,13 @@ RATE_MONOTONIC_INACTIVE
   been initialized.
 
 RATE_MONOTONIC_ACTIVE
-: This status indicates the period is on the watchdog chain, and running.
-  The owner may be executing or blocked waiting on another object.
+: This status indicates the period is on the watchdog chain, and running. The
+  owner may be executing or blocked waiting on another object.
 
 RATE_MONOTONIC_EXPIRED
-: This status indicates the period is off the watchdog chain, and has
-  expired. The owner may still execute and has taken too much time to
-  complete this iteration of the period.
+: This status indicates the period is off the watchdog chain, and has expired.
+  The owner may still execute and has taken too much time to complete this
+  iteration of the period.
 
 % Generated from spec:/rtems/ratemon/if/period-statistics
 
@@ -1276,16 +1270,16 @@ total_cpu_time
 : This member contains the total amount of processor time used in a period.
 
 min_wall_time
-: This member contains the least amount of {term}`CLOCK_MONOTONIC` time used
-  in a period.
+: This member contains the least amount of {term}`CLOCK_MONOTONIC` time used in
+  a period.
 
 max_wall_time
-: This member contains the highest amount of {term}`CLOCK_MONOTONIC` time
-  used in a period.
+: This member contains the highest amount of {term}`CLOCK_MONOTONIC` time used
+  in a period.
 
 total_wall_time
-: This member contains the total amount of {term}`CLOCK_MONOTONIC` time used
-  in a period.
+: This member contains the total amount of {term}`CLOCK_MONOTONIC` time used in
+  a period.
 
 % Generated from spec:/rtems/ratemon/if/period-status
 
@@ -1315,10 +1309,9 @@ since_last_period
   meaning.
 
 executed_since_last_period
-: This member contains the processor time consumed by the owner task since
-  the last successful invocation {ref}`InterfaceRtemsRateMonotonicPeriod`. If
-  the period is expired or has not been initiated, then this value has no
-  meaning.
+: This member contains the processor time consumed by the owner task since the
+  last successful invocation {ref}`InterfaceRtemsRateMonotonicPeriod`. If the
+  period is expired or has not been initiated, then this value has no meaning.
 
 postponed_jobs_count
 : This member contains the count of jobs which are not released yet.
@@ -1340,12 +1333,12 @@ This structure defines the configuration of a regulator created by
 ```
 
 deliverer
-: This member contains a pointer to an application function invoked by
-  the Delivery thread to output a message to the destination.
+: This member contains a pointer to an application function invoked by the
+  Delivery thread to output a message to the destination.
 
 deliverer_context
-: This member contains a pointer to an application defined context which
-  is passed to delivery function.
+: This member contains a pointer to an application defined context which is
+  passed to delivery function.
 
 maximum_message_size
 : This member contains the maximum size message to process.
@@ -1363,8 +1356,8 @@ output_thread_period
 : This member contains the period (in ticks) of output thread.
 
 maximum_to_dequeue_per_period
-: This member contains the maximum number of messages the output thread
-  should dequeue and deliver per period.
+: This member contains the maximum number of messages the output thread should
+  dequeue and deliver per period.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1381,16 +1374,15 @@ This type is passed as an argument to {ref}`InterfaceRtemsRegulatorCreate`.
 
 ### rtems_regulator_deliverer
 
-This type represents the function signature used to specify a delivery
-function for the RTEMS Regulator.
+This type represents the function signature used to specify a delivery function
+for the RTEMS Regulator.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This type is used in the {ref}`InterfaceRtemsRegulatorAttributes`
-structure which is passed as an argument to
-{ref}`InterfaceRtemsRegulatorCreate`.
+This type is used in the {ref}`InterfaceRtemsRegulatorAttributes` structure
+which is passed as an argument to {ref}`InterfaceRtemsRegulatorCreate`.
 
 % Handwritten
 
@@ -1417,8 +1409,8 @@ delivered
 : This member contains the number of successfully delivered buffers.
 
 period_statistics
-: This member contains the Rate Monotonic Period
-  statistics for the Delivery Thread. It is an instance of the
+: This member contains the Rate Monotonic Period statistics for the Delivery
+  Thread. It is an instance of the
   {ref}`InterfaceRtemsRateMonotonicPeriodStatistics` structure.
 
 ```{eval-rst}
@@ -1504,8 +1496,8 @@ RTEMS_INVALID_ID
 : This status code indicates that an object identifier was invalid.
 
 RTEMS_TOO_MANY
-: This status code indicates you have attempted to create too many instances
-  of a particular object class.
+: This status code indicates you have attempted to create too many instances of
+  a particular object class.
 
 RTEMS_TIMEOUT
 : This status code indicates that a blocking directive timed out.
@@ -1544,12 +1536,11 @@ RTEMS_ILLEGAL_ON_SELF
   thread.
 
 RTEMS_ILLEGAL_ON_REMOTE_OBJECT
-: This status code indicates that the operation was illegal on a remote
-  object.
+: This status code indicates that the operation was illegal on a remote object.
 
 RTEMS_CALLED_FROM_ISR
-: This status code indicates that the operation should not be called from
-  this execution environment.
+: This status code indicates that the operation should not be called from this
+  execution environment.
 
 RTEMS_INVALID_PRIORITY
 : This status code indicates that an invalid thread priority was provided.
@@ -1564,17 +1555,15 @@ RTEMS_NOT_CONFIGURED
 : This status code indicates that the directive was not configured.
 
 RTEMS_NOT_OWNER_OF_RESOURCE
-: This status code indicates that the caller was not the owner of the
-  resource.
+: This status code indicates that the caller was not the owner of the resource.
 
 RTEMS_NOT_IMPLEMENTED
 : This status code indicates the directive or requested portion of the
-  directive is not implemented. This is a hint that you have stumbled across
-  an opportunity to submit code to the RTEMS Project.
+  directive is not implemented. This is a hint that you have stumbled across an
+  opportunity to submit code to the RTEMS Project.
 
 RTEMS_INTERNAL_ERROR
-: This status code indicates that an internal RTEMS inconsistency was
-  detected.
+: This status code indicates that an internal RTEMS inconsistency was detected.
 
 RTEMS_NO_MEMORY
 : This status code indicates that the directive attempted to allocate memory
@@ -1688,10 +1677,9 @@ initial_priority
 
 storage_area
 
-: This member shall point to the task storage area begin. The task storage
-  area will contain the task stack, the thread-local storage, and the
-  floating-point context on architectures with a separate floating-point
-  context.
+: This member shall point to the task storage area begin. The task storage area
+  will contain the task stack, the thread-local storage, and the floating-point
+  context on architectures with a separate floating-point context.
 
   The task storage area begin address and size should be aligned by
   {c:macro}`RTEMS_TASK_STORAGE_ALIGNMENT`. To avoid memory waste, use
@@ -1702,8 +1690,8 @@ storage_area
 storage_size
 
 : This member defines size of the task storage area in bytes. Use the
-  {ref}`InterfaceRTEMSTASKSTORAGESIZE` macro to determine the recommended
-  task storage area size.
+  {ref}`InterfaceRTEMSTASKSTORAGESIZE` macro to determine the recommended task
+  storage area size.
 
 maximum_thread_local_storage_size
 
@@ -1713,16 +1701,16 @@ maximum_thread_local_storage_size
   minimum alignment requirement of a thread-local storage area used to
   construct a task.
 
-  If the value is less than the actual thread-local storage size, then the
-  task construction by {ref}`InterfaceRtemsTaskConstruct` fails.
+  If the value is less than the actual thread-local storage size, then the task
+  construction by {ref}`InterfaceRtemsTaskConstruct` fails.
 
-  If the is less than the task storage area size, then the task construction
-  by {ref}`InterfaceRtemsTaskConstruct` fails.
+  If the is less than the task storage area size, then the task construction by
+  {ref}`InterfaceRtemsTaskConstruct` fails.
 
   The actual thread-local storage size is determined when the application
-  executable is linked. The `rtems-exeinfo` command line tool included in
-  the RTEMS Tools can be used to obtain the thread-local storage size and
-  alignment of an application executable.
+  executable is linked. The `rtems-exeinfo` command line tool included in the
+  RTEMS Tools can be used to obtain the thread-local storage size and alignment
+  of an application executable.
 
   The application may configure the maximum thread-local storage size for all
   threads explicitly through the
@@ -1730,13 +1718,13 @@ maximum_thread_local_storage_size
 
 storage_free
 
-: This member defines the optional handler to free the task storage area. It
-  is called on exactly two mutually exclusive occasions. Firstly, when the
-  task construction aborts due to a failed task create extension, or
-  secondly, when the task is deleted. It is called from task context under
-  protection of the object allocator lock. It is allowed to call
-  {c:func}`free` in this handler. If handler is [NULL](https://en.cppreference.com/w/c/types/NULL), then no action will be
-  performed.
+: This member defines the optional handler to free the task storage area. It is
+  called on exactly two mutually exclusive occasions. Firstly, when the task
+  construction aborts due to a failed task create extension, or secondly, when
+  the task is deleted. It is called from task context under protection of the
+  object allocator lock. It is allowed to call {c:func}`free` in this handler.
+  If handler is [NULL](https://en.cppreference.com/w/c/types/NULL), then no
+  action will be performed.
 
 initial_modes
 
@@ -1763,7 +1751,8 @@ Task create extensions are invoked when a task is created.
 
 `executing`
 : This parameter is the {term}`TCB` of the executing thread. When the idle
-  thread is created, the executing thread is equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
+  thread is created, the executing thread is equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 `created`
 : This parameter is the {term}`TCB` of the created thread.
@@ -1808,9 +1797,10 @@ Task delete extensions are invoked when a task is deleted.
 ```
 
 `executing`
-: This parameter is the {term}`TCB` of the executing thread. If the idle
-  thread is created and one of the initial task create extension fails, then
-  the executing thread is equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
+: This parameter is the {term}`TCB` of the executing thread. If the idle thread
+  is created and one of the initial task create extension fails, then the
+  executing thread is equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 `created`
 : This parameter is the {term}`TCB` of the deleted thread. The executing and
@@ -1894,8 +1884,8 @@ Task restart extensions are invoked when a task restarts.
 : This parameter is the {term}`TCB` of the executing thread.
 
 `restarted`
-: This parameter is the {term}`TCB` of the executing thread. Yes, the
-  executing thread.
+: This parameter is the {term}`TCB` of the executing thread. Yes, the executing
+  thread.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1966,8 +1956,8 @@ thread to a heir thread takes place.
   ancestor thread.
 
 `heir`
-: This parameter is the {term}`TCB` of the heir thread. In SMP
-  configurations, this is the executing thread.
+: This parameter is the {term}`TCB` of the heir thread. In SMP configurations,
+  this is the executing thread.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1981,14 +1971,14 @@ the differences to correctly implement a task switch extension.
 
 Where the system was built with SMP support disabled, the task switch
 extensions are invoked before the context switch from the currently executing
-thread to the heir thread. The `executing` is a pointer to the {term}`TCB`
-of the currently executing thread. The `heir` is a pointer to the TCB of the
-heir thread. The context switch initiated through the multitasking start is
-not covered by the task switch extensions.
+thread to the heir thread. The `executing` is a pointer to the {term}`TCB` of
+the currently executing thread. The `heir` is a pointer to the TCB of the heir
+thread. The context switch initiated through the multitasking start is not
+covered by the task switch extensions.
 
 Where the system was built with SMP support enabled, the task switch extensions
-are invoked after the context switch to the heir thread. The `executing` is
-a pointer to the TCB of the previously executing thread. Despite the name, this
+are invoked after the context switch to the heir thread. The `executing` is a
+pointer to the TCB of the previously executing thread. Despite the name, this
 is not the currently executing thread. The `heir` is a pointer to the TCB of
 the newly executing thread. This is the currently executing thread. The context
 switches initiated through the multitasking start are covered by the task
@@ -1996,9 +1986,9 @@ switch extensions. The reason for the differences to uniprocessor
 configurations is that the context switch may update the heir thread of the
 processor. The task switch extensions are invoked with maskable interrupts
 disabled and with ownership of a processor-specific SMP lock. Task switch
-extensions may run in parallel on multiple processors. It is recommended to
-use thread-local or processor-specific data structures for task switch
-extensions. A global SMP lock should be avoided for performance reasons, see
+extensions may run in parallel on multiple processors. It is recommended to use
+thread-local or processor-specific data structures for task switch extensions.
+A global SMP lock should be avoided for performance reasons, see
 {ref}`InterfaceRtemsInterruptLockInitialize`.
 
 % Generated from spec:/rtems/userext/if/task-terminate
@@ -2028,8 +2018,8 @@ The task terminate extensions are invoked in {term}`extension reverse order`.
 
 The task terminate extensions are invoked in the context of the terminating
 thread right before the thread dispatch to the heir thread should take place.
-The thread stack reflects the previous execution context. The POSIX cleanup
-and key destructors execute in this context.
+The thread stack reflects the previous execution context. The POSIX cleanup and
+key destructors execute in this context.
 
 Thread restart and delete requests issued by terminate extensions lead to
 recursion.
@@ -2116,9 +2106,9 @@ initial
 : This member indicates the initial requested interval.
 
 start_time
-: This member indicates the time the timer was initially scheduled. The time
-  is in clock ticks since the clock driver initialization or the last clock
-  tick counter overflow.
+: This member indicates the time the timer was initially scheduled. The time is
+  in clock ticks since the clock driver initialization or the last clock tick
+  counter overflow.
 
 stop_time
 : This member indicates the time the timer was scheduled to fire. The time is

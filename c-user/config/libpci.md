@@ -53,6 +53,6 @@ depending on how `CONFIGURE_PCI_CONFIG_LIB` is defined:
   devices since PCI peripherals are not allowed to access PCI configuration
   space.
 
-Note that selecting `PCI_LIB_STATIC` or `PCI_LIB_PERIPHERAL` but not
-defining `pci_hb` will reuslt in link errors. Note also that in these modes
-Plug & Play is not performed.
+Note that selecting `PCI_LIB_STATIC` or `PCI_LIB_PERIPHERAL` but not defining
+`pci_hb` will reuslt in link errors. Note also that in these modes Plug & Play
+is not performed.

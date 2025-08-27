@@ -84,8 +84,8 @@ rtems_status_code rtems_io_register_driver(
 
 `registered_major`
 : This parameter is the pointer to an {ref}`InterfaceRtemsDeviceMajorNumber`
-  object. When the directive call is successful, the device major number of
-  the registered device will be stored in this object.
+  object. When the directive call is successful, the device major number of the
+  registered device will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -95,7 +95,8 @@ rtems_status_code rtems_io_register_driver(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The device major number of the device was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The device major number of the device was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
 : The device driver address table was empty.
@@ -636,8 +637,7 @@ rtems_status_code rtems_io_control(
 : This parameter is the minor number of the device.
 
 `argument`
-: This parameter is the argument passed to the device driver I/O control
-  entry.
+: This parameter is the argument passed to the device driver I/O control entry.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -664,6 +664,6 @@ Other status codes may be returned by the device driver I/O control entry.
 
 The exact functionality of the driver entry called by this directive is driver
 dependent. It should not be assumed that the control entries of two device
-drivers are compatible. For example, an RS-232 driver I/O control operation
-may change the baud of a serial line, while an I/O control operation for a
-floppy disk driver may cause a seek operation.
+drivers are compatible. For example, an RS-232 driver I/O control operation may
+change the baud of a serial line, while an I/O control operation for a floppy
+disk driver may cause a seek operation.

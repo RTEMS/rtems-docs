@@ -158,9 +158,11 @@ capabilities. The directives provided by the Clock Manager are:
   seconds and microseconds format.
 - {ref}`InterfaceRtemsClockGetSecondsSinceEpoch` - Gets the seconds elapsed
   since the {term}`RTEMS epoch` and the current {term}`CLOCK_REALTIME`.
-- {ref}`InterfaceRtemsClockGetTicksPerSecond` - Gets the number of {term}`clock ticks <clock tick>` per second configured for the application.
-- {ref}`InterfaceRtemsClockGetTicksSinceBoot` - Gets the number of {term}`clock ticks <clock tick>` since some time point during the system initialization or
-  the last overflow of the clock tick counter.
+- {ref}`InterfaceRtemsClockGetTicksPerSecond` - Gets the number of
+  {term}`clock ticks <clock tick>` per second configured for the application.
+- {ref}`InterfaceRtemsClockGetTicksSinceBoot` - Gets the number of
+  {term}`clock ticks <clock tick>` since some time point during the system
+  initialization or the last overflow of the clock tick counter.
 - {ref}`InterfaceRtemsClockGetUptime` - Gets the seconds and nanoseconds
   elapsed since some time point during the system initialization using
   {term}`CLOCK_MONOTONIC`.
@@ -177,4 +179,5 @@ capabilities. The directives provided by the Clock Manager are:
   is at least delta clock ticks in the future.
 - {ref}`InterfaceRtemsClockTickLaterUsec` - Gets a {term}`clock tick` value
   which is at least delta microseconds in the future.
-- {ref}`InterfaceRtemsClockTickBefore` - Indicates if the current {term}`clock tick` counter is before the ticks.
+- {ref}`InterfaceRtemsClockTickBefore` - Indicates if the current
+  {term}`clock tick` counter is before the ticks.

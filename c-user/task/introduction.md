@@ -105,7 +105,8 @@ and administer tasks. The directives provided by the Task Manager are:
   with respect to the scheduler.
 - {ref}`InterfaceRtemsTaskMode` - Gets and optionally sets the mode of the
   calling task.
-- {ref}`InterfaceRtemsTaskWakeAfter` - Wakes up after a count of {term}`clock ticks <clock tick>` have occurred or yields the processor.
+- {ref}`InterfaceRtemsTaskWakeAfter` - Wakes up after a count of
+  {term}`clock ticks <clock tick>` have occurred or yields the processor.
 - {ref}`InterfaceRtemsTaskWakeWhen` - Wakes up when specified.
 - {ref}`InterfaceRtemsTaskGetScheduler` - Gets the home scheduler of the task.
 - {ref}`InterfaceRtemsTaskSetScheduler` - Sets the home scheduler for the task.

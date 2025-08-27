@@ -85,18 +85,17 @@ rtems_status_code rtems_interrupt_catch(
 
 `old_isr_handler`
 : This parameter is the pointer to an {ref}`InterfaceRtemsIsrEntry` object.
-  When the directive call is successful, the previous interrupt service
-  routine established for this interrupt vector will be stored in this
-  object.
+  When the directive call is successful, the previous interrupt service routine
+  established for this interrupt vector will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 This directive establishes an interrupt service routine (ISR) for the interrupt
-specified by the `vector` number. The `new_isr_handler` parameter
-specifies the entry point of the ISR. The entry point of the previous ISR for
-the specified vector is returned in `old_isr_handler`.
+specified by the `vector` number. The `new_isr_handler` parameter specifies the
+entry point of the ISR. The entry point of the previous ISR for the specified
+vector is returned in `old_isr_handler`.
 
 To release an interrupt vector, pass the old handler's address obtained when
 the vector was first capture.
@@ -112,10 +111,12 @@ the vector was first capture.
 : The interrupt vector number was illegal.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `new_isr_handler` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `new_isr_handler` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `old_isr_handler` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `old_isr_handler` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -178,8 +179,7 @@ returns the previous interrupt level in `isr_cookie`.
 A later invocation of the {ref}`InterfaceRtemsInterruptEnable` directive should
 be used to restore the previous interrupt level.
 
-This directive is implemented as a macro which sets the `isr_cookie`
-parameter.
+This directive is implemented as a macro which sets the `isr_cookie` parameter.
 
 ```{code-block} c
 ---
@@ -265,8 +265,8 @@ void rtems_interrupt_enable( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-: This parameter is the previous interrupt level to restore. The value must
-  be obtained by a previous call to {ref}`InterfaceRtemsInterruptDisable` or
+: This parameter is the previous interrupt level to restore. The value must be
+  obtained by a previous call to {ref}`InterfaceRtemsInterruptDisable` or
   {ref}`InterfaceRtemsInterruptFlash`.
 
 ```{eval-rst}
@@ -356,8 +356,8 @@ The `isr_cookie` parameter value must be obtained by a previous call to
 Using an otherwise obtained value is undefined behaviour.
 
 Historically, the interrupt flash directive was heavily used in the operating
-system implementation. However, this is no longer the case. The interrupt
-flash directive is provided for backward compatibility reasons.
+system implementation. However, this is no longer the case. The interrupt flash
+directive is provided for backward compatibility reasons.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -421,14 +421,13 @@ returns the previous interrupt level in `isr_cookie`.
 A later invocation of the {ref}`InterfaceRtemsInterruptLocalEnable` directive
 should be used to restore the previous interrupt level.
 
-This directive is implemented as a macro which sets the `isr_cookie`
-parameter.
+This directive is implemented as a macro which sets the `isr_cookie` parameter.
 
 Where the system was built with SMP support enabled, this will not ensure
 system wide mutual exclusion. Use interrupt locks instead, see
-{ref}`InterfaceRtemsInterruptLockAcquire`. Interrupt disabled critical
-sections may be used to access processor-specific data structures or disable
-thread dispatching.
+{ref}`InterfaceRtemsInterruptLockAcquire`. Interrupt disabled critical sections
+may be used to access processor-specific data structures or disable thread
+dispatching.
 
 ```{code-block} c
 ---
@@ -509,9 +508,8 @@ void rtems_interrupt_local_enable( rtems_interrupt_level isr_cookie );
 ```
 
 `isr_cookie`
-: This parameter is the previous interrupt level to restore. The value must
-  be obtained by a previous call to
-  {ref}`InterfaceRtemsInterruptLocalDisable`.
+: This parameter is the previous interrupt level to restore. The value must be
+  obtained by a previous call to {ref}`InterfaceRtemsInterruptLocalDisable`.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -574,10 +572,10 @@ bool rtems_interrupt_is_in_progress( void );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive returns `true`, if the current processor is currently
-servicing an interrupt, and `false` otherwise. A return value of `true`
-indicates that the caller is an interrupt service routine, **not** a task. The
-directives available to an interrupt service routine are restricted.
+This directive returns `true`, if the current processor is currently servicing
+an interrupt, and `false` otherwise. A return value of `true` indicates that
+the caller is an interrupt service routine, **not** a task. The directives
+available to an interrupt service routine are restricted.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -629,8 +627,8 @@ void rtems_interrupt_lock_initialize(
 : This parameter is the ISR lock to initialize.
 
 `name`
-: This parameter is the ISR lock name. It shall be a string. The name is
-  only used where the system was built with profiling support enabled.
+: This parameter is the ISR lock name. It shall be a string. The name is only
+  used where the system was built with profiling support enabled.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -732,9 +730,9 @@ void rtems_interrupt_lock_acquire(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive acquires the ISR lock specified by `lock` using the lock
-context provided by `lock_context`. Maskable interrupts will be disabled on
-the current processor.
+This directive acquires the ISR lock specified by `lock` using the lock context
+provided by `lock_context`. Maskable interrupts will be disabled on the current
+processor.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -818,9 +816,9 @@ void rtems_interrupt_lock_release( rtems_interrupt_lock_context *lock );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive releases the ISR lock specified by `lock` using the lock
-context provided by `lock_context`. The previous interrupt level will be
-restored on the current processor.
+This directive releases the ISR lock specified by `lock` using the lock context
+provided by `lock_context`. The previous interrupt level will be restored on
+the current processor.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -886,9 +884,8 @@ void rtems_interrupt_lock_acquire_isr(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive acquires the ISR lock specified by `lock` using the lock
-context provided by `lock_context`. The interrupt level will remain
-unchanged.
+This directive acquires the ISR lock specified by `lock` using the lock context
+provided by `lock_context`. The interrupt level will remain unchanged.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -906,8 +903,8 @@ corresponding interrupt service routine.
 
 In case the corresponding interrupt service routine can be interrupted by
 higher priority interrupts and these interrupts enter the critical section
-protected by this lock, then the result is unpredictable. This directive may
-be used under specific circumstances as an optimization. In doubt, use
+protected by this lock, then the result is unpredictable. This directive may be
+used under specific circumstances as an optimization. In doubt, use
 {ref}`InterfaceRtemsInterruptLockAcquire` and
 {ref}`InterfaceRtemsInterruptLockRelease`.
 
@@ -962,9 +959,8 @@ void rtems_interrupt_lock_release_isr(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive releases the ISR lock specified by `lock` using the lock
-context provided by `lock_context`. The interrupt level will remain
-unchanged.
+This directive releases the ISR lock specified by `lock` using the lock context
+provided by `lock_context`. The interrupt level will remain unchanged.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1108,8 +1104,8 @@ RTEMS_INTERRUPT_LOCK_DEFINE( specifier, designator, const char *name );
 : This parameter is the ISR lock object designator.
 
 `name`
-: This parameter is the ISR lock name. It shall be a string. The name is
-  only used where the system was built with profiling support enabled.
+: This parameter is the ISR lock name. It shall be a string. The name is only
+  used where the system was built with profiling support enabled.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1149,8 +1145,8 @@ RTEMS_INTERRUPT_LOCK_INITIALIZER( const char *name );
 ```
 
 `name`
-: This parameter is the ISR lock name. It shall be a string. The name is
-  only used where the system was built with profiling support enabled.
+: This parameter is the ISR lock name. It shall be a string. The name is only
+  used where the system was built with profiling support enabled.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1418,7 +1414,8 @@ may be installed for the interrupt vector.
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The handler routine of the entry was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The handler routine of the entry was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -1439,9 +1436,9 @@ may be installed for the interrupt vector.
   interrupt vector was already occupied by a unique handler.
 
 {c:macro}`RTEMS_TOO_MANY`
-: The handler routine of the entry specified by `entry` was already
-  installed for the interrupt vector specified by `vector` with an argument
-  equal to the handler argument of the entry.
+: The handler routine of the entry specified by `entry` was already installed
+  for the interrupt vector specified by `vector` with an argument equal to the
+  handler argument of the entry.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1608,9 +1605,9 @@ One of the following mutually exclusive options
 shall be set in the `options` parameter.
 
 The handler routine will be called with the argument specified by `arg` when
-dispatched. The order in which shared interrupt handlers are dispatched for
-one vector is defined by the installation order. The first installed handler
-is dispatched first.
+dispatched. The order in which shared interrupt handlers are dispatched for one
+vector is defined by the installation order. The first installed handler is
+dispatched first.
 
 If the option {c:macro}`RTEMS_INTERRUPT_UNIQUE` is set, then it will be ensured
 that the handler will be the only one for the interrupt vector.
@@ -1621,13 +1618,13 @@ may be installed for the interrupt vector.
 If the option {c:macro}`RTEMS_INTERRUPT_REPLACE` is set, then the handler
 specified by `routine` will replace the first handler with the same argument
 for the interrupt vector if it exists, otherwise an error status will be
-returned. A second handler with the same argument for the interrupt vector
-will remain unchanged. The new handler will inherit the unique or shared
-options from the replaced handler.
+returned. A second handler with the same argument for the interrupt vector will
+remain unchanged. The new handler will inherit the unique or shared options
+from the replaced handler.
 
-An informative description may be provided in `info`. It may be used for
-system debugging and diagnostic tools. The referenced string has to be
-persistent as long as the handler is installed.
+An informative description may be provided in `info`. It may be used for system
+debugging and diagnostic tools. The referenced string has to be persistent as
+long as the handler is installed.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -1640,7 +1637,8 @@ persistent as long as the handler is installed.
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -1650,8 +1648,8 @@ persistent as long as the handler is installed.
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_NO_MEMORY`
-: There was not enough memory available to allocate data structures to
-  install the handler.
+: There was not enough memory available to allocate data structures to install
+  the handler.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
 : The {c:macro}`RTEMS_INTERRUPT_UNIQUE` option was set in `options` and the
@@ -1662,9 +1660,9 @@ persistent as long as the handler is installed.
   interrupt vector was already occupied by a unique handler.
 
 {c:macro}`RTEMS_TOO_MANY`
-: The handler specified by `routine` was already installed for the
-  interrupt vector specified by `vector` with an argument equal to the
-  argument specified by `arg`.
+: The handler specified by `routine` was already installed for the interrupt
+  vector specified by `vector` with an argument equal to the argument specified
+  by `arg`.
 
 {c:macro}`RTEMS_UNSATISFIED`
 : The {c:macro}`RTEMS_INTERRUPT_REPLACE` option was set in `options` and no
@@ -1732,7 +1730,8 @@ rtems_status_code rtems_interrupt_handler_remove(
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -1790,12 +1789,12 @@ rtems_status_code rtems_interrupt_vector_is_enabled(
 : This parameter is the interrupt vector number.
 
 `enabled`
-: This parameter is the pointer to a `bool` object. When the directive
-  call is successful, the enabled status of the interrupt associated with the
-  interrupt vector specified by `vector` will be stored in this object.
-  When the interrupt was enabled for the processor executing the directive
-  call at some time point during the call, the object value will be set to
-  {c:macro}`true`, otherwise to {c:macro}`false`.
+: This parameter is the pointer to a `bool` object. When the directive call is
+  successful, the enabled status of the interrupt associated with the interrupt
+  vector specified by `vector` will be stored in this object. When the
+  interrupt was enabled for the processor executing the directive call at some
+  time point during the call, the object value will be set to {c:macro}`true`,
+  otherwise to {c:macro}`false`.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1813,7 +1812,8 @@ call at some time point during the call.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `enabled` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `enabled` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -2017,12 +2017,12 @@ rtems_status_code rtems_interrupt_is_pending(
 : This parameter is the interrupt vector number.
 
 `pending`
-: This parameter is the pointer to a `bool` object. When the directive
-  call is successful, the pending status of the interrupt associated with the
-  interrupt vector specified by `vector` will be stored in this object.
-  When the interrupt was pending for the processor executing the directive
-  call at some time point during the call, the object value will be set to
-  {c:macro}`true`, otherwise to {c:macro}`false`.
+: This parameter is the pointer to a `bool` object. When the directive call is
+  successful, the pending status of the interrupt associated with the interrupt
+  vector specified by `vector` will be stored in this object. When the
+  interrupt was pending for the processor executing the directive call at some
+  time point during the call, the object value will be set to {c:macro}`true`,
+  otherwise to {c:macro}`false`.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -2040,7 +2040,8 @@ call at some time point during the call.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `pending` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `pending` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -2180,8 +2181,8 @@ rtems_status_code rtems_interrupt_raise_on(
   `vector`.
 
 {c:macro}`RTEMS_NOT_CONFIGURED`
-: The processor specified by `cpu_index` was not configured to be used by
-  the application.
+: The processor specified by `cpu_index` was not configured to be used by the
+  application.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
 : The processor specified by `cpu_index` was configured to be used by the
@@ -2304,7 +2305,8 @@ rtems_status_code rtems_interrupt_get_priority(
 : This parameter is the interrupt vector number.
 
 `priority`
-: This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the priority of the interrupt vector will be
   stored in this object.
 
@@ -2316,7 +2318,8 @@ rtems_status_code rtems_interrupt_get_priority(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -2383,8 +2386,8 @@ rtems_status_code rtems_interrupt_set_priority(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive sets the priority of the interrupt specified by `vector` to
-the priority specified by `priority`.
+This directive sets the priority of the interrupt specified by `vector` to the
+priority specified by `priority`.
 
 For processor-specific interrupts, the priority of the interrupt specific to a
 processor executing the directive call will be set.
@@ -2418,10 +2421,10 @@ priority associated with an interrupt vector.
 The interrupt prioritization support depends on the interrupt controller of the
 {term}`target`. It is strongly recommended to read the relevant hardware
 documentation. What happens when the priority of a pending or active interrupt
-is changed, depends on the interrupt controller. In general, you should set
-the interrupt priority of an interrupt vector before a handler is installed.
-On some interrupt controllers, setting the priority to the maximum value
-(lowest importance) effectively disables the interrupt.
+is changed, depends on the interrupt controller. In general, you should set the
+interrupt priority of an interrupt vector before a handler is installed. On
+some interrupt controllers, setting the priority to the maximum value (lowest
+importance) effectively disables the interrupt.
 
 On some architectures, a range of interrupt priority values may be not disabled
 by the interrupt disable directives such as
@@ -2440,8 +2443,8 @@ into account, see also {ref}`CONFIGURE_INTERRUPT_STACK_SIZE`.
 For the ARM Generic Interrupt Controller (GIC), an 8-bit priority value is
 supported. The granularity of the priority levels depends on the interrupt
 controller configuration. Some low-order bits of a priority value may be
-read-as-zero (RAZ) and writes are ignored (WI). Where group 0 (FIQ) and group
-1 (IRQ) interrupts are used, it is recommended to use the lower half of the
+read-as-zero (RAZ) and writes are ignored (WI). Where group 0 (FIQ) and group 1
+(IRQ) interrupts are used, it is recommended to use the lower half of the
 supported priority value range for the group 0 interrupts and the upper half
 for group 1 interrupts. This ensures that group 1 interrupts cannot preempt
 group 0 interrupts.
@@ -2462,8 +2465,8 @@ value 0 for the PLIC) is reserved to mean "never interrupt" and effectively
 disables the interrupt.
 
 For the QorIQ Multicore Programmable Interrupt Controller (MPIC), a 4-bit
-priority value is supported. Please note that for this directive in contrast
-to the MPIC, a higher priority value is associated with a lower importance. The
+priority value is supported. Please note that for this directive in contrast to
+the MPIC, a higher priority value is associated with a lower importance. The
 maximum priority value of 15 (mapped to the value 0 for the MPIC) inhibits
 signalling of this interrupt.
 
@@ -2516,8 +2519,8 @@ rtems_status_code rtems_interrupt_get_affinity(
 : This parameter is the interrupt vector number.
 
 `affinity_size`
-: This parameter is the size of the processor set referenced by `affinity`
-  in bytes.
+: This parameter is the size of the processor set referenced by `affinity` in
+  bytes.
 
 `affinity`
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. When the
@@ -2534,15 +2537,16 @@ rtems_status_code rtems_interrupt_get_affinity(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `affinity` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `affinity` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
   `vector`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The size specified by `affinity_size` of the processor set was too small
-  for the processor affinity set of the interrupt vector.
+: The size specified by `affinity_size` of the processor set was too small for
+  the processor affinity set of the interrupt vector.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -2590,15 +2594,15 @@ rtems_status_code rtems_interrupt_set_affinity(
 : This parameter is the interrupt vector number.
 
 `affinity_size`
-: This parameter is the size of the processor set referenced by `affinity`
-  in bytes.
+: This parameter is the size of the processor set referenced by `affinity` in
+  bytes.
 
 `affinity`
-: This parameter is the pointer to a {c:type}`cpu_set_t` object. The
-  processor set defines the new processor affinity set of the interrupt
-  vector. A set bit in the processor set means that the corresponding
-  processor shall be in the processor affinity set of the interrupt vector,
-  otherwise the bit shall be cleared.
+: This parameter is the pointer to a {c:type}`cpu_set_t` object. The processor
+  set defines the new processor affinity set of the interrupt vector. A set bit
+  in the processor set means that the corresponding processor shall be in the
+  processor affinity set of the interrupt vector, otherwise the bit shall be
+  cleared.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -2608,7 +2612,8 @@ rtems_status_code rtems_interrupt_set_affinity(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `affinity` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `affinity` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -2679,10 +2684,9 @@ rtems_status_code rtems_interrupt_get_attributes(
 : This parameter is the interrupt vector number.
 
 `attributes`
-: This parameter is the pointer to an
-  {ref}`InterfaceRtemsInterruptAttributes` object. When the directive call
-  is successful, the attributes of the interrupt vector will be stored in
-  this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsInterruptAttributes`
+  object. When the directive call is successful, the attributes of the
+  interrupt vector will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -2692,7 +2696,8 @@ rtems_status_code rtems_interrupt_get_attributes(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `attributes` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `attributes` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -2754,8 +2759,8 @@ rtems_status_code rtems_interrupt_handler_iterate(
 ```
 
 For each installed handler at the interrupt vector the visitor function
-specified by `routine` will be called with the argument specified by `arg`
-and the handler information, options, routine and argument.
+specified by `routine` will be called with the argument specified by `arg` and
+the handler information, options, routine and argument.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -2768,7 +2773,8 @@ and the handler information, options, routine and argument.
 : The service was not initialized.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -2831,8 +2837,8 @@ rtems_status_code rtems_interrupt_server_initialize(
 ```
 
 `priority`
-: This parameter is the initial {term}`task priority` of the created
-  interrupt servers.
+: This parameter is the initial {term}`task priority` of the created interrupt
+  servers.
 
 `stack_size`
 : This parameter is the task stack size of the created interrupt servers.
@@ -2844,10 +2850,12 @@ rtems_status_code rtems_interrupt_server_initialize(
 : This parameter is the attribute set of the created interrupt servers.
 
 `server_count`
-: This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object or [NULL](https://en.cppreference.com/w/c/types/NULL). When the pointer is not
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object or
+  [NULL](https://en.cppreference.com/w/c/types/NULL). When the pointer is not
   equal to [NULL](https://en.cppreference.com/w/c/types/NULL), the count of
-  successfully created interrupt servers is stored in this object regardless
-  of the return status.
+  successfully created interrupt servers is stored in this object regardless of
+  the return status.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -2858,7 +2866,8 @@ processor in the system. The tasks will have the initial priority specified by
 `priority`, the stack size specified by `stack_size`, the initial mode set
 specified by `modes`, and the attribute set specified by `attributes`. The
 count of successfully created server tasks will be returned in `server_count`
-if the pointer is not equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
+if the pointer is not equal to
+[NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -2879,9 +2888,9 @@ then its error status will be returned.
 
 Interrupt handlers may be installed on an interrupt server with
 {ref}`InterfaceRtemsInterruptServerHandlerInstall` and removed with
-{ref}`InterfaceRtemsInterruptServerHandlerRemove` using a server index. In
-case of an interrupt, the request will be forwarded to the interrupt server.
-The handlers are executed within the interrupt server context. If one handler
+{ref}`InterfaceRtemsInterruptServerHandlerRemove` using a server index. In case
+of an interrupt, the request will be forwarded to the interrupt server. The
+handlers are executed within the interrupt server context. If one handler
 blocks on something this may delay the processing of other handlers.
 
 Interrupt servers may be deleted by {ref}`InterfaceRtemsInterruptServerDelete`.
@@ -2930,17 +2939,18 @@ rtems_status_code rtems_interrupt_server_create(
 
 `control`
 : This parameter is the pointer to an
-  {ref}`InterfaceRtemsInterruptServerControl` object. When the directive
-  call was successful, the ownership of the object was transferred from the
-  caller of the directive to the interrupt server management.
+  {ref}`InterfaceRtemsInterruptServerControl` object. When the directive call
+  was successful, the ownership of the object was transferred from the caller
+  of the directive to the interrupt server management.
 
 `config`
 : This parameter is the interrupt server configuration.
 
 `server_index`
-: This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
-  directive call was successful, the index of the created interrupt server
-  will be stored in this object.
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
+  directive call was successful, the index of the created interrupt server will
+  be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -3007,8 +3017,8 @@ rtems_status_code rtems_interrupt_server_handler_install(
 
 `server_index`
 : This parameter is the interrupt server index. The constant
-  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
-  default interrupt server.
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 `vector`
 : This parameter is the interrupt vector number.
@@ -3030,8 +3040,8 @@ rtems_status_code rtems_interrupt_server_handler_install(
 .. rubric:: DESCRIPTION:
 ```
 
-The handler routine specified by `routine` will be executed within the
-context of the interrupt server task specified by `server_index`.
+The handler routine specified by `routine` will be executed within the context
+of the interrupt server task specified by `server_index`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -3048,7 +3058,8 @@ context of the interrupt server task specified by `server_index`.
 : The directive was called from within interrupt context.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `routine` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `routine` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no interrupt vector associated with the number specified by
@@ -3066,9 +3077,9 @@ context of the interrupt server task specified by `server_index`.
   interrupt vector was already occupied by a unique handler.
 
 {c:macro}`RTEMS_TOO_MANY`
-: The handler specified by `routine` was already installed for the
-  interrupt vector specified by `vector` with an argument equal to the
-  argument specified by `arg`.
+: The handler specified by `routine` was already installed for the interrupt
+  vector specified by `vector` with an argument equal to the argument specified
+  by `arg`.
 
 {c:macro}`RTEMS_UNSATISFIED`
 : The {c:macro}`RTEMS_INTERRUPT_REPLACE` option was set in `info` and no
@@ -3126,8 +3137,8 @@ rtems_status_code rtems_interrupt_server_handler_remove(
 
 `server_index`
 : This parameter is the interrupt server index. The constant
-  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
-  default interrupt server.
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 `vector`
 : This parameter is the interrupt vector number.
@@ -3206,19 +3217,18 @@ rtems_status_code rtems_interrupt_server_set_affinity(
 
 `server_index`
 : This parameter is the interrupt server index. The constant
-  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
-  default interrupt server.
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 `affinity_size`
-: This parameter is the size of the processor set referenced by `affinity`
-  in bytes.
+: This parameter is the size of the processor set referenced by `affinity` in
+  bytes.
 
 `affinity`
-: This parameter is the pointer to a {c:type}`cpu_set_t` object. The
-  processor set defines the new processor affinity set of the interrupt
-  server. A set bit in the processor set means that the corresponding
-  processor shall be in the processor affinity set of the task, otherwise the
-  bit shall be cleared.
+: This parameter is the pointer to a {c:type}`cpu_set_t` object. The processor
+  set defines the new processor affinity set of the interrupt server. A set bit
+  in the processor set means that the corresponding processor shall be in the
+  processor affinity set of the task, otherwise the bit shall be cleared.
 
 `priority`
 : This parameter is the new {term}`real priority` for the interrupt server.
@@ -3236,8 +3246,8 @@ rtems_status_code rtems_interrupt_server_set_affinity(
 
 The directive uses {ref}`InterfaceRtemsSchedulerIdentByProcessorSet`,
 {ref}`InterfaceRtemsTaskSetScheduler`, and
-{ref}`InterfaceRtemsTaskSetAffinity`. If one of these directive fails, then
-its error status will be returned.
+{ref}`InterfaceRtemsTaskSetAffinity`. If one of these directive fails, then its
+error status will be returned.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -3258,8 +3268,8 @@ The following constraints apply to this directive:
 - The directive may be called from within interrupt context.
 - The directive may be called from within device driver initialization context.
 - The directive may be called from within task context.
-- The directive may change the processor affinity of a task. This may cause
-  the calling task to be preempted.
+- The directive may change the processor affinity of a task. This may cause the
+  calling task to be preempted.
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
 
@@ -3355,9 +3365,9 @@ rtems_status_code rtems_interrupt_server_suspend( uint32_t server_index );
 ```
 
 `server_index`
-: This parameter is the index of the interrupt server to suspend. The
-  constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
-  the default interrupt server.
+: This parameter is the index of the interrupt server to suspend. The constant
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -3417,9 +3427,9 @@ rtems_status_code rtems_interrupt_server_resume( uint32_t server_index );
 ```
 
 `server_index`
-: This parameter is the index of the interrupt server to resume. The
-  constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
-  the default interrupt server.
+: This parameter is the index of the interrupt server to resume. The constant
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -3486,16 +3496,16 @@ rtems_status_code rtems_interrupt_server_move(
 
 `source_server_index`
 : This parameter is the index of the source interrupt server. The constant
-  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
-  default interrupt server.
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 `vector`
 : This parameter is the interrupt vector number.
 
 `destination_server_index`
-: This parameter is the index of the destination interrupt server. The
-  constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
-  the default interrupt server.
+: This parameter is the index of the destination interrupt server. The constant
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -3650,8 +3660,8 @@ rtems_status_code rtems_interrupt_server_entry_initialize(
 
 `server_index`
 : This parameter is the interrupt server index. The constant
-  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
-  default interrupt server.
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 `entry`
 : This parameter is the interrupt server entry to initialize.
@@ -3725,8 +3735,8 @@ void rtems_interrupt_server_action_prepend(
 ```
 
 `entry`
-: This parameter is the interrupt server entry to prepend the interrupt
-  server action. It shall have been initialized via
+: This parameter is the interrupt server entry to prepend the interrupt server
+  action. It shall have been initialized via
   {ref}`InterfaceRtemsInterruptServerEntryInitialize`.
 
 `action`
@@ -3936,9 +3946,9 @@ rtems_status_code rtems_interrupt_server_entry_move(
 : This parameter is the interrupt server entry to move.
 
 `server_index`
-: This parameter is the index of the destination interrupt server. The
-  constant {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify
-  the default interrupt server.
+: This parameter is the index of the destination interrupt server. The constant
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -4013,8 +4023,8 @@ rtems_status_code rtems_interrupt_server_request_initialize(
 
 `server_index`
 : This parameter is the interrupt server index. The constant
-  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the
-  default interrupt server.
+  {c:macro}`RTEMS_INTERRUPT_SERVER_DEFAULT` may be used to specify the default
+  interrupt server.
 
 `request`
 : This parameter is the interrupt server request to initialize.
@@ -4041,11 +4051,11 @@ rtems_status_code rtems_interrupt_server_request_initialize(
 ```
 
 An interrupt server requests consists of an interrupt server entry and exactly
-one interrupt server action. The interrupt vector of the request may be
-changed with {ref}`InterfaceRtemsInterruptServerRequestSetVector`. Interrupt
-server requests may be submitted to get serviced by the interrupt server with
-{ref}`InterfaceRtemsInterruptServerRequestSubmit`. Requests may be destroyed
-by {ref}`InterfaceRtemsInterruptServerRequestDestroy`.
+one interrupt server action. The interrupt vector of the request may be changed
+with {ref}`InterfaceRtemsInterruptServerRequestSetVector`. Interrupt server
+requests may be submitted to get serviced by the interrupt server with
+{ref}`InterfaceRtemsInterruptServerRequestSubmit`. Requests may be destroyed by
+{ref}`InterfaceRtemsInterruptServerRequestDestroy`.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:

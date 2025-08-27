@@ -74,8 +74,8 @@ The default value is `POSIX_Init`.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option initializes the entry point of the
-POSIX API initialization thread.
+The value of this configuration option initializes the entry point of the POSIX
+API initialization thread.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -138,8 +138,9 @@ The following constraints apply to this configuration option:
 - The value of the configuration option shall be greater than or equal to
   {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/posix-init-thread-table
 

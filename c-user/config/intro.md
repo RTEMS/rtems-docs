@@ -8,9 +8,9 @@
 
 The user should be aware that the defaults are intentionally set as low as
 possible. By default, no application resources are configured. The
-`<rtems/confdefs.h>` file ensures that at least one application task or
-thread is configured and that at least one of the initialization task/thread
-tables is configured.
+`<rtems/confdefs.h>` file ensures that at least one application task or thread
+is configured and that at least one of the initialization task/thread tables is
+configured.
 
 (Sizing the RTEMS Workspace)=
 
@@ -35,12 +35,12 @@ The memory area for the RTEMS Workspace is determined by the BSP. In case the
 RTEMS Workspace is too large for the available memory, then a fatal run-time
 error occurs and the system terminates.
 
-The file `<rtems/confdefs.h>` will calculate the value of the
-`work_space_size` parameter of the Configuration Table. There are many
-parameters the application developer can specify to help `<rtems/confdefs.h>`
-in its calculations. Correctly specifying the application requirements via
-parameters such as {ref}`CONFIGURE_EXTRA_TASK_STACKS` and
-{ref}`CONFIGURE_MAXIMUM_TASKS` is critical for production software.
+The file `<rtems/confdefs.h>` will calculate the value of the `work_space_size`
+parameter of the Configuration Table. There are many parameters the application
+developer can specify to help `<rtems/confdefs.h>` in its calculations.
+Correctly specifying the application requirements via parameters such as
+{ref}`CONFIGURE_EXTRA_TASK_STACKS` and {ref}`CONFIGURE_MAXIMUM_TASKS` is
+critical for production software.
 
 For each class of objects, the allocation can operate in one of two ways. The
 default way has an ceiling on the maximum number of object instances which can
@@ -137,13 +137,12 @@ of these are as follows:
   application will include a console device driver. Although the console device
   driver may support a combination of multiple serial ports and display and
   keyboard combinations, it is only required to provide a single device named
-  `/dev/console`. This device will be used for Standard Input, Output and
-  Error I/O Streams. Thus when
-  {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER` is specified, implicitly
-  three (3) file descriptors are reserved for the Standard I/O Streams and
-  those file descriptors are associated with `/dev/console` during
-  initialization. All console devices are expected to support the
-  POSIX\*termios\* interface.
+  `/dev/console`. This device will be used for Standard Input, Output and Error
+  I/O Streams. Thus when {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER` is
+  specified, implicitly three (3) file descriptors are reserved for the
+  Standard I/O Streams and those file descriptors are associated with
+  `/dev/console` during initialization. All console devices are expected to
+  support the POSIX\*termios\* interface.
 - The example above specifies via {ref}`CONFIGURE_MAXIMUM_TASKS` that the
   application requires a maximum of four (4) simultaneously existing Classic
   API tasks. Similarly, by specifying {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`,
@@ -152,12 +151,13 @@ of these are as follows:
 - The most surprising configuration parameter in this example is the use of
   {ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`. Message buffer memory is allocated
   from the RTEMS Workspace and must be accounted for. In this example, the
-  single message queue will have up to twenty (20) messages of type `struct USER_MESSAGE`.
+  single message queue will have up to twenty (20) messages of type
+  `struct USER_MESSAGE`.
 - The {ref}`CONFIGURE_INIT` constant must be defined in order to make
-  `<rtems/confdefs.h>` instantiate the configuration data structures. This
-  can only be defined in one source file per application that includes
-  `<rtems/confdefs.h>` or the symbol table will be instantiated multiple
-  times and linking errors produced.
+  `<rtems/confdefs.h>` instantiate the configuration data structures. This can
+  only be defined in one source file per application that includes
+  `<rtems/confdefs.h>` or the symbol table will be instantiated multiple times
+  and linking errors produced.
 
 This example illustrates that parameters have default values. Among other
 things, the application implicitly used the following defaults:
@@ -176,11 +176,13 @@ things, the application implicitly used the following defaults:
 
 In real-time embedded systems the RAM is normally a limited, critical resource
 and dynamic allocation is avoided as much as possible to ensure predictable,
-deterministic execution times. For such cases, see {ref}`Sizing the RTEMS Workspace` for an overview of how to tune the size of the workspace.
-Frequently when users are porting software to RTEMS the precise resource
-requirements of the software is unknown. In these situations users do not need
-to control the size of the workspace very tightly because they just want to get
-the new software to run; later they can tune the workspace size as needed.
+deterministic execution times. For such cases, see
+{ref}`Sizing the RTEMS Workspace` for an overview of how to tune the size of
+the workspace. Frequently when users are porting software to RTEMS the precise
+resource requirements of the software is unknown. In these situations users do
+not need to control the size of the workspace very tightly because they just
+want to get the new software to run; later they can tune the workspace size as
+needed.
 
 The following object classes in the Classic API can be configured in unlimited
 mode:
@@ -216,7 +218,9 @@ The following object classes can *not* be configured in unlimited mode:
 ```
 
 Due to the memory requirements of unlimited objects it is strongly recommended
-to use them only in combination with the unified work areas. See {ref}`Separate or Unified Work Areas` for more information on unified work areas.
+to use them only in combination with the unified work areas. See
+{ref}`Separate or Unified Work Areas` for more information on unified work
+areas.
 
 The following example demonstrates how the two simple configuration defines for
 unlimited objects and unified works areas can replace many seperate
@@ -269,8 +273,8 @@ Object maximum specifications can be evaluated with the
 To ease the burden of developers who are porting new software RTEMS also
 provides the capability to make all object classes listed above operate in
 unlimited mode in a simple manner. The application developer is only
-responsible for enabling unlimited objects
-({ref}`CONFIGURE_UNLIMITED_OBJECTS`) and specifying the allocation size
+responsible for enabling unlimited objects ({ref}`CONFIGURE_UNLIMITED_OBJECTS`)
+and specifying the allocation size
 ({ref}`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`).
 
 ```c

@@ -91,28 +91,28 @@ rtems_status_code rtems_message_queue_create(
 : This parameter is the attribute set of the message queue.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created message
-  queue will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created message queue
+  will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 This directive creates a message queue which resides on the local node. The
-message queue has the user-defined object name specified in `name`. Memory
-is allocated from the RTEMS Workspace for the count of messages specified in
+message queue has the user-defined object name specified in `name`. Memory is
+allocated from the RTEMS Workspace for the count of messages specified in
 `count`, each of `max_message_size` bytes in length. The assigned object
-identifier is returned in `id`. This identifier is used to access the
-message queue with other message queue related directives.
+identifier is returned in `id`. This identifier is used to access the message
+queue with other message queue related directives.
 
-The **attribute set** specified in `attribute_set` is built through a
-*bitwise or* of the attribute constants described below. Not all combinations
-of attributes are allowed. Some attributes are mutually exclusive. If
-mutually exclusive attributes are combined, the behaviour is undefined.
-Attributes not mentioned below are not evaluated by this directive and have no
-effect. Default attributes can be selected by using the
-{c:macro}`RTEMS_DEFAULT_ATTRIBUTES` constant. The attribute set defines
+The **attribute set** specified in `attribute_set` is built through a *bitwise
+or* of the attribute constants described below. Not all combinations of
+attributes are allowed. Some attributes are mutually exclusive. If mutually
+exclusive attributes are combined, the behaviour is undefined. Attributes not
+mentioned below are not evaluated by this directive and have no effect. Default
+attributes can be selected by using the {c:macro}`RTEMS_DEFAULT_ATTRIBUTES`
+constant. The attribute set defines
 
 - the scope of the message queue: {c:macro}`RTEMS_LOCAL` (default) or
   {c:macro}`RTEMS_GLOBAL` and
@@ -160,25 +160,23 @@ empty message queue.
 : The `max_message_size` parameter was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive object available to create a message queue. The
-  number of message queue available to the application is configured through
-  the {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` application configuration
-  option.
+: There was no inactive object available to create a message queue. The number
+  of message queue available to the application is configured through the
+  {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
 : In multiprocessing configurations, there was no inactive global object
   available to create a global message queue. The number of global objects
   available to the application is configured through the
-  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration
-  option.
+  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration option.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
-: The product of `count` and `max_message_size` is greater than the
-  maximum storage size.
+: The product of `count` and `max_message_size` is greater than the maximum
+  storage size.
 
 {c:macro}`RTEMS_UNSATISFIED`
-: There was not enough memory available in the RTEMS Workspace to allocate
-  the message buffers for the message queue.
+: There was not enough memory available in the RTEMS Workspace to allocate the
+  message buffers for the message queue.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -193,8 +191,8 @@ from the local QCB free pool and initializes it.
 
 The QCB for a global message queue is allocated on the local node. Message
 queues should not be made global unless remote tasks must interact with the
-message queue. This is to avoid the system overhead incurred by the creation
-of a global message queue. When a global message queue is created, the message
+message queue. This is to avoid the system overhead incurred by the creation of
+a global message queue. When a global message queue is created, the message
 queue's name and identifier must be transmitted to every node in the system for
 insertion in the local copy of the global object table.
 
@@ -255,9 +253,9 @@ rtems_status_code rtems_message_queue_construct(
   object. It configures the message queue.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the constructed message
-  queue will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the constructed message queue
+  will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -267,7 +265,8 @@ rtems_status_code rtems_message_queue_construct(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `config` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `config` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
 : The message queue name in the configuration was invalid.
@@ -300,12 +299,13 @@ rtems_status_code rtems_message_queue_construct(
   size of the message buffer area.
 
 {c:macro}`RTEMS_UNSATISFIED`
-: The message queue storage area begin pointer in the configuration was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The message queue storage area begin pointer in the configuration was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
-: The message queue storage area size in the configuration was not equal to
-  the size calculated from the maximum number of pending messages and the
-  maximum message size.
+: The message queue storage area size in the configuration was not equal to the
+  size calculated from the maximum number of pending messages and the maximum
+  message size.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -384,9 +384,9 @@ rtems_status_code rtems_message_queue_ident(
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -440,8 +440,8 @@ node number.
 If node is a valid node number which does not represent the local node, then
 only the message queues exported by the designated node are searched.
 
-This directive does not generate activity on remote nodes. It accesses only
-the local copy of the global object table.
+This directive does not generate activity on remote nodes. It accesses only the
+local copy of the global object table.
 
 The message queue identifier is used with other message related directives to
 access the message queue.
@@ -492,10 +492,10 @@ rtems_status_code rtems_message_queue_delete( rtems_id id );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive deletes the message queue specified by `id`. As a result of
-this directive, all tasks blocked waiting to receive a message from this queue
-will be readied and returned a status code which indicates that the message
-queue was deleted.
+This directive deletes the message queue specified by `id`. As a result of this
+directive, all tasks blocked waiting to receive a message from this queue will
+be readied and returned a status code which indicates that the message queue
+was deleted.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -505,8 +505,7 @@ queue was deleted.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-: There was no message queue associated with the identifier specified by
-  `id`.
+: There was no message queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
 : The message queue resided on a remote node.
@@ -516,8 +515,8 @@ queue was deleted.
 ```
 
 When the message queue is deleted, any messages in the queue are returned to
-the free message buffer pool. Any information stored in those messages is
-lost. The message buffers allocated for the message queue are reclaimed.
+the free message buffer pool. Any information stored in those messages is lost.
+The message buffers allocated for the message queue are reclaimed.
 
 The {term}`QCB` for the deleted message queue is reclaimed by RTEMS.
 
@@ -596,11 +595,11 @@ rtems_status_code rtems_message_queue_send(
 ```
 
 This directive sends the message `buffer` of `size` bytes in length to the
-queue specified by `id`. If a task is waiting at the queue, then the message
-is copied to the waiting task's buffer and the task is unblocked. If no tasks
-are waiting at the queue, then the message is copied to a message buffer which
-is obtained from this message queue's message buffer pool. The message buffer
-is then placed at the rear of the queue.
+queue specified by `id`. If a task is waiting at the queue, then the message is
+copied to the waiting task's buffer and the task is unblocked. If no tasks are
+waiting at the queue, then the message is copied to a message buffer which is
+obtained from this message queue's message buffer pool. The message buffer is
+then placed at the rear of the queue.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -613,7 +612,8 @@ is then placed at the rear of the queue.
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `buffer` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
 : The size of the message exceeded the maximum message size of the queue as
@@ -636,8 +636,7 @@ The following constraints apply to this directive:
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/message/if/urgent
 
@@ -687,11 +686,11 @@ rtems_status_code rtems_message_queue_urgent(
 ```
 
 This directive sends the message `buffer` of `size` bytes in length to the
-queue specified by `id`. If a task is waiting at the queue, then the message
-is copied to the waiting task's buffer and the task is unblocked. If no tasks
-are waiting at the queue, then the message is copied to a message buffer which
-is obtained from this message queue's message buffer pool. The message buffer
-is then placed at the front of the queue.
+queue specified by `id`. If a task is waiting at the queue, then the message is
+copied to the waiting task's buffer and the task is unblocked. If no tasks are
+waiting at the queue, then the message is copied to a message buffer which is
+obtained from this message queue's message buffer pool. The message buffer is
+then placed at the front of the queue.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -704,7 +703,8 @@ is then placed at the front of the queue.
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `buffer` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
 : The size of the message exceeded the maximum message size of the queue as
@@ -727,8 +727,7 @@ The following constraints apply to this directive:
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/message/if/broadcast
 
@@ -775,19 +774,20 @@ rtems_status_code rtems_message_queue_broadcast(
 : This parameter is the size in bytes of the message buffer to broadcast.
 
 `count`
-: This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
-  directive call is successful, the number of unblocked tasks will be stored
-  in this object.
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
+  directive call is successful, the number of unblocked tasks will be stored in
+  this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive causes all tasks that are waiting at the queue specified by
-`id` to be unblocked and sent the message contained in `buffer`. Before a
-task is unblocked, the message `buffer` of `size` bytes in length is copied
-to that task's message buffer. The number of tasks that were unblocked is
-returned in `count`.
+This directive causes all tasks that are waiting at the queue specified by `id`
+to be unblocked and sent the message contained in `buffer`. Before a task is
+unblocked, the message `buffer` of `size` bytes in length is copied to that
+task's message buffer. The number of tasks that were unblocked is returned in
+`count`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -800,7 +800,8 @@ returned in `count`.
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `buffer` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
 : The `count` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
@@ -829,8 +830,7 @@ The following constraints apply to this directive:
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/message/if/receive
 
@@ -872,25 +872,26 @@ rtems_status_code rtems_message_queue_receive(
 : This parameter is the queue identifier.
 
 `buffer`
-: This parameter is the begin address of the buffer to receive the message.
-  The buffer shall be large enough to receive a message of the maximum length
-  of the queue as defined by {ref}`InterfaceRtemsMessageQueueCreate` or
-  {ref}`InterfaceRtemsMessageQueueConstruct`. The `size` parameter cannot
-  be used to specify the size of the buffer.
+: This parameter is the begin address of the buffer to receive the message. The
+  buffer shall be large enough to receive a message of the maximum length of
+  the queue as defined by {ref}`InterfaceRtemsMessageQueueCreate` or
+  {ref}`InterfaceRtemsMessageQueueConstruct`. The `size` parameter cannot be
+  used to specify the size of the buffer.
 
 `size`
-: This parameter is the pointer to a [size_t](https://en.cppreference.com/w/c/types/size_t) object. When the
-  directive call is successful, the size in bytes of the received messages
-  will be stored in this object. This parameter cannot be used to specify
-  the size of the buffer.
+: This parameter is the pointer to a
+  [size_t](https://en.cppreference.com/w/c/types/size_t) object. When the
+  directive call is successful, the size in bytes of the received messages will
+  be stored in this object. This parameter cannot be used to specify the size
+  of the buffer.
 
 `option_set`
 : This parameter is the option set.
 
 `timeout`
 : This parameter is the timeout in {term}`clock ticks <clock tick>` if the
-  {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to
-  wait potentially forever.
+  {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait
+  potentially forever.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -898,10 +899,10 @@ rtems_status_code rtems_message_queue_receive(
 
 This directive receives a message from the queue specified by `id`.
 
-The **option set** specified in `option_set` is built through a *bitwise or*
-of the option constants described below. Not all combinations of options are
-allowed. Some options are mutually exclusive. If mutually exclusive options
-are combined, the behaviour is undefined. Options not mentioned below are not
+The **option set** specified in `option_set` is built through a *bitwise or* of
+the option constants described below. Not all combinations of options are
+allowed. Some options are mutually exclusive. If mutually exclusive options are
+combined, the behaviour is undefined. Options not mentioned below are not
 evaluated by this directive and have no effect. Default options can be selected
 by using the {c:macro}`RTEMS_DEFAULT_OPTIONS` constant.
 
@@ -910,9 +911,9 @@ according to the mutually exclusive {c:macro}`RTEMS_WAIT` and
 {c:macro}`RTEMS_NO_WAIT` options.
 
 - **Waiting to receive** a message from the queue is the default and can be
-  emphasized through the use of the {c:macro}`RTEMS_WAIT` option. The
-  `timeout` parameter defines how long the calling task is willing to wait.
-  Use {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
+  emphasized through the use of the {c:macro}`RTEMS_WAIT` option. The `timeout`
+  parameter defines how long the calling task is willing to wait. Use
+  {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
   timeout interval in clock ticks.
 - **Trying to receive** a message from the queue is selected by the
   {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the
@@ -923,19 +924,18 @@ according to the mutually exclusive {c:macro}`RTEMS_WAIT` and
 With either {c:macro}`RTEMS_WAIT` or {c:macro}`RTEMS_NO_WAIT` if there is at
 least one message in the queue, then it is copied to the buffer, the size is
 set to return the length of the message in bytes, and this directive returns
-immediately with the {c:macro}`RTEMS_SUCCESSFUL` status code. The buffer has
-to be big enough to receive a message of the maximum length with respect to
-this message queue.
+immediately with the {c:macro}`RTEMS_SUCCESSFUL` status code. The buffer has to
+be big enough to receive a message of the maximum length with respect to this
+message queue.
 
 If the calling task chooses to return immediately and the queue is empty, then
 the directive returns immediately with the {c:macro}`RTEMS_UNSATISFIED` status
-code. If the calling task chooses to wait at the message queue and the queue
-is empty, then the calling task is placed on the message wait queue and
-blocked. If the queue was created with the {c:macro}`RTEMS_PRIORITY` option
-specified, then the calling task is inserted into the wait queue according to
-its priority. But, if the queue was created with the {c:macro}`RTEMS_FIFO`
-option specified, then the calling task is placed at the rear of the wait
-queue.
+code. If the calling task chooses to wait at the message queue and the queue is
+empty, then the calling task is placed on the message wait queue and blocked.
+If the queue was created with the {c:macro}`RTEMS_PRIORITY` option specified,
+then the calling task is inserted into the wait queue according to its
+priority. But, if the queue was created with the {c:macro}`RTEMS_FIFO` option
+specified, then the calling task is placed at the rear of the wait queue.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -948,7 +948,8 @@ queue.
 : There was no queue associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `buffer` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
 : The `size` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
@@ -957,8 +958,7 @@ queue.
 : The queue was empty.
 
 {c:macro}`RTEMS_TIMEOUT`
-: The timeout happened while the calling task was waiting to receive a
-  message
+: The timeout happened while the calling task was waiting to receive a message
 
 {c:macro}`RTEMS_OBJECT_WAS_DELETED`
 : The queue was deleted while the calling task was waiting to receive a
@@ -978,8 +978,7 @@ The following constraints apply to this directive:
   during the directive call.
 - The timeout functionality of the directive requires a {term}`clock tick`.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/message/if/get-number-pending
 
@@ -1018,7 +1017,8 @@ rtems_status_code rtems_message_queue_get_number_pending(
 : This parameter is the queue identifier.
 
 `count`
-: This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the number of pending messages will be stored
   in this object.
 
@@ -1027,8 +1027,7 @@ rtems_status_code rtems_message_queue_get_number_pending(
 ```
 
 This directive returns the number of messages pending on the queue specified by
-`id` in `count`. If no messages are present on the queue, count is set to
-zero.
+`id` in `count`. If no messages are present on the queue, count is set to zero.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -1052,8 +1051,7 @@ The following constraints apply to this directive:
 - The directive may be called from within task context.
 - The directive may be called from within interrupt context.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/message/if/flush
 
@@ -1089,9 +1087,10 @@ rtems_status_code rtems_message_queue_flush( rtems_id id, uint32_t *count );
 : This parameter is the queue identifier.
 
 `count`
-: This parameter is the pointer to an [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
-  directive call is successful, the number of pending messages removed from
-  the queue will be stored in this object.
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
+  directive call is successful, the number of pending messages removed from the
+  queue will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:

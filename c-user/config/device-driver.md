@@ -82,9 +82,9 @@ initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-This configuration parameter is intended to prevent the common user error
-of using the Hello World example as the baseline for an application and
-leaving out a clock tick source.
+This configuration parameter is intended to prevent the common user error of
+using the Hello World example as the baseline for an application and leaving
+out a clock tick source.
 
 The application shall define exactly one of the following configuration options
 
@@ -129,8 +129,8 @@ The default value is the empty list.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option is used to initialize the Device
-Driver Table.
+The value of this configuration option is used to initialize the Device Driver
+Table.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -240,8 +240,8 @@ initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-The Clock Driver is responsible for providing a regular interrupt
-which invokes a clock tick directive.
+The Clock Driver is responsible for providing a regular interrupt which invokes
+a clock tick directive.
 
 The application shall define exactly one of the following configuration options
 
@@ -294,12 +294,12 @@ initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-The Console Driver is responsible for providing the {file}`/dev/console`
-device file. This device is used to initialize the standard input, output,
-and error file descriptors.
+The Console Driver is responsible for providing the {file}`/dev/console` device
+file. This device is used to initialize the standard input, output, and error
+file descriptors.
 
-BSPs should be constructed in a manner that allows {ref}`InterfacePrintk` to work
-properly without the need for the Console Driver to be configured.
+BSPs should be constructed in a manner that allows {ref}`InterfacePrintk` to
+work properly without the need for the Console Driver to be configured.
 
 The
 
@@ -352,8 +352,8 @@ initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-Most BSPs do not include support for a Frame Buffer Driver. This is
-because many boards do not include the required hardware.
+Most BSPs do not include support for a Frame Buffer Driver. This is because
+many boards do not include the required hardware.
 
 If this option is defined and the BSP does not have this device driver, then
 the user will get a link time error for an undefined symbol.
@@ -445,8 +445,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the {file}`/dev/null`
-Driver is initialized during system initialization.
+In case this configuration option is defined, then the {file}`/dev/null` Driver
+is initialized during system initialization.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -500,8 +500,8 @@ is initialized during system initialization.
 Most BSPs do not include support for a real-time clock (RTC). This is because
 many boards do not include the required hardware.
 
-If this is defined and the BSP does not have this device driver, then the
-user will get a link time error for an undefined symbol.
+If this is defined and the BSP does not have this device driver, then the user
+will get a link time error for an undefined symbol.
 
 % Generated from spec:/acfg/if/appl-needs-simple-console-driver
 
@@ -539,16 +539,16 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the Simple Console Driver
-is initialized during system initialization.
+In case this configuration option is defined, then the Simple Console Driver is
+initialized during system initialization.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This device driver is responsible for providing the {file}`/dev/console`
-device file. This device is used to initialize the standard input, output,
-and error file descriptors.
+This device driver is responsible for providing the {file}`/dev/console` device
+file. This device is used to initialize the standard input, output, and error
+file descriptors.
 
 This device driver reads via {ref}`InterfaceGetchark`.
 
@@ -608,22 +608,22 @@ Driver is initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-This device driver is responsible for providing the {file}`/dev/console`
-device file. This device is used to initialize the standard input, output,
-and error file descriptors.
+This device driver is responsible for providing the {file}`/dev/console` device
+file. This device is used to initialize the standard input, output, and error
+file descriptors.
 
 This device driver reads via {ref}`InterfaceGetchark`.
 
-This device driver writes into a write buffer. The count of characters
-written into the write buffer is returned. It might be less than the
-requested count, in case the write buffer is full. The write is
-non-blocking and may be called from interrupt context. A dedicated task
-reads from the write buffer and outputs the characters via
-{ref}`InterfaceRtemsPutc`. This task runs with the least important priority.
-The write buffer size is 2047 characters and it is not configurable.
+This device driver writes into a write buffer. The count of characters written
+into the write buffer is returned. It might be less than the requested count,
+in case the write buffer is full. The write is non-blocking and may be called
+from interrupt context. A dedicated task reads from the write buffer and
+outputs the characters via {ref}`InterfaceRtemsPutc`. This task runs with the
+least important priority. The write buffer size is 2047 characters and it is
+not configurable.
 
-Use `fsync( STDOUT_FILENO )` or `fdatasync( STDOUT_FILENO )` to drain the
-write buffer.
+Use `fsync( STDOUT_FILENO )` or `fdatasync( STDOUT_FILENO )` to drain the write
+buffer.
 
 The Termios framework is not used. There is no support to change device
 settings, e.g. baud, stop bits, parity, etc.
@@ -679,8 +679,8 @@ initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-This device driver simply provides entry points that return successful and
-is primarily a test fixture. It is supported by all BSPs.
+This device driver simply provides entry points that return successful and is
+primarily a test fixture. It is supported by all BSPs.
 
 % Generated from spec:/acfg/if/appl-needs-timer-driver
 
@@ -718,8 +718,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the Benchmark Timer Driver is
-initialized during system initialization.
+In case this configuration option is defined, then the Benchmark Timer Driver
+is initialized during system initialization.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -779,11 +779,11 @@ initialized during system initialization.
 .. rubric:: NOTES:
 ```
 
-Most BSPs do not include support for a watchdog device driver. This is
-because many boards do not include the required hardware.
+Most BSPs do not include support for a watchdog device driver. This is because
+many boards do not include the required hardware.
 
-If this is defined and the BSP does not have this device driver, then the
-user will get a link time error for an undefined symbol.
+If this is defined and the BSP does not have this device driver, then the user
+will get a link time error for an undefined symbol.
 
 % Generated from spec:/acfg/if/appl-needs-zero-driver
 
@@ -824,8 +824,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the {file}`/dev/zero`
-Driver is initialized during system initialization.
+In case this configuration option is defined, then the {file}`/dev/zero` Driver
+is initialized during system initialization.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -868,19 +868,19 @@ The default value is the empty list.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option is used to initialize the Device
-Driver Table.
+The value of this configuration option is used to initialize the Device Driver
+Table.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
 The value of this configuration option is placed after the entries defined by
-{c:macro}`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device driver
-configuration options.
+{c:macro}`CONFIGURE_BSP_PREREQUISITE_DRIVERS` and before all other device
+driver configuration options.
 
-See {ref}`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement
-of application device driver initializers.
+See {ref}`CONFIGURE_APPLICATION_EXTRA_DRIVERS` for an alternative placement of
+application device driver initializers.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1019,9 +1019,8 @@ This configuration option is an integer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-This is computed by default, and is set to the number of statically
-configured device drivers configured using the following configuration
-options:
+This is computed by default, and is set to the number of statically configured
+device drivers configured using the following configuration options:
 
 - {ref}`CONFIGURE_APPLICATION_EXTRA_DRIVERS`
 - {ref}`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER`
@@ -1040,8 +1039,8 @@ options:
 - {ref}`CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER`
 - {ref}`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
 
-If the {ref}`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
-the {term}`BSP` provides
+If the {ref}`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not
+defined and the {term}`BSP` provides
 {c:macro}`CONFIGURE_BSP_PREREQUISITE_DRIVERS`, then the BSP-provided
 prerequisite device drivers are also taken into account.
 

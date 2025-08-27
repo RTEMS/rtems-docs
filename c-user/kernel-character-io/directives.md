@@ -420,7 +420,8 @@ BSP_poll_char if it is available.
 ```
 
 `-1`
-: The BSP_poll_char pointer was equal to [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The BSP_poll_char pointer was equal to
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 `-1`
 : There was no character enqueued on the kernel character input device.

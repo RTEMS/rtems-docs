@@ -36,10 +36,10 @@
 
 # Filesystem Configuration
 
-This section describes configuration options related to filesytems.
-By default, the In-Memory Filesystem (IMFS) is used as the base filesystem (also
-known as root filesystem). In order to save some memory for your application,
-you can disable the filesystem support with the
+This section describes configuration options related to filesytems. By default,
+the In-Memory Filesystem (IMFS) is used as the base filesystem (also known as
+root filesystem). In order to save some memory for your application, you can
+disable the filesystem support with the
 {ref}`CONFIGURE_APPLICATION_DISABLE_FILESYSTEM` configuration option.
 Alternatively, you can strip down the features of the base filesystem with the
 {ref}`CONFIGURE_USE_MINIIMFS_AS_BASE_FILESYSTEM` and
@@ -102,16 +102,15 @@ configured filesystems are initialized during system initialization.
 ```
 
 In case this configuration option is defined, then **no base filesystem** is
-initialized during system initialization and **no filesystems** are
-configured.
+initialized during system initialization and **no filesystems** are configured.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
 Filesystems shall be initialized to support file descriptor based device
-drivers and basic input/output functions such as {c:func}`printf`.
-Filesystems can be disabled to reduce the memory footprint of an application.
+drivers and basic input/output functions such as {c:func}`printf`. Filesystems
+can be disabled to reduce the memory footprint of an application.
 
 % Generated from spec:/acfg/if/filesystem-all
 
@@ -149,8 +148,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the following
-configuration options will be defined as well
+In case this configuration option is defined, then the following configuration
+options will be defined as well
 
 - {ref}`CONFIGURE_FILESYSTEM_DOSFS`,
 - {ref}`CONFIGURE_FILESYSTEM_FTPFS`,
@@ -196,8 +195,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the DOS (FAT) filesystem
-is registered, so that instances of this filesystem can be mounted by the
+In case this configuration option is defined, then the DOS (FAT) filesystem is
+registered, so that instances of this filesystem can be mounted by the
 application.
 
 ```{eval-rst}
@@ -244,8 +243,8 @@ enabled.
 ```
 
 In case this configuration option is defined, then the FTP filesystem (FTP
-client) is registered, so that instances of this filesystem
-can be mounted by the application.
+client) is registered, so that instances of this filesystem can be mounted by
+the application.
 
 % Generated from spec:/acfg/if/filesystem-imfs
 
@@ -331,8 +330,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the JFFS2 filesystem
-is registered, so that instances of this filesystem can be mounted by the
+In case this configuration option is defined, then the JFFS2 filesystem is
+registered, so that instances of this filesystem can be mounted by the
 application.
 
 % Generated from spec:/acfg/if/filesystem-nfs
@@ -371,9 +370,9 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the Network Filesystem
-(NFS) client is registered, so that instances of this filesystem can be
-mounted by the application.
+In case this configuration option is defined, then the Network Filesystem (NFS)
+client is registered, so that instances of this filesystem can be mounted by
+the application.
 
 % Generated from spec:/acfg/if/filesystem-rfs
 
@@ -491,8 +490,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-changing the mode of files.
+If this configuration option is undefined, then the root IMFS supports changing
+the mode of files.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -530,8 +529,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-changing the ownership of files.
+If this configuration option is undefined, then the root IMFS supports changing
+the ownership of files.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -725,16 +724,15 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-mounting other filesystems.
+If this configuration option is undefined, then the root IMFS supports mounting
+other filesystems.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 In case this configuration option is defined, then the root IMFS does not
-support mounting other filesystems (no support for
-{c:func}`mount`).
+support mounting other filesystems (no support for {c:func}`mount`).
 
 % Generated from spec:/acfg/if/imfs-disable-readdir
 
@@ -765,16 +763,16 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-reading directories.
+If this configuration option is undefined, then the root IMFS supports reading
+directories.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 In case this configuration option is defined, then the root IMFS does not
-support reading directories (no support for {c:func}`readdir`). It is
-still possible to open files in a directory.
+support reading directories (no support for {c:func}`readdir`). It is still
+possible to open files in a directory.
 
 % Generated from spec:/acfg/if/imfs-disable-readlink
 
@@ -805,8 +803,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-reading symbolic links.
+If this configuration option is undefined, then the root IMFS supports reading
+symbolic links.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -844,8 +842,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-renaming files.
+If this configuration option is undefined, then the root IMFS supports renaming
+files.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -883,8 +881,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-removing files.
+If this configuration option is undefined, then the root IMFS supports removing
+files.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -922,8 +920,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-creating symbolic links.
+If this configuration option is undefined, then the root IMFS supports creating
+symbolic links.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -969,8 +967,7 @@ unmounting other filesystems.
 ```
 
 In case this configuration option is defined, then the root IMFS does not
-support unmounting other filesystems (no support for
-{c:func}`unmount`).
+support unmounting other filesystems (no support for {c:func}`unmount`).
 
 % Generated from spec:/acfg/if/imfs-disable-utime
 
@@ -1001,8 +998,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS supports
-changing file times.
+If this configuration option is undefined, then the root IMFS supports changing
+file times.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1040,8 +1037,8 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-If this configuration option is undefined, then the root IMFS does not
-support making FIFOs (no support for {c:func}`mkfifo`).
+If this configuration option is undefined, then the root IMFS does not support
+making FIFOs (no support for {c:func}`mkfifo`).
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1093,12 +1090,12 @@ files managed by the IMFS.
 ```
 
 The configured block size has two impacts. The first is the average amount of
-unused memory in the last block of each file. For example, when the block
-size is 512, on average one-half of the last block of each file will remain
-unused and the memory is wasted. In contrast, when the block size is 16, the
-average unused memory per file is only 8 bytes. However, it requires more
-allocations for the same size file and thus more overhead per block for the
-dynamic memory management.
+unused memory in the last block of each file. For example, when the block size
+is 512, on average one-half of the last block of each file will remain unused
+and the memory is wasted. In contrast, when the block size is 16, the average
+unused memory per file is only 8 bytes. However, it requires more allocations
+for the same size file and thus more overhead per block for the dynamic memory
+management.
 
 Second, the block size has an impact on the maximum size file that can be
 stored in the IMFS. With smaller block size, the maximum file size is
@@ -1155,7 +1152,8 @@ The default value is 15.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the JFFS2 delayed write task priority.
+The value of this configuration option defines the JFFS2 delayed write task
+priority.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1208,8 +1206,8 @@ feature set will be the base filesystem (also known as root filesystem).
 .. rubric:: NOTES:
 ```
 
-In case this configuration option is defined, then the following
-configuration options will be defined as well
+In case this configuration option is defined, then the following configuration
+options will be defined as well
 
 - {ref}`CONFIGURE_IMFS_DISABLE_CHMOD`,
 - {ref}`CONFIGURE_IMFS_DISABLE_CHOWN`,
@@ -1224,12 +1222,12 @@ configuration options will be defined as well
 - {ref}`CONFIGURE_IMFS_DISABLE_UTIME`, and
 - {ref}`CONFIGURE_IMFS_DISABLE_UNMOUNT`.
 
-In addition, a simplified path evaluation is enabled. It allows only a look
-up of absolute paths.
+In addition, a simplified path evaluation is enabled. It allows only a look up
+of absolute paths.
 
 This configuration of the IMFS is basically a device-only filesystem. It is
-comparable in functionality to the pseudo-filesystem name space provided
-before RTEMS release 4.5.0.
+comparable in functionality to the pseudo-filesystem name space provided before
+RTEMS release 4.5.0.
 
 % Generated from spec:/acfg/if/use-miniimfs-as-base-filesystem
 
@@ -1274,8 +1272,8 @@ feature set will be the base filesystem (also known as root filesystem).
 .. rubric:: NOTES:
 ```
 
-In case this configuration option is defined, then the following
-configuration options will be defined as well
+In case this configuration option is defined, then the following configuration
+options will be defined as well
 
 - {ref}`CONFIGURE_IMFS_DISABLE_CHMOD`,
 - {ref}`CONFIGURE_IMFS_DISABLE_CHOWN`,

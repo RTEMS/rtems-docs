@@ -46,11 +46,11 @@ The Multiprocessing Manager provides support for heterogeneous multiprocessing
 systems based on message passing in a network of multiprocessing nodes.
 
 In multiprocessor real-time systems, new requirements, such as sharing data and
-global resources between processors, are introduced. This requires an
-efficient and reliable communications vehicle which allows all processors to
-communicate with each other as necessary. In addition, the ramifications of
-multiple processors affect each and every characteristic of a real-time system,
-almost always making them more complicated.
+global resources between processors, are introduced. This requires an efficient
+and reliable communications vehicle which allows all processors to communicate
+with each other as necessary. In addition, the ramifications of multiple
+processors affect each and every characteristic of a real-time system, almost
+always making them more complicated.
 
 RTEMS addresses these issues by providing simple and flexible real-time
 multiprocessing capabilities. The executive easily lends itself to both

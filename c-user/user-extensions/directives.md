@@ -83,9 +83,9 @@ rtems_status_code rtems_extension_create(
   set.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created extension
-  set will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created extension set
+  will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -110,16 +110,16 @@ The extension set is initialized using the extension table specified in
 : The `name` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `extension_table` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `extension_table` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive object available to create an extension set. The
-  number of extension sets available to the application is configured through
-  the {ref}`CONFIGURE_MAXIMUM_USER_EXTENSIONS` application configuration
-  option.
+: There was no inactive object available to create an extension set. The number
+  of extension sets available to the application is configured through the
+  {ref}`CONFIGURE_MAXIMUM_USER_EXTENSIONS` application configuration option.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -128,15 +128,16 @@ The extension set is initialized using the extension table specified in
 The user-provided extension table is not used after the return of the
 directive.
 
-Each extension of the extension table is optional and may be [NULL](https://en.cppreference.com/w/c/types/NULL). All extensions except the task
-switch extension of the extension table are atomically and immediately
+Each extension of the extension table is optional and may be
+[NULL](https://en.cppreference.com/w/c/types/NULL). All extensions except the
+task switch extension of the extension table are atomically and immediately
 installed. A task switch extension is separately installed after the other
 extensions. The extensions of the extension table are invoked upon the next
 system event supporting an extension.
 
 An alternative to dynamically created extension sets are initial extensions,
-see {ref}`CONFIGURE_INITIAL_EXTENSIONS`. Initial extensions are recommended
-for extension sets which provide a fatal error extension.
+see {ref}`CONFIGURE_INITIAL_EXTENSIONS`. Initial extensions are recommended for
+extension sets which provide a fatal error extension.
 
 For control and maintenance of the extension set, RTEMS allocates a
 {term}`ESCB` from the local ESCB free pool and initializes it.
@@ -202,8 +203,7 @@ This directive deletes the extension set specified by `id`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ID`
-: There was no extension set associated with the identifier specified by
-  `id`.
+: There was no extension set associated with the identifier specified by `id`.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -255,9 +255,9 @@ rtems_status_code rtems_extension_ident( rtems_name name, rtems_id *id );
 : This parameter is the object name to look up.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:

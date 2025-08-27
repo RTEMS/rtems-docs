@@ -38,8 +38,8 @@
 
 This section describes configuration options related to the POSIX API. Most
 POSIX API objects are available by default since RTEMS 5.1. The queued signals
-and timers are only available if RTEMS was built with the enable POSIX
-build configuration option.
+and timers are only available if RTEMS was built with the enable POSIX build
+configuration option.
 
 % Generated from spec:/acfg/if/max-posix-keys
 
@@ -76,8 +76,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Keys that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Keys that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -131,17 +131,15 @@ This configuration option is an integer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-The default value is
-{ref}`CONFIGURE_MAXIMUM_POSIX_KEYS` \*
-( {ref}`CONFIGURE_MAXIMUM_TASKS` +
-{ref}`CONFIGURE_MAXIMUM_POSIX_THREADS` ).
+The default value is {ref}`CONFIGURE_MAXIMUM_POSIX_KEYS` * (
+{ref}`CONFIGURE_MAXIMUM_TASKS` + {ref}`CONFIGURE_MAXIMUM_POSIX_THREADS` ).
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of key
-value pairs used by POSIX API Keys that can be concurrently active.
+The value of this configuration option defines the maximum number of key value
+pairs used by POSIX API Keys that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -150,8 +148,9 @@ value pairs used by POSIX API Keys that can be concurrently active.
 This object class can be configured in unlimited allocation mode, see
 {ref}`ConfigUnlimitedObjects`.
 
-A key value pair is created by {c:func}`pthread_setspecific` if the value
-is not [NULL](https://en.cppreference.com/w/c/types/NULL), otherwise it is deleted.
+A key value pair is created by {c:func}`pthread_setspecific` if the value is
+not [NULL](https://en.cppreference.com/w/c/types/NULL), otherwise it is
+deleted.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -204,17 +203,16 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Message Queues that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Message Queues that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
 This object class can be configured in unlimited allocation mode, see
-{ref}`ConfigUnlimitedObjects`. You have to account for the memory used to
-store the messages of each message queue, see
-{ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
+{ref}`ConfigUnlimitedObjects`. You have to account for the memory used to store
+the messages of each message queue, see {ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -229,7 +227,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  overflow an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -270,8 +269,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Queued Signals that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Queued Signals that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -279,8 +278,8 @@ API Queued Signals that can be concurrently active.
 
 Unlimited objects are not available for queued signals.
 
-Queued signals are only available if RTEMS was built with the POSIX API
-build configuration option enabled.
+Queued signals are only available if RTEMS was built with the POSIX API build
+configuration option enabled.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -294,7 +293,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  overflow an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option shall be zero if the POSIX API is not
   enabled (e.g. RTEMS was built without the `RTEMS_POSIX_API = True` build
   configuration option). Otherwise a compile time error in the configuration
@@ -335,8 +335,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Named Semaphores that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Named Semaphores that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -345,10 +345,9 @@ API Named Semaphores that can be concurrently active.
 This object class can be configured in unlimited allocation mode, see
 {ref}`ConfigUnlimitedObjects`.
 
-Named semaphores are created with {c:func}`sem_open`. Semaphores
-initialized with {c:func}`sem_init` are not affected by this
-configuration option since the storage space for these semaphores is
-user-provided.
+Named semaphores are created with {c:func}`sem_open`. Semaphores initialized
+with {c:func}`sem_init` are not affected by this configuration option since the
+storage space for these semaphores is user-provided.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -363,7 +362,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  overflow an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -404,8 +404,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Shared Memory objects that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Shared Memory objects that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -427,7 +427,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  overflow an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -468,8 +469,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Threads that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Threads that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -479,9 +480,9 @@ This object class can be configured in unlimited allocation mode, see
 {ref}`ConfigUnlimitedObjects`.
 
 This calculations for the required memory in the RTEMS Workspace for threads
-assume that each thread has a minimum stack size and has floating point
-support enabled. The configuration option {ref}`CONFIGURE_EXTRA_TASK_STACKS` is used
-to specify thread stack requirements **above** the minimum size required.
+assume that each thread has a minimum stack size and has floating point support
+enabled. The configuration option {ref}`CONFIGURE_EXTRA_TASK_STACKS` is used to
+specify thread stack requirements **above** the minimum size required.
 
 The maximum number of Classic API Tasks is specified by
 {ref}`CONFIGURE_MAXIMUM_TASKS`.
@@ -500,8 +501,9 @@ The following constraints apply to this configuration option:
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/max-posix-timers
 
@@ -538,8 +540,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of POSIX
-API Timers that can be concurrently active.
+The value of this configuration option defines the maximum number of POSIX API
+Timers that can be concurrently active.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -610,8 +612,8 @@ The default value is two times the value of
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the minimum stack size in
-bytes for every POSIX thread in the system.
+The value of this configuration option defines the minimum stack size in bytes
+for every POSIX thread in the system.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -620,7 +622,8 @@ bytes for every POSIX thread in the system.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option shall be greater than or equal to a
   BSP-specific and application-specific minimum value.

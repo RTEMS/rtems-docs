@@ -99,8 +99,8 @@ components.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/build-name
@@ -163,8 +163,8 @@ Returns the object name composed of the four characters.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-classic-name
@@ -202,8 +202,8 @@ rtems_status_code rtems_object_get_classic_name(
 
 `name`
 : This parameter is the pointer to an {ref}`InterfaceRtemsName` object. When
-  the directive call is successful, the object name associated with the
-  object identifier will be stored in this object.
+  the directive call is successful, the object name associated with the object
+  identifier will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -295,8 +295,8 @@ string even if the object has the Classic API 32-bit integer style name.
 [NULL](https://en.cppreference.com/w/c/types/NULL)
 : There was no object associated with the object identifier.
 
-Returns the `name` parameter value, if there is an object name associated
-with the object identifier.
+Returns the `name` parameter value, if there is an object name associated with
+the object identifier.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -441,8 +441,8 @@ This directive does not validate the object identifier provided in `id`.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-get-class
@@ -494,8 +494,8 @@ This directive does not validate the object identifier provided in `id`.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-get-node
@@ -526,8 +526,7 @@ int rtems_object_id_get_node( rtems_id id );
 ```
 
 `id`
-: This parameter is the object identifier with the MPCI node component to
-  get.
+: This parameter is the object identifier with the MPCI node component to get.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -548,8 +547,8 @@ This directive does not validate the object identifier provided in `id`.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-get-index
@@ -601,8 +600,8 @@ This directive does not validate the object identifier provided in `id`.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-api-minimum
@@ -641,8 +640,8 @@ Returns the lowest valid value for the API component of an object identifier.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-api-maximum
@@ -681,8 +680,8 @@ Returns the highest valid value for the API component of an object identifier.
 The following constraints apply to this directive:
 
 - The directive is implemented by a macro and may be called from within C/C++
-  constant expressions. In addition, a function implementation of the
-  directive exists for bindings to other programming languages.
+  constant expressions. In addition, a function implementation of the directive
+  exists for bindings to other programming languages.
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/api-minimum-class
@@ -937,8 +936,8 @@ rtems_status_code rtems_object_get_class_information(
 `info`
 : This parameter is the pointer to an
   {ref}`InterfaceRtemsObjectApiClassInformation` object. When the directive
-  call is successful, the object class information of the class of the API
-  will be stored in this object.
+  call is successful, the object class information of the class of the API will
+  be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:

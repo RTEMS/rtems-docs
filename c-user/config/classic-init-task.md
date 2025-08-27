@@ -74,8 +74,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines task argument of the Classic
-API initialization task.
+The value of this configuration option defines task argument of the Classic API
+initialization task.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -158,8 +158,8 @@ This configuration option is an integer define.
 ```
 
 This configuration option has no default value. If it is not specified, then
-the Classic API initialization task will be created with the stack size
-defined by the {ref}`CONFIGURE_INIT_TASK_STACK_SIZE` configuration option.
+the Classic API initialization task will be created with the stack size defined
+by the {ref}`CONFIGURE_INIT_TASK_STACK_SIZE` configuration option.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -180,8 +180,8 @@ If this configuration option is specified, then
   {ref}`InterfaceRtemsTaskConstruct` instead of using
   {ref}`InterfaceRtemsTaskCreate`,
 - the maximum thread-local storage size defined by
-  {ref}`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic API
-  initialization task,
+  {ref}`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic
+  API initialization task,
 - the Classic API initialization task should be accounted for in
   {ref}`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE`, and
 - the task storage area used for the Classic API initialization task is not
@@ -457,8 +457,9 @@ The following constraints apply to this configuration option:
 - The value of the configuration option shall be greater than or equal to
   {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/rtems-init-tasks-table
 
@@ -512,5 +513,4 @@ options
 
 otherwise a compile time error in the configuration file will occur.
 
-The Classic API initialization task performs the
-{ref}`GlobalConstruction`.
+The Classic API initialization task performs the {ref}`GlobalConstruction`.

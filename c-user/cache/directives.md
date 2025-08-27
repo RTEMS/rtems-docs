@@ -79,8 +79,8 @@ void rtems_cache_flush_multiple_data_lines( const void *begin, size_t size );
 .. rubric:: DESCRIPTION:
 ```
 
-Dirty data cache lines covering the area are transfered to memory. Depending
-on the cache implementation this may mark the lines as invalid.
+Dirty data cache lines covering the area are transfered to memory. Depending on
+the cache implementation this may mark the lines as invalid.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -131,8 +131,8 @@ void rtems_cache_invalidate_multiple_data_lines(
 .. rubric:: DESCRIPTION:
 ```
 
-The cache lines covering the area are marked as invalid. A later read access
-in the area will load the data from memory.
+The cache lines covering the area are marked as invalid. A later read access in
+the area will load the data from memory.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -253,9 +253,9 @@ void rtems_cache_instruction_sync_after_code_change(
 
 When code is loaded or modified, then most systems require synchronization
 instructions to update the instruction caches so that the loaded or modified
-code is fetched. For example, systems with separate data and instruction
-caches or systems without instruction cache snooping. The directives should be
-used by run time loader for example.
+code is fetched. For example, systems with separate data and instruction caches
+or systems without instruction cache snooping. The directives should be used by
+run time loader for example.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -470,8 +470,8 @@ size_t rtems_cache_get_instruction_cache_size( uint32_t level );
 ```
 
 `level`
-: This parameter is the requested instruction cache level. The cache level
-  zero specifies the entire instruction cache.
+: This parameter is the requested instruction cache level. The cache level zero
+  specifies the entire instruction cache.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -647,7 +647,8 @@ void rtems_cache_disable_data( void );
 ```
 
 On some {term}`targets <target>` or configurations, calling this directive may
-cause a fatal error with a fatal source of {ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and fatal code of
+cause a fatal error with a fatal source of
+{ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and fatal code of
 {ref}`INTERNAL_ERROR_CANNOT_DISABLE_DATA_CACHE <internal_errors>`. The data
 cache may be necessary to provide {term}`atomic operations`. In SMP
 configurations, the data cache may be required to ensure data coherency. See

@@ -85,8 +85,8 @@ pattern during system initialization.
 Dirtying memory can add significantly to system initialization time. It may
 assist in finding code that incorrectly assumes the contents of free memory
 areas is cleared to zero during system initialization. In case
-{ref}`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY` is also defined, then the
-memory is first dirtied and then zeroed.
+{ref}`CONFIGURE_ZERO_WORKSPACE_AUTOMATICALLY` is also defined, then the memory
+is first dirtied and then zeroed.
 
 See also {ref}`CONFIGURE_MALLOC_DIRTY`.
 
@@ -137,13 +137,12 @@ configuration options are disabled:
 - {ref}`CONFIGURE_INTERRUPT_STACK_SIZE`
 
 The optional BSP provided initial extension set is disabled (see
-{term}`initial extension sets`). The optional BSP provided
-prerequisite IO device drivers are disabled (see
-Device Driver Configuration). The optional BSP provided support for
-{c:func}`sbrk` is disabled.
+{term}`initial extension sets`). The optional BSP provided prerequisite IO
+device drivers are disabled (see Device Driver Configuration). The optional BSP
+provided support for {c:func}`sbrk` is disabled.
 
-This configuration option provides an all or nothing choice with respect to
-the optional BSP provided settings.
+This configuration option provides an all or nothing choice with respect to the
+optional BSP provided settings.
 
 % Generated from spec:/acfg/if/disable-newlib-reentrancy
 
@@ -190,8 +189,8 @@ support per thread is disabled and a global reentrancy structure is used.
 
 You can enable this option to reduce the size of the {term}`TCB`. Use this
 option with care, since it can lead to race conditions and undefined system
-behaviour. For example, {c:macro}`errno` is no longer a thread-local
-variable if this option is enabled.
+behaviour. For example, {c:macro}`errno` is no longer a thread-local variable
+if this option is enabled.
 
 % Generated from spec:/acfg/if/executive-ram-size
 
@@ -223,8 +222,8 @@ This configuration option is an integer define.
 ```
 
 If this configuration option is undefined, then the RTEMS Workspace and task
-stack space size is calculated by `<rtems/confdefs.h>` based on the
-values configuration options.
+stack space size is calculated by `<rtems/confdefs.h>` based on the values
+configuration options.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -237,8 +236,8 @@ bytes.
 .. rubric:: NOTES:
 ```
 
-This is an advanced configuration option. Use it only if you know exactly
-what you are doing.
+This is an advanced configuration option. Use it only if you know exactly what
+you are doing.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -299,8 +298,8 @@ applications wishes to add to the task stack requirements calculated by
 .. rubric:: NOTES:
 ```
 
-This parameter is very important. If the application creates tasks with
-stacks larger then the minimum, then that memory is **not** accounted for by
+This parameter is very important. If the application creates tasks with stacks
+larger then the minimum, then that memory is **not** accounted for by
 `<rtems/confdefs.h>`.
 
 ```{eval-rst}
@@ -311,8 +310,9 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/init
 
@@ -343,20 +343,19 @@ This configuration option is a boolean feature define.
 .. rubric:: DEFAULT CONFIGURATION:
 ```
 
-There is no default configuration associated with this configuration option.
-If `<rtems/confdefs.h>` is included and this configuration option is not
-defined, then only white space is included.
+There is no default configuration associated with this configuration option. If
+`<rtems/confdefs.h>` is included and this configuration option is not defined,
+then only white space is included.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-While this configuration option is defined, when the `<rtems/confdefs.h>`
-is included, the system settings defined by present application configuration
-options are statically allocated and initialized. All user provided
-application configuration options defined before the include of
-`<rtems/confdefs.h>` are evaluated. They define the actual system
-settings.
+While this configuration option is defined, when the `<rtems/confdefs.h>` is
+included, the system settings defined by present application configuration
+options are statically allocated and initialized. All user provided application
+configuration options defined before the include of `<rtems/confdefs.h>` are
+evaluated. They define the actual system settings.
 
 % Generated from spec:/acfg/if/initial-extensions
 
@@ -401,11 +400,11 @@ initial user extensions.
 ```
 
 The value of this configuration option is placed before the entries of
-{c:macro}`BSP_INITIAL_EXTENSION` and after the entries of all other
-initial user extensions.
+{c:macro}`BSP_INITIAL_EXTENSION` and after the entries of all other initial
+user extensions.
 
-It is recommended that applications provide a fatal extension to customize
-the {ref}`Terminate`.
+It is recommended that applications provide a fatal extension to customize the
+{ref}`Terminate`.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -446,11 +445,10 @@ This configuration option is an integer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-If the {ref}`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not defined and
-{c:macro}`BSP_INTERRUPT_STACK_SIZE` is provided by the
-{term}`BSP`, then the default value is defined by
-{c:macro}`BSP_INTERRUPT_STACK_SIZE`, otherwise the default value is
-{c:macro}`CPU_STACK_MINIMUM_SIZE`.
+If the {ref}`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not
+defined and {c:macro}`BSP_INTERRUPT_STACK_SIZE` is provided by the {term}`BSP`,
+then the default value is defined by {c:macro}`BSP_INTERRUPT_STACK_SIZE`,
+otherwise the default value is {c:macro}`CPU_STACK_MINIMUM_SIZE`.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -464,17 +462,17 @@ in bytes.
 ```
 
 There is one interrupt stack available for each configured processor
-({ref}`CONFIGURE_MAXIMUM_PROCESSORS`). The interrupt stack areas are
-statically allocated in a special linker section (`.rtemsstack.interrupt`).
-The placement of this linker section is BSP-specific.
+({ref}`CONFIGURE_MAXIMUM_PROCESSORS`). The interrupt stack areas are statically
+allocated in a special linker section (`.rtemsstack.interrupt`). The placement
+of this linker section is BSP-specific.
 
-Some BSPs use the interrupt stack as the initialization stack which is used
-to perform the sequential system initialization before the multithreading
-is started.
+Some BSPs use the interrupt stack as the initialization stack which is used to
+perform the sequential system initialization before the multithreading is
+started.
 
 The interrupt stacks are covered by the stack checker, see
-{ref}`CONFIGURE_STACK_CHECKER_ENABLED`. However, using a too small interrupt stack
-size may still result in undefined behaviour.
+{ref}`CONFIGURE_STACK_CHECKER_ENABLED`. However, using a too small interrupt
+stack size may still result in undefined behaviour.
 
 The interrupt stack size may depend on the interrupt priority settings, see
 also {ref}`InterfaceRtemsInterruptSetPriority`.
@@ -492,8 +490,9 @@ The following constraints apply to this configuration option:
 - The value of the configuration option shall be greater than or equal to a
   BSP-specific and application-specific minimum value.
 - The value of the configuration option shall be small enough so that the
-  interrupt stack area calculation carried out by `<rtems/confdefs.h>` does
-  not overflow an integer of type [size_t](https://en.cppreference.com/w/c/types/size_t).
+  interrupt stack area calculation carried out by `<rtems/confdefs.h>` does not
+  overflow an integer of type
+  [size_t](https://en.cppreference.com/w/c/types/size_t).
 - The value of the configuration option shall be aligned according to
   {c:macro}`CPU_INTERRUPT_STACK_ALIGNMENT`.
 
@@ -533,18 +532,17 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then each memory area returned
-by C Program Heap allocator functions such as {c:func}`malloc` is dirtied
-with a `0xCF` byte pattern before it is handed over to the application.
+In case this configuration option is defined, then each memory area returned by
+C Program Heap allocator functions such as {c:func}`malloc` is dirtied with a
+`0xCF` byte pattern before it is handed over to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-The dirtying performed by this option is carried out for each successful
-memory allocation from the C Program Heap in contrast to
-{ref}`CONFIGURE_DIRTY_MEMORY` which dirties the memory only once during the
-system initialization.
+The dirtying performed by this option is carried out for each successful memory
+allocation from the C Program Heap in contrast to {ref}`CONFIGURE_DIRTY_MEMORY`
+which dirties the memory only once during the system initialization.
 
 % Generated from spec:/acfg/if/max-file-descriptors
 
@@ -584,8 +582,8 @@ The default value is 3.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of file
-like objects that can be concurrently open.
+The value of this configuration option defines the maximum number of file like
+objects that can be concurrently open.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -642,11 +640,11 @@ The default value is 1.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum number of
-processors an application intends to use. The number of actually available
-processors depends on the hardware and may be less. It is recommended to use
-the smallest value suitable for the application in order to save memory.
-Each processor needs an IDLE task stack and interrupt stack for example.
+The value of this configuration option defines the maximum number of processors
+an application intends to use. The number of actually available processors
+depends on the hardware and may be less. It is recommended to use the smallest
+value suitable for the application in order to save memory. Each processor
+needs an IDLE task stack and interrupt stack for example.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -656,8 +654,8 @@ If there are more processors available than configured, the rest will be
 ignored.
 
 This configuration option is only evaluated in SMP configurations of RTEMS
-(e.g. RTEMS was built with the SMP build configuration option enabled).
-In all other configurations it has no effect.
+(e.g. RTEMS was built with the SMP build configuration option enabled). In all
+other configurations it has no effect.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -704,10 +702,10 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-If the value of this configuration option is greater than zero, then it
-defines the maximum thread-local storage size, otherwise the thread-local
-storage size is defined by the linker depending on the thread-local storage
-objects used by the application in the statically-linked executable.
+If the value of this configuration option is greater than zero, then it defines
+the maximum thread-local storage size, otherwise the thread-local storage size
+is defined by the linker depending on the thread-local storage objects used by
+the application in the statically-linked executable.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -716,19 +714,19 @@ objects used by the application in the statically-linked executable.
 This configuration option can be used to reserve space for the dynamic linking
 of modules with thread-local storage objects.
 
-If the thread-local storage size defined by the thread-local storage
-objects used by the application in the statically-linked executable is greater
-than a non-zero value of this configuration option, then a fatal error will
-occur during system initialization.
+If the thread-local storage size defined by the thread-local storage objects
+used by the application in the statically-linked executable is greater than a
+non-zero value of this configuration option, then a fatal error will occur
+during system initialization.
 
-Use {c:func}`RTEMS_ALIGN_UP` and
-{c:macro}`RTEMS_TASK_STORAGE_ALIGNMENT` to adjust the size to meet the
-minimum alignment requirement of a thread-local storage area.
+Use {c:func}`RTEMS_ALIGN_UP` and {c:macro}`RTEMS_TASK_STORAGE_ALIGNMENT` to
+adjust the size to meet the minimum alignment requirement of a thread-local
+storage area.
 
 The actual thread-local storage size is determined when the application
-executable is linked. The `rtems-exeinfo` command line tool included in
-the RTEMS Tools can be used to obtain the thread-local storage size and
-alignment of an application executable.
+executable is linked. The `rtems-exeinfo` command line tool included in the
+RTEMS Tools can be used to obtain the thread-local storage size and alignment
+of an application executable.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -853,8 +851,8 @@ application wishes to add to the RTEMS Workspace size calculated by
 
 This configuration option should only be used when it is suspected that a bug
 in `<rtems/confdefs.h>` has resulted in an underestimation. Typically the
-memory allocation will be too low when an application does not account for
-all message queue buffers or task stacks, see
+memory allocation will be too low when an application does not account for all
+message queue buffers or task stacks, see
 {ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 ```{eval-rst}
@@ -869,7 +867,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  overflow an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/message-buffer-memory
 
@@ -915,8 +914,8 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the number of bytes reserved
-for message queue buffers in the RTEMS Workspace.
+The value of this configuration option defines the number of bytes reserved for
+message queue buffers in the RTEMS Workspace.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -924,16 +923,16 @@ for message queue buffers in the RTEMS Workspace.
 
 The configuration options {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` and
 {ref}`CONFIGURE_MAXIMUM_POSIX_MESSAGE_QUEUES` define only how many message
-queues can be created by the application. The memory for the message
-buffers is configured by this option. For each message queue you have to
-reserve some memory for the message buffers. The size depends on the
-maximum number of pending messages and the maximum size of the messages of
-a message queue. Use the `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` macro
-to specify the message buffer memory for each message queue and sum them up
-to define the value for `CONFIGURE_MAXIMUM_MESSAGE_QUEUES`.
+queues can be created by the application. The memory for the message buffers is
+configured by this option. For each message queue you have to reserve some
+memory for the message buffers. The size depends on the maximum number of
+pending messages and the maximum size of the messages of a message queue. Use
+the `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` macro to specify the message buffer
+memory for each message queue and sum them up to define the value for
+`CONFIGURE_MAXIMUM_MESSAGE_QUEUES`.
 
-The interface for the `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` help
-macro is as follows:
+The interface for the `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` help macro is as
+follows:
 
 ```c
 CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( max_messages, max_msg_size )
@@ -941,19 +940,17 @@ CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE( max_messages, max_msg_size )
 
 Where `max_messages` is the maximum number of pending messages and
 `max_msg_size` is the maximum size in bytes of the messages of the
-corresponding message queue. Both parameters shall be compile time
-constants. Not using this help macro (e.g. just using
-`max_messages * max_msg_size`) may result in an underestimate of the
-RTEMS Workspace size.
+corresponding message queue. Both parameters shall be compile time constants.
+Not using this help macro (e.g. just using `max_messages * max_msg_size`) may
+result in an underestimate of the RTEMS Workspace size.
 
 The following example illustrates how the
 `CONFIGURE_MESSAGE_BUFFERS_FOR_QUEUE()` help macro can be used to assist in
-calculating the message buffer memory required. In this example, there are
-two message queues used in this application. The first message queue has a
-maximum of 24 pending messages with the message structure defined by the
-type `one_message_type`. The other message queue has a maximum of 500
-pending messages with the message structure defined by the type
-`other_message_type`.
+calculating the message buffer memory required. In this example, there are two
+message queues used in this application. The first message queue has a maximum
+of 24 pending messages with the message structure defined by the type
+`one_message_type`. The other message queue has a maximum of 500 pending
+messages with the message structure defined by the type `other_message_type`.
 
 ```c
 #define CONFIGURE_MESSAGE_BUFFER_MEMORY ( \
@@ -980,7 +977,8 @@ The following constraints apply to this configuration option:
   memory available to the application.
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  overflow an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/microseconds-per-tick
 
@@ -1027,29 +1025,27 @@ The value of this configuration option defines the length of time in
 microseconds between clock ticks (clock tick quantum).
 
 When the clock tick quantum value is too low, the system will spend so much
-time processing clock ticks that it does not have processing time available
-to perform application work. In this case, the system will become
-unresponsive.
+time processing clock ticks that it does not have processing time available to
+perform application work. In this case, the system will become unresponsive.
 
 The lowest practical time quantum varies widely based upon the speed of the
-target hardware and the architectural overhead associated with
-interrupts. In general terms, you do not want to configure it lower than is
-needed for the application.
-
-The clock tick quantum should be selected such that it all blocking and
-delay times in the application are evenly divisible by it. Otherwise,
-rounding errors will be introduced which may negatively impact the
+target hardware and the architectural overhead associated with interrupts. In
+general terms, you do not want to configure it lower than is needed for the
 application.
+
+The clock tick quantum should be selected such that it all blocking and delay
+times in the application are evenly divisible by it. Otherwise, rounding errors
+will be introduced which may negatively impact the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This configuration option has no impact if the Clock Driver is not
-configured, see {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
+This configuration option has no impact if the Clock Driver is not configured,
+see {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
 
-There may be Clock Driver specific limits on the resolution or maximum value
-of a clock tick quantum.
+There may be Clock Driver specific limits on the resolution or maximum value of
+a clock tick quantum.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1101,8 +1097,8 @@ The default value is {c:macro}`CPU_STACK_MINIMUM_SIZE`.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the minimum stack size in
-bytes for every user task or thread in the system.
+The value of this configuration option defines the minimum stack size in bytes
+for every user task or thread in the system.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1112,22 +1108,21 @@ Adjusting this parameter should be done with caution. Examining the actual
 stack usage using the stack checker usage reporting facility is recommended
 (see also {ref}`CONFIGURE_STACK_CHECKER_ENABLED`).
 
-This parameter can be used to lower the minimum from that recommended. This
-can be used in low memory systems to reduce memory consumption for
-stacks. However, this shall be done with caution as it could increase the
-possibility of a blown task stack.
+This parameter can be used to lower the minimum from that recommended. This can
+be used in low memory systems to reduce memory consumption for stacks. However,
+this shall be done with caution as it could increase the possibility of a blown
+task stack.
 
-This parameter can be used to increase the minimum from that
-recommended. This can be used in higher memory systems to reduce the risk
-of stack overflow without performing analysis on actual consumption.
+This parameter can be used to increase the minimum from that recommended. This
+can be used in higher memory systems to reduce the risk of stack overflow
+without performing analysis on actual consumption.
 
-By default, this configuration parameter defines also the minimum stack
-size of POSIX threads. This can be changed with the
-{ref}`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE`
-configuration option.
+By default, this configuration parameter defines also the minimum stack size of
+POSIX threads. This can be changed with the
+{ref}`CONFIGURE_MINIMUM_POSIX_THREAD_STACK_SIZE` configuration option.
 
-In releases before RTEMS 5.1 the `CONFIGURE_MINIMUM_TASK_STACK_SIZE` was
-used to define the default value of {ref}`CONFIGURE_INTERRUPT_STACK_SIZE`.
+In releases before RTEMS 5.1 the `CONFIGURE_MINIMUM_TASK_STACK_SIZE` was used
+to define the default value of {ref}`CONFIGURE_INTERRUPT_STACK_SIZE`.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1136,8 +1131,9 @@ used to define the default value of {ref}`CONFIGURE_INTERRUPT_STACK_SIZE`.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option shall be greater than or equal to a
   BSP-specific and application-specific minimum value.
 
@@ -1184,8 +1180,8 @@ enabled.
 .. rubric:: NOTES:
 ```
 
-The stack checker performs run-time stack bounds checking. This increases
-the time required to create tasks as well as adding overhead to each context
+The stack checker performs run-time stack bounds checking. This increases the
+time required to create tasks as well as adding overhead to each context
 switch.
 
 In 4.9 and older, this configuration option was named `STACK_CHECKER_ON`.
@@ -1235,8 +1231,8 @@ quantum in ticks for each task.
 .. rubric:: NOTES:
 ```
 
-This configuration option has no impact if the Clock Driver is not
-configured, see {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
+This configuration option has no impact if the Clock Driver is not configured,
+see {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1296,8 +1292,8 @@ pools for the RTEMS Workspace and C Program Heap.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the RTEMS Workspace and
-the C Program Heap will be one pool of memory.
+In case this configuration option is defined, then the RTEMS Workspace and the
+C Program Heap will be one pool of memory.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1305,13 +1301,13 @@ the C Program Heap will be one pool of memory.
 
 Having separate pools does have some advantages in the event a task blows a
 stack or writes outside its memory area. However, in low memory systems the
-overhead of the two pools plus the potential for unused memory in either
-pool is very undesirable.
+overhead of the two pools plus the potential for unused memory in either pool
+is very undesirable.
 
 In high memory environments, this is desirable when you want to use the
-{ref}`ConfigUnlimitedObjects` option. You will be able to create objects
-until you run out of all available memory rather then just until you run out
-of RTEMS Workspace.
+{ref}`ConfigUnlimitedObjects` option. You will be able to create objects until
+you run out of all available memory rather then just until you run out of RTEMS
+Workspace.
 
 % Generated from spec:/acfg/if/unlimited-allocation-size
 
@@ -1349,8 +1345,8 @@ The default value is 8.
 ```
 
 If {ref}`CONFIGURE_UNLIMITED_OBJECTS` is defined, then the value of this
-configuration option defines the default objects maximum of all object
-classes supporting {ref}`ConfigUnlimitedObjects` to
+configuration option defines the default objects maximum of all object classes
+supporting {ref}`ConfigUnlimitedObjects` to
 `rtems_resource_unlimited( CONFIGURE_UNLIMITED_ALLOCATION_SIZE )`.
 
 ```{eval-rst}
@@ -1360,8 +1356,8 @@ classes supporting {ref}`ConfigUnlimitedObjects` to
 By allowing users to declare all resources as being unlimited the user can
 avoid identifying and limiting the resources used.
 
-The object maximum of each class can be configured also individually using
-the {ref}`InterfaceRtemsResourceUnlimited` macro.
+The object maximum of each class can be configured also individually using the
+{ref}`InterfaceRtemsResourceUnlimited` macro.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1417,8 +1413,8 @@ When using unlimited objects, it is common practice to also specify
 {ref}`CONFIGURE_UNIFIED_WORK_AREAS` so the system operates with a single pool
 of memory for both RTEMS Workspace and C Program Heap.
 
-This option does not override an explicit configuration for a particular
-object class by the user.
+This option does not override an explicit configuration for a particular object
+class by the user.
 
 See also {ref}`CONFIGURE_UNLIMITED_ALLOCATION_SIZE`.
 
@@ -1458,8 +1454,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the system initialization
-is verbose.
+In case this configuration option is defined, then the system initialization is
+verbose.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -1526,5 +1522,5 @@ pattern during system initialization.
 
 Zeroing memory can add significantly to the system initialization time. It is
 not necessary for RTEMS but is often assumed by support libraries. In case
-{ref}`CONFIGURE_DIRTY_MEMORY` is also defined, then the memory is first
-dirtied and then zeroed.
+{ref}`CONFIGURE_DIRTY_MEMORY` is also defined, then the memory is first dirtied
+and then zeroed.

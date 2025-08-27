@@ -142,9 +142,8 @@ API Message Queues that can be concurrently active.
 ```
 
 This object class can be configured in unlimited allocation mode, see
-{ref}`ConfigUnlimitedObjects`. You have to account for the memory used to
-store the messages of each message queue, see
-{ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
+{ref}`ConfigUnlimitedObjects`. You have to account for the memory used to store
+the messages of each message queue, see {ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -452,8 +451,8 @@ This object class can be configured in unlimited allocation mode, see
 {ref}`ConfigUnlimitedObjects`.
 
 In SMP configurations, the size of a Semaphore Control Block depends on the
-scheduler count (see {ref}`ConfigurationSchedulerTable`). The semaphores
-using the {ref}`MrsP` need a ceiling priority per scheduler.
+scheduler count (see {ref}`ConfigurationSchedulerTable`). The semaphores using
+the {ref}`MrsP` need a ceiling priority per scheduler.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -517,17 +516,17 @@ This object class can be configured in unlimited allocation mode, see
 {ref}`ConfigUnlimitedObjects`.
 
 The calculations for the required memory in the RTEMS Workspace for tasks
-assume that each task has a minimum stack size and has floating point
-support enabled. The configuration option {ref}`CONFIGURE_EXTRA_TASK_STACKS` is used
-to specify task stack requirements *above* the minimum size required.
+assume that each task has a minimum stack size and has floating point support
+enabled. The configuration option {ref}`CONFIGURE_EXTRA_TASK_STACKS` is used to
+specify task stack requirements *above* the minimum size required.
 
 The maximum number of POSIX threads is specified by
 {ref}`CONFIGURE_MAXIMUM_POSIX_THREADS`.
 
 A future enhancement to `<rtems/confdefs.h>` could be to eliminate the
-assumption that all tasks have floating point enabled. This would require
-the addition of a new configuration parameter to specify the number of
-tasks which enable floating point support.
+assumption that all tasks have floating point enabled. This would require the
+addition of a new configuration parameter to specify the number of tasks which
+enable floating point support.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -541,8 +540,9 @@ The following constraints apply to this configuration option:
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -700,15 +700,15 @@ The default value is 0.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the minimum count of Classic
-API Tasks which are constructed by {ref}`InterfaceRtemsTaskConstruct`.
+The value of this configuration option defines the minimum count of Classic API
+Tasks which are constructed by {ref}`InterfaceRtemsTaskConstruct`.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-By default, the calculation for the required memory in the RTEMS Workspace
-for tasks assumes that all Classic API Tasks are created by
+By default, the calculation for the required memory in the RTEMS Workspace for
+tasks assumes that all Classic API Tasks are created by
 {ref}`InterfaceRtemsTaskCreate`. This configuration option can be used to
 reduce the required memory for the system-provided task storage areas since
 tasks constructed by {ref}`InterfaceRtemsTaskConstruct` use a user-provided

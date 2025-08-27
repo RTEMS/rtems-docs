@@ -96,34 +96,34 @@ rtems_status_code rtems_region_create(
 : This parameter is the attribute set of the region.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created region will
-  be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created region will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive creates a region which resides on the local node. The region
-has the user-defined object name specified in `name`. The assigned object
+This directive creates a region which resides on the local node. The region has
+the user-defined object name specified in `name`. The assigned object
 identifier is returned in `id`. This identifier is used to access the region
 with other region related directives.
 
 The region manages the **contiguous memory area** which starts at
-`starting_address` and is `length` bytes long. The memory area shall be
-large enough to contain some internal region administration data.
+`starting_address` and is `length` bytes long. The memory area shall be large
+enough to contain some internal region administration data.
 
 The **starting address** and **length of segments** allocated from the region
 will be an integral multiple of `page_size`. The specified page size will be
 aligned to an implementation-dependent minimum alignment if necessary.
 
-The **attribute set** specified in `attribute_set` is built through a
-*bitwise or* of the attribute constants described below. Not all combinations
-of attributes are allowed. Some attributes are mutually exclusive. If
-mutually exclusive attributes are combined, the behaviour is undefined.
-Attributes not mentioned below are not evaluated by this directive and have no
-effect. Default attributes can be selected by using the
-{c:macro}`RTEMS_DEFAULT_ATTRIBUTES` constant.
+The **attribute set** specified in `attribute_set` is built through a *bitwise
+or* of the attribute constants described below. Not all combinations of
+attributes are allowed. Some attributes are mutually exclusive. If mutually
+exclusive attributes are combined, the behaviour is undefined. Attributes not
+mentioned below are not evaluated by this directive and have no effect. Default
+attributes can be selected by using the {c:macro}`RTEMS_DEFAULT_ATTRIBUTES`
+constant.
 
 The **task wait queue discipline** is selected by the mutually exclusive
 {c:macro}`RTEMS_FIFO` and {c:macro}`RTEMS_PRIORITY` attributes. The discipline
@@ -149,7 +149,8 @@ empty region.
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `starting_address` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `starting_address` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_TOO_MANY`
 : There was no inactive object available to create a region. The number of
@@ -160,8 +161,7 @@ empty region.
 : The `page_size` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The memory area specified in `starting_address` and `length` was too
-  small.
+: The memory area specified in `starting_address` and `length` was too small.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -217,9 +217,9 @@ rtems_status_code rtems_region_ident( rtems_name name, rtems_id *id );
 : This parameter is the object name to look up.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -405,14 +405,15 @@ This directive adds the memory area which starts at `starting_address` for
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `starting_address` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `starting_address` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The memory area specified by `starting_address` and `length` was
-  insufficient to extend the heap.
+: The memory area specified by `starting_address` and `length` was insufficient
+  to extend the heap.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -420,8 +421,8 @@ This directive adds the memory area which starts at `starting_address` for
 
 There are no alignment requirements for the memory area. The memory area must
 be big enough to contain some maintenance blocks. It must not overlap parts of
-the current heap memory areas. Disconnected memory areas added to the heap
-will lead to used blocks which cover the gaps. Extending with an inappropriate
+the current heap memory areas. Disconnected memory areas added to the heap will
+lead to used blocks which cover the gaps. Extending with an inappropriate
 memory area will corrupt the heap resulting in undefined behaviour.
 
 ```{eval-rst}
@@ -482,13 +483,13 @@ rtems_status_code rtems_region_get_segment(
 
 `timeout`
 : This parameter is the timeout in {term}`clock ticks <clock tick>` if the
-  {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to
-  wait potentially forever.
+  {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait
+  potentially forever.
 
 `segment`
-: This parameter is the pointer to a `void` pointer object. When the
-  directive call is successful, the begin address of the allocated segment
-  will be stored in this object.
+: This parameter is the pointer to a `void` pointer object. When the directive
+  call is successful, the begin address of the allocated segment will be stored
+  in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -496,10 +497,10 @@ rtems_status_code rtems_region_get_segment(
 
 This directive gets a segment from the region specified by `id`.
 
-The **option set** specified in `option_set` is built through a *bitwise or*
-of the option constants described below. Not all combinations of options are
-allowed. Some options are mutually exclusive. If mutually exclusive options
-are combined, the behaviour is undefined. Options not mentioned below are not
+The **option set** specified in `option_set` is built through a *bitwise or* of
+the option constants described below. Not all combinations of options are
+allowed. Some options are mutually exclusive. If mutually exclusive options are
+combined, the behaviour is undefined. Options not mentioned below are not
 evaluated by this directive and have no effect. Default options can be selected
 by using the {c:macro}`RTEMS_DEFAULT_OPTIONS` constant.
 
@@ -508,9 +509,9 @@ according to the mutually exclusive {c:macro}`RTEMS_WAIT` and
 {c:macro}`RTEMS_NO_WAIT` options.
 
 - **Waiting to get** a segment from the region is the default and can be
-  emphasized through the use of the {c:macro}`RTEMS_WAIT` option. The
-  `timeout` parameter defines how long the calling task is willing to wait.
-  Use {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
+  emphasized through the use of the {c:macro}`RTEMS_WAIT` option. The `timeout`
+  parameter defines how long the calling task is willing to wait. Use
+  {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
   timeout interval in clock ticks.
 - **Trying to get** a segment from the region is selected by the
   {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the
@@ -541,7 +542,8 @@ rear of the wait queue.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `segment` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `segment` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
 : The `size` parameter was zero.
@@ -550,15 +552,15 @@ rear of the wait queue.
 : There was no region associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The `size` parameter exceeded the maximum segment size which is possible
-  for the region.
+: The `size` parameter exceeded the maximum segment size which is possible for
+  the region.
 
 {c:macro}`RTEMS_UNSATISFIED`
 : The region had no segment of the requested size immediately available.
 
 {c:macro}`RTEMS_TIMEOUT`
-: The timeout happened while the calling task was waiting to get a segment
-  from the region.
+: The timeout happened while the calling task was waiting to get a segment from
+  the region.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -711,7 +713,8 @@ rtems_status_code rtems_region_resize_segment(
 : This parameter is the requested new size of the segment.
 
 `old_size`
-: This parameter is the pointer to an [uintptr_t](https://en.cppreference.com/w/c/types/integer) object. When the
+: This parameter is the pointer to an
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer) object. When the
   directive call is successful, the old size of the segment will be stored in
   this object.
 
@@ -719,10 +722,10 @@ rtems_status_code rtems_region_resize_segment(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive is used to increase or decrease the size of the `segment` of
-the region specified by `id`. When increasing the size of a segment, it is
-possible that there is no memory available contiguous to the segment. In this
-case, the request is unsatisfied.
+This directive is used to increase or decrease the size of the `segment` of the
+region specified by `id`. When increasing the size of a segment, it is possible
+that there is no memory available contiguous to the segment. In this case, the
+request is unsatisfied.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -732,7 +735,8 @@ case, the request is unsatisfied.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `old_size` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `old_size` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no region associated with the identifier specified by `id`.
@@ -801,8 +805,8 @@ rtems_status_code rtems_region_get_information(
 
 `the_info`
 : This parameter is the pointer to a {c:type}`Heap_Information_block` object.
-  When the directive call is successful, the information of the region will
-  be stored in this object.
+  When the directive call is successful, the information of the region will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -820,7 +824,8 @@ information will be returned in the structure pointed to by `the_info`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `the_info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `the_info` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no region associated with the identifier specified by `id`.
@@ -906,7 +911,8 @@ information will be returned in the structure pointed to by `the_info`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `the_info` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `the_info` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no region associated with the identifier specified by `id`.
@@ -979,16 +985,17 @@ rtems_status_code rtems_region_get_segment_size(
 : This parameter is the begin address of the segment.
 
 `size`
-: This parameter is the pointer to a [uintptr_t](https://en.cppreference.com/w/c/types/integer) object. When the
-  directive call is successful, the size of the segment in bytes will be
-  stored in this object.
+: This parameter is the pointer to a
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer) object. When the
+  directive call is successful, the size of the segment in bytes will be stored
+  in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive obtains the size in bytes of the segment specified by
-`segment` of the region specified by `id` in `size`.
+This directive obtains the size in bytes of the segment specified by `segment`
+of the region specified by `id` in `size`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -998,7 +1005,8 @@ This directive obtains the size in bytes of the segment specified by
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `segment` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `segment` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
 : The `size` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).

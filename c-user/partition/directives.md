@@ -95,9 +95,9 @@ rtems_status_code rtems_partition_create(
 : This parameter is the attribute set of the partition.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created partition
-  will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created partition will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -105,18 +105,18 @@ rtems_status_code rtems_partition_create(
 
 This directive creates a partition of fixed size buffers from a physically
 contiguous memory space which starts at `starting_address` and is `length`
-bytes in size. Each allocated buffer is to be of `buffer_size` in bytes.
-The partition has the user-defined object name specified in `name`. The
-assigned object identifier is returned in `id`. This identifier is used to
-access the partition with other partition related directives.
+bytes in size. Each allocated buffer is to be of `buffer_size` in bytes. The
+partition has the user-defined object name specified in `name`. The assigned
+object identifier is returned in `id`. This identifier is used to access the
+partition with other partition related directives.
 
-The **attribute set** specified in `attribute_set` is built through a
-*bitwise or* of the attribute constants described below. Not all combinations
-of attributes are allowed. Some attributes are mutually exclusive. If
-mutually exclusive attributes are combined, the behaviour is undefined.
-Attributes not mentioned below are not evaluated by this directive and have no
-effect. Default attributes can be selected by using the
-{c:macro}`RTEMS_DEFAULT_ATTRIBUTES` constant.
+The **attribute set** specified in `attribute_set` is built through a *bitwise
+or* of the attribute constants described below. Not all combinations of
+attributes are allowed. Some attributes are mutually exclusive. If mutually
+exclusive attributes are combined, the behaviour is undefined. Attributes not
+mentioned below are not evaluated by this directive and have no effect. Default
+attributes can be selected by using the {c:macro}`RTEMS_DEFAULT_ATTRIBUTES`
+constant.
 
 The partition has a local or global **scope** in a multiprocessing network
 (this attribute does not refer to SMP systems). The scope is selected by the
@@ -153,8 +153,7 @@ attributes.
 : The `length` parameter was less than the `buffer_size` parameter.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The `buffer_size` parameter was not an integral multiple of the pointer
-  size.
+: The `buffer_size` parameter was not an integral multiple of the pointer size.
 
 {c:macro}`RTEMS_INVALID_SIZE`
 : The `buffer_size` parameter was less than two times the pointer size.
@@ -163,33 +162,32 @@ attributes.
 : The `starting_address` parameter was not on a pointer size boundary.
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive object available to create a partition. The number
-  of partitions available to the application is configured through the
+: There was no inactive object available to create a partition. The number of
+  partitions available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_PARTITIONS` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
 : In multiprocessing configurations, there was no inactive global object
   available to create a global semaphore. The number of global objects
   available to the application is configured through the
-  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration
-  option.
+  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration option.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-The partition buffer area specified by the `starting_address` must be
-properly aligned. It must be possible to directly store target architecture
-pointers and also the user data. For example, if the user data contains some
-long double or vector data types, the partition buffer area and the buffer size
-must take the alignment of these types into account which is usually larger
-than the pointer alignment. A cache line alignment may be also a factor. Use
+The partition buffer area specified by the `starting_address` must be properly
+aligned. It must be possible to directly store target architecture pointers and
+also the user data. For example, if the user data contains some long double or
+vector data types, the partition buffer area and the buffer size must take the
+alignment of these types into account which is usually larger than the pointer
+alignment. A cache line alignment may be also a factor. Use
 {c:macro}`RTEMS_PARTITION_ALIGNMENT` to specify the minimum alignment of a
 partition buffer type.
 
-The `buffer_size` parameter must be an integral multiple of the pointer size
-on the target architecture. Additionally, `buffer_size` must be large enough
-to hold two pointers on the target architecture. This is required for RTEMS to
+The `buffer_size` parameter must be an integral multiple of the pointer size on
+the target architecture. Additionally, `buffer_size` must be large enough to
+hold two pointers on the target architecture. This is required for RTEMS to
 manage the buffers when they are free.
 
 For control and maintenance of the partition, RTEMS allocates a {term}`PTCB`
@@ -268,9 +266,9 @@ rtems_status_code rtems_partition_ident(
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -312,8 +310,8 @@ The node to search is specified in `node`. It shall be
 ```
 
 If the partition name is not unique, then the partition identifier will match
-the first partition with that name in the search order. However, this
-partition identifier is not guaranteed to correspond to the desired partition.
+the first partition with that name in the search order. However, this partition
+identifier is not guaranteed to correspond to the desired partition.
 
 The objects are searched from lowest to the highest index. If `node` is
 {c:macro}`RTEMS_SEARCH_ALL_NODES`, all nodes are searched with the local node
@@ -323,8 +321,8 @@ node number.
 If node is a valid node number which does not represent the local node, then
 only the partitions exported by the designated node are searched.
 
-This directive does not generate activity on remote nodes. It accesses only
-the local copy of the global object table.
+This directive does not generate activity on remote nodes. It accesses only the
+local copy of the global object table.
 
 The partition identifier is used with other partition related directives to
 access the partition.
@@ -462,9 +460,9 @@ rtems_status_code rtems_partition_get_buffer( rtems_id id, void **buffer );
 : This parameter is the partition identifier.
 
 `buffer`
-: This parameter is the pointer to a `void` pointer object. When the
-  directive call is successful, the pointer to the allocated buffer will be
-  stored in this object.
+: This parameter is the pointer to a `void` pointer object. When the directive
+  call is successful, the pointer to the allocated buffer will be stored in
+  this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -485,7 +483,8 @@ parameter.
 : There was no partition associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `buffer` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_UNSATISFIED`
 : There was no free buffer available to allocate and return.
@@ -515,8 +514,7 @@ The following constraints apply to this directive:
 - When the directive operates on a local object, the directive will not cause
   the calling task to be preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/part/if/return-buffer
 
@@ -593,5 +591,4 @@ The following constraints apply to this directive:
 - When the directive operates on a local object, the directive will not cause
   the calling task to be preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.

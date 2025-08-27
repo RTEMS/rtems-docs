@@ -93,31 +93,30 @@ rtems_status_code rtems_task_create(
 : This parameter is the attribute set of the task.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created task will
-  be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created task will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive creates a task which resides on the local node. The task has
-the user-defined object name specified in `name`. The assigned object
-identifier is returned in `id`. This identifier is used to access the task
-with other task related directives.
+This directive creates a task which resides on the local node. The task has the
+user-defined object name specified in `name`. The assigned object identifier is
+returned in `id`. This identifier is used to access the task with other task
+related directives.
 
 The **initial priority** of the task is specified in `initial_priority`. The
 {term}`home scheduler` of the created task is the home scheduler of the calling
 task at some time point during the task creation. The initial task priority
 specified in `initial_priority` shall be valid for this scheduler.
 
-The **stack size** of the task is specified in `stack_size`. If the
-requested stack size is less than the configured minimum stack size, then RTEMS
-will use the configured minimum as the stack size for this task. The
-configured minimum stack size is defined by the
-{ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE` application configuration option. In
-addition to being able to specify the task stack size as a integer, there are
-two constants which may be specified:
+The **stack size** of the task is specified in `stack_size`. If the requested
+stack size is less than the configured minimum stack size, then RTEMS will use
+the configured minimum as the stack size for this task. The configured minimum
+stack size is defined by the {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`
+application configuration option. In addition to being able to specify the task
+stack size as a integer, there are two constants which may be specified:
 
 - The {c:macro}`RTEMS_MINIMUM_STACK_SIZE` constant can be specified to use the
   **recommended minimum stack size** for the target processor. This value is
@@ -180,21 +179,21 @@ The **initial interrupt level mode** of the task is defined by
 
 - Task execution with **interrupts enabled** the default and can be emphasized
   through the use of the {c:func}`RTEMS_INTERRUPT_LEVEL` mode macro with a
-  value of zero (0) for the parameter. An interrupt level of zero is
-  associated with enabled interrupts on all target processors.
+  value of zero (0) for the parameter. An interrupt level of zero is associated
+  with enabled interrupts on all target processors.
 - Task execution at a **non-zero interrupt level** can be specified by the
   {c:func}`RTEMS_INTERRUPT_LEVEL` mode macro with a non-zero value for the
-  parameter. The interrupt level portion of the task mode supports a maximum
-  of 256 interrupt levels. These levels are mapped onto the interrupt levels
+  parameter. The interrupt level portion of the task mode supports a maximum of
+  256 interrupt levels. These levels are mapped onto the interrupt levels
   actually supported by the target processor in a processor dependent fashion.
 
-The **attribute set** specified in `attribute_set` is built through a
-*bitwise or* of the attribute constants described below. Not all combinations
-of attributes are allowed. Some attributes are mutually exclusive. If
-mutually exclusive attributes are combined, the behaviour is undefined.
-Attributes not mentioned below are not evaluated by this directive and have no
-effect. Default attributes can be selected by using the
-{c:macro}`RTEMS_DEFAULT_ATTRIBUTES` constant. The attribute set defines
+The **attribute set** specified in `attribute_set` is built through a *bitwise
+or* of the attribute constants described below. Not all combinations of
+attributes are allowed. Some attributes are mutually exclusive. If mutually
+exclusive attributes are combined, the behaviour is undefined. Attributes not
+mentioned below are not evaluated by this directive and have no effect. Default
+attributes can be selected by using the {c:macro}`RTEMS_DEFAULT_ATTRIBUTES`
+constant. The attribute set defines
 
 - the scope of the task: {c:macro}`RTEMS_LOCAL` (default) or
   {c:macro}`RTEMS_GLOBAL` and
@@ -202,9 +201,8 @@ effect. Default attributes can be selected by using the
   {c:macro}`RTEMS_NO_FLOATING_POINT` (default).
 
 The task has a local or global **scope** in a multiprocessing network (this
-attribute does not refer to SMP systems). The scope is selected by the
-mutually exclusive {c:macro}`RTEMS_LOCAL` and {c:macro}`RTEMS_GLOBAL`
-attributes.
+attribute does not refer to SMP systems). The scope is selected by the mutually
+exclusive {c:macro}`RTEMS_LOCAL` and {c:macro}`RTEMS_GLOBAL` attributes.
 
 - A **local scope** is the default and can be emphasized through the use of the
   {c:macro}`RTEMS_LOCAL` attribute. A local task can be only used by the node
@@ -243,16 +241,15 @@ all tasks. Consult the *RTEMS CPU Architecture Supplement* for the details.
 : The `initial_priority` was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive object available to create a task. The number of
-  tasks available to the application is configured through the
+: There was no inactive object available to create a task. The number of tasks
+  available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TASKS` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
 : In multiprocessing configurations, there was no inactive global object
-  available to create a global task. The number of global objects available
-  to the application is configured through the
-  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration
-  option.
+  available to create a global task. The number of global objects available to
+  the application is configured through the
+  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration option.
 
 {c:macro}`RTEMS_UNSATISFIED`
 : There was not enough memory to allocate the task storage area. The task
@@ -349,9 +346,9 @@ rtems_status_code rtems_task_construct(
   It configures the task.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the constructed task
-  will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the constructed task will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -361,7 +358,8 @@ rtems_status_code rtems_task_construct(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `config` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `config` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_NAME`
 : The task name was invalid.
@@ -375,14 +373,14 @@ rtems_status_code rtems_task_construct(
 {c:macro}`RTEMS_INVALID_SIZE`
 : The thread-local storage size is greater than the maximum thread-local
   storage size specified in the task configuration. The thread-local storage
-  size is determined by the thread-local variables used by the application
-  and {ref}`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE`.
+  size is determined by the thread-local variables used by the application and
+  {ref}`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The task storage area was too small to provide a task stack of the
-  configured minimum size, see {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`. The
-  task storage area contains the task stack, the thread-local storage, and
-  the floating-point context on architectures with a separate floating-point
+: The task storage area was too small to provide a task stack of the configured
+  minimum size, see {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`. The task storage
+  area contains the task stack, the thread-local storage, and the
+  floating-point context on architectures with a separate floating-point
   context.
 
 {c:macro}`RTEMS_TOO_MANY`
@@ -411,8 +409,8 @@ storage area contains the task stack, the thread-local storage, and the
 floating-point context on architectures with a separate floating-point context.
 
 This directive is intended for applications which do not want to use the RTEMS
-Workspace and instead statically allocate all operating system resources. It
-is not recommended to use {ref}`InterfaceRtemsTaskCreate` and
+Workspace and instead statically allocate all operating system resources. It is
+not recommended to use {ref}`InterfaceRtemsTaskCreate` and
 {ref}`InterfaceRtemsTaskConstruct` together in an application. It is also not
 recommended to use {ref}`InterfaceRtemsTaskConstruct` for drivers or general
 purpose libraries. The reason for these recommendations is that the task
@@ -424,8 +422,8 @@ allocators. This can simplify the application architecture as well as any
 analysis that may be required.
 
 The stack space estimate done by `<rtems/confdefs.h>` assumes that all tasks
-are created by {ref}`InterfaceRtemsTaskCreate`. The estimate can be adjusted
-to take user-provided task storage areas into account through the
+are created by {ref}`InterfaceRtemsTaskCreate`. The estimate can be adjusted to
+take user-provided task storage areas into account through the
 {ref}`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE` application
 configuration option.
 
@@ -491,9 +489,9 @@ rtems_status_code rtems_task_ident(
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -546,8 +544,8 @@ node number.
 If node is a valid node number which does not represent the local node, then
 only the tasks exported by the designated node are searched.
 
-This directive does not generate activity on remote nodes. It accesses only
-the local copy of the global object table.
+This directive does not generate activity on remote nodes. It accesses only the
+local copy of the global object table.
 
 The task identifier is used with other task related directives to access the
 task.
@@ -644,8 +642,8 @@ rtems_status_code rtems_task_start(
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `entry_point`
 : This parameter is the task entry point.
@@ -657,8 +655,8 @@ rtems_status_code rtems_task_start(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive readies the task, specified by `id`, for execution based on
-the priority and execution mode specified when the task was created. The
+This directive readies the task, specified by `id`, for execution based on the
+priority and execution mode specified when the task was created. The
 {term}`task entry` point of the task is given in `entry_point`. The task's
 entry point argument is contained in `argument`.
 
@@ -670,7 +668,8 @@ entry point argument is contained in `argument`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `entry_point` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `entry_point` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `id`.
@@ -686,11 +685,11 @@ entry point argument is contained in `argument`.
 ```
 
 The type of the entry point argument is an unsigned integer type. However, the
-integer type has the property that any valid pointer to `void` can be
-converted to this type and then converted back to a pointer to `void`. The
-result will compare equal to the original pointer. The type can represent at
-least 32 bits. Some applications use the entry point argument as an index into
-a parameter table to get task-specific parameters.
+integer type has the property that any valid pointer to `void` can be converted
+to this type and then converted back to a pointer to `void`. The result will
+compare equal to the original pointer. The type can represent at least 32 bits.
+Some applications use the entry point argument as an index into a parameter
+table to get task-specific parameters.
 
 Any actions performed on a dormant task such as suspension or change of
 priority are nullified when the task is initiated via the
@@ -742,8 +741,8 @@ rtems_status_code rtems_task_restart(
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `argument`
 : This parameter is the task entry point argument.
@@ -754,10 +753,9 @@ rtems_status_code rtems_task_restart(
 
 This directive resets the task specified by `id` to begin execution at its
 original entry point. The task's priority and execution mode are set to the
-original creation values. If the task is currently blocked, RTEMS
-automatically makes the task ready. A task can be restarted from any state,
-except the dormant state. The task's entry point argument is contained in
-`argument`.
+original creation values. If the task is currently blocked, RTEMS automatically
+makes the task ready. A task can be restarted from any state, except the
+dormant state. The task's entry point argument is contained in `argument`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -780,11 +778,11 @@ except the dormant state. The task's entry point argument is contained in
 ```
 
 The type of the entry point argument is an unsigned integer type. However, the
-integer type has the property that any valid pointer to `void` can be
-converted to this type and then converted back to a pointer to `void`. The
-result will compare equal to the original pointer. The type can represent at
-least 32 bits. Some applications use the entry point argument as an index into
-a parameter table to get task-specific parameters.
+integer type has the property that any valid pointer to `void` can be converted
+to this type and then converted back to a pointer to `void`. The result will
+compare equal to the original pointer. The type can represent at least 32 bits.
+Some applications use the entry point argument as an index into a parameter
+table to get task-specific parameters.
 
 A new entry point argument may be used to distinguish between the initial
 {ref}`InterfaceRtemsTaskStart` of the task and any ensuing calls to
@@ -839,8 +837,8 @@ rtems_status_code rtems_task_delete( rtems_id id );
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1026,8 +1024,8 @@ rtems_status_code rtems_task_suspend( rtems_id id );
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1061,8 +1059,8 @@ directive will also remove the suspended state.
 ```
 
 The requesting task can suspend itself for example by specifying
-{c:macro}`RTEMS_SELF` as `id`. In this case, the task will be suspended and
-a successful return code will be returned when the task is resumed.
+{c:macro}`RTEMS_SELF` as `id`. In this case, the task will be suspended and a
+successful return code will be returned when the task is resumed.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1074,8 +1072,7 @@ The following constraints apply to this directive:
 - The directive may be called from within device driver initialization context.
 - The directive may be called from within task context.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/task/if/resume
 
@@ -1114,10 +1111,10 @@ rtems_status_code rtems_task_resume( rtems_id id );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive removes the task specified by `id` from the suspended state.
-If the task is in the ready state after the suspension is removed, then it will
-be scheduled to run. If the task is still in a blocked state after the
-suspension is removed, then it will remain in that blocked state.
+This directive removes the task specified by `id` from the suspended state. If
+the task is in the ready state after the suspension is removed, then it will be
+scheduled to run. If the task is still in a blocked state after the suspension
+is removed, then it will remain in that blocked state.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -1144,8 +1141,7 @@ The following constraints apply to this directive:
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/task/if/is-suspended
 
@@ -1175,8 +1171,8 @@ rtems_status_code rtems_task_is_suspended( rtems_id id );
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1256,28 +1252,28 @@ rtems_status_code rtems_task_set_priority(
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `new_priority`
-: This parameter is the new real priority or
-  {c:macro}`RTEMS_CURRENT_PRIORITY` to get the current priority.
+: This parameter is the new real priority or {c:macro}`RTEMS_CURRENT_PRIORITY`
+  to get the current priority.
 
 `old_priority`
-: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
-  object. When the directive call is successful, the current or previous
-  priority of the task with respect to its {term}`home scheduler` will be
-  stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority` object.
+  When the directive call is successful, the current or previous priority of
+  the task with respect to its {term}`home scheduler` will be stored in this
+  object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 This directive manipulates the priority of the task specified by `id`. When
-`new_priority` is not equal to {c:macro}`RTEMS_CURRENT_PRIORITY`, the
-specified task's previous priority is returned in `old_priority`. When
-`new_priority` is {c:macro}`RTEMS_CURRENT_PRIORITY`, the specified task's
-current priority is returned in `old_priority`.
+`new_priority` is not equal to {c:macro}`RTEMS_CURRENT_PRIORITY`, the specified
+task's previous priority is returned in `old_priority`. When `new_priority` is
+{c:macro}`RTEMS_CURRENT_PRIORITY`, the specified task's current priority is
+returned in `old_priority`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -1287,30 +1283,31 @@ current priority is returned in `old_priority`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `old_priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `old_priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-: The task priority specified in `new_priority` was invalid with respect to
-  the {term}`home scheduler` of the task.
+: The task priority specified in `new_priority` was invalid with respect to the
+  {term}`home scheduler` of the task.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
 Valid priorities range from one to a maximum value which depends on the
-configured scheduler. The lower the priority value the higher is the
-importance of the task.
+configured scheduler. The lower the priority value the higher is the importance
+of the task.
 
 If the task is currently holding any binary semaphores which use a locking
-protocol, then the task's priority cannot be lowered immediately. If the
-task's priority were lowered immediately, then this could violate properties of
-the locking protocol and may result in priority inversion. The requested
-lowering of the task's priority will occur when the task has released all
-binary semaphores which make the task more important. The task's priority can
-be increased regardless of the task's use of binary semaphores with locking
+protocol, then the task's priority cannot be lowered immediately. If the task's
+priority were lowered immediately, then this could violate properties of the
+locking protocol and may result in priority inversion. The requested lowering
+of the task's priority will occur when the task has released all binary
+semaphores which make the task more important. The task's priority can be
+increased regardless of the task's use of binary semaphores with locking
 protocols.
 
 ```{eval-rst}
@@ -1325,8 +1322,7 @@ The following constraints apply to this directive:
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/task/if/get-priority
 
@@ -1369,24 +1365,23 @@ rtems_status_code rtems_task_get_priority(
 ```
 
 `task_id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `scheduler_id`
 : This parameter is the scheduler identifier.
 
 `priority`
-: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
-  object. When the directive call is successful, the current priority of the
-  task with respect to the specified scheduler will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority` object.
+  When the directive call is successful, the current priority of the task with
+  respect to the specified scheduler will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive returns the current priority in `priority` of the task
-specified by `task_id` with respect to the scheduler specified by
-`scheduler_id`.
+This directive returns the current priority in `priority` of the task specified
+by `task_id` with respect to the scheduler specified by `scheduler_id`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -1396,7 +1391,8 @@ specified by `task_id` with respect to the scheduler specified by
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `task_id`.
@@ -1480,14 +1476,14 @@ rtems_status_code rtems_task_mode(
 ```
 
 `mode_set`
-: This parameter is the mode set to apply to the calling task. When `mask`
-  is set to {c:macro}`RTEMS_CURRENT_MODE`, the value of this parameter is
-  ignored. Only modes requested by `mask` are applied to the calling task.
+: This parameter is the mode set to apply to the calling task. When `mask` is
+  set to {c:macro}`RTEMS_CURRENT_MODE`, the value of this parameter is ignored.
+  Only modes requested by `mask` are applied to the calling task.
 
 `mask`
-: This parameter is the mode mask which specifies which modes in `mode_set`
-  are applied to the calling task. When the value is
-  {c:macro}`RTEMS_CURRENT_MODE`, the mode of the calling task is not changed.
+: This parameter is the mode mask which specifies which modes in `mode_set` are
+  applied to the calling task. When the value is {c:macro}`RTEMS_CURRENT_MODE`,
+  the mode of the calling task is not changed.
 
 `previous_mode_set`
 : This parameter is the pointer to an {c:type}`rtems_mode` object. When the
@@ -1508,10 +1504,10 @@ specified in the `mode_set` parameter.
 A task can obtain its current execution mode, without modifying it, by calling
 this directive with a `mask` value of {c:macro}`RTEMS_CURRENT_MODE`.
 
-The **mode set** specified in `mode_set` is built through a *bitwise or* of
-the mode constants described below. Not all combinations of modes are allowed.
-Some modes are mutually exclusive. If mutually exclusive modes are combined,
-the behaviour is undefined. Default task modes can be selected by using the
+The **mode set** specified in `mode_set` is built through a *bitwise or* of the
+mode constants described below. Not all combinations of modes are allowed. Some
+modes are mutually exclusive. If mutually exclusive modes are combined, the
+behaviour is undefined. Default task modes can be selected by using the
 {c:macro}`RTEMS_DEFAULT_MODES` constant. The task mode set defines
 
 - the preemption mode of the task: {c:macro}`RTEMS_PREEMPT` (default) or
@@ -1530,8 +1526,7 @@ mode mask constants described below.
 When the {c:macro}`RTEMS_PREEMPT_MASK` is set in `mask`, the **preemption
 mode** of the calling task is
 
-- enabled by using the {c:macro}`RTEMS_PREEMPT` mode constant in `mode_set`
-  and
+- enabled by using the {c:macro}`RTEMS_PREEMPT` mode constant in `mode_set` and
 - disabled by using the {c:macro}`RTEMS_NO_PREEMPT` mode constant in
   `mode_set`.
 
@@ -1575,14 +1570,14 @@ actually supported by the target processor in a processor dependent fashion.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
 : The {c:macro}`RTEMS_NO_PREEMPT` was set in `mode_set` and setting the
-  preemption mode was requested by {c:macro}`RTEMS_PREEMPT_MASK` in `mask`
-  and the system configuration had no implementation for this mode.
+  preemption mode was requested by {c:macro}`RTEMS_PREEMPT_MASK` in `mask` and
+  the system configuration had no implementation for this mode.
 
 {c:macro}`RTEMS_NOT_IMPLEMENTED`
-: The {c:func}`RTEMS_INTERRUPT_LEVEL` was set to a positive level in
-  `mode_set` and setting the interrupt level was requested by
-  {c:macro}`RTEMS_INTERRUPT_MASK` in `mask` and the system configuration
-  had no implementation for this mode.
+: The {c:func}`RTEMS_INTERRUPT_LEVEL` was set to a positive level in `mode_set`
+  and setting the interrupt level was requested by
+  {c:macro}`RTEMS_INTERRUPT_MASK` in `mask` and the system configuration had no
+  implementation for this mode.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1634,18 +1629,18 @@ rtems_status_code rtems_task_wake_after( rtems_interval ticks );
 ```
 
 `ticks`
-: This parameter is the count of {term}`clock ticks <clock tick>` to delay
-  the task or {c:macro}`RTEMS_YIELD_PROCESSOR` to yield the processor.
+: This parameter is the count of {term}`clock ticks <clock tick>` to delay the
+  task or {c:macro}`RTEMS_YIELD_PROCESSOR` to yield the processor.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive blocks the calling task for the specified `ticks` count of
-clock ticks if the value is not equal to {c:macro}`RTEMS_YIELD_PROCESSOR`. When
-the requested count of ticks have occurred, the task is made ready. The clock
-tick directives automatically update the delay period. The calling task may
-give up the processor and remain in the ready state by specifying a value of
+This directive blocks the calling task for the specified `ticks` count of clock
+ticks if the value is not equal to {c:macro}`RTEMS_YIELD_PROCESSOR`. When the
+requested count of ticks have occurred, the task is made ready. The clock tick
+directives automatically update the delay period. The calling task may give up
+the processor and remain in the ready state by specifying a value of
 {c:macro}`RTEMS_YIELD_PROCESSOR` in `ticks`.
 
 ```{eval-rst}
@@ -1665,7 +1660,8 @@ effect on a {ref}`InterfaceRtemsTaskWakeAfter` blocked task. The delay until
 first clock tick will never be a whole clock tick interval since this directive
 will never execute exactly on a clock tick. Applications requiring use of a
 clock ({term}`CLOCK_REALTIME` or {term}`CLOCK_MONOTONIC`) instead of clock
-ticks should make use of [clock_nanosleep()](https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_nanosleep.html).
+ticks should make use of
+[clock_nanosleep()](https://pubs.opengroup.org/onlinepubs/9699919799/functions/clock_nanosleep.html).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1736,7 +1732,8 @@ unblocked and made ready to execute.
 : The system date and time was not set.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `time_buffer` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `time_buffer` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_CLOCK`
 : The time of day was invalid.
@@ -1745,8 +1742,8 @@ unblocked and made ready to execute.
 .. rubric:: NOTES:
 ```
 
-The ticks portion of `time_buffer` structure is ignored. The timing
-granularity of this directive is a second.
+The ticks portion of `time_buffer` structure is ignored. The timing granularity
+of this directive is a second.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -1793,12 +1790,13 @@ rtems_status_code rtems_task_get_scheduler(
 ```
 
 `task_id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `scheduler_id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the {term}`home scheduler` of the task will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the {term}`home scheduler` of
+  the task will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -1815,7 +1813,8 @@ specified by `task_id` in `scheduler_id`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `scheduler_id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `scheduler_id` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `task_id`.
@@ -1866,11 +1865,12 @@ rtems_status_code rtems_task_set_scheduler(
 ```
 
 `task_id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `scheduler_id`
-: This parameter is the scheduler identifier of the new {term}`home scheduler` for the task specified by `task_id`.
+: This parameter is the scheduler identifier of the new {term}`home scheduler`
+  for the task specified by `task_id`.
 
 `priority`
 : This parameter is the new real priority for the task with respect to the
@@ -1895,8 +1895,8 @@ This directive sets the {term}`home scheduler` to the scheduler specified by
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
-: The {term}`task priority` specified by `priority` was invalid with
-  respect to the scheduler specified by `scheduler_id`.
+: The {term}`task priority` specified by `priority` was invalid with respect to
+  the scheduler specified by `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `task_id`.
@@ -1918,8 +1918,8 @@ This directive sets the {term}`home scheduler` to the scheduler specified by
 : The scheduler specified by `scheduler_id` owned no processor.
 
 {c:macro}`RTEMS_UNSATISFIED`
-: The scheduler specified by `scheduler_id` did not support the affinity
-  set of the task specified by `task_id`.
+: The scheduler specified by `scheduler_id` did not support the affinity set of
+  the task specified by `task_id`.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
 : The task resided on a remote node.
@@ -1968,8 +1968,8 @@ rtems_status_code rtems_task_get_affinity(
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `cpusetsize`
 : This parameter is the size of the processor set referenced by `cpuset` in
@@ -1977,8 +1977,8 @@ rtems_status_code rtems_task_get_affinity(
 
 `cpuset`
 : This parameter is the pointer to a {c:type}`cpu_set_t` object. When the
-  directive call is successful, the processor affinity set of the task will
-  be stored in this object. A set bit in the processor set means that the
+  directive call is successful, the processor affinity set of the task will be
+  stored in this object. A set bit in the processor set means that the
   corresponding processor is in the processor affinity set of the task,
   otherwise the bit is cleared.
 
@@ -1997,14 +1997,15 @@ task specified by `id`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `cpuset` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `id`.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The size specified by `cpusetsize` of the processor set was too small for
-  the processor affinity set of the task.
+: The size specified by `cpusetsize` of the processor set was too small for the
+  processor affinity set of the task.
 
 {c:macro}`RTEMS_ILLEGAL_ON_REMOTE_OBJECT`
 : The task resided on a remote node.
@@ -2052,18 +2053,18 @@ rtems_status_code rtems_task_set_affinity(
 ```
 
 `id`
-: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF`
-  may be used to specify the calling task.
+: This parameter is the task identifier. The constant {c:macro}`RTEMS_SELF` may
+  be used to specify the calling task.
 
 `cpusetsize`
 : This parameter is the size of the processor set referenced by `cpuset` in
   bytes.
 
 `cpuset`
-: This parameter is the pointer to a {c:type}`cpu_set_t` object. The
-  processor set defines the new processor affinity set of the task. A set
-  bit in the processor set means that the corresponding processor shall be in
-  the processor affinity set of the task, otherwise the bit shall be cleared.
+: This parameter is the pointer to a {c:type}`cpu_set_t` object. The processor
+  set defines the new processor affinity set of the task. A set bit in the
+  processor set means that the corresponding processor shall be in the
+  processor affinity set of the task, otherwise the bit shall be cleared.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -2079,7 +2080,8 @@ This directive sets the processor affinity of the task specified by `id`.
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `cpuset` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no task associated with the identifier specified by `id`.
@@ -2100,8 +2102,8 @@ The following constraints apply to this directive:
 - The directive may be called from within interrupt context.
 - The directive may be called from within device driver initialization context.
 - The directive may be called from within task context.
-- The directive may change the processor affinity of a task. This may cause
-  the calling task to be preempted.
+- The directive may change the processor affinity of a task. This may cause the
+  calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/iterate
 
@@ -2141,9 +2143,9 @@ void rtems_task_iterate( rtems_task_visitor visitor, void *arg );
 .. rubric:: DESCRIPTION:
 ```
 
-This directive iterates over all tasks in the system. This operation covers
-all tasks of all APIs. The user should be careful in accessing the contents of
-the {term}`TCB`. The visitor argument `arg` is passed to all invocations of
+This directive iterates over all tasks in the system. This operation covers all
+tasks of all APIs. The user should be careful in accessing the contents of the
+{term}`TCB`. The visitor argument `arg` is passed to all invocations of
 `visitor` in addition to the TCB. The iteration stops immediately in case the
 visitor routine returns true.
 

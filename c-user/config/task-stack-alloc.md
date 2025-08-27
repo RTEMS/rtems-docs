@@ -37,9 +37,9 @@
 # Task Stack Allocator Configuration
 
 This section describes configuration options related to the task stack
-allocator. RTEMS allows the application or BSP to define its own allocation
-and deallocation methods for task stacks. This can be used to place task stacks
-in special areas of memory or to utilize a Memory Management Unit so that stack
+allocator. RTEMS allows the application or BSP to define its own allocation and
+deallocation methods for task stacks. This can be used to place task stacks in
+special areas of memory or to utilize a Memory Management Unit so that stack
 overflows are detected in hardware.
 
 % Generated from spec:/acfg/if/task-stack-allocator
@@ -74,15 +74,15 @@ This configuration option is an initializer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-The default value is `_Workspace_Allocate`, which indicates that task
-stacks will be allocated from the RTEMS Workspace.
+The default value is `_Workspace_Allocate`, which indicates that task stacks
+will be allocated from the RTEMS Workspace.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option initializes the stack allocator
-allocate handler.
+The value of this configuration option initializes the stack allocator allocate
+handler.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -137,8 +137,8 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the system is informed
-that the task stack allocator does not use the RTEMS Workspace.
+In case this configuration option is defined, then the system is informed that
+the task stack allocator does not use the RTEMS Workspace.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -196,8 +196,7 @@ allocate handler used to allocate the task storage area of each
 
 This configuration option is independent of the other thread stack allocator
 configuration options. It is assumed that any memory allocated for the task
-storage area of an {term}`IDLE task` will not be from the RTEMS
-Workspace.
+storage area of an {term}`IDLE task` will not be from the RTEMS Workspace.
 
 The IDLE task stack allocator may increase the size of the allocated memory
 area to account for the actually allocated memory area.
@@ -276,7 +275,8 @@ A correctly configured system shall configure the following to be consistent:
 ```
 
 The value of the configuration option shall be defined to a valid function
-pointer of the type `void ( *initialize )( size_t )` or to [NULL](https://en.cppreference.com/w/c/types/NULL).
+pointer of the type `void ( *initialize )( size_t )` or to
+[NULL](https://en.cppreference.com/w/c/types/NULL).
 
 % Generated from spec:/acfg/if/task-stack-deallocator
 
@@ -310,8 +310,8 @@ This configuration option is an initializer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-The default value is `_Workspace_Free`, which indicates that task stacks
-will be allocated from the RTEMS Workspace.
+The default value is `_Workspace_Free`, which indicates that task stacks will
+be allocated from the RTEMS Workspace.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -390,6 +390,6 @@ configured, see {ref}`CONFIGURE_TASK_STACK_ALLOCATOR`.
 ```
 
 The value of the configuration option shall be defined to a macro which accepts
-exactly one parameter and returns an unsigned integer. The parameter will be
-an allocation size and the macro shall return this size plus the overhead of
-the allocator to manage an allocation request for this size.
+exactly one parameter and returns an unsigned integer. The parameter will be an
+allocation size and the macro shall return this size plus the overhead of the
+allocator to manage an allocation request for this size.

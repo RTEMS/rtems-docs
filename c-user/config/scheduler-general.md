@@ -38,19 +38,15 @@
 
 # General Scheduler Configuration
 
-This section describes configuration options related to selecting a
-scheduling algorithm for an application. A scheduler configuration is optional
-and only necessary in very specific circumstances. A normal application
-configuration does not need any of the configuration options described in this
-section.
+This section describes configuration options related to selecting a scheduling
+algorithm for an application. A scheduler configuration is optional and only
+necessary in very specific circumstances. A normal application configuration
+does not need any of the configuration options described in this section.
 
-By default, the {ref}`SchedulerPriority`
-algorithm is used in uniprocessor configurations. In case SMP is enabled and
-the configured maximum processors
-({ref}`CONFIGURE_MAXIMUM_PROCESSORS`) is greater
-than one, then the
-{ref}`SchedulerSMPEDF`
-is selected as the default scheduler algorithm.
+By default, the {ref}`SchedulerPriority` algorithm is used in uniprocessor
+configurations. In case SMP is enabled and the configured maximum processors
+({ref}`CONFIGURE_MAXIMUM_PROCESSORS`) is greater than one, then the
+{ref}`SchedulerSMPEDF` is selected as the default scheduler algorithm.
 
 For the schedulers provided by RTEMS (see {ref}`RTEMSAPIClassicScheduler`), the
 configuration is straightforward. All that is required is to define the
@@ -162,18 +158,18 @@ The default value is 255.
 
 For the following schedulers
 
-- {ref}`SchedulerPriority`, which is the default in uniprocessor
-  configurations and can be configured through the
-  {ref}`CONFIGURE_SCHEDULER_PRIORITY` configuration option,
+- {ref}`SchedulerPriority`, which is the default in uniprocessor configurations
+  and can be configured through the {ref}`CONFIGURE_SCHEDULER_PRIORITY`
+  configuration option,
 - {ref}`SchedulerSMPPriority` which can be configured through the
   {ref}`CONFIGURE_SCHEDULER_PRIORITY_SMP` configuration option, and
 - {ref}`SchedulerSMPPriorityAffinity` which can be configured through the
   {ref}`CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP` configuration option
 
 this configuration option specifies the maximum numeric priority of any task
-for these schedulers and one less that the number of priority levels for
-these schedulers. For all other schedulers provided by RTEMS, this
-configuration option has no effect.
+for these schedulers and one less that the number of priority levels for these
+schedulers. For all other schedulers provided by RTEMS, this configuration
+option has no effect.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -185,16 +181,15 @@ system and will thus be used by the IDLE task.
 Priority zero is reserved for internal use by RTEMS and is not available to
 applications.
 
-Reducing the number of priorities through this configuration option reduces
-the amount of memory allocated by the schedulers listed above. These
-schedulers use a chain control structure per priority and this structure
-consists of three pointers. On a 32-bit architecture, the allocated memory
-is 12 bytes * (`CONFIGURE_MAXIMUM_PRIORITY` + 1), e.g. 3072 bytes for 256
-priority levels (default), 48 bytes for 4 priority levels
-(`CONFIGURE_MAXIMUM_PRIORITY == 3`).
+Reducing the number of priorities through this configuration option reduces the
+amount of memory allocated by the schedulers listed above. These schedulers use
+a chain control structure per priority and this structure consists of three
+pointers. On a 32-bit architecture, the allocated memory is 12 bytes \*
+(`CONFIGURE_MAXIMUM_PRIORITY` + 1), e.g. 3072 bytes for 256 priority levels
+(default), 48 bytes for 4 priority levels (`CONFIGURE_MAXIMUM_PRIORITY == 3`).
 
-The default value is 255, because RTEMS shall support 256 priority levels to
-be compliant with various standards. These priorities range from 0 to 255.
+The default value is 255, because RTEMS shall support 256 priority levels to be
+compliant with various standards. These priorities range from 0 to 255.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -232,8 +227,8 @@ This configuration option is an initializer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-The default value of this configuration option is computed so that the
-default scheduler is assigned to each configured processor (up to 32).
+The default value of this configuration option is computed so that the default
+scheduler is assigned to each configured processor (up to 32).
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -246,8 +241,8 @@ scheduler to processor assignments.
 .. rubric:: NOTES:
 ```
 
-Where the system was built with SMP support enabled, this configuration
-option is evaluated, otherwise it is ignored.
+Where the system was built with SMP support enabled, this configuration option
+is evaluated, otherwise it is ignored.
 
 This is an advanced configuration option, see
 {ref}`ConfigurationSchedulersClustered`.
@@ -264,12 +259,12 @@ The following constraints apply to this configuration option:
   - `RTEMS_SCHEDULER_ASSIGN( scheduler_index, attributes )`
   - `RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER`
 
-  The `scheduler_index` macro parameter shall be a valid index of the
-  scheduler table defined by the {ref}`CONFIGURE_SCHEDULER_TABLE_ENTRIES`
-  configuration option.
+  The `scheduler_index` macro parameter shall be a valid index of the scheduler
+  table defined by the {ref}`CONFIGURE_SCHEDULER_TABLE_ENTRIES` configuration
+  option.
 
-  The `attributes` macro parameter shall be set to exactly one of the
-  following constants:
+  The `attributes` macro parameter shall be set to exactly one of the following
+  constants:
 
   - `RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY`
   - `RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL`
@@ -313,19 +308,18 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the
-{ref}`SchedulerCBS`
+In case this configuration option is defined, then the {ref}`SchedulerCBS`
 algorithm is made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for exactly one processor.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for exactly one processor.
 
 % Generated from spec:/acfg/if/scheduler-edf
 
@@ -363,19 +357,18 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the
-{ref}`SchedulerEDF`
+In case this configuration option is defined, then the {ref}`SchedulerEDF`
 algorithm is made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for exactly one processor.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for exactly one processor.
 
 % Generated from spec:/acfg/if/scheduler-edf-smp
 
@@ -413,26 +406,24 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the
-{ref}`SchedulerSMPEDF`
+In case this configuration option is defined, then the {ref}`SchedulerSMPEDF`
 algorithm is made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-This scheduler algorithm is only available when RTEMS is built with SMP
-support enabled.
+This scheduler algorithm is only available when RTEMS is built with SMP support
+enabled.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for up to 32 processors.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for up to 32 processors.
 
 This scheduler algorithm is the default in SMP configurations if
-{ref}`CONFIGURE_MAXIMUM_PROCESSORS` is
-greater than one.
+{ref}`CONFIGURE_MAXIMUM_PROCESSORS` is greater than one.
 
 % Generated from spec:/acfg/if/scheduler-name
 
@@ -485,8 +476,8 @@ scheduler.
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
 Schedulers can be identified via {ref}`InterfaceRtemsSchedulerIdent`.
 
@@ -535,23 +526,21 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the
-{ref}`SchedulerPriority`
+In case this configuration option is defined, then the {ref}`SchedulerPriority`
 algorithm is made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for exactly one processor.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for exactly one processor.
 
 This scheduler algorithm is the default when
-{ref}`CONFIGURE_MAXIMUM_PROCESSORS` is
-exactly one.
+{ref}`CONFIGURE_MAXIMUM_PROCESSORS` is exactly one.
 
 The memory allocated for this scheduler depends on the
 {ref}`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
@@ -593,21 +582,21 @@ enabled.
 ```
 
 In case this configuration option is defined, then the
-{ref}`SchedulerSMPPriorityAffinity`
-algorithm is made available to the application.
+{ref}`SchedulerSMPPriorityAffinity` algorithm is made available to the
+application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-This scheduler algorithm is only available when RTEMS is built with SMP
-support enabled.
+This scheduler algorithm is only available when RTEMS is built with SMP support
+enabled.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for up to 32 processors.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for up to 32 processors.
 
 The memory allocated for this scheduler depends on the
 {ref}`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
@@ -649,21 +638,20 @@ enabled.
 ```
 
 In case this configuration option is defined, then the
-{ref}`SchedulerSMPPriority`
-algorithm is made available to the application.
+{ref}`SchedulerSMPPriority` algorithm is made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-This scheduler algorithm is only available when RTEMS is built with SMP
-support enabled.
+This scheduler algorithm is only available when RTEMS is built with SMP support
+enabled.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for up to 32 processors.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for up to 32 processors.
 
 The memory allocated for this scheduler depends on the
 {ref}`CONFIGURE_MAXIMUM_PRIORITY` configuration option.
@@ -705,18 +693,17 @@ enabled.
 ```
 
 In case this configuration option is defined, then the
-{ref}`SchedulerPrioritySimple`
-algorithm is made available to the application.
+{ref}`SchedulerPrioritySimple` algorithm is made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for exactly one processor.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for exactly one processor.
 
 % Generated from spec:/acfg/if/scheduler-simple-smp
 
@@ -755,21 +742,21 @@ enabled.
 ```
 
 In case this configuration option is defined, then the
-{ref}`SchedulerSMPPrioritySimple`
-algorithm is made available to the application.
+{ref}`SchedulerSMPPrioritySimple` algorithm is made available to the
+application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-This scheduler algorithm is only available when RTEMS is built with SMP
-support enabled.
+This scheduler algorithm is only available when RTEMS is built with SMP support
+enabled.
 
-In case no explicit {ref}`ConfigurationSchedulersClustered`
-is present, then it is used as the scheduler for up to 32 processors.
+In case no explicit {ref}`ConfigurationSchedulersClustered` is present, then it
+is used as the scheduler for up to 32 processors.
 
 % Generated from spec:/acfg/if/scheduler-strong-apa
 
@@ -807,18 +794,18 @@ enabled.
 .. rubric:: DESCRIPTION:
 ```
 
-In case this configuration option is defined, then the Strong APA algorithm
-is made available to the application.
+In case this configuration option is defined, then the Strong APA algorithm is
+made available to the application.
 
 ```{eval-rst}
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
-This scheduler algorithm is only available when RTEMS is built with SMP
-support enabled.
+This scheduler algorithm is only available when RTEMS is built with SMP support
+enabled.
 
 This scheduler algorithm is not correctly implemented. Do not use it.
 
@@ -851,8 +838,8 @@ This configuration option is an initializer define.
 .. rubric:: DEFAULT VALUE:
 ```
 
-The default value of this configuration option is the definition of exactly
-one table entry for the configured scheduler.
+The default value of this configuration option is the definition of exactly one
+table entry for the configured scheduler.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -866,8 +853,8 @@ configured schedulers.
 ```
 
 Schedulers registered in the scheduler table by this configuration option are
-available to the application. The scheduler table entry index defines the
-index of the scheduler.
+available to the application. The scheduler table entry index defines the index
+of the scheduler.
 
 This is an advanced configuration option, see
 {ref}`ConfigurationSchedulersClustered`.
@@ -944,26 +931,26 @@ scheduler algorithm to the application.
 .. rubric:: NOTES:
 ```
 
-This scheduler configuration option is an advanced configuration option.
-Think twice before you use it.
+This scheduler configuration option is an advanced configuration option. Think
+twice before you use it.
 
 RTEMS allows the application to provide its own task/thread scheduling
-algorithm. In order to do this, one shall define
-`CONFIGURE_SCHEDULER_USER` to indicate the application provides its own
-scheduling algorithm. If `CONFIGURE_SCHEDULER_USER` is defined then the
-following additional macros shall be defined:
+algorithm. In order to do this, one shall define `CONFIGURE_SCHEDULER_USER` to
+indicate the application provides its own scheduling algorithm. If
+`CONFIGURE_SCHEDULER_USER` is defined then the following additional macros
+shall be defined:
 
-- `CONFIGURE_SCHEDULER` shall be defined to a static definition of
-  the scheduler data structures of the user scheduler.
-- `CONFIGURE_SCHEDULER_TABLE_ENTRIES` shall be defined to a scheduler
-  table entry initializer for the user scheduler.
-- `CONFIGURE_SCHEDULER_USER_PER_THREAD` shall be defined to the type of
-  the per-thread information of the user scheduler.
+- `CONFIGURE_SCHEDULER` shall be defined to a static definition of the
+  scheduler data structures of the user scheduler.
+- `CONFIGURE_SCHEDULER_TABLE_ENTRIES` shall be defined to a scheduler table
+  entry initializer for the user scheduler.
+- `CONFIGURE_SCHEDULER_USER_PER_THREAD` shall be defined to the type of the
+  per-thread information of the user scheduler.
 
-At this time, the mechanics and requirements for writing a new scheduler
-are evolving and not fully documented. It is recommended that you look at
-the existing Deterministic Priority Scheduler in
-`cpukit/score/src/schedulerpriority*.c` for guidance. For guidance on
-the configuration macros, please examine
-`cpukit/include/rtems/confdefs/scheduler.h` for how these are defined for
-the Deterministic Priority Scheduler.
+At this time, the mechanics and requirements for writing a new scheduler are
+evolving and not fully documented. It is recommended that you look at the
+existing Deterministic Priority Scheduler in
+`cpukit/score/src/schedulerpriority*.c` for guidance. For guidance on the
+configuration macros, please examine
+`cpukit/include/rtems/confdefs/scheduler.h` for how these are defined for the
+Deterministic Priority Scheduler.

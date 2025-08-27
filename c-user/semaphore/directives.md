@@ -80,41 +80,41 @@ rtems_status_code rtems_semaphore_create(
 : This parameter is the object name of the semaphore.
 
 `count`
-: This parameter is the initial count of the semaphore. If the semaphore is
-  a binary semaphore, then a count of 0 will make the calling task the owner
-  of the binary semaphore and a count of 1 will create a binary semaphore
-  without an owner.
+: This parameter is the initial count of the semaphore. If the semaphore is a
+  binary semaphore, then a count of 0 will make the calling task the owner of
+  the binary semaphore and a count of 1 will create a binary semaphore without
+  an owner.
 
 `attribute_set`
 : This parameter is the attribute set of the semaphore.
 
 `priority_ceiling`
-: This parameter is the priority ceiling if the semaphore is a binary
-  semaphore with the priority ceiling or MrsP locking protocol as defined by
-  the attribute set.
+: This parameter is the priority ceiling if the semaphore is a binary semaphore
+  with the priority ceiling or MrsP locking protocol as defined by the
+  attribute set.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the created semaphore
-  will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the created semaphore will be
+  stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
 This directive creates a semaphore which resides on the local node. The
-semaphore has the user-defined object name specified in `name` and the
-initial count specified in `count`. The assigned object identifier is
-returned in `id`. This identifier is used to access the semaphore with other
-semaphore related directives.
+semaphore has the user-defined object name specified in `name` and the initial
+count specified in `count`. The assigned object identifier is returned in `id`.
+This identifier is used to access the semaphore with other semaphore related
+directives.
 
-The **attribute set** specified in `attribute_set` is built through a
-*bitwise or* of the attribute constants described below. Not all combinations
-of attributes are allowed. Some attributes are mutually exclusive. If
-mutually exclusive attributes are combined, the behaviour is undefined.
-Attributes not mentioned below are not evaluated by this directive and have no
-effect. Default attributes can be selected by using the
-{c:macro}`RTEMS_DEFAULT_ATTRIBUTES` constant. The attribute set defines
+The **attribute set** specified in `attribute_set` is built through a *bitwise
+or* of the attribute constants described below. Not all combinations of
+attributes are allowed. Some attributes are mutually exclusive. If mutually
+exclusive attributes are combined, the behaviour is undefined. Attributes not
+mentioned below are not evaluated by this directive and have no effect. Default
+attributes can be selected by using the {c:macro}`RTEMS_DEFAULT_ATTRIBUTES`
+constant. The attribute set defines
 
 - the scope of the semaphore: {c:macro}`RTEMS_LOCAL` (default) or
   {c:macro}`RTEMS_GLOBAL`,
@@ -167,8 +167,8 @@ discipline shall be selected. The locking protocol is selected by the mutually
 exclusive {c:macro}`RTEMS_INHERIT_PRIORITY`, {c:macro}`RTEMS_PRIORITY_CEILING`,
 and {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING` attributes.
 
-- The default is **no locking protocol**. This can be emphasized through use
-  of the {c:macro}`RTEMS_NO_INHERIT_PRIORITY`,
+- The default is **no locking protocol**. This can be emphasized through use of
+  the {c:macro}`RTEMS_NO_INHERIT_PRIORITY`,
   {c:macro}`RTEMS_NO_MULTIPROCESSOR_RESOURCE_SHARING`, and
   {c:macro}`RTEMS_NO_PRIORITY_CEILING` attributes.
 - The **priority inheritance locking protocol** is selected by the
@@ -205,16 +205,15 @@ and {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING` attributes.
 : The `attribute_set` parameter was invalid.
 
 {c:macro}`RTEMS_TOO_MANY`
-: There was no inactive object available to create a semaphore. The number
-  of semaphores available to the application is configured through the
+: There was no inactive object available to create a semaphore. The number of
+  semaphores available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_SEMAPHORES` application configuration option.
 
 {c:macro}`RTEMS_TOO_MANY`
 : In multiprocessing configurations, there was no inactive global object
   available to create a global semaphore. The number of global objects
   available to the application is configured through the
-  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration
-  option.
+  {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration option.
 
 {c:macro}`RTEMS_INVALID_PRIORITY`
 : The `priority_ceiling` parameter was invalid.
@@ -292,9 +291,9 @@ rtems_status_code rtems_semaphore_ident(
 : This parameter is the node or node set to search for a matching object.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the object identifier of an object with
-  the specified name will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the object identifier of an object with the
+  specified name will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -336,8 +335,8 @@ The node to search is specified in `node`. It shall be
 ```
 
 If the semaphore name is not unique, then the semaphore identifier will match
-the first semaphore with that name in the search order. However, this
-semaphore identifier is not guaranteed to correspond to the desired semaphore.
+the first semaphore with that name in the search order. However, this semaphore
+identifier is not guaranteed to correspond to the desired semaphore.
 
 The objects are searched from lowest to the highest index. If `node` is
 {c:macro}`RTEMS_SEARCH_ALL_NODES`, all nodes are searched with the local node
@@ -347,8 +346,8 @@ node number.
 If node is a valid node number which does not represent the local node, then
 only the semaphores exported by the designated node are searched.
 
-This directive does not generate activity on remote nodes. It accesses only
-the local copy of the global object table.
+This directive does not generate activity on remote nodes. It accesses only the
+local copy of the global object table.
 
 The semaphore identifier is used with other semaphore related directives to
 access the semaphore.
@@ -501,8 +500,8 @@ rtems_status_code rtems_semaphore_obtain(
 
 `timeout`
 : This parameter is the timeout in {term}`clock ticks <clock tick>` if the
-  {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to
-  wait potentially forever.
+  {c:macro}`RTEMS_WAIT` option is set. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait
+  potentially forever.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -510,10 +509,10 @@ rtems_status_code rtems_semaphore_obtain(
 
 This directive obtains the semaphore specified by `id`.
 
-The **option set** specified in `option_set` is built through a *bitwise or*
-of the option constants described below. Not all combinations of options are
-allowed. Some options are mutually exclusive. If mutually exclusive options
-are combined, the behaviour is undefined. Options not mentioned below are not
+The **option set** specified in `option_set` is built through a *bitwise or* of
+the option constants described below. Not all combinations of options are
+allowed. Some options are mutually exclusive. If mutually exclusive options are
+combined, the behaviour is undefined. Options not mentioned below are not
 evaluated by this directive and have no effect. Default options can be selected
 by using the {c:macro}`RTEMS_DEFAULT_OPTIONS` constant.
 
@@ -522,8 +521,8 @@ the mutually exclusive {c:macro}`RTEMS_WAIT` and {c:macro}`RTEMS_NO_WAIT`
 options.
 
 - **Waiting to obtain** the semaphore is the default and can be emphasized
-  through the use of the {c:macro}`RTEMS_WAIT` option. The `timeout`
-  parameter defines how long the calling task is willing to wait. Use
+  through the use of the {c:macro}`RTEMS_WAIT` option. The `timeout` parameter
+  defines how long the calling task is willing to wait. Use
   {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
   timeout interval in clock ticks.
 - **Trying to obtain** the semaphore is selected by the
@@ -574,8 +573,8 @@ scheduler.
   priority less than the priority ceiling.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
-: Acquiring of the local, binary semaphore by the calling task would have
-  cased a deadlock.
+: Acquiring of the local, binary semaphore by the calling task would have cased
+  a deadlock.
 
 {c:macro}`RTEMS_INCORRECT_STATE`
 : The calling task attempted to recursively obtain a local, binary semaphore
@@ -604,8 +603,8 @@ obtains the semaphore, and the priority of that task is greater than the
 ceiling priority for this semaphore, then the priority of the task acquiring
 the semaphore is elevated to that of the ceiling.
 
-Deadlock situations are detected for local, binary semaphores. If a deadlock
-is detected, then the directive immediately returns the
+Deadlock situations are detected for local, binary semaphores. If a deadlock is
+detected, then the directive immediately returns the
 {c:macro}`RTEMS_INCORRECT_STATE` status code.
 
 It is not allowed to recursively obtain (nested access) a local, binary
@@ -642,8 +641,7 @@ The following constraints apply to this directive:
   during the directive call.
 - The timeout functionality of the directive requires a {term}`clock tick`.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/sem/if/release
 
@@ -707,7 +705,8 @@ wait queue is not empty, then
 : The calling task was not the owner of the semaphore.
 
 {c:macro}`RTEMS_UNSATISFIED`
-: The semaphore's count already had the maximum value of [UINT32_MAX](https://en.cppreference.com/w/c/types/integer).
+: The semaphore's count already had the maximum value of
+  [UINT32_MAX](https://en.cppreference.com/w/c/types/integer).
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -744,8 +743,7 @@ The following constraints apply to this directive:
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/sem/if/flush
 
@@ -807,8 +805,7 @@ unblocked as the result of this directive will return from the
 : The semaphore resided on a remote node.
 
 {c:macro}`RTEMS_NOT_DEFINED`
-: Flushing a semaphore using the MrsP locking protocol is undefined
-  behaviour.
+: Flushing a semaphore using the MrsP locking protocol is undefined behaviour.
 
 ```{eval-rst}
 .. rubric:: NOTES:
@@ -824,8 +821,8 @@ protocol and any attempt to do this will just return the
 configurations.
 
 For barrier synchronization, the {ref}`RTEMSAPIClassicBarrier` offers a cleaner
-alternative to using the semaphore flush directive. Unlike POSIX barriers,
-they have a manual release option.
+alternative to using the semaphore flush directive. Unlike POSIX barriers, they
+have a manual release option.
 
 Using the semaphore flush directive for condition synchronization in concert
 with another semaphore may be subject to the lost wake-up problem. The
@@ -878,8 +875,7 @@ The following constraints apply to this directive:
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 - When the directive operates on a remote object, the directive sends a message
-  to the remote node and waits for a reply. This will preempt the calling
-  task.
+  to the remote node and waits for a reply. This will preempt the calling task.
 
 % Generated from spec:/rtems/sem/if/set-priority
 
@@ -924,22 +920,19 @@ rtems_status_code rtems_semaphore_set_priority(
   priority.
 
 `new_priority`
-: This parameter is the new priority corresponding to the specified
-  scheduler.
+: This parameter is the new priority corresponding to the specified scheduler.
 
 `old_priority`
-: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
-  object. When the directive call is successful, the old priority of the
-  semaphore corresponding to the specified scheduler will be stored in this
-  object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority` object.
+  When the directive call is successful, the old priority of the semaphore
+  corresponding to the specified scheduler will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
 ```
 
-This directive sets the priority of the semaphore specified by
-`semaphore_id`. The priority corresponds to the scheduler specified by
-`scheduler_id`.
+This directive sets the priority of the semaphore specified by `semaphore_id`.
+The priority corresponds to the scheduler specified by `scheduler_id`.
 
 The special priority value {c:macro}`RTEMS_CURRENT_PRIORITY` can be used to get
 the current priority without changing it.
@@ -962,7 +955,8 @@ protocol of the semaphore:
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `old_priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `old_priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no scheduler associated with the identifier specified by

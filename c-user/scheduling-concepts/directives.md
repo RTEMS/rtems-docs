@@ -71,9 +71,9 @@ rtems_status_code rtems_scheduler_ident( rtems_name name, rtems_id *id );
 : This parameter is the scheduler name to look up.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the scheduler will be
-  stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the scheduler will be stored
+  in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -147,9 +147,9 @@ rtems_status_code rtems_scheduler_ident_by_processor(
 : This parameter is the processor index to identify the scheduler.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the scheduler will be
-  stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the scheduler will be stored
+  in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -217,9 +217,9 @@ rtems_status_code rtems_scheduler_ident_by_processor_set(
   processor set will be used to identify the scheduler.
 
 `id`
-: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When
-  the directive call is successful, the identifier of the scheduler will be
-  stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsId` object. When the
+  directive call is successful, the identifier of the scheduler will be stored
+  in this object.
 
 ```{eval-rst}
 .. rubric:: DESCRIPTION:
@@ -239,7 +239,8 @@ the specified processor set.
 : The `id` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `cpuset` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_SIZE`
 : The processor set size was invalid.
@@ -294,9 +295,9 @@ rtems_status_code rtems_scheduler_get_maximum_priority(
 : This parameter is the scheduler identifier.
 
 `priority`
-: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
-  object. When the directive the maximum priority of the scheduler will be
-  stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority` object.
+  When the directive the maximum priority of the scheduler will be stored in
+  this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -310,7 +311,8 @@ rtems_status_code rtems_scheduler_get_maximum_priority(
   `scheduler_id`.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -359,9 +361,9 @@ rtems_status_code rtems_scheduler_map_priority_to_posix(
 : This parameter is the Classic API task priority to map.
 
 `posix_priority`
-: This parameter is the pointer to an `int` object. When the directive
-  call is successful, the POSIX thread priority value corresponding to the
-  specified Classic API task priority value will be stored in this object.
+: This parameter is the pointer to an `int` object. When the directive call is
+  successful, the POSIX thread priority value corresponding to the specified
+  Classic API task priority value will be stored in this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -371,7 +373,8 @@ rtems_status_code rtems_scheduler_map_priority_to_posix(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `posix_priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `posix_priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no scheduler associated with the identifier specified by
@@ -427,10 +430,10 @@ rtems_status_code rtems_scheduler_map_priority_from_posix(
 : This parameter is the POSIX thread priority to map.
 
 `priority`
-: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority`
-  object. When the directive call is successful, the Classic API task
-  priority value corresponding to the specified POSIX thread priority value
-  will be stored in this object.
+: This parameter is the pointer to an {ref}`InterfaceRtemsTaskPriority` object.
+  When the directive call is successful, the Classic API task priority value
+  corresponding to the specified POSIX thread priority value will be stored in
+  this object.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -440,7 +443,8 @@ rtems_status_code rtems_scheduler_map_priority_from_posix(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `priority` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `priority` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no scheduler associated with the identifier specified by
@@ -623,7 +627,8 @@ rtems_status_code rtems_scheduler_get_processor_set(
 : The requested operation was successful.
 
 {c:macro}`RTEMS_INVALID_ADDRESS`
-: The `cpuset` parameter was [NULL](https://en.cppreference.com/w/c/types/NULL).
+: The `cpuset` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
 
 {c:macro}`RTEMS_INVALID_ID`
 : There was no scheduler associated with the identifier specified by
@@ -682,8 +687,8 @@ rtems_status_code rtems_scheduler_add_processor(
 .. rubric:: DESCRIPTION:
 ```
 
-This directive adds the processor specified by the `cpu_index` to the
-scheduler specified by `scheduler_id`.
+This directive adds the processor specified by the `cpu_index` to the scheduler
+specified by `scheduler_id`.
 
 ```{eval-rst}
 .. rubric:: RETURN VALUES:
@@ -779,8 +784,8 @@ scheduler specified by `scheduler_id`.
   scheduler as its {term}`home scheduler`.
 
 {c:macro}`RTEMS_RESOURCE_IN_USE`
-: The processor was the last processor owned by the scheduler and there was
-  at least one task that used the scheduler as a {term}`helping scheduler`.
+: The processor was the last processor owned by the scheduler and there was at
+  least one task that used the scheduler as a {term}`helping scheduler`.
 
 ```{eval-rst}
 .. rubric:: NOTES:

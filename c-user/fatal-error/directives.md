@@ -98,7 +98,8 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward order`.
+- The directive invokes the fatal error extensions in
+  {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.
@@ -157,7 +158,8 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward order`.
+- The directive invokes the fatal error extensions in
+  {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.
@@ -211,7 +213,8 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward order`.
+- The directive invokes the fatal error extensions in
+  {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.
@@ -412,7 +415,8 @@ The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
 - The directive will not return to the caller.
-- The directive invokes the fatal error extensions in {term}`extension forward order`.
+- The directive invokes the fatal error extensions in
+  {term}`extension forward order`.
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
 - The directive may terminate the system.

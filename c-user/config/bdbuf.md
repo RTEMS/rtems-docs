@@ -83,8 +83,8 @@ initialized during system initialization.
 ```
 
 Each option of the Block Device Cache (bdbuf) configuration can be explicitly
-set by the user with the configuration options below. The Block Device Cache
-is used for example by the RFS and DOSFS filesystems.
+set by the user with the configuration options below. The Block Device Cache is
+used for example by the RFS and DOSFS filesystems.
 
 % Generated from spec:/acfg/if/bdbuf-buffer-max-size
 
@@ -121,8 +121,8 @@ The default value is 4096.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the maximum size of a buffer
-in bytes.
+The value of this configuration option defines the maximum size of a buffer in
+bytes.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -169,8 +169,8 @@ The default value is 512.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the minimum size of a buffer
-in bytes.
+The value of this configuration option defines the minimum size of a buffer in
+bytes.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -217,8 +217,8 @@ The default value is 32768.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the size of the cache memory
-in bytes.
+The value of this configuration option defines the size of the cache memory in
+bytes.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -272,9 +272,9 @@ read-ahead request.
 .. rubric:: NOTES:
 ```
 
-A value of 0 disables the read-ahead task (default). The read-ahead task
-will issue speculative read transfers if a sequential access pattern is
-detected. This can improve the performance on some systems.
+A value of 0 disables the read-ahead task (default). The read-ahead task will
+issue speculative read transfers if a sequential access pattern is detected.
+This can improve the performance on some systems.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -414,8 +414,8 @@ The default value is {c:macro}`RTEMS_MINIMUM_STACK_SIZE`.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the task stack size of the
-Block Device Cache tasks in bytes.
+The value of this configuration option defines the task stack size of the Block
+Device Cache tasks in bytes.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
@@ -429,8 +429,9 @@ The following constraints apply to this configuration option:
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
 - The value of the configuration option shall be small enough so that the task
-  stack space calculation carried out by `<rtems/confdefs.h>` does not
-  overflow an integer of type [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+  stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
+  an integer of type
+  [uintptr_t](https://en.cppreference.com/w/c/types/integer).
 
 % Generated from spec:/acfg/if/bdbuf-swapout-block-hold
 
@@ -515,8 +516,8 @@ The default value is 250.
 .. rubric:: DESCRIPTION:
 ```
 
-The value of this configuration option defines the swapout task swap period
-in milliseconds.
+The value of this configuration option defines the swapout task swap period in
+milliseconds.
 
 ```{eval-rst}
 .. rubric:: CONSTRAINTS:
