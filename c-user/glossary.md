@@ -1,12 +1,11 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2022, 2023 Trinity College Dublin
-
 % Copyright (C) 2020 Richi Dubey (richidubey@gmail.com)
-
 % Copyright (C) 2015, 2023 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 1998 On-Line Applications Research Corporation (OAR)
+
+(Glossary)=
 
 # Glossary
 
@@ -17,8 +16,7 @@ ABI
 
 active
 
-  A term used to describe an object which has been created by an
-  application.
+  A term used to describe an object which has been created by an application.
 
 AMP
 
@@ -54,8 +52,8 @@ assembler language
 
   The assembler language is a programming language which can be translated very
   easily into machine code and data. For this project assembler languages are
-  restricted to languages accepted by the {term}`GNU` assembler
-  program for the target architectures.
+  restricted to languages accepted by the {term}`GNU` assembler program for the
+  target architectures.
 
 asynchronous
 
@@ -63,9 +61,9 @@ asynchronous
 
 Asynchronous Signal Routine
 
-  Similar to a hardware interrupt except that it is associated with a task
-  and is run in the context of a task. The directives provided by the
-  signal manager are used to service signals.
+  Similar to a hardware interrupt except that it is associated with a task and
+  is run in the context of a task. The directives provided by the signal
+  manager are used to service signals.
 
 atomic operations
 
@@ -73,8 +71,8 @@ atomic operations
 
 awakened
 
-  A term used to describe a task that has been unblocked and may be
-  scheduled to the CPU.
+  A term used to describe a task that has been unblocked and may be scheduled
+  to the CPU.
 
 BCB
 
@@ -82,15 +80,13 @@ BCB
 
 big endian
 
-  A data representation scheme in which the bytes composing a numeric value
-  are arranged such that the most significant byte is at the lowest
-  address.
+  A data representation scheme in which the bytes composing a numeric value are
+  arranged such that the most significant byte is at the lowest address.
 
 bit-mapped
 
-  A data encoding scheme in which each bit in a variable is used to
-  represent something different. This makes for compact data
-  representation.
+  A data encoding scheme in which each bit in a variable is used to represent
+  something different. This makes for compact data representation.
 
 block
 
@@ -98,10 +94,9 @@ block
 
 blocked task
 
-  The task state entered by a task which has been previously started and
-  cannot continue execution until the reason for waiting has been
-  satisfied. Blocked tasks are not an element of the set of ready tasks of
-  a scheduler instance.
+  The task state entered by a task which has been previously started and cannot
+  continue execution until the reason for waiting has been satisfied. Blocked
+  tasks are not an element of the set of ready tasks of a scheduler instance.
 
 Board Support Package
 
@@ -122,8 +117,7 @@ buffer
 
 C language
 
-  The C language for this project is defined in terms of
-  {term}`C11`.
+  The C language for this project is defined in terms of {term}`C11`.
 
 C++11
 
@@ -151,10 +145,10 @@ C17
 
 calling convention
 
-  The processor and compiler dependent rules which define the mechanism
-  used to invoke subroutines in a high-level language. These rules define
-  the passing of arguments, the call and return mechanism, and the register
-  set which must be preserved.
+  The processor and compiler dependent rules which define the mechanism used to
+  invoke subroutines in a high-level language. These rules define the passing
+  of arguments, the call and return mechanism, and the register set which must
+  be preserved.
 
 CCB
 
@@ -166,15 +160,15 @@ Central Processing Unit
 
 chain
 
-  A data structure which allows for efficient dynamic addition and removal
-  of elements. It differs from an array in that it is not limited to a
-  predefined size.
+  A data structure which allows for efficient dynamic addition and removal of
+  elements. It differs from an array in that it is not limited to a predefined
+  size.
 
 Clock Driver
 
-  The Clock Driver is a driver which provides the {term}`clock tick` and a
-  time counter. The time counter is used to drive the {term}`CLOCK_REALTIME`
-  and {term}`CLOCK_MONOTONIC`. The Clock Driver can be initialized by the
+  The Clock Driver is a driver which provides the {term}`clock tick` and a time
+  counter. The time counter is used to drive the {term}`CLOCK_REALTIME` and
+  {term}`CLOCK_MONOTONIC`. The Clock Driver can be initialized by the
   application with the {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER` and
   {ref}`CONFIGURE_MICROSECONDS_PER_TICK` application configuration options.
 
@@ -211,13 +205,13 @@ cluster
 
   We have clustered scheduling in case the set of processors of a system is
   partitioned into non-empty pairwise disjoint subsets. These subsets are
-  called clusters. Clusters with a cardinality of one are partitions.
-  Each cluster is owned by exactly one scheduler instance.
+  called clusters. Clusters with a cardinality of one are partitions. Each
+  cluster is owned by exactly one scheduler instance.
 
 coalesce
 
-  The process of merging adjacent holes into a single larger hole.
-  Sometimes this process is referred to as garbage collection.
+  The process of merging adjacent holes into a single larger hole. Sometimes
+  this process is referred to as garbage collection.
 
 Configuration Table
 
@@ -231,8 +225,8 @@ context
 
 context switch
 
-  Alternate term for task switch. Taking control of the processor from one
-  task and transferring it to another task.
+  Alternate term for task switch. Taking control of the processor from one task
+  and transferring it to another task.
 
 control block
 
@@ -240,9 +234,9 @@ control block
 
 core
 
-  When used in this manual, this term refers to the internal executive
-  utility functions. In the interest of application portability, the core
-  of the executive should not be used directly by applications.
+  When used in this manual, this term refers to the internal executive utility
+  functions. In the interest of application portability, the core of the
+  executive should not be used directly by applications.
 
 CPU
 
@@ -293,13 +287,13 @@ directives
 
 dispatch
 
-  The act of loading a task's context onto the CPU and transferring control
-  of the CPU to that task.
+  The act of loading a task's context onto the CPU and transferring control of
+  the CPU to that task.
 
 Doorstop
 
-  [Doorstop](https://github.com/doorstop-dev/doorstop) is a
-  requirements management tool.
+  [Doorstop](https://github.com/doorstop-dev/doorstop) is a requirements
+  management tool.
 
 dormant
 
@@ -317,8 +311,8 @@ dual-ported
 
 dynamic extension sets
 
-  The dynamic extension sets are a list of {term}`user extensions`. The list
-  is defined by the system services used by the application and directive calls
+  The dynamic extension sets are a list of {term}`user extensions`. The list is
+  defined by the system services used by the application and directive calls
   such as {ref}`InterfaceRtemsExtensionCreate`. See also
   {term}`initial extension sets`.
 
@@ -349,21 +343,21 @@ eligible scheduler
 
 embedded
 
-  An application that is delivered as a hidden part of a larger system.
-  For example, the software in a fuel-injection control system is an
-  embedded application found in many late-model automobiles.
+  An application that is delivered as a hidden part of a larger system. For
+  example, the software in a fuel-injection control system is an embedded
+  application found in many late-model automobiles.
 
 entry point
 
-  The address at which a function or task begins to execute. In C, the
-  entry point of a function is the function's name.
+  The address at which a function or task begins to execute. In C, the entry
+  point of a function is the function's name.
 
 envelope
 
-  A buffer provided by the MPCI layer to RTEMS which is used to pass
-  messages between nodes in a multiprocessor system. It typically contains
-  routing information needed by the MPCI. The contents of an envelope are
-  referred to as a packet.
+  A buffer provided by the MPCI layer to RTEMS which is used to pass messages
+  between nodes in a multiprocessor system. It typically contains routing
+  information needed by the MPCI. The contents of an envelope are referred to
+  as a packet.
 
 error code
 
@@ -375,8 +369,8 @@ ESCB
 
 events
 
-  A method for task communication and synchronization. The directives
-  provided by the event manager are used to service events.
+  A method for task communication and synchronization. The directives provided
+  by the event manager are used to service events.
 
 exception
 
@@ -385,9 +379,9 @@ exception
 executing task
 
   The task state entered by a task after it has been given control of the
-  processor. In SMP configurations, a task may be registered as executing
-  on more than one processor for short time frames during task migration.
-  Blocked tasks can be executing until they issue a thread dispatch.
+  processor. In SMP configurations, a task may be registered as executing on
+  more than one processor for short time frames during task migration. Blocked
+  tasks can be executing until they issue a thread dispatch.
 
 executive
 
@@ -396,16 +390,16 @@ executive
 
 exported
 
-  An object known by all nodes in a multiprocessor system. An object
-  created with the GLOBAL attribute will be exported.
+  An object known by all nodes in a multiprocessor system. An object created
+  with the GLOBAL attribute will be exported.
 
 extension forward order
 
   The {term}`user extensions` may be invoked in extension forward order. In
   forward order, all user extensions of the {term}`initial extension sets` are
-  invoked before all user extensions of the {term}`dynamic extension sets`.
-  In the initial extension sets the order is defined by the table index. The
-  user extension with the lowest table index is invoked first. In the dynamic
+  invoked before all user extensions of the {term}`dynamic extension sets`. In
+  the initial extension sets the order is defined by the table index. The user
+  extension with the lowest table index is invoked first. In the dynamic
   extension sets the order is defined by the registration order. The first
   registered user extension is invoked first. See also
   {term}`extension reverse order`.
@@ -414,17 +408,17 @@ extension reverse order
 
   The {term}`user extensions` may be invoked in extension reverse order. In
   reverse order, all user extensions of the {term}`dynamic extension sets` are
-  invoked before all user extensions of the {term}`initial extension sets`.
-  In the dynamic extension sets the order is defined by the registration order.
-  The last registered user extension is invoked first. In the initial
-  extension sets the order is defined by the table index. The user extension
-  with the highest table index is invoked first. See also
+  invoked before all user extensions of the {term}`initial extension sets`. In
+  the dynamic extension sets the order is defined by the registration order.
+  The last registered user extension is invoked first. In the initial extension
+  sets the order is defined by the table index. The user extension with the
+  highest table index is invoked first. See also
   {term}`extension forward order`.
 
 external address
 
-  The address used to access dual-ported memory by all the nodes in a
-  system which do not own the memory.
+  The address used to access dual-ported memory by all the nodes in a system
+  which do not own the memory.
 
 FIFO
 
@@ -437,9 +431,9 @@ First In First Out
 
 floating point coprocessor
 
-  A component used in computer systems to enhance performance in
-  mathematically intensive situations. It is typically viewed as a logical
-  extension of the primary processor.
+  A component used in computer systems to enhance performance in mathematically
+  intensive situations. It is typically viewed as a logical extension of the
+  primary processor.
 
 formal model
 
@@ -454,10 +448,10 @@ Futex
 
   This term is an abbreviation for
   [Fast User-Space Locking](https://man7.org/linux/man-pages/man2/futex.2.html).
-  The futex support in RTEMS is provided for the barriers of the
-  {term}`OpenMP` library provided by {term}`GCC`. It could be used to
-  implement high performance {term}`SMP` synchronization primitives which
-  offer random-fairness.
+  The futex support in RTEMS is provided for the barriers of the {term}`OpenMP`
+  library provided by {term}`GCC`. It could be used to implement high
+  performance {term}`SMP` synchronization primitives which offer
+  random-fairness.
 
 GCC
 
@@ -465,8 +459,8 @@ GCC
 
 global
 
-  An object that has been created with the GLOBAL attribute and exported to
-  all nodes in a multiprocessor system.
+  An object that has been created with the GLOBAL attribute and exported to all
+  nodes in a multiprocessor system.
 
 global construction
 
@@ -475,8 +469,7 @@ global construction
 
 GNAT
 
-  *GNAT* is the {term}`GNU` compiler for Ada, integrated into the
-  {term}`GCC`.
+  *GNAT* is the {term}`GNU` compiler for Ada, integrated into the {term}`GCC`.
 
 GNU
 
@@ -499,55 +492,53 @@ GPLv3
 
 GR712RC
 
-  The
-  [GR712RC](https://www.gaisler.com/index.php/products/components/gr712rc)
+  The [GR712RC](https://www.gaisler.com/index.php/products/components/gr712rc)
   is a {term}`system-on-chip` containing two processors of the {term}`SPARC`
   {term}`target architecture`.
 
 GR740
 
-  The
-  [GR740](https://www.gaisler.com/index.php/products/components/gr740)
-  is a {term}`system-on-chip` containing four processors of the {term}`SPARC`
+  The [GR740](https://www.gaisler.com/index.php/products/components/gr740) is a
+  {term}`system-on-chip` containing four processors of the {term}`SPARC`
   {term}`target architecture`.
 
 handler
 
-  The equivalent of a manager, except that it is internal to RTEMS and
-  forms part of the core. A handler is a collection of routines which
-  provide a related set of functions. For example, there is a handler used
-  by RTEMS to manage all objects.
+  The equivalent of a manager, except that it is internal to RTEMS and forms
+  part of the core. A handler is a collection of routines which provide a
+  related set of functions. For example, there is a handler used by RTEMS to
+  manage all objects.
 
 hard real-time system
 
-  A real-time system in which a missed deadline causes the worked performed
-  to have no value or to result in a catastrophic effect on the integrity
-  of the system.
+  A real-time system in which a missed deadline causes the worked performed to
+  have no value or to result in a catastrophic effect on the integrity of the
+  system.
 
 heap
 
-  A data structure used to dynamically allocate and deallocate variable
-  sized blocks of memory.
+  A data structure used to dynamically allocate and deallocate variable sized
+  blocks of memory.
 
 heir task
 
   A task is an heir if it is registered as an heir in a processor of the
-  system. A task can be the heir on at most one processor in the system.
-  In case the executing and heir tasks differ on a processor and a thread
-  dispatch is marked as necessary, then the next thread dispatch will make
-  the heir task the executing task.
+  system. A task can be the heir on at most one processor in the system. In
+  case the executing and heir tasks differ on a processor and a thread dispatch
+  is marked as necessary, then the next thread dispatch will make the heir task
+  the executing task.
 
 helping priority
 
   A helping priority of a {term}`task` is the {term}`task priority` with
-  respect to the corresponding {term}`helping scheduler` of the task. A
-  helping priority is an {term}`eligible priority`.
+  respect to the corresponding {term}`helping scheduler` of the task. A helping
+  priority is an {term}`eligible priority`.
 
 helping scheduler
 
   A helping scheduler of a {term}`task` is a {term}`scheduler` which is a
-  {term}`eligible scheduler` and which is not the {term}`home scheduler` of
-  the task.
+  {term}`eligible scheduler` and which is not the {term}`home scheduler` of the
+  task.
 
 heterogeneous
 
@@ -555,8 +546,8 @@ heterogeneous
 
 higher priority
 
-  A {term}`task` `H` has a higher {term}`priority` than a task `L`, if
-  task `H` is more important than task `L`.
+  A {term}`task` `H` has a higher {term}`priority` than a task `L`, if task `H`
+  is more important than task `L`.
 
 home scheduler
 
@@ -579,13 +570,13 @@ ID
 
 IDLE task
 
-  A special low priority task which assumes control of the CPU when no
-  other task is able to execute.
+  A special low priority task which assumes control of the CPU when no other
+  task is able to execute.
 
 ineligible scheduler
 
-  An ineligible scheduler of a {term}`task` is a {term}`scheduler` which is
-  not an {term}`eligible scheduler`.
+  An ineligible scheduler of a {term}`task` is a {term}`scheduler` which is not
+  an {term}`eligible scheduler`.
 
 initial extension sets
 
@@ -613,17 +604,16 @@ interrupt
 interrupt level
 
   A mask used to by the CPU to determine which pending interrupts should be
-  serviced. If a pending interrupt is below the current interrupt level,
-  then the CPU does not recognize that interrupt.
+  serviced. If a pending interrupt is below the current interrupt level, then
+  the CPU does not recognize that interrupt.
 
 interrupt service
 
-  An *interrupt service* consists of an
-  {term}`Interrupt Service Routine` which is called with a user
-  provided argument upon reception of an interrupt service request. The
-  routine is invoked in interrupt context. Interrupt service requests may have
-  a priority and an affinity to a set of processors. An *interrupt service* is
-  a {term}`software component`.
+  An *interrupt service* consists of an {term}`Interrupt Service Routine` which
+  is called with a user provided argument upon reception of an interrupt
+  service request. The routine is invoked in interrupt context. Interrupt
+  service requests may have a priority and an affinity to a set of processors.
+  An *interrupt service* is a {term}`software component`.
 
 Interrupt Service Routine
 
@@ -657,37 +647,35 @@ Linear Temporal Logic
 
 list
 
-  A data structure which allows for dynamic addition and removal of
-  entries. It is not statically limited to a particular size.
+  A data structure which allows for dynamic addition and removal of entries. It
+  is not statically limited to a particular size.
 
 little endian
 
-  A data representation scheme in which the bytes composing a numeric value
-  are arranged such that the least significant byte is at the lowest
-  address.
+  A data representation scheme in which the bytes composing a numeric value are
+  arranged such that the least significant byte is at the lowest address.
 
 LLVM
 
   This term is an acronym for
-  [Low Level Virtual Machine](https://www.llvm.org).
-  The LLVM Project is a collection of modular and reusable compiler and
-  toolchain technologies.
+  [Low Level Virtual Machine](https://www.llvm.org). The LLVM Project is a
+  collection of modular and reusable compiler and toolchain technologies.
 
 local
 
-  An object which was created with the LOCAL attribute and is accessible
-  only on the node it was created and resides upon. In a single processor
+  An object which was created with the LOCAL attribute and is accessible only
+  on the node it was created and resides upon. In a single processor
   configuration, all objects are local.
 
 local operation
 
-  The manipulation of an object which resides on the same node as the
-  calling task.
+  The manipulation of an object which resides on the same node as the calling
+  task.
 
 logical address
 
-  An address used by an application. In a system without memory
-  management, logical addresses will equal physical addresses.
+  An address used by an application. In a system without memory management,
+  logical addresses will equal physical addresses.
 
 loosely-coupled
 
@@ -696,8 +684,8 @@ loosely-coupled
 
 lower priority
 
-  A {term}`task` `L` has a lower {term}`priority` than a task `H`, if
-  task `L` is less important than task `H`.
+  A {term}`task` `L` has a lower {term}`priority` than a task `H`, if task `L`
+  is less important than task `H`.
 
 LTL
 
@@ -709,8 +697,8 @@ major number
 
 manager
 
-  A group of related RTEMS' directives which provide access and control
-  over resources.
+  A group of related RTEMS' directives which provide access and control over
+  resources.
 
 MCS
 
@@ -722,8 +710,8 @@ memory pool
 
 message
 
-  A sixteen byte entity used to communicate between tasks. Messages are
-  sent to message queues and stored in message buffers.
+  A sixteen byte entity used to communicate between tasks. Messages are sent to
+  message queues and stored in message buffers.
 
 message buffer
 
@@ -736,13 +724,13 @@ message queue
 
 Message Queue Control Block
 
-  A data structure associated with each message queue used by RTEMS to
-  manage that message queue.
+  A data structure associated with each message queue used by RTEMS to manage
+  that message queue.
 
 minor number
 
-  A numeric value passed to a device driver, the exact usage of which is
-  driver dependent.
+  A numeric value passed to a device driver, the exact usage of which is driver
+  dependent.
 
 mode
 
@@ -761,8 +749,8 @@ MrsP
 
 multiprocessing
 
-  The simultaneous execution of two or more processes by a multiple
-  processor computer system.
+  The simultaneous execution of two or more processes by a multiple processor
+  computer system.
 
 multiprocessor
 
@@ -770,29 +758,29 @@ multiprocessor
 
 Multiprocessor Communications Interface Layer
 
-  A set of user-provided routines which enable the nodes in a
-  multiprocessor system to communicate with one another.
+  A set of user-provided routines which enable the nodes in a multiprocessor
+  system to communicate with one another.
 
 Multiprocessor Configuration Table
 
-  The data structure defining the characteristics of the multiprocessor
-  target system with which RTEMS will communicate.
+  The data structure defining the characteristics of the multiprocessor target
+  system with which RTEMS will communicate.
 
 multitasking
 
-  The alternation of execution amongst a group of processes on a single
-  CPU. A scheduling algorithm is used to determine which process executes
-  at which time.
+  The alternation of execution amongst a group of processes on a single CPU. A
+  scheduling algorithm is used to determine which process executes at which
+  time.
 
 mutual exclusion
 
-  A term used to describe the act of preventing other tasks from accessing
-  a resource simultaneously.
+  A term used to describe the act of preventing other tasks from accessing a
+  resource simultaneously.
 
 nested
 
-  A term used to describe an ASR that occurs during another ASR or an ISR
-  that occurs during another ISR.
+  A term used to describe an ASR that occurs during another ASR or an ISR that
+  occurs during another ISR.
 
 node
 
@@ -814,9 +802,9 @@ NUMA
 
 numeric coprocessor
 
-  A component used in computer systems to enhance performance in
-  mathematically intensive situations. It is typically viewed as a logical
-  extension of the primary processor.
+  A component used in computer systems to enhance performance in mathematically
+  intensive situations. It is typically viewed as a logical extension of the
+  primary processor.
 
 OBC
 
@@ -824,9 +812,9 @@ OBC
 
 object
 
-  In this document, this term is used to refer collectively to tasks,
-  timers, message queues, partitions, regions, semaphores, ports, and rate
-  monotonic periods. All RTEMS objects have IDs and user-assigned names.
+  In this document, this term is used to refer collectively to tasks, timers,
+  message queues, partitions, regions, semaphores, ports, and rate monotonic
+  periods. All RTEMS objects have IDs and user-assigned names.
 
 object-oriented
 
@@ -838,13 +826,11 @@ OMIP
 
   This term is an acronym for O(m) Independence-Preserving Protocol. OMIP is a
   generalization of the {term}`priority inheritance` locking protocol to
-  clustered scheduling. The `m` denotes the number of processors in the
-  system.
+  clustered scheduling. The `m` denotes the number of processors in the system.
 
 OpenMP
 
-  This term is an acronym for
-  [Open Multi-Processing](https://www.openmp.org/).
+  This term is an acronym for [Open Multi-Processing](https://www.openmp.org/).
 
 operating system
 
@@ -853,27 +839,26 @@ operating system
 
 overhead
 
-  The portion of the CPUs processing power consumed by the operating
-  system.
+  The portion of the CPUs processing power consumed by the operating system.
 
 packet
 
-  A buffer which contains the messages passed between nodes in a
-  multiprocessor system. A packet is the contents of an envelope.
+  A buffer which contains the messages passed between nodes in a multiprocessor
+  system. A packet is the contents of an envelope.
 
 partition
 
   This term has two definitions:
 
-  1. A partition is an RTEMS object which is used to allocate and
-     deallocate fixed size blocks of memory from an dynamically specified
-     area of memory.
+  1. A partition is an RTEMS object which is used to allocate and deallocate
+     fixed size blocks of memory from an dynamically specified area of memory.
+
   2. A {term}`cluster` with a cardinality of one is a partition.
 
 Partition Control Block
 
-  A data structure associated with each partition used by RTEMS to manage
-  that partition.
+  A data structure associated with each partition used by RTEMS to manage that
+  partition.
 
 PCB
 
@@ -896,8 +881,8 @@ physical address
 poll
 
   A mechanism used to determine if an event has occurred by periodically
-  checking for a particular status. Typical events include arrival of
-  data, completion of an action, and errors.
+  checking for a particular status. Typical events include arrival of data,
+  completion of an action, and errors.
 
 pool
 
@@ -932,42 +917,41 @@ priority
   The priority is a mechanism used to represent the relative importance of an
   element in a set of items.
 
-  For example, {term}`RTEMS` uses {term}`task priorities <task priority>` to determine which
-  {term}`task` should execute on a processor. In RTEMS, priorities are
-  represented by non-negative integers.
+  For example, {term}`RTEMS` uses {term}`task priorities <task priority>` to
+  determine which {term}`task` should execute on a processor. In RTEMS,
+  priorities are represented by non-negative integers.
 
   For the Classic {term}`API`, if a numerical priority value `A` is greater
   than a numerical priority value `B`, then `A` expresses a
-  {term}`lower priority` than `B`. If a numerical priority value `C` is
-  less than a numerical priority value `D`, then `C` expresses a
+  {term}`lower priority` than `B`. If a numerical priority value `C` is less
+  than a numerical priority value `D`, then `C` expresses a
   {term}`higher priority` than `D`.
 
-  For the {term}`POSIX` API, if a numerical priority value `R` is less than
-  a numerical priority value `S`, then `R` expresses a lower priority than
-  `S`. If a numerical priority value `T` is greater than a numerical
-  priority value `U`, then `T` expresses a higher priority than `U`.
+  For the {term}`POSIX` API, if a numerical priority value `R` is less than a
+  numerical priority value `S`, then `R` expresses a lower priority than `S`.
+  If a numerical priority value `T` is greater than a numerical priority value
+  `U`, then `T` expresses a higher priority than `U`.
 
 priority boosting
 
-  A simple approach to extend the priority inheritance protocol for
-  clustered scheduling is priority boosting. In case a mutex is owned by a
-  task of another cluster, then the priority of the owner task is raised to
-  an artificially high priority. This approach is not used in RTEMS, see also
+  A simple approach to extend the priority inheritance protocol for clustered
+  scheduling is priority boosting. In case a mutex is owned by a task of
+  another cluster, then the priority of the owner task is raised to an
+  artificially high priority. This approach is not used in RTEMS, see also
   {term}`OMIP`.
 
 priority inheritance
 
   An algorithm that calls for the lower priority task holding a resource to
   have its priority increased to that of the highest priority task blocked
-  waiting for that resource. This avoids the problem of priority
-  inversion.
+  waiting for that resource. This avoids the problem of priority inversion.
 
 priority inversion
 
   A form of indefinite postponement which occurs when a high priority tasks
-  requests access to shared resource currently allocated to low priority
-  task. The high priority task must block until the low priority task
-  releases the resource.
+  requests access to shared resource currently allocated to low priority task.
+  The high priority task must block until the low priority task releases the
+  resource.
 
 processor utilization
 
@@ -975,8 +959,8 @@ processor utilization
 
 proxy
 
-  An RTEMS control structure used to represent, on a remote node, a task
-  which must block as part of a remote operation.
+  An RTEMS control structure used to represent, on a remote node, a task which
+  must block as part of a remote operation.
 
 Proxy Control Block
 
@@ -1006,18 +990,18 @@ queue
 ready task
 
   A task occupies this state when it is available to be given control of a
-  processor. A ready task has no processor assigned. The scheduler
-  decided that other tasks are currently more important. A task that is
-  ready to execute and has a processor assigned is called scheduled.
+  processor. A ready task has no processor assigned. The scheduler decided that
+  other tasks are currently more important. A task that is ready to execute and
+  has a processor assigned is called scheduled.
 
 real priority
 
-  Each {term}`task` has exactly one real priority. The real priority is
-  always with respect to the {term}`home scheduler` of a task. It is defined
-  during task initialization. It may be changed by directives such as
+  Each {term}`task` has exactly one real priority. The real priority is always
+  with respect to the {term}`home scheduler` of a task. It is defined during
+  task initialization. It may be changed by directives such as
   {ref}`InterfaceRtemsTaskSetPriority` and
-  {ref}`InterfaceRtemsTaskSetScheduler`. The real priority is the foundation
-  of the {term}`current priority`.
+  {ref}`InterfaceRtemsTaskSetScheduler`. The real priority is the foundation of
+  the {term}`current priority`.
 
 real-time
 
@@ -1038,8 +1022,8 @@ refinement
 
 region
 
-  An RTEMS object which is used to allocate and deallocate variable size
-  blocks of memory from a dynamically specified area of memory.
+  An RTEMS object which is used to allocate and deallocate variable size blocks
+  of memory from a dynamically specified area of memory.
 
 Region Control Block
 
@@ -1048,8 +1032,8 @@ Region Control Block
 
 registers
 
-  Registers are locations physically located within a component, typically
-  used for device control or general purpose storage.
+  Registers are locations physically located within a component, typically used
+  for device control or general purpose storage.
 
 reification
 
@@ -1061,8 +1045,8 @@ remote
 
 remote operation
 
-  The manipulation of an object which does not reside on the same node as
-  the calling task.
+  The manipulation of an object which does not reside on the same node as the
+  calling task.
 
 ReqIF
 
@@ -1094,8 +1078,8 @@ RNCB
 
 round-robin
 
-  A task scheduling discipline in which tasks of equal priority are
-  executed in the order in which they are made ready.
+  A task scheduling discipline in which tasks of equal priority are executed in
+  the order in which they are made ready.
 
 RS-232
 
@@ -1119,13 +1103,13 @@ scenario
 
   In the context of formal verification, in a setting that involves many
   concurrent tasks that interleave in arbitrary ways, a scenario describes a
-  single specific possible interleaving. One interpretation of the behaviour
-  of a concurrent system is the set of all its scenarios.
+  single specific possible interleaving. One interpretation of the behaviour of
+  a concurrent system is the set of all its scenarios.
 
 schedulable
 
-  A set of tasks which can be guaranteed to meet their deadlines based upon
-  a specific scheduling algorithm.
+  A set of tasks which can be guaranteed to meet their deadlines based upon a
+  specific scheduling algorithm.
 
 schedule
 
@@ -1133,32 +1117,31 @@ schedule
 
 scheduled task
 
-  A task is scheduled if it is allowed to execute and has a processor
-  assigned. Such a task executes currently on a processor or is about to
-  start execution. A task about to start execution it is an heir task on
-  exactly one processor in the system.
+  A task is scheduled if it is allowed to execute and has a processor assigned.
+  Such a task executes currently on a processor or is about to start execution.
+  A task about to start execution it is an heir task on exactly one processor
+  in the system.
 
 scheduler
 
-  A scheduler or scheduling algorithm allocates processors to a subset of
-  its set of ready tasks. So it manages access to the processor resource.
-  Various algorithms exist to choose the tasks allowed to use a processor
-  out of the set of ready tasks. One method is to assign each task a
-  priority number and assign the tasks with the lowest priority number to
-  one processor of the set of processors owned by a scheduler instance.
+  A scheduler or scheduling algorithm allocates processors to a subset of its
+  set of ready tasks. So it manages access to the processor resource. Various
+  algorithms exist to choose the tasks allowed to use a processor out of the
+  set of ready tasks. One method is to assign each task a priority number and
+  assign the tasks with the lowest priority number to one processor of the set
+  of processors owned by a scheduler instance.
 
   A scheduler is either an {term}`eligible scheduler` or a
   {term}`ineligible scheduler` for a task. An {term}`eligible scheduler` is
-  either the {term}`home scheduler` or a {term}`helping scheduler` for a
-  task.
+  either the {term}`home scheduler` or a {term}`helping scheduler` for a task.
 
 scheduler instance
 
-  A scheduler instance is a scheduling algorithm with a corresponding
-  context to store its internal state. Each processor in the system is
-  owned by at most one scheduler instance. The processor to scheduler
-  instance assignment is determined at application configuration time. See
-  {ref}`Configuring a System`.
+  A scheduler instance is a scheduling algorithm with a corresponding context
+  to store its internal state. Each processor in the system is owned by at most
+  one scheduler instance. The processor to scheduler instance assignment is
+  determined at application configuration time. See
+  {ref}`ConfigurationSchedulersClustered`
 
 segments
 
@@ -1177,8 +1160,8 @@ semaphore
 
 Semaphore Control Block
 
-  A data structure associated with each semaphore used by RTEMS to manage
-  that semaphore.
+  A data structure associated with each semaphore used by RTEMS to manage that
+  semaphore.
 
 shared memory
 
@@ -1186,9 +1169,8 @@ shared memory
 
 signal
 
-  An RTEMS provided mechanism to communicate asynchronously with a task.
-  Upon reception of a signal, the ASR of the receiving task will be
-  invoked.
+  An RTEMS provided mechanism to communicate asynchronously with a task. Upon
+  reception of a signal, the ASR of the receiving task will be invoked.
 
 signal set
 
@@ -1198,7 +1180,8 @@ signal set
 SIS
 
   This term is an acronym for Simple Instruction Simulator. The SIS is a
-  {term}`SPARC` V7/V8 and RISC-V RV32IMACFD {term}`target architecture` simulator.
+  {term}`SPARC` V7/V8 and RISC-V RV32IMACFD {term}`target architecture`
+  simulator.
 
 SMCB
 
@@ -1211,16 +1194,16 @@ SMP
 SMP barriers
 
   The SMP barriers ensure that a defined set of independent threads of
-  execution on a set of processors reaches a common synchronization point
-  in time. They are implemented using atomic operations. Currently a
-  sense barrier is used in RTEMS.
+  execution on a set of processors reaches a common synchronization point in
+  time. They are implemented using atomic operations. Currently a sense barrier
+  is used in RTEMS.
 
 SMP locks
 
   The SMP locks ensure mutual exclusion on the lowest level and are a
-  replacement for the sections of disabled interrupts. Interrupts are
-  usually disabled while holding an SMP lock. They are implemented using
-  atomic operations. Currently a ticket lock is used in RTEMS.
+  replacement for the sections of disabled interrupts. Interrupts are usually
+  disabled while holding an SMP lock. They are implemented using atomic
+  operations. Currently a ticket lock is used in RTEMS.
 
 soft real-time system
 
@@ -1234,22 +1217,27 @@ software component
   following items and nothing else:
 
   - {term}`software unit`
-  - explicitly defined {term}`ELF` symbol in a
-    {term}`source code` file
+
+  - explicitly defined {term}`ELF` symbol in a {term}`source code` file
+
   - {term}`assembler language` data in a source code file
+
   - {term}`C language` object with static storage duration
+
   - C language object with thread-local storage duration
+
   - {term}`thread`
+
   - {term}`interrupt service`
+
   - collection of *software components* (this is a software architecture
     element)
 
-  Please note that explicitly defined ELF symbols and assembler language
-  data are considered a software component only if they are defined in a
-  {term}`source code` file. For example, this rules out symbols
-  and data generated as side-effects by the toolchain (compiler, assembler,
-  linker) such as jump tables, linker trampolines, exception frame information,
-  etc.
+  Please note that explicitly defined ELF symbols and assembler language data
+  are considered a software component only if they are defined in a
+  {term}`source code` file. For example, this rules out symbols and data
+  generated as side-effects by the toolchain (compiler, assembler, linker) such
+  as jump tables, linker trampolines, exception frame information, etc.
 
 software item
 
@@ -1262,11 +1250,11 @@ software product
 software unit
 
   This term is defined by ECSS-E-ST-40C 3.2.24 as a "separately compilable
-  piece of source code". For this project a *software unit* shall be any of
-  the following items and nothing else:
+  piece of source code". For this project a *software unit* shall be any of the
+  following items and nothing else:
 
-  - {term}`assembler language` function in a
-    {term}`source code` file
+  - {term}`assembler language` function in a {term}`source code` file
+
   - {term}`C language` function (external and internal linkage)
 
   A *software unit* is a {term}`software component`.
@@ -1274,35 +1262,34 @@ software unit
 source code
 
   This project uses the *source code* definition of the
-  [Linux Information Project](http://www.linfo.org/source_code.html):
-  "Source code (also referred to as source or code) is the version of
-  software as it is originally written (i.e., typed into a computer) by a
-  human in plain text (i.e., human readable alphanumeric characters)."
+  [Linux Information Project](http://www.linfo.org/source_code.html): "Source
+  code (also referred to as source or code) is the version of software as it is
+  originally written (i.e., typed into a computer) by a human in plain text
+  (i.e., human readable alphanumeric characters)."
 
 SPARC
 
   This term is an acronym for
-  [Scalable Processor ARChitecture](https://en.wikipedia.org/wiki/SPARC).
-  See also {term}`target architecture`.
+  [Scalable Processor ARChitecture](https://en.wikipedia.org/wiki/SPARC). See
+  also {term}`target architecture`.
 
 sporadic task
 
   A task which executes at irregular intervals and must comply with a hard
-  deadline. A minimum period of time between successive iterations of the
-  task can be guaranteed.
+  deadline. A minimum period of time between successive iterations of the task
+  can be guaranteed.
 
 stack
 
-  A data structure that is managed using a Last In First Out (LIFO)
-  discipline. Each task has a stack associated with it which is used to
-  store return information and local variables.
+  A data structure that is managed using a Last In First Out (LIFO) discipline.
+  Each task has a stack associated with it which is used to store return
+  information and local variables.
 
 status code
 
-  A status code indicates the completion status of an operation. For
-  example most RTEMS directives return a status code through the
-  {term}`return value` to indicate a successful operation or error
-  conditions.
+  A status code indicates the completion status of an operation. For example
+  most RTEMS directives return a status code through the {term}`return value`
+  to indicate a successful operation or error conditions.
 
 Strong APA
 
@@ -1331,9 +1318,10 @@ system call
 
 system-on-chip
 
-  This project uses the [system on a chip definition of Wikipedia](https://en.wikipedia.org/wiki/System_on_a_chip): "A system on a chip or
-  system-on-chip is an integrated circuit that integrates most or all
-  components of a computer or other electronic system."
+  This project uses the
+  [system on a chip definition of Wikipedia](https://en.wikipedia.org/wiki/System_on_a_chip%3E):
+  "A system on a chip or system-on-chip is an integrated circuit that
+  integrates most or all components of a computer or other electronic system."
 
   Systems on a chip are {term}`target` systems for applications using
   {term}`RTEMS`.
@@ -1356,51 +1344,49 @@ task
 
   This project uses the
   [thread definition of Wikipedia](<https://en.wikipedia.org/wiki/Thread_(computing)>):
-  "a thread of execution is the smallest sequence of programmed
-  instructions that can be managed independently by a scheduler, which is
-  typically a part of the operating system."
+  "a thread of execution is the smallest sequence of programmed instructions
+  that can be managed independently by a scheduler, which is typically a part
+  of the operating system."
 
-  It consists normally of a set of registers and a stack. The scheduler
-  assigns processors to a subset of the ready tasks. The terms task and
-  {term}`thread` are synonym in RTEMS. The term task is used
-  throughout the Classic API, however, internally in the operating system
-  implementation and the POSIX API the term thread is used.
+  It consists normally of a set of registers and a stack. The scheduler assigns
+  processors to a subset of the ready tasks. The terms task and {term}`thread`
+  are synonym in RTEMS. The term task is used throughout the Classic API,
+  however, internally in the operating system implementation and the POSIX API
+  the term thread is used.
 
   A *task* is a {term}`software component`.
 
 Task Control Block
 
-  A data structure associated with each task used by RTEMS to manage that
-  task.
+  A data structure associated with each task used by RTEMS to manage that task.
 
 task entry
 
-  The task entry is invoked to execute the task's job. Before the task entry
-  is invoked, the thread begin {term}`user extensions` run in the context of
-  the task. After the return of the task entry, the thread exitted user
-  extensions run in the context of the task. The first user initialization
-  task performs the {term}`global construction` after running the thread begin
-  extensions and before the task entry is invoked. See also
-  {ref}`InterfaceRtemsTaskStart`.
+  The task entry is invoked to execute the task's job. Before the task entry is
+  invoked, the thread begin {term}`user extensions` run in the context of the
+  task. After the return of the task entry, the thread exitted user extensions
+  run in the context of the task. The first user initialization task performs
+  the {term}`global construction` after running the thread begin extensions and
+  before the task entry is invoked. See also {ref}`InterfaceRtemsTaskStart`.
 
 task migration
 
-  Task migration happens in case a task stops execution on one processor
-  and resumes execution on another processor.
+  Task migration happens in case a task stops execution on one processor and
+  resumes execution on another processor.
 
 task priority
 
-  A task {term}`priority` of a {term}`task` determines its importance
-  relative to other tasks.
+  A task {term}`priority` of a {term}`task` determines its importance relative
+  to other tasks.
 
   The scheduler use task priorities to determine which {term}`ready task` gets
   a processor allocated, see {term}`scheduled task`. The
-  {term}`eligible priorities <eligible priority>` of a task define the position of the task in a
-  {term}`wait queue` which uses the priority discipline. Each task has at
-  least the {term}`real priority`.
+  {term}`eligible priorities <eligible priority>` of a task define the position
+  of the task in a {term}`wait queue` which uses the priority discipline. Each
+  task has at least the {term}`real priority`.
 
-  Task priorities are used in {term}`wait queues <wait queue>` which use the priority
-  discipline to determine the dequeueing order of tasks.
+  Task priorities are used in {term}`wait queues <wait queue>` which use the
+  priority discipline to determine the dequeueing order of tasks.
 
 task processor affinity
 
@@ -1408,8 +1394,8 @@ task processor affinity
 
 task switch
 
-  Alternate terminology for context switch. Taking control of the
-  processor from one task and given to another.
+  Alternate terminology for context switch. Taking control of the processor
+  from one task and given to another.
 
 TCB
 
@@ -1426,20 +1412,19 @@ thread dispatch
 
 tick
 
-  The basic unit of time used by RTEMS. It is a user-configurable number
-  of microseconds. The current tick expires when a clock tick directive is
+  The basic unit of time used by RTEMS. It is a user-configurable number of
+  microseconds. The current tick expires when a clock tick directive is
   invoked.
 
 tightly-coupled
 
-  A multiprocessor configuration system which communicates via shared
-  memory.
+  A multiprocessor configuration system which communicates via shared memory.
 
 timeout
 
-  An argument provided to a number of directives which determines the
-  maximum length of time an application task is willing to wait to acquire
-  the resource if it is not immediately available.
+  An argument provided to a number of directives which determines the maximum
+  length of time an application task is willing to wait to acquire the resource
+  if it is not immediately available.
 
 timer
 
@@ -1456,9 +1441,8 @@ timeslice
 
 timeslicing
 
-  A task scheduling discipline in which tasks of equal priority are
-  executed for a specific period of time before being preempted by another
-  task.
+  A task scheduling discipline in which tasks of equal priority are executed
+  for a specific period of time before being preempted by another task.
 
 TLS
 
@@ -1472,9 +1456,9 @@ TMCB
 
 transient overload
 
-  A temporary rise in system activity which may cause deadlines to be
-  missed. Rate Monotonic Scheduling can be used to determine if all
-  deadlines will be met under transient overload.
+  A temporary rise in system activity which may cause deadlines to be missed.
+  Rate Monotonic Scheduling can be used to determine if all deadlines will be
+  met under transient overload.
 
 TTAS
 
@@ -1499,13 +1483,13 @@ user extensions
 
 User Initialization Tasks Table
 
-  A table which contains the information needed to create and start each of
-  the user initialization tasks.
+  A table which contains the information needed to create and start each of the
+  user initialization tasks.
 
 user-provided
 
-  These terms are used to designate any software routines which must be
-  written by the application designer.
+  These terms are used to designate any software routines which must be written
+  by the application designer.
 
 user-supplied
 
@@ -1513,8 +1497,8 @@ user-supplied
 
 vector
 
-  Memory pointers used by the processor to fetch the address of routines
-  which will handle various exceptions and interrupts.
+  Memory pointers used by the processor to fetch the address of routines which
+  will handle various exceptions and interrupts.
 
 wait queue
 
@@ -1524,10 +1508,10 @@ wait queue
 
 Weak APA
 
-  Weak APA is a specialization of {term}`APA`. This refers to Linux's push
-  and pull implementation of APA model. When a {term}`thread` becomes ready
-  for execution, it is allocated a processor if there is an idle processor, or
-  a processor executing a lower priority thread in its affinity set. Unlike
+  Weak APA is a specialization of {term}`APA`. This refers to Linux's push and
+  pull implementation of APA model. When a {term}`thread` becomes ready for
+  execution, it is allocated a processor if there is an idle processor, or a
+  processor executing a lower priority thread in its affinity set. Unlike
   {term}`Strong APA`, no thread is migrated from its processor to find a thread
   to processor mapping. See also {cite}`Cerqueira:2014:LPA`.
 
