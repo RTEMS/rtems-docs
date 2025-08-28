@@ -41,6 +41,9 @@ values.
 `BSP_CLOCK_USE_SYSTEMTIMER`
 : Use the `System Timer` in the clock driver (disable by default).
 
+`BSP_I2C_USE_INTERRUPTS`
+: Use interrupt mode in the I2C driver (enabled by default).
+
 `BSP_CONSOLE_PORT`
 : Default UART port for the console device (default is UART0). The optional
   ports are `UART0`, `UART2`, `UART3`, `UART4`, `UART5`.
@@ -147,6 +150,25 @@ void spi_init(void)
    * raspberrypi_SPI4, raspberrypi_SPI5, raspberrypi_SPI6.
    */
   rv =  raspberrypi_spi_init(raspberrypi_SPI0);
+  assert(rv == 0);
+}
+```
+
+## I2C Driver
+
+The BSC(Broadcom Serial Control) Controller has a total of 6 master: BSC0,
+BSC1, BSC3, BSC4, BSC5 and BSC6.
+The driver supports all these masters under devices: raspberrypi_bscmX.
+Interrupt driven I2C is enabled by default.
+
+```c
+#include <assert.h>
+#include <bsp/raspberrypi-i2c.h>
+
+void i2c_example(void){
+  int rv;
+
+  rv = rpi_i2c_init(raspberrypi_bscm1, CLOCK_SPEED);
   assert(rv == 0);
 }
 ```
