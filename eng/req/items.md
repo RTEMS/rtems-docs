@@ -4279,8 +4279,9 @@ This type is used by the following types:
 
 ### Name
 
-The value shall be a string. A string is a valid name if it matches with the
-`^([a-z][a-z0-9-]*|SPDX-License-Identifier)$` regular expression.
+The value shall be a string. It shall be an attribute name. The value shall
+match with the regular expression
+"^([a-z][a-z0-9-]\*|SPDX-License-Identifier)\$".
 
 This type is used by the following types:
 
@@ -5539,8 +5540,7 @@ This type is used by the following types:
 
 ### UID
 
-The value shall be a string. The string shall be a valid absolute or relative
-item UID.
+The value shall be a string. It shall be a valid absolute or relative item UID.
 
 This type is used by the following types:
 
