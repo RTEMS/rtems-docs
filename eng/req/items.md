@@ -128,10 +128,6 @@ The specification item types have the following hierarchy:
 
   - {ref}`SpecTypeTestCaseItemType`
 
-  - {ref}`SpecTypeTestPlatformItemType`
-
-  - {ref}`SpecTypeTestProcedureItemType`
-
   - {ref}`SpecTypeTestSuiteItemType`
 
 (ReqEngSpecificationItemTypes)=
@@ -191,8 +187,6 @@ This type is refined by the following types:
 - {ref}`SpecTypeRuntimeMeasurementTestItemType`
 - {ref}`SpecTypeSpecificationItemType`
 - {ref}`SpecTypeTestCaseItemType`
-- {ref}`SpecTypeTestPlatformItemType`
-- {ref}`SpecTypeTestProcedureItemType`
 - {ref}`SpecTypeTestSuiteItemType`
 
 (SpecTypeBuildItemType)=
@@ -2379,54 +2373,6 @@ test-target
 
 test-teardown
 : The attribute value shall be a {ref}`SpecTypeTestSupportMethod`.
-
-(SpecTypeTestPlatformItemType)=
-
-### Test Platform Item Type
-
-This type refines the {ref}`SpecTypeRootItemType` through the `type` attribute
-if the value is `test-platform`. Please note:
-
-```{warning}
-This item type is work in progress.
-```
-
-This set of attributes specifies a test platform. All explicit attributes shall
-be specified. The explicit attributes for this type are:
-
-description
-: The attribute value shall be a string. It shall be the description of the
-  test platform.
-
-name
-: The attribute value shall be a string. It shall be the human readable name of
-  the test platform.
-
-(SpecTypeTestProcedureItemType)=
-
-### Test Procedure Item Type
-
-This type refines the {ref}`SpecTypeRootItemType` through the `type` attribute
-if the value is `test-procedure`. Please note:
-
-```{warning}
-This item type is work in progress.
-```
-
-This set of attributes specifies a test procedure. All explicit attributes
-shall be specified. The explicit attributes for this type are:
-
-name
-: The attribute value shall be a string. It shall be the human readable name of
-  the test procedure.
-
-purpose
-: The attribute value shall be a string. It shall state the purpose of the test
-  procedure.
-
-steps
-: The attribute value shall be a string. It shall describe the steps of the
-  test procedure execution.
 
 (SpecTypeTestSuiteItemType)=
 
