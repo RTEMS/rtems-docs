@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (MessageManagerDirectives)=
@@ -62,7 +48,7 @@ Creates a message queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_create(
   rtems_name      name,
   uint32_t        count,
@@ -116,6 +102,7 @@ constant. The attribute set defines
 
 - the scope of the message queue: {c:macro}`RTEMS_LOCAL` (default) or
   {c:macro}`RTEMS_GLOBAL` and
+
 - the task wait queue discipline used by the message queue:
   {c:macro}`RTEMS_FIFO` (default) or {c:macro}`RTEMS_PRIORITY`.
 
@@ -127,6 +114,7 @@ attributes.
 - A **local scope** is the default and can be emphasized through the use of the
   {c:macro}`RTEMS_LOCAL` attribute. A local message queue can be only used by
   the node which created it.
+
 - A **global scope** is established if the {c:macro}`RTEMS_GLOBAL` attribute is
   set. Setting the global attribute in a single node system has no effect.
 
@@ -137,6 +125,7 @@ empty message queue.
 
 - The **FIFO discipline** is the default and can be emphasized through use of
   the {c:macro}`RTEMS_FIFO` attribute.
+
 - The **priority discipline** is selected by the {c:macro}`RTEMS_PRIORITY`
   attribute.
 
@@ -203,17 +192,23 @@ insertion in the local copy of the global object table.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The number of message queues available to the application is configured
   through the {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` application configuration
   option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
+
 - The number of global objects available to the application is configured
   through the {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
   configuration option.
@@ -237,7 +232,7 @@ Constructs a message queue from the specified the message queue configuration.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_construct(
   const rtems_message_queue_config *config,
   rtems_id                         *id
@@ -331,17 +326,23 @@ for message queues constructed by {ref}`InterfaceRtemsMessageQueueConstruct`.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The number of message queues available to the application is configured
   through the {ref}`CONFIGURE_MAXIMUM_MESSAGE_QUEUES` application configuration
   option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
+
 - The number of global objects available to the application is configured
   through the {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
   configuration option.
@@ -365,7 +366,7 @@ Identifies a message queue by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_ident(
   rtems_name name,
   uint32_t   node,
@@ -398,9 +399,12 @@ queue name specified in `name`.
 The node to search is specified in `node`. It shall be
 
 - a valid node number,
+
 - the constant {c:macro}`RTEMS_SEARCH_ALL_NODES` to search in all nodes,
+
 - the constant {c:macro}`RTEMS_SEARCH_LOCAL_NODE` to search in the local node
   only, or
+
 - the constant {c:macro}`RTEMS_SEARCH_OTHER_NODES` to search in all nodes
   except the local node.
 
@@ -453,6 +457,7 @@ access the message queue.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/message/if/delete
@@ -477,7 +482,7 @@ Deletes the message queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_delete( rtems_id id );
 ```
 
@@ -537,13 +542,18 @@ is deleted.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -569,7 +579,7 @@ Puts the message at the rear of the queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_send(
   rtems_id    id,
   const void *buffer,
@@ -632,9 +642,12 @@ then placed at the rear of the queue.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -660,7 +673,7 @@ Puts the message at the front of the queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_urgent(
   rtems_id    id,
   const void *buffer,
@@ -723,9 +736,12 @@ then placed at the front of the queue.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -751,7 +767,7 @@ Broadcasts the messages to the tasks waiting at the queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_broadcast(
   rtems_id    id,
   const void *buffer,
@@ -826,9 +842,12 @@ number of invocations of {ref}`InterfaceRtemsMessageQueueSend`.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -854,7 +873,7 @@ Receives a message from the queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_receive(
   rtems_id       id,
   void          *buffer,
@@ -915,6 +934,7 @@ according to the mutually exclusive {c:macro}`RTEMS_WAIT` and
   parameter defines how long the calling task is willing to wait. Use
   {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
   timeout interval in clock ticks.
+
 - **Trying to receive** a message from the queue is selected by the
   {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the
   `timeout` parameter is ignored. When a message from the queue cannot be
@@ -972,11 +992,15 @@ The following constraints apply to this directive:
 
 - When a local queue is accessed and the {c:macro}`RTEMS_NO_WAIT` option is
   set, the directive may be called from within interrupt context.
+
 - The directive may be called from within task context.
+
 - When the request cannot be immediately satisfied and the
   {c:macro}`RTEMS_WAIT` option is set, the calling task blocks at some point
   during the directive call.
+
 - The timeout functionality of the directive requires a {term}`clock tick`.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -1002,7 +1026,7 @@ Gets the number of messages pending on the queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_get_number_pending(
   rtems_id  id,
   uint32_t *count
@@ -1049,7 +1073,9 @@ This directive returns the number of messages pending on the queue specified by
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -1075,7 +1101,7 @@ Flushes all messages on the queue.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_message_queue_flush( rtems_id id, uint32_t *count );
 ```
 
@@ -1127,8 +1153,11 @@ The directive does not flush tasks waiting to receive a message from the
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/message/if/buffer
@@ -1151,7 +1180,7 @@ the specified maximum size.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_MESSAGE_QUEUE_BUFFER( size_t maximum_message_size );
 ```
 

@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-devdrv
@@ -89,7 +75,9 @@ out a clock tick source.
 The application shall define exactly one of the following configuration options
 
 - {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+
 - `CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
 otherwise a compile time error in the configuration file will occur.
@@ -246,7 +234,9 @@ a clock tick directive.
 The application shall define exactly one of the following configuration options
 
 - `CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+
 - {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
 otherwise a compile time error in the configuration file will occur.
@@ -304,7 +294,9 @@ work properly without the need for the Console Driver to be configured.
 The
 
 - `CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
 configuration options are mutually exclusive.
@@ -560,7 +552,9 @@ settings, e.g. baud, stop bits, parity, etc.
 The
 
 - {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+
 - `CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
 configuration options are mutually exclusive.
@@ -631,7 +625,9 @@ settings, e.g. baud, stop bits, parity, etc.
 The
 
 - {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`,
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`, and
+
 - `CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
 
 configuration options are mutually exclusive.
@@ -731,7 +727,9 @@ Testsuite. Applications should not use this driver.
 The application shall define exactly one of the following configuration options
 
 - {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`,
+
 - {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`, or
+
 - `CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`,
 
 otherwise a compile time error will occur.
@@ -1023,20 +1021,35 @@ This is computed by default, and is set to the number of statically configured
 device drivers configured using the following configuration options:
 
 - {ref}`CONFIGURE_APPLICATION_EXTRA_DRIVERS`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_ATA_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_FRAME_BUFFER_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_IDE_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_LIBBLOCK`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_NULL_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_RTC_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_CONSOLE_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_SIMPLE_TASK_CONSOLE_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_STUB_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_TIMER_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_WATCHDOG_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_NEEDS_ZERO_DRIVER`
+
 - {ref}`CONFIGURE_APPLICATION_PREREQUISITE_DRIVERS`
 
 If the {ref}`CONFIGURE_DISABLE_BSP_SETTINGS` configuration option is not
@@ -1066,8 +1079,10 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be less than or equal to
   [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+
 - The value of the configuration option shall be greater than or equal than the
   number of statically configured device drivers.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.

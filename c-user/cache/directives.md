@@ -1,37 +1,22 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2016 Pavel Pisa
-
 % Copyright (C) 2014, 2024 embedded brains GmbH & Co. KG
-
 % Copyright (C) 2000, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (CacheManagerDirectives)=
@@ -61,7 +46,7 @@ Flushes the data cache lines covering the memory area.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_flush_multiple_data_lines( const void *begin, size_t size );
 ```
 
@@ -89,6 +74,7 @@ the cache implementation this may mark the lines as invalid.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/invalidate-multiple-data-lines
@@ -110,7 +96,7 @@ Invalidates the data cache lines covering the memory area.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_invalidate_multiple_data_lines(
   const void *begin,
   size_t      size
@@ -150,6 +136,7 @@ On some systems, the cache lines may be flushed before they are invalidated.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/invalidate-multiple-instruction-lines
@@ -171,7 +158,7 @@ Invalidates the instruction cache lines covering the memory area.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_invalidate_multiple_instruction_lines(
   const void *begin,
   size_t      size
@@ -209,6 +196,7 @@ operation will invalidate the instruction cache lines on all processors.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/instruction-sync-after-code-change
@@ -230,7 +218,7 @@ Ensures necessary synchronization required after code changes.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_instruction_sync_after_code_change(
   const void *begin,
   size_t      size
@@ -264,6 +252,7 @@ run time loader for example.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/get-maximal-line-size
@@ -286,7 +275,7 @@ unified).
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_cache_get_maximal_line_size( void );
 ```
 
@@ -307,6 +296,7 @@ or unified).
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/get-data-line-size
@@ -328,7 +318,7 @@ Gets the data cache line size in bytes.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_cache_get_data_line_size( void );
 ```
 
@@ -349,6 +339,7 @@ maximum of the cache line sizes of all levels.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/get-instruction-line-size
@@ -370,7 +361,7 @@ Gets the instruction cache line size in bytes.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_cache_get_instruction_line_size( void );
 ```
 
@@ -391,6 +382,7 @@ is the maximum of the cache line sizes of all levels.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/get-data-size
@@ -412,7 +404,7 @@ Gets the data cache size in bytes for the cache level.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_cache_get_data_cache_size( uint32_t level );
 ```
 
@@ -440,6 +432,7 @@ Returns the data cache size in bytes of the requested cache level.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/get-instruction-size
@@ -461,7 +454,7 @@ Gets the instruction cache size in bytes for the cache level.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_cache_get_instruction_cache_size( uint32_t level );
 ```
 
@@ -489,6 +482,7 @@ Returns the instruction cache size in bytes of the requested cache level.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/flush-entire-data
@@ -510,7 +504,7 @@ Flushes the entire data cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_flush_entire_data( void );
 ```
 
@@ -521,6 +515,7 @@ void rtems_cache_flush_entire_data( void );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/invalidate-entire-data
@@ -542,7 +537,7 @@ Invalidates the entire data cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_invalidate_entire_data( void );
 ```
 
@@ -553,6 +548,7 @@ void rtems_cache_invalidate_entire_data( void );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/invalidate-entire-instruction
@@ -574,7 +570,7 @@ Invalidates the entire instruction cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_invalidate_entire_instruction( void );
 ```
 
@@ -585,6 +581,7 @@ void rtems_cache_invalidate_entire_instruction( void );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/enable-data
@@ -606,7 +603,7 @@ Enables the data cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_enable_data( void );
 ```
 
@@ -617,6 +614,7 @@ void rtems_cache_enable_data( void );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/disable-data
@@ -638,7 +636,7 @@ Disables the data cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_disable_data( void );
 ```
 
@@ -661,6 +659,7 @@ the BSP documentation in the *RTEMS User Manual* for more information.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/enable-instruction
@@ -682,7 +681,7 @@ Enables the instruction cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_enable_instruction( void );
 ```
 
@@ -693,6 +692,7 @@ void rtems_cache_enable_instruction( void );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/disable-instruction
@@ -714,7 +714,7 @@ Disables the instruction cache.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_cache_disable_instruction( void );
 ```
 
@@ -725,6 +725,7 @@ void rtems_cache_disable_instruction( void );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/cache/if/aligned-malloc
@@ -746,7 +747,7 @@ Allocates memory from the C Program Heap which begins at a cache line boundary.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void *rtems_cache_aligned_malloc( size_t size );
 ```
 
@@ -774,6 +775,8 @@ cache line boundary.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.

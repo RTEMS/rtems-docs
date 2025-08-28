@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2022 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-stackalloc
@@ -91,7 +77,9 @@ handler.
 A correctly configured system shall configure the following to be consistent:
 
 - {ref}`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+
 - `CONFIGURE_TASK_STACK_ALLOCATOR`
+
 - {ref}`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
 ```{eval-rst}
@@ -204,6 +192,7 @@ area to account for the actually allocated memory area.
 The
 
 - {ref}`CONFIGURE_IDLE_TASK_STORAGE_SIZE`, and
+
 - `CONFIGURE_TASK_STACK_ALLOCATOR_FOR_IDLE`
 
 configuration options are mutually exclusive.
@@ -216,9 +205,11 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be defined to a valid function
   pointer of the type `void *( *allocate )( uint32_t, size_t * )`.
+
 - The IDLE task stack allocator shall return a pointer to the allocated memory
   area or terminate the system with a fatal error if the allocation request
   cannot be satisfied.
+
 - The IDLE task stack allocator may increase the size of the allocated memory
   area.
 
@@ -267,7 +258,9 @@ initialization handler.
 A correctly configured system shall configure the following to be consistent:
 
 - `CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+
 - {ref}`CONFIGURE_TASK_STACK_ALLOCATOR`
+
 - {ref}`CONFIGURE_TASK_STACK_DEALLOCATOR`
 
 ```{eval-rst}
@@ -327,7 +320,9 @@ deallocate handler.
 A correctly configured system shall configure the following to be consistent:
 
 - {ref}`CONFIGURE_TASK_STACK_ALLOCATOR_INIT`
+
 - {ref}`CONFIGURE_TASK_STACK_ALLOCATOR`
+
 - `CONFIGURE_TASK_STACK_DEALLOCATOR`
 
 ```{eval-rst}

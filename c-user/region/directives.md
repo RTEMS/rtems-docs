@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (RegionManagerDirectives)=
@@ -62,7 +48,7 @@ Creates a region.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_create(
   rtems_name      name,
   void           *starting_address,
@@ -132,6 +118,7 @@ empty region.
 
 - The **FIFO discipline** is the default and can be emphasized through use of
   the {c:macro}`RTEMS_FIFO` attribute.
+
 - The **priority discipline** is selected by the {c:macro}`RTEMS_PRIORITY`
   attribute.
 
@@ -177,11 +164,15 @@ the local RNCB free pool and initializes it.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The number of regions available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_REGIONS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
@@ -205,7 +196,7 @@ Identifies a region by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_ident( rtems_name name, rtems_id *id );
 ```
 
@@ -265,6 +256,7 @@ the region.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/region/if/delete
@@ -289,7 +281,7 @@ Deletes the region.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_delete( rtems_id id );
 ```
 
@@ -334,11 +326,15 @@ The {term}`RNCB` for the deleted region is reclaimed by RTEMS.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -367,7 +363,7 @@ Extends the region.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_extend(
   rtems_id  id,
   void     *starting_address,
@@ -432,7 +428,9 @@ memory area will corrupt the heap resulting in undefined behaviour.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -458,7 +456,7 @@ Gets a segment from the region.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_get_segment(
   rtems_id       id,
   uintptr_t      size,
@@ -513,6 +511,7 @@ according to the mutually exclusive {c:macro}`RTEMS_WAIT` and
   parameter defines how long the calling task is willing to wait. Use
   {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
   timeout interval in clock ticks.
+
 - **Trying to get** a segment from the region is selected by the
   {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the
   `timeout` parameter is ignored. When a segment from the region cannot be
@@ -576,12 +575,16 @@ size because a segment size is always a multiple of the region's page size.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the request cannot be immediately satisfied and the
   {c:macro}`RTEMS_WAIT` option is set, the calling task blocks at some point
   during the directive call.
+
 - The timeout functionality of the directive requires a {term}`clock tick`.
 
 % Generated from spec:/rtems/region/if/return-segment
@@ -606,7 +609,7 @@ Returns the segment to the region.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_return_segment( rtems_id id, void *segment );
 ```
 
@@ -652,6 +655,7 @@ This directive will cause the calling task to be preempted if one or more local
 tasks are waiting for a segment and the following conditions exist:
 
 - A waiting task has a higher priority than the calling task.
+
 - The size of the segment required by the waiting task is less than or equal to
   the size of the segment returned.
 
@@ -662,9 +666,12 @@ tasks are waiting for a segment and the following conditions exist:
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -690,7 +697,7 @@ Changes the size of the segment.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_resize_segment(
   rtems_id   id,
   void      *segment,
@@ -763,7 +770,9 @@ segment.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -789,7 +798,7 @@ Gets the region information.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_get_information(
   rtems_id                id,
   Heap_Information_block *the_info
@@ -850,7 +859,9 @@ To get only the free information of the region use
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -876,7 +887,7 @@ Gets the region free information.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_get_free_information(
   rtems_id                id,
   Heap_Information_block *the_info
@@ -940,7 +951,9 @@ making a call to this directive less expensive than a call to
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -966,7 +979,7 @@ Gets the size of the region segment.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_region_get_segment_size(
   rtems_id   id,
   void      *segment,
@@ -1031,6 +1044,8 @@ size because a segment size is always a multiple of the region's page size.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.

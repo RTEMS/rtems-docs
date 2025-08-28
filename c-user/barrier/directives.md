@@ -2,35 +2,21 @@
 
 % Copyright (C) 2025 Mazen Adel Elmessady
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (BarrierManagerDirectives)=
@@ -63,7 +49,7 @@ Creates a barrier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_barrier_create(
   rtems_name      name,
   rtems_attribute attribute_set,
@@ -118,6 +104,7 @@ The **barrier class** is selected by the mutually exclusive
   there is no limit on the number of tasks that will block at the barrier. Only
   when the {ref}`InterfaceRtemsBarrierRelease` directive is invoked, are the
   tasks waiting at the barrier unblocked.
+
 - The **automatic release class** is selected by the
   {c:macro}`RTEMS_BARRIER_AUTOMATIC_RELEASE` attribute. For this class, tasks
   calling the {ref}`InterfaceRtemsBarrierWait` directive will block until there
@@ -161,11 +148,15 @@ the local BCB free pool and initializes it.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The number of barriers available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_BARRIERS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
@@ -189,7 +180,7 @@ Identifies a barrier by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_barrier_ident( rtems_name name, rtems_id *id );
 ```
 
@@ -249,6 +240,7 @@ the barrier.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/barrier/if/delete
@@ -273,7 +265,7 @@ Deletes the barrier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_barrier_delete( rtems_id id );
 ```
 
@@ -315,11 +307,15 @@ The {term}`BCB` for the deleted barrier is reclaimed by RTEMS.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -345,7 +341,7 @@ Waits at the barrier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_barrier_wait( rtems_id id, rtems_interval timeout );
 ```
 
@@ -405,6 +401,7 @@ during barrier creation, see {ref}`InterfaceRtemsBarrierCreate`.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The timeout functionality of the directive requires a {term}`clock tick`.
 
 % Generated from spec:/rtems/barrier/if/release
@@ -429,7 +426,7 @@ Releases the barrier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_barrier_release( rtems_id id, uint32_t *released );
 ```
 
@@ -475,7 +472,9 @@ barrier will be unblocked. The number of released tasks will be returned in
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 

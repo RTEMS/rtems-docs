@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2009 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (ObjectServicesDirectives)=
@@ -60,7 +46,7 @@ components.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_id rtems_build_id(
   uint32_t api,
   uint32_t the_class,
@@ -101,6 +87,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/build-name
@@ -122,7 +109,7 @@ Builds the object name composed of the four characters.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_name rtems_build_name( char c1, char c2, char c3, char c4 );
 ```
 
@@ -165,6 +152,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-classic-name
@@ -186,7 +174,7 @@ Gets the object name associated with the object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_object_get_classic_name(
   rtems_id    id,
   rtems_name *name
@@ -231,6 +219,7 @@ rtems_status_code rtems_object_get_classic_name(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-name
@@ -252,7 +241,7 @@ Gets the object name associated with the object identifier as a string.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 char *rtems_object_get_name( rtems_id id, size_t length, char *name );
 ```
 
@@ -305,6 +294,7 @@ the object identifier.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/set-name
@@ -326,7 +316,7 @@ Sets the object name of the object associated with the object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_object_set_name( rtems_id id, const char *name );
 ```
 
@@ -388,7 +378,9 @@ name.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -411,7 +403,7 @@ Gets the API component of the object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_id_get_api( rtems_id id );
 ```
 
@@ -443,6 +435,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-get-class
@@ -464,7 +457,7 @@ Gets the class component of the object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_id_get_class( rtems_id id );
 ```
 
@@ -496,6 +489,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-get-node
@@ -517,7 +511,7 @@ Gets the MPCI node component of the object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_id_get_node( rtems_id id );
 ```
 
@@ -549,6 +543,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-get-index
@@ -570,7 +565,7 @@ Gets the index component of the object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_id_get_index( rtems_id id );
 ```
 
@@ -602,6 +597,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-api-minimum
@@ -623,7 +619,7 @@ Gets the lowest valid value for the API component of an object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_id_api_minimum( void );
 ```
 
@@ -642,6 +638,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-api-maximum
@@ -663,7 +660,7 @@ Gets the highest valid value for the API component of an object identifier.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_id_api_maximum( void );
 ```
 
@@ -682,6 +679,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/api-minimum-class
@@ -703,7 +701,7 @@ Gets the lowest valid class value of the object API.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_api_minimum_class( int api );
 ```
 
@@ -730,6 +728,7 @@ Returns the lowest valid class value of the object API.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/api-maximum-class
@@ -751,7 +750,7 @@ Gets the highest valid class value of the object API.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_object_api_maximum_class( int api );
 ```
 
@@ -778,6 +777,7 @@ Returns the highest valid class value of the object API.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-api-name
@@ -799,7 +799,7 @@ Gets a descriptive name of the object API.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_object_get_api_name( int api );
 ```
 
@@ -832,6 +832,7 @@ The string returned is from constant space. Do not modify or free it.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-api-class-name
@@ -853,7 +854,7 @@ Gets a descriptive name of the object class of the object API.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_object_get_api_class_name( int the_api, int the_class );
 ```
 
@@ -893,6 +894,7 @@ The string returned is from constant space. Do not modify or free it.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-class-information
@@ -914,7 +916,7 @@ Gets the object class information of the object class of the object API.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_object_get_class_information(
   int                                 the_api,
   int                                 the_class,
@@ -959,6 +961,7 @@ rtems_status_code rtems_object_get_class_information(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/get-local-node
@@ -980,7 +983,7 @@ Gets the local MPCI node number.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint16_t rtems_object_get_local_node( void );
 ```
 
@@ -997,6 +1000,7 @@ Returns the local MPCI node number.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/object/if/id-initial
@@ -1019,7 +1023,7 @@ MPCI node components.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_id RTEMS_OBJECT_ID_INITIAL(
   uint32_t api,
   uint32_t class,
@@ -1054,4 +1058,5 @@ and MPCI node components.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.

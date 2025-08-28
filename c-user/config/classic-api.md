@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-classic
@@ -90,10 +76,13 @@ This object class can be configured in unlimited allocation mode, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -152,10 +141,13 @@ the messages of each message queue, see {ref}`CONFIGURE_MESSAGE_BUFFER_MEMORY`.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -213,10 +205,13 @@ This object class can be configured in unlimited allocation mode, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -274,10 +269,13 @@ This object class can be configured in unlimited allocation mode, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -335,10 +333,13 @@ This object class can be configured in unlimited allocation mode, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -396,10 +397,13 @@ This object class can be configured in unlimited allocation mode, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -461,10 +465,13 @@ the {ref}`MrsP` need a ceiling priority per scheduler.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -535,14 +542,18 @@ enable floating point support.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option shall be small enough so that the task
   stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
   an integer of type
   [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -600,10 +611,13 @@ This object class can be configured in unlimited allocation mode, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option may be defined through
   {ref}`InterfaceRtemsResourceUnlimited` the enable unlimited objects for the
   object class, if the value passed to {ref}`InterfaceRtemsResourceUnlimited`
@@ -660,7 +674,9 @@ This object class cannot be configured in unlimited allocation mode.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to 65535.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
@@ -721,5 +737,6 @@ task storage area.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to
   {ref}`CONFIGURE_MAXIMUM_TASKS`.

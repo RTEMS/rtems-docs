@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-classicinit
@@ -176,20 +162,25 @@ If this configuration option is specified, then
 
 - a task storage area of the specified size is statically allocated by
   `<rtems/confdefs.h>` for the Classic API initialization task,
+
 - the Classic API initialization task is constructed by
   {ref}`InterfaceRtemsTaskConstruct` instead of using
   {ref}`InterfaceRtemsTaskCreate`,
+
 - the maximum thread-local storage size defined by
   {ref}`CONFIGURE_MAXIMUM_THREAD_LOCAL_STORAGE_SIZE` is used for the Classic
   API initialization task,
+
 - the Classic API initialization task should be accounted for in
   {ref}`CONFIGURE_MINIMUM_TASKS_WITH_USER_PROVIDED_STORAGE`, and
+
 - the task storage area used for the Classic API initialization task is not
   reclaimed by the system if the task is deleted.
 
 The
 
 - {ref}`CONFIGURE_INIT_TASK_STACK_SIZE` and
+
 - `CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE`
 
 configuration options are mutually exclusive.
@@ -202,6 +193,7 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to
   {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
 - The value of the configuration option shall be defined using
   {ref}`InterfaceRTEMSTASKSTORAGESIZE`.
 
@@ -444,6 +436,7 @@ Classic API initialization task.
 The
 
 - `CONFIGURE_INIT_TASK_STACK_SIZE` and
+
 - {ref}`CONFIGURE_INIT_TASK_CONSTRUCT_STORAGE_SIZE`
 
 configuration options are mutually exclusive.
@@ -456,6 +449,7 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to
   {ref}`CONFIGURE_MINIMUM_TASK_STACK_SIZE`.
+
 - The value of the configuration option shall be small enough so that the task
   stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
   an integer of type
@@ -508,7 +502,9 @@ The application shall define at least one of the following configuration
 options
 
 - `CONFIGURE_RTEMS_INIT_TASKS_TABLE`,
+
 - {ref}`CONFIGURE_POSIX_INIT_THREAD_TABLE`, or
+
 - {ref}`CONFIGURE_IDLE_TASK_INITIALIZES_APPLICATION`
 
 otherwise a compile time error in the configuration file will occur.

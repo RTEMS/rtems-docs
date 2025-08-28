@@ -1,37 +1,22 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 2017 Kuan-Hsun Chen
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (RateMonotonicManagerDirectives)=
@@ -64,7 +49,7 @@ Creates a period.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_create( rtems_name name, rtems_id *id );
 ```
 
@@ -121,11 +106,15 @@ the local PCB free pool and initializes it.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The number of periods available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_PERIODS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
@@ -149,7 +138,7 @@ Identifies a period by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_ident( rtems_name name, rtems_id *id );
 ```
 
@@ -209,6 +198,7 @@ access the period.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/ratemon/if/cancel
@@ -233,7 +223,7 @@ Cancels the period.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_cancel( rtems_id id );
 ```
 
@@ -273,7 +263,9 @@ may be reinitiated by the next invocation of
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive may be used exclusively by the task which created the
   associated object.
 
@@ -299,7 +291,7 @@ Deletes the period.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_delete( rtems_id id );
 ```
 
@@ -340,11 +332,15 @@ The {term}`PCB` for the deleted period is reclaimed by RTEMS.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -377,7 +373,7 @@ status.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_period(
   rtems_id       id,
   rtems_interval length
@@ -448,6 +444,7 @@ and statistics.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be used exclusively by the task which created the
   associated object.
 
@@ -476,7 +473,7 @@ Gets the detailed status of the period.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_get_status(
   rtems_id                            id,
   rtems_rate_monotonic_period_status *status
@@ -504,9 +501,12 @@ specified by `id`. The detailed status of the period will be returned in the
 members of the period status object referenced by `status`:
 
 - The `owner` member is set to the identifier of the owner task of the period.
+
 - The `state` member is set to the current state of the period.
+
 - The `postponed_jobs_count` member is set to the count of jobs which are not
   released yet.
+
 - If the current state of the period is {c:macro}`RATE_MONOTONIC_INACTIVE`, the
   `since_last_period` and `executed_since_last_period` members will be set to
   zero. Otherwise, both members will contain time information since the last
@@ -538,7 +538,9 @@ members of the period status object referenced by `status`:
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/ratemon/if/get-statistics
@@ -566,7 +568,7 @@ Gets the statistics of the period.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_get_statistics(
   rtems_id                                id,
   rtems_rate_monotonic_period_statistics *status
@@ -594,17 +596,24 @@ This directive returns the statistics of the rate monotonic period specified by
 period statistics object referenced by `status`:
 
 - The `count` member is set to the number of periods executed.
+
 - The `missed_count` member is set to the number of periods missed.
+
 - The `min_cpu_time` member is set to the least amount of processor time used
   in the period.
+
 - The `max_cpu_time` member is set to the highest amount of processor time used
   in the period.
+
 - The `total_cpu_time` member is set to the total amount of processor time used
   in the period.
+
 - The `min_wall_time` member is set to the least amount of
   {term}`CLOCK_MONOTONIC` time used in the period.
+
 - The `max_wall_time` member is set to the highest amount of
   {term}`CLOCK_MONOTONIC` time used in the period.
+
 - The `total_wall_time` member is set to the total amount of
   {term}`CLOCK_MONOTONIC` time used in the period.
 
@@ -630,7 +639,9 @@ period statistics object referenced by `status`:
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/ratemon/if/reset-statistics
@@ -655,7 +666,7 @@ Resets the statistics of the period.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_rate_monotonic_reset_statistics( rtems_id id );
 ```
 
@@ -691,7 +702,9 @@ This directive resets the statistics of the rate monotonic period specified by
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may be called from within interrupt context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/ratemon/if/reset-all-statistics
@@ -716,7 +729,7 @@ Resets the statistics of all periods.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_rate_monotonic_reset_all_statistics( void );
 ```
 
@@ -734,6 +747,7 @@ monotonic period instances.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -762,7 +776,7 @@ Reports the period statistics using the {ref}`InterfacePrintk` printer.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_rate_monotonic_report_statistics( void );
 ```
 
@@ -780,6 +794,7 @@ least one period using the {ref}`InterfacePrintk` printer.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -808,7 +823,7 @@ Reports the period statistics using the printer plugin.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_rate_monotonic_report_statistics_with_plugin(
   const struct rtems_printer *printer
 );
@@ -835,5 +850,6 @@ least one period using the printer plugin specified by `printer`.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.

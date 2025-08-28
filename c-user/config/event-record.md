@@ -3,31 +3,18 @@
 % Copyright (C) 2019, 2022 embedded brains GmbH & Co. KG
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-eventrecord
@@ -75,6 +62,7 @@ enabled.
 In case
 
 - this configuration option is defined
+
 - and {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
 
 then the event record extensions are enabled.
@@ -125,7 +113,9 @@ enabled.
 In case
 
 - this configuration option is defined
+
 - and {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
+
 - and {ref}`CONFIGURE_RECORD_FATAL_DUMP_BASE64_ZLIB` is undefined,
 
 then the event records are dumped in Base64 encoding in a fatal error extension
@@ -176,6 +166,7 @@ enabled.
 In case
 
 - this configuration option is defined
+
 - and {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
 
 then the event records are compressed by zlib and dumped in Base64 encoding in
@@ -227,6 +218,7 @@ enabled.
 In case
 
 - this configuration option is defined
+
 - and {ref}`CONFIGURE_RECORD_PER_PROCESSOR_ITEMS` is properly defined,
 
 then the interrupt event recording is enabled.
@@ -291,9 +283,12 @@ option is zero, then nothing is allocated.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to 16.
+
 - The value of the configuration option shall be less than or equal to
   [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+
 - The value of the configuration option shall be a power of two.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.

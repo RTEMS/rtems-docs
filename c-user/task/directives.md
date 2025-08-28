@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2023 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (TaskManagerDirectives)=
@@ -62,7 +48,7 @@ Creates a task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_create(
   rtems_name          name,
   rtems_task_priority initial_priority,
@@ -126,6 +112,7 @@ stack size as a integer, there are two constants which may be specified:
   {c:macro}`RTEMS_MINIMUM_STACK_SIZE` bytes in size. If the user configured
   minimum stack size is larger than the recommended minimum, then it will be
   used.
+
 - The {c:macro}`RTEMS_CONFIGURED_MINIMUM_STACK_SIZE` constant can be specified
   to use the minimum stack size that was configured by the application. If not
   explicitly configured by the application, the default configured minimum
@@ -145,10 +132,13 @@ set defines
 
 - the preemption mode of the task: {c:macro}`RTEMS_PREEMPT` (default) or
   {c:macro}`RTEMS_NO_PREEMPT`,
+
 - the timeslicing mode of the task: {c:macro}`RTEMS_TIMESLICE` or
   {c:macro}`RTEMS_NO_TIMESLICE` (default),
+
 - the {term}`ASR` processing mode of the task: {c:macro}`RTEMS_ASR` (default)
   or {c:macro}`RTEMS_NO_ASR`,
+
 - the interrupt level of the task: {c:func}`RTEMS_INTERRUPT_LEVEL` with a
   default of `RTEMS_INTERRUPT_LEVEL( 0 )` which is associated with enabled
   interrupts.
@@ -157,6 +147,7 @@ The **initial preemption mode** of the task is enabled or disabled.
 
 - An **enabled preemption** is the default and can be emphasized through the
   use of the {c:macro}`RTEMS_PREEMPT` mode constant.
+
 - A **disabled preemption** is set by the {c:macro}`RTEMS_NO_PREEMPT` mode
   constant.
 
@@ -164,6 +155,7 @@ The **initial timeslicing mode** of the task is enabled or disabled.
 
 - A **disabled timeslicing** is the default and can be emphasized through the
   use of the {c:macro}`RTEMS_NO_TIMESLICE` mode constant.
+
 - An **enabled timeslicing** is set by the {c:macro}`RTEMS_TIMESLICE` mode
   constant.
 
@@ -171,6 +163,7 @@ The **initial ASR processing mode** of the task is enabled or disabled.
 
 - An **enabled ASR processing** is the default and can be emphasized through
   the use of the {c:macro}`RTEMS_ASR` mode constant.
+
 - A **disabled ASR processing** is set by the {c:macro}`RTEMS_NO_ASR` mode
   constant.
 
@@ -181,6 +174,7 @@ The **initial interrupt level mode** of the task is defined by
   through the use of the {c:func}`RTEMS_INTERRUPT_LEVEL` mode macro with a
   value of zero (0) for the parameter. An interrupt level of zero is associated
   with enabled interrupts on all target processors.
+
 - Task execution at a **non-zero interrupt level** can be specified by the
   {c:func}`RTEMS_INTERRUPT_LEVEL` mode macro with a non-zero value for the
   parameter. The interrupt level portion of the task mode supports a maximum of
@@ -197,6 +191,7 @@ constant. The attribute set defines
 
 - the scope of the task: {c:macro}`RTEMS_LOCAL` (default) or
   {c:macro}`RTEMS_GLOBAL` and
+
 - the floating-point unit use of the task: {c:macro}`RTEMS_FLOATING_POINT` or
   {c:macro}`RTEMS_NO_FLOATING_POINT` (default).
 
@@ -207,6 +202,7 @@ exclusive {c:macro}`RTEMS_LOCAL` and {c:macro}`RTEMS_GLOBAL` attributes.
 - A **local scope** is the default and can be emphasized through the use of the
   {c:macro}`RTEMS_LOCAL` attribute. A local task can be only used by the node
   which created it.
+
 - A **global scope** is established if the {c:macro}`RTEMS_GLOBAL` attribute is
   set. Setting the global attribute in a single node system has no effect.the
 
@@ -221,6 +217,7 @@ all tasks. Consult the *RTEMS CPU Architecture Supplement* for the details.
   through use of the {c:macro}`RTEMS_NO_FLOATING_POINT` attribute. For
   performance reasons, it is recommended that tasks not using the
   floating-point unit should specify this attribute.
+
 - An **enabled floating-point unit** is selected by the
   {c:macro}`RTEMS_FLOATING_POINT` attribute.
 
@@ -297,16 +294,22 @@ node in the system for insertion in the local copy of the global object table.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The number of tasks available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TASKS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
+
 - The number of global objects available to the application is configured
   through the {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
   configuration option.
@@ -330,7 +333,7 @@ Constructs a task from the specified task configuration.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_construct(
   const rtems_task_config *config,
   rtems_id                *id
@@ -437,16 +440,22 @@ The {ref}`CONFIGURE_MAXIMUM_TASKS` should include tasks constructed by
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The number of tasks available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TASKS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
+
 - The number of global objects available to the application is configured
   through the {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
   configuration option.
@@ -470,7 +479,7 @@ Identifies a task by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_ident(
   rtems_name name,
   uint32_t   node,
@@ -506,9 +515,12 @@ for the name.
 The node to search is specified in `node`. It shall be
 
 - a valid node number,
+
 - the constant {c:macro}`RTEMS_SEARCH_ALL_NODES` to search in all nodes,
+
 - the constant {c:macro}`RTEMS_SEARCH_LOCAL_NODE` to search in the local node
   only, or
+
 - the constant {c:macro}`RTEMS_SEARCH_OTHER_NODES` to search in all nodes
   except the local node.
 
@@ -557,6 +569,7 @@ task.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/self
@@ -581,7 +594,7 @@ Gets the task identifier of the calling task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_id rtems_task_self( void );
 ```
 
@@ -604,7 +617,9 @@ Returns the task identifier of the calling task.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/start
@@ -629,7 +644,7 @@ Starts the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_start(
   rtems_id            id,
   rtems_task_entry    entry_point,
@@ -702,8 +717,11 @@ priority are nullified when the task is initiated via the
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 
@@ -729,7 +747,7 @@ Restarts the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_restart(
   rtems_id            id,
   rtems_task_argument argument
@@ -799,10 +817,14 @@ and then delete itself.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 
@@ -828,7 +850,7 @@ Deletes the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_delete( rtems_id id );
 ```
 
@@ -914,13 +936,18 @@ The task must reside on the local node, even if the task was created with the
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -946,7 +973,7 @@ Deletes the calling task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_task_exit( void );
 ```
 
@@ -986,7 +1013,9 @@ void posix_delete_self( void )
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive will not return to the caller.
+
 - While thread dispatching is disabled, if the directive performs a thread
   dispatch, then the fatal error with the fatal source
   {ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and the fatal code
@@ -1015,7 +1044,7 @@ Suspends the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_suspend( rtems_id id );
 ```
 
@@ -1069,8 +1098,11 @@ successful return code will be returned when the task is resumed.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -1096,7 +1128,7 @@ Resumes the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_resume( rtems_id id );
 ```
 
@@ -1136,10 +1168,14 @@ is removed, then it will remain in that blocked state.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -1162,7 +1198,7 @@ Checks if the task is suspended.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_is_suspended( rtems_id id );
 ```
 
@@ -1204,8 +1240,11 @@ specified by `id` is currently suspended.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/set-priority
@@ -1239,7 +1278,7 @@ Sets the real priority or gets the current priority of the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_set_priority(
   rtems_id             id,
   rtems_task_priority  new_priority,
@@ -1317,10 +1356,14 @@ protocols.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -1352,7 +1395,7 @@ Gets the current priority of the task with respect to the scheduler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_get_priority(
   rtems_id             task_id,
   rtems_id             scheduler_id,
@@ -1422,8 +1465,11 @@ and the POSIX sporadic server.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/mode
@@ -1463,7 +1509,7 @@ Gets and optionally sets the mode of the calling task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_mode(
   rtems_mode  mode_set,
   rtems_mode  mask,
@@ -1512,10 +1558,13 @@ behaviour is undefined. Default task modes can be selected by using the
 
 - the preemption mode of the task: {c:macro}`RTEMS_PREEMPT` (default) or
   {c:macro}`RTEMS_NO_PREEMPT`,
+
 - the timeslicing mode of the task: {c:macro}`RTEMS_TIMESLICE` or
   {c:macro}`RTEMS_NO_TIMESLICE` (default),
+
 - the {term}`ASR` processing mode of the task: {c:macro}`RTEMS_ASR` (default)
   or {c:macro}`RTEMS_NO_ASR`,
+
 - the interrupt level of the task: {c:func}`RTEMS_INTERRUPT_LEVEL` with a
   default of `RTEMS_INTERRUPT_LEVEL( 0 )` which is associated with enabled
   interrupts.
@@ -1527,6 +1576,7 @@ When the {c:macro}`RTEMS_PREEMPT_MASK` is set in `mask`, the **preemption
 mode** of the calling task is
 
 - enabled by using the {c:macro}`RTEMS_PREEMPT` mode constant in `mode_set` and
+
 - disabled by using the {c:macro}`RTEMS_NO_PREEMPT` mode constant in
   `mode_set`.
 
@@ -1535,6 +1585,7 @@ mode** of the calling task is
 
 - enabled by using the {c:macro}`RTEMS_TIMESLICE` mode constant in `mode_set`
   and
+
 - disabled by using the {c:macro}`RTEMS_NO_TIMESLICE` mode constant in
   `mode_set`.
 
@@ -1545,6 +1596,7 @@ When the {c:macro}`RTEMS_ASR_MASK` is set in `mask`, the **ASR processing
 mode** of the calling task is
 
 - enabled by using the {c:macro}`RTEMS_ASR` mode constant in `mode_set` and
+
 - disabled by using the {c:macro}`RTEMS_NO_ASR` mode constant in `mode_set`.
 
 When the {c:macro}`RTEMS_INTERRUPT_MASK` is set in `mask`, **interrupts** of
@@ -1552,6 +1604,7 @@ the calling task are
 
 - enabled by using the {c:func}`RTEMS_INTERRUPT_LEVEL` mode macro with a value
   of zero (0) in `mode_set` and
+
 - disabled up to the specified level by using the
   {c:func}`RTEMS_INTERRUPT_LEVEL` mode macro with a positive value in
   `mode_set`.
@@ -1586,8 +1639,10 @@ actually supported by the target processor in a processor dependent fashion.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - When the directive enables preemption for the calling task, another task may
   preempt the calling task.
+
 - While thread dispatching is disabled, if the directive performs a thread
   dispatch, then the fatal error with the fatal source
   {ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and the fatal code
@@ -1620,7 +1675,7 @@ yields the processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_wake_after( rtems_interval ticks );
 ```
 
@@ -1670,7 +1725,9 @@ ticks should make use of
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive requires a {term}`Clock Driver`.
+
 - While thread dispatching is disabled, if the directive performs a thread
   dispatch, then the fatal error with the fatal source
   {ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and the fatal code
@@ -1702,7 +1759,7 @@ Wakes up when specified.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_wake_when( const rtems_time_of_day *time_buffer );
 ```
 
@@ -1752,7 +1809,9 @@ of this directive is a second.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive requires a {term}`Clock Driver`.
+
 - While thread dispatching is disabled, if the directive performs a thread
   dispatch, then the fatal error with the fatal source
   {ref}`INTERNAL_ERROR_CORE <FatalErrorSources>` and the fatal code
@@ -1778,7 +1837,7 @@ Gets the home scheduler of the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_get_scheduler(
   rtems_id  task_id,
   rtems_id *scheduler_id
@@ -1829,8 +1888,11 @@ specified by `task_id` in `scheduler_id`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/set-scheduler
@@ -1852,7 +1914,7 @@ Sets the home scheduler for the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_set_scheduler(
   rtems_id            task_id,
   rtems_id            scheduler_id,
@@ -1931,8 +1993,11 @@ This directive sets the {term}`home scheduler` to the scheduler specified by
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
 
@@ -1955,7 +2020,7 @@ Gets the processor affinity of the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_get_affinity(
   rtems_id   id,
   size_t     cpusetsize,
@@ -2017,8 +2082,11 @@ task specified by `id`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/task/if/set-affinity
@@ -2040,7 +2108,7 @@ Sets the processor affinity of the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_task_set_affinity(
   rtems_id         id,
   size_t           cpusetsize,
@@ -2100,8 +2168,11 @@ This directive sets the processor affinity of the task specified by `id`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may change the processor affinity of a task. This may cause the
   calling task to be preempted.
 
@@ -2124,7 +2195,7 @@ Iterates over all tasks and invokes the visitor routine for each task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_task_iterate( rtems_task_visitor visitor, void *arg );
 ```
 
@@ -2164,7 +2235,9 @@ must be taken so that no deadlocks via the object allocator lock can occur.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -2187,7 +2260,7 @@ Gets the recommended task storage area size for the size and task attributes.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t RTEMS_TASK_STORAGE_SIZE( size_t size, rtems_attribute attributes );
 ```
 

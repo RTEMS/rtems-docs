@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (EventManagerDirectives)=
@@ -59,7 +45,7 @@ Sends the event set to the task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_event_send( rtems_id id, rtems_event_set event_in );
 ```
 
@@ -85,6 +71,7 @@ situations applies:
 
   - if the waiting task's input event condition is satisfied, then the task is
     made ready for execution, or
+
   - otherwise, the event set is posted but left pending and the task remains
     blocked.
 
@@ -133,8 +120,11 @@ appropriate task.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
 
@@ -157,7 +147,7 @@ Receives or gets an event set from the calling task.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_event_receive(
   rtems_event_set  event_in,
   rtems_option     option_set,
@@ -192,6 +182,7 @@ rtems_status_code rtems_event_receive(
 This directive can be used to
 
 - get the pending events of the calling task, or
+
 - receive events.
 
 To **get the pending events** use the constant {c:macro}`RTEMS_PENDING_EVENTS`
@@ -211,6 +202,7 @@ evaluated by this directive and have no effect. Default options can be selected
 by using the {c:macro}`RTEMS_DEFAULT_OPTIONS` constant. The option set defines
 
 - if the calling task will wait or poll for the events, and
+
 - if the calling task wants to receive all or any of the input events.
 
 The calling task can **wait** or **poll** for the events.
@@ -219,6 +211,7 @@ The calling task can **wait** or **poll** for the events.
   of the {c:macro}`RTEMS_WAIT` option. The `ticks` parameter defines how long
   the calling task is willing to wait. Use {c:macro}`RTEMS_NO_TIMEOUT` to wait
   potentially forever, otherwise set a timeout interval in clock ticks.
+
 - Not waiting for events (**polling**) is selected by the
   {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the `ticks`
   parameter is ignored.
@@ -228,6 +221,7 @@ in `event_in`.
 
 - Receiving **all** input events is the default and can be emphasized through
   the use of the {c:macro}`RTEMS_EVENT_ALL` option.
+
 - Receiving **any** of the input events is selected by the
   {c:macro}`RTEMS_EVENT_ANY` option.
 
@@ -275,5 +269,7 @@ event set of the task is cleared. If no events are pending then the
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The timeout functionality of the directive requires a {term}`clock tick`.

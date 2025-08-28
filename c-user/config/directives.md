@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2009, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2021 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (ApplicationConfigurationInformationDirectives)=
@@ -60,7 +46,7 @@ Gets the RTEMS build label.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_get_build_label( void );
 ```
 
@@ -96,6 +82,7 @@ performance limits.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-copyright-notice
@@ -117,7 +104,7 @@ Gets the RTEMS copyright notice.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_get_copyright_notice( void );
 ```
 
@@ -134,6 +121,7 @@ Returns a pointer to the RTEMS copyright notice.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-target-hash
@@ -155,7 +143,7 @@ Gets the RTEMS target hash.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_get_target_hash( void );
 ```
 
@@ -191,6 +179,7 @@ different target systems. See also {ref}`InterfaceRtemsGetBuildLabel`.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-version-string
@@ -212,7 +201,7 @@ Gets the RTEMS version string.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_get_version_string( void );
 ```
 
@@ -236,6 +225,7 @@ across RTEMS releases.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-do-zero-of-workspace
@@ -258,7 +248,7 @@ initialization for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 bool rtems_configuration_get_do_zero_of_workspace( void );
 ```
 
@@ -283,6 +273,7 @@ application configuration option.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-idle-task-stack-size
@@ -304,7 +295,7 @@ Gets the IDLE task stack size in bytes of this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_configuration_get_idle_task_stack_size( void );
 ```
 
@@ -328,6 +319,7 @@ The IDLE task stack size is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-idle-task
@@ -349,7 +341,7 @@ Gets the IDLE task body of this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void *( * )( uintptr_t ) rtems_configuration_get_idle_task( void );
 ```
 
@@ -373,6 +365,7 @@ application configuration option.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-interrupt-stack-size
@@ -394,7 +387,7 @@ Gets the interrupt stack size in bytes of this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 size_t rtems_configuration_get_interrupt_stack_size( void );
 ```
 
@@ -418,6 +411,7 @@ The interrupt stack size is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-barriers
@@ -440,7 +434,7 @@ for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_barriers( void );
 ```
 
@@ -467,6 +461,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-extensions
@@ -489,7 +484,7 @@ for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_extensions( void );
 ```
 
@@ -516,6 +511,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-message-queues
@@ -538,7 +534,7 @@ for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_message_queues( void );
 ```
 
@@ -565,6 +561,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-partitions
@@ -587,7 +584,7 @@ this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_partitions( void );
 ```
 
@@ -614,6 +611,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-periods
@@ -636,7 +634,7 @@ for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_periods( void );
 ```
 
@@ -663,6 +661,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-ports
@@ -685,7 +684,7 @@ this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_ports( void );
 ```
 
@@ -712,6 +711,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-processors
@@ -733,7 +733,7 @@ Gets the maximum number of processors configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_processors( void );
 ```
 
@@ -762,6 +762,7 @@ evaluates to one.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-regions
@@ -784,7 +785,7 @@ this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_regions( void );
 ```
 
@@ -811,6 +812,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-semaphores
@@ -833,7 +835,7 @@ this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_semaphores( void );
 ```
 
@@ -860,6 +862,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-tasks
@@ -882,7 +885,7 @@ this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_tasks( void );
 ```
 
@@ -909,6 +912,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-maximum-timers
@@ -931,7 +935,7 @@ this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_maximum_timers( void );
 ```
 
@@ -958,6 +962,7 @@ application configuration option. See also
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-microseconds-per-tick
@@ -979,7 +984,7 @@ Gets the number of microseconds per clock tick configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_microseconds_per_tick( void );
 ```
 
@@ -1004,6 +1009,7 @@ The number of microseconds per {term}`clock tick` is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-milliseconds-per-tick
@@ -1025,7 +1031,7 @@ Gets the number of milliseconds per clock tick configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_milliseconds_per_tick( void );
 ```
 
@@ -1050,6 +1056,7 @@ The number of milliseconds per {term}`clock tick` is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-nanoseconds-per-tick
@@ -1071,7 +1078,7 @@ Gets the number of microseconds per clock tick configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_nanoseconds_per_tick( void );
 ```
 
@@ -1096,6 +1103,7 @@ The number of nanoseconds per {term}`clock tick` is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-number-of-initial-extensions
@@ -1117,7 +1125,7 @@ Gets the number of initial extensions configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_number_of_initial_extensions( void );
 ```
 
@@ -1142,6 +1150,7 @@ related options.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-stack-allocate-for-idle-hook
@@ -1164,7 +1173,7 @@ Gets the task stack allocator allocate hook used to allocate the stack of each
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void *( * )( uint32_t, size_t * )
 rtems_configuration_get_stack_allocate_for_idle_hook( void );
 ```
@@ -1191,6 +1200,7 @@ option.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-stack-allocate-hook
@@ -1212,7 +1222,7 @@ Gets the task stack allocator allocate hook configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void *( * )( size_t ) rtems_configuration_get_stack_allocate_hook( void );
 ```
 
@@ -1236,6 +1246,7 @@ The task stack allocator allocate hook is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-stack-allocate-init-hook
@@ -1258,7 +1269,7 @@ application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void ( * )( size_t ) rtems_configuration_get_stack_allocate_init_hook( void );
 ```
 
@@ -1283,6 +1294,7 @@ The task stack allocator initialization hook is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-stack-allocator-avoids-work-space
@@ -1305,7 +1317,7 @@ Workspace for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 bool rtems_configuration_get_stack_allocator_avoids_work_space( void );
 ```
 
@@ -1331,6 +1343,7 @@ configuration option.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-stack-free-hook
@@ -1352,7 +1365,7 @@ Gets the task stack allocator free hook configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void ( * )( void * ) rtems_configuration_get_stack_free_hook( void );
 ```
 
@@ -1376,6 +1389,7 @@ The task stack allocator free hook is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-stack-space-size
@@ -1398,7 +1412,7 @@ stacks for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uintptr_t rtems_configuration_get_stack_space_size( void );
 ```
 
@@ -1423,6 +1437,7 @@ application configuration time.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-ticks-per-timeslice
@@ -1444,7 +1459,7 @@ Gets the clock ticks per timeslice configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_configuration_get_ticks_per_timeslice( void );
 ```
 
@@ -1468,6 +1483,7 @@ The {term}`clock ticks <clock tick>` per timeslice is defined by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-unified-work-area
@@ -1490,7 +1506,7 @@ unified for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 bool rtems_configuration_get_unified_work_area( void );
 ```
 
@@ -1515,6 +1531,7 @@ configuration option.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-user-extension-table
@@ -1536,7 +1553,7 @@ Gets the initial extensions table configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const rtems_extensions_table *rtems_configuration_get_user_extension_table(
   void
 );
@@ -1556,6 +1573,7 @@ application.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-user-multiprocessing-table
@@ -1577,7 +1595,7 @@ Gets the MPCI configuration table configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const MPCI_Configuration *rtems_configuration_get_user_multiprocessing_table(
   void
 );
@@ -1597,6 +1615,7 @@ application.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-work-space-size
@@ -1618,7 +1637,7 @@ Gets the RTEMS Workspace size in bytes configured for this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uintptr_t rtems_configuration_get_work_space_size( void );
 ```
 
@@ -1635,6 +1654,7 @@ Returns the RTEMS Workspace size in bytes configured for this application.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/get-api-configuration
@@ -1656,7 +1676,7 @@ Gets the Classic API Configuration Table of this application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const rtems_api_configuration_table *
 rtems_configuration_get_rtems_api_configuration( void );
 ```
@@ -1674,6 +1694,7 @@ Returns a pointer to the Classic API Configuration Table of this application.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/resource-is-unlimited
@@ -1695,7 +1716,7 @@ Indicates if the resource is unlimited.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 bool rtems_resource_is_unlimited( uint32_t resource );
 ```
 
@@ -1721,6 +1742,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/resource-maximum-per-allocation
@@ -1742,7 +1764,7 @@ Gets the maximum number per allocation of a resource number.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_resource_maximum_per_allocation( uint32_t resource );
 ```
 
@@ -1768,6 +1790,7 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/config/if/resource-unlimited
@@ -1789,7 +1812,7 @@ Augments the resource number so that it indicates an unlimited resource.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_resource_unlimited( uint32_t resource );
 ```
 
@@ -1822,4 +1845,5 @@ The following constraints apply to this directive:
 - The directive is implemented by a macro and may be called from within C/C++
   constant expressions. In addition, a function implementation of the directive
   exists for bindings to other programming languages.
+
 - The directive will not cause the calling task to be preempted.

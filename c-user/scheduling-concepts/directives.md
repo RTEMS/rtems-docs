@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2013, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2017 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (SchedulerManagerDirectives)=
@@ -59,7 +45,7 @@ Identifies a scheduler by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_ident( rtems_name name, rtems_id *id );
 ```
 
@@ -111,6 +97,7 @@ access the scheduler.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/ident-by-processor
@@ -132,7 +119,7 @@ Identifies a scheduler by the processor index.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_ident_by_processor(
   uint32_t  cpu_index,
   rtems_id *id
@@ -175,6 +162,7 @@ rtems_status_code rtems_scheduler_ident_by_processor(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/ident-by-processor-set
@@ -196,7 +184,7 @@ Identifies a scheduler by the processor set.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_ident_by_processor_set(
   size_t           cpusetsize,
   const cpu_set_t *cpuset,
@@ -259,6 +247,7 @@ the specified processor set.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/get-maximum-priority
@@ -280,7 +269,7 @@ Gets the maximum task priority of the scheduler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_get_maximum_priority(
   rtems_id             scheduler_id,
   rtems_task_priority *priority
@@ -321,6 +310,7 @@ rtems_status_code rtems_scheduler_get_maximum_priority(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/map-priority-to-posix
@@ -342,7 +332,7 @@ Maps a Classic API task priority to the corresponding POSIX thread priority.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_map_priority_to_posix(
   rtems_id            scheduler_id,
   rtems_task_priority priority,
@@ -390,6 +380,7 @@ rtems_status_code rtems_scheduler_map_priority_to_posix(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/map-priority-from-posix
@@ -411,7 +402,7 @@ Maps a POSIX thread priority to the corresponding Classic API task priority.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_map_priority_from_posix(
   rtems_id             scheduler_id,
   int                  posix_priority,
@@ -460,6 +451,7 @@ rtems_status_code rtems_scheduler_map_priority_from_posix(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/get-processor
@@ -481,7 +473,7 @@ Returns the index of the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_scheduler_get_processor( void );
 ```
 
@@ -519,6 +511,7 @@ thread dispatching disabled.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/get-processor-maximum
@@ -540,7 +533,7 @@ Returns the processor maximum supported by the system.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint32_t rtems_scheduler_get_processor_maximum( void );
 ```
 
@@ -572,6 +565,7 @@ Returns the processor maximum supported by the system.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/get-processor-set
@@ -593,7 +587,7 @@ Gets the set of processors owned by the scheduler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_get_processor_set(
   rtems_id   scheduler_id,
   size_t     cpusetsize,
@@ -645,6 +639,7 @@ rtems_status_code rtems_scheduler_get_processor_set(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/scheduler/if/add-processor
@@ -666,7 +661,7 @@ Adds the processor to the set of processors owned by the scheduler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_add_processor(
   rtems_id scheduler_id,
   uint32_t cpu_index
@@ -718,7 +713,9 @@ specified by `scheduler_id`.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -741,7 +738,7 @@ Removes the processor from the set of processors owned by the scheduler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_scheduler_remove_processor(
   rtems_id scheduler_id,
   uint32_t cpu_index
@@ -801,6 +798,8 @@ tasks of the system.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.

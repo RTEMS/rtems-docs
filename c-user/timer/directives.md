@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (TimerManagerDirectives)=
@@ -62,7 +48,7 @@ Creates a timer.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_create( rtems_name name, rtems_id *id );
 ```
 
@@ -122,11 +108,15 @@ the local TMCB free pool and initializes it.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The number of timers available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TIMERS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
@@ -153,7 +143,7 @@ Identifies a timer by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_ident( rtems_name name, rtems_id *id );
 ```
 
@@ -213,6 +203,7 @@ timer.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/cancel
@@ -237,7 +228,7 @@ Cancels the timer.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_cancel( rtems_id id );
 ```
 
@@ -275,8 +266,11 @@ reinitiated by the next invocation of {ref}`InterfaceRtemsTimerReset`,
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/delete
@@ -301,7 +295,7 @@ Deletes the timer.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_delete( rtems_id id );
 ```
 
@@ -342,11 +336,15 @@ The {term}`TMCB` for the deleted timer is reclaimed by RTEMS.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -372,7 +370,7 @@ Fires the timer after the interval.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_fire_after(
   rtems_id                          id,
   rtems_interval                    ticks,
@@ -431,8 +429,11 @@ argument `user_data` in the context of the clock tick {term}`ISR`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/fire-when
@@ -457,7 +458,7 @@ Fires the timer at the time of day.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_fire_when(
   rtems_id                          id,
   const rtems_time_of_day          *wall_time,
@@ -523,8 +524,11 @@ in the context of the clock tick {term}`ISR`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/initiate-server
@@ -549,7 +553,7 @@ Initiates the Timer Server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_initiate_server(
   rtems_task_priority priority,
   size_t              stack_size,
@@ -618,10 +622,14 @@ The following constraints apply to this directive:
 
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The number of timers available to the application is configured through the
   {ref}`CONFIGURE_MAXIMUM_TIMERS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
@@ -648,7 +656,7 @@ Fires the timer after the interval using the Timer Server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_server_fire_after(
   rtems_id                          id,
   rtems_interval                    ticks,
@@ -710,8 +718,11 @@ argument `user_data` in the context of the Timer Server task.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/server-fire-when
@@ -736,7 +747,7 @@ Fires the timer at the time of day using the Timer Server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_server_fire_when(
   rtems_id                          id,
   const rtems_time_of_day          *wall_time,
@@ -805,8 +816,11 @@ in the context of the Timer Server task.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/reset
@@ -831,7 +845,7 @@ Resets the timer.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_reset( rtems_id id );
 ```
 
@@ -884,8 +898,11 @@ its previous timer service routine and interval.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/timer/if/get-information
@@ -907,7 +924,7 @@ Gets information about the timer.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_timer_get_information(
   rtems_id                 id,
   rtems_timer_information *the_info
@@ -953,6 +970,9 @@ This directive returns information about the timer.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.

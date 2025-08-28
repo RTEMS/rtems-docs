@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2023 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2022 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-general
@@ -133,7 +119,9 @@ The optional BSP provided default values for the following application
 configuration options are disabled:
 
 - {ref}`CONFIGURE_IDLE_TASK_BODY`
+
 - {ref}`CONFIGURE_IDLE_TASK_STACK_SIZE`
+
 - {ref}`CONFIGURE_INTERRUPT_STACK_SIZE`
 
 The optional BSP provided initial extension set is disabled (see
@@ -246,8 +234,10 @@ you are doing.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to
   [UINTPTR_MAX](https://en.cppreference.com/w/c/types/integer).
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
@@ -309,6 +299,7 @@ larger then the minimum, then that memory is **not** accounted for by
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be small enough so that the task
   stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
   an integer of type
@@ -489,10 +480,12 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to a
   BSP-specific and application-specific minimum value.
+
 - The value of the configuration option shall be small enough so that the
   interrupt stack area calculation carried out by `<rtems/confdefs.h>` does not
   overflow an integer of type
   [size_t](https://en.cppreference.com/w/c/types/size_t).
+
 - The value of the configuration option shall be aligned according to
   {c:macro}`CPU_INTERRUPT_STACK_ALIGNMENT`.
 
@@ -599,8 +592,10 @@ input, output, and error I/O streams on {file}`/dev/console`.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to
   [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
@@ -664,6 +659,7 @@ other configurations it has no effect.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to one.
+
 - The value of the configuration option shall be less than or equal to
   {c:macro}`CPU_MAXIMUM_PROCESSORS`.
 
@@ -735,8 +731,10 @@ of an application executable.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to
   [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+
 - The value of the configuration option shall be an integral multiple of
   {c:macro}`RTEMS_TASK_STORAGE_ALIGNMENT`.
 
@@ -800,8 +798,10 @@ This configuration option is available since RTEMS 5.1.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to
   [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
@@ -862,9 +862,11 @@ message queue buffers or task stacks, see
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
   overflow an integer of type
@@ -972,9 +974,11 @@ messages with the message structure defined by the type `other_message_type`.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
+
 - The value of the configuration option shall be small enough so that the RTEMS
   Workspace size calculation carried out by `<rtems/confdefs.h>` does not
   overflow an integer of type
@@ -1055,8 +1059,10 @@ The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to a
   value defined by the {term}`Clock Driver`.
+
 - The value of the configuration option shall be less than or equal to a value
   defined by the {term}`Clock Driver`.
+
 - The resulting clock ticks per second should be an integer.
 
 % Generated from spec:/acfg/if/min-task-stack-size
@@ -1134,6 +1140,7 @@ The following constraints apply to this configuration option:
   stack space calculation carried out by `<rtems/confdefs.h>` does not overflow
   an integer of type
   [uintptr_t](https://en.cppreference.com/w/c/types/integer).
+
 - The value of the configuration option shall be greater than or equal to a
   BSP-specific and application-specific minimum value.
 
@@ -1241,6 +1248,7 @@ see {ref}`CONFIGURE_APPLICATION_DOES_NOT_NEED_CLOCK_DRIVER`.
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to one.
+
 - The value of the configuration option shall be less than or equal to
   [UINT32_MAX](https://en.cppreference.com/w/c/types/integer).
 

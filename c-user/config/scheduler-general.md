@@ -1,37 +1,22 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2022 embedded brains GmbH & Co. KG
-
 % Copyright (C) 2010 Gedare Bloom
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-schedgeneral
@@ -109,8 +94,10 @@ This configuration option is only evaluated if the configuration option
 The following constraints apply to this configuration option:
 
 - The value of the configuration option shall be greater than or equal to zero.
+
 - The value of the configuration option shall be less than or equal to
   [SIZE_MAX](https://en.cppreference.com/w/c/types/limits).
+
 - The value of the configuration option shall be less than or equal to a
   BSP-specific and application-specific value which depends on the size of the
   memory available to the application.
@@ -161,8 +148,10 @@ For the following schedulers
 - {ref}`SchedulerPriority`, which is the default in uniprocessor configurations
   and can be configured through the {ref}`CONFIGURE_SCHEDULER_PRIORITY`
   configuration option,
+
 - {ref}`SchedulerSMPPriority` which can be configured through the
   {ref}`CONFIGURE_SCHEDULER_PRIORITY_SMP` configuration option, and
+
 - {ref}`SchedulerSMPPriorityAffinity` which can be configured through the
   {ref}`CONFIGURE_SCHEDULER_PRIORITY_AFFINITY_SMP` configuration option
 
@@ -257,6 +246,7 @@ The following constraints apply to this configuration option:
   macros:
 
   - `RTEMS_SCHEDULER_ASSIGN( scheduler_index, attributes )`
+
   - `RTEMS_SCHEDULER_ASSIGN_NO_SCHEDULER`
 
   The `scheduler_index` macro parameter shall be a valid index of the scheduler
@@ -267,6 +257,7 @@ The following constraints apply to this configuration option:
   constants:
 
   - `RTEMS_SCHEDULER_ASSIGN_PROCESSOR_MANDATORY`
+
   - `RTEMS_SCHEDULER_ASSIGN_PROCESSOR_OPTIONAL`
 
 - The value of the configuration option shall be a list of exactly
@@ -457,12 +448,19 @@ This configuration option is an integer define.
 The default value is
 
 - `"MEDF"` for the {ref}`SchedulerSMPEDF`,
+
 - `"MPA "` for the {ref}`SchedulerSMPPriorityAffinity`,
+
 - `"MPD "` for the {ref}`SchedulerSMPPriority`,
+
 - `"MPS "` for the {ref}`SchedulerSMPPrioritySimple`,
+
 - `"UCBS"` for the {ref}`SchedulerCBS`,
+
 - `"UEDF"` for the {ref}`SchedulerEDF`,
+
 - `"UPD "` for the {ref}`SchedulerPriority`, and
+
 - `"UPS "` for the {ref}`SchedulerPrioritySimple`.
 
 ```{eval-rst}
@@ -869,13 +867,21 @@ The following constraints apply to this configuration option:
   macros:
 
   - `RTEMS_SCHEDULER_TABLE_CBS( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_EDF( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_EDF_SMP( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_PRIORITY_AFFINITY_SMP( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_PRIORITY( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_PRIORITY_SMP( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_SIMPLE( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_SIMPLE_SMP( name, obj_name )`
+
   - `RTEMS_SCHEDULER_TABLE_STRONG_APA( name, obj_name )`
 
   The `name` macro parameter shall be the name associated with the scheduler
@@ -942,8 +948,10 @@ shall be defined:
 
 - `CONFIGURE_SCHEDULER` shall be defined to a static definition of the
   scheduler data structures of the user scheduler.
+
 - `CONFIGURE_SCHEDULER_TABLE_ENTRIES` shall be defined to a scheduler table
   entry initializer for the user scheduler.
+
 - `CONFIGURE_SCHEDULER_USER_PER_THREAD` shall be defined to the type of the
   per-thread information of the user scheduler.
 

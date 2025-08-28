@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2023 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 % Generated from spec:/acfg/if/group-filesystem
@@ -51,18 +37,31 @@ Features of the IMFS can be disabled and enabled with the following
 configuration options:
 
 - {ref}`CONFIGURE_IMFS_DISABLE_CHMOD`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_CHOWN`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_LINK`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_MKNOD`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_MKNOD_FILE`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_MOUNT`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_READDIR`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_READLINK`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_RENAME`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_RMNOD`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_SYMLINK`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_UNMOUNT`
+
 - {ref}`CONFIGURE_IMFS_DISABLE_UTIME`
+
 - {ref}`CONFIGURE_IMFS_ENABLE_MKFIFO`
 
 % Generated from spec:/acfg/if/appl-disable-filesystem
@@ -152,11 +151,17 @@ In case this configuration option is defined, then the following configuration
 options will be defined as well
 
 - {ref}`CONFIGURE_FILESYSTEM_DOSFS`,
+
 - {ref}`CONFIGURE_FILESYSTEM_FTPFS`,
+
 - {ref}`CONFIGURE_FILESYSTEM_IMFS`,
+
 - {ref}`CONFIGURE_FILESYSTEM_JFFS2`,
+
 - {ref}`CONFIGURE_FILESYSTEM_NFS`,
+
 - {ref}`CONFIGURE_FILESYSTEM_RFS`, and
+
 - {ref}`CONFIGURE_FILESYSTEM_TFTPFS`.
 
 % Generated from spec:/acfg/if/filesystem-dosfs
@@ -1103,10 +1108,15 @@ correspondingly smaller. The following shows the maximum file size possible
 based on the configured block size:
 
 - when the block size is 16 bytes, the maximum file size is 1,328 bytes.
+
 - when the block size is 32 bytes, the maximum file size is 18,656 bytes.
+
 - when the block size is 64 bytes, the maximum file size is 279,488 bytes.
+
 - when the block size is 128 bytes, the maximum file size is 4,329,344 bytes.
+
 - when the block size is 256 bytes, the maximum file size is 68,173,568 bytes.
+
 - when the block size is 512 bytes, the maximum file size is 1,082,195,456
   bytes.
 
@@ -1210,16 +1220,27 @@ In case this configuration option is defined, then the following configuration
 options will be defined as well
 
 - {ref}`CONFIGURE_IMFS_DISABLE_CHMOD`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_CHOWN`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_LINK`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_MKNOD_FILE`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_MOUNT`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_READDIR`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_READLINK`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_RENAME`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_RMNOD`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_SYMLINK`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_UTIME`, and
+
 - {ref}`CONFIGURE_IMFS_DISABLE_UNMOUNT`.
 
 In addition, a simplified path evaluation is enabled. It allows only a look up
@@ -1276,10 +1297,17 @@ In case this configuration option is defined, then the following configuration
 options will be defined as well
 
 - {ref}`CONFIGURE_IMFS_DISABLE_CHMOD`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_CHOWN`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_LINK`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_READLINK`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_RENAME`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_SYMLINK`,
+
 - {ref}`CONFIGURE_IMFS_DISABLE_UTIME`, and
+
 - {ref}`CONFIGURE_IMFS_DISABLE_UNMOUNT`.

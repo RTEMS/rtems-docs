@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (SemaphoreManagerDirectives)=
@@ -62,7 +48,7 @@ Creates a semaphore.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_create(
   rtems_name          name,
   uint32_t            count,
@@ -118,11 +104,14 @@ constant. The attribute set defines
 
 - the scope of the semaphore: {c:macro}`RTEMS_LOCAL` (default) or
   {c:macro}`RTEMS_GLOBAL`,
+
 - the task wait queue discipline used by the semaphore: {c:macro}`RTEMS_FIFO`
   (default) or {c:macro}`RTEMS_PRIORITY`,
+
 - the class of the semaphore: {c:macro}`RTEMS_COUNTING_SEMAPHORE` (default),
   {c:macro}`RTEMS_BINARY_SEMAPHORE`, or
   {c:macro}`RTEMS_SIMPLE_BINARY_SEMAPHORE`, and
+
 - the locking protocol of a binary semaphore: no locking protocol (default),
   {c:macro}`RTEMS_INHERIT_PRIORITY`, {c:macro}`RTEMS_PRIORITY_CEILING`, or
   {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING`.
@@ -135,6 +124,7 @@ attributes.
 - A **local scope** is the default and can be emphasized through the use of the
   {c:macro}`RTEMS_LOCAL` attribute. A local semaphore can be only used by the
   node which created it.
+
 - A **global scope** is established if the {c:macro}`RTEMS_GLOBAL` attribute is
   set. Setting the global attribute in a single node system has no effect.
 
@@ -143,6 +133,7 @@ The **task wait queue discipline** is selected by the mutually exclusive
 
 - The **FIFO discipline** is the default and can be emphasized through use of
   the {c:macro}`RTEMS_FIFO` attribute.
+
 - The **priority discipline** is selected by the {c:macro}`RTEMS_PRIORITY`
   attribute. The locking protocols require the priority discipline.
 
@@ -152,10 +143,12 @@ The **semaphore class** is selected by the mutually exclusive
 
 - The **counting semaphore class** is the default and can be emphasized through
   use of the {c:macro}`RTEMS_COUNTING_SEMAPHORE` attribute.
+
 - The **binary semaphore class** is selected by the
   {c:macro}`RTEMS_BINARY_SEMAPHORE` attribute. Binary semaphores are mutual
   exclusion (mutex) synchronization primitives which may have an owner. The
   count of a binary semaphore is restricted to 0 and 1 values.
+
 - The **simple binary semaphore class** is selected by the
   {c:macro}`RTEMS_SIMPLE_BINARY_SEMAPHORE` attribute. Simple binary semaphores
   have no owner. They may be used for task and interrupt synchronization. The
@@ -171,11 +164,14 @@ and {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING` attributes.
   the {c:macro}`RTEMS_NO_INHERIT_PRIORITY`,
   {c:macro}`RTEMS_NO_MULTIPROCESSOR_RESOURCE_SHARING`, and
   {c:macro}`RTEMS_NO_PRIORITY_CEILING` attributes.
+
 - The **priority inheritance locking protocol** is selected by the
   {c:macro}`RTEMS_INHERIT_PRIORITY` attribute.
+
 - The **priority ceiling locking protocol** is selected by the
   {c:macro}`RTEMS_PRIORITY_CEILING` attribute. For this locking protocol a
   priority ceiling shall be specified in `priority_ceiling`.
+
 - The **MrsP locking protocol** is selected by the
   {c:macro}`RTEMS_MULTIPROCESSOR_RESOURCE_SHARING` attribute in SMP
   configurations, otherwise this attribute selects the **priority ceiling
@@ -239,16 +235,22 @@ local copy of the global object table.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The number of semaphores available to the application is configured through
   the {ref}`CONFIGURE_MAXIMUM_SEMAPHORES` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
+
 - The number of global objects available to the application is configured
   through the {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
   configuration option.
@@ -272,7 +274,7 @@ Identifies a semaphore by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_ident(
   rtems_name name,
   uint32_t   node,
@@ -305,9 +307,12 @@ name specified in `name`.
 The node to search is specified in `node`. It shall be
 
 - a valid node number,
+
 - the constant {c:macro}`RTEMS_SEARCH_ALL_NODES` to search in all nodes,
+
 - the constant {c:macro}`RTEMS_SEARCH_LOCAL_NODE` to search in the local node
   only, or
+
 - the constant {c:macro}`RTEMS_SEARCH_OTHER_NODES` to search in all nodes
   except the local node.
 
@@ -359,6 +364,7 @@ access the semaphore.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/sem/if/delete
@@ -383,7 +389,7 @@ Deletes the semaphore.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_delete( rtems_id id );
 ```
 
@@ -445,13 +451,18 @@ deleted.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -480,7 +491,7 @@ Obtains the semaphore.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_obtain(
   rtems_id       id,
   rtems_option   option_set,
@@ -525,6 +536,7 @@ options.
   defines how long the calling task is willing to wait. Use
   {c:macro}`RTEMS_NO_TIMEOUT` to wait potentially forever, otherwise set a
   timeout interval in clock ticks.
+
 - **Trying to obtain** the semaphore is selected by the
   {c:macro}`RTEMS_NO_WAIT` option. If this option is defined, then the
   `timeout` parameter is ignored. When the semaphore cannot be immediately
@@ -632,14 +644,19 @@ The following constraints apply to this directive:
 - When a local, counting semaphore or a local, simple binary semaphore is
   accessed and the {c:macro}`RTEMS_NO_WAIT` option is set, the directive may be
   called from within interrupt context.
+
 - When a local semaphore is accessed and the request can be immediately
   satisfied, the directive may be called from within device driver
   initialization context.
+
 - The directive may be called from within task context.
+
 - When the request cannot be immediately satisfied and the
   {c:macro}`RTEMS_WAIT` option is set, the calling task blocks at some point
   during the directive call.
+
 - The timeout functionality of the directive requires a {term}`clock tick`.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -668,7 +685,7 @@ Releases the semaphore.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_release( rtems_id id );
 ```
 
@@ -688,6 +705,7 @@ wait queue is not empty, then
 
 - the first task on the wait queue is removed and unblocked, the semaphore's
   count is not changed, otherwise
+
 - the semaphore's count is incremented by one for counting semaphores and set
   to one for binary and simple binary semaphores.
 
@@ -737,11 +755,15 @@ The following constraints apply to this directive:
 
 - When a local, counting semaphore or a local, simple binary semaphore is
   accessed, the directive may be called from within interrupt context.
+
 - When a local semaphore is accessed, the directive may be called from within
   device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -770,7 +792,7 @@ Flushes the semaphore.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_flush( rtems_id id );
 ```
 
@@ -828,10 +850,7 @@ Using the semaphore flush directive for condition synchronization in concert
 with another semaphore may be subject to the lost wake-up problem. The
 following attempt to implement a condition variable is broken.
 
-```{code-block} c
----
-linenos: true
----
+```c
 #include <rtems.h>
 #include <assert.h>
 
@@ -869,11 +888,15 @@ The following constraints apply to this directive:
 
 - When a local, counting semaphore or a local, simple binary semaphore is
   accessed, the directive may be called from within interrupt context.
+
 - When a local semaphore is accessed, the directive may be called from within
   device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -899,7 +922,7 @@ Sets the priority by scheduler for the semaphore.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_semaphore_set_priority(
   rtems_id             semaphore_id,
   rtems_id             scheduler_id,
@@ -942,8 +965,10 @@ protocol of the semaphore:
 
 - For local, binary semaphores using the MrsP locking protocol, the ceiling
   priority for each scheduler can be set by this directive.
+
 - For local, binary semaphores using the priority ceiling protocol, the ceiling
   priority can be set by this directive.
+
 - For other semaphore classes and locking protocols, setting a priority is
   undefined behaviour.
 
@@ -982,10 +1007,7 @@ protocol of the semaphore:
 
 Please have a look at the following example:
 
-```{code-block} c
----
-linenos: true
----
+```c
 #include <assert.h>
 #include <rtems.h>
 
@@ -1082,7 +1104,10 @@ RTEMS_SCHEDULER_CONTEXT_SIMPLE_SMP( b );
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.

@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2015, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (FatalErrorManagerDirectives)=
@@ -65,7 +51,7 @@ Invokes the fatal error handler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_fatal(
   rtems_fatal_source fatal_source,
   rtems_fatal_code   fatal_code
@@ -97,11 +83,15 @@ the `fatal_source` parameter. The fatal code is set to the value of the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not return to the caller.
+
 - The directive invokes the fatal error extensions in
   {term}`extension forward order`.
+
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
+
 - The directive may terminate the system.
 
 % Generated from spec:/rtems/fatal/if/panic
@@ -126,7 +116,7 @@ Prints the message and invokes the fatal error handler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_panic( const char *fmt, ... );
 ```
 
@@ -157,11 +147,15 @@ fatal code is set to the value of the `fmt` parameter value.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not return to the caller.
+
 - The directive invokes the fatal error extensions in
   {term}`extension forward order`.
+
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
+
 - The directive may terminate the system.
 
 % Generated from spec:/rtems/fatal/if/shutdown-executive
@@ -186,7 +180,7 @@ Invokes the fatal error handler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_shutdown_executive( uint32_t fatal_code );
 ```
 
@@ -212,11 +206,15 @@ This directive processes fatal errors. The fatal source is set to
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not return to the caller.
+
 - The directive invokes the fatal error extensions in
   {term}`extension forward order`.
+
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
+
 - The directive may terminate the system.
 
 % Generated from spec:/rtems/fatal/if/exception-frame-print
@@ -241,7 +239,7 @@ Prints the exception frame.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_exception_frame_print( const rtems_exception_frame *frame );
 ```
 
@@ -281,7 +279,7 @@ Returns a descriptive text for the fatal source.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_fatal_source_text( rtems_fatal_source fatal_source );
 ```
 
@@ -332,7 +330,7 @@ Returns a descriptive text for the internal error code.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 const char *rtems_internal_error_text( rtems_fatal_code internal_error_code );
 ```
 
@@ -380,7 +378,7 @@ Invokes the fatal error handler.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_fatal_error_occurred( uint32_t fatal_code );
 ```
 
@@ -414,9 +412,13 @@ identified. A recommended alternative directive is {ref}`InterfaceRtemsFatal`.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not return to the caller.
+
 - The directive invokes the fatal error extensions in
   {term}`extension forward order`.
+
 - The directive does not invoke handlers registered by {c:func}`atexit` or
   {c:func}`on_exit`.
+
 - The directive may terminate the system.

@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 2015 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (KernelCharacterIOSupportDirectives)=
@@ -60,7 +46,7 @@ Outputs the character to the kernel character output device.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_putc( char c );
 ```
 
@@ -90,6 +76,7 @@ interleaved output may occur.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/io/if/put-char
@@ -111,7 +98,7 @@ Puts the character using {ref}`InterfaceRtemsPutc`
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_put_char( int c, void *unused );
 ```
 
@@ -138,6 +125,7 @@ The directive is provided to support the RTEMS Testing Framework.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/io/if/putk
@@ -160,7 +148,7 @@ character output device.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int putk( const char *s );
 ```
 
@@ -195,6 +183,7 @@ interleaved output may occur.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/io/if/printk
@@ -217,7 +206,7 @@ kernel character output device.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int printk( const char *fmt, ... );
 ```
 
@@ -256,7 +245,9 @@ interleaved output may occur.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - Formatting of floating point numbers is not supported.
 
 % Generated from spec:/rtems/io/if/vprintk
@@ -279,7 +270,7 @@ list to the kernel character output device.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int vprintk( const char *fmt, va_list ap );
 ```
 
@@ -317,7 +308,9 @@ interleaved output may occur.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - Formatting of floating point numbers is not supported.
 
 % Generated from spec:/rtems/io/if/printk-printer
@@ -340,7 +333,7 @@ list to the kernel character output device.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int rtems_printk_printer( void *unused, const char *fmt, va_list ap );
 ```
 
@@ -381,7 +374,9 @@ interleaved output may occur.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - Formatting of floating point numbers is not supported.
 
 % Generated from spec:/rtems/io/if/getchark
@@ -403,7 +398,7 @@ Tries to dequeue a character from the kernel character input device.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int getchark( void );
 ```
 
@@ -436,4 +431,5 @@ device as an unsigned character value.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.

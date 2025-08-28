@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2014, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (ClockManagerDirectives)=
@@ -59,7 +45,7 @@ Sets the {term}`CLOCK_REALTIME` to the time of day.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_clock_set( const rtems_time_of_day *time_of_day );
 ```
 
@@ -122,12 +108,16 @@ once, they may return an error status.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - The time of day set by the directive shall be 1988-01-01T00:00:00.000000000Z
   or later.
+
 - The time of day set by the directive shall be before
   2100-01-01T00:00:00.000000000Z.
 
@@ -150,7 +140,7 @@ Gets the time of day associated with the current {term}`CLOCK_REALTIME`.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
 ```
 
@@ -186,7 +176,9 @@ rtems_status_code rtems_clock_get_tod( rtems_time_of_day *time_of_day );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-tod-timeval
@@ -209,7 +201,7 @@ current {term}`CLOCK_REALTIME`.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
 ```
 
@@ -246,7 +238,9 @@ rtems_status_code rtems_clock_get_tod_timeval( struct timeval *time_of_day );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-realtime
@@ -269,7 +263,7 @@ Gets the time elapsed since the {term}`Unix epoch` measured using
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_realtime( struct timespec *time_snapshot );
 ```
 
@@ -305,7 +299,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-realtime-bintime
@@ -328,7 +324,7 @@ Gets the time elapsed since the {term}`Unix epoch` measured using
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_realtime_bintime( struct bintime *time_snapshot );
 ```
 
@@ -363,7 +359,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-realtime-timeval
@@ -386,7 +384,7 @@ Gets the time elapsed since the {term}`Unix epoch` measured using
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_realtime_timeval( struct timeval *time_snapshot );
 ```
 
@@ -422,7 +420,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-realtime-coarse
@@ -445,7 +445,7 @@ Gets the time elapsed since the {term}`Unix epoch` measured using
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_realtime_coarse( struct timespec *time_snapshot );
 ```
 
@@ -481,7 +481,9 @@ alternative formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-realtime-coarse-bintime
@@ -504,7 +506,7 @@ Gets the time elapsed since the {term}`Unix epoch` measured using
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_realtime_coarse_bintime( struct bintime *time_snapshot );
 ```
 
@@ -539,7 +541,9 @@ alternative formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-realtime-coarse-timeval
@@ -562,7 +566,7 @@ Gets the time elapsed since the {term}`Unix epoch` measured using
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_realtime_coarse_timeval( struct timeval *time_snapshot );
 ```
 
@@ -598,7 +602,9 @@ alternative formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic
@@ -621,7 +627,7 @@ the {term}`CLOCK_MONOTONIC` in seconds and nanoseconds format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_monotonic( struct timespec *time_snapshot );
 ```
 
@@ -658,7 +664,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic-bintime
@@ -681,7 +689,7 @@ the {term}`CLOCK_MONOTONIC` in binary time format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_monotonic_bintime( struct bintime *time_snapshot );
 ```
 
@@ -717,7 +725,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic-sbintime
@@ -740,7 +750,7 @@ the {term}`CLOCK_MONOTONIC` in signed binary time format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 int64_t rtems_clock_get_monotonic_sbintime( void );
 ```
 
@@ -770,7 +780,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic-timeval
@@ -793,7 +805,7 @@ the {term}`CLOCK_MONOTONIC` in seconds and microseconds format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_monotonic_timeval( struct timeval *time_snapshot );
 ```
 
@@ -831,7 +843,9 @@ formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic-coarse
@@ -855,7 +869,7 @@ format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_monotonic_coarse( struct timespec *time_snapshot );
 ```
 
@@ -891,7 +905,9 @@ alternative formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic-coarse-bintime
@@ -914,7 +930,7 @@ the {term}`CLOCK_MONOTONIC` in coarse resolution in binary time format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_monotonic_coarse_bintime( struct bintime *time_snapshot );
 ```
 
@@ -949,7 +965,9 @@ alternative formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-monotonic-coarse-timeval
@@ -973,7 +991,7 @@ format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_monotonic_coarse_timeval( struct timeval *time_snapshot );
 ```
 
@@ -1010,7 +1028,9 @@ alternative formats.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-boot-time
@@ -1033,7 +1053,7 @@ system initialization in seconds and nanoseconds format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_boot_time( struct timespec *boot_time );
 ```
 
@@ -1065,7 +1085,9 @@ time.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-boot-time-bintime
@@ -1088,7 +1110,7 @@ system initialization in binary time format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_boot_time_bintime( struct bintime *boot_time );
 ```
 
@@ -1119,7 +1141,9 @@ time.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-boot-time-timeval
@@ -1142,7 +1166,7 @@ system initialization in seconds and microseconds format.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_boot_time_timeval( struct timeval *boot_time );
 ```
 
@@ -1174,7 +1198,9 @@ time.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-seconds-since-epoch
@@ -1197,7 +1223,7 @@ Gets the seconds elapsed since the {term}`RTEMS epoch` and the current
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_clock_get_seconds_since_epoch(
   rtems_interval *seconds_since_rtems_epoch
 );
@@ -1235,7 +1261,9 @@ rtems_status_code rtems_clock_get_seconds_since_epoch(
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-ticks-per-second
@@ -1258,7 +1286,7 @@ the application.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_interval rtems_clock_get_ticks_per_second( void );
 ```
 
@@ -1282,6 +1310,7 @@ The number of clock ticks per second is defined indirectly by the
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/clock/if/get-ticks-since-boot
@@ -1305,7 +1334,7 @@ counter.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_interval rtems_clock_get_ticks_since_boot( void );
 ```
 
@@ -1333,6 +1362,7 @@ way of obtaining similar information.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/clock/if/get-uptime
@@ -1355,7 +1385,7 @@ system initialization using {term}`CLOCK_MONOTONIC`.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
 ```
 
@@ -1389,7 +1419,9 @@ rtems_status_code rtems_clock_get_uptime( struct timespec *uptime );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-uptime-timeval
@@ -1412,7 +1444,7 @@ system initialization using {term}`CLOCK_MONOTONIC`.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_clock_get_uptime_timeval( struct timeval *uptime );
 ```
 
@@ -1435,7 +1467,9 @@ void rtems_clock_get_uptime_timeval( struct timeval *uptime );
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-uptime-seconds
@@ -1458,7 +1492,7 @@ using {term}`CLOCK_MONOTONIC`.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 time_t rtems_clock_get_uptime_seconds( void );
 ```
 
@@ -1477,7 +1511,9 @@ initialization and some point during the directive call using
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/get-uptime-nanoseconds
@@ -1500,7 +1536,7 @@ initialization using {term}`CLOCK_MONOTONIC`.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 uint64_t rtems_clock_get_uptime_nanoseconds( void );
 ```
 
@@ -1519,7 +1555,9 @@ initialization and some point during the directive call using
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/tick-later
@@ -1542,7 +1580,7 @@ future.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_interval rtems_clock_tick_later( rtems_interval delta );
 ```
 
@@ -1567,7 +1605,9 @@ ticks in the future.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/tick-later-usec
@@ -1590,7 +1630,7 @@ future.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_interval rtems_clock_tick_later_usec( rtems_interval delta_in_usec );
 ```
 
@@ -1615,7 +1655,9 @@ microseconds in the future.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.
 
 % Generated from spec:/rtems/clock/if/tick-before
@@ -1637,7 +1679,7 @@ Indicates if the current {term}`clock tick` counter is before the ticks.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 bool rtems_clock_tick_before( rtems_interval ticks );
 ```
 
@@ -1661,10 +1703,7 @@ time in ticks, otherwise returns false.
 
 This directive can be used to write busy loops with a timeout.
 
-```{code-block} c
----
-linenos: true
----
+```c
 status busy( void )
 {
   rtems_interval timeout;
@@ -1688,5 +1727,7 @@ status busy( void )
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive requires a {term}`Clock Driver`.

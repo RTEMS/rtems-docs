@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2008, 2024 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (InterruptManagerDirectives)=
@@ -65,7 +51,7 @@ Establishes an interrupt service routine.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_catch(
   rtems_isr_entry     new_isr_handler,
   rtems_vector_number vector,
@@ -125,9 +111,13 @@ the vector was first capture.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The directive is only available where the {term}`target architecture` support
   enabled simple vectored interrupts.
 
@@ -153,7 +143,7 @@ Disables the maskable interrupts on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_disable( rtems_interrupt_level isr_cookie );
 ```
 
@@ -181,10 +171,7 @@ be used to restore the previous interrupt level.
 
 This directive is implemented as a macro which sets the `isr_cookie` parameter.
 
-```{code-block} c
----
-linenos: true
----
+```c
 #include <rtems.h>
 
 void local_critical_section( void )
@@ -224,7 +211,9 @@ void local_critical_section( void )
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - Where the system was built with SMP support enabled, the directive is not
   available. Its use will result in compiler warnings and linker errors. The
   {ref}`InterfaceRtemsInterruptLocalDisable` and
@@ -256,7 +245,7 @@ Restores the previous interrupt level on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_enable( rtems_interrupt_level isr_cookie );
 ```
 
@@ -294,11 +283,14 @@ example in an interrupt controller.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - While at least one maskable interrupt is pending, when the directive enables
   maskable interrupts, the pending interrupts are immediately serviced. The
   interrupt service routines may unblock higher priority tasks which may
   preempt the calling task.
+
 - Where the system was built with SMP support enabled, the directive is not
   available. Its use will result in compiler warnings and linker errors. The
   {ref}`InterfaceRtemsInterruptLocalDisable` and
@@ -327,7 +319,7 @@ Flashes interrupts on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_flash( rtems_interrupt_level isr_cookie );
 ```
 
@@ -366,7 +358,9 @@ directive is provided for backward compatibility reasons.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - Where the system was built with SMP support enabled, the directive is not
   available. Its use will result in compiler warnings and linker errors. The
   {ref}`InterfaceRtemsInterruptLocalDisable` and
@@ -395,7 +389,7 @@ Disables the maskable interrupts on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_local_disable( rtems_interrupt_level isr_cookie );
 ```
 
@@ -429,10 +423,7 @@ system wide mutual exclusion. Use interrupt locks instead, see
 may be used to access processor-specific data structures or disable thread
 dispatching.
 
-```{code-block} c
----
-linenos: true
----
+```c
 #include <rtems.h>
 
 void local_critical_section( void )
@@ -472,6 +463,7 @@ void local_critical_section( void )
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/local-enable
@@ -499,7 +491,7 @@ Restores the previous interrupt level on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_local_enable( rtems_interrupt_level isr_cookie );
 ```
 
@@ -536,7 +528,9 @@ example in an interrupt controller.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - While at least one maskable interrupt is pending, when the directive enables
   maskable interrupts, the pending interrupts are immediately serviced. The
   interrupt service routines may unblock higher priority tasks which may
@@ -564,7 +558,7 @@ Checks if an ISR is in progress on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 bool rtems_interrupt_is_in_progress( void );
 ```
 
@@ -591,6 +585,7 @@ otherwise false.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/lock-initialize
@@ -612,7 +607,7 @@ Initializes the ISR lock.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_initialize(
   rtems_interrupt_lock *lock,
   const char           *name
@@ -657,7 +652,7 @@ Destroys the ISR lock.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_destroy( rtems_interrupt_lock *lock );
 ```
 
@@ -687,6 +682,7 @@ unpredictable results.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/lock-acquire
@@ -708,7 +704,7 @@ Acquires the ISR lock.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_acquire(
   rtems_interrupt_lock         *lock,
   rtems_interrupt_lock_context *lock_context
@@ -748,10 +744,7 @@ loop with maskable interrupts disabled.
 This directive establishes a non-preemptive critical section with system wide
 mutual exclusion on the local node in all RTEMS build configurations.
 
-```{code-block} c
----
-linenos: true
----
+```c
 #include <rtems.h>
 
 void critical_section( rtems_interrupt_lock *lock )
@@ -775,6 +768,7 @@ void critical_section( rtems_interrupt_lock *lock )
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/lock-release
@@ -796,7 +790,7 @@ Releases the ISR lock.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_release( rtems_interrupt_lock_context *lock );
 ```
 
@@ -837,7 +831,9 @@ SMP lock.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
+
 - While at least one maskable interrupt is pending, when the directive enables
   maskable interrupts, the pending interrupts are immediately serviced. The
   interrupt service routines may unblock higher priority tasks which may
@@ -862,7 +858,7 @@ Acquires the ISR lock from within an ISR.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_acquire_isr(
   rtems_interrupt_lock         *lock,
   rtems_interrupt_lock_context *lock_context
@@ -915,6 +911,7 @@ used under specific circumstances as an optimization. In doubt, use
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/lock-release-isr
@@ -936,7 +933,7 @@ Releases the ISR lock from within an ISR.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_release_isr(
   rtems_interrupt_lock         *lock,
   rtems_interrupt_lock_context *lock_context
@@ -979,6 +976,7 @@ SMP lock.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/lock-isr-disable
@@ -1000,7 +998,7 @@ Disables maskable interrupts on the current processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_lock_interrupt_disable(
   rtems_interrupt_lock_context *lock_context
 );
@@ -1027,6 +1025,7 @@ the previous interrupt level in `lock_context`.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/lock-declare
@@ -1048,7 +1047,7 @@ Declares an ISR lock object.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_INTERRUPT_LOCK_DECLARE( specifier, designator );
 ```
 
@@ -1088,7 +1087,7 @@ Defines an ISR lock object.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_INTERRUPT_LOCK_DEFINE( specifier, designator, const char *name );
 ```
 
@@ -1136,7 +1135,7 @@ Statically initializes an ISR lock object.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_INTERRUPT_LOCK_INITIALIZER( const char *name );
 ```
 
@@ -1175,7 +1174,7 @@ Defines an ISR lock member.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_INTERRUPT_LOCK_MEMBER( designator );
 ```
 
@@ -1211,7 +1210,7 @@ Defines an ISR lock object reference.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_INTERRUPT_LOCK_REFERENCE( designator, rtems_interrupt_lock *target );
 ```
 
@@ -1250,7 +1249,7 @@ Statically initializes an interrupt entry object.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 RTEMS_INTERRUPT_ENTRY_INITIALIZER(
   rtems_interrupt_handler routine,
   void                   *arg,
@@ -1297,7 +1296,7 @@ Initializes the interrupt entry.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_entry_initialize(
   rtems_interrupt_entry  *entry,
   rtems_interrupt_handler routine,
@@ -1336,6 +1335,7 @@ statically initialize an interrupt entry.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/entry-install
@@ -1357,7 +1357,7 @@ Installs the interrupt entry at the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_entry_install(
   rtems_vector_number    vector,
   rtems_option           options,
@@ -1385,6 +1385,7 @@ rtems_status_code rtems_interrupt_entry_install(
 One of the following mutually exclusive options
 
 - {c:macro}`RTEMS_INTERRUPT_UNIQUE`, and
+
 - {c:macro}`RTEMS_INTERRUPT_SHARED`
 
 shall be set in the `options` parameter.
@@ -1456,9 +1457,12 @@ interrupt entry may be removed from the interrupt service by calling
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The interrupt entry shall have been initialized by
   {ref}`InterfaceRtemsInterruptEntryInitialize` or
   {ref}`InterfaceRTEMSINTERRUPTENTRYINITIALIZER`.
@@ -1482,7 +1486,7 @@ Removes the interrupt entry from the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_entry_remove(
   rtems_vector_number    vector,
   rtems_interrupt_entry *entry
@@ -1537,9 +1541,12 @@ has been transferred from the interrupt service to the caller.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The interrupt entry shall have been installed by
   {ref}`InterfaceRtemsInterruptEntryInstall`.
 
@@ -1562,7 +1569,7 @@ Installs the interrupt handler routine and argument at the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_handler_install(
   rtems_vector_number     vector,
   const char             *info,
@@ -1599,7 +1606,9 @@ rtems_status_code rtems_interrupt_handler_install(
 One of the following mutually exclusive options
 
 - {c:macro}`RTEMS_INTERRUPT_UNIQUE`,
+
 - {c:macro}`RTEMS_INTERRUPT_SHARED`, and
+
 - {c:macro}`RTEMS_INTERRUPT_REPLACE`
 
 shall be set in the `options` parameter.
@@ -1675,7 +1684,9 @@ long as the handler is installed.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -1698,7 +1709,7 @@ Removes the interrupt handler routine and argument from the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_handler_remove(
   rtems_vector_number     vector,
   rtems_interrupt_handler routine,
@@ -1751,7 +1762,9 @@ rtems_status_code rtems_interrupt_handler_remove(
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -1774,7 +1787,7 @@ Checks if the interrupt vector is enabled.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_vector_is_enabled(
   rtems_vector_number vector,
   bool               *enabled
@@ -1833,8 +1846,11 @@ and disabled by {ref}`InterfaceRtemsInterruptVectorDisable`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/vector-enable
@@ -1856,7 +1872,7 @@ Enables the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_vector_enable( rtems_vector_number vector );
 ```
 
@@ -1906,8 +1922,11 @@ if an interrupt vector can be enabled. Interrupt vectors may be disabled by
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/vector-disable
@@ -1929,7 +1948,7 @@ Disables the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_vector_disable( rtems_vector_number vector );
 ```
 
@@ -1979,8 +1998,11 @@ or software generated interrupts.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/is-pending
@@ -2002,7 +2024,7 @@ Checks if the interrupt is pending.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_is_pending(
   rtems_vector_number vector,
   bool               *pending
@@ -2066,8 +2088,11 @@ cleared by {ref}`InterfaceRtemsInterruptClear`.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/raise
@@ -2089,7 +2114,7 @@ Raises the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_raise( rtems_vector_number vector );
 ```
 
@@ -2128,8 +2153,11 @@ if an interrupt vector can be raised.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/raise-on
@@ -2151,7 +2179,7 @@ Raises the interrupt vector on the processor.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_raise_on(
   rtems_vector_number vector,
   uint32_t            cpu_index
@@ -2205,8 +2233,11 @@ if an interrupt vector can be raised on a processor.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/clear
@@ -2228,7 +2259,7 @@ Clears the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_clear( rtems_vector_number vector );
 ```
 
@@ -2267,8 +2298,11 @@ if an interrupt vector can be cleared.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/get-priority
@@ -2290,7 +2324,7 @@ Gets the priority of the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_get_priority(
   rtems_vector_number vector,
   uint32_t           *priority
@@ -2342,8 +2376,11 @@ priority associated with an interrupt vector.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/set-priority
@@ -2365,7 +2402,7 @@ Sets the priority of the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_set_priority(
   rtems_vector_number vector,
   uint32_t            priority
@@ -2480,8 +2517,11 @@ documentation in the *RTEMS User Manual* for further information.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/get-affinity
@@ -2503,7 +2543,7 @@ Gets the processor affinity set of the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_get_affinity(
   rtems_vector_number vector,
   size_t              affinity_size,
@@ -2555,8 +2595,11 @@ rtems_status_code rtems_interrupt_get_affinity(
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/set-affinity
@@ -2578,7 +2621,7 @@ Sets the processor affinity set of the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_set_affinity(
   rtems_vector_number vector,
   size_t              affinity_size,
@@ -2646,8 +2689,11 @@ an error status is returned.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/get-attributes
@@ -2669,7 +2715,7 @@ Gets the attributes of the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_get_attributes(
   rtems_vector_number         vector,
   rtems_interrupt_attributes *attributes
@@ -2710,8 +2756,11 @@ rtems_status_code rtems_interrupt_get_attributes(
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/intr/if/handler-iterate
@@ -2733,7 +2782,7 @@ Iterates over all interrupt handler installed at the interrupt vector.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_handler_iterate(
   rtems_vector_number                 vector,
   rtems_interrupt_per_handler_routine routine,
@@ -2799,7 +2848,9 @@ may result in a deadlock.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -2822,7 +2873,7 @@ Initializes the interrupt server tasks.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_initialize(
   rtems_task_priority priority,
   size_t              stack_size,
@@ -2902,7 +2953,9 @@ Interrupt servers may be deleted by {ref}`InterfaceRtemsInterruptServerDelete`.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -2925,7 +2978,7 @@ Creates an interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_create(
   rtems_interrupt_server_control      *control,
   const rtems_interrupt_server_config *config,
@@ -2976,7 +3029,9 @@ See also {ref}`InterfaceRtemsInterruptServerInitialize` and
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -3000,7 +3055,7 @@ the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_handler_install(
   uint32_t                server_index,
   rtems_vector_number     vector,
@@ -3098,7 +3153,9 @@ See also {ref}`InterfaceRtemsInterruptHandlerInstall`.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -3122,7 +3179,7 @@ and the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_handler_remove(
   uint32_t                server_index,
   rtems_vector_number     vector,
@@ -3175,10 +3232,13 @@ rtems_status_code rtems_interrupt_server_handler_remove(
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
@@ -3202,7 +3262,7 @@ Sets the processor affinity of the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_set_affinity(
   uint32_t            server_index,
   size_t              affinity_size,
@@ -3266,10 +3326,14 @@ This operation is only reliable in case the interrupt server was suspended via
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may change the processor affinity of a task. This may cause the
   calling task to be preempted.
+
 - The directive may change the priority of a task. This may cause the calling
   task to be preempted.
 
@@ -3292,7 +3356,7 @@ Deletes the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_delete( uint32_t server_index );
 ```
 
@@ -3331,9 +3395,11 @@ See also {ref}`InterfaceRtemsInterruptServerCreate`.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
 
@@ -3356,7 +3422,7 @@ Suspends the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_suspend( uint32_t server_index );
 ```
 
@@ -3393,9 +3459,11 @@ Interrupt server may be resumed by {ref}`InterfaceRtemsInterruptServerResume`.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
 
@@ -3418,7 +3486,7 @@ Resumes the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_resume( uint32_t server_index );
 ```
 
@@ -3456,9 +3524,11 @@ Interrupt server may be suspended by
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
 
@@ -3482,7 +3552,7 @@ interrupt server to the destination interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_move(
   uint32_t            source_server_index,
   rtems_vector_number vector,
@@ -3533,9 +3603,11 @@ rtems_status_code rtems_interrupt_server_move(
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
 
@@ -3559,7 +3631,7 @@ interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_handler_iterate(
   uint32_t                            server_index,
   rtems_vector_number                 vector,
@@ -3624,7 +3696,9 @@ may result in a deadlock.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -3647,7 +3721,7 @@ Initializes the interrupt server entry.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_entry_initialize(
   uint32_t                      server_index,
   rtems_interrupt_server_entry *entry
@@ -3697,7 +3771,9 @@ destroyed by {ref}`InterfaceRtemsInterruptServerEntryDestroy`.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -3721,7 +3797,7 @@ server entry.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_server_action_prepend(
   rtems_interrupt_server_entry  *entry,
   rtems_interrupt_server_action *action,
@@ -3762,23 +3838,31 @@ No error checking is performed by the directive.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The interrupt server entry shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerEntryInitialize` and further optional
   calls to {ref}`InterfaceRtemsInterruptServerActionPrepend`.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerActionPrepend` with the same interrupt
   server entry. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerEntryMove` with the same interrupt server
   entry. Calling the directive under this condition is undefined behaviour.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerEntrySubmit` with the same interrupt
   server entry. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called while the interrupt server entry is pending
   on or serviced by its current interrupt server. Calling the directive under
   these conditions is undefined behaviour.
@@ -3802,7 +3886,7 @@ Destroys the interrupt server entry.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_server_entry_destroy(
   rtems_interrupt_server_entry *entry
 );
@@ -3828,11 +3912,14 @@ No error checking is performed by the directive.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
+
 - The interrupt server entry shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerEntryInitialize` and further optional
   calls to {ref}`InterfaceRtemsInterruptServerActionPrepend`.
@@ -3856,7 +3943,7 @@ Submits the interrupt server entry to be serviced by the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_server_entry_submit(
   rtems_interrupt_server_entry *entry
 );
@@ -3897,17 +3984,23 @@ A submitted entry may be destroyed by
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - The interrupt server entry shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerEntryInitialize` and further optional
   calls to {ref}`InterfaceRtemsInterruptServerActionPrepend`.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerActionPrepend` with the same interrupt
   server entry. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerEntryMove` with the same interrupt server
   entry. Calling the directive under this condition is undefined behaviour.
@@ -3931,7 +4024,7 @@ Moves the interrupt server entry to the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_entry_move(
   rtems_interrupt_server_entry *entry,
   uint32_t                      server_index
@@ -3968,23 +4061,30 @@ rtems_status_code rtems_interrupt_server_entry_move(
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - The interrupt server entry shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerEntryInitialize` and further optional
   calls to {ref}`InterfaceRtemsInterruptServerActionPrepend`.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerActionPrepend` with the same interrupt
   server entry. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerEntryMove` with the same interrupt server
   entry. Calling the directive under this condition is undefined behaviour.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerEntrySubmit` with the same interrupt
   server entry. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called while the interrupt server entry is pending
   on or serviced by its current interrupt server. Calling the directive under
   these conditions is undefined behaviour.
@@ -4008,7 +4108,7 @@ Initializes the interrupt server request.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_interrupt_server_request_initialize(
   uint32_t                        server_index,
   rtems_interrupt_server_request *request,
@@ -4064,7 +4164,9 @@ requests may be submitted to get serviced by the interrupt server with
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
 
@@ -4087,7 +4189,7 @@ Sets the interrupt vector in the interrupt server request.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_server_request_set_vector(
   rtems_interrupt_server_request *request,
   rtems_vector_number             vector
@@ -4123,19 +4225,26 @@ interrupt server the interrupt vector will be enabled again.
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive will not cause the calling task to be preempted.
+
 - The interrupt server request shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerRequestInitialize`.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerRequestSetVector` with the same interrupt
   server request. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerRequestSubmit` with the same interrupt
   server request. Calling the directive under this condition is undefined
   behaviour.
+
 - The directive shall not be called while the interrupt server entry is pending
   on or serviced by its current interrupt server. Calling the directive under
   these conditions is undefined behaviour.
@@ -4159,7 +4268,7 @@ Destroys the interrupt server request.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_server_request_destroy(
   rtems_interrupt_server_request *request
 );
@@ -4185,11 +4294,14 @@ No error checking is performed by the directive.
 The following constraints apply to this directive:
 
 - The directive may be called from within task context.
+
 - The directive shall not be called from within the context of an interrupt
   server. Calling the directive from within the context of an interrupt server
   is undefined behaviour.
+
 - The directive sends a request to another task and waits for a response. This
   may cause the calling task to be blocked and unblocked.
+
 - The interrupt server request shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerRequestInitialize`.
 
@@ -4212,7 +4324,7 @@ Submits the interrupt server request to be serviced by the interrupt server.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 void rtems_interrupt_server_request_submit(
   rtems_interrupt_server_request *request
 );
@@ -4254,12 +4366,17 @@ A submitted request may be destroyed by
 The following constraints apply to this directive:
 
 - The directive may be called from within interrupt context.
+
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
 - The interrupt server request shall have been initialized by
   {ref}`InterfaceRtemsInterruptServerRequestInitialize`.
+
 - The directive shall not be called concurrently with
   {ref}`InterfaceRtemsInterruptServerRequestSetVector` with the same interrupt
   server request. Calling the directive under this condition is undefined

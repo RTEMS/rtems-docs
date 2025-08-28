@@ -1,35 +1,21 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
-
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (PartitionManagerDirectives)=
@@ -62,7 +48,7 @@ Creates a partition.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_partition_create(
   rtems_name      name,
   void           *starting_address,
@@ -126,6 +112,7 @@ attributes.
 - A **local scope** is the default and can be emphasized through the use of the
   {c:macro}`RTEMS_LOCAL` attribute. A local partition can be only used by the
   node which created it.
+
 - A **global scope** is established if the {c:macro}`RTEMS_GLOBAL` attribute is
   set. The memory space used for the partition must reside in shared memory.
   Setting the global attribute in a single node system has no effect.
@@ -208,16 +195,22 @@ global object table.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The number of partitions available to the application is configured through
   the {ref}`CONFIGURE_MAXIMUM_PARTITIONS` application configuration option.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may allocate memory from the RTEMS
   Workspace.
+
 - The number of global objects available to the application is configured
   through the {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application
   configuration option.
@@ -247,7 +240,7 @@ Identifies a partition by the object name.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_partition_ident(
   rtems_name name,
   uint32_t   node,
@@ -280,9 +273,12 @@ name specified in `name`.
 The node to search is specified in `node`. It shall be
 
 - a valid node number,
+
 - the constant {c:macro}`RTEMS_SEARCH_ALL_NODES` to search in all nodes,
+
 - the constant {c:macro}`RTEMS_SEARCH_LOCAL_NODE` to search in the local node
   only, or
+
 - the constant {c:macro}`RTEMS_SEARCH_OTHER_NODES` to search in all nodes
   except the local node.
 
@@ -334,6 +330,7 @@ access the partition.
 The following constraints apply to this directive:
 
 - The directive may be called from within any runtime context.
+
 - The directive will not cause the calling task to be preempted.
 
 % Generated from spec:/rtems/part/if/delete
@@ -358,7 +355,7 @@ Deletes the partition.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_partition_delete( rtems_id id );
 ```
 
@@ -413,13 +410,18 @@ with the {c:macro}`RTEMS_GLOBAL` attribute.
 The following constraints apply to this directive:
 
 - The directive may be called from within device driver initialization context.
+
 - The directive may be called from within task context.
+
 - The directive may obtain and release the object allocator mutex. This may
   cause the calling task to be preempted.
+
 - When the directive operates on a global object, the directive sends a message
   to remote nodes. This may preempt the calling task.
+
 - The calling task does not have to be the task that created the object. Any
   local task that knows the object identifier can delete the object.
+
 - Where the object class corresponding to the directive is configured to use
   unlimited objects, the directive may free memory to the RTEMS Workspace.
 
@@ -448,7 +450,7 @@ Tries to get a buffer from the partition.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_partition_get_buffer( rtems_id id, void **buffer );
 ```
 
@@ -510,9 +512,12 @@ The following constraints apply to this directive:
 
 - When the directive operates on a local object, the directive may be called
   from within interrupt context.
+
 - The directive may be called from within task context.
+
 - When the directive operates on a local object, the directive will not cause
   the calling task to be preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
 
@@ -538,7 +543,7 @@ Returns the buffer to the partition.
 .. rubric:: CALLING SEQUENCE:
 ```
 
-```c
+```{code-block} c
 rtems_status_code rtems_partition_return_buffer( rtems_id id, void *buffer );
 ```
 
@@ -587,8 +592,11 @@ The following constraints apply to this directive:
 
 - When the directive operates on a local object, the directive may be called
   from within interrupt context.
+
 - The directive may be called from within task context.
+
 - When the directive operates on a local object, the directive will not cause
   the calling task to be preempted.
+
 - When the directive operates on a remote object, the directive sends a message
   to the remote node and waits for a reply. This will preempt the calling task.
