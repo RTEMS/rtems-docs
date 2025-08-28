@@ -1,5 +1,6 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
+% Copyright (C) 2025 Mazen Adel Elmessady
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
 
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
@@ -49,6 +50,7 @@
 % spec:/rtems/barrier/if/wait
 
 % spec:/rtems/barrier/if/release
+% spec:/rtems/barrier/if/get-number-waiting
 
 The Barrier Manager provides a unique synchronization capability which can be
 used to have a set of tasks block and be unblocked as a set. The directives
@@ -59,3 +61,6 @@ provided by the Barrier Manager are:
 - {ref}`InterfaceRtemsBarrierDelete` - Deletes the barrier.
 - {ref}`InterfaceRtemsBarrierWait` - Waits at the barrier.
 - {ref}`InterfaceRtemsBarrierRelease` - Releases the barrier.
+
+- {ref}`InterfaceRtemsBarrierGetNumberWaiting` - Gets the number of tasks
+  waiting at the barrier.

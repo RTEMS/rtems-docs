@@ -1,5 +1,6 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
+% Copyright (C) 2025 Mazen Adel Elmessady
 % Copyright (C) 2020, 2021 embedded brains GmbH & Co. KG
 
 % Copyright (C) 1988, 2008 On-Line Applications Research Corporation (OAR)
@@ -475,3 +476,76 @@ The following constraints apply to this directive:
 - The directive may be called from within task context.
 - The directive may unblock a task. This may cause the calling task to be
   preempted.
+
+% Generated from spec:/rtems/barrier/if/get-number-waiting
+
+```{raw} latex
+\clearpage
+```
+
+```{index} rtems_barrier_get_number_waiting()
+```
+
+```{index} get number of tasks waiting at a barrier
+```
+
+(InterfaceRtemsBarrierGetNumberWaiting)=
+
+## rtems_barrier_get_number_waiting()
+
+Gets the number of tasks waiting at the barrier.
+
+```{eval-rst}
+.. rubric:: CALLING SEQUENCE:
+```
+
+```{code-block} c
+rtems_status_code rtems_barrier_get_number_waiting(
+  rtems_id  id,
+  uint32_t *waiting
+);
+```
+
+```{eval-rst}
+.. rubric:: PARAMETERS:
+```
+
+`id`
+: This parameter is the barrier identifier.
+
+`waiting`
+: This parameter is the pointer to an
+  [uint32_t](https://en.cppreference.com/w/c/types/integer) object. When the
+  directive call is successful, the number of waiting tasks will be stored in
+  this object.
+
+```{eval-rst}
+.. rubric:: DESCRIPTION:
+```
+
+This directive gets the number of tasks waiting at the barrier specified by
+`id`. The number of waiting tasks will be returned in `waiting`.
+
+```{eval-rst}
+.. rubric:: RETURN VALUES:
+```
+
+{c:macro}`RTEMS_SUCCESSFUL`
+: The requested operation was successful.
+
+{c:macro}`RTEMS_INVALID_ADDRESS`
+: The `waiting` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+{c:macro}`RTEMS_INVALID_ID`
+: There was no barrier associated with the identifier specified by `id`.
+
+```{eval-rst}
+.. rubric:: CONSTRAINTS:
+```
+
+The following constraints apply to this directive:
+
+- The directive may be called from within interrupt context.
+
+- The directive may be called from within task context.
