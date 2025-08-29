@@ -414,9 +414,9 @@ this type are:
 
 content
 : The attribute value shall be a string. It shall be the content of the
-  configuration file. A \$\{VARIABLE} substitution is performed during the
+  configuration file. A `${VARIABLE}` substitution is performed during the
   configure command execution using the variables of the configuration set. Use
-  \$\$ for a plain \$ character. To have all variables from sibling items
+  `$$` for a plain `$` character. To have all variables from sibling items
   available for substitution it is recommended to link them in the proper
   order.
 
@@ -2027,34 +2027,37 @@ This type refines the {ref}`SpecTypeNonFunctionalRequirementItemType` through
 the `non-functional-type` attribute if the value is `performance-runtime`. The
 item shall have exactly one link with the
 {ref}`SpecTypeRuntimeMeasurementRequestLinkRole`. A requirement text processor
-shall support a substitution of \${.:/limit-kind}:
+shall support a substitution of `${.:/limit-kind}`:
 
 - For a {ref}`SpecTypeRuntimeMeasurementValueKind` of `min-lower-bound` or
-  `min-upper-bound`, the substitution of \${.:/limit-kind} shall be
-  `"minimum"`.
+  `min-upper-bound`, the substitution of `${.:/limit-kind}` shall be
+  "`minimum`".
+
 - For a {ref}`SpecTypeRuntimeMeasurementValueKind` of `mean-lower-bound` or
-  `mean-upper-bound`, the substitution of \${.:/limit-kind} shall be `"mean"`.
+  `mean-upper-bound`, the substitution of `${.:/limit-kind}` shall be "`mean`".
+
 - For a {ref}`SpecTypeRuntimeMeasurementValueKind` of `max-lower-bound` or
-  `max-upper-bound`, the substitution of \${.:/limit-kind} shall be
-  `"maximum"`.
+  `max-upper-bound`, the substitution of `${.:/limit-kind}` shall be
+  "`maximum`".
 
 A requirement text processor shall support a substitution of
-\${.:/limit-condition}:
+`${.:/limit-condition}`:
 
 - For a {ref}`SpecTypeRuntimeMeasurementValueKind` of `min-lower-bound`,
   `mean-lower-bound`, or `max-lower-bound`, the substitution of
-  \${.:/limit-condition} shall be `"greater than or equal to <value>"` with
-  \<value> being the value of the corresponding entry in the
+  `${.:/limit-condition}` shall be "`greater than or equal to <value>`" with
+  `<value>` being the value of the corresponding entry in the
   {ref}`SpecTypeRuntimeMeasurementValueTable`.
+
 - For a {ref}`SpecTypeRuntimeMeasurementValueKind` of `min-upper-bound`,
   `mean-upper-bound`, or `max-upper-bound`, the substitution of
-  \${.:/limit-condition} shall be `"less than or equal to <value>"` with
-  \<value> being the value of the corresponding entry in the
+  `${.:/limit-condition}` shall be "`less than or equal to <value>`" with
+  `<value>` being the value of the corresponding entry in the
   {ref}`SpecTypeRuntimeMeasurementValueTable`.
 
 A requirement text processor shall support a substitution of
-\${.:/environment}. The value of the substitution shall be
-`"<environment> environment"` with \<environment> being the environment of the
+`${.:/environment}`. The value of the substitution shall be
+"`<environment> environment`" with `<environment>` being the environment of the
 corresponding entry in the {ref}`SpecTypeRuntimeMeasurementEnvironmentTable`.
 
 This set of attributes specifies a runtime performance requirement. Along with
@@ -4229,7 +4232,7 @@ This type is used by the following types:
 
 The value shall be a string. It shall be an attribute name. The value shall
 match with the regular expression
-"^([a-z][a-z0-9-]\*|SPDX-License-Identifier)\$".
+"`^([a-z][a-z0-9-]*|SPDX-License-Identifier)$`".
 
 This type is used by the following types:
 
