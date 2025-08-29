@@ -3,31 +3,18 @@
 % Copyright (C) 2019, 2025 embedded brains GmbH & Co. KG
 
 % This file is part of the RTEMS quality process and was automatically
-
 % generated.  If you find something that needs to be fixed or
-
 % worded better please post a report or patch to an RTEMS mailing list
-
 % or raise a bug report:
-
 %
-
 % https://www.rtems.org/bugs.html
-
 %
-
 % For information on updating and regenerating please refer to the How-To
-
 % section in the Software Requirements Engineering chapter of the
-
 % RTEMS Software Engineering manual.  The manual is provided as a part of
-
 % a release.  For development sources please refer to the online
-
 % documentation at:
-
 %
-
 % https://docs.rtems.org
 
 (ReqEngSpecificationItems)=
@@ -45,15 +32,25 @@ The specification item types have the following hierarchy:
   - {ref}`SpecTypeBuildItemType`
 
     - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
     - {ref}`SpecTypeBuildBSPItemType`
+
     - {ref}`SpecTypeBuildConfigurationFileItemType`
+
     - {ref}`SpecTypeBuildConfigurationHeaderItemType`
+
     - {ref}`SpecTypeBuildGroupItemType`
+
     - {ref}`SpecTypeBuildLibraryItemType`
+
     - {ref}`SpecTypeBuildObjectsItemType`
+
     - {ref}`SpecTypeBuildOptionItemType`
+
     - {ref}`SpecTypeBuildScriptItemType`
+
     - {ref}`SpecTypeBuildStartFileItemType`
+
     - {ref}`SpecTypeBuildTestProgramItemType`
 
   - {ref}`SpecTypeConstraintItemType`
@@ -61,6 +58,7 @@ The specification item types have the following hierarchy:
   - {ref}`SpecTypeGlossaryItemType`
 
     - {ref}`SpecTypeGlossaryGroupItemType`
+
     - {ref}`SpecTypeGlossaryTermItemType`
 
   - {ref}`SpecTypeInterfaceItemType`
@@ -70,7 +68,9 @@ The specification item types have the following hierarchy:
     - {ref}`SpecTypeApplicationConfigurationOptionItemType`
 
       - {ref}`SpecTypeApplicationConfigurationFeatureEnableOptionItemType`
+
       - {ref}`SpecTypeApplicationConfigurationFeatureOptionItemType`
+
       - {ref}`SpecTypeApplicationConfigurationValueOptionItemType`
 
     - {ref}`SpecTypeInterfaceCompoundItemType`
@@ -108,14 +108,19 @@ The specification item types have the following hierarchy:
     - {ref}`SpecTypeFunctionalRequirementItemType`
 
       - {ref}`SpecTypeActionRequirementItemType`
+
       - {ref}`SpecTypeGenericFunctionalRequirementItemType`
 
     - {ref}`SpecTypeNonFunctionalRequirementItemType`
 
       - {ref}`SpecTypeDesignGroupRequirementItemType`
+
       - {ref}`SpecTypeDesignTargetItemType`
+
       - {ref}`SpecTypeGenericNonFunctionalRequirementItemType`
+
       - {ref}`SpecTypeRuntimeMeasurementEnvironmentItemType`
+
       - {ref}`SpecTypeRuntimePerformanceRequirementItemType`
 
   - {ref}`SpecTypeRequirementValidationItemType`
@@ -178,15 +183,25 @@ type
 This type is refined by the following types:
 
 - {ref}`SpecTypeBuildItemType`
+
 - {ref}`SpecTypeConstraintItemType`
+
 - {ref}`SpecTypeGlossaryItemType`
+
 - {ref}`SpecTypeInterfaceItemType`
+
 - {ref}`SpecTypeProxyItemTypes`
+
 - {ref}`SpecTypeRequirementItemType`
+
 - {ref}`SpecTypeRequirementValidationItemType`
+
 - {ref}`SpecTypeRuntimeMeasurementTestItemType`
+
 - {ref}`SpecTypeSpecificationItemType`
+
 - {ref}`SpecTypeTestCaseItemType`
+
 - {ref}`SpecTypeTestSuiteItemType`
 
 (SpecTypeBuildItemType)=
@@ -209,15 +224,25 @@ extra-files
 This type is refined by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildBSPItemType`
+
 - {ref}`SpecTypeBuildConfigurationFileItemType`
+
 - {ref}`SpecTypeBuildConfigurationHeaderItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
+
 - {ref}`SpecTypeBuildOptionItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildAdaTestProgramItemType)=
@@ -291,7 +316,7 @@ use-before
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 ada-main: testsuites/ada/samples/hello/hello.adb
 ada-object-directory: testsuites/ada/samples/hello
@@ -360,7 +385,7 @@ source
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 arch: myarch
 bsp: mybsp
@@ -428,7 +453,7 @@ target
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 build-type: config-file
 content: |
@@ -517,7 +542,7 @@ use-before
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 build-type: group
 cflags: []
@@ -587,7 +612,7 @@ target
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 build-type: library
 cflags:
@@ -650,7 +675,7 @@ source
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 build-type: objects
 cflags: []
@@ -682,7 +707,9 @@ attribute if the value is `option`. This set of attributes specifies a build
 option. The following explicit attributes are mandatory:
 
 - `actions`
+
 - `default`
+
 - `description`
 
 The explicit attributes for this type are:
@@ -716,7 +743,7 @@ name
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 actions:
 - get-integer: null
@@ -753,8 +780,11 @@ script. The optional attributes may be required by commands executed through
 the scripts. The following explicit attributes are mandatory:
 
 - `do-build`
+
 - `do-configure`
+
 - `prepare-build`
+
 - `prepare-configure`
 
 The explicit attributes for this type are:
@@ -828,7 +858,7 @@ use-before
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 build-type: script
 copyrights:
@@ -886,7 +916,7 @@ target
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 asflags: []
 build-type: start-file
@@ -962,7 +992,7 @@ use-before
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 build-type: test-program
 cflags: []
@@ -1018,6 +1048,7 @@ glossary-type
 This type is refined by the following types:
 
 - {ref}`SpecTypeGlossaryGroupItemType`
+
 - {ref}`SpecTypeGlossaryTermItemType`
 
 (SpecTypeGlossaryGroupItemType)=
@@ -1078,20 +1109,35 @@ interface-type
 This type is refined by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationGroupItemType`
+
 - {ref}`SpecTypeApplicationConfigurationOptionItemType`
+
 - {ref}`SpecTypeInterfaceCompoundItemType`
+
 - {ref}`SpecTypeInterfaceDefineItemType`
+
 - {ref}`SpecTypeInterfaceDomainItemType`
+
 - {ref}`SpecTypeInterfaceEnumItemType`
+
 - {ref}`SpecTypeInterfaceEnumeratorItemType`
+
 - {ref}`SpecTypeInterfaceForwardDeclarationItemType`
+
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
+
 - {ref}`SpecTypeInterfaceGroupItemType`
+
 - {ref}`SpecTypeInterfaceHeaderFileItemType`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
+
 - {ref}`SpecTypeInterfaceUnspecifiedHeaderFileItemType`
+
 - {ref}`SpecTypeInterfaceUnspecifiedItemType`
+
 - {ref}`SpecTypeInterfaceVariableItemType`
+
 - {ref}`SpecTypeRegisterBlockItemType`
 
 (SpecTypeApplicationConfigurationGroupItemType)=
@@ -1141,7 +1187,9 @@ notes
 This type is refined by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationFeatureEnableOptionItemType`
+
 - {ref}`SpecTypeApplicationConfigurationFeatureOptionItemType`
+
 - {ref}`SpecTypeApplicationConfigurationValueOptionItemType`
 
 (SpecTypeApplicationConfigurationFeatureEnableOptionItemType)=
@@ -1175,6 +1223,7 @@ This type refines the following types:
 
 - {ref}`SpecTypeApplicationConfigurationOptionItemType` through the
   `appl-config-option-type` attribute if the value is `initializer`
+
 - {ref}`SpecTypeApplicationConfigurationOptionItemType` through the
   `appl-config-option-type` attribute if the value is `integer`
 
@@ -1194,6 +1243,7 @@ This type refines the following types:
 
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `struct`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `union`
 
@@ -1331,6 +1381,7 @@ This type refines the following types:
 
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `function`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `macro`
 
@@ -1467,22 +1518,31 @@ This type refines the following types:
 
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-define`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-enum`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-enumerator`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-function`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-group`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-macro`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-object`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-struct`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-typedef`
+
 - {ref}`SpecTypeInterfaceItemType` through the `interface-type` attribute if
   the value is `unspecified-union`
 
@@ -1619,11 +1679,12 @@ text
 This type is refined by the following types:
 
 - {ref}`SpecTypeFunctionalRequirementItemType`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType`
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH & Co. KG
@@ -1654,6 +1715,7 @@ functional-type
 This type is refined by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
+
 - {ref}`SpecTypeGenericFunctionalRequirementItemType`
 
 (SpecTypeActionRequirementItemType)=
@@ -1676,7 +1738,9 @@ interface of the action.
 The action requirements are specified by
 
 - a list of pre-conditions, each with a set of states,
+
 - a list of post-conditions, each with a set of states,
+
 - the transition of pre-condition states to post-condition states through the
   action.
 
@@ -1763,7 +1827,7 @@ transition-map
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH & Co. KG
@@ -1894,14 +1958,19 @@ This type refines the following types:
 
 - {ref}`SpecTypeFunctionalRequirementItemType` through the `functional-type`
   attribute if the value is `capability`
+
 - {ref}`SpecTypeFunctionalRequirementItemType` through the `functional-type`
   attribute if the value is `dependability-function`
+
 - {ref}`SpecTypeFunctionalRequirementItemType` through the `functional-type`
   attribute if the value is `function`
+
 - {ref}`SpecTypeFunctionalRequirementItemType` through the `functional-type`
   attribute if the value is `interface-define-not-defined`
+
 - {ref}`SpecTypeFunctionalRequirementItemType` through the `functional-type`
   attribute if the value is `operational`
+
 - {ref}`SpecTypeFunctionalRequirementItemType` through the `functional-type`
   attribute if the value is `safety-function`
 
@@ -1924,9 +1993,13 @@ non-functional-type
 This type is refined by the following types:
 
 - {ref}`SpecTypeDesignGroupRequirementItemType`
+
 - {ref}`SpecTypeDesignTargetItemType`
+
 - {ref}`SpecTypeGenericNonFunctionalRequirementItemType`
+
 - {ref}`SpecTypeRuntimeMeasurementEnvironmentItemType`
+
 - {ref}`SpecTypeRuntimePerformanceRequirementItemType`
 
 (SpecTypeDesignGroupRequirementItemType)=
@@ -1975,30 +2048,43 @@ This type refines the following types:
 
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `build-configuration`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `constraint`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `design`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `documentation`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `interface`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `interface-requirement`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `maintainability`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `performance`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `performance-runtime-limits`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `portability`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `quality`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `reliability`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `resource`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType` through the
   `non-functional-type` attribute if the value is `safety`
 
@@ -2095,7 +2181,7 @@ test-teardown
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH & Co. KG
@@ -2167,8 +2253,10 @@ text
 
   - *By analysis*: A statement shall be provided how the requirement is met, by
     analysing static properties of the {term}`software product`.
+
   - *By inspection*: A statement shall be provided how the requirement is met,
     by inspection of the {term}`source code`.
+
   - *By review of design*: A rationale shall be provided to demonstrate how the
     requirement is satisfied implicitly by the software design.
 
@@ -2184,8 +2272,10 @@ This type refines the following types:
 
 - {ref}`SpecTypeRequirementValidationItemType` through the `method` attribute
   if the value is `by-analysis`
+
 - {ref}`SpecTypeRequirementValidationItemType` through the `method` attribute
   if the value is `by-inspection`
+
 - {ref}`SpecTypeRequirementValidationItemType` through the `method` attribute
   if the value is `by-review-of-design`
 
@@ -2287,7 +2377,7 @@ spec-type
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH & Co. KG
@@ -2387,6 +2477,7 @@ This type refines the following types:
 
 - {ref}`SpecTypeRootItemType` through the `type` attribute if the value is
   `memory-benchmark`
+
 - {ref}`SpecTypeRootItemType` through the `type` attribute if the value is
   `test-suite`
 
@@ -2472,6 +2563,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementBooleanExpression`
+
 - {ref}`SpecTypeActionRequirementExpression`
 
 (SpecTypeActionRequirementCondition)=
@@ -2569,6 +2661,7 @@ The value shall be a string. It shall be the name of a state of the condition
 or `N/A` if the condition is not applicable. The value
 
 - shall match with the regular expression "`^[A-Z][a-zA-Z0-9]*$`",
+
 - or, shall be equal to "`N/A`".
 
 This type is used by the following types:
@@ -2589,6 +2682,7 @@ A value of this type shall be of one of the following variants:
   or `N/A` if the condition is not applicable. The value
 
   - shall match with the regular expression "`^[A-Z][a-zA-Z0-9]*$`",
+
   - or, shall be equal to "`N/A`".
 
 This type is used by the following types:
@@ -2608,16 +2702,23 @@ in an action requirement, the shorter the names should be. The name `NA` is
 reserved and indicates that a condition is not applicable. The value
 
 - shall match with the regular expression "`^[A-Z][a-zA-Z0-9]*$`",
+
 - and, shall be not equal to "`NA`".
 
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementCondition`
+
 - {ref}`SpecTypeActionRequirementExpressionConditionSet`
+
 - {ref}`SpecTypeActionRequirementExpression`
+
 - {ref}`SpecTypeActionRequirementSkipReasons`
+
 - {ref}`SpecTypeActionRequirementState`
+
 - {ref}`SpecTypeActionRequirementTransitionPostConditions`
+
 - {ref}`SpecTypeActionRequirementTransitionPreConditions`
 
 (SpecTypeActionRequirementSkipReasons)=
@@ -2710,6 +2811,7 @@ A value of this type shall be of one of the following variants:
   applicable. The value
 
   - shall match with the regular expression "`^[A-Z][a-zA-Z0-9]*$`",
+
   - or, shall be equal to "`N/A`".
 
 This type is used by the following types:
@@ -2737,6 +2839,7 @@ A value of this type shall be of one of the following variants:
   transition is skipped and no test code runs for this transition. The value
 
   - shall match with the regular expression "`^[A-Z][a-zA-Z0-9]*$`",
+
   - and, shall be not equal to "`NA`".
 
 This type is used by the following types:
@@ -2758,6 +2861,7 @@ A value of this type shall be of one of the following variants:
   not applicable in this transition. The value shall be an element of
 
   - "`all`", and
+
   - "`N/A`".
 
 This type is used by the following types:
@@ -2779,6 +2883,7 @@ A value of this type shall be of one of the following variants:
   be exactly one generic attribute key for each pre-condition. The key name
   shall be the pre-condition name. The value of each generic attribute shall be
   a set of states of the pre-condition.
+
 - The value may be a string. If this name is specified instead of explicit
   pre-condition states, then the post-condition states of this entry are used
   to define all remaining transitions of the map. The value shall be equal to
@@ -2807,12 +2912,15 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - The value may be a boolean.
+
 - The value may be an integer number.
+
 - The value may be a string.
 
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionAction`
+
 - {ref}`SpecTypeInterfaceReturnValue`
 
 (SpecTypeBuildAssemblerOption)=
@@ -2827,6 +2935,7 @@ context.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
 
 (SpecTypeBuildCCompilerOption)=
@@ -2841,12 +2950,19 @@ context.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildBSPItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
+
 - {ref}`SpecTypeBuildOptionCCompilerCheckAction`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildCPreprocessorOption)=
@@ -2861,12 +2977,19 @@ context.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildBSPItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildCXXCompilerOption)=
@@ -2881,11 +3004,17 @@ context.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
+
 - {ref}`SpecTypeBuildOptionCXXCompilerCheckAction`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildDependencyConditionalLinkRole)=
@@ -2926,12 +3055,19 @@ referenced items.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildBSPItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildInstallDirective)=
@@ -2953,8 +3089,11 @@ source
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildBSPItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
 
 (SpecTypeBuildInstallPath)=
@@ -2964,14 +3103,18 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string. It shall be the installation path of a
   {ref}`SpecTypeBuildTarget`.
 
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildConfigurationFileItemType`
+
 - {ref}`SpecTypeBuildConfigurationHeaderItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
 
 (SpecTypeBuildLinkStaticLibraryDirective)=
@@ -2988,7 +3131,9 @@ attributes to enable a proper build dependency tracking.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildLinkerOption)=
@@ -3002,7 +3147,9 @@ options presented to the item by the build item context.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildOptionAction)=
@@ -3322,6 +3469,7 @@ value
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildOptionAction`
+
 - {ref}`SpecTypeBuildOptionItemType`
 
 (SpecTypeBuildSource)=
@@ -3334,10 +3482,15 @@ file shall be relative to the directory of the {file}`wscript`.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildBSPItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildObjectsItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildTarget)=
@@ -3351,11 +3504,17 @@ target file is located in the build tree.
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildConfigurationFileItemType`
+
 - {ref}`SpecTypeBuildConfigurationHeaderItemType`
+
 - {ref}`SpecTypeBuildLibraryItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildStartFileItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildTestState)=
@@ -3366,9 +3525,13 @@ The value shall be a string. This string defines a test state. The value shall
 be an element of
 
 - "`benchmark`",
+
 - "`exclude`",
+
 - "`expected-fail`",
+
 - "`indeterminate`", and
+
 - "`user-input`".
 
 This type is used by the following types:
@@ -3386,8 +3549,11 @@ The library is used to link programs referenced by this item, e.g. `z` for
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeBuildUseBeforeDirective)=
@@ -3401,8 +3567,11 @@ The library is used to link programs referenced by this item, e.g. `z` for
 This type is used by the following types:
 
 - {ref}`SpecTypeBuildAdaTestProgramItemType`
+
 - {ref}`SpecTypeBuildGroupItemType`
+
 - {ref}`SpecTypeBuildScriptItemType`
+
 - {ref}`SpecTypeBuildTestProgramItemType`
 
 (SpecTypeConstraintLinkRole)=
@@ -3422,8 +3591,10 @@ holder of the specification item. The value
 
 - shall match with the regular expression
   "`^\s*Copyright\s+\(C\)\s+[0-9]+,\s*[0-9]+\s+.+\s*$`",
+
 - or, shall match with the regular expression
   "`^\s*Copyright\s+\(C\)\s+[0-9]+\s+.+\s*$`",
+
 - or, shall match with the regular expression
   "`^\s*Copyright\s+\(C\)\s+.+\s*$`".
 
@@ -3474,15 +3645,20 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementTransition`
+
 - {ref}`SpecTypeBuildDependencyConditionalLinkRole`
+
 - {ref}`SpecTypeBuildOptionValue`
+
 - {ref}`SpecTypeEnabledByExpression`
+
 - {ref}`SpecTypeInterfaceIncludeLinkRole`
+
 - {ref}`SpecTypeRootItemType`
 
 Please have a look at the following example:
 
-```yaml
+```{code-block} yaml
 enabled-by:
   and:
   - RTEMS_NETWORKING
@@ -3536,14 +3712,19 @@ type
 This type is refined by the following types:
 
 - {ref}`SpecTypeExternalDocumentReference`
+
 - {ref}`SpecTypeExternalFileReference`
+
 - {ref}`SpecTypeGenericExternalReference`
 
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceUnspecifiedHeaderFileItemType`
+
 - {ref}`SpecTypeInterfaceUnspecifiedItemType`
+
 - {ref}`SpecTypeRequirementItemType`
+
 - {ref}`SpecTypeRequirementValidationItemType`
 
 (SpecTypeFunctionImplementationLinkRole)=
@@ -3564,14 +3745,19 @@ This type refines the following types:
 
 - {ref}`SpecTypeExternalReference` through the `type` attribute if the value is
   `define`
+
 - {ref}`SpecTypeExternalReference` through the `type` attribute if the value is
   `function`
+
 - {ref}`SpecTypeExternalReference` through the `type` attribute if the value is
   `group`
+
 - {ref}`SpecTypeExternalReference` through the `type` attribute if the value is
   `macro`
+
 - {ref}`SpecTypeExternalReference` through the `type` attribute if the value is
   `url`
+
 - {ref}`SpecTypeExternalReference` through the `type` attribute if the value is
   `variable`
 
@@ -3591,11 +3777,13 @@ value is `glossary-member`. It defines the glossary membership role of links.
 A value of this type shall be of one of the following variants:
 
 - The value may be an integer number.
+
 - The value may be a string.
 
 This type is used by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationValueOptionItemType`
+
 - {ref}`SpecTypeBuildOptionAction`
 
 (SpecTypeInterfaceBriefDescription)=
@@ -3605,6 +3793,7 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string. It shall be the brief description of the
   interface. It should be a single sentence. The value shall not match with the
   regular expression "`\n\n`".
@@ -3612,17 +3801,29 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundItemType`
+
 - {ref}`SpecTypeInterfaceCompoundMemberDefinition`
+
 - {ref}`SpecTypeInterfaceDefineItemType`
+
 - {ref}`SpecTypeInterfaceEnumItemType`
+
 - {ref}`SpecTypeInterfaceEnumeratorItemType`
+
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
+
 - {ref}`SpecTypeInterfaceGroupItemType`
+
 - {ref}`SpecTypeInterfaceHeaderFileItemType`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
+
 - {ref}`SpecTypeInterfaceVariableItemType`
+
 - {ref}`SpecTypeRegisterBitsDefinition`
+
 - {ref}`SpecTypeRegisterBlockItemType`
+
 - {ref}`SpecTypeRegisterDefinition`
 
 (SpecTypeInterfaceCompoundDefinitionKind)=
@@ -3634,9 +3835,13 @@ defined. It may be a typedef only, the struct or union only, or a typedef with
 a struct or union definition. The value shall be an element of
 
 - "`struct-only`",
+
 - "`typedef-and-struct`",
+
 - "`typedef-and-union`",
+
 - "`typedef-only`", and
+
 - "`union-only`".
 
 This type is used by the following types:
@@ -3651,6 +3856,7 @@ This type refines the following types:
 
 - {ref}`SpecTypeInterfaceCompoundMemberDefinition` through the `kind` attribute
   if the value is `struct`
+
 - {ref}`SpecTypeInterfaceCompoundMemberDefinition` through the `kind` attribute
   if the value is `union`
 
@@ -3705,11 +3911,13 @@ A value of this type shall be of one of the following variants:
 This type is refined by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundMemberCompound`
+
 - {ref}`SpecTypeInterfaceCompoundMemberDeclaration`
 
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundMemberDefinitionDirective`
+
 - {ref}`SpecTypeInterfaceCompoundMemberDefinitionVariant`
 
 (SpecTypeInterfaceCompoundMemberDefinitionDirective)=
@@ -3732,6 +3940,7 @@ variants
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundItemType`
+
 - {ref}`SpecTypeInterfaceCompoundMemberCompound`
 
 (SpecTypeInterfaceCompoundMemberDefinitionVariant)=
@@ -3762,12 +3971,14 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string. It shall be the definition. On the definition a
   context-sensitive substitution of item variables is performed.
 
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceDefinitionDirective`
+
 - {ref}`SpecTypeInterfaceDefinitionVariant`
 
 (SpecTypeInterfaceDefinitionDirective)=
@@ -3789,8 +4000,11 @@ variants
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceDefineItemType`
+
 - {ref}`SpecTypeInterfaceEnumeratorItemType`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
+
 - {ref}`SpecTypeInterfaceVariableItemType`
 
 (SpecTypeInterfaceDefinitionVariant)=
@@ -3820,6 +4034,7 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string. It shall be the description of the interface. The
   description should be short and concentrate on the average case. All special
   cases, usage notes, constraints, error conditions, configuration
@@ -3829,19 +4044,33 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationOptionItemType`
+
 - {ref}`SpecTypeInterfaceCompoundItemType`
+
 - {ref}`SpecTypeInterfaceCompoundMemberDefinition`
+
 - {ref}`SpecTypeInterfaceDefineItemType`
+
 - {ref}`SpecTypeInterfaceEnumItemType`
+
 - {ref}`SpecTypeInterfaceEnumeratorItemType`
+
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
+
 - {ref}`SpecTypeInterfaceGroupItemType`
+
 - {ref}`SpecTypeInterfaceParameter`
+
 - {ref}`SpecTypeInterfaceReturnValue`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
+
 - {ref}`SpecTypeInterfaceVariableItemType`
+
 - {ref}`SpecTypeRegisterBitsDefinition`
+
 - {ref}`SpecTypeRegisterBlockItemType`
+
 - {ref}`SpecTypeRegisterDefinition`
 
 (SpecTypeInterfaceEnabledByExpression)=
@@ -3885,10 +4114,15 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceCompoundMemberDefinitionVariant`
+
 - {ref}`SpecTypeInterfaceDefinitionVariant`
+
 - {ref}`SpecTypeInterfaceEnabledByExpression`
+
 - {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`
+
 - {ref}`SpecTypeRegisterBitsDefinitionVariant`
+
 - {ref}`SpecTypeRegisterBlockMemberDefinitionVariant`
 
 (SpecTypeInterfaceEnumDefinitionKind)=
@@ -3900,7 +4134,9 @@ typedef only, the enum only, or a typedef with an enum definition. The value
 shall be an element of
 
 - "`enum-only`",
+
 - "`typedef-and-enum`", and
+
 - "`typedef-only`".
 
 This type is used by the following types:
@@ -3965,6 +4201,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionDirective`
+
 - {ref}`SpecTypeInterfaceFunctionOrMacroDefinitionVariant`
 
 (SpecTypeInterfaceFunctionOrMacroDefinitionDirective)=
@@ -4020,6 +4257,7 @@ The value shall match with the regular expression "`^[A-Z][a-zA-Z0-9]*$`".
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceGroupItemType`
+
 - {ref}`SpecTypeRegisterBlockItemType`
 
 (SpecTypeInterfaceGroupMembershipLinkRole)=
@@ -4063,17 +4301,25 @@ enabled-by
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string. It shall be the notes for the interface.
 
 This type is used by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationOptionItemType`
+
 - {ref}`SpecTypeInterfaceCompoundItemType`
+
 - {ref}`SpecTypeInterfaceDefineItemType`
+
 - {ref}`SpecTypeInterfaceEnumeratorItemType`
+
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
+
 - {ref}`SpecTypeInterfaceVariableItemType`
+
 - {ref}`SpecTypeRegisterBlockItemType`
 
 (SpecTypeInterfaceParameter)=
@@ -4096,6 +4342,7 @@ name
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
 
 (SpecTypeInterfaceParameterDirection)=
@@ -4110,12 +4357,15 @@ A value of this type shall be of one of the following variants:
   The value shall be an element of
 
   - "`in`",
+
   - "`out`", and
+
   - "`inout`".
 
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceParameter`
+
 - {ref}`SpecTypeTestRunParameter`
 
 (SpecTypeInterfacePlacementLinkRole)=
@@ -4150,6 +4400,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeInterfaceFunctionOrMacroItemType`
+
 - {ref}`SpecTypeInterfaceTypedefItemType`
 
 (SpecTypeInterfaceReturnValue)=
@@ -4198,32 +4449,55 @@ uid
 This type is refined by the following types:
 
 - {ref}`SpecTypeBuildDependencyConditionalLinkRole`
+
 - {ref}`SpecTypeBuildDependencyLinkRole`
+
 - {ref}`SpecTypeConstraintLinkRole`
+
 - {ref}`SpecTypeFunctionImplementationLinkRole`
+
 - {ref}`SpecTypeGlossaryMembershipLinkRole`
+
 - {ref}`SpecTypeInterfaceEnumeratorLinkRole`
+
 - {ref}`SpecTypeInterfaceFunctionLinkRole`
+
 - {ref}`SpecTypeInterfaceGroupMembershipLinkRole`
+
 - {ref}`SpecTypeInterfaceHiddenGroupMembershipLinkRole`
+
 - {ref}`SpecTypeInterfaceIncludeLinkRole`
+
 - {ref}`SpecTypeInterfacePlacementLinkRole`
+
 - {ref}`SpecTypeInterfaceTargetLinkRole`
+
 - {ref}`SpecTypePerformanceRuntimeLimitsLinkRole`
+
 - {ref}`SpecTypePlacementOrderLinkRole`
+
 - {ref}`SpecTypeProxyMemberLinkRole`
+
 - {ref}`SpecTypeRegisterBlockIncludeRole`
+
 - {ref}`SpecTypeRequirementRefinementLinkRole`
+
 - {ref}`SpecTypeRequirementValidationLinkRole`
+
 - {ref}`SpecTypeRuntimeMeasurementRequestLinkRole`
+
 - {ref}`SpecTypeSpecificationMemberLinkRole`
+
 - {ref}`SpecTypeSpecificationRefinementLinkRole`
+
 - {ref}`SpecTypeUnitTestLinkRole`
 
 This type is used by the following types:
 
 - {ref}`SpecTypeRootItemType`
+
 - {ref}`SpecTypeTestCaseAction`
+
 - {ref}`SpecTypeTestCaseCheck`
 
 (SpecTypeName)=
@@ -4237,24 +4511,43 @@ match with the regular expression
 This type is used by the following types:
 
 - {ref}`SpecTypeApplicationConfigurationOptionItemType`
+
 - {ref}`SpecTypeBuildItemType`
+
 - {ref}`SpecTypeExternalReference`
+
 - {ref}`SpecTypeFunctionalRequirementItemType`
+
 - {ref}`SpecTypeGlossaryItemType`
+
 - {ref}`SpecTypeInterfaceItemType`
+
 - {ref}`SpecTypeLink`
+
 - {ref}`SpecTypeNonFunctionalRequirementItemType`
+
 - {ref}`SpecTypeRegisterDefinition`
+
 - {ref}`SpecTypeRequirementItemType`
+
 - {ref}`SpecTypeRequirementValidationItemType`
+
 - {ref}`SpecTypeRootItemType`
+
 - {ref}`SpecTypeRuntimeMeasurementParameterSet`
+
 - {ref}`SpecTypeRuntimePerformanceParameterSet`
+
 - {ref}`SpecTypeSpecificationAttributeValue`
+
 - {ref}`SpecTypeSpecificationExplicitAttributes`
+
 - {ref}`SpecTypeSpecificationGenericAttributes`
+
 - {ref}`SpecTypeSpecificationItemType`
+
 - {ref}`SpecTypeSpecificationList`
+
 - {ref}`SpecTypeSpecificationRefinementLinkRole`
 
 (SpecTypeOptionalFloatingPointNumber)=
@@ -4264,6 +4557,7 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - The value may be a floating-point number.
+
 - There may be no value (null).
 
 (SpecTypeOptionalInteger)=
@@ -4273,6 +4567,7 @@ A value of this type shall be of one of the following variants:
 A value of this type shall be of one of the following variants:
 
 - The value may be an integer number.
+
 - There may be no value (null).
 
 This type is used by the following types:
@@ -4286,6 +4581,7 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string.
 
 (SpecTypePerformanceRuntimeLimitsLinkRole)=
@@ -4357,6 +4653,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBitsDefinitionDirective`
+
 - {ref}`SpecTypeRegisterBitsDefinitionVariant`
 
 (SpecTypeRegisterBitsDefinitionDirective)=
@@ -4436,6 +4733,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeRegisterBlockMemberDefinitionDirective`
+
 - {ref}`SpecTypeRegisterBlockMemberDefinitionVariant`
 
 (SpecTypeRegisterBlockMemberDefinitionDirective)=
@@ -4545,6 +4843,7 @@ This type is used by the following types:
 A value of this type shall be of one of the following variants:
 
 - There may be no value (null).
+
 - The value may be a string. It shall be the identifier of the requirement
   design group. The value shall match with the regular expression
   "`^[a-zA-Z0-9_]*$`".
@@ -4569,73 +4868,137 @@ The value shall be a string. It shall state a requirement or constraint. The
 text should not use one of the following words or phrases:
 
 - acceptable
+
 - adequate
+
 - almost always
+
 - and/or
+
 - appropriate
+
 - approximately
+
 - as far as possible
+
 - as much as practicable
+
 - best
+
 - best possible
+
 - easy
+
 - efficient
+
 - e.g.
+
 - enable
+
 - enough
+
 - etc.
+
 - few
+
 - first rate
+
 - flexible
+
 - generally
+
 - goal
+
 - graceful
+
 - great
+
 - greatest
+
 - ideally
+
 - i.e.
+
 - if possible
+
 - in most cases
+
 - large
+
 - many
+
 - maximize
+
 - minimize
+
 - most
+
 - multiple
+
 - necessary
+
 - numerous
+
 - optimize
+
 - ought to
+
 - probably
+
 - quick
+
 - rapid
+
 - reasonably
+
 - relevant
+
 - robust
+
 - satisfactory
+
 - several
+
 - shall be included but not limited to
+
 - simple
+
 - small
+
 - some
+
 - state of the art
+
 - sufficient
+
 - suitable
+
 - support
+
 - systematically
+
 - transparent
+
 - typical
+
 - user friendly
+
 - usually
+
 - versatile
+
 - when necessary
 
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementState`
+
 - {ref}`SpecTypeApplicationConfigurationGroupItemType`
+
 - {ref}`SpecTypeConstraintItemType`
+
 - {ref}`SpecTypeInterfaceGroupItemType`
+
 - {ref}`SpecTypeRequirementItemType`
 
 (SpecTypeRequirementValidationLinkRole)=
@@ -4655,7 +5018,9 @@ name. The value
 - shall be an element of
 
   - "`FullCache`",
+
   - "`HotCache`", and
+
   - "`DirtyCache`",
 
 - or, shall match with the regular expression "`^Load/[1-9][0-9]*$`".
@@ -4714,12 +5079,19 @@ The value shall be a string. It specifies the kind of a runtime measurement
 value. The value shall be an element of
 
 - "`max-lower-bound`",
+
 - "`max-upper-bound`",
+
 - "`mean-lower-bound`",
+
 - "`mean-upper-bound`",
+
 - "`median-lower-bound`",
+
 - "`median-upper-bound`",
+
 - "`min-lower-bound`", and
+
 - "`min-upper-bound`".
 
 This type is used by the following types:
@@ -4772,7 +5144,9 @@ The value shall be a string. It defines the license of the item expressed
 though an SPDX License Identifier. The value
 
 - shall be equal to "`CC-BY-SA-4.0 OR BSD-2-Clause`",
+
 - or, shall be equal to "`BSD-2-Clause`",
+
 - or, shall be equal to "`CC-BY-SA-4.0`".
 
 This type is used by the following types:
@@ -4787,7 +5161,9 @@ This set of attributes specifies a set of attributes. The following explicit
 attributes are mandatory:
 
 - `attributes`
+
 - `description`
+
 - `mandatory-attributes`
 
 The explicit attributes for this type are:
@@ -4939,6 +5315,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationFloatingPointAssert`
+
 - {ref}`SpecTypeSpecificationFloatingPointValue`
 
 (SpecTypeSpecificationFloatingPointValue)=
@@ -5093,6 +5470,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationIntegerAssert`
+
 - {ref}`SpecTypeSpecificationIntegerValue`
 
 (SpecTypeSpecificationIntegerValue)=
@@ -5151,9 +5529,13 @@ A value of this type shall be of one of the following variants:
   mandatory, they are all optional. The value shall be an element of
 
   - "`all`",
+
   - "`at-least-one`",
+
   - "`at-most-one`",
+
   - "`exactly-one`", and
+
   - "`none`".
 
 This type is used by the following types:
@@ -5270,6 +5652,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeSpecificationStringAssert`
+
 - {ref}`SpecTypeSpecificationStringValue`
 
 (SpecTypeSpecificationStringValue)=
@@ -5373,7 +5756,9 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
+
 - {ref}`SpecTypeRuntimeMeasurementTestItemType`
+
 - {ref}`SpecTypeTestCaseItemType`
 
 (SpecTypeTestHeader)=
@@ -5424,6 +5809,7 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
+
 - {ref}`SpecTypeTestCaseItemType`
 
 (SpecTypeTestRunParameter)=
@@ -5483,8 +5869,11 @@ A value of this type shall be of one of the following variants:
 This type is used by the following types:
 
 - {ref}`SpecTypeActionRequirementItemType`
+
 - {ref}`SpecTypeRuntimeMeasurementTestItemType`
+
 - {ref}`SpecTypeRuntimePerformanceRequirementItemType`
+
 - {ref}`SpecTypeTestCaseItemType`
 
 (SpecTypeUID)=
