@@ -1,6 +1,6 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-% Copyright (C) 2019, 2024 embedded brains GmbH & Co. KG
+% Copyright (C) 2019, 2025 embedded brains GmbH & Co. KG
 
 % This file is part of the RTEMS quality process and was automatically
 
@@ -228,10 +228,11 @@ This type refines the {ref}`SpecTypeBuildItemType` through the `build-type`
 attribute if the value is `ada-test-program`. This set of attributes specifies
 an Ada test program executable to build. Test programs may use additional
 objects provided by {ref}`SpecTypeBuildObjectsItemType` items. Test programs
-have an implicit `enabled-by` attribute value which is controlled by the option
-action {ref}`set-test-state <SpecTypeBuildOptionItemType>`. If the test state
-is set to `exclude`, then the test program is not built. All explicit
-attributes shall be specified. The explicit attributes for this type are:
+have an implicit `enabled-by` attribute value which is controlled by the
+`set-test-state` {ref}`SpecTypeBuildOptionAction` of an
+{ref}`SpecTypeBuildOptionItemType` item. If the test state is set to `exclude`,
+then the test program is not built. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 ada-main
 : The attribute value shall be a string. It shall be the path to the Ada main
@@ -910,10 +911,11 @@ This type refines the {ref}`SpecTypeBuildItemType` through the `build-type`
 attribute if the value is `test-program`. This set of attributes specifies a
 test program executable to build. Test programs may use additional objects
 provided by {ref}`SpecTypeBuildObjectsItemType` items. Test programs have an
-implicit `enabled-by` attribute value which is controlled by the option action
-{ref}`set-test-state <SpecTypeBuildOptionItemType>`. If the test state is set
-to `exclude`, then the test program is not built. All explicit attributes shall
-be specified. The explicit attributes for this type are:
+implicit `enabled-by` attribute value which is controlled by the
+`set-test-state` {ref}`SpecTypeBuildOptionAction` of an
+{ref}`SpecTypeBuildOptionItemType` item. If the test state is set to `exclude`,
+then the test program is not built. All explicit attributes shall be specified.
+The explicit attributes for this type are:
 
 cflags
 : The attribute value shall be a list. Each list element shall be a
