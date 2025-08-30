@@ -22,4 +22,5 @@ bsp-builder
 tester
 boot-image
 tftp-proxy
+codeql-wrapper
 ```
