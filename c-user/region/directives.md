@@ -843,10 +843,10 @@ information will be returned in the structure pointed to by `the_info`.
 .. rubric:: NOTES:
 ```
 
-This is primarily intended as a mechanism to obtain a diagnostic information.
-This method forms am O(n) scan of the free and an O(n) scan of the used blocks
-in the region to calculate the information provided. Given that the execution
-time is driven by the number of used and free blocks, it can take a
+This is primarily intended as a mechanism to obtain diagnostic information.
+This directive performs an O(n) scan of the free and an O(n) scan of the used
+blocks in the region to calculate the information provided. Given that the
+execution time is driven by the number of used and free blocks, it can take a
 non-deterministic time to execute.
 
 To get only the free information of the region use
@@ -936,12 +936,12 @@ This directive uses the same structure to return information as the
 {ref}`InterfaceRtemsRegionGetInformation` directive but does not fill in the
 used information.
 
-This is primarily intended as a mechanism to obtain a diagnostic information.
-This method forms am O(n) scan of the free in the region to calculate the
-information provided. Given that the execution time is driven by the number of
-used and free blocks, it can take a non-deterministic time to execute.
-Typically, there are many used blocks and a much smaller number of used blocks
-making a call to this directive less expensive than a call to
+This is primarily intended as a mechanism to obtain diagnostic information.
+This directive performs an O(n) scan of the free blocks in the region to
+calculate the information provided. Given that the execution time is driven by
+the number of used and free blocks, it can take a non-deterministic time to
+execute. Typically, there are many used blocks and a much smaller number of
+free blocks making a call to this directive less expensive than a call to
 {ref}`InterfaceRtemsRegionGetInformation`.
 
 ```{eval-rst}
