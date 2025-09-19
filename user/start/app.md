@@ -139,7 +139,10 @@ def build(bld):
 Configure the application using Waf's `configure` command:
 
 ```none
-./waf configure --rtems=$HOME/quick-start/rtems/@rtems-ver-major@ --rtems-bsp=sparc/erc32
+./waf configure \
+  --rtems=$HOME/quick-start/rtems/@rtems-ver-major@ \
+  --rtems-tools=$HOME/quick-start/rtems/@rtems-ver-major@ \
+  --rtems-bsp=sparc/erc32
 ```
 
 The output will be something close to:
