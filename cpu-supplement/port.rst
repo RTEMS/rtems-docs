@@ -375,7 +375,7 @@ Interrupt Profiling
 
 The RTEMS profiling needs support by the CPU port for the interrupt entry and
 exit times.  In case profiling is enabled via the RTEMS build configuration
-option ``--enable-profiling`` (in this case the pre-processor symbol
+option ``RTEMS_PROFILING`` (in this case the pre-processor symbol
 ``RTEMS_PROFILING`` is defined) the CPU port may provide data for the interrupt
 entry and exit times of the outer-most interrupt.  The CPU port can feed
 interrupt entry and exit times with the
