@@ -351,11 +351,11 @@ provide the following two functions
 
 The RTEMS profiling needs support by the CPU port for the interrupt entry and
 exit times. In case profiling is enabled via the RTEMS build configuration
-option `--enable-profiling` (in this case the pre-processor symbol
-`RTEMS_PROFILING` is defined) the CPU port may provide data for the interrupt
-entry and exit times of the outer-most interrupt. The CPU port can feed
-interrupt entry and exit times with the
-`_Profiling_Outer_most_interrupt_entry_and_exit()` function (`#include <rtems/score/profiling.h>`). For an example please have a look at
+option `RTEMS_PROFILING` set to True. The CPU port may provide
+data for the interrupt entry and exit times of the outer-most
+interrupt. The CPU port can feed interrupt entry and exit times with the
+`_Profiling_Outer_most_interrupt_entry_and_exit()` function (`#include
+<rtems/score/profiling.h>`). For an example please have a look at
 {file}`cpukit/score/cpu/arm/arm_exc_interrupt.S`.
 
 ## Board Support Packages

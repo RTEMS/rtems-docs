@@ -195,9 +195,8 @@ these architectures must provide a different set of support routines.
 
 The RTEMS profiling needs support by the BSP for the interrupt delay times. In
 case profiling is enabled via the RTEMS build configuration option
-`--enable-profiling` (in this case the pre-processor symbol
-`RTEMS_PROFILING` is defined) a BSP may provide data for the interrupt delay
-times. The BSP can feed interrupt delay times with the
+`RTEMS_PROFILING` being set to True. A BSP may provide data for the
+interrupt delay times. The BSP can feed interrupt delay times with the
 `_Profiling_Update_max_interrupt_delay()` function (`#include <rtems/score/profiling.h>`). For an example please have a look at
 [bsps/sparc/leon3/clock/ckinit.c](https://gitlab.rtems.org/rtems/rtos/rtems/-/blob/main/bsps/sparc/leon3/clock/ckinit.c).
 

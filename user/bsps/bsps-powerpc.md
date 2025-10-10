@@ -111,14 +111,15 @@ supported including 10Gbit/s Ethernet.
 
 ### Topaz Hypervisor Guest
 
-For a Topaz hypervisor guest configuration use:
+For a Topaz hypervisor guest configuration include the following settings
+in your RTEMS configuration:
 
 ```
-../configure --enable-rtemsbsp=qoriq_e6500_32 \
-    QORIQ_IS_HYPERVISOR_GUEST=1 \
-    QORIQ_UART_0_ENABLE=0 \
-    QORIQ_UART_1_ENABLE=0 \
-    QORIQ_TLB1_ENTRY_COUNT=16
+[powerpc/qoriq_e6500_32]
+QORIQ_IS_HYPERVISOR_GUEST = True \
+QORIQ_UART_0_ENABLE = False \
+QORIQ_UART_1_ENABLE = False \
+QORIQ_TLB1_ENTRY_COUNT = 16
 ```
 
 You may have to adjust the linker command file according to your partition

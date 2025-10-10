@@ -229,22 +229,22 @@ The test reports the build of RTEMS being tested. The build are:
 
 `posix`
 : The build includes the POSIX API. The RTEMS configure option
-  `--enable-posix` has been used. The `cpuopts.h` define `RTEMS_POSIX`
-  has defined and it true.
+  `RTEMS_POSIX_API` has been set to True. The `cpuopts.h` define
+  `RTEMS_POSIX` has defined and it true.
 
 ```{index} build smp
 ```
 
 `smp`
-: The build is an SMP kernel. The RTEMS configure option `--enable-smp` has
-  been used. The `cpuopts.h` define `RTEMS_SMP` has defined and it true.
+: The build is an SMP kernel. The RTEMS configure option `RTEMS_SMP` has
+  been set to True. The `cpuopts.h` define `RTEMS_SMP` has defined and it true.
 
 ```{index} build mp
 ```
 
 `mp`
 : The build is an MP kernel. The RTEMS configure option
-  `--enable-multiprocessing` has been used. The `cpuopts.h` define
+  `RTEMS_MULTIPROCESSING`has been set to True. The `cpuopts.h` define
   `RTEMS_MULTIPROCESSING` has defined and it true.
 
 ```{index} build paravirt
@@ -259,7 +259,7 @@ The test reports the build of RTEMS being tested. The build are:
 
 `debug`
 : The build includes kernel debugging support. The RTEMS configure option
-  `--enable-debug` has been used. The `cpuopts.h` define `RTEMS_DEBUG`
+  `RTEMS_DEBUG` has been set to True. The `cpuopts.h` define `RTEMS_DEBUG`
   has defined and it true.
 
 ```{index} build profiling
@@ -267,5 +267,5 @@ The test reports the build of RTEMS being tested. The build are:
 
 `profiling`
 : The build include profiling support. The RTEMS configure option
-  `--enable-profiling` has been used. The `cpuopts.h` define
+  `RTEMS_PROFILING` has been set to True. The `cpuopts.h` define
   `RTEMS_PROFILING` has defined and it true.

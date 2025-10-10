@@ -70,15 +70,18 @@ and use.
 
 ## Building RTEMS Tests
 
-Build the RTEMS Kernel (See {ref}`rtems-kernel`) by cloning the repository,
-running the `bootstrap` procedure, building and finally installing the
-kernel. Be sure to enable tests by using `--enable-tests` option with
-configure after running `bootstrap`.
-
-```none
-$ ../../rtems.git/configure --target=sparc-rtems5 \
-                    --enable-tests --enable-rtemsbsp=erc32
-$ make
+Build the RTEMS Kernel (See {ref}`rtems-kernel`) by cloning the
+repository, building with tests enabled, and finally installing the
+kernel. Be sure to enable tests by using `BUILD_TESTS` option set to
+True. There are similar configure options to control individual test
+suites. The following is an example ini file for the sparc/erc32 BSP:
+ 
+```n
+[sparc/erc32]
+BUILD_SAMPLES=True
+BUILD_TESTS=True
+RTEMS_DEBUG=True
+RTEMS_POSIX_API=True
 ```
 
 Add the `-j` option to the make command with the number of parallel jobs to run a

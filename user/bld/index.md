@@ -283,7 +283,7 @@ options in the configuration file of the `waf` based build system. BSP
 options given at the configure command line have to be added to the BSP section
 in the configuration file.
 
-`--target=${arch}-rtems6` `--enable-rtembsp=${bsp}`
+`--target=${arch}-rtems6` `--enable-rtemsbsp=${bsp}`
 : To build a BSP add `[${arch}/${bsp}]` to the configuration file.
 
 `--enable-ada` | `--disable-ada`
