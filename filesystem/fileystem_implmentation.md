@@ -18,6 +18,22 @@ Figure of the Filesystem Functional Layering goes here.
 This figure includes networking and disk caching layering.
 ```
 
+# Filesystem Limitations
+
+## JFFS2
+
+The JFFS2 implementation in RTEMS supports operation on NOR and NAND, but does
+not yet support Erase Block Summary (EBS) on NAND which affects mount times for
+large, full filesystems. JFFS2 has a maximum filesystem size of 4GB-1 block.
+JFFS2 uses 32-bit time in the on-disk format and is not Y2038-safe. JFFS2
+read/write performance degrades when full.
+
+## MSDOS
+
+MSDOS uses 32-bit time in the on-disk format and is not Y2038-safe. The maximum
+file size is 4GB. There are limits on the accuracy of timestamps (1s
+granularity). Symlinks are not supported.
+
 # Application programs are presented with a standard set of POSIX compliant
 
 \: functions that allow them to interface with the files, devices and
