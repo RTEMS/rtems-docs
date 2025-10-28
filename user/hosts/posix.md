@@ -55,16 +55,6 @@ The following packages are required on a fresh Archlinux 64bit installation:
 # pacman -S base-devel gdb xz unzip ncurses git zlib
 ```
 
-Archlinux, by default installs `texinfo-5` which is incompatible for building
-GCC 4.7 tree. You will have to obtain `texinfo-legacy` from `AUR` and
-provide a manual override:
-
-```none
-# pacman -R texinfo
-$ yaourt -S texinfo-legacy
-# ln -s /usr/bin/makeinfo-4.13a /usr/bin/makeinfo
-```
-
 (CentOS)=
 
 ### CentOS
