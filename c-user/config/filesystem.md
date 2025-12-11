@@ -1107,17 +1107,17 @@ stored in the IMFS. With smaller block size, the maximum file size is
 correspondingly smaller. The following shows the maximum file size possible
 based on the configured block size:
 
-- when the block size is 16 bytes, the maximum file size is 1,328 bytes.
+- when the block size is 16 bytes, the maximum file size is 1,344 bytes.
 
-- when the block size is 32 bytes, the maximum file size is 18,656 bytes.
+- when the block size is 32 bytes, the maximum file size is 18,688 bytes.
 
-- when the block size is 64 bytes, the maximum file size is 279,488 bytes.
+- when the block size is 64 bytes, the maximum file size is 279,552 bytes.
 
-- when the block size is 128 bytes, the maximum file size is 4,329,344 bytes.
+- when the block size is 128 bytes, the maximum file size is 4,329,472 bytes.
 
-- when the block size is 256 bytes, the maximum file size is 68,173,568 bytes.
+- when the block size is 256 bytes, the maximum file size is 68,173,824 bytes.
 
-- when the block size is 512 bytes, the maximum file size is 1,082,195,456
+- when the block size is 512 bytes, the maximum file size is 1,082,195,968
   bytes.
 
 ```{eval-rst}
@@ -1126,6 +1126,64 @@ based on the configured block size:
 
 The value of the configuration option shall be equal to 16, 32, 64, 128, 256,
 or 512.
+
+% Generated from spec:/acfg/if/imfs_memfile_ops
+
+```{raw} latex
+\clearpage
+```
+
+```{index} CONFIGURE_IMFS_MEMFILE_OPS
+```
+
+(CONFIGURE_IMFS_MEMFILE_OPS)=
+
+## CONFIGURE_IMFS_MEMFILE_OPS
+
+```{eval-rst}
+.. rubric:: CONSTANT:
+```
+
+`CONFIGURE_IMFS_MEMFILE_OPS`
+
+```{eval-rst}
+.. rubric:: OPTION TYPE:
+```
+
+This configuration option is of type imfs_memfile_ops_t. This type holds
+the references of allocate, deallocate and get_free_space functions.
+
+```{eval-rst}
+.. rubric:: DEFAULT VALUE:
+```
+
+The default object has references to functions that internally take the memory
+from heap. That means this functions internally calls `calloc()`, `free()`
+and `malloc_free_space()`.
+
+```{eval-rst}
+.. rubric:: DESCRIPTION:
+```
+
+The value of this configuration option defines the methods to allocate,
+deallocate the user defined blocks for in-memory files managed by the IMFS.
+
+```{eval-rst}
+.. rubric:: NOTES:
+```
+
+By default, IMFS uses the kernel heap for file storage. This can lead to
+heap overflows, preventing file extensions and resulting in an `ENOSPC` error.
+
+To avoid this, the user can provide their own memory source and implement:
+
+- Allocator – allocate memory for file data from user-supplied memory (e.g.,
+a static array or any other user-defined method)
+- Deallocator – free allocated memory
+- Free space calculator – determine remaining space (for `statvfs` compliance)
+
+These functions should be encapsulated in an `imfs_memfile_ops_t` structure
+and assigned to the appropriate macro.
 
 % Generated from spec:/acfg/if/jffs2-delayed-write-task-priority
 
