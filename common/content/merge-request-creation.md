@@ -20,10 +20,10 @@ to bring work together.
 
 With our GitLab instance, you fork a repo into your personal workspace and use
 that to manage your changes. This means you need to keep your forked project
-up to date. See the `Gitlab forking workflow documentation <https://docs.gitlab.com/ee/user/project/merge_requests/authorization_for_merge_requests.html#forking-workflow>`
-for details. If you are part of a team working on a change you can `collaborate on merge requests <https://docs.gitlab.com/ee/user/project/merge_requests/allow_collaboration.html>`.
-GitLab enforces branch naming rules and provides `branch naming patterns <https://docs.gitlab.com/ee/user/project/repository/branches/index.html#prefix-branch-names-with-issue-numbers>`
-that simplifies code review and software change management. You can `create merge requests from your fork <https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html#when-you-work-in-a-fork>`
+up to date. See the [Gitlab forking workflow documentation](https://docs.gitlab.com/ee/user/project/merge_requests/authorization_for_merge_requests.html#forking-workflow)
+for details. If you are part of a team working on a change you can [collaborate on merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/allow_collaboration.html).
+GitLab enforces branch naming rules and provides [branch naming patterns](https://docs.gitlab.com/ee/user/project/repository/branches/index.html#prefix-branch-names-with-issue-numbers)
+that simplifies code review and software change management. You can [create merge requests from your fork](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html#when-you-work-in-a-fork)
 back to the upstream repository. We do not normally squash merge requests. A
 merge request with more than one commit should be buildable at each commit so a
 bisect of main does not break.
