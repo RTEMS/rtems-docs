@@ -658,7 +658,7 @@ def xml_catalogue(ctx, building):
         #
         # Import using the imp API so the module is reloaded for us.
         #
-        import importlib
+        import importlib.util
         p = os.path.join(top_dir.find_node(doc).abspath(), 'conf.py')
         mf = importlib.util.spec_from_file_location('conf', p)
         try:
