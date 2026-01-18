@@ -56,18 +56,21 @@ to work effectively.
 
 Nobody likes to do a lot of work and find it was duplicated effort.
 So when you work on a major new feature, you should tell
-{r:list}`devel` what you are working on, and give
-occasional reports of how far you have come and how confident
-you are that you will finish the job. This way, other developers
-(if they are paying attention) will be aware which projects would
-duplicate your effort, and can either join up with you, or at
-least avoid spending time on something that will be unnecessary
+other developers what you are working on by opening a GitLab issue
+or drafting a merge request and provide occasional progress updates on how
+far you have come and how confident you are that you will finish the job.
+This way, other developers (if they are paying attention) will be
+aware of which projects would duplicate your effort, and can either join up
+with you, or at least avoid spending time on something that will be unnecessary
 because of your work. If, for whatever reason, you are not in a
 position to publicly discuss your work, please at least privately
 let other developers know about it so they can look out for duplicated effort
 or possible collaborators.
 
-You should also monitor the {r:list}`users` and {r:list}`devel`
+For quick discussions and coordination, you may also contact the
+RTEMS Community on [Discord](https://discord.com/invite/rtems-project-820452222382112799) and [User forums](https://users.rtems.org/).
+
+You should also monitor the Gitlab issues and merge requests.
 to see if someone else mentions working on a similar
 project to yours. If that happens, speak up!
 
