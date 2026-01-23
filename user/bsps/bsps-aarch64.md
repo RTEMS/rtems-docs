@@ -11,4 +11,5 @@ aarch64/raspberrypi4
 aarch64/xen
 aarch64/xilinx-versal
 aarch64/xilinx-zynqmp
+aarch64/rk3399
 ```
