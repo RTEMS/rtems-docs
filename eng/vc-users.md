@@ -104,11 +104,37 @@ once they have forgotten the details of the change. It is important to
 make the message useful. Here are some guidelines followed by the RTEMS
 Project to help improve the quality of our commit messages.
 
+### Making Commits
+- Please use a real name with a valid email address. Please do not use
+  pseudonyms or provide anonymous contributions.
+- You can discuss the change spanning multiple commits in an Issue that
+  can be referenced in the commit message. 
+- For a patch series which impacts multiple BSPs, it is common to put each BSP
+  into a separate patch. This improves the quality and specificity of the
+  commit messages.
+- If you change the formatting of source code in a repository please
+  make that a separate patch and use "Formatting changes only" on the first
+  line. Please indicate the reason or process. For example to "Conforming
+  to code standing", "Reverting to upstream format", "Result of automatic
+  formatting".
+- Similarly, if addressing a spelling, grammar, or Doxygen issue, please
+  put that in a commit by itself separate from technical changes.
+
+### Commit Header
+
 - When committing a change the first line is a summary. Please make it short
-  while hinting at the nature of the change. You can discuss the change
-  if you wish in a ticket that has a PR number which can be referenced in
-  the commit message. After the first line, leave an empty line and add
-  whatever required details you feel are needed.
+  while hinting at the nature of the change.
+- The start of the commit message must begin with a commit tag that ends with a
+  colon. Limit the commit tag length to 40 or fewer characters. Use the tag to
+  indicate the general area of the change, which is usually something like
+  "abc/xyz:", where
+  * abc is a root directory in rtems.git or the name of an architecture
+  * xyz is a leaf directory, file, or name of a BSP.
+- Limit the line length of the commit header to 72 or fewer characters.
+- After the first line, leave an empty line and add whatever required details
+  you feel are needed in the Commit Body.
+
+### Commit Body
 - Patches should be as single purpose as possible. This is reflected in
   the first line summary message. If you find yourself writing something
   like "Fixed X and Y", "Updated A and B", or similar, then evaluate
@@ -118,26 +144,17 @@ Project to help improve the quality of our commit messages.
   specific points related to the change make them with separate paragraphs
   and if you wish you can optionally uses a `-` marker with suitable
   indents and alignment to aid readability.
-- Limit the line length to less than 80 characters
-- Please use a real name with a valid email address. Please do not use
-  pseudonyms or provide anonymous contributions.
+- Limit the line length to 72 or fewer characters.
 - Please do not use terms such as "Fix bug", "With this change it
   works", or "Bump hash". If you fix a bug please state the nature of the
   bug and why this change fixes it. If a change makes something work then
   detail the reason. You do not need to explain the change line by line
   as the commits diff and associated ticket will.
-- If you change the formatting of source code in a repository please
-  make that a separate patch and use "Formatting changes only" on the first
-  line. Please indicate the reason or process. For example to "Conforming
-  to code standing", "Reverting to upstream format", "Result of automatic
-  formatting".
-- Similarly, if addressing a spelling, grammar, or Doxygen issue, please
-  put that in a commit by itself separate from technical changes.
 
 An example commit message:
 
 ```shell
-test/change: Test message on formatting of commits
+testsuites/sptests: Test message on formatting of commits
 
 - Shows a simple single first line
 
@@ -152,12 +169,6 @@ test/change: Test message on formatting of commits
 Updates #9876
 Closes #8765
 ```
-
-The first line generally starts with a file or directory name which
-indicates the area in RTEMS to which the commit applies. For a patch
-series which impacts multiple BSPs, it is common to put each BSP into
-a separate patch. This improves the quality and specificity of the
-commit messages.
 
 ```{include} ../common/content/merge-request-creation.md
 ```
