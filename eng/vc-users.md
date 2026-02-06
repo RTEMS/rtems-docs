@@ -105,10 +105,11 @@ make the message useful. Here are some guidelines followed by the RTEMS
 Project to help improve the quality of our commit messages.
 
 ### Making Commits
+
 - Please use a real name with a valid email address. Please do not use
   pseudonyms or provide anonymous contributions.
 - You can discuss the change spanning multiple commits in an Issue that
-  can be referenced in the commit message. 
+  can be referenced in the commit message.
 - For a patch series which impacts multiple BSPs, it is common to put each BSP
   into a separate patch. This improves the quality and specificity of the
   commit messages.
@@ -128,13 +129,14 @@ Project to help improve the quality of our commit messages.
   colon. Limit the commit tag length to 40 or fewer characters. Use the tag to
   indicate the general area of the change, which is usually something like
   "abc/xyz:", where
-  * abc is a root directory in rtems.git or the name of an architecture
-  * xyz is a leaf directory, file, or name of a BSP.
+  - abc is a root directory in rtems.git or the name of an architecture
+  - xyz is a leaf directory, file, or name of a BSP.
 - Limit the line length of the commit header to 72 or fewer characters.
 - After the first line, leave an empty line and add whatever required details
   you feel are needed in the Commit Body.
 
 ### Commit Body
+
 - Patches should be as single purpose as possible. This is reflected in
   the first line summary message. If you find yourself writing something
   like "Fixed X and Y", "Updated A and B", or similar, then evaluate
