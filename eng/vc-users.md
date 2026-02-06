@@ -92,6 +92,76 @@ then you rewrite those commits with `git rebase` and push them up again, the
 others will have to re-merge their work and trying to integrate their work
 into yours can become messy.
 
+(Format_Style)=
+
+## Style Format Guidance
+
+This section describes how to meet formatting requirements for certain source
+file types.
+
+### C/C++ Source Code Files
+
+The RTEMS style is documented in {ref}`CodeFormatting`. This style is the
+default used throughout RTEMS with a few exceptions. For C++ source files, we
+use a simple configuration based on the LLVM formatting style, see
+{ref}`CppCodeFormatting`.
+
+We use `clang-format` to provide formatting for C and C++ source code files. The minimum version required is at least 22.1.0.
+
+- Installation:
+
+Use the {ref}`RSB` to build and install the required version:
+
+```
+cd rtems-source-builder/bare
+../source-builder/sb-set-builder --log=l-clang-format.txt \
+    --prefix=$HOME/development/rtems/@rtems-ver-major@.@rtems-ver-minor@ \
+    devel/clang-format
+```
+
+- Usage:
+
+See the [clang-format docs](https://clang.llvm.org/docs/ClangFormat.html).
+
+### Markdown Files
+
+We have adopted the CommonMark specification for Markdown and use the
+`mdformat` tool to provide automatic code formatting.
+
+- Installation and Usage:
+
+```
+pip install mdformat
+mdformat --wrap 79 --number something.md
+```
+
+You can add a configuration file `.mdformat.toml`, for example:
+
+```
+wrap = 79
+number = true
+```
+
+Additional information can be found in the
+[mdformat documentation](https://mdformat.readthedocs.io/en/stable/).
+
+### Python Files
+
+We have adopted the PEP-8 style for Python and use the `yapf` tool to provide
+automatic code formatting.
+
+- Installation and Usage:
+
+```
+pip install yapf
+yapf something.py
+```
+
+The default style for `yapf` is pep8. If you have a local configuration file,
+you can override it with `yapf --style=pep8 something.py`. Additional
+information can be found in the
+[yapf documentation](https://github.com/google/yapf?tab=readme-ov-file#yapf).
+
 (Commit_Messages)=
 
 ## Commit Message Guidance

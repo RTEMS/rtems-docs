@@ -6,7 +6,11 @@
 
 (CodeFormatting)=
 
-# Code Formatting
+# C Code Formatting
+
+Most of RTEMS code written in C uses an historical coding style that has
+evolved slightly over time. The following rules and examples describe the
+style.
 
 ## Rules
 
@@ -35,15 +39,15 @@
 
 (EightyCharacterLineLimit)=
 
-## Eighty Character Line Limit
+## Seventy-Nine Character Line Limit
 
 Code should look good for everyone under some standard width assumptions.
 Where a line wraps should be the same for anyone reading the code. For
-historical reasons, RTEMS uses 80 characters as the maximum width for each line
+historical reasons, RTEMS uses 79 characters as the maximum width for each line
 of code. The newline (`\n`) character terminating the line does not count
-for the 80 character limit.
+for the 79 character limit.
 
-If you find yourself with code longer than 80 characters, first ask yourself
+If you find yourself with code longer than 79 characters, first ask yourself
 whether the nesting level is too deep, names too long, compound expressions too
 complicated, or if some other guideline for improving readability can help to
 shrink the line length. Refactoring nested blocks into functions can help to
@@ -104,7 +108,7 @@ if (
 ```
 
 Note that each expression that resolves to a boolean goes on its own line.
-Where you place the boolean operator is a matter of choice.
+The binary operator goes on the end of the line, before the line break.
 
 When a line is long because of a comment at the end, move the comment to
 just before the line, for example
@@ -181,3 +185,28 @@ would be
 Note that multiline comments have a single asterisk aligned with the asterisk
 in the opening `/*`. The closing `*/` should appear on a line by itself at
 the end.
+
+## clang-format configuration
+
+This style is enforced by the `_clang-format` configuration file found in
+rtems.git.
+
+(CppCodeFormatting)=
+
+# C++ and Other C Code Formatting
+
+We have adopted a variation of the LLVM coding style for C++ source code files.
+This style is also acceptable to use in parts of RTEMS where there is a choice
+between using the RTEMS style or not.
+
+## clang-format configuration
+
+This style is enforced by the following `clang-format` configuration options:
+
+```
+Language:        Cpp
+BasedOnStyle:    LLVM
+PointerAlignment: Left
+AllowShortFunctionsOnASingleLine: Inline
+InsertBraces: True
+```
