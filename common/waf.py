@@ -533,14 +533,24 @@ def xml_catalogue(ctx, building):
         #
         # Import using the imp API so the module is reloaded for us.
         #
-        import imp
-        sys.path = [top_dir.find_node(doc).abspath()]
-        mf = imp.find_module('conf')
-        sys.path = sp[:]
         try:
-            bconf = imp.load_module('bconf', mf[0], mf[1], mf[2])
-        finally:
-            mf[0].close()
+            import imp
+            sys.path = [top_dir.find_node(doc).abspath()]
+            mf = imp.find_module('conf')
+            sys.path = sp[:]
+            try:
+                bconf = imp.load_module('bconf', mf[0], mf[1], mf[2])
+            finally:
+                mf[0].close()
+        except:
+            import importlib.util
+            p = os.path.join(top_dir.find_node(doc).abspath(), 'conf.py')
+            mf = importlib.util.spec_from_file_location('conf', p)
+            try:
+                bconf = mf.loader.load_module()
+            except (ValueError, ImportError) as exc:
+                print("Import error " + str(exc))
+                sys.exit(0)
         catalogue[doc] = {
             'title': bconf.project,
             'version': str(ctx.env.VERSION),
