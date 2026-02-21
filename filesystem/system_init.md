@@ -11,7 +11,7 @@ System' as the base filesystem. Mounting the base filesystem consists of the
 following:
 
 - Initialization of mount table chain control structure
-- Allocation of a `jnode` structure that will server as the root node of the
+- Allocation of a `jnode` structure that will serve as the root node of the
   'In Memory Filesystem'
 - Initialization of the allocated `jnode` with the appropriate OPS, directory
   handlers and pathconf limits and options.
@@ -24,14 +24,14 @@ following:
 After the base filesystem has been mounted, the following operations are
 performed under its directory structure:
 
-- Creation of the /dev directory
-- Registration of devices under /dev directory
+- Creation of the `/dev` directory
+- Registration of devices under `/dev` directory
 
 ## Base Filesystem
 
 RTEMS initially mounts a RAM based file system known as the base file system.
 The root directory of this file system tree serves as the logical root of the
-directory hierarchy (Figure 3). Under the root directory a '/dev' directory is
+directory hierarchy (Figure 3). Under the root directory a `/dev` directory is
 created under which all I/O device directories and files are registered as part
 of the file system hierarchy.
 
@@ -47,7 +47,7 @@ lost.
 
 The base file system serves as a starting point for the mounting of file
 systems that are resident on semi-permanent storage media. Examples of such
-media include non- volatile memory, flash memory and IDE hard disk drives
+media include non-volatile memory, flash memory and IDE hard disk drives
 (Figure 3). File systems of other types will be mounted onto mount points
 within the base file system or other file systems that are subordinate to the
 base file system. The framework set up under the base file system will allow

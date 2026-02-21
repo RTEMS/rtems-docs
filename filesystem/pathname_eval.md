@@ -14,7 +14,7 @@ XXX Include graphic of the path evaluation process
 ## Pathname Evaluation Handlers
 
 There are two pathname evaluation routines. The handler patheval() is called
-to find, verify privlages on and return information on a node that exists. The
+to find, verify privileges on and return information on a node that exists. The
 handler `evalformake()` is called to find, verify permissions, and return
 information on a node that is to become a parent. Additionally, evalformake()
 returns a pointer to the start of the name of the new node to be created.
@@ -41,14 +41,14 @@ The `rtems_filesystem_location_info_t` structure contains all information
 necessary for identification of a node.
 
 The generic rtems filesystem code defines two global
-rtems_filesystem_location_info_t structures, the\`\`rtems_filesystem_root\`\` and
+rtems_filesystem_location_info_t structures, the `rtems_filesystem_root` and
 the `rtems_filesystem_current`. Both are initially defined to be the root
 node of the base filesystem. Once the chdir command is correctly used the
 `rtems_filesystem_current` is set to the location specified by the command.
 
 The filesystem generic code peeks at the first character in the name to be
-evaluated. If this character is a valid seperator,
-the\`\`rtems_filesystem_root\`\` is used as the node to start the evaluation with.
+evaluated. If this character is a valid separator,
+the `rtems_filesystem_root` is used as the node to start the evaluation with.
 Otherwise, the `rtems_filesystem_current` node is used as the node to start
 evaluating with. Therefore, a valid rtems_filesystem_location_info_t is given
 to the evaluate routine to start evaluation with. The evaluate routines are
