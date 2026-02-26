@@ -22,6 +22,7 @@ The directives provided by the clock manager are:
 - [nanosleep] - Delay with High Resolution
 - [gettimeofday] - Get the Time of Day
 - [time] - Get time in seconds
+- [timespec_get] - Get Time
 
 ## Background
 
@@ -368,3 +369,37 @@ to by `t`.
 **NOTES:**
 
 NONE
+
+(timespec_get)=
+
+### timespec_get - Get Time
+
+```{index} timespec_get
+```
+
+```{index} get time
+```
+
+**CALLING SEQUENCE:**
+
+```c
+#include <time.h>
+int timespec_get(
+    struct timespec *ts,
+    int              base
+);
+```
+
+**STATUS CODES:**
+
+If successful, this routine returns the non-zero value `base`. Otherwise, it
+returns zero.
+
+**DESCRIPTION:**
+
+The `timespec_get()` function sets the interval pointed to by `ts` to hold the current calendar time based on the specified time base.
+
+If `base` is `TIME_UTC`, the members of `ts` are set to the same values as
+would be set by a call to `clock_gettime(CLOCK_REALTIME, ts)`. If the number
+of seconds will not fit in an object of type `time_t`, the function returns
+zero.
