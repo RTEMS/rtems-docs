@@ -26,7 +26,8 @@ If you are unsure how to specify the build set for the architecture you wish to
 build, just ask the tool:
 
 ```none
-$ ../source-builder/sb-set-builder --list-bsets
+cd $HOME/quick-start/src/rsb/rtems
+../source-builder/sb-set-builder --list-bsets
 ```
 
 Build and install the tool suite:
