@@ -73,6 +73,7 @@ RUN apt-get update && \
         g++ \
         gdb \
         git \
+        install-info \
         libncurses5-dev \
         ninja-build \
         pax \
