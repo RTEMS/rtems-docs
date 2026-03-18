@@ -22,6 +22,7 @@ target hardware.
 You can see the current BSP list in the RTEMS sources by asking RTEMS with:
 
 ```none
+$ cd $PREFIX/src/rtems/
 $ ./rtems-bsps
 ```
 
