@@ -183,3 +183,7 @@ ogp_custom_meta_tags = [
 ogp_social_cards = {
     "enable": False
 }
+
+# Strip out the shell prompt
+copybutton_prompt_text = "$ "
+copybutton_exclude = '.linenos, .gp .go'
