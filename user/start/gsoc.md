@@ -114,8 +114,8 @@ To test your changes, you have to build the BSP again, something like the
 following:
 
 ```none
-cd $HOME/quick-start/src/rtems
-./waf
+$ cd $HOME/quick-start/src/rtems
+$ ./waf
 ```
 
 If you are happy with your changes you can commit the changes. Create a patch
@@ -124,7 +124,7 @@ that you did this. We want to know you can work with RTEMS. You can create
 a patch using this command from inside your modified rtems.git:
 
 ```shell
-git format-patch HEAD^ -o ../
+$ git format-patch HEAD^ -o ../
 ```
 
 This should create a file in the parent directory (`../`) with a filename

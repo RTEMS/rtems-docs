@@ -41,8 +41,8 @@ Git clone of the RSB the BSP will be version referenced in the RSB clone.
 To build the BSP with all the tests run this command:
 
 ```none
-cd $HOME/quick-start/src/rsb/rtems
-../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ \
+$ cd $HOME/quick-start/src/rsb/rtems
+$ ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ \
     --target=sparc-rtems@rtems-ver-major@ --with-rtems-bsp=sparc/erc32 --with-rtems-tests=yes @rtems-ver-major@/rtems-kernel
 ```
 
@@ -101,7 +101,7 @@ Prepend the RTEMS tool suite binary directory to your `$PATH` throughout the
 remaining steps. Run the command:
 
 ```none
-export PATH=$HOME/quick-start/rtems/@rtems-ver-major@/bin:"$PATH"
+$ export PATH=$HOME/quick-start/rtems/@rtems-ver-major@/bin:"$PATH"
 ```
 
 > **Warning for Windows (WSL) Users:**
@@ -117,7 +117,7 @@ export PATH=$HOME/quick-start/rtems/@rtems-ver-major@/bin:"$PATH"
 Check your installed tools can be found by running:
 
 ```none
-command -v sparc-rtems@rtems-ver-major@-gcc && echo "found" || echo "not found"
+$ command -v sparc-rtems@rtems-ver-major@-gcc && echo "found" || echo "not found"
 ```
 
 The output should be:
@@ -147,10 +147,10 @@ everything else. For detailed information about the BSP build system, see
 > generate this file, otherwise the build will fail.
 
 ```none
-cd $HOME/quick-start/src/rtems
-echo "[sparc/erc32]" > config.ini
-echo "BUILD_TESTS = True" >> config.ini
-./waf configure --prefix=$HOME/quick-start/rtems/@rtems-ver-major@
+$ cd $HOME/quick-start/src/rtems
+$ echo "[sparc/erc32]" > config.ini
+$ echo "BUILD_TESTS = True" >> config.ini
+$ ./waf configure --prefix=$HOME/quick-start/rtems/@rtems-ver-major@
 ```
 
 The first invocation of `./waf` needs a bit of time (e.g. 10 seconds) since an
@@ -187,8 +187,8 @@ Checking for program 'xz'                : $BASE/anaconda3/bin/xz
 Building the BSP is the third step.
 
 ```none
-cd $HOME/quick-start/src/rtems
-./waf
+$ cd $HOME/quick-start/src/rtems
+$ ./waf
 ```
 
 This command should output something like this (omitted lines are denoted by
@@ -211,8 +211,8 @@ Waf: Leaving directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
 The last step is to install the BSP.
 
 ```none
-cd $HOME/quick-start/src/rtems
-./waf install
+$ cd $HOME/quick-start/src/rtems
+$ ./waf install
 ```
 
 This command should output something like this (omitted lines are denoted by

@@ -26,15 +26,15 @@ If you are unsure how to specify the build set for the architecture you wish to
 build, just ask the tool:
 
 ```none
-cd $HOME/quick-start/src/rsb/rtems
-../source-builder/sb-set-builder --list-bsets
+$ cd $HOME/quick-start/src/rsb/rtems
+$ ../source-builder/sb-set-builder --list-bsets
 ```
 
 Build and install the tool suite:
 
 ```none
-cd $HOME/quick-start/src/rsb/rtems
-../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ @rtems-ver-major@/rtems-sparc
+$ cd $HOME/quick-start/src/rsb/rtems
+$ ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ @rtems-ver-major@/rtems-sparc
 ```
 
 This command should output something like this (omitted lines are denoted by
@@ -67,7 +67,7 @@ Once the build has successfully completed you can check if the cross C compiler
 works with the following command:
 
 ```none
-$HOME/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc --version
+$ $HOME/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc --version
 ```
 
 This command should output something like below. The version informtion helps

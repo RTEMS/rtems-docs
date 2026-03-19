@@ -27,27 +27,27 @@ the Waf build system, and the [RTEMS Waf](https://gitlab.rtems.org/rtems/tools/r
 Create the application directory and change into it:
 
 ```none
-mkdir -p $HOME/quick-start/app/hello
-cd $HOME/quick-start/app/hello
+$ mkdir -p $HOME/quick-start/app/hello
+$ cd $HOME/quick-start/app/hello
 ```
 
 Download the Waf build system and set it to executable:
 
 ```none
-curl https://waf.io/waf-2.0.19 > waf
-chmod +x waf
+$ curl https://waf.io/waf-2.0.19 > waf
+$ chmod +x waf
 ```
 
 Initialise a new Git repository:
 
 ```none
-git init
+$ git init
 ```
 
 Add RTEMS Waf support as a Git sub-module and initialise it:
 
 ```none
-git submodule add https://gitlab.rtems.org/rtems/tools/rtems_waf.git rtems_waf
+$ git submodule add https://gitlab.rtems.org/rtems/tools/rtems_waf.git $ rtems_waf
 ```
 
 Create the application source files. Three files are created with an
@@ -139,7 +139,7 @@ def build(bld):
 Configure the application using Waf's `configure` command:
 
 ```none
-./waf configure \
+$ ./waf configure \
   --rtems=$HOME/quick-start/rtems/@rtems-ver-major@ \
   --rtems-tools=$HOME/quick-start/rtems/@rtems-ver-major@ \
   --rtems-bsp=sparc/erc32
@@ -193,7 +193,7 @@ Checking for RTEMS_NETWORKING               : no
 Build the application:
 
 ```none
-./waf
+$ ./waf
 ```
 
 The output will be something close to:
@@ -210,7 +210,7 @@ Waf: Leaving directory `$BASE/app/hello/build/sparc-rtems@rtems-ver-major@-erc32
 Run the executable:
 
 ```none
-rtems-run --rtems-bsps=erc32-sis build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
+$ rtems-run --rtems-bsps=erc32-sis build/sparc-rtems@rtems-ver-major@-erc32/hello.exe
 ```
 
 The output will be something close to:
@@ -246,6 +246,6 @@ Run time     : 0:00:00.259136
 Commit the application to the repository:
 
 ```none
-git add init.c hello.c wscript
-git commit -m "My first RTEMS application."
+$ git add init.c hello.c wscript
+$ git commit -m "My first RTEMS application."
 ```
