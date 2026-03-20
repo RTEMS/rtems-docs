@@ -106,6 +106,10 @@ value, otherwise it is disabled (disabled by default).
 `RISCV_BOOT_HARTID`
 : The boot hartid (processor number) of risc-v cpu by default 0.
 
+`RISCV_USE_S_MODE`
+: Use supervisor privilege mode (s-mode) instead of machine mode (m-mode)
+upon boot (disabled by default).
+
 ### Interrupt Controller
 
 Exactly one Core Local Interruptor (CLINT) and exactly one Platform-Level
@@ -115,7 +119,9 @@ interrupts supported by the BSP is defined by the
 
 ### Clock Driver
 
-The clock driver uses the CLINT timer.
+The clock driver uses the CLINT timer if `RISCV_USE_S_MODE` is disabled.
+In s-mode, it probes for and uses the `Sstc` extension if found, or falls
+back to using the supervisor binary interface (SBI) timer.
 
 ### Console Driver
 
@@ -146,6 +152,27 @@ Run the following QEMU command.
 $ qemu-system-riscv64 -M virt -nographic -bios $RTEMS_EXE
 $ qemu-system-riscv64 -M spike -nographic -bios $RTEMS_EXE
 ```
+
+#### S-Mode Execution with QEMU
+
+To run the BSP in s-mode, it is necessary to avoid using the area of memory
+allocated and used by the OpenSBI firmware. For example,
+
+```none
+[riscv/rv64imafdc_s_mode]
+INHERIT = rv64imafdc
+RISCV_RAM_REGION_BEGIN = 0x84000000
+RISCV_RAM_REGION_SIZE =  0x03000000
+RISCV_USE_S_MODE = True
+```
+
+Run the following QEMU command.
+
+```shell
+$ qemu-system-riscv64 -M virt -nographic -kernel $RTEMS_EXE
+```
+
+When the `-bios` is omitted, QEMU will use a default SBI firmware.
 
 ### Spike
 
