@@ -114,7 +114,7 @@ To test your changes, you have to build the BSP again, something like the
 following:
 
 ```none
-$ cd $HOME/quick-start/src/rtems
+cd $HOME/quick-start/src/rtems
 $ ./waf
 ```
 

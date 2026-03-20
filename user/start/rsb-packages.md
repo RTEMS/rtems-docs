@@ -65,7 +65,7 @@ The packages built depend on the BSP and the default will build all packages for
 BSP.
 
 ```none
-$ cd $HOME/quick-start/src/rsb/rtems
+cd $HOME/quick-start/src/rsb/rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/5 \
     --with-rtems-tests=yes bsps/erc32
 ```
@@ -120,7 +120,7 @@ Only a limited number of BSPs have RSB support to build as a software stack. To
 see which BSPs are supported run this command:
 
 ```none
-$ cd $HOME/quick-start/src/rsb/rtems
+cd $HOME/quick-start/src/rsb/rtems
 $ ../source-builder/sb-set-builder --list-bsets | grep bsps
 ```
 
@@ -132,7 +132,7 @@ be a stack of software to provide specific functionality, i.e. a build set can
 be a list of build sets. To view the avaliable build sets run this command:
 
 ```none
-$ cd $HOME/quick-start/src/rsb/rtems
+cd $HOME/quick-start/src/rsb/rtems
 $ ../source-builder/sb-set-builder --list-bsets
 ```
 
@@ -148,7 +148,7 @@ e.g. `--with-rtems-bsp=erc32`. The commands to build `libbsd` for the
 `erc32` BSP are:
 
 ```none
-$ cd $HOME/quick-start/src/rsb/rtems
+cd $HOME/quick-start/src/rsb/rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/5 \
   --host=sparc-rtems5 --with-rtems-bsp=erc32 5/rtems-libbsd
 ```

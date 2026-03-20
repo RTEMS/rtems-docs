@@ -27,15 +27,15 @@ the Waf build system, and the [RTEMS Waf](https://gitlab.rtems.org/rtems/tools/r
 Create the application directory and change into it:
 
 ```none
-$ mkdir -p $HOME/quick-start/app/hello
-$ cd $HOME/quick-start/app/hello
+mkdir -p $HOME/quick-start/app/hello
+cd $HOME/quick-start/app/hello
 ```
 
 Download the Waf build system and set it to executable:
 
 ```none
 $ curl https://waf.io/waf-2.0.19 > waf
-$ chmod +x waf
+chmod +x waf
 ```
 
 Initialise a new Git repository:
@@ -47,7 +47,7 @@ $ git init
 Add RTEMS Waf support as a Git sub-module and initialise it:
 
 ```none
-$ git submodule add https://gitlab.rtems.org/rtems/tools/rtems_waf.git $ rtems_waf
+$ git submodule add https://gitlab.rtems.org/rtems/tools/rtems_waf.git rtems_waf
 ```
 
 Create the application source files. Three files are created with an

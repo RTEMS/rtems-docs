@@ -41,7 +41,7 @@ Git clone of the RSB the BSP will be version referenced in the RSB clone.
 To build the BSP with all the tests run this command:
 
 ```none
-$ cd $HOME/quick-start/src/rsb/rtems
+cd $HOME/quick-start/src/rsb/rtems
 $ ../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ \
     --target=sparc-rtems@rtems-ver-major@ --with-rtems-bsp=sparc/erc32 --with-rtems-tests=yes @rtems-ver-major@/rtems-kernel
 ```
@@ -147,7 +147,7 @@ everything else. For detailed information about the BSP build system, see
 > generate this file, otherwise the build will fail.
 
 ```none
-$ cd $HOME/quick-start/src/rtems
+cd $HOME/quick-start/src/rtems
 $ echo "[sparc/erc32]" > config.ini
 $ echo "BUILD_TESTS = True" >> config.ini
 $ ./waf configure --prefix=$HOME/quick-start/rtems/@rtems-ver-major@
@@ -187,7 +187,7 @@ Checking for program 'xz'                : $BASE/anaconda3/bin/xz
 Building the BSP is the third step.
 
 ```none
-$ cd $HOME/quick-start/src/rtems
+cd $HOME/quick-start/src/rtems
 $ ./waf
 ```
 
@@ -211,7 +211,7 @@ Waf: Leaving directory `$BASE/quick-start/src/rtems/build/sparc/erc32'
 The last step is to install the BSP.
 
 ```none
-$ cd $HOME/quick-start/src/rtems
+cd $HOME/quick-start/src/rtems
 $ ./waf install
 ```
 

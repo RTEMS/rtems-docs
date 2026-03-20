@@ -53,7 +53,7 @@ Download and unpack using the `curl` and `tar` command with these commands:
 ```none
 mkdir -p $HOME/quick-start/src
 cd $HOME/quick-start/src
-curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-source-builder-5.1.tar.xz | tar xJf -
+$ curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-source-builder-5.1.tar.xz | tar xJf -
 ```
 
 If `curl` does not work consider using `wget` or a browser.
@@ -75,7 +75,7 @@ sources:
 
 ```none
 cd $HOME/quick-start/src
-curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-5.1.tar.xz | tar xJf -
+$ curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-5.1.tar.xz | tar xJf -
 ```
 
 (QuickStartSources_Git)=
@@ -97,8 +97,8 @@ differ from a release's source archive.
 ```none
 mkdir -p $HOME/quick-start/src
 cd $HOME/quick-start/src
-git clone https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git rsb
-git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
+$ git clone https://gitlab.rtems.org/rtems/tools/rtems-source-builder.git rsb
+$ git clone https://gitlab.rtems.org/rtems/rtos/rtems.git
 ```
 
 The {file}`rsb` repository clone contains the {ref}`RTEMS Source Builder (RSB) <RSB>`. We clone it into {file}`rsb` to get a consistent (and shorter) path for
@@ -124,7 +124,7 @@ the sources to build the ERC 32 BSP before building run the following commands:
 
 ```none
 cd $HOME/quick-start/src/rsb/rtems
-../source-builder/sb-set-builder --source-only-download @rtems-ver-major@/rtems-sparc
+$ ../source-builder/sb-set-builder --source-only-download @rtems-ver-major@/rtems-sparc
 ```
 
 This command should output something like this (omitted lines are denoted by

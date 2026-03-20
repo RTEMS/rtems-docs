@@ -23,7 +23,7 @@ easy. Just run this command:
 
 ```none
 cd $HOME/quick-start/src/rtems
-rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
+$ rtems-test --rtems-bsp=erc32-sis build/sparc/erc32
 ```
 
 This command should output something like this (omitted lines are denoted by
