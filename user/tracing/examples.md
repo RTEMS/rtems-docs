@@ -107,11 +107,20 @@ rtems_shell_init = rtems_status_code, const char*, size_t, rtems_task_priority, 
 Inside the RTEMS build directory (the directory where the fileio configuration
 has been stored) run the following commands to generate traces:
 
+Create a `config.ini` file in your RTEMS source directory:
+
+```ini
+[sparc/erc32]
+RTEMS_POSIX_API = True
+RTEMS_NETWORKING = True
+RTEMS_CXX = True
+BUILD_TESTS = True
+```
+
 BSP is configured with the following command -
 
-```none
-../rtems/configure --target=sparc-rtems@rtems-ver-major@ --prefix=/development/rtems/5 \
---enable-networking --enable-tests --enable-rtemsbsp=erc32 --enable-cxx
+```bash
+./waf configure --prefix=/development/rtems/@rtems-ver-major@
 ```
 
 The next two commands are used to link the fileio executable.The `-B` option
