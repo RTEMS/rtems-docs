@@ -23,17 +23,17 @@ The RTEMS shell has the following file and directory commands:
 - [hexdump] - format disks
 - [ln] - make links
 - [ls] - list files in the directory
-- [md5] - display file system disk space usage
+- [md5] - compute md5 hash
 - [mkdir] - create a directory
 - [mkdos] - DOSFS disk format
 - [mknod] - make device special file
 - [mkrfs] - format RFS file system
 - [mount] - mount disk
 - [mv] - move files
-- [pwd] - print work directory
+- [pwd] - print working directory
 - [rmdir] - remove empty directories
 - [rm] - remove files
-- [umask] - Set file mode creation mask
+- [umask] - set file mode creation mask
 - [unmount] - unmount disk
 
 ## Commands
