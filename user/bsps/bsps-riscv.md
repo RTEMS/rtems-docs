@@ -753,3 +753,102 @@ The `README.md` file in the compressed folder describes how to build
 the FPGA configuration file, On-Chip ROM boot loader to load an executable from
 the EPCQ device to external RAM, an application executable, and a `rtems_xx.jic`
 file for programming onto the EPCQ device using the Quartus programmer.
+
+# esp32 (ESP32)
+
+## esp32c3db
+
+This BSP supports boot from attached flash on the ESP32-C3 using the
+direct-boot header. Linker sections are compacted into a single block to be
+written to flash which is then mapped into memory at different locations
+depending on whether it is code-mapped or data-mapped.
+
+### Build Configuration Options
+
+The following options can be used in the BSP section of the `waf`
+configuration INI file. The `waf` defaults can be used to inspect the values.
+
+`BSP_PRESS_KEY_FOR_RESET`
+: If defined to a non-zero value, then print a message and wait until pressed
+before resetting board when application terminates.
+
+`BSP_RESET_BOARD_AT_EXIT`
+: If defined to a non-zero value, then reset the board when the application
+terminates.
+
+`BSP_PRINT_EXCEPTION_CONTEXT`
+: If defined to a non-zero value, then print the exception context when an
+unexpected exception occurs.
+
+`BSP_CONSOLE_BAUD`
+: The default baud for console driver devices (default is 115200).
+
+`RISCV_MAXIMUM_EXTERNAL_INTERRUPTS`
+: The maximum number of external interrupts supported by the BSP (default
+is 64).
+
+`ESP32C_FLASH_SIZE`
+: The size of the flash attached to the ESP32-C3 (default is 0x400000).
+
+`ESP32C_CODE_REGION_SIZE`
+: The size of the code region as a subset of the flash (default 0x100000).
+
+`ESPRESSIF_USE_USB_CONSOLE`
+: Use the USB connection as the debug console instead of UART0 (enabled by
+default).
+
+### Interrupt Controller
+
+All peripheral interrupts are routed through an interrupt matrix to the
+31 vectored CPU interrupts. The mapping is statically configured and most
+interrupts are not shared. The maximum number of external interrupts supported
+by the BSP is defined by the `RISCV_MAXIMUM_EXTERNAL_INTERRUPTS` BSP option.
+
+### Clock Driver
+
+The clock driver uses the SYSTIMER peripheral and leaves the two TIMG timer
+group peripherals for application use.
+
+### Console Driver
+
+The console driver supports use of either UART0 or the USB-Serial peripheral
+for use as the debug console.
+
+### Additional Required Tooling
+
+This BSP requires `esptool` for loading code onto the board and the development
+version of OpenOCD for debugging.
+
+### Running Code on an ESP32-C3
+
+To load code on to the ESP32-C3 flash, the application must be converted to a
+flashable form and then flashed.
+
+To convert to a flashable form, use objcopy:
+
+```none
+riscv-rtems7-objcopy -O binary application.exe rtems.bin
+```
+
+To load the binary on to the flash with the board attached at `/dev/ttyACM0`, use esptool:
+
+```none
+esptool --port /dev/ttyACM0 --baud 921600 write_flash 0x0 rtems.bin
+```
+
+### Debugging with OpenOCD
+
+To use the USB-JTAG interface with OpenOCD for debugging, run:
+
+```none
+openocd -f board/esp32c3-builtin.cfg
+```
+
+While that command is still running, run GDB:
+
+```none
+riscv-rtems7-gdb application.exe
+```
+
+At the GDB prompt, run `target extended-remote :3333` to connect to the board
+and begin debugging.
