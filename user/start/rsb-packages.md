@@ -37,7 +37,7 @@ packages from 3rd parties. RTEMS Project packages include the BSPs and BSD
 Library package called `libbsd`. External 3rd party packages include
 networking such has `curl` or `libcurl` to graphics libraries.
 
-Packages can depend on other packages and need to be build in the corret
+Packages can depend on other packages and need to be build in the correct
 order. For example the FreeBSD Library package depends on the BSP package and a
 3rd party library such as `curl` depends on the FreeBSD Library package. We
 call this layering a vertical software stack.
