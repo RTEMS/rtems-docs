@@ -1,4 +1,4 @@
-14 March 2025
+13 April 2026
 
 The .cvs file is exported from a spreadsheet used to track the status
 of RTEMS versus various C language standards and multiple POSIX related
@@ -8,7 +8,7 @@ in the name "RTEMS-Standards-Compliance.csv".
 
 The version of the spreadsheet included currently is:
 
-v21 - 14 March 2025
+v22 - 13 April 2026
 
 The spreadsheet MUST be exported as "MS-DOS CSV" to be processed by
 the Python script.
@@ -29,6 +29,9 @@ This is the information in each column:
   C99
   C11
   C17
+  C23
+  C23 IEC 60559 BFP
+  C23 IEC 60559 DFP
   FACE 2.1 Security
   FACE 2.1 Safety Base
   FACE 2.1 Safety Extended

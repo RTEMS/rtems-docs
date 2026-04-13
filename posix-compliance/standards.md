@@ -1,9 +1,9 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
-% Copyright (C) 2018.
+% Copyright (C) 2018-2026.
 
 % COMMENT: On-Line Applications Research Corporation (OAR).
-% | **COPYRIGHT (c) 20188.**
+% | **COPYRIGHT (c) 2018-2026.**
 
 % **RTEMS Foundation, The RTEMS Documentation Project**
 
@@ -71,7 +71,10 @@ from the C99 version but adds many functions. A large portion of these
 functions are optional and not commonly implemented.
 
 Similarly, the C17 Programming Language standard defines an updated
-version of the Standard C Library.
+version of the Standard C Library. C17 is a bug fix version of C11.
+
+The C23 Programming Language standard introduces new language features
+and multiple new functions in the Standard C Library.
 
 The Open Group FACE Consortium (<https://www.opengroup.org/face>)
 has defined four POSIX profiles targetting the avionics application
