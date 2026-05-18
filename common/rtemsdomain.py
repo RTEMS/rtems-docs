@@ -145,6 +145,10 @@ def setup(app):
 		majminrev = major + '.' + revision
 	replacements["@rtems-version@"] = str(app.config.overrides['version'])
 	replacements["@rtems-ver-major@"] = major
+	if rtems_version.released():
+		app.tags.add('releasedversion')
+	else:
+		app.tags.add('gitversion')
 	replacements["@rtems-ver-minor@"] = minor
 	replacements["@rtems-ver-revision@"] = revision
 	replacements["@rtems-ver-majminrev@"] = majminrev

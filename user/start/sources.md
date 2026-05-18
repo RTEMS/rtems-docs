@@ -8,7 +8,7 @@
 
 (QuickStartSources)=
 
-# Obtain the Sources
+# Obtain RTEMS Source Builder
 
 You have considered and chosen a suitable installation prefix in the previous
 section. For example, if you are building RTEMS with version
@@ -32,16 +32,16 @@ kernel, network stack and 3rd party packages for the ERC32 BSP.
 
 (QuickStartSources_Released)=
 
-## Releases
+## Released Version
 
 You can download the source archives for a released RTEMS version from RTEMS'
 servers. Releases can be viewed at <https://ftp.rtems.org/pub/rtems/releases> with
-the releases listed as a series under a release's major number. For RTEMS 5.1
-the release series is [5](https://ftp.rtems.org/pub/rtems/releases/5) and the
-release path is <https://ftp.rtems.org/pub/rtems/releases/5/5.1>.
+the releases listed as a series under a release's major number. For RTEMS @rtems-ver-major@.1
+the release series is [@rtems-ver-major@](https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@) and the
+release path is <https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.1>.
 
 To work with the archives of a released RTEMS version, simply replace the
-version major number `5` and minor number `1` used throughout this section with
+version major number `@rtems-ver-major@` and minor number `1` used throughout this and further sections with
 the version number you selected, e.g., `sparc-rtems4.11`, `sparc-rtems6`, and
 so on. The specific instructions for working with released versions of RTEMS
 are available in the released documents associated with those versions.
@@ -53,19 +53,19 @@ Download and unpack using the `curl` and `tar` command with these commands:
 ```none
 mkdir -p $HOME/quick-start/src
 cd $HOME/quick-start/src
-$ curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-source-builder-5.1.tar.xz | tar xJf -
+$ curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.1/sources/rtems-source-builder-@rtems-ver-major@.1.tar.xz | tar xJf -
 ```
 
 If `curl` does not work consider using `wget` or a browser.
 
-The RSB is unpacked under the path `rtems-source-builder-5.1`. We rename this
+The RSB is unpacked under the path `rtems-source-builder-@rtems-ver-major@.1`. We rename this
 to `rsb` so that the subsequent directions are consistent regardless of what
 version is being used. This has the added benefit of using shorter paths during
 the tool suite build. To do this run these commands:
 
 ```none
 cd $HOME/quick-start/src
-mv rtems-source-builder-5.1 rsb
+mv rtems-source-builder-@rtems-ver-major@.1 rsb
 ```
 
 (QuickStartSources_Released_RTEMS)=
@@ -75,12 +75,12 @@ sources:
 
 ```none
 cd $HOME/quick-start/src
-$ curl https://ftp.rtems.org/pub/rtems/releases/5/5.1/sources/rtems-5.1.tar.xz | tar xJf -
+$ curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.1/sources/rtems-@rtems-ver-major@.1.tar.xz | tar xJf -
 ```
 
 (QuickStartSources_Git)=
 
-## Git
+## Git Version
 
 Alternatively, clone the Git repositories into {file}`$HOME/quick-start/src`.
 
