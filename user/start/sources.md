@@ -111,15 +111,19 @@ The development version is not for use in production and it can break from
 time to time.
 ```
 
-## Offline Download
+## Downloading Package Sources
 
-If you have limited Internet access you can download the source before you
-start building. If you are permanently connected to the Internet you do not
-need to do this and the sources will be automatically download on demand when
-needed.
+Under normal circumstances, your system will have access to the Internet and RSB
+will download package sources as necessary during the build. There is no
+additional action necessary if this is the case.
+
+### Offline Download
+
+If you have limited Internet access, you can download the package sources before
+you start building.
 
 Once the sources have been downloaded you could disconnect your host computer
-from the Internet. It is no longer required to work with RTEMS. To download
+from the Internet as it is no longer required to work with RTEMS. To download
 the sources to build the ERC 32 BSP before building run the following commands:
 
 ```none
