@@ -92,7 +92,7 @@ kernel, network stack and 3rd party packages for the ERC32 BSP.
 Clone the Git repositories into {file}`$HOME/quick-start/src`.
 
 A Git repository clone gives you some flexibility with the added complexity of
-needing to use a Git tag or branch to build a released version. With Git you can
+needing to use a Git tag to build a released version. With Git you can
 switch between branches to try out different RTEMS versions and you have access
 to the RTEMS source history. The RTEMS Project welcomes contributions. The Git
 repositories enable you to easily create patches and track local changes.
