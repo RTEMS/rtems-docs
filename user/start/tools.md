@@ -19,7 +19,7 @@ have chosen {file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installatio
 the RSB source in {file}`$HOME/quick-start/src`.
 
 The tool suite for RTEMS and the RTEMS sources are tightly coupled. For
-example, do not use a RTEMS version @rtems-ver-major@ tool suite with RTEMS version 4.11 or 5
+example, do not use a RTEMS version 6 tool suite with RTEMS version 4.11 or 5
 sources and vice versa.
 
 If you are unsure how to specify the build set for the architecture you wish to
