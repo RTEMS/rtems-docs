@@ -13,10 +13,8 @@
 # Install the Tool Suite
 
 You have chosen an installation prefix, the BSP to build, the tool's
-architecure and prepared the source for the RSB in the previous sections. We
-have chosen {file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation prefix, the
-`erc32` BSP and the SPARC architecture name of `sparc-rtems@rtems-ver-major@`, and unpacked
-the RSB source in {file}`$HOME/quick-start/src`.
+architecure and prepared the source for the RSB in the previous sections. Follow
+the directions below for the version chosen.
 
 The tool suite for RTEMS and the RTEMS sources are tightly coupled. For
 example, do not use a RTEMS version 6 tool suite with RTEMS version 4.11 or 5
@@ -29,6 +27,12 @@ build, just ask the tool:
 cd $HOME/quick-start/src/rsb/rtems
 $ ../source-builder/sb-set-builder --list-bsets
 ```
+
+````{only} releasedversion
+We have chosen {file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the
+installation prefix, the `erc32` BSP and the SPARC architecture name of
+`sparc-rtems@rtems-ver-major@`, and unpacked the RSB source in
+{file}`$HOME/quick-start/src`.
 
 Build and install the tool suite:
 
@@ -87,6 +91,72 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
 Add `--verbose` to the GCC command for the verbose version details.
+````
+
+````{only} gitversion
+We have chosen {file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the
+installation prefix, the `erc32` BSP and the SPARC architecture name of
+`sparc-rtems@rtems-ver-major@`, and unpacked the RSB source in
+{file}`$HOME/quick-start/src`.
+
+Build and install the tool suite:
+
+```none
+cd $HOME/quick-start/src/rsb/rtems
+../source-builder/sb-set-builder --prefix=$HOME/quick-start/rtems/@rtems-ver-major@ @rtems-ver-major@/rtems-sparc
+```
+
+This command should output something like this (omitted lines are denoted by
+...). The build host appears as part of the name of the package being
+built. The name you see may vary depending on the host you are using:
+
+```none
+RTEMS Source Builder - Set Builder, @rtems-ver-major@ (5e449fb5c2cb)
+Build Set: @rtems-ver-major@/rtems-sparc
+...
+config: tools/rtems-binutils-2.36.cfg
+package: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1
+building: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1
+sizes: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1: 716.015MB (installed: 163.538MB)
+cleaning: sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1
+reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1.txt
+reporting: tools/rtems-binutils-2.36.cfg -> sparc-rtems@rtems-ver-major@-binutils-fbb9a7e-x86_64-linux-gnu-1.xml
+config: tools/rtems-gcc-10-newlib-head.cfg
+package: sparc-rtems@rtems-ver-major@-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
+building: sparc-rtems@rtems-ver-major@-gcc-6051af8-newlib-d10d0d9-x86_64-linux-gnu-1
+....
+Build Sizes: usage: 9.607GB total: 2.244GB (sources: 264.186MB, patches: 43.468KB, installed 1.986GB)
+installing: @rtems-ver-major@/rtems-sparc -> $HOME/quick-start/rtems/@rtems-ver-major@
+clean staging: @rtems-ver-major@/rtems-sparc
+Staging Size: 5.292MB
+Build Set: Time 1:01:48.019157
+```
+
+Once the build has successfully completed you can check if the cross C compiler
+works with the following command:
+
+```none
+$HOME/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc --version
+```
+
+This command should output something like below. The version informtion helps
+you to identify the exact sources used to build the cross compiler of your
+RTEMS tool suite. In the output you see the version of RTEMS or the hash from
+the RSB repository if you are building using a Git repository clone. The Newlib
+hash is the version of Newlib in the RTEMS's github
+[sourceware-mirror-newlib-cygwin](https://github.com/RTEMS/sourceware-mirror-newlib-cygwin) repository. The
+`sources` and `patches` directories created by the RSB contain all the
+source code used.
+
+```none
+sparc-rtems@rtems-ver-major@-gcc (GCC) 10.2.1 20210309 (RTEMS @rtems-ver-major@, RSB 5e449fb5c2cb6812a238f9f9764fd339cbbf05c2, Newlib d10d0d9)
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+Add `--verbose` to the GCC command for the verbose version details.
+````
 
 ## Creating a Tool Archive
 
