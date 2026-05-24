@@ -10,12 +10,11 @@
 
 # Obtain RTEMS Source Builder
 
+````{only} releasedversion
 You have considered and chosen a suitable installation prefix in the previous
 section. For example, if you are building RTEMS with version
-`@rtems-ver-major@` tools we have chosen
-{file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation prefix.
-We will show how to use a released version of RTEMS and then as an alternative
-we will show you using the {ref}`RSB Git repository <QuickStartSources_Git>`.
+`@rtems-release-ver-major@` tools we have chosen
+{file}`$HOME/quick-start/rtems/@rtems-release-ver-major@` as the installation prefix.
 Consider using a Git clone if you wish to make contributions to the RTEMS
 Project.
 
@@ -29,10 +28,6 @@ as changes in upstream projects do not effect a release's build.
 
 You will need approximately 1.5G bytes of disk space to build the tools, RTEMS
 kernel, network stack and 3rd party packages for the ERC32 BSP.
-
-(QuickStartSources_Released)=
-
-## Released Version
 
 You can download the source archives for a released RTEMS version from RTEMS'
 servers. Releases can be viewed at <https://ftp.rtems.org/pub/rtems/releases> with
@@ -68,8 +63,6 @@ cd $HOME/quick-start/src
 mv rtems-source-builder-@rtems-ver-major@.1 rsb
 ```
 
-(QuickStartSources_Released_RTEMS)=
-
 If you wish to build the RTEMS kernel from source obtain the RTEMS kernel
 sources:
 
@@ -77,12 +70,26 @@ sources:
 cd $HOME/quick-start/src
 $ curl https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.1/sources/rtems-@rtems-ver-major@.1.tar.xz | tar xJf -
 ```
+````
 
-(QuickStartSources_Git)=
+````{only} gitversion
+You have considered and chosen a suitable installation prefix in the previous
+section. For example, if you are building RTEMS with version
+`@rtems-ver-major@` tools we have chosen
+{file}`$HOME/quick-start/rtems/@rtems-ver-major@` as the installation prefix.
 
-## Git Version
+You need the RTEMS Source Builder (RSB) to work with RTEMS. You should use the
+same version of the RSB as you plan to use for RTEMS, for example
+`@rtems-ver-major@` for the development head of RTEMS, or a released version
+of the RSB matching the released version of RTEMS.
+A released version of the RSB downloads all source code from the RTEMS servers.
+Each release archives all the referenced source providing long term stability
+as changes in upstream projects do not effect a release's build.
 
-Alternatively, clone the Git repositories into {file}`$HOME/quick-start/src`.
+You will need approximately 1.5G bytes of disk space to build the tools, RTEMS
+kernel, network stack and 3rd party packages for the ERC32 BSP.
+
+Clone the Git repositories into {file}`$HOME/quick-start/src`.
 
 A Git repository clone gives you some flexibility with the added complexity of
 needing to use a Git tag or branch to build a released version. With Git you can
@@ -110,6 +117,7 @@ These two repositories are enough to get started. There are [more repositories](
 The development version is not for use in production and it can break from
 time to time.
 ```
+````
 
 ## Downloading Package Sources
 

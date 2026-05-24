@@ -66,8 +66,8 @@ or recommended.
 We will be using Git to clone the sources for RTEMS and RSB. This is the
 preferred way if you are planning to make contributions to the RTEMS project.
 
-Please refer to the {ref}`QuickStartSources_Git` section for instructions on
-obtaining sources using Git.
+Please refer to the {ref}`QuickStartSources` section for instructions on
+obtaining sources.
 
 ## Installing the Tool Suite
 
