@@ -1,220 +1,252 @@
 % SPDX-License-Identifier: CC-BY-SA-4.0
 
 % Copyright (C) 2019 TBD
+% Copyright (C) 2026 Moksh Panicker
 
 # stm32f4
 
+## Supported Hardware
+
+The BSP is known to work on the following boards:
+
+| Board | Notes |
+|---|---|
+| STM32F411 Black Pill (WeAct) | USB-C port wired to DWC2 USB OTG FS peripheral |
+| NUCLEO-F401RE | On-board ST-Link; ST-Link USB is virtual COM port only |
+| NUCLEO-F446RE | On-board ST-Link; ST-Link USB is virtual COM port only |
+| STM32F407VG Discovery | On-board ST-Link V2 |
+
+## Clock Driver
+
+The clock driver uses the ARMv7-M SysTick peripheral. The STM32F411
+runs at up to 100 MHz and the STM32F407 at up to 168 MHz. Clock
+configuration is in `bsps/arm/stm32f4/start/bspstart.c`.
+
+## Console Driver
+
+The console uses a UART configured in the BSP.
+
+On Nucleo boards the ST-Link virtual COM port connects to USART2
+(PA2/PA3) at 115200 baud. The board appears as `/dev/ttyACM0` on Linux.
+
+On the STM32F411 Black Pill the console is on USART1 (PA9 TX, PA10 RX)
+at 115200 baud, 8N1. A USB-to-UART adapter connected to those pins is
+required to read console output. The USB-C port on the Black Pill
+connects to the DWC2 USB OTG peripheral (PA11/PA12) and does not
+provide a serial console.
+
 ## How to Run an RTEMS Application on the Board
 
-By following these simple steps, you can deploy your RTEMS application on
-the board.
-These steps include:
+By following these simple steps, you can deploy your RTEMS application
+on the board. These steps include:
 
 - Building your RTEMS Application,
   already discussed in the {ref}`Build Your Application <QuickStartAPP>`.
-- [Flashing Application](#flashing-the-application) onto your board .
-- Viewing the
-  [Serial Monitor Output using OpenOCD](#serial-monitor-output-using-openocd).
+- Flashing the application onto your board using either
+  [OpenOCD](#flashing-with-openocd-nucleo-boards) or
+  [stlink tools](#flashing-with-stlink-tools-all-boards).
+- Viewing the serial output over
+  [UART](#serial-monitor-output).
 
-### Flashing The Application
+## Flashing with OpenOCD (Nucleo Boards)
 
-Open a shell or terminal on your host computer.
-Make sure that your board is connected to your host computer.
-It does not matter if any application is already running on your board.
+This method uses OpenOCD and works well with Nucleo boards where the
+on-board ST-Link exposes a GDB server.
 
-For starting a GDB Server, we will use *OpenOCD*.
 Download and install OpenOCD for your host operating system.
 
-- Start OpenOCD using the configuration file for your board
-  (this example uses the Nucleo-F4)
+Start OpenOCD using the configuration file for your board:
 
 ```shell
 openocd -f board/st_nucleo_f4.cfg
 ```
 
-Upon a successful connection, you will see output similar to this.
+Upon a successful connection you will see output similar to this:
 
 ```none
-$ openocd -f board/st_nucleo_f4.cfg
 Open On-Chip Debugger 0.12.0
-Licensed under GNU GPL v2
-For bug reports, read
-	http://openocd.org/doc/doxygen/bugs.html
-Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
-srst_only separate srst_nogate srst_open_drain connect_deassert_srst
-
-Info : Listening on port 6666 for tcl connections
-Info : Listening on port 4444 for telnet connections
-Info : clock speed 2000 kHz
-Info : STLINK V2J33M25 (API v2) VID:PID 0483:374B
-Info : Target voltage: 3.249012
+...
 Info : [stm32f4x.cpu] Cortex-M4 r0p1 processor detected
-Info : [stm32f4x.cpu] target has 6 breakpoints, 4 watchpoints
 Info : starting gdb server for stm32f4x.cpu on 3333
 Info : Listening on port 3333 for gdb connections
-
 ```
 
-- You can see the port number in the output (in this case, 3333).
-  The GDB server is listening on this port. This may be different in your case.
-  Remember this port, as we are going use it connect to the GDB Server.
-
-Open another shell or terminal. In this terminal we are going to launch
-the RTEMS GDB and load our application on the board.
-
-- We will launch the RTEMS GDB and
-  pass our compiled application path along with it.
+Open another terminal and launch GDB with your compiled application:
 
 ```shell
-arm-rtems7-gdb path/to/your/compiled/application 
+arm-rtems7-gdb path/to/your/compiled/application
 ```
 
-you will see the output as follows,
+Connect to the OpenOCD GDB server, load, and run:
 
 ```none
-$ arm-rtems7-gdb build/arm-rtems7-stm32f4/hello.exe
-GNU gdb (GDB) 16.2
-Copyright (C) 2024 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Type "show copying" and "show warranty" for details.
-This GDB was configured as "--host=x86_64-linux-gnu --target=arm-rtems7".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<https://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-    <http://www.gnu.org/software/gdb/documentation/>.
-
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from build/arm-rtems7-stm32f4/hello.exe...
-warning: File "/home/dell/quick-start/app/hello/build/arm-rtems7-stm32f4/hello.exe" auto-loading has been declined by your `auto-load safe-path' set to "$debugdir:$datadir/auto-load".
-To enable execution of this file add
-	add-auto-load-safe-path /home/dell/quick-start/app/hello/build/arm-rtems7-stm32f4/hello.exe
-line to your configuration file "/home/dell/.config/gdb/gdbinit".
-To completely disable this security protection add
-	set auto-load safe-path /
-line to your configuration file "/home/dell/.config/gdb/gdbinit".
-For more information about this security protection see the
-"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
-	info "(gdb)Auto-loading safe path"
-(gdb) 
-```
-
-- Now, we will connect our RTEMS GDB to the OpenOCD GDB server.
-
-```shell
-target remote :<Your-PORT>
-```
-
-Example output.
-
-```shell
 (gdb) target remote :3333
-Remote debugging using :3333
-```
-
-If you get the above output,
-it means your RTEMS GDB is connected the OpenOCD server.
-
-- Now, we are going to load our application on the board.
-
-```shell
 (gdb) load
-```
-
-This will load the application on your board.
-
-Example output.
-
-```none
-(gdb) load
-Loading section .start, size 0x28c lma 0x8000000
-Loading section .text, size 0xe0f4 lma 0x80002c0
-Loading section .init, size 0xc lma 0x800e3b4
-Loading section .fini, size 0xc lma 0x800e3c0
-Loading section .rodata, size 0x20f8 lma 0x800e3d0
-Loading section .ARM.exidx, size 0x8 lma 0x80104c8
-Loading section .eh_frame, size 0x4 lma 0x80104d0
-Loading section .tdata, size 0xc lma 0x80104d4
-Loading section .init_array, size 0x4 lma 0x80104e0
-Loading section .fini_array, size 0x4 lma 0x80104e4
-Loading section .rtemsroset, size 0x6c lma 0x80104e8
-Loading section .data, size 0x4dc lma 0x8010554
-Start address 0x08000188, load size 68088
-Transfer rate: 20 KB/sec, 4005 bytes/write.
-```
-
-- since our application is loaded on the board, we may execute it.
-  Enter the following command.
-
-```shell
 (gdb) cont
 ```
 
-Example output.
+## Flashing with stlink Tools (All Boards)
 
-```none
-(gdb) cont
-Continuing.
+The open-source `stlink` tools work with both Nucleo boards and the
+STM32F411 Black Pill without requiring OpenOCD.
+
+Install on Ubuntu or Debian:
+
+```shell
+sudo apt install stlink-tools
 ```
 
-### Serial Monitor Output using OpenOCD
+Verify the programmer is detected after connecting via USB:
+
+```shell
+st-info --probe
+```
+
+Expected output for an STM32F411:
+
+```none
+Found 1 stlink programmers
+  version:    V2J45S7
+  flash:      524288 (pagesize: 16384)
+  sram:       131072
+  chipid:     0x0431
+  descr:      F411xC/E
+```
+
+If the output shows `Found 0 stlink programmers`, check that the USB
+cable carries data (not power only) and install the udev rules:
+
+```shell
+sudo cp /usr/share/doc/stlink-tools/49-stlink.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules
+```
+
+Unplug and reconnect the ST-Link, then retry `st-info --probe`.
+
+Convert the ELF executable to a flat binary and flash it:
+
+```shell
+arm-rtems7-objcopy build/arm/stm32f4/testsuites/samples/hello.exe hello.bin
+st-flash write hello.bin 0x8000000
+```
+
+A successful flash ends with:
+
+```none
+INFO common.c: Flash written and verified! jolly good!
+```
+
+If the board does not respond to flashing, try the reset variant:
+
+```shell
+st-flash --connect-under-reset write hello.bin 0x8000000
+```
+
+To debug with GDB using stlink tools, open two terminals.
+
+**Terminal 1** — start the GDB server:
+
+```shell
+st-util
+```
+
+**Terminal 2** — connect GDB:
+
+```shell
+arm-rtems7-gdb build/arm/stm32f4/testsuites/samples/hello.exe
+```
+
+Inside GDB:
+
+```none
+(gdb) target extended-remote :4242
+(gdb) load
+(gdb) cont
+```
+
+## Serial Monitor Output
 
 ```{important}
-Make sure the proper USART is enabled for the board.
+The correct serial device depends on your board. Nucleo boards appear
+as `/dev/ttyACM0` (ST-Link virtual COM port). The STM32F411 Black Pill
+requires a USB-to-UART adapter on PA9 (TX) and PA10 (RX), which
+typically appears as `/dev/ttyUSB0`.
 ```
 
-To view any serial output, we need a Serial Monitor.
-You can use whichever you want and available to you.
-This guide uses minicom as an example.
-
-Make sure your board is connected to the host computer and
-that minicom is installed.
-
-- We will configure the minicom first. Enter the command to open configure menu.
+Make sure your board is connected and minicom is installed:
 
 ```shell
-$ sudo minicom -s
+sudo apt install minicom
 ```
 
-This opens the miniconm configuration menu.
+Open the minicom configuration menu:
 
-- Go into the
-  *Serial port setup* and hit *a* key to select *Serial Device*
-  setup.
-- Change */dev/modem* from there into */dev/ttyACM0* and hit
-  *Enter* key.
-- Hit *f* key to change hardware flow control from *Yes* to
-  *No*.
-- When you are done with it, you can hit *Enter* key to finish
-  this part of configuration and then scrolls in menu to *Exit* and hit
-  *Enter* key on it.
+```shell
+sudo minicom -s
+```
 
-Minicom will now switch to terminal mode with the new configuration.
+- Go into **Serial port setup** and press **a** to select **Serial Device**.
+- Change the device to `/dev/ttyACM0` (Nucleo) or `/dev/ttyUSB0` (Black Pill
+  with USB-UART adapter) and press **Enter**.
+- Press **f** to change hardware flow control from **Yes** to **No**.
+- Scroll to **Exit** and press **Enter**.
 
-Now, you can view your Serial output from your application on the minicom,
-you can press the reset button on your board to re-run your application,
-and observe its output on the Serial monitor.
-
-Example output.
+Press the reset button on your board. Example output:
 
 ```none
+*** BEGIN OF TEST HELLO WORLD ***
+*** TEST VERSION: 7.0.0.a413333f2f04130e82e15addba402887222c345f
+*** TEST STATE: EXPECTED_PASS
+Hello World
+*** END OF TEST HELLO WORLD ***
 
-Welcome to minicom 2.9
-
-OPTIONS: I18n 
-Port /dev/ttyACM0, 23:57:40
-
-Press CTRL-A Z for help on special keys
-                                                                                                    
-                                                                                                    
-Hello World                                                                                         
-                                                                                                    
-[ RTEMS shutdown ]                                                                                  
-RTEMS version: 7.0.0.e96fd2398b63bc6975094c648a9981e10731de5c-modified
-RTEMS tools: 15.2.0 20250808 (RTEMS 7, RSB 08d2e69f30b61de6bf0f5dbf06946d12d074d60e, Newlib 038afec1)
+[ RTEMS shutdown ]
+RTEMS version: 7.0.0.a413333f2f04130e82e15addba402887222c345f
+RTEMS tools: 15.2.0 20250808 (RTEMS 7, ...)
 executing thread ID: 0x0a010001
-executing thread name: UI1 
+executing thread name: UI1
 ```
+
+## Known Limitations
+
+**No user USB connector on Nucleo boards:**
+The NUCLEO-F401RE and NUCLEO-F446RE connect the STM32 USB OTG pins
+(PA11, PA12) to the chip but do not expose them on a USB connector.
+The only USB port on those boards is the ST-Link port, which handles
+programming and the virtual COM port only. For USB peripheral
+development or TinyUSB testing, use the STM32F411 Black Pill, which
+has a USB-C connector wired to PA11/PA12 via the internal DWC2
+Full Speed peripheral.
+
+**No USB-to-serial bridge on Black Pill:**
+The STM32F411 Black Pill USB-C port connects directly to the DWC2 USB
+OTG peripheral, not to a serial bridge. Console output requires a
+separate USB-to-UART adapter (CP2102 or CH340) on PA9 and PA10.
+
+**Black Pill BOOT0 recovery:**
+If the board enters the ROM bootloader and does not respond to
+`st-flash`, hold BOOT0, press and release NRST, wait one second,
+release BOOT0, then retry the flash command.
+
+## Memory Map
+
+| Region | Start address | Size |
+|---|---|---|
+| Flash | `0x08000000` | 512 KB (F411), 1 MB (F446), 1 MB (F407VG) |
+| SRAM | `0x20000000` | 128 KB (F411), 128 KB (F446), 192 KB (F407VG) |
+
+Measured footprint of RTEMS hello world on STM32F411 (arm/stm32f4 BSP,
+GCC 15.2.0):
+
+| Section | Size |
+|---|---|
+| Flash (.text + .rodata + .data load) | ~75 KB |
+| RAM (.data + .bss) | ~6.5 KB |
+
+## USB Support
+
+The STM32F4 contains a Synopsys DWC2 USB OTG Full Speed peripheral
+(USB\_OTG\_FS on PA11/PA12). This peripheral is supported by TinyUSB
+via the `dwc2` driver. Porting TinyUSB to RTEMS with the STM32F411
+Black Pill as the reference hardware platform is tracked in
+{issue}`gsoc#38 <https://gitlab.rtems.org/rtems/programs/gsoc/-/issues/38>`.
