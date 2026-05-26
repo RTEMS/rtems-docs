@@ -9,12 +9,12 @@
 
 The BSP is known to work on the following boards:
 
-| Board | Notes |
-|---|---|
-| STM32F411 Black Pill (WeAct) | USB-C port wired to DWC2 USB OTG FS peripheral |
-| NUCLEO-F401RE | On-board ST-Link; ST-Link USB is virtual COM port only |
-| NUCLEO-F446RE | On-board ST-Link; ST-Link USB is virtual COM port only |
-| STM32F407VG Discovery | On-board ST-Link V2 |
+| Board                        | Notes                                                  |
+| ---------------------------- | ------------------------------------------------------ |
+| STM32F411 Black Pill (WeAct) | USB-C port wired to DWC2 USB OTG FS peripheral         |
+| NUCLEO-F401RE                | On-board ST-Link; ST-Link USB is virtual COM port only |
+| NUCLEO-F446RE                | On-board ST-Link; ST-Link USB is virtual COM port only |
+| STM32F407VG Discovery        | On-board ST-Link V2                                    |
 
 ## Clock Driver
 
@@ -230,23 +230,23 @@ release BOOT0, then retry the flash command.
 
 ## Memory Map
 
-| Region | Start address | Size |
-|---|---|---|
-| Flash | `0x08000000` | 512 KB (F411), 1 MB (F446), 1 MB (F407VG) |
-| SRAM | `0x20000000` | 128 KB (F411), 128 KB (F446), 192 KB (F407VG) |
+| Region | Start address | Size                                          |
+| ------ | ------------- | --------------------------------------------- |
+| Flash  | `0x08000000`  | 512 KB (F411), 1 MB (F446), 1 MB (F407VG)     |
+| SRAM   | `0x20000000`  | 128 KB (F411), 128 KB (F446), 192 KB (F407VG) |
 
 Measured footprint of RTEMS hello world on STM32F411 (arm/stm32f4 BSP,
 GCC 15.2.0):
 
-| Section | Size |
-|---|---|
-| Flash (.text + .rodata + .data load) | ~75 KB |
-| RAM (.data + .bss) | ~6.5 KB |
+| Section                              | Size    |
+| ------------------------------------ | ------- |
+| Flash (.text + .rodata + .data load) | ~75 KB  |
+| RAM (.data + .bss)                   | ~6.5 KB |
 
 ## USB Support
 
 The STM32F4 contains a Synopsys DWC2 USB OTG Full Speed peripheral
-(USB\_OTG\_FS on PA11/PA12). This peripheral is supported by TinyUSB
+(USB_OTG_FS on PA11/PA12). This peripheral is supported by TinyUSB
 via the `dwc2` driver. Porting TinyUSB to RTEMS with the STM32F411
 Black Pill as the reference hardware platform is tracked in
 {issue}`gsoc#38 <https://gitlab.rtems.org/rtems/programs/gsoc/-/issues/38>`.
