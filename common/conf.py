@@ -79,10 +79,10 @@ html_theme_options = {
     "use_repository_button": True,
     "logo": html_theme_logo,
     "switcher": html_theme_version_switcher,
-    "show_navbar_depth": 3,
-    "navigation_depth": 3,
-    "show_nav_level": 3,
-    "show_toc_level": 4
+    "show_navbar_depth": 1,
+    "navigation_depth": 5,
+    "show_nav_level": 5,
+    "show_toc_level": 5
 }
 
 html_sidebars = {
