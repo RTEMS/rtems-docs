@@ -533,12 +533,12 @@ in an empty directory of your choice.
 cat >Dockerfile <<"EOF"
 # Dockerfile to build the RTEMS documentation
 
-FROM opensuse/leap:15.6
-RUN <<EOT bash
-    set -exu -o pipefail
-    # ==== Install required packages ====
-    zypper --non-interactive refresh
-    zypper --non-interactive update
+FROM opensuse/leap:16.0
+
+# ==== Install required packages ====
+RUN zypper addrepo https://download.opensuse.org/repositories/server:http/16.0/server:http.repo && \
+    zypper --non-interactive --gpg-auto-import-keys refresh && \
+    zypper --non-interactive update && \
     zypper --non-interactive install \
             --solver-focus=Update --force-resolution \
         aspell \
@@ -548,8 +548,8 @@ RUN <<EOT bash
         npm-default \
         plantuml \
         poppler-tools \
-        python311 \
-        python311-poetry \
+        python313 \
+        python313-pipx \
         texinfo \
         texlive-inconsolata \
         texlive-lato \
@@ -561,40 +561,48 @@ RUN <<EOT bash
         texlive-threeparttable \
         texlive-wrapfig \
         unzip \
-        wget
-    npm install -g inliner
-    npm install -g node-plantuml
-    # Note: OpenSUSE does not provide package ditaa.
+        wget && \
+    pipx install poetry && \
+    npm install -g inliner && \
+    npm install -g node-plantuml && \
     wget --output-document=/root/ditaa0_9.zip \
-            https://sourceforge.net/projects/ditaa/files/latest/download
-    unzip /root/ditaa0_9.zip ditaa0_9.jar -d /usr/local/bin
+            https://sourceforge.net/projects/ditaa/files/latest/download && \
+    unzip /root/ditaa0_9.zip ditaa0_9.jar -d /usr/local/bin && \
     /bin/echo -e '#! /bin/bash\n\nexec java -jar \
-            /usr/local/bin/ditaa0_9.jar \$@' >/usr/local/bin/ditaa
+            /usr/local/bin/ditaa0_9.jar $@' >/usr/local/bin/ditaa && \
     chmod a+rx /usr/local/bin/ditaa
 
-    # ==== Obtain rtems-docs sources and setup Python packages ====
-    git -C \${HOME} clone https://gitlab.rtems.org/rtems/docs/rtems-docs.git
-    cd \${HOME}/rtems-docs
-    poetry init --name=rtems-docs --no-interaction
-    poetry add sphinx
-    poetry add sphinxcontrib-bibtex
-    poetry add sphinxcontrib-jquery
-    poetry add sphinx-book-theme
-    poetry add sphinx-copybutton
-    poetry add linkify-it-py
-    poetry add myst-parser
-    poetry add sphinx-design
-    poetry add sphinx-togglebutton
+# ==== Obtain rtems-docs sources and setup Python packages ====
+RUN git -C ${HOME} clone https://gitlab.rtems.org/rtems/docs/rtems-docs.git && \
+    export PATH=${PATH}:/root/.local/bin && \
+    cd ${HOME}/rtems-docs && \
+    poetry init --name=rtems-docs --no-interaction && \
+    sed -i '/requires-python/ s/["]$/,<4.0"/' pyproject.toml && \
+    poetry add linkify-it-py && \
+    poetry add matplotlib && \
+    poetry add myst-parser && \
+    poetry add py_markdown_table && \
+    poetry add sphinx && \
+    poetry add sphinx-book-theme && \
+    poetry add sphinx-copybutton && \
+    poetry add sphinx-design && \
+    poetry add sphinx-togglebutton && \
+    poetry add sphinx-tippy && \
+    poetry add sphinxcontrib-bibtex && \
+    poetry add sphinxcontrib-jquery && \
     poetry add sphinxext-opengraph
-    poetry add sphinx-tippy
 
-    # ==== Build the RTEMS documentation ====
-    cd \${HOME}/rtems-docs
+# ==== Build the RTEMS documentation ====
+
+# 'waf' requires a tty when the '--singlehtml' option is used.
+# 'script' is used below to create a pseudo-tty for his purpose.
+
+RUN export PATH=${PATH}:/root/.local/bin && \
+    cd ${HOME}/rtems-docs && \
     poetry run ./waf configure --singlehtml --plantuml --ditaa \
-            --pdf --prefix="/srv/www/htdocs"
-    poetry run ./waf
-    poetry run ./waf install
-EOT
+            --pdf --prefix="/srv/www/htdocs" && \
+    poetry run ./waf && \
+    script --return --command="poetry run ./waf -v install" /dev/null </dev/null
 
 # This container starts a web-server
 CMD ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
