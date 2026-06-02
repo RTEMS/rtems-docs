@@ -61,6 +61,7 @@ stringto
 multiprocessing/index
 symmetric_multiprocessing_services
 pci_library
+iodev/index
 stack_bounds_checker
 cpu_usage_statistics
 object-services/index
