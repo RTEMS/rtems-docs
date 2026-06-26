@@ -110,6 +110,11 @@ value, otherwise it is disabled (disabled by default).
 : Use supervisor privilege mode (s-mode) instead of machine mode (m-mode)
 upon boot (disabled by default).
 
+`RISCV_MMU_VIRTUAL_ADDRESS_BITS`
+: Set the number of bits to use in the virtual address. Must be 32 for rv32,
+and can be 39, 48, or 57 for rv64. This option is used if `RISCV_USE_S_MODE`
+is enabled. The default value is 32 for rv32 and 39 for rv64.
+
 ### Interrupt Controller
 
 Exactly one Core Local Interruptor (CLINT) and exactly one Platform-Level
@@ -135,6 +140,22 @@ The console driver supports devices compatible to:
 They are initialized according to the device tree. The console driver does not
 configure the pins or peripheral clocks. The console device is selected
 according to the device tree "/chosen/stdout-path" property value.
+
+### Memory Management Unit (MMU)
+
+The MMU is supported while executing in s-mode. Only a 1:1 identity mapping
+is supported. During boot, a static memory mapping is created that maps
+the addresses at `RISCV_RAM_REGION_BEGIN` for `RISCV_RAM_REGION_SIZE` bytes.
+This region is mapped with all permissions (R/W/X) enabled.
+
+In addition, memory-mapped I/O regions are mapped at fixed addresses of
+0x10000000 and at 0xc000000. These regions are mapped the same as RAM but
+without execute permission.
+
+The MMU supports the Sv32, Sv39, Sv48, and Sv57 RISC-V virtual addressing
+modes. The only mode support for 32-bit RISC-V (rv32) is Sv32. The default
+mode for 64-bit RISC-V (rv64) is Sv39, while a different mode can be chosen
+by setting the `RISCV_MMU_VIRTUAL_ADDRESS_BITS` BSP configuration variable.
 
 ### QEMU
 
