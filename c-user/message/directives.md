@@ -146,7 +146,11 @@ empty message queue.
 : The `count` parameter was invalid.
 
 {c:macro}`RTEMS_INVALID_SIZE`
-: The `max_message_size` parameter was invalid.
+: The `max_message_size` parameter was zero.
+
+{c:macro}`RTEMS_INVALID_SIZE`
+: In multiprocessing configurations, the `max_message_size` parameter exceeded
+  the maximum message size supported by the {term}`MPCI`.
 
 {c:macro}`RTEMS_TOO_MANY`
 : There was no inactive object available to create a message queue. The number
@@ -158,6 +162,10 @@ empty message queue.
   available to create a global message queue. The number of global objects
   available to the application is configured through the
   {ref}`CONFIGURE_MP_MAXIMUM_GLOBAL_OBJECTS` application configuration option.
+
+{c:macro}`RTEMS_INVALID_SIZE`
+: The `max_message_size` parameter was too big and resulted in integer overflows
+  in calculations carried out to determine the size of the message buffer area.
 
 {c:macro}`RTEMS_INVALID_NUMBER`
 : The product of `count` and `max_message_size` is greater than the maximum
@@ -274,6 +282,11 @@ rtems_status_code rtems_message_queue_construct(
 
 {c:macro}`RTEMS_INVALID_SIZE`
 : The maximum message size in the configuration was zero.
+
+{c:macro}`RTEMS_INVALID_SIZE`
+: In multiprocessing configurations, the maximum message size in the
+  configuration exceeded the maximum message size supported by the
+  {term}`MPCI`.
 
 {c:macro}`RTEMS_TOO_MANY`
 : There was no inactive message queue object available to construct a message
