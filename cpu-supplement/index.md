@@ -29,6 +29,7 @@ preface
 port
 aarch64
 arm
+intel_amd_x64
 intel_amd_x86
 m68xxx_and_coldfire
 xilinx_microblaze
