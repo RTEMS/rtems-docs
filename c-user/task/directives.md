@@ -2176,6 +2176,74 @@ The following constraints apply to this directive:
 - The directive may change the processor affinity of a task. This may cause the
   calling task to be preempted.
 
+```{raw} latex
+\clearpage
+```
+
+```{index} rtems_task_get_cpu_usage()
+```
+
+(InterfaceRtemsTaskGetCpuUsage)=
+
+## rtems_task_get_cpu_usage()
+
+Returns CPU usage time for a specific task.
+
+```{eval-rst}
+.. rubric:: CALLING SEQUENCE:
+```
+
+```{code-block} c
+rtems_status_code rtems_task_get_cpu_usage(
+  rtems_id id,
+  struct timespec *ts
+);
+```
+
+```{eval-rst}
+.. rubric:: PARAMETERS:
+```
+
+`id`
+: This parameter is the task identifier.
+
+`ts`
+: This parameter is a pointer to a timestamp structure. When the directive call is successful, the CPU usage time used by the specified id will be stored here.
+
+```{eval-rst}
+.. rubric:: DESCRIPTION:
+```
+
+This directive retrieves the cpu usage time used by the specified `id`.
+
+```{eval-rst}
+.. rubric:: RETURN VALUES:
+```
+
+{c:macro}`RTEMS_SUCCESSFUL`
+: The requested operation was successful.
+
+{c:macro}`RTEMS_INVALID_ADDRESS`
+: The `ts` parameter was
+  [NULL](https://en.cppreference.com/w/c/types/NULL).
+
+{c:macro}`RTEMS_INVALID_ID`
+: There was no task associated with the identifier specified by `id`.
+
+```{eval-rst}
+.. rubric:: CONSTRAINTS:
+```
+
+The following constraints apply to this directive:
+
+- The directive may be called from within interrupt context.
+
+- The directive may be called from within device driver initialization context.
+
+- The directive may be called from within task context.
+
+- The directive will not cause the calling task to be preempted.
+
 % Generated from spec:/rtems/task/if/iterate
 
 ```{raw} latex
