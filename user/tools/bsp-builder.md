@@ -157,31 +157,31 @@ builds. The configurations are:
 
 > ```{eval-rst}
 > +------------------+----------------------------------------------------------+
-> | ``base``         | ``--target=@ARCH@-rtems@RTEMS_VERSION@``                 |
-> |                  | ``--enable-rtemsbsp=@BSP@``                              |
+> | ``base``         | ``--top=@RTEMS@``                                        |
+> |                  | ``--rtems-config=config-@ARCH@-@BSP@-@BUILD@.ini``       |
 > |                  | ``--prefix=@PREFIX@``                                    |
 > +------------------+----------------------------------------------------------+
-> | ``tests``        | ``--enable-tests``                                       |
+> | ``tests``        | ``BUILD_TESTS=True``                                     |
 > +------------------+----------------------------------------------------------+
-> | ``debug``        | ``--enable-debug``                                       |
+> | ``debug``        | ``RTEMS_DEBUG=True``                                     |
 > +------------------+----------------------------------------------------------+
-> | ``no-debug``     | ``--disable-debug``                                      |
+> | ``no-debug``     | ``RTEMS_DEBUG=False``                                    |
 > +------------------+----------------------------------------------------------+
-> | ``profiling``    | ``--enable-profiling``                                   |
+> | ``profiling``    | ``RTEMS_PROFILING=True``                                 |
 > +------------------+----------------------------------------------------------+
-> | ``no-profiling`` | ``--disable-profiling``                                  |
+> | ``no-profiling`` | ``RTEMS_PROFILING=False``                                |
 > +------------------+----------------------------------------------------------+
-> | ``smp``          | ``--enable-smp``                                         |
+> | ``smp``          | ``RTEMS_SMP=True``                                       |
 > +------------------+----------------------------------------------------------+
-> | ``no-smp``       | ``--disable-smp``                                        |
+> | ``no-smp``       | ``RTEMS_SMP=False``                                      |
 > +------------------+----------------------------------------------------------+
-> | ``posix``        | ``--enable-posix``                                       |
+> | ``posix``        | ``RTEMS_POSIX_API=True``                                 |
 > +------------------+----------------------------------------------------------+
-> | ``no-posix``     | ``--disable-posix``                                      |
+> | ``no-posix``     | ``RTEMS_POSIX_API=False``                                |
 > +------------------+----------------------------------------------------------+
-> | ``network``      | ``--enable-networking``                                  |
+> | ``network``      | ``RTEMS_NETWORKING=True``                                |
 > +------------------+----------------------------------------------------------+
-> | ``no-network``   | ``--disable-networking``                                 |
+> | ``no-network``   | ``RTEMS_NETWORKING=False``                               |
 > +------------------+----------------------------------------------------------+
 > ```
 
@@ -349,12 +349,12 @@ that is bootstrapped and ready to build. The source can have local patches that
 need to be regression tested:
 
 ```none
-$ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
-          --rtems-tools=/opt/work/rtems/5 \
+$ /opt/rtems/@rtems-ver-major@/bin/rtems-bsp-builder --build-path=/build/rtems \
+          --rtems-tools=/opt/work/rtems/@rtems-ver-major@ \
           --rtems=/opt/work/chris/rtems/kernel/rtems.git \
           --profiles=tier-1 \
           --jobs=5/10
-RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
+RTEMS Tools Project - RTEMS Kernel BSP Builder, @rtems-ver-major@.not_released
 Profile(s): tier-1
 Cleaning: bsp-builds
 [  1/655] arm/altcycv_devkit (debug)                         Start
@@ -398,14 +398,14 @@ Passes: 655   Failures: 0
 To build a couple of BSPs you are interested in with tests:
 
 ```none
-$ /opt/rtems/5/bin/rtems-bsp-builder --build-path=/build/rtems \
-          --rtems-tools=/opt/work/rtems/5 \
+$ /opt/rtems/@rtems-ver-major@/bin/rtems-bsp-builder --build-path=/build/rtems \
+          --rtems-tools=/opt/work/rtems/@rtems-ver-major@ \
           --rtems=/opt/work/chris/rtems/kernel/rtems.git \
-          ----log=lpc-log \
+          --log=lpc-log \
           --bsp=arm/lpc2362,arm/lpc23xx_tli800 \
           --build=tests \
           --jobs=5/12
-RTEMS Tools Project - RTEMS Kernel BSP Builder, 5.not_released
+RTEMS Tools Project - RTEMS Kernel BSP Builder, @rtems-ver-major@.not_released
 BSPS(s): arm/lpc2362, arm/lpc23xx_tli800
 Cleaning: bsp-builds
 [1/2] arm/lpc2362 (tests)        Start
@@ -429,18 +429,22 @@ Cleaning: bsp-builds
 Total: Warnings:74  exes:109  objs:3277  libs:148
 Failures:
    1 tests arm/lpc2362 build:
-      configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
-      =arm-rtems5 --enable-rtemsbsp=lpc2362 --prefix=/opt/rtems/5\
-      --enable-tests
-     error: ld/collect2:0 error: math.exe section '.rodata' will not fit
-            in region 'ROM_INT'; region 'ROM_INT' overflowed by 7284 bytes
+      configure: /opt/work/chris/rtems/kernel/rtems.git/waf configure\
+      --prefix=/opt/rtems/@rtems-ver-major@ --top=/opt/work/chris/rtems/kernel\
+      /rtems.git --rtems-config=config-arm-lpc2362-tests.ini
+     error: ld/collect2:0 error: /opt/work/chris/rtems/kernel/rtems.git/build\
+            /arm/lpc2362/testsuites/libtests/fdt01.exe
+            section `.rodata' will not fit in region `ROM_INT'; region
+            `ROM_INT' overflowed by 2144 bytes
 
    2 tests arm/lpc23xx_tli800 build:
-      configure: /opt/work/chris/rtems/kernel/rtems.git/configure --target\
-      =arm-rtems5 --enable-rtemsbsp=lpc23xx_tli800\
-      --prefix=/opt/rtems/5 --enable-tests
-     error: ld/collect2:0 error: math.exe section '.text' will not fit in
-            region 'ROM_INT'; region 'ROM_INT' overflowed by 13972 bytes
+      configure: /opt/work/chris/rtems/kernel/rtems.git/waf configure\
+      --prefix=/opt/rtems/@rtems-ver-major@ --top=/opt/work/chris/rtems/kernel\
+      /rtems.git --rtems-config=config-arm-lpc23xx_tli800-tests.ini
+     error: ld/collect2:0 error: /opt/work/chris/rtems/kernel/rtems.git/build\
+            /arm/lpc2362/testsuites/libtests/fdt01.exe
+            section `.rodata' will not fit in region `ROM_INT'; region
+            `ROM_INT' overflowed by 8704 bytes
 
 Average BSP Build Time: 0:00:46.658257
 Total Time 0:01:33.316514
