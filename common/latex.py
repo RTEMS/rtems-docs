@@ -6,7 +6,7 @@ import os
 import re
 
 package_test_preamble = ['\\newif\\ifsphinxKeepOldNames \\sphinxKeepOldNamestrue',
-                         '\documentclass[a4paper,11pt,english]{report}']
+                         '\\documentclass[a4paper,11pt,english]{report}']
 package_test_postamble = ['\\begin{document} test \\end{document}']
 package_tests = {
     'Bjarne'         : ['\\usepackage[Bjarne]{fncychap}'],

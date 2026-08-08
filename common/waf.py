@@ -112,14 +112,14 @@ def check_sphinx_version(ctx, minver, maxver):
                               ['--version'], output=Context.BOTH)
             # err looks like 'sphinx-build 1.7.0\n'
             version = err.split(" ")[-1:][0].strip()
-            ver = tuple(map(int, re.split('[\D]', version)))
+            ver = tuple(map(int, re.split('[\\D]', version)))
         except:
             try:
                 # sphinx-build returns its version info in stdout
                 version = ctx.cmd_and_log(ctx.env.BIN_SPHINX_BUILD +
                               ['--version']).split(" ")[-1:][0].strip()
                 try:
-                    ver = tuple(map(int, re.split('[\D]', version)))
+                    ver = tuple(map(int, re.split('[\\D]', version)))
                 except:
                     ctx.fatal("Sphinx version cannot be checked or Sphinx is not installed")
             except:
