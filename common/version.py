@@ -1,6 +1,6 @@
 #
 # RTEMS Documentation Project (http://www.rtems.org/)
-# Copyright 2019, 2020 Chris Johns (chrisj@rtems.org)
+# Copyright 2019, 2020, 2026 Chris Johns (chrisj@rtems.org)
 # Copyright (C) 2019 embedded brains GmbH & Co. KG
 # All rights reserved.
 #
@@ -132,7 +132,7 @@ def get(ctx, rtems_major_version):
                 import configparser
             except ImportError:
                 import ConfigParser as configparser
-            v = configparser.SafeConfigParser()
+            v = configparser.ConfigParser()
             try:
                 v.read(vc)
             except Exception as e:
