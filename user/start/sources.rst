@@ -32,13 +32,15 @@ Releases
 
 You can download the source archives for a released RTEMS version from RTEMS'
 servers. Releases can be view at https://ftp.rtems.org/pub/rtems/releases with
-the releases listed as a series under a release's major number. For RTEMS 5.1
-the release series is `5 <https://ftp.rtems.org/pub/rtems/releases/5>`_ and the
-release path is https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.@rtems-ver-minor@.
+the releases listed as a series under a release's major number. For RTEMS
+@rtems-ver-major@.1 the release series is
+`@rtems-ver-major@ <https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@>`_
+and the release path is
+https://ftp.rtems.org/pub/rtems/releases/@rtems-ver-major@/@rtems-ver-major@.1.
 
 To work with the archives of a released RTEMS version, simply replace the
-version number ``5`` used throughout this chapter with the version number you
-selected, e.g. ``sparc-rtems4.11``, ``sparc-rtems6``, and so on.
+version number ``@rtems-ver-major@`` used throughout this chapter with the version number you
+selected, e.g. ``sparc-rtems4.11``, ``sparc-rtems5``, and so on.
 
 Download and unpack using the ``curl`` and ``tar`` command with these commands:
 
