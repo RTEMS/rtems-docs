@@ -48,9 +48,13 @@ as well as the physical ARM PL011 PrimeCell UART in the ZynqMP hardware.
 
 On the ZynqMP RPU, RTEMS can be started by Cortes-R5 u-boot, Cortex-A53 u-boot,
 via JTAG, or directly as part of BOOT.bin. For quick turnaround during testing,
-it is recommended to use Cortex-A53 u-boot to avoid repeated BOOT.bin
-generation since the provided Cortex-R5 u-boot is highly limited and has no
-network or MMC/SD access.
+it is recommended to use Cortex-A53 u-boot to boot a gzip-compressed raw binary
+over TFTP to avoid repeated BOOT.bin generation and writes to flash/SD since
+the Xilinx-provided Cortex-R5 u-boot is highly limited and has no network or
+MMC/SD access. Booting using uncompressed raw binaries is possible, but not
+recommended due to slow transfer rates over TFTP. Booting using ELF32 is not
+recommended due to poorly understood quirks around how the `loadelf` command
+works.
 
 Note that if the RPU image is started by the Cortex-A53 u-boot, the program
 sections located at `ZYNQMP_MEMORY_ATCM_ORIGIN` and `ZYNQMP_MEMORY_BTCM_ORIGIN`
@@ -59,6 +63,15 @@ available to the Cortex-A53 cores at their Cortex-R5 internal addresses. This
 can be accomplished by disabling dcache in u-boot and using u-boot's `cp`
 command. Once this is done, the program can be started at 0x0 by using u-boot's
 `cpu` command to first disable core 4 and then release it in split mode.
+
+As an example, some relevant u-boot commands for booting the RPU might be:
+```
+r5start="cpu 4 disable; cpu 4 release 0x0 split"
+r5copysections="dcache off; cp.b 0x20000 0xffe20000 0x10000; cp.b 0x0 0xffe00000 0x10000"
+r5getgz="tftpboot 0x55000000 rtems.bin.gz; unzip 0x55000000 0x0"
+r5tftpsetup="setenv autoload no; dhcp; setenv serverip TFTP_SERVER_IP_HERE"
+r5gzboot="run r5tftpsetup; run r5getgz; run r5copysections; run r5start"
+```
 
 ## Hardware Boot Image Generation
 
