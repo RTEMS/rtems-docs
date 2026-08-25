@@ -56,9 +56,9 @@ Note that if the RPU image is started by the Cortex-A53 u-boot, the program
 sections located at `ZYNQMP_MEMORY_ATCM_ORIGIN` and `ZYNQMP_MEMORY_BTCM_ORIGIN`
 must be manually relocated from DDR to TCM since the TCMs are not directly
 available to the Cortex-A53 cores at their Cortex-R5 internal addresses. This
-can be accomplished by disabling dcache in u-boot and using u-boot's "cp"
+can be accomplished by disabling dcache in u-boot and using u-boot's `cp`
 command. Once this is done, the program can be started at 0x0 by using u-boot's
-"cpu" command to first disable core 4 and then release it in split mode.
+`cpu` command to first disable core 4 and then release it in split mode.
 
 ## Hardware Boot Image Generation
 
