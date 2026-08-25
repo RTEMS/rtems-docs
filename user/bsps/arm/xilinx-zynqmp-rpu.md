@@ -53,7 +53,7 @@ generation since the provided Cortex-R5 u-boot is highly limited and has no
 network or MMC/SD access.
 
 Note that if the RPU image is started by the Cortex-A53 u-boot, the program
-sections located at ZYNQMP_RPU_RAM_INT_0_ORIGIN and ZYNQMP_RPU_RAM_INT_1_ORIGIN
+sections located at `ZYNQMP_MEMORY_ATCM_ORIGIN` and `ZYNQMP_MEMORY_BTCM_ORIGIN`
 must be manually relocated from DDR to TCM since the TCMs are not directly
 available to the Cortex-A53 cores at their Cortex-R5 internal addresses. This
 can be accomplished by disabling dcache in u-boot and using u-boot's "cp"
