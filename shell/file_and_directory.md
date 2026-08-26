@@ -8,33 +8,33 @@
 
 The RTEMS shell has the following file and directory commands:
 
-- [blksync] - sync the block driver
-- [cat] - display file contents
-- [cd] - alias for chdir
-- [chdir] - change the current directory
-- [chmod] - change permissions of a file
-- [chroot] - change the root directory
-- [cp] - copy files
-- [dd] - convert and copy a file
-- [debugrfs] - debug RFS file system
-- [df] - display file system disk space usage
-- [dir] - alias for [ls]
-- [fdisk] - format disks
-- [hexdump] - format disks
-- [ln] - make links
-- [ls] - list files in the directory
-- [md5] - compute md5 hash
-- [mkdir] - create a directory
-- [mkdos] - DOSFS disk format
-- [mknod] - make device special file
-- [mkrfs] - format RFS file system
-- [mount] - mount disk
-- [mv] - move files
-- [pwd] - print working directory
-- [rmdir] - remove empty directories
-- [rm] - remove files
-- [umask] - set file mode creation mask
-- [unmount] - unmount disk
+- [](#blksync)
+- [](#cat)
+- [](#cd)
+- [](#chdir)
+- [](#chmod)
+- [](#chroot)
+- [](#cp)
+- [](#dd)
+- [](#debugrfs)
+- [](#df)
+- [](#dir)
+- [](#fdisk)
+- [](#hexdump)
+- [](#ln)
+- [](#ls)
+- [](#md5)
+- [](#mkdir)
+- [](#mkdos)
+- [](#mknod)
+- [](#mkrfs)
+- [](#mount)
+- [](#mv)
+- [](#pwd)
+- [](#rmdir)
+- [](#rm)
+- [](#umask)
+- [](#unmount)
 
 ## Commands
 
@@ -1054,7 +1054,7 @@ DESCRIPTION:
 
   : Display the group data from the start group to the end group.
 
-  *inode [-aef] [start] [end]*
+  *inode [-aef] [start [end]*
 
   : Display the inodes between start and end. If no start and end is
     provides all inodes are displayed.

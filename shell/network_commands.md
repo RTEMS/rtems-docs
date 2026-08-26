@@ -8,10 +8,10 @@
 
 The RTEMS shell has the following network commands:
 
-- [netstats] - obtain network statistics
-- [ifconfig] - configure a network interface
-- [route] - show or manipulate the IP routing table
-- [ping] - ping a host or IP address
+- [](#netstats)
+- [](#ifconfig)
+- [](#route)
+- [](#ping)
 
 ## Commands
 

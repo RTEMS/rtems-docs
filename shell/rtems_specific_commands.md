@@ -8,27 +8,27 @@
 
 The RTEMS shell has the following RTEMS specific commands:
 
-- [rtems] - Display RTEMS specific detail
-- [shutdown] - Shutdown the system
-- [cpuinfo] - print per-processor information
-- [cpuuse] - print or reset per thread cpu usage
-- [stackuse] - print per thread stack usage
-- [perioduse] - print or reset per period usage
-- [profreport] - print a profiling report
-- [wkspace] - Display information on Executive Workspace
-- [config] - Show the system configuration.
-- [itask] - List init tasks for the system
-- [extension] - Display information about extensions
-- [task] - Display information about tasks
-- [queue] - Display information about message queues
-- [sema] - display information about semaphores
-- [region] - display information about regions
-- [part] - display information about partitions
-- [object] - Display information about RTEMS objects
-- [driver] - Display the RTEMS device driver table
-- [dname] - Displays information about named drivers
-- [pthread] - Displays information about POSIX threads
-- [prio] - Displays information about POSIX and Classic thread priorities
+- [](#rtems)
+- [](#shutdown)
+- [](#cpuinfo)
+- [](#cpuuse)
+- [](#stackuse)
+- [](#perioduse)
+- [](#profreport)
+- [](#wkspace)
+- [](#config)
+- [](#itask)
+- [](#extension)
+- [](#task)
+- [](#queue)
+- [](#sema)
+- [](#region)
+- [](#part)
+- [](#object)
+- [](#driver)
+- [](#dname)
+- [](#pthread)
+- [](#prio)
 
 ## Commands
 
@@ -1772,7 +1772,7 @@ PROGRAMMING INFORMATION:
 
 (prio)=
 
-### prio - display information about POSIX and Classic thread priorities
+### prio - display POSIX and Classic thread priorities
 
 ```{index} prio
 ```

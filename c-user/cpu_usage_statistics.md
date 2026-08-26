@@ -13,8 +13,8 @@ The CPU usage statistics manager is an RTEMS support component that provides a
 convenient way to manipulate the CPU usage information associated with each
 task. The routines provided by the CPU usage statistics manager are:
 
-- [rtems_cpu_usage_report] - Report CPU Usage Statistics
-- [rtems_cpu_usage_reset] - Reset CPU Usage Statistics
+- [](#rtems_cpu_usage_report)
+- [](#rtems_cpu_usage_reset)
 
 ## Background
 

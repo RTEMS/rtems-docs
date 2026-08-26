@@ -16,20 +16,20 @@ instances of the POSIX `struct timespec` structure.
 
 The directives provided by the timespec helpers manager are:
 
-- [rtems_timespec_set] - Set timespec's value
-- [rtems_timespec_zero] - Zero timespec's value
-- [rtems_timespec_is_valid] - Check if timespec is valid
-- [rtems_timespec_add_to] - Add two timespecs
-- [rtems_timespec_subtract] - Subtract two timespecs
-- [rtems_timespec_divide] - Divide two timespecs
-- [rtems_timespec_divide_by_integer] - Divide timespec by integer
-- [rtems_timespec_less_than] - Less than operator
-- [rtems_timespec_greater_than] - Greater than operator
-- [rtems_timespec_equal_to] - Check if two timespecs are equal
-- [rtems_timespec_get_seconds] - Obtain seconds portion of timespec
-- [rtems_timespec_get_nanoseconds] - Obtain nanoseconds portion of timespec
-- [rtems_timespec_to_ticks] - Convert timespec to number of ticks
-- [rtems_timespec_from_ticks] - Convert ticks to timespec
+- [](#rtems_timespec_set)
+- [](#rtems_timespec_zero)
+- [](#rtems_timespec_is_valid)
+- [](#rtems_timespec_add_to)
+- [](#rtems_timespec_subtract)
+- [](#rtems_timespec_divide)
+- [](#rtems_timespec_divide_by_integer)
+- [](#rtems_timespec_less_than)
+- [](#rtems_timespec_greater_than)
+- [](#rtems_timespec_equal_to)
+- [](#rtems_timespec_get_seconds)
+- [](#rtems_timespec_get_nanoseconds)
+- [](#rtems_timespec_to_ticks)
+- [](#rtems_timespec_from_ticks)
 
 ## Background
 

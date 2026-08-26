@@ -8,7 +8,7 @@
 
 The RTEMS shell has the following dynamic loader commands:
 
-- [rtl] - Manage the Run-Time Loader (RTL)
+- [](#rtl)
 
 ## Commands
 
@@ -44,12 +44,12 @@ DESCRIPTION:
 
   The commands are:
 
-  > - [list][rtl-list] : Listings
-  > - [sym][rtl-sym] : Symbols
-  > - [obj][rtl-obj] : Object files
-  > - [ar][rtl-ar] : Archive files
-  > - [call][rtl-call] : Call symbols
-  > - [trace][rtl-trace] : Link-editor trace debugging
+  > - [](#rtl-list) : Listings
+  > - [](#rtl-sym) : Symbols
+  > - [](#rtl-obj) : Object files
+  > - [](#rtl-ar) : Archive files
+  > - [](#rtl-call) : Call symbols
+  > - [](#rtl-trace) : Link-editor trace debugging
 
   ```{index} rtl list
   ```

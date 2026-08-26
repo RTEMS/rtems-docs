@@ -827,13 +827,13 @@ typedef void (*rtems_rtl_allocator)(rtems_rtl_alloc_cmd cmd,
 The arguments are:
 
 `cmd`
-: The command to action. See [rtems_rtl_alloc_cmd].
+: The command to action. See [](#rtems_rtl_alloc_cmd).
 
 `tag`
 
 > The type of memory the command is for. The `tag` must match the
 > address for commands other than `RTEMS_RTL_ALLOC_OBJECT`. See
-> [rtems_rtl_alloc_tags].
+> [](#rtems_rtl_alloc_tags).
 
 `address`
 : Pointer to the address. This is set of the `RTEMS_RTL_ALLOC_OBJECT` command

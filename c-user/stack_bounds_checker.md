@@ -16,8 +16,8 @@ The stack bounds checker is an RTEMS support component that determines if a
 task has overrun its run-time stack. The routines provided by the stack bounds
 checker manager are:
 
-- [rtems_stack_checker_is_blown] - Has the Current Task Blown its Stack
-- [rtems_stack_checker_report_usage] - Report Task Stack Usage
+- [](#rtems_stack_checker_is_blown)
+- [](#rtems_stack_checker_report_usage)
 
 ## Background
 

@@ -8,13 +8,13 @@
 
 The RTEMS shell has the following memory commands:
 
-- [mdump] - Display contents of memory
-- [wdump] - Display contents of memory (word)
-- [ldump] - Display contents of memory (longword)
-- [medit] - Modify contents of memory
-- [mfill] - File memory with pattern
-- [mmove] - Move contents of memory
-- [malloc] - Obtain information on C Program Heap
+- [](#mdump)
+- [](#wdump)
+- [](#ldump)
+- [](#medit)
+- [](#mfill)
+- [](#mmove)
+- [](#malloc)
 
 ## Commands
 

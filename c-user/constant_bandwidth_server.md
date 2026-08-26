@@ -15,18 +15,18 @@ Unlike simple schedulers, the Constant Bandwidth Server (CBS) requires a
 special API for tasks to indicate their scheduling parameters. The directives
 provided by the CBS API are:
 
-- [rtems_cbs_initialize] - Initialize the CBS library
-- [rtems_cbs_cleanup] - Cleanup the CBS library
-- [rtems_cbs_create_server] - Create a new bandwidth server
-- [rtems_cbs_attach_thread] - Attach a thread to server
-- [rtems_cbs_detach_thread] - Detach a thread from server
-- [rtems_cbs_destroy_server] - Destroy a bandwidth server
-- [rtems_cbs_get_server_id] - Get an ID of a server
-- [rtems_cbs_get_parameters] - Get scheduling parameters of a server
-- [rtems_cbs_set_parameters] - Set scheduling parameters of a server
-- [rtems_cbs_get_execution_time] - Get elapsed execution time
-- [rtems_cbs_get_remaining_budget] - Get remainig execution time
-- [rtems_cbs_get_approved_budget] - Get scheduler approved execution time
+- [](#rtems_cbs_initialize)
+- [](#rtems_cbs_cleanup)
+- [](#rtems_cbs_create_server)
+- [](#rtems_cbs_attach_thread)
+- [](#rtems_cbs_detach_thread)
+- [](#rtems_cbs_destroy_server)
+- [](#rtems_cbs_get_server_id)
+- [](#rtems_cbs_get_parameters)
+- [](#rtems_cbs_set_parameters)
+- [](#rtems_cbs_get_execution_time)
+- [](#rtems_cbs_get_remaining_budget)
+- [](#rtems_cbs_get_approved_budget)
 
 ```{index} CBS parameters
 ```

@@ -24,28 +24,28 @@ should only contain items of the same type.
 
 The following macros are provided to create, populate and use linker sets.
 
-- [RTEMS_LINKER_SET_BEGIN] - Designator of the linker set begin marker
-- [RTEMS_LINKER_SET_END] - Designator of the linker set end marker
-- [RTEMS_LINKER_SET_SIZE] - The linker set size in characters
-- [RTEMS_LINKER_SET_ITEM_COUNT] - The linker set item count
-- [RTEMS_LINKER_SET_IS_EMPTY] - Is the linker set empty?
-- [RTEMS_LINKER_SET_FOREACH] - Iterate through the linker set items
-- [RTEMS_LINKER_ROSET_DECLARE] - Declares a read-only linker set
-- [RTEMS_LINKER_ROSET] - Defines a read-only linker set
-- [RTEMS_LINKER_ROSET_ITEM_DECLARE] - Declares a read-only linker set item
-- [RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE] - Declares an ordered read-only linker set item
-- [RTEMS_LINKER_ROSET_ITEM_REFERENCE] - References a read-only linker set item
-- [RTEMS_LINKER_ROSET_ITEM] - Defines a read-only linker set item
-- [RTEMS_LINKER_ROSET_ITEM_ORDERED] - Defines an ordered read-only linker set item
-- [RTEMS_LINKER_ROSET_CONTENT] - Marks a declaration as a read-only linker set content
-- [RTEMS_LINKER_RWSET_DECLARE] - Declares a read-write linker set
-- [RTEMS_LINKER_RWSET] - Defines a read-write linker set
-- [RTEMS_LINKER_RWSET_ITEM_DECLARE] - Declares a read-write linker set item
-- [RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE] - Declares an ordered read-write linker set item
-- [RTEMS_LINKER_RWSET_ITEM_REFERENCE] - References a read-write linker set item
-- [RTEMS_LINKER_RWSET_ITEM] - Defines a read-write linker set item
-- [RTEMS_LINKER_RWSET_ITEM_ORDERED] - Defines an ordered read-write linker set item
-- [RTEMS_LINKER_RWSET_CONTENT] - Marks a declaration as a read-write linker set content
+- [](#RTEMS_LINKER_SET_BEGIN)
+- [](#RTEMS_LINKER_SET_END)
+- [](#RTEMS_LINKER_SET_SIZE)
+- [](#RTEMS_LINKER_SET_ITEM_COUNT)
+- [](#RTEMS_LINKER_SET_IS_EMPTY)
+- [](#RTEMS_LINKER_SET_FOREACH)
+- [](#RTEMS_LINKER_ROSET_DECLARE)
+- [](#RTEMS_LINKER_ROSET)
+- [](#RTEMS_LINKER_ROSET_ITEM_DECLARE)
+- [](#RTEMS_LINKER_ROSET_ITEM_ORDERED_DECLARE)
+- [](#RTEMS_LINKER_ROSET_ITEM_REFERENCE)
+- [](#RTEMS_LINKER_ROSET_ITEM)
+- [](#RTEMS_LINKER_ROSET_ITEM_ORDERED)
+- [](#RTEMS_LINKER_ROSET_CONTENT)
+- [](#RTEMS_LINKER_RWSET_DECLARE)
+- [](#RTEMS_LINKER_RWSET)
+- [](#RTEMS_LINKER_RWSET_ITEM_DECLARE)
+- [](#RTEMS_LINKER_RWSET_ITEM_ORDERED_DECLARE)
+- [](#RTEMS_LINKER_RWSET_ITEM_REFERENCE)
+- [](#RTEMS_LINKER_RWSET_ITEM)
+- [](#RTEMS_LINKER_RWSET_ITEM_ORDERED)
+- [](#RTEMS_LINKER_RWSET_CONTENT)
 
 ## Background
 

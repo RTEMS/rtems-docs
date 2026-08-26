@@ -13,29 +13,29 @@ The Chains API is an interface to the Super Core (score) chain
 implementation. The Super Core uses chains for all list type functions. This
 includes wait queues and task queues. The Chains API provided by RTEMS is:
 
-- [rtems_chain_initialize] - initialize the chain with nodes
-- [rtems_chain_initialize_empty] - initialize the chain as empty
-- [rtems_chain_is_null_node] - Is the node NULL ?
-- [rtems_chain_head] - Return the chain's head
-- [rtems_chain_tail] - Return the chain's tail
-- [rtems_chain_are_nodes_equal] - Are the node's equal ?
-- [rtems_chain_is_empty] - Is the chain empty ?
-- [rtems_chain_is_first] - Is the Node the first in the chain ?
-- [rtems_chain_is_last] - Is the Node the last in the chain ?
-- [rtems_chain_has_only_one_node] - Does the node have one node ?
-- [rtems_chain_node_count_unprotected] - Returns the node count of the chain (unprotected)
-- [rtems_chain_is_head] - Is the node the head ?
-- [rtems_chain_is_tail] - Is the node the tail ?
-- [rtems_chain_extract] - Extract the node from the chain
-- [rtems_chain_extract_unprotected] - Extract the node from the chain (unprotected)
-- [rtems_chain_get] - Return the first node on the chain
-- [rtems_chain_get_unprotected] - Return the first node on the chain (unprotected)
-- [rtems_chain_insert] - Insert the node into the chain
-- [rtems_chain_insert_unprotected] - Insert the node into the chain (unprotected)
-- [rtems_chain_append] - Append the node to chain
-- [rtems_chain_append_unprotected] - Append the node to chain (unprotected)
-- [rtems_chain_prepend] - Prepend the node to the end of the chain
-- [rtems_chain_prepend_unprotected] - Prepend the node to chain (unprotected)
+- [](#rtems_chain_initialize)
+- [](#rtems_chain_initialize_empty)
+- [](#rtems_chain_is_null_node)
+- [](#rtems_chain_head)
+- [](#rtems_chain_tail)
+- [](#rtems_chain_are_nodes_equal)
+- [](#rtems_chain_is_empty)
+- [](#rtems_chain_is_first)
+- [](#rtems_chain_is_last)
+- [](#rtems_chain_has_only_one_node)
+- [](#rtems_chain_node_count_unprotected)
+- [](#rtems_chain_is_head)
+- [](#rtems_chain_is_tail)
+- [](#rtems_chain_extract)
+- [](#rtems_chain_extract_unprotected)
+- [](#rtems_chain_get)
+- [](#rtems_chain_get_unprotected)
+- [](#rtems_chain_insert)
+- [](#rtems_chain_insert_unprotected)
+- [](#rtems_chain_append)
+- [](#rtems_chain_append_unprotected)
+- [](#rtems_chain_prepend)
+- [](#rtems_chain_prepend_unprotected)
 
 ## Background
 

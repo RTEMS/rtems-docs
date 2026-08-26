@@ -11,7 +11,7 @@
 
 The directive status code directives are:
 
-- [rtems_status_text] - Return the name for the status code
+- [](#rtems_status_text)
 
 ## Directives
 

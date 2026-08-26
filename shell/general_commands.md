@@ -8,31 +8,31 @@
 
 The RTEMS shell has the following general commands:
 
-- [help] - Print command help
-- [alias] - Add alias for an existing command
-- [cmdls] - List commands
-- [cmdchown] - Change user or owner of commands
-- [cmdchmod] - Change mode of commands
-- [date] - Print or set current date and time
-- [echo] - Produce message in a shell script
-- [sleep] - Delay for a specified amount of time
-- [id] - show uid gid euid and egid
-- [tty] - show ttyname
-- [whoami] - print effective user id
-- [getenv] - print environment variable
-- [setenv] - set environment variable
-- [unsetenv] - unset environment variable
-- [time] - time command execution
-- [logoff] - logoff from the system
-- [rtc] - RTC driver configuration
-- [i2cdetect] - detect I2C devices
-- [i2cget] - get data from an EEPROM like I2C device
-- [i2cset] - write data to an EEPROM like I2C device
-- [spi] - read and write simple data to an SPI bus
-- [flashdev] - read, write, erase and use
-- [exit] - alias for logoff command
+- [](#help)
+- [](#alias)
+- [](#cmdls)
+- [](#cmdchown)
+- [](#cmdchmod)
+- [](#date)
+- [](#echo)
+- [](#sleep)
+- [](#id)
+- [](#tty)
+- [](#whoami)
+- [](#getenv)
+- [](#setenv)
+- [](#unsetenv)
+- [](#time)
+- [](#logoff)
+- [](#rtc)
+- [](#i2cdetect)
+- [](#i2cget)
+- [](#i2cset)
+- [](#spi)
+- [](#flashdev)
+- [](#exit)
 
-## Commands
+g## Commands
 
 This section details the General Commands available. A subsection is dedicated
 to each of the commands and describes the behavior and configuration of that
