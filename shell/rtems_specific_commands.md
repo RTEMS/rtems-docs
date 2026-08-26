@@ -28,6 +28,7 @@ The RTEMS shell has the following RTEMS specific commands:
 - [driver] - Display the RTEMS device driver table
 - [dname] - Displays information about named drivers
 - [pthread] - Displays information about POSIX threads
+- [prio] - Displays information about POSIX and Classic thread priorities
 
 ## Commands
 
@@ -1743,7 +1744,7 @@ NOTES:
 
 EXAMPLES:
 
-: The following is an example of how to use the `task` on an application
+: The following is an example of how to use the `pthread` on an application
   with four POSIX threads:
 
   ```shell
@@ -1764,3 +1765,68 @@ CONFIGURATION:
 PROGRAMMING INFORMATION:
 
 : This command is not directly available for invocation.
+
+```{raw} latex
+\clearpage
+```
+
+(prio)=
+
+### prio - display information about POSIX and Classic thread priorities
+
+```{index} prio
+```
+
+SYNOPSYS:
+: ```shell
+  prio
+  ```
+
+DESCRIPTION:
+
+: The command takes no arguments and prints the id, name, scheduler,
+  classic API priority, POSIX API priority, the classic API and POSIX
+  API low and high priorities. The low and high limits are shown for
+  each thread and the scheduler can change the limits.
+
+EXIT STATUS:
+
+: This command returns 0 on success and non-zero if an error is encountered.
+
+EXAMPLES:
+
+: The following is an example of how to use the `prio` on an application
+  with four 2 classic API threads:
+
+  ```shell
+  SHLL [/] # prio
+  ID       THREAD SCHD CAPI  PAPI  CLOW  CHIGH PLOW  PHIGH
+  09010001 IDLE UPD    255     0   255     1     1   254
+  0a010002 FMNU UPD      1   254   255     1     1   254
+  0a010003 SHLL UPD    100   155   255     1     1   254
+  ```
+
+```{index} CONFIGURE_SHELL_NO_COMMAND_PRIO
+```
+
+```{index} CONFIGURE_SHELL_COMMAND_PRIO
+```
+
+CONFIGURATION:
+
+: This command is included in the default shell command set. When building a
+  custom command set, define `CONFIGURE_SHELL_COMMAND_PRIO` to have
+  this command included.
+
+  This command can be excluded from the shell command set by defining
+  `CONFIGURE_SHELL_NO_COMMAND_PRIO` when all shell commands have been
+  configured.
+
+PROGRAMMING INFORMATION:
+
+: The configuration structure for the `prio` has the following
+  prototype:
+
+  ```c
+  extern rtems_shell_cmd_t rtems_shell_PRIO_Command;
+  ```
