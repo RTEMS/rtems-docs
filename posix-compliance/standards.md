@@ -76,6 +76,13 @@ version of the Standard C Library. C17 is a bug fix version of C11.
 The C23 Programming Language standard introduces new language features
 and multiple new functions in the Standard C Library.
 
+The C23 Programming Language standard includes changes to both the
+core programming language and the Standard C Library. C23 adds two
+new header files: <stdbit.h> and <stdckdint.h>. It also adds optional
+support for IEEE-754 binary and decimal floating-point arithmetic. The
+required FPU support for these is not usually present in CPUs used in
+embedded systems.
+
 The Open Group FACE Consortium (<https://www.opengroup.org/face>)
 has defined four POSIX profiles targetting the avionics application
 domain. The FACE Technical Standard has been through multiple revisions

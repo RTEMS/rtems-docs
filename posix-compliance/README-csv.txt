@@ -1,4 +1,4 @@
-13 April 2026
+21 August 2026
 
 The .cvs file is exported from a spreadsheet used to track the status
 of RTEMS versus various C language standards and multiple POSIX related
@@ -8,13 +8,12 @@ in the name "RTEMS-Standards-Compliance.csv".
 
 The version of the spreadsheet included currently is:
 
-v22 - 13 April 2026
+v23 - 21 August 2026
 
 The spreadsheet MUST be exported as "MS-DOS CSV" to be processed by
 the Python script.
 
 This is the information in each column:
-
 
   Methods
   Header File

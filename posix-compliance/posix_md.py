@@ -25,6 +25,8 @@ standards = [
     'C11',
     'C17',
     'C23',
+    #'C23 IEC 60559 BFP',
+    #'C23 IEC 60559 DFP',
     'FACE 2.1 Security',
     'FACE 2.1 Safety Base',
     'FACE 2.1 Safety Extended',
@@ -61,6 +63,11 @@ standard_names = {
     'C11'                     : 'C11 Standard Library',
     'C17'                     : 'C17 Standard Library',
     'C23'                     : 'C23 Standard Library',
+    # The required support in the FPU is rarely included in embedded
+    # hardware and these are not currently supported by Newlib.
+    # IEC 60559 is the same as IEEE 754.
+    #'C23 IEC 60559 BFP'       : 'C23 IEC 60559 BFP',
+    #'C23 IEC 60559 DFP'       : 'C23 IEC 60559 DFP',
     'FACE 2.1 Security'       : 'FACE Technical Standard, Edition 2.1 Security',
     'FACE 2.1 Safety Base'    : 'FACE Technical Standard, Edition 2.1 Safety Base',
     'FACE 2.1 Safety Extended': 'FACE Technical Standard, Edition 2.1 Safety Extended',
@@ -100,6 +107,8 @@ col_names = {
     'C11'                      : 'C11',
     'C17'                      : 'C17',
     'C23'                      : 'C23',
+    'C23 IEC 60559 BFP'        : 'C23 IEC 60559 BFP',
+    'C23 IEC 60559 DFP'        : 'C23 IEC 60559 DFP',
     'FACE 2.1 Security'        : 'FACE 2.1 Security',
     'FACE 2.1 Safety Base'     : 'FACE 2.1 Safety Base',
     'FACE 2.1 Safety Extended' : 'FACE 2.1 Safety Extended',
