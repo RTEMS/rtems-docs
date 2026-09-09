@@ -34,7 +34,7 @@ The RTEMS shell has the following file and directory commands:
 
 - fdisk_ - format disks
 
-- hexdump_ - format disks
+- hexdump_ - ascii/dec/hex/octal dump
 
 - ln_ - make links
 
