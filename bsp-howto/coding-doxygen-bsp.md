@@ -7,7 +7,7 @@
 # Doxygen Recommendations for BSPs
 
 RTEMS contains well over a hundred [Board Support Packages (BSPs)](wiki:TBR/Website/Board_Support_Packages). , across over 20 different
-[CPU Architectures](wiki:TBR/UserManual/SupportedCPUs). . What this
+[CPU Architectures](wiki:TBR/UserManual/SupportedCPUs). What this
 means is that there is a lot of hardware dependent code that gets
 written, and that adding Doxygen to properly document it all can be a
 very complicated task.
@@ -95,9 +95,10 @@ useful. Doxygen documentation works by grouping things and their
 components (i.e. functions and other definitions), and by having
 brief descriptions of what each group does. You can't know what to
 look for or know how to group it or know how to describe it without
-some basic knowledge of what a BSP is. For more information on any
-of the above or BSPs in general, check out the [BSP Development Guide](http://rtems.org/onlinedocs/doc-current/share/rtems/html/bsp_howto/index.html).
-.
+some basic knowledge of what a BSP is. This document provides a
+detailed description of BSPs. For a more general overview of BSPs
+BSPs in general, check out the "Board Support Packages" section of the
+_Users Guide_.
 
 ## The Structure of the bsps/ directory
 

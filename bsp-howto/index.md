@@ -24,6 +24,7 @@ maxdepth: 5
 numbered: 4
 ---
 preface
+coding-doxygen-bsp
 target_dependant_files
 linker_script
 miscellanous_support
@@ -44,5 +45,4 @@ timer
 ata
 ide_controller
 command
-coding-doxygen-bsp
 ```
