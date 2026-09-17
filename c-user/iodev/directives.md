@@ -275,7 +275,9 @@ Returns 0 on success and non-zero value on error.
 
 ### event_wait
 
-Waits for the requested event for a given `rtems_iodev`.
+Waits for the requested event for a given `rtems_iodev`. The iodev lock is not
+held when `event_wait` is called to allow other IOCTL calls while waiting on an
+event.
 
 ```{eval-rst}
 .. rubric:: CALLING SEQUENCE:
