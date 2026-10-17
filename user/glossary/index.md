@@ -59,7 +59,7 @@ EDF
 
 EMB²
 
-: [Embedded Multicore Building Blocks](https://embb.io)
+: [Embedded Multicore Building Blocks](https://github.com/siemens/embb)
 
 FAT
 
