@@ -13,7 +13,7 @@
 # Install the Tool Suite
 
 You have chosen an installation prefix, the BSP to build, the tool's
-architecure and prepared the source for the RSB in the previous sections. Follow
+architecture and prepared the source for the RSB in the previous sections. Follow
 the directions below for the version chosen.
 
 The tool suite for RTEMS and the RTEMS sources are tightly coupled. For
@@ -74,7 +74,7 @@ works with the following command:
 $ $HOME/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc --version
 ```
 
-This command should output something like below. The version informtion helps
+This command should output something like below. The version information helps
 you to identify the exact sources used to build the cross compiler of your
 RTEMS tool suite. In the output you see the version of RTEMS or the hash from
 the RSB repository if you are building using a Git repository clone. The Newlib
@@ -139,7 +139,7 @@ works with the following command:
 $HOME/quick-start/rtems/@rtems-ver-major@/bin/sparc-rtems@rtems-ver-major@-gcc --version
 ```
 
-This command should output something like below. The version informtion helps
+This command should output something like below. The version information helps
 you to identify the exact sources used to build the cross compiler of your
 RTEMS tool suite. In the output you see the version of RTEMS or the hash from
 the RSB repository if you are building using a Git repository clone. The Newlib
@@ -253,7 +253,7 @@ RTEMS. The top level directories would be:
 {file}`/bd/projects/box-sorter/rtems`
 : Box Sorter project's custom RTEMS kernel source and installed BSP.
 
-A further varation if there is an RTEMS kernel you want to share between
+A further variation if there is an RTEMS kernel you want to share between
 projects is it to move this to a top level and share. In this case you will end
 up with:
 
@@ -294,7 +294,7 @@ directories would be:
 {file}`/bd/projects/box-sorter`
 : Box Sorter project sandbox.
 
-The project sandoxing approach allows you move a specific production part into
+The project sandboxing approach allows you move a specific production part into
 the project's sandbox to allow you to customise it. This is useful if you are
 testing new releases. The typical dependency is the order listed above. You can
 test new RTEMS kernels with production tools but new tools will require you
