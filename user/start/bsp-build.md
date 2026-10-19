@@ -85,7 +85,7 @@ The RSB BSP build can be customised with following RSB command line options:
 
 `--with-rtems-bspopts`:
 : Build the BSP with BSP specific options. This is an advanced option. Please
-  refer to the BSP specific details in the {ref}`Board Support Packages (BSPs)` of this manual or the BSP source code in the RTEMS source
+  refer to the BSP specific details in the {ref}`Board Support Packages (BSPs) <BSPs>` of this manual or the BSP source code in the RTEMS source
   directory. To supply a list of options quote then list with `"`, e.g.
   `--with-rtems-bspopts="BSP_POWER_DOWN_AT_FATAL_HALT=1"`
 
