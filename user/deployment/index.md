@@ -2,8 +2,6 @@
 
 % Copyright (C) 2022 Chris Johns
 
-(BSPs)=
-
 # Deployment
 
 ```{index} Deployment
