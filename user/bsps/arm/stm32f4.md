@@ -232,7 +232,7 @@ release BOOT0, then retry the flash command.
 
 | Region | Start address | Size                                          |
 | ------ | ------------- | --------------------------------------------- |
-| Flash  | `0x08000000`  | 512 KB (F411), 1 MB (F446), 1 MB (F407VG)     |
+| Flash  | `0x08000000`  | 512 KB (F411), 512 KB (F446), 1 MB (F407VG)   |
 | SRAM   | `0x20000000`  | 128 KB (F411), 128 KB (F446), 192 KB (F407VG) |
 
 Measured footprint of RTEMS hello world on STM32F411 (arm/stm32f4 BSP,
