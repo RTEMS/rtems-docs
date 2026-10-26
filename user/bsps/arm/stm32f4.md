@@ -126,7 +126,7 @@ Unplug and reconnect the ST-Link, then retry `st-info --probe`.
 Convert the ELF executable to a flat binary and flash it:
 
 ```shell
-arm-rtems7-objcopy build/arm/stm32f4/testsuites/samples/hello.exe hello.bin
+arm-rtems7-objcopy -O binary build/arm/stm32f4/testsuites/samples/hello.exe hello.bin
 st-flash write hello.bin 0x8000000
 ```
 
