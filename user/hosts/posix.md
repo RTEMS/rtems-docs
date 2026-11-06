@@ -148,6 +148,13 @@ python3-dev python-is-python3 libncurses-dev zlib1g-dev \
 ninja-build pkg-config
 ```
 
+Building QEMU with the RSB (`devel/qemu`) additionally needs the following
+packages:
+
+```none
+$ sudo apt install meson python3-pip python3-setuptools python3-wheel
+```
+
 The name of packages changes over time. You need the package with Python
 development libraries for C/C++ programs. The following is needed for recent
 versions:
