@@ -275,6 +275,13 @@ int tcsetattr(
 
 **NOTES:**
 
+When the output baud rate in the `termios` structure is set to `B0`,
+`tcsetattr()` returns -1 and sets `errno` to `ENOTSUP`. An output baud
+rate of `B0` requests a terminal hangup, which is not supported by
+the RTEMS termios device configuration interface.
+
+An input baud rate of `B0` with a non-zero output baud rate is accepted.
+
 (tcsendbreak)=
 
 ### tcsendbreak - Sends a break to a terminal
