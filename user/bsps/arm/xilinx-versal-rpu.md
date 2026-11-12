@@ -49,8 +49,8 @@ On the Versal RPU, RTEMS can be started by:
 
 - Platform Loader and Manager (PLM) firmware, when directly in the `BOOT.BIN`.
 - Cortex-A72 linux, with `remoteproc` driver.
-- Cortex-R5 u-boot.
-- Cortex-A72 u-boot.
+- Cortex-R5 U-Boot.
+- Cortex-A72 U-Boot.
 - JTAG.
 
 For quick turnaround during testing, it is recommended to use Cortex-A72 linux

@@ -46,25 +46,25 @@ as well as the physical ARM PL011 PrimeCell UART in the ZynqMP hardware.
 
 ## Boot on ZynqMP Hardware
 
-On the ZynqMP RPU, RTEMS can be started by Cortes-R5 u-boot, Cortex-A53 u-boot,
+On the ZynqMP RPU, RTEMS can be started by Cortes-R5 U-Boot, Cortex-A53 U-Boot,
 via JTAG, or directly as part of BOOT.bin. For quick turnaround during testing,
-it is recommended to use Cortex-A53 u-boot to boot a gzip-compressed raw binary
+it is recommended to use Cortex-A53 U-Boot to boot a gzip-compressed raw binary
 over TFTP to avoid repeated BOOT.bin generation and writes to flash/SD since
-the Xilinx-provided Cortex-R5 u-boot is highly limited and has no network or
+the Xilinx-provided Cortex-R5 U-Boot is highly limited and has no network or
 MMC/SD access. Booting using uncompressed raw binaries is possible, but not
 recommended due to slow transfer rates over TFTP. Booting using ELF32 is not
 recommended due to poorly understood quirks around how the `loadelf` command
 works.
 
-Note that if the RPU image is started by the Cortex-A53 u-boot, the program
+Note that if the RPU image is started by the Cortex-A53 U-Boot, the program
 sections located at `ZYNQMP_MEMORY_ATCM_ORIGIN` and `ZYNQMP_MEMORY_BTCM_ORIGIN`
 must be manually relocated from DDR to TCM since the TCMs are not directly
 available to the Cortex-A53 cores at their Cortex-R5 internal addresses. This
-can be accomplished by disabling dcache in u-boot and using u-boot's `cp`
-command. Once this is done, the program can be started at 0x0 by using u-boot's
+can be accomplished by disabling dcache in U-Boot and using U-Boot's `cp`
+command. Once this is done, the program can be started at 0x0 by using U-Boot's
 `cpu` command to first disable core 4 and then release it in split mode.
 
-As an example, some relevant u-boot commands for booting the RPU might be:
+As an example, some relevant U-Boot commands for booting the RPU might be:
 ```
 r5start="cpu 4 disable; cpu 4 release 0x0 split"
 r5copysections="dcache off; cp.b 0x20000 0xffe20000 0x10000; cp.b 0x0 0xffe00000 0x10000"
@@ -78,8 +78,8 @@ r5gzboot="run r5tftpsetup; run r5getgz; run r5copysections; run r5start"
 When generating BOOT.bin from components, the BIF file should include at least
 entries for the Cortex-R5 FSBL ([bootloader,destination_cpu=r5-0]) and the
 Cortex-R5 application ([destination_cpu=r5-0]). The Cortex-R5 application should
-be either a u-boot or RTEMS ELF binary. The Cortex-R5 u-boot binary can be
-obtained by building it from Xilinx's u-boot repository. The Cortex-R5 FSBL can
+be either a U-Boot or RTEMS ELF binary. The Cortex-R5 U-Boot binary can be
+obtained by building it from Xilinx's U-Boot repository. The Cortex-R5 FSBL can
 be obtained setting up an appropriate platform project in Xilinx's current
 development system.
 

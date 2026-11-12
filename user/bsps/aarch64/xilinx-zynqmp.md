@@ -43,17 +43,17 @@ The executable image is booted by Qemu in ELF format.
 
 ## Boot on ZynqMP Hardware
 
-On ZynqMP hardware, RTEMS can be started at EL1, EL2, or EL3 by u-boot or
+On ZynqMP hardware, RTEMS can be started at EL1, EL2, or EL3 by U-Boot or
 directly as part of BOOT.bin. Regardless of the exception level at boot, RTEMS
 will drop to EL1 for execution. For quick turnaround during testing, it is
-recommended to use the u-boot BOOT.bin that comes with the PetaLinux prebuilts
+recommended to use the U-Boot BOOT.bin that comes with the PetaLinux prebuilts
 for the board in question.
 
 Some systems such as the CFC-400X may require a bitstream to be loaded into the
 FPGA portion of the chip to operate as expected. This bitstream must be loaded
 before RTEMS begins operation since accesses to programmable logic (PL) memory
 space can cause the CPU to hang if the FPGA is not initialized. This can be
-performed as part of BOOT.bin or by a bootloader such as u-boot. Loading
+performed as part of BOOT.bin or by a bootloader such as U-Boot. Loading
 bitstreams from RTEMS has not been tested on the ZynqMP platform and requires
 additional libraries from Xilinx.
 
@@ -63,8 +63,8 @@ RTEMS expects some hardware initialization to be performed by ATF and expects
 the services it provides to be present, so this must be included when generating
 a direct-boot RTEMS BOOT.bin.
 
-When booting via u-boot, RTEMS must be packaged into a u-boot image or booted
-as a raw binary since u-boot does not currently support ELF64 which is required
+When booting via U-Boot, RTEMS must be packaged into a U-Boot image or booted
+as a raw binary since U-Boot does not currently support ELF64 which is required
 for AArch64 ELF binaries.
 
 ## Example: Booting a RTEMS image on the ZCU102 ZynqMP board
@@ -95,7 +95,7 @@ for the console UART. It should be set to 115k baud.
 
 The goal is to have a bootable SD card with a partition that is formatted with
 the FAT file system. The file system will contain the boot artifacts including
-BOOT.bin and the u-boot image. The RTEMS image will be placed on this volume. To
+BOOT.bin and the U-Boot image. The RTEMS image will be placed on this volume. To
 create the bootable SD card, follow the directions
 [here.](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842385/How+to+format+SD+card+for+SD+boot)
 
@@ -117,8 +117,8 @@ only need to use the FAT partition with the boot artifacts on it.
 It is worth booting the board from the SD card before trying to boot RTEMS.
 Insert the card and power on the board. You should see the messages on the first
 console indicating the various boot loader stages and eventually the Linux
-kernel. The goal is to interrupt u-boot when given the chance to access the
-u-boot command prompt.
+kernel. The goal is to interrupt U-Boot when given the chance to access the
+U-Boot command prompt.
 
 ### Build RTEMS with examples
 
@@ -131,7 +131,7 @@ build/aarch64/zynqmp_apu/testsuites/samples
 
 ### Prepare the RTEMS image
 
-Prepare your RTEMS image to boot from u-boot with the following commands:
+Prepare your RTEMS image to boot from U-Boot with the following commands:
 
 ```shell
 $ aarch64-rtems@rtems-ver-major@-objcopy -Obinary ticker.exe ticker.bin
@@ -149,7 +149,7 @@ be used for the two parameters.
 
 Copy the prepared RTEMS image to the SD card and insert the SD crd in the ZCU102
 board. Power on the board. When you see the prompt on the console to interupt
-u-boot, hit a key to bring up the u-boot command prompt. On the u-boot command
+U-Boot, hit a key to bring up the U-Boot command prompt. On the U-Boot command
 prompt you can boot your RTEMS image:
 
 ```shell
@@ -230,9 +230,9 @@ TA3  - rtems_clock_get_tod - 09:00:30   12/31/1988
 ### Follow up
 
 This is just one possible way to boot the RTEMS image. For a development
-environment you may wish to configure u-boot to boot the RTEMS image from a TFTP
+environment you may wish to configure U-Boot to boot the RTEMS image from a TFTP
 server. For a production environment, you may wish to download, configure, and
-build u-boot, or develop a BOOT.BIN image with the RTEMS application.
+build U-Boot, or develop a BOOT.BIN image with the RTEMS application.
 
 ## Clock Driver
 

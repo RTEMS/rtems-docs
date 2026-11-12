@@ -57,7 +57,7 @@ the Device Trees.
 ### Writing the uEnv.txt file
 
 The uEnv.txt file is needed to set any environment variable before the kernel is
-loaded. Each line is a u-boot command that the uboot will execute during start
+loaded. Each line is a U-Boot command that the uboot will execute during start
 up.
 
 Add the following to a file named uEnv.txt:
