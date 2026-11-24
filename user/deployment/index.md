@@ -240,7 +240,7 @@ Add the following to the buildset configuration file and save:
 Add a kernel configuration INI file:
 
 ```none
-$ vi config/project-bsps.bset
+$ vi config/project-bsps.ini
 ```
 
 Add the following to the kernel configuration INI file and save:
@@ -383,7 +383,7 @@ Add the following to the buildset configuration file and save:
 Add a kernel configuration INI file:
 
 ```none
-$ vi config/project-aarch64-bsp.bset
+$ vi config/project-aarch64-bsp.ini
 ```
 
 Add the following kernel configuration INI file and save:
